@@ -53,7 +53,9 @@ class ContextualDefinitionRepo {
     );
 
     if (res.statusCode != 200) {
-      throw res;
+      throw Exception(
+        "Contextual definition request failed with status code ${res.statusCode}",
+      );
     }
 
     final ContextualDefinitionResponseModel response =

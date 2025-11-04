@@ -117,11 +117,15 @@ class IGCTextState {
   ) {
     final openMatch = _openMatches.firstWhere(
       (m) => m.originalMatch == match.originalMatch,
-      orElse: () => throw "No open match found for acceptReplacement",
+      orElse: () => throw Exception(
+        'No open match found for acceptReplacement',
+      ),
     );
 
     if (match.updatedMatch.match.selectedChoice == null) {
-      throw "acceptReplacement called with null selectedChoice";
+      throw Exception(
+        'acceptReplacement called with null selectedChoice',
+      );
     }
 
     match.setStatus(status);
@@ -140,7 +144,9 @@ class IGCTextState {
   PangeaMatch ignoreReplacement(PangeaMatchState match) {
     final openMatch = _openMatches.firstWhere(
       (m) => m.originalMatch == match.originalMatch,
-      orElse: () => throw "No open match found for ignoreReplacement",
+      orElse: () => throw Exception(
+        'No open match found for ignoreReplacement',
+      ),
     );
 
     match.setStatus(PangeaMatchStatus.ignored);
@@ -152,7 +158,9 @@ class IGCTextState {
   void undoReplacement(PangeaMatchState match) {
     final closedMatch = _closedMatches.firstWhere(
       (m) => m.originalMatch == match.originalMatch,
-      orElse: () => throw "No closed match found for undoReplacement",
+      orElse: () => throw Exception(
+        'No closed match found for undoReplacement',
+      ),
     );
 
     _closedMatches.remove(closedMatch);
@@ -160,7 +168,9 @@ class IGCTextState {
     final choice = match.updatedMatch.match.selectedChoice?.value;
 
     if (choice == null) {
-      throw "match.match.selectedChoice is null in undoReplacement";
+      throw Exception(
+        "match.match.selectedChoice is null in undoReplacement",
+      );
     }
 
     final String replacement = match.originalMatch.match.fullText.characters

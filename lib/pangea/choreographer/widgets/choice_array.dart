@@ -153,7 +153,9 @@ class ChoiceItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 ),
               ),
-              onLongPress: () => onLongPress!(entry.value.text, entry.key),
+              onLongPress: onLongPress != null
+                  ? () => onLongPress!(entry.value.text, entry.key)
+                  : null,
               onPressed: () => onPressed(entry.value.text, entry.key),
               child: Text(
                 getDisplayCopy != null
