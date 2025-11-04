@@ -178,7 +178,7 @@ void showMemberActionsPopupMenu({
               ),
               const SizedBox(width: 18),
               Text(
-                L10n.of(context).kickFromChat,
+                L10n.of(context).kick,
                 style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],
@@ -195,7 +195,7 @@ void showMemberActionsPopupMenu({
               ),
               const SizedBox(width: 18),
               Text(
-                L10n.of(context).banFromChat,
+                L10n.of(context).ban,
                 style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],
