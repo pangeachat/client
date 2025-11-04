@@ -446,7 +446,7 @@ class InputBar extends StatelessWidget {
       return;
     }
 
-    final match = choreographer.getMatchByOffset(
+    final match = choreographer.igcController.getMatchByOffset(
       selection.baseOffset,
     );
     if (match == null) return;

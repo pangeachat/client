@@ -385,4 +385,40 @@ extension EventsRoomExtension on Room {
 
     return allPangeaMessages;
   }
+
+  List<PreviousMessage> getPreviousMessages({int numMessages = 5}) {
+    if (timeline == null) return [];
+    final events = timeline!.events
+        .where(
+          (e) =>
+              e.type == EventTypes.Message &&
+              (e.messageType == MessageTypes.Text ||
+                  e.messageType == MessageTypes.Audio),
+        )
+        .toList();
+
+    final List<PreviousMessage> messages = [];
+    for (final Event event in events) {
+      final String? content = event.messageType == MessageTypes.Text
+          ? event.content.toString()
+          : PangeaMessageEvent(
+              event: event,
+              timeline: timeline!,
+              ownMessage: event.senderId == client.userID,
+            ).getSpeechToTextLocal()?.transcript.text.trim();
+
+      if (content == null) continue;
+      messages.add(
+        PreviousMessage(
+          content: content,
+          sender: event.senderId,
+          timestamp: event.originServerTs,
+        ),
+      );
+      if (messages.length >= numMessages) {
+        return messages;
+      }
+    }
+    return messages;
+  }
 }

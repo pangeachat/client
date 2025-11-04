@@ -133,7 +133,8 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
     Continuance continuance;
     try {
-      continuance = widget.choreographer.onSelectContinuance(index);
+      continuance =
+          widget.choreographer.itController.onSelectContinuance(index);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -143,7 +144,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
           "index": index,
         },
       );
-      widget.choreographer.closeIT();
+      widget.choreographer.itController.closeIT();
       return;
     }
 
@@ -174,7 +175,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
             "index": index,
           },
         );
-        widget.choreographer.closeIT();
+        widget.choreographer.itController.closeIT();
       }
     });
   }
@@ -217,12 +218,14 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                 spacing: 12.0,
                 children: [
                   _ITBarHeader(
-                    onClose: widget.choreographer.closeIT,
+                    onClose: widget.choreographer.itController.closeIT,
                     setEditing: widget.choreographer.itController.setEditing,
                     editing: widget.choreographer.itController.editing,
                     sourceTextController: _sourceTextController,
                     sourceText: _sourceText,
-                    onSubmitEdits: widget.choreographer.submitSourceTextEdits,
+                    onSubmitEdits: (_) => widget.choreographer.onSubmitEdits(
+                      _sourceTextController.text,
+                    ),
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -241,7 +244,8 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: widget.choreographer.closeIT,
+                                  onPressed:
+                                      widget.choreographer.itController.closeIT,
                                   icon: const Icon(
                                     Icons.close,
                                     size: 20,

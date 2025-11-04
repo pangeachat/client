@@ -239,7 +239,9 @@ class PangeaChatInputRow extends StatelessWidget {
                               foregroundColor: theme.onBubbleColor,
                               child: const Icon(Icons.mic_none_outlined),
                             )
-                          : ChoreographerSendButton(controller: controller),
+                          : ChoreographerSendButton(
+                              choreographer: controller.choreographer,
+                            ),
                     ),
                   ],
                 ),

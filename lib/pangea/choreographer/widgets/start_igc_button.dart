@@ -63,7 +63,8 @@ class StartIGCButtonState extends State<StartIGCButton>
 
   void _showFirstMatch() {
     if (widget.controller.choreographer.canShowFirstIGCMatch) {
-      final match = widget.controller.choreographer.igc.firstOpenMatch;
+      final match =
+          widget.controller.choreographer.igcController.firstOpenMatch;
       if (match == null) return;
       if (match.updatedMatch.isITStart) {
         widget.controller.choreographer.openIT(match);

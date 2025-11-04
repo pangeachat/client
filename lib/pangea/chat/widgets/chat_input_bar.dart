@@ -23,7 +23,8 @@ class ChatInputBar extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         ActivityRoleTooltip(
-          choreographer: controller.choreographer,
+          room: controller.room,
+          hide: controller.choreographer.itController.open,
         ),
         ITBar(choreographer: controller.choreographer),
         if (!controller.obscureText) ReplyDisplay(controller),

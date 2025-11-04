@@ -72,7 +72,7 @@ class SpanCardState extends State<SpanCard> {
 
     try {
       setState(() => _loadingChoices = true);
-      await widget.choreographer.fetchSpanDetails(
+      await widget.choreographer.igcController.fetchSpanDetails(
         match: widget.match,
       );
     } catch (e) {
@@ -83,7 +83,9 @@ class SpanCardState extends State<SpanCard> {
           'No choices available for span ${widget.match.updatedMatch.match.message}',
         );
       }
-      setState(() => _loadingChoices = false);
+      if (mounted) {
+        setState(() => _loadingChoices = false);
+      }
     }
   }
 
@@ -95,7 +97,7 @@ class SpanCardState extends State<SpanCard> {
 
     try {
       _feedbackModel.setState(FeedbackLoading<String>());
-      await widget.choreographer.fetchSpanDetails(
+      await widget.choreographer.igcController.fetchSpanDetails(
         match: widget.match,
         force: true,
       );
@@ -157,7 +159,7 @@ class SpanCardState extends State<SpanCard> {
   void _showFirstMatch() {
     if (widget.choreographer.canShowFirstIGCMatch) {
       OverlayUtil.showIGCMatch(
-        widget.choreographer.igc.firstOpenMatch!,
+        widget.choreographer.igcController.firstOpenMatch!,
         widget.choreographer,
         context,
       );

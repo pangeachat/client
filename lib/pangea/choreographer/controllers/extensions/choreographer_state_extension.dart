@@ -10,13 +10,13 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
         itController.currentITStep.value?.isFinal != true;
   }
 
-  String? get currentIGCText => igc.currentText;
-  PangeaMatchState? get openMatch => igc.openMatch;
-  PangeaMatchState? get firstOpenMatch => igc.firstOpenMatch;
-  List<PangeaMatchState>? get openIGCMatches => igc.openMatches;
-  List<PangeaMatchState>? get closedIGCMatches => igc.closedMatches;
-  bool get canShowFirstIGCMatch => igc.canShowFirstMatch;
-  bool get hasIGCTextData => igc.hasIGCTextData;
+  String? get currentIGCText => igcController.currentText;
+  PangeaMatchState? get openMatch => igcController.openMatch;
+  PangeaMatchState? get firstOpenMatch => igcController.firstOpenMatch;
+  List<PangeaMatchState>? get openIGCMatches => igcController.openMatches;
+  List<PangeaMatchState>? get closedIGCMatches => igcController.closedMatches;
+  bool get canShowFirstIGCMatch => igcController.canShowFirstMatch;
+  bool get hasIGCTextData => igcController.hasIGCTextData;
 
   AssistanceState get assistanceState {
     final isSubscribed = pangeaController.subscriptionController.isSubscribed;
@@ -29,12 +29,12 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
       return AssistanceState.error;
     }
 
-    if (igc.hasOpenMatches || isRunningIT) {
+    if (igcController.hasOpenMatches || isRunningIT) {
       return AssistanceState.fetched;
     }
 
     if (isFetching.value) return AssistanceState.fetching;
-    if (!igc.hasIGCTextData) return AssistanceState.notFetched;
+    if (!igcController.hasIGCTextData) return AssistanceState.notFetched;
     return AssistanceState.complete;
   }
 
@@ -57,13 +57,13 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
     if (isFetching.value) return false;
 
     // they're supposed to run IGC but haven't yet, don't let them send
-    if (!igc.hasIGCTextData) {
+    if (!igcController.hasIGCTextData) {
       return itController.dismissed;
     }
 
     // if they have relevant matches, don't let them send
-    final hasITMatches = igc.hasOpenITMatches;
-    final hasIGCMatches = igc.hasOpenIGCMatches;
+    final hasITMatches = igcController.hasOpenITMatches;
+    final hasIGCMatches = igcController.hasOpenIGCMatches;
     if ((itEnabled && hasITMatches) || (igcEnabled && hasIGCMatches)) {
       return false;
     }

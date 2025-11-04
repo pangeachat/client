@@ -3,27 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 
 class ActivityRoleTooltip extends StatelessWidget {
-  final Choreographer choreographer;
+  final Room room;
+  final ValueNotifier<bool> hide;
 
   const ActivityRoleTooltip({
-    required this.choreographer,
+    required this.room,
+    required this.hide,
     super.key,
   });
 
-  Room get room => choreographer.chatController.room;
-
   @override
   Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: choreographer,
-      builder: (context, _) {
-        if (!room.showActivityChatUI ||
-            room.ownRole?.goal == null ||
-            choreographer.itController.open.value) {
+    return ValueListenableBuilder(
+      valueListenable: hide,
+      builder: (context, hide, _) {
+        if (!room.showActivityChatUI || room.ownRole?.goal == null || hide) {
           return const SizedBox();
         }
 

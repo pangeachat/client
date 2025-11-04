@@ -5,9 +5,6 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 
-import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
-import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
-import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/gold_route_tracker.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/repo/it_repo.dart';
@@ -16,21 +13,20 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../models/completed_it_step.dart';
 import '../repo/it_request_model.dart';
-import 'choreographer.dart';
 
 class ITController {
-  final Choreographer _choreographer;
-  final ValueNotifier<String?> _sourceText = ValueNotifier(null);
+  final Function(Object) onError;
 
-  final ValueNotifier<ITStep?> _currentITStep = ValueNotifier(null);
   final Queue<Completer<ITStep>> _queue = Queue();
   GoldRouteTracker? _goldRouteTracker;
 
+  final ValueNotifier<String?> _sourceText = ValueNotifier(null);
+  final ValueNotifier<ITStep?> _currentITStep = ValueNotifier(null);
   final ValueNotifier<bool> _open = ValueNotifier(false);
   final ValueNotifier<bool> _editing = ValueNotifier(false);
   bool _dismissed = false;
 
-  ITController(this._choreographer);
+  ITController(this.onError);
 
   ValueNotifier<bool> get open => _open;
   ValueNotifier<bool> get editing => _editing;
@@ -47,8 +43,6 @@ class ITController {
           MatrixState.pangeaController.languageController.activeL1Code()!,
       targetLangCode:
           MatrixState.pangeaController.languageController.activeL2Code()!,
-      userId: _choreographer.chatController.room.client.userID!,
-      roomId: _choreographer.chatController.room.id,
       goldTranslation: _goldRouteTracker?.fullTranslation,
       goldContinuances: _goldRouteTracker?.continuances,
     );
@@ -72,8 +66,6 @@ class ITController {
     _queue.clear();
     _currentITStep.value = null;
     _goldRouteTracker = null;
-
-    _choreographer.setChoreoMode(ChoreoMode.igc);
   }
 
   void clearSourceText() {
@@ -81,38 +73,30 @@ class ITController {
   }
 
   void dispose() {
+    _open.dispose();
     _currentITStep.dispose();
     _editing.dispose();
     _sourceText.dispose();
   }
 
-  void openIT(String sourceText) {
-    _sourceText.value = sourceText;
+  void openIT(String text) {
+    _sourceText.value = text;
     _open.value = true;
     continueIT();
   }
 
-  void closeIT() {
-    // if the user hasn't gone through any IT steps, reset the text
-    if (_choreographer.currentText.isEmpty && _sourceText.value != null) {
-      _choreographer.textController.setSystemText(
-        _sourceText.value!,
-        EditType.itDismissed,
-      );
-    }
-
-    clear(dismissed: true);
-  }
+  void closeIT() => clear(dismissed: true);
 
   void setEditing(bool value) {
     _editing.value = value;
   }
 
-  void onSubmitEdits() {
+  void onSubmitEdits(String text) {
     _editing.value = false;
     _queue.clear();
     _currentITStep.value = null;
     _goldRouteTracker = null;
+    _sourceText.value = text;
     continueIT();
   }
 
@@ -163,13 +147,13 @@ class ITController {
       if (_currentITStep.value == null) {
         await _initTranslationData();
       } else if (_queue.isEmpty) {
-        _choreographer.closeIT();
+        closeIT();
       } else {
         final nextStepCompleter = _queue.removeFirst();
         _currentITStep.value = await nextStepCompleter.future;
       }
     } catch (e) {
-      _choreographer.errorService.setErrorAndLock(ChoreoError(raw: e));
+      onError(e);
     } finally {
       _continuing = false;
     }
@@ -179,9 +163,7 @@ class ITController {
     final res = await _safeRequest("");
     if (_sourceText.value == null || !_open.value) return;
     if (res.isError || res.result?.goldContinuances == null) {
-      _choreographer.errorService.setErrorAndLock(
-        ChoreoError(raw: res.asError),
-      );
+      onError(res.asError!);
       return;
     }
 

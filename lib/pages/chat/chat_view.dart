@@ -353,7 +353,9 @@ class ChatView extends StatelessWidget {
                             child: Stack(
                               children: [
                                 ChatEventList(controller: controller),
-                                ChatViewBackground(controller.choreographer),
+                                ChatViewBackground(
+                                  controller.choreographer.itController.open,
+                                ),
                               ],
                             ),
                             // Pangea#

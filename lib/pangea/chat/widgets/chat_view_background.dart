@@ -2,18 +2,16 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
-
 class ChatViewBackground extends StatelessWidget {
-  final Choreographer choreographer;
-  const ChatViewBackground(this.choreographer, {super.key});
+  final ValueNotifier<bool> visible;
+  const ChatViewBackground(this.visible, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: choreographer,
-      builder: (context, _) {
-        return choreographer.itController.open.value
+    return ValueListenableBuilder(
+      valueListenable: visible,
+      builder: (context, value, _) {
+        return value
             ? Positioned(
                 left: 0,
                 right: 0,
