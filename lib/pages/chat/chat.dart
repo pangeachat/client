@@ -377,7 +377,7 @@ class ChatController extends State<ChatPageWithRoom>
       if (evt is KeyDownEvent) {
         // #Pangea
         // send();
-        onInputBarSubmitted('');
+        onInputBarSubmitted();
         // Pangea#
       }
       return KeyEventResult.handled;
@@ -1756,7 +1756,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   // #Pangea
   // void onInputBarSubmitted(String _) {
-  Future<void> onInputBarSubmitted(String _) async {
+  Future<void> onInputBarSubmitted() async {
     //   send();
     try {
       await choreographer.send();

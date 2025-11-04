@@ -195,7 +195,7 @@ class PangeaChatInputRow extends StatelessWidget {
                                   PlatformInfos.isMobile
                               ? TextInputAction.send
                               : null,
-                          onSubmitted: controller.onInputBarSubmitted,
+                          onSubmitted: (_) => controller.onInputBarSubmitted(),
                           onSubmitImage: controller.sendImageFromClipBoard,
                           focusNode: controller.inputFocus,
                           controller: controller.sendController,
@@ -240,7 +240,7 @@ class PangeaChatInputRow extends StatelessWidget {
                               child: const Icon(Icons.mic_none_outlined),
                             )
                           : ChoreographerSendButton(
-                              choreographer: controller.choreographer,
+                              controller: controller,
                             ),
                     ),
                   ],
