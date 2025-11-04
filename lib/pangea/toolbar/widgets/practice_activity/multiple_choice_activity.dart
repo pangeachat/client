@@ -237,14 +237,11 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
           onPressed: updateChoice,
           selectedChoiceIndex: selectedChoiceIndex,
           choices: choices(context),
-          enabled: true,
           id: currentRecordModel?.hashCode.toString(),
           enableAudio: practiceActivity.activityType.includeTTSOnClick,
           langCode:
               MatrixState.pangeaController.languageController.activeL2Code(),
           getDisplayCopy: _getDisplayCopy,
-          enableMultiSelect:
-              widget.currentActivity.activityType == ActivityTypeEnum.emoji,
         ),
       ],
     );

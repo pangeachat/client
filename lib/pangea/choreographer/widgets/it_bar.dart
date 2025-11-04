@@ -149,7 +149,6 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     }
 
     if (continuance.level == 1) {
-      // CTODO doesn't always go to next continuance
       _onCorrectSelection(index);
     } else {
       _showFeedbackCard(

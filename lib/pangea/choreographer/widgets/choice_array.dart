@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -13,10 +10,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 import 'it_shimmer.dart';
 
-// CTODO refactor
 typedef ChoiceCallback = void Function(String value, int index);
 
-class ChoicesArray extends StatefulWidget {
+class ChoicesArray extends StatelessWidget {
   final bool isLoading;
   final List<Choice>? choices;
   final ChoiceCallback onPressed;
@@ -32,14 +28,7 @@ class ChoicesArray extends StatefulWidget {
   /// choices could have identical text, like in back-to-back practice activities
   final String? id;
 
-  /// some uses of this widget want to disable clicking of the choices
-  final bool enabled;
-
   final String Function(String)? getDisplayCopy;
-
-  /// activity has multiple correct answers, so user can still
-  /// select choices once the correct choice has been selected
-  final bool enableMultiSelect;
 
   const ChoicesArray({
     super.key,
@@ -49,79 +38,39 @@ class ChoicesArray extends StatefulWidget {
     required this.selectedChoiceIndex,
     this.enableAudio = true,
     this.langCode,
-    this.enabled = true,
     this.onLongPress,
     this.getDisplayCopy,
     this.id,
-    this.enableMultiSelect = false,
   });
 
   @override
-  ChoicesArrayState createState() => ChoicesArrayState();
-}
-
-class ChoicesArrayState extends State<ChoicesArray> {
-  bool interactionDisabled = false;
-
-  void disableInteraction() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) setState(() => interactionDisabled = true);
-    });
-  }
-
-  void enableInteractions() {
-    if (_hasSelectedCorrectChoice && !widget.enableMultiSelect) return;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) setState(() => interactionDisabled = false);
-    });
-  }
-
-  bool get _hasSelectedCorrectChoice =>
-      widget.choices?.any((choice) => choice.isGold && choice.color != null) ??
-      false;
-
-  @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-
-    final choices = widget.choices!
-        .mapIndexed(
-          (index, entry) => ChoiceItem(
-            theme: theme,
-            onLongPress: widget.enabled ? widget.onLongPress : null,
-            onPressed: widget.enabled
-                ? (String value, int index) {
-                    widget.onPressed(value, index);
-                    // TODO - what to pass here as eventID?
-                    if (widget.enableAudio && widget.langCode != null) {
-                      TtsController.tryToSpeak(
-                        value,
-                        targetID: null,
-                        langCode: widget.langCode!,
-                      );
-                    }
-                  }
-                : (String value, int index) {
-                    debugger(when: kDebugMode);
-                  },
-            entry: MapEntry(index, entry),
-            interactionDisabled: interactionDisabled,
-            enableInteraction: enableInteractions,
-            disableInteraction: disableInteraction,
-            isSelected: widget.selectedChoiceIndex == index,
-            id: widget.id,
-            getDisplayCopy: widget.getDisplayCopy,
-          ),
-        )
-        .toList();
-
-    return widget.isLoading &&
-            (widget.choices == null || widget.choices!.length <= 1)
+    return isLoading && (choices == null || choices!.length <= 1)
         ? const ItShimmer()
         : Wrap(
             alignment: WrapAlignment.center,
             spacing: 4.0,
-            children: choices,
+            children: [
+              ...choices!.mapIndexed(
+                (index, entry) => ChoiceItem(
+                  onLongPress: onLongPress,
+                  onPressed: (String value, int index) {
+                    onPressed(value, index);
+                    if (enableAudio && langCode != null) {
+                      TtsController.tryToSpeak(
+                        value,
+                        targetID: null,
+                        langCode: langCode!,
+                      );
+                    }
+                  },
+                  entry: MapEntry(index, entry),
+                  isSelected: selectedChoiceIndex == index,
+                  id: id,
+                  getDisplayCopy: getDisplayCopy,
+                ),
+              ),
+            ],
           );
   }
 }
@@ -139,110 +88,88 @@ class Choice {
 }
 
 class ChoiceItem extends StatelessWidget {
+  final MapEntry<int, Choice> entry;
+  final ChoiceCallback? onLongPress;
+  final ChoiceCallback onPressed;
+  final bool isSelected;
+  final String? id;
+  final String Function(String)? getDisplayCopy;
+  final double? fontSize;
+
   const ChoiceItem({
     super.key,
-    required this.theme,
     required this.onLongPress,
     required this.onPressed,
     required this.entry,
     required this.isSelected,
-    required this.interactionDisabled,
-    required this.enableInteraction,
-    required this.disableInteraction,
     required this.id,
     this.getDisplayCopy,
     this.fontSize,
   });
 
-  final MapEntry<int, Choice> entry;
-  final ThemeData theme;
-  final ChoiceCallback? onLongPress;
-  final ChoiceCallback onPressed;
-  final bool isSelected;
-  final bool interactionDisabled;
-  final VoidCallback enableInteraction;
-  final VoidCallback disableInteraction;
-  final String? id;
-  final String Function(String)? getDisplayCopy;
-
-  final double? fontSize;
-
   @override
   Widget build(BuildContext context) {
-    try {
-      return Tooltip(
-        message: onLongPress != null ? L10n.of(context).holdForInfo : "",
-        waitDuration: onLongPress != null
-            ? const Duration(milliseconds: 500)
-            : const Duration(days: 1),
-        child: CompositedTransformTarget(
-          link: MatrixState.pAnyState
+    final theme = Theme.of(context);
+    return Tooltip(
+      message: onLongPress != null ? L10n.of(context).holdForInfo : "",
+      waitDuration: onLongPress != null
+          ? const Duration(milliseconds: 500)
+          : const Duration(days: 1),
+      child: CompositedTransformTarget(
+        link: MatrixState.pAnyState
+            .layerLinkAndKey("${entry.value.text}$id")
+            .link,
+        child: ChoiceAnimationWidget(
+          isSelected: isSelected,
+          isCorrect: entry.value.isGold,
+          key: MatrixState.pAnyState
               .layerLinkAndKey("${entry.value.text}$id")
-              .link,
-          child: ChoiceAnimationWidget(
-            isSelected: isSelected,
-            isCorrect: entry.value.isGold,
-            key: MatrixState.pAnyState
-                .layerLinkAndKey("${entry.value.text}$id")
-                .key,
-            child: Container(
-              margin: const EdgeInsets.all(2),
-              padding: EdgeInsets.zero,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(AppConfig.borderRadius),
+              .key,
+          child: Container(
+            margin: const EdgeInsets.all(2),
+            padding: EdgeInsets.zero,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(AppConfig.borderRadius),
+              ),
+              border: Border.all(
+                color: isSelected
+                    ? entry.value.color ?? theme.colorScheme.primary
+                    : Colors.transparent,
+                style: BorderStyle.solid,
+                width: 2.0,
+              ),
+            ),
+            child: TextButton(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 4,
                 ),
-                border: Border.all(
-                  color: isSelected
-                      ? entry.value.color ?? theme.colorScheme.primary
-                      : Colors.transparent,
-                  style: BorderStyle.solid,
-                  width: 2.0,
+                backgroundColor: isSelected
+                    ? (entry.value.color?.withAlpha(50) ??
+                        theme.colorScheme.primary.withAlpha(10))
+                    : null,
+                textStyle: BotStyle.text(context),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 ),
               ),
-              child: TextButton(
-                style: ButtonStyle(
-                  padding: WidgetStateProperty.all(
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  ),
-                  //if index is selected, then give the background a slight primary color
-                  backgroundColor: WidgetStateProperty.all<Color>(
-                    entry.value.color?.withAlpha(50) ??
-                        theme.colorScheme.primary.withAlpha(10),
-                  ),
-                  textStyle: WidgetStateProperty.all(
-                    BotStyle.text(context),
-                  ),
-                  shape: WidgetStateProperty.all(
-                    RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius),
-                    ),
-                  ),
+              onLongPress: () => onLongPress!(entry.value.text, entry.key),
+              onPressed: () => onPressed(entry.value.text, entry.key),
+              child: Text(
+                getDisplayCopy != null
+                    ? getDisplayCopy!(entry.value.text)
+                    : entry.value.text,
+                style: BotStyle.text(context).copyWith(
+                  fontSize: fontSize,
                 ),
-                onLongPress: onLongPress != null && !interactionDisabled
-                    ? () => onLongPress!(entry.value.text, entry.key)
-                    : null,
-                onPressed: interactionDisabled
-                    ? null
-                    : () => onPressed(entry.value.text, entry.key),
-                child: Text(
-                  getDisplayCopy != null
-                      ? getDisplayCopy!(entry.value.text)
-                      : entry.value.text,
-                  style: BotStyle.text(context).copyWith(
-                    fontSize: fontSize,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+                textAlign: TextAlign.center,
               ),
             ),
           ),
         ),
-      );
-    } catch (e) {
-      debugger(when: kDebugMode);
-      return Container();
-    }
+      ),
+    );
   }
 }

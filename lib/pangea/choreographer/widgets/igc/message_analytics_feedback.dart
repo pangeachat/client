@@ -122,7 +122,6 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
     if (widget.newVocabConstructs <= 0 && widget.newGrammarConstructs <= 0) {
       return const SizedBox.shrink();
     }
-    // CTODO check if working
 
     return Material(
       type: MaterialType.transparency,
