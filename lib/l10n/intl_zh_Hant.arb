@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:35.934573",
+  "@@last_modified": "2025-11-05 14:21:12.079289",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -4831,13 +4831,13 @@
   "requestSummaries": "請求摘要",
   "loadingActivitySummary": "正在載入活動摘要...",
   "generatingNewActivities": "你是此語言對的第一位用戶！請稍候，我們正在為你準備活動。",
-  "requestAccessTitle": "請求分析查看權限？",
+  "requestAccessTitle": "請求分析訪問權限？",
   "requestAccessDesc": "你是否想請求查看參與者分析的權限？\n\n如果參與者同意，該課程的管理員將能夠查看他們的：\n    • 總詞彙量\n    • 總語法概念\n    • 完成的活動會話總數\n    • 使用的具體語法概念，正確與錯誤\n\n他們將無法查看他們的：\n    • 課程外的聊天訊息\n    • 詞彙清單",
   "requestAccess": "請求存取 ({count})",
   "analyticsInactiveTitle": "無法向非活躍用戶發送請求",
   "analyticsInactiveDesc": "自此功能推出以來未登入的非活躍用戶將看不到您的請求。\n\n當他們回來時，請求按鈕將會出現。您可以稍後再次點擊他們名字下的請求按鈕來重新發送請求。",
   "accessRequestedTitle": "分析存取請求",
-  "accessRequestedDesc": "「{space}」的管理員正在請求查看您的學習分析。\n\n如果您同意，該課程的管理員將能夠查看您的：\n    • 總詞彙量\n    • 總語法概念\n    • 完成的活動會話總數\n    • 使用的具體語法概念，正確與錯誤\n\n他們將無法查看您的：\n    • 課程外的聊天訊息\n    • 詞彙清單",
+  "accessRequestedDesc": "請求的管理員：{admin} \n\n來自「{space}」的管理員正在請求查看您的學習分析。\n\n如果您同意，他們將能夠查看您的：\n    • 總詞彙量\n    • 總語法概念\n    • 完成的總活動會話\n    • 使用的特定語法概念，包括正確和不正確的\n\n他們將無法查看您的：\n    • 課程外聊天中的消息\n    • 詞彙列表",
   "allowAccess": "允許存取",
   "denyAccess": "拒絕存取",
   "adminRequestedAccess": "管理員已請求查看您的分析。",
@@ -11139,6 +11139,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

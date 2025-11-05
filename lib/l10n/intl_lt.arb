@@ -4204,13 +4204,13 @@
   "requestSummaries": "Prašyti santraukų",
   "loadingActivitySummary": "Įkeliama veiklos santrauka...",
   "generatingNewActivities": "Jūs esate pirmasis šios kalbos poros naudotojas! Prašome palaukti minutėlę, ruošiame veiklas būtent jums.",
-  "requestAccessTitle": "Prašyti prieigos prie analitikos?",
+  "requestAccessTitle": "Prašyti analizės prieigos?",
   "requestAccessDesc": "Ar norėtumėte prašyti prieigos peržiūrėti dalyvių analitiką?\n\nJei dalyviai sutiks, šios kurso administratoriai galės matyti:\n    • bendrą žodyną\n    • bendrus gramatikos konceptus\n    • atliktų veiklos sesijų skaičių\n    • naudotus, teisingus ir neteisingus gramatikos konceptus\n\nJie negalės matyti:\n    • žinučių pokalbiuose už kurso ribų\n    • žodyno sąrašo",
   "requestAccess": "Prašyti prieigos ({count})",
   "analyticsInactiveTitle": "Užklausų nebuvo galima siųsti neaktyviems vartotojams",
   "analyticsInactiveDesc": "Neaktyvūs vartotojai, kurie nesiregistravo nuo šios funkcijos įdiegimo, nematys jūsų užklausos.\n\nUžklausos mygtukas pasirodys, kai jie sugrįš. Galite iš naujo siųsti užklausą vėliau paspausdami Užklausos mygtuką po jų vardu, kai jis bus prieinamas.",
   "accessRequestedTitle": "Prieigos prie analitikos užklausa",
-  "accessRequestedDesc": "„{space}“ administratoriai prašo peržiūrėti jūsų mokymosi analitiką.\n\nJei sutinkate, šios kurso administratoriai galės matyti:\n    • bendrą žodyną\n    • bendrus gramatikos konceptus\n    • atliktų veiklos sesijų skaičių\n    • naudotus, teisingus ir neteisingus gramatikos konceptus\n\nJie negalės matyti:\n    • žinučių pokalbiuose už kurso ribų\n    • žodyno sąrašo",
+  "accessRequestedDesc": "Prašomi administratoriai: {admin} \n\nAdministratoriai iš „{space}“ prašo peržiūrėti jūsų mokymosi analizę.\n\nJei sutinkate, jie galės peržiūrėti jūsų:\n    • bendrą žodyną\n    • bendras gramatikos sąvokas\n    • bendrą užsiėmimų skaičių\n    • konkrečias gramatikos sąvokas, naudojamas teisingai ir neteisingai\n\nJie negalės peržiūrėti jūsų:\n    • žinučių pokalbiuose už kurso ribų\n    • žodyno sąrašo",
   "allowAccess": "Leisti prieigą",
   "denyAccess": "Atmesti prieigą",
   "adminRequestedAccess": "Administratoriai prašo peržiūrėti jūsų analitiką.",
@@ -4342,7 +4342,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-11-04 13:34:52.927239",
+  "@@last_modified": "2025-11-05 14:21:41.346537",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11925,6 +11925,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

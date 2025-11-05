@@ -4840,7 +4840,7 @@
   "requestSummaries": "Pieprasīt kopsavilkumus",
   "loadingActivitySummary": "Ielādē aktivitātes kopsavilkumu...",
   "generatingNewActivities": "Jūs esat šīs valodu pāra pirmais lietotājs! Lūdzu, dodiet mums minūti, mēs sagatavojam aktivitātes tieši jums.",
-  "requestAccessTitle": "Vai vēlaties pieprasīt piekļuvi analītikas skatījumam?",
+  "requestAccessTitle": "Pieprasīt analītikas piekļuvi?",
   "requestAccessDesc": "Vai vēlaties pieprasīt piekļuvi, lai skatītu dalībnieku analītiku?\n\nJa dalībnieki piekrīt, šīs kursa administratori varēs skatīt viņu:\n    • kopējo vārdu krājumu\n    • kopējo gramatikas jēdzienu skaitu\n    • kopējo aktivitāšu sesiju skaitu\n    • konkrētus izmantotos, pareizi un nepareizi, gramatikas jēdzienus\n\nViņi nevarēs skatīt viņu:\n    • ziņojumus ārpus kursa čatos\n    • vārdu krājuma sarakstu",
   "requestAccess": "Pieprasīt piekļuvi ({count})",
   "createGroupChat": "Izveidot grupu čatu",
@@ -4958,11 +4958,11 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2025-11-04 13:34:40.949441",
+  "@@last_modified": "2025-11-05 14:21:22.819184",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
-  "accessRequestedDesc": "„{space}” administratori pieprasa skatīt jūsu mācību analītiku.\n\nJa piekrītat, šīs kursa administratori varēs skatīt jūsu:\n    • kopējo vārdu krājumu\n    • kopējo gramatikas jēdzienu skaitu\n    • kopējo aktivitāšu sesiju skaitu\n    • konkrētus izmantotos gramatikas jēdzienus, pareizi un nepareizi\n\nViņi nevarēs skatīt jūsu:\n    • ziņas čatos ārpus kursa\n    • vārdu krājuma sarakstu",
+  "accessRequestedDesc": "Pieprasītāji admin(i): {admin} \n\nAdmini no „{space}” pieprasa iespēju apskatīt jūsu mācību analītiku.\n\nJa jūs piekrītat, viņi varēs apskatīt jūsu:\n    • kopējais vārdu krājums\n    • kopējie gramatikas jēdzieni\n    • kopējās aktivitātes sesijas\n    • konkrētie gramatikas jēdzieni, kas izmantoti pareizi un nepareizi\n\nViņi nevarēs apskatīt jūsu:\n    • ziņojumi čatos ārpus kursa\n    • vārdu krājuma saraksts",
   "allowAccess": "Atļaut piekļuvi",
   "denyAccess": "Noraidīt piekļuvi",
   "adminRequestedAccess": "Administratori ir pieprasījuši skatīt jūsu analītiku.",
@@ -11106,6 +11106,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

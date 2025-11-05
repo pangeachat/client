@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-11-04 13:35:11.553191",
+  "@@last_modified": "2025-11-05 14:22:17.159193",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -4852,13 +4852,13 @@
   "requestSummaries": "Żądaj podsumowań",
   "loadingActivitySummary": "Wczytywanie podsumowania aktywności...",
   "generatingNewActivities": "Jesteś pierwszym użytkownikiem tego zestawu językowego! Prosimy o chwilę, przygotowujemy dla Ciebie aktywności.",
-  "requestAccessTitle": "Chcesz poprosić o dostęp do analityki?",
+  "requestAccessTitle": "Czy chcesz poprosić o dostęp do analityki?",
   "requestAccessDesc": "Czy chcesz poprosić o dostęp do analityki uczestników?\n\nJeśli uczestnicy się zgodzą, administratorzy tego kursu będą mogli zobaczyć ich:\n    • łączny słownik\n    • łączną gramatykę\n    • łączną liczbę ukończonych sesji aktywności\n    • konkretne użyte, poprawne i niepoprawne koncepty gramatyczne\n\nNie będą mogli zobaczyć ich:\n    • wiadomości w czatach spoza kursu\n    • listy słówek",
   "requestAccess": "Poproś o dostęp ({count})",
   "analyticsInactiveTitle": "Wnioski do nieaktywnych użytkowników nie mogły zostać wysłane",
   "analyticsInactiveDesc": "Nieaktywni użytkownicy, którzy nie zalogowali się od momentu wprowadzenia tej funkcji, nie zobaczą Twojego wniosku.\n\nPrzycisk „Poproś” pojawi się, gdy wrócą. Możesz ponownie wysłać wniosek, klikając przycisk „Poproś” pod ich nazwiskiem, gdy będzie dostępny.",
   "accessRequestedTitle": "Wniosek o dostęp do analityki",
-  "accessRequestedDesc": "Administratorzy „{space}” proszą o dostęp do Twojej analityki nauki.\n\nJeśli się zgodzisz, administratorzy tego kursu będą mogli zobaczyć Twoją:\n    • łączną liczbę słówek\n    • łączną liczbę konceptów gramatycznych\n    • łączną liczbę ukończonych sesji aktywności\n    • konkretne użycie konceptów gramatycznych, poprawne i niepoprawne\n\nNie będą mogli zobaczyć Twoich:\n    • wiadomości w czatach poza kursem\n    • listy słówek",
+  "accessRequestedDesc": "Proszący admin(i): {admin} \n\nAdministratorzy z „{space}” proszą o dostęp do Twojej analityki uczenia się.\n\nJeśli się zgodzisz, będą mogli zobaczyć Twoje:\n    • całkowite słownictwo\n    • całkowite pojęcia gramatyczne\n    • całkowitą liczbę zakończonych sesji aktywności\n    • konkretne pojęcia gramatyczne używane, poprawnie i niepoprawnie\n\nNie będą mogli zobaczyć Twoich:\n    • wiadomości w czatach poza kursem\n    • listy słownictwa",
   "allowAccess": "Zezwól na dostęp",
   "denyAccess": "Odmów dostępu",
   "adminRequestedAccess": "Administratorzy poprosili o dostęp do Twojej analityki.",
@@ -11120,6 +11120,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

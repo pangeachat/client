@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-11-04 13:33:45.709926",
+  "@@last_modified": "2025-11-05 14:19:19.721042",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -4853,13 +4853,13 @@
   "requestSummaries": "Összegzések kérés",
   "loadingActivitySummary": "Tevékenység összegzés betöltése...",
   "generatingNewActivities": "Ez az első felhasználó ebben a nyelvpárban! Kérjük, adj egy percet, készítjük a tevékenységeket csak neked.",
-  "requestAccessTitle": "Kérelem az elemzési nézethez való hozzáféréshez?",
+  "requestAccessTitle": "Kérjük az elemzési hozzáférést?",
   "requestAccessDesc": "Szeretnél hozzáférést kérni a résztvevők elemzéseinek megtekintéséhez?\n\nHa a résztvevők egyetértenek, a kurzus adminjai megtekinthetik:\n    • az összes szókincset\n    • az összes nyelvtani fogalmat\n    • az elvégzett tevékenységi ülések összes számát\n    • a használt, helyes és helytelen nyelvtani fogalmakat\n\nNem fogják látni:\n    • az üzeneteket a kurzuson kívüli chatben\n    • a szókincs listát",
   "requestAccess": "Kérelem hozzáféréshez ({count})",
   "analyticsInactiveTitle": "Az inaktív felhasználóknak nem küldhetők kérések",
   "analyticsInactiveDesc": "Az inaktív felhasználók, akik nem jelentkeztek be azóta, hogy ez a funkció bevezetésre került, nem fogják látni a kérését.\n\nA Kérelem gomb akkor jelenik meg, amikor visszatérnek. Később újra küldheti a kérést a nevük alatt található Kérelem gombra kattintva, amikor az elérhetővé válik.",
   "accessRequestedTitle": "Elemzési hozzáférési kérés",
-  "accessRequestedDesc": "A „{space}” adminisztrátorai kérik, hogy tekintse meg tanulási elemzéseit.\n\nHa egyetért, az adminok megtekinthetik:\n    • összes szókincs\n    • összes nyelvtani fogalom\n    • összes befejezett aktivitási alkalom\n    • a használt, helyes és helytelen nyelvtani fogalmakat\n\nNem fogják látni:\n    • üzeneteket a csoportokon kívüli chat-ekben\n    • szókincs listát",
+  "accessRequestedDesc": "Kérjük az adminisztrátor(ok): {admin} \n\nA „{space}” adminisztrátorai kérik, hogy megtekinthessék a tanulási elemzéseidet.\n\nHa egyetértesz, akkor meg tudják nézni a következőket:\n    • összes szókincs\n    • összes nyelvtani fogalom\n    • összes befejezett aktivitási ülés\n    • a használt nyelvtani fogalmak, helyesen és helytelenül\n\nNem fogják tudni megtekinteni a következőket:\n    • üzenetek a kurzuson kívüli csevegésekben\n    • szókincs lista",
   "allowAccess": "Hozzáférés engedélyezése",
   "denyAccess": "Hozzáférés megtagadása",
   "adminRequestedAccess": "Az adminisztrátorok kérik, hogy tekintse meg az elemzéseit.",
@@ -11121,6 +11121,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-11-04 13:33:37.429308",
+  "@@last_modified": "2025-11-05 14:19:06.535075",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -4853,13 +4853,13 @@
   "requestSummaries": "Solicitar resúmenes",
   "loadingActivitySummary": "Cargando resumo da actividade...",
   "generatingNewActivities": "Es o primeiro usuario nesta parella de idiomas! Por favor, dame un minuto, estamos preparando actividades só para ti.",
-  "requestAccessTitle": "¿Querés solicitar acceso para ver as análises?",
+  "requestAccessTitle": "Solicitar acceso á analítica?",
   "requestAccessDesc": "¿Queres solicitar acceso para ver as análises dos participantes?\n\nSe os participantes están de acordo, os administradores deste curso poderán ver:\n    • vocabulario total\n    • conceptos gramaticais totais\n    • sesións de actividade completadas\n    • os conceptos gramaticais específicos utilizados, correctos e incorrectos\n\nNon poderán ver:\n    • mensaxes en chats fóra do curso\n    • lista de vocabulario",
   "requestAccess": "Solicitar acceso ({count})",
   "analyticsInactiveTitle": "As solicitudes a usuarios inactivos non se puideron enviar",
   "analyticsInactiveDesc": "Os usuarios inactivos que non iniciaron sesión desde que se introduciu esta función non verán a túa solicitude.\n\nO botón de Solicitar aparecerá unha vez que regresen. Podes reenviar a solicitude máis tarde facendo clic no botón de Solicitar baixo o seu nome cando estea dispoñible.",
   "accessRequestedTitle": "Solicitude de acceso a análises",
-  "accessRequestedDesc": "Os administradores de “{space}” están a solicitar ver as túas análises de aprendizaxe.\n\nSe aceptas, os administradores deste curso poderán ver a túa:\n    • vocabulario total\n    • conceptos gramaticais totais\n    • sesións de actividade completadas\n    • conceptos gramaticais específicos utilizados, correctamente e incorrectamente\n\nNon poderán ver a túa:\n    • mensaxes en chats fóra do curso\n    • lista de vocabulario",
+  "accessRequestedDesc": "Solicitando admin(s): {admin} \n\nOs administradores de “{space}” están solicitando ver a túa analítica de aprendizaxe.\n\nSe estás de acordo, poderán ver o teu:\n    • vocabulario total\n    • conceptos gramaticais totais\n    • total de sesións de actividade completadas\n    • os conceptos gramaticais específicos utilizados, correctamente e incorrectamente\n\nNon poderán ver o teu:\n    • mensaxes en chats fóra do curso\n    • lista de vocabulario",
   "allowAccess": "Permitir acceso",
   "denyAccess": "Denegar acceso",
   "adminRequestedAccess": "Os administradores solicitaron ver as túas análises.",
@@ -11117,6 +11117,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

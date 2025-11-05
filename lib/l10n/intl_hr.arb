@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-11-04 13:33:57.394567",
+  "@@last_modified": "2025-11-05 14:19:43.488557",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -4608,13 +4608,13 @@
   "requestSummaries": "Zatraži sažetke",
   "loadingActivitySummary": "Učitavanje sažetka aktivnosti...",
   "generatingNewActivities": "Vi ste prvi korisnik ovog para jezika! Molimo vas pričekajte minutu, pripremamo aktivnosti baš za vas.",
-  "requestAccessTitle": "Zatražiti pristup za prikaz analitike?",
+  "requestAccessTitle": "Zatraži pristup analitici?",
   "requestAccessDesc": "Želite li zatražiti pristup za prikaz analitike sudionika?\n\nAko se sudionici slože, administratori ovog tečaja moći će vidjeti njihove:\n    • ukupni vokabular\n    • ukupne gramatičke koncepte\n    • ukupne završene sesije aktivnosti\n    • specifične gramatičke koncepte korištene, ispravno i pogrešno\n\nNeće moći vidjeti njihove:\n    • poruke u chatovima izvan tečaja\n    • popis vokabulara",
   "requestAccess": "Zatraži pristup ({count})",
   "analyticsInactiveTitle": "Zahtjevi za neaktivne korisnike nisu mogli biti poslani",
   "analyticsInactiveDesc": "Neaktivni korisnici koji se nisu prijavili od kada je ova značajka uvedena neće vidjeti vaš zahtjev.\n\nGumb Zahtjev pojavit će se nakon njihovog povratka. Možete ponovno poslati zahtjev kasnije klikom na gumb Zahtjev ispod njihovog imena kada bude dostupan.",
   "accessRequestedTitle": "Zahtjev za pristup analitici",
-  "accessRequestedDesc": "Administratori “{space}” traže da vide vaše analitike učenja.\n\nAko se slažete, administratori ovog tečaja moći će vidjeti vaše:\n    • ukupni vokabular\n    • ukupne gramatičke koncepte\n    • ukupne sesije aktivnosti završene\n    • specifične gramatičke koncepte korištene, ispravno i pogrešno\n\nNeće moći vidjeti vaše:\n    • poruke u razgovorima izvan tečaja\n    • popis vokabulara",
+  "accessRequestedDesc": "Zatraženi administrator(i): {admin} \n\nAdministratori iz „{space}” traže pristup vašoj analitici učenja.\n\nAko se slažete, moći će vidjeti vaše:\n    • ukupni vokabular\n    • ukupni gramatički koncepti\n    • ukupni završeni aktivnostni sesiji\n    • specifični gramatički koncepti korišteni, ispravno i neispravno\n\nNeće moći vidjeti vaše:\n    • poruke u chatovima izvan tečaja\n    • popis vokabulara",
   "allowAccess": "Dopusti pristup",
   "denyAccess": "Zabrani pristup",
   "adminRequestedAccess": "Administratori su zatražili pristup vašoj analitici.",
@@ -11492,6 +11492,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

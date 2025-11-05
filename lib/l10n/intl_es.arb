@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-11-04 13:33:35.588794",
+  "@@last_modified": "2025-11-05 14:19:02.513786",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -6361,13 +6361,13 @@
   "requestSummaries": "Solicitar resúmenes",
   "loadingActivitySummary": "Resumen de actividad en carga...",
   "generatingNewActivities": "¡Eres el primer usuario de este par de idiomas! Por favor, danos un minuto, estamos preparando actividades solo para ti.",
-  "requestAccessTitle": "¿Solicitar acceso a vista de análisis?",
+  "requestAccessTitle": "¿Solicitar acceso a la analítica?",
   "requestAccessDesc": "¿Te gustaría solicitar acceso para ver análisis de participantes?\n\nSi los participantes están de acuerdo, los administradores de este curso podrán ver:\n    • vocabulario total\n    • conceptos gramaticales totales\n    • sesiones de actividad completadas\n    • los conceptos gramaticales específicos utilizados, correctamente e incorrectamente\n\nNo podrán ver:\n    • mensajes en chats fuera del curso\n    • lista de vocabulario",
   "requestAccess": "Solicitar acceso ({count})",
   "analyticsInactiveTitle": "Las solicitudes a usuarios inactivos no pudieron ser enviadas",
   "analyticsInactiveDesc": "Los usuarios inactivos que no han iniciado sesión desde que se introdujo esta función no verán tu solicitud.\n\nEl botón de Solicitar aparecerá una vez que regresen. Puedes reenviar la solicitud más tarde haciendo clic en el botón Solicitar bajo su nombre cuando esté disponible.",
   "accessRequestedTitle": "Solicitud de acceso a análisis",
-  "accessRequestedDesc": "Los administradores de “{space}” están solicitando ver tus análisis de aprendizaje.\n\nSi estás de acuerdo, los administradores de este curso podrán ver:\n    • vocabulario total\n    • conceptos gramaticales totales\n    • sesiones de actividad completadas\n    • los conceptos gramaticales específicos utilizados, correctamente e incorrectamente\n\nNo podrán ver:\n    • mensajes en chats fuera del curso\n    • lista de vocabulario",
+  "accessRequestedDesc": "Solicitando admin(s): {admin} \n\nLos administradores de “{space}” están solicitando ver tu analítica de aprendizaje.\n\nSi estás de acuerdo, podrán ver tu:\n    • vocabulario total\n    • conceptos gramaticales totales\n    • total de sesiones de actividad completadas\n    • los conceptos gramaticales específicos utilizados, correctamente e incorrectamente\n\nNo podrán ver tu:\n    • mensajes en chats fuera del curso\n    • lista de vocabulario",
   "allowAccess": "Permitir acceso",
   "denyAccess": "Denegar acceso",
   "adminRequestedAccess": "Los administradores solicitaron ver tus análisis.",
@@ -6726,6 +6726,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

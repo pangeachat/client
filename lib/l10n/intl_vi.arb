@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:54.956294",
+  "@@last_modified": "2025-11-05 14:21:47.626675",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -4643,13 +4643,13 @@
   "requestSummaries": "Yêu cầu tóm tắt",
   "loadingActivitySummary": "Đang tải tóm tắt hoạt động...",
   "generatingNewActivities": "Bạn là người dùng đầu tiên của cặp ngôn ngữ này! Vui lòng chờ một phút, chúng tôi đang chuẩn bị hoạt động dành riêng cho bạn.",
-  "requestAccessTitle": "Yêu cầu quyền truy cập xem phân tích?",
+  "requestAccessTitle": "Yêu cầu quyền truy cập phân tích?",
   "requestAccessDesc": "Bạn có muốn yêu cầu quyền truy cập để xem phân tích người tham gia?\n\nNếu các người tham gia đồng ý, quản trị viên của khóa học này sẽ có thể xem:\n    • tổng số từ vựng\n    • tổng số khái niệm ngữ pháp\n    • tổng số phiên hoạt động đã hoàn thành\n    • các khái niệm ngữ pháp cụ thể đã sử dụng, đúng và sai\n\nHọ sẽ không thể xem:\n    • tin nhắn trong các cuộc trò chuyện ngoài khóa học\n    • danh sách từ vựng",
   "requestAccess": "Yêu cầu quyền truy cập ({count})",
   "analyticsInactiveTitle": "Không thể gửi yêu cầu tới người dùng không hoạt động",
   "analyticsInactiveDesc": "Người dùng không hoạt động kể từ khi tính năng này được giới thiệu sẽ không thấy yêu cầu của bạn.\n\nNút Yêu cầu sẽ xuất hiện khi họ trở lại. Bạn có thể gửi lại yêu cầu sau bằng cách nhấn nút Yêu cầu dưới tên của họ khi nó khả dụng.",
   "accessRequestedTitle": "Yêu cầu truy cập phân tích",
-  "accessRequestedDesc": "Quản trị viên của “{space}” đang yêu cầu xem phân tích học tập của bạn.\n\nNếu bạn đồng ý, quản trị viên của khóa học này sẽ có thể xem:\n    • tổng số từ vựng\n    • tổng số khái niệm ngữ pháp\n    • tổng số phiên hoạt động đã hoàn thành\n    • các khái niệm ngữ pháp cụ thể đã sử dụng, đúng và sai\n\nHọ sẽ không thể xem:\n    • tin nhắn trong các cuộc trò chuyện ngoài khóa học\n    • danh sách từ vựng",
+  "accessRequestedDesc": "Yêu cầu quản trị viên: {admin} \n\nCác quản trị viên từ “{space}” đang yêu cầu xem phân tích học tập của bạn.\n\nNếu bạn đồng ý, họ sẽ có thể xem:\n    • tổng số từ vựng\n    • tổng số khái niệm ngữ pháp\n    • tổng số phiên hoạt động đã hoàn thành\n    • các khái niệm ngữ pháp cụ thể đã sử dụng, đúng và sai\n\nHọ sẽ không thể xem:\n    • tin nhắn trong các cuộc trò chuyện bên ngoài khóa học\n    • danh sách từ vựng",
   "allowAccess": "Cho phép truy cập",
   "denyAccess": "Từ chối truy cập",
   "adminRequestedAccess": "Quản trị viên yêu cầu xem phân tích của bạn.",
@@ -5056,6 +5056,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

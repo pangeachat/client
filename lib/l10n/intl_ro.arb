@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:33:50.681488",
+  "@@last_modified": "2025-11-05 14:19:26.693266",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -4271,13 +4271,13 @@
   "requestSummaries": "Solicită rezumate",
   "loadingActivitySummary": "Se încarcă rezumatul activității...",
   "generatingNewActivities": "Sunteți primul utilizator al acestei perechi de limbi! Vă rugăm să ne acordați un minut, pregătim activități speciale pentru dvs.",
-  "requestAccessTitle": "Solicitați acces la vizualizarea analizelor?",
+  "requestAccessTitle": "Solicitați acces la analize?",
   "requestAccessDesc": "Doriți să solicitați acces pentru a vizualiza analizele participanților?\n\nDacă participanții sunt de acord, administratorii acestui curs vor putea vizualiza:\n    • vocabularul total\n    • conceptele gramaticale totale\n    • sesiuni de activitate finalizate\n    • conceptele gramaticale specifice utilizate, corect și incorect\n\nEi nu vor putea vizualiza:\n    • mesajele din chat-urile din afara cursului\n    • lista de vocabular",
   "requestAccess": "Solicită acces ({count})",
   "analyticsInactiveTitle": "Solicitările către utilizatorii inactivi nu au putut fi trimise",
   "analyticsInactiveDesc": "Utilizatorii inactivi care nu s-au autentificat de când a fost introdusă această funcție nu vor vedea solicitarea dvs.\n\nButonul de solicitare va apărea odată ce se vor întoarce. Puteți retrimite solicitarea mai târziu făcând clic pe butonul Solicitare sub numele lor când este disponibil.",
   "accessRequestedTitle": "Solicitare de acces la analize",
-  "accessRequestedDesc": "Administratorii “{space}” solicită să vadă analizele dvs. de învățare.\n\nDacă sunteți de acord, administratorii acestui curs vor putea vizualiza:\n    • vocabularul total\n    • conceptele gramaticale totale\n    • sesiuni de activitate finalizate\n    • conceptele gramaticale specifice utilizate, corect și incorect\n\nEi nu vor putea vizualiza:\n    • mesajele din chat-urile din afara cursului\n    • lista de vocabular",
+  "accessRequestedDesc": "Solicitând admin(i): {admin} \n\nAdminii din „{space}” solicită să vizualizeze analizele dumneavoastră de învățare.\n\nDacă sunteți de acord, ei vor putea să vizualizeze:\n    • vocabularul total\n    • conceptele gramaticale totale\n    • totalul sesiunilor de activitate finalizate\n    • conceptele gramaticale specifice utilizate, corect și incorect\n\nEi nu vor putea să vizualizeze:\n    • mesajele din chat-uri în afara cursului\n    • lista de vocabular",
   "allowAccess": "Permite accesul",
   "denyAccess": "Refuză accesul",
   "adminRequestedAccess": "Administratorii au solicitat să vadă analizele dvs.",
@@ -11855,6 +11855,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:26.297705",
+  "@@last_modified": "2025-11-05 14:20:50.050797",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -3767,13 +3767,13 @@
   "requestSummaries": "Be om oppsummeringer",
   "loadingActivitySummary": "Laster aktivitetsoppsummering...",
   "generatingNewActivities": "Du er den første brukeren av dette språkparet! Vennligst gi oss et minutt, vi forbereder aktiviteter spesielt for deg.",
-  "requestAccessTitle": "Ønsker du å be om tilgang til analysevisning?",
+  "requestAccessTitle": "Be om tilgang til analyser?",
   "requestAccessDesc": "Vil du be om tilgang til å se deltakeranalyser?\n\nHvis deltakerne godtar, vil administratorer av kurset kunne se deres:\n    • total vokabular\n    • totale grammatikkonsepter\n    • fullførte aktivitetsøkter\n    • de spesifikke grammatikkonseptene som er brukt, riktig og feil\n\nDe vil ikke kunne se deres:\n    • meldinger i chatter utenfor kurset\n    • vokabularlisten",
   "requestAccess": "Be om tilgang ({count})",
   "analyticsInactiveTitle": "Forespørsler til inaktive brukere kunne ikke sendes",
   "analyticsInactiveDesc": "Inaktive brukere som ikke har logget inn siden denne funksjonen ble introdusert, vil ikke se forespørselen din.\n\nForespørselsknappen vil vises når de kommer tilbake. Du kan sende forespørselen på nytt senere ved å klikke på Forespørselsknappen under navnet deres når den er tilgjengelig.",
   "accessRequestedTitle": "Forespørsel om tilgang til analyse",
-  "accessRequestedDesc": "Administratorene for «{space}» ber om å få se dine læringsanalyser.\n\nHvis du godtar, vil administratorene for dette kurset kunne se dine:\n    • totale ordforråd\n    • totale grammatikkonsepter\n    • fullførte aktivitetsøkter\n    • de spesifikke grammatikkonseptene som er brukt, riktig og feil\n\nDe vil ikke kunne se dine:\n    • meldinger i chatter utenfor kurset\n    • ordliste",
+  "accessRequestedDesc": "Be om admin(er): {admin} \n\nAdministratorer fra “{space}” ber om å få se dine læringsanalyser.\n\nHvis du godtar, vil de kunne se din:\n    • totale ordforråd\n    • totale grammatikkonsepter\n    • totale aktivitetssesjoner fullført\n    • de spesifikke grammatikkonseptene brukt, korrekt og feil\n\nDe vil ikke kunne se din:\n    • meldinger i chatter utenfor kurset\n    • ordliste",
   "allowAccess": "Tillat tilgang",
   "denyAccess": "Nei, nekt tilgang",
   "adminRequestedAccess": "Administratorer har bedt om å se dine analyser.",
@@ -12213,6 +12213,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

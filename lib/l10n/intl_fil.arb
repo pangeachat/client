@@ -3118,13 +3118,13 @@
   "requestSummaries": "Humiling ng mga buod",
   "loadingActivitySummary": "Naglo-load ng buod ng gawain...",
   "generatingNewActivities": "Ikaw ang unang user ng pares ng wikang ito! Pakiusap, maghintay ng isang minuto, naghahanda kami ng mga gawain para sa iyo.",
-  "requestAccessTitle": "Hilingin ang access sa analytics?",
+  "requestAccessTitle": "Humiling ng access sa analytics?",
   "requestAccessDesc": "Nais mo bang humiling ng access upang makita ang analytics ng kalahok?\n\nKung pumayag ang mga kalahok, magagawa ng mga admin ng kursong ito na makita ang kanilang:\n    • kabuuang bokabularyo\n    • kabuuang mga konsepto sa gramatika\n    • kabuuang mga sesyon ng gawain na natapos\n    • ang mga partikular na konsepto sa gramatika na ginamit, tama at mali\n\nHindi nila magagawang makita ang kanilang:\n    • mga mensahe sa mga chat sa labas ng kurso\n    • listahan ng bokabularyo",
   "requestAccess": "Hilingin ang access ({count})",
   "analyticsInactiveTitle": "Hindi maipapadala ang mga kahilingan sa hindi aktibong mga gumagamit",
   "analyticsInactiveDesc": "Ang mga hindi aktibong gumagamit na hindi nag-login mula nang ipakilala ang tampok na ito ay hindi makakakita ng iyong kahilingan.\n\nAng pindutan ng Hiling ay lalabas kapag sila ay bumalik. Maaari mong muling ipadala ang kahilingan sa pamamagitan ng pag-click sa pindutan ng Hiling sa ilalim ng kanilang pangalan kapag available na ito.",
   "accessRequestedTitle": "Hiling sa Access sa Analytics",
-  "accessRequestedDesc": "Hinihiling ng mga administrador ng “{space}” na makita ang iyong analytics sa pag-aaral.\n\nKung sang-ayon ka, magagawa ng mga admin ng kursong ito na makita ang iyong:\n    • kabuuang bokabularyo\n    • kabuuang mga konsepto sa gramatika\n    • kabuuang mga sesyon ng aktibidad na natapos\n    • ang mga partikular na konsepto sa gramatika na ginamit, tama at mali\n\nHindi nila makikita ang iyong:\n    • mga mensahe sa mga chat sa labas ng kurso\n    • listahan ng bokabularyo",
+  "accessRequestedDesc": "Humihiling na admin(s): {admin} \n\nAng mga admin mula sa “{space}” ay humihiling na makita ang iyong learning analytics.\n\nKung ikaw ay sumasang-ayon, makikita nila ang iyong:\n    • kabuuang bokabularyo\n    • kabuuang konsepto ng gramatika\n    • kabuuang bilang ng mga session ng aktibidad na natapos\n    • ang mga tiyak na konsepto ng gramatika na ginamit, tama at mali\n\nHindi nila makikita ang iyong:\n    • mga mensahe sa mga chat sa labas ng kurso\n    • listahan ng bokabularyo",
   "allowAccess": "Pahintulutan ang Access",
   "denyAccess": "Tanggihan ang Access",
   "adminRequestedAccess": "Hiningi ng mga admin na makita ang iyong analytics.",
@@ -3272,7 +3272,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-11-04 13:34:38.274191",
+  "@@last_modified": "2025-11-05 14:21:16.881961",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12117,6 +12117,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }
