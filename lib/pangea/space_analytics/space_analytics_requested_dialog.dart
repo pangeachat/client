@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page_constants.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 class SpaceAnalyticsRequestedDialog extends StatelessWidget {
   final Room room;
+  final List<User> requestingUsers;
   const SpaceAnalyticsRequestedDialog({
     super.key,
     required this.room,
+    required this.requestingUsers,
   });
 
   @override
@@ -39,6 +39,9 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
                   ),
                   Text(
                     L10n.of(context).accessRequestedDesc(
+                      requestingUsers
+                          .map((u) => u.calcDisplayname())
+                          .join(", "),
                       room.getLocalizedDisplayname(),
                     ),
                     style: TextStyle(fontSize: isColumnMode ? 16.0 : 14.0),
