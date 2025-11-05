@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-11-04 13:35:21.867810",
+  "@@last_modified": "2025-11-05 10:37:05.539774",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -4294,7 +4294,7 @@
   "loginToAccount": "マイアカウントにログイン",
   "appDescription": "友達とメッセージを送りながら言語を学びましょう。",
   "languages": "言語",
-  "chooseLanguage": "言語を選択してください。",
+  "chooseLanguage": "ターゲット言語を選択してください。",
   "planTrip": "旅行を計画する",
   "howAreYouTraveling": "どのように旅行していますか？",
   "unlockPrivateTrip": "プライベート旅行を解除",

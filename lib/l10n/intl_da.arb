@@ -2372,7 +2372,7 @@
   "loginToAccount": "Log ind på min konto",
   "appDescription": "Lær et sprog\nmens du sender beskeder til dine venner.",
   "languages": "Sprog",
-  "chooseLanguage": "Vælg et sprog.",
+  "chooseLanguage": "Vælg et målsprog.",
   "planTrip": "Planlæg din rejse",
   "howAreYouTraveling": "Hvordan rejser du?",
   "unlockPrivateTrip": "Lås op for en privat rejse",
@@ -2411,7 +2411,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-11-04 13:33:43.063775",
+  "@@last_modified": "2025-11-05 10:35:58.812444",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {

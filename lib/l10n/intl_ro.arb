@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:33:50.681488",
+  "@@last_modified": "2025-11-05 10:36:07.965046",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -4370,7 +4370,7 @@
   "loginToAccount": "Autentifică-te în contul meu",
   "appDescription": "Învață o limbă\nîn timp ce trimiți mesaje prietenilor.",
   "languages": "Limbi",
-  "chooseLanguage": "Alege o limbă.",
+  "chooseLanguage": "Alegeți o limbă țintă.",
   "planTrip": "Planifică-ți călătoria",
   "howAreYouTraveling": "Cum călătorești?",
   "unlockPrivateTrip": "Deblochează o călătorie privată",

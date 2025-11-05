@@ -2400,7 +2400,7 @@
   "loginToAccount": "Intra in mi conto",
   "appDescription": "Impara un idioma\ndum il texta a tu amicos.",
   "languages": "Linguas",
-  "chooseLanguage": "Selige un lingua.",
+  "chooseLanguage": "Sèla un lingue de destin.",
   "planTrip": "Planifica tu viage",
   "howAreYouTraveling": "Como tu ha planificate viajar?",
   "unlockPrivateTrip": "Desbloquea un viage private",
@@ -2439,7 +2439,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2025-11-04 13:34:01.175577",
+  "@@last_modified": "2025-11-05 10:36:15.539640",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

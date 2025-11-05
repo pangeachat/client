@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:33:59.135039",
+  "@@last_modified": "2025-11-05 10:36:13.894187",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -3537,7 +3537,7 @@
   "loginToAccount": "התחבר לחשבוני",
   "appDescription": "למד שפה\nבזמן שליחת הודעות לחברים שלך.",
   "languages": "שפות",
-  "chooseLanguage": "בחר שפה.",
+  "chooseLanguage": "בחר שפה יעד.",
   "planTrip": "תכנן את הטיול שלך",
   "howAreYouTraveling": "איך אתה מטייל?",
   "unlockPrivateTrip": "פתח טיול פרטי",

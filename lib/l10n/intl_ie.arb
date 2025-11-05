@@ -4814,7 +4814,7 @@
   "loginToAccount": "Login a mi conto",
   "appDescription": "Impara un linguage\ndurante scriver a tui amicos.",
   "languages": "Linguages",
-  "chooseLanguage": "Selige un linguage.",
+  "chooseLanguage": "Rogha teanga sprioc.",
   "planTrip": "Planifica tui viage",
   "howAreYouTraveling": "Con que te viages?",
   "unlockPrivateTrip": "Desblocca un viage privat",
@@ -4853,7 +4853,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-11-04 13:33:55.367913",
+  "@@last_modified": "2025-11-05 10:36:10.242259",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

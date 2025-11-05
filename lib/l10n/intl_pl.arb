@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-11-04 13:35:11.553191",
+  "@@last_modified": "2025-11-05 10:36:54.788323",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -4951,7 +4951,7 @@
   "loginToAccount": "Zaloguj się do mojego konta",
   "appDescription": "Ucz się języka\npoprzez pisanie wiadomości do znajomych.",
   "languages": "Języki",
-  "chooseLanguage": "Wybierz język.",
+  "chooseLanguage": "Wybierz język docelowy.",
   "planTrip": "Zaplanować podróż",
   "howAreYouTraveling": "Jak zamierzasz podróżować?",
   "unlockPrivateTrip": "Odblokuj prywatną podróż",

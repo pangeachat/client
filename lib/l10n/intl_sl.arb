@@ -2906,7 +2906,7 @@
   "loginToAccount": "Prijavite se v svoj račun",
   "appDescription": "Učite se jezika\nmedtem ko pošiljate sporočila prijateljem.",
   "languages": "Jeziki",
-  "chooseLanguage": "Izberite jezik.",
+  "chooseLanguage": "Izberite ciljni jezik.",
   "planTrip": "Načrtujte svoje potovanje",
   "howAreYouTraveling": "Kako potujete?",
   "unlockPrivateTrip": "Odklenite zasebno potovanje",
@@ -2945,7 +2945,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-11-04 13:34:14.532285",
+  "@@last_modified": "2025-11-05 10:36:23.747006",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

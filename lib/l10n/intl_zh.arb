@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-04 13:35:03.855586",
+  "@@last_modified": "2025-11-05 10:36:50.749700",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -4954,7 +4954,7 @@
   "loginToAccount": "登录我的账户",
   "appDescription": "学习一门语言\n同时给朋友发消息。",
   "languages": "语言",
-  "chooseLanguage": "选择一种语言。",
+  "chooseLanguage": "选择目标语言。",
   "planTrip": "规划您的旅行",
   "howAreYouTraveling": "你打算怎么旅行？",
   "unlockPrivateTrip": "解锁私人旅行",

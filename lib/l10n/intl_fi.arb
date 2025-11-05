@@ -4473,7 +4473,7 @@
   "loginToAccount": "Kirjaudu tililleni",
   "appDescription": "Opiskele kieltä\nlähettämällä viestejä ystävillesi.",
   "languages": "Kielet",
-  "chooseLanguage": "Valitse kieli.",
+  "chooseLanguage": "Valitse kohdekieli.",
   "planTrip": "Suunnittele matkasi",
   "howAreYouTraveling": "Miten matkustat?",
   "unlockPrivateTrip": "Avaa yksityinen matka",
@@ -4512,7 +4512,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-11-04 13:33:40.930239",
+  "@@last_modified": "2025-11-05 10:35:56.560001",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

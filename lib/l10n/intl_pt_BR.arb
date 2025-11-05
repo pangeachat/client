@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:03.353415",
+  "@@last_modified": "2025-11-05 10:36:16.527399",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -4699,7 +4699,7 @@
   "loginToAccount": "Faça login na minha conta",
   "appDescription": "Aprenda um idioma\nenquanto envia mensagens para seus amigos.",
   "languages": "Idiomas",
-  "chooseLanguage": "Escolha um idioma.",
+  "chooseLanguage": "Escolha um idioma de destino.",
   "planTrip": "Planeje sua viagem",
   "howAreYouTraveling": "Como você está viajando?",
   "unlockPrivateTrip": "Desbloqueie uma viagem privada",

@@ -4303,7 +4303,7 @@
   "loginToAccount": "Prisijungti prie mano paskyros",
   "appDescription": "Išmokite kalbą\nnaudodamiesi tekstais su draugais.",
   "languages": "Kalbos",
-  "chooseLanguage": "Pasirinkite kalbą.",
+  "chooseLanguage": "Pasirinkite tikslinę kalbą.",
   "planTrip": "Planuoti kelionę",
   "howAreYouTraveling": "Kaip keliaujate?",
   "unlockPrivateTrip": "Atrakinti privačią kelionę",
@@ -4342,7 +4342,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-11-04 13:34:52.927239",
+  "@@last_modified": "2025-11-05 10:36:45.271258",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

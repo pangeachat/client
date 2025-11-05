@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:35:36.950474",
+  "@@last_modified": "2025-11-05 10:37:10.860565",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -3987,7 +3987,7 @@
   "loginToAccount": "Prijavi se na svoj nalog",
   "appDescription": "Uči jezik\ndok šalješ poruke prijateljima.",
   "languages": "Jezici",
-  "chooseLanguage": "Izaberite jezik.",
+  "chooseLanguage": "Izaberite ciljni jezik.",
   "planTrip": "Planirajte svoje putovanje",
   "howAreYouTraveling": "Kako putujete?",
   "unlockPrivateTrip": "Otključajte privatno putovanje",
