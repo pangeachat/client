@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:35:26.105229",
+  "@@last_modified": "2025-11-05 10:37:07.738716",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -4077,7 +4077,7 @@
   "loginToAccount": "Ensaluti al mia konto",
   "appDescription": "Lernu lingvon\ndum tekstdonado al viaj amikojn.",
   "languages": "Lingvoj",
-  "chooseLanguage": "Elektu lingvon.",
+  "chooseLanguage": "Elektu celan lingvon.",
   "planTrip": "Planadu vian vojaĝon",
   "howAreYouTraveling": "Kiel vi vojaĝas?",
   "unlockPrivateTrip": "Malŝlosu privatecan vojaĝon",

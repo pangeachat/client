@@ -3218,7 +3218,7 @@
   "loginToAccount": "Mag-login sa aking account",
   "appDescription": "Matuto ng isang wika\nhabang nagte-text sa iyong mga kaibigan.",
   "languages": "Mga Wika",
-  "chooseLanguage": "Pumili ng isang wika.",
+  "chooseLanguage": "Pumili ng target na wika.",
   "planTrip": "Planuhin ang iyong biyahe",
   "howAreYouTraveling": "Kamusta ang iyong paglalakbay?",
   "unlockPrivateTrip": "I-unlock ang pribadong biyahe",
@@ -3272,7 +3272,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-11-04 13:34:38.274191",
+  "@@last_modified": "2025-11-05 10:36:39.192600",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}

@@ -4898,7 +4898,7 @@
   "loginToAccount": "Συνδεθείτε στον λογαριασμό μου",
   "appDescription": "Μάθε μια γλώσσα\nενώ στέλνεις μηνύματα στους φίλους σου.",
   "languages": "Γλώσσες",
-  "chooseLanguage": "Επιλέξτε μια γλώσσα.",
+  "chooseLanguage": "Επιλέξτε μια γλώσσα στόχου.",
   "planTrip": "Προγραμματίστε το ταξίδι σας",
   "howAreYouTraveling": "Πώς ταξιδεύετε;",
   "unlockPrivateTrip": "Ξεκλειδώστε ένα ιδιωτικό ταξίδι",
@@ -4937,7 +4937,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2025-11-04 13:35:19.855843",
+  "@@last_modified": "2025-11-05 10:37:04.321925",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

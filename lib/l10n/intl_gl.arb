@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-11-04 13:33:37.429308",
+  "@@last_modified": "2025-11-05 10:35:55.520961",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -4952,7 +4952,7 @@
   "loginToAccount": "Inicia sesión na miña conta",
   "appDescription": "Aprende un idioma mentres envías mensaxes aos teus amigos.",
   "languages": "Idiomas",
-  "chooseLanguage": "Elixe un idioma.",
+  "chooseLanguage": "Elixe unha lingua de destino.",
   "planTrip": "Planifica a túa viaxe",
   "howAreYouTraveling": "Como estás viaxando?",
   "unlockPrivateTrip": "Desbloquea unha viaxe privada",

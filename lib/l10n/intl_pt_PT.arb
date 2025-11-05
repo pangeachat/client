@@ -3762,7 +3762,7 @@
   "loginToAccount": "Entrar na minha conta",
   "appDescription": "Aprenda uma língua\nenquanto envia mensagens aos seus amigos.",
   "languages": "Línguas",
-  "chooseLanguage": "Escolha uma língua.",
+  "chooseLanguage": "Escolha um idioma de destino.",
   "planTrip": "Planear a sua viagem",
   "howAreYouTraveling": "Como está a viajar?",
   "unlockPrivateTrip": "Desbloquear uma viagem privada",
@@ -3816,7 +3816,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-11-04 13:34:34.127034",
+  "@@last_modified": "2025-11-05 10:36:36.955008",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

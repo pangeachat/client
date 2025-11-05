@@ -4700,14 +4700,14 @@
   "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
   "appDescription": "ཚོགས་ཚོགས་སྐད་ཡིག་སློབ་ཚན་ལས་སྤྱོད་སྒོམ།\nཁྱེད་ཀྱི་གྲོགས་མཚན་ལ་རྟག་པ་སྤྱོད་སྒོམ་ལས་སྤྱོད་སྒོམ།",
   "languages": "ཚོད་ལྟ",
-  "chooseLanguage": "ཚོད་ལྟ་གཅིག་འཇུག་གི་སྐད་ཡིག་གཟིགས།",
+  "chooseLanguage": "Pilih bahasa target.",
   "planTrip": "འགྱོ་རོགས་ལྟར་བཟོ།",
   "howAreYouTraveling": "ཁྱེད་ཀྱི་འགྱོ་རོགས་ག་རེ་ཡོད།",
   "unlockPrivateTrip": "རང་གི་སྤྱོད་ལམ་ལ་ལོག་འབད།",
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-11-04 13:35:01.640152",
+  "@@last_modified": "2025-11-05 10:36:49.829807",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

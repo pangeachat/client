@@ -2362,7 +2362,7 @@
   "loginToAccount": "నా ఖాతాలో లాగిన్ అవ్వండి",
   "appDescription": "భాష నేర్చుకోండి\nమీ స్నేహితులతో సందేశాలు పంపుతూ.",
   "languages": "భాషలు",
-  "chooseLanguage": "ఒక భాషను ఎంచుకోండి.",
+  "chooseLanguage": "ఒక లక్ష్య భాషను ఎంచుకోండి.",
   "planTrip": "మీ ప్రయాణాన్ని ప్రణాళిక చేయండి",
   "howAreYouTraveling": "మీరు ఎలా ప్రయాణిస్తున్నారు?",
   "unlockPrivateTrip": "ప్రైవేట్ ట్రిప్‌ను అన్లాక్ చేయండి",
@@ -2401,7 +2401,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-11-04 13:34:50.382080",
+  "@@last_modified": "2025-11-05 10:36:44.043487",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}

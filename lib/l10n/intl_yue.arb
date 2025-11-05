@@ -2287,7 +2287,7 @@
   "loginToAccount": "登入我的帳戶",
   "appDescription": "學習一種語言\n同時與朋友發訊息。",
   "languages": "語言",
-  "chooseLanguage": "選擇一種語言。",
+  "chooseLanguage": "選擇目標語言。",
   "planTrip": "規劃您的旅程",
   "howAreYouTraveling": "你打算怎樣旅行？",
   "unlockPrivateTrip": "解鎖私人行程",
@@ -2341,7 +2341,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-11-04 13:34:17.294087",
+  "@@last_modified": "2025-11-05 10:36:25.092685",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}

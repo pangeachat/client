@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:54.956294",
+  "@@last_modified": "2025-11-05 10:36:46.572339",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -4742,7 +4742,7 @@
   "loginToAccount": "Đăng nhập vào tài khoản của tôi",
   "appDescription": "Học một ngôn ngữ\ntrong khi nhắn tin với bạn bè.",
   "languages": "Ngôn ngữ",
-  "chooseLanguage": "Chọn một ngôn ngữ.",
+  "chooseLanguage": "Chọn một ngôn ngữ mục tiêu.",
   "planTrip": "Lập kế hoạch chuyến đi",
   "howAreYouTraveling": "Bạn đi du lịch bằng phương tiện gì?",
   "unlockPrivateTrip": "Mở khóa chuyến đi riêng tư",

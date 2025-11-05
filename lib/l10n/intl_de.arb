@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-11-04 13:34:11.760779",
+  "@@last_modified": "2025-11-05 10:36:22.123495",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -4958,7 +4958,7 @@
   "loginToAccount": "In mein Konto einloggen",
   "appDescription": "Lerne eine Sprache\nwährend du deinen Freunden schreibst.",
   "languages": "Sprachen",
-  "chooseLanguage": "Wähle eine Sprache.",
+  "chooseLanguage": "Wählen Sie eine Zielsprache.",
   "planTrip": "Plane deine Reise",
   "howAreYouTraveling": "Wie reist du?",
   "unlockPrivateTrip": "Einen privaten Trip freischalten",

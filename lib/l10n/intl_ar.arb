@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-11-04 13:34:44.139492",
+  "@@last_modified": "2025-11-05 10:36:41.735851",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -4836,7 +4836,7 @@
   "loginToAccount": "تسجيل الدخول إلى حسابي",
   "appDescription": "تعلم لغة\nأثناء مراسلة أصدقائك.",
   "languages": "اللغات",
-  "chooseLanguage": "اختر لغة.",
+  "chooseLanguage": "اختر لغة الهدف.",
   "planTrip": "خطط لرحلتك",
   "howAreYouTraveling": "كيف تسافر؟",
   "unlockPrivateTrip": "افتح رحلة خاصة",

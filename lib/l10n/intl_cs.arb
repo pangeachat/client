@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-11-04 13:34:23.845105",
+  "@@last_modified": "2025-11-05 10:36:28.862403",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -4480,7 +4480,7 @@
   "loginToAccount": "Přihlásit se ke svému účtu",
   "appDescription": "Učte se jazyk\npři psaní zpráv přátelům.",
   "languages": "Jazyky",
-  "chooseLanguage": "Vyberte jazyk.",
+  "chooseLanguage": "Vyberte cílový jazyk.",
   "planTrip": "Naplánujte si výlet",
   "howAreYouTraveling": "Jak cestujete?",
   "unlockPrivateTrip": "Odemknout soukromý výlet",

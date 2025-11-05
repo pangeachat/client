@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-11-04 13:34:09.788327",
+  "@@last_modified": "2025-11-05 10:36:21.000559",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11187,7 +11187,7 @@
   "loginToAccount": "Logi sisse oma kontole",
   "appDescription": "Õpi keelt\nsõpradega sõnumite saatmise ajal.",
   "languages": "Keeled",
-  "chooseLanguage": "Vali keel.",
+  "chooseLanguage": "Vali sihtkeel.",
   "planTrip": "Planeeri oma reis",
   "howAreYouTraveling": "Kuidas sa reisid?",
   "unlockPrivateTrip": "Ava privaatne reis",

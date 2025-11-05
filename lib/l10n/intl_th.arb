@@ -4898,7 +4898,7 @@
   "loginToAccount": "เข้าสู่ระบบบัญชีของฉัน",
   "appDescription": "เรียนรู้ภาษา\nในขณะส่งข้อความถึงเพื่อนของคุณ",
   "languages": "ภาษา",
-  "chooseLanguage": "เลือกภาษา",
+  "chooseLanguage": "เลือกภาษาที่ต้องการ",
   "planTrip": "วางแผนการเดินทาง",
   "howAreYouTraveling": "คุณเดินทางอย่างไร",
   "unlockPrivateTrip": "ปลดล็อคการเดินทางส่วนตัว",
@@ -4937,7 +4937,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-11-04 13:34:32.284237",
+  "@@last_modified": "2025-11-05 10:36:34.617590",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

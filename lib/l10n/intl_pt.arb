@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:07.487948",
+  "@@last_modified": "2025-11-05 10:36:19.559513",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -4941,7 +4941,7 @@
   "loginToAccount": "Faça login na minha conta",
   "appDescription": "Aprenda um idioma\nenquanto envia mensagens aos seus amigos.",
   "languages": "Idiomas",
-  "chooseLanguage": "Escolha um idioma.",
+  "chooseLanguage": "Escolha um idioma de destino.",
   "planTrip": "Planeje sua viagem",
   "howAreYouTraveling": "Como você está viajando?",
   "unlockPrivateTrip": "Desbloqueie uma viagem privada",
