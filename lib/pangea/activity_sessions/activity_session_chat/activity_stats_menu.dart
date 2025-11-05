@@ -98,7 +98,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
             ? await room.finishActivityForAll()
             : await room.finishActivity();
         if (mounted) {
-          widget.controller.setShowDropdown(false);
+          widget.controller.toggleShowDropdown();
         }
       },
     );
@@ -150,7 +150,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
               child: GestureDetector(
                 onPanUpdate: (details) {
                   if (details.delta.dy < -2) {
-                    widget.controller.setShowDropdown(false);
+                    widget.controller.toggleShowDropdown();
                   }
                 },
                 child: Container(
@@ -263,7 +263,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
           if (widget.controller.showActivityDropdown)
             Expanded(
               child: GestureDetector(
-                onTap: () => widget.controller.setShowDropdown(false),
+                onTap: widget.controller.toggleShowDropdown,
                 child: Container(color: Colors.black.withAlpha(100)),
               ),
             ),

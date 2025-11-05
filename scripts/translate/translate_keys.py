@@ -451,6 +451,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
     Examples:
+  pip install openai
   python translate_keys.py --keys about accept account
   python -m scripts.translate.translate_keys.py --keys-file scripts.translate.keys_to_translate.txt
         """,
