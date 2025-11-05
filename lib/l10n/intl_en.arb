@@ -5317,5 +5317,6 @@
   "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?",
   "getStartedFriendsButton": "Invite a friend",
   "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course",
-  "inviteFriends": "Invite friends"
+  "inviteFriends": "Invite friends",
+  "activityStatsButtonTooltip": "Activity info"
 }
