@@ -1,6 +1,12 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/span_data_controller.dart';
@@ -10,11 +16,6 @@ import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../../common/utils/error_handler.dart';
 import '../../common/utils/overlay.dart';
 
@@ -81,8 +82,10 @@ class IgcController {
         userId: choreographer.pangeaController.userController.userId!,
         userL1: choreographer.l1LangCode!,
         userL2: choreographer.l2LangCode!,
-        enableIGC: choreographer.igcEnabled && choreographer.choreoMode != ChoreoMode.it,
-        enableIT: choreographer.itEnabled && choreographer.choreoMode != ChoreoMode.it,
+        enableIGC: choreographer.igcEnabled &&
+            choreographer.choreoMode != ChoreoMode.it,
+        enableIT: choreographer.itEnabled &&
+            choreographer.choreoMode != ChoreoMode.it,
         prevMessages: _prevMessages(),
       );
 
@@ -101,10 +104,13 @@ class IgcController {
       }
 
       final IGCTextData igcTextDataResponse =
-          await _igcTextDataCache[reqBody.hashCode]!.data.timeout((const Duration(seconds: 10)));
+          await _igcTextDataCache[reqBody.hashCode]!
+              .data
+              .timeout((const Duration(seconds: 10)));
 
       // this will happen when the user changes the input while igc is fetching results
-      if (igcTextDataResponse.originalInput.trim() != choreographer.currentText.trim()) {
+      if (igcTextDataResponse.originalInput.trim() !=
+          choreographer.currentText.trim()) {
         return;
       }
       // get ignored matches from the original igcTextData
@@ -120,7 +126,8 @@ class IgcController {
 
       final List<PangeaMatch> filteredMatches = List.from(igcTextData!.matches);
       for (final PangeaMatch match in igcTextData!.matches) {
-        final _IgnoredMatchCacheItem cacheEntry = _IgnoredMatchCacheItem(match: match);
+        final _IgnoredMatchCacheItem cacheEntry =
+            _IgnoredMatchCacheItem(match: match);
 
         if (_ignoredMatchCache.containsKey(cacheEntry.hashCode)) {
           filteredMatches.remove(match);
@@ -139,7 +146,8 @@ class IgcController {
       // This will make the loading of span details faster for the user
       if (igcTextData?.matches.isNotEmpty ?? false) {
         for (int i = 0; i < igcTextData!.matches.length; i++) {
-          if (!igcTextData!.matches[i].isITStart && choreographer.l2Lang != null) {
+          if (!igcTextData!.matches[i].isITStart &&
+              choreographer.l2Lang != null) {
             spanDataController.getSpanDetails(i, choreographer.l2Lang!);
           }
         }
@@ -162,7 +170,8 @@ class IgcController {
           "itEnabled": choreographer.itEnabled,
           "matches": igcTextData?.matches.map((e) => e.toJson()),
         },
-        level: err is TimeoutException ? SentryLevel.warning : SentryLevel.error,
+        level:
+            err is TimeoutException ? SentryLevel.warning : SentryLevel.error,
       );
       clear();
     }
@@ -225,7 +234,8 @@ class IgcController {
         .where(
           (e) =>
               e.type == EventTypes.Message &&
-              (e.messageType == MessageTypes.Text || e.messageType == MessageTypes.Audio),
+              (e.messageType == MessageTypes.Text ||
+                  e.messageType == MessageTypes.Audio),
         )
         .toList();
 
@@ -236,7 +246,8 @@ class IgcController {
           : PangeaMessageEvent(
               event: event,
               timeline: choreographer.chatController.timeline!,
-              ownMessage: event.senderId == choreographer.pangeaController.matrixState.client.userID,
+              ownMessage: event.senderId ==
+                  choreographer.pangeaController.matrixState.client.userID,
             ).getSpeechToTextLocal()?.transcript.text.trim(); // trim whitespace
       if (content == null) continue;
       messages.add(

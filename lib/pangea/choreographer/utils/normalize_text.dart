@@ -1,6 +1,7 @@
 import 'package:diacritic/diacritic.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:test/test.dart';
+
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 // The intention of this function is to normalize text for comparison purposes.
 // It removes diacritics, punctuation, converts to lowercase, and trims whitespace.
@@ -16,11 +17,13 @@ String normalizeString(String input, String languageCode) {
     normalized = _applyLanguageSpecificNormalization(normalized, languageCode);
 
     // Step 3: Replace hyphens and other dash-like characters with spaces
-    normalized = normalized.replaceAll(RegExp(r'[-\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]'), ' ');
+    normalized = normalized.replaceAll(
+        RegExp(r'[-\u2010-\u2015\u2212\uFE58\uFE63\uFF0D]'), ' ');
 
     // Step 4: Remove punctuation (including Unicode punctuation)
     // This removes ASCII and Unicode punctuation while preserving letters, numbers, and spaces
-    normalized = normalized.replaceAll(RegExp(r'[\p{P}\p{S}]', unicode: true), '');
+    normalized =
+        normalized.replaceAll(RegExp(r'[\p{P}\p{S}]', unicode: true), '');
 
     // Step 5: Normalize whitespace (collapse multiple spaces, trim)
     normalized = normalized.replaceAll(RegExp(r'\s+'), ' ').trim();
@@ -431,11 +434,13 @@ void runNormalizationTests() {
       passed++;
       print('✓ Test ${i + 1} PASSED: "$input" → "$actual"');
     } else {
-      print('✗ Test ${i + 1} FAILED: "$input" → "$actual" (expected: "$expected")');
+      print(
+          '✗ Test ${i + 1} FAILED: "$input" → "$actual" (expected: "$expected")');
     }
   }
 
-  print('\nTest Results: $passed/$total tests passed (${(passed / total * 100).toStringAsFixed(1)}%)');
+  print(
+      '\nTest Results: $passed/$total tests passed (${(passed / total * 100).toStringAsFixed(1)}%)');
 }
 
 // Main function to run the tests when executed directly
@@ -448,7 +453,8 @@ void main() {
       final expected = testCase['expected']!;
 
       test('Test ${i + 1}: "$input" should normalize to "$expected"', () {
-        final actual = normalizeString(input, 'en'); // Default to English for tests
+        final actual =
+            normalizeString(input, 'en'); // Default to English for tests
         expect(
           actual,
           equals(expected),
