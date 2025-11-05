@@ -6,14 +6,12 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/span_choice_type.dart';
 import 'package:fluffychat/pangea/choreographer/enums/span_data_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import '../../../../widgets/matrix.dart';
 import '../choice_array.dart';
@@ -153,19 +151,12 @@ class SpanCardState extends State<SpanCard> {
       });
 
   void _onIgnoreMatch() => _onMatchUpdate(() {
-        widget.choreographer.onIgnoreMatch(match: widget.match);
+        widget.choreographer.onIgnoreReplacement(match: widget.match);
       });
 
   void _showFirstMatch() {
-    if (widget.choreographer.canShowFirstIGCMatch) {
-      OverlayUtil.showIGCMatch(
-        widget.choreographer.igcController.firstOpenMatch!,
-        widget.choreographer,
-        context,
-      );
-    } else {
-      MatrixState.pAnyState.closeOverlay();
-    }
+    final match = widget.choreographer.igcController.firstOpenMatch;
+    widget.choreographer.chatController.onSelectMatch(match);
   }
 
   @override

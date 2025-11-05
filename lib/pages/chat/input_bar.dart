@@ -12,7 +12,6 @@ import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreogra
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/utils/shrinkable_text.dart';
 import 'package:fluffychat/utils/markdown_context_builder.dart';
@@ -449,13 +448,7 @@ class InputBar extends StatelessWidget {
     final match = choreographer.igcController.getMatchByOffset(
       selection.baseOffset,
     );
-    if (match == null) return;
-
-    // if autoplay on and it start then just start it
-    if (match.updatedMatch.isITStart) {
-      return choreographer.openIT(match);
-    }
-    OverlayUtil.showIGCMatch(match, choreographer, context);
+    choreographer.chatController.onSelectMatch(match);
   }
   // Pangea#
 

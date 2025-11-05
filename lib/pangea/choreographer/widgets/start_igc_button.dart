@@ -6,10 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import '../../../pages/chat/chat.dart';
 
@@ -61,23 +58,6 @@ class StartIGCButtonState extends State<StartIGCButton>
     }
   }
 
-  void _showFirstMatch() {
-    if (widget.controller.choreographer.canShowFirstIGCMatch) {
-      final match =
-          widget.controller.choreographer.igcController.firstOpenMatch;
-      if (match == null) return;
-      if (match.updatedMatch.isITStart) {
-        widget.controller.choreographer.openIT(match);
-      } else {
-        OverlayUtil.showIGCMatch(
-          match,
-          widget.controller.choreographer,
-          context,
-        );
-      }
-    }
-  }
-
   bool get _enableFeedback {
     return ![
       AssistanceState.fetching,
@@ -90,46 +70,13 @@ class StartIGCButtonState extends State<StartIGCButton>
   }
 
   Future<void> _onTap() async {
-    switch (assistanceState) {
-      case AssistanceState.noSub:
-        await PaywallCard.show(
-          context,
-          widget.controller.choreographer.inputTransformTargetKey,
-        );
-        return;
-      case AssistanceState.noMessage:
-        showDialog(
-          context: context,
-          builder: (c) => const SettingsLearning(),
-          barrierDismissible: false,
-        );
-        return;
-      case AssistanceState.notFetched:
-        if (widget.controller.shouldShowLanguageMismatchPopup) {
-          widget.controller.showLanguageMismatchPopup();
-        } else {
-          await widget.controller.choreographer.requestLanguageAssistance();
-          final openMatch = widget.controller.choreographer.firstOpenMatch;
-          if (openMatch != null) {
-            if (openMatch.updatedMatch.isITStart) {
-              widget.controller.choreographer.openIT(openMatch);
-            } else {
-              OverlayUtil.showIGCMatch(
-                openMatch,
-                widget.controller.choreographer,
-                context,
-              );
-            }
-          }
-        }
-        return;
-      case AssistanceState.fetched:
-        _showFirstMatch();
-        return;
-      case AssistanceState.complete:
-      case AssistanceState.fetching:
-      case AssistanceState.error:
-        return;
+    if (!_enableFeedback) return;
+    if (widget.controller.shouldShowLanguageMismatchPopup) {
+      widget.controller.showLanguageMismatchPopup();
+    } else {
+      await widget.controller.choreographer.requestLanguageAssistance();
+      final openMatch = widget.controller.choreographer.firstOpenMatch;
+      widget.controller.onSelectMatch(openMatch);
     }
   }
 

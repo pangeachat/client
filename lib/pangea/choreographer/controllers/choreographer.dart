@@ -432,6 +432,7 @@ class Choreographer extends ChangeNotifier {
       );
     }
     MatrixState.pAnyState.closeOverlay();
+    chatController.inputFocus.requestFocus();
     notifyListeners();
   }
 
@@ -446,10 +447,11 @@ class Choreographer extends ChangeNotifier {
       EditType.igc,
     );
     MatrixState.pAnyState.closeOverlay();
+    chatController.inputFocus.requestFocus();
     notifyListeners();
   }
 
-  void onIgnoreMatch({required PangeaMatchState match}) {
+  void onIgnoreReplacement({required PangeaMatchState match}) {
     final updatedMatch = igcController.ignoreReplacement(match);
     if (!updatedMatch.match.isNormalizationError()) {
       _initChoreoRecord();
@@ -459,6 +461,7 @@ class Choreographer extends ChangeNotifier {
       );
     }
     MatrixState.pAnyState.closeOverlay();
+    chatController.inputFocus.requestFocus();
     notifyListeners();
   }
 

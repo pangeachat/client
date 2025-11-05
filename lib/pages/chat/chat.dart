@@ -46,6 +46,7 @@ import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreogra
 import 'package:fluffychat/pangea/choreographer/controllers/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/choreographer/repo/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/message_analytics_feedback.dart';
@@ -2207,6 +2208,22 @@ class ChatController extends State<ChatPageWithRoom>
         l1 != activityLang;
   }
 
+  void onSelectMatch(PangeaMatchState? match) {
+    if (match != null) {
+      if (match.updatedMatch.isITStart) {
+        choreographer.openIT(match);
+      } else {
+        OverlayUtil.showIGCMatch(
+          match,
+          choreographer,
+          context,
+        );
+      }
+    } else {
+      inputFocus.requestFocus();
+    }
+  }
+
   Future<void> showLanguageMismatchPopup() async {
     if (!shouldShowLanguageMismatchPopup) {
       return;
@@ -2226,19 +2243,10 @@ class ChatController extends State<ChatPageWithRoom>
             waitForDataInSync: true,
           );
 
-          await choreographer.requestLanguageAssistance();
-          final openMatch = choreographer.firstOpenMatch;
-          if (openMatch != null) {
-            if (openMatch.updatedMatch.isITStart) {
-              choreographer.openIT(openMatch);
-            } else {
-              OverlayUtil.showIGCMatch(
-                openMatch,
-                choreographer,
-                context,
-              );
-            }
-          }
+          WidgetsBinding.instance.addPostFrameCallback((_) async {
+            await choreographer.requestLanguageAssistance();
+            onSelectMatch(choreographer.firstOpenMatch);
+          });
         },
       ),
       maxHeight: 325,

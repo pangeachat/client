@@ -79,8 +79,10 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
       _numbersController.forward,
     );
     Future.delayed(const Duration(milliseconds: 4000), () async {
-      await _bubbleController.reverse();
-      if (mounted) widget.close();
+      if (mounted) {
+        await _bubbleController.reverse();
+        widget.close();
+      }
     });
   }
 
