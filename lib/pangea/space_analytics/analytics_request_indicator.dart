@@ -1,13 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_requested_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class AnalyticsRequestIndicator extends StatefulWidget {
   final Room room;

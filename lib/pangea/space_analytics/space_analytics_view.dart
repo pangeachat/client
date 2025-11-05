@@ -1,5 +1,10 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
@@ -8,9 +13,6 @@ import 'package:fluffychat/pangea/space_analytics/space_analytics_download_enum.
 import 'package:fluffychat/pangea/spaces/widgets/download_space_analytics_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 class SpaceAnalyticsView extends StatelessWidget {
   final SpaceAnalyticsState controller;
@@ -388,22 +390,30 @@ class _TableHeaderCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 6.0,
-        horizontal: 8.0,
-      ),
-      child: Column(
-        spacing: 10.0,
-        children: [
-          Icon(icon, size: 22.0),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: !mini ? 12.0 : 8.0,
-            ),
+    return TooltipVisibility(
+      visible: mini,
+      child: Tooltip(
+        message: text,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 6.0,
+            horizontal: 8.0,
           ),
-        ],
+          child: Column(
+            spacing: 10.0,
+            children: [
+              Icon(icon, size: 22.0),
+              mini
+                  ? const SizedBox.shrink()
+                  : Text(
+                      text,
+                      style: const TextStyle(
+                        fontSize: 12.0,
+                      ),
+                    ),
+            ],
+          ),
+        ),
       ),
     );
   }
