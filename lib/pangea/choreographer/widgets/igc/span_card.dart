@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
@@ -9,6 +7,8 @@ import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:flutter/material.dart';
+
 import '../../../../widgets/matrix.dart';
 import '../../../bot/widgets/bot_face_svg.dart';
 import '../choice_array.dart';
@@ -54,8 +54,7 @@ class SpanCardState extends State<SpanCard> {
 
   PangeaMatch? get pangeaMatch {
     if (widget.choreographer.igc.igcTextData == null) return null;
-    if (widget.matchIndex >=
-        widget.choreographer.igc.igcTextData!.matches.length) {
+    if (widget.matchIndex >= widget.choreographer.igc.igcTextData!.matches.length) {
       ErrorHandler.logError(
         m: "matchIndex out of bounds in span card",
         data: {
@@ -75,8 +74,7 @@ class SpanCardState extends State<SpanCard> {
   }
 
   SpanChoice? _choiceByIndex(int index) {
-    if (pangeaMatch?.match.choices == null ||
-        pangeaMatch!.match.choices!.length <= index) {
+    if (pangeaMatch?.match.choices == null || pangeaMatch!.match.choices!.length <= index) {
       return null;
     }
     return pangeaMatch?.match.choices?[index];
@@ -88,8 +86,7 @@ class SpanCardState extends State<SpanCard> {
     }
 
     // if user ever selected the correct choice, automatically select it
-    final selectedCorrectIndex =
-        pangeaMatch!.match.choices!.indexWhere((choice) {
+    final selectedCorrectIndex = pangeaMatch!.match.choices!.indexWhere((choice) {
       return choice.selected && choice.isBestCorrection;
     });
 
@@ -103,8 +100,7 @@ class SpanCardState extends State<SpanCard> {
       final numChoices = pangeaMatch!.match.choices!.length;
       for (int i = 0; i < numChoices; i++) {
         final choice = _choiceByIndex(i);
-        if (choice!.timestamp != null &&
-            (mostRecent == null || choice.timestamp!.isAfter(mostRecent))) {
+        if (choice!.timestamp != null && (mostRecent == null || choice.timestamp!.isAfter(mostRecent))) {
           mostRecent = choice.timestamp;
           selectedChoiceIndex = i;
         }
@@ -120,8 +116,21 @@ class SpanCardState extends State<SpanCard> {
       fetchingData = true;
     });
 
+    if (widget.choreographer.l2Lang == null) {
+      ErrorHandler.logError(
+        m: "l2Lang is null when trying to get span details",
+        data: {
+          "matchIndex": widget.matchIndex,
+        },
+      );
+      setState(() {
+        fetchingData = false;
+      });
+      return;
+    }
     await widget.choreographer.igc.spanDataController.getSpanDetails(
       widget.matchIndex,
+      widget.choreographer.l2Lang!,
       force: force,
     );
 
@@ -142,9 +151,7 @@ class SpanCardState extends State<SpanCard> {
       selectedChoice!.timestamp = DateTime.now();
       selectedChoice!.selected = true;
       setState(
-        () => (selectedChoice!.isBestCorrection
-            ? BotExpression.gold
-            : BotExpression.surprised),
+        () => (selectedChoice!.isBestCorrection ? BotExpression.gold : BotExpression.surprised),
       );
     }
   }
@@ -170,8 +177,7 @@ class SpanCardState extends State<SpanCard> {
   }
 
   void _showFirstMatch() {
-    if (widget.choreographer.igc.igcTextData != null &&
-        widget.choreographer.igc.igcTextData!.matches.isNotEmpty) {
+    if (widget.choreographer.igc.igcTextData != null && widget.choreographer.igc.igcTextData!.matches.isNotEmpty) {
       widget.choreographer.igc.showFirstMatch(context);
     } else {
       MatrixState.pAnyState.closeOverlay();
@@ -229,12 +235,10 @@ class WordMatchContent extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      onPressed: (value, index) =>
-                          controller._onChoiceSelect(index),
+                      onPressed: (value, index) => controller._onChoiceSelect(index),
                       selectedChoiceIndex: controller.selectedChoiceIndex,
                       id: controller.pangeaMatch!.hashCode.toString(),
-                      langCode: MatrixState.pangeaController.languageController
-                          .activeL2Code(),
+                      langCode: MatrixState.pangeaController.languageController.activeL2Code(),
                     ),
                     const SizedBox(height: 12),
                     PromptAndFeedback(controller: controller),
@@ -271,9 +275,7 @@ class WordMatchContent extends StatelessWidget {
                   child: Opacity(
                     opacity: controller.selectedChoiceIndex != null ? 1.0 : 0.5,
                     child: TextButton(
-                      onPressed: controller.selectedChoiceIndex != null
-                          ? controller._onReplaceSelected
-                          : null,
+                      onPressed: controller.selectedChoiceIndex != null ? controller._onReplaceSelected : null,
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all<Color>(
                           (controller.selectedChoice != null
@@ -320,9 +322,7 @@ class PromptAndFeedback extends StatelessWidget {
     }
 
     return Container(
-      constraints: controller.pangeaMatch!.isITStart
-          ? null
-          : const BoxConstraints(minHeight: 75.0),
+      constraints: controller.pangeaMatch!.isITStart ? null : const BoxConstraints(minHeight: 75.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -352,11 +352,9 @@ class PromptAndFeedback extends StatelessWidget {
                 loading: controller.fetchingData,
               ),
           ],
-          if (!controller.fetchingData &&
-              controller.selectedChoiceIndex == null)
+          if (!controller.fetchingData && controller.selectedChoiceIndex == null)
             Text(
-              controller.pangeaMatch!.match.type.typeName
-                  .defaultPrompt(context),
+              controller.pangeaMatch!.match.type.typeName.defaultPrompt(context),
               style: BotStyle.text(context).copyWith(
                 fontStyle: FontStyle.italic,
               ),
