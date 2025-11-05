@@ -4406,7 +4406,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Idiomas";
     },
     get$chooseLanguage() {
-      return "Escolha um idioma.";
+      return "Escolha um idioma de destino.";
     },
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
@@ -8950,7 +8950,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Idiomas";
     },
     get$chooseLanguage() {
-      return "Escolha um idioma.";
+      return "Escolha um idioma de destino.";
     },
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
@@ -13458,7 +13458,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "L\xednguas";
     },
     get$chooseLanguage() {
-      return "Escolha uma l\xedngua.";
+      return "Escolha um idioma de destino.";
     },
     get$startOwn() {
       return "Come\xe7ar o meu pr\xf3prio";
@@ -13758,7 +13758,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2mehSoTUO7+4uINTK8o2WnzueZI="] = d.current;
+  d["NznV0h+xWtqRmych10zKrwINDpY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map
