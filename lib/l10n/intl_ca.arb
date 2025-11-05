@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:30.531761",
+  "@@last_modified": "2025-11-05 10:36:33.183989",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -4923,7 +4923,7 @@
   "loginToAccount": "Inicia sessió al meu compte",
   "appDescription": "Aprèn un idioma\nmentre xatejes amb els teus amics.",
   "languages": "Idiomes",
-  "chooseLanguage": "Tria un idioma.",
+  "chooseLanguage": "Trieu un idioma de destinació.",
   "planTrip": "Planifica el teu viatge",
   "howAreYouTraveling": "Com viatges?",
   "unlockPrivateTrip": "Desbloqueja un viatge privat",

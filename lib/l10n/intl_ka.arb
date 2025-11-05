@@ -3036,7 +3036,7 @@
   "loginToAccount": "შესვლა ჩემს ანგარიშზე",
   "appDescription": "სწავლა ენის\nმეგობრებთან მესენჯერში საუბრის დროს.",
   "languages": "ენები",
-  "chooseLanguage": "აირჩიეთ ენა.",
+  "chooseLanguage": "აირჩიეთ მიზნობრივი ენა.",
   "planTrip": "გეგმა თქვენი მოგზაურობის",
   "howAreYouTraveling": "როგორ მოგზაურობთ?",
   "unlockPrivateTrip": "გახსნათ პირადი მოგზაურობა",
@@ -3075,7 +3075,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2025-11-04 13:35:34.501028",
+  "@@last_modified": "2025-11-05 10:37:09.852144",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}

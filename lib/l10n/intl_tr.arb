@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-04 13:34:47.775542",
+  "@@last_modified": "2025-11-05 10:36:42.687819",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -4834,7 +4834,7 @@
   "loginToAccount": "Hesabınıza giriş yapın",
   "appDescription": "Bir dil öğrenin\narkadaşlarınıza mesaj atarken.",
   "languages": "Diller",
-  "chooseLanguage": "Bir dil seçin.",
+  "chooseLanguage": "Hedef bir dil seçin.",
   "planTrip": "Seyahatinizi planlayın",
   "howAreYouTraveling": "Nasıl seyahat ediyorsunuz?",
   "unlockPrivateTrip": "Özel bir seyahati açın",

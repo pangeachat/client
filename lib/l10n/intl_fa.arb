@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:35:09.159097",
+  "@@last_modified": "2025-11-05 10:36:53.294989",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -4371,7 +4371,7 @@
   "loginToAccount": "وارد حساب کاربری من شوید",
   "appDescription": "یادگیری زبان\nدر حین پیام‌رسانی به دوستانتان.",
   "languages": "زبان‌ها",
-  "chooseLanguage": "یک زبان را انتخاب کنید.",
+  "chooseLanguage": "زبان هدف را انتخاب کنید.",
   "planTrip": "برنامه‌ریزی سفر خود",
   "howAreYouTraveling": "چگونه سفر می‌کنید؟",
   "unlockPrivateTrip": "باز کردن سفر خصوصی",

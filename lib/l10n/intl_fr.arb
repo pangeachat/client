@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-11-04 13:35:41.866867",
+  "@@last_modified": "2025-11-05 10:37:13.399486",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -4781,7 +4781,7 @@
   "loginToAccount": "Se connecter à mon compte",
   "appDescription": "Apprenez une langue\ntout en envoyant des messages à vos amis.",
   "languages": "Langues",
-  "chooseLanguage": "Choisissez une langue.",
+  "chooseLanguage": "Choisissez une langue cible.",
   "planTrip": "Planifiez votre voyage",
   "howAreYouTraveling": "Comment voyagez-vous ?",
   "unlockPrivateTrip": "Déverrouiller un voyage privé",

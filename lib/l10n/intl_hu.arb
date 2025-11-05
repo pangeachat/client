@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-11-04 13:33:45.709926",
+  "@@last_modified": "2025-11-05 10:36:04.028229",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -4952,7 +4952,7 @@
   "loginToAccount": "Jelentkezzen be a fiókomba",
   "appDescription": "Tanulj egy nyelvet\nüzenetküldés közben a barátaidnak.",
   "languages": "Nyelvek",
-  "chooseLanguage": "Válassz egy nyelvet.",
+  "chooseLanguage": "Válasszon ki egy célnyelvet.",
   "planTrip": "Tervezd meg az utadat",
   "howAreYouTraveling": "Hogyan utazol?",
   "unlockPrivateTrip": "Privát utazás feloldása",
