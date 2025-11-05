@@ -23,22 +23,7 @@ class PangeaTextController extends TextEditingController {
   PangeaTextController({
     required this.choreographer,
   }) {
-    addListener(() {
-      final difference =
-          text.characters.length - _currentText.characters.length;
-
-      if (difference > 1 && editType == EditType.keyboard) {
-        choreographer.onPaste(
-          text.characters
-              .getRange(
-                _currentText.characters.length,
-                text.characters.length,
-              )
-              .join(),
-        );
-      }
-      _currentText = text;
-    });
+    addListener(_onTextChanged);
   }
 
   bool get exceededMaxLength => text.length >= ChoreoConstants.maxLength;
@@ -85,76 +70,85 @@ class PangeaTextController extends TextEditingController {
     this.text = text;
   }
 
+  void _onTextChanged() {
+    final diff = text.characters.length - _currentText.characters.length;
+    if (diff > 1 && editType == EditType.keyboard) {
+      final pastedText = text.characters
+          .skip(_currentText.characters.length)
+          .take(diff)
+          .join();
+      choreographer.onPaste(pastedText);
+    }
+    _currentText = text;
+  }
+
+  void _onUndo(PangeaMatchState match) {
+    try {
+      choreographer.onUndoReplacement(match);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        level: SentryLevel.warning,
+        data: {
+          "match": match.toJson(),
+        },
+      );
+      MatrixState.pAnyState.closeOverlay();
+      choreographer.clearMatches(e);
+    }
+  }
+
   @override
   TextSpan buildTextSpan({
     required BuildContext context,
     TextStyle? style,
     required bool withComposing,
   }) {
-    final SubscriptionStatus canSendStatus = choreographer
+    final subscription = choreographer
         .pangeaController.subscriptionController.subscriptionStatus;
-    if (canSendStatus == SubscriptionStatus.shouldShowPaywall &&
-        !choreographer.isFetching.value &&
-        text.isNotEmpty) {
-      return TextSpan(
-        text: text,
-        style: style?.merge(
-          _underlineStyle(
-            const Color.fromARGB(187, 132, 96, 224),
-          ),
-        ),
-      );
-    } else if (!choreographer.hasIGCTextData || text.isEmpty) {
-      return TextSpan(text: text, style: style);
-    } else {
-      final parts = text.split(choreographer.currentIGCText!);
-      if (parts.length == 1 || parts.length > 2) {
-        return TextSpan(text: text, style: style);
-      }
 
-      final inlineSpans = constructTokenSpan(
-        defaultStyle: style,
-        onUndo: (match) {
-          try {
-            choreographer.onUndoReplacement(match);
-          } catch (e, s) {
-            ErrorHandler.logError(
-              e: e,
-              s: s,
-              level: SentryLevel.warning,
-              data: {
-                "match": match.toJson(),
-              },
-            );
-            MatrixState.pAnyState.closeOverlay();
-            choreographer.clearMatches(e);
-          }
-        },
-      );
-
-      return TextSpan(
-        style: style,
-        children: [
-          ...inlineSpans,
-          TextSpan(text: parts[1], style: style),
-        ],
-      );
+    if (subscription == SubscriptionStatus.shouldShowPaywall) {
+      return _buildPaywallSpan(style);
     }
+
+    if (!choreographer.hasIGCTextData) {
+      return TextSpan(text: text, style: style);
+    }
+
+    final parts = text.split(choreographer.currentIGCText!);
+    if (parts.length != 2) {
+      return TextSpan(text: text, style: style);
+    }
+
+    return TextSpan(
+      style: style,
+      children: [
+        ..._buildTokenSpan(defaultStyle: style),
+        TextSpan(text: parts[1], style: style),
+      ],
+    );
   }
 
-  InlineSpan _matchSpan(
+  TextSpan _buildPaywallSpan(TextStyle? style) => TextSpan(
+        text: text,
+        style: style?.merge(
+          _underlineStyle(const Color.fromARGB(187, 132, 96, 224)),
+        ),
+      );
+
+  InlineSpan _buildMatchSpan(
     PangeaMatchState match,
     TextStyle style,
-    VoidCallback onUndo,
   ) {
-    if (match.updatedMatch.status == PangeaMatchStatus.automatic) {
-      final span = choreographer.currentIGCText!.characters
-          .getRange(
-            match.updatedMatch.match.offset,
-            match.updatedMatch.match.offset + match.updatedMatch.match.length,
-          )
-          .toString();
+    final span = choreographer.currentIGCText!.characters
+        .getRange(
+          match.updatedMatch.match.offset,
+          match.updatedMatch.match.offset + match.updatedMatch.match.length,
+        )
+        .toString();
 
+    if (match.updatedMatch.status == PangeaMatchStatus.automatic) {
       final originalText = match.originalMatch.match.fullText.characters
           .getRange(
             match.originalMatch.match.offset,
@@ -167,17 +161,12 @@ class PangeaTextController extends TextEditingController {
             "autocorrection_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
         currentText: span,
         originalText: originalText,
-        onUndo: onUndo,
+        onUndo: () => _onUndo(match),
         style: style,
       );
     } else {
       return TextSpan(
-        text: choreographer.currentIGCText!.characters
-            .getRange(
-              match.updatedMatch.match.offset,
-              match.updatedMatch.match.offset + match.updatedMatch.match.length,
-            )
-            .toString(),
+        text: span,
         style: style,
       );
     }
@@ -185,18 +174,17 @@ class PangeaTextController extends TextEditingController {
 
   /// Returns a list of [TextSpan]s used to display the text in the input field
   /// with the appropriate styling for each error match.
-  List<InlineSpan> constructTokenSpan({
-    required void Function(PangeaMatchState) onUndo,
+  List<InlineSpan> _buildTokenSpan({
     TextStyle? defaultStyle,
   }) {
-    final automaticMatches = choreographer.closedIGCMatches
-            ?.where((m) => m.updatedMatch.status == PangeaMatchStatus.automatic)
-            .toList() ??
-        [];
+    final openMatches = choreographer.openIGCMatches ?? const [];
+    final closedMatches = choreographer.closedIGCMatches ?? const [];
 
     final textSpanMatches = [
-      ...choreographer.openIGCMatches ?? [],
-      ...automaticMatches,
+      ...openMatches,
+      ...closedMatches.reversed.takeWhile(
+        (m) => m.updatedMatch.status == PangeaMatchStatus.automatic,
+      ),
     ]..sort(
         (a, b) =>
             a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
@@ -223,7 +211,7 @@ class PangeaTextController extends TextEditingController {
             openMatch.length == match.updatedMatch.match.length,
       );
 
-      spans.add(_matchSpan(match, style, () => onUndo.call(match)));
+      spans.add(_buildMatchSpan(match, style));
       cursor =
           match.updatedMatch.match.offset + match.updatedMatch.match.length;
     }
