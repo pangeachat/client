@@ -12,9 +12,11 @@ import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 
 class SpaceAnalyticsRequestedDialog extends StatelessWidget {
   final Room room;
+  final List<User> requestingUsers;
   const SpaceAnalyticsRequestedDialog({
     super.key,
     required this.room,
+    required this.requestingUsers,
   });
 
   @override
@@ -39,6 +41,9 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
                   ),
                   Text(
                     L10n.of(context).accessRequestedDesc(
+                      requestingUsers
+                          .map((u) => u.calcDisplayname())
+                          .join(", "),
                       room.getLocalizedDisplayname(),
                     ),
                     style: TextStyle(fontSize: isColumnMode ? 16.0 : 14.0),

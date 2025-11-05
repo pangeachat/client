@@ -2807,13 +2807,13 @@
   "requestSummaries": "Zahtevaj povzetke",
   "loadingActivitySummary": "Nalaganje povzetka dejavnosti...",
   "generatingNewActivities": "Ste prvi uporabnik tega jezika! Prosim, vzemite si minuto, pripravljamo dejavnosti prav za vas.",
-  "requestAccessTitle": "Želite zaprositi za dostop do analitike?",
+  "requestAccessTitle": "Zahtevaj dostop do analitike?",
   "requestAccessDesc": "Ali želite zaprositi za dostop do ogledanja analitike udeležencev?\n\nČe se udeleženci strinjajo, bodo skrbniki tega tečaja lahko videli:\n    • skupni slovar\n    • skupne gramatične koncepte\n    • število opravljenih dejavnosti\n    • specifične uporabljene gramatične koncepte, pravilno in nepravilno\n\nNe bodo mogli videti:\n    • sporočil v klepetih zunaj tečaja\n    • seznam slovarja",
   "requestAccess": "Zahtevaj dostop ({count})",
   "analyticsInactiveTitle": "Zahtevki za neaktivne uporabnike niso bili poslani",
   "analyticsInactiveDesc": "Neaktivni uporabniki, ki se niso prijavili od uvedbe te funkcije, ne bodo videli vašega zahtevka.\n\nGumb Zaženi se bo pojavil, ko se vrnejo. Kasneje lahko ponovno pošljete zahtevo s klikom na gumb Zaženi pod njihovim imenom, ko bo na voljo.",
   "accessRequestedTitle": "Zahteva za dostop do analitike",
-  "accessRequestedDesc": "Skrbniki prostora “{space}” zahtevajo ogled vaših učnih analitik.\n\nČe se strinjate, bodo skrbniki tega tečaja lahko videli:\n    • skupni slovar\n    • skupne gramatične koncepte\n    • število opravljenih dejavnosti\n    • specifične uporabljene gramatične koncepte, pravilno in nepravilno\n\nNe bodo mogli videti:\n    • sporočil v klepetih zunaj tečaja\n    • seznam slovarja",
+  "accessRequestedDesc": "Zahtevajo admini: {admin} \n\nAdmini iz “{space}” zahtevajo ogled vaših analitik učenja.\n\nČe se strinjate, bodo lahko videli vaše:\n    • skupno besedišče\n    • skupne slovnične koncepte\n    • skupno število zaključenih aktivnosti\n    • specifične slovnične koncepte, uporabljene pravilno in nepravilno\n\nNe bodo mogli videti vaših:\n    • sporočil v klepetih zunaj tečaja\n    • seznama besed",
   "allowAccess": "Dovoli dostop",
   "denyAccess": "Zavrni dostop",
   "adminRequestedAccess": "Administratorji so zaprosili za ogled vaših analiz.",
@@ -2945,7 +2945,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-11-05 10:36:23.747006",
+  "@@last_modified": "2025-11-05 14:20:24.193300",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12201,6 +12201,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

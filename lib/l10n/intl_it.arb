@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-05 10:36:25.956014",
+  "@@last_modified": "2025-11-05 14:20:30.758794",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -4831,13 +4831,13 @@
   "requestSummaries": "Richiedi riepiloghi",
   "loadingActivitySummary": "Caricamento riepilogo attività...",
   "generatingNewActivities": "Sei il primo utente di questa coppia di lingue! Per favore, prenditi un minuto, stiamo preparando attività appositamente per te.",
-  "requestAccessTitle": "Richiedere l'accesso alla visualizzazione delle analisi?",
+  "requestAccessTitle": "Richiedi accesso alle analisi?",
   "requestAccessDesc": "Desideri richiedere l'accesso per visualizzare le analisi dei partecipanti?\n\nSe i partecipanti sono d'accordo, gli amministratori di questo corso potranno visualizzare i loro:\n    • vocabolario totale\n    • concetti grammaticali totali\n    • sessioni di attività completate\n    • i concetti grammaticali specifici usati, correttamente e erroneamente\n\nNon potranno visualizzare i loro:\n    • messaggi nelle chat fuori dal corso\n    • lista di vocabolario",
   "requestAccess": "Richiedi accesso ({count})",
   "analyticsInactiveTitle": "Le richieste agli utenti inattivi non sono state inviate",
   "analyticsInactiveDesc": "Gli utenti inattivi che non hanno effettuato l'accesso da quando questa funzione è stata introdotta non vedranno la tua richiesta.\n\nIl pulsante Richiedi apparirà quando torneranno. Puoi reinviare la richiesta in seguito cliccando sul pulsante Richiedi sotto il loro nome quando sarà disponibile.",
   "accessRequestedTitle": "Richiesta di accesso alle analisi",
-  "accessRequestedDesc": "Gli amministratori di “{space}” stanno richiedendo di visualizzare le tue analisi di apprendimento.\n\nSe sei d'accordo, gli amministratori di questo corso potranno visualizzare i tuoi:\n    • vocabolario totale\n    • concetti grammaticali totali\n    • sessioni di attività completate\n    • i concetti grammaticali specifici usati, correttamente e erroneamente\n\nNon potranno visualizzare i tuoi:\n    • messaggi nelle chat fuori dal corso\n    • lista di vocabolario",
+  "accessRequestedDesc": "Richiesta admin(i): {admin} \n\nGli admin di “{space}” stanno richiedendo di visualizzare le tue analisi di apprendimento.\n\nSe sei d'accordo, potranno visualizzare il tuo:\n    • vocabolario totale\n    • concetti grammaticali totali\n    • sessioni di attività totali completate\n    • i concetti grammaticali specifici utilizzati, correttamente e incorrettamente\n\nNon potranno visualizzare il tuo:\n    • messaggi nelle chat al di fuori del corso\n    • elenco di vocaboli",
   "allowAccess": "Consenti accesso",
   "denyAccess": "Rifiuta accesso",
   "adminRequestedAccess": "Gli amministratori hanno chiesto di visualizzare le tue analisi.",
@@ -11123,6 +11123,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

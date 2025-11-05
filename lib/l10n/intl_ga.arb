@@ -4860,13 +4860,13 @@
   "requestSummaries": "Iarr achoimrigh",
   "loadingActivitySummary": "Ag lódáil achoimre gníomhaíochta...",
   "generatingNewActivities": "Is tú an chéad úsáideoir den phair teanga seo! Tabhair cúpla nóiméad dúinn, táimid ag ullmhú gníomhaíochtaí díreach duitse.",
-  "requestAccessTitle": "Iarr ar rochtain ar anailísíocht a fháil?",
+  "requestAccessTitle": "An bhfuil tú ag iarraidh rochtain ar an anailís?",
   "requestAccessDesc": "Ar mhaith leat rochtain a fháil chun anailísíocht rannpháirtithe a fheiceáil?\n\nMura n-aontaíonn rannpháirtithe, beidh na riarthóirí den chúrsa seo in ann a fheiceáil:\n    • an t-uimhir fhoclóra iomlán\n    • na coincheapa gramadaí iomlána\n    • na seisiúin gníomhaíochta iomlána a chríochnaigh\n    • na coincheapa gramadaí sonracha a úsáid, i gceart agus i gceart mícheart\n\nNí bheidh siad in ann a fheiceáil:\n    • teachtaireachtaí i gcomhráite lasmuigh den chúrsa\n    • liosta fhoclóra",
   "requestAccess": "Iarr rochtain ({count})",
   "analyticsInactiveTitle": "Níor féidir iarratais ar úsáideoirí neamhghníomhacha a sheoladh",
   "analyticsInactiveDesc": "Ní fheicfidh úsáideoirí neamhghníomhacha nach ndearna siad logáil isteach ó thús na gné seo do do iarratas.\n\nTiocfaidh an cnaipe Iarr ar ais nuair a bheidh siad ar ais. Is féidir leat an iarraidh a sheoladh arís níos déanaí trí chliceáil ar an gcnaipe Iarr ar ais faoi a n-ainm nuair a bheidh sé ar fáil.",
   "accessRequestedTitle": "Iarratas ar rochtain ar anailísí",
-  "accessRequestedDesc": "Tá na riarthóirí de “{space}” ag iarraidh do chuid anailísí foghlama a fheiceáil.\n\nMura n-aontaíonn tú, beidh na riarthóirí den chúrsa seo in ann do chuid:\n    • uimhreacha focail\n    • coincheapa gramadaí\n    • suímh gníomhaíochta críochnaithe\n    • na coincheapa gramadaí ar leith a úsáid, go ceart agus go mícheart\n\nNí bheidh siad in ann do chuid a fheiceáil:\n    • teachtaireachtaí i gcomhráite lasmuigh den chúrsa\n    • liosta na bhfocal",
+  "accessRequestedDesc": "Ag iarraidh admin(í): {admin} \n\nTá admin ó “{space}” ag iarraidh rochtain a fháil ar do thuarascálacha foghlama.\n\nMás aontaíonn tú, beidh siad in ann do:\n    • iomlán foclóra\n    • iomlán coincheapa gramadaí\n    • iomlán seisiúin gníomhaíochta a chríochnaigh\n    • na coincheapa gramadaí ar leith a úsáidtear, go ceart agus go mícheart\n\nNí bheidh siad in ann do:\n    • teachtaireachtaí i gcaibidlí lasmuigh den chúrsa\n    • liosta foclóra",
   "allowAccess": "Ceadaigh Rochtain",
   "denyAccess": "Diúltaigh Rochtain",
   "adminRequestedAccess": "D'iarr na riarthóirí rochtain ar do chuid anailísí.",
@@ -4998,7 +4998,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-11-05 10:37:11.843634",
+  "@@last_modified": "2025-11-05 14:22:58.858887",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -11118,6 +11118,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

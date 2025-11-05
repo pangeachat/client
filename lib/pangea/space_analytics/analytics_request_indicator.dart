@@ -70,10 +70,14 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
   }
 
   Future<void> _onTap(BuildContext context) async {
+    final requestingUsers = _knockingAdmins.keys.toList();
     final resp = await showDialog(
       context: context,
       builder: (context) {
-        return SpaceAnalyticsRequestedDialog(room: widget.room);
+        return SpaceAnalyticsRequestedDialog(
+          room: widget.room,
+          requestingUsers: requestingUsers,
+        );
       },
     );
 

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-05 10:36:55.899674",
+  "@@last_modified": "2025-11-05 14:22:20.980930",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -4513,13 +4513,13 @@
   "requestSummaries": "Begär sammanfattningar",
   "loadingActivitySummary": "Läser in aktivitetsammanfattning...",
   "generatingNewActivities": "Du är den första användaren för detta språkpar! Ge oss en minut, vi förbereder aktiviteter speciellt för dig.",
-  "requestAccessTitle": "Begär tillgång till analysvisning?",
+  "requestAccessTitle": "Begär åtkomst till analys?",
   "requestAccessDesc": "Vill du begära tillgång för att se deltagaranalys?\n\nOm deltagarna samtycker, kommer administratörer av denna kurs att kunna se deras:\n    • totala ordförråd\n    • totala grammatikbegrepp\n    • totala genomförda aktivitetsessioner\n    • specifika grammatikbegrepp som används, korrekt och felaktigt\n\nDe kommer inte att kunna se deras:\n    • meddelanden i chattar utanför kursen\n    • ordförrådslista",
   "requestAccess": "Begär tillgång ({count})",
   "analyticsInactiveTitle": "Förfrågningar till inaktiva användare kunde inte skickas",
   "analyticsInactiveDesc": "Inaktiva användare som inte har loggat in sedan denna funktion infördes kommer inte att se din förfrågan.\n\nKnappen Begär kommer att visas när de återvänder. Du kan skicka om förfrågan senare genom att klicka på knappen Begär under deras namn när den är tillgänglig.",
   "accessRequestedTitle": "Begäran om tillgång till analys",
-  "accessRequestedDesc": "Administratörerna för \"{space}\" begär att få se dina inlärningsanalyser.\n\nOm du godkänner kommer administratörerna för denna kurs att kunna se din:\n    • totala ordförråd\n    • totala grammatikbegrepp\n    • totala aktivitetsessioner som slutförts\n    • de specifika grammatikbegreppen som används, korrekt och felaktigt\n\nDe kommer inte att kunna se dina:\n    • meddelanden i chattar utanför kursen\n    • ordförrådslistan",
+  "accessRequestedDesc": "Begärande admin(s): {admin} \n\nAdministratörer från “{space}” begär att få se din lärandeanalys.\n\nOm du går med på det, kommer de att kunna se din:\n    • totala ordförråd\n    • totala grammatiska koncept\n    • totala genomförda aktivitetstillfällen\n    • de specifika grammatiska koncept som använts, korrekt och inkorrekt\n\nDe kommer inte att kunna se din:\n    • meddelanden i chattar utanför kursen\n    • ordförrådslista",
   "allowAccess": "Tillåt tillgång",
   "denyAccess": "Neka tillgång",
   "adminRequestedAccess": "Administratörer har begärt att få se dina analyser.",
@@ -11598,6 +11598,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }
