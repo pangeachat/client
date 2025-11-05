@@ -4187,13 +4187,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Solicitar resumos";
     },
     get$requestAccessTitle() {
-      return string$.Solicir;
+      return "Solicitar acesso \xe0 an\xe1lise?";
     },
     get$requestAccessDesc() {
       return string$.Gostar;
     },
     get$analyticsInactiveTitle() {
-      return string$.Solici_;
+      return string$.Solici;
     },
     get$analyticsInactiveDesc() {
       return string$.Usu_ri;
@@ -4201,8 +4201,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accessRequestedTitle() {
       return "Solicita\xe7\xe3o de acesso \xe0s an\xe1lises";
     },
-    accessRequestedDesc$1(space) {
-      return "Os administradores de \u201c" + space + "\u201d est\xe3o solicitando acesso para visualizar suas an\xe1lises de aprendizagem.\n\nSe voc\xea concordar, os administradores deste curso poder\xe3o ver:\n    \u2022 vocabul\xe1rio total\n    \u2022 conceitos gramaticais totais\n    \u2022 sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o ver:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio";
+    accessRequestedDesc$2(admin, space) {
+      return "Solicitando admin(s): " + admin + " \n\nOs administradores de \u201c" + space + string$.u201d_est_;
     },
     get$allowAccess() {
       return "Permitir Acesso";
@@ -8734,13 +8734,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Solicitar resumos";
     },
     get$requestAccessTitle() {
-      return string$.Solicir;
+      return "Solicitar acesso \xe0 an\xe1lise?";
     },
     get$requestAccessDesc() {
       return string$.Gostar;
     },
     get$analyticsInactiveTitle() {
-      return string$.Solici_;
+      return string$.Solici;
     },
     get$analyticsInactiveDesc() {
       return "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o desta funcionalidade n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.";
@@ -8748,8 +8748,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accessRequestedTitle() {
       return "Solicita\xe7\xe3o de acesso \xe0s an\xe1lises";
     },
-    accessRequestedDesc$1(space) {
-      return "Os administradores de \u201c" + space + "\u201d est\xe3o solicitando acesso para visualizar suas an\xe1lises de aprendizagem.\n\nSe voc\xea concordar, os administradores deste curso poder\xe3o visualizar:\n    \u2022 total de vocabul\xe1rio\n    \u2022 total de conceitos gramaticais\n    \u2022 total de sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos utilizados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o visualizar:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio";
+    accessRequestedDesc$2(admin, space) {
+      return "Solicitando admin(s): " + admin + " \n\nOs administradores de \u201c" + space + string$.u201d_est_;
     },
     get$allowAccess() {
       return "Permitir acesso";
@@ -13242,7 +13242,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Solicitar resumos";
     },
     get$requestAccessTitle() {
-      return string$.Solicir;
+      return "Solicitar acesso \xe0 an\xe1lise?";
     },
     get$requestAccessDesc() {
       return "Gostaria de solicitar acesso para visualizar an\xe1lises dos participantes?\n\nSe os participantes concordarem, os administradores deste curso poder\xe3o visualizar:\n    \u2022 vocabul\xe1rio total\n    \u2022 conceitos gramaticais totais\n    \u2022 sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos utilizados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o visualizar:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio";
@@ -13256,8 +13256,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$accessRequestedTitle() {
       return "Pedido de Acesso \xe0 An\xe1lise";
     },
-    accessRequestedDesc$1(space) {
-      return 'Os administradores de "' + space + '" est\xe3o a solicitar para ver as suas an\xe1lises de aprendizagem.\n\nSe concordar, os administradores deste curso poder\xe3o ver o seu:\n    \u2022 vocabul\xe1rio total\n    \u2022 conceitos gramaticais totais\n    \u2022 sess\xf5es de atividade conclu\xeddas\n    \u2022 conceitos gramaticais espec\xedficos utilizados, corretamente e incorretamente\n\nN\xe3o poder\xe3o ver o seu:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio';
+    accessRequestedDesc$2(admin, space) {
+      return "Solicitando admin(s): " + admin + " \n\nOs administradores de \u201c" + space + string$.u201d_est_;
     },
     get$allowAccess() {
       return "Permitir Acesso";
@@ -13736,8 +13736,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Se_seu: "Se seu dispositivo suportar o idioma que voc\xea est\xe1 aprendendo, voc\xea pode ativar a autocorre\xe7\xe3o do dispositivo para corrigir erros comuns enquanto digita.",
     Seleci: "Selecione um \xedcone de gram\xe1tica para atividades e detalhes.",
     Sobres: "Sobrescreve todas as outras regras e desativa todas as notifica\xe7\xf5es.",
-    Solicir: "Solicitar acesso \xe0 visualiza\xe7\xe3o de an\xe1lises?",
-    Solici_: "Solicita\xe7\xf5es para usu\xe1rios inativos n\xe3o puderam ser enviadas",
+    Solici: "Solicita\xe7\xf5es para usu\xe1rios inativos n\xe3o puderam ser enviadas",
     Soment: "Somente administradores podem excluir um curso. Esta \xe9 uma a\xe7\xe3o destrutiva que remove todos os usu\xe1rios e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
     Suprimd: "Suprime notifica\xe7\xf5es de clientes automatizados como bots.",
     Suprimpe: "Suprime notifica\xe7\xf5es para eventos de ACL do servidor.",
@@ -13755,13 +13754,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Voc__p: "Voc\xea pode tornar seu curso aberto ao mundo! Ou, tornar seu curso privado e seguro.",
     Volte_: "Volte amanh\xe3 para atualiza\xe7\xf5es da atividade.",
     xc9_aqui: "\xc9 aqui que as palavras de vocabul\xe1rio ir\xe3o aparecer assim que voc\xea as evoluir!",
+    u201d_est_: "\u201d est\xe3o solicitando visualizar suas an\xe1lises de aprendizado.\n\nSe voc\xea concordar, eles poder\xe3o visualizar seu:\n    \u2022 vocabul\xe1rio total\n    \u2022 total de conceitos gramaticais\n    \u2022 total de sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o visualizar seu:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
     u2022_Canc: "\u2022 Cancelar a qualquer momento nas configura\xe7\xf5es de assinatura",
     u2022_soli: "\u2022 solicita\xe7\xe3o para entrar e aprova\xe7\xe3o do administrador"
   };
 };
 ;
 (d => {
-  d["PnShrNfeLHHOb059PSaiuz4TpP0="] = d.current;
+  d["u5XxKr/bI41ic8UzyTYAje1t650="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

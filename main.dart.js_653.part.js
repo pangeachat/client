@@ -5,3718 +5,3718 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nRu$() {
-      return new A.L10nRu(B.canonicalizedLocale("ru"));
+    L10nRo$() {
+      return new A.L10nRo(B.canonicalizedLocale("ro"));
     },
-    L10nRu: function L10nRu(t0) {
+    L10nRo: function L10nRo(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[42], A);
-  A.L10nRu.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[41], A);
+  A.L10nRo.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\u043d\u0435\u0442";
+      return "\xeentotdeauna folose\u0219te formatul de 24 de ore";
     },
     get$repeatPassword() {
-      return "\u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Repeta\u021bi parola";
     },
     get$notAnImage() {
-      return "\u042d\u0442\u043e \u043d\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0430.";
+      return "Nu este un fi\u0219ier imagine.";
     },
     get$setCustomPermissionLevel() {
-      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0445 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0439";
+      return "Seteaz\u0103 nivelul de permisiune personalizat";
     },
     get$setPermissionsLevelDescription() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043e\u0434\u043d\u0443 \u0438\u0437 \u043f\u0440\u0435\u0434\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0451\u043d\u043d\u044b\u0445 \u0440\u043e\u043b\u0435\u0439 \u043d\u0438\u0436\u0435 \u0438\u043b\u0438 \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0439 \u043e\u0442 0 \u0434\u043e 100.";
+      return "V\u0103 rug\u0103m s\u0103 alege\u021bi un rol predefinit mai jos sau s\u0103 introduce\u021bi un nivel de permisiune personalizat \xeentre 0 \u0219i 100.";
     },
     get$ignoreUser() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "Ignor\u0103 utilizatorul";
     },
     get$normalUser() {
-      return "\u041e\u0431\u044b\u0447\u043d\u044b\u0439 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c";
+      return "Utilizator normal";
     },
     get$remove(_) {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c";
+      return "Elimina\u021bi";
     },
     get$importNow() {
-      return "\u0418\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0435\u0439\u0447\u0430\u0441";
+      return "Import\u0103 acum";
     },
     get$importEmojis() {
-      return "\u0418\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u044d\u043c\u043e\u0434\u0437\u0438";
+      return "Import\u0103 emoji-uri";
     },
     get$importFromZipFile() {
-      return "\u0418\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438\u0437 ZIP-\u0444\u0430\u0439\u043b\u0430";
+      return "Import\u0103 din fi\u0219ier .zip";
     },
     get$exportEmotePack() {
-      return "\u042d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0430\u0431\u043e\u0440 \u044d\u043c\u043e\u0434\u0437\u0438 \u043a\u0430\u043a ZIP";
+      return "Export\u0103 pachetul de emoticoane ca .zip";
     },
     get$replace(_) {
-      return "\u0417\u0430\u043c\u0435\u043d\u0438\u0442\u044c";
+      return "\xcenlocuie\u0219te";
     },
     aboutHomeserver$1(homeserver) {
-      return "\u041e \u0441\u0435\u0440\u0432\u0435\u0440\u0435 " + homeserver;
+      return "Despre " + homeserver;
     },
     get$accept(_) {
-      return "\u041f\u0440\u0438\u043d\u044f\u0442\u044c";
+      return "Accept";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " \u043f\u0440\u0438\u043d\u044f\u043b(\u0430) \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
+      return username + " a aceptat invita\u021bi";
     },
     get$account() {
-      return "\u0423\u0447\u0451\u0442\u043d\u0430\u044f \u0437\u0430\u043f\u0438\u0441\u044c";
+      return "Cont";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " \u0430\u043a\u0442\u0438\u0432\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) \u0441\u043a\u0432\u043e\u0437\u043d\u043e\u0435 \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
+      return username + " a activat criptarea end-to-end";
     },
     get$addEmail() {
-      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0443\u044e \u043f\u043e\u0447\u0442\u0443";
+      return "Ad\u0103uga\u021bi email";
     },
     supposedMxid$1(mxid) {
-      return "\u042d\u0442\u043e \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c " + mxid;
+      return "ID-ul ar trebuii s\u0103 fie " + mxid;
     },
     get$admin() {
-      return "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440";
+      return "Administrator";
     },
     get$commandHint_roomupgrade() {
-      return "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u044d\u0442\u0443 \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u0434\u043e \u0443\u043a\u0430\u0437\u0430\u043d\u043d\u043e\u0439 \u0432\u0435\u0440\u0441\u0438\u0438 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Actualizeaz\u0103 aceast\u0103 camer\u0103 la versiunea specificat\u0103 a camerei";
     },
     get$commandHint_googly() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0432\u044b\u043f\u0443\u0447\u0435\u043d\u043d\u044b\u0435 \u0433\u043b\u0430\u0437\u0430";
+      return "Trimite\u021bi c\xe2\u021biva ochi googly";
     },
     get$commandHint_cuddle() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0443\u043b\u044b\u0431\u043a\u0443";
+      return "Trimite\u021bi o \xeembr\u0103\u021bi\u0219are";
     },
     get$commandHint_hug() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043e\u0431\u043d\u0438\u043c\u0430\u0448\u043a\u0438";
+      return "Trimite\u021bi o \xeembr\u0103\u021bi\u0219are";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u0432\u044b\u043f\u0443\u0447\u0438\u043b \u0433\u043b\u0430\u0437\u0430";
+      return senderName + " v-a trimis ochi googly";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u0443\u043b\u044b\u0431\u043d\u0443\u043b\u0441\u044f(-\u0430\u0441\u044c) \u0412\u0430\u043c";
+      return senderName + " v\u0103 \xeembr\u0103\u021bi\u0219eaz\u0103";
     },
     hugContent$1(senderName) {
-      return senderName + " \u043e\u0431\u043d\u044f\u043b(\u0430) \u0412\u0430\u0441";
+      return senderName + " v\u0103 \xeembr\u0103\u021bi\u0219eaz\u0103";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u043e\u0442\u0432\u0435\u0442\u0438\u043b(\u0430) \u043d\u0430 \u0437\u0432\u043e\u043d\u043e\u043a";
+      return senderName + " a acceptat apelul";
     },
     get$anyoneCanJoin() {
-      return "\u041a\u0430\u0436\u0434\u044b\u0439 \u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
+      return "Oricine se poate al\u0103tura";
     },
     get$archive() {
-      return "\u0410\u0440\u0445\u0438\u0432";
+      return "Arhiv\u0103";
     },
     get$areYouSure() {
-      return "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b?";
+      return "E\u0219ti sigur?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0432\u044b\u0439\u0442\u0438?";
+      return "Sunte\u021bi sigur c\u0103 dori\u021bi s\u0103 v\u0103 deconecta\u021bi?";
     },
     get$askSSSSSign() {
-      return "\u0414\u043b\u044f \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u043a\u043b\u044e\u0447\u0430 \u0434\u0440\u0443\u0433\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0443 \u043f\u0430\u0440\u043e\u043b\u044c\u043d\u0443\u044e \u0444\u0440\u0430\u0437\u0443 \u0438\u043b\u0438 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f.";
+      return "Pentru a putea conecta cealalt\u0103 persoan\u0103, te rog introdu parola sau cheia ta de recuperare.";
     },
     askVerificationRequest$1(username) {
-      return "\u041f\u0440\u0438\u043d\u044f\u0442\u044c \u044d\u0442\u043e\u0442 \u0437\u0430\u043f\u0440\u043e\u0441 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f \u043e\u0442 " + username + "?";
+      return "Accep\u021bi cererea de verificare de la " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u0414\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0435 \u0442\u0438\u043f\u044b \u0432\u0445\u043e\u0434\u0430 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443:\n" + serverVersions + "\n\u041d\u043e \u044d\u0442\u043e \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0442\u043e\u043b\u044c\u043a\u043e:\n" + supportedVersions;
+      return "Homeserver-ul suport\u0103 urm\u0103toarele feluri de login:\n" + serverVersions + "\nDar aceast\u0103 aplica\u021bie suport\u0103 numai:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e \u043d\u0430\u0431\u043e\u0440\u0435 \u0442\u0435\u043a\u0441\u0442\u0430";
+      return "Trimite notific\u0103ri de tastare";
     },
     get$swipeRightToLeftToReply() {
-      return "\u0414\u043b\u044f \u043e\u0442\u0432\u0435\u0442\u0430 \u043f\u0440\u043e\u0432\u0435\u0434\u0438\u0442\u0435 \u0441 \u043f\u0440\u0430\u0432\u0430 \u043d\u0430 \u043b\u0435\u0432\u043e";
+      return "Gliseaz\u0103 de la dreapta la st\xe2nga pentru a r\u0103spunde";
     },
     get$sendOnEnter() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u043f\u043e Enter";
+      return "Trimite cu tasta enter";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " \u0447\u0430\u0442\u043e\u0432 \u0438 " + participants + " \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432";
+      return "" + chats + " conversa\u021bii \u0219i " + participants + " participan\u021bi";
     },
     get$banFromChat() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0447\u0430\u0442\u0435";
+      return "Interzis din conversa\u021bie";
     },
     get$banned() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d(\u0430)";
+      return "Interzis";
     },
     bannedUser$2(username, targetName) {
-      return username + " \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) " + targetName;
+      return username + " a interzis pe " + targetName;
     },
     get$blockDevice() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e";
+      return "Blocheaz\u0103 dispozitiv";
     },
     get$blocked() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043e";
+      return "Blocat";
     },
     get$cancel(_) {
-      return "\u041e\u0442\u043c\u0435\u043d\u0430";
+      return "Anuleaz\u0103";
     },
     cantOpenUri$1(uri) {
-      return "\u041d\u0435 \u0443\u0434\u0430\u0435\u0442\u0441\u044f \u043e\u0442\u043a\u0440\u044b\u0442\u044c URI " + uri;
+      return "Nu se poate deschide URI-ul " + uri;
     },
     get$changeDeviceName() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0438\u043c\u044f \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Schimb\u0103 numele dispozitiv";
     },
     changedTheChatAvatar$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0430\u0432\u0430\u0442\u0430\u0440 \u0447\u0430\u0442\u0430";
+      return username + " a schimbat poza conversa\u021bi";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430 \u043d\u0430: '" + description + "'";
+      return username + " a schimbat descrierea grupului \xeen '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0438\u043c\u044f \u0447\u0430\u0442\u0430 \u043d\u0430: '" + chatname + "'";
+      return username + " a schimbat porecla \xeen '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u0447\u0430\u0442\u0443";
+      return username + " a schimbat permisiunile chatului";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f \u043d\u0430: '" + displayname + "'";
+      return username + " s-a schimbat displayname la: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0433\u043e\u0441\u0442\u0435\u0432\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0430";
+      return username + " a schimbat regulile pentru acesul musafirilor";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0433\u043e\u0441\u0442\u0435\u0432\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043d\u0430: " + rules;
+      return username + " a schimbat regulile pentru acesul musafirilor la: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u0438\u0441\u0442\u043e\u0440\u0438\u0438";
+      return username + " a schimbat vizibilitatea istoriei chatului";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u0438\u0441\u0442\u043e\u0440\u0438\u0438 \u043d\u0430: " + rules;
+      return username + " a schimbat vizibilitatea istoriei chatului la: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
+      return username + " a schimbat regulile de al\u0103turare";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f \u043d\u0430: " + joinRules;
+      return username + " a schimbat regulile de al\u0103turare la: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0430\u0432\u0430\u0442\u0430\u0440";
+      return username + " s-a schimbat avatarul";
     },
     changedTheRoomAliases$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0438\u043c\u044b \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return username + " a schimbat pseudonimele camerei";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0441\u0441\u044b\u043b\u043a\u0443 \u0434\u043b\u044f \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f";
+      return username + " a schimbat linkul de invita\u021bie";
     },
     get$changePassword() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Schimba\u021bi parola";
     },
     get$changeTheme() {
-      return "\u041f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f";
+      return "Schimba\u021bi tema aplica\u021biei";
     },
     get$changeYourAvatar() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0441\u0432\u043e\u0439 \u0430\u0432\u0430\u0442\u0430\u0440";
+      return "Schimba\u021bi avatarul vostru";
     },
     get$channelCorruptedDecryptError() {
-      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u044b\u043b\u043e \u043f\u043e\u0432\u0440\u0435\u0436\u0434\u0435\u043d\u043e";
+      return "Criptarea a fost corupat\u0103";
     },
     get$chat() {
-      return "\u0427\u0430\u0442";
+      return "Chat";
     },
     get$chatDetails() {
-      return "\u0414\u0435\u0442\u0430\u043b\u0438 \u0447\u0430\u0442\u0430";
+      return "Detalii de chat";
     },
     get$chats() {
-      return "\u0427\u0430\u0442\u044b";
+      return "Chaturi";
     },
     get$chooseAStrongPassword() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043d\u0430\u0434\u0451\u0436\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Alege\u021bi o parol\u0103 robust\u0103";
     },
     get$clearArchive() {
-      return "\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u0430\u0440\u0445\u0438\u0432";
+      return "\u0218terge\u021bi arhiva";
     },
     get$close(_) {
-      return "\u0417\u0430\u043a\u0440\u044b\u0442\u044c";
+      return "\xcenchide\u021bi";
     },
     get$commandHint_markasdm() {
-      return "\u041f\u043e\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u043b\u0438\u0447\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439";
+      return "Marca\u021bi ca camer\u0103 de mesaje directe";
     },
     get$commandHint_markasgroup() {
-      return "\u041f\u043e\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u0433\u0440\u0443\u043f\u043f\u0443";
+      return "Marca\u021bi ca grup";
     },
     get$commandHint_ban() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0432 \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
+      return "Interzice\u021bi acesul utilizatorului ales din aceast\u0103 camer\u0103";
     },
     get$commandHint_clearcache() {
-      return "\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u043a\u044d\u0448";
+      return "\u0218terge\u021bi cache";
     },
     get$commandHint_create() {
-      return "\u0421\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u043f\u0443\u0441\u0442\u043e\u0439 \u0433\u0440\u0443\u043f\u043f\u043e\u0432\u043e\u0439 \u0447\u0430\u0442\n\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 --no-encryption, \u0447\u0442\u043e\u0431\u044b \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
+      return "Crea\u021bi un grup de chat gol\nFolosi\u021bi --no-encryption s\u0103 dezactiva\u021bi criptare";
     },
     get$commandHint_discardsession() {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0441\u0435\u0430\u043d\u0441";
+      return "Renun\u021ba\u021bi sesiunea";
     },
     get$commandHint_dm() {
-      return "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043b\u0438\u0447\u043d\u044b\u0439 \u0447\u0430\u0442\n\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 --no-encryption, \u0447\u0442\u043e\u0431\u044b \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
+      return "Porni\u021bi un chat direct\nFolosi\u021bi --no-encryption s\u0103 dezactiva\u021bi criptare";
     },
     get$commandHint_html() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0442\u0435\u043a\u0441\u0442 \u0444\u043e\u0440\u043c\u0430\u0442\u0430 HTML";
+      return "Trimite\u021bi text format ca HTML";
     },
     get$commandHint_invite() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0432 \u044d\u0442\u0443 \u043a\u043e\u043c\u043d\u0430\u0442\u0443";
+      return "Invita\u021bi utilizatorul ales la aceast\u0103 camer\u0103";
     },
     get$commandHint_join() {
-      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0434\u0430\u043d\u043d\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
+      return "Al\u0103tura\u021bi-v\u0103 la camera ales\u0103";
     },
     get$commandHint_kick() {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0438\u0437 \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Da\u021bi afar\u0103 pe utilizatorul ales din aceast\u0103 camer\u0103";
     },
     get$commandHint_leave() {
-      return "\u041f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u044d\u0442\u0443 \u043a\u043e\u043c\u043d\u0430\u0442\u0443";
+      return "Renun\u021ba\u021bi la aceast\u0103 camer\u0103";
     },
     get$commandHint_me() {
-      return "\u041e\u043f\u0438\u0448\u0438\u0442\u0435 \u0441\u0435\u0431\u044f";
+      return "Descrie\u021bi-v\u0103";
     },
     get$commandHint_myroomavatar() {
-      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u044e \u0434\u043b\u044f \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b (\u0430\u0432\u0442\u043e\u0440: mxc-uri)";
+      return "Alege\u021bi un avatar pentru aceast\u0103 camer\u0103 (folo\u0219e\u0219te mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f \u0434\u043b\u044f \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Alege\u021bi un displayname pentru aceast\u0103 camer\u0103";
     },
     get$commandHint_op() {
-      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u0440\u0430\u0432 \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f (\u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e: 50)";
+      return "Stabili\u021bi nivelul de putere a utilizatorul ales (implicit: 50)";
     },
     get$commandHint_plain() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043d\u0435\u043e\u0442\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0442\u0435\u043a\u0441\u0442";
+      return "Trimite\u021bi text simplu/neformatat";
     },
     get$commandHint_react() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043e\u0442\u0432\u0435\u0442 \u043a\u0430\u043a \u0440\u0435\u0430\u043a\u0446\u0438\u044e";
+      return "Trimite\u021bi r\u0103spuns ca reac\u021bie";
     },
     get$commandHint_send() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0442\u0435\u043a\u0441\u0442";
+      return "Trimite\u021bi text";
     },
     get$commandHint_unban() {
-      return "\u0420\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0432 \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
+      return "Dezinterzice\u021bi utilizatorul ales din aceast\u0103 camer\u0103";
     },
     get$compareEmojiMatch() {
-      return "\u0421\u0440\u0430\u0432\u043d\u0438\u0442\u0435 \u044d\u043c\u043e\u0434\u0437\u0438";
+      return "V\u0103 rug\u0103m s\u0103 compara\u021bi emoji-urile";
     },
     get$compareNumbersMatch() {
-      return "\u0421\u0440\u0430\u0432\u043d\u0438\u0442\u0435 \u0447\u0438\u0441\u043b\u0430";
+      return "V\u0103 rug\u0103m s\u0103 compara\u021bi numerele";
     },
     get$configureChat() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0447\u0430\u0442";
+      return "Configura\u021bi chat";
     },
     get$confirm(_) {
-      return "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c";
+      return "Confirma\u021bi";
     },
     get$copiedToClipboard() {
-      return "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440 \u043e\u0431\u043c\u0435\u043d\u0430";
+      return "Copiat \xeen clipboard";
     },
     get$copy(_) {
-      return "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c";
+      return "Copia\u021bi";
     },
     couldNotDecryptMessage$1(error) {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435: " + error;
+      return "Dezcriptarea mesajului a e\u0219uat: " + error;
     },
     get$checkList() {
-      return "\u0421\u043f\u0438\u0441\u043e\u043a \u043f\u0440\u043e\u0432\u0435\u0440\u043e\u043a";
+      return "List\u0103 de verificare";
     },
     countParticipants$1(count) {
-      return "" + count + " \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0430(\u043e\u0432)";
+      return "" + count + " participan\u021bi";
     },
     countInvited$1(count) {
-      return "" + count + " \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0451\u043d\u043d\u044b\u0445";
+      return "" + count + " invitat";
     },
     get$create(_) {
-      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c";
+      return "Crea\u021bi";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " \u0441\u043e\u0437\u0434\u0430\u043b(\u0430) \u0447\u0430\u0442";
+      return "\ud83d\udcac" + username + " a creat chatul";
     },
     get$createGroup() {
-      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0433\u0440\u0443\u043f\u043f\u0443";
+      return "Creeaz\u0103 grup";
     },
     get$currentlyActive() {
-      return "\u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0430\u043a\u0442\u0438\u0432\u0435\u043d(\u0430)";
+      return "Activ acum";
     },
     get$darkTheme() {
-      return "\u0422\u0451\u043c\u043d\u0430\u044f";
+      return "\xcentunecat";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return timeOfDay + ", " + date;
+      return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\u042d\u0442\u043e \u0434\u0435\u0430\u043a\u0442\u0438\u0432\u0438\u0440\u0443\u0435\u0442 \u0432\u0430\u0448\u0443 \u0443\u0447\u0451\u0442\u043d\u0443\u044e \u0437\u0430\u043f\u0438\u0441\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f. \u0414\u0430\u043d\u043d\u043e\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e! \u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b?";
+      return "Aceast\u0103 ac\u021biune va dezactiva contul vostru. Nu poate fi anulat! Sunte\u021bi sigur?";
     },
     get$defaultPermissionLevel() {
-      return "\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0439 \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u0434\u043b\u044f \u043d\u043e\u0432\u044b\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439";
+      return "Nivel de permisiuni implicit\u0103";
     },
     get$$delete(_) {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c";
+      return "\u0218terge\u021bi";
     },
     get$deleteAccount() {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0430\u043a\u043a\u0430\u0443\u043d\u0442";
+      return "\u0218terge\u021bi contul";
     },
     get$deleteMessage() {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "\u0218terge\u021bi mesajul";
     },
     get$devices() {
-      return "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Dispozitive";
     },
     get$displaynameHasBeenChanged() {
-      return "\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f \u0431\u044b\u043b\u043e \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u043e";
+      return "Displayname a fost schimbat";
     },
     get$downloadFile() {
-      return "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0444\u0430\u0439\u043b";
+      return "Desc\u0103rca\u021bi fi\u0219ierul";
     },
     get$edit() {
-      return "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c";
+      return "Edita\u021bi";
     },
     get$editBlockedServers() {
-      return "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u044b";
+      return "Edita\u021bi servere blocate";
     },
     get$chatPermissions() {
-      return "\u041f\u0440\u0430\u0432\u0430 \u0432 \u0447\u0430\u0442\u0435";
+      return "Permisiuni de chat";
     },
     get$editDisplayname() {
-      return "\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f";
+      return "Schimba\u021bi displayname";
     },
     get$editRoomAvatar() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0430\u0432\u0430\u0442\u0430\u0440 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Schimba\u021bi avatarul din camer\u0103";
     },
     get$emoteExists() {
-      return "\u042d\u043c\u043e\u0434\u0437\u0438 \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442!";
+      return "Emote deja exist\u0103!";
     },
     get$emoteInvalid() {
-      return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u044b\u0439 \u043a\u043e\u0434 \u044d\u043c\u043e\u0434\u0437\u0438!";
+      return "Shortcode de emote nevalibil!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\u041d\u0435\u0434\u0430\u0432\u043d\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u044d\u043c\u043e\u0434\u0437\u0438 \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u0437\u0434\u0435\u0441\u044c...";
+      return "Emoticoane folosite recent vor ap\u0103rea aici...";
     },
     get$emotePacks() {
-      return "\u041d\u0430\u0431\u043e\u0440\u044b \u044d\u043c\u043e\u0434\u0437\u0438 \u0434\u043b\u044f \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Pachete de emoturi din camer\u0103";
     },
     get$customEmojisAndStickers() {
-      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0435 \u044d\u043c\u043e\u0434\u0437\u0438 \u0438 \u0441\u0442\u0438\u043a\u0435\u0440\u044b";
+      return "Emoticoane \u0219i stickere personalizate";
     },
     get$emoteShortcode() {
-      return "\u041a\u043e\u0434 \u044d\u043c\u043e\u0434\u0437\u0438";
+      return "Shortcode de emote";
     },
     get$emoteWarnNeedToPick() {
-      return "\u0412\u0430\u043c \u043d\u0443\u0436\u043d\u043e \u0437\u0430\u0434\u0430\u0442\u044c \u043a\u043e\u0434 \u044d\u043c\u043e\u0434\u0437\u0438 \u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435!";
+      return "Trebuie s\u0103 alege\u021bi shortcode pentru emote \u0219i o imagine!";
     },
     get$emptyChat() {
-      return "\u041f\u0443\u0441\u0442\u043e\u0439 \u0447\u0430\u0442";
+      return "Chat gol";
     },
     get$enableEmotesGlobally() {
-      return "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043d\u0430\u0431\u043e\u0440 \u044d\u043c\u043e\u0434\u0437\u0438 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e";
+      return "Activa\u021bi pachet de emote global";
     },
     get$enableEncryption() {
-      return "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
+      return "Activa\u021bi criptare";
     },
     get$encrypted() {
-      return "\u0417\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
+      return "Criptat";
     },
     get$encryptionNotEnabled() {
-      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043d\u0435 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043e";
+      return "Criptare nu e activat\u0103";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043b(\u0430) \u0437\u0432\u043e\u043d\u043e\u043a";
+      return senderName + " a terminat apelul";
     },
     get$enterAnEmailAddress() {
-      return "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b";
+      return "Introduce\u021bi o adres\u0103 email";
     },
     errorObtainingLocation$1(error) {
-      return "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f: " + error;
+      return "Ob\u021binerea loca\u021biei a e\u0219uat: " + error;
     },
     get$fontSize(_) {
-      return "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430";
+      return "M\u0103rimea fontului";
     },
     get$forward(_) {
-      return "\u041f\u0435\u0440\u0435\u0441\u043b\u0430\u0442\u044c";
+      return "\xcenainte";
     },
     get$fromJoining() {
-      return "\u0421 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
+      return "De la al\u0103turare";
     },
     get$fromTheInvitation() {
-      return "\u0421 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f";
+      return "De la invita\u021bia";
     },
     get$guestsAreForbidden() {
-      return "\u0413\u043e\u0441\u0442\u0438 \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
+      return "Musafiri sunt interzi\u0219i";
     },
     get$guestsCanJoin() {
-      return "\u0413\u043e\u0441\u0442\u0438 \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
+      return "Musafiri pot s\u0103 se al\u0103ture";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " \u043e\u0442\u043e\u0437\u0432\u0430\u043b(\u0430) \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f " + targetName;
+      return username + " a retras invita\u021bia pentru " + targetName;
     },
     get$help() {
-      return "\u041f\u043e\u043c\u043e\u0449\u044c";
+      return "Ajutor";
     },
     get$hideRedactedMessages() {
-      return "\u0421\u043a\u0440\u044b\u0442\u044c \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Ascunde mesajele cenzurate";
     },
     get$hideRedactedMessagesBody() {
-      return "\u0415\u0441\u043b\u0438 \u043a\u0442\u043e-\u0442\u043e \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u0443\u0435\u0442 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435, \u043e\u043d\u043e \u0431\u0443\u0434\u0435\u0442 \u0441\u043a\u0440\u044b\u0442\u043e \u0432 \u0447\u0430\u0442\u0435.";
+      return "Dac\u0103 cineva cenzureaz\u0103 un mesaj, acesta nu va mai fi vizibil \xeen chat.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\u0421\u043a\u0440\u044b\u0442\u044c \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0435 \u0438\u043b\u0438 \u043d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u0444\u043e\u0440\u043c\u0430\u0442\u044b \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Ascunde formatele de mesaje invalide sau necunoscute";
     },
     get$block() {
-      return "\u0417\u0430\u0433\u043b\u0443\u0448\u0438\u0442\u044c";
+      return "Blocheaz\u0103";
     },
     get$blockedUsers() {
-      return "\u0417\u0430\u0433\u043b\u0443\u0448\u0451\u043d\u043d\u044b\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438";
+      return "Utilizatori bloca\u021bi";
     },
     get$blockListDescription() {
-      return "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0433\u043b\u0443\u0448\u0438\u0442\u044c \u0442\u0440\u0435\u0432\u043e\u0436\u0430\u0449\u0438\u0445 \u0432\u0430\u0441 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439. \u0412\u044b \u043d\u0435 \u0431\u0443\u0434\u0435\u0442\u0435 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0438\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f \u0432 \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u043e\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0438\u0437 \u0432\u0430\u0448\u0435\u0433\u043e \u043b\u0438\u0447\u043d\u043e\u0433\u043e \u0447\u0451\u0440\u043d\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0430.";
+      return "Po\u021bi bloca utilizatori care te deranjeaz\u0103. Nu vei putea primi mesaje sau invita\u021bii \xeen camere de la utilizatorii de pe lista ta personal\u0103 de blocare.";
     },
     get$blockUsername() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "Ignor\u0103 numele de utilizator";
     },
     get$iHaveClickedOnLink() {
-      return "\u042f \u043f\u0435\u0440\u0435\u0448\u0451\u043b \u043f\u043e \u0441\u0441\u044b\u043b\u043a\u0435";
+      return "Am f\u0103cut click pe link";
     },
     get$incorrectPassphraseOrKey() {
-      return "\u041d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c \u0438\u043b\u0438 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f";
+      return "Parol\u0103 sau cheie de recuperare incorect\u0103";
     },
     get$inviteContact() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u043a\u043e\u043d\u0442\u0430\u043a\u0442";
+      return "Invita\u021bi contact";
     },
     get$noChatDescriptionYet() {
-      return "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430 \u043d\u0435 \u0441\u043e\u0437\u0434\u0430\u043d\u043e.";
+      return "\xcenc\u0103 nu a fost creat\u0103 nicio descriere pentru chat.";
     },
     get$tryAgain() {
-      return "\u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443";
+      return "\xcencearc\u0103 din nou";
     },
     get$invited() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0448\u0451\u043d";
+      return "Invitat";
     },
     get$redactMessageDescription() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0431\u0443\u0434\u0435\u0442 \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432. \u042d\u0442\u043e \u043d\u0435\u043e\u0431\u0440\u0430\u0442\u0438\u043c\u043e.";
+      return "Mesajul va fi redactat pentru to\u021bi participan\u021bii din aceast\u0103 conversa\u021bie. Acest lucru nu poate fi anulat.";
     },
     get$optionalRedactReason() {
-      return "(\u041d\u0435\u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e) \u041f\u0440\u0438\u0447\u0438\u043d\u0430 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f...";
+      return "(Op\u021bional) Motivul pentru redactarea acestui mesaj...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b(\u0430) " + targetName;
+      return "\ud83d\udce9" + username + " a invitat " + targetName;
     },
     get$invitedUsersOnly() {
-      return "\u0422\u043e\u043b\u044c\u043a\u043e \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0451\u043d\u043d\u044b\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\u043c";
+      return "Numai utilizatori invita\u021bi";
     },
     get$inviteForMe() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043c\u0435\u043d\u044f";
+      return "Invita\u021bi pentru mine";
     },
     get$isTyping() {
-      return "\u043f\u0435\u0447\u0430\u0442\u0430\u0435\u0442\u2026";
+      return "tasteaz\u0103\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f(\u0430\u0441\u044c) \u043a \u0447\u0430\u0442\u0443";
+      return "\ud83d\udc4b" + username + " a intrat \xeen chat";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " \u0432\u044b\u0433\u043d\u0430\u043b(\u0430) " + targetName;
+      return "\ud83d\udc5e" + username + " a dat afar\u0103 pe " + targetName;
     },
     get$kickFromChat() {
-      return "\u0412\u044b\u0433\u043d\u0430\u0442\u044c \u0438\u0437 \u0447\u0430\u0442\u0430";
+      return "Da\u021bi afar\u0103 din chat";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u0435: " + localizedTimeShort;
+      return "Ultima dat\u0103 activ: " + localizedTimeShort;
     },
     get$leave() {
-      return "\u041f\u043e\u043a\u0438\u043d\u0443\u0442\u044c";
+      return "Renun\u021ba\u021bi";
     },
     get$leftTheChat() {
-      return "\u041f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u0447\u0430\u0442";
+      return "A plecat din chat";
     },
     get$lightTheme() {
-      return "\u0421\u0432\u0435\u0442\u043b\u0430\u044f";
+      return "Luminat";
     },
     get$dehydrate() {
-      return "\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0441\u0435\u0430\u043d\u0441\u0430 \u0438 \u043e\u0447\u0438\u0441\u0442\u043a\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Exporta\u021bi sesiunea \u0219i \u0219terge\u021bi dispozitivul";
     },
     get$dehydrateWarning() {
-      return "\u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e. \u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u044b \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u043b\u0438 \u0444\u0430\u0439\u043b \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0439 \u043a\u043e\u043f\u0438\u0438.";
+      return "Aceast\u0103 actiune nu poate fi anulat\u0103. Asigura\u021bi-v\u0103 c\u0103 p\u0103stra\u021bi fi\u0219ierul backup.";
     },
     get$dehydrateTor() {
-      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 TOR: \u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0441\u0435\u0430\u043d\u0441\u0430";
+      return "Utilizatori de TOR: Exporta\u021bi sesiunea";
     },
     get$dehydrateTorLong() {
-      return "\u0414\u043b\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 TOR \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0435\u0441\u0441\u0438\u044e \u043f\u0435\u0440\u0435\u0434 \u0437\u0430\u043a\u0440\u044b\u0442\u0438\u0435\u043c \u043e\u043a\u043d\u0430.";
+      return "Pentru utilizatori de TOR, este recomandat s\u0103 exporta\u021bi sesiunea \xeenainte de a \xeenchide\u021bi fereastra.";
     },
     get$loadingPleaseWait() {
-      return "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430... \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435.";
+      return "\xcenc\u0103rc\xe2nd... V\u0103 rug\u0103m s\u0103 a\u0219tepta\u021bi.";
     },
     get$loadMore() {
-      return "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435\u2026";
+      return "\xcencarc\u0103 mai multe\u2026";
     },
     get$locationDisabledNotice() {
-      return "\u0421\u043b\u0443\u0436\u0431\u044b \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u044b. \u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0438\u0445, \u0447\u0442\u043e\u0431\u044b \u0438\u043c\u0435\u0442\u044c \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u043e\u0431\u043c\u0435\u043d\u0438\u0432\u0430\u0442\u044c\u0441\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0435\u0439 \u043e \u0441\u0432\u043e\u0435\u043c \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0438.";
+      return "Servicile de loca\u021bie sunt dezactivate. V\u0103 rug\u0103m s\u0103 le activa\u021bi s\u0103 \xeemp\u0103r\u021bi\u021bi loca\u021bia voastr\u0103.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u043e. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u044d\u0442\u043e \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435, \u0447\u0442\u043e\u0431\u044b \u0438\u043c\u0435\u0442\u044c \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435\u043c.";
+      return "Permisiunea loca\u021biei blocat\u0103. V\u0103 rug\u0103m s\u0103 o dezbloca\u021bi s\u0103 \xeemp\u0103r\u021bi\u021bi loca\u021bia voastr\u0103.";
     },
     get$login() {
-      return "\u0412\u043e\u0439\u0442\u0438";
+      return "Conecta\u021bi-v\u0103";
     },
     get$logout() {
-      return "\u0412\u044b\u0439\u0442\u0438";
+      return "Deconecta\u021bi-v\u0103";
     },
     get$mention() {
-      return "\u0423\u043f\u043e\u043c\u044f\u043d\u0443\u0442\u044c";
+      return "Men\u021biona\u021bi";
     },
     get$messages() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Mesaje";
     },
     get$messagesStyle() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f:";
+      return "Mesaje:";
     },
     get$moderator() {
-      return "\u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
+      return "Moderator";
     },
     get$newChat() {
-      return "\u041d\u043e\u0432\u044b\u0439 \u0447\u0430\u0442";
+      return "Chat nou";
     },
     get$newVerificationRequest() {
-      return "\u041d\u043e\u0432\u044b\u0439 \u0437\u0430\u043f\u0440\u043e\u0441 \u043d\u0430 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435!";
+      return "Cerere de verificare nou\u0103!";
     },
     get$next(_) {
-      return "\u0414\u0430\u043b\u0435\u0435";
+      return "Urm\u0103tor";
     },
     get$no() {
-      return "\u041d\u0435\u0442";
+      return "Nu";
     },
     get$noConnectionToTheServer() {
-      return "\u041d\u0435\u0442 \u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f \u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u043c";
+      return "F\u0103r\u0103 conexiune la server";
     },
     get$noEmotesFound() {
-      return "\u042d\u043c\u043e\u0434\u0437\u0438 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b \ud83d\ude15";
+      return "Nu s-a g\u0103sit nici un emote. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435\u043c";
+      return "Distribuie link-ul de invita\u021bie";
     },
     get$none() {
-      return "\u041d\u0438\u0447\u0435\u0433\u043e";
+      return "Niciunul";
     },
     get$noPasswordRecoveryDescription() {
-      return "\u0412\u044b \u0435\u0449\u0451 \u043d\u0435 \u0434\u043e\u0431\u0430\u0432\u0438\u043b\u0438 \u0441\u043f\u043e\u0441\u043e\u0431 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0430\u0440\u043e\u043b\u044f.";
+      return "Nu a\u021bi ad\u0103ugat \xeenc\u0103 nici un mod de recuperare pentru parola voastr\u0103.";
     },
     get$noPermission() {
-      return "\u041d\u0435\u0442 \u043f\u0440\u0430\u0432 \u0434\u043e\u0441\u0442\u0443\u043f\u0430";
+      return "F\u0103r\u0103 permisie";
     },
     get$noRoomsFound() {
-      return "\u041a\u043e\u043c\u043d\u0430\u0442\u044b \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b\u2026";
+      return "Nici o camer\u0103 nu s-a g\u0103sit\u2026";
     },
     get$notifications() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f";
+      return "Notific\u0103ri";
     },
     get$obtainingLocation() {
-      return "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f\u2026";
+      return "Ob\u021bin\xe2nd loca\u021bie\u2026";
     },
     get$offensive() {
-      return "\u041e\u0441\u043a\u043e\u0440\u0431\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Ofensiv";
     },
     get$ok() {
-      return "\u041e\u043a";
+      return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "\u041e\u0439, \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a\u2026";
+      return "Ups, ceva a e\u0219uat\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u041e\u0434\u0438\u043d \u0438\u0437 \u0432\u0430\u0448\u0438\u0445 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432 \u0432\u044b\u0448\u0435\u043b";
+      return "Unul dintre clien\u021bilor vo\u0219tri a fost deconectat";
     },
     get$openInMaps() {
-      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043d\u0430 \u043a\u0430\u0440\u0442\u0430\u0445";
+      return "Deschide\u021bi pe hart\u0103";
     },
     get$link() {
-      return "\u0421\u0441\u044b\u043b\u043a\u0430";
+      return "Link";
     },
     get$serverRequiresEmail() {
-      return "\u042d\u0442\u043e\u0442 \u0441\u0435\u0440\u0432\u0435\u0440 \u0434\u043e\u043b\u0436\u0435\u043d \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0432\u0430\u0448 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b \u0434\u043b\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438.";
+      return "Acest server trebuie s\u0103 valideze emailul vostru pentru \xeenregistrare.";
     },
     get$participant() {
-      return "\u0423\u0447\u0430\u0441\u0442\u043d\u0438\u043a";
+      return "Participant";
     },
     get$passphraseOrKey() {
-      return "\u043f\u0430\u0440\u043e\u043b\u044c \u0438\u043b\u0438 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f";
+      return "fraz\u0103 de acces sau cheie de recuperare";
     },
     get$password(_) {
-      return "\u041f\u0430\u0440\u043e\u043b\u044c";
+      return "Parol\u0103";
     },
     get$passwordForgotten() {
-      return "\u0417\u0430\u0431\u044b\u043b\u0438 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Parola uitat\u0103";
     },
     get$passwordHasBeenChanged() {
-      return "\u041f\u0430\u0440\u043e\u043b\u044c \u0431\u044b\u043b \u0438\u0437\u043c\u0435\u043d\u0451\u043d";
+      return "Parola a fost schimbat\u0103";
     },
     get$overview() {
-      return "\u041e\u0431\u0437\u043e\u0440";
+      return "Prezentare general\u0103";
     },
     get$passwordRecoverySettings() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0430\u0440\u043e\u043b\u044f";
+      return "Set\u0103ri pentru recuperarea parolei";
     },
     get$passwordRecovery() {
-      return "\u0412\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0430\u0440\u043e\u043b\u044f";
+      return "Recuperare parolei";
     },
     get$pickImage() {
-      return "\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435";
+      return "Alege\u021bi o imagine";
     },
     get$pin() {
-      return "\u0417\u0430\u043a\u0440\u0435\u043f\u0438\u0442\u044c";
+      return "Fixa\u021bi";
     },
     get$pleaseChoose() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435";
+      return "V\u0103 rug\u0103m s\u0103 alege\u021bi";
     },
     get$pleaseEnterYourPassword() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi parola voastr\u0103";
     },
     get$pleaseEnterYourPin() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u0438\u043d-\u043a\u043e\u0434";
+      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi pinul vostru";
     },
     get$pleaseEnterYourUsername() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi username-ul vostru";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\u0421\u043b\u0435\u0434\u0443\u0439\u0442\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f\u043c \u043d\u0430 \u0432\u0435\u0431-\u0441\u0430\u0439\u0442\u0435 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \xab\u0414\u0430\u043b\u0435\u0435\xbb.";
+      return "V\u0103 rug\u0103m s\u0103 urma\u021bi instruc\u021biunele pe website \u0219i apoi s\u0103 ap\u0103sa\u021bi pe urm\u0103tor.";
     },
     get$privacy() {
-      return "\u041a\u043e\u043d\u0444\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c";
+      return "Confiden\u021bialitate";
     },
     get$reason(_) {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u0430";
+      return "Motiv";
     },
     redactedBy$1(username) {
-      return username + " \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043b \u044d\u0442\u043e \u0441\u043e\u0431\u044b\u0442\u0438\u0435";
+      return "Redactat de " + username;
     },
     get$directChat() {
-      return "\u041b\u0438\u0447\u043d\u044b\u0439 \u0447\u0430\u0442";
+      return "Chat direct";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043b \u044d\u0442\u043e \u0441\u043e\u0431\u044b\u0442\u0438\u0435. \u041f\u0440\u0438\u0447\u0438\u043d\u0430: "' + reason + '"';
+      return "Redactat de " + username + ' pentru c\u0103: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) \u0441\u043e\u0431\u044b\u0442\u0438\u0435";
+      return username + " a redactat un eveniment";
     },
     get$redactMessage() {
-      return "\u041e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Redacta\u021bi mesaj";
     },
     get$reject() {
-      return "\u041e\u0442\u043a\u0430\u0437\u0430\u0442\u044c";
+      return "Respinge\u021bi";
     },
     rejectedTheInvitation$1(username) {
-      return username + " \u043e\u0442\u043a\u043b\u043e\u043d\u0438\u043b(\u0430) \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
+      return username + " a respins invita\u021bia";
     },
     get$removeAllOtherDevices() {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0432\u0441\u0435 \u0434\u0440\u0443\u0433\u0438\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Elimina\u021bi toate celelalte dispozitive";
     },
     get$unbanFromChat() {
-      return "\u0420\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0447\u0430\u0442\u0435";
+      return "Revoca interzicerea din chat";
     },
     get$removeYourAvatar() {
-      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0441\u0432\u043e\u0439 \u0430\u0432\u0430\u0442\u0430\u0440";
+      return "\u0218terge\u021bi avatarul";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\u0417\u0430\u043c\u0435\u043d\u0438\u0442\u044c \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u0431\u043e\u043b\u0435\u0435 \u043d\u043e\u0432\u043e\u0439 \u0432\u0435\u0440\u0441\u0438\u0435\u0439";
+      return "\xcenlocui\u021bi camera cu versiune mai nou\u0103";
     },
     get$reply(_) {
-      return "\u041e\u0442\u0432\u0435\u0442\u0438\u0442\u044c";
+      return "R\u0103spunde\u021bi";
     },
     get$reportMessage() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0438\u0442\u044c \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438";
+      return "Raporta\u021bi mesajul";
     },
     get$roomHasBeenUpgraded() {
-      return "\u041a\u043e\u043c\u043d\u0430\u0442\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0430";
+      return "Camera a fost actualizat\u0103";
     },
     get$search(_) {
-      return "\u041f\u043e\u0438\u0441\u043a";
+      return "C\u0103uta\u021bi";
     },
     get$security() {
-      return "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c";
+      return "Securitate";
     },
     get$send(_) {
-      return "\u041f\u0440\u0438\u0441\u043b\u0430\u0442\u044c";
+      return "Trimite\u021bi";
     },
     get$sendAMessage() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Trimite\u021bi un mesaj";
     },
     get$sendAudio() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0430\u0443\u0434\u0438\u043e";
+      return "Trimite\u021bi audio";
     },
     get$sendFile() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0444\u0430\u0439\u043b";
+      return "Trimite\u021bi fi\u0219ier";
     },
     get$sendImage() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435";
+      return "Trimite\u021bi imagine";
     },
     sendImages$1(count) {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c " + count + " \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439";
+      return "Trimite " + count + " imagine";
     },
     get$sendMessages() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Trimite\u021bi mesaje";
     },
     get$sendVideo() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0432\u0438\u0434\u0435\u043e";
+      return "Trimite\u021bi video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0444\u0430\u0439\u043b";
+      return "\ud83d\udcc1" + username + " a trimis un fi\u0219ier";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0430\u0443\u0434\u0438\u043e";
+      return "\ud83c\udfa4" + username + " a trimis audio";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435";
+      return "\ud83d\uddbc\ufe0f " + username + " a trimis o poz\u0103";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0441\u0442\u0438\u043a\u0435\u0440";
+      return "\ud83d\ude0a " + username + " a trimis un sticker";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0432\u0438\u0434\u0435\u043e";
+      return "\ud83c\udfa5" + username + " a trimis un video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0437\u0432\u043e\u043d\u043a\u0435";
+      return senderName + " a trimis informa\u021bie de apel";
     },
     get$separateChatTypes() {
-      return "\u0420\u0430\u0437\u0434\u0435\u043b\u044f\u0442\u044c \u043b\u0438\u0447\u043d\u044b\u0435 \u0447\u0430\u0442\u044b \u0438 \u0433\u0440\u0443\u043f\u043f\u044b";
+      return "Afi\u0219a\u021bi chaturi directe \u0219i grupuri separat";
     },
     get$setChatDescription() {
-      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430";
+      return "Seteaz\u0103 descrierea chat-ului";
     },
     get$setStatus() {
-      return "\u0417\u0430\u0434\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0443\u0441";
+      return "Stabili\u021bi status";
     },
     get$settings() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438";
+      return "Configur\u0103ri";
     },
     get$share(_) {
-      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f";
+      return "Partaja\u021bi";
     },
     sharedTheLocation$1(username) {
-      return username + " \u043f\u043e\u0434\u0435\u043b\u0438\u043b\u0441\u044f(\u0430\u0441\u044c) \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435\u043c";
+      return username + " sa partajat loca\u021bia";
     },
     get$shareLocation() {
-      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435\u043c";
+      return "Partaja\u021bi loca\u021bia";
     },
     get$presencesToggle() {
-      return "\u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0432 \u0441\u0442\u0430\u0442\u0443\u0441\u0430\u0445 \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439";
+      return "Afi\u0219eaz\u0103 mesajele de stare de la al\u021bi utilizatori";
     },
     get$skip(_) {
-      return "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c";
+      return "S\u0103ri\u021bi peste";
     },
     get$sourceCode() {
-      return "\u0418\u0441\u0445\u043e\u0434\u043d\u044b\u0439 \u043a\u043e\u0434";
+      return "Codul surs";
     },
     startedACall$1(senderName) {
-      return senderName + " \u043d\u0430\u0447\u0430\u043b(\u0430) \u0437\u0432\u043e\u043d\u043e\u043a";
+      return senderName + " a \xeenceput un apel";
     },
     get$status(_) {
-      return "\u0421\u0442\u0430\u0442\u0443\u0441";
+      return "Status";
     },
     get$statusExampleMessage() {
-      return "\u041a\u0430\u043a \u0443 \u0432\u0430\u0441 \u0441\u0435\u0433\u043e\u0434\u043d\u044f \u0434\u0435\u043b\u0430?";
+      return "Ce face\u021bi?";
     },
     get$submit(_) {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c";
+      return "Trimite\u021bi";
     },
     get$synchronizingPleaseWait() {
-      return "\u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0438\u0437\u0430\u0446\u0438\u044f\u2026 \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435.";
+      return "Sincronizeaz\u0103... V\u0103 rug\u0103m s\u0103 a\u0219tepta\u021bi.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " \u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0438\u0437\u0430\u0446\u0438\u044f\u2026 (" + percentage + "%)";
+      return "Se sincronizeaz\u0103\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u0430\u044f";
+      return "Sistem";
     },
     get$theyDontMatch() {
-      return "\u041e\u043d\u0438 \u043d\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u044e\u0442";
+      return "Nu sunt asem\u0103n\u0103tori";
     },
     get$theyMatch() {
-      return "\u041e\u043d\u0438 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u044e\u0442";
+      return "Sunt asem\u0103n\u0103tori";
     },
     get$tooManyRequestsWarning() {
-      return "\u0421\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u043e\u0432. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443 \u043f\u043e\u0437\u0436\u0435!";
+      return "Prea multe cereri. V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou mai t\u0103rziu!";
     },
     get$tryToSendAgain() {
-      return "\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0435\u0449\u0451 \u0440\u0430\u0437";
+      return "\xcencerca\u021bi s\u0103 trimite\u021bi din nou";
     },
     get$unavailable() {
-      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d";
+      return "Nedisponibil";
     },
     unbannedUser$2(username, targetName) {
-      return username + " \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) " + targetName;
+      return username + " a ridicat interzicerea lui " + targetName;
     },
     get$unblockDevice() {
-      return "\u0420\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e";
+      return "Debloca dispozitiv";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0439 \u0430\u043b\u0433\u043e\u0440\u0438\u0442\u043c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u044f";
+      return "Algoritm de criptare necunoscut";
     },
     unknownEvent$1(type) {
-      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e\u0435 \u0441\u043e\u0431\u044b\u0442\u0438\u0435 '" + type + "'";
+      return "Evenimet necunoscut '" + type + "'";
     },
     get$unpin() {
-      return "\u041e\u0442\u043a\u0440\u0435\u043f\u0438\u0442\u044c";
+      return "Anuleaz\u0103 fixarea";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u0438 " + count + " \u0434\u0440\u0443\u0433\u0438\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432 \u043f\u0435\u0447\u0430\u0442\u0430\u044e\u0442\u2026";
+      return username + " \u0219i " + count + " al\u021bi tasteaz\u0103\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u0438 " + username2 + " \u043f\u0435\u0447\u0430\u0442\u0430\u044e\u0442\u2026";
+      return username + " \u0219i " + username2 + " tasteaz\u0103\u2026";
     },
     userIsTyping$1(username) {
-      return username + " \u043f\u0435\u0447\u0430\u0442\u0430\u0435\u0442\u2026";
+      return username + " tasteaz\u0103\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " \u043f\u043e\u043a\u0438\u043d\u0443\u043b(\u0430) \u0447\u0430\u0442";
+      return "\ud83d\udeaa" + username + " a plecat din chat";
     },
     get$username(_) {
-      return "\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "Nume de utilizator";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + ' \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0442\u0438\u043f\u0430 "' + type + '"';
+      return username + " a trimis un eveniment " + type;
     },
     get$unverified() {
-      return "\u041d\u0435 \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043e";
+      return "Neverificat";
     },
     get$verified() {
-      return "\u041f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043e";
+      return "Verificat";
     },
     get$verifyStart() {
-      return "\u041d\u0430\u0447\u0430\u0442\u044c \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0443";
+      return "\xcencepe\u021bi verificare";
     },
     get$verifySuccess() {
-      return "\u0412\u044b \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u044b!";
+      return "A reu\u0219it verificarea!";
     },
     get$verifyTitle() {
-      return "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0434\u0440\u0443\u0433\u043e\u0439 \u0443\u0447\u0451\u0442\u043d\u043e\u0439 \u0437\u0430\u043f\u0438\u0441\u0438";
+      return "Verific\xe2nd cel\u0103lalt cont";
     },
     get$visibleForAllParticipants() {
-      return "\u0412\u0438\u0434\u0438\u043c\u0430 \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432";
+      return "Vizibil pentru to\u021bi participan\u021bi";
     },
     get$visibleForEveryone() {
-      return "\u0412\u0438\u0434\u043d\u0430 \u0432\u0441\u0435\u043c";
+      return "Vizibil pentru to\u021bi";
     },
     get$voiceMessage() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Mesaj vocal";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\u0416\u0434\u0443, \u043a\u043e\u0433\u0434\u0430 \u043f\u0430\u0440\u0442\u043d\u0435\u0440 \u043f\u0440\u0438\u043c\u0435\u0442 \u0437\u0430\u043f\u0440\u043ec\u2026";
+      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte cererea\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\u0416\u0434\u0443, \u043a\u043e\u0433\u0434\u0430 \u043f\u0430\u0440\u0442\u043d\u0435\u0440 \u043f\u0440\u0438\u043c\u0435\u0442 \u044d\u043c\u043e\u0434\u0437\u0438\u2026";
+      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte emoji-ul\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\u0412 \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0438 \u043f\u0430\u0440\u0442\u043d\u0451\u0440\u0430, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438\u043d\u044f\u0442\u044c \u0447\u0438\u0441\u043b\u0430\u2026";
+      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte numerele\u2026";
     },
     get$warning() {
-      return "\u041f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435!";
+      return "Avertizment!";
     },
     get$weSentYouAnEmail() {
-      return "\u041c\u044b \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b\u0438 \u0432\u0430\u043c \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0435 \u043f\u0438\u0441\u044c\u043c\u043e";
+      return "V-am trimis un email";
     },
     get$whyDoYouWantToReportThis() {
-      return "\u041f\u043e\u0447\u0435\u043c\u0443 \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u0441\u043e\u043e\u0431\u0449\u0438\u0442\u044c \u043e\u0431 \u044d\u0442\u043e\u043c?";
+      return "De ce dori\u021bi s\u0103 reporta\u021bi acest con\u021binut?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "\u041f\u043e \u044d\u0442\u0438\u043c \u0430\u0434\u0440\u0435\u0441\u0430\u043c \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u0432\u043e\u0439 \u043f\u0430\u0440\u043e\u043b\u044c.";
+      return "Cu acestea adrese pute\u021bi s\u0103 v\u0103 recupera\u021bi parola.";
     },
     get$writeAMessage() {
-      return "\u041d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435\u2026";
+      return "Scrie\u021bi un mesaj\u2026";
     },
     get$yes() {
-      return "\u0414\u0430";
+      return "Da";
     },
     get$you() {
-      return "\u0412\u044b";
+      return "Voi";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\u0412\u044b \u0431\u043e\u043b\u044c\u0448\u0435 \u043d\u0435 \u0443\u0447\u0430\u0441\u0442\u0432\u0443\u0435\u0442\u0435 \u0432 \u044d\u0442\u043e\u043c \u0447\u0430\u0442\u0435";
+      return "Nu mai participa\u021bi \xeen acest chat";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\u0412\u044b \u0431\u044b\u043b\u0438 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0432 \u044d\u0442\u043e\u043c \u0447\u0430\u0442\u0435";
+      return "A\u021bi fost interzis din acest chat";
     },
     get$yourPublicKey() {
-      return "\u0412\u0430\u0448 \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u043b\u044e\u0447";
+      return "Cheia voastr\u0103 public\u0103";
     },
     get$messageInfo() {
-      return "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438";
+      return "Info mesajului";
     },
     get$time(_) {
-      return "\u0412\u0440\u0435\u043c\u044f";
+      return "Timp";
     },
     get$sender() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c";
+      return "Trimi\u021b\u0103tor";
     },
     get$openGallery() {
-      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0433\u0430\u043b\u0435\u0440\u0435\u044e";
+      return "Deschide\u021bi galeria";
     },
     get$start(_) {
-      return "\u041d\u0430\u0447\u0430\u0442\u044c";
+      return "\xcencepe\u021bi";
     },
     get$markAsRead() {
-      return "\u041e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435";
+      return "Marca\u021bi ca citit";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " \u0440\u0435\u0430\u0433\u0438\u0440\u0443\u0435\u0442 \u0441 " + reaction;
+      return sender + " a reac\u021bionat cu " + reaction;
     },
     get$pinMessage() {
-      return "\u041f\u0440\u0438\u043a\u0440\u0435\u043f\u0438\u0442\u044c \u043a \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
+      return "Fixa\u021bi \xeen camer\u0103";
     },
     get$emojis() {
-      return "\u042d\u043c\u043e\u0434\u0437\u0438";
+      return "Emoji-uri";
     },
     get$youRejectedTheInvitation() {
-      return "\u0412\u044b \u043e\u0442\u043a\u043b\u043e\u043d\u0438\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
+      return "A\u021bi respins invita\u021bia";
     },
     get$youJoinedTheChat() {
-      return "\u0412\u044b \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0438\u0441\u044c \u043a \u0447\u0430\u0442\u0443";
+      return "Va-\u021bi al\u0103turat la chat";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \u0412\u044b \u043f\u0440\u0438\u043d\u044f\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
+      return "\ud83d\udc4dA\u021bi acceptat invita\u021bia";
     },
     youBannedUser$1(user) {
-      return "\u0412\u044b \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b\u0438 " + user;
+      return "A\u021bi interzis pe " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "\u0412\u044b \u043e\u0442\u043e\u0437\u0432\u0430\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f " + user;
+      return "A\u021bi retras invita\u021bia pentru " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 \u0412\u044b \u0431\u044b\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u044b " + user;
+      return "\ud83d\udce9A\u021bi fost invitat de " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 \u0412\u044b \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b\u0438 " + user;
+      return "\ud83d\udce9A\u021bi invitat pe " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e \u0412\u044b \u0432\u044b\u0433\u043d\u0430\u043b\u0438 " + user;
+      return "\ud83d\udc5eA\u021bi dat afar\u0103 pe " + user;
     },
     youUnbannedUser$1(user) {
-      return "\u0412\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b\u0438 " + user;
+      return "A\u021bi ridicat interzicerea lui " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " \u043f\u043e\u0441\u0442\u0443\u0447\u0430\u043b\u0441\u044f";
+      return "\ud83d\udeaa " + user + " a b\u0103tut la u\u0219\u0103";
     },
     countFiles$1(count) {
-      return "" + count + " \u0444\u0430\u0439\u043b\u043e\u0432";
+      return "" + count + " fi\u0219iere";
     },
     get$user() {
-      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c";
+      return "Utilizator";
     },
     get$custom() {
-      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0435";
+      return "Personalizat";
     },
     get$noKeyForThisMessage() {
-      return "\u042d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u043e\u0438\u0437\u043e\u0439\u0442\u0438, \u0435\u0441\u043b\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0431\u044b\u043b\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e \u0434\u043e \u0442\u043e\u0433\u043e, \u043a\u0430\u043a \u0432\u044b \u0432\u043e\u0448\u043b\u0438 \u0432 \u0441\u0432\u043e\u044e \u0443\u0447\u0435\u0442\u043d\u0443\u044e \u0437\u0430\u043f\u0438\u0441\u044c \u043d\u0430 \u0434\u0430\u043d\u043d\u043e\u043c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435.\n\n\u0422\u0430\u043a\u0436\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0447\u0442\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b \u0432\u0430\u0448\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0438\u043b\u0438 \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a \u0441 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u0435\u043c.\n\n\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0440\u0443\u0433\u043e\u0439 \u0441\u0435\u0441\u0441\u0438\u0438? \u0422\u043e\u0433\u0434\u0430 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u043d\u0435\u0441\u0442\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441 \u043d\u0435\u0451! \u041f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0432 \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 > \u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u0438 \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u0430\u0448\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u043b\u0438 \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0430. \u041a\u043e\u0433\u0434\u0430 \u0432\u044b \u043e\u0442\u043a\u0440\u043e\u0435\u0442\u0435 \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u0432 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0439 \u0440\u0430\u0437 \u0438 \u043e\u0431\u0435 \u0441\u0435\u0441\u0441\u0438\u0438 \u0431\u0443\u0434\u0443\u0442 \u043e\u0442\u043a\u0440\u044b\u0442\u044b, \u043a\u043b\u044e\u0447\u0438 \u0431\u0443\u0434\u0443\u0442 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u044b \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438.\n\n\u0412\u044b \u043d\u0435 \u0445\u043e\u0442\u0438\u0442\u0435 \u043f\u043e\u0442\u0435\u0440\u044f\u0442\u044c \u043a\u043b\u044e\u0447\u0438 \u043f\u0440\u0438 \u0432\u044b\u0445\u043e\u0434\u0435 \u0438\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0438\u043b\u0438 \u043f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432? \u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u044b \u0432\u043a\u043b\u044e\u0447\u0438\u043b\u0438 \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0435 \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430 \u0432 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430\u0445.";
+      return "Aceast\u0103 chestie poate s\u0103 se \xeent\xe2mple c\xe2nd mesajul a fost trimis \xeenainte s\u0103 v\u0103 conecta\u021bi contul cu acest dispozitiv.\n\nO alt\u0103 explica\u021bie ar fi dac\u0103 trimi\u021b\u0103torul a blocat dispozitivul vostru sau ceva s-a \xeent\xe2mplat cu conexiunea la internet\n\nPute\u021bi s\u0103 citi\u021bi mesajul \xeen o alt\u0103 se\u0219iune? Atunci pute\u021bi s\u0103 transfera\u021bi mesajul de acolo! Merge\u021bi la Configur\u0103ri > Dispozitive \u0219i verifica\u021bi c\u0103 dispozitivele s-au verificat. C\xe2nd deschide\u021bi camera \xeen viitor \u0219i ambele se\u0219iune sunt \xeen foreground, cheile va fi transmise automat. \n\nDori\u021bi s\u0103 \xee\u021bi p\u0103stra\u021bi cheile c\xe2nd deconecta\u021bi sau schimba\u021bi dispozitive? Fi\u021bi aten\u021bi s\u0103 activa\u021bi backup de chat \xeen configur\u0103ri.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\u041f\u0443\u0441\u0442\u043e\u0439 \u0447\u0430\u0442 (\u0431\u044b\u043b " + oldDisplayName + ")";
+      return "Chat gol (a fost " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0447\u0430\u0442 \u0437\u0430\u043d\u043e\u0432\u043e";
+      return "Deschide din nou chatul";
     },
     get$noOtherDevicesFound() {
-      return "\u0414\u0440\u0443\u0433\u0438\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b";
+      return "Nu s-a g\u0103sit alte dispozitive";
     },
     fileIsTooBigForServer$1(max) {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u0435 \u0443\u0434\u0430\u043b\u0430\u0441\u044c! \u0421\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0440\u0430\u0437\u043c\u0435\u0440\u043e\u043c \u0434\u043e " + max + ".";
+      return "Serverul reporteaz\u0103 c\u0103 fi\u0219ierul este prea mare s\u0103 fie trimis.";
     },
     get$jumpToLastReadMessage() {
-      return "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "S\u0103ri\u021bi la ultimul citit mesaj";
     },
     get$readUpToHere() {
-      return "\u041d\u0435\u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435";
+      return "Citit p\xe2n\u0103 aici";
     },
     get$jump() {
-      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438";
+      return "S\u0103ri\u021bi";
     },
     get$openLinkInBrowser() {
-      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0443 \u0432 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0435";
+      return "Deschide\u021bi linkul \xeen browser";
     },
     get$setColorTheme() {
-      return "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0442\u0435\u043c\u0430:";
+      return "Seteaz\u0103 tema de culoare:";
     },
     get$invite() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c";
+      return "Invit\u0103";
     },
     get$invalidInput() {
-      return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u044b\u0439 \u0432\u0432\u043e\u0434!";
+      return "Intrare invalid\u0103!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u0412\u0432\u0435\u0434\u0451\u043d \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043f\u0438\u043d-\u043a\u043e\u0434! \u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443 \u0447\u0435\u0440\u0435\u0437 " + seconds + " \u0441\u0435\u043a\u0443\u043d\u0434...";
+      return "PIN gre\u0219it introdus! \xcencerca\u021bi din nou \xeen " + seconds + " secunde...";
     },
     get$pleaseEnterANumber() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430 \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0447\u0438\u0441\u043b\u043e \u0431\u043e\u043b\u044c\u0448\u0435 0";
+      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi un num\u0103r mai mare dec\xe2t 0";
     },
     get$removeDevicesDescription() {
-      return "\u0412\u044b \u0432\u044b\u0439\u0434\u0435\u0442\u0435 \u0441 \u044d\u0442\u043e\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u0438 \u0431\u043e\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0443\u0434\u0435\u0442\u0435 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f.";
+      return "Ve\u021bi fi deconectat de pe acest dispozitiv \u0219i nu ve\u021bi mai putea primi mesaje.";
     },
     get$banUserDescription() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0432 \u0447\u0430\u0442\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 \u043d\u0435 \u0441\u043c\u043e\u0433\u0443\u0442 \u043f\u0435\u0440\u0435\u0437\u0430\u0439\u0442\u0438 \u0432 \u0447\u0430\u0442, \u043f\u043e\u043a\u0430 \u043e\u043d\u0438 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442 \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b.";
+      return "Utilizatorul va fi interzis din chat \u0219i nu va putea intra din nou \xeen chat p\xe2n\u0103 nu va fi deblocat.";
     },
     get$unbanUserDescription() {
-      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0441\u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u0438 \u0436\u0435\u043b\u0430\u043d\u0438\u0438 \u0437\u0430\u0439\u0442\u0438 \u0432 \u0447\u0430\u0442 \u0441\u043d\u043e\u0432\u0430.";
+      return "Utilizatorul va putea intra din nou \xeen chat dac\u0103 \xeencearc\u0103.";
     },
     get$kickUserDescription() {
-      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0431\u0443\u0434\u0435\u0442 \u0438\u0437\u0433\u043d\u0430\u043d \u0438\u0437 \u0447\u0430\u0442\u0430, \u043d\u043e \u043d\u0435 \u0431\u0443\u0434\u0435\u0442 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d. \u0412 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0445 \u0447\u0430\u0442\u0430\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u0437\u0430\u0439\u0442\u0438 \u043a\u043e\u0433\u0434\u0430 \u0443\u0433\u043e\u0434\u043d\u043e.";
+      return "Utilizatorul este scos din chat, dar nu este interzis. \xcen chat-urile publice, utilizatorul se poate re\xeentoarce oric\xe2nd.";
     },
     get$makeAdminDescription() {
-      return "\u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b \u043d\u0430\u0437\u043d\u0430\u0447\u0438\u0442\u0435 \u044d\u0442\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u043e\u043c, \u0432\u044b \u043d\u0435 \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u044d\u0442\u043e\u0433\u043e \u043e\u0442\u043c\u0435\u043d\u0438\u0442\u044c, \u0442\u0430\u043a \u043a\u0430\u043a \u0438\u0445 \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u0438 \u0432\u0430\u0448\u0438 \u0431\u0443\u0434\u0443\u0442 \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u044b.";
+      return "Odat\u0103 ce face\u021bi acest utilizator administrator, s-ar putea s\u0103 nu mai pute\u021bi anula aceast\u0103 ac\u021biune, deoarece va avea acelea\u0219i permisiuni ca \u0219i dumneavoastr\u0103.";
     },
     get$yourGlobalUserIdIs() {
-      return "\u0412\u0430\u0448 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u044b\u0439 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 - ";
+      return "ID-ul global al utilizatorului dvs. este: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\u041a \u0441\u043e\u0436\u0430\u043b\u0435\u043d\u0438\u044e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0441 \u0438\u043c\u0435\u043d\u0435\u043c "' + query + '" \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e. \u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u044b \u043d\u0435 \u0441\u043e\u0432\u0435\u0440\u0448\u0438\u043b\u0438 \u043e\u043f\u0435\u0447\u0430\u0442\u043a\u0443.';
+      return 'Din p\u0103cate, nu a fost g\u0103sit niciun utilizator cu "' + query + '". V\u0103 rug\u0103m s\u0103 verifica\u021bi dac\u0103 a\u021bi f\u0103cut o gre\u0219eal\u0103 de tastare.';
     },
     get$knocking() {
-      return "\u0421\u0442\u0443\u0447\u0430\u0442\u044c\u0441\u044f";
+      return "B\u0103taie";
     },
     get$nothingFound() {
-      return "\u041d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e...";
+      return "Nimic g\u0103sit...";
     },
     get$groupName() {
-      return "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0433\u0440\u0443\u043f\u043f\u044b";
+      return "Numele grupului";
     },
     get$wrongRecoveryKey() {
-      return "\u041f\u0440\u043e\u0441\u0442\u0438\u0442\u0435... \u0441\u0443\u0434\u044f \u043f\u043e \u0432\u0441\u0435\u043c\u0443 \u044d\u0442\u043e \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f.";
+      return "\xcemi pare r\u0103u... acesta nu pare a fi cheia de recuperare corect\u0103.";
     },
     get$startConversation() {
-      return "\u041d\u0430\u0447\u0430\u0442\u044c \u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "\xcencepe o conversa\u021bie";
     },
     get$commandHint_sendraw() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u044b\u0440\u043e\u0439 json";
+      return "Trimite json brut";
     },
     get$leaveEmptyToClearStatus() {
-      return "\u0427\u0442\u043e\u0431\u044b \u043e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u0441\u0442\u0430\u0442\u0443\u0441, \u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u043f\u043e\u043b\u0435 \u043f\u0443\u0441\u0442\u044b\u043c.";
+      return "L\u0103sa\u021bi gol pentru a \u0219terge starea dvs.";
     },
     get$searchForUsers() {
-      return "\u041f\u043e\u0438\u0441\u043a @\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439...";
+      return "Caut\u0103 @utilizatori...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u0442\u0435\u043a\u0443\u0449\u0438\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi parola curent\u0103";
     },
     get$newPassword() {
-      return "\u041d\u043e\u0432\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Parol\u0103 nou\u0103";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0438\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "V\u0103 rug\u0103m s\u0103 alege\u021bi o parol\u0103 puternic\u0103";
     },
     get$passwordsDoNotMatch() {
-      return "\u041f\u0430\u0440\u043e\u043b\u0438 \u043d\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u044e\u0442";
+      return "Parolele nu se potrivesc";
     },
     get$passwordIsWrong() {
-      return "\u0412\u044b \u0432\u0432\u0435\u043b\u0438 \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Parola introdus\u0103 este gre\u0219it\u0103";
     },
     get$decline() {
-      return "\u041e\u0442\u043a\u043b\u043e\u043d\u0438\u0442\u044c";
+      return "Refuz\u0103";
     },
     get$thisDevice() {
-      return "\u0414\u0430\u043d\u043d\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e:";
+      return "Acest dispozitiv:";
     },
     get$initAppError() {
-      return "\u041f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f";
+      return "A ap\u0103rut o eroare \xeen timpul ini\u021bializ\u0103rii aplica\u021biei";
     },
     searchIn$1(chat) {
-      return '\u041f\u043e\u0438\u0441\u043a \u0432 \u0447\u0430\u0442\u0435 "' + chat + '"...';
+      return 'Caut\u0103 \xeen chat "' + chat + '"...';
     },
     get$searchMore() {
-      return "\u041d\u0430\u0439\u0442\u0438 \u0435\u0449\u0435...";
+      return "Caut\u0103 mai mult...";
     },
     get$gallery() {
-      return "\u0413\u0430\u043b\u0435\u0440\u0435\u044f";
+      return "Galerie";
     },
     get$files(_) {
-      return "\u0424\u0430\u0439\u043b\u044b";
+      return "Fi\u0219iere";
     },
     sessionLostBody$2(url, error) {
-      return "\u0412\u0430\u0448 \u0441\u0435\u0430\u043d\u0441 \u0443\u0442\u0435\u0440\u044f\u043d. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0441\u043e\u043e\u0431\u0449\u0438\u0442\u0435 \u043e\u0431 \u044d\u0442\u043e\u0439 \u043e\u0448\u0438\u0431\u043a\u0435 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c \u043f\u043e \u0430\u0434\u0440\u0435\u0441\u0443 " + url + ". \u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0431 \u043e\u0448\u0438\u0431\u043a\u0435: " + error;
+      return "Sesiunea dvs. s-a pierdut. V\u0103 rug\u0103m s\u0103 raporta\u021bi aceast\u0103 eroare dezvoltatorilor la " + url + ". Mesajul de eroare este: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u044b\u0442\u0430\u0435\u0442\u0441\u044f \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u0435\u0430\u043d\u0441 \u0438\u0437 \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0439 \u043a\u043e\u043f\u0438\u0438. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0441\u043e\u043e\u0431\u0449\u0438\u0442\u0435 \u043e\u0431 \u044d\u0442\u043e\u0439 \u043e\u0448\u0438\u0431\u043a\u0435 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c \u043f\u043e \u0430\u0434\u0440\u0435\u0441\u0443 " + url + ". \u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0431 \u043e\u0448\u0438\u0431\u043a\u0435: " + error;
+      return "Aplica\u021bia \xeencearc\u0103 acum s\u0103 restaureze sesiunea din backup. V\u0103 rug\u0103m s\u0103 raporta\u021bi aceast\u0103 eroare dezvoltatorilor la " + url + ". Mesajul de eroare este: " + error;
     },
     get$sendReadReceipts() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u043a\u0432\u0438\u0442\u0430\u043d\u0446\u0438\u0439 \u043e \u043f\u0440\u043e\u0447\u0442\u0435\u043d\u0438\u0438";
+      return "Trimite confirm\u0103ri de citire";
     },
     get$sendTypingNotificationsDescription() {
-      return "\u0414\u0440\u0443\u0433\u0438\u0435 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438 \u0447\u0430\u0442\u0430 \u043c\u043e\u0433\u0443\u0442 \u0432\u0438\u0434\u0435\u0442\u044c, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043d\u0430\u0431\u0438\u0440\u0430\u0435\u0442\u0435 \u043d\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435.";
+      return "Al\u021bi participan\u021bi la chat pot vedea c\xe2nd tasta\u021bi un mesaj nou.";
     },
     get$sendReadReceiptsDescription() {
-      return "\u0414\u0440\u0443\u0433\u0438\u0435 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438 \u0447\u0430\u0442\u0430 \u043c\u043e\u0433\u0443\u0442 \u0432\u0438\u0434\u0435\u0442\u044c, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043b\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435.";
+      return "Al\u021bi participan\u021bi la chat pot vedea c\xe2nd a\u021bi citit un mesaj.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 \u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0434\u0440\u0443\u0433\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e";
+      return "\ud83d\udd10 Verific\u0103 cel\u0103lalt dispozitiv";
     },
     get$verifyOtherDeviceDescription() {
-      return "\u041f\u0440\u0438 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0438 \u0434\u0440\u0443\u0433\u043e\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u044d\u0442\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043c\u043e\u0433\u0443\u0442 \u043e\u0431\u043c\u0435\u043d\u0438\u0432\u0430\u0442\u044c\u0441\u044f \u043a\u043b\u044e\u0447\u0430\u043c\u0438, \u043f\u043e\u0432\u044b\u0448\u0430\u044f \u043e\u0431\u0449\u0443\u044e \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c. \ud83d\udcaa \u041f\u0440\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f \u0432 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0438 \u043d\u0430 \u043e\u0431\u043e\u0438\u0445 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430\u0445 \u043f\u043e\u044f\u0432\u0438\u0442\u0441\u044f \u0432\u0441\u043f\u043b\u044b\u0432\u0430\u044e\u0449\u0435\u0435 \u043e\u043a\u043d\u043e. \u0422\u0430\u043c \u0432\u044b \u0443\u0432\u0438\u0434\u0438\u0442\u0435 \u0440\u044f\u0434 \u0447\u0438\u0441\u0435\u043b \u0438\u043b\u0438 \u044d\u043c\u043e\u0434\u0437\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0432\u044b \u0434\u043e\u043b\u0436\u043d\u044b \u0441\u0440\u0430\u0432\u043d\u0438\u0442\u044c \u0434\u0440\u0443\u0433 \u0441 \u0434\u0440\u0443\u0433\u043e\u043c. \u041b\u0443\u0447\u0448\u0435 \u0438\u043c\u0435\u0442\u044c \u043e\u0431\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043f\u043e\u0434 \u0440\u0443\u043a\u043e\u0439 \u043f\u0435\u0440\u0435\u0434 \u043d\u0430\u0447\u0430\u043b\u043e\u043c \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438. \ud83e\udd33";
+      return "C\xe2nd verifici un alt dispozitiv, acele dispozitive pot schimba chei, sporind securitatea general\u0103. \ud83d\udcaa C\xe2nd \xeencepi o verificare, va ap\u0103rea o fereastr\u0103 pop-up \xeen aplica\u021bie pe ambele dispozitive. Acolo vei vedea apoi o serie de emoji sau numere pe care trebuie s\u0103 le compari cu cel\u0103lalt. Este recomandat s\u0103 ai ambele dispozitive la \xeendem\xe2n\u0103 \xeenainte de a \xeencepe verificarea. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " \u043f\u0440\u0438\u043d\u044f\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
+      return sender + " a acceptat verificarea cheii";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " \u043e\u0442\u043a\u043b\u043e\u043d\u0438\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
+      return sender + " a anulat verificarea cheii";
     },
     completedKeyVerification$1(sender) {
-      return sender + " \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
+      return sender + " a finalizat verificarea cheii";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \u0433\u043e\u0442\u043e\u0432(\u0430) \u043a \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044e \u043a\u043b\u044e\u0447\u0435\u0439";
+      return sender + " este gata pentru verificarea cheii";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
+      return sender + " a solicitat verificarea cheii";
     },
     startedKeyVerification$1(sender) {
-      return sender + " \u043d\u0430\u0447\u0430\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
+      return sender + " a \xeenceput verificarea cheii";
     },
     get$commandHint_ignore() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0439 matrix ID";
+      return "Ignor\u0103 ID-ul matrix dat";
     },
     get$commandHint_unignore() {
-      return "\u041d\u0435 \u0438\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0439 matrix ID";
+      return "Anuleaz\u0103 ignorarea ID-ului matrix dat";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u0421\u0435\u0439\u0447\u0430\u0441 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043e " + count + " \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.";
+      return "\xcen acest moment exist\u0103 " + count + " utilizatori bloca\u021bi.";
     },
     get$restricted() {
-      return "\u0417\u0430\u043f\u0440\u0435\u0449\u0435\u043d\u043e";
+      return "Restric\u021bionat";
     },
     get$markAsUnread() {
-      return "\u041e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u043d\u0435\u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435";
+      return "Marcheaz\u0103 ca necitit";
     },
     userLevel$1(level) {
-      return "" + level + " - \u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c";
+      return "" + level + " - Utilizator";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - \u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440";
+      return "" + level + " - Administrator";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u0438\u0441\u0442\u043e\u0440\u0438\u0438 \u0447\u0430\u0442\u0430";
+      return "Schimb\u0103 vizibilitatea istoricului chat-ului";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u043e\u0431\u0449\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u0447\u0430\u0442\u0430";
+      return "Schimb\u0103 adresa principal\u0103 a chat-ului public";
     },
     get$sendRoomNotifications() {
-      return "\u0423\u043f\u043e\u043c\u0438\u043d\u0430\u0442\u044c @room";
+      return "Trimite notific\u0103ri @room";
     },
     get$chatPermissionsDescription() {
-      return "\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0432\u043b\u0430\u0441\u0442\u0438, \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u044b\u0439 \u0434\u043b\u044f \u0441\u043e\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0451\u043d\u043d\u044b\u0445 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439 \u0432 \u044d\u0442\u043e\u043c \u0447\u0430\u0442\u0435. \u0423\u0440\u043e\u0432\u043d\u0438 \u0432\u043b\u0430\u0441\u0442\u0438 0, 50 \u0438 100 \u043e\u0431\u044b\u0447\u043d\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439, \u043c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440\u043e\u0432 \u0438 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u043e\u0432 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e, \u043d\u043e \u043b\u044e\u0431\u0430\u044f \u0433\u0440\u0430\u0434\u0430\u0446\u0438\u044f \u0442\u0430\u043a\u0436\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u0430.";
+      return "Define\u0219te nivelul de putere necesar pentru anumite ac\u021biuni \xeen acest chat. Nivelurile de putere 0, 50 \u0219i 100 reprezint\u0103 de obicei utilizatori, moderatori \u0219i administratori, dar orice grada\u021bie este posibil\u0103.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 " + version + " \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e!";
+      return "\ud83c\udf89 Actualizare " + version + " instalat\u0103!";
     },
     get$sendCanceled() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u0430";
+      return "Trimiterea a fost anulat\u0103";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\u042d\u0442\u043e\u0442 \u0434\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u0432\u044b\u0433\u043b\u044f\u0434\u0438\u0442 \u043d\u0435\u0441\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u043c\u044b\u043c. \u041d\u0435\u0442 \u043b\u0438 \u0432 \u0441\u0441\u044b\u043b\u043a\u0435 \u043e\u043f\u0435\u0447\u0430\u0442\u043e\u043a?";
+      return "Se pare c\u0103 nu este un server de acas\u0103 compatibil. URL gre\u0219it?";
     },
     get$calculatingFileSize() {
-      return "\u0412\u044b\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u0430 \u0444\u0430\u0439\u043b\u0430...";
+      return "Calcularea dimensiunii fi\u0219ierului...";
     },
     get$prepareSendingAttachment() {
-      return "\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0435 \u0432\u043b\u043e\u0436\u0435\u043d\u0438\u044f...";
+      return "Preg\u0103tirea trimiterii ata\u0219amentului...";
     },
     get$sendingAttachment() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u0432\u043b\u043e\u0436\u0435\u043d\u0438\u044f...";
+      return "Trimitere ata\u0219ament...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u044e... " + index + " " + $length + "...";
+      return "Trimitere ata\u0219ament " + index + " din " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f \u0441\u0435\u0440\u0432\u0435\u0440\u0430. \u041e\u0436\u0438\u0434\u0430\u0439\u0442\u0435" + seconds + " \u0441\u0435\u043a\u0443\u043d\u0434...";
+      return "Limita serverului atins\u0103! A\u0219tepta\u021bi " + seconds + " secunde...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\u041f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435: \u0415\u0441\u043b\u0438 \u0432\u044b \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0432\u0441\u0435 \u0441\u0432\u043e\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043a \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u043c\u0443 \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e \u0447\u0430\u0442\u043e\u0432, \u0442\u043e \u043e\u043d\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0441\u0442\u0430\u043d\u0443\u0442 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0451\u043d\u043d\u044b\u043c\u0438.";
+      return "Not\u0103: C\xe2nd conecta\u021bi toate dispozitivele dvs. la backup-ul de chat, acestea sunt verificate automat.";
     },
     get$continueText() {
-      return "\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u044c";
+      return "Continu\u0103";
     },
     get$blur(_) {
-      return "\u0420\u0430\u0437\u043c\u044b\u0442\u0438\u0435:";
+      return "Estompare:";
     },
     get$opacity(_) {
-      return "\u041f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u043e\u0441\u0442\u044c:";
+      return "Opacitate:";
     },
     get$setWallpaper() {
-      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043e\u0431\u043e\u0438";
+      return "Seteaz\u0103 fundalul de ecran";
     },
     get$noContactInformationProvided() {
-      return "\u0421\u0435\u0440\u0432\u0435\u0440 \u043d\u0435 \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442 \u043d\u0438\u043a\u0430\u043a\u043e\u0439 \u043f\u0440\u0430\u0432\u0434\u0438\u0432\u043e\u0439 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438";
+      return "Serverul nu furnizeaz\u0103 nicio informa\u021bie de contact valid\u0103";
     },
     get$contactServerAdmin() {
-      return "\u0410\u0434\u043c\u0438\u043d \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
+      return "Contacta\u021bi administratorul serverului";
     },
     get$contactServerSecurity() {
-      return "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043e\u0432 \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
+      return "Contacta\u021bi securitatea serverului";
     },
     get$supportPage() {
-      return "\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430";
+      return "Pagin\u0103 de suport";
     },
     get$serverInformation() {
-      return "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0441\u0435\u0440\u0432\u0435\u0440\u0435:";
+      return "Informa\u021bii despre server:";
     },
     get$name(_) {
-      return "\u0418\u043c\u044f";
+      return "Nume";
     },
     get$version(_) {
-      return "\u0412\u0435\u0440\u0441\u0438\u044f";
+      return "Versiune";
     },
     get$compress() {
-      return "\u0421\u0436\u0430\u0442\u0438\u0435";
+      return "Comprim\u0103";
     },
     get$boldText() {
-      return "\u0416\u0438\u0440\u043d\u044b\u0439 \u0448\u0440\u0438\u0444\u0442";
+      return "Text \xeengro\u0219at";
     },
     get$italicText() {
-      return "Italic";
+      return "Text italic";
     },
     get$strikeThrough() {
-      return "\u041f\u0435\u0440\u0435\u0447\u0451\u0440\u043a\u043d\u0443\u0442\u044b\u0439";
+      return "T\u0103iat cu linie";
     },
     get$pleaseFillOut() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0437\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u0435";
+      return "V\u0103 rug\u0103m s\u0103 completa\u021bi";
     },
     get$invalidUrl() {
-      return "\u041d\u0435 \u0432\u0435\u0440\u043d\u044b\u0439 URL";
+      return "URL invalid";
     },
     get$addLink() {
-      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0443";
+      return "Adaug\u0103 link";
     },
     get$unableToJoinChat() {
-      return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0447\u0430\u0442\u0443. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0434\u0440\u0443\u0433\u0430\u044f \u0441\u0442\u043e\u0440\u043e\u043d\u0430 \u0443\u0436\u0435 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u043b\u0430 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440.";
+      return "Imposibil de al\u0103turat chat-ului. Poate cealalt\u0103 parte a \xeenchis deja conversa\u021bia.";
     },
     get$previous() {
-      return "\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0438\u0439";
+      return "Anterior";
     },
     get$otherPartyNotLoggedIn() {
-      return "\u0414\u0440\u0443\u0433\u0430\u044f \u0441\u0442\u043e\u0440\u043e\u043d\u0430 \u0432 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0435 \u0432\u043e\u0448\u043b\u0430 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u0438 \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f!";
+      return "Cealalt\u0103 parte nu este conectat\u0103 \xeen prezent \u0219i, prin urmare, nu poate primi mesaje!";
     },
     get$open(_) {
-      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c";
+      return "Deschide";
     },
     get$waitingForServer() {
-      return "\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u0430...";
+      return "Se a\u0219teapt\u0103 serverul...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \u0417\u0430\u043f\u0440\u043e\u0441 \u043d\u043e\u0432\u043e\u0433\u043e \u0447\u0430\u0442\u0430";
+      return "\ud83d\udce9 Cerere de chat nou";
     },
     get$contentNotificationSettings() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439 \u043f\u043e \u0442\u0435\u043a\u0441\u0442\u0443";
+      return "Set\u0103ri notific\u0103ri con\u021binut";
     },
     get$generalNotificationSettings() {
-      return "\u041e\u0431\u0449\u0438\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439";
+      return "Set\u0103ri generale de notificare";
     },
     get$roomNotificationSettings() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Set\u0103ri notific\u0103ri camer\u0103";
     },
     get$userSpecificNotificationSettings() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u043a\u0438 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "Set\u0103ri notific\u0103ri specifice utilizatorului";
     },
     get$otherNotificationSettings() {
-      return "\u0414\u0440\u0443\u0433\u0438\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439";
+      return "Alte set\u0103ri de notificare";
     },
     get$notificationRuleContainsUserName() {
-      return "\u0421\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "Con\u021bine Numele Utilizatorului";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043a\u043e\u0433\u0434\u0430 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0435\u0433\u043e \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f.";
+      return "Notific\u0103 utilizatorul c\xe2nd un mesaj con\u021bine numele s\u0103u de utilizator.";
     },
     get$notificationRuleMaster() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0432\u0441\u0435 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f";
+      return "Opre\u0219te toate notific\u0103rile";
     },
     get$notificationRuleMasterDescription() {
-      return "\u041f\u0435\u0440\u0435\u043a\u0440\u044b\u0432\u0430\u0435\u0442 \u0432\u0441\u0435 \u0434\u0440\u0443\u0433\u0438\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0438 \u043e\u0442\u043a\u043b\u044e\u0447\u0430\u0435\u0442 \u0432\u0441\u0435 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f.";
+      return "Suprascrie toate celelalte reguli \u0219i dezactiveaz\u0103 toate notific\u0103rile.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Suprim\u0103 mesajele automate";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432, \u0442\u0430\u043a\u0438\u0445 \u043a\u0430\u043a \u0431\u043e\u0442\u044b.";
+      return "Suprim\u0103 notific\u0103rile de la clien\u021bi automatiza\u021bi precum robo\u021bi.";
     },
     get$notificationRuleInviteForMe() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043c\u0435\u043d\u044f";
+      return "Invit\u0103 pentru mine";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043a\u043e\u0433\u0434\u0430 \u0435\u0433\u043e \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0430\u044e\u0442 \u0432 \u043a\u043e\u043c\u043d\u0430\u0442\u0443.";
+      return "Notific\u0103 utilizatorul c\xe2nd este invitat \xeentr-o camer\u0103.";
     },
     get$notificationRuleMemberEvent() {
-      return "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0430";
+      return "Eveniment membru";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e \u0441\u043e\u0431\u044b\u0442\u0438\u044f\u0445 \u043e \u0447\u043b\u0435\u043d\u0441\u0442\u0432\u0435.";
+      return "Suprim\u0103 notific\u0103rile pentru evenimentele de membru.";
     },
     get$notificationRuleIsUserMention() {
-      return "\u0423\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "Men\u021bionare utilizator";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043a\u043e\u0433\u0434\u0430 \u0435\u0433\u043e \u043f\u0440\u044f\u043c\u043e \u0443\u043f\u043e\u043c\u0438\u043d\u0430\u044e\u0442 \u0432 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438.";
+      return "Notific\u0103 utilizatorul c\xe2nd este men\u021bionat direct \xeentr-un mesaj.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\u0421\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f";
+      return "Con\u021bine Numele de Afi\u0219are";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043a\u043e\u0433\u0434\u0430 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0435\u0433\u043e \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f.";
+      return "Notific\u0103 utilizatorul c\xe2nd un mesaj con\u021bine numele s\u0103u de afi\u0219are.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\u0423\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Men\u021biune \xeen camer\u0103";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043a\u043e\u0433\u0434\u0430 \u0435\u0441\u0442\u044c \u0443\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435 \u043a\u043e\u043c\u043d\u0430\u0442\u044b.";
+      return "Notific\u0103 utilizatorul atunci c\xe2nd exist\u0103 o men\u021biune \xeen camer\u0103.";
     },
     get$notificationRuleRoomnotif() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0435 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "Notificare camer\u0103";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043a\u043e\u0433\u0434\u0430 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 '@room'.";
+      return "Notific\u0103 utilizatorul atunci c\xe2nd un mesaj con\u021bine '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "\u041c\u0435\u043c\u043e\u0440\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u043c\u0435\u0442\u043a\u0430";
+      return "Morm\xe2nt";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445 \u043e \u0434\u0435\u0430\u043a\u0442\u0438\u0432\u0430\u0446\u0438\u0438 \u043a\u043e\u043c\u043d\u0430\u0442\u044b.";
+      return "Notific\u0103 utilizatorul despre mesajele de dezactivare a camerei.";
     },
     get$notificationRuleReaction() {
-      return "\u0420\u0435\u0430\u043a\u0446\u0438\u044f";
+      return "Reac\u021bie";
     },
     get$notificationRuleReactionDescription() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e \u0440\u0435\u0430\u043a\u0446\u0438\u044f\u0445.";
+      return "Suprim\u0103 notific\u0103rile pentru reac\u021bii.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "ACL \u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
+      return "ACL server camer\u0103";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\u041f\u043e\u0434\u0430\u0432\u043b\u044f\u0435\u0442 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e \u0441\u043f\u0438\u0441\u043a\u0430\u0445 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044f \u0434\u043e\u0441\u0442\u0443\u043f\u0430 (ACL) \u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043a\u043e\u043c\u043d\u0430\u0442\u044b.";
+      return "Suprim\u0103 notific\u0103rile pentru listele de control acces (ACL) ale serverului camerei.";
     },
     get$notificationRuleSuppressEdits() {
-      return "\u041f\u043e\u0434\u0430\u0432\u0438\u0442\u044c \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f";
+      return "Suprim\u0103 edit\u0103rile";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445.";
+      return "Suprim\u0103 notific\u0103rile pentru mesajele editate.";
     },
     get$notificationRuleCall() {
-      return "\u0417\u0432\u043e\u043d\u043e\u043a";
+      return "Apel";
     },
     get$notificationRuleCallDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043f\u0440\u043e \u0437\u0432\u043e\u043d\u043a\u0438.";
+      return "Notific\u0103 utilizatorul despre apeluri.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043d\u0430\u044f \u043a\u043e\u043c\u043d\u0430\u0442\u0430 \xab\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d\xbb";
+      return "Camer\u0103 criptat\u0103 unu-la-unu";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043f\u0440\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0432 \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043a\u043e\u043c\u043d\u0430\u0442\u0430\u0445 \xab\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d\xbb.";
+      return "Notific\u0103 utilizatorul despre mesajele din camere criptate unu-la-unu.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "\u041a\u043e\u043c\u043d\u0430\u0442\u0430 \xab\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d\xbb";
+      return "Camer\u0103 unu-la-unu";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445 \u0432 \u043a\u043e\u043c\u043d\u0430\u0442\u0430\u0445 \u043e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d.";
+      return "Notific\u0103 utilizatorul despre mesaje \xeen camere unu-la-unu.";
     },
     get$notificationRuleMessage() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Mesaj";
     },
     get$notificationRuleMessageDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043e \u043e\u0431\u0449\u0438\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445.";
+      return "Notific\u0103 utilizatorul despre mesaje generale.";
     },
     get$notificationRuleEncrypted() {
-      return "\u0417\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
+      return "Criptat";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445 \u0432 \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043a\u043e\u043c\u043d\u0430\u0442\u0430\u0445.";
+      return " Notific\u0103 utilizatorul despre mesajele din camerele criptate.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0435\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043e \u0441\u043e\u0431\u044b\u0442\u0438\u044f\u0445 \u0432\u0438\u0434\u0436\u0435\u0442\u0430 Jitsi.";
+      return "Notific\u0103 utilizatorul despre evenimentele widget-ului Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u044f ACL \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
+      return "Suprim\u0103 evenimentele ACL ale serverului";
     },
     get$notificationRuleServerAclDescription() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0430\u0435\u0442 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e \u0441\u043e\u0431\u044b\u0442\u0438\u044f\u0445 ACL \u0441\u0435\u0440\u0432\u0435\u0440\u0430.";
+      return "Suprim\u0103 notific\u0103rile pentru evenimentele ACL ale serverului.";
     },
     unknownPushRule$1(rule) {
-      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e push '" + rule + "'";
+      return "Regul\u0103 de notificare necunoscut\u0103 '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - \u0413\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0442 " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Mesaj vocal de la " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\u0415\u0441\u043b\u0438 \u0432\u044b \u0443\u0434\u0430\u043b\u0438\u0442\u0435 \u044d\u0442\u043e \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0435, \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0435\u0433\u043e \u0431\u0443\u0434\u0435\u0442 \u043d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e.";
+      return "Dac\u0103 \u0219terge\u021bi aceast\u0103 setare de notificare, nu poate fi anulat\u0103.";
     },
     get$more() {
-      return "\u0411\u043e\u043b\u044c\u0448\u0435";
+      return "Mai mult";
     },
     get$shareKeysWith() {
-      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043a\u043b\u044e\u0447\u0430\u043c\u0438 \u0441...";
+      return "Partajeaz\u0103 cheile cu...";
     },
     get$shareKeysWithDescription() {
-      return "\u041a\u0430\u043a\u0438\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u0434\u043e\u043b\u0436\u043d\u044b \u0431\u044b\u0442\u044c \u0434\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u043c\u0438, \u0447\u0442\u043e\u0431\u044b \u0447\u0438\u0442\u0430\u0442\u044c \u0432\u0430\u0448\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0432 \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u0447\u0430\u0442\u0430\u0445?";
+      return "Care dispozitive trebuie s\u0103 fie de \xeencredere pentru a putea citi mesajele tale \xeen chat-urile criptate?";
     },
     get$allDevices() {
-      return "\u0412\u0441\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Toate dispozitivele";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\u041f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u043d\u043e \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430, \u0435\u0441\u043b\u0438 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043e";
+      return "Dispozitive verificate \xeencruci\u0219at dac\u0103 este activat";
     },
     get$crossVerifiedDevices() {
-      return "\u041f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u043d\u043e \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Dispozitive verificate \xeencruci\u0219at";
     },
     get$verifiedDevicesOnly() {
-      return "\u0422\u043e\u043b\u044c\u043a\u043e \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043d\u044b\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Doar dispozitive verificate";
     },
     get$optionalMessage() {
-      return "(\u041e\u043f\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e) \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435...";
+      return "(Op\u021bional) mesaj...";
     },
     get$notSupportedOnThisDevice() {
-      return "\u041d\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u043d\u0430 \u044d\u0442\u043e\u043c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435";
+      return "Nu este suportat pe acest dispozitiv";
     },
     get$enterNewChat() {
-      return "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043d\u043e\u0432\u044b\u0439 \u0447\u0430\u0442";
+      return "Intr\u0103 \xeen conversa\u021bie nou\u0103";
     },
     get$approve() {
-      return "\u041e\u0434\u043e\u0431\u0440\u0438\u0442\u044c";
+      return "Aprob\u0103";
     },
     get$commandHint_logout() {
-      return "\u0412\u044b\u0439\u0442\u0438 \u0438\u0437 \u0442\u0435\u043a\u0443\u0449\u0435\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
+      return "Deconecta\u021bi-v\u0103 de pe dispozitivul curent";
     },
     get$commandHint_logoutall() {
-      return "\u0412\u044b\u0439\u0442\u0438 \u0441\u043e \u0432\u0441\u0435\u0445 \u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0445 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432";
+      return "Deconecta\u021bi toate dispozitivele active";
     },
     get$customReaction() {
-      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0430\u044f \u0440\u0435\u0430\u043a\u0446\u0438\u044f";
+      return "Reac\u021bie personalizat\u0103";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043d\u0430 " + l1 + " \u0438\u043b\u0438 " + l2 + "...";
+      return "Tasteaz\u0103 \xeen " + l1 + " sau " + l2 + "...";
     },
     get$holdForInfo() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0438 \u0443\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0439\u0442\u0435 \u0434\u043b\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u043e \u0441\u043b\u043e\u0432\u0435.";
+      return "\u021aine ap\u0103sat pentru informa\u021bii despre cuv\xe2nt.";
     },
     get$greenFeedback() {
-      return "\u042d\u0442\u043e \u0442\u043e, \u0447\u0442\u043e \u044f \u0431\u044b \u0432\u0441\u0442\u0430\u0432\u0438\u043b!";
+      return "Asta a\u0219 pune!";
     },
     get$yellowFeedback() {
-      return "\u0425\u043c, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u044d\u0442\u043e \u0438 \u043f\u043e\u0441\u043c\u043e\u0442\u0440\u0438\u0442\u0435, \u0441\u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u043b\u0438! \u0427\u0442\u043e\u0431\u044b \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u044d\u0442\u043e \u0441\u043b\u043e\u0432\u043e, \u043f\u0440\u043e\u0441\u0442\u043e \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u0435\u0433\u043e \u0441\u043d\u043e\u0432\u0430.";
+      return "Hmmm, po\u021bi \xeencerca asta \u0219i vezi dac\u0103 func\u021bioneaz\u0103! Pentru a folosi acest cuv\xe2nt, doar f\u0103 clic din nou.";
     },
     get$redFeedback() {
-      return "\u042f \u0434\u0443\u043c\u0430\u044e, \u044d\u0442\u043e \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e...";
+      return "Nu cred c\u0103 este corect...";
     },
     get$gaTooltip() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0435 L2 \u0441 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u044c\u044e";
+      return "L2 utilizare cu asisten\u021b\u0103 gramatical\u0103";
     },
     get$taTooltip() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0435 L2 \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0447\u0435\u0441\u043a\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u044c\u044e";
+      return "L2 utilizare cu asisten\u021b\u0103 de traducere";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\u0418\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0447\u0438\u043a";
+      return "Traduc\u0103tor Interactiv";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\u0418\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0440\u043e\u0432\u0435\u0440\u0449\u0438\u043a \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438";
+      return "Verificator Gramatic\u0103 Interactiv";
     },
     get$waTooltip() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0435 L2 \u0431\u0435\u0437 \u043f\u043e\u043c\u043e\u0449\u0438";
+      return "L2 utilizare f\u0103r\u0103 asisten\u021b\u0103";
     },
     get$noIdenticalLanguages() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0440\u0430\u0437\u043d\u044b\u0435 \u0438\u0441\u0445\u043e\u0434\u043d\u044b\u0439 \u0438 \u0446\u0435\u043b\u0435\u0432\u043e\u0439 \u044f\u0437\u044b\u043a\u0438";
+      return "Te rog s\u0103 alegi limbi de baz\u0103 \u0219i \u021bint\u0103 diferite";
     },
     get$joinWithClassCode() {
-      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043a\u0443\u0440\u0441\u0443";
+      return "Particip\u0103 la curs";
     },
     get$languageLevelPreA1() {
-      return "\u041d\u043e\u0432\u0438\u0447\u043e\u043a \u041d\u0438\u0437\u043a\u0438\u0439 (Pre A1)";
+      return "Novice Low (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\u041d\u043e\u0432\u0438\u0447\u043e\u043a \u041c\u0438\u0434 (A1)";
+      return "Novice Mid (A1)";
     },
     get$languageLevelA2() {
-      return "\u041d\u0430\u0447\u0430\u043b\u044c\u043d\u044b\u0439 \u0432\u044b\u0441\u043e\u043a\u0438\u0439 (A2)";
+      return "Novice \xcenalt (A2)";
     },
     get$languageLevelB1() {
-      return "\u0421\u0440\u0435\u0434\u043d\u0438\u0439 \u0441\u0440\u0435\u0434\u043d\u0438\u0439 (B1)";
+      return "Intermediar Mediu (B1)";
     },
     get$languageLevelB2() {
-      return "\u041f\u0440\u043e\u0434\u0432\u0438\u043d\u0443\u0442\u044b\u0439 \u043d\u0438\u0437\u043a\u0438\u0439 (B2)";
+      return "Avansat Sc\u0103zut (B2)";
     },
     get$languageLevelC1() {
-      return "\u041f\u0440\u043e\u0434\u0432\u0438\u043d\u0443\u0442\u044b\u0439 \u0441\u0440\u0435\u0434\u043d\u0438\u0439 (C1)";
+      return "Avansat Mediu (C1)";
     },
     get$languageLevelC2() {
-      return "\u0412\u044b\u0441\u0448\u0438\u0439 (C2)";
+      return "Superior (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435";
+      return "Schimb\u0103 numele";
     },
     get$changeTheNameOfTheChat() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430";
+      return "Schimb\u0103 numele chat-ului";
     },
     get$sorryNoResults() {
-      return "\u0418\u0437\u0432\u0438\u043d\u0438\u0442\u0435, \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u043e\u0432 \u043d\u0435\u0442.";
+      return "Ne pare r\u0103u, nu exist\u0103 rezultate.";
     },
     get$ignoreInThisText() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c";
+      return "Ignor\u0103";
     },
     needsItMessage$1(targetLanguage) {
-      return "\u041f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435, \u044d\u0442\u043e \u043d\u0435 " + targetLanguage + "! \u0412\u0430\u043c \u043d\u0443\u0436\u043d\u0430 \u043f\u043e\u043c\u043e\u0449\u044c \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c?";
+      return "A\u0219teapt\u0103, nu este " + targetLanguage + "! Ai nevoie de ajutor pentru traducere?";
     },
     get$countryInformation() {
-      return "\u041c\u043e\u044f \u0441\u0442\u0440\u0430\u043d\u0430";
+      return "\u021aara mea";
     },
     get$targetLanguage() {
-      return "\u0426\u0435\u043b\u0435\u0432\u043e\u0439 \u044f\u0437\u044b\u043a";
+      return "Limba \u021bint\u0103";
     },
     get$updateLanguage() {
-      return "\u041c\u043e\u0438 \u044f\u0437\u044b\u043a\u0438";
+      return "Limbi ale mele";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\u041a\u0430\u043a\u043e\u0439 \u044f\u0437\u044b\u043a \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u0432\u044b\u0443\u0447\u0438\u0442\u044c?";
+      return "Ce limb\u0103 vrei s\u0103 \xeenve\u021bi?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\u041a\u0430\u043a\u043e\u0439 \u0443 \u0432\u0430\u0441 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u044f\u0437\u044b\u043a?";
+      return "Care este limba ta de baz\u0103?";
     },
     get$saveChanges() {
-      return "\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f";
+      return "Salveaz\u0103 modific\u0103rile";
     },
     get$publicProfileTitle() {
-      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u044c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c \u043c\u043e\u0439 \u043f\u0440\u043e\u0444\u0438\u043b\u044c \u0432 \u043f\u043e\u0438\u0441\u043a\u0435";
+      return "Permite ca profilul meu s\u0103 fie g\u0103sit \xeen c\u0103utare";
     },
     get$publicProfileDesc() {
-      return "\u0412\u043a\u043b\u044e\u0447\u0438\u0432 \u044d\u0442\u043e, \u0432\u044b \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u0435\u0442\u0435 \u0434\u0440\u0443\u0433\u0438\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\u043c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u044c \u0432\u0430\u0448 \u043f\u0440\u043e\u0444\u0438\u043b\u044c \u0432 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e\u0439 \u0441\u0442\u0440\u043e\u043a\u0435 \u043f\u043e\u0438\u0441\u043a\u0430 \u0438 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u0437\u0430\u043f\u0440\u043e\u0441\u044b \u043d\u0430 \u0447\u0430\u0442. \u0412 \u044d\u0442\u043e\u0442 \u043c\u043e\u043c\u0435\u043d\u0442 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u043d\u044f\u0442\u044c \u0438\u043b\u0438 \u043e\u0442\u043a\u043b\u043e\u043d\u0438\u0442\u044c \u0437\u0430\u043f\u0440\u043e\u0441.";
+      return "Activ\xe2nd aceast\u0103 op\u021biune, permi\u021bi altor utilizatori s\u0103 g\u0103seasc\u0103 profilul t\u0103u \xeen bara de c\u0103utare global\u0103 \u0219i s\u0103 trimit\u0103 cereri de chat. \xcen acest moment, po\u021bi alege s\u0103 accep\u021bi sau s\u0103 refuzi cererea.";
     },
     get$errorDisableIT() {
-      return "\u041f\u043e\u043c\u043e\u0449\u044c \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u0430.";
+      return "Asisten\u021ba de traducere este dezactivat\u0103.";
     },
     get$errorDisableIGC() {
-      return "\u041f\u043e\u043c\u043e\u0449\u044c \u0441 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u043e\u0439 \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u0430.";
+      return "Asisten\u021ba gramatical\u0103 este dezactivat\u0103.";
     },
     get$errorDisableLanguageAssistance() {
-      return "\u041f\u043e\u043c\u043e\u0449\u044c \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c \u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u043e\u0439 \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u044b.";
+      return "Asisten\u021ba de traducere \u0219i asisten\u021ba gramatical\u0103 sunt dezactivate.";
     },
     get$errorDisableITUserDesc() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0437\u0434\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u043c\u043e\u0449\u0438 \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c";
+      return "Clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 pentru traducere";
     },
     get$errorDisableIGCUserDesc() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0437\u0434\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u043c\u043e\u0449\u0438 \u0441 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u043e\u0439";
+      return "Clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 gramatical\u0103";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0437\u0434\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043f\u043e\u043c\u043e\u0449\u0438 \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c \u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u043e\u0439";
+      return "Face\u021bi clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 pentru traducere \u0219i gramatic\u0103";
     },
     get$errorDisableITClassDesc() {
-      return "\u041f\u043e\u043c\u043e\u0449\u044c \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u0430 \u0434\u043b\u044f \u043a\u0443\u0440\u0441\u0430, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u043c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u044d\u0442\u043e\u0442 \u0447\u0430\u0442.";
+      return "Asisten\u021ba de traducere este dezactivat\u0103 pentru cursul \xeen care se afl\u0103 aceast\u0103 conversa\u021bie.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\u041f\u043e\u043c\u043e\u0449\u044c \u0441 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u043e\u0439 \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u0430 \u0434\u043b\u044f \u043a\u0443\u0440\u0441\u0430, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u043c \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u044d\u0442\u043e\u0442 \u0447\u0430\u0442.";
+      return "Asisten\u021ba de gramatic\u0103 este dezactivat\u0103 pentru cursul \xeen care se afl\u0103 aceast\u0103 conversa\u021bie.";
     },
     get$error405Title() {
-      return "\u042f\u0437\u044b\u043a\u0438 \u043d\u0435 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u044b";
+      return "Limbi neconfigurate";
     },
     get$error405Desc() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u0432\u0430\u0448\u0438 \u044f\u0437\u044b\u043a\u0438 \u0432 \u0413\u043b\u0430\u0432\u043d\u043e\u0435 \u043c\u0435\u043d\u044e > \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f.";
+      return "V\u0103 rug\u0103m s\u0103 seta\u021bi limbile \xeen Meniu Principal > Set\u0103ri de \xcenv\u0103\u021bare.";
     },
     get$termsAndConditions() {
-      return "\u0423\u0441\u043b\u043e\u0432\u0438\u044f\u043c\u0438 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u044f";
+      return "Termenii \u0219i Condi\u021biile";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " \u0438 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u044e, \u0447\u0442\u043e \u043c\u043d\u0435 \u043d\u0435 \u043c\u0435\u043d\u0435\u0435 16 \u043b\u0435\u0442.";
+      return " \u0219i certific c\u0103 am cel pu\u021bin 16 ani.";
     },
     get$error502504Title() {
-      return "\u0412\u0430\u0443, \u043c\u043d\u043e\u0433\u043e \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u043e\u0432 \u043e\u043d\u043b\u0430\u0439\u043d!";
+      return "Wow, sunt mul\u021bi elevi online!";
     },
     get$error502504Desc() {
-      return "\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0430 \u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438 \u043c\u043e\u0433\u0443\u0442 \u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e \u0438\u043b\u0438 \u0431\u044b\u0442\u044c \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b, \u043f\u043e\u043a\u0430 \u0431\u043e\u0442\u044b Pangea \u043d\u0435 \u0434\u043e\u0433\u043e\u043d\u044f\u0442.";
+      return "Instrumentele de traducere \u0219i gramatic\u0103 pot fi lente sau indisponibile \xeen timp ce robo\u021bii Pangea se actualizeaz\u0103.";
     },
     get$error404Title() {
-      return "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0430!";
+      return "Eroare de traducere!";
     },
     get$error404Desc() {
-      return "\u0411\u043e\u0442 Pangea \u043d\u0435 \u0443\u0432\u0435\u0440\u0435\u043d, \u043a\u0430\u043a \u044d\u0442\u043e \u043f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438...";
+      return "Botul Pangea nu este sigur cum s\u0103 traduc\u0103 asta...";
     },
     get$errorPleaseRefresh() {
-      return "\u041c\u044b \u044d\u0442\u0438\u043c \u0437\u0430\u043d\u0438\u043c\u0430\u0435\u043c\u0441\u044f! \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u0435 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443 \u0438 \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u043d\u043e\u0432\u0430.";
+      return "Ne uit\u0103m la problem\u0103! V\u0103 rug\u0103m s\u0103 re\xeenc\u0103rca\u021bi \u0219i s\u0103 \xeencerca\u021bi din nou.";
     },
     get$connectedToStaging() {
-      return "\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043e \u043a \u0442\u0435\u0441\u0442\u043e\u0432\u043e\u0439 \u0441\u0440\u0435\u0434\u0435";
+      return "Conectat la Staging";
     },
     get$learningSettings() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f";
+      return "Set\u0103ri de \xeenv\u0103\u021bare";
     },
     get$participants() {
-      return "\u0423\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438";
+      return "Participan\u021bi";
     },
     get$clickMessageTitle() {
-      return "\u041d\u0443\u0436\u043d\u0430 \u043f\u043e\u043c\u043e\u0449\u044c?";
+      return "Ai nevoie de ajutor?";
     },
     get$clickMessageBody() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u044f\u0437\u044b\u043a\u043e\u0432\u044b\u0445 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u043e\u0432, \u0442\u0430\u043a\u0438\u0445 \u043a\u0430\u043a \u043f\u0435\u0440\u0435\u0432\u043e\u0434, \u0432\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u0438 \u0434\u0440\u0443\u0433\u0438\u0435!";
+      return "F\u0103 clic pe un mesaj pentru instrumente de limbaj precum traducere, redare \u0219i altele!";
     },
     get$allDone() {
-      return "\u0413\u043e\u0442\u043e\u0432\u043e!";
+      return "Totul este gata!";
     },
     get$vocab() {
-      return "\u041b\u0435\u043a\u0441\u0438\u043a\u0430";
+      return "Vocabular";
     },
     get$subscribe(_) {
-      return "\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f";
+      return "Aboneaz\u0103-te";
     },
     get$getAccess() {
-      return "\u041f\u043e\u0434\u043f\u0438\u0448\u0438\u0442\u0435\u0441\u044c \u0441\u0435\u0439\u0447\u0430\u0441!";
+      return "Aboneaz\u0103-te acum!";
     },
     get$subscriptionDesc() {
-      return "\u041e\u0431\u0449\u0435\u043d\u0438\u0435 \u2014 \u0431\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u043e! \u041f\u043e\u0434\u043f\u0438\u0448\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0432\u043e\u0434, \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0443 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438 \u0438 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f.";
+      return "Mesajele sunt gratuite! Aboneaz\u0103-te pentru a debloca traducerea interactiv\u0103, verificarea gramaticii \u0219i analizele de \xeenv\u0103\u021bare.";
     },
     get$subscriptionManagement() {
-      return "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u043e\u0439";
+      return "Gestionare abonament";
     },
     get$currentSubscription() {
-      return "\u0422\u0435\u043a\u0443\u0449\u0430\u044f \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430";
+      return "Abonament curent";
     },
     get$cancelSubscription() {
-      return "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0443";
+      return "Anuleaz\u0103 abonamentul t\u0103u";
     },
     get$selectYourPlan() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u043b\u0430\u043d";
+      return "Selecteaz\u0103-\u021bi planul";
     },
     get$subsciptionPlatformTooltip() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u043e\u0439\u0434\u0438\u0442\u0435 \u043d\u0430 \u0432\u0430\u0448\u0435 \u0438\u0441\u0445\u043e\u0434\u043d\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u043f\u043b\u0430\u043d\u043e\u043c \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438";
+      return "Te rug\u0103m s\u0103 te conectezi la dispozitivul t\u0103u original pentru a gestiona planul de abonament";
     },
     get$subscriptionManagementUnavailable() {
-      return "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u043e\u0439 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
+      return "Gestionarea abonamentului nu este disponibil\u0103";
     },
     get$paymentMethod() {
-      return "\u0421\u043f\u043e\u0441\u043e\u0431 \u043e\u043f\u043b\u0430\u0442\u044b";
+      return "Metoda de plat\u0103";
     },
     get$paymentHistory() {
-      return "\u0418\u0441\u0442\u043e\u0440\u0438\u044f \u043f\u043b\u0430\u0442\u0435\u0436\u0435\u0439";
+      return "Istoricul pl\u0103\u021bilor";
     },
     get$emptyChatDownloadWarning() {
-      return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u0441\u043a\u0430\u0447\u0430\u0442\u044c \u043f\u0443\u0441\u0442\u043e\u0439 \u0447\u0430\u0442";
+      return "Nu se poate desc\u0103rca chat gol";
     },
     get$toggleImmersionMode() {
-      return "\u0420\u0435\u0436\u0438\u043c \u043f\u043e\u0433\u0440\u0443\u0436\u0435\u043d\u0438\u044f";
+      return "Comutare Mod Imersiune";
     },
     get$toggleImmersionModeDesc() {
-      return "\u041f\u0440\u0438 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438 \u0432\u0441\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u044e\u0442\u0441\u044f \u043d\u0430 \u0432\u0430\u0448\u0435\u043c \u0446\u0435\u043b\u0435\u0432\u043e\u043c \u044f\u0437\u044b\u043a\u0435. \u042d\u0442\u0430 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430 \u043e\u0441\u043e\u0431\u0435\u043d\u043d\u043e \u043f\u043e\u043b\u0435\u0437\u043d\u0430 \u043f\u0440\u0438 \u044f\u0437\u044b\u043a\u043e\u0432\u044b\u0445 \u043e\u0431\u043c\u0435\u043d\u0430\u0445.";
+      return "C\xe2nd este activat, toate mesajele sunt afi\u0219ate \xeen limba \u021bint\u0103. Aceast\u0103 setare este cel mai util \xeen schimburile de limbi.";
     },
     get$itToggleDescription() {
-      return "\u042d\u0442\u043e\u0442 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u0438\u0437\u0443\u0447\u0435\u043d\u0438\u044f \u044f\u0437\u044b\u043a\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442 \u0441\u043b\u043e\u0432\u0430 \u043d\u0430 \u0432\u0430\u0448\u0435\u043c \u0431\u0430\u0437\u043e\u0432\u043e\u043c \u044f\u0437\u044b\u043a\u0435 \u0438 \u043f\u043e\u043c\u043e\u0436\u0435\u0442 \u0432\u0430\u043c \u043f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438 \u0438\u0445 \u043d\u0430 \u0446\u0435\u043b\u0435\u0432\u043e\u0439 \u044f\u0437\u044b\u043a. \u0425\u043e\u0442\u044f \u044d\u0442\u043e \u0440\u0435\u0434\u043a\u043e\u0441\u0442\u044c, \u0418\u0418 \u043c\u043e\u0436\u0435\u0442 \u0434\u043e\u043f\u0443\u0441\u043a\u0430\u0442\u044c \u043e\u0448\u0438\u0431\u043a\u0438 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0430.";
+      return "Acest instrument de \xeenv\u0103\u021bare a limbilor va identifica cuvintele \xeen limba de baz\u0103 \u0219i v\u0103 va ajuta s\u0103 le traduce\u021bi \xeen limba \u021bint\u0103. De\u0219i rar, AI poate face gre\u0219eli de traducere.";
     },
     get$igcToggleDescription() {
-      return "\u042d\u0442\u043e\u0442 \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u0438\u0437\u0443\u0447\u0435\u043d\u0438\u044f \u044f\u0437\u044b\u043a\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442 \u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0451\u043d\u043d\u044b\u0435 \u043e\u0440\u0444\u043e\u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043a\u0438\u0435, \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0438 \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u043e\u0448\u0438\u0431\u043a\u0438 \u0432 \u0432\u0430\u0448\u0435\u043c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438 \u0438 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0438\u0442 \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f. \u0425\u043e\u0442\u044f \u044d\u0442\u043e \u0440\u0435\u0434\u043a\u043e\u0441\u0442\u044c, \u0418\u0418 \u043c\u043e\u0436\u0435\u0442 \u0434\u043e\u043f\u0443\u0441\u043a\u0430\u0442\u044c \u043e\u0448\u0438\u0431\u043a\u0438 \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f.";
+      return "Acest instrument de \xeenv\u0103\u021bare a limbilor va identifica gre\u0219elile comune de ortografie, gramatic\u0103 \u0219i punctua\u021bie din mesajul dvs. \u0219i va sugera corecturi. De\u0219i rar, AI poate face gre\u0219eli de corectare.";
     },
     get$originalMessage() {
-      return "\u0418\u0441\u0445\u043e\u0434\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Mesaj Original";
     },
     get$sentMessage() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Mesaj Trimis";
     },
     get$useType() {
-      return "\u0422\u0438\u043f \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u044f";
+      return "Utilizare Tip";
     },
     get$notAvailable() {
-      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
+      return "Indisponibil";
     },
     get$taAndGaTooltip() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0435 \u0443\u0440\u043e\u0432\u043d\u044f 2 \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0447\u0435\u0441\u043a\u043e\u0439 \u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u043f\u043e\u043c\u043e\u0449\u0438";
+      return "Utilizare L2 cu asisten\u021b\u0103 de traducere \u0219i asisten\u021b\u0103 gramatical\u0103";
     },
     get$definitionsToolName() {
-      return "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u0441\u043b\u043e\u0432";
+      return "Defini\u021bii Cuvinte";
     },
     get$definitionsToolDescription() {
-      return "\u041f\u0440\u0438 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438 \u0441\u043b\u043e\u0432\u0430, \u043f\u043e\u0434\u0447\u0435\u0440\u043a\u043d\u0443\u0442\u044b\u0435 \u0441\u0438\u043d\u0438\u043c, \u043c\u043e\u0436\u043d\u043e \u0449\u0435\u043b\u043a\u043d\u0443\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0439. \u0429\u0435\u043b\u043a\u043d\u0438\u0442\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f\u043c.";
+      return "C\xe2nd este activat, cuvintele subliniate \xeen albastru pot fi f\u0103cute clic pentru defini\u021bii. Face\u021bi clic pe mesaje pentru a accesa defini\u021biile.";
     },
     get$welcomeBack() {
-      return "\u0421 \u0432\u043e\u0437\u0432\u0440\u0430\u0449\u0435\u043d\u0438\u0435\u043c! \u0415\u0441\u043b\u0438 \u0432\u044b \u0443\u0447\u0430\u0441\u0442\u0432\u043e\u0432\u0430\u043b\u0438 \u0432 \u043f\u0438\u043b\u043e\u0442\u0435 2023-2024 \u0433\u043e\u0434\u043e\u0432, \u0441\u0432\u044f\u0436\u0438\u0442\u0435\u0441\u044c \u0441 \u043d\u0430\u043c\u0438 \u0434\u043b\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u0432\u0430\u0448\u0435\u0439 \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0439 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438 \u043f\u0438\u043b\u043e\u0442\u0430. \u0415\u0441\u043b\u0438 \u0432\u044b \u0443\u0447\u0438\u0442\u0435\u043b\u044c, \u0443 \u043a\u043e\u0442\u043e\u0440\u043e\u0433\u043e (\u0438\u043b\u0438 \u0443 \u0432\u0430\u0448\u0435\u0439 \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438) \u0435\u0441\u0442\u044c \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u0438 \u0434\u043b\u044f \u0432\u0430\u0448\u0435\u0433\u043e \u043a\u043b\u0430\u0441\u0441\u0430, \u0441\u0432\u044f\u0436\u0438\u0442\u0435\u0441\u044c \u0441 \u043d\u0430\u043c\u0438 \u0434\u043b\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u0443\u0447\u0438\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0439 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438.";
+      return "Bine ai revenit! Dac\u0103 ai fost parte din pilotul 2023-2024, te rug\u0103m s\u0103 ne contactezi pentru abonamentul t\u0103u special de pilot. Dac\u0103 e\u0219ti profesor care a achizi\u021bionat (sau institu\u021bia ta a achizi\u021bionat) licen\u021be pentru clasa ta, contacteaz\u0103-ne pentru abonamentul t\u0103u de profesor.";
     },
     get$downloadTxtFile() {
-      return "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u044b\u0439 \u0444\u0430\u0439\u043b";
+      return "Descarc\u0103 Fi\u0219ier Text";
     },
     get$downloadCSVFile() {
-      return "\u0421\u043a\u0430\u0447\u0430\u0442\u044c CSV-\u0444\u0430\u0439\u043b";
+      return "Descarc\u0103 Fi\u0219ier CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u0423 \u0432\u0430\u0441 \u0432 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043f\u043e\u0436\u0438\u0437\u043d\u0435\u043d\u043d\u0430\u044f \u043f\u0440\u043e\u043c\u043e-\u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430. \u041e\u0431\u0440\u0430\u0442\u0438\u0442\u0435\u0441\u044c \u0432 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0443@pangea.chat \u0434\u043b\u044f \u043f\u043e\u043c\u043e\u0449\u0438 \u0432 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u0438 \u0432\u0430\u0448\u0435\u0439 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438.";
+      return "\xcen prezent ai un abonament promo\u021bional pe via\u021b\u0103. Trimite un mesaj la support@pangea.chat pentru ajutor \xeen schimbarea abonamentului t\u0103u.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\u041f\u043e\u0434\u043f\u0438\u0441\u043a\u0430 \u043f\u0440\u0438\u043e\u0431\u0440\u0435\u0442\u0435\u043d\u0430 \u0447\u0435\u0440\u0435\u0437 " + purchasePlatform;
+      return "Abonament achizi\u021bionat prin " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "\u041f\u0440\u043e\u0431\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434 1 \u043d\u0435\u0434\u0435\u043b\u044f";
+      return "Perioad\u0103 de \xeencercare de o s\u0103pt\u0103m\xe2n\u0103";
     },
     get$downloadXLSXFile() {
-      return "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0444\u0430\u0439\u043b Excel";
+      return "Descarc\u0103 Fi\u0219ier Excel";
     },
     get$unkDisplayName() {
-      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e";
+      return "Necunoscut";
     },
     get$wwCountryDisplayName() {
-      return "\u0412\u0441\u0435\u043c\u0438\u0440\u043d\u0430\u044f \u0441\u0435\u0442\u044c";
+      return "Lumea \xeentreag\u0103";
     },
     get$afCountryDisplayName() {
-      return "\u0410\u0444\u0433\u0430\u043d\u0438\u0441\u0442\u0430\u043d";
+      return "Afganistan";
     },
     get$axCountryDisplayName() {
-      return "\u0410\u043b\u0430\u043d\u0434\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Aland";
     },
     get$alCountryDisplayName() {
-      return "\u0410\u043b\u0431\u0430\u043d\u0438\u044f";
+      return "Albania";
     },
     get$dzCountryDisplayName() {
-      return "\u0410\u043b\u0436\u0438\u0440";
+      return "Algeria";
     },
     get$asCountryDisplayName() {
-      return "\u0410\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u0421\u0430\u043c\u043e\u0430";
+      return "Samoa American\u0103";
     },
     get$adCountryDisplayName() {
-      return "\u0410\u043d\u0434\u043e\u0440\u0440\u0430";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
-      return "\u0410\u043d\u0433\u043e\u043b\u0430";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\u0410\u043d\u0433\u0438\u043b\u044c\u044f";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "\u0410\u043d\u0442\u0438\u0433\u0443\u0430 \u0438 \u0411\u0430\u0440\u0431\u0443\u0434\u0430";
+      return "Antigua \u0219i Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\u0410\u0440\u0433\u0435\u043d\u0442\u0438\u043d\u0430";
+      return "Argentina";
     },
     get$amCountryDisplayName() {
-      return "\u0410\u0440\u043c\u0435\u043d\u0438\u044f";
+      return "Armenia";
     },
     get$awCountryDisplayName() {
-      return "\u0410\u0440\u0443\u0431\u0430";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432 \u0412\u043e\u0437\u043d\u0435\u0441\u0435\u043d\u0438\u044f";
+      return "Insula Ascension";
     },
     get$auCountryDisplayName() {
-      return "\u0410\u0432\u0441\u0442\u0440\u0430\u043b\u0438\u044f";
+      return "Australia";
     },
     get$atCountryDisplayName() {
-      return "\u0410\u0432\u0441\u0442\u0440\u0438\u044f";
+      return "Austria";
     },
     get$azCountryDisplayName() {
-      return "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d";
+      return "Azerbaidjan";
     },
     get$bsCountryDisplayName() {
-      return "\u0411\u0430\u0433\u0430\u043c\u044b";
+      return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "\u0411\u0430\u0445\u0440\u0435\u0439\u043d";
+      return "Bahrein";
     },
     get$bdCountryDisplayName() {
-      return "\u0411\u0430\u043d\u0433\u043b\u0430\u0434\u0435\u0448";
+      return "Bangladesh";
     },
     get$bbCountryDisplayName() {
-      return "\u0411\u0430\u0440\u0431\u0430\u0434\u043e\u0441";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c";
+      return "Belarus";
     },
     get$beCountryDisplayName() {
-      return "\u0411\u0435\u043b\u044c\u0433\u0438\u044f";
+      return "Belgia";
     },
     get$bzCountryDisplayName() {
-      return "\u0411\u0435\u043b\u0438\u0437";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
-      return "\u0411\u0435\u043d\u0438\u043d";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "\u0411\u0435\u0440\u043c\u0443\u0434\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "\u0411\u0443\u0442\u0430\u043d";
+      return "Bhutan";
     },
     get$boCountryDisplayName() {
-      return "\u0411\u043e\u043b\u0438\u0432\u0438\u044f";
+      return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "\u0411\u043e\u0441\u043d\u0438\u044f \u0438 \u0413\u0435\u0440\u0446\u0435\u0433\u043e\u0432\u0438\u043d\u0430";
+      return "Bosnia \u0219i Herzegovina";
     },
     get$bwCountryDisplayName() {
-      return "\u0411\u043e\u0442\u0441\u0432\u0430\u043d\u0430";
+      return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "\u0411\u0440\u0430\u0437\u0438\u043b\u0438\u044f";
+      return "Brazilia";
     },
     get$ioCountryDisplayName() {
-      return "\u0411\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u0430\u044f \u0442\u0435\u0440\u0440\u0438\u0442\u043e\u0440\u0438\u044f \u0432 \u0418\u043d\u0434\u0438\u0439\u0441\u043a\u043e\u043c \u043e\u043a\u0435\u0430\u043d\u0435";
+      return "Teritoriul Britanic din Oceanul Indian";
     },
     get$vgCountryDisplayName() {
-      return "\u0411\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u0438\u0435 \u0412\u0438\u0440\u0433\u0438\u043d\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Virgine Britanice";
     },
     get$bnCountryDisplayName() {
-      return "\u0411\u0440\u0443\u043d\u0435\u0439";
+      return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "\u0411\u043e\u043b\u0433\u0430\u0440\u0438\u044f";
+      return "Bulgaria";
     },
     get$bfCountryDisplayName() {
-      return "\u0411\u0443\u0440\u043a\u0438\u043d\u0430-\u0424\u0430\u0441\u043e";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\u0411\u0443\u0440\u0443\u043d\u0434\u0438";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\u041a\u0430\u043c\u0431\u043e\u0434\u0436\u0430";
+      return "Cambodgia";
     },
     get$cmCountryDisplayName() {
-      return "\u041a\u0430\u043c\u0435\u0440\u0443\u043d";
+      return "Camerun";
     },
     get$caCountryDisplayName() {
-      return "\u041a\u0430\u043d\u0430\u0434\u0430";
+      return "Canada";
     },
     get$cvCountryDisplayName() {
-      return "\u041a\u0430\u0431\u043e-\u0412\u0435\u0440\u0434\u0435";
+      return "Capul Verde";
     },
     get$bqCountryDisplayName() {
-      return "\u041a\u0430\u0440\u0438\u0431\u0441\u043a\u0438\u0435 \u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b";
+      return "Insulele Caraibe Olandeze";
     },
     get$kyCountryDisplayName() {
-      return "\u041a\u0430\u0439\u043c\u0430\u043d\u043e\u0432\u044b \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Cayman";
     },
     get$cfCountryDisplayName() {
-      return "\u0426\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0430\u0444\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430";
+      return "Republica Centrafrican\u0103";
     },
     get$tdCountryDisplayName() {
-      return "\u0427\u0430\u0434";
+      return "Ciad";
     },
     get$clCountryDisplayName() {
-      return "\u0427\u0438\u043b\u0438";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "\u041a\u0438\u0442\u0430\u0439";
+      return "China";
     },
     get$cxCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432 \u0420\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0430";
+      return "Insula Christmas";
     },
     get$ccCountryDisplayName() {
-      return "\u041a\u043e\u043a\u043e\u0441\u043e\u0432\u044b\u0435 (\u041a\u0438\u043b\u0438\u043d\u0433) \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Cocos [Keeling]";
     },
     get$coCountryDisplayName() {
-      return "\u041a\u043e\u043b\u0443\u043c\u0431\u0438\u044f";
+      return "Columbia";
     },
     get$kmCountryDisplayName() {
-      return "\u041a\u043e\u043c\u043e\u0440\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Comore";
     },
     get$cdCountryDisplayName() {
-      return "\u0414\u0435\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041a\u043e\u043d\u0433\u043e";
+      return "Republica Democratic\u0103 Congo";
     },
     get$cgCountryDisplayName() {
-      return "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041a\u043e\u043d\u0433\u043e";
+      return "Republica Congo";
     },
     get$ckCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u041a\u0443\u043a\u0430";
+      return "Insulele Cook";
     },
     get$crCountryDisplayName() {
-      return "\u041a\u043e\u0441\u0442\u0430-\u0420\u0438\u043a\u0430";
+      return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "\u041a\u043e\u0442-\u0434\u2019\u0418\u0432\u0443\u0430\u0440";
+      return "Coasta de Filde\u0219";
     },
     get$hrCountryDisplayName() {
-      return "\u0425\u043e\u0440\u0432\u0430\u0442\u0438\u044f";
+      return "Croa\u021bia";
     },
     get$cuCountryDisplayName() {
-      return "\u041a\u0443\u0431\u0430";
+      return "Cuba";
     },
     get$cwCountryDisplayName() {
-      return "\u041a\u044e\u0440\u0430\u0441\u0430\u043e";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "\u041a\u0438\u043f\u0440";
+      return "Cipru";
     },
     get$czCountryDisplayName() {
-      return "\u0427\u0435\u0445\u0438\u044f";
+      return "Republica Ceh\u0103";
     },
     get$dkCountryDisplayName() {
-      return "\u0414\u0430\u043d\u0438\u044f";
+      return "Danemarca";
     },
     get$djCountryDisplayName() {
-      return "\u0414\u0436\u0438\u0431\u0443\u0442\u0438";
+      return "Djibouti";
     },
     get$dmCountryDisplayName() {
-      return "\u0414\u043e\u043c\u0438\u043d\u0438\u043a\u0430";
+      return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "\u0414\u043e\u043c\u0438\u043d\u0438\u043a\u0430\u043d\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430";
+      return "Republica Dominican\u0103";
     },
     get$tlCountryDisplayName() {
-      return "\u0412\u043e\u0441\u0442\u043e\u0447\u043d\u044b\u0439 \u0422\u0438\u043c\u043e\u0440";
+      return "Timorul de Est";
     },
     get$ecCountryDisplayName() {
-      return "\u042d\u043a\u0432\u0430\u0434\u043e\u0440";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "\u0415\u0433\u0438\u043f\u0435\u0442";
+      return "Egipt";
     },
     get$svCountryDisplayName() {
-      return "\u0421\u0430\u043b\u044c\u0432\u0430\u0434\u043e\u0440";
+      return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\u042d\u043a\u0432\u0430\u0442\u043e\u0440\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u0413\u0432\u0438\u043d\u0435\u044f";
+      return "Guineea Ecuatorial\u0103";
     },
     get$erCountryDisplayName() {
-      return "\u042d\u0440\u0438\u0442\u0440\u0435\u044f";
+      return "Eritreea";
     },
     get$eeCountryDisplayName() {
-      return "\u042d\u0441\u0442\u043e\u043d\u0438\u044f";
+      return "Estonia";
     },
     get$szCountryDisplayName() {
-      return "\u042d\u0441\u0432\u0430\u0442\u0438\u043d\u0438";
+      return "Eswatini";
     },
     get$etCountryDisplayName() {
-      return "\u042d\u0444\u0438\u043e\u043f\u0438\u044f";
+      return "Etiopia";
     },
     get$fkCountryDisplayName() {
-      return "\u0424\u043e\u043b\u043a\u043b\u0435\u043d\u0434\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Falkland";
     },
     get$foCountryDisplayName() {
-      return "\u0424\u0430\u0440\u0435\u0440\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Feroe";
     },
     get$fjCountryDisplayName() {
-      return "\u0424\u0438\u0434\u0436\u0438";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\u0424\u0438\u043d\u043b\u044f\u043d\u0434\u0438\u044f";
+      return "Finlanda";
     },
     get$frCountryDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0438\u044f";
+      return "Fran\u021ba";
     },
     get$gfCountryDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u0441\u043a\u0430\u044f \u0413\u0432\u0438\u0430\u043d\u0430";
+      return "Guiana Francez\u0103";
     },
     get$pfCountryDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u0441\u043a\u0430\u044f \u041f\u043e\u043b\u0438\u043d\u0435\u0437\u0438\u044f";
+      return "Polinezia Francez\u0103";
     },
     get$gaCountryDisplayName() {
-      return "\u0413\u0430\u0431\u043e\u043d";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "\u0413\u0430\u043c\u0431\u0438\u044f";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "\u0413\u0440\u0443\u0437\u0438\u044f";
+      return "Georgia";
     },
     get$deCountryDisplayName() {
-      return "\u0413\u0435\u0440\u043c\u0430\u043d\u0438\u044f";
+      return "Germania";
     },
     get$ghCountryDisplayName() {
-      return "\u0413\u0430\u043d\u0430";
+      return "Ghana";
     },
     get$giCountryDisplayName() {
-      return "\u0413\u0438\u0431\u0440\u0430\u043b\u0442\u0430\u0440";
+      return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "\u0413\u0440\u0435\u0446\u0438\u044f";
+      return "Grecia";
     },
     get$glCountryDisplayName() {
-      return "\u0413\u0440\u0435\u043d\u043b\u0430\u043d\u0434\u0438\u044f";
+      return "Groenlanda";
     },
     get$gdCountryDisplayName() {
-      return "\u0413\u0440\u0435\u043d\u0430\u0434\u0430";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\u0413\u0432\u0430\u0434\u0435\u043b\u0443\u043f\u0430";
+      return "Guadelupa";
     },
     get$guCountryDisplayName() {
-      return "\u0413\u0443\u0430\u043c";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\u0413\u0432\u0430\u0442\u0435\u043c\u0430\u043b\u0430";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
-      return "\u0413\u0435\u0440\u043d\u0441\u0438";
+      return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "\u0413\u0432\u0438\u043d\u0435\u044f \u041a\u043e\u043d\u0430\u043a\u0440\u0438";
+      return "Guineea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "\u0413\u0432\u0438\u043d\u0435\u044f-\u0411\u0438\u0441\u0430\u0443";
+      return "Guineea-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "\u0413\u0430\u0439\u0430\u043d\u0430";
+      return "Guyana";
     },
     get$htCountryDisplayName() {
-      return "\u0413\u0430\u0438\u0442\u0438";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u0425\u0435\u0440\u0434 \u0438 \u041c\u0430\u043a\u0434\u043e\u043d\u0430\u043b\u044c\u0434";
+      return "Insula Heard \u0219i Insulele McDonald";
     },
     get$hnCountryDisplayName() {
-      return "\u0413\u043e\u043d\u0434\u0443\u0440\u0430\u0441";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\u0413\u043e\u043d\u043a\u043e\u043d\u0433";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "\u0412\u0435\u043d\u0433\u0440\u0438\u044f";
+      return "Ungaria";
     },
     get$isCountryDisplayName() {
-      return "\u0418\u0441\u043b\u0430\u043d\u0434\u0438\u044f";
+      return "Islanda";
     },
     get$inCountryDisplayName() {
-      return "\u0418\u043d\u0434\u0438\u044f";
+      return "India";
     },
     get$idCountryDisplayName() {
-      return "\u0418\u043d\u0434\u043e\u043d\u0435\u0437\u0438\u044f";
+      return "Indonezia";
     },
     get$irCountryDisplayName() {
-      return "\u0418\u0440\u0430\u043d";
+      return "Iran";
     },
     get$iqCountryDisplayName() {
-      return "\u0418\u0440\u0430\u043a";
+      return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "\u0418\u0440\u043b\u0430\u043d\u0434\u0438\u044f";
+      return "Irlanda";
     },
     get$imCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432 \u041c\u044d\u043d";
+      return "Insula Man";
     },
     get$ilCountryDisplayName() {
-      return "\u0418\u0437\u0440\u0430\u0438\u043b\u044c";
+      return "Israel";
     },
     get$itCountryDisplayName() {
-      return "\u0418\u0442\u0430\u043b\u0438\u044f";
+      return "Italia";
     },
     get$jmCountryDisplayName() {
-      return "\u042f\u043c\u0430\u0439\u043a\u0430";
+      return "Jamaica";
     },
     get$jpCountryDisplayName() {
-      return "\u042f\u043f\u043e\u043d\u0438\u044f";
+      return "Japonia";
     },
     get$jeCountryDisplayName() {
-      return "\u0414\u0436\u0435\u0440\u0441\u0438";
+      return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "\u0418\u043e\u0440\u0434\u0430\u043d\u0438\u044f";
+      return "Iordania";
     },
     get$kzCountryDisplayName() {
-      return "\u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d";
+      return "Kazahstan";
     },
     get$keCountryDisplayName() {
-      return "\u041a\u0435\u043d\u0438\u044f";
+      return "Kenya";
     },
     get$kiCountryDisplayName() {
-      return "\u041a\u0438\u0440\u0438\u0431\u0430\u0442\u0438";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\u041a\u043e\u0441\u043e\u0432\u043e";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "\u041a\u0443\u0432\u0435\u0439\u0442";
+      return "Kuweit";
     },
     get$kgCountryDisplayName() {
-      return "\u041a\u0438\u0440\u0433\u0438\u0437\u0438\u044f";
+      return "K\xe2rg\xe2zstan";
     },
     get$laCountryDisplayName() {
-      return "\u041b\u0430\u043e\u0441";
+      return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\u041b\u0430\u0442\u0432\u0438\u044f";
+      return "Letonia";
     },
     get$lbCountryDisplayName() {
-      return "\u041b\u0438\u0432\u0430\u043d";
+      return "Liban";
     },
     get$lsCountryDisplayName() {
-      return "\u041b\u0435\u0441\u043e\u0442\u043e";
+      return "Lesotho";
     },
     get$lrCountryDisplayName() {
-      return "\u041b\u0438\u0431\u0435\u0440\u0438\u044f";
+      return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "\u041b\u0438\u0432\u0438\u044f";
+      return "Libia";
     },
     get$liCountryDisplayName() {
-      return "\u041b\u0438\u0445\u0442\u0435\u043d\u0448\u0442\u0435\u0439\u043d";
+      return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "\u041b\u0438\u0442\u0432\u0430";
+      return "Lituania";
     },
     get$luCountryDisplayName() {
-      return "\u041b\u044e\u043a\u0441\u0435\u043c\u0431\u0443\u0440\u0433";
+      return "Luxemburg";
     },
     get$moCountryDisplayName() {
-      return "\u041c\u0430\u043a\u0430\u043e";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0438\u044f";
+      return "Macedonia";
     },
     get$mgCountryDisplayName() {
-      return "\u041c\u0430\u0434\u0430\u0433\u0430\u0441\u043a\u0430\u0440";
+      return "Madagascar";
     },
     get$mwCountryDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0432\u0438";
+      return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0439\u0437\u0438\u044f";
+      return "Malaysia";
     },
     get$mvCountryDisplayName() {
-      return "\u041c\u0430\u043b\u044c\u0434\u0438\u0432\u044b";
+      return "Maldives";
     },
     get$mlCountryDisplayName() {
-      return "\u041c\u0430\u043b\u0438";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\u041c\u0430\u043b\u044c\u0442\u0430";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\u041c\u0430\u0440\u0448\u0430\u043b\u043b\u043e\u0432\u044b \u041e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Marshall";
     },
     get$mqCountryDisplayName() {
-      return "\u041c\u0430\u0440\u0442\u0438\u043d\u0456\u043a\u0430";
+      return "Martinica";
     },
     get$mrCountryDisplayName() {
-      return "\u041c\u0430\u0432\u0440\u0438\u0442\u0430\u043d\u0438\u044f";
+      return "Mauritania";
     },
     get$muCountryDisplayName() {
-      return "\u041c\u0430\u0432\u0440\u0438\u043a\u0438\u0439";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
-      return "\u041c\u0430\u0439\u043e\u0442\u0442\u0430";
+      return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\u041c\u0435\u043a\u0441\u0438\u043a\u0430";
+      return "Mexic";
     },
     get$fmCountryDisplayName() {
-      return "\u041c\u0438\u043a\u0440\u043e\u043d\u0435\u0437\u0438\u044f";
+      return "Micronezia";
     },
     get$mdCountryDisplayName() {
-      return "\u041c\u043e\u043b\u0434\u043e\u0432\u0430";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "\u041c\u043e\u043d\u0430\u043a\u043e";
+      return "Monaco";
     },
     get$mnCountryDisplayName() {
-      return "\u041c\u043e\u043d\u0433\u043e\u043b\u0438\u044f";
+      return "Mongolia";
     },
     get$meCountryDisplayName() {
-      return "\u0427\u0435\u0440\u043d\u043e\u0433\u043e\u0440\u0438\u044f";
+      return "Muntenegru";
     },
     get$msCountryDisplayName() {
-      return "\u041c\u043e\u043d\u0442\u0441\u0435\u0440\u0440\u0430\u0442";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\u041c\u0430\u0440\u043e\u043a\u043a\u043e";
+      return "Maroc";
     },
     get$mzCountryDisplayName() {
-      return "\u041c\u043e\u0437\u0430\u043c\u0431\u0438\u043a";
+      return "Mozambic";
     },
     get$mmCountryDisplayName() {
-      return "\u041c\u044c\u044f\u043d\u043c\u0430 (\u0411\u0438\u0440\u043c\u0430)";
+      return "Myanmar (Birmania)";
     },
     get$naCountryDisplayName() {
-      return "\u041d\u0430\u043c\u0438\u0431\u0438\u044f";
+      return "Namibia";
     },
     get$nrCountryDisplayName() {
-      return "\u041d\u0430\u0443\u0440\u0443";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\u041d\u0435\u043f\u0430\u043b";
+      return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b";
+      return "\u021a\u0103rile de Jos";
     },
     get$ncCountryDisplayName() {
-      return "\u041d\u043e\u0432\u0430\u044f \u041a\u0430\u043b\u0435\u0434\u043e\u043d\u0438\u044f";
+      return "Noua Caledonie";
     },
     get$nzCountryDisplayName() {
-      return "\u041d\u043e\u0432\u0430\u044f \u0417\u0435\u043b\u0430\u043d\u0434\u0438\u044f";
+      return "Noua Zeeland\u0103";
     },
     get$niCountryDisplayName() {
-      return "\u041d\u0438\u043a\u0430\u0440\u0430\u0433\u0443\u0430";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "\u041d\u0438\u0433\u0435\u0440";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "\u041d\u0438\u0433\u0435\u0440\u0438\u044f";
+      return "Nigeria";
     },
     get$nuCountryDisplayName() {
-      return "\u041d\u0438\u0443\u044d";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432 \u041d\u043e\u0440\u0444\u043e\u043b\u043a";
+      return "Insula Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "\u0421\u0435\u0432\u0435\u0440\u043d\u0430\u044f \u041a\u043e\u0440\u0435\u044f";
+      return "Coreea de Nord";
     },
     get$mpCountryDisplayName() {
-      return "\u0421\u0435\u0432\u0435\u0440\u043d\u044b\u0435 \u041c\u0430\u0440\u0438\u0430\u043d\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Mariane de Nord";
     },
     get$noCountryDisplayName() {
-      return "\u041d\u043e\u0440\u0432\u0435\u0433\u0438\u044f";
+      return "Norvegia";
     },
     get$omCountryDisplayName() {
-      return "\u041e\u043c\u0430\u043d";
+      return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "\u041f\u0430\u043a\u0438\u0441\u0442\u0430\u043d";
+      return "Pakistan";
     },
     get$pwCountryDisplayName() {
-      return "\u041f\u0430\u043b\u0430\u0443";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\u041f\u0430\u043b\u0435\u0441\u0442\u0438\u043d\u0441\u043a\u0438\u0435 \u0442\u0435\u0440\u0440\u0438\u0442\u043e\u0440\u0438\u0438";
+      return "Teritoriile Palestiniene";
     },
     get$paCountryDisplayName() {
-      return "\u041f\u0430\u043d\u0430\u043c\u0430";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "\u041f\u0430\u043f\u0443\u0430 \u2014 \u041d\u043e\u0432\u0430\u044f \u0413\u0432\u0438\u043d\u0435\u044f";
+      return "Papua Noua Guinee";
     },
     get$pyCountryDisplayName() {
-      return "\u041f\u0430\u0440\u0430\u0433\u0432\u0430\u0439";
+      return "Paraguay";
     },
     get$peCountryDisplayName() {
-      return "\u041f\u0435\u0440\u0443";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "\u0424\u0438\u043b\u0438\u043f\u043f\u0438\u043d\u044b";
+      return "Filipine";
     },
     get$plCountryDisplayName() {
-      return "\u041f\u043e\u043b\u044c\u0448\u0430";
+      return "Polonia";
     },
     get$ptCountryDisplayName() {
-      return "\u041f\u043e\u0440\u0442\u0443\u0433\u0430\u043b\u0438\u044f";
+      return "Portugalia";
     },
     get$prCountryDisplayName() {
-      return "\u041f\u0443\u044d\u0440\u0442\u043e-\u0420\u0438\u043a\u043e";
+      return "Puerto Rico";
     },
     get$qaCountryDisplayName() {
-      return "\u041a\u0430\u0442\u0430\u0440";
+      return "Qatar";
     },
     get$reCountryDisplayName() {
-      return "\u0420\u0435\u044e\u043d\u044c\u043e\u043d";
+      return "Reunion";
     },
     get$roCountryDisplayName() {
-      return "\u0420\u0443\u043c\u044b\u043d\u0438\u044f";
+      return "Rom\xe2nia";
     },
     get$ruCountryDisplayName() {
-      return "\u0420\u043e\u0441\u0441\u0438\u044f";
+      return "Rusia";
     },
     get$rwCountryDisplayName() {
-      return "\u0420\u0443\u0430\u043d\u0434\u0430";
+      return "Rwanda";
     },
     get$blCountryDisplayName() {
-      return "\u0421\u0435\u043d-\u0411\u0430\u0440\u0442\u0435\u043b\u0435\u043c\u0438";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u0425\u0435\u043b\u0435\u043d\u0430";
+      return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u041a\u0438\u0442\u0441";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u041b\u044e\u0441\u0438\u044f";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "\u0421\u0435\u043d-\u041c\u0430\u0440\u0442\u0435\u043d";
+      return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "\u0421\u0435\u043d-\u041f\u044c\u0435\u0440 \u0438 \u041c\u0438\u043a\u0435\u043b\u043e\u043d";
+      return "Saint Pierre \u0219i Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u0412\u0438\u043d\u0441\u0435\u043d\u0442";
+      return "St. Vincent";
     },
     get$wsCountryDisplayName() {
-      return "\u0421\u0430\u043c\u043e\u0430";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\u0421\u0430\u043d-\u041c\u0430\u0440\u0438\u043d\u043e";
+      return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "\u0421\u0430\u043d-\u0422\u043e\u043c\u0435 \u0438 \u041f\u0440\u0438\u043d\u0441\u0438\u043f\u0438";
+      return "Sao Tom\xe9 \u0219i Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\u0421\u0430\u0443\u0434\u043e\u0432\u0441\u043a\u0430\u044f \u0410\u0440\u0430\u0432\u0438\u044f";
+      return "Arabia Saudit\u0103";
     },
     get$snCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0435\u0433\u0430\u043b";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\u0421\u0435\u0440\u0431\u0438\u044f";
+      return "Serbia";
     },
     get$scCountryDisplayName() {
-      return "\u0421\u0435\u0439\u0448\u0435\u043b\u044b";
+      return "Seychelles";
     },
     get$slCountryDisplayName() {
-      return "\u0421\u044c\u0435\u0440\u0440\u0430-\u041b\u0435\u043e\u043d\u0435";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "\u0421\u0438\u043d\u0433\u0430\u043f\u0443\u0440";
+      return "Singapore";
     },
     get$sxCountryDisplayName() {
-      return "\u0421\u0438\u043d\u0442-\u041c\u0430\u0430\u0440\u0442\u0435\u043d";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "\u0421\u043b\u043e\u0432\u0430\u043a\u0438\u044f";
+      return "Slovacia";
     },
     get$siCountryDisplayName() {
-      return "\u0421\u043b\u043e\u0432\u0435\u043d\u0438\u044f";
+      return "Slovenia";
     },
     get$sbCountryDisplayName() {
-      return "\u0421\u043e\u043b\u043e\u043c\u043e\u043d\u043e\u0432\u044b \u041e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Insulele Solomon";
     },
     get$soCountryDisplayName() {
-      return "\u0421\u043e\u043c\u0430\u043b\u0438";
+      return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "\u042e\u0436\u043d\u0430\u044f \u0410\u0444\u0440\u0438\u043a\u0430";
+      return "Africa de Sud";
     },
     get$gsCountryDisplayName() {
-      return "\u042e\u0436\u043d\u0430\u044f \u0414\u0436\u043e\u0440\u0434\u0436\u0438\u044f \u0438 \u042e\u0436\u043d\u044b\u0435 \u0421\u0430\u043d\u0434\u0432\u0438\u0447\u0435\u0432\u044b \u043e\u0441\u0442\u0440\u043e\u0432\u0430";
+      return "Georgia de Sud \u0219i Insulele Sandwich de Sud";
     },
     get$krCountryDisplayName() {
-      return "\u042e\u0436\u043d\u0430\u044f \u041a\u043e\u0440\u0435\u044f";
+      return "Coreea de Sud";
     },
     get$ssCountryDisplayName() {
-      return "\u042e\u0436\u043d\u044b\u0439 \u0421\u0443\u0434\u0430\u043d";
+      return "Sudan de Sud";
     },
     get$esCountryDisplayName() {
-      return "\u0418\u0441\u043f\u0430\u043d\u0438\u044f";
+      return "Spania";
     },
     get$lkCountryDisplayName() {
-      return "\u0428\u0440\u0438-\u041b\u0430\u043d\u043a\u0430";
+      return "Sri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\u0421\u0443\u0434\u0430\u043d";
+      return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "\u0421\u0443\u0440\u0438\u043d\u0430\u043c";
+      return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "\u0428\u043f\u0438\u0446\u0431\u0435\u0440\u0433\u0435\u043d \u0438 \u042f\u043d-\u041c\u0430\u0439\u0435\u043d";
+      return "Svalbard \u0219i Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u0428\u0432\u0435\u0446\u0438\u044f";
+      return "Suedia";
     },
     get$chCountryDisplayName() {
-      return "\u0428\u0432\u0435\u0439\u0446\u0430\u0440\u0438\u044f";
+      return "Elve\u021bia";
     },
     get$syCountryDisplayName() {
-      return "\u0421\u0438\u0440\u0438\u044f";
+      return "Siria";
     },
     get$twCountryDisplayName() {
-      return "\u0422\u0430\u0439\u0432\u0430\u043d\u044c";
+      return "Taiwan";
     },
     get$tjCountryDisplayName() {
-      return "\u0422\u0430\u0434\u0436\u0438\u043a\u0438\u0441\u0442\u0430\u043d";
+      return "Tadjikistan";
     },
     get$tzCountryDisplayName() {
-      return "\u0422\u0430\u043d\u0437\u0430\u043d\u0438\u044f";
+      return "Tanzania";
     },
     get$thCountryDisplayName() {
-      return "\u0422\u0430\u0438\u043b\u0430\u043d\u0434";
+      return "Thailanda";
     },
     get$tgCountryDisplayName() {
-      return "\u0422\u043e\u0433\u043e";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
-      return "\u0422\u043e\u043a\u0435\u043b\u0430\u0443";
+      return "Tokelau";
     },
     get$toCountryDisplayName() {
-      return "\u0422\u043e\u043d\u0433\u0430";
+      return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\u0422\u0440\u0438\u043d\u0438\u0434\u0430\u0434 \u0438 \u0422\u043e\u0431\u0430\u0433\u043e";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\u0422\u0443\u043d\u0438\u0441";
+      return "Tunisia";
     },
     get$trCountryDisplayName() {
-      return "\u0422\u0443\u0440\u0446\u0438\u044f";
+      return "Turcia";
     },
     get$tmCountryDisplayName() {
-      return "\u0422\u0443\u0440\u043a\u043c\u0435\u043d\u0438\u0441\u0442\u0430\u043d";
+      return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u0422\u0435\u0440\u043a\u0441 \u0438 \u041a\u0430\u0439\u043a\u043e\u0441";
+      return "Insulele Turks \u0219i Caicos";
     },
     get$tvCountryDisplayName() {
-      return "\u0422\u0443\u0432\u0430\u043b\u0443";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\u0412\u0438\u0440\u0433\u0438\u043d\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430 (\u0421\u0428\u0410)";
+      return "Insulele Virgine ale SUA";
     },
     get$ugCountryDisplayName() {
-      return "\u0423\u0433\u0430\u043d\u0434\u0430";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\u0423\u043a\u0440\u0430\u0438\u043d\u0430";
+      return "Ucraina";
     },
     get$aeCountryDisplayName() {
-      return "\u041e\u0431\u044a\u0435\u0434\u0438\u043d\u0451\u043d\u043d\u044b\u0435 \u0410\u0440\u0430\u0431\u0441\u043a\u0438\u0435 \u042d\u043c\u0438\u0440\u0430\u0442\u044b";
+      return "Emiratele Arabe Unite";
     },
     get$gbCountryDisplayName() {
-      return "\u0421\u043e\u0435\u0434\u0438\u043d\u0451\u043d\u043d\u043e\u0435 \u041a\u043e\u0440\u043e\u043b\u0435\u0432\u0441\u0442\u0432\u043e";
+      return "Regatul Unit";
     },
     get$usCountryDisplayName() {
-      return "\u0421\u043e\u0435\u0434\u0438\u043d\u0451\u043d\u043d\u044b\u0435 \u0428\u0442\u0430\u0442\u044b";
+      return "Statele Unite";
     },
     get$uyCountryDisplayName() {
-      return "\u0423\u0440\u0443\u0433\u0432\u0430\u0439";
+      return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "\u0423\u0437\u0431\u0435\u043a\u0438\u0441\u0442\u0430\u043d";
+      return "Uzbekistan";
     },
     get$vuCountryDisplayName() {
-      return "\u0412\u0430\u043d\u0443\u0430\u0442\u0443";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\u0412\u0430\u0442\u0438\u043a\u0430\u043d";
+      return "Vatican";
     },
     get$veCountryDisplayName() {
-      return "\u0412\u0435\u043d\u0435\u0441\u0443\u044d\u043b\u0430";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "\u0412\u044c\u0435\u0442\u043d\u0430\u043c";
+      return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "\u0423\u043e\u043b\u043b\u0438\u0441 \u0438 \u0424\u0443\u0442\u0443\u043d\u0430";
+      return "Wallis \u0219i Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\u0417\u0430\u043f\u0430\u0434\u043d\u0430\u044f \u0421\u0430\u0445\u0430\u0440\u0430";
+      return "Sahara Occidental\u0103";
     },
     get$yeCountryDisplayName() {
-      return "\u0419\u0435\u043c\u0435\u043d";
+      return "Iordania";
     },
     get$zmCountryDisplayName() {
-      return "\u0417\u0430\u043c\u0431\u0438\u044f";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "\u0417\u0438\u043c\u0431\u0430\u0431\u0432\u0435";
+      return "Zimbabwe";
     },
     get$pay() {
-      return "\u041e\u0444\u043e\u0440\u043c\u0438\u0442\u044c \u0437\u0430\u043a\u0430\u0437";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b \u0432\u0430\u0441 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043a\u0443\u0440\u0441\u0443: " + space + "! \u0425\u043e\u0442\u0438\u0442\u0435 \u043f\u0440\u0438\u043d\u044f\u0442\u044c \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435?";
+      return user + " te-a invitat s\u0103 te al\u0103turi unui curs: " + space + "! Vrei s\u0103 accep\u021bi?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \u0412\u044b \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u044b!";
+      return "\ud83d\udce9 E\u0219ti invitat!";
     },
     invitedToChat$2($name, user) {
-      return user + " \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b \u0432\u0430\u0441 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0447\u0430\u0442\u0443: " + $name + "! \u0425\u043e\u0442\u0438\u0442\u0435 \u043f\u0440\u0438\u043d\u044f\u0442\u044c \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435?";
+      return user + " te-a invitat s\u0103 te al\u0103turi unui chat: " + $name + "! Vrei s\u0103 accep\u021bi?";
     },
     get$monthlySubscription() {
-      return "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u0430\u044f";
+      return "Lunar";
     },
     get$yearlySubscription() {
-      return "\u0413\u043e\u0434\u043e\u0432\u0430\u044f";
+      return "Anual";
     },
     get$defaultSubscription() {
-      return "\u041f\u043e\u0434\u043f\u0438\u0441\u043a\u0430 Pangea Chat";
+      return "Abonament Pangea Chat";
     },
     get$freeTrial() {
-      return "\u0411\u0435\u0441\u043f\u043b\u0430\u0442\u043d\u044b\u0439 \u043f\u0440\u043e\u0431\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434";
+      return "Perioad\u0103 de prob\u0103 gratuit\u0103";
     },
     get$noDataFound() {
-      return "\u0414\u0430\u043d\u043d\u044b\u0435 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b";
+      return "Nu s-au g\u0103sit date";
     },
     get$bestCorrectionFeedback() {
-      return "\u042d\u0442\u043e \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e!";
+      return "Corect!";
     },
     get$distractorFeedback() {
-      return "\u042d\u0442\u043e \u043d\u0435 \u0441\u043e\u0432\u0441\u0435\u043c \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e.";
+      return "Nu este chiar corect.";
     },
     get$bestAnswerFeedback() {
-      return "\u042d\u0442\u043e \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e!";
+      return "Corect!";
     },
     get$definitionDefaultPrompt() {
-      return "\u0427\u0442\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u0435\u0442 \u044d\u0442\u043e \u0441\u043b\u043e\u0432\u043e?";
+      return "Ce \xeenseamn\u0103 acest cuv\xe2nt?";
     },
     get$practiceDefaultPrompt() {
-      return "\u041a\u0430\u043a\u043e\u0439 \u043b\u0443\u0447\u0448\u0438\u0439 \u043e\u0442\u0432\u0435\u0442?";
+      return "Care este cel mai bun r\u0103spuns?";
     },
     get$correctionDefaultPrompt() {
-      return "\u041a\u0430\u043a\u043e\u0435 \u043b\u0443\u0447\u0448\u0435\u0435 \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435?";
+      return "Care este cea mai bun\u0103 \xeenlocuire?";
     },
     get$reportToTeacher() {
-      return "\u041a\u043e\u043c\u0443 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u0438\u0442\u0438 \u043f\u0440\u043e \u0446\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f?";
+      return "Cui vrei s\u0103 raportezi acest mesaj?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u0438\u0432 \u043f\u0440\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432\u0456\u0434 " + reportedUserId + " \u0443 \u0447\u0430\u0442\u0456 " + roomName;
+      return reportingUserId + " a raportat un mesaj de la " + reportedUserId + " \xeen chat-ul " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f: " + reportedMessage + "\n\u041f\u0440\u0438\u0447\u0438\u043d\u0430: " + reason;
+      return "Mesaj: " + reportedMessage + "\nMotiv: " + reason;
     },
     get$noTeachersFound() {
-      return "\u0412\u0447\u0438\u0442\u0435\u043b\u0456 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u0456 \u0434\u043b\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Nu au fost g\u0103si\u021bi profesori pentru raportare";
     },
     trialExpiration$1(expiration) {
-      return "\u0412\u0430\u0448\u0430 \u0431\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0430 \u043f\u0440\u043e\u0431\u043d\u0430 \u0432\u0435\u0440\u0441\u0456\u044f \u0437\u0430\u043a\u0456\u043d\u0447\u0443\u0454\u0442\u044c\u0441\u044f " + expiration;
+      return "Perioada de prob\u0103 gratuit\u0103 expir\u0103 la " + expiration;
     },
     get$freeTrialDesc() {
-      return "\u041d\u043e\u0432\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 \u043e\u0442\u0440\u0438\u043c\u0443\u044e\u0442\u044c \u0442\u0438\u0436\u043d\u0435\u0432\u0443 \u0431\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0443 \u043f\u0440\u043e\u0431\u043d\u0443 \u0432\u0435\u0440\u0441\u0456\u044e Pangea Chat";
+      return "Utilizatorii noi primesc o perioad\u0103 de prob\u0103 gratuit\u0103 de o s\u0103pt\u0103m\xe2n\u0103 pentru Pangea Chat";
     },
     get$activateTrial() {
-      return "\u0411\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0430 7-\u0434\u0435\u043d\u043d\u0430 \u043f\u0440\u043e\u0431\u043d\u0430 \u0432\u0435\u0440\u0441\u0456\u044f";
+      return "Perioad\u0103 de prob\u0103 gratuit\u0103 de 7 zile";
     },
     get$successfullySubscribed() {
-      return "\u0412\u0438 \u0443\u0441\u043f\u0456\u0448\u043d\u043e \u043f\u0456\u0434\u043f\u0438\u0441\u0430\u043b\u0438\u0441\u044f!";
+      return "Te-ai abonat cu succes!";
     },
     get$clickToManageSubscription() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0442\u0443\u0442, \u0449\u043e\u0431 \u043a\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u043e\u044e.";
+      return "Click aici pentru a-\u021bi gestiona abonamentul.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0449\u043e\u043d\u0430\u0439\u043c\u0435\u043d\u0448\u0435 " + min + " \u0441\u0438\u043c\u0432\u043e\u043b\u0456\u0432.";
+      return "Te rug\u0103m s\u0103 alegi cel pu\u021bin " + min + " caractere.";
     },
     get$pleaseEnterValidEmail() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0432\u0435\u0434\u0456\u0442\u044c \u0434\u0456\u0439\u0441\u043d\u0443 \u0430\u0434\u0440\u0435\u0441\u0443 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0457 \u043f\u043e\u0448\u0442\u0438.";
+      return string$.V__rug;
     },
     get$pleaseChooseAUsername() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "V\u0103 rug\u0103m s\u0103 alege\u021bi un nume de utilizator";
     },
     get$listen() {
-      return "\u0421\u043b\u0443\u0445\u0430\u0442\u0438";
+      return "Ascult\u0103";
     },
     get$trialPeriodExpired() {
-      return "\u0412\u0430\u0448 \u043f\u0440\u043e\u0431\u043d\u044b\u0439 \u043f\u0435\u0440\u0438\u043e\u0434 \u0438\u0441\u0442\u0451\u043a";
+      return "Perioada de \xeencercare a expirat";
     },
     get$subscribedToUnlockTools() {
-      return "\u041f\u043e\u0434\u043f\u0438\u0448\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u043f\u0435\u0440\u0435\u0432\u043e\u0434, \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0443 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438, \u0432\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u0430\u0443\u0434\u0438\u043e, \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0443\u043f\u0440\u0430\u0436\u043d\u0435\u043d\u0438\u044f \u0438 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0435 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f!";
+      return "Abona\u021bi-v\u0103 pentru a debloca traducerea interactiv\u0103 \u0219i verificarea gramaticii, redarea audio, activit\u0103\u021bi de practic\u0103 personalizate \u0219i analize de \xeenv\u0103\u021bare!";
     },
     get$translationTooltip() {
-      return "\u041f\u0435\u0440\u0435\u0432\u0435\u0441\u0442\u0438";
+      return "Traducere";
     },
     get$speechToTextTooltip() {
-      return "\u0422\u0440\u0430\u043d\u0441\u043a\u0440\u0438\u043f\u0446\u0438\u044f";
+      return "Transcriere";
     },
     get$kickBotWarning() {
-      return "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0431\u043e\u0442\u0430 Pangea \u0438\u0437 \u0447\u0430\u0442\u0430 \u0443\u0434\u0430\u043b\u0438\u0442 \u0431\u043e\u0442\u0430 \u0434\u043b\u044f \u0431\u0435\u0441\u0435\u0434\u044b.";
+      return "\xcendep\u0103rtarea Pangea Bot va elimina botul de conversa\u021bie din acest chat.";
     },
     get$refresh(_) {
-      return "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c";
+      return "Re\xeemprosp\u0103teaz\u0103";
     },
     get$updatePhoneOS() {
-      return "\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0432\u0435\u0440\u0441\u0438\u044e \u041e\u0421 \u0432\u0430\u0448\u0435\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430.";
+      return "Poate fi necesar s\u0103 actualiza\u021bi versiunea sistemului de operare al dispozitivului dvs.";
     },
     get$autoIGCToolName() {
-      return "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u044c \u043f\u043e\u043c\u043e\u0449\u044c \u0432 \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0438 Pangea";
+      return "Ruleaz\u0103 automat asisten\u021ba de scriere Pangea";
     },
     get$autoIGCToolDescription() {
-      return "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u044c \u043f\u043e\u043c\u043e\u0449\u044c \u0432 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0435 \u0438 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0435 Pangea Chat \u043f\u0435\u0440\u0435\u0434 \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u043e\u0439 \u043c\u043e\u0435\u0433\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f.";
+      return "Porni\u021bi automat asisten\u021ba pentru scrierea gramaticii \u0219i traducerii \xeen Pangea Chat \xeenainte de a trimite mesajul meu.";
     },
     get$chatCapacity() {
-      return "\u0412\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c \u0447\u0430\u0442\u0430";
+      return "Capacitatea chat-ului";
     },
     get$roomFull() {
-      return "\u042d\u0442\u0430 \u043a\u043e\u043c\u043d\u0430\u0442\u0430 \u0443\u0436\u0435 \u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0430.";
+      return "Aceast\u0103 camer\u0103 este deja plin\u0103.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\u0412\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c \u0447\u0430\u0442\u0430 \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u0430";
+      return "Capacitatea chat-ului a fost schimbat\u0103";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\u0412\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u044c \u0447\u0430\u0442\u0430 \u0434\u043e\u043b\u0436\u043d\u0430 \u0431\u044b\u0442\u044c \u043d\u0435 \u043c\u0435\u043d\u0435\u0435 " + count + ".";
+      return "Capacitatea chat-ului trebuie s\u0103 fie cel pu\u021bin " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u0435 \u0432\u043c\u0435\u0441\u0442\u0438\u043c\u043e\u0441\u0442\u0438 \u0447\u0430\u0442\u0430 \u043e\u0433\u0440\u0430\u043d\u0438\u0447\u0438\u0432\u0430\u0435\u0442 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432, \u0434\u043e\u043f\u0443\u0441\u043a\u0430\u0435\u043c\u044b\u0445 \u0432 \u0447\u0430\u0442.";
+      return "Capacitatea chat-ului limiteaz\u0103 num\u0103rul de membri permis \xeentr-un chat.";
     },
     get$enterNumber() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0446\u0435\u043b\u043e\u0435 \u0447\u0438\u0441\u043b\u043e.";
+      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi o valoare \xeentreag\u0103.";
     },
     get$buildTranslation() {
-      return "\u0421\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u043f\u0435\u0440\u0435\u0432\u043e\u0434 \u0438\u0437 \u043f\u0440\u0438\u0432\u0435\u0434\u0451\u043d\u043d\u044b\u0445 \u0432\u044b\u0448\u0435 \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u043e\u0432";
+      return "Construie\u0219te traducerea ta din op\u021biunile de mai sus";
     },
     get$practice() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430";
+      return "Exerseaz\u0103";
     },
     get$noLanguagesSet() {
-      return "\u042f\u0437\u044b\u043a\u0438 \u043d\u0435 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u044b";
+      return "Niciun limbaj configurat";
     },
     get$speechToTextBody() {
-      return "\u0414\u043b\u044f \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438\u0434\u0435\u0442\u044c \u0442\u0440\u0430\u043d\u0441\u043a\u0440\u0438\u043f\u0442, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043e\u0446\u0435\u043d\u043a\u0443 \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u0438 \u0440\u0435\u0447\u0438 \u0432 \u0441\u043b\u043e\u0432\u0430\u0445 \u0432 \u043c\u0438\u043d\u0443\u0442\u0443.";
+      return "Pentru mesajele vocale, po\u021bi vedea o transcriere precum \u0219i scorul de Cuvinte pe Minut al vorbitorului.";
     },
     get$versionNotFound() {
-      return "\u0412\u0435\u0440\u0441\u0438\u044f \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u0430";
+      return "Versiune Neg\u0103sit\u0103";
     },
     get$fetchingVersion() {
-      return "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0432\u0435\u0440\u0441\u0438\u0438...";
+      return "Se preia versiunea...";
     },
     get$versionFetchError() {
-      return "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0438 \u0432\u0435\u0440\u0441\u0438\u0438";
+      return "Eroare la preluarea versiunii";
     },
     versionText$2(version, buildNumber) {
-      return "\u0412\u0435\u0440\u0441\u0438\u044f: " + version + "+" + buildNumber;
+      return "Versiune: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u043d\u0430 \u0432\u0430\u0448\u0435\u043c \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u043c \u044f\u0437\u044b\u043a\u0435 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0438\u0442\u044c\u0441\u044f.";
+      return "Mesajele \xeen limba ta de baz\u0103 nu vor fi traduse.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\u0423 \u0432\u0430\u0441 \u0430\u043a\u0442\u0438\u0432\u043d\u0430\u044f \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430";
+      return "Ai o abonare activ\u0103";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u0430\u043a\u043a\u0430\u0443\u043d\u0442\u0430 \u043d\u0435 \u043e\u0442\u043c\u0435\u043d\u044f\u0435\u0442 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0432\u0430\u0448\u0443 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0443.";
+      return "\u0218tergerea contului t\u0103u nu va anula automat abonamentul.";
     },
     get$manageSubscription() {
-      return "\u0423\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u043e\u0439";
+      return "Gestioneaz\u0103 Abonamentul";
     },
     get$error520Title() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u043d\u043e\u0432\u0430.";
+      return "Te rug\u0103m s\u0103 \xeencerci din nou.";
     },
     get$error520Desc() {
-      return "\u0418\u0437\u0432\u0438\u043d\u0438\u0442\u0435, \u043c\u044b \u043d\u0435 \u0441\u043c\u043e\u0433\u043b\u0438 \u043f\u043e\u043d\u044f\u0442\u044c \u0432\u0430\u0448\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435...";
+      return "Ne pare r\u0103u, nu am putut \xeen\u021belege mesajul t\u0103u...";
     },
     get$level(_) {
-      return "\u0423\u0440\u043e\u0432\u0435\u043d\u044c";
+      return "Nivel";
     },
     get$translationChoicesBody() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0438 \u0443\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0439\u0442\u0435 \u0432\u0430\u0440\u0438\u0430\u043d\u0442 \u0434\u043b\u044f \u043f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438.";
+      return "Face\u021bi clic \u0219i \u021bine\u021bi ap\u0103sat pe o op\u021biune pentru o sugestie.";
     },
     get$grammar() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0430";
+      return "Gramatic\u0103";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u041a\u043e\u043d\u0442\u0430\u043a\u0442 \u0431\u044b\u043b \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d \u0432 \u0447\u0430\u0442";
+      return "Contactul a fost invitat \xeen chat";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 \u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0447\u0430\u0442";
+      return "\ud83d\udce8 Invit\u0103 la chat";
     },
     get$chatName() {
-      return "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430";
+      return "Numele chat-ului";
     },
     get$l2SupportNa() {
-      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
+      return "Indisponibil";
     },
     get$l2SupportAlpha() {
-      return "\u0410\u043b\u044c\u0444\u0430";
+      return "Alpha";
     },
     get$l2SupportBeta() {
-      return "\u0411\u0435\u0442\u0430";
+      return "Beta";
     },
     get$l2SupportFull() {
-      return "\u041f\u043e\u043b\u043d\u044b\u0439";
+      return "Complet";
     },
     get$playAudio() {
-      return "\u0412\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0441\u0442\u0438";
+      return "Red\u0103";
     },
     get$stop(_) {
-      return "\u0421\u0442\u043e\u043f";
+      return "Opre\u0219te";
     },
     get$grammarCopyPOSsconj() {
-      return "\u041f\u043e\u0434\u0447\u0438\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u043e\u044e\u0437";
+      return "Conjunc\u021bie subordinativ\u0103";
     },
     get$grammarCopyPOSnum() {
-      return "\u0427\u0438\u0441\u043b\u043e";
+      return "Num\u0103r";
     },
     get$grammarCopyPOSverb() {
-      return "\u0413\u043b\u0430\u0433\u043e\u043b";
+      return "Verb";
     },
     get$grammarCopyPOSaffix() {
-      return "\u0410\u0444\u0444\u0438\u043a\u0441";
+      return "Afix";
     },
     get$grammarCopyPOSpart() {
-      return "\u0427\u0430\u0441\u0442\u0438\u0446\u0430";
+      return "Particle";
     },
     get$grammarCopyPOSadj() {
-      return "\u041f\u0440\u0438\u043b\u0430\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Adjectiv";
     },
     get$grammarCopyPOScconj() {
-      return "\u0421\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0441\u043e\u044e\u0437";
+      return "Conjunc\u021bie coordonativ\u0103";
     },
     get$grammarCopyPOSpunct() {
-      return "\u041f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0438\u044f";
+      return "Punctua\u021bie";
     },
     get$grammarCopyPOSadv() {
-      return "\u041d\u0430\u0440\u0435\u0447\u0438\u0435";
+      return "Adverb";
     },
     get$grammarCopyPOSaux() {
-      return "\u0412\u0441\u043f\u043e\u043c\u043e\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Auxiliar";
     },
     get$grammarCopyPOSspace() {
-      return "\u041f\u0440\u043e\u0431\u0435\u043b";
+      return "Spa\u021biu";
     },
     get$grammarCopyPOSsym() {
-      return "\u0421\u0438\u043c\u0432\u043e\u043b";
+      return "Simbol";
     },
     get$grammarCopyPOSdet() {
-      return "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c";
+      return "Determinant";
     },
     get$grammarCopyPOSpron() {
-      return "\u041c\u0435\u0441\u0442\u043e\u0438\u043c\u0435\u043d\u0438\u0435";
+      return "Pronume";
     },
     get$grammarCopyPOSadp() {
-      return "\u041f\u0440\u0435\u0434\u043b\u043e\u0433";
+      return "Adpozi\u021bie";
     },
     get$grammarCopyPOSpropn() {
-      return "\u0418\u043c\u044f \u0441\u043e\u0431\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435";
+      return "Substantiv propriu";
     },
     get$grammarCopyPOSnoun() {
-      return "\u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Substantiv";
     },
     get$grammarCopyPOSintj() {
-      return "\u041c\u0435\u0436\u0434\u043e\u043c\u0435\u0442\u0438\u0435";
+      return "Interjec\u021bie";
     },
     get$grammarCopyPOSx() {
-      return "\u0414\u0440\u0443\u0433\u043e\u0435";
+      return "Altele";
     },
     get$grammarCopyGENDERfem() {
-      return "\u0416\u0435\u043d\u0441\u043a\u0438\u0439 \u0440\u043e\u0434";
+      return "Feminina";
     },
     get$grammarCopyPERSON2() {
-      return "\u0412\u0442\u043e\u0440\u043e\u0435 \u043b\u0438\u0446\u043e";
+      return "Persoana a doua";
     },
     get$grammarCopyMOODimp() {
-      return "\u041f\u043e\u0432\u0435\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435";
+      return "Imperativ";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441";
+      return "\xcentrebare";
     },
     get$grammarCopyASPECTperf() {
-      return "\u0421\u043e\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044b\u0439";
+      return "Perfect";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u0412\u0438\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439, \u0418\u043c\u0435\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Acuzativ, Nominativ";
     },
     get$grammarCopyCASEobl() {
-      return "\u041a\u043e\u0441\u0432\u0435\u043d\u043d\u044b\u0439";
+      return "Oblic";
     },
     get$grammarCopyVOICEact() {
-      return "\u0414\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Activ";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\u041a\u0440\u0443\u0433\u043b\u0430\u044f \u0441\u043a\u043e\u0431\u043a\u0430";
+      return "Parantez\u0103";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\u0410\u0440\u0442\u0438\u043a\u043b\u044c";
+      return "Articol";
     },
     get$grammarCopyNUMBERsing() {
-      return "\u0415\u0434\u0438\u043d\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e";
+      return "Singular";
     },
     get$grammarCopyGENDERmasc() {
-      return "\u041c\u0443\u0436\u0441\u043a\u043e\u0439 \u0440\u043e\u0434";
+      return "Masculin";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\u041c\u043e\u0434\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Modal";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\u041d\u0430\u0440\u0435\u0447\u0438\u0435";
+      return "Adverbial";
     },
     get$grammarCopyTENSEperi() {
-      return "\u041f\u0435\u0440\u0444\u0440\u0430\u0437\u043d\u044b\u0439";
+      return "Perifrastic";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\u0426\u0438\u0444\u0440\u0430";
+      return "Cifr\u0103";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\u041d\u0435 \u0441\u043e\u0431\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435";
+      return "Nepotrivit";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\u041a\u0430\u0440\u0434\u0438\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e";
+      return "Cardinal";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\u0421\u043e\u0431\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435";
+      return "Propriu";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\u0414\u0435\u0444\u0438\u0441";
+      return "Liniu\u021b\u0103";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\u0414\u0430";
+      return "Da";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u0422\u043e\u0447\u043a\u0430 \u0441 \u0437\u0430\u043f\u044f\u0442\u043e\u0439";
+      return "Punct \u0219i virgul\u0103";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\u0417\u0430\u043f\u044f\u0442\u0430\u044f";
+      return "Virgula";
     },
     get$grammarCopyMOODcnd() {
-      return "\u0418\u0437\u044a\u044f\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435";
+      return "Conditional";
     },
     get$grammarCopyCASEacc() {
-      return "\u0412\u0438\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Acuzativ";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u0414\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Partitiv";
     },
     get$grammarCopyTENSEpast() {
-      return "\u041f\u0440\u043e\u0448\u0435\u0434\u0448\u0435\u0435";
+      return "Trecut";
     },
     get$grammarCopyDEGREEsup() {
-      return "\u041f\u0440\u0435\u0432\u043e\u0441\u0445\u043e\u0434\u043d\u0430\u044f \u0441\u0442\u0435\u043f\u0435\u043d\u044c";
+      return "Superlativ";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u0414\u0432\u043e\u0435\u0442\u043e\u0447\u0438\u0435";
+      return "Dou\u0103 puncte";
     },
     get$grammarCopyPERSON3() {
-      return "\u0422\u0440\u0435\u0442\u044c\u0435 \u043b\u0438\u0446\u043e";
+      return "Persoana a III-a";
     },
     get$grammarCopyNUMBERplur() {
-      return "\u041c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e";
+      return "Plural";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\u0421\u043e\u0431\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0438\u043c\u044f";
+      return "Substantiv propriu";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Interogativ";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\u041d\u0435\u0444\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Informal";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\u0412\u0440\u0435\u043c\u044f";
+      return "Timp";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\u041e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Negativ";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\u041e\u0431\u0449\u0438\u0439";
+      return "Total";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u041f\u0440\u0438\u043b\u0430\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Adnominal";
     },
     get$grammarCopyASPECTprog() {
-      return "\u041f\u0440\u043e\u0446\u0435\u0441\u0441\u0443\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Progressiv";
     },
     get$grammarCopyMOODsub() {
-      return "\u0421\u043e\u0441\u043b\u0430\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435";
+      return "Subjunctiv";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430";
+      return "Complementiv";
     },
     get$grammarCopyCASEnom() {
-      return "\u0418\u043c\u0435\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Nominativ";
     },
     get$grammarCopyTENSEfut() {
-      return "\u0411\u0443\u0434\u0443\u0449\u0435\u0435";
+      return "Viitor";
     },
     get$grammarCopyCASEdat() {
-      return "\u0414\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Dativ";
     },
     get$grammarCopyTENSEpres() {
-      return "\u041d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435";
+      return "Prezent";
     },
     get$grammarCopyGENDERneut() {
-      return "\u0421\u0440\u0435\u0434\u043d\u0438\u0439 \u0440\u043e\u0434";
+      return "Neutru";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return " Relativ";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\u0424\u0438\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u043e\u043a\u043e\u043d\u0447\u0430\u043d\u0438\u0435";
+      return "Termina\u021bie final\u0103";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\u0414\u0435\u043c\u043e\u043d\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u043e\u0435";
+      return "Demonstrativ";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\u041f\u0440\u0435\u0434\u043b\u043e\u0436\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Prepozi\u021bional";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\u041e\u043a\u043e\u043d\u0447\u0435\u043d\u043d\u043e\u0435";
+      return "Finita";
     },
     get$grammarCopyDEGREEpos() {
-      return "\u041f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Pozitiv";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\u0426\u0438\u0442\u0430\u0442\u0430";
+      return "Citat";
     },
     get$grammarCopyVERBFORMger() {
-      return "\u0413\u0435\u0440\u0443\u043d\u0434\u0438\u0439";
+      return "Gerunziu";
     },
     get$grammarCopyVOICEpass() {
-      return "\u0421\u0442\u0440\u0430\u0434\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0437\u0430\u043b\u043e\u0433";
+      return "Pasiv";
     },
     get$grammarCopyCASEgen() {
-      return "\u0420\u043e\u0434\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Genitiv";
     },
     get$grammarCopyTENSEprs() {
-      return "\u041d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435";
+      return "Prezent";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0451\u043d\u043d\u044b\u0439";
+      return "Definit";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\u041f\u043e\u0440\u044f\u0434\u043a\u043e\u0432\u044b\u0439";
+      return "Ordinal";
     },
     get$grammarCopyCASEins() {
-      return "\u0422\u0432\u043e\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Instrumental";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u0418\u043d\u0444\u0438\u043d\u0438\u0442\u0438\u0432";
+      return "Infinitiv";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\u0412\u0441\u043f\u043e\u043c\u043e\u0433\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Auxiliar";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\u0414\u043b\u0438\u043d\u043d\u044b\u0439";
+      return "Lung";
     },
     get$grammarCopyCASEloc() {
-      return "\u041c\u0435\u0441\u0442\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Locativ";
     },
     get$grammarCopyMOODind() {
-      return "\u0418\u0437\u044a\u044f\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Indicativ";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\u0421\u0442\u0435\u043f\u0435\u043d\u044c \u0441\u0440\u0430\u0432\u043d\u0435\u043d\u0438\u044f";
+      return "Comparativ";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Relativ";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u0412\u043e\u0441\u043a\u043b\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Exclamativ";
     },
     get$grammarCopyPERSON1() {
-      return "\u041f\u0435\u0440\u0432\u043e\u0435 \u043b\u0438\u0446\u043e";
+      return "Persoana \xeent\xe2i";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\u041d\u0430\u0447\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Ini\u021bial";
     },
     get$grammarCopyGENDERperson() {
-      return "\u0420\u043e\u0434";
+      return "Gen";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\u0418\u043d\u043e\u0441\u0442\u0440\u0430\u043d\u043d\u044b\u0439";
+      return "Str\u0103in";
     },
     get$grammarCopyVOICEvoice() {
-      return "\u0417\u0430\u043b\u043e\u0433";
+      return "Voce";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\u0413\u043b\u0430\u0433\u043e\u043b";
+      return "Verb";
     },
     get$grammarCopyPOSSpass() {
-      return "\u041f\u0440\u0438\u0442\u044f\u0436\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Posesiv";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\u041f\u0440\u0435\u0434\u043b\u043e\u0436\u043d\u044b\u0439";
+      return "Prepozi\u021bional";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\u0427\u0438\u0441\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Numeral";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u0421\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Substantiv";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\u0412\u043e\u0437\u0432\u0440\u0430\u0442\u043d\u043e\u0435";
+      return "Reflexiv";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u041c\u0435\u0441\u0442\u043e\u0438\u043c\u0435\u043d\u0438\u0435";
+      return "Pronume";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\u041f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0438\u043e\u043d\u043d\u0430\u044f \u0441\u0442\u043e\u0440\u043e\u043d\u0430";
+      return "Lateral\u0103 de punctua\u021bie";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\u0413\u043b\u0430\u0433\u043e\u043b\u044c\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430";
+      return "Verb";
     },
     get$grammarCopyGENDERgender() {
-      return "\u0420\u043e\u0434";
+      return "Gen";
     },
     get$grammarCopyMOODmood() {
-      return "\u041d\u0430\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435";
+      return "Mod";
     },
     get$grammarCopyASPECTaspect() {
-      return "\u0412\u0438\u0434";
+      return "Aspect";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\u041f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0438\u044f";
+      return "Punctua\u021bie";
     },
     get$grammarCopyTENSEtense() {
-      return "\u0412\u0440\u0435\u043c\u044f";
+      return "Timp";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\u0421\u0442\u0435\u043f\u0435\u043d\u044c";
+      return "Grad";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\u0412\u0435\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u044c";
+      return "Politete";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\u041d\u0430\u0440\u0435\u0447\u0438\u0435";
+      return "Adverb";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\u0427\u0438\u0441\u043b\u043e";
+      return "Num\u0103r";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\u0421\u043e\u044e\u0437";
+      return "Conjunc\u021bie";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\u041f\u043e\u043b\u044f\u0440\u043d\u043e\u0441\u0442\u044c";
+      return "Polaritare";
     },
     get$grammarCopyCASEcase() {
-      return "\u041f\u0430\u0434\u0435\u0436";
+      return "Caz";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u043e\u0441\u0442\u044c";
+      return "Definitivitate";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\u0427\u0438\u0441\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Numeral";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u0410\u0434\u0438\u043d\u043e\u043c\u0438\u043d\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Adnominal";
     },
     get$grammarCopyVOCvoc() {
-      return "\u0412\u043e\u043a\u0430\u0442\u0438\u0432";
+      return "Vocativ";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u0441\u043b\u043e\u0432\u043e";
+      return "Complementizator";
     },
     get$grammarCopyADVadv() {
-      return "\u041e\u0431\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u043e";
+      return "Adverbial";
     },
     get$grammarCopyMOODjus() {
-      return "\u041f\u043e\u0432\u0435\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435";
+      return "Jussiv";
     },
     get$grammarCopyGENDERcom() {
-      return "\u041e\u0431\u0449\u0438\u0439";
+      return "Comun";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\u0412\u043e\u0437\u0432\u0440\u0430\u0442\u043d\u044b\u0439";
+      return "Reflectiv";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\u0414\u0435\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Partitiv";
     },
     get$grammarCopySPCspc() {
-      return "\u041a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u044b\u0439";
+      return "Specific";
     },
     get$grammarCopyTENSEpqp() {
-      return "\u041f\u043b\u044e\u043f\u0435\u0440\u0444\u0435\u043a\u0442";
+      return "Plusquamperfect";
     },
     get$grammarCopyREFLEXref() {
-      return "\u0420\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0432\u043d\u044b\u0439";
+      return "Reflectiv";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\u041a\u0440\u0430\u0442\u043a\u0438\u0439";
+      return "Scurt";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u0414\u0432\u043e\u0439\u043d\u043e\u0439";
+      return "Dual";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\u0414\u043b\u0438\u043d\u043d\u044b\u0439";
+      return "Lung";
     },
     get$grammarCopyVOICEmid() {
-      return "\u0421\u0440\u0435\u0434\u043d\u0438\u0439";
+      return "Mijlociu";
     },
     get$grammarCopyINTRELintRel() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439, \u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Interogativ, Relativ";
     },
     get$grammarCopyINTint() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Interogativ";
     },
     get$grammarCopyVOICEcaus() {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u043d\u044b\u0439";
+      return "Cauzativ";
     },
     get$grammarCopyUnknown() {
-      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0439";
+      return "Necunoscut";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u0414\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c";
+      return "Eviden\u021bialitate";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\u0427\u0438\u0441\u043b\u043e \u0432\u043b\u0430\u0434\u0435\u043b\u044c\u0446\u0430";
+      return "Num\u0103rul de\u021bin\u0103torului";
     },
     get$grammarCopyASPECThab() {
-      return "\u041f\u0440\u0438\u0432\u044b\u0447\u043d\u044b\u0439";
+      return "Obi\u0219nuit";
     },
     get$grammarCopyCASEabl() {
-      return "\u0410\u0431\u043b\u044f\u0442\u0438\u0432";
+      return "Ablativ";
     },
     get$grammarCopyCASEall() {
-      return "\u0410\u043b\u0430\u0442\u0438\u0432";
+      return "Allativ";
     },
     get$grammarCopyCASEess() {
-      return "\u042d\u0441\u0441\u0438\u0432";
+      return "Essiv";
     },
     get$grammarCopyCASEtra() {
-      return "\u0422\u0440\u0430\u043d\u0441\u043b\u044f\u0442\u0438\u0432";
+      return "Translativ";
     },
     get$grammarCopyCASEequ() {
-      return "\u042d\u043a\u0432\u0430\u0442\u0438\u0432";
+      return "Equativ";
     },
     get$grammarCopyCASEdis() {
-      return "\u0414\u0438\u0441\u0442\u0440\u0438\u0431\u0443\u0442\u0438\u0432";
+      return "Distributiv";
     },
     get$grammarCopyCASEabs() {
-      return "\u0410\u0431\u0441\u043e\u043b\u044e\u0442\u0438\u0432";
+      return "Absolutiv";
     },
     get$grammarCopyCASEerg() {
-      return "\u042d\u0440\u0433\u0430\u0442\u0438\u0432";
+      return "Ergativ";
     },
     get$grammarCopyCASEcau() {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u043d\u044b\u0439";
+      return "Cauzal";
     },
     get$grammarCopyCASEben() {
-      return "\u0411\u0435\u043d\u0435\u0444\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0439";
+      return "Benefactiv";
     },
     get$grammarCopyCASEtem() {
-      return "\u0412\u0440\u0435\u043c\u0435\u043d\u043d\u043e\u0439";
+      return "Temporal";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\u041a\u043e\u043e\u0440\u0434\u0438\u043d\u0438\u0440\u0443\u044e\u0449\u0438\u0439";
+      return "Coordonare";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\u041a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u0438\u0432\u043d\u043e\u0435 \u0441\u043e\u0441\u0442\u043e\u044f\u043d\u0438\u0435";
+      return "Stare de construc\u021bie";
     },
     get$grammarCopyDEGREEabs() {
-      return "\u0410\u0431\u0441\u043e\u043b\u044e\u0442\u043d\u0430\u044f \u0441\u0442\u0435\u043f\u0435\u043d\u044c";
+      return "Grad absolut";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\u0424\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0434\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c";
+      return "Eviden\u021bialitate factual\u0103";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\u041d\u0435\u0444\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0434\u043e\u043a\u0430\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c";
+      return "Eviden\u021bialitate non-factual\u0103";
     },
     get$grammarCopyMOODopt() {
-      return "\u041e\u043f\u0442\u0430\u0442\u0438\u0432";
+      return "Optativ";
     },
     get$grammarCopyMOODadm() {
-      return "\u0410\u0434\u043c\u0438\u0440\u0430\u0442\u0438\u0442\u0438\u0432";
+      return "Admira\u021bie";
     },
     get$grammarCopyMOODdes() {
-      return "\u0414\u0435\u0441\u0438\u0434\u0435\u0440\u0430\u0442\u0438\u0432";
+      return "Doritiv";
     },
     get$grammarCopyMOODnec() {
-      return "\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u044b\u0439";
+      return "Necesar";
     },
     get$grammarCopyMOODpot() {
-      return "\u041f\u043e\u0442\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Poten\u021bial";
     },
     get$grammarCopyMOODprp() {
-      return "\u041f\u0440\u043e-\u043f\u043e\u0437\u0438\u0442\u0438\u0432\u043d\u044b\u0439";
+      return "Propozi\u021bional";
     },
     get$grammarCopyMOODqot() {
-      return "\u041a\u0432\u043e\u0442\u0430\u0442\u0438\u0432";
+      return "Citat";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u0424\u043e\u0440\u043c\u0430 \u0441\u043b\u043e\u0432\u0430";
+      return "Form\u0103 de cuv\xe2nt";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\u0420\u0438\u043c\u0441\u043a\u0430\u044f \u0446\u0438\u0444\u0440\u0430";
+      return "Numeral roman";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\u0411\u0443\u043a\u0432\u0435\u043d\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430";
+      return "Form\u0103 de liter\u0103";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\u041c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435";
+      return "Multiplicativ";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\u0414\u0440\u043e\u0431\u043d\u043e\u0435";
+      return "Frac\u021bional";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\u041c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u043e";
+      return "Set";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\u0414\u0438\u0430\u043f\u0430\u0437\u043e\u043d";
+      return "Interval";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\u0420\u0430\u0441\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Distributiv";
     },
     get$grammarCopyNUMBERtri() {
-      return "\u041f\u0440\u043e\u0431\u043d\u043e\u0435";
+      return "Trial";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\u041c\u0430\u043b\u043e\u0435";
+      return "Paucal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\u0411\u043e\u043b\u0435\u0435 \u043c\u0430\u043b\u043e\u0435";
+      return "Paucal mai mare";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\u0411\u043e\u043b\u0435\u0435 \u043c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435";
+      return "Plural mai mare";
     },
     get$grammarCopyNUMBERinv() {
-      return "\u041e\u0431\u0440\u0430\u0442\u043d\u043e\u0435";
+      return "Invers";
     },
     get$grammarCopyPERSON0() {
-      return "\u041d\u043e\u043b\u044c";
+      return "Zero";
     },
     get$grammarCopyPERSON4() {
-      return "\u0427\u0435\u0442\u0432\u0435\u0440\u0442\u044b\u0439";
+      return "Patru";
     },
     get$grammarCopyPOLITEform() {
-      return "\u0424\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Formal";
     },
     get$grammarCopyPOLITEelev() {
-      return "\u0412\u043e\u0437\u0432\u044b\u0448\u0435\u043d\u043d\u044b\u0439";
+      return "Elevat";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\u0421\u043a\u0440\u043e\u043c\u043d\u044b\u0439";
+      return "Umil";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\u041f\u043e\u0434\u0447\u0435\u0440\u043a\u0438\u0432\u0430\u044e\u0449\u0438\u0439";
+      return "Empatic";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u0412\u043e\u0441\u043a\u043b\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Exclamativ";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\u0412\u0437\u0430\u0438\u043c\u043d\u044b\u0439";
+      return "Reciprocat";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e-\u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Interogativ-Relativ";
     },
     get$grammarCopyTENSEaor() {
-      return "\u0410\u043e\u0440\u0438\u0441\u0442";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\u042d\u043f\u0438\u0441\u0442\u0435\u043c\u0438\u0447\u0435\u0441\u043a\u0438\u0439";
+      return "Epistemic";
     },
     get$grammarCopyTENSEprosp() {
-      return "\u041f\u0435\u0440\u0441\u043f\u0435\u043a\u0442\u0438\u0432\u043d\u044b\u0439";
+      return "Prospetiv";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\u041f\u0440\u0438\u0447\u0430\u0441\u0442\u0438\u0435";
+      return "Participiu";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\u0414\u0435\u0435\u043f\u0440\u0438\u0447\u0430\u0441\u0442\u0438\u0435";
+      return "Converb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\u0413\u043b\u0430\u0433\u043e\u043b\u044c\u043d\u043e\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Substantiv verbal";
     },
     get$grammarCopyVOICEantip() {
-      return "\u0410\u043d\u0442\u0438\u043f\u0430\u0441\u0441\u0438\u0432";
+      return "Antipassiv";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u043d\u044b\u0439 \u0437\u0430\u043b\u043e\u0433";
+      return "Cauzativ";
     },
     get$grammarCopyVOICedir() {
-      return "\u041f\u0440\u044f\u043c\u043e\u0439";
+      return "Direct";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\u041e\u0431\u0440\u0430\u0442\u043d\u044b\u0439";
+      return "Invers";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\u0412\u0437\u0430\u0438\u043c\u043d\u044b\u0439";
+      return "Reciprocat";
     },
     get$grammarCopyPOS() {
-      return "\u0427\u0430\u0441\u0442\u044c \u0440\u0435\u0447\u0438";
+      return "Parte de vorbire";
     },
     get$grammarCopyGENDER() {
-      return "\u0420\u043e\u0434";
+      return "Gen";
     },
     get$grammarCopyPERSON() {
-      return "\u041b\u0438\u0446\u043e";
+      return "Persoan\u0103";
     },
     get$grammarCopyMOOD() {
-      return "\u041d\u0430\u043a\u043b\u043e\u043d\u0435\u043d\u0438\u0435";
+      return "Mod";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\u0422\u0438\u043f \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0438\u0438";
+      return "Tip de punctua\u021bie";
     },
     get$grammarCopyASPECT() {
-      return "\u0412\u0438\u0434";
+      return "Aspect";
     },
     get$grammarCopyCASE() {
-      return "\u041f\u0430\u0434\u0435\u0436";
+      return "Caz";
     },
     get$grammarCopyVOICE() {
-      return "\u0417\u0430\u043b\u043e\u0433";
+      return "Voce";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u0422\u0438\u043f \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e";
+      return "Tip de substantiv";
     },
     get$grammarCopyVERBTYPE() {
-      return "\u0422\u0438\u043f \u0433\u043b\u0430\u0433\u043e\u043b\u0430";
+      return "Tip de verb";
     },
     get$grammarCopyADVTYPE() {
-      return "\u0422\u0438\u043f \u043d\u0430\u0440\u0435\u0447\u0438\u044f";
+      return "Tip de adverb";
     },
     get$grammarCopyNUMFORM() {
-      return "\u0424\u043e\u0440\u043c\u0430 \u0447\u0438\u0441\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e";
+      return "Form\u0103 numeric\u0103";
     },
     get$grammarCopyNUMTYPE() {
-      return "\u0422\u0438\u043f \u0447\u0438\u0441\u043b\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0433\u043e";
+      return "Tip numeric";
     },
     get$grammarCopyNUMBER() {
-      return "\u0427\u0438\u0441\u043b\u043e";
+      return "Num\u0103r";
     },
     get$grammarCopyDEFINITE() {
-      return "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u043e\u0441\u0442\u044c";
+      return "Definit";
     },
     get$grammarCopyDEGREE() {
-      return "\u0421\u0442\u0435\u043f\u0435\u043d\u044c";
+      return "Grad";
     },
     get$grammarCopyEVIDENT() {
-      return "\u042d\u0432\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c";
+      return "Eviden\u021bialitate";
     },
     get$grammarCopyFOREIGN() {
-      return "\u0418\u043d\u043e\u0441\u0442\u0440\u0430\u043d\u043d\u044b\u0439";
+      return "Str\u0103in";
     },
     get$grammarCopyPOLARITY() {
-      return "\u041f\u043e\u043b\u044f\u0440\u043d\u043e\u0441\u0442\u044c";
+      return "Polaritate";
     },
     get$grammarCopyPOLITE() {
-      return "\u0412\u0435\u0436\u043b\u0438\u0432\u043e\u0441\u0442\u044c";
+      return "Politete";
     },
     get$grammarCopyPREPCASE() {
-      return "\u041f\u0440\u0435\u0434\u043b\u043e\u0436\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Caz prepozi\u021bional";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u0422\u0438\u043f \u043c\u0435\u0441\u0442\u043e\u0438\u043c\u0435\u043d\u0438\u044f";
+      return "Tip de pronume";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\u0421\u0442\u043e\u0440\u043e\u043d\u0430 \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0438\u0438";
+      return "Lateral\u0103 de punctua\u021bie";
     },
     get$grammarCopyREFLEX() {
-      return "\u0420\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0432\u043d\u044b\u0439";
+      return "Reflexiv";
     },
     get$grammarCopyTENSE() {
-      return "\u0412\u0440\u0435\u043c\u044f";
+      return "Timp";
     },
     get$grammarCopyVERBFORM() {
-      return "\u0424\u043e\u0440\u043c\u0430 \u0433\u043b\u0430\u0433\u043e\u043b\u0430";
+      return "Forma verbului";
     },
     get$grammarCopyCONJTYPE() {
-      return "\u0422\u0438\u043f \u0441\u043e\u044e\u0437\u0430";
+      return "Tip de conjunc\u021bie";
     },
     get$grammarCopyUNKNOWN() {
-      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e";
+      return "Necunoscut";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\u041d\u043e\u043c\u0435\u0440 \u043e\u0431\u043b\u0430\u0434\u0430\u0442\u0435\u043b\u044f";
+      return "Num\u0103rul posesiorului";
     },
     get$grammarCopyPOSS() {
-      return "\u041f\u0440\u0438\u0442\u044f\u0436\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Posesiv";
     },
     get$grammarCopyASPECTimp() {
-      return "\u041d\u0435\u0441\u043e\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044b\u0439 \u0432\u0438\u0434";
+      return "Aspect imperfectiv";
     },
     get$grammarCopyCASEvoc() {
-      return "\u0417\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Vocativ";
     },
     get$grammarCopyCASEcom() {
-      return "\u0422\u0432\u043e\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Comitativ";
     },
     get$grammarCopyCASEpar() {
-      return "\u041f\u0430\u0440\u0442\u0438\u0442\u0438\u0432";
+      return "Partitiv";
     },
     get$grammarCopyCASEadv() {
-      return "\u041e\u0431\u0441\u0442\u043e\u044f\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Adverbial";
     },
     get$grammarCopyCASEref() {
-      return "\u0420\u0435\u0444\u0435\u0440\u0435\u043d\u0442\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Referen\u021bial";
     },
     get$grammarCopyCASErel() {
-      return "\u041e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Relativ";
     },
     get$grammarCopyCASEsub() {
-      return "\u041f\u043e\u0434\u0435\u0441\u0441\u0438\u0432";
+      return "Subessiv";
     },
     get$grammarCopyCASEsup() {
-      return "\u0421\u0443\u043f\u0435\u0440\u0435\u0441\u0441\u0438\u0432";
+      return "Superessiv";
     },
     get$grammarCopyCASEaccdat() {
-      return "\u0412\u0438\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439-\u0414\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Acuzativ-Dativ";
     },
     get$grammarCopyCASEpre() {
-      return "\u041f\u0440\u0435\u0434\u043b\u043e\u0436\u043d\u044b\u0439 \u043f\u0430\u0434\u0435\u0436";
+      return "Prepozitional";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\u041f\u043e\u0434\u0447\u0438\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Subordonare";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\u0421\u0440\u0430\u0432\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
+      return "Comparativ";
     },
     get$grammarCopyDEFINITEind() {
-      return "\u041d\u0435\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0451\u043d\u043d\u044b\u0439";
+      return "Nedefinit";
     },
     get$grammarCopyMOODint() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0435\u043d\u0438\u0435";
+      return "Mod Interogativ";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\u041e\u0431\u0449\u0435\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Substantiv Comun";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Sg. \u0432\u043b\u0430\u0434\u0435\u043b\u044c\u0446\u0430";
+      return "Singularul de\u021binatorului";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\u041c\u043d\u043e\u0436\u0435\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0432\u043b\u0430\u0434\u0435\u043b\u044c\u0446\u0430";
+      return "Pluralul de\u021binatorului";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\u0414\u0432\u043e\u0439\u0441\u0442\u0432\u0435\u043d\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0432\u043b\u0430\u0434\u0435\u043b\u044c\u0446\u0430";
+      return "Dualul de\u021binatorului";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\u041f\u043e\u043b\u043e\u0436\u0438\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u043f\u043e\u043b\u044f\u0440\u043d\u043e\u0441\u0442\u044c";
+      return "Polaritare Pozitiv\u0103";
     },
     get$grammarCopyPOSSyes() {
-      return "\u041f\u0440\u0438\u0442\u044f\u0436\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Posesiv";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\u0411\u0435\u0437 \u043f\u0440\u0435\u0434\u043b\u043e\u0433\u0430";
+      return "Non-prepozi\u021bional";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\u041b\u0438\u0447\u043d\u043e\u0435";
+      return "Personal";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Interogativ";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\u041e\u0431\u0449\u0435\u0435";
+      return "Total";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\u041e\u0442\u0440\u0438\u0446\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Negativ";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\u0410\u0440\u0442\u0438\u043a\u043b\u044c";
+      return "Articol";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\u041d\u0435\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0451\u043d\u043d\u043e\u0435";
+      return "Nedefinit";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\u0412\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e-\u043e\u0442\u043d\u043e\u0441\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435";
+      return "Interogativ-Relativ";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\u041a\u043e\u043d\u0435\u0447\u043d\u0430\u044f \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0438\u044f";
+      return "Punctua\u021bie Final\u0103";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\u0422\u043e\u0447\u043a\u0430";
+      return "Punctua\u021bie";
     },
     get$grammarCopyREFLEXyes() {
-      return "\u0412\u043e\u0437\u0432\u0440\u0430\u0442\u043d\u043e\u0435";
+      return "Reflexiv";
     },
     get$grammarCopyTENSEimp() {
-      return "\u041d\u0435\u0441\u043e\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044b\u0439";
+      return "Imperfect";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u0421\u0443\u043f\u0438\u043d";
+      return "Supin";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u0410\u0434\u043e\u043d\u0435\u043c\u0438\u043d\u0430\u043b\u044c\u043d\u044b\u0439";
+      return "Adnominal";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\u0414\u043b\u0438\u043d\u043d\u044b\u0439";
+      return "Lung";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\u041a\u0440\u0430\u0442\u043a\u0430\u044f";
+      return "Scurt";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\u041f\u0440\u0438\u0447\u0430\u0441\u0442\u043d\u044b\u0439 \u0433\u043b\u0430\u0433\u043e\u043b";
+      return "Verb cauzativ";
     },
     get$grammarCopyVOICEcau() {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u043d\u044b\u0439";
+      return "Cauzativ";
     },
     get$grammarCopyVOICEdir() {
-      return "\u041f\u0440\u044f\u043c\u043e\u0439";
+      return "Direct";
     },
     get$grammarCopyVOICEinv() {
-      return "\u041e\u0431\u0440\u0430\u0442\u043d\u044b\u0439";
+      return "Invers";
     },
     get$grammarCopyVOICErcp() {
-      return "\u0412\u0437\u0430\u0438\u043c\u043d\u044b\u0439";
+      return "Reciprocat";
     },
     get$other() {
-      return "\u0414\u0440\u0443\u0433\u043e\u0435";
+      return "Altele";
     },
     levelShort$1(level) {
-      return "\u0423\u0420\u041e\u0412\u0415\u041d\u042c " + level;
+      return "LVL " + level;
     },
     get$clickBestOption() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043b\u0443\u0447\u0448\u0438\u0435 \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u044b \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0430 \u0432\u0430\u0448\u0435\u0433\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f!";
+      return "Alege cele mai bune op\u021biuni pentru a traduce mesajul t\u0103u!";
     },
     get$completeActivitiesToUnlock() {
-      return "\u0412\u044b\u043f\u043e\u043b\u043d\u0438\u0442\u0435 \u0445\u043e\u0442\u044f \u0431\u044b \u043e\u0434\u043d\u043e \u0437\u0430\u0434\u0430\u043d\u0438\u0435, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0435\u0440\u0435\u0432\u043e\u0434!";
+      return "Finaliza\u021bi cel pu\u021bin o activitate pentru a debloca traducerea!";
     },
     get$downloadGroupText() {
-      return "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0442\u0435\u043a\u0441\u0442 \u0433\u0440\u0443\u043f\u043f\u044b";
+      return "Descarc\u0103 textul grupului";
     },
     get$notificationsOn() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u044b";
+      return "Notific\u0103ri activate";
     },
     get$notificationsOff() {
-      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0432\u044b\u043a\u043b\u044e\u0447\u0435\u043d\u044b";
+      return "Notific\u0103ri dezactivate";
     },
     get$createChatAndInviteUsers() {
-      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0447\u0430\u0442 \u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439";
+      return "Creeaz\u0103 chat \u0219i invit\u0103 utilizatori";
     },
     get$updatedNewSpaceDescription() {
-      return "\u041a\u0443\u0440\u0441\u044b \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u044e\u0442 \u0432\u0430\u043c \u043e\u0431\u044a\u0435\u0434\u0438\u043d\u0438\u0442\u044c \u0432\u0430\u0448\u0438 \u0447\u0430\u0442\u044b \u0438 \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u0447\u0430\u0441\u0442\u043d\u044b\u0435 \u0438\u043b\u0438 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0430.";
+      return "Cursurile \xee\u021bi permit s\u0103 consolidezi chat-urile \u0219i s\u0103 construie\u0219ti comunit\u0103\u021bi private sau publice.";
     },
     get$joinWithCode() {
-      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043f\u043e \u043a\u043e\u0434\u0443";
+      return "Al\u0103tur\u0103-te cu cod";
     },
     get$enterCodeToJoin() {
-      return "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u043e\u0434 \u0434\u043b\u044f \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
+      return "Introdu codul pentru a te al\u0103tura";
     },
     get$updateNow() {
-      return "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u0435\u0439\u0447\u0430\u0441";
+      return "Actualizeaz\u0103 acum";
     },
     get$updateLater() {
-      return "\u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043f\u043e\u0437\u0436\u0435";
+      return "Mai t\xe2rziu";
     },
     get$constructUseWaDesc() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f \u0431\u0435\u0437 \u043f\u043e\u043c\u043e\u0449\u0438";
+      return "Utilizat f\u0103r\u0103 ajutor";
     },
     get$constructUseGaDesc() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043f\u043e\u043c\u043e\u0449\u044c";
+      return "Asisten\u021b\u0103 gramatical\u0103";
     },
     get$constructUseTaDesc() {
-      return "\u041f\u043e\u043c\u043e\u0449\u044c \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c";
+      return "Asisten\u021b\u0103 pentru traducere";
     },
     get$constructUseUnkDesc() {
-      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e";
+      return "Necunoscut";
     },
     get$constructUseCorITDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0435";
+      return "Corect \xeen traducere";
     },
     get$constructUseIgnITDesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0435";
+      return "Ignorat \xeen traducere";
     },
     get$constructUseIncITDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u0432 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0435";
+      return "Incorect \xeen traducere";
     },
     get$constructUseIgnIGCDesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438";
+      return "Ignorat \xeen corectarea gramatical\u0103";
     },
     get$constructUseCorIGCDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438";
+      return "Corect \xeen corectarea gramatical\u0103";
     },
     get$constructUseIncIGCDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u0432 \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438";
+      return "Incorect \xeen corectarea gramatical\u0103";
     },
     get$constructUseCorPADesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044e \u0441\u043b\u043e\u0432\u0430";
+      return "Corect \xeen activitatea de \xeen\u021beles al cuv\xe2ntului";
     },
     get$constructUseIgnPADesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044e \u0441\u043b\u043e\u0432\u0430";
+      return "Ignorat \xeen activitatea de \xeen\u021beles al cuv\xe2ntului";
     },
     get$constructUseIncPADesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044e \u0441\u043b\u043e\u0432\u0430";
+      return "Incorect \xeen activitatea de \xeen\u021beles al cuv\xe2ntului";
     },
     get$constructUseCorWLDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u043f\u0440\u043e\u0441\u043b\u0443\u0448\u0438\u0432\u0430\u043d\u0438\u044e \u0441\u043b\u043e\u0432";
+      return "Corect \xeen activitatea de ascultare a cuv\xe2ntului";
     },
     get$constructUseIncWLDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u043f\u0440\u043e\u0441\u043b\u0443\u0448\u0438\u0432\u0430\u043d\u0438\u044e \u0441\u043b\u043e\u0432";
+      return "Incorect \xeen activitatea de ascultare a cuv\xe2ntului";
     },
     get$constructUseIngWLDesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u043f\u0440\u043e\u0441\u043b\u0443\u0448\u0438\u0432\u0430\u043d\u0438\u044e \u0441\u043b\u043e\u0432";
+      return "Ignorat \xeen activitatea de ascultare a cuv\xe2ntului";
     },
     get$constructUseCorHWLDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0441\u043a\u0440\u044b\u0442\u043e\u043c\u0443 \u0441\u043b\u043e\u0432\u0443";
+      return "Corect \xeen activitatea de cuv\xe2nt ascuns";
     },
     get$constructUseIncHWLDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0441\u043a\u0440\u044b\u0442\u043e\u043c\u0443 \u0441\u043b\u043e\u0432\u0443";
+      return "Incorect \xeen activitatea de cuv\xe2nt ascuns";
     },
     get$constructUseIgnHWLDesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0441\u043a\u0440\u044b\u0442\u043e\u043c\u0443 \u0441\u043b\u043e\u0432\u0443";
+      return "Ignorat \xeen activitatea de cuv\xe2nt ascuns";
     },
     get$constructUseCorLDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u043b\u0435\u043c\u043c\u0435";
+      return "Corect \xeen activitatea de lemma";
     },
     get$constructUseIncLDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u043b\u0435\u043c\u043c\u0435";
+      return "Incorect \xeen activitatea de lemma";
     },
     get$constructUseIgnLDesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u043b\u0435\u043c\u043c\u0435";
+      return "Ignorat \xeen activitatea de lemma";
     },
     get$constructUseCorMDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0435";
+      return "Corect \xeen activitatea de gramatic\u0103";
     },
     get$constructUseIncMDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0435";
+      return "Incorect \xeen activitatea de gramatic\u0103";
     },
     get$constructUseIgnMDesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u0442\u0441\u044f \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0435";
+      return "Ignorat \xeen activitatea de gramatic\u0103";
     },
     get$constructUseEmojiDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u043f\u043e \u044d\u043c\u043e\u0434\u0437\u0438";
+      return "Corect \xeen activitatea de emoji";
     },
     get$constructUseCollected() {
-      return "Thu th\u1eadp trong tr\xf2 chuy\u1ec7n";
+      return "Colectat \xeen chat";
     },
     get$constructUseNanDesc() {
-      return "Kh\xf4ng \xe1p d\u1ee5ng \u0111\u01b0\u1ee3c";
+      return "Nu se aplic\u0103";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "B\u1eadt chuy\u1ec3n \u0111\u1ed5i v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i";
+      return "Activat textul vorbit";
     },
     get$enableTTSToolDescription() {
-      return "Cho ph\xe9p \u1ee9ng d\u1ee5ng t\u1ea1o ra \u0111\u1ea7u ra chuy\u1ec3n \u0111\u1ed5i v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i cho c\xe1c ph\u1ea7n c\u1ee7a v\u0103n b\u1ea3n b\u1eb1ng ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n.";
+      return "Permite aplica\u021biei s\u0103 genereze ie\u0219ire text-vorbit pentru por\u021biuni de text \xeen limba \u021bint\u0103.";
     },
     get$yourUsername() {
-      return "T\xean ng\u01b0\u1eddi d\xf9ng c\u1ee7a b\u1ea1n";
+      return "Numele t\u0103u de utilizator";
     },
     get$yourEmail() {
-      return "Email c\u1ee7a b\u1ea1n";
+      return "Adresa ta de email";
     },
     get$iWantToLearn() {
-      return "\u042f \u0445\u043e\u0447\u0443 \u0443\u0447\u0438\u0442\u044c\u0441\u044f";
+      return "Vreau s\u0103 \xeenv\u0103\u021b";
     },
     get$pleaseEnterEmail() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b.";
+      return string$.V__rug;
     },
     get$myBaseLanguage() {
-      return "\u041c\u043e\u0439 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u044f\u0437\u044b\u043a";
+      return "Limba mea de baz\u0103";
     },
     get$meaningSectionHeader() {
-      return "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435:";
+      return "Sens:";
     },
     get$formSectionHeader() {
-      return "\u0424\u043e\u0440\u043c\u044b, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u043c\u044b\u0435 \u0432 \u0447\u0430\u0442\u0430\u0445:";
+      return "Forme folosite \xeen chat:";
     },
     get$writingExercisesTooltip() {
-      return "\u041f\u0438\u0441\u044c\u043c\u043e";
+      return "Scriere";
     },
     get$listeningExercisesTooltip() {
-      return "\u041f\u0440\u043e\u0441\u043b\u0443\u0448\u0438\u0432\u0430\u043d\u0438\u0435";
+      return "Ascultare";
     },
     get$readingExercisesTooltip() {
-      return "\u0427\u0442\u0435\u043d\u0438\u0435";
+      return "Citire";
     },
     get$meaningNotFound() {
-      return "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e.";
+      return "Sensul nu a putut fi g\u0103sit.";
     },
     get$chooseBaseForm() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0431\u0430\u0437\u043e\u0432\u0443\u044e \u0444\u043e\u0440\u043c\u0443";
+      return "Alege forma de baz\u0103";
     },
     get$notTheCodeError() {
-      return "\u0418\u0437\u0432\u0438\u043d\u0438\u0442\u0435, \u044d\u0442\u043e \u043d\u0435 \u043a\u043e\u0434!";
+      return "\xcemi pare r\u0103u, nu acesta este codul!";
     },
     get$totalXP() {
-      return "\u041e\u0431\u0449\u0438\u0439 \u043e\u043f\u044b\u0442";
+      return "XP total";
     },
     get$numLemmas() {
-      return "\u041e\u0431\u0449\u0435\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043b\u0435\u043c\u043c";
+      return "Num\u0103rul total de leme";
     },
     get$numLemmasUsedCorrectly() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043b\u0435\u043c\u043c, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u044f \u0431\u044b \u043e\u0434\u0438\u043d \u0440\u0430\u0437";
+      return "Num\u0103rul de leme folosite corect cel pu\u021bin o dat\u0103";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043b\u0435\u043c\u043c, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e 0 \u0440\u0430\u0437";
+      return "Num\u0103rul de leme folosite incorect de 0 ori";
     },
     get$numLemmasSmallXP() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043b\u0435\u043c\u043c \u0441 0-30 \u043e\u0447\u043a\u0430\u043c\u0438 \u043e\u043f\u044b\u0442\u0430";
+      return "Num\u0103rul de leme cu 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043b\u0435\u043c\u043c \u0441 31-200 \u043e\u0447\u043a\u0430\u043c\u0438 \u043e\u043f\u044b\u0442\u0430";
+      return "Num\u0103rul de leme cu 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043b\u0435\u043c\u043c \u0441 \u0431\u043e\u043b\u0435\u0435 \u0447\u0435\u043c 200 \u043e\u0447\u043a\u0430\u043c\u0438 \u043e\u043f\u044b\u0442\u0430";
+      return "Num\u0103rul de leme cu > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0439";
+      return "Num\u0103rul de concepte gramaticale";
     },
     get$listGrammarConcepts() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438";
+      return "Concepte gramaticale";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u043e\u0440\u0438\u0433\u0438\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445 \u043d\u0435 \u043c\u0435\u043d\u0435\u0435 80% \u0432\u0440\u0435\u043c\u0435\u043d\u0438";
+      return "Concepte gramaticale folosite corect \xeen mesajele originale cel pu\u021bin 80% din timp";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432 \u043e\u0440\u0438\u0433\u0438\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445 \u043c\u0435\u043d\u0435\u0435 80% \u0432\u0440\u0435\u043c\u0435\u043d\u0438";
+      return "Concepte gramaticale folosite corect mai pu\u021bin de 80% din timp \xeen mesajele originale";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438, \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0438\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0445 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0439 \u043d\u0435 \u043c\u0435\u043d\u0435\u0435 80% \u0432\u0440\u0435\u043c\u0435\u043d\u0438";
+      return "Concepte gramaticale alese corect din sugestiile generate de sistem cel pu\u021bin 80% din timp";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438, \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0438\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0445 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0439 \u043c\u0435\u043d\u0435\u0435 80% \u0432\u0440\u0435\u043c\u0435\u043d\u0438";
+      return "Concepte gramaticale alese corect din sugestiile generate de sistem mai pu\u021bin de 80% din timp";
     },
     get$listGrammarConceptsSmallXP() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438 \u0441 0-50 \u043e\u0447\u043a\u0430\u043c\u0438 \u043e\u043f\u044b\u0442\u0430";
+      return "Concepte gramaticale cu 0-50 XP";
     },
     get$listGrammarConceptsMediumXP() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438 \u0441 51-200 \u043e\u0447\u043a\u0430\u043c\u0438 \u043e\u043f\u044b\u0442\u0430";
+      return "Concepte gramaticale cu 51-200 XP";
     },
     get$listGrammarConceptsLargeXP() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438 \u0441 201-500 \u043e\u0447\u043a\u0430\u043c\u0438 \u043e\u043f\u044b\u0442\u0430";
+      return "Concepte gramaticale 201-500 XP";
     },
     get$listGrammarConceptsHugeXP() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438 \u0441 \u0431\u043e\u043b\u0435\u0435 \u0447\u0435\u043c 500 \u043e\u0447\u043a\u0430\u043c\u0438 \u043e\u043f\u044b\u0442\u0430";
+      return "Concepte gramaticale >500 XP";
     },
     get$numMessagesSent() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439";
+      return "Num\u0103rul de mesaje trimise";
     },
     get$numWordsTyped() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043d\u0430\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u0441\u043b\u043e\u0432 \u0432 \u043e\u0440\u0438\u0433\u0438\u043d\u0430\u043b\u044c\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u0445";
+      return "Num\u0103rul de cuvinte tastate \xeen mesajele originale";
     },
     get$numCorrectChoices() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u0441\u043b\u043e\u0432 \u0438\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0445 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0439";
+      return "Num\u0103rul de cuvinte corecte alese din sugestiile generate de sistem";
     },
     get$numIncorrectChoices() {
-      return "\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0445 \u0441\u043b\u043e\u0432 \u0438\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u043d\u044b\u0445 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u0439";
+      return "Num\u0103rul de cuvinte incorecte alese din sugestiile generate de sistem";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3725,802 +3725,802 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "\u0422\u0438\u043f \u0444\u0430\u0439\u043b\u0430";
+      return "Tip fi\u0219ier";
     },
     get$download(_) {
-      return "\u0421\u043a\u0430\u0447\u0430\u0442\u044c";
+      return "Descarc\u0103";
     },
     get$analyticsNotAvailable() {
-      return "\u0410\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0430 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430";
+      return "Analiticele utilizatorului nu sunt disponibile";
     },
     get$downloading() {
-      return "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430...";
+      return "Se descarc\u0103...";
     },
     get$failedFetchUserAnalytics() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0443 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
+      return "Nu s-a putut desc\u0103rca analiticele utilizatorului";
     },
     get$downloadComplete() {
-      return "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430!";
+      return "Desc\u0103rcare complet\u0103!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "\u0427\u0442\u043e \u0442\u0430\u043a\u043e\u0435 " + morphologicalFeature + " \u0434\u043b\u044f '" + wordForm + "'?";
+      return "Ce este " + morphologicalFeature + " din '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0445";
+      return "Disponibilitatea datelor";
     },
     get$available(_) {
-      return "\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
+      return "Disponibil";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot \u0442\u043e\u0436\u0435 \u043e\u0448\u0438\u0431\u0430\u0435\u0442\u0441\u044f!";
+      return "Pangea Bot face gre\u0219eli \u0219i el!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "\u0427\u0442\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u0435\u0442 '" + lemma + "'?";
+      return "Ce \xeenseamn\u0103 '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\u0421\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0439\u0442\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f\u043c \u0441\u043b\u043e\u0432\u0430 \u0432 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438!";
+      return "Potrive\u0219te sensurile cu cuvintele din mesaj!";
     },
     get$doubleClickToEdit() {
-      return "\u0414\u0432\u0430\u0436\u0434\u044b \u0449\u0435\u043b\u043a\u043d\u0438\u0442\u0435, \u0447\u0442\u043e\u0431\u044b \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c.";
+      return "Dublu clic pentru editare.";
     },
     get$cefrLevelLabel() {
-      return "\u0423\u0440\u043e\u0432\u0435\u043d\u044c CEFR";
+      return "Nivel CEFR";
     },
     get$image(_) {
-      return "\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435";
+      return "Imagine";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0435\u043c\u0443, \u0440\u0435\u0436\u0438\u043c, \u0446\u0435\u043b\u044c \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f \u0438 \u0441\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0434\u043b\u044f \u0447\u0430\u0442\u0430!";
+      return "Alege\u021bi un subiect, mod, obiectiv de \xeenv\u0103\u021bare \u0219i genera\u021bi o activitate pentru chat!";
     },
     get$constructUsePvmDesc() {
-      return "\u041f\u0440\u043e\u0438\u0437\u0432\u0435\u0434\u0435\u043d\u043e \u0432 \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438";
+      return "Produs \xeen mesaj vocal";
     },
     get$leaveSpaceDescription() {
-      return "\u041f\u043e\u043a\u0438\u0434\u0430\u044f \u043a\u0443\u0440\u0441, \u0432\u044b \u043f\u043e\u043a\u0438\u0434\u0430\u0435\u0442\u0435 \u0432\u0441\u0435 \u0447\u0430\u0442\u044b \u0432\u043d\u0443\u0442\u0440\u0438 \u043d\u0435\u0433\u043e. \u0414\u0440\u0443\u0433\u0438\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 \u0443\u0432\u0438\u0434\u044f\u0442, \u0447\u0442\u043e \u0432\u044b \u043f\u043e\u043a\u0438\u043d\u0443\u043b\u0438 \u043a\u0443\u0440\u0441.";
+      return "P\u0103r\u0103sind cursul, vei p\u0103r\u0103si toate chat-urile din cadrul acestuia. Al\u021bi utilizatori vor vedea c\u0103 ai p\u0103r\u0103sit cursul.";
     },
     get$constructUseCorMmDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Semnifica\u021bia mesajului corect";
     },
     get$constructUseIncMmDesc() {
-      return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Semnifica\u021bia mesajului incorect";
     },
     get$constructUseIgnMmDesc() {
-      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u0443\u0435\u043c\u043e\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Semnifica\u021bia mesajului ignorat";
     },
     get$meaning() {
-      return "\u0417\u043d\u0430\u0447\u0435\u043d\u0438\u0435";
+      return "Semnifica\u021bie";
     },
     chatWith$1(displayname) {
-      return "\u0413\u0440\u0443\u043f\u043f\u0430 \u0441 " + displayname;
+      return "Grup cu " + displayname;
     },
     get$clickOnEmailLink() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u043f\u043e \u0441\u0441\u044b\u043b\u043a\u0435 \u0432 \u043f\u0438\u0441\u044c\u043c\u0435 \u0438 \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u0435.\n\n\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u043f\u0430\u043f\u043a\u0443 \u0441\u043f\u0430\u043c, \u0435\u0441\u043b\u0438 \u043f\u0438\u0441\u044c\u043c\u043e \u043d\u0435 \u043f\u0440\u0438\u0448\u043b\u043e.";
+      return "V\u0103 rug\u0103m s\u0103 face\u021bi clic pe link-ul din email \u0219i apoi s\u0103 continua\u021bi.\n\nVerifica\u021bi folderul de spam dac\u0103 email-ul nu a sosit.";
     },
     get$dontForgetPassword() {
-      return "\u041d\u0435 \u0437\u0430\u0431\u0443\u0434\u044c\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u0430\u0440\u043e\u043b\u044c!";
+      return "Nu uita parola ta!";
     },
     get$enableAutocorrectToolName() {
-      return "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0430\u0432\u0442\u043e\u043a\u043e\u0440\u0440\u0435\u043a\u0442 \u043d\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435";
+      return "Activeaz\u0103 corectarea automat\u0103 a dispozitivului";
     },
     get$enableAutocorrectDescription() {
-      return "\u0415\u0441\u043b\u0438 \u0432\u0430\u0448\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u044f\u0437\u044b\u043a, \u043a\u043e\u0442\u043e\u0440\u044b\u0439 \u0432\u044b \u0438\u0437\u0443\u0447\u0430\u0435\u0442\u0435, \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0430\u0432\u0442\u043e\u043a\u043e\u0440\u0440\u0435\u043a\u0442 \u0434\u043b\u044f \u0438\u0441\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u044f \u0440\u0430\u0441\u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0435\u043d\u043d\u044b\u0445 \u043e\u0448\u0438\u0431\u043e\u043a \u0432\u043e \u0432\u0440\u0435\u043c\u044f \u043d\u0430\u0431\u043e\u0440\u0430 \u0442\u0435\u043a\u0441\u0442\u0430.";
+      return "Dac\u0103 dispozitivul t\u0103u suport\u0103 limba pe care o \xeenve\u021bi, po\u021bi activa corectarea automat\u0103 pentru a corecta erorile comune \xeen timp ce tastezi.";
     },
     get$ttsDisbledTitle() {
-      return "\u041e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u043f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u044f \u0442\u0435\u043a\u0441\u0442\u0430 \u0432 \u0440\u0435\u0447\u044c";
+      return "Text-to-speech dezactivat";
     },
     get$ttsDisabledBody() {
-      return "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u0438\u0435 \u0442\u0435\u043a\u0441\u0442\u0430 \u0432 \u0440\u0435\u0447\u044c \u0432 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430\u0445 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f";
+      return "Po\u021bi activa func\u021bia text-to-speech \xeen set\u0103rile de \xeenv\u0103\u021bare";
     },
     get$noSpaceDescriptionYet() {
-      return "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043a\u0443\u0440\u0441\u0430 \u0435\u0449\u0435 \u043d\u0435 \u0441\u043e\u0437\u0434\u0430\u043d\u043e.";
+      return "\xcenc\u0103 nu a fost creat\u0103 nicio descriere a cursului.";
     },
     get$tooLargeToSend() {
-      return "\u042d\u0442\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u0431\u043e\u043b\u044c\u0448\u043e\u0435, \u0447\u0442\u043e\u0431\u044b \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c";
+      return "Mesajul este prea mare pentru a fi trimis";
     },
     get$exitWithoutSaving() {
-      return "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0432\u044b\u0439\u0442\u0438 \u0431\u0435\u0437 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f?";
+      return "E\u0219ti sigur c\u0103 vrei s\u0103 ie\u0219i f\u0103r\u0103 a salva?";
     },
     get$enableAutocorrectWarning() {
-      return "\u0412\u043d\u0438\u043c\u0430\u043d\u0438\u0435! \u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044f \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043a\u043b\u0430\u0432\u0438\u0430\u0442\u0443\u0440\u0443 \u0446\u0435\u043b\u0435\u0432\u043e\u0433\u043e \u044f\u0437\u044b\u043a\u0430";
+      return "Avertisment! Necesit\u0103 ad\u0103ugarea tastaturii limbii tale \u021bint\u0103";
     },
     get$leaveRoomDescription() {
-      return "\u0412\u044b \u0441\u043e\u0431\u0438\u0440\u0430\u0435\u0442\u0435\u0441\u044c \u043f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u044d\u0442\u043e\u0442 \u0447\u0430\u0442. \u0414\u0440\u0443\u0433\u0438\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 \u0443\u0432\u0438\u0434\u044f\u0442, \u0447\u0442\u043e \u0432\u044b \u043f\u043e\u043a\u0438\u043d\u0443\u043b\u0438 \u0447\u0430\u0442.";
+      return "E\u0219ti pe cale s\u0103 p\u0103r\u0103se\u0219ti acest chat. Al\u021bi utilizatori vor vedea c\u0103 ai p\u0103r\u0103sit chat-ul.";
     },
     get$confirmUserId() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0435 \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0432 Pangea Chat, \u0447\u0442\u043e\u0431\u044b \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u0432\u0430\u0448 \u0430\u043a\u043a\u0430\u0443\u043d\u0442.";
+      return "Te rug\u0103m s\u0103 confirmi numele de utilizator Pangea Chat pentru a-\u021bi \u0219terge contul.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\u041d\u0430\u0447\u0438\u043d\u0430\u0435\u0442\u0441\u044f " + startDate;
+      return "\xcencep\xe2nd cu " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c \u0432 \u043b\u044e\u0431\u043e\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 \u0432 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430\u0445 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438";
+      return "\u2022 Anuleaz\u0103 oric\xe2nd din set\u0103rile de abonament";
     },
     get$autocorrectNotAvailable() {
-      return "\u041a \u0441\u043e\u0436\u0430\u043b\u0435\u043d\u0438\u044e, \u044d\u0442\u0430 \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0430 \u0432 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442\u0441\u044f \u0434\u043b\u044f \u044d\u0442\u043e\u0439 \u0444\u0443\u043d\u043a\u0446\u0438\u0438. \u0421\u043b\u0435\u0434\u0438\u0442\u0435 \u0437\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f\u043c\u0438!";
+      return "Din p\u0103cate, platforma dvs. nu este \xeen prezent compatibil\u0103 pentru aceast\u0103 func\u021bie. R\u0103m\xe2ne\u021bi aproape pentru dezvolt\u0103ri viitoare!";
     },
     get$pleaseUpdateApp() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u044c.";
+      return "V\u0103 rug\u0103m s\u0103 actualiza\u021bi aplica\u021bia pentru a continua.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\u0421\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u0442\u0435 \u044d\u043c\u043e\u0434\u0437\u0438 \u0441 \u0441\u043b\u043e\u0432\u0430\u043c\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043e\u043d\u0438 \u043b\u0443\u0447\u0448\u0435 \u0432\u0441\u0435\u0433\u043e \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u044e\u0442. \u041d\u0435 \u0432\u043e\u043b\u043d\u0443\u0439\u0442\u0435\u0441\u044c! \u0417\u0430 \u043d\u0435\u0441\u043e\u0433\u043b\u0430\u0441\u0438\u0435 \u0431\u0430\u043b\u043b\u044b \u043d\u0435 \u0441\u043d\u0438\u043c\u0430\u044e\u0442\u0441\u044f. \ud83d\ude05";
+      return "Potrive\u0219te emoji-urile cu cuvintele pe care le reprezint\u0103 cel mai bine. Nu v\u0103 face\u021bi griji! Nu vor fi penaliz\u0103ri pentru dezacord. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\u042d\u0442\u043e \u0432\u0435\u0441\u044c \u0432\u0430\u0448 \u0441\u043b\u043e\u0432\u0430\u0440\u043d\u044b\u0439 \u0437\u0430\u043f\u0430\u0441! \u041f\u043e \u043c\u0435\u0440\u0435 \u043d\u0430\u043a\u043e\u043f\u043b\u0435\u043d\u0438\u044f \u043e\u043f\u044b\u0442\u0430 \u0437\u0430 \u043a\u0430\u0436\u0434\u043e\u0435 \u0441\u043b\u043e\u0432\u043e \u043e\u043d\u043e \u0431\u0443\u0434\u0435\u0442 \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0438\u0442\u044c \u043e\u0442 \u0440\u043e\u0441\u0442\u043a\u0430 \u043a \u043f\u043e\u043b\u043d\u043e\u043c\u0443 \u0446\u0432\u0435\u0442\u0435\u043d\u0438\u044e. \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043b\u044e\u0431\u043e\u0435 \u0441\u043b\u043e\u0432\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u0432\u0438\u0434\u0435\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435 \u0434\u0435\u0442\u0430\u043b\u0435\u0439.";
+      return "Aceasta este tot vocabularul t\u0103u! Pe m\u0103sur\u0103 ce c\xe2\u0219tigi XP pentru fiecare cuv\xe2nt, acestea vor trece de la s\u0103m\xe2n\u021b\u0103 la plin\u0103 \xeenflorire. F\u0103 clic pe orice cuv\xe2nt pentru mai multe detalii.";
     },
     get$morphAnalyticsListBody() {
-      return "\u042d\u0442\u043e \u0432\u0441\u0435 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438 \u0432 \u0438\u0437\u0443\u0447\u0430\u0435\u043c\u043e\u043c \u0432\u0430\u043c\u0438 \u044f\u0437\u044b\u043a\u0435! \u0412\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u0443\u0435\u0442\u0435 \u0438\u0445 \u043f\u043e \u043c\u0435\u0440\u0435 \u0438\u0445 \u043f\u043e\u044f\u0432\u043b\u0435\u043d\u0438\u044f \u0432\u043e \u0432\u0440\u0435\u043c\u044f \u043e\u0431\u0449\u0435\u043d\u0438\u044f. \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0434\u043b\u044f \u0434\u0435\u0442\u0430\u043b\u0435\u0439.";
+      return "Acestea sunt toate conceptele gramaticale din limba pe care o \xeenve\u021bi! Le vei debloca pe m\u0103sur\u0103 ce le \xeent\xe2lne\u0219ti \xeen timpul conversa\u021biei. F\u0103 clic pentru detalii.";
     },
     get$knockSpaceSuccess() {
-      return "\u0412\u044b \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b\u0438 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u044d\u0442\u043e\u043c\u0443 \u043a\u0443\u0440\u0441\u0443! \u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440 \u043e\u0442\u0432\u0435\u0442\u0438\u0442 \u043d\u0430 \u0432\u0430\u0448 \u0437\u0430\u043f\u0440\u043e\u0441, \u043a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u043b\u0443\u0447\u0438\u0442 \u0435\u0433\u043e \ud83d\ude0a";
+      return "Ai solicitat s\u0103 te al\u0103turi acestui curs! Un administrator va r\u0103spunde cererii tale c\xe2nd o va primi \ud83d\ude0a";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\u041f\u0440\u043e\u0441\u043b\u0443\u0448\u0430\u0439\u0442\u0435 \u043f\u043e\u043b\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435. \u0417\u0430\u0442\u0435\u043c \u0441\u043e\u043f\u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0430\u0443\u0434\u0438\u043e \u0441 \u0441\u043b\u043e\u0432\u0430\u043c\u0438.";
+      return "Ascult\u0103 mesajul complet. Apoi potrive\u0219te audio-urile cu cuvintele.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\u041d\u0430\u0436\u0438\u043c\u0430\u0439\u0442\u0435 \u043d\u0430 \u0447\u0430\u0441\u0442\u0438 \u0433\u043e\u043b\u043e\u0432\u043e\u043b\u043e\u043c\u043a\u0438 \u0434\u043b\u044f \u0432\u043e\u043f\u0440\u043e\u0441\u043e\u0432 \u043f\u043e \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0435!";
+      return "F\u0103 clic pe piesele de puzzle pentru \xeentreb\u0103ri gramaticale!";
     },
     get$home() {
-      return "\u0413\u043b\u0430\u0432\u043d\u0430\u044f";
+      return "Acas\u0103";
     },
     get$join(_) {
-      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
+      return "Al\u0103tur\u0103-te";
     },
     get$readingAssistanceOverviewBody() {
-      return "\u041d\u0430\u0436\u0438\u043c\u0430\u0439\u0442\u0435 \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0438 \u043d\u0438\u0436\u0435 \u0434\u043b\u044f \u043c\u0438\u043d\u0438-\u0438\u0433\u0440 \u043f\u043e \u0441\u043e\u043f\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u044e \u044d\u043c\u043e\u0434\u0437\u0438, \u0430\u0443\u0434\u0438\u043e, \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439 \u0441\u043b\u043e\u0432 \u0438 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0439. \u0418\u043b\u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043b\u044e\u0431\u043e\u0435 \u0441\u043b\u043e\u0432\u043e \u0434\u043b\u044f \u0434\u0435\u0442\u0430\u043b\u0435\u0439.";
+      return "F\u0103 clic pe butoanele de mai jos pentru mini-jocuri de potrivire a emoji-urilor, audio-urilor, sensurilor cuvintelor \u0219i conceptelor gramaticale. Sau f\u0103 clic pe orice cuv\xe2nt pentru detalii.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\u0421\u0431\u0440\u043e\u0441\u0438\u0442\u044c \u043f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0439";
+      return "Reseteaz\u0103 sfaturile de instruc\u021biuni";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435, \u0447\u0442\u043e\u0431\u044b \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u043f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u0439, \u043a\u0430\u043a \u0434\u043b\u044f \u043d\u043e\u0432\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f.";
+      return "F\u0103 clic pentru a afi\u0219a sfaturi de instruc\u021biuni precum pentru un utilizator nou.";
     },
     get$selectForGrammar() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0437\u043d\u0430\u0447\u043e\u043a \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u043a\u0438 \u0434\u043b\u044f \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439 \u0438 \u0434\u0435\u0442\u0430\u043b\u0435\u0439.";
+      return "Selecteaz\u0103 o pictogram\u0103 de gramatic\u0103 pentru activit\u0103\u021bi \u0219i detalii.";
     },
     get$translationProblem() {
-      return "\u041f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u0441 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u043e\u043c";
+      return "Problem\u0103 de traducere";
     },
     get$askToJoin() {
-      return "\u041f\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u044c \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
+      return "Cere s\u0103 te al\u0103turi";
     },
     get$emptyChatWarningTitle() {
-      return "\u0427\u0430\u0442 \u043f\u0443\u0441\u0442";
+      return "Conversa\u021bia este goal\u0103";
     },
     get$emptyChatWarningDesc() {
-      return "\u0412\u044b \u043d\u0435 \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b\u0438 \u043d\u0438\u043a\u043e\u0433\u043e \u0432 \u0432\u0430\u0448 \u0447\u0430\u0442. \u041f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0432 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0447\u0430\u0442\u0430, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b \u0438\u043b\u0438 \u0431\u043e\u0442\u0430. \u0412\u044b \u0442\u0430\u043a\u0436\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u044d\u0442\u043e \u043f\u043e\u0437\u0436\u0435.";
+      return "Nu ai invitat pe nimeni \xeen conversa\u021bia ta. Mergi la set\u0103rile de chat pentru a invita contactele sau Botul. Po\u021bi face acest lucru \u0219i mai t\xe2rziu.";
     },
     get$areYouLikeMe() {
-      return "\u0422\u044b \u043a\u0430\u043a \u044f?";
+      return "E\u0219ti ca mine?";
     },
     get$tryAgainLater() {
-      return "\u0421\u0434\u0435\u043b\u0430\u043d\u043e \u0441\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u043f\u043e\u043f\u044b\u0442\u043e\u043a. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u043d\u043e\u0432\u0430 \u0447\u0435\u0440\u0435\u0437 5 \u043c\u0438\u043d\u0443\u0442.";
+      return "Prea multe \xeencerc\u0103ri. Te rug\u0103m s\u0103 \xeencerci din nou \xeen 5 minute.";
     },
     get$enterSpaceCode() {
-      return "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u043e\u0434 \u043a\u0443\u0440\u0441\u0430";
+      return "Introdu codul cursului";
     },
     get$shareSpaceLink() {
-      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0441\u044b\u043b\u043a\u043e\u0439";
+      return "Distribuie link-ul";
     },
     get$byUsingPangeaChat() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044f Pangea Chat, \u044f \u0441\u043e\u0433\u043b\u0430\u0448\u0430\u044e\u0441\u044c \u0441 ";
+      return "Folosind Pangea Chat, sunt de acord cu ";
     },
     get$details(_) {
-      return "\u0414\u0435\u0442\u0430\u043b\u0438";
+      return "Detalii";
     },
     get$languageLevelPreA1Desc() {
-      return "\u042f \u043d\u0438\u043a\u043e\u0433\u0434\u0430 \u043d\u0435 \u0438\u0437\u0443\u0447\u0430\u043b \u0438\u043b\u0438 \u043d\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043b \u044f\u0437\u044b\u043a.";
+      return "Nu am \xeenv\u0103\u021bat niciodat\u0103 sau nu am folosit limba.";
     },
     get$languageLevelA1Desc() {
-      return "\u042f \u043c\u043e\u0433\u0443 \u043f\u043e\u043d\u044f\u0442\u044c \u0438 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u043d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0437\u043d\u0430\u043a\u043e\u043c\u044b\u0435 \u043f\u043e\u0432\u0441\u0435\u0434\u043d\u0435\u0432\u043d\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0438 \u043e\u0447\u0435\u043d\u044c \u0431\u0430\u0437\u043e\u0432\u044b\u0435 \u0444\u0440\u0430\u0437\u044b.";
+      return "Pot \xeen\u021belege \u0219i folosi c\xe2teva expresii familiare din via\u021ba de zi cu zi \u0219i fraze foarte simple.";
     },
     get$languageLevelA2Desc() {
-      return "\u042f \u043c\u043e\u0433\u0443 \u043f\u043e\u043d\u044f\u0442\u044c \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0438 \u0447\u0430\u0441\u0442\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u043c\u044b\u0435 \u0432\u044b\u0440\u0430\u0436\u0435\u043d\u0438\u044f, \u0441\u0432\u044f\u0437\u0430\u043d\u043d\u044b\u0435 \u0441 \u043e\u0431\u043b\u0430\u0441\u0442\u044f\u043c\u0438 \u043d\u0435\u043c\u0435\u0434\u043b\u0435\u043d\u043d\u043e\u0439 \u0432\u0430\u0436\u043d\u043e\u0441\u0442\u0438.";
+      return "Pot \xeen\u021belege propozi\u021bii \u0219i expresii frecvent utilizate legate de domenii de relevan\u021b\u0103 imediat\u0103.";
     },
     get$languageLevelB1Desc() {
-      return "\u042f \u043c\u043e\u0433\u0443 \u0441\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0441 \u0431\u043e\u043b\u044c\u0448\u0438\u043d\u0441\u0442\u0432\u043e\u043c \u0437\u043d\u0430\u043a\u043e\u043c\u044b\u0445 \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u0439 \u0438 \u043c\u043e\u0433\u0443 \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u043f\u0440\u043e\u0441\u0442\u044b\u0435 \u0441\u0432\u044f\u0437\u043d\u044b\u0435 \u0442\u0435\u043a\u0441\u0442\u044b \u043d\u0430 \u0437\u043d\u0430\u043a\u043e\u043c\u044b\u0435 \u0442\u0435\u043c\u044b.";
+      return "Pot face fa\u021b\u0103 celor mai multe situa\u021bii familiare \u0219i pot produce texte simple legate pe subiecte familiare.";
     },
     get$languageLevelB2Desc() {
-      return "\u042f \u043c\u043e\u0433\u0443 \u043f\u043e\u043d\u044f\u0442\u044c \u043e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0438\u0434\u0435\u0438 \u0441\u043b\u043e\u0436\u043d\u044b\u0445 \u0442\u0435\u043a\u0441\u0442\u043e\u0432 \u0438 \u0432\u0437\u0430\u0438\u043c\u043e\u0434\u0435\u0439\u0441\u0442\u0432\u043e\u0432\u0430\u0442\u044c \u0441 \u0443\u0440\u043e\u0432\u043d\u0435\u043c \u0431\u0435\u0433\u043b\u043e\u0441\u0442\u0438 \u0438 \u0441\u043f\u043e\u043d\u0442\u0430\u043d\u043d\u043e\u0441\u0442\u0438.";
+      return "Pot \xeen\u021belege ideile principale ale textelor complexe \u0219i pot interac\u021biona cu un grad de fluen\u021b\u0103 \u0219i spontaneitate.";
     },
     get$languageLevelC1Desc() {
-      return "\u042f \u043c\u043e\u0433\u0443 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e \u0438 \u0441\u043f\u043e\u043d\u0442\u0430\u043d\u043d\u043e \u0432\u044b\u0440\u0430\u0436\u0430\u0442\u044c \u0438\u0434\u0435\u0438 \u0431\u0435\u0437 \u043e\u0441\u043e\u0431\u044b\u0445 \u0443\u0441\u0438\u043b\u0438\u0439 \u0438 \u043f\u043e\u043d\u0438\u043c\u0430\u044e \u0448\u0438\u0440\u043e\u043a\u0438\u0439 \u0441\u043f\u0435\u043a\u0442\u0440 \u0441\u043b\u043e\u0436\u043d\u044b\u0445 \u0442\u0435\u043a\u0441\u0442\u043e\u0432.";
+      return "Pot exprima idei fluent \u0219i spontan f\u0103r\u0103 prea mult efort \u0219i pot \xeen\u021belege o gam\u0103 larg\u0103 de texte exigente.";
     },
     get$languageLevelC2Desc() {
-      return "\u042f \u043c\u043e\u0433\u0443 \u043f\u043e\u043d\u044f\u0442\u044c \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0432\u0441\u0435 \u0443\u0441\u043b\u044b\u0448\u0430\u043d\u043d\u043e\u0435 \u0438\u043b\u0438 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435 \u0438 \u0432\u044b\u0440\u0430\u0436\u0430\u0442\u044c \u0441\u0435\u0431\u044f \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u043e \u0438 \u0442\u043e\u0447\u043d\u043e.";
+      return "Pot \xeen\u021belege aproape tot ce aud sau citesc \u0219i m\u0103 pot exprima fluent \u0219i precis.";
     },
     get$newVocab() {
-      return "\u041d\u043e\u0432\u0430\u044f \u043b\u0435\u043a\u0441\u0438\u043a\u0430";
+      return "Vocabular nou";
     },
     get$newGrammar() {
-      return "\u041d\u043e\u0432\u044b\u0435 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438";
+      return "Concepte gramaticale noi";
     },
     get$choosePracticeMode() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043e\u0434\u043d\u0443 \u0438\u0437 \u043a\u043d\u043e\u043f\u043e\u043a \u0432\u044b\u0448\u0435, \u0447\u0442\u043e\u0431\u044b \u043d\u0430\u0447\u0430\u0442\u044c \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u0437\u0430\u043d\u044f\u0442\u0438\u0435";
+      return "F\u0103 clic pe unul dintre butoanele de mai sus pentru a \xeencepe o activitate de practic\u0103";
     },
     get$ban() {
-      return "\u0417\u0430\u0431\u0430\u043d\u0438\u0442\u044c";
+      return "Ban";
     },
     get$kick() {
-      return "\u0418\u0441\u043a\u043b\u044e\u0447\u0438\u0442\u044c";
+      return "Scoate";
     },
     get$lemma() {
-      return "\u041b\u0435\u043c\u043c\u0430";
+      return "Lem\u0103";
     },
     get$grammarFeature() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043e\u0441\u043e\u0431\u0435\u043d\u043d\u043e\u0441\u0442\u044c";
+      return "Caracteristic\u0103 gramatical\u0103";
     },
     get$grammarTag() {
-      return "\u0413\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0442\u0435\u0433";
+      return "Etichet\u0103 gramatical\u0103";
     },
     get$forms() {
-      return "\u0424\u043e\u0440\u043c\u044b";
+      return "Forme";
     },
     get$exampleMessages() {
-      return "\u041f\u0440\u0438\u043c\u0435\u0440\u044b \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439";
+      return "Mesaje de exemplu";
     },
     get$timesUsedIndependently() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043e \u043d\u0435\u0437\u0430\u0432\u0438\u0441\u0438\u043c\u043e";
+      return "Timpuri folosite independent";
     },
     get$timesUsedWithAssistance() {
-      return "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043e \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e";
+      return "Timpuri folosite cu asisten\u021b\u0103";
     },
     shareInviteCode$1(code) {
-      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043a\u043e\u0434\u043e\u043c \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f: " + code;
+      return "Partaja codul de invita\u021bie: " + code;
     },
     get$skipForNow() {
-      return "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043f\u043e\u043a\u0430";
+      return "Sari peste pentru moment";
     },
     get$permissions(_) {
-      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u044f";
+      return "Permisiuni";
     },
     get$spaceChildPermission() {
-      return "\u041a\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0442\u044c \u043d\u043e\u0432\u044b\u0435 \u0447\u0430\u0442\u044b \u0432 \u044d\u0442\u043e\u0442 \u043a\u0443\u0440\u0441";
+      return "Cine poate ad\u0103uga noi conversa\u021bii la acest curs";
     },
     get$addEnvironmentOverride() {
-      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u0435\u0440\u0435\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043e\u043a\u0440\u0443\u0436\u0435\u043d\u0438\u044f";
+      return "Adaug\u0103 suprascriere de mediu";
     },
     get$defaultOption() {
-      return "\u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e";
+      return "Implicit";
     },
     get$deleteChatDesc() {
-      return "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u044d\u0442\u043e\u0442 \u0447\u0430\u0442? \u041e\u043d \u0431\u0443\u0434\u0435\u0442 \u0443\u0434\u0430\u043b\u0435\u043d \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432, \u0438 \u0432\u0441\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0432 \u0447\u0430\u0442\u0435 \u0431\u043e\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u0438\u043b\u0438 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f.";
+      return "E\u0219ti sigur c\u0103 vrei s\u0103 \u0219tergi aceast\u0103 conversa\u021bie? Va fi \u0219tears\u0103 pentru to\u021bi participan\u021bii \u0219i toate mesajele din conversa\u021bie nu vor mai fi disponibile pentru practic\u0103 sau analize de \xeenv\u0103\u021bare.";
     },
     get$deleteSpaceDesc() {
-      return "\u041a\u0443\u0440\u0441 \u0438 \u0432\u0441\u0435 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u0447\u0430\u0442\u044b \u0431\u0443\u0434\u0443\u0442 \u0443\u0434\u0430\u043b\u0435\u043d\u044b \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432, \u0438 \u0432\u0441\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0432 \u0447\u0430\u0442\u0435 \u0431\u043e\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u0438\u043b\u0438 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f. \u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435\u043b\u044c\u0437\u044f \u043e\u0442\u043c\u0435\u043d\u0438\u0442\u044c.";
+      return "Cursul \u0219i orice conversa\u021bie selectat\u0103 vor fi \u0219terse pentru to\u021bi participan\u021bii \u0219i toate mesajele din conversa\u021bie nu vor mai fi disponibile pentru practic\u0103 sau analize de \xeenv\u0103\u021bare. Aceast\u0103 ac\u021biune nu poate fi anulat\u0103.";
     },
     get$configureSpace() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u043a\u0443\u0440\u0441";
+      return "Configureaz\u0103 cursul";
     },
     get$pinMessages() {
-      return "\u0417\u0430\u043a\u0440\u0435\u043f\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Fixeaz\u0103 mesaje";
     },
     get$setJoinRules() {
-      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
+      return "Seteaz\u0103 regulile de aderare";
     },
     get$changeGeneralSettings() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043e\u0431\u0449\u0438\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438";
+      return "Schimb\u0103 set\u0103rile generale";
     },
     get$inviteOtherUsersToRoom() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439";
+      return "Invit\u0103 al\u021bi utilizatori";
     },
     get$changeTheNameOfTheSpace() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043a\u0443\u0440\u0441\u0430";
+      return "Schimb\u0103 numele cursului";
     },
     get$changeTheDescription() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435";
+      return "Schimb\u0103 descrierea";
     },
     get$changeThePermissions() {
-      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u044f";
+      return "Schimb\u0103 permisiunile";
     },
     get$introductions() {
-      return "\u0412\u0441\u0442\u0443\u043f\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u0441\u043b\u043e\u0432\u0430";
+      return "Introduceri";
     },
     get$announcements() {
-      return "\u041e\u0431\u044a\u044f\u0432\u043b\u0435\u043d\u0438\u044f";
+      return "Anun\u021buri";
     },
     get$activities() {
-      return "\u041c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u044f";
+      return "Activit\u0103\u021bi";
     },
     get$access() {
-      return "\u0414\u043e\u0441\u0442\u0443\u043f";
+      return "Acces";
     },
     get$howSpaceCanBeFound() {
-      return "\u041a\u0430\u043a \u043c\u043e\u0436\u043d\u043e \u043d\u0430\u0439\u0442\u0438 \u044d\u0442\u043e\u0442 \u043a\u0443\u0440\u0441";
+      return "Cum poate fi g\u0103sit acest curs";
     },
     get$$private() {
-      return "\u0427\u0430\u0441\u0442\u043d\u044b\u0439";
+      return "Privat";
     },
     get$cannotBeFoundInSearch() {
-      return "\u041d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043d\u0430\u0439\u0434\u0435\u043d \u0432 \u043f\u043e\u0438\u0441\u043a\u0435";
+      return "Nu poate fi g\u0103sit \xeen c\u0103utare";
     },
     get$$public(_) {
-      return "\u041f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0439";
+      return "Public";
     },
     get$visibleToCommunity() {
-      return '\u0412\u0438\u0434\u0438\u043c \u0434\u043b\u044f \u0448\u0438\u0440\u043e\u043a\u043e\u0439 \u0430\u0443\u0434\u0438\u0442\u043e\u0440\u0438\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0430 Pangea Chat \u0447\u0435\u0440\u0435\u0437 "\u041d\u0430\u0439\u0442\u0438 \u043a\u0443\u0440\u0441"';
+      return 'Vizibil pentru comunitatea mai larg\u0103 Pangea Chat prin "G\u0103se\u0219te un curs"';
     },
     get$howSpaceCanBeJoined() {
-      return "\u041a\u0430\u043a \u043c\u043e\u0436\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u044d\u0442\u043e\u043c\u0443 \u043a\u0443\u0440\u0441\u0443";
+      return "Cum poate fi aderat acest curs";
     },
     get$canBeFoundVia() {
-      return "\u041c\u043e\u0436\u043d\u043e \u043d\u0430\u0439\u0442\u0438 \u0447\u0435\u0440\u0435\u0437:";
+      return "Poate fi g\u0103sit prin:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
+      return "\u2022 invita\u021bie";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \u043a\u043e\u0434 \u0438\u043b\u0438 \u0441\u0441\u044b\u043b\u043a\u0430";
+      return "\u2022 cod sau link";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \u0437\u0430\u043f\u0440\u043e\u0441 \u043d\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u0435 \u0438 \u043e\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u0435 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430";
+      return "\u2022 cerere de aderare \u0219i aprobare de administrator";
     },
     get$youHaveLeveledUp() {
-      return "\u0412\u044b \u043f\u043e\u0432\u044b\u0441\u0438\u043b\u0438 \u0443\u0440\u043e\u0432\u0435\u043d\u044c!";
+      return "Ai avansat de nivel!";
     },
     get$sendActivities() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u044f";
+      return "Trimite activit\u0103\u021bi";
     },
     get$directMessage() {
-      return "\u041b\u0438\u0447\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Mesaj direct";
     },
     get$newDirectMessage() {
-      return "\u041d\u043e\u0432\u043e\u0435 \u043b\u0438\u0447\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
+      return "Mesaj direct nou";
     },
     get$speakingExercisesTooltip() {
-      return "\u0413\u043e\u0432\u043e\u0440\u0435\u043d\u0438\u0435";
+      return "Vorbire";
     },
     get$transcriptionFailed() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u0442\u044c \u0430\u0443\u0434\u0438\u043e";
+      return "Nu s-a reu\u0219it transcrierea audio";
     },
     get$aUserIsKnocking() {
-      return "1 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0437\u0430\u043f\u0440\u0430\u0448\u0438\u0432\u0430\u0435\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0432\u0430\u0448\u0435\u043c\u0443 \u043a\u0443\u0440\u0441\u0443";
+      return "Un utilizator solicit\u0103 s\u0103 se al\u0103ture cursului t\u0103u";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0437\u0430\u043f\u0440\u0430\u0448\u0438\u0432\u0430\u044e\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0432\u0430\u0448\u0435\u043c\u0443 \u043a\u0443\u0440\u0441\u0443";
+      return "" + users + " utilizatori solicit\u0103 s\u0103 se al\u0103ture cursului t\u0103u";
     },
     get$failedToFetchTranscription() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0442\u0440\u0430\u043d\u0441\u043a\u0440\u0438\u043f\u0446\u0438\u044e";
+      return "Nu s-a reu\u0219it preluarea transcrierii";
     },
     get$deleteEmptySpaceDesc() {
-      return "\u041a\u0443\u0440\u0441 \u0431\u0443\u0434\u0435\u0442 \u0443\u0434\u0430\u043b\u0435\u043d \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432. \u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435\u043b\u044c\u0437\u044f \u043e\u0442\u043c\u0435\u043d\u0438\u0442\u044c.";
+      return "Cursul va fi \u0219ters pentru to\u021bi participan\u021bii. Aceast\u0103 ac\u021biune nu poate fi anulat\u0103.";
     },
     get$failedToPlayVideo() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0432\u043e\u0441\u043f\u0440\u043e\u0438\u0437\u0432\u0435\u0441\u0442\u0438 \u0432\u0438\u0434\u0435\u043e";
+      return "Nu s-a reu\u0219it redarea videoclipului";
     },
     get$done() {
-      return "\u0413\u043e\u0442\u043e\u0432\u043e";
+      return "Gata";
     },
     get$inThisSpace() {
-      return "\u041d\u0430 \u044d\u0442\u043e\u043c \u043a\u0443\u0440\u0441\u0435";
+      return "\xcen acest curs";
     },
     get$myContacts() {
-      return "\u041c\u043e\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b";
+      return "Contactele mele";
     },
     get$inviteAllInSpace() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0432\u0441\u0435\u0445 \u043d\u0430 \u044d\u0442\u043e\u0442 \u043a\u0443\u0440\u0441";
+      return "Invit\u0103 pe to\u021bi \xeen acest curs";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\u0412\u0441\u0435 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438 \u043a\u0443\u0440\u0441\u0430 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u044b \u0432 \u0447\u0430\u0442";
+      return "To\u021bi participan\u021bii la curs au fost invita\u021bi \xeen chat";
     },
     numKnocking$1(count) {
-      return "" + count + " \u0441\u0442\u0443\u0447\u0438\u0442";
+      return "" + count + " solicit\u0103ri de intrare";
     },
     numInvited$1(count) {
-      return "" + count + " \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u043e";
+      return "" + count + " invita\u021bi";
     },
     get$errorFetchingDefinition() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435";
+      return "E\u0219ec la preluarea defini\u021biei";
     },
     get$errorProcessAnalytics() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0443";
+      return "E\u0219ec la procesarea analizelor";
     },
     get$errorDownloading() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0441\u043a\u0430\u0447\u0430\u0442\u044c";
+      return "E\u0219ec la desc\u0103rcare";
     },
     get$errorFetchingLevelSummary() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0441\u0432\u043e\u0434\u043a\u0443 \u0443\u0440\u043e\u0432\u043d\u044f";
+      return "E\u0219ec la preluarea rezumatului nivelului";
     },
     get$errorLoadingSpaceChildren() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0447\u0430\u0442\u044b \u0432 \u044d\u0442\u043e\u043c \u043a\u0443\u0440\u0441\u0435";
+      return "E\u0219ec la \xeenc\u0103rcarea conversa\u021biilor din acest curs";
     },
     get$unexpectedError() {
-      return "\u041d\u0435\u043e\u0436\u0438\u0434\u0430\u043d\u043d\u0430\u044f \u043e\u0448\u0438\u0431\u043a\u0430.";
+      return "Eroare nea\u0219teptat\u0103.";
     },
     get$pleaseReload() {
-      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0435 \u0438 \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u043d\u043e\u0432\u0430.";
+      return "V\u0103 rug\u0103m s\u0103 re\xeenc\u0103rca\u021bi \u0219i s\u0103 \xeencerca\u021bi din nou.";
     },
     get$translationError() {
-      return "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0430";
+      return "Eroare de traducere";
     },
     get$errorFetchingTranslation() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u043f\u0435\u0440\u0435\u0432\u043e\u0434";
+      return "E\u0219ec la preluarea traducerii";
     },
     get$errorFetchingActivity() {
-      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c";
+      return "E\u0219ec la preluarea activit\u0103\u021bii";
     },
     get$check(_) {
-      return "\u041f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c";
+      return "Verific\u0103";
     },
     get$unableToFindRoom() {
-      return "\u0427\u0430\u0442 \u0438\u043b\u0438 \u043a\u0443\u0440\u0441 \u0441 \u044d\u0442\u0438\u043c \u043a\u043e\u0434\u043e\u043c \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0441\u043d\u043e\u0432\u0430.";
+      return "Niciun chat sau curs cu acest cod nu a fost g\u0103sit. V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou.";
     },
     viewingAnalytics$2(visible, users) {
-      return "\u041f\u0440\u043e\u0441\u043c\u043e\u0442\u0440 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438 " + visible + "/" + users;
+      return "Vizualizare " + visible + "/" + users + " Analize";
     },
     get$request(_) {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441";
+      return "Cerere";
     },
     get$requestAll(_) {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u044c \u0432\u0441\u0451";
+      return "Solicit\u0103 tot";
     },
     get$confirmMessageUnpin() {
-      return "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0442\u043a\u0440\u0435\u043f\u0438\u0442\u044c \u044d\u0442\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435?";
+      return "E\u0219ti sigur c\u0103 vrei s\u0103 dezlipe\u0219ti acest mesaj?";
     },
     get$pending(_) {
-      return "\u0412 \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0438";
+      return "\xcen a\u0219teptare";
     },
     get$openRoleLabel() {
-      return "\u041e\u0422\u041a\u0420\u042b\u0422\u041e";
+      return "DESCHIS";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f \u043a\u0430\u043a " + role;
+      return "\ud83d\udc4b " + username + " s-a al\u0103turat ca " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043b \u044d\u0442\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c";
+      return "\ud83c\udfaf " + username + " a \xeencheiat aceast\u0103 activitate";
     },
     get$activitySummaryError() {
-      return "\u0421\u0432\u043e\u0434\u043a\u0438 \u043f\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b";
+      return "Rezumatul activit\u0103\u021bilor indisponibil";
     },
     get$requestSummaries() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u044c \u0441\u0432\u043e\u0434\u043a\u0438";
+      return "Solicit\u0103 rezumate";
     },
     get$requestAccessTitle() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0443 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438?";
+      return "Solicita\u021bi acces la analize?";
     },
     get$requestAccessDesc() {
-      return "\u0425\u043e\u0442\u0438\u0442\u0435 \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0443 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432?\n\n\u0415\u0441\u043b\u0438 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438 \u0441\u043e\u0433\u043b\u0430\u0441\u044f\u0442\u0441\u044f, \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u044b \u044d\u0442\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0430 \u0441\u043c\u043e\u0433\u0443\u0442 \u0432\u0438\u0434\u0435\u0442\u044c:\n    \u2022 \u043e\u0431\u0449\u0438\u0439 \u0441\u043b\u043e\u0432\u0430\u0440\u043d\u044b\u0439 \u0437\u0430\u043f\u0430\u0441\n    \u2022 \u043e\u0431\u0449\u0438\u0435 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438\n    \u2022 \u043e\u0431\u0449\u0435\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u0432\u0435\u0440\u0448\u0451\u043d\u043d\u044b\u0445 \u0441\u0435\u0441\u0441\u0438\u0439\n    \u2022 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u044b\u0435 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438, \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0438 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\n\n\u041e\u043d\u0438 \u043d\u0435 \u0441\u043c\u043e\u0433\u0443\u0442 \u0432\u0438\u0434\u0435\u0442\u044c:\n    \u2022 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0432 \u0447\u0430\u0442\u0430\u0445 \u0432\u043d\u0435 \u043a\u0443\u0440\u0441\u0430\n    \u2022 \u0441\u043f\u0438\u0441\u043e\u043a \u0441\u043b\u043e\u0432\u0430\u0440\u043d\u044b\u0445 \u0437\u0430\u043f\u0430\u0441\u043e\u0432";
+      return "Dori\u021bi s\u0103 solicita\u021bi acces pentru a vizualiza analizele participan\u021bilor?\n\nDac\u0103 participan\u021bii sunt de acord, administratorii acestui curs vor putea vizualiza:\n    \u2022 vocabularul total\n    \u2022 conceptele gramaticale totale\n    \u2022 sesiuni de activitate finalizate\n    \u2022 conceptele gramaticale specifice utilizate, corect \u0219i incorect\n\nEi nu vor putea vizualiza:\n    \u2022 mesajele din chat-urile din afara cursului\n    \u2022 lista de vocabular";
     },
     get$analyticsInactiveTitle() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u044b \u043a \u043d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\u043c \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u044b";
+      return "Solicit\u0103rile c\u0103tre utilizatorii inactivi nu au putut fi trimise";
     },
     get$analyticsInactiveDesc() {
-      return "\u041d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u044b\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043d\u0435 \u0432\u0445\u043e\u0434\u0438\u043b\u0438 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443 \u0441 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u0432\u043d\u0435\u0434\u0440\u0435\u043d\u0438\u044f \u044d\u0442\u043e\u0439 \u0444\u0443\u043d\u043a\u0446\u0438\u0438, \u043d\u0435 \u0443\u0432\u0438\u0434\u044f\u0442 \u0432\u0430\u0448\u0443 \u0437\u0430\u044f\u0432\u043a\u0443.\n\n\u041a\u043d\u043e\u043f\u043a\u0430 \xab\u0417\u0430\u043f\u0440\u043e\u0441\xbb \u043f\u043e\u044f\u0432\u0438\u0442\u0441\u044f, \u043a\u043e\u0433\u0434\u0430 \u043e\u043d\u0438 \u0432\u0435\u0440\u043d\u0443\u0442\u0441\u044f. \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0437\u0430\u043f\u0440\u043e\u0441 \u043f\u043e\u0437\u0436\u0435, \u043d\u0430\u0436\u0430\u0432 \u043a\u043d\u043e\u043f\u043a\u0443 \xab\u0417\u0430\u043f\u0440\u043e\u0441\xbb \u043f\u043e\u0434 \u0438\u0445 \u0438\u043c\u0435\u043d\u0435\u043c, \u043a\u043e\u0433\u0434\u0430 \u043e\u043d\u0430 \u0441\u0442\u0430\u043d\u0435\u0442 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430.";
+      return "Utilizatorii inactivi care nu s-au autentificat de c\xe2nd a fost introdus\u0103 aceast\u0103 func\u021bie nu vor vedea solicitarea dvs.\n\nButonul de solicitare va ap\u0103rea odat\u0103 ce se vor \xeentoarce. Pute\u021bi retrimite solicitarea mai t\xe2rziu f\u0103c\xe2nd clic pe butonul Solicitare sub numele lor c\xe2nd este disponibil.";
     },
     get$accessRequestedTitle() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0435";
+      return "Solicitare de acces la analize";
     },
-    accessRequestedDesc$1(space) {
-      return "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u044b \u201c" + space + "\u201d \u0437\u0430\u043f\u0440\u0430\u0448\u0438\u0432\u0430\u044e\u0442 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0443 \u0432\u0430\u0448\u0435\u0439 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0438 \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u044f.\n\n\u0415\u0441\u043b\u0438 \u0432\u044b \u0441\u043e\u0433\u043b\u0430\u0441\u043d\u044b, \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u044b \u044d\u0442\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0430 \u0441\u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u043e\u0441\u043c\u0430\u0442\u0440\u0438\u0432\u0430\u0442\u044c:\n    \u2022 \u043e\u0431\u0449\u0435\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0441\u043b\u043e\u0432\u0430\u0440\u043d\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0430\n    \u2022 \u043e\u0431\u0449\u0435\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0439\n    \u2022 \u043e\u0431\u0449\u0435\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044b\u0445 \u0441\u0435\u0441\u0441\u0438\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438\n    \u2022 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u044b\u0435 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0433\u0440\u0430\u043c\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0438\u0438, \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0438 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\n\n\u041e\u043d\u0438 \u043d\u0435 \u0441\u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u043e\u0441\u043c\u0430\u0442\u0440\u0438\u0432\u0430\u0442\u044c:\n    \u2022 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0432 \u0447\u0430\u0442\u0430\u0445 \u0437\u0430 \u043f\u0440\u0435\u0434\u0435\u043b\u0430\u043c\u0438 \u043a\u0443\u0440\u0441\u0430\n    \u2022 \u0441\u043f\u0438\u0441\u043e\u043a \u0441\u043b\u043e\u0432\u0430\u0440\u043d\u044b\u0445 \u0441\u043b\u043e\u0432";
+    accessRequestedDesc$2(admin, space) {
+      return "Solicit\xe2nd admin(i): " + admin + " \n\nAdminii din \u201e" + space + "\u201d solicit\u0103 s\u0103 vizualizeze analizele dumneavoastr\u0103 de \xeenv\u0103\u021bare.\n\nDac\u0103 sunte\u021bi de acord, ei vor putea s\u0103 vizualizeze:\n    \u2022 vocabularul total\n    \u2022 conceptele gramaticale totale\n    \u2022 totalul sesiunilor de activitate finalizate\n    \u2022 conceptele gramaticale specifice utilizate, corect \u0219i incorect\n\nEi nu vor putea s\u0103 vizualizeze:\n    \u2022 mesajele din chat-uri \xeen afara cursului\n    \u2022 lista de vocabular";
     },
     get$allowAccess() {
-      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f";
+      return "Permite accesul";
     },
     get$denyAccess() {
-      return "\u0417\u0430\u043f\u0440\u0435\u0442\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f";
+      return "Refuz\u0103 accesul";
     },
     get$adminRequestedAccess() {
-      return "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u044b \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b\u0438 \u0434\u043e\u0441\u0442\u0443\u043f \u043a \u0432\u0430\u0448\u0435\u0439 \u0430\u043d\u0430\u043b\u0438\u0442\u0438\u043a\u0435.";
+      return "Administratorii au solicitat s\u0103 vad\u0103 analizele dvs.";
     },
     lastUpdated$1(time) {
-      return "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u043e\n" + time;
+      return "Actualizat\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\u0412\u0441\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e!";
+      return "Totul finalizat!";
     },
     get$endForAll() {
-      return "\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0434\u043b\u044f \u0432\u0441\u0435\u0445";
+      return "Se \xeencheie pentru to\u021bi";
     },
     get$newCourse() {
-      return "\u041d\u043e\u0432\u044b\u0439 \u043a\u0443\u0440\u0441";
+      return "Curs nou";
     },
     numModules$1(num) {
-      return "" + num + " \u043c\u043e\u0434\u0443\u043b\u0435\u0439";
+      return "" + num + " module";
     },
     get$coursePlan() {
-      return "\u041f\u043b\u0430\u043d \u043a\u0443\u0440\u0441\u0430";
+      return "Plan de curs";
     },
     get$editCourseLater() {
-      return "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0448\u0430\u0431\u043b\u043e\u043d\u0430, \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u044f \u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435 \u043a\u0443\u0440\u0441\u0430 \u043f\u043e\u0437\u0436\u0435.";
+      return "Po\u021bi edita titlul, descrierile \u0219i imaginea cursului mai t\xe2rziu.";
     },
     get$newCourseAccess() {
-      return "\u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u043a\u0443\u0440\u0441\u044b \u044f\u0432\u043b\u044f\u044e\u0442\u0441\u044f \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u044b\u043c\u0438 \u0438 \u0442\u0440\u0435\u0431\u0443\u044e\u0442 \u043e\u0434\u043e\u0431\u0440\u0435\u043d\u0438\u044f \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430 \u0434\u043b\u044f \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f. \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0438\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u044d\u0442\u0438 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0432 \u043b\u044e\u0431\u043e\u0435 \u0432\u0440\u0435\u043c\u044f.";
+      return "\xcen mod implicit, cursurile sunt private \u0219i necesit\u0103 aprobarea administratorului pentru a te al\u0103tura. Po\u021bi edita aceste set\u0103ri oric\xe2nd.";
     },
     get$createCourse() {
-      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043a\u0443\u0440\u0441";
+      return "Creeaz\u0103 curs";
     },
     get$stats() {
-      return "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430";
+      return "Statistici";
     },
     get$createGroupChat() {
-      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0433\u0440\u0443\u043f\u043f\u043e\u0432\u043e\u0439 \u0447\u0430\u0442";
+      return "Creeaz\u0103 chat de grup";
     },
     get$editCourse() {
-      return "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043a\u0443\u0440\u0441";
+      return "Editeaz\u0103 cursul";
     },
     get$inviteDesc() {
-      return "\u041f\u043e \u0438\u043c\u0435\u043d\u0438 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043f\u043e \u043a\u043e\u0434\u0443 \u0438\u043b\u0438 \u0441\u0441\u044b\u043b\u043a\u0435";
+      return "Prin nume de utilizator, cod sau link";
     },
     get$editCourseDesc() {
-      return "\u0417\u0434\u0435\u0441\u044c \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043a\u0443\u0440\u0441\u0430, \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0438 \u0442. \u0434.";
+      return "Aici po\u021bi edita titlul, descrierea \u0219i altele ale cursului.";
     },
     get$permissionsDesc() {
-      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u0442\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u044f, \u0442\u0430\u043a\u0438\u0435 \u043a\u0430\u043a \u043a\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0430\u0442\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439, \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f, \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u0447\u0430\u0442\u044b \u0438 \u0442. \u0434.";
+      return "Seteaz\u0103 permisiuni precum cine poate invita utilizatori, trimite mesaje, crea chat-uri etc.";
     },
     get$accessDesc() {
-      return "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0432\u0430\u0448 \u043a\u0443\u0440\u0441 \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u043c \u0434\u043b\u044f \u0432\u0441\u0435\u0445! \u0418\u043b\u0438 \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u0435\u0433\u043e \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u044b\u043c \u0438 \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u044b\u043c.";
+      return "Po\u021bi face cursul t\u0103u deschis lumii! Sau, \xeel po\u021bi face privat \u0219i sigur.";
     },
     get$createGroupChatDesc() {
-      return "\u0412 \u0442\u043e \u0432\u0440\u0435\u043c\u044f \u043a\u0430\u043a \u0441\u0435\u0441\u0441\u0438\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u043d\u0430\u0447\u0438\u043d\u0430\u044e\u0442\u0441\u044f \u0438 \u0437\u0430\u043a\u0430\u043d\u0447\u0438\u0432\u0430\u044e\u0442\u0441\u044f, \u0433\u0440\u0443\u043f\u043f\u043e\u0432\u044b\u0435 \u0447\u0430\u0442\u044b \u043e\u0441\u0442\u0430\u043d\u0443\u0442\u0441\u044f \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u043c\u0438 \u0434\u043b\u044f \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u043e\u0433\u043e \u043e\u0431\u0449\u0435\u043d\u0438\u044f.";
+      return "\xcen timp ce sesiunile de activitate \xeencep \u0219i se termin\u0103, chat-urile de grup vor r\u0103m\xe2ne deschise pentru comunicare de rutin\u0103.";
     },
     get$deleteDesc() {
-      return "\u0422\u043e\u043b\u044c\u043a\u043e \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u044b \u043c\u043e\u0433\u0443\u0442 \u0443\u0434\u0430\u043b\u0438\u0442\u044c \u043a\u0443\u0440\u0441. \u042d\u0442\u043e \u0440\u0430\u0437\u0440\u0443\u0448\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u0443\u0434\u0430\u043b\u044f\u0435\u0442 \u0432\u0441\u0435\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0438 \u0443\u0434\u0430\u043b\u044f\u0435\u0442 \u0432\u0441\u0435 \u0432\u044b\u0431\u0440\u0430\u043d\u043d\u044b\u0435 \u0447\u0430\u0442\u044b \u0432\u043d\u0443\u0442\u0440\u0438 \u043a\u0443\u0440\u0441\u0430. \u0411\u0443\u0434\u044c\u0442\u0435 \u043e\u0441\u0442\u043e\u0440\u043e\u0436\u043d\u044b.";
+      return "Doar administratorii pot \u0219terge un curs. Aceasta este o ac\u021biune distructiv\u0103 care elimin\u0103 to\u021bi utilizatorii \u0219i \u0219terge toate chat-urile selectate din curs. Procedeaz\u0103 cu precau\u021bie.";
     },
     get$noCourseFound() {
-      return "\u041e, \u044d\u0442\u043e\u0442 \u043a\u0443\u0440\u0441 \u043d\u0443\u0436\u0434\u0430\u0435\u0442\u0441\u044f \u0432 \u043f\u043b\u0430\u043d\u0435!\n\n\u041f\u043b\u0430\u043d\u044b \u043a\u0443\u0440\u0441\u0430 \u2014 \u044d\u0442\u043e \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0442\u0435\u043c \u0438 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u043d\u044b\u0445 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0435\u0439.";
+      return "Oh, acest curs are nevoie de un plan!\n\nPlanurile de curs sunt o succesiune de subiecte \u0219i activit\u0103\u021bi de conversa\u021bie.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " \u0434\u0440\u0443\u0433\u0438\u0445";
+      return "+ " + num + " al\u021bii";
     },
     get$directMessages() {
-      return "\u041b\u0438\u0447\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
+      return "Mesaje directe";
     },
     get$whatNow() {
-      return "\u0427\u0442\u043e \u0434\u0430\u043b\u044c\u0448\u0435?";
+      return "Ce urmeaz\u0103?";
     },
     get$chooseNextActivity() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0443\u044e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c!";
+      return "Alege urm\u0103toarea activitate!";
     },
     get$letsGo() {
-      return "\u041f\u043e\u0435\u0445\u0430\u043b\u0438";
+      return "Hai s\u0103 \xeencepem";
     },
     get$chooseRole() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0440\u043e\u043b\u044c!";
+      return "Alege un rol!";
     },
     get$chooseRoleToParticipate() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0440\u043e\u043b\u044c \u0434\u043b\u044f \u0443\u0447\u0430\u0441\u0442\u0438\u044f!";
+      return "Alege un rol pentru a participa!";
     },
     waitingToFillRole$1(num) {
-      return "\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u0437\u0430\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f " + num + " \u0440\u043e\u043b\u0435\u0439...";
+      return "A\u0219tept s\u0103 completez " + num + " roluri...";
     },
     get$pingParticipants() {
-      return "\u041f\u0438\u043d\u0433 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432 \u043a\u0443\u0440\u0441\u0430";
+      return "Trimite notific\u0103ri participan\u021bilor la curs";
     },
     get$playWithBot() {
-      return "\u0418\u0433\u0440\u0430\u0442\u044c \u0441 \u0431\u043e\u0442\u043e\u043c Pangea";
+      return "Joac\u0103 cu Pangea Bot";
     },
     get$waitNotDone() {
-      return "\u041f\u043e\u0434\u043e\u0436\u0434\u0438, \u044f \u0435\u0449\u0435 \u043d\u0435 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u043b!";
+      return "A\u0219teapt\u0103, nu am terminat!";
     },
     get$waitingForOthersToFinish() {
-      return "\u041e\u0436\u0438\u0434\u0430\u043d\u0438\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043e\u0441\u0442\u0430\u043b\u044c\u043d\u044b\u0445...";
+      return "A\u0219tept ca ceilal\u021bi s\u0103 termine...";
     },
     get$generatingSummary() {
-      return "\u0410\u043d\u0430\u043b\u0438\u0437 \u0447\u0430\u0442\u0430 \u0438 \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044f \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u043e\u0432";
+      return "Analiz\u0103m chat-ul \u0219i gener\u0103m rezultate";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " \u0438\u0449\u0435\u0442 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432 \u0434\u043b\u044f \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f \u043a \u0441\u0435\u0441\u0441\u0438\u0438 \u0432 " + room;
+      return user + " caut\u0103 utilizatori pentru a se al\u0103tura sesiunii de activitate \xeen " + room;
     },
     get$courseName() {
-      return "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043a\u0443\u0440\u0441\u0430";
+      return "Numele cursului";
     },
     get$createNewCourse() {
-      return "\u041d\u043e\u0432\u044b\u0439 \u043a\u0443\u0440\u0441";
+      return "Curs nou";
     },
     goToCourse$1(course) {
-      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u043a\u0443\u0440\u0441\u0443: " + course;
+      return "Mergi la curs: " + course;
     },
     get$startNewSession() {
-      return "\u041d\u0430\u0447\u0430\u0442\u044c \u043d\u043e\u0432\u0443\u044e \u0441\u0435\u0441\u0441\u0438\u044e";
+      return "\xcencepe o sesiune nou\u0103";
     },
     get$joinOpenSession() {
-      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043e\u0442\u043a\u0440\u044b\u0442\u043e\u043c\u0443 \u0441\u0435\u0430\u043d\u0441\u0443";
+      return "Particip\u0103 la sesiune deschis\u0103";
     },
     get$activityNotFound() {
-      return "\u0410\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u0430";
+      return "Activitate neg\u0103sit\u0103";
     },
     get$levelUp() {
-      return "\u041f\u043e\u0432\u044b\u0441\u0438\u0442\u044c \u0443\u0440\u043e\u0432\u0435\u043d\u044c";
+      return "Nivel superior";
     },
     get$myActivities() {
-      return "\u041c\u043e\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438";
+      return "Activit\u0103\u021bile mele";
     },
     get$openToJoin() {
-      return "\u041e\u0442\u043a\u0440\u044b\u0442\u043e \u0434\u043b\u044f \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
+      return "Deschis pentru participare";
     },
     get$activityDone() {
-      return "\u0410\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430!";
+      return "Activitate finalizat\u0103!";
     },
     get$promoCodeInfo() {
-      return "\u041f\u0440\u043e\u043c\u043e\u043a\u043e\u0434\u044b \u043c\u043e\u0436\u043d\u043e \u0432\u0432\u0435\u0441\u0442\u0438 \u043d\u0430 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435";
+      return "Codurile promo\u021bionale pot fi introduse pe pagina urm\u0103toare";
     },
     get$editsComingSoon() {
-      return "\u0412\u0441\u043a\u043e\u0440\u0435 \u043f\u043e\u044f\u0432\u0438\u0442\u0441\u044f \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0433\u043e\u0440\u043e\u0434\u0430 \u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438.";
+      return "Func\u021bia de editare a ora\u0219elor \u0219i activit\u0103\u021bilor va fi disponibil\u0103 \xeen cur\xe2nd.";
     },
     get$editing() {
-      return "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
+      return "Editare";
     },
     get$activityNeedsOneMember() {
-      return "\u041e\u0439! \u0414\u043b\u044f \u044d\u0442\u043e\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u043d\u0443\u0436\u0435\u043d \u0435\u0449\u0435 1 \u0447\u0435\u043b\u043e\u0432\u0435\u043a.";
+      return "Oho! Aceast\u0103 activitate are nevoie de \xeenc\u0103 o persoan\u0103.";
     },
     activityNeedsMembers$1(num) {
-      return "\u041e\u0439! \u0414\u043b\u044f \u044d\u0442\u043e\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u043d\u0443\u0436\u043d\u043e \u0435\u0449\u0435 " + num + " \u0447\u0435\u043b\u043e\u0432\u0435\u043a.";
+      return "Oho! Aceast\u0103 activitate are nevoie de " + num + " persoane \xeen plus.";
     },
     get$inviteFriendsToCourse() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0434\u0440\u0443\u0437\u0435\u0439 \u043d\u0430 \u043c\u043e\u0439 \u043a\u0443\u0440\u0441";
+      return "Invit\u0103 prieteni la cursul meu";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0432\u043e\u0434\u043a\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438";
+      return "Aboneaz\u0103-te pentru a debloca rezumatele activit\u0103\u021bilor";
     },
     get$subscribeToUnlockDefinitions() {
-      return "\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f";
+      return "Aboneaz\u0103-te pentru a debloca defini\u021biile";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f, \u0447\u0442\u043e\u0431\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0442\u0440\u0430\u043d\u0441\u043a\u0440\u0438\u043f\u0446\u0438\u0438";
+      return "Aboneaz\u0103-te pentru a debloca transcrierile";
     },
     get$pingSent() {
-      return "\ud83d\udd14 \u041e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d \u043f\u0438\u043d\u0433 \u043a\u0443\u0440\u0441\u0430! \ud83d\udd14";
+      return "\ud83d\udd14 Ping pentru curs trimis! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043a\u0443\u0440\u0441\u0430";
+      return "Titlul cursului";
     },
     get$courseDesc() {
-      return "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043a\u0443\u0440\u0441\u0430";
+      return "Descrierea cursului";
     },
     get$courseSavedSuccessfully() {
-      return "\u041a\u0443\u0440\u0441 \u0441\u043e\u0444\u0440\u0430\u043d\u0438\u043b\u0441\u044f \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u043e";
+      return "Curs salvat cu succes";
     },
     get$addCoursePlan() {
-      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043f\u043b\u0430\u043d \u043a\u0443\u0440\u0441\u0430";
+      return "Adaug\u0103 un plan de curs";
     },
     get$activityStatsButtonInstruction() {
-      return "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0437\u0430\u043a\u0430\u0442\u043e\u0432\u043e\u043a, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0443 \u0432\u0430\u0448\u0435\u0439 \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0438 \u0438 \u0437\u0430\u043a\u0440\u0443\u0442\u0438 \u043a\u0443\u0440\u0441 \u043a\u043e\u043d\u0446\u0435\u043c";
+      return "Click aici pentru a vedea statisticile activit\u0103\u021bii \u0219i pentru a \xeenchide activitatea c\xe2nd termini";
     },
     get$readingAnalyticsDesc() {
-      return "\u041d\u0430\u0436\u0438\u043c\u0430\u0439\u0442\u0435 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443 \u043d\u0430 \u043a\u043e\u0436\u043d\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438 \u0434\u043b\u044f \u043e\u0431\u044b\u043a\u043d\u043e\u0432\u0435\u043d\u043d\u0443\u044e \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c.";
+      return "Click pe practic\u0103 pentru fiecare mesaj pentru activit\u0103\u021bi de citire.";
     },
     get$speakingAnalyticsDesc() {
-      return "\u0417\u0430\u043f\u0438\u0441\u044b\u0432\u0430\u0439\u0442\u0435 \u043a\u043e\u0432\u043e\u0437\u043d\u043e\u0432\u0443\u044e \u043e\u0431\u043e\u0431\u043e\u0432\u0443\u044e \u043f\u043e\u0432\u0435\u0441\u044c \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u0433\u043e\u0432\u043e\u0440\u0435\u043d\u0438\u044f.";
+      return " \xcenregistreaz\u0103 mesaje vocale pentru practic\u0103 de vorbire.";
     },
     get$audioAnalyticsDesc() {
-      return "\u041d\u0430\u0436\u0438\u043c\u0430\u0439\u0442\u0435 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443 \u043d\u0430 \u043a\u043e\u0436\u0434\u043e\u043c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438 \u0434\u043b\u044f \u043e\u0431\u044b\u043a\u043d\u043e\u0432\u0435\u043d\u043d\u0443\u044e \u043d\u0430\u0448\u0438\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c.";
+      return "Click pe practic\u0103 pentru fiecare mesaj pentru activit\u0103\u021bi de ascultare.";
     },
     get$loginToAccount() {
-      return "\u0432\u043e\u0439\u0442\u0438 \u0432 \u043c\u043e\u0439 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438";
+      return "Autentific\u0103-te \xeen contul meu";
     },
     get$appDescription() {
-      return "\u0421\u043e\u0432\u0441\u0435\u0434\u0430\u043d\u043d\u043e \u043d\u0430\u0441\u0442\u0443\u043f\u0430\u0439\u0442\u0435 \u0447\u0435\u043b\u043e\u0432\u0435\u0447\u0435\u0441\u043a\u0438\u0439 \u044f\u0437\u044b\u043a,\u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, \u0432 \u043a\u043e\u0442\u043e\u0440\u043e\u043c \u043d\u0430\u043f\u0438\u0441\u0430\u0442\u0435 \u0434\u0440\u0443\u0437\u044f\u043c.";
+      return "\xcenva\u021b\u0103 o limb\u0103\n\xeen timp ce trimi\u021bi mesaje prietenilor.";
     },
     get$languages(_) {
-      return "\u041a\u043e\u043d\u0444\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u0438";
+      return "Limbi";
     },
     get$chooseLanguage() {
-      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0446\u0435\u043b\u0435\u0432\u043e\u0439 \u044f\u0437\u044b\u043a.";
+      return "Alege\u021bi o limb\u0103 \u021bint\u0103.";
     },
     get$startOwn() {
-      return "\u041d\u0430\u0447\u0430\u0442\u044c \u0441\u0432\u043e\u0439 \u0441\u043e\u0431\u0441\u0442\u0432\u0435\u043d\u043d\u044b\u0439";
+      return "\xcencepe propriul meu";
     },
     get$joinCourseDesc() {
-      return "\u041a\u0430\u0436\u0434\u044b\u0439 \u043a\u0443\u0440\u0441 \u0441\u043e\u0441\u0442\u043e\u0438\u0442 \u0438\u0437 8-10 \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0445 \u0442\u0435\u043c \u0441 \u0440\u0430\u0437\u043d\u043e\u043e\u0431\u0440\u0430\u0437\u043d\u044b\u043c\u0438 \u0437\u0430\u0434\u0430\u043d\u0438\u044f\u043c\u0438 \u0434\u043b\u044f \u0438\u0437\u0443\u0447\u0435\u043d\u0438\u044f \u044f\u0437\u044b\u043a\u0430.";
+      return "Fiecare curs are 8-10 subiecte secven\u021biale cu o gam\u0103 de activit\u0103\u021bi de \xeenv\u0103\u021bare a limbajului bazate pe sarcini.";
     },
     get$courseCodeHint() {
-      return "\u041a\u043e\u0434 \u0438\u043b\u0438 \u0441\u0441\u044b\u043b\u043a\u0430 \u043d\u0430 \u043f\u043e\u0435\u0437\u0434\u043a\u0443";
+      return "Codul sau linkul c\u0103l\u0103toriei";
     },
     get$signupOption() {
-      return "\u041a\u0430\u043a \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u0437\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c\u0441\u044f?";
+      return "Cum vrei s\u0103 te \xeenscrii?";
     },
     get$withApple() {
-      return "\u0427\u0435\u0440\u0435\u0437 Apple";
+      return "Cu Apple";
     },
     get$withGoogle() {
-      return "\u0427\u0435\u0440\u0435\u0437 Google";
+      return "Cu Google";
     },
     get$withEmail() {
-      return "\u0427\u0435\u0440\u0435\u0437 Email";
+      return "Cu Email";
     },
     get$createAccount() {
-      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0430\u043a\u043a\u0430\u0443\u043d\u0442";
+      return "Creeaz\u0103 cont";
     },
     get$loginWithEmail() {
-      return "\u0412\u043e\u0439\u0442\u0438 \u0447\u0435\u0440\u0435\u0437 email";
+      return "Autentificare cu email";
     },
     get$usernameOrEmail() {
-      return "\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0438\u043b\u0438 email";
+      return "Nume de utilizator sau email";
     },
     get$email() {
       return "Email";
     },
     get$forgotPassword() {
-      return "\u0417\u0430\u0431\u044b\u043b\u0438 \u043f\u0430\u0440\u043e\u043b\u044c?";
+      return "Ai uitat parola?";
     },
     get$writingAnalyticsDesc() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0439\u0442\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u043f\u0438\u0441\u044c\u043c\u0430.";
+      return "Trimite mesaje pentru a exersa scrierea.";
     },
     get$endActivity() {
-      return "\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c";
+      return "\xcencheie activitatea";
     },
     get$allLanguages() {
-      return "\u0412\u0441\u0435 \u044f\u0437\u044b\u043a\u0438";
+      return "Toate limbile";
     },
     get$chatListTooltip() {
-      return "\u0417\u0434\u0435\u0441\u044c \u0432\u044b \u043d\u0430\u0439\u0434\u0435\u0442\u0435 \u0441\u0432\u043e\u0438 \u043b\u0438\u0447\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f! \u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u0430\u0432\u0430\u0442\u0430\u0440 \u043b\u044e\u0431\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0438 \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \xab\u043d\u0430\u0447\u0430\u0442\u044c \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\xbb, \u0447\u0442\u043e\u0431\u044b \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043b\u0438\u0447\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435.";
+      return "Aici vei g\u0103si mesajele tale directe! F\u0103 clic pe avatarul oric\u0103rui utilizator \u0219i \u201e\xeencepe conversa\u021bia\u201d pentru a trimite un mesaj direct.";
     },
     get$directMessageBotTitle() {
-      return "\u041b\u0438\u0447\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 Pangea Bot";
+      return "Mesaj direct Pangea Bot";
     },
     get$feedbackTitle() {
-      return "\u041e\u0431\u0440\u0430\u0442\u043d\u0430\u044f \u0441\u0432\u044f\u0437\u044c \u043f\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438";
+      return "Feedback despre activitate";
     },
     get$feedbackRespDesc() {
-      return "\u041f\u0440\u043e\u0432\u0435\u0440\u044c\u0442\u0435 \u0437\u0430\u0432\u0442\u0440\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u043e \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u044e.";
+      return "Verific\u0103 m\xe2ine pentru actualiz\u0103ri ale activit\u0103\u021bii.";
     },
     get$feedbackHint() {
-      return "\u0412\u0430\u0448 \u043e\u0442\u0437\u044b\u0432";
+      return "Feedback-ul t\u0103u";
     },
     get$feedbackButton() {
-      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043e\u0442\u0437\u044b\u0432";
+      return "Trimite feedback";
     },
     get$directMessageBotDesc() {
-      return "\u041e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441 \u043b\u044e\u0434\u044c\u043c\u0438 \u2014 \u0432\u0435\u0441\u0435\u043b\u0435\u0435, \u043d\u043e... \u0418\u0418 \u0432\u0441\u0435\u0433\u0434\u0430 \u0433\u043e\u0442\u043e\u0432!";
+      return "Vorbitul cu oameni este mai distractiv, dar... AI este \xeentotdeauna preg\u0103tit!";
     },
     get$inviteYourFriends() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0438\u0445 \u0434\u0440\u0443\u0437\u0435\u0439";
+      return "Invit\u0103-\u021bi prietenii";
     },
     get$playWithAI() {
-      return "\u041f\u043e\u0438\u0433\u0440\u0430\u0442\u044c \u0441 \u0418\u0418 \u043f\u043e\u043a\u0430 \u0447\u0442\u043e";
+      return "Joac\u0103 cu AI pentru moment";
     },
     get$courseStartDesc() {
-      return "Pangea Bot \u0433\u043e\u0442\u043e\u0432 \u043a \u0440\u0430\u0431\u043e\u0442\u0435 \u0432 \u043b\u044e\u0431\u043e\u0435 \u0432\u0440\u0435\u043c\u044f!\n\n...\u043d\u043e \u043e\u0431\u0443\u0447\u0435\u043d\u0438\u0435 \u043b\u0443\u0447\u0448\u0435 \u0432\u0441\u0435\u0433\u043e \u0441 \u0434\u0440\u0443\u0437\u044c\u044f\u043c\u0438!";
+      return "Pangea Bot este gata oric\xe2nd!\n\n...dar \xeenv\u0103\u021barea este mai bun\u0103 cu prietenii!";
     },
     get$activityDropdownDesc() {
-      return "\u041a\u043e\u0433\u0434\u0430 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u0442\u0435 \u0441 \u044d\u0442\u0438\u043c \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u0435\u043c, \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0438\u0436\u0435";
+      return "C\xe2nd termini aceast\u0103 activitate, f\u0103 clic mai jos";
     },
     get$languageMismatchTitle() {
-      return "\u041d\u0435\u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435 \u044f\u0437\u044b\u043a\u0430";
+      return "Incompatibilitate de limbaj";
     },
     get$emptyChatSearch() {
       return "No DMs or chats found. Make sure your search is spelled correctly.";
     },
     get$languageMismatchDesc() {
-      return "\u0412\u0430\u0448 \u0446\u0435\u043b\u0435\u0432\u043e\u0439 \u044f\u0437\u044b\u043a \u043d\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u0435\u0442 \u0441 \u044f\u0437\u044b\u043a\u043e\u043c \u044d\u0442\u043e\u0433\u043e \u043c\u0435\u0440\u043e\u043f\u0440\u0438\u044f\u0442\u0438\u044f. \u041e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0432\u0430\u0448 \u0446\u0435\u043b\u0435\u0432\u043e\u0439 \u044f\u0437\u044b\u043a?";
+      return "Limba \u021bint\u0103 nu se potrive\u0219te cu limba acestei activit\u0103\u021bi. Vrei s\u0103 actualizezi limba \u021bint\u0103?";
     },
     get$reportWordIssueTooltip() {
-      return "\u0421\u043e\u043e\u0431\u0449\u0438\u0442\u044c \u043e \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0435 \u0441 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0435\u0439 \u043e \u0441\u043b\u043e\u0432\u0435";
+      return "Raporteaz\u0103 problem\u0103 cu informa\u021bia cuv\xe2ntului";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u041e\u0431\u0440\u0430\u0442\u043d\u0430\u044f \u0441\u0432\u044f\u0437\u044c \u043f\u043e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u043e \u0441\u043b\u043e\u0432\u0435";
+      return "Feedback despre Informa\u021bia Cuv\xe2ntului";
     },
     get$noPublicCoursesFound() {
-      return "\u041f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0435 \u043a\u0443\u0440\u0441\u044b \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b. \u0425\u043e\u0442\u0438\u0442\u0435 \u0441\u043e\u0437\u0434\u0430\u0442\u044c \u043e\u0434\u0438\u043d?";
+      return "Nu au fost g\u0103site cursuri publice. Vrei s\u0103 creezi unul?";
     },
     get$noCourseTemplatesFound() {
-      return "\u041c\u044b \u043d\u0435 \u0441\u043c\u043e\u0433\u043b\u0438 \u043d\u0430\u0439\u0442\u0438 \u043a\u0443\u0440\u0441\u044b \u0434\u043b\u044f \u0432\u0430\u0448\u0435\u0433\u043e \u0446\u0435\u043b\u0435\u0432\u043e\u0433\u043e \u044f\u0437\u044b\u043a\u0430. \u041f\u043e\u043a\u0430 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u043e\u0431\u0449\u0430\u0442\u044c\u0441\u044f \u0441 Pangea Bot \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043f\u043e\u0437\u0436\u0435 \u043d\u0430\u043b\u0438\u0447\u0438\u0435 \u043d\u043e\u0432\u044b\u0445 \u043a\u0443\u0440\u0441\u043e\u0432.";
+      return "Nu am putut g\u0103si cursuri pentru limba ta \u021bint\u0103. \xcentre timp, po\u021bi conversa cu Pangea Bot \u0219i verifica mai t\xe2rziu pentru mai multe cursuri.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot \u043e\u0442\u0432\u0435\u0447\u0430\u0435\u0442 \u0434\u043e\u043b\u0433\u043e. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043f\u043e\u0437\u0436\u0435 \u0438\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u0435 \u0434\u0440\u0443\u0433\u0430.";
+      return "Pangea Bot r\u0103spunde cu \xeent\xe2rziere. Te rug\u0103m s\u0103 \xeencerci din nou mai t\xe2rziu sau s\u0103 invi\u021bi un prieten.";
     },
     get$unsubscribedResponseError() {
-      return "\u042d\u0442\u0430 \u0444\u0443\u043d\u043a\u0446\u0438\u044f \u0442\u0440\u0435\u0431\u0443\u0435\u0442 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0438";
+      return "Aceast\u0103 func\u021bie necesit\u0103 abonament";
     },
     get$leaveDesc() {
-      return "\u041f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u044d\u0442\u043e \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u043e \u0438 \u0432\u0441\u0435 \u0447\u0430\u0442\u044b \u0432\u043d\u0443\u0442\u0440\u0438 \u043d\u0435\u0433\u043e";
+      return "P\u0103r\u0103se\u0219te acest spa\u021biu \u0219i toate chat-urile din el";
     },
     get$selectAll() {
-      return "\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0432\u0441\u0435";
+      return "Selecteaz\u0103 tot";
     },
     get$deselectAll(_) {
-      return "\u0421\u043d\u044f\u0442\u044c \u0432\u044b\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u0441\u043e \u0432\u0441\u0435\u0433\u043e";
+      return "Deselecteaz\u0103 tot";
     },
     get$shareCourse() {
-      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043a\u0443\u0440\u0441\u043e\u043c";
+      return "Partajeaz\u0103 cursul";
     },
     get$addCourse() {
-      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043a\u0443\u0440\u0441";
+      return "Adaug\u0103 un curs";
     },
     get$joinPublicCourse() {
-      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u043c\u0443 \u043a\u0443\u0440\u0441\u0443";
+      return "Al\u0103tur\u0103-te cursului public";
     },
     get$vocabLevelsDesc() {
-      return "\u0417\u0434\u0435\u0441\u044c \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u0441\u043b\u043e\u0432\u0430 \u0441\u043b\u043e\u0432\u0430\u0440\u044f, \u043a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b \u0438\u0445 \u043f\u043e\u0432\u044b\u0441\u0438\u0442\u0435!";
+      return "Aici vor fi plasate cuvintele de vocabular odat\u0103 ce le-ai nivelat!";
     },
     get$activityAnalyticsTooltipBody() {
       return "These are your saved activities for review and practice.";
@@ -4553,7 +4553,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Contact has been invited to the course";
     },
     get$inviteFriends() {
-      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0434\u0440\u0443\u0437\u0435\u0439";
+      return "Invit\u0103 prieteni";
     },
     get$activityStatsButtonTooltip() {
       return "Activity info";
@@ -4565,13 +4565,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nRu, C.L10n);
+    _inherit(A.L10nRo, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nRu":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nRo":{"L10n":[]}}'));
+  var string$ = {
+    V__rug: "V\u0103 rug\u0103m s\u0103 introduce\u021bi o adres\u0103 de email valid\u0103."
+  };
 };
 ;
 (d => {
-  d["PBD5TWvyBYLDrnQtV5HD329jm44="] = d.current;
+  d["WDii1pFyFK+LSRKvnl543Hq2l04="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_653.part.js.map
