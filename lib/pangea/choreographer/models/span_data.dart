@@ -85,7 +85,7 @@ class SpanData {
       };
 
   bool isOffsetInMatchSpan(int offset) =>
-      offset >= this.offset && offset < this.offset + length;
+      offset >= this.offset && offset <= this.offset + length;
 
   SpanChoice? get bestChoice {
     return choices?.firstWhereOrNull(

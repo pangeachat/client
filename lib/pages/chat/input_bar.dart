@@ -437,11 +437,21 @@ class InputBar extends StatelessWidget {
       return;
     }
 
-    choreographer.chatController.onSelectMatch(
-      choreographer.igcController.getMatchByOffset(
-        controller!.selection.baseOffset,
-      ),
-    );
+    // Normalization matchs are widget spans that mess with offsets,
+    // so we need to adjust the offset accordingly
+    int adjustedOffset = controller!.selection.baseOffset;
+    final normalizationMatches =
+        choreographer.igcController.recentNormalizationMatches;
+    if (normalizationMatches == null || normalizationMatches.isEmpty) return;
+    for (final match in normalizationMatches) {
+      if (match.updatedMatch.match.offset < adjustedOffset &&
+          match.updatedMatch.match.length > 0) {
+        adjustedOffset += (match.updatedMatch.match.length - 1);
+      }
+    }
+
+    final match = choreographer.igcController.getMatchByOffset(adjustedOffset);
+    choreographer.chatController.onSelectMatch(match);
   }
   // Pangea#
 
