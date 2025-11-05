@@ -2,21 +2,12 @@ import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
-import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 
 extension ChoregrapherUserSettingsExtension on Choreographer {
   bool get isRunningIT {
     return choreoMode == ChoreoMode.it &&
         itController.currentITStep.value?.isFinal != true;
   }
-
-  String? get currentIGCText => igcController.currentText;
-  PangeaMatchState? get openMatch => igcController.openMatch;
-  PangeaMatchState? get firstOpenMatch => igcController.firstOpenMatch;
-  List<PangeaMatchState>? get openIGCMatches => igcController.openMatches;
-  List<PangeaMatchState>? get closedIGCMatches => igcController.closedMatches;
-  bool get canShowFirstIGCMatch => igcController.canShowFirstMatch;
-  bool get hasIGCTextData => igcController.hasIGCTextData;
 
   AssistanceState get assistanceState {
     final isSubscribed = pangeaController.subscriptionController.isSubscribed;

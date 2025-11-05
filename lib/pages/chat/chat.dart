@@ -41,7 +41,6 @@ import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
@@ -1765,7 +1764,7 @@ class ChatController extends State<ChatPageWithRoom>
       PaywallCard.show(context, choreographer.inputTransformTargetKey);
       return;
     } on OpenMatchesException {
-      onSelectMatch(choreographer.firstOpenMatch);
+      onSelectMatch(choreographer.igcController.firstOpenMatch);
       return;
     }
     // Pangea#
@@ -2235,7 +2234,7 @@ class ChatController extends State<ChatPageWithRoom>
 
           WidgetsBinding.instance.addPostFrameCallback((_) async {
             await choreographer.requestLanguageAssistance();
-            onSelectMatch(choreographer.firstOpenMatch);
+            onSelectMatch(choreographer.igcController.firstOpenMatch);
           });
         },
       ),

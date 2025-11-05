@@ -51,6 +51,13 @@ class IGCTextState {
 
   List<PangeaMatchState> get closedMatches => _closedMatches;
 
+  List<PangeaMatchState> get recentNormalizationMatches =>
+      closedMatches.reversed
+          .takeWhile(
+            (m) => m.updatedMatch.status == PangeaMatchStatus.automatic,
+          )
+          .toList();
+
   List<PangeaMatchState> get openNormalizationMatches => _openMatches
       .where((match) => match.updatedMatch.match.isNormalizationError())
       .toList();

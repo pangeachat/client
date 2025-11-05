@@ -29,7 +29,8 @@ class IgcController {
   PangeaMatchState? get openMatch => _igcTextData?.openMatch;
   PangeaMatchState? get firstOpenMatch => _igcTextData?.firstOpenMatch;
   List<PangeaMatchState>? get openMatches => _igcTextData?.openMatches;
-  List<PangeaMatchState>? get closedMatches => _igcTextData?.closedMatches;
+  List<PangeaMatchState>? get recentNormalizationMatches =>
+      _igcTextData?.recentNormalizationMatches;
   List<PangeaMatchState>? get openNormalizationMatches =>
       _igcTextData?.openNormalizationMatches;
 

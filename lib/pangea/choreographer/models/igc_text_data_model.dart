@@ -34,7 +34,8 @@ class IGCTextData {
 
   List<PangeaMatchState> get openMatches => _state.openMatches;
 
-  List<PangeaMatchState> get closedMatches => _state.closedMatches;
+  List<PangeaMatchState> get recentNormalizationMatches =>
+      _state.recentNormalizationMatches;
 
   PangeaMatchState? get firstOpenMatch => _state.firstOpenMatch;
 

@@ -4,7 +4,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/constants/match_rule_ids.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
@@ -112,11 +111,11 @@ class PangeaTextController extends TextEditingController {
       return _buildPaywallSpan(style);
     }
 
-    if (!choreographer.hasIGCTextData) {
+    if (!choreographer.igcController.hasIGCTextData) {
       return TextSpan(text: text, style: style);
     }
 
-    final parts = text.split(choreographer.currentIGCText!);
+    final parts = text.split(choreographer.igcController.currentText!);
     if (parts.length != 2) {
       return TextSpan(text: text, style: style);
     }
@@ -141,7 +140,7 @@ class PangeaTextController extends TextEditingController {
     PangeaMatchState match,
     TextStyle style,
   ) {
-    final span = choreographer.currentIGCText!.characters
+    final span = choreographer.igcController.currentText!.characters
         .getRange(
           match.updatedMatch.match.offset,
           match.updatedMatch.match.offset + match.updatedMatch.match.length,
@@ -177,20 +176,19 @@ class PangeaTextController extends TextEditingController {
   List<InlineSpan> _buildTokenSpan({
     TextStyle? defaultStyle,
   }) {
-    final openMatches = choreographer.openIGCMatches ?? const [];
-    final closedMatches = choreographer.closedIGCMatches ?? const [];
+    final openMatches = choreographer.igcController.openMatches ?? const [];
+    final normalizationMatches =
+        choreographer.igcController.recentNormalizationMatches ?? const [];
 
     final textSpanMatches = [
       ...openMatches,
-      ...closedMatches.reversed.takeWhile(
-        (m) => m.updatedMatch.status == PangeaMatchStatus.automatic,
-      ),
+      ...normalizationMatches,
     ]..sort(
         (a, b) =>
             a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),
       );
 
-    final currentText = choreographer.currentIGCText!;
+    final currentText = choreographer.igcController.currentText!;
     final spans = <InlineSpan>[];
     int cursor = 0;
 
@@ -202,7 +200,8 @@ class PangeaTextController extends TextEditingController {
         spans.add(TextSpan(text: text, style: defaultStyle));
       }
 
-      final openMatch = choreographer.openMatch?.updatedMatch.match;
+      final openMatch =
+          choreographer.igcController.openMatch?.updatedMatch.match;
       final style = _textStyle(
         match.updatedMatch,
         defaultStyle,

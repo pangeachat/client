@@ -75,7 +75,8 @@ class StartIGCButtonState extends State<StartIGCButton>
       widget.controller.showLanguageMismatchPopup();
     } else {
       await widget.controller.choreographer.requestLanguageAssistance();
-      final openMatch = widget.controller.choreographer.firstOpenMatch;
+      final openMatch =
+          widget.controller.choreographer.igcController.firstOpenMatch;
       widget.controller.onSelectMatch(openMatch);
     }
   }
