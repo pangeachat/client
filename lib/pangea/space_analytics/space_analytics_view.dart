@@ -1,10 +1,5 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
@@ -13,6 +8,9 @@ import 'package:fluffychat/pangea/space_analytics/space_analytics_download_enum.
 import 'package:fluffychat/pangea/spaces/widgets/download_space_analytics_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class SpaceAnalyticsView extends StatelessWidget {
   final SpaceAnalyticsState controller;
@@ -45,6 +43,8 @@ class SpaceAnalyticsView extends StatelessWidget {
                         onPressed: controller.requestAllAnalytics,
                         mini: mini,
                         hideLabel: false,
+                        //disable if only one person (self) in course
+                        enabled: controller.sortedDownloads.length > 1,
                       ),
                       if (kIsWeb &&
                           controller.room != null &&
@@ -302,6 +302,7 @@ class _MenuButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final VoidCallback onPressed;
+  final bool enabled;
 
   final bool mini;
   final bool? hideLabel;
@@ -311,6 +312,7 @@ class _MenuButton extends StatelessWidget {
     required this.icon,
     required this.onPressed,
     this.mini = false,
+    this.enabled = true,
     this.hideLabel,
   });
 
@@ -320,45 +322,53 @@ class _MenuButton extends StatelessWidget {
 
     final height = !mini ? 36.0 : 26.0;
 
-    return Material(
-      type: MaterialType.transparency,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(40),
-        onTap: onPressed,
-        child: Container(
-          height: height,
-          width: hideLabel ?? mini ? height : null,
-          decoration: BoxDecoration(
-            color: theme.colorScheme.primaryContainer,
+    return Opacity(
+      opacity: enabled ? 1 : 0.3,
+      child: MouseRegion(
+        cursor: enabled ? SystemMouseCursors.click : MouseCursor.defer,
+        child: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
             borderRadius: BorderRadius.circular(40),
-          ),
-          padding: EdgeInsets.symmetric(
-            horizontal: !mini ? 8.0 : 4.0,
-            vertical: 4.0,
-          ),
-          child: hideLabel ?? mini
-              ? Icon(
-                  icon,
-                  color: theme.colorScheme.onPrimaryContainer,
-                  size: !mini ? 24.0 : 14.0,
-                )
-              : Row(
-                  spacing: 4.0,
-                  children: [
-                    Icon(
+            onTap: enabled ? onPressed : null,
+            child: Container(
+              height: height,
+              width: hideLabel ?? mini ? height : null,
+              decoration: BoxDecoration(
+                color: enabled
+                    ? theme.colorScheme.primaryContainer
+                    : theme.disabledColor,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              padding: EdgeInsets.symmetric(
+                horizontal: !mini ? 8.0 : 4.0,
+                vertical: 4.0,
+              ),
+              child: hideLabel ?? mini
+                  ? Icon(
                       icon,
                       color: theme.colorScheme.onPrimaryContainer,
                       size: !mini ? 24.0 : 14.0,
+                    )
+                  : Row(
+                      spacing: 4.0,
+                      children: [
+                        Icon(
+                          icon,
+                          color: theme.colorScheme.onPrimaryContainer,
+                          size: !mini ? 24.0 : 14.0,
+                        ),
+                        Text(
+                          text,
+                          style: TextStyle(
+                            color: theme.colorScheme.onPrimaryContainer,
+                            fontSize: !mini ? 16.0 : 12.0,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      text,
-                      style: TextStyle(
-                        color: theme.colorScheme.onPrimaryContainer,
-                        fontSize: !mini ? 16.0 : 12.0,
-                      ),
-                    ),
-                  ],
-                ),
+            ),
+          ),
         ),
       ),
     );
