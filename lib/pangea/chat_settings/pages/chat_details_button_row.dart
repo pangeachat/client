@@ -152,6 +152,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.delete,
         icon: const Icon(Icons.delete_outline, size: 30.0),
         onPressed: () async {
+          final parentSpaceId = room.courseParent?.id;
           final confirmed = await showOkCancelAlertDialog(
             context: context,
             title: L10n.of(context).areYouSure,
@@ -167,7 +168,11 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.delete,
           );
           if (resp.isError) return;
-          context.go("/rooms");
+          context.go(
+            parentSpaceId != null
+                ? "/rooms/spaces/$parentSpaceId/details"
+                : "/rooms",
+          );
         },
         enabled: room.isRoomAdmin,
         visible: !room.isDirectChat,
