@@ -427,28 +427,21 @@ class InputBar extends StatelessWidget {
 
   // #Pangea
   void onInputTap(BuildContext context) {
-    // show the paywall if appropriate
+    if (controller == null || controller!.text.isEmpty) return;
     final choreographer = controller!.choreographer;
-    if (MatrixState
-                .pangeaController.subscriptionController.subscriptionStatus ==
-            SubscriptionStatus.shouldShowPaywall &&
-        controller!.text.isNotEmpty) {
+
+    final subscriptionStatus =
+        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
+    if (subscriptionStatus == SubscriptionStatus.shouldShowPaywall) {
       PaywallCard.show(context, choreographer.inputTransformTargetKey);
       return;
     }
 
-    // if there is no igc text data, then don't do anything
-    if (!choreographer.hasIGCTextData) return;
-
-    final selection = controller!.selection;
-    if (selection.baseOffset >= controller!.text.length) {
-      return;
-    }
-
-    final match = choreographer.igcController.getMatchByOffset(
-      selection.baseOffset,
+    choreographer.chatController.onSelectMatch(
+      choreographer.igcController.getMatchByOffset(
+        controller!.selection.baseOffset,
+      ),
     );
-    choreographer.chatController.onSelectMatch(match);
   }
   // Pangea#
 

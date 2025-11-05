@@ -1765,17 +1765,7 @@ class ChatController extends State<ChatPageWithRoom>
       PaywallCard.show(context, choreographer.inputTransformTargetKey);
       return;
     } on OpenMatchesException {
-      if (choreographer.firstOpenMatch != null) {
-        if (choreographer.firstOpenMatch!.updatedMatch.isITStart) {
-          choreographer.openIT(choreographer.firstOpenMatch!);
-        } else {
-          OverlayUtil.showIGCMatch(
-            choreographer.firstOpenMatch!,
-            choreographer,
-            context,
-          );
-        }
-      }
+      onSelectMatch(choreographer.firstOpenMatch);
       return;
     }
     // Pangea#
