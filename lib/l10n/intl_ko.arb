@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-05 10:35:53.557051",
+  "@@last_modified": "2025-11-05 14:18:58.022148",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -4788,13 +4788,13 @@
   "requestSummaries": "요약 요청",
   "loadingActivitySummary": "활동 요약을 불러오는 중...",
   "generatingNewActivities": "이 언어 쌍의 첫 사용자입니다! 잠시만 기다려 주세요, 여러분만을 위한 활동을 준비 중입니다.",
-  "requestAccessTitle": "분석 보기 권한 요청?",
+  "requestAccessTitle": "분석 접근 요청?",
   "requestAccessDesc": "참가자 분석 보기 권한을 요청하시겠습니까?\n\n참가자가 동의하면, 이 강좌의 관리자는 다음을 볼 수 있습니다:\n    • 총 어휘 수\n    • 총 문법 개념\n    • 완료된 활동 세션 수\n    • 사용된 문법 개념, 맞게 또는 틀리게\n\n그들은 다음을 볼 수 없습니다:\n    • 강좌 외 채팅 메시지\n    • 어휘 목록",
   "requestAccess": "접근 요청 ({count})",
   "analyticsInactiveTitle": "비활성 사용자에게 요청을 보낼 수 없습니다",
   "analyticsInactiveDesc": "이 기능이 도입된 이후로 로그인하지 않은 비활성 사용자는 요청을 볼 수 없습니다.\n\n사용자가 돌아오면 요청 버튼이 표시됩니다. 요청 버튼을 클릭하여 나중에 다시 요청할 수 있습니다.",
   "accessRequestedTitle": "분석 액세스 요청",
-  "accessRequestedDesc": "“{space}”의 관리자들이 귀하의 학습 분석 정보를 보기를 요청하고 있습니다.\n\n동의하시면, 이 과정의 관리자들이 귀하의 다음 정보를 볼 수 있습니다:\n    • 총 어휘 수\n    • 총 문법 개념\n    • 완료된 활동 세션 수\n    • 사용된 문법 개념, 올바른 것과 잘못된 것\n\n그들은 귀하의 다음 정보를 볼 수 없습니다:\n    • 과정 외 채팅 메시지\n    • 어휘 목록",
+  "accessRequestedDesc": "요청한 관리자: {admin} \n\n“{space}”의 관리자가 귀하의 학습 분석을 보기를 요청하고 있습니다.\n\n동의하시면, 그들은 귀하의:\n    • 총 어휘\n    • 총 문법 개념\n    • 완료된 총 활동 세션\n    • 사용된 특정 문법 개념(정확하게 및 부정확하게)\n\n을 볼 수 있습니다.\n\n그들은 귀하의:\n    • 과정 외의 채팅 메시지\n    • 어휘 목록\n\n을 볼 수 없습니다.",
   "allowAccess": "액세스 허용",
   "denyAccess": "액세스 거부",
   "adminRequestedAccess": "관리자가 귀하의 분석 정보를 보기를 요청했습니다.",
@@ -11228,6 +11228,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

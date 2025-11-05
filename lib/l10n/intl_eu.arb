@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-11-05 10:36:18.321430",
+  "@@last_modified": "2025-11-05 14:20:02.206464",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -4852,13 +4852,13 @@
   "requestSummaries": "Eskatu laburpenak",
   "loadingActivitySummary": "Jarduera laburpena kargatzen...",
   "generatingNewActivities": "Lehen erabiltzailea zara hizkuntza bikote honetan! Mesedez, minutu bat eman, jarduerak prestatzen ari gara zuretzat.",
-  "requestAccessTitle": "Eskatu analytics ikusteko sarbidea?",
+  "requestAccessTitle": "Eskaera analitika sarbidea?",
   "requestAccessDesc": "Zerbait nahi al duzu parte-hartzailearen analytics ikusteko sarbidea eskatu?\n\nParte-hartzaileek ados badaude, ikastaroaren administratzaileek haien:\n    • hizkuntza-berritasun osoa\n    • gramatika kontzeptu guztiak\n    • jarduera saio guztiak amaituak\n    • erabiltzen diren gramatika kontzeptu zehatzak, zuzen eta oker\n\nIkusi ahal izango dute haien:\n    • mezua ikastaroaren kanpoan dauden txatetan\n    • hiztegi zerrenda",
   "requestAccess": "Eskatu sarbidea ({count})",
   "analyticsInactiveTitle": "Ezingo da eskaerarik bidali erabiltzaile inactiveentzat",
   "analyticsInactiveDesc": "Ez aktibo diren erabiltzaileek, ez baitute sartu funtzio hau sartu denetik, ez dute zure eskaeraren berri izango.\n\nEskatzeko botoia agertuko da berriro itzultzen direnean. Geroago berriro bidali dezakezu eskaera botoia sakatuz haien izenaren azpian, eskuragarri dagoenean.",
   "accessRequestedTitle": "Analytics Sarbide Eskaera",
-  "accessRequestedDesc": "“{space}” administratzaileek zure ikasketa analitikak ikusi nahi dituzte.\n\nAdos bazaude, ikastaroaren administratzaileek zurea ikusi ahal izango dute:\n    • hiztegi osoa\n    • gramatika kontzeptu osoa\n    • jarduera saioak guztira\n    • erabiltzen diren gramatika kontzeptu zehatzak, zuzen eta oker\n\nZurea ikusi ahal izango ez dute:\n    • ikastaroaren kanpoko chat-eko mezuak\n    • hiztegi zerrenda",
+  "accessRequestedDesc": "Eskaerak egiten ari diren admin(ak): {admin} \n\n„{space}“-ko adminak zure ikaskuntza analitikak ikusteko eskaera egiten ari dira.\n\nOnartzen baduzu, hauek zure:\n    • hiztegi osoa\n    • gramatika kontzeptu osoak\n    • amaitutako jarduera saio guztien kopurua\n    • erabilitako gramatika kontzeptu zehatzak, ondo eta oker\n\nEz dute ikusi ahal izango zure:\n    • ikastaroaren kanpoko txatetan mezuak\n    • hiztegi zerrenda",
   "allowAccess": "Baimendu Sarbidea",
   "denyAccess": "Galarazi Sarbidea",
   "adminRequestedAccess": "Administratzaileek zure analitikak ikusi nahi dituzte.",
@@ -11120,6 +11120,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

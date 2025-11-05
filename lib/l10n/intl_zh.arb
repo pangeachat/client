@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-05 10:36:50.749700",
+  "@@last_modified": "2025-11-05 14:22:03.879163",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -4855,13 +4855,13 @@
   "requestSummaries": "请求总结",
   "loadingActivitySummary": "正在加载活动总结...",
   "generatingNewActivities": "你是此语言对的第一个用户！请稍等，我们正在为你准备活动。",
-  "requestAccessTitle": "请求查看分析权限？",
+  "requestAccessTitle": "请求分析访问权限？",
   "requestAccessDesc": "你想请求查看参与者分析吗？\n\n如果参与者同意，课程管理员将能够查看他们的：\n    • 词汇总数\n    • 语法概念总数\n    • 完成的活动会话总数\n    • 使用的具体语法概念，正确与错误\n\n他们将无法查看：\n    • 课程外的聊天消息\n    • 词汇列表",
   "requestAccess": "请求访问（{count}）",
   "analyticsInactiveTitle": "无法向不活跃用户发送请求",
   "analyticsInactiveDesc": "自此功能推出以来未登录的不活跃用户将不会看到你的请求。\n\n当他们返回时，请求按钮会出现。你可以稍后通过点击他们名字下的请求按钮重新发送请求。",
   "accessRequestedTitle": "访问分析请求",
-  "accessRequestedDesc": "“{space}”的管理员请求查看您的学习分析。\n\n如果您同意，课程管理员将能够查看您的：\n    • 词汇总数\n    • 语法概念总数\n    • 完成的活动会话总数\n    • 使用的具体语法概念，包括正确和错误的\n\n他们将无法查看您的：\n    • 课程外的聊天消息\n    • 词汇列表",
+  "accessRequestedDesc": "请求管理员：{admin} \n\n来自“{space}”的管理员请求查看您的学习分析。\n\n如果您同意，他们将能够查看您的：\n    • 总词汇量\n    • 总语法概念\n    • 完成的活动会话总数\n    • 正确和错误使用的特定语法概念\n\n他们将无法查看您的：\n    • 课程外聊天中的消息\n    • 词汇表",
   "allowAccess": "允许访问",
   "denyAccess": "拒绝访问",
   "adminRequestedAccess": "管理员请求查看您的分析。",
@@ -11111,6 +11111,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

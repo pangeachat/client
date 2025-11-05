@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-11-05 10:36:28.862403",
+  "@@last_modified": "2025-11-05 14:20:46.467804",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -4381,13 +4381,13 @@
   "requestSummaries": "Požádat o souhrny",
   "loadingActivitySummary": "Načítám souhrn aktivity...",
   "generatingNewActivities": "Jste první uživatel tohoto jazykového páru! Počkejte chvíli, připravujeme aktivity právě pro vás.",
-  "requestAccessTitle": "Požádat o přístup k analytice?",
+  "requestAccessTitle": "Požádat o přístup k analýzám?",
   "requestAccessDesc": "Chcete požádat o přístup k zobrazení analytiky účastníků?\n\nPokud se účastníci shodnou, správci tohoto kurzu budou moci vidět:\n    • celkovou slovní zásobu\n    • celkové gramatické koncepty\n    • počet dokončených aktivit\n    • konkrétní gramatické koncepty použité správně a nesprávně\n\nNebudou moci vidět:\n    • zprávy v chatech mimo kurz\n    • seznam slovní zásoby",
   "requestAccess": "Požádat o přístup ({count})",
   "analyticsInactiveTitle": "Žádosti o přístup od neaktivních uživatelů nemohly být odeslány",
   "analyticsInactiveDesc": "Neaktivní uživatelé, kteří se od té doby, co byla tato funkce představena, nepřihlásili, neuvidí vaši žádost.\n\nTlačítko Žádost se zobrazí, jakmile se vrátí. Můžete požadavek znovu odeslat později kliknutím na tlačítko Žádost pod jejich jménem, když bude dostupné.",
   "accessRequestedTitle": "Žádost o přístup k analytice",
-  "accessRequestedDesc": "Správci „{space}“ žádají o zobrazení vašich analytických dat.\n\nPokud souhlasíte, správci tohoto kurzu budou moci vidět:\n    • celkovou slovní zásobu\n    • celkové gramatické koncepty\n    • počet dokončených aktivit\n    • konkrétní gramatické koncepty použité správně a nesprávně\n\nNebudou moci vidět:\n    • zprávy v chatech mimo kurz\n    • seznam slovní zásoby",
+  "accessRequestedDesc": "Žádající admin(i): {admin} \n\nAdmini z „{space}“ žádají o zobrazení vašich analytických údajů o učení.\n\nPokud souhlasíte, budou moci zobrazit vaše:\n    • celkovou slovní zásobu\n    • celkové gramatické koncepty\n    • celkový počet dokončených aktivit\n    • konkrétní gramatické koncepty použité, správně a nesprávně\n\nNebudou moci zobrazit vaše:\n    • zprávy v chatech mimo kurz\n    • seznam slovní zásoby",
   "allowAccess": "Povolit přístup",
   "denyAccess": "Odmítnout přístup",
   "adminRequestedAccess": "Správci požádali o zobrazení vašich analytik.",
@@ -11727,6 +11727,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }
