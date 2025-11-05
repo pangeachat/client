@@ -15,6 +15,7 @@ import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_menu_button.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/load_activity_summary_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
@@ -147,6 +148,8 @@ class ChatView extends StatelessWidget {
               context.go('/rooms/${controller.room.id}/search');
             },
           ),
+        if (controller.room.showActivityChatUI)
+          ActivityMenuButton(controller: controller),
         IconButton(
           icon: const Icon(Icons.settings_outlined),
           tooltip: L10n.of(context).chatDetails,
@@ -216,9 +219,6 @@ class ChatView extends StatelessWidget {
                 // backgroundColor: controller.selectedEvents.isEmpty
                 //     ? null
                 //     : theme.colorScheme.tertiaryContainer,
-                toolbarHeight:
-                    controller.room.showActivityChatUI ? 106.0 : null,
-                centerTitle: controller.room.showActivityChatUI,
                 // Pangea#
                 automaticallyImplyLeading: false,
                 leading: controller.selectMode
