@@ -176,13 +176,6 @@ class CourseSettings extends StatelessWidget {
                                         bottom: 0,
                                         right: 0,
                                         child: Icon(Icons.lock, size: 24.0),
-                                      )
-                                    else if (controller.loadingActivities)
-                                      const SizedBox(
-                                        width: 54.0,
-                                        height: 54.0,
-                                        child: CircularProgressIndicator
-                                            .adaptive(),
                                       ),
                                   ],
                                 ),
