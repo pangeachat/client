@@ -55,22 +55,6 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing: Row(
-                spacing: 2.0,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.chat_bubble_outline,
-                    size: 8.0,
-                  ),
-                  Text(
-                    "${sessions.length}",
-                    style: const TextStyle(
-                      fontSize: 8.0,
-                    ),
-                  ),
-                ],
-              ),
               title: Row(
                 children: [
                   Expanded(
