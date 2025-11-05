@@ -4555,6 +4555,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriends() {
       return "Pozovi prijatelje";
     },
+    get$activityStatsButtonTooltip() {
+      return "Activity info";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yc4quUctITlASKES6labnUNyHAA="] = d.current;
+  d["vGY5UKWfKcHstOYs8FgJs52G1uM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_558.part.js.map
