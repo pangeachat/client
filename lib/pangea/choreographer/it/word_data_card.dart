@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:async/async.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
@@ -9,7 +12,6 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class WordDataCard extends StatefulWidget {
   final String word;

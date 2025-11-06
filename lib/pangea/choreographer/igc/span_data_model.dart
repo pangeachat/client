@@ -1,8 +1,9 @@
-import 'package:collection/collection.dart';
-import 'package:diacritic/diacritic.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
+import 'package:diacritic/diacritic.dart';
+
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'span_choice_type_enum.dart';
 import 'span_data_type_enum.dart';
 

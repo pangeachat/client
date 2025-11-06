@@ -4,7 +4,15 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:html_unescape/html_unescape.dart';
+import 'package:matrix/matrix.dart';
+import 'package:matrix/src/utils/markdown.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
@@ -26,13 +34,6 @@ import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:html_unescape/html_unescape.dart';
-import 'package:matrix/matrix.dart';
-import 'package:matrix/src/utils/markdown.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../choreographer/choreo_record_model.dart';
 import '../events/constants/pangea_event_types.dart';
 import '../events/models/representation_content_model.dart';

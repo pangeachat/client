@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:flutter/foundation.dart';
 
 class ITRequestModel {
   final String text;

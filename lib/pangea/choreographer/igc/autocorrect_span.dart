@@ -1,8 +1,9 @@
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/choreographer/igc/autocorrect_popup.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
 
 class AutocorrectSpan extends WidgetSpan {
   AutocorrectSpan({

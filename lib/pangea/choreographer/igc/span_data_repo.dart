@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:async/async.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/choreographer/igc/span_data_request.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_response.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:http/http.dart';
-
 import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 

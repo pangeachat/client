@@ -2,8 +2,9 @@
 // IGC is running, IGC has run and there are remaining steps (either IT or IGC), or all steps are done
 // Or user does not have a subscription
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 
 enum AssistanceStateEnum {
   noSub,

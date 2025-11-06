@@ -1,14 +1,15 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:async/async.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:flutter/material.dart';
-
 import '../../../widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/widgets/card_error_widget.dart';

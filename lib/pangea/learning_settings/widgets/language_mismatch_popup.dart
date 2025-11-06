@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class LanguageMismatchPopup extends StatelessWidget {
   final Future<void> Function() onConfirm;

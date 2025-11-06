@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
@@ -15,9 +19,6 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../../common/utils/overlay.dart';
 import '../../common/widgets/choice_array.dart';
 

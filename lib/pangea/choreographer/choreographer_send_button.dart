@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
-import 'package:flutter/material.dart';
 
 class ChoreographerSendButton extends StatelessWidget {
   final ChatController controller;

@@ -1,10 +1,11 @@
 import 'dart:developer';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:flutter/foundation.dart';
+
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import '../../choreographer/choreo_record_model.dart';
 import '../constants/pangea_event_types.dart';
 

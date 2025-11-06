@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
@@ -9,9 +13,6 @@ import 'package:fluffychat/pangea/choreographer/igc/span_data_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../../../widgets/matrix.dart';
 import '../../common/widgets/choice_array.dart';
 import 'why_button.dart';

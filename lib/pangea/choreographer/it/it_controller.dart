@@ -1,15 +1,16 @@
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
+
 import 'package:fluffychat/pangea/choreographer/it/gold_route_tracker_model.dart';
 import 'package:fluffychat/pangea/choreographer/it/it_repo.dart';
 import 'package:fluffychat/pangea/choreographer/it/it_response_model.dart';
 import 'package:fluffychat/pangea/choreographer/it/it_step_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-
 import 'completed_it_step_model.dart';
 import 'it_request_model.dart';
 

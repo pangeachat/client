@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/choreographer/igc/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 /// A model representing mutable text and match state used by
 /// Interactive Grammar Correction (IGC).

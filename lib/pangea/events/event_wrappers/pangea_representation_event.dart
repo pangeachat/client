@@ -2,8 +2,14 @@
 
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart' hide Result;
+import 'package:matrix/src/utils/markdown.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -23,10 +29,6 @@ import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:matrix/matrix.dart' hide Result;
-import 'package:matrix/src/utils/markdown.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class RepresentationEvent {
   Event? _event;

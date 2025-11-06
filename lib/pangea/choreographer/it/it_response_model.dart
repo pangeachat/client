@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart';
-import 'package:flutter/material.dart';
 
 class ITResponseModel {
   final String fullTextTranslation;

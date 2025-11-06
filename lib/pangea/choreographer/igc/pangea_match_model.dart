@@ -1,6 +1,5 @@
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_type_enum.dart';
-
 import 'match_rule_id_model.dart';
 import 'span_data_model.dart';
 

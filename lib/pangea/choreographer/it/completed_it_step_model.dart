@@ -1,6 +1,6 @@
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import '../choreo_constants.dart';
 
 class CompletedITStepModel {

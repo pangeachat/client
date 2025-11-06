@@ -1,5 +1,6 @@
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fluffychat/l10n/l10n.dart';
 
 enum SpanChoiceTypeEnum {
   bestCorrection,

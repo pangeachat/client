@@ -4,11 +4,11 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:async/async.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_response_model.dart';
-import 'package:http/http.dart';
-
 import '../common/config/environment.dart';
 import '../common/network/requests.dart';
 import '../common/network/urls.dart';

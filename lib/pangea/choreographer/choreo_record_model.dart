@@ -4,7 +4,6 @@ import 'package:fluffychat/pangea/choreographer/choreo_edit_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
-
 import 'it/completed_it_step_model.dart';
 
 /// this class lives within a [PangeaIGCEvent]

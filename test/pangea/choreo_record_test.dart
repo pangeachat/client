@@ -1,6 +1,7 @@
+import 'package:flutter_test/flutter_test.dart';
+
 import 'package:fluffychat/pangea/choreographer/choreo_edit_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 void main() async {
   group("Optimized choreo record tests", () {

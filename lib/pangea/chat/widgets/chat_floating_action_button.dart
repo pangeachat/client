@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_has_error_button.dart';
-import 'package:flutter/material.dart';
 
 class ChatFloatingActionButton extends StatelessWidget {
   final ChatController controller;

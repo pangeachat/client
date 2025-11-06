@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
@@ -8,9 +11,6 @@ import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
