@@ -504,20 +504,23 @@ class _RequestButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(40),
               color: status.backgroundColor(context),
             ),
-            child: Row(
-              spacing: mini ? 2.0 : 8.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (status.icon != null)
-                  Icon(
-                    status.icon,
-                    size: !mini ? 12.0 : 8.0,
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Row(
+                spacing: mini ? 2.0 : 8.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (status.icon != null)
+                    Icon(
+                      status.icon,
+                      size: !mini ? 12.0 : 8.0,
+                    ),
+                  Text(
+                    status.label(context),
+                    style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
                   ),
-                Text(
-                  status.label(context),
-                  style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
