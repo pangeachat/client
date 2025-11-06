@@ -177,12 +177,12 @@ class PangeaTextController extends TextEditingController {
     TextStyle? defaultStyle,
   }) {
     final openMatches = choreographer.igcController.openMatches ?? const [];
-    final normalizationMatches =
-        choreographer.igcController.recentNormalizationMatches ?? const [];
+    final automaticCorrections =
+        choreographer.igcController.recentAutomaticCorrections ?? const [];
 
     final textSpanMatches = [
       ...openMatches,
-      ...normalizationMatches,
+      ...automaticCorrections,
     ]..sort(
         (a, b) =>
             a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),

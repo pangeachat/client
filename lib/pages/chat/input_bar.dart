@@ -441,7 +441,7 @@ class InputBar extends StatelessWidget {
     // so we need to adjust the offset accordingly
     int adjustedOffset = controller!.selection.baseOffset;
     final normalizationMatches =
-        choreographer.igcController.recentNormalizationMatches;
+        choreographer.igcController.recentAutomaticCorrections;
     if (normalizationMatches == null || normalizationMatches.isEmpty) return;
     for (final match in normalizationMatches) {
       if (match.updatedMatch.match.offset < adjustedOffset &&

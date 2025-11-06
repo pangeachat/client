@@ -407,7 +407,7 @@ class Choreographer extends ChangeNotifier {
 
   void clearMatches(Object error) {
     MatrixState.pAnyState.closeAllOverlays();
-    igcController.clearIGCMatches();
+    igcController.clearMatches();
     errorService.setError(ChoreoError(raw: error));
   }
 
