@@ -4601,13 +4601,13 @@
   "requestSummaries": "ལོག་ལ་དབྱར་བ་འདི་ལ་བཀོད་རོགས།",
   "loadingActivitySummary": "ལས་ཀ་རྒྱབ་སྤྱོད་འབད་ནས་བརྗེ་བ་ལོག་འགྱོ།",
   "generatingNewActivities": "ཁྱེད་ཀྱིས་འདི་ལ་སྤྱོད་ལམ་གཟིགས་སྤྱོད་འདུག! སྤྱོད་ལམ་གཟིགས་སྤྱོད་འདི་ལ་ཁྱེད་ཀྱིས་ལོག་འགྱོ་བར་བརྗེ་བ་ཡིན།",
-  "requestAccessTitle": "ལོག་ལ་སྤྱོད་ལམ་གཟིགས་སྤྱོད་འདུག?",
+  "requestAccessTitle": "Bisa minta akses analitik?",
   "requestAccessDesc": "ཁྱེད་ཀྱིས་སྤྱོད་ལམ་གཟིགས་སྤྱོད་འདུག་ལ་ལོག་འགྱོ་བའི་ལས་ཀ་ལ་བཀོད་རོགས་འདི་ལ་དབྱར་བ་འདི་ལ་བཀོད་རོགས།\n\nལོག་ལ་སྤྱོད་ལམ་གཟིགས་སྤྱོད་འདུག་ན་ལོག་འགྱོ་བར་བརྗེ་བ་ཡིན། ཁྱེད་ཀྱིས་ལོག་འགྱོ་བར་བརྗེ་བ་འབད་ན་ལོག་འགྱོ་བར་བརྗེ་བ་ལ་ལོག་འགྱོ།",
   "requestAccess": "ལོག་འགྱོ་འདི་ལ ({count})",
   "analyticsInactiveTitle": "ལོག་འགྱོ་བའི་ལས་ཀ་མེད་པའི་ལོག་ལ་འབད་མི་ཚུལ།",
   "analyticsInactiveDesc": "ལོག་འགྱོ་བའི་ལས་ཀ་མེད་པའི་ལོག་ལ་ལོག་འགྱོ་བར་བརྗེ་བ་མེད་པས།\n\nལོག་འགྱོ་འབད་འདི་ལ་ལོག་འགྱོ་བར་བརྗེ་བ་ལ་ལོག་འགྱོ། ཁྱེད་ཀྱིས་ལོག་འགྱོ་བར་བརྗེ་བ་འབད་ན་ལོག་འགྱོ་བར་བརྗེ་བ་ལ་ལོག་འགྱོ།",
   "accessRequestedTitle": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
-  "accessRequestedDesc": "“{space}” ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
+  "accessRequestedDesc": "Meminta admin(s): {admin} \n\nAdmin dari “{space}” meminta untuk melihat analitik pembelajaran Anda.\n\nJika Anda setuju, mereka akan dapat melihat:\n    • total kosakata\n    • total konsep tata bahasa\n    • total sesi aktivitas yang diselesaikan\n    • konsep tata bahasa spesifik yang digunakan, dengan benar dan salah\n\nMereka tidak akan dapat melihat:\n    • pesan di obrolan di luar kursus\n    • daftar kosakata",
   "allowAccess": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
   "denyAccess": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠠᠢᠯᠠᠭᠤ",
   "adminRequestedAccess": "ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ ᠪᠠᠢᠯᠠᠭᠤᠯᠤ",
@@ -4700,14 +4700,14 @@
   "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
   "appDescription": "ཚོགས་ཚོགས་སྐད་ཡིག་སློབ་ཚན་ལས་སྤྱོད་སྒོམ།\nཁྱེད་ཀྱི་གྲོགས་མཚན་ལ་རྟག་པ་སྤྱོད་སྒོམ་ལས་སྤྱོད་སྒོམ།",
   "languages": "ཚོད་ལྟ",
-  "chooseLanguage": "ཚོད་ལྟ་གཅིག་འཇུག་གི་སྐད་ཡིག་གཟིགས།",
+  "chooseLanguage": "Pilih bahasa target.",
   "planTrip": "འགྱོ་རོགས་ལྟར་བཟོ།",
   "howAreYouTraveling": "ཁྱེད་ཀྱི་འགྱོ་རོགས་ག་རེ་ཡོད།",
   "unlockPrivateTrip": "རང་གི་སྤྱོད་ལམ་ལ་ལོག་འབད།",
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-11-04 13:35:01.640152",
+  "@@last_modified": "2025-11-05 14:22:00.914452",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11218,6 +11218,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

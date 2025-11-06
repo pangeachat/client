@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:30.531761",
+  "@@last_modified": "2025-11-05 14:20:58.784850",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -4824,13 +4824,13 @@
   "requestSummaries": "Sol·licitar resums",
   "loadingActivitySummary": "Carregant resum d'activitat...",
   "generatingNewActivities": "Ets el primer usuari d'aquesta parella de llengües! Si us plau, dona'ns un minut, estem preparant activitats exclusives per a tu.",
-  "requestAccessTitle": "Sol·licitar accés a la vista d'analítiques?",
+  "requestAccessTitle": "Sol·licitar accés a l'analítica?",
   "requestAccessDesc": "Vols sol·licitar accés per veure les analítiques dels participants?\n\nSi els participants hi estan d'acord, els administradors d'aquest curs podran veure:\n    • vocabulari total\n    • conceptes gramaticals totals\n    • sessions d'activitat completes\n    • els conceptes gramaticals específics utilitzats, correctament i incorrectament\n\nNo podran veure:\n    • missatges en converses fora del curs\n    • llistat de vocabulari",
   "requestAccess": "Sol·licitar accés ({count})",
   "analyticsInactiveTitle": "Les sol·licituds a usuaris inactius no es van poder enviar",
   "analyticsInactiveDesc": "Els usuaris inactius que no han iniciat sessió des de la introducció d'aquesta funció no veuran la teva sol·licitud.\n\nEl botó de Sol·licitar apareixerà quan tornin. Pots reenviar la sol·licitud més tard fent clic al botó de Sol·licitar sota el seu nom quan estigui disponible.",
   "accessRequestedTitle": "Sol·licitud d'accés a analítiques",
-  "accessRequestedDesc": "Els administradors de “{space}” sol·liciten veure les teves analítiques d'aprenentatge.\n\nSi hi estàs d'acord, els administradors d'aquest curs podran veure:\n    • vocabulari total\n    • conceptes gramaticals totals\n    • sessions d'activitat completes\n    • els conceptes gramaticals específics utilitzats, correctament i incorrectament\n\nNo podran veure:\n    • missatges en converses fora del curs\n    • llistat de vocabulari",
+  "accessRequestedDesc": "Sol·licitant admin(s): {admin} \n\nEls administradors de “{space}” estan sol·licitant veure la teva analítica d'aprenentatge.\n\nSi estàs d'acord, podran veure el teu:\n    • vocabulari total\n    • conceptes gramaticals totals\n    • sessions d'activitat completes\n    • els conceptes gramaticals específics utilitzats, correctament i incorrectament\n\nNo podran veure el teu:\n    • missatges en xats fora del curs\n    • llista de vocabulari",
   "allowAccess": "Permetre l'accés",
   "denyAccess": "Denegar l'accés",
   "adminRequestedAccess": "Els administradors han sol·licitat veure les teves analítiques.",
@@ -4923,7 +4923,7 @@
   "loginToAccount": "Inicia sessió al meu compte",
   "appDescription": "Aprèn un idioma\nmentre xatejes amb els teus amics.",
   "languages": "Idiomes",
-  "chooseLanguage": "Tria un idioma.",
+  "chooseLanguage": "Trieu un idioma de destinació.",
   "planTrip": "Planifica el teu viatge",
   "howAreYouTraveling": "Com viatges?",
   "unlockPrivateTrip": "Desbloqueja un viatge privat",
@@ -11144,6 +11144,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

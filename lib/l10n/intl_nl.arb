@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:34:59.239403",
+  "@@last_modified": "2025-11-05 14:21:57.117088",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -4851,13 +4851,13 @@
   "requestSummaries": "Vraag samenvattingen aan",
   "loadingActivitySummary": "Activiteitenoverzicht wordt geladen...",
   "generatingNewActivities": "Je bent de eerste gebruiker van dit taalpaar! Geef ons een minuutje, we bereiden activiteiten voor je voor.",
-  "requestAccessTitle": "Toegang tot analytics bekijken aanvragen?",
+  "requestAccessTitle": "Toegang tot analyses aanvragen?",
   "requestAccessDesc": "Wil je toegang aanvragen om deelnemeranalyses te bekijken?\n\nAls deelnemers akkoord gaan, kunnen beheerders van deze cursus hun bekijken:\n    • totaal vocabulaire\n    • totaal grammaticaconcepten\n    • totaal voltooide activiteitensessies\n    • de specifieke grammaticaconcepten die correct en incorrect worden gebruikt\n\nZe kunnen niet bekijken:\n    • berichten in chats buiten de cursus\n    • vocabulairelijst",
   "requestAccess": "Verzoek toegang ({count})",
   "analyticsInactiveTitle": "Verzoeken aan inactieve gebruikers konden niet worden verzonden",
   "analyticsInactiveDesc": "Inactieve gebruikers die zich sinds de introductie van deze functie niet hebben aangemeld, zien uw verzoek niet.\n\nDe knop Verzoek verschijnt zodra ze terugkeren. U kunt het verzoek later opnieuw verzenden door op de knop Verzoek onder hun naam te klikken wanneer deze beschikbaar is.",
   "accessRequestedTitle": "Verzoek om toegang tot analytics",
-  "accessRequestedDesc": "De beheerders van “{space}” vragen om uw leeranalyses te bekijken.\n\nAls u akkoord gaat, kunnen beheerders van deze cursus uw:\n    • totale woordenschat\n    • totale grammaticaconcepten\n    • totale voltooide activiteitsessies\n    • gebruikte grammaticaconcepten, correct en incorrect\n\nZij kunnen niet uw:\n    • berichten in chats buiten de cursus\n    • woordenlijst bekijken",
+  "accessRequestedDesc": "Aanvragende admin(s): {admin} \n\nAdmins van “{space}” vragen om uw leeranalyses te bekijken.\n\nAls u akkoord gaat, kunnen zij uw:\n    • totale woordenschat\n    • totale grammatica concepten\n    • totale voltooide activiteitssessies\n    • de specifieke grammatica concepten die correct en incorrect zijn gebruikt\n\nZij zullen uw niet kunnen bekijken:\n    • berichten in chats buiten de cursus\n    • woordenlijst",
   "allowAccess": "Toegang toestaan",
   "denyAccess": "Toegang weigeren",
   "adminRequestedAccess": "Beheerders hebben gevraagd om uw analytics te bekijken.",
@@ -4950,7 +4950,7 @@
   "loginToAccount": "Log in op mijn account",
   "appDescription": "Leer een taal\nterwijl je met je vrienden chat.",
   "languages": "Talen",
-  "chooseLanguage": "Kies een taal.",
+  "chooseLanguage": "Kies een doeltaal.",
   "planTrip": "Plan je reis",
   "howAreYouTraveling": "Hoe reis je?",
   "unlockPrivateTrip": "Ontgrendel een privéreis",
@@ -11120,6 +11120,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

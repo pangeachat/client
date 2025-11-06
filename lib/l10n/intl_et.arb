@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-11-04 13:34:09.788327",
+  "@@last_modified": "2025-11-05 14:20:12.001210",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11088,13 +11088,13 @@
   "requestSummaries": "Paluda kokkuvõtteid",
   "loadingActivitySummary": "Laen tegevuse kokkuvõtet...",
   "generatingNewActivities": "Olete selle keelepaari esimene kasutaja! Palun andke meile hetk, valmistame teile tegevusi.",
-  "requestAccessTitle": "Soovid taotleda juurdepääsu analüütikatele vaadata?",
+  "requestAccessTitle": "Küsi analüütika ligipääsu?",
   "requestAccessDesc": "Kas soovite taotleda juurdepääsu osalejate analüütikate vaatamiseks?\n\nKui osalejad nõustuvad, saavad selle kursuse administraatorid näha nende:\n    • kogu sõnavara\n    • kogu grammatikakontseptsioone\n    • kogu tehtud tegevussessioone\n    • kasutatud, õigesti ja valesti grammatikakontseptsioone\n\nNad ei näe:\n    • sõnumeid väljaspool kursust vestlustes\n    • sõnavara nimekirja",
   "requestAccess": "Taotle juurdepääsu ({count})",
   "analyticsInactiveTitle": "Päringuid mitteaktiivsete kasutajate jaoks ei saadetud",
   "analyticsInactiveDesc": "Mitteaktiivsed kasutajad, kes pole sellest funktsioonist alates sisse loginud, ei näe teie taotlust.\n\nPäringu nupp ilmub, kui nad naasevad. Saate taotluse uuesti saata, klõpsates nupul 'Päring' nende nime all, kui see on saadaval.",
   "accessRequestedTitle": "Juurdepääsu analüütikatele taotlus",
-  "accessRequestedDesc": "Kursuse “{space}” administraatorid taotlevad teie õppimise analüütikate vaatamist.\n\nKui nõustute, saavad selle kursuse administraatorid näha teie:\n    • kogu sõnavara\n    • kogu grammatikakontseptsioone\n    • kogu tehtud tegevussessioone\n    • kasutatud, õigesti ja valesti grammatikakontseptsioone\n\nNad ei näe:\n    • sõnumeid väljaspool kursust vestlustes\n    • sõnavara nimekirja",
+  "accessRequestedDesc": "Küsimine admin(ide)lt: {admin} \n\n„{space}” adminid küsivad, et näha teie õppeanalüüse.\n\nKui nõustute, saavad nad vaadata teie:\n    • kogusõnavara\n    • kogugrammatika mõisted\n    • lõpetatud tegevuste seansid\n    • spetsiifilised grammatika mõisted, mida on kasutatud, õigesti ja valesti\n\nNad ei saa vaadata teie:\n    • sõnumeid kursusest väljaspool vestlustes\n    • sõnavara loendit",
   "allowAccess": "Luba juurdepääs",
   "denyAccess": "Keela juurdepääs",
   "adminRequestedAccess": "Administraatorid palusid näha teie analüütikat.",
@@ -11187,7 +11187,7 @@
   "loginToAccount": "Logi sisse oma kontole",
   "appDescription": "Õpi keelt\nsõpradega sõnumite saatmise ajal.",
   "languages": "Keeled",
-  "chooseLanguage": "Vali keel.",
+  "chooseLanguage": "Vali sihtkeel.",
   "planTrip": "Planeeri oma reis",
   "howAreYouTraveling": "Kuidas sa reisid?",
   "unlockPrivateTrip": "Ava privaatne reis",
@@ -11386,6 +11386,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

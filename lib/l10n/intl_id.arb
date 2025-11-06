@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:33:48.096891",
+  "@@last_modified": "2025-11-05 14:19:22.590093",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -4854,13 +4854,13 @@
   "requestSummaries": "Minta ringkasan",
   "loadingActivitySummary": "Memuat ringkasan aktivitas...",
   "generatingNewActivities": "Anda adalah pengguna pertama dari pasangan bahasa ini! Mohon tunggu sebentar, kami sedang menyiapkan aktivitas khusus untuk Anda.",
-  "requestAccessTitle": "Permintaan akses ke tampilan analitik?",
+  "requestAccessTitle": "Minta akses analitik?",
   "requestAccessDesc": "Apakah Anda ingin meminta akses untuk melihat analitik peserta?\n\nJika peserta setuju, admin kursus ini akan dapat melihat:\n    • total kosakata\n    • total konsep tata bahasa\n    • total sesi aktivitas yang diselesaikan\n    • konsep tata bahasa tertentu yang digunakan, dengan benar dan salah\n\nMereka tidak akan dapat melihat:\n    • pesan dalam obrolan di luar kursus\n    • daftar kosakata",
   "requestAccess": "Permintaan akses ({count})",
   "analyticsInactiveTitle": "Permintaan ke pengguna tidak aktif tidak dapat dikirim",
   "analyticsInactiveDesc": "Pengguna tidak aktif yang belum masuk sejak fitur ini diperkenalkan tidak akan melihat permintaan Anda.\n\nTombol Permintaan akan muncul setelah mereka kembali. Anda dapat mengirim ulang permintaan nanti dengan mengklik tombol Permintaan di bawah nama mereka saat tersedia.",
   "accessRequestedTitle": "Permintaan Akses Analitik",
-  "accessRequestedDesc": "Para administrator \"{space}\" meminta untuk melihat analitik pembelajaran Anda.\n\nJika Anda setuju, admin kursus ini akan dapat melihat:\n    • total kosakata\n    • total konsep tata bahasa\n    • total sesi aktivitas yang diselesaikan\n    • konsep tata bahasa tertentu yang digunakan, dengan benar dan salah\n\nMereka tidak akan dapat melihat:\n    • pesan dalam obrolan di luar kursus\n    • daftar kosakata",
+  "accessRequestedDesc": "Meminta admin(s): {admin} \n\nAdmin dari “{space}” meminta untuk melihat analitik pembelajaran Anda.\n\nJika Anda setuju, mereka akan dapat melihat:\n    • total kosakata\n    • total konsep tata bahasa\n    • total sesi aktivitas yang diselesaikan\n    • konsep tata bahasa spesifik yang digunakan, dengan benar dan salah\n\nMereka tidak akan dapat melihat:\n    • pesan di obrolan di luar kursus\n    • daftar kosakata",
   "allowAccess": "Izinkan Akses",
   "denyAccess": "Tolak Akses",
   "adminRequestedAccess": "Admin meminta untuk melihat analitik Anda.",
@@ -4953,7 +4953,7 @@
   "loginToAccount": "Masuk ke akun saya",
   "appDescription": "Pelajari bahasa\nsambil mengirim pesan kepada teman.",
   "languages": "Bahasa",
-  "chooseLanguage": "Pilih bahasa.",
+  "chooseLanguage": "Pilih bahasa target.",
   "planTrip": "Rencanakan perjalanan Anda",
   "howAreYouTraveling": "Bagaimana Anda bepergian?",
   "unlockPrivateTrip": "Buka perjalanan pribadi",
@@ -11111,6 +11111,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

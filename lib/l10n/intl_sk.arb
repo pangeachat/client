@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-11-04 13:33:53.548300",
+  "@@last_modified": "2025-11-05 14:19:34.273962",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -3475,13 +3475,13 @@
   "requestSummaries": "Požiadať o prehľady",
   "loadingActivitySummary": "Načítavanie prehľadu aktivity...",
   "generatingNewActivities": "Ste prvým používateľom tohto jazykového páru! Prosím, venujte nám chvíľu, pripravujeme aktivity špeciálne pre vás.",
-  "requestAccessTitle": "Chcete požiadať o prístup k analytike?",
+  "requestAccessTitle": "Požiadať o prístup k analytike?",
   "requestAccessDesc": "Chceli by ste požiadať o prístup na zobrazenie analytiky účastníkov?\n\nAk účastníci súhlasia, administrátori tohto kurzu budú môcť vidieť ich:\n    • celkovú slovnú zásobu\n    • celkové gramatické koncepty\n    • počet dokončených aktivít\n    • špecifické gramatické koncepty použité, správne a nesprávne\n\nNebudú môcť vidieť ich:\n    • správy v chatoch mimo kurzu\n    • zoznam slovnej zásoby",
   "requestAccess": "Požiadať o prístup ({count})",
   "analyticsInactiveTitle": "Žiadosti o prístup od neaktívnych používateľov nemohli byť odoslané",
   "analyticsInactiveDesc": "Neaktívni používatelia, ktorí sa neprihlásili od zavedenia tejto funkcie, neuvidia vašu žiadosť.\n\nTlačidlo Požiadavka sa zobrazí, keď sa vrátia. Môžete žiadosť znova odoslať neskôr kliknutím na tlačidlo Požiadavka pod ich menom, keď bude dostupné.",
   "accessRequestedTitle": "Žiadosť o prístup k analytike",
-  "accessRequestedDesc": "Administrátori “{space}” žiadajú o zobrazenie vašej študijnej analytiky.\n\nAk súhlasíte, administrátori tohto kurzu budú môcť vidieť vašu:\n    • celkovú slovnú zásobu\n    • celkové gramatické koncepty\n    • počet dokončených aktivít\n    • špecifické gramatické koncepty použité, správne a nesprávne\n\nNebudú môcť vidieť vaše:\n    • správy v chatoch mimo kurzu\n    • zoznam slovnej zásoby",
+  "accessRequestedDesc": "Žiadosť o prístup od admina(ov): {admin} \n\nAdmini z „{space}“ žiadajú o zobrazenie vašich analytických údajov o učení.\n\nAk súhlasíte, budú môcť zobraziť vaše:\n    • celkovú slovnú zásobu\n    • celkové gramatické koncepty\n    • celkový počet dokončených aktivít\n    • konkrétne gramatické koncepty použité, správne a nesprávne\n\nNebudú môcť zobraziť vaše:\n    • správy v chatoch mimo kurzu\n    • zoznam slovnej zásoby",
   "allowAccess": "Povoliť prístup",
   "denyAccess": "Zamietnuť prístup",
   "adminRequestedAccess": "Administrátori požiadali o zobrazenie vašej analytiky.",
@@ -3574,7 +3574,7 @@
   "loginToAccount": "Prihlásiť sa do môjho účtu",
   "appDescription": "Naučte sa jazyk\npočas písania správ priateľom.",
   "languages": "Jazyky",
-  "chooseLanguage": "Vyberte jazyk.",
+  "chooseLanguage": "Vyberte cieľový jazyk.",
   "planTrip": "Naplánujte si svoju cestu",
   "howAreYouTraveling": "Ako cestujete?",
   "unlockPrivateTrip": "Odomknúť súkromnú cestu",
@@ -12204,6 +12204,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

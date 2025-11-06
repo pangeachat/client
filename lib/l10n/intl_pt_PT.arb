@@ -3662,13 +3662,13 @@
   "requestSummaries": "Solicitar resumos",
   "loadingActivitySummary": "Carregando resumo da atividade...",
   "generatingNewActivities": "Você é o primeiro usuário deste par de idiomas! Por favor, aguarde um momento, estamos preparando atividades especialmente para você.",
-  "requestAccessTitle": "Solicitar acesso à visualização de análises?",
+  "requestAccessTitle": "Solicitar acesso à análise?",
   "requestAccessDesc": "Gostaria de solicitar acesso para visualizar análises dos participantes?\n\nSe os participantes concordarem, os administradores deste curso poderão visualizar:\n    • vocabulário total\n    • conceitos gramaticais totais\n    • sessões de atividade concluídas\n    • os conceitos gramaticais específicos utilizados, corretamente e incorretamente\n\nEles não poderão visualizar:\n    • mensagens em chats fora do curso\n    • lista de vocabulário",
   "requestAccess": "Solicitar acesso ({count})",
   "analyticsInactiveTitle": "Solicitações a usuários inativos não puderam ser enviadas",
   "analyticsInactiveDesc": "Usuários inativos que não fizeram login desde a introdução deste recurso não verão sua solicitação.\n\nO botão Solicitar aparecerá assim que eles retornarem. Você pode reenviar a solicitação mais tarde clicando no botão Solicitar sob o nome deles quando estiver disponível.",
   "accessRequestedTitle": "Pedido de Acesso à Análise",
-  "accessRequestedDesc": "Os administradores de \"{space}\" estão a solicitar para ver as suas análises de aprendizagem.\n\nSe concordar, os administradores deste curso poderão ver o seu:\n    • vocabulário total\n    • conceitos gramaticais totais\n    • sessões de atividade concluídas\n    • conceitos gramaticais específicos utilizados, corretamente e incorretamente\n\nNão poderão ver o seu:\n    • mensagens em chats fora do curso\n    • lista de vocabulário",
+  "accessRequestedDesc": "Solicitando admin(s): {admin} \n\nOs administradores de “{space}” estão solicitando visualizar suas análises de aprendizado.\n\nSe você concordar, eles poderão visualizar seu:\n    • vocabulário total\n    • total de conceitos gramaticais\n    • total de sessões de atividade concluídas\n    • os conceitos gramaticais específicos usados, corretamente e incorretamente\n\nEles não poderão visualizar seu:\n    • mensagens em chats fora do curso\n    • lista de vocabulário",
   "allowAccess": "Permitir Acesso",
   "denyAccess": "Negar Acesso",
   "adminRequestedAccess": "Os administradores solicitaram para ver as suas análises.",
@@ -3762,7 +3762,7 @@
   "loginToAccount": "Entrar na minha conta",
   "appDescription": "Aprenda uma língua\nenquanto envia mensagens aos seus amigos.",
   "languages": "Línguas",
-  "chooseLanguage": "Escolha uma língua.",
+  "chooseLanguage": "Escolha um idioma de destino.",
   "planTrip": "Planear a sua viagem",
   "howAreYouTraveling": "Como está a viajar?",
   "unlockPrivateTrip": "Desbloquear uma viagem privada",
@@ -3816,7 +3816,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-11-04 13:34:34.127034",
+  "@@last_modified": "2025-11-05 14:21:07.844595",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12170,6 +12170,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

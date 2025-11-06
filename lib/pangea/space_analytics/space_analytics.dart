@@ -215,6 +215,20 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     _initialize();
   }
 
+  @override
+  void didUpdateWidget(covariant SpaceAnalytics oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.roomId != widget.roomId) {
+      initialized = false;
+      selectedLanguage = null;
+      downloads = {};
+      _lastUpdated = null;
+      _profiles.clear();
+      _langsToUsers.clear();
+      _initialize();
+    }
+  }
+
   Future<void> _initialize() async {
     await room?.requestParticipants(
       [Membership.join, Membership.invite, Membership.knock],

@@ -279,15 +279,12 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
                                         width: 58.0,
                                         borderRadius:
                                             BorderRadius.circular(10.0),
-                                        replacement: Container(
-                                          height: 58.0,
-                                          width: 58.0,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                            color: theme
-                                                .colorScheme.surfaceContainer,
+                                        replacement: Avatar(
+                                          name: displayname,
+                                          borderRadius: BorderRadius.circular(
+                                            10.0,
                                           ),
+                                          size: 58.0,
                                         ),
                                       ),
                                       Flexible(

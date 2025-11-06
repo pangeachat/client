@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-11-04 13:35:41.866867",
+  "@@last_modified": "2025-11-05 14:23:02.655437",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -4682,13 +4682,13 @@
   "requestSummaries": "Demander des résumés",
   "loadingActivitySummary": "Chargement du résumé de l'activité...",
   "generatingNewActivities": "Vous êtes le premier utilisateur de cette paire de langues ! Veuillez patienter une minute, nous préparons des activités rien que pour vous.",
-  "requestAccessTitle": "Souhaitez-vous demander l'accès à la vue analytique ?",
+  "requestAccessTitle": "Demander l'accès aux analyses ?",
   "requestAccessDesc": "Souhaitez-vous demander l'accès pour voir l'analyse des participants ?\n\nSi les participants acceptent, les administrateurs de ce cours pourront voir leurs :\n    • vocabulaire total\n    • concepts grammaticaux totaux\n    • sessions d'activité terminées\n    • concepts grammaticaux spécifiques utilisés, correctement et incorrectement\n\nIls ne pourront pas voir leurs :\n    • messages dans les chats en dehors du cours\n    • liste de vocabulaire",
   "requestAccess": "Demander l'accès ({count})",
   "analyticsInactiveTitle": "Les demandes aux utilisateurs inactifs n'ont pas pu être envoyées",
   "analyticsInactiveDesc": "Les utilisateurs inactifs qui ne se sont pas connectés depuis l'introduction de cette fonctionnalité ne verront pas votre demande.\n\nLe bouton Demander apparaîtra lorsqu'ils reviendront. Vous pouvez renvoyer la demande plus tard en cliquant sur le bouton Demander sous leur nom lorsqu'il sera disponible.",
   "accessRequestedTitle": "Demande d'accès à l'analyse",
-  "accessRequestedDesc": "Les administrateurs de « {space} » demandent à voir vos analyses d'apprentissage.\n\nSi vous acceptez, les administrateurs de ce cours pourront voir votre :\n    • vocabulaire total\n    • concepts grammaticaux totaux\n    • sessions d'activité terminées\n    • concepts grammaticaux spécifiques utilisés, correctement et incorrectement\n\nIls ne pourront pas voir vos :\n    • messages dans les chats en dehors du cours\n    • liste de vocabulaire",
+  "accessRequestedDesc": "Demande d'admin(s) : {admin} \n\nLes admins de “{space}” demandent à voir vos analyses d'apprentissage.\n\nSi vous êtes d'accord, ils pourront voir votre :\n    • vocabulaire total\n    • concepts de grammaire totaux\n    • sessions d'activité totales complétées\n    • les concepts de grammaire spécifiques utilisés, correctement et incorrectement\n\nIls ne pourront pas voir votre :\n    • messages dans les chats en dehors du cours\n    • liste de vocabulaire",
   "allowAccess": "Autoriser l'accès",
   "denyAccess": "Refuser l'accès",
   "adminRequestedAccess": "Les administrateurs ont demandé à voir vos analyses.",
@@ -4781,7 +4781,7 @@
   "loginToAccount": "Se connecter à mon compte",
   "appDescription": "Apprenez une langue\ntout en envoyant des messages à vos amis.",
   "languages": "Langues",
-  "chooseLanguage": "Choisissez une langue.",
+  "chooseLanguage": "Choisissez une langue cible.",
   "planTrip": "Planifiez votre voyage",
   "howAreYouTraveling": "Comment voyagez-vous ?",
   "unlockPrivateTrip": "Déverrouiller un voyage privé",
@@ -11444,6 +11444,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

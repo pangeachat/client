@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-04 13:35:26.105229",
+  "@@last_modified": "2025-11-05 14:22:42.218688",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -3978,13 +3978,13 @@
   "requestSummaries": "Petaj resumoj",
   "loadingActivitySummary": "Ŝarĝante aktivitatresumon...",
   "generatingNewActivities": "Vi estas la unua uzanto de ĉi tiu lingvoparo! Bonvolu atendi momenton, ni pretigas aktivadojn ĝuste por vi.",
-  "requestAccessTitle": "Ĉu vi volas peti aliron al analitiko?",
+  "requestAccessTitle": "Petu aliron al analitiko?",
   "requestAccessDesc": "Ĉu vi ŝatus peti aliron por vidi partoprenantajn analitikojn?\n\nSe partoprenantoj konsentas, administrantoj de ĉi tiu kurso povos vidi iliajn:\n    • totalan vortprovizon\n    • totalajn gramatikajn konceptojn\n    • totalajn kompletigitajn aktivadsesiojn\n    • specifajn gramatikajn konceptojn uzitajn, ĝuste kaj erare\n\nIli ne povos vidi iliajn:\n    • mesaĝojn en babiladoj ekster la kurso\n    • vortprovizoliston",
   "requestAccess": "Petu aliron ({count})",
   "analyticsInactiveTitle": "Petoj al neaktivaj uzantoj ne povis esti senditaj",
   "analyticsInactiveDesc": "Neaktivaj uzantoj kiuj ne ensalutis ekde kiam ĉi tiu funkcio estis enkondukita, ne vidos vian peton.\n\nLa butono Peti aperos kiam ili revenos. Vi povas resendigi la peton poste klakante la butonon Peti sub ilia nomo kiam ĝi estos disponebla.",
   "accessRequestedTitle": "Petado pri Analitika Alirpermeso",
-  "accessRequestedDesc": "La administrantoj de “{space}” petas vidi viajn lernanalitikojn.\n\nSe vi konsentas, administrantoj de ĉi tiu kurso povos vidi viajn:\n    • totalan vortprovizon\n    • totalajn gramatikajn konceptojn\n    • totalajn kompletigitajn aktivadsesiojn\n    • specifajn gramatikajn konceptojn uzitajn, ĝuste kaj erare\n\nIli ne povos vidi viajn:\n    • mesaĝojn en babiladoj ekster la kurso\n    • vortprovizoliston",
+  "accessRequestedDesc": "Petante admin(oj): {admin} \n\nAdminoj el “{space}” petas vidi viajn lernan analitiko.\n\nSe vi konsentas, Ili povos vidi viajn:\n    • totalan vortaron\n    • totalajn gramatikajn konceptojn\n    • totalan aktivan sesiojn kompletigitajn\n    • la specifajn gramatikajn konceptojn uzitajn, ĝuste kaj malĝuste\n\nIli ne povos vidi viajn:\n    • mesaĝojn en konversacioj ekster la kurso\n    • vortaron",
   "allowAccess": "Permesi Aliron",
   "denyAccess": "Neniigi Aliron",
   "adminRequestedAccess": "Administrantoj petis vidi viajn analitikojn.",
@@ -4077,7 +4077,7 @@
   "loginToAccount": "Ensaluti al mia konto",
   "appDescription": "Lernu lingvon\ndum tekstdonado al viaj amikojn.",
   "languages": "Lingvoj",
-  "chooseLanguage": "Elektu lingvon.",
+  "chooseLanguage": "Elektu celan lingvon.",
   "planTrip": "Planadu vian vojaĝon",
   "howAreYouTraveling": "Kiel vi vojaĝas?",
   "unlockPrivateTrip": "Malŝlosu privatecan vojaĝon",
@@ -12209,6 +12209,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }
