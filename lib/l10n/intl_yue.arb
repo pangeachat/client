@@ -2187,13 +2187,13 @@
   "requestSummaries": "請求摘要",
   "loadingActivitySummary": "載入活動摘要中...",
   "generatingNewActivities": "你係呢個語言配對嘅第一個用戶！請俾我哋一分鐘，我哋正喺準備專屬你嘅活動。",
-  "requestAccessTitle": "申請查看分析數據？",
+  "requestAccessTitle": "請求分析訪問？",
   "requestAccessDesc": "你想申請查看參與者分析數據？\n\n如果參與者同意，呢個課程嘅管理員可以睇到佢哋嘅：\n    • 總詞彙量\n    • 總語法概念\n    • 完成嘅活動次數\n    • 使用嘅具體語法概念，正確同錯誤\n\n佢哋唔能睇到：\n    • 課程外嘅聊天訊息\n    • 詞彙清單",
   "requestAccess": "申請存取 ({count})",
   "analyticsInactiveTitle": "無法向非活躍用戶發出請求",
   "analyticsInactiveDesc": "自從呢個功能推出以來冇登入嘅非活躍用戶，唔會睇到你嘅請求。\n\n佢哋返嚟之後，請求按鈕會出現。你可以喺佢哋嘅名字下面點擊請求按鈕，再次發送請求。",
   "accessRequestedTitle": "分析存取請求",
-  "accessRequestedDesc": "「{space}」嘅管理員正喺請求睇你嘅學習分析數據。\n\n如果你同意，呢個課程嘅管理員可以睇到你嘅：\n    • 總詞彙量\n    • 總語法概念\n    • 完成嘅活動次數\n    • 使用嘅具體語法概念，正確同錯誤\n\n佢哋唔能睇到：\n    • 課程外嘅聊天訊息\n    • 詞彙清單",
+  "accessRequestedDesc": "請求管理員：{admin} \n\n來自「{space}」的管理員正在請求查看您的學習分析。\n\n如果您同意，他們將能夠查看您的：\n    • 總詞彙量\n    • 總語法概念\n    • 完成的總活動會話\n    • 使用的特定語法概念，包括正確和不正確的\n\n他們將無法查看您的：\n    • 課程外聊天中的消息\n    • 詞彙列表",
   "allowAccess": "允許存取",
   "denyAccess": "拒絕存取",
   "adminRequestedAccess": "管理員已請求睇你嘅分析數據。",
@@ -2341,7 +2341,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-11-05 10:36:25.092685",
+  "@@last_modified": "2025-11-05 14:20:27.415153",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11813,6 +11813,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

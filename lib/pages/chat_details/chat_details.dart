@@ -9,6 +9,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/chat_details/chat_download_provider.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_room_details.dart';
@@ -16,8 +17,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/download/download_room_extension.dart';
-import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -53,7 +52,7 @@ class ChatDetails extends StatefulWidget {
 // #Pangea
 // class ChatDetailsController extends State<ChatDetails> {
 class ChatDetailsController extends State<ChatDetails>
-    with ActivitySummariesProvider, CoursePlanProvider {
+    with ActivitySummariesProvider, CoursePlanProvider, ChatDownloadProvider {
   bool loadingActivities = true;
   bool loadingCourseSummary = true;
 
@@ -246,52 +245,6 @@ class ChatDetailsController extends State<ChatDetails>
   }
 
   // #Pangea
-  void downloadChatAction() async {
-    if (roomId == null) return;
-    final Room? room = Matrix.of(context).client.getRoomById(roomId!);
-    if (room == null) return;
-
-    final type = await showModalActionPopup(
-      context: context,
-      title: L10n.of(context).downloadGroupText,
-      actions: [
-        AdaptiveModalAction(
-          value: DownloadType.csv,
-          label: L10n.of(context).downloadCSVFile,
-        ),
-        AdaptiveModalAction(
-          value: DownloadType.txt,
-          label: L10n.of(context).downloadTxtFile,
-        ),
-        AdaptiveModalAction(
-          value: DownloadType.xlsx,
-          label: L10n.of(context).downloadXLSXFile,
-        ),
-      ],
-    );
-    if (type == null) return;
-
-    try {
-      await room.download(type, context);
-    } on EmptyChatException {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            L10n.of(context).emptyChatDownloadWarning,
-          ),
-        ),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "${L10n.of(context).oopsSomethingWentWrong} ${L10n.of(context).errorPleaseRefresh}",
-          ),
-        ),
-      );
-    }
-  }
-
   Future<void> setRoomCapacity() async {
     if (roomId == null) return;
     final Room? room = Matrix.of(context).client.getRoomById(roomId!);

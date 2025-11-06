@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-11-05 10:36:22.123495",
+  "@@last_modified": "2025-11-05 14:20:19.377772",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -4859,13 +4859,13 @@
   "requestSummaries": "Zusammenfassungen anfordern",
   "loadingActivitySummary": "Lade Aktivitätszusammenfassung...",
   "generatingNewActivities": "Sie sind der erste Benutzer dieses Sprachpaares! Bitte geben Sie uns eine Minute, wir bereiten Aktivitäten nur für Sie vor.",
-  "requestAccessTitle": "Zugriff auf Analytics anfordern?",
+  "requestAccessTitle": "Zugriff auf Analysen anfordern?",
   "requestAccessDesc": "Möchten Sie Zugriff auf die Teilnehmeranalyse beantragen?\n\nWenn die Teilnehmer zustimmen, können Administratoren dieses Kurses ihre:\n    • Gesamtvokabular\n    • Gesammtgrammatik-Konzepte\n    • Anzahl der abgeschlossenen Aktivitätssitzungen\n    • die verwendeten Grammatik-Konzepte, richtig und falsch\n\nSie werden nicht in der Lage sein, ihre:\n    • Nachrichten in Chats außerhalb des Kurses\n    • Vokabelliste",
   "requestAccess": "Zugriff anfordern ({count})",
   "analyticsInactiveTitle": "Anfragen an inaktive Benutzer konnten nicht gesendet werden",
   "analyticsInactiveDesc": "Inaktive Benutzer, die sich seit der Einführung dieses Features nicht angemeldet haben, sehen Ihre Anfrage nicht.\n\nDer Button „Anfrage“ erscheint, sobald sie zurückkehren. Sie können die Anfrage später erneut senden, indem Sie auf den Button „Anfrage“ unter ihrem Namen klicken, wenn dieser verfügbar ist.",
   "accessRequestedTitle": "Anfrage für Analytics-Zugriff",
-  "accessRequestedDesc": "Die Administratoren von „{space}“ bitten um Zugriff auf Ihre Lernanalysen.\n\nWenn Sie zustimmen, können die Administratoren dieses Kurses Ihre:\n    • Gesamtvokabeln\n    • Gesamtkonzept der Grammatik\n    • Insgesamt abgeschlossene Aktivitätssitzungen\n    • Die verwendeten Grammatikthemen, richtig und falsch\n\nSie werden nicht in der Lage sein, Ihre:\n    • Nachrichten in Chats außerhalb des Kurses\n    • Vokabelliste zu sehen",
+  "accessRequestedDesc": "Anfordernde(r) Admin(s): {admin} \n\nAdmins von “{space}” bitten darum, Ihre Lernanalysen einzusehen.\n\nWenn Sie zustimmen, können sie Folgendes einsehen:\n    • gesamten Wortschatz\n    • gesamte Grammatik Konzepte\n    • insgesamt abgeschlossene Aktivitätssitzungen\n    • die spezifischen Grammatik Konzepte, die korrekt und inkorrekt verwendet wurden\n\nSie werden nicht in der Lage sein, Folgendes einzusehen:\n    • Nachrichten in Chats außerhalb des Kurses\n    • Wortschatzliste",
   "allowAccess": "Zugriff erlauben",
   "denyAccess": "Zugriff verweigern",
   "adminRequestedAccess": "Administratoren haben um Zugriff auf Ihre Analysen gebeten.",
@@ -11127,6 +11127,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

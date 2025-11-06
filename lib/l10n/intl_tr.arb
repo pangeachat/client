@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-05 10:36:42.687819",
+  "@@last_modified": "2025-11-05 14:21:33.144697",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -4735,13 +4735,13 @@
   "requestSummaries": "Özetleri talep et",
   "loadingActivitySummary": "Etkinlik özeti yükleniyor...",
   "generatingNewActivities": "Bu dil çifti için ilk kullanıcı sizsiniz! Lütfen bir dakika verin, sizin için etkinlikler hazırlıyoruz.",
-  "requestAccessTitle": "Analitik görüntüleme erişimi talep edilsin mi?",
+  "requestAccessTitle": "Analitik erişimi talep edilsin mi?",
   "requestAccessDesc": "Katılımcıların analitiklerini görüntüleme erişimi talep etmek ister misiniz?\n\nKatılımcılar kabul ederse, bu kursun yöneticileri:\n    • toplam kelime dağarcığını\n    • toplam dilbilgisi kavramlarını\n    • tamamlanan toplam etkinlik oturumlarını\n    • doğru ve yanlış kullanılan belirli dilbilgisi kavramlarını görebilecekler.\n\nGörme imkanları olmayacak:\n    • kurs dışındaki sohbetlerdeki mesajlar\n    • kelime listesi",
   "requestAccess": "Erişim iste ({count})",
   "analyticsInactiveTitle": "Etkin olmayan kullanıcılara yapılan istekler gönderilemedi",
   "analyticsInactiveDesc": "Bu özellik tanıtıldıktan sonra giriş yapmamış etkin olmayan kullanıcılar isteğinizi görmeyecek.\n\nKullanıcı geri döndüğünde İstek düğmesi görünecek. Kullanıcı adlarının altındaki İstek düğmesine tıklayarak isteği daha sonra yeniden gönderebilirsiniz.",
   "accessRequestedTitle": "Analitik Erişim Talebi",
-  "accessRequestedDesc": "“{space}” yöneticileri, öğrenme analitiklerinizi görüntülemek istiyor.\n\nKabul ederseniz, bu kursun yöneticileri şunları görebilecektir:\n    • toplam kelime dağarcığı\n    • toplam dilbilgisi kavramları\n    • tamamlanan toplam etkinlik oturumu\n    • kullanılan, doğru ve yanlış dilbilgisi kavramları\n\nAyrıca, aşağıdaki bilgileri göremeyeceklerdir:\n    • kurs dışındaki sohbetlerdeki mesajlar\n    • kelime listesi",
+  "accessRequestedDesc": "Yönetici(ler) talep ediliyor: {admin} \n\n“{space}” alanından yöneticiler, öğrenme analitiklerinizi görüntülemek istiyor.\n\nKabul ederseniz, şunları görüntüleyebilecekler:\n    • toplam kelime dağarcığı\n    • toplam dilbilgisi kavramları\n    • tamamlanan toplam etkinlik oturumları\n    • doğru ve yanlış kullanılan belirli dilbilgisi kavramları\n\nŞunları görüntüleyemeyecekler:\n    • kurs dışındaki sohbetlerdeki mesajlar\n    • kelime listesi",
   "allowAccess": "Erişime İzin Ver",
   "denyAccess": "Erişimi Reddet",
   "adminRequestedAccess": "Yöneticiler, analitiklerinizi görüntülemek istiyor.",
@@ -11342,6 +11342,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

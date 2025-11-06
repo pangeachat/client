@@ -2301,13 +2301,13 @@
   "requestSummaries": "Requerer summarios",
   "loadingActivitySummary": "Loading le summario de activitate...",
   "generatingNewActivities": "Tu es le prime usator de iste parie de linguas! Per favor, da nos un minuto, nos es preparante actividades solmente pro te.",
-  "requestAccessTitle": "Requestar accesso a vista de analytics?",
+  "requestAccessTitle": "Demanar accès a l'analítica?",
   "requestAccessDesc": "Vole tu requestar accesso a vider le analytics de participantes?\n\nSi le participantes agree, le administratores de iste curso potera vider lor:\n    • total vocabulario\n    • total conceptos de grammatica\n    • total sessiones de activitate complete\n    • le conceptos de grammatica specificate, correctemente e incorrectemente\n\nIlles non potera vider lor:\n    • messages in chats extra le curso\n    • lista de vocabulario",
   "requestAccess": "Requestar accesso ({count})",
   "analyticsInactiveTitle": "Le requestes a usatores inactive non pote esser inviate",
   "analyticsInactiveDesc": "Usatores inactive que non ha login ab le introduccione de iste caracteristica non vide tu requesta.\n\nLe button Requesta apparira una vice illes returna. Tu pote renvocar le requesta postea cliccando le button Requesta sub lor nomine quando illo es disponibile.",
   "accessRequestedTitle": "Requesta de accesso a analytics",
-  "accessRequestedDesc": "Le administratores de “{space}” requesta vider tu analytics de apprendimento.\n\nSi tu es de accordo, le administratores de iste curso potera vider tu:\n    • total vocabulario\n    • total conceptos de grammatica\n    • total sessiones de activitate complete\n    • le conceptos de grammatica specificate, correctemente e incorrectemente\n\nIlles non potera vider tu:\n    • messages in chats extra le curso\n    • lista de vocabulario",
+  "accessRequestedDesc": "Demanant admin(s): {admin} \n\nEls administradors de “{space}” estan demanant veure la teva analítica d'aprenentatge.\n\nSi estàs d'acord, podran veure el teu:\n    • vocabulari total\n    • conceptes gramaticals totals\n    • sessions d'activitat totals completades\n    • els conceptes gramaticals específics utilitzats, correctament i incorrectament\n\nNo podran veure el teu:\n    • missatges en xats fora del curs\n    • llista de vocabulari",
   "allowAccess": "Permitte accesso",
   "denyAccess": "Denyer accesso",
   "adminRequestedAccess": "Le administratores requestava vider tu analytics.",
@@ -2439,7 +2439,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2025-11-05 10:36:15.539640",
+  "@@last_modified": "2025-11-05 14:19:53.269921",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12198,6 +12198,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

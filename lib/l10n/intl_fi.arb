@@ -4374,13 +4374,13 @@
   "requestSummaries": "Pyydä yhteenvetoja",
   "loadingActivitySummary": "Ladataan aktiviteetin yhteenvetoa...",
   "generatingNewActivities": "Olet tämän kieliparin ensimmäinen käyttäjä! Odota hetki, valmistelemme aktiviteetteja juuri sinulle.",
-  "requestAccessTitle": "Pyytääksesi pääsyä analytiikan katseluun?",
+  "requestAccessTitle": "Pyydä analytiikkapääsyä?",
   "requestAccessDesc": "Haluatko pyytää pääsyä nähdäksesi osallistujien analytiikan?\n\nJos osallistujat suostuvat, kurssin ylläpitäjät voivat nähdä heidän:\n    • kokonaissanaston\n    • kokonaiskielioppikonseptit\n    • kokonaisaktiviteettisessiot, jotka on suoritettu\n    • käytetyt, oikein ja väärin, kielioppikonseptit\n\nHe eivät voi nähdä heidän:\n    • viestejä keskusteluissa kurssin ulkopuolella\n    • sanastoluetteloa",
   "requestAccess": "Pyydä pääsyä ({count})",
   "analyticsInactiveTitle": "Ei voitu lähettää pyyntöjä inaktiivisille käyttäjille",
   "analyticsInactiveDesc": "Inaktiiviset käyttäjät, jotka eivät ole kirjautuneet sisään tämän ominaisuuden käyttöönoton jälkeen, eivät näe pyyntöäsi.\n\nPyyntöpainike ilmestyy, kun he palaavat. Voit lähettää pyynnön uudelleen myöhemmin napsauttamalla Pyyntö-painiketta heidän nimensä alla, kun se on saatavilla.",
   "accessRequestedTitle": "Analytiikan pääsypyyntö",
-  "accessRequestedDesc": "Kohteen “{space}” ylläpitäjät pyytävät katsomaan oppimisanalyyttisiä tietojasi.\n\nJos suostut, kurssin ylläpitäjät voivat nähdä sinun:\n    • kokonaissanaston\n    • kokonaiskielioppikonseptit\n    • kokonaisaktiviteettisessiot, jotka on suoritettu\n    • käytetyt, oikein ja väärin, kielioppikonseptit\n\nHe eivät voi nähdä sinun:\n    • viestejä keskusteluissa kurssin ulkopuolella\n    • sanastoluetteloa",
+  "accessRequestedDesc": "Pyydetään ylläpitäjää(t): {admin} \n\nYlläpitäjät tilasta “{space}” pyytävät päästäkseen tarkastelemaan oppimisanalyysejäsi.\n\nJos hyväksyt, he voivat tarkastella:\n    • koko sanavarastoasi\n    • kaikkia kielioppikäsitteitäsi\n    • kaikkia suorittamiasi aktiviteettisessioita\n    • käytettyjä kielioppikäsitteitä, oikein ja väärin\n\nHe eivät voi tarkastella:\n    • viestejä kursseja ulkopuolella olevissa keskusteluissa\n    • sanavarastoluetteloasi",
   "allowAccess": "Salli pääsy",
   "denyAccess": "Estä pääsy",
   "adminRequestedAccess": "Ylläpitäjät pyytävät katsomaan analytiikkaasi.",
@@ -4512,7 +4512,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-11-05 10:35:56.560001",
+  "@@last_modified": "2025-11-05 14:19:10.459600",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11765,6 +11765,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

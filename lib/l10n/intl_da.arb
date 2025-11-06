@@ -2273,13 +2273,13 @@
   "requestSummaries": "Anmod om oversigter",
   "loadingActivitySummary": "Indlæser aktivitetsoversigt...",
   "generatingNewActivities": "Du er den første bruger af denne sprogpar! Giv os et øjeblik, vi forbereder aktiviteter kun til dig.",
-  "requestAccessTitle": "Anmodning om adgang til analytics-visning?",
+  "requestAccessTitle": "Anmod om adgang til analyser?",
   "requestAccessDesc": "Vil du anmode om adgang til at se deltageranalyser?\n\nHvis deltagerne er enige, vil administratorerne for dette kursus kunne se deres:\n    • samlet ordforråd\n    • samlede grammatiske begreber\n    • samlede gennemførte aktivitetsessioner\n    • de specifikke grammatiske begreber, der er brugt, korrekt og forkert\n\nDe vil ikke kunne se deres:\n    • beskeder i chats uden for kurset\n    • ordforrådslisten",
   "requestAccess": "Anmod om adgang ({count})",
   "analyticsInactiveTitle": "Anmodninger til inaktive brugere kunne ikke sendes",
   "analyticsInactiveDesc": "Inaktive brugere, der ikke har logget ind, siden denne funktion blev introduceret, vil ikke se din anmodning.\n\nAnmodningsknappen vil vises, når de vender tilbage. Du kan gensende anmodningen senere ved at klikke på Anmodningsknappen under deres navn, når den er tilgængelig.",
   "accessRequestedTitle": "Anmodning om adgang til analytics",
-  "accessRequestedDesc": "Administratorerne af “{space}” anmoder om at se dine læringsanalyser.\n\nHvis du er enig, vil administratorerne for dette kursus kunne se dine:\n    • samlet ordforråd\n    • samlede grammatiske begreber\n    • samlede gennemførte aktivitetsessioner\n    • de specifikke grammatiske begreber, der er brugt, korrekt og forkert\n\nDe vil ikke kunne se dine:\n    • beskeder i chats uden for kurset\n    • ordforrådslisten",
+  "accessRequestedDesc": "Anmoder admin(s): {admin} \n\nAdministratorer fra “{space}” anmoder om at se dine læringsanalyser.\n\nHvis du accepterer, vil de kunne se din:\n    • samlede ordforråd\n    • samlede grammatikbegreber\n    • samlede gennemførte aktivitetssessioner\n    • de specifikke grammatikbegreber, der er brugt, korrekt og forkert\n\nDe vil ikke kunne se din:\n    • beskeder i chats uden for kurset\n    • ordforrådsliste",
   "allowAccess": "Tillad adgang",
   "denyAccess": "Afvis adgang",
   "adminRequestedAccess": "Administratorer har bedt om at se dine analyser.",
@@ -2411,7 +2411,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-11-05 10:35:58.812444",
+  "@@last_modified": "2025-11-05 14:19:16.131785",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12182,6 +12182,9 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }

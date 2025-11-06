@@ -14,6 +14,8 @@ import 'package:fluffychat/pages/chat/chat_app_bar_title.dart';
 import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_menu_button.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_session_popup_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_floating_action_button.dart';
@@ -120,46 +122,53 @@ class ChatView extends StatelessWidget {
     //         ],
     //       ),
     //   ];
-    // } else
-    // if (!controller.room.isArchived) {
-    // return [
-    //   if (AppConfig.experimentalVoip &&
-    //       Matrix.of(context).voipPlugin != null &&
-    //       controller.room.isDirectChat)
-    //     IconButton(
-    //       onPressed: controller.onPhoneButtonTap,
-    //       icon: const Icon(Icons.call_outlined),
-    //       tooltip: L10n.of(context).placeCall,
-    //     ),
-    //   EncryptionButton(controller.room),
-    //   ChatSettingsPopupMenu(controller.room, true),
-    // ];
-    if (!(controller.room.isArchived || controller.room.hasArchivedActivity)) {
-      return [
-        if (controller.room.activityPlan == null ||
-            !controller.room.showActivityChatUI)
-          IconButton(
-            icon: const Icon(Icons.search_outlined),
-            tooltip: L10n.of(context).search,
-            onPressed: () {
-              context.go('/rooms/${controller.room.id}/search');
-            },
-          ),
-        IconButton(
-          icon: const Icon(Icons.settings_outlined),
-          tooltip: L10n.of(context).chatDetails,
-          onPressed: () {
-            if (GoRouterState.of(context).uri.path.endsWith('/details')) {
-              context.go('/rooms/${controller.room.id}');
-            } else {
-              context.go('/rooms/${controller.room.id}/details');
-            }
-          },
-        ),
-      ];
-      // Pangea#
+    // } else if (!controller.room.isArchived) {
+    //   return [
+    //     if (AppConfig.experimentalVoip &&
+    //         Matrix.of(context).voipPlugin != null &&
+    //         controller.room.isDirectChat)
+    //       IconButton(
+    //         onPressed: controller.onPhoneButtonTap,
+    //         icon: const Icon(Icons.call_outlined),
+    //         tooltip: L10n.of(context).placeCall,
+    //       ),
+    //     EncryptionButton(controller.room),
+    //     ChatSettingsPopupMenu(controller.room, true),
+    //   ];
+    // }
+    // return [];
+    if (controller.room.isArchived || controller.room.hasArchivedActivity) {
+      return [];
     }
-    return [];
+
+    if (controller.room.showActivityChatUI) {
+      return [
+        ActivityMenuButton(controller: controller),
+        ActivitySessionPopupMenu(controller.room),
+      ];
+    }
+
+    return [
+      IconButton(
+        icon: const Icon(Icons.search_outlined),
+        tooltip: L10n.of(context).search,
+        onPressed: () {
+          context.go('/rooms/${controller.room.id}/search');
+        },
+      ),
+      IconButton(
+        icon: const Icon(Icons.settings_outlined),
+        tooltip: L10n.of(context).chatDetails,
+        onPressed: () {
+          if (GoRouterState.of(context).uri.path.endsWith('/details')) {
+            context.go('/rooms/${controller.room.id}');
+          } else {
+            context.go('/rooms/${controller.room.id}/details');
+          }
+        },
+      ),
+    ];
+    // Pangea#
   }
 
   @override
@@ -212,9 +221,6 @@ class ChatView extends StatelessWidget {
                 // backgroundColor: controller.selectedEvents.isEmpty
                 //     ? null
                 //     : theme.colorScheme.tertiaryContainer,
-                toolbarHeight:
-                    controller.room.showActivityChatUI ? 106.0 : null,
-                centerTitle: controller.room.showActivityChatUI,
                 // Pangea#
                 automaticallyImplyLeading: false,
                 leading: controller.selectMode
