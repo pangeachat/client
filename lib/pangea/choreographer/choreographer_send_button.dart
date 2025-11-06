@@ -1,0 +1,43 @@
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
+import 'package:flutter/material.dart';
+
+class ChoreographerSendButton extends StatelessWidget {
+  final ChatController controller;
+  const ChoreographerSendButton({
+    super.key,
+    required this.controller,
+  });
+
+  Future<void> _onPressed(BuildContext context) async {
+    controller.choreographer.onClickSend();
+    controller.onInputBarSubmitted();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: Listenable.merge([
+        controller.sendController,
+        controller.choreographer.isFetching,
+      ]),
+      builder: (context, _) {
+        return Container(
+          height: 56,
+          alignment: Alignment.center,
+          child: IconButton(
+            icon: const Icon(Icons.send_outlined),
+            color: controller.choreographer.assistanceState
+                .sendButtonColor(context),
+            onPressed: controller.choreographer.isFetching.value
+                ? null
+                : () => _onPressed(context),
+            tooltip: L10n.of(context).send,
+          ),
+        );
+      },
+    );
+  }
+}

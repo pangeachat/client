@@ -1,1 +1,0 @@
-enum ChoreoMode { igc, it }

@@ -2,23 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:universal_html/html.dart' as html;
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -35,21 +21,18 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
+import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
-import 'package:fluffychat/pangea/choreographer/repo/language_mismatch_repo.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/language_mismatch_popup.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/message_analytics_feedback.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
+import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
+import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
+import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -63,9 +46,12 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/repo/language_mismatch_repo.dart';
+import 'package:fluffychat/pangea/learning_settings/widgets/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
+import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_notification.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
@@ -85,6 +71,19 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_html/html.dart' as html;
+
 import '../../utils/account_bundles.dart';
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
@@ -325,7 +324,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (draft != null && draft.isNotEmpty) {
       // #Pangea
       // sendController.text = draft;
-      sendController.setSystemText(draft, EditType.other);
+      sendController.setSystemText(draft, EditTypeEnum.other);
       // Pangea#
     }
   }
@@ -876,7 +875,7 @@ class ChatController extends State<ChatPageWithRoom>
       editEventId: editEvent?.eventId,
     );
     inputFocus.unfocus();
-    sendController.setSystemText("", EditType.other);
+    sendController.setSystemText("", EditTypeEnum.other);
     setState(() => _fakeEventIDs.add(eventID));
 
     // wait for the next event to come through before clearing any fake event,
@@ -916,7 +915,7 @@ class ChatController extends State<ChatPageWithRoom>
     PangeaRepresentation? originalWritten,
     PangeaMessageTokens? tokensSent,
     PangeaMessageTokens? tokensWritten,
-    ChoreoRecord? choreo,
+    ChoreoRecordModel? choreo,
     String? tempEventId,
   }) async {
     if (message.trim().isEmpty) return;
@@ -960,7 +959,7 @@ class ChatController extends State<ChatPageWithRoom>
     // typing a new message. We don't want to erase that, so only reset the input
     // bar text if the message is the same as the sendController text.
     if (message == sendController.text) {
-      sendController.setSystemText("", EditType.other);
+      sendController.setSystemText("", EditTypeEnum.other);
     }
 
     final previousEdit = editEvent;
@@ -1964,7 +1963,7 @@ class ChatController extends State<ChatPageWithRoom>
         if (editEvent != null) {
           // #Pangea
           // sendController.text = pendingText;
-          sendController.setSystemText(pendingText, EditType.other);
+          sendController.setSystemText(pendingText, EditTypeEnum.other);
           // Pangea#
           pendingText = '';
         }
@@ -2084,7 +2083,7 @@ class ChatController extends State<ChatPageWithRoom>
     String? eventId, {
     PangeaRepresentation? originalSent,
     PangeaMessageTokens? tokensSent,
-    ChoreoRecord? choreo,
+    ChoreoRecordModel? choreo,
   }) {
     // There's a listen in my_analytics_controller that decides when to auto-update
     // analytics based on when / how many messages the logged in user send. This

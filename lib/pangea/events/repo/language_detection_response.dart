@@ -1,7 +1,7 @@
-import 'package:fluffychat/pangea/choreographer/models/language_detection_model.dart';
+import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 
 class LanguageDetectionResponse {
-  List<LanguageDetection> detections;
+  List<LanguageDetectionModel> detections;
   String fullText;
 
   LanguageDetectionResponse({
@@ -11,9 +11,9 @@ class LanguageDetectionResponse {
 
   factory LanguageDetectionResponse.fromJson(Map<String, dynamic> json) {
     return LanguageDetectionResponse(
-      detections: List<LanguageDetection>.from(
+      detections: List<LanguageDetectionModel>.from(
         (json['detections'] as Iterable).map(
-          (e) => LanguageDetection.fromJson(e),
+          (e) => LanguageDetectionModel.fromJson(e),
         ),
       ),
       fullText: json['full_text'],

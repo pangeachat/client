@@ -2,14 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -28,7 +22,12 @@ import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import '../../../widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 import '../../learning_settings/constants/language_constants.dart';
@@ -399,10 +398,10 @@ class PangeaMessageEvent {
     }
   }
 
-  ChoreoRecord? get _embeddedChoreo {
+  ChoreoRecordModel? get _embeddedChoreo {
     try {
       if (_latestEdit.content[ModelKey.choreoRecord] == null) return null;
-      return ChoreoRecord.fromJson(
+      return ChoreoRecordModel.fromJson(
         _latestEdit.content[ModelKey.choreoRecord] as Map<String, dynamic>,
         originalWrittenContent,
       );

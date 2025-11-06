@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/choreographer/models/language_detection_model.dart';
+import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 
 class LanguageKeys {
   static const unknownLanguage = "unk";
@@ -12,7 +12,7 @@ class PrefKey {
   static const languagesKey = 'p_lang_flag';
 }
 
-const LanguageDetection unknownLanguageDetection = LanguageDetection(
+const LanguageDetectionModel unknownLanguageDetection = LanguageDetectionModel(
   langCode: LanguageKeys.unknownLanguage,
   confidence: 0.5,
 );

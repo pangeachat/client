@@ -1,0 +1,418 @@
+import 'dart:async';
+
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
+import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart';
+import 'package:fluffychat/pangea/choreographer/it/it_feedback_card.dart';
+import 'package:fluffychat/pangea/choreographer/it/word_data_card.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
+import '../../common/utils/overlay.dart';
+import '../../common/widgets/choice_array.dart';
+
+class ITBar extends StatefulWidget {
+  final Choreographer choreographer;
+  const ITBar({super.key, required this.choreographer});
+
+  @override
+  ITBarState createState() => ITBarState();
+}
+
+class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+  final TextEditingController _sourceTextController = TextEditingController();
+
+  Timer? _successTimer;
+  bool _visible = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
+    _openListener();
+    _open.addListener(_openListener);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _sourceTextController.dispose();
+    _successTimer?.cancel();
+    _open.removeListener(_openListener);
+    super.dispose();
+  }
+
+  void _openListener() {
+    if (!mounted) return;
+
+    final nextText = _sourceText.value ?? widget.choreographer.currentText;
+    if (_sourceTextController.text != nextText) {
+      _sourceTextController.text = nextText;
+    }
+
+    if (_open.value) {
+      setState(() => _visible = true);
+      _controller.forward();
+    } else {
+      _controller.reverse().then((value) {
+        if (!mounted) return;
+        setState(() => _visible = false);
+      });
+    }
+  }
+
+  ValueNotifier<String?> get _sourceText =>
+      widget.choreographer.itController.sourceText;
+  ValueNotifier<bool> get _open => widget.choreographer.itController.open;
+
+  void _showFeedbackCard(
+    int index, [
+    Color? borderColor,
+    String? choiceFeedback,
+  ]) {
+    final currentStep = widget.choreographer.itController.currentITStep.value;
+    if (currentStep == null) {
+      ErrorHandler.logError(
+        m: "currentITStep is null in showCard",
+        s: StackTrace.current,
+        data: {
+          "index": index,
+        },
+      );
+      return;
+    }
+
+    final text = currentStep.continuances[index].text;
+    MatrixState.pAnyState.closeOverlay("it_feedback_card");
+    OverlayUtil.showPositionedCard(
+      context: context,
+      cardToShow: choiceFeedback == null
+          ? WordDataCard(
+              word: text,
+              wordLang: widget.choreographer.l2LangCode!,
+              fullText: _sourceText.value ?? widget.choreographer.currentText,
+              fullTextLang: widget.choreographer.l1LangCode!,
+            )
+          : ITFeedbackCard(
+              FullTextTranslationRequestModel(
+                text: text,
+                tgtLang: widget.choreographer.l1LangCode!,
+                userL1: widget.choreographer.l1LangCode!,
+                userL2: widget.choreographer.l2LangCode!,
+              ),
+            ),
+      maxHeight: 300,
+      maxWidth: 300,
+      borderColor: borderColor,
+      transformTargetId: widget.choreographer.itBarTransformTargetKey,
+      isScrollable: choiceFeedback == null,
+      overlayKey: "it_feedback_card",
+      ignorePointer: true,
+    );
+  }
+
+  void _selectContinuance(int index) {
+    MatrixState.pAnyState.closeOverlay("it_feedback_card");
+    ContinuanceModel continuance;
+    try {
+      continuance =
+          widget.choreographer.itController.onSelectContinuance(index);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        level: SentryLevel.warning,
+        data: {
+          "index": index,
+        },
+      );
+      widget.choreographer.itController.closeIT();
+      return;
+    }
+
+    if (continuance.level == 1) {
+      _onCorrectSelection(index);
+    } else {
+      _showFeedbackCard(
+        index,
+        continuance.level == 2 ? ChoreoConstants.yellow : ChoreoConstants.red,
+        continuance.feedbackText(context),
+      );
+    }
+  }
+
+  void _onCorrectSelection(int index) {
+    _successTimer?.cancel();
+    _successTimer = Timer(const Duration(milliseconds: 500), () {
+      if (!mounted) return;
+      try {
+        widget.choreographer.onAcceptContinuance(index);
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          level: SentryLevel.warning,
+          data: {
+            "index": index,
+          },
+        );
+        widget.choreographer.itController.closeIT();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_visible) {
+      return const SizedBox.shrink();
+    }
+
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) => SizeTransition(
+        sizeFactor: _animation,
+        axisAlignment: -1.0,
+        child: child,
+      ),
+      child: CompositedTransformTarget(
+        link: widget.choreographer.itBarLinkAndKey.link,
+        child: Column(
+          children: [
+            if (!InstructionsEnum.clickBestOption.isToggledOff) ...[
+              const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.clickBestOption,
+                animate: false,
+              ),
+              const SizedBox(height: 8.0),
+            ],
+            Container(
+              key: widget.choreographer.itBarLinkAndKey.key,
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+                color: Theme.of(context).colorScheme.surfaceContainer,
+              ),
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                spacing: 12.0,
+                children: [
+                  _ITBarHeader(
+                    onClose: widget.choreographer.itController.closeIT,
+                    setEditing: widget.choreographer.itController.setEditing,
+                    editing: widget.choreographer.itController.editing,
+                    sourceTextController: _sourceTextController,
+                    sourceText: _sourceText,
+                    onSubmitEdits: (_) => widget.choreographer.onSubmitEdits(
+                      _sourceTextController.text,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    constraints: const BoxConstraints(minHeight: 80),
+                    child: Center(
+                      child: widget.choreographer.errorService.isError
+                          ? Row(
+                              spacing: 8.0,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ErrorIndicator(
+                                  message: L10n.of(context).translationError,
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    color: Theme.of(context).colorScheme.error,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed:
+                                      widget.choreographer.itController.closeIT,
+                                  icon: const Icon(
+                                    Icons.close,
+                                    size: 20,
+                                  ),
+                                ),
+                              ],
+                            )
+                          : ValueListenableBuilder(
+                              valueListenable: widget
+                                  .choreographer.itController.currentITStep,
+                              builder: (context, step, __) {
+                                return step == null
+                                    ? CircularProgressIndicator(
+                                        strokeWidth: 2.0,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      )
+                                    : _ITChoices(
+                                        continuances: step.continuances,
+                                        onPressed: _selectContinuance,
+                                        onLongPressed: _showFeedbackCard,
+                                      );
+                              },
+                            ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ITBarHeader extends StatelessWidget {
+  final VoidCallback onClose;
+  final Function(String) onSubmitEdits;
+  final Function(bool) setEditing;
+
+  final ValueNotifier<bool> editing;
+  final TextEditingController sourceTextController;
+  final ValueNotifier<String?> sourceText;
+
+  const _ITBarHeader({
+    required this.onClose,
+    required this.setEditing,
+    required this.editing,
+    required this.onSubmitEdits,
+    required this.sourceTextController,
+    required this.sourceText,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: editing,
+      builder: (context, isEditing, __) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedCrossFade(
+              duration: const Duration(milliseconds: 200),
+              crossFadeState: isEditing
+                  ? CrossFadeState.showFirst
+                  : CrossFadeState.showSecond,
+              firstChild: Row(
+                spacing: 12.0,
+                children: [
+                  Expanded(
+                    child: TextField(
+                      controller: sourceTextController,
+                      autofocus: true,
+                      enableSuggestions: false,
+                      maxLines: null,
+                      textInputAction: TextInputAction.send,
+                      onSubmitted: onSubmitEdits,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    color: Theme.of(context).colorScheme.primary,
+                    icon: const Icon(Icons.close_outlined),
+                    onPressed: () => setEditing(false),
+                  ),
+                ],
+              ),
+              secondChild: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                    color: Theme.of(context).colorScheme.primary,
+                    onPressed: () => setEditing(true),
+                    icon: const Icon(Icons.edit_outlined),
+                  ),
+                  IconButton(
+                    color: Theme.of(context).colorScheme.primary,
+                    icon: const Icon(Icons.settings_outlined),
+                    onPressed: () => showDialog(
+                      context: context,
+                      builder: (c) => const SettingsLearning(),
+                      barrierDismissible: false,
+                    ),
+                  ),
+                  IconButton(
+                    color: Theme.of(context).colorScheme.primary,
+                    icon: const Icon(Icons.close_outlined),
+                    onPressed: onClose,
+                  ),
+                ],
+              ),
+            ),
+            isEditing
+                ? const SizedBox(height: 24.0)
+                : ValueListenableBuilder(
+                    valueListenable: sourceText,
+                    builder: (context, text, __) {
+                      return Container(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        constraints: const BoxConstraints(minHeight: 24.0),
+                        child: sourceText.value != null
+                            ? Text(
+                                sourceText.value!,
+                                textAlign: TextAlign.center,
+                              )
+                            : const SizedBox(),
+                      );
+                    },
+                  ),
+          ],
+        );
+      },
+    );
+  }
+}
+
+class _ITChoices extends StatelessWidget {
+  final List<ContinuanceModel> continuances;
+  final Function(int) onPressed;
+  final Function(int) onLongPressed;
+
+  const _ITChoices({
+    required this.continuances,
+    required this.onPressed,
+    required this.onLongPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ChoicesArray(
+      id: Object.hashAll(continuances).toString(),
+      isLoading: false,
+      choices: [
+        ...continuances.map(
+          (e) => Choice(
+            text: e.text.trim(),
+            color: e.color,
+            isGold: e.description == "best",
+          ),
+        ),
+      ],
+      onPressed: (value, index) => onPressed(index),
+      onLongPress: (value, index) => onLongPressed(index),
+      selectedChoiceIndex: null,
+      langCode: MatrixState.pangeaController.languageController.activeL2Code(),
+    );
+  }
+}

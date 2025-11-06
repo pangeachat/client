@@ -1,17 +1,16 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
-import '../../choreographer/models/choreo_record.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart';
+
+import '../../choreographer/choreo_record_model.dart';
 import '../constants/pangea_event_types.dart';
 
 class ChoreoEvent {
   Event event;
-  ChoreoRecord? _content;
+  ChoreoRecordModel? _content;
 
   ChoreoEvent({required this.event}) {
     if (event.type != PangeaEventTypes.choreoRecord) {
@@ -21,9 +20,9 @@ class ChoreoEvent {
     }
   }
 
-  ChoreoRecord? get content {
+  ChoreoRecordModel? get content {
     try {
-      _content ??= event.getPangeaContent<ChoreoRecord>();
+      _content ??= event.getPangeaContent<ChoreoRecordModel>();
       return _content;
     } catch (err, s) {
       debugger(when: kDebugMode);

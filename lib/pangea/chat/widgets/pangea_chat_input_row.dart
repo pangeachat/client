@@ -1,18 +1,16 @@
-import 'package:flutter/material.dart';
-
 import 'package:animations/animations.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/input_bar.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/send_button.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_send_button.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
+import 'package:fluffychat/pangea/choreographer/igc/start_igc_button.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:flutter/material.dart';
 
 class PangeaChatInputRow extends StatelessWidget {
   final ChatController controller;

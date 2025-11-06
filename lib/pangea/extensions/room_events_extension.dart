@@ -200,7 +200,7 @@ extension EventsRoomExtension on Room {
     PangeaRepresentation? originalWritten,
     PangeaMessageTokens? tokensSent,
     PangeaMessageTokens? tokensWritten,
-    ChoreoRecord? choreo,
+    ChoreoRecordModel? choreo,
     String? messageTag,
     String? tempEventId,
   }) {
