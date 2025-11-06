@@ -23,10 +23,8 @@ class IgcController {
 
   String? get currentText => _igcTextData?.currentText;
   bool get hasOpenMatches => _igcTextData?.hasOpenMatches == true;
-  bool get hasOpenITMatches => _igcTextData?.hasOpenITMatches == true;
-  bool get hasOpenIGCMatches => _igcTextData?.hasOpenIGCMatches == true;
 
-  PangeaMatchState? get openMatch => _igcTextData?.openMatch;
+  PangeaMatchState? get currentlyOpenMatch => _igcTextData?.currentlyOpenMatch;
   PangeaMatchState? get firstOpenMatch => _igcTextData?.firstOpenMatch;
   List<PangeaMatchState>? get openMatches => _igcTextData?.openMatches;
   List<PangeaMatchState>? get recentNormalizationMatches =>
@@ -43,10 +41,10 @@ class IgcController {
     MatrixState.pAnyState.closeAllOverlays();
   }
 
-  void clearMatches() => _igcTextData?.clearMatches();
+  void clearIGCMatches() => _igcTextData?.clearIGCMatches();
 
   PangeaMatchState? getMatchByOffset(int offset) =>
-      _igcTextData?.getMatchByOffset(offset);
+      _igcTextData?.getOpenMatchByOffset(offset);
 
   PangeaMatch acceptReplacement(
     PangeaMatchState match,
@@ -55,7 +53,7 @@ class IgcController {
     if (_igcTextData == null) {
       throw "acceptReplacement called with null igcTextData";
     }
-    final updateMatch = _igcTextData!.acceptReplacement(match, status);
+    final updateMatch = _igcTextData!.makeAcceptedMatchUpdates(match, status);
     return updateMatch;
   }
 
@@ -64,14 +62,14 @@ class IgcController {
     if (_igcTextData == null) {
       throw "should not be in onIgnoreMatch with null igcTextData";
     }
-    return _igcTextData!.ignoreReplacement(match);
+    return _igcTextData!.makeIgnoredMatchUpdates(match);
   }
 
   void undoReplacement(PangeaMatchState match) {
     if (_igcTextData == null) {
       throw "undoReplacement called with null igcTextData";
     }
-    _igcTextData!.undoReplacement(match);
+    _igcTextData!.removeMatchUpdates(match);
   }
 
   Future<void> getIGCTextData(

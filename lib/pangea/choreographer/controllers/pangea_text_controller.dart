@@ -201,7 +201,7 @@ class PangeaTextController extends TextEditingController {
       }
 
       final openMatch =
-          choreographer.igcController.openMatch?.updatedMatch.match;
+          choreographer.igcController.currentlyOpenMatch?.updatedMatch.match;
       final style = _textStyle(
         match.updatedMatch,
         defaultStyle,
