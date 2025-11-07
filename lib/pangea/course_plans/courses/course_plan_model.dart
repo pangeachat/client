@@ -99,6 +99,9 @@ class CoursePlanModel {
         ),
       ).topics;
 
+  Set<String> get activityIDs =>
+      loadedTopics.values.expand((topic) => topic.activityIds).toSet();
+
   Future<Map<String, CourseTopicModel>> fetchTopics() async {
     final resp = await CourseTopicRepo.get(
       TranslateTopicRequest(
