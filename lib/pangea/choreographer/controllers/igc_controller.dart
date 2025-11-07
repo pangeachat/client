@@ -146,9 +146,8 @@ class IgcController {
       // This will make the loading of span details faster for the user
       if (igcTextData?.matches.isNotEmpty ?? false) {
         for (int i = 0; i < igcTextData!.matches.length; i++) {
-          if (!igcTextData!.matches[i].isITStart &&
-              choreographer.l2Lang != null) {
-            spanDataController.getSpanDetails(i, choreographer.l2Lang!);
+          if (!igcTextData!.matches[i].isITStart) {
+            spanDataController.getSpanDetails(i);
           }
         }
       }

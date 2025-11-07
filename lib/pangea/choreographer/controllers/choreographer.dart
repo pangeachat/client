@@ -408,8 +408,8 @@ class Choreographer {
       igc.igcTextData!.matches[matchIndex].match.choices![choiceIndex]
           .selected = true;
 
-      final isNormalizationError = l2Lang != null &&
-          igc.spanDataController.isNormalizationError(matchIndex, l2Lang!);
+      final isNormalizationError =
+          igc.spanDataController.isL2NormalizationError(matchIndex);
 
       final match = igc.igcTextData!.matches[matchIndex].copyWith
         ..status = PangeaMatchStatus.accepted;
@@ -482,8 +482,8 @@ class Choreographer {
   void acceptNormalizationMatches() {
     final List<int> indices = [];
     for (int i = 0; i < igc.igcTextData!.matches.length; i++) {
-      final isNormalizationError = l2Lang != null &&
-          igc.spanDataController.isNormalizationError(i, l2Lang!);
+      final isNormalizationError =
+          igc.spanDataController.isL2NormalizationError(i);
       if (isNormalizationError) indices.add(i);
     }
 
@@ -545,8 +545,8 @@ class Choreographer {
       igc.onIgnoreMatch(igc.igcTextData!.matches[matchIndex]);
       igc.igcTextData!.matches[matchIndex].status = PangeaMatchStatus.ignored;
 
-      final isNormalizationError = l2Lang != null &&
-          igc.spanDataController.isNormalizationError(matchIndex, l2Lang!);
+      final isNormalizationError =
+          igc.spanDataController.isL2NormalizationError(matchIndex);
 
       if (!isNormalizationError) {
         _initChoreoRecord();

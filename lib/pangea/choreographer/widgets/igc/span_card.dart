@@ -120,21 +120,8 @@ class SpanCardState extends State<SpanCard> {
       fetchingData = true;
     });
 
-    if (widget.choreographer.l2Lang == null) {
-      ErrorHandler.logError(
-        m: "l2Lang is null when trying to get span details",
-        data: {
-          "matchIndex": widget.matchIndex,
-        },
-      );
-      setState(() {
-        fetchingData = false;
-      });
-      return;
-    }
     await widget.choreographer.igc.spanDataController.getSpanDetails(
       widget.matchIndex,
-      widget.choreographer.l2Lang!,
       force: force,
     );
 
