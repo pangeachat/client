@@ -143,6 +143,14 @@ class CourseChatsController extends State<CourseChats>
         continue;
       }
 
+      // If any user has archived the activity, don't show it.
+      // It's possible for users to finish an activity and then for some of the
+      // users to leave, but if the activity was archived by anyone, that means
+      // it was full at some point.
+      if (summary.activityRoles.roles.values.any((role) => role.isArchived)) {
+        continue;
+      }
+
       sessionsMap[activity] ??= [];
       sessionsMap[activity]!.add(
         ExtendedSpaceRoomsChunk(
