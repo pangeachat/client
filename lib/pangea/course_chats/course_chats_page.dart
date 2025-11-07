@@ -16,6 +16,8 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
@@ -42,7 +44,7 @@ class CourseChats extends StatefulWidget {
 }
 
 class CourseChatsController extends State<CourseChats>
-    with ActivitySummariesProvider {
+    with ActivitySummariesProvider, CoursePlanProvider {
   String get roomId => widget.roomId;
   Room? get room => widget.client.getRoomById(widget.roomId);
 
@@ -117,6 +119,7 @@ class CourseChatsController extends State<CourseChats>
     final Map<ActivityPlanModel, List<ExtendedSpaceRoomsChunk>> sessionsMap =
         {};
 
+    final validIDs = course?.activityIDs ?? {};
     for (final chunk in discoveredChildren!) {
       if (chunk.roomType?.startsWith(PangeaRoomTypes.activitySession) != true) {
         continue;
@@ -130,8 +133,21 @@ class CourseChatsController extends State<CourseChats>
       final activity = summary.activityPlan;
       final users =
           summary.activityRoles.roles.values.map((r) => r.userId).toList();
+
+      if (users.isEmpty || !validIDs.contains(activity.activityId)) {
+        continue;
+      }
+
       if (activity.req.numberOfParticipants <= users.length) {
         // Don't show full activities
+        continue;
+      }
+
+      // If any user has archived the activity, don't show it.
+      // It's possible for users to finish an activity and then for some of the
+      // users to leave, but if the activity was archived by anyone, that means
+      // it was full at some point.
+      if (summary.activityRoles.roles.values.any((role) => role.isArchived)) {
         continue;
       }
 
@@ -198,9 +214,19 @@ class CourseChatsController extends State<CourseChats>
       await _loadHierarchy(activeSpace: room, reload: reload);
       if (mounted) await _joinDefaultChats();
       if (mounted) {
-        await loadRoomSummaries(
-          room.spaceChildren.map((c) => c.roomId).whereType<String>().toList(),
-        );
+        final futures = [
+          loadRoomSummaries(
+            room.spaceChildren
+                .map((c) => c.roomId)
+                .whereType<String>()
+                .toList(),
+          ),
+          if (room.coursePlan?.uuid != null) loadCourse(room.coursePlan!.uuid),
+        ];
+        await Future.wait(futures);
+        if (mounted) {
+          await loadTopics();
+        }
       }
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
