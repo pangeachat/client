@@ -143,9 +143,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countChatsAndCountParticipants$2(chats, participants) {
       return "" + chats + " \u4e2a\u804a\u5929\u548c " + participants + " \u540d\u53c2\u4e0e\u8005";
     },
-    get$banFromChat() {
-      return "\u4ece\u804a\u5929\u4e2d\u5c01\u7981";
-    },
     get$banned() {
       return "\u5df2\u5c01\u7981";
     },
@@ -517,9 +514,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u8e22\u51fa\u4e86 " + targetName;
-    },
-    get$kickFromChat() {
-      return "\u4ece\u804a\u5929\u5ba4\u8e22\u51fa";
     },
     lastActiveAgo$1(localizedTimeShort) {
       return "\u4e0a\u6b21\u6d3b\u8dc3: " + localizedTimeShort;
@@ -4199,12 +4193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     accessRequestedDesc$2(admin, space) {
       return "\u8bf7\u6c42\u7ba1\u7406\u5458\uff1a" + admin + " \n\n\u6765\u81ea\u201c" + space + "\u201d\u7684\u7ba1\u7406\u5458\u8bf7\u6c42\u67e5\u770b\u60a8\u7684\u5b66\u4e60\u5206\u6790\u3002\n\n\u5982\u679c\u60a8\u540c\u610f\uff0c\u4ed6\u4eec\u5c06\u80fd\u591f\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u603b\u8bcd\u6c47\u91cf\n    \u2022 \u603b\u8bed\u6cd5\u6982\u5ff5\n    \u2022 \u5b8c\u6210\u7684\u6d3b\u52a8\u4f1a\u8bdd\u603b\u6570\n    \u2022 \u6b63\u786e\u548c\u9519\u8bef\u4f7f\u7528\u7684\u7279\u5b9a\u8bed\u6cd5\u6982\u5ff5\n\n\u4ed6\u4eec\u5c06\u65e0\u6cd5\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u8bfe\u7a0b\u5916\u804a\u5929\u4e2d\u7684\u6d88\u606f\n    \u2022 \u8bcd\u6c47\u8868";
     },
-    get$allowAccess() {
-      return "\u5141\u8bb8\u8bbf\u95ee";
-    },
-    get$denyAccess() {
-      return "\u62d2\u7edd\u8bbf\u95ee";
-    },
     get$adminRequestedAccess() {
       return "\u7ba1\u7406\u5458\u8bf7\u6c42\u67e5\u770b\u60a8\u7684\u5206\u6790\u3002";
     },
@@ -4565,6 +4553,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonTooltip() {
       return "Activity info";
     },
+    get$allow(_) {
+      return "Allow";
+    },
+    get$deny() {
+      return "Deny";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4689,9 +4683,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     countChatsAndCountParticipants$2(chats, participants) {
       return "" + chats + " \u500b\u804a\u5929\u5ba4\u548c " + participants + " \u4f4d\u53c3\u8207\u8005";
-    },
-    get$banFromChat() {
-      return "\u5df2\u5f9e\u804a\u5929\u5ba4\u4e2d\u5c01\u9396";
     },
     get$banned() {
       return "\u5df2\u88ab\u5c01\u9396";
@@ -5064,9 +5055,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u8e22\u4e86 " + targetName;
-    },
-    get$kickFromChat() {
-      return "\u5f9e\u804a\u5929\u5ba4\u8e22\u51fa";
     },
     lastActiveAgo$1(localizedTimeShort) {
       return "\u6700\u5f8c\u6d3b\u52d5\u6642\u9593\uff1a" + localizedTimeShort;
@@ -8746,12 +8734,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     accessRequestedDesc$2(admin, space) {
       return "\u8acb\u6c42\u7684\u7ba1\u7406\u54e1\uff1a" + admin + " \n\n\u4f86\u81ea\u300c" + space + "\u300d\u7684\u7ba1\u7406\u54e1\u6b63\u5728\u8acb\u6c42\u67e5\u770b\u60a8\u7684\u5b78\u7fd2\u5206\u6790\u3002\n\n\u5982\u679c\u60a8\u540c\u610f\uff0c\u4ed6\u5011\u5c07\u80fd\u5920\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u7e3d\u8a5e\u5f59\u91cf\n    \u2022 \u7e3d\u8a9e\u6cd5\u6982\u5ff5\n    \u2022 \u5b8c\u6210\u7684\u7e3d\u6d3b\u52d5\u6703\u8a71\n    \u2022 \u4f7f\u7528\u7684\u7279\u5b9a\u8a9e\u6cd5\u6982\u5ff5\uff0c\u5305\u62ec\u6b63\u78ba\u548c\u4e0d\u6b63\u78ba\u7684\n\n\u4ed6\u5011\u5c07\u7121\u6cd5\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u8ab2\u7a0b\u5916\u804a\u5929\u4e2d\u7684\u6d88\u606f\n    \u2022 \u8a5e\u5f59\u5217\u8868";
     },
-    get$allowAccess() {
-      return "\u5141\u8a31\u5b58\u53d6";
-    },
-    get$denyAccess() {
-      return "\u62d2\u7d55\u5b58\u53d6";
-    },
     get$adminRequestedAccess() {
       return "\u7ba1\u7406\u54e1\u5df2\u8acb\u6c42\u67e5\u770b\u60a8\u7684\u5206\u6790\u3002";
     },
@@ -9087,7 +9069,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kTUwPa0cHj96SyoRU7xy048Bdo0="] = d.current;
+  d["9/6bEik3J1hqcNpKMnD7Y4bHVp0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
