@@ -7,10 +7,8 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 // We would like esta = está, hello! = Hello, etc.
 String normalizeString(String input, String languageCode) {
   try {
-    String normalized = input;
-
     // Step 1: Convert to lowercase (works for all Unicode scripts)
-    normalized = normalized.toLowerCase();
+    String normalized = input.toLowerCase();
 
     // Step 2: Apply language-specific normalization rules
     normalized = _applyLanguageSpecificNormalization(normalized, languageCode);
@@ -23,19 +21,13 @@ String normalizeString(String input, String languageCode) {
 
     // Step 4: Remove punctuation (including Unicode punctuation)
     // This removes ASCII and Unicode punctuation while preserving letters, numbers, and spaces
-    normalized =
-        normalized.replaceAll(RegExp(r'[\p{P}\p{S}]', unicode: true), '');
+    normalized = normalized.replaceAll(
+      RegExp(r'[\p{P}\p{S}]', unicode: true),
+      '',
+    );
 
     // Step 5: Normalize whitespace (collapse multiple spaces, trim)
-    normalized = normalized.replaceAll(RegExp(r'\s+'), ' ').trim();
-
-    // Step 6: Handle edge case where result becomes empty
-    if (normalized.isEmpty) {
-      // If normalization results in empty string, return empty string
-      return '';
-    }
-
-    return normalized;
+    return normalized.replaceAll(RegExp(r'\s+'), ' ').trim();
   } catch (e, s) {
     ErrorHandler.logError(
       e: e,
