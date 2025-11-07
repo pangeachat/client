@@ -4787,7 +4787,6 @@
   "getStartedComplete": "你已完成本节！\n继续通过与朋友聊天探索我们的精彩功能！",
   "getStartedFriendsComplete": "哇哦！你有朋友啦！😊",
   "getStartedBotChatButton": "开始聊天！",
-  "getStartedFriendsButton": "与朋友聊天",
   "groupChat": "群聊",
   "directMessage": "私信",
   "newDirectMessage": "新私信",
@@ -10771,10 +10770,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

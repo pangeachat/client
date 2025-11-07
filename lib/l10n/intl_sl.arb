@@ -2739,7 +2739,6 @@
   "getStartedComplete": "Dokončali ste ta razdelek!\nNadaljujte z raziskovanjem naših čudovitih funkcij z klepetom s prijatelji!",
   "getStartedFriendsComplete": "Uau! Imate prijatelje! 😉",
   "getStartedBotChatButton": "Začni klepet!",
-  "getStartedFriendsButton": "Klepet z prijateljem",
   "groupChat": "Skupinski klepet",
   "directMessage": "Neposredna sporočila",
   "newDirectMessage": "Novo neposredno sporočilo",
@@ -11861,10 +11860,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

@@ -4540,7 +4540,6 @@
   "getStartedComplete": "Završili ste ovaj odjeljak!\nNastavite istraživati naše nevjerovatne značajke razgovorom s prijateljima!",
   "getStartedFriendsComplete": "Woohoo! Imate prijatelje! 😉",
   "getStartedBotChatButton": "Započni razgovor!",
-  "getStartedFriendsButton": "Razgovaraj s prijateljem",
   "groupChat": "Grupni chat",
   "directMessage": "Izravna poruka",
   "newDirectMessage": "Nova izravna poruka",
@@ -11152,10 +11151,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

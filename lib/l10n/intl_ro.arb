@@ -4203,7 +4203,6 @@
   "getStartedComplete": "Ai finalizat această secțiune!\nContinuă să explorezi caracteristicile noastre uimitoare vorbind cu prietenii!",
   "getStartedFriendsComplete": "Woohoo! Ai prieteni! 😙",
   "getStartedBotChatButton": "Începe să discuți!",
-  "getStartedFriendsButton": "Discută cu un prieten",
   "groupChat": "Chat de grup",
   "directMessage": "Mesaj direct",
   "newDirectMessage": "Mesaj direct nou",
@@ -11515,10 +11514,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

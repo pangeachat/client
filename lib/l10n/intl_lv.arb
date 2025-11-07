@@ -4772,7 +4772,6 @@
   "getStartedComplete": "Jūs esat pabeidzis šo sadaļu!\nTurpiniet izpētīt mūsu brīnišķīgās funkcijas, sarunājoties ar draugiem!",
   "getStartedFriendsComplete": "Uhhē! Jums ir draugi! 😉",
   "getStartedBotChatButton": "Sākt sarunu!",
-  "getStartedFriendsButton": "Sarunāties ar draugu",
   "groupChat": "Grupas saruna",
   "directMessage": "Tiešā ziņa",
   "newDirectMessage": "Jauna tiešā ziņa",
@@ -10766,10 +10765,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

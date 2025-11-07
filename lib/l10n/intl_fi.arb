@@ -4306,7 +4306,6 @@
   "getStartedComplete": "Olet suorittanut tämän osion!\nJatka upeiden ominaisuuksiemme tutkimista keskustelemalla ystävien kanssa!",
   "getStartedFriendsComplete": "Huraa! Sinulla on ystäviä! 😊",
   "getStartedBotChatButton": "Aloita keskustelu!",
-  "getStartedFriendsButton": "Keskustele ystävän kanssa",
   "groupChat": "Ryhmäsuunnittelu",
   "directMessage": "Yksityisviesti",
   "newDirectMessage": "Uusi yksityisviesti",
@@ -11425,10 +11424,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

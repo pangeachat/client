@@ -3820,7 +3820,6 @@
   "getStartedComplete": "Odeljak je završen!\nNastavite da istražujete naše sjajne funkcije razgovorom sa prijateljima!",
   "getStartedFriendsComplete": "Ura! Imate prijatelje! 😉",
   "getStartedBotChatButton": "Počnite da razgovarate!",
-  "getStartedFriendsButton": "Razgovaraj sa prijateljem",
   "groupChat": "Grupni razgovor",
   "directMessage": "Direktna poruka",
   "newDirectMessage": "Нова директна порука",
@@ -11882,10 +11881,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

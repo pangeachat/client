@@ -3910,7 +3910,6 @@
   "getStartedComplete": "Vi kompletigis ĉi tiun sekcion!\nDaŭre esploru niajn mirindajn trajtojn babilante kun amikoj!",
   "getStartedFriendsComplete": "Hoho! Vi havas amikojn! 😉",
   "getStartedBotChatButton": "Komencu babili!",
-  "getStartedFriendsButton": "Babili kun amiko",
   "groupChat": "Grupbabileco",
   "directMessage": "Rekta mesaĝo",
   "newDirectMessage": "Nova rekta mesaĝo",
@@ -11869,10 +11868,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

@@ -4783,7 +4783,6 @@
   "getStartedComplete": "Je hebt deze sectie voltooid!\nBlijf onze geweldige functies verkennen door met vrienden te chatten!",
   "getStartedFriendsComplete": "Woohoo! Je hebt vrienden! 😙",
   "getStartedBotChatButton": "Begin met chatten!",
-  "getStartedFriendsButton": "Chat met een vriend",
   "groupChat": "Groepschat",
   "directMessage": "Direct bericht",
   "newDirectMessage": "Nieuw direct bericht",
@@ -10780,10 +10779,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },
