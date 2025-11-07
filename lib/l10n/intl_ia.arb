@@ -2233,7 +2233,6 @@
   "getStartedComplete": "Tu ha completate iste section!\nContinua a explorar nostre fantasticas characteristicas per chat with amicos!",
   "getStartedFriendsComplete": "Woohoo! Tu ha amicos! 😋",
   "getStartedBotChatButton": "Comencia a chat!",
-  "getStartedFriendsButton": "Chat con un amico",
   "groupChat": "Chat de gruppo",
   "directMessage": "Message directe",
   "newDirectMessage": " nove message directe",
@@ -11858,10 +11857,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

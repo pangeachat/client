@@ -4763,7 +4763,6 @@
   "getStartedComplete": "你完成了此部分！\n使用我們的簡單特效功能來管理你的好玩家。",
   "getStartedFriendsComplete": "好了！你已經有朋友！😉",
   "getStartedBotChatButton": "開始訊售！",
-  "getStartedFriendsButton": "話話和朋友",
   "groupChat": "群組訊售",
   "directMessage": "直接信檔",
   "newDirectMessage": "新的直接信檔",
@@ -10799,10 +10798,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

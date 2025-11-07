@@ -4245,7 +4245,6 @@
   "getStartedComplete": "Bạn đã hoàn thành phần này!\nTiếp tục khám phá các tính năng tuyệt vời của chúng tôi bằng cách trò chuyện với bạn bè!",
   "getStartedFriendsComplete": "Woohoo! Bạn đã có bạn bè! 😉",
   "getStartedBotChatButton": "Bắt đầu trò chuyện!",
-  "getStartedFriendsButton": "Trò chuyện với một người bạn",
   "groupChat": "Nhóm trò chuyện",
   "directMessage": "Tin nhắn trực tiếp",
   "newDirectMessage": "Tin nhắn trực tiếp mới",
@@ -4401,10 +4400,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

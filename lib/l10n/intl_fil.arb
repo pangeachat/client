@@ -3050,7 +3050,6 @@
   "getStartedComplete": "Natapos mo na ang seksyong ito!\nPatuloy na tuklasin ang aming kamangha-manghang mga tampok sa pamamagitan ng pakikipag-chat sa mga kaibigan!",
   "getStartedFriendsComplete": "Woohoo! May mga kaibigan ka na! 😉",
   "getStartedBotChatButton": "Simulan ang pakikipag-chat!",
-  "getStartedFriendsButton": "Makipag-chat sa isang kaibigan",
   "groupChat": "Pangkat na Chat",
   "directMessage": "Direktang Mensahe",
   "newDirectMessage": "Bagong direktang mensahe",
@@ -11777,10 +11776,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

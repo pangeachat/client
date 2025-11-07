@@ -71,30 +71,42 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(16.0),
               child: Row(
-                spacing: 16.0,
+                spacing: 12.0,
                 children: [
                   Expanded(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
+                      ),
                       onPressed: () => Navigator.of(context).pop(true),
                       child: Row(
-                        spacing: 10.0,
+                        spacing: 12.0,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Symbols.approval_delegation),
-                          Text(L10n.of(context).allowAccess),
+                          Text(L10n.of(context).allow),
                         ],
                       ),
                     ),
                   ),
                   Expanded(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
+                      ),
                       onPressed: () => Navigator.of(context).pop(false),
                       child: Row(
-                        spacing: 10.0,
+                        spacing: 12.0,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Icons.visibility_off),
-                          Text(L10n.of(context).denyAccess),
+                          Text(L10n.of(context).deny),
                         ],
                       ),
                     ),

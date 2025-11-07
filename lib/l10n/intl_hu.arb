@@ -4785,7 +4785,6 @@
   "getStartedComplete": "Befejezted ezt a szakaszt!\nFedezd fel tovább a csodálatos funkcióinkat barátokkal való beszélgetéssel!",
   "getStartedFriendsComplete": "Hurrá! Vannak barátaid! 😉",
   "getStartedBotChatButton": "Beszélgetés indítása!",
-  "getStartedFriendsButton": "Beszélgetés egy baráttal",
   "groupChat": "Csoportos beszélgetés",
   "directMessage": "Közvetlen üzenet",
   "newDirectMessage": "Új közvetlen üzenet",
@@ -10781,10 +10780,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

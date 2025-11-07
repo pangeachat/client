@@ -4792,7 +4792,6 @@
   "getStartedComplete": "Tá tú críochnaithe leis an rannóg seo!\nLean ort ag iniúchadh ár ngnéithe iontacha trí bheith ag comhrá le cairde!",
   "getStartedFriendsComplete": "Woohoo! Tá cairde agat! 😉",
   "getStartedBotChatButton": "Tosaigh ag comhrá!",
-  "getStartedFriendsButton": "Comhrá le cara",
   "groupChat": "Comhrá Grúpa",
   "directMessage": "Teachtaireacht Dhíreach",
   "newDirectMessage": "Teachtaireacht Dhíreach Nua",
@@ -10778,10 +10777,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

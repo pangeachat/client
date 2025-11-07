@@ -4127,7 +4127,6 @@
   "getStartedComplete": "このセクションは完了です！\n友達とチャットして、素晴らしい機能を引き続き探索しましょう！",
   "getStartedFriendsComplete": "やった！友達ができました！😊",
   "getStartedBotChatButton": "チャットを始める！",
-  "getStartedFriendsButton": "友達とチャット",
   "groupChat": "グループチャット",
   "directMessage": "ダイレクトメッセージ",
   "newDirectMessage": "新しいダイレクトメッセージ",
@@ -11570,10 +11569,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

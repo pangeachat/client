@@ -4667,7 +4667,6 @@
   "getStartedComplete": "Bu bölümü tamamladın!\nHarika özelliklerimizi arkadaşlarınla sohbet ederek keşfetmeye devam et!",
   "getStartedFriendsComplete": "Vay canına! Arkadaşların oldu! 😉",
   "getStartedBotChatButton": "Sohbete başla!",
-  "getStartedFriendsButton": "Bir arkadaşınla sohbet et",
   "groupChat": "Grup Sohbeti",
   "directMessage": "Özel Mesaj",
   "newDirectMessage": "Yeni özel mesaj",
@@ -11002,10 +11001,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

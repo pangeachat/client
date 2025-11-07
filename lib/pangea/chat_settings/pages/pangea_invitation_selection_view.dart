@@ -51,12 +51,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: theme.colorScheme.primaryContainer,
         padding: const EdgeInsets.symmetric(
-          horizontal: 24,
+          horizontal: 20,
           vertical: 16,
         ),
       ),
       child: Row(
-        spacing: 34.0,
+        spacing: 12.0,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
@@ -274,12 +274,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                               backgroundColor:
                                   theme.colorScheme.primaryContainer,
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 24,
+                                horizontal: 20,
                                 vertical: 16,
                               ),
                             ),
                             child: Row(
-                              spacing: 34.0,
+                              spacing: 12.0,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(

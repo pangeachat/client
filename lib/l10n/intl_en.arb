@@ -4921,7 +4921,6 @@
   "getStartedComplete": "You've completed this section!\nKeep exploring our amazing features by chatting with friends!",
   "getStartedFriendsComplete": "Woohoo! You've got friends! 😉",
   "getStartedBotChatButton": "Start chatting!",
-  "getStartedFriendsButton": "Chat with a friend",
   "groupChat": "Group Chat",
   "directMessage": "Direct Message",
   "newDirectMessage": "New direct message",
@@ -5318,9 +5317,10 @@
   "goToExistingCourse": "Go to existing course",
   "emojiView": "Emoji view",
   "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?",
-  "getStartedFriendsButton": "Invite a friend",
   "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course",
   "inviteFriends": "Invite friends",
   "failedToLoadFeedback": "Failed to load feedback.",
-  "activityStatsButtonTooltip": "Activity info"
+  "activityStatsButtonTooltip": "Activity info",
+  "allow": "Allow",
+  "deny": "Deny"
 }

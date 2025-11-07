@@ -4786,7 +4786,6 @@
   "getStartedComplete": "Anda telah menyelesaikan bagian ini!\nTerus jelajahi fitur menakjubkan kami dengan mengobrol dengan teman!",
   "getStartedFriendsComplete": "Woohoo! Anda memiliki teman! 😉",
   "getStartedBotChatButton": "Mulai mengobrol!",
-  "getStartedFriendsButton": "Bicara dengan teman",
   "groupChat": "Obrolan Grup",
   "directMessage": "Pesan Langsung",
   "newDirectMessage": "Pesan langsung baru",
@@ -10771,10 +10770,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

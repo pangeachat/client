@@ -2186,7 +2186,6 @@
   "getStartedComplete": "Вы скончылі гэты раздзел!\nПрацягвайце даследаваць нашы цудоўныя функцыі, перагаворваючыся з сябрамі!",
   "getStartedFriendsComplete": "Ура! У вас ёсць сябры! 😉",
   "getStartedBotChatButton": "Пачаць перагавор!",
-  "getStartedFriendsButton": "Пагаварыць з сябрам",
   "groupChat": "Групавы чат",
   "directMessage": "Прамое паведамленне",
   "newDirectMessage": "Новае прамое паведамленне",
@@ -11879,10 +11878,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },
