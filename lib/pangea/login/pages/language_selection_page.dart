@@ -107,7 +107,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(20.0),
             constraints: const BoxConstraints(
               maxWidth: 450,
             ),

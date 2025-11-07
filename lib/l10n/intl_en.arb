@@ -5321,5 +5321,7 @@
   "getStartedFriendsButton": "Invite a friend",
   "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course",
   "inviteFriends": "Invite friends",
-  "activityStatsButtonTooltip": "Activity info"
+  "activityStatsButtonTooltip": "Activity info",
+  "allow": "Allow",
+  "deny": "Deny"
 }
