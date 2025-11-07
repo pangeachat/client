@@ -30,6 +30,7 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
       onSelected: (choice) async {
         switch (choice) {
           case ActivityPopupMenuActions.leave:
+            final parentSpaceId = widget.room.courseParent?.id;
             final router = GoRouter.of(context);
             final confirmed = await showOkCancelAlertDialog(
               context: context,
@@ -45,7 +46,11 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
               future: () => widget.room.leave(),
             );
             if (result.error == null) {
-              router.go('/rooms');
+              router.go(
+                parentSpaceId != null
+                    ? '/rooms/spaces/$parentSpaceId'
+                    : '/rooms',
+              );
             }
             break;
           case ActivityPopupMenuActions.invite:
@@ -85,7 +90,7 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
           value: ActivityPopupMenuActions.leave,
           child: Row(
             children: [
-              const Icon(Icons.delete_outlined),
+              const Icon(Icons.logout_outlined),
               const SizedBox(width: 12),
               Text(L10n.of(context).leave),
             ],
