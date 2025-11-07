@@ -4614,7 +4614,6 @@
   "getStartedComplete": "Vous avez terminé cette section !\nContinuez à explorer nos fonctionnalités incroyables en discutant avec des amis !",
   "getStartedFriendsComplete": "Youpi ! Vous avez des amis ! 😉",
   "getStartedBotChatButton": "Commencer à discuter !",
-  "getStartedFriendsButton": "Discuter avec un ami",
   "groupChat": "Chat de groupe",
   "directMessage": "Message direct",
   "newDirectMessage": "Nouveau message direct",
@@ -11104,10 +11103,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

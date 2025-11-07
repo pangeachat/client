@@ -2869,7 +2869,6 @@
   "getStartedComplete": "თქვენ ამ ნაწილს დაასრულეთ!\nგაგრძელეთ ჩვენი საოცარი ფუნქციების გამოკვლევა მეგობრებთან საუბრის საშუალებით!",
   "getStartedFriendsComplete": "ვაუ! თქვენ გაქვთ მეგობრები! 😊",
   "getStartedBotChatButton": "დაიწყეთ საუბარი!",
-  "getStartedFriendsButton": "მეგობართან ჩატი",
   "groupChat": "ჯგუფური ჩატი",
   "directMessage": "მხოლოდ შეტყობინება",
   "newDirectMessage": "ახალი პირდაპირი შეტყობინება",
@@ -11810,10 +11809,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

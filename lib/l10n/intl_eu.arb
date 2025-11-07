@@ -4784,7 +4784,6 @@
   "getStartedComplete": "Atala osatu duzu!\nJarraitu gure ezagutzaz betetako ezaugarriak lagunekin hitz egiten jarraituz!",
   "getStartedFriendsComplete": "Woohoo! Zure lagunak dituzu! 😉",
   "getStartedBotChatButton": "Hasi hitz egiten!",
-  "getStartedFriendsButton": "Hitz egin lagun batekin",
   "groupChat": "Talde txateoa",
   "directMessage": "Mezu zuzena",
   "newDirectMessage": "Mezu zuzena berria",
@@ -10780,10 +10779,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

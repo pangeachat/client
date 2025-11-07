@@ -4136,7 +4136,6 @@
   "getStartedComplete": "Jūs baigėte šį skyrių!\nTęskite mūsų nuostabių funkcijų tyrinėjimą bendraudami su draugais!",
   "getStartedFriendsComplete": "Woohoo! Jūs turite draugų! 😉",
   "getStartedBotChatButton": "Pradėti pokalbį!",
-  "getStartedFriendsButton": "Pokalbis su draugu",
   "groupChat": " Grupinis pokalbis",
   "directMessage": "Tiesioginė žinutė",
   "newDirectMessage": "Nauja tiesioginė žinutė",
@@ -11585,10 +11584,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

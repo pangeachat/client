@@ -4720,7 +4720,6 @@
   "getStartedComplete": "이 섹션을 완료했어요!\n친구들과 채팅하며 우리의 멋진 기능들을 계속 탐험하세요!",
   "getStartedFriendsComplete": "와우! 친구들이 생겼어요! 😙",
   "getStartedBotChatButton": "채팅 시작하기!",
-  "getStartedFriendsButton": "친구와 채팅하기",
   "groupChat": "단체 채팅",
   "directMessage": "개인 메시지",
   "newDirectMessage": "새 개인 메시지",
@@ -10888,10 +10887,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

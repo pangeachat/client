@@ -3370,7 +3370,6 @@
   "getStartedComplete": "סיימת את החלק הזה!\nהמשך לחקור את הפיצ'רים המדהימים שלנו על ידי שיחה עם חברים!",
   "getStartedFriendsComplete": "יווו! יש לך חברים! 😏",
   "getStartedBotChatButton": "התחל לשוחח!",
-  "getStartedFriendsButton": "שוחח עם חבר",
   "groupChat": "שיחת קבוצה",
   "directMessage": "הודעה ישירה",
   "newDirectMessage": "הודעה ישירה חדשה",
@@ -11829,10 +11828,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

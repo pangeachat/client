@@ -4669,7 +4669,6 @@
   "getStartedComplete": "لقد أكملت هذا القسم!\nاستمر في استكشاف ميزاتنا المذهلة من خلال الدردشة مع الأصدقاء!",
   "getStartedFriendsComplete": "يا هلا! لديك أصدقاء! 😉",
   "getStartedBotChatButton": "ابدأ الدردشة!",
-  "getStartedFriendsButton": "الدردشة مع صديق",
   "groupChat": "محادثة جماعية",
   "directMessage": "رسالة مباشرة",
   "newDirectMessage": "رسالة مباشرة جديدة",
@@ -10997,10 +10996,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

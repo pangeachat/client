@@ -4756,7 +4756,6 @@
   "getStartedComplete": "Has completat aquesta secció!\nSegueix explorant les nostres funcions increïbles xatejant amb amics!",
   "getStartedFriendsComplete": "Woohoo! Tens amics! 😙",
   "getStartedBotChatButton": "Comença a xatejar!",
-  "getStartedFriendsButton": "Xateja amb un amic",
   "groupChat": "Xat de grup",
   "directMessage": "Missatge directe",
   "newDirectMessage": "Nou missatge directe",
@@ -10804,10 +10803,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

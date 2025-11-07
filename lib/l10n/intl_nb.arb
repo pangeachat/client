@@ -3699,7 +3699,6 @@
   "getStartedComplete": "Du har fullført denne delen!\nFortsett å utforske våre fantastiske funksjoner ved å chatte med venner!",
   "getStartedFriendsComplete": "Woohoo! Du har venner! 😉",
   "getStartedBotChatButton": "Begynn å chatte!",
-  "getStartedFriendsButton": "Chat med en venn",
   "groupChat": "Gruppchat",
   "directMessage": "Direktemelding",
   "newDirectMessage": "Ny direktemelding",
@@ -11873,10 +11872,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

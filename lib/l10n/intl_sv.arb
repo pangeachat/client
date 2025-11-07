@@ -4445,7 +4445,6 @@
   "getStartedComplete": "Du har slutfört detta avsnitt! \nFortsätt utforska våra fantastiska funktioner genom att chatta med vänner!",
   "getStartedFriendsComplete": "Woohoo! Du har vänner! 😉",
   "getStartedBotChatButton": "Börja chatta!",
-  "getStartedFriendsButton": "Chatta med en vän",
   "groupChat": "Gruppchatt",
   "directMessage": "Direktmeddelande",
   "newDirectMessage": "Nytt direktmeddelande",
@@ -11258,10 +11257,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

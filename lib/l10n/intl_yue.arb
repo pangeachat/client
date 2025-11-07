@@ -2119,7 +2119,6 @@
   "getStartedComplete": "你完成咗呢個部分！\n繼續用傾偈同朋友探索我哋嘅精彩功能！",
   "getStartedFriendsComplete": "Woohoo！你有朋友啦！😊",
   "getStartedBotChatButton": "開始傾偈！",
-  "getStartedFriendsButton": "同朋友傾偈",
   "groupChat": "群組聊天",
   "directMessage": "直接訊息",
   "newDirectMessage": "新直接訊息",
@@ -11473,10 +11472,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

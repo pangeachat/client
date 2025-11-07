@@ -4835,7 +4835,6 @@
   "getStartedComplete": "Sa oled selle osa lõpetanud!\nJätka meie suurepäraste funktsioonide avastamist, vesteldes sõpradega!",
   "getStartedFriendsComplete": "Uuhuu! Sul on sõbrad! 😉",
   "getStartedBotChatButton": "Alusta vestlust!",
-  "getStartedFriendsButton": "Vestle sõbraga",
   "groupChat": "Rühmavestlus",
   "directMessage": "Otse sõnum",
   "newDirectMessage": "Uus otse sõnum",
@@ -10878,10 +10877,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

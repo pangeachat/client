@@ -3407,7 +3407,6 @@
   "getStartedComplete": "Túto sekciu ste dokončili!\nPokračujte v objavovaní našich úžasných funkcií chatovaním s priateľmi!",
   "getStartedFriendsComplete": "Woohoo! Máte priateľov! 😙",
   "getStartedBotChatButton": "Začať chatovať!",
-  "getStartedFriendsButton": "Chatovať s priateľom",
   "groupChat": "Skupinový chat",
   "directMessage": "Priama správa",
   "newDirectMessage": "Nová priama správa",
@@ -11864,10 +11863,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

@@ -4722,7 +4722,6 @@
   "getStartedComplete": "Вы завершили этот раздел!\nПродолжайте исследовать наши удивительные функции, общаясь с друзьями!",
   "getStartedFriendsComplete": "Ура! У вас есть друзья! 😎",
   "getStartedBotChatButton": "Начать общение!",
-  "getStartedFriendsButton": "Поговорить с другом",
   "groupChat": "Групповой чат",
   "directMessage": "Личное сообщение",
   "newDirectMessage": "Новое личное сообщение",
@@ -10885,10 +10884,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

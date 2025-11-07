@@ -4785,7 +4785,6 @@
   "getStartedComplete": "Remataste esta sección!\nSegue explorando as nosas increíbles funcións conversando con amigos!",
   "getStartedFriendsComplete": "Woohoo! Tes amigos! 😉",
   "getStartedBotChatButton": "Comezar a conversar!",
-  "getStartedFriendsButton": "Conversar cun amigo",
   "groupChat": "Chat de grupo",
   "directMessage": "Mensaxe directa",
   "newDirectMessage": "Nova mensaxe directa",
@@ -10777,10 +10776,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },

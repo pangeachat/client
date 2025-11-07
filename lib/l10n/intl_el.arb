@@ -4731,7 +4731,6 @@
   "getStartedComplete": "Ολοκληρώσατε αυτό το τμήμα!\nΣυνεχίστε να εξερευνάτε τις εκπληκτικές λειτουργίες μας μιλώντας με φίλους!",
   "getStartedFriendsComplete": "Ουάου! Έχετε φίλους! 😊",
   "getStartedBotChatButton": "Ξεκινήστε το chat!",
-  "getStartedFriendsButton": "Μιλήστε με έναν φίλο",
   "groupChat": "Ομαδική Συνομιλία",
   "directMessage": "Άμεσο μήνυμα",
   "newDirectMessage": "Νέο άμεσο μήνυμα",
@@ -11838,10 +11837,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },
