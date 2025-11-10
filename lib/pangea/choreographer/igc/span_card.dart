@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/widgets/choice_array.dart';
@@ -156,7 +157,15 @@ class SpanCardState extends State<SpanCard> {
 
   void _showFirstMatch() {
     final match = widget.choreographer.igcController.firstOpenMatch;
-    widget.choreographer.chatController.onSelectMatch(match);
+    if (match == null) {
+      MatrixState.pAnyState.closeAllOverlays();
+      return;
+    }
+    OverlayUtil.showIGCMatch(
+      match,
+      widget.choreographer,
+      context,
+    );
   }
 
   @override

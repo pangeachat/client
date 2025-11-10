@@ -104,8 +104,8 @@ class PangeaTextController extends TextEditingController {
     TextStyle? style,
     required bool withComposing,
   }) {
-    final subscription = choreographer
-        .pangeaController.subscriptionController.subscriptionStatus;
+    final subscription =
+        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
     if (subscription == SubscriptionStatus.shouldShowPaywall) {
       return _buildPaywallSpan(style);

@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
@@ -461,25 +462,33 @@ class InputBar extends StatelessWidget {
     int adjustedOffset = controller!.selection.baseOffset;
     final normalizationMatches =
         choreographer.igcController.recentAutomaticCorrections;
-    if (normalizationMatches == null || normalizationMatches.isEmpty) return;
-    for (final match in normalizationMatches) {
-      if (match.updatedMatch.match.offset < adjustedOffset &&
-          match.updatedMatch.match.length > 0) {
-        adjustedOffset += (match.updatedMatch.match.length - 1);
+    if (normalizationMatches != null) {
+      for (final match in normalizationMatches) {
+        if (match.updatedMatch.match.offset < adjustedOffset &&
+            match.updatedMatch.match.length > 0) {
+          adjustedOffset += (match.updatedMatch.match.length - 1);
+        }
       }
     }
 
     final match = choreographer.igcController.getMatchByOffset(adjustedOffset);
-    choreographer.chatController.onSelectMatch(match);
+    if (match == null) return;
+    match.updatedMatch.isITStart
+        ? choreographer.openIT(match)
+        : OverlayUtil.showIGCMatch(
+            match,
+            choreographer,
+            context,
+          );
   }
   // Pangea#
 
   @override
   Widget build(BuildContext context) {
     // #Pangea
-    return ListenableBuilder(
-      listenable: choreographer.textController,
-      builder: (context, _) {
+    return ValueListenableBuilder(
+      valueListenable: choreographer.textController,
+      builder: (context, _, __) {
         final enableAutocorrect = MatrixState.pangeaController.userController
             .profile.toolSettings.enableAutocorrect;
         // Pangea#

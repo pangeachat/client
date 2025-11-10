@@ -24,7 +24,10 @@ import '../../common/widgets/choice_array.dart';
 
 class ITBar extends StatefulWidget {
   final Choreographer choreographer;
-  const ITBar({super.key, required this.choreographer});
+  const ITBar({
+    super.key,
+    required this.choreographer,
+  });
 
   @override
   ITBarState createState() => ITBarState();
@@ -193,7 +196,9 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
         child: child,
       ),
       child: CompositedTransformTarget(
-        link: widget.choreographer.itBarLinkAndKey.link,
+        link: MatrixState.pAnyState
+            .layerLinkAndKey(widget.choreographer.itBarTransformTargetKey)
+            .link,
         child: Column(
           children: [
             if (!InstructionsEnum.clickBestOption.isToggledOff) ...[
@@ -204,7 +209,9 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
               const SizedBox(height: 8.0),
             ],
             Container(
-              key: widget.choreographer.itBarLinkAndKey.key,
+              key: MatrixState.pAnyState
+                  .layerLinkAndKey(widget.choreographer.itBarTransformTargetKey)
+                  .key,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(24),

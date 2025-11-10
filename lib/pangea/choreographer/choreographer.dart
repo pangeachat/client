@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
@@ -15,12 +14,10 @@ import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dar
 import 'package:fluffychat/pangea/choreographer/pangea_message_content_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
@@ -29,18 +26,13 @@ import '../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
 import 'it/it_controller.dart';
 
-class OpenMatchesException implements Exception {}
-
-class ShowPaywallException implements Exception {}
-
 class Choreographer extends ChangeNotifier {
-  final PangeaController pangeaController;
-  final ChatController chatController;
+  final FocusNode inputFocus;
 
-  late PangeaTextController textController;
-  late ITController itController;
-  late IgcController igcController;
-  late ChoreographerErrorController errorService;
+  late final PangeaTextController textController;
+  late final ITController itController;
+  late final IgcController igcController;
+  late final ChoreographerErrorController errorService;
 
   ChoreoRecordModel? _choreoRecord;
 
@@ -54,7 +46,9 @@ class Choreographer extends ChangeNotifier {
   StreamSubscription? _languageStream;
   StreamSubscription? _settingsUpdateStream;
 
-  Choreographer(this.pangeaController, this.chatController) {
+  Choreographer(
+    this.inputFocus,
+  ) {
     _initialize();
   }
 
@@ -62,6 +56,12 @@ class Choreographer extends ChangeNotifier {
   ValueNotifier<bool> get isFetching => _isFetching;
   ChoreoModeEnum get choreoMode => _choreoMode;
   String get currentText => textController.text;
+
+  ChoreoRecordModel get _record => _choreoRecord ??= ChoreoRecordModel(
+        originalText: textController.text,
+        choreoSteps: [],
+        openMatches: [],
+      );
 
   void _initialize() {
     textController = PangeaTextController(choreographer: this);
@@ -79,13 +79,15 @@ class Choreographer extends ChangeNotifier {
       (e) => errorService.setErrorAndLock(ChoreoError(raw: e)),
     );
 
-    _languageStream =
-        pangeaController.userController.languageStream.stream.listen((update) {
+    _languageStream ??= MatrixState
+        .pangeaController.userController.languageStream.stream
+        .listen((update) {
       clear();
     });
 
-    _settingsUpdateStream =
-        pangeaController.userController.settingsUpdateStream.stream.listen((_) {
+    _settingsUpdateStream ??= MatrixState
+        .pangeaController.userController.settingsUpdateStream.stream
+        .listen((_) {
       notifyListeners();
     });
   }
@@ -99,12 +101,14 @@ class Choreographer extends ChangeNotifier {
     itController.clearSourceText();
     igcController.clear();
     _resetDebounceTimer();
-    setChoreoMode(ChoreoModeEnum.igc);
+    _setChoreoMode(ChoreoModeEnum.igc);
   }
 
   @override
   void dispose() {
-    super.dispose();
+    errorService.removeListener(notifyListeners);
+    itController.open.removeListener(_onCloseIT);
+    textController.removeListener(_onChange);
     itController.dispose();
     errorService.dispose();
     textController.dispose();
@@ -113,12 +117,10 @@ class Choreographer extends ChangeNotifier {
     _debounceTimer?.cancel();
     _isFetching.dispose();
     TtsController.stop();
+    super.dispose();
   }
 
-  void onPaste(value) {
-    _initChoreoRecord();
-    _choreoRecord!.pastedStrings.add(value);
-  }
+  void onPaste(value) => _record.pastedStrings.add(value);
 
   void onClickSend() {
     if (assistanceState == AssistanceStateEnum.fetched) {
@@ -132,7 +134,7 @@ class Choreographer extends ChangeNotifier {
     }
   }
 
-  void setChoreoMode(ChoreoModeEnum mode) {
+  void _setChoreoMode(ChoreoModeEnum mode) {
     _choreoMode = mode;
     notifyListeners();
   }
@@ -142,14 +144,6 @@ class Choreographer extends ChangeNotifier {
       _debounceTimer?.cancel();
       _debounceTimer = null;
     }
-  }
-
-  void _initChoreoRecord() {
-    _choreoRecord ??= ChoreoRecordModel(
-      originalText: textController.text,
-      choreoSteps: [],
-      openMatches: [],
-    );
   }
 
   void _startLoading() {
@@ -170,6 +164,7 @@ class Choreographer extends ChangeNotifier {
     if (_lastChecked != null && _lastChecked == textController.text) {
       return;
     }
+    // update assistance state from no message => not fetched and vice versa
     if (_lastChecked == null ||
         _lastChecked!.isEmpty ||
         textController.text.isEmpty) {
@@ -203,7 +198,7 @@ class Choreographer extends ChangeNotifier {
   }) async {
     if (assistanceState != AssistanceStateEnum.notFetched) return;
     final SubscriptionStatus canSendStatus =
-        pangeaController.subscriptionController.subscriptionStatus;
+        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
     if (canSendStatus != SubscriptionStatus.subscribed ||
         l2Lang == null ||
@@ -214,29 +209,27 @@ class Choreographer extends ChangeNotifier {
     }
 
     _resetDebounceTimer();
-    _initChoreoRecord();
     _startLoading();
     await igcController.getIGCTextData(
       textController.text,
-      chatController.room.getPreviousMessages(),
+      [],
     );
-
+    _acceptNormalizationMatches();
     // trigger a re-render of the text field to show IGC matches
     textController.setSystemText(
       textController.text,
       EditTypeEnum.igc,
     );
-    _acceptNormalizationMatches();
     _stopLoading();
   }
 
   Future<PangeaMessageContentModel> getMessageContent(String message) async {
     TokensResponseModel? tokensResp;
     if (l1LangCode != null && l2LangCode != null) {
-      final res = await pangeaController.messageData
+      final res = await MatrixState.pangeaController.messageData
           .getTokens(
             repEventId: null,
-            room: chatController.room,
+            room: null,
             req: TokensRequestModel(
               fullText: message,
               senderL1: l1LangCode!,
@@ -247,12 +240,12 @@ class Choreographer extends ChangeNotifier {
       tokensResp = res.isValue ? res.result : null;
     }
 
-    final hasOriginalWritten = _choreoRecord?.includedIT == true &&
-        itController.sourceText.value != null;
+    final hasOriginalWritten =
+        _record.includedIT && itController.sourceText.value != null;
 
     return PangeaMessageContentModel(
       message: message,
-      choreo: _choreoRecord,
+      choreo: _record,
       originalSent: PangeaRepresentation(
         langCode: tokensResp?.detections.firstOrNull?.langCode ??
             LanguageKeys.unknownLanguage,
@@ -282,17 +275,14 @@ class Choreographer extends ChangeNotifier {
       throw Exception("Attempted to open IT with a non-IT start match");
     }
 
-    chatController.inputFocus.unfocus();
-    setChoreoMode(ChoreoModeEnum.it);
-
+    _setChoreoMode(ChoreoModeEnum.it);
     final sourceText = currentText;
     textController.setSystemText("", EditTypeEnum.it);
     itController.openIT(sourceText);
     igcController.clear();
 
-    _initChoreoRecord();
     itMatch.setStatus(PangeaMatchStatusEnum.accepted);
-    _choreoRecord!.addRecord(
+    _record.addRecord(
       "",
       match: itMatch.updatedMatch,
     );
@@ -308,7 +298,7 @@ class Choreographer extends ChangeNotifier {
       );
     }
 
-    setChoreoMode(ChoreoModeEnum.igc);
+    _setChoreoMode(ChoreoModeEnum.igc);
     errorService.resetError();
     notifyListeners();
   }
@@ -325,9 +315,8 @@ class Choreographer extends ChangeNotifier {
       EditTypeEnum.it,
     );
 
-    _initChoreoRecord();
-    _choreoRecord!.addRecord(textController.text, step: step);
-    chatController.inputFocus.requestFocus();
+    _record.addRecord(textController.text, step: step);
+    inputFocus.requestFocus();
     notifyListeners();
   }
 
@@ -351,20 +340,19 @@ class Choreographer extends ChangeNotifier {
     );
 
     if (!updatedMatch.match.isNormalizationError()) {
-      _initChoreoRecord();
-      _choreoRecord!.addRecord(
+      _record.addRecord(
         textController.text,
         match: updatedMatch,
       );
     }
     MatrixState.pAnyState.closeOverlay();
-    chatController.inputFocus.requestFocus();
+    inputFocus.requestFocus();
     notifyListeners();
   }
 
   void onUndoReplacement(PangeaMatchState match) {
     igcController.undoReplacement(match);
-    _choreoRecord?.choreoSteps.removeWhere(
+    _record.choreoSteps.removeWhere(
       (step) => step.acceptedOrIgnoredMatch == match.updatedMatch,
     );
 
@@ -373,21 +361,20 @@ class Choreographer extends ChangeNotifier {
       EditTypeEnum.igc,
     );
     MatrixState.pAnyState.closeOverlay();
-    chatController.inputFocus.requestFocus();
+    inputFocus.requestFocus();
     notifyListeners();
   }
 
   void onIgnoreReplacement({required PangeaMatchState match}) {
     final updatedMatch = igcController.ignoreReplacement(match);
     if (!updatedMatch.match.isNormalizationError()) {
-      _initChoreoRecord();
-      _choreoRecord!.addRecord(
+      _record.addRecord(
         textController.text,
         match: updatedMatch,
       );
     }
     MatrixState.pAnyState.closeOverlay();
-    chatController.inputFocus.requestFocus();
+    inputFocus.requestFocus();
     notifyListeners();
   }
 
@@ -395,7 +382,6 @@ class Choreographer extends ChangeNotifier {
     final normalizationsMatches = igcController.openNormalizationMatches;
     if (normalizationsMatches?.isEmpty ?? true) return;
 
-    _initChoreoRecord();
     try {
       for (final match in normalizationsMatches!) {
         match.selectChoice(
@@ -412,7 +398,7 @@ class Choreographer extends ChangeNotifier {
           igcController.currentText!,
           EditTypeEnum.igc,
         );
-        _choreoRecord!.addRecord(
+        _record.addRecord(
           currentText,
           match: updatedMatch,
         );
@@ -425,7 +411,7 @@ class Choreographer extends ChangeNotifier {
           "currentText": currentText,
           "l1LangCode": l1LangCode,
           "l2LangCode": l2LangCode,
-          "choreoRecord": _choreoRecord?.toJson(),
+          "choreoRecord": _record.toJson(),
         },
       );
     }

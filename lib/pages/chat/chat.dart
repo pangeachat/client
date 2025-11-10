@@ -45,7 +45,6 @@ import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
-import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -183,7 +182,7 @@ class ChatController extends State<ChatPageWithRoom>
     with WidgetsBindingObserver {
   // #Pangea
   final PangeaController pangeaController = MatrixState.pangeaController;
-  late Choreographer choreographer = Choreographer(pangeaController, this);
+  late Choreographer choreographer;
   late GoRouter _router;
 
   StreamSubscription? _levelSubscription;
@@ -427,6 +426,7 @@ class ChatController extends State<ChatPageWithRoom>
   @override
   void initState() {
     inputFocus = FocusNode(onKeyEvent: _customEnterKeyHandling);
+    choreographer = Choreographer(inputFocus);
 
     scrollController.addListener(_updateScrollController);
     // #Pangea
@@ -2192,16 +2192,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     await choreographer.requestWritingAssistance();
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
-      onSelectMatch(choreographer.igcController.firstOpenMatch);
-    } else if (autosend) {
-      await send();
-    } else {
-      inputFocus.requestFocus();
-    }
-  }
-
-  void onSelectMatch(PangeaMatchState? match) {
-    if (match != null) {
+      final match = choreographer.igcController.firstOpenMatch!;
       match.updatedMatch.isITStart
           ? choreographer.openIT(match)
           : OverlayUtil.showIGCMatch(
@@ -2209,9 +2200,11 @@ class ChatController extends State<ChatPageWithRoom>
               choreographer,
               context,
             );
-      return;
+    } else if (autosend) {
+      await send();
+    } else {
+      inputFocus.requestFocus();
     }
-    inputFocus.requestFocus();
   }
 
   void showLanguageMismatchPopup() {

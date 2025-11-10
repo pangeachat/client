@@ -656,7 +656,7 @@ class PangeaMessageEvent {
 
     final bool immersionMode = MatrixState
         .pangeaController.permissionsController
-        .isToolEnabled(ToolSetting.immersionMode, room);
+        .isToolEnabled(ToolSetting.immersionMode);
 
     final String? originalLangCode = originalSent?.langCode;
 

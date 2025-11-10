@@ -5,8 +5,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 extension ChoregrapherUserSettingsExtension on Choreographer {
   LayerLinkAndKey get itBarLinkAndKey =>
       MatrixState.pAnyState.layerLinkAndKey(itBarTransformTargetKey);
-  String get itBarTransformTargetKey => 'it_bar${chatController.roomId}';
+  String get itBarTransformTargetKey => 'it_bar';
   LayerLinkAndKey get inputLayerLinkAndKey =>
       MatrixState.pAnyState.layerLinkAndKey(inputTransformTargetKey);
-  String get inputTransformTargetKey => 'input${chatController.roomId}';
+  String get inputTransformTargetKey => 'input_text_field';
 }

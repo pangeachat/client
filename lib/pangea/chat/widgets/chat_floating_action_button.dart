@@ -19,7 +19,8 @@ class ChatFloatingActionButton extends StatelessWidget {
     return ListenableBuilder(
       listenable: Listenable.merge(
         [
-          controller.choreographer,
+          controller.choreographer.errorService,
+          controller.choreographer.itController.open,
           controller.scrollController,
         ],
       ),
