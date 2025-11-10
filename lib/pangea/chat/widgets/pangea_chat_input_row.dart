@@ -7,12 +7,13 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/input_bar.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_send_button.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
-import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/start_igc_button.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class PangeaChatInputRow extends StatelessWidget {
   final ChatController controller;
@@ -36,7 +37,9 @@ class PangeaChatInputRow extends StatelessWidget {
     return Column(
       children: [
         CompositedTransformTarget(
-          link: controller.choreographer.inputLayerLinkAndKey.link,
+          link: MatrixState.pAnyState
+              .layerLinkAndKey(ChoreoConstants.inputTransformTargetKey)
+              .link,
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(
@@ -44,7 +47,9 @@ class PangeaChatInputRow extends StatelessWidget {
               ),
             ),
             child: Row(
-              key: controller.choreographer.inputLayerLinkAndKey.key,
+              key: MatrixState.pAnyState
+                  .layerLinkAndKey(ChoreoConstants.inputTransformTargetKey)
+                  .key,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

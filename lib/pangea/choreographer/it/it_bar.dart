@@ -5,10 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart';
 import 'package:fluffychat/pangea/choreographer/it/it_feedback_card.dart';
 import 'package:fluffychat/pangea/choreographer/it/word_data_card.dart';
@@ -104,28 +102,33 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     }
 
     final text = currentStep.continuances[index].text;
+    final l1Code =
+        MatrixState.pangeaController.languageController.userL1!.langCode;
+    final l2Code =
+        MatrixState.pangeaController.languageController.userL2!.langCode;
+
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
     OverlayUtil.showPositionedCard(
       context: context,
       cardToShow: choiceFeedback == null
           ? WordDataCard(
               word: text,
-              wordLang: widget.choreographer.l2LangCode!,
+              wordLang: l2Code,
               fullText: _sourceText.value ?? widget.choreographer.currentText,
-              fullTextLang: widget.choreographer.l1LangCode!,
+              fullTextLang: l2Code,
             )
           : ITFeedbackCard(
               FullTextTranslationRequestModel(
                 text: text,
-                tgtLang: widget.choreographer.l1LangCode!,
-                userL1: widget.choreographer.l1LangCode!,
-                userL2: widget.choreographer.l2LangCode!,
+                tgtLang: l1Code,
+                userL1: l1Code,
+                userL2: l2Code,
               ),
             ),
       maxHeight: 300,
       maxWidth: 300,
       borderColor: borderColor,
-      transformTargetId: widget.choreographer.itBarTransformTargetKey,
+      transformTargetId: 'it_bar',
       isScrollable: choiceFeedback == null,
       overlayKey: "it_feedback_card",
       ignorePointer: true,
@@ -196,9 +199,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
         child: child,
       ),
       child: CompositedTransformTarget(
-        link: MatrixState.pAnyState
-            .layerLinkAndKey(widget.choreographer.itBarTransformTargetKey)
-            .link,
+        link: MatrixState.pAnyState.layerLinkAndKey('it_bar').link,
         child: Column(
           children: [
             if (!InstructionsEnum.clickBestOption.isToggledOff) ...[
@@ -209,9 +210,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
               const SizedBox(height: 8.0),
             ],
             Container(
-              key: MatrixState.pAnyState
-                  .layerLinkAndKey(widget.choreographer.itBarTransformTargetKey)
-                  .key,
+              key: MatrixState.pAnyState.layerLinkAndKey('it_bar').key,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(24),

@@ -8,10 +8,9 @@ import 'package:matrix/matrix.dart';
 import 'package:slugify/slugify.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
-import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
@@ -435,13 +434,15 @@ class InputBar extends StatelessWidget {
       return L10n.of(context).buildTranslation;
     }
 
-    return choreographer.l1Lang != null &&
-            choreographer.l2Lang != null &&
-            choreographer.l1Lang!.langCode != LanguageKeys.unknownLanguage &&
-            choreographer.l2Lang!.langCode != LanguageKeys.unknownLanguage
+    return MatrixState.pangeaController.languageController.userL1 != null &&
+            MatrixState.pangeaController.languageController.userL2 != null &&
+            MatrixState.pangeaController.languageController.userL1!.langCode !=
+                LanguageKeys.unknownLanguage &&
+            MatrixState.pangeaController.languageController.userL2!.langCode !=
+                LanguageKeys.unknownLanguage
         ? L10n.of(context).writeAMessageLangCodes(
-            choreographer.l1Lang!.displayName,
-            choreographer.l2Lang!.displayName,
+            MatrixState.pangeaController.languageController.userL1!.displayName,
+            MatrixState.pangeaController.languageController.userL2!.displayName,
           )
         : L10n.of(context).writeAMessage;
   }
@@ -453,7 +454,7 @@ class InputBar extends StatelessWidget {
     final subscriptionStatus =
         MatrixState.pangeaController.subscriptionController.subscriptionStatus;
     if (subscriptionStatus == SubscriptionStatus.shouldShowPaywall) {
-      PaywallCard.show(context, choreographer.inputTransformTargetKey);
+      PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
       return;
     }
 

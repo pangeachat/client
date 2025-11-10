@@ -40,11 +40,10 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
-import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
-import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -1751,10 +1750,10 @@ class ChatController extends State<ChatPageWithRoom>
   Future<void> onInputBarSubmitted() async {
     //   send();
     if (MatrixState.pangeaController.subscriptionController.shouldShowPaywall) {
-      PaywallCard.show(context, choreographer.inputTransformTargetKey);
+      PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
       return;
     }
-    await onRequestWritingAssistance(autosend: true);
+    await onRequestWritingAssistance(manual: false, autosend: true);
     // FocusScope.of(context).requestFocus(inputFocus);
     // Pangea#
   }
@@ -2078,7 +2077,7 @@ class ChatController extends State<ChatPageWithRoom>
     // analytics based on when / how many messages the logged in user send. This
     // stream sends the data for newly sent messages.
     if (originalSent?.langCode.split("-").first !=
-        choreographer.l2Lang?.langCodeShort) {
+        MatrixState.pangeaController.languageController.userL2?.langCodeShort) {
       return;
     }
 
@@ -2142,8 +2141,10 @@ class ChatController extends State<ChatPageWithRoom>
       );
 
       final stt = await messageEvent.getSpeechToText(
-        choreographer.l1Lang?.langCodeShort ?? LanguageKeys.unknownLanguage,
-        choreographer.l2Lang?.langCodeShort ?? LanguageKeys.unknownLanguage,
+        MatrixState.pangeaController.languageController.userL1?.langCodeShort ??
+            LanguageKeys.unknownLanguage,
+        MatrixState.pangeaController.languageController.userL2?.langCodeShort ??
+            LanguageKeys.unknownLanguage,
       );
       if (stt == null || stt.transcript.sttTokens.isEmpty) return;
       final constructs = stt.constructs(roomId, eventId);
@@ -2175,8 +2176,10 @@ class ChatController extends State<ChatPageWithRoom>
       return false;
     }
 
-    final l1 = choreographer.l1Lang?.langCodeShort;
-    final l2 = choreographer.l2Lang?.langCodeShort;
+    final l1 =
+        MatrixState.pangeaController.languageController.userL1?.langCodeShort;
+    final l2 =
+        MatrixState.pangeaController.languageController.userL2?.langCodeShort;
     final activityLang = room.activityPlan?.req.targetLanguage.split('-').first;
 
     return activityLang != null &&
@@ -2185,12 +2188,15 @@ class ChatController extends State<ChatPageWithRoom>
         l1 != activityLang;
   }
 
-  Future<void> onRequestWritingAssistance({bool autosend = false}) async {
+  Future<void> onRequestWritingAssistance({
+    bool manual = false,
+    bool autosend = false,
+  }) async {
     if (shouldShowLanguageMismatchPopup) {
       return showLanguageMismatchPopup();
     }
 
-    await choreographer.requestWritingAssistance();
+    await choreographer.requestWritingAssistance(manual: manual);
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
       final match = choreographer.igcController.firstOpenMatch!;
       match.updatedMatch.isITStart
@@ -2227,13 +2233,13 @@ class ChatController extends State<ChatPageWithRoom>
           );
 
           WidgetsBinding.instance.addPostFrameCallback(
-            (_) => onRequestWritingAssistance(autosend: true),
+            (_) => onRequestWritingAssistance(manual: false, autosend: true),
           );
         },
       ),
       maxHeight: 325,
       maxWidth: 325,
-      transformTargetId: choreographer.inputTransformTargetKey,
+      transformTargetId: ChoreoConstants.inputTransformTargetKey,
     );
   }
 

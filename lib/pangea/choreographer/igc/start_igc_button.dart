@@ -135,7 +135,8 @@ class _StartIGCButtonState extends State<StartIGCButton>
               enableFeedback: enableFeedback,
               customBorder: const CircleBorder(),
               onTap: enableFeedback
-                  ? widget.controller.onRequestWritingAssistance
+                  ? () =>
+                      widget.controller.onRequestWritingAssistance(manual: true)
                   : null,
               onLongPress: enableFeedback
                   ? () => showDialog(

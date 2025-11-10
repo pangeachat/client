@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
@@ -232,7 +232,7 @@ class OverlayUtil {
       ),
       maxHeight: 325,
       maxWidth: 325,
-      transformTargetId: choreographer.inputTransformTargetKey,
+      transformTargetId: ChoreoConstants.inputTransformTargetKey,
       ignorePointer: true,
       isScrollable: false,
     );

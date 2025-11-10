@@ -10,4 +10,5 @@ class ChoreoConstants {
   static const red = Colors.red;
   static const int msBeforeIGCStart = 10000;
   static const int maxLength = 1000;
+  static const String inputTransformTargetKey = 'input_text_field';
 }
