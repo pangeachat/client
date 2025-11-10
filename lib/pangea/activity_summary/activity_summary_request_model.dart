@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/activity_summary/activity_summary_response_mod
 
 class ActivitySummaryResultsMessage {
   final String userId;
+  final String displayName;
   final String sent;
   final String? written;
   final List<String> tool;
@@ -14,6 +15,7 @@ class ActivitySummaryResultsMessage {
 
   ActivitySummaryResultsMessage({
     required this.userId,
+    required this.displayName,
     required this.sent,
     this.written,
     required this.tool,
@@ -23,6 +25,7 @@ class ActivitySummaryResultsMessage {
   factory ActivitySummaryResultsMessage.fromJson(Map<String, dynamic> json) {
     return ActivitySummaryResultsMessage(
       userId: json['user_id'] as String,
+      displayName: json['display_name'] as String,
       sent: json['sent'] as String,
       written: json['written'] as String?,
       tool: (json['tool'] as List).map((e) => e as String).toList(),
@@ -33,6 +36,7 @@ class ActivitySummaryResultsMessage {
   Map<String, dynamic> toJson() {
     return {
       'user_id': userId,
+      'display_name': displayName,
       'sent': sent,
       if (written != null) 'written': written,
       'tool': tool,
