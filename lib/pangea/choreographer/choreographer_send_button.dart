@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 
 class ChoreographerSendButton extends StatelessWidget {
@@ -19,12 +18,9 @@ class ChoreographerSendButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: Listenable.merge([
-        controller.sendController,
-        controller.choreographer.isFetching,
-      ]),
-      builder: (context, _) {
+    return ValueListenableBuilder(
+      valueListenable: controller.choreographer.isFetching,
+      builder: (context, fetching, __) {
         return Container(
           height: 56,
           alignment: Alignment.center,
@@ -32,9 +28,7 @@ class ChoreographerSendButton extends StatelessWidget {
             icon: const Icon(Icons.send_outlined),
             color: controller.choreographer.assistanceState
                 .sendButtonColor(context),
-            onPressed: controller.choreographer.isFetching.value
-                ? null
-                : () => _onPressed(context),
+            onPressed: fetching ? null : () => _onPressed(context),
             tooltip: L10n.of(context).send,
           ),
         );

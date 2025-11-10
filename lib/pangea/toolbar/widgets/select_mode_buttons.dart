@@ -747,7 +747,6 @@ class MoreButton extends StatelessWidget {
         break;
       case MessageActions.info:
         controller.showEventInfo();
-        controller.clearSelectedEvents();
         break;
       case MessageActions.deleteOnError:
         controller.deleteErrorEventsAction();

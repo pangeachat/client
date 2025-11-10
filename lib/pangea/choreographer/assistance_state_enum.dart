@@ -13,10 +13,8 @@ enum AssistanceStateEnum {
   fetching,
   fetched,
   complete,
-  error,
-}
+  error;
 
-extension AssistanceStateExtension on AssistanceStateEnum {
   Color stateColor(context) {
     switch (this) {
       case AssistanceStateEnum.noSub:
@@ -46,4 +44,19 @@ extension AssistanceStateExtension on AssistanceStateEnum {
         return AppConfig.success;
     }
   }
+
+  bool get allowsFeedback => switch (this) {
+        AssistanceStateEnum.notFetched => true,
+        _ => false,
+      };
+
+  Color backgroundColor(BuildContext context) => switch (this) {
+        AssistanceStateEnum.noSub ||
+        AssistanceStateEnum.noMessage ||
+        AssistanceStateEnum.fetched ||
+        AssistanceStateEnum.complete ||
+        AssistanceStateEnum.error =>
+          Theme.of(context).colorScheme.surfaceContainerHighest,
+        _ => Theme.of(context).colorScheme.primaryContainer,
+      };
 }

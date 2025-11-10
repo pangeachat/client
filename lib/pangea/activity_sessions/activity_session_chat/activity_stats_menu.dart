@@ -134,140 +134,145 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
       shouldShowEndForAll = false;
     }
 
-    return Positioned(
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: widget.controller.showActivityDropdown ? 0 : null,
-      child: Column(
-        children: [
-          ClipRect(
-            child: AnimatedAlign(
-              duration: FluffyThemes.animationDuration,
-              curve: Curves.easeInOut,
-              heightFactor: widget.controller.showActivityDropdown ? 1.0 : 0.0,
-              alignment: Alignment.topCenter,
-              child: GestureDetector(
-                onPanUpdate: (details) {
-                  if (details.delta.dy < -2) {
-                    widget.controller.toggleShowDropdown();
-                  }
-                },
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surface,
-                  ),
-                  padding: const EdgeInsets.all(12.0),
-                  child: Column(
-                    spacing: 12.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Column(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ActivitySessionDetailsRow(
-                            icon: Symbols.radar,
-                            iconSize: 16.0,
-                            child: Text(
-                              room.activityPlan!.learningObjective,
-                              style: const TextStyle(fontSize: 12.0),
-                            ),
-                          ),
-                          ActivitySessionDetailsRow(
-                            icon: Symbols.dictionary,
-                            iconSize: 16.0,
-                            child: Wrap(
-                              spacing: 4.0,
-                              runSpacing: 4.0,
-                              children: [
-                                ...room.activityPlan!.vocab.map(
-                                  (v) => VocabTile(
-                                    vocab: v,
-                                    langCode:
-                                        room.activityPlan!.req.targetLanguage,
-                                    isUsed: (_usedVocab ?? {})
-                                        .contains(v.lemma.toLowerCase()),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      if (!userComplete) ...[
-                        Text(
-                          L10n.of(context).activityDropdownDesc,
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        if (shouldShowEndForAll)
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12.0,
-                                vertical: 8.0,
-                              ),
-                              side: BorderSide(
-                                color: theme.colorScheme.secondaryContainer,
-                                width: 2,
-                              ),
-                              foregroundColor: theme.colorScheme.primary,
-                              backgroundColor: theme.colorScheme.surface,
-                            ),
-                            onPressed: () => _finishActivity(forAll: true),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  L10n.of(context).endForAll,
-                                  style: TextStyle(
-                                    fontSize: isColumnMode ? 16.0 : 12.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        if (shouldShowImDone)
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 12.0,
-                                vertical: 8.0,
-                              ),
-                            ),
-                            onPressed: _finishActivity,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  L10n.of(context).endActivity,
-                                  style: TextStyle(
-                                    fontSize: isColumnMode ? 16.0 : 12.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                      ],
-                    ],
+    return ValueListenableBuilder(
+      valueListenable: widget.controller.showActivityDropdown,
+      builder: (context, showDropdown, child) {
+        return Positioned(
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: showDropdown ? 0 : null,
+          child: Column(
+            children: [
+              ClipRect(
+                child: AnimatedAlign(
+                  duration: FluffyThemes.animationDuration,
+                  curve: Curves.easeInOut,
+                  heightFactor: showDropdown ? 1.0 : 0.0,
+                  alignment: Alignment.topCenter,
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      if (details.delta.dy < -2) {
+                        widget.controller.toggleShowDropdown();
+                      }
+                    },
+                    child: child,
                   ),
                 ),
               ),
-            ),
+              if (showDropdown)
+                Expanded(
+                  child: GestureDetector(
+                    onTap: widget.controller.toggleShowDropdown,
+                    child: Container(color: Colors.black.withAlpha(100)),
+                  ),
+                ),
+            ],
           ),
-          if (widget.controller.showActivityDropdown)
-            Expanded(
-              child: GestureDetector(
-                onTap: widget.controller.toggleShowDropdown,
-                child: Container(color: Colors.black.withAlpha(100)),
-              ),
+        );
+      },
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+        ),
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          spacing: 12.0,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Column(
+              spacing: 8.0,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ActivitySessionDetailsRow(
+                  icon: Symbols.radar,
+                  iconSize: 16.0,
+                  child: Text(
+                    room.activityPlan!.learningObjective,
+                    style: const TextStyle(fontSize: 12.0),
+                  ),
+                ),
+                ActivitySessionDetailsRow(
+                  icon: Symbols.dictionary,
+                  iconSize: 16.0,
+                  child: Wrap(
+                    spacing: 4.0,
+                    runSpacing: 4.0,
+                    children: [
+                      ...room.activityPlan!.vocab.map(
+                        (v) => VocabTile(
+                          vocab: v,
+                          langCode: room.activityPlan!.req.targetLanguage,
+                          isUsed: (_usedVocab ?? {})
+                              .contains(v.lemma.toLowerCase()),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-        ],
+            if (!userComplete) ...[
+              Text(
+                L10n.of(context).activityDropdownDesc,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              if (shouldShowEndForAll)
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 8.0,
+                    ),
+                    side: BorderSide(
+                      color: theme.colorScheme.secondaryContainer,
+                      width: 2,
+                    ),
+                    foregroundColor: theme.colorScheme.primary,
+                    backgroundColor: theme.colorScheme.surface,
+                  ),
+                  onPressed: () => _finishActivity(forAll: true),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        L10n.of(context).endForAll,
+                        style: TextStyle(
+                          fontSize: isColumnMode ? 16.0 : 12.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              if (shouldShowImDone)
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0,
+                      vertical: 8.0,
+                    ),
+                  ),
+                  onPressed: _finishActivity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        L10n.of(context).endActivity,
+                        style: TextStyle(
+                          fontSize: isColumnMode ? 16.0 : 12.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ],
+        ),
       ),
     );
   }

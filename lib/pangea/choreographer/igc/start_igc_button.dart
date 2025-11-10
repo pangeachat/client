@@ -1,121 +1,143 @@
-import 'dart:async';
-import 'dart:math' as math;
+import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
-import 'package:flutter/material.dart';
-
 import '../../../pages/chat/chat.dart';
 
 class StartIGCButton extends StatefulWidget {
+  final ChatController controller;
+  final AssistanceStateEnum initialState;
+  final Color initialForegroundColor;
+  final Color initialBackgroundColor;
+
   const StartIGCButton({
     super.key,
     required this.controller,
+    required this.initialState,
+    required this.initialForegroundColor,
+    required this.initialBackgroundColor,
   });
 
-  final ChatController controller;
-
   @override
-  State<StartIGCButton> createState() => StartIGCButtonState();
+  State<StartIGCButton> createState() => _StartIGCButtonState();
 }
 
-class StartIGCButtonState extends State<StartIGCButton>
-    with SingleTickerProviderStateMixin {
-  AssistanceStateEnum get assistanceState =>
-      widget.controller.choreographer.assistanceState;
-  AnimationController? _controller;
+class _StartIGCButtonState extends State<StartIGCButton>
+    with TickerProviderStateMixin {
+  AnimationController? _spinController;
+  late Animation<double> _rotation;
+
+  AnimationController? _colorController;
+  late Animation<Color?> _iconColor;
+  late Animation<Color?> _backgroundColor;
   AssistanceStateEnum? _prevState;
+
+  AssistanceStateEnum get state =>
+      widget.controller.choreographer.assistanceState;
+
+  bool _shouldStop = false;
 
   @override
   void initState() {
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 2),
-    );
-    widget.controller.choreographer.addListener(_updateSpinnerState);
     super.initState();
+    _spinController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    )..addStatusListener((status) {
+        if (status == AnimationStatus.completed) {
+          if (_shouldStop) {
+            _spinController?.stop();
+            _spinController?.value = 0;
+          } else {
+            _spinController?.forward(from: 0);
+          }
+        }
+      });
+
+    _rotation = Tween(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _spinController!,
+        curve: Curves.linear,
+      ),
+    );
+
+    _colorController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+
+    _prevState = widget.initialState;
+    _iconColor = AlwaysStoppedAnimation(widget.initialForegroundColor);
+    _backgroundColor = AlwaysStoppedAnimation(widget.initialBackgroundColor);
+    _colorController!.forward(from: 0.0);
+
+    widget.controller.choreographer.addListener(_handleStateChange);
   }
 
   @override
   void dispose() {
-    _controller?.dispose();
+    widget.controller.choreographer.removeListener(_handleStateChange);
+    _spinController?.dispose();
+    _colorController?.dispose();
     super.dispose();
   }
 
-  void _updateSpinnerState() {
-    if (_prevState != AssistanceStateEnum.fetching &&
-        assistanceState == AssistanceStateEnum.fetching) {
-      _controller?.repeat();
-    } else if (_prevState == AssistanceStateEnum.fetching &&
-        assistanceState != AssistanceStateEnum.fetching) {
-      _controller?.reset();
-    }
-    if (mounted) {
-      setState(() => _prevState = assistanceState);
-    }
-  }
+  void _handleStateChange() {
+    final prev = _prevState;
+    final current = state;
+    _prevState = current;
 
-  bool get _enableFeedback {
-    return ![
-      AssistanceStateEnum.fetching,
-      AssistanceStateEnum.fetched,
-      AssistanceStateEnum.complete,
-      AssistanceStateEnum.noMessage,
-      AssistanceStateEnum.noSub,
-      AssistanceStateEnum.error,
-    ].contains(assistanceState);
-  }
+    if (!mounted || prev == current) return;
+    final newIconColor = current.stateColor(context);
+    final newBgColor = current.backgroundColor(context);
+    final oldIconColor = _iconColor.value;
+    final oldBgColor = _backgroundColor.value;
 
-  Future<void> _onTap() async {
-    if (!_enableFeedback) return;
-    if (widget.controller.shouldShowLanguageMismatchPopup) {
-      widget.controller.showLanguageMismatchPopup();
-    } else {
-      await widget.controller.choreographer.requestLanguageAssistance();
-      final openMatch =
-          widget.controller.choreographer.igcController.firstOpenMatch;
-      widget.controller.onSelectMatch(openMatch);
-    }
-  }
+    // Create tweens from current → new colors
+    _iconColor = ColorTween(
+      begin: oldIconColor,
+      end: newIconColor,
+    ).animate(_colorController!);
+    _backgroundColor = ColorTween(
+      begin: oldBgColor,
+      end: newBgColor,
+    ).animate(_colorController!);
+    _colorController!.forward(from: 0.0);
 
-  Color get _backgroundColor {
-    switch (assistanceState) {
-      case AssistanceStateEnum.noSub:
-      case AssistanceStateEnum.noMessage:
-      case AssistanceStateEnum.fetched:
-      case AssistanceStateEnum.complete:
-      case AssistanceStateEnum.error:
-        return Theme.of(context).colorScheme.surfaceContainerHighest;
-      case AssistanceStateEnum.notFetched:
-      case AssistanceStateEnum.fetching:
-        return Theme.of(context).colorScheme.primaryContainer;
+    if (current == AssistanceStateEnum.fetching) {
+      _shouldStop = false;
+      _spinController!.forward(from: 0.0);
+    } else if (prev == AssistanceStateEnum.fetching) {
+      _shouldStop = true;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: widget.controller.choreographer.textController,
-      builder: (context, _, __) {
-        final icon = Icon(
-          size: 36,
-          Icons.autorenew_rounded,
-          color: assistanceState.stateColor(context),
-        );
+    if (_colorController == null || _spinController == null) {
+      return const SizedBox.shrink();
+    }
+
+    return AnimatedBuilder(
+      animation: Listenable.merge([_colorController!, _spinController!]),
+      builder: (context, child) {
+        final enableFeedback = state.allowsFeedback;
         return Tooltip(
-          message: _enableFeedback ? L10n.of(context).check : "",
+          message: enableFeedback ? L10n.of(context).check : "",
           child: Material(
-            elevation: _enableFeedback ? 4.0 : 0.0,
-            borderRadius: BorderRadius.circular(99.0),
+            elevation: enableFeedback ? 4.0 : 0.0,
+            shape: const CircleBorder(),
+            clipBehavior: Clip.antiAlias,
             shadowColor: Theme.of(context).colorScheme.surface.withAlpha(128),
             child: InkWell(
-              enableFeedback: _enableFeedback,
-              onTap: _enableFeedback ? _onTap : null,
+              enableFeedback: enableFeedback,
               customBorder: const CircleBorder(),
-              onLongPress: _enableFeedback
+              onTap: enableFeedback
+                  ? widget.controller.onRequestWritingAssistance
+                  : null,
+              onLongPress: enableFeedback
                   ? () => showDialog(
                         context: context,
                         builder: (c) => const SettingsLearning(),
@@ -125,35 +147,40 @@ class StartIGCButtonState extends State<StartIGCButton>
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  AnimatedContainer(
+                  Container(
                     height: 40.0,
                     width: 40.0,
-                    duration: FluffyThemes.animationDuration,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: _backgroundColor,
+                      color: _backgroundColor.value,
                     ),
                   ),
-                  _controller != null
-                      ? RotationTransition(
-                          turns: Tween(begin: 0.0, end: math.pi * 2)
-                              .animate(_controller!),
-                          child: icon,
-                        )
-                      : icon,
-                  AnimatedContainer(
+                  AnimatedBuilder(
+                    animation: _rotation,
+                    builder: (context, child) {
+                      return Transform.rotate(
+                        angle: _rotation.value * 2 * 3.14159,
+                        child: child,
+                      );
+                    },
+                    child: Icon(
+                      Icons.autorenew_rounded,
+                      size: 36,
+                      color: _iconColor.value,
+                    ),
+                  ),
+                  Container(
                     width: 20,
                     height: 20,
-                    duration: FluffyThemes.animationDuration,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: _backgroundColor,
+                      color: _backgroundColor.value,
                     ),
                   ),
                   Icon(
                     size: 16,
                     Icons.check,
-                    color: assistanceState.stateColor(context),
+                    color: _iconColor.value,
                   ),
                 ],
               ),

@@ -137,14 +137,20 @@ class Message extends StatelessWidget {
       // #Pangea
       if (event.type == PangeaEventTypes.activityPlan &&
           event.room.activityPlan != null) {
-        return ActivitySummary(
-          activity: event.room.activityPlan!,
-          room: event.room,
-          showInstructions: controller.showInstructions,
-          toggleInstructions: controller.toggleShowInstructions,
-          getParticipantOpacity: (role) =>
-              role == null || role.isFinished ? 0.5 : 1.0,
-          isParticipantSelected: (id) => controller.room.ownRoleState?.id == id,
+        return ValueListenableBuilder(
+          valueListenable: controller.showInstructions,
+          builder: (context, show, __) {
+            return ActivitySummary(
+              activity: event.room.activityPlan!,
+              room: event.room,
+              showInstructions: show,
+              toggleInstructions: controller.toggleShowInstructions,
+              getParticipantOpacity: (role) =>
+                  role == null || role.isFinished ? 0.5 : 1.0,
+              isParticipantSelected: (id) =>
+                  controller.room.ownRoleState?.id == id,
+            );
+          },
         );
       }
 

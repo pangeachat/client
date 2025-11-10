@@ -8,9 +8,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/input_bar.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_send_button.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/start_igc_button.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
@@ -27,55 +27,39 @@ class PangeaChatInputRow extends StatelessWidget {
   LanguageModel? get activel2 =>
       controller.pangeaController.languageController.activeL2Model();
 
-  String hintText(BuildContext context) {
-    if (controller.choreographer.itController.open.value) {
-      return L10n.of(context).buildTranslation;
-    }
-    return activel1 != null &&
-            activel2 != null &&
-            activel1!.langCode != LanguageKeys.unknownLanguage &&
-            activel2!.langCode != LanguageKeys.unknownLanguage
-        ? L10n.of(context).writeAMessageLangCodes(
-            activel1!.displayName,
-            activel2!.displayName,
-          )
-        : L10n.of(context).writeAMessage;
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     const height = 48.0;
+    final state = controller.choreographer.assistanceState;
 
-    if (controller.selectMode) {
-      return const SizedBox(height: height);
-    }
-
-    return ListenableBuilder(
-      listenable: controller.choreographer,
-      builder: (context, _) {
-        return Column(
-          children: [
-            CompositedTransformTarget(
-              link: controller.choreographer.inputLayerLinkAndKey.link,
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8.0),
-                  ),
-                ),
-                child: Row(
-                  key: controller.choreographer.inputLayerLinkAndKey.key,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    const SizedBox(width: 4),
-                    AnimatedContainer(
+    return Column(
+      children: [
+        CompositedTransformTarget(
+          link: controller.choreographer.inputLayerLinkAndKey.link,
+          child: Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(8.0),
+              ),
+            ),
+            child: Row(
+              key: controller.choreographer.inputLayerLinkAndKey.key,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const SizedBox(width: 4),
+                ValueListenableBuilder(
+                  valueListenable: controller.sendController,
+                  builder: (context, text, __) {
+                    return AnimatedContainer(
                       duration: FluffyThemes.animationDuration,
                       curve: FluffyThemes.animationCurve,
                       height: height,
-                      width:
-                          controller.sendController.text.isEmpty ? height : 0,
+                      width: text.text.isEmpty &&
+                              !controller.choreographer.itController.open.value
+                          ? height
+                          : 0,
                       alignment: Alignment.center,
                       clipBehavior: Clip.hardEdge,
                       decoration: const BoxDecoration(),
@@ -150,82 +134,90 @@ class PangeaChatInputRow extends StatelessWidget {
                             ),
                         ],
                       ),
-                    ),
-                    if (FluffyThemes.isColumnMode(context))
-                      Container(
-                        height: height,
-                        width: height,
-                        alignment: Alignment.center,
-                        child: IconButton(
-                          tooltip: L10n.of(context).emojis,
-                          icon: PageTransitionSwitcher(
-                            transitionBuilder: (
-                              Widget child,
-                              Animation<double> primaryAnimation,
-                              Animation<double> secondaryAnimation,
-                            ) {
-                              return SharedAxisTransition(
-                                animation: primaryAnimation,
-                                secondaryAnimation: secondaryAnimation,
-                                transitionType: SharedAxisTransitionType.scaled,
-                                fillColor: Colors.transparent,
-                                child: child,
-                              );
-                            },
-                            child: Icon(
-                              controller.showEmojiPicker
-                                  ? Icons.keyboard
-                                  : Icons.add_reaction_outlined,
-                              key: ValueKey(controller.showEmojiPicker),
-                            ),
-                          ),
-                          onPressed: controller.emojiPickerAction,
+                    );
+                  },
+                ),
+                if (FluffyThemes.isColumnMode(context))
+                  Container(
+                    height: height,
+                    width: height,
+                    alignment: Alignment.center,
+                    child: IconButton(
+                      tooltip: L10n.of(context).emojis,
+                      icon: PageTransitionSwitcher(
+                        transitionBuilder: (
+                          Widget child,
+                          Animation<double> primaryAnimation,
+                          Animation<double> secondaryAnimation,
+                        ) {
+                          return SharedAxisTransition(
+                            animation: primaryAnimation,
+                            secondaryAnimation: secondaryAnimation,
+                            transitionType: SharedAxisTransitionType.scaled,
+                            fillColor: Colors.transparent,
+                            child: child,
+                          );
+                        },
+                        child: Icon(
+                          controller.showEmojiPicker
+                              ? Icons.keyboard
+                              : Icons.add_reaction_outlined,
+                          key: ValueKey(controller.showEmojiPicker),
                         ),
                       ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 0.0),
-                        child: InputBar(
-                          room: controller.room,
-                          minLines: 1,
-                          maxLines: 8,
-                          autofocus: !PlatformInfos.isMobile,
-                          keyboardType: TextInputType.multiline,
-                          textInputAction: AppConfig.sendOnEnter == true &&
-                                  PlatformInfos.isMobile
-                              ? TextInputAction.send
-                              : null,
-                          onSubmitted: (_) => controller.onInputBarSubmitted(),
-                          onSubmitImage: controller.sendImageFromClipBoard,
-                          focusNode: controller.inputFocus,
-                          controller: controller.sendController,
-                          decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                              left: 6.0,
-                              right: 6.0,
-                              bottom: 6.0,
-                              top: 3.0,
-                            ),
-                            disabledBorder: InputBorder.none,
-                            hintMaxLines: 1,
-                            border: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            filled: false,
-                          ),
-                          onChanged: controller.onInputBarChanged,
-                          hintText: hintText(context),
+                      onPressed: controller.emojiPickerAction,
+                    ),
+                  ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 0.0),
+                    child: InputBar(
+                      room: controller.room,
+                      minLines: 1,
+                      maxLines: 8,
+                      autofocus: !PlatformInfos.isMobile,
+                      keyboardType: TextInputType.multiline,
+                      textInputAction: AppConfig.sendOnEnter == true &&
+                              PlatformInfos.isMobile
+                          ? TextInputAction.send
+                          : null,
+                      onSubmitted: (_) => controller.onInputBarSubmitted(),
+                      onSubmitImage: controller.sendImageFromClipBoard,
+                      focusNode: controller.inputFocus,
+                      controller: controller.sendController,
+                      decoration: const InputDecoration(
+                        contentPadding: EdgeInsets.only(
+                          left: 6.0,
+                          right: 6.0,
+                          bottom: 6.0,
+                          top: 3.0,
                         ),
+                        disabledBorder: InputBorder.none,
+                        hintMaxLines: 1,
+                        border: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        filled: false,
                       ),
+                      onChanged: controller.onInputBarChanged,
+                      choreographer: controller.choreographer,
                     ),
-                    StartIGCButton(
-                      controller: controller,
-                    ),
-                    Container(
+                  ),
+                ),
+                StartIGCButton(
+                  controller: controller,
+                  initialState: state,
+                  initialForegroundColor: state.stateColor(context),
+                  initialBackgroundColor: state.backgroundColor(context),
+                ),
+                ValueListenableBuilder(
+                  valueListenable: controller.sendController,
+                  builder: (context, text, __) {
+                    return Container(
                       height: height,
                       width: height,
                       alignment: Alignment.center,
                       child: PlatformInfos.platformCanRecord &&
-                              controller.sendController.text.isEmpty &&
+                              text.text.isEmpty &&
                               !controller.choreographer.itController.open.value
                           ? FloatingActionButton.small(
                               tooltip: L10n.of(context).voiceMessage,
@@ -242,14 +234,14 @@ class PangeaChatInputRow extends StatelessWidget {
                           : ChoreographerSendButton(
                               controller: controller,
                             ),
-                    ),
-                  ],
+                    );
+                  },
                 ),
-              ),
+              ],
             ),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }

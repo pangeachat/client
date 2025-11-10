@@ -24,7 +24,10 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
     }
 
     if (isFetching.value) return AssistanceStateEnum.fetching;
-    if (!igcController.hasIGCTextData) return AssistanceStateEnum.notFetched;
+    if (!igcController.hasIGCTextData &&
+        itController.sourceText.value == null) {
+      return AssistanceStateEnum.notFetched;
+    }
     return AssistanceStateEnum.complete;
   }
 }

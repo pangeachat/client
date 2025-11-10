@@ -54,50 +54,45 @@ class OverlayUtil {
       }
 
       final OverlayEntry entry = OverlayEntry(
-        builder: (context) => AnimatedContainer(
-          duration: FluffyThemes.animationDuration,
-          curve: FluffyThemes.animationCurve,
-          child: Stack(
-            children: [
-              if (backDropToDismiss)
-                IgnorePointer(
-                  ignoring: ignorePointer,
-                  child: TransparentBackdrop(
-                    backgroundColor: backgroundColor,
-                    onDismiss: onDismiss,
-                    blurBackground: blurBackground,
-                  ),
+        builder: (context) => Stack(
+          children: [
+            if (backDropToDismiss)
+              IgnorePointer(
+                ignoring: ignorePointer,
+                child: TransparentBackdrop(
+                  backgroundColor: backgroundColor,
+                  onDismiss: onDismiss,
+                  blurBackground: blurBackground,
                 ),
-              Positioned(
-                top: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                right: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                left: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
-                child: (position != OverlayPositionEnum.transform)
-                    ? child
-                    : CompositedTransformFollower(
-                        targetAnchor: targetAnchor ?? Alignment.topCenter,
-                        followerAnchor:
-                            followerAnchor ?? Alignment.bottomCenter,
-                        link: MatrixState.pAnyState
-                            .layerLinkAndKey(transformTargetId!)
-                            .link,
-                        showWhenUnlinked: false,
-                        offset: offset ?? Offset.zero,
-                        child: child,
-                      ),
               ),
-            ],
-          ),
+            Positioned(
+              top: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              right: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              left: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
+              child: (position != OverlayPositionEnum.transform)
+                  ? child
+                  : CompositedTransformFollower(
+                      targetAnchor: targetAnchor ?? Alignment.topCenter,
+                      followerAnchor: followerAnchor ?? Alignment.bottomCenter,
+                      link: MatrixState.pAnyState
+                          .layerLinkAndKey(transformTargetId!)
+                          .link,
+                      showWhenUnlinked: false,
+                      offset: offset ?? Offset.zero,
+                      child: child,
+                    ),
+            ),
+          ],
         ),
       );
 

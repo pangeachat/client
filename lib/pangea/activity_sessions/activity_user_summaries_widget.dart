@@ -50,27 +50,6 @@ class ActivityUserSummaries extends StatelessWidget {
             summary: summary,
             controller: controller,
           ),
-          // Row(
-          //   mainAxisSize: MainAxisSize.min,
-          //   children: userSummaries.map((p) {
-          //     final user = room.getParticipants().firstWhereOrNull(
-          //           (u) => u.id == p.participantId,
-          //         );
-          //     final userRole = assignedRoles.values.firstWhere(
-          //       (role) => role.userId == p.participantId,
-          //     );
-          //     final userRoleInfo = availableRoles[userRole.id]!;
-          //     return ActivityParticipantIndicator(
-          //       availableRole: userRoleInfo,
-          //       assignedRole: userRole,
-          //       avatarUrl:
-          //           userRoleInfo.avatarUrl ?? user?.avatarUrl?.toString(),
-          //       borderRadius: BorderRadius.circular(4),
-          //       selected: controller.highlightedRole?.id == userRole.id,
-          //       onTap: () => controller.highlightRole(userRole),
-          //     );
-          //   }).toList(),
-          // ),
         ],
       ),
     );
@@ -225,28 +204,33 @@ class ButtonControlledCarouselView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: userSummaries.mapIndexed((i, p) {
-            final user = room.getParticipants().firstWhereOrNull(
-                  (u) => u.id == p.participantId,
+        ValueListenableBuilder(
+          valueListenable: controller.highlightedRole,
+          builder: (context, highlightedRole, __) {
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              children: userSummaries.mapIndexed((i, p) {
+                final user = room.getParticipants().firstWhereOrNull(
+                      (u) => u.id == p.participantId,
+                    );
+                final userRole = assignedRoles.values.firstWhere(
+                  (role) => role.userId == p.participantId,
                 );
-            final userRole = assignedRoles.values.firstWhere(
-              (role) => role.userId == p.participantId,
+                final userRoleInfo = availableRoles[userRole.id]!;
+                return ActivityParticipantIndicator(
+                  name: userRoleInfo.name,
+                  userId: p.participantId,
+                  user: user,
+                  borderRadius: BorderRadius.circular(4),
+                  selected: highlightedRole?.id == userRole.id,
+                  onTap: () {
+                    controller.highlightRole(userRole);
+                    controller.carouselController.jumpTo(i * 250.0);
+                  },
+                );
+              }).toList(),
             );
-            final userRoleInfo = availableRoles[userRole.id]!;
-            return ActivityParticipantIndicator(
-              name: userRoleInfo.name,
-              userId: p.participantId,
-              user: user,
-              borderRadius: BorderRadius.circular(4),
-              selected: controller.highlightedRole?.id == userRole.id,
-              onTap: () {
-                controller.highlightRole(userRole);
-                controller.carouselController.jumpTo(i * 250.0);
-              },
-            );
-          }).toList(),
+          },
         ),
       ],
     );

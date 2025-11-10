@@ -27,7 +27,7 @@ class ChatInputBar extends StatelessWidget {
           hide: controller.choreographer.itController.open,
         ),
         ITBar(choreographer: controller.choreographer),
-        if (!controller.obscureText) ReplyDisplay(controller),
+        ReplyDisplay(controller),
         PangeaChatInputRow(
           controller: controller,
         ),

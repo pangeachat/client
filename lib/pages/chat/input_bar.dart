@@ -8,9 +8,12 @@ import 'package:matrix/matrix.dart';
 import 'package:slugify/slugify.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
+import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/toolbar/utils/shrinkable_text.dart';
@@ -32,7 +35,7 @@ class InputBar extends StatelessWidget {
   // #Pangea
   // final TextEditingController? controller;
   final PangeaTextController? controller;
-  final String hintText;
+  final Choreographer choreographer;
   // Pangea#
   final InputDecoration? decoration;
   final ValueChanged<String>? onChanged;
@@ -54,7 +57,7 @@ class InputBar extends StatelessWidget {
     this.textInputAction,
     this.readOnly = false,
     // #Pangea
-    required this.hintText,
+    required this.choreographer,
     // Pangea#
     super.key,
   });
@@ -426,6 +429,22 @@ class InputBar extends StatelessWidget {
   }
 
   // #Pangea
+  String hintText(BuildContext context) {
+    if (choreographer.itController.open.value) {
+      return L10n.of(context).buildTranslation;
+    }
+
+    return choreographer.l1Lang != null &&
+            choreographer.l2Lang != null &&
+            choreographer.l1Lang!.langCode != LanguageKeys.unknownLanguage &&
+            choreographer.l2Lang!.langCode != LanguageKeys.unknownLanguage
+        ? L10n.of(context).writeAMessageLangCodes(
+            choreographer.l1Lang!.displayName,
+            choreographer.l2Lang!.displayName,
+          )
+        : L10n.of(context).writeAMessage;
+  }
+
   void onInputTap(BuildContext context) {
     if (controller == null || controller!.text.isEmpty) return;
     final choreographer = controller!.choreographer;
@@ -458,148 +477,153 @@ class InputBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // #Pangea
-    final enableAutocorrect = MatrixState
-        .pangeaController.userController.profile.toolSettings.enableAutocorrect;
-    // Pangea#
-    return TypeAheadField<Map<String, String?>>(
-      direction: VerticalDirection.up,
-      hideOnEmpty: true,
-      hideOnLoading: true,
-      controller: controller,
-      focusNode: focusNode,
-      hideOnSelect: false,
-      debounceDuration: const Duration(milliseconds: 50),
-      // show suggestions after 50ms idle time (default is 300)
-      // #Pangea
-      builder: (context, _, focusNode) {
-        final textField = TextField(
-          enableSuggestions: enableAutocorrect,
-          readOnly:
-              controller != null && (controller!.choreographer.isRunningIT),
-          autocorrect: enableAutocorrect,
+    return ListenableBuilder(
+      listenable: choreographer.textController,
+      builder: (context, _) {
+        final enableAutocorrect = MatrixState.pangeaController.userController
+            .profile.toolSettings.enableAutocorrect;
+        // Pangea#
+        return TypeAheadField<Map<String, String?>>(
+          direction: VerticalDirection.up,
+          hideOnEmpty: true,
+          hideOnLoading: true,
           controller: controller,
           focusNode: focusNode,
-          contextMenuBuilder: (c, e) => markdownContextBuilder(
-            c,
-            e,
-            _,
-          ),
-          contentInsertionConfiguration: ContentInsertionConfiguration(
-            onContentInserted: (KeyboardInsertedContent content) {
-              final data = content.data;
-              if (data == null) return;
-
-              final file = MatrixFile(
-                mimeType: content.mimeType,
-                bytes: data,
-                name: content.uri.split('/').last,
-              );
-              room.sendFileEvent(
-                file,
-                shrinkImageMaxDimension: 1600,
-              );
-            },
-          ),
-          minLines: minLines,
-          maxLines: maxLines,
-          keyboardType: keyboardType!,
-          textInputAction: textInputAction,
-          autofocus: autofocus!,
-          inputFormatters: [
-            //LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
-            //setting max character count to 1000
-            //after max, nothing else can be typed
-            LengthLimitingTextInputFormatter(1000),
-          ],
-          onSubmitted: (text) {
-            // fix for library for now
-            // it sets the types for the callback incorrectly
-            onSubmitted!(text);
-          },
-          style: controller?.exceededMaxLength ?? false
-              ? const TextStyle(color: Colors.red)
-              : null,
-          onTap: () => onInputTap(context),
-          decoration: decoration!,
-          onChanged: (text) {
-            // fix for the library for now
-            // it sets the types for the callback incorrectly
-            onChanged!(text);
-          },
-          textCapitalization: TextCapitalization.sentences,
-        );
-        // fix for issue with typing not working sometimes on Firefox and Safari
-        return Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            if (controller != null && controller!.text.isEmpty)
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: ShrinkableText(
-                  text: hintText,
-                  maxWidth: double.infinity,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).disabledColor,
-                      ),
-                ),
+          hideOnSelect: false,
+          debounceDuration: const Duration(milliseconds: 50),
+          // show suggestions after 50ms idle time (default is 300)
+          // #Pangea
+          builder: (context, _, focusNode) {
+            final textField = TextField(
+              enableSuggestions: enableAutocorrect,
+              readOnly: controller!.choreographer.isRunningIT,
+              autocorrect: enableAutocorrect,
+              controller: controller,
+              focusNode: focusNode,
+              contextMenuBuilder: (c, e) => markdownContextBuilder(
+                c,
+                e,
+                _,
               ),
-            kIsWeb ? SelectionArea(child: textField) : textField,
-          ],
+              contentInsertionConfiguration: ContentInsertionConfiguration(
+                onContentInserted: (KeyboardInsertedContent content) {
+                  final data = content.data;
+                  if (data == null) return;
+
+                  final file = MatrixFile(
+                    mimeType: content.mimeType,
+                    bytes: data,
+                    name: content.uri.split('/').last,
+                  );
+                  room.sendFileEvent(
+                    file,
+                    shrinkImageMaxDimension: 1600,
+                  );
+                },
+              ),
+              minLines: minLines,
+              maxLines: maxLines,
+              keyboardType: keyboardType!,
+              textInputAction: textInputAction,
+              autofocus: autofocus!,
+              inputFormatters: [
+                //LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
+                //setting max character count to 1000
+                //after max, nothing else can be typed
+                LengthLimitingTextInputFormatter(1000),
+              ],
+              onSubmitted: (text) {
+                // fix for library for now
+                // it sets the types for the callback incorrectly
+                onSubmitted!(text);
+              },
+              style: controller?.exceededMaxLength ?? false
+                  ? const TextStyle(color: Colors.red)
+                  : null,
+              onTap: () => onInputTap(context),
+              decoration: decoration!,
+              onChanged: (text) {
+                // fix for the library for now
+                // it sets the types for the callback incorrectly
+                onChanged!(text);
+              },
+              textCapitalization: TextCapitalization.sentences,
+            );
+
+            return Stack(
+              alignment: Alignment.centerLeft,
+              children: [
+                if (controller != null && controller!.text.isEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: ShrinkableText(
+                      text: hintText(context),
+                      maxWidth: double.infinity,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Theme.of(context).disabledColor,
+                          ),
+                    ),
+                  ),
+                kIsWeb ? SelectionArea(child: textField) : textField,
+              ],
+            );
+          },
+          // builder: (context, controller, focusNode) => TextField(
+          //   controller: controller,
+          //   focusNode: focusNode,
+          //   readOnly: readOnly,
+          //   contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
+          //   contentInsertionConfiguration: ContentInsertionConfiguration(
+          //     onContentInserted: (KeyboardInsertedContent content) {
+          //       final data = content.data;
+          //       if (data == null) return;
+
+          //       final file = MatrixFile(
+          //         mimeType: content.mimeType,
+          //         bytes: data,
+          //         name: content.uri.split('/').last,
+          //       );
+          //       room.sendFileEvent(
+          //         file,
+          //         shrinkImageMaxDimension: 1600,
+          //       );
+          //     },
+          //   ),
+          //   minLines: minLines,
+          //   maxLines: maxLines,
+          //   keyboardType: keyboardType!,
+          //   textInputAction: textInputAction,
+          //   autofocus: autofocus!,
+          //   inputFormatters: [
+          //     LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
+          //   ],
+          //   onSubmitted: (text) {
+          //     // fix for library for now
+          //     // it sets the types for the callback incorrectly
+          //     onSubmitted!(text);
+          //   },
+          //   decoration: decoration!,
+          //   onChanged: (text) {
+          //     // fix for the library for now
+          //     // it sets the types for the callback incorrectly
+          //     onChanged!(text);
+          //   },
+          //   textCapitalization: TextCapitalization.sentences,
+          // ),
+          // Pangea#
+          suggestionsCallback: getSuggestions,
+          itemBuilder: (c, s) =>
+              buildSuggestion(c, s, Matrix.of(context).client),
+          onSelected: (Map<String, String?> suggestion) =>
+              insertSuggestion(context, suggestion),
+          errorBuilder: (BuildContext context, Object? error) =>
+              const SizedBox.shrink(),
+          loadingBuilder: (BuildContext context) => const SizedBox.shrink(),
+          // fix loading briefly flickering a dark box
+          emptyBuilder: (BuildContext context) => const SizedBox
+              .shrink(), // fix loading briefly showing no suggestions
         );
       },
-      // builder: (context, controller, focusNode) => TextField(
-      //   controller: controller,
-      //   focusNode: focusNode,
-      //   readOnly: readOnly,
-      //   contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
-      //   contentInsertionConfiguration: ContentInsertionConfiguration(
-      //     onContentInserted: (KeyboardInsertedContent content) {
-      //       final data = content.data;
-      //       if (data == null) return;
-
-      //       final file = MatrixFile(
-      //         mimeType: content.mimeType,
-      //         bytes: data,
-      //         name: content.uri.split('/').last,
-      //       );
-      //       room.sendFileEvent(
-      //         file,
-      //         shrinkImageMaxDimension: 1600,
-      //       );
-      //     },
-      //   ),
-      //   minLines: minLines,
-      //   maxLines: maxLines,
-      //   keyboardType: keyboardType!,
-      //   textInputAction: textInputAction,
-      //   autofocus: autofocus!,
-      //   inputFormatters: [
-      //     LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
-      //   ],
-      //   onSubmitted: (text) {
-      //     // fix for library for now
-      //     // it sets the types for the callback incorrectly
-      //     onSubmitted!(text);
-      //   },
-      //   decoration: decoration!,
-      //   onChanged: (text) {
-      //     // fix for the library for now
-      //     // it sets the types for the callback incorrectly
-      //     onChanged!(text);
-      //   },
-      //   textCapitalization: TextCapitalization.sentences,
-      // ),
-      // Pangea#
-      suggestionsCallback: getSuggestions,
-      itemBuilder: (c, s) => buildSuggestion(c, s, Matrix.of(context).client),
-      onSelected: (Map<String, String?> suggestion) =>
-          insertSuggestion(context, suggestion),
-      errorBuilder: (BuildContext context, Object? error) =>
-          const SizedBox.shrink(),
-      loadingBuilder: (BuildContext context) => const SizedBox.shrink(),
-      // fix loading briefly flickering a dark box
-      emptyBuilder: (BuildContext context) =>
-          const SizedBox.shrink(), // fix loading briefly showing no suggestions
     );
   }
 }

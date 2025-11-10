@@ -353,12 +353,19 @@ class ChatView extends StatelessWidget {
                       children: <Widget>[
                         Expanded(
                           child: GestureDetector(
-                            onTap: controller.clearSingleSelectedEvent,
                             // #Pangea
+                            // onTap: controller.clearSingleSelectedEvent,
                             // child: ChatEventList(controller: controller),
                             child: Stack(
                               children: [
-                                ChatEventList(controller: controller),
+                                ListenableBuilder(
+                                  listenable: controller.timelineUpdateNotifier,
+                                  builder: (context, _) {
+                                    return ChatEventList(
+                                      controller: controller,
+                                    );
+                                  },
+                                ),
                                 ChatViewBackground(
                                   controller.choreographer.itController.open,
                                 ),
@@ -477,11 +484,18 @@ class ChatView extends StatelessWidget {
                   ),
                   // #Pangea
                   ActivityStatsMenu(controller),
-                  if (controller.room.activitySummary?.summary != null &&
-                      controller.hasRainedConfetti == false)
-                    StarRainWidget(
-                      showBlast: true,
-                      onFinished: () => controller.setHasRainedConfetti(true),
+                  if (controller.room.activitySummary?.summary != null)
+                    ValueListenableBuilder(
+                      valueListenable: controller.hasRainedConfetti,
+                      builder: (context, hasRained, __) {
+                        return hasRained
+                            ? const SizedBox()
+                            : StarRainWidget(
+                                showBlast: true,
+                                onFinished: () =>
+                                    controller.setHasRainedConfetti(true),
+                              );
+                      },
                     ),
                   // if (controller.dragging)
                   //   Container(

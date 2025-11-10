@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choregrapher_user_settings_extension.dart';
@@ -10,6 +12,7 @@ import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.da
 import 'package:fluffychat/pangea/choreographer/igc/igc_controller.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
+import 'package:fluffychat/pangea/choreographer/pangea_message_content_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -22,9 +25,6 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import '../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
 import 'it/it_controller.dart';
@@ -82,18 +82,15 @@ class Choreographer extends ChangeNotifier {
     _languageStream =
         pangeaController.userController.languageStream.stream.listen((update) {
       clear();
-      notifyListeners();
     });
 
     _settingsUpdateStream =
         pangeaController.userController.settingsUpdateStream.stream.listen((_) {
       notifyListeners();
     });
-    clear();
   }
 
   void clear() {
-    setChoreoMode(ChoreoModeEnum.igc);
     _lastChecked = null;
     _timesClicked = 0;
     _isFetching.value = false;
@@ -102,6 +99,7 @@ class Choreographer extends ChangeNotifier {
     itController.clearSourceText();
     igcController.clear();
     _resetDebounceTimer();
+    setChoreoMode(ChoreoModeEnum.igc);
   }
 
   @override
@@ -165,51 +163,45 @@ class Choreographer extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> requestLanguageAssistance() =>
-      _startWritingAssistance(manual: true);
-
   /// Handles any changes to the text input
   void _onChange() {
+    // listener triggers when edit type changes, even if text didn't
+    // so prevent unnecessary calls
     if (_lastChecked != null && _lastChecked == textController.text) {
       return;
     }
+    if (_lastChecked == null ||
+        _lastChecked!.isEmpty ||
+        textController.text.isEmpty) {
+      notifyListeners();
+    }
 
     _lastChecked = textController.text;
-    if (textController.editType == EditTypeEnum.it) {
-      return;
-    }
-
-    if (textController.editType == EditTypeEnum.igc ||
-        textController.editType == EditTypeEnum.itDismissed) {
-      textController.editType = EditTypeEnum.keyboard;
-      return;
-    }
-
-    // Close any open IGC overlays
-    MatrixState.pAnyState.closeOverlay();
     if (errorService.isError) return;
-
-    igcController.clear();
     if (textController.editType == EditTypeEnum.keyboard) {
-      itController.clearSourceText();
+      if (igcController.hasIGCTextData ||
+          itController.sourceText.value != null) {
+        igcController.clear();
+        itController.clearSourceText();
+        notifyListeners();
+      }
+
+      _resetDebounceTimer();
+      _debounceTimer ??= Timer(
+        const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),
+        () => _getWritingAssistance(),
+      );
     }
-
-    _resetDebounceTimer();
-    _debounceTimer ??= Timer(
-      const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),
-      () => _startWritingAssistance(),
-    );
-
-    //Note: we don't set the keyboard type on each keyboard stroke so this is how we default to
-    //a change being from the keyboard unless explicitly set to one of the other
-    //types when that action happens (e.g. an it/igc choice is selected)
     textController.editType = EditTypeEnum.keyboard;
   }
 
-  Future<void> _startWritingAssistance({
+  Future<void> requestWritingAssistance() =>
+      _getWritingAssistance(manual: true);
+
+  Future<void> _getWritingAssistance({
     bool manual = false,
   }) async {
-    if (errorService.isError || isRunningIT) return;
+    if (assistanceState != AssistanceStateEnum.notFetched) return;
     final SubscriptionStatus canSendStatus =
         pangeaController.subscriptionController.subscriptionStatus;
 
@@ -228,79 +220,17 @@ class Choreographer extends ChangeNotifier {
       textController.text,
       chatController.room.getPreviousMessages(),
     );
+
+    // trigger a re-render of the text field to show IGC matches
+    textController.setSystemText(
+      textController.text,
+      EditTypeEnum.igc,
+    );
     _acceptNormalizationMatches();
     _stopLoading();
   }
 
-  Future<void> send([int recurrence = 0]) async {
-    // if isFetching, already called to getLanguageHelp and hasn't completed yet
-    // could happen if user clicked send button multiple times in a row
-    if (_isFetching.value) return;
-
-    if (errorService.isError) {
-      await _sendWithIGC();
-      return;
-    }
-
-    if (recurrence > 1) {
-      ErrorHandler.logError(
-        e: Exception("Choreographer send exceeded max recurrences"),
-        level: SentryLevel.warning,
-        data: {
-          "currentText": chatController.sendController.text,
-          "l1LangCode": l1LangCode,
-          "l2LangCode": l2LangCode,
-          "choreoRecord": _choreoRecord?.toJson(),
-        },
-      );
-      await _sendWithIGC();
-      return;
-    }
-
-    if (igcController.canShowFirstMatch) {
-      throw OpenMatchesException();
-    } else if (isRunningIT) {
-      // If the user is in the middle of IT, don't send the message.
-      // If they've already clicked the send button once, this will
-      // not be true, so they can still send it if they want.
-      return;
-    }
-
-    final subscriptionStatus =
-        pangeaController.subscriptionController.subscriptionStatus;
-
-    if (subscriptionStatus != SubscriptionStatus.subscribed) {
-      if (subscriptionStatus == SubscriptionStatus.shouldShowPaywall) {
-        throw ShowPaywallException();
-      }
-      chatController.send(message: chatController.sendController.text);
-      return;
-    }
-
-    if (chatController.shouldShowLanguageMismatchPopup) {
-      chatController.showLanguageMismatchPopup();
-      return;
-    }
-
-    if (!igcController.hasIGCTextData && !itController.dismissed) {
-      await _startWritingAssistance();
-      // it's possible for this not to be true, i.e. if IGC has an error
-      if (igcController.hasIGCTextData) {
-        await send(recurrence + 1);
-      }
-    } else {
-      await _sendWithIGC();
-    }
-  }
-
-  Future<void> _sendWithIGC() async {
-    if (chatController.sendController.text.trim().isEmpty) {
-      return;
-    }
-
-    final message = chatController.sendController.text;
-    final fakeEventId = chatController.sendFakeMessage();
-
+  Future<PangeaMessageContentModel> getMessageContent(String message) async {
     TokensResponseModel? tokensResp;
     if (l1LangCode != null && l2LangCode != null) {
       final res = await pangeaController.messageData
@@ -320,8 +250,9 @@ class Choreographer extends ChangeNotifier {
     final hasOriginalWritten = _choreoRecord?.includedIT == true &&
         itController.sourceText.value != null;
 
-    chatController.send(
+    return PangeaMessageContentModel(
       message: message,
+      choreo: _choreoRecord,
       originalSent: PangeaRepresentation(
         langCode: tokensResp?.detections.firstOrNull?.langCode ??
             LanguageKeys.unknownLanguage,
@@ -343,11 +274,7 @@ class Choreographer extends ChangeNotifier {
               detections: tokensResp.detections,
             )
           : null,
-      choreo: _choreoRecord,
-      tempEventId: fakeEventId,
     );
-
-    clear();
   }
 
   void openIT(PangeaMatchState itMatch) {

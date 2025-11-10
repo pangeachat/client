@@ -24,7 +24,6 @@ class ITController {
   final ValueNotifier<ITStepModel?> _currentITStep = ValueNotifier(null);
   final ValueNotifier<bool> _open = ValueNotifier(false);
   final ValueNotifier<bool> _editing = ValueNotifier(false);
-  bool _dismissed = false;
 
   ITController(this.onError);
 
@@ -32,7 +31,6 @@ class ITController {
   ValueNotifier<bool> get editing => _editing;
   ValueNotifier<ITStepModel?> get currentITStep => _currentITStep;
   ValueNotifier<String?> get sourceText => _sourceText;
-  bool get dismissed => _dismissed;
 
   ITRequestModel _request(String textInput) {
     assert(_sourceText.value != null);
@@ -57,12 +55,11 @@ class ITController {
     );
   }
 
-  void clear({bool dismissed = false}) {
+  void clear() {
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
 
     _open.value = false;
     _editing.value = false;
-    _dismissed = dismissed;
     _queue.clear();
     _currentITStep.value = null;
     _goldRouteTracker = null;
@@ -85,7 +82,7 @@ class ITController {
     continueIT();
   }
 
-  void closeIT() => clear(dismissed: true);
+  void closeIT() => clear();
 
   void setEditing(bool value) {
     _editing.value = value;
@@ -193,6 +190,10 @@ class ITController {
     final goldContinuances = _goldRouteTracker!.continuances;
     String currentText = goldContinuances[0].text;
     for (int i = 1; i < goldContinuances.length; i++) {
+      if (_sourceText.value == null || !_open.value) {
+        return;
+      }
+
       final completer = Completer<ITStepModel>();
       _queue.add(completer);
       final resp = await _safeRequest(currentText);
