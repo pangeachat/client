@@ -329,32 +329,33 @@ class ChatView extends StatelessWidget {
               //   onDragEntered: controller.onDragEntered,
               //   onDragExited: controller.onDragExited,
               //   child: Stack(
-              body: Stack(
-                // Pangea#
-                children: <Widget>[
-                  if (accountConfig.wallpaperUrl != null)
-                    Opacity(
-                      opacity: accountConfig.wallpaperOpacity ?? 0.5,
-                      child: ImageFiltered(
-                        imageFilter: ui.ImageFilter.blur(
-                          sigmaX: accountConfig.wallpaperBlur ?? 0.0,
-                          sigmaY: accountConfig.wallpaperBlur ?? 0.0,
-                        ),
-                        child: MxcImage(
-                          cacheKey: accountConfig.wallpaperUrl.toString(),
-                          uri: accountConfig.wallpaperUrl,
-                          fit: BoxFit.cover,
-                          height: MediaQuery.of(context).size.height,
-                          width: MediaQuery.of(context).size.width,
-                          isThumbnail: false,
-                          placeholder: (_) => Container(),
+              body: SafeArea(
+                child: Stack(
+                  // Pangea#
+                  children: <Widget>[
+                    if (accountConfig.wallpaperUrl != null)
+                      Opacity(
+                        opacity: accountConfig.wallpaperOpacity ?? 0.5,
+                        child: ImageFiltered(
+                          imageFilter: ui.ImageFilter.blur(
+                            sigmaX: accountConfig.wallpaperBlur ?? 0.0,
+                            sigmaY: accountConfig.wallpaperBlur ?? 0.0,
+                          ),
+                          child: MxcImage(
+                            cacheKey: accountConfig.wallpaperUrl.toString(),
+                            uri: accountConfig.wallpaperUrl,
+                            fit: BoxFit.cover,
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            isThumbnail: false,
+                            placeholder: (_) => Container(),
+                          ),
                         ),
                       ),
-                    ),
-                  SafeArea(
                     // #Pangea
+                    // SafeArea(
                     // child: Column(
-                    child: Stack(
+                    Stack(
                       children: [
                         Column(
                           // Pangea#
@@ -529,19 +530,19 @@ class ChatView extends StatelessWidget {
                         // Pangea#
                       ],
                     ),
-                  ),
-                  // #Pangea
-                  // if (controller.dragging)
-                  //   Container(
-                  //     color: theme.scaffoldBackgroundColor.withAlpha(230),
-                  //     alignment: Alignment.center,
-                  //     child: const Icon(
-                  //       Icons.upload_outlined,
-                  //       size: 100,
-                  //     ),
-                  //   ),
-                  // Pangea#
-                ],
+                    // #Pangea
+                    // if (controller.dragging)
+                    //   Container(
+                    //     color: theme.scaffoldBackgroundColor.withAlpha(230),
+                    //     alignment: Alignment.center,
+                    //     child: const Icon(
+                    //       Icons.upload_outlined,
+                    //       size: 100,
+                    //     ),
+                    //   ),
+                    // Pangea#
+                  ],
+                ),
               ),
             );
           },
