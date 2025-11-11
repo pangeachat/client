@@ -4552,6 +4552,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deny() {
       return "Deny";
     },
+    get$enabledRenewal() {
+      return "Enable Subscription Renewal";
+    },
+    get$subscriptionEndsOn() {
+      return "Subscription Ends On";
+    },
+    get$subscriptionRenewsOn() {
+      return "Subscription Renews On";
+    },
+    get$waitForSubscriptionChanges() {
+      return "Changes to your subscription may take a moment to reflect in the app.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4565,7 +4577,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UVi2XCu6913Z3P+BtgL/u/yKivY="] = d.current;
+  d["BrzBtXt7S4G5OaBi2K45oiL2rwE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_677.part.js.map
