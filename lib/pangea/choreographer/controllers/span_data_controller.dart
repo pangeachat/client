@@ -10,6 +10,8 @@ import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/choreographer/repo/span_data_repo.dart';
 import 'package:fluffychat/pangea/choreographer/utils/normalize_text.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class _SpanDetailsCacheItem {
   Future<SpanDetailsRepoReqAndRes> data;
@@ -54,7 +56,13 @@ class SpanDataController {
     return choreographer.igc.igcTextData!.matches[matchIndex].match;
   }
 
-  bool isNormalizationError(int matchIndex) {
+  bool isL2NormalizationError(int matchIndex) {
+    final l2 = MatrixState.pangeaController.languageController.userL2;
+    if (l2 == null) return false;
+    return _isNormalizationError(matchIndex, l2);
+  }
+
+  bool _isNormalizationError(int matchIndex, LanguageModel spanLanguage) {
     final span = _getSpan(matchIndex);
     if (span == null) return false;
 
@@ -70,7 +78,8 @@ class SpanDataController {
     );
 
     return correctChoice != null &&
-        normalizeString(correctChoice) == normalizeString(errorSpan);
+        normalizeString(correctChoice, spanLanguage.langCode) ==
+            normalizeString(errorSpan, spanLanguage.langCode);
   }
 
   Future<void> getSpanDetails(
@@ -78,7 +87,9 @@ class SpanDataController {
     bool force = false,
   }) async {
     final SpanData? span = _getSpan(matchIndex);
-    if (span == null || (isNormalizationError(matchIndex) && !force)) return;
+    if (span == null || (isL2NormalizationError(matchIndex) && !force)) {
+      return;
+    }
 
     final req = SpanDetailsRepoReqAndRes(
       userL1: choreographer.l1LangCode!,
