@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/subscription/pages/change_subscription.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
+import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
 class SettingsSubscriptionView extends StatelessWidget {
@@ -25,12 +26,18 @@ class SettingsSubscriptionView extends StatelessWidget {
       Column(
         children: [
           ListTile(
-            title: Text(L10n.of(context).cancelSubscription),
-            enabled: controller.showManagementOptions,
-            onTap: () => controller.launchMangementUrl(
-              ManagementOption.cancel,
+            title: Text(
+              controller.subscriptionEndDate == null
+                  ? L10n.of(context).cancelSubscription
+                  : L10n.of(context).enabledRenewal,
             ),
-            trailing: const Icon(Icons.cancel_outlined),
+            enabled: controller.showManagementOptions,
+            onTap: controller.onClickCancelSubscription,
+            trailing: Icon(
+              controller.subscriptionEndDate == null
+                  ? Icons.cancel_outlined
+                  : Icons.refresh_outlined,
+            ),
           ),
           const Divider(height: 1),
           ListTile(
@@ -49,6 +56,42 @@ class SettingsSubscriptionView extends StatelessWidget {
             ),
             enabled: controller.showManagementOptions,
           ),
+          if (controller.expirationDate != null) ...[
+            const Divider(height: 1),
+            ListTile(
+              title: Text(
+                controller.subscriptionEndDate != null
+                    ? L10n.of(context).subscriptionEndsOn
+                    : L10n.of(context).subscriptionRenewsOn,
+              ),
+              subtitle: Text(
+                DateFormat.yMMMMd().format(
+                  controller.expirationDate!.toLocal(),
+                ),
+              ),
+            ),
+            if (SubscriptionManagementRepo.getClickedCancelSubscription())
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  spacing: 8.0,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.info_outline,
+                      size: 20,
+                    ),
+                    Flexible(
+                      child: Text(
+                        L10n.of(context).waitForSubscriptionChanges,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          ],
         ],
       ),
     ];
@@ -68,16 +111,15 @@ class SettingsSubscriptionView extends StatelessWidget {
           child: Column(
             children: [
               if (isSubscribed == null)
-                const Center(child: CircularProgressIndicator.adaptive()),
-              if (isSubscribed != null &&
-                  isSubscribed &&
-                  !controller.showManagementOptions)
+                const Center(child: CircularProgressIndicator.adaptive())
+              else if (isSubscribed && !controller.showManagementOptions)
                 ManagementNotAvailableWarning(
                   controller: controller,
-                ),
-              if (isSubscribed != null && !isSubscribed)
+                )
+              else if (isSubscribed && controller.showManagementOptions)
+                ...managementButtons
+              else
                 ChangeSubscription(controller: controller),
-              if (controller.showManagementOptions) ...managementButtons,
             ],
           ),
         ),

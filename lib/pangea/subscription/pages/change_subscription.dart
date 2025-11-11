@@ -171,21 +171,20 @@ class ChangeSubscription extends StatelessWidget {
                                       ElevatedButton(
                                         onPressed: () => controller
                                             .submitChange(subscription),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            controller.loading
-                                                ? const CircularProgressIndicator
-                                                    .adaptive()
-                                                : Text(
+                                        child: controller.loading
+                                            ? const LinearProgressIndicator()
+                                            : Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
                                                     subscription.isTrial
                                                         ? L10n.of(context)
                                                             .activateTrial
                                                         : L10n.of(context).pay,
                                                   ),
-                                          ],
-                                        ),
+                                                ],
+                                              ),
                                       ),
                                     ],
                                   ),
