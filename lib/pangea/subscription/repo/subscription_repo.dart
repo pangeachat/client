@@ -151,7 +151,6 @@ class RCProductsResponseModel {
 class RCSubscriptionResponseModel {
   String? currentSubscriptionId;
   SubscriptionDetails? currentSubscription;
-  DateTime? expirationDate;
   List<String>? allEntitlements;
   Map<String, RCSubscription>? allSubscriptions;
 
@@ -159,7 +158,6 @@ class RCSubscriptionResponseModel {
     this.currentSubscriptionId,
     this.currentSubscription,
     this.allEntitlements,
-    this.expirationDate,
     this.allSubscriptions,
   });
 
@@ -188,14 +186,6 @@ class RCSubscriptionResponseModel {
     }
 
     final String currentSubscriptionId = activeEntitlements[0];
-
-    final Map<String, dynamic> currentSubscriptionMetadata =
-        json['subscriptions'][currentSubscriptionId];
-
-    final DateTime expirationDate = DateTime.parse(
-      currentSubscriptionMetadata['expires_date'],
-    );
-
     final SubscriptionDetails? currentSubscription =
         allProducts?.firstWhereOrNull(
       (SubscriptionDetails sub) =>
@@ -206,7 +196,6 @@ class RCSubscriptionResponseModel {
     return RCSubscriptionResponseModel(
       currentSubscription: currentSubscription,
       currentSubscriptionId: currentSubscriptionId,
-      expirationDate: expirationDate,
       allEntitlements: activeEntitlements,
       allSubscriptions: history,
     );

@@ -525,7 +525,6 @@ class ChatListController extends State<ChatList>
 
   //#Pangea
   StreamSubscription? _invitedSpaceSubscription;
-  StreamSubscription? _subscriptionStatusStream;
   StreamSubscription? _roomCapacitySubscription;
   //Pangea#
 
@@ -613,13 +612,8 @@ class ChatListController extends State<ChatList>
       }
     });
 
-    _subscriptionStatusStream ??= MatrixState
-        .pangeaController.subscriptionController.subscriptionStream.stream
-        .listen((event) {
-      if (mounted) {
-        showSubscribedSnackbar(context);
-      }
-    });
+    MatrixState.pangeaController.subscriptionController.subscriptionNotifier
+        .addListener(_onSubscribe);
 
     // listen for space child updates for any space that is not the active space
     // so that when the user navigates to the space that was updated, it will
@@ -673,6 +667,10 @@ class ChatListController extends State<ChatList>
   }
 
   // #Pangea
+  void _onSubscribe() {
+    if (mounted) showSubscribedSnackbar(context);
+  }
+
   Future<void> _joinInvitedSpaces() async {
     final invitedSpaces = Matrix.of(context).client.rooms.where(
           (r) => r.isSpace && r.membership == Membership.invite,
@@ -691,8 +689,9 @@ class ChatListController extends State<ChatList>
     _intentUriStreamSubscription?.cancel();
     //#Pangea
     _invitedSpaceSubscription?.cancel();
-    _subscriptionStatusStream?.cancel();
     _roomCapacitySubscription?.cancel();
+    MatrixState.pangeaController.subscriptionController.subscriptionNotifier
+        .removeListener(_onSubscribe);
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
