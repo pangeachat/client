@@ -205,6 +205,7 @@ class PangeaChatInputRow extends StatelessWidget {
                       ),
                       onChanged: controller.onInputBarChanged,
                       choreographer: controller.choreographer,
+                      showNextMatch: controller.showNextMatch,
                     ),
                   ),
                 ),

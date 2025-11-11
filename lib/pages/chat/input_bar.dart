@@ -13,7 +13,6 @@ import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/toolbar/utils/shrinkable_text.dart';
@@ -36,6 +35,7 @@ class InputBar extends StatelessWidget {
   // final TextEditingController? controller;
   final PangeaTextController? controller;
   final Choreographer choreographer;
+  final VoidCallback showNextMatch;
   // Pangea#
   final InputDecoration? decoration;
   final ValueChanged<String>? onChanged;
@@ -58,6 +58,7 @@ class InputBar extends StatelessWidget {
     this.readOnly = false,
     // #Pangea
     required this.choreographer,
+    required this.showNextMatch,
     // Pangea#
     super.key,
   });
@@ -429,58 +430,61 @@ class InputBar extends StatelessWidget {
   }
 
   // #Pangea
-  String hintText(BuildContext context) {
-    if (choreographer.itController.open.value) {
-      return L10n.of(context).buildTranslation;
-    }
+  SubscriptionStatus get _subscriptionStatus =>
+      MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
-    return MatrixState.pangeaController.languageController.userL1 != null &&
-            MatrixState.pangeaController.languageController.userL2 != null &&
-            MatrixState.pangeaController.languageController.userL1!.langCode !=
-                LanguageKeys.unknownLanguage &&
-            MatrixState.pangeaController.languageController.userL2!.langCode !=
-                LanguageKeys.unknownLanguage
+  String _defaultHintText(BuildContext context) {
+    final lang = MatrixState.pangeaController.languageController;
+    return lang.languagesSet
         ? L10n.of(context).writeAMessageLangCodes(
-            MatrixState.pangeaController.languageController.userL1!.displayName,
-            MatrixState.pangeaController.languageController.userL2!.displayName,
+            lang.userL1!.displayName,
+            lang.userL2!.displayName,
           )
         : L10n.of(context).writeAMessage;
   }
 
-  void onInputTap(BuildContext context) {
-    if (controller == null || controller!.text.isEmpty) return;
-    final choreographer = controller!.choreographer;
+  void _onInputTap(BuildContext context) {
+    if (_shouldShowPaywall(context)) return;
 
-    final subscriptionStatus =
-        MatrixState.pangeaController.subscriptionController.subscriptionStatus;
-    if (subscriptionStatus == SubscriptionStatus.shouldShowPaywall) {
-      PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
-      return;
-    }
+    final baseOffset = controller?.selection.baseOffset;
+    if (baseOffset == null) return;
 
-    // Normalization matchs are widget spans that mess with offsets,
-    // so we need to adjust the offset accordingly
-    int adjustedOffset = controller!.selection.baseOffset;
-    final normalizationMatches =
-        choreographer.igcController.recentAutomaticCorrections;
-    if (normalizationMatches != null) {
-      for (final match in normalizationMatches) {
-        if (match.updatedMatch.match.offset < adjustedOffset &&
-            match.updatedMatch.match.length > 0) {
-          adjustedOffset += (match.updatedMatch.match.length - 1);
-        }
-      }
-    }
-
+    final adjustedOffset = _adjustOffsetForNormalization(baseOffset);
     final match = choreographer.igcController.getMatchByOffset(adjustedOffset);
     if (match == null) return;
-    match.updatedMatch.isITStart
-        ? choreographer.openIT(match)
-        : OverlayUtil.showIGCMatch(
-            match,
-            choreographer,
-            context,
-          );
+
+    if (match.updatedMatch.isITStart) {
+      choreographer.openIT(match);
+    } else {
+      OverlayUtil.showIGCMatch(
+        match,
+        choreographer,
+        context,
+        showNextMatch,
+      );
+    }
+  }
+
+  bool _shouldShowPaywall(BuildContext context) {
+    if (_subscriptionStatus == SubscriptionStatus.shouldShowPaywall) {
+      PaywallCard.show(context, ChoreoConstants.inputTransformTargetKey);
+      return true;
+    }
+    return false;
+  }
+
+  int _adjustOffsetForNormalization(int baseOffset) {
+    int adjustedOffset = baseOffset;
+    final corrections = choreographer.igcController.recentAutomaticCorrections;
+    if (corrections == null) return adjustedOffset;
+
+    for (final correction in corrections) {
+      final match = correction.updatedMatch.match;
+      if (match.offset < adjustedOffset && match.length > 0) {
+        adjustedOffset += (match.length - 1);
+      }
+    }
+    return adjustedOffset;
   }
   // Pangea#
 
@@ -492,7 +496,6 @@ class InputBar extends StatelessWidget {
       builder: (context, _, __) {
         final enableAutocorrect = MatrixState.pangeaController.userController
             .profile.toolSettings.enableAutocorrect;
-        // Pangea#
         return TypeAheadField<Map<String, String?>>(
           direction: VerticalDirection.up,
           hideOnEmpty: true,
@@ -501,8 +504,6 @@ class InputBar extends StatelessWidget {
           focusNode: focusNode,
           hideOnSelect: false,
           debounceDuration: const Duration(milliseconds: 50),
-          // show suggestions after 50ms idle time (default is 300)
-          // #Pangea
           builder: (context, _, focusNode) {
             final textField = TextField(
               enableSuggestions: enableAutocorrect,
@@ -550,7 +551,7 @@ class InputBar extends StatelessWidget {
               style: controller?.exceededMaxLength ?? false
                   ? const TextStyle(color: Colors.red)
                   : null,
-              onTap: () => onInputTap(context),
+              onTap: () => _onInputTap(context),
               decoration: decoration!,
               onChanged: (text) {
                 // fix for the library for now
@@ -567,7 +568,9 @@ class InputBar extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: ShrinkableText(
-                      text: hintText(context),
+                      text: controller!.choreographer.itController.open.value
+                          ? L10n.of(context).buildTranslation
+                          : _defaultHintText(context),
                       maxWidth: double.infinity,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             color: Theme.of(context).disabledColor,
@@ -578,49 +581,6 @@ class InputBar extends StatelessWidget {
               ],
             );
           },
-          // builder: (context, controller, focusNode) => TextField(
-          //   controller: controller,
-          //   focusNode: focusNode,
-          //   readOnly: readOnly,
-          //   contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
-          //   contentInsertionConfiguration: ContentInsertionConfiguration(
-          //     onContentInserted: (KeyboardInsertedContent content) {
-          //       final data = content.data;
-          //       if (data == null) return;
-
-          //       final file = MatrixFile(
-          //         mimeType: content.mimeType,
-          //         bytes: data,
-          //         name: content.uri.split('/').last,
-          //       );
-          //       room.sendFileEvent(
-          //         file,
-          //         shrinkImageMaxDimension: 1600,
-          //       );
-          //     },
-          //   ),
-          //   minLines: minLines,
-          //   maxLines: maxLines,
-          //   keyboardType: keyboardType!,
-          //   textInputAction: textInputAction,
-          //   autofocus: autofocus!,
-          //   inputFormatters: [
-          //     LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
-          //   ],
-          //   onSubmitted: (text) {
-          //     // fix for library for now
-          //     // it sets the types for the callback incorrectly
-          //     onSubmitted!(text);
-          //   },
-          //   decoration: decoration!,
-          //   onChanged: (text) {
-          //     // fix for the library for now
-          //     // it sets the types for the callback incorrectly
-          //     onChanged!(text);
-          //   },
-          //   textCapitalization: TextCapitalization.sentences,
-          // ),
-          // Pangea#
           suggestionsCallback: getSuggestions,
           itemBuilder: (c, s) =>
               buildSuggestion(c, s, Matrix.of(context).client),
@@ -635,5 +595,71 @@ class InputBar extends StatelessWidget {
         );
       },
     );
+    // return TypeAheadField<Map<String, String?>>(
+    //   direction: VerticalDirection.up,
+    //   hideOnEmpty: true,
+    //   hideOnLoading: true,
+    //   controller: controller,
+    //   focusNode: focusNode,
+    //   hideOnSelect: false,
+    //   debounceDuration: const Duration(milliseconds: 50),
+    //   // show suggestions after 50ms idle time (default is 300)
+    //   builder: (context, controller, focusNode) => TextField(
+    //     controller: controller,
+    //     focusNode: focusNode,
+    //     readOnly: readOnly,
+    //     contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
+    //     contentInsertionConfiguration: ContentInsertionConfiguration(
+    //       onContentInserted: (KeyboardInsertedContent content) {
+    //         final data = content.data;
+    //         if (data == null) return;
+
+    //         final file = MatrixFile(
+    //           mimeType: content.mimeType,
+    //           bytes: data,
+    //           name: content.uri.split('/').last,
+    //         );
+    //         room.sendFileEvent(
+    //           file,
+    //           shrinkImageMaxDimension: 1600,
+    //         );
+    //       },
+    //     ),
+    //     minLines: minLines,
+    //     maxLines: maxLines,
+    //     keyboardType: keyboardType!,
+    //     textInputAction: textInputAction,
+    //     autofocus: autofocus!,
+    //     inputFormatters: [
+    //       LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
+    //     ],
+    //     onSubmitted: (text) {
+    //       // fix for library for now
+    //       // it sets the types for the callback incorrectly
+    //       onSubmitted!(text);
+    //     },
+    //     maxLength:
+    //         AppSettings.textMessageMaxLength.getItem(Matrix.of(context).store),
+    //     decoration: decoration,
+    //     onChanged: (text) {
+    //       // fix for the library for now
+    //       // it sets the types for the callback incorrectly
+    //       onChanged!(text);
+    //     },
+    //     textCapitalization: TextCapitalization.sentences,
+    //   ),
+
+    //   suggestionsCallback: getSuggestions,
+    //   itemBuilder: (c, s) => buildSuggestion(c, s, Matrix.of(context).client),
+    //   onSelected: (Map<String, String?> suggestion) =>
+    //       insertSuggestion(context, suggestion),
+    //   errorBuilder: (BuildContext context, Object? error) =>
+    //       const SizedBox.shrink(),
+    //   loadingBuilder: (BuildContext context) => const SizedBox.shrink(),
+    //   // fix loading briefly flickering a dark box
+    //   emptyBuilder: (BuildContext context) =>
+    //       const SizedBox.shrink(), // fix loading briefly showing no suggestions
+    // );
+    // Pangea#
   }
 }

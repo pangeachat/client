@@ -837,35 +837,35 @@ class ChatController extends State<ChatPageWithRoom>
   PangeaTextController get sendController => choreographer.textController;
   // Pangea#
 
-  // #Pangea
-  // void setSendingClient(Client c) {
-  //   // first cancel typing with the old sending client
-  //   if (currentlyTyping) {
-  //     // no need to have the setting typing to false be blocking
-  //     typingCoolDown?.cancel();
-  //     typingCoolDown = null;
-  //     room.setTyping(false);
-  //     currentlyTyping = false;
-  //   }
-  //   // then cancel the old timeline
-  //   // fixes bug with read reciepts and quick switching
-  //   loadTimelineFuture = _getTimeline(eventContextId: room.fullyRead).onError(
-  //     ErrorReporter(
-  //       context,
-  //       'Unable to load timeline after changing sending Client',
-  //     ).onErrorCallback,
-  //   );
+  void setSendingClient(Client c) {
+    // #Pangea
+    //   // first cancel typing with the old sending client
+    //   if (currentlyTyping) {
+    //     // no need to have the setting typing to false be blocking
+    //     typingCoolDown?.cancel();
+    //     typingCoolDown = null;
+    //     room.setTyping(false);
+    //     currentlyTyping = false;
+    //   }
+    //   // then cancel the old timeline
+    //   // fixes bug with read reciepts and quick switching
+    //   loadTimelineFuture = _getTimeline(eventContextId: room.fullyRead).onError(
+    //     ErrorReporter(
+    //       context,
+    //       'Unable to load timeline after changing sending Client',
+    //     ).onErrorCallback,
+    //   );
 
-  //   // then set the new sending client
-  //   setState(() => sendingClient = c);
-  // }
+    //   // then set the new sending client
+    //   setState(() => sendingClient = c);
+    // }
 
-  // void setActiveClient(Client c) {
-  //   setState(() {
-  //     Matrix.of(context).setActiveClient(c);
-  //   });
-  // }
-  // Pangea#
+    // void setActiveClient(Client c) {
+    //   setState(() {
+    //     Matrix.of(context).setActiveClient(c);
+    //   });
+    // Pangea#
+  }
 
   // #Pangea
   Event? pangeaEditingEvent;
@@ -2188,6 +2188,23 @@ class ChatController extends State<ChatPageWithRoom>
         l1 != activityLang;
   }
 
+  void showNextMatch() {
+    final match = choreographer.igcController.firstOpenMatch;
+    if (match == null) {
+      inputFocus.requestFocus();
+      return;
+    }
+
+    match.updatedMatch.isITStart
+        ? choreographer.openIT(match)
+        : OverlayUtil.showIGCMatch(
+            match,
+            choreographer,
+            context,
+            showNextMatch,
+          );
+  }
+
   Future<void> onRequestWritingAssistance({
     bool manual = false,
     bool autosend = false,
@@ -2198,14 +2215,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     await choreographer.requestWritingAssistance(manual: manual);
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {
-      final match = choreographer.igcController.firstOpenMatch!;
-      match.updatedMatch.isITStart
-          ? choreographer.openIT(match)
-          : OverlayUtil.showIGCMatch(
-              match,
-              choreographer,
-              context,
-            );
+      showNextMatch();
     } else if (autosend) {
       await send();
     } else {

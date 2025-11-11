@@ -7,6 +7,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../config/themes.dart';
 import 'chat.dart';
 import 'input_bar.dart';
@@ -254,17 +256,15 @@ class ChatInputRow extends StatelessWidget {
                   onPressed: controller.emojiPickerAction,
                 ),
               ),
-              // #Pangea
-              // if (Matrix.of(context).isMultiAccount &&
-              //     Matrix.of(context).hasComplexBundles &&
-              //     Matrix.of(context).currentBundle!.length > 1)
-              //   Container(
-              //     width: height,
-              //     height: height,
-              //     alignment: Alignment.center,
-              //     child: _ChatAccountPicker(controller),
-              //   ),
-              // Pangea#
+              if (Matrix.of(context).isMultiAccount &&
+                  Matrix.of(context).hasComplexBundles &&
+                  Matrix.of(context).currentBundle!.length > 1)
+                Container(
+                  width: height,
+                  height: height,
+                  alignment: Alignment.center,
+                  child: _ChatAccountPicker(controller),
+                ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 0.0),
@@ -301,6 +301,7 @@ class ChatInputRow extends StatelessWidget {
                     onChanged: controller.onInputBarChanged,
                     // #Pangea
                     choreographer: controller.choreographer,
+                    showNextMatch: controller.showNextMatch,
                     // Pangea#
                   ),
                 ),
@@ -341,62 +342,60 @@ class ChatInputRow extends StatelessWidget {
   }
 }
 
-// #Pangea
-// class _ChatAccountPicker extends StatelessWidget {
-//   final ChatController controller;
+class _ChatAccountPicker extends StatelessWidget {
+  final ChatController controller;
 
-//   const _ChatAccountPicker(this.controller);
+  const _ChatAccountPicker(this.controller);
 
-//   void _popupMenuButtonSelected(String mxid, BuildContext context) {
-//     final client = Matrix.of(context)
-//         .currentBundle!
-//         .firstWhere((cl) => cl!.userID == mxid, orElse: () => null);
-//     if (client == null) {
-//       Logs().w('Attempted to switch to a non-existing client $mxid');
-//       return;
-//     }
-//     controller.setSendingClient(client);
-//   }
+  void _popupMenuButtonSelected(String mxid, BuildContext context) {
+    final client = Matrix.of(context)
+        .currentBundle!
+        .firstWhere((cl) => cl!.userID == mxid, orElse: () => null);
+    if (client == null) {
+      Logs().w('Attempted to switch to a non-existing client $mxid');
+      return;
+    }
+    controller.setSendingClient(client);
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final clients = controller.currentRoomBundle;
-//     return Padding(
-//       padding: const EdgeInsets.all(8.0),
-//       child: FutureBuilder<Profile>(
-//         future: controller.sendingClient.fetchOwnProfile(),
-//         builder: (context, snapshot) => PopupMenuButton<String>(
-//           useRootNavigator: true,
-//           onSelected: (mxid) => _popupMenuButtonSelected(mxid, context),
-//           itemBuilder: (BuildContext context) => clients
-//               .map(
-//                 (client) => PopupMenuItem<String>(
-//                   value: client!.userID,
-//                   child: FutureBuilder<Profile>(
-//                     future: client.fetchOwnProfile(),
-//                     builder: (context, snapshot) => ListTile(
-//                       leading: Avatar(
-//                         mxContent: snapshot.data?.avatarUrl,
-//                         name: snapshot.data?.displayName ??
-//                             client.userID!.localpart,
-//                         size: 20,
-//                       ),
-//                       title: Text(snapshot.data?.displayName ?? client.userID!),
-//                       contentPadding: const EdgeInsets.all(0),
-//                     ),
-//                   ),
-//                 ),
-//               )
-//               .toList(),
-//           child: Avatar(
-//             mxContent: snapshot.data?.avatarUrl,
-//             name: snapshot.data?.displayName ??
-//                 Matrix.of(context).client.userID!.localpart,
-//             size: 20,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-// Pangea#
+  @override
+  Widget build(BuildContext context) {
+    final clients = controller.currentRoomBundle;
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: FutureBuilder<Profile>(
+        future: controller.sendingClient.fetchOwnProfile(),
+        builder: (context, snapshot) => PopupMenuButton<String>(
+          useRootNavigator: true,
+          onSelected: (mxid) => _popupMenuButtonSelected(mxid, context),
+          itemBuilder: (BuildContext context) => clients
+              .map(
+                (client) => PopupMenuItem<String>(
+                  value: client!.userID,
+                  child: FutureBuilder<Profile>(
+                    future: client.fetchOwnProfile(),
+                    builder: (context, snapshot) => ListTile(
+                      leading: Avatar(
+                        mxContent: snapshot.data?.avatarUrl,
+                        name: snapshot.data?.displayName ??
+                            client.userID!.localpart,
+                        size: 20,
+                      ),
+                      title: Text(snapshot.data?.displayName ?? client.userID!),
+                      contentPadding: const EdgeInsets.all(0),
+                    ),
+                  ),
+                ),
+              )
+              .toList(),
+          child: Avatar(
+            mxContent: snapshot.data?.avatarUrl,
+            name: snapshot.data?.displayName ??
+                Matrix.of(context).client.userID!.localpart,
+            size: 20,
+          ),
+        ),
+      ),
+    );
+  }
+}

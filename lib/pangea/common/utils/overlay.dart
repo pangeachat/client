@@ -220,6 +220,7 @@ class OverlayUtil {
     PangeaMatchState match,
     Choreographer choreographer,
     BuildContext context,
+    VoidCallback showNextMatch,
   ) {
     MatrixState.pAnyState.closeAllOverlays();
     showPositionedCard(
@@ -229,6 +230,7 @@ class OverlayUtil {
       cardToShow: SpanCard(
         match: match,
         choreographer: choreographer,
+        showNextMatch: showNextMatch,
       ),
       maxHeight: 325,
       maxWidth: 325,

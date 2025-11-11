@@ -8,23 +8,22 @@ import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/span_data_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/widgets/choice_array.dart';
-import 'why_button.dart';
 
 class SpanCard extends StatefulWidget {
   final PangeaMatchState match;
   final Choreographer choreographer;
+  final VoidCallback showNextMatch;
 
   const SpanCard({
     super.key,
     required this.match,
     required this.choreographer,
+    required this.showNextMatch,
   });
 
   @override
@@ -125,6 +124,7 @@ class SpanCardState extends State<SpanCard> {
   void _onMatchUpdate(VoidCallback updateFunc) async {
     try {
       updateFunc();
+      widget.showNextMatch();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -137,7 +137,6 @@ class SpanCardState extends State<SpanCard> {
       widget.choreographer.clearMatches(e);
       return;
     }
-    _showFirstMatch();
   }
 
   void _onAcceptReplacement() => _onMatchUpdate(() {
@@ -147,19 +146,6 @@ class SpanCardState extends State<SpanCard> {
   void _onIgnoreMatch() => _onMatchUpdate(() {
         widget.choreographer.onIgnoreReplacement(match: widget.match);
       });
-
-  void _showFirstMatch() {
-    final match = widget.choreographer.igcController.firstOpenMatch;
-    if (match == null) {
-      MatrixState.pAnyState.closeAllOverlays();
-      return;
-    }
-    OverlayUtil.showIGCMatch(
-      match,
-      widget.choreographer,
-      context,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -196,54 +182,10 @@ class SpanCardState extends State<SpanCard> {
                             .pangeaController.languageController
                             .activeL2Code(),
                       ),
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(
-                          minHeight: 100.0,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ListenableBuilder(
-                              listenable: _feedbackModel,
-                              builder: (context, _) {
-                                if (_loadingChoices) {
-                                  return const SizedBox(
-                                    width: 24.0,
-                                    height: 24.0,
-                                    child: CircularProgressIndicator(),
-                                  );
-                                }
-
-                                final state = _feedbackModel.state;
-                                return switch (state) {
-                                  FeedbackIdle<String>() =>
-                                    _selectedChoice == null
-                                        ? Text(
-                                            widget.match.updatedMatch.match.type
-                                                .typeName
-                                                .defaultPrompt(context),
-                                            style:
-                                                BotStyle.text(context).copyWith(
-                                              fontStyle: FontStyle.italic,
-                                            ),
-                                          )
-                                        : WhyButton(
-                                            onPress: _fetchFeedback,
-                                            loading: false,
-                                          ),
-                                  FeedbackLoading<String>() => WhyButton(
-                                      onPress: _fetchFeedback,
-                                      loading: true,
-                                    ),
-                                  FeedbackError<String>(:final error) =>
-                                    ErrorIndicator(message: error.toString()),
-                                  FeedbackLoaded<String>(:final value) =>
-                                    Text(value, style: BotStyle.text(context)),
-                                };
-                              },
-                            ),
-                          ],
-                        ),
+                      _SpanCardFeedback(
+                        _selectedChoice != null,
+                        _fetchFeedback,
+                        _feedbackModel,
                       ),
                     ],
                   ),
@@ -251,52 +193,126 @@ class SpanCardState extends State<SpanCard> {
               ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Theme.of(context).cardColor,
+          _SpanCardButtons(
+            onAccept: _onAcceptReplacement,
+            onIgnore: _onIgnoreMatch,
+            selectedChoice: _selectedChoice,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SpanCardFeedback extends StatelessWidget {
+  final bool hasSelectedChoice;
+  final VoidCallback fetchFeedback;
+  final FeedbackModel<String> feedbackModel;
+
+  const _SpanCardFeedback(
+    this.hasSelectedChoice,
+    this.fetchFeedback,
+    this.feedbackModel,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        minHeight: 100.0,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ListenableBuilder(
+            listenable: feedbackModel,
+            builder: (context, _) {
+              final state = feedbackModel.state;
+              return switch (state) {
+                FeedbackIdle<String>() => hasSelectedChoice
+                    ? IconButton(
+                        onPressed: fetchFeedback,
+                        icon: const Icon(Icons.lightbulb_outline, size: 24),
+                      )
+                    : Text(
+                        L10n.of(context).correctionDefaultPrompt,
+                        style: BotStyle.text(context).copyWith(
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                FeedbackLoading<String>() => const SizedBox(
+                    width: 24,
+                    height: 24,
+                    child: CircularProgressIndicator(),
+                  ),
+                FeedbackError<String>(:final error) =>
+                  ErrorIndicator(message: error.toString()),
+                FeedbackLoaded<String>(:final value) =>
+                  Text(value, style: BotStyle.text(context)),
+              };
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SpanCardButtons extends StatelessWidget {
+  final VoidCallback onAccept;
+  final VoidCallback onIgnore;
+  final SpanChoice? selectedChoice;
+
+  const _SpanCardButtons({
+    required this.onAccept,
+    required this.onIgnore,
+    required this.selectedChoice,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+      ),
+      padding: const EdgeInsets.only(top: 12.0),
+      child: Row(
+        spacing: 10.0,
+        children: [
+          Expanded(
+            child: Opacity(
+              opacity: 0.8,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor:
+                      Theme.of(context).colorScheme.primary.withAlpha(25),
+                ),
+                onPressed: onIgnore,
+                child: Center(
+                  child: Text(L10n.of(context).ignoreInThisText),
+                ),
+              ),
             ),
-            padding: const EdgeInsets.only(top: 12.0),
-            child: Row(
-              spacing: 10.0,
-              children: [
-                Expanded(
-                  child: Opacity(
-                    opacity: 0.8,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor:
-                            Theme.of(context).colorScheme.primary.withAlpha(25),
-                      ),
-                      onPressed: _onIgnoreMatch,
-                      child: Center(
-                        child: Text(L10n.of(context).ignoreInThisText),
-                      ),
-                    ),
-                  ),
+          ),
+          Expanded(
+            child: Opacity(
+              opacity: selectedChoice != null ? 1.0 : 0.5,
+              child: TextButton(
+                onPressed: selectedChoice != null ? onAccept : null,
+                style: TextButton.styleFrom(
+                  backgroundColor: (selectedChoice?.color ??
+                          Theme.of(context).colorScheme.primary)
+                      .withAlpha(50),
+                  side: selectedChoice != null
+                      ? BorderSide(
+                          color: selectedChoice!.color,
+                          style: BorderStyle.solid,
+                          width: 2.0,
+                        )
+                      : null,
                 ),
-                Expanded(
-                  child: Opacity(
-                    opacity: _selectedChoice != null ? 1.0 : 0.5,
-                    child: TextButton(
-                      onPressed:
-                          _selectedChoice != null ? _onAcceptReplacement : null,
-                      style: TextButton.styleFrom(
-                        backgroundColor: (_selectedChoice?.color ??
-                                Theme.of(context).colorScheme.primary)
-                            .withAlpha(50),
-                        side: _selectedChoice != null
-                            ? BorderSide(
-                                color: _selectedChoice!.color,
-                                style: BorderStyle.solid,
-                                width: 2.0,
-                              )
-                            : null,
-                      ),
-                      child: Text(L10n.of(context).replace),
-                    ),
-                  ),
-                ),
-              ],
+                child: Text(L10n.of(context).replace),
+              ),
             ),
           ),
         ],
