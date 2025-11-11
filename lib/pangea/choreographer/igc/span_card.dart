@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -36,8 +35,6 @@ class SpanCardState extends State<SpanCard> {
   bool _loadingChoices = true;
   final _feedbackModel = FeedbackModel<String>();
 
-  SpanChoice? _latestSelectedChoice;
-
   final ScrollController scrollController = ScrollController();
 
   @override
@@ -56,10 +53,7 @@ class SpanCardState extends State<SpanCard> {
   List<SpanChoice>? get _choices => widget.match.updatedMatch.match.choices;
 
   SpanChoice? get _selectedChoice =>
-      widget.match.updatedMatch.match.selectedChoice ??
-      widget.match.updatedMatch.match.choices?.firstWhereOrNull(
-        (c) => c.value == _latestSelectedChoice?.value,
-      );
+      widget.match.updatedMatch.match.selectedChoice;
 
   String? get _selectedFeedback => _selectedChoice?.feedback;
 
@@ -120,7 +114,6 @@ class SpanCardState extends State<SpanCard> {
   void _onChoiceSelect(int index) {
     final selected = _choices![index];
     widget.match.selectChoice(index);
-    _latestSelectedChoice = selected;
     _feedbackModel.setState(
       selected.feedback != null
           ? FeedbackLoaded<String>(selected.feedback!)

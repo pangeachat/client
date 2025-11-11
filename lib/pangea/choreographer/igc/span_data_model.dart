@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:diacritic/diacritic.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'span_choice_type_enum.dart';
 import 'span_data_type_enum.dart';
 
@@ -136,34 +136,13 @@ class SpanData {
 
     final errorSpan = fullText.characters.skip(offset).take(length).toString();
 
+    final l2Code =
+        MatrixState.pangeaController.languageController.userL2?.langCodeShort;
+
     return correctChoice != null &&
-        _normalizeString(correctChoice) == _normalizeString(errorSpan);
-  }
-
-  String _normalizeString(String input) {
-    try {
-      // Step 1: Remove diacritics (accents)
-      String normalized = removeDiacritics(input);
-      normalized = normalized.replaceAll(RegExp(r'[^\x00-\x7F]'), '');
-
-      // Step 2: Remove punctuation
-      normalized = normalized.replaceAll(RegExp(r'[^\w\s]'), '');
-
-      // Step 3: Convert to lowercase
-      normalized = normalized.toLowerCase();
-
-      // Step 4: Trim and normalize whitespace
-      normalized = normalized.replaceAll(RegExp(r'\s+'), ' ').trim();
-
-      return normalized.isEmpty ? input : normalized;
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'input': input},
-      );
-      return input;
-    }
+        l2Code != null &&
+        normalizeString(correctChoice, l2Code) ==
+            normalizeString(errorSpan, l2Code);
   }
 
   @override

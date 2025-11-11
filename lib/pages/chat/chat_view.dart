@@ -327,187 +327,191 @@ class ChatView extends StatelessWidget {
               //   onDragEntered: controller.onDragEntered,
               //   onDragExited: controller.onDragExited,
               //   child: Stack(
-              body: Stack(
-                children: <Widget>[
-                  if (accountConfig.wallpaperUrl != null)
-                    Opacity(
-                      opacity: accountConfig.wallpaperOpacity ?? 0.5,
-                      child: ImageFiltered(
-                        imageFilter: ui.ImageFilter.blur(
-                          sigmaX: accountConfig.wallpaperBlur ?? 0.0,
-                          sigmaY: accountConfig.wallpaperBlur ?? 0.0,
-                        ),
-                        child: MxcImage(
-                          cacheKey: accountConfig.wallpaperUrl.toString(),
-                          uri: accountConfig.wallpaperUrl,
-                          fit: BoxFit.cover,
-                          height: MediaQuery.sizeOf(context).height,
-                          width: MediaQuery.sizeOf(context).width,
-                          isThumbnail: false,
-                          placeholder: (_) => Container(),
+              body: SafeArea(
+                child: Stack(
+                  // Pangea#
+                  children: <Widget>[
+                    if (accountConfig.wallpaperUrl != null)
+                      Opacity(
+                        opacity: accountConfig.wallpaperOpacity ?? 0.5,
+                        child: ImageFiltered(
+                          imageFilter: ui.ImageFilter.blur(
+                            sigmaX: accountConfig.wallpaperBlur ?? 0.0,
+                            sigmaY: accountConfig.wallpaperBlur ?? 0.0,
+                          ),
+                          child: MxcImage(
+                            cacheKey: accountConfig.wallpaperUrl.toString(),
+                            uri: accountConfig.wallpaperUrl,
+                            fit: BoxFit.cover,
+                            height: MediaQuery.sizeOf(context).height,
+                            width: MediaQuery.sizeOf(context).width,
+                            isThumbnail: false,
+                            placeholder: (_) => Container(),
+                          ),
                         ),
                       ),
-                    ),
-                  SafeArea(
-                    child: Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: GestureDetector(
-                            // #Pangea
-                            // onTap: controller.clearSingleSelectedEvent,
-                            // child: ChatEventList(controller: controller),
-                            child: Stack(
-                              children: [
-                                ListenableBuilder(
-                                  listenable: controller.timelineUpdateNotifier,
-                                  builder: (context, _) {
-                                    return ChatEventList(
-                                      controller: controller,
-                                    );
-                                  },
-                                ),
-                                ChatViewBackground(
-                                  controller.choreographer.itController.open,
-                                ),
-                              ],
-                            ),
-                            // Pangea#
-                          ),
-                        ),
-                        // #Pangea
-                        // if (controller.showScrollDownButton)
-                        //   Divider(
-                        //     height: 1,
-                        //     color: theme.dividerColor,
-                        //   ),
-                        ListenableBuilder(
-                          listenable: controller.scrollController,
-                          builder: (context, _) {
-                            if (controller.scrollController.hasClients &&
-                                controller.scrollController.position.pixels >
-                                    0) {
-                              return Divider(
-                                height: 1,
-                                color: theme.dividerColor,
-                              );
-                            } else {
-                              return const SizedBox.shrink();
-                            }
-                          },
-                        ),
-                        // Pangea#
-                        if (controller.room.isExtinct)
-                          Container(
-                            margin: EdgeInsets.all(bottomSheetPadding),
-                            width: double.infinity,
-                            child: ElevatedButton.icon(
-                              icon: const Icon(Icons.chevron_right),
-                              label: Text(L10n.of(context).enterNewChat),
-                              onPressed: controller.goToNewRoomAction,
-                            ),
-                          )
-                        else if (controller.room.canSendDefaultMessages &&
-                            controller.room.membership == Membership.join)
-                          Container(
-                            margin: EdgeInsets.all(bottomSheetPadding),
-                            constraints: const BoxConstraints(
-                              maxWidth: FluffyThemes.maxTimelineWidth,
-                            ),
-                            alignment: Alignment.center,
-                            child: Material(
-                              clipBehavior: Clip.hardEdge,
+                    SafeArea(
+                      child: Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: GestureDetector(
                               // #Pangea
-                              // color: controller.selectedEvents.isNotEmpty
-                              //     ? theme.colorScheme.tertiaryContainer
-                              //     : theme.colorScheme.surfaceContainerHigh,
-                              color: theme.colorScheme.surfaceContainerHigh,
-                              // Pangea#
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(24),
+                              // onTap: controller.clearSingleSelectedEvent,
+                              // child: ChatEventList(controller: controller),
+                              child: Stack(
+                                children: [
+                                  ListenableBuilder(
+                                    listenable:
+                                        controller.timelineUpdateNotifier,
+                                    builder: (context, _) {
+                                      return ChatEventList(
+                                        controller: controller,
+                                      );
+                                    },
+                                  ),
+                                  ChatViewBackground(
+                                    controller.choreographer.itController.open,
+                                  ),
+                                ],
                               ),
-                              child: controller.room.isAbandonedDMRoom == true
-                                  ? Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton.icon(
-                                          style: TextButton.styleFrom(
-                                            padding: const EdgeInsets.all(
-                                              16,
-                                            ),
-                                            foregroundColor:
-                                                theme.colorScheme.error,
-                                          ),
-                                          icon: const Icon(
-                                            Icons.archive_outlined,
-                                          ),
-                                          onPressed: controller.leaveChat,
-                                          label: Text(
-                                            L10n.of(context).leave,
-                                          ),
-                                        ),
-                                        TextButton.icon(
-                                          style: TextButton.styleFrom(
-                                            padding: const EdgeInsets.all(
-                                              16,
-                                            ),
-                                          ),
-                                          icon: const Icon(
-                                            Icons.forum_outlined,
-                                          ),
-                                          onPressed: controller.recreateChat,
-                                          label: Text(
-                                            L10n.of(context).reopenChat,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  // #Pangea
-                                  // : Column(
-                                  //     mainAxisSize: MainAxisSize.min,
-                                  //     children: [
-                                  //       ReplyDisplay(controller),
-                                  //       ChatInputRow(controller),
-                                  //       ChatEmojiPicker(controller),
-                                  //     ],
-                                  //   ),
-                                  : ChatInputBar(
-                                      controller: controller,
-                                      padding: bottomSheetPadding,
-                                    ),
-
                               // Pangea#
                             ),
                           ),
-                      ],
+                          // #Pangea
+                          // if (controller.showScrollDownButton)
+                          //   Divider(
+                          //     height: 1,
+                          //     color: theme.dividerColor,
+                          //   ),
+                          ListenableBuilder(
+                            listenable: controller.scrollController,
+                            builder: (context, _) {
+                              if (controller.scrollController.hasClients &&
+                                  controller.scrollController.position.pixels >
+                                      0) {
+                                return Divider(
+                                  height: 1,
+                                  color: theme.dividerColor,
+                                );
+                              } else {
+                                return const SizedBox.shrink();
+                              }
+                            },
+                          ),
+                          // Pangea#
+                          if (controller.room.isExtinct)
+                            Container(
+                              margin: EdgeInsets.all(bottomSheetPadding),
+                              width: double.infinity,
+                              child: ElevatedButton.icon(
+                                icon: const Icon(Icons.chevron_right),
+                                label: Text(L10n.of(context).enterNewChat),
+                                onPressed: controller.goToNewRoomAction,
+                              ),
+                            )
+                          else if (controller.room.canSendDefaultMessages &&
+                              controller.room.membership == Membership.join)
+                            Container(
+                              margin: EdgeInsets.all(bottomSheetPadding),
+                              constraints: const BoxConstraints(
+                                maxWidth: FluffyThemes.maxTimelineWidth,
+                              ),
+                              alignment: Alignment.center,
+                              child: Material(
+                                clipBehavior: Clip.hardEdge,
+                                // #Pangea
+                                // color: controller.selectedEvents.isNotEmpty
+                                //     ? theme.colorScheme.tertiaryContainer
+                                //     : theme.colorScheme.surfaceContainerHigh,
+                                color: theme.colorScheme.surfaceContainerHigh,
+                                // Pangea#
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(24),
+                                ),
+                                child: controller.room.isAbandonedDMRoom == true
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          TextButton.icon(
+                                            style: TextButton.styleFrom(
+                                              padding: const EdgeInsets.all(
+                                                16,
+                                              ),
+                                              foregroundColor:
+                                                  theme.colorScheme.error,
+                                            ),
+                                            icon: const Icon(
+                                              Icons.archive_outlined,
+                                            ),
+                                            onPressed: controller.leaveChat,
+                                            label: Text(
+                                              L10n.of(context).leave,
+                                            ),
+                                          ),
+                                          TextButton.icon(
+                                            style: TextButton.styleFrom(
+                                              padding: const EdgeInsets.all(
+                                                16,
+                                              ),
+                                            ),
+                                            icon: const Icon(
+                                              Icons.forum_outlined,
+                                            ),
+                                            onPressed: controller.recreateChat,
+                                            label: Text(
+                                              L10n.of(context).reopenChat,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    // #Pangea
+                                    // : Column(
+                                    //     mainAxisSize: MainAxisSize.min,
+                                    //     children: [
+                                    //       ReplyDisplay(controller),
+                                    //       ChatInputRow(controller),
+                                    //       ChatEmojiPicker(controller),
+                                    //     ],
+                                    //   ),
+                                    : ChatInputBar(
+                                        controller: controller,
+                                        padding: bottomSheetPadding,
+                                      ),
+
+                                // Pangea#
+                              ),
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                  // #Pangea
-                  ActivityStatsMenu(controller),
-                  if (controller.room.activitySummary?.summary != null)
-                    ValueListenableBuilder(
-                      valueListenable: controller.hasRainedConfetti,
-                      builder: (context, hasRained, __) {
-                        return hasRained
-                            ? const SizedBox()
-                            : StarRainWidget(
-                                showBlast: true,
-                                onFinished: () =>
-                                    controller.setHasRainedConfetti(true),
-                              );
-                      },
-                    ),
-                  // if (controller.dragging)
-                  //   Container(
-                  //     color: theme.scaffoldBackgroundColor.withAlpha(230),
-                  //     alignment: Alignment.center,
-                  //     child: const Icon(
-                  //       Icons.upload_outlined,
-                  //       size: 100,
-                  //     ),
-                  //   ),
-                  // Pangea#
-                ],
+                    // #Pangea
+                    ActivityStatsMenu(controller),
+                    if (controller.room.activitySummary?.summary != null)
+                      ValueListenableBuilder(
+                        valueListenable: controller.hasRainedConfetti,
+                        builder: (context, hasRained, __) {
+                          return hasRained
+                              ? const SizedBox()
+                              : StarRainWidget(
+                                  showBlast: true,
+                                  onFinished: () =>
+                                      controller.setHasRainedConfetti(true),
+                                );
+                        },
+                      ),
+                    // if (controller.dragging)
+                    //   Container(
+                    //     color: theme.scaffoldBackgroundColor.withAlpha(230),
+                    //     alignment: Alignment.center,
+                    //     child: const Icon(
+                    //       Icons.upload_outlined,
+                    //       size: 100,
+                    //     ),
+                    //   ),
+                    // Pangea#
+                  ],
+                ),
               ),
             );
           },

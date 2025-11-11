@@ -11,6 +11,7 @@ class CurrentSubscriptionInfo {
   final AvailableSubscriptionsInfo availableSubscriptionInfo;
 
   DateTime? expirationDate;
+  DateTime? unsubscribeDetectedAt;
   String? currentSubscriptionId;
 
   CurrentSubscriptionInfo({
@@ -58,6 +59,9 @@ class CurrentSubscriptionInfo {
           availableSubscriptionInfo.appIds != null) &&
       (currentSubscription?.appId ==
           availableSubscriptionInfo.appIds?.currentAppId);
+
+  DateTime? get subscriptionEndDate =>
+      unsubscribeDetectedAt == null ? null : expirationDate;
 
   void resetSubscription() => currentSubscriptionId = null;
   Future<void> setCurrentSubscription() async {}

@@ -104,10 +104,10 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
     expirationDate = activeEntitlement.expirationDate != null
         ? DateTime.parse(activeEntitlement.expirationDate!)
         : null;
+    unsubscribeDetectedAt = activeEntitlement.unsubscribeDetectedAt != null
+        ? DateTime.parse(activeEntitlement.unsubscribeDetectedAt!)
+        : null;
 
-    if (activeEntitlement.periodType == PeriodType.trial) {
-      // We dont use actual trials as it would require adding a CC on devices
-    }
     if (currentSubscriptionId != null && currentSubscription == null) {
       Sentry.addBreadcrumb(
         Breadcrumb(message: "mismatch of productIds and currentSubscriptionID"),

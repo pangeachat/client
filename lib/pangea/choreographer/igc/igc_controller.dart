@@ -114,11 +114,6 @@ class IgcController {
       matches: response.matches,
     );
     _isFetching = false;
-    if (_igcTextData != null) {
-      for (final match in _igcTextData!.openMatches) {
-        fetchSpanDetails(match: match).catchError((e) {});
-      }
-    }
   }
 
   Future<void> fetchSpanDetails({
@@ -153,5 +148,14 @@ class IgcController {
     }
 
     _igcTextData?.setSpanData(match, response.result!.span);
+  }
+
+  Future<void> fetchAllSpanDetails() async {
+    if (_igcTextData == null) return;
+    final fetches = <Future>[];
+    for (final match in _igcTextData!.openMatches) {
+      fetches.add(fetchSpanDetails(match: match));
+    }
+    await Future.wait(fetches);
   }
 }

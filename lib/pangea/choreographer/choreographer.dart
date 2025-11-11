@@ -224,6 +224,8 @@ class Choreographer extends ChangeNotifier {
       EditTypeEnum.igc,
     );
     _stopLoading();
+
+    igcController.fetchAllSpanDetails().catchError((e) => clearMatches(e));
   }
 
   Future<PangeaMessageContentModel> getMessageContent(String message) async {

@@ -12,7 +12,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -36,13 +35,13 @@ enum SubscriptionStatus {
   shouldShowPaywall,
 }
 
-class SubscriptionController extends BaseController {
+class SubscriptionController with ChangeNotifier {
   late PangeaController _pangeaController;
 
   CurrentSubscriptionInfo? currentSubscriptionInfo;
   AvailableSubscriptionsInfo? availableSubscriptionInfo;
 
-  final StreamController subscriptionStream = StreamController.broadcast();
+  final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
 
   SubscriptionController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
@@ -120,22 +119,20 @@ class SubscriptionController extends BaseController {
           (CustomerInfo info) async {
             final bool? wasSubscribed = isSubscribed;
             await updateCustomerInfo();
-            if (wasSubscribed != null &&
-                !wasSubscribed &&
-                (isSubscribed != null && isSubscribed!)) {
-              subscriptionStream.add(true);
+            if (wasSubscribed == false && isSubscribed == true) {
+              subscriptionNotifier.value = true;
             }
           },
         );
       } else {
         if (SubscriptionManagementRepo.getBeganWebPayment()) {
           await SubscriptionManagementRepo.removeBeganWebPayment();
-          if (isSubscribed != null && isSubscribed!) {
-            subscriptionStream.add(true);
+          if (isSubscribed == true) {
+            subscriptionNotifier.value = true;
           }
         }
       }
-      setState(null);
+      notifyListeners();
     } catch (e, s) {
       debugPrint("Failed to initialize subscription controller");
       ErrorHandler.logError(
@@ -198,7 +195,6 @@ class SubscriptionController extends BaseController {
           isPromo: isPromo,
         );
         await SubscriptionManagementRepo.setBeganWebPayment();
-        setState(null);
         launchUrlString(
           paymentLink,
           webOnlyWindowName: "_self",
@@ -235,7 +231,7 @@ class SubscriptionController extends BaseController {
 
   Future<void> updateCustomerInfo() async {
     await currentSubscriptionInfo?.setCurrentSubscription();
-    setState(null);
+    notifyListeners();
   }
 
   /// if the user is subscribed, returns subscribed

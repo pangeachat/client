@@ -29,6 +29,9 @@ class ParticipantSummaryModel {
       'superlatives': superlatives,
     };
   }
+
+  String displayFeedback(String displayName) =>
+      feedback.replaceAll(participantId, displayName);
 }
 
 class ActivitySummaryResponseModel {

@@ -5322,5 +5322,9 @@
   "failedToLoadFeedback": "Failed to load feedback.",
   "activityStatsButtonTooltip": "Activity info",
   "allow": "Allow",
-  "deny": "Deny"
+  "deny": "Deny",
+  "enabledRenewal": "Enable Subscription Renewal",
+  "subscriptionEndsOn": "Subscription Ends On",
+  "subscriptionRenewsOn": "Subscription Renews On",
+  "waitForSubscriptionChanges": "Changes to your subscription may take a moment to reflect in the app."
 }

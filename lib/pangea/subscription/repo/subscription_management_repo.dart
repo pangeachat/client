@@ -69,4 +69,22 @@ class SubscriptionManagementRepo {
     final int backoff = _getPaywallBackoff() + 1;
     await _cache.write(PLocalKey.paywallBackoff, backoff);
   }
+
+  static Future<void> setClickedCancelSubscription() async {
+    await _cache.write(
+      PLocalKey.clickedCancelSubscription,
+      DateTime.now().toIso8601String(),
+    );
+  }
+
+  static bool getClickedCancelSubscription() {
+    final entry = _cache.read(PLocalKey.clickedCancelSubscription);
+    if (entry == null) return false;
+    final val = DateTime.tryParse(entry);
+    return val != null && DateTime.now().difference(val).inSeconds < 60;
+  }
+
+  static Future<void> removeClickedCancelSubscription() async {
+    await _cache.remove(PLocalKey.clickedCancelSubscription);
+  }
 }
