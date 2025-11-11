@@ -243,7 +243,14 @@ class GetAnalyticsController extends BaseController {
   }
 
   void _onUnlockMorphLemmas(Set<ConstructIdentifier> unlocked) {
-    setState({'unlocked_constructs': unlocked});
+    final Set<ConstructIdentifier> excluded = {
+      ConstructIdentifier(
+        category: "NounType",
+        lemma: "Not_proper",
+        type: ConstructTypeEnum.morph,
+      ),
+    };
+    setState({'unlocked_constructs': unlocked.difference(excluded)});
   }
 
   /// A local cache of eventIds and construct uses for messages sent since the last update.
