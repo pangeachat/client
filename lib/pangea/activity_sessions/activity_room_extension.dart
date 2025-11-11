@@ -238,17 +238,9 @@ extension ActivityRoomExtension on Room {
         continue;
       }
 
-      final sender = getParticipants().firstWhereOrNull(
-        (user) => user.id == event.senderId,
-      );
-      final displayName = sender?.calcDisplayname() ??
-          event.senderId.localpart ??
-          event.senderId;
-
       final activityMessage = event.messageType == MessageTypes.Text
           ? ActivitySummaryResultsMessage(
               userId: event.senderId,
-              displayName: displayName,
               sent: pangeaMessage.originalSent?.text ?? event.body,
               written: pangeaMessage.originalWrittenContent,
               time: event.originServerTs,
@@ -261,7 +253,6 @@ extension ActivityRoomExtension on Room {
             )
           : ActivitySummaryResultsMessage(
               userId: event.senderId,
-              displayName: displayName,
               sent:
                   pangeaMessage.getSpeechToTextLocal()!.transcript.text.trim(),
               written:
