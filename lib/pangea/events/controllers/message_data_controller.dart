@@ -88,7 +88,7 @@ class MessageDataController extends BaseController {
 
     final rep = PangeaRepresentation(
       langCode: req.tgtLang,
-      text: res.result!.bestTranslation,
+      text: res.result!,
       originalSent: false,
       originalWritten: false,
     );
@@ -131,7 +131,7 @@ class MessageDataController extends BaseController {
 
     final rep = PangeaRepresentation(
       langCode: req.tgtLang,
-      text: res.result!.bestTranslation,
+      text: res.result!,
       originalSent: originalSent,
       originalWritten: false,
     );
@@ -180,7 +180,7 @@ class MessageDataController extends BaseController {
     }
 
     final translation = SttTranslationModel(
-      translation: res.result!.bestTranslation,
+      translation: res.result!,
       langCode: req.tgtLang,
     );
 

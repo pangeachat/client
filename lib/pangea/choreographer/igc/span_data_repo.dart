@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:async/async.dart';
 import 'package:http/http.dart';
 
+import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_request.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_response.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -11,7 +12,7 @@ import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 
 class _SpanDetailsCacheItem {
-  final Future<SpanDetailsResponse> data;
+  final Future<SpanData> data;
   final DateTime timestamp;
 
   const _SpanDetailsCacheItem({
@@ -24,7 +25,7 @@ class SpanDataRepo {
   static final Map<String, _SpanDetailsCacheItem> _cache = {};
   static const Duration _cacheDuration = Duration(minutes: 10);
 
-  static Future<Result<SpanDetailsResponse>> get(
+  static Future<Result<SpanData>> get(
     String? accessToken, {
     required SpanDetailsRequest request,
   }) async {
@@ -41,7 +42,7 @@ class SpanDataRepo {
     return _getResult(request, future);
   }
 
-  static Future<SpanDetailsResponse> _fetch(
+  static Future<SpanData> _fetch(
     String? accessToken, {
     required SpanDetailsRequest request,
   }) async {
@@ -59,14 +60,15 @@ class SpanDataRepo {
       throw Exception('Failed to load span details');
     }
 
-    return SpanDetailsResponse.fromJson(
+    final respModel = SpanDetailsResponse.fromJson(
       jsonDecode(utf8.decode(res.bodyBytes)),
     );
+    return respModel.span;
   }
 
-  static Future<Result<SpanDetailsResponse>> _getResult(
+  static Future<Result<SpanData>> _getResult(
     SpanDetailsRequest request,
-    Future<SpanDetailsResponse> future,
+    Future<SpanData> future,
   ) async {
     try {
       final res = await future;
@@ -82,7 +84,7 @@ class SpanDataRepo {
     }
   }
 
-  static Future<SpanDetailsResponse>? _getCached(
+  static Future<SpanData>? _getCached(
     SpanDetailsRequest request,
   ) {
     final cacheKeys = [..._cache.keys];
@@ -96,7 +98,7 @@ class SpanDataRepo {
 
   static void _setCached(
     SpanDetailsRequest request,
-    Future<SpanDetailsResponse> response,
+    Future<SpanData> response,
   ) {
     _cache[request.hashCode.toString()] = _SpanDetailsCacheItem(
       data: response,

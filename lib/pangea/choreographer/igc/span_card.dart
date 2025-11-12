@@ -8,8 +8,8 @@ import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/widgets/choice_array.dart';
@@ -32,7 +32,8 @@ class SpanCard extends StatefulWidget {
 
 class SpanCardState extends State<SpanCard> {
   bool _loadingChoices = true;
-  final _feedbackModel = FeedbackModel<String>();
+  final ValueNotifier<AsyncState<String>> _feedbackState =
+      ValueNotifier<AsyncState<String>>(const AsyncIdle<String>());
 
   final ScrollController scrollController = ScrollController();
 
@@ -44,7 +45,7 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   void dispose() {
-    _feedbackModel.dispose();
+    _feedbackState.dispose();
     scrollController.dispose();
     super.dispose();
   }
@@ -62,19 +63,21 @@ class SpanCardState extends State<SpanCard> {
       return;
     }
 
+    setState(() => _loadingChoices = true);
+
     try {
-      setState(() => _loadingChoices = true);
       await widget.choreographer.igcController.fetchSpanDetails(
         match: widget.match,
       );
-    } catch (e) {
-      widget.choreographer.clearMatches(e);
-    } finally {
+
       if (_choices == null || _choices!.isEmpty) {
         widget.choreographer.clearMatches(
           'No choices available for span ${widget.match.updatedMatch.match.message}',
         );
       }
+    } catch (e) {
+      widget.choreographer.clearMatches(e);
+    } finally {
       if (mounted) {
         setState(() => _loadingChoices = false);
       }
@@ -83,29 +86,28 @@ class SpanCardState extends State<SpanCard> {
 
   Future<void> _fetchFeedback() async {
     if (_selectedFeedback != null) {
-      _feedbackModel.setState(FeedbackLoaded<String>(_selectedFeedback!));
+      _feedbackState.value = AsyncLoaded<String>(_selectedFeedback!);
       return;
     }
 
     try {
-      _feedbackModel.setState(FeedbackLoading<String>());
+      _feedbackState.value = const AsyncLoading<String>();
       await widget.choreographer.igcController.fetchSpanDetails(
         match: widget.match,
         force: true,
       );
-    } finally {
+
+      if (!mounted) return;
+      if (_selectedFeedback != null) {
+        _feedbackState.value = AsyncLoaded<String>(_selectedFeedback!);
+      } else {
+        _feedbackState.value = AsyncError<String>(
+          L10n.of(context).failedToLoadFeedback,
+        );
+      }
+    } catch (e) {
       if (mounted) {
-        if (_selectedFeedback == null) {
-          _feedbackModel.setState(
-            FeedbackError<String>(
-              L10n.of(context).failedToLoadFeedback,
-            ),
-          );
-        } else {
-          _feedbackModel.setState(
-            FeedbackLoaded<String>(_selectedFeedback!),
-          );
-        }
+        _feedbackState.value = AsyncError<String>(e);
       }
     }
   }
@@ -113,11 +115,11 @@ class SpanCardState extends State<SpanCard> {
   void _onChoiceSelect(int index) {
     final selected = _choices![index];
     widget.match.selectChoice(index);
-    _feedbackModel.setState(
-      selected.feedback != null
-          ? FeedbackLoaded<String>(selected.feedback!)
-          : FeedbackIdle<String>(),
-    );
+
+    _feedbackState.value = selected.feedback != null
+        ? AsyncLoaded<String>(selected.feedback!)
+        : const AsyncIdle<String>();
+
     setState(() {});
   }
 
@@ -185,7 +187,7 @@ class SpanCardState extends State<SpanCard> {
                       _SpanCardFeedback(
                         _selectedChoice != null,
                         _fetchFeedback,
-                        _feedbackModel,
+                        _feedbackState,
                       ),
                     ],
                   ),
@@ -207,12 +209,12 @@ class SpanCardState extends State<SpanCard> {
 class _SpanCardFeedback extends StatelessWidget {
   final bool hasSelectedChoice;
   final VoidCallback fetchFeedback;
-  final FeedbackModel<String> feedbackModel;
+  final ValueNotifier<AsyncState<String>> feedbackState;
 
   const _SpanCardFeedback(
     this.hasSelectedChoice,
     this.fetchFeedback,
-    this.feedbackModel,
+    this.feedbackState,
   );
 
   @override
@@ -224,12 +226,11 @@ class _SpanCardFeedback extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ListenableBuilder(
-            listenable: feedbackModel,
-            builder: (context, _) {
-              final state = feedbackModel.state;
+          ValueListenableBuilder(
+            valueListenable: feedbackState,
+            builder: (context, state, __) {
               return switch (state) {
-                FeedbackIdle<String>() => hasSelectedChoice
+                AsyncIdle<String>() => hasSelectedChoice
                     ? IconButton(
                         onPressed: fetchFeedback,
                         icon: const Icon(Icons.lightbulb_outline, size: 24),
@@ -240,14 +241,14 @@ class _SpanCardFeedback extends StatelessWidget {
                           fontStyle: FontStyle.italic,
                         ),
                       ),
-                FeedbackLoading<String>() => const SizedBox(
+                AsyncLoading<String>() => const SizedBox(
                     width: 24,
                     height: 24,
                     child: CircularProgressIndicator(),
                   ),
-                FeedbackError<String>(:final error) =>
+                AsyncError<String>(:final error) =>
                   ErrorIndicator(message: error.toString()),
-                FeedbackLoaded<String>(:final value) =>
+                AsyncLoaded<String>(:final value) =>
                   Text(value, style: BotStyle.text(context)),
               };
             },

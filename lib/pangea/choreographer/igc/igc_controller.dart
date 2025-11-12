@@ -108,11 +108,7 @@ class IgcController {
     }
 
     if (!_isFetching) return;
-    final response = res.result!;
-    _igcTextData = IGCTextData(
-      originalInput: response.originalInput,
-      matches: response.matches,
-    );
+    _igcTextData = res.result!;
     _isFetching = false;
   }
 
@@ -147,7 +143,7 @@ class IgcController {
       throw response.error!;
     }
 
-    _igcTextData?.setSpanData(match, response.result!.span);
+    _igcTextData?.setSpanData(match, response.result!);
   }
 
   Future<void> fetchAllSpanDetails() async {

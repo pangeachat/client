@@ -11,10 +11,9 @@ import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 
 class ContextualDefinitionRepo {
-  static final Map<String, Future<ContextualDefinitionResponseModel>> _cache =
-      {};
+  static final Map<String, Future<String>> _cache = {};
 
-  static Future<Result<ContextualDefinitionResponseModel>> get(
+  static Future<Result<String>> get(
     String accessToken,
     ContextualDefinitionRequestModel request,
   ) async {
@@ -38,7 +37,7 @@ class ContextualDefinitionRepo {
     return _getResult(request, future);
   }
 
-  static Future<ContextualDefinitionResponseModel> _fetch(
+  static Future<String> _fetch(
     String accessToken,
     ContextualDefinitionRequestModel request,
   ) async {
@@ -77,12 +76,12 @@ class ContextualDefinitionRepo {
       );
     }
 
-    return response;
+    return response.text;
   }
 
-  static Future<Result<ContextualDefinitionResponseModel>> _getResult(
+  static Future<Result<String>> _getResult(
     ContextualDefinitionRequestModel request,
-    Future<ContextualDefinitionResponseModel> future,
+    Future<String> future,
   ) async {
     try {
       final res = await future;
@@ -98,14 +97,14 @@ class ContextualDefinitionRepo {
     }
   }
 
-  static Future<ContextualDefinitionResponseModel>? _getCached(
+  static Future<String>? _getCached(
     ContextualDefinitionRequestModel request,
   ) =>
       _cache[request.hashCode.toString()];
 
   static void _setCached(
     ContextualDefinitionRequestModel request,
-    Future<ContextualDefinitionResponseModel> response,
+    Future<String> response,
   ) =>
       _cache[request.hashCode.toString()] = response;
 }

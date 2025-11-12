@@ -113,9 +113,8 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
       cardToShow: choiceFeedback == null
           ? WordDataCard(
               word: text,
-              wordLang: l2Code,
+              langCode: l2Code,
               fullText: _sourceText.value ?? widget.choreographer.currentText,
-              fullTextLang: l2Code,
             )
           : ITFeedbackCard(
               FullTextTranslationRequestModel(
@@ -129,7 +128,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
       maxWidth: 300,
       borderColor: borderColor,
       transformTargetId: 'it_bar',
-      isScrollable: choiceFeedback == null,
+      isScrollable: false,
       overlayKey: "it_feedback_card",
       ignorePointer: true,
     );

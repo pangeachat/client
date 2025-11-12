@@ -14,7 +14,7 @@ import '../common/network/requests.dart';
 import '../common/network/urls.dart';
 
 class _TranslateCacheItem {
-  final Future<FullTextTranslationResponseModel> response;
+  final Future<String> response;
   final DateTime timestamp;
 
   const _TranslateCacheItem({
@@ -27,7 +27,7 @@ class FullTextTranslationRepo {
   static final Map<String, _TranslateCacheItem> _cache = {};
   static const Duration _cacheDuration = Duration(minutes: 10);
 
-  static Future<Result<FullTextTranslationResponseModel>> get(
+  static Future<Result<String>> get(
     String accessToken,
     FullTextTranslationRequestModel request,
   ) {
@@ -41,7 +41,7 @@ class FullTextTranslationRepo {
     return _getResult(request, future);
   }
 
-  static Future<FullTextTranslationResponseModel> _fetch(
+  static Future<String> _fetch(
     String accessToken,
     FullTextTranslationRequestModel request,
   ) async {
@@ -63,12 +63,12 @@ class FullTextTranslationRepo {
 
     return FullTextTranslationResponseModel.fromJson(
       jsonDecode(utf8.decode(res.bodyBytes)),
-    );
+    ).bestTranslation;
   }
 
-  static Future<Result<FullTextTranslationResponseModel>> _getResult(
+  static Future<Result<String>> _getResult(
     FullTextTranslationRequestModel request,
-    Future<FullTextTranslationResponseModel> future,
+    Future<String> future,
   ) async {
     try {
       final res = await future;
@@ -84,7 +84,7 @@ class FullTextTranslationRepo {
     }
   }
 
-  static Future<FullTextTranslationResponseModel>? _getCached(
+  static Future<String>? _getCached(
     FullTextTranslationRequestModel request,
   ) {
     final cacheKeys = [..._cache.keys];
@@ -99,7 +99,7 @@ class FullTextTranslationRepo {
 
   static void _setCached(
     FullTextTranslationRequestModel request,
-    Future<FullTextTranslationResponseModel> response,
+    Future<String> response,
   ) =>
       _cache[request.hashCode.toString()] = _TranslateCacheItem(
         response: response,

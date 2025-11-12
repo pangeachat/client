@@ -6,7 +6,6 @@ import 'package:async/async.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
-import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -14,7 +13,7 @@ import '../../../widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/widgets/card_error_widget.dart';
 
-class ITFeedbackCard extends StatefulWidget {
+class ITFeedbackCard extends StatelessWidget {
   final FullTextTranslationRequestModel req;
 
   const ITFeedbackCard(
@@ -22,56 +21,22 @@ class ITFeedbackCard extends StatefulWidget {
     super.key,
   });
 
-  @override
-  State<ITFeedbackCard> createState() => ITFeedbackCardController();
-}
-
-class ITFeedbackCardController extends State<ITFeedbackCard> {
-  final FeedbackModel<String> _feedbackModel = FeedbackModel<String>();
-
-  @override
-  void initState() {
-    super.initState();
-    _getFeedback();
-  }
-
-  @override
-  void dispose() {
-    _feedbackModel.dispose();
-    super.dispose();
-  }
-
-  Future<void> _getFeedback() async {
-    _feedbackModel.setState(FeedbackLoading());
-    final result = await FullTextTranslationRepo.get(
+  Future<Result<String>> _getFeedback() {
+    return FullTextTranslationRepo.get(
       MatrixState.pangeaController.userController.accessToken,
-      widget.req,
+      req,
     ).timeout(
       const Duration(seconds: 10),
-      onTimeout: () {
-        return Result.error("Timeout getting translation");
-      },
+      onTimeout: () => Result.error("Timeout getting translation"),
     );
-
-    if (!mounted) return;
-    if (result.isError) {
-      _feedbackModel.setState(
-        FeedbackError<String>(result.error.toString()),
-      );
-    } else {
-      _feedbackModel.setState(
-        FeedbackLoaded<String>(result.result!.bestTranslation),
-      );
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: _feedbackModel,
-      builder: (context, _) {
-        final state = _feedbackModel.state;
-        if (state is FeedbackError) {
+    return FutureBuilder<Result<String>>(
+      future: _getFeedback(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
           return CardErrorWidget(L10n.of(context).errorFetchingDefinition);
         }
 
@@ -83,22 +48,22 @@ class ITFeedbackCardController extends State<ITFeedbackCard> {
             alignment: WrapAlignment.center,
             children: [
               Text(
-                widget.req.text,
+                req.text,
                 style: BotStyle.text(context),
               ),
               Text(
                 "≈",
                 style: BotStyle.text(context),
               ),
-              _feedbackModel.state is FeedbackLoaded
+              snapshot.hasData
                   ? Text(
-                      (state as FeedbackLoaded<String>).value,
+                      snapshot.data!.result!,
                       style: BotStyle.text(context),
                     )
                   : TextLoadingShimmer(
                       width: min(
                         140,
-                        10.0 * widget.req.text.length,
+                        10.0 * req.text.length,
                       ),
                     ),
             ],
