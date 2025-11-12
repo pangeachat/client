@@ -29,7 +29,6 @@ import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
@@ -2366,14 +2365,6 @@ class ChatController extends State<ChatPageWithRoom>
         if (!room.participantListComplete && participants.loading) {
           return const Center(
             child: CircularProgressIndicator.adaptive(),
-          );
-        }
-
-        if (room.isActivitySession && !room.isActivityStarted) {
-          return ActivitySessionStartPage(
-            activityId: room.activityId!,
-            roomId: room.id,
-            parentId: room.courseParent?.id,
           );
         }
         // Pangea#

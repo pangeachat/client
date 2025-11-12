@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_menu_button.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_session_popup_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_floating_action_button.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
@@ -203,6 +204,16 @@ class ChatView extends StatelessWidget {
         builder: (context, snapshot) => FutureBuilder(
           future: controller.loadTimelineFuture,
           builder: (BuildContext context, snapshot) {
+            // #Pangea
+            if (controller.room.isActivitySession &&
+                !controller.room.isActivityStarted) {
+              return ActivitySessionStartPage(
+                activityId: controller.room.activityId!,
+                roomId: controller.roomId,
+                parentId: controller.room.courseParent?.id,
+              );
+            }
+            // Pangea#
             var appbarBottomHeight = 0.0;
             if (controller.room.pinnedEventIds.isNotEmpty) {
               appbarBottomHeight += ChatAppBarListTile.fixedHeight;
