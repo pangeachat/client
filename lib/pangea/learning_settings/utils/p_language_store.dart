@@ -23,7 +23,10 @@ class PLanguageStore {
 
   List<LanguageModel> get unlocalizedTargetOptions => _langList
       .where(
-        (element) => element.l2 && element.langCode == element.langCodeShort,
+        (element) =>
+            element.l2 &&
+            (element.langCode == element.langCodeShort ||
+                !element.displayName.contains("(")),
       )
       .toList();
 
