@@ -143,6 +143,9 @@ class Message extends StatelessWidget {
             return ActivitySummary(
               activity: event.room.activityPlan!,
               room: event.room,
+              assignedRoles: event.room.hasArchivedActivity
+                  ? event.room.activityRoles?.roles ?? {}
+                  : event.room.assignedRoles ?? {},
               showInstructions: show,
               toggleInstructions: controller.toggleShowInstructions,
               getParticipantOpacity: (role) =>
