@@ -8,6 +8,7 @@ import 'package:slugify/slugify.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_mode_enum.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
@@ -475,58 +476,60 @@ class InputBar extends StatelessWidget {
       focusNode: focusNode,
       textEditingController: controller,
       optionsBuilder: getSuggestions,
-      fieldViewBuilder: (context, __, focusNode, _) => TextField(
-        controller: controller,
-        focusNode: focusNode,
-        readOnly: readOnly,
-        // #Pangea
-        // contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
-        contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, __),
-        onTap: () => _onInputTap(context),
-        // Pangea#
-        contentInsertionConfiguration: ContentInsertionConfiguration(
-          onContentInserted: (KeyboardInsertedContent content) {
-            final data = content.data;
-            if (data == null) return;
+      fieldViewBuilder: (context, __, focusNode, _) => ValueListenableBuilder(
+        valueListenable: choreographer.itController.open,
+        builder: (context, _, __) {
+          return TextField(
+            controller: controller,
+            focusNode: focusNode,
+            // #Pangea
+            // readOnly: readOnly,
+            // contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, controller),
+            contextMenuBuilder: (c, e) =>
+                markdownContextBuilder(c, e, controller!),
+            onTap: () => _onInputTap(context),
+            readOnly: choreographer.choreoMode == ChoreoModeEnum.it,
+            // Pangea#
+            contentInsertionConfiguration: ContentInsertionConfiguration(
+              onContentInserted: (KeyboardInsertedContent content) {
+                final data = content.data;
+                if (data == null) return;
 
-            final file = MatrixFile(
-              mimeType: content.mimeType,
-              bytes: data,
-              name: content.uri.split('/').last,
-            );
-            room.sendFileEvent(
-              file,
-              shrinkImageMaxDimension: 1600,
-            );
-          },
-        ),
-        minLines: minLines,
-        maxLines: maxLines,
-        keyboardType: keyboardType!,
-        textInputAction: textInputAction,
-        autofocus: autofocus!,
-        inputFormatters: [
-          // #Pangea
-          //LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
-          //setting max character count to 1000
-          //after max, nothing else can be typed
-          LengthLimitingTextInputFormatter(1000),
-          // Pangea#
-        ],
-        onSubmitted: (text) {
-          // fix for library for now
-          // it sets the types for the callback incorrectly
-          onSubmitted!(text);
-        },
-        // #Pangea
-        // maxLength: AppSettings.textMessageMaxLength.value,
-        // decoration: decoration!,
-        // Pangea#
-        decoration: decoration.copyWith(
-          hint: ValueListenableBuilder(
-            valueListenable: choreographer.itController.open,
-            builder: (context, _, __) {
-              return ShrinkableText(
+                final file = MatrixFile(
+                  mimeType: content.mimeType,
+                  bytes: data,
+                  name: content.uri.split('/').last,
+                );
+                room.sendFileEvent(
+                  file,
+                  shrinkImageMaxDimension: 1600,
+                );
+              },
+            ),
+            minLines: minLines,
+            maxLines: maxLines,
+            keyboardType: keyboardType!,
+            textInputAction: textInputAction,
+            autofocus: autofocus!,
+            inputFormatters: [
+              // #Pangea
+              //LengthLimitingTextInputFormatter((maxPDUSize / 3).floor()),
+              //setting max character count to 1000
+              //after max, nothing else can be typed
+              LengthLimitingTextInputFormatter(1000),
+              // Pangea#
+            ],
+            onSubmitted: (text) {
+              // fix for library for now
+              // it sets the types for the callback incorrectly
+              onSubmitted!(text);
+            },
+            // #Pangea
+            // maxLength: AppSettings.textMessageMaxLength.value,
+            // decoration: decoration!,
+            // Pangea#
+            decoration: decoration.copyWith(
+              hint: ShrinkableText(
                 text: choreographer.itController.open.value
                     ? L10n.of(context).buildTranslation
                     : _defaultHintText(context),
@@ -534,16 +537,16 @@ class InputBar extends StatelessWidget {
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Theme.of(context).disabledColor,
                     ),
-              );
+              ),
+            ),
+            onChanged: (text) {
+              // fix for the library for now
+              // it sets the types for the callback incorrectly
+              onChanged!(text);
             },
-          ),
-        ),
-        onChanged: (text) {
-          // fix for the library for now
-          // it sets the types for the callback incorrectly
-          onChanged!(text);
+            textCapitalization: TextCapitalization.sentences,
+          );
         },
-        textCapitalization: TextCapitalization.sentences,
       ),
       optionsViewBuilder: (c, onSelected, s) {
         final suggestions = s.toList();
