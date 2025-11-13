@@ -15,7 +15,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
@@ -30,7 +29,7 @@ class ActivitySummary extends StatelessWidget {
   final ActivityPlanModel activity;
   final Room? room;
   final Room? course;
-  final Map<String, ActivityRoleModel>? assignedRoles;
+  final Map<String, ActivityRoleModel> assignedRoles;
 
   final bool showInstructions;
   final VoidCallback toggleInstructions;
@@ -45,7 +44,7 @@ class ActivitySummary extends StatelessWidget {
     required this.activity,
     required this.showInstructions,
     required this.toggleInstructions,
-    this.assignedRoles,
+    required this.assignedRoles,
     this.onTapParticipant,
     this.canSelectParticipant,
     this.isParticipantSelected,
@@ -81,7 +80,7 @@ class ActivitySummary extends StatelessWidget {
             ActivityParticipantList(
               activity: activity,
               room: room,
-              assignedRoles: room?.assignedRoles ?? assignedRoles ?? {},
+              assignedRoles: assignedRoles,
               course: course,
               onTap: onTapParticipant,
               canSelect: canSelectParticipant,
