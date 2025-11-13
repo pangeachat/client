@@ -41,7 +41,7 @@ class ChoreographerErrorController extends ChangeNotifier {
 
     _error = error;
     Future.delayed(defaultCooldown, () {
-      clear();
+      _error = null;
       notifyListeners();
     });
     notifyListeners();
@@ -53,11 +53,7 @@ class ChoreographerErrorController extends ChangeNotifier {
   }
 
   void resetError() {
-    clear();
-    notifyListeners();
-  }
-
-  void clear() {
     _error = null;
+    notifyListeners();
   }
 }

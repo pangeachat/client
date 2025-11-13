@@ -23,19 +23,21 @@ class WordDataCard extends StatelessWidget {
     required this.langCode,
   });
 
+  ContextualDefinitionRequestModel get _request =>
+      ContextualDefinitionRequestModel(
+        fullText: fullText,
+        word: word,
+        fullTextLang: langCode,
+        wordLang: langCode,
+        feedbackLang:
+            MatrixState.pangeaController.languageController.activeL1Code() ??
+                LanguageKeys.defaultLanguage,
+      );
+
   Future<Result<String>> _fetchDefinition() {
-    final request = ContextualDefinitionRequestModel(
-      fullText: fullText,
-      word: word,
-      fullTextLang: langCode,
-      wordLang: langCode,
-      feedbackLang:
-          MatrixState.pangeaController.languageController.activeL1Code() ??
-              LanguageKeys.defaultLanguage,
-    );
     return ContextualDefinitionRepo.get(
       MatrixState.pangeaController.userController.accessToken,
-      request,
+      _request,
     ).timeout(
       const Duration(seconds: 10),
       onTimeout: () => Result.error("Timeout getting definition"),
