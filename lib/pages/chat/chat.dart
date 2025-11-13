@@ -32,6 +32,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
+import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
@@ -424,7 +425,6 @@ class ChatController extends State<ChatPageWithRoom>
   @override
   void initState() {
     inputFocus = FocusNode(onKeyEvent: _customEnterKeyHandling);
-    choreographer = Choreographer(inputFocus);
 
     scrollController.addListener(_updateScrollController);
     // #Pangea
@@ -441,114 +441,110 @@ class ChatController extends State<ChatPageWithRoom>
     sendingClient = Matrix.of(context).client;
     readMarkerEventId = room.hasNewMessages ? room.fullyRead : '';
     WidgetsBinding.instance.addObserver(this);
-    // #Pangea
-    if (!mounted) return;
-    Future.delayed(const Duration(seconds: 1), () async {
-      if (!mounted) return;
-      if (mounted) {
-        pangeaController.languageController.showDialogOnEmptyLanguage(
-          context,
-          () => Future.delayed(
-            Duration.zero,
-            () => setState(() {}),
-          ),
-        );
-      }
-    });
-
-    _levelSubscription = pangeaController.getAnalytics.stateStream
-        .where(
-      (update) =>
-          update is Map<String, dynamic> &&
-          (update['level_up'] != null || update['unlocked_constructs'] != null),
-    )
-        .listen(
-      (update) {
-        if (update['level_up'] != null) {
-          LevelUpUtil.showLevelUpDialog(
-            update['upper_level'],
-            update['lower_level'],
-            context,
-          );
-        } else if (update['unlocked_constructs'] != null) {
-          ConstructNotificationUtil.addUnlockedConstruct(
-            List.from(update['unlocked_constructs']),
-            context,
-          );
-        }
-      },
-    );
-
-    _analyticsSubscription =
-        pangeaController.getAnalytics.analyticsStream.stream.listen((update) {
-      if (update.targetID == null) return;
-      OverlayUtil.showOverlay(
-        overlayKey: "${update.targetID ?? ""}_points",
-        followerAnchor: Alignment.bottomCenter,
-        targetAnchor: Alignment.bottomCenter,
-        context: context,
-        child: PointsGainedAnimation(
-          points: update.points,
-          targetID: update.targetID!,
-        ),
-        transformTargetId: update.targetID ?? "",
-        closePrevOverlay: false,
-        backDropToDismiss: false,
-        ignorePointer: true,
-      );
-    });
-
-    _botAudioSubscription = room.client.onSync.stream
-        .where(
-      (update) => update.rooms?.join?[roomId]?.timeline?.events != null,
-    )
-        .listen((update) async {
-      final timeline = update.rooms!.join![roomId]!.timeline!;
-      final botAudioEvent = timeline.events!.firstWhereOrNull(
-        (e) =>
-            e.senderId == BotName.byEnvironment &&
-            e.content.tryGet<String>('msgtype') == MessageTypes.Audio &&
-            DateTime.now().difference(e.originServerTs) <
-                const Duration(seconds: 10),
-      );
-      if (botAudioEvent == null) return;
-
-      final matrix = Matrix.of(context);
-      matrix.voiceMessageEventId.value = botAudioEvent.eventId;
-      matrix.audioPlayer?.dispose();
-      matrix.audioPlayer = AudioPlayer();
-
-      final event = Event.fromMatrixEvent(botAudioEvent, room);
-      final audioFile = await event.getPangeaAudioFile();
-      if (audioFile == null) return;
-
-      if (!kIsWeb) {
-        final tempDir = await getTemporaryDirectory();
-
-        File? file;
-        file = File('${tempDir.path}/${audioFile.name}');
-        await file.writeAsBytes(audioFile.bytes);
-        matrix.audioPlayer!.setFilePath(file.path);
-      } else {
-        matrix.audioPlayer!.setAudioSource(
-          BytesAudioSource(
-            audioFile.bytes,
-            audioFile.mimeType,
-          ),
-        );
-      }
-
-      matrix.audioPlayer!.play();
-    });
-    // Pangea#
     _tryLoadTimeline();
     if (kIsWeb) {
-      // #Pangea
-      onFocusSub?.cancel();
-      // Pangea#
       onFocusSub = html.window.onFocus.listen((_) => setReadMarker());
     }
+
+    // #Pangea
+    _pangeaInit();
+    // Pangea#
   }
+
+  // #Pangea
+  void _onLevelUp(dynamic update) {
+    if (update['level_up'] != null) {
+      LevelUpUtil.showLevelUpDialog(
+        update['upper_level'],
+        update['lower_level'],
+        context,
+      );
+    } else if (update['unlocked_constructs'] != null) {
+      ConstructNotificationUtil.addUnlockedConstruct(
+        List.from(update['unlocked_constructs']),
+        context,
+      );
+    }
+  }
+
+  void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
+    if (update.targetID == null) return;
+    OverlayUtil.showOverlay(
+      overlayKey: "${update.targetID ?? ""}_points",
+      followerAnchor: Alignment.bottomCenter,
+      targetAnchor: Alignment.bottomCenter,
+      context: context,
+      child: PointsGainedAnimation(
+        points: update.points,
+        targetID: update.targetID!,
+      ),
+      transformTargetId: update.targetID ?? "",
+      closePrevOverlay: false,
+      backDropToDismiss: false,
+      ignorePointer: true,
+    );
+  }
+
+  Future<void> _botAudioListener(SyncUpdate update) async {
+    if (update.rooms?.join?[roomId]?.timeline?.events == null) return;
+    final timeline = update.rooms!.join![roomId]!.timeline!;
+    final botAudioEvent = timeline.events!.firstWhereOrNull(
+      (e) =>
+          e.senderId == BotName.byEnvironment &&
+          e.content.tryGet<String>('msgtype') == MessageTypes.Audio &&
+          DateTime.now().difference(e.originServerTs) <
+              const Duration(seconds: 10),
+    );
+    if (botAudioEvent == null) return;
+
+    final matrix = Matrix.of(context);
+    matrix.voiceMessageEventId.value = botAudioEvent.eventId;
+    matrix.audioPlayer?.dispose();
+    matrix.audioPlayer = AudioPlayer();
+
+    final event = Event.fromMatrixEvent(botAudioEvent, room);
+    final audioFile = await event.getPangeaAudioFile();
+    if (audioFile == null) return;
+
+    if (!kIsWeb) {
+      final tempDir = await getTemporaryDirectory();
+
+      File? file;
+      file = File('${tempDir.path}/${audioFile.name}');
+      await file.writeAsBytes(audioFile.bytes);
+      matrix.audioPlayer!.setFilePath(file.path);
+    } else {
+      matrix.audioPlayer!.setAudioSource(
+        BytesAudioSource(
+          audioFile.bytes,
+          audioFile.mimeType,
+        ),
+      );
+    }
+
+    matrix.audioPlayer!.play();
+  }
+
+  void _pangeaInit() {
+    choreographer = Choreographer(inputFocus);
+    _levelSubscription =
+        pangeaController.getAnalytics.stateStream.listen(_onLevelUp);
+
+    _analyticsSubscription = pangeaController
+        .getAnalytics.analyticsStream.stream
+        .listen(_onAnalyticsUpdate);
+
+    _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
+
+    Future.delayed(const Duration(seconds: 1), () async {
+      if (!mounted) return;
+      pangeaController.languageController.showDialogOnEmptyLanguage(
+        context,
+        () => () => setState(() {}),
+      );
+    });
+  }
+  // Pangea#
 
   void _tryLoadTimeline() async {
     final initialEventId = widget.eventId;
@@ -781,7 +777,7 @@ class ChatController extends State<ChatPageWithRoom>
     // inputFocus.removeListener(_inputFocusListener);
     // Pangea#
     onFocusSub?.cancel();
-    //#Pangea
+    // #Pangea
     WidgetsBinding.instance.removeObserver(this);
     _storeInputTimeoutTimer?.cancel();
     _displayChatDetailsColumn.dispose();
@@ -2188,14 +2184,15 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void showNextMatch() {
-    final match = choreographer.igcController.firstOpenMatch;
+    MatrixState.pAnyState.closeOverlay();
+    final match = choreographer.igcController.openMatches.firstOrNull;
     if (match == null) {
       inputFocus.requestFocus();
       return;
     }
 
     match.updatedMatch.isITStart
-        ? choreographer.openIT(match)
+        ? choreographer.itController.openIT(sendController.text)
         : OverlayUtil.showIGCMatch(
             match,
             choreographer,
@@ -2232,6 +2229,7 @@ class ChatController extends State<ChatPageWithRoom>
     OverlayUtil.showPositionedCard(
       context: context,
       cardToShow: LanguageMismatchPopup(
+        overlayId: 'language_mismatch_popup',
         onConfirm: () async {
           await MatrixState.pangeaController.userController.updateProfile(
             (profile) {
@@ -2249,6 +2247,7 @@ class ChatController extends State<ChatPageWithRoom>
       maxHeight: 325,
       maxWidth: 325,
       transformTargetId: ChoreoConstants.inputTransformTargetKey,
+      overlayKey: 'language_mismatch_popup',
     );
   }
 

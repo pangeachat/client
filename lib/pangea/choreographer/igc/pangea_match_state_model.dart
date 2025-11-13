@@ -39,6 +39,17 @@ class PangeaMatchState {
     setMatch(_match.copyWith(choices: choices));
   }
 
+  void selectBestChoice() {
+    if (_match.choices == null) {
+      throw Exception('No choices available to select best choice from.');
+    }
+    selectChoice(
+      updatedMatch.match.choices!.indexWhere(
+        (c) => c.isBestCorrection,
+      ),
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'originalMatch': _original.toJson(),

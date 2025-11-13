@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_choice_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -123,9 +124,12 @@ class SpanCardState extends State<SpanCard> {
     setState(() {});
   }
 
-  void _onMatchUpdate(VoidCallback updateFunc) async {
+  void _updateMatch(PangeaMatchStatusEnum status) {
     try {
-      updateFunc();
+      widget.choreographer.igcController.updateMatch(
+        widget.match,
+        status,
+      );
       widget.showNextMatch();
     } catch (e, s) {
       ErrorHandler.logError(
@@ -140,14 +144,6 @@ class SpanCardState extends State<SpanCard> {
       return;
     }
   }
-
-  void _onAcceptReplacement() => _onMatchUpdate(() {
-        widget.choreographer.onAcceptReplacement(match: widget.match);
-      });
-
-  void _onIgnoreMatch() => _onMatchUpdate(() {
-        widget.choreographer.onIgnoreReplacement(match: widget.match);
-      });
 
   @override
   Widget build(BuildContext context) {
@@ -196,8 +192,8 @@ class SpanCardState extends State<SpanCard> {
             ),
           ),
           _SpanCardButtons(
-            onAccept: _onAcceptReplacement,
-            onIgnore: _onIgnoreMatch,
+            onAccept: () => _updateMatch(PangeaMatchStatusEnum.accepted),
+            onIgnore: () => _updateMatch(PangeaMatchStatusEnum.ignored),
             selectedChoice: _selectedChoice,
           ),
         ],

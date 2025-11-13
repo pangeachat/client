@@ -64,9 +64,9 @@ class PangeaTextController extends TextEditingController {
     return existingStyle?.merge(style) ?? style;
   }
 
-  void setSystemText(String text, EditTypeEnum type) {
+  void setSystemText(String newText, EditTypeEnum type) {
     editType = type;
-    this.text = text;
+    text = newText;
   }
 
   void _onTextChanged() {
@@ -83,7 +83,10 @@ class PangeaTextController extends TextEditingController {
 
   void _onUndo(PangeaMatchState match) {
     try {
-      choreographer.onUndoReplacement(match);
+      choreographer.igcController.updateMatch(
+        match,
+        PangeaMatchStatusEnum.undo,
+      );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -111,7 +114,7 @@ class PangeaTextController extends TextEditingController {
       return _buildPaywallSpan(style);
     }
 
-    if (!choreographer.igcController.hasIGCTextData) {
+    if (choreographer.igcController.currentText == null) {
       return TextSpan(text: text, style: style);
     }
 
@@ -176,13 +179,9 @@ class PangeaTextController extends TextEditingController {
   List<InlineSpan> _buildTokenSpan({
     TextStyle? defaultStyle,
   }) {
-    final openMatches = choreographer.igcController.openMatches ?? const [];
-    final automaticCorrections =
-        choreographer.igcController.recentAutomaticCorrections ?? const [];
-
     final textSpanMatches = [
-      ...openMatches,
-      ...automaticCorrections,
+      ...choreographer.igcController.openMatches,
+      ...choreographer.igcController.recentAutomaticCorrections,
     ]..sort(
         (a, b) =>
             a.updatedMatch.match.offset.compareTo(b.updatedMatch.match.offset),

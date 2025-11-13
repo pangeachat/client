@@ -61,6 +61,17 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  FullTextTranslationRequestModel _translationRequest(String text) =>
+      FullTextTranslationRequestModel(
+        text: text,
+        tgtLang:
+            MatrixState.pangeaController.languageController.userL1!.langCode,
+        userL1:
+            MatrixState.pangeaController.languageController.userL1!.langCode,
+        userL2:
+            MatrixState.pangeaController.languageController.userL2!.langCode,
+      );
+
   void _openListener() {
     if (!mounted) return;
 
@@ -85,45 +96,22 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
   ValueNotifier<bool> get _open => widget.choreographer.itController.open;
 
   void _showFeedbackCard(
-    int index, [
+    ContinuanceModel continuance, [
     Color? borderColor,
-    String? choiceFeedback,
+    bool selected = false,
   ]) {
-    final currentStep = widget.choreographer.itController.currentITStep.value;
-    if (currentStep == null) {
-      ErrorHandler.logError(
-        m: "currentITStep is null in showCard",
-        s: StackTrace.current,
-        data: {
-          "index": index,
-        },
-      );
-      return;
-    }
-
-    final text = currentStep.continuances[index].text;
-    final l1Code =
-        MatrixState.pangeaController.languageController.userL1!.langCode;
-    final l2Code =
-        MatrixState.pangeaController.languageController.userL2!.langCode;
-
+    final text = continuance.text;
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
     OverlayUtil.showPositionedCard(
       context: context,
-      cardToShow: choiceFeedback == null
+      cardToShow: selected
           ? WordDataCard(
               word: text,
-              langCode: l2Code,
+              langCode: MatrixState
+                  .pangeaController.languageController.userL2!.langCode,
               fullText: _sourceText.value ?? widget.choreographer.currentText,
             )
-          : ITFeedbackCard(
-              FullTextTranslationRequestModel(
-                text: text,
-                tgtLang: l1Code,
-                userL1: l1Code,
-                userL2: l2Code,
-              ),
-            ),
+          : ITFeedbackCard(_translationRequest(text)),
       maxHeight: 300,
       maxWidth: 300,
       borderColor: borderColor,
@@ -138,8 +126,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
     ContinuanceModel continuance;
     try {
-      continuance =
-          widget.choreographer.itController.onSelectContinuance(index);
+      continuance = widget.choreographer.itController.selectContinuance(index);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -157,9 +144,9 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
       _onCorrectSelection(index);
     } else {
       _showFeedbackCard(
-        index,
+        continuance,
         continuance.level == 2 ? ChoreoConstants.yellow : ChoreoConstants.red,
-        continuance.feedbackText(context),
+        true,
       );
     }
   }
@@ -169,7 +156,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     _successTimer = Timer(const Duration(milliseconds: 500), () {
       if (!mounted) return;
       try {
-        widget.choreographer.onAcceptContinuance(index);
+        widget.choreographer.itController.acceptContinuance(index);
       } catch (e, s) {
         ErrorHandler.logError(
           e: e,
@@ -223,13 +210,16 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                 children: [
                   _ITBarHeader(
                     onClose: widget.choreographer.itController.closeIT,
-                    setEditing: widget.choreographer.itController.setEditing,
+                    setEditing:
+                        widget.choreographer.itController.setEditingSourceText,
                     editing: widget.choreographer.itController.editing,
                     sourceTextController: _sourceTextController,
                     sourceText: _sourceText,
-                    onSubmitEdits: (_) => widget.choreographer.onSubmitEdits(
-                      _sourceTextController.text,
-                    ),
+                    onSubmitEdits: (_) {
+                      widget.choreographer.itController.submitSourceTextEdits(
+                        _sourceTextController.text,
+                      );
+                    },
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -393,7 +383,7 @@ class _ITBarHeader extends StatelessWidget {
 class _ITChoices extends StatelessWidget {
   final List<ContinuanceModel> continuances;
   final Function(int) onPressed;
-  final Function(int) onLongPressed;
+  final Function(ContinuanceModel) onLongPressed;
 
   const _ITChoices({
     required this.continuances,
@@ -416,7 +406,7 @@ class _ITChoices extends StatelessWidget {
         ),
       ],
       onPressed: (value, index) => onPressed(index),
-      onLongPress: (value, index) => onLongPressed(index),
+      onLongPress: (value, index) => onLongPressed(continuances[index]),
       selectedChoiceIndex: null,
       langCode: MatrixState.pangeaController.languageController.activeL2Code(),
     );

@@ -3,6 +3,7 @@ enum PangeaMatchStatusEnum {
   ignored,
   accepted,
   automatic,
+  undo,
   unknown;
 
   static PangeaMatchStatusEnum fromString(String status) {
@@ -16,6 +17,8 @@ enum PangeaMatchStatusEnum {
         return PangeaMatchStatusEnum.accepted;
       case 'automatic':
         return PangeaMatchStatusEnum.automatic;
+      case 'undo':
+        return PangeaMatchStatusEnum.undo;
       default:
         return PangeaMatchStatusEnum.unknown;
     }

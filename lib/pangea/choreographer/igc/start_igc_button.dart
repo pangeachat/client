@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
-import '../../../pages/chat/chat.dart';
 
 class StartIGCButton extends StatefulWidget {
-  final ChatController controller;
+  final VoidCallback onPressed;
+  final Choreographer choreographer;
   final AssistanceStateEnum initialState;
   final Color initialForegroundColor;
   final Color initialBackgroundColor;
 
   const StartIGCButton({
     super.key,
-    required this.controller,
+    required this.onPressed,
+    required this.choreographer,
     required this.initialState,
     required this.initialForegroundColor,
     required this.initialBackgroundColor,
@@ -33,9 +35,6 @@ class _StartIGCButtonState extends State<StartIGCButton>
   late Animation<Color?> _iconColor;
   late Animation<Color?> _backgroundColor;
   AssistanceStateEnum? _prevState;
-
-  AssistanceStateEnum get state =>
-      widget.controller.choreographer.assistanceState;
 
   bool _shouldStop = false;
 
@@ -73,12 +72,12 @@ class _StartIGCButtonState extends State<StartIGCButton>
     _backgroundColor = AlwaysStoppedAnimation(widget.initialBackgroundColor);
     _colorController!.forward(from: 0.0);
 
-    widget.controller.choreographer.addListener(_handleStateChange);
+    widget.choreographer.addListener(_handleStateChange);
   }
 
   @override
   void dispose() {
-    widget.controller.choreographer.removeListener(_handleStateChange);
+    widget.choreographer.removeListener(_handleStateChange);
     _spinController?.dispose();
     _colorController?.dispose();
     super.dispose();
@@ -86,7 +85,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
 
   void _handleStateChange() {
     final prev = _prevState;
-    final current = state;
+    final current = widget.choreographer.assistanceState;
     _prevState = current;
 
     if (!mounted || prev == current) return;
@@ -123,7 +122,8 @@ class _StartIGCButtonState extends State<StartIGCButton>
     return AnimatedBuilder(
       animation: Listenable.merge([_colorController!, _spinController!]),
       builder: (context, child) {
-        final enableFeedback = state.allowsFeedback;
+        final enableFeedback =
+            widget.choreographer.assistanceState.allowsFeedback;
         return Tooltip(
           message: enableFeedback ? L10n.of(context).check : "",
           child: Material(
@@ -134,10 +134,7 @@ class _StartIGCButtonState extends State<StartIGCButton>
             child: InkWell(
               enableFeedback: enableFeedback,
               customBorder: const CircleBorder(),
-              onTap: enableFeedback
-                  ? () =>
-                      widget.controller.onRequestWritingAssistance(manual: true)
-                  : null,
+              onTap: enableFeedback ? widget.onPressed : null,
               onLongPress: enableFeedback
                   ? () => showDialog(
                         context: context,

@@ -7,7 +7,6 @@ import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/igc_response_model.dart';
-import 'package:fluffychat/pangea/choreographer/igc/igc_text_data_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -15,7 +14,7 @@ import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 
 class _IgcCacheItem {
-  final Future<IGCTextData> data;
+  final Future<IGCResponseModel> data;
   final DateTime timestamp;
 
   const _IgcCacheItem({
@@ -53,7 +52,7 @@ class IgcRepo {
   static final Map<String, _IgnoredMatchCacheItem> _ignoredMatchCache = {};
   static const Duration _cacheDuration = Duration(minutes: 10);
 
-  static Future<Result<IGCTextData>> get(
+  static Future<Result<IGCResponseModel>> get(
     String? accessToken,
     IGCRequestModel igcRequest,
   ) {
@@ -70,7 +69,7 @@ class IgcRepo {
     return _getResult(igcRequest, future);
   }
 
-  static Future<IGCTextData> _fetch(
+  static Future<IGCResponseModel> _fetch(
     String? accessToken, {
     required IGCRequestModel igcRequest,
   }) async {
@@ -92,16 +91,12 @@ class IgcRepo {
     final Map<String, dynamic> json =
         jsonDecode(utf8.decode(res.bodyBytes).toString());
 
-    final respModel = IGCResponseModel.fromJson(json);
-    return IGCTextData(
-      originalInput: respModel.originalInput,
-      matches: respModel.matches,
-    );
+    return IGCResponseModel.fromJson(json);
   }
 
-  static Future<Result<IGCTextData>> _getResult(
+  static Future<Result<IGCResponseModel>> _getResult(
     IGCRequestModel request,
-    Future<IGCTextData> future,
+    Future<IGCResponseModel> future,
   ) async {
     try {
       final res = await future;
@@ -117,7 +112,7 @@ class IgcRepo {
     }
   }
 
-  static Future<IGCTextData>? _getCached(
+  static Future<IGCResponseModel>? _getCached(
     IGCRequestModel request,
   ) {
     final cacheKeys = [..._igcCache.keys];
@@ -134,7 +129,7 @@ class IgcRepo {
 
   static void _setCached(
     IGCRequestModel request,
-    Future<IGCTextData> response,
+    Future<IGCResponseModel> response,
   ) =>
       _igcCache[request.hashCode.toString()] = _IgcCacheItem(
         data: response,

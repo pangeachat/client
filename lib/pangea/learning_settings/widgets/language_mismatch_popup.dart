@@ -7,8 +7,13 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LanguageMismatchPopup extends StatelessWidget {
+  final String overlayId;
   final Future<void> Function() onConfirm;
-  const LanguageMismatchPopup({super.key, required this.onConfirm});
+  const LanguageMismatchPopup({
+    super.key,
+    required this.overlayId,
+    required this.onConfirm,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class LanguageMismatchPopup extends StatelessWidget {
                       context: context,
                       future: onConfirm,
                     );
-                    MatrixState.pAnyState.closeOverlay();
+                    MatrixState.pAnyState.closeOverlay(overlayId);
                   },
                   style: TextButton.styleFrom(
                     backgroundColor:

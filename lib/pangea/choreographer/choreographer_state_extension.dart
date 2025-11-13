@@ -21,12 +21,12 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
       return AssistanceStateEnum.error;
     }
 
-    if (igcController.hasOpenMatches || isRunningIT) {
+    if (igcController.openMatches.isNotEmpty || isRunningIT) {
       return AssistanceStateEnum.fetched;
     }
 
     if (isFetching.value) return AssistanceStateEnum.fetching;
-    if (!igcController.hasIGCTextData &&
+    if (igcController.currentText == null &&
         itController.sourceText.value == null) {
       return AssistanceStateEnum.notFetched;
     }

@@ -31,6 +31,10 @@ class ITController {
   ValueNotifier<bool> get editing => _editing;
   ValueNotifier<ITStepModel?> get currentITStep => _currentITStep;
   ValueNotifier<String?> get sourceText => _sourceText;
+  StreamController<CompletedITStepModel> acceptedContinuanceStream =
+      StreamController.broadcast();
+
+  bool _continuing = false;
 
   ITRequestModel _request(String textInput) {
     assert(_sourceText.value != null);
@@ -55,49 +59,48 @@ class ITController {
     );
   }
 
-  void clear() {
-    MatrixState.pAnyState.closeOverlay("it_feedback_card");
-
-    _open.value = false;
-    _editing.value = false;
-    _queue.clear();
-    _currentITStep.value = null;
-    _goldRouteTracker = null;
-  }
-
   void clearSourceText() {
     _sourceText.value = null;
   }
 
   void dispose() {
+    acceptedContinuanceStream.close();
     _open.dispose();
-    _currentITStep.dispose();
     _editing.dispose();
+    _currentITStep.dispose();
     _sourceText.dispose();
   }
 
   void openIT(String text) {
     _sourceText.value = text;
     _open.value = true;
-    continueIT();
+    _continueIT();
   }
 
-  void closeIT() => clear();
+  void closeIT() {
+    MatrixState.pAnyState.closeOverlay("it_feedback_card");
 
-  void setEditing(bool value) {
+    setEditingSourceText(false);
+    _open.value = false;
+    _queue.clear();
+    _currentITStep.value = null;
+    _goldRouteTracker = null;
+  }
+
+  void setEditingSourceText(bool value) {
     _editing.value = value;
   }
 
-  void onSubmitEdits(String text) {
-    _editing.value = false;
+  void submitSourceTextEdits(String text) {
     _queue.clear();
     _currentITStep.value = null;
     _goldRouteTracker = null;
     _sourceText.value = text;
-    continueIT();
+    setEditingSourceText(false);
+    _continueIT();
   }
 
-  ContinuanceModel onSelectContinuance(int index) {
+  ContinuanceModel selectContinuance(int index) {
     if (_currentITStep.value == null) {
       throw "onSelectContinuance called when _currentITStep is null";
     }
@@ -116,7 +119,7 @@ class ITController {
     return _currentITStep.value!.continuances[index];
   }
 
-  CompletedITStepModel onAcceptContinuance(int chosenIndex) {
+  void acceptContinuance(int chosenIndex) {
     if (_currentITStep.value == null) {
       throw "onAcceptContinuance called when _currentITStep is null";
     }
@@ -126,17 +129,16 @@ class ITController {
       throw "onAcceptContinuance called with invalid index $chosenIndex";
     }
 
-    final completedStep = CompletedITStepModel(
-      _currentITStep.value!.continuances,
-      chosen: chosenIndex,
+    acceptedContinuanceStream.add(
+      CompletedITStepModel(
+        _currentITStep.value!.continuances,
+        chosen: chosenIndex,
+      ),
     );
-
-    continueIT();
-    return completedStep;
+    _continueIT();
   }
 
-  bool _continuing = false;
-  Future<void> continueIT() async {
+  Future<void> _continueIT() async {
     if (_continuing) return;
     _continuing = true;
 
