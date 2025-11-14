@@ -87,18 +87,37 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             borderRadius: BorderRadius.circular(40),
           ),
         ),
+        dropdownStyleData: DropdownStyleData(
+          elevation: 8,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: theme.colorScheme.surfaceContainerHigh,
+          ),
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          padding: EdgeInsets.zero,
+        ),
         dropdownSearchData: widget.enableSearch
             ? DropdownSearchData(
                 searchController: _searchController,
                 searchInnerWidgetHeight: 50,
-                searchInnerWidget: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                  child: TextField(
-                    autofocus: true,
-                    controller: _searchController,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                searchInnerWidget: Material(
+                  elevation: 4,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(14),
+                    topRight: Radius.circular(14),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 10,
+                    ),
+                    child: TextField(
+                      autofocus: true,
+                      controller: _searchController,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                      ),
                     ),
                   ),
                 ),
