@@ -87,6 +87,13 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             borderRadius: BorderRadius.circular(40),
           ),
         ),
+        dropdownStyleData: DropdownStyleData(
+          elevation: 8,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: theme.colorScheme.surfaceContainerHigh,
+          ),
+        ),
         dropdownSearchData: widget.enableSearch
             ? DropdownSearchData(
                 searchController: _searchController,
