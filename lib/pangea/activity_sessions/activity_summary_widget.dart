@@ -89,7 +89,7 @@ class ActivitySummary extends StatelessWidget {
             ),
             DecoratedBox(
               decoration: BoxDecoration(
-                color: theme.colorScheme.surface.withAlpha(220),
+                color: theme.colorScheme.surface.withAlpha(128),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Padding(
@@ -101,7 +101,7 @@ class ActivitySummary extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     InkWell(
-                      hoverColor: theme.colorScheme.surfaceTint.withAlpha(200),
+                      hoverColor: theme.colorScheme.surfaceTint.withAlpha(55),
                       onTap: toggleInstructions,
                       child: Column(
                         spacing: 4.0,
