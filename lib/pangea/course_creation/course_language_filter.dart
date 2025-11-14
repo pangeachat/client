@@ -25,6 +25,13 @@ class CourseLanguageFilter extends StatelessWidget {
       displayname: (v) => v.getDisplayName(context) ?? v.displayName,
       enableSearch: true,
       defaultName: L10n.of(context).allLanguages,
+      searchMatchFn: (item, searchValue) {
+        final search = searchValue.toLowerCase();
+        final displayName = item.value?.displayName.toLowerCase();
+        final langCode = item.value?.langCode.toLowerCase();
+        return displayName?.startsWith(search) == true ||
+            langCode?.startsWith(search) == true;
+      },
     );
   }
 }

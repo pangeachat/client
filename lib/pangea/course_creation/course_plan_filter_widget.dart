@@ -13,6 +13,7 @@ class CoursePlanFilter<T> extends StatefulWidget {
   final String Function(T) displayname;
 
   final bool enableSearch;
+  final bool Function(DropdownMenuItem<T>, String)? searchMatchFn;
 
   const CoursePlanFilter({
     super.key,
@@ -22,6 +23,7 @@ class CoursePlanFilter<T> extends StatefulWidget {
     required this.defaultName,
     required this.displayname,
     this.enableSearch = false,
+    this.searchMatchFn,
   });
 
   @override
@@ -100,15 +102,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
                     ),
                   ),
                 ),
-                searchMatchFn: (item, searchValue) {
-                  final displayName = (item.value != null
-                          ? widget.displayname(item.value as T)
-                          : widget.defaultName)
-                      .toLowerCase();
-
-                  final search = searchValue.toLowerCase();
-                  return displayName.startsWith(search);
-                },
+                searchMatchFn: widget.searchMatchFn,
               )
             : null,
         onMenuStateChange: (isOpen) {
