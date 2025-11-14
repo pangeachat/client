@@ -241,7 +241,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   String? get activeRoomId {
     final route = FluffyChatApp.router.routeInformationProvider.value.uri.path;
     if (!route.startsWith('/rooms/')) return null;
-    return route.split('/')[2];
+    // #Pangea
+    // return route.split('/')[2];
+    return FluffyChatApp.router.state.pathParameters['roomid'];
+    // Pangea#
   }
 
   final linuxNotifications =
