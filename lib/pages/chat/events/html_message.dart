@@ -942,7 +942,7 @@ class HtmlMessage extends StatelessWidget {
           child: Column(
             children: [
               if (node.localName == 'nontoken' && overlayController != null)
-                // fix the vertical alignment for non-tokens (i.e. emojis)
+                // Use TokenEmojiButton to ensure consistent vertical alignment for non-token elements (e.g., emojis) in practice mode.
                 TokenEmojiButton(
                   selectModeNotifier: overlayController!.selectedMode,
                   enabled: false,
