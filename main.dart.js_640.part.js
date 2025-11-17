@@ -5,3712 +5,3712 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nNb$() {
-      return new A.L10nNb(B.canonicalizedLocale("nb"));
+    L10nHe$() {
+      return new A.L10nHe(B.canonicalizedLocale("he"));
     },
-    L10nNb: function L10nNb(t0) {
+    L10nHe: function L10nHe(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[38], A);
-  A.L10nNb.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[25], A);
+  A.L10nHe.prototype = {
     get$alwaysUse24HourFormat() {
-      return "falsk";
+      return "\u05e9\u05d2\u05d5\u05d9";
     },
     get$repeatPassword() {
-      return "Gjenta passord";
+      return "\u05db\u05ea\u05d5\u05d1 \u05e9\u05d5\u05d1 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4";
     },
     get$notAnImage() {
-      return "Ikke en bildefil.";
+      return "\u05d4\u05e7\u05d5\u05d1\u05e5 \u05d0\u05d9\u05e0\u05d5 \u05ea\u05de\u05d5\u05e0\u05d4.";
     },
     get$setCustomPermissionLevel() {
-      return "Sett egendefinert tillatelsesniv\xe5";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05e8\u05de\u05ea \u05d4\u05e8\u05e9\u05d0\u05d4 \u05de\u05d5\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea";
     },
     get$setPermissionsLevelDescription() {
-      return "Vennligst velg en forh\xe5ndsdefinert rolle nedenfor eller skriv inn et egendefinert tillatelsesniv\xe5 mellom 0 og 100.";
+      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05ea\u05e4\u05e7\u05d9\u05d3 \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9 \u05dc\u05de\u05d8\u05d4 \u05d0\u05d5 \u05d4\u05d6\u05df \u05e8\u05de\u05ea \u05d4\u05e8\u05e9\u05d0\u05d4 \u05de\u05d5\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea \u05d1\u05d9\u05df 0 \u05dc-100.";
     },
     get$ignoreUser() {
-      return "Ignorer bruker";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05d4\u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$normalUser() {
-      return "Normal bruker";
+      return "\u05de\u05e9\u05ea\u05de\u05e9 \u05e8\u05d2\u05d9\u05dc";
     },
     get$remove(_) {
-      return "Fjern";
+      return "\u05d4\u05e1\u05e8";
     },
     get$importNow() {
-      return "Importer n\xe5";
+      return "\u05d9\u05d1\u05d0 \u05e2\u05db\u05e9\u05d9\u05d5";
     },
     get$importEmojis() {
-      return "Importer Emojis";
+      return "\u05d9\u05d1\u05d0 \u05d0\u05de\u05d5\u05d2'\u05d9\u05dd";
     },
     get$importFromZipFile() {
-      return "Importer fra .zip-fil";
+      return "\u05d9\u05d1\u05d0 \u05de\u05e7\u05d5\u05d1\u05e5 .zip";
     },
     get$exportEmotePack() {
-      return "Eksporter Emote-pakke som .zip";
+      return "\u05d9\u05e6\u05d0 \u05d7\u05d1\u05d9\u05dc\u05ea \u05d0\u05de\u05d5\u05d8\u05d5\u05ea \u05db\u05e7\u05d5\u05d1\u05e5 .zip";
     },
     get$replace(_) {
-      return "Erstatt";
+      return "\u05d4\u05d7\u05dc\u05e3";
     },
     aboutHomeserver$1(homeserver) {
-      return "Om " + homeserver;
+      return "\u05e2\u05dc " + homeserver;
     },
     get$accept(_) {
-      return "Godta";
+      return "\u05e7\u05d1\u05dc";
     },
     acceptedTheInvitation$1(username) {
-      return username + " godtok invitasjonen";
+      return username + " \u05e7\u05d9\u05d1\u05dc \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
     },
     get$account() {
-      return "Konto";
+      return "\u05d7\u05e9\u05d1\u05d5\u05df";
     },
     activatedEndToEndEncryption$1(username) {
-      return username + " skrudde p\xe5 ende-til-ende -kryptering";
+      return username + " \u05d4\u05e4\u05e2\u05d9\u05dc \u05d4\u05e6\u05e4\u05e0\u05d4 \u05de\u05e7\u05e6\u05d4 \u05dc\u05e7\u05e6\u05d4";
     },
     get$addEmail() {
-      return "Legg til e-post";
+      return "\u05d4\u05d5\u05e1\u05e3 \u05de\u05d9\u05d9\u05dc";
     },
     supposedMxid$1(mxid) {
-      return "Dette skal v\xe6re " + mxid;
+      return "\u05d6\u05d4 \u05e6\u05e8\u05d9\u05da \u05dc\u05d4\u05d9\u05d5\u05ea " + mxid;
     },
     get$admin() {
-      return "Administrator";
+      return "\u05de\u05e0\u05d4\u05dc";
     },
     get$commandHint_roomupgrade() {
-      return "Oppgrader dette rommet til den gitte romversjonen";
+      return "\u05e9\u05d3\u05e8\u05d2 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05dc\u05d2\u05e8\u05e1\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d4\u05e0\u05ea\u05d5\u05e0\u05d4";
     },
     get$commandHint_googly() {
-      return "Send noen googly-\xf8yne";
+      return "\u05e9\u05dc\u05d7 \u05e2\u05d9\u05e0\u05d9\u05d9\u05dd \u05de\u05e6\u05d7\u05d9\u05e7\u05d5\u05ea";
     },
     get$commandHint_cuddle() {
-      return "Send en kose";
+      return "\u05e9\u05dc\u05d7 \u05d7\u05d9\u05d1\u05d5\u05e7";
     },
     get$commandHint_hug() {
-      return "Send en klem";
+      return "\u05e9\u05dc\u05d7 \u05d7\u05d9\u05d1\u05d5\u05e7";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " sender deg googly-\xf8yne";
+      return senderName + " \u05e9\u05d5\u05dc\u05d7 \u05dc\u05da \u05e2\u05d9\u05e0\u05d9\u05d9\u05dd \u05de\u05e6\u05d7\u05d9\u05e7\u05d5\u05ea";
     },
     cuddleContent$1(senderName) {
-      return senderName + " koser deg";
+      return senderName + " \u05de\u05d7\u05d1\u05e7 \u05d0\u05d5\u05ea\u05da";
     },
     hugContent$1(senderName) {
-      return senderName + " klemmer deg";
+      return senderName + " \u05de\u05d7\u05d1\u05e7 \u05d0\u05d5\u05ea\u05da";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " besvarte anropet";
+      return senderName + " \u05e2\u05e0\u05d4 \u05dc\u05e9\u05d9\u05d7\u05d4";
     },
     get$anyoneCanJoin() {
-      return "Hvem som helst kan delta";
+      return "\u05db\u05dc \u05d0\u05d7\u05d3 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3";
     },
     get$archive() {
-      return "Arkiv";
+      return "\u05d0\u05e8\u05db\u05d9\u05d5\u05df";
     },
     get$areYouSure() {
-      return "Er du sikker?";
+      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Er du sikker p\xe5 at du vil logge ut?";
+      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05e6\u05d0\u05ea?";
     },
     get$askSSSSSign() {
-      return "For \xe5 kunne signere den andre personen, skriv inn ditt sikre lagerpassord eller gjenopprettingsn\xf8kkel.";
+      return "\u05db\u05d3\u05d9 \u05e9\u05ea\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dd \u05e2\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05d0\u05d7\u05e8 , \u05d4\u05d6\u05df \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da \u05d0\u05d5 \u05d0\u05ea \u05de\u05e4\u05ea\u05d7 \u05d4\u05e9\u05d7\u05d6\u05d5\u05e8.";
     },
     askVerificationRequest$1(username) {
-      return "Godta denne bekreftelsesforesp\xf8rselen fra " + username + "?";
+      return "\u05dc\u05e7\u05d1\u05dc \u05d1\u05e7\u05e9\u05ea \u05d0\u05d9\u05de\u05d5\u05ea \u05d6\u05d5 \u05de- " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Denne hjemme serveren st\xf8tter f\xf8lgende innloggings-typer:\n" + serverVersions + "\nMen denne applikasjonen st\xf8tter kun:\n" + supportedVersions;
+      return "\u05e9\u05e8\u05ea \u05d4\u05d1\u05d9\u05ea \u05ea\u05d5\u05de\u05da \u05d1\u05e1\u05d5\u05d2\u05d9 \u05d4\u05db\u05e0\u05d9\u05e1\u05d4:\n" + serverVersions + "\n\u05d0\u05d1\u05dc \u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05d6\u05d5 \u05ea\u05d5\u05de\u05db\u05ea \u05e8\u05e7 \u05d1:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Send skrivevarsler";
+      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05e7\u05dc\u05d3\u05d4";
     },
     get$swipeRightToLeftToReply() {
-      return "Sveip fra h\xf8yre til venstre for \xe5 svare";
+      return "\u05d4\u05d7\u05dc\u05e7 \u05d9\u05de\u05d9\u05e0\u05d4 \u05dc\u05e9\u05de\u05d0\u05dc \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05d9\u05d1";
     },
     get$sendOnEnter() {
-      return "Trykk p\xe5 enter for \xe5 sende";
+      return "\u05e9\u05dc\u05d7 \u05d1\u05db\u05e0\u05d9\u05e1\u05d4";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " chatter og " + participants + " deltakere";
+      return "" + chats + " \u05e9\u05d9\u05d7\u05d5\u05ea \u05d5-" + participants + " \u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
     },
     get$banned() {
-      return "Bannlyst";
+      return "\u05d7\u05e1\u05d5\u05dd";
     },
     bannedUser$2(username, targetName) {
-      return username + " bannlyste " + targetName;
+      return username + " \u05d7\u05e1\u05dd \u05d0\u05ea " + targetName;
     },
     get$blockDevice() {
-      return "Blokker enhet";
+      return "\u05d7\u05e1\u05d5\u05dd \u05de\u05db\u05e9\u05d9\u05e8";
     },
     get$blocked() {
-      return "Blokkert";
+      return "\u05d7\u05e1\u05d5\u05dd";
     },
     get$cancel(_) {
-      return "Avbryt";
+      return "\u05d1\u05d9\u05d8\u05d5\u05dc";
     },
     cantOpenUri$1(uri) {
-      return "Kan ikke \xe5pne URI " + uri;
+      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05e4\u05ea\u05d5\u05d7 \u05d0\u05ea \u05d4-URI " + uri;
     },
     get$changeDeviceName() {
-      return "Endre enhetsnavn";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05de\u05db\u05e9\u05d9\u05e8";
     },
     changedTheChatAvatar$1(username) {
-      return username + " endret sludreavatar";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc \u05d4\u05e6'\u05d0\u05d8";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " endret sludrebeskrivelse til: \xab" + description + "\xbb";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05ea\u05d9\u05d0\u05d5\u05e8 \u05d4\u05e6'\u05d0\u05d8 \u05dc: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " endret sludringsnavn til: \xab" + chatname + "\xbb";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05e6'\u05d0\u05d8 \u05dc: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " endret sludretilgangene";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05d4\u05e6'\u05d0\u05d8";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " endret visningsnavn til: " + displayname;
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4 \u05e9\u05dc\u05d5 \u05dc: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " endret gjestetilgangsreglene";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d2\u05d9\u05e9\u05d4 \u05dc\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " endret gjestetilgangsregler til: " + rules;
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d2\u05d9\u05e9\u05d4 \u05dc\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd \u05dc: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " endret historikksynlighet";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d4";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " endret historikksynlighet til: " + rules;
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d4 \u05dc: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " endret tilgangsreglene";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " endret tilgangsreglene til: " + joinRules;
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea \u05dc: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " endret avataren sin";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc\u05d5";
     },
     changedTheRoomAliases$1(username) {
-      return username + " endret rom-aliasene";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05d9\u05e0\u05d5\u05d9 \u05d4\u05d7\u05d3\u05e8";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " endret invitasjonslenken";
+      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8 \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
     },
     get$changePassword() {
-      return "Endre passord";
+      return "\u05e9\u05e0\u05d4 \u05e1\u05d9\u05e1\u05de\u05d0";
     },
     get$changeTheme() {
-      return "Endre din stil";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05e1\u05d2\u05e0\u05d5\u05df \u05e9\u05dc\u05da";
     },
     get$changeYourAvatar() {
-      return "Bytt profilbilde";
+      return "\u05e9\u05d9\u05e0\u05d5\u05d9 \u05d4\u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc\u05da";
     },
     get$channelCorruptedDecryptError() {
-      return "Krypteringen er skadet";
+      return "\u05d4\u05d4\u05e6\u05e4\u05e0\u05d4 \u05e0\u05e4\u05d2\u05de\u05d4";
     },
     get$chat() {
-      return "Sludring";
+      return "\u05e6\u05f3\u05d0\u05d8";
     },
     get$chatDetails() {
-      return "Sludringsdetaljer";
+      return "\u05e4\u05e8\u05d8\u05d9 \u05e6'\u05d0\u05d8";
     },
     get$chats() {
-      return "Chatter";
+      return "\u05e6'\u05d0\u05d8\u05d9\u05dd";
     },
     get$chooseAStrongPassword() {
-      return "Velg et sterkt passord";
+      return "\u05d1\u05d7\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d7\u05d6\u05e7\u05d4";
     },
     get$clearArchive() {
-      return "T\xf8m arkiv";
+      return "\u05e0\u05e7\u05d4 \u05d0\u05e8\u05db\u05d9\u05d5\u05df";
     },
     get$close(_) {
-      return "Lukk";
+      return "\u05e1\u05d2\u05d5\u05e8";
     },
     get$commandHint_markasdm() {
-      return "Merk som direktemeldingsrom for den gitte Matrix-ID-en";
+      return "\u05e1\u05de\u05df \u05db\u05d7\u05dc\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05e2\u05d1\u05d5\u05e8 \u05de\u05d6\u05d4\u05d4 Matrix \u05d4\u05e0\u05ea\u05d5\u05df";
     },
     get$commandHint_markasgroup() {
-      return "Merk som gruppe";
+      return "\u05e1\u05de\u05df \u05db\u05e7\u05d1\u05d5\u05e6\u05d4";
     },
     get$commandHint_ban() {
-      return "Forby den gitte brukeren fra dette rommet";
+      return "\u05d7\u05e1\u05d5\u05dd \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05de\u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
     },
     get$commandHint_clearcache() {
-      return "T\xf8m cache";
+      return "\u05e0\u05e7\u05d4 \u05de\u05d8\u05de\u05d5\u05df";
     },
     get$commandHint_create() {
-      return "Opprett en tom gruppechat\nBruk --no-encryption for \xe5 deaktivere kryptering";
+      return "\u05e6\u05d5\u05e8 \u05e6'\u05d0\u05d8 \u05e7\u05d1\u05d5\u05e6\u05ea\u05d9 \u05e8\u05d9\u05e7\n\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1--no-encryption \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05d1\u05d9\u05ea \u05d0\u05ea \u05d4\u05d4\u05e6\u05e4\u05e0\u05d4";
     },
     get$commandHint_discardsession() {
-      return "Forklar \xf8kt";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05d4\u05e1\u05e9\u05df";
     },
     get$commandHint_dm() {
-      return "Start en direktemelding\nBruk --no-encryption for \xe5 deaktivere kryptering";
+      return "\u05d4\u05ea\u05d7\u05dc \u05e6'\u05d0\u05d8 \u05d9\u05e9\u05d9\u05e8\n\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1--no-encryption \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05d1\u05d9\u05ea \u05d0\u05ea \u05d4\u05d4\u05e6\u05e4\u05e0\u05d4";
     },
     get$commandHint_html() {
-      return "Send tekst i HTML-format";
+      return "\u05e9\u05dc\u05d7 \u05d8\u05e7\u05e1\u05d8 \u05d1\u05ea\u05d1\u05e0\u05d9\u05ea HTML";
     },
     get$commandHint_invite() {
-      return "Inviter brukeren til dette rommet";
+      return "\u05d4\u05d6\u05de\u05df \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05dc\u05d7\u05d3\u05e8 \u05d6\u05d4";
     },
     get$commandHint_join() {
-      return "Bli med i dette rommet";
+      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05d7\u05d3\u05e8 \u05d4\u05e0\u05ea\u05d5\u05df";
     },
     get$commandHint_kick() {
-      return "Fjern brukeren fra dette rommet";
+      return "\u05d4\u05e1\u05e8 \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05de\u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
     },
     get$commandHint_leave() {
-      return "Forlat dette rommet";
+      return "\u05e2\u05d6\u05d5\u05d1 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
     },
     get$commandHint_me() {
-      return "Beskriv deg selv";
+      return "\u05ea\u05d0\u05e8 \u05d0\u05ea \u05e2\u05e6\u05de\u05da";
     },
     get$commandHint_myroomavatar() {
-      return "Sett bildet ditt for dette rommet (ved mxc-uri)";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05d0\u05ea \u05d4\u05ea\u05de\u05d5\u05e0\u05d4 \u05e9\u05dc\u05da \u05dc\u05d7\u05d3\u05e8 \u05d6\u05d4 (\u05e2\u05dc \u05d9\u05d3\u05d9 mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Sett visningsnavnet ditt for dette rommet";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05d0\u05ea \u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4 \u05e9\u05dc\u05da \u05e2\u05d1\u05d5\u05e8 \u05d7\u05d3\u05e8 \u05d6\u05d4";
     },
     get$commandHint_op() {
-      return "Sett brukerens maktniv\xe5 (standard: 50)";
+      return "\u05d4\u05d2\u05d3\u05e8\u05ea \u05e8\u05de\u05ea \u05e6\u05e8\u05d9\u05db\u05ea \u05d4\u05d7\u05e9\u05de\u05dc \u05e9\u05dc \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df (\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc: 50)";
     },
     get$commandHint_plain() {
-      return "Send uformatert tekst";
+      return "\u05e9\u05dc\u05d7 \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d0 \u05de\u05e2\u05d5\u05e6\u05d1";
     },
     get$commandHint_react() {
-      return "Send svar som en reaksjon";
+      return "\u05e9\u05dc\u05d7 \u05ea\u05e9\u05d5\u05d1\u05d4 \u05db\u05ea\u05d2\u05d5\u05d1\u05d4";
     },
     get$commandHint_send() {
-      return "Send tekst";
+      return "\u05e9\u05dc\u05d7 \u05d8\u05e7\u05e1\u05d8";
     },
     get$commandHint_unban() {
-      return "Fjern banning av brukeren fra dette rommet";
+      return "\u05d1\u05d8\u05dc \u05d0\u05ea \u05d4\u05d7\u05e1\u05d9\u05de\u05d4 \u05e9\u05dc \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05de\u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
     },
     get$compareEmojiMatch() {
-      return "Sammenlign og forsikre at f\xf8lgende smilefjes samsvarer med de p\xe5 den andre enheten:";
+      return "\u05d4\u05e9\u05d5\u05d5\u05d4 \u05d5\u05d5\u05d3\u05d0 \u05e9\u05d4\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05d4\u05d1\u05d0\u05d9\u05dd \u05ea\u05d5\u05d0\u05de\u05d9\u05dd \u05dc\u05d0\u05dc\u05d5 \u05e9\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05e9\u05e0\u05d9:";
     },
     get$compareNumbersMatch() {
-      return "Sammenlign og forsikre at f\xf8lgende tall samsvarer med de p\xe5 den andre enheten:";
+      return "\u05d4\u05e9\u05d5\u05d5\u05d4 \u05d5\u05d5\u05d3\u05d0 \u05e9\u05d4\u05de\u05e1\u05e4\u05e8\u05d9\u05dd \u05d4\u05d1\u05d0\u05d9\u05dd \u05ea\u05d5\u05d0\u05de\u05d9\u05dd \u05dc\u05d0\u05dc\u05d4 \u05e9\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05e9\u05e0\u05d9:";
     },
     get$configureChat() {
-      return "Sett opp sludring";
+      return "\u05e7\u05d1\u05d9\u05e2\u05ea \u05ea\u05e6\u05d5\u05e8\u05d4 \u05e9\u05dc \u05e6'\u05d0\u05d8";
     },
     get$confirm(_) {
-      return "Bekreft";
+      return "\u05dc\u05d0\u05e9\u05e8";
     },
     get$copiedToClipboard() {
-      return "Kopiert til utklippstavle";
+      return "\u05d4\u05d5\u05e2\u05ea\u05e7 \u05dc\u05dc\u05d5\u05d7 \u05d4\u05d2\u05d6\u05d9\u05e8\u05d9\u05dd";
     },
     get$copy(_) {
-      return "Kopier";
+      return "\u05d4\u05e2\u05ea\u05e7";
     },
     couldNotDecryptMessage$1(error) {
-      return "Kunne ikke dekryptere melding: " + error;
+      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4: " + error;
     },
     get$checkList() {
-      return "Sjekkliste";
+      return "\u05e8\u05e9\u05d9\u05de\u05ea \u05d1\u05d3\u05d9\u05e7\u05d4";
     },
     countParticipants$1(count) {
-      return "" + count + " deltagere";
+      return "" + count + " \u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
     },
     countInvited$1(count) {
-      return "" + count + " invitert";
+      return "" + count + " \u05de\u05d5\u05d6\u05de\u05e0\u05d9\u05dd";
     },
     get$create(_) {
-      return "Opprett";
+      return "\u05e6\u05d5\u05e8";
     },
     createdTheChat$1(username) {
-      return username + " opprettet sludringen";
+      return username + " \u05d9\u05e6\u05e8 \u05d0\u05ea \u05d4\u05e6'\u05d0\u05d8";
     },
     get$createGroup() {
-      return "Opprett gruppe";
+      return "\u05e6\u05d5\u05e8 \u05e7\u05d1\u05d5\u05e6\u05d4";
     },
     get$currentlyActive() {
-      return "Aktiv n\xe5";
+      return "\u05e4\u05e2\u05d9\u05dc \u05db\u05e2\u05ea";
     },
     get$darkTheme() {
-      return "M\xf8rk";
+      return "\u05db\u05d4\u05d4";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return timeOfDay + ", " + date;
+      return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Dette vil skru av din brukerkonto for godt, og kan ikke angres! Er du sikker?";
+      return "\u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05ea\u05e9\u05d1\u05d9\u05ea \u05d0\u05ea \u05d7\u05e9\u05d1\u05d5\u05df \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05da. \u05d0\u05d9 \u05d0\u05e4\u05e9\u05e8 \u05dc\u05d1\u05d8\u05dc \u05d0\u05ea \u05d6\u05d4! \u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7?";
     },
     get$defaultPermissionLevel() {
-      return "Forvalgt tilgangsniv\xe5";
+      return "\u05e8\u05de\u05ea \u05d4\u05e8\u05e9\u05d0\u05ea \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc";
     },
     get$$delete(_) {
-      return "Slett";
+      return "\u05de\u05d7\u05d9\u05e7\u05d4";
     },
     get$deleteAccount() {
-      return "Slett konto";
+      return "\u05de\u05d7\u05e7 \u05d7\u05e9\u05d1\u05d5\u05df";
     },
     get$deleteMessage() {
-      return "Slett melding";
+      return "\u05de\u05d7\u05e7 \u05d4\u05d5\u05d3\u05e2\u05d4";
     },
     get$devices() {
-      return "Enheter";
+      return "\u05d4\u05ea\u05e7\u05e0\u05d9\u05dd";
     },
     get$displaynameHasBeenChanged() {
-      return "Visningsnavn endret";
+      return "\u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4 \u05d4\u05e9\u05ea\u05e0\u05d4";
     },
     get$downloadFile() {
-      return "Last ned fil";
+      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5";
     },
     get$edit() {
-      return "Rediger";
+      return "\u05e2\u05e8\u05d5\u05da";
     },
     get$editBlockedServers() {
-      return "Rediger blokkerte tjenere";
+      return "\u05e2\u05e8\u05d5\u05da \u05e9\u05e8\u05ea\u05d9\u05dd \u05d7\u05e1\u05d5\u05de\u05d9\u05dd";
     },
     get$chatPermissions() {
-      return "Chat-tillatelser";
+      return "\u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05e9\u05d9\u05d7\u05d4";
     },
     get$editDisplayname() {
-      return "Rediger visningsnavn";
+      return "\u05e2\u05e8\u05d5\u05da \u05d0\u05ea \u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4";
     },
     get$editRoomAvatar() {
-      return "Rediger romavatar";
+      return "\u05e2\u05e8\u05d9\u05db\u05ea \u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc \u05d7\u05d3\u05e8";
     },
     get$emoteExists() {
-      return "Smilefjeset finnes allerede!";
+      return "\u05d0\u05d9\u05de\u05d5\u05d8 \u05db\u05d1\u05e8 \u05e7\u05d9\u05d9\u05dd!";
     },
     get$emoteInvalid() {
-      return "Ugyldig smilefjes-kode!";
+      return "\u05e7\u05d5\u05d3 \u05e8\u05d2\u05e9 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Nylig brukte emotes vil vises her...";
+      return "\u05e8\u05d2\u05e9\u05d5\u05ea \u05e9\u05d4\u05d9\u05d5 \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05dc\u05d0\u05d7\u05e8\u05d5\u05e0\u05d4 \u05d9\u05d5\u05e4\u05d9\u05e2\u05d5 \u05db\u05d0\u05df...";
     },
     get$emotePacks() {
-      return "Smilefjespakker for rommet";
+      return "\u05d7\u05d1\u05d9\u05dc\u05d5\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05dc\u05d7\u05d3\u05e8";
     },
     get$customEmojisAndStickers() {
-      return "Egendefinerte emojis og klistremerker";
+      return "\u05d0\u05de\u05d5\u05d2'\u05d9 \u05de\u05d3\u05d5\u05de\u05d9\u05dd \u05d5\u05e1\u05d8\u05d9\u05e7\u05e8\u05d9\u05dd \u05de\u05d5\u05ea\u05d0\u05de\u05d9\u05dd \u05d0\u05d9\u05e9\u05d9\u05ea";
     },
     get$emoteShortcode() {
-      return "Smilefjes-kode";
+      return "\u05e7\u05d5\u05d3 \u05e7\u05e6\u05e8 \u05e9\u05dc \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9";
     },
     get$emoteWarnNeedToPick() {
-      return "Du m\xe5 velge en smilefjes-kode og et bilde!";
+      return "\u05e2\u05dc\u05d9\u05da \u05dc\u05d1\u05d7\u05d5\u05e8 \u05e7\u05d5\u05d3 \u05e7\u05e6\u05e8 \u05e9\u05dc \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05d5\u05ea\u05de\u05d5\u05e0\u05d4!";
     },
     get$emptyChat() {
-      return "Tom sludring";
+      return "\u05e6'\u05d0\u05d8 \u05e8\u05d9\u05e7";
     },
     get$enableEmotesGlobally() {
-      return "Skru p\xe5 smilefjespakke for hele programmet";
+      return "\u05d4\u05e4\u05e2\u05dc\u05ea \u05d7\u05d1\u05d9\u05dc\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05d1\u05d0\u05d5\u05e4\u05df \u05d2\u05dc\u05d5\u05d1\u05dc\u05d9";
     },
     get$enableEncryption() {
-      return "Skru p\xe5 kryptering";
+      return "\u05d0\u05e4\u05e9\u05e8 \u05d4\u05e6\u05e4\u05e0\u05d4";
     },
     get$encrypted() {
-      return "Kryptert";
+      return "\u05de\u05d5\u05e6\u05e4\u05df";
     },
     get$encryptionNotEnabled() {
-      return "Kryptering er ikke p\xe5skrudd";
+      return "\u05d4\u05d4\u05e6\u05e4\u05e0\u05d4 \u05d0\u05d9\u05e0\u05d4 \u05de\u05d5\u05e4\u05e2\u05dc\u05ea";
     },
     endedTheCall$1(senderName) {
-      return senderName + " avsluttet samtalen";
+      return senderName + " \u05e1\u05d9\u05d9\u05dd \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4";
     },
     get$enterAnEmailAddress() {
-      return "Skriv inn en e-postadresse";
+      return "\u05d4\u05d6\u05df \u05db\u05ea\u05d5\u05d1\u05ea \u05d3\u05d5\u05d0\u05e8 \u05d0\u05dc\u05e7\u05d8\u05e8\u05d5\u05e0\u05d9";
     },
     errorObtainingLocation$1(error) {
-      return "Feil ved henting av plassering: " + error;
+      return "\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05d4\u05e9\u05d2\u05ea \u05de\u05d9\u05e7\u05d5\u05dd: " + error;
     },
     get$fontSize(_) {
-      return "Skriftst\xf8rrelse";
+      return "\u05d2\u05d5\u05d3\u05dc \u05d2\u05d5\u05e4\u05df";
     },
     get$forward(_) {
-      return "Videre";
+      return "\u05d4\u05e2\u05d1\u05e8";
     },
     get$fromJoining() {
-      return "Fra \xe5 ta del";
+      return "\u05de\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
     },
     get$fromTheInvitation() {
-      return "Fra invitasjonen";
+      return "\u05de\u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
     },
     get$guestsAreForbidden() {
-      return "Gjester forbudt";
+      return "\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd \u05d0\u05e1\u05d5\u05e8\u05d9\u05dd";
     },
     get$guestsCanJoin() {
-      return "Gjester kan ta del";
+      return "\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " har trukket tilbake invitasjonen til " + targetName;
+      return username + " \u05d1\u05d9\u05d8\u05dc \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4 \u05e2\u05d1\u05d5\u05e8 " + targetName;
     },
     get$help() {
-      return "Hjelp";
+      return "\u05e2\u05d6\u05e8\u05d4";
     },
     get$hideRedactedMessages() {
-      return "Skjul redigerte meldinger";
+      return "\u05d4\u05e1\u05ea\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05de\u05e6\u05d5\u05e0\u05d6\u05e8\u05d5\u05ea";
     },
     get$hideRedactedMessagesBody() {
-      return "Hvis noen redigerer en melding, vil denne meldingen ikke lenger v\xe6re synlig i chatten.";
+      return "\u05d0\u05dd \u05de\u05d9\u05e9\u05d4\u05d5 \u05de\u05e6\u05e0\u05d6\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4, \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5 \u05dc\u05d0 \u05ea\u05d4\u05d9\u05d4 \u05e0\u05e8\u05d0\u05d9\u05ea \u05d9\u05d5\u05ea\u05e8 \u05d1\u05e9\u05d9\u05d7\u05d4.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Skjul ugyldige eller ukjente meldingsformater";
+      return "\u05d4\u05e1\u05ea\u05e8 \u05e4\u05d5\u05e8\u05de\u05d8\u05d9\u05dd \u05e9\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05dc\u05d0 \u05ea\u05e7\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2\u05d9\u05dd";
     },
     get$block() {
-      return "Blokker";
+      return "\u05d7\u05e1\u05d5\u05dd";
     },
     get$blockedUsers() {
-      return "Blokkerte brukere";
+      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d7\u05e1\u05d5\u05de\u05d9\u05dd";
     },
     get$blockListDescription() {
-      return "Du kan blokkere brukere som forstyrrer deg. Du vil ikke kunne motta meldinger eller rominvitasjoner fra brukerne p\xe5 din personlige blokkeringliste.";
+      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d7\u05e1\u05d5\u05dd \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05e9\u05de\u05e4\u05e8\u05d9\u05e2\u05d9\u05dd \u05dc\u05da. \u05dc\u05d0 \u05ea\u05d5\u05db\u05dc \u05dc\u05e7\u05d1\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d0\u05d5 \u05d4\u05d6\u05de\u05e0\u05d5\u05ea \u05dc\u05d7\u05d3\u05e8\u05d9\u05dd \u05de\u05d4\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d1\u05e8\u05e9\u05d9\u05de\u05ea \u05d4\u05d7\u05e1\u05d9\u05de\u05d4 \u05d4\u05d0\u05d9\u05e9\u05d9\u05ea \u05e9\u05dc\u05da.";
     },
     get$blockUsername() {
-      return "Ignorer brukernavn";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$iHaveClickedOnLink() {
-      return "Jeg har klikket p\xe5 lenken";
+      return "\u05dc\u05d7\u05e6\u05ea\u05d9 \u05e2\u05dc \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$incorrectPassphraseOrKey() {
-      return "Feilaktig passord eller gjenopprettingsn\xf8kkel";
+      return "\u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d0\u05d5 \u05de\u05e4\u05ea\u05d7 \u05e9\u05d7\u05d6\u05d5\u05e8 \u05e9\u05d2\u05d5\u05d9\u05d9\u05dd";
     },
     get$inviteContact() {
-      return "Inviter kontakt";
+      return "\u05d4\u05d6\u05de\u05df \u05d0\u05d9\u05e9 \u05e7\u05e9\u05e8";
     },
     get$noChatDescriptionYet() {
-      return "Ingen chatbeskrivelse opprettet enn\xe5.";
+      return "\u05e2\u05d3\u05d9\u05d9\u05df \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8 \u05ea\u05d9\u05d0\u05d5\u05e8 \u05dc\u05e9\u05d9\u05d7\u05d4.";
     },
     get$tryAgain() {
-      return "Pr\xf8v igjen";
+      return "\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1";
     },
     get$invited() {
-      return "Invitert";
+      return "\u05d4\u05d6\u05de\u05d9\u05df";
     },
     get$redactMessageDescription() {
-      return "Meldingen vil bli redigert for alle deltakere i denne samtalen. Dette kan ikke angres.";
+      return "\u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05ea\u05d9\u05de\u05d7\u05e7 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d1\u05e9\u05d9\u05d7\u05d4 \u05d6\u05d5. \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc.";
     },
     get$optionalRedactReason() {
-      return "(Valgfritt) \xc5rsak til \xe5 redigere denne meldingen...";
+      return "(\u05d0\u05d5\u05e4\u05e6\u05d9\u05d5\u05e0\u05dc\u05d9) \u05e1\u05d9\u05d1\u05ea \u05de\u05d7\u05d9\u05e7\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4...";
     },
     invitedUser$2(username, targetName) {
-      return username + " inviterte " + targetName;
+      return username + " \u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05ea " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Kun inviterte brukere";
+      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05de\u05d5\u05d6\u05de\u05e0\u05d9\u05dd \u05d1\u05dc\u05d1\u05d3";
     },
     get$inviteForMe() {
-      return "Invitasjon for meg";
+      return "\u05d4\u05d6\u05de\u05e0\u05d4 \u05d1\u05e9\u05d1\u05d9\u05dc\u05d9";
     },
     get$isTyping() {
-      return "skriver\u2026";
+      return "\u05de\u05e7\u05dc\u05d9\u05d3/\u05d4\u2026";
     },
     joinedTheChat$1(username) {
-      return username + "ble med i samtalen";
+      return username + " \u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e6'\u05d0\u05d8";
     },
     kicked$2(username, targetName) {
-      return username + " kastet ut " + targetName;
+      return username + " \u05d1\u05e2\u05d8 \u05d1 " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Sist aktiv: " + localizedTimeShort;
+      return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d7\u05e8\u05d5\u05e0\u05d4: " + localizedTimeShort;
     },
     get$leave() {
-      return "Forlat";
+      return "\u05dc\u05e2\u05d6\u05d5\u05d1";
     },
     get$leftTheChat() {
-      return "Forlat sludringen";
+      return "\u05e2\u05d6\u05d1 \u05d0\u05ea \u05d4\u05e6'\u05d0\u05d8";
     },
     get$lightTheme() {
-      return "Lys";
+      return "\u05d1\u05d4\u05d9\u05e8";
     },
     get$dehydrate() {
-      return "Eksporter \xf8kt og slett enheten";
+      return "\u05d9\u05e6\u05d5\u05d0 \u05e1\u05e9\u05df \u05d5\u05e0\u05d9\u05e7\u05d5\u05d9 \u05de\u05db\u05e9\u05d9\u05e8";
     },
     get$dehydrateWarning() {
-      return "Denne handlingen kan ikke angres. S\xf8rg for \xe5 lagre sikkerhetskopifilen trygt.";
+      return "\u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc. \u05d5\u05d3\u05d0 \u05e9\u05d0\u05ea\u05d4 \u05e9\u05d5\u05de\u05e8 \u05d0\u05ea \u05e7\u05d5\u05d1\u05e5 \u05d4\u05d2\u05d9\u05d1\u05d5\u05d9 \u05d1\u05de\u05e7\u05d5\u05dd \u05d1\u05d8\u05d5\u05d7.";
     },
     get$dehydrateTor() {
-      return "TOR-brukere: Eksporter \xf8kt";
+      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9 TOR: \u05d9\u05e6\u05d5\u05d0 \u05e1\u05e9\u05df";
     },
     get$dehydrateTorLong() {
-      return "For TOR-brukere anbefales det \xe5 eksportere \xf8kten f\xf8r du lukker vinduet.";
+      return "\u05dc\u05de\u05e9\u05ea\u05de\u05e9\u05d9 TOR, \u05de\u05d5\u05de\u05dc\u05e5 \u05dc\u05d9\u05d9\u05e6\u05d0 \u05d0\u05ea \u05d4\u05e1\u05e9\u05df \u05dc\u05e4\u05e0\u05d9 \u05e1\u05d2\u05d9\u05e8\u05ea \u05d4\u05d7\u05dc\u05d5\u05df.";
     },
     get$loadingPleaseWait() {
-      return "Laster inn\u2026 Vent.";
+      return "\u05d8\u05d5\u05e2\u05df \u05d0\u05e0\u05d0 \u05d4\u05de\u05ea\u05df.";
     },
     get$loadMore() {
-      return "Last inn mer\u2026";
+      return "\u05d8\u05e2\u05df \u05e2\u05d5\u05d3\u2026";
     },
     get$locationDisabledNotice() {
-      return "Stedstjenester er deaktivert. Vennligst aktiver dem for \xe5 kunne dele din plassering.";
+      return "\u05e9\u05d9\u05e8\u05d5\u05ea\u05d9 \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05de\u05d5\u05e9\u05d1\u05ea\u05d9\u05dd. \u05d0\u05e0\u05d0 \u05d4\u05e4\u05e2\u05dc \u05d0\u05d5\u05ea\u05dd \u05db\u05d3\u05d9 \u05dc\u05e9\u05ea\u05e3 \u05d0\u05ea \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05e9\u05dc\u05da.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Plasseringstillatelse nektet. Vennligst gi tillatelse for \xe5 kunne dele din plassering.";
+      return "\u05d4\u05e8\u05e9\u05d0\u05ea \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05e0\u05d3\u05d7\u05ea\u05d4. \u05d0\u05e0\u05d0 \u05d0\u05e4\u05e9\u05e8 \u05d0\u05ea \u05d4\u05d9\u05db\u05d5\u05dc\u05ea \u05dc\u05e9\u05ea\u05e3 \u05d0\u05ea \u05de\u05d9\u05e7\u05d5\u05de\u05da.";
     },
     get$login() {
-      return "Logg inn";
+      return "\u05db\u05e0\u05d9\u05e1\u05d4";
     },
     get$logout() {
-      return "Logg ut";
+      return "\u05d9\u05e6\u05d9\u05d0\u05d4";
     },
     get$mention() {
-      return "Nevn";
+      return "\u05d4\u05d6\u05db\u05d9\u05e8";
     },
     get$messages() {
-      return "Meldinger";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
     },
     get$messagesStyle() {
-      return "Meldinger:";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea:";
     },
     get$moderator() {
-      return "Moderator";
+      return "\u05de\u05e0\u05d7\u05d4";
     },
     get$newChat() {
-      return "Ny sludring";
+      return "\u05e6'\u05d0\u05d8 \u05d7\u05d3\u05e9";
     },
     get$newVerificationRequest() {
-      return "Ny bekreftelsesforesp\xf8rsel!";
+      return "\u05d1\u05e7\u05e9\u05ea \u05d0\u05d9\u05de\u05d5\u05ea \u05d7\u05d3\u05e9\u05d4!";
     },
     get$next(_) {
-      return "Neste";
+      return "\u05d4\u05d1\u05d0";
     },
     get$no() {
-      return "Nei";
+      return "\u05dc\u05d0";
     },
     get$noConnectionToTheServer() {
-      return "Ingen tilkobling til tjeneren";
+      return "\u05d0\u05d9\u05df \u05d7\u05d9\u05d1\u05d5\u05e8 \u05dc\u05e9\u05e8\u05ea";
     },
     get$noEmotesFound() {
-      return "Fant ingen smilefjes. \ud83d\ude15";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05d0\u05de\u05d5\u05d8\u05d9\u05e7\u05d5\u05e0\u05d9\u05dd. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Del invitasjonslenke";
+      return "\u05e9\u05ea\u05e3 \u05e7\u05d9\u05e9\u05d5\u05e8 \u05d4\u05d6\u05de\u05e0\u05d4";
     },
     get$none() {
-      return "Ingen";
+      return "\u05dc\u05dc\u05d0";
     },
     get$noPasswordRecoveryDescription() {
-      return "Du har ikke lagt til en m\xe5te \xe5 gjenopprette passordet ditt p\xe5.";
+      return "\u05e2\u05d3\u05d9\u05d9\u05df \u05dc\u05d0 \u05d4\u05d5\u05e1\u05e4\u05ea \u05d3\u05e8\u05da \u05dc\u05e9\u05d7\u05d6\u05e8 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da.";
     },
     get$noPermission() {
-      return "Ingen tilgang";
+      return "\u05d0\u05d9\u05df \u05d4\u05e8\u05e9\u05d0\u05d4";
     },
     get$noRoomsFound() {
-      return "Fant ingen rom \u2026";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05d7\u05d3\u05e8\u05d9\u05dd\u2026";
     },
     get$notifications() {
-      return "Merknader";
+      return "\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea";
     },
     get$obtainingLocation() {
-      return "Henter plassering\u2026";
+      return "\u05de\u05e9\u05d9\u05d2 \u05de\u05d9\u05e7\u05d5\u05dd\u2026";
     },
     get$offensive() {
-      return "St\xf8tende";
+      return "\u05e4\u05d5\u05d2\u05e2\u05e0\u05d9";
     },
     get$ok() {
-      return "OK";
+      return "\u05d0\u05d9\u05e9\u05d5\u05e8";
     },
     get$oopsSomethingWentWrong() {
-      return "Oida, noe gikk galt \u2026";
+      return "\u05d0\u05d5\u05e4\u05e1, \u05de\u05e9\u05d4\u05d5 \u05d4\u05e9\u05ea\u05d1\u05e9\u2026";
     },
     get$oneClientLoggedOut() {
-      return "En av dine klienter har blitt logget ut";
+      return "\u05d0\u05d7\u05d3 \u05de\u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05e9\u05dc\u05da \u05d4\u05ea\u05e0\u05ea\u05e7";
     },
     get$openInMaps() {
-      return "\xc5pne i kart";
+      return "\u05e4\u05ea\u05d9\u05d7\u05d4 \u05d1\u05de\u05e4\u05d5\u05ea";
     },
     get$link() {
-      return "Lenke";
+      return "\u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$serverRequiresEmail() {
-      return "Denne serveren m\xe5 validere e-postadressen din for registrering.";
+      return "\u05e9\u05e8\u05ea \u05d6\u05d4 \u05e6\u05e8\u05d9\u05da \u05dc\u05d0\u05de\u05ea \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0\u05e8 \u05d4\u05d0\u05dc\u05e7\u05d8\u05e8\u05d5\u05e0\u05d9 \u05e9\u05dc\u05da \u05dc\u05e8\u05d9\u05e9\u05d5\u05dd.";
     },
     get$participant() {
-      return "Deltager";
+      return "\u05de\u05e9\u05ea\u05ea\u05e3";
     },
     get$passphraseOrKey() {
-      return "Passord eller gjenopprettingsn\xf8kkel";
+      return "\u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d0\u05d5 \u05de\u05e4\u05ea\u05d7 \u05e9\u05d7\u05d6\u05d5\u05e8";
     },
     get$password(_) {
-      return "Passord";
+      return "\u05e1\u05d9\u05e1\u05de\u05d4";
     },
     get$passwordForgotten() {
-      return "Passord glemt";
+      return "\u05e9\u05db\u05d7\u05ea\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4";
     },
     get$passwordHasBeenChanged() {
-      return "Passord endret";
+      return "\u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05d5\u05e0\u05ea\u05d4";
     },
     get$overview() {
-      return "Oversikt";
+      return "\u05e1\u05e7\u05d9\u05e8\u05d4";
     },
     get$passwordRecoverySettings() {
-      return "Gjenopprettingsinnstillinger for passord";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e9\u05d7\u05d6\u05d5\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4";
     },
     get$passwordRecovery() {
-      return "Passordgjenoppretting";
+      return "\u05e9\u05d7\u05d6\u05d5\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4";
     },
     get$pickImage() {
-      return "Velg bilde";
+      return "\u05d1\u05d7\u05e8 \u05ea\u05de\u05d5\u05e0\u05d4";
     },
     get$pin() {
-      return "Fest";
+      return "\u05e7\u05d5\u05d3 pin";
     },
     get$pleaseChoose() {
-      return "Vennligst velg";
+      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8";
     },
     get$pleaseEnterYourPassword() {
-      return "Skriv inn passordet ditt";
+      return "\u05e0\u05d0 \u05d4\u05d6\u05df \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da";
     },
     get$pleaseEnterYourPin() {
-      return "Vennligst skriv inn din pin-kode";
+      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05d0\u05ea \u05e7\u05d5\u05d3 \u05d4pin \u05e9\u05dc\u05da";
     },
     get$pleaseEnterYourUsername() {
-      return "Skriv inn brukernavnet ditt";
+      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "F\xf8lg instruksen p\xe5 nettsiden og trykk p\xe5 \xabNeste\xbb.";
+      return "\u05d0\u05e0\u05d0 \u05e2\u05e7\u05d5\u05d1 \u05d0\u05d7\u05e8 \u05d4\u05d4\u05d5\u05e8\u05d0\u05d5\u05ea \u05d1\u05d0\u05ea\u05e8 \u05d5\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05d1\u05d0.";
     },
     get$privacy() {
-      return "Personvern";
+      return "\u05e4\u05e8\u05d8\u05d9\u05d5\u05ea";
     },
     get$reason(_) {
-      return "Grunn";
+      return "\u05e1\u05d9\u05d1\u05d4";
     },
     redactedBy$1(username) {
-      return "Redigert av " + username;
+      return "\u05e2\u05e8\u05d5\u05da \u05e2\u05dc \u05d9\u05d3\u05d9 " + username;
     },
     get$directChat() {
-      return "Direktemeldingschat";
+      return "\u05e9\u05d9\u05d7\u05ea \u05d9\u05e9\u05d9\u05e8\u05d4";
     },
     redactedByBecause$2(username, reason) {
-      return "Redigert av " + username + ' fordi: "' + reason + '"';
+      return "\u05e2\u05e8\u05d5\u05da \u05e2\u05dc \u05d9\u05d3\u05d9 " + username + ' \u05db\u05d9: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " har trukket tilbake en hendelse";
+      return username + " \u05e2\u05e8\u05da \u05d0\u05d9\u05e8\u05d5\u05e2";
     },
     get$redactMessage() {
-      return "Rediger melding";
+      return "\u05e2\u05e8\u05d5\u05da \u05d4\u05d5\u05d3\u05e2\u05d4";
     },
     get$reject() {
-      return "Avsl\xe5";
+      return "\u05d3\u05d7\u05d4";
     },
     rejectedTheInvitation$1(username) {
-      return username + " avslo invitasjonen";
+      return username + " \u05d3\u05d7\u05d4 \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
     },
     get$removeAllOtherDevices() {
-      return "Fjern alle andre enheter";
+      return "\u05d4\u05e1\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd";
     },
     get$unbanFromChat() {
-      return "Opphev bannlysning";
+      return "\u05d1\u05d8\u05dc \u05d7\u05e1\u05d9\u05de\u05d4 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4";
     },
     get$removeYourAvatar() {
-      return "Fjern din avatar";
+      return "\u05d4\u05e1\u05e8 \u05d0\u05ea \u05d4\u05e1\u05de\u05dc \u05d4\u05d0\u05d9\u05e9\u05d9 \u05e9\u05dc\u05da";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Erstatt rom med nyere versjon";
+      return "\u05d4\u05d7\u05dc\u05e3 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d1\u05d2\u05e8\u05e1\u05d4 \u05d7\u05d3\u05e9\u05d4 \u05d9\u05d5\u05ea\u05e8";
     },
     get$reply(_) {
-      return "Svar";
+      return "\u05d4\u05e9\u05d1";
     },
     get$reportMessage() {
-      return "Rapporter melding";
+      return "\u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4";
     },
     get$roomHasBeenUpgraded() {
-      return "Rommet har blitt oppgradert";
+      return "\u05d4\u05d7\u05d3\u05e8 \u05e9\u05d5\u05d3\u05e8\u05d2";
     },
     get$search(_) {
-      return "S\xf8k";
+      return "\u05d7\u05d9\u05e4\u05d5\u05e9";
     },
     get$security() {
-      return "Sikkerhet";
+      return "\u05d0\u05d1\u05d8\u05d7\u05d4";
     },
     get$send(_) {
-      return "Send";
+      return "\u05e9\u05dc\u05d7";
     },
     get$sendAMessage() {
-      return "Send en melding";
+      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4";
     },
     get$sendAudio() {
-      return "Send lyd";
+      return "\u05e9\u05dc\u05d7 \u05d0\u05d5\u05d3\u05d9\u05d5";
     },
     get$sendFile() {
-      return "Send fil";
+      return "\u05e9\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5";
     },
     get$sendImage() {
-      return "Send bilde";
+      return "\u05e9\u05dc\u05d7 \u05ea\u05de\u05d5\u05e0\u05d4";
     },
     sendImages$1(count) {
-      return "Send " + count + " bilde";
+      return "\u05e9\u05dc\u05d7 " + count + " \u05ea\u05de\u05d5\u05e0\u05d5\u05ea";
     },
     get$sendMessages() {
-      return "Send meldinger";
+      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
     },
     get$sendVideo() {
-      return "Send video";
+      return "\u05e9\u05dc\u05d7 \u05d5\u05d9\u05d3\u05d0\u05d5";
     },
     sentAFile$1(username) {
-      return username + " sendte en fil";
+      return "\ud83d\udcc1 " + username + " \u05e9\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5";
     },
     sentAnAudio$1(username) {
-      return username + " sendte lyd";
+      return "\ud83c\udfa4 " + username + " \u05e9\u05dc\u05d7 \u05d0\u05d5\u05d3\u05d9\u05d5";
     },
     sentAPicture$1(username) {
-      return username + " sendte et bilde";
+      return "\ud83d\uddbc\ufe0f " + username + " \u05e9\u05dc\u05d7 \u05ea\u05de\u05d5\u05e0\u05d4";
     },
     sentASticker$1(username) {
-      return username + " sendte et klistremerke";
+      return "\ud83d\ude0a " + username + " \u05e9\u05dc\u05d7 \u05de\u05d3\u05d1\u05e7\u05d4";
     },
     sentAVideo$1(username) {
-      return username + " sendte en video";
+      return "\ud83c\udfa5 " + username + " \u05e9\u05dc\u05d7 \u05d5\u05d9\u05d3\u05d0\u05d5";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " sendte anropsinfo";
+      return senderName + " \u05e9\u05dc\u05d7 \u05e4\u05e8\u05d8\u05d9 \u05e9\u05d9\u05d7\u05d4";
     },
     get$separateChatTypes() {
-      return "Separat direktemeldinger og grupper";
+      return "\u05d4\u05e4\u05e8\u05d3 \u05e9\u05d9\u05d7\u05d5\u05ea \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05d5\u05e7\u05d1\u05d5\u05e6\u05d5\u05ea";
     },
     get$setChatDescription() {
-      return "Sett chatbeskrivelse";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05ea\u05d9\u05d0\u05d5\u05e8 \u05e9\u05d9\u05d7\u05d4";
     },
     get$setStatus() {
-      return "Angi status";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05de\u05e6\u05d1";
     },
     get$settings() {
-      return "Innstilinger";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea";
     },
     get$share(_) {
-      return "Del";
+      return "\u05e9\u05ea\u05e3";
     },
     sharedTheLocation$1(username) {
-      return username + " delte posisjonen";
+      return username + " \u05e9\u05d9\u05ea\u05e3 \u05d0\u05ea \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05e9\u05dc\u05d4\u05dd";
     },
     get$shareLocation() {
-      return "Del plassering";
+      return "\u05e9\u05ea\u05e3 \u05de\u05d9\u05e7\u05d5\u05dd";
     },
     get$presencesToggle() {
-      return "Vis statusmeldinger fra andre brukere";
+      return "\u05d4\u05e6\u05d2 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e1\u05d8\u05d8\u05d5\u05e1 \u05de\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd";
     },
     get$skip(_) {
-      return "Hopp over";
+      return "\u05d3\u05dc\u05d2";
     },
     get$sourceCode() {
-      return "Kildekode";
+      return "\u05e7\u05d5\u05d3 \u05de\u05e7\u05d5\u05e8";
     },
     startedACall$1(senderName) {
-      return senderName + " startet en samtale";
+      return senderName + " \u05d4\u05ea\u05d7\u05d9\u05dc \u05e9\u05d9\u05d7\u05d4";
     },
     get$status(_) {
-      return "Status";
+      return "\u05e1\u05d8\u05d8\u05d5\u05e1";
     },
     get$statusExampleMessage() {
-      return "Hvordan har du det i dag?";
+      return "\u05d0\u05d9\u05da \u05d0\u05ea\u05d4 \u05d4\u05d9\u05d5\u05dd?";
     },
     get$submit(_) {
-      return "Send inn";
+      return "\u05e9\u05dc\u05d7";
     },
     get$synchronizingPleaseWait() {
-      return "Synkroniserer\u2026 Vennligst vent.";
+      return "\u05de\u05e1\u05ea\u05e0\u05db\u05e8\u05df\u2026 \u05d0\u05e0\u05d0 \u05d4\u05de\u05ea\u05df.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synkroniserer\u2026 (" + percentage + "%)";
+      return "\u05de\u05e1\u05ea\u05e0\u05db\u05e8\u05df\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "System";
+      return "\u05de\u05e2\u05e8\u05db\u05ea";
     },
     get$theyDontMatch() {
-      return "Samsvarer ikke";
+      return "\u05d4\u05dd \u05dc\u05d0 \u05ea\u05d5\u05d0\u05de\u05d9\u05dd";
     },
     get$theyMatch() {
-      return "Samsvarer";
+      return "\u05d4\u05dd \u05ea\u05d5\u05d0\u05de\u05d9\u05dd";
     },
     get$tooManyRequestsWarning() {
-      return "For mange foresp\xf8rsler. Pr\xf8v igjen senere!";
+      return "\u05d9\u05d5\u05ea\u05e8 \u05de\u05d3\u05d9 \u05d1\u05e7\u05e9\u05d5\u05ea. \u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1 \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8!";
     },
     get$tryToSendAgain() {
-      return "Pr\xf8v \xe5 sende igjen";
+      return "\u05e0\u05e1\u05d4 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05e9\u05d5\u05d1";
     },
     get$unavailable() {
-      return "Utilgjengelig";
+      return "\u05dc\u05d0 \u05d6\u05de\u05d9\u05df";
     },
     unbannedUser$2(username, targetName) {
-      return username + " opphevet bannlysning av " + targetName;
+      return username + " \u05d4\u05d5\u05e1\u05e8 \u05d4\u05de\u05e0\u05d9\u05e2\u05d4 \u05de-" + targetName;
     },
     get$unblockDevice() {
-      return "Opphev blokkering av enhet";
+      return "\u05d1\u05d8\u05dc \u05d7\u05e1\u05d9\u05de\u05ea \u05de\u05db\u05e9\u05d9\u05e8";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Ukjent krypteringsalgoritme";
+      return "\u05d0\u05dc\u05d2\u05d5\u05e8\u05d9\u05ea\u05dd \u05d4\u05d4\u05e6\u05e4\u05e0\u05d4 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
     },
     unknownEvent$1(type) {
-      return "Ukjent hendelse \xab" + type + "\xbb";
+      return "\u05d0\u05d9\u05e8\u05d5\u05e2 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2 '" + type + "'";
     },
     get$unpin() {
-      return "L\xf8sne";
+      return "\u05d1\u05d8\u05dc \u05e7\u05d9\u05d1\u05d5\u05e2";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " og " + count + " andre skriver\u2026";
+      return username + " \u05d5-" + count + " \u05d0\u05d7\u05e8\u05d9\u05dd \u05de\u05e7\u05dc\u05d9\u05d3\u05d9\u05dd\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " og " + username2 + " skriver\u2026";
+      return username + " \u05d5-" + username2 + " \u05de\u05e7\u05dc\u05d9\u05d3\u05d9\u05dd\u2026";
     },
     userIsTyping$1(username) {
-      return username + " skriver\u2026";
+      return username + " \u05de\u05e7\u05dc\u05d9\u05d3\u2026";
     },
     userLeftTheChat$1(username) {
-      return username + " har forlatt sludringen";
+      return "\ud83d\udeaa " + username + " \u05e2\u05d6\u05d1 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4";
     },
     get$username(_) {
-      return "Brukernavn";
+      return "\u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " sendte en " + type + "-hendelse";
+      return username + " \u05e9\u05dc\u05d7 \u05d0\u05d9\u05e8\u05d5\u05e2 " + type;
     },
     get$unverified() {
-      return "Uverifisert";
+      return "\u05dc\u05d0 \u05de\u05d0\u05d5\u05de\u05ea";
     },
     get$verified() {
-      return "Verifisert";
+      return "\u05de\u05d0\u05d5\u05de\u05ea";
     },
     get$verifyStart() {
-      return "Start bekreftelse";
+      return "\u05d4\u05ea\u05d7\u05dc \u05d0\u05d9\u05de\u05d5\u05ea";
     },
     get$verifySuccess() {
-      return "Du har bekreftet!";
+      return "\u05d0\u05d9\u05de\u05d5\u05ea \u05d4\u05e6\u05dc\u05d9\u05d7!";
     },
     get$verifyTitle() {
-      return "Bekrefter annen konto";
+      return "\u05de\u05d0\u05de\u05ea \u05d7\u05e9\u05d1\u05d5\u05df \u05d0\u05d7\u05e8";
     },
     get$visibleForAllParticipants() {
-      return "Synlig for alle deltagere";
+      return "\u05e0\u05e8\u05d0\u05d4 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
     },
     get$visibleForEveryone() {
-      return "Synlig for alle";
+      return "\u05e0\u05e8\u05d0\u05d4 \u05dc\u05db\u05d5\u05dc\u05dd";
     },
     get$voiceMessage() {
-      return "Lydmelding";
+      return "\u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05dc";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Venter p\xe5 at partner skal godta foresp\xf8rselen\u2026";
+      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d5\u05ea\u05e3 \u05dc\u05d0\u05e9\u05e8 \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Venter p\xe5 at partner skal godta emoji\u2026";
+      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d5\u05ea\u05e3 \u05dc\u05d0\u05e9\u05e8 \u05d0\u05ea \u05d4\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Venter p\xe5 at samtalepartner skal godta tallene \u2026";
+      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d5\u05ea\u05e3 \u05dc\u05d0\u05e9\u05e8 \u05d0\u05ea \u05d4\u05de\u05e1\u05e4\u05e8\u05d9\u05dd\u2026";
     },
     get$warning() {
-      return "Advarsel!";
+      return "\u05d0\u05d6\u05d4\u05e8\u05d4!";
     },
     get$weSentYouAnEmail() {
-      return "Du har f\xe5tt en e-post";
+      return "\u05e9\u05dc\u05d7\u05e0\u05d5 \u05dc\u05da \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
     },
     get$whyDoYouWantToReportThis() {
-      return "Hvorfor \xf8nsker du \xe5 rapportere dette?";
+      return "\u05de\u05d3\u05d5\u05e2 \u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05d6\u05d4?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Med disse adressene kan du gjenopprette passordet ditt hvis du trenger det.";
+      return "\u05e2\u05dd \u05db\u05ea\u05d5\u05d1\u05d5\u05ea \u05d0\u05dc\u05d4 \u05ea\u05d5\u05db\u05dc \u05dc\u05e9\u05d7\u05d6\u05e8 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da.";
     },
     get$writeAMessage() {
-      return "Skriv en melding \u2026";
+      return "\u05db\u05ea\u05d5\u05d1 \u05d4\u05d5\u05d3\u05e2\u05d4\u2026";
     },
     get$yes() {
-      return "Ja";
+      return "\u05db\u05df";
     },
     get$you() {
-      return "Deg";
+      return "\u05d0\u05ea\u05d4";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Du deltar ikke lenger i denne sludringen";
+      return "\u05d0\u05ea\u05d4 \u05db\u05d1\u05e8 \u05dc\u05d0 \u05de\u05e9\u05ea\u05ea\u05e3 \u05d1\u05e6'\u05d0\u05d8 \u05d6\u05d4";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Du har blitt bannlyst fra denne sludringen";
+      return "\u05e0\u05d0\u05e1\u05e8\u05ea \u05de\u05dc\u05d4\u05e9\u05ea\u05ea\u05e3 \u05d1\u05e6'\u05d0\u05d8 \u05d6\u05d4";
     },
     get$yourPublicKey() {
-      return "Din offentlige n\xf8kkel";
+      return "\u05d4\u05de\u05e4\u05ea\u05d7 \u05d4\u05e6\u05d9\u05d1\u05d5\u05e8\u05d9 \u05e9\u05dc\u05da";
     },
     get$messageInfo() {
-      return "Meldingsinformasjon";
+      return "\u05e4\u05e8\u05d8\u05d9 \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4";
     },
     get$time(_) {
-      return "Tid";
+      return "\u05d6\u05de\u05df";
     },
     get$sender() {
-      return "Avsender";
+      return "\u05e9\u05d5\u05dc\u05d7 \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4";
     },
     get$openGallery() {
-      return "\xc5pne galleriet";
+      return "\u05e4\u05ea\u05d7 \u05d2\u05dc\u05e8\u05d9\u05d4";
     },
     get$start(_) {
-      return "Start";
+      return "\u05d4\u05ea\u05d7\u05dc";
     },
     get$markAsRead() {
-      return "Merk som lest";
+      return "\u05e1\u05de\u05df \u05db\u05e0\u05e7\u05e8\u05d0";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " reagerte med " + reaction;
+      return sender + " \u05d4\u05d2\u05d9\u05d1 \u05d1-" + reaction;
     },
     get$pinMessage() {
-      return "Fest til rom";
+      return "\u05e0\u05e2\u05e5 \u05d1\u05d7\u05d3\u05e8";
     },
     get$emojis() {
-      return "Emojis";
+      return "\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9\u05dd";
     },
     get$youRejectedTheInvitation() {
-      return "Du avviste invitasjonen";
+      return "\u05d3\u05d7\u05d9\u05ea \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
     },
     get$youJoinedTheChat() {
-      return "Du ble med i chatten";
+      return "\u05d4\u05e6\u05d8\u05e8\u05e4\u05ea \u05dc\u05e9\u05d9\u05d7\u05d4";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Du godtok invitasjonen";
+      return "\ud83d\udc4d \u05e7\u05d9\u05d1\u05dc\u05ea \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
     },
     youBannedUser$1(user) {
-      return "Du utestengte " + user;
+      return "\u05d7\u05e1\u05de\u05ea \u05d0\u05ea " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Du har trukket tilbake invitasjonen til " + user;
+      return "\u05de\u05e9\u05db\u05ea \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4 \u05dc-" + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Du har blitt invitert av " + user;
+      return "\ud83d\udce9 \u05d4\u05d5\u05d6\u05de\u05e0\u05ea \u05e2\u05dc \u05d9\u05d3\u05d9 " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Du inviterte " + user;
+      return "\ud83d\udce9 \u05d4\u05d6\u05de\u05e0\u05ea \u05d0\u05ea " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Du sparket " + user;
+      return "\ud83d\udc5e \u05d4\u05d5\u05e6\u05d0\u05ea \u05d0\u05ea " + user;
     },
     youUnbannedUser$1(user) {
-      return "Du fjernet utestengelsen for " + user;
+      return "\u05e9\u05d9\u05d7\u05e8\u05e8\u05ea \u05d0\u05ea " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " har banket p\xe5";
+      return "\ud83d\udeaa " + user + " \u05d3\u05e4\u05e7 \u05d1\u05d3\u05dc\u05ea";
     },
     countFiles$1(count) {
-      return "" + count + " filer";
+      return "" + count + " \u05e7\u05d1\u05e6\u05d9\u05dd";
     },
     get$user() {
-      return "Bruker";
+      return "\u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$custom() {
-      return "Egendefinert";
+      return "\u05de\u05d5\u05ea\u05d0\u05dd \u05d0\u05d9\u05e9\u05d9\u05ea";
     },
     get$noKeyForThisMessage() {
-      return "Dette kan skje hvis meldingen ble sendt f\xf8r du logget inn p\xe5 kontoen din p\xe5 denne enheten.\n\nDet er ogs\xe5 mulig at avsenderen har blokkert enheten din eller at noe gikk galt med internettforbindelsen.\n\nEr du i stand til \xe5 lese meldingen p\xe5 en annen \xf8kt? Da kan du overf\xf8re meldingen derfra! G\xe5 til Innstillinger > Enheter og s\xf8rg for at enhetene dine har verifisert hverandre. N\xe5r du \xe5pner rommet neste gang og begge \xf8ktene er i forgrunnen, vil n\xf8klene bli overf\xf8rt automatisk.\n\nVil du ikke miste n\xf8klene n\xe5r du logger ut eller bytter enhet? S\xf8rg for at du har aktivert chat-sikkerhetskopiering i innstillingene.";
+      return "\u05d6\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e7\u05e8\u05d5\u05ea \u05d0\u05dd \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e0\u05e9\u05dc\u05d7\u05d4 \u05dc\u05e4\u05e0\u05d9 \u05e9\u05d4\u05ea\u05d7\u05d1\u05e8\u05ea \u05dc\u05d7\u05e9\u05d1\u05d5\u05e0\u05da \u05d1\u05de\u05db\u05e9\u05d9\u05e8 \u05d6\u05d4.\n\n\u05d9\u05db\u05d5\u05dc \u05d2\u05dd \u05dc\u05d4\u05d9\u05d5\u05ea \u05e9\u05d4\u05e9\u05d5\u05dc\u05d7 \u05d7\u05e1\u05dd \u05d0\u05ea \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05e9\u05dc\u05da \u05d0\u05d5 \u05e9\u05de\u05e9\u05d4\u05d5 \u05d4\u05e9\u05ea\u05d1\u05e9 \u05d1\u05d7\u05d9\u05d1\u05d5\u05e8 \u05dc\u05d0\u05d9\u05e0\u05d8\u05e8\u05e0\u05d8.\n\n\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e7\u05e8\u05d5\u05d0 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d1\u05e1\u05e9\u05df \u05d0\u05d7\u05e8? \u05d0\u05d6 \u05ea\u05d5\u05db\u05dc \u05dc\u05d4\u05e2\u05d1\u05d9\u05e8 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05de\u05e0\u05d5! \u05e2\u05d1\u05d5\u05e8 \u05dc\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea > \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d5\u05d5\u05d3\u05d0 \u05e9\u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05e9\u05dc\u05da \u05d0\u05d5\u05e9\u05e8\u05d5 \u05d6\u05d4 \u05d0\u05ea \u05d6\u05d4. \u05db\u05d0\u05e9\u05e8 \u05ea\u05e4\u05ea\u05d7 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d1\u05e4\u05e2\u05dd \u05d4\u05d1\u05d0\u05d4 \u05d5\u05e9\u05e0\u05d9 \u05d4\u05e1\u05e9\u05e0\u05d9\u05dd \u05d9\u05d4\u05d9\u05d5 \u05d1\u05d7\u05d6\u05d9\u05ea, \u05d4\u05de\u05e4\u05ea\u05d7\u05d5\u05ea \u05d9\u05d5\u05e2\u05d1\u05e8\u05d5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea.\n\n\u05dc\u05d0 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d0\u05d1\u05d3 \u05d0\u05ea \u05d4\u05de\u05e4\u05ea\u05d7\u05d5\u05ea \u05d1\u05e2\u05ea \u05d9\u05e6\u05d9\u05d0\u05d4 \u05d0\u05d5 \u05d4\u05d7\u05dc\u05e4\u05ea \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd? \u05d5\u05d3\u05d0 \u05e9\u05d4\u05e4\u05e2\u05dc\u05ea \u05d0\u05ea \u05d2\u05d9\u05d1\u05d5\u05d9 \u05d4\u05e6'\u05d0\u05d8 \u05d1\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Tom chat (var " + oldDisplayName + ")";
+      return "\u05e9\u05d9\u05d7\u05d4 \u05e8\u05d9\u05e7\u05d4 (\u05d4\u05d9\u05d9\u05ea\u05d4 " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "\xc5pne chat igjen";
+      return "\u05e4\u05ea\u05d7 \u05de\u05d7\u05d3\u05e9 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4";
     },
     get$noOtherDevicesFound() {
-      return "Ingen andre enheter funnet";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd";
     },
     fileIsTooBigForServer$1(max) {
-      return "Kan ikke sende! Serveren st\xf8tter kun vedlegg opp til " + max + ".";
+      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05e9\u05dc\u05d5\u05d7! \u05d4\u05e9\u05e8\u05ea \u05ea\u05d5\u05de\u05da \u05d1\u05e7\u05d1\u05e6\u05d9\u05dd \u05de\u05e6\u05d5\u05e8\u05e4\u05d9\u05dd \u05e2\u05d3 " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Hopp til siste leste melding";
+      return "\u05e7\u05e4\u05d5\u05e5 \u05dc\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05e7\u05d5\u05d3\u05de\u05ea \u05e9\u05e0\u05e7\u05e8\u05d0\u05d4";
     },
     get$readUpToHere() {
-      return "Les opp til her";
+      return "\u05e7\u05e8\u05d0 \u05e2\u05d3 \u05db\u05d0\u05df";
     },
     get$jump() {
-      return "Hopp";
+      return "\u05e7\u05e4\u05d5\u05e5";
     },
     get$openLinkInBrowser() {
-      return "\xc5pne lenke i nettleser";
+      return "\u05e4\u05ea\u05d7 \u05d0\u05ea \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d1\u05d3\u05e4\u05d3\u05e4\u05df";
     },
     get$setColorTheme() {
-      return "Velg fargetema:";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05e0\u05d5\u05e9\u05d0 \u05e6\u05d1\u05e2:";
     },
     get$invite() {
-      return "Inviter";
+      return "\u05d4\u05d6\u05de\u05df";
     },
     get$invalidInput() {
-      return "Ugyldig inndata!";
+      return "\u05e7\u05dc\u05d8 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9!";
     },
     wrongPinEntered$1(seconds) {
-      return "Feil PIN-kode oppgitt! Pr\xf8v igjen om " + seconds + " sekunder...";
+      return "\u05e7\u05d5\u05d3 \u05e1\u05d5\u05d3\u05d9 \u05e9\u05d2\u05d5\u05d9 \u05d4\u05d5\u05d6\u05df! \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1 \u05d1\u05e2\u05d5\u05d3 " + seconds + " \u05e9\u05e0\u05d9\u05d5\u05ea...";
     },
     get$pleaseEnterANumber() {
-      return "Vennligst skriv inn et tall st\xf8rre enn 0";
+      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05de\u05e1\u05e4\u05e8 \u05d4\u05d2\u05d3\u05d5\u05dc \u05de-0";
     },
     get$removeDevicesDescription() {
-      return "Du vil bli logget ut av denne enheten og vil ikke lenger kunne motta meldinger.";
+      return "\u05d0\u05ea\u05d4 \u05ea\u05ea\u05e0\u05ea\u05e7 \u05de\u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05d6\u05d4 \u05d5\u05dc\u05d0 \u05ea\u05d5\u05db\u05dc \u05e2\u05d5\u05d3 \u05dc\u05e7\u05d1\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea.";
     },
     get$banUserDescription() {
-      return "Brukeren vil bli utestengt fra chatten og vil ikke kunne komme inn igjen f\xf8r de blir unbannet.";
+      return "\u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d9\u05d9\u05d0\u05e1\u05e8 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4 \u05d5\u05dc\u05d0 \u05d9\u05d5\u05db\u05dc \u05dc\u05d4\u05d9\u05db\u05e0\u05e1 \u05e9\u05d5\u05d1 \u05e2\u05d3 \u05e9\u05d9\u05d1\u05d5\u05d8\u05dc \u05d4\u05d0\u05d9\u05e1\u05d5\u05e8.";
     },
     get$unbanUserDescription() {
-      return "Brukeren vil kunne komme inn i chatten igjen hvis de pr\xf8ver.";
+      return "\u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d9\u05d5\u05db\u05dc \u05dc\u05d4\u05d9\u05db\u05e0\u05e1 \u05e9\u05d5\u05d1 \u05dc\u05e9\u05d9\u05d7\u05d4 \u05d0\u05dd \u05d9\u05e0\u05e1\u05d4.";
     },
     get$kickUserDescription() {
-      return "Brukeren blir kastet ut av chatten, men er ikke utestengt. I offentlige chatter kan brukeren bli med igjen n\xe5r som helst.";
+      return "\u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05de\u05d5\u05e6\u05d0 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4 \u05d0\u05da \u05dc\u05d0 \u05e0\u05d0\u05e1\u05e8. \u05d1\u05e9\u05d9\u05d7\u05d5\u05ea \u05e6\u05d9\u05d1\u05d5\u05e8\u05d9\u05d5\u05ea, \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05de\u05d7\u05d3\u05e9 \u05d1\u05db\u05dc \u05d6\u05de\u05df.";
     },
     get$makeAdminDescription() {
-      return "N\xe5r du gj\xf8r denne brukeren til administrator, kan det hende du ikke kan angre dette, da de da vil ha de samme tillatelsene som deg.";
+      return "\u05d1\u05e8\u05d2\u05e2 \u05e9\u05ea\u05d4\u05e4\u05d5\u05da \u05d0\u05ea \u05de\u05e9\u05ea\u05de\u05e9 \u05d6\u05d4 \u05dc\u05de\u05e0\u05d4\u05dc, \u05d9\u05d9\u05ea\u05db\u05df \u05e9\u05dc\u05d0 \u05ea\u05d5\u05db\u05dc \u05dc\u05d1\u05d8\u05dc \u05d6\u05d0\u05ea \u05de\u05db\u05d9\u05d5\u05d5\u05df \u05e9\u05d9\u05d4\u05d9\u05d5 \u05dc\u05d5 \u05d0\u05d5\u05ea\u05df \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05db\u05de\u05d5\u05da.";
     },
     get$yourGlobalUserIdIs() {
-      return "Din globale bruker-ID er: ";
+      return "\u05d6\u05d9\u05d4\u05d5\u05d9 \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05d2\u05dc\u05d5\u05d1\u05dc\u05d9 \u05e9\u05dc\u05da \u05d4\u05d5\u05d0: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Dessverre ble ingen bruker funnet med "' + query + '". Vennligst sjekk om du har skrevet feil.';
+      return '\u05dc\u05e6\u05e2\u05e8\u05e0\u05d5 \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dd "' + query + '". \u05d0\u05e0\u05d0 \u05d1\u05d3\u05d5\u05e7 \u05d0\u05dd \u05d8\u05e2\u05d5\u05ea \u05d1\u05d4\u05e7\u05dc\u05d3\u05d4.';
     },
     get$knocking() {
-      return "Banker p\xe5";
+      return "\u05d3\u05d5\u05e4\u05e7";
     },
     get$nothingFound() {
-      return "Ingen funnet...";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05db\u05dc\u05d5\u05dd...";
     },
     get$groupName() {
-      return "Gruppenavn";
+      return "\u05e9\u05dd \u05d4\u05e7\u05d1\u05d5\u05e6\u05d4";
     },
     get$wrongRecoveryKey() {
-      return "Beklager... dette ser ikke ut til \xe5 v\xe6re riktig gjenopprettingsn\xf8kkel.";
+      return "\u05e1\u05dc\u05d9\u05d7\u05d4... \u05d6\u05d4 \u05dc\u05d0 \u05e0\u05e8\u05d0\u05d4 \u05de\u05e4\u05ea\u05d7 \u05d4\u05e9\u05d7\u05d6\u05d5\u05e8 \u05d4\u05e0\u05db\u05d5\u05df.";
     },
     get$startConversation() {
-      return "Start samtale";
+      return "\u05d4\u05ea\u05d7\u05dc \u05e9\u05d9\u05d7\u05d4";
     },
     get$commandHint_sendraw() {
-      return "Send r\xe5 json";
+      return "\u05e9\u05dc\u05d7 json \u05d2\u05d5\u05dc\u05de\u05d9";
     },
     get$leaveEmptyToClearStatus() {
-      return "La st\xe5 tomt for \xe5 t\xf8mme statusen din.";
+      return "\u05d4\u05e9\u05d0\u05e8 \u05e8\u05d9\u05e7 \u05db\u05d3\u05d9 \u05dc\u05e0\u05e7\u05d5\u05ea \u05d0\u05ea \u05d4\u05e1\u05d8\u05d8\u05d5\u05e1 \u05e9\u05dc\u05da.";
     },
     get$searchForUsers() {
-      return "S\xf8k etter @brukere...";
+      return "\u05d7\u05e4\u05e9 \u05d1-@\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Vennligst skriv inn ditt n\xe5v\xe6rende passord";
+      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05d4\u05e0\u05d5\u05db\u05d7\u05d9\u05ea \u05e9\u05dc\u05da";
     },
     get$newPassword() {
-      return "Nytt passord";
+      return "\u05e1\u05d9\u05e1\u05de\u05d4 \u05d7\u05d3\u05e9\u05d4";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Vennligst velg et sterkt passord";
+      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d7\u05d6\u05e7\u05d4";
     },
     get$passwordsDoNotMatch() {
-      return "Passordene stemmer ikke overens";
+      return "\u05d4\u05e1\u05d9\u05e1\u05de\u05d0\u05d5\u05ea \u05d0\u05d9\u05e0\u05df \u05ea\u05d5\u05d0\u05de\u05d5\u05ea";
     },
     get$passwordIsWrong() {
-      return "Det innskrevne passordet er feil";
+      return "\u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05d4\u05d6\u05e0\u05ea \u05e9\u05d2\u05d5\u05d9\u05d4";
     },
     get$decline() {
-      return "Avsl\xe5";
+      return "\u05d3\u05d7\u05d4";
     },
     get$thisDevice() {
-      return "Denne enheten:";
+      return "\u05d4\u05ea\u05e7\u05df \u05d6\u05d4:";
     },
     get$initAppError() {
-      return "En feil oppstod under initialisering av appen";
+      return "\u05d0\u05d9\u05e8\u05e2\u05d4 \u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05e2\u05ea \u05d0\u05ea\u05d7\u05d5\u05dc \u05d4\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4";
     },
     searchIn$1(chat) {
-      return 'S\xf8k i chat "' + chat + '"...';
+      return '\u05d7\u05d9\u05e4\u05d5\u05e9 \u05d1"' + chat + '"...';
     },
     get$searchMore() {
-      return "S\xf8k mer...";
+      return "\u05d7\u05e4\u05e9 \u05e2\u05d5\u05d3...";
     },
     get$gallery() {
-      return "Galleri";
+      return "\u05d2\u05dc\u05e8\u05d9\u05d4";
     },
     get$files(_) {
-      return "Filer";
+      return "\u05e7\u05d1\u05e6\u05d9\u05dd";
     },
     sessionLostBody$2(url, error) {
-      return "\xd8kten din er tapt. Vennligst rapporter denne feilen til utviklerne p\xe5 " + url + ". Feilmeldingen er: " + error;
+      return "\u05d4\u05e1\u05e9\u05df \u05e9\u05dc\u05da \u05d0\u05d1\u05d3. \u05d0\u05e0\u05d0 \u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05e9\u05d2\u05d9\u05d0\u05d4 \u05d6\u05d5 \u05dc\u05de\u05e4\u05ea\u05d7\u05d9\u05dd \u05d1-" + url + ". \u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d4\u05d9\u05d0: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Appen pr\xf8ver n\xe5 \xe5 gjenopprette \xf8kten din fra sikkerhetskopien. Vennligst rapporter denne feilen til utviklerne p\xe5 " + url + ". Feilmeldingen er: " + error;
+      return "\u05d4\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05de\u05e0\u05e1\u05d4 \u05dc\u05e9\u05d7\u05d6\u05e8 \u05d0\u05ea \u05d4\u05e1\u05e9\u05df \u05e9\u05dc\u05da \u05de\u05d4\u05d2\u05d9\u05d1\u05d5\u05d9. \u05d0\u05e0\u05d0 \u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05e9\u05d2\u05d9\u05d0\u05d4 \u05d6\u05d5 \u05dc\u05de\u05e4\u05ea\u05d7\u05d9\u05dd \u05d1-" + url + ". \u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d4\u05d9\u05d0: " + error;
     },
     get$sendReadReceipts() {
-      return "Send lesebekreftelser";
+      return "\u05e9\u05dc\u05d7 \u05d0\u05d9\u05e9\u05d5\u05e8\u05d9 \u05e7\u05e8\u05d9\u05d0\u05d4";
     },
     get$sendTypingNotificationsDescription() {
-      return "Andre deltakere i en chat kan se n\xe5r du skriver en ny melding.";
+      return "\u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05e8\u05d0\u05d5\u05ea \u05de\u05ea\u05d9 \u05d0\u05ea\u05d4 \u05de\u05e7\u05dc\u05d9\u05d3 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05d7\u05d3\u05e9\u05d4.";
     },
     get$sendReadReceiptsDescription() {
-      return "Andre deltakere i en chat kan se n\xe5r du har lest en melding.";
+      return "\u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05e8\u05d0\u05d5\u05ea \u05de\u05ea\u05d9 \u05e7\u05e8\u05d0\u05ea \u05d4\u05d5\u05d3\u05e2\u05d4.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verifiser annen enhet";
+      return "\ud83d\udd10 \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05db\u05e9\u05d9\u05e8 \u05d0\u05d7\u05e8";
     },
     get$verifyOtherDeviceDescription() {
-      return "N\xe5r du verifiserer en annen enhet, kan disse enhetene utveksle n\xf8kler, noe som \xf8ker din totale sikkerhet. \ud83d\udcaa N\xe5r du starter en verifisering, vil en popup vises i appen p\xe5 begge enhetene. Der vil dere se en serie av emojis eller tall som dere m\xe5 sammenligne.\nDet er best \xe5 ha begge enhetene tilgjengelig f\xf8r du starter verifiseringen. \ud83e\udd33";
+      return "\u05db\u05d0\u05e9\u05e8 \u05ea\u05d0\u05de\u05ea \u05de\u05db\u05e9\u05d9\u05e8 \u05d0\u05d7\u05e8, \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d0\u05dc\u05d4 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05d4\u05d7\u05dc\u05d9\u05e3 \u05de\u05e4\u05ea\u05d7\u05d5\u05ea, \u05de\u05d4 \u05e9\u05d9\u05e9\u05e4\u05e8 \u05d0\u05ea \u05d4\u05d0\u05d1\u05d8\u05d7\u05d4 \u05d4\u05db\u05d5\u05dc\u05dc\u05ea \u05e9\u05dc\u05da. \ud83d\udcaa \u05db\u05d0\u05e9\u05e8 \u05ea\u05ea\u05d7\u05d9\u05dc \u05ea\u05d4\u05dc\u05d9\u05da \u05d0\u05d9\u05de\u05d5\u05ea, \u05d9\u05d5\u05e4\u05d9\u05e2 \u05d7\u05dc\u05d5\u05df \u05e7\u05d5\u05e4\u05e5 \u05d1\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05d1\u05e9\u05e0\u05d9 \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd. \u05e9\u05dd \u05ea\u05e8\u05d0\u05d5 \u05e1\u05d3\u05e8\u05ea \u05d0\u05de\u05d5\u05d9\u05d5\u05ea \u05d0\u05d5 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd \u05e9\u05e2\u05dc\u05d9\u05db\u05dd \u05dc\u05d4\u05e9\u05d5\u05d5\u05ea \u05d1\u05d9\u05e0\u05d9\u05d4\u05dd. \u05e2\u05d3\u05d9\u05e3 \u05e9\u05d9\u05d4\u05d9\u05d5 \u05e9\u05e0\u05d9 \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05dc\u05e4\u05e0\u05d9 \u05e9\u05ea\u05ea\u05d7\u05d9\u05dc \u05d0\u05ea \u05ea\u05d4\u05dc\u05d9\u05da \u05d4\u05d0\u05d9\u05de\u05d5\u05ea. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " aksepterte n\xf8kkelverifisering";
+      return sender + " \u05d0\u05d9\u05e9\u05e8 \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " avbr\xf8t n\xf8kkelverifisering";
+      return sender + " \u05d1\u05d9\u05d8\u05dc \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
     },
     completedKeyVerification$1(sender) {
-      return sender + " fullf\xf8rte n\xf8kkelverifisering";
+      return sender + " \u05e1\u05d9\u05d9\u05dd \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " er klar for n\xf8kkelverifisering";
+      return sender + " \u05de\u05d5\u05db\u05df \u05dc\u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " ba om n\xf8kkelverifisering";
+      return sender + " \u05d1\u05d9\u05e7\u05e9 \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
     },
     startedKeyVerification$1(sender) {
-      return sender + " startet n\xf8kkelverifisering";
+      return sender + " \u05d4\u05ea\u05d7\u05d9\u05dc \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
     },
     get$commandHint_ignore() {
-      return "Ignorer den gitte matrix-ID-en";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05d6\u05d9\u05d4\u05d5\u05d9 \u05d4\u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d4\u05e0\u05ea\u05d5\u05df";
     },
     get$commandHint_unignore() {
-      return "Fjern ignorering av den gitte matrix-ID-en";
+      return "\u05d1\u05d8\u05dc \u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05de\u05d6\u05d9\u05d4\u05d5\u05d9 \u05d4\u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d4\u05e0\u05ea\u05d5\u05df";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Akkurat n\xe5 er det " + count + " brukere blokkert.";
+      return "\u05db\u05e8\u05d2\u05e2 \u05d9\u05e9 " + count + " \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d7\u05e1\u05d5\u05de\u05d9\u05dd.";
     },
     get$restricted() {
-      return "Begrenset";
+      return "\u05de\u05d5\u05d2\u05d1\u05dc";
     },
     get$markAsUnread() {
-      return "Merk som ulest";
+      return "\u05e1\u05de\u05df \u05db\u05dc\u05d0 \u05e0\u05e7\u05e8\u05d0";
     },
     userLevel$1(level) {
-      return "" + level + " - Bruker";
+      return "" + level + " - \u05de\u05e9\u05ea\u05de\u05e9";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderator";
+      return "" + level + " - \u05de\u05ea\u05d0\u05dd";
     },
     adminLevel$1(level) {
-      return "" + level + " - Administrator";
+      return "" + level + " - \u05de\u05e0\u05d4\u05dc";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Endre synligheten av chatthistorikken";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d9\u05ea \u05d4\u05e6'\u05d0\u05d8";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Endre den viktigste offentlige chat-adressen";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05e6'\u05d0\u05d8 \u05d4\u05e6\u05d9\u05d1\u05d5\u05e8\u05d9 \u05d4\u05e8\u05d0\u05e9\u05d9\u05ea";
     },
     get$sendRoomNotifications() {
-      return "Send @rom varsler";
+      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea @\u05d7\u05d3\u05e8";
     },
     get$chatPermissionsDescription() {
-      return "Definer hvilket maktniv\xe5 som er n\xf8dvendig for visse handlinger i denne chatten. Maktniv\xe5ene 0, 50 og 100 representerer vanligvis brukere, moderatorer og administratorer, men alle grader er mulige.";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05d0\u05d9\u05d6\u05d4 \u05e8\u05de\u05ea \u05db\u05d5\u05d7 \u05e0\u05d3\u05e8\u05e9\u05ea \u05dc\u05d1\u05d9\u05e6\u05d5\u05e2 \u05e4\u05e2\u05d5\u05dc\u05d5\u05ea \u05de\u05e1\u05d5\u05d9\u05de\u05d5\u05ea \u05d1\u05e6'\u05d0\u05d8 \u05d6\u05d4. \u05e8\u05de\u05d5\u05ea \u05d4\u05db\u05d5\u05d7 0, 50 \u05d5-100 \u05d1\u05d3\u05e8\u05da \u05db\u05dc\u05dc \u05de\u05d9\u05d9\u05e6\u05d2\u05d5\u05ea \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd, \u05de\u05ea\u05d0\u05de\u05d9\u05dd \u05d5\u05de\u05e0\u05d4\u05dc\u05d9\u05dd, \u05d0\u05da \u05e0\u05d9\u05ea\u05df \u05dc\u05e7\u05d1\u05d5\u05e2 \u05db\u05dc \u05d3\u05e8\u05d2\u05d4.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Oppdatering " + version + " installert!";
+      return "\ud83c\udf89 \u05e2\u05d3\u05db\u05d5\u05df " + version + " \u05d4\u05d5\u05ea\u05e7\u05df!";
     },
     get$sendCanceled() {
-      return "Sending avbrutt";
+      return "\u05d4\u05e9\u05dc\u05d9\u05d7\u05d4 \u05d1\u05d5\u05d8\u05dc\u05d4";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Ser ikke ut til \xe5 v\xe6re en kompatibel hjemserver. Feil URL?";
+      return "\u05e0\u05e8\u05d0\u05d4 \u05e9\u05d6\u05d4 \u05dc\u05d0 \u05e9\u05e8\u05ea \u05d1\u05d9\u05ea \u05ea\u05d5\u05d0\u05dd. \u05db\u05ea\u05d5\u05d1\u05ea URL \u05e9\u05d2\u05d5\u05d9\u05d4?";
     },
     get$calculatingFileSize() {
-      return "Beregner filst\xf8rrelse...";
+      return "\u05d7\u05d9\u05e9\u05d5\u05d1 \u05d2\u05d5\u05d3\u05dc \u05d4\u05e7\u05d5\u05d1\u05e5...";
     },
     get$prepareSendingAttachment() {
-      return "Forbereder sending av vedlegg...";
+      return "\u05d4\u05db\u05df \u05e9\u05dc\u05d9\u05d7\u05ea \u05e7\u05d5\u05d1\u05e5 \u05de\u05e6\u05d5\u05e8\u05e3...";
     },
     get$sendingAttachment() {
-      return "Sender vedlegg...";
+      return "\u05e9\u05d5\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5 \u05de\u05e6\u05d5\u05e8\u05e3...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Sender vedlegg " + index + " av " + $length + "...";
+      return "\u05e9\u05d5\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5 \u05de\u05e6\u05d5\u05e8\u05e3 " + index + " \u05de\u05ea\u05d5\u05da " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Servergrensen er n\xe5dd! Venter " + seconds + " sekunder...";
+      return "\u05d4\u05d2\u05d1\u05dc\u05ea \u05d4\u05e9\u05e8\u05ea \u05d4\u05d5\u05e9\u05d2\u05d4! \u05de\u05d7\u05db\u05d4 " + seconds + " \u05e9\u05e0\u05d9\u05d5\u05ea...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Merk: N\xe5r du kobler alle enhetene dine til chat-sikkerhetskopien, blir de automatisk verifisert.";
+      return "\u05d4\u05e2\u05e8\u05d4: \u05db\u05d0\u05e9\u05e8 \u05d0\u05ea\u05d4 \u05de\u05d7\u05d1\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05dc\u05d2\u05d9\u05d1\u05d5\u05d9 \u05d4\u05e6'\u05d0\u05d8, \u05d4\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea.";
     },
     get$continueText() {
-      return "Fortsett";
+      return "\u05d4\u05de\u05e9\u05da";
     },
     get$blur(_) {
-      return "Uskarphet:";
+      return "\u05d8\u05e9\u05d8\u05d5\u05e9:";
     },
     get$opacity(_) {
-      return "Opacity:";
+      return "\u05d0\u05d8\u05d9\u05de\u05d5\u05ea:";
     },
     get$setWallpaper() {
-      return "Sett bakgrunnsbilde";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05e8\u05e7\u05e2";
     },
     get$noContactInformationProvided() {
-      return "Serveren gir ingen gyldige kontaktopplysninger";
+      return "\u05d4\u05e9\u05e8\u05ea \u05dc\u05d0 \u05de\u05e1\u05e4\u05e7 \u05e4\u05e8\u05d8\u05d9 \u05d9\u05e6\u05d9\u05e8\u05ea \u05e7\u05e9\u05e8 \u05ea\u05e7\u05e4\u05d9\u05dd";
     },
     get$contactServerAdmin() {
-      return "Kontakt serveradministrator";
+      return "\u05e6\u05d5\u05e8 \u05e7\u05e9\u05e8 \u05e2\u05dd \u05de\u05e0\u05d4\u05dc \u05d4\u05e9\u05e8\u05ea";
     },
     get$contactServerSecurity() {
-      return "Kontakt serverens sikkerhet";
+      return "\u05e6\u05d5\u05e8 \u05e7\u05e9\u05e8 \u05e2\u05dd \u05d0\u05d1\u05d8\u05d7\u05ea \u05d4\u05e9\u05e8\u05ea";
     },
     get$supportPage() {
-      return "Supportside";
+      return "\u05d3\u05e3 \u05d4\u05ea\u05de\u05d9\u05db\u05d4";
     },
     get$serverInformation() {
-      return "Serverinformasjon:";
+      return "\u05de\u05d9\u05d3\u05e2 \u05e2\u05dc \u05d4\u05e9\u05e8\u05ea:";
     },
     get$name(_) {
-      return "Navn";
+      return "\u05e9\u05dd";
     },
     get$version(_) {
-      return "Versjon";
+      return "\u05d2\u05e8\u05e1\u05d4";
     },
     get$compress() {
-      return "Komprimer";
+      return "\u05d3\u05d7\u05d5\u05e1";
     },
     get$boldText() {
-      return "Fet tekst";
+      return "\u05d8\u05e7\u05e1\u05d8 \u05de\u05d5\u05d3\u05d2\u05e9";
     },
     get$italicText() {
-      return "Kursiv tekst";
+      return "\u05d8\u05e7\u05e1\u05d8 \u05e0\u05d8\u05d5\u05d9";
     },
     get$strikeThrough() {
-      return "Gjennomstreking";
+      return "\u05e7\u05d5 \u05d7\u05d5\u05e6\u05d4";
     },
     get$pleaseFillOut() {
-      return "Vennligst fyll ut";
+      return "\u05d0\u05e0\u05d0 \u05de\u05dc\u05d0 \u05d0\u05ea \u05d4\u05d8\u05d5\u05e4\u05e1";
     },
     get$invalidUrl() {
-      return "Ugyldig URL";
+      return "\u05db\u05ea\u05d5\u05d1\u05ea URL \u05dc\u05d0 \u05ea\u05e7\u05d9\u05e0\u05d4";
     },
     get$addLink() {
-      return "Legg til lenke";
+      return "\u05d4\u05d5\u05e1\u05e3 \u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$unableToJoinChat() {
-      return "Kan ikke bli med i chat. Kanskje den andre parten allerede har lukket samtalen.";
+      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e9\u05d9\u05d7\u05d4. \u05d9\u05d9\u05ea\u05db\u05df \u05e9\u05d4\u05e6\u05d3 \u05d4\u05e9\u05e0\u05d9 \u05e1\u05d2\u05e8 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05db\u05d1\u05e8.";
     },
     get$previous() {
-      return "Forrige";
+      return "\u05e7\u05d5\u05d3\u05dd";
     },
     get$otherPartyNotLoggedIn() {
-      return "Den andre parten er for \xf8yeblikket ikke logget inn og kan derfor ikke motta meldinger!";
+      return "\u05d4\u05e6\u05d3 \u05d4\u05e9\u05e0\u05d9 \u05db\u05e8\u05d2\u05e2 \u05dc\u05d0 \u05de\u05d7\u05d5\u05d1\u05e8 \u05d5\u05dc\u05db\u05df \u05dc\u05d0 \u05d9\u05db\u05d5\u05dc \u05dc\u05e7\u05d1\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea!";
     },
     get$open(_) {
-      return "\xc5pne";
+      return "\u05e4\u05ea\u05d7";
     },
     get$waitingForServer() {
-      return "Venter p\xe5 server...";
+      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05e8\u05ea...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Ny chatforesp\xf8rsel";
+      return "\ud83d\udce9 \u05d1\u05e7\u05e9\u05ea \u05e9\u05d9\u05d7\u05d4 \u05d7\u05d3\u05e9\u05d4";
     },
     get$contentNotificationSettings() {
-      return "Innholdsvarslingsinnstillinger";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05ea\u05d5\u05db\u05df";
     },
     get$generalNotificationSettings() {
-      return "Generelle varslingsinnstillinger";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05db\u05dc\u05dc\u05d9\u05d5\u05ea";
     },
     get$roomNotificationSettings() {
-      return "Romvarslingsinnstillinger";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05d7\u05d3\u05e8";
     },
     get$userSpecificNotificationSettings() {
-      return "Brukerspesifikke varslingsinnstillinger";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05d9\u05d9\u05d7\u05d5\u05d3\u05d9\u05d5\u05ea \u05dc\u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$otherNotificationSettings() {
-      return "Andre varslingsinnstillinger";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05d0\u05d7\u05e8\u05d5\u05ea";
     },
     get$notificationRuleContainsUserName() {
-      return "Inneholder brukernavn";
+      return "\u05de\u05db\u05d9\u05dc \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Varsler brukeren n\xe5r en melding inneholder deres brukernavn.";
+      return "\u05de\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05db\u05d9\u05dc\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05d5.";
     },
     get$notificationRuleMaster() {
-      return "Still alle varsler";
+      return "\u05d4\u05e9\u05d1\u05ea \u05d0\u05ea \u05db\u05dc \u05d4\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea";
     },
     get$notificationRuleMasterDescription() {
-      return "Overstyrer alle andre regler og deaktiverer alle varsler.";
+      return "\u05de\u05d1\u05d8\u05dc \u05d0\u05ea \u05db\u05dc \u05d4\u05db\u05dc\u05dc\u05d9\u05dd \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd \u05d5\u05de\u05db\u05d1\u05d4 \u05d0\u05ea \u05db\u05dc \u05d4\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Undertrykk automatiserte meldinger";
+      return "\u05d4\u05e9\u05ea\u05e7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05d5\u05ea";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Undertrykker varsler fra automatiserte klienter som roboter.";
+      return "\u05de\u05d5\u05e0\u05e2 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05de\u05dc\u05e7\u05d5\u05d7\u05d5\u05ea \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05d9\u05dd \u05db\u05de\u05d5 \u05d1\u05d5\u05d8\u05d9\u05dd.";
     },
     get$notificationRuleInviteForMe() {
-      return "Inviter for meg";
+      return "\u05d4\u05d6\u05de\u05e0\u05d4 \u05e2\u05d1\u05d5\u05e8\u05d9";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Varsler brukeren n\xe5r de blir invitert til et rom.";
+      return "\u05de\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d0 \u05de\u05d5\u05d6\u05de\u05df \u05dc\u05d7\u05d3\u05e8.";
     },
     get$notificationRuleMemberEvent() {
-      return "Medlemsarrangement";
+      return "\u05d0\u05d9\u05e8\u05d5\u05e2 \u05d7\u05d1\u05e8";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Undertrykker varsler for medlemsarrangementer.";
+      return "\u05de\u05d5\u05e0\u05e2 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d7\u05d1\u05e8\u05d5\u05ea.";
     },
     get$notificationRuleIsUserMention() {
-      return "Brukerhenvisning";
+      return "\u05d0\u05d6\u05db\u05d5\u05e8 \u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Varsler brukeren n\xe5r de blir direkte nevnt i en melding.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05de\u05e6\u05d9\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05ea\u05d5 \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05d1\u05d4\u05d5\u05d3\u05e2\u05d4.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Inneholder visningsnavn";
+      return "\u05de\u05db\u05d9\u05dc \u05e9\u05dd \u05ea\u05e6\u05d5\u05d2\u05d4";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Varsler brukeren n\xe5r en melding inneholder deres visningsnavn.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05db\u05d9\u05dc\u05d4 \u05d0\u05ea \u05e9\u05de\u05d5 \u05dc\u05ea\u05e6\u05d5\u05d2\u05d4.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Romhenvisning";
+      return "\u05d0\u05d6\u05db\u05d5\u05e8 \u05d7\u05d3\u05e8";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Varsler brukeren n\xe5r det er en romhenvisning.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d9\u05e9 \u05d0\u05d6\u05db\u05d5\u05e8 \u05d7\u05d3\u05e8.";
     },
     get$notificationRuleRoomnotif() {
-      return "Romvarsling";
+      return "\u05d4\u05ea\u05e8\u05d0\u05d4 \u05e2\u05dc \u05d7\u05d3\u05e8";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Varsler brukeren n\xe5r en melding inneholder '@rom'.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05db\u05d9\u05dc\u05d4 '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Tombstone";
+      return "\u05dc\u05d5\u05d7 \u05d6\u05d9\u05db\u05e8\u05d5\u05df";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Varsler brukeren om meldinger om deaktivering av rom.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea Deactivation \u05e9\u05dc \u05d7\u05d3\u05e8.";
     },
     get$notificationRuleReaction() {
-      return "Reaksjon";
+      return "\u05ea\u05d2\u05d5\u05d1\u05d4";
     },
     get$notificationRuleReactionDescription() {
-      return "Undertrykker varsler for reaksjoner.";
+      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Romserver ACL";
+      return "\u05e8\u05e9\u05d9\u05de\u05ea \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e9\u05e8\u05ea \u05d4\u05d7\u05d3\u05e8";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Undertrykker varsler for romserver tilgangskontrollister (ACL).";
+      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05e8\u05e9\u05d9\u05de\u05d5\u05ea \u05d1\u05e7\u05e8\u05d4 \u05e9\u05dc \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e9\u05e8\u05ea \u05d4\u05d7\u05d3\u05e8 (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Undertrykk endringer";
+      return "\u05d4\u05d3\u05d7\u05ea \u05e2\u05e8\u05d9\u05db\u05d5\u05ea";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Undertrykker varsler for redigerte meldinger.";
+      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e9\u05d4\u05d5\u05e2\u05ea\u05e7\u05d5.";
     },
     get$notificationRuleCall() {
-      return "Samtale";
+      return "\u05e9\u05d9\u05d7\u05d4";
     },
     get$notificationRuleCallDescription() {
-      return "Varsler brukeren om samtaler.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05e9\u05d9\u05d7\u05d5\u05ea.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Kryptert rom \xe9n-til-\xe9n";
+      return "\u05d7\u05d3\u05e8 \u05de\u05d5\u05e6\u05e4\u05df \u05d0\u05d7\u05d3-\u05e2\u05dc-\u05d0\u05d7\u05d3";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Varsler brukeren om meldinger i krypterte rom \xe9n-til-\xe9n.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05d7\u05d3\u05e8\u05d9\u05dd \u05de\u05d5\u05e6\u05e4\u05e0\u05d9\u05dd \u05d0\u05d7\u05d3-\u05e2\u05dc-\u05d0\u05d7\u05d3.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Rom \xe9n-til-\xe9n";
+      return "\u05d7\u05d3\u05e8 \u05d0\u05d7\u05d3 \u05e2\u05dc \u05d0\u05d7\u05d3";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Varsler brukeren om meldinger i \xe9n-til-\xe9n-rom.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05d7\u05d3\u05e8\u05d9\u05dd \u05d0\u05d7\u05d3 \u05e2\u05dc \u05d0\u05d7\u05d3.";
     },
     get$notificationRuleMessage() {
-      return "Melding";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d4";
     },
     get$notificationRuleMessageDescription() {
-      return "Varsler brukeren om generelle meldinger.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05db\u05dc\u05dc\u05d9\u05d5\u05ea.";
     },
     get$notificationRuleEncrypted() {
-      return "Kryptert";
+      return "\u05de\u05d5\u05e6\u05e4\u05df";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Varsler brukeren om meldinger i krypterte rom.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05d7\u05d3\u05e8\u05d9\u05dd \u05de\u05d5\u05e6\u05e4\u05e0\u05d9\u05dd.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Varsler brukeren om Jitsi-widget hendelser.";
+      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05e2\u05dc \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d5\u05d5\u05d9\u05d3\u05d2'\u05d8 Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "Undertrykk server-ACL hendelser";
+      return "\u05d3\u05d7\u05d9\u05d9\u05ea \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05e9\u05e8\u05ea";
     },
     get$notificationRuleServerAclDescription() {
-      return "Undertrykker varsler for server-ACL hendelser.";
+      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05e9\u05e8\u05ea.";
     },
     unknownPushRule$1(rule) {
-      return "Ukjent push-regel '" + rule + "'";
+      return "\u05db\u05dc\u05dc \u05d3\u05d7\u05d9\u05e4\u05d4 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2 '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - Talebeskjed fra " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - \u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05dc \u05de-" + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Hvis du sletter denne varslingsinnstillingen, kan den ikke angres.";
+      return "\u05d0\u05dd \u05ea\u05de\u05d7\u05e7 \u05d0\u05ea \u05d4\u05d2\u05d3\u05e8\u05ea \u05d4\u05d4\u05ea\u05e8\u05d0\u05d4 \u05d4\u05d6\u05d5, \u05d6\u05d4 \u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05d8\u05dc.";
     },
     get$more() {
-      return "Mer";
+      return "\u05e2\u05d5\u05d3";
     },
     get$shareKeysWith() {
-      return "Del n\xf8kler med...";
+      return "\u05e9\u05ea\u05e3 \u05de\u05e4\u05ea\u05d7\u05d5\u05ea \u05e2\u05dd...";
     },
     get$shareKeysWithDescription() {
-      return "Hvilke enheter skal v\xe6re tillit for \xe5 kunne lese dine meldinger i krypterte chatter?";
+      return "\u05d0\u05d9\u05dc\u05d5 \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05e6\u05e8\u05d9\u05db\u05d9\u05dd \u05dc\u05d4\u05d9\u05d5\u05ea \u05de\u05d4\u05d9\u05de\u05e0\u05d9\u05dd \u05db\u05d3\u05d9 \u05e9\u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e7\u05e8\u05d5\u05d0 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e9\u05dc\u05da \u05d1\u05e9\u05d9\u05d7\u05d5\u05ea \u05de\u05d5\u05e6\u05e4\u05e0\u05d5\u05ea?";
     },
     get$allDevices() {
-      return "Alle enheter";
+      return "\u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Kryssverifiserte enheter hvis aktivert";
+      return "\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd \u05d7\u05d5\u05e6\u05d9\u05dd \u05d0\u05dd \u05de\u05d5\u05e4\u05e2\u05dc";
     },
     get$crossVerifiedDevices() {
-      return "Kryssverifiserte enheter";
+      return "\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd \u05d7\u05d5\u05e6\u05d9\u05dd";
     },
     get$verifiedDevicesOnly() {
-      return "Bare verifiserte enheter";
+      return "\u05e8\u05e7 \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd";
     },
     get$optionalMessage() {
-      return "(Valgfritt) melding...";
+      return "(\u05d0\u05d5\u05e4\u05e6\u05d9\u05d5\u05e0\u05dc\u05d9) \u05d4\u05d5\u05d3\u05e2\u05d4...";
     },
     get$notSupportedOnThisDevice() {
-      return "Ikke st\xf8ttet p\xe5 denne enheten";
+      return "\u05dc\u05d0 \u05e0\u05ea\u05de\u05da \u05d1\u05de\u05db\u05e9\u05d9\u05e8 \u05d6\u05d4";
     },
     get$enterNewChat() {
-      return "Start en ny chat";
+      return "\u05d4\u05d9\u05db\u05e0\u05e1 \u05dc\u05e9\u05d9\u05d7\u05d4 \u05d7\u05d3\u05e9\u05d4";
     },
     get$approve() {
-      return "Godkjenn";
+      return "\u05d0\u05e9\u05e8";
     },
     get$commandHint_logout() {
-      return "Logg ut av din n\xe5v\xe6rende enhet";
+      return "\u05d4\u05ea\u05e0\u05ea\u05e7 \u05de\u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05e0\u05d5\u05db\u05d7\u05d9 \u05e9\u05dc\u05da";
     },
     get$commandHint_logoutall() {
-      return "Logg ut av alle aktive enheter";
+      return "\u05d4\u05ea\u05e0\u05ea\u05e7 \u05de\u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d4\u05e4\u05e2\u05d9\u05dc\u05d9\u05dd";
     },
     get$customReaction() {
-      return "Egendefinert reaksjon";
+      return "\u05ea\u05d2\u05d5\u05d1\u05d4 \u05de\u05d5\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Skriv inn " + l1 + " eller " + l2 + "...";
+      return "\u05d4\u05e7\u05dc\u05d9\u05d3 \u05d1-" + l1 + " \u05d0\u05d5 " + l2 + "...";
     },
     get$holdForInfo() {
-      return "Klikk og hold for ordinformasjon.";
+      return "\u05dc\u05d7\u05e5 \u05d5\u05d4\u05d7\u05d6\u05e7 \u05dc\u05de\u05d9\u05d3\u05e2 \u05e2\u05dc \u05d4\u05de\u05d9\u05dc\u05d4.";
     },
     get$greenFeedback() {
-      return "Det er det jeg ville ha skrevet!";
+      return "\u05d6\u05d4 \u05de\u05d4 \u05e9\u05d4\u05d9\u05d9\u05ea\u05d9 \u05e9\u05dd!";
     },
     get$yellowFeedback() {
-      return "Hm, du kan pr\xf8ve det og se om det fungerer! For \xe5 bruke dette ordet, klikk bare igjen.";
+      return "\u05d4\u05de\u05de, \u05ea\u05e0\u05e1\u05d4 \u05d0\u05ea \u05d6\u05d4 \u05d5\u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05dd \u05d6\u05d4 \u05e2\u05d5\u05d1\u05d3! \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1\u05de\u05d9\u05dc\u05d4 \u05d6\u05d5, \u05e4\u05e9\u05d5\u05d8 \u05dc\u05d7\u05e5 \u05e2\u05dc\u05d9\u05d4 \u05e9\u05d5\u05d1.";
     },
     get$redFeedback() {
-      return "Jeg tror ikke det er riktig...";
+      return "\u05d0\u05e0\u05d9 \u05dc\u05d0 \u05d7\u05d5\u05e9\u05d1 \u05e9\u05d6\u05d4 \u05e0\u05db\u05d5\u05df...";
     },
     get$gaTooltip() {
-      return "L2 bruk med grammatikkhjelp";
+      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2 \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9";
     },
     get$taTooltip() {
-      return "L2 bruk med oversettelseshjelp";
+      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2 \u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Interaktiv oversetter";
+      return "\u05de\u05ea\u05e8\u05d2\u05dd \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Interaktiv grammatikkontroll";
+      return "\u05d1\u05d5\u05d3\u05e7 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9";
     },
     get$waTooltip() {
-      return "L2 bruk uten hjelp";
+      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05dc\u05dc\u05d0 \u05e1\u05d9\u05d5\u05e2";
     },
     get$noIdenticalLanguages() {
-      return "Vennligst velg ulike grunn- og m\xe5lspr\xe5k";
+      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05e9\u05e4\u05d5\u05ea \u05d1\u05e1\u05d9\u05e1\u05d9\u05d5\u05ea \u05d5\u05de\u05d8\u05e8\u05d4 \u05e9\u05d5\u05e0\u05d5\u05ea";
     },
     get$joinWithClassCode() {
-      return "Bli med i kurs";
+      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1";
     },
     get$languageLevelPreA1() {
-      return "Novice Low (Pre A1)";
+      return "\u05de\u05ea\u05d7\u05d9\u05dc \u05e0\u05de\u05d5\u05da (\u05e4\u05e8\u05d4 A1)";
     },
     get$languageLevelA1() {
-      return "Novice Mid (A1)";
+      return "\u05de\u05ea\u05d7\u05d9\u05dc \u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 (A1)";
     },
     get$languageLevelA2() {
-      return "Nybegynner H\xf8y (A2)";
+      return "\u05de\u05ea\u05d7\u05d9\u05dc \u05d2\u05d1\u05d5\u05d4 (A2)";
     },
     get$languageLevelB1() {
-      return "Moderat Mid (B1)";
+      return "\u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 \u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 (B1)";
     },
     get$languageLevelB2() {
-      return "Avansert Lav (B2)";
+      return "\u05de\u05ea\u05e7\u05d3\u05dd \u05e0\u05de\u05d5\u05da (B2)";
     },
     get$languageLevelC1() {
-      return "Avansert Mid (C1)";
+      return "\u05de\u05ea\u05e7\u05d3\u05dd \u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 (C1)";
     },
     get$languageLevelC2() {
-      return "Overlegen (C2)";
+      return "\u05de\u05e2\u05dc (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Endre navnet";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05e9\u05dd";
     },
     get$changeTheNameOfTheChat() {
-      return "Endre navnet p\xe5 chatten";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05e6'\u05d0\u05d8";
     },
     get$sorryNoResults() {
-      return "Beklager, ingen resultater.";
+      return "\u05e1\u05dc\u05d9\u05d7\u05d4, \u05d0\u05d9\u05df \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea.";
     },
     get$ignoreInThisText() {
-      return "Ignorer";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd";
     },
     needsItMessage$1(targetLanguage) {
-      return "Vent, det er ikke " + targetLanguage + "! Trenger du hjelp med oversettelsen?";
+      return "\u05d7\u05db\u05d4, \u05d6\u05d4 \u05dc\u05d0 " + targetLanguage + "! \u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05e6\u05e8\u05d9\u05da \u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd?";
     },
     get$countryInformation() {
-      return "Mitt land";
+      return "\u05d0\u05e8\u05e6\u05d9";
     },
     get$targetLanguage() {
-      return "M\xe5lspr\xe5k";
+      return "\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3";
     },
     get$updateLanguage() {
-      return "Mine spr\xe5k";
+      return "\u05e9\u05e4\u05d5\u05ea\u05d9\u05d9";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Hvilket spr\xe5k vil du l\xe6re?";
+      return "\u05d0\u05d9\u05d6\u05d4 \u05e9\u05e4\u05d4 \u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05dc\u05de\u05d5\u05d3?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Hva er ditt hovedspr\xe5k?";
+      return "\u05de\u05d4 \u05e9\u05e4\u05ea \u05d4\u05d1\u05e1\u05d9\u05e1 \u05e9\u05dc\u05da?";
     },
     get$saveChanges() {
-      return "Lagre endringer";
+      return "\u05e9\u05de\u05d5\u05e8 \u05e9\u05d9\u05e0\u05d5\u05d9\u05d9\u05dd";
     },
     get$publicProfileTitle() {
-      return "La profilen min bli funnet i s\xf8k";
+      return "\u05d0\u05e4\u05e9\u05e8 \u05dc\u05de\u05e6\u05d5\u05d0 \u05d0\u05ea \u05d4\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc \u05e9\u05dc\u05d9 \u05d1\u05d7\u05d9\u05e4\u05d5\u05e9";
     },
     get$publicProfileDesc() {
-      return "Ved \xe5 sl\xe5 p\xe5 dette, gj\xf8r du det mulig for andre brukere \xe5 finne profilen din i den globale s\xf8kefeltet og sende foresp\xf8rsler om chat. P\xe5 dette tidspunktet kan du velge \xe5 godta eller avvise foresp\xf8rselen.";
+      return "\u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05e4\u05e2\u05dc\u05d4, \u05d0\u05ea\u05d4 \u05de\u05d0\u05e4\u05e9\u05e8 \u05dc\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd \u05dc\u05de\u05e6\u05d5\u05d0 \u05d0\u05ea \u05d4\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc \u05e9\u05dc\u05da \u05d1\u05e9\u05d5\u05e8\u05ea \u05d4\u05d7\u05d9\u05e4\u05d5\u05e9 \u05d4\u05d2\u05dc\u05d5\u05d1\u05dc\u05d9\u05ea \u05d5\u05dc\u05e9\u05dc\u05d5\u05d7 \u05d1\u05e7\u05e9\u05d5\u05ea \u05dc\u05e9\u05d9\u05d7\u05d4. \u05d1\u05e9\u05dc\u05d1 \u05d6\u05d4, \u05ea\u05d5\u05db\u05dc \u05dc\u05d1\u05d7\u05d5\u05e8 \u05dc\u05e7\u05d1\u05dc \u05d0\u05d5 \u05dc\u05d3\u05d7\u05d5\u05ea \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4.";
     },
     get$errorDisableIT() {
-      return "Oversettelsesassistanse er sl\xe5tt av.";
+      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05de\u05d5\u05e9\u05d1\u05ea\u05ea.";
     },
     get$errorDisableIGC() {
-      return "Grammatikkhjelp er sl\xe5tt av.";
+      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7 \u05de\u05d5\u05e9\u05d1\u05ea\u05d4.";
     },
     get$errorDisableLanguageAssistance() {
-      return "Oversettelses- og grammatikkhjelp er sl\xe5tt av.";
+      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05d5\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7 \u05de\u05d5\u05e9\u05d1\u05ea\u05d5\u05ea.";
     },
     get$errorDisableITUserDesc() {
-      return "Klikk her for \xe5 oppdatere innstillingene for oversettelseshjelp";
+      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05dc\u05e2\u05d3\u05db\u05d5\u05df \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$errorDisableIGCUserDesc() {
-      return "Klikk her for \xe5 oppdatere innstillingene for grammatikkhjelp";
+      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05dc\u05e2\u05d3\u05db\u05d5\u05df \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klikk her for \xe5 oppdatere innstillingene for oversettelses- og grammatikkhjelp";
+      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05dc\u05e2\u05d3\u05db\u05d5\u05df \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05d5\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$errorDisableITClassDesc() {
-      return "Oversettelseshjelp er sl\xe5tt av for kurset som denne chatten er i.";
+      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05de\u05d5\u05e9\u05d1\u05ea\u05ea \u05e2\u05d1\u05d5\u05e8 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05e9\u05d1\u05d5 \u05e0\u05de\u05e6\u05d0 \u05d4\u05e6'\u05d0\u05d8 \u05d4\u05d6\u05d4.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Grammatikkhjelp er sl\xe5tt av for kurset som denne chatten er i.";
+      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7 \u05de\u05d5\u05e9\u05d1\u05ea\u05ea \u05e2\u05d1\u05d5\u05e8 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05e9\u05d1\u05d5 \u05e0\u05de\u05e6\u05d0 \u05d4\u05e6'\u05d0\u05d8 \u05d4\u05d6\u05d4.";
     },
     get$error405Title() {
-      return "Spr\xe5k ikke satt";
+      return "\u05e9\u05e4\u05d5\u05ea \u05dc\u05d0 \u05de\u05d5\u05d2\u05d3\u05e8\u05d5\u05ea";
     },
     get$error405Desc() {
-      return "Vennligst sett spr\xe5kene dine i Hovedmeny > L\xe6ringsinnstillinger.";
+      return "\u05d0\u05e0\u05d0 \u05d4\u05d2\u05d3\u05e8 \u05d0\u05ea \u05e9\u05e4\u05d5\u05ea\u05d9\u05da \u05d1\u05ea\u05e4\u05e8\u05d9\u05d8 \u05d4\u05e8\u05d0\u05e9\u05d9 > \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05dc\u05de\u05d9\u05d3\u05d4.";
     },
     get$termsAndConditions() {
-      return "Vilk\xe5r og betingelser";
+      return "\u05ea\u05e0\u05d0\u05d9\u05dd \u05d5\u05d4\u05d2\u05d1\u05dc\u05d5\u05ea";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " og bekrefter at jeg er minst 16 \xe5r gammel.";
+      return "\u05d5\u05de\u05d0\u05e9\u05e8 \u05e9\u05d0\u05e0\u05d9 \u05d1\u05df \u05dc\u05e4\u05d7\u05d5\u05ea 16 \u05e9\u05e0\u05d9\u05dd.";
     },
     get$error502504Title() {
-      return "Wow, det er mange elever p\xe5logget!";
+      return "\u05d5\u05d5\u05d0\u05d5, \u05d9\u05e9 \u05d4\u05e8\u05d1\u05d4 \u05ea\u05dc\u05de\u05d9\u05d3\u05d9\u05dd \u05d1\u05d0\u05d9\u05e0\u05d8\u05e8\u05e0\u05d8!";
     },
     get$error502504Desc() {
-      return "Oversettelses- og grammatikkverkt\xf8y kan v\xe6re trege eller utilgjengelige mens Pangea-botene tar igjen.";
+      return "\u05db\u05dc\u05d9 \u05ea\u05e8\u05d2\u05d5\u05dd \u05d5\u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dc\u05d5\u05dc\u05d9\u05dd \u05dc\u05d4\u05d9\u05d5\u05ea \u05d0\u05d9\u05d8\u05d9\u05d9\u05dd \u05d0\u05d5 \u05dc\u05d0 \u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d6\u05de\u05df \u05e9\u05d4\u05d1\u05d5\u05d8\u05d9\u05dd \u05e9\u05dc \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05de\u05e2\u05d3\u05db\u05e0\u05d9\u05dd.";
     },
     get$error404Title() {
-      return "Oversettelsesfeil!";
+      return "\u05e9\u05d2\u05d9\u05d0\u05ea \u05ea\u05e8\u05d2\u05d5\u05dd!";
     },
     get$error404Desc() {
-      return "Pangea Bot er ikke sikker p\xe5 hvordan den skal oversette det...";
+      return "\u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05dc\u05d0 \u05d1\u05d8\u05d5\u05d7 \u05d0\u05d9\u05da \u05dc\u05ea\u05e8\u05d2\u05dd \u05d0\u05ea \u05d6\u05d4...";
     },
     get$errorPleaseRefresh() {
-      return "Vi unders\xf8ker det! Vennligst last inn siden p\xe5 nytt og pr\xf8v igjen.";
+      return "\u05d0\u05e0\u05d7\u05e0\u05d5 \u05d1\u05d5\u05d3\u05e7\u05d9\u05dd \u05d0\u05ea \u05d6\u05d4! \u05d0\u05e0\u05d0 \u05d8\u05e2\u05df \u05de\u05d7\u05d3\u05e9 \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
     get$connectedToStaging() {
-      return "Tilkoblet til staging";
+      return "\u05de\u05d7\u05d5\u05d1\u05e8 \u05dc\u05e1\u05d1\u05d9\u05d1\u05ea \u05d1\u05d3\u05d9\u05e7\u05d4";
     },
     get$learningSettings() {
-      return "L\xe6ringsinnstillinger";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05dc\u05de\u05d9\u05d3\u05d4";
     },
     get$participants() {
-      return "Deltakere";
+      return "\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
     },
     get$clickMessageTitle() {
-      return "Trenger du hjelp?";
+      return "\u05e6\u05e8\u05d9\u05da \u05e2\u05d6\u05e8\u05d4?";
     },
     get$clickMessageBody() {
-      return "Klikk p\xe5 en melding for spr\xe5kv\xe5kt\xf8y som oversettelse, avspilling og mer!";
+      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05e7\u05d1\u05dc\u05ea \u05db\u05dc\u05d9\u05dd \u05dc\u05e9\u05e4\u05d4 \u05db\u05de\u05d5 \u05ea\u05e8\u05d2\u05d5\u05dd, \u05d4\u05e9\u05de\u05e2\u05d4 \u05d7\u05d5\u05d6\u05e8\u05ea \u05d5\u05e2\u05d5\u05d3!";
     },
     get$allDone() {
-      return "Ferdig!";
+      return "\u05e1\u05d9\u05d9\u05de\u05ea!";
     },
     get$vocab() {
-      return "Ordforr\xe5d";
+      return "\u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd";
     },
     get$subscribe(_) {
-      return "Abonner";
+      return "\u05d4\u05d9\u05e8\u05e9\u05dd";
     },
     get$getAccess() {
-      return "Abonner n\xe5!";
+      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05e2\u05db\u05e9\u05d9\u05d5!";
     },
     get$subscriptionDesc() {
-      return "Meldingsutveksling er gratis! Abonner for \xe5 l\xe5se opp interaktiv oversettelse, grammatikkontroll og l\xe6ringsanalyse.";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d7\u05d9\u05e0\u05dd! \u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05ea\u05e8\u05d2\u05d5\u05dd \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9, \u05d1\u05d3\u05d9\u05e7\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d5\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4.";
     },
     get$subscriptionManagement() {
-      return "Abonnementsadministrasjon";
+      return "\u05e0\u05d9\u05d4\u05d5\u05dc \u05de\u05e0\u05d5\u05d9";
     },
     get$currentSubscription() {
-      return "N\xe5v\xe6rende abonnement";
+      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05d4\u05e0\u05d5\u05db\u05d7\u05d9";
     },
     get$cancelSubscription() {
-      return "Avbryt abonnementet ditt";
+      return "\u05d1\u05d8\u05dc \u05d0\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da";
     },
     get$selectYourPlan() {
-      return "Velg planen din";
+      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05e9\u05dc\u05da";
     },
     get$subsciptionPlatformTooltip() {
-      return "Vennligst logg inn p\xe5 din opprinnelige enhet for \xe5 administrere abonnementet ditt";
+      return "\u05d0\u05e0\u05d0 \u05d4\u05d9\u05db\u05e0\u05e1 \u05dc\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05de\u05e7\u05d5\u05e8\u05d9 \u05e9\u05dc\u05da \u05db\u05d3\u05d9 \u05dc\u05e0\u05d4\u05dc \u05d0\u05ea \u05ea\u05db\u05e0\u05d9\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da";
     },
     get$subscriptionManagementUnavailable() {
-      return "Administrasjon av abonnement er ikke tilgjengelig";
+      return "\u05e0\u05d9\u05d4\u05d5\u05dc \u05d4\u05de\u05e0\u05d5\u05d9 \u05d0\u05d9\u05e0\u05d5 \u05d6\u05de\u05d9\u05df";
     },
     get$paymentMethod() {
-      return "Betalingsmetode";
+      return "\u05d0\u05de\u05e6\u05e2\u05d9 \u05ea\u05e9\u05dc\u05d5\u05dd";
     },
     get$paymentHistory() {
-      return "Betalingshistorikk";
+      return "\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d9\u05ea \u05ea\u05e9\u05dc\u05d5\u05de\u05d9\u05dd";
     },
     get$emptyChatDownloadWarning() {
-      return "Kan ikke laste ned tom chat";
+      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05d5\u05e8\u05d9\u05d3 \u05e9\u05d9\u05d7\u05d4 \u05e8\u05d9\u05e7\u05d4";
     },
     get$toggleImmersionMode() {
-      return "Nedsenkingsmodus";
+      return "\u05de\u05e6\u05d1 \u05d4\u05d8\u05de\u05e2\u05d4";
     },
     get$toggleImmersionModeDesc() {
-      return "N\xe5r den er aktivert, vises alle meldinger p\xe5 m\xe5lspr\xe5ket ditt. Denne innstillingen er mest nyttig i spr\xe5kutvekslinger.";
+      return "\u05db\u05d0\u05e9\u05e8 \u05de\u05d5\u05e4\u05e2\u05dc, \u05db\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05de\u05d5\u05e6\u05d2\u05d5\u05ea \u05d1\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da. \u05d4\u05d2\u05d3\u05e8\u05d4 \u05d6\u05d5 \u05e9\u05d9\u05de\u05d5\u05e9\u05d9\u05ea \u05d1\u05de\u05d9\u05d5\u05d7\u05d3 \u05d1\u05d4\u05d7\u05dc\u05e4\u05d5\u05ea \u05e9\u05e4\u05d5\u05ea.";
     },
     get$itToggleDescription() {
-      return "Dette spr\xe5kl\xe6ringsverkt\xf8yet vil identifisere ord i ditt grunnleggende spr\xe5k og hjelpe deg med \xe5 oversette dem til m\xe5lspr\xe5ket. Selv om det er sjeldent, kan AI gj\xf8re oversettelsesfeil.";
+      return "\u05db\u05dc\u05d9 \u05d6\u05d4 \u05dc\u05dc\u05d9\u05de\u05d5\u05d3 \u05e9\u05e4\u05d5\u05ea \u05d9\u05d6\u05d4\u05d4 \u05de\u05d9\u05dc\u05d9\u05dd \u05d1\u05e9\u05e4\u05ea \u05d4\u05d1\u05e1\u05d9\u05e1 \u05e9\u05dc\u05da \u05d5\u05d9\u05e2\u05d6\u05d5\u05e8 \u05dc\u05ea\u05e8\u05d2\u05de\u05df \u05dc\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da. \u05dc\u05e2\u05d9\u05ea\u05d9\u05dd \u05e0\u05d3\u05d9\u05e8\u05d5\u05ea, \u05d4-AI \u05e2\u05dc\u05d5\u05dc \u05dc\u05d8\u05e2\u05d5\u05ea \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd.";
     },
     get$igcToggleDescription() {
-      return "Dette spr\xe5kl\xe6ringsverkt\xf8yet vil identifisere vanlige stave-, grammatikk- og tegnsettingsfeil i meldingen din og foresl\xe5 korrigeringer. Selv om det er sjeldent, kan AI gj\xf8re korrigeringsfeil.";
+      return "\u05db\u05dc\u05d9 \u05d6\u05d4 \u05dc\u05dc\u05d9\u05de\u05d5\u05d3 \u05e9\u05e4\u05d5\u05ea \u05d9\u05d6\u05d4\u05d4 \u05e9\u05d2\u05d9\u05d0\u05d5\u05ea \u05db\u05ea\u05d9\u05d1, \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d5\u05e4\u05d9\u05e1\u05d5\u05e7 \u05e0\u05e4\u05d5\u05e6\u05d5\u05ea \u05d1\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05da \u05d5\u05d9\u05e6\u05d9\u05e2 \u05ea\u05d9\u05e7\u05d5\u05e0\u05d9\u05dd. \u05dc\u05e2\u05d9\u05ea\u05d9\u05dd \u05e0\u05d3\u05d9\u05e8\u05d5\u05ea, \u05d4-AI \u05e2\u05dc\u05d5\u05dc \u05dc\u05d8\u05e2\u05d5\u05ea \u05d1\u05ea\u05d9\u05e7\u05d5\u05e0\u05d9\u05dd.";
     },
     get$originalMessage() {
-      return "Originalmelding";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05e7\u05d5\u05e8\u05d9\u05ea";
     },
     get$sentMessage() {
-      return "Sendt melding";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05e0\u05e9\u05dc\u05d7\u05d4";
     },
     get$useType() {
-      return "Brukstype";
+      return "\u05e1\u05d5\u05d2 \u05e9\u05d9\u05de\u05d5\u05e9";
     },
     get$notAvailable() {
-      return "Ikke tilgjengelig";
+      return "\u05dc\u05d0 \u05d6\u05de\u05d9\u05df";
     },
     get$taAndGaTooltip() {
-      return "L2 bruk med oversettelseshjelp og grammatikkhjelp";
+      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05d5\u05e1\u05d9\u05d5\u05e2 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$definitionsToolName() {
-      return "Orddefinisjoner";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05de\u05d9\u05dc\u05d9\u05dd";
     },
     get$definitionsToolDescription() {
-      return "N\xe5r det er aktivert, kan ord understreket i bl\xe5tt klikkes for definisjoner. Klikk p\xe5 meldinger for \xe5 f\xe5 tilgang til definisjoner.";
+      return "\u05db\u05d0\u05e9\u05e8 \u05de\u05d5\u05e4\u05e2\u05dc, \u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05de\u05d5\u05d3\u05d2\u05e9\u05d5\u05ea \u05d1\u05db\u05d7\u05d5\u05dc \u05e0\u05d9\u05ea\u05e0\u05d5\u05ea \u05dc\u05dc\u05d7\u05d9\u05e6\u05d4 \u05dc\u05e7\u05d1\u05dc\u05ea \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea. \u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05db\u05d3\u05d9 \u05dc\u05d2\u05e9\u05ea \u05dc\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea.";
     },
     get$welcomeBack() {
-      return "Velkommen tilbake! Hvis du var en del av pilotprosjektet 2023-2024, kontakt oss for din spesielle pilotabonnement. Hvis du er l\xe6rer som har (eller institusjonen din har) kj\xf8pt lisenser for klassen din, kontakt oss for ditt l\xe6rerabonnement.";
+      return "\u05d1\u05e8\u05d5\u05db\u05d9\u05dd \u05d4\u05e9\u05d1\u05d9\u05dd! \u05d0\u05dd \u05d4\u05d9\u05d9\u05ea \u05d7\u05dc\u05e7 \u05de\u05e0\u05d9\u05e1\u05d5\u05d9 2023-2024, \u05d0\u05e0\u05d0 \u05e6\u05d5\u05e8 \u05d0\u05d9\u05ea\u05e0\u05d5 \u05e7\u05e9\u05e8 \u05dc\u05e7\u05d1\u05dc\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05d4\u05de\u05d9\u05d5\u05d7\u05d3 \u05e9\u05dc\u05da \u05dc\u05e0\u05d9\u05e1\u05d5\u05d9. \u05d0\u05dd \u05d0\u05ea\u05d4 \u05de\u05d5\u05e8\u05d4 \u05e9\u05e8\u05db\u05e9 (\u05d0\u05d5 \u05d4\u05de\u05d5\u05e1\u05d3 \u05e9\u05dc\u05da \u05e8\u05db\u05e9) \u05e8\u05d9\u05e9\u05d9\u05d5\u05e0\u05d5\u05ea \u05dc\u05db\u05d9\u05ea\u05d4 \u05e9\u05dc\u05da, \u05e6\u05d5\u05e8 \u05d0\u05d9\u05ea\u05e0\u05d5 \u05e7\u05e9\u05e8 \u05dc\u05de\u05e0\u05d5\u05d9 \u05d4\u05de\u05d5\u05e8\u05d4 \u05e9\u05dc\u05da.";
     },
     get$downloadTxtFile() {
-      return "Last ned tekstfil";
+      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5 \u05d8\u05e7\u05e1\u05d8";
     },
     get$downloadCSVFile() {
-      return "Last ned CSV-fil";
+      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5 CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return "Du har for \xf8yeblikket et livstids kampanjeabonnement. Send en melding til support@pangea.chat for hjelp med \xe5 endre abonnementet ditt.";
+      return "\u05d9\u05e9 \u05dc\u05da \u05db\u05e8\u05d2\u05e2 \u05de\u05e0\u05d5\u05d9 \u05e7\u05d9\u05d3\u05d5\u05dd \u05de\u05db\u05d9\u05e8\u05d5\u05ea \u05dc\u05db\u05dc \u05d4\u05d7\u05d9\u05d9\u05dd. \u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc-support@pangea.chat \u05dc\u05e2\u05d6\u05e8\u05d4 \u05d1\u05e9\u05d9\u05e0\u05d5\u05d9 \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Abonnement kj\xf8pt via " + purchasePlatform;
+      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05e0\u05e8\u05db\u05e9 \u05d3\u05e8\u05da " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "\xc9n ukes pr\xf8veperiode";
+      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05dc\u05e9\u05d1\u05d5\u05e2 \u05d0\u05d7\u05d3";
     },
     get$downloadXLSXFile() {
-      return "Last ned Excel-fil";
+      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5 \u05d0\u05e7\u05e1\u05dc";
     },
     get$unkDisplayName() {
-      return "Ukjent";
+      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
     },
     get$wwCountryDisplayName() {
-      return "Verden";
+      return "\u05e2\u05d5\u05dc\u05dd \u05e8\u05d7\u05d1";
     },
     get$afCountryDisplayName() {
-      return "Afghanistan";
+      return "\u05d0\u05e4\u05d2\u05e0\u05d9\u05e1\u05d8\u05df";
     },
     get$axCountryDisplayName() {
-      return "\xc5land\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05d0\u05dc\u05e0\u05d3";
     },
     get$alCountryDisplayName() {
-      return "Albania";
+      return "\u05d0\u05dc\u05d1\u05e0\u05d9\u05d4";
     },
     get$dzCountryDisplayName() {
-      return "Algerie";
+      return "\u05d0\u05dc\u05d2'\u05d9\u05e8\u05d9\u05d4";
     },
     get$asCountryDisplayName() {
-      return "Amerikansk Samoa";
+      return "\u05e1\u05de\u05d5\u05d0\u05d4 \u05d4\u05d0\u05de\u05e8\u05d9\u05e7\u05d0\u05d9\u05ea";
     },
     get$adCountryDisplayName() {
-      return "Andorra";
+      return "\u05d0\u05e0\u05d3\u05d5\u05e8\u05d4";
     },
     get$aoCountryDisplayName() {
-      return "Angola";
+      return "\u05d0\u05e0\u05d2\u05d5\u05dc\u05d4";
     },
     get$aiCountryDisplayName() {
-      return "Anguilla";
+      return "\u05d0\u05e0\u05d2\u05d5\u05d5\u05d9\u05dc\u05d4";
     },
     get$agCountryDisplayName() {
-      return "Antigua og Barbuda";
+      return "\u05d0\u05e0\u05d8\u05d9\u05d2\u05d5\u05d0\u05d4 \u05d5\u05d1\u05e8\u05d1\u05d5\u05d3\u05d4";
     },
     get$arCountryDisplayName() {
-      return "Argentina";
+      return "\u05d0\u05e8\u05d2\u05e0\u05d8\u05d9\u05e0\u05d4";
     },
     get$amCountryDisplayName() {
-      return "Armenia";
+      return "\u05d0\u05e8\u05de\u05e0\u05d9\u05d4";
     },
     get$awCountryDisplayName() {
-      return "Aruba";
+      return "\u05d0\u05e8\u05d5\u05d1\u05d4";
     },
     get$acCountryDisplayName() {
-      return "Ascension-\xf8yen";
+      return "\u05d0\u05d9 \u05d4\u05d4\u05e9\u05e8\u05d0\u05d4";
     },
     get$auCountryDisplayName() {
-      return "Australia";
+      return "\u05d0\u05d5\u05e1\u05d8\u05e8\u05dc\u05d9\u05d4";
     },
     get$atCountryDisplayName() {
-      return "\xd8sterrike";
+      return "\u05d0\u05d5\u05e1\u05d8\u05e8\u05d9\u05d4";
     },
     get$azCountryDisplayName() {
-      return "Aserbajdsjan";
+      return "\u05d0\u05d6\u05e8\u05d1\u05d9\u05d9\u05d2'\u05d0\u05df";
     },
     get$bsCountryDisplayName() {
-      return "Bahamas";
+      return "\u05d0\u05d9\u05d9 \u05d1\u05d4\u05d0\u05de\u05d4";
     },
     get$bhCountryDisplayName() {
-      return "Bahrain";
+      return "\u05d1\u05d7\u05e8\u05d9\u05d9\u05df";
     },
     get$bdCountryDisplayName() {
-      return "Bangladesh";
+      return "\u05d1\u05e0\u05d2\u05dc\u05d3\u05e9";
     },
     get$bbCountryDisplayName() {
-      return "Barbados";
+      return "\u05d1\u05e8\u05d1\u05d3\u05d5\u05e1";
     },
     get$byCountryDisplayName() {
-      return "Hviterussland";
+      return "\u05d1\u05dc\u05d0\u05e8\u05d5\u05e1";
     },
     get$beCountryDisplayName() {
-      return "Belgia";
+      return "\u05d1\u05dc\u05d2\u05d9\u05d4";
     },
     get$bzCountryDisplayName() {
-      return "Belize";
+      return "\u05d1\u05dc\u05d9\u05d6";
     },
     get$bjCountryDisplayName() {
-      return "Benin";
+      return "\u05d1\u05e0\u05d9\u05df";
     },
     get$bmCountryDisplayName() {
-      return "Bermuda";
+      return "\u05d1\u05e8\u05de\u05d5\u05d3\u05d4";
     },
     get$btCountryDisplayName() {
-      return "Bhutan";
+      return "\u05d1\u05d4\u05d5\u05d8\u05df";
     },
     get$boCountryDisplayName() {
-      return "Bolivia";
+      return "\u05d1\u05d5\u05dc\u05d9\u05d1\u05d9\u05d4";
     },
     get$baCountryDisplayName() {
-      return "Bosnia og Herzegovina";
+      return "\u05d1\u05d5\u05e1\u05e0\u05d9\u05d4 \u05d5\u05d4\u05e8\u05e6\u05d2\u05d5\u05d1\u05d9\u05e0\u05d4";
     },
     get$bwCountryDisplayName() {
-      return "Botswana";
+      return "\u05d1\u05d5\u05d8\u05e1\u05d5\u05d0\u05e0\u05d4";
     },
     get$brCountryDisplayName() {
-      return "Brasil";
+      return "\u05d1\u05e8\u05d6\u05d9\u05dc";
     },
     get$ioCountryDisplayName() {
-      return "Det britiske territoriet i Det indiske hav";
+      return "\u05d8\u05e8\u05d9\u05d8\u05d5\u05e8\u05d9\u05d9\u05ea \u05d4\u05d4\u05d5\u05d3\u05d5 \u05d4\u05de\u05d6\u05e8\u05d7\u05d9 \u05d4\u05d1\u05e8\u05d9\u05d8\u05d9\u05ea";
     },
     get$vgCountryDisplayName() {
-      return "De britiske jomfru\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05d4\u05d1\u05ea\u05d5\u05dc\u05d4 \u05d4\u05d1\u05e8\u05d9\u05d8\u05d9\u05d9\u05dd";
     },
     get$bnCountryDisplayName() {
-      return "Brunei";
+      return "\u05d1\u05e8\u05d5\u05e0\u05d9\u05d9";
     },
     get$bgCountryDisplayName() {
-      return "Bulgaria";
+      return "\u05d1\u05d5\u05dc\u05d2\u05e8\u05d9\u05d4";
     },
     get$bfCountryDisplayName() {
-      return "Burkina Faso";
+      return "\u05d1\u05d5\u05e8\u05e7\u05d9\u05e0\u05d4 \u05e4\u05d0\u05e1\u05d5";
     },
     get$biCountryDisplayName() {
-      return "Burundi";
+      return "\u05d1\u05d5\u05e8\u05d5\u05e0\u05d3\u05d9";
     },
     get$khCountryDisplayName() {
-      return "Kambodsja";
+      return "\u05e7\u05de\u05d1\u05d5\u05d3\u05d9\u05d4";
     },
     get$cmCountryDisplayName() {
-      return "Kamerun";
+      return "\u05e7\u05de\u05e8\u05d5\u05df";
     },
     get$caCountryDisplayName() {
-      return "Canada";
+      return "\u05e7\u05e0\u05d3\u05d4";
     },
     get$cvCountryDisplayName() {
-      return "Kapp Verde";
+      return "\u05db\u05e3 \u05d5\u05e8\u05d3\u05d4";
     },
     get$bqCountryDisplayName() {
-      return "Karibiske Nederland";
+      return "\u05d4\u05d0\u05d9\u05d9\u05dd \u05d4\u05e7\u05e8\u05d9\u05d1\u05d9\u05d9\u05dd \u05d4\u05d4\u05d5\u05dc\u05e0\u05d3\u05d9\u05d9\u05dd";
     },
     get$kyCountryDisplayName() {
-      return "Cayman\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05e7\u05d9\u05d9\u05de\u05df";
     },
     get$cfCountryDisplayName() {
-      return "Den sentralafrikanske republikken";
+      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05d4 \u05d4\u05de\u05e8\u05db\u05d6-\u05d0\u05e4\u05e8\u05d9\u05e7\u05d0\u05d9\u05ea";
     },
     get$tdCountryDisplayName() {
-      return "Tsjad";
+      return "\u05e6'\u05d0\u05d3";
     },
     get$clCountryDisplayName() {
-      return "Chile";
+      return "\u05e6'\u05d9\u05dc\u05d4";
     },
     get$cnCountryDisplayName() {
-      return "Kina";
+      return "\u05e1\u05d9\u05df";
     },
     get$cxCountryDisplayName() {
-      return "Julekystallen";
+      return "\u05d0\u05d9 \u05d7\u05d2 \u05d4\u05de\u05d5\u05dc\u05d3";
     },
     get$ccCountryDisplayName() {
-      return "Kokos [Keeling]-\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05e7\u05d5\u05e7\u05d5\u05e1 [\u05e7\u05d9\u05dc\u05d9\u05e0\u05d2]";
     },
     get$coCountryDisplayName() {
-      return "Colombia";
+      return "\u05e7\u05d5\u05dc\u05d5\u05de\u05d1\u05d9\u05d4";
     },
     get$kmCountryDisplayName() {
-      return "Komorene";
+      return "\u05e7\u05d5\u05de\u05d5\u05e8\u05d5\u05e1";
     },
     get$cdCountryDisplayName() {
-      return "Den demokratiske republikken Kongo";
+      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05ea \u05e7\u05d5\u05e0\u05d2\u05d5 \u05d4\u05d3\u05de\u05d5\u05e7\u05e8\u05d8\u05d9\u05ea";
     },
     get$cgCountryDisplayName() {
-      return "Republikken Kongo";
+      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05ea \u05e7\u05d5\u05e0\u05d2\u05d5";
     },
     get$ckCountryDisplayName() {
-      return "Cook\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05e7\u05d5\u05e7";
     },
     get$crCountryDisplayName() {
-      return "Costa Rica";
+      return "\u05e7\u05d5\u05e1\u05d8\u05d4 \u05e8\u05d9\u05e7\u05d4";
     },
     get$ciCountryDisplayName() {
-      return "Elfenbenskysten";
+      return "\u05d7\u05d5\u05e3 \u05d4\u05e9\u05e0\u05d4\u05d1";
     },
     get$hrCountryDisplayName() {
-      return "Kroatia";
+      return "\u05e7\u05e8\u05d5\u05d0\u05d8\u05d9\u05d4";
     },
     get$cuCountryDisplayName() {
-      return "Kuba";
+      return "\u05e7\u05d5\u05d1\u05d4";
     },
     get$cwCountryDisplayName() {
-      return "Cura\xe7ao";
+      return "\u05e7\u05d5\u05e8\u05d0\u05e1\u05d0\u05d5";
     },
     get$cyCountryDisplayName() {
-      return "Kypros";
+      return "\u05e7\u05e4\u05e8\u05d9\u05e1\u05d9\u05df";
     },
     get$czCountryDisplayName() {
-      return "Tsjekkia";
+      return "\u05e6'\u05db\u05d9\u05d4";
     },
     get$dkCountryDisplayName() {
-      return "Danmark";
+      return "\u05d3\u05e0\u05de\u05e8\u05e7";
     },
     get$djCountryDisplayName() {
-      return "Djibouti";
+      return "\u05d2'\u05d9\u05d1\u05d5\u05d8\u05d9";
     },
     get$dmCountryDisplayName() {
-      return "Dominica";
+      return "\u05d3\u05d5\u05de\u05d9\u05e0\u05d9\u05e7\u05d4";
     },
     get$doCountryDisplayName() {
-      return "Den dominikanske republikk";
+      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05ea \u05d3\u05d5\u05de\u05d9\u05e0\u05d9\u05e7\u05d4";
     },
     get$tlCountryDisplayName() {
-      return "\xd8st-Timor";
+      return "\u05de\u05d6\u05e8\u05d7 \u05d8\u05d9\u05de\u05d5\u05e8";
     },
     get$ecCountryDisplayName() {
-      return "Ecuador";
+      return "\u05d0\u05e7\u05d5\u05d5\u05d3\u05d5\u05e8";
     },
     get$egCountryDisplayName() {
-      return "Egypt";
+      return "\u05de\u05e6\u05e8\u05d9\u05dd";
     },
     get$svCountryDisplayName() {
-      return "El Salvador";
+      return "\u05d0\u05dc \u05e1\u05dc\u05d1\u05d3\u05d5\u05e8";
     },
     get$gqCountryDisplayName() {
-      return "Ekvatorial-Guinea";
+      return "\u05d2\u05d9\u05e0\u05d0\u05d4 \u05d4\u05de\u05e9\u05d5\u05d5\u05e0\u05d9\u05ea";
     },
     get$erCountryDisplayName() {
-      return "Eritrea";
+      return "\u05d0\u05e8\u05d9\u05ea\u05e8\u05d9\u05d0\u05d4";
     },
     get$eeCountryDisplayName() {
-      return "Estland";
+      return "\u05d0\u05e1\u05d8\u05d5\u05e0\u05d9\u05d4";
     },
     get$szCountryDisplayName() {
-      return "Eswatini";
+      return "\u05d0\u05e1\u05d5\u05d5\u05d0\u05d8\u05d9\u05e0\u05d9";
     },
     get$etCountryDisplayName() {
-      return "Etiopia";
+      return "\u05d0\u05ea\u05d9\u05d5\u05e4\u05d9\u05d4";
     },
     get$fkCountryDisplayName() {
-      return "Falklands\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05e4\u05d5\u05e7\u05dc\u05e0\u05d3";
     },
     get$foCountryDisplayName() {
-      return "F\xe6r\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05e4\u05d0\u05e8\u05d5";
     },
     get$fjCountryDisplayName() {
-      return "Fiji";
+      return "\u05e4\u05d9\u05d2'\u05d9";
     },
     get$fiCountryDisplayName() {
-      return "Finland";
+      return "\u05e4\u05d9\u05e0\u05dc\u05e0\u05d3";
     },
     get$frCountryDisplayName() {
-      return "Frankrike";
+      return "\u05e6\u05e8\u05e4\u05ea";
     },
     get$gfCountryDisplayName() {
-      return "Fransk Guyana";
+      return "\u05d2\u05d9\u05d0\u05e0\u05d4 \u05d4\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea";
     },
     get$pfCountryDisplayName() {
-      return "Fransk Polynesia";
+      return "\u05d0\u05d9\u05d9 \u05e4\u05d5\u05dc\u05d9\u05e0\u05d6\u05d9\u05d4 \u05d4\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea";
     },
     get$gaCountryDisplayName() {
-      return "Gabon";
+      return "\u05d2\u05d1\u05d5\u05df";
     },
     get$gmCountryDisplayName() {
-      return "Gambia";
+      return "\u05d2\u05de\u05d1\u05d9\u05d4";
     },
     get$geCountryDisplayName() {
-      return "Georgia";
+      return "\u05d2\u05d0\u05d5\u05e8\u05d2\u05d9\u05d4";
     },
     get$deCountryDisplayName() {
-      return "Tyskland";
+      return "\u05d2\u05e8\u05de\u05e0\u05d9\u05d4";
     },
     get$ghCountryDisplayName() {
-      return "Ghana";
+      return "\u05d2\u05d0\u05e0\u05d4";
     },
     get$giCountryDisplayName() {
-      return "Gibraltar";
+      return "\u05d2\u05d9\u05d1\u05e8\u05dc\u05d8\u05e8";
     },
     get$grCountryDisplayName() {
-      return "Hellas";
+      return "\u05d9\u05d5\u05d5\u05df";
     },
     get$glCountryDisplayName() {
-      return "Gr\xf8nland";
+      return "\u05d2\u05e8\u05d9\u05e0\u05dc\u05e0\u05d3";
     },
     get$gdCountryDisplayName() {
-      return "Grenada";
+      return "\u05d2\u05e8\u05e0\u05d3\u05d4";
     },
     get$gpCountryDisplayName() {
-      return "Guadeloupe";
+      return "\u05d2\u05d5\u05d5\u05d0\u05d3\u05dc\u05d5\u05e4";
     },
     get$guCountryDisplayName() {
-      return "Guam";
+      return "\u05d2\u05d5\u05d0\u05dd";
     },
     get$gtCountryDisplayName() {
-      return "Guatemala";
+      return "\u05d2\u05d5\u05d0\u05d8\u05de\u05dc\u05d4";
     },
     get$ggCountryDisplayName() {
-      return "Guernsey";
+      return "\u05d2\u05e8\u05e0\u05d6\u05d9";
     },
     get$gnCountryDisplayName() {
-      return "Guinea Conakry";
+      return "\u05d2\u05d9\u05e0\u05d0\u05d4 \u05e7\u05d5\u05e0\u05d0\u05e7\u05d9";
     },
     get$gwCountryDisplayName() {
-      return "Guinea-Bissau";
+      return "\u05d2\u05d9\u05e0\u05d0\u05d4 \u05d1\u05d9\u05e1\u05d0\u05d5";
     },
     get$gyCountryDisplayName() {
-      return "Guyana";
+      return "\u05d2\u05d9\u05d0\u05e0\u05d4";
     },
     get$htCountryDisplayName() {
-      return "Haiti";
+      return "\u05d4\u05d0\u05d9\u05d8\u05d9";
     },
     get$hmCountryDisplayName() {
-      return "Heard-\xf8yene og McDonald-\xf8yene";
+      return "\u05d0\u05d9 \u05d4\u05e8\u05d3 \u05d5\u05d0\u05d9\u05d9 \u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3";
     },
     get$hnCountryDisplayName() {
-      return "Honduras";
+      return "\u05d4\u05d5\u05e0\u05d3\u05d5\u05e8\u05e1";
     },
     get$hkCountryDisplayName() {
-      return "Hong Kong";
+      return "\u05d4\u05d5\u05e0\u05d2 \u05e7\u05d5\u05e0\u05d2";
     },
     get$huCountryDisplayName() {
-      return "Ungarn";
+      return "\u05d4\u05d5\u05e0\u05d2\u05e8\u05d9\u05d4";
     },
     get$isCountryDisplayName() {
-      return "Island";
+      return "\u05d0\u05d9\u05e1\u05dc\u05e0\u05d3";
     },
     get$inCountryDisplayName() {
-      return "India";
+      return "\u05d4\u05d5\u05d3\u05d5";
     },
     get$idCountryDisplayName() {
-      return "Indonesia";
+      return "\u05d0\u05d9\u05e0\u05d3\u05d5\u05e0\u05d6\u05d9\u05d4";
     },
     get$irCountryDisplayName() {
-      return "Iran";
+      return "\u05d0\u05d9\u05e8\u05d0\u05df";
     },
     get$iqCountryDisplayName() {
-      return "Irak";
+      return "\u05e2\u05d9\u05e8\u05d0\u05e7";
     },
     get$ieCountryDisplayName() {
-      return "Irland";
+      return "\u05d0\u05d9\u05e8\u05dc\u05e0\u05d3";
     },
     get$imCountryDisplayName() {
-      return "Man-\xf8yen";
+      return "\u05d0\u05d9 \u05de\u05d0\u05df";
     },
     get$ilCountryDisplayName() {
-      return "Israel";
+      return "\u05d9\u05e9\u05e8\u05d0\u05dc";
     },
     get$itCountryDisplayName() {
-      return "Italia";
+      return "\u05d0\u05d9\u05d8\u05dc\u05d9\u05d4";
     },
     get$jmCountryDisplayName() {
-      return "Jamaica";
+      return "\u05d2'\u05de\u05d9\u05d9\u05e7\u05d4";
     },
     get$jpCountryDisplayName() {
-      return "Japan";
+      return "\u05d9\u05e4\u05df";
     },
     get$jeCountryDisplayName() {
-      return "Jersey";
+      return "\u05d2'\u05e8\u05d6\u05d9";
     },
     get$joCountryDisplayName() {
-      return "Jordan";
+      return "\u05d9\u05e8\u05d3\u05df";
     },
     get$kzCountryDisplayName() {
-      return "Kasakhstan";
+      return "\u05e7\u05d6\u05d7\u05e1\u05d8\u05df";
     },
     get$keCountryDisplayName() {
-      return "Kenya";
+      return "\u05e7\u05e0\u05d9\u05d4";
     },
     get$kiCountryDisplayName() {
-      return "Kiribati";
+      return "\u05e7\u05d9\u05e8\u05d9\u05d1\u05d8\u05d9";
     },
     get$xkCountryDisplayName() {
-      return "Kosovo";
+      return "\u05e7\u05d5\u05e1\u05d5\u05d1\u05d5";
     },
     get$kwCountryDisplayName() {
-      return "Kuwait";
+      return "\u05db\u05d5\u05d5\u05d9\u05ea";
     },
     get$kgCountryDisplayName() {
-      return "Kirgisistan";
+      return "\u05e7\u05d9\u05e8\u05d2\u05d9\u05d6\u05e1\u05d8\u05df";
     },
     get$laCountryDisplayName() {
-      return "Laos";
+      return "\u05dc\u05d0\u05d5\u05e1";
     },
     get$lvCountryDisplayName() {
-      return "Latvia";
+      return "\u05dc\u05d8\u05d1\u05d9\u05d4";
     },
     get$lbCountryDisplayName() {
-      return "Libanon";
+      return "\u05dc\u05d1\u05e0\u05d5\u05df";
     },
     get$lsCountryDisplayName() {
-      return "Lesotho";
+      return "\u05dc\u05e1\u05d5\u05d8\u05d5";
     },
     get$lrCountryDisplayName() {
-      return "Liberia";
+      return "\u05dc\u05d1\u05d9\u05e8\u05d9\u05d4";
     },
     get$lyCountryDisplayName() {
-      return "Libya";
+      return "\u05dc\u05d5\u05d1";
     },
     get$liCountryDisplayName() {
-      return "Liechtenstein";
+      return "\u05dc\u05d9\u05db\u05d8\u05e0\u05e9\u05d8\u05d9\u05d9\u05df";
     },
     get$ltCountryDisplayName() {
-      return "Litauen";
+      return "\u05dc\u05d9\u05d8\u05d0";
     },
     get$luCountryDisplayName() {
-      return "Luxembourg";
+      return "\u05dc\u05d5\u05e7\u05e1\u05de\u05d1\u05d5\u05e8\u05d2";
     },
     get$moCountryDisplayName() {
-      return "Macau";
+      return "\u05de\u05e7\u05d0\u05d5";
     },
     get$mkCountryDisplayName() {
-      return "Nord-Makedonia";
+      return "\u05de\u05e7\u05d3\u05d5\u05e0\u05d9\u05d4";
     },
     get$mgCountryDisplayName() {
-      return "Madagaskar";
+      return "\u05de\u05d3\u05d2\u05e1\u05e7\u05e8";
     },
     get$mwCountryDisplayName() {
-      return "Malawi";
+      return "\u05de\u05d0\u05dc\u05d5\u05d5\u05d9";
     },
     get$myCountryDisplayName() {
-      return "Malaysia";
+      return "\u05de\u05dc\u05d6\u05d9\u05d4";
     },
     get$mvCountryDisplayName() {
-      return "Maldivene";
+      return "\u05d4\u05d0\u05d9\u05d9\u05dd \u05d4\u05de\u05dc\u05d3\u05d9\u05d1\u05d9\u05d9\u05dd";
     },
     get$mlCountryDisplayName() {
-      return "Mali";
+      return "\u05de\u05d0\u05dc\u05d9";
     },
     get$mtCountryDisplayName() {
-      return "Malta";
+      return "\u05de\u05dc\u05d8\u05d4";
     },
     get$mhCountryDisplayName() {
-      return "Marshall\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05de\u05e8\u05e9\u05dc";
     },
     get$mqCountryDisplayName() {
-      return "Martinique";
+      return "\u05de\u05e8\u05d8\u05d9\u05e0\u05d9\u05e7";
     },
     get$mrCountryDisplayName() {
-      return "Mauritania";
+      return "\u05de\u05d0\u05d5\u05e8\u05d9\u05d8\u05e0\u05d9\u05d4";
     },
     get$muCountryDisplayName() {
-      return "Mauritius";
+      return "\u05de\u05d0\u05d5\u05e8\u05d9\u05e6\u05d9\u05d5\u05e1";
     },
     get$ytCountryDisplayName() {
-      return "Mayotte";
+      return "\u05de\u05d0\u05d9\u05d5\u05d5\u05d8";
     },
     get$mxCountryDisplayName() {
-      return "Mexico";
+      return "\u05de\u05e7\u05e1\u05d9\u05e7\u05d5";
     },
     get$fmCountryDisplayName() {
-      return "Mikronesia";
+      return "\u05de\u05d9\u05e7\u05e8\u05d5\u05e0\u05d6\u05d9\u05d4";
     },
     get$mdCountryDisplayName() {
-      return "Moldova";
+      return "\u05de\u05d5\u05dc\u05d3\u05d5\u05d1\u05d4";
     },
     get$mcCountryDisplayName() {
-      return "Monaco";
+      return "\u05de\u05d5\u05e0\u05e7\u05d5";
     },
     get$mnCountryDisplayName() {
-      return "Mongolia";
+      return "\u05de\u05d5\u05e0\u05d2\u05d5\u05dc\u05d9\u05d4";
     },
     get$meCountryDisplayName() {
-      return "Montenegro";
+      return "\u05de\u05d5\u05e0\u05d8\u05e0\u05d2\u05e8\u05d5";
     },
     get$msCountryDisplayName() {
-      return "Montserrat";
+      return "\u05de\u05d5\u05e0\u05e1\u05e8\u05d0\u05d8";
     },
     get$maCountryDisplayName() {
-      return "Marokko";
+      return "\u05de\u05e8\u05d5\u05e7\u05d5";
     },
     get$mzCountryDisplayName() {
-      return "Mosambik";
+      return "\u05de\u05d5\u05d6\u05de\u05d1\u05d9\u05e7";
     },
     get$mmCountryDisplayName() {
-      return "Myanmar (Burma)";
+      return "\u05de\u05d9\u05d0\u05e0\u05de\u05e8 (\u05d1\u05d5\u05e8\u05de\u05d4)";
     },
     get$naCountryDisplayName() {
-      return "Namibia";
+      return " namibia";
     },
     get$nrCountryDisplayName() {
-      return "Nauru";
+      return "\u05e0\u05d0\u05d5\u05e8\u05d5";
     },
     get$npCountryDisplayName() {
-      return "Nepal";
+      return "\u05e0\u05e4\u05d0\u05dc";
     },
     get$nlCountryDisplayName() {
-      return "Nederland";
+      return "\u05d4\u05d5\u05dc\u05e0\u05d3";
     },
     get$ncCountryDisplayName() {
-      return "Ny-Caledonia";
+      return "\u05e7\u05dc\u05d3\u05d5\u05e0\u05d9\u05d4 \u05d4\u05d7\u05d3\u05e9\u05d4";
     },
     get$nzCountryDisplayName() {
-      return "New Zealand";
+      return "\u05e0\u05d9\u05d5 \u05d6\u05d9\u05dc\u05e0\u05d3";
     },
     get$niCountryDisplayName() {
-      return "Nicaragua";
+      return "\u05e0\u05d9\u05e7\u05e8\u05d2\u05d5\u05d0\u05d4";
     },
     get$neCountryDisplayName() {
-      return "Niger";
+      return "\u05e0\u05d9\u05d6'\u05e8";
     },
     get$ngCountryDisplayName() {
-      return "Nigeria";
+      return "\u05e0\u05d9\u05d2\u05e8\u05d9\u05d4";
     },
     get$nuCountryDisplayName() {
-      return "Niue";
+      return "\u05e0\u05d9\u05d5\u05d0\u05d4";
     },
     get$nfCountryDisplayName() {
-      return "Norfolk\xf8yene";
+      return "\u05d0\u05d9 \u05e0\u05d5\u05e8\u05e4\u05d5\u05dc\u05e7";
     },
     get$kpCountryDisplayName() {
-      return "Nord-Korea";
+      return "\u05e7\u05d5\u05e8\u05d9\u05d0\u05d4 \u05d4\u05e6\u05e4\u05d5\u05e0\u05d9\u05ea";
     },
     get$mpCountryDisplayName() {
-      return "Nord-Marianene";
+      return "\u05d0\u05d9\u05d9 \u05de\u05e8\u05d9\u05d0\u05e0\u05d4 \u05d4\u05e6\u05e4\u05d5\u05e0\u05d9\u05d9\u05dd";
     },
     get$noCountryDisplayName() {
-      return "Norge";
+      return "\u05e0\u05d5\u05e8\u05d5\u05d5\u05d2\u05d9\u05d4";
     },
     get$omCountryDisplayName() {
-      return "Oman";
+      return "\u05e2\u05d5\u05de\u05d0\u05df";
     },
     get$pkCountryDisplayName() {
-      return "Pakistan";
+      return "\u05e4\u05e7\u05d9\u05e1\u05d8\u05df";
     },
     get$pwCountryDisplayName() {
-      return "Palau";
+      return "\u05e4\u05dc\u05d0\u05d5";
     },
     get$psCountryDisplayName() {
-      return "De palestinske omr\xe5dene";
+      return "\u05d4\u05e9\u05d8\u05d7\u05d9\u05dd \u05d4\u05e4\u05dc\u05e1\u05d8\u05d9\u05e0\u05d9\u05d9\u05dd";
     },
     get$paCountryDisplayName() {
-      return "Panama";
+      return "\u05e4\u05e0\u05de\u05d4";
     },
     get$pgCountryDisplayName() {
-      return "Papua Ny-Guinea";
+      return "\u05e4\u05e4\u05d5\u05d0\u05d4 \u05d2\u05d9\u05e0\u05d0\u05d4 \u05d4\u05d7\u05d3\u05e9\u05d4";
     },
     get$pyCountryDisplayName() {
-      return "Paraguay";
+      return "\u05e4\u05e8\u05d2\u05d5\u05d5\u05d0\u05d9";
     },
     get$peCountryDisplayName() {
-      return "Peru";
+      return "\u05e4\u05e8\u05d5";
     },
     get$phCountryDisplayName() {
-      return "Filippinene";
+      return "\u05e4\u05d9\u05dc\u05d9\u05e4\u05d9\u05e0\u05d9\u05dd";
     },
     get$plCountryDisplayName() {
-      return "Polen";
+      return "\u05e4\u05d5\u05dc\u05d9\u05df";
     },
     get$ptCountryDisplayName() {
-      return "Portugal";
+      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05dc";
     },
     get$prCountryDisplayName() {
-      return "Puerto Rico";
+      return "\u05e4\u05d5\u05d0\u05e8\u05d8\u05d5 \u05e8\u05d9\u05e7\u05d5";
     },
     get$qaCountryDisplayName() {
-      return "Qatar";
+      return "\u05e7\u05d8\u05d0\u05e8";
     },
     get$reCountryDisplayName() {
-      return "R\xe9union";
+      return "\u05e8\u05d5\u05e0\u05d9\u05d5\u05df";
     },
     get$roCountryDisplayName() {
-      return "Romania";
+      return "\u05e8\u05d5\u05de\u05e0\u05d9\u05d4";
     },
     get$ruCountryDisplayName() {
-      return "Russland";
+      return "\u05e8\u05d5\u05e1\u05d9\u05d4";
     },
     get$rwCountryDisplayName() {
-      return "Rwanda";
+      return "\u05e8\u05d5\u05d0\u05e0\u05d3\u05d4";
     },
     get$blCountryDisplayName() {
-      return "Saint Barth\xe9lemy";
+      return "\u05e1\u05e0\u05d8 \u05d1\u05e8\u05ea\u05d5\u05dc\u05d5\u05de\u05d9\u05d0\u05d5";
     },
     get$shCountryDisplayName() {
-      return "Sankta Helena";
+      return "\u05e1\u05e0\u05d8 \u05d4\u05dc\u05e0\u05d4";
     },
     get$knCountryDisplayName() {
-      return "St. Kitts";
+      return "\u05e1\u05e0\u05d8 \u05e7\u05d9\u05d8\u05e1";
     },
     get$lcCountryDisplayName() {
-      return "St. Lucia";
+      return "\u05e1\u05e0\u05d8 \u05dc\u05d5\u05e1\u05d9\u05d4";
     },
     get$mfCountryDisplayName() {
-      return "Saint Martin";
+      return "\u05e1\u05e0\u05d8 \u05de\u05e8\u05d8\u05d9\u05df";
     },
     get$pmCountryDisplayName() {
-      return "Saint Pierre og Miquelon";
+      return "\u05e1\u05e0\u05d8 \u05e4\u05d9\u05d9\u05e8 \u05d5\u05de\u05d9\u05e7\u05dc\u05d5\u05df";
     },
     get$vcCountryDisplayName() {
-      return "St. Vincent";
+      return "\u05e1\u05e0\u05d8 \u05d5\u05d9\u05e0\u05e1\u05e0\u05d8";
     },
     get$wsCountryDisplayName() {
-      return "Samoa";
+      return "\u05e1\u05de\u05d5\u05d0\u05d4";
     },
     get$smCountryDisplayName() {
-      return "San Marino";
+      return "\u05e1\u05df \u05de\u05e8\u05d9\u05e0\u05d5";
     },
     get$stCountryDisplayName() {
-      return "S\xe3o Tom\xe9 og Pr\xedncipe";
+      return "\u05e1\u05d0\u05d5 \u05d8\u05d5\u05de\u05d4 \u05d5\u05e4\u05e8\u05d9\u05e0\u05e1\u05d9\u05e4\u05d4";
     },
     get$saCountryDisplayName() {
-      return "Saudi-Arabia";
+      return "\u05e2\u05e8\u05d1 \u05d4\u05e1\u05e2\u05d5\u05d3\u05d9\u05ea";
     },
     get$snCountryDisplayName() {
-      return "Senegal";
+      return "\u05e1\u05e0\u05d2\u05dc";
     },
     get$rsCountryDisplayName() {
-      return "Serbia";
+      return "\u05e1\u05e8\u05d1\u05d9\u05d4";
     },
     get$scCountryDisplayName() {
-      return "Seychellene";
+      return "\u05e1\u05d9\u05d9\u05e9\u05dc";
     },
     get$slCountryDisplayName() {
-      return "Sierra Leone";
+      return "\u05e1\u05d9\u05d9\u05e8\u05d4 \u05dc\u05d0\u05d5\u05df";
     },
     get$sgCountryDisplayName() {
-      return "Singapore";
+      return "\u05e1\u05d9\u05e0\u05d2\u05e4\u05d5\u05e8";
     },
     get$sxCountryDisplayName() {
-      return "Sint Maarten";
+      return "\u05e1\u05d9\u05e0\u05d8 \u05de\u05d0\u05e8\u05d8\u05df";
     },
     get$skCountryDisplayName() {
-      return "Slovakia";
+      return "\u05e1\u05dc\u05d5\u05d1\u05e7\u05d9\u05d4";
     },
     get$siCountryDisplayName() {
-      return "Slovenia";
+      return "\u05e1\u05dc\u05d5\u05d1\u05e0\u05d9\u05d4";
     },
     get$sbCountryDisplayName() {
-      return "Salomon\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05e9\u05dc\u05de\u05d4";
     },
     get$soCountryDisplayName() {
-      return "Somalia";
+      return "\u05e1\u05d5\u05de\u05dc\u05d9\u05d4";
     },
     get$zaCountryDisplayName() {
-      return "S\xf8r-Afrika";
+      return "\u05d3\u05e8\u05d5\u05dd \u05d0\u05e4\u05e8\u05d9\u05e7\u05d4";
     },
     get$gsCountryDisplayName() {
-      return "S\xf8r-Georgia og S\xf8r-Sandwich\xf8yene";
+      return "\u05d2'\u05d5\u05e8\u05d2'\u05d9\u05d4 \u05d4\u05d3\u05e8\u05d5\u05de\u05d9\u05ea \u05d5\u05d0\u05d9\u05d9 \u05e1\u05d0\u05d5\u05ea' \u05d2'\u05d5\u05e8\u05d2'\u05d9\u05d4 \u05d5\u05e1\u05d0\u05d5\u05ea' \u05e1\u05e0\u05d3\u05d5\u05d5\u05d9\u05e5'";
     },
     get$krCountryDisplayName() {
-      return "S\xf8r-Korea";
+      return "\u05e7\u05d5\u05e8\u05d9\u05d0\u05d4 \u05d4\u05d3\u05e8\u05d5\u05de\u05d9\u05ea";
     },
     get$ssCountryDisplayName() {
-      return "S\xf8r-Sudan";
+      return "\u05e1\u05d5\u05d3\u05d0\u05df \u05d4\u05d3\u05e8\u05d5\u05de\u05d9\u05ea";
     },
     get$esCountryDisplayName() {
-      return "Spania";
+      return "\u05e1\u05e4\u05e8\u05d3";
     },
     get$lkCountryDisplayName() {
-      return "Sri Lanka";
+      return "\u05e1\u05e8\u05d9 \u05dc\u05e0\u05e7\u05d4";
     },
     get$sdCountryDisplayName() {
-      return "Sudan";
+      return "\u05e1\u05d5\u05d3\u05d0\u05df";
     },
     get$srCountryDisplayName() {
-      return "Surinam";
+      return "\u05e1\u05d5\u05e8\u05d9\u05e0\u05d0\u05dd";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard og Jan Mayen";
+      return "\u05e1\u05d5\u05d5\u05d0\u05dc\u05d3\u05d0\u05e8\u05d3 \u05d5\u05d9\u05d0\u05df \u05de\u05d0\u05d9\u05d9\u05df";
     },
     get$seCountryDisplayName() {
-      return "Sverige";
+      return "\u05e9\u05d5\u05d5\u05d9\u05d9\u05e5";
     },
     get$chCountryDisplayName() {
-      return "Sveits";
+      return "\u05e9\u05d5\u05d5\u05d9\u05d9\u05e5";
     },
     get$syCountryDisplayName() {
-      return "Syria";
+      return "\u05e1\u05d5\u05e8\u05d9\u05d4";
     },
     get$twCountryDisplayName() {
-      return "Taiwan";
+      return "\u05d8\u05d9\u05d9\u05d5\u05d5\u05d0\u05df";
     },
     get$tjCountryDisplayName() {
-      return "Tadsjikistan";
+      return "\u05d8\u05d2'\u05d9\u05e7\u05d9\u05e1\u05d8\u05df";
     },
     get$tzCountryDisplayName() {
-      return "Tanzania";
+      return "\u05d8\u05e0\u05d6\u05e0\u05d9\u05d4";
     },
     get$thCountryDisplayName() {
-      return "Thailand";
+      return "\u05ea\u05d0\u05d9\u05dc\u05e0\u05d3";
     },
     get$tgCountryDisplayName() {
-      return "Togo";
+      return "\u05d8\u05d5\u05d2\u05d5";
     },
     get$tkCountryDisplayName() {
-      return "Tokelau";
+      return "\u05d8\u05d5\u05e7\u05dc\u05d0\u05d5";
     },
     get$toCountryDisplayName() {
-      return "Tonga";
+      return "\u05d8\u05d5\u05e0\u05d2\u05d4";
     },
     get$ttCountryDisplayName() {
-      return "Trinidad/Tobago";
+      return "\u05d8\u05e8\u05d9\u05e0\u05d9\u05d3\u05d3 \u05d5\u05d8\u05d5\u05d1\u05d2\u05d5";
     },
     get$tnCountryDisplayName() {
-      return "Tunisia";
+      return "\u05ea\u05d5\u05e0\u05d9\u05e1\u05d9\u05d4";
     },
     get$trCountryDisplayName() {
-      return "Tyrkia";
+      return "\u05d8\u05d5\u05e8\u05e7\u05d9\u05d4";
     },
     get$tmCountryDisplayName() {
-      return "Turkmenistan";
+      return "\u05d8\u05d5\u05e8\u05e7\u05de\u05e0\u05d9\u05e1\u05d8\u05df";
     },
     get$tcCountryDisplayName() {
-      return "Turks- og Caicos\xf8yene";
+      return "\u05d0\u05d9\u05d9 \u05d8\u05d5\u05e8\u05e7\u05e1 \u05d5\u05e7\u05d9\u05d9\u05e7\u05d5\u05e1";
     },
     get$tvCountryDisplayName() {
-      return "Tuvalu";
+      return "\u05d8\u05d5\u05d1\u05d0\u05dc\u05d5";
     },
     get$viCountryDisplayName() {
-      return "Amerikanske Jomfru\xf8yene";
+      return '\u05d0\u05d9\u05d9 \u05d4\u05d1\u05ea\u05d5\u05dc\u05d4 \u05e9\u05dc \u05d0\u05e8\u05d4"\u05d1';
     },
     get$ugCountryDisplayName() {
-      return "Uganda";
+      return "\u05d0\u05d5\u05d2\u05e0\u05d3\u05d4";
     },
     get$uaCountryDisplayName() {
-      return "Ukraina";
+      return "\u05d0\u05d5\u05e7\u05e8\u05d0\u05d9\u05e0\u05d4";
     },
     get$aeCountryDisplayName() {
-      return "De forente arabiske emirater";
+      return "\u05d0\u05d9\u05d7\u05d5\u05d3 \u05d4\u05d0\u05de\u05d9\u05e8\u05d5\u05d9\u05d5\u05ea \u05d4\u05e2\u05e8\u05d1\u05d9\u05d5\u05ea";
     },
     get$gbCountryDisplayName() {
-      return "Storbritannia";
+      return "\u05d4\u05de\u05de\u05dc\u05db\u05d4 \u05d4\u05de\u05d0\u05d5\u05d7\u05d3\u05ea";
     },
     get$usCountryDisplayName() {
-      return "USA";
+      return "\u05d0\u05e8\u05e6\u05d5\u05ea \u05d4\u05d1\u05e8\u05d9\u05ea";
     },
     get$uyCountryDisplayName() {
-      return "Uruguay";
+      return "\u05d0\u05d5\u05e8\u05d5\u05d2\u05d5\u05d5\u05d0\u05d9";
     },
     get$uzCountryDisplayName() {
-      return "Usbekistan";
+      return "\u05d0\u05d5\u05d6\u05d1\u05e7\u05d9\u05e1\u05d8\u05df";
     },
     get$vuCountryDisplayName() {
-      return "Vanuatu";
+      return "\u05d5\u05e0\u05d5\u05d0\u05d8\u05d5";
     },
     get$vaCountryDisplayName() {
-      return "Vatikanstaten";
+      return "\u05d4\u05e2\u05d9\u05e8 \u05d5\u05d5\u05ea\u05d9\u05e7\u05df";
     },
     get$veCountryDisplayName() {
-      return "Venezuela";
+      return "\u05d5\u05e0\u05e6\u05d5\u05d0\u05dc\u05d4";
     },
     get$vnCountryDisplayName() {
-      return "Vietnam";
+      return "\u05d5\u05d9\u05d9\u05d8\u05e0\u05d0\u05dd";
     },
     get$wfCountryDisplayName() {
-      return "Wallis og Futuna";
+      return "\u05d5\u05dc\u05d9\u05e1 \u05d5\u05e4\u05d8\u05d5\u05e0\u05d4";
     },
     get$ehCountryDisplayName() {
-      return "Vest-Sahara";
+      return "\u05e1\u05d4\u05e8\u05d4 \u05d4\u05de\u05e2\u05e8\u05d1\u05d9\u05ea";
     },
     get$yeCountryDisplayName() {
-      return "Jemen";
+      return "\u05ea\u05d9\u05de\u05df";
     },
     get$zmCountryDisplayName() {
-      return "Zambia";
+      return "\u05d6\u05de\u05d1\u05d9\u05d4";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabwe";
+      return "\u05d6\u05d9\u05de\u05d1\u05d1\u05d5\u05d0\u05d4";
     },
     get$pay() {
-      return "Til betaling";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " har invitert deg til \xe5 bli med p\xe5 et kurs: " + space + "! Vil du akseptere?";
+      return user + " \u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05d5\u05ea\u05da \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1: " + space + "! \u05d4\u05d0\u05dd \u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05e7\u05d1\u05dc?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 Du er invitert!";
+      return "\ud83d\udce9 \u05d0\u05ea\u05d4 \u05de\u05d5\u05d6\u05de\u05df!";
     },
     invitedToChat$2($name, user) {
-      return user + " har invitert deg til \xe5 bli med i en samtale: " + $name + "! Vil du akseptere?";
+      return user + " \u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05d5\u05ea\u05da \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e9\u05d9\u05d7\u05d4: " + $name + "! \u05d4\u05d0\u05dd \u05ea\u05e8\u05e6\u05d4/\u05d9 \u05dc\u05e7\u05d1\u05dc?";
     },
     get$monthlySubscription() {
-      return "M\xe5nedlig";
+      return "\u05d7\u05d5\u05d3\u05e9\u05d9";
     },
     get$yearlySubscription() {
-      return "\xc5rlig";
+      return "\u05e9\u05e0\u05ea\u05d9";
     },
     get$defaultSubscription() {
-      return "Pangea Chat-abonnement";
+      return "\u05de\u05e0\u05d5\u05d9 Pangea Chat";
     },
     get$freeTrial() {
-      return "Gratis pr\xf8veperiode";
+      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05d7\u05d9\u05e0\u05dd";
     },
     get$noDataFound() {
-      return "Ingen data funnet";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd";
     },
     get$bestCorrectionFeedback() {
-      return "Det stemmer!";
+      return "\u05d6\u05d4 \u05e0\u05db\u05d5\u05df!";
     },
     get$distractorFeedback() {
-      return "Det er ikke helt riktig.";
+      return "\u05d6\u05d4 \u05dc\u05d0 \u05d1\u05d3\u05d9\u05d5\u05e7 \u05e0\u05db\u05d5\u05df.";
     },
     get$bestAnswerFeedback() {
-      return "Det stemmer!";
+      return "\u05d6\u05d4 \u05e0\u05db\u05d5\u05df!";
     },
     get$definitionDefaultPrompt() {
-      return "Hva betyr dette ordet?";
+      return "\u05de\u05d4 \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05e9\u05dc \u05de\u05d9\u05dc\u05d4 \u05d6\u05d5?";
     },
     get$practiceDefaultPrompt() {
-      return "Hva er det beste svaret?";
+      return "\u05de\u05d4 \u05d4\u05ea\u05e9\u05d5\u05d1\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d1\u05d9\u05d5\u05ea\u05e8?";
     },
     get$correctionDefaultPrompt() {
-      return "Hva er den beste erstatningen?";
+      return "\u05de\u05d4 \u05d4\u05d4\u05d7\u05dc\u05e4\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d1\u05d9\u05d5\u05ea\u05e8?";
     },
     get$reportToTeacher() {
-      return "Hvem vil du rapportere denne meldingen til?";
+      return "\u05dc\u05de\u05d9 \u05ea\u05e8\u05e6\u05d4 \u05dc\u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " har rapportert en melding fra " + reportedUserId + " i chatten " + roomName;
+      return reportingUserId + " \u05d3\u05d9\u05d5\u05d5\u05d7\u05d4 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de-" + reportedUserId + " \u05d1\u05e9\u05d9\u05d7\u05d4 " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Melding: " + reportedMessage + "\n\xc5rsak: " + reason;
+      return "\u05d4\u05d5\u05d3\u05e2\u05d4: " + reportedMessage + "\n\u05e1\u05d9\u05d1\u05d4: " + reason;
     },
     get$noTeachersFound() {
-      return "Ingen l\xe6rere funnet \xe5 rapportere til";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05de\u05d5\u05e8\u05d9\u05dd \u05dc\u05d3\u05d5\u05d5\u05d7 \u05d0\u05dc\u05d9\u05d4\u05dd";
     },
     trialExpiration$1(expiration) {
-      return "Din gratis pr\xf8veperiode utl\xf8per den " + expiration;
+      return "\u05d4\u05de\u05d1\u05d7\u05df \u05d4\u05d7\u05d9\u05e0\u05de\u05d9 \u05e9\u05dc\u05da \u05d9\u05e4\u05d5\u05d2 \u05d1-" + expiration;
     },
     get$freeTrialDesc() {
-      return "Nye brukere f\xe5r en ukes gratis pr\xf8veperiode av Pangea Chat";
+      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d7\u05d3\u05e9\u05d9\u05dd \u05de\u05e7\u05d1\u05dc\u05d9\u05dd \u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05d7\u05d9\u05e0\u05dd \u05e9\u05dc \u05e9\u05d1\u05d5\u05e2 \u05d1-Pangea Chat";
     },
     get$activateTrial() {
-      return "Gratis 7-dagers pr\xf8veperiode";
+      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05d7\u05d9\u05e0\u05dd \u05dc-7 \u05d9\u05de\u05d9\u05dd";
     },
     get$successfullySubscribed() {
-      return "Du har abonnert vellykket!";
+      return "\u05e0\u05e8\u05e9\u05de\u05ea \u05d1\u05d4\u05e6\u05dc\u05d7\u05d4!";
     },
     get$clickToManageSubscription() {
-      return "Klikk her for \xe5 administrere abonnementet ditt.";
+      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05db\u05d3\u05d9 \u05dc\u05e0\u05d4\u05dc \u05d0\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Vennligst velg minst " + min + " tegn.";
+      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05dc\u05e4\u05d7\u05d5\u05ea " + min + " \u05ea\u05d5\u05d5\u05d9\u05dd.";
     },
     get$pleaseEnterValidEmail() {
-      return string$.Vennli;
+      return '\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05db\u05ea\u05d5\u05d1\u05ea \u05d3\u05d5\u05d0"\u05dc \u05ea\u05e7\u05d9\u05e0\u05d4.';
     },
     get$pleaseChooseAUsername() {
-      return "Vennligst velg et brukernavn";
+      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
     },
     get$listen() {
-      return "Lytt";
+      return "\u05d4\u05d0\u05d6\u05df";
     },
     get$trialPeriodExpired() {
-      return "Pr\xf8veperioden din har utl\xf8pt";
+      return "\u05ea\u05e7\u05d5\u05e4\u05ea \u05d4\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05e9\u05dc\u05da \u05ea\u05de\u05d4";
     },
     get$subscribedToUnlockTools() {
-      return "Abonner for \xe5 l\xe5se opp interaktiv oversettelse og grammatikkontroll, lydavspilling, tilpassede \xf8velsesaktiviteter og l\xe6ringsanalyse!";
+      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05ea\u05e8\u05d2\u05d5\u05dd \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9 \u05d5\u05d1\u05d3\u05d9\u05e7\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7, \u05d4\u05e9\u05de\u05e2\u05ea \u05e7\u05d5\u05dc, \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05ea\u05e8\u05d2\u05d5\u05dc \u05de\u05d5\u05ea\u05d0\u05de\u05d5\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea \u05d5\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4!";
     },
     get$translationTooltip() {
-      return "Oversett";
+      return "\u05ea\u05e8\u05d2\u05dd";
     },
     get$speechToTextTooltip() {
-      return "Transkripsjon";
+      return "\u05ea\u05de\u05dc\u05d5\u05dc";
     },
     get$kickBotWarning() {
-      return "\xc5 sparke Pangea Bot vil fjerne samtale-boten fra denne chatten.";
+      return "\u05d4\u05e1\u05e8\u05ea \u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05ea\u05e1\u05d9\u05e8 \u05d0\u05ea \u05d1\u05d5\u05d8 \u05d4\u05e9\u05d9\u05d7\u05d4 \u05de\u05e9\u05d9\u05d7\u05d4 \u05d6\u05d5.";
     },
     get$refresh(_) {
-      return "Oppdater";
+      return "\u05e8\u05e2\u05e0\u05df";
     },
     get$updatePhoneOS() {
-      return "Du kan trenge \xe5 oppdatere enhetens OS-versjon.";
+      return "\u05d9\u05d9\u05ea\u05db\u05df \u05e9\u05ea\u05e6\u05d8\u05e8\u05da \u05dc\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d2\u05e8\u05e1\u05ea \u05de\u05e2\u05e8\u05db\u05ea \u05d4\u05d4\u05e4\u05e2\u05dc\u05d4 \u05e9\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05e9\u05dc\u05da.";
     },
     get$autoIGCToolName() {
-      return "Kj\xf8r Pangea skrivehjelp automatisk";
+      return "\u05d4\u05e8\u05e5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d0\u05ea \u05e2\u05d6\u05e8 \u05d4\u05db\u05ea\u05d9\u05d1\u05d4 \u05e9\u05dc \u05e4\u05d0\u05e0\u05d2\u05d9\u05d0\u05d4";
     },
     get$autoIGCToolDescription() {
-      return "Kj\xf8r automatisk Pangea Chat grammatikk- og oversettelsesst\xf8tte f\xf8r jeg sender meldingen min.";
+      return "\u05d4\u05e8\u05e5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d0\u05ea \u05e2\u05d6\u05e8 \u05d4\u05db\u05ea\u05d9\u05d1\u05d4 \u05e9\u05dc \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d5\u05ea\u05e8\u05d2\u05d5\u05dd \u05e9\u05dc \u05e4\u05d0\u05e0\u05d2\u05d9\u05d0\u05d4 \u05dc\u05e4\u05e0\u05d9 \u05e9\u05dc\u05d9\u05d7\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05d9.";
     },
     get$chatCapacity() {
-      return "Chatkapasitet";
+      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05e9\u05d9\u05d7\u05d4";
     },
     get$roomFull() {
-      return "Dette rommet er allerede fullt.";
+      return "\u05d4\u05d7\u05d3\u05e8 \u05de\u05dc\u05d0 \u05db\u05d1\u05e8.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Chattkapasiteten er endret";
+      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05e9\u05d5\u05e0\u05ea\u05d4";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Chattkapasiteten m\xe5 v\xe6re minst " + count + ".";
+      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d7\u05d9\u05d9\u05d1\u05ea \u05dc\u05d4\u05d9\u05d5\u05ea \u05dc\u05e4\u05d7\u05d5\u05ea " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "Chattkapasitet begrenser antall medlemmer som kan delta i en chat.";
+      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05e9\u05d9\u05d7\u05d4 \u05de\u05d2\u05d1\u05d9\u05dc\u05d4 \u05d0\u05ea \u05de\u05e1\u05e4\u05e8 \u05d4\u05d7\u05d1\u05e8\u05d9\u05dd \u05d4\u05de\u05d5\u05e8\u05e9\u05d9\u05dd \u05d1\u05e9\u05d9\u05d7\u05d4.";
     },
     get$enterNumber() {
-      return "Vennligst skriv inn en heltallsverdi.";
+      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05e2\u05e8\u05da \u05de\u05e1\u05e4\u05e8 \u05e9\u05dc\u05dd.";
     },
     get$buildTranslation() {
-      return "Bygg oversettelsen din ut fra valgene ovenfor";
+      return "\u05d1\u05e0\u05d4 \u05d0\u05ea \u05d4\u05ea\u05e8\u05d2\u05d5\u05dd \u05e9\u05dc\u05da \u05de\u05d4\u05d0\u05e4\u05e9\u05e8\u05d5\u05d9\u05d5\u05ea \u05dc\u05de\u05e2\u05dc\u05d4";
     },
     get$practice() {
-      return "\xd8v";
+      return "\u05ea\u05e8\u05d2\u05d5\u05dc";
     },
     get$noLanguagesSet() {
-      return "Ingen spr\xe5k satt";
+      return "\u05dc\u05d0 \u05d4\u05d5\u05d2\u05d3\u05e8\u05d5 \u05e9\u05e4\u05d5\u05ea";
     },
     get$speechToTextBody() {
-      return "For talebeskjeder kan du se en transkripsjon samt speakerens Words Per Minute-poengsum.";
+      return "\u05dc\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e7\u05d5\u05dc\u05d9\u05d5\u05ea, \u05ea\u05d5\u05db\u05dc \u05dc\u05e8\u05d0\u05d5\u05ea \u05ea\u05de\u05dc\u05d5\u05dc \u05d5\u05d2\u05dd \u05d0\u05ea \u05e0\u05d9\u05e7\u05d5\u05d3 \u05de\u05d9\u05dc\u05d5\u05ea \u05dc\u05d3\u05e7\u05d4 \u05e9\u05dc \u05d4\u05d3\u05d5\u05d1\u05e8.";
     },
     get$versionNotFound() {
-      return "Versjon ikke funnet";
+      return "\u05d4\u05d2\u05e8\u05e1\u05d4 \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d4";
     },
     get$fetchingVersion() {
-      return "Henter versjon...";
+      return "\u05de\u05d1\u05e6\u05e2 \u05d8\u05e2\u05d9\u05e0\u05ea \u05d2\u05e8\u05e1\u05d4...";
     },
     get$versionFetchError() {
-      return "Feil ved henting av versjon";
+      return "\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05d8\u05e2\u05d9\u05e0\u05ea \u05d4\u05d2\u05e8\u05e1\u05d4";
     },
     versionText$2(version, buildNumber) {
-      return "Versjon: " + version + "+" + buildNumber;
+      return "\u05d2\u05e8\u05e1\u05d4: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Meldinger p\xe5 ditt grunnspr\xe5k vil ikke bli oversatt.";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05e9\u05e4\u05ea \u05d4\u05d9\u05e1\u05d5\u05d3 \u05e9\u05dc\u05da \u05dc\u05d0 \u05d9\u05ea\u05d5\u05e8\u05d2\u05de\u05d5.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Du har et aktivt abonnement";
+      return "\u05d9\u05e9 \u05dc\u05da \u05de\u05e0\u05d5\u05d9 \u05e4\u05e2\u05d9\u05dc";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Sletting av kontoen din vil ikke automatisk kansellere abonnementet ditt.";
+      return "\u05de\u05d7\u05d9\u05e7\u05ea \u05d4\u05d7\u05e9\u05d1\u05d5\u05df \u05e9\u05dc\u05da \u05dc\u05d0 \u05ea\u05d1\u05d8\u05dc \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d0\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da.";
     },
     get$manageSubscription() {
-      return "Administrer abonnement";
+      return "\u05e0\u05d9\u05d4\u05d5\u05dc \u05d4\u05de\u05e0\u05d5\u05d9";
     },
     get$error520Title() {
-      return "Vennligst pr\xf8v igjen.";
+      return "\u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
     get$error520Desc() {
-      return "Beklager, vi kunne ikke forst\xe5 meldingen din...";
+      return "\u05e1\u05dc\u05d9\u05d7\u05d4, \u05dc\u05d0 \u05d4\u05e6\u05dc\u05d7\u05e0\u05d5 \u05dc\u05d4\u05d1\u05d9\u05df \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05da...";
     },
     get$level(_) {
-      return "Niv\xe5";
+      return "\u05e8\u05de\u05d4";
     },
     get$translationChoicesBody() {
-      return "Klikk og hold et alternativ for en ledetr\xe5d.";
+      return "\u05dc\u05d7\u05e5 \u05d5\u05d4\u05d7\u05d6\u05e7 \u05d0\u05e4\u05e9\u05e8\u05d5\u05ea \u05dc\u05e7\u05d1\u05dc\u05ea \u05e8\u05de\u05d6.";
     },
     get$grammar() {
-      return "Grammatikk";
+      return "\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Kontakt har blitt invitert til chatten";
+      return "\u05d4\u05e7\u05e9\u05e8 \u05d4\u05d5\u05d6\u05de\u05df \u05dc\u05e9\u05d9\u05d7\u05d4";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Inviter til chat";
+      return "\ud83d\udce8 \u05d4\u05d6\u05de\u05e0\u05ea \u05e9\u05d9\u05d7\u05d4";
     },
     get$chatName() {
-      return "Chatnavn";
+      return "\u05e9\u05dd \u05d4\u05e9\u05d9\u05d7\u05d4";
     },
     get$l2SupportNa() {
-      return "Ikke tilgjengelig";
+      return "\u05dc\u05d0 \u05d6\u05de\u05d9\u05df";
     },
     get$l2SupportAlpha() {
-      return "Alpha";
+      return "\u05d0\u05dc\u05e4\u05d0";
     },
     get$l2SupportBeta() {
-      return "Beta";
+      return "\u05d1\u05d8\u05d0";
     },
     get$l2SupportFull() {
-      return "Full";
+      return "\u05de\u05dc\u05d0";
     },
     get$playAudio() {
-      return "Spill av";
+      return "\u05e0\u05d2\u05df";
     },
     get$stop(_) {
-      return "Stopp";
+      return "\u05e2\u05e6\u05d5\u05e8";
     },
     get$grammarCopyPOSsconj() {
-      return "Underordnende konjunksjon";
+      return "\u05de\u05d9\u05dc\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8 \u05de\u05e9\u05e0\u05d9\u05ea";
     },
     get$grammarCopyPOSnum() {
-      return "Tall";
+      return "\u05de\u05e1\u05e4\u05e8";
     },
     get$grammarCopyPOSverb() {
-      return "Verb";
+      return "\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyPOSaffix() {
-      return "Affiks";
+      return "\u05e1\u05d9\u05d5\u05de\u05ea";
     },
     get$grammarCopyPOSpart() {
-      return "Partikkel";
+      return "\u05d7\u05dc\u05e7\u05d9\u05e7";
     },
     get$grammarCopyPOSadj() {
-      return "Adjektiv";
+      return "\u05ea\u05d5\u05d0\u05e8 \u05ea\u05d5\u05d0\u05e8";
     },
     get$grammarCopyPOScconj() {
-      return "Koordinerende konjunksjon";
+      return "\u05de\u05d9\u05dc\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8 \u05de\u05e9\u05d5\u05ea\u05e4\u05ea";
     },
     get$grammarCopyPOSpunct() {
-      return "Tegnsymbol";
+      return "\u05e1\u05d9\u05de\u05df \u05e4\u05d9\u05e1\u05d5\u05e7";
     },
     get$grammarCopyPOSadv() {
-      return "Adverb";
+      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyPOSaux() {
-      return "Hjelpeverb";
+      return "\u05e2\u05d6\u05e8";
     },
     get$grammarCopyPOSspace() {
-      return "Mellomrom";
+      return "\u05e8\u05d5\u05d5\u05d7";
     },
     get$grammarCopyPOSsym() {
-      return "Symbol";
+      return "\u05e1\u05de\u05dc";
     },
     get$grammarCopyPOSdet() {
-      return "Bestemmende";
+      return "\u05de\u05d9\u05dc\u05d9\u05ea";
     },
     get$grammarCopyPOSpron() {
-      return "Pronomen";
+      return "\u05de\u05b4\u05e9\u05b0\u05c1\u05ea\u05b7\u05bc\u05de\u05b5\u05bc\u05e9\u05c1";
     },
     get$grammarCopyPOSadp() {
-      return "Adposisjon";
+      return "\u05d4\u05b7\u05e7\u05b0\u05e9\u05b8\u05c1\u05e8\u05b8\u05d4";
     },
     get$grammarCopyPOSpropn() {
-      return "Egennavn";
+      return "\u05e9\u05b5\u05c1\u05dd \u05d9\u05b4\u05d9\u05d7\u05d5\u05bc\u05d3";
     },
     get$grammarCopyPOSnoun() {
-      return "Substantiv";
+      return "\u05e9\u05b5\u05c1\u05dd";
     },
     get$grammarCopyPOSintj() {
-      return "Interjeksjon";
+      return "\u05d4\u05b7\u05d4\u05b7\u05db\u05b8\u05bc\u05d7\u05b8\u05d4";
     },
     get$grammarCopyPOSx() {
-      return "Annet";
+      return "\u05d0\u05d7\u05e8";
     },
     get$grammarCopyGENDERfem() {
-      return "Feminint";
+      return "\u05e0\u05b0\u05e7\u05b5\u05d1\u05b8\u05d4";
     },
     get$grammarCopyPERSON2() {
-      return "Andre person";
+      return "\u05d0\u05d9\u05e9\u05b4\u05c1\u05d9\u05ea \u05e9\u05b5\u05c1\u05e0\u05b4\u05d9\u05ea";
     },
     get$grammarCopyMOODimp() {
-      return "Imperativ";
+      return "\u05e6\u05d9\u05d5\u05d5\u05d9";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Sp\xf8rsm\xe5l";
+      return "\u05e9\u05b0\u05c1\u05d0\u05b5\u05dc\u05b8\u05d4";
     },
     get$grammarCopyASPECTperf() {
-      return "Perfekt";
+      return "\u05e9\u05dc\u05dd";
     },
     get$grammarCopyCASEaccnom() {
-      return "Akkusativ, Nominativ";
+      return "\u05e0\u05b4\u05e1\u05b0\u05d9\u05d5\u05b9\u05df, \u05e9\u05b5\u05c1\u05dd \u05d4\u05b7\u05db\u05b0\u05bc\u05e8\u05d5\u05bc\u05ea";
     },
     get$grammarCopyCASEobl() {
-      return "Oblik";
+      return "\u05e2\u05b8\u05e7\u05b5\u05d1";
     },
     get$grammarCopyVOICEact() {
-      return "Aktiv";
+      return "\u05e4\u05e2\u05d9\u05dc";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Parentes";
+      return "\u05e1\u05b0\u05d2\u05d5\u05b9\u05dc\u05b8\u05d4";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Artikkel";
+      return "\u05de\u05d0\u05de\u05e8";
     },
     get$grammarCopyNUMBERsing() {
-      return "Entall";
+      return "\u05d9\u05d7\u05d9\u05d3";
     },
     get$grammarCopyGENDERmasc() {
-      return "Hankj\xf8nn";
+      return "\u05d6\u05b8\u05db\u05b8\u05e8";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modale";
+      return "\u05de\u05d5\u05d3\u05d0\u05dc\u05d9";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Adverbial";
+      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifrasisk";
+      return "\u05e4\u05e8\u05e4\u05e8\u05d6\u05d8\u05d9";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Siffer";
+      return "\u05e1\u05e4\u05e8\u05ea\u05d9";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Ikke egennavn";
+      return "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df";
     },
     get$grammarCopyNUMTYPEcard() {
-      return " Kardinal";
+      return "\u05de\u05e1\u05e4\u05e8\u05d9";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Egen";
+      return "\u05e0\u05db\u05d5\u05df";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Bindestrek";
+      return "\u05de\u05e7\u05e3";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Ja";
+      return "\u05db\u05df";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Semikolon";
+      return "\u05e0\u05e7\u05d5\u05d3\u05d4 \u05e4\u05e1\u05d9\u05e7";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Komma";
+      return "\u05e4\u05e1\u05d9\u05e7";
     },
     get$grammarCopyMOODcnd() {
-      return "Kondisjonell";
+      return "\u05ea\u05e0\u05d0\u05d9";
     },
     get$grammarCopyCASEacc() {
-      return "Akkusativ";
+      return "\u05e0\u05d5\u05e9\u05d0 \u05d9\u05e9\u05d9\u05e8";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partitiv";
+      return "\u05d7\u05dc\u05e7\u05d9";
     },
     get$grammarCopyTENSEpast() {
-      return "Fortid";
+      return "\u05e2\u05d1\u05e8";
     },
     get$grammarCopyDEGREEsup() {
-      return "Superlativ";
+      return "\u05e9\u05d9\u05d0";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Kolon";
+      return "\u05e0\u05e7\u05d5\u05d3\u05ea\u05d9\u05d9\u05dd";
     },
     get$grammarCopyPERSON3() {
-      return "Tredje person";
+      return "\u05d2\u05d5\u05e3 \u05e9\u05dc\u05d9\u05e9\u05d9";
     },
     get$grammarCopyNUMBERplur() {
-      return "Flertall";
+      return "\u05e8\u05d1\u05d9\u05dd";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Egennavn";
+      return "\u05e9\u05dd \u05e2\u05e6\u05dd \u05e4\u05e8\u05d8\u05d9";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Sp\xf8rreord";
+      return "\u05e9\u05d0\u05dc\u05ea\u05d9\u05ea";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Uformell";
+      return "\u05dc\u05d0 \u05e4\u05d5\u05e8\u05de\u05dc\u05d9";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Tid";
+      return "\u05d6\u05de\u05df";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Negativ";
+      return "\u05e9\u05dc\u05d9\u05dc\u05d9";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Total";
+      return "\u05e1\u05da \u05d4\u05db\u05dc";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Adnominal";
+      return "\u05e9\u05de\u05d5\u05ea \u05ea\u05d5\u05d0\u05e8";
     },
     get$grammarCopyASPECTprog() {
-      return "Progressiv";
+      return "\u05de\u05ea\u05e7\u05d3\u05dd";
     },
     get$grammarCopyMOODsub() {
-      return "Konjunktiv";
+      return "\u05e9\u05d5\u05dc\u05d9\u05d9\u05dd";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Komplementiv";
+      return "\u05de\u05e9\u05dc\u05d9\u05dd";
     },
     get$grammarCopyCASEnom() {
-      return "Nominativ";
+      return " nominative";
     },
     get$grammarCopyTENSEfut() {
-      return "Fremtid";
+      return "\u05e2\u05ea\u05d9\u05d3";
     },
     get$grammarCopyCASEdat() {
-      return "Dativ";
+      return "\u05d3\u05d0\u05d8\u05d9\u05d1";
     },
     get$grammarCopyTENSEpres() {
-      return "Presens";
+      return "\u05d4\u05d5\u05d5\u05d4";
     },
     get$grammarCopyGENDERneut() {
-      return "Intetkj\xf8nn";
+      return "\u05e0\u05e7\u05d1\u05d4";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Relativ";
+      return "\u05d9\u05d7\u05e1\u05d9";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Endelig ending";
+      return "\u05e1\u05d9\u05d5\u05dd \u05e1\u05d5\u05e4\u05d9";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Demonstrativ";
+      return "\u05de\u05d5\u05e8\u05d4";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Preposisjonell";
+      return "\u05e7\u05d5\u05d3\u05dd";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Finite";
+      return "\u05e1\u05d5\u05e4\u05d9";
     },
     get$grammarCopyDEGREEpos() {
-      return "Positiv";
+      return "\u05d7\u05d9\u05d5\u05d1\u05d9";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Sitat";
+      return "\u05e6\u05d9\u05d8\u05d5\u05d8";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerundium";
+      return "\u05d2\u05d6\u05d5\u05e8";
     },
     get$grammarCopyVOICEpass() {
-      return "Passiv";
+      return "\u05e4\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyCASEgen() {
-      return "Genitiv";
+      return "\u05d2\u05e0\u05d9\u05d8\u05d9\u05d1\u05d9";
     },
     get$grammarCopyTENSEprs() {
-      return "Presens";
+      return "\u05d4\u05d5\u05d5\u05d4";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Bestemt";
+      return "\u05de\u05d5\u05d2\u05d3\u05e8";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Ordinal";
+      return "\u05e1\u05d9\u05d3\u05d5\u05e8\u05d9";
     },
     get$grammarCopyCASEins() {
-      return "Instrumental";
+      return "\u05db\u05dc\u05d9";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Infinitiv";
+      return "\u05d1\u05d9\u05e0\u05d5\u05e0\u05d9";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Hjelpeverb";
+      return "\u05e2\u05d6\u05e8\u05d9";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Lang";
+      return "\u05d0\u05e8\u05d5\u05da";
     },
     get$grammarCopyCASEloc() {
-      return "Lokativ";
+      return "\u05de\u05e7\u05d5\u05de\u05d9";
     },
     get$grammarCopyMOODind() {
-      return "Indikativ";
+      return "\u05de\u05e6\u05d1\u05d9\u05e2";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Komparativ";
+      return "\u05d4\u05e9\u05d5\u05d5\u05d0\u05ea\u05d9";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Relativ";
+      return "\u05d9\u05d7\u05e1\u05d9";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Utrop";
+      return "\u05d4\u05ea\u05e8\u05d7\u05e9\u05d5\u05ea";
     },
     get$grammarCopyPERSON1() {
-      return "F\xf8rste person";
+      return "\u05d2\u05d5\u05e3 \u05e8\u05d0\u05e9\u05d5\u05df";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Innledende";
+      return "\u05d4\u05ea\u05d7\u05dc\u05ea\u05d9";
     },
     get$grammarCopyGENDERperson() {
-      return "Person";
+      return "\u05de\u05d9\u05df";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Utenlandsk";
+      return "\u05d6\u05e8";
     },
     get$grammarCopyVOICEvoice() {
-      return "Stemme";
+      return "\u05e7\u05d5\u05dc";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Verb";
+      return "\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyPOSSpass() {
-      return "Eieform";
+      return "\u05e7\u05e0\u05d9\u05d9\u05df";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Preposisjonell";
+      return "\u05de\u05d9\u05dc\u05d9\u05ea \u05d9\u05d7\u05e1";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Tallord";
+      return "\u05de\u05e1\u05e4\u05e8\u05d9";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Substantiv";
+      return "\u05e9\u05b5\u05dd";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Refleksiv";
+      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Pronomen";
+      return "\u05de\u05b4\u05e9\u05b0\u05c1\u05de\u05b8\u05e8";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Tegnpunktside";
+      return "\u05e6\u05d3 \u05e1\u05d9\u05de\u05e0\u05d9 \u05e4\u05d9\u05e1\u05d5\u05e7";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Verb";
+      return "\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyGENDERgender() {
-      return "Kj\xf8nn";
+      return "\u05de\u05d9\u05df";
     },
     get$grammarCopyMOODmood() {
-      return "Modus";
+      return "\u05de\u05e6\u05d1 \u05e8\u05d5\u05d7";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspekt";
+      return "\u05d4\u05d9\u05d1\u05d8";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Tegnsetting";
+      return "\u05e1\u05d9\u05de\u05e0\u05d9 \u05e4\u05d9\u05e1\u05d5\u05e7";
     },
     get$grammarCopyTENSEtense() {
-      return "Tidsform";
+      return "\u05d6\u05de\u05df";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Grad";
+      return "\u05d3\u05e8\u05d2\u05d4";
     },
     get$grammarCopyPOLITEpolite() {
-      return "H\xf8flighet";
+      return "\u05e0\u05d9\u05de\u05d5\u05e1";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Adverb";
+      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Tall";
+      return "\u05de\u05e1\u05e4\u05e8";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Konjunksjon";
+      return "\u05de\u05d9\u05dc\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polaritetsgrad";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d4 \u05d7\u05d9\u05d5\u05d1\u05d9\u05ea/\u05e9\u05dc\u05d9\u05dc\u05d9\u05ea";
     },
     get$grammarCopyCASEcase() {
-      return "Kasus";
+      return "\u05de\u05e7\u05e8\u05d4";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Bestemthet";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d4";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Numeral";
+      return "\u05de\u05e1\u05e4\u05e8\u05d9";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Adnominal";
+      return "\u05e9\u05de\u05d5\u05ea \u05ea\u05d5\u05d0\u05e8";
     },
     get$grammarCopyVOCvoc() {
-      return "Vokativ";
+      return "\u05e7\u05e8\u05d9\u05d0\u05d4";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Komplementor";
+      return "\u05de\u05e9\u05dc\u05d9\u05dd";
     },
     get$grammarCopyADVadv() {
-      return "Adverbial";
+      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyMOODjus() {
-      return "Imperativ";
+      return "\u05e6\u05d9\u05d5\u05d5\u05d9";
     },
     get$grammarCopyGENDERcom() {
-      return "Felleskj\xf8nn";
+      return "\u05de\u05d9\u05df \u05de\u05e9\u05d5\u05ea\u05e3";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Refleksiv";
+      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Partitiv";
+      return "\u05d7\u05dc\u05e7\u05d9";
     },
     get$grammarCopySPCspc() {
-      return "Spesifikk";
+      return "\u05e1\u05e4\u05e6\u05d9\u05e4\u05d9";
     },
     get$grammarCopyTENSEpqp() {
-      return "Pluskvamperfekt";
+      return "\u05d6\u05de\u05df \u05e2\u05d1\u05e8 \u05de\u05d5\u05e9\u05dc\u05dd";
     },
     get$grammarCopyREFLEXref() {
-      return "Refleksiv";
+      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Kort";
+      return "\u05e7\u05e6\u05e8";
     },
     get$grammarCopyNUMBERdual() {
-      return "Dobbel";
+      return "\u05d6\u05d5\u05d2\u05d9";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Lang";
+      return "\u05d0\u05e8\u05d5\u05da";
     },
     get$grammarCopyVOICEmid() {
-      return "Midten";
+      return "\u05d0\u05de\u05e6\u05e2\u05d9";
     },
     get$grammarCopyINTRELintRel() {
-      return "Sp\xf8rreord, Relativ";
+      return "\u05e9\u05d0\u05dc\u05d9, \u05d9\u05d7\u05e1";
     },
     get$grammarCopyINTint() {
-      return "Sp\xf8rreord";
+      return "\u05e9\u05d0\u05dc\u05d9";
     },
     get$grammarCopyVOICEcaus() {
-      return "\xc5rsakende";
+      return "\u05e1\u05d9\u05d1\u05ea\u05d9";
     },
     get$grammarCopyUnknown() {
-      return "Ukjent";
+      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
     },
     get$grammarCopyEVIDENTevident() {
-      return "Evidens";
+      return "\u05e2\u05d3\u05d5\u05ea\u05d9\u05d5\u05ea";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Eiers tall";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d7\u05d6\u05d9\u05e7";
     },
     get$grammarCopyASPECThab() {
-      return "Vanemessig";
+      return "\u05d4\u05e8\u05d2\u05dc\u05d9";
     },
     get$grammarCopyCASEabl() {
-      return "Ablativ";
+      return "\u05e1\u05d1\u05d9\u05dc";
     },
     get$grammarCopyCASEall() {
-      return "Allativ";
+      return "\u05db\u05dc\u05dc\u05d9";
     },
     get$grammarCopyCASEess() {
-      return "Essiv";
+      return "\u05de\u05e6\u05d1\u05d9";
     },
     get$grammarCopyCASEtra() {
-      return "Translativ";
+      return "\u05d8\u05e8\u05e0\u05e1\u05dc\u05d9\u05d8\u05d9\u05d1\u05d9";
     },
     get$grammarCopyCASEequ() {
-      return "Likestilt";
+      return "\u05e9\u05d5\u05d5\u05d9\u05d5\u05e0\u05d9";
     },
     get$grammarCopyCASEdis() {
-      return "Distribusjon";
+      return "\u05de\u05e4\u05d5\u05d6\u05e8";
     },
     get$grammarCopyCASEabs() {
-      return "Absolutt";
+      return "\u05d1\u05de\u05e7\u05e8\u05d4 \u05e1\u05d5\u05e4\u05d9";
     },
     get$grammarCopyCASEerg() {
-      return "Ergativ";
+      return "\u05d0\u05e8\u05d2\u05d8\u05d9\u05d1\u05d9";
     },
     get$grammarCopyCASEcau() {
-      return "\xc5rsak";
+      return "\u05e1\u05d9\u05d1\u05ea\u05d9";
     },
     get$grammarCopyCASEben() {
-      return "Fordel";
+      return "\u05ea\u05d5\u05e2\u05dc\u05ea\u05e0\u05d9";
     },
     get$grammarCopyCASEtem() {
-      return "Tidsmessig";
+      return "\u05d6\u05de\u05e0\u05d9";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Koordinerende";
+      return "\u05e7\u05d5\u05d0\u05d5\u05e8\u05d3\u05d9\u05e0\u05d8\u05d9\u05d1\u05d9";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Bestemt form";
+      return "\u05de\u05e6\u05d1 \u05d1\u05e0\u05d9\u05d9\u05df";
     },
     get$grammarCopyDEGREEabs() {
-      return "Absolutt grad";
+      return "\u05d3\u05e8\u05d2\u05d4 \u05de\u05d5\u05d7\u05dc\u05d8\u05ea";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Faktisk evidens";
+      return "\u05e2\u05d3\u05d5\u05ea \u05e2\u05d5\u05d1\u05d3\u05ea\u05d9\u05ea";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Ikke-faktisk evidens";
+      return "\u05e2\u05d3\u05d5\u05ea \u05dc\u05d0-\u05e2\u05d5\u05d1\u05d3\u05ea\u05d9\u05ea";
     },
     get$grammarCopyMOODopt() {
-      return "Optativ";
+      return "\u05e8\u05e6\u05d5\u05e0\u05d9";
     },
     get$grammarCopyMOODadm() {
-      return "Beundrende";
+      return "\u05de\u05d0\u05de\u05e5";
     },
     get$grammarCopyMOODdes() {
-      return "\xd8nskende";
+      return "\u05e8\u05e6\u05d5\u05e0\u05d9";
     },
     get$grammarCopyMOODnec() {
-      return "N\xf8dvendighetsmodus";
+      return "\u05e0\u05d7\u05d9\u05e6\u05d5\u05ea\u05d9";
     },
     get$grammarCopyMOODpot() {
-      return "Potensiell";
+      return "\u05e4\u05d5\u05d8\u05e0\u05e6\u05d9\u05d0\u05dc\u05d9";
     },
     get$grammarCopyMOODprp() {
-      return "Proposisjon";
+      return "\u05d4\u05e6\u05e2\u05d4";
     },
     get$grammarCopyMOODqot() {
-      return "Kvantifiserende";
+      return "\u05e6\u05d9\u05d8\u05d5\u05d8\u05d9";
     },
     get$grammarCopyNUMFORMword() {
-      return "Ordform";
+      return "\u05e6\u05d5\u05e8\u05ea \u05de\u05d9\u05dc\u05d4";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Romersk tall";
+      return "\u05de\u05e1\u05e4\u05e8 \u05e8\u05d5\u05de\u05d0\u05d9";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Bokstavform";
+      return "\u05e6\u05d5\u05e8\u05ea \u05d0\u05d5\u05ea";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Multiplikativ";
+      return "\u05db\u05e4\u05dc";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Br\xf8kdel";
+      return "\u05e9\u05d1\u05e8";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Sett";
+      return "\u05e7\u05d1\u05d5\u05e6\u05d4";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Rekke";
+      return "\u05d8\u05d5\u05d5\u05d7";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Distributiv";
+      return "\u05de\u05e4\u05d5\u05d6\u05e8";
     },
     get$grammarCopyNUMBERtri() {
-      return "Pr\xf8ve";
+      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Paukal";
+      return "\u05e4\u05d0\u05d5\u05e7\u05d0\u05dc\u05d9";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "St\xf8rre Paukal";
+      return "\u05e4\u05d0\u05d5\u05e7\u05d0\u05dc\u05d9 \u05d2\u05d3\u05d5\u05dc";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "St\xf8rre Flertall";
+      return "\u05e8\u05d1\u05d9\u05dd \u05d2\u05d3\u05d5\u05dc\u05d9\u05dd";
     },
     get$grammarCopyNUMBERinv() {
-      return "Invers";
+      return "\u05d4\u05e4\u05d5\u05da";
     },
     get$grammarCopyPERSON0() {
-      return "Null";
+      return "\u05d0\u05e4\u05e1";
     },
     get$grammarCopyPERSON4() {
-      return "Fjerde";
+      return "\u05e8\u05d1\u05d9\u05e2\u05d9";
     },
     get$grammarCopyPOLITEform() {
-      return "Formell";
+      return "\u05e8\u05e9\u05de\u05d9";
     },
     get$grammarCopyPOLITEelev() {
-      return "H\xf8yverdig";
+      return "\u05de\u05d5\u05d2\u05d1\u05d4";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Ydmyk";
+      return "\u05e2\u05e0\u05d5\u05d5\u05d4";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Betont";
+      return "\u05d4\u05d3\u05d2\u05e9\u05d4";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Utrop";
+      return "\u05d4\u05ea\u05e8\u05d7\u05e9\u05d5\u05ea \u05d1\u05d4\u05ea\u05e8\u05e1\u05d4";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Gjensidig";
+      return "\u05d4\u05d3\u05d3\u05d9";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Interrogativ-Relativ";
+      return "\u05e9\u05d0\u05dc\u05ea\u05d9\u05ea-\u05d9\u05d7\u05e1\u05d9\u05ea";
     },
     get$grammarCopyTENSEaor() {
-      return "Aorist";
+      return "\u05e2\u05ea\u05d9\u05d3 \u05e4\u05e9\u05d5\u05d8";
     },
     get$grammarCopyTENSEeps() {
-      return "Epistemisk";
+      return "\u05d0\u05e4\u05d9\u05e1\u05d8\u05de\u05d9";
     },
     get$grammarCopyTENSEprosp() {
-      return "Fremtidig";
+      return "\u05e2\u05ea\u05d9\u05d3\u05d9";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Partisipp";
+      return "\u05e6\u05d5\u05e8\u05ea \u05d7\u05dc\u05e7";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Konverb";
+      return "\u05e6\u05d5\u05e8\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Verbalt substantiv";
+      return "\u05e9\u05dd \u05e4\u05d5\u05e2\u05dc \u05e9\u05de\u05e0\u05d9";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipasiv";
+      return "\u05d0\u05e0\u05d8\u05d9-\u05e4\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\xc5rsakende";
+      return "\u05e1\u05d9\u05d1\u05ea\u05d9\u05ea";
     },
     get$grammarCopyVOICedir() {
-      return "Direkte";
+      return "\u05d9\u05e9\u05d9\u05e8";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Invers";
+      return "\u05d4\u05e4\u05d5\u05da";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Reciprocal";
+      return "\u05d4\u05d3\u05d3\u05d9";
     },
     get$grammarCopyPOS() {
-      return "Ordklasse";
+      return "\u05d7\u05dc\u05e7 \u05d4\u05d3\u05d9\u05d1\u05d5\u05e8";
     },
     get$grammarCopyGENDER() {
-      return "Kj\xf8nn";
+      return "\u05de\u05d9\u05df";
     },
     get$grammarCopyPERSON() {
-      return "Person";
+      return "\u05d0\u05d9\u05e9\u05d9\u05d5\u05ea";
     },
     get$grammarCopyMOOD() {
-      return "Modus";
+      return "\u05de\u05e6\u05d1 \u05e8\u05d5\u05d7";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Tegntype";
+      return "\u05e1\u05d5\u05d2 \u05e4\u05d9\u05e1\u05d5\u05e7";
     },
     get$grammarCopyASPECT() {
-      return "Aspekt";
+      return "\u05d4\u05d9\u05d1\u05d8";
     },
     get$grammarCopyCASE() {
-      return "Kasus";
+      return "\u05de\u05e7\u05e8\u05d4";
     },
     get$grammarCopyVOICE() {
-      return "Aktiv/Passiv";
+      return "\u05e7\u05d5\u05dc";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Substantivtype";
+      return "\u05e1\u05d5\u05d2 \u05e9\u05dd \u05e2\u05e6\u05dd";
     },
     get$grammarCopyVERBTYPE() {
-      return "Verbtype";
+      return "\u05e1\u05d5\u05d2 \u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyADVTYPE() {
-      return "Adverbtype";
+      return "\u05e1\u05d5\u05d2 \u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyNUMFORM() {
-      return "Tallform";
+      return "\u05e6\u05d5\u05e8\u05ea \u05de\u05e1\u05e4\u05e8";
     },
     get$grammarCopyNUMTYPE() {
-      return "Numeral Type";
+      return "\u05e1\u05d5\u05d2 \u05de\u05e1\u05e4\u05e8";
     },
     get$grammarCopyNUMBER() {
-      return "Tall";
+      return "\u05de\u05e1\u05e4\u05e8";
     },
     get$grammarCopyDEFINITE() {
-      return "Bestemmelse";
+      return "\u05d4\u05d2\u05d3\u05e8\u05d4";
     },
     get$grammarCopyDEGREE() {
-      return "Grad";
+      return "\u05d3\u05e8\u05d2\u05d4";
     },
     get$grammarCopyEVIDENT() {
-      return "Evidensialitet";
+      return "\u05e2\u05d3\u05d5\u05ea\u05d9\u05d5\u05ea";
     },
     get$grammarCopyFOREIGN() {
-      return "Utenlandsk";
+      return "\u05d6\u05e8";
     },
     get$grammarCopyPOLARITY() {
-      return "Polaritets";
+      return "\u05d4\u05e4\u05db\u05d9\u05d5\u05ea";
     },
     get$grammarCopyPOLITE() {
-      return "H\xf8flighet";
+      return "\u05e0\u05d9\u05de\u05d5\u05e1";
     },
     get$grammarCopyPREPCASE() {
-      return "Preposisjonskasus";
+      return "\u05de\u05e7\u05e8\u05d4 \u05d9\u05d7\u05e1";
     },
     get$grammarCopyPRONTYPE() {
-      return "Pronomen Type";
+      return "\u05e1\u05d5\u05d2 \u05db\u05d9\u05e0\u05d5\u05d9";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Tegnpunktside";
+      return "\u05e6\u05d3 \u05e4\u05d9\u05e1\u05d5\u05e7";
     },
     get$grammarCopyREFLEX() {
-      return "Refleksiv";
+      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyTENSE() {
-      return "Tid";
+      return "\u05d6\u05de\u05df";
     },
     get$grammarCopyVERBFORM() {
-      return "Verbform";
+      return "\u05e6\u05d5\u05e8\u05ea \u05d4\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyCONJTYPE() {
-      return "Konjunksjonstype";
+      return "\u05e1\u05d5\u05d2 \u05e7\u05d5\u05e0 junction";
     },
     get$grammarCopyUNKNOWN() {
-      return "Ukjent";
+      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Eiers tall";
+      return "\u05de\u05e1\u05e4\u05e8 \u05de\u05d7\u05d6\u05d9\u05e7";
     },
     get$grammarCopyPOSS() {
-      return "Besittende";
+      return "\u05e7\u05e0\u05d9\u05d9\u05e0\u05d9";
     },
     get$grammarCopyASPECTimp() {
-      return "Ufullstendig aspekt";
+      return "\u05d4\u05d9\u05d1\u05d8 \u05d1\u05dc\u05ea\u05d9 \u05de\u05d5\u05e9\u05dc\u05dd";
     },
     get$grammarCopyCASEvoc() {
-      return "Kallativ";
+      return "\u05e7\u05e8\u05d9\u05d0\u05d4";
     },
     get$grammarCopyCASEcom() {
-      return "Komitat";
+      return "\u05e7\u05d5\u05de\u05d9\u05d8\u05d9\u05d1\u05d9";
     },
     get$grammarCopyCASEpar() {
-      return "Partitiv";
+      return "\u05d7\u05dc\u05e7\u05d9";
     },
     get$grammarCopyCASEadv() {
-      return "Adverbial";
+      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
     },
     get$grammarCopyCASEref() {
-      return "Referensiell";
+      return "\u05e8\u05e4\u05e8\u05e0\u05e6\u05d9\u05d0\u05dc\u05d9";
     },
     get$grammarCopyCASErel() {
-      return "Relativ";
+      return "\u05d9\u05d7\u05e1\u05d9";
     },
     get$grammarCopyCASEsub() {
-      return "Subessiv";
+      return "\u05e1\u05d5\u05d1\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyCASEsup() {
-      return "Superessiv";
+      return "\u05e2\u05dc-\u05de\u05e7\u05d5\u05de\u05d9";
     },
     get$grammarCopyCASEaccdat() {
-      return "Akusativ-Dativ";
+      return "\u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9\u05d1\u05d9-\u05d3\u05d0\u05d8\u05d9\u05d1\u05d9";
     },
     get$grammarCopyCASEpre() {
-      return "Preposisjonell";
+      return "\u05dc\u05e4\u05e0\u05d9-\u05de\u05d9\u05dc\u05ea \u05d9\u05d7\u05e1";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Underordnende";
+      return "\u05de\u05e9\u05e0\u05d9";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Komparativ";
+      return "\u05d4\u05e9\u05d5\u05d5\u05d0\u05ea\u05d9";
     },
     get$grammarCopyDEFINITEind() {
-      return "Ubestemt";
+      return "\u05dc\u05d0 \u05de\u05d5\u05d2\u05d3\u05e8";
     },
     get$grammarCopyMOODint() {
-      return "Sp\xf8rremodus";
+      return "\u05e9\u05d0\u05dc\u05d9";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Fellesnavn";
+      return "\u05e9\u05dd \u05e2\u05e6\u05dd \u05db\u05dc\u05dc\u05d9";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Eiers tall entall";
+      return "\u05d9\u05d7\u05d9\u05d3 \u05e9\u05dc \u05d1\u05e2\u05dc\u05d5\u05ea";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Eiers tall flertall";
+      return "\u05e8\u05d1\u05d9\u05dd \u05e9\u05dc \u05d1\u05e2\u05dc\u05d5\u05ea";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Eiers dual";
+      return "\u05e9\u05e0\u05d9 \u05e9\u05dc \u05d1\u05e2\u05dc\u05d5\u05ea";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Positiv polaritet";
+      return "\u05d7\u05d9\u05d5\u05d1\u05d9";
     },
     get$grammarCopyPOSSyes() {
-      return "Besittende";
+      return "\u05d1\u05e2\u05dc\u05d5\u05ea";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Ikke-preposisjonell";
+      return "\u05dc\u05d0 \u05dc\u05e4\u05e0\u05d9-\u05de\u05d9\u05dc\u05ea \u05d9\u05d7\u05e1";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Personlig";
+      return "\u05d0\u05d9\u05e9\u05d9";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Interrogativ";
+      return "\u05e9\u05d0\u05dc\u05ea\u05d9";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Total";
+      return "\u05db\u05d5\u05dc\u05dc";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Negativ";
+      return "\u05e9\u05dc\u05d9\u05dc\u05d9";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Artikkel";
+      return "\u05de\u05d0\u05de\u05e8";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Ubestemt";
+      return "\u05dc\u05d0 \u05de\u05d5\u05d2\u05d3\u05e8";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Interrogativ-relativ";
+      return "\u05e9\u05d0\u05dc\u05d4-\u05d9\u05d7\u05e1";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Endelig tegnsetting";
+      return "\u05e1\u05d9\u05de\u05e0\u05d9 \u05e4\u05d9\u05e1\u05d5\u05e7 \u05e1\u05d5\u05e4\u05d9\u05d9\u05dd";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Punktum";
+      return "\u05e0\u05e7\u05d5\u05d3\u05d4";
     },
     get$grammarCopyREFLEXyes() {
-      return "Refleksiv";
+      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
     },
     get$grammarCopyTENSEimp() {
-      return "Imperfekt";
+      return "\u05e2\u05d1\u05e8 \u05e4\u05e9\u05d5\u05d8";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Supinum";
+      return "\u05e6\u05d5\u05e8\u05ea \u05e1\u05d5\u05e4\u05d9\u05df";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominal";
+      return "\u05e6\u05d5\u05e8\u05ea \u05ea\u05d5\u05d0\u05e8 \u05e9\u05de\u05e0\u05d9";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Lang";
+      return "\u05d0\u05e8\u05d5\u05db\u05d4";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Kort";
+      return "\u05e7\u05e6\u05e8\u05d4";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\xc5rsaksverb";
+      return "\u05e4\u05d5\u05e2\u05dc \u05e1\u05d9\u05d1\u05ea\u05d9";
     },
     get$grammarCopyVOICEcau() {
-      return "\xc5rsakssammenheng";
+      return "\u05e1\u05d9\u05d1\u05ea\u05d9";
     },
     get$grammarCopyVOICEdir() {
-      return "Direkte";
+      return "\u05d9\u05e9\u05d9\u05e8";
     },
     get$grammarCopyVOICEinv() {
-      return "Invers";
+      return "\u05d4\u05e4\u05d5\u05da";
     },
     get$grammarCopyVOICErcp() {
-      return "Gjensidig";
+      return "\u05d4\u05d3\u05d3\u05d9";
     },
     get$other() {
-      return "Annet";
+      return "\u05d0\u05d7\u05e8";
     },
     levelShort$1(level) {
-      return "NIV\xc5 " + level;
+      return "\u05e8\u05de\u05d4 " + level;
     },
     get$clickBestOption() {
-      return "Velg de beste alternativene for \xe5 oversette meldingen din!";
+      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05d0\u05e4\u05e9\u05e8\u05d5\u05d9\u05d5\u05ea \u05d4\u05d8\u05d5\u05d1\u05d5\u05ea \u05d1\u05d9\u05d5\u05ea\u05e8 \u05dc\u05ea\u05e8\u05d2\u05d5\u05dd \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05da!";
     },
     get$completeActivitiesToUnlock() {
-      return "Fullf\xf8r minst \xe9n aktivitet for \xe5 l\xe5se opp oversettelsen!";
+      return "\u05d4\u05e9\u05dc\u05dd \u05dc\u05e4\u05d7\u05d5\u05ea \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d7\u05ea \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05d0\u05ea \u05d4\u05ea\u05e8\u05d2\u05d5\u05dd!";
     },
     get$downloadGroupText() {
-      return "Last ned gruppe tekst";
+      return "\u05d4\u05d5\u05e8\u05d3 \u05d8\u05e7\u05e1\u05d8 \u05de\u05e7\u05d1\u05d5\u05e6\u05d4";
     },
     get$notificationsOn() {
-      return "Varslinger p\xe5";
+      return "\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05de\u05d5\u05e4\u05e2\u05dc\u05d5\u05ea";
     },
     get$notificationsOff() {
-      return "Varslinger av";
+      return "\u05d4\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05db\u05d1\u05d5\u05d9\u05d5\u05ea";
     },
     get$createChatAndInviteUsers() {
-      return "Opprett chat og inviter brukere";
+      return "\u05e6\u05d5\u05e8 \u05e6'\u05d0\u05d8 \u05d5\u05d4\u05d6\u05de\u05df \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd";
     },
     get$updatedNewSpaceDescription() {
-      return "Kurs lar deg konsolidere chattene dine og bygge private eller offentlige fellesskap.";
+      return "\u05e7\u05d5\u05e8\u05e1\u05d9\u05dd \u05de\u05d0\u05e4\u05e9\u05e8\u05d9\u05dd \u05dc\u05da \u05dc\u05d0\u05d7\u05d3 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05e9\u05dc\u05da \u05d5\u05dc\u05d1\u05e0\u05d5\u05ea \u05e7\u05d4\u05d9\u05dc\u05d5\u05ea \u05e4\u05e8\u05d8\u05d9\u05d5\u05ea \u05d0\u05d5 \u05e6\u05d9\u05d1\u05d5\u05e8\u05d9\u05d5\u05ea.";
     },
     get$joinWithCode() {
-      return "Bli med med kode";
+      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05e2\u05dd \u05e7\u05d5\u05d3";
     },
     get$enterCodeToJoin() {
-      return "Skriv inn kode for \xe5 bli med";
+      return "\u05d4\u05d6\u05df \u05e7\u05d5\u05d3 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
     },
     get$updateNow() {
-      return "Oppdater n\xe5";
+      return "\u05e2\u05d3\u05db\u05df \u05e2\u05db\u05e9\u05d9\u05d5";
     },
     get$updateLater() {
-      return "Oppdater senere";
+      return "\u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8";
     },
     get$constructUseWaDesc() {
-      return "Brukt uten hjelp";
+      return "\u05de\u05e9\u05de\u05e9 \u05dc\u05dc\u05d0 \u05e2\u05d6\u05e8\u05d4";
     },
     get$constructUseGaDesc() {
-      return "Grammatikkhjelp";
+      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$constructUseTaDesc() {
-      return "Oversettelseshjelp";
+      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$constructUseUnkDesc() {
-      return "Ukjent";
+      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
     },
     get$constructUseCorITDesc() {
-      return "Korrekt i oversettelse";
+      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$constructUseIgnITDesc() {
-      return "Ignorert i oversettelse";
+      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$constructUseIncITDesc() {
-      return "Feil i oversettelse";
+      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$constructUseIgnIGCDesc() {
-      return "Ignorert i grammatikkorreksjon";
+      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05ea\u05d9\u05e7\u05d5\u05df \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9";
     },
     get$constructUseCorIGCDesc() {
-      return "Korrekt i grammatikkorreksjon";
+      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$constructUseIncIGCDesc() {
-      return "Feil i grammatikkorreksjon";
+      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$constructUseCorPADesc() {
-      return "Korrekt i ords betydningsaktivitet";
+      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
     },
     get$constructUseIgnPADesc() {
-      return "Ignorert i ords betydningsaktivitet";
+      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
     },
     get$constructUseIncPADesc() {
-      return "Feil i ords betydningsaktivitet";
+      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
     },
     get$constructUseCorWLDesc() {
-      return "Korrekt i ordlyttingsaktivitet";
+      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
     },
     get$constructUseIncWLDesc() {
-      return "Feil i ordlyttingsaktivitet";
+      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
     },
     get$constructUseIngWLDesc() {
-      return "Ignorert i ordlyttingsaktivitet";
+      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
     },
     get$constructUseCorHWLDesc() {
-      return "Korrekt i skjult ord-aktivitet";
+      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05d9\u05dc\u05d4 \u05e0\u05e1\u05ea\u05ea\u05e8\u05ea";
     },
     get$constructUseIncHWLDesc() {
-      return "Feil i skjult ord-aktivitet";
+      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05d9\u05dc\u05d4 \u05e0\u05e1\u05ea\u05ea\u05e8\u05ea";
     },
     get$constructUseIgnHWLDesc() {
-      return "Ignorert i skjult ord-aktivitet";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05d9\u05dc\u05d4 \u05e0\u05e1\u05ea\u05ea\u05e8\u05ea";
     },
     get$constructUseCorLDesc() {
-      return "Korrekt i lemmaktivitet";
+      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05b6\u05de\u05b8\u05d4";
     },
     get$constructUseIncLDesc() {
-      return "Feil i lemmaktivitet";
+      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05b6\u05de\u05b8\u05d4";
     },
     get$constructUseIgnLDesc() {
-      return "Ignorert i lemmaktivitet";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05b6\u05de\u05b8\u05d4";
     },
     get$constructUseCorMDesc() {
-      return "Korrekt i grammatikkaktivitet";
+      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$constructUseIncMDesc() {
-      return "Feil i grammatikkaktivitet";
+      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$constructUseIgnMDesc() {
-      return "Ignorert i grammatikkaktivitet";
+      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$constructUseEmojiDesc() {
-      return "Korrekt i emoji-aktivitet";
+      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9";
     },
     get$constructUseCollected() {
-      return "Innsamlet i chat";
+      return "\u05d0\u05e1\u05d5\u05e3 \u05d1\u05e6'\u05d0\u05d8";
     },
     get$constructUseNanDesc() {
-      return "Ikke aktuelt";
+      return "\u05dc\u05d0 \u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " XP";
+      return "" + currentXP + " / " + maxXP + " \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$enableTTSToolName() {
-      return "Aktivert tekst-til-tale";
+      return "\u05d4\u05e4\u05e2\u05dc \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8";
     },
     get$enableTTSToolDescription() {
-      return "Tillat appen \xe5 generere tekst-til-tale-uttak for deler av teksten p\xe5 m\xe5lspr\xe5ket ditt.";
+      return "\u05d0\u05e4\u05e9\u05e8 \u05dc\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05dc\u05d9\u05d9\u05e6\u05e8 \u05e4\u05dc\u05d8 \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8 \u05dc\u05d7\u05dc\u05e7\u05d9 \u05d8\u05e7\u05e1\u05d8 \u05d1\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da.";
     },
     get$yourUsername() {
-      return "Ditt brukernavn";
+      return "\u05e9\u05dd \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05da";
     },
     get$yourEmail() {
-      return "Din e-post";
+      return '\u05d4\u05d3\u05d5\u05d0"\u05dc \u05e9\u05dc\u05da';
     },
     get$iWantToLearn() {
-      return "Jeg vil l\xe6re";
+      return "\u05d0\u05e0\u05d9 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05dc\u05de\u05d5\u05d3";
     },
     get$pleaseEnterEmail() {
-      return string$.Vennli;
+      return '\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05db\u05ea\u05d5\u05d1\u05ea \u05d3\u05d5\u05d0"\u05dc \u05ea\u05e7\u05d9\u05e0\u05d4.';
     },
     get$myBaseLanguage() {
-      return "Mitt hovedspr\xe5k";
+      return "\u05e9\u05e4\u05ea \u05d4\u05d9\u05e1\u05d5\u05d3 \u05e9\u05dc\u05d9";
     },
     get$meaningSectionHeader() {
-      return "Betydning:";
+      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea:";
     },
     get$formSectionHeader() {
-      return "Former brukt i chatter:";
+      return "\u05e6\u05d5\u05e8\u05d5\u05ea \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1\u05e9\u05d9\u05d7\u05d5\u05ea:";
     },
     get$writingExercisesTooltip() {
-      return "Skriving";
+      return "\u05db\u05ea\u05d9\u05d1\u05d4";
     },
     get$listeningExercisesTooltip() {
-      return "Lytting";
+      return "\u05d4\u05d0\u05d6\u05e0\u05d4";
     },
     get$readingExercisesTooltip() {
-      return "Lesing";
+      return "\u05e7\u05e8\u05d9\u05d0\u05d4";
     },
     get$meaningNotFound() {
-      return "Betydning kunne ikke finnes.";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05de\u05e9\u05de\u05e2\u05d5\u05ea.";
     },
     get$chooseBaseForm() {
-      return "Velg grunnformen";
+      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05e6\u05d5\u05e8\u05d4 \u05d4\u05d1\u05e1\u05d9\u05e1\u05d9\u05ea";
     },
     get$notTheCodeError() {
-      return "Beklager, det er ikke koden!";
+      return "\u05e1\u05dc\u05d9\u05d7\u05d4, \u05d6\u05d4 \u05dc\u05d0 \u05d4\u05e7\u05d5\u05d3!";
     },
     get$totalXP() {
-      return "Total XP";
+      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05db\u05d5\u05dc\u05dc";
     },
     get$numLemmas() {
-      return "Totalt antall lemmata";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05d4\u05db\u05d5\u05dc\u05dc";
     },
     get$numLemmasUsedCorrectly() {
-      return "Antall lemmata brukt riktig minst \xe9n gang";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05e0\u05db\u05d5\u05df \u05dc\u05e4\u05d7\u05d5\u05ea \u05e4\u05e2\u05dd \u05d0\u05d7\u05ea";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Antall lemmata brukt riktig 0 ganger";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df 0 \u05e4\u05e2\u05de\u05d9\u05dd";
     },
     get$numLemmasSmallXP() {
-      return "Antall lemmata med 0 - 30 XP";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e2\u05dd 0 - 30 \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$numLemmasMediumXP() {
-      return "Antall lemmata med 31 - 200 XP";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e2\u05dd 31 - 200 \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$numLemmasLargeXP() {
-      return "Antall lemmata med > 200 XP";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e2\u05dd \u05d9\u05d5\u05ea\u05e8 \u05de-200 \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$numGrammarConcepts() {
-      return "Antall grammatikkbegreper";
+      return "\u05de\u05e1\u05e4\u05e8 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$listGrammarConcepts() {
-      return "Grammatikkbegreper";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Grammatikkbegreper brukt riktig i originale meldinger minst 80% av tiden";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05e0\u05db\u05d5\u05df \u05d1\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05de\u05e7\u05d5\u05e8\u05d9\u05d5\u05ea \u05dc\u05e4\u05d7\u05d5\u05ea \u05d1-80% \u05de\u05d4\u05d6\u05de\u05df";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Grammatikkbegreper brukt riktig i originale meldinger mindre enn 80% av tiden";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05d7\u05d5\u05ea \u05de-80% \u05de\u05d4\u05d6\u05de\u05df \u05d1\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05de\u05e7\u05d5\u05e8\u05d9\u05d5\u05ea";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Grammatikkbegreper valgt riktig fra systemgenererte forslag minst 80% av tiden";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05e0\u05db\u05d5\u05df \u05de\u05ea\u05d5\u05da \u05d4\u05e6\u05e2\u05d5\u05ea \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea \u05dc\u05e4\u05d7\u05d5\u05ea \u05d1-80% \u05de\u05d4\u05d6\u05de\u05df";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Grammatikkbegreper valgt riktig fra systemgenererte forslag mindre enn 80% av tiden";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05e0\u05db\u05d5\u05df \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea \u05e4\u05d7\u05d5\u05ea \u05de-80% \u05de\u05d4\u05d6\u05de\u05df";
     },
     get$listGrammarConceptsSmallXP() {
-      return "Grammatikkbegreper med 0-50 XP";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd 0-50 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$listGrammarConceptsMediumXP() {
-      return "Grammatikkbegreper med 51-200 XP";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd 51-200 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$listGrammarConceptsLargeXP() {
-      return "Grammatikkbegreper 201-500 XP";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd 201-500 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$listGrammarConceptsHugeXP() {
-      return "Grammatikkbegreper >500 XP";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd \u05d9\u05d5\u05ea\u05e8 \u05de-500 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
     },
     get$numMessagesSent() {
-      return "Antall sendte meldinger";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e9\u05e0\u05e9\u05dc\u05d7\u05d5";
     },
     get$numWordsTyped() {
-      return "Antall tastede ord i originale meldinger";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05d4\u05d5\u05e7\u05dc\u05d3\u05d5 \u05d1\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05de\u05e7\u05d5\u05e8\u05d9\u05d5\u05ea";
     },
     get$numCorrectChoices() {
-      return "Antall riktige ord valgt fra systemgenererte forslag";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05e0\u05db\u05d5\u05e0\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea";
     },
     get$numIncorrectChoices() {
-      return "Antall feilaktige ord valgt fra systemgenererte forslag";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05e9\u05d2\u05d5\u05d9\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3719,853 +3719,1510 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "Filtype";
+      return "\u05e1\u05d5\u05d2 \u05e7\u05d5\u05d1\u05e5";
     },
     get$download(_) {
-      return "Last ned";
+      return "\u05d4\u05d5\u05e8\u05d3\u05d4";
     },
     get$analyticsNotAvailable() {
-      return "Brukeranalyse tilgjengelig ikke";
+      return "\u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d5\u05ea \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d0 \u05d6\u05de\u05d9\u05e0\u05d5\u05ea";
     },
     get$downloading() {
-      return "Laster ned...";
+      return "\u05d4\u05d5\u05e8\u05d3\u05d4...";
     },
     get$failedFetchUserAnalytics() {
-      return "Mislyktes i \xe5 laste ned brukeranalyse";
+      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d4\u05d5\u05e8\u05d3\u05ea \u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d5\u05ea \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd";
     },
     get$downloadComplete() {
-      return "Nedlasting fullf\xf8rt!";
+      return "\u05d4\u05d4\u05d5\u05e8\u05d3\u05d4 \u05d4\u05d5\u05e9\u05dc\u05de\u05d4!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "Hva er " + morphologicalFeature + " av '" + wordForm + "'?";
+      return "\u05de\u05d4 \u05d4-" + morphologicalFeature + " \u05e9\u05dc '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "Data tilgjengelighet";
+      return "\u05d6\u05de\u05d9\u05e0\u05d5\u05ea \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd";
     },
     get$available(_) {
-      return "Tilgjengelig";
+      return "\u05d6\u05de\u05d9\u05df";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot gj\xf8r ogs\xe5 feil!";
+      return "\u05d2\u05dd \u05d1\u05d9\u05d2 \u05d1\u05d5\u05d8 \u05e2\u05dc\u05d5\u05dc \u05dc\u05d8\u05e2\u05d5\u05ea!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "Hva betyr '" + lemma + "'?";
+      return "\u05de\u05d4 \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05e9\u05dc '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match betydninger med ordene i meldingen!";
+      return "\u05d4\u05ea\u05d0\u05dd \u05d1\u05d9\u05df \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05d9\u05d5\u05ea \u05dc\u05de\u05d9\u05dc\u05d9\u05dd \u05d1\u05d4\u05d5\u05d3\u05e2\u05d4!";
     },
     get$doubleClickToEdit() {
-      return "Dobbeltklikk for \xe5 redigere.";
+      return "\u05dc\u05d7\u05e5 \u05e4\u05e2\u05de\u05d9\u05d9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e2\u05e8\u05d5\u05da.";
     },
     get$cefrLevelLabel() {
-      return "CEFR-niv\xe5";
+      return "\u05e8\u05de\u05ea CEFR";
     },
     get$image(_) {
-      return "Bilde";
+      return "\u05ea\u05de\u05d5\u05e0\u05d4";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Velg et emne, modus, l\xe6ringsm\xe5l og generer en aktivitet for chatten!";
+      return "\u05d1\u05d7\u05e8 \u05e0\u05d5\u05e9\u05d0, \u05de\u05e6\u05d1, \u05de\u05d8\u05e8\u05d4 \u05dc\u05dc\u05de\u05d9\u05d3\u05d4 \u05d5\u05d9\u05e6\u05d5\u05e8 \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05e9\u05d9\u05d7\u05d4!";
     },
     get$constructUsePvmDesc() {
-      return "Produsert i talemeldingsmodus";
+      return "\u05de\u05d9\u05d5\u05e6\u05e8 \u05d1\u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05dc";
     },
     get$leaveSpaceDescription() {
-      return "Ved \xe5 forlate kurset vil du forlate alle chattene innenfor det. Andre brukere vil se at du har forlatt kurset.";
+      return "\u05e2\u05dc \u05d9\u05d3\u05d9 \u05d9\u05e6\u05d9\u05d0\u05d4 \u05de\u05d4\u05e7\u05d5\u05e8\u05e1, \u05ea\u05e2\u05d6\u05d5\u05d1 \u05d0\u05ea \u05db\u05dc \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05d1\u05ea\u05d5\u05db\u05d5. \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05e8\u05d0\u05d5 \u05e9\u05d4\u05d9\u05d9\u05ea \u05d1\u05d7\u05d5\u05e5.";
     },
     get$constructUseCorMmDesc() {
-      return "Korrekt meldingsbetydning";
+      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05e0\u05db\u05d5\u05e0\u05d4";
     },
     get$constructUseIncMmDesc() {
-      return "Feil meldingsbetydning";
+      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05e9\u05d2\u05d5\u05d9\u05d4";
     },
     get$constructUseIgnMmDesc() {
-      return "Ignorert meldingsbetydning";
+      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05d4\u05ea\u05e2\u05dc\u05de\u05d5 \u05de\u05de\u05e0\u05d4";
     },
     get$meaning() {
-      return "Betydning";
+      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea";
     },
     chatWith$1(displayname) {
-      return "Gruppe med " + displayname;
+      return "\u05e7\u05d1\u05d5\u05e6\u05d4 \u05e2\u05dd " + displayname;
     },
     get$clickOnEmailLink() {
-      return "Vennligst klikk p\xe5 lenken i e-posten og fortsett.\n\nSjekk spam-mappen hvis e-posten ikke har kommet frem.";
+      return "\u05d0\u05e0\u05d0 \u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d1\u05de\u05d9\u05d9\u05dc \u05d5\u05d4\u05de\u05e9\u05da.\n\n\u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05ea\u05d9\u05e7\u05d9\u05d9\u05ea \u05d4\u05e1\u05e4\u05d0\u05dd \u05d0\u05dd \u05d4\u05de\u05d9\u05d9\u05dc \u05dc\u05d0 \u05d4\u05d2\u05d9\u05e2.";
     },
     get$dontForgetPassword() {
-      return "Ikke glem passordet ditt!";
+      return "\u05d0\u05dc \u05ea\u05e9\u05db\u05d7 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da!";
     },
     get$enableAutocorrectToolName() {
-      return "Aktiver automatkorrigering p\xe5 enheten";
+      return "\u05d4\u05e4\u05e2\u05dc \u05ea\u05d9\u05e7\u05d5\u05df \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9 \u05d1\u05de\u05db\u05e9\u05d9\u05e8";
     },
     get$enableAutocorrectDescription() {
-      return "Hvis enheten din st\xf8tter spr\xe5ket du l\xe6rer, kan du aktivere automatkorrigering for \xe5 rette vanlige feil mens du skriver.";
+      return "\u05d0\u05dd \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05e9\u05dc\u05da \u05ea\u05d5\u05de\u05da \u05d1\u05e9\u05e4\u05d4 \u05e9\u05dc\u05d5\u05de\u05d3\u05d9\u05dd, \u05ea\u05d5\u05db\u05dc \u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05ea\u05d9\u05e7\u05d5\u05df \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9 \u05db\u05d3\u05d9 \u05dc\u05ea\u05e7\u05df \u05e9\u05d2\u05d9\u05d0\u05d5\u05ea \u05e0\u05e4\u05d5\u05e6\u05d5\u05ea \u05d1\u05d6\u05de\u05df \u05d4\u05d4\u05e7\u05dc\u05d3\u05d4.";
     },
     get$ttsDisbledTitle() {
-      return "Tekst-til-tale deaktivert";
+      return "\u05d4\u05de\u05e8\u05ea \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8 \u05de\u05d5\u05e9\u05d1\u05ea\u05ea";
     },
     get$ttsDisabledBody() {
-      return "Du kan aktivere tekst-til-tale i l\xe6ringsinnstillingene dine";
+      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05d0\u05ea \u05ea\u05db\u05d5\u05e0\u05ea \u05d4\u05d4\u05de\u05e8\u05d4 \u05dc\u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8 \u05d1\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05dc\u05de\u05d9\u05d3\u05d4 \u05e9\u05dc\u05da";
     },
     get$noSpaceDescriptionYet() {
-      return "Ingen kursbeskrivelse opprettet enn\xe5.";
+      return "\u05e2\u05d3\u05d9\u05d9\u05df \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8 \u05ea\u05d9\u05d0\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1.";
     },
     get$tooLargeToSend() {
-      return "Denne meldingen er for stor til \xe5 sende";
+      return "\u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5 \u05d2\u05d3\u05d5\u05dc\u05d4 \u05de\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d9\u05d7\u05d4";
     },
     get$exitWithoutSaving() {
-      return "Er du sikker p\xe5 at du vil forlate uten \xe5 lagre?";
+      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05e6\u05d0\u05ea \u05de\u05d1\u05dc\u05d9 \u05dc\u05e9\u05de\u05d5\u05e8?";
     },
     get$enableAutocorrectWarning() {
-      return "Advarsel! Krever at du legger til tastaturet for m\xe5lspr\xe5ket ditt";
+      return "\u05d0\u05d6\u05d4\u05e8\u05d4! \u05d3\u05d5\u05e8\u05e9 \u05d4\u05d5\u05e1\u05e4\u05ea \u05de\u05e7\u05dc\u05d3\u05ea \u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da";
     },
     get$leaveRoomDescription() {
-      return "Du er i ferd med \xe5 forlate denne chatten. Andre brukere vil se at du har forlatt chatten.";
+      return "\u05d0\u05ea\u05d4 \u05e2\u05d5\u05de\u05d3 \u05dc\u05e2\u05d6\u05d5\u05d1 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d4\u05d6\u05d5. \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05e8\u05d0\u05d5 \u05e9\u05d4\u05d9\u05d9\u05ea\u05d4 \u05dc\u05da \u05d9\u05e6\u05d9\u05d0\u05d4 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4.";
     },
     get$confirmUserId() {
-      return "Vennligst bekreft brukernavnet ditt i Pangea Chat for \xe5 slette kontoen din.";
+      return "\u05d0\u05e0\u05d0 \u05d0\u05e9\u05e8 \u05d0\u05ea \u05e9\u05dd \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05da \u05d1-Pangea Chat \u05db\u05d3\u05d9 \u05dc\u05de\u05d7\u05d5\u05e7 \u05d0\u05ea \u05d4\u05d7\u05e9\u05d1\u05d5\u05df \u05e9\u05dc\u05da.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "Starter " + startDate;
+      return "\u05d4\u05d7\u05dc \u05de-" + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 Avbryt n\xe5r som helst i abonnementinnstillingene";
+      return "\u2022 \u05d1\u05d8\u05dc \u05d1\u05db\u05dc \u05e2\u05ea \u05d1\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05de\u05e0\u05d5\u05d9";
     },
     get$autocorrectNotAvailable() {
-      return "Dessverre er ikke plattformen din for tiden st\xf8ttet for denne funksjonen. F\xf8lg med for videre utvikling!";
+      return "\u05dc\u05e6\u05e2\u05e8\u05e0\u05d5 \u05d4\u05e4\u05dc\u05d8\u05e4\u05d5\u05e8\u05de\u05d4 \u05e9\u05dc\u05da \u05db\u05e8\u05d2\u05e2 \u05dc\u05d0 \u05e0\u05ea\u05de\u05db\u05ea \u05dc\u05ea\u05db\u05d5\u05e0\u05d4 \u05d6\u05d5. \u05d4\u05de\u05e9\u05da \u05dc\u05e2\u05e7\u05d5\u05d1 \u05dc\u05e4\u05d9\u05ea\u05d5\u05d7 \u05e2\u05ea\u05d9\u05d3\u05d9!";
     },
     get$pleaseUpdateApp() {
-      return "Vennligst oppdater appen for \xe5 fortsette.";
+      return "\u05d0\u05e0\u05d0 \u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d4\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d4\u05de\u05e9\u05d9\u05da.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Match emojis med ordene de best representerer. Ikke bekymre deg! Ingen poeng fratrekk for uenighet. \ud83d\ude05";
+      return "\u05d4\u05ea\u05d0\u05dd \u05d0\u05ea \u05d4\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9\u05dd \u05dc\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05d4\u05dd \u05de\u05d9\u05d9\u05e6\u05d2\u05d9\u05dd \u05d4\u05db\u05d9 \u05d8\u05d5\u05d1. \u05d0\u05dc \u05ea\u05d3\u05d0\u05d2! \u05d0\u05d9\u05df \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e2\u05dc \u05d0\u05d9 \u05d4\u05e1\u05db\u05de\u05d4. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "Dette er all vokabularet ditt! N\xe5r du tjener XP for hvert ord, g\xe5r de fra spire til full blomst. Klikk p\xe5 hvilket som helst ord for \xe5 se mer detaljer.";
+      return "\u05d6\u05d4 \u05db\u05dc \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05dc\u05da! \u05db\u05db\u05dc \u05e9\u05ea\u05e6\u05d1\u05d5\u05e8 XP \u05e2\u05d1\u05d5\u05e8 \u05db\u05dc \u05de\u05d9\u05dc\u05d4, \u05d4\u05d9\u05d0 \u05ea\u05e2\u05d1\u05d5\u05e8 \u05de\u05d6\u05e8\u05e2 \u05dc\u05e4\u05e8\u05d9\u05d7\u05d4 \u05de\u05dc\u05d0\u05d4. \u05dc\u05d7\u05e5 \u05e2\u05dc \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u05db\u05d3\u05d9 \u05dc\u05e8\u05d0\u05d5\u05ea \u05e4\u05e8\u05d8\u05d9\u05dd \u05e0\u05d5\u05e1\u05e4\u05d9\u05dd.";
     },
     get$morphAnalyticsListBody() {
-      return "Dette er alle grammatikkonseptene i spr\xe5ket du l\xe6rer! Du l\xe5ser opp dem etter hvert som du m\xf8ter dem mens du chatter. Klikk for detaljer.";
+      return "\u05d0\u05dc\u05d5 \u05db\u05dc \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7 \u05d1\u05e9\u05e4\u05d4 \u05e9\u05d0\u05ea\u05d4 \u05dc\u05d5\u05de\u05d3! \u05ea\u05e4\u05ea\u05d7 \u05d0\u05d5\u05ea\u05dd \u05db\u05db\u05dc \u05e9\u05ea\u05e4\u05d2\u05d5\u05e9 \u05d0\u05d5\u05ea\u05dd \u05d1\u05de\u05d4\u05dc\u05da \u05d4\u05e9\u05d9\u05d7\u05d4. \u05dc\u05d7\u05e5 \u05dc\u05e4\u05e8\u05d8\u05d9\u05dd.";
     },
     get$knockSpaceSuccess() {
-      return "Du har bedt om \xe5 bli med i dette kurset! En administrator vil svare p\xe5 foresp\xf8rselen din n\xe5r de mottar den \ud83d\ude00";
+      return "\u05d1\u05d9\u05e7\u05e9\u05ea \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d6\u05d4! \u05de\u05e0\u05d4\u05dc \u05d9\u05e2\u05e0\u05d4 \u05dc\u05d1\u05e7\u05e9\u05ea\u05da \u05db\u05d0\u05e9\u05e8 \u05d9\u05e7\u05d1\u05dc \u05d0\u05d5\u05ea\u05d4 \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Lytt til hele meldingen. Deretter matcher du lydene med ordene.";
+      return "\u05d4\u05d0\u05d6\u05df \u05dc\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05de\u05dc\u05d0\u05d4. \u05dc\u05d0\u05d7\u05e8 \u05de\u05db\u05df, \u05d4\u05ea\u05d0\u05dd \u05d0\u05ea \u05d4\u05d4\u05e7\u05dc\u05d8\u05d5\u05ea \u05dc\u05de\u05d9\u05dc\u05d9\u05dd.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Klikk p\xe5 puslespillbitene for grammatikksp\xf8rsm\xe5l!";
+      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d7\u05dc\u05e7\u05d9 \u05d4\u05e4\u05d0\u05d6\u05dc \u05dc\u05e9\u05d0\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7!";
     },
     get$home() {
-      return "Hjem";
+      return "\u05d1\u05d9\u05ea";
     },
     get$join(_) {
-      return "Bli med";
+      return "\u05d4\u05e6\u05d8\u05e8\u05e3";
     },
     get$readingAssistanceOverviewBody() {
-      return "Klikk p\xe5 knappene nedenfor for minispill om \xe5 matche emojis, lyder, ords betydninger og grammatikkonsepter. Eller klikk p\xe5 hvilket som helst ord for detaljer.";
+      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05db\u05e4\u05ea\u05d5\u05e8\u05d9\u05dd \u05dc\u05de\u05d8\u05d4 \u05dc\u05de\u05e9\u05d7\u05e7\u05d9 \u05de\u05d9\u05e0\u05d9 \u05e2\u05dc \u05d4\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9, \u05d0\u05d5\u05d3\u05d9\u05d5, \u05de\u05e9\u05de\u05e2\u05d5\u05d9\u05d5\u05ea \u05de\u05d9\u05dc\u05d9\u05dd \u05d5\u05de\u05d5\u05e9\u05d2\u05d9\u05dd \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05d9\u05dd. \u05d0\u05d5 \u05dc\u05d7\u05e5 \u05e2\u05dc \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u05dc\u05e4\u05e8\u05d8\u05d9\u05dd.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Tilbakestill instruksjonstips";
+      return "\u05d0\u05e4\u05e1 \u05d8\u05d9\u05e4\u05d9\u05dd \u05dc\u05d4\u05e0\u05d7\u05d9\u05d5\u05ea";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Klikk for \xe5 vise instruksjonstips som for en helt ny bruker.";
+      return "\u05dc\u05d7\u05e5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05e6\u05d9\u05d2 \u05d8\u05d9\u05e4\u05d9\u05dd \u05dc\u05d4\u05e0\u05d7\u05d9\u05d5\u05ea \u05db\u05de\u05d5 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05d7\u05d3\u05e9.";
     },
     get$selectForGrammar() {
-      return "Velg et grammatikkikon for aktiviteter og detaljer.";
+      return "\u05d1\u05d7\u05e8 \u05d0\u05d9\u05d9\u05e7\u05d5\u05df \u05d3\u05e7\u05d3\u05d5\u05e7 \u05dc\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05d5\u05dc\u05e4\u05e8\u05d8\u05d9\u05dd.";
     },
     get$translationProblem() {
-      return "Oversettelsesproblem";
+      return "\u05d1\u05e2\u05d9\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$askToJoin() {
-      return "Sp\xf8r om \xe5 bli med";
+      return "\u05d1\u05e7\u05e9 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3";
     },
     get$emptyChatWarningTitle() {
-      return "Chatten er tom";
+      return "\u05d4\u05e9\u05d9\u05d7\u05d4 \u05e8\u05d9\u05e7\u05d4";
     },
     get$emptyChatWarningDesc() {
-      return "Du har ikke invitert noen til chatten din. G\xe5 til Chat-innstillinger for \xe5 invitere kontaktene dine eller Bot. Du kan ogs\xe5 gj\xf8re dette senere.";
+      return "\u05dc\u05d0 \u05d4\u05d6\u05de\u05e0\u05ea \u05d0\u05e3 \u05d0\u05d7\u05d3 \u05dc\u05e9\u05d9\u05d7\u05d4 \u05e9\u05dc\u05da. \u05e2\u05d1\u05d5\u05e8 \u05dc\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e9\u05d9\u05d7\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05ea \u05d0\u05e0\u05e9\u05d9 \u05d4\u05e7\u05e9\u05e8 \u05e9\u05dc\u05da \u05d0\u05d5 \u05d0\u05ea \u05d4\u05d1\u05d5\u05d8. \u05d0\u05e4\u05e9\u05e8 \u05d2\u05dd \u05dc\u05e2\u05e9\u05d5\u05ea \u05d6\u05d0\u05ea \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8.";
     },
     get$areYouLikeMe() {
-      return "Er du som meg?";
+      return "\u05d0\u05ea\u05d4 \u05db\u05de\u05d5\u05e0\u05d9?";
     },
     get$tryAgainLater() {
-      return "For mange fors\xf8k gjort. Vennligst pr\xf8v igjen om 5 minutter.";
+      return "\u05e0\u05e2\u05e9\u05d5 \u05d9\u05d5\u05ea\u05e8 \u05de\u05d3\u05d9 \u05e0\u05d9\u05e1\u05d9\u05d5\u05e0\u05d5\u05ea. \u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1 \u05d1\u05e2\u05d5\u05d3 5 \u05d3\u05e7\u05d5\u05ea.";
     },
     get$enterSpaceCode() {
-      return "Skriv inn kurskode";
+      return "\u05d4\u05d6\u05df \u05e7\u05d5\u05d3 \u05e7\u05d5\u05e8\u05e1";
     },
     get$shareSpaceLink() {
-      return "Del lenke";
+      return "\u05e9\u05ea\u05e3 \u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$byUsingPangeaChat() {
-      return "Ved \xe5 bruke Pangea Chat, godtar jeg ";
+      return "\u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-Pangea Chat, \u05d0\u05e0\u05d9 \u05de\u05e1\u05db\u05d9\u05dd \u05dc-";
     },
     get$details(_) {
-      return "Detaljer";
+      return "\u05e4\u05e8\u05d8\u05d9\u05dd";
     },
     get$languageLevelPreA1Desc() {
-      return "Jeg har aldri l\xe6rt eller brukt spr\xe5ket.";
+      return "\u05de\u05e2\u05d5\u05dc\u05dd \u05dc\u05d0 \u05dc\u05de\u05d3\u05ea\u05d9 \u05d0\u05d5 \u05d4\u05e9\u05ea\u05de\u05e9\u05ea\u05d9 \u05d1\u05e9\u05e4\u05d4.";
     },
     get$languageLevelA1Desc() {
-      return "Jeg kan forst\xe5 og bruke noen kjente dagligdagse uttrykk og veldig grunnleggende setninger.";
+      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05d5\u05dc\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1\u05d1\u05d9\u05d8\u05d5\u05d9\u05d9\u05dd \u05d9\u05d5\u05de\u05d9\u05d5\u05de\u05d9\u05d9\u05dd \u05d1\u05e1\u05d9\u05e1\u05d9\u05d9\u05dd \u05d5\u05de\u05d9\u05dc\u05d9\u05dd \u05e4\u05e9\u05d5\u05d8\u05d5\u05ea.";
     },
     get$languageLevelA2Desc() {
-      return "Jeg kan forst\xe5 setninger og ofte brukte uttrykk relatert til omr\xe5der av umiddelbar relevans.";
+      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05de\u05e9\u05e4\u05d8\u05d9\u05dd \u05d5\u05d1\u05d9\u05d8\u05d5\u05d9\u05d9\u05dd \u05e0\u05e4\u05d5\u05e6\u05d9\u05dd \u05d4\u05e7\u05e9\u05d5\u05e8\u05d9\u05dd \u05dc\u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05e7\u05e8\u05d5\u05d1\u05d9\u05dd \u05dc\u05d9.";
     },
     get$languageLevelB1Desc() {
-      return "Jeg kan h\xe5ndtere de fleste kjente situasjoner og kan produsere enkelt sammenhengende tekst om kjente emner.";
+      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05ea\u05de\u05d5\u05d3\u05d3 \u05e2\u05dd \u05e8\u05d5\u05d1 \u05d4\u05de\u05e6\u05d1\u05d9\u05dd \u05d4\u05d9\u05d5\u05de\u05d9\u05d5\u05de\u05d9\u05d9\u05dd \u05d5\u05dc\u05d9\u05e6\u05d5\u05e8 \u05d8\u05e7\u05e1\u05d8 \u05de\u05d7\u05d5\u05d1\u05e8 \u05e4\u05e9\u05d5\u05d8 \u05e2\u05dc \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05de\u05d5\u05db\u05e8\u05d9\u05dd.";
     },
     get$languageLevelB2Desc() {
-      return "Jeg kan forst\xe5 hovedideene i komplekse tekster og samhandle med en grad av flyt og spontanitet.";
+      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05d0\u05ea \u05d4\u05e8\u05e2\u05d9\u05d5\u05e0\u05d5\u05ea \u05d4\u05de\u05e8\u05db\u05d6\u05d9\u05d9\u05dd \u05e9\u05dc \u05d8\u05e7\u05e1\u05d8\u05d9\u05dd \u05de\u05d5\u05e8\u05db\u05d1\u05d9\u05dd \u05d5\u05dc\u05ea\u05e7\u05e9\u05e8 \u05d1\u05e8\u05de\u05d4 \u05e9\u05dc \u05e9\u05d5\u05d8\u05e4\u05d5\u05ea \u05d5 spontanity.";
     },
     get$languageLevelC1Desc() {
-      return "Jeg kan uttrykke ideer flytende og spontant uten mye strev og forst\xe5 et bredt spekter av krevende tekster.";
+      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d1\u05d8\u05d0 \u05e8\u05e2\u05d9\u05d5\u05e0\u05d5\u05ea \u05d1\u05d6\u05e8\u05d9\u05de\u05d4 \u05d5\u05d1 spontaneity \u05d5\u05dc\u05e7\u05e8\u05d5\u05d0 \u05d8\u05e7\u05e1\u05d8\u05d9\u05dd \u05ea\u05d5\u05d1\u05e2\u05e0\u05d9\u05d9\u05dd \u05d1\u05de\u05d2\u05d5\u05d5\u05df \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd.";
     },
     get$languageLevelC2Desc() {
-      return "Jeg kan forst\xe5 nesten alt jeg h\xf8rer eller leser og uttrykke meg flytende og presist.";
+      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05db\u05de\u05e2\u05d8 \u05d4\u05db\u05dc \u05e9\u05e0\u05e9\u05de\u05e2 \u05d0\u05d5 \u05e0\u05e7\u05e8\u05d0 \u05d5\u05dc\u05d1\u05d8\u05d0 \u05d0\u05ea \u05e2\u05e6\u05de\u05d9 \u05d1\u05d6\u05e8\u05d9\u05de\u05d4 \u05d5\u05d1\u05d3\u05d9\u05d5\u05e7.";
     },
     get$newVocab() {
-      return "Nytt vokabular";
+      return "\u05de\u05d9\u05dc\u05d9\u05dd \u05d7\u05d3\u05e9\u05d5\u05ea";
     },
     get$newGrammar() {
-      return "Nye grammatikkonsepter";
+      return "\u05de\u05d5\u05e9\u05d2\u05d9\u05dd \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05d9\u05dd \u05d7\u05d3\u05e9\u05d9\u05dd";
     },
     get$choosePracticeMode() {
-      return "Klikk p\xe5 en av knappene ovenfor for \xe5 starte en \xf8velsesaktivitet";
+      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d0\u05d7\u05d3 \u05de\u05d4\u05db\u05e4\u05ea\u05d5\u05e8\u05d9\u05dd \u05dc\u05de\u05e2\u05dc\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05d7\u05d9\u05dc \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05ea\u05e8\u05d2\u05d5\u05dc";
     },
     get$ban() {
-      return "Blokker";
+      return "\u05d7\u05e1\u05d5\u05dd";
     },
     get$kick() {
-      return "Kast ut";
+      return "\u05d4\u05e2\u05d1\u05e8";
     },
     get$lemma() {
-      return "Lemma";
+      return "\u05dc\u05de\u05d4";
     },
     get$grammarFeature() {
-      return "Grammatikkfunksjon";
+      return "\u05de\u05d0\u05e4\u05d9\u05d9\u05df \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9";
     },
     get$grammarTag() {
-      return "Grammatikkmerke";
+      return "\u05ea\u05d2\u05d9\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05ea";
     },
     get$forms() {
-      return "Former";
+      return "\u05d8\u05e4\u05e1\u05d9\u05dd";
     },
     get$exampleMessages() {
-      return "Eksempelmeldinger";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d3\u05d5\u05d2\u05de\u05d4";
     },
     get$timesUsedIndependently() {
-      return "Antall ganger brukt uavhengig";
+      return "\u05e4\u05e2\u05de\u05d9\u05dd \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05e2\u05e6\u05de\u05d0\u05d9";
     },
     get$timesUsedWithAssistance() {
-      return "Antall ganger brukt med hjelp";
+      return "\u05e4\u05e2\u05de\u05d9\u05dd \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2";
     },
     shareInviteCode$1(code) {
-      return "Del invitasjonskode: " + code;
+      return "\u05e9\u05ea\u05e3 \u05e7\u05d5\u05d3 \u05d4\u05d6\u05de\u05e0\u05d4: " + code;
     },
     get$skipForNow() {
-      return "Hopp over for n\xe5";
+      return "\u05d3\u05dc\u05d2 \u05dc\u05e2\u05db\u05e9\u05d9\u05d5";
     },
     get$permissions(_) {
-      return "Tillatelser";
+      return "\u05d4\u05e8\u05e9\u05d0\u05d5\u05ea";
     },
     get$spaceChildPermission() {
-      return "Hvem kan legge til nye chatter i dette kurset";
+      return "\u05de\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d5\u05e1\u05d9\u05e3 \u05e9\u05d9\u05d7\u05d5\u05ea \u05d7\u05d3\u05e9\u05d5\u05ea \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d6\u05d4";
     },
     get$addEnvironmentOverride() {
-      return "Legg til milj\xf8overstyring";
+      return "\u05d4\u05d5\u05e1\u05e3 \u05e9\u05d9\u05e0\u05d5\u05d9 \u05e1\u05d1\u05d9\u05d1\u05d4";
     },
     get$defaultOption() {
-      return "Standard";
+      return "\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc";
     },
     get$deleteChatDesc() {
-      return "Er du sikker p\xe5 at du vil slette denne samtalen? Den vil bli slettet for alle deltakere, og alle meldinger i samtalen vil ikke lenger v\xe6re tilgjengelige for praksis eller l\xe6ringsanalyse.";
+      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05de\u05d7\u05d5\u05e7 \u05e9\u05d9\u05d7\u05d4 \u05d6\u05d5? \u05d4\u05d9\u05d0 \u05ea\u05d9\u05de\u05d7\u05e7 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d5\u05db\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05ea\u05d5\u05da \u05d4\u05e9\u05d9\u05d7\u05d4 \u05dc\u05d0 \u05d9\u05d4\u05d9\u05d5 \u05d6\u05de\u05d9\u05e0\u05d5\u05ea \u05e2\u05d5\u05d3 \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d0\u05d5 \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4.";
     },
     get$deleteSpaceDesc() {
-      return "Kurset og eventuelle valgte samtaler vil bli slettet for alle deltakere, og alle meldinger i samtalen vil ikke lenger v\xe6re tilgjengelige for praksis eller l\xe6ringsanalyse. Denne handlingen kan ikke angres.";
+      return "\u05d4\u05e7\u05d5\u05e8\u05e1 \u05d5\u05db\u05dc \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05d9\u05d9\u05de\u05d7\u05e7\u05d5 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d5\u05db\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05ea\u05d5\u05da \u05d4\u05e9\u05d9\u05d7\u05d4 \u05dc\u05d0 \u05d9\u05d4\u05d9\u05d5 \u05d6\u05de\u05d9\u05e0\u05d5\u05ea \u05e2\u05d5\u05d3 \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d0\u05d5 \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4. \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc.";
     },
     get$configureSpace() {
-      return "Konfigurer kurs";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05e7\u05d5\u05e8\u05e1";
     },
     get$pinMessages() {
-      return "Fest meldinger";
+      return "\u05e0\u05e2\u05e5 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
     },
     get$setJoinRules() {
-      return "Sett innmeldingsregler";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05db\u05dc\u05dc\u05d9 \u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
     },
     get$changeGeneralSettings() {
-      return "Endre generelle innstillinger";
+      return "\u05e9\u05e0\u05d4 \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05db\u05dc\u05dc\u05d9\u05d5\u05ea";
     },
     get$inviteOtherUsersToRoom() {
-      return "Inviter andre brukere";
+      return "\u05d4\u05d6\u05de\u05df \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd";
     },
     get$changeTheNameOfTheSpace() {
-      return "Endre navnet p\xe5 kurset";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05e7\u05d5\u05e8\u05e1";
     },
     get$changeTheDescription() {
-      return "Endre beskrivelsen";
+      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05ea\u05d9\u05d0\u05d5\u05e8";
     },
     get$changeThePermissions() {
-      return "Endre tillatelser";
+      return "\u05e9\u05e0\u05d4 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea";
     },
     get$introductions() {
-      return "Introduksjoner";
+      return "\u05d4\u05e7\u05d3\u05de\u05d5\u05ea";
     },
     get$announcements() {
-      return "Kunngj\xf8ringer";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
     },
     get$activities() {
-      return "Aktiviteter";
+      return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea";
     },
     get$access() {
-      return "Tilgang";
+      return "\u05d2\u05d9\u05e9\u05d4";
     },
     get$howSpaceCanBeFound() {
-      return "Hvordan dette kurset kan finnes";
+      return "\u05d0\u05d9\u05da \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e6\u05d5\u05d0 \u05d0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d6\u05d4";
     },
     get$$private() {
-      return "Privat";
+      return "\u05e4\u05e8\u05d8\u05d9";
     },
     get$cannotBeFoundInSearch() {
-      return "Kan ikke finnes i s\xf8k";
+      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e6\u05d5\u05d0 \u05d1\u05d7\u05d9\u05e4\u05d5\u05e9";
     },
     get$$public(_) {
-      return "Offentlig";
+      return "\u05e6\u05d9\u05d1\u05d5\u05e8\u05d9";
     },
     get$visibleToCommunity() {
-      return 'Synlig for det bredere Pangea Chat-samfunnet via "Finn et kurs"';
+      return '\u05e0\u05e8\u05d0\u05d4 \u05dc\u05e7\u05d4\u05d9\u05dc\u05ea \u05e4\u05d0\u05e0\u05d2\u05d9\u05d0\u05d4 \u05e6\'\u05d0\u05d8 \u05d4\u05e8\u05d7\u05d1\u05d4 \u05d1\u05d0\u05de\u05e6\u05e2\u05d5\u05ea "\u05de\u05e6\u05d0 \u05e7\u05d5\u05e8\u05e1"';
     },
     get$howSpaceCanBeJoined() {
-      return "Hvordan dette kurset kan bli med i";
+      return "\u05d0\u05d9\u05da \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05de\u05e8\u05d7\u05d1 \u05d6\u05d4";
     },
     get$canBeFoundVia() {
-      return "Kan finnes via:";
+      return "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e6\u05d5\u05d0 \u05d1\u05d0\u05de\u05e6\u05e2\u05d5\u05ea:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 invitasjon";
+      return "\u2022 \u05d4\u05d6\u05de\u05e0\u05d4";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 kode eller lenke";
+      return "\u2022 \u05e7\u05d5\u05d3 \u05d0\u05d5 \u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 foresp\xf8rsel om \xe5 bli med og administratorgodkjenning";
+      return "\u2022 \u05d1\u05e7\u05e9\u05d4 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05d5\u05d0\u05d9\u05e9\u05d5\u05e8 \u05de\u05e0\u05d4\u05dc";
     },
     get$youHaveLeveledUp() {
-      return "Du har niv\xe5 opp!";
+      return "\u05e2\u05dc\u05d9\u05ea \u05e8\u05de\u05d4!";
     },
     get$sendActivities() {
-      return "Send aktiviteter";
+      return "\u05e9\u05dc\u05d7 \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea";
     },
     get$directMessage() {
-      return "Direktemelding";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4";
     },
     get$newDirectMessage() {
-      return "Ny direktemelding";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05d7\u05d3\u05e9\u05d4";
     },
     get$speakingExercisesTooltip() {
-      return "Tale";
+      return "\u05d3\u05d9\u05d1\u05d5\u05e8";
     },
     get$transcriptionFailed() {
-      return "Kunne ikke transkribere lyd";
+      return "\u05d4\u05d4\u05de\u05e8\u05d4 \u05dc\u05e7\u05d5\u05dc \u05e0\u05db\u05e9\u05dc\u05d4";
     },
     get$aUserIsKnocking() {
-      return "1 bruker \xf8nsker \xe5 bli med i kurset ditt";
+      return "\u05de\u05e9\u05ea\u05de\u05e9 \u05d0\u05d7\u05d3 \u05de\u05d1\u05e7\u05e9 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05da";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " brukere \xf8nsker \xe5 bli med i kurset ditt";
+      return "" + users + " \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05de\u05d1\u05e7\u05e9\u05d9\u05dd \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05da";
     },
     get$failedToFetchTranscription() {
-      return "Kunne ikke hente transkripsjon";
+      return "\u05d4\u05d8\u05e2\u05d9\u05e0\u05d4 \u05e9\u05dc \u05d4\u05d4\u05de\u05e8\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4";
     },
     get$deleteEmptySpaceDesc() {
-      return "Kurset vil bli slettet for alle deltakere. Denne handlingen kan ikke angres.";
+      return "\u05d4\u05e7\u05d5\u05e8\u05e1 \u05d9\u05d9\u05de\u05d7\u05e7 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd. \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc.";
     },
     get$failedToPlayVideo() {
-      return "Mislyktes i \xe5 spille av video";
+      return "\u05e0\u05db\u05e9\u05dc\u05d4 \u05d4\u05d4\u05e4\u05e2\u05dc\u05d4 \u05e9\u05dc \u05d4\u05d5\u05d5\u05d9\u05d3\u05d0\u05d5";
     },
     get$done() {
-      return "Ferdig";
+      return "\u05d4\u05d5\u05e9\u05dc\u05dd";
     },
     get$inThisSpace() {
-      return "I dette kurset";
+      return "\u05d1\u05de\u05e7\u05d5\u05dd \u05d6\u05d4";
     },
     get$myContacts() {
-      return "Mine kontakter";
+      return "\u05d4\u05d0\u05e0\u05e9\u05d9\u05dd \u05e9\u05dc\u05d9";
     },
     get$inviteAllInSpace() {
-      return "Inviter alle i dette kurset";
+      return "\u05d4\u05d6\u05de\u05df \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d1\u05de\u05e7\u05d5\u05dd \u05d6\u05d4";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "Alle deltakere i kurset har blitt invitert til chatten";
+      return "\u05db\u05dc \u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d5\u05d6\u05de\u05e0\u05d5 \u05dc\u05e6'\u05d0\u05d8";
     },
     numKnocking$1(count) {
-      return "" + count + " banker p\xe5";
+      return "" + count + " \u05de\u05e6\u05dc\u05e6\u05dc/\u05d9\u05dd";
     },
     numInvited$1(count) {
-      return "" + count + " invitert";
+      return "" + count + " \u05d4\u05d5\u05d6\u05de\u05df/\u05d4";
     },
     get$errorFetchingDefinition() {
-      return "Mislyktes i \xe5 hente definisjon";
+      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d0\u05d7\u05d6\u05d5\u05e8 \u05d4\u05d4\u05d2\u05d3\u05e8\u05d4";
     },
     get$errorProcessAnalytics() {
-      return "Mislyktes i \xe5 behandle analyse";
+      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05e2\u05d9\u05d1\u05d5\u05d3 \u05e0\u05d9\u05ea\u05d5\u05d7\u05d9\u05dd";
     },
     get$errorDownloading() {
-      return "Nedlasting mislyktes";
+      return "\u05d4\u05d4\u05d5\u05e8\u05d3\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4";
     },
     get$errorFetchingLevelSummary() {
-      return "Mislyktes i \xe5 hente niv\xe5oppsummering";
+      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d0\u05d7\u05d6\u05d5\u05e8 \u05e1\u05d9\u05db\u05d5\u05dd \u05d4\u05e8\u05de\u05d4";
     },
     get$errorLoadingSpaceChildren() {
-      return "Mislyktes i \xe5 laste inn chatter innenfor dette kurset";
+      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d8\u05e2\u05d9\u05e0\u05ea \u05d4\u05e6'\u05d0\u05d8\u05d9\u05dd \u05d1\u05ea\u05d5\u05da \u05e7\u05d5\u05e8\u05e1 \u05d6\u05d4";
     },
     get$unexpectedError() {
-      return "Uventet feil.";
+      return "\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05dc\u05ea\u05d9 \u05e6\u05e4\u05d5\u05d9\u05d4.";
     },
     get$pleaseReload() {
-      return "Vennligst last inn p\xe5 nytt og pr\xf8v igjen.";
+      return "\u05d0\u05e0\u05d0 \u05d8\u05e2\u05df \u05de\u05d7\u05d3\u05e9 \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
     get$translationError() {
-      return "Oversettelsesfeil";
+      return "\u05e9\u05d2\u05d9\u05d0\u05ea \u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$errorFetchingTranslation() {
-      return "Mislyktes i \xe5 hente oversettelse";
+      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d0\u05d7\u05d6\u05d5\u05e8 \u05ea\u05e8\u05d2\u05d5\u05dd";
     },
     get$errorFetchingActivity() {
-      return "Mislyktes i \xe5 hente aktivitet";
+      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d0\u05d7\u05d6\u05d5\u05e8 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
     },
     get$check(_) {
-      return "Sjekk";
+      return "\u05d1\u05d3\u05d5\u05e7";
     },
     get$unableToFindRoom() {
-      return "Ingen chat eller kurs funnet med den koden. Vennligst pr\xf8v igjen.";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05e9\u05d9\u05d7\u05d4 \u05d0\u05d5 \u05e7\u05d5\u05e8\u05e1 \u05e2\u05dd \u05e7\u05d5\u05d3 \u05d6\u05d4. \u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
     viewingAnalytics$2(visible, users) {
-      return "Viser " + visible + "/" + users + " analyser";
+      return "\u05e6\u05e4\u05d9\u05d9\u05d4 \u05d1-" + visible + "/" + users + " \u05e0\u05d9\u05ea\u05d5\u05d7\u05d9\u05dd";
     },
     get$request(_) {
-      return "Foresp\xf8rsel";
+      return "\u05d1\u05e7\u05e9\u05d4";
     },
     get$requestAll(_) {
-      return "Foresp\xf8r alle";
+      return "\u05d1\u05e7\u05e9 \u05d0\u05ea \u05d4\u05db\u05dc";
     },
     get$confirmMessageUnpin() {
-      return "Er du sikker p\xe5 at du vil fjerne festingen av denne meldingen?";
+      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05d4\u05e1\u05d9\u05e8 \u05d0\u05ea \u05d4\u05d4\u05e6\u05de\u05d3\u05d4 \u05e9\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05d6\u05d5?";
     },
     get$pending(_) {
-      return "Venter";
+      return "\u05d1\u05d4\u05de\u05ea\u05e0\u05d4";
     },
     get$openRoleLabel() {
-      return "\xc5PEN";
+      return "\u05e4\u05ea\u05d5\u05d7";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " ble med som " + role;
+      return "\ud83d\udc4b " + username + " \u05d4\u05e6\u05d8\u05e8\u05e3 \u05db-" + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " avsluttet denne aktiviteten";
+      return "\ud83c\udfaf " + username + " \u05e1\u05d9\u05d9\u05dd \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d6\u05d5";
     },
     get$activitySummaryError() {
-      return "Aktivitetsoppsummeringer er utilgjengelige";
+      return "\u05e1\u05d9\u05db\u05d5\u05de\u05d9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d9\u05e0\u05dd \u05d6\u05de\u05d9\u05e0\u05d9\u05dd";
     },
     get$requestSummaries() {
-      return "Be om oppsummeringer";
+      return "\u05d1\u05e7\u05e9 \u05e1\u05d9\u05db\u05d5\u05de\u05d9\u05dd";
     },
     get$requestAccessTitle() {
-      return "Be om tilgang til analyser?";
+      return "\u05dc\u05d1\u05e7\u05e9 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd?";
     },
     get$requestAccessDesc() {
-      return "Vil du be om tilgang til \xe5 se deltakeranalyser?\n\nHvis deltakerne godtar, vil administratorer av kurset kunne se deres:\n    \u2022 total vokabular\n    \u2022 totale grammatikkonsepter\n    \u2022 fullf\xf8rte aktivitets\xf8kter\n    \u2022 de spesifikke grammatikkonseptene som er brukt, riktig og feil\n\nDe vil ikke kunne se deres:\n    \u2022 meldinger i chatter utenfor kurset\n    \u2022 vokabularlisten";
+      return "\u05d4\u05d0\u05dd \u05ea\u05e8\u05e6\u05d4 \u05dc\u05d1\u05e7\u05e9 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e6\u05e4\u05d9\u05d9\u05d4 \u05d1\u05e0\u05ea\u05d5\u05e0\u05d9 \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd?\n\n\u05d0\u05dd \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d9\u05e1\u05db\u05d9\u05de\u05d5, \u05de\u05e0\u05d4\u05dc\u05d9 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1:\n    \u2022 \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd \u05db\u05d5\u05dc\u05dc\n    \u2022 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05db\u05d5\u05dc\u05dc\u05d9\u05dd\n    \u2022 \u05e1\u05da \u05db\u05dc \u05de\u05e4\u05d2\u05e9\u05d9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05d4\u05d5\u05e9\u05dc\u05de\u05d5\n    \u2022 \u05d4\u05de\u05d5\u05e9\u05d2\u05d9\u05dd \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05d9\u05dd \u05d4\u05e1\u05e4\u05e6\u05d9\u05e4\u05d9\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd, \u05e0\u05db\u05d5\u05df \u05d5\u05dc\u05d0 \u05e0\u05db\u05d5\u05df\n\n\u05d4\u05dd \u05dc\u05d0 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1:\n    \u2022 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05e6'\u05d0\u05d8 \u05de\u05d7\u05d5\u05e5 \u05dc\u05e7\u05d5\u05e8\u05e1\n    \u2022 \u05e8\u05e9\u05d9\u05de\u05ea \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd";
     },
     get$analyticsInactiveTitle() {
-      return "Foresp\xf8rsler til inaktive brukere kunne ikke sendes";
+      return "\u05d1\u05e7\u05e9\u05d5\u05ea \u05dc\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d0 \u05e4\u05e2\u05d9\u05dc\u05d9\u05dd \u05dc\u05d0 \u05e0\u05e9\u05dc\u05d7\u05d5\u05ea";
     },
     get$analyticsInactiveDesc() {
-      return "Inaktive brukere som ikke har logget inn siden denne funksjonen ble introdusert, vil ikke se foresp\xf8rselen din.\n\nForesp\xf8rselsknappen vil vises n\xe5r de kommer tilbake. Du kan sende foresp\xf8rselen p\xe5 nytt senere ved \xe5 klikke p\xe5 Foresp\xf8rselsknappen under navnet deres n\xe5r den er tilgjengelig.";
+      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d0 \u05e4\u05e2\u05d9\u05dc\u05d9\u05dd \u05e9\u05dc\u05d0 \u05d4\u05ea\u05d7\u05d1\u05e8\u05d5 \u05de\u05d0\u05d6 \u05d4\u05d5\u05e1\u05e4\u05ea \u05ea\u05db\u05d5\u05e0\u05d4 \u05d6\u05d5 \u05dc\u05d0 \u05d9\u05e8\u05d0\u05d5 \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4 \u05e9\u05dc\u05da.\n\n\u05db\u05e4\u05ea\u05d5\u05e8 \u05d4\u05d1\u05e7\u05e9\u05d4 \u05d9\u05d5\u05e4\u05d9\u05e2 \u05db\u05d0\u05e9\u05e8 \u05d4\u05dd \u05d9\u05d7\u05d6\u05e8\u05d5. \u05ea\u05d5\u05db\u05dc \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4 \u05de\u05d7\u05d3\u05e9 \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05dc\u05d7\u05d9\u05e6\u05d4 \u05e2\u05dc \u05db\u05e4\u05ea\u05d5\u05e8 \u05d4\u05d1\u05e7\u05e9\u05d4 \u05ea\u05d7\u05ea \u05e9\u05de\u05dd \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d0 \u05d6\u05de\u05d9\u05df.";
     },
     get$accessRequestedTitle() {
-      return "Foresp\xf8rsel om tilgang til analyse";
+      return "\u05d1\u05e7\u05e9\u05ea \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e0\u05ea\u05d5\u05e0\u05d9 \u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d4";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Be om admin(er): " + admin + " \n\nAdministratorer fra \u201c" + space + "\u201d ber om \xe5 f\xe5 se dine l\xe6ringsanalyser.\n\nHvis du godtar, vil de kunne se din:\n    \u2022 totale ordforr\xe5d\n    \u2022 totale grammatikkonsepter\n    \u2022 totale aktivitetssesjoner fullf\xf8rt\n    \u2022 de spesifikke grammatikkonseptene brukt, korrekt og feil\n\nDe vil ikke kunne se din:\n    \u2022 meldinger i chatter utenfor kurset\n    \u2022 ordliste";
+      return "\u05de\u05d1\u05e7\u05e9\u05d9\u05dd \u05de\u05e0\u05d4\u05dc(\u05d9\u05dd): " + admin + " \n\n\u05de\u05e0\u05d4\u05dc\u05d9\u05dd \u05de\u201c" + space + "\u201d \u05de\u05d1\u05e7\u05e9\u05d9\u05dd \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea \u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05d4\u05dc\u05de\u05d9\u05d3\u05d4 \u05e9\u05dc\u05da.\n\n\u05d0\u05dd \u05d0\u05ea\u05d4 \u05de\u05e1\u05db\u05d9\u05dd, \u05d4\u05dd \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea:\n    \u2022 \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05db\u05d5\u05dc\u05dc \u05e9\u05dc\u05da\n    \u2022 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7 \u05d4\u05db\u05d5\u05dc\u05dc\u05d9\u05dd\n    \u2022 \u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05e4\u05d2\u05e9\u05d9\u05dd \u05e9\u05d4\u05d5\u05e9\u05dc\u05de\u05d5\n    \u2022 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7 \u05d4\u05e1\u05e4\u05e6\u05d9\u05e4\u05d9\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05ea \u05d1\u05d4\u05dd, \u05e0\u05db\u05d5\u05df \u05d5\u05dc\u05d0 \u05e0\u05db\u05d5\u05df\n\n\u05d4\u05dd \u05dc\u05d0 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea:\n    \u2022 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05e6'\u05d0\u05d8\u05d9\u05dd \u05de\u05d7\u05d5\u05e5 \u05dc\u05e7\u05d5\u05e8\u05e1\n    \u2022 \u05e8\u05e9\u05d9\u05de\u05ea \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd";
     },
     get$adminRequestedAccess() {
-      return "Administratorer har bedt om \xe5 se dine analyser.";
+      return "\u05d4\u05de\u05e0\u05d4\u05dc\u05d9\u05dd \u05d1\u05d9\u05e7\u05e9\u05d5 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1\u05e0\u05ea\u05d5\u05e0\u05d9 \u05d4\u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d4 \u05e9\u05dc\u05da.";
     },
     lastUpdated$1(time) {
-      return "Oppdatert\n" + time;
+      return "\u05e2\u05d5\u05d3\u05db\u05df\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Alt ferdig!";
+      return "\u05d4\u05db\u05dc \u05de\u05d5\u05db\u05df!";
     },
     get$endForAll() {
-      return "Avslutt for alle";
+      return "\u05e1\u05d9\u05d5\u05dd \u05dc\u05db\u05d5\u05dc\u05dd";
     },
     get$newCourse() {
-      return "Nytt kurs";
+      return "\u05e7\u05d5\u05e8\u05e1 \u05d7\u05d3\u05e9";
     },
     numModules$1(num) {
-      return "" + num + " moduler";
+      return "" + num + " \u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd";
     },
     get$coursePlan() {
-      return "Kursplan";
+      return "\u05ea\u05db\u05e0\u05d9\u05ea \u05e7\u05d5\u05e8\u05e1";
     },
     get$editCourseLater() {
-      return "Du kan redigere malens tittel, beskrivelser og kursbilde senere.";
+      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e2\u05e8\u05d5\u05da \u05d0\u05ea \u05db\u05d5\u05ea\u05e8\u05ea \u05d4\u05ea\u05d1\u05e0\u05d9\u05ea, \u05ea\u05d9\u05d0\u05d5\u05e8\u05d9\u05dd \u05d5\u05ea\u05de\u05d5\u05e0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8.";
     },
     get$newCourseAccess() {
-      return "Som standard er kurs private og krever administratorgodkjenning for \xe5 bli med. Du kan endre disse innstillingene n\xe5r som helst.";
+      return "\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc, \u05e7\u05d5\u05e8\u05e1\u05d9\u05dd \u05d4\u05dd \u05e4\u05e8\u05d8\u05d9\u05d9\u05dd \u05d5\u05d3\u05d5\u05e8\u05e9\u05d9\u05dd \u05d0\u05d9\u05e9\u05d5\u05e8 \u05de\u05e0\u05d4\u05dc \u05dc\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea. \u05ea\u05d5\u05db\u05dc \u05dc\u05e2\u05e8\u05d5\u05da \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d0\u05dc\u05d4 \u05d1\u05db\u05dc \u05e2\u05ea.";
     },
     get$createCourse() {
-      return "Opprett kurs";
+      return "\u05e6\u05d5\u05e8 \u05e7\u05d5\u05e8\u05e1";
     },
     get$stats() {
-      return "Statistikk";
+      return "\u05e1\u05d8\u05d8\u05d9\u05e1\u05d8\u05d9\u05e7\u05d5\u05ea";
     },
     get$createGroupChat() {
-      return "Opprett gruppechat";
+      return "\u05e6\u05d5\u05e8 \u05e9\u05d9\u05d7\u05ea \u05e7\u05d1\u05d5\u05e6\u05ea\u05d9\u05ea";
     },
     get$editCourse() {
-      return "Rediger kurs";
+      return "\u05e2\u05e8\u05d5\u05da \u05e7\u05d5\u05e8\u05e1";
     },
     get$inviteDesc() {
-      return "Med brukernavn, kode eller lenke";
+      return "\u05e2\u05dc \u05d9\u05d3\u05d9 \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9, \u05e7\u05d5\u05d3 \u05d0\u05d5 \u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$editCourseDesc() {
-      return "Her kan du redigere kursnavn, beskrivelse, osv.";
+      return "\u05db\u05d0\u05df \u05ea\u05d5\u05db\u05dc \u05dc\u05e2\u05e8\u05d5\u05da \u05d0\u05ea \u05db\u05d5\u05ea\u05e8\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1, \u05ea\u05d9\u05d0\u05d5\u05e8 \u05d5\u05e2\u05d5\u05d3.";
     },
     get$permissionsDesc() {
-      return "Sett tillatelser som hvem som kan invitere brukere, sende meldinger, opprette chatter, osv.";
+      return "\u05d4\u05d2\u05d3\u05e8 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05db\u05d2\u05d5\u05df \u05de\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d6\u05de\u05d9\u05df \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd, \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea, \u05dc\u05d9\u05e6\u05d5\u05e8 \u05e9\u05d9\u05d7\u05d5\u05ea, \u05d5\u05e2\u05d5\u05d3.";
     },
     get$accessDesc() {
-      return "Du kan gj\xf8re kurset ditt \xe5pent for alle! Eller, gj\xf8r kurset ditt privat og sikkert.";
+      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e4\u05d5\u05da \u05d0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05da \u05dc\u05d2\u05dc\u05d5\u05d9 \u05dc\u05e2\u05d5\u05dc\u05dd! \u05d0\u05d5, \u05dc\u05d4\u05e4\u05d5\u05da \u05d0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05dc\u05e4\u05e8\u05d8\u05d9 \u05d5\u05de\u05d0\u05d5\u05d1\u05d8\u05d7.";
     },
     get$createGroupChatDesc() {
-      return "Mens aktivitets\xf8kter starter og slutter, vil gruppechatter forbli \xe5pne for rutinemessig kommunikasjon.";
+      return "\u05d1\u05e2\u05d5\u05d3 \u05e9\u05de\u05e4\u05d2\u05e9\u05d9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05ea\u05d7\u05d9\u05dc\u05d9\u05dd \u05d5\u05de\u05e1\u05ea\u05d9\u05d9\u05de\u05d9\u05dd, \u05e9\u05d9\u05d7\u05d5\u05ea \u05e7\u05d1\u05d5\u05e6\u05ea\u05d9\u05d5\u05ea \u05d9\u05d9\u05e9\u05d0\u05e8\u05d5 \u05e4\u05ea\u05d5\u05d7\u05d5\u05ea \u05dc\u05ea\u05e7\u05e9\u05d5\u05e8\u05ea \u05e9\u05d5\u05d8\u05e4\u05ea.";
     },
     get$deleteDesc() {
-      return "Bare administratorer kan slette et kurs. Dette er en \xf8deleggende handling som fjerner alle brukere og sletter alle valgte chatter innen kurset. V\xe6r forsiktig.";
+      return "\u05e8\u05e7 \u05de\u05e0\u05d4\u05dc\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05de\u05d7\u05d5\u05e7 \u05e7\u05d5\u05e8\u05e1. \u05d6\u05d5\u05d4\u05d9 \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d4\u05e8\u05e1\u05e0\u05d9\u05ea \u05e9\u05de\u05e1\u05d9\u05e8\u05d4 \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d5\u05de\u05d5\u05d7\u05e7\u05ea \u05d0\u05ea \u05db\u05dc \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05d1\u05ea\u05d5\u05da \u05d4\u05e7\u05d5\u05e8\u05e1. \u05d4\u05de\u05e9\u05da \u05d1\u05d6\u05d4\u05d9\u05e8\u05d5\u05ea.";
     },
     get$noCourseFound() {
-      return "\xc5h, dette kurset trenger en plan!\n\nKursplaner er en sekvens av emner og samtaleaktiviteter.";
+      return "\u05d0\u05d4, \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d6\u05d4 \u05e6\u05e8\u05d9\u05da \u05ea\u05db\u05e0\u05d9\u05ea!\n\n\u05ea\u05db\u05e0\u05d9\u05d5\u05ea \u05e7\u05d5\u05e8\u05e1 \u05d4\u05df \u05e8\u05e6\u05e3 \u05e9\u05dc \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05d5\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05d9\u05d7\u05d4.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " andre";
+      return "+ " + num + " \u05d0\u05d7\u05e8\u05d9\u05dd";
     },
     get$directMessages() {
-      return "Direktemeldinger";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea";
     },
     get$whatNow() {
-      return "Hva n\xe5?";
+      return "\u05de\u05d4 \u05e2\u05db\u05e9\u05d9\u05d5?";
     },
     get$chooseNextActivity() {
-      return "Velg din neste aktivitet!";
+      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d1\u05d0\u05d4 \u05e9\u05dc\u05da!";
     },
     get$letsGo() {
-      return "La oss dra";
+      return "\u05d1\u05d5\u05d0 \u05e0\u05ea\u05d7\u05d9\u05dc";
     },
     get$chooseRole() {
-      return "Velg en rolle!";
+      return "\u05d1\u05d7\u05e8 \u05ea\u05e4\u05e7\u05d9\u05d3!";
     },
     get$chooseRoleToParticipate() {
-      return "Velg en rolle for \xe5 delta!";
+      return "\u05d1\u05d7\u05e8 \u05ea\u05e4\u05e7\u05d9\u05d3 \u05dc\u05d4\u05e9\u05ea\u05ea\u05e4\u05d5\u05ea!";
     },
     waitingToFillRole$1(num) {
-      return "Venter p\xe5 \xe5 fylle " + num + " roller...";
+      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05de\u05dc\u05d0 " + num + " \u05ea\u05e4\u05e7\u05d9\u05d3\u05d9\u05dd...";
     },
     get$pingParticipants() {
-      return "Pings deltakere i kurset";
+      return "\u05d4\u05e6\u05e2 \u05ea\u05d6\u05de\u05d5\u05df \u05dc\u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e7\u05d5\u05e8\u05e1";
     },
     get$playWithBot() {
-      return "Lek med Pangea Bot";
+      return "\u05e9\u05d7\u05e7 \u05e2\u05dd \u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4";
     },
     get$waitNotDone() {
-      return "Vent, jeg er ikke ferdig!";
+      return "\u05d7\u05db\u05d4, \u05d0\u05e0\u05d9 \u05dc\u05d0 \u05e1\u05d9\u05d9\u05de\u05ea\u05d9!";
     },
     get$waitingForOthersToFinish() {
-      return "Venter p\xe5 at de andre skal bli ferdige...";
+      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d0\u05e8 \u05dc\u05e1\u05d9\u05d9\u05dd...";
     },
     get$generatingSummary() {
-      return "Analyserer chat og genererer resultater";
+      return "\u05d0\u05e0\u05dc\u05d9\u05d6\u05ea \u05e9\u05d9\u05d7\u05d4 \u05d5\u05d9\u05e6\u05d9\u05e8\u05ea \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " ser etter brukere for \xe5 delta i aktivitets\xf8kten i " + room;
+      return user + " \u05de\u05d7\u05e4\u05e9 \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05de\u05e4\u05d2\u05e9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d1-" + room;
     },
     get$courseName() {
-      return "Kursnavn";
+      return "\u05e9\u05dd \u05d4\u05e7\u05d5\u05e8\u05e1";
     },
     get$createNewCourse() {
-      return "Nytt kurs";
+      return "\u05e7\u05d5\u05e8\u05e1 \u05d7\u05d3\u05e9";
     },
     goToCourse$1(course) {
-      return "G\xe5 til kurset: " + course;
+      return "\u05e2\u05d1\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1: " + course;
     },
     get$startNewSession() {
-      return "Start ny \xf8kt";
+      return "\u05d4\u05ea\u05d7\u05dc \u05de\u05e4\u05d2\u05e9 \u05d7\u05d3\u05e9";
     },
     get$joinOpenSession() {
-      return "Bli med i \xe5pen \xf8kt";
+      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05de\u05e4\u05d2\u05e9 \u05e4\u05ea\u05d5\u05d7";
     },
     get$activityNotFound() {
-      return "Aktivitet ikke funnet";
+      return "\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d4";
     },
     get$levelUp() {
-      return "Niv\xe5 opp";
+      return "\u05e8\u05de\u05d4 \u05e2\u05dc\u05d9\u05d5\u05e0\u05d4";
     },
     get$myActivities() {
-      return "Mine aktiviteter";
+      return "\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05dc\u05d9";
     },
     get$openToJoin() {
-      return "\xc5pen for \xe5 bli med";
+      return "\u05e4\u05ea\u05d5\u05d7 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
     },
     get$activityDone() {
-      return "Aktivitet fullf\xf8rt!";
+      return "\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d5\u05e9\u05dc\u05de\u05d4!";
     },
     get$promoCodeInfo() {
-      return "Rabattkoder kan tastes inn p\xe5 neste side";
+      return "\u05e7\u05d5\u05d3\u05d9 \u05e7\u05d9\u05d3\u05d5\u05dd \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05d6\u05d9\u05df \u05d1\u05e2\u05de\u05d5\u05d3 \u05d4\u05d1\u05d0";
     },
     get$editsComingSoon() {
-      return "Muligheten til \xe5 redigere byer og aktiviteter kommer snart.";
+      return "\u05d4\u05d9\u05db\u05d5\u05dc\u05ea \u05dc\u05e2\u05e8\u05d5\u05da \u05e2\u05e8\u05d9\u05dd \u05d5\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05ea\u05d2\u05d9\u05e2 \u05d1\u05e7\u05e8\u05d5\u05d1.";
     },
     get$editing() {
-      return "Redigerer";
+      return "\u05e2\u05d5\u05e8\u05da";
     },
     get$activityNeedsOneMember() {
-      return "Oi! Denne aktiviteten trenger 1 til person.";
+      return "\u05d0\u05d5\u05e4\u05e1! \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d6\u05d5 \u05d6\u05e7\u05d5\u05e7\u05d4 \u05dc\u05e2\u05d5\u05d3 \u05d0\u05d3\u05dd \u05d0\u05d7\u05d3.";
     },
     activityNeedsMembers$1(num) {
-      return "Oi! Denne aktiviteten trenger " + num + " til personer.";
+      return "\u05d0\u05d5\u05e4\u05e1! \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d6\u05d5 \u05d6\u05e7\u05d5\u05e7\u05d4 \u05dc-" + num + " \u05d0\u05e0\u05e9\u05d9\u05dd \u05e0\u05d5\u05e1\u05e4\u05d9\u05dd.";
     },
     get$inviteFriendsToCourse() {
-      return "Inviter venner til kurset mitt";
+      return "\u05d4\u05d6\u05de\u05df \u05d7\u05d1\u05e8\u05d9\u05dd \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05d9";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Abonner for \xe5 l\xe5se opp aktivitetsoppsummeringer";
+      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05e1\u05d9\u05db\u05d5\u05de\u05d9 \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea";
     },
     get$subscribeToUnlockDefinitions() {
-      return "Abonner for \xe5 l\xe5se opp definisjoner";
+      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Abonner p\xe5 \xe5 l\xe5se opp transkripsjoner";
+      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05ea\u05de\u05dc\u05d9\u05dc\u05d9\u05dd";
     },
     get$pingSent() {
-      return "\ud83d\udeb4 Kurs-ping sendt! \ud83d\udeb4";
+      return "\u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05e8\u05e1 \u05e0\u05e9\u05dc\u05d7\u05d4! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "Kurs Tittel";
+      return "\u05db\u05d5\u05ea\u05e8\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1";
     },
     get$courseDesc() {
-      return "Kursbeskrivelse";
+      return "\u05ea\u05d9\u05d0\u05d5\u05e8 \u05d4\u05e7\u05d5\u05e8\u05e1";
     },
     get$courseSavedSuccessfully() {
-      return "Kurset er lagret vellykket";
+      return "\u05d4\u05e7\u05d5\u05e8\u05e1 \u05e0\u05e9\u05de\u05e8 \u05d1\u05d4\u05e6\u05dc\u05d7\u05d4";
     },
     get$addCoursePlan() {
-      return "Legg til en kursplan";
+      return "\u05d4\u05d5\u05e1\u05e3 \u05ea\u05db\u05e0\u05d9\u05ea \u05e7\u05d5\u05e8\u05e1";
     },
     get$activityStatsButtonInstruction() {
-      return "Klikk her for \xe5 se aktivitetsstatistikken din og for \xe5 lukke aktiviteten n\xe5r du er ferdig";
+      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05db\u05d3\u05d9 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1\u05e1\u05d8\u05d8\u05d9\u05e1\u05d8\u05d9\u05e7\u05d5\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05dc\u05da \u05d5\u05dc\u05e1\u05d2\u05d5\u05e8 \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d1\u05e1\u05d9\u05d5\u05dd";
     },
     get$readingAnalyticsDesc() {
-      return "Klikk p\xe5 praksis p\xe5 hver melding for leseaktiviteter.";
+      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05ea\u05e8\u05d2\u05d5\u05dc \u05d1\u05db\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e7\u05e8\u05d9\u05d0\u05d4.";
     },
     get$speakingAnalyticsDesc() {
-      return "Ta opp talebeskjeder for \xe5 \xf8ve p\xe5 \xe5 snakke.";
+      return "\u05d4\u05e7\u05dc\u05d8 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e7\u05d5\u05dc\u05d9\u05d5\u05ea \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d3\u05d9\u05d1\u05d5\u05e8.";
     },
     get$audioAnalyticsDesc() {
-      return "Klikk p\xe5 praksis p\xe5 hver melding for lytteaktiviteter.";
+      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05ea\u05e8\u05d2\u05d5\u05dc \u05d1\u05db\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05d4.";
     },
     get$loginToAccount() {
-      return "Logg inn p\xe5 kontoen min";
+      return "\u05d4\u05ea\u05d7\u05d1\u05e8 \u05dc\u05d7\u05e9\u05d1\u05d5\u05e0\u05d9";
     },
     get$appDescription() {
-      return "L\xe6r et spr\xe5k\nmens du sender tekst til vennene dine.";
+      return "\u05dc\u05de\u05d3 \u05e9\u05e4\u05d4\n\u05d1\u05d6\u05de\u05df \u05e9\u05dc\u05d9\u05d7\u05ea \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05dc\u05d7\u05d1\u05e8\u05d9\u05dd \u05e9\u05dc\u05da.";
     },
     get$languages(_) {
-      return "Spr\xe5k";
+      return "\u05e9\u05e4\u05d5\u05ea";
     },
     get$chooseLanguage() {
-      return "Velg et m\xe5lspr\xe5k.";
+      return "\u05d1\u05d7\u05e8 \u05e9\u05e4\u05d4 \u05d9\u05e2\u05d3.";
     },
     get$startOwn() {
-      return "Start min egen";
+      return "\u05d4\u05ea\u05d7\u05dc \u05d0\u05ea \u05e9\u05dc\u05d9";
     },
     get$joinCourseDesc() {
-      return "Hvert kurs har 8-10 sekvenserte emner med en rekke oppgavebaserte spr\xe5kl\xe6ringsaktiviteter.";
+      return "\u05dc\u05db\u05dc \u05e7\u05d5\u05e8\u05e1 \u05d9\u05e9 8-10 \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05e2\u05dd \u05de\u05d2\u05d5\u05d5\u05df \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05dc\u05de\u05d9\u05d3\u05d4 \u05de\u05d1\u05d5\u05e1\u05e1\u05d5\u05ea \u05de\u05e9\u05d9\u05de\u05d5\u05ea \u05d1\u05e9\u05e4\u05d4.";
     },
     get$courseCodeHint() {
-      return "Reisekode eller lenke";
+      return "\u05e7\u05d5\u05d3 \u05d8\u05d9\u05d5\u05dc \u05d0\u05d5 \u05e7\u05d9\u05e9\u05d5\u05e8";
     },
     get$signupOption() {
-      return "Hvordan vil du registrere deg?";
+      return "\u05d0\u05d9\u05da \u05ea\u05e8\u05e6\u05d4 \u05dc\u05d4\u05d9\u05e8\u05e9\u05dd?";
     },
     get$withApple() {
-      return "Med Apple";
+      return "\u05e2\u05dd Apple";
     },
     get$withGoogle() {
-      return "Med Google";
+      return "\u05e2\u05dd Google";
     },
     get$withEmail() {
-      return "Med e-post";
+      return "\u05e2\u05dd \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
     },
     get$createAccount() {
-      return "Opprett konto";
+      return "\u05e6\u05d5\u05e8 \u05d7\u05e9\u05d1\u05d5\u05df";
     },
     get$loginWithEmail() {
-      return "Logg inn med e-post";
+      return "\u05d4\u05ea\u05d7\u05d1\u05e8 \u05e2\u05dd \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
     },
     get$usernameOrEmail() {
-      return "Brukernavn eller e-post";
+      return "\u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9 \u05d0\u05d5 \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
     },
     get$email() {
-      return "E-post";
+      return "\u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
     },
     get$forgotPassword() {
-      return "Glemt passord?";
+      return "\u05e9\u05db\u05d7\u05ea \u05e1\u05d9\u05e1\u05de\u05d4?";
     },
     get$writingAnalyticsDesc() {
-      return "Send meldinger for \xe5 \xf8ve p\xe5 \xe5 skrive.";
+      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d4\u05db\u05ea\u05d9\u05d1\u05d4.";
     },
     get$endActivity() {
-      return "Avslutt aktivitet";
+      return "\u05e1\u05d9\u05d9\u05dd \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
     },
     get$allLanguages() {
-      return "Alle spr\xe5k";
+      return "\u05db\u05dc \u05d4\u05e9\u05e4\u05d5\u05ea";
     },
     get$chatListTooltip() {
-      return "Her finner du dine direktemeldinger! Klikk p\xe5 en brukers avatar og \xabstart samtale\xbb for \xe5 sende en DM.";
+      return "\u05db\u05d0\u05df \u05ea\u05de\u05e6\u05d0\u05d5 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05e9\u05dc\u05db\u05dd! \u05dc\u05d7\u05e6\u05d5 \u05e2\u05dc \u05d0\u05d9\u05d9\u05e7\u05d5\u05df \u05e9\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05dc\u05e9\u05d4\u05d5 \u05d5\u05f4\u05d4\u05ea\u05d7\u05dc \u05e9\u05d9\u05d7\u05d4\u05f4 \u05db\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05e4\u05e8\u05d8\u05d9\u05ea.";
     },
     get$directMessageBotTitle() {
-      return "Direktemelding Pangea Bot";
+      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05dc\u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4";
     },
     get$feedbackTitle() {
-      return "Tilbakemelding om aktivitet";
+      return "\u05de\u05e9\u05d5\u05d1 \u05e2\u05dc \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
     },
     get$feedbackRespDesc() {
-      return "Sjekk igjen i morgen for oppdateringer om aktiviteten.";
+      return "\u041f\u043e\u0432\u0440\u0430\u0449\u0430\u0439\u0442\u0435 \u043d\u0430\u043f\u043e\u0432\u0440\u0430\u0449\u0430\u043d\u0435 \u0437\u0430 \u043f\u0440\u0438\u044f\u0442\u0438\u0435 \u043d\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u0437\u0430\u0432\u0442\u0440\u0430";
     },
     get$feedbackHint() {
-      return "Din tilbakemelding";
+      return "\u05d4\u05de\u05e9\u05d5\u05d1 \u05e9\u05dc\u05da";
     },
     get$feedbackButton() {
-      return "Send tilbakemelding";
+      return "\u05e9\u05dc\u05d7 \u05de\u05e9\u05d5\u05d1";
     },
     get$directMessageBotDesc() {
-      return "\xc5 snakke med mennesker er morsommere, men... AI er alltid klar!";
+      return "\u05dc\u05d3\u05d1\u05e8 \u05e2\u05dd \u05d1\u05e0\u05d9 \u05d0\u05d3\u05dd \u05d6\u05d4 \u05d9\u05d5\u05ea\u05e8 \u05db\u05d9\u05e3 \u05d0\u05d1\u05dc... \u05d1\u05d9\u05e0\u05d4 \u05de\u05dc\u05d0\u05db\u05d5\u05ea\u05d9\u05ea \u05ea\u05de\u05d9\u05d3 \u05de\u05d5\u05db\u05e0\u05d4!";
     },
     get$inviteYourFriends() {
-      return "Inviter vennene dine";
+      return "\u05d4\u05d6\u05de\u05df \u05d0\u05ea \u05d7\u05d1\u05e8\u05d9\u05da";
     },
     get$playWithAI() {
-      return "Lek med AI for n\xe5";
+      return "\u05e9\u05d7\u05e7 \u05e2\u05dd \u05d1\u05d9\u05e0\u05d4 \u05de\u05dc\u05d0\u05db\u05d5\u05ea\u05d9\u05ea \u05dc\u05e2\u05db\u05e9\u05d9\u05d5";
     },
     get$courseStartDesc() {
-      return "Pangea Bot er klar n\xe5r som helst!\n\n...men l\xe6ring er bedre med venner!";
+      return "\u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05de\u05d5\u05db\u05df \u05dc\u05e4\u05e2\u05d5\u05dc\u05d4 \u05d1\u05db\u05dc \u05d6\u05de\u05df!\n\n...\u05d0\u05d1\u05dc \u05dc\u05dc\u05de\u05d5\u05d3 \u05d8\u05d5\u05d1 \u05d9\u05d5\u05ea\u05e8 \u05e2\u05dd \u05d7\u05d1\u05e8\u05d9\u05dd!";
     },
     get$activityDropdownDesc() {
-      return "N\xe5r du er ferdig med denne aktiviteten, klikk nedenfor";
+      return "\u041a\u043e\u0433\u0430\u0442\u043e \u0432\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c, \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043f\u043e\u0434\u043e\u0431\u043d\u043e";
     },
     get$languageMismatchTitle() {
-      return "Spr\xe5kavvik";
+      return "\u041d\u0435\u043f\u043e\u0434\u043e\u043b\u044f\u0442\u043d\u043e\u0441\u0442\u044c \u0435\u0437\u0438\u043a\u0430";
     },
     get$emptyChatSearch() {
-      return "No DMs or chats found. Make sure your search is spelled correctly.";
+      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05d0\u05d5 \u05e6'\u05d0\u05d8\u05d9\u05dd. \u05d5\u05d3\u05d0 \u05e9\u05d4\u05d7\u05d9\u05e4\u05d5\u05e9 \u05e9\u05dc\u05da \u05db\u05ea\u05d5\u05d1 \u05e0\u05db\u05d5\u05df.";
     },
     get$languageMismatchDesc() {
-      return "M\xe5l spr\xe5ket ditt stemmer ikke overens med spr\xe5ket for denne aktiviteten. Vil du oppdatere m\xe5lspr\xe5ket?";
+      return "\u0412\u0430\u0448\u0435 \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435 \u043d\u0435\u043f\u043e\u0434\u043e\u043b\u044f\u0442\u043d\u043e \u043d\u0430 \u0435\u0437\u0438\u043a\u0430 \u043d\u0430 \u044d\u0442\u043e\u0442\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c. \u0418\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u043d\u0430\u0448\u0435 \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435\u0437\u0438\u043a\u0430?";
     },
     get$reportWordIssueTooltip() {
-      return "Rapporter problem med ordinformasjon";
+      return "\u041e\u043f\u043e\u0432\u0435\u0449\u0430\u0439\u0442\u0435 \u0437\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u0437\u0430 \u0441\u043b\u043e\u0432\u043e";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Tilbakemelding om ordinformasjon";
+      return "\u041e\u043f\u043e\u0432\u0435\u0449\u0430\u0439\u0442\u0435 \u0437\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u0437\u0430 \u0441\u043b\u043e\u0432\u043e";
     },
     get$noPublicCoursesFound() {
-      return "Ingen offentlige kurs funnet. Vil du opprette et?";
+      return "\u041d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e \u043d\u0438\u0447\u0435\u0433\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043e\u0432 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f. \u0418\u0441\u0442\u0435\u0447\u0435\u043d\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430\u0440\u0430\u043d\u0430?";
     },
     get$noCourseTemplatesFound() {
-      return "Vi kunne ikke finne noen kurs for ditt m\xe5lspr\xe5k. Du kan chatte med Pangea Bot i mellomtiden, og komme tilbake senere for flere kurs.";
+      return "\u041d\u0435 \u043c\u043e\u0436\u0435\u043c\u043e \u043d\u0430\u0439\u0442\u0438 \u043a\u0430\u043a\u0438\u0435 \u043a\u0430\u0440\u0442\u043e\u0449\u0435\u043a\u0438 \u0437\u0430 \u0432\u0430\u0448\u0435\u0442\u043e \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435\u0437\u0438\u043a\u0430. \u0412 \u043f\u0435\u0440\u0435\u0434\u043d\u0438\u0442\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0438\u0430\u043a\u043e\u043d\u0430\u0442\u0435 \u0441 \u041f\u0430\u043d\u0433\u0435\u0430 \u0411\u043e\u0442 \u0432 \u0442\u0435\u0437\u0438\u043d\u0430\u0442\u0430, \u0438 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u043e \u043f\u043e\u0432\u0435\u0440\u043d\u0435\u0442\u0435 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u044f\u0442\u0430";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot tar litt tid \xe5 svare. Vennligst pr\xf8v igjen senere, eller inviter en venn.";
+      return "\u0411\u043e\u0442 \u041f\u0430\u043d\u0433\u0435\u0430 \u0411\u043e\u0442 \u043f\u043e\u0432\u0438\u043a\u0430 \u043d\u0430 \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u043d\u0438\u0435. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u043f\u0440\u043e\u0431\u0432\u0430\u0439\u0442\u0435 \u043d\u0430\u043f\u043e\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u043d\u0430 \u043f\u043e\u0437\u043d\u0430\u043d\u0438\u0435 \u043d\u0430 \u043f\u043e\u0432\u0435\u0440\u043a\u0430\u0442\u0435\u043b\u0438, \u0438\u043b\u0438 \u043f\u0440\u043e\u0447\u0438\u0441\u043b\u0438 \u043f\u0440\u0438\u044f\u0442\u0435\u043b";
     },
     get$unsubscribedResponseError() {
-      return "Denne funksjonen krever abonnement";
+      return "\u0424\u0435\u0430\u0440\u0430 \u0444\u0435\u0430\u0440\u0430 \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u0430 \u043d\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430";
     },
     get$leaveDesc() {
-      return "Forlat dette rommet og alle chatter i det";
+      return "\u041e\u0442\u0438\u0439\u0434\u0438\u0442\u0435 \u0441\u043f\u0430\u0441\u0430\u0435\u043c\u043e\u0441\u0442\u044c \u0438 \u0432\u0441\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b \u0432 \u043d\u0435\u0439";
     },
     get$selectAll() {
-      return "Velg alle";
+      return "\u0412\u044b\u0431\u0440\u0430\u0442\u0438 \u0432\u0441\u0435";
     },
     get$deselectAll(_) {
-      return "Fjern valg av alle";
+      return "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u0435 \u0432\u0441\u0435";
     },
     get$shareCourse() {
-      return "Del kurs";
+      return "\u05e9\u05ea\u05e3 \u05e7\u05d5\u05e8\u05e1";
     },
     get$addCourse() {
-      return "Legg til et kurs";
+      return "\u05d4\u05d5\u05e1\u05e3 \u05e7\u05d5\u05e8\u05e1";
     },
     get$joinPublicCourse() {
-      return "Bli med p\xe5 offentlig kurs";
+      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e6\u05d9\u05d1\u05d5\u05e8\u05d9";
     },
     get$vocabLevelsDesc() {
-      return "Dette er hvor vokabularord vil komme n\xe5r du har niv\xe5ert dem opp!";
+      return "\u05d6\u05d4 \u05d4\u05de\u05e7\u05d5\u05dd \u05e9\u05d1\u05d5 \u05de\u05d9\u05dc\u05d5\u05ea \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d9\u05d5\u05e4\u05d9\u05e2\u05d5 \u05dc\u05d0\u05d7\u05e8 \u05e9\u05d4\u05e2\u05dc\u05d9\u05ea \u05d0\u05ea \u05e8\u05de\u05ea\u05df!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "These are your saved activities for review and practice.";
+      return "\u05d0\u05dc\u05d4 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05e9\u05de\u05e8\u05ea \u05dc\u05e6\u05d5\u05e8\u05da \u05e1\u05e7\u05d9\u05e8\u05d4 \u05d5\u05ea\u05e8\u05d2\u05d5\u05dc.";
     },
     get$numSavedActivities() {
-      return "Number of saved activities";
+      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05d4\u05e9\u05de\u05d5\u05e8\u05d5\u05ea";
     },
     get$saveActivityTitle() {
-      return "Save activity";
+      return "\u05e9\u05de\u05d5\u05e8 \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
     },
     get$saveActivityDesc() {
-      return "Good job! Save this activity for later review and practice";
+      return "\u05e2\u05d1\u05d5\u05d3\u05d4 \u05d8\u05d5\u05d1\u05d4! \u05e9\u05de\u05d5\u05e8 \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d6\u05d5 \u05dc\u05e1\u05e7\u05d9\u05e8\u05d4 \u05d5\u05ea\u05e8\u05d2\u05d5\u05dc \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8";
     },
     get$levelInfoTooltip() {
-      return "Here you can see all the points you\u2019ve earned and how!";
+      return "\u05db\u05d0\u05df \u05ea\u05d5\u05db\u05dc \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea \u05db\u05dc \u05d4\u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e9\u05d4\u05e8\u05d5\u05d5\u05d7\u05ea \u05d5\u05d0\u05d9\u05da!";
     },
     get$alreadyInCourseWithID() {
-      return "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?";
+      return "\u05d0\u05ea\u05d4 \u05db\u05d1\u05e8 \u05d1\u05e7\u05d5\u05e8\u05e1 \u05e2\u05dd \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05d6\u05d5. \u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d9\u05e6\u05d5\u05e8 \u05e7\u05d5\u05e8\u05e1 \u05e2\u05dd \u05d0\u05d5\u05ea\u05d4 \u05ea\u05d5\u05db\u05e0\u05d9\u05ea, \u05d0\u05d5 \u05dc\u05e2\u05d1\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d4\u05e7\u05d9\u05d9\u05dd?";
     },
     get$goToExistingCourse() {
-      return "Go to existing course";
+      return "\u05e2\u05d1\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d4\u05e7\u05d9\u05d9\u05dd";
     },
     get$emojiView() {
-      return "Emoji view";
+      return "\u05ea\u05e6\u05d5\u05d2\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9";
     },
     get$feedbackDialogDesc() {
-      return "I make mistakes too! Anything to help me improve?";
+      return "\u05d2\u05dd \u05d0\u05e0\u05d9 \u05e2\u05d5\u05e9\u05d4 \u05d8\u05e2\u05d5\u05d9\u05d5\u05ea! \u05d9\u05e9 \u05de\u05e9\u05d4\u05d5 \u05e9\u05d9\u05db\u05d5\u05dc \u05dc\u05e2\u05d6\u05d5\u05e8 \u05dc\u05d9 \u05dc\u05d4\u05e9\u05ea\u05e4\u05e8?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Contact has been invited to the course";
+      return "\u05d4\u05e7\u05e9\u05e8 \u05d4\u05d5\u05d6\u05de\u05df \u05dc\u05e7\u05d5\u05e8\u05e1";
     },
     get$inviteFriends() {
-      return "Inviter venner";
+      return "\u05d4\u05d6\u05de\u05df \u05d7\u05d1\u05e8\u05d9\u05dd";
     },
     get$activityStatsButtonTooltip() {
-      return "Activity info";
+      return "\u05de\u05d9\u05d3\u05e2 \u05e2\u05dc \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
     },
     get$allow(_) {
-      return "Allow";
+      return "\u05d0\u05e4\u05e9\u05e8";
     },
     get$deny() {
-      return "Deny";
+      return "\u05e1\u05d9\u05e8\u05d1";
     },
     get$enabledRenewal() {
-      return "Enable Subscription Renewal";
+      return "\u05d0\u05e4\u05e9\u05e8 \u05d7\u05d9\u05d3\u05d5\u05e9 \u05de\u05e0\u05d5\u05d9";
     },
     get$subscriptionEndsOn() {
-      return "Subscription Ends On";
+      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05de\u05e1\u05ea\u05d9\u05d9\u05dd \u05d1";
     },
     get$subscriptionRenewsOn() {
-      return "Subscription Renews On";
+      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05de\u05ea\u05d7\u05d3\u05e9 \u05d1";
     },
     get$waitForSubscriptionChanges() {
-      return "Changes to your subscription may take a moment to reflect in the app.";
+      return "\u05e9\u05d9\u05e0\u05d5\u05d9\u05d9\u05dd \u05d1\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da \u05e2\u05e9\u05d5\u05d9\u05d9\u05dd \u05dc\u05e7\u05d7\u05ea \u05e8\u05d2\u05e2 \u05dc\u05d4\u05d5\u05e4\u05d9\u05e2 \u05d1\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4.";
     },
     get$subscribeReadingAssistance() {
-      return "Subscribe to unlock message tools";
+      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05db\u05dc\u05d9\u05dd \u05dc\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
+    },
+    get$aceDisplayName() {
+      return "\u05d0\u05db\u05d9\u05e0\u05d6\u05d9";
+    },
+    get$achDisplayName() {
+      return "\u05d0\u05e6'\u05d5\u05dc\u05d9";
+    },
+    get$afDisplayName() {
+      return "\u05d0\u05e4\u05e8\u05d9\u05e7\u05d0\u05e0\u05e1";
+    },
+    get$akDisplayName() {
+      return "\u05d0\u05e7\u05df";
+    },
+    get$alzDisplayName() {
+      return "\u05d0\u05dc\u05d5\u05e8";
+    },
+    get$amDisplayName() {
+      return "\u05d0\u05de\u05d4\u05e8\u05d9\u05ea";
+    },
+    get$arDisplayName() {
+      return "\u05e2\u05e8\u05d1\u05d9\u05ea";
+    },
+    get$asDisplayName() {
+      return "\u05d0\u05e1\u05d0\u05dd";
+    },
+    get$awaDisplayName() {
+      return "\u05d0\u05d5\u05d5\u05d0\u05d3\u05d9";
+    },
+    get$ayDisplayName() {
+      return "\u05d0\u05d9\u05d9\u05de\u05e8\u05d4";
+    },
+    get$azDisplayName() {
+      return "\u05d0\u05d6\u05e8\u05d1\u05d9\u05d9\u05d2'\u05e0\u05d9\u05ea";
+    },
+    get$baDisplayName() {
+      return "\u05d1\u05d0\u05e9\u05e7\u05d9\u05e8";
+    },
+    get$banDisplayName() {
+      return "\u05d1\u05dc\u05d9\u05e0\u05d6\u05d9";
+    },
+    get$bbcDisplayName() {
+      return "\u05d1\u05d8\u05d0\u05e7 \u05d8\u05d5\u05d1\u05d4";
+    },
+    get$beDisplayName() {
+      return "\u05d1\u05dc\u05d0\u05e8\u05d5\u05e1\u05d9\u05ea";
+    },
+    get$bemDisplayName() {
+      return "\u05d1\u05de\u05d1\u05d4";
+    },
+    get$bewDisplayName() {
+      return "\u05d1\u05d8\u05d0\u05d5\u05d5\u05d9";
+    },
+    get$bgDisplayName() {
+      return "\u05d1\u05d5\u05dc\u05d2\u05e8\u05d9\u05ea";
+    },
+    get$bhoDisplayName() {
+      return "\u05d1\u05d4\u05d5\u05d2'\u05e4\u05d5\u05e8\u05d9";
+    },
+    get$bikDisplayName() {
+      return "\u05d1\u05d9\u05e7\u05d5\u05dc";
+    },
+    get$bmDisplayName() {
+      return "\u05d1\u05de\u05d1\u05e8\u05d4";
+    },
+    get$bnDisplayName() {
+      return "\u05d1\u05e0\u05d2\u05dc\u05d9\u05ea";
+    },
+    get$bnBDDisplayName() {
+      return "\u05d1\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d1\u05e0\u05d2\u05dc\u05d3\u05e9)";
+    },
+    get$bnINDisplayName() {
+      return "\u05d1\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d4\u05d5\u05d3\u05d5)";
+    },
+    get$brDisplayName() {
+      return "\u05d1\u05e8\u05d8\u05d5\u05e0\u05d9\u05ea";
+    },
+    get$bsDisplayName() {
+      return "\u05d1\u05d5\u05e1\u05e0\u05d9\u05ea";
+    },
+    get$btsDisplayName() {
+      return "\u05d1\u05d8\u05d0\u05e7 \u05e1\u05d9\u05de\u05dc\u05d5\u05e0\u05d2\u05d5\u05df";
+    },
+    get$btxDisplayName() {
+      return "\u05d1\u05d8\u05d0\u05e7 \u05e7\u05d0\u05e8\u05d5";
+    },
+    get$buaDisplayName() {
+      return "\u05d1\u05d5\u05e8\u05d9\u05d0\u05d8";
+    },
+    get$caDisplayName() {
+      return "\u05e7\u05d8\u05dc\u05d0\u05e0\u05d9\u05ea";
+    },
+    get$cebDisplayName() {
+      return "\u05e1\u05d1\u05d5\u05d5\u05d0\u05e0\u05d5";
+    },
+    get$cggDisplayName() {
+      return "\u05e6'\u05d9\u05d2\u05d4";
+    },
+    get$chmDisplayName() {
+      return "\u05de\u05e8\u05d9";
+    },
+    get$ckbDisplayName() {
+      return "\u05db\u05d5\u05e8\u05d3\u05d9\u05ea \u05de\u05e8\u05db\u05d6\u05d9\u05ea";
+    },
+    get$cnhDisplayName() {
+      return "\u05d7\u05db\u05d0\u05d4 \u05e6'\u05d9\u05df";
+    },
+    get$coDisplayName() {
+      return "\u05e7\u05d5\u05e8\u05e1\u05d9\u05e7\u05e0\u05d9\u05ea";
+    },
+    get$crhDisplayName() {
+      return "\u05d8\u05d5\u05e8\u05e7\u05d9\u05ea \u05e7\u05e8\u05d9\u05de\u05d0\u05d9\u05ea";
+    },
+    get$crsDisplayName() {
+      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea \u05e7\u05e8\u05d9\u05d0\u05d5\u05dc\u05d9\u05ea \u05e1\u05e1\u05dc\u05d5\u05d5\u05d4";
+    },
+    get$csDisplayName() {
+      return "\u05e6'\u05db\u05d9";
+    },
+    get$cvDisplayName() {
+      return "\u05e6'\u05d5\u05d1\u05e9";
+    },
+    get$cyDisplayName() {
+      return "\u05d5\u05d5\u05dc\u05e9\u05d9\u05ea";
+    },
+    get$daDisplayName() {
+      return "\u05d3\u05e0\u05d9\u05ea";
+    },
+    get$deDisplayName() {
+      return "\u05d2\u05e8\u05de\u05e0\u05d9\u05ea";
+    },
+    get$dinDisplayName() {
+      return "\u05d3\u05d9\u05e0\u05e7\u05d4";
+    },
+    get$doiDisplayName() {
+      return "\u05d3\u05d5\u05d2\u05e8\u05d9";
+    },
+    get$dovDisplayName() {
+      return "\u05d3\u05d5\u05de\u05d1\u05d4";
+    },
+    get$dzDisplayName() {
+      return "\u05d3\u05d6\u05d5\u05e0\u05d2\u05e7\u05d4";
+    },
+    get$eeDisplayName() {
+      return "\u05d0\u05b5\u05d5\u05b5\u05d4";
+    },
+    get$enDisplayName() {
+      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea";
+    },
+    get$enAUDisplayName() {
+      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d0\u05d5\u05e1\u05d8\u05e8\u05dc\u05d9\u05d4)";
+    },
+    get$enGBDisplayName() {
+      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d1\u05e8\u05d9\u05d8\u05e0\u05d9\u05d4)";
+    },
+    get$enINDisplayName() {
+      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d4\u05d5\u05d3\u05d5)";
+    },
+    get$enUSDisplayName() {
+      return '\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d0\u05e8\u05d4"\u05d1)';
+    },
+    get$eoDisplayName() {
+      return "\u05d0\u05e1\u05e4\u05e8\u05e0\u05d8\u05d5";
+    },
+    get$esDisplayName() {
+      return "\u05e1\u05e4\u05e8\u05d3\u05d9\u05ea";
+    },
+    get$esESDisplayName() {
+      return "\u05e1\u05e4\u05e8\u05d3\u05d9\u05ea (\u05e1\u05e4\u05e8\u05d3)";
+    },
+    get$esMXDisplayName() {
+      return "\u05e1\u05e4\u05e8\u05d3\u05d9\u05ea (\u05de\u05e7\u05e1\u05d9\u05e7\u05d5)";
+    },
+    get$euDisplayName() {
+      return "\u05d1\u05e1\u05e7\u05d9\u05ea";
+    },
+    get$faDisplayName() {
+      return "\u05e4\u05e8\u05e1\u05d9\u05ea";
+    },
+    get$ffDisplayName() {
+      return "\u05e4\u05d5\u05dc\u05d4";
+    },
+    get$fiDisplayName() {
+      return "\u05e4\u05d9\u05e0\u05d9\u05ea";
+    },
+    get$filDisplayName() {
+      return "\u05e4\u05d9\u05dc\u05d9\u05e4\u05d9\u05e0\u05d9";
+    },
+    get$fjDisplayName() {
+      return "\u05e4\u05d9\u05d2'\u05d9";
+    },
+    get$foDisplayName() {
+      return "\u05e4\u05d0\u05e8\u05d5\u05d0\u05d6\u05d9";
+    },
+    get$frDisplayName() {
+      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea";
+    },
+    get$frCADisplayName() {
+      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea (\u05e7\u05e0\u05d3\u05d4)";
+    },
+    get$frFRDisplayName() {
+      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea (\u05e6\u05e8\u05e4\u05ea)";
+    },
+    get$fyDisplayName() {
+      return "\u05e4\u05e8\u05d9\u05d6\u05d9\u05ea \u05de\u05e2\u05e8\u05d1\u05d9\u05ea";
+    },
+    get$gaDisplayName() {
+      return "\u05d0\u05d9\u05e8\u05d9\u05ea";
+    },
+    get$gaaDisplayName() {
+      return "\u05d2\u05d4";
+    },
+    get$gdDisplayName() {
+      return "\u05d2\u05d0\u05dc\u05d9\u05ea \u05e1\u05e7\u05d5\u05d8\u05d9\u05ea";
+    },
+    get$glDisplayName() {
+      return "\u05d2\u05dc\u05d9\u05e6\u05d9\u05d0\u05e0\u05d9\u05ea";
+    },
+    get$gnDisplayName() {
+      return "\u05d2\u05d5\u05d0\u05e8\u05d0\u05e0\u05d9";
+    },
+    get$gomDisplayName() {
+      return "\u05e7\u05d5\u05e0\u05e7\u05e0\u05d9 \u05d2\u05d5\u05d0\u05e0\u05d9";
+    },
+    get$guDisplayName() {
+      return "\u05d2\u05d5\u05d2'\u05e8\u05d0\u05d8\u05d9";
+    },
+    get$haDisplayName() {
+      return "\u05d4\u05d0\u05d5\u05e1\u05d4";
+    },
+    get$hawDisplayName() {
+      return "\u05d4\u05d5\u05d5\u05d0\u05d9";
+    },
+    get$heDisplayName() {
+      return "\u05e2\u05d1\u05e8\u05d9\u05ea";
+    },
+    get$hiDisplayName() {
+      return "\u05d4\u05d9\u05e0\u05d3\u05d9";
+    },
+    get$hilDisplayName() {
+      return "\u05d4\u05d9\u05dc\u05d9\u05d2\u05d9\u05d9\u05e0\u05d5\u05df";
+    },
+    get$hmnDisplayName() {
+      return "\u05d4\u05de\u05d5\u05e0\u05d2";
+    },
+    get$hneDisplayName() {
+      return "\u05e6'\u05d0\u05d8\u05d9\u05e1\u05d2\u05e8\u05d9";
+    },
+    get$hrDisplayName() {
+      return "\u05e7\u05e8\u05d5\u05d0\u05d8\u05d9";
+    },
+    get$hrxDisplayName() {
+      return "\u05d4\u05d5\u05e0\u05e1\u05e8\u05d9\u05e7";
+    },
+    get$htDisplayName() {
+      return "\u05e7\u05e8\u05d9\u05d0\u05d5\u05dc\u05d9\u05ea \u05d4\u05d0\u05d9\u05d8\u05d9\u05ea";
+    },
+    get$huDisplayName() {
+      return "\u05d4\u05d5\u05e0\u05d2\u05e8\u05d9";
+    },
+    get$hyDisplayName() {
+      return "\u05d0\u05e8\u05de\u05e0\u05d9";
+    },
+    get$idDisplayName() {
+      return "\u05d0\u05d9\u05e0\u05d3\u05d5\u05e0\u05d6\u05d9";
+    },
+    get$igDisplayName() {
+      return "\u05d0\u05d9\u05d2\u05d1\u05d5";
+    },
+    get$iloDisplayName() {
+      return "\u05d0\u05d9\u05dc\u05d5\u05e7\u05d5";
+    },
+    get$isDisplayName() {
+      return "\u05d0\u05d9\u05e1\u05dc\u05e0\u05d3\u05d9";
+    },
+    get$itDisplayName() {
+      return "\u05d0\u05d9\u05d8\u05dc\u05e7\u05d9\u05ea";
+    },
+    get$jaDisplayName() {
+      return "\u05d9\u05e4\u05e0\u05d9\u05ea";
+    },
+    get$jvDisplayName() {
+      return "\u05d2'\u05d0\u05d5\u05d5\u05d4";
+    },
+    get$kaDisplayName() {
+      return "\u05d2\u05d0\u05d5\u05e8\u05d2\u05d9\u05ea";
+    },
+    get$kkDisplayName() {
+      return "\u05e7\u05d6\u05d7\u05d9\u05ea";
+    },
+    get$kmDisplayName() {
+      return "\u05d7\u05de\u05e8";
+    },
+    get$knDisplayName() {
+      return "\u05e7\u05e0\u05d3\u05d4";
+    },
+    get$koDisplayName() {
+      return "\u05e7\u05d5\u05e8\u05d9\u05d0\u05e0\u05d9\u05ea";
+    },
+    get$kokDisplayName() {
+      return "\u05e7\u05d5\u05e0\u05e7\u05e0\u05d9";
+    },
+    get$kriDisplayName() {
+      return "\u05e7\u05e8\u05d9\u05d5";
+    },
+    get$ksDisplayName() {
+      return "\u05e7\u05e9\u05de\u05d9\u05e8\u05d9";
+    },
+    get$ktuDisplayName() {
+      return "\u05e7\u05d9\u05d8\u05d5\u05d1\u05d4 (\u05d4\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05d4 \u05d4\u05d3\u05de\u05d5\u05e7\u05e8\u05d8\u05d9\u05ea \u05e9\u05dc \u05e7\u05d5\u05e0\u05d2\u05d5)";
+    },
+    get$kuDisplayName() {
+      return "\u05db\u05d5\u05e8\u05d3\u05d9\u05ea";
+    },
+    get$kyDisplayName() {
+      return "\u05e7\u05d9\u05e8\u05d2\u05d9\u05d6\u05d9\u05ea";
+    },
+    get$laDisplayName() {
+      return "\u05dc\u05d8\u05d9\u05e0\u05d9\u05ea";
+    },
+    get$lbDisplayName() {
+      return "\u05dc\u05d5\u05e7\u05e1\u05de\u05d1\u05d5\u05e8\u05d2\u05d9\u05ea";
+    },
+    get$lgDisplayName() {
+      return "\u05d2\u05d0\u05e0\u05d3\u05d4";
+    },
+    get$liDisplayName() {
+      return "\u05dc\u05d9\u05de\u05d1\u05d5\u05e8\u05d2\u05d9\u05ea";
+    },
+    get$lijDisplayName() {
+      return "\u05dc\u05d9\u05d2\u05d5\u05e8\u05d9\u05ea";
+    },
+    get$lmoDisplayName() {
+      return "\u05dc\u05d5\u05de\u05d1\u05e8\u05d3\u05d9\u05ea";
+    },
+    get$lnDisplayName() {
+      return "\u05dc\u05d9\u05e0\u05d2\u05dc\u05d4";
+    },
+    get$loDisplayName() {
+      return "\u05dc\u05d0\u05d5";
+    },
+    get$ltDisplayName() {
+      return "\u05dc\u05d9\u05d8\u05d0\u05d9\u05ea";
+    },
+    get$ltgDisplayName() {
+      return "\u05dc\u05d8\u05d2\u05dc\u05d9\u05ea";
+    },
+    get$luoDisplayName() {
+      return "\u05dc\u05d5\u05d0\u05d5 (\u05e7\u05e0\u05d9\u05d4 \u05d5\u05d8\u05e0\u05d6\u05e0\u05d9\u05d4)";
+    },
+    get$lusDisplayName() {
+      return "\u05de\u05d9\u05d6\u05d5";
+    },
+    get$lvDisplayName() {
+      return "\u05dc\u05d8\u05d1\u05d9\u05ea";
+    },
+    get$maiDisplayName() {
+      return "\u05de\u05d0\u05d9\u05ea\u05d9\u05dc\u05d9";
+    },
+    get$makDisplayName() {
+      return "\u05de\u05e7\u05d0\u05e1\u05e8";
+    },
+    get$mgDisplayName() {
+      return "\u05de\u05dc\u05d2\u05e9\u05d9";
+    },
+    get$miDisplayName() {
+      return "\u05de\u05d0\u05d5\u05e8\u05d9";
+    },
+    get$minDisplayName() {
+      return "\u05de\u05d9\u05e0\u05e0\u05d2\u05e7\u05d0\u05d1\u05d0\u05d5";
+    },
+    get$mkDisplayName() {
+      return "\u05de\u05e7\u05d3\u05d5\u05e0\u05d9";
+    },
+    get$mlDisplayName() {
+      return "\u05de\u05dc\u05d9\u05d0\u05dc\u05d0\u05dd";
+    },
+    get$mnDisplayName() {
+      return "\u05de\u05d5\u05e0\u05d2\u05d5\u05dc\u05d9\u05ea";
+    },
+    get$mniDisplayName() {
+      return "\u05de\u05e0\u05d9\u05e4\u05d5\u05e8\u05d9";
+    },
+    get$mrDisplayName() {
+      return "\u05de\u05e8\u05d8\u05d4\u05d9";
+    },
+    get$msDisplayName() {
+      return "\u05de\u05dc\u05d0\u05d9";
+    },
+    get$msArabDisplayName() {
+      return "\u05de\u05dc\u05d0\u05d9 (\u05e2\u05e8\u05d1\u05d9)";
+    },
+    get$msMYDisplayName() {
+      return "\u05de\u05dc\u05d0\u05d9 (\u05de\u05dc\u05d6\u05d9\u05d4)";
+    },
+    get$mtDisplayName() {
+      return "\u05de\u05dc\u05d8\u05d6\u05d9\u05ea";
+    },
+    get$mwrDisplayName() {
+      return "\u05de\u05e8\u05d5\u05d5\u05d0\u05e8\u05d9";
+    },
+    get$myDisplayName() {
+      return "\u05d1\u05d5\u05e8\u05de\u05d6\u05d9\u05ea";
+    },
+    get$nanDisplayName() {
+      return "\u05de\u05d9\u05df \u05e0\u05d0\u05df";
+    },
+    get$nbDisplayName() {
+      return "\u05e0\u05d5\u05e8\u05d5\u05d5\u05d2\u05d9\u05ea (\u05d1\u05d5\u05e7\u05de\u05dc)";
+    },
+    get$neDisplayName() {
+      return "\u05e0\u05e4\u05d0\u05dc\u05d9\u05ea";
+    },
+    get$newDisplayName() {
+      return "\u05e0\u05d9\u05d5\u05d0\u05e8\u05d9";
+    },
+    get$nlDisplayName() {
+      return "\u05d4\u05d5\u05dc\u05e0\u05d3\u05d9\u05ea";
+    },
+    get$nlBEDisplayName() {
+      return "\u05e4\u05dc\u05de\u05d9\u05ea";
+    },
+    get$noDisplayName() {
+      return "\u05e0\u05d5\u05e8\u05d5\u05d5\u05d2\u05d9\u05ea";
+    },
+    get$nrDisplayName() {
+      return "\u05d3\u05e8\u05d5\u05dd \u05e0\u05d3\u05d1\u05dc";
+    },
+    get$nsoDisplayName() {
+      return "\u05e1\u05d5\u05d8\u05d5 \u05e6\u05e4\u05d5\u05e0\u05d9";
+    },
+    get$nusDisplayName() {
+      return "\u05e0\u05d5\u05d0\u05e8";
+    },
+    get$nyDisplayName() {
+      return "\u05e0\u05d9\u05d0\u05e0\u05d2'\u05d4";
+    },
+    get$ocDisplayName() {
+      return "\u05d0\u05d5\u05e7\u05e1\u05d9\u05d8\u05e0\u05d9\u05ea";
+    },
+    get$omDisplayName() {
+      return "\u05d0\u05d5\u05e8\u05d5\u05de\u05d5";
+    },
+    get$orDisplayName() {
+      return "\u05d0\u05d5\u05d3\u05d9\u05d4";
+    },
+    get$paDisplayName() {
+      return "\u05e4\u05e0\u05d2'\u05d0\u05d1\u05d9";
+    },
+    get$paArabDisplayName() {
+      return "\u05e4\u05e0\u05d2'\u05d0\u05d1\u05d9 (\u05e9\u05d0\u05d4\u05de\u05d5\u05e7\u05d9)";
+    },
+    get$paINDisplayName() {
+      return "\u05e4\u05e0\u05d2'\u05d0\u05d1\u05d9 (\u05d2\u05d5\u05e8\u05de\u05d5\u05e7\u05d9)";
+    },
+    get$pagDisplayName() {
+      return "\u05e4\u05e0\u05d2\u05e1\u05d9\u05e0\u05d0\u05df";
+    },
+    get$pamDisplayName() {
+      return "\u05e4\u05d0\u05de\u05e4\u05e0\u05d2\u05d4";
+    },
+    get$papDisplayName() {
+      return "\u05e4\u05d0\u05e4\u05d9\u05d0\u05de\u05e0\u05d8\u05d5";
+    },
+    get$plDisplayName() {
+      return "\u05e4\u05d5\u05dc\u05e0\u05d9\u05ea";
+    },
+    get$psDisplayName() {
+      return "\u05e4\u05e9\u05d8\u05d5";
+    },
+    get$ptDisplayName() {
+      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05d6\u05d9\u05ea";
+    },
+    get$ptBRDisplayName() {
+      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05d6\u05d9\u05ea (\u05d1\u05e8\u05d6\u05d9\u05dc)";
+    },
+    get$ptPTDisplayName() {
+      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05d6\u05d9\u05ea (\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05dc)";
+    },
+    get$quDisplayName() {
+      return "\u05e7\u05e6'\u05d5\u05d0\u05d4";
+    },
+    get$rajDisplayName() {
+      return "\u05e8\u05d0\u05d2'\u05e1\u05d8\u05d0\u05e0\u05d9";
+    },
+    get$rnDisplayName() {
+      return "\u05e8\u05d5\u05e0\u05d3\u05d9";
+    },
+    get$roDisplayName() {
+      return "\u05e8\u05d5\u05de\u05e0\u05d9\u05ea";
+    },
+    get$roMDDisplayName() {
+      return "\u05de\u05d5\u05dc\u05d3\u05d5\u05d1\u05e0\u05d9\u05ea";
+    },
+    get$romDisplayName() {
+      return "\u05e8\u05d5\u05de\u05d0\u05e0\u05d9";
+    },
+    get$ruDisplayName() {
+      return "\u05e8\u05d5\u05e1\u05d9\u05ea";
+    },
+    get$rwDisplayName() {
+      return "\u05e7\u05d9\u05e0\u05d9\u05d0\u05e8\u05d5\u05d5\u05d0\u05e0\u05d3\u05d4";
+    },
+    get$saDisplayName() {
+      return "\u05e1\u05e0\u05e1\u05e7\u05e8\u05d9\u05d8";
+    },
+    get$satDisplayName() {
+      return "\u05e1\u05e0\u05d8\u05d0\u05dc\u05d9";
+    },
+    get$scnDisplayName() {
+      return "\u05e1\u05d9\u05e6\u05d9\u05dc\u05d9\u05d0\u05e0\u05d9\u05ea";
+    },
+    get$sdDisplayName() {
+      return "\u05e1\u05d9\u05e0\u05d3\u05d9";
+    },
+    get$sgDisplayName() {
+      return "\u05e1\u05e0\u05d2\u05d5";
+    },
+    get$shnDisplayName() {
+      return "\u05e9\u05d0\u05df";
+    },
+    get$siDisplayName() {
+      return "\u05e1\u05d9\u05e0\u05d4\u05dc\u05d4";
+    },
+    get$skDisplayName() {
+      return "\u05e1\u05dc\u05d5\u05d1\u05e7\u05d9\u05ea";
+    },
+    get$slDisplayName() {
+      return "\u05e1\u05dc\u05d5\u05d1\u05e0\u05d9\u05ea";
+    },
+    get$smDisplayName() {
+      return "\u05e1\u05de\u05d5\u05d0\u05df";
+    },
+    get$snDisplayName() {
+      return "\u05e9\u05d5\u05e0\u05d4";
+    },
+    get$soDisplayName() {
+      return "\u05e1\u05d5\u05de\u05dc\u05d9";
+    },
+    get$sqDisplayName() {
+      return "\u05d0\u05dc\u05d1\u05e0\u05d9\u05ea";
+    },
+    get$srDisplayName() {
+      return "\u05e1\u05e8\u05d1\u05d9\u05ea";
+    },
+    get$srMEDisplayName() {
+      return "\u05de\u05d5\u05e0\u05d8\u05e0\u05d2\u05e8\u05d9";
+    },
+    get$ssDisplayName() {
+      return "\u05e1\u05d5\u05d5\u05d0\u05d8\u05d9";
+    },
+    get$stDisplayName() {
+      return "\u05e1\u05d5\u05d8\u05d5 \u05d3\u05e8\u05d5\u05de\u05d9";
+    },
+    get$suDisplayName() {
+      return "\u05e1\u05d5\u05e0\u05d3\u05e0\u05d6\u05d9";
+    },
+    get$svDisplayName() {
+      return "\u05e9\u05d1\u05d3\u05d9\u05ea";
+    },
+    get$swDisplayName() {
+      return "\u05e1\u05d5\u05d5\u05d4\u05d9\u05dc\u05d9";
+    },
+    get$szlDisplayName() {
+      return "\u05e1\u05dc\u05d6\u05d9";
+    },
+    get$taDisplayName() {
+      return "\u05d8\u05de\u05d9\u05dc\u05d9\u05ea";
+    },
+    get$teDisplayName() {
+      return "\u05d8\u05dc\u05d5\u05d2\u05d5";
+    },
+    get$tetDisplayName() {
+      return "\u05d8\u05d8\u05d5\u05dd";
+    },
+    get$tgDisplayName() {
+      return "\u05d8\u05d2'\u05d9\u05e7\u05d9\u05ea";
+    },
+    get$thDisplayName() {
+      return "\u05ea\u05d0\u05d9\u05ea";
+    },
+    get$tiDisplayName() {
+      return "\u05d8\u05d9\u05d2\u05e8\u05d9\u05e0\u05d9\u05d4";
+    },
+    get$tkDisplayName() {
+      return "\u05d8\u05d5\u05e8\u05e7\u05de\u05e0\u05d9\u05ea";
+    },
+    get$tlDisplayName() {
+      return "\u05d8\u05d2\u05dc\u05d5\u05d2";
+    },
+    get$tnDisplayName() {
+      return "\u05e6\u05d5\u05d5\u05d0\u05e0\u05d4";
+    },
+    get$trDisplayName() {
+      return "\u05d8\u05d5\u05e8\u05e7\u05d9\u05ea";
+    },
+    get$tsDisplayName() {
+      return "\u05e6\u05d5\u05e0\u05d2\u05d4";
+    },
+    get$ttDisplayName() {
+      return "\u05d8\u05d8\u05e8\u05d9\u05ea";
+    },
+    get$ugDisplayName() {
+      return "\u05d0\u05d5\u05d9\u05d2\u05d5\u05e8";
+    },
+    get$ukDisplayName() {
+      return "\u05d0\u05d5\u05e7\u05e8\u05d0\u05d9\u05e0\u05d9\u05ea";
+    },
+    get$urDisplayName() {
+      return "\u05d0\u05d5\u05e8\u05d3\u05d5";
+    },
+    get$urINDisplayName() {
+      return "\u05d0\u05d5\u05e8\u05d3\u05d5 (\u05d4\u05d5\u05d3\u05d5)";
+    },
+    get$urPKDisplayName() {
+      return "\u05d0\u05d5\u05e8\u05d3\u05d5 (\u05e4\u05e7\u05d9\u05e1\u05d8\u05df)";
+    },
+    get$uzDisplayName() {
+      return "\u05d0\u05d5\u05d6\u05d1\u05e7\u05d9\u05ea";
+    },
+    get$viDisplayName() {
+      return "\u05d5\u05d9\u05d9\u05d8\u05e0\u05d0\u05de\u05d9\u05ea";
+    },
+    get$wuuDisplayName() {
+      return "\u05d5\u05d5";
+    },
+    get$xhDisplayName() {
+      return "\u05d7\u05d5\u05e1\u05d4";
+    },
+    get$yiDisplayName() {
+      return "\u05d9\u05d9\u05d3\u05d9\u05e9";
+    },
+    get$yoDisplayName() {
+      return "\u05d9\u05d5\u05e8\u05d5\u05d1\u05d4";
+    },
+    get$yuaDisplayName() {
+      return "\u05d9\u05d5\u05e7\u05d0\u05d8\u05e7\u05d5";
+    },
+    get$yueDisplayName() {
+      return "\u05e7\u05e0\u05d8\u05d5\u05e0\u05d6\u05d9\u05ea";
+    },
+    get$yueCNDisplayName() {
+      return "\u05e7\u05e0\u05d8\u05d5\u05e0\u05d6\u05d9\u05ea (\u05e1\u05d9\u05df)";
+    },
+    get$yueHKDisplayName() {
+      return "\u05e7\u05e0\u05d8\u05d5\u05e0\u05d6\u05d9\u05ea (\u05d4\u05d5\u05e0\u05d2 \u05e7\u05d5\u05e0\u05d2)";
+    },
+    get$zhDisplayName() {
+      return "\u05e1\u05d9\u05e0\u05d9\u05ea";
+    },
+    get$zhCNDisplayName() {
+      return "\u05e1\u05d9\u05e0\u05d9\u05ea (\u05de\u05e4\u05d5\u05e9\u05d8\u05ea)";
+    },
+    get$zhTWDisplayName() {
+      return "\u05e1\u05d9\u05e0\u05d9\u05ea (\u05de\u05e1\u05d5\u05e8\u05ea\u05d9\u05ea)";
+    },
+    get$zuDisplayName() {
+      return "\u05d6\u05d5\u05dc\u05d5";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4574,16 +5231,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nNb, C.L10n);
+    _inherit(A.L10nHe, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nNb":{"L10n":[]}}'));
-  var string$ = {
-    Vennli: "Vennligst skriv inn en gyldig e-postadresse."
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHe":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["D9ZaBRdRDIe8XxgmLckO00yKK+g="] = d.current;
+  d["uJCpzuJ2tWCvu1Atmuxg0yYBli0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_640.part.js.map

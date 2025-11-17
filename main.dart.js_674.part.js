@@ -5,1753 +5,1753 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nTr$() {
-      return new A.L10nTr(B.canonicalizedLocale("tr"));
+    L10nHu$() {
+      return new A.L10nHu(B.canonicalizedLocale("hu"));
     },
-    L10nTr: function L10nTr(t0) {
+    L10nHu: function L10nHu(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[50], A);
-  A.L10nTr.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[28], A);
+  A.L10nHu.prototype = {
     get$alwaysUse24HourFormat() {
-      return "false";
+      return "hamis";
     },
     get$repeatPassword() {
-      return "Parolay\u0131 tekrarlay\u0131n";
+      return "Jelsz\xf3 ism\xe9tl\xe9se";
     },
     get$notAnImage() {
-      return "Bir resim dosyas\u0131 de\u011fil.";
+      return "Nem k\xe9p f\xe1jl.";
     },
     get$setCustomPermissionLevel() {
-      return "\xd6zel izin seviyesi ayarla";
+      return "Egyedi enged\xe9lyszint be\xe1ll\xedt\xe1sa";
     },
     get$setPermissionsLevelDescription() {
-      return "L\xfctfen a\u015fa\u011f\u0131daki \xf6nceden tan\u0131mlanm\u0131\u015f rolden birini se\xe7in veya 0 ile 100 aras\u0131nda \xf6zel bir izin seviyesi girin.";
+      return "K\xe9rem, v\xe1lasszon egy el\u0151re meghat\xe1rozott szerepk\xf6rt, vagy adjon meg egy egyedi enged\xe9ly szintet 0 \xe9s 100 k\xf6z\xf6tt.";
     },
     get$ignoreUser() {
-      return "Kullan\u0131c\u0131y\u0131 g\xf6rmezden gel";
+      return "Felhaszn\xe1l\xf3 ignor\xe1l\xe1sa";
     },
     get$normalUser() {
-      return "Normal kullan\u0131c\u0131";
+      return "Norm\xe1l felhaszn\xe1l\xf3";
     },
     get$remove(_) {
-      return "Kald\u0131r";
+      return "Elt\xe1vol\xedt\xe1s";
     },
     get$importNow() {
-      return "\u015eimdi i\xe7e aktar";
+      return "Import\xe1l\xe1s most";
     },
     get$importEmojis() {
-      return "\u0130fadeleri \u0130\xe7e Aktar";
+      return "Emojik import\xe1l\xe1sa";
     },
     get$importFromZipFile() {
-      return ".zip dosyas\u0131ndan i\xe7e aktar";
+      return "Import\xe1l\xe1s zip f\xe1jlb\xf3l";
     },
     get$exportEmotePack() {
-      return "\u0130fade paketini .zip olarak d\u0131\u015fa aktar";
+      return "Emojicsomag export\xe1l\xe1sa zip-be";
     },
     get$replace(_) {
-      return "De\u011fi\u015ftir";
+      return "Kicser\xe9l";
     },
     aboutHomeserver$1(homeserver) {
-      return homeserver + " Hakk\u0131nda";
+      return "N\xe9vjegy " + homeserver;
     },
     get$accept(_) {
-      return "Kabul et";
+      return "Elfogad";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " kat\u0131lma davetini kabul etti";
+      return "\ud83d\udc4d " + username + " elfogadta a megh\xedv\xe1st";
     },
     get$account() {
-      return "Hesap";
+      return "Fi\xf3k";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " u\xe7tan uca \u015fifrelemeyi etkinle\u015ftirdi";
+      return "\ud83d\udd10 " + username + " aktiv\xe1lta a v\xe9gpontok k\xf6z\xf6tti titkos\xedt\xe1st";
     },
     get$addEmail() {
-      return "E-posta ekle";
+      return "E-mail-c\xedm hozz\xe1ad\xe1sa";
     },
     supposedMxid$1(mxid) {
-      return "Bu " + mxid + " olmal\u0131d\u0131r";
+      return mxid + "-nek kell lennie";
     },
     get$admin() {
-      return "Y\xf6netici";
+      return "Adminisztr\xe1tor";
     },
     get$commandHint_roomupgrade() {
-      return "Bu odan\u0131n s\xfcr\xfcm\xfcn\xfc verilen oda s\xfcr\xfcm\xfcne y\xfckselt";
+      return "Szoba friss\xedt\xe9se a megadott szoba verzi\xf3ra";
     },
     get$commandHint_googly() {
-      return "\u015ea\u015fk\u0131n g\xf6zler g\xf6nder";
+      return "G\xfcl\xfcszemek k\xfcld\xe9se";
     },
     get$commandHint_cuddle() {
-      return "Kucaklama g\xf6nder";
+      return "\xd6sszeb\xfaj\xe1s k\xfcld\xe9se";
     },
     get$commandHint_hug() {
-      return "Sar\u0131lma g\xf6nder";
+      return "\xd6lel\xe9s k\xfcld\xe9se";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " size \u015fa\u015fk\u0131n g\xf6zler g\xf6nderiyor";
+      return senderName + " g\xfcl\xfcszemeket k\xfcld";
     },
     cuddleContent$1(senderName) {
-      return senderName + " sizi kucakl\u0131yor";
+      return senderName + " hozz\xe1d b\xfajik";
     },
     hugContent$1(senderName) {
-      return senderName + " size sar\u0131l\u0131yor";
+      return senderName + " meg\xf6lel";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " aramay\u0131 yan\u0131tlad\u0131";
+      return senderName + " v\xe1laszolt a h\xedv\xe1sra";
     },
     get$anyoneCanJoin() {
-      return "Herkes kat\u0131labilir";
+      return "B\xe1rki csatlakozhat";
     },
     get$archive() {
-      return "Ar\u015fiv";
+      return "Arch\xedvum";
     },
     get$areYouSure() {
-      return "Emin misiniz?";
+      return "Biztos benne?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Oturumu a\xe7mak istedi\u011finizden emin misiniz?";
+      return "Biztosan kijelentkezik?";
     },
     get$askSSSSSign() {
-      return "Di\u011fer ki\u015fiyi imzalayabilmek i\xe7in l\xfctfen g\xfcvenli depolama parolan\u0131z\u0131 veya kurtarma anahtar\u0131n\u0131z\u0131 girin.";
+      return "A m\xe1sik f\xe9l igazol\xe1s\xe1hoz meg kell adnia a biztons\xe1gos t\xe1rol\xf3 jelmondat\xe1t vagy a vissza\xe1ll\xedt\xe1si kulcsot\xe1t.";
     },
     askVerificationRequest$1(username) {
-      return username + " ki\u015fisinden gelen bu do\u011frulama iste\u011fi kabul edilsin mi?";
+      return "Elfogadja " + username + " hiteles\xedt\xe9si k\xe9relm\xe9t?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Ana sunucu a\u015fa\u011f\u0131daki oturum a\xe7ma t\xfcrlerini destekliyor:\n" + serverVersions + "\nAncak bu uygulama yaln\u0131zca a\u015fa\u011f\u0131dakileri destekliyor:\n" + supportedVersions;
+      return "A Matrix-kiszolg\xe1l\xf3 a k\xf6vetkez\u0151 bejelentkez\xe9seket t\xe1mogatja:\n" + serverVersions + "\nDe ez az alkalmaz\xe1st csak ezeket t\xe1mogatja:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Yazma bildirimleri g\xf6nder";
+      return "G\xe9pel\xe9si \xe9rtes\xedt\xe9s megjelen\xedt\xe9se";
     },
     get$swipeRightToLeftToReply() {
-      return "Yan\u0131tlamak i\xe7in sa\u011fdan sola kayd\u0131r";
+      return "H\xfazza balra a v\xe1laszol\xe1shoz";
     },
     get$sendOnEnter() {
-      return "Enter tu\u015fu ile g\xf6nder";
+      return "K\xfcld\xe9s Enterrel";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " sohbet ve " + participants + " kat\u0131l\u0131mc\u0131";
+      return "" + chats + " cseveg\xe9sek \xe9s " + participants + " r\xe9sztvev\u0151k";
     },
     get$banned() {
-      return "Engellendi";
+      return "Kitiltva";
     },
     bannedUser$2(username, targetName) {
-      return username + ", " + targetName + " ki\u015fisini engelledi";
+      return username + " kitiltva " + targetName + " \xe1ltal";
     },
     get$blockDevice() {
-      return "Ayg\u0131t\u0131 Engelle";
+      return "Eszk\xf6z blokkol\xe1sa";
     },
     get$blocked() {
-      return "Engellendi";
+      return "Blokkolva";
     },
     get$cancel(_) {
-      return "\u0130ptal";
+      return "M\xe9gse";
     },
     cantOpenUri$1(uri) {
-      return uri + " URI'si a\xe7\u0131lam\u0131yor";
+      return "Nem siker\xfclt a k\xf6vetkez\u0151 URI megnyit\xe1sa: " + uri;
     },
     get$changeDeviceName() {
-      return "Ayg\u0131t ad\u0131n\u0131 de\u011fi\u015ftir";
+      return "Eszk\xf6zn\xe9v m\xf3dos\xedt\xe1sa";
     },
     changedTheChatAvatar$1(username) {
-      return username + " sohbet avatar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta a cseveg\xe9si profilk\xe9p\xe9t";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " sohbet a\xe7\u0131klamas\u0131n\u0131 de\u011fi\u015ftirdi: '" + description + "'";
+      return username + " megv\xe1ltoztatta a cseveg\xe9s le\xedr\xe1st a k\xf6vetkez\u0151re: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " sohbet ad\u0131n\u0131 de\u011fi\u015ftirdi: '" + chatname + "'";
+      return username + " m\xf3dos\xedtotta a cseveg\xe9s nev\xe9t a k\xf6vetkez\u0151re: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " sohbet izinlerini de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta a cseveg\xe9si enged\xe9lyeket";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " g\xf6r\xfcnen ad\u0131n\u0131 '" + displayname + "' olarak de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta a megjelen\xedtett nev\xe9t erre: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " misafir eri\u015fim kurallar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyokat";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " misafir eri\u015fim kurallar\u0131n\u0131 de\u011fi\u015ftirdi: " + rules;
+      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyait a k\xf6vetkez\u0151re: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " ge\xe7mi\u015f g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " ge\xe7mi\u015f g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftirdi: " + rules;
+      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t a k\xf6vetkez\u0151re: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " kat\u0131l\u0131m kurallar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtott a csatlakoz\xe1si szab\xe1lyokat";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " kat\u0131l\u0131m kurallar\u0131n\u0131 de\u011fi\u015ftirdi: " + joinRules;
+      return username + " m\xf3dos\xedtotta a csatlakoz\xe1si szab\xe1lyokat a k\xf6vetkez\u0151re: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " avatar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta a profilk\xe9p\xe9t";
     },
     changedTheRoomAliases$1(username) {
-      return username + " oda takma adlar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta a szoba \xe1lneveit";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " davet ba\u011flant\u0131s\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " m\xf3dos\xedtotta a megh\xedv\xf3 hivatkoz\xe1st";
     },
     get$changePassword() {
-      return "Parolay\u0131 de\u011fi\u015ftir";
+      return "Jelsz\xf3 m\xf3dos\xedt\xe1sa";
     },
     get$changeTheme() {
-      return "Tarz\u0131n\u0131z\u0131 de\u011fi\u015ftirin";
+      return "St\xedlus\xe1nak m\xf3dos\xedt\xe1sa";
     },
     get$changeYourAvatar() {
-      return "Avatar\u0131n\u0131z\u0131 de\u011fi\u015ftirin";
+      return "Profilk\xe9p m\xf3dos\xedt\xe1sa";
     },
     get$channelCorruptedDecryptError() {
-      return "\u015eifreleme bozuldu";
+      return "A titkos\xedt\xe1s megs\xe9r\xfclt";
     },
     get$chat() {
-      return "Sohbet";
+      return "Cseveg\xe9s";
     },
     get$chatDetails() {
-      return "Sohbet ayr\u0131nt\u0131lar\u0131";
+      return "Cseveg\xe9s r\xe9szletei";
     },
     get$chats() {
-      return "Sohbetler";
+      return "Cseveg\xe9sek";
     },
     get$chooseAStrongPassword() {
-      return "G\xfc\xe7l\xfc bir parola se\xe7in";
+      return "V\xe1lasszon egy er\u0151s jelsz\xf3t";
     },
     get$clearArchive() {
-      return "Ar\u015fivi temizle";
+      return "Arch\xedvum \xfcr\xedt\xe9se";
     },
     get$close(_) {
-      return "Kapat";
+      return "Bez\xe1r";
     },
     get$commandHint_markasdm() {
-      return "Verilen Matrix kimli\u011fi i\xe7in do\u011frudan mesaj odas\u0131 olarak i\u015faretle";
+      return "Szoba megjel\xf6l\xe9se mint k\xf6zvetlen cseveg\u0151 szoba az adott Matrix ID-n\xe9l";
     },
     get$commandHint_markasgroup() {
-      return "Grup olarak i\u015faretle";
+      return "Jel\xf6l\xe9s csoportnak";
     },
     get$commandHint_ban() {
-      return "Verilen kullan\u0131c\u0131y\u0131 bu odadan yasaklay\u0131n";
+      return "Adott felhaszn\xe1l\xf3 kitilt\xe1sa a szob\xe1b\xf3l";
     },
     get$commandHint_clearcache() {
-      return "\xd6nbelle\u011fi temizleyin";
+      return "Gyors\xedt\xf3t\xe1r t\xf6rl\xe9se";
     },
     get$commandHint_create() {
-      return "Bo\u015f bir grup sohbeti olu\u015fturun\n\u015eifrelemeyi devre d\u0131\u015f\u0131 b\u0131rakmak i\xe7in --no-encryption kullan\u0131n";
+      return "Egy \xfcres cseveg\u0151 csoport l\xe9trehoz\xe1sa\nA --no-encryption param\xe9terrel feloldhatja a titkos\xedt\xe1st";
     },
     get$commandHint_discardsession() {
-      return "Oturumu silin";
+      return "Munkamenet elvet\xe9se";
     },
     get$commandHint_dm() {
-      return "Do\u011frudan sohbet ba\u015flat\u0131n\n\u015eifrelemeyi devre d\u0131\u015f\u0131 b\u0131rakmak i\xe7in --no-encryption kullan\u0131n";
+      return "K\xf6zvetlen cseveg\xe9s ind\xedt\xe1sa\nA --no-encryption param\xe9terrel kikapcsolhatja a titkos\xedt\xe1st";
     },
     get$commandHint_html() {
-      return "HTML bi\xe7imli metin g\xf6nderin";
+      return "HTML form\xe1zott sz\xf6veg k\xfcld\xe9se";
     },
     get$commandHint_invite() {
-      return "Verilen kullan\u0131c\u0131y\u0131 bu odaya davet edin";
+      return "Adott felhaszn\xe1l\xf3 megh\xedv\xe1sa ebbe a szob\xe1ba";
     },
     get$commandHint_join() {
-      return "Verilen odaya kat\u0131l\u0131n";
+      return "Csatlakoz\xe1s a megadott szob\xe1hoz";
     },
     get$commandHint_kick() {
-      return "Verilen kullan\u0131c\u0131y\u0131 bu odadan kald\u0131r\u0131n";
+      return "A megadott felhaszn\xe1l\xf3 kir\xfag\xe1sa a szob\xe1b\xf3l";
     },
     get$commandHint_leave() {
-      return "Bu odadan ayr\u0131l\u0131n";
+      return "Szoba elhagy\xe1sa";
     },
     get$commandHint_me() {
-      return "Kendinizi tan\u0131mlay\u0131n";
+      return "\xcdrja le mag\xe1t";
     },
     get$commandHint_myroomavatar() {
-      return "Bu oda i\xe7in resminizi ayarlay\u0131n (mxc-uri ile)";
+      return "Profilk\xe9pe hozz\xe1rendel\xe9se a szob\xe1hoz (mxc URI haszn\xe1lat\xe1val)";
     },
     get$commandHint_myroomnick() {
-      return "Bu oda i\xe7in g\xf6r\xfcnen ad\u0131n\u0131z\u0131 ayarlay\u0131n";
+      return "Megjelen\xedtett nev\xe9nek hozz\xe1rendel\xe9se a szob\xe1hoz";
     },
     get$commandHint_op() {
-      return "Verilen kullan\u0131c\u0131n\u0131n g\xfc\xe7 seviyesini ayarlay\u0131n (\xf6ntan\u0131ml\u0131: 50)";
+      return "Az adott felhaszn\xe1l\xf3 hozz\xe1f\xe9r\xe9si szintj\xe9nek megad\xe1sa (alap\xe9rtelmezett: 50)";
     },
     get$commandHint_plain() {
-      return "Bi\xe7imlendirilmemi\u015f metin g\xf6nderin";
+      return "Form\xe1zatlan sz\xf6veg k\xfcld\xe9se";
     },
     get$commandHint_react() {
-      return "Tepki olarak yan\u0131t g\xf6nderin";
+      return "V\xe1lasz k\xfcld\xe9se reakci\xf3k\xe9nt";
     },
     get$commandHint_send() {
-      return "Metin g\xf6nderin";
+      return "Sz\xf6veg k\xfcld\xe9se";
     },
     get$commandHint_unban() {
-      return "Verilen kullan\u0131c\u0131n\u0131n bu odadaki yasa\u011f\u0131n\u0131 kald\u0131r\u0131n";
+      return "Adott felhaszn\xe1l\xf3 kitilt\xe1s\xe1nak felold\xe1sa a szob\xe1hoz";
     },
     get$compareEmojiMatch() {
-      return "L\xfctfen emojileri kar\u015f\u0131la\u015ft\u0131r\u0131n";
+      return "K\xe9rem, hasonl\xedtsa \xf6ssze a hangulatjeleket";
     },
     get$compareNumbersMatch() {
-      return "L\xfctfen say\u0131lar\u0131 kar\u015f\u0131la\u015ft\u0131r\u0131n";
+      return "K\xe9rem, hasonl\xedtsa \xf6ssze a sz\xe1mokat";
     },
     get$configureChat() {
-      return "Sohbeti yap\u0131land\u0131r";
+      return "Cseveg\xe9s konfigur\xe1l\xe1sa";
     },
     get$confirm(_) {
-      return "Onayla";
+      return "Meger\u0151s\xedt";
     },
     get$copiedToClipboard() {
-      return "Panoya kopyaland\u0131";
+      return "V\xe1g\xf3lapra m\xe1solva";
     },
     get$copy(_) {
-      return "Kopyala";
+      return "M\xe1sol\xe1s";
     },
     couldNotDecryptMessage$1(error) {
-      return "Mesaj\u0131n \u015fifresi \xe7\xf6z\xfclemedi: " + error;
+      return "Nem siker\xfclt visszafejteni az \xfczenetet: " + error;
     },
     get$checkList() {
-      return "Kontrol listesi";
+      return "Tennival\xf3k list\xe1ja";
     },
     countParticipants$1(count) {
-      return "" + count + " kat\u0131l\u0131mc\u0131";
+      return "" + count + " r\xe9sztvev\u0151";
     },
     countInvited$1(count) {
-      return "" + count + " davet edildi";
+      return "" + count + " megh\xedvott";
     },
     get$create(_) {
-      return "Olu\u015ftur";
+      return "L\xe9trehoz";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " sohbeti olu\u015fturdu";
+      return "\ud83d\udcac " + username + " cseveg\xe9st hozott l\xe9tre";
     },
     get$createGroup() {
-      return "Grup olu\u015ftur";
+      return "Csoport l\xe9trehoz\xe1sa";
     },
     get$currentlyActive() {
-      return "\u015eu anda etkin";
+      return "Jelenleg akt\xedv";
     },
     get$darkTheme() {
-      return "Koyu";
+      return "S\xf6t\xe9t";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Bu, kullan\u0131c\u0131 hesab\u0131n\u0131z\u0131 devre d\u0131\u015f\u0131 b\u0131rakacak. Bu geri al\u0131namaz! Emin misiniz?";
+      return "Ez deaktiv\xe1lja a felhaszn\xe1l\xf3i fi\xf3kj\xe1t. Ez nem vonhat\xf3 vissza! Biztos benne?";
     },
     get$defaultPermissionLevel() {
-      return "Yeni kullan\u0131c\u0131lar i\xe7i \xf6ntan\u0131ml\u0131 izin seviyesi";
+      return "Alap\xe9rtelmezett hozz\xe1f\xe9r\xe9si szint \xfaj felhaszn\xe1l\xf3kn\xe1l";
     },
     get$$delete(_) {
-      return "Sil";
+      return "T\xf6rl\xe9s";
     },
     get$deleteAccount() {
-      return "Hesab\u0131 sil";
+      return "Fi\xf3k t\xf6rl\xe9se";
     },
     get$deleteMessage() {
-      return "Mesaj\u0131 sil";
+      return "\xdczenet t\xf6rl\xe9se";
     },
     get$devices() {
-      return "Ayg\u0131tlar";
+      return "Eszk\xf6z\xf6k";
     },
     get$displaynameHasBeenChanged() {
-      return "G\xf6r\xfcnen ad de\u011fi\u015ftirildi";
+      return "A megjelen\xedt\xe9si n\xe9v megv\xe1ltozott";
     },
     get$downloadFile() {
-      return "Dosyay\u0131 indir";
+      return "F\xe1jl let\xf6lt\xe9se";
     },
     get$edit() {
-      return "D\xfczenle";
+      return "Szerkeszt";
     },
     get$editBlockedServers() {
-      return "Engellenen sunucular\u0131 d\xfczenle";
+      return "Blokkolt szerverek szerkeszt\xe9se";
     },
     get$chatPermissions() {
-      return "Sohbet izinleri";
+      return "Cseveg\xe9s enged\xe9lyek";
     },
     get$editDisplayname() {
-      return "G\xf6r\xfcnen ad\u0131 d\xfczenle";
+      return "Megjelen\xedt\xe9si n\xe9v szerkeszt\xe9se";
     },
     get$editRoomAvatar() {
-      return "Oda avatar\u0131n\u0131 d\xfczenle";
+      return "Szoba-profilk\xe9p szerkeszt\xe9se";
     },
     get$emoteExists() {
-      return "\u0130fade zaten var!";
+      return "A hangulatjel m\xe1r l\xe9tezik!";
     },
     get$emoteInvalid() {
-      return "Ge\xe7ersiz ifade k\u0131sa kodu!";
+      return "\xc9rv\xe9nytelen hangulatjel r\xf6vidk\xf3d!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Son kullan\u0131lan ifadeler burada g\xf6r\xfcnecek...";
+      return "A nemr\xe9g haszn\xe1lt hangulatjelek fognak itt megjelenni...";
     },
     get$emotePacks() {
-      return "Oda i\xe7in ifade paketleri";
+      return "Hangulatjel csomagok a szob\xe1hoz";
     },
     get$customEmojisAndStickers() {
-      return "\xd6zel emojiler ve \xe7\u0131kartmalar";
+      return "Egyedi hangulatjelek \xe9s matric\xe1k";
     },
     get$emoteShortcode() {
-      return "\u0130fade k\u0131sa kodu";
+      return "Hangulatjel r\xf6vidk\xf3d";
     },
     get$emoteWarnNeedToPick() {
-      return "Bir ifade k\u0131sa kodu ve bir resim se\xe7meniz gerekiyor!";
+      return "Ki kell v\xe1lasztania egy hangulatjel r\xf6vidk\xf3dot \xe9s egy k\xe9pet!";
     },
     get$emptyChat() {
-      return "Bo\u015f sohbet";
+      return "\xdcres cseveg\xe9s";
     },
     get$enableEmotesGlobally() {
-      return "\u0130fade paketini k\xfcresel olarak etkinle\u015ftir";
+      return "Hangulatjel csomag enged\xe9lyez\xe9se glob\xe1lisan";
     },
     get$enableEncryption() {
-      return "\u015eifrelemeyi etkinle\u015ftir";
+      return "Titkos\xedt\xe1s enged\xe9lyez\xe9se";
     },
     get$encrypted() {
-      return "\u015eifreli";
+      return "Titkos\xedtott";
     },
     get$encryptionNotEnabled() {
-      return "\u015eifreleme etkinle\u015ftirilmedi";
+      return "Titkos\xedt\xe1s nem enged\xe9lyezve";
     },
     endedTheCall$1(senderName) {
-      return senderName + " aramay\u0131 sonland\u0131rd\u0131";
+      return senderName + " befejezte a h\xedv\xe1st";
     },
     get$enterAnEmailAddress() {
-      return "Bir e-posta adresi girin";
+      return "Adjon meg egy email c\xedmet";
     },
     errorObtainingLocation$1(error) {
-      return "Konum al\u0131n\u0131rken hata olu\u015ftu: " + error;
+      return "Hiba a helymeghat\xe1roz\xe1skor: " + error;
     },
     get$fontSize(_) {
-      return "Yaz\u0131 tipi boyutu";
+      return "Bet\u0171m\xe9ret";
     },
     get$forward(_) {
-      return "\u0130let";
+      return "Tov\xe1bb\xedt\xe1s";
     },
     get$fromJoining() {
-      return "Kat\u0131lmadan";
+      return "Csatlakoz\xe1s \xf3ta";
     },
     get$fromTheInvitation() {
-      return "Davetten";
+      return "Megh\xedv\xe1s \xf3ta";
     },
     get$guestsAreForbidden() {
-      return "Misafirlere izin verilmiyor";
+      return "A vend\xe9gek nem enged\xe9lyezettek";
     },
     get$guestsCanJoin() {
-      return "Misafirler kat\u0131labilir";
+      return "Csatlakozhatnak vend\xe9gek";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + ", " + targetName + " i\xe7in daveti geri \xe7ekti";
+      return username + " visszavonta " + targetName + " megh\xedv\xe1s\xe1t";
     },
     get$help() {
-      return "Yard\u0131m";
+      return "S\xfag\xf3";
     },
     get$hideRedactedMessages() {
-      return "D\xfczenlenen mesajlar\u0131 gizle";
+      return "Szerkesztett \xfczenetek elrejt\xe9se";
     },
     get$hideRedactedMessagesBody() {
-      return "Birisi bir mesaj\u0131 d\xfczenlerse, bu mesaj art\u0131k sohbette g\xf6r\xfcnmeyecektir.";
+      return "Ha valaki szerkeszti az \xfczenet\xe9t, ez az \xfczenet nem jelenik meg a cseveg\xe9s sor\xe1n.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Ge\xe7ersiz veya bilinmeyen mesaj bi\xe7imlerini gizle";
+      return "\xc9rv\xe9nytelen vagy ismeretlen \xfczenetform\xe1tum elrejt\xe9se";
     },
     get$block() {
-      return "Engelle";
+      return "Blokkol\xe1s";
     },
     get$blockedUsers() {
-      return "Engellenen kullan\u0131c\u0131lar";
+      return "Blokkolt felhaszn\xe1l\xf3k";
     },
     get$blockListDescription() {
-      return "Sizi rahats\u0131z eden kullan\u0131c\u0131lar\u0131 engelleyebilirsiniz. Ki\u015fisel engelleme listenizdeki kullan\u0131c\u0131lardan herhangi bir mesaj veya oda daveti alamazs\u0131n\u0131z.";
+      return "Az \xd6nt zavar\xf3 felhaszn\xe1l\xf3kat blokkolhatja. A blokkolt list\xe1n tal\xe1lhat\xf3 felhaszn\xe1l\xf3kt\xf3l nem tud fogadni \xfczenetet vagy szoba megh\xedv\xe1st.";
     },
     get$blockUsername() {
-      return "Kullan\u0131c\u0131 ad\u0131n\u0131 g\xf6rmezden gel";
+      return "Felhaszn\xe1l\xf3n\xe9v ignor\xe1l\xe1sa";
     },
     get$iHaveClickedOnLink() {
-      return "Ba\u011flant\u0131ya t\u0131klad\u0131m";
+      return "R\xe1kattintottam a linkre";
     },
     get$incorrectPassphraseOrKey() {
-      return "Yanl\u0131\u015f parola veya kurtarma anahtar\u0131";
+      return "Hib\xe1s jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
     },
     get$inviteContact() {
-      return "Ki\u015fi davet et";
+      return "Ismer\u0151s megh\xedv\xe1sa";
     },
     get$noChatDescriptionYet() {
-      return "Daha sohbet a\xe7\u0131klamas\u0131 olu\u015fturulmad\u0131.";
+      return "M\xe9g nincs cseveg\u0151 szoba le\xedr\xe1s.";
     },
     get$tryAgain() {
-      return "Tekrar deneyin";
+      return "Pr\xf3b\xe1lja \xfajra";
     },
     get$invited() {
-      return "Davet edildi";
+      return "Megh\xedvott";
     },
     get$redactMessageDescription() {
-      return "Bu mesaj bu g\xf6r\xfc\u015fmedeki herkes i\xe7in d\xfczenlenecek. Bu i\u015flem geri al\u0131namaz.";
+      return "A t\xe1rsalg\xe1sban \xf6sszes r\xe9sztvev\u0151je sz\xe1m\xe1ra m\xf3dos\xedt\xe1sra ker\xfcl az \xfczenet. Ez nem visszavonhat\xf3.";
     },
     get$optionalRedactReason() {
-      return "(\u0130ste\u011fe ba\u011fl\u0131) Bu mesaj\u0131 d\xfczenleme nedeni\u2026";
+      return "(V\xe1laszthat\xf3) A szerkeszt\xe9s oka...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + ", " + targetName + " ki\u015fisini davet etti";
+      return "\ud83d\udce9 " + username + " megh\xedvta " + targetName + " felhaszn\xe1l\xf3t";
     },
     get$invitedUsersOnly() {
-      return "Sadece davet edilen kullan\u0131c\u0131lar";
+      return "Csak megh\xedvott felhaszn\xe1l\xf3k";
     },
     get$inviteForMe() {
-      return "Benim i\xe7in davet et";
+      return "Megh\xedv\xe1s sz\xe1momra";
     },
     get$isTyping() {
-      return "yaz\u0131yor\u2026";
+      return "\xe9pp g\xe9pel\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " sohbete kat\u0131ld\u0131";
+      return "\ud83d\udc4b " + username + " csatlakozott a cseveg\xe9shez";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + ", " + targetName + " ki\u015fisini att\u0131";
+      return "\ud83d\udc5e " + username + " kir\xfagta " + targetName + "-t";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Son g\xf6r\xfclen: " + localizedTimeShort;
+      return "Utolj\xe1ra akt\xedv: " + localizedTimeShort;
     },
     get$leave() {
-      return "Ayr\u0131l";
+      return "Elhagy";
     },
     get$leftTheChat() {
-      return "Sohbetten ayr\u0131ld\u0131";
+      return "Elhagyta a cseveg\xe9st";
     },
     get$lightTheme() {
-      return "A\xe7\u0131k";
+      return "Vil\xe1gos";
     },
     get$dehydrate() {
-      return "Oturumu d\u0131\u015fa aktar ve ayg\u0131t\u0131 sil";
+      return "Munkamenet export\xe1l\xe1sa \xe9s az eszk\xf6z t\xf6rl\xe9se";
     },
     get$dehydrateWarning() {
-      return "Bu eylem geri al\u0131namaz. Yedekleme dosyas\u0131n\u0131 g\xfcvenli bir \u015fekilde saklad\u0131\u011f\u0131n\u0131zdan emin olun.";
+      return "Ez nem visszavonhat\xf3. Bizonyosodjon meg r\xf3la, hogy biztons\xe1gos helyre menti a f\xe1jlt.";
     },
     get$dehydrateTor() {
-      return "TOR Kullan\u0131c\u0131lar\u0131: Oturumu d\u0131\u015fa aktar";
+      return "TOR felhaszn\xe1l\xf3k: Munkamenet export\xe1l\xe1sa";
     },
     get$dehydrateTorLong() {
-      return "TOR kullan\u0131c\u0131lar\u0131 i\xe7in, pencereyi kapatmadan \xf6nce oturumu d\u0131\u015fa aktarmalar\u0131 tavsiye edilir.";
+      return "TOR felhaszn\xe1l\xf3knak aj\xe1nlott a munkamenet export\xe1l\xe1sa az ablak bez\xe1r\xe1sa el\u0151tt.";
     },
     get$loadingPleaseWait() {
-      return "Y\xfckleniyor\u2026 L\xfctfen bekleyin.";
+      return "Bet\xf6lt\xe9s\u2026 K\xe9rem, v\xe1rjon.";
     },
     get$loadMore() {
-      return "Daha fazla y\xfckle\u2026";
+      return "Tov\xe1bbiak bet\xf6lt\xe9se\u2026";
     },
     get$locationDisabledNotice() {
-      return "Konum hizmetleri devre d\u0131\u015f\u0131. L\xfctfen konumunuzu payla\u015fabilmek i\xe7in etkinle\u015ftirin.";
+      return "A helymeghat\xe1roz\xe1s ki van kapcsolva. K\xe9rem, kapcsolja be, hogy meg tudja osztani helyzet\xe9t.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Konum izni reddedildi. L\xfctfen konumunuzu payla\u015fabilmek i\xe7in izin verin.";
+      return "A helymeghat\xe1roz\xe1s visszautas\xedt\xe1sra ker\xfclt. K\xe9rem enged\xe9lyezze, hogy meg tudja osztani helyzet\xe9t.";
     },
     get$login() {
-      return "Oturum a\xe7";
+      return "Bejelentkez\xe9s";
     },
     get$logout() {
-      return "Oturumu kapat";
+      return "Kijelentkez\xe9s";
     },
     get$mention() {
-      return "Bahset";
+      return "Megeml\xedt\xe9s";
     },
     get$messages() {
-      return "Mesajlar";
+      return "\xdczenetek";
     },
     get$messagesStyle() {
-      return "Mesajlar:";
+      return "\xdczenetek:";
     },
     get$moderator() {
-      return "Moderat\xf6r";
+      return "Moder\xe1tor";
     },
     get$newChat() {
-      return "Yeni sohbet";
+      return "\xdaj cseveg\xe9s";
     },
     get$newVerificationRequest() {
-      return "Yeni do\u011frulama iste\u011fi!";
+      return "\xdaj hiteles\xedt\xe9si k\xe9relem!";
     },
     get$next(_) {
-      return "\u0130leri";
+      return "K\xf6vetkez\u0151";
     },
     get$no() {
-      return "Hay\u0131r";
+      return "Nem";
     },
     get$noConnectionToTheServer() {
-      return "Sunucuyla ba\u011flant\u0131 yok";
+      return "Nem el\xe9rhet\u0151 a szerver";
     },
     get$noEmotesFound() {
-      return "\u0130fade bulunamad\u0131. \ud83d\ude15";
+      return "Nem tal\xe1lhat\xf3ak hangulatjelek. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Davet ba\u011flant\u0131s\u0131n\u0131 payla\u015f";
+      return "Megh\xedv\xf3 link megoszt\xe1sa";
     },
     get$none() {
-      return "Yok";
+      return "Nincs";
     },
     get$noPasswordRecoveryDescription() {
-      return "Hen\xfcz parolan\u0131z\u0131 kurtarmak i\xe7in bir yol eklemediniz.";
+      return "M\xe9g nem adott meg semmilyen m\xf3dszert a jelszava vissza\xe1ll\xedt\xe1s\xe1ra.";
     },
     get$noPermission() {
-      return "\u0130zin yok";
+      return "Nincs enged\xe9ly";
     },
     get$noRoomsFound() {
-      return "Oda bulunamad\u0131\u2026";
+      return "Nem tal\xe1lhat\xf3ak szob\xe1k\u2026";
     },
     get$notifications() {
-      return "Bildirimler";
+      return "\xc9rtes\xedt\xe9sek";
     },
     get$obtainingLocation() {
-      return "Konum al\u0131n\u0131yor\u2026";
+      return "Tart\xf3zkod\xe1si hely lek\xe9r\xe9se\u2026";
     },
     get$offensive() {
-      return "Rahats\u0131z edici";
+      return "S\xe9rt\u0151";
     },
     get$ok() {
-      return "Tamam";
+      return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "T\xfch, bir \u015feyler yanl\u0131\u015f gitti\u2026";
+      return "Hopp\xe1, valami hiba l\xe9pett fel\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u0130stemcilerinizden birinin oturumu kapat\u0131ld\u0131";
+      return "Az egyik kliense kijelentkezett";
     },
     get$openInMaps() {
-      return "Haritalarda a\xe7";
+      return "Megnyit\xe1s t\xe9rk\xe9pen";
     },
     get$link() {
-      return "Ba\u011flant\u0131";
+      return "Hivatkoz\xe1s";
     },
     get$serverRequiresEmail() {
-      return "Bu sunucunun kay\u0131t i\xe7in e-posta adresinizi do\u011frulamas\u0131 gerekiyor.";
+      return "Ehhez a szerverhez sz\xfcks\xe9ges az email c\xedm\xe9nek visszaigazol\xe1sa.";
     },
     get$participant() {
-      return "Kat\u0131l\u0131mc\u0131";
+      return "R\xe9sztvev\u0151";
     },
     get$passphraseOrKey() {
-      return "parola veya kurtarma anahtar\u0131";
+      return "jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
     },
     get$password(_) {
-      return "Parola";
+      return "Jelsz\xf3";
     },
     get$passwordForgotten() {
-      return "Parola unutuldu";
+      return "Elfelejtett jelsz\xf3";
     },
     get$passwordHasBeenChanged() {
-      return "Parola de\u011fi\u015ftirildi";
+      return "A jelsz\xf3 m\xf3dos\xedt\xe1sra ker\xfclt";
     },
     get$overview() {
-      return "Genel g\xf6r\xfcn\xfcm";
+      return "\xc1ttekint\xe9s";
     },
     get$passwordRecoverySettings() {
-      return "Parola kurtarma ayarlar\u0131";
+      return "Jelsz\xf3-helyre\xe1ll\xedt\xe1si be\xe1ll\xedt\xe1sok";
     },
     get$passwordRecovery() {
-      return "Parola kurtarma";
+      return "Jelsz\xf3 vissza\xe1ll\xedt\xe1s";
     },
     get$pickImage() {
-      return "Bir resim se\xe7";
+      return "K\xe9p v\xe1laszt\xe1sa";
     },
     get$pin() {
-      return "Sabitle";
+      return "R\xf6gz\xedt\xe9s";
     },
     get$pleaseChoose() {
-      return "L\xfctfen se\xe7in";
+      return "K\xe9rem, v\xe1lasszon";
     },
     get$pleaseEnterYourPassword() {
-      return "L\xfctfen parolan\u0131z\u0131 girin";
+      return "K\xe9rem, adja meg jelszav\xe1t";
     },
     get$pleaseEnterYourPin() {
-      return "L\xfctfen PIN kodunuzu girin";
+      return "K\xe9rem, \xedrja be PIN k\xf3dj\xe1t";
     },
     get$pleaseEnterYourUsername() {
-      return "L\xfctfen kullan\u0131c\u0131 ad\u0131n\u0131z\u0131 girin";
+      return "K\xe9rem, adja meg a felhaszn\xe1l\xf3nev\xe9t";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return 'L\xfctfen web sitesindeki talimatlar\u0131 izleyin ve "\u0130leri" d\xfc\u011fmesine dokunun.';
+      return "K\xe9rem, k\xf6vesse az instrukci\xf3kat az oldalon, \xe9s nyomjon a tov\xe1bb gombra.";
     },
     get$privacy() {
-      return "Gizlilik";
+      return "Adatv\xe9delem";
     },
     get$reason(_) {
-      return "Neden";
+      return "Indok";
     },
     redactedBy$1(username) {
-      return username + " taraf\u0131ndan d\xfczenlendi";
+      return username + " \xe1ltal szerkesztve";
     },
     get$directChat() {
-      return "Do\u011frudan sohbet";
+      return "Priv\xe1t cseveg\xe9s";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' taraf\u0131ndan "' + reason + '" nedeniyle d\xfczenlendi';
+      return username + ' \xe1ltal szerkesztve, mivel: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " bir etkinli\u011fi d\xfczenledi";
+      return username + " szerkesztett egy esem\xe9nyt";
     },
     get$redactMessage() {
-      return "Mesaj\u0131 d\xfczenle";
+      return "\xdczenet szerkeszt\xe9se";
     },
     get$reject() {
-      return "Reddet";
+      return "Elutas\xedt";
     },
     rejectedTheInvitation$1(username) {
-      return username + " daveti reddetti";
+      return username + " elutas\xedtotta a megh\xedv\xe1st";
     },
     get$removeAllOtherDevices() {
-      return "Di\u011fer t\xfcm ayg\u0131tlar\u0131 kald\u0131r";
+      return "Minden m\xe1s eszk\xf6z elt\xe1vol\xedt\xe1sa";
     },
     get$unbanFromChat() {
-      return "Sohbet engelini kald\u0131r";
+      return "Cseveg\xe9s kitilt\xe1s felold\xe1sa";
     },
     get$removeYourAvatar() {
-      return "Avatar\u0131n\u0131z\u0131 kald\u0131r\u0131n";
+      return "Profilk\xe9p\xe9nek t\xf6rl\xe9se";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Oday\u0131 yeni s\xfcr\xfcmle de\u011fi\u015ftir";
+      return "Szoba cser\xe9l\xe9se egy \xfajabb verzi\xf3ra";
     },
     get$reply(_) {
-      return "Yan\u0131tla";
+      return "V\xe1lasz";
     },
     get$reportMessage() {
-      return "Mesaj\u0131 bildir";
+      return "\xdczenet jelent\xe9se";
     },
     get$roomHasBeenUpgraded() {
-      return "Oda y\xfckseltildi";
+      return "A szoba friss\xedt\xe9sre ker\xfclt";
     },
     get$search(_) {
-      return "Ara";
+      return "Keres\xe9s";
     },
     get$security() {
-      return "G\xfcvenlik";
+      return "Biztons\xe1g";
     },
     get$send(_) {
-      return "G\xf6nder";
+      return "K\xfcld\xe9s";
     },
     get$sendAMessage() {
-      return "Bir mesaj g\xf6nder";
+      return "\xdczenet k\xfcld\xe9se";
     },
     get$sendAudio() {
-      return "Ses g\xf6nder";
+      return "Hang\xfczenet k\xfcld\xe9se";
     },
     get$sendFile() {
-      return "Dosya g\xf6nder";
+      return "F\xe1jl k\xfcld\xe9se";
     },
     get$sendImage() {
-      return "Resim g\xf6nder";
+      return "K\xe9p k\xfcld\xe9se";
     },
     sendImages$1(count) {
-      return "" + count + " g\xf6rsel g\xf6nder";
+      return "" + count + " k\xe9p k\xfcld\xe9se";
     },
     get$sendMessages() {
-      return "Mesajlar\u0131 g\xf6nder";
+      return "\xdczenetek k\xfcld\xe9se";
     },
     get$sendVideo() {
-      return "Video g\xf6nder";
+      return "Vide\xf3 k\xfcld\xe9se";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " bir dosya g\xf6nderdi";
+      return "\ud83d\udcc1 " + username + " k\xfcld\xf6tt egy f\xe1jlt";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " bir ses g\xf6nderdi";
+      return "\ud83c\udfa4 " + username + " hang\xfczenetet k\xfcld\xf6tt";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " bir resim g\xf6nderdi";
+      return "\ud83d\uddbc\ufe0f " + username + " k\xe9pet k\xfcld\xf6tt";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " bir \xe7\u0131kartma g\xf6nderdi";
+      return "\ud83d\ude0a " + username + " matric\xe1t k\xfcld\xf6tt";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " bir video g\xf6nderdi";
+      return "\ud83c\udfa5 " + username + " vide\xf3t k\xfcld\xf6tt";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " arama bilgilerini g\xf6nderdi";
+      return senderName + " h\xedv\xe1sinform\xe1ci\xf3t k\xfcld\xf6tt";
     },
     get$separateChatTypes() {
-      return "Do\u011frudan Sohbetleri ve Gruplar\u0131 Ay\u0131r";
+      return "Csoportok \xe9s priv\xe1t \xfczenetek elk\xfcl\xf6n\xedt\xe9se";
     },
     get$setChatDescription() {
-      return "Sohbet a\xe7\u0131klamas\u0131n\u0131 ayarla";
+      return "Cseveg\xe9s le\xedr\xe1s be\xe1ll\xedt\xe1sa";
     },
     get$setStatus() {
-      return "Durumu ayarla";
+      return "\xc1llapot be\xe1ll\xedt\xe1sa";
     },
     get$settings() {
-      return "Ayarlar";
+      return "Be\xe1ll\xedt\xe1sok";
     },
     get$share(_) {
-      return "Payla\u015f";
+      return "Megoszt\xe1s";
     },
     sharedTheLocation$1(username) {
-      return username + " konumunu payla\u015ft\u0131";
+      return username + " megosztotta a poz\xedci\xf3j\xe1t";
     },
     get$shareLocation() {
-      return "Konumu payla\u015f";
+      return "Poz\xedci\xf3 megoszt\xe1sa";
     },
     get$presencesToggle() {
-      return "Di\u011fer kullan\u0131c\u0131lar\u0131n durum mesajlar\u0131n\u0131 g\xf6ster";
+      return "M\xe1s felhaszn\xe1l\xf3k \xe1llapot \xfczeneteinek megjelen\xedt\xe9se";
     },
     get$skip(_) {
-      return "Atla";
+      return "Kihagy";
     },
     get$sourceCode() {
-      return "Kaynak kodlar\u0131";
+      return "Forr\xe1sk\xf3d";
     },
     startedACall$1(senderName) {
-      return senderName + " bir arama ba\u015flatt\u0131";
+      return senderName + " h\xedv\xe1st ind\xedtott";
     },
     get$status(_) {
-      return "Durum";
+      return "\xc1llapot";
     },
     get$statusExampleMessage() {
-      return "Bug\xfcn nas\u0131ls\u0131n\u0131z?";
+      return "Hogy \xe9rzi mag\xe1t a mai napon?";
     },
     get$submit(_) {
-      return "G\xf6nder";
+      return "Bek\xfcld\xe9s";
     },
     get$synchronizingPleaseWait() {
-      return "E\u015fzamanlan\u0131yor\u2026 L\xfctfen bekleyin.";
+      return "Szinkroniz\xe1l\xe1s... K\xe9rem, v\xe1rjon.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return "Senkronize ediliyor\u2026 (" + percentage + "%)";
+      return " Szinkroniz\xe1l\xe1s\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistem";
+      return "Rendszer";
     },
     get$theyDontMatch() {
-      return "E\u015fle\u015fmediler";
+      return "Nem egyez\u0151ek";
     },
     get$theyMatch() {
-      return "E\u015fle\u015ftiler";
+      return "Egyez\u0151ek";
     },
     get$tooManyRequestsWarning() {
-      return "\xc7ok fazla istek. L\xfctfen daha sonra tekrar deneyin!";
+      return "T\xfal sok egyidej\u0171 k\xe9relem. K\xe9rem pr\xf3b\xe1lja meg k\xe9s\u0151bb!";
     },
     get$tryToSendAgain() {
-      return "Tekrar g\xf6ndermeyi deneyin";
+      return "\xdajrak\xfcld\xe9s megpr\xf3b\xe1l\xe1sa";
     },
     get$unavailable() {
-      return "Yok";
+      return "Nem el\xe9rhet\u0151";
     },
     unbannedUser$2(username, targetName) {
-      return username + ", " + targetName + " ki\u015fisinin engelini kald\u0131rd\u0131";
+      return username + " feloldotta " + targetName + " kitilt\xe1s\xe1t";
     },
     get$unblockDevice() {
-      return "Ayg\u0131t\u0131n Engellemesini Kald\u0131r";
+      return "Eszk\xf6z blokkol\xe1s felold\xe1sa";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Bilinmeyen \u015fifreleme algoritmas\u0131";
+      return "Ismeretlen titkos\xedt\xe1si algoritmus";
     },
     unknownEvent$1(type) {
-      return "Bilinmeyen etkinlik '" + type + "'";
+      return "Ismeretlen esem\xe9ny: '" + type + "'";
     },
     get$unpin() {
-      return "Sabitlemeyi kald\u0131r";
+      return "R\xf6gz\xedt\xe9s megsz\xfcntet\xe9se";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " ve " + count + " di\u011fer ki\u015fi yaz\u0131yor\u2026";
+      return username + " \xe9s " + count + " m\xe1sik r\xe9sztvev\u0151 g\xe9pel\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " ve " + username2 + " yaz\u0131yor\u2026";
+      return username + " \xe9s " + username2 + " g\xe9pel\u2026";
     },
     userIsTyping$1(username) {
-      return username + " yaz\u0131yor\u2026";
+      return username + " g\xe9pel\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " sohbetten ayr\u0131ld\u0131";
+      return "\ud83d\udeaa " + username + " elhagyta a cseveg\xe9st";
     },
     get$username(_) {
-      return "Kullan\u0131c\u0131 ad\u0131";
+      return "Felhaszn\xe1l\xf3n\xe9v";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " bir " + type + " etkinli\u011fi g\xf6nderdi";
+      return username + " felhaszn\xe1l\xf3 " + type + " esem\xe9nyt k\xfcld\xf6tt";
     },
     get$unverified() {
-      return "Do\u011frulanmad\u0131";
+      return "Hiteles\xedtetlen";
     },
     get$verified() {
-      return "Do\u011fruland\u0131";
+      return "Hiteles\xedtett";
     },
     get$verifyStart() {
-      return "Do\u011frulamay\u0131 Ba\u015flat";
+      return "Hiteles\xedt\xe9s megkezd\xe9se";
     },
     get$verifySuccess() {
-      return "Ba\u015far\u0131yla do\u011fruland\u0131!";
+      return "Sikeres hiteles\xedt\xe9s!";
     },
     get$verifyTitle() {
-      return "Di\u011fer hesap do\u011frulan\u0131yor";
+      return "M\xe1sik fi\xf3k hiteles\xedt\xe9se";
     },
     get$visibleForAllParticipants() {
-      return "T\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in g\xf6r\xfcn\xfcr";
+      return "Minden r\xe9sztvev\u0151 sz\xe1m\xe1ra l\xe1that\xf3";
     },
     get$visibleForEveryone() {
-      return "Herkes i\xe7in g\xf6r\xfcn\xfcr";
+      return "B\xe1rki sz\xe1m\xe1ra l\xe1that\xf3";
     },
     get$voiceMessage() {
-      return "Sesli mesaj";
+      return "Hang\xfczenet";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Orta\u011f\u0131n iste\u011fi kabul etmesi bekleniyor\u2026";
+      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a k\xe9r\xe9st\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Orta\u011f\u0131n emojiyi kabul etmesi bekleniyor\u2026";
+      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a hangulatjelet\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Orta\u011f\u0131n numaralar\u0131 kabul etmesi bekleniyor\u2026";
+      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a sz\xe1mokat\u2026";
     },
     get$warning() {
-      return "Uyar\u0131!";
+      return "Figyelem!";
     },
     get$weSentYouAnEmail() {
-      return "Size bir e-posta g\xf6nderdik";
+      return "K\xfcldt\xfcnk \xd6nnek egy emailt";
     },
     get$whyDoYouWantToReportThis() {
-      return "Bunu neden bildirmek istiyorsunuz?";
+      return "Mi\xe9rt k\xedv\xe1nja ezt bejelenteni?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Bu adresler ile parolan\u0131z\u0131 kurtarabilirsiniz.";
+      return "Ezekkel a c\xedmekkel vissza tudja \xe1ll\xedtani a jelszav\xe1t.";
     },
     get$writeAMessage() {
-      return "Bir mesaj yaz\u2026";
+      return "\xcdrjon egy \xfczenetet\u2026";
     },
     get$yes() {
-      return "Evet";
+      return "Igen";
     },
     get$you() {
-      return "Sen";
+      return "\xd6n";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Art\u0131k bu sohbette kat\u0131l\u0131mc\u0131 de\u011filsiniz";
+      return "Imm\xe1ron nem vesz r\xe9szt ebben a cseveg\xe9sben";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Bu sohbetten engellendiniz";
+      return "Kitiltott\xe1k ebb\u0151l a cseveg\xe9sb\u0151l";
     },
     get$yourPublicKey() {
-      return "Ortak anahtar\u0131n\u0131z";
+      return "A publikus kulcsa";
     },
     get$messageInfo() {
-      return "Mesaj bilgileri";
+      return "\xdczenet inform\xe1ci\xf3";
     },
     get$time(_) {
-      return "Zaman";
+      return "Id\u0151";
     },
     get$sender() {
-      return "G\xf6nderen";
+      return "K\xfcld\u0151";
     },
     get$openGallery() {
-      return "Galeriyi a\xe7";
+      return "Gal\xe9ria megnyit\xe1sa";
     },
     get$start(_) {
-      return "Ba\u015fla";
+      return "Kezd\xe9s";
     },
     get$markAsRead() {
-      return "Okundu olarak i\u015faretle";
+      return "Olvasottk\xe9nt megjel\xf6l\xe9s";
     },
     reactedWith$2(sender, reaction) {
-      return sender + ", " + reaction + " ile tepki verdi";
+      return sender + " a k\xf6vetkez\u0151k\xe9pp reag\xe1lt: " + reaction;
     },
     get$pinMessage() {
-      return "Odaya sabitle";
+      return "Kit\u0171z\xe9s a szob\xe1ban";
     },
     get$emojis() {
-      return "Emojiler";
+      return "Hangulatjelek";
     },
     get$youRejectedTheInvitation() {
-      return "Daveti reddettiniz";
+      return "Visszautas\xedtotta a megh\xedv\xe1st";
     },
     get$youJoinedTheChat() {
-      return "Sohbete kat\u0131ld\u0131n\u0131z";
+      return "Becsatlakozott a cseveg\xe9sbe";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Daveti kabul ettiniz";
+      return "\ud83d\udc4d Elfogadta a megh\xedv\xe1st";
     },
     youBannedUser$1(user) {
-      return user + " kullan\u0131c\u0131s\u0131n\u0131 yasaklad\u0131n\u0131z";
+      return "Letitotta " + user + " felhaszn\xe1l\xf3t";
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return user + " i\xe7in daveti geri \xe7ektiniz";
+      return "Visszavonta " + user + " megh\xedv\xe1s\xe1t";
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 " + user + " taraf\u0131ndan davet edildiniz";
+      return "\ud83d\udce9 " + user + " j\xf3volt\xe1b\xf3l kapott megh\xedv\xe1st";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 " + user + " kullan\u0131c\u0131s\u0131n\u0131 davet ettiniz";
+      return "\ud83d\udce9 Megh\xedvta " + user + "-t";
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e " + user + " kullan\u0131c\u0131s\u0131n\u0131 att\u0131n\u0131z";
+      return "\ud83d\udc5e Kir\xfagta " + user + "-t";
     },
     youUnbannedUser$1(user) {
-      return user + " kullan\u0131c\u0131s\u0131n\u0131n yasa\u011f\u0131n\u0131 kald\u0131rd\u0131n\u0131z";
+      return "Levette a letilt\xe1st " + user + "-r\u0151l";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " t\u0131klatt\u0131";
+      return "\ud83d\udeaa " + user + " bekopogott";
     },
     countFiles$1(count) {
-      return "" + count + " dosya";
+      return "" + count + " f\xe1jl";
     },
     get$user() {
-      return "Kullan\u0131c\u0131";
+      return "Felhaszn\xe1l\xf3";
     },
     get$custom() {
-      return "\xd6zel";
+      return "Egyedi";
     },
     get$noKeyForThisMessage() {
-      return "Bu durum, mesaj siz bu ayg\u0131tta hesab\u0131n\u0131zda oturum a\xe7madan \xf6nce g\xf6nderildiyse meydana gelebilir.\n\nG\xf6nderenin ayg\u0131t\u0131n\u0131z\u0131 engellemi\u015f olmas\u0131 veya internet ba\u011flant\u0131s\u0131nda bir sorun olmas\u0131 da m\xfcmk\xfcnd\xfcr.\n\nMesaj\u0131 ba\u015fka bir oturumda okuyabiliyor musunuz? O zaman mesaj\u0131 oradan aktarabilirsiniz! Ayarlar > Ayg\u0131tlar b\xf6l\xfcm\xfcne gidin ve ayg\u0131tlar\u0131n\u0131z\u0131n birbirini do\u011frulad\u0131\u011f\u0131ndan emin olun. Oday\u0131 bir sonraki sefer a\xe7t\u0131\u011f\u0131n\u0131zda ve her iki oturum da \xf6n planda oldu\u011funda, anahtarlar otomatik olarak iletilecektir.\n\nOturumu kapat\u0131rken veya ayg\u0131t de\u011fi\u015ftirirken anahtarlar\u0131 kaybetmek istemiyor musunuz? Ayarlarda sohbet yedeklemesini etkinle\u015ftirdi\u011finizden emin olun.";
+      return "Akkor fordulhat el\u0151, ha az \xfczenet az eszk\xf6zre val\xf3 bejelentkez\xe9s el\u0151tt ker\xfclt k\xfcld\xe9sre.\n\nAz is elk\xe9pzelhet\u0151, hogy a k\xfcld\u0151 blokkolta az eszk\xf6z\xe9t, vagy valami probl\xe9ma l\xe9pett fel az internet kapcsolatban.\n\nM\xe1s helyen l\xe1tja az \xfczenetet? Akkor \xe1t tudja m\xe1solni ide is! Menjen a Be\xe1ll\xedt\xe1sok > Eszk\xf6z\xf6k r\xe9szbe, \xe9s gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy az eszk\xf6zei meger\u0151s\xedtett\xe9k egym\xe1st. Legk\xf6zelebb amikor ezt a szob\xe1t megnyitja, \xe9s mind a k\xe9t kliens az el\u0151t\xe9rben van, akkor szikroniz\xe1l\xf3dni fognak.\n\nNem akarja elvesz\xedteni a kulcsokat amikor kijelentkezik, vagy eszk\xf6zt cser\xe9l? Gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy bekapcsolta a chat ment\xe9st a be\xe1ll\xedt\xe1sokban.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Bo\u015f sohbet (" + oldDisplayName + " idi)";
+      return "\xdcres cseveg\xe9s (kor\xe1bban " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Sohbeti yeniden a\xe7";
+      return "Cseveg\xe9s \xfajranyit\xe1sa";
     },
     get$noOtherDevicesFound() {
-      return "Ba\u015fka ayg\u0131t bulunamad\u0131";
+      return "Nem tal\xe1lhat\xf3 m\xe1s eszk\xf6z";
     },
     fileIsTooBigForServer$1(max) {
-      return "G\xf6nderilemiyor! Sunucu yaln\u0131zca " + max + " de\u011ferine kadar olan ekleri destekliyor.";
+      return "Nem k\xfcldhet\u0151 el! A szerver csak " + max + " hat\xe1rig enged csatolm\xe1nyokat.";
     },
     get$jumpToLastReadMessage() {
-      return "Son okunan mesaja atla";
+      return "Az utolj\xe1ra olvasott \xfczenethez ugr\xe1s";
     },
     get$readUpToHere() {
-      return "Buraya kadar oku";
+      return "Olvas\xe1s id\xe1ig";
     },
     get$jump() {
-      return "Atla";
+      return "Ugr\xe1s";
     },
     get$openLinkInBrowser() {
-      return "Ba\u011flant\u0131y\u0131 taray\u0131c\u0131da a\xe7";
+      return "Hivatkoz\xe1s megnyit\xe1sa b\xf6ng\xe9sz\u0151ben";
     },
     get$setColorTheme() {
-      return "Renk temas\u0131n\u0131 ayarla:";
+      return "Sz\xedn s\xe9ma be\xe1ll\xedt\xe1sa:";
     },
     get$invite() {
-      return "Davet et";
+      return "Megh\xedv\xe1s";
     },
     get$invalidInput() {
-      return "Ge\xe7ersiz giri\u015f!";
+      return "Hib\xe1s bevitel!";
     },
     wrongPinEntered$1(seconds) {
-      return "Yanl\u0131\u015f PIN girildi! " + seconds + " saniye sonra tekrar deneyin...";
+      return "Hib\xe1s pink\xf3dot adott meg! Pr\xf3b\xe1lja \xfajra " + seconds + " mp m\xfalva...";
     },
     get$pleaseEnterANumber() {
-      return "L\xfctfen 0'dan b\xfcy\xfck bir say\u0131 girin";
+      return "Adjon meg egy 0-n\xe1l nagyobb sz\xe1mot";
     },
     get$removeDevicesDescription() {
-      return "Bu ayg\u0131ttan \xe7\u0131k\u0131\u015f yapacaks\u0131n\u0131z ve art\u0131k mesaj alamayacaks\u0131n\u0131z.";
+      return "Ki fog jelentkezni a k\xe9sz\xfcl\xe9kr\u0151l, \xe9s t\xf6bb\xe9 nem fog tudni fogadni \xfczeneteket.";
     },
     get$banUserDescription() {
-      return "Kullan\u0131c\u0131 sohbetten yasaklanacak ve yasa\u011f\u0131 kald\u0131r\u0131lana kadar sohbete tekrar giremeyecek.";
+      return "A felhaszn\xe1l\xf3 kitilt\xe1sra ker\xfcl a cseveg\xe9sb\u0151l, \xe9s nem fog tudni visszaj\xf6nni eg\xe9szen a kitilt\xe1s felold\xe1s\xe1ig.";
     },
     get$unbanUserDescription() {
-      return "Kullan\u0131c\u0131 denerse sohbete tekrar girebilecektir.";
+      return "A felhaszn\xe1l\xf3 vissza tud j\xf6nni a cseveg\xe9sbe ha akar.";
     },
     get$kickUserDescription() {
-      return "Kullan\u0131c\u0131 sohbetten at\u0131l\u0131r ancak yasaklanmaz. Herkese a\xe7\u0131k sohbetlerde kullan\u0131c\u0131 istedi\u011fi zaman yeniden kat\u0131labilir.";
+      return "A felhaszn\xe1l\xf3 kir\xfag\xe1sra ker\xfclt a cseveg\xe9sb\u0151l, de nincs kitiltva. Publikus cseveg\xe9s eset\xe9n a felhaszn\xe1l\xf3 b\xe1rmikor visszat\xe9rhet.";
     },
     get$makeAdminDescription() {
-      return "Bu kullan\u0131c\u0131y\u0131 y\xf6netici yapt\u0131ktan sonra, sizinle ayn\u0131 izinlere sahip olaca\u011f\u0131 i\xe7in bunu geri alamayabilirsiniz.";
+      return "Miut\xe1n a felhaszn\xe1l\xf3t aminisztr\xe1torr\xe1 l\xe9pteti el\u0151, nem fogja tudni visszavonni d\xf6nt\xe9s\xe9t, mivel azonos jogosults\xe1gi szinttel fognak rendelkezni.";
     },
     get$yourGlobalUserIdIs() {
-      return "Genel kullan\u0131c\u0131 kimli\u011finiz: ";
+      return "A glob\xe1lis felhaszn\xe1l\xf3-ID-je: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Ne yaz\u0131k ki "' + query + '" ile kullan\u0131c\u0131 bulunamad\u0131. L\xfctfen bir yaz\u0131m hatas\u0131 yap\u0131p yapmad\u0131\u011f\u0131n\u0131z\u0131 kontrol edin.';
+      return '"' + query + '"-vel nem tal\xe1lhat\xf3 felhaszn\xe1l\xf3. Ellen\u0151rizze nincs e el\xedr\xe1s.';
     },
     get$knocking() {
-      return "T\u0131klat";
+      return "Bekopog\xe1s";
     },
     get$nothingFound() {
-      return "Hi\xe7bir \u015fey bulunamad\u0131...";
+      return "Nincs tal\xe1lat...";
     },
     get$groupName() {
-      return "Grup ismi";
+      return "Csoport n\xe9v";
     },
     get$wrongRecoveryKey() {
-      return "\xdczg\xfcn\xfcm... bu do\u011fru kurtarma anahtar\u0131 gibi g\xf6r\xfcnm\xfcyor.";
+      return "Sajnos, \xfagy t\u0171nik hib\xe1san adta meg a vissza\xe1ll\xedt\xe1si kulcsot.";
     },
     get$startConversation() {
-      return "G\xf6r\xfc\u015fme ba\u015flat";
+      return "T\xe1rsalg\xe1s kezd\xe9se";
     },
     get$commandHint_sendraw() {
-      return "Ham JSON g\xf6nder";
+      return "Tiszta json k\xfcld\xe9se";
     },
     get$leaveEmptyToClearStatus() {
-      return "Durumunuzu temizlemek i\xe7in bo\u015f b\u0131rak\u0131n.";
+      return "Hagyja \xfcresen a st\xe1tusz kit\xf6rl\xe9s\xe9hez.";
     },
     get$searchForUsers() {
-      return "@kullan\u0131c\u0131lar\u0131 ara...";
+      return "Keressen @felhaszn\xe1l\xf3kat...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "L\xfctfen ge\xe7erli parolan\u0131z\u0131 girin";
+      return "K\xe9rem adja meg jelenlegi jelszav\xe1t";
     },
     get$newPassword() {
-      return "Yeni parola";
+      return "\xdaj jelsz\xf3";
     },
     get$pleaseChooseAStrongPassword() {
-      return "L\xfctfen g\xfc\xe7l\xfc bir parola se\xe7in";
+      return "K\xe9rem v\xe1lasszon egy er\u0151s jelsz\xf3t";
     },
     get$passwordsDoNotMatch() {
-      return "Parolalar e\u015fle\u015fmiyor";
+      return "A jelszavak nem egyeznek";
     },
     get$passwordIsWrong() {
-      return "Girdi\u011finiz parola yanl\u0131\u015f";
+      return "Hib\xe1s a be\xedrt jelszava";
     },
     get$decline() {
-      return "Reddet";
+      return "Elutas\xedt\xe1s";
     },
     get$thisDevice() {
-      return "Bu ayg\u0131t:";
+      return "Ez az eszk\xf6z:";
     },
     get$initAppError() {
-      return "Uygulama ba\u015flat\u0131l\u0131rken bir hata olu\u015ftu";
+      return "Hiba l\xe9pett fel az app ind\xedt\xe1sa sor\xe1n";
     },
     searchIn$1(chat) {
-      return '"' + chat + '" sohbeti i\xe7inde ara...';
+      return 'Keres\xe9s a "' + chat + '" cseveg\xe9sben...';
     },
     get$searchMore() {
-      return "Daha fazla ara...";
+      return "Tov\xe1bbi keres\xe9s...";
     },
     get$gallery() {
-      return "Galeri";
+      return "Gal\xe9ria";
     },
     get$files(_) {
-      return "Dosyalar";
+      return "F\xe1jlok";
     },
     sessionLostBody$2(url, error) {
-      return "Oturumunuz kayboldu. L\xfctfen bu hatay\u0131 " + url + string$._adres + error;
+      return "A munkamenete elvesz\u0151d\xf6tt. K\xe9rem jelentse ezt a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Uygulama \u015fimdi oturumunuzu yedekten geri y\xfcklemeye \xe7al\u0131\u015f\u0131yor. L\xfctfen bu hatay\u0131 " + url + string$._adres + error;
+      return "Megpr\xf3b\xe1lkozunk vissza\xe1ll\xedtani a munkamenet\xe9t egy kor\xe1bbi ment\xe9sb\u0151l. K\xe9rem jelezze a hib\xe1t a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
     },
     get$sendReadReceipts() {
-      return "Okundu bilgisi g\xf6nder";
+      return "Olvas\xe1si igazol\xe1s k\xfcld\xe9se";
     },
     get$sendTypingNotificationsDescription() {
-      return "Sohbetteki di\u011fer kat\u0131l\u0131mc\u0131lar yeni bir mesaj yazd\u0131\u011f\u0131n\u0131z\u0131 g\xf6rebilir.";
+      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja amikor g\xe9pel.";
     },
     get$sendReadReceiptsDescription() {
-      return "Sohbetteki di\u011fer kat\u0131l\u0131mc\u0131lar bir mesaj\u0131 okudu\u011funuzu g\xf6rebilir.";
+      return "A cseveg\xe9s t\xf6bbi tagja l\xe1thatja, ha olvasta az \xfczeneteiket.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Di\u011fer ayg\u0131t\u0131 do\u011frula";
+      return "\ud83d\udd10 M\xe1s eszk\xf6z hiteles\xedt\xe9se";
     },
     get$verifyOtherDeviceDescription() {
-      return "Ba\u015fka bir ayg\u0131t\u0131 do\u011frulad\u0131\u011f\u0131n\u0131zda, bu ayg\u0131tlar anahtarlar\u0131 de\u011fi\u015f toku\u015f ederek genel g\xfcvenli\u011finizi art\u0131r\u0131r. \ud83d\udcaa Bir do\u011frulama ba\u015flatt\u0131\u011f\u0131n\u0131zda, her iki ayg\u0131ttaki uygulamada bir a\xe7\u0131l\u0131r pencere g\xf6r\xfcnecektir. Orada birbirleriyle kar\u015f\u0131la\u015ft\u0131rman\u0131z gereken bir dizi emoji veya say\u0131 g\xf6receksiniz. Do\u011frulamaya ba\u015flamadan \xf6nce her iki ayg\u0131t\u0131n da elinizin alt\u0131nda olmas\u0131 en iyisidir. \ud83e\udd33";
+      return "Amikor egy m\xe1sik eszk\xf6zt hiteles\xedt, az eszk\xf6z\xf6k kulcsokat cser\xe9lnek egym\xe1s k\xf6z\xf6tt, ez\xe1ltal n\xf6velve az \xf6sszbiztons\xe1got. \ud83d\udcaa Amikor megkezd\u0151dik a folyamat, mind a k\xe9t eszk\xf6z\xf6n megjelenik egy felugr\xf3 \xfczenet. Hangulatjelek \xe9s sz\xe1mok sorozata fog megjelenni, amit \xf6ssze tud hasonl\xedtani a k\xe9t eszk\xf6z\xf6n. \xc9rdemes teh\xe1t mind a k\xe9t eszk\xf6zt a k\xf6zelben tartani. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulamay\u0131 kabul etti";
+      return sender + " elfogadta a kulcs meger\u0151s\xedt\xe9st";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulamay\u0131 iptal etti";
+      return sender + " visszautas\xedtotta a kulcs meger\u0151s\xedt\xe9st";
     },
     completedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulamay\u0131 tamamlad\u0131";
+      return sender + " befejezte a kulcs meger\u0151s\xedt\xe9st";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulama i\xe7in haz\u0131r";
+      return sender + " k\xe9szen \xe1ll a kulcs meger\u0151s\xedt\xe9sre";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulama istedi";
+      return sender + " kulcs meger\u0151s\xedt\xe9st k\xe9r";
     },
     startedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulama ba\u015flatt\u0131";
+      return sender + " elkezdte a kulcs meger\u0151s\xedt\xe9st";
     },
     get$commandHint_ignore() {
-      return "Verilen matrix kimli\u011fini g\xf6rmezden gel";
+      return "Adott matrix ID figyelmen k\xedv\xfcl hagy\xe1sa";
     },
     get$commandHint_unignore() {
-      return "Verilen matrix kimli\u011fini g\xf6rmezden gelmeyi iptal et";
+      return "Adott matrix ID figyelembe v\xe9tele";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u015eu anda " + count + " engellenen kullan\u0131c\u0131 var.";
+      return "Jelenleg " + count + " felhaszn\xe1l\xf3 van letiltva.";
     },
     get$restricted() {
-      return "K\u0131s\u0131tl\u0131";
+      return "Korl\xe1tozott";
     },
     get$markAsUnread() {
-      return "Okunmad\u0131 olarak i\u015faretle";
+      return "Olvasatlannak jel\xf6l\xe9s";
     },
     userLevel$1(level) {
-      return "" + level + " - Kullan\u0131c\u0131";
+      return "" + level + " - Felhaszn\xe1l\xf3";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderat\xf6r";
+      return "" + level + " - Moder\xe1tor";
     },
     adminLevel$1(level) {
-      return "" + level + " - Y\xf6netici";
+      return "" + level + " - Adminisztr\xe1tor";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Sohbet ge\xe7mi\u015finin g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftir";
+      return "Cseveg\xe9si el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1nak v\xe1ltoztat\xe1sa";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Ana herkese a\xe7\u0131k sohbet adresini de\u011fi\u015ftir";
+      return "Cseveg\xe9s f\u0151, nyilv\xe1nos c\xedm\xe9nek v\xe1ltoztat\xe1sa";
     },
     get$sendRoomNotifications() {
-      return "@oda bildirimleri g\xf6nder";
+      return "@szoba \xe9rtes\xedt\xe9s k\xfcld\xe9se";
     },
     get$chatPermissionsDescription() {
-      return "Bu sohbette belirli eylemler i\xe7in hangi g\xfc\xe7 d\xfczeyinin gerekli oldu\u011funu tan\u0131mlay\u0131n. 0, 50 ve 100 g\xfc\xe7 d\xfczeyleri genellikle kullan\u0131c\u0131lar\u0131, moderat\xf6rleri ve y\xf6neticileri temsil eder, ancak herhangi bir derecelendirme m\xfcmk\xfcnd\xfcr.";
+      return "Adja meg milyen er\u0151ss\xe9gi szint kell egyes cseveg\xe9si m\u0171velethez. A 0, 50 \xe9s 100-as szintek \xe1ltal\xe1ban felhaszn\xe1l\xf3kat, moder\xe1torokat \xe9s adminisztr\xe1torokat jel\xf6lnek de b\xe1rmilyen szintez\xe9s lehets\xe9ges.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 G\xfcncelleme " + version + " kuruldu!";
+      return "\ud83c\udf89 " + version + " verzi\xf3j\xfa friss\xedt\xe9s telep\xedtve!";
     },
     get$sendCanceled() {
-      return "G\xf6nderme iptal edildi";
+      return "K\xfcld\xe9s visszavonva";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Uyumlu bir ana sunucu gibi g\xf6r\xfcnm\xfcyor. Yanl\u0131\u015f URL mi?";
+      return "Nem t\u0171nik kompatibilisnek a M\xe1trix-kiszolg\xe1l\xf3nak. Hib\xe1s a hivatkoz\xe1s?";
     },
     get$calculatingFileSize() {
-      return "Dosya boyutu hesaplan\u0131yor...";
+      return "F\xe1jl m\xe9ret kalkul\xe1l\xe1sa...";
     },
     get$prepareSendingAttachment() {
-      return "Ek g\xf6nderilmeye haz\u0131rlan\u0131yor...";
+      return "Felk\xe9sz\xfcl\xe9s csatolm\xe1ny k\xfcld\xe9s\xe9re...";
     },
     get$sendingAttachment() {
-      return "Ek g\xf6nderiliyor...";
+      return "Csatolm\xe1ny k\xfcld\xe9se...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Ek " + index + " / " + $length + " g\xf6nderiliyor...";
+      return "" + index + " csatolm\xe1ny k\xfcld\xe9se " + $length + "-b\xf3l...";
     },
     serverLimitReached$1(seconds) {
-      return "Sunucu s\u0131n\u0131r\u0131na ula\u015f\u0131ld\u0131! " + seconds + " saniye bekleniyor...";
+      return "Szerver korl\xe1t el\xe9rve! " + seconds + " mp t\xfcrelem...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Not: T\xfcm ayg\u0131tlar\u0131n\u0131z\u0131 sohbet yedeklemesine ba\u011flad\u0131\u011f\u0131n\u0131zda, otomatik olarak do\u011frulan\u0131rlar.";
+      return "Megjegyz\xe9s: Minden eszk\xf6ze amit a cseveg\xe9s ment\xe9shez kapcsol, automatikusan hiteles\xedt\xe9sre ker\xfcl.";
     },
     get$continueText() {
-      return "Devam et";
+      return "Folytat\xe1s";
     },
     get$blur(_) {
-      return "Blur:";
+      return "Hom\xe1lyos\xedt:";
     },
     get$opacity(_) {
-      return "\u015eeffafl\u0131k:";
+      return "\xc1tl\xe1tsz\xf3s\xe1g:";
     },
     get$setWallpaper() {
-      return "Duvar ka\u011f\u0131d\u0131 se\xe7";
+      return "H\xe1tt\xe9r be\xe1ll\xedt\xe1s";
     },
     get$noContactInformationProvided() {
-      return "Sunucu ge\xe7erli bir ileti\u015fim bilgisi sunmad\u0131";
+      return "A szervert\u0151l nem \xe9rkezett vissza kapcsolati inform\xe1ci\xf3";
     },
     get$contactServerAdmin() {
-      return "Sunucu y\xf6neticisiyle ileti\u015fime ge\xe7in";
+      return "Kapcsolatfelv\xe9tel a szerver adminnal";
     },
     get$contactServerSecurity() {
-      return "Sunucu g\xfcvenli\u011fiyle ileti\u015fime ge\xe7in";
+      return "Kapcsolatfelv\xe9tel a szerver biztons\xe1ggal";
     },
     get$supportPage() {
-      return "Destek sayfas\u0131";
+      return "T\xe1mogat\xe1si oldal";
     },
     get$serverInformation() {
-      return "Sunucu bilgisi:";
+      return "Szerver inform\xe1ci\xf3:";
     },
     get$name(_) {
-      return "\u0130sim";
+      return "N\xe9v";
     },
     get$version(_) {
-      return "Versiyon";
+      return "Verzi\xf3";
     },
     get$compress() {
-      return "S\u0131k\u0131\u015ft\u0131rma";
+      return "T\xf6m\xf6r\xedt\xe9s";
     },
     get$boldText() {
-      return "Kal\u0131n metin";
+      return "F\xe9lk\xf6v\xe9r sz\xf6veg";
     },
     get$italicText() {
-      return "\u0130talik metin";
+      return "D\u0151lt sz\xf6veg";
     },
     get$strikeThrough() {
-      return "\xdcst\xfc \xe7izili";
+      return "\xc1th\xfazott";
     },
     get$pleaseFillOut() {
-      return "L\xfctfen doldurun";
+      return "K\xe9rem t\xf6ltse ki";
     },
     get$invalidUrl() {
-      return "Ge\xe7ersiz url";
+      return "Helytelen hivatkoz\xe1s";
     },
     get$addLink() {
-      return "Link ekle";
+      return "Hivatkoz\xe1s hozz\xe1ad\xe1sa";
     },
     get$unableToJoinChat() {
-      return "Sohbete girilemiyor. Belki ba\u015fka birileri konu\u015fmay\u0131 kapatm\u0131\u015f olabilir.";
+      return "Nem csatlakozhat a cseveg\xe9shez. Elk\xe9pzelhet\u0151, hogy a m\xe1sik f\xe9l m\xe1r kil\xe9pett.";
     },
     get$previous() {
-      return "\xd6nceki";
+      return "El\u0151z\u0151";
     },
     get$otherPartyNotLoggedIn() {
-      return "Di\u011fer taraf \u015fu anda giri\u015f yapmad\u0131 ve bu nedenle mesaj alamaz!";
+      return "A m\xe1sik f\xe9l jelenleg nincs bejelentkezve, emiatt nem fogadhat \xfczeneteket!";
     },
     get$open(_) {
-      return "A\xe7";
+      return "Megnyit\xe1s";
     },
     get$waitingForServer() {
-      return "Sunucu bekleniyor...";
+      return "V\xe1rakoz\xe1s a szerverre...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Yeni sohbet iste\u011fi";
+      return "\ud83d\udce9 \xdaj cseveg\xe9s k\xe9relem";
     },
     get$contentNotificationSettings() {
-      return "\u0130\xe7erik bildirim ayarlar\u0131";
+      return "Tartalom \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1sok";
     },
     get$generalNotificationSettings() {
-      return "Genel bildirim ayarlar\u0131";
+      return "\xc1tal\xe1nos \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1sok";
     },
     get$roomNotificationSettings() {
-      return "Oda bildirim ayarlar\u0131";
+      return "Szoba \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1sok";
     },
     get$userSpecificNotificationSettings() {
-      return "Kullan\u0131c\u0131ya \xf6zel bildirim ayarlar\u0131";
+      return "Felhaszn\xe1l\xf3 specifikus \xe9rtes\xedt\xe9s be\xe1ll\xedt\xe1sok";
     },
     get$otherNotificationSettings() {
-      return "Di\u011fer bildirim ayarlar\u0131";
+      return "Egy\xe9b \xe9rtes\xedt\xe9s be\xe1ll\xedt\xe1sok";
     },
     get$notificationRuleContainsUserName() {
-      return "Kullan\u0131c\u0131 Ad\u0131n\u0131 \u0130\xe7eriyor";
+      return "Felhaszn\xe1l\xf3 nevet tartalmaz";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Bir mesaj kullan\u0131c\u0131n\u0131n kullan\u0131c\u0131 ad\u0131n\u0131 i\xe7erdi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t, ha az \xfczenet tartalmazza a nev\xe9t.";
     },
     get$notificationRuleMaster() {
-      return "T\xfcm bildirimleri sessize al";
+      return "Minden \xe9rtes\xedt\xe9s n\xe9m\xedt\xe1sa";
     },
     get$notificationRuleMasterDescription() {
-      return "T\xfcm di\u011fer kurallar\u0131 ge\xe7ersiz k\u0131lar ve t\xfcm bildirimleri devre d\u0131\u015f\u0131 b\u0131rak\u0131r.";
+      return "Fel\xfcl\xedr minden m\xe1s szab\xe1lyt, \xe9s kikapcsolja az \xf6sszes \xe9rtes\xedt\xe9st.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Otomatik Mesajlar\u0131 Bast\u0131r";
+      return "Minden automata \xfczenetet n\xe9m\xedt";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Botlar gibi otomatik istemcilerden gelen bildirimleri bast\u0131r\u0131r.";
+      return "N\xe9m\xedt minden automata klienst\u0151l \xe9rkez\u0151 \xe9rtes\xedt\xe9st mint p\xe9ld\xe1ul botok.";
     },
     get$notificationRuleInviteForMe() {
-      return "Benim \u0130\xe7in Davet";
+      return "Megh\xedv\xe1s Sz\xe1momra";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Bir odaya davet edildi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t szoba megh\xedv\xe1s eset\xe9n.";
     },
     get$notificationRuleMemberEvent() {
-      return "\xdcye Olay\u0131";
+      return "Tagi Esem\xe9ny";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\xdcyelik olaylar\u0131 i\xe7in bildirimleri bast\u0131r\u0131r.";
+      return "N\xe9m\xedtja a tagi esem\xe9nyek \xe9rtes\xedt\xe9seit.";
     },
     get$notificationRuleIsUserMention() {
-      return "Kullan\u0131c\u0131 Bahsi";
+      return "Felhaszn\xe1l\xf3 Eml\xedt\xe9se";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Bir mesajda do\u011frudan bahsedildi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t, ha k\xf6zvetlen\xfcl eml\xedt\xe9sre ker\xfcl az \xfczenetben.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "G\xf6r\xfcnen Ad\u0131 \u0130\xe7eriyor";
+      return "Megjelen\xedtett Nevet Tartalmaz";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Bir mesaj kullan\u0131c\u0131n\u0131n g\xf6sterilen ad\u0131n\u0131 i\xe7erdi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t, ha k\xf6zvetlen\xfcl eml\xedt\xe9sre ker\xfcl a megjelen\xedtett neve az \xfczenetben.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Oda Bahsi";
+      return "Szoba Eml\xedt\xe9s";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Bir oda bahsi oldu\u011funda kullan\u0131c\u0131y\u0131 bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t szoba eml\xedt\xe9skor.";
     },
     get$notificationRuleRoomnotif() {
-      return "Oda Bildirimi";
+      return "Szoba \xc9rtes\xedt\xe9s";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Bir mesaj '@oda' i\xe7erdi\u011finde kullan\u0131c\u0131y\u0131 bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t ha az \xfczenet tartalmazza a '@szoba' eml\xedt\xe9st.";
     },
     get$notificationRuleTombstone() {
-      return "Tombstone";
+      return "S\xedrk\u0151";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Kullan\u0131c\u0131y\u0131 oda devre d\u0131\u015f\u0131 b\u0131rakma mesajlar\u0131 hakk\u0131nda bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a szoba deaktiv\xe1l\xe1s \xfczenetekr\u0151l.";
     },
     get$notificationRuleReaction() {
-      return "Tepki";
+      return "Reakci\xf3";
     },
     get$notificationRuleReactionDescription() {
-      return "Tepkiler i\xe7in bildirimleri engeller.";
+      return "N\xe9m\xedtja a reakci\xf3k \xe9rtes\xedt\xe9seit.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Oda Sunucu Eri\u015fim Kontrol Listesi (ACL)";
+      return "Szoba Szerver ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Oda sunucu eri\u015fim kontrol listeleri (ACL) i\xe7in bildirimleri engeller.";
+      return "N\xe9m\xedtja a szoba szerver hozz\xe1f\xe9r\xe9si kezel\u0151 lista (ACL) \xe9rtes\xedt\xe9seket.";
     },
     get$notificationRuleSuppressEdits() {
-      return "D\xfczenlemeleri Bast\u0131r";
+      return "Szerkeszt\xe9sek n\xe9m\xedt\xe1sa";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "D\xfczenlenmi\u015f mesajlar i\xe7in bildirimleri engeller.";
+      return "N\xe9m\xedtja a szerkesztett \xfczenetek \xe9rtes\xedt\xe9seit.";
     },
     get$notificationRuleCall() {
-      return "Arama";
+      return "H\xedv\xe1s";
     },
     get$notificationRuleCallDescription() {
-      return "Kullan\u0131c\u0131y\u0131 aramalar hakk\u0131nda bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a h\xedv\xe1sokr\xf3l.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u015eifreli Oda Bir'e Bir";
+      return "Titkos\xedtott N\xe9gyszemk\xf6zti Szoba";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Kullan\u0131c\u0131y\u0131 \u015fifreli bir'e bir odalardaki mesajlar hakk\u0131nda bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a titkos\xedtott n\xe9gyszemk\xf6zti szob\xe1kban lev\u0151 \xfczenetekr\u0151l.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Oda Bir'e Bir";
+      return "N\xe9gyszemk\xf6zti Szoba";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Kullan\u0131c\u0131y\u0131 bir'e bir odalardaki mesajlar hakk\u0131nda bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a n\xe9gyszemk\xf6zti szob\xe1ban lev\u0151 \xfczenetekr\u0151l.";
     },
     get$notificationRuleMessage() {
-      return "Mesaj";
+      return "\xdczenet";
     },
     get$notificationRuleMessageDescription() {
-      return "Kullan\u0131c\u0131y\u0131 genel mesajlar hakk\u0131nda bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t az \xe1ltal\xe1nos \xfczenetekr\u0151l.";
     },
     get$notificationRuleEncrypted() {
-      return "\u015eifreli";
+      return "Titkos\xedtott";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Kullan\u0131c\u0131y\u0131 \u015fifreli odalardaki mesajlar hakk\u0131nda bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a titkos\xedtott szob\xe1kban lev\u0151 \xfczenetekr\u0151l.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Kullan\u0131c\u0131y\u0131 Jitsi widget olaylar\u0131 hakk\u0131nda bilgilendirir.";
+      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a Jitsi widget esem\xe9nyekr\u0151l.";
     },
     get$notificationRuleServerAcl() {
-      return "Sunucu ACL Olaylar\u0131n\u0131 Bast\u0131r";
+      return "N\xe9m\xedtja a Szerver ACL Esem\xe9nyeket";
     },
     get$notificationRuleServerAclDescription() {
-      return "Sunucu ACL olaylar\u0131 i\xe7in bildirimleri engeller.";
+      return "N\xe9m\xedtja a Szerver ACL esem\xe9nyek \xe9rtes\xedt\xe9seit.";
     },
     unknownPushRule$1(rule) {
-      return "'" + rule + "' bilinmeyen itme kural\u0131";
+      return "'" + rule + "' egy ismeretlen push szab\xe1ly";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender + " taraf\u0131ndan sesli mesaj";
+      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Bu bildirim ayar\u0131n\u0131 sildi\u011finizde, bu geri al\u0131namaz.";
+      return "Ha t\xf6rli ezt az \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1st, k\xe9s\u0151bb nem vonhat\xf3 vissza.";
     },
     get$more() {
-      return "Daha fazla";
+      return "T\xf6bb";
     },
     get$shareKeysWith() {
-      return "Anahtarlar\u0131 payla\u015f...";
+      return "Kulcsok megoszt\xe1sa...";
     },
     get$shareKeysWithDescription() {
-      return "Hangi cihazlar g\xfcvenilir olmal\u0131 ve \u015fifreli sohbetlerde mesajlar\u0131n\u0131z\u0131 okuyabilmeli?";
+      return "Mely eszk\xf6z\xf6k tekinthet\u0151ek megb\xedzhat\xf3nak, hogy olvashass\xe1k a titkos\xedtott cseveg\xe9seket is?";
     },
     get$allDevices() {
-      return "T\xfcm cihazlar";
+      return "Minden eszk\xf6z";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Etkinse \xe7apraz do\u011frulanm\u0131\u015f cihazlar";
+      return "Kereszt-hiteles\xedtett eszk\xf6z\xf6k ha be van kapcsolva";
     },
     get$crossVerifiedDevices() {
-      return "\xc7apraz do\u011frulanm\u0131\u015f cihazlar";
+      return "Kereszt-hiteles\xedtett eszk\xf6z\xf6k";
     },
     get$verifiedDevicesOnly() {
-      return "Sadece do\u011frulanm\u0131\u015f cihazlar";
+      return "Csak hiteles\xedtett eszk\xf6z\xf6k";
     },
     get$optionalMessage() {
-      return "(\u0130ste\u011fe ba\u011fl\u0131) mesaj...";
+      return "(V\xe1laszthat\xf3) \xfczenet...";
     },
     get$notSupportedOnThisDevice() {
-      return "Bu cihazda desteklenmiyor";
+      return "Nem t\xe1mogatott ezen az eszk\xf6z\xf6n";
     },
     get$enterNewChat() {
-      return "Yeni sohbete gir";
+      return "Bel\xe9p\xe9s \xfaj cseveg\xe9sbe";
     },
     get$approve() {
-      return "Onayla";
+      return "J\xf3v\xe1hagy";
     },
     get$commandHint_logout() {
-      return "Mevcut cihaz\u0131n\u0131zdan \xe7\u0131k\u0131\u015f yap";
+      return "Kijelentkez\xe9s az aktu\xe1lis eszk\xf6zr\u0151l";
     },
     get$commandHint_logoutall() {
-      return "T\xfcm aktif cihazlardan \xe7\u0131k\u0131\u015f yap";
+      return "Kijelentkez\xe9s minden akt\xedv eszk\xf6zr\u0151l";
     },
     get$customReaction() {
-      return "\xd6zel tepki";
+      return "Egyedi reakci\xf3";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return l1 + " veya " + l2 + " ile yaz...";
+      return "\xcdrj " + l1 + " vagy " + l2 + " nyelven...";
     },
     get$holdForInfo() {
-      return "Kelime bilgisi i\xe7in t\u0131klay\u0131p bas\u0131l\u0131 tut.";
+      return "Kattints \xe9s tartsd lenyomva a sz\xf3 inform\xe1ci\xf3j\xe1\xe9rt.";
     },
     get$greenFeedback() {
-      return "Benim koyaca\u011f\u0131m bu olurdu!";
+      return "Ezt \xedrn\xe1m ide!";
     },
     get$yellowFeedback() {
-      return "Hm, deneyebilir ve i\u015fe yaray\u0131p yaramad\u0131\u011f\u0131n\u0131 g\xf6rebilirsin! Bu kelimeyi kullanmak i\xe7in tekrar t\u0131kla.";
+      return "Hm, kipr\xf3b\xe1lhatod, hogy m\u0171k\xf6dik-e! A sz\xf3 haszn\xe1lat\xe1hoz egyszer\u0171en kattints r\xe1 \xfajra.";
     },
     get$redFeedback() {
-      return "Sanm\u0131yorum ki bu do\u011fru...";
+      return "Nem hiszem, hogy ez helyes...";
     },
     get$gaTooltip() {
-      return "Dilbilgisi yard\u0131m\u0131yla L2 kullan\u0131m\u0131";
+      return "L2 haszn\xe1lata nyelvtani seg\xedts\xe9ggel";
     },
     get$taTooltip() {
-      return "\xc7eviri yard\u0131m\u0131yla L2 kullan\u0131m\u0131";
+      return "L2 haszn\xe1lata ford\xedt\xe1si seg\xedts\xe9ggel";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Etkile\u015fimli \xc7evirmen";
+      return "Interakt\xedv Ford\xedt\xf3";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Etkile\u015fimli Dilbilgisi Denetleyici";
+      return "Interakt\xedv Nyelvtani Ellen\u0151rz\u0151";
     },
     get$waTooltip() {
-      return "Yard\u0131m olmadan L2 kullan\u0131m\u0131";
+      return "L2 seg\xedts\xe9g n\xe9lk\xfcl";
     },
     get$noIdenticalLanguages() {
-      return "L\xfctfen farkl\u0131 temel ve hedef diller se\xe7in";
+      return "K\xe9rj\xfck, v\xe1lasszon k\xfcl\xf6nb\xf6z\u0151 alap- \xe9s c\xe9lnyelvet";
     },
     get$joinWithClassCode() {
-      return "Derse kat\u0131l";
+      return "Csatlakoz\xe1s kurzushoz";
     },
     get$languageLevelPreA1() {
-      return "Acemi D\xfc\u015f\xfck (Pre A1)";
+      return "Novice Low (Pre A1)";
     },
     get$languageLevelA1() {
-      return "Acemi Orta (A1)";
+      return "Novice Mid (A1)";
     },
     get$languageLevelA2() {
-      return "Yeni Ba\u015flayan Y\xfcksek (A2)";
+      return "Kezd\u0151 Magas (A2)";
     },
     get$languageLevelB1() {
-      return "Orta Seviye Orta (B1)";
+      return "K\xf6z\xe9pfok K\xf6zepes (B1)";
     },
     get$languageLevelB2() {
-      return "\u0130leri Seviye D\xfc\u015f\xfck (B2)";
+      return "Fels\u0151fok Alacsony (B2)";
     },
     get$languageLevelC1() {
-      return "\u0130leri Seviye Orta (C1)";
+      return "Fels\u0151fok K\xf6zepes (C1)";
     },
     get$languageLevelC2() {
-      return "\xdcst D\xfczey (C2)";
+      return "Kiv\xe1l\xf3 (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u0130smi de\u011fi\u015ftir";
+      return "N\xe9v m\xf3dos\xedt\xe1sa";
     },
     get$changeTheNameOfTheChat() {
-      return "Sohbetin ad\u0131n\u0131 de\u011fi\u015ftir";
+      return "A chat nev\xe9nek m\xf3dos\xedt\xe1sa";
     },
     get$sorryNoResults() {
-      return "\xdczg\xfcn\xfcz, sonu\xe7 yok.";
+      return "Sajn\xe1lom, nincs eredm\xe9ny.";
     },
     get$ignoreInThisText() {
-      return "Yoksay";
+      return "Figyelmen k\xedv\xfcl hagy";
     },
     needsItMessage$1(targetLanguage) {
-      return "Bekle, bu " + targetLanguage + " de\u011fil! \xc7eviri yard\u0131m\u0131na ihtiyac\u0131n var m\u0131?";
+      return "V\xe1rj, ez nem " + targetLanguage + "! Sz\xfcks\xe9ged van seg\xedts\xe9gre a ford\xedt\xe1sban?";
     },
     get$countryInformation() {
-      return "\xdclkem";
+      return "Orsz\xe1gom";
     },
     get$targetLanguage() {
-      return "Hedef Dil";
+      return "C\xe9lnyelv";
     },
     get$updateLanguage() {
-      return "Dillerim";
+      return "Nyelveim";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Hangi dili \xf6\u011frenmek istiyorsunuz?";
+      return "Milyen nyelvet szeretn\xe9l megtanulni?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Ana diliniz nedir?";
+      return "Mi az alapnyelved?";
     },
     get$saveChanges() {
-      return "De\u011fi\u015fiklikleri kaydet";
+      return "M\xf3dos\xedt\xe1sok ment\xe9se";
     },
     get$publicProfileTitle() {
-      return "Profilimin aramada bulunmas\u0131na izin ver";
+      return "Enged\xe9lyezem, hogy profilomat keres\xe9sben megtal\xe1lj\xe1k";
     },
     get$publicProfileDesc() {
-      return "A\xe7\u0131l\u0131rsa, di\u011fer kullan\u0131c\u0131lar\u0131n profilinizi k\xfcresel arama \xe7ubu\u011funda bulmas\u0131na ve sohbet istekleri g\xf6ndermesine olanak tan\u0131rs\u0131n\u0131z. Bu noktada, iste\u011fi kabul etmeyi veya reddetmeyi se\xe7ebilirsiniz.";
+      return "Bekapcsol\xe1s\xe1val lehet\u0151v\xe9 teszed m\xe1s felhaszn\xe1l\xf3k sz\xe1m\xe1ra, hogy megtal\xe1lj\xe1k profilodat a glob\xe1lis keres\u0151s\xe1vban, \xe9s k\xe9rjenek cseveg\xe9st. Ekkor d\xf6nthetsz arr\xf3l, hogy elfogadod vagy elutas\xedtod a k\xe9r\xe9st.";
     },
     get$errorDisableIT() {
-      return "\xc7eviri yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131.";
+      return "A Ford\xedt\xe1si seg\xedts\xe9g kikapcsolva van.";
     },
     get$errorDisableIGC() {
-      return "Dilbilgisi yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131.";
+      return "A Nyelvtani seg\xedts\xe9g kikapcsolva van.";
     },
     get$errorDisableLanguageAssistance() {
-      return "\xc7eviri ve dilbilgisi yard\u0131m\u0131 devre d\u0131\u015f\u0131.";
+      return "A Ford\xedt\xe1si \xe9s nyelvtani seg\xedts\xe9g kikapcsolva van.";
     },
     get$errorDisableITUserDesc() {
-      return "\xc7eviri yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
+      return "Kattints ide a ford\xedt\xe1si seg\xedts\xe9g be\xe1ll\xedt\xe1sainak friss\xedt\xe9s\xe9hez";
     },
     get$errorDisableIGCUserDesc() {
-      return "Dilbilgisi yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
+      return "Kattints ide a nyelvtani seg\xedts\xe9g be\xe1ll\xedt\xe1sainak friss\xedt\xe9s\xe9hez";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "\xc7eviri ve dilbilgisi yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
+      return "Kattints ide a ford\xedt\xe1si \xe9s nyelvtani seg\xedts\xe9g be\xe1ll\xedt\xe1sainak friss\xedt\xe9s\xe9hez";
     },
     get$errorDisableITClassDesc() {
-      return "Bu sohbetin bulundu\u011fu kursta \xe7eviri yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015ft\u0131r.";
+      return "A ford\xedt\xe1si seg\xedts\xe9g kikapcsolva van az adott kurzushoz tartoz\xf3 cseveg\xe9sben.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Bu sohbetin bulundu\u011fu kursta dilbilgisi yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015ft\u0131r.";
+      return "A nyelvtani seg\xedts\xe9g kikapcsolva van az adott kurzushoz tartoz\xf3 cseveg\xe9sben.";
     },
     get$error405Title() {
-      return "Diller ayarlanmam\u0131\u015f";
+      return "Nyelvek nincsenek be\xe1ll\xedtva";
     },
     get$error405Desc() {
-      return "L\xfctfen Ana Men\xfc > \xd6\u011frenme Ayarlar\u0131'ndan dillerinizi ayarlay\u0131n.";
+      return "K\xe9rj\xfck, \xe1ll\xedtsa be nyelveit a F\u0151men\xfc > Tanul\xe1si Be\xe1ll\xedt\xe1sok men\xfcpontban.";
     },
     get$termsAndConditions() {
-      return "\u015eartlar ve Ko\u015fullar";
+      return "Felhaszn\xe1l\xe1si felt\xe9teleket";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " ve en az 16 ya\u015f\u0131nda oldu\u011fumu onayl\u0131yorum.";
+      return " \xe9s igazolom, hogy legal\xe1bb 16 \xe9ves vagyok.";
     },
     get$error502504Title() {
-      return "Vay can\u0131na, \xe7ok say\u0131da \xf6\u011frenci \xe7evrimi\xe7i!";
+      return "H\u0171ha, sok di\xe1k van online!";
     },
     get$error502504Desc() {
-      return "\xc7eviri ve dilbilgisi ara\xe7lar\u0131, Pangea botlar\u0131 g\xfcncellenirken yava\u015f veya kullan\u0131lamayabilir.";
+      return "A ford\xedt\xe1si \xe9s nyelvtani eszk\xf6z\xf6k lehetnek lass\xfaak vagy nem el\xe9rhet\u0151k, am\xedg a Pangea botok utol\xe9rik magukat.";
     },
     get$error404Title() {
-      return "\xc7eviri hatas\u0131!";
+      return "Ford\xedt\xe1si hiba!";
     },
     get$error404Desc() {
-      return "Pangea Bot bunun nas\u0131l \xe7evrilece\u011finden emin de\u011fil...";
+      return "A Pangea Bot nem biztos benne, hogyan ford\xedtsa ezt...";
     },
     get$errorPleaseRefresh() {
-      return "Bunu inceliyoruz! L\xfctfen sayfay\u0131 yeniden y\xfckleyin ve tekrar deneyin.";
+      return "Ellen\u0151rizz\xfck a probl\xe9m\xe1t! K\xe9rj\xfck, friss\xedtse az oldalt \xe9s pr\xf3b\xe1lja \xfajra.";
     },
     get$connectedToStaging() {
-      return "Test ortam\u0131na ba\u011fl\u0131";
+      return "Csatlakozva a Staginghez";
     },
     get$learningSettings() {
-      return "\xd6\u011frenme ayarlar\u0131";
+      return "Tanul\xe1si be\xe1ll\xedt\xe1sok";
     },
     get$participants() {
-      return "Kat\u0131l\u0131mc\u0131lar";
+      return "R\xe9sztvev\u0151k";
     },
     get$clickMessageTitle() {
-      return "Yard\u0131ma m\u0131 ihtiyac\u0131n\u0131z var?";
+      return "Seg\xedts\xe9gre van sz\xfcks\xe9ged?";
     },
     get$clickMessageBody() {
-      return "\xc7eviri, oynatma ve daha fazlas\u0131 gibi dil ara\xe7lar\u0131 i\xe7in bir mesaja t\u0131klay\u0131n!";
+      return "Kattints egy \xfczenetre nyelvi eszk\xf6z\xf6k\xe9rt, p\xe9ld\xe1ul ford\xedt\xe1s\xe9rt, visszaj\xe1tsz\xe1s\xe9rt \xe9s m\xe1s\xe9rt!";
     },
     get$allDone() {
-      return "Hepsi tamam!";
+      return "K\xe9sz!";
     },
     get$vocab() {
-      return "Kelimeler";
+      return "Sz\xf3kincs";
     },
     get$subscribe(_) {
-      return "Abone Ol";
+      return "Feliratkoz\xe1s";
     },
     get$getAccess() {
-      return "Hemen Abone Ol!";
+      return "Feliratkoz\xe1s most!";
     },
     get$subscriptionDesc() {
-      return "Mesajla\u015fma \xfccretsizdir! Etkile\u015fimli \xe7eviri, dilbilgisi kontrol\xfc ve \xf6\u011frenme analizlerini a\xe7mak i\xe7in abone olun.";
+      return "Az \xfczenetk\xfcld\xe9s ingyenes! Feliratkoz\xe1ssal hozz\xe1f\xe9r\xe9st kapsz az interakt\xedv ford\xedt\xe1shoz, nyelvtani ellen\u0151rz\xe9shez \xe9s tanul\xe1si elemz\xe9sekhez.";
     },
     get$subscriptionManagement() {
-      return "Abonelik Y\xf6netimi";
+      return "El\u0151fizet\xe9s kezel\xe9se";
     },
     get$currentSubscription() {
-      return "Mevcut Abonelik";
+      return "Jelenlegi el\u0151fizet\xe9s";
     },
     get$cancelSubscription() {
-      return "Aboneli\u011finizi \u0130ptal Edin";
+      return "El\u0151fizet\xe9s lemond\xe1sa";
     },
     get$selectYourPlan() {
-      return "Plan\u0131n\u0131z\u0131 Se\xe7in";
+      return "V\xe1lassza ki terv\xe9t";
     },
     get$subsciptionPlatformTooltip() {
-      return "L\xfctfen abonelik plan\u0131n\u0131z\u0131 y\xf6netmek i\xe7in orijinal cihaz\u0131n\u0131za giri\u015f yap\u0131n";
+      return "K\xe9rj\xfck, jelentkezzen be eredeti eszk\xf6z\xe9n az el\u0151fizet\xe9s kezel\xe9se \xe9rdek\xe9ben";
     },
     get$subscriptionManagementUnavailable() {
-      return "Abonelik y\xf6netimi kullan\u0131lam\u0131yor";
+      return "Az el\u0151fizet\xe9s kezel\xe9se nem el\xe9rhet\u0151";
     },
     get$paymentMethod() {
-      return "\xd6deme Y\xf6ntemi";
+      return "Fizet\xe9si m\xf3d";
     },
     get$paymentHistory() {
-      return "\xd6deme Ge\xe7mi\u015fi";
+      return "Fizet\xe9si el\u0151zm\xe9nyek";
     },
     get$emptyChatDownloadWarning() {
-      return "Bo\u015f sohbet indirilemez";
+      return "\xdcres besz\xe9lget\xe9s nem t\xf6lthet\u0151 le";
     },
     get$toggleImmersionMode() {
-      return "Dald\u0131rma Modu";
+      return "Mer\xfcl\xe9s m\xf3d";
     },
     get$toggleImmersionModeDesc() {
-      return "Etkinle\u015ftirildi\u011finde, t\xfcm mesajlar hedef dilinizde g\xf6sterilir. Bu ayar dil de\u011fi\u015fimleri i\xe7in en kullan\u0131\u015fl\u0131d\u0131r.";
+      return "Bekapcsolva minden \xfczenet a c\xe9lnyelven jelenik meg. Ez a be\xe1ll\xedt\xe1s k\xfcl\xf6n\xf6sen hasznos nyelvi csere sor\xe1n.";
     },
     get$itToggleDescription() {
-      return "Bu dil \xf6\u011frenme arac\u0131, temel dilinizdeki kelimeleri tan\u0131mlar ve onlar\u0131 hedef dilinize \xe7evirmenize yard\u0131mc\u0131 olur. Nadiren de olsa, yapay zeka \xe7eviri hatalar\u0131 yapabilir.";
+      return "Ez a nyelvtanul\xe1si eszk\xf6z felismeri a b\xe1zisnyelved szavait, \xe9s seg\xedt leford\xedtani azokat a c\xe9lnyelvedre. B\xe1r ritka, az AI hib\xe1zhat a ford\xedt\xe1sban.";
     },
     get$igcToggleDescription() {
-      return "Bu dil \xf6\u011frenme arac\u0131, mesaj\u0131n\u0131zdaki yayg\u0131n yaz\u0131m, dilbilgisi ve noktalama hatalar\u0131n\u0131 tan\u0131yacak ve d\xfczeltmeler \xf6nerecektir. Nadiren de olsa, yapay zeka d\xfczeltme hatalar\u0131 yapabilir.";
+      return "Ez a nyelvtanul\xe1si eszk\xf6z felismeri a gyakori helyes\xedr\xe1si, nyelvtani \xe9s \xedr\xe1sjelez\xe9si hib\xe1kat az \xfczenetedben, \xe9s javaslatokat tesz a jav\xedt\xe1sukra. B\xe1r ritka, az AI hib\xe1zhat a jav\xedt\xe1sokban.";
     },
     get$originalMessage() {
-      return "Orijinal Mesaj";
+      return "Eredeti \xfczenet";
     },
     get$sentMessage() {
-      return "G\xf6nderilen Mesaj";
+      return "K\xfcld\xf6tt \xfczenet";
     },
     get$useType() {
-      return "Kullan\u0131m T\xfcr\xfc";
+      return "Haszn\xe1lat t\xedpusa";
     },
     get$notAvailable() {
-      return "Mevcut De\u011fil";
+      return "Nem el\xe9rhet\u0151";
     },
     get$taAndGaTooltip() {
-      return "\xc7eviri yard\u0131m\u0131 ve dilbilgisi yard\u0131m\u0131 ile L2 kullan\u0131m\u0131";
+      return "L2 haszn\xe1lat ford\xedt\xe1si \xe9s nyelvtani seg\xedts\xe9ggel";
     },
     get$definitionsToolName() {
-      return "Kelime Tan\u0131mlar\u0131";
+      return "Sz\xf3defin\xedci\xf3k";
     },
     get$definitionsToolDescription() {
-      return "Etkinle\u015ftirildi\u011finde, mavi ile alt\u0131 \xe7izili kelimelere t\u0131klayarak tan\u0131mlar\u0131na ula\u015fabilirsiniz. Tan\u0131mlara eri\u015fmek i\xe7in mesajlara t\u0131klay\u0131n.";
+      return "Amikor be van kapcsolva, a k\xe9k sz\xednnel al\xe1h\xfazott szavakat kattint\xe1ssal lehet megtekinteni defin\xedci\xf3ikat. Kattints az \xfczenetekre a defin\xedci\xf3k el\xe9r\xe9s\xe9hez.";
     },
     get$welcomeBack() {
-      return "Tekrar ho\u015f geldiniz! 2023-2024 pilotunun bir par\xe7as\u0131ysan\u0131z, l\xfctfen \xf6zel pilot aboneli\u011finiz i\xe7in bizimle ileti\u015fime ge\xe7in. Bir \xf6\u011fretmen veya kurumunuzun s\u0131n\u0131f\u0131n\u0131z i\xe7in lisans sat\u0131n ald\u0131ysa, \xf6\u011fretmen aboneli\u011finiz i\xe7in bizimle ileti\u015fime ge\xe7in.";
+      return "\xdcdv\xf6zl\xfcnk vissza! Ha r\xe9szt vett\xe9l a 2023-2024-es pilot programban, k\xe9rj\xfck, vedd fel vel\xfcnk a kapcsolatot a k\xfcl\xf6nleges pilot el\u0151fizet\xe9sed\xe9rt. Ha te vagy az oktat\xf3, aki (vagy az int\xe9zm\xe9nyed) v\xe1s\xe1rolt licencet az oszt\xe1lyod sz\xe1m\xe1ra, k\xe9rj\xfck, vedd fel vel\xfcnk a kapcsolatot az oktat\xf3i el\u0151fizet\xe9sed\xe9rt.";
     },
     get$downloadTxtFile() {
-      return "Metin Dosyas\u0131 \u0130ndir";
+      return "Sz\xf6vegf\xe1jl let\xf6lt\xe9se";
     },
     get$downloadCSVFile() {
-      return "CSV Dosyas\u0131 \u0130ndir";
+      return "CSV f\xe1jl let\xf6lt\xe9se";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u015eu anda \xf6m\xfcr boyu promosyon aboneli\u011finiz var. Aboneli\u011finizi de\u011fi\u015ftirmek i\xe7in support@pangea.chat adresine mesaj g\xf6nderin.";
+      return "Jelenleg \xe9letre sz\xf3l\xf3 prom\xf3ci\xf3s el\u0151fizet\xe9sed van. Seg\xedts\xe9g\xe9rt \xedrj az support@pangea.chat c\xedmre az el\u0151fizet\xe9s m\xf3dos\xedt\xe1s\xe1hoz.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Abonelik " + purchasePlatform + " \xfczerinden sat\u0131n al\u0131nd\u0131";
+      return "El\u0151fizet\xe9s a " + purchasePlatform + " platformon v\xe1s\xe1rolva";
     },
     get$oneWeekTrial() {
-      return "Bir Haftal\u0131k Deneme";
+      return "Egynapos pr\xf3baverzi\xf3";
     },
     get$downloadXLSXFile() {
-      return "Excel Dosyas\u0131n\u0131 \u0130ndir";
+      return "Excel f\xe1jl let\xf6lt\xe9se";
     },
     get$unkDisplayName() {
-      return "Bilinmeyen";
+      return "Ismeretlen";
     },
     get$wwCountryDisplayName() {
-      return "D\xfcnya \xc7ap\u0131nda";
+      return "Vil\xe1gszerte";
     },
     get$afCountryDisplayName() {
-      return "Afganistan";
+      return "Afganiszt\xe1n";
     },
     get$axCountryDisplayName() {
-      return "Aland Adalar\u0131";
+      return "Aland-szigetek";
     },
     get$alCountryDisplayName() {
-      return "Arnavutluk";
+      return "Alb\xe1nia";
     },
     get$dzCountryDisplayName() {
-      return "Cezayir";
+      return "Alg\xe9ria";
     },
     get$asCountryDisplayName() {
-      return "Amerikan Samoas\u0131";
+      return "Amerikai Szamoa";
     },
     get$adCountryDisplayName() {
       return "Andorra";
@@ -1763,46 +1763,46 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "Antigua ve Barbuda";
+      return "Antigua \xe9s Barbuda";
     },
     get$arCountryDisplayName() {
-      return "Arjantin";
+      return "Argent\xedna";
     },
     get$amCountryDisplayName() {
-      return "Ermenistan";
+      return "\xd6rm\xe9nyorsz\xe1g";
     },
     get$awCountryDisplayName() {
       return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "Ascension Adas\u0131";
+      return "Ascension-sziget";
     },
     get$auCountryDisplayName() {
-      return "Avustralya";
+      return "Ausztr\xe1lia";
     },
     get$atCountryDisplayName() {
-      return "Avusturya";
+      return "Ausztria";
     },
     get$azCountryDisplayName() {
-      return "Azerbaycan";
+      return "Azerbajdzs\xe1n";
     },
     get$bsCountryDisplayName() {
-      return "Bahamalar";
+      return "Bahama-szigetek";
     },
     get$bhCountryDisplayName() {
-      return "Bahreyn";
+      return "Bahrein";
     },
     get$bdCountryDisplayName() {
-      return "Banglade\u015f";
+      return "Banglades";
     },
     get$bbCountryDisplayName() {
       return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "Belarus";
+      return "Feh\xe9roroszorsz\xe1g";
     },
     get$beCountryDisplayName() {
-      return "Bel\xe7ika";
+      return "Belgium";
     },
     get$bzCountryDisplayName() {
       return "Belize";
@@ -1814,31 +1814,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "Bhutan";
+      return "Bhut\xe1n";
     },
     get$boCountryDisplayName() {
-      return "Bolivya";
+      return "Bol\xedvia";
     },
     get$baCountryDisplayName() {
-      return "Bosna-Hersek";
+      return "Bosznia \xe9s Hercegovina";
     },
     get$bwCountryDisplayName() {
-      return "Botsvana";
+      return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "Brezilya";
+      return "Braz\xedlia";
     },
     get$ioCountryDisplayName() {
-      return "Britanya Hint Okyanusu Topra\u011f\u0131";
+      return "Brit Indiai \xd3ce\xe1n Ter\xfclete";
     },
     get$vgCountryDisplayName() {
-      return "Britanya Virgin Adalar\u0131";
+      return "Brit Virgin-szigetek";
     },
     get$bnCountryDisplayName() {
       return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "Bulgaristan";
+      return "Bulg\xe1ria";
     },
     get$bfCountryDisplayName() {
       return "Burkina Faso";
@@ -1847,7 +1847,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "Kambo\xe7ya";
+      return "Kambodzsa";
     },
     get$cmCountryDisplayName() {
       return "Kamerun";
@@ -1856,148 +1856,148 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kanada";
     },
     get$cvCountryDisplayName() {
-      return "Ye\u015fil Burun";
+      return "Z\xf6ld-foki-szigetek";
     },
     get$bqCountryDisplayName() {
-      return "Karayip Hollanda";
+      return "Karib Hollandia";
     },
     get$kyCountryDisplayName() {
-      return "Cayman Adalar\u0131";
+      return "Cayman-szigetek";
     },
     get$cfCountryDisplayName() {
-      return "Orta Afrika Cumhuriyeti";
+      return "K\xf6z\xe9p-afrikai K\xf6zt\xe1rsas\xe1g";
     },
     get$tdCountryDisplayName() {
-      return "\xc7ad";
+      return "Cs\xe1d";
     },
     get$clCountryDisplayName() {
-      return "\u015eili";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "\xc7in";
+      return "K\xedna";
     },
     get$cxCountryDisplayName() {
-      return "Noel Adas\u0131";
+      return "Kar\xe1csony-sziget";
     },
     get$ccCountryDisplayName() {
-      return "Cocos [Keeling] Adalar\u0131";
+      return "Kokos-szigetek [Keeling]";
     },
     get$coCountryDisplayName() {
-      return "Kolombiya";
+      return "Kolumbia";
     },
     get$kmCountryDisplayName() {
-      return "Komorlar";
+      return "Comore-szigetek";
     },
     get$cdCountryDisplayName() {
-      return "Kongo Demokratik Cumhuriyeti";
+      return "Kong\xf3i Demokratikus K\xf6zt\xe1rsas\xe1g";
     },
     get$cgCountryDisplayName() {
-      return "Kongo Cumhuriyeti";
+      return "Kong\xf3i K\xf6zt\xe1rsas\xe1g";
     },
     get$ckCountryDisplayName() {
-      return "Cook Adalar\u0131";
+      return "Cook-szigetek";
     },
     get$crCountryDisplayName() {
-      return "Kosta Rika";
+      return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "Fildi\u015fi Sahili";
+      return "Elef\xe1ntcsontpart";
     },
     get$hrCountryDisplayName() {
-      return "H\u0131rvatistan";
+      return "Horv\xe1torsz\xe1g";
     },
     get$cuCountryDisplayName() {
-      return "K\xfcba";
+      return "Kuba";
     },
     get$cwCountryDisplayName() {
       return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "K\u0131br\u0131s";
+      return "Ciprus";
     },
     get$czCountryDisplayName() {
-      return "\xc7ekya";
+      return "Csehorsz\xe1g";
     },
     get$dkCountryDisplayName() {
-      return "Danimarka";
+      return "D\xe1nia";
     },
     get$djCountryDisplayName() {
-      return "Cibuti";
+      return "Dzsibuti";
     },
     get$dmCountryDisplayName() {
       return "Dominika";
     },
     get$doCountryDisplayName() {
-      return "Dominik Cumhuriyeti";
+      return "Dominikai K\xf6zt\xe1rsas\xe1g";
     },
     get$tlCountryDisplayName() {
-      return "Do\u011fu Timor";
+      return "Kelet-Timor";
     },
     get$ecCountryDisplayName() {
-      return "Ekvador";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "M\u0131s\u0131r";
+      return "Egyiptom";
     },
     get$svCountryDisplayName() {
       return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "Ekvator Ginesi";
+      return "Egyenl\xedt\u0151i Guinea";
     },
     get$erCountryDisplayName() {
-      return "Eritre";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "Estonya";
+      return "\xc9sztorsz\xe1g";
     },
     get$szCountryDisplayName() {
-      return "Esvatini";
+      return "Szv\xe1zif\xf6ld";
     },
     get$etCountryDisplayName() {
-      return "Etiyopya";
+      return "Eti\xf3pia";
     },
     get$fkCountryDisplayName() {
-      return "Falkland Adalar\u0131";
+      return "Falkland-szigetek";
     },
     get$foCountryDisplayName() {
-      return "Faroe Adalar\u0131";
+      return "Fer\xf6er-szigetek";
     },
     get$fjCountryDisplayName() {
-      return "Fiji";
+      return "Fidzsi-szigetek";
     },
     get$fiCountryDisplayName() {
-      return "Finlandiya";
+      return "Finnorsz\xe1g";
     },
     get$frCountryDisplayName() {
-      return "Fransa";
+      return "Franciaorsz\xe1g";
     },
     get$gfCountryDisplayName() {
-      return "Frans\u0131z Guyanas\u0131";
+      return "Francia Guyana";
     },
     get$pfCountryDisplayName() {
-      return "Frans\u0131z Polinezyas\u0131";
+      return "Francia Polin\xe9zia";
     },
     get$gaCountryDisplayName() {
       return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "Gambiya";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "G\xfcrcistan";
+      return "Gr\xfazia";
     },
     get$deCountryDisplayName() {
-      return "Almanya";
+      return "N\xe9metorsz\xe1g";
     },
     get$ghCountryDisplayName() {
-      return "Gana";
+      return "Gh\xe1na";
     },
     get$giCountryDisplayName() {
-      return "Cebelitar\u0131k";
+      return "Gibralt\xe1r";
     },
     get$grCountryDisplayName() {
-      return "Yunanistan";
+      return "G\xf6r\xf6gorsz\xe1g";
     },
     get$glCountryDisplayName() {
       return "Gr\xf6nland";
@@ -2018,10 +2018,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "Gine";
+      return "Guinea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "Gine-Bissau";
+      return "Guinea-Bissau";
     },
     get$gyCountryDisplayName() {
       return "Guyana";
@@ -2030,58 +2030,58 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "Heard Adas\u0131 ve McDonald Adalar\u0131";
+      return "Heard-sziget \xe9s McDonald-szigetek";
     },
     get$hnCountryDisplayName() {
       return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "Hong Kong";
+      return "Hongkong";
     },
     get$huCountryDisplayName() {
-      return "Macaristan";
+      return "Magyarorsz\xe1g";
     },
     get$isCountryDisplayName() {
-      return "\u0130zlanda";
+      return "Izland";
     },
     get$inCountryDisplayName() {
-      return "Hindistan";
+      return "India";
     },
     get$idCountryDisplayName() {
-      return "Endonezya";
+      return "Indon\xe9zia";
     },
     get$irCountryDisplayName() {
-      return "\u0130ran";
+      return "Ir\xe1n";
     },
     get$iqCountryDisplayName() {
       return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "\u0130rlanda";
+      return "\xcdrorsz\xe1g";
     },
     get$imCountryDisplayName() {
-      return "Man Adas\u0131";
+      return "Man-sziget";
     },
     get$ilCountryDisplayName() {
-      return "\u0130srail";
+      return "Izrael";
     },
     get$itCountryDisplayName() {
-      return "\u0130talya";
+      return "Olaszorsz\xe1g";
     },
     get$jmCountryDisplayName() {
-      return "Jamaika";
+      return "Jamaica";
     },
     get$jpCountryDisplayName() {
-      return "Japonya";
+      return "Jap\xe1n";
     },
     get$jeCountryDisplayName() {
       return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "\xdcrd\xfcn";
+      return "Jord\xe1nia";
     },
     get$kzCountryDisplayName() {
-      return "Kazakistan";
+      return "Kazahszt\xe1n";
     },
     get$keCountryDisplayName() {
       return "Kenya";
@@ -2090,73 +2090,73 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "Kosova";
+      return "Koszov\xf3";
     },
     get$kwCountryDisplayName() {
-      return "Kuveyt";
+      return "Kuvait";
     },
     get$kgCountryDisplayName() {
-      return "K\u0131rg\u0131zistan";
+      return "Kirgiziszt\xe1n";
     },
     get$laCountryDisplayName() {
       return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "Letonya";
+      return "Lettorsz\xe1g";
     },
     get$lbCountryDisplayName() {
-      return "L\xfcbnan";
+      return "Libanon";
     },
     get$lsCountryDisplayName() {
-      return "Lesoto";
+      return "Lesotho";
     },
     get$lrCountryDisplayName() {
-      return "Liberya";
+      return "Lib\xe9ria";
     },
     get$lyCountryDisplayName() {
-      return "Libya";
+      return "L\xedbia";
     },
     get$liCountryDisplayName() {
-      return "Lihten\u015ftayn";
+      return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "Litvanya";
+      return "Litv\xe1nia";
     },
     get$luCountryDisplayName() {
-      return "L\xfcksemburg";
+      return "Luxemburg";
     },
     get$moCountryDisplayName() {
-      return "Makao";
+      return "Maka\xf3";
     },
     get$mkCountryDisplayName() {
-      return "Makedonya";
+      return "Maced\xf3nia";
     },
     get$mgCountryDisplayName() {
-      return "Madagaskar";
+      return "Madagaszk\xe1r";
     },
     get$mwCountryDisplayName() {
-      return "Malavi";
+      return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "Malezya";
+      return "Malajzia";
     },
     get$mvCountryDisplayName() {
-      return "Maldivler";
+      return "Maldiv-szigetek";
     },
     get$mlCountryDisplayName() {
       return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "Malta";
+      return "M\xe1lta";
     },
     get$mhCountryDisplayName() {
-      return "Mar\u015fal Adalar\u0131";
+      return "Marshall-szigetek";
     },
     get$mqCountryDisplayName() {
       return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "Moritanya";
+      return "Maurit\xe1nia";
     },
     get$muCountryDisplayName() {
       return "Mauritius";
@@ -2165,28 +2165,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "Meksika";
+      return "Mexik\xf3";
     },
     get$fmCountryDisplayName() {
-      return "Mikronezya";
+      return "Mikron\xe9zia";
     },
     get$mdCountryDisplayName() {
       return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "Monako";
+      return "Monaco";
     },
     get$mnCountryDisplayName() {
-      return "Mo\u011folistan";
+      return "Mong\xf3lia";
     },
     get$meCountryDisplayName() {
-      return "Karada\u011f";
+      return "Montenegr\xf3";
     },
     get$msCountryDisplayName() {
       return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "Fas";
+      return "Marokk\xf3";
     },
     get$mzCountryDisplayName() {
       return "Mozambik";
@@ -2195,64 +2195,64 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return "Namibya";
+      return "Nam\xedbia";
     },
     get$nrCountryDisplayName() {
       return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "Nepal";
+      return "Nep\xe1l";
     },
     get$nlCountryDisplayName() {
-      return "Hollanda";
+      return "Hollandia";
     },
     get$ncCountryDisplayName() {
-      return "Yeni Kaledonya";
+      return "\xdaj-Kaled\xf3nia";
     },
     get$nzCountryDisplayName() {
-      return "Yeni Zelanda";
+      return "\xdaj-Z\xe9land";
     },
     get$niCountryDisplayName() {
-      return "Nikaragua";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "Nijer";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "Nijerya";
+      return "Nig\xe9ria";
     },
     get$nuCountryDisplayName() {
       return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "Norfolk Adas\u0131";
+      return "Norfolk-sziget";
     },
     get$kpCountryDisplayName() {
-      return "Kuzey Kore";
+      return "\xc9szak-Korea";
     },
     get$mpCountryDisplayName() {
-      return "Kuzey Mariana Adalar\u0131";
+      return "\xc9szaki-Mariana-szigetek";
     },
     get$noCountryDisplayName() {
-      return "Norve\xe7";
+      return "Norv\xe9gia";
     },
     get$omCountryDisplayName() {
-      return "Umman";
+      return "Om\xe1n";
     },
     get$pkCountryDisplayName() {
-      return "Pakistan";
+      return "Pakiszt\xe1n";
     },
     get$pwCountryDisplayName() {
       return "Palau";
     },
     get$psCountryDisplayName() {
-      return "Filistin B\xf6lgeleri";
+      return "Palesztin Ter\xfcletek";
     },
     get$paCountryDisplayName() {
       return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "Papua Yeni Gine";
+      return "Papua \xdaj-Guinea";
     },
     get$pyCountryDisplayName() {
       return "Paraguay";
@@ -2261,28 +2261,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Peru";
     },
     get$phCountryDisplayName() {
-      return "Filipinler";
+      return "F\xfcl\xf6p-szigetek";
     },
     get$plCountryDisplayName() {
-      return "Polonya";
+      return "Lengyelorsz\xe1g";
     },
     get$ptCountryDisplayName() {
-      return "Portekiz";
+      return "Portug\xe1lia";
     },
     get$prCountryDisplayName() {
-      return "Porto Riko";
+      return "Puerto Rico";
     },
     get$qaCountryDisplayName() {
-      return "Katar";
+      return "Kat\xe1r";
     },
     get$reCountryDisplayName() {
       return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "Romanya";
+      return "Rom\xe1nia";
     },
     get$ruCountryDisplayName() {
-      return "Rusya";
+      return "Oroszorsz\xe1g";
     },
     get$rwCountryDisplayName() {
       return "Ruanda";
@@ -2303,100 +2303,100 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "Saint Pierre ve Miquelon";
+      return "Saint Pierre \xe9s Miquelon";
     },
     get$vcCountryDisplayName() {
       return "St. Vincent";
     },
     get$wsCountryDisplayName() {
-      return "Samoa";
+      return "Szamoa";
     },
     get$smCountryDisplayName() {
       return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "Sao Tome ve Pr\xedncipe";
+      return "S\xe3o Tom\xe9 \xe9s Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "Suudi Arabistan";
+      return "Sza\xfad-Ar\xe1bia";
     },
     get$snCountryDisplayName() {
-      return "Senegal";
+      return "Szeneg\xe1l";
     },
     get$rsCountryDisplayName() {
-      return "S\u0131rbistan";
+      return "Szerbia";
     },
     get$scCountryDisplayName() {
-      return "Sey\u015feller";
+      return "Seychelle-szigetek";
     },
     get$slCountryDisplayName() {
       return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "Singapur";
+      return "Szingap\xfar";
     },
     get$sxCountryDisplayName() {
       return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "Slovakya";
+      return "Szlov\xe1kia";
     },
     get$siCountryDisplayName() {
-      return "Slovenya";
+      return "Szlov\xe9nia";
     },
     get$sbCountryDisplayName() {
-      return "Solomon Adalar\u0131";
+      return "Salamon-szigetek";
     },
     get$soCountryDisplayName() {
-      return "Somali";
+      return "Szom\xe1lia";
     },
     get$zaCountryDisplayName() {
-      return "G\xfcney Afrika";
+      return "D\xe9l-Afrika";
     },
     get$gsCountryDisplayName() {
-      return "G\xfcney Georgia ve G\xfcney Sandwich Adalar\u0131";
+      return "D\xe9l-Georgia \xe9s a D\xe9li-Sandwich-szigetek";
     },
     get$krCountryDisplayName() {
-      return "G\xfcney Kore";
+      return "D\xe9l-Korea";
     },
     get$ssCountryDisplayName() {
-      return "G\xfcney Sudan";
+      return "D\xe9l-Szud\xe1n";
     },
     get$esCountryDisplayName() {
-      return "\u0130spanya";
+      return "Spanyolorsz\xe1g";
     },
     get$lkCountryDisplayName() {
-      return "Sri Lanka";
+      return "Sr\xed Lanka";
     },
     get$sdCountryDisplayName() {
-      return "Sudan";
+      return "Szud\xe1n";
     },
     get$srCountryDisplayName() {
-      return "Surinam";
+      return "Suriname";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard ve Jan Mayen";
+      return "Svalbard \xe9s Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u0130sve\xe7";
+      return "Sv\xe9dorsz\xe1g";
     },
     get$chCountryDisplayName() {
-      return "\u0130svi\xe7re";
+      return "Sv\xe1jc";
     },
     get$syCountryDisplayName() {
-      return "Suriye";
+      return "Sz\xedria";
     },
     get$twCountryDisplayName() {
-      return "Tayvan";
+      return "Tajvan";
     },
     get$tjCountryDisplayName() {
-      return "Tacikistan";
+      return "T\xe1dzsikiszt\xe1n";
     },
     get$tzCountryDisplayName() {
-      return "Tanzanya";
+      return "Tanz\xe1nia";
     },
     get$thCountryDisplayName() {
-      return "Tayland";
+      return "Thaif\xf6ld";
     },
     get$tgCountryDisplayName() {
       return "Togo";
@@ -2411,49 +2411,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "Tunus";
+      return "Tun\xe9zia";
     },
     get$trCountryDisplayName() {
-      return "T\xfcrkiye";
+      return "T\xf6r\xf6korsz\xe1g";
     },
     get$tmCountryDisplayName() {
-      return "T\xfcrkmenistan";
+      return "T\xfcrkmeniszt\xe1n";
     },
     get$tcCountryDisplayName() {
-      return "Turks ve Caicos Adalar\u0131";
+      return "Turks- \xe9s Caicos-szigetek";
     },
     get$tvCountryDisplayName() {
       return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "Amerika Birle\u015fik Devletleri Virgin Adalar\u0131";
+      return "Amerikai Virgin-szigetek";
     },
     get$ugCountryDisplayName() {
       return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "Ukrayna";
+      return "Ukrajna";
     },
     get$aeCountryDisplayName() {
-      return "Birle\u015fik Arap Emirlikleri";
+      return "Egyes\xfclt Arab Em\xedrs\xe9gek";
     },
     get$gbCountryDisplayName() {
-      return "Birle\u015fik Krall\u0131k";
+      return "Egyes\xfclt Kir\xe1lys\xe1g";
     },
     get$usCountryDisplayName() {
-      return "Amerika Birle\u015fik Devletleri";
+      return "Egyes\xfclt \xc1llamok";
     },
     get$uyCountryDisplayName() {
       return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "\xd6zbekistan";
+      return "Usbekiszt\xe1n";
     },
     get$vuCountryDisplayName() {
       return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "Vatikan";
+      return "Vatik\xe1nv\xe1ros";
     },
     get$veCountryDisplayName() {
       return "Venezuela";
@@ -2462,1255 +2462,1255 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "Wallis ve Futuna";
+      return "Wallis \xe9s Futuna";
     },
     get$ehCountryDisplayName() {
-      return "Bat\u0131 Sahara";
+      return "Nyugat-Szahara";
     },
     get$yeCountryDisplayName() {
-      return "Yemen";
+      return "Jemen";
     },
     get$zmCountryDisplayName() {
-      return "Zambiya";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabve";
+      return "Zimbabwe";
     },
     get$pay() {
-      return "\xd6deme";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " sizi " + space + " adl\u0131 kursa kat\u0131lmaya davet etti! Kabul etmek istiyor musunuz?";
+      return user + " megh\xedvott, hogy csatlakozzon egy kurzushoz: " + space + "! Elfogadod?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 Davet edildiniz!";
+      return "\ud83d\udce9 Megh\xedvtak!";
     },
     invitedToChat$2($name, user) {
-      return user + " sizi " + $name + " adl\u0131 sohbete kat\u0131lmaya davet etti! Kabul etmek istiyor musunuz?";
+      return user + " megh\xedvott, hogy csatlakozzon egy besz\xe9lget\xe9shez: " + $name + "! Elfogadod?";
     },
     get$monthlySubscription() {
-      return "Ayl\u0131k";
+      return "Havi";
     },
     get$yearlySubscription() {
-      return "Y\u0131ll\u0131k";
+      return "\xc9ves";
     },
     get$defaultSubscription() {
-      return "Pangea Sohbet Aboneli\u011fi";
+      return "Pangea Chat El\u0151fizet\xe9s";
     },
     get$freeTrial() {
-      return "\xdccretsiz Deneme";
+      return "Ingyenes pr\xf3baverzi\xf3";
     },
     get$noDataFound() {
-      return "Veri bulunamad\u0131";
+      return "Nincs adat";
     },
     get$bestCorrectionFeedback() {
-      return "Do\u011fru!";
+      return "Ez helyes!";
     },
     get$distractorFeedback() {
-      return "Bu pek do\u011fru de\u011fil.";
+      return "Ez nem eg\xe9szen helyes.";
     },
     get$bestAnswerFeedback() {
-      return "Do\u011fru!";
+      return "Ez helyes!";
     },
     get$definitionDefaultPrompt() {
-      return "Bu kelimenin anlam\u0131 nedir?";
+      return "Mit jelent ez a sz\xf3?";
     },
     get$practiceDefaultPrompt() {
-      return "En iyi cevap nedir?";
+      return "Mi a legjobb v\xe1lasz?";
     },
     get$correctionDefaultPrompt() {
-      return "En iyi yerine koyma nedir?";
+      return "Mi a legjobb helyettes\xedt\xe9s?";
     },
     get$reportToTeacher() {
-      return "Bu mesaj\u0131 kime bildirmek istiyorsunuz?";
+      return "Kinek szeretn\xe9d jelenteni az \xfczenetet?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " kullan\u0131c\u0131s\u0131, " + roomName + " sohbetinde " + reportedUserId + " kullan\u0131c\u0131s\u0131n\u0131n mesaj\u0131n\u0131 bildirdi";
+      return reportingUserId + " jelentett egy \xfczenetet a(z) " + reportedUserId + " felhaszn\xe1l\xf3t\xf3l a(z) " + roomName + " csoportban";
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Mesaj: " + reportedMessage + "\nNeden: " + reason;
+      return "\xdczenet: " + reportedMessage + "\nOk: " + reason;
     },
     get$noTeachersFound() {
-      return "Bildirilmek \xfczere \xf6\u011fretmen bulunamad\u0131";
+      return "Nincs tan\xe1r, akinek jelenthetn\xe9l";
     },
     trialExpiration$1(expiration) {
-      return "\xdccretsiz deneme s\xfcreniz " + expiration + " tarihinde sona eriyor";
+      return "Az ingyenes pr\xf3b\xe1lkoz\xe1sod lej\xe1r " + expiration;
     },
     get$freeTrialDesc() {
-      return "Yeni kullan\u0131c\u0131lar Pangea Chat'te bir hafta \xfccretsiz deneme s\xfcresi kazan\u0131r";
+      return "\xdaj felhaszn\xe1l\xf3k egy hetes ingyenes pr\xf3b\xe1t kapnak a Pangea Chat alkalmaz\xe1shoz";
     },
     get$activateTrial() {
-      return "\xdccretsiz 7 G\xfcnl\xfck Deneme";
+      return "Ingyenes 7 napos pr\xf3ba";
     },
     get$successfullySubscribed() {
-      return "Ba\u015far\u0131yla abone oldunuz!";
+      return "Sikeresen feliratkozt\xe1l!";
     },
     get$clickToManageSubscription() {
-      return "Aboneli\u011finizi y\xf6netmek i\xe7in buraya t\u0131klay\u0131n.";
+      return "Kattints ide a feliratkoz\xe1s kezel\xe9se \xe9rdek\xe9ben.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "L\xfctfen en az " + min + " karakter se\xe7in.";
+      return "K\xe9rj\xfck, v\xe1lassz legal\xe1bb " + min + " karaktert.";
     },
     get$pleaseEnterValidEmail() {
-      return "L\xfctfen ge\xe7erli bir e-posta adresi girin.";
+      return "K\xe9rj\xfck, adj meg egy \xe9rv\xe9nyes e-mail c\xedmet.";
     },
     get$pleaseChooseAUsername() {
-      return "L\xfctfen bir kullan\u0131c\u0131 ad\u0131 se\xe7in";
+      return "K\xe9rj\xfck, v\xe1lassz felhaszn\xe1l\xf3nevet";
     },
     get$listen() {
-      return "Dinle";
+      return "Hallgasd meg";
     },
     get$trialPeriodExpired() {
-      return "Deneme s\xfcreniz sona erdi";
+      return "A pr\xf3baverzi\xf3d lej\xe1rt";
     },
     get$subscribedToUnlockTools() {
-      return "Etkile\u015fimli \xe7eviri ve dilbilgisi kontrol\xfc, ses oynatma, ki\u015fiselle\u015ftirilmi\u015f pratik aktiviteleri ve \xf6\u011frenme analizlerini a\xe7mak i\xe7in abone olun!";
+      return "Feliratkoz\xe1s az interakt\xedv ford\xedt\xe1s \xe9s nyelvtani ellen\u0151rz\xe9s, hang lej\xe1tsz\xe1s, szem\xe9lyre szabott gyakorlati tev\xe9kenys\xe9gek \xe9s tanul\xe1si elemz\xe9sek felold\xe1s\xe1hoz!";
     },
     get$translationTooltip() {
-      return "\xc7eviri";
+      return "Ford\xedt\xe1s";
     },
     get$speechToTextTooltip() {
-      return "Transkript";
+      return "\xc1tirat";
     },
     get$kickBotWarning() {
-      return "Pangea Bot'u uzakla\u015ft\u0131rmak bu sohbetteki sohbet botunu kald\u0131racakt\u0131r.";
+      return "A Pangea Bot kir\xfag\xe1sa elt\xe1vol\xedtja a besz\xe9lget\xe9si botot ebb\u0151l a cseveg\xe9sb\u0151l.";
     },
     get$refresh(_) {
-      return "Yenile";
+      return "\xdajrat\xf6lt\xe9s";
     },
     get$updatePhoneOS() {
-      return "Cihaz\u0131n\u0131z\u0131n i\u015fletim sistemi s\xfcr\xfcm\xfcn\xfc g\xfcncellemeniz gerekebilir.";
+      return "El\u0151fordulhat, hogy friss\xedtenie kell az eszk\xf6z oper\xe1ci\xf3s rendszer\xe9t.";
     },
     get$autoIGCToolName() {
-      return "Pangea yazma yard\u0131m\u0131n\u0131 otomatik \xe7al\u0131\u015ft\u0131r";
+      return "A Pangea \xedr\xe1sseg\xe9d automatikus futtat\xe1sa";
     },
     get$autoIGCToolDescription() {
-      return "Mesaj\u0131m\u0131 g\xf6ndermeden \xf6nce Pangea Sohbet dilbilgisi ve \xe7eviri yazma yard\u0131m\u0131n\u0131 otomatik olarak \xe7al\u0131\u015ft\u0131r.";
+      return "Automatikusan futtassa a Pangea Chat nyelvtani \xe9s ford\xedt\xe1si \xedr\xe1sseg\xe9det az \xfczenetem k\xfcld\xe9se el\u0151tt.";
     },
     get$chatCapacity() {
-      return "Sohbet kapasitesi";
+      return "Cseveg\xe9si kapacit\xe1s";
     },
     get$roomFull() {
-      return "Bu oda zaten kapasiteye ula\u015fm\u0131\u015f durumda.";
+      return "Ez a szoba m\xe1r megtelt.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Sohbet kapasitesi de\u011fi\u015ftirildi";
+      return "A cseveg\xe9si kapacit\xe1s megv\xe1ltozott";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Sohbet kapasitesi en az " + count + " olmal\u0131d\u0131r.";
+      return "A cseveg\xe9si kapacit\xe1snak legal\xe1bb " + count + " kell legyen.";
     },
     get$chatCapacityExplanation() {
-      return "Sohbet kapasitesi, bir sohbette izin verilen \xfcye say\u0131s\u0131n\u0131 s\u0131n\u0131rlar.";
+      return "A cseveg\xe9si kapacit\xe1s korl\xe1tozza a cseveg\xe9sben r\xe9szt vev\u0151 tagok sz\xe1m\xe1t.";
     },
     get$enterNumber() {
-      return "L\xfctfen tam say\u0131 de\u011feri girin.";
+      return "K\xe9rj\xfck, \xedrjon be egy eg\xe9sz sz\xe1m \xe9rt\xe9ket.";
     },
     get$buildTranslation() {
-      return "Yukar\u0131daki se\xe7eneklerden \xe7evirinizi olu\u015fturun";
+      return "\xc9p\xedtse fel ford\xedt\xe1s\xe1t a fenti lehet\u0151s\xe9gek alapj\xe1n";
     },
     get$practice() {
-      return "Pratik yap";
+      return "Gyakorlat";
     },
     get$noLanguagesSet() {
-      return "Dil ayar\u0131 yap\u0131lmam\u0131\u015f";
+      return "Nincs be\xe1ll\xedtott nyelv";
     },
     get$speechToTextBody() {
-      return "Sesli mesajlar i\xe7in, hem transkripti g\xf6rebilir hem de konu\u015fmac\u0131n\u0131n Dakika Ba\u015f\u0131na Kelime (WPM) puan\u0131n\u0131 g\xf6rebilirsiniz.";
+      return "Hang\xfczenetek eset\xe9n l\xe1that\xf3 egy \xe1tirat, valamint a besz\xe9l\u0151 Szavak Per Perc (WPM) pontsz\xe1ma.";
     },
     get$versionNotFound() {
-      return "S\xfcr\xfcm Bulunamad\u0131";
+      return "Verzi\xf3 nem tal\xe1lhat\xf3";
     },
     get$fetchingVersion() {
-      return "S\xfcr\xfcm al\u0131nmaya \xe7al\u0131\u015f\u0131l\u0131yor...";
+      return "Verzi\xf3 lek\xe9r\xe9se...";
     },
     get$versionFetchError() {
-      return "S\xfcr\xfcm al\u0131n\u0131rken hata olu\u015ftu";
+      return "Hiba a verzi\xf3 lek\xe9r\xe9sekor";
     },
     versionText$2(version, buildNumber) {
-      return "S\xfcr\xfcm: " + version + "+" + buildNumber;
+      return "Verzi\xf3: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Temel dilinizdeki mesajlar \xe7evrilmeyecektir.";
+      return "Az alapnyelveden \xedrt \xfczenetek nem lesznek ford\xedtva.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Aktif bir aboneli\u011finiz var";
+      return "Akt\xedv el\u0151fizet\xe9sed van";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Hesab\u0131n\u0131z\u0131 silmek aboneli\u011finizi otomatik olarak iptal etmez.";
+      return "Fi\xf3kod t\xf6rl\xe9se nem t\xf6rli automatikusan az el\u0151fizet\xe9sedet.";
     },
     get$manageSubscription() {
-      return "Aboneli\u011fi Y\xf6net";
+      return "El\u0151fizet\xe9s kezel\xe9se";
     },
     get$error520Title() {
-      return "L\xfctfen tekrar deneyin.";
+      return "K\xe9rj\xfck, pr\xf3b\xe1ld \xfajra.";
     },
     get$error520Desc() {
-      return "\xdczg\xfcn\xfcz, mesaj\u0131n\u0131z\u0131 anlayamad\u0131k...";
+      return "Sajn\xe1ljuk, nem \xe9rtett\xfck \xfczenetedet...";
     },
     get$level(_) {
-      return "Seviye";
+      return "Szint";
     },
     get$translationChoicesBody() {
-      return "\u0130pucu almak i\xe7in bir se\xe7ene\u011fe t\u0131klay\u0131n ve bas\u0131l\u0131 tutun.";
+      return "Kattintson \xe9s tartsa lenyomva a lehet\u0151s\xe9get egy tipp\xe9rt.";
     },
     get$grammar() {
-      return "Dilbilgisi";
+      return "Nyelvtan";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u0130leti\u015fim sohbete davet edildi";
+      return "A kapcsolatot megh\xedvt\xe1k a cseveg\xe9sbe";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Sohbet Davet Et";
+      return "\ud83d\udce8 Cseveg\xe9s megh\xedv\xe1sa";
     },
     get$chatName() {
-      return "Sohbet Ad\u0131";
+      return "Cseveg\xe9s neve";
     },
     get$l2SupportNa() {
-      return "Mevcut De\u011fil";
+      return "Nem el\xe9rhet\u0151";
     },
     get$l2SupportAlpha() {
       return "Alfa";
     },
     get$l2SupportBeta() {
-      return "Beta";
+      return "B\xe9ta";
     },
     get$l2SupportFull() {
-      return "Tam";
+      return "Teljes";
     },
     get$playAudio() {
-      return "\xc7al";
+      return "Lej\xe1tsz\xe1s";
     },
     get$stop(_) {
-      return "Durdur";
+      return "Sz\xfcnet";
     },
     get$grammarCopyPOSsconj() {
-      return "Ba\u011fla\xe7";
+      return "F\xfcgg\u0151 k\xf6t\u0151sz\xf3";
     },
     get$grammarCopyPOSnum() {
-      return "Say\u0131";
+      return "Sz\xe1m";
     },
     get$grammarCopyPOSverb() {
-      return "Fiil";
+      return "Ige";
     },
     get$grammarCopyPOSaffix() {
-      return "Eki";
+      return "Affixum";
     },
     get$grammarCopyPOSpart() {
-      return "Par\xe7ac\u0131k";
+      return "R\xe9szecske";
     },
     get$grammarCopyPOSadj() {
-      return "S\u0131fat";
+      return "Mell\xe9kn\xe9v";
     },
     get$grammarCopyPOScconj() {
-      return "Koordinat Ba\u011flac\u0131";
+      return "Koordin\xe1l\xf3 k\xf6t\u0151sz\xf3";
     },
     get$grammarCopyPOSpunct() {
-      return "Noktalama \u0130\u015fareti";
+      return "\xcdr\xe1sjel";
     },
     get$grammarCopyPOSadv() {
-      return "Zarf";
+      return "Hat\xe1roz\xf3sz\xf3";
     },
     get$grammarCopyPOSaux() {
-      return "Yard\u0131mc\u0131";
+      return "Seg\xe9dige";
     },
     get$grammarCopyPOSspace() {
-      return "Bo\u015fluk";
+      return "Sz\xf3k\xf6z";
     },
     get$grammarCopyPOSsym() {
-      return "Sembol";
+      return "Szimb\xf3lum";
     },
     get$grammarCopyPOSdet() {
-      return "Belirleyici";
+      return "Hat\xe1rozott n\xe9vel\u0151";
     },
     get$grammarCopyPOSpron() {
-      return "Zamir";
+      return "N\xe9vm\xe1s";
     },
     get$grammarCopyPOSadp() {
-      return "Edat";
+      return "El\xf6lj\xe1r\xf3sz\xf3";
     },
     get$grammarCopyPOSpropn() {
-      return "\xd6zel \u0130sim";
+      return "Tulajdonn\xe9v";
     },
     get$grammarCopyPOSnoun() {
-      return "\u0130sim";
+      return "F\u0151n\xe9v";
     },
     get$grammarCopyPOSintj() {
-      return "\xdcnlem";
+      return "Interjekci\xf3";
     },
     get$grammarCopyPOSx() {
-      return "Di\u011fer";
+      return "Egy\xe9b";
     },
     get$grammarCopyGENDERfem() {
-      return "Kad\u0131n";
+      return "N\u0151nem";
     },
     get$grammarCopyPERSON2() {
-      return "\u0130kinci Ki\u015fi";
+      return "M\xe1sodik szem\xe9ly";
     },
     get$grammarCopyMOODimp() {
-      return "Emir Kipi";
+      return "Felsz\xf3l\xedt\xf3 m\xf3d";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Soru";
+      return "K\xe9rd\xe9s";
     },
     get$grammarCopyASPECTperf() {
-      return "M\xfckemmel";
+      return "Befejezett";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u0130lgi, Y\xfckleme";
+      return "T\xe1rgyeset, Alanyeset";
     },
     get$grammarCopyCASEobl() {
-      return "D\xfczenli";
+      return "Esetlen";
     },
     get$grammarCopyVOICEact() {
-      return "Etkin";
+      return "Akt\xedv";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "K\xf6\u015feli Parantez";
+      return "Z\xe1r\xf3jel";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Makale";
+      return "Hat\xe1rozott n\xe9vel\u0151";
     },
     get$grammarCopyNUMBERsing() {
-      return "Tekil";
+      return "Egysz\xe1m";
     },
     get$grammarCopyGENDERmasc() {
-      return "Erkek";
+      return "H\xedmnem";
     },
     get$grammarCopyVERBTYPEmod() {
       return "Modal";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Zarfl\u0131";
+      return "Hat\xe1roz\xf3sz\xf3";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifrik";
+      return "Perifrastikus";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Rakam";
+      return "Sz\xe1mjegy";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\xd6zel Olmayan";
+      return "Nem tulajdonn\xe9v";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Say\u0131";
+      return "Sz\xe1ml\xe1l\xf3";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\xd6zel";
+      return "Tulajdonn\xe9v";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "K\u0131sa \xc7izgi";
+      return "K\xf6t\u0151jel";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Evet";
+      return "Igen";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Noktal\u0131 Virg\xfcl";
+      return "Pontsor";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Virg\xfcl";
+      return "Vessz\u0151";
     },
     get$grammarCopyMOODcnd() {
-      return "Ko\u015ful";
+      return "Felt\xe9teles m\xf3d";
     },
     get$grammarCopyCASEacc() {
-      return "Y\xfckleme";
+      return "T\xe1rgyeset";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u0130kincil";
+      return "R\xe9szes eset";
     },
     get$grammarCopyTENSEpast() {
-      return "Ge\xe7mi\u015f";
+      return "M\xfalt id\u0151";
     },
     get$grammarCopyDEGREEsup() {
-      return "\xdcst\xfcn";
+      return "Fels\u0151fok";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u0130ki nokta";
+      return "Kett\u0151spont";
     },
     get$grammarCopyPERSON3() {
-      return "\xdc\xe7\xfcnc\xfc Ki\u015fi";
+      return "Harmadik szem\xe9ly";
     },
     get$grammarCopyNUMBERplur() {
-      return "\xc7o\u011ful";
+      return "T\xf6bbes sz\xe1m";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\xd6zel \u0130sim";
+      return "Saj\xe1t n\xe9v";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Soru";
+      return "K\xe9rd\u0151";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Resmi Olmayan";
+      return "Inform\xe1lis";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Zaman";
+      return "Id\u0151";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Olumsuz";
+      return "Tagad\xf3";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Toplam";
+      return "\xd6sszesen";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u0130simle \u0130lgili";
+      return "Hat\xe1roz\xf3i";
     },
     get$grammarCopyASPECTprog() {
-      return "\u0130lerleyen";
+      return "Folyamatos";
     },
     get$grammarCopyMOODsub() {
-      return "Dilek Kipi";
+      return "Felsz\xf3l\xedt\xf3 m\xf3d";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Tamamlay\u0131c\u0131";
+      return "Kieg\xe9sz\xedt\u0151 m\xf3d";
     },
     get$grammarCopyCASEnom() {
-      return "Yal\u0131n";
+      return "Alanyeset";
     },
     get$grammarCopyTENSEfut() {
-      return "Gelecek";
+      return "J\xf6v\u0151";
     },
     get$grammarCopyCASEdat() {
-      return "Y\xf6nelme";
+      return "Dativ";
     },
     get$grammarCopyTENSEpres() {
-      return "\u015eimdiki zaman";
+      return "Jelen";
     },
     get$grammarCopyGENDERneut() {
-      return "Cinsiyetsiz";
+      return "Nem meghat\xe1rozott";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u0130lgi Zamiri";
+      return "Viszony\xedt\xf3";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Son Ek";
+      return "V\xe9gs\u0151 v\xe9gz\u0151d\xe9s";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "G\xf6sterici";
+      return "Mutat\xf3";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Edat Durumu";
+      return "El\xf6lj\xe1r\xf3s eset";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Sonlu";
+      return "Hat\xe1rozott";
     },
     get$grammarCopyDEGREEpos() {
-      return "Pozitif";
+      return "Pozit\xedv";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Al\u0131nt\u0131";
+      return "Id\xe9z\u0151jel";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerund";
+      return "F\u0151n\xe9vi igen\xe9v";
     },
     get$grammarCopyVOICEpass() {
-      return "Edilgen";
+      return "Szenved\u0151";
     },
     get$grammarCopyCASEgen() {
-      return "Tamlayan";
+      return "Birtokos";
     },
     get$grammarCopyTENSEprs() {
-      return "\u015eimdiki zaman";
+      return "Jelen";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Belirli";
+      return "Hat\xe1rozott";
     },
     get$grammarCopyNUMTYPEord() {
-      return "S\u0131ral\u0131";
+      return "Sorsz\xe1m";
     },
     get$grammarCopyCASEins() {
-      return "Ara\xe7 Durumu";
+      return "Eszk\xf6zhat\xe1roz\xf3";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u0130sim Fiil";
+      return "F\u0151n\xe9vi igen\xe9v";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Yard\u0131mc\u0131";
+      return "Seg\xe9dige";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Uzun";
+      return "Hossz\xfa";
     },
     get$grammarCopyCASEloc() {
-      return "Yerel";
+      return "Locat\xedv";
     },
     get$grammarCopyMOODind() {
-      return "\u0130ndikat\xf6r";
+      return " kijelent\u0151 m\xf3d";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Kar\u015f\u0131la\u015ft\u0131rmal\u0131";
+      return "Fokozat";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u0130lgi Zamiri";
+      return "Relat\xedv";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return " \xdcnlem";
+      return "Felki\xe1lt\xf3";
     },
     get$grammarCopyPERSON1() {
-      return "Birinci \u015eah\u0131s";
+      return "Els\u0151 szem\xe9ly";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Ba\u015flang\u0131\xe7";
+      return "Kezdeti";
     },
     get$grammarCopyGENDERperson() {
-      return "Ki\u015fi";
+      return "Szem\xe9ly";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Yabanc\u0131";
+      return "Idegen";
     },
     get$grammarCopyVOICEvoice() {
-      return "Ses";
+      return "Hang";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Fiil";
+      return "Ige";
     },
     get$grammarCopyPOSSpass() {
-      return "\u0130yelik";
+      return "Birtokos";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Y\xfcklem Durumu";
+      return "El\xf6lj\xe1r\xf3s eset";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Say\u0131";
+      return "Sz\xe1mn\xe9v";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u0130sim";
+      return "F\u0151n\xe9v";
     },
     get$grammarCopyREFLEXreflex() {
-      return "D\xf6n\xfc\u015fl\xfc";
+      return "Visszahat\xf3";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Zamir";
+      return "N\xe9vm\xe1s";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Noktalama";
+      return "\xcdr\xe1sjel oldal";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Fiil \xc7ekimi";
+      return "Igealak";
     },
     get$grammarCopyGENDERgender() {
-      return "Cinsiyet";
+      return "Nem";
     },
     get$grammarCopyMOODmood() {
-      return "Mod";
+      return "Hangulat";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspect";
+      return "Jelleg";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Noktalama \u0130\u015fareti";
+      return "\xcdr\xe1sjel t\xedpus";
     },
     get$grammarCopyTENSEtense() {
-      return "Zaman";
+      return "Id\u0151";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Derece";
+      return "Fokozat";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Nezaket";
+      return "Udvariass\xe1g";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Zarf";
+      return "Hat\xe1roz\xf3sz\xf3 t\xedpus";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Say\u0131";
+      return "Sz\xe1m";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Ba\u011fla\xe7";
+      return "K\xf6t\u0151sz\xf3 t\xedpus";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Olumluluk";
+      return "Ir\xe1nyults\xe1g";
     },
     get$grammarCopyCASEcase() {
-      return "H\xe2l";
+      return "Eset";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Belirlilik";
+      return "Hat\xe1rozotts\xe1g";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Say\u0131";
+      return "Sz\xe1mn\xe9v";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u0130sim-Fiil";
+      return "F\u0151n\xe9vi igen\xe9v";
     },
     get$grammarCopyVOCvoc() {
-      return "Hitap";
+      return "Sz\xf3l\xedtm\xf3d";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Tamamlay\u0131c\u0131";
+      return "Kieg\xe9sz\xedt\u0151";
     },
     get$grammarCopyADVadv() {
-      return "Zarf";
+      return "Hat\xe1roz\xf3sz\xf3";
     },
     get$grammarCopyMOODjus() {
-      return "Emir Kipi";
+      return "Felh\xedv\xf3 m\xf3d";
     },
     get$grammarCopyGENDERcom() {
-      return "Ortak";
+      return "\xc1ltal\xe1nos";
     },
     get$grammarCopyREFLEXrflx() {
-      return "D\xf6n\xfc\u015fl\xfc";
+      return "Reflex\xedv";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Par\xe7al\u0131";
+      return "R\xe9szes";
     },
     get$grammarCopySPCspc() {
-      return "Belirli";
+      return "Specifikus";
     },
     get$grammarCopyTENSEpqp() {
-      return "Pluskambiyen";
+      return "Plusquamperfectum";
     },
     get$grammarCopyREFLEXref() {
-      return "Yans\u0131mal\u0131";
+      return "Reflex\xedv";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "K\u0131sa";
+      return "R\xf6vid";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u0130kili";
+      return "Kett\u0151s";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Uzun";
+      return "Hossz\xfa";
     },
     get$grammarCopyVOICEmid() {
-      return "Orta";
+      return "K\xf6z\xe9ps\u0151";
     },
     get$grammarCopyINTRELintRel() {
-      return "Soru, Ba\u011fla\xe7l\u0131";
+      return "K\xe9rd\u0151, Viszony\xedt\xf3";
     },
     get$grammarCopyINTint() {
-      return "Soru";
+      return "K\xe9rd\u0151";
     },
     get$grammarCopyVOICEcaus() {
-      return "Nedenli";
+      return "Okoz\xf3";
     },
     get$grammarCopyUnknown() {
-      return "Bilinmeyen";
+      return "Ismeretlen";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u0130spat";
+      return "Bizony\xedt\xe9koss\xe1g";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Sahibin Say\u0131s\u0131";
+      return "Birtokos sz\xe1ma";
     },
     get$grammarCopyASPECThab() {
-      return "Al\u0131\u015fkanl\u0131k";
+      return "Szok\xe1sos";
     },
     get$grammarCopyCASEabl() {
-      return "Ablatif";
+      return "Ablat\xedv";
     },
     get$grammarCopyCASEall() {
-      return "Allatif";
+      return "Allat\xedv";
     },
     get$grammarCopyCASEess() {
-      return "Hali";
+      return "Essz\xe9";
     },
     get$grammarCopyCASEtra() {
-      return "\xc7evirgen";
+      return "Transzlat\xedv";
     },
     get$grammarCopyCASEequ() {
-      return "E\u015fit";
+      return "Ekvativ";
     },
     get$grammarCopyCASEdis() {
-      return "Da\u011f\u0131t\u0131c\u0131";
+      return "Disztribut\xedv";
     },
     get$grammarCopyCASEabs() {
-      return "Y\xfcklemsel";
+      return "Abszol\xfat\xedv";
     },
     get$grammarCopyCASEerg() {
-      return "Ergatif";
+      return "Ergativ";
     },
     get$grammarCopyCASEcau() {
-      return "Neden";
+      return "Okokozati";
     },
     get$grammarCopyCASEben() {
-      return "Yararlan\u0131c\u0131";
+      return "Jav\xedt\xf3";
     },
     get$grammarCopyCASEtem() {
-      return "Zaman";
+      return "Id\u0151beli";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Koordine Edici";
+      return "Koordin\xe1l\xf3";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Yap\u0131 Durumu";
+      return "Konstrukci\xf3s \xc1llapot";
     },
     get$grammarCopyDEGREEabs() {
-      return "Mutlak Derece";
+      return "Abszol\xfat Fokozat";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Ger\xe7eklik Kan\u0131t\u0131";
+      return "T\xe9nybeli Bizony\xedt\xe9koss\xe1g";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Ger\xe7eklik D\u0131\u015f\u0131 Kan\u0131t";
+      return "Nem-t\xe9nybeli Bizony\xedt\xe9koss\xe1g";
     },
     get$grammarCopyMOODopt() {
-      return "\u0130stek Kipi";
+      return "Optat\xedv";
     },
     get$grammarCopyMOODadm() {
-      return "Hayranl\u0131k Kipi";
+      return "Dics\u0151\xedt\u0151";
     },
     get$grammarCopyMOODdes() {
-      return "Dilek Kipi";
+      return "V\xe1gyakoz\xf3";
     },
     get$grammarCopyMOODnec() {
-      return "Zorunluluk Kipi";
+      return "Sz\xfcks\xe9gszer\u0171";
     },
     get$grammarCopyMOODpot() {
-      return "Olas\u0131l\u0131k Kipi";
+      return "Potenci\xe1lis";
     },
     get$grammarCopyMOODprp() {
-      return "\xd6neri Kipi";
+      return "Javaslat";
     },
     get$grammarCopyMOODqot() {
-      return "Al\u0131nt\u0131 Kipi";
+      return "Id\xe9z\u0151";
     },
     get$grammarCopyNUMFORMword() {
-      return "Kelime Bi\xe7imi";
+      return "Sz\xf3alak";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Roma Rakam\u0131";
+      return "R\xf3mai sz\xe1m";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Harf Formu";
+      return "Bet\u0171s forma";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\xc7arp\u0131m";
+      return "Szorzatos";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Kesirli";
+      return "T\xf6rt";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "K\xfcme";
+      return "Halmaz";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Aral\u0131k";
+      return "Tartom\xe1ny";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Da\u011f\u0131t\u0131c\u0131";
+      return "Sz\xe9toszt\xf3";
     },
     get$grammarCopyNUMBERtri() {
-      return "Deneme";
+      return "Pr\xf3ba";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Az";
+      return "Paucal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Daha B\xfcy\xfck Az";
+      return "Nagyobb paucal";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Daha B\xfcy\xfck \xc7o\u011ful";
+      return "Nagyobb t\xf6bbes sz\xe1m";
     },
     get$grammarCopyNUMBERinv() {
-      return "Ters";
+      return "Ford\xedtott";
     },
     get$grammarCopyPERSON0() {
-      return "S\u0131f\u0131r";
+      return "Nulla";
     },
     get$grammarCopyPERSON4() {
-      return "D\xf6rd\xfcnc\xfc";
+      return "Negyedik";
     },
     get$grammarCopyPOLITEform() {
-      return "Resmi";
+      return "Form\xe1lis";
     },
     get$grammarCopyPOLITEelev() {
-      return "Y\xfckseltilmi\u015f";
+      return "Magasabb szint\u0171";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Al\xe7akg\xf6n\xfcll\xfc";
+      return "Al\xe1zatos";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Vurgulu";
+      return "Hangs\xfalyozott";
     },
     get$grammarCopyPRONTYPEexc() {
-      return " \xdcnlem";
+      return "Kifejez\u0151";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Kar\u015f\u0131l\u0131kl\u0131";
+      return "Reciproka";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Soru-\u0130lgi";
+      return "K\xe9rd\u0151-Relat\xedv";
     },
     get$grammarCopyTENSEaor() {
-      return "Aorist";
+      return "Aorista";
     },
     get$grammarCopyTENSEeps() {
-      return "Epistemik";
+      return "Epistemikus";
     },
     get$grammarCopyTENSEprosp() {
-      return "Gelecek";
+      return "J\xf6v\u0151beli";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Participle";
+      return "Partic\xedpium";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Converb";
+      return "K\xf6t\u0151m\xf3d";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Fiil \u0130sim";
+      return "Igei f\u0151n\xe9v";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipasif";
+      return "Ellenszenves";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Nedenli";
+      return "Kiv\xe1lt\xf3";
     },
     get$grammarCopyVOICedir() {
-      return "Do\u011frudan";
+      return "K\xf6zvetlen";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Ters";
+      return "Ford\xedtott";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Kar\u015f\u0131l\u0131kl\u0131";
+      return "Reciproka";
     },
     get$grammarCopyPOS() {
-      return "S\xf6zc\xfck T\xfcr\xfc";
+      return "Sz\xf3faj";
     },
     get$grammarCopyGENDER() {
-      return "Cinsiyet";
+      return "Nem";
     },
     get$grammarCopyPERSON() {
-      return "Ki\u015fi";
+      return "Szem\xe9ly";
     },
     get$grammarCopyMOOD() {
-      return "Kip";
+      return "M\xf3d";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Noktalama \u0130\u015fareti T\xfcr\xfc";
+      return "\xcdr\xe1sjelet\xedpus";
     },
     get$grammarCopyASPECT() {
-      return "Aspect";
+      return "Jelz\u0151";
     },
     get$grammarCopyCASE() {
-      return "H\xe2l";
+      return "Eset";
     },
     get$grammarCopyVOICE() {
-      return "Ses";
+      return "Hang";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u0130sim T\xfcr\xfc";
+      return "F\u0151n\xe9v t\xedpus";
     },
     get$grammarCopyVERBTYPE() {
-      return "Fiil T\xfcr\xfc";
+      return "Ige t\xedpus";
     },
     get$grammarCopyADVTYPE() {
-      return "Zarf T\xfcr\xfc";
+      return "Hat\xe1roz\xf3sz\xf3 t\xedpus";
     },
     get$grammarCopyNUMFORM() {
-      return "Say\u0131 Bi\xe7imi";
+      return "Sz\xe1mn\xe9v alakja";
     },
     get$grammarCopyNUMTYPE() {
-      return "Say\u0131 T\xfcr\xfc";
+      return "Sz\xe1mn\xe9v t\xedpus";
     },
     get$grammarCopyNUMBER() {
-      return "Say\u0131";
+      return "Sz\xe1m";
     },
     get$grammarCopyDEFINITE() {
-      return "Belirlilik";
+      return "Hat\xe1rozotts\xe1g";
     },
     get$grammarCopyDEGREE() {
-      return "Derece";
+      return "Fokozat";
     },
     get$grammarCopyEVIDENT() {
-      return "\u0130spat Edicilik";
+      return "Bizony\xedt\xe9koss\xe1g";
     },
     get$grammarCopyFOREIGN() {
-      return "Yabanc\u0131";
+      return "Idegen";
     },
     get$grammarCopyPOLARITY() {
-      return "Olumsuzluk";
+      return "Igenl\u0151s\xe9g";
     },
     get$grammarCopyPOLITE() {
-      return "Nezaket";
+      return "Udvariass\xe1g";
     },
     get$grammarCopyPREPCASE() {
-      return "Edat Durumu";
+      return "El\xf6lj\xe1r\xf3s eset";
     },
     get$grammarCopyPRONTYPE() {
-      return "Zamir T\xfcr\xfc";
+      return "N\xe9vm\xe1s t\xedpus";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Noktalama Taraf\u0131";
+      return "\xcdr\xe1sjelek oldala";
     },
     get$grammarCopyREFLEX() {
-      return "D\xf6n\xfc\u015fl\xfc";
+      return "Visszahat\xf3";
     },
     get$grammarCopyTENSE() {
-      return "Zaman";
+      return "Id\u0151";
     },
     get$grammarCopyVERBFORM() {
-      return "Fiil Formu";
+      return "Igealak";
     },
     get$grammarCopyCONJTYPE() {
-      return "Ba\u011fla\xe7 T\xfcr\xfc";
+      return "K\xf6t\u0151sz\xf3 t\xedpus";
     },
     get$grammarCopyUNKNOWN() {
-      return "Bilinmeyen";
+      return "Ismeretlen";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Sahibin Numaras\u0131";
+      return "Birtokos sz\xe1ma";
     },
     get$grammarCopyPOSS() {
-      return "\u0130yelik";
+      return "Birtokos";
     },
     get$grammarCopyASPECTimp() {
-      return "Eksilmezlik G\xf6r\xfcn\xfcm\xfc";
+      return "Befejezetlens\xe9g aspektus";
     },
     get$grammarCopyCASEvoc() {
-      return "Sesli Durum";
+      return "Sz\xf3l\xedtm\xe1ny";
     },
     get$grammarCopyCASEcom() {
-      return "Birlikte Durum";
+      return "K\xf6z\xf6ss\xe9gi eset";
     },
     get$grammarCopyCASEpar() {
-      return "Par\xe7alama Durumu";
+      return "R\xe9szleges eset";
     },
     get$grammarCopyCASEadv() {
-      return "Zarflama Durumu";
+      return "Hat\xe1roz\xf3i eset";
     },
     get$grammarCopyCASEref() {
-      return "\u0130li\u015fkilendirme";
+      return "Referenci\xe1lis eset";
     },
     get$grammarCopyCASErel() {
-      return "\u0130li\u015fki Durumu";
+      return "Relat\xedv eset";
     },
     get$grammarCopyCASEsub() {
-      return "Alt Durum";
+      return "Alanyeset";
     },
     get$grammarCopyCASEsup() {
-      return "\xdcst Durum";
+      return "Fels\u0151eset";
     },
     get$grammarCopyCASEaccdat() {
-      return "Y\xfckleme-Da\u011f\u0131tma Durumu";
+      return "T\xe1rgy- \xe9s R\xe9szes eset";
     },
     get$grammarCopyCASEpre() {
-      return "\xd6n Ek Durumu";
+      return "El\xf6lj\xe1r\xf3s eset";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Ba\u011fla\xe7 T\xfcr\xfc - Ba\u011flay\u0131c\u0131";
+      return "Al\xe1rendel\u0151 k\xf6t\u0151sz\xf3";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Kar\u015f\u0131la\u015ft\u0131rmal\u0131";
+      return "\xd6sszehasonl\xedt\xf3 k\xf6t\u0151sz\xf3";
     },
     get$grammarCopyDEFINITEind() {
-      return "Belirsiz";
+      return "Hat\xe1rozatlan";
     },
     get$grammarCopyMOODint() {
-      return "Soru Kipi";
+      return "K\xe9rd\u0151 m\xf3d";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Ortak \u0130sim";
+      return "F\u0151n\xe9v";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Sahibin Tekil";
+      return "Birtokos egyes sz\xe1m";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Sahibin \xc7o\u011ful";
+      return "Birtokos t\xf6bbes sz\xe1m";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Sahibin \u0130kili";
+      return "Birtokos kett\u0151ssz\xe1m";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Pozitif Polarl\u0131k";
+      return "Pozit\xedv polarit\xe1s";
     },
     get$grammarCopyPOSSyes() {
-      return "\u0130yelik";
+      return "Birtokos";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Edatl\u0131 Olmayan";
+      return "Nem el\xf6lj\xe1r\xf3s eset";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Ki\u015fisel";
+      return "Szem\xe9lyes";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Soru C\xfcmlesi";
+      return "K\xe9rd\u0151";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Toplam";
+      return "\xd6sszes";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Olumsuz";
+      return "Tagad\xf3";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Belirte\xe7";
+      return "Hat\xe1rozott n\xe9vel\u0151";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Belirsiz";
+      return "Hat\xe1rozatlan";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Soru-\u0130lgi";
+      return "K\xe9rd\u0151-Relat\xedv";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Son Noktalama \u0130\u015fareti";
+      return "V\xe9gponti \xedr\xe1sjel";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Nokta";
+      return "Pont";
     },
     get$grammarCopyREFLEXyes() {
-      return "D\xf6n\xfc\u015fl\xfc";
+      return "Visszahat\xf3";
     },
     get$grammarCopyTENSEimp() {
-      return "Mi\u015f'li Ge\xe7mi\u015f";
+      return "Befejezetlen m\xfalt";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u0130sim Fiil";
+      return "Felsz\xf3l\xedt\xf3 m\xf3d";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u0130simle\u015ftirilmi\u015f";
+      return "Hat\xe1roz\xf3i";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Uzun";
+      return "Hossz\xfa";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "K\u0131sa";
+      return "R\xf6vid";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Nedenli Fiil";
+      return "Okoz\xf3 ige";
     },
     get$grammarCopyVOICEcau() {
-      return "Nedenli";
+      return "Okoz\xf3";
     },
     get$grammarCopyVOICEdir() {
-      return "Do\u011frudan";
+      return "K\xf6zvetlen";
     },
     get$grammarCopyVOICEinv() {
-      return "Tersine";
+      return "Ellent\xe9tes";
     },
     get$grammarCopyVOICErcp() {
-      return "Kar\u015f\u0131l\u0131kl\u0131";
+      return "Reciproka";
     },
     get$other() {
-      return "Di\u011fer";
+      return "Egy\xe9b";
     },
     levelShort$1(level) {
-      return "Seviy " + level;
+      return "SZINT " + level;
     },
     get$clickBestOption() {
-      return "Mesaj\u0131n\u0131z\u0131 \xe7evirmek i\xe7in en iyi se\xe7enekleri se\xe7in!";
+      return "V\xe1lassza ki a legjobb lehet\u0151s\xe9geket az \xfczenet ford\xedt\xe1s\xe1hoz!";
     },
     get$completeActivitiesToUnlock() {
-      return "\xc7eviriyi a\xe7mak i\xe7in en az bir etkinli\u011fi tamamlay\u0131n!";
+      return "Fejezzen be legal\xe1bb egy tev\xe9kenys\xe9get a ford\xedt\xe1s felold\xe1s\xe1hoz!";
     },
     get$downloadGroupText() {
-      return "Grup metnini indir";
+      return "Csoport sz\xf6veg let\xf6lt\xe9se";
     },
     get$notificationsOn() {
-      return "Bildirimler a\xe7\u0131k";
+      return "\xc9rtes\xedt\xe9sek be";
     },
     get$notificationsOff() {
-      return "Bildirimler kapal\u0131";
+      return "\xc9rtes\xedt\xe9sek ki";
     },
     get$createChatAndInviteUsers() {
-      return "Sohbet olu\u015ftur ve kullan\u0131c\u0131lar\u0131 davet et";
+      return "Chat l\xe9trehoz\xe1sa \xe9s felhaszn\xe1l\xf3k megh\xedv\xe1sa";
     },
     get$updatedNewSpaceDescription() {
-      return "Kurslar, sohbetlerinizi peki\u015ftirmenize ve \xf6zel veya genel topluluklar olu\u015fturman\u0131za olanak tan\u0131r.";
+      return "A kurzusok lehet\u0151v\xe9 teszik, hogy konszolid\xe1ld a cseveg\xe9seidet \xe9s priv\xe1t vagy nyilv\xe1nos k\xf6z\xf6ss\xe9geket \xe9p\xedts.";
     },
     get$joinWithCode() {
-      return "Kodu kullanarak kat\u0131l";
+      return "Csatlakoz\xe1s k\xf3ddal";
     },
     get$enterCodeToJoin() {
-      return "Kat\u0131lmak i\xe7in kodu girin";
+      return "\xcdrd be a k\xf3dot a csatlakoz\xe1shoz";
     },
     get$updateNow() {
-      return "\u015eimdi G\xfcncelle";
+      return "Friss\xedt\xe9s most";
     },
     get$updateLater() {
-      return "Daha sonra g\xfcncelle";
+      return "K\xe9s\u0151bb";
     },
     get$constructUseWaDesc() {
-      return "Yard\u0131m olmadan kullan\u0131l\u0131r";
+      return "Seg\xedts\xe9g n\xe9lk\xfcl haszn\xe1lva";
     },
     get$constructUseGaDesc() {
-      return "Dilbilgisi yard\u0131m\u0131";
+      return "Nyelvtani seg\xedts\xe9g";
     },
     get$constructUseTaDesc() {
-      return "\xc7eviri yard\u0131m\u0131";
+      return "Ford\xedt\xe1si seg\xedts\xe9g";
     },
     get$constructUseUnkDesc() {
-      return "Bilinmeyen";
+      return "Ismeretlen";
     },
     get$constructUseCorITDesc() {
-      return "\xc7eviride do\u011fru";
+      return "Helyes ford\xedt\xe1s";
     },
     get$constructUseIgnITDesc() {
-      return "\xc7eviride g\xf6rmezden gelindi";
+      return "Figyelmen k\xedv\xfcl hagyva ford\xedt\xe1sban";
     },
     get$constructUseIncITDesc() {
-      return "\xc7eviride yanl\u0131\u015f";
+      return "Helytelen ford\xedt\xe1sban";
     },
     get$constructUseIgnIGCDesc() {
-      return "Dilbilgisi d\xfczeltmede g\xf6rmezden gelindi";
+      return "Figyelmen k\xedv\xfcl hagyva nyelvtani jav\xedt\xe1sban";
     },
     get$constructUseCorIGCDesc() {
-      return "Dilbilgisi d\xfczeltmede do\u011fru";
+      return "Helyes nyelvtani jav\xedt\xe1sban";
     },
     get$constructUseIncIGCDesc() {
-      return "Dilbilgisi d\xfczeltmede yanl\u0131\u015f";
+      return "Helytelen nyelvtani jav\xedt\xe1sban";
     },
     get$constructUseCorPADesc() {
-      return "Kelime anlam\u0131 etkinli\u011finde do\u011fru";
+      return "Helyes sz\xf3 jelent\xe9s aktivit\xe1sban";
     },
     get$constructUseIgnPADesc() {
-      return "Kelime anlam\u0131 etkinli\u011finde g\xf6rmezden gelindi";
+      return "Figyelmen k\xedv\xfcl hagyva sz\xf3 jelent\xe9s aktivit\xe1sban";
     },
     get$constructUseIncPADesc() {
-      return "Kelime anlam\u0131 etkinli\u011finde yanl\u0131\u015f";
+      return "Helytelen sz\xf3 jelent\xe9s aktivit\xe1sban";
     },
     get$constructUseCorWLDesc() {
-      return "Kelime dinleme etkinli\u011finde do\u011fru";
+      return "Helyes sz\xf3 hallgat\xe1si aktivit\xe1sban";
     },
     get$constructUseIncWLDesc() {
-      return "Kelime dinleme etkinli\u011finde yanl\u0131\u015f";
+      return "Helytelen sz\xf3 hallgat\xe1si aktivit\xe1sban";
     },
     get$constructUseIngWLDesc() {
-      return "Kelime dinleme etkinli\u011finde g\xf6rmezden gelindi";
+      return "Figyelmen k\xedv\xfcl hagyva sz\xf3 hallgat\xe1si aktivit\xe1sban";
     },
     get$constructUseCorHWLDesc() {
-      return "Gizli kelime etkinli\u011finde do\u011fru";
+      return "Helyes rejtett sz\xf3 aktivit\xe1sban";
     },
     get$constructUseIncHWLDesc() {
-      return "Gizli kelime etkinli\u011finde yanl\u0131\u015f";
+      return "Helytelen rejtett sz\xf3 aktivit\xe1sban";
     },
     get$constructUseIgnHWLDesc() {
-      return "Gizli kelime etkinli\u011finde g\xf6rmezden gelindi";
+      return "Figyelmen k\xedv\xfcl hagyva rejtett sz\xf3 aktivit\xe1sban";
     },
     get$constructUseCorLDesc() {
-      return "K\xf6k etkinli\u011finde do\u011fru";
+      return "Helyes lemma aktivit\xe1sban";
     },
     get$constructUseIncLDesc() {
-      return "K\xf6k etkinli\u011finde yanl\u0131\u015f";
+      return "Helytelen lemma aktivit\xe1sban";
     },
     get$constructUseIgnLDesc() {
-      return "K\xf6k etkinli\u011finde g\xf6rmezden gelindi";
+      return "Figyelmen k\xedv\xfcl hagyva lemma aktivit\xe1sban";
     },
     get$constructUseCorMDesc() {
-      return "Dilbilgisi etkinli\u011finde do\u011fru";
+      return "Helyes nyelvtani aktivit\xe1sban";
     },
     get$constructUseIncMDesc() {
-      return "Dilbilgisi etkinli\u011finde yanl\u0131\u015f";
+      return "Helytelen nyelvtani aktivit\xe1sban";
     },
     get$constructUseIgnMDesc() {
-      return "Dilbilgisi etkinli\u011finde g\xf6rmezden gelindi";
+      return "Figyelmen k\xedv\xfcl hagyva a nyelvtani tev\xe9kenys\xe9gben";
     },
     get$constructUseEmojiDesc() {
-      return "Emoji etkinli\u011finde do\u011fru";
+      return "Helyes az emoji tev\xe9kenys\xe9gben";
     },
     get$constructUseCollected() {
-      return "Sohbette topland\u0131";
+      return "Gy\u0171jtve a chatben";
     },
     get$constructUseNanDesc() {
-      return "Uygulanamaz";
+      return "Nem alkalmazhat\xf3";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "Metinden sese \xf6zelli\u011fi etkinle\u015ftirildi";
+      return "Sz\xf6veg-besz\xe9d enged\xe9lyezve";
     },
     get$enableTTSToolDescription() {
-      return "Uygulaman\u0131n hedef dilinizdeki metin par\xe7alar\u0131 i\xe7in metinden sese \xe7\u0131k\u0131\u015f \xfcretmesine izin verin.";
+      return "Enged\xe9lyezi az alkalmaz\xe1snak, hogy sz\xf6veg-besz\xe9d kimenetet gener\xe1ljon a c\xe9lnyelv sz\xf6vegr\xe9szeire.";
     },
     get$yourUsername() {
-      return "Kullan\u0131c\u0131 ad\u0131n\u0131z";
+      return "Az \xf6n felhaszn\xe1l\xf3neve";
     },
     get$yourEmail() {
-      return "E-posta adresiniz";
+      return "Az \xf6n e-mail c\xedme";
     },
     get$iWantToLearn() {
-      return "\xd6\u011frenmek istiyorum";
+      return "Szeretn\xe9k tanulni";
     },
     get$pleaseEnterEmail() {
-      return "L\xfctfen ge\xe7erli bir e-posta adresi girin.";
+      return "K\xe9rj\xfck, adjon meg egy \xe9rv\xe9nyes e-mail c\xedmet.";
     },
     get$myBaseLanguage() {
-      return "Temel dilim";
+      return "Alapnyelvem";
     },
     get$meaningSectionHeader() {
-      return "Anlam:";
+      return "Jelent\xe9s:";
     },
     get$formSectionHeader() {
-      return "Sohbetlerde kullan\u0131lan bi\xe7imler:";
+      return "Haszn\xe1lt form\xe1k a cseveg\xe9sekben:";
     },
     get$writingExercisesTooltip() {
-      return "Yazma";
+      return "\xcdr\xe1s";
     },
     get$listeningExercisesTooltip() {
-      return "Dinleme";
+      return "Hallgat\xe1s";
     },
     get$readingExercisesTooltip() {
-      return "Okuma";
+      return "Olvas\xe1s";
     },
     get$meaningNotFound() {
-      return "Anlam bulunamad\u0131.";
+      return "Nem tal\xe1lhat\xf3 jelent\xe9s.";
     },
     get$chooseBaseForm() {
-      return "Temel formu se\xe7in";
+      return "V\xe1lassza ki az alapsz\xf3t";
     },
     get$notTheCodeError() {
-      return "\xdczg\xfcn\xfcz, bu kod de\u011fil!";
+      return "Sajn\xe1ljuk, ez nem a k\xf3d!";
     },
     get$totalXP() {
-      return "Toplam XP";
+      return "\xd6ssz XP";
     },
     get$numLemmas() {
-      return "Toplam lemma say\u0131s\u0131";
+      return "Lemmat\xedvek \xf6sszes sz\xe1ma";
     },
     get$numLemmasUsedCorrectly() {
-      return "En az bir kez do\u011fru kullan\u0131lan lemma say\u0131s\u0131";
+      return "Legal\xe1bb egyszer helyesen haszn\xe1lt lemmat\xedvek sz\xe1ma";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Hi\xe7 do\u011fru kullan\u0131lmayan lemma say\u0131s\u0131";
+      return "Helytelen\xfcl haszn\xe1lt lemmat\xedvek sz\xe1ma 0 alkalommal";
     },
     get$numLemmasSmallXP() {
-      return "0 - 30 XP aras\u0131ndaki lemma say\u0131s\u0131";
+      return "0-30 XP-s lemmat\xedvek sz\xe1ma";
     },
     get$numLemmasMediumXP() {
-      return "31 - 200 XP aras\u0131ndaki lemma say\u0131s\u0131";
+      return "31-200 XP-s lemmat\xedvek sz\xe1ma";
     },
     get$numLemmasLargeXP() {
-      return "200 XP'den fazla olan lemma say\u0131s\u0131";
+      return ">200 XP-s lemmat\xedvek sz\xe1ma";
     },
     get$numGrammarConcepts() {
-      return "Dilbilgisi kavramlar\u0131 say\u0131s\u0131";
+      return "Nyelvtani fogalmak sz\xe1ma";
     },
     get$listGrammarConcepts() {
-      return "Dilbilgisi kavramlar\u0131";
+      return "Nyelvtani fogalmak";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Orijinal mesajlarda en az %80 oran\u0131nda do\u011fru kullan\u0131lan dilbilgisi kavramlar\u0131";
+      return "Helyesen haszn\xe1lt nyelvtani fogalmak az eredeti \xfczenetekben legal\xe1bb 80%-ban";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Orijinal mesajlarda %80'den az oran\u0131nda do\u011fru kullan\u0131lan dilbilgisi kavramlar\u0131";
+      return "Helytelen\xfcl haszn\xe1lt nyelvtani fogalmak az eredeti \xfczenetekben kevesebb mint 80%-ban";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Sistem taraf\u0131ndan \xf6nerilen do\u011fru dilbilgisi kavramlar\u0131 en az %80 oran\u0131nda se\xe7ilenler";
+      return "Helyesen v\xe1lasztott nyelvtani fogalmak rendszer \xe1ltal gener\xe1lt javaslatokb\xf3l legal\xe1bb 80%-ban";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Sistem taraf\u0131ndan \xf6nerilen yanl\u0131\u015f dilbilgisi kavramlar\u0131 %80'den az oran\u0131nda se\xe7ilenler";
+      return "Helytelen\xfcl v\xe1lasztott nyelvtani fogalmak rendszer \xe1ltal gener\xe1lt javaslatokb\xf3l kevesebb mint 80%-ban";
     },
     get$listGrammarConceptsSmallXP() {
-      return "0-50 XP aras\u0131 dilbilgisi kavramlar\u0131";
+      return "0-50 XP-s nyelvtani fogalmak";
     },
     get$listGrammarConceptsMediumXP() {
-      return "51-200 XP aras\u0131 dilbilgisi kavramlar\u0131";
+      return "51-200 XP-s nyelvtani fogalmak";
     },
     get$listGrammarConceptsLargeXP() {
-      return "201-500 XP aras\u0131 dilbilgisi kavramlar\u0131";
+      return "201-500 XP-s nyelvtani fogalmak";
     },
     get$listGrammarConceptsHugeXP() {
-      return "500 XP'den fazla dilbilgisi kavramlar\u0131";
+      return ">500 XP-s nyelvtani fogalmak";
     },
     get$numMessagesSent() {
-      return "G\xf6nderilen mesaj say\u0131s\u0131";
+      return "K\xfcld\xf6tt \xfczenetek sz\xe1ma";
     },
     get$numWordsTyped() {
-      return "Orijinal mesajlarda yaz\u0131lan kelime say\u0131s\u0131";
+      return "Be\xedrt szavak sz\xe1ma az eredeti \xfczenetekben";
     },
     get$numCorrectChoices() {
-      return "Sistem taraf\u0131ndan \xf6nerilen do\u011fru kelime say\u0131s\u0131";
+      return "Helyes szavak sz\xe1ma rendszer \xe1ltal gener\xe1lt javaslatokb\xf3l";
     },
     get$numIncorrectChoices() {
-      return "Sistem taraf\u0131ndan \xf6nerilen yanl\u0131\u015f kelime say\u0131s\u0131";
+      return "Hib\xe1s szavak sz\xe1ma a rendszer \xe1ltal javasolt lehet\u0151s\xe9gek k\xf6z\xfcl";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3719,853 +3719,1510 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "Dosya t\xfcr\xfc";
+      return "F\xe1jlt\xedpus";
     },
     get$download(_) {
-      return "\u0130ndir";
+      return "Let\xf6lt\xe9s";
     },
     get$analyticsNotAvailable() {
-      return "Kullan\u0131c\u0131 analiti\u011fi mevcut de\u011fil";
+      return "Felhaszn\xe1l\xf3i elemz\xe9sek nem \xe9rhet\u0151k el";
     },
     get$downloading() {
-      return "\u0130ndiriliyor...";
+      return "Let\xf6lt\xe9s folyamatban...";
     },
     get$failedFetchUserAnalytics() {
-      return "Kullan\u0131c\u0131 analiti\u011fi indirilemedi";
+      return "Nem siker\xfclt let\xf6lteni a felhaszn\xe1l\xf3i elemz\xe9seket";
     },
     get$downloadComplete() {
-      return "\u0130ndirme tamamland\u0131!";
+      return "Let\xf6lt\xe9s k\xe9sz!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return wordForm + "'un " + morphologicalFeature + " nedir?";
+      return "Mi a " + morphologicalFeature + " '" + wordForm + "' eset\xe9ben?";
     },
     get$dataAvailable() {
-      return "Veri kullan\u0131labilirli\u011fi";
+      return "Adat el\xe9rhet\u0151s\xe9g";
     },
     get$available(_) {
-      return "Mevcut";
+      return "El\xe9rhet\u0151";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot da hata yapabilir!";
+      return "A Pangea Bot is hib\xe1zik!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return lemma + " ne anlama geliyor?";
+      return "Mit jelent '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Mesajdaki kelimelerle anlamlar\u0131 e\u015fle\u015ftir!";
+      return "Egyeztesd a jelent\xe9seket a szavakkal az \xfczenetben!";
     },
     get$doubleClickToEdit() {
-      return "D\xfczenlemek i\xe7in \xe7ift t\u0131klay\u0131n.";
+      return "Dupla kattint\xe1ssal szerkesztheted.";
     },
     get$cefrLevelLabel() {
-      return "CEFR seviyesi";
+      return "CEFR szint";
     },
     get$image(_) {
-      return "G\xf6r\xfcnt\xfc";
+      return "K\xe9p";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Bir konu, mod, \xf6\u011frenme hedefi se\xe7in ve sohbet i\xe7in bir etkinlik olu\u015fturun!";
+      return "V\xe1lassz egy t\xe9m\xe1t, m\xf3dot, tanul\xe1si c\xe9lt, \xe9s gener\xe1lj egy tev\xe9kenys\xe9get a cseveg\xe9shez!";
     },
     get$constructUsePvmDesc() {
-      return "Sesli mesajda \xfcretilmi\u015ftir";
+      return "Hang\xfczenetben k\xe9sz\xfclt";
     },
     get$leaveSpaceDescription() {
-      return "Kursu terk ederek, i\xe7indeki t\xfcm sohbetleri terk etmi\u015f olacaks\u0131n\u0131z. Di\u011fer kullan\u0131c\u0131lar kursu terk etti\u011finizi g\xf6recektir.";
+      return "Ha elhagyod a kurzust, minden benne l\xe9v\u0151 cseveg\xe9st elhagyasz. A t\xf6bbi felhaszn\xe1l\xf3 l\xe1tni fogja, hogy elhagytad a kurzust.";
     },
     get$constructUseCorMmDesc() {
-      return "Do\u011fru mesaj anlam\u0131";
+      return "Helyes \xfczenet jelent\xe9se";
     },
     get$constructUseIncMmDesc() {
-      return "Yanl\u0131\u015f mesaj anlam\u0131";
+      return "Helytelen \xfczenet jelent\xe9se";
     },
     get$constructUseIgnMmDesc() {
-      return "Yoksay\u0131lm\u0131\u015f mesaj anlam\u0131";
+      return "Figyelmen k\xedv\xfcl hagyott \xfczenet jelent\xe9se";
     },
     get$meaning() {
-      return "Anlam";
+      return "Jelent\xe9s";
     },
     chatWith$1(displayname) {
-      return displayname + " ile Grup";
+      return "Csoport " + displayname + "-val";
     },
     get$clickOnEmailLink() {
-      return "L\xfctfen e-postadaki ba\u011flant\u0131ya t\u0131klay\u0131n ve devam edin.\n\nE-posta gelmediyse spam klas\xf6r\xfcn\xfcz\xfc kontrol edin.";
+      return "K\xe9rj\xfck, kattints az e-mailben tal\xe1lhat\xf3 linkre, majd folytasd.\n\nEllen\u0151rizd a spam mapp\xe1t, ha az e-mail nem \xe9rkezett meg.";
     },
     get$dontForgetPassword() {
-      return "\u015eifrenizi unutmay\u0131n!";
+      return "Ne feledd a jelszavad!";
     },
     get$enableAutocorrectToolName() {
-      return "Cihaz otomatik d\xfczeltmeyi etkinle\u015ftir";
+      return "Enged\xe9lyezd az eszk\xf6z automatikus jav\xedt\xe1s\xe1t";
     },
     get$enableAutocorrectDescription() {
-      return "\xd6\u011frenmekte oldu\u011funuz dili destekliyorsa, yayg\u0131n hatalar\u0131 yazarken d\xfczeltmek i\xe7in cihaz otomatik d\xfczeltmeyi etkinle\u015ftirebilirsiniz.";
+      return "Ha az eszk\xf6z\xf6d t\xe1mogatja a tanult nyelvet, enged\xe9lyezheted az automatikus jav\xedt\xe1st, hogy a g\xe9pel\xe9s k\xf6zben jav\xedtsa a gyakori hib\xe1kat.";
     },
     get$ttsDisbledTitle() {
-      return "Metin-konu\u015fma devre d\u0131\u015f\u0131";
+      return "Sz\xf6veg-besz\xe9d kikapcsolva";
     },
     get$ttsDisabledBody() {
-      return "\xd6\u011frenme ayarlar\u0131n\u0131zda metin-konu\u015fmay\u0131 etkinle\u015ftirebilirsiniz";
+      return "A sz\xf6veg-besz\xe9d funkci\xf3t enged\xe9lyezheti a tanul\xe1si be\xe1ll\xedt\xe1sokban";
     },
     get$noSpaceDescriptionYet() {
-      return "Hen\xfcz herhangi bir kurs a\xe7\u0131klamas\u0131 olu\u015fturulmad\u0131.";
+      return "M\xe9g nincs l\xe9trehozva kurzusle\xedr\xe1s.";
     },
     get$tooLargeToSend() {
-      return "Bu mesaj g\xf6nderilemeyecek kadar b\xfcy\xfck";
+      return "Ez az \xfczenet t\xfal nagy ahhoz, hogy elk\xfcldje";
     },
     get$exitWithoutSaving() {
-      return "Kaydetmeden \xe7\u0131kmak istedi\u011finizden emin misiniz?";
+      return "Biztosan el akarja hagyni ment\xe9s n\xe9lk\xfcl?";
     },
     get$enableAutocorrectWarning() {
-      return "Uyar\u0131! Hedef dil klavyenizi eklemeniz gerekiyor";
+      return "Figyelem! A c\xe9lnyelvi billenty\u0171zet hozz\xe1ad\xe1sa sz\xfcks\xe9ges";
     },
     get$leaveRoomDescription() {
-      return "Bu sohbette ayr\u0131lmak \xfczeresiniz. Di\u011fer kullan\u0131c\u0131lar sizin ayr\u0131ld\u0131\u011f\u0131n\u0131z\u0131 g\xf6recek.";
+      return "El fogja hagyni ezt a cseveg\xe9st. A t\xf6bbi felhaszn\xe1l\xf3 l\xe1tni fogja, hogy elhagyta a cseveg\xe9st.";
     },
     get$confirmUserId() {
-      return "L\xfctfen hesab\u0131n\u0131z\u0131 silmek i\xe7in Pangea Sohbet kullan\u0131c\u0131 ad\u0131n\u0131z\u0131 onaylay\u0131n.";
+      return "K\xe9rj\xfck, er\u0151s\xedtse meg Pangea Chat felhaszn\xe1l\xf3nev\xe9t a fi\xf3k t\xf6rl\xe9s\xe9hez.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return startDate + " tarihinden itibaren ba\u015flar";
+      return "Kezdete " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 Abonelik ayarlar\u0131ndan istedi\u011finiz zaman iptal edin";
+      return "\u2022 Lemond\xe1s b\xe1rmikor az el\u0151fizet\xe9si be\xe1ll\xedt\xe1sokban";
     },
     get$autocorrectNotAvailable() {
-      return "Maalesef, bu \xf6zellik \u015fu anda platformunuzda desteklenmemektedir. Daha fazla geli\u015ftirme i\xe7in bizi izlemeye devam edin!";
+      return "Sajn\xe1ljuk, jelenleg nem t\xe1mogatott ez a funkci\xf3 a platformj\xe1n. Maradjon vel\xfcnk a tov\xe1bbi fejleszt\xe9sek\xe9rt!";
     },
     get$pleaseUpdateApp() {
-      return "Devam etmek i\xe7in l\xfctfen uygulamay\u0131 g\xfcncelleyin.";
+      return "K\xe9rj\xfck, friss\xedtse az alkalmaz\xe1st a folytat\xe1shoz.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Emojileri en iyi temsil ettikleri kelimelerle e\u015fle\u015ftirin. Endi\u015felenmeyin! Anla\u015fmazl\u0131klar i\xe7in puan kesilmez. \ud83d\ude05";
+      return "Egyeztesse az emojikat a legjobban reprezent\xe1l\xf3 szavakkal. Ne agg\xf3djon! Nincs pontlevon\xe1s, ha nem \xe9rt egyet. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\u0130\u015fte t\xfcm kelime hazineniz! Her kelime i\xe7in XP kazand\u0131k\xe7a, tohumdan tam \xe7i\xe7ek a\xe7maya ge\xe7ecekler. Daha fazla detay g\xf6rmek i\xe7in herhangi bir kelimeye t\u0131klay\u0131n.";
+      return "Ez az \xf6sszes sz\xf3kincse! Ahogy XP-t szerez minden sz\xf3\xe9rt, azok cs\xedr\xe1b\xf3l teljes vir\xe1gz\xe1sig fejl\u0151dnek. Kattintson b\xe1rmelyik sz\xf3ra a r\xe9szletek\xe9rt.";
     },
     get$morphAnalyticsListBody() {
-      return "\u0130\u015fte \xf6\u011frendi\u011finiz dildeki t\xfcm dilbilgisi kavramlar\u0131! Sohbet ederken kar\u015f\u0131la\u015ft\u0131k\xe7a bunlar\u0131 a\xe7acaks\u0131n\u0131z. Detaylar i\xe7in t\u0131klay\u0131n.";
+      return "Ezek az \xf6sszes nyelvtani fogalom, amit tanul! Feloldja \u0151ket, ahogy tal\xe1lkozik vel\xfck a besz\xe9lget\xe9s sor\xe1n. Kattintson a r\xe9szletek\xe9rt.";
     },
     get$knockSpaceSuccess() {
-      return "Bu kursa kat\u0131lmak istedi\u011finizi belirttiniz! Bir y\xf6netici, talebinizi ald\u0131\u011f\u0131nda yan\u0131t verecek \ud83d\ude04";
+      return "K\xe9rte, hogy csatlakozzon ehhez a kurzushoz! Egy admin v\xe1laszol a k\xe9r\xe9s\xe9re, amint megkapja azt \ud83d\ude0a";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Tam mesaj\u0131 dinleyin. Ard\u0131ndan sesleri kelimelerle e\u015fle\u015ftirin.";
+      return "Hallgassa meg az \xfczenet teljes v\xe1ltozat\xe1t. Ezut\xe1n p\xe1ros\xedtsa az audi\xf3kat a szavakkal.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Dilbilgisi sorular\u0131 i\xe7in yapboz par\xe7alar\u0131na t\u0131klay\u0131n!";
+      return "Kattintson a puzzle darabokra a nyelvtani k\xe9rd\xe9sekhez!";
     },
     get$home() {
-      return "Ana Sayfa";
+      return "Kezd\u0151lap";
     },
     get$join(_) {
-      return "Kat\u0131l";
+      return "Csatlakoz\xe1s";
     },
     get$readingAssistanceOverviewBody() {
-      return "Emojiler, sesler, kelime anlamlar\u0131 ve dilbilgisi kavramlar\u0131n\u0131 e\u015fle\u015ftirmek i\xe7in a\u015fa\u011f\u0131daki d\xfc\u011fmelere t\u0131klay\u0131n. Veya detaylar i\xe7in herhangi bir kelimeye t\u0131klay\u0131n.";
+      return "Kattintson az al\xe1bbi gombokra az emojik, audi\xf3k, szavak jelent\xe9se \xe9s nyelvtani fogalmak p\xe1ros\xedt\xe1s\xe1ra mini-j\xe1t\xe9kokhoz. Vagy kattintson b\xe1rmelyik sz\xf3ra a r\xe9szletek\xe9rt.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Talimat ipu\xe7lar\u0131n\u0131 s\u0131f\u0131rla";
+      return "\xdatmutat\xf3 eszk\xf6ztippek vissza\xe1ll\xedt\xe1sa";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Yeni bir kullan\u0131c\u0131 gibi talimat ipu\xe7lar\u0131n\u0131 g\xf6stermek i\xe7in t\u0131klay\u0131n.";
+      return "Kattints az \xfatmutat\xf3 eszk\xf6ztippek megjelen\xedt\xe9s\xe9hez, mint egy teljesen \xfaj felhaszn\xe1l\xf3 eset\xe9n.";
     },
     get$selectForGrammar() {
-      return "Etkinlikler ve detaylar i\xe7in bir dilbilgisi simgesi se\xe7in.";
+      return "V\xe1lassz nyelvtani ikont a tev\xe9kenys\xe9gekhez \xe9s r\xe9szletekhez.";
     },
     get$translationProblem() {
-      return "\xc7eviri sorunu";
+      return "Ford\xedt\xe1si probl\xe9ma";
     },
     get$askToJoin() {
-      return "Kat\u0131lmak i\xe7in sor";
+      return "K\xe9rj csatlakoz\xe1st";
     },
     get$emptyChatWarningTitle() {
-      return "Sohbet bo\u015f";
+      return "\xdcres a chat";
     },
     get$emptyChatWarningDesc() {
-      return "Kimseyi sohbetine davet etmedin. Ki\u015filerini veya Bot'u davet etmek i\xe7in Sohbet ayarlar\u0131na git. Ayr\u0131ca bunu daha sonra da yapabilirsin.";
+      return "Senkit sem h\xedvt\xe1l meg a chatbe. Menj a Chat be\xe1ll\xedt\xe1sokhoz, hogy megh\xedvhasd a kontaktjaidat vagy a Botot. Ezt k\xe9s\u0151bb is megteheted.";
     },
     get$areYouLikeMe() {
-      return "Benim gibi misin?";
+      return "Hasonl\xf3 vagy hozz\xe1m?";
     },
     get$tryAgainLater() {
-      return "\xc7ok fazla deneme yap\u0131ld\u0131. L\xfctfen 5 dakika sonra tekrar dene.";
+      return "T\xfal sok pr\xf3b\xe1lkoz\xe1s t\xf6rt\xe9nt. K\xe9rj\xfck, pr\xf3b\xe1ld meg 5 perc m\xfalva.";
     },
     get$enterSpaceCode() {
-      return "Kurs kodunu gir";
+      return "\xcdrd be a kurzusk\xf3dot";
     },
     get$shareSpaceLink() {
-      return "Ba\u011flant\u0131y\u0131 payla\u015f";
+      return "Link megoszt\xe1sa";
     },
     get$byUsingPangeaChat() {
-      return "Pangea Chat kullanarak, kabul ediyorum ";
+      return "A Pangea Chat haszn\xe1lat\xe1val elfogadom a ";
     },
     get$details(_) {
-      return "Detaylar";
+      return "R\xe9szletek";
     },
     get$languageLevelPreA1Desc() {
-      return "Hi\xe7 \xf6\u011frenmedim veya kullanmad\u0131m.";
+      return "Soha nem tanultam vagy haszn\xe1ltam a nyelvet.";
     },
     get$languageLevelA1Desc() {
-      return "Tan\u0131d\u0131k g\xfcnl\xfck ifadeleri ve \xe7ok temel ifadeleri anlayabilir ve kullanabilirim.";
+      return "Tudok meg\xe9rteni \xe9s haszn\xe1lni n\xe9h\xe1ny ismert mindennapi kifejez\xe9st \xe9s nagyon alapvet\u0151 mondatokat.";
     },
     get$languageLevelA2Desc() {
-      return "Acil ilgisi olan alanlarla ilgili c\xfcmleleri ve s\u0131k kullan\u0131lan ifadeleri anlayabilirim.";
+      return "Tudok meg\xe9rteni mondatokat \xe9s gyakran haszn\xe1lt kifejez\xe9seket, amelyek azonnali relevanci\xe1val b\xedrnak.";
     },
     get$languageLevelB1Desc() {
-      return "En bilinen durumlarla ba\u015fa \xe7\u0131kabilir ve tan\u0131d\u0131k konularda basit ba\u011fl\u0131 metinler \xfcretebilirim.";
+      return "Tudok kezelni legt\xf6bb ismert helyzetet, \xe9s k\xe9pes vagyok egyszer\u0171 \xf6sszef\xfcgg\u0151 sz\xf6veget \xedrni ismert t\xe9m\xe1kr\xf3l.";
     },
     get$languageLevelB2Desc() {
-      return "Karma\u015f\u0131k metinlerin ana fikirlerini anlayabilir ve ak\u0131c\u0131 ve spontane bir \u015fekilde ileti\u015fim kurabilirim.";
+      return "Tudom meg\xe9rteni a komplex sz\xf6vegek f\u0151bb gondolatait, \xe9s foly\xe9konyan \xe9s spont\xe1n m\xf3don tudok kommunik\xe1lni.";
     },
     get$languageLevelC1Desc() {
-      return "Fikirleri ak\u0131c\u0131 ve spontane bir \u015fekilde ifade edebilir ve \xe7e\u015fitli zorlu metinleri anlayabilirim.";
+      return "Foly\xe9konyan \xe9s spont\xe1n m\xf3don tudom kifejezni \xf6tleteimet, nem sok neh\xe9zs\xe9ggel, \xe9s \xe9rtem a sz\xe9les k\xf6r\u0171 ig\xe9nyes sz\xf6vegeket.";
     },
     get$languageLevelC2Desc() {
-      return "Neredeyse duydu\u011fum veya okudu\u011fum her \u015feyi anlayabilir ve kendimi ak\u0131c\u0131 ve kesin bir \u015fekilde ifade edebilirim.";
+      return "Szinte mindent meg tudok \xe9rteni, amit hallok vagy olvasok, \xe9s foly\xe9konyan \xe9s pontosan tudok kifejezni magam.";
     },
     get$newVocab() {
-      return "Yeni kelime hazinesi";
+      return "\xdaj sz\xf3kincs";
     },
     get$newGrammar() {
-      return "Yeni dilbilgisi kavramlar\u0131";
+      return "\xdaj nyelvtani fogalmak";
     },
     get$choosePracticeMode() {
-      return "Bir uygulama etkinli\u011fi ba\u015flatmak i\xe7in yukar\u0131daki d\xfc\u011fmelerden birine t\u0131klay\u0131n";
+      return "Kattints az egyik fenti gombra a gyakorl\xe1si tev\xe9kenys\xe9g elind\xedt\xe1s\xe1hoz";
     },
     get$ban() {
-      return "Yasakla";
+      return "Tilt\xe1s";
     },
     get$kick() {
-      return "At";
+      return "Kiz\xe1r\xe1s";
     },
     get$lemma() {
-      return "Kelime k\xf6k\xfc";
+      return "Lemma";
     },
     get$grammarFeature() {
-      return "Dilbilgisi \xf6zelli\u011fi";
+      return "Nyelvtani jellemz\u0151";
     },
     get$grammarTag() {
-      return "Dilbilgisi etiketi";
+      return "Nyelvtani c\xedmke";
     },
     get$forms() {
-      return "Formlar";
+      return "Form\xe1k";
     },
     get$exampleMessages() {
-      return "\xd6rnek mesajlar";
+      return "P\xe9ldabesz\xe9lget\xe9sek";
     },
     get$timesUsedIndependently() {
-      return "Ba\u011f\u0131ms\u0131z kullan\u0131mlar";
+      return "\xd6n\xe1ll\xf3an haszn\xe1lt alkalmak sz\xe1ma";
     },
     get$timesUsedWithAssistance() {
-      return "Yard\u0131mla kullan\u0131mlar";
+      return "Seg\xedts\xe9ggel haszn\xe1lt alkalmak sz\xe1ma";
     },
     shareInviteCode$1(code) {
-      return "Davet kodunu payla\u015f: " + code;
+      return "Megh\xedv\xf3 k\xf3d megoszt\xe1sa: " + code;
     },
     get$skipForNow() {
-      return "\u015eimdilik atla";
+      return "\xc1tmenetileg kihagyom";
     },
     get$permissions(_) {
-      return "\u0130zinler";
+      return "Enged\xe9lyek";
     },
     get$spaceChildPermission() {
-      return "Bu derse yeni sohbetler ekleyebilecek ki\u015filer";
+      return "Ki adhat hozz\xe1 \xfaj cseveg\xe9seket ehhez a kurzushoz";
     },
     get$addEnvironmentOverride() {
-      return "Ortam ge\xe7ersizli\u011fi ekle";
+      return "K\xf6rnyezet fel\xfclb\xedr\xe1l\xe1s hozz\xe1ad\xe1sa";
     },
     get$defaultOption() {
-      return "Varsay\u0131lan";
+      return "Alap\xe9rtelmezett";
     },
     get$deleteChatDesc() {
-      return "Bu sohbeti silmek istedi\u011finizden emin misiniz? T\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in silinecek ve sohbet i\xe7indeki t\xfcm mesajlar art\u0131k pratik veya \xf6\u011frenme analiti\u011fi i\xe7in kullan\u0131labilir olmayacakt\u0131r.";
+      return "Biztosan t\xf6r\xf6lni szeretn\xe9 ezt a cseveg\xe9st? Minden r\xe9sztvev\u0151 sz\xe1m\xe1ra t\xf6rl\u0151dik, \xe9s minden \xfczenet nem lesz t\xf6bb\xe9 el\xe9rhet\u0151 gyakorl\xe1shoz vagy tanul\xe1si elemz\xe9sekhez.";
     },
     get$deleteSpaceDesc() {
-      return "Ders ve se\xe7ilen sohbetler t\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in silinecek ve sohbet i\xe7indeki t\xfcm mesajlar art\u0131k pratik veya \xf6\u011frenme analiti\u011fi i\xe7in kullan\u0131labilir olmayacakt\u0131r. Bu i\u015flem geri al\u0131namaz.";
+      return "A kurzus \xe9s a kiv\xe1lasztott cseveg\xe9sek minden r\xe9sztvev\u0151 sz\xe1m\xe1ra t\xf6rl\u0151dnek, \xe9s minden \xfczenet nem lesz t\xf6bb\xe9 el\xe9rhet\u0151 gyakorl\xe1shoz vagy tanul\xe1si elemz\xe9sekhez. Ez a m\u0171velet nem vonhat\xf3 vissza.";
     },
     get$configureSpace() {
-      return "Dersi yap\u0131land\u0131r";
+      return "Kurzus konfigur\xe1l\xe1sa";
     },
     get$pinMessages() {
-      return "Mesajlar\u0131 sabitle";
+      return "\xdczenetek r\xf6gz\xedt\xe9se";
     },
     get$setJoinRules() {
-      return "Kat\u0131lma kurallar\u0131n\u0131 ayarla";
+      return "Csatlakoz\xe1si szab\xe1lyok be\xe1ll\xedt\xe1sa";
     },
     get$changeGeneralSettings() {
-      return "Genel ayarlar\u0131 de\u011fi\u015ftir";
+      return "\xc1ltal\xe1nos be\xe1ll\xedt\xe1sok m\xf3dos\xedt\xe1sa";
     },
     get$inviteOtherUsersToRoom() {
-      return "Di\u011fer kullan\u0131c\u0131lar\u0131 davet et";
+      return "M\xe1s felhaszn\xe1l\xf3k megh\xedv\xe1sa";
     },
     get$changeTheNameOfTheSpace() {
-      return "Dersin ad\u0131n\u0131 de\u011fi\u015ftir";
+      return "A kurzus nev\xe9nek megv\xe1ltoztat\xe1sa";
     },
     get$changeTheDescription() {
-      return "A\xe7\u0131klamay\u0131 de\u011fi\u015ftir";
+      return "V\xe1ltoztassa meg a le\xedr\xe1st";
     },
     get$changeThePermissions() {
-      return "\u0130zinleri de\u011fi\u015ftir";
+      return "V\xe1ltoztassa meg a jogosults\xe1gokat";
     },
     get$introductions() {
-      return "Tan\u0131t\u0131mlar";
+      return "Bemutatkoz\xe1sok";
     },
     get$announcements() {
-      return "Duyurular";
+      return "Bejelent\xe9sek";
     },
     get$activities() {
-      return "Aktiviteler";
+      return "Tev\xe9kenys\xe9gek";
     },
     get$access() {
-      return "Eri\u015fim";
+      return "Hozz\xe1f\xe9r\xe9s";
     },
     get$howSpaceCanBeFound() {
-      return "Bu kurs nas\u0131l bulunabilir";
+      return "Hogyan tal\xe1lhat\xf3 meg ez a kurzus";
     },
     get$$private() {
-      return "\xd6zel";
+      return "Priv\xe1t";
     },
     get$cannotBeFoundInSearch() {
-      return "Aramada bulunamaz";
+      return "Nem tal\xe1lhat\xf3 meg a keres\xe9sben";
     },
     get$$public(_) {
-      return "Genel";
+      return "Nyilv\xe1nos";
     },
     get$visibleToCommunity() {
-      return '"Bir kurs bul" arac\u0131l\u0131\u011f\u0131yla Pangea Chat toplulu\u011funa g\xf6r\xfcn\xfcr';
+      return 'L\xe1that\xf3 a Pangea Chat sz\xe9lesebb k\xf6z\xf6ss\xe9ge sz\xe1m\xe1ra a "Keress egy kurzust" seg\xedts\xe9g\xe9vel';
     },
     get$howSpaceCanBeJoined() {
-      return "Bu kurs nas\u0131l kat\u0131labilir";
+      return "Hogyan lehet csatlakozni ehhez a kurzushoz";
     },
     get$canBeFoundVia() {
-      return "\u015eu yollarla bulunabilir:";
+      return "Megtal\xe1lhat\xf3 a k\xf6vetkez\u0151 r\xe9v\xe9n:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 davet";
+      return "\u2022 megh\xedv\xf3";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 kod veya ba\u011flant\u0131";
+      return "\u2022 k\xf3d vagy link";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 kat\u0131lma iste\u011fi ve y\xf6netici onay\u0131";
+      return "\u2022 k\xe9r\xe9s csatlakozni \xe9s admin j\xf3v\xe1hagy\xe1s\xe1val";
     },
     get$youHaveLeveledUp() {
-      return "Seviyeniz y\xfckseldi!";
+      return "Szintet l\xe9pt\xe9l!";
     },
     get$sendActivities() {
-      return "Aktiviteleri g\xf6nder";
+      return "Aktivit\xe1sok k\xfcld\xe9se";
     },
     get$directMessage() {
-      return "\xd6zel Mesaj";
+      return "K\xf6zvetlen \xfczenet";
     },
     get$newDirectMessage() {
-      return "Yeni \xf6zel mesaj";
+      return "\xdaj k\xf6zvetlen \xfczenet";
     },
     get$speakingExercisesTooltip() {
-      return "Konu\u015fma";
+      return "Besz\xe9d";
     },
     get$transcriptionFailed() {
-      return "Sesin yaz\u0131ya d\xf6k\xfclmesi ba\u015far\u0131s\u0131z oldu";
+      return "A hang \xe1tirata nem siker\xfclt";
     },
     get$aUserIsKnocking() {
-      return "1 kullan\u0131c\u0131 kursunuza kat\u0131lmak istiyor";
+      return "1 felhaszn\xe1l\xf3 k\xe9r csatlakoz\xe1st a kurzusodhoz";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " kullan\u0131c\u0131 kursunuza kat\u0131lmak istiyor";
+      return "" + users + " felhaszn\xe1l\xf3 k\xe9r csatlakoz\xe1st a kurzusodhoz";
     },
     get$failedToFetchTranscription() {
-      return "Yaz\u0131ya d\xf6kme al\u0131namad\u0131";
+      return "Nem siker\xfclt let\xf6lteni a \xe1t\xedr\xe1st";
     },
     get$deleteEmptySpaceDesc() {
-      return "Kurs t\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in silinecek. Bu i\u015flem geri al\u0131namaz.";
+      return "A kurzus minden r\xe9sztvev\u0151 sz\xe1m\xe1ra t\xf6rl\xe9sre ker\xfcl. Ez a m\u0171velet nem vonhat\xf3 vissza.";
     },
     get$failedToPlayVideo() {
-      return "Videoyu oynatamad\u0131";
+      return "Nem siker\xfclt lej\xe1tszani a vide\xf3t";
     },
     get$done() {
-      return "Tamamland\u0131";
+      return "K\xe9sz";
     },
     get$inThisSpace() {
-      return "Bu kursta";
+      return "Ebben a kurzusban";
     },
     get$myContacts() {
-      return "Ki\u015filerim";
+      return "Kapcsolataim";
     },
     get$inviteAllInSpace() {
-      return "T\xfcm kat\u0131l\u0131mc\u0131lar\u0131 davet et";
+      return "Megh\xedv\xe1s mindenkit ebbe a kurzusba";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "T\xfcm kurs kat\u0131l\u0131mc\u0131lar\u0131 sohbete davet edildi";
+      return "Minden kurzus r\xe9sztvev\u0151t megh\xedvtak a cseveg\xe9sbe";
     },
     numKnocking$1(count) {
-      return "" + count + " \xe7al\u0131yor";
+      return "" + count + " kopog\xe1s";
     },
     numInvited$1(count) {
-      return "" + count + " davet edildi";
+      return "" + count + " megh\xedvott";
     },
     get$errorFetchingDefinition() {
-      return "Tan\u0131m al\u0131namad\u0131";
+      return "Nem siker\xfclt lek\xe9rni a defin\xedci\xf3t";
     },
     get$errorProcessAnalytics() {
-      return "Analitikler i\u015flenemedi";
+      return "Nem siker\xfclt feldolgozni az elemz\xe9seket";
     },
     get$errorDownloading() {
-      return "\u0130ndirme ba\u015far\u0131s\u0131z oldu";
+      return "Let\xf6lt\xe9s sikertelen";
     },
     get$errorFetchingLevelSummary() {
-      return "Seviye \xf6zetleri al\u0131namad\u0131";
+      return "Nem siker\xfclt lek\xe9rni a szint \xf6sszegz\xe9st";
     },
     get$errorLoadingSpaceChildren() {
-      return "Bu kurs i\xe7indeki sohbetler y\xfcklenemedi";
+      return "Nem siker\xfclt bet\xf6lteni a csoport besz\xe9lget\xe9seit ebben a kurzusban";
     },
     get$unexpectedError() {
-      return "Beklenmedik hata.";
+      return "V\xe1ratlan hiba.";
     },
     get$pleaseReload() {
-      return "L\xfctfen yeniden y\xfckleyin ve tekrar deneyin.";
+      return "K\xe9rj\xfck, t\xf6ltsd \xfajra az oldalt, \xe9s pr\xf3b\xe1ld \xfajra.";
     },
     get$translationError() {
-      return "\xc7eviri hatas\u0131";
+      return "Ford\xedt\xe1si hiba";
     },
     get$errorFetchingTranslation() {
-      return "\xc7eviri al\u0131namad\u0131";
+      return "Nem siker\xfclt lek\xe9rni a ford\xedt\xe1st";
     },
     get$errorFetchingActivity() {
-      return "Etkinlik al\u0131namad\u0131";
+      return "Nem siker\xfclt lek\xe9rni a tev\xe9kenys\xe9get";
     },
     get$check(_) {
-      return "Kontrol et";
+      return "Ellen\u0151rizze";
     },
     get$unableToFindRoom() {
-      return "Bu kodla e\u015fle\u015fen sohbet veya kurs bulunamad\u0131. L\xfctfen tekrar deneyin.";
+      return "Nem tal\xe1lhat\xf3 cseveg\xe9s vagy kurzus ezzel a k\xf3ddal. K\xe9rj\xfck, pr\xf3b\xe1lja \xfajra.";
     },
     viewingAnalytics$2(visible, users) {
-      return "" + visible + "/" + users + " Analitikleri G\xf6r\xfcnt\xfcleme";
+      return "" + visible + "/" + users + " elemz\xe9st n\xe9z";
     },
     get$request(_) {
-      return "\u0130stek";
+      return "K\xe9r\xe9s";
     },
     get$requestAll(_) {
-      return "T\xfcm\xfcn\xfc \u0130ste";
+      return "\xd6sszes k\xe9r\xe9s";
     },
     get$confirmMessageUnpin() {
-      return "Bu mesaj\u0131 sabitlemeyi kald\u0131rmak istedi\u011finizden emin misiniz?";
+      return "Biztos benne, hogy fel szeretn\xe9 oldani ezt az \xfczenetet?";
     },
     get$pending(_) {
-      return "Beklemede";
+      return "F\xfcgg\u0151ben";
     },
     get$openRoleLabel() {
-      return "A\xc7IK";
+      return "NYITOTT";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " " + role + " olarak kat\u0131ld\u0131";
+      return "\ud83d\udc4b " + username + " csatlakozott " + role + " szerepben";
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " bu etkinli\u011fi tamamlad\u0131";
+      return "\ud83c\udfaf " + username + " befejezte ezt a tev\xe9kenys\xe9get";
     },
     get$activitySummaryError() {
-      return "Etkinlik \xf6zetleri kullan\u0131lam\u0131yor";
+      return "A tev\xe9kenys\xe9g \xf6sszegz\xe9sek nem el\xe9rhet\u0151k";
     },
     get$requestSummaries() {
-      return "\xd6zetleri talep et";
+      return "\xd6sszegz\xe9sek k\xe9r\xe9s";
     },
     get$requestAccessTitle() {
-      return "Analitik eri\u015fimi talep edilsin mi?";
+      return "K\xe9rj\xfck az elemz\xe9si hozz\xe1f\xe9r\xe9st?";
     },
     get$requestAccessDesc() {
-      return "Kat\u0131l\u0131mc\u0131lar\u0131n analitiklerini g\xf6r\xfcnt\xfcleme eri\u015fimi talep etmek ister misiniz?\n\nKat\u0131l\u0131mc\u0131lar kabul ederse, bu kursun y\xf6neticileri:\n    \u2022 toplam kelime da\u011farc\u0131\u011f\u0131n\u0131\n    \u2022 toplam dilbilgisi kavramlar\u0131n\u0131\n    \u2022 tamamlanan toplam etkinlik oturumlar\u0131n\u0131\n    \u2022 do\u011fru ve yanl\u0131\u015f kullan\u0131lan belirli dilbilgisi kavramlar\u0131n\u0131 g\xf6rebilecekler.\n\nG\xf6rme imkanlar\u0131 olmayacak:\n    \u2022 kurs d\u0131\u015f\u0131ndaki sohbetlerdeki mesajlar\n    \u2022 kelime listesi";
+      return "Szeretn\xe9l hozz\xe1f\xe9r\xe9st k\xe9rni a r\xe9sztvev\u0151k elemz\xe9seinek megtekint\xe9s\xe9hez?\n\nHa a r\xe9sztvev\u0151k egyet\xe9rtenek, a kurzus adminjai megtekinthetik:\n    \u2022 az \xf6sszes sz\xf3kincset\n    \u2022 az \xf6sszes nyelvtani fogalmat\n    \u2022 az elv\xe9gzett tev\xe9kenys\xe9gi \xfcl\xe9sek \xf6sszes sz\xe1m\xe1t\n    \u2022 a haszn\xe1lt, helyes \xe9s helytelen nyelvtani fogalmakat\n\nNem fogj\xe1k l\xe1tni:\n    \u2022 az \xfczeneteket a kurzuson k\xedv\xfcli chatben\n    \u2022 a sz\xf3kincs list\xe1t";
     },
     get$analyticsInactiveTitle() {
-      return "Etkin olmayan kullan\u0131c\u0131lara yap\u0131lan istekler g\xf6nderilemedi";
+      return "Az inakt\xedv felhaszn\xe1l\xf3knak nem k\xfcldhet\u0151k k\xe9r\xe9sek";
     },
     get$analyticsInactiveDesc() {
-      return "Bu \xf6zellik tan\u0131t\u0131ld\u0131ktan sonra giri\u015f yapmam\u0131\u015f etkin olmayan kullan\u0131c\u0131lar iste\u011finizi g\xf6rmeyecek.\n\nKullan\u0131c\u0131 geri d\xf6nd\xfc\u011f\xfcnde \u0130stek d\xfc\u011fmesi g\xf6r\xfcnecek. Kullan\u0131c\u0131 adlar\u0131n\u0131n alt\u0131ndaki \u0130stek d\xfc\u011fmesine t\u0131klayarak iste\u011fi daha sonra yeniden g\xf6nderebilirsiniz.";
+      return "Az inakt\xedv felhaszn\xe1l\xf3k, akik nem jelentkeztek be az\xf3ta, hogy ez a funkci\xf3 bevezet\xe9sre ker\xfclt, nem fogj\xe1k l\xe1tni a k\xe9r\xe9s\xe9t.\n\nA K\xe9relem gomb akkor jelenik meg, amikor visszat\xe9rnek. K\xe9s\u0151bb \xfajra k\xfcldheti a k\xe9r\xe9st a nev\xfck alatt tal\xe1lhat\xf3 K\xe9relem gombra kattintva, amikor az el\xe9rhet\u0151v\xe9 v\xe1lik.";
     },
     get$accessRequestedTitle() {
-      return "Analitik Eri\u015fim Talebi";
+      return "Elemz\xe9si hozz\xe1f\xe9r\xe9si k\xe9r\xe9s";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Y\xf6netici(ler) talep ediliyor: " + admin + " \n\n\u201c" + space + "\u201d alan\u0131ndan y\xf6neticiler, \xf6\u011frenme analitiklerinizi g\xf6r\xfcnt\xfclemek istiyor.\n\nKabul ederseniz, \u015funlar\u0131 g\xf6r\xfcnt\xfcleyebilecekler:\n    \u2022 toplam kelime da\u011farc\u0131\u011f\u0131\n    \u2022 toplam dilbilgisi kavramlar\u0131\n    \u2022 tamamlanan toplam etkinlik oturumlar\u0131\n    \u2022 do\u011fru ve yanl\u0131\u015f kullan\u0131lan belirli dilbilgisi kavramlar\u0131\n\n\u015eunlar\u0131 g\xf6r\xfcnt\xfcleyemeyecekler:\n    \u2022 kurs d\u0131\u015f\u0131ndaki sohbetlerdeki mesajlar\n    \u2022 kelime listesi";
+      return "K\xe9rj\xfck az adminisztr\xe1tor(ok): " + admin + " \n\nA \u201e" + space + "\u201d adminisztr\xe1torai k\xe9rik, hogy megtekinthess\xe9k a tanul\xe1si elemz\xe9seidet.\n\nHa egyet\xe9rtesz, akkor meg tudj\xe1k n\xe9zni a k\xf6vetkez\u0151ket:\n    \u2022 \xf6sszes sz\xf3kincs\n    \u2022 \xf6sszes nyelvtani fogalom\n    \u2022 \xf6sszes befejezett aktivit\xe1si \xfcl\xe9s\n    \u2022 a haszn\xe1lt nyelvtani fogalmak, helyesen \xe9s helytelen\xfcl\n\nNem fogj\xe1k tudni megtekinteni a k\xf6vetkez\u0151ket:\n    \u2022 \xfczenetek a kurzuson k\xedv\xfcli cseveg\xe9sekben\n    \u2022 sz\xf3kincs lista";
     },
     get$adminRequestedAccess() {
-      return "Y\xf6neticiler, analitiklerinizi g\xf6r\xfcnt\xfclemek istiyor.";
+      return "Az adminisztr\xe1torok k\xe9rik, hogy tekintse meg az elemz\xe9seit.";
     },
     lastUpdated$1(time) {
-      return "G\xfcncellendi\n" + time;
+      return "Friss\xedtve\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Hepsi Tamamland\u0131!";
+      return "Minden k\xe9sz!";
     },
     get$endForAll() {
-      return "Herkes \u0130\xe7in Sonland\u0131r";
+      return "V\xe9ge mindenkinek";
     },
     get$newCourse() {
-      return "Yeni kurs";
+      return "\xdaj tanfolyam";
     },
     numModules$1(num) {
-      return "" + num + " mod\xfcl";
+      return "" + num + " modul";
     },
     get$coursePlan() {
-      return "Kurs Plan\u0131";
+      return "Tanfolyamterv";
     },
     get$editCourseLater() {
-      return "\u015eablon ba\u015fl\u0131\u011f\u0131, a\xe7\u0131klamalar ve kurs resmi daha sonra d\xfczenleyebilirsiniz.";
+      return "K\xe9s\u0151bb szerkesztheti a sablon c\xedmet, le\xedr\xe1sokat \xe9s a tanfolyam k\xe9p\xe9t.";
     },
     get$newCourseAccess() {
-      return "Varsay\u0131lan olarak, kurslar \xf6zeldir ve kat\u0131lmak i\xe7in y\xf6netici onay\u0131 gerekir. Bu ayarlar\u0131 istedi\u011finiz zaman de\u011fi\u015ftirebilirsiniz.";
+      return "Alap\xe9rtelmez\xe9s szerint a tanfolyamok priv\xe1tak, \xe9s admin j\xf3v\xe1hagy\xe1s\xe1t ig\xe9nylik a csatlakoz\xe1shoz. Ezeket a be\xe1ll\xedt\xe1sokat b\xe1rmikor szerkesztheti.";
     },
     get$createCourse() {
-      return "Kurs Olu\u015ftur";
+      return "Tanfolyam l\xe9trehoz\xe1sa";
     },
     get$stats() {
-      return "\u0130statistikler";
+      return "Statisztika";
     },
     get$createGroupChat() {
-      return "Grup sohbeti olu\u015ftur";
+      return "Csoportos besz\xe9lget\xe9s l\xe9trehoz\xe1sa";
     },
     get$editCourse() {
-      return "Kursu d\xfczenle";
+      return "Kurzus szerkeszt\xe9se";
     },
     get$inviteDesc() {
-      return "Kullan\u0131c\u0131 ad\u0131, kod veya ba\u011flant\u0131 ile";
+      return "Felhaszn\xe1l\xf3n\xe9v, k\xf3d vagy link alapj\xe1n";
     },
     get$editCourseDesc() {
-      return "Burada kurs ba\u015fl\u0131\u011f\u0131n\u0131, a\xe7\u0131klamas\u0131n\u0131 vb. d\xfczenleyebilirsiniz.";
+      return "Itt szerkesztheted a kurzus c\xedm\xe9t, le\xedr\xe1s\xe1t stb.";
     },
     get$permissionsDesc() {
-      return "Kimin kullan\u0131c\u0131 davet edebilece\u011fi, mesaj g\xf6nderebilece\u011fi, sohbet olu\u015fturabilece\u011fi gibi izinleri ayarlay\u0131n.";
+      return "\xc1ll\xedts be jogosults\xe1gokat, p\xe9ld\xe1ul ki k\xfcldhet megh\xedv\xf3kat, \xfczeneteket, csoportokat hozhat l\xe9tre stb.";
     },
     get$accessDesc() {
-      return "Kursunuzu d\xfcnyaya a\xe7\u0131k hale getirebilirsiniz! Ya da, kursunuzu \xf6zel ve g\xfcvenli yapabilirsiniz.";
+      return "Nyilv\xe1noss\xe1 teheted a kurzusodat a vil\xe1g sz\xe1m\xe1ra! Vagy, tedd priv\xe1tt\xe1 \xe9s biztons\xe1goss\xe1.";
     },
     get$createGroupChatDesc() {
-      return "Etkinlik oturumlar\u0131 ba\u015flar ve biterken, grup sohbetleri rutin ileti\u015fim i\xe7in a\xe7\u0131k kalacakt\u0131r.";
+      return "M\xedg az aktivit\xe1si \xfcl\xe9sek kezdete \xe9s v\xe9ge, a csoportos besz\xe9lget\xe9sek nyitva maradnak a rutinszer\u0171 kommunik\xe1ci\xf3hoz.";
     },
     get$deleteDesc() {
-      return "Sadece y\xf6neticiler kursu silebilir. Bu, t\xfcm kullan\u0131c\u0131lar\u0131 kald\u0131ran ve kurs i\xe7indeki t\xfcm se\xe7ili sohbetleri silen y\u0131k\u0131c\u0131 bir i\u015flemdir. Dikkatli ilerleyin.";
+      return "Csak az adminok t\xf6r\xf6lhetnek kurzust. Ez egy destrukt\xedv m\u0171velet, amely minden felhaszn\xe1l\xf3t elt\xe1vol\xedt \xe9s t\xf6rli az \xf6sszes kiv\xe1lasztott csoportot a kurzuson bel\xfcl. L\xe9gy \xf3vatos.";
     },
     get$noCourseFound() {
-      return "Ah, bu kursun bir plan\u0131 olmal\u0131!\n\nKurs planlar\u0131, konu ve sohbet etkinliklerinin s\u0131ras\u0131d\u0131r.";
+      return "\xd3, ennek a kurzusnak tervre van sz\xfcks\xe9ge!\n\nA kurzustervek t\xe9m\xe1k \xe9s besz\xe9lget\xe9si tev\xe9kenys\xe9gek sorozata.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " di\u011fer";
+      return "+ " + num + " m\xe1sok";
     },
     get$directMessages() {
-      return "Do\u011frudan Mesajlar";
+      return "K\xf6zvetlen \xfczenetek";
     },
     get$whatNow() {
-      return "\u015eimdi ne olacak?";
+      return "Most mi?";
     },
     get$chooseNextActivity() {
-      return "Bir sonraki etkinli\u011finizi se\xe7in!";
+      return "V\xe1laszd ki a k\xf6vetkez\u0151 tev\xe9kenys\xe9get!";
     },
     get$letsGo() {
-      return "Hadi ba\u015flayal\u0131m";
+      return "Indulj el";
     },
     get$chooseRole() {
-      return "Bir rol se\xe7in!";
+      return "V\xe1lassz szerepet!";
     },
     get$chooseRoleToParticipate() {
-      return "Kat\u0131lmak i\xe7in bir rol se\xe7in!";
+      return "V\xe1lassz szerepet a r\xe9szv\xe9telhez!";
     },
     waitingToFillRole$1(num) {
-      return "" + num + " rol\xfc doldurulmay\u0131 bekliyor...";
+      return "V\xe1rakoz\xe1s a " + num + " szerep bet\xf6lt\xe9s\xe9re...";
     },
     get$pingParticipants() {
-      return "Kurs kat\u0131l\u0131mc\u0131lar\u0131na bildirim g\xf6nder";
+      return "Pingel\xe9s a kurzus r\xe9sztvev\u0151inek";
     },
     get$playWithBot() {
-      return "Pangea Bot ile oyna";
+      return "J\xe1tssz a Pangea Bot-tal";
     },
     get$waitNotDone() {
-      return "Bekle, bitirmedim!";
+      return "V\xe1rj, m\xe9g nem v\xe9geztem!";
     },
     get$waitingForOthersToFinish() {
-      return "Di\u011ferlerinin bitirmesini bekliyorum...";
+      return "V\xe1rakoz\xe1s a t\xf6bbiek befejez\xe9s\xe9re...";
     },
     get$generatingSummary() {
-      return "Sohbeti analiz ediyor ve sonu\xe7lar olu\u015fturuyor";
+      return "Chat elemz\xe9se \xe9s eredm\xe9nyek gener\xe1l\xe1sa";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " " + room + " i\xe7indeki etkinlik oturumuna kat\u0131lacak kullan\u0131c\u0131lar ar\u0131yor";
+      return user + " keres felhaszn\xe1l\xf3kat a " + room + " szob\xe1ban a tev\xe9kenys\xe9ghez";
     },
     get$courseName() {
-      return "Kurs ad\u0131";
+      return "Kurzus neve";
     },
     get$createNewCourse() {
-      return "Yeni kurs";
+      return "\xdaj kurzus";
     },
     goToCourse$1(course) {
-      return "Kursa git: " + course;
+      return "Ugr\xe1s a kurzusra: " + course;
     },
     get$startNewSession() {
-      return "Yeni oturum ba\u015flat";
+      return "\xdaj szekci\xf3 ind\xedt\xe1sa";
     },
     get$joinOpenSession() {
-      return "A\xe7\u0131k oturuma kat\u0131l";
+      return "Csatlakoz\xe1s nyitott szekci\xf3hoz";
     },
     get$activityNotFound() {
-      return "Etkinlik bulunamad\u0131";
+      return "Nem tal\xe1lhat\xf3 tev\xe9kenys\xe9g";
     },
     get$levelUp() {
-      return "Seviyeyi y\xfckselt";
+      return "Szintl\xe9p\xe9s";
     },
     get$myActivities() {
-      return "Benim etkinliklerim";
+      return "Saj\xe1t tev\xe9kenys\xe9geim";
     },
     get$openToJoin() {
-      return "Kat\u0131lmak a\xe7\u0131k";
+      return "Nyitott a csatlakoz\xe1sra";
     },
     get$activityDone() {
-      return "Etkinlik Tamamland\u0131!";
+      return "Tev\xe9kenys\xe9g befejezve!";
     },
     get$promoCodeInfo() {
-      return "\u0130ndirim kodlar\u0131 bir sonraki sayfada girilebilir";
+      return "Prom\xf3ci\xf3s k\xf3dokat a k\xf6vetkez\u0151 oldalon lehet megadni";
     },
     get$editsComingSoon() {
-      return "\u015eehirleri ve etkinlikleri d\xfczenleme \xf6zelli\u011fi yak\u0131nda geliyor.";
+      return "A v\xe1rosok \xe9s tev\xe9kenys\xe9gek szerkeszt\xe9se hamarosan el\xe9rhet\u0151 lesz.";
     },
     get$editing() {
-      return "D\xfczenleniyor";
+      return "Szerkeszt\xe9s";
     },
     get$activityNeedsOneMember() {
-      return "Aman tanr\u0131m! Bu etkinlik i\xe7in 1 ki\u015fiye daha ihtiya\xe7 var.";
+      return "Hopp\xe1! Ehhez a tev\xe9kenys\xe9ghez m\xe9g 1 szem\xe9ly sz\xfcks\xe9ges.";
     },
     activityNeedsMembers$1(num) {
-      return "Aman tanr\u0131m! Bu etkinlik i\xe7in " + num + " ki\u015fiye daha ihtiya\xe7 var.";
+      return "Huh! Ehhez a tev\xe9kenys\xe9ghez m\xe9g " + num + " ember sz\xfcks\xe9ges.";
     },
     get$inviteFriendsToCourse() {
-      return "Arkada\u015flar\u0131m\u0131 kursuma davet et";
+      return "Bar\xe1tok megh\xedv\xe1sa a kurzusomba";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Etkinlik \xf6zetlerini a\xe7mak i\xe7in abone ol";
+      return "Feliratkoz\xe1s a tev\xe9kenys\xe9g \xf6sszefoglal\xf3k felold\xe1s\xe1ra";
     },
     get$subscribeToUnlockDefinitions() {
-      return "Tan\u0131mlar\u0131 a\xe7mak i\xe7in abone ol";
+      return "Feliratkoz\xe1s a defin\xedci\xf3k felold\xe1s\xe1ra";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Transkripsiyonlar\u0131 a\xe7mak i\xe7in abone ol";
+      return "Feliratkoz\xe1s a \xe1t\xedr\xe1sok felold\xe1s\xe1ra";
     },
     get$pingSent() {
-      return "\ud83d\udde3\ufe0f Kurs pingi g\xf6nderildi! \ud83d\udde3\ufe0f";
+      return "\ud83d\udd14 Kurzus ping elk\xfcldve! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "Kurs ba\u015fl\u0131\u011f\u0131";
+      return "Kurzus c\xedme";
     },
     get$courseDesc() {
-      return "Kurs a\xe7\u0131klamas\u0131";
+      return "Kurzus le\xedr\xe1sa";
     },
     get$courseSavedSuccessfully() {
-      return "Kurs ba\u015far\u0131yla kaydedildi";
+      return "Kurzus sikeresen mentve";
     },
     get$addCoursePlan() {
-      return "Bir kurs plan\u0131 ekle";
+      return "Kurzus terv hozz\xe1ad\xe1sa";
     },
     get$activityStatsButtonInstruction() {
-      return "Etkinlik istatistiklerinizi g\xf6rmek ve tamamland\u0131\u011f\u0131nda etkinli\u011fi kapatmak i\xe7in buraya t\u0131klay\u0131n";
+      return "Kattintson ide az aktivit\xe1si statisztik\xe1k megtekint\xe9s\xe9hez \xe9s a tev\xe9kenys\xe9g bez\xe1r\xe1s\xe1hoz, ha befejezte";
     },
     get$readingAnalyticsDesc() {
-      return "Okuma etkinlikleri i\xe7in her mesajda pratik yapmaya t\u0131klay\u0131n.";
+      return "Kattintson a gyakorlatra minden \xfczenetn\xe9l az olvas\xe1si tev\xe9kenys\xe9gekhez.";
     },
     get$speakingAnalyticsDesc() {
-      return "Konu\u015fma prati\u011fi i\xe7in sesli mesajlar kaydedin.";
+      return "Felv\xe9tel hang\xfczeneteket a besz\xe9dgyakorlatokhoz.";
     },
     get$audioAnalyticsDesc() {
-      return "Dinleme etkinlikleri i\xe7in her mesajda pratik yapmaya t\u0131klay\u0131n.";
+      return "Kattintson a gyakorlatra minden \xfczenetn\xe9l a hallgat\xe1si tev\xe9kenys\xe9gekhez.";
     },
     get$loginToAccount() {
-      return "Hesab\u0131n\u0131za giri\u015f yap\u0131n";
+      return "Jelentkezzen be a fi\xf3komba";
     },
     get$appDescription() {
-      return "Bir dil \xf6\u011frenin\narkada\u015flar\u0131n\u0131za mesaj atarken.";
+      return "Tanulj egy nyelvet\n\xfczenetk\xfcld\xe9s k\xf6zben a bar\xe1taidnak.";
     },
     get$languages(_) {
-      return "Diller";
+      return "Nyelvek";
     },
     get$chooseLanguage() {
-      return "Hedef bir dil se\xe7in.";
+      return "V\xe1lasszon ki egy c\xe9lnyelvet.";
     },
     get$startOwn() {
-      return "Kendi ba\u015f\u0131ma ba\u015fla";
+      return "Ind\xedtsa el saj\xe1tj\xe1t";
     },
     get$joinCourseDesc() {
-      return "Her kurs, dizi halinde 8-10 konu ve g\xf6rev tabanl\u0131 dil \xf6\u011frenme etkinlikleri i\xe7erir.";
+      return "Minden kurzusnak 8-10 egym\xe1sra \xe9p\xfcl\u0151 t\xe9m\xe1ja van, k\xfcl\xf6nf\xe9le feladat-alap\xfa nyelvtanul\xe1si tev\xe9kenys\xe9gekkel.";
     },
     get$courseCodeHint() {
-      return "Seyahat kodu veya ba\u011flant\u0131";
+      return "Utaz\xe1si k\xf3d vagy link";
     },
     get$signupOption() {
-      return "Nas\u0131l kaydolmak istiyorsunuz?";
+      return "Hogyan szeretne regisztr\xe1lni?";
     },
     get$withApple() {
-      return "Apple ile";
+      return "Apple-lel";
     },
     get$withGoogle() {
-      return "Google ile";
+      return "Google-lal";
     },
     get$withEmail() {
-      return "E-posta ile";
+      return "E-mail-lel";
     },
     get$createAccount() {
-      return "Hesap olu\u015ftur";
+      return "Fi\xf3k l\xe9trehoz\xe1sa";
     },
     get$loginWithEmail() {
-      return "E-posta ile giri\u015f yap";
+      return "Bejelentkez\xe9s e-mail-lel";
     },
     get$usernameOrEmail() {
-      return "Kullan\u0131c\u0131 ad\u0131 veya e-posta";
+      return "Felhaszn\xe1l\xf3n\xe9v vagy e-mail";
     },
     get$email() {
-      return "E-posta";
+      return "E-mail";
     },
     get$forgotPassword() {
-      return "\u015eifremi unuttum?";
+      return "Elfelejtetted a jelsz\xf3t?";
     },
     get$writingAnalyticsDesc() {
-      return "Yazma al\u0131\u015ft\u0131rmas\u0131 yapmak i\xe7in mesaj g\xf6nderin.";
+      return "\xdczenetek k\xfcld\xe9se a \xedr\xe1s gyakorl\xe1s\xe1hoz.";
     },
     get$endActivity() {
-      return "Etkinli\u011fi sonland\u0131r";
+      return "Tev\xe9kenys\xe9g befejez\xe9se";
     },
     get$allLanguages() {
-      return "T\xfcm diller";
+      return "Minden nyelv";
     },
     get$chatListTooltip() {
-      return 'Burada do\u011frudan mesajlar\u0131n\u0131z\u0131 bulacaks\u0131n\u0131z! Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fiyle DM g\xf6nderebilirsiniz.';
+      return "Itt tal\xe1lod a k\xf6zvetlen \xfczeneteidet! Kattints b\xe1rmely felhaszn\xe1l\xf3 avatarj\xe1ra, \xe9s v\xe1laszd a \u201ebesz\xe9lget\xe9s ind\xedt\xe1sa\u201d lehet\u0151s\xe9get, hogy \xfczenetet k\xfcldj.";
     },
     get$directMessageBotTitle() {
-      return "Pangea Bot ile Do\u011frudan Mesaj";
+      return "K\xf6zvetlen \xfczenet Pangea Bot";
     },
     get$feedbackTitle() {
-      return "Etkinlik Geri Bildirimi";
+      return "Tev\xe9kenys\xe9g visszacsatol\xe1s";
     },
     get$feedbackRespDesc() {
-      return "Yar\u0131na kadar etkinlik g\xfcncellemelerini kontrol edin.";
+      return "J\xf6v\u0151re n\xe9zz vissza az aktivit\xe1s friss\xedt\xe9sei\xe9rt.";
     },
     get$feedbackHint() {
-      return "Geri bildiriminiz";
+      return "Visszacsatol\xe1sod";
     },
     get$feedbackButton() {
-      return "Geri bildirim g\xf6nder";
+      return "Visszacsatol\xe1s k\xfcld\xe9se";
     },
     get$directMessageBotDesc() {
-      return "\u0130nsanlarla konu\u015fmak daha e\u011flencelidir ama... Yapay zeka her zaman haz\u0131r!";
+      return "Az emberekkel val\xf3 besz\xe9lget\xe9s sz\xf3rakoztat\xf3bb, de... az AI mindig k\xe9szen \xe1ll!";
     },
     get$inviteYourFriends() {
-      return "Arkada\u015flar\u0131n\u0131z\u0131 davet edin";
+      return "H\xedvd meg bar\xe1taidat";
     },
     get$playWithAI() {
-      return "\u015eimdilik yapay zeka ile oynay\u0131n";
+      return "Most j\xe1tssz az AI-val";
     },
     get$courseStartDesc() {
-      return "Pangea Bot her zaman haz\u0131r!\n\n...ama arkada\u015flar\u0131n\u0131zla \xf6\u011frenmek daha iyidir!";
+      return "A Pangea Bot b\xe1rmikor k\xe9szen \xe1ll!\n\n...de tanulni jobb bar\xe1tokkal!";
     },
     get$activityDropdownDesc() {
-      return "Bu etkinli\u011fi tamamlad\u0131ktan sonra a\u015fa\u011f\u0131daki butona t\u0131klay\u0131n";
+      return "Amikor befejezed ezt az aktivit\xe1st, kattints az al\xe1bbi gombra";
     },
     get$languageMismatchTitle() {
-      return "Dil uyu\u015fmazl\u0131\u011f\u0131";
+      return "Nyelvi elt\xe9r\xe9s";
     },
     get$emptyChatSearch() {
-      return "No DMs or chats found. Make sure your search is spelled correctly.";
+      return "Nincsenek k\xf6zvetlen \xfczenetek vagy cseveg\xe9sek. Gy\u0151z\u0151dj meg r\xf3la, hogy a keres\xe9s helyesen van \xedrva.";
     },
     get$languageMismatchDesc() {
-      return "Hedef diliniz, bu etkinli\u011fin diliyle uyu\u015fmuyor. Hedef dilinizi g\xfcncellemek ister misiniz?";
+      return "A c\xe9lnyelved nem egyezik ezzel az aktivit\xe1ssal. Friss\xedted a c\xe9lnyelvet?";
     },
     get$reportWordIssueTooltip() {
-      return "Kelime bilgisi sorununu bildir";
+      return "Sz\xf3inform\xe1ci\xf3s probl\xe9ma jelent\xe9se";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Kelime Bilgisi Geri Bildirimi";
+      return "Sz\xf3inform\xe1ci\xf3 visszacsatol\xe1s";
     },
     get$noPublicCoursesFound() {
-      return "Hi\xe7 kamu kursu bulunamad\u0131. Bir tane olu\u015fturmak ister misiniz?";
+      return "Nem tal\xe1lhat\xf3k nyilv\xe1nos kurzusok. Szeretn\xe9l l\xe9trehozni egyet?";
     },
     get$noCourseTemplatesFound() {
-      return "Hedef diliniz i\xe7in herhangi bir kurs bulamad\u0131k. Bu arada Pangea Bot ile sohbet edebilir ve daha fazla kurs i\xe7in sonra tekrar kontrol edebilirsiniz.";
+      return "Nem tal\xe1ltunk kurzusokat a c\xe9lnyelvedhez. K\xf6zben besz\xe9lgethetsz a Pangea Bot-tal, \xe9s k\xe9s\u0151bb visszat\xe9rhetsz tov\xe1bbi kurzusok\xe9rt.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot yan\u0131t vermekte biraz gecikiyor. L\xfctfen daha sonra tekrar deneyin veya bir arkada\u015f\u0131n\u0131z\u0131 davet edin.";
+      return "A Pangea Bot nem reag\xe1l azonnal. K\xe9rj\xfck, pr\xf3b\xe1ld meg k\xe9s\u0151bb, vagy h\xedvd meg egy bar\xe1todat.";
     },
     get$unsubscribedResponseError() {
-      return "Bu \xf6zellik bir abonelik gerektirir";
+      return "Ez a funkci\xf3 el\u0151fizet\xe9st ig\xe9nyel";
     },
     get$leaveDesc() {
-      return "Bu alan\u0131 ve i\xe7indeki t\xfcm sohbetleri terk edin";
+      return "Hagyja el ezt a teret \xe9s az \xf6sszes besz\xe9lget\xe9st benne";
     },
     get$selectAll() {
-      return "T\xfcm\xfcn\xfc se\xe7";
+      return "\xd6sszes kiv\xe1laszt\xe1sa";
     },
     get$deselectAll(_) {
-      return "T\xfcm se\xe7imleri kald\u0131r";
+      return "\xd6sszes kijel\xf6l\xe9s megsz\xfcntet\xe9se";
     },
     get$shareCourse() {
-      return "Kursu payla\u015f";
+      return "Kurzus megoszt\xe1sa";
     },
     get$addCourse() {
-      return "Bir kurs ekle";
+      return "Kurzus hozz\xe1ad\xe1sa";
     },
     get$joinPublicCourse() {
-      return "Herkese a\xe7\u0131k kursa kat\u0131l";
+      return "Csatlakoz\xe1s nyilv\xe1nos kurzushoz";
     },
     get$vocabLevelsDesc() {
-      return "Kelime seviyelerini y\xfckseltti\u011finizde buraya kelimeler gelir!";
+      return "Itt jelennek meg a sz\xf3kincs szavai, amint szintet l\xe9pnek!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "These are your saved activities for review and practice.";
+      return "Ezek a mentett tev\xe9kenys\xe9geid \xe1ttekint\xe9sre \xe9s gyakorl\xe1sra.";
     },
     get$numSavedActivities() {
-      return "Number of saved activities";
+      return "Mentett tev\xe9kenys\xe9gek sz\xe1ma";
     },
     get$saveActivityTitle() {
-      return "Save activity";
+      return "Tev\xe9kenys\xe9g ment\xe9se";
     },
     get$saveActivityDesc() {
-      return "Good job! Save this activity for later review and practice";
+      return "J\xf3 munka! Mentsd el ezt a tev\xe9kenys\xe9get k\xe9s\u0151bbi \xe1ttekint\xe9sre \xe9s gyakorl\xe1sra";
     },
     get$levelInfoTooltip() {
-      return "Here you can see all the points you\u2019ve earned and how!";
+      return "Itt l\xe1thatod az \xf6sszes pontot, amit szerezt\xe9l, \xe9s hogyan!";
     },
     get$alreadyInCourseWithID() {
-      return "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?";
+      return "M\xe1r egy tanfolyamon vagy ezzel a tervvel. Szeretn\xe9l egy tanfolyamot l\xe9trehozni ugyanazzal a tervvel, vagy menj a megl\xe9v\u0151 tanfolyamra?";
     },
     get$goToExistingCourse() {
-      return "Go to existing course";
+      return "Menj a megl\xe9v\u0151 tanfolyamra";
     },
     get$emojiView() {
-      return "Emoji view";
+      return "Emoji n\xe9zet";
     },
     get$feedbackDialogDesc() {
-      return "I make mistakes too! Anything to help me improve?";
+      return "\xc9n is hib\xe1zom! Van valami, amivel seg\xedthetn\xe9l a fejl\u0151d\xe9semben?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Contact has been invited to the course";
+      return "A kapcsolatot megh\xedvt\xe1k a tanfolyamra";
     },
     get$inviteFriends() {
-      return "Arkada\u015flar\u0131 davet et";
+      return "Bar\xe1tok megh\xedv\xe1sa";
     },
     get$activityStatsButtonTooltip() {
-      return "Activity info";
+      return "Tev\xe9kenys\xe9gi inform\xe1ci\xf3";
     },
     get$allow(_) {
-      return "Allow";
+      return "Enged\xe9lyez";
     },
     get$deny() {
-      return "Deny";
+      return "Elutas\xedt";
     },
     get$enabledRenewal() {
-      return "Enable Subscription Renewal";
+      return "El\u0151fizet\xe9s meg\xfaj\xedt\xe1s\xe1nak enged\xe9lyez\xe9se";
     },
     get$subscriptionEndsOn() {
-      return "Subscription Ends On";
+      return "Az el\u0151fizet\xe9s v\xe9ge";
     },
     get$subscriptionRenewsOn() {
-      return "Subscription Renews On";
+      return "Az el\u0151fizet\xe9s meg\xfajul";
     },
     get$waitForSubscriptionChanges() {
-      return "Changes to your subscription may take a moment to reflect in the app.";
+      return "Az el\u0151fizet\xe9sed v\xe1ltoz\xe1sai egy pillanatot ig\xe9nybe vehetnek, hogy megjelenjenek az alkalmaz\xe1sban.";
     },
     get$subscribeReadingAssistance() {
-      return "Subscribe to unlock message tools";
+      return "Iratkozz fel az \xfczenetkezel\u0151 eszk\xf6z\xf6k felold\xe1s\xe1hoz";
+    },
+    get$aceDisplayName() {
+      return "Achinese";
+    },
+    get$achDisplayName() {
+      return "Acoli";
+    },
+    get$afDisplayName() {
+      return "Afrikaans";
+    },
+    get$akDisplayName() {
+      return "Akan";
+    },
+    get$alzDisplayName() {
+      return "Alur";
+    },
+    get$amDisplayName() {
+      return "Amh\xe1r";
+    },
+    get$arDisplayName() {
+      return "Arab";
+    },
+    get$asDisplayName() {
+      return "Assz\xe1mi";
+    },
+    get$awaDisplayName() {
+      return "Awadhi";
+    },
+    get$ayDisplayName() {
+      return "Aymara";
+    },
+    get$azDisplayName() {
+      return "Azerbajdzs\xe1ni";
+    },
+    get$baDisplayName() {
+      return "Bask\xedr";
+    },
+    get$banDisplayName() {
+      return "Balin\xe9z";
+    },
+    get$bbcDisplayName() {
+      return "Batak Toba";
+    },
+    get$beDisplayName() {
+      return "Belorusz";
+    },
+    get$bemDisplayName() {
+      return "Bemba";
+    },
+    get$bewDisplayName() {
+      return "Betawi";
+    },
+    get$bgDisplayName() {
+      return "Bolg\xe1r";
+    },
+    get$bhoDisplayName() {
+      return "Bhojpuri";
+    },
+    get$bikDisplayName() {
+      return "Bikol";
+    },
+    get$bmDisplayName() {
+      return "Bambara";
+    },
+    get$bnDisplayName() {
+      return "Beng\xe1li";
+    },
+    get$bnBDDisplayName() {
+      return "Beng\xe1li (Banglades)";
+    },
+    get$bnINDisplayName() {
+      return "Beng\xe1li (India)";
+    },
+    get$brDisplayName() {
+      return "Breton";
+    },
+    get$bsDisplayName() {
+      return "Bosny\xe1k";
+    },
+    get$btsDisplayName() {
+      return "Batak Simalungun";
+    },
+    get$btxDisplayName() {
+      return "Batak Karo";
+    },
+    get$buaDisplayName() {
+      return "Burj\xe1t";
+    },
+    get$caDisplayName() {
+      return "Katal\xe1n";
+    },
+    get$cebDisplayName() {
+      return "Cebuano";
+    },
+    get$cggDisplayName() {
+      return "Chiga";
+    },
+    get$chmDisplayName() {
+      return "Mari";
+    },
+    get$ckbDisplayName() {
+      return "K\xf6z\xe9p-kurd";
+    },
+    get$cnhDisplayName() {
+      return "Hakha Chin";
+    },
+    get$coDisplayName() {
+      return "Korzikai";
+    },
+    get$crhDisplayName() {
+      return "Kr\xedmi t\xf6r\xf6k";
+    },
+    get$crsDisplayName() {
+      return "Seselwa kreol francia";
+    },
+    get$csDisplayName() {
+      return "Cseh";
+    },
+    get$cvDisplayName() {
+      return "Csuvash";
+    },
+    get$cyDisplayName() {
+      return "Walesi";
+    },
+    get$daDisplayName() {
+      return "d\xe1n";
+    },
+    get$deDisplayName() {
+      return "n\xe9met";
+    },
+    get$dinDisplayName() {
+      return "dinka";
+    },
+    get$doiDisplayName() {
+      return "dogri";
+    },
+    get$dovDisplayName() {
+      return "dombe";
+    },
+    get$dzDisplayName() {
+      return "dzongkha";
+    },
+    get$eeDisplayName() {
+      return "eve";
+    },
+    get$enDisplayName() {
+      return "angol";
+    },
+    get$enAUDisplayName() {
+      return "angol (Ausztr\xe1lia)";
+    },
+    get$enGBDisplayName() {
+      return "angol (Egyes\xfclt Kir\xe1lys\xe1g)";
+    },
+    get$enINDisplayName() {
+      return "English (India)";
+    },
+    get$enUSDisplayName() {
+      return "English (US)";
+    },
+    get$eoDisplayName() {
+      return "Esperanto";
+    },
+    get$esDisplayName() {
+      return "Spanish";
+    },
+    get$esESDisplayName() {
+      return "Spanish (Spain)";
+    },
+    get$esMXDisplayName() {
+      return "Spanish (Mexico)";
+    },
+    get$euDisplayName() {
+      return "Basque";
+    },
+    get$faDisplayName() {
+      return "Persian";
+    },
+    get$ffDisplayName() {
+      return "Fulah";
+    },
+    get$fiDisplayName() {
+      return "Finnish";
+    },
+    get$filDisplayName() {
+      return "F\xfcl\xf6p-szigeteki";
+    },
+    get$fjDisplayName() {
+      return "Fidzsi";
+    },
+    get$foDisplayName() {
+      return "Fer\xf6eri";
+    },
+    get$frDisplayName() {
+      return "Francia";
+    },
+    get$frCADisplayName() {
+      return "Francia (Kanada)";
+    },
+    get$frFRDisplayName() {
+      return "Francia (Franciaorsz\xe1g)";
+    },
+    get$fyDisplayName() {
+      return "Nyugati fr\xedz";
+    },
+    get$gaDisplayName() {
+      return "\xcdr";
+    },
+    get$gaaDisplayName() {
+      return "Ga";
+    },
+    get$gdDisplayName() {
+      return "Sk\xf3t gael";
+    },
+    get$glDisplayName() {
+      return "gal\xedciai";
+    },
+    get$gnDisplayName() {
+      return "guarani";
+    },
+    get$gomDisplayName() {
+      return "goai konkani";
+    },
+    get$guDisplayName() {
+      return "gujarati";
+    },
+    get$haDisplayName() {
+      return "hausa";
+    },
+    get$hawDisplayName() {
+      return "hawaii";
+    },
+    get$heDisplayName() {
+      return "h\xe9ber";
+    },
+    get$hiDisplayName() {
+      return "hindi";
+    },
+    get$hilDisplayName() {
+      return "hiligaynon";
+    },
+    get$hmnDisplayName() {
+      return "hmong";
+    },
+    get$hneDisplayName() {
+      return "Cs\xe1hattisgarhi";
+    },
+    get$hrDisplayName() {
+      return "Horv\xe1t";
+    },
+    get$hrxDisplayName() {
+      return "Hunsrik";
+    },
+    get$htDisplayName() {
+      return "Haiti Kreol";
+    },
+    get$huDisplayName() {
+      return "Magyar";
+    },
+    get$hyDisplayName() {
+      return "\xd6rm\xe9ny";
+    },
+    get$idDisplayName() {
+      return "Indon\xe9z";
+    },
+    get$igDisplayName() {
+      return "Igbo";
+    },
+    get$iloDisplayName() {
+      return "Iloko";
+    },
+    get$isDisplayName() {
+      return "Izlandi";
+    },
+    get$itDisplayName() {
+      return "olasz";
+    },
+    get$jaDisplayName() {
+      return "jap\xe1n";
+    },
+    get$jvDisplayName() {
+      return "j\xe1vai";
+    },
+    get$kaDisplayName() {
+      return "gr\xfaz";
+    },
+    get$kkDisplayName() {
+      return "kazak";
+    },
+    get$kmDisplayName() {
+      return "khmer";
+    },
+    get$knDisplayName() {
+      return "kannada";
+    },
+    get$koDisplayName() {
+      return "koreai";
+    },
+    get$kokDisplayName() {
+      return "konk\xe1ni";
+    },
+    get$kriDisplayName() {
+      return "kri\xf3";
+    },
+    get$ksDisplayName() {
+      return "kasm\xedri";
+    },
+    get$ktuDisplayName() {
+      return "kituba (Kong\xf3i Demokratikus K\xf6zt\xe1rsas\xe1g)";
+    },
+    get$kuDisplayName() {
+      return "kurd";
+    },
+    get$kyDisplayName() {
+      return "kirgiz";
+    },
+    get$laDisplayName() {
+      return "latin";
+    },
+    get$lbDisplayName() {
+      return "luxemburgi";
+    },
+    get$lgDisplayName() {
+      return "ganda";
+    },
+    get$liDisplayName() {
+      return "limburgi";
+    },
+    get$lijDisplayName() {
+      return "ligur";
+    },
+    get$lmoDisplayName() {
+      return "lombard";
+    },
+    get$lnDisplayName() {
+      return "Lingala";
+    },
+    get$loDisplayName() {
+      return "Lao";
+    },
+    get$ltDisplayName() {
+      return "Litv\xe1n";
+    },
+    get$ltgDisplayName() {
+      return "Latgaliai";
+    },
+    get$luoDisplayName() {
+      return "Luo (Kenya \xe9s Tanz\xe1nia)";
+    },
+    get$lusDisplayName() {
+      return "Mizo";
+    },
+    get$lvDisplayName() {
+      return "Lett";
+    },
+    get$maiDisplayName() {
+      return "Maithili";
+    },
+    get$makDisplayName() {
+      return "Makasar";
+    },
+    get$mgDisplayName() {
+      return "Malagaszi";
+    },
+    get$miDisplayName() {
+      return "Maori";
+    },
+    get$minDisplayName() {
+      return "Minangkabau";
+    },
+    get$mkDisplayName() {
+      return "Maced\xf3n";
+    },
+    get$mlDisplayName() {
+      return "Malayalam";
+    },
+    get$mnDisplayName() {
+      return "Mongol";
+    },
+    get$mniDisplayName() {
+      return "Manipuri";
+    },
+    get$mrDisplayName() {
+      return "Marathi";
+    },
+    get$msDisplayName() {
+      return "Mal\xe1j";
+    },
+    get$msArabDisplayName() {
+      return "Mal\xe1j (arab)";
+    },
+    get$msMYDisplayName() {
+      return "Mal\xe1j (Malajzia)";
+    },
+    get$mtDisplayName() {
+      return "m\xe1ltai";
+    },
+    get$mwrDisplayName() {
+      return "marwari";
+    },
+    get$myDisplayName() {
+      return "burmai";
+    },
+    get$nanDisplayName() {
+      return "min nan";
+    },
+    get$nbDisplayName() {
+      return "norv\xe9g (bokm\xe5l)";
+    },
+    get$neDisplayName() {
+      return "nep\xe1li";
+    },
+    get$newDisplayName() {
+      return "newari";
+    },
+    get$nlDisplayName() {
+      return "holland";
+    },
+    get$nlBEDisplayName() {
+      return "flamand";
+    },
+    get$noDisplayName() {
+      return "norv\xe9g";
+    },
+    get$nrDisplayName() {
+      return "D\xe9l-Ndebele";
+    },
+    get$nsoDisplayName() {
+      return "\xc9szak-Szotho";
+    },
+    get$nusDisplayName() {
+      return "Nuer";
+    },
+    get$nyDisplayName() {
+      return "Nyanja";
+    },
+    get$ocDisplayName() {
+      return "Occitan";
+    },
+    get$omDisplayName() {
+      return "Oromo";
+    },
+    get$orDisplayName() {
+      return "Odia";
+    },
+    get$paDisplayName() {
+      return "Punjabi";
+    },
+    get$paArabDisplayName() {
+      return "Punjabi (Shahmukhi)";
+    },
+    get$paINDisplayName() {
+      return "Punjabi (Gurmukhi)";
+    },
+    get$pagDisplayName() {
+      return "Pangasinan";
+    },
+    get$pamDisplayName() {
+      return "Pampanga";
+    },
+    get$papDisplayName() {
+      return "Papiamento";
+    },
+    get$plDisplayName() {
+      return "Lengyel";
+    },
+    get$psDisplayName() {
+      return "Pashto";
+    },
+    get$ptDisplayName() {
+      return "Portug\xe1l";
+    },
+    get$ptBRDisplayName() {
+      return "Portug\xe1l (Braz\xedlia)";
+    },
+    get$ptPTDisplayName() {
+      return "Portug\xe1l (Portug\xe1lia)";
+    },
+    get$quDisplayName() {
+      return "Kecsua";
+    },
+    get$rajDisplayName() {
+      return "R\xe1dzsaszt\xe1ni";
+    },
+    get$rnDisplayName() {
+      return "Rundi";
+    },
+    get$roDisplayName() {
+      return "Rom\xe1n";
+    },
+    get$roMDDisplayName() {
+      return "Moldovai";
+    },
+    get$romDisplayName() {
+      return "Romani";
+    },
+    get$ruDisplayName() {
+      return "Orosz";
+    },
+    get$rwDisplayName() {
+      return "Kinyarwanda";
+    },
+    get$saDisplayName() {
+      return "Szanszkrit";
+    },
+    get$satDisplayName() {
+      return "Sant\xe1li";
+    },
+    get$scnDisplayName() {
+      return "Szic\xedliai";
+    },
+    get$sdDisplayName() {
+      return "Sindhi";
+    },
+    get$sgDisplayName() {
+      return "Sango";
+    },
+    get$shnDisplayName() {
+      return "Szan";
+    },
+    get$siDisplayName() {
+      return "Sinhala";
+    },
+    get$skDisplayName() {
+      return "Szlov\xe1k";
+    },
+    get$slDisplayName() {
+      return "Szlov\xe9n";
+    },
+    get$smDisplayName() {
+      return "Samoai";
+    },
+    get$snDisplayName() {
+      return "Shona";
+    },
+    get$soDisplayName() {
+      return "Szom\xe1liai";
+    },
+    get$sqDisplayName() {
+      return "Alb\xe1n";
+    },
+    get$srDisplayName() {
+      return "Szerb";
+    },
+    get$srMEDisplayName() {
+      return "montenegr\xf3i";
+    },
+    get$ssDisplayName() {
+      return "szv\xe1z\xed";
+    },
+    get$stDisplayName() {
+      return "d\xe9li szotho";
+    },
+    get$suDisplayName() {
+      return "szund\xe1li";
+    },
+    get$svDisplayName() {
+      return "sv\xe9d";
+    },
+    get$swDisplayName() {
+      return "szwah\xe9li";
+    },
+    get$szlDisplayName() {
+      return "szil\xe9ziai";
+    },
+    get$taDisplayName() {
+      return "tamil";
+    },
+    get$teDisplayName() {
+      return "telugu";
+    },
+    get$tetDisplayName() {
+      return "tetum";
+    },
+    get$tgDisplayName() {
+      return "t\xe1dzsik";
+    },
+    get$thDisplayName() {
+      return "thai";
+    },
+    get$tiDisplayName() {
+      return "tigrinya";
+    },
+    get$tkDisplayName() {
+      return "t\xf6r\xf6k";
+    },
+    get$tlDisplayName() {
+      return "tagalog";
+    },
+    get$tnDisplayName() {
+      return "tswana";
+    },
+    get$trDisplayName() {
+      return "t\xf6r\xf6k";
+    },
+    get$tsDisplayName() {
+      return "tsonga";
+    },
+    get$ttDisplayName() {
+      return "tat\xe1r";
+    },
+    get$ugDisplayName() {
+      return "ujgur";
+    },
+    get$ukDisplayName() {
+      return "Ukr\xe1n";
+    },
+    get$urDisplayName() {
+      return "Urdu";
+    },
+    get$urINDisplayName() {
+      return "Urdu (India)";
+    },
+    get$urPKDisplayName() {
+      return "Urdu (Pakiszt\xe1n)";
+    },
+    get$uzDisplayName() {
+      return "\xdczb\xe9g";
+    },
+    get$viDisplayName() {
+      return "Vietnamita";
+    },
+    get$wuuDisplayName() {
+      return "Wu";
+    },
+    get$xhDisplayName() {
+      return "Xhosa";
+    },
+    get$yiDisplayName() {
+      return "Jiddis";
+    },
+    get$yoDisplayName() {
+      return "Joruba";
+    },
+    get$yuaDisplayName() {
+      return "Jukateko";
+    },
+    get$yueDisplayName() {
+      return "Kantonai";
+    },
+    get$yueCNDisplayName() {
+      return "Kantonai (K\xedna)";
+    },
+    get$yueHKDisplayName() {
+      return "Kantonai (Hongkong)";
+    },
+    get$zhDisplayName() {
+      return "K\xednai";
+    },
+    get$zhCNDisplayName() {
+      return "K\xednai (Egyszer\u0171s\xedtett)";
+    },
+    get$zhTWDisplayName() {
+      return "K\xednai (Hagyom\xe1nyos)";
+    },
+    get$zuDisplayName() {
+      return "Zulu";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4574,16 +5231,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nTr, C.L10n);
+    _inherit(A.L10nHu, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTr":{"L10n":[]}}'));
-  var string$ = {
-    _adres: " adresinde geli\u015ftiricilere bildirin. Hata mesaj\u0131: "
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHu":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["ct2OhHyfTUrPl+JBYYgtKDRc750="] = d.current;
+  d["0FhdSef0tKnp3yI/f2FLeK84P9c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_674.part.js.map

@@ -5,4567 +5,5224 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nKo$() {
-      return new A.L10nKo(B.canonicalizedLocale("ko"));
+    L10nGl$() {
+      return new A.L10nGl(B.canonicalizedLocale("gl"));
     },
-    L10nKo: function L10nKo(t0) {
+    L10nGl: function L10nGl(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[35], A);
-  A.L10nKo.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[24], A);
+  A.L10nGl.prototype = {
     get$alwaysUse24HourFormat() {
-      return "false";
+      return "falso";
     },
     get$repeatPassword() {
-      return "\ube44\ubc00\ubc88\ud638 \ub2e4\uc2dc \uc785\ub825";
+      return "Repite o contrasinal";
     },
     get$notAnImage() {
-      return "\uc774\ubbf8\uc9c0 \ud30c\uc77c\uc774 \uc544\ub2d9\ub2c8\ub2e4.";
+      return "Non \xe9 un ficheiro de imaxe.";
     },
     get$setCustomPermissionLevel() {
-      return "\uc0ac\uc6a9\uc790 \uc9c0\uc815 \uad8c\ud55c \uc218\uc900 \uc124\uc815";
+      return "Establecer nivel personalizado dos permisos";
     },
     get$setPermissionsLevelDescription() {
-      return "\uc544\ub798\uc5d0\uc11c \ubbf8\ub9ac \uc815\uc758\ub41c \uc5ed\ud560\uc744 \uc120\ud0dd\ud558\uac70\ub098 0\uc5d0\uc11c 100 \uc0ac\uc774\uc758 \uc0ac\uc6a9\uc790 \uc9c0\uc815 \uad8c\ud55c \uc218\uc900\uc744 \uc785\ub825\ud558\uc138\uc694.";
+      return "Elixe un rol predefinido dos indicados ou escribe un nivel personalizado entre 0 e 100.";
     },
     get$ignoreUser() {
-      return "\uc0ac\uc6a9\uc790 \ubb34\uc2dc";
+      return "Ignorar usuaria";
     },
     get$normalUser() {
-      return "\uc77c\ubc18 \uc0ac\uc6a9\uc790";
+      return "Usuaria corrente";
     },
     get$remove(_) {
-      return "\uc9c0\uc6b0\uae30";
+      return "Quitar";
     },
     get$importNow() {
-      return "\uc9c0\uae08 \ubd88\ub7ec\uc624\uae30";
+      return "Importar agora";
     },
     get$importEmojis() {
-      return "\uc774\ubaa8\uc9c0 \ubd88\ub7ec\uc624\uae30";
+      return "Importar Emojis";
     },
     get$importFromZipFile() {
-      return ".zip \ud30c\uc77c\uc5d0\uc11c \ubd88\ub7ec\uc624\uae30";
+      return "Importar desde ficheiro .zip";
     },
     get$exportEmotePack() {
-      return ".zip \ud30c\uc77c\ub85c \uc774\ubaa8\ud2b8 \ub0b4\ubcf4\ub0b4\uae30";
+      return "Exportar paquete Emote como .zip";
     },
     get$replace(_) {
-      return "\ub300\uccb4";
+      return "Substitu\xedr";
     },
     aboutHomeserver$1(homeserver) {
-      return homeserver + "\uc758 \ub300\ud574\uc11c";
+      return "Sobre " + homeserver;
     },
     get$accept(_) {
-      return "\uc218\ub77d";
+      return "Aceptar";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + "\ub2d8\uc774 \ucd08\ub300\ub97c \uc218\ub77d\ud568";
+      return "\ud83d\udc4d " + username + " aceptou o convite";
     },
     get$account() {
-      return "\uacc4\uc815";
+      return "Conta";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + "\ub2d8\uc774 \uc885\ub2e8\uac04 \uc554\ud638\ud654\ub97c \ud65c\uc131\ud654\ud568";
+      return "\ud83d\udd10 " + username + " activou a cifraxe extremo-a-extremo";
     },
     get$addEmail() {
-      return "\uc774\uba54\uc77c \ucd94\uac00";
+      return "Engadir email";
     },
     supposedMxid$1(mxid) {
-      return mxid + " \uc774\uc5b4\uc57c \ud568";
+      return "Deber\xeda ser " + mxid;
     },
     get$admin() {
-      return "\uc6b4\uc601\uc790";
+      return "Admin";
     },
     get$commandHint_roomupgrade() {
-      return "\uc774 \ubc29\uc744 \uc9c0\uc815\ub41c \ubc29 \ubc84\uc804\uc73c\ub85c \uc5c5\uadf8\ub808\uc774\ub4dc";
+      return "Actualizar esta sala \xe1 versi\xf3n de sala indicada";
     },
     get$commandHint_googly() {
-      return "\uc655\ub208\uc774 \ub208\uc54c \ubcf4\ub0b4\uae30";
+      return "Env\xeda uns ollos desos grandes";
     },
     get$commandHint_cuddle() {
-      return "\ubbf8\uc18c \ubcf4\ub0b4\uae30";
+      return "Env\xeda un agarimo";
     },
     get$commandHint_hug() {
-      return "\ud5c8\uadf8 \ubcf4\ub0b4\uae30";
+      return "Env\xeda un abrazo";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \ub2d8\uc774 \uc655\ub208\uc774 \ub208\uc54c\uc744 \ubcf4\ub0c8\uc2b5\ub2c8\ub2e4";
+      return senderName + " enviouche uns ollos grandes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \ub2d8\uc774 \ub2f9\uc2e0\uc5d0\uac8c \ubbf8\uc18c\uc9d3\uc2b5\ub2c8\ub2e4";
+      return senderName + " m\xe1ndache un achuche";
     },
     hugContent$1(senderName) {
-      return senderName + "\ub2d8\uc774 \ub2f9\uc2e0\uc744 \ud5c8\uadf8\ud569\ub2c8\ub2e4";
+      return senderName + " abr\xe1zate";
     },
     answeredTheCall$1(senderName) {
-      return senderName + "\ub2d8\uc774 \uc804\ud654\uc5d0 \uc751\ub2f5\ud588\uc2b5\ub2c8\ub2e4";
+      return senderName + " respondeu \xe1 chamada";
     },
     get$anyoneCanJoin() {
-      return "\ub204\uad6c\ub098 \ucc38\uac00\ud560 \uc218 \uc788\uc74c";
+      return "Calquera pode unirse";
     },
     get$archive() {
-      return "\uc800\uc7a5";
+      return "Arquivo";
     },
     get$areYouSure() {
-      return "\ud655\uc2e4\ud55c\uac00\uc694?";
+      return "Tes a certeza?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\ub85c\uadf8\uc544\uc6c3\ud558\uace0 \uc2f6\uc740 \uac83\uc774 \ud655\uc2e4\ud55c\uac00\uc694?";
+      return "Tes a certeza de querer sa\xedr?";
     },
     get$askSSSSSign() {
-      return "\ub2e4\ub978 \uc0ac\ub78c\uc744 \uc11c\uba85\ud558\uae30 \uc704\ud574\uc11c, \uc800\uc7a5 \ube44\ubc00\ubc88\ud638\ub098 \ubcf5\uad6c \ud0a4\ub97c \uc785\ub825\ud574\uc8fc\uc138\uc694.";
+      return "Para poder asinar a outra persoa, escribe a t\xfaa frase de paso ou chave de recuperaci\xf3n.";
     },
     askVerificationRequest$1(username) {
-      return username + "\ub2d8\uc758 \uc778\uc99d \uc694\uccad\uc744 \uc218\ub77d\ud560\uae4c\uc694?";
+      return "Aceptar a solicitude de verificaci\xf3n de " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\ud648\uc11c\ubc84\uac00 \uc9c0\uc6d0\ud558\ub294 \ub85c\uadf8\uc778 \uc720\ud615:\n" + serverVersions + "\n\ud558\uc9c0\ub9cc \uc774 \uc571\uc5d0\uc11c \uc9c0\uc6d0\ud558\ub294 \uac83\uc740:\n" + supportedVersions;
+      return "O servidor soporta as seguintes formas de conexi\xf3n:\n" + serverVersions + "\nPero esta app s\xf3 soporta:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\uc785\ub825 \uc54c\ub9bc \ubcf4\ub0b4\uae30";
+      return "Permitir ver que est\xe1s escribindo";
     },
     get$swipeRightToLeftToReply() {
-      return "\uc624\ub978\ucabd\uc5d0\uc11c \uc67c\ucabd\uc73c\ub85c \uc2a4\uc640\uc774\ud504\ud574\uc11c \ub2f5\uc7a5";
+      return "Despraza hacia a esquerda para responder";
     },
     get$sendOnEnter() {
-      return "\uc5d4\ud130\ub85c \ubcf4\ub0b4\uae30";
+      return "Enter para enviar";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " \ucc44\ud305\uacfc " + participants + " \ucc38\uc5ec\uc790";
+      return "" + chats + " charlas e " + participants + " participantes";
     },
     get$banned() {
-      return "\uc601\uad6c \ucd94\ubc29\ub428";
+      return "Vetada";
     },
     bannedUser$2(username, targetName) {
-      return username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \uc601\uad6c \ucd94\ubc29\ud568";
+      return username + " vetou a " + targetName;
     },
     get$blockDevice() {
-      return "\uae30\uae30 \ucc28\ub2e8";
+      return "Bloquear dispositivo";
     },
     get$blocked() {
-      return "\ucc28\ub2e8\ub428";
+      return "Bloqueado";
     },
     get$cancel(_) {
-      return "\ucde8\uc18c";
+      return "Cancelar";
     },
     cantOpenUri$1(uri) {
-      return "URI " + uri + "\ub97c \uc5f4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Non se pode abrir o URI " + uri;
     },
     get$changeDeviceName() {
-      return "\uae30\uae30 \uc774\ub984 \ubc14\uafb8\uae30";
+      return "Cambiar nome do dispositivo";
     },
     changedTheChatAvatar$1(username) {
-      return username + "\ub2d8\uc774 \ucc44\ud305 \uc544\ubc14\ud0c0\ub97c \ubc14\uafc8";
+      return username + " cambiou o avatar da conversa";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + "\ub2d8\uc774 \ucc44\ud305 \uc124\uba85\uc744 '" + description + "' \uc73c\ub85c \ubcc0\uacbd\ud568";
+      return username + " mudou a descrici\xf3n da conversa a: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + "\ub2d8\uc774 \ucc44\ud305 \uc774\ub984\uc744 '" + chatname + "' \uc73c\ub85c \ubc14\uafc8";
+      return username + " mudou o nome da charla a: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + "\ub2d8\uc774 \ucc44\ud305 \uad8c\ud55c\uc744 \ubc14\uafc8";
+      return username + " mudou os permisos da conversa";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + "\ub2d8\uc774 \ub2c9\ub124\uc784\uc744 '" + displayname + "' \ub85c \ubc14\uafc8";
+      return username + " cambiou o nome p\xfablico a: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + "\ub2d8\uc774 \uac8c\uc2a4\ud2b8 \uc811\uadfc \uaddc\uce59\uc744 \ubcc0\uacbd\ud568";
+      return username + " mudou as regras de acceso para convidadas";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + "\ub2d8\uc774 \uac8c\uc2a4\ud2b8 \uc811\uadfc \uaddc\uce59\uc744 " + rules + " \ub85c \ubcc0\uacbd\ud568";
+      return username + " mudou as regras de acceso para convidadas a: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + "\ub2d8\uc774 \ub300\ud654 \uae30\ub85d \uc124\uc815\uc744 \ubcc0\uacbd\ud568";
+      return username + " mudou a visibilidade do historial";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + "\ub2d8\uc774 \ub300\ud654 \uae30\ub85d \uc124\uc815\uc744 " + rules + " \ub85c \ubc14\uafc8";
+      return username + " mudou a visibilidade do historial a: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + "\ub2d8\uc774 \ucc38\uac00 \uaddc\uce59\uc744 \ubc14\uafc8";
+      return username + " mudou as regras de acceso";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + "\ub2d8\uc774 \ucc38\uac00 \uaddc\uce59\uc744 " + joinRules + " \ub85c \ubc14\uafc8";
+      return username + " mudou as regras de acceso a: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + "\ub2d8\uc774 \uc790\uc2e0\uc758 \uc544\ubc14\ud0c0\ub97c \ubc14\uafc8";
+      return username + " mudou o avatar";
     },
     changedTheRoomAliases$1(username) {
-      return username + "\ub2d8\uc774 \ubc29 \ubcc4\uba85\uc744 \ubc14\uafc8";
+      return username + " mudou os alias da sala";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + "\ub2d8\uc774 \ucd08\ub300 \ub9c1\ud06c\ub97c \ubc14\uafc8";
+      return username + " mudou a ligaz\xf3n de convite";
     },
     get$changePassword() {
-      return "\ube44\ubc00\ubc88\ud638 \ubc14\uafb8\uae30";
+      return "Mudar contrasinal";
     },
     get$changeTheme() {
-      return "\uc2a4\ud0c0\uc77c \ubc14\uafb8\uae30";
+      return "Cambiar o estilo";
     },
     get$changeYourAvatar() {
-      return "\uc544\ubc14\ud0c0 \ubc14\uafb8\uae30";
+      return "Cambia o avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "\uc554\ud638\ud654\uac00 \uc190\uc0c1\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "A cifraxe est\xe1 estragada";
     },
     get$chat() {
-      return "\ucc44\ud305";
+      return "Conversa";
     },
     get$chatDetails() {
-      return "\ucc44\ud305 \uc815\ubcf4";
+      return "Detalles da conversa";
     },
     get$chats() {
-      return "\ucc44\ud305";
+      return "Conversas";
     },
     get$chooseAStrongPassword() {
-      return "\uc548\uc804\ud55c \ube44\ubc00\ubc88\ud638\ub97c \uc124\uc815\ud558\uc138\uc694";
+      return "Escolle un contrasinal forte";
     },
     get$clearArchive() {
-      return "\uc800\uc7a5 \uc9c0\uc6b0\uae30";
+      return "Baleirar arquivo";
     },
     get$close(_) {
-      return "\ub2eb\uae30";
+      return "Pechar";
     },
     get$commandHint_markasdm() {
-      return "Matrix ID\ub97c \uc704\ud55c \ub2e4\uc774\ub809\ud2b8 \uba54\uc2dc\uc9c0 \ubc29\uc73c\ub85c \ud45c\uc2dc";
+      return "Marcar como sala de mensaxe directa para o ID Matrix indicado";
     },
     get$commandHint_markasgroup() {
-      return "\uadf8\ub8f9 \ucc44\ud305\uc73c\ub85c \ub9cc\ub4e4\uae30";
+      return "Marcar como grupo";
     },
     get$commandHint_ban() {
-      return "\uc774 \ubc29\uc5d0\uc11c \uc8fc\uc5b4\uc9c4 \uc720\uc800 \uc601\uad6c \ucd94\ubc29\ud558\uae30";
+      return "Vetar a usuaria indicada desta sala";
     },
     get$commandHint_clearcache() {
-      return "\uce90\uc2dc \uc9c0\uc6b0\uae30";
+      return "Baleirar cach\xe9";
     },
     get$commandHint_create() {
-      return "\ube48 \uadf8\ub8f9 \ucc44\ud305\uc744 \uc0dd\uc131\n--no-encryption\uc744 \uc0ac\uc6a9\ud574 \uc554\ud638\ud654\ub97c \ube44\ud65c\uc131\ud654";
+      return "Crear un grupo de conversa baleiro\nUsa --no-encryption para desactivar a cifraxe";
     },
     get$commandHint_discardsession() {
-      return "\uc138\uc158 \uc0ad\uc81c";
+      return "Descartar sesi\xf3n";
     },
     get$commandHint_dm() {
-      return "\ub2e4\uc774\ub809\ud2b8 \ucc44\ud305 \uc2dc\uc791\t\n--no-encryption\uc744 \uc0ac\uc6a9\ud574 \uc554\ud638\ud654 \ube44\ud65c\uc131\ud654";
+      return "Iniciar unha charla directa\nUsa --no-encryption para desactivar a cifraxe";
     },
     get$commandHint_html() {
-      return "HTML \ud615\uc2dd\uc758 \ubb38\uc790 \ubcf4\ub0b4\uae30";
+      return "Enviar texto con formato HTML";
     },
     get$commandHint_invite() {
-      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800 \uc774 \ub8f8\uc5d0 \ucd08\ub300\ud558\uae30";
+      return "Convidar \xe1 usuaria a esta sala";
     },
     get$commandHint_join() {
-      return "\uc8fc\uc5b4\uc9c4 \ubc29 \ucc38\uac00\ud558\uae30";
+      return "Unirte \xe1 sala indicada";
     },
     get$commandHint_kick() {
-      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800 \ubc29\uc5d0\uc11c \uc0ad\uc81c\ud558\uae30";
+      return "Eliminar a usuaria indicada desta sala";
     },
     get$commandHint_leave() {
-      return "\uc774 \ub8f8 \ub098\uac00\uae30";
+      return "Sa\xedr desta sala";
     },
     get$commandHint_me() {
-      return "\uc790\uc2e0\uc744 \uc18c\uac1c\ud558\uc138\uc694";
+      return "Conta algo sobre ti";
     },
     get$commandHint_myroomavatar() {
-      return "\uc774 \ubc29\uc758 \uc0ac\uc9c4 \uc124\uc815\ud558\uae30 (by mxc-uri)";
+      return "Establece a t\xfaa imaxe para esta sala (por mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "\uc774 \ubc29\uc758 \ud45c\uc2dc \uc774\ub984 \uc124\uc815\ud558\uae30";
+      return "Establece o teu nome p\xfablico para esta sala";
     },
     get$commandHint_op() {
-      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800\uc758 \uad8c\ud55c \ub808\ubca8 \uc124\uc815 (\uae30\ubcf8:50)";
+      return "Establecer o nivel de responsabilidade da usuaria (por defecto: 50)";
     },
     get$commandHint_plain() {
-      return "\ud615\uc2dd\uc774 \uc9c0\uc815\ub418\uc9c0 \uc54a\uc740 \ubb38\uc790 \ubcf4\ub0b4\uae30";
+      return "Enviar texto sen formato";
     },
     get$commandHint_react() {
-      return "\ub2f5\uc7a5 \ubc18\uc751\uc73c\ub85c \ubcf4\ub0b4\uae30";
+      return "Enviar resposta como reacci\xf3n";
     },
     get$commandHint_send() {
-      return "\ubb38\uc790 \ubcf4\ub0b4\uae30";
+      return "Enviar texto";
     },
     get$commandHint_unban() {
-      return "\uc8fc\uc5b4\uc9c4 \uc720\uc800\ub97c \uc774 \ubc29\uc5d0\uc11c \uc601\uad6c\ucd94\ubc29 \ud574\uc81c\ud558\uae30";
+      return "Retirar veto \xe1 usuaria para esta sala";
     },
     get$compareEmojiMatch() {
-      return "\uc544\ub798\uc758 \uc774\ubaa8\uc9c0\uac00 \uc77c\uce58\ud558\ub294\uc9c0 \ube44\uad50\ud558\uc138\uc694";
+      return "Compara estes emojis";
     },
     get$compareNumbersMatch() {
-      return "\uc544\ub798\uc758 \uc22b\uc790\uac00 \uc77c\uce58\ud558\ub294\uc9c0 \ube44\uad50\ud558\uc138\uc694";
+      return "Compara estes n\xfameros";
     },
     get$configureChat() {
-      return "\ucc44\ud305 \uc124\uc815";
+      return "Configurar conversa";
     },
     get$confirm(_) {
-      return "\ud655\uc778";
+      return "Confirmar";
     },
     get$copiedToClipboard() {
-      return "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428";
+      return "Copiado ao portapapeis";
     },
     get$copy(_) {
-      return "\ubcf5\uc0ac";
+      return "Copiar";
     },
     couldNotDecryptMessage$1(error) {
-      return "\uba54\uc2dc\uc9c0 \ubcf5\ud638\ud654\ud560 \uc218 \uc5c6\uc74c: " + error;
+      return "Non se descifrou a mensaxe: " + error;
     },
     get$checkList() {
-      return "\uccb4\ud06c\ub9ac\uc2a4\ud2b8";
+      return "Lista de verificaci\xf3n";
     },
     countParticipants$1(count) {
-      return "" + count + " \ucc38\uc5ec\uc790";
+      return "" + count + " participantes";
     },
     countInvited$1(count) {
-      return "" + count + "\uba85 \ucd08\ub300\ub428";
+      return "" + count + " convidadas";
     },
     get$create(_) {
-      return "\uc0dd\uc131";
+      return "Crear";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + "\ub2d8\uc774 \ucc44\ud305\uc744 \uc0dd\uc131\ud568";
+      return "\ud83d\udcac " + username + " creou a conversa";
     },
     get$createGroup() {
-      return "\uc0c8 \uadf8\ub8f9 \ucc44\ud305";
+      return "Crear grupo";
     },
     get$currentlyActive() {
-      return "\ud604\uc7ac \ud65c\ub3d9 \uc911";
+      return "Actualmente activo";
     },
     get$darkTheme() {
-      return "\ub2e4\ud06c";
+      return "Escuro";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\uc774\uac83\uc740 \ub2f9\uc2e0\uc758 \uacc4\uc815\uc744 \ube44\ud65c\uc131\ud654\ud560 \uac83\uc785\ub2c8\ub2e4. \uc774\uac83\uc740 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4! \ud655\uc2e4\ud55c\uac00\uc694?";
+      return "Esto desactivar\xe1 a conta. Esto non ten volta atr\xe1s. Est\xe1s segura?";
     },
     get$defaultPermissionLevel() {
-      return "\uc0c8\ub85c \ucc38\uac00\ud558\ub294 \uc720\uc800\ub4e4\uc758 \uae30\ubcf8 \uad8c\ud55c \ub808\ubca8";
+      return "Nivel de permisos por defecto para novas usuarias";
     },
     get$$delete(_) {
-      return "\uc0ad\uc81c";
+      return "Eliminar";
     },
     get$deleteAccount() {
-      return "\uacc4\uc815 \uc0ad\uc81c";
+      return "Eliminar conta";
     },
     get$deleteMessage() {
-      return "\uba54\uc2dc\uc9c0 \uc0ad\uc81c";
+      return "Eliminar mensaxe";
     },
     get$devices() {
-      return "\uae30\uae30";
+      return "Dispositivos";
     },
     get$displaynameHasBeenChanged() {
-      return "\ud45c\uc2dc \uc774\ub984\uc774 \ubcc0\uacbd\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "O nome p\xfablico mudou";
     },
     get$downloadFile() {
-      return "\ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
+      return "Descargar ficheiro";
     },
     get$edit() {
-      return "\uc218\uc815";
+      return "Editar";
     },
     get$editBlockedServers() {
-      return "\ucc28\ub2e8\ub41c \uc11c\ubc84 \uc218\uc815";
+      return "Editar servidores bloqueados";
     },
     get$chatPermissions() {
-      return "\ucc44\ud305 \uad8c\ud55c";
+      return "Permisos da conversa";
     },
     get$editDisplayname() {
-      return "\ud45c\uc2dc \uc774\ub984 \uc218\uc815";
+      return "Editar nome p\xfablico";
     },
     get$editRoomAvatar() {
-      return "\ubc29 \uc544\ubc14\ud0c0 \uc218\uc815";
+      return "Editar avatar da sala";
     },
     get$emoteExists() {
-      return "\uc774\ubaa8\ud2b8\uac00 \uc774\ubbf8 \uc874\uc7ac\ud569\ub2c8\ub2e4!";
+      return "Xa existe ese emote!";
     },
     get$emoteInvalid() {
-      return "\uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \uc774\ubaa8\ud2b8 \ub2e8\ucd95\ud0a4!";
+      return "Atallo do emote non \xe9 v\xe1lido!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\ucd5c\uadfc \uc0ac\uc6a9\ud55c \uc774\ubaa8\ud2b8\uac00 \uc5ec\uae30 \ub098\ud0c0\ub0a9\ub2c8\ub2e4...";
+      return "Os emotes usados recentemente aparecer\xe1n aqu\xed...";
     },
     get$emotePacks() {
-      return "\ubc29\uc744 \uc704\ud55c \uc774\ubaa8\ud2b8 \ud329";
+      return "Paquetes de Emotes para a sala";
     },
     get$customEmojisAndStickers() {
-      return "\ucee4\uc2a4\ud140 \uc774\ubaa8\uc9c0\uc640 \uc2a4\ud2f0\ucee4";
+      return "Emojis personais e adhesivos";
     },
     get$emoteShortcode() {
-      return "\uc774\ubaa8\ud2b8 \ub2e8\ucd95\ud0a4";
+      return "Atallo de Emote";
     },
     get$emoteWarnNeedToPick() {
-      return "\uc774\ubaa8\ud2b8 \ub2e8\ucd95\ud0a4\uc640 \uc774\ubbf8\uc9c0\ub97c \uace8\ub77c\uc57c \ud569\ub2c8\ub2e4!";
+      return "Escribe un atallo e asocialle unha imaxe!";
     },
     get$emptyChat() {
-      return "\ube48 \ucc44\ud305";
+      return "Conversa baleira";
     },
     get$enableEmotesGlobally() {
-      return "\uc774\ubaa8\ud2b8 \ud329 \ud56d\uc0c1 \uc0ac\uc6a9\ud558\uae30";
+      return "Activar paquete emote globalmente";
     },
     get$enableEncryption() {
-      return "\uc554\ud638\ud654 \uc0ac\uc6a9";
+      return "Activar cifraxe";
     },
     get$encrypted() {
-      return "\uc554\ud638\ud654\ub428";
+      return "Cifrado";
     },
     get$encryptionNotEnabled() {
-      return "\uc554\ud638\ud654\uac00 \ube44\ud65c\uc131\ud654\ub428";
+      return "A cifraxe non est\xe1 activada";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \uc774 \ud1b5\ud654\ub97c \uc885\ub8cc\ud588\uc2b5\ub2c8\ub2e4";
+      return senderName + " rematou a chamada";
     },
     get$enterAnEmailAddress() {
-      return "\uc774\uba54\uc77c \uc8fc\uc18c \uc785\ub825";
+      return "Escribe un enderezo de email";
     },
     errorObtainingLocation$1(error) {
-      return "\uc704\uce58 \uc5bb\ub294 \uc911 \uc624\ub958: " + error;
+      return "Erro ao obter a localizaci\xf3n: " + error;
     },
     get$fontSize(_) {
-      return "\ud3f0\ud2b8 \ud06c\uae30";
+      return "Tama\xf1o da letra";
     },
     get$forward(_) {
-      return "\uc804\ub2ec";
+      return "Reenviar";
     },
     get$fromJoining() {
-      return "\ucc38\uac00\uc2dc\uc810 \uc774\ud6c4\ub85c";
+      return "Desde que se una";
     },
     get$fromTheInvitation() {
-      return "\ucd08\ub300\ubc1b\uc740 \ud6c4\ubd80\ud130";
+      return "Desde o convite";
     },
     get$guestsAreForbidden() {
-      return "\uac8c\uc2a4\ud2b8\uac00 \ub4e4\uc5b4\uc62c \uc218 \uc5c6\uc74c";
+      return "Non se permiten convidadas";
     },
     get$guestsCanJoin() {
-      return "\uac8c\uc2a4\ud2b8\uac00 \ucc38\uac00\ud560 \uc218 \uc788\uc74c";
+      return "Perm\xedtense convidadas";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc5d0 \ub300\ud55c \ucd08\ub300\ub97c \ucca0\ud68c\ud568";
+      return username + " retirou o convite para " + targetName;
     },
     get$help() {
-      return "\ub3c4\uc6c0";
+      return "Axuda";
     },
     get$hideRedactedMessages() {
-      return "\uc0ad\uc81c\ub41c \uba54\uc2dc\uc9c0 \uc228\uae30\uae30";
+      return "Agochar mensaxes editadas";
     },
     get$hideRedactedMessagesBody() {
-      return "\ub204\uad70\uac00\uac00 \uba54\uc2dc\uc9c0\ub97c \uc0ad\uc81c\ud558\uba74 \uba54\uc2dc\uc9c0\ub97c \ub354 \uc774\uc0c1 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Se algu\xe9n corrixe unha mensaxe ent\xf3n esta xa non ser\xe1 visible na charla.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\uc798\ubabb\ub418\uac70\ub098 \uc54c \uc218 \uc5c6\ub294 \uba54\uc2dc\uc9c0 \ud615\uc2dd \uc228\uae40";
+      return "Agochar formatos de mensaxe non v\xe1lidos ou desco\xf1ecidos";
     },
     get$block() {
-      return "\ucc28\ub2e8";
+      return "Bloquear";
     },
     get$blockedUsers() {
-      return "\ucc28\ub2e8\ub41c \uc720\uc800";
+      return "Usuarias bloqueadas";
     },
     get$blockListDescription() {
-      return "\ub2f9\uc2e0\uc740 \ub2f9\uc2e0\uc744 \ubc29\ud574\ud558\ub294 \uc720\uc800\ub4e4\uc744 \ucc28\ub2e8\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ub2f9\uc2e0\uc740 \ub2f9\uc2e0\uc758 \uac1c\uc778 \ucc28\ub2e8 \ubaa9\ub85d\uc5d0 \uc788\ub294 \uc5b4\ub5a0\ud55c \uc720\uc800\uc758 \uba54\uc2dc\uc9c0\uc640 \ubc29 \ucd08\ub300\ub3c4 \ubc1b\uc9c0 \uc54a\uc744\uac83 \uc785\ub2c8\ub2e4.";
+      return "Podes bloquear usuarias que che molesten. Non recibir\xe1s mensaxes nin convites para salas procedentes das usuarias da t\xfaa lista persoal de bloqueo.";
     },
     get$blockUsername() {
-      return "\uc720\uc800 \uc774\ub984 \ubb34\uc2dc";
+      return "Ignorar identificador";
     },
     get$iHaveClickedOnLink() {
-      return "\ub9c1\ud06c\ub97c \ud074\ub9ad\ud588\uc5b4\uc694";
+      return "Prem\xedn na ligaz\xf3n";
     },
     get$incorrectPassphraseOrKey() {
-      return "\uc62c\ubc14\ub974\uc9c0 \uc54a\uc740 \ubcf5\uad6c \ud0a4\ub098 \ube44\ubc00\ubc88\ud638";
+      return "Frase de paso ou chave de recuperaci\xf3n incorrecta";
     },
     get$inviteContact() {
-      return "\uc5f0\ub77d\ucc98 \ucd08\ub300";
+      return "Convidar contacto";
     },
     get$noChatDescriptionYet() {
-      return "\ucc44\ud305 \uc124\uba85\uc774 \uc544\uc9c1 \ucd94\uac00\ub418\uc9c0 \uc54a\uc74c.";
+      return "A\xednda non se escribeu a descrici\xf3n da conversa.";
     },
     get$tryAgain() {
-      return "\ub2e4\uc2dc \uc2dc\ub3c4\ud558\uae30";
+      return "Intentar outra vez";
     },
     get$invited() {
-      return "\ucd08\ub300\ub428";
+      return "Convidado";
     },
     get$redactMessageDescription() {
-      return "\uba54\uc2dc\uc9c0\ub294 \uc774 \ub300\ud654\uc758 \ubaa8\ub4e0 \ucc38\uc5ec\uc790\uc5d0\uac8c \uc0ad\uc81c\ub420 \uac83 \uc785\ub2c8\ub2e4. \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "A mensaxe vai ser editada para todas as participantes na conversa. Non ten volta atr\xe1s.";
     },
     get$optionalRedactReason() {
-      return "(\uc120\ud0dd) \uc774 \uba54\uc2dc\uc9c0\ub97c \ud3b8\uc9d1\ud558\ub294 \uc774\uc720...";
+      return "(Optativo) Raz\xf3n para editar a mensaxe...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \ucd08\ub300\ud568";
+      return "\ud83d\udce9 " + username + " convidou a " + targetName;
     },
     get$invitedUsersOnly() {
-      return "\ucd08\ub300\ub41c \uc720\uc800\ub9cc";
+      return "S\xf3 usuarias convidadas";
     },
     get$inviteForMe() {
-      return "\ucd08\ub300\ub428";
+      return "Convite para min";
     },
     get$isTyping() {
-      return "\uc785\ub825 \uc911\u2026";
+      return "est\xe1 escribindo\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + "\ub2d8\uc774 \ucc44\ud305\uc5d0 \ucc38\uac00\ud568";
+      return "\ud83d\udc4b " + username + " un\xeduse \xe1 conversa";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \ucd94\ubc29\ud568";
+      return "\ud83d\udc5e " + username + " expulsou a " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\ub9c8\uc9c0\ub9c9 \ud65c\ub3d9: " + localizedTimeShort;
+      return "\xdaltima actividade: " + localizedTimeShort;
     },
     get$leave() {
-      return "\ub098\uac00\uae30";
+      return "Sa\xedr";
     },
     get$leftTheChat() {
-      return "\ucc44\ud305\uc744 \ub098\uac14\uc2b5\ub2c8\ub2e4";
+      return "Deixar a conversa";
     },
     get$lightTheme() {
-      return "\ub77c\uc774\ud2b8";
+      return "Claro";
     },
     get$dehydrate() {
-      return "\uc138\uc158\uc744 \ub0b4\ubcf4\ub0b4\uace0 \uae30\uae30 \ucd08\uae30\ud654 \ud558\uae30";
+      return "Exportar sesi\xf3n e eliminar dispositivo";
     },
     get$dehydrateWarning() {
-      return "\uc774 \ub3d9\uc791\uc740 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ubc31\uc5c5 \ud30c\uc77c\uc744 \uaf2d \uc548\uc804\ud558\uac8c \ubcf4\uad00\ud558\uc138\uc694.";
+      return "Esta acci\xf3n non \xe9 reversible. Pon coidado en gardar o ficheiro de apoio.";
     },
     get$dehydrateTor() {
-      return "TOR \uc0ac\uc6a9\uc790: \uc138\uc158 \ub0b4\ubcf4\ub0b4\uae30";
+      return "Usuarias TOR: Exportar sesi\xf3n";
     },
     get$dehydrateTorLong() {
-      return "TOR \uc0ac\uc6a9\uc790\ub4e4\uc740 \ucc3d\uc744 \ub2eb\uae30 \uc804\uc5d0 \uc138\uc158\uc744 \ub0b4\ubcf4\ub0b4\ub294\uac83\uc774 \uad8c\uc7a5\ub429\ub2c8\ub2e4.";
+      return "Para usuarias de TOR, \xe9 recomendable exportar a sesi\xf3n antes de pechar a xanela.";
     },
     get$loadingPleaseWait() {
-      return "\ub85c\ub529 \uc911... \uae30\ub2e4\ub824 \uc8fc\uc138\uc694.";
+      return "Cargando... Agarda.";
     },
     get$loadMore() {
-      return "\ub354 \ubd88\ub7ec\uc624\uae30\u2026";
+      return "Cargar m\xe1is\u2026";
     },
     get$locationDisabledNotice() {
-      return "\uc704\uce58 \uc11c\ube44\uc2a4\uac00 \ube44\ud65c\uc131\ud654\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc704\uce58\ub97c \uacf5\uc720\ud558\ub824\uba74 \ud65c\uc131\ud654\uc2dc\ucf1c\uc8fc\uc138\uc694.";
+      return "Os servizos de localizaci\xf3n est\xe1n desactivados. Act\xedvaos para poder compartir a localizaci\xf3n.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\uc704\uce58 \uad8c\ud55c\uc774 \uac70\ubd80\ub418\uc5c8\uc2b5\ub2c8\ub2e4. \uc704\uce58\ub97c \uacf5\uc720\ud558\uae30 \uc704\ud574\uc11c \ud5c8\uc6a9\ud574\uc8fc\uc138\uc694.";
+      return "Permiso de localizaci\xf3n denegado. Concede este permiso para poder compartir a localizaci\xf3n.";
     },
     get$login() {
-      return "\ub85c\uadf8\uc778";
+      return "Acceder";
     },
     get$logout() {
-      return "\ub85c\uadf8\uc544\uc6c3";
+      return "Pechar sesi\xf3n";
     },
     get$mention() {
-      return "\uba58\uc158";
+      return "Menci\xf3n";
     },
     get$messages() {
-      return "\uba54\uc2dc\uc9c0";
+      return "Mensaxes";
     },
     get$messagesStyle() {
-      return "\uba54\uc138\uc9c0:";
+      return "Mensaxes:";
     },
     get$moderator() {
-      return "\uad00\ub9ac\uc790";
+      return "Moderadora";
     },
     get$newChat() {
-      return "\uc0c8 \ucc44\ud305";
+      return "Nova conversa";
     },
     get$newVerificationRequest() {
-      return "\uc0c8\ub85c\uc6b4 \ud655\uc778 \uc694\uccad!";
+      return "Nova solicitude de verificaci\xf3n!";
     },
     get$next(_) {
-      return "\ub2e4\uc74c";
+      return "Seguinte";
     },
     get$no() {
-      return "\uc544\ub2c8\uc694";
+      return "Non";
     },
     get$noConnectionToTheServer() {
-      return "\uc11c\ubc84\uc5d0 \uc5f0\uacb0 \uc5c6\uc74c";
+      return "Sen conexi\xf3n co servidor";
     },
     get$noEmotesFound() {
-      return "\uc774\ubaa8\ud2b8 \ubc1c\uacac\ub418\uc9c0 \uc54a\uc74c. \ud83d\ude15";
+      return "Non hai emotes. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\ucd08\ub300 \ub9c1\ud06c \uacf5\uc720";
+      return "Comparte ligaz\xf3n de convite";
     },
     get$none() {
-      return "\uc5c6\uc74c";
+      return "Ning\xfan";
     },
     get$noPasswordRecoveryDescription() {
-      return "\ub2f9\uc2e0\uc740 \ube44\ubc00\ubc88\ud638\ub97c \ubcf5\uad6c\ud560 \ubc29\ubc95\uc744 \ucd94\uac00\ud558\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4.";
+      return "A\xednda non engaiches ning\xfan xeito de recuperar o contrasinal.";
     },
     get$noPermission() {
-      return "\uad8c\ud55c \uc5c6\uc74c";
+      return "Sen permiso";
     },
     get$noRoomsFound() {
-      return "\uc544\ubb34 \ubc29\ub3c4 \ubc1c\uacac\ub418\uc9c0 \uc54a\uc558\uc5b4\uc694\u2026";
+      return "Non se atoparon salas\u2026";
     },
     get$notifications() {
-      return "\uc54c\ub9bc";
+      return "Notificaci\xf3ns";
     },
     get$obtainingLocation() {
-      return "\uc704\uce58 \uc5bb\ub294 \uc911\u2026";
+      return "Obtendo a localizaci\xf3n\u2026";
     },
     get$offensive() {
-      return "\ubaa8\uc695\uc801\uc784";
+      return "Ofensivo";
     },
     get$ok() {
-      return "\ud655\uc778";
+      return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "\uc557, \ubb34\uc5b8\uac00\uac00 \uc798\ubabb\ub418\uc5c8\uc2b5\ub2c8\ub2e4\u2026";
+      return "Ooooi, algo fallou\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\ub2f9\uc2e0\uc758 \ud074\ub77c\uc774\uc5b8\ud2b8 \uc911 \ud558\ub098\uac00 \ub85c\uadf8\uc544\uc6c3 \ub428";
+      return "Un dos teus clientes foi desconectado";
     },
     get$openInMaps() {
-      return "\uc9c0\ub3c4\uc5d0\uc11c \uc5f4\uae30";
+      return "Abrir en mapas";
     },
     get$link() {
-      return "\ub9c1\ud06c";
+      return "Ligaz\xf3n";
     },
     get$serverRequiresEmail() {
-      return "\uc774 \uc11c\ubc84\ub294 \uac00\uc785\uc744 \uc704\ud574 \ub2f9\uc2e0\uc758 \uc774\uba54\uc77c\uc744 \ud655\uc778\ud574\uc57c \ud569\ub2c8\ub2e4.";
+      return "O servidor precisa validar o teu enderezo de email para rexistrarte.";
     },
     get$participant() {
-      return "\ucc38\uc5ec\uc790";
+      return "Participante";
     },
     get$passphraseOrKey() {
-      return "\ube44\ubc00\ubc88\ud638\ub098 \ubcf5\uad6c \ud0a4";
+      return "frase de paso ou chave de recuperaci\xf3n";
     },
     get$password(_) {
-      return "\ube44\ubc00\ubc88\ud638";
+      return "Contrasinal";
     },
     get$passwordForgotten() {
-      return "\ube44\ubc00\ubc88\ud638 \uae4c\uba39\uc74c";
+      return "Contrasinal esquecido";
     },
     get$passwordHasBeenChanged() {
-      return "\ube44\ubc00\ubc88\ud638\uac00 \ubcc0\uacbd\ub428";
+      return "Cambiouse o contrasinal";
     },
     get$overview() {
-      return "\uac1c\uc694";
+      return "Vista xeral";
     },
     get$passwordRecoverySettings() {
-      return "\ube44\ubc00\ubc88\ud638 \ubcf5\uad6c \uc124\uc815";
+      return "Axustes de recuperaci\xf3n do contrasinal";
     },
     get$passwordRecovery() {
-      return "\ube44\ubc00\ubc88\ud638 \ubcf5\uad6c";
+      return "Recuperaci\xf3n do contrasinal";
     },
     get$pickImage() {
-      return "\uc774\ubbf8\uc9c0 \uace0\ub974\uae30";
+      return "Elixe unha imaxe";
     },
     get$pin() {
-      return "\uace0\uc815";
+      return "Fixar";
     },
     get$pleaseChoose() {
-      return "\uc120\ud0dd\ud574\uc8fc\uc138\uc694";
+      return "Por favor elixe";
     },
     get$pleaseEnterYourPassword() {
-      return "\ube44\ubc00\ubc88\ud638\ub97c \uc785\ub825\ud574\uc8fc\uc138\uc694";
+      return "Escribe o teu contrasinal";
     },
     get$pleaseEnterYourPin() {
-      return "PIN\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694";
+      return "Escribe o teu pin";
     },
     get$pleaseEnterYourUsername() {
-      return "\uc720\uc800 \uc774\ub984\uc744 \uc785\ub825\ud574\uc8fc\uc138\uc694";
+      return "Escribe o teu nome de usuaria";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\uc6f9\uc0ac\uc774\ud2b8\uc758 \uac00\uc774\ub4dc\ub97c \ub530\ub974\uace0 \ub2e4\uc74c \ubc84\ud2bc\uc744 \ub20c\ub7ec\uc8fc\uc138\uc694.";
+      return "Segue as instrucci\xf3ns do sitio web e toca en seguinte.";
     },
     get$privacy() {
-      return "\ud504\ub77c\uc774\ubc84\uc2dc";
+      return "Privacidade";
     },
     get$reason(_) {
-      return "\uc774\uc720";
+      return "Raz\xf3n";
     },
     redactedBy$1(username) {
-      return username + "\ub2d8\uc774 \uc0ad\uc81c\ud568";
+      return "Editada por " + username;
     },
     get$directChat() {
-      return "\ub2e4\uc774\ub809\ud2b8 \ucc44\ud305";
+      return "Conversa Directa";
     },
     redactedByBecause$2(username, reason) {
-      return username + '\ub2d8\uc774 \uc0ad\uc81c\ud568. \uc0ac\uc720: "' + reason + '"';
+      return "Editada por " + username + ' debido a: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + "\ub2d8\uc774 \uc774\ubca4\ud2b8\ub97c \uc9c0\uc6c0";
+      return username + " editou un evento";
     },
     get$redactMessage() {
-      return "\uba54\uc2dc\uc9c0 \uc9c0\uc6b0\uae30";
+      return "Eliminar mensaxe";
     },
     get$reject() {
-      return "\uac70\uc808";
+      return "Rexeitar";
     },
     rejectedTheInvitation$1(username) {
-      return username + "\ub2d8\uc774 \ucd08\ub300\ub97c \uac70\uc808\ud568";
+      return username + " rexeitou o convite";
     },
     get$removeAllOtherDevices() {
-      return "\ubaa8\ub4e0 \ub2e4\ub978 \uae30\uae30\uc5d0\uc11c \uc9c0\uc6b0\uae30";
+      return "Quitar todos os outros dispositivos";
     },
     get$unbanFromChat() {
-      return "\ucc44\ud305\uc5d0\uc11c \uc601\uad6c\ucd94\ubc29 \ud574\uc81c\ub428";
+      return "Retirar veto na conversa";
     },
     get$removeYourAvatar() {
-      return "\uc544\ubc14\ud0c0 \uc9c0\uc6b0\uae30";
+      return "Elimina o avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\ubc29 \uc0c8\ub85c\uc6b4 \ubc84\uc804\uc73c\ub85c \ub300\uccb4\ud558\uae30";
+      return "Substitu\xedr sala pola nova versi\xf3n";
     },
     get$reply(_) {
-      return "\ub2f5\uc7a5";
+      return "Responder";
     },
     get$reportMessage() {
-      return "\uba54\uc2dc\uc9c0 \uc2e0\uace0";
+      return "Denunciar mensaxe";
     },
     get$roomHasBeenUpgraded() {
-      return "\ubc29\uc774 \uc5c5\uadf8\ub808\uc774\ub4dc\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "A sala foi actualizada";
     },
     get$search(_) {
-      return "\uac80\uc0c9";
+      return "Buscar";
     },
     get$security() {
-      return "\ubcf4\uc548";
+      return "Seguridade";
     },
     get$send(_) {
-      return "\ubcf4\ub0b4\uae30";
+      return "Enviar";
     },
     get$sendAMessage() {
-      return "\uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30";
+      return "Enviar unha mensaxe";
     },
     get$sendAudio() {
-      return "\uc624\ub514\uc624 \ubcf4\ub0b4\uae30";
+      return "Enviar audio";
     },
     get$sendFile() {
-      return "\ud30c\uc77c \ubcf4\ub0b4\uae30";
+      return "Enviar ficheiro";
     },
     get$sendImage() {
-      return "\uc774\ubbf8\uc9c0 \ubcf4\ub0b4\uae30";
+      return "Enviar imaxe";
     },
     sendImages$1(count) {
-      return "\uc774\ubbf8\uc9c0 " + count + "\uac1c \ubcf4\ub0b4\uae30";
+      return "Enviar " + count + " imaxe";
     },
     get$sendMessages() {
-      return "\uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30";
+      return "Enviar mensaxes";
     },
     get$sendVideo() {
-      return "\uc601\uc0c1 \ubcf4\ub0b4\uae30";
+      return "Enviar v\xeddeo";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + "\ub2d8\uc774 \ud30c\uc77c\uc744 \ubcf4\ub0c4";
+      return "\ud83d\udcc1 " + username + " enviou un ficheiro";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + "\ub2d8\uc774 \uc624\ub514\uc624\ub97c \ubcf4\ub0c4";
+      return "\ud83c\udfa4 " + username + " enviou un audio";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + "\ub2d8\uc774 \uc0ac\uc9c4\uc744 \ubcf4\ub0c4";
+      return "\ud83d\uddbc\ufe0f " + username + " enviou unha imaxe";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + "\ub2d8\uc774 \uc2a4\ud2f0\ucee4\ub97c \ubcf4\ub0c4";
+      return "\ud83d\ude0a " + username + " enviou un adhesivo";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + "\ub2d8\uc774 \uc601\uc0c1\uc744 \ubcf4\ub0c4";
+      return "\ud83c\udfa5 " + username + " enviou un v\xeddeo";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " \uc774 \ud1b5\ud654 \uc815\ubcf4 \ubcf4\ub0c4";
+      return senderName + " enviou informaci\xf3n da chamada";
     },
     get$separateChatTypes() {
-      return "\ub2e4\uc774\ub809\ud2b8 \ucc44\ud305\uacfc \uadf8\ub8f9 \ucc44\ud305 \ubd84\ub9ac";
+      return "Separar Conversas directas e Grupos";
     },
     get$setChatDescription() {
-      return "\ucc44\ud305 \uc124\uba85 \uc124\uc815";
+      return "Escribir descrici\xf3n da conversa";
     },
     get$setStatus() {
-      return "\uc0c1\ud0dc \uc124\uc815";
+      return "Establecer estado";
     },
     get$settings() {
-      return "\uc124\uc815";
+      return "Axustes";
     },
     get$share(_) {
-      return "\uacf5\uc720";
+      return "Compartir";
     },
     sharedTheLocation$1(username) {
-      return username + "\ub2d8\uc774 \uc704\uce58\ub97c \uacf5\uc720\ud568";
+      return username + " compartiu a s\xfaa localizaci\xf3n";
     },
     get$shareLocation() {
-      return "\uc704\uce58 \ubcf4\ub0b4\uae30";
+      return "Compartir localizaci\xf3n";
     },
     get$presencesToggle() {
-      return "\ub2e4\ub978 \uc720\uc800\uc758 \uc0c1\ud0dc \uba54\uc2dc\uc9c0 \ud45c\uc2dc";
+      return "Mostra mensaxes de estado de outras usuarias";
     },
     get$skip(_) {
-      return "\uc2a4\ud0b5";
+      return "Saltar";
     },
     get$sourceCode() {
-      return "\uc18c\uc2a4 \ucf54\ub4dc";
+      return "C\xf3digo fonte";
     },
     startedACall$1(senderName) {
-      return senderName + " \uac00 \ud1b5\ud654 \uc2dc\uc791\ud568";
+      return senderName + " iniciou unha chamada";
     },
     get$status(_) {
-      return "\uc0c1\ud0dc";
+      return "Estado";
     },
     get$statusExampleMessage() {
-      return "\uc624\ub298\uc740 \uc5b4\ub5a4 \uae30\ubd84\uc778\uac00\uc694?";
+      return "\xbfQue tal est\xe1s hoxe?";
     },
     get$submit(_) {
-      return "\uc81c\ucd9c";
+      return "Enviar";
     },
     get$synchronizingPleaseWait() {
-      return "\ub3d9\uae30\ud654 \uc911... \uae30\ub2e4\ub824\uc8fc\uc138\uc694.";
+      return "Sincronizando... Agarda.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " \ub3d9\uae30\ud654\uc911\u2026 (" + percentage + "%)";
+      return " Sincronizando\u2026(" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\uc2dc\uc2a4\ud15c";
+      return "Sistema";
     },
     get$theyDontMatch() {
-      return "\uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4";
+      return "Non concordan";
     },
     get$theyMatch() {
-      return "\uc77c\uce58\ud569\ub2c8\ub2e4";
+      return "Concordan";
     },
     get$tooManyRequestsWarning() {
-      return "\ub108\ubb34 \ub9ce\uc740 \uc694\uccad. \uc7a0\uc2dc \ud6c4\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud574\uc8fc\uc138\uc694!";
+      return "Demasiadas solicitudes. Int\xe9ntao m\xe1is tarde!";
     },
     get$tryToSendAgain() {
-      return "\ub2e4\uc2dc \ubcf4\ub0b4\ub3c4\ub85d \uc2dc\ub3c4";
+      return "Int\xe9ntao outra vez";
     },
     get$unavailable() {
-      return "\uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc74c";
+      return "Non dispo\xf1ible";
     },
     unbannedUser$2(username, targetName) {
-      return username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc5d0\ub300\ud55c \uc601\uad6c\ucd94\ubc29\uc744 \ud574\uc81c\ud568";
+      return username + " retirou o veto a " + targetName;
     },
     get$unblockDevice() {
-      return "\uae30\uae30 \ucc28\ub2e8 \ud574\uc81c";
+      return "Desbloquear dispositivo";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\uc54c \uc218 \uc5c6\ub294 \uc554\ud638\ud654 \uc54c\uace0\ub9ac\uc998";
+      return "Algoritmo de cifraxe desco\xf1ecido";
     },
     unknownEvent$1(type) {
-      return "\uc54c \uc218 \uc5c6\ub294 \uc774\ubca4\ud2b8 '" + type + "'";
+      return "Evento desco\xf1ecido '" + type + "'";
     },
     get$unpin() {
-      return "\uace0\uc815 \ud574\uc81c";
+      return "Desafixar";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + "\ub2d8 + " + count + "\uba85\uc774 \uc785\ub825 \uc911\u2026";
+      return username + " e " + count + " m\xe1is est\xe1n escribindo\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + "\ub2d8\uacfc " + username2 + "\ub2d8\uc774 \uc785\ub825 \uc911\u2026";
+      return username + " e " + username2 + " est\xe1n escribindo\u2026";
     },
     userIsTyping$1(username) {
-      return username + "\ub2d8\uc774 \uc785\ub825 \uc911\u2026";
+      return username + " est\xe1 escribindo\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + "\ub2d8\uc774 \ucc44\ud305\uc744 \ub098\uac10";
+      return "\ud83d\udeaa " + username + " deixou a conversa";
     },
     get$username(_) {
-      return "\uc720\uc800 \uc774\ub984";
+      return "Nome de usuaria";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + "\ub2d8\uc774 " + type + " \uc774\ubca4\ud2b8 \ubcf4\ub0c4";
+      return username + " enviou un evento " + type;
     },
     get$unverified() {
-      return "\ud655\uc778\ub418\uc9c0 \uc54a\uc74c";
+      return "Sen verificar";
     },
     get$verified() {
-      return "\ud655\uc778\ub428";
+      return "Verificado";
     },
     get$verifyStart() {
-      return "\ud655\uc778 \uc2dc\uc791";
+      return "Comezar verificaci\xf3n";
     },
     get$verifySuccess() {
-      return "\uc131\uacf5\uc801\uc73c\ub85c \ud655\uc778\ud588\uc5b4\uc694!";
+      return "Verificaches correctamente!";
     },
     get$verifyTitle() {
-      return "\ub2e4\ub978 \uacc4\uc815 \ud655\uc778 \uc911";
+      return "Verificando a outra conta";
     },
     get$visibleForAllParticipants() {
-      return "\ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \ubcf4\uc784";
+      return "Visible para todas as participantes";
     },
     get$visibleForEveryone() {
-      return "\ubaa8\ub450\uc5d0\uac8c \ubcf4\uc784";
+      return "Visible para todas";
     },
     get$voiceMessage() {
-      return "\uc74c\uc131 \uba54\uc2dc\uc9c0";
+      return "Mensaxe de voz";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\uc0c1\ub300\uac00 \uc694\uccad\uc744 \uc218\ub77d\ud558\uae38 \uae30\ub2e4\ub9ac\ub294 \uc911\u2026";
+      return "Agardando a que a outra parte acepte a solicitude\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\uc0c1\ub300\uac00 \uc774\ubaa8\uc9c0\ub97c \uc218\ub77d\ud558\uae38 \uae30\ub2e4\ub9ac\ub294 \uc911\u2026";
+      return "Agardando a que a outra parte acepte as emoticonas\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\uc0c1\ub300\uac00 \uc22b\uc790\ub97c \uc218\ub77d\ud558\uae38 \uae30\ub2e4\ub9ac\ub294 \uc911\u2026";
+      return "Agardando a que a outra parte acepte os n\xfameros\u2026";
     },
     get$warning() {
-      return "\uacbd\uace0!";
+      return "Aviso!";
     },
     get$weSentYouAnEmail() {
-      return "\uc6b0\ub9ac\uac00 \ub2f9\uc2e0\uc5d0\uac8c \uc774\uba54\uc77c\uc744 \ubcf4\ub0c8\uc2b5\ub2c8\ub2e4";
+      return "Enviamosche un email";
     },
     get$whyDoYouWantToReportThis() {
-      return "\uc65c \uc774\uac83\uc744 \uc2e0\uace0\ud558\ub824\uace0 \ud558\ub098\uc694?";
+      return "Por que queres denunciar esto?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "\uc774 \uc8fc\uc18c\ub85c \ub2f9\uc2e0\uc758 \ube44\ubc00\ubc88\ud638\ub97c \ubcf5\uad6c\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Con estos enderezos podes recuperar o contrasinal.";
     },
     get$writeAMessage() {
-      return "\uba54\uc2dc\uc9c0 \uc791\uc131\u2026";
+      return "Escribe unha mensaxe\u2026";
     },
     get$yes() {
-      return "\ud655\uc778";
+      return "Si";
     },
     get$you() {
-      return "\ub2f9\uc2e0";
+      return "Ti";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\ub2f9\uc2e0\uc740 \ub354 \uc774\uc0c1 \uc774 \ucc44\ud305\uc5d0 \ucc38\uc5ec\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4";
+      return "Xa non participas desta conversa";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\ub2f9\uc2e0\uc740 \uc774 \ucc44\ud305\uc5d0\uc11c \uc601\uad6c \ucd94\ubc29\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "Foches vetada nesta conversa";
     },
     get$yourPublicKey() {
-      return "\ub2f9\uc2e0\uc758 \uacf5\uac1c \ud0a4";
+      return "A t\xfaa chave p\xfablica";
     },
     get$messageInfo() {
-      return "\uba54\uc2dc\uc9c0 \uc815\ubcf4";
+      return "Info da mensaxe";
     },
     get$time(_) {
-      return "\uc2dc\uac04";
+      return "Hora";
     },
     get$sender() {
-      return "\ubc1c\uc2e0\uc790";
+      return "Remitente";
     },
     get$openGallery() {
-      return "\uac24\ub7ec\ub9ac \uc5f4\uae30";
+      return "Galer\xeda p\xfablica";
     },
     get$start(_) {
-      return "\uc2dc\uc791";
+      return "Comezar";
     },
     get$markAsRead() {
-      return "\uc77d\uc74c\uc73c\ub85c \ud45c\uc2dc\ud558\uae30";
+      return "Marcar como lido";
     },
     reactedWith$2(sender, reaction) {
-      return sender + "\uac00 " + reaction + "\ub85c \ubc18\uc751\ud568";
+      return sender + " reaccionou con " + reaction;
     },
     get$pinMessage() {
-      return "\ubc29\uc5d0 \uace0\uc815";
+      return "Fixar na sala";
     },
     get$emojis() {
-      return "\uc774\ubaa8\uc9c0";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "\ucd08\ub300\ub97c \uac70\ubd80\ud588\uc2b5\ub2c8\ub2e4";
+      return "Rexeitaches o convite";
     },
     get$youJoinedTheChat() {
-      return "\ucc44\ud305\uc5d0 \ucc38\uac00\ud558\uc600\uc2b5\ub2c8\ub2e4";
+      return "Un\xedcheste \xe1 conversa";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \ucd08\ub300\ub97c \uc218\ub77d\ud588\uc2b5\ub2c8\ub2e4";
+      return "\ud83d\udc4d Aceptaches o convite";
     },
     youBannedUser$1(user) {
-      return user + "\ub2d8\uc744 \uc601\uad6c \ucd94\ubc29\ud568";
+      return "Vetaches a " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return user + "\ub2d8\uc5d0 \ub300\ud55c \ucd08\ub300\ub97c \ucca0\ud68c\ud568";
+      return "Retiraches o convite para " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 " + user + "\ub2d8\uc5d0 \uc758\ud574 \ucd08\ub300\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "\ud83d\udce9 " + user + " convidoute";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 " + user + "\ub2d8\uc744 \ucd08\ub300\ud588\uc2b5\ub2c8\ub2e4";
+      return "\ud83d\udce9 Convidaches a " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e " + user + "\ub2d8\uc744 \ucd94\ubc29\ud588\uc2b5\ub2c8\ub2e4";
+      return "\ud83d\udc5e Expulsaches a " + user;
     },
     youUnbannedUser$1(user) {
-      return user + "\ub2d8\uc758 \uc601\uad6c \ucd94\ubc29\uc744 \ud574\uc81c\ud588\uc2b5\ub2c8\ub2e4";
+      return "Retiraches o veto a " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + "\ub2d8\uc774 \ucc38\uac00\ub97c \uc694\uccad\ud588\uc2b5\ub2c8\ub2e4";
+      return "\ud83d\udeaa " + user + " petou na porta";
     },
     countFiles$1(count) {
-      return "" + count + "\uac1c\uc758 \ud30c\uc77c";
+      return "" + count + " ficheiros";
     },
     get$user() {
-      return "\uc720\uc800";
+      return "Usuaria";
     },
     get$custom() {
-      return "\ucee4\uc2a4\ud140";
+      return "Personal";
     },
     get$noKeyForThisMessage() {
-      return "\uc774\uac83\uc740 \uc774 \uba54\uc2dc\uc9c0\uac00 \ub2f9\uc2e0\uc774 \uc774 \uae30\uae30\ub97c \uc11c\uba85\ud558\uae30 \uc804\uc5d0 \ubc1c\uc1a1\ub418\uc5c8\uae30 \ub54c\ubb38\uc5d0 \uc77c\uc5b4\ub0ac\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.\n\n\uc774\uac83\uc740 \ub610\ud55c \ubc1c\uc1a1\uc790\uac00 \ub2f9\uc2e0\uc758 \uae30\uae30\ub97c \ucc28\ub2e8\ud558\uc600\uac70\ub098 \ud639\uc740 \uc778\ud130\ub137 \uc5f0\uacb0\uc774 \uc798\ubabb\ub418\uc5c8\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.\n\n\ub2e4\ub978 \uc138\uc158\uc5d0\uc11c \uc774 \uba54\uc2dc\uc9c0\ub97c \uc77d\uc744 \uc218 \uc788\ub098\uc694? \uadf8\ub807\ub2e4\uba74 \uadf8 \uba54\uc2dc\uc9c0\ub97c \uc62e\uae38 \uc218 \uc788\uc2b5\ub2c8\ub2e4! \uc124\uc815 > \uae30\uae30\ub85c \uac00\uc11c \uae30\uae30\ub97c \uc11c\ub85c \uc99d\uba85\ud558\uc138\uc694. \ub2e4\uc74c\ubc88\uc5d0 \ubc29\uc744 \uc5f4\uc5c8\uc744 \ub54c \ub450 \uc138\uc158\uc774 \ubaa8\ub450 \uc791\ub3d9\uc911\uc774\ub77c\uba74, \ud0a4\uac00 \uc790\ub3d9\uc73c\ub85c \uc62e\uaca8\uc9c8\uac83\uc785\ub2c8\ub2e4.\n\n\ub85c\uadf8\uc544\uc6c3\ud558\uac70\ub098 \uae30\uae30\ub97c \ubc14\uafc0 \ub54c \ud0a4\ub97c \uc783\uace0\uc2f6\uc9c0 \uc54a\uc73c\uc2e0\uac00\uc694? \uc124\uc815\uc5d0\uc11c \ucc44\ud305 \ubc31\uc5c5\uc744 \uc0ac\uc6a9\uc911\uc778\uc9c0 \ud655\uc778\ud558\uc138\uc694.";
+      return "Pode ser que a mensaxe fose enviada antes de que ti accedeses \xe1 t\xfaa conta neste dispositivo.\n\nTam\xe9n \xe9 posible que a remitente non validase o teu dispositivo ou tam\xe9n que algo fallase na conexi\xf3n a internet.\n\nPodes ler a mensaxe noutro dispositivo? Ent\xf3n podes transferila desde el! Vai a Axustes > Dispositivos e comproba que tes t\xf3dolos dispositivos verificados. Ent\xf3n cando abras a sala a pr\xf3xima vez a sincronizaci\xf3n realizarase e as chaves transmitiranse autom\xe1ticamente.\n\nNon desexas perder as chaves cando pechas sesi\xf3n ou cambias de dispositivo? Comproba nos axustes que activaches a copia de apoio das conversas.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\ube48 \ucc44\ud305 (\uc804 " + oldDisplayName + ")";
+      return "Conversa baleira (era " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "\ucc44\ud305 \ub2e4\uc2dc \uc5f4\uae30";
+      return "Reabrir conversa";
     },
     get$noOtherDevicesFound() {
-      return "\ub2e4\ub978 \uae30\uae30 \ubc1c\uacac\ub418\uc9c0 \uc54a\uc74c";
+      return "Non se atopan outros dispositivos";
     },
     fileIsTooBigForServer$1(max) {
-      return "\uc804\uc1a1\uc5d0 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4. \uc11c\ubc84\ub294 " + max + "\uac00 \ub118\ub294 \ud30c\uc77c\uc744 \uc9c0\uc6d0\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.";
+      return "Non se puido enviar! O servidor s\xf3 permite anexos que non superen " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "\ub9c8\uc9c0\ub9c9\uc73c\ub85c \uc77d\uc740 \uba54\uc2dc\uc9c0\ub85c \uc774\ub3d9";
+      return "Ir \xe1 \xfaltima mensaxe lida";
     },
     get$readUpToHere() {
-      return "\uc5ec\uae30\uae4c\uc9c0 \uc77d\uc74c";
+      return "Lin ate aqu\xed";
     },
     get$jump() {
-      return "\uc810\ud504";
+      return "Ir al\xe1";
     },
     get$openLinkInBrowser() {
-      return "\ube0c\ub77c\uc6b0\uc800\uc5d0\uc11c \ub9c1\ud06c \uc5f4\uae30";
+      return "Abrir ligaz\xf3n no navegador";
     },
     get$setColorTheme() {
-      return "\uc0c9\uc0c1 \ud14c\ub9c8 \uc124\uc815:";
+      return "Cor do decorado:";
     },
     get$invite() {
-      return "\ucd08\ub300";
+      return "Convidar";
     },
     get$invalidInput() {
-      return "\uc798\ubabb\ub41c \uc785\ub825!";
+      return "Contido non v\xe1lido!";
     },
     wrongPinEntered$1(seconds) {
-      return "\uc798\ubabb\ub41c pin\uc785\ub2c8\ub2e4! " + seconds + "\ucd08 \ud6c4\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694...";
+      return "PIN incorrecto! Int\xe9ntao outra vez en " + seconds + " segundos...";
     },
     get$pleaseEnterANumber() {
-      return "0\ubcf4\ub2e4 \ud070 \uc22b\uc790\ub97c \uc785\ub825\ud558\uc138\uc694";
+      return "Escribe un n\xfamero maior de cero";
     },
     get$removeDevicesDescription() {
-      return "\uc774 \uae30\uae30\uc5d0\uc11c \ub85c\uadf8\uc544\uc6c3\ub418\uba70 \ub354 \uc774\uc0c1 \uba54\uc2dc\uc9c0\ub97c \ubc1b\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Vas pechar a sesi\xf3n neste dispositivo e xa non poder\xe1s recibir mensaxes nel.";
     },
     get$banUserDescription() {
-      return "\uc720\uc800\ub294 \ucc44\ud305\uc5d0\uc11c \uc601\uad6c \ucd94\ubc29\ub418\uba70 \ucd94\ubc29 \ud574\uc81c \uc804\uae4c\uc9c0 \ucc44\ud305\uc744 \ub2e4\uc2dc \uc785\ub825\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Vaise vetar a usuaria na conversa e non poder\xe1 entrar outra vez ata que se retire o veto.";
     },
     get$unbanUserDescription() {
-      return "\uc720\uc800\uac00 \ub2e4\uc2dc \ucc44\ud305\uc744 \uc785\ub825\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "A usuaria vai poder entrar outra vez na conversa se quere.";
     },
     get$kickUserDescription() {
-      return "\uc720\uc800\ub294 \ucc44\ud305\uc5d0\uc11c \ucd94\ubc29\ub418\uc9c0\ub9cc \uc601\uad6c \ucd94\ubc29\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \uacf5\uac1c \ucc44\ud305\uc758 \uacbd\uc6b0, \uc5b8\uc81c\ub4e0 \uc720\uc800\uac00 \ub2e4\uc2dc \ucc38\uac00\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "A usuaria foi expulsada pero non vetada. En conversas p\xfablicas a usuaria pode volver cando queira.";
     },
     get$makeAdminDescription() {
-      return "\uc720\uc800\ub97c \ud55c \ubc88 \uad00\ub9ac\uc790\ub85c \ub9cc\ub4e4\uba74, \ub2f9\uc2e0\uacfc \uac19\uc740 \uad8c\ud55c\uc744 \uac00\uc9c0\uae30\ub54c\ubb38\uc5d0 \uad8c\ud55c \ud68c\uc218\uac00 \ubd88\uac00\ub2a5\ud569\ub2c8\ub2e4.";
+      return "Cando convirtas a esta usuaria en admin non poder\xe1s desfacer a acci\xf3n xa que ter\xe1 os mesmos permisos ca ti.";
     },
     get$yourGlobalUserIdIs() {
-      return "\uae00\ub85c\ubc8c \uc720\uc800 ID: ";
+      return "O teu ID-usuaria global \xe9: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\uc548\ud0c0\uae5d\uac8c\ub3c4 "' + query + '"\ub85c \uc720\uc800\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc624\ud0c0\uac00 \uc5c6\ub294\uc9c0 \ud655\uc778\ud558\uc2ed\uc2dc\uc624.';
+      return 'Lamentamos non atopar ningunha usuaria con "' + query + '". Comproba se est\xe1 ben escrito.';
     },
     get$knocking() {
-      return "\ucc38\uac00 \uc694\uccad\uc911";
+      return "A solicitar";
     },
     get$nothingFound() {
-      return "\uc544\ubb34\uac83\ub3c4 \ucc3e\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4...";
+      return "Non atopamos nada...";
     },
     get$groupName() {
-      return "\uadf8\ub8f9 \ucc44\ud305 \uc774\ub984";
+      return "Nome do grupo";
     },
     get$wrongRecoveryKey() {
-      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4... \uc62c\ubc14\ub978 \ubcf5\uad6c\ud0a4\uac00 \uc544\ub2cc\uac83 \uac19\uc2b5\ub2c8\ub2e4.";
+      return "Desculpa... non semella ser o xeito correcto de recuperar a chave.";
     },
     get$startConversation() {
-      return "\ub300\ud654 \uc2dc\uc791";
+      return "Iniciar conversa";
     },
     get$commandHint_sendraw() {
-      return "raw json \uc804\uc1a1";
+      return "Enviar json sen editar";
     },
     get$leaveEmptyToClearStatus() {
-      return "\ube44\uc6cc\uc11c \uc0c1\ud0dc\ub97c \uc9c0\uc6b0\uc138\uc694.";
+      return "Deixa baleiro para limpar o teu estado.";
     },
     get$searchForUsers() {
-      return "@users \uac80\uc0c9...";
+      return "Buscar @persoas...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\ud604\uc7ac \ube44\ubc00\ubc88\ud638 \uc785\ub825";
+      return "Escribe o contrasinal actual";
     },
     get$newPassword() {
-      return "\uc0c8 \ube44\ubc00\ubc88\ud638";
+      return "Novo contrasinal";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\uac15\ub825\ud55c \ube44\ubc00\ubc88\ud638\ub97c \uc0ac\uc6a9\ud558\uc138\uc694";
+      return "Elixe un contrasinal forte";
     },
     get$passwordsDoNotMatch() {
-      return "\ube44\ubc00\ubc88\ud638\uac00 \uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4";
+      return "Os contrasinais non concordan";
     },
     get$passwordIsWrong() {
-      return "\ube44\ubc00\ubc88\ud638\uac00 \ud2c0\ub9bd\ub2c8\ub2e4";
+      return "O contrasinal escrito non \xe9 correcto";
     },
     get$decline() {
-      return "\uac70\uc808";
+      return "Desbotar";
     },
     get$thisDevice() {
-      return "\uc774 \uae30\uae30:";
+      return "Este dispositivo:";
     },
     get$initAppError() {
-      return "\uc571 \ucd08\uae30\ud654\uc911 \uc624\ub958 \ubc1c\uc0dd";
+      return "Houbo un fallo ao iniciar a app";
     },
     searchIn$1(chat) {
-      return chat + "\uc5d0\uc11c \uac80\uc0c9...";
+      return 'Buscar na conversa "' + chat + '"...';
     },
     get$searchMore() {
-      return "\ub354 \uac80\uc0c9...";
+      return "Buscar m\xe1is...";
     },
     get$gallery() {
-      return "\uac24\ub7ec\ub9ac";
+      return "Galer\xeda";
     },
     get$files(_) {
-      return "\ud30c\uc77c";
+      return "Ficheiros";
     },
     sessionLostBody$2(url, error) {
-      return "\uc138\uc158\uc744 \uc783\uc5c8\uc2b5\ub2c8\ub2e4. " + url + " \uc5d0\uc11c \uac1c\ubc1c\uc790\uc5d0\uac8c \uc624\ub958\ub97c \uc2e0\uace0\ud558\uc138\uc694. \uc624\ub958 \uba54\uc2dc\uc9c0\ub294 \ub2e4\uc74c\uacfc \uac19\uc2b5\ub2c8\ub2e4: " + error;
+      return "Estragouse a t\xfaa sesi\xf3n. Por favor informa deste fallo \xe1s desenvolvedoras en " + url + ". A mensaxe do erro \xe9: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\uc571\uc774 \ubc31\uc5c5\uc5d0\uc11c \uc138\uc158\uc744 \ubcf5\uc6d0\ud558\ub824 \uc2dc\ub3c4\uc911\uc785\ub2c8\ub2e4. " + url + " \uc5d0\uc11c \uac1c\ubc1c\uc790\uc5d0\uac8c \uc624\ub958\ub97c \uc2e0\uace0\ud558\uc138\uc694. \uc624\ub958 \uba54\uc2dc\uc9c0\ub294 \ub2e4\uc74c\uacfc \uac19\uc2b5\ub2c8\ub2e4: " + error;
+      return "A app vai intentar restablecer a sesi\xf3n desde a copia de apoio. Por favor informa deste erro \xe1s desenvolvedoras en " + url + ". A mensaxe do erro \xe9: " + error;
     },
     get$sendReadReceipts() {
-      return "\uc77d\uc74c \ud655\uc778 \ubcf4\ub0b4\uae30";
+      return "Enviar confirmaci\xf3n de lectura";
     },
     get$sendTypingNotificationsDescription() {
-      return "\ucc44\ud305\uc758 \ub2e4\ub978 \ucc38\uac00\uc790\ub4e4\uc774 \ub2f9\uc2e0\uc774 \uc0c8 \uba54\uc2dc\uc9c0\ub97c \uc785\ub825\uc911\uc778\uac83\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "As outras participantes da conversa poden ver cando est\xe1s a escribir unha mensaxe.";
     },
     get$sendReadReceiptsDescription() {
-      return "\ucc44\ud305\uc758 \ub2e4\ub978 \ucc38\uac00\uc790\ub4e4\uc774 \ub2f9\uc2e0\uc774 \uba54\uc2dc\uc9c0\ub97c \uc77d\uc5c8\ub294\uc9c0 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Outras participantes na conversa poden ver cando liches unha mensaxe.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 \ub2e4\ub978 \uae30\uae30\ub97c \ud655\uc778";
+      return "\ud83d\udd10 Verificar outro dispositivo";
     },
     get$verifyOtherDeviceDescription() {
-      return "\ub2e4\ub978 \uc7a5\uce58\ub97c \ud655\uc778\ud558\uba74, \uc7a5\uce58\uc640 \ud0a4\ub97c \uad50\ud658\ud558\uace0, \uc804\ubc18\uc801\uc778 \ubcf4\uc548\uc744 \uc99d\uac00\uc2dc\ud0b5\ub2c8\ub2e4. \ud83d\udcaa \ud655\uc778\uc744 \uc2dc\uc791\ud558\uba74 \ud31d\uc5c5\uc740 \ub450 \uc7a5\uce58\uc5d0 \ub098\ud0c0\ub0a9\ub2c8\ub2e4. \uadf8\ub7f0 \ub2e4\uc74c \uc11c\ub85c \ube44\uad50\ud574\uc57c \uc774\ubaa8\uc9c0 \ub610\ub294 \uc22b\uc790\uc758 \ubaa9\ub85d\ub97c \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4. \ud655\uc778\uc744 \uc2dc\uc791\ud558\uae30 \uc804\uc5d0 \ubaa8\ub4e0 \uc7a5\uce58\ub97c \uc900\ube44\ud558\uc138\uc694. \ud83e\udd33";
+      return "Ao verificar outro dispositivo est\xe1s compartindo as chaves, aumentando a t\xfaa seguridade \ud83d\udcaa. Ao iniciar a verificaci\xf3n aparecer\xe1 unha xanela emerxente nos dous dispositivos. Nesa xanela ver\xe1s varios emojis ou n\xfameros que tes que comparar entre eles. O mellor xeito de facelo \xe9 ter os dous dispositivos contigo cando inicias o proceso de verificaci\xf3n. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc218\ub77d\ud568";
+      return sender + " aceptou a verificaci\xf3n da chave";
     },
     canceledKeyVerification$1(sender) {
-      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \ucde8\uc18c\ud568";
+      return sender + " desbotou a verificaci\xf3n da chave";
     },
     completedKeyVerification$1(sender) {
-      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc644\ub8cc\ud568";
+      return sender + " completou a verificaci\xf3n da chave";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + "\uac00 \ud0a4 \uac80\uc99d \uc900\ube44\ub97c \uc644\ub8cc\ud568";
+      return sender + " xa pode verificar a chave";
     },
     requestedKeyVerification$1(sender) {
-      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc694\uccad\ud568";
+      return sender + " solicitou verificar a chave";
     },
     startedKeyVerification$1(sender) {
-      return sender + "\uac00 \ud0a4 \uac80\uc99d\uc744 \uc2dc\uc791\ud568";
+      return sender + " comezou coa verificaci\xf3n da chave";
     },
     get$commandHint_ignore() {
-      return "\uc8fc\uc5b4\uc9c4 matrix ID\ub97c \ubb34\uc2dc";
+      return "Ignorar o ID matrix indicado";
     },
     get$commandHint_unignore() {
-      return "\uc8fc\uc5b4\uc9c4 matrix ID \ubb34\uc2dc \ud574\uc81c";
+      return "Non ignorar o ID matrix indicado";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "" + count + "\uba85\uc758 \ucc28\ub2e8\ub41c \uc720\uc800\uac00 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Agora mesmo hai " + count + " usuarias bloqueadas.";
     },
     get$restricted() {
-      return "\uc2a4\ud398\uc774\uc2a4 \uba64\ubc84\ub85c \uc81c\ud55c";
+      return "Non accesible";
     },
     get$markAsUnread() {
-      return "\uc77d\uc9c0 \uc54a\uc74c\uc73c\ub85c \ud45c\uc2dc";
+      return "Marcar como non lido";
     },
     userLevel$1(level) {
-      return "" + level + " - \uc720\uc800";
+      return "" + level + " - Usuaria";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \uad00\ub9ac\uc790";
+      return "" + level + " - Moderadora";
     },
     adminLevel$1(level) {
-      return "" + level + " - \uc6b4\uc601\uc790";
+      return "" + level + " - Administradora";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\ucc44\ud305 \uae30\ub85d \ud45c\uc2dc \uc5ec\ubd80 \ubc14\uafb8\uae30";
+      return "Cambiar a visibilidade do historial da charla";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\uba54\uc778 \uacf5\uac1c \ucc44\ud305 \uc8fc\uc18c \ubc14\uafb8\uae30";
+      return "Cambiar o enderezo p\xfablico principal da charla";
     },
     get$sendRoomNotifications() {
-      return "@room \uc54c\ub9bc \ubcf4\ub0b4\uae30";
+      return "Enviar notificaci\xf3ns a @room";
     },
     get$chatPermissionsDescription() {
-      return "\uc774 \ucc44\ud305\uc5d0\uc11c \ud2b9\uc815 \uc791\uc5c5\uc5d0 \uc694\uad6c\ud560 \uad8c\ud55c \ub808\ubca8\uc744 \uc815\uc758\ud569\ub2c8\ub2e4. \uad8c\ud55c \ub808\ubca8 0, 50, 100\uc740 \uc77c\ubc18\uc801\uc73c\ub85c \uc720\uc800, \uad00\ub9ac\uc790, \uc6b4\uc601\uc790\ub97c \ub098\ud0c0\ub0b4\uc9c0\ub9cc, \ubaa8\ub4e0 \uc22b\uc790\uac00 \uac00\ub2a5\ud569\ub2c8\ub2e4.";
+      return "Define que nivel de permisos son necesarios para realizar certas acci\xf3ns nesta charla. Os niveis de permiso 0, 50 e 100 normalmente representan, usuarias, moderadoras e administradoras, pero son posibles outras escalas.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 " + version + " \uc5c5\ub370\uc774\ud2b8\uac00 \uc124\uce58\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
+      return "\ud83c\udf89 Instalouse a actualizaci\xf3n a " + version + "!";
     },
     get$sendCanceled() {
-      return "\uc804\uc1a1 \ucd5c\uc18c\ub428";
+      return "Cancelouse o env\xedo";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\ud638\ud658\ub418\ub294 \ud648\uc11c\ubc84\uac00 \uc544\ub2cc \uac83 \uac19\uc2b5\ub2c8\ub2e4. URL\uc744 \uc62c\ubc14\ub974\uac8c \uc785\ub825\ub410\ub098\uc694?";
+      return "Non semella ser un servidor de inicio compatible. \xc9 o URL correcto?";
     },
     get$calculatingFileSize() {
-      return "\ud30c\uc77c \ud06c\uae30 \uacc4\uc0b0 \uc911...";
+      return "Calculando o tama\xf1o do ficheiro\u2026";
     },
     get$prepareSendingAttachment() {
-      return "\ucca8\ubd80\ub41c \ud30c\uc77c \uc804\uc1a1 \uc900\ube44 \uc911...";
+      return "Preparando o env\xedo\u2026";
     },
     get$sendingAttachment() {
-      return "\ucca8\ubd80\ub41c \ud30c\uc77c \uc804\uc1a1 \uc911...";
+      return "Enviando o anexo\u2026";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "\ucca8\ubd80\ud30c\uc77c " + $length + "\uac1c\uc911 " + index + "\ubc88\uc9f8 \uc804\uc1a1 \uc911...";
+      return "Enviando o anexo " + index + " de " + $length + "\u2026";
     },
     serverLimitReached$1(seconds) {
-      return "\uc11c\ubc84 \ud55c\ub3c4\uc5d0 \ub3c4\ub2ec\ud588\uc2b5\ub2c8\ub2e4! " + seconds + "\ucd08 \uae30\ub2e4\ub9ac\ub294 \uc911...";
+      return "Acadouse o l\xedmite do servidor! Agarda " + seconds + " segundos\u2026";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\ucc38\uace0: \ubaa8\ub4e0 \uae30\uae30\uc5d0 \ucc44\ud305 \ubc31\uc5c5\uc744 \uc124\uc815\ud558\uba74 \uc790\ub3d9\uc73c\ub85c \uc11c\ub85c \uc778\uc99d\ub429\ub2c8\ub2e4.";
+      return "Nota: Cando conectas todos os teus dispositivos \xe1 copia de apoio da conversa quedan verificados automaticamente.";
     },
     get$continueText() {
-      return "\uacc4\uc18d\ud558\uae30";
+      return "Continuar";
     },
     get$blur(_) {
-      return "\ube14\ub7ec:";
+      return "N\xe9boa:";
     },
     get$opacity(_) {
-      return "\ubd88\ud22c\uba85:";
+      return "Opacidade:";
     },
     get$setWallpaper() {
-      return "\ubc30\uacbd\ud654\uba74 \uc124\uc815\ud558\uae30";
+      return "Establecer fondo";
     },
     get$noContactInformationProvided() {
-      return "\uc11c\ubc84\uac00 \uc720\ud6a8\ud55c \uc5f0\ub77d\ucc98 \uc815\ubcf4\ub97c \uc81c\uacf5\ud558\uc9c0 \uc54a\uc74c";
+      return "O servidor non proporciona informaci\xf3n de contacto v\xe1lida";
     },
     get$contactServerAdmin() {
-      return "\uc11c\ubc84 \uad00\ub9ac\uc790\uc5d0\uac8c \uc5f0\ub77d\ud558\uae30";
+      return "Contacto con Admin do servidor";
     },
     get$contactServerSecurity() {
-      return "\uc11c\ubc84 \ubcf4\uc548 \uad00\ub9ac\uc790\uc5d0\uac8c \uc5f0\ub77d\ud558\uae30";
+      return "Contacto con Seguridade do servidor";
     },
     get$supportPage() {
-      return "\uc9c0\uc6d0 \ud398\uc774\uc9c0";
+      return "P\xe1xina de axuda";
     },
     get$serverInformation() {
-      return "\uc11c\ubc84 \uc815\ubcf4:";
+      return "Informaci\xf3n do servidor:";
     },
     get$name(_) {
-      return "\uc774\ub984";
+      return "Nome";
     },
     get$version(_) {
-      return "\ubc84\uc804";
+      return "Versi\xf3n";
     },
     get$compress() {
-      return "\uc555\ucd95";
+      return "Comprimir";
     },
     get$boldText() {
-      return "\ub450\uaebc\uc6b4 \uae00\uaf34";
+      return "Resaltar texto";
     },
     get$italicText() {
-      return "\uae30\uc6b8\uc5b4\uc9c4 \uae00\uaf34";
+      return "Cursiva";
     },
     get$strikeThrough() {
-      return "\ucde8\uc18c\uc120";
+      return "Riscar";
     },
     get$pleaseFillOut() {
-      return "\uc791\uc131\ud574\uc8fc\uc138\uc694";
+      return "Por favor completa";
     },
     get$invalidUrl() {
-      return "\uc720\ud6a8\ud558\uc9c0 \uc54a\uc740 url";
+      return "URL non v\xe1lido";
     },
     get$addLink() {
-      return "\ub9c1\ud06c \ucd94\uac00";
+      return "Engadir ligaz\xf3n";
     },
     get$unableToJoinChat() {
-      return "\ucc44\ud305\uc5d0 \ucc38\uac00\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\ub978 \uad6c\uc131\uc6d0\uc774 \uc774\ubbf8 \ub300\ud654\ub97c \uc885\ub8cc\ud588\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Non se puido acceder. Pode que a outra parte xa pechase a conversa.";
     },
     get$previous() {
-      return "\uc774\uc804";
+      return "Anterior";
     },
     get$otherPartyNotLoggedIn() {
-      return "\ub2e4\ub978 \uad6c\uc131\uc6d0\uc774 \ud604\uc7ac \ub85c\uadf8\uc778\ud558\uc9c0 \uc54a\uc544 \uba54\uc2dc\uc9c0\ub97c \uc218\uc2e0\ud558\uc9c0 \ubabb\ud569\ub2c8\ub2e4!";
+      return "A outra parte non est\xe1 conectada neste momento e pode que non reciba as mensaxes!";
     },
     get$open(_) {
-      return "\uc5f4\uae30";
+      return "Abrir";
     },
     get$waitingForServer() {
-      return "\uc11c\ubc84\ub97c \uae30\ub2e4\ub9ac\ub294\uc911...";
+      return "Agardando polo servidor\u2026";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \uc0c8 \ucc44\ud305 \uc694\uccad";
+      return "\ud83d\udce9 Nova solicitude de conversa";
     },
     get$contentNotificationSettings() {
-      return "\ucf58\ud150\uce20 \uc54c\ub9bc \uc124\uc815";
+      return "Axustes de notificaci\xf3n de contido";
     },
     get$generalNotificationSettings() {
-      return "\uc77c\ubc18 \uc54c\ub9bc \uc124\uc815";
+      return "Axustes xerais das notificaci\xf3ns";
     },
     get$roomNotificationSettings() {
-      return "\ucc44\ud305\ubc29 \uc54c\ub9bc \uc124\uc815";
+      return "Axustes de notificaci\xf3ns da sala";
     },
     get$userSpecificNotificationSettings() {
-      return "\uc0ac\uc6a9\uc790\ubcc4 \uc54c\ub9bc \uc124\uc815";
+      return "Axustes de notificaci\xf3n espec\xedficos da usuaria";
     },
     get$otherNotificationSettings() {
-      return "\uae30\ud0c0 \uc54c\ub9bc \uc124\uc815";
+      return "Outros axustes das notificaci\xf3ns";
     },
     get$notificationRuleContainsUserName() {
-      return "\uc720\uc800 \uc774\ub984\uc744 \ud3ec\ud568\ud568";
+      return "Cont\xe9n nome de usuaria";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\uba54\uc2dc\uc9c0\uac00 \uc720\uc800\uc758 \uc774\ub984\uc744 \ud3ec\ud568\ud560\ub54c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria cando unha mensaxe cont\xe9n o seu identificador.";
     },
     get$notificationRuleMaster() {
-      return "\ubaa8\ub4e0 \uc54c\ub9bc \uc74c\uc18c\uac70";
+      return "Acalar todas as notificaci\xf3ns";
     },
     get$notificationRuleMasterDescription() {
-      return "\ubaa8\ub4e0 \uaddc\uce59\uc744 \ubb34\uc2dc\ud558\uace0 \ubaa8\ub4e0 \uc54c\ub9bc\uc744 \ube44\ud65c\uc131\ud654\ud569\ub2c8\ub2e4.";
+      return "Sobrescribe todas as outras regras e desactiva todas as notificaci\xf3ns.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\uc790\ub3d9\ud654\ub41c \uba54\uc2dc\uc9c0 \ubb34\uc2dc";
+      return "Suprimir mensaxes automatizadas";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\ubd07\uc744 \ube44\ub86f\ud55c \uc790\ub3d9\ud654\ub41c \uba54\uc2dc\uc9c0\ub85c\ubd80\ud130 \ubc1c\uc0dd\ud558\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
+      return "Suprime as notificaci\xf3ns desde clientes automatizados como os robots.";
     },
     get$notificationRuleInviteForMe() {
-      return "\ucd08\ub300\ub97c \ubc1b\uc74c";
+      return "Te\xf1o un convite";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\ucc44\ud305\ubc29\uc5d0 \ucd08\ub300\ubc1b\uc558\uc744 \ub54c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria de que recibeu o convite para unha sala.";
     },
     get$notificationRuleMemberEvent() {
-      return "\uba64\ubc84 \uc774\ubca4\ud2b8";
+      return "Eventos dos participantes";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\uba64\ubc84 \uc774\ubca4\ud2b8\ub85c \ubc1c\uc0dd\ud558\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
+      return "Suprime as notificaci\xf3ns dos eventos de participaci\xf3n.";
     },
     get$notificationRuleIsUserMention() {
-      return "\uc720\uc800\uac00 \uba58\uc158\ub428";
+      return "Menci\xf3n da usuaria";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\uc720\uc800\uac00 \uba54\uc2dc\uc9c0\uc5d0 \uba58\uc158\ub410\uc744 \ub54c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
+      return "Informa cando se menciona expl\xedcitamente a usuaria nunha mensaxe.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\ud45c\uc2dc \uc774\ub984\uc744 \ud3ec\ud568\ud568";
+      return "Cont\xe9n o nome p\xfablico";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\uba54\uc2dc\uc9c0\uc5d0 \ud45c\uc2dc \uc774\ub984\uc774 \ud3ec\ud568\ub418\uba74 \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria cando unha mensaxe cont\xe9n o seu nome p\xfablico.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\ubc29 \uba58\uc158";
+      return "Menci\xf3n da sala";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\ubc29 \uba58\uc158\uc774 \uc788\uc744\uacbd\uc6b0 \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria cando hai unha menci\xf3n da sala.";
     },
     get$notificationRuleRoomnotif() {
-      return "\ubc29 \uc54c\ub9bc";
+      return "Notificaci\xf3n da sala";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\uba54\uc2dc\uc9c0\uac00 '@room'\uc744 \ud3ec\ud568\ud558\uba74 \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria cando unha mensaxe cont\xe9n '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "\ube44\ud65c\uc131\ud654";
+      return "L\xe1pida";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\ucc44\ud305\ubc29 \ube44\ud65c\uc131\ud654 \uba54\uc2dc\uc9c0\ub97c \uc54c\ub9bc\ud569\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria sobre a desactivaci\xf3n de mensaxes na sala.";
     },
     get$notificationRuleReaction() {
-      return "\ubc18\uc751";
+      return "Reacci\xf3n";
     },
     get$notificationRuleReactionDescription() {
-      return "\ubc18\uc751\uc73c\ub85c \ubc1c\uc0dd\ud558\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
+      return "Omite as notificaci\xf3ns sobre reacci\xf3ns.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "\ucc44\ud305\ubc29 \uc11c\ubc84 ACL";
+      return "ACL da servidor da sala";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\ucc44\ud305\ubc29 \uc11c\ubc84\uc758 \uc811\uadfc \uad8c\ud55c(ACL)\uc73c\ub85c\ubd80\ud130 \uc624\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
+      return "Omite notificaci\xf3ns para as listas de control de acceso (ACL) do servidor da sala.";
     },
     get$notificationRuleSuppressEdits() {
-      return "\uc218\uc815 \uc74c\uc18c\uac70";
+      return "Omite edici\xf3ns";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\uc218\uc815\ub41c \uba54\uc2dc\uc9c0\ub85c\ubd80\ud130 \uc624\ub294 \uc54c\ub9bc\uc744 \ubb34\uc2dc\ud569\ub2c8\ub2e4.";
+      return "Omite as notificaci\xf3ns sobre mensaxes editadas.";
     },
     get$notificationRuleCall() {
-      return "\uc804\ud654";
+      return "Chamada";
     },
     get$notificationRuleCallDescription() {
-      return "\ud1b5\ud654\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria sobre as chamadas.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\uc554\ud638\ud654\ub41c 1:1 \ubc29";
+      return "Sala cifrada conversa persoal";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\uc554\ud638\ud654\ub41c 1:1 \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria sobre mensaxes cifradas en salas de conversa persoal.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "1:1 \ubc29";
+      return "Sala de conversa persoal";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "1:1 \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria sobre mensaxes en salas de conversa persoal.";
     },
     get$notificationRuleMessage() {
-      return "\uba54\uc2dc\uc9c0";
+      return "Mensaxe";
     },
     get$notificationRuleMessageDescription() {
-      return "\uc77c\ubc18 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria sobre mensaxes xen\xe9ricas.";
     },
     get$notificationRuleEncrypted() {
-      return "\uc554\ud638\ud654\ub428";
+      return "Salas cifradas";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\uc554\ud638\ud654\ub41c \ubc29\uc758 \uba54\uc2dc\uc9c0\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria sobre mensaxes en salas cifradas.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Jitsi \uc704\uc82f \uc774\ubca4\ud2b8\uc5d0 \ub300\ud574 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc54c\ub9bc\uc744 \ubcf4\ub0c5\ub2c8\ub2e4.";
+      return "Informa \xe1 usuaria sobre eventos do widget Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "\uc11c\ubc84 ACL \uc774\ubca4\ud2b8 \uc5b5\uc81c";
+      return "Omite eventos do sevidor ACL";
     },
     get$notificationRuleServerAclDescription() {
-      return "\uc11c\ubc84 ACL \uc774\ubca4\ud2b8\uc5d0 \ub300\ud55c \uc54c\ub9bc\uc744 \ucc28\ub2e8\ud569\ub2c8\ub2e4.";
+      return "Omite notificaci\xf3n sobre eventos do servidor ACL.";
     },
     unknownPushRule$1(rule) {
-      return "\uc54c \uc218 \uc5c6\ub294 \ud478\uc2dc \uaddc\uce59 '" + rule + "'";
+      return "Regra push desco\xf1ecida '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender + "\uc758 \uc74c\uc131 \uba54\uc2dc\uc9c0";
+      return "\ud83c\udf99\ufe0f " + duration + " - Mensaxe de voz de  " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\uc774 \uc54c\ub9bc \uc124\uc815\uc744 \uc0ad\uc81c\ud558\uba74 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Se omites este axuste de notificaci\xf3ns non poder\xe1s desfacer a acci\xf3n.";
     },
     get$more() {
-      return "\ub354 \ubcf4\uae30";
+      return "M\xe1is";
     },
     get$shareKeysWith() {
-      return "\ud0a4 \uacf5\uc720 \ub300\uc0c1...";
+      return "Compartir chaves con\u2026";
     },
     get$shareKeysWithDescription() {
-      return "\uc5b4\ub5a4 \uae30\uae30\ub97c \uc2e0\ub8b0\ud558\uc5ec \uc554\ud638\ud654\ub41c \ucc44\ud305\uc5d0\uc11c \uba54\uc2dc\uc9c0\ub97c \uc77d\uc744 \uc218 \uc788\ub3c4\ub85d \ud560 \uac83\uc778\uac00\uc694?";
+      return "En que dispositivos se pode confiar e poden ler as t\xfaas conversas cifradas?";
     },
     get$allDevices() {
-      return "\ubaa8\ub4e0 \uae30\uae30";
+      return "Todos os dispositivos";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\ud65c\uc131\ud654\ub41c \uacbd\uc6b0 \uad50\ucc28 \uc778\uc99d\ub41c \uae30\uae30";
+      return "Dispositivos verificados se est\xe1 activado";
     },
     get$crossVerifiedDevices() {
-      return "\uad50\ucc28 \uc778\uc99d\ub41c \uae30\uae30";
+      return "Dispositivos verificados";
     },
     get$verifiedDevicesOnly() {
-      return "\uc778\uc99d\ub41c \uae30\uae30\ub9cc";
+      return "S\xf3 dispositivos verificados";
     },
     get$optionalMessage() {
-      return "(\uc120\ud0dd \uc0ac\ud56d) \uba54\uc2dc\uc9c0...";
+      return "(Optativo) mensaxe\u2026";
     },
     get$notSupportedOnThisDevice() {
-      return "\uc774 \uae30\uae30\uc5d0\uc11c \uc9c0\uc6d0\ub418\uc9c0 \uc54a\uc74c";
+      return "Non compatible co dispositivo";
     },
     get$enterNewChat() {
-      return "\uc0c8 \ucc44\ud305 \uc2dc\uc791";
+      return "Entrar na nova conversa";
     },
     get$approve() {
-      return "\uc2b9\uc778";
+      return "Aprobar";
     },
     get$commandHint_logout() {
-      return "\ud604\uc7ac \uae30\uae30\uc5d0\uc11c \ub85c\uadf8\uc544\uc6c3";
+      return "Fechar a sesi\xf3n no dispositivo actual";
     },
     get$commandHint_logoutall() {
-      return "\ubaa8\ub4e0 \ud65c\uc131 \uae30\uae30\uc5d0\uc11c \ub85c\uadf8\uc544\uc6c3";
+      return "Fechar a sesi\xf3n en todos os dispositivos activos";
     },
     get$customReaction() {
-      return "\ub9de\ucda4 \ubc18\uc751";
+      return "Reacci\xf3n personalizada";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return l1 + " \ub610\ub294 " + l2 + "\ub85c \uc785\ub825...";
+      return "Escribe en " + l1 + " ou " + l2 + "...";
     },
     get$holdForInfo() {
-      return "\ub2e8\uc5b4 \uc815\ubcf4\ub97c \uc704\ud574 \ud074\ub9ad\ud558\uace0 \uae38\uac8c \ub204\ub974\uc138\uc694.";
+      return "Fai clic e mant\xe9n para obter informaci\xf3n sobre a palabra.";
     },
     get$greenFeedback() {
-      return "\uadf8\uac8c \uc81c\uac00 \ub123\uace0 \uc2f6\uc740 \uac70\uc608\uc694!";
+      return "Iso \xe9 o que eu po\xf1er\xeda!";
     },
     get$yellowFeedback() {
-      return "\uc74c, \uc2dc\ub3c4\ud574\ubcf4\uace0 \uc791\ub3d9\ud558\ub294\uc9c0 \ubcfc \uc218 \uc788\uc5b4\uc694! \uc774 \ub2e8\uc5b4\ub97c \uc0ac\uc6a9\ud558\ub824\uba74 \ub2e4\uc2dc \ud074\ub9ad\ud558\uc138\uc694.";
+      return "Hm, podes probalo e ver se funciona! Para usar esta palabra, s\xf3 fai clic de novo.";
     },
     get$redFeedback() {
-      return "\uadf8\uac8c \ub9de\uc9c0 \uc54a\ub294 \uac83 \uac19\uc544\uc694...";
+      return "Creo que iso non \xe9 correcto...";
     },
     get$gaTooltip() {
-      return "\ubb38\ubc95 \ub3c4\uc6c0\ub9d0\uacfc \ud568\uaed8 L2 \uc0ac\uc6a9";
+      return "L2 con asistencia gramatical";
     },
     get$taTooltip() {
-      return "\ubc88\uc5ed \ub3c4\uc6c0\ub9d0\uacfc \ud568\uaed8 L2 \uc0ac\uc6a9";
+      return "L2 con asistencia de traduci\xf3n";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\uc778\ud130\ub799\ud2f0\ube0c \ubc88\uc5ed\uae30";
+      return "Tradutor interactivo";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\uc778\ud130\ub799\ud2f0\ube0c \ubb38\ubc95 \uac80\uc0ac\uae30";
+      return "Comprobador gramatical interactivo";
     },
     get$waTooltip() {
-      return "\ub3c4\uc6c0\ub9d0 \uc5c6\uc774 L2 \uc0ac\uc6a9";
+      return "L2 sen asistencia";
     },
     get$noIdenticalLanguages() {
-      return "\uae30\ubcf8 \uc5b8\uc5b4\uc640 \ub300\uc0c1 \uc5b8\uc5b4\ub97c \ub2e4\ub974\uac8c \uc120\ud0dd\ud558\uc138\uc694";
+      return "Por favor, escolla idiomas base e destino diferentes";
     },
     get$joinWithClassCode() {
-      return "\uc218\uc5c5 \ucc38\uc5ec";
+      return "Unirse ao curso";
     },
     get$languageLevelPreA1() {
-      return "\ucd08\uae09 \ub0ae\uc74c (Pre A1)";
+      return "Novato Baixo (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\ucd08\uae09 \uc911\uae09 (A1)";
+      return "Novato Medio (A1)";
     },
     get$languageLevelA2() {
-      return "\ucd08\uae09 \uace0\uae09 (A2)";
+      return "Novato Alto (A2)";
     },
     get$languageLevelB1() {
-      return "\uc911\uae09 \uc911 (B1)";
+      return "Intermedio Medio (B1)";
     },
     get$languageLevelB2() {
-      return "\uace0\uae09 \uc800 (B2)";
+      return "Avanzado Baixo (B2)";
     },
     get$languageLevelC1() {
-      return "\uace0\uae09 \uc911 (C1)";
+      return "Avanzado Medio (C1)";
     },
     get$languageLevelC2() {
-      return "\uc6b0\uc218 (C2)";
+      return "Superior (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\uc774\ub984 \ubcc0\uacbd";
+      return "Cambiar o nome";
     },
     get$changeTheNameOfTheChat() {
-      return "\ucc44\ud305 \uc774\ub984 \ubcc0\uacbd";
+      return "Cambiar o nome do chat";
     },
     get$sorryNoResults() {
-      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4, \uacb0\uacfc\uac00 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Desculpa, non hai resultados.";
     },
     get$ignoreInThisText() {
-      return "\ubb34\uc2dc";
+      return "Ignorar";
     },
     needsItMessage$1(targetLanguage) {
-      return "\uc7a0\uae50\ub9cc\uc694, " + targetLanguage + "\uac00 \uc544\ub2c8\uc5d0\uc694! \ubc88\uc5ed \ub3c4\uc6c0 \ud544\uc694\ud558\uc2e0\uac00\uc694?";
+      return "Espera, iso non \xe9 " + targetLanguage + "! Necesitas axuda para traducir?";
     },
     get$countryInformation() {
-      return "\ub0b4 \ub098\ub77c";
+      return "O meu pa\xeds";
     },
     get$targetLanguage() {
-      return "\ub300\uc0c1 \uc5b8\uc5b4";
+      return "Linguaxe de destino";
     },
     get$updateLanguage() {
-      return "\ub0b4 \uc5b8\uc5b4";
+      return "As mi\xf1as linguas";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\uc5b4\ub5a4 \uc5b8\uc5b4\ub97c \ubc30\uc6b0\uace0 \uc2f6\ub098\uc694?";
+      return "Que linguaxe queres aprender?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\ub2f9\uc2e0\uc758 \uae30\ubcf8 \uc5b8\uc5b4\ub294 \ubb34\uc5c7\uc778\uac00\uc694?";
+      return "Cal \xe9 a tua linguaxe base?";
     },
     get$saveChanges() {
-      return "\ubcc0\uacbd \uc0ac\ud56d \uc800\uc7a5";
+      return "Gardar cambios";
     },
     get$publicProfileTitle() {
-      return "\ub0b4 \ud504\ub85c\ud544\uc744 \uac80\uc0c9\uc5d0\uc11c \ucc3e\uc744 \uc218 \uc788\ub3c4\ub85d \ud5c8\uc6a9";
+      return "Permitir que meu perfil se atope na busca";
     },
     get$publicProfileDesc() {
-      return "\ucf1c\uba74, \ub2e4\ub978 \uc0ac\uc6a9\uc790\uac00 \uae00\ub85c\ubc8c \uac80\uc0c9\ucc3d\uc5d0\uc11c \ub2f9\uc2e0\uc758 \ud504\ub85c\ud544\uc744 \ucc3e\uace0 \ucc44\ud305 \uc694\uccad\uc744 \ubcf4\ub0bc \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774\ub54c \uc694\uccad\uc744 \uc218\ub77d\ud558\uac70\ub098 \uac70\ubd80\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Ao activalo, permites que outros usuarios atopen o teu perfil na barra de busca global e envien solicitudes para chatear. Neste momento, podes escoller aceptar ou denegar a solicitude.";
     },
     get$errorDisableIT() {
-      return "\ubc88\uc5ed \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "A axuda de traduci\xf3n est\xe1 desactivada.";
     },
     get$errorDisableIGC() {
-      return "\ubb38\ubc95 \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "A axuda de gram\xe1tica est\xe1 desactivada.";
     },
     get$errorDisableLanguageAssistance() {
-      return "\ubc88\uc5ed \uc9c0\uc6d0\uacfc \ubb38\ubc95 \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "A axuda de traduci\xf3n e a axuda de gram\xe1tica est\xe1n desactivadas.";
     },
     get$errorDisableITUserDesc() {
-      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \ubc88\uc5ed \uc9c0\uc6d0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc138\uc694";
+      return "Fai clic aqu\xed para actualizar as configuraci\xf3ns de axuda de traduci\xf3n";
     },
     get$errorDisableIGCUserDesc() {
-      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \ubb38\ubc95 \uc9c0\uc6d0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc138\uc694";
+      return "Fai clic aqu\xed para actualizar as configuraci\xf3ns de axuda de gram\xe1tica";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \ubc88\uc5ed \uc9c0\uc6d0\uacfc \ubb38\ubc95 \uc9c0\uc6d0 \uc124\uc815\uc744 \uc5c5\ub370\uc774\ud2b8\ud558\uc138\uc694";
+      return "Fai clic aqu\xed para actualizar as configuraci\xf3ns de axuda de traduci\xf3n e gram\xe1tica";
     },
     get$errorDisableITClassDesc() {
-      return "\uc774 \ucc44\ud305\uc774 \uc18d\ud55c \uac15\uc88c\uc5d0 \ub300\ud55c \ubc88\uc5ed \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "A axuda de traduci\xf3n est\xe1 desactivada para o curso neste que se atopa este chat.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\uc774 \ucc44\ud305\uc774 \uc18d\ud55c \uac15\uc88c\uc5d0 \ub300\ud55c \ubb38\ubc95 \uc9c0\uc6d0\uc774 \uaebc\uc838 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "A axuda de gram\xe1tica est\xe1 desactivada para o curso neste que se atopa este chat.";
     },
     get$error405Title() {
-      return "\uc5b8\uc5b4\uac00 \uc124\uc815\ub418\uc9c0 \uc54a\uc74c";
+      return "Idiomas non configurados";
     },
     get$error405Desc() {
-      return "\uba54\uc778 \uba54\ub274 > \ud559\uc2b5 \uc124\uc815\uc5d0\uc11c \uc5b8\uc5b4\ub97c \uc124\uc815\ud558\uc138\uc694.";
+      return "Por favor, configure os seus idiomas no Men\xfa Principal > Configuraci\xf3n de Aprendizaxe.";
     },
     get$termsAndConditions() {
-      return "\uc774\uc6a9 \uc57d\uad00";
+      return "Termos e Condici\xf3ns";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " \ubc0f \ub9cc 16\uc138 \uc774\uc0c1\uc784\uc744 \uc778\uc99d\ud569\ub2c8\ub2e4.";
+      return " e certifico que te\xf1o polo menos 16 anos de idade.";
     },
     get$error502504Title() {
-      return "\uc640, \uc628\ub77c\uc778\uc5d0 \ud559\uc0dd\uc774 \uc815\ub9d0 \ub9ce\ub124\uc694!";
+      return "Vaya, hai moitos estudantes en li\xf1a!";
     },
     get$error502504Desc() {
-      return "\ud30c\ub2c8\uc544 \ubd07\uc774 \ub530\ub77c\uc7a1\ub294 \ub3d9\uc548 \ubc88\uc5ed \ubc0f \ubb38\ubc95 \ub3c4\uad6c\uac00 \ub290\ub9ac\uac70\ub098 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "As ferramentas de traduci\xf3n e gram\xe1tica poden ser lentas ou non estar dispo\xf1ibles mentres os bots de Pangea se po\xf1en ao d\xeda.";
     },
     get$error404Title() {
-      return "\ubc88\uc5ed \uc624\ub958!";
+      return "Erro de traduci\xf3n!";
     },
     get$error404Desc() {
-      return "\ud30c\ub2c8\uc544 \ubd07\uc774 \uc5b4\ub5bb\uac8c \ubc88\uc5ed\ud574\uc57c \ud560\uc9c0 \ud655\uc2e4\ud558\uc9c0 \uc54a\uc544\uc694...";
+      return "O bot de Pangea non est\xe1 seguro de como traducir iso...";
     },
     get$errorPleaseRefresh() {
-      return "\ubb38\uc81c\ub97c \ud574\uacb0 \uc911\uc785\ub2c8\ub2e4! \uc0c8\ub85c\uace0\uce68 \ud6c4 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
+      return "Estamos a investigalo! Por favor, actualice e intente de novo.";
     },
     get$connectedToStaging() {
-      return "\uc2a4\ud14c\uc774\uc9d5\uc5d0 \uc5f0\uacb0\ub428";
+      return "Conectado a Staging";
     },
     get$learningSettings() {
-      return "\ud559\uc2b5 \uc124\uc815";
+      return "Configuraci\xf3ns de Aprendizaxe";
     },
     get$participants() {
-      return "\ucc38\uac00\uc790";
+      return "Participantes";
     },
     get$clickMessageTitle() {
-      return "\ub3c4\uc6c0\uc774 \ud544\uc694\ud558\uc2e0\uac00\uc694?";
+      return "Necesitas axuda?";
     },
     get$clickMessageBody() {
-      return "\uc5b8\uc5b4 \ub3c4\uad6c\uac00 \ud3ec\ud568\ub41c \uba54\uc2dc\uc9c0\ub97c \ud074\ub9ad\ud558\uc138\uc694. \ubc88\uc5ed, \uc7ac\uc0dd \ub4f1!";
+      return "Fai clic nun mensaxe para ferramentas de idioma como traduci\xf3n, reproduci\xf3n e m\xe1is!";
     },
     get$allDone() {
-      return "\ubaa8\ub4e0 \uc791\uc5c5 \uc644\ub8cc!";
+      return "Todo listo!";
     },
     get$vocab() {
-      return "\uc5b4\ud718";
+      return "Vocabulario";
     },
     get$subscribe(_) {
-      return "\uad6c\ub3c5\ud558\uae30";
+      return "Suscr\xedbete";
     },
     get$getAccess() {
-      return "\uc9c0\uae08 \uad6c\ub3c5\ud558\uc138\uc694!";
+      return "\xa1Suscr\xedbete agora!";
     },
     get$subscriptionDesc() {
-      return "\uba54\uc2dc\uc9d5\uc740 \ubb34\ub8cc\uc785\ub2c8\ub2e4! \uc778\ud130\ub799\ud2f0\ube0c \ubc88\uc5ed, \ubb38\ubc95 \uac80\uc0ac \ubc0f \ud559\uc2b5 \ubd84\uc11d\uc744 \uc7a0\uae08 \ud574\uc81c\ud558\ub824\uba74 \uad6c\ub3c5\ud558\uc138\uc694.";
+      return "A mensaxer\xeda \xe9 gratu\xedta! Suscr\xedbete para desbloquear traduci\xf3n interactiva, comprobaci\xf3n gramatical e an\xe1lises de aprendizaxe.";
     },
     get$subscriptionManagement() {
-      return "\uad6c\ub3c5 \uad00\ub9ac";
+      return "Xesti\xf3n da suscrici\xf3n";
     },
     get$currentSubscription() {
-      return "\ud604\uc7ac \uad6c\ub3c5";
+      return "Suscrici\xf3n actual";
     },
     get$cancelSubscription() {
-      return "\uad6c\ub3c5 \ucde8\uc18c";
+      return "Cancelar a t\xfaa suscrici\xf3n";
     },
     get$selectYourPlan() {
-      return "\uc694\uae08\uc81c \uc120\ud0dd";
+      return "Selecciona o teu plan";
     },
     get$subsciptionPlatformTooltip() {
-      return "\uad6c\ub3c5 \ud50c\ub79c\uc744 \uad00\ub9ac\ud558\ub824\uba74 \uc6d0\ub798 \uae30\uae30\uc5d0 \ub85c\uadf8\uc778\ud558\uc138\uc694";
+      return "Por favor, inicia sesi\xf3n no teu dispositivo orixinal para xestionar o teu plan de suscrici\xf3n";
     },
     get$subscriptionManagementUnavailable() {
-      return "\uad6c\ub3c5 \uad00\ub9ac\ub97c \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Xesti\xf3n da suscrici\xf3n non dispo\xf1ible";
     },
     get$paymentMethod() {
-      return "\uc9c0\ubd88 \ubc29\ubc95";
+      return "M\xe9todo de pago";
     },
     get$paymentHistory() {
-      return "\uc9c0\ubd88 \ub0b4\uc5ed";
+      return "Historial de pagos";
     },
     get$emptyChatDownloadWarning() {
-      return "\ube48 \ucc44\ud305\uc740 \ub2e4\uc6b4\ub85c\ub4dc\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Non se pode descargar un chat baleiro";
     },
     get$toggleImmersionMode() {
-      return "\ubab0\uc785 \ubaa8\ub4dc \uc804\ud658";
+      return "Modo de inmersi\xf3n";
     },
     get$toggleImmersionModeDesc() {
-      return "\ud65c\uc131\ud654\ud558\uba74 \ubaa8\ub4e0 \uba54\uc2dc\uc9c0\uac00 \ub300\uc0c1 \uc5b8\uc5b4\ub85c \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc774 \uc124\uc815\uc740 \uc5b8\uc5b4 \uad50\ud658\uc5d0 \uac00\uc7a5 \uc720\uc6a9\ud569\ub2c8\ub2e4.";
+      return "Ao activarse, todos os mensaxes amosan na t\xfaa lingua obxectivo. Esta configuraci\xf3n \xe9 m\xe1is \xfatil en intercambios de idiomas.";
     },
     get$itToggleDescription() {
-      return "\uc774 \uc5b8\uc5b4 \ud559\uc2b5 \ub3c4\uad6c\ub294 \uae30\ubcf8 \uc5b8\uc5b4\uc758 \ub2e8\uc5b4\ub97c \uc2dd\ubcc4\ud558\uace0 \ub300\uc0c1 \uc5b8\uc5b4\ub85c \ubc88\uc5ed\ud558\ub294 \ub370 \ub3c4\uc6c0\uc744 \uc90d\ub2c8\ub2e4. \ub4dc\ubb3c\uac8c AI\uac00 \ubc88\uc5ed \uc624\ub958\ub97c \uc77c\uc73c\ud0ac \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Esta ferramenta de aprendizaxe de idiomas identificar\xe1 palabras na t\xfaa lingua base e axudarache a traducilas \xe1 t\xfaa lingua obxectivo. A\xednda que \xe9 raro, a IA pode cometer erros de traduci\xf3n.";
     },
     get$igcToggleDescription() {
-      return "\uc774 \uc5b8\uc5b4 \ud559\uc2b5 \ub3c4\uad6c\ub294 \uba54\uc2dc\uc9c0\uc5d0\uc11c \uc77c\ubc18\uc801\uc778 \ub9de\ucda4\ubc95, \ubb38\ubc95 \ubc0f \uad6c\ub450\uc810 \uc624\ub958\ub97c \uc2dd\ubcc4\ud558\uace0 \uc218\uc815 \uc81c\uc548\uc744 \ud569\ub2c8\ub2e4. \ub4dc\ubb3c\uac8c AI\uac00 \uc218\uc815 \uc624\ub958\ub97c \ubc94\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Esta ferramenta de aprendizaxe de idiomas identificar\xe1 erros com\xfans de ortograf\xeda, gram\xe1tica e puntuaci\xf3n na t\xfaa mensaxe e suxerir\xe1 correcci\xf3ns. A\xednda que raro, a IA pode cometer erros de correcci\xf3n.";
     },
     get$originalMessage() {
-      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0";
+      return "Mensaxe orixinal";
     },
     get$sentMessage() {
-      return "\uc804\uc1a1\ub41c \uba54\uc2dc\uc9c0";
+      return "Mensaxe enviada";
     },
     get$useType() {
-      return "\uc0ac\uc6a9 \uc720\ud615";
+      return "Tipo de uso";
     },
     get$notAvailable() {
-      return "\uc0ac\uc6a9 \ubd88\uac00";
+      return "Non dispo\xf1ible";
     },
     get$taAndGaTooltip() {
-      return "\ubc88\uc5ed \uc9c0\uc6d0 \ubc0f \ubb38\ubc95 \uc9c0\uc6d0\uc774 \ud3ec\ud568\ub41c L2 \uc0ac\uc6a9";
+      return "Uso de L2 con asistencia de traduci\xf3n e asistencia gramatical";
     },
     get$definitionsToolName() {
-      return "\ub2e8\uc5b4 \uc815\uc758";
+      return "Definici\xf3ns de palabras";
     },
     get$definitionsToolDescription() {
-      return "\ud65c\uc131\ud654\ud558\uba74 \ud30c\ub780\uc0c9 \ubc11\uc904\uc774 \uadf8\uc5b4\uc9c4 \ub2e8\uc5b4\ub97c \ud074\ub9ad\ud558\uc5ec \uc815\uc758\ub97c \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uba54\uc2dc\uc9c0\ub97c \ud074\ub9ad\ud558\uc5ec \uc815\uc758\uc5d0 \uc811\uadfc\ud558\uc138\uc694.";
+      return "Cando est\xe1 activado, as palabras subli\xf1adas en azul poden ser clicadas para obter definici\xf3ns. Clica nas mensaxes para acceder \xe1s definici\xf3ns.";
     },
     get$welcomeBack() {
-      return "\ub2e4\uc2dc \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4! 2023-2024 \ud30c\uc77c\ub7ff\uc5d0 \ucc38\uc5ec\ud558\uc168\ub2e4\uba74, \ud2b9\ubcc4 \ud30c\uc77c\ub7ff \uad6c\ub3c5\uc744 \uc704\ud574 \uc800\ud76c\uc5d0\uac8c \uc5f0\ub77d\ud558\uc138\uc694. \uad50\uc0ac\uc774\uac70\ub098 \uadc0\ud558\uc758 \uae30\uad00\uc774 \uc218\uc5c5\uc6a9 \ub77c\uc774\uc120\uc2a4\ub97c \uad6c\ub9e4\ud55c \uacbd\uc6b0, \uad50\uc0ac \uad6c\ub3c5\uc744 \uc704\ud574 \uc800\ud76c\uc5d0\uac8c \uc5f0\ub77d\ud558\uc138\uc694.";
+      return "\xa1Benvido de novo! Se formaches parte do piloto 2023-2024, contacta con n\xf3s para a t\xfaa subscrici\xf3n especial de piloto. Se es profesor e a t\xfaa instituci\xf3n comprou licenzas para a t\xfaa clase, contacta con n\xf3s para a t\xfaa subscrici\xf3n de profesor.";
     },
     get$downloadTxtFile() {
-      return "\ud14d\uc2a4\ud2b8 \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
+      return "Descargar ficheiro de texto";
     },
     get$downloadCSVFile() {
-      return "CSV \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
+      return "Descargar ficheiro CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return "\ud604\uc7ac \ud3c9\uc0dd \ud504\ub85c\ubaa8\uc158 \uad6c\ub3c5\uc744 \ubcf4\uc720\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uad6c\ub3c5 \ubcc0\uacbd\uc5d0 \ub300\ud55c \ub3c4\uc6c0\uc744 \uc6d0\ud558\uc2dc\uba74 support@pangea.chat\uc73c\ub85c \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uc138\uc694.";
+      return "Actualmente tes unha subscrici\xf3n promocional de por vida. Env\xeda unha mensaxe a support@pangea.chat para obter axuda para cambiar a t\xfaa subscrici\xf3n.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\uad6c\ub9e4 \ud50c\ub7ab\ud3fc: " + purchasePlatform;
+      return "Subscripci\xf3n adquirida a trav\xe9s de " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "\uc77c\uc8fc\uc77c \ubb34\ub8cc \uccb4\ud5d8";
+      return "Proba dunha semana";
     },
     get$downloadXLSXFile() {
-      return "\uc5d1\uc140 \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc";
+      return "Descargar ficheiro Excel";
     },
     get$unkDisplayName() {
-      return "\uc54c \uc218 \uc5c6\uc74c";
+      return "Desco\xf1ecido";
     },
     get$wwCountryDisplayName() {
-      return "\uc804 \uc138\uacc4";
+      return "Mundial";
     },
     get$afCountryDisplayName() {
-      return "\uc544\ud504\uac00\ub2c8\uc2a4\ud0c4";
+      return "Afganist\xe1n";
     },
     get$axCountryDisplayName() {
-      return "\uc62c\ub780\ub4dc \uc81c\ub3c4";
+      return "Illas \xc5land";
     },
     get$alCountryDisplayName() {
-      return "\uc54c\ubc14\ub2c8\uc544";
+      return "Alb\xe1nia";
     },
     get$dzCountryDisplayName() {
-      return "\uc54c\uc81c\ub9ac";
+      return "Arxelia";
     },
     get$asCountryDisplayName() {
-      return "\uc544\uba54\ub9ac\uce78 \uc0ac\ubaa8\uc544";
+      return "Samoa Americana";
     },
     get$adCountryDisplayName() {
-      return "\uc548\ub3c4\ub77c";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
-      return "\uc559\uace8\ub77c";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\uc575\uadc8\ub77c";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "\uc564\ud2f0\uac00 \ubc14\ubd80\ub2e4";
+      return "Antigua e Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\uc544\ub974\ud5e8\ud2f0\ub098";
+      return "Arxentina";
     },
     get$amCountryDisplayName() {
-      return "\uc544\ub974\uba54\ub2c8\uc544";
+      return "Armenia";
     },
     get$awCountryDisplayName() {
-      return "\uc544\ub8e8\ubc14";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\uc2b9\ucc9c \uc12c";
+      return "Ilha de Ascensi\xf3n";
     },
     get$auCountryDisplayName() {
-      return "\ud638\uc8fc";
+      return "Australia";
     },
     get$atCountryDisplayName() {
-      return "\uc624\uc2a4\ud2b8\ub9ac\uc544";
+      return "Austria";
     },
     get$azCountryDisplayName() {
-      return "\uc544\uc81c\ub974\ubc14\uc774\uc794";
+      return "Azerba\xe1i";
     },
     get$bsCountryDisplayName() {
-      return "\ubc14\ud558\ub9c8";
+      return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "\ubc14\ub808\uc778";
+      return "Bahrein";
     },
     get$bdCountryDisplayName() {
-      return "\ubc29\uae00\ub77c\ub370\uc2dc";
+      return "Bangladesh";
     },
     get$bbCountryDisplayName() {
-      return "\ubc14\ubca0\uc774\ub3c4\uc2a4";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\ubca8\ub77c\ub8e8\uc2a4";
+      return "Bielorrusia";
     },
     get$beCountryDisplayName() {
-      return "\ubca8\uae30\uc5d0";
+      return "B\xe9lgica";
     },
     get$bzCountryDisplayName() {
-      return "\ubca8ize";
+      return "Belice";
     },
     get$bjCountryDisplayName() {
-      return "\ubca0\ub0c9";
+      return "Ben\xedn";
     },
     get$bmCountryDisplayName() {
-      return "\ubc84\ubba4\ub2e4";
+      return "Bermudas";
     },
     get$btCountryDisplayName() {
-      return "\ubd80\ud0c4";
+      return "But\xe1n";
     },
     get$boCountryDisplayName() {
-      return "\ubcfc\ub9ac\ube44\uc544";
+      return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "\ubcf4\uc2a4\ub2c8\uc544 \ud5e4\ub974\uccb4\uace0\ube44\ub098";
+      return "Bosnia e Hercegovina";
     },
     get$bwCountryDisplayName() {
-      return "\ubcf4\uce20\uc640\ub098";
+      return "Botsuana";
     },
     get$brCountryDisplayName() {
-      return "\ube0c\ub77c\uc9c8";
+      return "Brasil";
     },
     get$ioCountryDisplayName() {
-      return "\uc601\uad6d\ub839 \uc778\ub3c4\uc591 \uc9c0\uc5ed";
+      return "Territorio Brit\xe1nico do Oc\xe9ano \xcdndico";
     },
     get$vgCountryDisplayName() {
-      return "\uc601\uad6d\ub839 \ubc84\uc9c4 \uc544\uc77c\ub79c\ub4dc";
+      return "Illas V\xedrgenes Brit\xe1nicas";
     },
     get$bnCountryDisplayName() {
-      return "\ube0c\ub8e8\ub098\uc774";
+      return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "\ubd88\uac00\ub9ac\uc544";
+      return "Bulgaria";
     },
     get$bfCountryDisplayName() {
-      return "\ubd80\ub974\ud0a4\ub098\ud30c\uc18c";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\ubd80\ub8ec\ub514";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\uce84\ubcf4\ub514\uc544";
+      return "Cambodia";
     },
     get$cmCountryDisplayName() {
-      return "\uce74\uba54\ub8ec";
+      return "Camer\xfan";
     },
     get$caCountryDisplayName() {
-      return "\uce90\ub098\ub2e4";
+      return "Canad\xe1";
     },
     get$cvCountryDisplayName() {
-      return "\uce74\ubcf4\ubca0\ub974\ub370";
+      return "Cabo Verde";
     },
     get$bqCountryDisplayName() {
-      return "\uce74\ub9ac\ube0c \ub124\ub35c\ub780\ub4dc";
+      return "Pa\xedses Baixos Caribenhos";
     },
     get$kyCountryDisplayName() {
-      return "\ucf00\uc774\ub9e8 \uc81c\ub3c4";
+      return "Illas Caim\xe1n";
     },
     get$cfCountryDisplayName() {
-      return "\uc911\uc559\uc544\ud504\ub9ac\uce74\uacf5\ud654\uad6d";
+      return "Rep\xfablica Centroafricana";
     },
     get$tdCountryDisplayName() {
-      return "\ucc28\ub4dc";
+      return "Chad";
     },
     get$clCountryDisplayName() {
-      return "\uce60\ub808";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "\uc911\uad6d";
+      return "China";
     },
     get$cxCountryDisplayName() {
-      return "\ud06c\ub9ac\uc2a4\ub9c8\uc2a4 \uc12c";
+      return "Illa de Nadal";
     },
     get$ccCountryDisplayName() {
-      return "\ucf54\ucf54\uc2a4 \uc81c\ub3c4 [\ud0a4\ub9c1]";
+      return "Illas Cocos [Keeling]";
     },
     get$coCountryDisplayName() {
-      return "\ucf5c\ub86c\ube44\uc544";
+      return "Colombia";
     },
     get$kmCountryDisplayName() {
-      return "\ucf54\ubaa8\ub85c";
+      return "Comores";
     },
     get$cdCountryDisplayName() {
-      return "\ucf69\uace0 \ubbfc\uc8fc \uacf5\ud654\uad6d";
+      return "Rep\xfablica Democr\xe1tica do Congo";
     },
     get$cgCountryDisplayName() {
-      return "\ucf69\uace0 \uacf5\ud654\uad6d";
+      return "Rep\xfablica do Congo";
     },
     get$ckCountryDisplayName() {
-      return "\ucfe1 \uc81c\ub3c4";
+      return "Illas Cook";
     },
     get$crCountryDisplayName() {
-      return "\ucf54\uc2a4\ud0c0\ub9ac\uce74";
+      return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "\ucf54\ud2b8\ub514\ubd80\uc544\ub974";
+      return "Costa de Marfil";
     },
     get$hrCountryDisplayName() {
-      return "\ud06c\ub85c\uc544\ud2f0\uc544";
+      return "Croacia";
     },
     get$cuCountryDisplayName() {
-      return "\ucfe0\ubc14";
+      return "Cuba";
     },
     get$cwCountryDisplayName() {
-      return "\ud034\ub77c\uc18c";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "\ud0a4\ud504\ub85c\uc2a4";
+      return "Chipre";
     },
     get$czCountryDisplayName() {
-      return "\uccb4\ucf54 \uacf5\ud654\uad6d";
+      return "Rep\xfablica Checa";
     },
     get$dkCountryDisplayName() {
-      return "\ub374\ub9c8\ud06c";
+      return "Dinamarca";
     },
     get$djCountryDisplayName() {
-      return "\uc9c0\ubd80\ud2f0";
+      return "Xibuti";
     },
     get$dmCountryDisplayName() {
-      return "\ub3c4\ubbf8\ub2c8\uce74";
+      return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "\ub3c4\ubbf8\ub2c8\uce74 \uacf5\ud654\uad6d";
+      return "Rep\xfablica Dominicana";
     },
     get$tlCountryDisplayName() {
-      return "\ub3d9\ud2f0\ubaa8\ub974";
+      return "Timor Oriental";
     },
     get$ecCountryDisplayName() {
-      return "\uc5d0\ucf70\ub3c4\ub974";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "\uc774\uc9d1\ud2b8";
+      return "Exipto";
     },
     get$svCountryDisplayName() {
-      return "\uc5d8\uc0b4\ubc14\ub3c4\ub974";
+      return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\uc801\ub3c4 \uae30\ub2c8";
+      return "Guinea Ecuatorial";
     },
     get$erCountryDisplayName() {
-      return "\uc5d0\ub9ac\ud2b8\ub808\uc544";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "\uc5d0\uc2a4\ud1a0\ub2c8\uc544";
+      return "Estonia";
     },
     get$szCountryDisplayName() {
-      return "\uc5d0\uc2a4\uc640\ud2f0\ub2c8";
+      return "Eswatini";
     },
     get$etCountryDisplayName() {
-      return "\uc774\uc9d1\ud2b8";
+      return "Etiop\xeda";
     },
     get$fkCountryDisplayName() {
-      return "\ud3ec\ud074\ub79c\ub4dc \uc81c\ub3c4";
+      return "Illas Malvinas";
     },
     get$foCountryDisplayName() {
-      return "\ud398\ub85c \uc81c\ub3c4";
+      return "Illas Feroe";
     },
     get$fjCountryDisplayName() {
-      return "\ud53c\uc9c0";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\ud540\ub780\ub4dc";
+      return "Finlandia";
     },
     get$frCountryDisplayName() {
-      return "\ud504\ub791\uc2a4";
+      return "Francia";
     },
     get$gfCountryDisplayName() {
-      return "\ud504\ub791\uc2a4\ub839 \uae30\uc544\ub098";
+      return "Guiana Francesa";
     },
     get$pfCountryDisplayName() {
-      return "\ud504\ub791\uc2a4\ub839 \ud3f4\ub9ac\ub124\uc2dc\uc544";
+      return "Polinesia Francesa";
     },
     get$gaCountryDisplayName() {
-      return "\uac00\ubd09";
+      return "Gab\xf3n";
     },
     get$gmCountryDisplayName() {
-      return "\uac10\ube44\uc544";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "\uc870\uc9c0\uc544";
+      return " Xeorxia";
     },
     get$deCountryDisplayName() {
-      return "\ub3c5\uc77c";
+      return "Alema\xf1a";
     },
     get$ghCountryDisplayName() {
-      return "\uac00\ub098";
+      return "Gana";
     },
     get$giCountryDisplayName() {
-      return "\uc9c0\ube0c\ub864\ud130";
+      return "Xibraltar";
     },
     get$grCountryDisplayName() {
-      return "\uadf8\ub9ac\uc2a4";
+      return "Grecia";
     },
     get$glCountryDisplayName() {
-      return "\uadf8\ub9b0\ub780\ub4dc";
+      return "Groenlandia";
     },
     get$gdCountryDisplayName() {
-      return "\uadf8\ub808\ub098\ub2e4";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\uacfc\ub2ec\ub8e8\ud398";
+      return "Guadalupe";
     },
     get$guCountryDisplayName() {
-      return "\uad0c";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\uacfc\ud14c\ub9d0\ub77c";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
-      return "\uac74\uc9c0\uc12c";
+      return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "\uae30\ub2c8";
+      return "Guinea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "\uae30\ub2c8\ube44\uc0ac\uc6b0";
+      return "Guinea-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "\uac00\uc774\uc544\ub098";
+      return "G\xe9n\xe9a";
     },
     get$htCountryDisplayName() {
-      return "\uc544\uc774\ud2f0";
+      return "Hait\xed";
     },
     get$hmCountryDisplayName() {
-      return "\ud5c8\ub4dc \uc12c\uacfc \ub9e5\ub3c4\ub110\ub4dc \uc81c\ub3c4";
+      return "Illas Heard e Illas McDonald";
     },
     get$hnCountryDisplayName() {
-      return "\uc628\ub450\ub77c\uc2a4";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\ud64d\ucf69";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "\ud5dd\uac00\ub9ac";
+      return "Hungr\xeda";
     },
     get$isCountryDisplayName() {
-      return "\uc544\uc774\uc2ac\ub780\ub4dc";
+      return "Isl\xe1ndia";
     },
     get$inCountryDisplayName() {
-      return "\uc778\ub3c4";
+      return "India";
     },
     get$idCountryDisplayName() {
-      return "\uc778\ub3c4\ub124\uc2dc\uc544";
+      return "Indonesia";
     },
     get$irCountryDisplayName() {
-      return "\uc774\ub780";
+      return "Ir\xe1n";
     },
     get$iqCountryDisplayName() {
-      return "\uc774\ub77c\ud06c";
+      return "Iraq";
     },
     get$ieCountryDisplayName() {
-      return "\uc544\uc77c\ub79c\ub4dc";
+      return "Irlanda";
     },
     get$imCountryDisplayName() {
-      return "\ub9e8 \uc12c";
+      return "Isla de Man";
     },
     get$ilCountryDisplayName() {
-      return "\uc774\uc2a4\ub77c\uc5d8";
+      return "Israel";
     },
     get$itCountryDisplayName() {
-      return "\uc774\ud0c8\ub9ac\uc544";
+      return "Italia";
     },
     get$jmCountryDisplayName() {
-      return "\uc790\uba54\uc774\uce74";
+      return "Xamaica";
     },
     get$jpCountryDisplayName() {
-      return "\uc77c\ubcf8";
+      return "Xap\xf3n";
     },
     get$jeCountryDisplayName() {
-      return "\uc800\uc9c0 \uc12c";
+      return "Xersey";
     },
     get$joCountryDisplayName() {
-      return "\uc694\ub974\ub2e8";
+      return "Xordania";
     },
     get$kzCountryDisplayName() {
-      return "\uce74\uc790\ud750\uc2a4\ud0c4";
+      return "Kazaxist\xe1n";
     },
     get$keCountryDisplayName() {
-      return "\ucf00\ub0d0";
+      return "Quenia";
     },
     get$kiCountryDisplayName() {
-      return "\ud0a4\ub9ac\ubc14\uc2dc";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\ucf54\uc18c\ubcf4";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "\ucfe0\uc6e8\uc774\ud2b8";
+      return "Kuwait";
     },
     get$kgCountryDisplayName() {
-      return "\ud0a4\ub974\uae30\uc2a4\uc2a4\ud0c4";
+      return "Quirguist\xe1n";
     },
     get$laCountryDisplayName() {
-      return "\ub77c\uc624\uc2a4";
+      return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\ub77c\ud2b8\ube44\uc544";
+      return "Letonia";
     },
     get$lbCountryDisplayName() {
-      return "\ub808\ubc14\ub17c";
+      return "L\xedbano";
     },
     get$lsCountryDisplayName() {
-      return "\ub808\uc18c\ud1a0";
+      return "Lesoto";
     },
     get$lrCountryDisplayName() {
-      return "\ub77c\uc774\ubca0\ub9ac\uc544";
+      return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "\ub9ac\ube44\uc544";
+      return "Libia";
     },
     get$liCountryDisplayName() {
-      return "\ub9ac\ud788\ud150\uc288\ud0c0\uc778";
+      return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "\ub9ac\ud22c\uc544\ub2c8\uc544";
+      return "Lituania";
     },
     get$luCountryDisplayName() {
-      return "\ub8e9\uc148\ubd80\ub974\ud06c";
+      return "Luxemburgo";
     },
     get$moCountryDisplayName() {
-      return "\ub9c8\uce74\uc624";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "\ubd81\ub9c8\ucf00\ub3c4\ub2c8\uc544";
+      return "Macedonia";
     },
     get$mgCountryDisplayName() {
-      return "\ub9c8\ub2e4\uac00\uc2a4\uce74\ub974";
+      return "Madagascar";
     },
     get$mwCountryDisplayName() {
-      return "\ub9d0\ub77c\uc704";
+      return "Malaui";
     },
     get$myCountryDisplayName() {
-      return "\ub9d0\ub808\uc774\uc2dc\uc544";
+      return "Malaisia";
     },
     get$mvCountryDisplayName() {
-      return "\ubab0\ub514\ube0c";
+      return "Maldivas";
     },
     get$mlCountryDisplayName() {
-      return "\ub9d0\ub9ac";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\ubab0\ud0c0";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\ub9c8\uc15c \uc81c\ub3c4";
+      return "Illas Marshall";
     },
     get$mqCountryDisplayName() {
-      return "\ub9c8\ub974\ud2f0\ub2c8\ud06c";
+      return "Martinica";
     },
     get$mrCountryDisplayName() {
-      return "\ubaa8\ub9ac\ud0c0\ub2c8\uc544";
+      return "Mauritania";
     },
     get$muCountryDisplayName() {
-      return "\ubaa8\ub9ac\uc154\uc2a4";
+      return "Mauricio";
     },
     get$ytCountryDisplayName() {
-      return "\ub9c8\uc694\ud2b8";
+      return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\uba55\uc2dc\ucf54";
+      return "M\xe9xico";
     },
     get$fmCountryDisplayName() {
-      return "\ubbf8\ud06c\ub85c\ub124\uc2dc\uc544";
+      return "Micronesia";
     },
     get$mdCountryDisplayName() {
-      return "\ubab0\ub3c4\ubc14";
+      return "Moldavia";
     },
     get$mcCountryDisplayName() {
-      return "\ubaa8\ub098\ucf54";
+      return "M\xf3naco";
     },
     get$mnCountryDisplayName() {
-      return "\ubabd\uace8";
+      return "Mongolia";
     },
     get$meCountryDisplayName() {
-      return "\ubaac\ud14c\ub124\uadf8\ub85c";
+      return "Montenegro";
     },
     get$msCountryDisplayName() {
-      return "\ubaac\ud2b8\uc138\ub7ab";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\ubaa8\ub85c\ucf54";
+      return "Marrocos";
     },
     get$mzCountryDisplayName() {
-      return "\ubaa8\uc7a0\ube44\ud06c";
+      return "Mozambique";
     },
     get$mmCountryDisplayName() {
-      return "\ubbf8\uc580\ub9c8(\ubc84\ub9c8)";
+      return "Myanmar (Birmania)";
     },
     get$naCountryDisplayName() {
-      return "\ub098\ubbf8\ube44\uc544";
+      return "Namibia";
     },
     get$nrCountryDisplayName() {
-      return "\ub098\uc6b0\ub8e8";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\ub124\ud314";
+      return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\ub124\ub35c\ub780\ub4dc";
+      return "Pa\xedses Baixos";
     },
     get$ncCountryDisplayName() {
-      return "\ub274 \uce7c\ub808\ub3c4\ub2c8\uc544";
+      return "Nova Caledonia";
     },
     get$nzCountryDisplayName() {
-      return "\ub274\uc9c8\ub79c\ub4dc";
+      return "Nova Zelanda";
     },
     get$niCountryDisplayName() {
-      return "\ub2c8\uce74\ub77c\uacfc";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "\ub2c8\uc81c\ub974";
+      return "N\xedger";
     },
     get$ngCountryDisplayName() {
-      return "\ub098\uc774\uc9c0\ub9ac\uc544";
+      return "Nigeria";
     },
     get$nuCountryDisplayName() {
-      return "\ub2c8\uc6b0\uc5d0";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\ub178\ud37d \uc12c";
+      return "Il\xedas Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "\ubd81\ud55c";
+      return "Corea do Norte";
     },
     get$mpCountryDisplayName() {
-      return "\ubd81\ub9c8\ub9ac\uc544\ub098 \uc81c\ub3c4";
+      return "Illas Marianas do Norte";
     },
     get$noCountryDisplayName() {
-      return "\ub178\ub974\uc6e8\uc774";
+      return "Noruega";
     },
     get$omCountryDisplayName() {
-      return "\uc624\ub9cc";
+      return "Om\xe1n";
     },
     get$pkCountryDisplayName() {
-      return "\ud30c\ud0a4\uc2a4\ud0c4";
+      return "Paquist\xe1n";
     },
     get$pwCountryDisplayName() {
-      return "\ud314\ub77c\uc6b0";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\ud314\ub808\uc2a4\ud0c0\uc778 \uc601\ud1a0";
+      return "Territorios Palestinos";
     },
     get$paCountryDisplayName() {
-      return "\ud30c\ub098\ub9c8";
+      return "Panam\xe1";
     },
     get$pgCountryDisplayName() {
-      return "\ud30c\ud478\uc544\ub274\uae30\ub2c8";
+      return "Papua Nova Guinea";
     },
     get$pyCountryDisplayName() {
-      return "\ud30c\ub77c\uacfc\uc774";
+      return "Paraguai";
     },
     get$peCountryDisplayName() {
-      return "\ud398\ub8e8";
+      return "Per\xfa";
     },
     get$phCountryDisplayName() {
-      return "\ud544\ub9ac\ud540";
+      return "Filipinas";
     },
     get$plCountryDisplayName() {
-      return "\ud3f4\ub780\ub4dc";
+      return "Polonia";
     },
     get$ptCountryDisplayName() {
-      return "\ud3ec\ub974\ud22c\uac08";
+      return "Portugal";
     },
     get$prCountryDisplayName() {
-      return "\ud478\uc5d0\ub974\ud1a0\ub9ac\ucf54";
+      return "Porto Rico";
     },
     get$qaCountryDisplayName() {
-      return "\uce74\ud0c0\ub974";
+      return "Catar";
     },
     get$reCountryDisplayName() {
-      return "\ub808\uc704\ub2c8\uc639";
+      return "Reuni\xf3n";
     },
     get$roCountryDisplayName() {
-      return "\ub8e8\ub9c8\ub2c8\uc544";
+      return "Romania";
     },
     get$ruCountryDisplayName() {
-      return "\ub7ec\uc2dc\uc544";
+      return "Rusia";
     },
     get$rwCountryDisplayName() {
-      return "\ub974\uc644\ub2e4";
+      return "Ruanda";
     },
     get$blCountryDisplayName() {
-      return "\uc0dd \ubc14\ub974\ud154\ub808\ubbf8";
+      return "Santa B\xe1rtola";
     },
     get$shCountryDisplayName() {
-      return "\uc138\uc778\ud2b8 \ud5ec\ub808\ub098";
+      return "Santa Helena";
     },
     get$knCountryDisplayName() {
-      return "\uc138\uc778\ud2b8 \ud0a4\uce20 \ub124\ube44\uc2a4";
+      return "San Cristovo e Neves";
     },
     get$lcCountryDisplayName() {
-      return "\uc138\uc778\ud2b8 \ub8e8\uc2dc\uc544";
+      return "Santa Luc\xeda";
     },
     get$mfCountryDisplayName() {
-      return "\uc0dd \ub9c8\ub974\ud0f1";
+      return "Santa Marti\xf1a";
     },
     get$pmCountryDisplayName() {
-      return "\uc0dd \ud53c\uc5d0\ub974 \ubbf8\ud074\ub871";
+      return "San Pedro e Miquel\xf3n";
     },
     get$vcCountryDisplayName() {
-      return "\uc138\uc778\ud2b8 \ube48\uc13c\ud2b8 \uadf8\ub808\ub098\ub518";
+      return "San Vicente";
     },
     get$wsCountryDisplayName() {
-      return "\uc0ac\ubaa8\uc544";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\uc0b0 \ub9c8\ub9ac\ub178";
+      return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "\uc0c1\ud22c\uba54 \ud504\ub9b0\uc2dc\ud398";
+      return "S\xe3o Tom\xe9 e Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\uc0ac\uc6b0\ub514\uc544\ub77c\ube44\uc544";
+      return "Arabia Saudita";
     },
     get$snCountryDisplayName() {
-      return "\uc138\ub124\uac08";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\uc138\ub974\ube44\uc544";
+      return "S\xe9rvia";
     },
     get$scCountryDisplayName() {
-      return "\uc138\uc774\uc178";
+      return "Seychelles";
     },
     get$slCountryDisplayName() {
-      return "\uc2dc\uc5d0\ub77c\ub9ac\uc628";
+      return "Serra Leoa";
     },
     get$sgCountryDisplayName() {
-      return "\uc2f1\uac00\ud3ec\ub974";
+      return "Singapur";
     },
     get$sxCountryDisplayName() {
-      return "\uc2e0\ud2b8 \ub9c8\ub974\ud134";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "\uc2ac\ub85c\ubc14\ud0a4\uc544";
+      return "Eslovaquia";
     },
     get$siCountryDisplayName() {
-      return "\uc2ac\ub85c\ubca0\ub2c8\uc544";
+      return "Eslovenia";
     },
     get$sbCountryDisplayName() {
-      return "\uc194\ub85c\ubaac \uc81c\ub3c4";
+      return "Illas Salom\xf3n";
     },
     get$soCountryDisplayName() {
-      return "\uc18c\ub9d0\ub9ac\uc544";
+      return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "\ub0a8\uc544\ud504\ub9ac\uce74 \uacf5\ud654\uad6d";
+      return "Sud\xe1frica";
     },
     get$gsCountryDisplayName() {
-      return "\uc0ac\uc6b0\uc2a4 \uc870\uc9c0\uc544 \ubc0f \uc0ac\uc6b0\uc2a4 \uc0cc\ub4dc\uc704\uce58 \uc81c\ub3c4";
+      return "Xibraltar do Sur e as Illas Sandwich do Sur";
     },
     get$krCountryDisplayName() {
-      return "\ub300\ud55c\ubbfc\uad6d";
+      return "Corea do Sur";
     },
     get$ssCountryDisplayName() {
-      return "\ub0a8\uc218\ub2e8";
+      return "Sud\xe1n do Sur";
     },
     get$esCountryDisplayName() {
-      return "\uc2a4\ud398\uc778";
+      return "Espa\xf1a";
     },
     get$lkCountryDisplayName() {
-      return "\uc2a4\ub9ac\ub791\uce74";
+      return "Sri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\uc218\ub2e8";
+      return "Sud\xe1n";
     },
     get$srCountryDisplayName() {
-      return "\uc218\ub9ac\ub0a8";
+      return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "\uc2a4\ubc1c\ubc14\ub974\ub4dc \uc81c\ub3c4 \ubc0f \uc580 \ub9c8\uc774\uc5d4";
+      return "Svalbard e Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\uc2a4\uc6e8\ub374";
+      return "Suecia";
     },
     get$chCountryDisplayName() {
-      return "\uc2a4\uc704\uc2a4";
+      return "Su\xedza";
     },
     get$syCountryDisplayName() {
-      return "\uc2dc\ub9ac\uc544";
+      return "Siria";
     },
     get$twCountryDisplayName() {
-      return "\ub300\ub9cc";
+      return "Taiw\xe1n";
     },
     get$tjCountryDisplayName() {
-      return "\ud0c0\uc9c0\ud0a4\uc2a4\ud0c4";
+      return "Tadzhikist\xe1n";
     },
     get$tzCountryDisplayName() {
-      return "\ud0c4\uc790\ub2c8\uc544";
+      return "Tanzania";
     },
     get$thCountryDisplayName() {
-      return "\ud0dc\uad6d";
+      return "Tailandia";
     },
     get$tgCountryDisplayName() {
-      return "\ud1a0\uace0";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
-      return "\ud1a0\ucf08\ub77c\uc6b0";
+      return "Tokelau";
     },
     get$toCountryDisplayName() {
-      return "\ud1b5\uac00";
+      return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\ud2b8\ub9ac\ub2c8\ub2e4\ub4dc \ud1a0\ubc14\uace0";
+      return "Trindade/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\ud280\ub2c8\uc9c0";
+      return "T\xfanez";
     },
     get$trCountryDisplayName() {
-      return "\ud130\ud0a4";
+      return "Turqu\xeda";
     },
     get$tmCountryDisplayName() {
-      return "\ud22c\ub974\ud06c\uba54\ub2c8\uc2a4\ud0c4";
+      return "Turkmenist\xe1n";
     },
     get$tcCountryDisplayName() {
-      return "\ud130\ud06c\uc2a4 \ucf00\uc774\ucee4\uc2a4 \uc81c\ub3c4";
+      return "Illas Turks e Caicos";
     },
     get$tvCountryDisplayName() {
-      return "\ud22c\ubc1c\ub8e8";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\ubbf8\uad6d\ub839 \ubc84\uc9c4 \uc544\uc77c\ub79c\ub4dc";
+      return "Illas Virxes dos Estados Unidos";
     },
     get$ugCountryDisplayName() {
-      return "\uc6b0\uac04\ub2e4";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\uc6b0\ud06c\ub77c\uc774\ub098";
+      return "Ucra\xedna";
     },
     get$aeCountryDisplayName() {
-      return "\uc544\ub78d\uc5d0\ubbf8\ub9ac\ud2b8";
+      return "Emiratos \xc1rabes Unidos";
     },
     get$gbCountryDisplayName() {
-      return "\uc601\uad6d";
+      return "Reino Unido";
     },
     get$usCountryDisplayName() {
-      return "\ubbf8\uad6d";
+      return "Estados Unidos";
     },
     get$uyCountryDisplayName() {
-      return "\uc6b0\ub8e8\uacfc\uc774";
+      return "Uruguai";
     },
     get$uzCountryDisplayName() {
-      return "\uc6b0\uc988\ubca0\ud0a4\uc2a4\ud0c4";
+      return "Uzbekist\xe1n";
     },
     get$vuCountryDisplayName() {
-      return "\ubc14\ub204\uc544\ud22c";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\ubc14\ud2f0\uce78 \uc2dc\uad6d";
+      return "Cidade do Vaticano";
     },
     get$veCountryDisplayName() {
-      return "\ubca0\ub124\uc218\uc5d8\ub77c";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "\ubca0\ud2b8\ub0a8";
+      return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "\uc6d4\ub9ac\uc2a4 \ud478\ud22c\ub098";
+      return "Wallis e Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\uc11c\ubd80 \uc0ac\ud558\ub77c";
+      return " S\xe1hara Occidental";
     },
     get$yeCountryDisplayName() {
-      return "\uc608\uba58";
+      return "Iemen";
     },
     get$zmCountryDisplayName() {
-      return "\uc7a0\ube44\uc544";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "\uc9d0\ubc14\ube0c\uc6e8";
+      return "Zimbabue";
     },
     get$pay() {
-      return "\uacb0\uc81c";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + "\ub2d8\uc774 " + space + " \uac15\uc88c\uc5d0 \ucd08\ub300\ud558\uc168\uc2b5\ub2c8\ub2e4! \uc218\ub77d\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+      return user + " invitouno a unirse a un curso: " + space + "! Queres aceptar?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \ucd08\ub300\ubc1b\uc558\uc2b5\ub2c8\ub2e4!";
+      return "\ud83d\udce9 \xa1Est\xe1s invitado!";
     },
     invitedToChat$2($name, user) {
-      return user + "\ub2d8\uc774 " + $name + " \ucc44\ud305\uc5d0 \ucd08\ub300\ud558\uc168\uc2b5\ub2c8\ub2e4! \uc218\ub77d\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+      return user + " invitouno a unirse a un chat: " + $name + "! Queres aceptar?";
     },
     get$monthlySubscription() {
-      return "\uc6d4\uac04";
+      return "Mensual";
     },
     get$yearlySubscription() {
-      return "\uc5f0\uac04";
+      return "Anual";
     },
     get$defaultSubscription() {
-      return "\ud310\uac8c\uc544 \ucc44\ud305 \uad6c\ub3c5";
+      return "Suscripci\xf3n a Pangea Chat";
     },
     get$freeTrial() {
-      return "\ubb34\ub8cc \uccb4\ud5d8";
+      return "Proba gratu\xedta";
     },
     get$noDataFound() {
-      return "\ub370\uc774\ud130\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Non se atoparon datos";
     },
     get$bestCorrectionFeedback() {
-      return "\ub9de\uc2b5\ub2c8\ub2e4!";
+      return "\xa1Eso \xe9 correcto!";
     },
     get$distractorFeedback() {
-      return "\uadf8\uac74 \uc870\uae08 \ud2c0\ub838\uc5b4\uc694.";
+      return "Non \xe9 del todo correcto.";
     },
     get$bestAnswerFeedback() {
-      return "\ub9de\uc2b5\ub2c8\ub2e4!";
+      return "\xa1Eso \xe9 correcto!";
     },
     get$definitionDefaultPrompt() {
-      return "\uc774 \ub2e8\uc5b4\ub294 \ubb34\uc2a8 \ub73b\uc778\uac00\uc694?";
+      return "\xbfQue significa esta palabra?";
     },
     get$practiceDefaultPrompt() {
-      return "\uac00\uc7a5 \uc88b\uc740 \ub2f5\ubcc0\uc740 \ubb34\uc5c7\uc778\uac00\uc694?";
+      return "\xbfCual \xe9 a mellor resposta?";
     },
     get$correctionDefaultPrompt() {
-      return "\uac00\uc7a5 \uc801\uc808\ud55c \ub300\uccb4 \ub2f5\ubcc0\uc740 \ubb34\uc5c7\uc778\uac00\uc694?";
+      return "\xbfCual \xe9 a mellor substituci\xf3n?";
     },
     get$reportToTeacher() {
-      return "\uc774 \uba54\uc2dc\uc9c0\ub97c \ub204\uad6c\uc5d0\uac8c \uc2e0\uace0\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+      return "A quen queres informar esta mensaxe?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + "\ub2d8\uc774 \ucc44\ud305 " + roomName + "\uc5d0\uc11c " + reportedUserId + "\uc758 \uba54\uc2dc\uc9c0\ub97c \uc2e0\uace0\ud588\uc2b5\ub2c8\ub2e4";
+      return reportingUserId + " informou dunha mensaxe de " + reportedUserId + " no chat " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\uba54\uc2dc\uc9c0: " + reportedMessage + "\n\uc774\uc720: " + reason;
+      return "Mensaxe: " + reportedMessage + "\nRaz\xf3n: " + reason;
     },
     get$noTeachersFound() {
-      return "\uc2e0\uace0\ud560 \uc120\uc0dd\ub2d8\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Non se atoparon profesores para informar";
     },
     trialExpiration$1(expiration) {
-      return "\ubb34\ub8cc \uccb4\ud5d8\uc774 " + expiration + "\uc5d0 \ub9cc\ub8cc\ub429\ub2c8\ub2e4";
+      return "A t\xfaa proba gratu\xedta expira o " + expiration;
     },
     get$freeTrialDesc() {
-      return "\uc2e0\uaddc \uc0ac\uc6a9\uc790\ub294 \uc77c\uc8fc\uc77c\uac04 \ubb34\ub8cc \uccb4\ud5d8\uc744 \ubc1b\uc2b5\ub2c8\ub2e4";
+      return "Os novos usuarios reciben unha proba gratu\xedta dunha semana de Pangea Chat";
     },
     get$activateTrial() {
-      return "\ubb34\ub8cc 7\uc77c \uccb4\ud5d8 \uc2dc\uc791";
+      return "Proba gratu\xedta de 7 d\xedas";
     },
     get$successfullySubscribed() {
-      return "\uad6c\ub3c5\uc774 \uc131\uacf5\uc801\uc73c\ub85c \uc644\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
+      return "\xa1Subscrib\xedcheste con \xe9xito!";
     },
     get$clickToManageSubscription() {
-      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \uad6c\ub3c5\uc744 \uad00\ub9ac\ud558\uc138\uc694.";
+      return "Fai clic aqu\xed para xestionar a t\xfaa subscrici\xf3n.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\ucd5c\uc18c " + min + "\uc790 \uc774\uc0c1\uc744 \uc120\ud0dd\ud558\uc138\uc694.";
+      return "Por favor, escolla polo menos " + min + " caracteres.";
     },
     get$pleaseEnterValidEmail() {
-      return "\uc720\ud6a8\ud55c \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825\ud558\uc138\uc694.";
+      return string$.Por_fa;
     },
     get$pleaseChooseAUsername() {
-      return "\uc0ac\uc6a9\uc790 \uc774\ub984\uc744 \uc120\ud0dd\ud558\uc138\uc694";
+      return "Por favor, escolla un nome de usuario";
     },
     get$listen() {
-      return "\ub4e3\uae30";
+      return "Escoitar";
     },
     get$trialPeriodExpired() {
-      return "\uccb4\ud5d8 \uae30\uac04\uc774 \ub9cc\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "O teu per\xedodo de proba expirou";
     },
     get$subscribedToUnlockTools() {
-      return "\uad6c\ub3c5\ud558\uc5ec \uc778\ud130\ub799\ud2f0\ube0c \ubc88\uc5ed, \ubb38\ubc95 \uac80\uc0ac, \uc624\ub514\uc624 \uc7ac\uc0dd, \ub9de\ucda4 \uc5f0\uc2b5 \ud65c\ub3d9, \ud559\uc2b5 \ubd84\uc11d\uc744 \uc774\uc6a9\ud558\uc138\uc694!";
+      return "\xa1Suscr\xedbete para desbloquear traduci\xf3ns interactivas, revisi\xf3n gramatical, reproduci\xf3n de audio, actividades de pr\xe1ctica personalizadas e an\xe1lises de aprendizaxe!";
     },
     get$translationTooltip() {
-      return "\ubc88\uc5ed";
+      return "Traducir";
     },
     get$speechToTextTooltip() {
-      return "\uc804\uc0ac";
+      return "Transcripci\xf3n";
     },
     get$kickBotWarning() {
-      return "Pangea Bot\uc744 \uc81c\uac70\ud558\uba74 \uc774 \ucc44\ud305\uc5d0\uc11c \ub300\ud654 \ubd07\uc774 \uc0ad\uc81c\ub429\ub2c8\ub2e4.";
+      return "Eliminar o Pangea Bot eliminar\xe1 o bot de conversa deste chat.";
     },
     get$refresh(_) {
-      return "\uc0c8\ub85c \uace0\uce68";
+      return "Actualizar";
     },
     get$updatePhoneOS() {
-      return "\uae30\uae30\uc758 OS \ubc84\uc804\uc744 \uc5c5\ub370\uc774\ud2b8\ud574\uc57c \ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Pode que necesites actualizar a versi\xf3n do sistema operativo do teu dispositivo.";
     },
     get$autoIGCToolName() {
-      return "\ud310\uac8c\uc544 \uc791\ubb38 \uc9c0\uc6d0 \uc790\ub3d9 \uc2e4\ud589";
+      return "Executar a asistencia de escritura Pangea automaticamente";
     },
     get$autoIGCToolDescription() {
-      return "\uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uae30 \uc804\uc5d0 \ud310\uac8c\uc544 \ucc44\ud305 \ubb38\ubc95 \ubc0f \ubc88\uc5ed \uc791\ubb38 \uc9c0\uc6d0\uc744 \uc790\ub3d9\uc73c\ub85c \uc2e4\ud589\ud569\ub2c8\ub2e4.";
+      return "Executar automaticamente a asistencia de gram\xe1tica e traduci\xf3n de Pangea Chat antes de enviar a mi\xf1a mensaxe.";
     },
     get$chatCapacity() {
-      return "\ucc44\ud305 \uc6a9\ub7c9";
+      return "Capacidade de chat";
     },
     get$roomFull() {
-      return "\uc774 \ubc29\uc740 \uc774\ubbf8 \uc6a9\ub7c9\uc774 \uac00\ub4dd \ucc3c\uc2b5\ub2c8\ub2e4.";
+      return "Esta sala xa est\xe1 completa.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\ucc44\ud305 \uc6a9\ub7c9\uc774 \ubcc0\uacbd\ub418\uc5c8\uc2b5\ub2c8\ub2e4.";
+      return "Capacidade de chat modificada";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\ucc44\ud305 \uc6a9\ub7c9\uc740 \ucd5c\uc18c " + count + " \uc774\uc0c1\uc774\uc5b4\uc57c \ud569\ub2c8\ub2e4.";
+      return "A capacidade de chat debe ser polo menos " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "\ucc44\ud305 \uc6a9\ub7c9\uc740 \ucc44\ud305\uc5d0 \ud5c8\uc6a9\ub418\ub294 \uba64\ubc84 \uc218\ub97c \uc81c\ud55c\ud569\ub2c8\ub2e4.";
+      return "A capacidade de chat limita o n\xfamero de membros permitidos nun chat.";
     },
     get$enterNumber() {
-      return "\uc815\uc218 \uac12\uc744 \uc785\ub825\ud558\uc138\uc694.";
+      return "Por favor, introduce un valor num\xe9rico enteiro.";
     },
     get$buildTranslation() {
-      return "\uc704 \uc120\ud0dd\uc9c0\uc5d0\uc11c \ubc88\uc5ed\uc744 \ub9cc\ub4dc\uc138\uc694";
+      return "Constr\xfae a t\xfaa traduci\xf3n a partir das opci\xf3ns anteriores";
     },
     get$practice() {
-      return "\uc5f0\uc2b5";
+      return "Practicar";
     },
     get$noLanguagesSet() {
-      return "\uc124\uc815\ub41c \uc5b8\uc5b4\uac00 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Non hai idiomas establecidos";
     },
     get$speechToTextBody() {
-      return "\uc74c\uc131 \uba54\uc2dc\uc9c0\uc758 \uacbd\uc6b0, \uc804\uc0ac\ubcf8\uacfc \ud654\uc790\uc758 \ubd84\ub2f9 \ub2e8\uc5b4 \uc218 \uc810\uc218\ub3c4 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Para mensaxes de voz, podes ver unha transcrici\xf3n as\xed como a puntuaci\xf3n de Palabras por Minuto do orador.";
     },
     get$versionNotFound() {
-      return "\ubc84\uc804\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Versi\xf3n non atopada";
     },
     get$fetchingVersion() {
-      return "\ubc84\uc804 \uc815\ubcf4\ub97c \uac00\uc838\uc624\ub294 \uc911...";
+      return "Obtendo a versi\xf3n...";
     },
     get$versionFetchError() {
-      return "\ubc84\uc804 \uc815\ubcf4\ub97c \uac00\uc838\uc624\ub294 \ub370 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4";
+      return "Erro ao obter a versi\xf3n";
     },
     versionText$2(version, buildNumber) {
-      return "\ubc84\uc804: " + version + "+" + buildNumber;
+      return "Versi\xf3n: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\uae30\ubcf8 \uc5b8\uc5b4\uc758 \uba54\uc2dc\uc9c0\ub294 \ubc88\uc5ed\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.";
+      return "Os mensaxes no teu idioma base non ser\xe1n traducidos.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\ud65c\uc131 \uad6c\ub3c5\uc774 \uc788\uc2b5\ub2c8\ub2e4";
+      return "Tes unha subscrici\xf3n activa";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\uacc4\uc815\uc744 \uc0ad\uc81c\ud558\ub354\ub77c\ub3c4 \uad6c\ub3c5\uc774 \uc790\ub3d9\uc73c\ub85c \ucde8\uc18c\ub418\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.";
+      return "Eliminar a t\xfaa conta non cancelar\xe1 automaticamente a t\xfaa subscrici\xf3n.";
     },
     get$manageSubscription() {
-      return "\uad6c\ub3c5 \uad00\ub9ac";
+      return "Xestionar a subscrici\xf3n";
     },
     get$error520Title() {
-      return "\ub2e4\uc2dc \uc2dc\ub3c4\ud574 \uc8fc\uc138\uc694.";
+      return "Por favor, int\xe9ntao de novo.";
     },
     get$error520Desc() {
-      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4, \uba54\uc2dc\uc9c0\ub97c \uc774\ud574\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4...";
+      return "Desculpa, non puidemos entender a t\xfaa mensaxe...";
     },
     get$level(_) {
-      return "\ub808\ubca8";
+      return "Nivel";
     },
     get$translationChoicesBody() {
-      return "\uc635\uc158\uc744 \ud074\ub9ad\ud558\uace0 \uae38\uac8c \ub20c\ub7ec \ud78c\ud2b8\ub97c \ud655\uc778\ud558\uc138\uc694.";
+      return "Fai clic e mant\xe9n unha opci\xf3n para obter unha pista.";
     },
     get$grammar() {
-      return "\ubb38\ubc95";
+      return "Gram\xe1tica";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\uc5f0\ub77d\ucc98\uac00 \ucc44\ud305\uc5d0 \ucd08\ub300\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "O contacto foi invitado ao chat";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 \ucc44\ud305 \ucd08\ub300";
+      return "\ud83d\udce8 Invitar ao chat";
     },
     get$chatName() {
-      return "\ucc44\ud305 \uc774\ub984";
+      return "Nome do chat";
     },
     get$l2SupportNa() {
-      return "\uc0ac\uc6a9 \ubd88\uac00";
+      return "Non dispo\xf1ible";
     },
     get$l2SupportAlpha() {
-      return "\uc54c\ud30c";
+      return "Alpha";
     },
     get$l2SupportBeta() {
-      return "\ubca0\ud0c0";
+      return "Beta";
     },
     get$l2SupportFull() {
-      return "\uc804\uccb4";
+      return "Completo";
     },
     get$playAudio() {
-      return "\uc7ac\uc0dd";
+      return "Reproducir";
     },
     get$stop(_) {
-      return "\uc911\uc9c0";
+      return "Detener";
     },
     get$grammarCopyPOSsconj() {
-      return "\uc885\uc18d \uc811\uc18d\uc0ac";
+      return "Conxunci\xf3n subordinante";
     },
     get$grammarCopyPOSnum() {
-      return "\uc22b\uc790";
+      return "N\xfamero";
     },
     get$grammarCopyPOSverb() {
-      return "\ub3d9\uc0ac";
+      return "Verbo";
     },
     get$grammarCopyPOSaffix() {
-      return "\uc811\uc0ac";
+      return "Afixo";
     },
     get$grammarCopyPOSpart() {
-      return "\uc870\uc0ac";
+      return "Part\xedcula";
     },
     get$grammarCopyPOSadj() {
-      return "\ud615\uc6a9\uc0ac";
+      return "Adxectivo";
     },
     get$grammarCopyPOScconj() {
-      return "\ub4f1\uc704\uc811\uc18d\uc0ac";
+      return "Conxunci\xf3n Coordinante";
     },
     get$grammarCopyPOSpunct() {
-      return "\uad6c\ub450\uc810";
+      return "Puntuaci\xf3n";
     },
     get$grammarCopyPOSadv() {
-      return "\ubd80\uc0ac";
+      return "Adverbio";
     },
     get$grammarCopyPOSaux() {
-      return "\uc870\ub3d9\uc0ac";
+      return "Auxiliar";
     },
     get$grammarCopyPOSspace() {
-      return "\uacf5\ubc31";
+      return "Espazo";
     },
     get$grammarCopyPOSsym() {
-      return "\uae30\ud638";
+      return "S\xedmbolo";
     },
     get$grammarCopyPOSdet() {
-      return "\ud55c\uc815\uc0ac";
+      return "Determinante";
     },
     get$grammarCopyPOSpron() {
-      return "\ub300\uba85\uc0ac";
+      return "Pronome";
     },
     get$grammarCopyPOSadp() {
-      return "\uc804\uce58\uc0ac";
+      return "Adposici\xf3n";
     },
     get$grammarCopyPOSpropn() {
-      return "\uace0\uc720\uba85\uc0ac";
+      return "Nome Propio";
     },
     get$grammarCopyPOSnoun() {
-      return "\uba85\uc0ac";
+      return "Substantivo";
     },
     get$grammarCopyPOSintj() {
-      return "\uac10\ud0c4\uc0ac";
+      return "Interxecci\xf3n";
     },
     get$grammarCopyPOSx() {
-      return "\uae30\ud0c0";
+      return "Outro";
     },
     get$grammarCopyGENDERfem() {
-      return "\uc5ec\uc131\ud615";
+      return "Feminino";
     },
     get$grammarCopyPERSON2() {
-      return "2\uc778\uce6d";
+      return "Segunda Persoa";
     },
     get$grammarCopyMOODimp() {
-      return "\uba85\ub839\ud615";
+      return "Imperativo";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\uc9c8\ubb38";
+      return "Pregunta";
     },
     get$grammarCopyASPECTperf() {
-      return "\uc644\ub8cc";
+      return "Perfecto";
     },
     get$grammarCopyCASEaccnom() {
-      return "\ub300\uaca9, \uc8fc\uaca9";
+      return "Acusativo, Nominativo";
     },
     get$grammarCopyCASEobl() {
-      return "\ud0c8\uaca9";
+      return "Obl\xedcuo";
     },
     get$grammarCopyVOICEact() {
-      return "\ub2a5\ub3d9";
+      return "Activo";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\uad04\ud638";
+      return "Par\xe9ntese";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\uad00\uc0ac";
+      return "Artigo";
     },
     get$grammarCopyNUMBERsing() {
-      return "\ub2e8\uc218";
+      return "Singular";
     },
     get$grammarCopyGENDERmasc() {
-      return "\ub0a8\uc131";
+      return "Masculino";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\uc870\ub3d9\uc0ac";
+      return "Modal";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\ubd80\uc0ac\uad6c";
+      return "Adverbial";
     },
     get$grammarCopyTENSEperi() {
-      return "\uad6c\uc870\uc801 \uc2dc\uc81c";
+      return "Perifr\xe1stico";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\uc22b\uc790";
+      return "D\xedgito";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\uace0\uc720\uba85\uc0ac \uc544\ub2d8";
+      return "Non propio";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\uae30\uc218";
+      return "Cardinal";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\uace0\uc720\uba85\uc0ac";
+      return "Propio";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\ub300\uc2dc";
+      return "Guion";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\uc608";
+      return "Si";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\uc138\ubbf8\ucf5c\ub860";
+      return "Punto e coma";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\uc27c\ud45c";
+      return "Virgula";
     },
     get$grammarCopyMOODcnd() {
-      return "\uc870\uac74\ubc95";
+      return "Condicional";
     },
     get$grammarCopyCASEacc() {
-      return "\ub300\uaca9";
+      return "Acusativo";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\ubd80\ubd84\uaca9";
+      return "Partitivo";
     },
     get$grammarCopyTENSEpast() {
-      return "\uacfc\uac70";
+      return "Pasado";
     },
     get$grammarCopyDEGREEsup() {
-      return "\ucd5c\uc0c1\uae09";
+      return "Superlativo";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\ucf5c\ub860";
+      return "Doubli\xf1o";
     },
     get$grammarCopyPERSON3() {
-      return "3\uc778\uce6d";
+      return "Terceira Persoa";
     },
     get$grammarCopyNUMBERplur() {
-      return "\ubcf5\uc218";
+      return "Plural";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\uace0\uc720\uba85\uc0ac";
+      return "Nome propio";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\uc758\ubb38\uc0ac";
+      return "Interrogativo";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\ube44\uacf5\uc2dd\uc801";
+      return "Informal";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\uc2dc\uac04";
+      return "Tempo";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\ubd80\uc815";
+      return "Negativo";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\uc804\uccb4";
+      return "Total";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\uc218\uc2dd\uc5b4\uad6c";
+      return "Adnominal";
     },
     get$grammarCopyASPECTprog() {
-      return "\uc9c4\ud589\ud615";
+      return "Progresivo";
     },
     get$grammarCopyMOODsub() {
-      return "\uac00\uc815\ubc95";
+      return "Subxuntivo";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\ubcf4\uc5b4\uc801";
+      return "Complementivo";
     },
     get$grammarCopyCASEnom() {
-      return "\uc8fc\uaca9";
+      return "Nominativo";
     },
     get$grammarCopyTENSEfut() {
-      return "\ubbf8\ub798";
+      return "Futuro";
     },
     get$grammarCopyCASEdat() {
-      return "\uc5ec\uaca9";
+      return "Dativo";
     },
     get$grammarCopyTENSEpres() {
-      return "\ud604\uc7ac";
+      return "Presente";
     },
     get$grammarCopyGENDERneut() {
-      return "\uc911\uc131";
+      return "Neutro";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\uad00\uacc4\ub300\uba85\uc0ac";
+      return "Relativo";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\uc885\uacb0\ud615";
+      return "Final";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\uc2dc\uc5f0\ud615";
+      return "Demostrativo";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\uc804\uce58\uc0ac\uad6c";
+      return "Preposicional";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\ud55c\uc815\ud615";
+      return "Finito";
     },
     get$grammarCopyDEGREEpos() {
-      return "\uae0d\uc815";
+      return "Positivo";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\uc778\uc6a9\uad6c";
+      return "Cita";
     },
     get$grammarCopyVERBFORMger() {
-      return "\ub3d9\uba85\uc0ac";
+      return "Gerundio";
     },
     get$grammarCopyVOICEpass() {
-      return "\uc218\ub3d9\ud0dc";
+      return "Pasivo";
     },
     get$grammarCopyCASEgen() {
-      return "\uc18c\uc720\uaca9";
+      return "Genitivo";
     },
     get$grammarCopyTENSEprs() {
-      return "\ud604\uc7ac";
+      return "Presente";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\ud655\uc815\ud615";
+      return "Definido";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\uc11c\uc218";
+      return "Ordinal";
     },
     get$grammarCopyCASEins() {
-      return "\ub3c4\uad6c\uaca9";
+      return "Instrumental";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\ubd80\uc815\uc0ac";
+      return "Infinitivo";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\uc870\ub3d9\uc0ac\ud615";
+      return "Auxiliar";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\uc7a5\uc218\ud615";
+      return "Longo";
     },
     get$grammarCopyCASEloc() {
-      return "\uaca9";
+      return "Cas";
     },
     get$grammarCopyMOODind() {
-      return "\ubc95";
+      return "Modo";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\ube44\uad50\uae09";
+      return "Comparativo";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\uad00\uacc4\uaca9";
+      return "Relativo";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\uac10\ud0c4\uc0ac";
+      return "Exclamativo";
     },
     get$grammarCopyPERSON1() {
-      return "1\uc778\uce6d";
+      return "Primeira persoa";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\ucd08\uae30";
+      return "Inicial";
     },
     get$grammarCopyGENDERperson() {
-      return "\uc131\ubcc4";
+      return "Persoa";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\uc678\uad6d\uc5b4";
+      return "Estranxeiro";
     },
     get$grammarCopyVOICEvoice() {
-      return "\ud0dc";
+      return "Voz";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\ub3d9\uc0ac";
+      return "Verbo";
     },
     get$grammarCopyPOSSpass() {
-      return "\uc18c\uc720\uaca9";
+      return "Posesivo";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\uc804\uce58\uc0ac\uaca9";
+      return "Preposicional";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\uc218\uc0ac";
+      return "Numeral";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\uba85\uc0ac";
+      return "Substantivo";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\uc7ac\uadc0\uc801";
+      return "Reflexivo";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\ub300\uba85\uc0ac";
+      return "Pronome";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\uad6c\ub450\uc810 \uc704\uce58";
+      return "Lado da puntuaci\xf3n";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\ub3d9\uc0ac\ud615";
+      return "Forma do verbo";
     },
     get$grammarCopyGENDERgender() {
-      return "\uc131\ubcc4";
+      return "X\xe9nero";
     },
     get$grammarCopyMOODmood() {
-      return "\uae30\ubd84";
+      return "Modo";
     },
     get$grammarCopyASPECTaspect() {
-      return "\uc0c1";
+      return "Aspecto";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\uad6c\ub450\uc810";
+      return "Puntuaci\xf3n";
     },
     get$grammarCopyTENSEtense() {
-      return "\uc2dc\uc81c";
+      return "Tempo";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\uc815\ub3c4";
+      return "Grao";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\uacf5\uc190\ud568";
+      return "Cortes\xeda";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\ubd80\uc0ac";
+      return "Adverbio";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\uc22b\uc790";
+      return "N\xfamero";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\uc811\uc18d\uc0ac";
+      return "Conxunci\xf3n";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\uadf9\uc131";
+      return "Polaridade";
     },
     get$grammarCopyCASEcase() {
-      return "\uaca9";
+      return "Caso";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\uc815\uc758";
+      return "Definido";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\uc218\uc0ac";
+      return "Numeral";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\uba85\uc0ac\ud615";
+      return "Adnominal";
     },
     get$grammarCopyVOCvoc() {
-      return "\ud638\uaca9";
+      return "Vocativo";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\ubcf4\ucda9\uc0ac";
+      return "Complementador";
     },
     get$grammarCopyADVadv() {
-      return "\ubd80\uc0ac\uc801";
+      return "Adverbial";
     },
     get$grammarCopyMOODjus() {
-      return "\uba85\ub839\ubc95";
+      return "Imperativo";
     },
     get$grammarCopyGENDERcom() {
-      return "\uc77c\ubc18";
+      return "Com\xfan";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\uc7ac\uadc0\uc801";
+      return "Reflexivo";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\ubd80\ubd84\uc801";
+      return "Partitivo";
     },
     get$grammarCopySPCspc() {
-      return "\ud2b9\uc815";
+      return "Espec\xedfico";
     },
     get$grammarCopyTENSEpqp() {
-      return "\ub300\uacfc\uac70";
+      return "Mais-que-perfeito";
     },
     get$grammarCopyREFLEXref() {
-      return "\uc7ac\uadc0\uc801";
+      return "Reflexivo";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\ub2e8\ucd95\ud615";
+      return "Curtado";
     },
     get$grammarCopyNUMBERdual() {
-      return "\uc774\uc911";
+      return "D\xfaal";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\uc7a5\ud615";
+      return "Longo";
     },
     get$grammarCopyVOICEmid() {
-      return "\uc911\uac04\ud615";
+      return "Medio";
     },
     get$grammarCopyINTRELintRel() {
-      return "\uc758\ubb38\ubb38, \uad00\uacc4\ubb38";
+      return "Interrogativo, Relativo";
     },
     get$grammarCopyINTint() {
-      return "\uc758\ubb38\ubb38";
+      return "Interrogativo";
     },
     get$grammarCopyVOICEcaus() {
-      return "\uc0ac\uc5ed\ud615";
+      return "Causativo";
     },
     get$grammarCopyUnknown() {
-      return "\uc54c \uc218 \uc5c6\uc74c";
+      return "Desco\xf1ecido";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\uc99d\uac70\uc801";
+      return "Evidencialidade";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\uc18c\uc720\uc790\uc758 \uc218";
+      return "N\xfamero do poseedor";
     },
     get$grammarCopyASPECThab() {
-      return "\uc2b5\uad00\uc801";
+      return "H\xe1bito";
     },
     get$grammarCopyCASEabl() {
-      return "\ud0c8\uaca9";
+      return "Ablativo";
     },
     get$grammarCopyCASEall() {
-      return "\ucc98\uaca9";
+      return "Allativo";
     },
     get$grammarCopyCASEess() {
-      return "\uc0c1\ud0dc\uaca9";
+      return "Esivo";
     },
     get$grammarCopyCASEtra() {
-      return "\uc804\ud658\uaca9";
+      return "Translativo";
     },
     get$grammarCopyCASEequ() {
-      return "\ub4f1\uac00\uaca9";
+      return "Equativo";
     },
     get$grammarCopyCASEdis() {
-      return "\ubd84\ubc30\uaca9";
+      return "Distributivo";
     },
     get$grammarCopyCASEabs() {
-      return "\uc808\ub300\uaca9";
+      return "Absolutivo";
     },
     get$grammarCopyCASEerg() {
-      return "\ub3c4\uad6c\uaca9";
+      return "Ergativo";
     },
     get$grammarCopyCASEcau() {
-      return "\uc6d0\uc778\uaca9";
+      return "Causal";
     },
     get$grammarCopyCASEben() {
-      return "\uc774\uc775\uaca9";
+      return "Benefactivo";
     },
     get$grammarCopyCASEtem() {
-      return "\uc2dc\uac04\uaca9";
+      return "Temporal";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\ubcd1\ub82c\uc811\uc18d\uc0ac";
+      return "Coordinante";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\uad6c\uc131 \uc0c1\ud0dc";
+      return "Estado de construci\xf3n";
     },
     get$grammarCopyDEGREEabs() {
-      return "\uc808\ub300 \uc815\ub3c4";
+      return "Grao absoluto";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\uc0ac\uc2e4\uc801 \uc99d\uac70\uc131";
+      return "Evidencialidade factual";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\ube44\uc0ac\uc2e4\uc801 \uc99d\uac70\uc131";
+      return "Evidencialidade non factual";
     },
     get$grammarCopyMOODopt() {
-      return "\uc18c\ub9dd\ubc95";
+      return "Optativo";
     },
     get$grammarCopyMOODadm() {
-      return "\uac10\ud0c4\ubc95";
+      return "Admirativo";
     },
     get$grammarCopyMOODdes() {
-      return "\ubc14\ub78c\ubc95";
+      return "Desiderativo";
     },
     get$grammarCopyMOODnec() {
-      return "\ud544\uc694\ubc95";
+      return "Necessitativo";
     },
     get$grammarCopyMOODpot() {
-      return "\uac00\ub2a5\ubc95";
+      return "Potencial";
     },
     get$grammarCopyMOODprp() {
-      return "\uc81c\uc548\ubc95";
+      return "Propositivo";
     },
     get$grammarCopyMOODqot() {
-      return "\uc778\uc6a9\ubc95";
+      return "Citativo";
     },
     get$grammarCopyNUMFORMword() {
-      return "\ub2e8\uc5b4 \ud615\ud0dc";
+      return "Forma da palabra";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\ub85c\ub9c8 \uc22b\uc790";
+      return "Numeral romano";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\ubb38\uc790\ud615";
+      return "Forma de letra";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\uacf1\uc148\ud615";
+      return "Multiplicativo";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\ubd84\uc218\ud615";
+      return "Fraccionario";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\uc9d1\ud569\ud615";
+      return "Conxunto";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\ubc94\uc704\ud615";
+      return "Intervalo";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\ubd84\ubc30\ud615";
+      return "Distributivo";
     },
     get$grammarCopyNUMBERtri() {
-      return "\uc2dc\ub3c4\ud615";
+      return "Proba";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\uc18c\uc218\ud615";
+      return "Paucal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\ub354 \ud070 \uc18c\uc218\ud615";
+      return "Paucal maior";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\ub354 \ud070 \ubcf5\uc218\ud615";
+      return "Plural maior";
     },
     get$grammarCopyNUMBERinv() {
-      return "\uc5ed\uc218\ud615";
+      return "Inversa";
     },
     get$grammarCopyPERSON0() {
-      return "\uc601";
+      return "Zero";
     },
     get$grammarCopyPERSON4() {
-      return "\ub124 \ubc88\uc9f8";
+      return "Cuarta";
     },
     get$grammarCopyPOLITEform() {
-      return "\uacf5\uc190\uccb4";
+      return "Formal";
     },
     get$grammarCopyPOLITEelev() {
-      return "\ub192\uc784\uccb4";
+      return "Elevado";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\uacb8\uc190\uccb4";
+      return "Humilde";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\uac15\uc870\ud615";
+      return "Enf\xe1tico";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\uac10\ud0c4\ud615";
+      return "Exclamativo";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\uc0c1\ud638\ud615";
+      return "Rec\xedproco";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\uc758\ubb38-\uad00\uacc4\ud615";
+      return "Interrogativo-Relativo";
     },
     get$grammarCopyTENSEaor() {
-      return "\uacfc\uac70\ud615";
+      return "Aoristo";
     },
     get$grammarCopyTENSEeps() {
-      return "\uc778\uc2dd\ub860\uc801";
+      return "Epist\xe9mico";
     },
     get$grammarCopyTENSEprosp() {
-      return "\ubbf8\ub798\ud615";
+      return "Prospectivo";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\ubd84\uc0ac";
+      return "Participio";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\ub3d9\uacbd\uc0ac";
+      return "Converbo";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\ub3d9\uc0ac \uba85\uc0ac";
+      return "Nome Verbal";
     },
     get$grammarCopyVOICEantip() {
-      return "\ubc18\uc218\ub3d9";
+      return "Antipassivo";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\uc0ac\uc5ed\ud615";
+      return "Causativo";
     },
     get$grammarCopyVOICedir() {
-      return "\uc9c1\uc811\ud615";
+      return "Directo";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\uc5ed\uc218\ub3d9";
+      return "Inverso";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\uc0c1\ud638\ud615";
+      return "Rec\xedproco";
     },
     get$grammarCopyPOS() {
-      return "\ud488\uc0ac";
+      return "Parte do Discurso";
     },
     get$grammarCopyGENDER() {
-      return "\uc131\ubcc4";
+      return "X\xe9nero";
     },
     get$grammarCopyPERSON() {
-      return "\uc778\uce6d";
+      return "Persoa";
     },
     get$grammarCopyMOOD() {
-      return "\ubc95";
+      return "Modo";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\uad6c\ub450\uc810 \uc720\ud615";
+      return "Tipo de Puntuaci\xf3n";
     },
     get$grammarCopyASPECT() {
-      return "\uc0c1\ud0dc";
+      return "Aspecto";
     },
     get$grammarCopyCASE() {
-      return "\uaca9";
+      return "Caso";
     },
     get$grammarCopyVOICE() {
-      return "\ud0dc";
+      return "Voz";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\uba85\uc0ac \uc720\ud615";
+      return "Tipo de Substantivo";
     },
     get$grammarCopyVERBTYPE() {
-      return "\ub3d9\uc0ac \uc720\ud615";
+      return "Tipo de verbo";
     },
     get$grammarCopyADVTYPE() {
-      return "\ubd80\uc0ac \uc720\ud615";
+      return "Tipo de adv\xe9rbio";
     },
     get$grammarCopyNUMFORM() {
-      return "\uc218\uc0ac \ud615\ud0dc";
+      return "Forma de numeral";
     },
     get$grammarCopyNUMTYPE() {
-      return "\uc218\uc0ac \uc720\ud615";
+      return "Tipo de numeral";
     },
     get$grammarCopyNUMBER() {
-      return "\uc22b\uc790";
+      return "N\xfamero";
     },
     get$grammarCopyDEFINITE() {
-      return "\uc815\uad00\uc0ac";
+      return "Definido";
     },
     get$grammarCopyDEGREE() {
-      return "\uc815\ub3c4";
+      return "Grao";
     },
     get$grammarCopyEVIDENT() {
-      return "\uc99d\uac70\uc131";
+      return "Evidencialidade";
     },
     get$grammarCopyFOREIGN() {
-      return "\uc678\uad6d\uc5b4";
+      return "Estranxeiro";
     },
     get$grammarCopyPOLARITY() {
-      return "\uadf9\uc131";
+      return "Polaridade";
     },
     get$grammarCopyPOLITE() {
-      return "\uacf5\uc190\ud568";
+      return "Cortes\xeda";
     },
     get$grammarCopyPREPCASE() {
-      return "\uc804\uce58\uc0ac \uaca9";
+      return "Caso preposicional";
     },
     get$grammarCopyPRONTYPE() {
-      return "\ub300\uba85\uc0ac \uc720\ud615";
+      return "Tipo de pronome";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\uad6c\ub450\uc810 \uc704\uce58";
+      return "Lado de puntuaci\xf3n";
     },
     get$grammarCopyREFLEX() {
-      return "\uc7ac\uadc0\uc801";
+      return "Reflexivo";
     },
     get$grammarCopyTENSE() {
-      return "\uc2dc\uc81c";
+      return "Tempo";
     },
     get$grammarCopyVERBFORM() {
-      return "\ub3d9\uc0ac \ud615\ud0dc";
+      return "Forma do verbo";
     },
     get$grammarCopyCONJTYPE() {
-      return "\uc811\uc18d\uc0ac \uc720\ud615";
+      return "Tipo de conxunci\xf3n";
     },
     get$grammarCopyUNKNOWN() {
-      return "\uc54c \uc218 \uc5c6\uc74c";
+      return "Desco\xf1ecido";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\uc18c\uc720\uaca9\uc758 \uc218";
+      return "N\xfamero do poseedor";
     },
     get$grammarCopyPOSS() {
-      return "\uc18c\uc720\uaca9";
+      return "Posesivo";
     },
     get$grammarCopyASPECTimp() {
-      return "\ubbf8\uc644\ub8cc\uc0c1";
+      return "Aspecto imperfectivo";
     },
     get$grammarCopyCASEvoc() {
-      return "\ud638\uaca9";
+      return "Vocativo";
     },
     get$grammarCopyCASEcom() {
-      return "\ub3d9\ubc18\uaca9";
+      return "Comitativo";
     },
     get$grammarCopyCASEpar() {
-      return "\ubd80\ubd84\uaca9";
+      return "Partitivo";
     },
     get$grammarCopyCASEadv() {
-      return "\ubd80\uc0ac\uaca9";
+      return "Adverbial";
     },
     get$grammarCopyCASEref() {
-      return "\uc9c0\uc2dc\uaca9";
+      return "Referencial";
     },
     get$grammarCopyCASErel() {
-      return "\uad00\uacc4\uaca9";
+      return "Relativo";
     },
     get$grammarCopyCASEsub() {
-      return "\ud558\uc704\uaca9";
+      return "Subessivo";
     },
     get$grammarCopyCASEsup() {
-      return "\uc0c1\uc704\uaca9";
+      return "Superessivo";
     },
     get$grammarCopyCASEaccdat() {
-      return "\ubaa9\uc801\uaca9-\uc5ec\uaca9";
+      return "Acusativo-Dativo";
     },
     get$grammarCopyCASEpre() {
-      return "\uc804\uce58\uc0ac\uad6c\uaca9";
+      return "Preposicional";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\uc885\uc18d\uc811\uc18d\uc0ac";
+      return "Subordinante";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\ube44\uad50\uae09";
+      return "Comparativo";
     },
     get$grammarCopyDEFINITEind() {
-      return "\ubd88\ud655\uc815";
+      return "Indefinido";
     },
     get$grammarCopyMOODint() {
-      return "\uc758\ubb38\ubc95";
+      return "Modo interrogativo";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\uc77c\ubc18 \uba85\uc0ac";
+      return "Substantivo Com\xfan";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "\uc18c\uc720\uaca9 \ub2e8\uc218\ud615";
+      return "Singular do Posuidor";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\uc18c\uc720\uaca9 \ubcf5\uc218\ud615";
+      return "Plural do Posuidor";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\uc18c\uc720\uaca9 \uc774\uc911\ud615";
+      return "Dual do Posuidor";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\uae0d\uc815\uc801 \uadf9\uc131";
+      return "Polaridade Positiva";
     },
     get$grammarCopyPOSSyes() {
-      return "\uc18c\uc720\uaca9";
+      return "Posesivo";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\uc804\uce58\uc0ac \uc5c6\uc74c";
+      return "Non preposicional";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\uc778\uce6d \ub300\uba85\uc0ac";
+      return "Persoal";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\uc758\ubb38\uc0ac";
+      return "Interrogativo";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\uc804\uccb4";
+      return "Total";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\ubd80\uc815";
+      return "Negativo";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\uad00\uc0ac";
+      return "Artigo";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\ubd88\ud2b9\uc815";
+      return "Indefinido";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\uc758\ubb38-\uad00\uacc4\ub300\uba85\uc0ac";
+      return "Interrogativo-Relativo";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\uc885\uacb0 \uad6c\ub450\uc810";
+      return "Puntuaci\xf3n final";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\ub9c8\uce68\ud45c";
+      return "Per\xedodo";
     },
     get$grammarCopyREFLEXyes() {
-      return "\uc7ac\uadc0\uc801";
+      return "Reflexivo";
     },
     get$grammarCopyTENSEimp() {
-      return "\ubbf8\uc644\ub8cc";
+      return "Imperfecto";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\ub300\uba85\uc0ac\ud615";
+      return "Supino";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\uc218\uc2dd\ud615";
+      return "Adnominal";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\uae38\uac8c";
+      return "Longo";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\uc9e7\uac8c";
+      return "Corto";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\uc0ac\uc5ed \ub3d9\uc0ac";
+      return "Verbo causativo";
     },
     get$grammarCopyVOICEcau() {
-      return "\uc0ac\uc5ed\uc801";
+      return "Causativo";
     },
     get$grammarCopyVOICEdir() {
-      return "\uc9c1\uc811\uc801";
+      return "Directo";
     },
     get$grammarCopyVOICEinv() {
-      return "\ubc18\uc804\uc801";
+      return "Inverso";
     },
     get$grammarCopyVOICErcp() {
-      return "\uc0c1\ud638\uc801";
+      return "Rec\xedproco";
     },
     get$other() {
-      return "\uae30\ud0c0";
+      return "Outro";
     },
     levelShort$1(level) {
-      return "LVL " + level;
+      return "NIV " + level;
     },
     get$clickBestOption() {
-      return "\uba54\uc2dc\uc9c0\ub97c \ubc88\uc5ed\ud560 \ucd5c\uc801\uc758 \uc635\uc158\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
+      return "Escolla as mellores opci\xf3ns para traducir a t\xfaa mensaxe!";
     },
     get$completeActivitiesToUnlock() {
-      return "\ucd5c\uc18c \ud55c \uac1c\uc758 \ud65c\ub3d9\uc744 \uc644\ub8cc\ud558\uc5ec \ubc88\uc5ed\uc744 \uc7a0\uae08 \ud574\uc81c\ud558\uc138\uc694!";
+      return "Completa polo menos unha actividade para desbloquear a traduci\xf3n!";
     },
     get$downloadGroupText() {
-      return "\uadf8\ub8f9 \ud14d\uc2a4\ud2b8 \ub2e4\uc6b4\ub85c\ub4dc";
+      return "Descargar texto do grupo";
     },
     get$notificationsOn() {
-      return "\uc54c\ub9bc \ucf1c\uae30";
+      return "Notificaci\xf3ns activadas";
     },
     get$notificationsOff() {
-      return "\uc54c\ub9bc \ub044\uae30";
+      return "Notificaci\xf3ns desactivadas";
     },
     get$createChatAndInviteUsers() {
-      return "\ucc44\ud305 \uc0dd\uc131 \ubc0f \uc0ac\uc6a9\uc790 \ucd08\ub300";
+      return "Crear chat e invitar usuarios";
     },
     get$updatedNewSpaceDescription() {
-      return "\ucf54\uc2a4\ub294 \ucc44\ud305\uc744 \ud1b5\ud569\ud558\uace0 \ube44\uacf5\uac1c \ub610\ub294 \uacf5\uac1c \ucee4\ubba4\ub2c8\ud2f0\ub97c \uad6c\ucd95\ud560 \uc218 \uc788\uac8c \ud569\ub2c8\ub2e4.";
+      return "Os cursos permiten consolidar os teus chats e crear comunidades privadas ou p\xfablicas.";
     },
     get$joinWithCode() {
-      return "\ucf54\ub4dc\ub85c \ucc38\uc5ec";
+      return "Unirse con c\xf3digo";
     },
     get$enterCodeToJoin() {
-      return "\ucc38\uc5ec\ud560 \ucf54\ub4dc\ub97c \uc785\ub825\ud558\uc138\uc694";
+      return "Introduce o c\xf3digo para unirse";
     },
     get$updateNow() {
-      return "\uc9c0\uae08 \uc5c5\ub370\uc774\ud2b8";
+      return "Actualizar agora";
     },
     get$updateLater() {
-      return "\ub098\uc911\uc5d0 \uc5c5\ub370\uc774\ud2b8";
+      return "Actualizar despois";
     },
     get$constructUseWaDesc() {
-      return "\ub3c4\uc6c0 \uc5c6\uc774 \uc0ac\uc6a9";
+      return "Usado sen axuda";
     },
     get$constructUseGaDesc() {
-      return "\ubb38\ubc95 \ub3c4\uc6c0";
+      return "Asistencia gramatical";
     },
     get$constructUseTaDesc() {
-      return "\ubc88\uc5ed \ub3c4\uc6c0";
+      return "Asistencia na traduci\xf3n";
     },
     get$constructUseUnkDesc() {
-      return "\uc54c \uc218 \uc5c6\uc74c";
+      return "Desco\xf1ecido";
     },
     get$constructUseCorITDesc() {
-      return "\ubc88\uc5ed\uc5d0\uc11c \uc218\uc815\ub428";
+      return "Correcto na traduci\xf3n";
     },
     get$constructUseIgnITDesc() {
-      return "\ubc88\uc5ed\uc5d0\uc11c \ubb34\uc2dc\ub428";
+      return "Ignorado na traduci\xf3n";
     },
     get$constructUseIncITDesc() {
-      return "\ubc88\uc5ed\uc5d0\uc11c \uc798\ubabb\ub428";
+      return "Incorrecto na traduci\xf3n";
     },
     get$constructUseIgnIGCDesc() {
-      return "\ubb38\ubc95 \uad50\uc815\uc5d0\uc11c \ubb34\uc2dc\ub428";
+      return "Ignorado na correcci\xf3n gramatical";
     },
     get$constructUseCorIGCDesc() {
-      return "\ubb38\ubc95 \uad50\uc815\uc5d0\uc11c \uc62c\ubc14\ub984";
+      return "Correto na correcci\xf3n gramatical";
     },
     get$constructUseIncIGCDesc() {
-      return "\ubb38\ubc95 \uad50\uc815\uc5d0\uc11c \uc798\ubabb\ub428";
+      return "Incorrecto na correcci\xf3n gramatical";
     },
     get$constructUseCorPADesc() {
-      return "\ub2e8\uc5b4 \uc758\ubbf8 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
+      return "Correcto na actividade de significado de palabras";
     },
     get$constructUseIgnPADesc() {
-      return "\ub2e8\uc5b4 \uc758\ubbf8 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
+      return "Ignorado na actividade de significado de palabras";
     },
     get$constructUseIncPADesc() {
-      return "\ub2e8\uc5b4 \uc758\ubbf8 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
+      return "Incorrecto na actividade de significado de palabras";
     },
     get$constructUseCorWLDesc() {
-      return "\ub2e8\uc5b4 \ub4e3\uae30 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
+      return "Correcto na actividade de escoita de palabras";
     },
     get$constructUseIncWLDesc() {
-      return "\ub2e8\uc5b4 \ub4e3\uae30 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
+      return "Incorrecto na actividade de escoita de palabras";
     },
     get$constructUseIngWLDesc() {
-      return "\ub2e8\uc5b4 \ub4e3\uae30 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
+      return "Ignorado na actividade de escoita de palabras";
     },
     get$constructUseCorHWLDesc() {
-      return "\uc228\uc740 \ub2e8\uc5b4 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
+      return "Correcto na actividade de palabra oculta";
     },
     get$constructUseIncHWLDesc() {
-      return "\uc228\uc740 \ub2e8\uc5b4 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
+      return "Incorrecto na actividade de palabra oculta";
     },
     get$constructUseIgnHWLDesc() {
-      return "\uc228\uc740 \ub2e8\uc5b4 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
+      return "Ignorado na actividade de palabra oculta";
     },
     get$constructUseCorLDesc() {
-      return "\uc5b4\uadfc \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
+      return "Correcto na actividade de lema";
     },
     get$constructUseIncLDesc() {
-      return "\uc5b4\uadfc \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
+      return "Incorrecto na actividade de lema";
     },
     get$constructUseIgnLDesc() {
-      return "\uc5b4\uadfc \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
+      return "Ignorado na actividade de lema";
     },
     get$constructUseCorMDesc() {
-      return "\ubb38\ubc95 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub984";
+      return "Correcto na actividade de gram\xe1tica";
     },
     get$constructUseIncMDesc() {
-      return "\ubb38\ubc95 \ud65c\ub3d9\uc5d0\uc11c \uc798\ubabb\ub428";
+      return "Incorrecto na actividade de gram\xe1tica";
     },
     get$constructUseIgnMDesc() {
-      return "\ubb38\ubc95 \ud65c\ub3d9\uc5d0\uc11c \ubb34\uc2dc\ub428";
+      return "Ignorado na actividade de gram\xe1tica";
     },
     get$constructUseEmojiDesc() {
-      return "\uc774\ubaa8\uc9c0 \ud65c\ub3d9\uc5d0\uc11c \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ud558\uc138\uc694";
+      return "Correcto na actividade de emoji";
     },
     get$constructUseCollected() {
-      return "\ucc44\ud305\uc5d0\uc11c \uc218\uc9d1\ub428";
+      return "Recollido no chat";
     },
     get$constructUseNanDesc() {
-      return "\uc801\uc6a9 \ubd88\uac00";
+      return "Non aplicable";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658 \ud65c\uc131\ud654";
+      return "Texto a fala activado";
     },
     get$enableTTSToolDescription() {
-      return "\uc571\uc774 \ub300\uc0c1 \uc5b8\uc5b4\uc758 \uc77c\ubd80 \ud14d\uc2a4\ud2b8\uc5d0 \ub300\ud574 \ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658 \ucd9c\ub825\uc744 \uc0dd\uc131\ud560 \uc218 \uc788\ub3c4\ub85d \ud5c8\uc6a9\ud569\ub2c8\ub2e4.";
+      return "Permite que a aplicaci\xf3n xere sa\xedda de texto a fala para partes do texto na t\xfaa lingua obxectivo.";
     },
     get$yourUsername() {
-      return "\uc0ac\uc6a9\uc790 \uc774\ub984";
+      return "O teu nome de usuario";
     },
     get$yourEmail() {
-      return "\uc774\uba54\uc77c";
+      return "O teu correo electr\xf3nico";
     },
     get$iWantToLearn() {
-      return "\ubc30\uc6b0\uace0 \uc2f6\uc5b4\uc694";
+      return "Quero aprender";
     },
     get$pleaseEnterEmail() {
-      return "\uc720\ud6a8\ud55c \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825\ud558\uc138\uc694.";
+      return string$.Por_fa;
     },
     get$myBaseLanguage() {
-      return "\ub0b4 \uae30\ubcf8 \uc5b8\uc5b4";
+      return "O meu idioma base";
     },
     get$meaningSectionHeader() {
-      return "\uc758\ubbf8:";
+      return "Significado:";
     },
     get$formSectionHeader() {
-      return "\ucc44\ud305\uc5d0 \uc0ac\uc6a9\ub41c \ud615\ud0dc:";
+      return "Formas usadas en chats:";
     },
     get$writingExercisesTooltip() {
-      return "\uc4f0\uae30";
+      return "Escritura";
     },
     get$listeningExercisesTooltip() {
-      return "\ub4e3\uae30";
+      return "Escucha";
     },
     get$readingExercisesTooltip() {
-      return "\uc77d\uae30";
+      return "Lectura";
     },
     get$meaningNotFound() {
-      return "\uc758\ubbf8\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Non se puido atopar o significado.";
     },
     get$chooseBaseForm() {
-      return "\uae30\ubcf8 \ud615\ud0dc\ub97c \uc120\ud0dd\ud558\uc138\uc694";
+      return "Elixe a forma base";
     },
     get$notTheCodeError() {
-      return "\uc8c4\uc1a1\ud569\ub2c8\ub2e4, \uadf8 \ucf54\ub4dc\ub294 \uc544\ub2d9\ub2c8\ub2e4!";
+      return "Perd\xf3n, iso non \xe9 o c\xf3digo!";
     },
     get$totalXP() {
-      return "\ucd1d \uacbd\ud5d8\uce58";
+      return "Total de XP";
     },
     get$numLemmas() {
-      return "\ub808\ub9c8\uc758 \ucd1d \uc218";
+      return "Total de lemas";
     },
     get$numLemmasUsedCorrectly() {
-      return "\uc801\uc5b4\ub3c4 \ud55c \ubc88 \uc774\uc0c1 \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \ub808\ub9c8\uc758 \uc218";
+      return "N\xfamero de lemas utilizados correctamente polo menos unha vez";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \uc801\uc774 \uc5c6\ub294 \ub808\ub9c8\uc758 \uc218";
+      return "N\xfamero de lemas utilizados incorrectamente 0 veces";
     },
     get$numLemmasSmallXP() {
-      return "XP 0-30\uc778 \ub808\ub9c8\uc758 \uc218";
+      return "N\xfamero de lemas con 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "XP 31-200\uc778 \ub808\ub9c8\uc758 \uc218";
+      return "N\xfamero de lemas con 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "XP > 200\uc778 \ub808\ub9c8\uc758 \uc218";
+      return "N\xfamero de lemas con > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "\ubb38\ubc95 \uac1c\ub150\uc758 \uc218";
+      return "N\xfamero de conceptos de gram\xe1tica";
     },
     get$listGrammarConcepts() {
-      return "\ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0\uc5d0\uc11c \uc801\uc5b4\ub3c4 80%\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica utilizados correctamente nos mensaxes orixinais polo menos o 80% das veces";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0\uc5d0\uc11c 80% \ubbf8\ub9cc\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc0ac\uc6a9\ub41c \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica utilizados incorrectamente nos mensaxes orixinais menos do 80% das veces";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c \uc801\uc5b4\ub3c4 80%\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc120\ud0dd\ub41c \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica escollidos correctamente a partir de suxesti\xf3ns xeradas polo sistema polo menos o 80% das veces";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c 80% \ubbf8\ub9cc\uc758 \uc2dc\uac04 \ub3d9\uc548 \uc62c\ubc14\ub974\uac8c \uc120\ud0dd\ub41c \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica escollidos correctamente a partir de suxesti\xf3ns xeradas polo sistema menos do 80% das veces";
     },
     get$listGrammarConceptsSmallXP() {
-      return "XP 0-50\uc778 \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica con 0-50 xp";
     },
     get$listGrammarConceptsMediumXP() {
-      return "XP 51-200\uc778 \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica con 51-200 xp";
     },
     get$listGrammarConceptsLargeXP() {
-      return "XP 201-500\uc778 \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica con 201-500 xp";
     },
     get$listGrammarConceptsHugeXP() {
-      return "XP > 500\uc778 \ubb38\ubc95 \uac1c\ub150";
+      return "Conceptos de gram\xe1tica >500 xp";
     },
     get$numMessagesSent() {
-      return "\ubcf4\ub0b8 \uba54\uc2dc\uc9c0 \uc218";
+      return "N\xfamero de mensaxes enviadas";
     },
     get$numWordsTyped() {
-      return "\uc6d0\ubcf8 \uba54\uc2dc\uc9c0\uc5d0 \uc785\ub825\ub41c \ub2e8\uc5b4 \uc218";
+      return "N\xfamero de palabras escritas nos mensaxes orixinais";
     },
     get$numCorrectChoices() {
-      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c \uc120\ud0dd\ub41c \uc62c\ubc14\ub978 \ub2e8\uc5b4 \uc218";
+      return "N\xfamero de palabras correctas escollidas a partir de suxesti\xf3ns xeradas polo sistema";
     },
     get$numIncorrectChoices() {
-      return "\uc2dc\uc2a4\ud15c \uc0dd\uc131 \uc81c\uc548\uc5d0\uc11c \uc120\ud0dd\ub41c \uc798\ubabb\ub41c \ub2e8\uc5b4 \uc218";
+      return "N\xfamero de palabras incorrectas escollidas a partir de suxesti\xf3ns xeradas polo sistema";
     },
     get$commaSeparatedFile() {
       return "CSV";
     },
     get$excelFile() {
-      return "\uc5d1\uc140";
+      return "Excel";
     },
     get$fileType() {
-      return "\ud30c\uc77c \uc720\ud615";
+      return "Tipo de ficheiro";
     },
     get$download(_) {
-      return "\ub2e4\uc6b4\ub85c\ub4dc";
+      return "Descargar";
     },
     get$analyticsNotAvailable() {
-      return "\uc0ac\uc6a9\uc790 \ubd84\uc11d\uc744 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Anal\xedticas de usuario non dispo\xf1ibles";
     },
     get$downloading() {
-      return "\ub2e4\uc6b4\ub85c\ub4dc \uc911...";
+      return "Descargando...";
     },
     get$failedFetchUserAnalytics() {
-      return "\uc0ac\uc6a9\uc790 \ubd84\uc11d \ub2e4\uc6b4\ub85c\ub4dc \uc2e4\ud328";
+      return "Fallou ao descargar as anal\xedticas de usuario";
     },
     get$downloadComplete() {
-      return "\ub2e4\uc6b4\ub85c\ub4dc \uc644\ub8cc!";
+      return "Descarga completa!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "'" + wordForm + "'\uc758 " + morphologicalFeature + "\ub294 \ubb34\uc5c7\uc785\ub2c8\uae4c?";
+      return "Cal \xe9 o " + morphologicalFeature + " de '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "\ub370\uc774\ud130 \uac00\uc6a9\uc131";
+      return "Dispo\xf1ibilidade de datos";
     },
     get$available(_) {
-      return "\uc774\uc6a9 \uac00\ub2a5";
+      return "Dispo\xf1ible";
     },
     get$pangeaBotIsFallible() {
-      return "\ud310\uac8c\uc544 \ubd07\ub3c4 \uc2e4\uc218\ub97c \ud569\ub2c8\ub2e4!";
+      return "\xa1O Pangea Bot tam\xe9n comete erros!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "'" + lemma + "'\uc758 \uc758\ubbf8\ub294 \ubb34\uc5c7\uc785\ub2c8\uae4c?";
+      return "Que significa '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\uba54\uc2dc\uc9c0\uc758 \ub2e8\uc5b4\uc640 \uc758\ubbf8\ub97c \uc77c\uce58\uc2dc\ud0a4\uc138\uc694!";
+      return "\xa1Coincide os significados coas palabras na mensaxe!";
     },
     get$doubleClickToEdit() {
-      return "\ub354\ube14 \ud074\ub9ad\ud558\uc5ec \ud3b8\uc9d1\ud558\uc138\uc694.";
+      return "Fai dobre clic para editar.";
     },
     get$cefrLevelLabel() {
-      return "CEFR \uc218\uc900";
+      return "Nivel CEFR";
     },
     get$image(_) {
-      return "\uc774\ubbf8\uc9c0";
+      return "Imaxe";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\uc8fc\uc81c, \ubaa8\ub4dc, \ud559\uc2b5 \ubaa9\ud45c\ub97c \uc120\ud0dd\ud558\uace0 \ucc44\ud305\uc744 \uc704\ud55c \ud65c\ub3d9\uc744 \uc0dd\uc131\ud558\uc138\uc694!";
+      return "Elixe un tema, modo, obxectivo de aprendizaxe e xera unha actividade para o chat!";
     },
     get$constructUsePvmDesc() {
-      return "\uc74c\uc131 \uba54\uc2dc\uc9c0\ub85c \uc81c\uc791\ub428";
+      return "Producido en mensaxe de voz";
     },
     get$leaveSpaceDescription() {
-      return "\ucf54\uc2a4\ub97c \ub5a0\ub098\uba74 \uadf8 \uc548\uc758 \ubaa8\ub4e0 \ucc44\ud305\uc774 \uc885\ub8cc\ub429\ub2c8\ub2e4. \ub2e4\ub978 \uc0ac\uc6a9\uc790\ub294 \ub2f9\uc2e0\uc774 \ucf54\uc2a4\ub97c \ub5a0\ub0ac\ub2e4\ub294 \uac83\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Ao sa\xedr do curso, abandonar\xe1s todos os chats dentro del. Outros usuarios ver\xe1n que sa\xedste do curso.";
     },
     get$constructUseCorMmDesc() {
-      return "\uba54\uc2dc\uc9c0 \uc758\ubbf8\uac00 \uc815\ud655\ud568";
+      return "Significado correcto da mensaxe";
     },
     get$constructUseIncMmDesc() {
-      return "\uba54\uc2dc\uc9c0 \uc758\ubbf8\uac00 \ubd80\uc815\ud655\ud568";
+      return "Significado incorrecto da mensaxe";
     },
     get$constructUseIgnMmDesc() {
-      return "\ubb34\uc2dc\ub41c \uba54\uc2dc\uc9c0 \uc758\ubbf8";
+      return "Significado da mensaxe ignorada";
     },
     get$meaning() {
-      return "\uc758\ubbf8";
+      return "Significado";
     },
     chatWith$1(displayname) {
-      return displayname + "\uc640 \uadf8\ub8f9 \ucc44\ud305";
+      return "Grupo con " + displayname;
     },
     get$clickOnEmailLink() {
-      return "\uc774\uba54\uc77c\uc758 \ub9c1\ud06c\ub97c \ud074\ub9ad\ud55c \ud6c4 \uacc4\uc18d \uc9c4\ud589\ud558\uc138\uc694.\n\n\uc774\uba54\uc77c\uc774 \ub3c4\ucc29\ud558\uc9c0 \uc54a\uc558\ub2e4\uba74 \uc2a4\ud338 \ud3f4\ub354\ub97c \ud655\uc778\ud558\uc138\uc694.";
+      return "Prema no enlace do correo electr\xf3nico e logo contin\xfae.\n\nRevisa a carpeta de spam se o correo non chegou.";
     },
     get$dontForgetPassword() {
-      return "\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc9c0 \ub9c8\uc138\uc694!";
+      return "\xa1Non esquezas a t\xfaa contrasinal!";
     },
     get$enableAutocorrectToolName() {
-      return "\uae30\uae30 \uc790\ub3d9 \uad50\uc815 \ud65c\uc131\ud654";
+      return "Habilitar autocorrecci\xf3n do dispositivo";
     },
     get$enableAutocorrectDescription() {
-      return "\ud559\uc2b5\ud558\ub294 \uc5b8\uc5b4\ub97c \uc9c0\uc6d0\ud558\ub294 \uae30\uae30\ub77c\uba74, \ud0c0\uc774\ud551 \uc2dc \uc77c\ubc18\uc801\uc778 \uc624\ub958\ub97c \uc218\uc815\ud558\ub294 \uae30\uae30 \uc790\ub3d9 \uad50\uc815\uc744 \ud65c\uc131\ud654\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Se o teu dispositivo soporta a lingua que est\xe1s a aprender, podes habilitar a autocorrecci\xf3n para corrixir erros com\xfans mentres escribes.";
     },
     get$ttsDisbledTitle() {
-      return "\ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658 \ube44\ud65c\uc131\ud654\ub428";
+      return "Texto a fala desactivado";
     },
     get$ttsDisabledBody() {
-      return "\ud559\uc2b5 \uc124\uc815\uc5d0\uc11c \ud14d\uc2a4\ud2b8 \uc74c\uc131 \ubcc0\ud658\uc744 \ud65c\uc131\ud654\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4";
+      return "Podes activar o texto a fala nas t\xfaas configuraci\xf3ns de aprendizaxe";
     },
     get$noSpaceDescriptionYet() {
-      return "\uc544\uc9c1 \uc0dd\uc131\ub41c \uac15\uc88c \uc124\uba85\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "A\xednda non se creou unha descrici\xf3n do curso.";
     },
     get$tooLargeToSend() {
-      return "\uc774 \uba54\uc2dc\uc9c0\ub294 \ub108\ubb34 \ucee4\uc11c \ubcf4\ub0bc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Este mensaxe \xe9 demasiado grande para enviar";
     },
     get$exitWithoutSaving() {
-      return "\uc800\uc7a5\ud558\uc9c0 \uc54a\uace0 \uc885\ub8cc\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+      return "Est\xe1s seguro de que queres sa\xedr sen gardar?";
     },
     get$enableAutocorrectWarning() {
-      return "\uacbd\uace0! \ubaa9\ud45c \uc5b8\uc5b4 \ud0a4\ubcf4\ub4dc \ucd94\uac00\uac00 \ud544\uc694\ud569\ub2c8\ub2e4";
+      return "\xa1Advertencia! \xc9 necesario engadir o teclado do teu idioma obxectivo";
     },
     get$leaveRoomDescription() {
-      return "\uc774 \ucc44\ud305\uc744 \ub5a0\ub0a0 \uc608\uc815\uc785\ub2c8\ub2e4. \ub2e4\ub978 \uc0ac\uc6a9\uc790\ub294 \ub2f9\uc2e0\uc774 \ucc44\ud305\uc744 \ub5a0\ub0ac\uc74c\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Est\xe1s a piques de abandonar este chat. Outros usuarios ver\xe1n que sa\xedste do chat.";
     },
     get$confirmUserId() {
-      return "\uacc4\uc815\uc744 \uc0ad\uc81c\ud558\ub824\uba74 Pangea \ucc44\ud305 \uc0ac\uc6a9\uc790 \uc774\ub984\uc744 \ud655\uc778\ud558\uc138\uc694.";
+      return "Por favor, confirma o teu nome de usuario de Pangea Chat para eliminar a t\xfaa conta.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return startDate + "\ubd80\ud130 \uc2dc\uc791";
+      return "Comeza o " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \uad6c\ub3c5 \uc124\uc815\uc5d0\uc11c \uc5b8\uc81c\ub4e0 \ucde8\uc18c \uac00\ub2a5";
+      return "\u2022 Cancelar en calquera momento na configuraci\xf3n da subscrici\xf3n";
     },
     get$autocorrectNotAvailable() {
-      return "\uc548\ud0c0\uae5d\uac8c\ub3c4 \ud604\uc7ac \uc774 \ud50c\ub7ab\ud3fc\uc740 \uc774 \uae30\ub2a5\uc744 \uc9c0\uc6d0\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ud5a5\ud6c4 \uac1c\ubc1c\uc744 \uae30\ub300\ud558\uc138\uc694!";
+      return "Lamentablemente, a t\xfaa plataforma actualmente non \xe9 compatible con esta funci\xf3n. \xa1Mantente atento para m\xe1is desenvolvementos!";
     },
     get$pleaseUpdateApp() {
-      return "\uc571\uc744 \uacc4\uc18d \uc0ac\uc6a9\ud558\ub824\uba74 \uc5c5\ub370\uc774\ud2b8\ud558\uc138\uc694.";
+      return "Actualiza a aplicaci\xf3n para continuar.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\uc774\ubaa8\uc9c0\ub97c \uac00\uc7a5 \uc798 \ub098\ud0c0\ub0b4\ub294 \ub2e8\uc5b4\uc640 \uc77c\uce58\uc2dc\ud0a4\uc138\uc694. \uac71\uc815\ud558\uc9c0 \ub9c8\uc138\uc694! \uc758\uacac\uc774 \ub2e4\ub974\ub2e4\uace0 \ud574\uc11c \uc810\uc218\uac00 \uae4e\uc774\uc9c4 \uc54a\uc544\uc694! \ud83d\ude05";
+      return "Combina emojis coas palabras que mellor as representan. Non te preocupes! Non hai puntos en contra por discrepar. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\uc774\uac83\uc774 \ub2f9\uc2e0\uc758 \ubaa8\ub4e0 \uc5b4\ud718\uc785\ub2c8\ub2e4! \uac01 \ub2e8\uc5b4\uc5d0 \ub300\ud574 XP\ub97c \uc5bb\uc73c\uba74 \uc2f9\uc5d0\uc11c \uaf43\uc73c\ub85c \ud53c\uc5b4\ub0a9\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc744 \ubcf4\ub824\uba74 \uc5b4\ub5a4 \ub2e8\uc5b4\ub97c \ud074\ub9ad\ud558\uc138\uc694.";
+      return "Esta \xe9 toda a t\xfaa vocabulario! \xc1 medida que ga\xf1as XP por cada palabra, pasar\xe1 de semente a flor completa. Fai clic en calquera palabra para ver m\xe1is detalles.";
     },
     get$morphAnalyticsListBody() {
-      return "\uc774\uac83\uc740 \ub2f9\uc2e0\uc774 \ubc30\uc6b0\uace0 \uc788\ub294 \uc5b8\uc5b4\uc758 \ubaa8\ub4e0 \ubb38\ubc95 \uac1c\ub150\uc785\ub2c8\ub2e4! \ucc44\ud305\ud558\uba74\uc11c \ub9cc\ub0a0 \ub54c\ub9c8\ub2e4 \uc7a0\uae08\uc774 \ud574\uc81c\ub429\ub2c8\ub2e4. \uc790\uc138\ud55c \ub0b4\uc6a9\uc744 \ubcf4\ub824\uba74 \ud074\ub9ad\ud558\uc138\uc694.";
+      return "Estes son todos os conceptos gramaticais na lingua que est\xe1s aprendendo! Desbloquear\xe1sos ao atopalos mentres chateas. Fai clic para detalles.";
     },
     get$knockSpaceSuccess() {
-      return "\uc774 \uac15\uc88c\uc5d0 \ucc38\uc5ec \uc694\uccad\uc744 \ubcf4\ub0c8\uc2b5\ub2c8\ub2e4! \uad00\ub9ac\uc790\uac00 \uc694\uccad\uc744 \ubc1b\uc73c\uba74 \uc751\ub2f5\ud560 \uac83\uc785\ub2c8\ub2e4 \ud83d\ude04";
+      return "Solicitaches unirte a este curso! Un administrador responderache cando o reciba \ud83d\ude0a";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\uc804\uccb4 \uba54\uc2dc\uc9c0\ub97c \ub4e3\uace0, \uadf8 \ub2e4\uc74c\uc5d0 \uc624\ub514\uc624\uc640 \ub2e8\uc5b4\ub97c \uc77c\uce58\uc2dc\ud0a4\uc138\uc694.";
+      return "Escoita a mensaxe completa. Logo combina os audios coas palabras.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\ubb38\ubc95 \uc9c8\ubb38\uc744 \uc704\ud574 \ud37c\uc990 \uc870\uac01\uc744 \ud074\ub9ad\ud558\uc138\uc694!";
+      return "Fai clic nas pezas do puzzle para preguntas de gram\xe1tica!";
     },
     get$home() {
-      return "\ud648";
+      return "Inicio";
     },
     get$join(_) {
-      return "\ucc38\uc5ec\ud558\uae30";
+      return "Unirse";
     },
     get$readingAssistanceOverviewBody() {
-      return "\uc544\ub798 \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \uc774\ubaa8\uc9c0, \uc624\ub514\uc624, \ub2e8\uc5b4 \uc758\ubbf8, \ubb38\ubc95 \uac1c\ub150 \ub9de\ucd94\uae30 \ubbf8\ub2c8\uac8c\uc784\uc744 \uc990\uae30\uc138\uc694. \ub610\ub294 \uc5b4\ub5a4 \ub2e8\uc5b4\ub97c \ud074\ub9ad\ud558\uc5ec \uc790\uc138\ud55c \uc815\ubcf4\ub97c \ud655\uc778\ud558\uc138\uc694.";
+      return "Fai clic nos bot\xf3ns de abaixo para mini-xogos de combinaci\xf3n de emojis, audios, significados de palabras e conceptos gramaticais. Ou fai clic en calquera palabra para m\xe1is detalles.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\uc124\uba85 \ud234\ud301 \uc7ac\uc124\uc815";
+      return "Restablecer dicas de instruci\xf3n";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\ud074\ub9ad\ud558\uc5ec \uc0c8 \uc0ac\uc6a9\uc790\ucc98\ub7fc \uc124\uba85 \ud234\ud301\uc744 \ud45c\uc2dc\ud558\uc138\uc694.";
+      return "Fai clic para amosar as dicas de instruci\xf3n como se fose un novo usuario.";
     },
     get$selectForGrammar() {
-      return "\ud65c\ub3d9 \ubc0f \uc138\ubd80 \uc815\ubcf4\uc5d0 \ub300\ud55c \ubb38\ubc95 \uc544\uc774\ucf58 \uc120\ud0dd.";
+      return "Selecciona un icono de gram\xe1tica para actividades e detalles.";
     },
     get$translationProblem() {
-      return "\ubc88\uc5ed \ubb38\uc81c";
+      return "Problema de traduci\xf3n";
     },
     get$askToJoin() {
-      return "\ucc38\uc5ec \uc694\uccad";
+      return "Pide unirte";
     },
     get$emptyChatWarningTitle() {
-      return "\ucc44\ud305\uc774 \ube44\uc5b4 \uc788\uc2b5\ub2c8\ub2e4";
+      return "O chat est\xe1 baleiro";
     },
     get$emptyChatWarningDesc() {
-      return "\uc544\ubb34\ub3c4 \ucc44\ud305\uc5d0 \ucd08\ub300\ud558\uc9c0 \uc54a\uc73c\uc168\uc2b5\ub2c8\ub2e4. \ucc44\ud305 \uc124\uc815\uc73c\ub85c \uc774\ub3d9\ud558\uc5ec \uc5f0\ub77d\ucc98 \ub610\ub294 \ubd07\uc744 \ucd08\ub300\ud558\uc138\uc694. \ub098\uc911\uc5d0 \ud558\uc154\ub3c4 \ub429\ub2c8\ub2e4.";
+      return "Non invitaches a ningu\xe9n ao teu chat. Vai a Configuraci\xf3n do chat para convidar aos teus contactos ou ao Bot. Tam\xe9n podes facelo despois.";
     },
     get$areYouLikeMe() {
-      return "\ub098\uc640 \uac19\ub098\uc694?";
+      return "Es como eu?";
     },
     get$tryAgainLater() {
-      return "\ub108\ubb34 \ub9ce\uc740 \uc2dc\ub3c4\ub97c \ud588\uc2b5\ub2c8\ub2e4. 5\ubd84 \ud6c4\uc5d0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
+      return "Demasiados intentos feitos. Por favor, tenta de novo en 5 minutos.";
     },
     get$enterSpaceCode() {
-      return "\ucf54\uc2a4 \ucf54\ub4dc\ub97c \uc785\ub825\ud558\uc138\uc694";
+      return "Introduce o c\xf3digo do curso";
     },
     get$shareSpaceLink() {
-      return "\ub9c1\ud06c \uacf5\uc720";
+      return "Compartir ligaz\xf3n";
     },
     get$byUsingPangeaChat() {
-      return "Pangea Chat\uc744 \uc0ac\uc6a9\ud568\uc73c\ub85c\uc368, \uc800\ub294 ";
+      return "Ao usar Pangea Chat, acepto as ";
     },
     get$details(_) {
-      return "\uc138\ubd80 \uc815\ubcf4";
+      return "Detalles";
     },
     get$languageLevelPreA1Desc() {
-      return "\uc774 \uc5b8\uc5b4\ub97c \ubc30\uc6b4 \uc801\ub3c4 \uc0ac\uc6a9\ud55c \uc801\ub3c4 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Nunca aprend\xedn nin usei a lingua.";
     },
     get$languageLevelA1Desc() {
-      return "\uc77c\uc0c1\uc801\uc778 \uce5c\uc219\ud55c \ud45c\ud604\uacfc \ub9e4\uc6b0 \uae30\ubcf8\uc801\uc778 \ubb38\uad6c\ub97c \uc774\ud574\ud558\uace0 \uc0ac\uc6a9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Podo entender e usar algunhas expresi\xf3ns coti\xe1s familiares e frases moi b\xe1sicas.";
     },
     get$languageLevelA2Desc() {
-      return "\uc989\uac01\uc801\uc778 \uad00\ub828 \ubd84\uc57c\uc758 \ubb38\uc7a5\uacfc \uc790\uc8fc \uc0ac\uc6a9\ud558\ub294 \ud45c\ud604\uc744 \uc774\ud574\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Podo entender frases e expresi\xf3ns de uso frecuente relacionadas con \xe1reas de relevancia inmediata.";
     },
     get$languageLevelB1Desc() {
-      return "\uac00\uc7a5 \uce5c\uc219\ud55c \uc0c1\ud669\uc744 \ucc98\ub9ac\ud560 \uc218 \uc788\uc73c\uba70, \uce5c\uc219\ud55c \uc8fc\uc81c\uc5d0 \ub300\ud574 \uac04\ub2e8\ud55c \uc5f0\uacb0\ub41c \ud14d\uc2a4\ud2b8\ub97c \uc0dd\uc131\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Podo afrontar a maior\xeda das situaci\xf3ns coti\xe1s e podo producir texto conectado sinxelo sobre temas familiares.";
     },
     get$languageLevelB2Desc() {
-      return "\ubcf5\uc7a1\ud55c \ud14d\uc2a4\ud2b8\uc758 \uc8fc\uc694 \uc544\uc774\ub514\uc5b4\ub97c \uc774\ud574\ud558\uace0 \uc720\ucc3d\uc131\uacfc \uc790\uc5f0\uc2a4\ub7ec\uc6c0\uc73c\ub85c \uc0c1\ud638\uc791\uc6a9\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Podo entender as ideas principais de textos complexos e interactuar con un grao de fluidez e espontaneidade.";
     },
     get$languageLevelC1Desc() {
-      return "\ub9ce\uc740 \ub178\ub825 \uc5c6\uc774 \uc544\uc774\ub514\uc5b4\ub97c \uc720\ucc3d\ud558\uace0 \uc790\uc5f0\uc2a4\ub7fd\uac8c \ud45c\ud604\ud560 \uc218 \uc788\uc73c\uba70, \ub2e4\uc591\ud55c \uc5b4\ub824\uc6b4 \ud14d\uc2a4\ud2b8\ub97c \uc774\ud574\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Podo expresar ideas con fluidez e espontaneidade sen moito esforzo e entender unha ampla gama de textos esixentes.";
     },
     get$languageLevelC2Desc() {
-      return "\uac70\uc758 \ubaa8\ub4e0 \uac83\uc744 \ub4e3\uac70\ub098 \uc77d\uace0, \uc720\ucc3d\ud558\uace0 \uc815\ud655\ud558\uac8c \uc790\uc2e0\uc744 \ud45c\ud604\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Podo entender case todo o que escoito ou leo e expresarme con fluidez e precisi\xf3n.";
     },
     get$newVocab() {
-      return "\uc0c8 \uc5b4\ud718";
+      return "Novo vocabulario";
     },
     get$newGrammar() {
-      return "\uc0c8 \ubb38\ubc95 \uac1c\ub150";
+      return "Novos conceptos de gram\xe1tica";
     },
     get$choosePracticeMode() {
-      return "\uc704\uc758 \ubc84\ud2bc \uc911 \ud558\ub098\ub97c \ud074\ub9ad\ud558\uc5ec \uc5f0\uc2b5 \ud65c\ub3d9\uc744 \uc2dc\uc791\ud558\uc138\uc694";
+      return "Preme nun dos bot\xf3ns de arriba para comezar unha actividade de pr\xe1ctica";
     },
     get$ban() {
-      return "\ucc28\ub2e8";
+      return "Bane";
     },
     get$kick() {
-      return "\ucd94\ubc29";
+      return "Expulsar";
     },
     get$lemma() {
-      return "\uc5b4\uac04";
+      return "Lema";
     },
     get$grammarFeature() {
-      return "\ubb38\ubc95 \ud2b9\uc9d5";
+      return "Caracter\xedstica de gram\xe1tica";
     },
     get$grammarTag() {
-      return "\ubb38\ubc95 \ud0dc\uadf8";
+      return "Etiqueta de gram\xe1tica";
     },
     get$forms() {
-      return "\ud615\ud0dc";
+      return "Formas";
     },
     get$exampleMessages() {
-      return "\uc608\uc2dc \uba54\uc2dc\uc9c0";
+      return "Mensaxes de exemplo";
     },
     get$timesUsedIndependently() {
-      return "\ub3c5\ub9bd\uc801\uc73c\ub85c \uc0ac\uc6a9\ub41c \ud69f\uc218";
+      return "Veces usado de forma independente";
     },
     get$timesUsedWithAssistance() {
-      return "\ub3c4\uc6c0\uacfc \ud568\uaed8 \uc0ac\uc6a9\ub41c \ud69f\uc218";
+      return "Veces usado con axuda";
     },
     shareInviteCode$1(code) {
-      return "\ucd08\ub300 \ucf54\ub4dc \uacf5\uc720: " + code;
+      return "Compartir c\xf3digo de invitaci\xf3n: " + code;
     },
     get$skipForNow() {
-      return "\uc9c0\uae08\uc740 \uac74\ub108\ub6f0\uae30";
+      return "Omitir por agora";
     },
     get$permissions(_) {
-      return "\uad8c\ud55c";
+      return "Permisos";
     },
     get$spaceChildPermission() {
-      return "\uc774 \uac15\uc88c\uc5d0 \uc0c8 \ucc44\ud305\uc744 \ucd94\uac00\ud560 \uc218 \uc788\ub294 \uc0ac\ub78c";
+      return "Quen pode engadir novas conversas a este curso";
     },
     get$addEnvironmentOverride() {
-      return "\ud658\uacbd \uc7ac\uc815\uc758 \ucd94\uac00";
+      return "Engadir substituci\xf3n de ambiente";
     },
     get$defaultOption() {
-      return "\uae30\ubcf8\uac12";
+      return "Predeterminado";
     },
     get$deleteChatDesc() {
-      return "\uc774 \ucc44\ud305\uc744 \uc0ad\uc81c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c? \ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \uc0ad\uc81c\ub418\uba70, \ucc44\ud305 \ub0b4 \ubaa8\ub4e0 \uba54\uc2dc\uc9c0\ub294 \ub354 \uc774\uc0c1 \uc5f0\uc2b5\uc774\ub098 \ud559\uc2b5 \ubd84\uc11d\uc5d0 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Est\xe1s seguro de que queres eliminar esta conversa? Ser\xe1 eliminada para todos os participantes e todos os mensaxes dentro da conversa xa non estar\xe1n dispo\xf1ibles para pr\xe1ctica ou an\xe1lise de aprendizaxe.";
     },
     get$deleteSpaceDesc() {
-      return "\uc774 \uac15\uc88c\uc640 \uc120\ud0dd\ub41c \ucc44\ud305\uc740 \ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \uc0ad\uc81c\ub418\uba70, \ucc44\ud305 \ub0b4 \ubaa8\ub4e0 \uba54\uc2dc\uc9c0\ub294 \ub354 \uc774\uc0c1 \uc5f0\uc2b5\uc774\ub098 \ud559\uc2b5 \ubd84\uc11d\uc5d0 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc774 \uc791\uc5c5\uc740 \ub418\ub3cc\ub9b4 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "O curso e calquera conversa seleccionada ser\xe1n eliminados para todos os participantes e todos os mensaxes dentro da conversa xa non estar\xe1n dispo\xf1ibles para pr\xe1ctica ou an\xe1lise de aprendizaxe. Esta acci\xf3n non se pode deshacer.";
     },
     get$configureSpace() {
-      return "\uac15\uc88c \uad6c\uc131";
+      return "Configurar o curso";
     },
     get$pinMessages() {
-      return "\uba54\uc2dc\uc9c0 \uace0\uc815";
+      return "Fixar mensaxes";
     },
     get$setJoinRules() {
-      return "\ucc38\uc5ec \uaddc\uce59 \uc124\uc815";
+      return "Establecer regras de incorporaci\xf3n";
     },
     get$changeGeneralSettings() {
-      return "\uc77c\ubc18 \uc124\uc815 \ubcc0\uacbd";
+      return "Cambiar configuraci\xf3ns xerais";
     },
     get$inviteOtherUsersToRoom() {
-      return "\ub2e4\ub978 \uc0ac\uc6a9\uc790 \ucd08\ub300";
+      return "Invitar outros usuarios";
     },
     get$changeTheNameOfTheSpace() {
-      return "\uac15\uc88c \uc774\ub984 \ubcc0\uacbd";
+      return "Cambiar o nome do curso";
     },
     get$changeTheDescription() {
-      return "\uc124\uba85 \ubcc0\uacbd";
+      return "Cambiar a descrici\xf3n";
     },
     get$changeThePermissions() {
-      return "\uad8c\ud55c \ubcc0\uacbd";
+      return "Cambiar os permisos";
     },
     get$introductions() {
-      return "\uc18c\uac1c";
+      return "Presentaci\xf3ns";
     },
     get$announcements() {
-      return "\uacf5\uc9c0\uc0ac\ud56d";
+      return "Anuncios";
     },
     get$activities() {
-      return "\ud65c\ub3d9";
+      return "Actividades";
     },
     get$access() {
-      return "\uc811\uadfc";
+      return "Acceso";
     },
     get$howSpaceCanBeFound() {
-      return "\uc774 \uac15\uc88c\ub97c \ucc3e\ub294 \ubc29\ubc95";
+      return "Como se pode atopar este curso";
     },
     get$$private() {
-      return "\ube44\uacf5\uac1c";
+      return "Privado";
     },
     get$cannotBeFoundInSearch() {
-      return "\uac80\uc0c9\uc5d0\uc11c \ucc3e\uc744 \uc218 \uc5c6\uc74c";
+      return "Non se pode atopar na busca";
     },
     get$$public(_) {
-      return "\uacf5\uac1c";
+      return "P\xfablico";
     },
     get$visibleToCommunity() {
-      return '"\uac15\uc88c \ucc3e\uae30"\ub97c \ud1b5\ud574 \ub354 \ub113\uc740 \ud310\uac8c\uc544 \ucc44\ud305 \ucee4\ubba4\ub2c8\ud2f0\uc5d0 \ud45c\uc2dc\ub428';
+      return 'Visible para a comunidade m\xe1is ampla de Pangea Chat a trav\xe9s de "Atopar un curso"';
     },
     get$howSpaceCanBeJoined() {
-      return "\uc774 \uac15\uc88c\uc5d0 \ucc38\uc5ec\ud558\ub294 \ubc29\ubc95";
+      return "Como se pode unirse a este curso";
     },
     get$canBeFoundVia() {
-      return "\ub2e4\uc74c \ubc29\ubc95\uc73c\ub85c \ucc3e\uc744 \uc218 \uc788\uc74c:";
+      return "P\xf3dese atopar a trav\xe9s de:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \ucd08\ub300";
+      return "\u2022 invitaci\xf3n";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \ucf54\ub4dc \ub610\ub294 \ub9c1\ud06c";
+      return "\u2022 c\xf3digo ou enlace";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \uc694\uccad \ud6c4 \uad00\ub9ac\uc790 \uc2b9\uc778";
+      return "\u2022 solicitude para unirse e aprobaci\xf3n do administrador";
     },
     get$youHaveLeveledUp() {
-      return "\ub808\ubca8\uc774 \uc62c\ub790\uc5b4\uc694!";
+      return "\xa1Subiches de nivel!";
     },
     get$sendActivities() {
-      return "\ud65c\ub3d9 \ubcf4\ub0b4\uae30";
+      return "Enviar actividades";
     },
     get$directMessage() {
-      return "\uac1c\uc778 \uba54\uc2dc\uc9c0";
+      return "Mensaxe directa";
     },
     get$newDirectMessage() {
-      return "\uc0c8 \uac1c\uc778 \uba54\uc2dc\uc9c0";
+      return "Nova mensaxe directa";
     },
     get$speakingExercisesTooltip() {
-      return "\ub9d0\ud558\uae30";
+      return "Falando";
     },
     get$transcriptionFailed() {
-      return "\uc624\ub514\uc624 \uc804\uc0ac \uc2e4\ud328";
+      return "Fallou ao transcribir o audio";
     },
     get$aUserIsKnocking() {
-      return "1\uba85\uc758 \uc0ac\uc6a9\uc790\uac00 \uac15\uc88c\uc5d0 \ucc38\uc5ec \uc694\uccad\uc744 \ud558\uace0 \uc788\uc5b4\uc694";
+      return "Un usuario est\xe1 a solicitar unirse ao teu curso";
     },
     usersAreKnocking$1(users) {
-      return "" + users + "\uba85\uc758 \uc0ac\uc6a9\uc790\uac00 \uac15\uc88c\uc5d0 \ucc38\uc5ec \uc694\uccad\uc744 \ud558\uace0 \uc788\uc5b4\uc694";
+      return "" + users + " usuarios est\xe1n a solicitar unirse ao teu curso";
     },
     get$failedToFetchTranscription() {
-      return "\uc804\uc0ac \uc815\ubcf4\ub97c \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc5b4\uc694";
+      return "Fallou ao obter a transcrici\xf3n";
     },
     get$deleteEmptySpaceDesc() {
-      return "\uc774 \uacfc\uc815\uc740 \ubaa8\ub4e0 \ucc38\uac00\uc790\uc5d0\uac8c \uc0ad\uc81c\ub429\ub2c8\ub2e4. \uc774 \uc791\uc5c5\uc740 \ucde8\uc18c\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "A curso eliminarase para todos os participantes. Esta acci\xf3n non se pode deshacer.";
     },
     get$failedToPlayVideo() {
-      return "\ube44\ub514\uc624 \uc7ac\uc0dd \uc2e4\ud328";
+      return "Non se puido reproducir o v\xeddeo";
     },
     get$done() {
-      return "\uc644\ub8cc";
+      return "Rematado";
     },
     get$inThisSpace() {
-      return "\uc774 \uacfc\uc815\uc5d0\uc11c";
+      return "Neste curso";
     },
     get$myContacts() {
-      return "\ub0b4 \uc5f0\ub77d\ucc98";
+      return "Os meus contactos";
     },
     get$inviteAllInSpace() {
-      return "\uc774 \uacfc\uc815\uc758 \ubaa8\ub4e0 \uc0ac\ub78c \ucd08\ub300";
+      return "Invitar a todos neste curso";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\ubaa8\ub4e0 \uacfc\uc815 \ucc38\uac00\uc790\uac00 \ucc44\ud305\uc5d0 \ucd08\ub300\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "Todos os participantes do curso foron convidados ao chat";
     },
     numKnocking$1(count) {
-      return "" + count + " \uba85\uc774 \ub450\ub4dc\ub9bc";
+      return "" + count + " tocando";
     },
     numInvited$1(count) {
-      return "" + count + " \uba85\uc774 \ucd08\ub300\ub428";
+      return "" + count + " invitado";
     },
     get$errorFetchingDefinition() {
-      return "\uc815\uc758\ub97c \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
+      return "Fallo ao obter a definici\xf3n";
     },
     get$errorProcessAnalytics() {
-      return "\ubd84\uc11d \ucc98\ub9ac \uc2e4\ud328";
+      return "Fallo ao procesar a an\xe1lise";
     },
     get$errorDownloading() {
-      return "\ub2e4\uc6b4\ub85c\ub4dc \uc2e4\ud328";
+      return "Fallou a descarga";
     },
     get$errorFetchingLevelSummary() {
-      return "\ub808\ubca8 \uc694\uc57d\uc744 \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
+      return "Fallo ao obter o resumo do nivel";
     },
     get$errorLoadingSpaceChildren() {
-      return "\uc774 \uacfc\uc815 \ub0b4 \ucc44\ud305\uc744 \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
+      return "Fallou ao cargar os chats dentro deste curso";
     },
     get$unexpectedError() {
-      return "\uc608\uae30\uce58 \uc54a\uc740 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4.";
+      return "Erro inesperado.";
     },
     get$pleaseReload() {
-      return "\ub2e4\uc2dc \ub85c\ub4dc\ud558\uace0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
+      return "Por favor, recargue e intente de novo.";
     },
     get$translationError() {
-      return "\ubc88\uc5ed \uc624\ub958";
+      return "Erro de traduci\xf3n";
     },
     get$errorFetchingTranslation() {
-      return "\ubc88\uc5ed\uc744 \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
+      return "Fallou ao obter a traduci\xf3n";
     },
     get$errorFetchingActivity() {
-      return "\ud65c\ub3d9\uc744 \uac00\uc838\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4";
+      return "Fallou ao obter a actividade";
     },
     get$check(_) {
-      return "\ud655\uc778";
+      return "Comprobar";
     },
     get$unableToFindRoom() {
-      return "\ud574\ub2f9 \ucf54\ub4dc\ub85c \ucc44\ud305 \ub610\ub294 \uacfc\uc815\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc138\uc694.";
+      return "Non se atopou ning\xfan chat ou curso con ese c\xf3digo. Por favor, int\xe9nteo de novo.";
     },
     viewingAnalytics$2(visible, users) {
-      return "" + visible + "/" + users + " \ubd84\uc11d \ubcf4\uae30";
+      return "Vendo " + visible + "/" + users + " An\xe1lise";
     },
     get$request(_) {
-      return "\uc694\uccad";
+      return "Solicitude";
     },
     get$requestAll(_) {
-      return "\ubaa8\ub4e0 \uc694\uccad";
+      return "Solicitar todo";
     },
     get$confirmMessageUnpin() {
-      return "\uc774 \uba54\uc2dc\uc9c0\uc758 \uace0\uc815\uc744 \ud574\uc81c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+      return "\xbfEst\xe1s seguro de que queres desanclar esta mensaxe?";
     },
     get$pending(_) {
-      return "\ubcf4\ub958 \uc911";
+      return "Pendiente";
     },
     get$openRoleLabel() {
-      return "\uc624\ud508";
+      return "ABERTO";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + "\ub2d8\uc774 " + role + "\ub85c \ucc38\uc5ec\ud558\uc168\uc2b5\ub2c8\ub2e4";
+      return "\ud83d\udc4b " + username + " uniuse como " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + "\ub2d8\uc774 \uc774 \ud65c\ub3d9\uc744 \ub9c8\ubb34\ub9ac\ud558\uc168\uc2b5\ub2c8\ub2e4";
+      return "\ud83c\udfaf " + username + " rematou esta actividade";
     },
     get$activitySummaryError() {
-      return "\ud65c\ub3d9 \uc694\uc57d\uc744 \uc0ac\uc6a9\ud560 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Res\xfamenes de actividade non dispo\xf1ibles";
     },
     get$requestSummaries() {
-      return "\uc694\uc57d \uc694\uccad";
+      return "Solicitar res\xfamenes";
     },
     get$requestAccessTitle() {
-      return "\ubd84\uc11d \uc811\uadfc \uc694\uccad?";
+      return "Solicitar acceso \xe1 anal\xedtica?";
     },
     get$requestAccessDesc() {
-      return "\ucc38\uac00\uc790 \ubd84\uc11d \ubcf4\uae30 \uad8c\ud55c\uc744 \uc694\uccad\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?\n\n\ucc38\uac00\uc790\uac00 \ub3d9\uc758\ud558\uba74, \uc774 \uac15\uc88c\uc758 \uad00\ub9ac\uc790\ub294 \ub2e4\uc74c\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4:\n    \u2022 \ucd1d \uc5b4\ud718 \uc218\n    \u2022 \ucd1d \ubb38\ubc95 \uac1c\ub150\n    \u2022 \uc644\ub8cc\ub41c \ud65c\ub3d9 \uc138\uc158 \uc218\n    \u2022 \uc0ac\uc6a9\ub41c \ubb38\ubc95 \uac1c\ub150, \ub9de\uac8c \ub610\ub294 \ud2c0\ub9ac\uac8c\n\n\uadf8\ub4e4\uc740 \ub2e4\uc74c\uc744 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4:\n    \u2022 \uac15\uc88c \uc678 \ucc44\ud305 \uba54\uc2dc\uc9c0\n    \u2022 \uc5b4\ud718 \ubaa9\ub85d";
+      return "\xbfQueres solicitar acceso para ver as an\xe1lises dos participantes?\n\nSe os participantes est\xe1n de acordo, os administradores deste curso poder\xe1n ver:\n    \u2022 vocabulario total\n    \u2022 conceptos gramaticais totais\n    \u2022 sesi\xf3ns de actividade completadas\n    \u2022 os conceptos gramaticais espec\xedficos utilizados, correctos e incorrectos\n\nNon poder\xe1n ver:\n    \u2022 mensaxes en chats f\xf3ra do curso\n    \u2022 lista de vocabulario";
     },
     get$analyticsInactiveTitle() {
-      return "\ube44\ud65c\uc131 \uc0ac\uc6a9\uc790\uc5d0\uac8c \uc694\uccad\uc744 \ubcf4\ub0bc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "As solicitudes a usuarios inactivos non se puideron enviar";
     },
     get$analyticsInactiveDesc() {
-      return "\uc774 \uae30\ub2a5\uc774 \ub3c4\uc785\ub41c \uc774\ud6c4\ub85c \ub85c\uadf8\uc778\ud558\uc9c0 \uc54a\uc740 \ube44\ud65c\uc131 \uc0ac\uc6a9\uc790\ub294 \uc694\uccad\uc744 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.\n\n\uc0ac\uc6a9\uc790\uac00 \ub3cc\uc544\uc624\uba74 \uc694\uccad \ubc84\ud2bc\uc774 \ud45c\uc2dc\ub429\ub2c8\ub2e4. \uc694\uccad \ubc84\ud2bc\uc744 \ud074\ub9ad\ud558\uc5ec \ub098\uc911\uc5d0 \ub2e4\uc2dc \uc694\uccad\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Os usuarios inactivos que non iniciaron sesi\xf3n desde que se introduciu esta funci\xf3n non ver\xe1n a t\xfaa solicitude.\n\nO bot\xf3n de Solicitar aparecer\xe1 unha vez que regresen. Podes reenviar a solicitude m\xe1is tarde facendo clic no bot\xf3n de Solicitar baixo o seu nome cando estea dispo\xf1ible.";
     },
     get$accessRequestedTitle() {
-      return "\ubd84\uc11d \uc561\uc138\uc2a4 \uc694\uccad";
+      return "Solicitude de acceso a an\xe1lises";
     },
     accessRequestedDesc$2(admin, space) {
-      return "\uc694\uccad\ud55c \uad00\ub9ac\uc790: " + admin + " \n\n\u201c" + space + "\u201d\uc758 \uad00\ub9ac\uc790\uac00 \uadc0\ud558\uc758 \ud559\uc2b5 \ubd84\uc11d\uc744 \ubcf4\uae30\ub97c \uc694\uccad\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.\n\n\ub3d9\uc758\ud558\uc2dc\uba74, \uadf8\ub4e4\uc740 \uadc0\ud558\uc758:\n    \u2022 \ucd1d \uc5b4\ud718\n    \u2022 \ucd1d \ubb38\ubc95 \uac1c\ub150\n    \u2022 \uc644\ub8cc\ub41c \ucd1d \ud65c\ub3d9 \uc138\uc158\n    \u2022 \uc0ac\uc6a9\ub41c \ud2b9\uc815 \ubb38\ubc95 \uac1c\ub150(\uc815\ud655\ud558\uac8c \ubc0f \ubd80\uc815\ud655\ud558\uac8c)\n\n\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.\n\n\uadf8\ub4e4\uc740 \uadc0\ud558\uc758:\n    \u2022 \uacfc\uc815 \uc678\uc758 \ucc44\ud305 \uba54\uc2dc\uc9c0\n    \u2022 \uc5b4\ud718 \ubaa9\ub85d\n\n\uc744 \ubcfc \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.";
+      return "Solicitando admin(s): " + admin + " \n\nOs administradores de \u201c" + space + "\u201d est\xe1n solicitando ver a t\xfaa anal\xedtica de aprendizaxe.\n\nSe est\xe1s de acordo, poder\xe1n ver o teu:\n    \u2022 vocabulario total\n    \u2022 conceptos gramaticais totais\n    \u2022 total de sesi\xf3ns de actividade completadas\n    \u2022 os conceptos gramaticais espec\xedficos utilizados, correctamente e incorrectamente\n\nNon poder\xe1n ver o teu:\n    \u2022 mensaxes en chats f\xf3ra do curso\n    \u2022 lista de vocabulario";
     },
     get$adminRequestedAccess() {
-      return "\uad00\ub9ac\uc790\uac00 \uadc0\ud558\uc758 \ubd84\uc11d \uc815\ubcf4\ub97c \ubcf4\uae30\ub97c \uc694\uccad\ud588\uc2b5\ub2c8\ub2e4.";
+      return "Os administradores solicitaron ver as t\xfaas an\xe1lises.";
     },
     lastUpdated$1(time) {
-      return "\uc5c5\ub370\uc774\ud2b8\ub428\n" + time;
+      return "Actualizado\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\ubaa8\ub4e0 \uc791\uc5c5\uc774 \uc644\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
+      return "\xa1Todo terminado!";
     },
     get$endForAll() {
-      return "\ubaa8\ub450 \uc885\ub8cc";
+      return "Rematar para todos";
     },
     get$newCourse() {
-      return "\uc0c8 \uacfc\uc815";
+      return "Novo curso";
     },
     numModules$1(num) {
-      return "" + num + "\uac1c \ubaa8\ub4c8";
+      return "" + num + " m\xf3dulos";
     },
     get$coursePlan() {
-      return "\uacfc\uc815 \uacc4\ud68d";
+      return "Plan de curso";
     },
     get$editCourseLater() {
-      return "\ud15c\ud50c\ub9bf \uc81c\ubaa9, \uc124\uba85, \uacfc\uc815 \uc774\ubbf8\uc9c0\ub294 \ub098\uc911\uc5d0 \ud3b8\uc9d1\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Podes editar o t\xedtulo da plantilla, as descrici\xf3ns e a imaxe do curso m\xe1is tarde.";
     },
     get$newCourseAccess() {
-      return "\uae30\ubcf8\uc801\uc73c\ub85c \uacfc\uc815\uc740 \ube44\uacf5\uac1c\uc774\uba70 \uad00\ub9ac\uc790 \uc2b9\uc778 \ud6c4 \ucc38\uc5ec\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc5b8\uc81c\ub4e0\uc9c0 \uc774 \uc124\uc815\uc744 \ubcc0\uacbd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Por defecto, os cursos son privados e requiren a aprobaci\xf3n do administrador para unirse. Podes editar estas configuraci\xf3ns en calquera momento.";
     },
     get$createCourse() {
-      return "\uacfc\uc815 \uc0dd\uc131";
+      return "Crear curso";
     },
     get$stats() {
-      return "\ud1b5\uacc4";
+      return "Estad\xedsticas";
     },
     get$createGroupChat() {
-      return "\ub2e8\uccb4 \ucc44\ud305 \ub9cc\ub4e4\uae30";
+      return "Crear chat de grupo";
     },
     get$editCourse() {
-      return "\ucf54\uc2a4 \ud3b8\uc9d1";
+      return "Editar curso";
     },
     get$inviteDesc() {
-      return "\uc0ac\uc6a9\uc790 \uc774\ub984, \ucf54\ub4dc \ub610\ub294 \ub9c1\ud06c\ub85c \ucd08\ub300";
+      return "Por nome de usuario, por c\xf3digo ou ligaz\xf3n";
     },
     get$editCourseDesc() {
-      return "\uc5ec\uae30\uc11c \ucf54\uc2a4 \uc81c\ubaa9, \uc124\uba85 \ub4f1\uc744 \ud3b8\uc9d1\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Aqu\xed podes editar o t\xedtulo do curso, a descrici\xf3n, etc.";
     },
     get$permissionsDesc() {
-      return "\ucd08\ub300\ud560 \uc218 \uc788\ub294 \uc0ac\uc6a9\uc790, \uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30, \ucc44\ud305 \ub9cc\ub4e4\uae30 \ub4f1\uc758 \uad8c\ud55c\uc744 \uc124\uc815\ud558\uc138\uc694.";
+      return "Establece permisos como quen pode invitar usuarios, enviar mensaxes, crear chats, etc.";
     },
     get$accessDesc() {
-      return "\ucf54\uc2a4\ub97c \uacf5\uac1c\ud558\uac70\ub098 \ube44\uacf5\uac1c\ub85c \uc548\uc804\ud558\uac8c \uc124\uc815\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4!";
+      return "Podes facer que o teu curso sexa aberto ao mundo! Ou, facer que o teu curso sexa privado e seguro.";
     },
     get$createGroupChatDesc() {
-      return "\ud65c\ub3d9 \uc138\uc158\uc774 \uc2dc\uc791\ub418\uace0 \uc885\ub8cc\ub418\ub294 \ub3d9\uc548, \uadf8\ub8f9 \ucc44\ud305\uc740 \uc77c\uc0c1\uc801\uc778 \uc18c\ud1b5\uc744 \uc704\ud574 \uc5f4\ub824 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Mentres as sesi\xf3ns de actividade comezan e rematan, os chats de grupo permanecer\xe1n abertos para comunicaci\xf3n de rutina.";
     },
     get$deleteDesc() {
-      return "\ucf54\uc2a4\ub294 \uad00\ub9ac\uc790\ub9cc \uc0ad\uc81c\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc774\ub294 \ubaa8\ub4e0 \uc0ac\uc6a9\uc790\uc640 \uc120\ud0dd\ub41c \ucc44\ud305\uc744 \uc0ad\uc81c\ud558\ub294 \ud30c\uad34\uc801\uc778 \uc791\uc5c5\uc785\ub2c8\ub2e4. \uc2e0\uc911\ud788 \uc9c4\ud589\ud558\uc138\uc694.";
+      return "S\xf3 os administradores poden eliminar un curso. Esta \xe9 unha acci\xf3n destructiva que elimina a todos os usuarios e elimina todos os chats seleccionados dentro do curso. Procede con precauci\xf3n.";
     },
     get$noCourseFound() {
-      return "\uc774 \ucf54\uc2a4\uc5d0\ub294 \uacc4\ud68d\uc774 \ud544\uc694\ud569\ub2c8\ub2e4!\n\n\ucf54\uc2a4 \uacc4\ud68d\uc740 \uc8fc\uc81c\uc640 \ub300\ud654 \ud65c\ub3d9\uc758 \uc5f0\uc18d\uc785\ub2c8\ub2e4.";
+      return "Oh, este curso necesita un plan!\n\nOs plans de curso son unha secuencia de temas e actividades de conversa.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + "\uba85 \ub354";
+      return "+ " + num + " outros";
     },
     get$directMessages() {
-      return "\uc9c1\uc811 \uba54\uc2dc\uc9c0";
+      return "Mensaxes directas";
     },
     get$whatNow() {
-      return "\uc774\uc81c \ubb34\uc5c7\uc744 \ud560\uae4c\uc694?";
+      return "E agora?";
     },
     get$chooseNextActivity() {
-      return "\ub2e4\uc74c \ud65c\ub3d9\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
+      return "Elixe a t\xfaa pr\xf3xima actividade!";
     },
     get$letsGo() {
-      return "\uc2dc\uc791\ud569\uc2dc\ub2e4";
+      return "Vamos al\xe1";
     },
     get$chooseRole() {
-      return "\uc5ed\ud560\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
+      return "Elixe un papel!";
     },
     get$chooseRoleToParticipate() {
-      return "\ucc38\uc5ec\ud560 \uc5ed\ud560\uc744 \uc120\ud0dd\ud558\uc138\uc694!";
+      return "Elixe un papel para participar!";
     },
     waitingToFillRole$1(num) {
-      return "" + num + " \uc5ed\ud560\uc744 \ucc44\uc6b0\uae30\ub97c \uae30\ub2e4\ub9ac\ub294 \uc911...";
+      return "Agardando para cubrir " + num + " roles...";
     },
     get$pingParticipants() {
-      return "\ucf54\uc2a4 \ucc38\uac00\uc790\uc5d0\uac8c \uc54c\ub9bc \ubcf4\ub0b4\uae30";
+      return "Pingar aos participantes do curso";
     },
     get$playWithBot() {
-      return "\ud310\uac8c\uc544 \ubd07\uacfc \ud50c\ub808\uc774\ud558\uae30";
+      return "Xogar con Pangea Bot";
     },
     get$waitNotDone() {
-      return "\uae30\ub2e4\ub9ac\uc138\uc694, \uc544\uc9c1 \ub05d\ub098\uc9c0 \uc54a\uc558\uc5b4\uc694!";
+      return "Espera, a\xednda non rematei!";
     },
     get$waitingForOthersToFinish() {
-      return "\ub098\uba38\uc9c0 \uc0ac\ub78c\ub4e4\uc774 \ub05d\ub0b4\uae30\ub97c \uae30\ub2e4\ub9ac\ub294 \uc911...";
+      return "Agardando que o resto remate...";
     },
     get$generatingSummary() {
-      return "\ucc44\ud305 \ubd84\uc11d \ubc0f \uacb0\uacfc \uc0dd\uc131 \uc911";
+      return "Analizando o chat e xerando resultados";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + "\ub2d8\uc774 " + room + "\uc5d0\uc11c \ud65c\ub3d9 \uc138\uc158\uc5d0 \ucc38\uc5ec\ud560 \uc0ac\uc6a9\uc790\ub97c \ucc3e\uace0 \uc788\uc2b5\ub2c8\ub2e4";
+      return user + " est\xe1 a buscar usuarios para unirse \xe1 sesi\xf3n de actividade en " + room;
     },
     get$courseName() {
-      return "\ucf54\uc2a4 \uc774\ub984";
+      return "Nome do curso";
     },
     get$createNewCourse() {
-      return "\uc0c8 \ucf54\uc2a4 \ub9cc\ub4e4\uae30";
+      return "Novo curso";
     },
     goToCourse$1(course) {
-      return "\ucf54\uc2a4\ub85c \uc774\ub3d9: " + course;
+      return "Ir ao curso: " + course;
     },
     get$startNewSession() {
-      return "\uc0c8 \uc138\uc158 \uc2dc\uc791";
+      return "Comezar nova sesi\xf3n";
     },
     get$joinOpenSession() {
-      return "\uc5f4\ub9b0 \uc138\uc158\uc5d0 \ucc38\uc5ec\ud558\uae30";
+      return "Unirse \xe1 sesi\xf3n aberta";
     },
     get$activityNotFound() {
-      return "\ud65c\ub3d9\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4";
+      return "Actividade non atopada";
     },
     get$levelUp() {
-      return "\ub808\ubca8 \uc5c5";
+      return "Subir de nivel";
     },
     get$myActivities() {
-      return "\ub0b4 \ud65c\ub3d9";
+      return "As mi\xf1as actividades";
     },
     get$openToJoin() {
-      return "\ucc38\uc5ec \uac00\ub2a5";
+      return "Aberto para unirse";
     },
     get$activityDone() {
-      return "\ud65c\ub3d9 \uc644\ub8cc!";
+      return "Actividade Rematada!";
     },
     get$promoCodeInfo() {
-      return "\ud504\ub85c\ubaa8\uc158 \ucf54\ub4dc\ub294 \ub2e4\uc74c \ud398\uc774\uc9c0\uc5d0\uc11c \uc785\ub825\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4";
+      return "Os c\xf3digos promocionais poden introducirse na seguinte p\xe1xina";
     },
     get$editsComingSoon() {
-      return "\ub3c4\uc2dc\uc640 \ud65c\ub3d9\uc744 \ud3b8\uc9d1\ud558\ub294 \uae30\ub2a5\uc774 \uace7 \uc81c\uacf5\ub420 \uc608\uc815\uc785\ub2c8\ub2e4.";
+      return "A capacidade de editar cidades e actividades chegar\xe1 pronto.";
     },
     get$editing() {
-      return "\ud3b8\uc9d1 \uc911";
+      return "Editando";
     },
     get$activityNeedsOneMember() {
-      return "\uc774\ub7f0! \uc774 \ud65c\ub3d9\uc5d0\ub294 1\uba85\uc774 \ub354 \ud544\uc694\ud569\ub2c8\ub2e4.";
+      return "\xa1Vaya! Esta actividade necesita 1 persoa m\xe1is.";
     },
     activityNeedsMembers$1(num) {
-      return "\uc774\ub7f0! \uc774 \ud65c\ub3d9\uc5d0\ub294 " + num + "\uba85\uc774 \ub354 \ud544\uc694\ud569\ub2c8\ub2e4.";
+      return "\xa1Vaya! Esta actividade necesita " + num + " persoas m\xe1is.";
     },
     get$inviteFriendsToCourse() {
-      return "\ub0b4 \uac15\uc88c\uc5d0 \uce5c\uad6c\ub97c \ucd08\ub300\ud558\uc138\uc694";
+      return "Invita amigos ao meu curso";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\ud65c\ub3d9 \uc694\uc57d \uc7a0\uae08 \ud574\uc81c \uad6c\ub3c5";
+      return "Suscr\xedbete para desbloquear res\xfamenes de actividades";
     },
     get$subscribeToUnlockDefinitions() {
-      return "\uc815\uc758 \uc7a0\uae08 \ud574\uc81c \uad6c\ub3c5";
+      return "Suscr\xedbete para desbloquear definici\xf3ns";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\uc804\uc0ac\ubcf8 \uc7a0\uae08 \ud574\uc81c \uad6c\ub3c5";
+      return "Suscr\xedbete para desbloquear transcrici\xf3ns";
     },
     get$pingSent() {
-      return "\ud83d\udd14 \uac15\uc88c \ud551\uc774 \uc804\uc1a1\ub418\uc5c8\uc2b5\ub2c8\ub2e4! \ud83d\udd14";
+      return "\xa1Env\xedo de ping do curso! \ud83d\udece\ufe0f";
     },
     get$courseTitle() {
-      return "\uac15\uc88c \uc81c\ubaa9";
+      return "T\xedtulo do curso";
     },
     get$courseDesc() {
-      return "\uac15\uc88c \uc124\uba85";
+      return "Descrici\xf3n do curso";
     },
     get$courseSavedSuccessfully() {
-      return "\uac15\uc88c\uac00 \uc131\uacf5\uc801\uc73c\ub85c \uc800\uc7a5\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+      return "Curso gardado con \xe9xito";
     },
     get$addCoursePlan() {
-      return "\uac15\uc88c \uacc4\ud68d \ucd94\uac00";
+      return "Engadir un plan de curso";
     },
     get$activityStatsButtonInstruction() {
-      return "\uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc5ec \ud65c\ub3d9 \ud1b5\uacc4\ub97c \ubcf4\uace0 \uc644\ub8cc \uc2dc \ud65c\ub3d9\uc744 \uc885\ub8cc\ud558\uc138\uc694";
+      return "Faga clic aqu\xed para ver as s\xfaas estat\xedsticas de actividade e pechar a actividade cando remate";
     },
     get$readingAnalyticsDesc() {
-      return "\uc77d\uae30 \ud65c\ub3d9\uc744 \uc704\ud574 \uac01 \uba54\uc2dc\uc9c0\uc5d0\uc11c \uc5f0\uc2b5\uc744 \ud074\ub9ad\ud558\uc138\uc694.";
+      return "Faga clic en practicar en cada mensaxe para actividades de lectura.";
     },
     get$speakingAnalyticsDesc() {
-      return "\ub9d0\ud558\uae30 \uc5f0\uc2b5\uc744 \uc704\ud574 \uc74c\uc131 \uba54\uc2dc\uc9c0\ub97c \ub179\uc74c\ud558\uc138\uc694.";
+      return "Grabe mensaxes de voz para practicar a fala.";
     },
     get$audioAnalyticsDesc() {
-      return "\ub4e3\uae30 \ud65c\ub3d9\uc744 \uc704\ud574 \uac01 \uba54\uc2dc\uc9c0\uc5d0\uc11c \uc5f0\uc2b5\uc744 \ud074\ub9ad\ud558\uc138\uc694.";
+      return "Faga clic en practicar en cada mensaxe para actividades de escoita.";
     },
     get$loginToAccount() {
-      return "\ub0b4 \uacc4\uc815\uc5d0 \ub85c\uadf8\uc778";
+      return "Inicia sesi\xf3n na mi\xf1a conta";
     },
     get$appDescription() {
-      return "\uce5c\uad6c\ub4e4\uacfc \ubb38\uc790 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uba70 \uc5b8\uc5b4\ub97c \ubc30\uc6b0\uc138\uc694.";
+      return "Aprende un idioma mentres env\xedas mensaxes aos teus amigos.";
     },
     get$languages(_) {
-      return "\uc5b8\uc5b4";
+      return "Idiomas";
     },
     get$chooseLanguage() {
-      return "\ub300\uc0c1 \uc5b8\uc5b4\ub97c \uc120\ud0dd\ud558\uc138\uc694.";
+      return "Elixe unha lingua de destino.";
     },
     get$startOwn() {
-      return "\ub098\ub9cc\uc758 \uc2dc\uc791";
+      return "Comezar a mi\xf1a propia";
     },
     get$joinCourseDesc() {
-      return "\uac01 \uac15\uc88c\uc5d0\ub294 8-10\uac1c\uc758 \uc21c\ucc28\uc801\uc778 \uc8fc\uc81c\uc640 \ub2e4\uc591\ud55c \uacfc\uc81c \uae30\ubc18 \uc5b8\uc5b4 \ud559\uc2b5 \ud65c\ub3d9\uc774 \ud3ec\ud568\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4.";
+      return "Cada curso ten entre 8 e 10 temas en sequence con unha variedade de actividades de aprendizaxe de idiomas baseadas en tarefas.";
     },
     get$courseCodeHint() {
-      return "\uc5ec\ud589 \ucf54\ub4dc \ub610\ub294 \ub9c1\ud06c";
+      return "C\xf3digo ou enlace da viaxe";
     },
     get$signupOption() {
-      return "\uc5b4\ub5bb\uac8c \uac00\uc785\ud558\uc2dc\uaca0\uc5b4\uc694?";
+      return "Como queres rexistrarte?";
     },
     get$withApple() {
-      return "Apple\ub85c \uac00\uc785";
+      return "Con Apple";
     },
     get$withGoogle() {
-      return "Google\ub85c \uac00\uc785";
+      return "Con Google";
     },
     get$withEmail() {
-      return "\uc774\uba54\uc77c\ub85c \uac00\uc785";
+      return "Con correo electr\xf3nico";
     },
     get$createAccount() {
-      return "\uacc4\uc815 \ub9cc\ub4e4\uae30";
+      return "Crear conta";
     },
     get$loginWithEmail() {
-      return "\uc774\uba54\uc77c\ub85c \ub85c\uadf8\uc778";
+      return "Iniciar sesi\xf3n con correo electr\xf3nico";
     },
     get$usernameOrEmail() {
-      return "\uc0ac\uc6a9\uc790 \uc774\ub984 \ub610\ub294 \uc774\uba54\uc77c";
+      return "Nome de usuario ou correo electr\xf3nico";
     },
     get$email() {
-      return "\uc774\uba54\uc77c";
+      return "Correo electr\xf3nico";
     },
     get$forgotPassword() {
-      return "\ube44\ubc00\ubc88\ud638\ub97c \uc78a\uc73c\uc168\ub098\uc694?";
+      return "Esqueciches a contrasinal?";
     },
     get$writingAnalyticsDesc() {
-      return "\uae00\uc4f0\uae30\ub97c \uc5f0\uc2b5\ud558\ub824\uba74 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uc138\uc694.";
+      return "Env\xeda mensaxes para practicar a escritura.";
     },
     get$endActivity() {
-      return "\ud65c\ub3d9 \uc885\ub8cc";
+      return "Rematar a actividade";
     },
     get$allLanguages() {
-      return "\ubaa8\ub4e0 \uc5b8\uc5b4";
+      return "Todas as linguas";
     },
     get$chatListTooltip() {
-      return "\uc5ec\uae30\uc11c \uc9c1\uc811 \uba54\uc2dc\uc9c0\ub97c \ucc3e\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4! \uc0ac\uc6a9\uc790 \uc544\ubc14\ud0c0\ub97c \ud074\ub9ad\ud558\uace0 \u201c\ub300\ud654 \uc2dc\uc791\u201d\uc744 \uc120\ud0dd\ud558\uc5ec DM\uc744 \ubcf4\ub0b4\uc138\uc694.";
+      return 'Aqu\xed atopar\xe1s as t\xfaas mensaxes directas! Fai clic na icona de calquera usuario e "comeza unha conversa" para enviar unha mensaxe privada.';
     },
     get$directMessageBotTitle() {
-      return "\ud30c\ub2c8\uc544 \ubd07\uc5d0\uac8c \uc9c1\uc811 \uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30";
+      return "Mensaxe directa ao Pangea Bot";
     },
     get$feedbackTitle() {
-      return "\ud65c\ub3d9 \ud53c\ub4dc\ubc31";
+      return "Retroalimentaci\xf3n da actividade";
     },
     get$feedbackRespDesc() {
-      return "\ub0b4\uc77c \ub2e4\uc2dc \ud655\uc778\ud558\uc5ec \ud65c\ub3d9 \uc5c5\ub370\uc774\ud2b8\ub97c \ud655\uc778\ud558\uc138\uc694.";
+      return "Volva a consultar ma\xf1\xe1 para actualizaci\xf3ns da actividade.";
     },
     get$feedbackHint() {
-      return "\ub2f9\uc2e0\uc758 \ud53c\ub4dc\ubc31";
+      return "A t\xfaa retroalimentaci\xf3n";
     },
     get$feedbackButton() {
-      return "\ud53c\ub4dc\ubc31 \uc81c\ucd9c";
+      return "Enviar retroalimentaci\xf3n";
     },
     get$directMessageBotDesc() {
-      return "\uc0ac\ub78c\uacfc \uc774\uc57c\uae30\ud558\ub294 \uac83\uc774 \ub354 \uc7ac\ubbf8\uc788\uc9c0\ub9cc... AI\ub294 \ud56d\uc0c1 \uc900\ube44\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4!";
+      return "Falar con humanos \xe9 m\xe1is divertido pero... a IA est\xe1 sempre lista!";
     },
     get$inviteYourFriends() {
-      return "\uce5c\uad6c\ub97c \ucd08\ub300\ud558\uc138\uc694";
+      return "Invita aos teus amigos";
     },
     get$playWithAI() {
-      return "\uc77c\ub2e8 AI\uc640 \ub180\uc544\ubcf4\uc138\uc694";
+      return "Xoga con IA por agora";
     },
     get$courseStartDesc() {
-      return "\ud30c\ub2c8\uc544 \ubd07\uc740 \uc5b8\uc81c\ub4e0 \uc900\ube44\ub418\uc5b4 \uc788\uc2b5\ub2c8\ub2e4!\n\n...\ud558\uc9c0\ub9cc \uce5c\uad6c\uc640 \ud568\uaed8 \ubc30\uc6b0\ub294 \uac83\uc774 \ub354 \uc88b\uc544\uc694!";
+      return "O Pangea Bot est\xe1 listo para comezar en calquera momento!\n\n...pero aprender \xe9 mellor con amigos!";
     },
     get$activityDropdownDesc() {
-      return "\uc774 \ud65c\ub3d9\uc774 \ub05d\ub098\uba74 \uc544\ub798\ub97c \ud074\ub9ad\ud558\uc138\uc694";
+      return "Cando remates con esta actividade, clica abaixo";
     },
     get$languageMismatchTitle() {
-      return "\uc5b8\uc5b4 \ubd88\uc77c\uce58";
+      return "Incompatibilidade de idioma";
     },
     get$emptyChatSearch() {
-      return "No DMs or chats found. Make sure your search is spelled correctly.";
+      return "Non se atoparon DMs ou chats. Aseg\xfarate de que a t\xfaa busca est\xe1 escrita correctamente.";
     },
     get$languageMismatchDesc() {
-      return "\ubaa9\ud45c \uc5b8\uc5b4\uac00 \uc774 \ud65c\ub3d9\uc758 \uc5b8\uc5b4\uc640 \uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ubaa9\ud45c \uc5b8\uc5b4\ub97c \uc5c5\ub370\uc774\ud2b8\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+      return "O teu idioma obxectivo non coincide co idioma desta actividade. Queres actualizar o teu idioma obxectivo?";
     },
     get$reportWordIssueTooltip() {
-      return "\ub2e8\uc5b4 \uc815\ubcf4 \ubb38\uc81c \uc2e0\uace0";
+      return "Informar de problema coa informaci\xf3n da palabra";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\ub2e8\uc5b4 \uc815\ubcf4 \ud53c\ub4dc\ubc31";
+      return "Retroalimentaci\xf3n da informaci\xf3n da palabra";
     },
     get$noPublicCoursesFound() {
-      return "\uacf5\uac1c \uac15\uc88c\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc0c8\ub85c \ub9cc\ub4dc\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
+      return "Non se atoparon cursos p\xfablicos. Queres crear un?";
     },
     get$noCourseTemplatesFound() {
-      return "\ubaa9\ud45c \uc5b8\uc5b4\uc5d0 \ub300\ud55c \uac15\uc88c\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uadf8\ub3d9\uc548 Pangea Bot\uacfc \ucc44\ud305\ud558\uac70\ub098 \ub098\uc911\uc5d0 \ub354 \ub9ce\uc740 \uac15\uc88c\ub97c \ud655\uc778\ud558\uc138\uc694.";
+      return "Non puidemos atopar cursos para o teu idioma obxectivo. Mentres tanto, podes chatear co Pangea Bot, e volver a consultar m\xe1is tarde para m\xe1is cursos.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot\uc774 \uc751\ub2f5\ud558\ub294 \ub370 \uc2dc\uac04\uc774 \uac78\ub9ac\uace0 \uc788\uc2b5\ub2c8\ub2e4. \uc7a0\uc2dc \ud6c4 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uac70\ub098 \uce5c\uad6c\ub97c \ucd08\ub300\ud558\uc138\uc694.";
+      return "O Pangea Bot tarda un pouco en responder. Tenta de novo m\xe1is tarde, ou invita a un amigo.";
     },
     get$unsubscribedResponseError() {
-      return "\uc774 \uae30\ub2a5\uc740 \uad6c\ub3c5\uc774 \ud544\uc694\ud569\ub2c8\ub2e4";
+      return "Esta funci\xf3n require unha subscrici\xf3n";
     },
     get$leaveDesc() {
-      return "\uc774 \uacf5\uac04\uacfc \uadf8 \uc548\uc758 \ubaa8\ub4e0 \ucc44\ud305\uc744 \ub5a0\ub098\uae30";
+      return "Sa\xedr deste espazo e de todos os chats dentro del";
     },
     get$selectAll() {
-      return "\ubaa8\ub450 \uc120\ud0dd";
+      return "Seleccionar todo";
     },
     get$deselectAll(_) {
-      return "\ubaa8\ub450 \uc120\ud0dd \ud574\uc81c";
+      return "Desmarcar todo";
     },
     get$shareCourse() {
-      return "\uac15\uc88c \uacf5\uc720";
+      return "Compartir curso";
     },
     get$addCourse() {
-      return "\uac15\uc88c \ucd94\uac00";
+      return "Engadir un curso";
     },
     get$joinPublicCourse() {
-      return "\uacf5\uac1c \uac15\uc88c \ucc38\uc5ec";
+      return "Unirse ao curso p\xfablico";
     },
     get$vocabLevelsDesc() {
-      return "\ub2e8\uc5b4\ub97c \ub808\ubca8\uc5c5\ud558\uba74 \uc5ec\uae30\uc5d0 \ub2e8\uc5b4\uac00 \ud45c\uc2dc\ub429\ub2c8\ub2e4!";
+      return "Aqu\xed \xe9 onde as palabras de vocabulario ir\xe1n unha vez que as mellores de nivel!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "These are your saved activities for review and practice.";
+      return "Estas son as t\xfaas actividades gardadas para revisi\xf3n e pr\xe1ctica.";
     },
     get$numSavedActivities() {
-      return "Number of saved activities";
+      return "N\xfamero de actividades gardadas";
     },
     get$saveActivityTitle() {
-      return "Save activity";
+      return "Gardar actividade";
     },
     get$saveActivityDesc() {
-      return "Good job! Save this activity for later review and practice";
+      return "Bo traballo! Garda esta actividade para revisi\xf3n e pr\xe1ctica posteriores";
     },
     get$levelInfoTooltip() {
-      return "Here you can see all the points you\u2019ve earned and how!";
+      return "Aqu\xed podes ver todos os puntos que ga\xf1aches e como!";
     },
     get$alreadyInCourseWithID() {
-      return "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?";
+      return "Xa est\xe1s nun curso con este plan. Queres crear un curso co mesmo plan ou ir ao curso existente?";
     },
     get$goToExistingCourse() {
-      return "Go to existing course";
+      return "Ir ao curso existente";
     },
     get$emojiView() {
-      return "Emoji view";
+      return "Vista de emoji";
     },
     get$feedbackDialogDesc() {
-      return "I make mistakes too! Anything to help me improve?";
+      return "Eu tam\xe9n cometo erros! Algo que me axude a mellorar?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Contact has been invited to the course";
+      return "O contacto foi convidado ao curso";
     },
     get$inviteFriends() {
-      return "\uce5c\uad6c \ucd08\ub300\ud558\uae30";
+      return "Invitar amigos";
     },
     get$activityStatsButtonTooltip() {
-      return "Activity info";
+      return "Informaci\xf3n da actividade";
     },
     get$allow(_) {
-      return "Allow";
+      return "Permitir";
     },
     get$deny() {
-      return "Deny";
+      return "Denegar";
     },
     get$enabledRenewal() {
-      return "Enable Subscription Renewal";
+      return "Activar a renovaci\xf3n da subscrici\xf3n";
     },
     get$subscriptionEndsOn() {
-      return "Subscription Ends On";
+      return "A subscrici\xf3n finaliza o";
     },
     get$subscriptionRenewsOn() {
-      return "Subscription Renews On";
+      return "A subscrici\xf3n renova o";
     },
     get$waitForSubscriptionChanges() {
-      return "Changes to your subscription may take a moment to reflect in the app.";
+      return "Os cambios na t\xfaa subscrici\xf3n poden tardar un momento en reflectirse na aplicaci\xf3n.";
     },
     get$subscribeReadingAssistance() {
-      return "Subscribe to unlock message tools";
+      return "Subscr\xedbete para desbloquear ferramentas de mensaxes";
+    },
+    get$aceDisplayName() {
+      return "Achinese";
+    },
+    get$achDisplayName() {
+      return "Acoli";
+    },
+    get$afDisplayName() {
+      return "Afrik\xe1ans";
+    },
+    get$akDisplayName() {
+      return "Akan";
+    },
+    get$alzDisplayName() {
+      return "Alur";
+    },
+    get$amDisplayName() {
+      return "Amh\xe1rico";
+    },
+    get$arDisplayName() {
+      return "\xc1rabe";
+    },
+    get$asDisplayName() {
+      return "Asam\xe9s";
+    },
+    get$awaDisplayName() {
+      return "Awadhi";
+    },
+    get$ayDisplayName() {
+      return "Aymara";
+    },
+    get$azDisplayName() {
+      return "Azerbaiyano";
+    },
+    get$baDisplayName() {
+      return "Bashkir";
+    },
+    get$banDisplayName() {
+      return "Balin\xe9s";
+    },
+    get$bbcDisplayName() {
+      return "Batak Toba";
+    },
+    get$beDisplayName() {
+      return "Bielorruso";
+    },
+    get$bemDisplayName() {
+      return "Bemba";
+    },
+    get$bewDisplayName() {
+      return "Betawi";
+    },
+    get$bgDisplayName() {
+      return "B\xfalgaro";
+    },
+    get$bhoDisplayName() {
+      return "Bhojpuri";
+    },
+    get$bikDisplayName() {
+      return "Bikol";
+    },
+    get$bmDisplayName() {
+      return "Bambara";
+    },
+    get$bnDisplayName() {
+      return "Bengal\xed";
+    },
+    get$bnBDDisplayName() {
+      return "Bengal\xed (Bangladesh)";
+    },
+    get$bnINDisplayName() {
+      return "Bengal\xed (India)";
+    },
+    get$brDisplayName() {
+      return "Bret\xf3n";
+    },
+    get$bsDisplayName() {
+      return "B\xf3snio";
+    },
+    get$btsDisplayName() {
+      return "Batak Simalungun";
+    },
+    get$btxDisplayName() {
+      return "Batak Karo";
+    },
+    get$buaDisplayName() {
+      return "Buriat";
+    },
+    get$caDisplayName() {
+      return "Catal\xe1n";
+    },
+    get$cebDisplayName() {
+      return "Cebuano";
+    },
+    get$cggDisplayName() {
+      return "Chiga";
+    },
+    get$chmDisplayName() {
+      return "Mari";
+    },
+    get$ckbDisplayName() {
+      return "Curdo Central";
+    },
+    get$cnhDisplayName() {
+      return "Hakha Chin";
+    },
+    get$coDisplayName() {
+      return "Corsi\xe1n";
+    },
+    get$crhDisplayName() {
+      return "Turco Crimeo";
+    },
+    get$crsDisplayName() {
+      return "Franc\xe9s Criollo Seselwa";
+    },
+    get$csDisplayName() {
+      return "Checo";
+    },
+    get$cvDisplayName() {
+      return "Chuvash";
+    },
+    get$cyDisplayName() {
+      return "Gal\xe9s";
+    },
+    get$daDisplayName() {
+      return "Dan\xe9s";
+    },
+    get$deDisplayName() {
+      return "Alem\xe1n";
+    },
+    get$dinDisplayName() {
+      return "Dinka";
+    },
+    get$doiDisplayName() {
+      return "Dogri";
+    },
+    get$dovDisplayName() {
+      return "Dombe";
+    },
+    get$dzDisplayName() {
+      return "Dzongkha";
+    },
+    get$eeDisplayName() {
+      return "Ewe";
+    },
+    get$enDisplayName() {
+      return "Ingl\xe9s";
+    },
+    get$enAUDisplayName() {
+      return "Ingl\xe9s (Australia)";
+    },
+    get$enGBDisplayName() {
+      return "Ingl\xe9s (Reino Unido)";
+    },
+    get$enINDisplayName() {
+      return "Ingl\xe9s (India)";
+    },
+    get$enUSDisplayName() {
+      return "Ingl\xe9s (EE. UU.)";
+    },
+    get$eoDisplayName() {
+      return "Esperanto";
+    },
+    get$esDisplayName() {
+      return "Espa\xf1ol";
+    },
+    get$esESDisplayName() {
+      return "Espa\xf1ol (Espa\xf1a)";
+    },
+    get$esMXDisplayName() {
+      return "Espa\xf1ol (M\xe9xico)";
+    },
+    get$euDisplayName() {
+      return "Vasco";
+    },
+    get$faDisplayName() {
+      return "Persa";
+    },
+    get$ffDisplayName() {
+      return "Fulah";
+    },
+    get$fiDisplayName() {
+      return "Fin\xe9s";
+    },
+    get$filDisplayName() {
+      return "Filipino";
+    },
+    get$fjDisplayName() {
+      return "Fijiano";
+    },
+    get$foDisplayName() {
+      return "Faro\xe9s";
+    },
+    get$frDisplayName() {
+      return "Franc\xe9s";
+    },
+    get$frCADisplayName() {
+      return "Franc\xe9s (Canad\xe1)";
+    },
+    get$frFRDisplayName() {
+      return "Franc\xe9s (Francia)";
+    },
+    get$fyDisplayName() {
+      return "Fris\xf3n occidental";
+    },
+    get$gaDisplayName() {
+      return "Irland\xe9s";
+    },
+    get$gaaDisplayName() {
+      return "Ga";
+    },
+    get$gdDisplayName() {
+      return "Galego escoc\xe9s";
+    },
+    get$glDisplayName() {
+      return "Galego";
+    },
+    get$gnDisplayName() {
+      return "Guaran\xed";
+    },
+    get$gomDisplayName() {
+      return "Konkani de Goa";
+    },
+    get$guDisplayName() {
+      return "Gujarate";
+    },
+    get$haDisplayName() {
+      return "Hausa";
+    },
+    get$hawDisplayName() {
+      return "Hawaiiano";
+    },
+    get$heDisplayName() {
+      return "Hebreo";
+    },
+    get$hiDisplayName() {
+      return "Hindi";
+    },
+    get$hilDisplayName() {
+      return "Hiligaynon";
+    },
+    get$hmnDisplayName() {
+      return "Hmong";
+    },
+    get$hneDisplayName() {
+      return "Chhattisgarhi";
+    },
+    get$hrDisplayName() {
+      return "Croata";
+    },
+    get$hrxDisplayName() {
+      return "Hunsrik";
+    },
+    get$htDisplayName() {
+      return "Criollo haitiano";
+    },
+    get$huDisplayName() {
+      return "H\xfangaro";
+    },
+    get$hyDisplayName() {
+      return "Armenio";
+    },
+    get$idDisplayName() {
+      return "Indonesio";
+    },
+    get$igDisplayName() {
+      return "Igbo";
+    },
+    get$iloDisplayName() {
+      return "Iloko";
+    },
+    get$isDisplayName() {
+      return "Island\xe9s";
+    },
+    get$itDisplayName() {
+      return "Italiano";
+    },
+    get$jaDisplayName() {
+      return "Xapon\xe9s";
+    },
+    get$jvDisplayName() {
+      return "Xavan\xe9s";
+    },
+    get$kaDisplayName() {
+      return "Xeorxiano";
+    },
+    get$kkDisplayName() {
+      return "Cazaque";
+    },
+    get$kmDisplayName() {
+      return "Khmer";
+    },
+    get$knDisplayName() {
+      return "Canar\xe9s";
+    },
+    get$koDisplayName() {
+      return "Coreano";
+    },
+    get$kokDisplayName() {
+      return "Konkani";
+    },
+    get$kriDisplayName() {
+      return "Krio";
+    },
+    get$ksDisplayName() {
+      return "Cachemiro";
+    },
+    get$ktuDisplayName() {
+      return "Kituba (Rep\xfablica Democr\xe1tica do Congo)";
+    },
+    get$kuDisplayName() {
+      return "Kurdo";
+    },
+    get$kyDisplayName() {
+      return "Quirguiz";
+    },
+    get$laDisplayName() {
+      return "Lat\xedn";
+    },
+    get$lbDisplayName() {
+      return "Luxemburgu\xe9s";
+    },
+    get$lgDisplayName() {
+      return "Ganda";
+    },
+    get$liDisplayName() {
+      return "Limburgu\xe9s";
+    },
+    get$lijDisplayName() {
+      return "Ligurio";
+    },
+    get$lmoDisplayName() {
+      return "Lombardo";
+    },
+    get$lnDisplayName() {
+      return "Lingala";
+    },
+    get$loDisplayName() {
+      return "Lao";
+    },
+    get$ltDisplayName() {
+      return "Lituano";
+    },
+    get$ltgDisplayName() {
+      return "Latgaliano";
+    },
+    get$luoDisplayName() {
+      return "Luo (Kenia e Tanzania)";
+    },
+    get$lusDisplayName() {
+      return "Mizo";
+    },
+    get$lvDisplayName() {
+      return "Let\xf3n";
+    },
+    get$maiDisplayName() {
+      return "Maithili";
+    },
+    get$makDisplayName() {
+      return "Makasar";
+    },
+    get$mgDisplayName() {
+      return "Malgache";
+    },
+    get$miDisplayName() {
+      return "M\u0101ori";
+    },
+    get$minDisplayName() {
+      return "Minangkabau";
+    },
+    get$mkDisplayName() {
+      return "Macedonio";
+    },
+    get$mlDisplayName() {
+      return "Malayalam";
+    },
+    get$mnDisplayName() {
+      return "Mongol";
+    },
+    get$mniDisplayName() {
+      return "Manipuri";
+    },
+    get$mrDisplayName() {
+      return "Marathi";
+    },
+    get$msDisplayName() {
+      return "Malay";
+    },
+    get$msArabDisplayName() {
+      return "Malay (\xc1rabe)";
+    },
+    get$msMYDisplayName() {
+      return "Malay (Malaisia)";
+    },
+    get$mtDisplayName() {
+      return "Malt\xe9s";
+    },
+    get$mwrDisplayName() {
+      return "Marwari";
+    },
+    get$myDisplayName() {
+      return "Birman";
+    },
+    get$nanDisplayName() {
+      return "Min Nan";
+    },
+    get$nbDisplayName() {
+      return "Noruegu\xe9s (Bokm\xe5l)";
+    },
+    get$neDisplayName() {
+      return "Nepal\xed";
+    },
+    get$newDisplayName() {
+      return "Newari";
+    },
+    get$nlDisplayName() {
+      return "Neerland\xe9s";
+    },
+    get$nlBEDisplayName() {
+      return "Flandr\xe9s";
+    },
+    get$noDisplayName() {
+      return "Noruegu\xe9s";
+    },
+    get$nrDisplayName() {
+      return "Ndebele do Sur";
+    },
+    get$nsoDisplayName() {
+      return "Sotho do Norte";
+    },
+    get$nusDisplayName() {
+      return "Nuer";
+    },
+    get$nyDisplayName() {
+      return "Nyanja";
+    },
+    get$ocDisplayName() {
+      return "Occitano";
+    },
+    get$omDisplayName() {
+      return "Oromo";
+    },
+    get$orDisplayName() {
+      return "Odia";
+    },
+    get$paDisplayName() {
+      return "Punjabi";
+    },
+    get$paArabDisplayName() {
+      return "Punjabi (Shahmukhi)";
+    },
+    get$paINDisplayName() {
+      return "Punjabi (Gurmukhi)";
+    },
+    get$pagDisplayName() {
+      return "Pangasinan";
+    },
+    get$pamDisplayName() {
+      return "Pampanga";
+    },
+    get$papDisplayName() {
+      return "Papiamento";
+    },
+    get$plDisplayName() {
+      return "Polaco";
+    },
+    get$psDisplayName() {
+      return "Pashto";
+    },
+    get$ptDisplayName() {
+      return "Portugu\xe9s";
+    },
+    get$ptBRDisplayName() {
+      return "Portugu\xe9s (Brasil)";
+    },
+    get$ptPTDisplayName() {
+      return "Portugu\xe9s (Portugal)";
+    },
+    get$quDisplayName() {
+      return "Quechua";
+    },
+    get$rajDisplayName() {
+      return "Rajasthani";
+    },
+    get$rnDisplayName() {
+      return "Rundi";
+    },
+    get$roDisplayName() {
+      return "Romaniano";
+    },
+    get$roMDDisplayName() {
+      return "Moldavo";
+    },
+    get$romDisplayName() {
+      return "Romani";
+    },
+    get$ruDisplayName() {
+      return "Ruso";
+    },
+    get$rwDisplayName() {
+      return "Kinyarwanda";
+    },
+    get$saDisplayName() {
+      return "S\xe1nscrito";
+    },
+    get$satDisplayName() {
+      return "Santali";
+    },
+    get$scnDisplayName() {
+      return "Siciliano";
+    },
+    get$sdDisplayName() {
+      return "Sindhi";
+    },
+    get$sgDisplayName() {
+      return "Sango";
+    },
+    get$shnDisplayName() {
+      return "Shan";
+    },
+    get$siDisplayName() {
+      return "Cingal\xe9s";
+    },
+    get$skDisplayName() {
+      return "Eslovaco";
+    },
+    get$slDisplayName() {
+      return "Esloveno";
+    },
+    get$smDisplayName() {
+      return "Samoano";
+    },
+    get$snDisplayName() {
+      return "Shona";
+    },
+    get$soDisplayName() {
+      return "Somal\xed";
+    },
+    get$sqDisplayName() {
+      return "Alban\xe9s";
+    },
+    get$srDisplayName() {
+      return "Serbio";
+    },
+    get$srMEDisplayName() {
+      return "Montenegrino";
+    },
+    get$ssDisplayName() {
+      return "Swati";
+    },
+    get$stDisplayName() {
+      return "Sotho do Sur";
+    },
+    get$suDisplayName() {
+      return "Sundan\xe9s";
+    },
+    get$svDisplayName() {
+      return "Sueco";
+    },
+    get$swDisplayName() {
+      return "Suahili";
+    },
+    get$szlDisplayName() {
+      return "Silesio";
+    },
+    get$taDisplayName() {
+      return "Tamil";
+    },
+    get$teDisplayName() {
+      return "Telugu";
+    },
+    get$tetDisplayName() {
+      return "Tetum";
+    },
+    get$tgDisplayName() {
+      return "Taxico";
+    },
+    get$thDisplayName() {
+      return "Tailand\xe9s";
+    },
+    get$tiDisplayName() {
+      return "Tigrinya";
+    },
+    get$tkDisplayName() {
+      return "Turcomano";
+    },
+    get$tlDisplayName() {
+      return "Tagalo";
+    },
+    get$tnDisplayName() {
+      return "Tswana";
+    },
+    get$trDisplayName() {
+      return "Turco";
+    },
+    get$tsDisplayName() {
+      return "Tsonga";
+    },
+    get$ttDisplayName() {
+      return "T\xe1rtaro";
+    },
+    get$ugDisplayName() {
+      return "Uigur";
+    },
+    get$ukDisplayName() {
+      return "Ucraniano";
+    },
+    get$urDisplayName() {
+      return "Urdu";
+    },
+    get$urINDisplayName() {
+      return "Urdu (India)";
+    },
+    get$urPKDisplayName() {
+      return "Urdu (Paquist\xe1n)";
+    },
+    get$uzDisplayName() {
+      return "Uzbeco";
+    },
+    get$viDisplayName() {
+      return "Vietnamita";
+    },
+    get$wuuDisplayName() {
+      return "Wu";
+    },
+    get$xhDisplayName() {
+      return "Xhosa";
+    },
+    get$yiDisplayName() {
+      return "Yiddish";
+    },
+    get$yoDisplayName() {
+      return "Yoruba";
+    },
+    get$yuaDisplayName() {
+      return "Yucateco";
+    },
+    get$yueDisplayName() {
+      return "Canton\xe9s";
+    },
+    get$yueCNDisplayName() {
+      return "Canton\xe9s (China)";
+    },
+    get$yueHKDisplayName() {
+      return "Canton\xe9s (Hong Kong)";
+    },
+    get$zhDisplayName() {
+      return "Chin\xe9s";
+    },
+    get$zhCNDisplayName() {
+      return "Chin\xe9s (Simplificado)";
+    },
+    get$zhTWDisplayName() {
+      return "Chin\xe9s (Tradicional)";
+    },
+    get$zuDisplayName() {
+      return "Zulu";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4574,13 +5231,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nKo, C.L10n);
+    _inherit(A.L10nGl, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nKo":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nGl":{"L10n":[]}}'));
+  var string$ = {
+    Por_fa: "Por favor, introduce unha direcci\xf3n de correo electr\xf3nico v\xe1lida."
+  };
 };
 ;
 (d => {
-  d["XeUzeWxJ4sGC/YnfLVz4a7+moGs="] = d.current;
+  d["QS7iF5yBIXhPl58ZBtGlUbQ1cYU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_629.part.js.map

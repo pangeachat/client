@@ -4473,7 +4473,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u8bed\u8a00\u4e0d\u5339\u914d";
     },
     get$emptyChatSearch() {
-      return "No DMs or chats found. Make sure your search is spelled correctly.";
+      return "\u672a\u627e\u5230\u79c1\u4fe1\u6216\u804a\u5929\u3002\u8bf7\u786e\u4fdd\u60a8\u7684\u641c\u7d22\u62fc\u5199\u6b63\u786e\u3002";
     },
     get$languageMismatchDesc() {
       return "\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u4e0e\u6b64\u6d3b\u52a8\u7684\u8bed\u8a00\u4e0d\u5339\u914d\u3002\u8981\u66f4\u65b0\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u5417\uff1f";
@@ -4518,61 +4518,718 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u8fd9\u662f\u4f60\u63d0\u5347\u8bcd\u6c47\u7b49\u7ea7\u540e\uff0c\u8bcd\u6c47\u5c06\u4f1a\u663e\u793a\u7684\u5730\u65b9\uff01";
     },
     get$activityAnalyticsTooltipBody() {
-      return "These are your saved activities for review and practice.";
+      return "\u8fd9\u4e9b\u662f\u60a8\u4fdd\u5b58\u7684\u6d3b\u52a8\uff0c\u4f9b\u56de\u987e\u548c\u7ec3\u4e60\u3002";
     },
     get$numSavedActivities() {
-      return "Number of saved activities";
+      return "\u4fdd\u5b58\u7684\u6d3b\u52a8\u6570\u91cf";
     },
     get$saveActivityTitle() {
-      return "Save activity";
+      return "\u4fdd\u5b58\u6d3b\u52a8";
     },
     get$saveActivityDesc() {
-      return "Good job! Save this activity for later review and practice";
+      return "\u505a\u5f97\u597d\uff01\u4fdd\u5b58\u6b64\u6d3b\u52a8\u4ee5\u4fbf\u7a0d\u540e\u56de\u987e\u548c\u7ec3\u4e60";
     },
     get$levelInfoTooltip() {
-      return "Here you can see all the points you\u2019ve earned and how!";
+      return "\u5728\u8fd9\u91cc\u60a8\u53ef\u4ee5\u770b\u5230\u60a8\u83b7\u5f97\u7684\u6240\u6709\u79ef\u5206\u4ee5\u53ca\u5982\u4f55\u83b7\u5f97\u7684\uff01";
     },
     get$alreadyInCourseWithID() {
-      return "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?";
+      return "\u60a8\u5df2\u7ecf\u5728\u8fd9\u4e2a\u8ba1\u5212\u7684\u8bfe\u7a0b\u4e2d\u3002\u60a8\u60f3\u521b\u5efa\u4e00\u4e2a\u76f8\u540c\u8ba1\u5212\u7684\u8bfe\u7a0b\uff0c\u8fd8\u662f\u53bb\u73b0\u6709\u8bfe\u7a0b\uff1f";
     },
     get$goToExistingCourse() {
-      return "Go to existing course";
+      return "\u524d\u5f80\u73b0\u6709\u8bfe\u7a0b";
     },
     get$emojiView() {
-      return "Emoji view";
+      return "\u8868\u60c5\u7b26\u53f7\u89c6\u56fe";
     },
     get$feedbackDialogDesc() {
-      return "I make mistakes too! Anything to help me improve?";
+      return "\u6211\u4e5f\u4f1a\u72af\u9519\uff01\u6709\u4ec0\u4e48\u53ef\u4ee5\u5e2e\u52a9\u6211\u6539\u8fdb\u7684\u5417\uff1f";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Contact has been invited to the course";
+      return "\u8054\u7cfb\u4eba\u5df2\u88ab\u9080\u8bf7\u53c2\u52a0\u8bfe\u7a0b";
     },
     get$inviteFriends() {
       return "\u9080\u8bf7\u670b\u53cb";
     },
     get$activityStatsButtonTooltip() {
-      return "Activity info";
+      return "\u6d3b\u52a8\u4fe1\u606f";
     },
     get$allow(_) {
-      return "Allow";
+      return "\u5141\u8bb8";
     },
     get$deny() {
-      return "Deny";
+      return "\u62d2\u7edd";
     },
     get$enabledRenewal() {
-      return "Enable Subscription Renewal";
+      return "\u542f\u7528\u8ba2\u9605\u7eed\u8d39";
     },
     get$subscriptionEndsOn() {
-      return "Subscription Ends On";
+      return "\u8ba2\u9605\u7ed3\u675f\u4e8e";
     },
     get$subscriptionRenewsOn() {
-      return "Subscription Renews On";
+      return "\u8ba2\u9605\u7eed\u8d39\u4e8e";
     },
     get$waitForSubscriptionChanges() {
-      return "Changes to your subscription may take a moment to reflect in the app.";
+      return "\u60a8\u7684\u8ba2\u9605\u66f4\u6539\u53ef\u80fd\u9700\u8981\u4e00\u4e9b\u65f6\u95f4\u624d\u80fd\u5728\u5e94\u7528\u4e2d\u53cd\u6620\u3002";
     },
     get$subscribeReadingAssistance() {
-      return "Subscribe to unlock message tools";
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u6d88\u606f\u5de5\u5177";
+    },
+    get$aceDisplayName() {
+      return "Achinese";
+    },
+    get$achDisplayName() {
+      return "\u963f\u79d1\u5229";
+    },
+    get$afDisplayName() {
+      return "\u5357\u975e\u8377\u5170\u8bed";
+    },
+    get$akDisplayName() {
+      return "\u963f\u574e\u8bed";
+    },
+    get$alzDisplayName() {
+      return "\u963f\u5362\u5c14\u8bed";
+    },
+    get$amDisplayName() {
+      return "\u963f\u59c6\u54c8\u62c9\u8bed";
+    },
+    get$arDisplayName() {
+      return "\u963f\u62c9\u4f2f\u8bed";
+    },
+    get$asDisplayName() {
+      return "\u963f\u8428\u59c6\u8bed";
+    },
+    get$awaDisplayName() {
+      return "\u963f\u74e6\u8fea\u8bed";
+    },
+    get$ayDisplayName() {
+      return "\u827e\u9a6c\u62c9\u8bed";
+    },
+    get$azDisplayName() {
+      return "\u963f\u585e\u62dc\u7586\u8bed";
+    },
+    get$baDisplayName() {
+      return "\u5df4\u4ec0\u57fa\u5c14\u8bed";
+    },
+    get$banDisplayName() {
+      return "\u5df4\u5398\u8bed";
+    },
+    get$bbcDisplayName() {
+      return "\u6258\u5df4\u5df4\u5854\u514b\u8bed";
+    },
+    get$beDisplayName() {
+      return "\u767d\u4fc4\u7f57\u65af\u8bed";
+    },
+    get$bemDisplayName() {
+      return "\u672c\u5df4\u8bed";
+    },
+    get$bewDisplayName() {
+      return "\u8d1d\u5854\u7ef4\u8bed";
+    },
+    get$bgDisplayName() {
+      return "\u4fdd\u52a0\u5229\u4e9a\u8bed";
+    },
+    get$bhoDisplayName() {
+      return "\u535a\u6770\u666e\u5c14\u8bed";
+    },
+    get$bikDisplayName() {
+      return "\u6bd4\u79d1\u5c14\u8bed";
+    },
+    get$bmDisplayName() {
+      return "\u73ed\u5df4\u62c9\u8bed";
+    },
+    get$bnDisplayName() {
+      return "\u5b5f\u52a0\u62c9\u8bed";
+    },
+    get$bnBDDisplayName() {
+      return "\u5b5f\u52a0\u62c9\u8bed\uff08\u5b5f\u52a0\u62c9\u56fd\uff09";
+    },
+    get$bnINDisplayName() {
+      return "\u5b5f\u52a0\u62c9\u8bed\uff08\u5370\u5ea6\uff09";
+    },
+    get$brDisplayName() {
+      return "\u5e03\u5217\u5854\u5c3c\u8bed";
+    },
+    get$bsDisplayName() {
+      return "\u6ce2\u65af\u5c3c\u4e9a\u8bed";
+    },
+    get$btsDisplayName() {
+      return "\u5df4\u5854\u514b\u897f\u9a6c\u4f26\u8d21\u8bed";
+    },
+    get$btxDisplayName() {
+      return "\u5df4\u5854\u514b\u5361\u7f57\u8bed";
+    },
+    get$buaDisplayName() {
+      return "\u5e03\u91cc\u4e9a\u7279\u8bed";
+    },
+    get$caDisplayName() {
+      return "\u52a0\u6cf0\u7f57\u5c3c\u4e9a\u8bed";
+    },
+    get$cebDisplayName() {
+      return "\u5bbf\u52a1\u8bed";
+    },
+    get$cggDisplayName() {
+      return "\u5947\u560e";
+    },
+    get$chmDisplayName() {
+      return "\u739b\u4e3d";
+    },
+    get$ckbDisplayName() {
+      return "\u4e2d\u592e\u5e93\u5c14\u5fb7\u8bed";
+    },
+    get$cnhDisplayName() {
+      return "\u54c8\u5361\u94a6";
+    },
+    get$coDisplayName() {
+      return "\u79d1\u897f\u5609\u8bed";
+    },
+    get$crhDisplayName() {
+      return "\u514b\u91cc\u7c73\u4e9a\u571f\u8033\u5176\u8bed";
+    },
+    get$crsDisplayName() {
+      return "\u585e\u820c\u5c14\u514b\u91cc\u5965\u5c14\u6cd5\u8bed";
+    },
+    get$csDisplayName() {
+      return "\u6377\u514b\u8bed";
+    },
+    get$cvDisplayName() {
+      return "\u695a\u74e6\u4ec0\u8bed";
+    },
+    get$cyDisplayName() {
+      return "\u5a01\u5c14\u58eb\u8bed";
+    },
+    get$daDisplayName() {
+      return "\u4e39\u9ea6\u8bed";
+    },
+    get$deDisplayName() {
+      return "\u5fb7\u8bed";
+    },
+    get$dinDisplayName() {
+      return "\u4e01\u5361\u8bed";
+    },
+    get$doiDisplayName() {
+      return "\u591a\u683c\u91cc\u8bed";
+    },
+    get$dovDisplayName() {
+      return "\u591a\u59c6\u8d1d\u8bed";
+    },
+    get$dzDisplayName() {
+      return "\u5b97\u5580\u8bed";
+    },
+    get$eeDisplayName() {
+      return "\u57c3\u7ef4\u8bed";
+    },
+    get$enDisplayName() {
+      return "\u82f1\u8bed";
+    },
+    get$enAUDisplayName() {
+      return "\u82f1\u8bed\uff08\u6fb3\u5927\u5229\u4e9a\uff09";
+    },
+    get$enGBDisplayName() {
+      return "\u82f1\u8bed\uff08\u82f1\u56fd\uff09";
+    },
+    get$enINDisplayName() {
+      return "\u82f1\u8bed\uff08\u5370\u5ea6\uff09";
+    },
+    get$enUSDisplayName() {
+      return "\u82f1\u8bed\uff08\u7f8e\u56fd\uff09";
+    },
+    get$eoDisplayName() {
+      return "\u4e16\u754c\u8bed";
+    },
+    get$esDisplayName() {
+      return "\u897f\u73ed\u7259\u8bed";
+    },
+    get$esESDisplayName() {
+      return "\u897f\u73ed\u7259\u8bed\uff08\u897f\u73ed\u7259\uff09";
+    },
+    get$esMXDisplayName() {
+      return "\u897f\u73ed\u7259\u8bed\uff08\u58a8\u897f\u54e5\uff09";
+    },
+    get$euDisplayName() {
+      return "\u5df4\u65af\u514b\u8bed";
+    },
+    get$faDisplayName() {
+      return "\u6ce2\u65af\u8bed";
+    },
+    get$ffDisplayName() {
+      return "\u5bcc\u62c9\u8bed";
+    },
+    get$fiDisplayName() {
+      return "\u82ac\u5170\u8bed";
+    },
+    get$filDisplayName() {
+      return "\u83f2\u5f8b\u5bbe\u8bed";
+    },
+    get$fjDisplayName() {
+      return "\u6590\u6d4e\u8bed";
+    },
+    get$foDisplayName() {
+      return "\u6cd5\u7f57\u8bed";
+    },
+    get$frDisplayName() {
+      return "\u6cd5\u8bed";
+    },
+    get$frCADisplayName() {
+      return "\u6cd5\u8bed\uff08\u52a0\u62ff\u5927\uff09";
+    },
+    get$frFRDisplayName() {
+      return "\u6cd5\u8bed\uff08\u6cd5\u56fd\uff09";
+    },
+    get$fyDisplayName() {
+      return "\u897f\u5f17\u91cc\u897f\u4e9a\u8bed";
+    },
+    get$gaDisplayName() {
+      return "\u7231\u5c14\u5170\u8bed";
+    },
+    get$gaaDisplayName() {
+      return "\u52a0\u8bed";
+    },
+    get$gdDisplayName() {
+      return "\u82cf\u683c\u5170\u76d6\u5c14\u8bed";
+    },
+    get$glDisplayName() {
+      return "\u52a0\u5229\u897f\u4e9a\u8bed";
+    },
+    get$gnDisplayName() {
+      return "\u74dc\u62c9\u5c3c\u8bed";
+    },
+    get$gomDisplayName() {
+      return "\u679c\u963f\u5b54\u5361\u5c3c\u8bed";
+    },
+    get$guDisplayName() {
+      return "\u53e4\u5409\u62c9\u7279\u8bed";
+    },
+    get$haDisplayName() {
+      return "\u8c6a\u8428\u8bed";
+    },
+    get$hawDisplayName() {
+      return "\u590f\u5a01\u5937\u8bed";
+    },
+    get$heDisplayName() {
+      return "\u5e0c\u4f2f\u6765\u8bed";
+    },
+    get$hiDisplayName() {
+      return "\u5370\u5730\u8bed";
+    },
+    get$hilDisplayName() {
+      return "\u5e0c\u5229\u76d6\u519c\u8bed";
+    },
+    get$hmnDisplayName() {
+      return "\u82d7\u8bed";
+    },
+    get$hneDisplayName() {
+      return "\u6070\u8482\u65af\u52a0\u5c14\u8bed";
+    },
+    get$hrDisplayName() {
+      return "\u514b\u7f57\u5730\u4e9a\u8bed";
+    },
+    get$hrxDisplayName() {
+      return "\u4ea8\u65af\u91cc\u514b\u8bed";
+    },
+    get$htDisplayName() {
+      return "\u6d77\u5730\u514b\u91cc\u5965\u5c14\u8bed";
+    },
+    get$huDisplayName() {
+      return "\u5308\u7259\u5229\u8bed";
+    },
+    get$hyDisplayName() {
+      return "\u4e9a\u7f8e\u5c3c\u4e9a\u8bed";
+    },
+    get$idDisplayName() {
+      return "\u5370\u5c3c\u8bed";
+    },
+    get$igDisplayName() {
+      return "\u4f0a\u535a\u8bed";
+    },
+    get$iloDisplayName() {
+      return "\u4f0a\u6d1b\u514b\u8bed";
+    },
+    get$isDisplayName() {
+      return "\u51b0\u5c9b\u8bed";
+    },
+    get$itDisplayName() {
+      return "\u610f\u5927\u5229\u8bed";
+    },
+    get$jaDisplayName() {
+      return "\u65e5\u8bed";
+    },
+    get$jvDisplayName() {
+      return "\u722a\u54c7\u8bed";
+    },
+    get$kaDisplayName() {
+      return "\u683c\u9c81\u5409\u4e9a\u8bed";
+    },
+    get$kkDisplayName() {
+      return "\u54c8\u8428\u514b\u8bed";
+    },
+    get$kmDisplayName() {
+      return "\u9ad8\u68c9\u8bed";
+    },
+    get$knDisplayName() {
+      return "\u5361\u7eb3\u8fbe\u8bed";
+    },
+    get$koDisplayName() {
+      return "\u97e9\u8bed";
+    },
+    get$kokDisplayName() {
+      return "\u5b54\u5361\u5c3c\u8bed";
+    },
+    get$kriDisplayName() {
+      return "\u514b\u91cc\u5965\u5c14\u8bed";
+    },
+    get$ksDisplayName() {
+      return "\u514b\u4ec0\u7c73\u5c14\u8bed";
+    },
+    get$ktuDisplayName() {
+      return "\u57fa\u56fe\u5df4\u8bed\uff08\u521a\u679c\u6c11\u4e3b\u5171\u548c\u56fd\uff09";
+    },
+    get$kuDisplayName() {
+      return "\u5e93\u5c14\u5fb7\u8bed";
+    },
+    get$kyDisplayName() {
+      return "\u5409\u5c14\u5409\u65af\u8bed";
+    },
+    get$laDisplayName() {
+      return "\u62c9\u4e01\u8bed";
+    },
+    get$lbDisplayName() {
+      return "\u5362\u68ee\u5821\u8bed";
+    },
+    get$lgDisplayName() {
+      return "\u7518\u8fbe\u8bed";
+    },
+    get$liDisplayName() {
+      return "\u6797\u5821\u8bed";
+    },
+    get$lijDisplayName() {
+      return "\u5229\u53e4\u91cc\u4e9a\u8bed";
+    },
+    get$lmoDisplayName() {
+      return "\u4f26\u5df4\u7b2c\u8bed";
+    },
+    get$lnDisplayName() {
+      return "\u6797\u52a0\u62c9\u8bed";
+    },
+    get$loDisplayName() {
+      return "\u8001\u631d\u8bed";
+    },
+    get$ltDisplayName() {
+      return "\u7acb\u9676\u5b9b\u8bed";
+    },
+    get$ltgDisplayName() {
+      return "\u62c9\u8131\u7ef4\u4e9a\u5730\u65b9\u8bed";
+    },
+    get$luoDisplayName() {
+      return "\u5362\u5965\u8bed\uff08\u80af\u5c3c\u4e9a\u548c\u5766\u6851\u5c3c\u4e9a\uff09";
+    },
+    get$lusDisplayName() {
+      return "\u7c73\u4f50\u8bed";
+    },
+    get$lvDisplayName() {
+      return "\u62c9\u8131\u7ef4\u4e9a\u8bed";
+    },
+    get$maiDisplayName() {
+      return "\u8fc8\u8482\u5229\u8bed";
+    },
+    get$makDisplayName() {
+      return "\u9a6c\u5361\u8428\u8bed";
+    },
+    get$mgDisplayName() {
+      return "\u9a6c\u5c14\u52a0\u4ec0\u8bed";
+    },
+    get$miDisplayName() {
+      return "\u6bdb\u5229\u8bed";
+    },
+    get$minDisplayName() {
+      return "\u7c73\u5357\u52a0\u4fdd\u8bed";
+    },
+    get$mkDisplayName() {
+      return "\u9a6c\u5176\u987f\u8bed";
+    },
+    get$mlDisplayName() {
+      return "\u9a6c\u62c9\u96c5\u62c9\u59c6\u8bed";
+    },
+    get$mnDisplayName() {
+      return "\u8499\u53e4\u8bed";
+    },
+    get$mniDisplayName() {
+      return "Manipuri";
+    },
+    get$mrDisplayName() {
+      return "\u9a6c\u62c9\u5730\u8bed";
+    },
+    get$msDisplayName() {
+      return "\u9a6c\u6765\u8bed";
+    },
+    get$msArabDisplayName() {
+      return "\u9a6c\u6765\u8bed\uff08\u963f\u62c9\u4f2f\u6587\uff09";
+    },
+    get$msMYDisplayName() {
+      return "\u9a6c\u6765\u8bed\uff08\u9a6c\u6765\u897f\u4e9a\uff09";
+    },
+    get$mtDisplayName() {
+      return "\u9a6c\u8033\u4ed6\u8bed";
+    },
+    get$mwrDisplayName() {
+      return "\u9a6c\u5c14\u74e6\u91cc\u8bed";
+    },
+    get$myDisplayName() {
+      return "\u7f05\u7538\u8bed";
+    },
+    get$nanDisplayName() {
+      return "\u95fd\u5357\u8bed";
+    },
+    get$nbDisplayName() {
+      return "\u632a\u5a01\u8bed\uff08\u535a\u514b\u9a6c\u5c14\uff09";
+    },
+    get$neDisplayName() {
+      return "\u5c3c\u6cca\u5c14\u8bed";
+    },
+    get$newDisplayName() {
+      return "\u5c3c\u74e6\u5c14\u8bed";
+    },
+    get$nlDisplayName() {
+      return "\u8377\u5170\u8bed";
+    },
+    get$nlBEDisplayName() {
+      return "\u5f17\u62c9\u8292\u8bed";
+    },
+    get$noDisplayName() {
+      return "\u632a\u5a01\u8bed";
+    },
+    get$nrDisplayName() {
+      return "\u5357\u6069\u5fb7\u8d1d\u52d2\u8bed";
+    },
+    get$nsoDisplayName() {
+      return "\u5317\u7d22\u6258\u8bed";
+    },
+    get$nusDisplayName() {
+      return "\u52aa\u5c14\u8bed";
+    },
+    get$nyDisplayName() {
+      return "\u5c3c\u626c\u8d3e\u8bed";
+    },
+    get$ocDisplayName() {
+      return "\u5965\u514b\u8bed";
+    },
+    get$omDisplayName() {
+      return "\u5965\u7f57\u83ab\u8bed";
+    },
+    get$orDisplayName() {
+      return "\u5965\u91cc\u4e9a\u8bed";
+    },
+    get$paDisplayName() {
+      return "\u65c1\u906e\u666e\u8bed";
+    },
+    get$paArabDisplayName() {
+      return "\u65c1\u906e\u666e\u8bed\uff08\u6c99\u8d6b\u7a46\u57fa\uff09";
+    },
+    get$paINDisplayName() {
+      return "\u65c1\u906e\u666e\u8bed\uff08\u53e4\u5c14\u7a46\u57fa\uff09";
+    },
+    get$pagDisplayName() {
+      return "\u90a6\u963f\u897f\u5357";
+    },
+    get$pamDisplayName() {
+      return "\u65c1\u5e15";
+    },
+    get$papDisplayName() {
+      return "\u5e15\u76ae\u963f\u95e8\u6258";
+    },
+    get$plDisplayName() {
+      return "\u6ce2\u5170\u8bed";
+    },
+    get$psDisplayName() {
+      return "\u666e\u4ec0\u56fe\u8bed";
+    },
+    get$ptDisplayName() {
+      return "\u8461\u8404\u7259\u8bed";
+    },
+    get$ptBRDisplayName() {
+      return "\u8461\u8404\u7259\u8bed\uff08\u5df4\u897f\uff09";
+    },
+    get$ptPTDisplayName() {
+      return "\u8461\u8404\u7259\u8bed\uff08\u8461\u8404\u7259\uff09";
+    },
+    get$quDisplayName() {
+      return "\u51ef\u695a\u4e9a\u8bed";
+    },
+    get$rajDisplayName() {
+      return "\u62c9\u8d3e\u65af\u5766\u8bed";
+    },
+    get$rnDisplayName() {
+      return "\u4f26\u8fea\u8bed";
+    },
+    get$roDisplayName() {
+      return "\u7f57\u9a6c\u5c3c\u4e9a\u8bed";
+    },
+    get$roMDDisplayName() {
+      return "\u6469\u5c14\u591a\u74e6\u8bed";
+    },
+    get$romDisplayName() {
+      return "\u7f57\u66fc\u5c3c\u8bed";
+    },
+    get$ruDisplayName() {
+      return "\u4fc4\u8bed";
+    },
+    get$rwDisplayName() {
+      return "\u57fa\u5c3c\u4e9a\u5362\u65fa\u8fbe\u8bed";
+    },
+    get$saDisplayName() {
+      return "\u68b5\u8bed";
+    },
+    get$satDisplayName() {
+      return "\u6851\u5854\u5229\u8bed";
+    },
+    get$scnDisplayName() {
+      return "\u897f\u897f\u91cc\u8bed";
+    },
+    get$sdDisplayName() {
+      return "\u4fe1\u5fb7\u8bed";
+    },
+    get$sgDisplayName() {
+      return "\u6851\u6208";
+    },
+    get$shnDisplayName() {
+      return "\u5c71";
+    },
+    get$siDisplayName() {
+      return "\u50e7\u4f3d\u7f57\u8bed";
+    },
+    get$skDisplayName() {
+      return "\u65af\u6d1b\u4f10\u514b\u8bed";
+    },
+    get$slDisplayName() {
+      return "\u65af\u6d1b\u6587\u5c3c\u4e9a\u8bed";
+    },
+    get$smDisplayName() {
+      return "\u8428\u6469\u4e9a\u8bed";
+    },
+    get$snDisplayName() {
+      return "\u8096\u7eb3\u8bed";
+    },
+    get$soDisplayName() {
+      return "\u7d22\u9a6c\u91cc\u8bed";
+    },
+    get$sqDisplayName() {
+      return "\u963f\u5c14\u5df4\u5c3c\u4e9a\u8bed";
+    },
+    get$srDisplayName() {
+      return "\u585e\u5c14\u7ef4\u4e9a\u8bed";
+    },
+    get$srMEDisplayName() {
+      return "\u9ed1\u5c71\u8bed";
+    },
+    get$ssDisplayName() {
+      return "\u65af\u74e6\u8482\u8bed";
+    },
+    get$stDisplayName() {
+      return "\u5357\u7d22\u6258\u8bed";
+    },
+    get$suDisplayName() {
+      return "\u5dfd\u4ed6\u8bed";
+    },
+    get$svDisplayName() {
+      return "\u745e\u5178\u8bed";
+    },
+    get$swDisplayName() {
+      return "\u65af\u74e6\u5e0c\u91cc\u8bed";
+    },
+    get$szlDisplayName() {
+      return "\u897f\u91cc\u897f\u4e9a\u8bed";
+    },
+    get$taDisplayName() {
+      return "\u6cf0\u7c73\u5c14\u8bed";
+    },
+    get$teDisplayName() {
+      return "\u6cf0\u5362\u56fa\u8bed";
+    },
+    get$tetDisplayName() {
+      return "\u7279\u56fe\u59c6\u8bed";
+    },
+    get$tgDisplayName() {
+      return "\u5854\u5409\u514b\u8bed";
+    },
+    get$thDisplayName() {
+      return "\u6cf0\u8bed";
+    },
+    get$tiDisplayName() {
+      return "\u63d0\u683c\u5229\u5c3c\u4e9a\u8bed";
+    },
+    get$tkDisplayName() {
+      return "\u571f\u5e93\u66fc\u8bed";
+    },
+    get$tlDisplayName() {
+      return "\u4ed6\u52a0\u7984\u8bed";
+    },
+    get$tnDisplayName() {
+      return "\u8328\u74e6\u7eb3\u8bed";
+    },
+    get$trDisplayName() {
+      return "\u571f\u8033\u5176\u8bed";
+    },
+    get$tsDisplayName() {
+      return "\u5b97\u52a0\u8bed";
+    },
+    get$ttDisplayName() {
+      return "\u9791\u977c\u8bed";
+    },
+    get$ugDisplayName() {
+      return "\u7ef4\u543e\u5c14\u8bed";
+    },
+    get$ukDisplayName() {
+      return "\u4e4c\u514b\u5170\u8bed";
+    },
+    get$urDisplayName() {
+      return "\u4e4c\u5c14\u90fd\u8bed";
+    },
+    get$urINDisplayName() {
+      return "\u4e4c\u5c14\u90fd\u8bed\uff08\u5370\u5ea6\uff09";
+    },
+    get$urPKDisplayName() {
+      return "\u4e4c\u5c14\u90fd\u8bed\uff08\u5df4\u57fa\u65af\u5766\uff09";
+    },
+    get$uzDisplayName() {
+      return "\u4e4c\u5179\u522b\u514b\u8bed";
+    },
+    get$viDisplayName() {
+      return "\u8d8a\u5357\u8bed";
+    },
+    get$wuuDisplayName() {
+      return "\u5434\u8bed";
+    },
+    get$xhDisplayName() {
+      return "\u79d1\u8428\u8bed";
+    },
+    get$yiDisplayName() {
+      return "\u610f\u7b2c\u7eea\u8bed";
+    },
+    get$yoDisplayName() {
+      return "\u7ea6\u9c81\u5df4\u8bed";
+    },
+    get$yuaDisplayName() {
+      return "\u5c24\u5361\u5766\u8bed";
+    },
+    get$yueDisplayName() {
+      return "\u7ca4\u8bed";
+    },
+    get$yueCNDisplayName() {
+      return "\u7ca4\u8bed\uff08\u4e2d\u56fd\uff09";
+    },
+    get$yueHKDisplayName() {
+      return "\u7ca4\u8bed\uff08\u9999\u6e2f\uff09";
+    },
+    get$zhDisplayName() {
+      return "\u4e2d\u6587";
+    },
+    get$zhCNDisplayName() {
+      return "\u4e2d\u6587\uff08\u7b80\u4f53\uff09";
+    },
+    get$zhTWDisplayName() {
+      return "\u4e2d\u6587\uff08\u7e41\u4f53\uff09";
+    },
+    get$zuDisplayName() {
+      return "\u7956\u9c81\u8bed";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -9028,6 +9685,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\u8a9e\u8a00\u4e0d\u5339\u914d";
     },
+    get$emptyChatSearch() {
+      return "\u672a\u627e\u5230\u79c1\u8a0a\u6216\u804a\u5929\u3002\u8acb\u78ba\u4fdd\u60a8\u7684\u641c\u5c0b\u62fc\u5beb\u6b63\u78ba\u3002";
+    },
     get$languageMismatchDesc() {
       return "\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u8207\u6b64\u6d3b\u52d5\u7684\u8a9e\u8a00\u4e0d\u7b26\u3002\u662f\u5426\u8981\u66f4\u65b0\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\uff1f";
     },
@@ -9070,6 +9730,717 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\u9019\u662f\u4f60\u5347\u7d1a\u5f8c\u8a5e\u5f59\u5c07\u6703\u653e\u7f6e\u7684\u5730\u65b9\uff01";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "\u9019\u4e9b\u662f\u60a8\u4fdd\u5b58\u7684\u6d3b\u52d5\uff0c\u4f9b\u56de\u9867\u548c\u7df4\u7fd2\u4f7f\u7528\u3002";
+    },
+    get$numSavedActivities() {
+      return "\u4fdd\u5b58\u7684\u6d3b\u52d5\u6578\u91cf";
+    },
+    get$saveActivityTitle() {
+      return "\u4fdd\u5b58\u6d3b\u52d5";
+    },
+    get$saveActivityDesc() {
+      return "\u505a\u5f97\u597d\uff01\u4fdd\u5b58\u6b64\u6d3b\u52d5\u4ee5\u4fbf\u7a0d\u5f8c\u56de\u9867\u548c\u7df4\u7fd2";
+    },
+    get$levelInfoTooltip() {
+      return "\u5728\u9019\u88e1\u60a8\u53ef\u4ee5\u770b\u5230\u60a8\u7372\u5f97\u7684\u6240\u6709\u7a4d\u5206\u53ca\u5176\u4f86\u6e90\uff01";
+    },
+    get$alreadyInCourseWithID() {
+      return "\u60a8\u5df2\u7d93\u5728\u9019\u500b\u8a08\u5283\u7684\u8ab2\u7a0b\u4e2d\u3002\u60a8\u60f3\u5275\u5efa\u4e00\u500b\u76f8\u540c\u8a08\u5283\u7684\u8ab2\u7a0b\uff0c\u9084\u662f\u53bb\u73fe\u6709\u7684\u8ab2\u7a0b\uff1f";
+    },
+    get$goToExistingCourse() {
+      return "\u524d\u5f80\u73fe\u6709\u8ab2\u7a0b";
+    },
+    get$emojiView() {
+      return "\u8868\u60c5\u7b26\u865f\u8996\u5716";
+    },
+    get$feedbackDialogDesc() {
+      return "\u6211\u4e5f\u6703\u72af\u932f\uff01\u6709\u4ec0\u9ebc\u53ef\u4ee5\u5e6b\u52a9\u6211\u6539\u9032\u7684\u55ce\uff1f";
+    },
+    get$contactHasBeenInvitedToTheCourse() {
+      return "\u806f\u7d61\u4eba\u5df2\u88ab\u9080\u8acb\u53c3\u52a0\u8ab2\u7a0b";
+    },
+    get$activityStatsButtonTooltip() {
+      return "\u6d3b\u52d5\u8cc7\u8a0a";
+    },
+    get$allow(_) {
+      return "\u5141\u8a31";
+    },
+    get$deny() {
+      return "\u62d2\u7d55";
+    },
+    get$enabledRenewal() {
+      return "\u555f\u7528\u8a02\u95b1\u7e8c\u8a02";
+    },
+    get$subscriptionEndsOn() {
+      return "\u8a02\u95b1\u7d50\u675f\u65bc";
+    },
+    get$subscriptionRenewsOn() {
+      return "\u8a02\u95b1\u7e8c\u8a02\u65bc";
+    },
+    get$waitForSubscriptionChanges() {
+      return "\u60a8\u7684\u8a02\u95b1\u8b8a\u66f4\u53ef\u80fd\u9700\u8981\u4e00\u4e9b\u6642\u9593\u624d\u80fd\u5728\u61c9\u7528\u7a0b\u5f0f\u4e2d\u53cd\u6620\u3002";
+    },
+    get$subscribeReadingAssistance() {
+      return "\u8a02\u95b1\u4ee5\u89e3\u9396\u6d88\u606f\u5de5\u5177";
+    },
+    get$aceDisplayName() {
+      return "\u963f\u9f4a\u5c3c\u8a9e";
+    },
+    get$achDisplayName() {
+      return "\u963f\u79d1\u5229\u8a9e";
+    },
+    get$afDisplayName() {
+      return "\u5357\u975e\u8377\u862d\u8a9e";
+    },
+    get$akDisplayName() {
+      return "\u963f\u574e\u8a9e";
+    },
+    get$alzDisplayName() {
+      return "\u963f\u76e7\u723e\u8a9e";
+    },
+    get$amDisplayName() {
+      return "\u963f\u59c6\u54c8\u62c9\u8a9e";
+    },
+    get$arDisplayName() {
+      return "\u963f\u62c9\u4f2f\u8a9e";
+    },
+    get$asDisplayName() {
+      return "\u963f\u85a9\u59c6\u8a9e";
+    },
+    get$awaDisplayName() {
+      return "\u963f\u74e6\u8fea\u8a9e";
+    },
+    get$ayDisplayName() {
+      return "\u827e\u99ac\u62c9\u8a9e";
+    },
+    get$azDisplayName() {
+      return "\u963f\u585e\u62dc\u7586\u8a9e";
+    },
+    get$baDisplayName() {
+      return "\u5df4\u4ec0\u57fa\u723e";
+    },
+    get$banDisplayName() {
+      return "\u5df4\u5398\u8a9e";
+    },
+    get$bbcDisplayName() {
+      return "\u5df4\u5854\u514b\u6258\u5df4";
+    },
+    get$beDisplayName() {
+      return "\u767d\u4fc4\u7f85\u65af\u8a9e";
+    },
+    get$bemDisplayName() {
+      return "\u672c\u5df4\u8a9e";
+    },
+    get$bewDisplayName() {
+      return "\u8c9d\u5854\u7dad\u8a9e";
+    },
+    get$bgDisplayName() {
+      return "\u4fdd\u52a0\u5229\u4e9e\u8a9e";
+    },
+    get$bhoDisplayName() {
+      return "\u535a\u5091\u666e\u91cc\u8a9e";
+    },
+    get$bikDisplayName() {
+      return "\u6bd4\u79d1\u723e\u8a9e";
+    },
+    get$bmDisplayName() {
+      return "\u73ed\u5df4\u62c9\u8a9e";
+    },
+    get$bnDisplayName() {
+      return "\u5b5f\u52a0\u62c9\u8a9e";
+    },
+    get$bnBDDisplayName() {
+      return "\u5b5f\u52a0\u62c9\u8a9e\uff08\u5b5f\u52a0\u62c9\uff09";
+    },
+    get$bnINDisplayName() {
+      return "\u5b5f\u52a0\u62c9\u8a9e\uff08\u5370\u5ea6\uff09";
+    },
+    get$brDisplayName() {
+      return "\u5e03\u5217\u5854\u5c3c\u8a9e";
+    },
+    get$bsDisplayName() {
+      return "\u6ce2\u58eb\u5c3c\u4e9e\u8a9e";
+    },
+    get$btsDisplayName() {
+      return "\u5df4\u5854\u514b\u897f\u99ac\u9686\u6839\u8a9e";
+    },
+    get$btxDisplayName() {
+      return "\u5df4\u5854\u514b\u5361\u7f85\u8a9e";
+    },
+    get$buaDisplayName() {
+      return "\u5e03\u91cc\u4e9e\u7279\u8a9e";
+    },
+    get$caDisplayName() {
+      return "\u52a0\u6cf0\u7f85\u5c3c\u4e9e\u8a9e";
+    },
+    get$cebDisplayName() {
+      return "\u5bbf\u9727\u8a9e";
+    },
+    get$cggDisplayName() {
+      return "\u5947\u52a0";
+    },
+    get$chmDisplayName() {
+      return "\u746a\u8389";
+    },
+    get$ckbDisplayName() {
+      return "\u4e2d\u592e\u5eab\u723e\u5fb7\u8a9e";
+    },
+    get$cnhDisplayName() {
+      return "\u54c8\u5361\u6b3d";
+    },
+    get$coDisplayName() {
+      return "\u79d1\u897f\u5609\u8a9e";
+    },
+    get$crhDisplayName() {
+      return "\u514b\u91cc\u7c73\u4e9e\u571f\u8033\u5176\u8a9e";
+    },
+    get$crsDisplayName() {
+      return "\u585e\u820c\u723e\u514b\u91cc\u5967\u723e\u6cd5\u8a9e";
+    },
+    get$csDisplayName() {
+      return "\u6377\u514b\u8a9e";
+    },
+    get$cvDisplayName() {
+      return "\u695a\u74e6\u4ec0\u8a9e";
+    },
+    get$cyDisplayName() {
+      return "\u5a01\u723e\u58eb\u8a9e";
+    },
+    get$daDisplayName() {
+      return "\u4e39\u9ea5\u8a9e";
+    },
+    get$deDisplayName() {
+      return "\u5fb7\u8a9e";
+    },
+    get$dinDisplayName() {
+      return "\u4e01\u5361\u8a9e";
+    },
+    get$doiDisplayName() {
+      return "\u591a\u683c\u91cc\u8a9e";
+    },
+    get$dovDisplayName() {
+      return "\u591a\u59c6\u8c9d\u8a9e";
+    },
+    get$dzDisplayName() {
+      return "\u5b97\u5580\u8a9e";
+    },
+    get$eeDisplayName() {
+      return "\u57c3\u7dad\u8a9e";
+    },
+    get$enDisplayName() {
+      return "\u82f1\u8a9e";
+    },
+    get$enAUDisplayName() {
+      return "\u82f1\u8a9e\uff08\u6fb3\u5927\u5229\u4e9e\uff09";
+    },
+    get$enGBDisplayName() {
+      return "\u82f1\u8a9e\uff08\u82f1\u570b\uff09";
+    },
+    get$enINDisplayName() {
+      return "\u82f1\u8a9e\uff08\u5370\u5ea6\uff09";
+    },
+    get$enUSDisplayName() {
+      return "\u82f1\u8a9e\uff08\u7f8e\u570b\uff09";
+    },
+    get$eoDisplayName() {
+      return "\u4e16\u754c\u8a9e";
+    },
+    get$esDisplayName() {
+      return "\u897f\u73ed\u7259\u8a9e";
+    },
+    get$esESDisplayName() {
+      return "\u897f\u73ed\u7259\u8a9e\uff08\u897f\u73ed\u7259\uff09";
+    },
+    get$esMXDisplayName() {
+      return "\u897f\u73ed\u7259\u8a9e\uff08\u58a8\u897f\u54e5\uff09";
+    },
+    get$euDisplayName() {
+      return "\u5df4\u65af\u514b\u8a9e";
+    },
+    get$faDisplayName() {
+      return "\u6ce2\u65af\u8a9e";
+    },
+    get$ffDisplayName() {
+      return "\u5bcc\u62c9\u8a9e";
+    },
+    get$fiDisplayName() {
+      return "\u82ac\u862d\u8a9e";
+    },
+    get$filDisplayName() {
+      return "\u83f2\u5f8b\u8cd3\u8a9e";
+    },
+    get$fjDisplayName() {
+      return "\u6590\u6fdf\u8a9e";
+    },
+    get$foDisplayName() {
+      return "\u6cd5\u7f85\u8a9e";
+    },
+    get$frDisplayName() {
+      return "\u6cd5\u8a9e";
+    },
+    get$frCADisplayName() {
+      return "\u6cd5\u8a9e\uff08\u52a0\u62ff\u5927\uff09";
+    },
+    get$frFRDisplayName() {
+      return "\u6cd5\u8a9e\uff08\u6cd5\u570b\uff09";
+    },
+    get$fyDisplayName() {
+      return "\u897f\u5f17\u91cc\u897f\u8a9e";
+    },
+    get$gaDisplayName() {
+      return "\u611b\u723e\u862d\u8a9e";
+    },
+    get$gaaDisplayName() {
+      return "\u52a0\u8a9e";
+    },
+    get$gdDisplayName() {
+      return "\u8607\u683c\u862d\u84cb\u723e\u8a9e";
+    },
+    get$glDisplayName() {
+      return "\u52a0\u5229\u897f\u4e9e\u8a9e";
+    },
+    get$gnDisplayName() {
+      return "\u74dc\u62c9\u5c3c\u8a9e";
+    },
+    get$gomDisplayName() {
+      return "\u679c\u963f\u5b54\u5361\u5c3c\u8a9e";
+    },
+    get$guDisplayName() {
+      return "\u53e4\u5409\u62c9\u7279\u8a9e";
+    },
+    get$haDisplayName() {
+      return "\u8c6a\u85a9\u8a9e";
+    },
+    get$hawDisplayName() {
+      return "\u590f\u5a01\u5937\u8a9e";
+    },
+    get$heDisplayName() {
+      return "\u5e0c\u4f2f\u4f86\u8a9e";
+    },
+    get$hiDisplayName() {
+      return "\u5370\u5730\u8a9e";
+    },
+    get$hilDisplayName() {
+      return "\u5e0c\u5229\u84cb\u8fb2\u8a9e";
+    },
+    get$hmnDisplayName() {
+      return "\u82d7\u65cf\u8a9e";
+    },
+    get$hneDisplayName() {
+      return "\u6070\u8482\u65af\u52a0\u723e\u8a9e";
+    },
+    get$hrDisplayName() {
+      return "\u514b\u7f85\u5730\u4e9e\u8a9e";
+    },
+    get$hrxDisplayName() {
+      return "\u4ea8\u65af\u91cc\u514b\u8a9e";
+    },
+    get$htDisplayName() {
+      return "\u6d77\u5730\u514b\u91cc\u5967\u723e\u8a9e";
+    },
+    get$huDisplayName() {
+      return "\u5308\u7259\u5229\u8a9e";
+    },
+    get$hyDisplayName() {
+      return "\u4e9e\u7f8e\u5c3c\u4e9e\u8a9e";
+    },
+    get$idDisplayName() {
+      return "\u5370\u5c3c\u8a9e";
+    },
+    get$igDisplayName() {
+      return "\u4f0a\u535a\u8a9e";
+    },
+    get$iloDisplayName() {
+      return "\u4f0a\u6d1b\u5361\u8afe\u8a9e";
+    },
+    get$isDisplayName() {
+      return "\u51b0\u5cf6\u8a9e";
+    },
+    get$itDisplayName() {
+      return "\u7fa9\u5927\u5229\u8a9e";
+    },
+    get$jaDisplayName() {
+      return "\u65e5\u8a9e";
+    },
+    get$jvDisplayName() {
+      return "\u722a\u54c7\u8a9e";
+    },
+    get$kaDisplayName() {
+      return "\u55ac\u6cbb\u4e9e\u8a9e";
+    },
+    get$kkDisplayName() {
+      return "\u54c8\u85a9\u514b\u8a9e";
+    },
+    get$kmDisplayName() {
+      return "\u9ad8\u68c9\u8a9e";
+    },
+    get$knDisplayName() {
+      return "\u5361\u7d0d\u9054\u8a9e";
+    },
+    get$koDisplayName() {
+      return "\u97d3\u8a9e";
+    },
+    get$kokDisplayName() {
+      return "\u5b54\u5361\u5c3c\u8a9e";
+    },
+    get$kriDisplayName() {
+      return "\u514b\u91cc\u5967\u8a9e";
+    },
+    get$ksDisplayName() {
+      return "\u514b\u4ec0\u7c73\u723e\u8a9e";
+    },
+    get$ktuDisplayName() {
+      return "\u57fa\u5716\u5df4\u8a9e\uff08\u525b\u679c\u6c11\u4e3b\u5171\u548c\u570b\uff09";
+    },
+    get$kuDisplayName() {
+      return "\u5eab\u723e\u5fb7\u8a9e";
+    },
+    get$kyDisplayName() {
+      return "\u5409\u723e\u5409\u65af\u8a9e";
+    },
+    get$laDisplayName() {
+      return "\u62c9\u4e01\u8a9e";
+    },
+    get$lbDisplayName() {
+      return "\u76e7\u68ee\u5821\u8a9e";
+    },
+    get$lgDisplayName() {
+      return "\u7518\u9054\u8a9e";
+    },
+    get$liDisplayName() {
+      return "\u6797\u5821\u8a9e";
+    },
+    get$lijDisplayName() {
+      return "\u5229\u53e4\u91cc\u4e9e\u8a9e";
+    },
+    get$lmoDisplayName() {
+      return "\u502b\u5df4\u7b2c\u8a9e";
+    },
+    get$lnDisplayName() {
+      return "\u6797\u52a0\u62c9\u8a9e";
+    },
+    get$loDisplayName() {
+      return "\u8001\u64be\u8a9e";
+    },
+    get$ltDisplayName() {
+      return "\u7acb\u9676\u5b9b\u8a9e";
+    },
+    get$ltgDisplayName() {
+      return "\u62c9\u812b\u7dad\u4e9e\u8a9e";
+    },
+    get$luoDisplayName() {
+      return "\u76e7\u5967\u8a9e\uff08\u80af\u5c3c\u4e9e\u548c\u5766\u5c1a\u5c3c\u4e9e\uff09";
+    },
+    get$lusDisplayName() {
+      return "\u7c73\u4f50\u8a9e";
+    },
+    get$lvDisplayName() {
+      return "\u62c9\u812b\u7dad\u4e9e\u8a9e";
+    },
+    get$maiDisplayName() {
+      return "\u99ac\u7fa9\u63d0\u8a9e";
+    },
+    get$makDisplayName() {
+      return "\u99ac\u5361\u85a9\u8a9e";
+    },
+    get$mgDisplayName() {
+      return "\u99ac\u9054\u52a0\u65af\u52a0\u8a9e";
+    },
+    get$miDisplayName() {
+      return "\u6bdb\u5229\u8a9e";
+    },
+    get$minDisplayName() {
+      return "\u7c73\u5357\u52a0\u4fdd\u8a9e";
+    },
+    get$mkDisplayName() {
+      return "\u99ac\u5176\u9813\u8a9e";
+    },
+    get$mlDisplayName() {
+      return "\u99ac\u62c9\u96c5\u62c9\u59c6\u8a9e";
+    },
+    get$mnDisplayName() {
+      return "\u8499\u53e4\u8a9e";
+    },
+    get$mniDisplayName() {
+      return "\u66fc\u5c3c\u666e\u723e\u8a9e";
+    },
+    get$mrDisplayName() {
+      return "\u99ac\u62c9\u5730\u8a9e";
+    },
+    get$msDisplayName() {
+      return "\u99ac\u4f86\u8a9e";
+    },
+    get$msArabDisplayName() {
+      return "\u99ac\u4f86\u8a9e\uff08\u963f\u62c9\u4f2f\u6587\uff09";
+    },
+    get$msMYDisplayName() {
+      return "\u99ac\u4f86\u8a9e\uff08\u99ac\u4f86\u897f\u4e9e\uff09";
+    },
+    get$mtDisplayName() {
+      return "\u99ac\u8033\u4ed6\u8a9e";
+    },
+    get$mwrDisplayName() {
+      return "\u99ac\u74e6\u91cc\u8a9e";
+    },
+    get$myDisplayName() {
+      return "\u7dec\u7538\u8a9e";
+    },
+    get$nanDisplayName() {
+      return "\u95a9\u5357\u8a9e";
+    },
+    get$nbDisplayName() {
+      return "\u632a\u5a01\u8a9e\uff08\u535a\u514b\u99ac\u723e\uff09";
+    },
+    get$neDisplayName() {
+      return "\u5c3c\u6cca\u723e\u8a9e";
+    },
+    get$newDisplayName() {
+      return "\u5c3c\u74e6\u723e\u8a9e";
+    },
+    get$nlDisplayName() {
+      return "\u8377\u862d\u8a9e";
+    },
+    get$nlBEDisplayName() {
+      return "\u5f17\u62c9\u8292\u8a9e";
+    },
+    get$noDisplayName() {
+      return "\u632a\u5a01\u8a9e";
+    },
+    get$nrDisplayName() {
+      return "\u5357\u6069\u5fb7\u8c9d\u52d2\u8a9e";
+    },
+    get$nsoDisplayName() {
+      return "\u5317\u7d22\u6258\u8a9e";
+    },
+    get$nusDisplayName() {
+      return "\u52aa\u723e\u8a9e";
+    },
+    get$nyDisplayName() {
+      return "\u5c3c\u63da\u8cc8\u8a9e";
+    },
+    get$ocDisplayName() {
+      return "\u5967\u514b\u897f\u5766\u8a9e";
+    },
+    get$omDisplayName() {
+      return "\u5967\u7f85\u83ab\u8a9e";
+    },
+    get$orDisplayName() {
+      return "\u5967\u91cc\u4e9e\u8a9e";
+    },
+    get$paDisplayName() {
+      return "\u65c1\u906e\u666e\u8a9e";
+    },
+    get$paArabDisplayName() {
+      return "\u65c1\u906e\u666e\u8a9e\uff08\u6c99\u8d6b\u7a46\u57fa\uff09";
+    },
+    get$paINDisplayName() {
+      return "\u65c1\u906e\u666e\u8a9e\uff08\u53e4\u723e\u7a46\u57fa\uff09";
+    },
+    get$pagDisplayName() {
+      return "\u90a6\u963f\u897f\u5357";
+    },
+    get$pamDisplayName() {
+      return "\u65c1\u5e15\u7701";
+    },
+    get$papDisplayName() {
+      return "\u5e15\u76ae\u963f\u9580\u6258";
+    },
+    get$plDisplayName() {
+      return "\u6ce2\u862d\u8a9e";
+    },
+    get$psDisplayName() {
+      return "\u666e\u4ec0\u5716\u8a9e";
+    },
+    get$ptDisplayName() {
+      return "\u8461\u8404\u7259\u8a9e";
+    },
+    get$ptBRDisplayName() {
+      return "\u8461\u8404\u7259\u8a9e\uff08\u5df4\u897f\uff09";
+    },
+    get$ptPTDisplayName() {
+      return "\u8461\u8404\u7259\u8a9e\uff08\u8461\u8404\u7259\uff09";
+    },
+    get$quDisplayName() {
+      return "\u514b\u4e18\u4e9e\u8a9e";
+    },
+    get$rajDisplayName() {
+      return "\u62c9\u8cc8\u65af\u5766\u8a9e";
+    },
+    get$rnDisplayName() {
+      return "\u502b\u8fea\u8a9e";
+    },
+    get$roDisplayName() {
+      return "\u7f85\u99ac\u5c3c\u4e9e\u8a9e";
+    },
+    get$roMDDisplayName() {
+      return "\u6469\u723e\u591a\u74e6\u8a9e";
+    },
+    get$romDisplayName() {
+      return "\u7f85\u66fc\u5c3c\u8a9e";
+    },
+    get$ruDisplayName() {
+      return "\u4fc4\u8a9e";
+    },
+    get$rwDisplayName() {
+      return "\u57fa\u5c3c\u4e9e\u842c\u9054\u8a9e";
+    },
+    get$saDisplayName() {
+      return "\u68b5\u8a9e";
+    },
+    get$satDisplayName() {
+      return "\u6851\u5854\u5229\u8a9e";
+    },
+    get$scnDisplayName() {
+      return "\u897f\u897f\u91cc\u8a9e";
+    },
+    get$sdDisplayName() {
+      return "\u4fe1\u5fb7\u8a9e";
+    },
+    get$sgDisplayName() {
+      return "\u6851\u6208";
+    },
+    get$shnDisplayName() {
+      return "\u5c71";
+    },
+    get$siDisplayName() {
+      return "\u50e7\u4f3d\u7f85\u8a9e";
+    },
+    get$skDisplayName() {
+      return "\u65af\u6d1b\u4f10\u514b\u8a9e";
+    },
+    get$slDisplayName() {
+      return "\u65af\u6d1b\u6587\u5c3c\u4e9e\u8a9e";
+    },
+    get$smDisplayName() {
+      return "\u85a9\u6469\u4e9e\u8a9e";
+    },
+    get$snDisplayName() {
+      return "\u8096\u7d0d\u8a9e";
+    },
+    get$soDisplayName() {
+      return "\u7d22\u99ac\u5229\u8a9e";
+    },
+    get$sqDisplayName() {
+      return "\u963f\u723e\u5df4\u5c3c\u4e9e\u8a9e";
+    },
+    get$srDisplayName() {
+      return "\u585e\u723e\u7dad\u4e9e\u8a9e";
+    },
+    get$srMEDisplayName() {
+      return "\u9ed1\u5c71\u8a9e";
+    },
+    get$ssDisplayName() {
+      return "\u65af\u74e6\u8482\u8a9e";
+    },
+    get$stDisplayName() {
+      return "\u5357\u7d22\u6258\u8a9e";
+    },
+    get$suDisplayName() {
+      return "\u5dfd\u4ed6\u8a9e";
+    },
+    get$svDisplayName() {
+      return "\u745e\u5178\u8a9e";
+    },
+    get$swDisplayName() {
+      return "\u65af\u74e6\u5e0c\u91cc\u8a9e";
+    },
+    get$szlDisplayName() {
+      return "\u897f\u91cc\u897f\u4e9e\u8a9e";
+    },
+    get$taDisplayName() {
+      return "\u6cf0\u7c73\u723e\u8a9e";
+    },
+    get$teDisplayName() {
+      return "\u6cf0\u76e7\u56fa\u8a9e";
+    },
+    get$tetDisplayName() {
+      return "\u7279\u5716\u59c6\u8a9e";
+    },
+    get$tgDisplayName() {
+      return "\u5854\u5409\u514b\u8a9e";
+    },
+    get$thDisplayName() {
+      return "\u6cf0\u8a9e";
+    },
+    get$tiDisplayName() {
+      return "\u63d0\u683c\u5229\u5c3c\u4e9e\u8a9e";
+    },
+    get$tkDisplayName() {
+      return "\u571f\u5eab\u66fc\u8a9e";
+    },
+    get$tlDisplayName() {
+      return "\u4ed6\u52a0\u797f\u8a9e";
+    },
+    get$tnDisplayName() {
+      return "\u8328\u74e6\u7d0d\u8a9e";
+    },
+    get$trDisplayName() {
+      return "\u571f\u8033\u5176\u8a9e";
+    },
+    get$tsDisplayName() {
+      return "\u5b97\u52a0\u8a9e";
+    },
+    get$ttDisplayName() {
+      return "\u5854\u5854\u723e\u8a9e";
+    },
+    get$ugDisplayName() {
+      return "\u7dad\u543e\u723e\u8a9e";
+    },
+    get$ukDisplayName() {
+      return "\u70cf\u514b\u862d\u8a9e";
+    },
+    get$urDisplayName() {
+      return "\u70cf\u723e\u90fd\u8a9e";
+    },
+    get$urINDisplayName() {
+      return "\u70cf\u723e\u90fd\u8a9e\uff08\u5370\u5ea6\uff09";
+    },
+    get$urPKDisplayName() {
+      return "\u70cf\u723e\u90fd\u8a9e\uff08\u5df4\u57fa\u65af\u5766\uff09";
+    },
+    get$uzDisplayName() {
+      return "\u70cf\u8332\u5225\u514b\u8a9e";
+    },
+    get$viDisplayName() {
+      return "\u8d8a\u5357\u8a9e";
+    },
+    get$wuuDisplayName() {
+      return "\u5433\u8a9e";
+    },
+    get$xhDisplayName() {
+      return "\u79d1\u85a9\u8a9e";
+    },
+    get$yiDisplayName() {
+      return "\u610f\u7b2c\u7dd2\u8a9e";
+    },
+    get$yoDisplayName() {
+      return "\u7d04\u9b6f\u5df4\u8a9e";
+    },
+    get$yuaDisplayName() {
+      return "\u5c24\u5361\u5766\u8a9e";
+    },
+    get$yueDisplayName() {
+      return "\u5ee3\u6771\u8a71";
+    },
+    get$yueCNDisplayName() {
+      return "\u5ee3\u6771\u8a71\uff08\u4e2d\u570b\uff09";
+    },
+    get$yueHKDisplayName() {
+      return "\u5ee3\u6771\u8a71\uff08\u9999\u6e2f\uff09";
+    },
+    get$zhDisplayName() {
+      return "\u4e2d\u6587";
+    },
+    get$zhCNDisplayName() {
+      return "\u4e2d\u6587\uff08\u7c21\u9ad4\uff09";
+    },
+    get$zhTWDisplayName() {
+      return "\u4e2d\u6587\uff08\u7e41\u9ad4\uff09";
+    },
+    get$zuDisplayName() {
+      return "\u7956\u9b6f\u8a9e";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -9084,7 +10455,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QvEzEzScBAB/HXIkMumLZcElv54="] = d.current;
+  d["t8A+J8mJpKuHmlODF/5jGvUs2GY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
