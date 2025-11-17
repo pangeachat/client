@@ -154,8 +154,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   List<LanguageModel> get availableLanguages => _langsToUsers.keys.toList()
     ..sort(
-      (a, b) => (a.getDisplayName(context) ?? a.displayName)
-          .compareTo(b.getDisplayName(context) ?? b.displayName),
+      (a, b) => a.getDisplayName(context).compareTo(b.getDisplayName(context)),
     );
 
   int get completedDownloads =>

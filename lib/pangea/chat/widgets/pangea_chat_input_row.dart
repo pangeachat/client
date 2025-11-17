@@ -61,8 +61,8 @@ class PangeaChatInputRowState extends State<PangeaChatInputRow> {
             activel1!.langCode != LanguageKeys.unknownLanguage &&
             activel2!.langCode != LanguageKeys.unknownLanguage
         ? L10n.of(context).writeAMessageLangCodes(
-            activel1!.displayName,
-            activel2!.displayName,
+            activel1!.getDisplayName(context),
+            activel2!.getDisplayName(context),
           )
         : L10n.of(context).writeAMessage;
   }
