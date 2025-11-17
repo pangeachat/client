@@ -34,7 +34,8 @@ extension SpanDataTypeEnumExt on SpanDataTypeEnum {
         return L10n.of(context).correctionDefaultPrompt;
       case SpanDataTypeEnum.itStart:
         return L10n.of(context).needsItMessage(
-          MatrixState.pangeaController.languageController.userL2?.displayName ??
+          MatrixState.pangeaController.languageController.userL2
+                  ?.getDisplayName(context) ??
               L10n.of(context).targetLanguage,
         );
     }

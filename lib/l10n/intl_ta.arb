@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-05 14:21:53.229991",
+  "@@last_modified": "2025-11-17 15:57:11.667831",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -3358,12 +3358,6 @@
   "originalSubscriptionPlatform": "கொள்முதல் செய்யப்பட்ட சந்தா {purchasePlatform} மூலம்",
   "oneWeekTrial": "ஒரு வார சோதனை",
   "downloadXLSXFile": "எக்செல் கோப்பை பதிவிறக்கம் செய்க",
-  "abDisplayName": "அப்காஸியன்",
-  "aaDisplayName": "அப்ஃபார்",
-  "ceDisplayName": "செச்சன்",
-  "etDisplayName": "எஸ்டோனியன்",
-  "elDisplayName": "கிரேக்கம், நவீன",
-  "rmDisplayName": "ரோமான்ஷ்",
   "unkDisplayName": "அறியப்படாதது",
   "wwCountryDisplayName": "உலகளாவிய",
   "afCountryDisplayName": "அப்கானிஸ்தான்",
@@ -5186,30 +5180,6 @@
     "placeholders": {}
   },
   "@downloadXLSXFile": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@abDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ceDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@etDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@elDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@rmDisplayName": {
     "type": "String",
     "placeholders": {}
   },
@@ -9600,6 +9570,1196 @@
     "placeholders": {}
   },
   "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyChatSearch": "DMs அல்லது உரையாடல்கள் எதுவும் கிடைக்கவில்லை. உங்கள் தேடல் சரியாக எழுத்துப்பிழையின்றி உள்ளது என்பதை உறுதி செய்யவும்.",
+  "activityAnalyticsTooltipBody": "இவை உங்கள் மதிப்பீடு மற்றும் பயிற்சிக்கான சேமிக்கப்பட்ட செயல்பாடுகள்.",
+  "numSavedActivities": "சேமிக்கப்பட்ட செயல்பாடுகளின் எண்ணிக்கை",
+  "saveActivityTitle": "செயல்பாட்டை சேமிக்கவும்",
+  "saveActivityDesc": "சிறந்த வேலை! இந்த செயல்பாட்டை பின்னர் மதிப்பீடு மற்றும் பயிற்சிக்காக சேமிக்கவும்",
+  "levelInfoTooltip": "இங்கு நீங்கள் பெற்ற அனைத்து புள்ளிகளையும் எப்படி பெற்றீர்கள் என்பதையும் காணலாம்!",
+  "alreadyInCourseWithID": "இந்த திட்டத்துடன் நீங்கள் ஏற்கனவே ஒரு பாடத்தில் உள்ளீர்கள். அதே திட்டத்துடன் ஒரு பாடத்தை உருவாக்க விரும்புகிறீர்களா, அல்லது உள்ள பாடத்திற்கு செல்ல விரும்புகிறீர்களா?",
+  "goToExistingCourse": "உள்ள பாடத்திற்கு செல்லவும்",
+  "emojiView": "எமோஜி காட்சி",
+  "feedbackDialogDesc": "நான் தவறுகள் செய்கிறேன்! என்னால் மேம்பட உதவுவதற்கான எதுவும்?",
+  "contactHasBeenInvitedToTheCourse": "தொடர்பு கற்கைநெறிக்கு அழைக்கப்பட்டுள்ளது",
+  "activityStatsButtonTooltip": "செயல்பாட்டு தகவல்",
+  "allow": "அனுமதிக்கவும்",
+  "deny": "மறுக்கவும்",
+  "enabledRenewal": "சந்தா புதுப்பிப்பை செயல்படுத்தவும்",
+  "subscriptionEndsOn": "சந்தா முடிவடைகிறது",
+  "subscriptionRenewsOn": "சந்தா புதுப்பிக்கப்படுகிறது",
+  "waitForSubscriptionChanges": "உங்கள் சந்தாவிற்கு மாற்றங்கள் செயலியில் பிரதிபலிக்க சில நேரம் ஆகலாம்.",
+  "subscribeReadingAssistance": "செய்தி கருவிகளை திறக்க சந்தா செய்யவும்",
+  "aceDisplayName": "அசினீஸ்",
+  "achDisplayName": "அகோலி",
+  "afDisplayName": "ஆபிரிக்கான்ஸ்",
+  "akDisplayName": "அகான்",
+  "alzDisplayName": "அலூர்",
+  "amDisplayName": "அம்ஹாரிக்",
+  "arDisplayName": "அரபு",
+  "asDisplayName": "அசாமி",
+  "awaDisplayName": "அவாதி",
+  "ayDisplayName": "அய்மரா",
+  "azDisplayName": "அசர்பைஜானி",
+  "baDisplayName": "பாஷ்கிர்",
+  "banDisplayName": "பலினேசிய",
+  "bbcDisplayName": "படக் தொபா",
+  "beDisplayName": "பெலாருசியன்",
+  "bemDisplayName": "பெம்பா",
+  "bewDisplayName": "பெட்டாவி",
+  "bgDisplayName": "புல்கேரியன்",
+  "bhoDisplayName": "போஜ்பூரி",
+  "bikDisplayName": "பிகோல்",
+  "bmDisplayName": "பம்பரா",
+  "bnDisplayName": "பங்காளா",
+  "bnBDDisplayName": "பெங்காலி (பங்காளா)",
+  "bnINDisplayName": "பெங்காலி (இந்தியா)",
+  "brDisplayName": "பிரெட்டான்",
+  "bsDisplayName": "போஸ்னியன்",
+  "btsDisplayName": "படக் சிமலுங்குன்",
+  "btxDisplayName": "படக் காரோ",
+  "buaDisplayName": "பூரியட்",
+  "caDisplayName": "கடலான்",
+  "cebDisplayName": "செபுவானோ",
+  "cggDisplayName": "சிகா",
+  "chmDisplayName": "மரி",
+  "ckbDisplayName": "மைய குர்திஷ்",
+  "cnhDisplayName": "ஹகா சின்",
+  "coDisplayName": "கோர்சிகன்",
+  "crhDisplayName": "கிரீமியன் துருக்கி",
+  "crsDisplayName": "செசெல்வா கிரியோல் பிரெஞ்சு",
+  "csDisplayName": "செக்",
+  "cvDisplayName": "சுவாஷ்",
+  "cyDisplayName": "வெல்ஷ்",
+  "daDisplayName": "டேனிஷ்",
+  "deDisplayName": "ஜெர்மன்",
+  "dinDisplayName": "டிங்கா",
+  "doiDisplayName": "டோகிரி",
+  "dovDisplayName": "டொம்பே",
+  "dzDisplayName": "த்சொங்க்கா",
+  "eeDisplayName": "எவ்",
+  "enDisplayName": "ஆங்கிலம்",
+  "enAUDisplayName": "ஆங்கிலம் (ஆஸ்திரேலியா)",
+  "enGBDisplayName": "ஆங்கிலம் (யூகே)",
+  "enINDisplayName": "ஆங்கிலம் (இந்தியா)",
+  "enUSDisplayName": "ஆங்கிலம் (அமெரிக்கா)",
+  "eoDisplayName": "எஸ்பராண்டோ",
+  "esDisplayName": "ஸ்பானிஷ்",
+  "esESDisplayName": "ஸ்பானிஷ் (ஸ்பெயின்)",
+  "esMXDisplayName": "ஸ்பானிஷ் (மெக்சிகோ)",
+  "euDisplayName": "பாஸ்க்",
+  "faDisplayName": "பர்சியன்",
+  "ffDisplayName": "ஃபுலா",
+  "fiDisplayName": "பின்னிஷ்",
+  "filDisplayName": "பிலிப்பினோ",
+  "fjDisplayName": "ஃபிஜியன்",
+  "foDisplayName": "ஃபரோய்ஸ்",
+  "frDisplayName": "பிரெஞ்சு",
+  "frCADisplayName": "பிரெஞ்சு (கனடா)",
+  "frFRDisplayName": "பிரெஞ்சு (பிரான்ஸ்)",
+  "fyDisplayName": "மேற்கு ஃபிரிசியன்",
+  "gaDisplayName": "ஐரிஷ்",
+  "gaaDisplayName": "கா",
+  "gdDisplayName": "ஸ்காடிஷ் கேலிக்",
+  "glDisplayName": "கலிசியன்",
+  "gnDisplayName": "குவாரனி",
+  "gomDisplayName": "கோயன் காங்கனி",
+  "guDisplayName": "குஜராத்தி",
+  "haDisplayName": "ஹவ்சா",
+  "hawDisplayName": "ஹவாயியன்",
+  "heDisplayName": "ஹீப்ரு",
+  "hiDisplayName": "இந்தி",
+  "hilDisplayName": "ஹிலிகாய்னான்",
+  "hmnDisplayName": "ஹ்மோங்",
+  "hneDisplayName": "சட்டீஸ்கர்",
+  "hrDisplayName": "குரோஷியன்",
+  "hrxDisplayName": "ஹன்ஸ்ரிக்",
+  "htDisplayName": "ஹைட்டியன் கிரியோல்",
+  "huDisplayName": "ஹங்கேரியன்",
+  "hyDisplayName": "ஆர்மேனியன்",
+  "idDisplayName": "இந்தோனேசியன்",
+  "igDisplayName": "இக்போ",
+  "iloDisplayName": "இலோக்கோ",
+  "isDisplayName": "ஐஸ்லாந்து",
+  "itDisplayName": "இத்தாலிய",
+  "jaDisplayName": "ஜப்பானிய",
+  "jvDisplayName": "ஜாவானீஸ்",
+  "kaDisplayName": "ஜார்ஜியன்",
+  "kkDisplayName": "கசாக்",
+  "kmDisplayName": "கெமர்",
+  "knDisplayName": "கன்னட",
+  "koDisplayName": "கொரியன்",
+  "kokDisplayName": "கொங்கனி",
+  "kriDisplayName": "கிரியோ",
+  "ksDisplayName": "காஷ்மீரி",
+  "ktuDisplayName": "கிடுபா (டெமோகிராடிக் குடியரசு காங்கோ)",
+  "kuDisplayName": "குர்திஷ்",
+  "kyDisplayName": "கிர்கிஸ்",
+  "laDisplayName": "லத்தீன்",
+  "lbDisplayName": "லக்சம்பர்கிஷ்",
+  "lgDisplayName": "காண்டா",
+  "liDisplayName": "லிம்பர்கிஷ்",
+  "lijDisplayName": "லிகூரியன்",
+  "lmoDisplayName": "லொம்பார்ட்",
+  "lnDisplayName": "லிங்காலா",
+  "loDisplayName": "லாவோ",
+  "ltDisplayName": "லிதுவேனியன்",
+  "ltgDisplayName": "லாட்கேலியன்",
+  "luoDisplayName": "லூஒ (கென்யா மற்றும் தான்சானியா)",
+  "lusDisplayName": "மிசோ",
+  "lvDisplayName": "லாட்வியன்",
+  "maiDisplayName": "மைதிலி",
+  "makDisplayName": "மகாசர்",
+  "mgDisplayName": "மலாகசி",
+  "miDisplayName": "மாவோரி",
+  "minDisplayName": "மினங்க்கபவ்",
+  "mkDisplayName": "மகேதோனியன்",
+  "mlDisplayName": "மலையாளம்",
+  "mnDisplayName": "மங்கோலியன்",
+  "mniDisplayName": "மணிப்பூரி",
+  "mrDisplayName": "மராத்தி",
+  "msDisplayName": "மலாய்",
+  "msArabDisplayName": "மலாய் (அரபு)",
+  "msMYDisplayName": "மலாய் (மலேசியா)",
+  "mtDisplayName": "மால்டீசு",
+  "mwrDisplayName": "மர்வாரி",
+  "myDisplayName": "புர்மீசு",
+  "nanDisplayName": "மின் நான்",
+  "nbDisplayName": "நோர்வேயிய (பொக்மால்)",
+  "neDisplayName": "நேபாளி",
+  "newDisplayName": "நியூவாரி",
+  "nlDisplayName": "டச்சு",
+  "nlBEDisplayName": "ஃபிளெமிஷ்",
+  "noDisplayName": "நோர்வேயிய",
+  "nrDisplayName": "தெற்கு ந்டெபெலே",
+  "nsoDisplayName": "வடக்கு சொதோ",
+  "nusDisplayName": "நூயர்",
+  "nyDisplayName": "ந்யாஞ்சா",
+  "ocDisplayName": "ஒசிடேன்டு",
+  "omDisplayName": "ஓரோமோ",
+  "orDisplayName": "ஒடியா",
+  "paDisplayName": "பஞ்சாபி",
+  "paArabDisplayName": "பஞ்சாபி (ஷாஹ்முகி)",
+  "paINDisplayName": "பஞ்சாபி (குர்முகி)",
+  "pagDisplayName": "பங்காசினான்",
+  "pamDisplayName": "பம்பாங்கா",
+  "papDisplayName": "பாபியமெண்டோ",
+  "plDisplayName": "போலிஷ்",
+  "psDisplayName": "பஷ்தோ",
+  "ptDisplayName": "போர்ச்சுகீசு",
+  "ptBRDisplayName": "போர்ச்சுகீசு (பிரேசில்)",
+  "ptPTDisplayName": "போர்ச்சுகீசு (போர்த்துகல்)",
+  "quDisplayName": "கெச்சுவா",
+  "rajDisplayName": "ராஜஸ்தானி",
+  "rnDisplayName": "ருந்தி",
+  "roDisplayName": "ரோமானியன்",
+  "roMDDisplayName": "மோல்டோவியன்",
+  "romDisplayName": "ரோமனி",
+  "ruDisplayName": "ரஷ்யன்",
+  "rwDisplayName": "கின்யார்வாண்டா",
+  "saDisplayName": "சம்ஸ்கிருதம்",
+  "satDisplayName": "சந்தாலி",
+  "scnDisplayName": "சிசிலியன்",
+  "sdDisplayName": "சிந்தி",
+  "sgDisplayName": "சாங்கோ",
+  "shnDisplayName": "ஷான்",
+  "siDisplayName": "சிங்களம்",
+  "skDisplayName": "ஸ்லோவாக்",
+  "slDisplayName": "ஸ்லோவேனியன்",
+  "smDisplayName": "சாமோவான்",
+  "snDisplayName": "ஷோனா",
+  "soDisplayName": "சோமாலி",
+  "sqDisplayName": "அல்பேனியன்",
+  "srDisplayName": "செர்பியன்",
+  "srMEDisplayName": "மொன்டெனெக்ரின்",
+  "ssDisplayName": "ஸ்வாட்டி",
+  "stDisplayName": "தெற்கு சொத்தோ",
+  "suDisplayName": "சுந்தானீஸ்",
+  "svDisplayName": "ஸ்வீடிஷ்",
+  "swDisplayName": "ஸ்வாஹிலி",
+  "szlDisplayName": "சிலேசியன்",
+  "taDisplayName": "தமிழ்",
+  "teDisplayName": "தெலுங்கு",
+  "tetDisplayName": "டெட்டம்",
+  "tgDisplayName": "தாஜிக்",
+  "thDisplayName": "தாய்",
+  "tiDisplayName": "டிகிரின்யா",
+  "tkDisplayName": "துர்க்மென்",
+  "tlDisplayName": "தகாலோக்",
+  "tnDisplayName": "ட்வானா",
+  "trDisplayName": "துருக்கி",
+  "tsDisplayName": "ட்சோங்கா",
+  "ttDisplayName": "ததார்",
+  "ugDisplayName": "உய்கூர்",
+  "ukDisplayName": "உக்ரைனியன்",
+  "urDisplayName": "உருது",
+  "urINDisplayName": "உருது (இந்தியா)",
+  "urPKDisplayName": "உருது (பாகிஸ்தான்)",
+  "uzDisplayName": "உஸ்பெக்",
+  "viDisplayName": "வியட்நாமியன்",
+  "wuuDisplayName": "வூ",
+  "xhDisplayName": "க்சோசா",
+  "yiDisplayName": "யிடிஷ்",
+  "yoDisplayName": "யொருபா",
+  "yuaDisplayName": "யுகடெக்கோ",
+  "yueDisplayName": "காந்தோனீஸ்",
+  "yueCNDisplayName": "காந்தோனீஸ் (சீனா)",
+  "yueHKDisplayName": "காந்தோனீஸ் (ஹாங்காங்)",
+  "zhDisplayName": "சீனம்",
+  "zhCNDisplayName": "சீனம் (எளிமைப்படுத்தப்பட்டது)",
+  "zhTWDisplayName": "சீனம் (பாரம்பரிய)",
+  "zuDisplayName": "ஜுலு",
+  "@emptyChatSearch": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsTooltipBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@numSavedActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@levelInfoTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alreadyInCourseWithID": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@goToExistingCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@emojiView": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@contactHasBeenInvitedToTheCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityStatsButtonTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allow": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deny": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enabledRenewal": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionEndsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionRenewsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@waitForSubscriptionChanges": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscribeReadingAssistance": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@aceDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@achDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@afDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@akDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@amDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@arDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@asDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@awaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ayDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@azDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bbcDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@beDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bemDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bewDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bhoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bikDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnBDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@brDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@buaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@caDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cebDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cggDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ckbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cnhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@coDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@csDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@daDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dinDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@doiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dovDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eeDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enAUDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enGBDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enUSDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esESDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esMXDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@euDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@faDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ffDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@filDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fjDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@foDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frCADisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frFRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@glDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gomDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@guDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@haDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hawDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@heDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hilDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hmnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hneDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@htDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@huDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@idDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@igDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@iloDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@isDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@itDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@knDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@koDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kokDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kriDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ksDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ktuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@laDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@liDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lijDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lmoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@luoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@maiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@makDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@miDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@minDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mniDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msMYDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mtDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mwrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@myDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nanDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@neDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlBEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nsoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ocDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@omDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@orDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pagDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pamDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@papDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@plDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@psDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptBRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptPTDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rajDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roMDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@romDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ruDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rwDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@satDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@scnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@siDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@slDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@smDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@snDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@soDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sqDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srMEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@svDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@swDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@szlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@taDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tetDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@thDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@trDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ttDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ugDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ukDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urPKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@uzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@viDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@wuuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@xhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yuaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueHKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhTWDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zuDisplayName": {
     "type": "String",
     "placeholders": {}
   }

@@ -63,7 +63,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
       final bool aIsPriority = languagePriority.contains(a.langCode);
       final bool bIsPriority = languagePriority.contains(b.langCode);
       if (!aIsPriority && !bIsPriority) {
-        return a.getDisplayName(context)!.compareTo(b.getDisplayName(context)!);
+        return a.getDisplayName(context).compareTo(b.getDisplayName(context));
       }
 
       if (aIsPriority && bIsPriority) {
@@ -159,7 +159,8 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
               ),
             ),
             searchMatchFn: (item, searchValue) {
-              final displayName = item.value?.displayName.toLowerCase();
+              final displayName =
+                  item.value?.getDisplayName(context).toLowerCase();
               if (displayName == null) return false;
 
               final search = searchValue.toLowerCase();
@@ -222,7 +223,7 @@ class LanguageDropDownEntry extends StatelessWidget {
             children: [
               Flexible(
                 child: Text(
-                  languageModel.getDisplayName(context) ?? "",
+                  languageModel.getDisplayName(context),
                   style: const TextStyle().copyWith(
                     color: enabled
                         ? Theme.of(context).textTheme.bodyLarge!.color

@@ -144,7 +144,8 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                   alignment: WrapAlignment.center,
                                   children: languages
                                       .where(
-                                        (l) => l.displayName
+                                        (l) => l
+                                            .getDisplayName(context)
                                             .toLowerCase()
                                             .contains(
                                               _searchController.text
@@ -163,8 +164,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                             vertical: 4.0,
                                           ),
                                           label: Text(
-                                            l.getDisplayName(context) ??
-                                                l.displayName,
+                                            l.getDisplayName(context),
                                             style: theme.textTheme.bodyMedium,
                                           ),
                                           onSelected: (selected) {

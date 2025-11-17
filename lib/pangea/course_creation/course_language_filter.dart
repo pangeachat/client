@@ -22,12 +22,12 @@ class CourseLanguageFilter extends StatelessWidget {
       onChanged: onChanged,
       items:
           MatrixState.pangeaController.pLanguageStore.unlocalizedTargetOptions,
-      displayname: (v) => v.getDisplayName(context) ?? v.displayName,
+      displayname: (v) => v.getDisplayName(context),
       enableSearch: true,
       defaultName: L10n.of(context).allLanguages,
       searchMatchFn: (item, searchValue) {
         final search = searchValue.toLowerCase();
-        final displayName = item.value?.displayName.toLowerCase();
+        final displayName = item.value?.getDisplayName(context).toLowerCase();
         final langCode = item.value?.langCode.toLowerCase();
         return displayName?.startsWith(search) == true ||
             langCode?.startsWith(search) == true;
