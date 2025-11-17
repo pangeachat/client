@@ -10,20 +10,23 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_content.dart';
 import 'package:fluffychat/pages/chat/events/reply_content.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/select_mode_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/stt_transcript_tokens.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-// @ggurdin be great to explain the need/function of a widget like this
 class OverlayMessage extends StatelessWidget {
   final Event event;
   final MessageOverlayController overlayController;
@@ -137,144 +140,7 @@ class OverlayMessage extends StatelessWidget {
     final isSubscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
 
-    final showTranslation = overlayController.showTranslation &&
-        overlayController.translation != null &&
-        isSubscribed != false;
-
-    final showTranscription =
-        overlayController.pangeaMessageEvent.isAudioMessage == true &&
-            isSubscribed != false;
-
-    final showSpeechTranslation = overlayController.showSpeechTranslation &&
-        overlayController.speechTranslation != null &&
-        isSubscribed != false;
-
-    final transcription = showTranscription
-        ? Container(
-            constraints: BoxConstraints(
-              maxWidth: min(
-                FluffyThemes.columnWidth * 1.5,
-                MediaQuery.of(context).size.width -
-                    (ownMessage ? 0 : Avatar.defaultSize) -
-                    32.0 -
-                    (FluffyThemes.isColumnMode(context)
-                        ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-                        : 0.0),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: overlayController.transcriptionError != null
-                  ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.error_outline,
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          L10n.of(context).transcriptionFailed,
-                          textScaler: TextScaler.noScaling,
-                          style: AppConfig.messageTextStyle(
-                            event,
-                            textColor,
-                          ).copyWith(fontStyle: FontStyle.italic),
-                        ),
-                      ],
-                    )
-                  : overlayController.transcription != null
-                      ? SingleChildScrollView(
-                          child: Column(
-                            spacing: 8.0,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SttTranscriptTokens(
-                                model: overlayController.transcription!,
-                                style: AppConfig.messageTextStyle(
-                                  event,
-                                  textColor,
-                                ).copyWith(
-                                  fontStyle: FontStyle.italic,
-                                ),
-                                onClick: overlayController
-                                    .onClickOverlayMessageToken,
-                                isSelected: overlayController.isTokenSelected,
-                              ),
-                              if (MatrixState.pangeaController
-                                  .languageController.showTranscription)
-                                PhoneticTranscriptionWidget(
-                                  text: overlayController
-                                      .transcription!.transcript.text,
-                                  textLanguage: PLanguageStore.byLangCode(
-                                        overlayController
-                                            .transcription!.langCode,
-                                      ) ??
-                                      LanguageModel.unknown,
-                                  style: AppConfig.messageTextStyle(
-                                    event,
-                                    textColor,
-                                  ),
-                                  iconColor: textColor,
-                                  enabled:
-                                      event.senderId != BotName.byEnvironment,
-                                  onTranscriptionFetched: () =>
-                                      overlayController.contentChangedStream
-                                          .add(true),
-                                ),
-                            ],
-                          ),
-                        )
-                      : Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            CircularProgressIndicator.adaptive(
-                              backgroundColor: textColor,
-                            ),
-                          ],
-                        ),
-            ),
-          )
-        : const SizedBox();
-
-    final translation = showTranslation || showSpeechTranslation
-        ? Container(
-            constraints: BoxConstraints(
-              maxWidth: min(
-                FluffyThemes.columnWidth * 1.5,
-                MediaQuery.of(context).size.width -
-                    (ownMessage ? 0 : Avatar.defaultSize) -
-                    32.0 -
-                    (FluffyThemes.isColumnMode(context)
-                        ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-                        : 0.0),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                12.0,
-                20.0,
-                12.0,
-                12.0,
-              ),
-              child: SingleChildScrollView(
-                child: Text(
-                  showTranslation
-                      ? overlayController.translation!
-                      : overlayController.speechTranslation!,
-                  textScaler: TextScaler.noScaling,
-                  style: AppConfig.messageTextStyle(
-                    event,
-                    textColor,
-                  ).copyWith(
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ),
-            ),
-          )
-        : const SizedBox();
+    final selectModeController = overlayController.selectModeController;
 
     final content = Container(
       decoration: BoxDecoration(
@@ -392,6 +258,21 @@ class OverlayMessage extends StatelessWidget {
       ),
     );
 
+    final maxWidth = min(
+      FluffyThemes.columnWidth * 1.5,
+      MediaQuery.of(context).size.width -
+          (ownMessage ? 0 : Avatar.defaultSize) -
+          32.0 -
+          (FluffyThemes.isColumnMode(context)
+              ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
+              : 0.0),
+    );
+
+    final style = AppConfig.messageTextStyle(
+      event,
+      textColor,
+    );
+
     return Material(
       type: MaterialType.transparency,
       child: Container(
@@ -408,7 +289,16 @@ class OverlayMessage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              transcription,
+              _MessageBubbleTranscription(
+                controller: selectModeController,
+                enabled: event.messageType == MessageTypes.Audio &&
+                    !event.redacted &&
+                    isSubscribed != false,
+                maxWidth: maxWidth,
+                style: style,
+                onTokenSelected: overlayController.onClickOverlayMessageToken,
+                isTokenSelected: overlayController.isTokenSelected,
+              ),
               sizeAnimation != null
                   ? AnimatedBuilder(
                       animation: sizeAnimation!,
@@ -421,9 +311,206 @@ class OverlayMessage extends StatelessWidget {
                       },
                     )
                   : content,
-              translation,
+              _MessageSelectModeContent(
+                controller: selectModeController,
+                style: style,
+                maxWidth: maxWidth,
+              ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _MessageSelectModeContent extends StatelessWidget {
+  final SelectModeController controller;
+  final TextStyle style;
+  final double maxWidth;
+
+  const _MessageSelectModeContent({
+    required this.controller,
+    required this.style,
+    required this.maxWidth,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListenableBuilder(
+      listenable: Listenable.merge(
+        [
+          controller.selectedMode,
+          controller.currentModeStateNotifier,
+        ],
+      ),
+      builder: (context, _) {
+        final mode = controller.selectedMode.value;
+        if (mode == null) {
+          return const SizedBox();
+        }
+
+        final sub = MatrixState.pangeaController.subscriptionController;
+        if (sub.isSubscribed == false) {
+          return Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: ErrorIndicator(
+              message: L10n.of(context).subscribeReadingAssistance,
+              onTap: () => sub.showPaywall(context),
+              style: style,
+            ),
+          );
+        }
+
+        if (![
+          SelectMode.translate,
+          SelectMode.speechTranslation,
+        ].contains(mode)) {
+          return const SizedBox();
+        }
+
+        final AsyncState<String> state = mode == SelectMode.translate
+            ? controller.translationState.value
+            : controller.speechTranslationState.value;
+
+        return Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: switch (state) {
+            AsyncLoading() => Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CircularProgressIndicator.adaptive(
+                    backgroundColor: style.color,
+                  ),
+                ],
+              ),
+            AsyncError(error: final _) => Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.error_outline,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                  const SizedBox(width: 8),
+                  Text(
+                    L10n.of(context).translationError,
+                    textScaler: TextScaler.noScaling,
+                    style: style.copyWith(fontStyle: FontStyle.italic),
+                  ),
+                ],
+              ),
+            AsyncLoaded(value: final value) => Container(
+                constraints: BoxConstraints(
+                  maxWidth: maxWidth,
+                ),
+                child: SingleChildScrollView(
+                  child: Text(
+                    value,
+                    textScaler: TextScaler.noScaling,
+                    style: style.copyWith(
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+              ),
+            _ => const SizedBox(),
+          },
+        );
+      },
+    );
+  }
+}
+
+class _MessageBubbleTranscription extends StatelessWidget {
+  final SelectModeController controller;
+  final bool enabled;
+  final double maxWidth;
+  final TextStyle style;
+
+  final Function(PangeaToken) onTokenSelected;
+  final bool Function(PangeaToken) isTokenSelected;
+
+  const _MessageBubbleTranscription({
+    required this.controller,
+    required this.enabled,
+    required this.maxWidth,
+    required this.style,
+    required this.onTokenSelected,
+    required this.isTokenSelected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (!enabled) {
+      return const SizedBox();
+    }
+
+    return Container(
+      constraints: BoxConstraints(maxWidth: maxWidth),
+      child: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: ValueListenableBuilder(
+          valueListenable: controller.transcriptionState,
+          builder: (context, transcriptionState, _) {
+            switch (transcriptionState) {
+              case AsyncLoading():
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CircularProgressIndicator.adaptive(
+                      backgroundColor: style.color,
+                    ),
+                  ],
+                );
+              case AsyncError(error: final _):
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.error_outline,
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      L10n.of(context).transcriptionFailed,
+                      textScaler: TextScaler.noScaling,
+                      style: style.copyWith(fontStyle: FontStyle.italic),
+                    ),
+                  ],
+                );
+              case AsyncLoaded(value: final transcription):
+                return SingleChildScrollView(
+                  child: Column(
+                    spacing: 8.0,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SttTranscriptTokens(
+                        model: transcription,
+                        style: style.copyWith(fontStyle: FontStyle.italic),
+                        onClick: onTokenSelected,
+                        isSelected: isTokenSelected,
+                      ),
+                      if (MatrixState.pangeaController.languageController
+                          .showTranscription)
+                        PhoneticTranscriptionWidget(
+                          text: transcription.transcript.text,
+                          textLanguage: PLanguageStore.byLangCode(
+                                transcription.langCode,
+                              ) ??
+                              LanguageModel.unknown,
+                          style: style,
+                          iconColor: style.color,
+                          onTranscriptionFetched: () =>
+                              controller.contentChangedStream.add(true),
+                        ),
+                    ],
+                  ),
+                );
+              default:
+                return const SizedBox();
+            }
+          },
         ),
       ),
     );

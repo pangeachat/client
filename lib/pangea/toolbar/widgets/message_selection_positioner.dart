@@ -100,7 +100,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     ).listen((_) => setState(() {}));
 
     _contentChangedSubscription = widget
-        .overlayController.contentChangedStream.stream
+        .overlayController.selectModeController.contentChangedStream.stream
         .listen(_onContentSizeChanged);
   }
 
@@ -370,7 +370,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
   }
 
-  void setReadingAssistanceMode(ReadingAssistanceMode mode) {
+  void launchPractice(ReadingAssistanceMode mode) {
+    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
+        false) {
+      return;
+    }
+
     if (mounted) {
       setState(() => readingAssistanceMode = mode);
     }
