@@ -81,6 +81,9 @@ olm
 needed-translations.txt
 .venv
 
+# Generated report from find_unused_intl_keys.py
+scripts/unused_intl_keys_report.txt
+
 docs/node_modules/.package-lock.json
 docs/node_modules/.bin/detect-libc
 docs/node_modules/.bin/jiti
