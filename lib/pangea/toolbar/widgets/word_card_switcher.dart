@@ -11,12 +11,15 @@ class WordCardSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSize(
-      alignment:
-          controller.ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
-      duration: FluffyThemes.animationDuration,
-      child:
-          controller.widget.overlayController.selectedMode == SelectMode.emoji
+    return ValueListenableBuilder(
+      valueListenable: controller.widget.overlayController.selectedMode,
+      builder: (context, mode, __) {
+        return AnimatedSize(
+          alignment: controller.ownMessage
+              ? Alignment.bottomRight
+              : Alignment.bottomLeft,
+          duration: FluffyThemes.animationDuration,
+          child: mode == SelectMode.emoji
               ? const SizedBox()
               : controller.widget.overlayController.selectedToken != null
                   ? ReadingAssistanceContent(
@@ -25,6 +28,8 @@ class WordCardSwitcher extends StatelessWidget {
                   : MessageReactionPicker(
                       chatController: controller.widget.chatController,
                     ),
+        );
+      },
     );
   }
 }

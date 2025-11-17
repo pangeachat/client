@@ -187,8 +187,6 @@ class PracticeSelection {
       activityTokens.add(t);
     }
 
-    debugPrint("TOKENS: ${activityTokens.map((e) => e.text.content).toList()}");
-
     return [
       PracticeTarget(
         activityType: activityType,

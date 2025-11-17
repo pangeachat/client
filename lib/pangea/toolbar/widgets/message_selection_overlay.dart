@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -32,10 +32,10 @@ import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/morph_selection.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/select_mode_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -92,20 +92,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   ReadingAssistanceMode? readingAssistanceMode; // default mode
 
-  SpeechToTextModel? transcription;
-  String? transcriptionError;
-
-  bool showTranslation = false;
-  String? translation;
-
-  bool showSpeechTranslation = false;
-  String? speechTranslation;
-
-  final StreamController contentChangedStream = StreamController.broadcast();
-
   double maxWidth = AppConfig.toolbarMinWidth;
 
-  SelectMode? selectedMode;
+  late SelectModeController selectModeController;
+  ValueNotifier<SelectMode?> get selectedMode =>
+      selectModeController.selectedMode;
 
   /////////////////////////////////////
   /// Lifecycle
@@ -114,6 +105,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   @override
   void initState() {
     super.initState();
+    selectModeController = SelectModeController(pangeaMessageEvent);
     initializeTokensAndMode();
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.setSelectedEvent(event),
@@ -125,7 +117,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.clearSelectedEvents(),
     );
-    contentChangedStream.close();
+    selectModeController.dispose();
     super.dispose();
   }
 
@@ -257,13 +249,18 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Update [selectedSpan]
   void updateSelectedSpan(PangeaTokenText? selectedSpan) {
+    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
+        false) {
+      return;
+    }
+
     if (selectedSpan == _selectedSpan) return;
     if (selectedMorph != null) {
       selectedMorph = null;
     }
 
     _selectedSpan = selectedSpan;
-    if (selectedMode == SelectMode.emoji && selectedToken != null) {
+    if (selectedMode.value == SelectMode.emoji && selectedToken != null) {
       showTokenEmojiPopup(selectedToken!);
     }
     if (mounted) {
@@ -389,12 +386,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     return pangeaMessageEvent.messageDisplayRepresentation?.tokens
         ?.firstWhereOrNull(isTokenSelected);
   }
-
-  bool get showingExtraContent =>
-      (showTranslation && translation != null) ||
-      (showSpeechTranslation && speechTranslation != null) ||
-      transcription != null ||
-      transcriptionError != null;
 
   bool get showLanguageAssistance {
     if (!event.status.isSent || event.type != EventTypes.Message) {
@@ -541,75 +532,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     return _highlightedTokens!.any(
       (t) => t.offset == token.text.offset && t.length == token.text.length,
     );
-  }
-
-  void setSelectMode(SelectMode? mode) {
-    if (!mounted) return;
-    if (selectedMode == mode) return;
-    setState(() => selectedMode = mode);
-  }
-
-  void setTranslation(String value) {
-    if (mounted) {
-      setState(() {
-        translation = value;
-        contentChangedStream.add(true);
-      });
-    }
-  }
-
-  void setShowTranslation(bool show) {
-    if (!mounted) return;
-    if (translation == null) {
-      setState(() => showTranslation = false);
-    }
-
-    if (showTranslation == show) return;
-    setState(() {
-      showTranslation = show;
-      contentChangedStream.add(true);
-    });
-  }
-
-  void setSpeechTranslation(String value) {
-    if (mounted) {
-      setState(() {
-        speechTranslation = value;
-        contentChangedStream.add(true);
-      });
-    }
-  }
-
-  void setShowSpeechTranslation(bool show) {
-    if (!mounted) return;
-    if (speechTranslation == null) {
-      setState(() => showSpeechTranslation = false);
-    }
-
-    if (showSpeechTranslation == show) return;
-    setState(() {
-      showSpeechTranslation = show;
-      contentChangedStream.add(true);
-    });
-  }
-
-  void setTranscription(SpeechToTextModel value) {
-    if (mounted) {
-      setState(() {
-        transcriptionError = null;
-        transcription = value;
-        contentChangedStream.add(true);
-      });
-    }
-  }
-
-  void setTranscriptionError(String value) {
-    if (mounted) {
-      setState(() {
-        transcriptionError = value;
-        contentChangedStream.add(true);
-      });
-    }
   }
 
   void showTokenEmojiPopup(

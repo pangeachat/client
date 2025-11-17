@@ -48,36 +48,40 @@ class OverMessageOverlay extends StatelessWidget {
                         'overlay_message_${controller.widget.event.eventId}',
                       )
                       .link,
-                  child: OverlayCenterContent(
-                    event: controller.widget.event,
-                    messageHeight:
-                        controller.widget.overlayController.selectedMode !=
-                                SelectMode.emoji
+                  child: ValueListenableBuilder(
+                    valueListenable:
+                        controller.widget.overlayController.selectedMode,
+                    builder: (context, mode, __) {
+                      return OverlayCenterContent(
+                        event: controller.widget.event,
+                        messageHeight: mode != SelectMode.emoji
                             ? controller.originalMessageSize.height
                             : null,
-                    messageWidth:
-                        controller.widget.overlayController.showingExtraContent
+                        messageWidth: controller.widget.overlayController
+                                .selectModeController.showingExtraContent
                             ? max(controller.originalMessageSize.width, 150)
                             : controller.originalMessageSize.width,
-                    overlayController: controller.widget.overlayController,
-                    chatController: controller.widget.chatController,
-                    nextEvent: controller.widget.nextEvent,
-                    prevEvent: controller.widget.prevEvent,
-                    hasReactions: controller.hasReactions,
-                    isTransitionAnimation: true,
-                    readingAssistanceMode: controller.readingAssistanceMode,
-                    overlayKey: MatrixState.pAnyState
-                        .layerLinkAndKey(
-                          'overlay_message_${controller.widget.event.eventId}',
-                        )
-                        .key,
+                        overlayController: controller.widget.overlayController,
+                        chatController: controller.widget.chatController,
+                        nextEvent: controller.widget.nextEvent,
+                        prevEvent: controller.widget.prevEvent,
+                        hasReactions: controller.hasReactions,
+                        isTransitionAnimation: true,
+                        readingAssistanceMode: controller.readingAssistanceMode,
+                        overlayKey: MatrixState.pAnyState
+                            .layerLinkAndKey(
+                              'overlay_message_${controller.widget.event.eventId}',
+                            )
+                            .key,
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(height: 4.0),
                 SelectModeButtons(
                   controller: controller.widget.chatController,
                   overlayController: controller.widget.overlayController,
-                  lauchPractice: () => controller.setReadingAssistanceMode(
+                  launchPractice: () => controller.launchPractice(
                     ReadingAssistanceMode.practiceMode,
                   ),
                 ),
