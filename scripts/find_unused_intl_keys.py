@@ -4,11 +4,15 @@ Script to find unused translation keys in intl_en.arb after line 3243.
 
 This script:
 1. Reads intl_en.arb and extracts all translation keys after line 3243
-2. Searches the repository for references to each key
-3. Returns a list of keys that aren't referenced anywhere
+2. Filters out metadata keys (those starting with @)
+3. Searches the repository for references to each key
+4. Returns a JSON file with unused keys
 
 Usage:
     python3 scripts/find_unused_intl_keys.py
+
+Output:
+    scripts/unused_intl_keys.json - JSON file containing the list of unused keys
 """
 
 import json
@@ -16,7 +20,7 @@ import os
 import re
 import subprocess
 from pathlib import Path
-from typing import Set, List, Dict
+from typing import Set, List
 
 
 def extract_keys_after_line(arb_file_path: str, start_line: int = 3243) -> List[str]:
@@ -42,10 +46,12 @@ def extract_keys_after_line(arb_file_path: str, start_line: int = 3243) -> List[
     for line_num, line in enumerate(lines[start_line - 1:], start=start_line):
         # Look for keys in JSON format: "keyName": "value"
         # Skip metadata keys (those starting with @)
-        match = re.match(r'\s*"([^@][^"]+)":\s*["{]', line)
+        match = re.match(r'\s*"([^"]+)":\s*["{]', line)
         if match:
             key = match.group(1)
-            keys.append(key)
+            # Explicitly skip keys that start with @
+            if not key.startswith('@'):
+                keys.append(key)
     
     return keys
 
@@ -97,7 +103,7 @@ def search_key_in_repository(key: str, repo_path: str, exclude_dirs: Set[str]) -
         return False
 
 
-def find_unused_keys(arb_file_path: str, repo_path: str, start_line: int = 3243) -> Dict[str, List[str]]:
+def find_unused_keys(arb_file_path: str, repo_path: str, start_line: int = 3243) -> List[str]:
     """
     Find unused translation keys in the repository.
     
@@ -107,7 +113,7 @@ def find_unused_keys(arb_file_path: str, repo_path: str, start_line: int = 3243)
         start_line: Line number to start checking from
     
     Returns:
-        Dictionary with 'unused' and 'used' lists of keys
+        List of unused keys
     """
     # Directories to exclude from search
     exclude_dirs = {'.git', 'build', 'node_modules', '.dart_tool', 'l10n'}
@@ -117,7 +123,7 @@ def find_unused_keys(arb_file_path: str, repo_path: str, start_line: int = 3243)
     print(f"Found {len(keys)} translation keys to check.\n")
     
     unused_keys = []
-    used_keys = []
+    used_count = 0
     
     print("Searching repository for key references...")
     for i, key in enumerate(keys, 1):
@@ -126,16 +132,16 @@ def find_unused_keys(arb_file_path: str, repo_path: str, start_line: int = 3243)
             print(f"  Checked {i}/{len(keys)} keys...")
         
         if search_key_in_repository(key, repo_path, exclude_dirs):
-            used_keys.append(key)
+            used_count += 1
         else:
             unused_keys.append(key)
     
     print(f"\nSearch complete!")
+    print(f"Total keys checked: {len(keys)}")
+    print(f"Used keys: {used_count}")
+    print(f"Unused keys: {len(unused_keys)}")
     
-    return {
-        'unused': unused_keys,
-        'used': used_keys
-    }
+    return unused_keys
 
 
 def main():
@@ -149,49 +155,32 @@ def main():
         return 1
     
     # Find unused keys starting from line 3243
-    results = find_unused_keys(str(arb_file_path), str(repo_path), start_line=3243)
+    unused_keys = find_unused_keys(str(arb_file_path), str(repo_path), start_line=3243)
     
     # Print results
     print("\n" + "="*80)
     print("RESULTS")
     print("="*80)
     
-    print(f"\nTotal keys checked: {len(results['unused']) + len(results['used'])}")
-    print(f"Used keys: {len(results['used'])}")
-    print(f"Unused keys: {len(results['unused'])}\n")
-    
-    if results['unused']:
-        print("UNUSED KEYS (not referenced in any .dart files):")
+    if unused_keys:
+        print(f"\nFound {len(unused_keys)} unused keys (not referenced in any .dart files):")
         print("-" * 80)
-        for key in sorted(results['unused']):
+        for key in sorted(unused_keys):
             print(f"  - {key}")
     else:
-        print("No unused keys found! All keys are referenced in the codebase.")
+        print("\nNo unused keys found! All keys are referenced in the codebase.")
     
-    # Save results to a file
-    output_file = repo_path / 'scripts' / 'unused_intl_keys_report.txt'
+    # Save results to JSON file
+    output_file = repo_path / 'scripts' / 'unused_intl_keys.json'
     with open(output_file, 'w', encoding='utf-8') as f:
-        f.write("Unused Translation Keys Report\n")
-        f.write("="*80 + "\n")
-        f.write(f"Generated from: {arb_file_path}\n")
-        f.write(f"Starting from line: 3243\n")
-        f.write(f"Total keys checked: {len(results['unused']) + len(results['used'])}\n")
-        f.write(f"Used keys: {len(results['used'])}\n")
-        f.write(f"Unused keys: {len(results['unused'])}\n\n")
-        
-        if results['unused']:
-            f.write("UNUSED KEYS:\n")
-            f.write("-" * 80 + "\n")
-            for key in sorted(results['unused']):
-                f.write(f"{key}\n")
-        
-        if results['used']:
-            f.write("\n\nUSED KEYS:\n")
-            f.write("-" * 80 + "\n")
-            for key in sorted(results['used']):
-                f.write(f"{key}\n")
+        json.dump({
+            'unused_keys': sorted(unused_keys),
+            'count': len(unused_keys),
+            'source_file': str(arb_file_path),
+            'start_line': 3243
+        }, f, indent=2, ensure_ascii=False)
     
-    print(f"\nDetailed report saved to: {output_file}")
+    print(f"\nJSON output saved to: {output_file}")
     
     return 0
 
