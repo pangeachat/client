@@ -1,8 +1,10 @@
 import 'dart:async';
+import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -31,8 +33,10 @@ class SelectModeController {
   final ValueNotifier<AsyncState<String>> speechTranslationState =
       ValueNotifier<AsyncState<String>>(const AsyncState.idle());
 
-  final ValueNotifier<AsyncState<PangeaAudioFile>> audioState =
-      ValueNotifier<AsyncState<PangeaAudioFile>>(const AsyncState.idle());
+  final ValueNotifier<AsyncState<(PangeaAudioFile, File?)>> audioState =
+      ValueNotifier<AsyncState<(PangeaAudioFile, File?)>>(
+    const AsyncState.idle(),
+  );
 
   final StreamController contentChangedStream = StreamController.broadcast();
 
@@ -51,8 +55,8 @@ class SelectModeController {
   String? get l2Code =>
       MatrixState.pangeaController.languageController.userL2?.langCodeShort;
 
-  PangeaAudioFile? get audioFile => audioState.value is AsyncLoaded
-      ? (audioState.value as AsyncLoaded<PangeaAudioFile>).value
+  (PangeaAudioFile, File?)? get audioFile => audioState.value is AsyncLoaded
+      ? (audioState.value as AsyncLoaded<(PangeaAudioFile, File?)>).value
       : null;
 
   ValueNotifier<AsyncState>? modeStateNotifier(SelectMode mode) {
@@ -111,7 +115,17 @@ class SelectModeController {
         throw Exception('Audio bytes are null');
       }
 
-      audioState.value = AsyncState.loaded(audioBytes);
+      File? audioFile;
+      if (!kIsWeb) {
+        final tempDir = await getTemporaryDirectory();
+
+        File? file;
+        file = File('${tempDir.path}/${audioBytes.name}');
+        await file.writeAsBytes(audioBytes.bytes);
+        audioFile = file;
+      }
+
+      audioState.value = AsyncState.loaded((audioBytes, audioFile));
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

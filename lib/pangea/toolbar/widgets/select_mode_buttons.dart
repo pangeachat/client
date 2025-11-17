@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -183,40 +185,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   SelectModeController get controller =>
       widget.overlayController.selectModeController;
 
-  Widget _icon(SelectMode mode) {
-    if (controller.isError && mode == controller.selectedMode.value) {
-      return Icon(
-        Icons.error_outline,
-        size: 20,
-        color: Theme.of(context).colorScheme.error,
-      );
-    }
-
-    if (controller.isLoading && mode == controller.selectedMode.value) {
-      return const Center(
-        child: SizedBox(
-          height: 20.0,
-          width: 20.0,
-          child: CircularProgressIndicator.adaptive(),
-        ),
-      );
-    }
-
-    if (mode == SelectMode.audio) {
-      return Icon(
-        matrix?.audioPlayer?.playerState.playing == true
-            ? Icons.pause_outlined
-            : Icons.volume_up,
-        size: 20,
-      );
-    }
-
-    return Icon(
-      mode.icon,
-      size: 20,
-    );
-  }
-
   Future<void> updateMode(SelectMode? mode) async {
     if (mode == null) {
       matrix?.audioPlayer?.stop();
@@ -295,17 +263,19 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       }
 
       if (controller.audioFile == null) return;
+      final (PangeaAudioFile pangeaAudioFile, File? audioFile) =
+          controller.audioFile!;
 
-      // if (_audioFile != null) {
-      //   await matrix?.audioPlayer?.setFilePath(_audioFile!.path);
-      // } else {
-      await matrix?.audioPlayer?.setAudioSource(
-        BytesAudioSource(
-          controller.audioFile!.bytes,
-          controller.audioFile!.mimeType,
-        ),
-      );
-      // }
+      if (audioFile != null) {
+        await matrix?.audioPlayer?.setFilePath(audioFile.path);
+      } else {
+        await matrix?.audioPlayer?.setAudioSource(
+          BytesAudioSource(
+            pangeaAudioFile.bytes,
+            pangeaAudioFile.mimeType,
+          ),
+        );
+      }
 
       TtsController.stop();
       await matrix?.audioPlayer?.play();
@@ -322,10 +292,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   void _onPlayAudio(Duration duration) {
-    if (controller.audioFile?.tokens != null) {
+    if (controller.audioFile?.$1.tokens != null) {
       widget.overlayController.highlightCurrentText(
         duration.inMilliseconds,
-        controller.audioFile!.tokens!,
+        controller.audioFile!.$1.tokens!,
       );
     }
   }
@@ -363,19 +333,18 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                   child: ListenableBuilder(
                     listenable: Listenable.merge(
                       [
-                        widget.overlayController.selectedMode,
+                        controller.selectedMode,
                         controller.modeStateNotifier(mode),
                       ],
                     ),
                     builder: (context, _) {
-                      final selectedMode =
-                          widget.overlayController.selectedMode.value;
+                      final selectedMode = controller.selectedMode.value;
                       return PressableButton(
                         borderRadius: BorderRadius.circular(20),
                         depressed: mode == selectedMode,
                         color: theme.colorScheme.primaryContainer,
                         onPressed: () => updateMode(mode),
-                        playSound: true,
+                        playSound: mode != SelectMode.audio,
                         colorFactor:
                             theme.brightness == Brightness.light ? 0.55 : 0.3,
                         child: AnimatedContainer(
@@ -386,7 +355,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                             color: theme.colorScheme.primaryContainer,
                             shape: BoxShape.circle,
                           ),
-                          child: _icon(mode),
+                          child: _SelectModeButtonIcon(
+                            mode: mode,
+                            loading:
+                                controller.isLoading && mode == selectedMode,
+                            playing: mode == SelectMode.audio &&
+                                matrix?.audioPlayer?.playerState.playing ==
+                                    true,
+                          ),
                         ),
                       );
                     },
@@ -397,9 +373,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
               return Container(
                 width: 45.0,
                 alignment: Alignment.center,
-                child: MoreButton(
+                child: _MoreButton(
                   controller: widget.controller,
-                  messageEvent: widget.overlayController.pangeaMessageEvent,
+                  messageEvent: messageEvent,
                 ),
               );
             }
@@ -410,12 +386,45 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 }
 
-class MoreButton extends StatelessWidget {
+class _SelectModeButtonIcon extends StatelessWidget {
+  final SelectMode mode;
+  final bool loading;
+  final bool playing;
+
+  const _SelectModeButtonIcon({
+    required this.mode,
+    this.loading = false,
+    this.playing = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (loading) {
+      return const Center(
+        child: SizedBox(
+          height: 20.0,
+          width: 20.0,
+          child: CircularProgressIndicator.adaptive(),
+        ),
+      );
+    }
+
+    if (mode == SelectMode.audio) {
+      return Icon(
+        playing ? Icons.pause_outlined : Icons.volume_up,
+        size: 20,
+      );
+    }
+
+    return Icon(mode.icon, size: 20);
+  }
+}
+
+class _MoreButton extends StatelessWidget {
   final ChatController controller;
   final PangeaMessageEvent? messageEvent;
 
-  const MoreButton({
-    super.key,
+  const _MoreButton({
     required this.controller,
     this.messageEvent,
   });
