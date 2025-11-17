@@ -4565,6 +4565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitForSubscriptionChanges() {
       return "Changes to your subscription may take a moment to reflect in the app.";
     },
+    get$subscribeReadingAssistance() {
+      return "Subscribe to unlock message tools";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4581,7 +4584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ksz11ORBPK197fcZ+2YX/k4Qh84="] = d.current;
+  d["mdBCn/PUznGeEBH6lYoPJtuyQsI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_160.part.js.map
