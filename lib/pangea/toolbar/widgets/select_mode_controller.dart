@@ -176,7 +176,7 @@ class SelectModeController {
         return;
       }
 
-      if (l1Code == null) {
+      if (l1Code == null || l2Code == null) {
         transcriptionState.value = const AsyncState.error(
           'Language code or message event is null',
         );
@@ -211,8 +211,14 @@ class SelectModeController {
     if (l1Code == null ||
         l2Code == null ||
         speechTranslationState.value is AsyncLoading ||
-        speechTranslationState.value is AsyncLoaded ||
-        transcriptionState.value is AsyncError) {
+        speechTranslationState.value is AsyncLoaded) {
+      return;
+    }
+
+    if (transcriptionState.value is AsyncError) {
+      speechTranslationState.value = AsyncState.error(
+        (transcriptionState.value as AsyncError).error,
+      );
       return;
     }
 
