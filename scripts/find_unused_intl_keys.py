@@ -28,7 +28,11 @@ def extract_keys_after_line(arb_file_path: str, start_line: int = 3243) -> List[
     Extract translation keys from .arb file after a specific line.
     
     ARB files are JSON files where keys starting with @ are metadata.
-    We only want the actual translation keys (non-@ keys).
+    We only want the actual translation keys (non-@ keys), not placeholder
+    keys or other nested metadata fields.
+    
+    This function extracts only TOP-LEVEL keys that first appear after the
+    specified line number. Keys that appear as placeholders are ignored.
     
     Args:
         arb_file_path: Path to the .arb file
@@ -37,21 +41,33 @@ def extract_keys_after_line(arb_file_path: str, start_line: int = 3243) -> List[
     Returns:
         List of translation key names
     """
-    keys = []
+    # Load the entire JSON to get proper structure
+    with open(arb_file_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
     
+    # Read file again to get line numbers for each key
     with open(arb_file_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
     
-    # Start from the specified line (convert to 0-indexed)
-    for line_num, line in enumerate(lines[start_line - 1:], start=start_line):
-        # Look for keys in JSON format: "keyName": "value"
+    keys = []
+    
+    # Extract only top-level keys (not nested keys inside metadata)
+    for key in data.keys():
         # Skip metadata keys (those starting with @)
-        match = re.match(r'\s*"([^"]+)":\s*["{]', line)
-        if match:
-            key = match.group(1)
-            # Explicitly skip keys that start with @
-            if not key.startswith('@'):
-                keys.append(key)
+        if key.startswith('@'):
+            continue
+        
+        # Find the FIRST occurrence of this key as a top-level definition
+        # A top-level key appears at the start of a line (after whitespace)
+        # with the pattern: "keyName": (not nested inside another object)
+        for line_num, line in enumerate(lines, start=1):
+            # Match key at the beginning of a line (indentation level 1)
+            # This ensures we're matching top-level keys, not nested ones
+            if re.match(r'^  "' + re.escape(key) + r'":\s*', line):
+                # Only include keys that appear after the specified line
+                if line_num > start_line:
+                    keys.append(key)
+                break
     
     return keys
 

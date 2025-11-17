@@ -10,9 +10,10 @@ The script was created to clean up the internationalization (i18n) files by find
 
 1. **Extracts Keys**: Reads `lib/l10n/intl_en.arb` and extracts all translation keys after line 3243 (configurable)
 2. **Filters Metadata**: Automatically excludes keys starting with `@` (metadata keys)
-3. **Searches Repository**: Uses `git grep` to efficiently search for each key in the repository
-4. **Filters Results**: Excludes matches found only in `.arb` files (other language files)
-5. **Reports Findings**: Generates a JSON file with the list of unused keys
+3. **Filters Placeholders**: Excludes nested placeholder keys inside metadata objects (e.g., `l1`, `l2`, `type`, `placeholders`)
+4. **Searches Repository**: Uses `git grep` to efficiently search for each key in the repository
+5. **Filters Results**: Excludes matches found only in `.arb` files (other language files)
+6. **Reports Findings**: Generates a JSON file with the list of unused keys
 
 ## Usage
 
@@ -75,10 +76,13 @@ Found 488 unused keys (not referenced in any .dart files):
 
 - **Unused keys**: Translation keys that appear only in `.arb` files and nowhere else in the codebase
 - **Metadata keys** (starting with `@`) are automatically excluded from the analysis
+- **Placeholder keys** (nested inside metadata objects like `placeholders`) are automatically excluded
 
 ## Notes
 
 - Keys starting with `@` are metadata and are automatically skipped
+- Nested keys inside metadata objects (like `l1`, `l2` in placeholders) are automatically filtered out
+- Only top-level translation keys are analyzed
 - The script searches only for exact key matches in the repository
 - False positives are possible if keys are constructed dynamically (e.g., using string interpolation)
 - Always review the unused keys list before removing them from the translation files
