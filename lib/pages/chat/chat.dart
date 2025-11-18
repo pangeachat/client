@@ -2286,7 +2286,10 @@ class ChatController extends State<ChatPageWithRoom>
 
   bool showActivityDropdown = false;
   void toggleShowDropdown() async {
-    setState(() => showActivityDropdown = !showActivityDropdown);
+    setState(() {
+      inputFocus.unfocus();
+      showActivityDropdown = !showActivityDropdown;
+    });
   }
 
   bool hasRainedConfetti = false;
