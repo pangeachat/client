@@ -194,6 +194,10 @@ class PangeaInvitationSelectionController
     if (a.id == client.userID) return -1;
     if (b.id == client.userID) return 1;
 
+    // sort the bot to the top
+    if (a.id == BotName.byEnvironment) return -1;
+    if (b.id == BotName.byEnvironment) return 1;
+
     if (participants != null) {
       final participantA = participants!.firstWhereOrNull((u) => u.id == a.id);
       final participantB = participants!.firstWhereOrNull((u) => u.id == b.id);
@@ -264,25 +268,27 @@ class PangeaInvitationSelectionController
         )
         .toList();
 
-    contacts.removeWhere((u) => u.id == BotName.byEnvironment);
+    if (_room?.isSpace ?? false) {
+      contacts.removeWhere((u) => u.id == BotName.byEnvironment);
+    }
     contacts.sort(_sortUsers);
     return contacts;
   }
 
   List<User> getContacts(BuildContext context) {
     final client = Matrix.of(context).client;
-    participants!.removeWhere(
-      (u) => ![Membership.join, Membership.invite].contains(u.membership),
-    );
     final contacts = client.rooms
         .where((r) => r.isDirectChat)
         .map((r) => r.unsafeGetUserFromMemoryOrFallback(r.directChatMatrixID!))
         .toList();
-    contacts.sort(
-      (a, b) => a.calcDisplayname().toLowerCase().compareTo(
-            b.calcDisplayname().toLowerCase(),
-          ),
-    );
+
+    if (_room?.isSpace == false &&
+        !contacts.any((u) => u.id == BotName.byEnvironment)) {
+      final bot = _room?.unsafeGetUserFromMemoryOrFallback(
+        BotName.byEnvironment,
+      );
+      if (bot != null) contacts.add(bot);
+    }
     return contacts;
   }
 
@@ -341,7 +347,9 @@ class PangeaInvitationSelectionController
     }
 
     final results = response.results;
-    results.removeWhere((profile) => profile.userId == BotName.byEnvironment);
+    if (_room?.isSpace ?? false) {
+      results.removeWhere((profile) => profile.userId == BotName.byEnvironment);
+    }
 
     setState(() {
       foundProfiles = List<Profile>.from(results);
@@ -364,8 +372,7 @@ class PangeaInvitationSelectionController
 
       foundProfiles.removeWhere(
         (profile) =>
-            participants?.indexWhere((u) => u.id == profile.userId) != -1 ||
-            BotName.byEnvironment == profile.userId,
+            participants?.indexWhere((u) => u.id == profile.userId) != -1,
       );
     });
   }
