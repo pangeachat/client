@@ -4948,5 +4948,6 @@
   "zhDisplayName": "Chinese",
   "zhCNDisplayName": "Chinese (Simplified)",
   "zhTWDisplayName": "Chinese (Traditional)",
-  "zuDisplayName": "Zulu"
+  "zuDisplayName": "Zulu",
+  "unreadPlus": "99+"
 }
