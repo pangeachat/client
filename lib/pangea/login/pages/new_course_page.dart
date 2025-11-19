@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_client_extens
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_response.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -279,17 +280,22 @@ class NewCoursePageState extends State<NewCoursePage> {
                       );
                     }
 
-                    final courseEntries =
-                        value.result!.coursePlans.entries.toList();
+                    final courses = value.result!.coursePlans.values.toList();
+                    courses.sort(
+                      (a, b) => LanguageLevelTypeEnum.values
+                          .indexOf(a.cefrLevel)
+                          .compareTo(
+                            LanguageLevelTypeEnum.values.indexOf(b.cefrLevel),
+                          ),
+                    );
 
                     return Expanded(
                       child: ListView.separated(
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 10.0),
-                        itemCount: courseEntries.length,
+                        itemCount: courses.length,
                         itemBuilder: (context, index) {
-                          final course = courseEntries[index].value;
-                          final courseId = courseEntries[index].key;
+                          final course = courses[index];
                           return Material(
                             type: MaterialType.transparency,
                             child: InkWell(
@@ -335,7 +341,7 @@ class NewCoursePageState extends State<NewCoursePage> {
                                       ],
                                     ),
                                     CourseInfoChips(
-                                      courseId,
+                                      course.uuid,
                                       iconSize: 12.0,
                                       fontSize: 12.0,
                                     ),
