@@ -33,7 +33,7 @@ class ActivitySummary extends StatelessWidget {
   final bool Function(String)? isParticipantSelected;
   final double Function(ActivityRoleModel?)? getParticipantOpacity;
 
-  final ValueNotifier<Set<String>> usedVocab;
+  final ValueNotifier<Set<String>>? usedVocab;
 
   const ActivitySummary({
     super.key,
@@ -41,7 +41,7 @@ class ActivitySummary extends StatelessWidget {
     required this.showInstructions,
     required this.toggleInstructions,
     required this.assignedRoles,
-    required this.usedVocab,
+    this.usedVocab,
     this.onTapParticipant,
     this.canSelectParticipant,
     this.isParticipantSelected,

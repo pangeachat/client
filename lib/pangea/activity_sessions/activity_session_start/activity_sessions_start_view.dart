@@ -156,7 +156,6 @@ class ActivitySessionStartView extends StatelessWidget {
                                               ?.activityRoles
                                               .roles ??
                                           {},
-                                      usedVocab: ValueNotifier({}),
                                     ),
                                   ],
                                 ),

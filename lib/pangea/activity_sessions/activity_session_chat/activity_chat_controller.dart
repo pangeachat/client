@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityChatController {
@@ -74,13 +75,24 @@ class ActivityChatController {
 
   Future<void> _updateUsedVocab() async {
     if (getAnalytics == null) return;
-    final analytics = await getAnalytics!.call();
-    if (!_disposed) {
-      usedVocab.value = analytics.constructs[userID]
-              ?.constructsOfType(ConstructTypeEnum.vocab)
-              .map((id) => id.lemma.toLowerCase())
-              .toSet() ??
-          {};
+
+    try {
+      final analytics = await getAnalytics!.call();
+      if (!_disposed) {
+        usedVocab.value = analytics.constructs[userID]
+                ?.constructsOfType(ConstructTypeEnum.vocab)
+                .map((id) => id.lemma.toLowerCase())
+                .toSet() ??
+            {};
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "message": "Failed to update used vocab in ActivityChatController",
+        },
+      );
     }
   }
 }

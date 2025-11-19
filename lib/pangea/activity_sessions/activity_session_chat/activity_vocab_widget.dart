@@ -13,7 +13,7 @@ class ActivityVocabWidget extends StatelessWidget {
   final List<Vocab> vocab;
   final String langCode;
   final String targetId;
-  final ValueNotifier<Set<String>> usedVocab;
+  final ValueNotifier<Set<String>>? usedVocab;
 
   const ActivityVocabWidget({
     super.key,
@@ -25,8 +25,25 @@ class ActivityVocabWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (usedVocab == null) {
+      return Wrap(
+        spacing: 4.0,
+        runSpacing: 4.0,
+        children: [
+          ...vocab.map(
+            (vocab) => _VocabChip(
+              vocab: vocab,
+              targetId: targetId,
+              langCode: langCode,
+              usedVocab: const {},
+            ),
+          ),
+        ],
+      );
+    }
+
     return ValueListenableBuilder(
-      valueListenable: usedVocab,
+      valueListenable: usedVocab!,
       builder: (context, used, __) {
         return Wrap(
           spacing: 4.0,
