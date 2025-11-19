@@ -4937,7 +4937,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-10-16 13:32:20.092719",
+  "@@last_modified": "2025-11-19 10:06:33.387069",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12877,6 +12877,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "โหมดครู",
+  "teacherModeDesc": "สลับเพื่อปลดล็อกหัวข้อและกิจกรรมทั้งหมด เฉพาะผู้ดูแลหลักสูตรเท่านั้น",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

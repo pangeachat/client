@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-10-16 13:31:05.366693",
+  "@@last_modified": "2025-11-19 10:07:24.904940",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -12143,6 +12143,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Mode Enseignant",
+  "teacherModeDesc": "Basculer pour débloquer tous les sujets et activités. Administration du cours uniquement.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

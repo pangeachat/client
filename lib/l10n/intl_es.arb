@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-10-16 13:30:49.638463",
+  "@@last_modified": "2025-11-19 10:05:31.874796",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -7430,6 +7430,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Modo Profesor",
+  "teacherModeDesc": "Activa para desbloquear todos los temas y actividades. Solo para administradores del curso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

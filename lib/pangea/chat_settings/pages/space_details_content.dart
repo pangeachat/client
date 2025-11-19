@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
@@ -121,6 +122,19 @@ class SpaceDetailsContent extends StatelessWidget {
         onPressed: () => context.go('/rooms/${room.id}/details/edit'),
         enabled: room.isRoomAdmin,
         showInMainView: false,
+      ),
+      ButtonDetails(
+        title: L10n.of(context).teacherModeTitle,
+        description: L10n.of(context).teacherModeDesc,
+        icon: const Icon(Icons.school_outlined, size: 30.0),
+        onPressed: () => showFutureLoadingDialog(
+          context: context,
+          future: () => room.setTeacherMode(!room.isTeacherMode),
+        ),
+        enabled: room.isRoomAdmin,
+        showInMainView: false,
+        isToggle: true,
+        value: room.isTeacherMode,
       ),
       ButtonDetails(
         title: l10n.permissions,
@@ -327,16 +341,32 @@ class SpaceDetailsContent extends StatelessWidget {
                           children: buttons.map((b) {
                             return Opacity(
                               opacity: b.enabled ? 1.0 : 0.5,
-                              child: ListTile(
-                                title: Text(b.title),
-                                subtitle: b.description != null
-                                    ? Text(b.description!)
-                                    : null,
-                                leading: b.icon,
-                                onTap: b.enabled
-                                    ? () => b.onPressed?.call()
-                                    : null,
-                              ),
+                              child: b.isToggle
+                                  ? SwitchListTile(
+                                      title: Text(b.title),
+                                      subtitle: b.description != null
+                                          ? Text(b.description!)
+                                          : null,
+                                      secondary: b.icon,
+                                      value: b.value,
+                                      onChanged: b.enabled
+                                          ? (value) {
+                                              b.onPressed?.call();
+                                            }
+                                          : null,
+                                      activeThumbColor:
+                                          AppConfig.activeToggleColor,
+                                    )
+                                  : ListTile(
+                                      title: Text(b.title),
+                                      subtitle: b.description != null
+                                          ? Text(b.description!)
+                                          : null,
+                                      leading: b.icon,
+                                      onTap: b.enabled
+                                          ? () => b.onPressed?.call()
+                                          : null,
+                                    ),
                             );
                           }).toList(),
                         ),

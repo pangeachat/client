@@ -3816,7 +3816,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-10-16 13:31:58.159625",
+  "@@last_modified": "2025-11-19 10:06:34.617095",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12848,6 +12848,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Modo Professor",
+  "teacherModeDesc": "Ative para desbloquear todos os tópicos e atividades. Apenas para administradores do curso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

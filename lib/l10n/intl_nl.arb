@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:31:49.093821",
+  "@@last_modified": "2025-11-19 10:06:52.228480",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -11819,6 +11819,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Docentmodus",
+  "teacherModeDesc": "Schakel in om alle onderwerpen en activiteiten te ontgrendelen. Alleen voor cursusbeheerders.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

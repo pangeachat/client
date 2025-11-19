@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-10-16 13:08:16.063345",
+  "@@last_modified": "2025-11-19 10:06:41.335038",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -12036,6 +12036,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "وضع المعلم",
+  "teacherModeDesc": "قم بالتبديل لفتح جميع المواضيع والأنشطة. فقط لمسؤول الدورة.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

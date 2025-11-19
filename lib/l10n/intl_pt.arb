@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:31:54.004418",
+  "@@last_modified": "2025-11-19 10:06:02.778781",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12919,6 +12919,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Modo Professor",
+  "teacherModeDesc": "Ative para desbloquear todos os tópicos e atividades. Apenas para administradores do curso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

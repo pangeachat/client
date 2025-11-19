@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-10-16 13:32:23.571063",
+  "@@last_modified": "2025-11-19 10:06:43.229771",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -12041,6 +12041,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Öğretmen Modu",
+  "teacherModeDesc": "Tüm konuları ve etkinlikleri açmak için geçiş yapın. Sadece kurs yöneticisi.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

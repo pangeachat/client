@@ -2945,7 +2945,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-10-16 13:32:09.029952",
+  "@@last_modified": "2025-11-19 10:06:09.338917",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12900,6 +12900,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Način učitelja",
+  "teacherModeDesc": "Preklopi za odklepanje vseh tem in aktivnosti. Samo za skrbnike tečaja.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

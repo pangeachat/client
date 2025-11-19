@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-10-16 13:30:55.222415",
+  "@@last_modified": "2025-11-19 10:06:01.640967",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11819,6 +11819,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Irakasle Modua",
+  "teacherModeDesc": "Aukeratu gai eta jarduera guztiak desblokeatzeko. Ikasturtea administratzaile bakarrik.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

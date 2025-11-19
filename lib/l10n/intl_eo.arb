@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:30:47.008238",
+  "@@last_modified": "2025-11-19 10:07:12.448110",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12908,6 +12908,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Instruista Reĝimo",
+  "teacherModeDesc": "Ŝanĝi por malŝlosi ĉiujn temojn kaj aktivadojn. Nur por kursa administranto.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-10-16 13:30:52.593520",
+  "@@last_modified": "2025-11-19 10:06:04.654636",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -12090,6 +12090,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Õpetaja režiim",
+  "teacherModeDesc": "Lülita sisse, et avada kõik teemad ja tegevused. Ainult kursuse administraator.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

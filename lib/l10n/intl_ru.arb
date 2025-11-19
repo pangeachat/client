@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-10-16 13:32:02.970247",
+  "@@last_modified": "2025-11-19 10:07:15.570964",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11924,6 +11924,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Режим учителя",
+  "teacherModeDesc": "Переключите, чтобы разблокировать все темы и активности. Только для администратора курса.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

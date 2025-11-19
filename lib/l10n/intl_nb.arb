@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:31:46.932073",
+  "@@last_modified": "2025-11-19 10:06:25.294989",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12912,6 +12912,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Lærermodus",
+  "teacherModeDesc": "Bytt for å låse opp alle emner og aktiviteter. Kun kursadministrator.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

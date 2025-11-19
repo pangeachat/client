@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:32:00.774739",
+  "@@last_modified": "2025-11-19 10:05:44.760968",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12554,6 +12554,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Mod Profesor",
+  "teacherModeDesc": "Comută pentru a debloca toate subiectele și activitățile. Numai pentru administratorul cursului.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

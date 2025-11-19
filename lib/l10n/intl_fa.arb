@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:30:57.998791",
+  "@@last_modified": "2025-11-19 10:06:59.403476",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -12551,6 +12551,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "حالت معلم",
+  "teacherModeDesc": "برای باز کردن تمام موضوعات و فعالیت‌ها، تغییر دهید. فقط مدیر دوره.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }
