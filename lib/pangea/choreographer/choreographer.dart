@@ -187,6 +187,14 @@ class Choreographer extends ChangeNotifier {
       notifyListeners();
     }
 
+    // if the user cleared the text, reset everything
+    if (textController.editType == EditTypeEnum.keyboard &&
+        _lastChecked != null &&
+        _lastChecked!.isNotEmpty &&
+        textController.text.isEmpty) {
+      clear();
+    }
+
     _lastChecked = textController.text;
     if (errorService.isError) return;
     if (textController.editType == EditTypeEnum.keyboard) {
