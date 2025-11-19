@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-11-17 16:09:25.472241",
+  "@@last_modified": "2025-11-19 10:07:08.492783",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11326,6 +11326,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "教師モード",
+  "teacherModeDesc": "すべてのトピックとアクティビティをアンロックするために切り替えます。コース管理者のみ。",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

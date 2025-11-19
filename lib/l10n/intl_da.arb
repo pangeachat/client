@@ -1934,7 +1934,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-11-17 15:13:38.435412",
+  "@@last_modified": "2025-11-19 10:05:38.285183",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11598,6 +11598,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Lærerindstilling",
+  "teacherModeDesc": "Skift for at låse op for alle emner og aktiviteter. Kun kursusadministrator.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

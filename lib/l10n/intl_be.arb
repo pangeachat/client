@@ -1915,7 +1915,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-11-17 15:41:00.817725",
+  "@@last_modified": "2025-11-19 10:06:26.729429",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11635,6 +11635,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Рэжым настаўніка",
+  "teacherModeDesc": "Уключыць, каб разблакаваць усе тэмы і дзейнасці. Толькі для адміністратара курса.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

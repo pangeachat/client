@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-17 15:51:25.358863",
+  "@@last_modified": "2025-11-19 10:06:43.229771",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10758,6 +10758,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Öğretmen Modu",
+  "teacherModeDesc": "Tüm konuları ve etkinlikleri açmak için geçiş yapın. Sadece kurs yöneticisi.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

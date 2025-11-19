@@ -1962,7 +1962,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2025-11-17 15:24:47.546577",
+  "@@last_modified": "2025-11-19 10:05:56.215123",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11614,6 +11614,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Modu Instructore",
+  "teacherModeDesc": "Comuta pro aperiendo omnes argumenta et activitates. Solum administratores cursus.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

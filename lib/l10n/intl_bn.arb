@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-17 16:02:09.455542",
+  "@@last_modified": "2025-11-19 10:06:57.530222",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11640,6 +11640,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "শিক্ষক মোড",
+  "teacherModeDesc": "সব বিষয় এবং কার্যকলাপ আনলক করতে টগল করুন। কোর্স প্রশাসক শুধুমাত্র।",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-11-17 15:10:46.245620",
+  "@@last_modified": "2025-11-19 10:05:33.443954",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10533,6 +10533,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Modo Profesor",
+  "teacherModeDesc": "Activa para desbloquear todos os temas e actividades. Só para administradores do curso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }
