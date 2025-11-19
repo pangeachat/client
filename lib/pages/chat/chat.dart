@@ -2333,6 +2333,7 @@ class ChatController extends State<ChatPageWithRoom>
   ValueNotifier<bool> showActivityDropdown = ValueNotifier(false);
   void toggleShowDropdown() async {
     if (mounted) {
+      inputFocus.unfocus();
       showActivityDropdown.value = !showActivityDropdown.value;
     }
   }
