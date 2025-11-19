@@ -5225,6 +5225,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$zuDisplayName() {
       return "\u0632\u0648\u0644\u0648";
     },
+    get$teacherModeTitle() {
+      return "\u0648\u0636\u0639 \u0627\u0644\u0645\u0639\u0644\u0645";
+    },
+    get$teacherModeDesc() {
+      return "\u0642\u0645 \u0628\u0627\u0644\u062a\u0628\u062f\u064a\u0644 \u0644\u0641\u062a\u062d \u062c\u0645\u064a\u0639 \u0627\u0644\u0645\u0648\u0627\u0636\u064a\u0639 \u0648\u0627\u0644\u0623\u0646\u0634\u0637\u0629. \u0641\u0642\u0637 \u0644\u0645\u0633\u0624\u0648\u0644 \u0627\u0644\u062f\u0648\u0631\u0629.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5238,7 +5244,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0lvBnEmGYthXMHDYnIQLAr16Jz4="] = d.current;
+  d["9HrlpaK8JA5IbEc3UKT75Sc3i44="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_139.part.js.map

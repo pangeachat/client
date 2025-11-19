@@ -5,2401 +5,2401 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nFr$() {
-      return new A.L10nFr(B.canonicalizedLocale("fr"));
+    L10nGa$() {
+      return new A.L10nGa(B.canonicalizedLocale("ga"));
     },
-    L10nFr: function L10nFr(t0) {
+    L10nGa: function L10nGa(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[22], A);
-  A.L10nFr.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[23], A);
+  A.L10nGa.prototype = {
     get$alwaysUse24HourFormat() {
-      return "true";
+      return "br\xe9agach";
     },
     get$repeatPassword() {
-      return "R\xe9p\xe9tez le mot de passe";
+      return "Scr\xedobh an pasfhocal ar\xeds";
     },
     get$notAnImage() {
-      return "Pas un fichier image.";
+      return "N\xed comhad \xedomh\xe1 \xe9.";
     },
     get$setCustomPermissionLevel() {
-      return "D\xe9finir le niveau de permission personnalis\xe9";
+      return "Socraigh leibh\xe9al ceadanna saincheaptha";
     },
     get$setPermissionsLevelDescription() {
-      return "Veuillez choisir un r\xf4le pr\xe9d\xe9fini ci-dessous ou entrer un niveau de permission personnalis\xe9 entre 0 et 100.";
+      return "Roghnaigh r\xf3l r\xe9amhshainithe th\xedos n\xf3 cuir isteach leibh\xe9al ceadanna saincheaptha idir 0 agus 100.";
     },
     get$ignoreUser() {
-      return "Ignorer l'utilisateur";
+      return "D\xe9an neamhaird den \xfas\xe1ideoir";
     },
     get$normalUser() {
-      return "Utilisateur normal";
+      return "Gn\xe1th\xfas\xe1ideoir";
     },
     get$remove(_) {
-      return "Supprimer";
+      return "Bain";
     },
     get$importNow() {
-      return "Importer maintenant";
+      return "Iomp\xf3rt\xe1il anois";
     },
     get$importEmojis() {
-      return "Importer des Emojis";
+      return "Iomp\xf3rt\xe1il Emoji";
     },
     get$importFromZipFile() {
-      return "Importer depuis un fichier .zip";
+      return "Iomp\xf3rt\xe1il \xf3 chomhad .zip";
     },
     get$exportEmotePack() {
-      return "Exporter le pack d'\xe9motic\xf4nes au format .zip";
+      return "Easp\xf3rt\xe1il Emote pac\xe1iste mar .zip";
     },
     get$replace(_) {
-      return "Remplacer";
+      return "Ionadaigh";
     },
     aboutHomeserver$1(homeserver) {
-      return "\xc0 propos de " + homeserver;
+      return "Maidir le " + homeserver;
     },
     get$accept(_) {
-      return "Accepter";
+      return "Glac";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " a accept\xe9 l'invitation";
+      return "\ud83d\udc4d Ghlac " + username + " leis an gcuireadh";
     },
     get$account() {
-      return "Compte";
+      return "Cuntas";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " a activ\xe9 le chiffrement de bout en bout";
+      return "\ud83d\udd10 " + username + " criptithe deireadh go deireadh gn\xedomhachtaithe";
     },
     get$addEmail() {
-      return "Ajouter un courriel";
+      return "Cuir r\xedomhphoist";
     },
     supposedMxid$1(mxid) {
-      return "Cela devrait \xeatre " + mxid;
+      return "Ba cheart go mbeadh s\xe9 seo " + mxid;
     },
     get$admin() {
-      return "Administrateur";
+      return "Riarth\xf3ir";
     },
     get$commandHint_roomupgrade() {
-      return "Mettre \xe0 niveau cette salle vers la version de salle donn\xe9e";
+      return "Uasghr\xe1daigh an seomra seo go dt\xed an leagan seomra a thugtar";
     },
     get$commandHint_googly() {
-      return "Envoyer des yeux \xe9carquill\xe9s";
+      return "Seol roinnt s\xfaile googly";
     },
     get$commandHint_cuddle() {
-      return "Envoyer un c\xe2lin";
+      return "Seol cuddle";
     },
     get$commandHint_hug() {
-      return "Envoyer une accolade";
+      return "Seol barr\xf3g";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " vous envoie des yeux \xe9carquill\xe9s";
+      return "Seolann " + senderName + " s\xfaile googly chugat";
     },
     cuddleContent$1(senderName) {
-      return senderName + " vous fait un c\xe2lin";
+      return "Cuireann " + senderName + " do chudacht";
     },
     hugContent$1(senderName) {
-      return senderName + " vous fait une accolade";
+      return "Tugann " + senderName + " barr\xf3g duit";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " a r\xe9pondu \xe0 l'appel";
+      return "D'fhreagair " + senderName + " an glao";
     },
     get$anyoneCanJoin() {
-      return "Tout le monde peut rejoindre";
+      return "Is f\xe9idir le aon duine dul isteach";
     },
     get$archive() {
-      return "Archiver";
+      return "Cartlann";
     },
     get$areYouSure() {
-      return "\xcates-vous s\xfbr\xb7e\xa0?";
+      return "An bhfuil t\xfa cinnte?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Voulez-vous vraiment vous d\xe9connecter ?";
+      return "An bhfuil t\xfa cinnte gur mhaith leat log\xe1il amach?";
     },
     get$askSSSSSign() {
-      return "Pour pouvoir faire signer l'autre personne, veuillez entrer la phrase de passe de votre trousseau s\xe9curis\xe9 ou votre cl\xe9 de r\xe9cup\xe9ration.";
+      return "Chun a bheith in ann an duine eile a sh\xedni\xfa, cuir isteach do phasfhr\xe1sa st\xf3ir s\xe1bh\xe1ilte n\xf3 d'eochair t\xe9arnaimh.";
     },
     askVerificationRequest$1(username) {
-      return "Accepter cette demande de v\xe9rification de la part de " + username + " ?";
+      return "Glac leis an iarratas f\xedoraithe seo \xf3 " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Le serveur d'accueil prend en charge les types de connexion :\n" + serverVersions + "\nMais cette application ne prend en charge que :\n" + supportedVersions;
+      return "T\xe1 na cine\xe1lacha log\xe1la isteach seo ar f\xe1il faoin freastala\xed baile:\n" + serverVersions + "\nAch n\xedl ach na ceann seo ar f\xe1il faoin aip seo:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Envoyer des notifications de frappe";
+      return "Seol f\xf3gra\xed cl\xf3scr\xedofa";
     },
     get$swipeRightToLeftToReply() {
-      return "Glisser de droite \xe0 gauche pour r\xe9pondre";
+      return "Svaidhpe\xe1il ar dheis ar chl\xe9 chun freagra a thabhairt";
     },
     get$sendOnEnter() {
-      return "Envoyer avec Entr\xe9e";
+      return "Seol ar iontr\xe1il";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " discussions et " + participants + " participants";
+      return "" + chats + " comhr\xe1 agus " + participants + " rannph\xe1irt\xed";
     },
     get$banned() {
-      return "Banni";
+      return "Coiscthe";
     },
     bannedUser$2(username, targetName) {
-      return username + " a banni " + targetName;
+      return "Chuir " + username + " cosc ar " + targetName;
     },
     get$blockDevice() {
-      return "Bloquer l'appareil";
+      return "Bac Gl\xe9as";
     },
     get$blocked() {
-      return "Bloqu\xe9";
+      return "Bactha";
     },
     get$cancel(_) {
-      return "Annuler";
+      return "Cealaigh";
     },
     cantOpenUri$1(uri) {
-      return "Impossible d'ouvrir l'URI " + uri;
+      return "N\xed f\xe9idir an URI " + uri + " a oscailt";
     },
     get$changeDeviceName() {
-      return "Modifier le nom de l'appareil";
+      return "Athraigh ainm an ghl\xe9is";
     },
     changedTheChatAvatar$1(username) {
-      return username + " a chang\xe9 l'image de la discussion";
+      return "D'athraigh " + username + " abhat\xe1r an chomhr\xe1";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " a chang\xe9 la description de la discussion en\xa0: '" + description + "'";
+      return "D'athraigh " + username + " an cur s\xedos comhr\xe1 go: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " a renomm\xe9 la discussion en\xa0: '" + chatname + "'";
+      return "D'athraigh " + username + " an t-ainm comhr\xe1 go: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " a chang\xe9 les permissions de la discussion";
+      return "D'athraigh " + username + " na ceadanna comhr\xe1";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " a chang\xe9 son nom en : '" + displayname + "'";
+      return "D'athraigh " + username + " a n-ainm taispe\xe1na go: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " a chang\xe9 les r\xe8gles d'acc\xe8s \xe0 la discussion pour les invit\xe9s";
+      return "D'athraigh " + username + " na rialacha rochtana aoi";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " a chang\xe9 les r\xe8gles d'acc\xe8s \xe0 la discussion pour les invit\xe9s en : " + rules;
+      return "D'athraigh " + username + " na rialacha maidir le rochtain aoi chuig: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " a chang\xe9 la visibilit\xe9 de l'historique de la discussion";
+      return "D'athraigh " + username + " infheictheacht na staire";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " a chang\xe9 la visibilit\xe9 de l'historique de la discussion en : " + rules;
+      return "D'athraigh " + username + " infheictheacht na staire go: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " a chang\xe9 les r\xe8gles d'acc\xe8s \xe0 la discussion";
+      return "D'athraigh " + username + " na rialacha ceangail";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " a chang\xe9 les r\xe8gles d'acc\xe8s \xe0 la discussion en : " + joinRules;
+      return "D'athraigh " + username + " na rialacha ceangail go: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " a chang\xe9 son avatar";
+      return "D'athraigh " + username + " a n-abhat\xe1r";
     },
     changedTheRoomAliases$1(username) {
-      return username + " a chang\xe9 les adresses du salon";
+      return "D'athraigh " + username + " ailiasanna an tseomra";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " a chang\xe9 le lien d'invitation";
+      return "D'athraigh " + username + " nasc an chuiridh";
     },
     get$changePassword() {
-      return "Changer de mot de passe";
+      return "Athraigh an pasfhocal";
     },
     get$changeTheme() {
-      return "Changez votre style";
+      return "Athraigh do st\xedl";
     },
     get$changeYourAvatar() {
-      return "Changer votre avatar";
+      return "Athraigh do abhat\xe1r";
     },
     get$channelCorruptedDecryptError() {
-      return "Le chiffrement a \xe9t\xe9 corrompu";
+      return "Truaill\xedodh an cripti\xfa";
     },
     get$chat() {
-      return "Discussion";
+      return "Comhr\xe1";
     },
     get$chatDetails() {
-      return "D\xe9tails de la discussion";
+      return "Sonra\xed comhr\xe1";
     },
     get$chats() {
-      return "Discussions";
+      return "Comhr\xe1ite";
     },
     get$chooseAStrongPassword() {
-      return "Choisissez un mot de passe fort";
+      return "Roghnaigh pasfhocal l\xe1idir";
     },
     get$clearArchive() {
-      return "Effacer les archives";
+      return "Glan an cartlann";
     },
     get$close(_) {
-      return "Fermer";
+      return "D\xfan";
     },
     get$commandHint_markasdm() {
-      return "Marquer comme salon de messages directs pour l'identifiant Matrix indiqu\xe9";
+      return "Marc\xe1il mar sheomra teachtaireachta d\xedr\xed don ID Maitr\xeds tugtha";
     },
     get$commandHint_markasgroup() {
-      return "Marquer comme groupe";
+      return "Marc\xe1il mar ghr\xfapa";
     },
     get$commandHint_ban() {
-      return "Bannir l'utilisateur/trice donn\xe9(e) de ce salon";
+      return string$.Cuir_c;
     },
     get$commandHint_clearcache() {
-      return "Vider le cache";
+      return "Glan an taisce";
     },
     get$commandHint_create() {
-      return "Cr\xe9er un groupe de discussion vide\nUtilisez --no-encryption pour d\xe9sactiver le chiffrement";
+      return "Cruthaigh comhr\xe1 gr\xfapa folamh\n\xdas\xe1id --no-encryption chun cripti\xfach\xe1n a dh\xedchumas\xfa";
     },
     get$commandHint_discardsession() {
-      return "Abandonner la session";
+      return "Scrios an seisi\xfan";
     },
     get$commandHint_dm() {
-      return "Commencer une discussion directe\nUtilisez --no-encryption pour d\xe9sactiver le chiffrement";
+      return "Cuir t\xfas le comhr\xe1 d\xedreach\n\xdas\xe1id --no-cription chun cripti\xfach\xe1n a dh\xedchumas\xfa";
     },
     get$commandHint_html() {
-      return "Envoyer du texte au format HTML";
+      return "Seol t\xe9acs HTML-form\xe1idithe";
     },
     get$commandHint_invite() {
-      return "Inviter l'utilisateur/trice donn\xe9(e) dans ce salon";
+      return string$.Cuir_c;
     },
     get$commandHint_join() {
-      return "Rejoindre le salon donn\xe9";
+      return "T\xe9igh isteach sa seomra \xe1irithe";
     },
     get$commandHint_kick() {
-      return "Supprime l'utilisateur/trice donn\xe9(e) de ce salon";
+      return "Bain an t-\xfas\xe1ideoir \xe1irithe den seomra seo";
     },
     get$commandHint_leave() {
-      return "Quitter ce salon";
+      return "F\xe1g an seomra seo";
     },
     get$commandHint_me() {
-      return "D\xe9crivez-vous";
+      return "D\xe9an cur s\xedos ort f\xe9in";
     },
     get$commandHint_myroomavatar() {
-      return "D\xe9finir votre image pour ce salon (par mxc-uri)";
+      return "Cuir do phicti\xfar don seomra seo (le mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "D\xe9finir votre nom d'affichage pour ce salon";
+      return "Socraigh d'ainm taispe\xe1na don seomra seo";
     },
     get$commandHint_op() {
-      return "D\xe9finir le niveau de puissance de l'utilisateur/trice donn\xe9(e) (par d\xe9faut : 50)";
+      return "Socraigh leibh\xe9al cumhachta an \xfas\xe1ideora \xe1irithe (r\xe9amhshocr\xfa: 50)";
     },
     get$commandHint_plain() {
-      return "Envoyer du texte non format\xe9";
+      return "Seol t\xe9acs neamhfhoirmithe";
     },
     get$commandHint_react() {
-      return "Envoyer une r\xe9ponse en tant que r\xe9action";
+      return "Seol freagra mar fhreagairt";
     },
     get$commandHint_send() {
-      return "Envoyer du texte";
+      return "Seol t\xe9acs";
     },
     get$commandHint_unban() {
-      return "D\xe9bannir l'utilisateur/trice donn\xe9(e) de ce salon";
+      return "Cuir deireadh an cosc den \xfas\xe1ideoir \xe1irithe \xf3n seomra seo";
     },
     get$compareEmojiMatch() {
-      return "Veuillez comparer les \xe9mojis";
+      return "Cuir na emojis i gcompar\xe1id le do thoil";
     },
     get$compareNumbersMatch() {
-      return "Veuillez comparer les chiffres";
+      return "Cuir na huimhreacha i gcompar\xe1id le do thoil";
     },
     get$configureChat() {
-      return "Configurer la discussion";
+      return "Cumraigh comhr\xe1";
     },
     get$confirm(_) {
-      return "Confirmer";
+      return "Dearbhaigh";
     },
     get$copiedToClipboard() {
-      return "Copi\xe9 dans le presse-papier";
+      return "C\xf3ipe\xe1ilte ar an ghearrthaisce";
     },
     get$copy(_) {
-      return "Copier";
+      return "C\xf3ipe\xe1il";
     },
     couldNotDecryptMessage$1(error) {
-      return "Impossible de d\xe9chiffrer le message : " + error;
+      return "N\xedorbh fh\xe9idir teachtaireacht a dh\xedchripti\xfa: " + error;
     },
     get$checkList() {
-      return "Liste de v\xe9rification";
+      return "Liosta seice\xe1la";
     },
     countParticipants$1(count) {
-      return "" + count + " participant(s)";
+      return "" + count + " rannph\xe1irtithe";
     },
     countInvited$1(count) {
-      return "" + count + " invit\xe9(s)";
+      return "cuireadh chuig " + count;
     },
     get$create(_) {
-      return "Cr\xe9er";
+      return "Cruthaigh";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " a cr\xe9\xe9 la discussion";
+      return "\ud83d\udcac chruthaigh " + username + " an comhr\xe1";
     },
     get$createGroup() {
-      return "Cr\xe9er un groupe";
+      return "Cruthaigh gr\xfapa";
     },
     get$currentlyActive() {
-      return "Actif en ce moment";
+      return "Gn\xedomhach faoi l\xe1thair";
     },
     get$darkTheme() {
-      return "Sombre";
+      return "Dorcha";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Cette op\xe9ration va d\xe9sactiver votre compte. Une fois cette action effectu\xe9e, aucun retour en arri\xe8re n'est possible\xa0! \xcates-vous s\xfbr\xb7e\xa0?";
+      return "D\xedghn\xedomhachtaeoidh s\xe9 seo do chuntas \xfas\xe1ideora. N\xed f\xe9idir \xe9 seo a cheal\xfa! An bhfuil t\xfa cinnte?";
     },
     get$defaultPermissionLevel() {
-      return "Niveau d'autorisation par d\xe9faut pour les arrivants";
+      return "Leibh\xe9al ceada r\xe9amhshocraithe d'\xfas\xe1ideoir\xed nua";
     },
     get$$delete(_) {
-      return "Supprimer";
+      return "Scrios";
     },
     get$deleteAccount() {
-      return "Supprimer le compte";
+      return "Scrios an cuntas";
     },
     get$deleteMessage() {
-      return "Supprimer le message";
+      return "Scrios an teachtaireacht";
     },
     get$devices() {
-      return "Appareils";
+      return "Gl\xe9asanna";
     },
     get$displaynameHasBeenChanged() {
-      return "Renommage effectu\xe9";
+      return "Athra\xedodh an t-ainm taispe\xe1na";
     },
     get$downloadFile() {
-      return "T\xe9l\xe9charger le fichier";
+      return "\xcdosl\xf3d\xe1il comhad";
     },
     get$edit() {
-      return "Modifier";
+      return "Cuir in eagar";
     },
     get$editBlockedServers() {
-      return "Modifier les serveurs bloqu\xe9s";
+      return "Cuir freastala\xed bloc\xe1ilte in eagar";
     },
     get$chatPermissions() {
-      return "Permissions du salon";
+      return "Ceadanna comhr\xe1";
     },
     get$editDisplayname() {
-      return "Changer de nom d'affichage";
+      return "Cuir ainm taispe\xe1na in eagar";
     },
     get$editRoomAvatar() {
-      return "Modifier l'avatar du salon";
+      return "Cuir in eagar abhat\xe1r an tseomra";
     },
     get$emoteExists() {
-      return "Cette \xe9motic\xf4ne existe d\xe9j\xe0\xa0!";
+      return "T\xe1 iomaite ann cheana f\xe9in!";
     },
     get$emoteInvalid() {
-      return "Raccourci d'\xe9motic\xf4ne invalide\xa0!";
+      return "Gearrch\xf3d emote neamhbhail\xed!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Les \xe9motic\xf4nes r\xe9cemment utilis\xe9es appara\xeetront ici...";
+      return "Beidh moth\xfach\xe1in a \xfas\xe1ideadh le d\xe9ana\xed le feice\xe1il anseo ...";
     },
     get$emotePacks() {
-      return "Packs d'\xe9motic\xf4nes pour le salon";
+      return "Pac\xe1ist\xed straoiseoige don seomra";
     },
     get$customEmojisAndStickers() {
-      return "\xc9motic\xf4nes et autocollants personnalis\xe9s";
+      return "Emojis agus gream\xe1in saincheaptha";
     },
     get$emoteShortcode() {
-      return "Raccourci de l'\xe9motic\xf4ne";
+      return "Gearrch\xf3d straoiseoige";
     },
     get$emoteWarnNeedToPick() {
-      return "Vous devez s\xe9lectionner un raccourci d'\xe9motic\xf4ne et une image\xa0!";
+      return "Caithfidh t\xfa gearrch\xf3d straoiseoige agus \xedomh\xe1 a roghn\xfa!";
     },
     get$emptyChat() {
-      return "Discussion vide";
+      return "Comhr\xe1 folamh";
     },
     get$enableEmotesGlobally() {
-      return "Activer globalement le pack d'\xe9motic\xf4nes";
+      return "Cumasaigh pac\xe1iste straoiseoige go huil\xedoch";
     },
     get$enableEncryption() {
-      return "Activer le chiffrement";
+      return "Tosaigh cripti\xfa";
     },
     get$encrypted() {
-      return "Chiffr\xe9";
+      return "Criptithe";
     },
     get$encryptionNotEnabled() {
-      return "Le chiffrement n'est pas activ\xe9";
+      return "N\xed chumasa\xedtear cripti\xfa";
     },
     endedTheCall$1(senderName) {
-      return senderName + " a mis fin \xe0 l'appel";
+      return "Chuir " + senderName + " deireadh leis an nglao";
     },
     get$enterAnEmailAddress() {
-      return "Saisissez une adresse de courriel";
+      return "Cuir isteach seoladh r\xedomhphoist";
     },
     errorObtainingLocation$1(error) {
-      return "Erreur lors de l'obtention de la localisation : " + error;
+      return "Earr\xe1id maidir le su\xedomh a fh\xe1il: " + error;
     },
     get$fontSize(_) {
-      return "Taille de la police";
+      return "M\xe9id cl\xf3";
     },
     get$forward(_) {
-      return "Transf\xe9rer";
+      return "Seol ar aghaidh";
     },
     get$fromJoining() {
-      return "\xc0 partir de l'entr\xe9e dans le salon";
+      return "\xd3 tar isteach";
     },
     get$fromTheInvitation() {
-      return "\xc0 partir de l'invitation";
+      return "\xd3n gcuireadh";
     },
     get$guestsAreForbidden() {
-      return "Les invit\xe9s ne peuvent pas rejoindre";
+      return "T\xe1 cosc ar a\xedonna";
     },
     get$guestsCanJoin() {
-      return "Les invit\xe9s peuvent rejoindre";
+      return "Is f\xe9idir le ha\xedonna p\xe1irt a ghlacadh";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " a annul\xe9 l'invitation de " + targetName;
+      return "Tharraing " + username + " an cuireadh do " + targetName + " siar";
     },
     get$help() {
-      return "Aide";
+      return "Cabhair";
     },
     get$hideRedactedMessages() {
-      return "Cacher les messages \xe9dit\xe9s";
+      return "Folaigh teachtaireachta\xed curtha in eagar";
     },
     get$hideRedactedMessagesBody() {
-      return "Si quelqu'un modifie un message, celui-ci ne sera plus visible dans la discussion.";
+      return "M\xe1 athghn\xedomha\xedonn duine \xe9igin teachtaireacht, n\xed bheidh an teachtaireacht seo le feice\xe1il sa chomhr\xe1 a thuilleadh.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Masquer les formats de message invalides ou inconnus";
+      return "Folaigh form\xe1id\xed teachtaireachta neamhbhail\xed n\xf3 anaithnid";
     },
     get$block() {
-      return "Bloquer";
+      return "Bloc";
     },
     get$blockedUsers() {
-      return "Utilisateurs/trices bloqu\xe9s";
+      return "\xdas\xe1ideoir\xed bactha";
     },
     get$blockListDescription() {
-      return "Vous pouvez bloquer des utilisateurs/trices qui vous d\xe9rangent. Vous ne pourrez plus recevoir aucun message ou invitation \xe0 un salon d'utilisateurs/trices figurant sur votre liste de blocage personnelle.";
+      return "Is f\xe9idir leat bac a chur ar \xfas\xe1ideoir\xed at\xe1 ag cur isteach ort. N\xed bheidh t\xfa in ann teachtaireachta\xed n\xf3 cuireadh seomra ar bith a fh\xe1il \xf3 na h\xfas\xe1ideoir\xed ar do liosta bloc pearsanta.";
     },
     get$blockUsername() {
-      return "Ignorer le nom d'utilisateur/trice";
+      return "D\xe9an neamhaird de ainm \xfas\xe1ideora";
     },
     get$iHaveClickedOnLink() {
-      return "J'ai cliqu\xe9 sur le lien";
+      return "Chlice\xe1il m\xe9 ar an nasc";
     },
     get$incorrectPassphraseOrKey() {
-      return "Phrase de passe ou cl\xe9 de r\xe9cup\xe9ration incorrecte";
+      return "Pasfhr\xe1sa n\xf3 eochair t\xe9arnaimh m\xedcheart";
     },
     get$inviteContact() {
-      return "Inviter un contact";
+      return "Tabhair cuireadh do theagmh\xe1il";
     },
     get$noChatDescriptionYet() {
-      return "Aucune description de discussion n'a encore \xe9t\xe9 cr\xe9\xe9e.";
+      return "N\xedl aon chur s\xedos ar an gcomhr\xe1 cruthaithe f\xf3s.";
     },
     get$tryAgain() {
-      return "Nouvelle tentative";
+      return "Bain triail eile as";
     },
     get$invited() {
-      return "Invit\xe9\xb7e";
+      return "Le cuireadh";
     },
     get$redactMessageDescription() {
-      return "Le message sera modifi\xe9 pour tous les participants de cette conversation. Il n'est pas possible de revenir en arri\xe8re.";
+      return "Athr\xf3far an teachtaireacht do gach rannph\xe1irt\xed sa chomhr\xe1 seo. N\xed f\xe9idir \xe9 seo a cheal\xfa.";
     },
     get$optionalRedactReason() {
-      return "(Facultatif) Raison de la modification de ce message...";
+      return "(Roghnach) An ch\xfais leis an teachtaireacht seo a chur in eagar...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " a invit\xe9 " + targetName;
+      return "\ud83d\udce9 thug " + username + " cuireadh do " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Uniquement les utilisateur\xb7ices invit\xe9\xb7es";
+      return "\xdas\xe1ideoir\xed le cuireadh amh\xe1in";
     },
     get$inviteForMe() {
-      return "Inviter pour moi";
+      return "Tabhair cuireadh dom";
     },
     get$isTyping() {
-      return "est en train d'\xe9crire\u2026";
+      return "ag cl\xf3scr\xedobh\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " a rejoint la discussion";
+      return "Th\xe1inig \ud83d\udc4b " + username + " isteach sa chomhr\xe1";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " a expuls\xe9 " + targetName;
+      return "\ud83d\udc5e chice\xe1il " + username + " " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Vu\xb7e pour la derni\xe8re fois\u202f: " + localizedTimeShort;
+      return "Gn\xedomhach deireanach: " + localizedTimeShort;
     },
     get$leave() {
-      return "Partir";
+      return "F\xe1g";
     },
     get$leftTheChat() {
-      return "A quitt\xe9 la discussion";
+      return "F\xe1gadh an comhr\xe1";
     },
     get$lightTheme() {
-      return "Clair";
+      return "Solas";
     },
     get$dehydrate() {
-      return "Exporter la session et effacer l'appareil";
+      return "Easp\xf3rt\xe1il seisi\xfan agus gl\xe9as wipe";
     },
     get$dehydrateWarning() {
-      return "Cette action ne peut pas \xeatre annul\xe9e. Assurez-vous d'enregistrer convenablement le fichier de sauvegarde.";
+      return "N\xed f\xe9idir an gn\xedomh seo a cheal\xfa. Cinntigh go st\xf3r\xe1lann t\xfa an comhad c\xfaltaca go s\xe1bh\xe1ilte.";
     },
     get$dehydrateTor() {
-      return "Utilisateurs/trices de TOR : Exporter la session";
+      return "\xdas\xe1ideoir\xed TOR: Seisi\xfan easp\xf3rt\xe1la";
     },
     get$dehydrateTorLong() {
-      return "Pour les utilisateurs/trices de TOR, il est recommand\xe9 d'exporter la session avant de fermer la fen\xeatre.";
+      return "Maidir le h\xfas\xe1ideoir\xed TOR, moltar an seisi\xfan a onnmhairi\xfa roimh dh\xfanadh an fhuinneog.";
     },
     get$loadingPleaseWait() {
-      return "Chargement\u2026 Veuillez patienter.";
+      return "Ag l\xf3d\xe1il\u2026 Fan, le do thoil.";
     },
     get$loadMore() {
-      return "Charger plus\u2026";
+      return "L\xf3d\xe1il n\xedos m\xf3\u2026";
     },
     get$locationDisabledNotice() {
-      return "Les services de localisation sont d\xe9sactiv\xe9s. Il est n\xe9cessaire de les activer avant de pouvoir partager votre localisation.";
+      return "T\xe1 seirbh\xeds\xed su\xedmh d\xedchumasaithe. Cuir ar a gcumas le do thoil a bheith in ann do shu\xedomh a roinnt.";
     },
     get$locationPermissionDeniedNotice() {
-      return "L'application n'a pas la permission d'acc\xe9der \xe0 votre localisation. Merci de l'accorder afin de pouvoir partager votre localisation.";
+      return "Di\xfalta\xedodh cead su\xedmh. Deonaigh d\xf3ibh le do thoil go mbeidh t\xfa in ann do shu\xedomh a roinnt.";
     },
     get$login() {
-      return "Se connecter";
+      return "Log\xe1il isteach";
     },
     get$logout() {
-      return "Se d\xe9connecter";
+      return "Log\xe1il amach";
     },
     get$mention() {
-      return "Mentionner";
+      return "Luaigh";
     },
     get$messages() {
-      return "Messages";
+      return "Teachtaireachta\xed";
     },
     get$messagesStyle() {
-      return "Messages\u202f:";
+      return "Teachtaireachta\xed:";
     },
     get$moderator() {
-      return "Mod\xe9rateur\xb7rice";
+      return "Modhn\xf3ir";
     },
     get$newChat() {
-      return "Nouvelle discussion";
+      return "Comhr\xe1 nua";
     },
     get$newVerificationRequest() {
-      return "Nouvelle demande de v\xe9rification !";
+      return "Iarratas f\xedoraithe nua!";
     },
     get$next(_) {
-      return "Suivant";
+      return "Ar Aghaidh";
     },
     get$no() {
-      return "Non";
+      return "N\xedl";
     },
     get$noConnectionToTheServer() {
-      return "Aucune connexion au serveur";
+      return "Gan aon nasc leis an bhfreastala\xed";
     },
     get$noEmotesFound() {
-      return "Aucune \xe9motic\xf4ne trouv\xe9e. \ud83d\ude15";
+      return "N\xedor aims\xedodh aon straoiseoga. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Partager un lien d'invitation";
+      return "Roinn an nasc cuireadh";
     },
     get$none() {
-      return "Aucun";
+      return "Aon cheann";
     },
     get$noPasswordRecoveryDescription() {
-      return "Vous n'avez pas encore ajout\xe9 de moyen pour r\xe9cup\xe9rer votre mot de passe.";
+      return "N\xedor chuir t\xfa bealach leis do phasfhocal a aisghabh\xe1il f\xf3s.";
     },
     get$noPermission() {
-      return "Aucune permission";
+      return "Gan cead";
     },
     get$noRoomsFound() {
-      return "Aucun salon trouv\xe9\u2026";
+      return "N\xedor aims\xedodh aon seomra\xed\u2026";
     },
     get$notifications() {
-      return "Notifications";
+      return "F\xf3gra\xed";
     },
     get$obtainingLocation() {
-      return "Obtention de la localisation\u2026";
+      return "ag Aimsi\xfa an su\xedomh\u2026";
     },
     get$offensive() {
-      return "Offensant";
+      return "Maslach";
     },
     get$ok() {
-      return "Valider";
+      return "Ceart go leor";
     },
     get$oopsSomethingWentWrong() {
-      return "Oups, un probl\xe8me est survenu\u2026";
+      return "\xdaps, chuaigh rud \xe9igin m\xedcheart \u2026";
     },
     get$oneClientLoggedOut() {
-      return "Un de vos clients a \xe9t\xe9 d\xe9connect\xe9";
+      return "T\xe1 duine de do chliaint log\xe1ilte amach";
     },
     get$openInMaps() {
-      return "Ouvrir dans maps";
+      return "Oscail i l\xe9arsc\xe1ileanna";
     },
     get$link() {
-      return "Lien";
+      return "Nasc";
     },
     get$serverRequiresEmail() {
-      return "Ce serveur doit valider votre adresse \xe9lectronique pour l'inscription.";
+      return "N\xed m\xf3r don fhreastala\xed seo do sheoladh r\xedomhphoist a bhail\xedocht\xfa le haghaidh cl\xe1r\xfach\xe1in.";
     },
     get$participant() {
-      return "Participant(e)";
+      return "Rannph\xe1irt\xed";
     },
     get$passphraseOrKey() {
-      return "Phrase de passe ou cl\xe9 de r\xe9cup\xe9ration";
+      return "pasfhr\xe1sa n\xf3 eochair t\xe9arnaimh";
     },
     get$password(_) {
-      return "Mot de passe";
+      return "Pasfhocal";
     },
     get$passwordForgotten() {
-      return "Mot de passe oubli\xe9";
+      return "Pasfhocal dearmadta";
     },
     get$passwordHasBeenChanged() {
-      return "Le mot de passe a \xe9t\xe9 modifi\xe9";
+      return "Athra\xedodh an pasfhocal";
     },
     get$overview() {
-      return "Aper\xe7u";
+      return "Forbhreathn\xfa";
     },
     get$passwordRecoverySettings() {
-      return "Param\xe8tres de r\xe9cup\xe9ration de mot de passe";
+      return "Socruithe athshl\xe1naithe pasfhocal";
     },
     get$passwordRecovery() {
-      return "R\xe9cup\xe9ration du mot de passe";
+      return "Aisfh\xe1il pasfhocail";
     },
     get$pickImage() {
-      return "Choisir une image";
+      return "Roghnaigh \xedomh\xe1";
     },
     get$pin() {
-      return "\xc9pingler";
+      return "Bior\xe1n";
     },
     get$pleaseChoose() {
-      return "Veuillez choisir";
+      return "Roghnaigh le do thoil";
     },
     get$pleaseEnterYourPassword() {
-      return "Renseignez votre mot de passe";
+      return "Iontr\xe1il do phasfhocal le do thoil";
     },
     get$pleaseEnterYourPin() {
-      return "Veuillez saisir votre code PIN";
+      return "Cuir isteach d'uimhir PIN le do thoil";
     },
     get$pleaseEnterYourUsername() {
-      return "Renseignez votre nom d'utilisateur\xb7ice";
+      return "Cuir isteach d'ainm \xfas\xe1ideora le do thoil";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Veuillez suivre les instructions sur le site et appuyer sur Suivant.";
+      return 'Lean na treoracha ar an su\xedomh gr\xe9as\xe1in agus tap\xe1il "ar aghaidh".';
     },
     get$privacy() {
-      return "Vie priv\xe9e";
+      return "Pr\xedobh\xe1ideacht";
     },
     get$reason(_) {
-      return "Motif";
+      return "F\xe1th";
     },
     redactedBy$1(username) {
-      return "Modifi\xe9 par " + username;
+      return "Arna chur in eagar ag " + username;
     },
     get$directChat() {
-      return "Discussion directe";
+      return "Comhr\xe1 d\xedreach";
     },
     redactedByBecause$2(username, reason) {
-      return "Modifi\xe9 par " + username + ' car\u202f: "' + reason + '"';
+      return "Athbhreithnithe ag " + username + ' mar: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " a supprim\xe9 un \xe9v\xe8nement";
+      return "Rinne " + username + " cinsire imeacht";
     },
     get$redactMessage() {
-      return "Supprimer un message";
+      return "Bain teachtaireacht amach";
     },
     get$reject() {
-      return "Refuser";
+      return "Di\xfaltaigh";
     },
     rejectedTheInvitation$1(username) {
-      return username + " a refus\xe9 l'invitation";
+      return "Dhi\xfaltaigh " + username + " don chuireadh";
     },
     get$removeAllOtherDevices() {
-      return "Supprimer tous les autres appareils";
+      return "Bain gach gl\xe9as eile";
     },
     get$unbanFromChat() {
-      return "D\xe9bannissement de la discussion";
+      return "Cuir deireadh an cosc \xf3n gcomhr\xe1";
     },
     get$removeYourAvatar() {
-      return "Supprimer votre avatar";
+      return "Bain d'abhat\xe1r";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Remplacer le salon par une nouvelle version";
+      return "Cuir leagan seomra n\xedos nua\xed in ionad an tseomra";
     },
     get$reply(_) {
-      return "R\xe9pondre";
+      return "Freagair";
     },
     get$reportMessage() {
-      return "Signaler un message";
+      return "Tuairiscigh teachtaireacht";
     },
     get$roomHasBeenUpgraded() {
-      return "Le salon a \xe9t\xe9 mis \xe0 niveau";
+      return "Uasghr\xe1da\xedodh an seomra";
     },
     get$search(_) {
-      return "Rechercher";
+      return "Cuardaigh";
     },
     get$security() {
-      return "S\xe9curit\xe9";
+      return "Sl\xe1nd\xe1il";
     },
     get$send(_) {
-      return "Envoyer";
+      return "Seol";
     },
     get$sendAMessage() {
-      return "Envoyer un message";
+      return "Seol teachtaireacht";
     },
     get$sendAudio() {
-      return "Envoyer un fichier audio";
+      return "Seol fuaim";
     },
     get$sendFile() {
-      return "Envoyer un fichier";
+      return "Seol comhad";
     },
     get$sendImage() {
-      return "Envoyer une image";
+      return "Seol \xedomh\xe1";
     },
     sendImages$1(count) {
-      return "Envoyer " + count + " image(s)";
+      return "Seol " + count + " \xedomh\xe1";
     },
     get$sendMessages() {
-      return "Envoyer des messages";
+      return "Seol teachtaireachta\xed";
     },
     get$sendVideo() {
-      return "Envoyer une vid\xe9o";
+      return "Seol f\xedse\xe1n";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " a envoy\xe9 un fichier";
+      return "\ud83d\udcc1 sheol " + username + " comhad";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " a envoy\xe9 un fichier audio";
+      return "\ud83c\udfa4 sheol " + username + " fuaim";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " a envoy\xe9 une image";
+      return "\ud83d\uddbc\ufe0f sheol " + username + " picti\xfar";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " a envoy\xe9 un autocollant";
+      return "\ud83d\ude0a sheol " + username + " gream\xe1n";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " a envoy\xe9 une vid\xe9o";
+      return "\ud83c\udfa5 sheol " + username + " f\xedse\xe1n";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " a envoy\xe9 des informations sur l'appel";
+      return "Sheol " + senderName + " faisn\xe9is maidir le glaonna";
     },
     get$separateChatTypes() {
-      return "S\xe9parer les discussions directes et les groupes";
+      return "Comhr\xe1ite D\xedreacha agus Gr\xfapa\xed ar Leith";
     },
     get$setChatDescription() {
-      return "D\xe9finir la description de la discussion";
+      return "Socraigh cur s\xedos ar an gcomhr\xe1";
     },
     get$setStatus() {
-      return "D\xe9finir le statut";
+      return "Cuir st\xe1das";
     },
     get$settings() {
-      return "Param\xe8tres";
+      return "Socruithe";
     },
     get$share(_) {
-      return "Partager";
+      return "Roinn";
     },
     sharedTheLocation$1(username) {
-      return username + " a partag\xe9 sa position";
+      return "Roinn " + username + " a su\xedomh";
     },
     get$shareLocation() {
-      return "Partager la localisation";
+      return "Roinn su\xedomh";
     },
     get$presencesToggle() {
-      return "Afficher les messages de statut des autres utilisateurs/trices";
+      return "Taispe\xe1in teachtaireachta\xed st\xe1dais \xf3 \xfas\xe1ideoir\xed eile";
     },
     get$skip(_) {
-      return "Ignorer";
+      return "L\xe9im";
     },
     get$sourceCode() {
-      return "Code source";
+      return "C\xf3d foinseach";
     },
     startedACall$1(senderName) {
-      return senderName + " a d\xe9marr\xe9 un appel";
+      return "Thosaigh " + senderName + " glao";
     },
     get$status(_) {
-      return "Statut";
+      return "Staid";
     },
     get$statusExampleMessage() {
-      return "Comment allez-vous aujourd'hui ?";
+      return "Conas at\xe1 t\xfa inniu?";
     },
     get$submit(_) {
-      return "Soumettre";
+      return "Cuir isteach";
     },
     get$synchronizingPleaseWait() {
-      return "Synchronisation... Veuillez patienter.";
+      return "Ag sioncr\xf3n\xfa... Fan, le do thoil.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synchronisation\u2026 (" + percentage + " %)";
+      return " Ag sioncron\xfa\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Syst\xe8me";
+      return "C\xf3ras";
     },
     get$theyDontMatch() {
-      return "Elles ne correspondent pas";
+      return "N\xedl siad c\xe9anna";
     },
     get$theyMatch() {
-      return "Elles correspondent";
+      return "T\xe1 siad c\xe9anna";
     },
     get$tooManyRequestsWarning() {
-      return "Trop de requ\xeates. Veuillez r\xe9essayer plus tard\xa0!";
+      return "An iomarca iarratas. Bain triail eile as n\xedos d\xe9ana\xed!";
     },
     get$tryToSendAgain() {
-      return "Retenter l'envoi";
+      return "D\xe9an iarracht a sheoladh ar\xeds";
     },
     get$unavailable() {
-      return "Indisponible";
+      return "N\xedl ar f\xe1il";
     },
     unbannedUser$2(username, targetName) {
-      return username + " a annul\xe9 le bannissement de " + targetName;
+      return "Chuir " + username + " deireadh an cosc " + targetName;
     },
     get$unblockDevice() {
-      return "Retirer le blocage sur l'appareil";
+      return "D\xedbhloc\xe1il Gl\xe9as";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Algorithme de chiffrement inconnu";
+      return "Algartam criptithe anaithnid";
     },
     unknownEvent$1(type) {
-      return "\xc9v\xe9nement de type inconnu : '" + type + "'";
+      return "Imeacht anaithnid '" + type + "'";
     },
     get$unpin() {
-      return "D\xe9s\xe9pingler";
+      return "Bain bior\xe1n";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " et " + count + " autres sont en train d'\xe9crire\u2026";
+      return "t\xe1 " + username + " agus " + count + " daoine eile ag cl\xf3scr\xedobh\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " et " + username2 + " sont en train d'\xe9crire\u2026";
+      return "T\xe1 " + username + " agus " + username2 + " ag cl\xf3scr\xedobh\u2026";
     },
     userIsTyping$1(username) {
-      return username + " est en train d'\xe9crire\u2026";
+      return "T\xe1 " + username + " ag cl\xf3scr\xedobh\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " a quitt\xe9 la discussion";
+      return "\ud83d\udeaa D'fh\xe1g " + username + " an comhr\xe1";
     },
     get$username(_) {
-      return "Nom d'utilisateur\xb7ice";
+      return "Ainm \xfas\xe1ideora";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " a envoy\xe9 un \xe9v\xe8nement de type " + type;
+      return "Sheol " + username + " imeacht " + type;
     },
     get$unverified() {
-      return "Non v\xe9rifi\xe9";
+      return "Neamhfh\xedoraithe";
     },
     get$verified() {
-      return "V\xe9rifi\xe9";
+      return "Deimhnithe";
     },
     get$verifyStart() {
-      return "Commencer la v\xe9rification";
+      return "Tosaigh F\xedor\xfa";
     },
     get$verifySuccess() {
-      return "La v\xe9rification a \xe9t\xe9 effectu\xe9e avec succ\xe8s !";
+      return "D'fh\xedoraigh t\xfa go rath\xfail!";
     },
     get$verifyTitle() {
-      return "V\xe9rification de l'autre compte";
+      return "Ag f\xedor\xfa cuntas eile";
     },
     get$visibleForAllParticipants() {
-      return "Visible pour tous les participant\xb7es";
+      return "Infheicthe do na rannph\xe1irtithe go l\xe9ir";
     },
     get$visibleForEveryone() {
-      return "Visible pour tout le monde";
+      return "Infheicthe do gach duine";
     },
     get$voiceMessage() {
-      return "Message vocal";
+      return "Gl\xf3rphost";
     },
     get$waitingPartnerAcceptRequest() {
-      return "En attente de l'acceptation de la demande par le partenaire\u2026";
+      return "Ag fanacht le comhph\xe1irt\xed glacadh leis an iarratas\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "En attente de l'acceptation de l'\xe9moji par le partenaire\u2026";
+      return "Ag fanacht le comhph\xe1irt\xed glacadh leis na straoiseoga\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "En attente de l'acceptation des nombres par le partenaire\u2026";
+      return "Ag fanacht le comhph\xe1irt\xed glacadh leis na huimhreacha \u2026";
     },
     get$warning() {
-      return "Attention\xa0!";
+      return "Rabhadh!";
     },
     get$weSentYouAnEmail() {
-      return "Nous vous avons envoy\xe9 un courriel";
+      return "Sheolamar r\xedomhphost chugat";
     },
     get$whyDoYouWantToReportThis() {
-      return "Pourquoi voulez-vous le signaler ?";
+      return "C\xe9n f\xe1th ar mhaith leat \xe9 seo a thuairisci\xfa?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Gr\xe2ce \xe0 ces adresses, vous pouvez r\xe9cup\xe9rer votre mot de passe si vous en avez besoin.";
+      return "Leis na seolta\xed seo is f\xe9idir leat do phasfhocal a athshl\xe1n\xfa.";
     },
     get$writeAMessage() {
-      return "\xc9crivez un message\u2026";
+      return "Scr\xedobh teachtaireacht\u2026";
     },
     get$yes() {
-      return "Oui";
+      return "T\xe1";
     },
     get$you() {
-      return "Vous";
+      return "T\xfa";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Vous ne participez plus \xe0 cette discussion";
+      return "N\xedl t\xfa ag glacadh p\xe1irte sa chomhr\xe1 seo a thuilleadh";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Vous avez \xe9t\xe9 banni\xb7e de cette discussion";
+      return "Cuireadh cosc ort \xf3n gcomhr\xe1 seo";
     },
     get$yourPublicKey() {
-      return "Votre cl\xe9 publique";
+      return "D'eochair phoibl\xed";
     },
     get$messageInfo() {
-      return "Informations sur le message";
+      return "Eolas teachtaireachta";
     },
     get$time(_) {
-      return "Heure";
+      return "Am";
     },
     get$sender() {
-      return "Exp\xe9diteur/trice";
+      return "Seolt\xf3ir";
     },
     get$openGallery() {
-      return "Ouvrir dans la Galerie";
+      return "Oscail gaileara\xed";
     },
     get$start(_) {
-      return "Commencer";
+      return "Tosaigh";
     },
     get$markAsRead() {
-      return "Marquer comme lu";
+      return "Marc\xe1il mar l\xe9ite";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " a r\xe9agi avec " + reaction;
+      return "D'fhreagair " + sender + " le " + reaction;
     },
     get$pinMessage() {
-      return "\xc9pingler au salon";
+      return "PIN go seomra";
     },
     get$emojis() {
-      return "\xc9mojis";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "Vous avez rejet\xe9 l'invitation";
+      return "Dhi\xfaltaigh t\xfa don chuireadh";
     },
     get$youJoinedTheChat() {
-      return "Vous avez rejoint la discussion";
+      return "Chuaigh t\xfa isteach sa chomhr\xe1";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Vous avez accept\xe9 l'invitation";
+      return "\ud83d\udc4d Ghlac t\xfa leis an gcuireadh";
     },
     youBannedUser$1(user) {
-      return "Vous avez banni " + user;
+      return "Chuir t\xfa cosc ar " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Vous avez retir\xe9 l'invitation pour " + user;
+      return "Tharraing t\xfa siar an cuireadh do " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Vous avez \xe9t\xe9 invit\xe9 par " + user;
+      return "\ud83d\udce9 Thug " + user + " cuireadh duit";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Vous avez invit\xe9 " + user;
+      return "\ud83d\udce9 Thug t\xfa cuireadh do " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Vous avez d\xe9gag\xe9 " + user;
+      return "\ud83d\udc5e Chice\xe1il t\xfa " + user;
     },
     youUnbannedUser$1(user) {
-      return "Vous avez d\xe9banni " + user;
+      return "Unbanned t\xfa " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " a frapp\xe9";
+      return "\ud83d\udeaa T\xe1 " + user + " tar \xe9is cnagadh";
     },
     countFiles$1(count) {
-      return "" + count + " fichiers";
+      return "Comhaid " + count;
     },
     get$user() {
-      return "Utilisateur/trice";
+      return "\xdas\xe1ideoir";
     },
     get$custom() {
-      return "Personnalis\xe9";
+      return "Saincheaptha";
     },
     get$noKeyForThisMessage() {
-      return "Cela peut se produire si le message a \xe9t\xe9 envoy\xe9 avant que vous ne vous soyez connect\xe9 \xe0 votre compte sur cet appareil.\n\nIl est \xe9galement possible que l'exp\xe9diteur ait bloqu\xe9 votre appareil ou qu'un probl\xe8me de connexion Internet se soit produit.\n\n\xcates-vous capable de lire le message sur une autre session ? Vous pouvez alors transf\xe9rer le message \xe0 partir de celle-ci ! Allez dans Param\xe8tres > Appareils et assurez-vous que vos appareils se sont v\xe9rifi\xe9s mutuellement. Lorsque vous ouvrirez le salon la fois suivante et que les deux sessions seront au premier plan, les cl\xe9s seront transmises automatiquement.\n\nVous ne voulez pas perdre les cl\xe9s en vous d\xe9connectant ou en changeant d'appareil ? Assurez-vous que vous avez activ\xe9 la sauvegarde de la discussion dans les param\xe8tres.";
+      return "F\xe9adfaidh s\xe9 seo tarl\xfa m\xe1 seoladh an teachtaireacht sular sh\xednigh t\xfa isteach ar do chuntas ag an ngl\xe9as seo.\n\nIs f\xe9idir freisin gur chuir an seolt\xf3ir bac ar do ghl\xe9as n\xf3 go ndeachaigh rud \xe9igin m\xedcheart leis an nasc idirl\xedn.\n\nAn bhfuil t\xfa in ann an teachtaireacht a l\xe9amh ar sheisi\xfan eile? Ansin is f\xe9idir leat an teachtaireacht a aistri\xfa uaidh! T\xe9igh go Socruithe > Gl\xe9asanna agus cinntigh go bhfuil do ghl\xe9asanna f\xedoraithe a ch\xe9ile. Nuair a oscla\xedonn t\xfa an seomra an ch\xe9ad uair eile agus an d\xe1 sheisi\xfan sa tulra, d\xe9anfar na heochracha a tharchur go huathoibr\xedoch.\n\nN\xe1r mhaith leat na heochracha a chailleadh agus t\xfa ag log\xe1il amach n\xf3 ag aistri\xfa gl\xe9asanna? D\xe9an cinnte go bhfuil an c\xfaltaca comhr\xe1 cumasaithe agat sna socruithe.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Discussion vide (\xe9tait " + oldDisplayName + ")";
+      return "Comhr\xe1 folamh (bh\xed " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Rouvrir la discussion";
+      return "Comhr\xe1 a athoscailt";
     },
     get$noOtherDevicesFound() {
-      return "Aucun autre appareil trouv\xe9";
+      return "N\xedor aims\xedodh aon ghl\xe9as eile";
     },
     fileIsTooBigForServer$1(max) {
-      return "Impossible d'envoyer\u202f! Le serveur accepte uniquement les pi\xe8ces jointes jusqu'\xe0 " + max + ".";
+      return "N\xed f\xe9idir seol! N\xed thaca\xedonn an freastala\xed ach le ceangalt\xe1in suas le " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Aller au dernier message lu";
+      return "L\xe9im go dt\xed an teachtaireacht l\xe9ite is d\xe9ana\xed";
     },
     get$readUpToHere() {
-      return "Lisez jusqu\u2019ici";
+      return "L\xe9igh suas go dt\xed seo";
     },
     get$jump() {
-      return "Sauter";
+      return "L\xe9im";
     },
     get$openLinkInBrowser() {
-      return "Ouvrir le lien dans le navigateur";
+      return "Oscail nasc sa bhrabhs\xe1la\xed";
     },
     get$setColorTheme() {
-      return "D\xe9finir la couleur du th\xe8me\u202f:";
+      return "Socraigh t\xe9ama datha:";
     },
     get$invite() {
-      return "Inviter";
+      return "Tabhair cuireadh";
     },
     get$invalidInput() {
-      return "Entr\xe9e invalide\u202f!";
+      return "Ionchur neamhbhail\xed!";
     },
     wrongPinEntered$1(seconds) {
-      return "Mauvais code PIN saisi\u202f! Veuillez r\xe9essayer dans " + seconds + " secondes...";
+      return "Th\xe1inig bior\xe1n m\xedcheart isteach! Bain triail eile as i " + seconds + " soicind...";
     },
     get$pleaseEnterANumber() {
-      return "Veuillez saisir un nombre sup\xe9rieur \xe0 0";
+      return "Iontr\xe1il uimhir n\xedos m\xf3 n\xe1 0";
     },
     get$removeDevicesDescription() {
-      return "Vous serez d\xe9connect\xe9 de cet appareil et ne pourrez plus recevoir de messages.";
+      return "Beidh t\xfa log\xe1ilte amach as an ngl\xe9as seo agus n\xed bheidh t\xfa in ann teachtaireachta\xed a fh\xe1il a thuilleadh.";
     },
     get$banUserDescription() {
-      return "L'utilisateur/trice sera banni de la discussion et ne pourra plus y acc\xe9der jusqu'\xe0 ce qu'il/elle soit d\xe9banni.";
+      return "Beidh cosc ar an \xfas\xe1ideoir \xf3n gcomhr\xe1 agus n\xed bheidh s\xe9 in ann dul isteach sa chomhr\xe1 ar\xeds go dt\xed go mbeidh siad gan chosc.";
     },
     get$unbanUserDescription() {
-      return "L'utilisateur/trice pourra entrer \xe0 nouveau dans la discussion si il/elle le souhaite.";
+      return "Beidh an t-\xfas\xe1ideoir in ann dul isteach sa chomhr\xe1 ar\xeds m\xe1 dh\xe9anann siad iarracht.";
     },
     get$kickUserDescription() {
-      return "L'utilisateur/trice est expuls\xe9 de la discussion mais n'est pas banni. Dans les discussions publiques, l'utilisateur/trice peut revenir \xe0 tout moment.";
+      return "Cice\xe1iltear an t-\xfas\xe1ideoir as an gcomhr\xe1 ach n\xedl cosc air. I gcomhr\xe1ite poibl\xed, is f\xe9idir leis an \xfas\xe1ideoir teacht ar ais ag am ar bith.";
     },
     get$makeAdminDescription() {
-      return "Une fois que vous aurez nomm\xe9 cet utilisateur/trice administrateur, vous ne pourrez peut-\xeatre plus annuler cette op\xe9ration, car il disposera alors des m\xeames autorisations que vous.";
+      return "Nuair a dh\xe9anann t\xfa an riarach\xe1n \xfas\xe1ideora seo, b'fh\xe9idir nach mbeidh t\xfa in ann \xe9 seo a cheal\xfa mar go mbeidh na ceadanna c\xe9anna acu agus at\xe1 agat.";
     },
     get$yourGlobalUserIdIs() {
-      return "Votre identifiant utilisateur global est\u202f: ";
+      return "Is \xe9 d'aitheantas \xfas\xe1ideora domhanda: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return "Malheureusement, aucun utilisateur/trice n'a pu \xeatre trouv\xe9 avec \"" + query + "\". Veuillez v\xe9rifier si vous n'avez pas fait de faute de frappe.";
+      return 'Ar an drochuair n\xed fh\xe9adfa\xed aon \xfas\xe1ideoir a aimsi\xfa le "' + query + '". Seice\xe1il le do thoil an ndearna t\xfa typo.';
     },
     get$knocking() {
-      return "Frapper";
+      return "Cnagadh";
     },
     get$nothingFound() {
-      return "Rien n'a \xe9t\xe9 trouv\xe9...";
+      return "N\xedor aims\xedodh aon rud...";
     },
     get$groupName() {
-      return "Nom du groupe";
+      return "Ainm an ghr\xfapa";
     },
     get$wrongRecoveryKey() {
-      return "D\xe9sol\xe9... il ne semble pas s'agir de la bonne cl\xe9 de r\xe9cup\xe9ration.";
+      return "T\xe1 br\xf3n orm... N\xed cos\xfail gurb \xe9 seo an eochair aisghabh\xe1la ceart.";
     },
     get$startConversation() {
-      return "D\xe9marrer la conversation";
+      return "Tosaigh comhr\xe1";
     },
     get$commandHint_sendraw() {
-      return "Envoyer du JSON brut";
+      return "Seol json amh";
     },
     get$leaveEmptyToClearStatus() {
-      return "Laisser vide pour effacer votre statut.";
+      return "F\xe1g folamh chun do st\xe1das a ghlanadh.";
     },
     get$searchForUsers() {
-      return "Rechercher des @utilisateurs/trices...";
+      return "Cuardaigh @users...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Veuillez saisir votre mot de passe actuel";
+      return "Iontr\xe1il do phasfhocal reatha le do thoil";
     },
     get$newPassword() {
-      return "Nouveau mot de passe";
+      return "Pasfhocal nua";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Veuillez choisir un mot de passe fort";
+      return "Roghnaigh pasfhocal l\xe1idir";
     },
     get$passwordsDoNotMatch() {
-      return "Les mots de passe ne correspondent pas";
+      return "N\xed mheaitse\xe1lann pasfhocail";
     },
     get$passwordIsWrong() {
-      return "Votre mot de passe saisi est erron\xe9";
+      return "T\xe1 do phasfhocal iontr\xe1la m\xedcheart";
     },
     get$decline() {
-      return "Refuser";
+      return "Meath";
     },
     get$thisDevice() {
-      return "Cet appareil\u202f:";
+      return "An gl\xe9as seo:";
     },
     get$initAppError() {
-      return "Une erreur est survenue pendant l'initialisation de l'application";
+      return "Tharla earr\xe1id agus an feidhmchl\xe1r \xe1 thos\xfa";
     },
     searchIn$1(chat) {
-      return 'Rechercher dans la discussion "' + chat + '"...';
+      return 'Cuardaigh i gcomhr\xe1 "' + chat + '"...';
     },
     get$searchMore() {
-      return "Rechercher davantage...";
+      return "Cuardaigh tuilleadh...";
     },
     get$gallery() {
-      return "Galerie";
+      return "Gaileara\xed";
     },
     get$files(_) {
-      return "Fichiers";
+      return "Comhaid";
     },
     sessionLostBody$2(url, error) {
-      return "Votre session est perdue. Veuillez signaler cette erreur aux d\xe9veloppeurs \xe0 " + url + ". Le message d'erreur est le suivant\u202f: " + error;
+      return "Cailltear do sheisi\xfan. Tuairiscigh an earr\xe1id seo do na forbr\xf3ir\xed ag " + url + ". Is \xed an teachtaireacht earr\xe1ide: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "L'application tente maintenant de restaurer votre session depuis la sauvegarde. Veuillez signaler cette erreur aux d\xe9veloppeurs \xe0 " + url + ". Le message d'erreur est le suivant\u202f: " + error;
+      return "D\xe9anann an aip iarracht anois do sheisi\xfan a chur ar ais \xf3n gc\xfaltaca. Tuairiscigh an earr\xe1id seo do na forbr\xf3ir\xed ag " + url + ". Is \xed an teachtaireacht earr\xe1ide: " + error;
     },
     get$sendReadReceipts() {
-      return "Envoyer des accus\xe9s de r\xe9ception";
+      return "Seol admh\xe1lacha l\xe9ite";
     },
     get$sendTypingNotificationsDescription() {
-      return "Les autres participants \xe0 une discussion peuvent voir que vous \xeates en train de taper un nouveau message.";
+      return "Is f\xe9idir le rannph\xe1irtithe eile i gcomhr\xe1 a fheice\xe1il nuair at\xe1 teachtaireacht nua \xe1 cl\xf3scr\xedobh agat.";
     },
     get$sendReadReceiptsDescription() {
-      return "Les autres participants \xe0 une discussion peuvent voir si vous avez lu un message.";
+      return "Is f\xe9idir le rannph\xe1irtithe eile i gcomhr\xe1 a fheice\xe1il nuair a bh\xedonn teachtaireacht l\xe9ite agat.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 V\xe9rifier l'autre appareil";
+      return "\ud83d\udd10 F\xedoraigh gl\xe9as eile";
     },
     get$verifyOtherDeviceDescription() {
-      return "Lorsque vous v\xe9rifiez un autre appareil, ces appareils peuvent \xe9changer des cl\xe9s, ce qui augmente votre s\xe9curit\xe9 globale. \ud83d\udcaa Lorsque vous lancez une v\xe9rification, une fen\xeatre contextuelle s'affiche dans l'application sur les deux appareils. Vous y verrez alors une s\xe9rie d'\xe9motic\xf4nes ou de chiffres que vous devrez comparer. Il est pr\xe9f\xe9rable d'avoir les deux appareils \xe0 port\xe9e de main avant de lancer la v\xe9rification. \ud83e\udd33";
+      return "Nuair a fh\xedora\xedonn t\xfa gl\xe9as eile, is f\xe9idir leis na gl\xe9asanna sin eochracha a mhalart\xfa, do shl\xe1nd\xe1il fhorioml\xe1n a mh\xe9ad\xfa. \ud83d\udcaa Nuair a thosa\xedonn t\xfa f\xedor\xfa, beidh preabfhuinneog le feice\xe1il san aip ar an d\xe1 ghl\xe9as. Ansin feicfidh t\xfa sraith emojis n\xf3 uimhreacha a chaithfidh t\xfa a chur i gcompar\xe1id lena ch\xe9ile. Is fearr an d\xe1 ghl\xe9as a bheith \xe1isi\xfail sula dtosa\xedonn t\xfa ar an bhf\xedor\xfa. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " a accept\xe9 la v\xe9rification de cl\xe9";
+      return sender + " glacadh le f\xedor\xfa eochair";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " a annul\xe9 la v\xe9rification de cl\xe9";
+      return sender + " cealaithe f\xedor\xfa eochrach";
     },
     completedKeyVerification$1(sender) {
-      return sender + " a termin\xe9 la v\xe9rification de cl\xe9";
+      return sender + " f\xedor\xfa eochair cr\xedochnaithe";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " est pr\xeat pour la v\xe9rification de cl\xe9";
+      return "T\xe1 " + sender + " r\xe9idh le haghaidh f\xedor\xfa eochair";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " a demand\xe9 une v\xe9rification de cl\xe9";
+      return "D'iarr " + sender + " f\xedor\xfa eochrach";
     },
     startedKeyVerification$1(sender) {
-      return sender + " a lanc\xe9 la v\xe9rification de cl\xe9";
+      return "Thosaigh " + sender + " f\xedor\xfa eochrach";
     },
     get$commandHint_ignore() {
-      return "Ignorer l'identifiant Matrix indiqu\xe9";
+      return "D\xe9an neamhaird d'aitheantas na maitr\xedse sonraithe";
     },
     get$commandHint_unignore() {
-      return "Ne plus ignorer l'identifiant Matrix indiqu\xe9";
+      return "Unignore an ID maitr\xeds tugtha";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Actuellement, il y a " + count + " utilisateurs/trices bloqu\xe9s.";
+      return "Faoi l\xe1thair t\xe1 bac curtha ar \xfas\xe1ideoir\xed " + count + ".";
     },
     get$restricted() {
-      return "Limit\xe9";
+      return "Srianta";
     },
     get$markAsUnread() {
-      return "Marquer comme non lu";
+      return "Marc\xe1il mar gan l\xe9amh";
     },
     userLevel$1(level) {
-      return "" + level + " \u2014 Membre";
+      return "" + level + " - \xdas\xe1ideoir";
     },
     moderatorLevel$1(level) {
-      return "" + level + " \u2014 Mod\xe9ration";
+      return "" + level + " - Modhn\xf3ir";
     },
     adminLevel$1(level) {
-      return "" + level + " \u2014 Administration";
+      return "" + level + " - Riarach\xe1n";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Modifier la visibilit\xe9 de l'historique de la discussion";
+      return "Athraigh infheictheacht stair an chomhr\xe1";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Modifier l'adresse publique principale de la discussion";
+      return "Athraigh an pr\xedomhsheoladh comhr\xe1 poibl\xed";
     },
     get$sendRoomNotifications() {
-      return "Envoyer une notification @room";
+      return "Seol f\xf3gra\xed @room";
     },
     get$chatPermissionsDescription() {
-      return "D\xe9finir quel niveau de pouvoir est n\xe9cessaires pour certaines actions dans cette discussion. Les niveaux de pouvoir 0, 50 et 100 repr\xe9sentent g\xe9n\xe9ralement les membres, la mod\xe9ration et l'administration, mais toute gradation est possible.";
+      return "Sainmh\xednigh c\xe9n leibh\xe9al cumhachta is g\xe1 le haghaidh gn\xedomhartha \xe1irithe sa chomhr\xe1 seo. De ghn\xe1th b\xedonn na leibh\xe9il chumhachta 0, 50 agus 100 ag d\xe9anamh ionada\xedochta d'\xfas\xe1ideoir\xed, do mhodhn\xf3ir\xed agus do riarth\xf3ir\xed, ach is f\xe9idir aon ghr\xe1d\xfa a dh\xe9anamh.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 La mise \xe0 niveau " + version + " est install\xe9e\u202f!";
+      return "\ud83c\udf89 Nuashonraigh " + version + " suite\xe1ilte!";
     },
     get$sendCanceled() {
-      return "Envoi annul\xe9";
+      return "Ceala\xedodh seoladh";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Il ne semble pas s'agir d'un serveur principal compatible. Mauvaise URL ?";
+      return "N\xed cos\xfail gur freastala\xed baile comhoiri\xfanach \xe9. URL m\xedcheart?";
     },
     get$calculatingFileSize() {
-      return "Calcul de la taille du fichier...";
+      return "M\xe9id an chomhaid \xe1 r\xedomh...";
     },
     get$prepareSendingAttachment() {
-      return "Pr\xe9parer l'envoi de la pi\xe8ce jointe...";
+      return "Ullmhaigh an t- iat\xe1n \xe1 sheoladh...";
     },
     get$sendingAttachment() {
-      return "Envoi de la pi\xe8ce jointe...";
+      return "Iat\xe1n \xe1 sheoladh...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Envoi de la pi\xe8ce jointe " + index + " sur " + $length + "...";
+      return "Ceangalt\xe1n " + index + " de " + $length + " \xe1 sheoladh...";
     },
     serverLimitReached$1(seconds) {
-      return "Limite du serveur atteinte ! Attente de " + seconds + " secondes...";
+      return "Sroicheadh teorainn an fhreastala\xed! Ag fanacht " + seconds + " soicind...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Remarque : lorsque vous connectez tous vos appareils \xe0 la sauvegarde de chat, ils sont automatiquement v\xe9rifi\xe9s.";
+      return "N\xf3ta: Nuair a nascann t\xfa do ghl\xe9asanna go l\xe9ir leis an gc\xfaltaca comhr\xe1, d\xe9antar iad a fh\xedor\xfa go huathoibr\xedoch.";
     },
     get$continueText() {
-      return "Continuer";
+      return "Lean ar aghaidh";
     },
     get$blur(_) {
-      return "Flou :";
+      return "Doil\xe9irigh:";
     },
     get$opacity(_) {
-      return "Opacit\xe9 :";
+      return "Teimhneacht:";
     },
     get$setWallpaper() {
-      return "D\xe9finir le fond d'\xe9cran";
+      return "Socraigh c\xfalbhrat";
     },
     get$noContactInformationProvided() {
-      return "Le serveur ne fournit aucune information de contact valide";
+      return "N\xed shol\xe1thra\xedonn an freastala\xed aon fhaisn\xe9is teagmh\xe1la bhail\xed";
     },
     get$contactServerAdmin() {
-      return "Contacter l'administrateur du serveur";
+      return "D\xe9an teagmh\xe1il le admin an fhreastala\xed";
     },
     get$contactServerSecurity() {
-      return "Contacter la s\xe9curit\xe9 du serveur";
+      return "D\xe9an teagmh\xe1il le sl\xe1nd\xe1il an fhreastala\xed";
     },
     get$supportPage() {
-      return "Page de support";
+      return "Leathanach taca\xedochta";
     },
     get$serverInformation() {
-      return "Informations sur le serveur :";
+      return "Eolas freastala\xed:";
     },
     get$name(_) {
-      return "Nom";
+      return "Ainm";
     },
     get$version(_) {
-      return "Version";
+      return "Leagan";
     },
     get$compress() {
-      return "Compresser";
+      return "Comhbhr\xfaigh";
     },
     get$boldText() {
-      return "Texte en gras";
+      return "T\xe9acs trom";
     },
     get$italicText() {
-      return "Texte en italique";
+      return "T\xe9acs iod\xe1lach";
     },
     get$strikeThrough() {
-      return "Barr\xe9";
+      return "Stailc tr\xedd";
     },
     get$pleaseFillOut() {
-      return "Veuillez remplir";
+      return "L\xedon amach le do thoil";
     },
     get$invalidUrl() {
-      return "URL invalide";
+      return "URL neamhbhail\xed";
     },
     get$addLink() {
-      return "Ajouter un lien";
+      return "Cuir nasc leis";
     },
     get$unableToJoinChat() {
-      return "Impossible de rejoindre la conversation. Peut-\xeatre que l'autre partie a d\xe9j\xe0 ferm\xe9 la discussion.";
+      return "N\xed f\xe9idir p\xe1irt a ghlacadh sa chomhr\xe1. B\u2019fh\xe9idir go bhfuil an comhr\xe1 d\xfanta cheana f\xe9in ag an bp\xe1irt\xed eile.";
     },
     get$previous() {
-      return "Pr\xe9c\xe9dent";
+      return "Roimhe Seo";
     },
     get$otherPartyNotLoggedIn() {
-      return "L'autre partie n'est pas actuellement connect\xe9e et ne peut donc pas recevoir de messages !";
+      return "N\xedl an p\xe1irt\xed eile log\xe1ilte isteach faoi l\xe1thair agus mar sin n\xed f\xe9idir leo teachtaireachta\xed a fh\xe1il!";
     },
     get$open(_) {
-      return "Ouvrir";
+      return "Oscail";
     },
     get$waitingForServer() {
-      return "En attente du serveur...";
+      return "Ag fanacht leis an bhfreastala\xed...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Nouvelle demande de chat";
+      return "\ud83d\udce9 Iarratas comhr\xe1 nua";
     },
     get$contentNotificationSettings() {
-      return "Param\xe8tres de notification du contenu";
+      return "Socruithe f\xf3gra inneachair";
     },
     get$generalNotificationSettings() {
-      return "Param\xe8tres de notification g\xe9n\xe9raux";
+      return "Socruithe ginear\xe1lta f\xf3gra";
     },
     get$roomNotificationSettings() {
-      return "Param\xe8tres de notification de la salle";
+      return "Socruithe f\xf3gra seomra";
     },
     get$userSpecificNotificationSettings() {
-      return "Param\xe8tres de notification sp\xe9cifiques \xe0 l'utilisateur";
+      return "Socruithe f\xf3gra saini\xfala don \xfas\xe1ideoir";
     },
     get$otherNotificationSettings() {
-      return "Autres param\xe8tres de notification";
+      return "Socruithe f\xf3gra eile";
     },
     get$notificationRuleContainsUserName() {
-      return "Contient le nom d'utilisateur";
+      return "T\xe1 Ainm \xdas\xe1ideora ann";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Avertit l'utilisateur lorsqu'un message contient son nom d'utilisateur.";
+      return "Cuireann s\xe9 sin in i\xfal don \xfas\xe1ideoir nuair a bh\xedonn a ainm \xfas\xe1ideora i dteachtaireacht.";
     },
     get$notificationRuleMaster() {
-      return "Couper toutes les notifications";
+      return "Balbhaigh gach f\xf3gra";
     },
     get$notificationRuleMasterDescription() {
-      return "Remplace toutes les autres r\xe8gles et d\xe9sactive toutes les notifications.";
+      return "S\xe1ra\xedonn s\xe9 gach riail eile agus d\xedchumasa\xedtear gach f\xf3gra.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Supprimer les messages automatis\xe9s";
+      return "Bain Teachtaireachta\xed Uathoibrithe";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Supprime les notifications des clients automatis\xe9s comme les bots.";
+      return "Sochtann s\xe9 f\xf3gra\xed \xf3 chliaint uathoibrithe amhail r\xf3b\xf3nna.";
     },
     get$notificationRuleInviteForMe() {
-      return "Invitation pour moi";
+      return "Tabhair cuireadh Do Mhise";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Avertit l'utilisateur lorsqu'il est invit\xe9 dans une salle.";
+      return "Cuireann s\xe9 seo ar an eolas don \xfas\xe1ideoir nuair a thugtar cuireadh d\xf3/di go seomra.";
     },
     get$notificationRuleMemberEvent() {
-      return "\xc9v\xe9nement de membre";
+      return "Imeacht Ball";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Supprime les notifications pour les \xe9v\xe9nements d'adh\xe9sion.";
+      return "Sochtann f\xf3gra\xed le haghaidh imeachta\xed ballra\xedochta.";
     },
     get$notificationRuleIsUserMention() {
-      return "Mention d'utilisateur";
+      return "Luaigh \xdas\xe1ideoir";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Avertit l'utilisateur lorsqu'il est mentionn\xe9 directement dans un message.";
+      return "Cuireann s\xe9 sin in i\xfal don \xfas\xe1ideoir nuair a luaitear go d\xedreach iad i dteachtaireacht.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Contient le nom d'affichage";
+      return "T\xe1 Ainm Taispe\xe1na ann";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Avertit l'utilisateur lorsqu'un message contient son nom d'affichage.";
+      return "Cuireann s\xe9 sin in i\xfal don \xfas\xe1ideoir nuair a bh\xedonn a ainm taispe\xe1na i dteachtaireacht.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Mention de salle";
+      return "Luaigh Seomra";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Avertit l'utilisateur lorsqu'il y a une mention de salle.";
+      return "Cuireann s\xe9 sin in i\xfal don \xfas\xe1ideoir nuair a luaitear seomra.";
     },
     get$notificationRuleRoomnotif() {
-      return "Notification de salle";
+      return "F\xf3gra Seomra";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Avertit l'utilisateur lorsqu'un message contient '@room'.";
+      return "Cuireann s\xe9 seo in i\xfal don \xfas\xe1ideoir nuair a bh\xedonn '@room' i dteachtaireacht.";
     },
     get$notificationRuleTombstone() {
-      return "Tombstone";
+      return "Leac uaighe";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Avertit l'utilisateur concernant les messages de d\xe9sactivation de salle.";
+      return "Cuireann s\xe9 seo in i\xfal don \xfas\xe1ideoir faoi theachtaireachta\xed d\xedghn\xedomhaithe seomra.";
     },
     get$notificationRuleReaction() {
-      return "R\xe9action";
+      return "Imoibri\xfa";
     },
     get$notificationRuleReactionDescription() {
-      return "Supprime les notifications pour les r\xe9actions.";
+      return "Sochtann f\xf3gra\xed le haghaidh frithghn\xedomhartha.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "ACL du serveur de la salle";
+      return "Freastala\xed Seomra ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "R\xe9tablit les notifications pour les listes de contr\xf4le d'acc\xe8s du serveur de salle (ACL).";
+      return "Sochtann s\xe9 f\xf3gra\xed do liosta\xed rialaithe rochtana freastala\xed seomra (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Supprimer les modifications";
+      return "Cuir na hEagarth\xf3ir\xed ar ceal";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "R\xe9tablit les notifications pour les messages modifi\xe9s.";
+      return "Sochtann f\xf3gra\xed le haghaidh teachtaireachta\xed curtha in eagar.";
     },
     get$notificationRuleCall() {
-      return "Appel";
+      return "Glaoigh";
     },
     get$notificationRuleCallDescription() {
-      return "Informe l'utilisateur des appels.";
+      return "Cuireann s\xe9 an t-\xfas\xe1ideoir ar an eolas faoi ghlaonna.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Salle chiffr\xe9e un-\xe0-un";
+      return "Seomra Duine le Duine Criptithe";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Informe l'utilisateur des messages dans des salles chiffr\xe9es un-\xe0-un.";
+      return "Cuireann s\xe9 seo in i\xfal don \xfas\xe1ideoir faoi theachtaireachta\xed i seomra\xed duine le duine criptithe.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Salle un-\xe0-un";
+      return "Seomra duine le duine";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Informe l'utilisateur des messages dans des salles un-\xe0-un.";
+      return "Cuireann s\xe9 seo in i\xfal don \xfas\xe1ideoir faoi theachtaireachta\xed i seomra\xed duine le duine.";
     },
     get$notificationRuleMessage() {
-      return "Message";
+      return "Teachtaireacht";
     },
     get$notificationRuleMessageDescription() {
-      return "Informe l'utilisateur des messages g\xe9n\xe9raux.";
+      return "Cuireann s\xe9 seo in i\xfal don \xfas\xe1ideoir faoi theachtaireachta\xed ginear\xe1lta.";
     },
     get$notificationRuleEncrypted() {
-      return "Chiffr\xe9";
+      return "Criptithe";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Informe l'utilisateur des messages dans des salles chiffr\xe9es.";
+      return "Cuireann s\xe9 seo in i\xfal don \xfas\xe1ideoir faoi theachtaireachta\xed i seomra\xed criptithe.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Informe l'utilisateur des \xe9v\xe9nements du widget Jitsi.";
+      return "Cuireann s\xe9 seo in i\xfal don \xfas\xe1ideoir faoi imeachta\xed giuirl\xe9id\xed Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "Supprimer les \xe9v\xe9nements ACL du serveur";
+      return "Seachtaigh Freastala\xed ACL Imeachta\xed";
     },
     get$notificationRuleServerAclDescription() {
-      return "R\xe9tablit les notifications pour les \xe9v\xe9nements ACL du serveur.";
+      return "Sochtann f\xf3gra\xed le haghaidh imeachta\xed Freastala\xed ACL.";
     },
     unknownPushRule$1(rule) {
-      return "R\xe8gle de notification inconnue '" + rule + "'";
+      return "Riail bhr\xfa anaithnid '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - Message vocal de " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Teachtaireacht ghutha \xf3 " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Si vous supprimez cette configuration de notification, cela ne pourra pas \xeatre annul\xe9.";
+      return "M\xe1 scriosann t\xfa an socr\xfa f\xf3gra seo, n\xed f\xe9idir \xe9 seo a cheal\xfa.";
     },
     get$more() {
-      return "Plus";
+      return "Tuilleadh";
     },
     get$shareKeysWith() {
-      return "Partager les cl\xe9s avec...";
+      return "Roinn na heochracha le...";
     },
     get$shareKeysWithDescription() {
-      return "Quels appareils doivent \xeatre fiables pour pouvoir lire vos messages dans les discussions chiffr\xe9es ?";
+      return "Cad iad na gl\xe9asanna ar cheart muin\xedn a chur iontu ionas gur f\xe9idir leo do chuid teachtaireachta\xed a l\xe9amh i gcomhr\xe1ite criptithe?";
     },
     get$allDevices() {
-      return "Tous les appareils";
+      return "Gach gl\xe9asanna";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Appareils v\xe9rifi\xe9s crois\xe9s si activ\xe9";
+      return "Gl\xe9asanna trasfh\xedoraithe m\xe1 t\xe1 siad cumasaithe";
     },
     get$crossVerifiedDevices() {
-      return "Appareils v\xe9rifi\xe9s crois\xe9s";
+      return "Feist\xed trasfh\xedoraithe";
     },
     get$verifiedDevicesOnly() {
-      return "Appareils v\xe9rifi\xe9s uniquement";
+      return "Gl\xe9asanna f\xedoraithe amh\xe1in";
     },
     get$optionalMessage() {
-      return "(Optionnel) message...";
+      return "Teachtaireacht (Roghnach)\u2026";
     },
     get$notSupportedOnThisDevice() {
-      return "Non pris en charge sur cet appareil";
+      return "N\xed thaca\xedtear leis ar an ngl\xe9as seo";
     },
     get$enterNewChat() {
-      return "Cr\xe9er une nouvelle discussion";
+      return "Cuir isteach comhr\xe1 nua";
     },
     get$approve() {
-      return "Approuver";
+      return "Ceadaigh";
     },
     get$commandHint_logout() {
-      return "D\xe9connectez votre appareil actuel";
+      return "Log\xe1il amach as do ghl\xe9as reatha";
     },
     get$commandHint_logoutall() {
-      return "D\xe9connectez tous les appareils actifs";
+      return "Log\xe1il amach gach gl\xe9as gn\xedomhach";
     },
     get$customReaction() {
-      return "R\xe9action personnalis\xe9e";
+      return "Freagairt shaincheaptha";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Tapez en " + l1 + " ou " + l2 + "...";
+      return "Cl\xf3scr\xedobh i " + l1 + " n\xf3 " + l2 + "...";
     },
     get$holdForInfo() {
-      return "Cliquez et maintenez pour obtenir des infos sur le mot.";
+      return "Bain triail as agus coinnigh s\xedos le haghaidh eolas faoin bhfocal.";
     },
     get$greenFeedback() {
-      return "C'est ce que je mettrais !";
+      return "Sin \xe9 an rud a chuirfinn!";
     },
     get$yellowFeedback() {
-      return "Hm, vous pouvez essayer cela et voir si \xe7a fonctionne ! Pour utiliser ce mot, cliquez simplement \xe0 nouveau dessus.";
+      return "Hm, is f\xe9idir leat iarracht a dh\xe9anamh \xe9 sin a r\xe1 agus f\xe9ach cad a tharl\xf3idh! Chun an focal seo a \xfas\xe1id, clice\xe1il ar\xeds \xe9.";
     },
     get$redFeedback() {
-      return "Je ne pense pas que ce soit correct...";
+      return "N\xed d\xf3igh liom go bhfuil s\xe9 sin ceart...";
     },
     get$gaTooltip() {
-      return "L2 \xe0 utiliser avec l'assistance grammaticale";
+      return "\xdas\xe1id L2 le cabhair gramada\xed";
     },
     get$taTooltip() {
-      return "L2 utilisation avec assistance \xe0 la traduction";
+      return "\xdas\xe1id L2 le cabhair aistri\xfach\xe1in";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Traducteur interactif";
+      return "Aistritheoir Idirghn\xedomhach";
     },
     get$interactiveGrammarSliderHeader() {
-      return "V\xe9rificateur de grammaire interactif";
+      return "Seice\xe1il Foghra\xedochta Idirghn\xedomhach";
     },
     get$waTooltip() {
-      return "L2 utilisation sans assistance";
+      return "\xdas\xe1id L2 gan chabhair";
     },
     get$noIdenticalLanguages() {
-      return "Veuillez choisir des langues de base et cibles diff\xe9rentes";
+      return "Roghnaigh le do thoil teangacha bun\xfasacha agus spriocdh\xedrithe difri\xfala";
     },
     get$joinWithClassCode() {
-      return "Rejoindre le cours";
+      return "Cl\xe1raigh leis an gc\xf3d rang";
     },
     get$languageLevelPreA1() {
-      return "Novice Bas (Pr\xe9 A1)";
+      return "Novice Low (Pre A1)";
     },
     get$languageLevelA1() {
       return "Novice Mid (A1)";
     },
     get$languageLevelA2() {
-      return "Novice \xe9lev\xe9 (A2)";
+      return "Tosaitheoir Ard (A2)";
     },
     get$languageLevelB1() {
-      return "Interm\xe9diaire moyen (B1)";
+      return "Idirmhe\xe1nach L\xe1r (B1)";
     },
     get$languageLevelB2() {
-      return "Avanc\xe9 faible (B2)";
+      return "Ard \xcdseal (B2)";
     },
     get$languageLevelC1() {
-      return "Avanc\xe9 moyen (C1)";
+      return "Ard L\xe1r (C1)";
     },
     get$languageLevelC2() {
-      return "Sup\xe9rieur (C2)";
+      return "S\xe1r (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Changer le nom";
+      return "Athraigh an t-ainm";
     },
     get$changeTheNameOfTheChat() {
-      return "Changer le nom du chat";
+      return "Athraigh ainm an chomhr\xe1";
     },
     get$sorryNoResults() {
-      return "D\xe9sol\xe9, aucun r\xe9sultat.";
+      return "T\xe1 br\xf3n orm, n\xedl tortha\xed ar f\xe1il.";
     },
     get$ignoreInThisText() {
-      return "Ignorer";
+      return "D\xe9an neamhaird";
     },
     needsItMessage$1(targetLanguage) {
-      return "Attendez, ce n'est pas " + targetLanguage + " ! Avez-vous besoin d'aide pour la traduction ?";
+      return "Fan, n\xedl s\xe9 " + targetLanguage + "! An bhfuil uait cabhair le haistri\xfach\xe1n?";
     },
     get$countryInformation() {
-      return "Mon pays";
+      return "Mo th\xedr";
     },
     get$targetLanguage() {
-      return "Langue cible";
+      return "Teanga Sprioc";
     },
     get$updateLanguage() {
-      return "Mes langues";
+      return "Mo chuid teangacha";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Quelle langue souhaitez-vous apprendre ?";
+      return "C\xe9n teanga ar mhaith leat foghlaim?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Quelle est votre langue de base ?";
+      return "C\xe9n teanga bhun\xfasach at\xe1 agat?";
     },
     get$saveChanges() {
-      return "Enregistrer les modifications";
+      return "S\xe1bh\xe1il na hathruithe";
     },
     get$publicProfileTitle() {
-      return "Permettre \xe0 mon profil d'\xeatre trouv\xe9 dans la recherche";
+      return "Ceadaigh go bhf\xe9adfaidh daoine mo phr\xf3if\xedl a aimsi\xfa sa chuardach";
     },
     get$publicProfileDesc() {
-      return "En activant cette option, vous permettez \xe0 d'autres utilisateurs de trouver votre profil dans la barre de recherche globale et d'envoyer des demandes de chat. \xc0 ce stade, vous pouvez choisir d'accepter ou de refuser la demande.";
+      return "Tr\xed chumas\xfa, ligfidh t\xfa do dhaoine eile do phr\xf3if\xedl a fh\xe1il sa bharra cuardaigh domhanda agus iarratais a sheoladh chun comhr\xe1. Sa phointe seo, is f\xe9idir leat glacadh n\xf3 di\xfalt\xfa leis an iarratas.";
     },
     get$errorDisableIT() {
-      return "L'assistance \xe0 la traduction est d\xe9sactiv\xe9e.";
+      return "T\xe1 cabhair aistri\xfach\xe1in d\xedcheangailte.";
     },
     get$errorDisableIGC() {
-      return "L'assistance \xe0 la grammaire est d\xe9sactiv\xe9e.";
+      return "T\xe1 cabhair gramad\xe1la d\xedcheangailte.";
     },
     get$errorDisableLanguageAssistance() {
-      return "L'assistance \xe0 la traduction et \xe0 la grammaire sont d\xe9sactiv\xe9es.";
+      return "T\xe1 cabhair aistri\xfach\xe1in agus cabhair gramad\xe1la d\xedcheangailte.";
     },
     get$errorDisableITUserDesc() {
-      return "Cliquez ici pour mettre \xe0 jour les param\xe8tres d'assistance \xe0 la traduction";
+      return "Clice\xe1il anseo chun socruithe cabhrach aistri\xfach\xe1in a nuashonr\xfa";
     },
     get$errorDisableIGCUserDesc() {
-      return "Cliquez ici pour mettre \xe0 jour les param\xe8tres d'assistance \xe0 la grammaire";
+      return "Clice\xe1il anseo chun socruithe cabhrach gramad\xe1la a nuashonr\xfa";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "Cliquez ici pour mettre \xe0 jour les param\xe8tres d'assistance \xe0 la traduction et \xe0 la grammaire";
+      return "Clice\xe1il anseo chun socruithe cabhrach aistri\xfach\xe1in agus gramad\xe1la a nuashonr\xfa";
     },
     get$errorDisableITClassDesc() {
-      return "L'assistance \xe0 la traduction est d\xe9sactiv\xe9e pour le cours dans lequel cette discussion a lieu.";
+      return "T\xe1 cabhair aistri\xfach\xe1in d\xedcheangailte don ch\xfarsa ina bhfuil an comhr\xe1 seo.";
     },
     get$errorDisableIGCClassDesc() {
-      return "L'assistance \xe0 la grammaire est d\xe9sactiv\xe9e pour le cours dans lequel cette discussion a lieu.";
+      return "T\xe1 cabhair gramad\xe1la d\xedcheangailte don ch\xfarsa ina bhfuil an comhr\xe1 seo.";
     },
     get$error405Title() {
-      return "Langues non d\xe9finies";
+      return "N\xedor socra\xedodh teangacha";
     },
     get$error405Desc() {
-      return "Veuillez d\xe9finir vos langues dans le menu principal > Param\xe8tres d'apprentissage.";
+      return "Le do thoil, socraigh do chuid teangacha sa Bhealach Pr\xedomh > Socruithe Foghlama.";
     },
     get$termsAndConditions() {
-      return "Termes et Conditions";
+      return "Tearma\xed agus Coinn\xedollacha";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " et je certifie que j'ai au moins 16 ans.";
+      return " agus deimhn\xedm go bhfuil m\xe9 ar a laghad 16 bliain d'aois.";
     },
     get$error502504Title() {
-      return "Wow, il y a beaucoup d'\xe9tudiants en ligne !";
+      return "Wow, t\xe1 a l\xe1n dalta\xed ar l\xedne!";
     },
     get$error502504Desc() {
-      return "Les outils de traduction et de grammaire peuvent \xeatre lents ou indisponibles pendant que les bots Pangea rattrapent leur retard.";
+      return "D'fh\xe9adfadh go mbeadh na huirlis\xed aistri\xfach\xe1in agus gramadach mall n\xf3 neamh-inmhianaithe agus na bots Pangea ag teacht chun cinn.";
     },
     get$error404Title() {
-      return "Erreur de traduction !";
+      return "Earr\xe1id aistri\xfach\xe1in!";
     },
     get$error404Desc() {
-      return "Le bot Pangea n'est pas s\xfbr de comment traduire cela...";
+      return "N\xedl a fhios ag Bot Pangea conas \xe9 a aistri\xfa...";
     },
     get$errorPleaseRefresh() {
-      return "Nous \xe9tudions le probl\xe8me ! Veuillez recharger et r\xe9essayer.";
+      return "T\xe1imid ag d\xe9ile\xe1il leis! Le do thoil, lucht\xfa ar\xeds agus bain triail eile as.";
     },
     get$connectedToStaging() {
-      return "Connect\xe9 \xe0 la mise en sc\xe8ne";
+      return "Ceangailte le Staging";
     },
     get$learningSettings() {
-      return "Param\xe8tres d'apprentissage";
+      return "Socruithe Foghlama";
     },
     get$participants() {
-      return "Participants";
+      return "Rannph\xe1irtithe";
     },
     get$clickMessageTitle() {
-      return "Besoin d'aide ?";
+      return "An bhfuil cabhair uait?";
     },
     get$clickMessageBody() {
-      return "Cliquez sur un message pour acc\xe9der \xe0 des outils linguistiques comme la traduction, la lecture \xe0 voix haute et plus encore !";
+      return "Clice\xe1il ar theachtaireacht le huirlis\xed teanga cos\xfail le haistri\xfach\xe1n, \xe9isteacht ar\xeds agus n\xedos m\xf3!";
     },
     get$allDone() {
-      return "Termin\xe9 !";
+      return "Cr\xedoch!";
     },
     get$vocab() {
-      return "Vocabulaire";
+      return "Focloireacht";
     },
     get$subscribe(_) {
-      return "S'abonner";
+      return "Cl\xe1raigh";
     },
     get$getAccess() {
-      return "Abonnez-vous maintenant !";
+      return "Cl\xe1raigh anois!";
     },
     get$subscriptionDesc() {
-      return "La messagerie est gratuite ! Abonnez-vous pour d\xe9bloquer la traduction interactive, la v\xe9rification grammaticale et les analyses d'apprentissage.";
+      return "T\xe1 teachtaireachta\xed saor in aisce! Cl\xe1raigh chun rochtain a fh\xe1il ar aistri\xfach\xe1n idirghn\xedomhach, seice\xe1il gramadach agus anail\xeds\xedocht foghlama.";
     },
     get$subscriptionManagement() {
-      return "Gestion de l'abonnement";
+      return "Bainist\xedocht S\xednti\xfais";
     },
     get$currentSubscription() {
-      return "Abonnement actuel";
+      return "S\xednti\xfais Reatha";
     },
     get$cancelSubscription() {
-      return "Annuler votre abonnement";
+      return "Cealaigh do sh\xednti\xfais";
     },
     get$selectYourPlan() {
-      return "S\xe9lectionnez votre plan";
+      return "Roghnaigh Do Phlean";
     },
     get$subsciptionPlatformTooltip() {
-      return "Veuillez vous connecter \xe0 votre appareil d'origine pour g\xe9rer votre plan d'abonnement";
+      return "Cuir isteach do chuntas ar do ghl\xe9as bunaidh chun do phlean s\xednti\xfais a bhainisti\xfa";
     },
     get$subscriptionManagementUnavailable() {
-      return "Gestion des abonnements non disponible";
+      return "N\xedl bainist\xedocht s\xednti\xfais ar f\xe1il";
     },
     get$paymentMethod() {
-      return "M\xe9thode de paiement";
+      return "Modh \xcdoca\xedochta";
     },
     get$paymentHistory() {
-      return "Historique des paiements";
+      return "Stair \xcdoca\xedochta";
     },
     get$emptyChatDownloadWarning() {
-      return "Impossible de t\xe9l\xe9charger une conversation vide";
+      return "N\xed f\xe9idir \xedosl\xf3d\xe1il comhr\xe1 folamh";
     },
     get$toggleImmersionMode() {
-      return "Mode immersion";
+      return "M\xf3d Ioml\xe1naithe";
     },
     get$toggleImmersionModeDesc() {
-      return "Lorsqu'il est activ\xe9, tous les messages s'affichent dans votre langue cible. Ce param\xe8tre est le plus utile lors des \xe9changes linguistiques.";
+      return "Nuair a bh\xedonn s\xe9 cumasaithe, l\xe9ir\xedtear gach teachtaireacht i do theanga sprioc. T\xe1 an socr\xfa seo an-\xfas\xe1ideach i malartuithe teangacha.";
     },
     get$itToggleDescription() {
-      return "Cet outil d'apprentissage des langues identifiera les mots dans votre langue de base et vous aidera \xe0 les traduire dans votre langue cible. Bien que rare, l'IA peut faire des erreurs de traduction.";
+      return "L\xe9ireoidh an uirlis foghlama teanga seo focail i do theanga bhun\xfasach agus cabhr\xf3idh s\xe9 leat iad a aistri\xfa go do theanga sprioc. C\xe9 go bhfuil s\xe9 neamhchoitianta, d'fh\xe9adfadh an AI bot\xfan a dh\xe9anamh i d'aistri\xfach\xe1n.";
     },
     get$igcToggleDescription() {
-      return "Cet outil d'apprentissage des langues identifiera les erreurs courantes d'orthographe, de grammaire et de ponctuation dans votre message et sugg\xe9rera des corrections. Bien que rare, l'IA peut faire des erreurs de correction.";
+      return "L\xe9ireoidh an uirlis foghlama teanga seo bot\xfain coitianta i litri\xfa, gramadach agus ponca\xedocht i do theachtaireacht agus molfaidh s\xe9 ceart\xfach\xe1in. C\xe9 go bhfuil s\xe9 neamhchoitianta, d'fh\xe9adfadh an AI bot\xfan a dh\xe9anamh i gceart\xfach\xe1in.";
     },
     get$originalMessage() {
-      return "Message original";
+      return "Teachtaireacht Bhunaidh";
     },
     get$sentMessage() {
-      return "Message envoy\xe9";
+      return "Seoladh Teachtaireacht";
     },
     get$useType() {
-      return "Type d'utilisation";
+      return "Cine\xe1l \xdas\xe1ide";
     },
     get$notAvailable() {
-      return "Non disponible";
+      return "N\xedl s\xe9 ar f\xe1il";
     },
     get$taAndGaTooltip() {
-      return "L2 utilisation avec assistance \xe0 la traduction et assistance grammaticale";
+      return "\xdas\xe1id L2 le cabhair aistri\xfach\xe1in agus cabhair gramad\xe1la";
     },
     get$definitionsToolName() {
-      return "D\xe9finitions des mots";
+      return "Sainmh\xednithe Focal";
     },
     get$definitionsToolDescription() {
-      return "Lorsqu'il est activ\xe9, les mots soulign\xe9s en bleu peuvent \xeatre cliqu\xe9s pour obtenir leurs d\xe9finitions. Cliquez sur les messages pour acc\xe9der aux d\xe9finitions.";
+      return "Nuair a bh\xedonn s\xe9 cumasaithe, is f\xe9idir clice\xe1il ar fhocail faoi bhun l\xednte gorma le haghaidh sainmh\xednithe. Clice\xe1il ar theachtaireachta\xed chun rochtain a fh\xe1il ar shainmh\xednithe.";
     },
     get$welcomeBack() {
-      return "Bon retour ! Si vous faisiez partie du pilote 2023-2024, veuillez nous contacter pour votre abonnement pilote sp\xe9cial. Si vous \xeates un enseignant qui a (ou dont l'institution a) achet\xe9 des licences pour votre classe, contactez-nous pour votre abonnement enseignant.";
+      return "F\xe1ilte ar ais! Mura raibh t\xfa rannph\xe1irteach sa phain\xe9al 2023-2024, d\xe9an teagmh\xe1il linn le haghaidh do sh\xednti\xfas speisialta. M\xe1 t\xe1 t\xfa m\xfainteoir a cheannaigh cead\xfanas do do rang, d\xe9an teagmh\xe1il linn le haghaidh do sh\xednti\xfas m\xfainteora.";
     },
     get$downloadTxtFile() {
-      return "T\xe9l\xe9charger le fichier texte";
+      return "\xcdosl\xf3d\xe1il Comhad T\xe9acs";
     },
     get$downloadCSVFile() {
-      return "T\xe9l\xe9charger le fichier CSV";
+      return "\xcdosl\xf3d\xe1il Comhad CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return "Vous avez actuellement un abonnement promotionnel \xe0 vie. Contactez support@pangea.chat pour obtenir de l'aide pour changer votre abonnement.";
+      return "T\xe1 s\xednti\xfas prom\xf3iseach saoil agat faoi l\xe1thair. Seol teachtaireacht chuig support@pangea.chat le haghaidh cabhrach maidir le do sh\xednti\xfas a athr\xfa.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Abonnement achet\xe9 via " + purchasePlatform;
+      return "S\xednti\xfas ceanna\xedodh tr\xed " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "Essai d'une semaine";
+      return "Triail Seachtain amh\xe1in";
     },
     get$downloadXLSXFile() {
-      return "T\xe9l\xe9charger le fichier Excel";
+      return "\xcdosl\xf3d\xe1il Comhad Excel";
     },
     get$unkDisplayName() {
-      return "Inconnu";
+      return "Neamartha";
     },
     get$wwCountryDisplayName() {
-      return "Monde entier";
+      return "Domhanda";
     },
     get$afCountryDisplayName() {
-      return "Afghanistan";
+      return "An Afganast\xe1in";
     },
     get$axCountryDisplayName() {
-      return "\xceles \xc5land";
+      return "Oile\xe1in \xc5land";
     },
     get$alCountryDisplayName() {
-      return "Albanie";
+      return "An Alb\xe1in";
     },
     get$dzCountryDisplayName() {
-      return "Alg\xe9rie";
+      return "An Ailg\xe9ir";
     },
     get$asCountryDisplayName() {
-      return "Samoa am\xe9ricaines";
+      return "Samoa Mheirice\xe1";
     },
     get$adCountryDisplayName() {
-      return "Andorre";
+      return "And\xf3ra";
     },
     get$aoCountryDisplayName() {
-      return "Angola";
+      return "Ang\xf3la";
     },
     get$aiCountryDisplayName() {
       return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "Antigua-et-Barbuda";
+      return "Antigua agus Barb\xfada";
     },
     get$arCountryDisplayName() {
-      return "Argentine";
+      return "Airgint\xedn";
     },
     get$amCountryDisplayName() {
-      return "Arm\xe9nie";
+      return "Airm\xe9in";
     },
     get$awCountryDisplayName() {
-      return "Aruba";
+      return "Ar\xfaba";
     },
     get$acCountryDisplayName() {
-      return "\xcele de l'Ascension";
+      return "Oile\xe1n Ascension";
     },
     get$auCountryDisplayName() {
-      return "Australie";
+      return "An Astr\xe1il";
     },
     get$atCountryDisplayName() {
-      return "Autriche";
+      return "An Ostair";
     },
     get$azCountryDisplayName() {
-      return "Azerba\xefdjan";
+      return "Aserbaise\xe1n";
     },
     get$bsCountryDisplayName() {
-      return "Bahamas";
+      return "Na Bah\xe1ma\xed";
     },
     get$bhCountryDisplayName() {
-      return "Bahre\xefn";
+      return "Bair\xe9in";
     },
     get$bdCountryDisplayName() {
-      return "Bangladesh";
+      return "Bangla Desh";
     },
     get$bbCountryDisplayName() {
-      return "Barbade";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "Bi\xe9lorussie";
+      return "Bealar\xfais";
     },
     get$beCountryDisplayName() {
-      return "Belgique";
+      return "An Bheilg";
     },
     get$bzCountryDisplayName() {
-      return "Belize";
+      return "Bel\xedse";
     },
     get$bjCountryDisplayName() {
-      return "B\xe9nin";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "Bermudes";
+      return "Berm\xfada";
     },
     get$btCountryDisplayName() {
-      return "Bhoutan";
+      return "Bh\xfad\xe1in";
     },
     get$boCountryDisplayName() {
-      return "Bolivie";
+      return "Bolaiv";
     },
     get$baCountryDisplayName() {
-      return "Bosnie-Herz\xe9govine";
+      return "Bosnia agus Herzegovina";
     },
     get$bwCountryDisplayName() {
-      return "Botswana";
+      return "Botsuana";
     },
     get$brCountryDisplayName() {
-      return "Br\xe9sil";
+      return "An Bhrasa\xedl";
     },
     get$ioCountryDisplayName() {
-      return "Territoire britannique de l'oc\xe9an Indien";
+      return "Cr\xedoch Theas Mhuir Indian na R\xedochta Aontaithe";
     },
     get$vgCountryDisplayName() {
-      return "\xceles Vierges britanniques";
+      return "Oile\xe1in Bhiorach na R\xedochta Aontaithe";
     },
     get$bnCountryDisplayName() {
-      return "Brunei";
+      return "Br\xfain\xe9";
     },
     get$bgCountryDisplayName() {
-      return "Bulgarie";
+      return "Bulg\xe1ir";
     },
     get$bfCountryDisplayName() {
       return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "Burundi";
+      return "Bur\xfandaid";
     },
     get$khCountryDisplayName() {
-      return "Cambodge";
+      return "Camb\xf3dia";
     },
     get$cmCountryDisplayName() {
-      return "Cameroun";
+      return "Camar\xfan";
     },
     get$caCountryDisplayName() {
-      return "Canada";
+      return "Can\xe1da";
     },
     get$cvCountryDisplayName() {
-      return "Cap-Vert";
+      return "Cabo Verde";
     },
     get$bqCountryDisplayName() {
-      return "Pays-Bas carib\xe9ens";
+      return "Oile\xe1in Neantailte na Caribe";
     },
     get$kyCountryDisplayName() {
-      return "\xceles Ca\xefmans";
+      return "Oile\xe1in Cayman";
     },
     get$cfCountryDisplayName() {
-      return "R\xe9publique centrafricaine";
+      return "Poblacht na hAfraice L\xe1ir";
     },
     get$tdCountryDisplayName() {
-      return "Tchad";
+      return "Chad";
     },
     get$clCountryDisplayName() {
-      return "Chili";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "Chine";
+      return "An tS\xedn";
     },
     get$cxCountryDisplayName() {
-      return "\xcele Christmas";
+      return "Oile\xe1n na Nollag";
     },
     get$ccCountryDisplayName() {
-      return "\xceles Cocos [Keeling]";
+      return "Oile\xe1in Cocos [Keeling]";
     },
     get$coCountryDisplayName() {
-      return "Colombie";
+      return "Col\xf3im";
     },
     get$kmCountryDisplayName() {
-      return "Comores";
+      return "Com\xf3ra";
     },
     get$cdCountryDisplayName() {
-      return "R\xe9publique d\xe9mocratique du Congo";
+      return "Poblacht Dhaonlathach Cong\xf3";
     },
     get$cgCountryDisplayName() {
-      return "R\xe9publique du Congo";
+      return "Poblacht na Cong\xf3";
     },
     get$ckCountryDisplayName() {
-      return "\xceles Cook";
+      return "Oile\xe1in Cook";
     },
     get$crCountryDisplayName() {
-      return "Costa Rica";
+      return "Costa R\xedce";
     },
     get$ciCountryDisplayName() {
       return "C\xf4te d'Ivoire";
     },
     get$hrCountryDisplayName() {
-      return "Croatie";
+      return "Croatia";
     },
     get$cuCountryDisplayName() {
-      return "Cuba";
+      return "C\xfaba";
     },
     get$cwCountryDisplayName() {
       return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "Chypre";
+      return "An Chipir";
     },
     get$czCountryDisplayName() {
-      return "R\xe9publique tch\xe8que";
+      return "Poblacht na Seice";
     },
     get$dkCountryDisplayName() {
-      return "Danemark";
+      return "An Danmhairg";
     },
     get$djCountryDisplayName() {
-      return "Djibouti";
+      return "An D\xedb\xe9it";
     },
     get$dmCountryDisplayName() {
-      return "Dominique";
+      return "D\xf3minice";
     },
     get$doCountryDisplayName() {
-      return "R\xe9publique dominicaine";
+      return "Poblacht na Dhoiminice";
     },
     get$tlCountryDisplayName() {
-      return "Timor oriental";
+      return "Timor Thoir";
     },
     get$ecCountryDisplayName() {
-      return "\xc9quateur";
+      return "Eacuad\xf3r";
     },
     get$egCountryDisplayName() {
-      return "\xc9gypte";
+      return "An \xc9igipt";
     },
     get$svCountryDisplayName() {
-      return "El Salvador";
+      return "Salvad\xf3r";
     },
     get$gqCountryDisplayName() {
-      return "Guin\xe9e \xe9quatoriale";
+      return "Gin\xe9iv \xc9acuatorial";
     },
     get$erCountryDisplayName() {
-      return "\xc9rythr\xe9e";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "Estonie";
+      return "An Est\xf3in";
     },
     get$szCountryDisplayName() {
-      return "Eswatini";
+      return "Esuatain";
     },
     get$etCountryDisplayName() {
-      return "\xc9thiopie";
+      return "An Aet\xf3ip";
     },
     get$fkCountryDisplayName() {
-      return "\xceles Malouines";
+      return "Oile\xe1in Falkland";
     },
     get$foCountryDisplayName() {
-      return "\xceles F\xe9ro\xe9";
+      return "Oile\xe1in Fhar\xf3";
     },
     get$fjCountryDisplayName() {
-      return "Fidji";
+      return "Fids\xed";
     },
     get$fiCountryDisplayName() {
-      return "Finlande";
+      return "An Fionlainn";
     },
     get$frCountryDisplayName() {
-      return "France";
+      return "An Fhrainc";
     },
     get$gfCountryDisplayName() {
-      return "Guyane fran\xe7aise";
+      return "Ghu\xe1in Fhrancach";
     },
     get$pfCountryDisplayName() {
-      return "Polyn\xe9sie fran\xe7aise";
+      return "Polain\xe9is Fraincise";
     },
     get$gaCountryDisplayName() {
       return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "Gambie";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "G\xe9orgie";
+      return "An Georgia";
     },
     get$deCountryDisplayName() {
-      return "Allemagne";
+      return "An Ghearm\xe1in";
     },
     get$ghCountryDisplayName() {
-      return "Ghana";
+      return "G\xe1na";
     },
     get$giCountryDisplayName() {
-      return "Gibraltar";
+      return "Giobr\xe1ltar";
     },
     get$grCountryDisplayName() {
-      return "Gr\xe8ce";
+      return "An Ghr\xe9ig";
     },
     get$glCountryDisplayName() {
-      return "Groenland";
+      return "An Ghleibhe";
     },
     get$gdCountryDisplayName() {
-      return "Grenade";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "Guadeloupe";
+      return "Guadal\xfaip";
     },
     get$guCountryDisplayName() {
       return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "Guatemala";
+      return "Guatamala";
     },
     get$ggCountryDisplayName() {
-      return "Guernesey";
+      return "Sont\xe1in Ghi\xfan\xe9ara";
     },
     get$gnCountryDisplayName() {
-      return "Guin\xe9e Conakry";
+      return "Gin\xe9iv Conakry";
     },
     get$gwCountryDisplayName() {
-      return "Guin\xe9e-Bissau";
+      return "Gin\xe9iv-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "Guyana";
+      return "Ghu\xe1in";
     },
     get$htCountryDisplayName() {
-      return "Ha\xefti";
+      return "Hait\xed";
     },
     get$hmCountryDisplayName() {
-      return "\xceles Heard et McDonald";
+      return "Oile\xe1n Heard agus Oile\xe1in McDonald";
     },
     get$hnCountryDisplayName() {
-      return "Honduras";
+      return "Hond\xfaras";
     },
     get$hkCountryDisplayName() {
-      return "Hong Kong";
+      return "Hong Cong";
     },
     get$huCountryDisplayName() {
-      return "Hongrie";
+      return "Ung\xe1ir";
     },
     get$isCountryDisplayName() {
-      return "Islande";
+      return "\xcdoslainn";
     },
     get$inCountryDisplayName() {
-      return "Inde";
+      return "An India";
     },
     get$idCountryDisplayName() {
-      return "Indon\xe9sie";
+      return "An Indin\xe9is";
     },
     get$irCountryDisplayName() {
-      return "Iran";
+      return "An Iar\xe1in";
     },
     get$iqCountryDisplayName() {
-      return "Irak";
+      return "An Iar\xe1ic";
     },
     get$ieCountryDisplayName() {
-      return "Irlande";
+      return "\xc9ire";
     },
     get$imCountryDisplayName() {
-      return "\xcele de Man";
+      return "Oile\xe1n Mhanann";
     },
     get$ilCountryDisplayName() {
-      return "Isra\xebl";
+      return "\xcdsra\xe9l";
     },
     get$itCountryDisplayName() {
-      return "Italie";
+      return "An Iod\xe1il";
     },
     get$jmCountryDisplayName() {
-      return "Jama\xefque";
+      return "Jamaice";
     },
     get$jpCountryDisplayName() {
-      return "Japon";
+      return "Seap\xe1in";
     },
     get$jeCountryDisplayName() {
       return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "Jordanie";
+      return "An Iord\xe1in";
     },
     get$kzCountryDisplayName() {
-      return "Kazakhstan";
+      return "Casacst\xe1in";
     },
     get$keCountryDisplayName() {
-      return "Kenya";
+      return "C\xe9inia";
     },
     get$kiCountryDisplayName() {
-      return "Kiribati";
+      return "Ciris\xed";
     },
     get$xkCountryDisplayName() {
-      return "Kosovo";
+      return "Kos\xf3iv\xf3";
     },
     get$kwCountryDisplayName() {
-      return "Kowe\xeft";
+      return "Cu\xe1it";
     },
     get$kgCountryDisplayName() {
-      return "Kirghizistan";
+      return "Cair\xe9is";
     },
     get$laCountryDisplayName() {
       return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "Lettonie";
+      return "Laitvia";
     },
     get$lbCountryDisplayName() {
-      return "Liban";
+      return "Leib\xe9is";
     },
     get$lsCountryDisplayName() {
-      return "Lesotho";
+      return "Leas\xf3th\xf3";
     },
     get$lrCountryDisplayName() {
-      return "Lib\xe9ria";
+      return "Lib\xe9ar";
     },
     get$lyCountryDisplayName() {
-      return "Libye";
+      return "Liob\xe1in";
     },
     get$liCountryDisplayName() {
-      return "Liechtenstein";
+      return "Liotu\xe1in";
     },
     get$ltCountryDisplayName() {
-      return "Lituanie";
+      return "Liotu\xe1in";
     },
     get$luCountryDisplayName() {
-      return "Luxembourg";
+      return "Lucsamburg";
     },
     get$moCountryDisplayName() {
-      return "Macau";
+      return "Mac\xe1o";
     },
     get$mkCountryDisplayName() {
-      return "Mac\xe9doine";
+      return "Maced\xf3in";
     },
     get$mgCountryDisplayName() {
       return "Madagascar";
     },
     get$mwCountryDisplayName() {
-      return "Malawi";
+      return "Mal\xe1iv";
     },
     get$myCountryDisplayName() {
-      return "Malaisie";
+      return "Mal\xe1is";
     },
     get$mvCountryDisplayName() {
-      return "Maldives";
+      return "Mald\xedveanna";
     },
     get$mlCountryDisplayName() {
       return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "Malte";
+      return "M\xe1lta";
     },
     get$mhCountryDisplayName() {
-      return "\xceles Marshall";
+      return "Oile\xe1in Marshall";
     },
     get$mqCountryDisplayName() {
       return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "Mauritanie";
+      return "Maorast\xe1in";
     },
     get$muCountryDisplayName() {
-      return "Maurice";
+      return "Mauiriti\xfais";
     },
     get$ytCountryDisplayName() {
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "Mexique";
+      return "Meicsiceo";
     },
     get$fmCountryDisplayName() {
-      return "Micron\xe9sie";
+      return "Micireanisia";
     },
     get$mdCountryDisplayName() {
-      return "Moldavie";
+      return "Mold\xf3va";
     },
     get$mcCountryDisplayName() {
       return "Monaco";
     },
     get$mnCountryDisplayName() {
-      return "Mongolie";
+      return "Mong\xf3il";
     },
     get$meCountryDisplayName() {
-      return "Mont\xe9n\xe9gro";
+      return "Montain\xe9agr\xf3";
     },
     get$msCountryDisplayName() {
       return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "Maroc";
+      return "Marac\xf3";
     },
     get$mzCountryDisplayName() {
-      return "Mozambique";
+      return "Mosaimb\xedc";
     },
     get$mmCountryDisplayName() {
-      return "Myanmar (Birmanie)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return "Namibie";
+      return "Namib\xeda";
     },
     get$nrCountryDisplayName() {
-      return "Nauru";
+      return "Naur\xfa";
     },
     get$npCountryDisplayName() {
-      return "N\xe9pal";
+      return "Neip\xe9al";
     },
     get$nlCountryDisplayName() {
-      return "Pays-Bas";
+      return "An \xcdsilt\xedr";
     },
     get$ncCountryDisplayName() {
-      return "Nouvelle-Cal\xe9donie";
+      return "Ceil\xe9an Nua";
     },
     get$nzCountryDisplayName() {
-      return "Nouvelle-Z\xe9lande";
+      return "An Nua-Sh\xe9alainn";
     },
     get$niCountryDisplayName() {
       return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "Niger";
+      return "N\xe1iseant N\xedg\xe9ir";
     },
     get$ngCountryDisplayName() {
-      return "Nig\xe9ria";
+      return "N\xe1isi\xfain Nig\xe9ir";
     },
     get$nuCountryDisplayName() {
       return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\xcele Norfolk";
+      return "Oile\xe1n Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "Cor\xe9e du Nord";
+      return "C\xf3ir\xe9 Thuaidh";
     },
     get$mpCountryDisplayName() {
-      return "\xceles Mariannes du Nord";
+      return "Oile\xe1in Mariana Thuaidh";
     },
     get$noCountryDisplayName() {
-      return "Norv\xe8ge";
+      return "An Iorua";
     },
     get$omCountryDisplayName() {
       return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "Pakistan";
+      return "P\xe1isc\xedn";
     },
     get$pwCountryDisplayName() {
-      return "Palaos";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "Territoires palestiniens";
+      return "Cr\xedocha Pailist\xedneacha";
     },
     get$paCountryDisplayName() {
       return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "Papouasie-Nouvelle-Guin\xe9e";
+      return "Gini\xe9 Papua Nua";
     },
     get$pyCountryDisplayName() {
-      return "Paraguay";
+      return "Paragua";
     },
     get$peCountryDisplayName() {
-      return "P\xe9rou";
+      return "Per\xfa";
     },
     get$phCountryDisplayName() {
-      return "Philippines";
+      return "Na hOile\xe1in Fhilip\xedneacha";
     },
     get$plCountryDisplayName() {
-      return "Pologne";
+      return "An Pholainn";
     },
     get$ptCountryDisplayName() {
-      return "Portugal";
+      return "Portaing\xe9il";
     },
     get$prCountryDisplayName() {
-      return "Porto Rico";
+      return "P\xf3rt\xf3 R\xedce";
     },
     get$qaCountryDisplayName() {
-      return "Qatar";
+      return "Catar";
     },
     get$reCountryDisplayName() {
-      return "La R\xe9union";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "Roumanie";
+      return "An R\xf3m\xe1in";
     },
     get$ruCountryDisplayName() {
-      return "Russie";
+      return "An R\xfais";
     },
     get$rwCountryDisplayName() {
-      return "Rwanda";
+      return "R\xfaanda";
     },
     get$blCountryDisplayName() {
-      return "Saint-Barth\xe9lemy";
+      return "Naomh Bheartl\xe1ime";
     },
     get$shCountryDisplayName() {
-      return "Sainte-H\xe9l\xe8ne";
+      return "Naomh Helena";
     },
     get$knCountryDisplayName() {
-      return "Saint-Christophe-et-Ni\xe9v\xe8s";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "Sainte-Lucie";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "Saint-Martin";
+      return "Naomh Mairt\xedn";
     },
     get$pmCountryDisplayName() {
-      return "Saint-Pierre-et-Miquelon";
+      return "Naomh Piaras agus Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "Saint-Vincent";
+      return "Naomh Uinseann";
     },
     get$wsCountryDisplayName() {
       return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "Saint-Marin";
+      return "San Mair\xedn";
     },
     get$stCountryDisplayName() {
-      return "Sao Tom\xe9-et-Principe";
+      return "Sao Tom\xe9 agus Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "Arabie saoudite";
+      return "An Araib Sh\xe1dach";
     },
     get$snCountryDisplayName() {
-      return "S\xe9n\xe9gal";
+      return "An Sineag\xe1il";
     },
     get$rsCountryDisplayName() {
-      return "Serbie";
+      return "An tSeirbia";
     },
     get$scCountryDisplayName() {
-      return "Seychelles";
+      return "Na S\xe9is\xe9il";
     },
     get$slCountryDisplayName() {
       return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "Singapour";
+      return "Singeap\xf3r";
     },
     get$sxCountryDisplayName() {
-      return "Saint-Martin (partie n\xe9erlandaise)";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "Slovaquie";
+      return "An Sl\xf3vaic";
     },
     get$siCountryDisplayName() {
-      return "Slov\xe9nie";
+      return "An tSl\xf3iv\xe9in";
     },
     get$sbCountryDisplayName() {
-      return "\xceles Salomon";
+      return "Oile\xe1in Sholaim\xe9in";
     },
     get$soCountryDisplayName() {
-      return "Somalie";
+      return "An tSom\xe1il";
     },
     get$zaCountryDisplayName() {
-      return "Afrique du Sud";
+      return "An Afraic Theas";
     },
     get$gsCountryDisplayName() {
-      return "G\xe9orgie du Sud et \xeeles Sandwich du Sud";
+      return "An Georgia Theas agus Oile\xe1in Sandwich Theas";
     },
     get$krCountryDisplayName() {
-      return "Cor\xe9e du Sud";
+      return "C\xf3ir\xe9is Theas";
     },
     get$ssCountryDisplayName() {
-      return "Soudan du Sud";
+      return "An Eile\xe1n S\xfad\xe1n Theas";
     },
     get$esCountryDisplayName() {
-      return "Espagne";
+      return "An Sp\xe1inn";
     },
     get$lkCountryDisplayName() {
-      return "Sri Lanka";
+      return "Sri Lanca";
     },
     get$sdCountryDisplayName() {
-      return "Soudan";
+      return "An N\xedd\xe9ir";
     },
     get$srCountryDisplayName() {
-      return "Suriname";
+      return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard et Jan Mayen";
+      return "Svalbard agus Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "Su\xe8de";
+      return "An Sualainn";
     },
     get$chCountryDisplayName() {
-      return "Suisse";
+      return "An Eilv\xe9is";
     },
     get$syCountryDisplayName() {
-      return "Syrie";
+      return "Siria";
     },
     get$twCountryDisplayName() {
-      return "Ta\xefwan";
+      return "Taiwan";
     },
     get$tjCountryDisplayName() {
-      return "Tadjikistan";
+      return "Tajicist\xe1in";
     },
     get$tzCountryDisplayName() {
-      return "Tanzanie";
+      return "Tans\xe1in";
     },
     get$thCountryDisplayName() {
-      return "Tha\xeflande";
+      return "T\xe9alainn";
     },
     get$tgCountryDisplayName() {
-      return "Togo";
+      return "T\xf3g\xf3";
     },
     get$tkCountryDisplayName() {
       return "Tokelau";
@@ -2408,1309 +2408,1309 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "Trinit\xe9-et-Tobago";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "Tunisie";
+      return "T\xfan\xe9is";
     },
     get$trCountryDisplayName() {
-      return "Turquie";
+      return "An Tuirc";
     },
     get$tmCountryDisplayName() {
-      return "Turkm\xe9nistan";
+      return "Turcmenast\xe1in";
     },
     get$tcCountryDisplayName() {
-      return "\xceles Turks et Ca\xefques";
+      return "Oile\xe1in Turks agus Caicos";
     },
     get$tvCountryDisplayName() {
       return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\xceles Vierges des \xc9tats-Unis";
+      return "Oile\xe1in Virgin na St\xe1t Aontaithe";
     },
     get$ugCountryDisplayName() {
-      return "Ouganda";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "Ukraine";
+      return "\xdacr\xe1in";
     },
     get$aeCountryDisplayName() {
-      return "\xc9mirats arabes unis";
+      return "Aontas na n\xc9im\xedr\xedochta\xed Arabacha";
     },
     get$gbCountryDisplayName() {
-      return "Royaume-Uni";
+      return "An R\xedocht Aontaithe";
     },
     get$usCountryDisplayName() {
-      return "\xc9tats-Unis";
+      return "St\xe1it Aontaithe Mheirice\xe1";
     },
     get$uyCountryDisplayName() {
-      return "Uruguay";
+      return "Uragua";
     },
     get$uzCountryDisplayName() {
-      return "Ouzb\xe9kistan";
+      return "Usbaiceast\xe1in";
     },
     get$vuCountryDisplayName() {
       return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "Cit\xe9 du Vatican";
+      return "Cathair na Vatac\xe1ine";
     },
     get$veCountryDisplayName() {
       return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "Vietnam";
+      return "V\xedtneam";
     },
     get$wfCountryDisplayName() {
-      return "Wallis-et-Futuna";
+      return "Wallis agus Futuna";
     },
     get$ehCountryDisplayName() {
-      return "Sahara occidental";
+      return "Sahara Thiar";
     },
     get$yeCountryDisplayName() {
-      return "Y\xe9men";
+      return "Yemen";
     },
     get$zmCountryDisplayName() {
-      return "Zambie";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
       return "Zimbabwe";
     },
     get$pay() {
-      return "Finaliser l'achat";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " vous a invit\xe9 \xe0 rejoindre un cours : " + space + " ! Souhaitez-vous accepter ?";
+      return user + " th\xfa cuireadh a thabhairt chun p\xe1irt a ghlacadh i gc\xfarsa: " + space + "! An bhfuil t\xfa ag iarraidh glacadh leis?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 Vous \xeates invit\xe9 !";
+      return "\ud83d\udce9 T\xe1 cuireadh agat!";
     },
     invitedToChat$2($name, user) {
-      return user + " vous a invit\xe9 \xe0 rejoindre un chat : " + $name + " ! Souhaitez-vous accepter ?";
+      return user + " th\xfa cuireadh a thabhairt chun comhr\xe1 a bheith agat: " + $name + "! An bhfuil t\xfa ag iarraidh glacadh leis?";
     },
     get$monthlySubscription() {
-      return "Mensuel";
+      return "M\xedos\xfail";
     },
     get$yearlySubscription() {
-      return "Annuel";
+      return "Bliant\xfail";
     },
     get$defaultSubscription() {
-      return "Abonnement Pangea Chat";
+      return "Cl\xe1r s\xednti\xfas Pangea Chat";
     },
     get$freeTrial() {
-      return "Essai gratuit";
+      return "Triail saor in aisce";
     },
     get$noDataFound() {
-      return "Aucune donn\xe9e trouv\xe9e";
+      return "N\xedor aims\xedodh aon sonra\xed";
     },
     get$bestCorrectionFeedback() {
-      return "C'est correct !";
+      return "T\xe1 s\xe9 sin ceart!";
     },
     get$distractorFeedback() {
-      return "Ce n'est pas tout \xe0 fait \xe7a.";
+      return "N\xedl s\xe9 sin go hioml\xe1n ceart.";
     },
     get$bestAnswerFeedback() {
-      return "C'est correct !";
+      return "T\xe1 s\xe9 sin ceart!";
     },
     get$definitionDefaultPrompt() {
-      return "Que signifie ce mot ?";
+      return "Cad is br\xed leis an bhfocal seo?";
     },
     get$practiceDefaultPrompt() {
-      return "Quelle est la meilleure r\xe9ponse ?";
+      return "Cad \xe9 an freagra is fearr?";
     },
     get$correctionDefaultPrompt() {
-      return "Quelle est la meilleure correction ?";
+      return "Cad \xe9 an ionad ceart?";
     },
     get$reportToTeacher() {
-      return "\xc0 qui souhaitez-vous signaler ce message ?";
+      return "C\xe9 acu mhaith leat tuairisci\xfa a dh\xe9anamh ar an teachtaireacht seo?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " a signal\xe9 un message de " + reportedUserId + " dans le chat " + roomName;
+      return "T\xe1 " + reportingUserId + " tuairisci\xfa ar theachtaireacht \xf3 " + reportedUserId + " sa chomhr\xe1 " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Message : " + reportedMessage + "\nRaison : " + reason;
+      return "Teachtaireacht: " + reportedMessage + "\nC\xfais: " + reason;
     },
     get$noTeachersFound() {
-      return "Aucun enseignant trouv\xe9 pour signaler";
+      return "N\xedl m\xfainteoir\xed le f\xe1il le tuairisci\xfa orthu";
     },
     trialExpiration$1(expiration) {
-      return "Votre essai gratuit expire le " + expiration;
+      return "Cr\xedochna\xedonn do thriail saor in aisce ar " + expiration;
     },
     get$freeTrialDesc() {
-      return "Les nouveaux utilisateurs b\xe9n\xe9ficient d'un essai gratuit d'une semaine de Pangea Chat";
+      return "Faigheann \xfas\xe1ideoir\xed nua triail saor in aisce ar feadh seachtain de Pangea Chat";
     },
     get$activateTrial() {
-      return "Essai gratuit de 7 jours";
+      return "Triail Saor in Aisce 7 L\xe1";
     },
     get$successfullySubscribed() {
-      return "Vous vous \xeates abonn\xe9 avec succ\xe8s !";
+      return "T\xe1 t\xfa cl\xe1raithe go rath\xfail!";
     },
     get$clickToManageSubscription() {
-      return "Cliquez ici pour g\xe9rer votre abonnement.";
+      return "Clice\xe1il anseo chun do sh\xednti\xfas a bhainisti\xfa.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Veuillez choisir au moins " + min + " caract\xe8res.";
+      return "Roghnaigh ar a laghad " + min + " carachtar.";
     },
     get$pleaseEnterValidEmail() {
-      return "Veuillez entrer une adresse e-mail valide.";
+      return "Cuir isteach seoladh r\xedomhphoist bail\xed.";
     },
     get$pleaseChooseAUsername() {
-      return "Veuillez choisir un nom d'utilisateur";
+      return "Roghnaigh ainm \xfas\xe1ideora le do thoil";
     },
     get$listen() {
-      return "\xc9couter";
+      return "\xc9ist";
     },
     get$trialPeriodExpired() {
-      return "Votre p\xe9riode d'essai a expir\xe9";
+      return "T\xe1 do thriail imithe";
     },
     get$subscribedToUnlockTools() {
-      return "Abonnez-vous pour d\xe9bloquer la traduction interactive, la v\xe9rification grammaticale, la lecture audio, les activit\xe9s de pratique personnalis\xe9es et les analyses d'apprentissage !";
+      return "Cl\xe1raigh chun aistri\xfach\xe1n idirghn\xedomhach agus seice\xe1il gramadach, fuaimrian, gn\xedomha\xedochta\xed cleachtadh pearsanta, agus anail\xeds\xedocht foghlama a fh\xe1il!";
     },
     get$translationTooltip() {
-      return "Traduire";
+      return "Aistri\xfa";
     },
     get$speechToTextTooltip() {
-      return "Transcription";
+      return "Trascr\xedobh";
     },
     get$kickBotWarning() {
-      return "Expulser le bot Pangea supprimera le bot de conversation de cette discussion.";
+      return "Beidh s\xe9 i gceist le buille Pangea Bot an bot comhr\xe1 a bhaint den chomhr\xe1 seo.";
     },
     get$refresh(_) {
-      return "Rafra\xeechir";
+      return "Athnuachan";
     },
     get$updatePhoneOS() {
-      return "Vous devrez peut-\xeatre mettre \xe0 jour la version du syst\xe8me d'exploitation de votre appareil.";
+      return "D'fh\xe9adfadh go mbeadh ort do leagan OS a nuashonr\xfa ar do ghl\xe9as.";
     },
     get$autoIGCToolName() {
-      return "Ex\xe9cuter automatiquement l'assistance \xe0 l'\xe9criture Pangea";
+      return "Rith cabhair scr\xedbhneoireachta Pangea go huathoibr\xedoch";
     },
     get$autoIGCToolDescription() {
-      return "Ex\xe9cuter automatiquement l'assistance \xe0 la grammaire et \xe0 la traduction de Pangea Chat avant d'envoyer mon message.";
+      return "Rith uathoibr\xedoch cabhair gramada\xed agus aistri\xfach\xe1in Pangea Chat sula seolfaidh m\xe9 mo theachtaireacht.";
     },
     get$chatCapacity() {
-      return "Capacit\xe9 de chat";
+      return "Cumaisc comhr\xe1";
     },
     get$roomFull() {
-      return "Cette salle est d\xe9j\xe0 pleine.";
+      return "T\xe1 an seomra seo l\xe1n cheana.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Capacit\xe9 de la discussion modifi\xe9e";
+      return "Athra\xedodh cumas an chomhr\xe1";
     },
     chatCapacitySetTooLow$1(count) {
-      return "La capacit\xe9 de la discussion doit \xeatre d'au moins " + count + ".";
+      return "N\xed m\xf3r do chumas an chomhr\xe1 a bheith ar a laghad " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "La capacit\xe9 de la discussion limite le nombre de membres autoris\xe9s dans une discussion.";
+      return "Cuireann cumas an chomhr\xe1 teorainn ar l\xedon na mbaill a cheada\xedtear i gcomhr\xe1.";
     },
     get$enterNumber() {
-      return "Veuillez entrer une valeur num\xe9rique enti\xe8re.";
+      return "Cuir luach uimhri\xfail ioml\xe1n isteach le do thoil.";
     },
     get$buildTranslation() {
-      return "Construisez votre traduction \xe0 partir des choix ci-dessus";
+      return "T\xf3g do aistri\xfach\xe1n \xf3 na roghanna thuas";
     },
     get$practice() {
-      return "Pratique";
+      return "Cleachtadh";
     },
     get$noLanguagesSet() {
-      return "Aucune langue d\xe9finie";
+      return "N\xedl aon teangacha socraithe";
     },
     get$speechToTextBody() {
-      return "Pour les messages vocaux, vous pouvez voir une transcription ainsi que le score de Mots Par Minute de l'orateur.";
+      return "Maidir le teachtaireachta\xed gutha, is f\xe9idir leat trascr\xedobh a fheice\xe1il chomh maith le sc\xf3r Focal in aghaidh an N\xf3im\xe9id\xed an chainteora.";
     },
     get$versionNotFound() {
-      return "Version non trouv\xe9e";
+      return "N\xedor aims\xedodh leagan";
     },
     get$fetchingVersion() {
-      return "R\xe9cup\xe9ration de la version...";
+      return "Ag f\xe1il leagan...";
     },
     get$versionFetchError() {
-      return "Erreur lors de la r\xe9cup\xe9ration de la version";
+      return "Earr\xe1id ag f\xe1il amach an leagan";
     },
     versionText$2(version, buildNumber) {
-      return "Version : " + version + "+" + buildNumber;
+      return "Leagan: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Les messages dans votre langue de base ne seront pas traduits.";
+      return "N\xed bheidh teachtaireachta\xed i do theanga bhun\xfasach le haistri\xfa.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Vous avez un abonnement actif";
+      return "T\xe1 s\xednti\xfas gn\xedomhach agat";
     },
     get$deleteSubscriptionWarningBody() {
-      return "La suppression de votre compte n'annulera pas automatiquement votre abonnement.";
+      return "N\xed chuirfidh scriosadh do chuntais do sh\xednti\xfas go huathoibr\xedoch ar ceal.";
     },
     get$manageSubscription() {
-      return "G\xe9rer l'abonnement";
+      return "Bainistigh S\xednti\xfas";
     },
     get$error520Title() {
-      return "Veuillez r\xe9essayer.";
+      return "D\xe9an iarracht ar\xeds le do thoil.";
     },
     get$error520Desc() {
-      return "D\xe9sol\xe9, nous n'avons pas compris votre message...";
+      return "T\xe1 br\xf3n orm, n\xedor thuig muid do theachtaireacht...";
     },
     get$level(_) {
-      return "Niveau";
+      return "Leibh\xe9al";
     },
     get$translationChoicesBody() {
-      return "Cliquez et maintenez une option pour un indice.";
+      return "Clice\xe1il agus coinnigh rogha le haghaidh leideanna.";
     },
     get$grammar() {
-      return "Grammaire";
+      return "Gairme";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Le contact a \xe9t\xe9 invit\xe9 au chat";
+      return "T\xe1 teagmh\xe1il tugtha cuireadh don chomhr\xe1";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Inviter au chat";
+      return "Glaoigh ar comhr\xe1";
     },
     get$chatName() {
-      return "Nom du chat";
+      return "Ainm an chomhr\xe1";
     },
     get$l2SupportNa() {
-      return "Non disponible";
+      return "N\xedl s\xe9 ar f\xe1il";
     },
     get$l2SupportAlpha() {
-      return "Alpha";
+      return "Ailf";
     },
     get$l2SupportBeta() {
-      return "Beta";
+      return "B\xe9ite";
     },
     get$l2SupportFull() {
-      return "Complet";
+      return "L\xe1n";
     },
     get$playAudio() {
-      return "Jouer";
+      return "Seinn";
     },
     get$stop(_) {
-      return "Arr\xeater";
+      return "Stop";
     },
     get$grammarCopyPOSsconj() {
-      return "Conjonction de subordination";
+      return "Conjunc\xe1id Fho-choibhneasta";
     },
     get$grammarCopyPOSnum() {
-      return "Num\xe9ro";
+      return "Uimhir";
     },
     get$grammarCopyPOSverb() {
-      return "Verbe";
+      return "Aimsir L\xe1ithreach";
     },
     get$grammarCopyPOSaffix() {
-      return "Affixe";
+      return "F\xe1isc";
     },
     get$grammarCopyPOSpart() {
-      return "Particule";
+      return "P\xe1irt\xed";
     },
     get$grammarCopyPOSadj() {
-      return "Adjectif";
+      return "Ainmfhocal";
     },
     get$grammarCopyPOScconj() {
-      return "Conjonction de coordination";
+      return "Ceangail L\xe1rnach";
     },
     get$grammarCopyPOSpunct() {
-      return "Ponctuation";
+      return "Guta\xed";
     },
     get$grammarCopyPOSadv() {
-      return "Adverbe";
+      return "Adsain";
     },
     get$grammarCopyPOSaux() {
-      return "Auxiliaire";
+      return "Cabhraithe";
     },
     get$grammarCopyPOSspace() {
-      return "Espace";
+      return "Sp\xe1s";
     },
     get$grammarCopyPOSsym() {
-      return "Symbole";
+      return "Siombail";
     },
     get$grammarCopyPOSdet() {
-      return "D\xe9terminant";
+      return "Riachtanas";
     },
     get$grammarCopyPOSpron() {
-      return "Pronom";
+      return "R\xe9amhfhocal";
     },
     get$grammarCopyPOSadp() {
-      return "Adposition";
+      return "R\xe9amhphost";
     },
     get$grammarCopyPOSpropn() {
-      return "Nom propre";
+      return "ainmfhocal Urraithe";
     },
     get$grammarCopyPOSnoun() {
-      return "Nom";
+      return "Ainmfhocal";
     },
     get$grammarCopyPOSintj() {
-      return "Interjection";
+      return "Interjeacht";
     },
     get$grammarCopyPOSx() {
-      return "Autre";
+      return "Eile";
     },
     get$grammarCopyGENDERfem() {
-      return "F\xe9minin";
+      return "Ban";
     },
     get$grammarCopyPERSON2() {
-      return "Deuxi\xe8me personne";
+      return "An Dara Duine";
     },
     get$grammarCopyMOODimp() {
-      return "Imp\xe9ratif";
+      return "Orduitheach";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Question";
+      return "Ceist";
     },
     get$grammarCopyASPECTperf() {
-      return "Parfait";
+      return "Cr\xedochnaitheach";
     },
     get$grammarCopyCASEaccnom() {
-      return "Accusatif, Nominatif";
+      return "C\xe1sca, Ainmfhocail";
     },
     get$grammarCopyCASEobl() {
-      return "Oblique";
+      return "Uillinneach";
     },
     get$grammarCopyVOICEact() {
-      return "Actif";
+      return "Gn\xedomhach";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Crochet";
+      return "Clib";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Article";
+      return "Alt";
     },
     get$grammarCopyNUMBERsing() {
-      return "Singulier";
+      return "Aonair";
     },
     get$grammarCopyGENDERmasc() {
-      return "Masculin";
+      return "Fireann";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modal";
+      return "Mod\xfail";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Adverbial";
+      return "Aml\xe9ite";
     },
     get$grammarCopyTENSEperi() {
-      return "P\xe9riphrastique";
+      return "Timpeallach";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Chiffre";
+      return "Uimhir";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Pas Propre";
+      return "N\xed Foirfe";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Cardinal";
+      return "Uimhirl\xe1rnach";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Propre";
+      return "Foirfe";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Tiret";
+      return "Dash";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Oui";
+      return "Sea";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Point-virgule";
+      return "Leas";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Virgule";
+      return "C\xe9imni\xfa";
     },
     get$grammarCopyMOODcnd() {
-      return "Conditionnel";
+      return "Coinn\xedollach";
     },
     get$grammarCopyCASEacc() {
-      return "Accusatif";
+      return "C\xe1sca";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partitif";
+      return "Cuidr\xedoch";
     },
     get$grammarCopyTENSEpast() {
-      return "Pass\xe9";
+      return "Anuraidh";
     },
     get$grammarCopyDEGREEsup() {
-      return "Superlatif";
+      return "Superlative";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Deux-points";
+      return "Col\xfan";
     },
     get$grammarCopyPERSON3() {
-      return "Troisi\xe8me personne";
+      return "An Tr\xed\xfa Pearsant";
     },
     get$grammarCopyNUMBERplur() {
-      return "Pluriel";
+      return "Ilchr\xedoch";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Nom propre";
+      return "Ainmneoir Foirne";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Interrogatif";
+      return "Ceistneach";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Informel";
+      return "Neamhfhoirmi\xfail";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Temps";
+      return "Am";
     },
     get$grammarCopyPOLARITYneg() {
-      return "N\xe9gatif";
+      return "Di\xfaltach";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Total";
+      return "Ioml\xe1n";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Adnominal";
+      return "Ainmfhocail Fh\xedor\xfail";
     },
     get$grammarCopyASPECTprog() {
-      return "Progressif";
+      return "Forbartha";
     },
     get$grammarCopyMOODsub() {
-      return "Subjonctif";
+      return "F\xe9achaint";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Compl\xe9mentive";
+      return "Comhthreomhar";
     },
     get$grammarCopyCASEnom() {
-      return "Nominatif";
+      return "Uainmneach";
     },
     get$grammarCopyTENSEfut() {
-      return "Futur";
+      return "Amach";
     },
     get$grammarCopyCASEdat() {
-      return "Datif";
+      return "D\xe1ta\xed";
     },
     get$grammarCopyTENSEpres() {
-      return "Pr\xe9sent";
+      return "Reatha";
     },
     get$grammarCopyGENDERneut() {
-      return "Neutre";
+      return "Neodrach";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Relatif";
+      return "Cine\xe1lach";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Terminaison finale";
+      return "Cr\xedoch Deiridh";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "D\xe9monstratif";
+      return "Taispe\xe1ntach";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Pr\xe9positionnel";
+      return "R\xe9amhfhocail";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Fini";
+      return "Cr\xedochnaitheach";
     },
     get$grammarCopyDEGREEpos() {
-      return "Positif";
+      return "Dearfach";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Citation";
+      return "Lua";
     },
     get$grammarCopyVERBFORMger() {
-      return "G\xe9rondif";
+      return "Gerund";
     },
     get$grammarCopyVOICEpass() {
-      return "Passif";
+      return "Gn\xedomhach";
     },
     get$grammarCopyCASEgen() {
-      return "G\xe9nitif";
+      return "Gineadach";
     },
     get$grammarCopyTENSEprs() {
-      return "Pr\xe9sent";
+      return "Reatha";
     },
     get$grammarCopyDEFINITEdef() {
-      return "D\xe9fini";
+      return "Sonrach";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Ordinal";
+      return "Ord\xfail";
     },
     get$grammarCopyCASEins() {
-      return "Instrumental";
+      return "Instruimintal";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Infinitif";
+      return "Neamhrialta";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Auxiliaire";
+      return "Cabhrach";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Long";
+      return "Fada";
     },
     get$grammarCopyCASEloc() {
-      return "Locatif";
+      return "\xc1itritheach";
     },
     get$grammarCopyMOODind() {
-      return "Indicatif";
+      return "T\xe1scaireach";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Comparatif";
+      return "Compar\xe1ideach";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Relatif";
+      return "C\xe9imeanna";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Interjectif";
+      return "Eileamh";
     },
     get$grammarCopyPERSON1() {
-      return "Premi\xe8re personne";
+      return "An Ch\xe9ad Duine";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Initial";
+      return "T\xfas";
     },
     get$grammarCopyGENDERperson() {
-      return "Personne";
+      return "Gn\xe9";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\xc9tranger";
+      return "Eachtrach";
     },
     get$grammarCopyVOICEvoice() {
-      return "Voix";
+      return "Guth";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Verbe";
+      return "Aimsir";
     },
     get$grammarCopyPOSSpass() {
-      return "Possessif";
+      return "Seilbh";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Pr\xe9positionnel";
+      return "R\xe9amhfhocail";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Num\xe9ral";
+      return "Uimhir";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Nom";
+      return "Ainmfhocal";
     },
     get$grammarCopyREFLEXreflex() {
-      return "R\xe9ciproque";
+      return "Filleadh";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Pronom";
+      return "R\xe9amhfhocal";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "C\xf4t\xe9 de la ponctuation";
+      return "Taobh Ponc";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Forme du verbe";
+      return "Aimsir";
     },
     get$grammarCopyGENDERgender() {
-      return "Genre";
+      return "Gn\xe9";
     },
     get$grammarCopyMOODmood() {
-      return "Mode";
+      return "Moth\xfach\xe1n";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspect";
+      return "Aicme";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Ponctuation";
+      return "Ponctuaci\xf3n";
     },
     get$grammarCopyTENSEtense() {
-      return "Temps";
+      return "Am";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Degr\xe9";
+      return "Gr\xe1d";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Politesse";
+      return "Beannacht\xfail";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Adverbe";
+      return "Aml\xe9iritheoir";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Num\xe9ro";
+      return "Uimhir";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Conjonction";
+      return "Aontr\xf3ga";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polarit\xe9";
+      return "Uimhir";
     },
     get$grammarCopyCASEcase() {
-      return "Cas";
+      return "C\xe1s";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "D\xe9finition";
+      return "Sonrach";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Num\xe9ral";
+      return "Uimhir";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Adnominal";
+      return "Uimhirfhocail";
     },
     get$grammarCopyVOCvoc() {
-      return "Vocatif";
+      return "Aitri\xfail";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Compl\xe9mentiseur";
+      return "Comhl\xe1naitheoir";
     },
     get$grammarCopyADVadv() {
-      return "Adverbial";
+      return "Aml\xe9iritheoir";
     },
     get$grammarCopyMOODjus() {
-      return "Jussif";
+      return "Ullmh\xfach\xe1n";
     },
     get$grammarCopyGENDERcom() {
-      return "Commun";
+      return "Ginear\xe1lta";
     },
     get$grammarCopyREFLEXrflx() {
-      return "R\xe9ciproque";
+      return "F\xe9inspl\xe9ach";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Partitif";
+      return "Rann\xfail";
     },
     get$grammarCopySPCspc() {
-      return "Sp\xe9cifique";
+      return "Sonrach";
     },
     get$grammarCopyTENSEpqp() {
-      return "Plus-que-parfait";
+      return "An t-aimsir roimh r\xe9";
     },
     get$grammarCopyREFLEXref() {
-      return "R\xe9ciproque";
+      return "F\xe9insc\xe9imeach";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Court";
+      return "Gearr";
     },
     get$grammarCopyNUMBERdual() {
-      return "Dual";
+      return "D\xfa\xe1lach";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Long";
+      return "Fada";
     },
     get$grammarCopyVOICEmid() {
-      return "Milieu";
+      return "L\xe1r";
     },
     get$grammarCopyINTRELintRel() {
-      return "Interrogatif, Relatif";
+      return "Ceist, Caid\xe9alach";
     },
     get$grammarCopyINTint() {
-      return "Interrogatif";
+      return "Ceist";
     },
     get$grammarCopyVOICEcaus() {
-      return "Causatif";
+      return "C\xfaisitheach";
     },
     get$grammarCopyUnknown() {
-      return "Inconnu";
+      return "D\xe1nta";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\xc9videntialit\xe9";
+      return "Fianaise";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Num\xe9ro du possesseur";
+      return "Uimhir an \xdain\xe9ara";
     },
     get$grammarCopyASPECThab() {
-      return "Habituel";
+      return "Cleachtais";
     },
     get$grammarCopyCASEabl() {
-      return "Ablatif";
+      return "Ablat\xedv";
     },
     get$grammarCopyCASEall() {
-      return "Allatif";
+      return "Uileach";
     },
     get$grammarCopyCASEess() {
-      return "Essive";
+      return "Eis\xedse";
     },
     get$grammarCopyCASEtra() {
-      return "Translative";
+      return "Trasnaitheach";
     },
     get$grammarCopyCASEequ() {
-      return "\xc9quatif";
+      return "Comhionann";
     },
     get$grammarCopyCASEdis() {
-      return "Distributif";
+      return "D\xe1ileach";
     },
     get$grammarCopyCASEabs() {
-      return "Absolutif";
+      return "Uil\xedoch";
     },
     get$grammarCopyCASEerg() {
-      return "Ergatif";
+      return "Eirgeanach";
     },
     get$grammarCopyCASEcau() {
-      return "Causale";
+      return "C\xfais";
     },
     get$grammarCopyCASEben() {
-      return "b\xe9n\xe9ficiaire";
+      return "Bunt\xe1ist\xed";
     },
     get$grammarCopyCASEtem() {
-      return "temporel";
+      return "Amach";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Coordonnant";
+      return "Comhoiri\xfanach";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\xc9tat de construction";
+      return "Staid T\xf3g\xe1la";
     },
     get$grammarCopyDEGREEabs() {
-      return "Degr\xe9 absolu";
+      return "Glan-D\xe9imeant";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\xc9videntialit\xe9 factuelle";
+      return "F\xedor-Eolas";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\xc9videntialit\xe9 non factuelle";
+      return "Eolas Ne-fh\xedor\xfail";
     },
     get$grammarCopyMOODopt() {
-      return "Optatif";
+      return "Riachtanach";
     },
     get$grammarCopyMOODadm() {
-      return "Admiratif";
+      return "Uachtar\xe1in";
     },
     get$grammarCopyMOODdes() {
-      return "D\xe9sid\xe9ratif";
+      return "F\xe1iltithe";
     },
     get$grammarCopyMOODnec() {
-      return "N\xe9cessitatif";
+      return "G\xe1";
     },
     get$grammarCopyMOODpot() {
-      return "Potentiel";
+      return "Inchreidte";
     },
     get$grammarCopyMOODprp() {
-      return "Propositif";
+      return "Tairiscint";
     },
     get$grammarCopyMOODqot() {
-      return "Quotatif";
+      return "Luaite";
     },
     get$grammarCopyNUMFORMword() {
-      return "Forme du mot";
+      return "Foirm Focail";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Num\xe9ral romain";
+      return "Uimhir R\xf3mh\xe1nach";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Forme en lettres";
+      return "Foirm Litreach";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Multiplicatif";
+      return "Ilroinnt";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Fractionnaire";
+      return "Leathscartha";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Ensemble";
+      return "Sraith";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Gamme";
+      return "Raon";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Distributif";
+      return "Distributive";
     },
     get$grammarCopyNUMBERtri() {
-      return "Essai";
+      return "Trial";
     },
     get$grammarCopyNUMBERpauc() {
       return "Paucal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Plus grand Paucal";
+      return "Paucal N\xedos M\xf3";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Plus grand Pluriel";
+      return "Ilghn\xe9itheach N\xedos M\xf3";
     },
     get$grammarCopyNUMBERinv() {
-      return "Inverse";
+      return "Inmhheas\xfail";
     },
     get$grammarCopyPERSON0() {
-      return "Z\xe9ro";
+      return "Nialas";
     },
     get$grammarCopyPERSON4() {
-      return "Quatri\xe8me";
+      return "Ceathr\xfa";
     },
     get$grammarCopyPOLITEform() {
-      return "Formel";
+      return "Foirm Oifigi\xfail";
     },
     get$grammarCopyPOLITEelev() {
-      return "\xc9lev\xe9";
+      return "Ardaithne";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Humble";
+      return "Humbl";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Emphatique";
+      return "D\xe9anamh Leithneach";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Exclamative";
+      return "Uaimh";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "R\xe9ciproque";
+      return "Comhoiri\xfanach";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Interrogative-Relatif";
+      return "Ceist-Relat\xedv";
     },
     get$grammarCopyTENSEaor() {
-      return "Aoriste";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\xc9pist\xe9mique";
+      return "Eolas Eola\xedoch";
     },
     get$grammarCopyTENSEprosp() {
-      return "Prospectif";
+      return "D\u2019fh\xe9ideanach";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Participe";
+      return "Roinnt";
     },
     get$grammarCopyVERBFORMconv() {
       return "Converb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Nominal verbal";
+      return "Noun Briathartha";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipassive";
+      return "Frithph\xe1irteach";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Causatif";
+      return "Causative";
     },
     get$grammarCopyVOICedir() {
-      return "Direct";
+      return "D\xedreach";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Inverse";
+      return "Inmh\xe9anach";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "R\xe9ciproque";
+      return "Comhoiri\xfanach";
     },
     get$grammarCopyPOS() {
-      return "Partie du discours";
+      return "Rann\xf3g Focail";
     },
     get$grammarCopyGENDER() {
-      return "Genre";
+      return "Inscne";
     },
     get$grammarCopyPERSON() {
-      return "Personne";
+      return "Duine";
     },
     get$grammarCopyMOOD() {
-      return "Mode";
+      return "Moth\xfach\xe1n";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Type de ponctuation";
+      return "Cine\xe1l Ponctu\xe1la";
     },
     get$grammarCopyASPECT() {
-      return "Aspect";
+      return "Aicme";
     },
     get$grammarCopyCASE() {
-      return "Cas";
+      return "C\xe1s";
     },
     get$grammarCopyVOICE() {
-      return "Voix";
+      return "Guth";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Type de nom";
+      return "Cine\xe1l Ainmfhocail";
     },
     get$grammarCopyVERBTYPE() {
-      return "Type de verbe";
+      return "Cine\xe1l Briathar";
     },
     get$grammarCopyADVTYPE() {
-      return "Type d'adverbe";
+      return "Cine\xe1l Aimsire";
     },
     get$grammarCopyNUMFORM() {
-      return "Forme num\xe9rique";
+      return "Uimhir Foirme";
     },
     get$grammarCopyNUMTYPE() {
-      return "Type num\xe9rique";
+      return "Cine\xe1l Uimhir";
     },
     get$grammarCopyNUMBER() {
-      return "Num\xe9ro";
+      return "Uimhir";
     },
     get$grammarCopyDEFINITE() {
-      return "D\xe9finitude";
+      return "Sonrach";
     },
     get$grammarCopyDEGREE() {
-      return "Degr\xe9";
+      return "Gr\xe1d";
     },
     get$grammarCopyEVIDENT() {
-      return "\xc9videntialit\xe9";
+      return "Fianaise";
     },
     get$grammarCopyFOREIGN() {
-      return "\xc9tranger";
+      return "C\xe9imithe";
     },
     get$grammarCopyPOLARITY() {
-      return "Polarit\xe9";
+      return "Polara\xedocht";
     },
     get$grammarCopyPOLITE() {
-      return "Politesse";
+      return "Beannacht";
     },
     get$grammarCopyPREPCASE() {
-      return "Cas Pr\xe9positionnel";
+      return "C\xe1s R\xe9amhfhoclach";
     },
     get$grammarCopyPRONTYPE() {
-      return "Type de Pronom";
+      return "Cine\xe1l R\xe9amhfhocail";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "C\xf4t\xe9 de la Ponctuation";
+      return "Taobh Ponctu\xe1la";
     },
     get$grammarCopyREFLEX() {
-      return "R\xe9fl\xe9chi";
+      return "F\xe9inscr\xedofa";
     },
     get$grammarCopyTENSE() {
-      return "Temps";
+      return "Am";
     },
     get$grammarCopyVERBFORM() {
-      return "Forme du Verbe";
+      return "Foirm Briathar";
     },
     get$grammarCopyCONJTYPE() {
-      return "Type de Conjonction";
+      return "Cine\xe1l Aontraithe";
     },
     get$grammarCopyUNKNOWN() {
-      return "Inconnu";
+      return "D\xe1ir\xedre";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Num\xe9ro du Possesseur";
+      return "Uimhir an \xdain\xe9ara";
     },
     get$grammarCopyPOSS() {
-      return "Possessif";
+      return "Seilbh";
     },
     get$grammarCopyASPECTimp() {
-      return "Aspect imperfectif";
+      return "Aisteach neamhfhoirmi\xfail";
     },
     get$grammarCopyCASEvoc() {
-      return "Vocatif";
+      return "Ullmh\xfach\xe1n";
     },
     get$grammarCopyCASEcom() {
-      return "Comitatif";
+      return "Comhthreomhar";
     },
     get$grammarCopyCASEpar() {
-      return "Partitif";
+      return "Rannph\xe1irt\xedocht";
     },
     get$grammarCopyCASEadv() {
-      return "Adverbial";
+      return "Aimsirfhocail";
     },
     get$grammarCopyCASEref() {
-      return "R\xe9f\xe9rentiel";
+      return "Tagairt";
     },
     get$grammarCopyCASErel() {
-      return "Relatif";
+      return "Caidreamh";
     },
     get$grammarCopyCASEsub() {
-      return "Subessif";
+      return "Fo-\xfadar\xe1s";
     },
     get$grammarCopyCASEsup() {
-      return "Superessif";
+      return "Superessive";
     },
     get$grammarCopyCASEaccdat() {
-      return "Accusatif-Datif";
+      return "Ullmh\xfach\xe1n-D\xe1ta\xed";
     },
     get$grammarCopyCASEpre() {
-      return "Pr\xe9positionnel";
+      return "R\xe9amhfhocail";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Subordonnant";
+      return "Foshuiteach";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Comparatif";
+      return "Comhchiallach";
     },
     get$grammarCopyDEFINITEind() {
-      return "Ind\xe9fini";
+      return "Neamhshonraithe";
     },
     get$grammarCopyMOODint() {
-      return "Mode interrogatif";
+      return "M\xf3d Idirghabh\xe1la";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Nom commun";
+      return "Cine\xe1l Coiteann";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Singulier du possesseur";
+      return "Uimhir Singil an \xdain\xe9ara";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Pluriel du possesseur";
+      return "Il\xfas an Fhoinseora";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Dual du possesseur";
+      return "D\xfaal an Fhoinseora";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Polarity positive";
+      return "Deimhneach";
     },
     get$grammarCopyPOSSyes() {
-      return "Possessif";
+      return "Seilbh";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Non pr\xe9positionnel";
+      return "Neamh-urramach";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Personnel";
+      return "Pearsa";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Interrogatif";
+      return "Ceistneach";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Total";
+      return "Ioml\xe1n";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "N\xe9gatif";
+      return "Di\xfaltach";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Article";
+      return "Alt";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Ind\xe9fini";
+      return "Neamh-shonraithe";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Interrogatif-Relatif";
+      return "Ceistneach-Relat\xfail";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Ponctuation finale";
+      return "Ponctu\xedocht Deiridh";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Point";
+      return "Ciorcal";
     },
     get$grammarCopyREFLEXyes() {
-      return "R\xe9fl\xe9chi";
+      return "F\xe9insci\xfartha";
     },
     get$grammarCopyTENSEimp() {
-      return "Imparfait";
+      return "Neamhfhoirfe";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Supin";
+      return "Supine";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominal";
+      return "Ullmhaitheach";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Long";
+      return "Fada";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Court";
+      return "Gearr";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Verbe causatif";
+      return "Aimsir Gn\xedomhach";
     },
     get$grammarCopyVOICEcau() {
-      return "Causatif";
+      return "Causative";
     },
     get$grammarCopyVOICEdir() {
-      return "Direct";
+      return "D\xedreach";
     },
     get$grammarCopyVOICEinv() {
-      return "Inverse";
+      return "Inmh\xe9anach";
     },
     get$grammarCopyVOICErcp() {
-      return "R\xe9ciproque";
+      return "Comhoiri\xfanach";
     },
     get$other() {
-      return "Autre";
+      return "Eile";
     },
     levelShort$1(level) {
-      return "NIV " + level;
+      return "LEIBH\xc9AL " + level;
     },
     get$clickBestOption() {
-      return "Choisissez les meilleures options pour traduire votre message !";
+      return "Roghnaigh na roghanna is fearr chun do theachtaireacht a aistri\xfa!";
     },
     get$completeActivitiesToUnlock() {
-      return "Terminez au moins une activit\xe9 pour d\xe9verrouiller la traduction !";
+      return "Cr\xedochnaigh ar a laghad gn\xedomha\xedocht amh\xe1in chun an t-aistri\xfach\xe1n a dh\xedghlas\xe1il!";
     },
     get$downloadGroupText() {
-      return "T\xe9l\xe9charger le texte du groupe";
+      return "\xcdosl\xf3d\xe1il t\xe9acs an ghr\xfapa";
     },
     get$notificationsOn() {
-      return "Notifications activ\xe9es";
+      return "F\xf3gra\xed ar si\xfal";
     },
     get$notificationsOff() {
-      return "Notifications d\xe9sactiv\xe9es";
+      return "F\xf3gra\xed as";
     },
     get$createChatAndInviteUsers() {
-      return "Cr\xe9er un chat et inviter des utilisateurs";
+      return "Cruthaigh comhr\xe1 agus cuireadh a thabhairt do \xfas\xe1ideoir\xed";
     },
     get$updatedNewSpaceDescription() {
-      return "Les cours vous permettent de consolider vos discussions et de cr\xe9er des communaut\xe9s priv\xe9es ou publiques.";
+      return "Ligeann c\xfarsa\xed duit do chomhr\xe1ite a chur le ch\xe9ile agus pobail phr\xedobh\xe1ideacha n\xf3 phoibl\xed a th\xf3g\xe1il.";
     },
     get$joinWithCode() {
-      return "Rejoindre avec un code";
+      return "B\xed p\xe1irteach le c\xf3d";
     },
     get$enterCodeToJoin() {
-      return "Entrez le code pour rejoindre";
+      return "Cuir isteach an c\xf3d chun p\xe1irt a ghlacadh";
     },
     get$updateNow() {
-      return "Mettre \xe0 jour maintenant";
+      return "Nuashonraigh anois";
     },
     get$updateLater() {
-      return "Plus tard";
+      return "Nuashonraigh n\xedos d\xe9ana\xed";
     },
     get$constructUseWaDesc() {
-      return "Utilis\xe9 sans aide";
+      return "\xdas\xe1id gan cabhair";
     },
     get$constructUseGaDesc() {
-      return "Assistance grammaticale";
+      return "Cabhair gramadach";
     },
     get$constructUseTaDesc() {
-      return "Assistance \xe0 la traduction";
+      return "Cabhair aistri\xfach\xe1in";
     },
     get$constructUseUnkDesc() {
-      return "Inconnu";
+      return "Neamhshonraithe";
     },
     get$constructUseCorITDesc() {
-      return "Correct dans la traduction";
+      return "Ceart i dtaobh an aistri\xfach\xe1in";
     },
     get$constructUseIgnITDesc() {
-      return "Ignor\xe9 dans la traduction";
+      return "Uaireanta neamhaird i dtaobh an aistri\xfach\xe1in";
     },
     get$constructUseIncITDesc() {
-      return "Incorrect dans la traduction";
+      return "M\xedcheart i dtaobh an aistri\xfach\xe1in";
     },
     get$constructUseIgnIGCDesc() {
-      return "Ignor\xe9 dans la correction grammaticale";
+      return "F\xe1gtha i gceartlitri\xfa gramada\xed";
     },
     get$constructUseCorIGCDesc() {
-      return "Correct dans la correction grammaticale";
+      return "Ceart i gceartlitri\xfa gramada\xed";
     },
     get$constructUseIncIGCDesc() {
-      return "Incorrect dans la correction grammaticale";
+      return "M\xedcheart i gceartlitri\xfa gramada\xed";
     },
     get$constructUseCorPADesc() {
-      return "Correct dans l'activit\xe9 de sens des mots";
+      return "Ceart i gn\xedomha\xedocht br\xedfhocal";
     },
     get$constructUseIgnPADesc() {
-      return "Ignor\xe9 dans l'activit\xe9 de sens des mots";
+      return "F\xe1gtha i gn\xedomha\xedocht br\xedfhocal";
     },
     get$constructUseIncPADesc() {
-      return "Incorrect dans l'activit\xe9 de sens des mots";
+      return "M\xedcheart i gn\xedomha\xedocht br\xedfhocal";
     },
     get$constructUseCorWLDesc() {
-      return "Correct dans l'activit\xe9 d'\xe9coute de mots";
+      return "Ceart i gn\xedomha\xedocht \xe9isteachta focail";
     },
     get$constructUseIncWLDesc() {
-      return "Incorrect dans l'activit\xe9 d'\xe9coute de mots";
+      return "M\xedcheart i gn\xedomha\xedocht \xe9isteachta focail";
     },
     get$constructUseIngWLDesc() {
-      return "Ignor\xe9 dans l'activit\xe9 d'\xe9coute de mots";
+      return "F\xe1gtha i gn\xedomha\xedocht \xe9isteachta focail";
     },
     get$constructUseCorHWLDesc() {
-      return "Correct dans l'activit\xe9 de mot cach\xe9";
+      return "Ceart i gn\xedomha\xedocht focail i bhfolach";
     },
     get$constructUseIncHWLDesc() {
-      return "Incorrect dans l'activit\xe9 de mot cach\xe9";
+      return "M\xedcheart i gn\xedomha\xedocht focail i bhfolach";
     },
     get$constructUseIgnHWLDesc() {
-      return "Ignor\xe9 dans l'activit\xe9 de mot cach\xe9";
+      return "F\xe1gtha i gn\xedomha\xedocht focail i bhfolach";
     },
     get$constructUseCorLDesc() {
-      return "Correct dans l'activit\xe9 de lemme";
+      return "Ceart i ngn\xedomha\xedocht leama";
     },
     get$constructUseIncLDesc() {
-      return "Incorrect dans l'activit\xe9 de lemme";
+      return "M\xedcheart i ngn\xedomha\xedocht leama";
     },
     get$constructUseIgnLDesc() {
-      return "Ignor\xe9 dans l'activit\xe9 de lemme";
+      return "F\xe1gtha i ngn\xedomha\xedocht leama";
     },
     get$constructUseCorMDesc() {
-      return "Correct dans l'activit\xe9 de grammaire";
+      return "Ceart i ngn\xedomha\xedocht gramada\xed";
     },
     get$constructUseIncMDesc() {
-      return "Incorrect dans l'activit\xe9 de grammaire";
+      return "M\xedcheart i ngn\xedomha\xedocht gramada\xed";
     },
     get$constructUseIgnMDesc() {
-      return "Ignor\xe9 dans l'activit\xe9 de grammaire";
+      return "F\xe1gtha i ngn\xedomha\xedocht gramada\xed";
     },
     get$constructUseEmojiDesc() {
-      return "Correct dans l'activit\xe9 d'emoji";
+      return "Ceart i ngn\xedomha\xedocht \xedomh\xe1-gh\xe1ire";
     },
     get$constructUseCollected() {
-      return "Collect\xe9 dans le chat";
+      return "Bailithe i gcomhr\xe1";
     },
     get$constructUseNanDesc() {
-      return "Non applicable";
+      return "N\xedl infheidhmithe";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "Activation de la synth\xe8se vocale";
+      return "Cumasa\xedodh t\xe9acs-go-huaiseacht";
     },
     get$enableTTSToolDescription() {
-      return "Permet \xe0 l'application de g\xe9n\xe9rer une sortie de synth\xe8se vocale pour des parties du texte dans votre langue cible.";
+      return "Ceadaigh don aip toradh t\xe9acs-go-huaiseacht a ghini\xfaint do chuid codanna den t\xe9acs i do theanga sprioc.";
     },
     get$yourUsername() {
-      return "Votre nom d'utilisateur";
+      return "Do chuid ainm \xfas\xe1ideora";
     },
     get$yourEmail() {
-      return "Votre e-mail";
+      return "Do r-phost";
     },
     get$iWantToLearn() {
-      return "Je veux apprendre";
+      return "Ba mhaith liom foghlaim";
     },
     get$pleaseEnterEmail() {
-      return "Veuillez saisir une adresse e-mail valide.";
+      return "Cuir isteach seoladh r\xedomhphoist bail\xed le do thoil.";
     },
     get$myBaseLanguage() {
-      return "Ma langue de base";
+      return "Mo theanga bhun\xfasach";
     },
     get$meaningSectionHeader() {
-      return "Signification :";
+      return "Ciall:";
     },
     get$formSectionHeader() {
-      return "Formes utilis\xe9es dans les discussions :";
+      return "Foirmi\xfalachta\xed a \xfas\xe1idtear i gcomhr\xe1ite:";
     },
     get$writingExercisesTooltip() {
-      return "\xc9criture";
+      return "Scr\xedobh";
     },
     get$listeningExercisesTooltip() {
-      return "\xc9coute";
+      return "\xc9isteacht";
     },
     get$readingExercisesTooltip() {
-      return "Lecture";
+      return "L\xe9amh";
     },
     get$meaningNotFound() {
-      return "Signification introuvable.";
+      return "N\xedor f\xe9idir an ciall a fh\xe1il.";
     },
     get$chooseBaseForm() {
-      return "Choisissez la forme de base";
+      return "Roghnaigh an fhoirm bhun\xfasach";
     },
     get$notTheCodeError() {
-      return "D\xe9sol\xe9, ce n'est pas le code !";
+      return "T\xe1 br\xf3n orm, n\xed \xe9 sin an c\xf3d!";
     },
     get$totalXP() {
-      return "XP total";
+      return "Gach XP";
     },
     get$numLemmas() {
-      return "Nombre total de lemmas";
+      return "L\xedon ioml\xe1n na lemmas";
     },
     get$numLemmasUsedCorrectly() {
-      return "Nombre de lemmas utilis\xe9s correctement au moins une fois";
+      return "L\xedon na lemmas a \xfas\xe1idtear i gceart ar a laghad uair amh\xe1in";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Nombre de lemmas utilis\xe9s incorrectement 0 fois";
+      return "An l\xedon lemas a \xfas\xe1idtear i gceart 0 uair";
     },
     get$numLemmasSmallXP() {
-      return "Nombre de lemmas avec 0 - 30 XP";
+      return "An l\xedon lemas le 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "Nombre de lemmes avec 31 - 200 XP";
+      return "An l\xedon lemas le 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "Nombre de lemmes avec > 200 XP";
+      return "An l\xedon lemas le > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "Nombre de concepts grammaticaux";
+      return "An l\xedon coincheapa gramad\xe1la";
     },
     get$listGrammarConcepts() {
-      return "Concepts grammaticaux";
+      return "Coincheapa gramad\xe1la";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Concepts grammaticaux utilis\xe9s correctement dans les messages originaux au moins 80% du temps";
+      return "Coincheapa gramad\xe1la a \xfas\xe1idtear i gceart i teachtaireachta\xed bunaidh ar a laghad 80% den am";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Concepts grammaticaux utilis\xe9s incorrectement dans les messages originaux moins de 80% du temps";
+      return "Coincheapa gramad\xe1la a \xfas\xe1idtear i gceart i teachtaireachta\xed bunaidh n\xedos l\xfa n\xe1 80% den am";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Concepts grammaticaux choisis correctement parmi les suggestions g\xe9n\xe9r\xe9es par le syst\xe8me au moins 80% du temps";
+      return "Coincheapa gramad\xe1la a roghna\xedtear i gceart \xf3 mholta\xed ginte ag an gc\xf3ras ar a laghad 80% den am";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Concepts grammaticaux choisis incorrectement parmi les suggestions g\xe9n\xe9r\xe9es par le syst\xe8me moins de 80% du temps";
+      return "Coincheapa gramad\xe1la a roghna\xedtear i gceart \xf3 mholta\xed ginte ag an gc\xf3ras n\xedos l\xfa n\xe1 80% den am";
     },
     get$listGrammarConceptsSmallXP() {
-      return "Concepts grammaticaux avec 0-50 xp";
+      return "Coincheapa gramad\xe1la le 0-50 xp";
     },
     get$listGrammarConceptsMediumXP() {
-      return "Concepts grammaticaux avec 51-200 xp";
+      return "Coincheapa gramad\xe1la le 51-200 xp";
     },
     get$listGrammarConceptsLargeXP() {
-      return "Concepts grammaticaux 201-500 xp";
+      return "Coincheapa gramad\xe1la le 201-500 xp";
     },
     get$listGrammarConceptsHugeXP() {
-      return "Concepts grammaticaux >500 xp";
+      return "Coincheapa gramad\xe1la >500 xp";
     },
     get$numMessagesSent() {
-      return "Nombre de messages envoy\xe9s";
+      return "An l\xedon teachairteanna a sheoladh";
     },
     get$numWordsTyped() {
-      return "Nombre de mots tap\xe9s dans les messages originaux";
+      return "An l\xedon focail a chl\xf3scr\xedobhadh i gceart i teachtaireachta\xed bunaidh";
     },
     get$numCorrectChoices() {
-      return "Nombre de mots corrects choisis parmi les suggestions g\xe9n\xe9r\xe9es par le syst\xe8me";
+      return "An l\xedon focail chrua a roghna\xedtear i gceart \xf3 mholta\xed ginte ag an gc\xf3ras";
     },
     get$numIncorrectChoices() {
-      return "Nombre de mots incorrects choisis parmi les suggestions g\xe9n\xe9r\xe9es par le syst\xe8me";
+      return "An l\xedon focail mh\xedcheart a roghna\xedtear \xf3 mholta\xed ginte ag an gc\xf3ras";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3719,853 +3719,853 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "Type de fichier";
+      return "Cine\xe1l comhaid";
     },
     get$download(_) {
-      return "T\xe9l\xe9charger";
+      return "\xcdosl\xf3d\xe1il";
     },
     get$analyticsNotAvailable() {
-      return "Analytique utilisateur non disponible";
+      return "N\xed f\xe9idir anail\xeds \xfas\xe1ideora a fh\xe1il";
     },
     get$downloading() {
-      return "T\xe9l\xe9chargement en cours...";
+      return "Ag \xedosl\xf3d\xe1il...";
     },
     get$failedFetchUserAnalytics() {
-      return "\xc9chec du t\xe9l\xe9chargement de l'analytique utilisateur";
+      return "N\xedor \xe9irigh le h\xedosl\xf3d\xe1il anail\xeds \xfas\xe1ideora";
     },
     get$downloadComplete() {
-      return "T\xe9l\xe9chargement termin\xe9 !";
+      return "Cr\xedochnaithe an t-\xedosl\xf3d\xe1il!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "Quelle est la " + morphologicalFeature + " de '" + wordForm + "' ?";
+      return "Cad \xe9 an " + morphologicalFeature + " de '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "Disponibilit\xe9 des donn\xe9es";
+      return "F\xe1il ar shonra\xed";
     },
     get$available(_) {
-      return "Disponible";
+      return "Ar f\xe1il";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot fait aussi des erreurs !";
+      return "T\xe1 bot Pangea br\xe9agach freisin!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "Que signifie '" + lemma + "' ?";
+      return "Cad is br\xed le '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Associez les significations avec les mots du message !";
+      return "Comhoiri\xfanigh br\xedonna leis na focail sa teachtaireacht!";
     },
     get$doubleClickToEdit() {
-      return "Double-cliquez pour modifier.";
+      return "Clice\xe1il d\xe9-uaire chun eagarth\xf3ireacht.";
     },
     get$cefrLevelLabel() {
-      return "Niveau CEFR";
+      return "Leve\xe1l CEFR";
     },
     get$image(_) {
-      return "Image";
+      return "\xcdomh\xe1";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Choisissez un sujet, un mode, un objectif d'apprentissage et g\xe9n\xe9rez une activit\xe9 pour le chat !";
+      return "Roghnaigh topaic, m\xf3d, cusp\xf3ir foghlama agus cruthaigh gn\xedomha\xedocht don chomhr\xe1!";
     },
     get$constructUsePvmDesc() {
-      return "Produite en message vocal";
+      return "D\xe9anta i gceist guth";
     },
     get$leaveSpaceDescription() {
-      return "En quittant le cours, vous quitterez toutes les discussions qui s'y trouvent. Les autres utilisateurs verront que vous avez quitt\xe9 le cours.";
+      return "Tr\xed fh\xe1g\xe1il an ch\xfarsa, f\xe1gfaidh t\xfa na comhr\xe1ite go l\xe9ir laistigh de. Feicfidh \xfas\xe1ideoir\xed eile go bhfuil t\xfa imithe as an gc\xfarsa.";
     },
     get$constructUseCorMmDesc() {
-      return "Signification du message correct";
+      return "Br\xed teachtaireachta ceart";
     },
     get$constructUseIncMmDesc() {
-      return "Signification du message incorrect";
+      return "Br\xed teachtaireachta m\xedcheart";
     },
     get$constructUseIgnMmDesc() {
-      return "Signification du message ignor\xe9";
+      return "Br\xed teachtaireachta neamhaird";
     },
     get$meaning() {
-      return "Signification";
+      return "Br\xed";
     },
     chatWith$1(displayname) {
-      return "Groupe avec " + displayname;
+      return "Gr\xfapa le " + displayname;
     },
     get$clickOnEmailLink() {
-      return "Veuillez cliquer sur le lien dans l'email puis continuer.\n\nV\xe9rifiez votre dossier spam si l'email n'est pas arriv\xe9.";
+      return "Clice\xe1il ar an nasc san r-phost le do thoil agus lean ar aghaidh.\n\nSeice\xe1il do chliabh spam m\xe1 t\xe1 an r-phost f\xf3s gan teacht.";
     },
     get$dontForgetPassword() {
-      return "N'oubliez pas votre mot de passe !";
+      return "N\xe1 d\xe9an dearmad ar do phasfhocal!";
     },
     get$enableAutocorrectToolName() {
-      return "Activer la correction automatique de l'appareil";
+      return "Cumasaigh uathoibri\xfa ceartaitheoir an ghl\xe9is";
     },
     get$enableAutocorrectDescription() {
-      return "Si votre appareil supporte la langue que vous apprenez, vous pouvez activer la correction automatique pour corriger les erreurs courantes en tapant.";
+      return "M\xe1 t\xe1 do ghl\xe9as taca\xedocht ag teanga at\xe1 t\xfa ag foghlaim, is f\xe9idir leat uathoibri\xfa ceartaitheoir an ghl\xe9is a chumas\xfa chun earr\xe1id\xed coitianta a cheart\xfa de r\xe9ir mar a chl\xf3scr\xedontar.";
     },
     get$ttsDisbledTitle() {
-      return "Synth\xe8se vocale d\xe9sactiv\xe9e";
+      return "G\xe1inne\xe1il t\xe9acs go guth faoi mh\xedchumas";
     },
     get$ttsDisabledBody() {
-      return "Vous pouvez activer la synth\xe8se vocale dans vos param\xe8tres d'apprentissage";
+      return "Is f\xe9idir leat t\xe9acs go guth a chumas\xfa sna socruithe foghlama agat";
     },
     get$noSpaceDescriptionYet() {
-      return "Aucune description de cours cr\xe9\xe9e pour le moment.";
+      return "N\xedl cur s\xedos ar an gc\xfarsa cruthaithe f\xf3s.";
     },
     get$tooLargeToSend() {
-      return "Ce message est trop volumineux pour \xeatre envoy\xe9";
+      return "T\xe1 an teachtaireacht seo r\xf3-mh\xf3r le seoladh";
     },
     get$exitWithoutSaving() {
-      return "\xcates-vous s\xfbr de vouloir quitter sans enregistrer ?";
+      return "An bhfuil t\xfa cinnte go bhfuil t\xfa ag iarraidh imeacht gan s\xe1b\xe1il?";
     },
     get$enableAutocorrectWarning() {
-      return "Attention ! N\xe9cessite d'ajouter le clavier de votre langue cible";
+      return "Rabhadh! \xc9il\xedonn s\xe9 do eochairfhocal teanga sprioc a chur leis";
     },
     get$leaveRoomDescription() {
-      return "Vous \xeates sur le point de quitter cette conversation. Les autres utilisateurs verront que vous avez quitt\xe9 la discussion.";
+      return "T\xe1 t\xfa faoi l\xe1thair ag dul i dtaith\xed ar an gcomhr\xe1 seo. Feicfidh \xfas\xe1ideoir\xed eile go bhfuil t\xfa imithe as an gcomhr\xe1.";
     },
     get$confirmUserId() {
-      return "Veuillez confirmer votre nom d'utilisateur Pangea Chat pour supprimer votre compte.";
+      return "D\xe9an cinnte de do ainm \xfas\xe1ideora Pangea Chat chun do chuntas a scriosadh.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\xc0 partir du " + startDate;
+      return "Ag tos\xfa " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return " \u2022 Annuler \xe0 tout moment dans les param\xe8tres d'abonnement";
+      return "\u2022 Cuir ar ceal ag am ar bith sna socruithe s\xednti\xfais";
     },
     get$autocorrectNotAvailable() {
-      return "Malheureusement, votre plateforme n'est pas actuellement prise en charge pour cette fonctionnalit\xe9. Restez \xe0 l'\xe9coute pour de futures am\xe9liorations !";
+      return "Ar an drochuair, n\xedl do ch\xf3ras reatha taca\xedocht don ghn\xe9 seo faoi l\xe1thair. Fan ar an eolas le haghaidh forbairt\xed eile!";
     },
     get$pleaseUpdateApp() {
-      return "Veuillez mettre \xe0 jour l'application pour continuer.";
+      return "Le do thoil, d\xe9an nuashonr\xfa ar an aip chun lean\xfaint ar aghaidh.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Associez les emojis aux mots qu'ils repr\xe9sentent le mieux. Ne vous inqui\xe9tez pas ! Pas de p\xe9nalit\xe9 si vous n'\xeates pas d'accord. \ud83d\ude05";
+      return "Comhoiri\xfanigh na h\xedomh\xe1nna le na focail is fearr a l\xe9ir\xedonn iad. N\xe1 b\xed buartha! N\xedl point\xed caillte m\xe1 aonta\xedonn t\xfa n\xf3 nach n-aonta\xedonn t\xfa. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "Voici tout votre vocabulaire ! \xc0 mesure que vous gagnez des XP pour chaque mot, ils passeront de la graine \xe0 la pleine floraison. Cliquez sur n'importe quel mot pour voir plus de d\xe9tails.";
+      return "Seo do gach focail at\xe1 agat! De r\xe9ir mar a fhaigheann t\xfa XP do gach focal, t\xe9ann siad \xf3 sh\xedog go bl\xe1th ioml\xe1n. Clice\xe1il ar aon fhocal chun tuilleadh sonra\xed a fheice\xe1il.";
     },
     get$morphAnalyticsListBody() {
-      return "Voici tous les concepts grammaticaux de la langue que vous apprenez ! Vous les d\xe9bloquerez au fur et \xe0 mesure de vos rencontres lors de vos conversations. Cliquez pour plus de d\xe9tails.";
+      return "Seo iad na coincheapa gramada\xed go l\xe9ir sa teanga at\xe1 t\xfa ag foghlaim! Gheobhaidh t\xfa iad de r\xe9ir mar a thagann t\xfa orthu agus t\xfa ag comhr\xe1. Clice\xe1il chun sonra\xed a fh\xe1il.";
     },
     get$knockSpaceSuccess() {
-      return "Vous avez demand\xe9 \xe0 rejoindre ce cours ! Un administrateur r\xe9pondra \xe0 votre demande lorsqu'il la recevra \ud83d\ude0a";
+      return "T\xe1 t\xfa tar \xe9is iarraidh a bheith p\xe1irteach sa ch\xfarsa seo! Freagr\xf3idh riarth\xf3ir do iarratas nuair a fhaigheann s\xe9 \xe9 \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\xc9coutez le message complet. Ensuite, associez les audios aux mots.";
+      return "\xc9ist leis an teachtaireacht ioml\xe1n. Ansin, d\xe9an compar\xe1id idir na fuaimeanna agus na focail.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Cliquez sur les pi\xe8ces du puzzle pour les questions de grammaire !";
+      return "Clice\xe1il ar na p\xedosa\xed puzail le haghaidh ceisteanna gramada\xed!";
     },
     get$home() {
-      return "Accueil";
+      return "Baile";
     },
     get$join(_) {
-      return "Rejoindre";
+      return "B\xed p\xe1irteach";
     },
     get$readingAssistanceOverviewBody() {
-      return "Cliquez sur les boutons ci-dessous pour des mini-jeux sur la correspondance des emojis, des audios, des significations de mots et des concepts grammaticaux. Ou cliquez sur un mot pour plus de d\xe9tails.";
+      return "Clice\xe1il ar na cnaipeanna th\xedos le haghaidh cluich\xed beaga ar mheaitse\xe1il \xedomh\xe1nna, fuaimeanna, br\xed na bhfocail, agus coincheapa gramada\xed. N\xf3 clice\xe1il ar aon fhocal le haghaidh sonra\xed.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "R\xe9initialiser les astuces d'instructions";
+      return "Athshocraigh na t\xe9acsleabhair treorach";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Cliquez pour afficher les astuces d'instructions comme pour un nouvel utilisateur.";
+      return "Clice\xe1il chun na t\xe9acsleabhair treorach a thaispe\xe1int ar n\xf3s do \xfas\xe1ideoir nua.";
     },
     get$selectForGrammar() {
-      return "S\xe9lectionnez une ic\xf4ne de grammaire pour les activit\xe9s et les d\xe9tails.";
+      return "Roghnaigh deilbh\xedn gramadach le haghaidh gn\xedomha\xedochta\xed agus sonra\xed.";
     },
     get$translationProblem() {
-      return "Probl\xe8me de traduction";
+      return "Fadhb aistri\xfach\xe1in";
     },
     get$askToJoin() {
-      return "Demander \xe0 rejoindre";
+      return "Iarr le bheith p\xe1irteach";
     },
     get$emptyChatWarningTitle() {
-      return "Chat vide";
+      return "T\xe1 an comhr\xe1 folamh";
     },
     get$emptyChatWarningDesc() {
-      return "Vous n'avez invit\xe9 personne dans votre chat. Allez dans les param\xe8tres du chat pour inviter vos contacts ou le Bot. Vous pouvez aussi faire cela plus tard.";
+      return "N\xedl aon duine \xe1 thabhairt cuireadh duit sa chomhr\xe1 seo. T\xe9igh go Socruithe Comhr\xe1 chun do chairde n\xf3 an Bot a thabhairt cuireadh. Is f\xe9idir leat \xe9 seo a dh\xe9anamh n\xedos d\xe9ana\xed freisin.";
     },
     get$areYouLikeMe() {
-      return "Es-tu comme moi ?";
+      return "An bhfuil t\xfa cos\xfail liomsa?";
     },
     get$tryAgainLater() {
-      return "Trop de tentatives effectu\xe9es. Veuillez r\xe9essayer dans 5 minutes.";
+      return "Rinneadh r\xf3-iarrachta\xed. D\xe9an iarracht ar\xeds in 5 n\xf3im\xe9ad.";
     },
     get$enterSpaceCode() {
-      return "Entrez le code du cours";
+      return "Cuir isteach c\xf3d na c\xfarsa";
     },
     get$shareSpaceLink() {
-      return "Partager le lien";
+      return "Roinn an nasc";
     },
     get$byUsingPangeaChat() {
-      return "En utilisant Pangea Chat, j'accepte les ";
+      return "Tr\xed \xfas\xe1id a bhaint as Pangea Chat, aonta\xedm leis an ";
     },
     get$details(_) {
-      return "D\xe9tails";
+      return "Sonra\xed";
     },
     get$languageLevelPreA1Desc() {
-      return "Je n'ai jamais appris ou utilis\xe9 la langue.";
+      return "N\xedor fhoghlaim riamh n\xe1 n\xedor \xfas\xe1id an teanga.";
     },
     get$languageLevelA1Desc() {
-      return "Je peux comprendre et utiliser quelques expressions courantes et phrases tr\xe8s basiques.";
+      return "Is f\xe9idir liom tuiscint agus \xfas\xe1id a bhaint as roinnt fr\xe1sa\xed coitianta laeth\xfala agus fr\xe1sa\xed bun\xfasacha an-phrionsabal.";
     },
     get$languageLevelA2Desc() {
-      return "Je peux comprendre des phrases et expressions fr\xe9quemment utilis\xe9es li\xe9es \xe0 des domaines d'importance imm\xe9diate.";
+      return "Is f\xe9idir liom tuiscint a fh\xe1il ar abairt\xed agus fr\xe1sa\xed a \xfas\xe1id go minic a bhaineann le r\xe9ims\xed t\xe1bhacht l\xe1ithreach.";
     },
     get$languageLevelB1Desc() {
-      return "Je peux g\xe9rer la plupart des situations famili\xe8res et produire un texte simple connect\xe9 sur des sujets familiers.";
+      return "Is f\xe9idir liom d\xe9ile\xe1il le formh\xf3r na gc\xe1sanna coitianta agus is f\xe9idir liom t\xe9acs simpl\xed nasctha a th\xe1irgeadh ar \xe1bhair ch\xf3naitheacha.";
     },
     get$languageLevelB2Desc() {
-      return "Je peux comprendre les id\xe9es principales de textes complexes et interagir avec un degr\xe9 de fluidit\xe9 et de spontan\xe9it\xe9.";
+      return "Is f\xe9idir liom tuiscint a fh\xe1il ar phr\xedomhth\xe9ama\xed t\xe9acsanna casta agus idirghn\xedomh\xfa le scil agus spont\xe1ineacht.";
     },
     get$languageLevelC1Desc() {
-      return "Je peux exprimer des id\xe9es de mani\xe8re fluide et spontan\xe9e sans beaucoup de difficult\xe9 et comprendre une large gamme de textes exigeants.";
+      return "Is f\xe9idir liom smaointe a chur in i\xfal go l\xedofa agus go spont\xe1ineach gan m\xf3r\xe1n str\xf3 agus tuiscint a fh\xe1il ar r\xe9imse leathan t\xe9acsanna \xe9ilitheacha.";
     },
     get$languageLevelC2Desc() {
-      return "Je peux comprendre pratiquement tout ce que j'entends ou lis et m'exprimer de mani\xe8re fluide et pr\xe9cise.";
+      return "Is f\xe9idir liom beagnach gach rud a chloiste\xe1il n\xf3 a l\xe9amh a thuiscint agus m\xe9 f\xe9in a chur in i\xfal go l\xedofa agus go cruinn.";
     },
     get$newVocab() {
-      return "Nouveaux vocabulaire";
+      return "Focail nua";
     },
     get$newGrammar() {
-      return "Nouveaux concepts grammaticaux";
+      return "Coincheapa gramada\xed nua";
     },
     get$choosePracticeMode() {
-      return "Cliquez sur l'un des boutons ci-dessus pour commencer une activit\xe9 d'entra\xeenement";
+      return "Clice\xe1il ar cheann de na cnaipeanna thuas chun gn\xedomha\xedocht chleachtadh a thos\xfa";
     },
     get$ban() {
-      return "Bannir";
+      return "Cosaint";
     },
     get$kick() {
-      return "Expulser";
+      return "Cuir as";
     },
     get$lemma() {
-      return "Lemme";
+      return "L\xe9amh";
     },
     get$grammarFeature() {
-      return "Caract\xe9ristique grammaticale";
+      return "Gn\xe9 gramada\xed";
     },
     get$grammarTag() {
-      return "\xc9tiquette grammaticale";
+      return "Clibe\xe1il gramada\xed";
     },
     get$forms() {
-      return "Formes";
+      return "Foirmi\xfala";
     },
     get$exampleMessages() {
-      return "Messages d'exemple";
+      return "Teachtaireachta\xed samplacha";
     },
     get$timesUsedIndependently() {
-      return "Fois utilis\xe9 de mani\xe8re ind\xe9pendante";
+      return "Uaireanta \xfas\xe1ide go neamhsple\xe1ch";
     },
     get$timesUsedWithAssistance() {
-      return "Fois utilis\xe9 avec assistance";
+      return "Uaireanta \xfas\xe1ide le cabhair";
     },
     shareInviteCode$1(code) {
-      return "Partager le code d'invitation : " + code;
+      return "Roinn c\xf3d cuireadh: " + code;
     },
     get$skipForNow() {
-      return "Passer pour l'instant";
+      return "Scipe\xe1il faoi l\xe1thair";
     },
     get$permissions(_) {
-      return "Autorisations";
+      return "Ceadanna";
     },
     get$spaceChildPermission() {
-      return "Qui peut ajouter de nouvelles discussions \xe0 ce cours";
+      return "C\xe9 hiad is f\xe9idir leo cuntais nua a chur leis an gc\xfarsa seo";
     },
     get$addEnvironmentOverride() {
-      return "Ajouter une surcharge d'environnement";
+      return "Cuir i bhfeidhm for\xe9igean comhshaoil";
     },
     get$defaultOption() {
-      return "Par d\xe9faut";
+      return "R\xe9amhshocr\xfa";
     },
     get$deleteChatDesc() {
-      return "Voulez-vous vraiment supprimer cette conversation ? Elle sera supprim\xe9e pour tous les participants et tous les messages de la conversation ne seront plus disponibles pour la pratique ou l'analyse d'apprentissage.";
+      return "An bhfuil t\xfa cinnte gur mhaith leat an comhr\xe1 seo a scriosadh? Scriosfar \xe9 do gach rannph\xe1irt\xed agus n\xed bheidh aon teachtaireachta\xed laistigh den chomhr\xe1 ar f\xe1il n\xedos m\xf3 le haghaidh cleachtadh n\xf3 anail\xeds foghlama.";
     },
     get$deleteSpaceDesc() {
-      return "Le cours et toutes les conversations s\xe9lectionn\xe9es seront supprim\xe9s pour tous les participants et tous les messages de la conversation ne seront plus disponibles pour la pratique ou l'analyse d'apprentissage. Cette action ne peut pas \xeatre annul\xe9e.";
+      return "Scriosfar an c\xfarsa agus aon chomhr\xe1 roghnaithe do gach rannph\xe1irt\xed agus n\xed bheidh aon teachtaireachta\xed laistigh den chomhr\xe1 ar f\xe1il n\xedos m\xf3 le haghaidh cleachtadh n\xf3 anail\xeds foghlama. N\xed f\xe9idir an gn\xedomh seo a chur ar ceal.";
     },
     get$configureSpace() {
-      return "Configurer le cours";
+      return "Cumraigh c\xfarsa";
     },
     get$pinMessages() {
-      return "\xc9pingler les messages";
+      return "Greamaigh teachtaireachta\xed";
     },
     get$setJoinRules() {
-      return "D\xe9finir les r\xe8gles de participation";
+      return "Socraigh rialacha rannph\xe1irt\xedochta";
     },
     get$changeGeneralSettings() {
-      return "Modifier les param\xe8tres g\xe9n\xe9raux";
+      return "Athraigh socruithe ginear\xe1lta";
     },
     get$inviteOtherUsersToRoom() {
-      return "Inviter d'autres utilisateurs";
+      return "Cuireadh a thabhairt do \xfas\xe1ideoir\xed eile";
     },
     get$changeTheNameOfTheSpace() {
-      return "Changer le nom du cours";
+      return "Athraigh ainm an sp\xe1is";
     },
     get$changeTheDescription() {
-      return "Modifier la description";
+      return "Athraigh an cur s\xedos";
     },
     get$changeThePermissions() {
-      return "Modifier les permissions";
+      return "Athraigh na ceadanna";
     },
     get$introductions() {
-      return "Pr\xe9sentations";
+      return "R\xe9amhr\xe1ite";
     },
     get$announcements() {
-      return "Annonces";
+      return "F\xf3gra\xed";
     },
     get$activities() {
-      return "Activit\xe9s";
+      return "Gn\xedomha\xedochta\xed";
     },
     get$access() {
-      return "Acc\xe8s";
+      return "Rochtain";
     },
     get$howSpaceCanBeFound() {
-      return "Comment ce cours peut \xeatre trouv\xe9";
+      return "Conas is f\xe9idir an c\xfarsa seo a aimsi\xfa";
     },
     get$$private() {
-      return "Priv\xe9";
+      return "Pr\xedobh\xe1ideach";
     },
     get$cannotBeFoundInSearch() {
-      return "Impossible \xe0 trouver dans la recherche";
+      return "N\xed f\xe9idir \xe9 a aimsi\xfa sa chuardach";
     },
     get$$public(_) {
-      return "Public";
+      return "Poibl\xed";
     },
     get$visibleToCommunity() {
-      return 'Visible \xe0 la communaut\xe9 plus large de Pangea Chat via "Trouver un cours"';
+      return 'Feictear don phobail Pangea Chat n\xedos leithne tr\xedd "Faigh c\xfarsa"';
     },
     get$howSpaceCanBeJoined() {
-      return "Comment ce cours peut \xeatre rejoint";
+      return "Conas is f\xe9idir an c\xfarsa seo a bheith p\xe1irteach ann";
     },
     get$canBeFoundVia() {
-      return "Peut \xeatre trouv\xe9 via :";
+      return "Is f\xe9idir \xe9 a aimsi\xfa tr\xed:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 invitation";
+      return "\u2022 cuireadh";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 code ou lien";
+      return "\u2022 c\xf3d n\xf3 nasc";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 demande de rejoindre et approbation de l'administrateur";
+      return "\u2022 iarratas chun p\xe1irt a ghlacadh agus cead\xfa riarth\xf3ra";
     },
     get$youHaveLeveledUp() {
-      return "Vous avez mont\xe9 de niveau !";
+      return "T\xe1 t\xfa tar \xe9is leibh\xe9al a bhaint amach!";
     },
     get$sendActivities() {
-      return "Envoyer des activit\xe9s";
+      return "Seol gn\xedomha\xedochta\xed";
     },
     get$directMessage() {
-      return "Message direct";
+      return "Teachtaireacht Dh\xedreach";
     },
     get$newDirectMessage() {
-      return "Nouveau message direct";
+      return "Teachtaireacht Dh\xedreach Nua";
     },
     get$speakingExercisesTooltip() {
-      return "Parler";
+      return "Ag labhairt";
     },
     get$transcriptionFailed() {
-      return "\xc9chec de la transcription de l'audio";
+      return "Theip ar an taifeadadh fuaime a tharchur";
     },
     get$aUserIsKnocking() {
-      return "1 utilisateur demande \xe0 rejoindre votre cours";
+      return "T\xe1 \xfas\xe1ideoir ag iarraidh dul isteach i do ch\xfarsa";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " utilisateurs demandent \xe0 rejoindre votre cours";
+      return "" + users + " \xfas\xe1ideoir\xed ag iarraidh dul isteach i do ch\xfarsa";
     },
     get$failedToFetchTranscription() {
-      return "\xc9chec de la r\xe9cup\xe9ration de la transcription";
+      return "Theip ar an taifeadadh a fh\xe1il";
     },
     get$deleteEmptySpaceDesc() {
-      return "Le cours sera supprim\xe9 pour tous les participants. Cette action est irr\xe9versible.";
+      return "Scriosfar an c\xfarsa do na rannph\xe1irtithe go l\xe9ir. N\xed f\xe9idir an gn\xedomh seo a chur ar ceal.";
     },
     get$failedToPlayVideo() {
-      return "\xc9chec de la lecture de la vid\xe9o";
+      return "Theip ar sheinm an fh\xedse\xe1in";
     },
     get$done() {
-      return "Termin\xe9";
+      return "D\xe9anta";
     },
     get$inThisSpace() {
-      return "Dans ce cours";
+      return "Sa ch\xfarsa seo";
     },
     get$myContacts() {
-      return "Mes contacts";
+      return "Mo chuid teagmh\xe1lacha";
     },
     get$inviteAllInSpace() {
-      return "Inviter tous dans ce cours";
+      return "Cuireadh gach duine sa ch\xfarsa seo";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "Tous les participants du cours ont \xe9t\xe9 invit\xe9s au chat";
+      return "T\xe1 rannph\xe1irtithe an ch\xfarsa uile tugtha cuireadh chuig an gcomhr\xe1";
     },
     numKnocking$1(count) {
-      return "" + count + " frappe";
+      return "" + count + " ag bualadh";
     },
     numInvited$1(count) {
-      return "" + count + " invit\xe9";
+      return "" + count + " cuireadh";
     },
     get$errorFetchingDefinition() {
-      return "\xc9chec de la r\xe9cup\xe9ration de la d\xe9finition";
+      return "Theip ar f\xe1il an sainmh\xedni\xfa";
     },
     get$errorProcessAnalytics() {
-      return "\xc9chec du traitement des analyses";
+      return "Theip ar phr\xf3ise\xe1il anail\xedseachta\xed";
     },
     get$errorDownloading() {
-      return "\xc9chec du t\xe9l\xe9chargement";
+      return "Theip ar iarraidh";
     },
     get$errorFetchingLevelSummary() {
-      return "\xc9chec de la r\xe9cup\xe9ration du r\xe9sum\xe9 du niveau";
+      return "Theip ar f\xe1ilchur achoimre leibh\xe9al";
     },
     get$errorLoadingSpaceChildren() {
-      return "\xc9chec du chargement des discussions dans ce cours";
+      return "Theip ar lucht\xfa comhr\xe1ite laistigh den ch\xfarsa seo";
     },
     get$unexpectedError() {
-      return "Erreur inattendue.";
+      return "Earr\xe1id neamhshocraithe.";
     },
     get$pleaseReload() {
-      return "Veuillez recharger et r\xe9essayer.";
+      return "Le do thoil, luchtigh ar\xeds agus bain triail eile astu.";
     },
     get$translationError() {
-      return "Erreur de traduction";
+      return "Earr\xe1id aistri\xfach\xe1in";
     },
     get$errorFetchingTranslation() {
-      return "\xc9chec de la r\xe9cup\xe9ration de la traduction";
+      return "Theip ar f\xe1ilchur an aistri\xfach\xe1in";
     },
     get$errorFetchingActivity() {
-      return "\xc9chec de la r\xe9cup\xe9ration de l'activit\xe9";
+      return "Theip ar f\xe1ilchur an ghn\xedomha\xedochta";
     },
     get$check(_) {
-      return "V\xe9rifier";
+      return "Seice\xe1il";
     },
     get$unableToFindRoom() {
-      return "Aucune discussion ou cours trouv\xe9 avec ce code. Veuillez r\xe9essayer.";
+      return "N\xedor aims\xedodh comhr\xe1 n\xf3 c\xfarsa leis an gc\xf3d sin. D\xe9an iarracht ar\xeds le do thoil.";
     },
     viewingAnalytics$2(visible, users) {
-      return "Visualisation de " + visible + "/" + users + " Analyses";
+      return "Ag f\xe9achaint ar " + visible + "/" + users + " Anail\xeds\xed";
     },
     get$request(_) {
-      return "Demande";
+      return "Iarratas";
     },
     get$requestAll(_) {
-      return "Tout demander";
+      return "Iarr gach rud";
     },
     get$confirmMessageUnpin() {
-      return "\xcates-vous s\xfbr de vouloir d\xe9s\xe9pingler ce message ?";
+      return "An bhfuil t\xfa cinnte gur mhaith leat an teachtaireacht seo a bhaint den phin?";
     },
     get$pending(_) {
-      return "En attente";
+      return "Iontach";
     },
     get$openRoleLabel() {
-      return "OUVERT";
+      return "OSCAIL";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " a rejoint en tant que " + role;
+      return "\ud83d\udc4b " + username + " d'fh\xe1iltigh isteach mar " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " a termin\xe9 cette activit\xe9";
+      return "\ud83c\udfaf " + username + " chr\xedochnaigh an gn\xedomha\xedocht seo";
     },
     get$activitySummaryError() {
-      return "R\xe9sum\xe9 des activit\xe9s indisponible";
+      return "N\xed f\xe9idir achoimrigh gn\xedomha\xedochta a fh\xe1il";
     },
     get$requestSummaries() {
-      return "Demander des r\xe9sum\xe9s";
+      return "Iarr achoimrigh";
     },
     get$requestAccessTitle() {
-      return "Demander l'acc\xe8s aux analyses ?";
+      return "An bhfuil t\xfa ag iarraidh rochtain ar an anail\xeds?";
     },
     get$requestAccessDesc() {
-      return "Souhaitez-vous demander l'acc\xe8s pour voir l'analyse des participants ?\n\nSi les participants acceptent, les administrateurs de ce cours pourront voir leurs :\n    \u2022 vocabulaire total\n    \u2022 concepts grammaticaux totaux\n    \u2022 sessions d'activit\xe9 termin\xe9es\n    \u2022 concepts grammaticaux sp\xe9cifiques utilis\xe9s, correctement et incorrectement\n\nIls ne pourront pas voir leurs :\n    \u2022 messages dans les chats en dehors du cours\n    \u2022 liste de vocabulaire";
+      return "Ar mhaith leat rochtain a fh\xe1il chun anail\xeds\xedocht rannph\xe1irtithe a fheice\xe1il?\n\nMura n-aonta\xedonn rannph\xe1irtithe, beidh na riarth\xf3ir\xed den ch\xfarsa seo in ann a fheice\xe1il:\n    \u2022 an t-uimhir fhocl\xf3ra ioml\xe1n\n    \u2022 na coincheapa gramada\xed ioml\xe1na\n    \u2022 na seisi\xfain gn\xedomha\xedochta ioml\xe1na a chr\xedochnaigh\n    \u2022 na coincheapa gramada\xed sonracha a \xfas\xe1id, i gceart agus i gceart m\xedcheart\n\nN\xed bheidh siad in ann a fheice\xe1il:\n    \u2022 teachtaireachta\xed i gcomhr\xe1ite lasmuigh den ch\xfarsa\n    \u2022 liosta fhocl\xf3ra";
     },
     get$analyticsInactiveTitle() {
-      return "Les demandes aux utilisateurs inactifs n'ont pas pu \xeatre envoy\xe9es";
+      return "N\xedor f\xe9idir iarratais ar \xfas\xe1ideoir\xed neamhghn\xedomhacha a sheoladh";
     },
     get$analyticsInactiveDesc() {
-      return "Les utilisateurs inactifs qui ne se sont pas connect\xe9s depuis l'introduction de cette fonctionnalit\xe9 ne verront pas votre demande.\n\nLe bouton Demander appara\xeetra lorsqu'ils reviendront. Vous pouvez renvoyer la demande plus tard en cliquant sur le bouton Demander sous leur nom lorsqu'il sera disponible.";
+      return "N\xed fheicfidh \xfas\xe1ideoir\xed neamhghn\xedomhacha nach ndearna siad log\xe1il isteach \xf3 th\xfas na gn\xe9 seo do do iarratas.\n\nTiocfaidh an cnaipe Iarr ar ais nuair a bheidh siad ar ais. Is f\xe9idir leat an iarraidh a sheoladh ar\xeds n\xedos d\xe9ana\xed tr\xed chlice\xe1il ar an gcnaipe Iarr ar ais faoi a n-ainm nuair a bheidh s\xe9 ar f\xe1il.";
     },
     get$accessRequestedTitle() {
-      return "Demande d'acc\xe8s \xe0 l'analyse";
+      return "Iarratas ar rochtain ar anail\xeds\xed";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Demande d'admin(s) : " + admin + " \n\nLes admins de \u201c" + space + "\u201d demandent \xe0 voir vos analyses d'apprentissage.\n\nSi vous \xeates d'accord, ils pourront voir votre :\n    \u2022 vocabulaire total\n    \u2022 concepts de grammaire totaux\n    \u2022 sessions d'activit\xe9 totales compl\xe9t\xe9es\n    \u2022 les concepts de grammaire sp\xe9cifiques utilis\xe9s, correctement et incorrectement\n\nIls ne pourront pas voir votre :\n    \u2022 messages dans les chats en dehors du cours\n    \u2022 liste de vocabulaire";
+      return "Ag iarraidh admin(\xed): " + admin + " \n\nT\xe1 admin \xf3 \u201c" + space + "\u201d ag iarraidh rochtain a fh\xe1il ar do thuarasc\xe1lacha foghlama.\n\nM\xe1s aonta\xedonn t\xfa, beidh siad in ann do:\n    \u2022 ioml\xe1n focl\xf3ra\n    \u2022 ioml\xe1n coincheapa gramada\xed\n    \u2022 ioml\xe1n seisi\xfain gn\xedomha\xedochta a chr\xedochnaigh\n    \u2022 na coincheapa gramada\xed ar leith a \xfas\xe1idtear, go ceart agus go m\xedcheart\n\nN\xed bheidh siad in ann do:\n    \u2022 teachtaireachta\xed i gcaibidl\xed lasmuigh den ch\xfarsa\n    \u2022 liosta focl\xf3ra";
     },
     get$adminRequestedAccess() {
-      return "Les administrateurs ont demand\xe9 \xe0 voir vos analyses.";
+      return "D'iarr na riarth\xf3ir\xed rochtain ar do chuid anail\xeds\xed.";
     },
     lastUpdated$1(time) {
-      return "Mis \xe0 jour\n" + time;
+      return "Nuashonraithe\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Tout est termin\xe9 !";
+      return "Cr\xedochna\xedodh go l\xe9ir!";
     },
     get$endForAll() {
-      return "Terminer pour tous";
+      return "Cr\xedochnaigh do gach duine";
     },
     get$newCourse() {
-      return "Nouveau cours";
+      return "C\xfarsa Nua";
     },
     numModules$1(num) {
-      return "" + num + " modules";
+      return "" + num + " mod\xfal";
     },
     get$coursePlan() {
-      return "Plan de cours";
+      return "Plean C\xfarsa";
     },
     get$editCourseLater() {
-      return "Vous pouvez modifier le titre du mod\xe8le, les descriptions et l'image du cours plus tard.";
+      return "Is f\xe9idir leat teideal an phlean, cur s\xedos, agus \xedomh\xe1 an ch\xfarsa a chur in eagar n\xedos d\xe9ana\xed.";
     },
     get$newCourseAccess() {
-      return "Par d\xe9faut, les cours sont priv\xe9s et n\xe9cessitent l'approbation de l'administrateur pour rejoindre. Vous pouvez modifier ces param\xe8tres \xe0 tout moment.";
+      return "De r\xe9ir r\xe9amhshocraithe, t\xe1 c\xfarsa\xed pr\xedobh\xe1ideach agus iarrtar cead riarth\xf3ra chun p\xe1irt a ghlacadh. Is f\xe9idir leat na socruithe seo a chur in eagar ag am ar bith.";
     },
     get$createCourse() {
-      return "Cr\xe9er un cours";
+      return "Cruthaigh c\xfarsa";
     },
     get$stats() {
-      return "Statistiques";
+      return "Staitistic\xed";
     },
     get$createGroupChat() {
-      return "Cr\xe9er un chat de groupe";
+      return "Cruthaigh comhr\xe1 gr\xfapa";
     },
     get$editCourse() {
-      return "Modifier le cours";
+      return "Cuir in eagar an c\xfarsa";
     },
     get$inviteDesc() {
-      return "Par nom d'utilisateur, par code ou lien";
+      return "Glaoigh ar ainm \xfas\xe1ideora, c\xf3d n\xf3 nasc";
     },
     get$editCourseDesc() {
-      return "Ici, vous pouvez modifier le titre du cours, la description, etc.";
+      return "Anseo is f\xe9idir leat teideal na c\xfarsa, cur s\xedos, srl. a chur in eagar";
     },
     get$permissionsDesc() {
-      return "D\xe9finissez les autorisations telles que qui peut inviter des utilisateurs, envoyer des messages, cr\xe9er des discussions, etc.";
+      return "Socraigh ceadanna mar c\xe9 a d'fh\xe9adfadh cuireadh a thabhairt do dhaoine, teachtaireachta\xed a sheoladh, comhr\xe1ite a chruth\xfa, srl.";
     },
     get$accessDesc() {
-      return "Vous pouvez rendre votre cours accessible au monde entier ! Ou, rendre votre cours priv\xe9 et s\xe9curis\xe9.";
+      return "Is f\xe9idir leat do ch\xfarsa a dh\xe9anamh oscailte don domhan! N\xf3, d\xe9an do ch\xfarsa pr\xedobh\xe1ideach agus sl\xe1n.";
     },
     get$createGroupChatDesc() {
-      return "Alors que les sessions d'activit\xe9 commencent et se terminent, les discussions de groupe resteront ouvertes pour la communication de routine.";
+      return "De r\xe9ir mar a thosa\xedonn agus a chr\xedochna\xedonn seisi\xfain gn\xedomha\xedochta, fanfaidh comhr\xe1ite gr\xfapa oscailte le haghaidh cumars\xe1ide rialta.";
     },
     get$deleteDesc() {
-      return "Seuls les administrateurs peuvent supprimer un cours. Il s'agit d'une action destructive qui supprime tous les utilisateurs et supprime toutes les discussions s\xe9lectionn\xe9es dans le cours. Proceed with caution.";
+      return "N\xed f\xe9idir le haon riarth\xf3ir\xed c\xfarsa a scriosadh ach amh\xe1in. Is gn\xedomh d\xedobh\xe1lach \xe9 seo a bhaint go l\xe9ir na h\xfas\xe1ideoir\xed agus a scriosadh na comhr\xe1ite uile roghnaithe laistigh den ch\xfarsa. B\xed c\xfaramach le do thoil.";
     },
     get$noCourseFound() {
-      return "Oh, ce cours a besoin d'un plan !\n\nLes plans de cours sont une s\xe9quence de sujets et d'activit\xe9s de conversation.";
+      return "\xd3, t\xe1 g\xe1 le plean don ch\xfarsa seo!\n\nIs sraith t\xe9acs agus gn\xedomha\xedochta\xed comhr\xe1 iad pleananna c\xfarsa.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " autres";
+      return "+ " + num + " eile";
     },
     get$directMessages() {
-      return "Messages directs";
+      return "Teachtaireachta\xed D\xedreacha";
     },
     get$whatNow() {
-      return "Et maintenant ?";
+      return "Cad at\xe1 le d\xe9anamh anois?";
     },
     get$chooseNextActivity() {
-      return "Choisissez votre prochaine activit\xe9 !";
+      return "Roghnaigh do ch\xe9ad ghn\xedomha\xedocht eile!";
     },
     get$letsGo() {
-      return "Allons-y";
+      return "T\xe9imis";
     },
     get$chooseRole() {
-      return "Choisissez un r\xf4le !";
+      return "Roghnaigh r\xf3l!";
     },
     get$chooseRoleToParticipate() {
-      return "Choisissez un r\xf4le pour participer !";
+      return "Roghnaigh r\xf3l le bheith p\xe1irteach!";
     },
     waitingToFillRole$1(num) {
-      return "En attente de remplir " + num + " r\xf4les...";
+      return "Ag fanacht chun " + num + " r\xf3l a l\xedonadh...";
     },
     get$pingParticipants() {
-      return "Notifier les participants du cours";
+      return "Ping rannph\xe1irtithe an ch\xfarsa";
     },
     get$playWithBot() {
-      return "Jouer avec Pangea Bot";
+      return "Imir le Pangea Bot";
     },
     get$waitNotDone() {
-      return "Attends, je n'ai pas fini !";
+      return "Fan, n\xedl m\xe9 cr\xedochnaithe!";
     },
     get$waitingForOthersToFinish() {
-      return "En attente que les autres terminent...";
+      return "Ag fanacht ar na daoine eile chun cr\xedochn\xfa...";
     },
     get$generatingSummary() {
-      return "Analyse de la conversation et g\xe9n\xe9ration des r\xe9sultats";
+      return "Ag anail\xedsi\xfa comhr\xe1 agus tortha\xed a ghini\xfaint";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " cherche des utilisateurs pour rejoindre la session d'activit\xe9 dans " + room;
+      return user + " ag lorg \xfas\xe1ideoir\xed chun rannph\xe1irt\xedocht sa seisi\xfan gn\xedomha\xedochta i " + room;
     },
     get$courseName() {
-      return "Nom du cours";
+      return "Ainm an ch\xfarsa";
     },
     get$createNewCourse() {
-      return "Nouveau cours";
+      return "C\xfarsa nua";
     },
     goToCourse$1(course) {
-      return "Aller au cours : " + course;
+      return "T\xe9igh go c\xfarsa: " + course;
     },
     get$startNewSession() {
-      return "D\xe9marrer une nouvelle session";
+      return "T\xfas a chur le seisi\xfan nua";
     },
     get$joinOpenSession() {
-      return "Rejoindre une session ouverte";
+      return "Cl\xe1raigh le haghaidh seisi\xfan oscailte";
     },
     get$activityNotFound() {
-      return "Activit\xe9 non trouv\xe9e";
+      return "N\xedor aims\xedodh an gn\xedomha\xedocht";
     },
     get$levelUp() {
-      return "Niveau sup\xe9rieur";
+      return "Leve\xe1il suas";
     },
     get$myActivities() {
-      return "Mes activit\xe9s";
+      return "Mo ghn\xedomha\xedochta\xed";
     },
     get$openToJoin() {
-      return "Ouvert pour rejoindre";
+      return "Oscailte le bheith p\xe1irteach";
     },
     get$activityDone() {
-      return "Activit\xe9 termin\xe9e !";
+      return "Gn\xedomha\xedocht d\xe9anta!";
     },
     get$promoCodeInfo() {
-      return "Les codes promo peuvent \xeatre saisis sur la page suivante";
+      return "Is f\xe9idir c\xf3d promo a chur isteach ar an leathanach eile";
     },
     get$editsComingSoon() {
-      return "La possibilit\xe9 de modifier les villes et les activit\xe9s arrive bient\xf4t.";
+      return "T\xe1 an cumas eagarth\xf3ireachta ar chathracha agus ar ghn\xedomha\xedochta\xed ag teacht go luath.";
     },
     get$editing() {
-      return "Modification";
+      return "Ag eagarth\xf3ireacht";
     },
     get$activityNeedsOneMember() {
-      return "Oh l\xe0 l\xe0 ! Cette activit\xe9 n\xe9cessite 1 personne suppl\xe9mentaire.";
+      return "\xd3, a chreach! T\xe1 g\xe1 le duine eile don ghn\xedomha\xedocht seo.";
     },
     activityNeedsMembers$1(num) {
-      return "Oh l\xe0 l\xe0 ! Cette activit\xe9 n\xe9cessite " + num + " personnes suppl\xe9mentaires.";
+      return "\xd3, a chreach! T\xe1 g\xe1 le " + num + " n\xedos m\xf3 daoine don ghn\xedomha\xedocht seo.";
     },
     get$inviteFriendsToCourse() {
-      return "Inviter des amis \xe0 mon cours";
+      return "Cuireadh a thabhairt do chairde chuig mo ch\xfarsa";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "S'abonner pour d\xe9bloquer les r\xe9sum\xe9s d'activit\xe9s";
+      return "Cl\xe1raigh chun achoimre ar ghn\xedomha\xedochta\xed a dh\xedghlas\xe1il";
     },
     get$subscribeToUnlockDefinitions() {
-      return "S'abonner pour d\xe9bloquer les d\xe9finitions";
+      return "Cl\xe1raigh chun sainmh\xednni\xed a dh\xedghlas\xe1il";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "S'abonner pour d\xe9bloquer les transcriptions";
+      return "Cl\xe1raigh chun trascr\xedbhinn\xed a dh\xedghlas\xe1il";
     },
     get$pingSent() {
-      return "\ud83d\udd14 Ping du cours envoy\xe9 ! \ud83d\udd14";
+      return "Seoladh ping c\xfarsa! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "Titre du cours";
+      return "Teideal an ch\xfarsa";
     },
     get$courseDesc() {
-      return "Description du cours";
+      return "Cur s\xedos ar an gc\xfarsa";
     },
     get$courseSavedSuccessfully() {
-      return "Cours enregistr\xe9 avec succ\xe8s";
+      return "S\xe1bh\xe1ladh an c\xfarsa go rath\xfail";
     },
     get$addCoursePlan() {
-      return "Ajouter un plan de cours";
+      return "Cuir plean c\xfarsa leis";
     },
     get$activityStatsButtonInstruction() {
-      return "Cliquez ici pour voir vos statistiques d'activit\xe9 et pour fermer l'activit\xe9 une fois termin\xe9e";
+      return "Clice\xe1il anseo chun do staitistic\xed gn\xedomha\xedochta a fheice\xe1il agus an gn\xedomha\xedocht a dh\xfanadh nuair a bheidh s\xe9 cr\xedochnaithe";
     },
     get$readingAnalyticsDesc() {
-      return "Cliquez sur pratiquer sur chaque message pour les activit\xe9s de lecture.";
+      return "Clice\xe1il cleachtadh ar gach teachtaireacht le haghaidh gn\xedomha\xedochta\xed l\xe9itheoireachta.";
     },
     get$speakingAnalyticsDesc() {
-      return "Enregistrez des messages vocaux pour la pratique de la parole.";
+      return "Cl\xe1raigh teachtaireachta\xed gutha le haghaidh cleachtadh labhartha.";
     },
     get$audioAnalyticsDesc() {
-      return "Cliquez sur pratiquer sur chaque message pour les activit\xe9s d'\xe9coute.";
+      return "Clice\xe1il cleachtadh ar gach teachtaireacht le haghaidh gn\xedomha\xedochta\xed \xe9isteachta.";
     },
     get$loginToAccount() {
-      return "Se connecter \xe0 mon compte";
+      return "Log\xe1il isteach i mo chuntas";
     },
     get$appDescription() {
-      return "Apprenez une langue\ntout en envoyant des messages \xe0 vos amis.";
+      return "Foghlaim teanga\nag an am c\xe9anna le do chairde.";
     },
     get$languages(_) {
-      return "Langues";
+      return "Teangacha";
     },
     get$chooseLanguage() {
-      return "Choisissez une langue cible.";
+      return "Roghnaigh teanga sprioc.";
     },
     get$startOwn() {
-      return "D\xe9marrer mon propre";
+      return "Tosaigh mo chuid f\xe9in";
     },
     get$joinCourseDesc() {
-      return "Chaque cours comporte 8 \xe0 10 sujets s\xe9quenc\xe9s avec une gamme d'activit\xe9s d'apprentissage linguistique bas\xe9es sur des t\xe2ches.";
+      return "T\xe1 8-10 topaic\xed sraithmharma i ngach c\xfarsa le raon gn\xedomha\xedochta\xed foghlama teanga bunaithe ar thascanna.";
     },
     get$courseCodeHint() {
-      return "Code ou lien du voyage";
+      return "C\xf3d turais n\xf3 nasc";
     },
     get$signupOption() {
-      return "Comment souhaitez-vous vous inscrire ?";
+      return "Conas ar mhaith leat cl\xe1r\xfa?";
     },
     get$withApple() {
-      return "Avec Apple";
+      return "Le Apple";
     },
     get$withGoogle() {
-      return "Avec Google";
+      return "Le Google";
     },
     get$withEmail() {
-      return "Avec Email";
+      return "Le R\xedomhphost";
     },
     get$createAccount() {
-      return "Cr\xe9er un compte";
+      return "Cruthaigh cuntas";
     },
     get$loginWithEmail() {
-      return "Se connecter avec email";
+      return "Log\xe1il isteach le r\xedomhphost";
     },
     get$usernameOrEmail() {
-      return "Nom d'utilisateur ou email";
+      return "Ainm \xfas\xe1ideora n\xf3 r\xedomhphost";
     },
     get$email() {
-      return "Email";
+      return "R\xedomhphost";
     },
     get$forgotPassword() {
-      return "Mot de passe oubli\xe9 ?";
+      return "An bhfuil do phasfhocal dearmadta?";
     },
     get$writingAnalyticsDesc() {
-      return "Envoyez des messages pour pratiquer l'\xe9criture.";
+      return "Seol teachtaireachta\xed chun cleachtadh scr\xedbhneoireachta a dh\xe9anamh.";
     },
     get$endActivity() {
-      return "Terminer l'activit\xe9";
+      return "Cr\xedochnaigh an ghn\xedomha\xedocht";
     },
     get$allLanguages() {
-      return "Toutes les langues";
+      return "Gach teanga";
     },
     get$chatListTooltip() {
-      return "Ici, vous trouverez vos messages directs ! Cliquez sur l'avatar d'un utilisateur et \xab d\xe9marrer une conversation \xbb pour envoyer un message priv\xe9.";
+      return "Anseo gheobhaidh t\xfa do theachtaireachta\xed d\xedreacha! Clice\xe1il ar avatar aon \xfas\xe1ideora agus \u201ctosaigh comhr\xe1\u201d chun DM a sheoladh.";
     },
     get$directMessageBotTitle() {
-      return "Message direct Pangea Bot";
+      return "Bot Teachtaireachta D\xedreacha Pangea";
     },
     get$feedbackTitle() {
-      return "Retour d'activit\xe9";
+      return "Aiseolas Gn\xedomha\xedochta";
     },
     get$feedbackRespDesc() {
-      return "Revenez demain pour les mises \xe0 jour de l'activit\xe9.";
+      return "Seice\xe1il ar ais am\xe1rach le haghaidh nuashonruithe ar ghn\xedomha\xedocht.";
     },
     get$feedbackHint() {
-      return "Votre retour";
+      return "Do chuid aiseolais";
     },
     get$feedbackButton() {
-      return "Soumettre le retour";
+      return "Seol aiseolas";
     },
     get$directMessageBotDesc() {
-      return "Parler aux humains est plus amusant mais... l'IA est toujours pr\xeate !";
+      return "T\xe1 comhr\xe1 le daoine n\xedos spra\xed\xfala ach... t\xe1 AI i gc\xf3na\xed r\xe9idh!";
     },
     get$inviteYourFriends() {
-      return "Invitez vos amis";
+      return "Cuireadh do do chairde";
     },
     get$playWithAI() {
-      return "Jouez avec l'IA pour l'instant";
+      return "Imir le AI faoi l\xe1thair";
     },
     get$courseStartDesc() {
-      return "Pangea Bot est pr\xeat \xe0 partir \xe0 tout moment !\n\n...mais apprendre est meilleur avec des amis !";
+      return "T\xe1 Bot Pangea r\xe9idh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!";
     },
     get$activityDropdownDesc() {
-      return "Lorsque vous avez termin\xe9 cette activit\xe9, cliquez ci-dessous";
+      return "Nuair a bheidh t\xfa cr\xedochnaithe leis an ngn\xedomha\xedocht seo, clice\xe1il th\xedos";
     },
     get$languageMismatchTitle() {
-      return "Incompatibilit\xe9 de langue";
+      return "M\xedchothrom na teangacha";
     },
     get$emptyChatSearch() {
-      return "Aucun DM ou chat trouv\xe9. Assurez-vous que votre recherche est correctement orthographi\xe9e.";
+      return "N\xedl aon DMs n\xf3 comhoibrithe le f\xe1il. D\xe9an cinnte go bhfuil do chuardach litrithe go ceart.";
     },
     get$languageMismatchDesc() {
-      return "La langue cible ne correspond pas \xe0 la langue de cette activit\xe9. Mettre \xe0 jour votre langue cible ?";
+      return "N\xed oireann do theanga sprioc an gn\xedomha\xedochta seo do theanga na gn\xedomha\xedochta. An bhfuil t\xfa ag iarraidh do theanga sprioc a nuashonr\xfa?";
     },
     get$reportWordIssueTooltip() {
-      return "Signaler un probl\xe8me d'information sur le mot";
+      return "Tuairiscigh fadhb eolas focal";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Retour d'information sur l'information du mot";
+      return "Aiseolas Eolas Focal";
     },
     get$noPublicCoursesFound() {
-      return "Aucun cours public trouv\xe9. Souhaitez-vous en cr\xe9er un ?";
+      return "N\xedor aims\xedodh c\xfarsa\xed poibl\xed. Ar mhaith leat ceann a chruth\xfa?";
     },
     get$noCourseTemplatesFound() {
-      return "Nous n'avons trouv\xe9 aucun cours pour votre langue cible. Vous pouvez discuter avec Pangea Bot en attendant, et revenir plus tard pour plus de cours.";
+      return "N\xedor \xe9irigh linn aon ch\xfarsa\xed a aimsi\xfa do do theanga sprioc. Is f\xe9idir leat comhr\xe1 a dh\xe9anamh leis an Pangea Bot sa t-am ar fad, agus seice\xe1il ar ais n\xedos d\xe9ana\xed le haghaidh tuilleadh c\xfarsa\xed.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot met du temps \xe0 r\xe9pondre. Veuillez r\xe9essayer plus tard, ou inviter un ami.";
+      return "T\xe1 Pangea Bot ag t\xf3g\xe1il tamall le freagairt. D\xe9an triail eile n\xedos d\xe9ana\xed, n\xf3 cuireadh a thabhairt do chara.";
     },
     get$unsubscribedResponseError() {
-      return "Cette fonctionnalit\xe9 n\xe9cessite un abonnement";
+      return "\xc9il\xedonn an ghn\xe9 seo s\xednti\xfas";
     },
     get$leaveDesc() {
-      return "Quitter cet espace et toutes les discussions qui s'y trouvent";
+      return "F\xe1g an sp\xe1s seo agus na comhr\xe1ite go l\xe9ir laistigh de";
     },
     get$selectAll() {
-      return "Tout s\xe9lectionner";
+      return "Roghnaigh gach rud";
     },
     get$deselectAll(_) {
-      return "Tout d\xe9s\xe9lectionner";
+      return "D\xed-roghnaigh gach rud";
     },
     get$shareCourse() {
-      return "Partager le cours";
+      return "Comhroinn c\xfarsa";
     },
     get$addCourse() {
-      return "Ajouter un cours";
+      return "Cuir c\xfarsa leis";
     },
     get$joinPublicCourse() {
-      return "Rejoindre un cours public";
+      return "Cl\xe1raigh i gc\xfarsa poibl\xed";
     },
     get$vocabLevelsDesc() {
-      return "C'est ici que les mots de vocabulaire seront plac\xe9s une fois que vous les aurez am\xe9lior\xe9s !";
+      return "Seo \xe1it a dt\xe9ann focail fhocail a bhfuil leibh\xe9al acu nuair a dh\xe9antar iad a leibh\xe9al\xfa!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "Ce sont vos activit\xe9s enregistr\xe9es pour r\xe9vision et pratique.";
+      return "Seo do gn\xedomha\xedochta\xed s\xe1bh\xe1ilte le haghaidh athbhreithnithe agus cleachtaidh.";
     },
     get$numSavedActivities() {
-      return "Nombre d'activit\xe9s enregistr\xe9es";
+      return "Uimhir na ngn\xedomha\xedochta\xed s\xe1bh\xe1ilte";
     },
     get$saveActivityTitle() {
-      return "Enregistrer l'activit\xe9";
+      return "S\xe1bh\xe1il gn\xedomha\xedocht";
     },
     get$saveActivityDesc() {
-      return "Bon travail ! Enregistrez cette activit\xe9 pour une r\xe9vision et une pratique ult\xe9rieures";
+      return "Maith th\xfa! S\xe1bh\xe1il an gn\xedomha\xedocht seo le haghaidh athbhreithnithe agus cleachtaidh n\xedos d\xe9ana\xed";
     },
     get$levelInfoTooltip() {
-      return "Ici, vous pouvez voir tous les points que vous avez gagn\xe9s et comment !";
+      return "Anseo is f\xe9idir leat na point\xed go l\xe9ir at\xe1 tuillte agat a fheice\xe1il agus conas a fuair t\xfa iad!";
     },
     get$alreadyInCourseWithID() {
-      return "Vous \xeates d\xe9j\xe0 dans un cours avec ce plan. Voulez-vous cr\xe9er un cours avec le m\xeame plan ou aller au cours existant ?";
+      return "T\xe1 t\xfa cheana f\xe9in i gc\xfarsa leis an bplean seo. Ar mhaith leat c\xfarsa a chruth\xfa leis an bplean c\xe9anna, n\xf3 dul chuig an gc\xfarsa at\xe1 ann cheana?";
     },
     get$goToExistingCourse() {
-      return "Aller au cours existant";
+      return "T\xe9igh chuig an gc\xfarsa at\xe1 ann cheana";
     },
     get$emojiView() {
-      return "Vue emoji";
+      return "Radharc emoji";
     },
     get$feedbackDialogDesc() {
-      return "Je fais aussi des erreurs ! Quelque chose pour m'aider \xe0 m'am\xe9liorer ?";
+      return "D\xe9anaim bot\xfain freisin! An bhfuil aon rud a chabhr\xf3idh liom feabhs\xfa?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Le contact a \xe9t\xe9 invit\xe9 au cours";
+      return "Cuireadh an teagmh\xe1il chuig an gc\xfarsa";
     },
     get$inviteFriends() {
-      return "Inviter des amis";
+      return "Cuireadh cairde";
     },
     get$activityStatsButtonTooltip() {
-      return "Informations sur l'activit\xe9";
+      return "Eolas gn\xedomha\xedochta";
     },
     get$allow(_) {
-      return "Autoriser";
+      return "Ceadaigh";
     },
     get$deny() {
-      return "Refuser";
+      return "Di\xfaltaigh";
     },
     get$enabledRenewal() {
-      return "Activer le renouvellement de l'abonnement";
+      return "Cuir Athnuachan Suibscr\xedofa ar Si\xfal";
     },
     get$subscriptionEndsOn() {
-      return "L'abonnement se termine le";
+      return "Cr\xedochna\xedonn an Suibscr\xedobh Ar";
     },
     get$subscriptionRenewsOn() {
-      return "L'abonnement se renouvelle le";
+      return "Athnuachan an Suibscr\xedobh Ar";
     },
     get$waitForSubscriptionChanges() {
-      return "Les modifications de votre abonnement peuvent prendre un moment \xe0 se refl\xe9ter dans l'application.";
+      return "D'fh\xe9adfadh go dt\xf3gfadh athruithe ar do shuibscr\xedobh n\xf3im\xe9ad chun l\xe9iri\xfa a fh\xe1il sa aip.";
     },
     get$subscribeReadingAssistance() {
-      return "Abonnez-vous pour d\xe9bloquer les outils de message";
+      return "Suibscr\xedobh chun uirlis\xed teachtaireachta a dh\xedghlas\xe1il";
     },
     get$aceDisplayName() {
       return "Achinese";
@@ -4574,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Acoli";
     },
     get$afDisplayName() {
-      return "Afrikaans";
+      return "Afracais";
     },
     get$akDisplayName() {
       return "Akan";
@@ -4583,13 +4583,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Alur";
     },
     get$amDisplayName() {
-      return "Amharique";
+      return "Amharic";
     },
     get$arDisplayName() {
-      return "Arabe";
+      return "Araibis";
     },
     get$asDisplayName() {
-      return "Assamais";
+      return "Asamais";
     },
     get$awaDisplayName() {
       return "Awadhi";
@@ -4598,19 +4598,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aymara";
     },
     get$azDisplayName() {
-      return "Azerba\xefdjanais";
+      return "Aisearbaijianach";
     },
     get$baDisplayName() {
-      return "Bachkir";
+      return "Bashkir";
     },
     get$banDisplayName() {
-      return "Balinais";
+      return "Bail\xednis";
     },
     get$bbcDisplayName() {
       return "Batak Toba";
     },
     get$beDisplayName() {
-      return "Bi\xe9lorusse";
+      return "B\xe9arla Bhealar\xfaiseach";
     },
     get$bemDisplayName() {
       return "Bemba";
@@ -4619,7 +4619,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Betawi";
     },
     get$bgDisplayName() {
-      return "Bulgare";
+      return "Bulg\xe1iris";
     },
     get$bhoDisplayName() {
       return "Bhojpuri";
@@ -4631,19 +4631,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bambara";
     },
     get$bnDisplayName() {
-      return "Bengali";
+      return "Beng\xe1lais";
     },
     get$bnBDDisplayName() {
-      return "Bengali (Bangladesh)";
+      return "Beng\xe1lais (An Bhanglaid)";
     },
     get$bnINDisplayName() {
-      return "Bengali (Inde)";
+      return "Beng\xe1lais (An India)";
     },
     get$brDisplayName() {
       return "Breton";
     },
     get$bsDisplayName() {
-      return "Bosniaque";
+      return "Boisniach";
     },
     get$btsDisplayName() {
       return "Batak Simalungun";
@@ -4652,10 +4652,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "Bouriate";
+      return "Buriat";
     },
     get$caDisplayName() {
-      return "Catalan";
+      return "Catal\xf3in";
     },
     get$cebDisplayName() {
       return "Cebuano";
@@ -4667,34 +4667,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mari";
     },
     get$ckbDisplayName() {
-      return "Kurde central";
+      return "C\xfardach L\xe1rnach";
     },
     get$cnhDisplayName() {
       return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "Corse";
+      return "Corsican";
     },
     get$crhDisplayName() {
-      return "Turc de Crim\xe9e";
+      return "Tuircis Chriomna";
     },
     get$crsDisplayName() {
-      return "Cr\xe9ole seselwa fran\xe7ais";
+      return "Fraincis Creole Seselwa";
     },
     get$csDisplayName() {
-      return "Tch\xe8que";
+      return "Seicis";
     },
     get$cvDisplayName() {
-      return "Tchouvache";
+      return "Chuvash";
     },
     get$cyDisplayName() {
-      return "Gallois";
+      return "Cymraeg";
     },
     get$daDisplayName() {
-      return "Danois";
+      return "Danmhairgis";
     },
     get$deDisplayName() {
-      return "Allemand";
+      return "Gearm\xe1inis";
     },
     get$dinDisplayName() {
       return "Dinka";
@@ -4712,97 +4712,97 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ewe";
     },
     get$enDisplayName() {
-      return "Anglais";
+      return "B\xe9arla";
     },
     get$enAUDisplayName() {
-      return "Anglais (Australie)";
+      return "B\xe9arla (An Astr\xe1il)";
     },
     get$enGBDisplayName() {
-      return "Anglais (Royaume-Uni)";
+      return "B\xe9arla (An R\xedocht Aontaithe)";
     },
     get$enINDisplayName() {
-      return "Anglais (Inde)";
+      return "B\xe9arla (An India)";
     },
     get$enUSDisplayName() {
-      return "Anglais (\xc9tats-Unis)";
+      return "B\xe9arla (SAM)";
     },
     get$eoDisplayName() {
-      return "Esp\xe9ranto";
+      return "Esperanto";
     },
     get$esDisplayName() {
-      return "Espagnol";
+      return "Sp\xe1innis";
     },
     get$esESDisplayName() {
-      return "Espagnol (Espagne)";
+      return "Sp\xe1innis (An Sp\xe1inn)";
     },
     get$esMXDisplayName() {
-      return "Espagnol (Mexique)";
+      return "Sp\xe1innis (Meicsiceo)";
     },
     get$euDisplayName() {
       return "Basque";
     },
     get$faDisplayName() {
-      return "Persan";
+      return "Pearsis";
     },
     get$ffDisplayName() {
       return "Fulah";
     },
     get$fiDisplayName() {
-      return "Finnois";
+      return "Fionlainnis";
     },
     get$filDisplayName() {
-      return "Filipino";
+      return "Filip\xedneach";
     },
     get$fjDisplayName() {
-      return "Fidjien";
+      return "Fidil";
     },
     get$foDisplayName() {
-      return "F\xe9ro\xefen";
+      return "Faoiseach";
     },
     get$frDisplayName() {
-      return "Fran\xe7ais";
+      return "Fraincis";
     },
     get$frCADisplayName() {
-      return "Fran\xe7ais (Canada)";
+      return "Fraincis (Ceanada)";
     },
     get$frFRDisplayName() {
-      return "Fran\xe7ais (France)";
+      return "Fraincis (An Fhrainc)";
     },
     get$fyDisplayName() {
-      return "Frison occidental";
+      return "Frisian Thiar";
     },
     get$gaDisplayName() {
-      return "Irlandais";
+      return "Gaeilge";
     },
     get$gaaDisplayName() {
       return "Ga";
     },
     get$gdDisplayName() {
-      return "Ga\xe9lique \xe9cossais";
+      return "Gaeilge na hAlban";
     },
     get$glDisplayName() {
-      return "Galego";
+      return "Gail\xeds";
     },
     get$gnDisplayName() {
-      return "Guarani";
+      return "Guaran\xed";
     },
     get$gomDisplayName() {
-      return "Konkani de Goa";
+      return "Concaine Goan";
     },
     get$guDisplayName() {
-      return "Gujarati";
+      return "G\xfajarat\xed";
     },
     get$haDisplayName() {
       return "Hausa";
     },
     get$hawDisplayName() {
-      return "Hawa\xefen";
+      return "Hava\xed";
     },
     get$heDisplayName() {
-      return "H\xe9breu";
+      return "Heebr\xe9ach";
     },
     get$hiDisplayName() {
-      return "Hindi";
+      return "Hiond\xfa";
     },
     get$hilDisplayName() {
       return "Hiligaynon";
@@ -4814,22 +4814,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "Croate";
+      return "Cr\xf3itis";
     },
     get$hrxDisplayName() {
       return "Hunsrik";
     },
     get$htDisplayName() {
-      return "Cr\xe9ole ha\xeftien";
+      return "Cr\xedochnaigh Hait\xed";
     },
     get$huDisplayName() {
-      return "Hongrois";
+      return "Ung\xe1iris";
     },
     get$hyDisplayName() {
-      return "Arm\xe9nien";
+      return "Airm\xe9inis";
     },
     get$idDisplayName() {
-      return "Indon\xe9sien";
+      return "Indon\xe9isis";
     },
     get$igDisplayName() {
       return "Igbo";
@@ -4838,64 +4838,64 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Iloko";
     },
     get$isDisplayName() {
-      return "Islandais";
+      return "Oile\xe1n na h\xcdsilt\xedre";
     },
     get$itDisplayName() {
-      return "Italien";
+      return "Iod\xe1ilis";
     },
     get$jaDisplayName() {
-      return "Japonais";
+      return "Seap\xe1inis";
     },
     get$jvDisplayName() {
-      return "Javanais";
+      return "Seim\xedneach";
     },
     get$kaDisplayName() {
-      return "G\xe9orgien";
+      return "G\xe9orgach";
     },
     get$kkDisplayName() {
-      return "Kazakh";
+      return "C\xe1sac";
     },
     get$kmDisplayName() {
-      return "Khmer";
+      return "Caim\xe9ireach";
     },
     get$knDisplayName() {
       return "Kannada";
     },
     get$koDisplayName() {
-      return "Cor\xe9en";
+      return "C\xf3ir\xe9ach";
     },
     get$kokDisplayName() {
-      return "Konkani";
+      return "Conchani";
     },
     get$kriDisplayName() {
       return "Krio";
     },
     get$ksDisplayName() {
-      return "Kashmiri";
+      return "Caismir\xed";
     },
     get$ktuDisplayName() {
-      return "Kituba (R\xe9publique D\xe9mocratique du Congo)";
+      return "Kituba (Poblacht Dhaonlathach na Cong\xf3)";
     },
     get$kuDisplayName() {
-      return "Kurde";
+      return "C\xfardach";
     },
     get$kyDisplayName() {
-      return "Kyrgyz";
+      return "C\xedrgeach";
     },
     get$laDisplayName() {
-      return "Latin";
+      return "Laidin";
     },
     get$lbDisplayName() {
-      return "Luxembourgeois";
+      return "Lucsamburgach";
     },
     get$lgDisplayName() {
       return "Ganda";
     },
     get$liDisplayName() {
-      return "Limbourgeois";
+      return "Limburgach";
     },
     get$lijDisplayName() {
-      return "Ligurien";
+      return "Ligurian";
     },
     get$lmoDisplayName() {
       return "Lombard";
@@ -4907,28 +4907,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Lao";
     },
     get$ltDisplayName() {
-      return "Lituanien";
+      return "Laitvis";
     },
     get$ltgDisplayName() {
-      return "Latgalien";
+      return "Latgalian";
     },
     get$luoDisplayName() {
-      return "Luo (Kenya et Tanzanie)";
+      return "Luo (Cean\xe1da agus Tans\xe1in)";
     },
     get$lusDisplayName() {
       return "Mizo";
     },
     get$lvDisplayName() {
-      return "Letton";
+      return "Laitvis";
     },
     get$maiDisplayName() {
-      return "Ma\xefthili";
+      return "Maithili";
     },
     get$makDisplayName() {
       return "Makasar";
     },
     get$mgDisplayName() {
-      return "Malgache";
+      return "Malagasy";
     },
     get$miDisplayName() {
       return "M\u0101ori";
@@ -4937,13 +4937,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "Mac\xe9donien";
+      return "Macedonian";
     },
     get$mlDisplayName() {
       return "Malayalam";
     },
     get$mnDisplayName() {
-      return "Mongol";
+      return "Mongolian";
     },
     get$mniDisplayName() {
       return "Manipuri";
@@ -4952,49 +4952,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Marathi";
     },
     get$msDisplayName() {
-      return "Malais";
+      return "Malay";
     },
     get$msArabDisplayName() {
-      return "Malais (arabe)";
+      return "Malay (Arabic)";
     },
     get$msMYDisplayName() {
-      return "Malais (Malaisie)";
+      return "Malay (Malaysia)";
     },
     get$mtDisplayName() {
-      return "Maltais";
+      return "M\xe1ltais";
     },
     get$mwrDisplayName() {
       return "Marwari";
     },
     get$myDisplayName() {
-      return "Birmane";
+      return "Birmiiseach";
     },
     get$nanDisplayName() {
       return "Min Nan";
     },
     get$nbDisplayName() {
-      return "Norv\xe9gien (Bokm\xe5l)";
+      return "N\xf3rsach (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "N\xe9palais";
+      return "Neapaileach";
     },
     get$newDisplayName() {
-      return "N\xe9wari";
+      return "Newari";
     },
     get$nlDisplayName() {
-      return "N\xe9erlandais";
+      return "Ollainnis";
     },
     get$nlBEDisplayName() {
       return "Flamand";
     },
     get$noDisplayName() {
-      return "Norv\xe9gien";
+      return "N\xf3rsach";
     },
     get$nrDisplayName() {
-      return "Ndebele du Sud";
+      return "Deisceart Ndebele";
     },
     get$nsoDisplayName() {
-      return "Sotho du Nord";
+      return "Sotho Thuaidh";
     },
     get$nusDisplayName() {
       return "Nuer";
@@ -5012,13 +5012,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Odia";
     },
     get$paDisplayName() {
-      return "Pendjabi";
+      return "Punjabi";
     },
     get$paArabDisplayName() {
-      return "Pendjabi (Shahmukhi)";
+      return "Punjabi (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "Pendjabi (Gurmukhi)";
+      return "Punjabi (Gurmukhi)";
     },
     get$pagDisplayName() {
       return "Pangasinan";
@@ -5030,19 +5030,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Papiamento";
     },
     get$plDisplayName() {
-      return "Polonais";
+      return "Polainnis";
     },
     get$psDisplayName() {
-      return "Pachto";
+      return "Pashto";
     },
     get$ptDisplayName() {
-      return "Portugais";
+      return "Portaing\xe9ilis";
     },
     get$ptBRDisplayName() {
-      return "Portugais (Br\xe9sil)";
+      return "Portaing\xe9ilis (an Bhrasa\xedl)";
     },
     get$ptPTDisplayName() {
-      return "Portugais (Portugal)";
+      return "Portaing\xe9ilis (an Phortaing\xe9il)";
     },
     get$quDisplayName() {
       return "Quechua";
@@ -5054,16 +5054,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Rundi";
     },
     get$roDisplayName() {
-      return "Roumain";
+      return "R\xf3m\xe1inis";
     },
     get$roMDDisplayName() {
-      return "Moldave";
+      return "Mold\xf3ivis";
     },
     get$romDisplayName() {
-      return "Romani";
+      return "Rom\xe1inis";
     },
     get$ruDisplayName() {
-      return "Russe";
+      return "R\xfaisis";
     },
     get$rwDisplayName() {
       return "Kinyarwanda";
@@ -5075,7 +5075,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Santali";
     },
     get$scnDisplayName() {
-      return "Sicilien";
+      return "Sicilias";
     },
     get$sdDisplayName() {
       return "Sindhi";
@@ -5087,70 +5087,70 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Shan";
     },
     get$siDisplayName() {
-      return "Cinghalais";
+      return "S\xedneach";
     },
     get$skDisplayName() {
-      return "Slovaque";
+      return "Sl\xf3iv\xe9ig";
     },
     get$slDisplayName() {
-      return "Slov\xe8ne";
+      return "Sl\xf3iv\xe9ineach";
     },
     get$smDisplayName() {
       return "Samoan";
     },
     get$snDisplayName() {
-      return "Shona";
+      return "Sh\xf3na";
     },
     get$soDisplayName() {
-      return "Somali";
+      return "Som\xe1ilis";
     },
     get$sqDisplayName() {
-      return "Albanais";
+      return "Alb\xe1inis";
     },
     get$srDisplayName() {
-      return "Serbe";
+      return "Searbhais";
     },
     get$srMEDisplayName() {
-      return "Mont\xe9n\xe9grin";
+      return "Montenegrin";
     },
     get$ssDisplayName() {
       return "Swati";
     },
     get$stDisplayName() {
-      return "Sotho du Sud";
+      return "Sotho Theas";
     },
     get$suDisplayName() {
-      return "Soundanais";
+      return "Sundanese";
     },
     get$svDisplayName() {
-      return "Su\xe9dois";
+      return "Sualainnis";
     },
     get$swDisplayName() {
       return "Swahili";
     },
     get$szlDisplayName() {
-      return "Sil\xe9zien";
+      return "Silesian";
     },
     get$taDisplayName() {
-      return "Tamoul";
+      return "Tamail";
     },
     get$teDisplayName() {
-      return "T\xe9lougou";
+      return "Telegu";
     },
     get$tetDisplayName() {
       return "Tetum";
     },
     get$tgDisplayName() {
-      return "Tadjik";
+      return "Taisigh";
     },
     get$thDisplayName() {
-      return "Tha\xef";
+      return "T\xe9alainnis";
     },
     get$tiDisplayName() {
-      return "Tigrigna";
+      return "Tigrinya";
     },
     get$tkDisplayName() {
-      return "Turkm\xe8ne";
+      return "Turcm\xe9anach";
     },
     get$tlDisplayName() {
       return "Tagalog";
@@ -5159,7 +5159,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tswana";
     },
     get$trDisplayName() {
-      return "Turc";
+      return "Tuircis";
     },
     get$tsDisplayName() {
       return "Tsonga";
@@ -5168,25 +5168,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tatar";
     },
     get$ugDisplayName() {
-      return "Ou\xefghour";
+      return "Uyghur";
     },
     get$ukDisplayName() {
-      return "Ukrainien";
+      return "\xdacr\xe1inis";
     },
     get$urDisplayName() {
-      return "Ourdou";
+      return "\xdard\xfa";
     },
     get$urINDisplayName() {
-      return "Ourdou (Inde)";
+      return "\xdard\xfa (An India)";
     },
     get$urPKDisplayName() {
-      return "Ourdou (Pakistan)";
+      return "\xdard\xfa (An Phacast\xe1in)";
     },
     get$uzDisplayName() {
-      return "Ouzbek";
+      return "\xdaisb\xe9ice";
     },
     get$viDisplayName() {
-      return "Vietnamien";
+      return "V\xedtneaimis";
     },
     get$wuuDisplayName() {
       return "Wu";
@@ -5201,28 +5201,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Yoruba";
     },
     get$yuaDisplayName() {
-      return "Yucat\xe8que";
+      return "Yucateco";
     },
     get$yueDisplayName() {
-      return "Cantonais";
+      return "Cantonach";
     },
     get$yueCNDisplayName() {
-      return "Cantonais (Chine)";
+      return "Cantonach (An tS\xedn)";
     },
     get$yueHKDisplayName() {
-      return "Cantonais (Hong Kong)";
+      return "Cantonach (Hong Cong)";
     },
     get$zhDisplayName() {
-      return "Chinois";
+      return "S\xednis";
     },
     get$zhCNDisplayName() {
-      return "Chinois (Simplifi\xe9)";
+      return "S\xednis (Simpl\xed)";
     },
     get$zhTWDisplayName() {
-      return "Chinois (Traditionnel)";
+      return "S\xednis (Traidisi\xfanta)";
     },
     get$zuDisplayName() {
       return "Zulu";
+    },
+    get$teacherModeTitle() {
+      return "M\xf3d M\xfainteora";
+    },
+    get$teacherModeDesc() {
+      return "Cas ar chun gach \xe1bhar agus gn\xedomha\xedocht a dh\xedghlas\xe1il. Riarach\xe1n c\xfarsa amh\xe1in.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5231,13 +5237,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nFr, C.L10n);
+    _inherit(A.L10nGa, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFr":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nGa":{"L10n":[]}}'));
+  var string$ = {
+    Cuir_c: "Cuir cosc ar an \xfas\xe1ideoir \xe1irithe \xf3n seomra seo"
+  };
 };
 ;
 (d => {
-  d["WrO24wnq1pe7vdD7a6EMjPuz9Ws="] = d.current;
+  d["kxdaC/TQxP+PsdnTUdk2HPZznnQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_609.part.js.map

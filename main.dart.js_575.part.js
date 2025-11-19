@@ -5,1744 +5,1744 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nEu$() {
-      return new A.L10nEu(B.canonicalizedLocale("eu"));
+    L10nFi$() {
+      return new A.L10nFi(B.canonicalizedLocale("fi"));
     },
-    L10nEu: function L10nEu(t0) {
+    L10nFi: function L10nFi(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[18], A);
-  A.L10nEu.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[20], A);
+  A.L10nFi.prototype = {
     get$alwaysUse24HourFormat() {
-      return "false";
+      return "ep\xe4tosi";
     },
     get$repeatPassword() {
-      return "Idatzi berriro pasahitza";
+      return "Salasana uudelleen";
     },
     get$notAnImage() {
-      return "Ez da irudi-fitxategia.";
+      return "T\xe4m\xe4 ei ole kuvatiedosto.";
     },
     get$setCustomPermissionLevel() {
-      return "Ezarri baimen-maila propioak";
+      return "Aseta mukautettu k\xe4ytt\xf6oikeustaso";
     },
     get$setPermissionsLevelDescription() {
-      return "Aukeratu defektuzko rola edo sartu baimen-maila pertsonalizatu bat 0 eta 100 artean.";
+      return "Valitse alla ennalta m\xe4\xe4ritetty rooli tai sy\xf6t\xe4 mukautettu k\xe4ytt\xf6oikeustaso v\xe4lilt\xe4 0\u2013100.";
     },
     get$ignoreUser() {
-      return "Egin muzin erabiltzaileari";
+      return "Ohita k\xe4ytt\xe4j\xe4";
     },
     get$normalUser() {
-      return "Erabiltzaile arrunta";
+      return "Normaali k\xe4ytt\xe4j\xe4";
     },
     get$remove(_) {
-      return "Kendu";
+      return "Poista";
     },
     get$importNow() {
-      return "Inportatu orain";
+      return "Tuo nyt";
     },
     get$importEmojis() {
-      return "Inportatu emojiak";
+      return "Tuo emojit";
     },
     get$importFromZipFile() {
-      return "Inportatu .zip fitxategi batetik";
+      return "Tuo .zip -tiedostosta";
     },
     get$exportEmotePack() {
-      return "Esportatu emote-sorta .zip gisa";
+      return "Vie emotepaketti .zip-tiedostona";
     },
     get$replace(_) {
-      return "Ordezkatu";
+      return "Korvaa";
     },
     aboutHomeserver$1(homeserver) {
-      return homeserver + "(e)ri buruz";
+      return "Tietoja " + homeserver;
     },
     get$accept(_) {
-      return "Onartu";
+      return "Hyv\xe4ksy";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + "(e)k gonbidapena onartu du";
+      return username + " hyv\xe4ksyi kutsun";
     },
     get$account() {
-      return "Kontua";
+      return "Tili";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + "(e)k ertzetik ertzerako zifratzea gaitu du";
+      return "\ud83d\udd10 " + username + " otti k\xe4ytt\xf6\xf6n p\xe4\xe4st\xe4-p\xe4\xe4h\xe4n salauksen";
     },
     get$addEmail() {
-      return "Gehitu ePosta";
+      return "Lis\xe4\xe4 s\xe4hk\xf6postiosoite";
     },
     supposedMxid$1(mxid) {
-      return "Hau " + mxid + " izan behar da";
+      return "T\xe4m\xe4n pit\xe4isi olla " + mxid;
     },
     get$admin() {
-      return "Administratzailea";
+      return "Yll\xe4pit\xe4j\xe4";
     },
     get$commandHint_roomupgrade() {
-      return "Bertsio-berritu gela adierazitako gela-bertsiora";
+      return "P\xe4ivit\xe4 t\xe4m\xe4 huone annettuun huonetyyppiin";
     },
     get$commandHint_googly() {
-      return "Bidali begi dibertigarri batzuk";
+      return "L\xe4het\xe4 askartelusilmi\xe4";
     },
     get$commandHint_cuddle() {
-      return "Bidali besarkada samurra";
+      return "L\xe4het\xe4 kokovartaluhalaus";
     },
     get$commandHint_hug() {
-      return "Bidali besarkada";
+      return "L\xe4het\xe4 halaus";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + "(e)k begi dibertigarri batzuk bidali dizkizu";
+      return senderName + " l\xe4hett\xe4\xe4 askartelusilmi\xe4";
     },
     cuddleContent$1(senderName) {
-      return senderName + "(e)k samurki besarkatu zaitu";
+      return senderName + " kokovartalohalaa sinua";
     },
     hugContent$1(senderName) {
-      return senderName + "(e)k besarkatu zaitu";
+      return senderName + " halaa sinua";
     },
     answeredTheCall$1(senderName) {
-      return senderName + "(e)k deia erantzun du";
+      return senderName + " vastasi puheluun";
     },
     get$anyoneCanJoin() {
-      return "Edonor batu daiteke";
+      return "Kuka tahansa voi liitty\xe4";
     },
     get$archive() {
-      return "Fitxategia";
+      return "Arkisto";
     },
     get$areYouSure() {
-      return "Ziur zaude?";
+      return "Oletko varma?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Ziur zaude saioa amaitu nahi duzula?";
+      return "Haluatko varmasti kirjautua ulos?";
     },
     get$askSSSSSign() {
-      return "Beste pertsona egiaztatzeko, sartu zure biltegiratze segururako pasaesaldia edo berreskuratze-gakoa.";
+      return "Voidaksesi allekirjoittaa toisen henkil\xf6n, sy\xf6t\xe4 turvavaraston salalause tai palautusavain.";
     },
     askVerificationRequest$1(username) {
-      return username + "(r)en egiaztaketa-eskaera onartu?";
+      return "Hyv\xe4ksyt\xe4\xe4nk\xf6 t\xe4m\xe4 varmennuspyynt\xf6 k\xe4ytt\xe4j\xe4lt\xe4 " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Zerbitzariak ondorengo aukerak onartzen ditu saioa hasteko:\n" + serverVersions + "\nBaina aplikazioak hauek onartzen ditu bakarrik:\n" + supportedVersions;
+      return "T\xe4m\xe4 kotipalvelin tukee sis\xe4\xe4nkirjautumistapoja: \n" + serverVersions + ",\nmutta t\xe4m\xe4 sovellus tukee vain -tapoja: \n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Jakinarazi idazten nagoela";
+      return "acL\xe4het\xe4 kirjoitusilmoituksia";
     },
     get$swipeRightToLeftToReply() {
-      return "Herrestatu eskuin-ezker erantzuteko";
+      return "Vastaa pyyhk\xe4isem\xe4ll\xe4 oikealta vasemmalle";
     },
     get$sendOnEnter() {
-      return "Bidali enter sakatuz";
+      return "L\xe4het\xe4 painamalla rivinvaihton\xe4pp\xe4int\xe4";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " txat eta " + participants + " partaide";
+      return "" + chats + " keskustelua ja " + participants + " osallistujaa";
     },
     get$banned() {
-      return "Kanporatuta";
+      return "Porttikiellossa";
     },
     bannedUser$2(username, targetName) {
-      return username + "(e)k " + targetName + "(r)i debekua ezarri dio";
+      return username + " antoi porttikiellon k\xe4ytt\xe4j\xe4lle " + targetName;
     },
     get$blockDevice() {
-      return "Blokeatu gailua";
+      return "Est\xe4 laite";
     },
     get$blocked() {
-      return "Blokeatuta";
+      return "Estetty";
     },
     get$cancel(_) {
-      return "Utzi";
+      return "Peruuta";
     },
     cantOpenUri$1(uri) {
-      return "Ezin da " + uri + " URIa ireki";
+      return "URI-osoitetta " + uri + " ei voida avata";
     },
     get$changeDeviceName() {
-      return "Aldatu gailuaren izena";
+      return "Vaihda laitteen nime\xe4";
     },
     changedTheChatAvatar$1(username) {
-      return username + "(e)k txataren abatarra aldatu du";
+      return username + " muutti keskustelun kuvaa";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + "(e)k txataren deskribapena aldatu du: '" + description + "'";
+      return username + " asetti keskustelun kuvaukseksi: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + "(e)k txataren izena '" + chatname + "'(e)ra aldatu du";
+      return username + " asetti keskustelun nimeksi: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + "(e)k txataren baimenak aldatu ditu";
+      return username + " muutti keskustelun oikeuksia";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + "(e)k bere ezizena aldatu du. Aurrerantzean '" + displayname + "' izango da";
+      return username + " asetti n\xe4ytt\xf6nimekseen: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + "(e)k bisitarien sarbide-arauak aldatu ditu";
+      return username + " muutti vierasp\xe4\xe4syn s\xe4\xe4nt\xf6j\xe4";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + "(e)k bisitarien arauak aldatu ditu: " + rules;
+      return username + " asetti vierasp\xe4\xe4syn s\xe4\xe4nn\xf6(i)ksi: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + "(e)k historiaren ikusgaitasuna aldatu du";
+      return username + " muutti historian n\xe4kyvyytt\xe4";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + "(e)k historiaren ikusgaitasuna " + rules + "-(e)ra aldatu du";
+      return username + " asetti historian n\xe4kymiss\xe4\xe4nn\xf6ksi: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + "(e)k batzeko arauak aldatu ditu";
+      return username + " muutti liittymiss\xe4\xe4nt\xf6j\xe4";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + "(e)k batzeko arauak aldatu ditu: " + joinRules;
+      return username + " asetti liittymiss\xe4\xe4nn\xf6iksi: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + "(e)k profileko abatarra aldatu du";
+      return username + " vaihtoi profiilikuvaansa";
     },
     changedTheRoomAliases$1(username) {
-      return username + "(e)k gelaren ezizena aldatu du";
+      return username + " muutti huoneen aliaksia";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + "(e)k gonbidapen-esteka aldatu du";
+      return username + " muutti kutsulinkki\xe4";
     },
     get$changePassword() {
-      return "Aldatu pasahitza";
+      return "Vaihda salasana";
     },
     get$changeTheme() {
-      return "Aldatu itxura";
+      return "Vaihda tyyli\xe4si";
     },
     get$changeYourAvatar() {
-      return "Aldatu abatarra";
+      return "Vaihda profiilikuvasi";
     },
     get$channelCorruptedDecryptError() {
-      return "Zifratzea hondatu egin da";
+      return "Salaus on korruptoitunut";
     },
     get$chat() {
-      return "Txata";
+      return "Keskustelu";
     },
     get$chatDetails() {
-      return "Txataren xehetasunak";
+      return "Keskustelun tiedot";
     },
     get$chats() {
-      return "Txatak";
+      return "Keskustelut";
     },
     get$chooseAStrongPassword() {
-      return "Aukeratu pasahitz sendo bat";
+      return "Valitse vahva salasana";
     },
     get$clearArchive() {
-      return "Ezabatu artxiboa";
+      return "Tyhjenn\xe4 arkisto";
     },
     get$close(_) {
-      return "Itxi";
+      return "Sulje";
     },
     get$commandHint_markasdm() {
-      return "Markatu mezu-zuzen gela bezala Matrix ID jakin honentzat";
+      return "Merkitse yksityiskeskusteluksi sy\xf6tetyn Matrix IDn kanssa";
     },
     get$commandHint_markasgroup() {
-      return "Markatu talde bezala";
+      return "Merkitse ryhm\xe4ksi";
     },
     get$commandHint_ban() {
-      return "Debekatu erabiltzailea gela honetan";
+      return "Anna sy\xf6tetylle k\xe4ytt\xe4j\xe4lle porttikielto t\xe4h\xe4n huoneeseen";
     },
     get$commandHint_clearcache() {
-      return "Ezabatu katxea";
+      return "Tyhjenn\xe4 v\xe4limuisti";
     },
     get$commandHint_create() {
-      return "Sortu taldeko-txat huts bat\nErabili --no-encyption zifratzea desgaitzeko";
+      return "Luo tyhj\xe4 ryhm\xe4keskustelu\nK\xe4yt\xe4 parametria --no-encryption poistaaksesi salauksen k\xe4yt\xf6st\xe4";
     },
     get$commandHint_discardsession() {
-      return "Baztertu saioa";
+      return "Hylk\xe4\xe4 istunto";
     },
     get$commandHint_dm() {
-      return "Hasi banakako txat bat\nErabili --no-encyption zifratzea desgaitzeko";
+      return "Aloita yksityiskeskustelu\nK\xe4yt\xe4 parametria --no-encryption poistaaksesi salauksen k\xe4yt\xf6st\xe4";
     },
     get$commandHint_html() {
-      return "Bidali testua HTML formatuan";
+      return "L\xe4het\xe4 HTML-muotoiltua teksti\xe4";
     },
     get$commandHint_invite() {
-      return "Gonbidatu erabiltzailea gela honetara";
+      return "Kutsu sy\xf6tetty k\xe4ytt\xe4j\xe4 t\xe4h\xe4n huoneeseen";
     },
     get$commandHint_join() {
-      return "Batu gelara";
+      return "Liity sy\xf6tettyyn huoneeseen";
     },
     get$commandHint_kick() {
-      return "Kendu erabiltzaile hori gela honetatik";
+      return "Poista sy\xf6tetty k\xe4ytt\xe4j\xe4 huoneesta";
     },
     get$commandHint_leave() {
-      return "Utzi gela hau";
+      return "Poistu t\xe4st\xe4 huoneesta";
     },
     get$commandHint_me() {
-      return "Deskribatu zure burua";
+      return "Kuvaile itse\xe4si";
     },
     get$commandHint_myroomavatar() {
-      return "Ezarri zure irudia gela honetarako (mxc-uri bidez)";
+      return "Aseta profiilikuvasi t\xe4h\xe4n huoneeseen (sy\xf6tt\xe4m\xe4ll\xe4 mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Ezarri zure ezizena gela honetarako";
+      return "Aseta n\xe4ytt\xf6nimesi vain t\xe4ss\xe4 huoneessa";
     },
     get$commandHint_op() {
-      return "Zehaztu erabiltzaile honen botere-maila (defektuz: 50)";
+      return "Aseta k\xe4ytt\xe4j\xe4n voimataso (oletus: 50)";
     },
     get$commandHint_plain() {
-      return "Bidali formaturik gabeko testua";
+      return "L\xe4het\xe4 muotoilematonta teksti\xe4";
     },
     get$commandHint_react() {
-      return "Bidali erantzuna erreakzio gisa";
+      return "L\xe4het\xe4 vastaus reaktiona";
     },
     get$commandHint_send() {
-      return "Bidali testua";
+      return "L\xe4het\xe4 teksti\xe4";
     },
     get$commandHint_unban() {
-      return "Kendu erabiltzaileak gela honetan duen debekua";
+      return "Poista sy\xf6tetyn k\xe4ytt\xe4j\xe4n porttikielto t\xe4st\xe4 huoneesta";
     },
     get$compareEmojiMatch() {
-      return "Konparatu emojiak";
+      return "Vertaa hymi\xf6it\xe4";
     },
     get$compareNumbersMatch() {
-      return "Konparatu zenbakiak";
+      return "Vertaa numeroita";
     },
     get$configureChat() {
-      return "Txata konfiguratu";
+      return "M\xe4\xe4rit\xe4 keskustelu";
     },
     get$confirm(_) {
-      return "Baieztatu";
+      return "Vahvista";
     },
     get$copiedToClipboard() {
-      return "Arbelera kopiatu da";
+      return "Kopioitu leikep\xf6yd\xe4lle";
     },
     get$copy(_) {
-      return "Kopiatu";
+      return "Kopioi";
     },
     couldNotDecryptMessage$1(error) {
-      return "Ezin izan da mezua deszifratu: " + error;
+      return "Viestin salausta ei voitu purkaa: " + error;
     },
     get$checkList() {
-      return "Kontrol-zerrenda";
+      return "Tarkistuslista";
     },
     countParticipants$1(count) {
-      return "" + count + " partaide";
+      return "" + count + " osallistujaa";
     },
     countInvited$1(count) {
-      return "" + count + " gonbidatu";
+      return "" + count + " kutsuttu";
     },
     get$create(_) {
-      return "Sortu";
+      return "Luo";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + "(e)k txata sortu du";
+      return username + " loi keskustelun";
     },
     get$createGroup() {
-      return "Sortu taldea";
+      return "Luo ryhm\xe4";
     },
     get$currentlyActive() {
-      return "Une honetan aktibo";
+      return "Aktiivinen nyt";
     },
     get$darkTheme() {
-      return "Iluna";
+      return "Tumma";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Honek zure kontua desaktibatuko du. Ezin da desegin! Ziur zaude?";
+      return "T\xe4m\xe4 poistaa tunnuksesi k\xe4yt\xf6st\xe4. T\xe4t\xe4 ei voi kumota! Oletko varma?";
     },
     get$defaultPermissionLevel() {
-      return "Erabiltzaile berrien defektuzko botere-maila";
+      return "Uusien k\xe4ytt\xe4jien oikeuksien oletustaso";
     },
     get$$delete(_) {
-      return "Ezabatu";
+      return "Poista";
     },
     get$deleteAccount() {
-      return "Ezabatu kontua";
+      return "Poista tunnus";
     },
     get$deleteMessage() {
-      return "Mezuak ezabatu";
+      return "Poista viesti";
     },
     get$devices() {
-      return "Gailuak";
+      return "Laitteet";
     },
     get$displaynameHasBeenChanged() {
-      return "Ezizena aldatu da";
+      return "N\xe4ytt\xf6nimi on vaihdettu";
     },
     get$downloadFile() {
-      return "Deskargatu fitxategia";
+      return "Lataa tiedosto";
     },
     get$edit() {
-      return "Editatu";
+      return "Muokkaa";
     },
     get$editBlockedServers() {
-      return "Editatu blokeatutako zerbitzariak";
+      return "Muokkaa estettyj\xe4 palvelimia";
     },
     get$chatPermissions() {
-      return "Txataren baimenak";
+      return "Keskustelun oikeudet";
     },
     get$editDisplayname() {
-      return "Editatu ezizena";
+      return "Muokkaa n\xe4ytt\xf6nime\xe4";
     },
     get$editRoomAvatar() {
-      return "Gelaren abatarra editatu";
+      return "Muokkaa huoneen profiilikuvaa";
     },
     get$emoteExists() {
-      return "Emotea badago lehendik ere!";
+      return "Emote on jo olemassa!";
     },
     get$emoteInvalid() {
-      return "Emotearen laburdura ez da baliozkoa!";
+      return "Ep\xe4kelpo emote-lyhytkoodi";
     },
     get$emoteKeyboardNoRecents() {
-      return "Oraintsu erabilitako emoteak hemen ageriko dira\u2026";
+      return "Viimeaikoina k\xe4ytetyt emotet tulevat n\xe4kym\xe4\xe4n t\xe4\xe4ll\xe4...";
     },
     get$emotePacks() {
-      return "Gelarako emote-sortak";
+      return "Huoneen emote-paketit";
     },
     get$customEmojisAndStickers() {
-      return "Emoji eta pegatina propioak";
+      return "Mukautetut emotikonit ja tarrat";
     },
     get$emoteShortcode() {
-      return "Laburdura";
+      return "Emote-lyhytkoodi";
     },
     get$emoteWarnNeedToPick() {
-      return "Emote-laburdura eta irudi bat aukeratu behar dituzu!";
+      return "Emote-lyhytkoodi ja kuva on valittava!";
     },
     get$emptyChat() {
-      return "Txata hutsik dago";
+      return "Tyhj\xe4 keskustelu";
     },
     get$enableEmotesGlobally() {
-      return "Gaitu emote-sorta txat guztietarako";
+      return "Ota emote-paketti k\xe4ytt\xf6\xf6n kaikkialla";
     },
     get$enableEncryption() {
-      return "Gaitu zifratzea";
+      return "Ota salaus k\xe4ytt\xf6\xf6n";
     },
     get$encrypted() {
-      return "Zifratuta";
+      return "Salattu";
     },
     get$encryptionNotEnabled() {
-      return "Zifratzea ez dago gaituta";
+      return "Salaus ei ole k\xe4yt\xf6ss\xe4";
     },
     endedTheCall$1(senderName) {
-      return senderName + "(e)k deia amaitu du";
+      return senderName + " p\xe4\xe4tti puhelun";
     },
     get$enterAnEmailAddress() {
-      return "Sartu helbide elektroniko bat";
+      return "Sy\xf6t\xe4 s\xe4hk\xf6posti-osoite";
     },
     errorObtainingLocation$1(error) {
-      return "Errorea kokapena lortzerakoan: " + error;
+      return "Virhe paikannuksessa: " + error;
     },
     get$fontSize(_) {
-      return "Letraren tamaina";
+      return "Fonttikoko";
     },
     get$forward(_) {
-      return "Birbidali";
+      return "Edelleenl\xe4het\xe4";
     },
     get$fromJoining() {
-      return "Batzeaz geroztik";
+      return "Alkaen liittymisest\xe4";
     },
     get$fromTheInvitation() {
-      return "Gonbidapenaz geroztik";
+      return "Alkaen kutsumisesta";
     },
     get$guestsAreForbidden() {
-      return "Ez, bisitariak ez daude baimenduta";
+      return "Vieraat on kielletty";
     },
     get$guestsCanJoin() {
-      return "Bai, bisitariak batu daitezke";
+      return "Vieraat voivat liitty\xe4";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + "(e)k " + targetName + "(r)en gonbidapena atzera bota du";
+      return username + " on perunnut k\xe4ytt\xe4j\xe4n " + targetName + " kutsun";
     },
     get$help() {
-      return "Laguntza";
+      return "Apua";
     },
     get$hideRedactedMessages() {
-      return "Ezkutatu atzera botatako mezuak";
+      return "Piilota muokatut viestit";
     },
     get$hideRedactedMessagesBody() {
-      return "Norbaitek mezuren bat atzera botaz gero, mezua txatetik kenduko da, abisurik gabe.";
+      return "Jos joku muokkaa viestin, t\xe4m\xe4 viesti ei ole en\xe4\xe4 n\xe4kyviss\xe4 keskustelussa.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Ezkutatu mezuen formatu ezezagun edo baliogabea";
+      return "Piilota virheelliset tai tuntemattomat viestimuodot";
     },
     get$block() {
-      return "Blokeatu";
+      return "Est\xe4";
     },
     get$blockedUsers() {
-      return "Blokeatutako erabiltzaileak";
+      return "Estetyt k\xe4ytt\xe4j\xe4t";
     },
     get$blockListDescription() {
-      return "Gogaitzen zaituzten erabiltzaileak blokeatu ditzakezu. Ez duzu blokeatutakoen zerrendan dituzun erabiltzaileen mezurik edo gelara batzeko gonbidapenik jasoko.";
+      return "Voit est\xe4\xe4 h\xe4iritsevi\xe4 k\xe4ytt\xe4ji\xe4. Et voi vastaanottaa viestej\xe4 tai huoneen kutsuja k\xe4ytt\xe4jilt\xe4, jotka ovat estolistallasi.";
     },
     get$blockUsername() {
-      return "Ezikusi erabiltzaile-izena";
+      return "Ohita k\xe4ytt\xe4j\xe4nimi";
     },
     get$iHaveClickedOnLink() {
-      return "Estekan sakatu dut";
+      return "Olen klikannut linkki\xe4";
     },
     get$incorrectPassphraseOrKey() {
-      return "Pasaesaldi edo berreskuratze-gakoa ez da zuzena";
+      return "Virheellinen salasana tai palautusavain";
     },
     get$inviteContact() {
-      return "Kontaktuak gonbidatu";
+      return "Kutsu yhteystieto";
     },
     get$noChatDescriptionYet() {
-      return "Ez da txaterako deskribapenik sortu oraindik.";
+      return "Keskustelun kuvausta ei ole viel\xe4 luotu.";
     },
     get$tryAgain() {
-      return "Saiatu berriro";
+      return "Yrit\xe4 uudelleen";
     },
     get$invited() {
-      return "Gonbidatuta";
+      return "Kutsuttu";
     },
     get$redactMessageDescription() {
-      return "Mezua elkarrizketa honetako partaide guztientzat botako da atzera. Ezin da desegin.";
+      return "Viesti poistetaan kaikilta keskustelun osallistujilta. T\xe4t\xe4 ei voida kumota.";
     },
     get$optionalRedactReason() {
-      return "(Aukerakoa) Mezua atzera botatzearen arrazoia\u2026";
+      return "(Vapaaehtoinen) Syy t\xe4m\xe4n viestin poistamiselle...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + "(e)k " + targetName + " gonbidatu du";
+      return "\ud83d\udce9 " + username + " kutsui k\xe4ytt\xe4j\xe4n " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Gonbidatutako erabiltzaileak solik";
+      return "Vain kutsutut k\xe4ytt\xe4j\xe4t";
     },
     get$inviteForMe() {
-      return "Niretzako gonbidapenak";
+      return "Kutsu minua varten";
     },
     get$isTyping() {
-      return "idazten ari da\u2026";
+      return "kirjoittaa\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " txatera batu da";
+      return "\ud83d\udc4b " + username + " liittyi keskusteluun";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + "(e)k " + targetName + " kanporatu du";
+      return "\ud83d\udc5e " + username + " potki k\xe4ytt\xe4j\xe4n " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Azkenekoz aktibo: " + localizedTimeShort;
+      return "Aktiivinen viimeksi: " + localizedTimeShort;
     },
     get$leave() {
-      return "Irten";
+      return "Poistu";
     },
     get$leftTheChat() {
-      return "Txatetik irten da";
+      return "Poistui keskustelusta";
     },
     get$lightTheme() {
-      return "Argia";
+      return "Vaalea";
     },
     get$dehydrate() {
-      return "Esportatu saioa eta ezabatu gailua";
+      return "Vie istunto ja tyhjenn\xe4 laite";
     },
     get$dehydrateWarning() {
-      return "Ekintza hau ezin da desegin. Egiaztatu babeskopia toki seguruan gorde duzula.";
+      return "T\xe4t\xe4 toimenpidett\xe4 ei voi kumota.\nVarmista varmuuskopiotiedoston turvallinen tallennus.";
     },
     get$dehydrateTor() {
-      return "TOR Erabiltzaileak: Esportatu saioa";
+      return "TOR-k\xe4ytt\xe4j\xe4t: vie istunto";
     },
     get$dehydrateTorLong() {
-      return "TOR erabiltzaileentzat gomendioa leihoa itxi baino lehen saioa esportatzea da.";
+      return "Tor-k\xe4ytt\xe4jille suositellaan istunnon vienti\xe4 ennen ikkunan sulkemista.";
     },
     get$loadingPleaseWait() {
-      return "Kargatzen\u2026 itxaron.";
+      return "Ladataan... Hetkinen.";
     },
     get$loadMore() {
-      return "Kargatu gehiago\u2026";
+      return "Lataa lis\xe4\xe4\u2026";
     },
     get$locationDisabledNotice() {
-      return "Kokapen zerbitzuak ezgaituta daude. Gaitu zure kokapena partekatu ahal izateko.";
+      return "Sijaintipalvelut ovat poissa k\xe4yt\xf6st\xe4. Otathan ne k\xe4ytt\xf6\xf6n jakaaksesi sijaintisi.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Kokapen baimena ukatu da. Eman zure kokapena partekatzeko baimena.";
+      return "SIjaintioikeus on estetty. My\xf6nn\xe4th\xe4n sen jakaaksesi sijaintisi.";
     },
     get$login() {
-      return "Hasi saioa";
+      return "Kirjaudu sis\xe4\xe4n";
     },
     get$logout() {
-      return "Amaitu saioa";
+      return "Kirjaudu ulos";
     },
     get$mention() {
-      return "Aipatu";
+      return "Mainitse";
     },
     get$messages() {
-      return "Mezuak";
+      return "Viestit";
     },
     get$messagesStyle() {
-      return "Mezuak:";
+      return "Viestit:";
     },
     get$moderator() {
-      return "Moderatzailea";
+      return "Valvoja";
     },
     get$newChat() {
-      return "Txat berria";
+      return "Uusi keskustelu";
     },
     get$newVerificationRequest() {
-      return "Egiaztaketa-eskaera berria!";
+      return "Uusi varmennuspyynt\xf6!";
     },
     get$next(_) {
-      return "Hurrengoa";
+      return "Seuraava";
     },
     get$no() {
-      return "Ez";
+      return "Ei";
     },
     get$noConnectionToTheServer() {
-      return "Ez dago konexiorik zerbitzariarekin";
+      return "Ei yhteytt\xe4 palvelimeen";
     },
     get$noEmotesFound() {
-      return "Ez da emoterik aurkitu. \ud83d\ude15";
+      return "Emoteja ei l\xf6ytynyt. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Partekatu gonbidapen-esteka";
+      return "Jaa kutsulinkki";
     },
     get$none() {
-      return "Bat ere ez";
+      return "Ei yht\xe4\xe4n";
     },
     get$noPasswordRecoveryDescription() {
-      return "Oraindik ez duzu pasahitza berreskuratzeko modurik gehitu.";
+      return "Et ole viel\xe4 lis\xe4nnyt tapaa salasanasi palauttamiseksi.";
     },
     get$noPermission() {
-      return "Baimenik gabe";
+      return "Ei lupaa";
     },
     get$noRoomsFound() {
-      return "Ez da gelarik aurkitu\u2026";
+      return "Huoneita ei l\xf6ytynyt\u2026";
     },
     get$notifications() {
-      return "Jakinarazpenak";
+      return "Ilmoitukset";
     },
     get$obtainingLocation() {
-      return "Kokapena atzitzen\u2026";
+      return "Paikannetaan sijantia\u2026";
     },
     get$offensive() {
-      return "Iraingarria";
+      return "Loukkaava";
     },
     get$ok() {
-      return "Ados";
+      return "ok";
     },
     get$oopsSomethingWentWrong() {
-      return "Hara, zerbaitek huts egin du\u2026";
+      return "Hups, jotakin meni pieleen\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Zure gailuetako batek saioa amaitu du";
+      return "Yksi tunnuksistasi on kirjattu ulos";
     },
     get$openInMaps() {
-      return "Ireki mapen aplikazioan";
+      return "Avaa kartoissa";
     },
     get$link() {
-      return "Esteka";
+      return "Linkki";
     },
     get$serverRequiresEmail() {
-      return "Zerbitzari honek zure posta elektronikoa egiaztatu behar du izena eman dezazun.";
+      return "T\xe4m\xe4n palvelimen t\xe4ytyy tarkistaa s\xe4hk\xf6posti-osoitteesi rekister\xf6itymist\xe4 varten.";
     },
     get$participant() {
-      return "Partaide";
+      return "Osallistuja";
     },
     get$passphraseOrKey() {
-      return "pasaesaldia edo berreskuratze-gakoa";
+      return "salalause tai palautusavain";
     },
     get$password(_) {
-      return "Pasahitza";
+      return "Salasana";
     },
     get$passwordForgotten() {
-      return "Pasahitza ahaztu dut";
+      return "Salasana unohtunut";
     },
     get$passwordHasBeenChanged() {
-      return "Pasahitza aldatu da";
+      return "Salasana on vaihdettu";
     },
     get$overview() {
-      return "Ikuspegi orokorra";
+      return "Yleiskatsaus";
     },
     get$passwordRecoverySettings() {
-      return "Pasahitza berreskuratzeko ezarpenak";
+      return "Salasanan palautusasetukset";
     },
     get$passwordRecovery() {
-      return "Pasahitzaren berreskurapena";
+      return "Salasanan palautus";
     },
     get$pickImage() {
-      return "Aukeratu irudi bat";
+      return "Valitse kuva";
     },
     get$pin() {
-      return "Finkatu";
+      return "Kiinnit\xe4";
     },
     get$pleaseChoose() {
-      return "Aukeratu";
+      return "Valitse";
     },
     get$pleaseEnterYourPassword() {
-      return "Sartu zure pasahitza";
+      return "Sy\xf6t\xe4 salasanasi";
     },
     get$pleaseEnterYourPin() {
-      return "Sartu zure PINa";
+      return "Sy\xf6t\xe4 PIN-koodisi";
     },
     get$pleaseEnterYourUsername() {
-      return "Sartu zure erabiltzaile-izena";
+      return "Sy\xf6t\xe4 k\xe4ytt\xe4j\xe4tunnuksesi";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Jarraitu webguneko argibideak eta sakatu 'Hurrengoa'.";
+      return "Seuraa ohjeita verkkosivulla ja paina seuraava.";
     },
     get$privacy() {
-      return "Pribatutasuna";
+      return "Yksityisyys";
     },
     get$reason(_) {
-      return "Arrazoia";
+      return "Syy";
     },
     redactedBy$1(username) {
-      return username + "(e)k atzera bota du";
+      return "Poistanut " + username;
     },
     get$directChat() {
-      return "Banakako txata";
+      return "Yksityiskeskustelu";
     },
     redactedByBecause$2(username, reason) {
-      return username + '(e)k atzera bota du "' + reason + '" dela-eta';
+      return "Poistanut " + username + ' syyst\xe4: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + "(e)k gertaera bat atzera bota du";
+      return username + " poisti tapahtuman";
     },
     get$redactMessage() {
-      return "Bota mezua atzera";
+      return "Poista viesti";
     },
     get$reject() {
-      return "Baztertu";
+      return "Hylk\xe4\xe4";
     },
     rejectedTheInvitation$1(username) {
-      return username + "(e)k gonbidapena baztertu du";
+      return username + " hylk\xe4si kutsun";
     },
     get$removeAllOtherDevices() {
-      return "Kendu gainerako gailu guztiak";
+      return "Poista kaikki muut laitteet";
     },
     get$unbanFromChat() {
-      return "Kendu txatean duen debekua";
+      return "Poista porttikielto keskusteluun";
     },
     get$removeYourAvatar() {
-      return "Kendu zure abatarra";
+      return "Poista profiilikuvasi";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Ordezkatu gela bertsio berriago batekin";
+      return "Korvaa huone uudemmalla versiolla";
     },
     get$reply(_) {
-      return "Erantzun";
+      return "Vastaa";
     },
     get$reportMessage() {
-      return "Salatu mezua";
+      return "Ilmoita viesti";
     },
     get$roomHasBeenUpgraded() {
-      return "Gela bertsio-berritu da";
+      return "Huone on p\xe4ivitetty";
     },
     get$search(_) {
-      return "Bilatu";
+      return "Hae";
     },
     get$security() {
-      return "Segurtasuna";
+      return "Turvallisuus";
     },
     get$send(_) {
-      return "Bidali";
+      return "L\xe4het\xe4";
     },
     get$sendAMessage() {
-      return "Bidali mezua";
+      return "L\xe4het\xe4 viesti";
     },
     get$sendAudio() {
-      return "Bidali audioa";
+      return "L\xe4het\xe4 \xe4\xe4niviesti";
     },
     get$sendFile() {
-      return "Bidali fitxategia";
+      return "L\xe4het\xe4 tiedosto";
     },
     get$sendImage() {
-      return "Bidali irudia";
+      return "L\xe4het\xe4 kuva";
     },
     sendImages$1(count) {
-      return "Bidali " + count + " irudi";
+      return "L\xe4het\xe4 " + count + " kuva";
     },
     get$sendMessages() {
-      return "Mezuak bidali";
+      return "L\xe4het\xe4 viestej\xe4";
     },
     get$sendVideo() {
-      return "Bidali bideoa";
+      return "L\xe4het\xe4 video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + "(e)k fitxategia bidali du";
+      return "\ud83d\udcc1 " + username + " l\xe4hetti tiedoston";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + "(e)k audioa bidali du";
+      return "\ud83c\udfa4 " + username + " l\xe4hetti \xe4\xe4niviestin";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + "(e)k irudia bidali du";
+      return "\ud83d\uddbc\ufe0f " + username + " l\xe4hetti kuvan";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + "(e)k pegatina bidali du";
+      return "\ud83d\ude0a " + username + " l\xe4hetti tarran";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + "(e)k bideoa bidali du";
+      return "\ud83c\udfa5 " + username + " l\xe4hetti videon";
     },
     sentCallInformations$1(senderName) {
-      return senderName + "(e)k deiaren informazioa bidali du";
+      return senderName + " l\xe4hetti puhelutiedot";
     },
     get$separateChatTypes() {
-      return "Bereizi banakako mezuak eta taldeak";
+      return "Erota yksityiskeskustelut ryhmist\xe4";
     },
     get$setChatDescription() {
-      return "Ezarri txataren deskribapena";
+      return "Asetti keskustelun kuvauksen";
     },
     get$setStatus() {
-      return "Ezarri egoera";
+      return "Aseta tila";
     },
     get$settings() {
-      return "Ezarpenak";
+      return "Asetukset";
     },
     get$share(_) {
-      return "Partekatu";
+      return "Jaa";
     },
     sharedTheLocation$1(username) {
-      return username + "(e)k kokapena partekatu du";
+      return username + " jakoi sijaintinsa";
     },
     get$shareLocation() {
-      return "Partekatu kokapena";
+      return "Jaa sijainti";
     },
     get$presencesToggle() {
-      return "Erakutsi beste erabiltzaileen egoera-mezuak";
+      return "N\xe4yt\xe4 muiden k\xe4ytt\xe4jien tilaviestit";
     },
     get$skip(_) {
-      return "Saltatu";
+      return "Ohita";
     },
     get$sourceCode() {
-      return "Iturburu kodea";
+      return "L\xe4hdekoodi";
     },
     startedACall$1(senderName) {
-      return senderName + "(e)k deia hasi du";
+      return senderName + " aloitti puhelun";
     },
     get$status(_) {
-      return "Egoera";
+      return "Tila";
     },
     get$statusExampleMessage() {
-      return "Zer moduz zaude gaur?";
+      return "Millainen on vointisi?";
     },
     get$submit(_) {
-      return "Bidali";
+      return "L\xe4het\xe4";
     },
     get$synchronizingPleaseWait() {
-      return "Sinkronizatzen\u2026 itxaron.";
+      return "Synkronoidaan... Hetkinen.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Sinkronizatzen\u2026 (%" + percentage + ")";
+      return " Synkronoidaan\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistemak darabilena";
+      return "J\xe4rjestelm\xe4";
     },
     get$theyDontMatch() {
-      return "Ez datoz bat";
+      return "Ne eiv\xe4t t\xe4sm\xe4\xe4";
     },
     get$theyMatch() {
-      return "Bat datoz";
+      return "Ne t\xe4sm\xe4\xe4v\xe4t";
     },
     get$tooManyRequestsWarning() {
-      return "Eskaera gehiegi. Saiatu berriro geroago!";
+      return "Liikaa pyynt\xf6j\xe4. Yrit\xe4 my\xf6hemmin uudelleen!";
     },
     get$tryToSendAgain() {
-      return "Saiatu berriro bidaltzen";
+      return "Yrit\xe4 uudelleenl\xe4hett\xe4mist\xe4";
     },
     get$unavailable() {
-      return "Ez dago eskuragai";
+      return "Ei saatavilla";
     },
     unbannedUser$2(username, targetName) {
-      return username + "(e)k " + targetName + "(r)i debekua kendu dio";
+      return username + " poisti k\xe4ytt\xe4j\xe4n " + targetName + " porttikiellon";
     },
     get$unblockDevice() {
-      return "Desblokeatu gailua";
+      return "Poista laitteen esto";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Zifratze-algoritmo ezezaguna";
+      return "Tuntematon salausalgoritmi";
     },
     unknownEvent$1(type) {
-      return "'" + type + "' gertaera ezezaguna";
+      return "Tuntematon tapahtuma '" + type + "'";
     },
     get$unpin() {
-      return "Utzi finkatzeari";
+      return "Poista kiinnitys";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " eta beste " + count + " idazten ari dira\u2026";
+      return username + " ja " + count + " muuta kirjoittavat\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " eta " + username2 + " idazten ari dira\u2026";
+      return username + " ja " + username2 + " kirjoittavat\u2026";
     },
     userIsTyping$1(username) {
-      return username + " idazten ari da\u2026";
+      return username + " kirjoittaa\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + "(e)k txata utzi du";
+      return "\ud83d\udeaa " + username + " poistui keskustelusta";
     },
     get$username(_) {
-      return "Erabiltzaile-izena";
+      return "K\xe4ytt\xe4j\xe4tunnus";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + "(e)k " + type + " gertaera bat bidali du";
+      return username + " l\xe4hetti " + type + "-tapahtuman";
     },
     get$unverified() {
-      return "Egiaztatu gabe(a)";
+      return "Varmistamaton";
     },
     get$verified() {
-      return "Egiaztatuta";
+      return "Varmistettu";
     },
     get$verifyStart() {
-      return "Abiarazi egiaztaketa";
+      return "Aloita varmennus";
     },
     get$verifySuccess() {
-      return "Ondo egiaztatu duzu!";
+      return "Varmensit onnistuneesti!";
     },
     get$verifyTitle() {
-      return "Beste kontua egiaztatzen";
+      return "Varmistetaan toista tunnusta";
     },
     get$visibleForAllParticipants() {
-      return "Partaide guztientzat ikusgai";
+      return "N\xe4kyy kaikille osallistujille";
     },
     get$visibleForEveryone() {
-      return "Edonorentzat ikusgai";
+      return "N\xe4kyy kaikille";
     },
     get$voiceMessage() {
-      return "Ahozko mezua";
+      return "\xc4\xe4niviesti";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Kideak eskaera onartuko zain\u2026";
+      return "Odotetaan kumppanin varmistavan pyynn\xf6n\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Kideak emojia onartuko zain\u2026";
+      return "Odotetaan kumppanin hyv\xe4ksyv\xe4n emojit\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Kideak zenbakiak onartuko zain\u2026";
+      return "Odotetaan kumppanin hyv\xe4ksyv\xe4n numerot\u2026";
     },
     get$warning() {
-      return "Kontuz!";
+      return "Varoitus!";
     },
     get$weSentYouAnEmail() {
-      return "ePosta bat bidali dizugu";
+      return "L\xe4hetimme sinulle s\xe4hk\xf6postia";
     },
     get$whyDoYouWantToReportThis() {
-      return "Zergatik salatu nahi duzu?";
+      return "Miksi haluat ilmoittaa t\xe4m\xe4n?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Helbide hauekin pasahitza berreskuratu dezakezu.";
+      return "N\xe4ill\xe4 osoitteilla voit palauttaa salasanasi.";
     },
     get$writeAMessage() {
-      return "Idatzi mezua\u2026";
+      return "Kirjoita viesti\u2026";
     },
     get$yes() {
-      return "Bai";
+      return "Kyll\xe4";
     },
     get$you() {
-      return "Zeu";
+      return "Sin\xe4";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Ez duzu txat honetan parte hartzen honezkero";
+      return "Et en\xe4\xe4 osallistu t\xe4h\xe4n keskusteluun";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Txat honetan debekua ezarri dizute";
+      return "Sinulle on annettu porttikielto t\xe4h\xe4n keskusteluun";
     },
     get$yourPublicKey() {
-      return "Zure gako publikoa";
+      return "Julkinen avaimesi";
     },
     get$messageInfo() {
-      return "Mezuaren xehetasunak";
+      return "Viestin tiedot";
     },
     get$time(_) {
-      return "Ordua";
+      return "Aika";
     },
     get$sender() {
-      return "Igorlea";
+      return "L\xe4hett\xe4j\xe4";
     },
     get$openGallery() {
-      return "Ireki bilduma";
+      return "Avaa galleria";
     },
     get$start(_) {
-      return "Hasi";
+      return "Aloita";
     },
     get$markAsRead() {
-      return "Markatu irakurritzat";
+      return "Merkitse luetuksi";
     },
     reactedWith$2(sender, reaction) {
-      return sender + "(e)k " + reaction + "(r)ekin erreakzionatu du";
+      return sender + " reagoi " + reaction;
     },
     get$pinMessage() {
-      return "Finkatu gelan";
+      return "Kiinnit\xe4 huoneeseen";
     },
     get$emojis() {
-      return "Emojiak";
+      return "Hymi\xf6t";
     },
     get$youRejectedTheInvitation() {
-      return "Gonbidapena baztertu duzu";
+      return "Kielt\xe4ydyit kutsusta";
     },
     get$youJoinedTheChat() {
-      return "Txatera batu zara";
+      return "Liityit keskusteluun";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Gonbidapena onartu duzu";
+      return "\ud83d\udc4d Hyv\xe4ksyit kutsun";
     },
     youBannedUser$1(user) {
-      return user + "(r)i debekua ezarri diozu";
+      return "Annoit porttikiellon k\xe4ytt\xe4j\xe4lle " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return user + "(r)i luzatutako gonbidapena baliogabetu duzu";
+      return "Olet perunut kutsun k\xe4ytt\xe4j\xe4lle " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 " + user + "(e)k gonbidatu zaitu";
+      return "\ud83d\udce9 " + user + " kutsui sinut";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 " + user + " gonbidatu duzu";
+      return "\ud83d\udce9 Kutsuit k\xe4ytt\xe4j\xe4n " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e " + user + " kanporatu duzu";
+      return "\ud83d\udc5e Potkit k\xe4ytt\xe4j\xe4n " + user + " keskustelusta";
     },
     youUnbannedUser$1(user) {
-      return user + "(r)i debekua kendu diozu";
+      return "Poistit k\xe4ytt\xe4j\xe4n " + user + " porttikiellon";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + "(e)k baimena eskatu du";
+      return "\ud83d\udeaa " + user + " on koputtanut";
     },
     countFiles$1(count) {
-      return "" + count + " fitxategi";
+      return "" + count + " tiedostoa";
     },
     get$user() {
-      return "Erabiltzailea";
+      return "K\xe4ytt\xe4j\xe4";
     },
     get$custom() {
-      return "Neurrira egindakoa";
+      return "Mukautettu";
     },
     get$noKeyForThisMessage() {
-      return "Mezua gailu honetan saioa hasi baino lehen bidali bazen gertatu daiteke.\n\nBeste aukera bat igorleak zure gailua blokeatu izana da, edo zerbaitek huts egin izana interneteko konexioan.\n\nMezua beste saio batean irakur dezakezu? Hala bada, mezua transferitu dezakezu! Zoaz Ezrpenetara > Gailuak eta baieztatu zure gailuek bata bestea egiaztatu dutela. Gela irekiko duzun hurrengo aldian eta bi saioak aurreko planoan irekita daudenean, gakoak automatikoki partekatuko dira.\n\nEz duzu gakorik galdu nahi saioa amaitu edo gailuak aldatzen dituzunean? Baieztatu ezarpenetan txaten babeskopiak gaituta dituzula.";
+      return "T\xe4m\xe4 voi tapahtua mik\xe4li viesti l\xe4hetettiin ennen sis\xe4\xe4nkirjautumistasi t\xe4lle laitteelle.\n\nOn my\xf6s mahdollista, ett\xe4 l\xe4hett\xe4j\xe4 on est\xe4nyt t\xe4m\xe4n laitteen tai jokin meni pieleen verkkoyhteyden kanssa.\n\nPystytk\xf6 lukemaan viestin toisella istunnolla? Siin\xe4 tapauksessa voit siirt\xe4\xe4 viestin silt\xe4! Mene Asetukset > Laitteet ja varmista, ett\xe4 laitteesi ovat varmistaneet toisensa. Seuraavankerran avatessasi huoneen ja molempien istuntojen ollessa etualalla, avaimet siirret\xe4\xe4n automaattisesti.\n\nHaluatko varmistaa ettet menet\xe4 avaimia uloskirjautuessa tai laitteita vaihtaessa? Varmista avainvarmuuskopion k\xe4yt\xf6ss\xe4olo asetuksista.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Txata hutsik dago (" + oldDisplayName + " zen lehen)";
+      return "Tyhj\xe4 keskustelu (oli " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Ireki txata berriro";
+      return "Avaa keskustelu uudelleen";
     },
     get$noOtherDevicesFound() {
-      return "Ez da beste gailurik aurkitu";
+      return "Muita laitteita ei l\xf6ytynyt";
     },
     fileIsTooBigForServer$1(max) {
-      return "Ezin da bidali! Zerbitzariak gehienez " + max + "-ko eranskinak onartzen ditu.";
+      return "Ei voi l\xe4hett\xe4\xe4! Palvelin tukee liitetiedostoja vain enint\xe4\xe4n " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Joan irakurritako azken mezura";
+      return "Hypp\xe4\xe4 viimeiseen luettuun viestiin";
     },
     get$readUpToHere() {
-      return "Honaino irakurrita";
+      return "Luettu t\xe4h\xe4n asti";
     },
     get$jump() {
-      return "Joan";
+      return "Hypp\xe4\xe4";
     },
     get$openLinkInBrowser() {
-      return "Ireki esteka nabigatzailean";
+      return "Avaa linkki selaimessa";
     },
     get$setColorTheme() {
-      return "Ezarri kolore-gaia:";
+      return "Aseta v\xe4riteema:";
     },
     get$invite() {
-      return "Gonbidatu";
+      return "Kutsu";
     },
     get$invalidInput() {
-      return "Sartu duzunak ez du balio!";
+      return "Virheellinen sy\xf6te!";
     },
     wrongPinEntered$1(seconds) {
-      return "PIN okerra! Saiatu berriro " + seconds + " segundu barru\u2026";
+      return "V\xe4\xe4r\xe4 pin-koodi! Yrit\xe4 uudelleen " + seconds + " sekuntin kuluttua...";
     },
     get$pleaseEnterANumber() {
-      return "Sartu 0 baino zenbaki handiago bat";
+      return "Sy\xf6t\xe4 suurempi luku kuin 0";
     },
     get$removeDevicesDescription() {
-      return "Gailu honetako saioa amaituko da eta ezingo duzu mezurik jaso aurrerantzean.";
+      return "Sinut kirjataan ulos t\xe4st\xe4 laitteesta etk\xe4 en\xe4\xe4 voi vastaanottaa viestej\xe4.";
     },
     get$banUserDescription() {
-      return "Erabiltzailea txatetik kanporatu eta berriro sartzeko debekua ezarriko zaio; ezingo da berriro sartu debekua kendu arte.";
+      return "K\xe4ytt\xe4j\xe4 estet\xe4\xe4n keskustelusta eik\xe4 h\xe4n voi en\xe4\xe4 liitty\xe4 keskusteluun ennen kuin h\xe4net vapautetaan estosta.";
     },
     get$unbanUserDescription() {
-      return "Erabiltzailea txatera berriro sartu ahal izango da berak nahi izanez gero.";
+      return "K\xe4ytt\xe4j\xe4 voi liitty\xe4 keskusteluun uudelleen, jos h\xe4n yritt\xe4\xe4.";
     },
     get$kickUserDescription() {
-      return "Erabiltzailea txatetik kanporatu da baina ez zaio debekua ezarri. Txat publikoen kasuan, edozein momentutan batu daiteke berriro.";
+      return "K\xe4ytt\xe4j\xe4 poistetaan keskustelusta, mutta h\xe4nt\xe4 ei estet\xe4. Julkisissa keskusteluissa k\xe4ytt\xe4j\xe4 voi liitty\xe4 uudelleen milloin tahansa.";
     },
     get$makeAdminDescription() {
-      return "Behin erabiltzaile hau administratzaile eginda, litekeena da desegin ezin izatea zuk dituzun baimenak izango dituelako.";
+      return "Kun teet t\xe4m\xe4n k\xe4ytt\xe4j\xe4n yll\xe4pit\xe4j\xe4ksi, et ehk\xe4 voi peruuttaa t\xe4t\xe4, koska h\xe4nell\xe4 on samat oikeudet kuin sinulla.";
     },
     get$yourGlobalUserIdIs() {
-      return "Zure erabiltzaile-ID orokorra: ";
+      return "Kansainv\xe4linen k\xe4ytt\xe4j\xe4tunnuksesi on: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Zoritxarrez ez da "' + query + '" duen erabiltzailerik aurkitu. Egiaztatu zuzen idatzi duzula.';
+      return 'Valitettavasti k\xe4ytt\xe4j\xe4\xe4 ei l\xf6ytynyt haulla "' + query + '". Tarkista, onko kirjoitusvirhe.';
     },
     get$knocking() {
-      return "Baimena eskatzen";
+      return " Koputtaa";
     },
     get$nothingFound() {
-      return "Ez da ezer aurkitu\u2026";
+      return "Ei mit\xe4\xe4n l\xf6ytynyt...";
     },
     get$groupName() {
-      return "Taldearen izena";
+      return "Ryhm\xe4n nimi";
     },
     get$wrongRecoveryKey() {
-      return "Barka baina ez dirudi berreskuratze-gako zuzena denik.";
+      return "Valitettavasti t\xe4m\xe4 ei n\xe4yt\xe4 oikealta palautusavaimelta.";
     },
     get$startConversation() {
-      return "Hasi elkarrizketa";
+      return "Aloita keskustelu";
     },
     get$commandHint_sendraw() {
-      return "Bidali json gordina";
+      return "L\xe4het\xe4 raakaa jsonia";
     },
     get$leaveEmptyToClearStatus() {
-      return "Utzi hutsik zure egoera garbitzeko.";
+      return "J\xe4t\xe4 tyhj\xe4ksi poistaaksesi tilasi.";
     },
     get$searchForUsers() {
-      return "Bilatu @erabiltzaileak\u2026";
+      return "Etsi k\xe4ytt\xe4ji\xe4 @...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Sartu oraingo pasahitza";
+      return "Sy\xf6t\xe4 nykyinen salasanasi";
     },
     get$newPassword() {
-      return "Pasahitz berria";
+      return "Uusi salasana";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Aukeratu pasahitz sendo bat";
+      return "Valitse vahva salasana";
     },
     get$passwordsDoNotMatch() {
-      return "Pasahitzak ez datoz bat";
+      return "Salasanat eiv\xe4t t\xe4sm\xe4\xe4";
     },
     get$passwordIsWrong() {
-      return "Sartu duzun pasahitza okerra da";
+      return "Sy\xf6tt\xe4m\xe4si salasana on v\xe4\xe4r\xe4";
     },
     get$decline() {
-      return "Baztertu";
+      return "Hylk\xe4\xe4";
     },
     get$thisDevice() {
-      return "Gailu hau:";
+      return "T\xe4m\xe4 laite:";
     },
     get$initAppError() {
-      return "Errorea aplikazioa abiaraztean";
+      return "Sovelluksen alustuksessa tapahtui virhe";
     },
     searchIn$1(chat) {
-      return "Bilatu " + chat + " txatean...";
+      return 'Etsi keskustelusta "' + chat + '"...';
     },
     get$searchMore() {
-      return "Bilatu gehiago...";
+      return "Etsi lis\xe4\xe4...";
     },
     get$gallery() {
-      return "Galeria";
+      return "Galleria";
     },
     get$files(_) {
-      return "Fitxategiak";
+      return "Tiedostot";
     },
     sessionLostBody$2(url, error) {
-      return "Zure saioa galdu da. Jakinarazi errorea garatzaileei " + url + string$._helbi + error;
+      return "Istuntosi on kadonnut. Ilmoita t\xe4st\xe4 virheest\xe4 kehitt\xe4jille osoitteessa " + url + ". Virheilmoitus on: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Aplikazioa babeskopia erabiliz saioa leheneratzen saiatuko da. Jakinarazi errorea garatzaileei " + url + string$._helbi + error;
+      return "Sovellus yritt\xe4\xe4 nyt palauttaa istuntosi varmuuskopiosta. Ilmoita t\xe4st\xe4 virheest\xe4 kehitt\xe4jille osoitteessa " + url + ". Virheilmoitus on: " + error;
     },
     get$sendReadReceipts() {
-      return "Bidali irakurri izanaren agiria";
+      return "L\xe4het\xe4 lukutodistukset";
     },
     get$sendTypingNotificationsDescription() {
-      return "Txateko beste partaideek mezu berri bat idazten ari zarela ikus dezakete.";
+      return "Muut osallistujat keskustelussa n\xe4kev\xe4t, kun kirjoitat uutta viesti\xe4.";
     },
     get$sendReadReceiptsDescription() {
-      return "Txateko beste partaideek mezu bat irakurri duzula ikus dezakete.";
+      return "Muut osallistujat keskustelussa n\xe4kev\xe4t, kun olet lukenut viestin.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Egiaztatu beste gailu bat";
+      return "\ud83d\udd04 Vahvista toinen laite";
     },
     get$verifyOtherDeviceDescription() {
-      return "Beste gailu bat egiaztatzean, gailu horiek gakoak truka ditzakete, eta segurtasun orokorra handitu. \ud83d\udcaa Egiaztapena hasten duzunean, laster-leiho bat agertuko da bi gailuetan. Bertan, elkarrekin alderatu behar diren emoji edo zenbaki batzuk ikusiko dituzu. Hobe da bi gailuak eskura izatea egiaztapena hasi aurretik. \ud83e\udd33";
+      return "Kun vahvistat toisen laitteen, n\xe4m\xe4 laitteet voivat vaihtaa avaimia, mik\xe4 lis\xe4\xe4 kokonaisturvallisuuttasi. \ud83d\udcaa Kun aloitat vahvistuksen, sovelluksessa molemmissa laitteissa ilmestyy ponnahdusikkuna. Siin\xe4 n\xe4et sarjan emojeja tai numeroita, jotka sinun tulee verrata toisiinsa. On parasta olla molemmat laitteet k\xe4sill\xe4 ennen vahvistuksen aloittamista. \ud83e\udd13";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + "(e)k gakoaren egiaztapena onartu du";
+      return sender + " hyv\xe4ksyi avaintarkistuksen";
     },
     canceledKeyVerification$1(sender) {
-      return sender + "(e)k gakoen egiaztapena ezeztatu du";
+      return sender + " peruutti avaintarkistuksen";
     },
     completedKeyVerification$1(sender) {
-      return sender + "(e)k gakoen egiaztapena osatu du";
+      return sender + " suoritti avaintarkistuksen";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " gakoak egiaztatzeko prest dago";
+      return sender + " on valmis avaintarkistukseen";
     },
     requestedKeyVerification$1(sender) {
-      return sender + "(e)k gakoen egiaztapena galdegin du";
+      return sender + " pyysi avaintarkistusta";
     },
     startedKeyVerification$1(sender) {
-      return sender + "(e)k gakoen egiaztapena hasi du";
+      return sender + " aloitti avaintarkistuksen";
     },
     get$commandHint_ignore() {
-      return "Muzin egin Matrix ID honi";
+      return "Ohita annettu matriisikoodi";
     },
     get$commandHint_unignore() {
-      return "Utzi Matrix ID honi muzin egiteari";
+      return "Poista ohitus annettua matriisikoodia";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Une honetan " + count + " erabiltzaile daude blokeatuta.";
+      return "T\xe4ll\xe4 hetkell\xe4 on " + count + " estetty\xe4 k\xe4ytt\xe4j\xe4\xe4.";
     },
     get$restricted() {
-      return "Mugatuta";
+      return "Rajoitettu";
     },
     get$markAsUnread() {
-      return "Markatu irakurri gabetzat";
+      return "Merkitse lukemattomaksi";
     },
     userLevel$1(level) {
-      return "" + level + " - Erabiltzailea";
+      return "" + level + " - K\xe4ytt\xe4j\xe4";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderatzailea";
+      return "" + level + " - Moderaattori";
     },
     adminLevel$1(level) {
-      return "" + level + " - Administratzailea";
+      return "" + level + " - Yll\xe4pit\xe4j\xe4";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Aldatu txataren historiaren ikusgaitasuna";
+      return "Vaihda keskusteluhistorian n\xe4kyvyytt\xe4";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Aldatu txataren helbide publiko nagusia";
+      return "Vaihda p\xe4\xe4asiallinen julkinen keskustelun osoite";
     },
     get$sendRoomNotifications() {
-      return "Bidali @gela jakinarazpena";
+      return "L\xe4het\xe4 @huone ilmoituksia";
     },
     get$chatPermissionsDescription() {
-      return "Definitu zer botere-maila behar den txat honetako ekintza jakinetarako. 0, 50 eta 100 botere-mailek erabiltzaileak, moderatzaileak eta administratzaileak ordezkatzen dituzte, baina edozein graduazio posible da.";
+      return "M\xe4\xe4rit\xe4, mik\xe4 valtuustaso tarvitaan tiettyihin toimintoihin t\xe4ss\xe4 keskustelussa. Valtuustasot 0, 50 ja 100 yleens\xe4 edustavat k\xe4ytt\xe4ji\xe4, moderaattoreita ja yll\xe4pit\xe4ji\xe4, mutta kaikki asteet ovat mahdollisia.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 " + version + " bertsioa instalatu da!";
+      return "\ud83c\udf89 P\xe4ivitys " + version + " asennettu!";
     },
     get$sendCanceled() {
-      return "Bidalketa bertan behera utzi da";
+      return "L\xe4hetys peruutettu";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Ez dirudi zerbitzaria bateragarria denik. Zuzena da URLa?";
+      return "Ei vaikuta olevan yhteensopiva kotipalvelin. V\xe4\xe4r\xe4 URL?";
     },
     get$calculatingFileSize() {
-      return "Fitxategiaren tamaina kalkulatzen\u2026";
+      return "Lasketaan tiedoston kokoa...";
     },
     get$prepareSendingAttachment() {
-      return "Eranskinaren bidalketa prestatzen\u2026";
+      return "Valmistellaan liitteen l\xe4hett\xe4mist\xe4...";
     },
     get$sendingAttachment() {
-      return "Eranskina bidaltzen\u2026";
+      return "L\xe4hetet\xe4\xe4n liitett\xe4...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "" + index + ". eranskina bidaltzen (" + $length + " guztira)\u2026";
+      return "L\xe4hetet\xe4\xe4n liitett\xe4 " + index + " / " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Zerbitzariaren muga gainditu da! Itxaron " + seconds + " segundo\u2026";
+      return "Palvelimen raja saavutettu! Odotetaan " + seconds + " sekuntia...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Oharra: gailu guztiak txat-babeskopiarekin konektatzen dituzunean, automatikoki egiaztatzen dira.";
+      return "Huomautus: Kun yhdist\xe4t kaikki laitteesi chat-varmistukseen, ne vahvistetaan automaattisesti.";
     },
     get$continueText() {
-      return "Jarraitu";
+      return "Jatka";
     },
     get$blur(_) {
-      return "Lausotu:";
+      return "Sumenna:";
     },
     get$opacity(_) {
-      return "Opakutasuna:";
+      return "L\xe4pin\xe4kyvyys:";
     },
     get$setWallpaper() {
-      return "Ezarri horma-irudia";
+      return "Aseta taustakuva";
     },
     get$noContactInformationProvided() {
-      return "Zerbitzariak ez du harremanetarako informaziorik zehaztu";
+      return "Palvelin ei tarjoa mit\xe4\xe4n kelvollista yhteystietoa";
     },
     get$contactServerAdmin() {
-      return "Jarri harremanetan zerbitzariaren administratzailearekin";
+      return "Ota yhteytt\xe4 palvelimen yll\xe4pit\xe4j\xe4\xe4n";
     },
     get$contactServerSecurity() {
-      return "Jakinarazi segurtasun arazo bat";
+      return "Ota yhteytt\xe4 palvelimen turvallisuuteen";
     },
     get$supportPage() {
-      return "Laguntza orria";
+      return "Tukisivu";
     },
     get$serverInformation() {
-      return "Zerbitzariaren informazioa:";
+      return "Palvelimen tiedot:";
     },
     get$name(_) {
-      return "Izena";
+      return "Nimi";
     },
     get$version(_) {
-      return "Bertsioa";
+      return "Versio";
     },
     get$compress() {
-      return "Konprimatu";
+      return "Pakkaa";
     },
     get$boldText() {
-      return "Testu lodia";
+      return "Lihavoitu teksti";
     },
     get$italicText() {
-      return "Testu etzana";
+      return "Kursivoitu teksti";
     },
     get$strikeThrough() {
-      return "Zirrimarra";
+      return "Yliviivaus";
     },
     get$pleaseFillOut() {
-      return "Bete ezazu";
+      return "T\xe4yt\xe4th\xe4n";
     },
     get$invalidUrl() {
-      return "URL baliogabea";
+      return "Virheellinen URL";
     },
     get$addLink() {
-      return "Gehitu esteka";
+      return "Lis\xe4\xe4 linkki";
     },
     get$unableToJoinChat() {
-      return "Ezin da txatera batu. Agian besteak elkarrizketa itxiko zuen honezkero.";
+      return "Ei voida liitty\xe4 keskusteluun. Ehk\xe4 toinen osapuoli on jo sulkenut keskustelun.";
     },
     get$previous() {
-      return "Aurrekoa";
+      return "Edellinen";
     },
     get$otherPartyNotLoggedIn() {
-      return "Besteak ez du saiorik hasita eta, beraz, ezin du mezurik jaso!";
+      return "Toinen osapuoli ei ole t\xe4ll\xe4 hetkell\xe4 kirjautuneena sis\xe4\xe4n, joten h\xe4n ei voi vastaanottaa viestej\xe4!";
     },
     get$open(_) {
-      return "Ireki";
+      return "Avaa";
     },
     get$waitingForServer() {
-      return "Zerbitzariaren zain\u2026";
+      return "Odotetaan palvelinta...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Txat-eskaera berria";
+      return "\ud83d\udce9 Uusi keskustelupyynt\xf6";
     },
     get$contentNotificationSettings() {
-      return "Edukiaren jakinarazpenen ezarpenak";
+      return "Sis\xe4lt\xf6ilmoitusasetukset";
     },
     get$generalNotificationSettings() {
-      return "Jakinarazpen orokorren ezarpenak";
+      return "Yleiset ilmoitusasetukset";
     },
     get$roomNotificationSettings() {
-      return "Gelen jakinarazpenen ezarpenak";
+      return "Huoneen ilmoitusasetukset";
     },
     get$userSpecificNotificationSettings() {
-      return "Erabiltzaile zehatzen jakinarazpenen ezarpenak";
+      return "K\xe4ytt\xe4j\xe4kohtaiset ilmoitusasetukset";
     },
     get$otherNotificationSettings() {
-      return "Beste jakinarazpenen ezarpenak";
+      return "Muut ilmoitusasetukset";
     },
     get$notificationRuleContainsUserName() {
-      return "Erabiltzaile-izena dauka";
+      return "Sis\xe4lt\xe4\xe4 k\xe4ytt\xe4j\xe4nimen";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Mezuan erabiltzaile-izena aipatzen denean jakinarazten du.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun viesti sis\xe4lt\xe4\xe4 heid\xe4n k\xe4ytt\xe4j\xe4nimens\xe4.";
     },
     get$notificationRuleMaster() {
-      return "Isilarazi jakinarazpen guztiak";
+      return "Mykist\xe4 kaikki ilmoitukset";
     },
     get$notificationRuleMasterDescription() {
-      return "Gainerako arauak gainidatzi eta jakinarazpenak ezgaitzen ditu.";
+      return "Ohittaa kaikki muut s\xe4\xe4nn\xf6t ja poistaa kaikki ilmoitukset k\xe4yt\xf6st\xe4.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Ezkutatu mezu automatikoak";
+      return "Piilota automaattiset viestit";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "BOTen eta bestelako bezero automatikoen jakinarazpenak ezkutatzen ditu.";
+      return "Piilottaa ilmoitukset automatisoiduilta asiakkailta kuten boteilta.";
     },
     get$notificationRuleInviteForMe() {
-      return "Gonbidapena niretzat";
+      return "Kutsu minulle";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Erabiltzailea gela batera gonbidatzen dutenean jakinarazten du.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun h\xe4nelle l\xe4hetet\xe4\xe4n kutsu huoneeseen.";
     },
     get$notificationRuleMemberEvent() {
-      return "Kideen gertaera";
+      return "J\xe4senen tapahtuma";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Kideen gertaeren jakinarazpenak ezkutatzen ditu.";
+      return "Piilottaa ilmoitukset j\xe4senyyteen liittyvist\xe4 tapahtumista.";
     },
     get$notificationRuleIsUserMention() {
-      return "Erabiltzailea aipatzea";
+      return "K\xe4ytt\xe4j\xe4n maininta";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Erabiltzailea mezu zuzen batean aipatzen dutenean jakinarazten du.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun h\xe4net mainitaan suoraan viestiss\xe4.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Pantaila-izena dauka";
+      return "Sis\xe4lt\xe4\xe4 n\xe4ytt\xf6nimen";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Mezu batek erabiltzailearen pantaila-izena duenean jakinarazten du.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun viesti sis\xe4lt\xe4\xe4 h\xe4nen n\xe4ytt\xf6nimens\xe4.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Gelaren aipamena";
+      return "Huoneen maininta";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Gela aipatzen denean erabiltzailea jakinarazten du.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun huone mainitaan.";
     },
     get$notificationRuleRoomnotif() {
-      return "Gelaren jakinarazpena";
+      return "Huoneen ilmoitus";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Mezu batek '@room' duenean erabiltzaileari jakinarazten dio.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun viestiss\xe4 on '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Hilarria";
+      return "Kivijalka";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Gela desaktibatzeko mezuei buruz jakinarazten dio erabiltzaileari.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle huoneen deaktivaatioviesteist\xe4.";
     },
     get$notificationRuleReaction() {
-      return "Erreakzioa";
+      return "Reaktio";
     },
     get$notificationRuleReactionDescription() {
-      return "Erreakzioen jakinarazpenak ezkutatzen ditu.";
+      return "Poistaa ilmoitukset reaktioista.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Gelaren zerbitzariaren ACLa";
+      return "Huoneen palvelimen ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Gela-zerbitzarirako sarbide-kontroleko zerrenden (ACL) jakinarazpenak ezkutatzen ditu.";
+      return "Poistaa ilmoitukset huoneen palvelimen k\xe4ytt\xf6oikeuslistoista (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Ezkutatu edizioak";
+      return "Poista muokkaukset";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Editatutako mezuen jakinarazpenak ezkutatzen ditu.";
+      return "Poistaa ilmoitukset muokatuista viesteist\xe4.";
     },
     get$notificationRuleCall() {
-      return "Deia";
+      return "Puhelu";
     },
     get$notificationRuleCallDescription() {
-      return "Erabiltzaileari deiei buruz jakinarazten dio.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle puheluista.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Zifratutako bien arteko gela";
+      return "Salattu huone yksi vastaan yksi";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Erabiltzailea jakinarazten du zifratutako bien arteko geletako mezuei buruz.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle salatuista yksi vastaan yksi -huoneiden viesteist\xe4.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Bien arteko gela";
+      return "Huone yksi vastaan yksi";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Erabiltzailea jakinarazten du bien arteko geletako mezuei buruz.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle viesteist\xe4 yksi vastaan yksi -huoneissa.";
     },
     get$notificationRuleMessage() {
-      return "Mezua";
+      return "Viestit";
     },
     get$notificationRuleMessageDescription() {
-      return "Erabiltzailea jakinarazten du mezu orokorrei buruz.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle yleisist\xe4 viesteist\xe4.";
     },
     get$notificationRuleEncrypted() {
-      return "Zifratuak";
+      return "Salattu";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Erabiltzailea jakinarazten du zifratutako geletako mezuei buruz.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle viesteist\xe4 salatuissa huoneissa.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Erabiltzailea jakinarazten du Jitsi widgetaren gertaerei buruz.";
+      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle Jitsi-widget-tapahtumista.";
     },
     get$notificationRuleServerAcl() {
-      return "Ezkutatu zerbitzariaren ACL gertaerak";
+      return "Poista palvelimen ACL-tapahtumat k\xe4yt\xf6st\xe4";
     },
     get$notificationRuleServerAclDescription() {
-      return "Zerbitzariaren ACL gertaerak ezkutatzen ditu.";
+      return "Poistaa ilmoitukset palvelimen ACL-tapahtumista.";
     },
     unknownPushRule$1(rule) {
-      return "Push arau ezezaguna '" + rule + "'";
+      return "Tuntematon push-s\xe4\xe4nt\xf6 '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - \xc4\xe4niviesti l\xe4hett\xe4j\xe4lt\xe4 " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Jakinarazpen ezarpen hau ezabatzen baduzu, ezin da desegin.";
+      return "Jos poistat t\xe4m\xe4n ilmoitusasetuksen, sit\xe4 ei voi peruuttaa.";
     },
     get$more() {
-      return "Gehiago";
+      return "Lis\xe4\xe4";
     },
     get$shareKeysWith() {
-      return "Partekatu gakoak\u2026";
+      return "Jaa avaimet...";
     },
     get$shareKeysWithDescription() {
-      return "Zein gailu hartu beharko litzateke fidagarritzat zifratutako txaten mezuak irakur ditzaten?";
+      return "Luotetaanko laitteisiin, jotta ne voivat lukea viestisi salatuissa keskusteluissa?";
     },
     get$allDevices() {
-      return "Gailu guztiekin";
+      return "Kaikki laitteet";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Egiaztapen gurutzatuko gailuekin, gaituta badaude";
+      return "Ristiinvarmistetut laitteet, jos k\xe4yt\xf6ss\xe4";
     },
     get$crossVerifiedDevices() {
-      return "Egiaztapen gurutzatuko gailuekin";
+      return "Ristiinvarmistetut laitteet";
     },
     get$verifiedDevicesOnly() {
-      return "Egiaztatutako gailuekin soilik";
+      return "Vain varmennetut laitteet";
     },
     get$optionalMessage() {
-      return "Mezua (aukerakoa)\u2026";
+      return "(Valinnainen) viesti...";
     },
     get$notSupportedOnThisDevice() {
-      return "Ez da gailu honekin bateragarria";
+      return "Ei tuettu t\xe4ll\xe4 laitteella";
     },
     get$enterNewChat() {
-      return "Sartu txat berrira";
+      return "Aloita uusi keskustelu";
     },
     get$approve() {
-      return "Onetsi";
+      return "Hyv\xe4ksy";
     },
     get$commandHint_logout() {
-      return "Saioa itxi zure gailu honetan";
+      return "Kirjaudu ulos nykyisest\xe4 laitteestasi";
     },
     get$commandHint_logoutall() {
-      return "Saioa itxi gailu aktibo guztietan";
+      return "Kirjaudu ulos kaikista aktiivisista laitteista";
     },
     get$customReaction() {
-      return "Erreakzio pertsonalizatua";
+      return "Mukautettu reaktio";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Idatzi " + l1 + " edo " + l2 + "...";
+      return "Kirjoita " + l1 + " tai " + l2 + "...";
     },
     get$holdForInfo() {
-      return "Klikatu eta eutsi hitzaren informazioarentzat.";
+      return "Pid\xe4 painettuna sanan tiedoista.";
     },
     get$greenFeedback() {
-      return "Horrela jarriko nuke!";
+      return "Se on mit\xe4 laittaisin!";
     },
     get$yellowFeedback() {
-      return "Hm, saiatu eta ikusi ea funtzionatzen duen! Hitz hau erabiltzeko, klik berriro.";
+      return "Hm, voit kokeilla sit\xe4 ja katsoa, toimiiko se! K\xe4ytt\xe4\xe4ksesi t\xe4t\xe4 sanaa, klikkaa sit\xe4 uudelleen.";
     },
     get$redFeedback() {
-      return "Ez nago ziur hori denik...";
+      return "En usko, ett\xe4 se on oikein...";
     },
     get$gaTooltip() {
-      return "L2 gramatika laguntzarekin erabiltzeko";
+      return "L2:n k\xe4ytt\xf6 kielioppiavustuksella";
     },
     get$taTooltip() {
-      return "L2 itzulpen laguntzarekin erabiltzeko";
+      return "L2:n k\xe4ytt\xf6 k\xe4\xe4nn\xf6savustuksella";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Interaktiboa Itzultzailea";
+      return "Vuorovaikutteinen k\xe4\xe4nt\xe4j\xe4";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Interaktiboa Gramatika Egiaztatzailea";
+      return "Vuorovaikutteinen kielioppitarkistin";
     },
     get$waTooltip() {
-      return "Laguntzarik gabe erabiltzeko";
+      return "L2 ilman apua";
     },
     get$noIdenticalLanguages() {
-      return "Mesedez, aukeratu hizkuntza oinarria eta helburua desberdinak izan daitezen";
+      return "Valitse eri perus- ja kohdekielet";
     },
     get$joinWithClassCode() {
-      return "Batu ikastaroan";
+      return "Liity kurssille";
     },
     get$languageLevelPreA1() {
-      return "Hasiberri Baxua (Pre A1)";
+      return "Aloittelija Matala (Pre A1)";
     },
     get$languageLevelA1() {
-      return "Hasiberri Erdi (A1)";
+      return "Aloittelija Keskitaso (A1)";
     },
     get$languageLevelA2() {
-      return "Hasiberri Altua (A2)";
+      return "Aloittelija Korkea (A2)";
     },
     get$languageLevelB1() {
-      return "Ertain Ertaina (B1)";
+      return "Keskitaso Keskiv\xe4li (B1)";
     },
     get$languageLevelB2() {
-      return "Aurreratu Baxua (B2)";
+      return "Korkea Alhainen (B2)";
     },
     get$languageLevelC1() {
-      return "Aurreratu Ertaina (C1)";
+      return "Korkea Keskiv\xe4li (C1)";
     },
     get$languageLevelC2() {
-      return "Goren (C2)";
+      return "Erinomainen (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Aldatu izena";
+      return "Vaihda nimi";
     },
     get$changeTheNameOfTheChat() {
-      return "Aldatu txateatzen denaren izena";
+      return "Vaihda keskustelun nimi";
     },
     get$sorryNoResults() {
-      return "Barkatu, ez dago emaitzarik.";
+      return "Valitettavasti ei tuloksia.";
     },
     get$ignoreInThisText() {
-      return "Ez zaitez kontuan hartu";
+      return "Ohita";
     },
     needsItMessage$1(targetLanguage) {
-      return "Itxaron, hori ez da " + targetLanguage + "! Laguntza behar duzu itzultzen?";
+      return "Odotas, se ei ole " + targetLanguage + "! Tarvitsetko apua k\xe4\xe4nt\xe4misess\xe4?";
     },
     get$countryInformation() {
-      return "Nire herria";
+      return "Kotikuntani";
     },
     get$targetLanguage() {
-      return "Helburu Hizkuntza";
+      return "Kohdekieli";
     },
     get$updateLanguage() {
-      return "Nire hizkuntzak";
+      return "Kieleni";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Zein hizkuntza ikasi nahi duzu?";
+      return "Mit\xe4 kielt\xe4 haluat oppia?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Zein da zure oinarrizko hizkuntza?";
+      return "Mik\xe4 on peruskielesi?";
     },
     get$saveChanges() {
-      return "Gorde aldaketak";
+      return "Tallenna muutokset";
     },
     get$publicProfileTitle() {
-      return "Onartu nire profila bilaketetan agertzeko";
+      return "Salli profiilini l\xf6yty\xe4 haussa";
     },
     get$publicProfileDesc() {
-      return "Gaituta, beste erabiltzaileek zure profila bilaketa globalean aurkitu eta chat eskaerak bidali ahal izango dituzte. Orain, eskaera onartu edo ukatu dezakezu.";
+      return "Kytkem\xe4ll\xe4 p\xe4\xe4lle mahdollistat muiden k\xe4ytt\xe4jien l\xf6yt\xe4v\xe4n profiilisi globaalissa haussa ja l\xe4hett\xe4v\xe4n chat-pyynt\xf6j\xe4. T\xe4ll\xe4 hetkell\xe4 voit hyv\xe4ksy\xe4 tai hyl\xe4t\xe4 pyynn\xf6n.";
     },
     get$errorDisableIT() {
-      return "Itzulpen laguntza desgaituta dago.";
+      return "K\xe4\xe4nn\xf6sohjeita ei ole k\xe4yt\xf6ss\xe4.";
     },
     get$errorDisableIGC() {
-      return "Gramatika laguntza desgaituta dago.";
+      return "Kielioppiohjeita ei ole k\xe4yt\xf6ss\xe4.";
     },
     get$errorDisableLanguageAssistance() {
-      return "Itzulpen laguntza eta gramatika laguntza desgaituta daude.";
+      return "K\xe4\xe4nn\xf6s- ja kielioppiohjeet on sammutettu.";
     },
     get$errorDisableITUserDesc() {
-      return "Klikatu hemen itzulpen laguntza ezarpenak eguneratzeko";
+      return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi k\xe4\xe4nn\xf6sohjeiden asetukset";
     },
     get$errorDisableIGCUserDesc() {
-      return "Klikatu hemen gramatika laguntza ezarpenak eguneratzeko";
+      return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi kielioppiohjeiden asetukset";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klikatu hemen itzulpen laguntza eta gramatika laguntza ezarpenak eguneratzeko";
+      return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi k\xe4\xe4nn\xf6s- ja kielioppiohjeiden asetukset";
     },
     get$errorDisableITClassDesc() {
-      return "Itzulpen laguntza desgaituta dago ikastaro honetan dagoen chat-entzat.";
+      return "K\xe4\xe4nn\xf6sohjeita ei ole k\xe4yt\xf6ss\xe4 t\xe4m\xe4n kurssin chatiss\xe4.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Gramatika laguntza desgaituta dago ikastaro honetan dagoen chat-entzat.";
+      return "Kielenhuollon apu on pois p\xe4\xe4lt\xe4 t\xe4m\xe4n keskustelun kurssille.";
     },
     get$error405Title() {
-      return "Hizkuntzak ez daude ezarrita";
+      return "Kielet eiv\xe4t ole asetettu";
     },
     get$error405Desc() {
-      return "Mesedez, ezarri zure hizkuntzak Nagusien Menuko > Ikaskuntza Ezarpenetan.";
+      return "Aseta kielesi P\xe4\xe4valikosta > Oppimisasetukset.";
     },
     get$termsAndConditions() {
-      return " Baldintzak eta Baldintzak";
+      return "k\xe4ytt\xf6ehdot";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " eta ziurtatzen dut gutxienez 16 urte ditudala.";
+      return " ja vahvistan, ett\xe4 olen v\xe4hint\xe4\xe4n 16-vuotias.";
     },
     get$error502504Title() {
-      return "Wow, ikasle asko daude linean!";
+      return "Vau, verkossa on paljon oppilaita!";
     },
     get$error502504Desc() {
-      return "Itzulpen eta gramatika tresnak motel edo erabilgarri ez egon daitezke Pangea botak eguneratzen direnean.";
+      return "K\xe4\xe4nn\xf6s- ja kielioppity\xf6kalut saattavat olla hitaita tai poissa k\xe4yt\xf6st\xe4, kun Pangea-botit saavat kiinni.";
     },
     get$error404Title() {
-      return "Itzulpen errorea!";
+      return "K\xe4\xe4nn\xf6svirhe!";
     },
     get$error404Desc() {
-      return "Pangea Botak ez du ziur nola itzuli hori...";
+      return "Pangea-botti ei ole varma, miten t\xe4m\xe4 tulisi k\xe4\xe4nt\xe4\xe4...";
     },
     get$errorPleaseRefresh() {
-      return "Begiratzen ari gara! Mesedez, kargatu berriro eta saiatu berriro.";
+      return "Tarkistamme asiaa! Lataa sivu uudelleen ja yrit\xe4 uudelleen.";
     },
     get$connectedToStaging() {
-      return "Konektatuta Staging-era";
+      return "Yhdistetty esikatseluun";
     },
     get$learningSettings() {
-      return "Ikaskuntza ezarpenak";
+      return "Oppimisasetukset";
     },
     get$participants() {
-      return "Parte-hartzaileak";
+      return "Osallistujat";
     },
     get$clickMessageTitle() {
-      return "Laguntza behar duzu?";
+      return "Tarvitsetko apua?";
     },
     get$clickMessageBody() {
-      return "Klikatu mezua hizkuntza tresnak, itzulpenak, erreprodukzioa eta gehiago lortzeko!";
+      return "Klikkaa viesti\xe4 saadaksesi kielity\xf6kaluja kuten k\xe4\xe4nn\xf6s, toisto ja muuta!";
     },
     get$allDone() {
-      return "Bukatu da!";
+      return "Kaikki valmista!";
     },
     get$vocab() {
-      return "Hiztegia";
+      return "Sanasto";
     },
     get$subscribe(_) {
-      return "harpidetu";
+      return "Tilaa";
     },
     get$getAccess() {
-      return "Harpidetu orain!";
+      return "Tilaa nyt!";
     },
     get$subscriptionDesc() {
-      return "Mezularitza doakoa da! Harpidetu elkarreragingo itzulpena, gramatika egiaztapena eta ikasketa analitikak askatzeko.";
+      return "Viestint\xe4 on ilmaista! Tilaa saadaksesi k\xe4ytt\xf6\xf6n vuorovaikutteinen k\xe4\xe4nn\xf6s, kieliopin tarkistus ja oppimisanalyytiikka.";
     },
     get$subscriptionManagement() {
-      return "Harpidetza Kudeaketa";
+      return "Tilauksen hallinta";
     },
     get$currentSubscription() {
-      return "Uneko Harpidetza";
+      return "Nykyinen tilaus";
     },
     get$cancelSubscription() {
-      return "Ezeztatu zure harpidetza";
+      return "Peruuta tilauksesi";
     },
     get$selectYourPlan() {
-      return "Aukeratu Zure Plana";
+      return "Valitse suunnitelmasi";
     },
     get$subsciptionPlatformTooltip() {
-      return "Mesedez, saioa hasi zure gailu originalean zure harpidetza planaren kudeaketa egiteko";
+      return "Kirjaudu alkuper\xe4iseen laitteeseesi hallinnoidaksesi tilaussuunnitelmaasi";
     },
     get$subscriptionManagementUnavailable() {
-      return "Harpidetza kudeaketa ez dago erabilgarri";
+      return "Tilausten hallinta ei ole saatavilla";
     },
     get$paymentMethod() {
-      return "Ordainketa Modua";
+      return "Maksutapa";
     },
     get$paymentHistory() {
-      return "Ordainketa Historia";
+      return "Maksuhistoria";
     },
     get$emptyChatDownloadWarning() {
-      return "Ezin da hutsik dagoen chat-a deskargatu";
+      return "Tyhj\xe4\xe4 keskustelua ei voi ladata";
     },
     get$toggleImmersionMode() {
-      return "Inguraketa Modua";
+      return "Immersiotila";
     },
     get$toggleImmersionModeDesc() {
-      return "Gaituta dagoenean, mezu guztiak zure hizkuntza helburuan erakusten dira. Ezarpen hau erabilgarria da hizkuntza trukeetan.";
+      return "Kun t\xe4m\xe4 on k\xe4yt\xf6ss\xe4, kaikki viestit n\xe4ytet\xe4\xe4n kohdekielell\xe4si. T\xe4m\xe4 asetus on erityisen hy\xf6dyllinen kielivaihdoissa.";
     },
     get$itToggleDescription() {
-      return "Hizkuntza ikaskuntza tresna honek zure hizkuntza oinarrian hitzak identifikatuko ditu eta helburu hizkuntzara itzultzen lagunduko dizu. Nahiz eta oso gutxitan, AI-k akatsak egin ditzake itzulpenetan.";
+      return "T\xe4m\xe4 kielten oppimisty\xf6kalu tunnistaa sanoja peruskielest\xe4si ja auttaa sinua k\xe4\xe4nt\xe4m\xe4\xe4n ne kohdekielelle. Vaikka harvinaista, teko\xe4ly voi tehd\xe4 k\xe4\xe4nn\xf6svirheit\xe4.";
     },
     get$igcToggleDescription() {
-      return "Hizkuntza ikaskuntza tresna honek zure mezua zuzenketa ortografiko, gramatikal eta puntuazio akats arruntak identifikatu eta zuzenketak proposatuko ditu. Nahiz eta oso gutxitan, AI-k akatsak egin ditzake zuzenketetan.";
+      return "T\xe4m\xe4 kielten oppimisty\xf6kalu tunnistaa yleisi\xe4 oikeinkirjoitus-, kielioppi- ja v\xe4limerkkivirheit\xe4 viestiss\xe4si ja ehdottaa korjauksia. Vaikka harvinaista, teko\xe4ly voi tehd\xe4 korjausvirheit\xe4.";
     },
     get$originalMessage() {
-      return "Mezu Originala";
+      return "Alkuper\xe4inen viesti";
     },
     get$sentMessage() {
-      return "Bidalitako Mezua";
+      return "L\xe4hetetty viesti";
     },
     get$useType() {
-      return "Erabiltzeko Mota";
+      return "K\xe4yt\xe4 tyyppi\xe4";
     },
     get$notAvailable() {
-      return "Ez Da Eskuragarri";
+      return "Ei saatavilla";
     },
     get$taAndGaTooltip() {
-      return "L2 erabilera itzulpen laguntzarekin eta gramatika laguntzarekin";
+      return "L2 k\xe4ytt\xf6 k\xe4\xe4nn\xf6savustuksen ja kielioppiavustuksen kanssa";
     },
     get$definitionsToolName() {
-      return "Hitzaren Definizioak";
+      return "Sanojen m\xe4\xe4ritelm\xe4t";
     },
     get$definitionsToolDescription() {
-      return "Gaituta dagoenean, urdinez azpimarratutako hitzak klik egin daitezke definizioak ikusteko. Klik egin mezuei definizioak ikusteko.";
+      return "Kun t\xe4m\xe4 on k\xe4yt\xf6ss\xe4, sininen alleviivatut sanat voidaan klikata m\xe4\xe4ritelmi\xe4 varten. Klikkaa viestej\xe4 saadaksesi m\xe4\xe4ritelm\xe4t.";
     },
     get$welcomeBack() {
-      return "Ongi etorri berriro! 2023-2024ko pilotuaren parte bazina, jarri gurekin harremanetan zure pilotu espezifikoaren harpidetza lortzeko. Zure klasearentzat lizentziak erosi dituen irakaslea bazara (edo zure erakundeak erosi baditu), jarri gurekin harremanetan irakaslearen harpidetza lortzeko.";
+      return "Tervetuloa takaisin! Jos olit osa pilottia vuosina 2023-2024, ota yhteytt\xe4 saadaksesi erityisen pilottitilauksesi. Jos olet opettaja, joka on ostanut (tai oppilaitoksesi on ostanut) lisenssej\xe4 luokkaasi varten, ota yhteytt\xe4 saadaksesi opettajatilauksesi.";
     },
     get$downloadTxtFile() {
-      return "Deskargatu Testu Fitxategia";
+      return "Lataa tekstitiedosto";
     },
     get$downloadCSVFile() {
-      return "Deskargatu CSV Fitxategia";
+      return "Lataa CSV-tiedosto";
     },
     get$promotionalSubscriptionDesc() {
-      return "Une honetan promozio-eskubide bizia duzu. Laguntza lortzeko, mezua bidali support@pangea.chat helbidera zure harpidetza aldatzeko.";
+      return "Sinulla on t\xe4ll\xe4 hetkell\xe4 elinik\xe4inen kampanjatilaus. L\xe4het\xe4 viesti osoitteeseen support@pangea.chat saadaksesi apua tilauksesi muuttamiseen.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Harpidetza " + purchasePlatform + " bidez erosi da";
+      return "Tilauksen ostit " + purchasePlatform + " kautta";
     },
     get$oneWeekTrial() {
-      return "Astebete Probako";
+      return "Yhden viikon kokeilujakso";
     },
     get$downloadXLSXFile() {
-      return "Deskargatu Excel Fitxategia";
+      return "Lataa Excel-tiedosto";
     },
     get$unkDisplayName() {
-      return "Ezezaguna";
+      return "Tuntematon";
     },
     get$wwCountryDisplayName() {
-      return "Munduan zehar";
+      return "Maailmanlaajuinen";
     },
     get$afCountryDisplayName() {
       return "Afganistan";
     },
     get$axCountryDisplayName() {
-      return "Aland uharteak";
+      return "Ahvenanmaa";
     },
     get$alCountryDisplayName() {
       return "Albania";
@@ -1751,7 +1751,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Algeria";
     },
     get$asCountryDisplayName() {
-      return "Amerikar Samoa";
+      return "Amerikan Samoa";
     },
     get$adCountryDisplayName() {
       return "Andorra";
@@ -1763,10 +1763,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "Antigua eta Barbuda";
+      return "Antigua ja Barbuda";
     },
     get$arCountryDisplayName() {
-      return "Argentina";
+      return "Argentiina";
     },
     get$amCountryDisplayName() {
       return "Armenia";
@@ -1775,22 +1775,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "Ascension uhartea";
+      return "Ascensionin saari";
     },
     get$auCountryDisplayName() {
       return "Australia";
     },
     get$atCountryDisplayName() {
-      return "Austria";
+      return "It\xe4valta";
     },
     get$azCountryDisplayName() {
-      return "Azerbaijan";
+      return "Azerbaid\u017ean";
     },
     get$bsCountryDisplayName() {
-      return "Bahamak";
+      return "Bahama";
     },
     get$bhCountryDisplayName() {
-      return "Bahrain";
+      return "Bahrein";
     },
     get$bdCountryDisplayName() {
       return "Bangladesh";
@@ -1799,10 +1799,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "Bielorrusia";
+      return "Valko-Ven\xe4j\xe4";
     },
     get$beCountryDisplayName() {
-      return "Belgika";
+      return "Belgia";
     },
     get$bzCountryDisplayName() {
       return "Belize";
@@ -1820,19 +1820,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "Bosnia eta Herzegovina";
+      return "Bosnia ja Hertsegovina";
     },
     get$bwCountryDisplayName() {
       return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "Brasil";
+      return "Brasilia";
     },
     get$ioCountryDisplayName() {
-      return "Britainia Indiatik Ozeano Lurmuturra";
+      return "Britannian Intian valtameren alue";
     },
     get$vgCountryDisplayName() {
-      return "Britainia Birjina Uharteak";
+      return "Brittil\xe4iset Neitsytsaaret";
     },
     get$bnCountryDisplayName() {
       return "Brunei";
@@ -1847,7 +1847,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "Kambodia";
+      return "Kambod\u017ea";
     },
     get$cmCountryDisplayName() {
       return "Kamerun";
@@ -1856,100 +1856,100 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kanada";
     },
     get$cvCountryDisplayName() {
-      return "Cabo Verde";
+      return "Kap Verde";
     },
     get$bqCountryDisplayName() {
-      return "Karibe Herbehereak";
+      return "Karibian Alankomaat";
     },
     get$kyCountryDisplayName() {
-      return "Caiman Uharteak";
+      return "Caymansaaret";
     },
     get$cfCountryDisplayName() {
-      return "Afrika Erdiko Errepublika";
+      return "Keski-Afrikan tasavalta";
     },
     get$tdCountryDisplayName() {
-      return "Txad";
+      return "T\u0161ad";
     },
     get$clCountryDisplayName() {
-      return "Txile";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "Txina";
+      return "Kiina";
     },
     get$cxCountryDisplayName() {
-      return "Belenen Uhartea";
+      return "Joulusaari";
     },
     get$ccCountryDisplayName() {
-      return "Cocos [Keeling] Uharteak";
+      return "Kookossaaret";
     },
     get$coCountryDisplayName() {
-      return "Kolonbia";
+      return "Kolumbia";
     },
     get$kmCountryDisplayName() {
-      return "Komorak";
+      return "Komorit";
     },
     get$cdCountryDisplayName() {
-      return "Kongoko Demokraziako Errepublika";
+      return "Kongon demokraattinen tasavalta";
     },
     get$cgCountryDisplayName() {
-      return "Kongoko Errepublikak";
+      return "Kongon tasavalta";
     },
     get$ckCountryDisplayName() {
-      return "Cook Uharteak";
+      return "Cookinsaaret";
     },
     get$crCountryDisplayName() {
       return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "Boli Kosta";
+      return "Norsunluurannikko";
     },
     get$hrCountryDisplayName() {
-      return "Kroazia";
+      return "Kroatia";
     },
     get$cuCountryDisplayName() {
-      return "Kuba";
+      return "Kuuba";
     },
     get$cwCountryDisplayName() {
       return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "Zipre";
+      return "Kypros";
     },
     get$czCountryDisplayName() {
-      return "Txekia";
+      return "T\u0161ekin tasavalta";
     },
     get$dkCountryDisplayName() {
-      return "Danimarka";
+      return "Tanska";
     },
     get$djCountryDisplayName() {
       return "Djibouti";
     },
     get$dmCountryDisplayName() {
-      return "Dominika";
+      return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "Dominikar Errepublika";
+      return "Dominikaaninen tasavalta";
     },
     get$tlCountryDisplayName() {
-      return "Ekialdeko Timor";
+      return "It\xe4-Timor";
     },
     get$ecCountryDisplayName() {
-      return "Ekuador";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "Egipto";
+      return "Egypti";
     },
     get$svCountryDisplayName() {
       return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "Ginea Erdialdea";
+      return "P\xe4iv\xe4ntasaajan Guinea";
     },
     get$erCountryDisplayName() {
       return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "Estonia";
+      return "Viro";
     },
     get$szCountryDisplayName() {
       return "Eswatini";
@@ -1958,25 +1958,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Etiopia";
     },
     get$fkCountryDisplayName() {
-      return "Falkland uharteak";
+      return "Falklandinsaaret";
     },
     get$foCountryDisplayName() {
-      return "Faroe uharteak";
+      return "F\xe4rsaaret";
     },
     get$fjCountryDisplayName() {
       return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "Finlandia";
+      return "Suomi";
     },
     get$frCountryDisplayName() {
-      return "Frantzia";
+      return "Ranska";
     },
     get$gfCountryDisplayName() {
-      return "Guyana Frantsesa";
+      return "Ranskan Guayana";
     },
     get$pfCountryDisplayName() {
-      return "Polinesia Frantsesa";
+      return "Ranskan Polynesia";
     },
     get$gaCountryDisplayName() {
       return "Gabon";
@@ -1988,7 +1988,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Georgia";
     },
     get$deCountryDisplayName() {
-      return "Alemania";
+      return "Saksa";
     },
     get$ghCountryDisplayName() {
       return "Ghana";
@@ -1997,16 +1997,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "Grecia";
+      return "Kreikka";
     },
     get$glCountryDisplayName() {
-      return "Groenlandia";
+      return "Gr\xf6nlanti";
     },
     get$gdCountryDisplayName() {
       return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "Guadalupe";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
       return "Guam";
@@ -2030,22 +2030,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "Hear Island eta McDonald Islands";
+      return "Heardin saari ja McDonaldinsaaret";
     },
     get$hnCountryDisplayName() {
       return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "Hong Kong";
+      return "Hongkong";
     },
     get$huCountryDisplayName() {
-      return "Hungaria";
+      return "Unkari";
     },
     get$isCountryDisplayName() {
-      return " Islandia";
+      return "Islanti";
     },
     get$inCountryDisplayName() {
-      return "India";
+      return "Intia";
     },
     get$idCountryDisplayName() {
       return "Indonesia";
@@ -2057,10 +2057,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "Irlanda";
+      return "Irlanti";
     },
     get$imCountryDisplayName() {
-      return "Man uhartea";
+      return "Mansaari";
     },
     get$ilCountryDisplayName() {
       return "Israel";
@@ -2072,7 +2072,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Jamaika";
     },
     get$jpCountryDisplayName() {
-      return "Japonia";
+      return "Japani";
     },
     get$jeCountryDisplayName() {
       return "Jersey";
@@ -2081,10 +2081,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Jordania";
     },
     get$kzCountryDisplayName() {
-      return "Kazakhstan";
+      return "Kazakstan";
     },
     get$keCountryDisplayName() {
-      return "Kenya";
+      return "Kenia";
     },
     get$kiCountryDisplayName() {
       return "Kiribati";
@@ -2096,16 +2096,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kuwait";
     },
     get$kgCountryDisplayName() {
-      return "Kirgizistan";
+      return "Kyrgyzstan";
     },
     get$laCountryDisplayName() {
       return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "Letonia";
+      return "Latvia";
     },
     get$lbCountryDisplayName() {
-      return "Libano";
+      return "Libanon";
     },
     get$lsCountryDisplayName() {
       return "Lesotho";
@@ -2114,34 +2114,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "Libia";
+      return "Libya";
     },
     get$liCountryDisplayName() {
       return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "Lituania";
+      return "Liettua";
     },
     get$luCountryDisplayName() {
-      return "Luxemburgo";
+      return "Luxemburg";
     },
     get$moCountryDisplayName() {
       return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "Macedonia";
+      return "Makedonia";
     },
     get$mgCountryDisplayName() {
-      return "Madagascar";
+      return "Madagaskar";
     },
     get$mwCountryDisplayName() {
       return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "Malasia";
+      return "Malesia";
     },
     get$mvCountryDisplayName() {
-      return "Maldivak";
+      return "Malediivit";
     },
     get$mlCountryDisplayName() {
       return "Mali";
@@ -2150,28 +2150,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "Marshall uharteak";
+      return "Marshallinsaaret";
     },
     get$mqCountryDisplayName() {
-      return "Martinika";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
       return "Mauritania";
     },
     get$muCountryDisplayName() {
-      return "Maurizioa";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "Mexiko";
+      return "Meksiko";
     },
     get$fmCountryDisplayName() {
-      return "Micronesia";
+      return "Mikronesia";
     },
     get$mdCountryDisplayName() {
-      return "Moldavia";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
       return "Monaco";
@@ -2186,13 +2186,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "Maroko";
+      return "Marokko";
     },
     get$mzCountryDisplayName() {
-      return "Mozambike";
+      return "Mosambik";
     },
     get$mmCountryDisplayName() {
-      return "Myanmar (Birmania)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
       return "Namibia";
@@ -2204,19 +2204,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "Herbehereak";
+      return "Alankomaat";
     },
     get$ncCountryDisplayName() {
-      return "Kaledonia Berria";
+      return "Uusi-Kaledonia";
     },
     get$nzCountryDisplayName() {
-      return "Zeelanda Berria";
+      return "Uusi-Seelanti";
     },
     get$niCountryDisplayName() {
-      return "Nikaragua";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "Niger";
+      return "Nigeri";
     },
     get$ngCountryDisplayName() {
       return "Nigeria";
@@ -2225,16 +2225,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "Norfolk uhartea";
+      return "Norfolkin saari";
     },
     get$kpCountryDisplayName() {
-      return "Korea Hegoaldea";
+      return "Pohjois-Korea";
     },
     get$mpCountryDisplayName() {
-      return "Mariana Iparraldeko Uharteak";
+      return "Pohjois-Mariaanit";
     },
     get$noCountryDisplayName() {
-      return "Norvegia";
+      return "Norja";
     },
     get$omCountryDisplayName() {
       return "Oman";
@@ -2246,13 +2246,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Palau";
     },
     get$psCountryDisplayName() {
-      return "Palestinar Lurraldeak";
+      return "Palestiinan alueet";
     },
     get$paCountryDisplayName() {
       return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "Papua Ginea Berria";
+      return "Papua-Uusi-Guinea";
     },
     get$pyCountryDisplayName() {
       return "Paraguay";
@@ -2261,13 +2261,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Peru";
     },
     get$phCountryDisplayName() {
-      return "Filipinak";
+      return "Filippiinit";
     },
     get$plCountryDisplayName() {
-      return "Polonia";
+      return "Puola";
     },
     get$ptCountryDisplayName() {
-      return "Portugal";
+      return "Portugali";
     },
     get$prCountryDisplayName() {
       return "Puerto Rico";
@@ -2279,10 +2279,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "Errumania";
+      return "Romania";
     },
     get$ruCountryDisplayName() {
-      return "Errusia";
+      return "Ven\xe4j\xe4";
     },
     get$rwCountryDisplayName() {
       return "Ruanda";
@@ -2294,19 +2294,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "St. Kitts";
+      return "Saint Kitts";
     },
     get$lcCountryDisplayName() {
-      return "St. Lucia";
+      return "Saint Lucia";
     },
     get$mfCountryDisplayName() {
       return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "Saint Pierre eta Miquelon";
+      return "Saint Pierre ja Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "St. Vincent";
+      return "Saint Vincent";
     },
     get$wsCountryDisplayName() {
       return "Samoa";
@@ -2315,10 +2315,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "S\xe3o Tom\xe9 eta Pr\xedncipe";
+      return "S\xe3o Tom\xe9 ja Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "Saudi Arabia";
+      return "Saudi-Arabia";
     },
     get$snCountryDisplayName() {
       return "Senegal";
@@ -2327,43 +2327,43 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Serbia";
     },
     get$scCountryDisplayName() {
-      return "Seychelles";
+      return "Seychellit";
     },
     get$slCountryDisplayName() {
-      return "Sierra Leona";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "Singapur";
+      return "Singapore";
     },
     get$sxCountryDisplayName() {
       return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "Eslovakia";
+      return "Slovakia";
     },
     get$siCountryDisplayName() {
-      return "Eslovenia";
+      return "Slovenia";
     },
     get$sbCountryDisplayName() {
-      return "Salomon Uharteak";
+      return "Salomonsaaret";
     },
     get$soCountryDisplayName() {
       return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "Hegoafrika";
+      return "Etel\xe4-Afrikka";
     },
     get$gsCountryDisplayName() {
-      return "Hego Georgia eta Hego Sandwich Uharteak";
+      return "Etel\xe4-Georgia ja Etel\xe4iset Sandwichsaaret";
     },
     get$krCountryDisplayName() {
-      return "Hego Korea";
+      return "Etel\xe4-Korea";
     },
     get$ssCountryDisplayName() {
-      return "Hego Sudan";
+      return "Etel\xe4-Sudan";
     },
     get$esCountryDisplayName() {
-      return "Espainia";
+      return "Espanja";
     },
     get$lkCountryDisplayName() {
       return "Sri Lanka";
@@ -2372,31 +2372,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "Surinam";
+      return "Suriname";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard eta Jan Mayen";
+      return "Svalbard ja Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "Suedia";
+      return "Ruotsi";
     },
     get$chCountryDisplayName() {
-      return "Suitza";
+      return "Sveitsi";
     },
     get$syCountryDisplayName() {
-      return "Siria";
+      return "Syria";
     },
     get$twCountryDisplayName() {
       return "Taiwan";
     },
     get$tjCountryDisplayName() {
-      return "Tajikistan";
+      return "Tad\u017eikistan";
     },
     get$tzCountryDisplayName() {
-      return "Tanzania";
+      return "Tansania";
     },
     get$thCountryDisplayName() {
-      return "Thailandia";
+      return "Thaimaa";
     },
     get$tgCountryDisplayName() {
       return "Togo";
@@ -2414,19 +2414,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tunisia";
     },
     get$trCountryDisplayName() {
-      return "Turkia";
+      return "Turkki";
     },
     get$tmCountryDisplayName() {
       return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "Turks eta Caicos uharteak";
+      return "Turks- ja Caicossaarilot";
     },
     get$tvCountryDisplayName() {
       return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "U.S. Virgin Islands";
+      return "Yhdysvaltain Neitsytsaaret";
     },
     get$ugCountryDisplayName() {
       return "Uganda";
@@ -2435,16 +2435,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ukraina";
     },
     get$aeCountryDisplayName() {
-      return "Arabiar Emirerri Batuak";
+      return "Arabiemiirikunnat";
     },
     get$gbCountryDisplayName() {
-      return "Erresuma Batua";
+      return "Yhdistynyt kuningaskunta";
     },
     get$usCountryDisplayName() {
-      return "Ameriketako Estatu Batuak";
+      return "Yhdysvallat";
     },
     get$uyCountryDisplayName() {
-      return "Uruguai";
+      return "Uruguay";
     },
     get$uzCountryDisplayName() {
       return "Uzbekistan";
@@ -2453,7 +2453,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "Vatikano Hiria";
+      return "Vatikaanivaltio";
     },
     get$veCountryDisplayName() {
       return "Venezuela";
@@ -2462,211 +2462,211 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "Wallis eta Futuna";
+      return "Wallis ja Futuna";
     },
     get$ehCountryDisplayName() {
-      return " Sahara Mendebaldea";
+      return "L\xe4nsi-Sahara";
     },
     get$yeCountryDisplayName() {
-      return "Yemen";
+      return "Jemen";
     },
     get$zmCountryDisplayName() {
-      return "Zambia";
+      return "Sambia";
     },
     get$zwCountryDisplayName() {
       return "Zimbabwe";
     },
     get$pay() {
-      return "Checkout";
+      return "Kassalle";
     },
     invitedToSpace$2(space, user) {
-      return user + "k gonbidatu zaitu ikastaro batean parte hartzera: " + space + "! Onartu nahi duzu?";
+      return user + " on kutsunut sinut liittym\xe4\xe4n kurssille: " + space + "! Haluatko hyv\xe4ksy\xe4?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 Gonbidatua zara!";
+      return "\ud83d\udce9 Olet kutsuttu!";
     },
     invitedToChat$2($name, user) {
-      return user + "k gonbidatu zaitu chat batean parte hartzera: " + $name + "! Onartu nahi duzu?";
+      return user + " on kutsunut sinut liittym\xe4\xe4n keskusteluun: " + $name + "! Haluatko hyv\xe4ksy\xe4?";
     },
     get$monthlySubscription() {
-      return "Hilero";
+      return "Kuukausittainen";
     },
     get$yearlySubscription() {
-      return "Urtero";
+      return "Vuosittainen";
     },
     get$defaultSubscription() {
-      return "Pangea Chat Harpidetza";
+      return "Pangea Chat -tilaus";
     },
     get$freeTrial() {
-      return "Aukerazko Probaldia";
+      return "Ilmainen kokeilujakso";
     },
     get$noDataFound() {
-      return "Ez da datu aurkitu";
+      return "Tietoja ei l\xf6ytynyt";
     },
     get$bestCorrectionFeedback() {
-      return "Hori zuzena da!";
+      return "Se on oikein!";
     },
     get$distractorFeedback() {
-      return "Hori ez da oso zuzena.";
+      return "Se ei ole aivan oikein.";
     },
     get$bestAnswerFeedback() {
-      return "Hori zuzena da!";
+      return "Se on oikein!";
     },
     get$definitionDefaultPrompt() {
-      return "Zer esan nahi du hitz horrek?";
+      return "Mit\xe4 t\xe4m\xe4 sana tarkoittaa?";
     },
     get$practiceDefaultPrompt() {
-      return "Zer da erantzun onena?";
+      return "Mik\xe4 on paras vastaus?";
     },
     get$correctionDefaultPrompt() {
-      return "Zer da ordezko onena?";
+      return "Mik\xe4 on paras korvaus?";
     },
     get$reportToTeacher() {
-      return "Nori jakinarazi nahi diozu mezua hau?";
+      return "Kenelle haluat raportoida t\xe4m\xe4n viestin?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " erabiltzaileak " + roomName + " txataren mezua salatu du " + reportedUserId + " erabiltzailearen izenean";
+      return reportingUserId + " on raportoinut viestin k\xe4ytt\xe4j\xe4lt\xe4 " + reportedUserId + " chatissa " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Mezua: " + reportedMessage + "\nArrazoia: " + reason;
+      return "Viesti: " + reportedMessage + "\nSyy: " + reason;
     },
     get$noTeachersFound() {
-      return "Ez da irakaslerik aurkitu salatzeko";
+      return "Ei opettajia raportoitu";
     },
     trialExpiration$1(expiration) {
-      return "Zure proba-aldia " + expiration + " data amaitzen da";
+      return "Ilmainen kokeilujakso p\xe4\xe4ttyy " + expiration;
     },
     get$freeTrialDesc() {
-      return "Erabiltzaile berriek Pangea Chat-en aste bateko proba-aldia doan jasotzen dute";
+      return "Uudet k\xe4ytt\xe4j\xe4t saavat viikon ilmaisen kokeilun Pangea Chatista";
     },
     get$activateTrial() {
-      return "Proba Doakoa 7 Egun";
+      return "Vapaa 7 p\xe4iv\xe4n kokeilu";
     },
     get$successfullySubscribed() {
-      return "Zure harpidetza arrakastaz egin duzu!";
+      return "Olet tilannut onnistuneesti!";
     },
     get$clickToManageSubscription() {
-      return "Hemen klik egin zure harpidetza kudeatzeko.";
+      return "Klikkaa t\xe4st\xe4 hallitaksesi tilaustasi.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Mesedez, aukeratu gutxienez " + min + " karaktere.";
+      return "Valitse v\xe4hint\xe4\xe4n " + min + " merkki\xe4.";
     },
     get$pleaseEnterValidEmail() {
-      return "Mesedez, sartu baliozko email helbide bat.";
+      return "Sy\xf6t\xe4 kelvollinen s\xe4hk\xf6postiosoite.";
     },
     get$pleaseChooseAUsername() {
-      return "Mesedez, aukeratu erabiltzaile-izena";
+      return "Valitse k\xe4ytt\xe4j\xe4nimi";
     },
     get$listen() {
-      return "Entzun";
+      return "Kuuntele";
     },
     get$trialPeriodExpired() {
-      return "Zure proba epea amaitu da";
+      return "Kokeilujaksonne on p\xe4\xe4ttynyt";
     },
     get$subscribedToUnlockTools() {
-      return "Harpidetu interactiveko itzulpen eta gramatika egiaztapenak, audio jolasak, praktika jarduera pertsonalizatuak eta ikasketa analitikak irekitzeko!";
+      return "Virit\xe4 tilaukseen saadaksesi k\xe4ytt\xf6\xf6n vuorovaikutteinen k\xe4\xe4nn\xf6s ja kielioppitarkistus, \xe4\xe4nen toisto, henkil\xf6kohtaiset harjoitustoiminnot ja oppimisanalyyttiset tiedot!";
     },
     get$translationTooltip() {
-      return "Itzuli";
+      return "K\xe4\xe4nn\xe4";
     },
     get$speechToTextTooltip() {
-      return "Transkribatu";
+      return "Tekstiksi";
     },
     get$kickBotWarning() {
-      return "Pangea Bot botaren kenduak, elkarrizketa bot-a ezabatuko da this chat-etik.";
+      return "Pangea-botin poistaminen poistaa keskustelubotin t\xe4st\xe4 keskustelusta.";
     },
     get$refresh(_) {
-      return "Berrabiatu";
+      return "P\xe4ivit\xe4";
     },
     get$updatePhoneOS() {
-      return "Baliteke zure gailuaren OS bertsioa eguneratu behar izatea.";
+      return "Saattaa olla, ett\xe4 sinun t\xe4ytyy p\xe4ivitt\xe4\xe4 laitteesi k\xe4ytt\xf6j\xe4rjestelm\xe4n versio.";
     },
     get$autoIGCToolName() {
-      return "Exekutatu Pangea idazketa laguntza automatikoki";
+      return "Aja Pangea kirjoitusavustusta automaattisesti";
     },
     get$autoIGCToolDescription() {
-      return "Exekutatu automatikoki Pangea Txataren gramatika eta itzulpen idazketa laguntza mezu bat bidali aurretik.";
+      return "Aja automaattisesti Pangea Chatin kieliopin ja k\xe4\xe4nn\xf6ksen kirjoitusavustusta ennen viestini l\xe4hett\xe4mist\xe4.";
     },
     get$chatCapacity() {
-      return "Txat-ahalmena";
+      return "Chatin kapasiteetti";
     },
     get$roomFull() {
-      return "Gela hau jada bete da.";
+      return "Huone on jo t\xe4ynn\xe4.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Txat-ahalmena aldatu da";
+      return "Chatin kapasiteetti on muuttunut";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Txat-ahalmena gutxienez " + count + " izan behar da.";
+      return "Chatin kapasiteetti on oltava v\xe4hint\xe4\xe4n " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "Txat-ahalmena chat batean onartzen diren kide kopurua mugatzen du.";
+      return "Chatin kapasiteetti rajoittaa chatissa sallittujen j\xe4senten m\xe4\xe4r\xe4\xe4.";
     },
     get$enterNumber() {
-      return "Mesedez, sartu zenbaki osoa balio bat.";
+      return "Sy\xf6t\xe4 kokonaisluku.";
     },
     get$buildTranslation() {
-      return "Eraiki zure itzulpena goiko aukeraketatik";
+      return "Rakenna k\xe4\xe4nn\xf6ksesi yll\xe4 olevista vaihtoehdoista";
     },
     get$practice() {
-      return "Praktika";
+      return "Harjoitus";
     },
     get$noLanguagesSet() {
-      return "Ez dago hizkuntzarik ezarrita";
+      return "Kieli\xe4 ei ole asetettu";
     },
     get$speechToTextBody() {
-      return "Ahots mezuetarako, testu transkripzioa ikusi dezakezu baita hizlariaren Minutu bakoitzeko Hitzen puntuazioa ere.";
+      return "\xc4\xe4niviesteiss\xe4 n\xe4et my\xf6s litteroinnin sek\xe4 puhujan Words Per Minute -pistem\xe4\xe4r\xe4n.";
     },
     get$versionNotFound() {
-      return "Bertsiorik ez";
+      return "Versiota ei l\xf6ytynyt";
     },
     get$fetchingVersion() {
-      return "Bertsioa jasotzen...";
+      return "Haetaan versiota...";
     },
     get$versionFetchError() {
-      return "Errorea bertsioa jasotzean";
+      return "Virhe haettaessa versiota";
     },
     versionText$2(version, buildNumber) {
-      return "Bertsioa: " + version + "+" + buildNumber;
+      return "Versio: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Zure hizkuntza oinarrian dauden mezuak ez dira itzuliak izango.";
+      return "Peruskielesi viestit eiv\xe4t tule k\xe4\xe4nnetyiksi.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Harpidetza aktibo duzu";
+      return "Sinulla on aktiivinen tilaus";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Zure kontua ezabatzeak ez du automatikoki zure harpidetza bertan behera utziko.";
+      return "Tilisi poistaminen ei automaattisesti peruuta tilaustasi.";
     },
     get$manageSubscription() {
-      return "Kudeatu Harpidetza";
+      return "Hallitse tilausta";
     },
     get$error520Title() {
-      return "Saiatu berriro.";
+      return "Yrit\xe4 uudelleen.";
     },
     get$error520Desc() {
-      return "Barkatu, zure mezua ezin izan dugu ulertu...";
+      return "Valitettavasti emme ymm\xe4rt\xe4neet viesti\xe4si...";
     },
     get$level(_) {
-      return "Maila";
+      return "Taso";
     },
     get$translationChoicesBody() {
-      return "Klikatu eta eutsi aukera baten gako bat iradokizun bat lortzeko.";
+      return "Pid\xe4 valittua vaihtoehtoa painettuna vihjeen saamiseksi.";
     },
     get$grammar() {
-      return "Gramatika";
+      return "Kielioppi";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Harremana gonbidatua izan da txatean";
+      return "Yhteystiedot on kutsuttu keskusteluun";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Gonbidatu txatean";
+      return "\ud83d\udce8 Kutsu keskusteluun";
     },
     get$chatName() {
-      return "Txatearen izena";
+      return "Keskustelun nimi";
     },
     get$l2SupportNa() {
-      return "Ez dago erabilgarri";
+      return "Ei saatavilla";
     },
     get$l2SupportAlpha() {
       return "Alpha";
@@ -2675,1042 +2675,1042 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Beta";
     },
     get$l2SupportFull() {
-      return "Betea";
+      return "T\xe4ysi";
     },
     get$playAudio() {
-      return "Jolastu";
+      return "Toista";
     },
     get$stop(_) {
-      return "Gelditu";
+      return "Lopeta";
     },
     get$grammarCopyPOSsconj() {
-      return "Hitzarmen menpeko lotura";
+      return "Subordinointiliite";
     },
     get$grammarCopyPOSnum() {
-      return "Zenbakia";
+      return "Luku";
     },
     get$grammarCopyPOSverb() {
-      return "Aditza";
+      return "Verbi";
     },
     get$grammarCopyPOSaffix() {
-      return "Aditza";
+      return "Liite";
     },
     get$grammarCopyPOSpart() {
-      return "Partikula";
+      return "Partikkeli";
     },
     get$grammarCopyPOSadj() {
-      return "Adjektiboa";
+      return "Adjektiivi";
     },
     get$grammarCopyPOScconj() {
-      return "Elkartzaile Konjuntzioa";
+      return "Koordinoiva konjunktio";
     },
     get$grammarCopyPOSpunct() {
-      return "Puntuazioa";
+      return "Piste- ja v\xe4limerkki";
     },
     get$grammarCopyPOSadv() {
-      return "Aditza";
+      return "Adverbi";
     },
     get$grammarCopyPOSaux() {
-      return "Laguntzailea";
+      return "Avustava";
     },
     get$grammarCopyPOSspace() {
-      return "Hesia";
+      return "V\xe4li";
     },
     get$grammarCopyPOSsym() {
-      return "Ikurra";
+      return "Symboli";
     },
     get$grammarCopyPOSdet() {
-      return "Determinatzailea";
+      return "Artikkeli";
     },
     get$grammarCopyPOSpron() {
-      return "Aldagaia";
+      return "Pronomini";
     },
     get$grammarCopyPOSadp() {
-      return "Aldizkaria";
+      return "Adpositio";
     },
     get$grammarCopyPOSpropn() {
-      return "Izena Berezia";
+      return "Oikea nimi";
     },
     get$grammarCopyPOSnoun() {
-      return "Substantiboa";
+      return "Substantiivi";
     },
     get$grammarCopyPOSintj() {
-      return "Interjekzioa";
+      return "Interjektio";
     },
     get$grammarCopyPOSx() {
-      return "Bestea";
+      return "Muu";
     },
     get$grammarCopyGENDERfem() {
-      return "Emakumezko";
+      return "Feminine";
     },
     get$grammarCopyPERSON2() {
-      return "Bigarren Persona";
+      return "Toinen henkil\xf6";
     },
     get$grammarCopyMOODimp() {
-      return "Espezifikoa";
+      return "Imperatiivi";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Galdera";
+      return "Kysymys";
     },
     get$grammarCopyASPECTperf() {
-      return "Perfektua";
+      return "Perfekti";
     },
     get$grammarCopyCASEaccnom() {
-      return "Kasua, Nominatiboa";
+      return "Akkusatiivi, Nominatiivi";
     },
     get$grammarCopyCASEobl() {
-      return "Oblikua";
+      return "Obliikki";
     },
     get$grammarCopyVOICEact() {
-      return "Aktiboa";
+      return "Aktiivi";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Itsatsi";
+      return "Sulku";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Artikulua";
+      return "Artikkeli";
     },
     get$grammarCopyNUMBERsing() {
-      return "Bikotea";
+      return "Yksikk\xf6";
     },
     get$grammarCopyGENDERmasc() {
-      return "Gizonezkoa";
+      return "Maskuliini";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modala";
+      return "Modaalinen";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Aditiboa";
+      return "Adverbiaali";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifratikoa";
+      return "Perifrastinen";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Zifra";
+      return "Numero";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Ez Egokia";
+      return "Ei Oikea";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Kardinala";
+      return "Kardinaali";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Egokia";
+      return "Oikea";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Tiradera";
+      return "Piste";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Bai";
+      return "Kyll\xe4";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Puntospilota";
+      return "Puolipiste";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Komata";
+      return "Koma";
     },
     get$grammarCopyMOODcnd() {
-      return "Kontraerazionala";
+      return " Konditionaali";
     },
     get$grammarCopyCASEacc() {
-      return "Aditza";
+      return " Akkusatiivi";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partitiboa";
+      return "Partitiivi";
     },
     get$grammarCopyTENSEpast() {
-      return "Aurrekoa";
+      return " Menneisyys";
     },
     get$grammarCopyDEGREEsup() {
-      return "Superlativo";
+      return " Superlatiivi";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Bi puntu";
+      return " Kaksoispiste";
     },
     get$grammarCopyPERSON3() {
-      return "Hirugarren pertsona";
+      return " Kolmas persoona";
     },
     get$grammarCopyNUMBERplur() {
-      return "Anitza";
+      return " Monikko";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Izena propioa";
+      return " Oikea nimi";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Galdera";
+      return " Kysymyslause";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Informala";
+      return " Ep\xe4virallinen";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Denbora";
+      return " Aika";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Negatiboa";
+      return " Kielteinen";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Guztira";
+      return " Kokonaism\xe4\xe4r\xe4";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Adnominala";
+      return " Adnominaalinen";
     },
     get$grammarCopyASPECTprog() {
-      return "Aurrerapena";
+      return " Progressiivinen";
     },
     get$grammarCopyMOODsub() {
-      return "Subjuntiboa";
+      return " Subjunktiivi";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Osagarria";
+      return "T\xe4ydennysmuoto";
     },
     get$grammarCopyCASEnom() {
-      return "Nominatiboa";
+      return "Nominatiivi";
     },
     get$grammarCopyTENSEfut() {
-      return "Etorkizuna";
+      return "Tulevaisuus";
     },
     get$grammarCopyCASEdat() {
-      return "Dativoa";
+      return "Datiivi";
     },
     get$grammarCopyTENSEpres() {
-      return "Oraingoa";
+      return "Preesens";
     },
     get$grammarCopyGENDERneut() {
-      return "Neutroa";
+      return "Neutri";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Erreferentzia";
+      return "Relatiivipronomini";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Amaiera azkena";
+      return "Loppup\xe4\xe4te";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Demostrativoa";
+      return " Demonstratiivipronomini";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Preposizioa";
+      return "Prepositio";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Finita";
+      return "Finiitti";
     },
     get$grammarCopyDEGREEpos() {
-      return "Positiboa";
+      return "Positiivinen";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Aipua";
+      return "Lainausmerkki";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerundioa";
+      return "Gerundi";
     },
     get$grammarCopyVOICEpass() {
-      return "Pasiboa";
+      return "Passiivi";
     },
     get$grammarCopyCASEgen() {
-      return "Genitiboa";
+      return "Genetiivi";
     },
     get$grammarCopyTENSEprs() {
-      return "Oraingoa";
+      return "Preesens";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Definitiboa";
+      return "Asettava";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Ordenagarria";
+      return "J\xe4rjestysluku";
     },
     get$grammarCopyCASEins() {
-      return "Instrumentala";
+      return "Instruementaali";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Infinitiboa";
+      return "Infinitiivi";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Laguntzailea";
+      return "Avustava";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Luze";
+      return "Pitk\xe4";
     },
     get$grammarCopyCASEloc() {
-      return "Locatiboa";
+      return "Lokaali";
     },
     get$grammarCopyMOODind() {
-      return "Adierazlea";
+      return "Indikatiivi";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Konparatiboa";
+      return "Vertailu";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Haragizkoa";
+      return "Relatiivinen";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Esamoldea";
+      return "Huudahdus";
     },
     get$grammarCopyPERSON1() {
-      return "Lehen Persona";
+      return "Ensimm\xe4inen persoona";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Hasiera";
+      return "Alku";
     },
     get$grammarCopyGENDERperson() {
-      return "Pertsona";
+      return "Henkil\xf6";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Atzerrikoa";
+      return "Vieras";
     },
     get$grammarCopyVOICEvoice() {
-      return "Ahotsa";
+      return "\xc4\xe4ni";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Aditza";
+      return "Verbi";
     },
     get$grammarCopyPOSSpass() {
-      return "Jabetza";
+      return "Omistussijaus";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Preposizioa";
+      return "Prepositio";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Zenbaki";
+      return "Numeral";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Izenburua";
+      return "Substantiivi";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Erreflexiboa";
+      return "Refleksiivinen";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Aditza";
+      return "Pronomini";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Puntuazio Aldea";
+      return "Pisteen puoli";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Aditza";
+      return "Verbi";
     },
     get$grammarCopyGENDERgender() {
-      return "Genero";
+      return "Sukupuoli";
     },
     get$grammarCopyMOODmood() {
-      return "Nahia";
+      return "Moodi";
     },
     get$grammarCopyASPECTaspect() {
-      return "Apariencia";
+      return "Aspekti";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Puntuazioa";
+      return "V\xe4limerkki";
     },
     get$grammarCopyTENSEtense() {
-      return "Tensa";
+      return "Aikamuoto";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Gradua";
+      return "Taso";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Adeitasuna";
+      return "Kohteliaisuus";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Aditza";
+      return "Adverbi";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Zenbakia";
+      return "Luku";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Elkarketa";
+      return "Konjunktio";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polaritatea";
+      return "Polaarisuus";
     },
     get$grammarCopyCASEcase() {
-      return "Kasua";
+      return "Tapaus";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Definitutasuna";
+      return "Tarkkuus";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Zenbaki";
+      return "Numeral";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Adnominala";
+      return "Adnominaali";
     },
     get$grammarCopyVOCvoc() {
-      return "Vocativa";
+      return "Vokaali";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Osagarria";
+      return "T\xe4ydennyslause";
     },
     get$grammarCopyADVadv() {
-      return "Aditza";
+      return "Adverbiaali";
     },
     get$grammarCopyMOODjus() {
-      return "Eskaera";
+      return "Imperatiivi";
     },
     get$grammarCopyGENDERcom() {
-      return "Komuna";
+      return "Yleinen";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Erreflexiboa";
+      return "Refleksiivinen";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Partitiboa";
+      return "Partitiivi";
     },
     get$grammarCopySPCspc() {
-      return "Espezifikoa";
+      return "Tarkka";
     },
     get$grammarCopyTENSEpqp() {
-      return "Plusquamperfektua";
+      return "Pluskvamperfekti";
     },
     get$grammarCopyREFLEXref() {
-      return "Erreflexiboa";
+      return "Refleksiivinen";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Motza";
+      return "Lyhyt";
     },
     get$grammarCopyNUMBERdual() {
-      return "Bikotea";
+      return "Kaksiluku";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Luzea";
+      return "Pitk\xe4";
     },
     get$grammarCopyVOICEmid() {
-      return "Erdi";
+      return "Keskiv\xe4li";
     },
     get$grammarCopyINTRELintRel() {
-      return "Galdera, Erreferentzia";
+      return "Kysymyslause, Relatiivi";
     },
     get$grammarCopyINTint() {
-      return "Galdera";
+      return "Kysymys";
     },
     get$grammarCopyVOICEcaus() {
-      return "Aitzindaria";
+      return "Aiherakenteinen";
     },
     get$grammarCopyUnknown() {
-      return "Ezezaguna";
+      return "Tuntematon";
     },
     get$grammarCopyEVIDENTevident() {
-      return "Evidentzia";
+      return "N\xe4ytt\xf6perusteisuus";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Jabeakaren Zenbakia";
+      return "Omistajan luku";
     },
     get$grammarCopyASPECThab() {
-      return "Ohiturazkoa";
+      return "Tavallinen";
     },
     get$grammarCopyCASEabl() {
-      return "Ablatiboa";
+      return "Ablatiivi";
     },
     get$grammarCopyCASEall() {
-      return "Allatiboa";
+      return "Allatiivi";
     },
     get$grammarCopyCASEess() {
-      return "Egitiboa";
+      return "Essiivinen";
     },
     get$grammarCopyCASEtra() {
-      return "Translatiboa";
+      return "Translatiivinen";
     },
     get$grammarCopyCASEequ() {
-      return "Ekuatiboa";
+      return "Equatiivinen";
     },
     get$grammarCopyCASEdis() {
-      return "Banaketa";
+      return "Jakautuva";
     },
     get$grammarCopyCASEabs() {
-      return "Absolutiboa";
+      return "Absoluuttinen";
     },
     get$grammarCopyCASEerg() {
-      return "Ergatiboa";
+      return "Ergatiivinen";
     },
     get$grammarCopyCASEcau() {
-      return "Kausala";
+      return "Syyllinen";
     },
     get$grammarCopyCASEben() {
-      return "Onuragarria";
+      return "Hy\xf6dyllinen";
     },
     get$grammarCopyCASEtem() {
-      return "Gertaera";
+      return "Aikainen";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Koordinatzailea";
+      return "Koordinoiva";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Eraikuntza Estatu";
+      return "Rakennustila";
     },
     get$grammarCopyDEGREEabs() {
-      return "Gradua Absolutua";
+      return "T\xe4ydellinen aste";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Evidentzia Errealista";
+      return "Faktuaalinen todisteellisuus";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Evidentzia Ez-errealista";
+      return "Ei-faktuaalinen todisteellisuus";
     },
     get$grammarCopyMOODopt() {
-      return "Optatiboa";
+      return "Optatiivinen";
     },
     get$grammarCopyMOODadm() {
-      return "Admiratiboa";
+      return "Ihmeellinen";
     },
     get$grammarCopyMOODdes() {
-      return "Desideratiboa";
+      return "Toivova";
     },
     get$grammarCopyMOODnec() {
-      return "Behartzailea";
+      return "Tarpeellinen";
     },
     get$grammarCopyMOODpot() {
-      return "Potentziala";
+      return "Mahdollinen";
     },
     get$grammarCopyMOODprp() {
-      return "Proposatiboa";
+      return "Ehdottava";
     },
     get$grammarCopyMOODqot() {
-      return "Kotatiboa";
+      return "Lainaus";
     },
     get$grammarCopyNUMFORMword() {
-      return "Hizki Forma";
+      return "Sanan muoto";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Zenbaki Erromatarra";
+      return "Roomalainen numero";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Letra Forma";
+      return "Kirjainmuoto";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Biderkatzailea";
+      return "Kertolasku";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Fracziokoa";
+      return "Murtoluku";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Edukia";
+      return "Joukko";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Arraioa";
+      return "Vaihteluv\xe4li";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Banaketa";
+      return "Jakautuva";
     },
     get$grammarCopyNUMBERtri() {
-      return "Saiakera";
+      return "Kokeilut";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Pauzala";
+      return "Paukalainen";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Pauzal Handia";
+      return "Suurempi paukala";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Plural Handia";
+      return "Suurempi monikko";
     },
     get$grammarCopyNUMBERinv() {
-      return "Inbertsoa";
+      return "K\xe4\xe4nteinen";
     },
     get$grammarCopyPERSON0() {
-      return "Zero";
+      return "Nolla";
     },
     get$grammarCopyPERSON4() {
-      return "Laugarrena";
+      return "Nelj\xe4s";
     },
     get$grammarCopyPOLITEform() {
-      return "Formala";
+      return "Virallinen";
     },
     get$grammarCopyPOLITEelev() {
-      return "Gaitzespena";
+      return "Kohotettu";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Apala";
+      return "N\xf6yr\xe4";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Emfatikoa";
+      return "Korostava";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Esamoldea";
+      return "Huudahdus";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Reciprokoa";
+      return "Vastavuoro";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Galdera-Relatiboa";
+      return "Kysymys-Relatiivipronomini";
     },
     get$grammarCopyTENSEaor() {
-      return "Aorista";
+      return "Aoristi";
     },
     get$grammarCopyTENSEeps() {
-      return "Epistemikoa";
+      return "Episteminen";
     },
     get$grammarCopyTENSEprosp() {
-      return "Aurrerakoa";
+      return "Tulevaisuuden";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Partizipa";
+      return "Partisiippi";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Converb";
+      return "Konverbi";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Verbal Noun";
+      return "Verbaalinen substantiivi";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipassiboa";
+      return "Antipassiivi";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Kaustiboa";
+      return "Kausatiivinen";
     },
     get$grammarCopyVOICedir() {
-      return "Bide zuzena";
+      return "Suora";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Inversoa";
+      return "K\xe4\xe4nteinen";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Reciprokoa";
+      return "Vastavuoroinen";
     },
     get$grammarCopyPOS() {
-      return "Hitzen zatia";
+      return "Osanpuheesta";
     },
     get$grammarCopyGENDER() {
-      return "Generoa";
+      return "Sukupuoli";
     },
     get$grammarCopyPERSON() {
-      return "Pertsona";
+      return "Henkil\xf6";
     },
     get$grammarCopyMOOD() {
-      return "Modua";
+      return "Modus";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Ortografia motorea";
+      return "Pisteytyksen tyyppi";
     },
     get$grammarCopyASPECT() {
-      return "Aparantzia";
+      return "Aspekti";
     },
     get$grammarCopyCASE() {
-      return "Kasua";
+      return "Tapaus";
     },
     get$grammarCopyVOICE() {
-      return "Ahotsa";
+      return "\xc4\xe4ni";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Izena Igoera";
+      return "Substantiivin tyyppi";
     },
     get$grammarCopyVERBTYPE() {
-      return "Aditza Mota";
+      return "Verbityyppi";
     },
     get$grammarCopyADVTYPE() {
-      return "Aditz Mota";
+      return "Adverbityyppi";
     },
     get$grammarCopyNUMFORM() {
-      return "Zenbaki Forma";
+      return "Lukumuoto";
     },
     get$grammarCopyNUMTYPE() {
-      return "Zenbaki Mota";
+      return "Lukumuoto";
     },
     get$grammarCopyNUMBER() {
-      return "Zenbakia";
+      return "Luku";
     },
     get$grammarCopyDEFINITE() {
-      return "Definitibitatea";
+      return "Aukkoisuus";
     },
     get$grammarCopyDEGREE() {
-      return "Gradua";
+      return "Taso";
     },
     get$grammarCopyEVIDENT() {
-      return "Evidentzia";
+      return "N\xe4ytt\xf6perusteisuus";
     },
     get$grammarCopyFOREIGN() {
-      return "Alderantzizkoa";
+      return "Ulkomainen";
     },
     get$grammarCopyPOLARITY() {
-      return "Polaritatea";
+      return "Polaarisuus";
     },
     get$grammarCopyPOLITE() {
-      return "Adeitasuna";
+      return "Kohteliaisuus";
     },
     get$grammarCopyPREPCASE() {
-      return "Preposizio Kasua";
+      return "Prepositiivinen tapaus";
     },
     get$grammarCopyPRONTYPE() {
-      return "Aditz Mota";
+      return "Pronominityyppi";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Puntuazio Aldea";
+      return "Pisteen puoli";
     },
     get$grammarCopyREFLEX() {
-      return "Erreflexiboa";
+      return "Refleksiivinen";
     },
     get$grammarCopyTENSE() {
-      return "Tensea";
+      return "Aikamuoto";
     },
     get$grammarCopyVERBFORM() {
-      return "Aditz Forma";
+      return "Verbimuoto";
     },
     get$grammarCopyCONJTYPE() {
-      return "Konjuntzio Mota";
+      return "Konjunktionin tyyppi";
     },
     get$grammarCopyUNKNOWN() {
-      return "Ezezaguna";
+      return "Tuntematon";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Jabeeraren Zenbakia";
+      return "Omistajan lukum\xe4\xe4r\xe4";
     },
     get$grammarCopyPOSS() {
-      return "Jabetza";
+      return "Omistussana";
     },
     get$grammarCopyASPECTimp() {
-      return "Ikuspegi Ez-osoa";
+      return "Ep\xe4t\xe4ydellinen aspekti";
     },
     get$grammarCopyCASEvoc() {
-      return "Deiaren Kasua";
+      return "Vokaali";
     },
     get$grammarCopyCASEcom() {
-      return "Elkarrekintza Kasua";
+      return "Yhteis\xf6";
     },
     get$grammarCopyCASEpar() {
-      return "Atalaren Kasua";
+      return "Partitiivi";
     },
     get$grammarCopyCASEadv() {
-      return "Aditzaren Kasua";
+      return "Adverbiaali";
     },
     get$grammarCopyCASEref() {
-      return "Erreferentziaren Kasua";
+      return "Viittaus";
     },
     get$grammarCopyCASErel() {
-      return "Relatiboa";
+      return "Relatiivi";
     },
     get$grammarCopyCASEsub() {
-      return "Azpiburu Kasua";
+      return "Subessiivi";
     },
     get$grammarCopyCASEsup() {
-      return "Goreneko Kasua";
+      return "Superessiivi";
     },
     get$grammarCopyCASEaccdat() {
-      return "Auzipena-Datiboa";
+      return "Akkusatiivi-Datiivi";
     },
     get$grammarCopyCASEpre() {
-      return "Preposizio Kasua";
+      return "Prepositio";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Azpesteko";
+      return "Alisteinen";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Konparatiboa";
+      return "Vertailu";
     },
     get$grammarCopyDEFINITEind() {
-      return "Zehatza";
+      return "Ep\xe4m\xe4\xe4r\xe4inen";
     },
     get$grammarCopyMOODint() {
-      return "Galdera modua";
+      return "Kysymysmoodi";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Izena orokorra";
+      return "Yleisnimi";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Jabe singularra";
+      return "Omistajan yksikk\xf6";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Jabe plurala";
+      return "Omistajan monikko";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Jabe bikoa";
+      return "Omistajan kaksikko";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Positiboaren polaritatea";
+      return "Positiivinen polariteetti";
     },
     get$grammarCopyPOSSyes() {
-      return "Jabetza";
+      return "Omistussana";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Preposizio gabea";
+      return "Ei prepositiota";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Pertsonala";
+      return "Henkil\xf6kohtainen";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Galdera";
+      return "Kysymys";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Guztira";
+      return "Kokonaisuus";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Negatiboa";
+      return "Kielt\xe4v\xe4";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Artikulua";
+      return "Artikkeli";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Indefinitua";
+      return "Ep\xe4m\xe4\xe4r\xe4inen";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Galdera-erreferentzia";
+      return "Kysymys-suhteinen";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Amaiera puntuazioa";
+      return "Loppupiste";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Periodoa";
+      return "Piste";
     },
     get$grammarCopyREFLEXyes() {
-      return "Erreflexiboa";
+      return "Refleksiivinen";
     },
     get$grammarCopyTENSEimp() {
-      return "Inperfektua";
+      return "Ep\xe4t\xe4ydellinen";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Supinoa";
+      return "Supine";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominal";
+      return "Adnominaalinen";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Luze";
+      return "Pitk\xe4";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Motz";
+      return "Lyhyt";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Erlaziorra eragitea";
+      return "Kausatiiviverbi";
     },
     get$grammarCopyVOICEcau() {
-      return "Erlaziorra eragitea";
+      return "Kausatiivinen";
     },
     get$grammarCopyVOICEdir() {
-      return "Bidezkoa";
+      return "Suora";
     },
     get$grammarCopyVOICEinv() {
-      return "Alderantzizkoa";
+      return "K\xe4\xe4nteinen";
     },
     get$grammarCopyVOICErcp() {
-      return "Elkarrekiko";
+      return "Vastavuoroinen";
     },
     get$other() {
-      return "Beste";
+      return "Muu";
     },
     levelShort$1(level) {
-      return "LGA " + level;
+      return "TASO " + level;
     },
     get$clickBestOption() {
-      return "Hautatu zure mezua itzultzeko aukera onenak!";
+      return "Valitse parhaat vaihtoehdot viestisi k\xe4\xe4nt\xe4miseen!";
     },
     get$completeActivitiesToUnlock() {
-      return "Osatu gutxienez jarduera bat itzultzeko!";
+      return "V\xe4hemm\xe4n kuin yksi aktiviteetti on suoritettu, jotta voit avata k\xe4\xe4nn\xf6ksen!";
     },
     get$downloadGroupText() {
-      return "Deskargatu talde testua";
+      return "Lataa ryhm\xe4teksti";
     },
     get$notificationsOn() {
-      return "Jakinarazpenak aktibo";
+      return "Ilmoitukset p\xe4\xe4ll\xe4";
     },
     get$notificationsOff() {
-      return "Jakinarazpenak desaktibatu";
+      return "Ilmoitukset pois p\xe4\xe4lt\xe4";
     },
     get$createChatAndInviteUsers() {
-      return "Sortu elkarrizketa eta gonbidatu erabiltzaileak";
+      return "Luo keskustelu ja kutsu k\xe4ytt\xe4ji\xe4";
     },
     get$updatedNewSpaceDescription() {
-      return "Ikastaroek zure elkarrizketak bateratzeko eta komunitate pribatu edo publikoa eraikitzeko aukera ematen dute.";
+      return "Kurssit auttavat sinua yhdist\xe4m\xe4\xe4n keskustelusi ja rakentamaan yksityisi\xe4 tai julkisia yhteis\xf6j\xe4.";
     },
     get$joinWithCode() {
-      return "Batu kodearekin";
+      return "Liity koodilla";
     },
     get$enterCodeToJoin() {
-      return "Sartu kodea parte hartzeko";
+      return "Sy\xf6t\xe4 koodi liitty\xe4ksesi";
     },
     get$updateNow() {
-      return "Eguneratu orain";
+      return "P\xe4ivit\xe4 nyt";
     },
     get$updateLater() {
-      return "Geroago eguneratu";
+      return "My\xf6hemmin";
     },
     get$constructUseWaDesc() {
-      return "Laguntza gabe erabiltzen da";
+      return "K\xe4ytetty ilman apua";
     },
     get$constructUseGaDesc() {
-      return "Gramatika laguntza";
+      return "Kielioppiapu";
     },
     get$constructUseTaDesc() {
-      return "Itzulpen laguntza";
+      return "K\xe4\xe4nn\xf6sapu";
     },
     get$constructUseUnkDesc() {
-      return "Ezezaguna";
+      return "Tuntematon";
     },
     get$constructUseCorITDesc() {
-      return "Zuzeneko itzulpena";
+      return "Korjaa k\xe4\xe4nn\xf6ksess\xe4";
     },
     get$constructUseIgnITDesc() {
-      return "Baztertu itzulpenan";
+      return "Ohitetaan k\xe4\xe4nn\xf6ksess\xe4";
     },
     get$constructUseIncITDesc() {
-      return "Zuzena ez den itzulpena";
+      return "V\xe4\xe4rin k\xe4\xe4nn\xf6ksess\xe4";
     },
     get$constructUseIgnIGCDesc() {
-      return "Baztertu gramatika zuzentzean";
+      return "Ohitetaan kielioppikorjauksessa";
     },
     get$constructUseCorIGCDesc() {
-      return "Zuzena gramatika zuzentzean";
+      return "Korjaa kielioppikorjauksessa";
     },
     get$constructUseIncIGCDesc() {
-      return "Zuzena ez den gramatika zuzentzean";
+      return "V\xe4\xe4rin kielioppikorjauksessa";
     },
     get$constructUseCorPADesc() {
-      return "Hitzaren esanahia jardueran zuzen";
+      return "Korjaa sanan merkityksen harjoituksessa";
     },
     get$constructUseIgnPADesc() {
-      return "Baztertu hitzen esanahiaren jardueran";
+      return "Ohitetaan sanan merkityksen harjoituksessa";
     },
     get$constructUseIncPADesc() {
-      return "Zuzena ez den hitzen esanahiaren jardueran";
+      return "V\xe4\xe4rin sanan merkityksen harjoituksessa";
     },
     get$constructUseCorWLDesc() {
-      return "Hitz entzumen jardueran zuzen";
+      return "Korjaa sanan kuunteluharjoituksessa";
     },
     get$constructUseIncWLDesc() {
-      return "Zuzena ez den hit entzumen jardueran";
+      return "V\xe4\xe4rin sanan kuunteluharjoituksessa";
     },
     get$constructUseIngWLDesc() {
-      return "Baztertu hit entzumen jardueran";
+      return "Ohitetaan sanan kuunteluharjoituksessa";
     },
     get$constructUseCorHWLDesc() {
-      return "Hitz ezkutuko jardueran zuzen";
+      return "Korjaa piilotetun sanan harjoituksessa";
     },
     get$constructUseIncHWLDesc() {
-      return "Zuzena ez den hit ezkutuko jardueran";
+      return "V\xe4\xe4rin piilotetun sanan harjoituksessa";
     },
     get$constructUseIgnHWLDesc() {
-      return "Baztertu hit ezkutuko jardueran";
+      return "Ohitetaan piilotetun sanan harjoituksessa";
     },
     get$constructUseCorLDesc() {
-      return "Lemma jardueran zuzen";
+      return "Korjaa lemmaharjoituksessa";
     },
     get$constructUseIncLDesc() {
-      return "Zuzena ez den lemma jardueran";
+      return "V\xe4\xe4rin lemmaharjoituksessa";
     },
     get$constructUseIgnLDesc() {
-      return "Baztertu lemma jardueran";
+      return "Ohitetaan lemmaharjoituksessa";
     },
     get$constructUseCorMDesc() {
-      return "Gramatika jardueran zuzen";
+      return "Oikein kieliopissa";
     },
     get$constructUseIncMDesc() {
-      return "Zuzena ez den gramatika jardueran";
+      return "V\xe4\xe4rin kieliopissa";
     },
     get$constructUseIgnMDesc() {
-      return "Ez da erabilgarri gramatika jardueran";
+      return "Ohitetaan kielioppiharjoituksessa";
     },
     get$constructUseEmojiDesc() {
-      return "Zuzen dago emoji jardueran";
+      return "Oikein emoji-aktiviteetissa";
     },
     get$constructUseCollected() {
-      return "Bilduta chat-en";
+      return "Ker\xe4tty chatissa";
     },
     get$constructUseNanDesc() {
-      return "Ez da aplikagarria";
+      return "Ei sovellu";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "Testu-hizketara gaituta";
+      return "Ota tekstist\xe4 puhe k\xe4ytt\xf6\xf6n";
     },
     get$enableTTSToolDescription() {
-      return "Aldatu aplikazioak testu-hizketara irteera sortzeko zure hizkuntzako testu zatietarako.";
+      return "Salli sovelluksen tuottaa tekstist\xe4 puhetta osioista tekstiss\xe4 kohdekieless\xe4si.";
     },
     get$yourUsername() {
-      return "Zure erabiltzaile-izena";
+      return "K\xe4ytt\xe4j\xe4nimesi";
     },
     get$yourEmail() {
-      return "Zure emaila";
+      return "S\xe4hk\xf6postisi";
     },
     get$iWantToLearn() {
-      return "Nahi dut ikasi";
+      return "Haluan oppia";
     },
     get$pleaseEnterEmail() {
-      return "Mesedez, sartu baliozko posta helbide bat.";
+      return "Anna kelvollinen s\xe4hk\xf6postiosoite.";
     },
     get$myBaseLanguage() {
-      return "Nire hizkuntza oinarria";
+      return "Peruskieleni";
     },
     get$meaningSectionHeader() {
-      return "Pentsamendua:";
+      return "Tarkoitus:";
     },
     get$formSectionHeader() {
-      return "Chatetan erabiltzen diren formak:";
+      return "K\xe4ytetyt muodot keskusteluissa:";
     },
     get$writingExercisesTooltip() {
-      return "Idazketa";
+      return "Kirjoittaminen";
     },
     get$listeningExercisesTooltip() {
-      return "Entzumena";
+      return "Kuuntelu";
     },
     get$readingExercisesTooltip() {
-      return "Irakurketa";
+      return "Lukeminen";
     },
     get$meaningNotFound() {
-      return "Ez da pentsamendua aurkitu.";
+      return "Tarkoitusta ei l\xf6ytynyt.";
     },
     get$chooseBaseForm() {
-      return "Aukeratu oinarrizko forma";
+      return "Valitse perusmuoto";
     },
     get$notTheCodeError() {
-      return "Barkatu, hori ez da kodea!";
+      return "Valitettavasti, se ei ole koodi!";
     },
     get$totalXP() {
-      return "Guztira XP";
+      return "Kokonaisty\xf6kokemus";
     },
     get$numLemmas() {
-      return "Lemmen kopurua";
+      return "Lemmojen kokonaism\xe4\xe4r\xe4";
     },
     get$numLemmasUsedCorrectly() {
-      return "Gutxienez behin egoki erabili diren lemmen kopurua";
+      return "Lemmojen m\xe4\xe4r\xe4, joita on k\xe4ytetty oikein v\xe4hint\xe4\xe4n kerran";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Ez egoki erabili diren lemmen kopurua 0 aldiz";
+      return "Lemmojen m\xe4\xe4r\xe4, joita on k\xe4ytetty oikein 0 kertaa";
     },
     get$numLemmasSmallXP() {
-      return "0-30 XP dituen lemmen kopurua";
+      return "Lemmojen m\xe4\xe4r\xe4, joilla on 0 - 30 XP:t\xe4";
     },
     get$numLemmasMediumXP() {
-      return "31-200 XP dituen lemmen kopurua";
+      return "Lemmojen m\xe4\xe4r\xe4, joilla on 31 - 200 XP:t\xe4";
     },
     get$numLemmasLargeXP() {
-      return "200 XP baino gehiago dituen lemmen kopurua";
+      return "Lemmojen m\xe4\xe4r\xe4, joilla on > 200 XP:t\xe4";
     },
     get$numGrammarConcepts() {
-      return "Gramatika kontzeptuen kopurua";
+      return "Kielioppik\xe4sitteiden m\xe4\xe4r\xe4";
     },
     get$listGrammarConcepts() {
-      return "Gramatika kontzeptuak";
+      return "Kielioppik\xe4sitteet";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Jatorrizko mezuetan gutxienez %80ean egoki erabili diren gramatika kontzeptuak";
+      return "Kielioppik\xe4sitteet, joita on k\xe4ytetty oikein alkuper\xe4isiss\xe4 viesteiss\xe4 v\xe4hint\xe4\xe4n 80 % ajasta";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Jatorrizko mezuetan %80 baino gutxiago egoki erabili diren gramatika kontzeptuak";
+      return "Kielioppik\xe4sitteet, joita on k\xe4ytetty oikein alle 80 % ajasta alkuper\xe4isiss\xe4 viesteiss\xe4";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Sistema sortutako gomendioetatik egoki aukeratutako gramatika kontzeptuak gutxienez %80ean";
+      return "Kielioppik\xe4sitteet, jotka on valittu oikein j\xe4rjestelm\xe4n ehdotuksista v\xe4hint\xe4\xe4n 80 % ajasta";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Sistema sortutako gomendioetatik ez egoki aukeratutako gramatika kontzeptuak %80 baino gutxiagoan";
+      return "Kielioppik\xe4sitteet, jotka on valittu oikein j\xe4rjestelm\xe4n ehdotuksista alle 80 % ajasta";
     },
     get$listGrammarConceptsSmallXP() {
-      return "0-50 XP dituen gramatika kontzeptuak";
+      return "Kielioppik\xe4sitteet, joilla on 0-50 XP:t\xe4";
     },
     get$listGrammarConceptsMediumXP() {
-      return "51-200 XP dituen gramatika kontzeptuak";
+      return "Kielioppik\xe4sitteet, joilla on 51-200 XP:t\xe4";
     },
     get$listGrammarConceptsLargeXP() {
-      return "201-500 XP dituen gramatika kontzeptuak";
+      return "Kielioppik\xe4sitteet, 201-500 XP:t\xe4";
     },
     get$listGrammarConceptsHugeXP() {
-      return "500 XP baino gehiago dituen gramatika kontzeptuak";
+      return "Kielioppik\xe4sitteet, >500 XP:t\xe4";
     },
     get$numMessagesSent() {
-      return "Bidali diren mezu kopurua";
+      return "L\xe4hetettyjen viestien m\xe4\xe4r\xe4";
     },
     get$numWordsTyped() {
-      return "Jatorrizko mezuetan idatzitako hitzen kopurua";
+      return "Sanottujen sanojen m\xe4\xe4r\xe4 alkuper\xe4isiss\xe4 viesteiss\xe4";
     },
     get$numCorrectChoices() {
-      return "Sistema sortutako gomendioetatik aukeratutako hitz egokiak";
+      return "Oikeiden sanojen m\xe4\xe4r\xe4, jotka on valittu j\xe4rjestelm\xe4n ehdotuksista";
     },
     get$numIncorrectChoices() {
-      return "Zenbakia aukeratutako hitz okerren sistematik sortutako gomendietatik";
+      return "V\xe4\xe4rien sanojen m\xe4\xe4r\xe4, jotka on valittu j\xe4rjestelm\xe4n ehdotuksista";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3719,853 +3719,853 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "Fitxategi mota";
+      return "Tiedostotyyppi";
     },
     get$download(_) {
-      return "Deskarga";
+      return "Lataa";
     },
     get$analyticsNotAvailable() {
-      return "Erabiltzailearen analitikak ez daude eskuragarri";
+      return "K\xe4ytt\xe4j\xe4analytiikka ei saatavilla";
     },
     get$downloading() {
-      return "Deskargatzen...";
+      return "Ladataan...";
     },
     get$failedFetchUserAnalytics() {
-      return "Ezin izan da erabiltzailearen analitikak deskargatu";
+      return "K\xe4ytt\xe4j\xe4analytiikan lataaminen ep\xe4onnistui";
     },
     get$downloadComplete() {
-      return "Deskarga amaitu da!";
+      return "Lataus valmis!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "Zer da '" + wordForm + "'-ren " + morphologicalFeature + "?";
+      return "Mik\xe4 on '" + wordForm + "' " + morphologicalFeature + "?";
     },
     get$dataAvailable() {
-      return "Datuen eskuragarritasuna";
+      return "Tietojen saatavuus";
     },
     get$available(_) {
-      return "Eskuragarri";
+      return "Saatavilla";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot-ak ere akatsak egiten ditu!";
+      return "Pangea Bot tekee my\xf6s virheit\xe4!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "Zer esan nahi du '" + lemma + "'-k?";
+      return "Mit\xe4 '" + lemma + "' tarkoittaa?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Baliokideen esanahiak hitzekin parekatu mezua irakurtzen!";
+      return "Vastaa sanojen merkityksiin viestiss\xe4!";
     },
     get$doubleClickToEdit() {
-      return "Egin klik bikoitza editatzeko.";
+      return "Muokkaa kaksoisnapsauttamalla.";
     },
     get$cefrLevelLabel() {
-      return "CEFR maila";
+      return "CEFR-taso";
     },
     get$image(_) {
-      return "Irudia";
+      return "Kuva";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Aukeratu gaia, modua, ikaskuntza helburua eta sortu jarduera chat-entzat!";
+      return "Valitse aihe, tila, oppimistavoite ja luo toiminta chatille!";
     },
     get$constructUsePvmDesc() {
-      return "Ahots mezu batean sortua";
+      return "Tuotettu \xe4\xe4niviestiss\xe4";
     },
     get$leaveSpaceDescription() {
-      return "Ikastaroa utziz, chat guztiak utziko dituzu bertan. Beste erabiltzaileek ikusi ahal izango dute ikastaroa utzi duzula.";
+      return "L\xe4hdett\xe4ess\xe4 kurssilta, poistut kaikista keskusteluista siin\xe4. Muut k\xe4ytt\xe4j\xe4t n\xe4kev\xe4t, ett\xe4 olet poistunut kurssilta.";
     },
     get$constructUseCorMmDesc() {
-      return "Mezuaren esanahia zuzena";
+      return "Oikea viestin merkitys";
     },
     get$constructUseIncMmDesc() {
-      return "Mezuaren esanahia okerra";
+      return "V\xe4\xe4r\xe4 viestin merkitys";
     },
     get$constructUseIgnMmDesc() {
-      return "Mezuaren esanahia baztertua";
+      return "Ohitettu viestin merkitys";
     },
     get$meaning() {
-      return "Euskarrian";
+      return "Merkitys";
     },
     chatWith$1(displayname) {
-      return displayname + " taldearekin";
+      return "Ryhm\xe4 " + displayname + " kanssa";
     },
     get$clickOnEmailLink() {
-      return "Mesedez, klikatu email-eko estekan eta jarraitu.\n\nEgiaztatu zure spam karpeta, emaila iritsi ez bada.";
+      return "Klikkaa s\xe4hk\xf6postin linkki\xe4 ja jatka.\n\nTarkista roskapostikansio, jos s\xe4hk\xf6posti ei ole saapunut.";
     },
     get$dontForgetPassword() {
-      return "Ez ahaztu zure pasahitza!";
+      return "\xc4l\xe4 unohda salasanaasi!";
     },
     get$enableAutocorrectToolName() {
-      return "Gaitu gailuaren automatikorrektorea";
+      return "Ota laiteautokorjaus k\xe4ytt\xf6\xf6n";
     },
     get$enableAutocorrectDescription() {
-      return "Zure gailuak ikasten ari zaren hizkuntzaren laguntza badu, automatikorrektorea gaituta egon daiteke akats ohikoak zuzentzeko idazten duzunean.";
+      return "Jos laitteesi tukee oppimaasi kielt\xe4, voit ottaa automaattikorjauksen k\xe4ytt\xf6\xf6n laitteessasi korjataksesi yleisi\xe4 virheit\xe4 kirjoittaessasi.";
     },
     get$ttsDisbledTitle() {
-      return "Testu-hitzetik ahotsa desgaituta";
+      return "Tekstist\xe4 puheeksi -toiminto on pois k\xe4yt\xf6st\xe4";
     },
     get$ttsDisabledBody() {
-      return "Gaitzeko testu-hizkuntzara itzultzeko aukera gaitzeko zure ikasketa ezarpenetan";
+      return "Voit ottaa tekstist\xe4 puheeksi -toiminnon k\xe4ytt\xf6\xf6n oppimisasetuksissasi";
     },
     get$noSpaceDescriptionYet() {
-      return "Oraindik ez da ikastaroaren deskribapenik sortu";
+      return "Kurssin kuvausta ei ole viel\xe4 luotu.";
     },
     get$tooLargeToSend() {
-      return "Mezu hau bidaltzeko oso handia da";
+      return "T\xe4m\xe4 viesti on liian suuri l\xe4hetett\xe4v\xe4ksi";
     },
     get$exitWithoutSaving() {
-      return "Ziur zaude gordailurik gabe irtengo zarela?";
+      return "Oletko varma, ett\xe4 haluat poistua tallentamatta?";
     },
     get$enableAutocorrectWarning() {
-      return "Abisua! Zure hizkuntza helburuaren teklatua gehitzea eskatzen du";
+      return "Varoitus! Vaatii kohdekielen n\xe4pp\xe4imist\xf6n lis\xe4\xe4misen";
     },
     get$leaveRoomDescription() {
-      return "Chat hau utzi nahi duzu. Beste erabiltzaileek ikusi ahal izango dute chatetik alde egin duzula.";
+      return "Olet poistumassa t\xe4st\xe4 keskustelusta. Muut k\xe4ytt\xe4j\xe4t n\xe4kev\xe4t, ett\xe4 olet poistunut keskustelusta.";
     },
     get$confirmUserId() {
-      return "Mesedez, berretsi zure Pangea Chat erabiltzaile-izena zure kontua ezabatzeko";
+      return "Vahvista Pangea Chat -k\xe4ytt\xe4j\xe4nimesi poistaaksesi tilisi.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return startDate + "tik aurrera";
+      return "Alkaen " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 Ezin duzu edozein momentutan bertan behera utzi harpidetza ezarpenetan";
+      return "  \u2022 Peruuta milloin tahansa tilauksen asetuksissa";
     },
     get$autocorrectNotAvailable() {
-      return "Zoritxarrez, zure plataforma ez da oraindik ezagutzen ez duen ezaugarria. Egon adi aurrerago garapenean!";
+      return "Valitettavasti alustasi ei t\xe4ll\xe4 hetkell\xe4 tue t\xe4t\xe4 ominaisuutta. Pysy kuulolla jatkokehityksest\xe4!";
     },
     get$pleaseUpdateApp() {
-      return "Mesedez, eguneratu aplikazioa jarraitzeko.";
+      return "P\xe4ivit\xe4 sovellus jatkaaksesi.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Baliokideak hitzak ondoen ordezkatzen dituzten emojiak parekatu. Ez kezkatu! Ez dago puntuazioaren zatiketarik adostasunik ez badago ere. \ud83d\ude05";
+      return "Vastaa emojien ja niiden parhaiten kuvaavien sanojen kanssa. \xc4l\xe4 huoli! Ei pisteit\xe4, vaikka eri mielt\xe4 olisitkin. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "Hau da zure hiztegia guztia! Hitzez XP lortzen duzun heinean, hazten joango dira hazia eta loratzen. Klikatu edozein hitz gehiago ikusteko.";
+      return "T\xe4m\xe4 on koko sanastosi! Kun ansaitset XP:t\xe4 jokaisesta sanasta, ne kasvavat siemenest\xe4 t\xe4yteen kukkaan. Klikkaa mit\xe4 tahansa sanaa n\xe4hd\xe4ksesi lis\xe4\xe4 tietoja.";
     },
     get$morphAnalyticsListBody() {
-      return "Hau da ikasten ari zaren hizkuntzako gramatika kontzeptu guztiak! Zure aurrean agertzen direnean zabalduko dituzu. Klikatu xehetasunak ikusteko.";
+      return "N\xe4m\xe4 ovat kaikki oppimasi kielen kielioppik\xe4sitteet! Saat ne avautumaan, kun kohtaat ne keskustelussa. Klikkaa lis\xe4tietoja varten.";
     },
     get$knockSpaceSuccess() {
-      return "Eskatu duzu ikastaro honetan parte hartzeko! Administratzaile batek erantzungo dizu eskaera jaso duenean \ud83d\ude03";
+      return "Olet pyyt\xe4nyt liittymist\xe4 t\xe4h\xe4n kurssiin! J\xe4rjestelm\xe4nvalvoja vastaa pyynt\xf6\xf6n, kun se on vastaanotettu \ud83d\ude0a";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Entzun mezua osorik. Ondoren, parekatu audioak hitzekin.";
+      return "Kuuntele koko viesti. Sitten yhdist\xe4 \xe4\xe4nitiedostot sanoihin.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Klikatu puzzle piezak gramatika galderak egiteko!";
+      return "Klikkaa palapelin paloja kielioppikysymyksiin!";
     },
     get$home() {
-      return "Hasiera";
+      return "Koti";
     },
     get$join(_) {
-      return "Parte hartu";
+      return "Liity";
     },
     get$readingAssistanceOverviewBody() {
-      return "Klikatu beheko botoiak emojiak, audioak, hitzen esanahia eta gramatika kontzeptuak parekatzeko mini-jokoak egiteko. Edo klikatu edozein hitz xehetasunak ikusteko.";
+      return "Klikkaa alla olevia painikkeita minipeleihin, joissa yhdistet\xe4\xe4n emojit, \xe4\xe4nitiedostot, sanan merkitys ja kielioppik\xe4sitteet. Tai klikkaa mit\xe4 tahansa sanaa saadaksesi lis\xe4tietoja.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Berrezarri argibide-txertaketak";
+      return "Nollaa ohjeiden ty\xf6kaluvihjeet";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Klik egin argibide-txertaketak erakusteko, erabiltzaile berri baten moduan.";
+      return "Klikkaa n\xe4ytt\xe4\xe4ksesi ohjeiden ty\xf6kaluvihjeet kuten uudelle k\xe4ytt\xe4j\xe4lle.";
     },
     get$selectForGrammar() {
-      return "Hizkuntzaren ikono bat aukeratu jardueretarako eta xehetasunei.";
+      return "Valitse kielioppikuvake aktiviteetteihin ja yksityiskohtiin.";
     },
     get$translationProblem() {
-      return "Itzulpen arazoa";
+      return "K\xe4\xe4nn\xf6songelma";
     },
     get$askToJoin() {
-      return "Galdetu bat egiteko";
+      return "Kysy liittymist\xe4";
     },
     get$emptyChatWarningTitle() {
-      return "Chat hutsa da";
+      return "Chat on tyhj\xe4";
     },
     get$emptyChatWarningDesc() {
-      return "Inor ez du gonbidatu zure chat-era. Joan chat ezarpenetara kontaktuak edo Bot gonbidatzeko. Hau geroago ere egin dezakezu.";
+      return "Et ole kutsunut ket\xe4\xe4n chattiisi. Mene Chat-asetuksiin kutsuaksesi yhteystietosi tai Botin. Voit tehd\xe4 t\xe4m\xe4n my\xf6s my\xf6hemmin.";
     },
     get$areYouLikeMe() {
-      return "Zu ni bezalakoa zara?";
+      return "Oletko kuin min\xe4?";
     },
     get$tryAgainLater() {
-      return "Saiakera asko egin dituzu. Saiatu berriro 5 minutuz geroago.";
+      return "Liian monta yrityst\xe4 tehty. Yrit\xe4 uudelleen 5 minuutin kuluttua.";
     },
     get$enterSpaceCode() {
-      return "Sartu ikastaroaren kodea";
+      return "Sy\xf6t\xe4 kurssikoodi";
     },
     get$shareSpaceLink() {
-      return "Partekatu esteka";
+      return "Jaa linkki";
     },
     get$byUsingPangeaChat() {
-      return "Pangea Chat erabiltzean, ados nago ";
+      return "K\xe4ytt\xe4m\xe4ll\xe4 Pangea Chatia, hyv\xe4ksyn ";
     },
     get$details(_) {
-      return "Xehetasunak";
+      return "Yksityiskohdat";
     },
     get$languageLevelPreA1Desc() {
-      return "Inork ez dut ikasi edo erabili hizkuntza hau inoiz.";
+      return "En ole koskaan oppinut tai k\xe4ytt\xe4nyt kielt\xe4.";
     },
     get$languageLevelA1Desc() {
-      return "Ulertzen eta erabiltzen ditut eguneroko adierazpen ezagun batzuk eta oinarrizko esamoldeak.";
+      return "Voin ymm\xe4rt\xe4\xe4 ja k\xe4ytt\xe4\xe4 joitakin tuttuja arkisia ilmauksia ja hyvin perustason lauseita.";
     },
     get$languageLevelA2Desc() {
-      return "Ulertzen ditut esaldiak eta maiz erabiltzen diren adierazpenak, bereziki garrantzitsuen arloetan.";
+      return "Voin ymm\xe4rt\xe4\xe4 lauseita ja usein k\xe4ytettyj\xe4 ilmauksia, jotka liittyv\xe4t v\xe4litt\xf6m\xe4sti relevantteihin alueisiin.";
     },
     get$languageLevelB1Desc() {
-      return "Edozein egoera ezagunen aurrean jokatzen dut eta testu lotuak sortzen ditut gai ezagunetan.";
+      return "Voin k\xe4sitell\xe4 suurimman osan tutuista tilanteista ja tuottaa yksinkertaista yhdistetty\xe4 teksti\xe4 tutuista aiheista.";
     },
     get$languageLevelB2Desc() {
-      return "Ulertzen ditut testu konplexuen ideiak nagusiak eta elkarreragiten dut fluidez eta espontaneotasun maila batean.";
+      return "Ymm\xe4rr\xe4n p\xe4\xe4ajatukset monimutkaisista teksteist\xe4 ja pystyn kommunikoimaan sujuvasti ja spontaanisti.";
     },
     get$languageLevelC1Desc() {
-      return "Ideiak modu fluido eta espontaneoan adierazten ditut, ez dut borrokatu behar eta testu zailenak ulertzen ditut.";
+      return "Voin ilmaista ideoita sujuvasti ja spontaanisti ilman suuria vaikeuksia ja ymm\xe4rr\xe4n laajan valikoiman vaativia tekstej\xe4.";
     },
     get$languageLevelC2Desc() {
-      return "Edo guztia ia entzuten edo irakurtzen dut eta modu fluido eta zehatzean adierazi dezaket.";
+      return "Ymm\xe4rr\xe4n k\xe4yt\xe4nn\xf6ss\xe4 kaiken kuullun tai luetun ja pystyn ilmaisemaan itse\xe4ni sujuvasti ja tarkasti.";
     },
     get$newVocab() {
-      return "Hiztegi berria";
+      return "Uusi sanasto";
     },
     get$newGrammar() {
-      return "Gramatika kontzeptu berriak";
+      return "Uudet kielioppik\xe4sitteet";
     },
     get$choosePracticeMode() {
-      return "Klik egin goiko botoietako batean praktika jarduera bat hasteko";
+      return "Klikkaa yll\xe4 olevista painikkeista aloittaaksesi harjoitustoiminnan";
     },
     get$ban() {
-      return "Zigorra ezarri";
+      return "Kielto";
     },
     get$kick() {
-      return "Kanporatu";
+      return "Potki";
     },
     get$lemma() {
-      return "Lema";
+      return "Lemma";
     },
     get$grammarFeature() {
-      return "Gramatika ezaugarria";
+      return "Kielioppiominaisuus";
     },
     get$grammarTag() {
-      return "Gramatika etiketa";
+      return "Kielioppimerkint\xe4";
     },
     get$forms() {
-      return "Formak";
+      return "Muodot";
     },
     get$exampleMessages() {
-      return "Adibide mezuak";
+      return "Esimerkkiviestit";
     },
     get$timesUsedIndependently() {
-      return "Erabiltzeko aldizkakotasuna modu independentean";
+      return "Kertojen m\xe4\xe4r\xe4 itsen\xe4isesti k\xe4ytettyn\xe4";
     },
     get$timesUsedWithAssistance() {
-      return "Laguntzarekin erabiltzeko aldizkakotasuna";
+      return "Kertojen m\xe4\xe4r\xe4 avustuksella k\xe4ytettyn\xe4";
     },
     shareInviteCode$1(code) {
-      return "Partekatu gonbidapen kodea: " + code;
+      return "Jaa kutsukoodi: " + code;
     },
     get$skipForNow() {
-      return "Utzi une honetan";
+      return "Ohita nyt";
     },
     get$permissions(_) {
-      return "Baimenak";
+      return "Oikeudet";
     },
     get$spaceChildPermission() {
-      return "Nork gehitu dezake ikastaro honetan txate berriak";
+      return "Kuka voi lis\xe4t\xe4 uusia keskusteluja t\xe4h\xe4n kurssiin";
     },
     get$addEnvironmentOverride() {
-      return "Gehitu ingurune gainkarga";
+      return "Lis\xe4\xe4 ymp\xe4rist\xf6ylitys";
     },
     get$defaultOption() {
-      return "Lehentasuna";
+      return "Oletus";
     },
     get$deleteChatDesc() {
-      return "Ziur zaude txat hau ezabatu nahi duzula? Parte-hartzaile guztientzat ezabatuko da eta txataren mezu guztiak ez dira gehiago erabiliko praktikan edo ikasketa analitiketan.";
+      return "Oletko varma, ett\xe4 haluat poistaa t\xe4m\xe4n keskustelun? Se poistetaan kaikilta osallistujilta ja kaikki keskustelun viestit eiv\xe4t ole en\xe4\xe4 k\xe4ytett\xe4viss\xe4 harjoitteluun tai oppimisanalytiikkaan.";
     },
     get$deleteSpaceDesc() {
-      return "Ikastaroa eta aukeratutako txat guztiak ezabatuko dira parte-hartzaile guztientzat eta txataren mezu guztiak ez dira gehiago erabiliko praktikan edo ikasketa analitiketan. Ekintza hau ezin da desegin.";
+      return "Kurssi ja kaikki valitut keskustelut poistetaan kaikilta osallistujilta ja kaikki keskustelun viestit eiv\xe4t ole en\xe4\xe4 k\xe4ytett\xe4viss\xe4 harjoitteluun tai oppimisanalytiikkaan. T\xe4t\xe4 toimintoa ei voi peruuttaa.";
     },
     get$configureSpace() {
-      return "Konfiguratu ikastaroa";
+      return "M\xe4\xe4rit\xe4 kurssi";
     },
     get$pinMessages() {
-      return "Pin mezuak";
+      return "Kiinnit\xe4 viestit";
     },
     get$setJoinRules() {
-      return "Ezarri parte-hartzeko arauak";
+      return "Aseta liittymiss\xe4\xe4nn\xf6t";
     },
     get$changeGeneralSettings() {
-      return "Aldatu ezarpen orokorrak";
+      return "Vaihda yleiset asetukset";
     },
     get$inviteOtherUsersToRoom() {
-      return "Gonbidatu beste erabiltzaileak";
+      return "Kutsu muita k\xe4ytt\xe4ji\xe4";
     },
     get$changeTheNameOfTheSpace() {
-      return "Aldatu ikastaroaren izena";
+      return "Vaihda kurssin nimi";
     },
     get$changeTheDescription() {
-      return "Aldatu deskribapena";
+      return "Vaihda kuvaus";
     },
     get$changeThePermissions() {
-      return "Aldatu baimenak";
+      return "Vaihda oikeudet";
     },
     get$introductions() {
-      return "Aurkezpenak";
+      return "Esittelyt";
     },
     get$announcements() {
-      return "Albisteak";
+      return "Ilmoitukset";
     },
     get$activities() {
-      return "Jarduerak";
+      return "Toiminnot";
     },
     get$access() {
-      return "Sarrera";
+      return "P\xe4\xe4sy";
     },
     get$howSpaceCanBeFound() {
-      return "Nola aurki daiteke ikastaro hau";
+      return "Kuinka t\xe4m\xe4 kurssi l\xf6ytyy";
     },
     get$$private() {
-      return "Pribatua";
+      return "Yksityinen";
     },
     get$cannotBeFoundInSearch() {
-      return "Ez da bilaketetan aurki daiteke";
+      return "Ei l\xf6ydy haussa";
     },
     get$$public(_) {
-      return "Publikoa";
+      return "Julkinen";
     },
     get$visibleToCommunity() {
-      return 'Ikusgai Pangea Chat komunitate zabalagoaren bidez "Ikusi ikastaroa"';
+      return 'N\xe4kyviss\xe4 laajemman Pangea Chat -yhteis\xf6n kautta "L\xf6yd\xe4 kurssi"';
     },
     get$howSpaceCanBeJoined() {
-      return "Nola elkartu ikastaro hau";
+      return "Kuinka t\xe4h\xe4n kurssiin voi liitty\xe4";
     },
     get$canBeFoundVia() {
-      return "Aurki daiteke bidez:";
+      return "L\xf6ydett\xe4viss\xe4 kautta:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 gonbidapena";
+      return "\u2022 kutsu";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 kodea edo esteka";
+      return "\u2022 koodi tai linkki";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 eskatu elkartzeko eta administratzailearen onespena";
+      return "\u2022 pyyt\xe4\xe4 liittymist\xe4 ja yll\xe4pidon hyv\xe4ksynt\xe4";
     },
     get$youHaveLeveledUp() {
-      return "Maila igo duzu!";
+      return "Olet noussut tasolle!";
     },
     get$sendActivities() {
-      return "Bidali ekintzak";
+      return "L\xe4het\xe4 aktiviteetteja";
     },
     get$directMessage() {
-      return "Mezu zuzena";
+      return "Yksityisviesti";
     },
     get$newDirectMessage() {
-      return "Mezu zuzena berria";
+      return "Uusi yksityisviesti";
     },
     get$speakingExercisesTooltip() {
-      return "Hitz egitea";
+      return "Puhuminen";
     },
     get$transcriptionFailed() {
-      return "Audio transkribatzeko huts egin du";
+      return "\xc4\xe4nen litter\xf6inti ep\xe4onnistui";
     },
     get$aUserIsKnocking() {
-      return "1 erabiltzailek zure ikastaroan sartzeko eskaera egin du";
+      return "Yksi k\xe4ytt\xe4j\xe4 pyyt\xe4\xe4 liittym\xe4\xe4n kurssiisi";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " erabiltzailek zure ikastaroan sartzeko eskaera egin du";
+      return "" + users + " k\xe4ytt\xe4j\xe4\xe4 pyyt\xe4\xe4 liittym\xe4\xe4n kurssiisi";
     },
     get$failedToFetchTranscription() {
-      return "Ezin izan da transkripzioa lortu";
+      return "\xc4\xe4nityksen hakeminen ep\xe4onnistui";
     },
     get$deleteEmptySpaceDesc() {
-      return "Ikastaroa parte-hartzaile guztientzat ezabatuko da. Ekintza hau ezin da desegin.";
+      return "Kurssi poistetaan kaikilta osallistujilta. T\xe4t\xe4 toimintoa ei voi peruuttaa.";
     },
     get$failedToPlayVideo() {
-      return "Ezin izan da bideoa jokatu";
+      return "Videon toistaminen ep\xe4onnistui";
     },
     get$done() {
-      return "Eginda";
+      return "Valmis";
     },
     get$inThisSpace() {
-      return "Ikastaro honetan";
+      return "T\xe4ss\xe4 kurssissa";
     },
     get$myContacts() {
-      return "Nire kontaktuak";
+      return "Yhteystietoni";
     },
     get$inviteAllInSpace() {
-      return "Deitu ikastaro honetan dauden guztiak";
+      return "Kutsu kaikki t\xe4h\xe4n kurssiin";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "Ikastaroaren parte-hartzaile guztiak gonbidatu dira txatera";
+      return "Kaikki kurssin osallistujat on kutsuttu keskusteluun";
     },
     numKnocking$1(count) {
-      return "" + count + " jotzen";
+      return "" + count + " koputtaa";
     },
     numInvited$1(count) {
-      return "" + count + " gonbidatu";
+      return "" + count + " kutsuttu";
     },
     get$errorFetchingDefinition() {
-      return "Ezin izan da definizioa lortu";
+      return "Virhe haettaessa m\xe4\xe4ritelm\xe4\xe4";
     },
     get$errorProcessAnalytics() {
-      return "Ezin izan da analitikak prozesatu";
+      return "Virhe analytiikan k\xe4sittelyss\xe4";
     },
     get$errorDownloading() {
-      return "Deskarga huts egin du";
+      return "Lataus ep\xe4onnistui";
     },
     get$errorFetchingLevelSummary() {
-      return "Ezin izan da mailaren laburpena lortu";
+      return "Virhe haettaessa tasoraporttia";
     },
     get$errorLoadingSpaceChildren() {
-      return "Ezin izan da ikastaro honetan barruko txat batzuk kargatu";
+      return "Virhe ladataessa keskusteluja t\xe4m\xe4n kurssin sis\xe4ll\xe4";
     },
     get$unexpectedError() {
-      return "Errore ezezaguna.";
+      return "Odottamaton virhe.";
     },
     get$pleaseReload() {
-      return "Mesedez, kargatu berriro eta saiatu berriro.";
+      return "Lataa sivu uudelleen ja yrit\xe4 uudelleen.";
     },
     get$translationError() {
-      return "Itzulpen errorea";
+      return "K\xe4\xe4nn\xf6svirhe";
     },
     get$errorFetchingTranslation() {
-      return "Ezin izan da itzulpena lortu";
+      return "Virhe haettaessa k\xe4\xe4nn\xf6st\xe4";
     },
     get$errorFetchingActivity() {
-      return "Ezin izan da jarduera lortu";
+      return "Virhe haettaessa toimintaa";
     },
     get$check(_) {
-      return "Egiaztatu";
+      return "Tarkista";
     },
     get$unableToFindRoom() {
-      return "Ez da txata edo ikastaroa aurkitu kode horrekin. Saiatu berriro.";
+      return "Ei l\xf6ydetty keskustelua tai kurssia t\xe4ll\xe4 koodilla. Yrit\xe4 uudelleen.";
     },
     viewingAnalytics$2(visible, users) {
-      return "" + visible + "/" + users + " Analytics ikusten";
+      return "N\xe4ytet\xe4\xe4n " + visible + "/" + users + " analytiikkaa";
     },
     get$request(_) {
-      return "Eskatu";
+      return "Pyynt\xf6";
     },
     get$requestAll(_) {
-      return "Eskatu Guztiak";
+      return "Pyyd\xe4 kaikki";
     },
     get$confirmMessageUnpin() {
-      return "Ziur zaude mezu hau pinik ez jartzeko?";
+      return "Oletko varma, ett\xe4 haluat irrottaa t\xe4m\xe4n viestin?";
     },
     get$pending(_) {
-      return "Zain";
+      return "Odottaa";
     },
     get$openRoleLabel() {
-      return "IREKIA";
+      return "AVOIN";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " " + role + " bezala batu da";
+      return "\ud83d\udc4b " + username + " liittyi roolilla " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " jarduera hau amaitu du";
+      return "\ud83c\udfaf " + username + " saatteli aktiviteetin p\xe4\xe4t\xf6kseen";
     },
     get$activitySummaryError() {
-      return "Jarduera laburpenak ez daude eskuragarri";
+      return "Aktiviteettien yhteenvetoja ei saatavilla";
     },
     get$requestSummaries() {
-      return "Eskatu laburpenak";
+      return "Pyyd\xe4 yhteenvetoja";
     },
     get$requestAccessTitle() {
-      return "Eskaera analitika sarbidea?";
+      return "Pyyd\xe4 analytiikkap\xe4\xe4sy\xe4?";
     },
     get$requestAccessDesc() {
-      return "Zerbait nahi al duzu parte-hartzailearen analytics ikusteko sarbidea eskatu?\n\nParte-hartzaileek ados badaude, ikastaroaren administratzaileek haien:\n    \u2022 hizkuntza-berritasun osoa\n    \u2022 gramatika kontzeptu guztiak\n    \u2022 jarduera saio guztiak amaituak\n    \u2022 erabiltzen diren gramatika kontzeptu zehatzak, zuzen eta oker\n\nIkusi ahal izango dute haien:\n    \u2022 mezua ikastaroaren kanpoan dauden txatetan\n    \u2022 hiztegi zerrenda";
+      return "Haluatko pyyt\xe4\xe4 p\xe4\xe4sy\xe4 n\xe4hd\xe4ksesi osallistujien analytiikan?\n\nJos osallistujat suostuvat, kurssin yll\xe4pit\xe4j\xe4t voivat n\xe4hd\xe4 heid\xe4n:\n    \u2022 kokonaissanaston\n    \u2022 kokonaiskielioppikonseptit\n    \u2022 kokonaisaktiviteettisessiot, jotka on suoritettu\n    \u2022 k\xe4ytetyt, oikein ja v\xe4\xe4rin, kielioppikonseptit\n\nHe eiv\xe4t voi n\xe4hd\xe4 heid\xe4n:\n    \u2022 viestej\xe4 keskusteluissa kurssin ulkopuolella\n    \u2022 sanastoluetteloa";
     },
     get$analyticsInactiveTitle() {
-      return "Ezingo da eskaerarik bidali erabiltzaile inactiveentzat";
+      return "Ei voitu l\xe4hett\xe4\xe4 pyynt\xf6j\xe4 inaktiivisille k\xe4ytt\xe4jille";
     },
     get$analyticsInactiveDesc() {
-      return "Ez aktibo diren erabiltzaileek, ez baitute sartu funtzio hau sartu denetik, ez dute zure eskaeraren berri izango.\n\nEskatzeko botoia agertuko da berriro itzultzen direnean. Geroago berriro bidali dezakezu eskaera botoia sakatuz haien izenaren azpian, eskuragarri dagoenean.";
+      return "Inaktiiviset k\xe4ytt\xe4j\xe4t, jotka eiv\xe4t ole kirjautuneet sis\xe4\xe4n t\xe4m\xe4n ominaisuuden k\xe4ytt\xf6\xf6noton j\xe4lkeen, eiv\xe4t n\xe4e pyynt\xf6\xe4si.\n\nPyynt\xf6painike ilmestyy, kun he palaavat. Voit l\xe4hett\xe4\xe4 pyynn\xf6n uudelleen my\xf6hemmin napsauttamalla Pyynt\xf6-painiketta heid\xe4n nimens\xe4 alla, kun se on saatavilla.";
     },
     get$accessRequestedTitle() {
-      return "Analytics Sarbide Eskaera";
+      return "Analytiikan p\xe4\xe4sypyynt\xf6";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Eskaerak egiten ari diren admin(ak): " + admin + " \n\n\u201e" + space + "\u201c-ko adminak zure ikaskuntza analitikak ikusteko eskaera egiten ari dira.\n\nOnartzen baduzu, hauek zure:\n    \u2022 hiztegi osoa\n    \u2022 gramatika kontzeptu osoak\n    \u2022 amaitutako jarduera saio guztien kopurua\n    \u2022 erabilitako gramatika kontzeptu zehatzak, ondo eta oker\n\nEz dute ikusi ahal izango zure:\n    \u2022 ikastaroaren kanpoko txatetan mezuak\n    \u2022 hiztegi zerrenda";
+      return "Pyydet\xe4\xe4n yll\xe4pit\xe4j\xe4\xe4(t): " + admin + " \n\nYll\xe4pit\xe4j\xe4t tilasta \u201c" + space + "\u201d pyyt\xe4v\xe4t p\xe4\xe4st\xe4kseen tarkastelemaan oppimisanalyysej\xe4si.\n\nJos hyv\xe4ksyt, he voivat tarkastella:\n    \u2022 koko sanavarastoasi\n    \u2022 kaikkia kielioppik\xe4sitteit\xe4si\n    \u2022 kaikkia suorittamiasi aktiviteettisessioita\n    \u2022 k\xe4ytettyj\xe4 kielioppik\xe4sitteit\xe4, oikein ja v\xe4\xe4rin\n\nHe eiv\xe4t voi tarkastella:\n    \u2022 viestej\xe4 kursseja ulkopuolella olevissa keskusteluissa\n    \u2022 sanavarastoluetteloasi";
     },
     get$adminRequestedAccess() {
-      return "Administratzaileek zure analitikak ikusi nahi dituzte.";
+      return "Yll\xe4pit\xe4j\xe4t pyyt\xe4v\xe4t katsomaan analytiikkaasi.";
     },
     lastUpdated$1(time) {
-      return "Eguneratua\n" + time;
+      return "P\xe4ivitetty\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Bukatu da guztia!";
+      return "Kaikki valmiina!";
     },
     get$endForAll() {
-      return "Amaitu guztientzat";
+      return "Lopeta kaikille";
     },
     get$newCourse() {
-      return "Ikastaro berria";
+      return "Uusi kurssi";
     },
     numModules$1(num) {
-      return "" + num + " modulua";
+      return "" + num + " moduulia";
     },
     get$coursePlan() {
-      return "Ikastaro Plana";
+      return "Kurssisuunnitelma";
     },
     get$editCourseLater() {
-      return "Eman dezakezu geroago txantiloiaren izena, deskribapenak eta ikastaroaren irudia editatzeko.";
+      return "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa my\xf6hemmin.";
     },
     get$newCourseAccess() {
-      return "Lehenetsiz, ikastaroak pribatutasunekoak dira eta administratzailearen onespena behar dute parte hartzeko. Edozein momentutan aldatu ditzakezu ezarpen hauek.";
+      return "Oletuksena kurssit ovat yksityisi\xe4 ja vaativat yll\xe4pit\xe4j\xe4n hyv\xe4ksynn\xe4n liitty\xe4ksesi. Voit muokata n\xe4it\xe4 asetuksia milloin tahansa.";
     },
     get$createCourse() {
-      return "Sortu ikastaroa";
+      return "Luo kurssi";
     },
     get$stats() {
-      return "Datuak";
+      return "Tilastot";
     },
     get$createGroupChat() {
-      return "Sortu talde txat bat";
+      return "Luo ryhm\xe4keskustelu";
     },
     get$editCourse() {
-      return "Editatu ikastaroa";
+      return "Muokkaa kurssia";
     },
     get$inviteDesc() {
-      return "Erabiltzaile-izena, kodea edo esteka bidez";
+      return "Kutsulla k\xe4ytt\xe4j\xe4nimell\xe4, koodilla tai linkill\xe4";
     },
     get$editCourseDesc() {
-      return "Hemen ikastaroaren izena, deskribapena, eta abar editatu ditzakezu";
+      return "T\xe4\xe4ll\xe4 voit muokata kurssin otsikkoa, kuvausta jne.";
     },
     get$permissionsDesc() {
-      return "Ezarri baimenak, hala nola nor gonbidatu dezakeen erabiltzaileak, mezularitza bidali, txateak sortu, eta abar";
+      return "Aseta oikeudet, kuten kuka voi kutsua k\xe4ytt\xe4ji\xe4, l\xe4hett\xe4\xe4 viestej\xe4, luoda keskusteluja jne.";
     },
     get$accessDesc() {
-      return "Zure ikastaroa mundu osoari irekita egin dezakezu! Edo, ikastaroa pribatua eta segurua egin";
+      return "Voit tehd\xe4 kurssistasi avoimen maailmalle! Tai tehd\xe4 siit\xe4 yksityisen ja turvallisen.";
     },
     get$createGroupChatDesc() {
-      return "Ekintza saioak hasten eta bukatzen diren bitartean, talde txat hauek komunikazio erregularrerako irekita egongo dira";
+      return "Sill\xe4 aikaa kun aktiviteettisessiot alkavat ja p\xe4\xe4ttyv\xe4t, ryhm\xe4keskustelut pysyv\xe4t avoimina s\xe4\xe4nn\xf6llist\xe4 viestint\xe4\xe4 varten.";
     },
     get$deleteDesc() {
-      return "Administratzaileek bakarrik ezabatu dezakete ikastaroa. Hau ekintza suntsitzailea da, erabiltzaile guztiak ezabatzen ditu eta ikastaroaren barruan aukeratutako txat guztiak ezabatzen ditu. Kontuz ibili";
+      return "Vain yll\xe4pit\xe4j\xe4t voivat poistaa kurssin. T\xe4m\xe4 on tuhoava toimenpide, joka poistaa kaikki k\xe4ytt\xe4j\xe4t ja poistaa kaikki valitut keskustelut kurssin sis\xe4ll\xe4. Toimi varoen.";
     },
     get$noCourseFound() {
-      return "Aizu, ikastaro honek plan bat behar du!\n\nIkastaroaren planak gaiak eta elkarrizketa jarduerak dira";
+      return "Voi, t\xe4m\xe4 kurssi tarvitsee suunnitelman!\n\nKurssisuunnitelmat ovat aiheiden ja keskustelutoimintojen sarja.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " beste";
+      return "+ " + num + " muuta";
     },
     get$directMessages() {
-      return "Mezularitza zuzena";
+      return "Suorat viestit";
     },
     get$whatNow() {
-      return "Zer orain?";
+      return "Mit\xe4 nyt?";
     },
     get$chooseNextActivity() {
-      return "Hurrengo jarduera aukeratu!";
+      return "Valitse seuraava toimintosi!";
     },
     get$letsGo() {
-      return "Goazen";
+      return "L\xe4hdet\xe4\xe4n";
     },
     get$chooseRole() {
-      return "Aukeratu rola!";
+      return "Valitse rooli!";
     },
     get$chooseRoleToParticipate() {
-      return "Aukeratu parte hartu nahi duzun rola!";
+      return "Valitse rooli osallistumista varten!";
     },
     waitingToFillRole$1(num) {
-      return "" + num + " rolen bete arte itxaron...";
+      return "Odotetaan " + num + " roolin t\xe4yttymist\xe4...";
     },
     get$pingParticipants() {
-      return "Pinga ikastaro parte-hartzaileak";
+      return "Pingaa kurssin osallistujia";
     },
     get$playWithBot() {
-      return "Jolastu Pangea Bot-ekin";
+      return "Leiki Pangea-botin kanssa";
     },
     get$waitNotDone() {
-      return "Itxaron, ez naiz bukatu!";
+      return "Odotan, en ole valmis!";
     },
     get$waitingForOthersToFinish() {
-      return "Itxaron besteek amaitu arte...";
+      return "Odotetaan muiden valmistumista...";
     },
     get$generatingSummary() {
-      return "Txataren analisia eta emaitzak sortzen";
+      return "Analysoidaan keskustelua ja luodaan tuloksia";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " erabiltzaileak bilatzen ari da " + room + " gelan jarduera saioan parte hartzeko erabiltzaileak";
+      return user + " etsii k\xe4ytt\xe4ji\xe4 liittym\xe4\xe4n aktiviteettisessioon " + room;
     },
     get$courseName() {
-      return "Ikastaroaren izena";
+      return "Kurssin nimi";
     },
     get$createNewCourse() {
-      return "Ikastaro berria";
+      return "Uusi kurssi";
     },
     goToCourse$1(course) {
-      return "Joan ikastaro batera: " + course;
+      return "Siirry kurssiin: " + course;
     },
     get$startNewSession() {
-      return "Hasi saio berria";
+      return "Aloita uusi istunto";
     },
     get$joinOpenSession() {
-      return "Batu irekita dagoen saiora";
+      return "Liity avoimeen istuntoon";
     },
     get$activityNotFound() {
-      return "Ez da ekintzarik aurkitu";
+      return "Toimintoa ei l\xf6ytynyt";
     },
     get$levelUp() {
-      return "Maila igo";
+      return "Taso nousee";
     },
     get$myActivities() {
-      return "Nire ekintzak";
+      return "Omat aktiviteetit";
     },
     get$openToJoin() {
-      return "Batzeko aukera";
+      return "Avoin liitty\xe4";
     },
     get$activityDone() {
-      return "Ekintza Amaituta!";
+      return "Aktiviteetti valmis!";
     },
     get$promoCodeInfo() {
-      return "Promozio kodeak hurrengo orrian sartu daitezke";
+      return "Alennuskoodit voidaan sy\xf6tt\xe4\xe4 seuraavalla sivulla";
     },
     get$editsComingSoon() {
-      return "Hiriak eta ekintzak editatzeko aukera laster etorriko da.";
+      return "Mahdollisuus muokata kaupunkeja ja aktiviteetteja on tulossa pian.";
     },
     get$editing() {
-      return "Editatzen";
+      return "Muokkaus";
     },
     get$activityNeedsOneMember() {
-      return "Aizu! Ekintza honek pertsona bat gehiago behar du.";
+      return "Voi ei! T\xe4m\xe4 aktiviteetti tarvitsee viel\xe4 yhden henkil\xf6n.";
     },
     activityNeedsMembers$1(num) {
-      return "Aupa! Gaitzaz, jardunbide honek " + num + " pertsona gehiago behar ditu.";
+      return "Voi ei! T\xe4m\xe4 aktiviteetti tarvitsee viel\xe4 " + num + " ihmist\xe4.";
     },
     get$inviteFriendsToCourse() {
-      return "Gonbidatu lagunak nire ikastaroan";
+      return "Kutsu yst\xe4vi\xe4 kurssilleni";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Harpidetu jarduera laburpenak irekitzeko";
+      return "Tilaa aktiviteettien yhteenvetojen avaaminen";
     },
     get$subscribeToUnlockDefinitions() {
-      return "Harpidetu definizioak irekitzeko";
+      return "Tilaa m\xe4\xe4ritelmien avaaminen";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Harpidetu transkripzioak irekitzeko";
+      return "Tilaa transkriptioiden avaaminen";
     },
     get$pingSent() {
-      return "\ud83d\udd14 Ikastaroaren ping-a bidali da! \ud83d\udd14";
+      return "\ud83d\udce3 Kurssin h\xe4lytys l\xe4hetetty! \ud83d\udce3";
     },
     get$courseTitle() {
-      return "Ikastaroaren izena";
+      return "Kurssin otsikko";
     },
     get$courseDesc() {
-      return "Ikastaroaren deskribapena";
+      return "Kurssin kuvaus";
     },
     get$courseSavedSuccessfully() {
-      return "Ikastaroa arrakastaz gorde da";
+      return "Kurssi tallennettu onnistuneesti";
     },
     get$addCoursePlan() {
-      return "Gehitu ikastaro plan bat";
+      return "Lis\xe4\xe4 kurssisuunnitelma";
     },
     get$activityStatsButtonInstruction() {
-      return "Klikatu hemen zure jarduera estatistikak ikusteko eta jarduera amaitzean ixteko";
+      return "Klikkaa t\xe4st\xe4 n\xe4hd\xe4ksesi aktiviteettitilastosi ja sulkeaksesi aktiviteetin lopuksi";
     },
     get$readingAnalyticsDesc() {
-      return "Klikatu praktika bakoitzean irakurketa jarduerak egiteko.";
+      return "Klikkaa harjoitusta jokaisessa viestiss\xe4 lukuharjoituksia varten.";
     },
     get$speakingAnalyticsDesc() {
-      return "Grabatu ahots mezuak mintzatzeko praktika egiteko.";
+      return "Tallenna \xe4\xe4niviestej\xe4 puheharjoituksia varten.";
     },
     get$audioAnalyticsDesc() {
-      return "Klikatu praktika bakoitzean entzute jarduerak egiteko.";
+      return "Klikkaa harjoitusta jokaisessa viestiss\xe4 kuunteluharjoituksia varten.";
     },
     get$loginToAccount() {
-      return "Hasi saioa nire kontuan";
+      return "Kirjaudu tililleni";
     },
     get$appDescription() {
-      return "Ikasi hizkuntza\nzure lagunekin mezularitza egiten bitartean.";
+      return "Opiskele kielt\xe4\nl\xe4hett\xe4m\xe4ll\xe4 viestej\xe4 yst\xe4villesi.";
     },
     get$languages(_) {
-      return "Hizkuntzak";
+      return "Kielet";
     },
     get$chooseLanguage() {
-      return "Hautatu helburu hizkuntza bat.";
+      return "Valitse kohdekieli.";
     },
     get$startOwn() {
-      return "Hasi nirea";
+      return "Aloita oma";
     },
     get$joinCourseDesc() {
-      return "Ikastaro bakoitzak 8-10 gaika ditu, eta hizkuntzaren ikaskuntza jarduera oinarritutako zeregin sorta batekin.";
+      return "Jokaisessa kurssissa on 8-10 j\xe4sennelty\xe4 aihetta, joissa on erilaisia teht\xe4vien pohjaisia kielioppiharjoituksia.";
     },
     get$courseCodeHint() {
-      return "Bidaia kodea edo esteka";
+      return "Matkan koodi tai linkki";
     },
     get$signupOption() {
-      return "Nola nahi duzu erregistratu?";
+      return "Miten haluat rekister\xf6ity\xe4?";
     },
     get$withApple() {
-      return "Apple-rekin";
+      return "Applella";
     },
     get$withGoogle() {
-      return "Google-rekin";
+      return "Googlella";
     },
     get$withEmail() {
-      return "Email bidez";
+      return "S\xe4hk\xf6postilla";
     },
     get$createAccount() {
-      return "Sortu kontua";
+      return "Luo tili";
     },
     get$loginWithEmail() {
-      return "Saioa hasi email bidez";
+      return "Kirjaudu sis\xe4\xe4n s\xe4hk\xf6postilla";
     },
     get$usernameOrEmail() {
-      return "Erabiltzaile-izena edo emaila";
+      return "K\xe4ytt\xe4j\xe4tunnus tai s\xe4hk\xf6posti";
     },
     get$email() {
-      return "Emaila";
+      return "S\xe4hk\xf6posti";
     },
     get$forgotPassword() {
-      return "Aizu galdu?";
+      return "Unohditko salasanan?";
     },
     get$writingAnalyticsDesc() {
-      return "Bidali mezuak idazketa praktikatzen laguntzeko.";
+      return "L\xe4het\xe4 viestej\xe4 harjoitellaksesi kirjoittamista.";
     },
     get$endActivity() {
-      return "Amaitu jarduera";
+      return "Lopeta toiminta";
     },
     get$allLanguages() {
-      return "Hizkuntza guztiak";
+      return "Kaikki kielet";
     },
     get$chatListTooltip() {
-      return "Hemen zure mezu zuzenean aurkituko dituzu! Sakatu edozein erabiltzailearen avatarra eta \u201chasi elkarrizketa\u201d mezu zuzena bidaltzeko.";
+      return 'T\xe4\xe4lt\xe4 l\xf6yd\xe4t yksityisviestisi! Klikkaa mink\xe4 tahansa k\xe4ytt\xe4j\xe4n avataria ja "aloita keskustelu" l\xe4hett\xe4\xe4ksesi yksityisviestin.';
     },
     get$directMessageBotTitle() {
-      return "Pangea Bot mezu zuzena";
+      return "Yksityisviesti Pangea Bot";
     },
     get$feedbackTitle() {
-      return "Jarduera Feedback";
+      return "Toiminnan palaute";
     },
     get$feedbackRespDesc() {
-      return "Egon etxeko egunean, eguneraketak ikusteko.";
+      return "Tarkista huomenna aktiviteettip\xe4ivitykset.";
     },
     get$feedbackHint() {
-      return "Zure iritzia";
+      return "Palaute";
     },
     get$feedbackButton() {
-      return "Bidali iritzia";
+      return "L\xe4het\xe4 palaute";
     },
     get$directMessageBotDesc() {
-      return "Gizakiekin hitz egitea dibertigarria da baina... AI beti prest dago!";
+      return "Ihmisten kanssa puhuminen on hauskempaa, mutta... teko\xe4ly on aina valmiina!";
     },
     get$inviteYourFriends() {
-      return "Gonbidatu zure lagunak";
+      return "Kutsu yst\xe4vi\xe4si";
     },
     get$playWithAI() {
-      return "Jolastu AIrekin orain";
+      return "Leiki teko\xe4lyn kanssa nyt";
     },
     get$courseStartDesc() {
-      return "Pangea Bot prest dago noiznahi joateko!\n\n...baina ikastea lagunekin hobe da!";
+      return "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa yst\xe4vien kanssa!";
     },
     get$activityDropdownDesc() {
-      return "Jarduera honekin amaitu duzunean, klikatu behean";
+      return "Kun olet valmis t\xe4m\xe4n aktiviteetin kanssa, napsauta alla";
     },
     get$languageMismatchTitle() {
-      return "Hizkuntza desberdintasuna";
+      return "Kielivirhe";
     },
     get$emptyChatSearch() {
-      return "Ez da DM edo txatirik aurkitu. Ziurtatu zure bilaketa ondo idatzita dagoela.";
+      return "Ei DM:it\xe4 tai keskusteluja l\xf6ytynyt. Varmista, ett\xe4 hakusi on kirjoitettu oikein.";
     },
     get$languageMismatchDesc() {
-      return "Zure helburu hizkuntza ez dator bat jarduera honen hizkuntzarekin. Eguneratu zure helburu hizkuntza nahi duzun moduan?";
+      return "Kohdekielesi ei vastaa t\xe4m\xe4n aktiviteetin kielt\xe4. Haluatko p\xe4ivitt\xe4\xe4 kohdekielesi?";
     },
     get$reportWordIssueTooltip() {
-      return "Txosten hitzaren informazio arazoa";
+      return "Ilmoita sanan tiedoista ongelmasta";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Hitzaren Informazioaren Feedbacka";
+      return "Sanatiedon palaute";
     },
     get$noPublicCoursesFound() {
-      return "Ez da ikastaro publikorik aurkitu. Nahi al duzu bat sortu?";
+      return "Yksityisi\xe4 kursseja ei l\xf6ytynyt. Haluatko luoda sellaisen?";
     },
     get$noCourseTemplatesFound() {
-      return "Ez dugu zure helburu hizkuntzarako ikastaroak aurkitu. Bitartean, Pangea Bot-ekin chat egin dezakezu, eta geroago ikastaro gehiago ikusteko itxaron.";
+      return "Emme l\xf6yt\xe4neet kursseja kohdekielellesi. Voit keskustella Pangea Botin kanssa sill\xe4 v\xe4lin ja palata my\xf6hemmin hakemaan lis\xe4\xe4 kursseja.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot-ek erantzun hartzeko denbora pixka bat behar du. Saiatu berriro geroago, edo deitu lagun bat.";
+      return "Pangea Bot ei vastaa hetkeen. Yrit\xe4 uudelleen my\xf6hemmin tai kutsu yst\xe4v\xe4si mukaan.";
     },
     get$unsubscribedResponseError() {
-      return "Ezaugarri honek harpidetza bat behar du";
+      return "T\xe4m\xe4 ominaisuus vaatii tilauksen";
     },
     get$leaveDesc() {
-      return "Irten espazio hau eta bertako chat guztiak";
+      return "Poistu t\xe4st\xe4 tilasta ja kaikista keskusteluista siin\xe4";
     },
     get$selectAll() {
-      return "Hautatu guztiak";
+      return "Valitse kaikki";
     },
     get$deselectAll(_) {
-      return "Desmarkatu guztiak";
+      return "Poista valinta kaikista";
     },
     get$shareCourse() {
-      return "Partekatu ikastaroa";
+      return "Jaa kurssi";
     },
     get$addCourse() {
-      return "Gehitu ikastaroa";
+      return "Lis\xe4\xe4 kurssi";
     },
     get$joinPublicCourse() {
-      return "Hasi ikastaro publikoa";
+      return "Liity julkiseen kurssiin";
     },
     get$vocabLevelsDesc() {
-      return "Hemen daude hitz-berriak mailakatzen dituzunean!";
+      return "T\xe4ss\xe4 kohtaa sanat menev\xe4t, kun olet nostanut niiden tasoa!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "Hau zure gordeetako jarduerak dira berrikusteko eta praktikatzeko.";
+      return "N\xe4m\xe4 ovat tallennetut aktiviteettisi tarkistettavaksi ja harjoiteltavaksi.";
     },
     get$numSavedActivities() {
-      return "Gordetako jardueren kopurua";
+      return "Tallennettujen aktiviteettien m\xe4\xe4r\xe4";
     },
     get$saveActivityTitle() {
-      return "Gorde jarduera";
+      return "Tallenna aktiviteetti";
     },
     get$saveActivityDesc() {
-      return "Oso ondo! Gorde jarduera hau etorkizuneko berrikusteko eta praktikatzeko";
+      return "Hyv\xe4 ty\xf6! Tallenna t\xe4m\xe4 aktiviteetti my\xf6hemp\xe4\xe4 tarkistusta ja harjoittelua varten";
     },
     get$levelInfoTooltip() {
-      return "Hemen irabazi dituzun puntu guztiak eta nola irabazi dituzun ikusi ditzakezu!";
+      return "T\xe4\xe4lt\xe4 n\xe4et kaikki ansaitsemasi pisteet ja miten!";
     },
     get$alreadyInCourseWithID() {
-      return "Jalready ikastaro batean zaude plan honekin. Plan bera duen ikastaro bat sortu nahi al duzu, edo dagoen ikastaroan joan?";
+      return "Olet jo kurssilla, jossa on t\xe4m\xe4 suunnitelma. Haluatko luoda kurssin samalla suunnitelmalla vai siirty\xe4 olemassa olevaan kurssiin?";
     },
     get$goToExistingCourse() {
-      return "Joan dagoen ikastaroan";
+      return "Siirry olemassa olevaan kurssiin";
     },
     get$emojiView() {
-      return "Emoji ikuskera";
+      return "Emojin\xe4kym\xe4";
     },
     get$feedbackDialogDesc() {
-      return "Akatsak egiten ditut ere! Nola hobetzen laguntzeko ezer?";
+      return "Teen my\xf6s virheit\xe4! Onko jotain, mik\xe4 auttaisi minua parantamaan?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Kontaktua ikastaroan gonbidatu da";
+      return "Yhteyshenkil\xf6 on kutsuttu kurssille";
     },
     get$inviteFriends() {
-      return "Gonbidatu lagunak";
+      return "Kutsu yst\xe4vi\xe4";
     },
     get$activityStatsButtonTooltip() {
-      return "Jarduera informazioa";
+      return "Toimintatiedot";
     },
     get$allow(_) {
-      return "Baimendu";
+      return "Salli";
     },
     get$deny() {
-      return "Ukatu";
+      return "Hylk\xe4\xe4";
     },
     get$enabledRenewal() {
-      return "Harpidetzaren Berritzea Aktibatu";
+      return "Ota k\xe4ytt\xf6\xf6n tilauksen uusiminen";
     },
     get$subscriptionEndsOn() {
-      return "Harpidetzak Amaitzen Da";
+      return "Tilauksen p\xe4\xe4ttymisp\xe4iv\xe4";
     },
     get$subscriptionRenewsOn() {
-      return "Harpidetzak Berritzen Da";
+      return "Tilauksen uusimisp\xe4iv\xe4";
     },
     get$waitForSubscriptionChanges() {
-      return "Zure harpidetzako aldaketek momentu bat behar izan dezakete aplikazioan islatzeko.";
+      return "Muutokset tilauksessasi saattavat kest\xe4\xe4 hetken n\xe4ky\xe4 sovelluksessa.";
     },
     get$subscribeReadingAssistance() {
-      return "Mezu tresnak desblokeatzeko harpidetu";
+      return "Tilaa avustusty\xf6kalujen avaamiseksi";
     },
     get$aceDisplayName() {
       return "Achinese";
@@ -4574,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Acoli";
     },
     get$afDisplayName() {
-      return "Afrikako";
+      return "Afrikaanit";
     },
     get$akDisplayName() {
       return "Akan";
@@ -4583,13 +4583,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Alur";
     },
     get$amDisplayName() {
-      return "Amharera";
+      return "Amharic";
     },
     get$arDisplayName() {
-      return "Arabiera";
+      return "Arabia";
     },
     get$asDisplayName() {
-      return "Assamiera";
+      return "Assami";
     },
     get$awaDisplayName() {
       return "Awadhi";
@@ -4598,19 +4598,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aymara";
     },
     get$azDisplayName() {
-      return "Azerbaijani";
+      return "Azerbaid\u017eaani";
     },
     get$baDisplayName() {
-      return "Bashkir";
+      return "Ba\u0161kir";
     },
     get$banDisplayName() {
-      return "Balidarra";
+      return "Balilainen";
     },
     get$bbcDisplayName() {
       return "Batak Toba";
     },
     get$beDisplayName() {
-      return "Bielorrusiera";
+      return "Valkoven\xe4l\xe4inen";
     },
     get$bemDisplayName() {
       return "Bemba";
@@ -4619,7 +4619,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Betawi";
     },
     get$bgDisplayName() {
-      return "Bulgariera";
+      return "Bulgari";
     },
     get$bhoDisplayName() {
       return "Bhojpuri";
@@ -4637,13 +4637,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bengali (Bangladesh)";
     },
     get$bnINDisplayName() {
-      return "Bengali (India)";
+      return "Bengali (Intia)";
     },
     get$brDisplayName() {
-      return "Bretoia";
+      return "Breton";
     },
     get$bsDisplayName() {
-      return "Bosniarra";
+      return "Bosnia";
     },
     get$btsDisplayName() {
       return "Batak Simalungun";
@@ -4655,7 +4655,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Buriat";
     },
     get$caDisplayName() {
-      return "Katalana";
+      return "Katalonia";
     },
     get$cebDisplayName() {
       return "Cebuano";
@@ -4667,34 +4667,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mari";
     },
     get$ckbDisplayName() {
-      return "Kurdiera Zentralean";
+      return "Keski-kurdin";
     },
     get$cnhDisplayName() {
       return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "Korsikar";
+      return "Korsika";
     },
     get$crhDisplayName() {
-      return "Krimera Turkiarra";
+      return "Kriminan turkki";
     },
     get$crsDisplayName() {
-      return "Seselwa Kreole Frantsesa";
+      return "Seselwa kreoliranska";
     },
     get$csDisplayName() {
-      return "Txekiera";
+      return "T\u0161ekki";
     },
     get$cvDisplayName() {
-      return "Chuvash";
+      return "T\u0161uva\u0161i";
     },
     get$cyDisplayName() {
-      return "Gales";
+      return "Wales";
     },
     get$daDisplayName() {
-      return "Danimarkako";
+      return "Tanska";
     },
     get$deDisplayName() {
-      return "Aleman";
+      return "Saksa";
     },
     get$dinDisplayName() {
       return "Dinka";
@@ -4712,76 +4712,76 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ewe";
     },
     get$enDisplayName() {
-      return "Ingelesa";
+      return "Englanti";
     },
     get$enAUDisplayName() {
-      return "Ingelesa (Australia)";
+      return "Englanti (Australia)";
     },
     get$enGBDisplayName() {
-      return "Ingelesa (Erresuma Batua)";
+      return "Englanti (Iso-Britannia)";
     },
     get$enINDisplayName() {
-      return "Ingelesa (India)";
+      return "Englanti (Intia)";
     },
     get$enUSDisplayName() {
-      return "Ingelesa (AEB)";
+      return "Englanti (Yhdysvallat)";
     },
     get$eoDisplayName() {
       return "Esperanto";
     },
     get$esDisplayName() {
-      return "Espainiera";
+      return "Espanja";
     },
     get$esESDisplayName() {
-      return "Espainiera (Espainia)";
+      return "Espanja (Espanja)";
     },
     get$esMXDisplayName() {
-      return "Espainiera (Mexiko)";
+      return "Espanja (Meksiko)";
     },
     get$euDisplayName() {
-      return "Euskara";
+      return "Baskimaa";
     },
     get$faDisplayName() {
-      return "Persiera";
+      return "Persia";
     },
     get$ffDisplayName() {
       return "Fulah";
     },
     get$fiDisplayName() {
-      return "Finlandiera";
+      return "Suomi";
     },
     get$filDisplayName() {
-      return "Filipinera";
+      return "Filippiinil\xe4inen";
     },
     get$fjDisplayName() {
-      return "Fijiarra";
+      return "Fid\u017eil\xe4inen";
     },
     get$foDisplayName() {
       return "Faroese";
     },
     get$frDisplayName() {
-      return "Frantsesa";
+      return "Ranska";
     },
     get$frCADisplayName() {
-      return "Frantsesa (Kanada)";
+      return "Ranska (Kanada)";
     },
     get$frFRDisplayName() {
-      return "Frantsesa (Frantzia)";
+      return "Ranska (Ranska)";
     },
     get$fyDisplayName() {
-      return "Mendebaldeko Frisiera";
+      return "L\xe4nsi-Frisi";
     },
     get$gaDisplayName() {
-      return "Irlandera";
+      return "Irlanti";
     },
     get$gaaDisplayName() {
       return "Ga";
     },
     get$gdDisplayName() {
-      return "Eskoziar Gaelic";
+      return "Skottilainen gaeli";
     },
     get$glDisplayName() {
-      return "Galiziera";
+      return "Galego";
     },
     get$gnDisplayName() {
       return "Guarani";
@@ -4796,10 +4796,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hausa";
     },
     get$hawDisplayName() {
-      return "Hawaiiera";
+      return "Havaiji";
     },
     get$heDisplayName() {
-      return "Hebreera";
+      return "Heprea";
     },
     get$hiDisplayName() {
       return "Hindi";
@@ -4814,22 +4814,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "Kroaziera";
+      return "Kroatialainen";
     },
     get$hrxDisplayName() {
       return "Hunsrik";
     },
     get$htDisplayName() {
-      return "Haitiko Kreolera";
+      return "Haitilainen kreoli";
     },
     get$huDisplayName() {
-      return "Hungariera";
+      return "Unkarilainen";
     },
     get$hyDisplayName() {
-      return "Armeniera";
+      return "Armenialainen";
     },
     get$idDisplayName() {
-      return "Indonesiera";
+      return "Indonesialainen";
     },
     get$igDisplayName() {
       return "Igbo";
@@ -4838,67 +4838,67 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Iloko";
     },
     get$isDisplayName() {
-      return "Islandiako";
+      return "Islanti";
     },
     get$itDisplayName() {
-      return "Italianoa";
+      return "italialainen";
     },
     get$jaDisplayName() {
-      return "Japoniarra";
+      return "japanilainen";
     },
     get$jvDisplayName() {
-      return "Javaniera";
+      return "javanilainen";
     },
     get$kaDisplayName() {
-      return "Georgiera";
+      return "georgialainen";
     },
     get$kkDisplayName() {
-      return "Kazako";
+      return "kazakki";
     },
     get$kmDisplayName() {
-      return "Khmerra";
+      return "khmer";
     },
     get$knDisplayName() {
-      return "Kannadara";
+      return "kannada";
     },
     get$koDisplayName() {
-      return "Korearra";
+      return "korea";
     },
     get$kokDisplayName() {
-      return "Konkani";
+      return "konkani";
     },
     get$kriDisplayName() {
-      return "Krio";
+      return "kriolu";
     },
     get$ksDisplayName() {
       return "Kashmiri";
     },
     get$ktuDisplayName() {
-      return "Kituba (Kongoko Errepublika Demokratikoa)";
+      return "Kituba (Kongon demokraattinen tasavalta)";
     },
     get$kuDisplayName() {
-      return "Kurdiera";
+      return "Kurdin";
     },
     get$kyDisplayName() {
-      return "Kirgiziera";
+      return "Kyrgyz";
     },
     get$laDisplayName() {
       return "Latina";
     },
     get$lbDisplayName() {
-      return "Luxenburgoera";
+      return "Luxemburgin";
     },
     get$lgDisplayName() {
       return "Ganda";
     },
     get$liDisplayName() {
-      return "Limburgera";
+      return "Limburgin";
     },
     get$lijDisplayName() {
-      return "Liguriera";
+      return "Ligurian";
     },
     get$lmoDisplayName() {
-      return "Lombardiera";
+      return "Lombard";
     },
     get$lnDisplayName() {
       return "Lingala";
@@ -4907,19 +4907,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Lao";
     },
     get$ltDisplayName() {
-      return "Lituania";
+      return " Liettua";
     },
     get$ltgDisplayName() {
-      return "Latgaliera";
+      return "Latgalia";
     },
     get$luoDisplayName() {
-      return "Luo (Kenya eta Tanzania)";
+      return "Luo (Kenia ja Tansania)";
     },
     get$lusDisplayName() {
       return "Mizo";
     },
     get$lvDisplayName() {
-      return "Letonia";
+      return "Latvia";
     },
     get$maiDisplayName() {
       return "Maithili";
@@ -4928,7 +4928,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Makasar";
     },
     get$mgDisplayName() {
-      return "Malagasy";
+      return "Malagassi";
     },
     get$miDisplayName() {
       return "M\u0101ori";
@@ -4937,13 +4937,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "Mazedoniera";
+      return "Makedonian";
     },
     get$mlDisplayName() {
       return "Malayalam";
     },
     get$mnDisplayName() {
-      return "Mongoliera";
+      return "Mongolian";
     },
     get$mniDisplayName() {
       return "Manipuri";
@@ -4952,16 +4952,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Marathi";
     },
     get$msDisplayName() {
-      return "Malay";
+      return "Malaiji";
     },
     get$msArabDisplayName() {
-      return "Malay (Arabiarra)";
+      return "Malaiji (arabia)";
     },
     get$msMYDisplayName() {
-      return "Malay (Malaysia)";
+      return "Malaiji (Malesia)";
     },
     get$mtDisplayName() {
-      return "Maltese";
+      return "Maltalainen";
     },
     get$mwrDisplayName() {
       return "Marwari";
@@ -4973,28 +4973,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Min Nan";
     },
     get$nbDisplayName() {
-      return "Norvegiako (Bokm\xe5l)";
+      return "Norja (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "Nepalera";
+      return "Nepali";
     },
     get$newDisplayName() {
       return "Newari";
     },
     get$nlDisplayName() {
-      return "Herbehereako";
+      return "Hollanti";
     },
     get$nlBEDisplayName() {
-      return "Flemish";
+      return "Flaami";
     },
     get$noDisplayName() {
-      return "Norvegiako";
+      return "Norja";
     },
     get$nrDisplayName() {
-      return "Hego Ndebele";
+      return "Etel\xe4-Ndebele";
     },
     get$nsoDisplayName() {
-      return "Ipar Sotho";
+      return "Pohjois-Sotho";
     },
     get$nusDisplayName() {
       return "Nuer";
@@ -5003,7 +5003,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nyanja";
     },
     get$ocDisplayName() {
-      return "Okzitaniera";
+      return "Oktsitaani";
     },
     get$omDisplayName() {
       return "Oromo";
@@ -5030,19 +5030,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Papiamento";
     },
     get$plDisplayName() {
-      return "Poloniera";
+      return "Puola";
     },
     get$psDisplayName() {
       return "Pashto";
     },
     get$ptDisplayName() {
-      return "Portuguese";
+      return "Portugali";
     },
     get$ptBRDisplayName() {
-      return "Portuguese (Brasil)";
+      return "Portugali (Brasilia)";
     },
     get$ptPTDisplayName() {
-      return "Portuguese (Portugal)";
+      return "Portugali (Portugali)";
     },
     get$quDisplayName() {
       return "Quechua";
@@ -5054,16 +5054,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Rundi";
     },
     get$roDisplayName() {
-      return "Errumaniera";
+      return "Romanialainen";
     },
     get$roMDDisplayName() {
-      return "Moldaviarra";
+      return "Moldovalainen";
     },
     get$romDisplayName() {
       return "Romani";
     },
     get$ruDisplayName() {
-      return "Errusiera";
+      return "Ven\xe4j\xe4";
     },
     get$rwDisplayName() {
       return "Kinyarwanda";
@@ -5075,7 +5075,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Santali";
     },
     get$scnDisplayName() {
-      return "Siziliarra";
+      return "Sitsiilia";
     },
     get$sdDisplayName() {
       return "Sindhi";
@@ -5090,13 +5090,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sinhala";
     },
     get$skDisplayName() {
-      return "Eslovako";
+      return "Slovakki";
     },
     get$slDisplayName() {
-      return "Esloveno";
+      return "Sloveeni";
     },
     get$smDisplayName() {
-      return "Samoano";
+      return "Samoa";
     },
     get$snDisplayName() {
       return "Shona";
@@ -5105,49 +5105,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Somali";
     },
     get$sqDisplayName() {
-      return "Albaniar";
+      return "Albania";
     },
     get$srDisplayName() {
-      return "Serbio";
+      return "Serbia";
     },
     get$srMEDisplayName() {
-      return "Montenegrinera";
+      return "Montenegro";
     },
     get$ssDisplayName() {
-      return "Swatiera";
+      return "Swati";
     },
     get$stDisplayName() {
-      return "Hego Sotho";
+      return "Etel\xe4-Sotho";
     },
     get$suDisplayName() {
-      return "Sundanera";
+      return "Sunda";
     },
     get$svDisplayName() {
-      return "Suediarra";
+      return "Ruotsi";
     },
     get$swDisplayName() {
       return "Swahili";
     },
     get$szlDisplayName() {
-      return "Silesiara";
+      return "Sileesia";
     },
     get$taDisplayName() {
-      return "Tamila";
+      return "Tamili";
     },
     get$teDisplayName() {
-      return "Telugua";
+      return "Telugu";
     },
     get$tetDisplayName() {
-      return "Tetuma";
+      return "Tetum";
     },
     get$tgDisplayName() {
-      return "Tajik";
+      return "Tad\u017eik";
     },
     get$thDisplayName() {
       return "Thai";
     },
     get$tiDisplayName() {
-      return "Tigrinya";
+      return "Tigrinja";
     },
     get$tkDisplayName() {
       return "Turkmen";
@@ -5159,25 +5159,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tswana";
     },
     get$trDisplayName() {
-      return "Turkiar";
+      return "Turkki";
     },
     get$tsDisplayName() {
       return "Tsonga";
     },
     get$ttDisplayName() {
-      return "Tatar";
+      return "Tataari";
     },
     get$ugDisplayName() {
-      return "Uigurr";
+      return "Uyguri";
     },
     get$ukDisplayName() {
-      return "Ukrainiera";
+      return "Ukrainalainen";
     },
     get$urDisplayName() {
       return "Urdu";
     },
     get$urINDisplayName() {
-      return "Urdu (India)";
+      return "Urdu (Intia)";
     },
     get$urPKDisplayName() {
       return "Urdu (Pakistan)";
@@ -5186,7 +5186,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Uzbek";
     },
     get$viDisplayName() {
-      return "Vietnamiera";
+      return "Vietnamilainen";
     },
     get$wuuDisplayName() {
       return "Wu";
@@ -5195,34 +5195,40 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Xhosa";
     },
     get$yiDisplayName() {
-      return "Yiddish";
+      return "Jiddisch";
     },
     get$yoDisplayName() {
-      return "Yoruba";
+      return "Joruba";
     },
     get$yuaDisplayName() {
-      return "Yucateco";
+      return "Yukatekki";
     },
     get$yueDisplayName() {
-      return "Kantonera";
+      return "Kantonin kiina";
     },
     get$yueCNDisplayName() {
-      return "Kantonera (Txina)";
+      return "Kantonin kiina (Kiina)";
     },
     get$yueHKDisplayName() {
-      return "Kantonera (Hong Kong)";
+      return "Kantonin kiina (Hongkong)";
     },
     get$zhDisplayName() {
-      return "Txinera";
+      return "Kiina";
     },
     get$zhCNDisplayName() {
-      return "Txinera (Sinplifikatua)";
+      return "Kiina (yksinkertaistettu)";
     },
     get$zhTWDisplayName() {
-      return "Txinera (Tradizionala)";
+      return "Kiina (perinteinen)";
     },
     get$zuDisplayName() {
       return "Zulu";
+    },
+    get$teacherModeTitle() {
+      return "Opettajan tila";
+    },
+    get$teacherModeDesc() {
+      return "Vaihda avataksesi kaikki aiheet ja aktiviteetit. Vain kurssin yll\xe4pit\xe4j\xe4lle.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5231,16 +5237,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nEu, C.L10n);
+    _inherit(A.L10nFi, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEu":{"L10n":[]}}'));
-  var string$ = {
-    _helbi: " helbidean. Errorearen mezua ondorengoa da: "
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFi":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["/4pS/B7q7FklPWB1rx1RugcdAEg="] = d.current;
+  d["8UNW85vRFsi3fW5dvEZW7WN2cmw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_575.part.js.map

@@ -5,1171 +5,1171 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nRo$() {
-      return new A.L10nRo(B.canonicalizedLocale("ro"));
+    L10nSl$() {
+      return new A.L10nSl(B.canonicalizedLocale("sl"));
     },
-    L10nRo: function L10nRo(t0) {
+    L10nSl: function L10nSl(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[41], A);
-  A.L10nRo.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[44], A);
+  A.L10nSl.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\xeentotdeauna folose\u0219te formatul de 24 de ore";
+      return "vedno uporabljaj 24-urno obliko";
     },
     get$repeatPassword() {
-      return "Repeta\u021bi parola";
+      return "Ponovite geslo";
     },
     get$notAnImage() {
-      return "Nu este un fi\u0219ier imagine.";
+      return "Ni datoteka slike.";
     },
     get$setCustomPermissionLevel() {
-      return "Seteaz\u0103 nivelul de permisiune personalizat";
+      return "Nastavi prilagojeno raven dovoljenj";
     },
     get$setPermissionsLevelDescription() {
-      return "V\u0103 rug\u0103m s\u0103 alege\u021bi un rol predefinit mai jos sau s\u0103 introduce\u021bi un nivel de permisiune personalizat \xeentre 0 \u0219i 100.";
+      return "Prosimo, izberite eno od vnaprej dolo\u010denih vlog spodaj ali vnesite prilagojeno raven dovoljenj med 0 in 100.";
     },
     get$ignoreUser() {
-      return "Ignor\u0103 utilizatorul";
+      return "Prezri uporabnika";
     },
     get$normalUser() {
-      return "Utilizator normal";
+      return "Navaden uporabnik";
     },
     get$remove(_) {
-      return "Elimina\u021bi";
+      return "Odstrani";
     },
     get$importNow() {
-      return "Import\u0103 acum";
+      return "Uvozi zdaj";
     },
     get$importEmojis() {
-      return "Import\u0103 emoji-uri";
+      return "Uvozi emojije";
     },
     get$importFromZipFile() {
-      return "Import\u0103 din fi\u0219ier .zip";
+      return "Uvozi iz .zip datoteke";
     },
     get$exportEmotePack() {
-      return "Export\u0103 pachetul de emoticoane ca .zip";
+      return "Izvozi paket emojijev kot .zip";
     },
     get$replace(_) {
-      return "\xcenlocuie\u0219te";
+      return "Zamenjaj";
     },
     aboutHomeserver$1(homeserver) {
-      return "Despre " + homeserver;
+      return "O " + homeserver;
     },
     get$accept(_) {
-      return "Accept";
+      return "Sprejmi";
     },
     acceptedTheInvitation$1(username) {
-      return username + " a aceptat invita\u021bi";
+      return username + " je sprejel povabilo";
     },
     get$account() {
-      return "Cont";
+      return "Ra\u010dun";
     },
     activatedEndToEndEncryption$1(username) {
-      return username + " a activat criptarea end-to-end";
+      return "Uporabnik " + username + " je aktiviral \u0161ifriranje od konca do konca";
     },
     get$addEmail() {
-      return "Ad\u0103uga\u021bi email";
+      return "Dodajte e-po\u0161to";
     },
     supposedMxid$1(mxid) {
-      return "ID-ul ar trebuii s\u0103 fie " + mxid;
+      return "To bi moral biti " + mxid;
     },
     get$admin() {
-      return "Administrator";
+      return "Admin";
     },
     get$commandHint_roomupgrade() {
-      return "Actualizeaz\u0103 aceast\u0103 camer\u0103 la versiunea specificat\u0103 a camerei";
+      return "Nadgradi to sobo na dolo\u010deno razli\u010dico sobe";
     },
     get$commandHint_googly() {
-      return "Trimite\u021bi c\xe2\u021biva ochi googly";
+      return "Po\u0161lji nekaj googly o\u010di";
     },
     get$commandHint_cuddle() {
-      return "Trimite\u021bi o \xeembr\u0103\u021bi\u0219are";
+      return "Po\u0161lji objem";
     },
     get$commandHint_hug() {
-      return "Trimite\u021bi o \xeembr\u0103\u021bi\u0219are";
+      return "Po\u0161lji objem";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " v-a trimis ochi googly";
+      return senderName + " po\u0161lje vam googly o\u010di";
     },
     cuddleContent$1(senderName) {
-      return senderName + " v\u0103 \xeembr\u0103\u021bi\u0219eaz\u0103";
+      return senderName + " vas bo\u017ea";
     },
     hugContent$1(senderName) {
-      return senderName + " v\u0103 \xeembr\u0103\u021bi\u0219eaz\u0103";
+      return senderName + " vas objame";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " a acceptat apelul";
+      return "Oseba " + senderName + " je odgovorila na klic";
     },
     get$anyoneCanJoin() {
-      return "Oricine se poate al\u0103tura";
+      return "Pridru\u017ei se lahko vsak";
     },
     get$archive() {
-      return "Arhiv\u0103";
+      return "Arhiv";
     },
     get$areYouSure() {
-      return "E\u0219ti sigur?";
+      return "Ali si prepri\u010dan?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Sunte\u021bi sigur c\u0103 dori\u021bi s\u0103 v\u0103 deconecta\u021bi?";
+      return "Ali ste prepri\u010dani, da se \u017eelite odjaviti?";
     },
     get$askSSSSSign() {
-      return "Pentru a putea conecta cealalt\u0103 persoan\u0103, te rog introdu parola sau cheia ta de recuperare.";
+      return "\u010ce \u017eelite podpisati drugo osebo, vnesite geslo za varno trgovino ali obnovitveni klju\u010d.";
     },
     askVerificationRequest$1(username) {
-      return "Accep\u021bi cererea de verificare de la " + username + "?";
+      return "Ali \u017eelite sprejeti to zahtevo za preverjanje od " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Homeserver-ul suport\u0103 urm\u0103toarele feluri de login:\n" + serverVersions + "\nDar aceast\u0103 aplica\u021bie suport\u0103 numai:\n" + supportedVersions;
+      return "Doma\u010di stre\u017enik podpira vrste prijave:\n" + serverVersions + "\nToda ta aplikacija podpira samo:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Trimite notific\u0103ri de tastare";
+      return "Po\u0161lji obvestila o tipkanju";
     },
     get$swipeRightToLeftToReply() {
-      return "Gliseaz\u0103 de la dreapta la st\xe2nga pentru a r\u0103spunde";
+      return "Potegni desno na levo za odgovor";
     },
     get$sendOnEnter() {
-      return "Trimite cu tasta enter";
+      return "Po\u0161lji ob vstopu";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " conversa\u021bii \u0219i " + participants + " participan\u021bi";
+      return "" + chats + " klepetov in " + participants + " udele\u017eencev";
     },
     get$banned() {
-      return "Interzis";
+      return "Prepovedano";
     },
     bannedUser$2(username, targetName) {
-      return username + " a interzis pe " + targetName;
+      return username + " je prepovedan v " + targetName;
     },
     get$blockDevice() {
-      return "Blocheaz\u0103 dispozitiv";
+      return "Blokirana naprava";
     },
     get$blocked() {
-      return "Blocat";
+      return "Blokirano";
     },
     get$cancel(_) {
-      return "Anuleaz\u0103";
+      return "Prekli\u010di";
     },
     cantOpenUri$1(uri) {
-      return "Nu se poate deschide URI-ul " + uri;
+      return "URI-ja " + uri + " ni mogo\u010de odpreti";
     },
     get$changeDeviceName() {
-      return "Schimb\u0103 numele dispozitiv";
+      return "Spremenite ime naprave";
     },
     changedTheChatAvatar$1(username) {
-      return username + " a schimbat poza conversa\u021bi";
+      return username + " je spremenil avatar za klepet";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " a schimbat descrierea grupului \xeen '" + description + "'";
+      return username + " je spremenil opis klepeta v: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " a schimbat porecla \xeen '" + chatname + "'";
+      return username + " je spremenil ime klepeta v: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " a schimbat permisiunile chatului";
+      return username + " je spremenila dovoljenja za klepet";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " s-a schimbat displayname la: '" + displayname + "'";
+      return username + " je spremenil svoje prikazno ime v: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " a schimbat regulile pentru acesul musafirilor";
+      return username + " je spremenila pravila dostopa za goste";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " a schimbat regulile pentru acesul musafirilor la: " + rules;
+      return username + " je spremenila pravila dostopa za goste v: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " a schimbat vizibilitatea istoriei chatului";
+      return username + " je spremenila vidnost zgodovine";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " a schimbat vizibilitatea istoriei chatului la: " + rules;
+      return username + " je spremenil vidnost zgodovine v: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " a schimbat regulile de al\u0103turare";
+      return username + " je spremenil pravila za pridru\u017eitev";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " a schimbat regulile de al\u0103turare la: " + joinRules;
+      return username + " je spremenila pravila pridru\u017eitve v: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " s-a schimbat avatarul";
+      return username + " je spremenil avatar";
     },
     changedTheRoomAliases$1(username) {
-      return username + " a schimbat pseudonimele camerei";
+      return username + " je spremenil vzdevke sobe";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " a schimbat linkul de invita\u021bie";
+      return username + " je spremenil povezavo za povabilo";
     },
     get$changePassword() {
-      return "Schimba\u021bi parola";
+      return "Spremeni geslo";
     },
     get$changeTheme() {
-      return "Schimba\u021bi tema aplica\u021biei";
+      return "Spremenite svoj slog";
     },
     get$changeYourAvatar() {
-      return "Schimba\u021bi avatarul vostru";
+      return "Spremenite svoj avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "Criptarea a fost corupat\u0103";
+      return "\u0160ifriranje je po\u0161kodovano";
     },
     get$chat() {
-      return "Chat";
+      return "Klepet";
     },
     get$chatDetails() {
-      return "Detalii de chat";
+      return "Podrobnosti klepeta";
     },
     get$chats() {
-      return "Chaturi";
+      return "Klepeti";
     },
     get$chooseAStrongPassword() {
-      return "Alege\u021bi o parol\u0103 robust\u0103";
+      return "Izberite mo\u010dno geslo";
     },
     get$clearArchive() {
-      return "\u0218terge\u021bi arhiva";
+      return "Po\u010disti arhiv";
     },
     get$close(_) {
-      return "\xcenchide\u021bi";
+      return "Zapri";
     },
     get$commandHint_markasdm() {
-      return "Marca\u021bi ca camer\u0103 de mesaje directe";
+      return "Ozna\u010di kot sobo za neposredna sporo\u010dila za dano Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "Marca\u021bi ca grup";
+      return "Ozna\u010di kot skupino";
     },
     get$commandHint_ban() {
-      return "Interzice\u021bi acesul utilizatorului ales din aceast\u0103 camer\u0103";
+      return "Izklju\u010di dolo\u010denega uporabnika iz te sobe";
     },
     get$commandHint_clearcache() {
-      return "\u0218terge\u021bi cache";
+      return "Po\u010disti predpomnilnik";
     },
     get$commandHint_create() {
-      return "Crea\u021bi un grup de chat gol\nFolosi\u021bi --no-encryption s\u0103 dezactiva\u021bi criptare";
+      return "Ustvari prazen skupinski klepet\nUporabi --no-encryption za onemogo\u010ditev \u0161ifriranja";
     },
     get$commandHint_discardsession() {
-      return "Renun\u021ba\u021bi sesiunea";
+      return "Opusti sejo";
     },
     get$commandHint_dm() {
-      return "Porni\u021bi un chat direct\nFolosi\u021bi --no-encryption s\u0103 dezactiva\u021bi criptare";
+      return "Za\u010dni neposreden klepet\nUporabi --no-encryption za onemogo\u010ditev \u0161ifriranja";
     },
     get$commandHint_html() {
-      return "Trimite\u021bi text format ca HTML";
+      return "Po\u0161ljite besedilo v obliki HTML";
     },
     get$commandHint_invite() {
-      return "Invita\u021bi utilizatorul ales la aceast\u0103 camer\u0103";
+      return "Povabi danega uporabnika v to sobo";
     },
     get$commandHint_join() {
-      return "Al\u0103tura\u021bi-v\u0103 la camera ales\u0103";
+      return "Pridru\u017eite se dani sobi";
     },
     get$commandHint_kick() {
-      return "Da\u021bi afar\u0103 pe utilizatorul ales din aceast\u0103 camer\u0103";
+      return "Odstranite danega uporabnika iz te sobe";
     },
     get$commandHint_leave() {
-      return "Renun\u021ba\u021bi la aceast\u0103 camer\u0103";
+      return "Zapusti to sobo";
     },
     get$commandHint_me() {
-      return "Descrie\u021bi-v\u0103";
+      return "Opisi sebe";
     },
     get$commandHint_myroomavatar() {
-      return "Alege\u021bi un avatar pentru aceast\u0103 camer\u0103 (folo\u0219e\u0219te mxc-uri)";
+      return "Nastavite svojo sliko za to sobo";
     },
     get$commandHint_myroomnick() {
-      return "Alege\u021bi un displayname pentru aceast\u0103 camer\u0103";
+      return "Nastavite prikazno ime za to sobo";
     },
     get$commandHint_op() {
-      return "Stabili\u021bi nivelul de putere a utilizatorul ales (implicit: 50)";
+      return "Nastavite raven mo\u010di danega uporabnika (privzeto: 50)";
     },
     get$commandHint_plain() {
-      return "Trimite\u021bi text simplu/neformatat";
+      return "Po\u0161lji neformatirano besedilo";
     },
     get$commandHint_react() {
-      return "Trimite\u021bi r\u0103spuns ca reac\u021bie";
+      return "Po\u0161ljite odgovor kot reakcijo";
     },
     get$commandHint_send() {
-      return "Trimite\u021bi text";
+      return "Po\u0161lji besedilo";
     },
     get$commandHint_unban() {
-      return "Dezinterzice\u021bi utilizatorul ales din aceast\u0103 camer\u0103";
+      return "Prekli\u010di izklju\u010ditev dolo\u010denega uporabnika iz te sobe";
     },
     get$compareEmojiMatch() {
-      return "V\u0103 rug\u0103m s\u0103 compara\u021bi emoji-urile";
+      return "Primerjajte in se prepri\u010dajte, da se naslednji emoji ujemajo s tistimi iz druge naprave:";
     },
     get$compareNumbersMatch() {
-      return "V\u0103 rug\u0103m s\u0103 compara\u021bi numerele";
+      return "Primerjajte in se prepri\u010dajte, da se naslednje \u0161tevilke ujemajo s \u0161tevilkami druge naprave:";
     },
     get$configureChat() {
-      return "Configura\u021bi chat";
+      return "Konfigurirajte klepet";
     },
     get$confirm(_) {
-      return "Confirma\u021bi";
+      return "Potrdi";
     },
     get$copiedToClipboard() {
-      return "Copiat \xeen clipboard";
+      return "Kopirano v odlo\u017ei\u0161\u010de";
     },
     get$copy(_) {
-      return "Copia\u021bi";
+      return "Kopiraj";
     },
     couldNotDecryptMessage$1(error) {
-      return "Dezcriptarea mesajului a e\u0219uat: " + error;
+      return "Sporo\u010dila ni bilo mogo\u010de de\u0161ifrirati: " + error;
     },
     get$checkList() {
-      return "List\u0103 de verificare";
+      return "Preveri seznam";
     },
     countParticipants$1(count) {
-      return "" + count + " participan\u021bi";
+      return "" + count + " udele\u017eencev";
     },
     countInvited$1(count) {
-      return "" + count + " invitat";
+      return "" + count + " povabljenih";
     },
     get$create(_) {
-      return "Crea\u021bi";
+      return "Ustvari";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac" + username + " a creat chatul";
+      return username + " je ustvaril klepet";
     },
     get$createGroup() {
-      return "Creeaz\u0103 grup";
+      return "Ustvari skupino";
     },
     get$currentlyActive() {
-      return "Activ acum";
+      return "Trenutno aktiven";
     },
     get$darkTheme() {
-      return "\xcentunecat";
+      return "Temno";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Aceast\u0103 ac\u021biune va dezactiva contul vostru. Nu poate fi anulat! Sunte\u021bi sigur?";
+      return "S tem boste deaktivirali va\u0161 uporabni\u0161ki ra\u010dun. Tega ni mogo\u010de razveljaviti! Ali si prepri\u010dan?";
     },
     get$defaultPermissionLevel() {
-      return "Nivel de permisiuni implicit\u0103";
+      return "Privzeta raven dovoljenja";
     },
     get$$delete(_) {
-      return "\u0218terge\u021bi";
+      return "Izbri\u0161i";
     },
     get$deleteAccount() {
-      return "\u0218terge\u021bi contul";
+      return "Izbri\u0161i ra\u010dun";
     },
     get$deleteMessage() {
-      return "\u0218terge\u021bi mesajul";
+      return "Izbri\u0161i sporo\u010dilo";
     },
     get$devices() {
-      return "Dispozitive";
+      return "Naprave";
     },
     get$displaynameHasBeenChanged() {
-      return "Displayname a fost schimbat";
+      return "Ime za prikaz je bilo spremenjeno";
     },
     get$downloadFile() {
-      return "Desc\u0103rca\u021bi fi\u0219ierul";
+      return "Prenesi datoteko";
     },
     get$edit() {
-      return "Edita\u021bi";
+      return "Uredi";
     },
     get$editBlockedServers() {
-      return "Edita\u021bi servere blocate";
+      return "Uredi blokirane stre\u017enike";
     },
     get$chatPermissions() {
-      return "Permisiuni de chat";
+      return "Dovoljenja za klepet";
     },
     get$editDisplayname() {
-      return "Schimba\u021bi displayname";
+      return "Uredi ime za prikaz";
     },
     get$editRoomAvatar() {
-      return "Schimba\u021bi avatarul din camer\u0103";
+      return "Uredi avatar sobe";
     },
     get$emoteExists() {
-      return "Emote deja exist\u0103!";
+      return "Emote \u017ee obstaja!";
     },
     get$emoteInvalid() {
-      return "Shortcode de emote nevalibil!";
+      return "Neveljaven kraj\u0161alec emote!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Emoticoane folosite recent vor ap\u0103rea aici...";
+      return "Nedavno uporabljeni emoti se bodo prikazali tukaj...";
     },
     get$emotePacks() {
-      return "Pachete de emoturi din camer\u0103";
+      return "Paketi emojijev za sobo";
     },
     get$customEmojisAndStickers() {
-      return "Emoticoane \u0219i stickere personalizate";
+      return "Lastni emojiji in nalepke";
     },
     get$emoteShortcode() {
-      return "Shortcode de emote";
+      return "Kratek opis emojija";
     },
     get$emoteWarnNeedToPick() {
-      return "Trebuie s\u0103 alege\u021bi shortcode pentru emote \u0219i o imagine!";
+      return "Potrebno je izbrati kratek opis emojija in sliko!";
     },
     get$emptyChat() {
-      return "Chat gol";
+      return "Prazen klepet";
     },
     get$enableEmotesGlobally() {
-      return "Activa\u021bi pachet de emote global";
+      return "Omogo\u010di paket emojijev globalno";
     },
     get$enableEncryption() {
-      return "Activa\u021bi criptare";
+      return "Omogo\u010di \u0161ifriranje";
     },
     get$encrypted() {
-      return "Criptat";
+      return "\u0160ifrirano";
     },
     get$encryptionNotEnabled() {
-      return "Criptare nu e activat\u0103";
+      return "\u0160ifriranje ni omogo\u010deno";
     },
     endedTheCall$1(senderName) {
-      return senderName + " a terminat apelul";
+      return senderName + " je kon\u010dal klic";
     },
     get$enterAnEmailAddress() {
-      return "Introduce\u021bi o adres\u0103 email";
+      return "Vnesite e-po\u0161tni naslov";
     },
     errorObtainingLocation$1(error) {
-      return "Ob\u021binerea loca\u021biei a e\u0219uat: " + error;
+      return "Napaka pri pridobivanju lokacije: " + error;
     },
     get$fontSize(_) {
-      return "M\u0103rimea fontului";
+      return "Velikost pisave";
     },
     get$forward(_) {
-      return "\xcenainte";
+      return "Naprej";
     },
     get$fromJoining() {
-      return "De la al\u0103turare";
+      return "Od v\u010dlanitve";
     },
     get$fromTheInvitation() {
-      return "De la invita\u021bia";
+      return "Iz povabila";
     },
     get$guestsAreForbidden() {
-      return "Musafiri sunt interzi\u0219i";
+      return "Gostom je prepovedano";
     },
     get$guestsCanJoin() {
-      return "Musafiri pot s\u0103 se al\u0103ture";
+      return "Gostje se lahko pridru\u017eijo";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " a retras invita\u021bia pentru " + targetName;
+      return username + " je umaknil vabilo za " + targetName;
     },
     get$help() {
-      return "Ajutor";
+      return "Pomo\u010d";
     },
     get$hideRedactedMessages() {
-      return "Ascunde mesajele cenzurate";
+      return "Skrij prekrita sporo\u010dila";
     },
     get$hideRedactedMessagesBody() {
-      return "Dac\u0103 cineva cenzureaz\u0103 un mesaj, acesta nu va mai fi vizibil \xeen chat.";
+      return "\u010ce nekdo prekrije sporo\u010dilo, to sporo\u010dilo v klepetu ve\u010d ne bo vidno.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Ascunde formatele de mesaje invalide sau necunoscute";
+      return "Skrij neveljavne ali neznane formate sporo\u010dil";
     },
     get$block() {
-      return "Blocheaz\u0103";
+      return "Blokiraj";
     },
     get$blockedUsers() {
-      return "Utilizatori bloca\u021bi";
+      return "Blokirani uporabniki";
     },
     get$blockListDescription() {
-      return "Po\u021bi bloca utilizatori care te deranjeaz\u0103. Nu vei putea primi mesaje sau invita\u021bii \xeen camere de la utilizatorii de pe lista ta personal\u0103 de blocare.";
+      return "Lahko blokirate uporabnike, ki vas motijo. Ne boste mogli prejemati nobenih sporo\u010dil ali povabil v sobe od uporabnikov na va\u0161em osebnem seznamu blokiranih.";
     },
     get$blockUsername() {
-      return "Ignor\u0103 numele de utilizator";
+      return "Ignoriraj uporabni\u0161ko ime";
     },
     get$iHaveClickedOnLink() {
-      return "Am f\u0103cut click pe link";
+      return "Kliknil sem na povezavo";
     },
     get$incorrectPassphraseOrKey() {
-      return "Parol\u0103 sau cheie de recuperare incorect\u0103";
+      return "Napa\u010dna geslovna fraza ali klju\u010d za obnovo";
     },
     get$inviteContact() {
-      return "Invita\u021bi contact";
+      return "Vabilo stiku";
     },
     get$noChatDescriptionYet() {
-      return "\xcenc\u0103 nu a fost creat\u0103 nicio descriere pentru chat.";
+      return "\u0160e ni ustvarjen opis klepeta.";
     },
     get$tryAgain() {
-      return "\xcencearc\u0103 din nou";
+      return "Poskusi znova";
     },
     get$invited() {
-      return "Invitat";
+      return "Vabilo poslano";
     },
     get$redactMessageDescription() {
-      return "Mesajul va fi redactat pentru to\u021bi participan\u021bii din aceast\u0103 conversa\u021bie. Acest lucru nu poate fi anulat.";
+      return "Sporo\u010dilo bo izbrisano za vse udele\u017eence v tej pogovoru. To ni mogo\u010de razveljaviti.";
     },
     get$optionalRedactReason() {
-      return "(Op\u021bional) Motivul pentru redactarea acestui mesaj...";
+      return "(Neobvezno) Razlog za brisanje tega sporo\u010dila...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9" + username + " a invitat " + targetName;
+      return "\ud83d\udce9 " + username + " je povabil " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Numai utilizatori invita\u021bi";
+      return "Samo povabljeni uporabniki";
     },
     get$inviteForMe() {
-      return "Invita\u021bi pentru mine";
+      return "Vabilo zame";
     },
     get$isTyping() {
-      return "tasteaz\u0103\u2026";
+      return "tipka\u010de\xa0\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b" + username + " a intrat \xeen chat";
+      return "\ud83d\udc4b " + username + " se je pridru\u017eil pogovoru";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e" + username + " a dat afar\u0103 pe " + targetName;
+      return "\ud83d\udc5e " + username + " je izklju\u010dil " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Ultima dat\u0103 activ: " + localizedTimeShort;
+      return "Zadnja aktivnost: " + localizedTimeShort;
     },
     get$leave() {
-      return "Renun\u021ba\u021bi";
+      return "I\u0161\u010d\xe4";
     },
     get$leftTheChat() {
-      return "A plecat din chat";
+      return "Zapustil je pogovor";
     },
     get$lightTheme() {
-      return "Luminat";
+      return "Svetla";
     },
     get$dehydrate() {
-      return "Exporta\u021bi sesiunea \u0219i \u0219terge\u021bi dispozitivul";
+      return "Izvozi sejo in po\u010disti napravo";
     },
     get$dehydrateWarning() {
-      return "Aceast\u0103 actiune nu poate fi anulat\u0103. Asigura\u021bi-v\u0103 c\u0103 p\u0103stra\u021bi fi\u0219ierul backup.";
+      return "Ta dejanja ni mogo\u010de razveljaviti. Poskrbite, da varno shranite varnostno kopijo datoteke.";
     },
     get$dehydrateTor() {
-      return "Utilizatori de TOR: Exporta\u021bi sesiunea";
+      return "Uporabniki TOR: Izvozi sejo";
     },
     get$dehydrateTorLong() {
-      return "Pentru utilizatori de TOR, este recomandat s\u0103 exporta\u021bi sesiunea \xeenainte de a \xeenchide\u021bi fereastra.";
+      return "Za uporabnike TOR je priporo\u010dljivo izvoziti sejo pred zaprtjem okna.";
     },
     get$loadingPleaseWait() {
-      return "\xcenc\u0103rc\xe2nd... V\u0103 rug\u0103m s\u0103 a\u0219tepta\u021bi.";
+      return "Nalaganje\u2026 Prosimo po\u010dakajte.";
     },
     get$loadMore() {
-      return "\xcencarc\u0103 mai multe\u2026";
+      return "Nalo\u017ei ve\u010d\u2026";
     },
     get$locationDisabledNotice() {
-      return "Servicile de loca\u021bie sunt dezactivate. V\u0103 rug\u0103m s\u0103 le activa\u021bi s\u0103 \xeemp\u0103r\u021bi\u021bi loca\u021bia voastr\u0103.";
+      return "Lokacijske storitve so onemogo\u010dene. Prosimo, omogo\u010dite jih, da lahko delite svojo lokacijo.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Permisiunea loca\u021biei blocat\u0103. V\u0103 rug\u0103m s\u0103 o dezbloca\u021bi s\u0103 \xeemp\u0103r\u021bi\u021bi loca\u021bia voastr\u0103.";
+      return "Dovoljenje za lokacijo je zavrnjeno. Prosimo, dovolite, da lahko delite svojo lokacijo.";
     },
     get$login() {
-      return "Conecta\u021bi-v\u0103";
+      return "Prijava";
     },
     get$logout() {
-      return "Deconecta\u021bi-v\u0103";
+      return "Odjava";
     },
     get$mention() {
-      return "Men\u021biona\u021bi";
+      return "Omenitev";
     },
     get$messages() {
-      return "Mesaje";
+      return "Sporo\u010dila";
     },
     get$messagesStyle() {
-      return "Mesaje:";
+      return "Sporo\u010dila:";
     },
     get$moderator() {
       return "Moderator";
     },
     get$newChat() {
-      return "Chat nou";
+      return "Nov klepet";
     },
     get$newVerificationRequest() {
-      return "Cerere de verificare nou\u0103!";
+      return "Nova zahteva za preverjanje!";
     },
     get$next(_) {
-      return "Urm\u0103tor";
+      return "Naprej";
     },
     get$no() {
-      return "Nu";
+      return "Ne";
     },
     get$noConnectionToTheServer() {
-      return "F\u0103r\u0103 conexiune la server";
+      return "Ni povezave s stre\u017enikom";
     },
     get$noEmotesFound() {
-      return "Nu s-a g\u0103sit nici un emote. \ud83d\ude15";
+      return "Ni najdenih emojijev. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Distribuie link-ul de invita\u021bie";
+      return "Deli povabilo povezavo";
     },
     get$none() {
-      return "Niciunul";
+      return "Nobenega";
     },
     get$noPasswordRecoveryDescription() {
-      return "Nu a\u021bi ad\u0103ugat \xeenc\u0103 nici un mod de recuperare pentru parola voastr\u0103.";
+      return "\u0160e niste dodali na\u010dina za obnovitev gesla.";
     },
     get$noPermission() {
-      return "F\u0103r\u0103 permisie";
+      return "Ni dovoljenja";
     },
     get$noRoomsFound() {
-      return "Nici o camer\u0103 nu s-a g\u0103sit\u2026";
+      return "Ni najdenih sob\u2026";
     },
     get$notifications() {
-      return "Notific\u0103ri";
+      return "Obvestila";
     },
     get$obtainingLocation() {
-      return "Ob\u021bin\xe2nd loca\u021bie\u2026";
+      return "Pridobivanje lokacije\u2026";
     },
     get$offensive() {
-      return "Ofensiv";
+      return "Nasilno";
     },
     get$ok() {
-      return "Ok";
+      return "V redu";
     },
     get$oopsSomethingWentWrong() {
-      return "Ups, ceva a e\u0219uat\u2026";
+      return "Ups, nekaj je\u0161lo narobe\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Unul dintre clien\u021bilor vo\u0219tri a fost deconectat";
+      return "Eden od va\u0161ih odjemalcev je bil odjavljen";
     },
     get$openInMaps() {
-      return "Deschide\u021bi pe hart\u0103";
+      return "Odpri v zemljevidih";
     },
     get$link() {
-      return "Link";
+      return "Povezava";
     },
     get$serverRequiresEmail() {
-      return "Acest server trebuie s\u0103 valideze emailul vostru pentru \xeenregistrare.";
+      return "Ta stre\u017enik mora potrditi va\u0161 e-po\u0161tni naslov za registracijo.";
     },
     get$participant() {
-      return "Participant";
+      return "Udele\u017eenec";
     },
     get$passphraseOrKey() {
-      return "fraz\u0103 de acces sau cheie de recuperare";
+      return "geslovna fraza ali klju\u010d za obnovo";
     },
     get$password(_) {
-      return "Parol\u0103";
+      return "Geslo";
     },
     get$passwordForgotten() {
-      return "Parola uitat\u0103";
+      return "Pozabljeno geslo";
     },
     get$passwordHasBeenChanged() {
-      return "Parola a fost schimbat\u0103";
+      return "Geslo je bilo spremenjeno";
     },
     get$overview() {
-      return "Prezentare general\u0103";
+      return "Pregled";
     },
     get$passwordRecoverySettings() {
-      return "Set\u0103ri pentru recuperarea parolei";
+      return "Nastavitve obnove gesla";
     },
     get$passwordRecovery() {
-      return "Recuperare parolei";
+      return "Obnova gesla";
     },
     get$pickImage() {
-      return "Alege\u021bi o imagine";
+      return "Izberi sliko";
     },
     get$pin() {
-      return "Fixa\u021bi";
+      return "Pripni";
     },
     get$pleaseChoose() {
-      return "V\u0103 rug\u0103m s\u0103 alege\u021bi";
+      return "Prosim, izberi";
     },
     get$pleaseEnterYourPassword() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi parola voastr\u0103";
+      return "Prosimo, vnesite svoje geslo";
     },
     get$pleaseEnterYourPin() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi pinul vostru";
+      return "Prosimo, vnesite svoj PIN";
     },
     get$pleaseEnterYourUsername() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi username-ul vostru";
+      return "Prosimo, vnesite svoje uporabni\u0161ko ime";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "V\u0103 rug\u0103m s\u0103 urma\u021bi instruc\u021biunele pe website \u0219i apoi s\u0103 ap\u0103sa\u021bi pe urm\u0103tor.";
+      return "Prosimo, sledite navodilom na spletni strani in tapnite naprej.";
     },
     get$privacy() {
-      return "Confiden\u021bialitate";
+      return "Zasebnost";
     },
     get$reason(_) {
-      return "Motiv";
+      return "Razlog";
     },
     redactedBy$1(username) {
-      return "Redactat de " + username;
+      return "Ukrepljeno s strani " + username;
     },
     get$directChat() {
-      return "Chat direct";
+      return "Neposredni pogovor";
     },
     redactedByBecause$2(username, reason) {
-      return "Redactat de " + username + ' pentru c\u0103: "' + reason + '"';
+      return "Ukrepljeno s strani " + username + ' zaradi: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " a redactat un eveniment";
+      return username + " je ukrepal dogodek";
     },
     get$redactMessage() {
-      return "Redacta\u021bi mesaj";
+      return "Ukrepi sporo\u010dilo";
     },
     get$reject() {
-      return "Respinge\u021bi";
+      return "Zavrni";
     },
     rejectedTheInvitation$1(username) {
-      return username + " a respins invita\u021bia";
+      return username + " je zavrnil vabilo";
     },
     get$removeAllOtherDevices() {
-      return "Elimina\u021bi toate celelalte dispozitive";
+      return "Odstrani vse druge naprave";
     },
     get$unbanFromChat() {
-      return "Revoca interzicerea din chat";
+      return "Odkleni iz klepeta";
     },
     get$removeYourAvatar() {
-      return "\u0218terge\u021bi avatarul";
+      return "Odstrani svoj avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\xcenlocui\u021bi camera cu versiune mai nou\u0103";
+      return "Zamenjaj sobo z novej\u0161o razli\u010dico";
     },
     get$reply(_) {
-      return "R\u0103spunde\u021bi";
+      return "Odgovori";
     },
     get$reportMessage() {
-      return "Raporta\u021bi mesajul";
+      return "Prijavi sporo\u010dilo";
     },
     get$roomHasBeenUpgraded() {
-      return "Camera a fost actualizat\u0103";
+      return "Soba je bila nadgrajena";
     },
     get$search(_) {
-      return "C\u0103uta\u021bi";
+      return "I\u0161\u010di";
     },
     get$security() {
-      return "Securitate";
+      return "Varnost";
     },
     get$send(_) {
-      return "Trimite\u021bi";
+      return "Po\u0161lji";
     },
     get$sendAMessage() {
-      return "Trimite\u021bi un mesaj";
+      return "Po\u0161lji sporo\u010dilo";
     },
     get$sendAudio() {
-      return "Trimite\u021bi audio";
+      return "Po\u0161lji zvok";
     },
     get$sendFile() {
-      return "Trimite\u021bi fi\u0219ier";
+      return "Po\u0161lji datoteko";
     },
     get$sendImage() {
-      return "Trimite\u021bi imagine";
+      return "Po\u0161lji sliko";
     },
     sendImages$1(count) {
-      return "Trimite " + count + " imagine";
+      return "Po\u0161lji " + count + " slike";
     },
     get$sendMessages() {
-      return "Trimite\u021bi mesaje";
+      return "Po\u0161lji sporo\u010dila";
     },
     get$sendVideo() {
-      return "Trimite\u021bi video";
+      return "Po\u0161lji video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1" + username + " a trimis un fi\u0219ier";
+      return "\ud83d\uddc1 " + username + " je poslal datoteko";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4" + username + " a trimis audio";
+      return "\ud83c\udfa4 " + username + " je poslal zvok";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " a trimis o poz\u0103";
+      return "\ud83d\uddbc\ufe0f " + username + " je poslal sliko";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " a trimis un sticker";
+      return "\ud83d\ude0a " + username + " je poslal nalepko";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5" + username + " a trimis un video";
+      return "\ud83c\udfa5 " + username + " je poslal video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " a trimis informa\u021bie de apel";
+      return senderName + " je poslal informacije o klicu";
     },
     get$separateChatTypes() {
-      return "Afi\u0219a\u021bi chaturi directe \u0219i grupuri separat";
+      return "Lo\u010dene neposredne pogovore in skupine";
     },
     get$setChatDescription() {
-      return "Seteaz\u0103 descrierea chat-ului";
+      return "Nastavi opis pogovora";
     },
     get$setStatus() {
-      return "Stabili\u021bi status";
+      return "Nastavi status";
     },
     get$settings() {
-      return "Configur\u0103ri";
+      return "Nastavitve";
     },
     get$share(_) {
-      return "Partaja\u021bi";
+      return "Deli";
     },
     sharedTheLocation$1(username) {
-      return username + " sa partajat loca\u021bia";
+      return username + " je delil svojo lokacijo";
     },
     get$shareLocation() {
-      return "Partaja\u021bi loca\u021bia";
+      return "Deli lokacijo";
     },
     get$presencesToggle() {
-      return "Afi\u0219eaz\u0103 mesajele de stare de la al\u021bi utilizatori";
+      return "Prika\u017ei sporo\u010dila o statusu drugih uporabnikov";
     },
     get$skip(_) {
-      return "S\u0103ri\u021bi peste";
+      return "Presko\u010di";
     },
     get$sourceCode() {
-      return "Codul surs";
+      return "Izvorna koda";
     },
     startedACall$1(senderName) {
-      return senderName + " a \xeenceput un apel";
+      return senderName + " je za\u010del klic";
     },
     get$status(_) {
       return "Status";
     },
     get$statusExampleMessage() {
-      return "Ce face\u021bi?";
+      return "Kako si danes?";
     },
     get$submit(_) {
-      return "Trimite\u021bi";
+      return "Po\u0161lji";
     },
     get$synchronizingPleaseWait() {
-      return "Sincronizeaz\u0103... V\u0103 rug\u0103m s\u0103 a\u0219tepta\u021bi.";
+      return "Sinhronizacija\u2026 Prosimo po\u010dakajte.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return "Se sincronizeaz\u0103\u2026 (" + percentage + "%)";
+      return "Sinhronizacija... (" + percentage + "%)";
     },
     get$systemTheme() {
       return "Sistem";
     },
     get$theyDontMatch() {
-      return "Nu sunt asem\u0103n\u0103tori";
+      return "Ne ujemajo se";
     },
     get$theyMatch() {
-      return "Sunt asem\u0103n\u0103tori";
+      return "Ujemajo se";
     },
     get$tooManyRequestsWarning() {
-      return "Prea multe cereri. V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou mai t\u0103rziu!";
+      return "Preve\u010d zahtevkov. Poskusite znova kasneje!";
     },
     get$tryToSendAgain() {
-      return "\xcencerca\u021bi s\u0103 trimite\u021bi din nou";
+      return "Poskusi znova poslati";
     },
     get$unavailable() {
-      return "Nedisponibil";
+      return "Ni na voljo";
     },
     unbannedUser$2(username, targetName) {
-      return username + " a ridicat interzicerea lui " + targetName;
+      return username + " je odblokiral " + targetName;
     },
     get$unblockDevice() {
-      return "Debloca dispozitiv";
+      return "Odblokiraj napravo";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Algoritm de criptare necunoscut";
+      return "Neznan algoritem \u0161ifriranja";
     },
     unknownEvent$1(type) {
-      return "Evenimet necunoscut '" + type + "'";
+      return "Neznan dogodek '" + type + "'";
     },
     get$unpin() {
-      return "Anuleaz\u0103 fixarea";
+      return "Odstrani iz priponk";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u0219i " + count + " al\u021bi tasteaz\u0103\u2026";
+      return username + " in " + count + " drugih tipkajo\u010d\xe9\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u0219i " + username2 + " tasteaz\u0103\u2026";
+      return username + " in " + username2 + " tipkajo\u010d\xe9\u2026";
     },
     userIsTyping$1(username) {
-      return username + " tasteaz\u0103\u2026";
+      return username + " tipka\u010d\xe9\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa" + username + " a plecat din chat";
+      return "\ud83d\udeaa " + username + " je zapustil klepet";
     },
     get$username(_) {
-      return "Nume de utilizator";
+      return "Uporabni\u0161ko ime";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " a trimis un eveniment " + type;
+      return username + " je poslal " + type + " dogodek";
     },
     get$unverified() {
-      return "Neverificat";
+      return "Ne overjeno";
     },
     get$verified() {
-      return "Verificat";
+      return "Overjeno";
     },
     get$verifyStart() {
-      return "\xcencepe\u021bi verificare";
+      return "Za\u010dni overjanje";
     },
     get$verifySuccess() {
-      return "A reu\u0219it verificarea!";
+      return "Uspe\u0161no ste overili!";
     },
     get$verifyTitle() {
-      return "Verific\xe2nd cel\u0103lalt cont";
+      return "Overjanje dru\u017eega ra\u010duna";
     },
     get$visibleForAllParticipants() {
-      return "Vizibil pentru to\u021bi participan\u021bi";
+      return "Vidno vsem udele\u017enim";
     },
     get$visibleForEveryone() {
-      return "Vizibil pentru to\u021bi";
+      return "Vidno vsem";
     },
     get$voiceMessage() {
-      return "Mesaj vocal";
+      return "Glasovno sporo\u010dilo";
     },
     get$waitingPartnerAcceptRequest() {
-      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte cererea\u2026";
+      return "\u010cakam na potrditveno zahtevo partnerja\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte emoji-ul\u2026";
+      return "\u010cakam na potrditveno emoji partnerja\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte numerele\u2026";
+      return "\u010cakam na potrditvene \u0161tevilke partnerja\u2026";
     },
     get$warning() {
-      return "Avertizment!";
+      return "Opozorilo!";
     },
     get$weSentYouAnEmail() {
-      return "V-am trimis un email";
+      return "Poslali smo vam e-po\u0161to";
     },
     get$whyDoYouWantToReportThis() {
-      return "De ce dori\u021bi s\u0103 reporta\u021bi acest con\u021binut?";
+      return "Zakaj \u017eelite prijaviti to?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Cu acestea adrese pute\u021bi s\u0103 v\u0103 recupera\u021bi parola.";
+      return "Z temi naslovi lahko obnovite svoje geslo.";
     },
     get$writeAMessage() {
-      return "Scrie\u021bi un mesaj\u2026";
+      return "Napi\u0161ite sporo\u010dilo\u2026";
     },
     get$yes() {
       return "Da";
     },
     get$you() {
-      return "Voi";
+      return "Ti";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Nu mai participa\u021bi \xeen acest chat";
+      return "Ve\u010d ne sodelujete v tem klepetu";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "A\u021bi fost interzis din acest chat";
+      return "Bannali ste v tem klepetu";
     },
     get$yourPublicKey() {
-      return "Cheia voastr\u0103 public\u0103";
+      return "Va\u0161 javni klju\u010d";
     },
     get$messageInfo() {
-      return "Info mesajului";
+      return "Informacije o sporo\u010dilu";
     },
     get$time(_) {
-      return "Timp";
+      return "\u010cas";
     },
     get$sender() {
-      return "Trimi\u021b\u0103tor";
+      return "Po\u0161iljatelj";
     },
     get$openGallery() {
-      return "Deschide\u021bi galeria";
+      return "Odpri galerijo";
     },
     get$start(_) {
-      return "\xcencepe\u021bi";
+      return "Za\u010dni";
     },
     get$markAsRead() {
-      return "Marca\u021bi ca citit";
+      return "Ozna\u010di kot prebrano";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " a reac\u021bionat cu " + reaction;
+      return sender + " je reagiral z " + reaction;
     },
     get$pinMessage() {
-      return "Fixa\u021bi \xeen camer\u0103";
+      return "Pripni v sobo";
     },
     get$emojis() {
-      return "Emoji-uri";
+      return "Emojiji";
     },
     get$youRejectedTheInvitation() {
-      return "A\u021bi respins invita\u021bia";
+      return "Zavrnili ste vabilo";
     },
     get$youJoinedTheChat() {
-      return "Va-\u021bi al\u0103turat la chat";
+      return "Pridru\u017eili ste se klepetu";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4dA\u021bi acceptat invita\u021bia";
+      return "\ud83d\udc4d Sprejeli ste vabilo";
     },
     youBannedUser$1(user) {
-      return "A\u021bi interzis pe " + user;
+      return "Blokirali ste uporabnika " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "A\u021bi retras invita\u021bia pentru " + user;
+      return "Opozorili ste vabilo za " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9A\u021bi fost invitat de " + user;
+      return "\ud83d\udce9 Povabljen/a je bil/a s strani " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9A\u021bi invitat pe " + user;
+      return "\ud83d\udce9 Povabil/a si " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5eA\u021bi dat afar\u0103 pe " + user;
+      return "\ud83d\udc5e Izklju\u010dil/a si " + user;
     },
     youUnbannedUser$1(user) {
-      return "A\u021bi ridicat interzicerea lui " + user;
+      return "Odklenil/a si " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " a b\u0103tut la u\u0219\u0103";
+      return "\ud83d\udeaa " + user + " je potrkal/a";
     },
     countFiles$1(count) {
-      return "" + count + " fi\u0219iere";
+      return "" + count + " datotek";
     },
     get$user() {
-      return "Utilizator";
+      return "Uporabnik";
     },
     get$custom() {
-      return "Personalizat";
+      return "Po meri";
     },
     get$noKeyForThisMessage() {
-      return "Aceast\u0103 chestie poate s\u0103 se \xeent\xe2mple c\xe2nd mesajul a fost trimis \xeenainte s\u0103 v\u0103 conecta\u021bi contul cu acest dispozitiv.\n\nO alt\u0103 explica\u021bie ar fi dac\u0103 trimi\u021b\u0103torul a blocat dispozitivul vostru sau ceva s-a \xeent\xe2mplat cu conexiunea la internet\n\nPute\u021bi s\u0103 citi\u021bi mesajul \xeen o alt\u0103 se\u0219iune? Atunci pute\u021bi s\u0103 transfera\u021bi mesajul de acolo! Merge\u021bi la Configur\u0103ri > Dispozitive \u0219i verifica\u021bi c\u0103 dispozitivele s-au verificat. C\xe2nd deschide\u021bi camera \xeen viitor \u0219i ambele se\u0219iune sunt \xeen foreground, cheile va fi transmise automat. \n\nDori\u021bi s\u0103 \xee\u021bi p\u0103stra\u021bi cheile c\xe2nd deconecta\u021bi sau schimba\u021bi dispozitive? Fi\u021bi aten\u021bi s\u0103 activa\u021bi backup de chat \xeen configur\u0103ri.";
+      return "To se lahko zgodi, \u010de je bilo sporo\u010dilo poslano pred va\u0161im prijavo na ta naprava.\n\nPrav tako je mogo\u010de, da je po\u0161iljatelj blokiral va\u0161o napravo ali pa je pri\u0161lo do te\u017eav z internetno povezavo.\n\nAli lahko sporo\u010dilo preberete na drugi seji? Potem ga lahko prenesete iz nje! Pojdite v Nastavitve > Naprave in se prepri\u010dajte, da sta va\u0161i napravi med seboj preverjeni. Ko naslednji\u010d odprete sobo in sta obe seji v ospredju, se bodo klju\u010di samodejno prenesli.\n\nNe \u017eelite izgubiti klju\u010dev ob odjavi ali preklopu naprav? Prepri\u010dajte se, da ste omogo\u010dili varnostno kopiranje klepeta v nastavitvah.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Chat gol (a fost " + oldDisplayName + ")";
+      return "Prazno klepetanje (bilo " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Deschide din nou chatul";
+      return "Ponovno odpri klepet";
     },
     get$noOtherDevicesFound() {
-      return "Nu s-a g\u0103sit alte dispozitive";
+      return "Nobenih drugih naprav ni bilo najdenih";
     },
     fileIsTooBigForServer$1(max) {
-      return "Serverul reporteaz\u0103 c\u0103 fi\u0219ierul este prea mare s\u0103 fie trimis.";
+      return "Po\u0161iljanje ni mogo\u010de! Stre\u017enik podpira priponke le do " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "S\u0103ri\u021bi la ultimul citit mesaj";
+      return "Prekini do zadnjega prebranega sporo\u010dila";
     },
     get$readUpToHere() {
-      return "Citit p\xe2n\u0103 aici";
+      return "Preberi do tukaj";
     },
     get$jump() {
-      return "S\u0103ri\u021bi";
+      return "Skok";
     },
     get$openLinkInBrowser() {
-      return "Deschide\u021bi linkul \xeen browser";
+      return "Odpri povezavo v brskalniku";
     },
     get$setColorTheme() {
-      return "Seteaz\u0103 tema de culoare:";
+      return "Nastavi barvno temo:";
     },
     get$invite() {
-      return "Invit\u0103";
+      return "Vabilo";
     },
     get$invalidInput() {
-      return "Intrare invalid\u0103!";
+      return "Neveljaven vnos!";
     },
     wrongPinEntered$1(seconds) {
-      return "PIN gre\u0219it introdus! \xcencerca\u021bi din nou \xeen " + seconds + " secunde...";
+      return "Vnesen je bil napa\u010den PIN! Poskusite znova v " + seconds + " sekundah...";
     },
     get$pleaseEnterANumber() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi un num\u0103r mai mare dec\xe2t 0";
+      return "Vnesite \u0161tevilko, ve\u010djo od 0";
     },
     get$removeDevicesDescription() {
-      return "Ve\u021bi fi deconectat de pe acest dispozitiv \u0219i nu ve\u021bi mai putea primi mesaje.";
+      return "Odjavili se boste iz tega naprave in ne boste ve\u010d mogli prejemati sporo\u010dil.";
     },
     get$banUserDescription() {
-      return "Utilizatorul va fi interzis din chat \u0219i nu va putea intra din nou \xeen chat p\xe2n\u0103 nu va fi deblocat.";
+      return "Uporabnik bo prepovedan v klepetu in se ne bo mogel znova vklju\u010diti, dokler mu ne odobrite dostopa.";
     },
     get$unbanUserDescription() {
-      return "Utilizatorul va putea intra din nou \xeen chat dac\u0103 \xeencearc\u0103.";
+      return "Uporabnik bo lahko znova vstopil v klepet, \u010de bo poskusil.";
     },
     get$kickUserDescription() {
-      return "Utilizatorul este scos din chat, dar nu este interzis. \xcen chat-urile publice, utilizatorul se poate re\xeentoarce oric\xe2nd.";
+      return "Uporabnik je izklju\u010den iz klepeta, vendar ni prepovedan. V javnih klepetih se lahko ponovno pridru\u017ei kadarkoli.";
     },
     get$makeAdminDescription() {
-      return "Odat\u0103 ce face\u021bi acest utilizator administrator, s-ar putea s\u0103 nu mai pute\u021bi anula aceast\u0103 ac\u021biune, deoarece va avea acelea\u0219i permisiuni ca \u0219i dumneavoastr\u0103.";
+      return "Ko uporabnika postavite za administratorja, morda tega ne boste mogli razveljaviti, saj bo imel enake pravice kot vi.";
     },
     get$yourGlobalUserIdIs() {
-      return "ID-ul global al utilizatorului dvs. este: ";
+      return "Va\u0161 globalni uporabni\u0161ki ID je: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Din p\u0103cate, nu a fost g\u0103sit niciun utilizator cu "' + query + '". V\u0103 rug\u0103m s\u0103 verifica\u021bi dac\u0103 a\u021bi f\u0103cut o gre\u0219eal\u0103 de tastare.';
+      return 'Na \u017ealost ni bilo mogo\u010de najti uporabnika z "' + query + '". Preverite, ali ste naredili tipkarsko napako.';
     },
     get$knocking() {
-      return "B\u0103taie";
+      return "Klop";
     },
     get$nothingFound() {
-      return "Nimic g\u0103sit...";
+      return "Ni\u010desar ni bilo najdeno...";
     },
     get$groupName() {
-      return "Numele grupului";
+      return "Ime skupine";
     },
     get$wrongRecoveryKey() {
-      return "\xcemi pare r\u0103u... acesta nu pare a fi cheia de recuperare corect\u0103.";
+      return "Oprostite... zdi se, da to ni pravilen klju\u010d za obnovo.";
     },
     get$startConversation() {
-      return "\xcencepe o conversa\u021bie";
+      return "Za\u010dni pogovor";
     },
     get$commandHint_sendraw() {
-      return "Trimite json brut";
+      return "Po\u0161lji surogi json";
     },
     get$leaveEmptyToClearStatus() {
-      return "L\u0103sa\u021bi gol pentru a \u0219terge starea dvs.";
+      return "Pustite prazno, da po\u010distite svoj status.";
     },
     get$searchForUsers() {
-      return "Caut\u0103 @utilizatori...";
+      return "I\u0161\u010di @uporabnike...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi parola curent\u0103";
+      return "Prosim vnesite trenutno geslo";
     },
     get$newPassword() {
-      return "Parol\u0103 nou\u0103";
+      return "Novo geslo";
     },
     get$pleaseChooseAStrongPassword() {
-      return "V\u0103 rug\u0103m s\u0103 alege\u021bi o parol\u0103 puternic\u0103";
+      return "Prosim, izberite mo\u010dno geslo";
     },
     get$passwordsDoNotMatch() {
-      return "Parolele nu se potrivesc";
+      return "Gesli se ne ujemata";
     },
     get$passwordIsWrong() {
-      return "Parola introdus\u0103 este gre\u0219it\u0103";
+      return "Vnesena gesla ni pravilna";
     },
     get$decline() {
-      return "Refuz\u0103";
+      return "Zavrni";
     },
     get$thisDevice() {
-      return "Acest dispozitiv:";
+      return "Ta naprava:";
     },
     get$initAppError() {
-      return "A ap\u0103rut o eroare \xeen timpul ini\u021bializ\u0103rii aplica\u021biei";
+      return "Med inicializacijo aplikacije je pri\u0161lo do napake";
     },
     searchIn$1(chat) {
-      return 'Caut\u0103 \xeen chat "' + chat + '"...';
+      return 'I\u0161\u010di v klepetu "' + chat + '"...';
     },
     get$searchMore() {
-      return "Caut\u0103 mai mult...";
+      return "I\u0161\u010di \u0161e ve\u010d...";
     },
     get$gallery() {
-      return "Galerie";
+      return "Galerija";
     },
     get$files(_) {
-      return "Fi\u0219iere";
+      return "Datoteke";
     },
     sessionLostBody$2(url, error) {
-      return "Sesiunea dvs. s-a pierdut. V\u0103 rug\u0103m s\u0103 raporta\u021bi aceast\u0103 eroare dezvoltatorilor la " + url + ". Mesajul de eroare este: " + error;
+      return "Va\u0161a seja je izgubljena. Prosimo, prijavite to napako razvijalcem na " + url + ". Sporo\u010dilo napake je: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Aplica\u021bia \xeencearc\u0103 acum s\u0103 restaureze sesiunea din backup. V\u0103 rug\u0103m s\u0103 raporta\u021bi aceast\u0103 eroare dezvoltatorilor la " + url + ". Mesajul de eroare este: " + error;
+      return "Aplikacija posku\u0161a obnoviti va\u0161o sejo iz varnostne kopije. Prosimo, prijavite to napako razvijalcem na " + url + ". Sporo\u010dilo napake je: " + error;
     },
     get$sendReadReceipts() {
-      return "Trimite confirm\u0103ri de citire";
+      return "Po\u0161lji potrdila o branju";
     },
     get$sendTypingNotificationsDescription() {
-      return "Al\u021bi participan\u021bi la chat pot vedea c\xe2nd tasta\u021bi un mesaj nou.";
+      return "Drugi udele\u017eenci v klepetu lahko vidijo, kdaj tipkate novo sporo\u010dilo.";
     },
     get$sendReadReceiptsDescription() {
-      return "Al\u021bi participan\u021bi la chat pot vedea c\xe2nd a\u021bi citit un mesaj.";
+      return "Drugi udele\u017eenci v klepetu lahko vidijo, kdaj ste prebrali sporo\u010dilo.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verific\u0103 cel\u0103lalt dispozitiv";
+      return "\ud83d\udd10 Preveri drugo napravo";
     },
     get$verifyOtherDeviceDescription() {
-      return "C\xe2nd verifici un alt dispozitiv, acele dispozitive pot schimba chei, sporind securitatea general\u0103. \ud83d\udcaa C\xe2nd \xeencepi o verificare, va ap\u0103rea o fereastr\u0103 pop-up \xeen aplica\u021bie pe ambele dispozitive. Acolo vei vedea apoi o serie de emoji sau numere pe care trebuie s\u0103 le compari cu cel\u0103lalt. Este recomandat s\u0103 ai ambele dispozitive la \xeendem\xe2n\u0103 \xeenainte de a \xeencepe verificarea. \ud83e\udd33";
+      return "Ko preverite drugo napravo, te naprave lahko izmenjujejo klju\u010de, kar pove\u010duje va\u0161o celotno varnost. \ud83d\udcaa Ko za\u010dnete preverjanje, se v aplikaciji na obeh napravah prika\u017ee pojavno okno. Tam boste nato videli vrsto emojijev ali \u0161tevilk, ki jih morate primerjati med seboj. Najbolje je, da imate obe napravi pri roki, preden za\u010dnete preverjanje. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " a acceptat verificarea cheii";
+      return sender + " je potrdil preverjanje klju\u010da";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " a anulat verificarea cheii";
+      return sender + " je preklical preverjanje klju\u010da";
     },
     completedKeyVerification$1(sender) {
-      return sender + " a finalizat verificarea cheii";
+      return sender + " je zaklju\u010dil preverjanje klju\u010da";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " este gata pentru verificarea cheii";
+      return sender + " je pripravljen na preverjanje klju\u010da";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " a solicitat verificarea cheii";
+      return sender + " je zaprosil za preverjanje klju\u010da";
     },
     startedKeyVerification$1(sender) {
-      return sender + " a \xeenceput verificarea cheii";
+      return sender + " je za\u010del preverjanje klju\u010da";
     },
     get$commandHint_ignore() {
-      return "Ignor\u0103 ID-ul matrix dat";
+      return "Prezri dani matrix ID";
     },
     get$commandHint_unignore() {
-      return "Anuleaz\u0103 ignorarea ID-ului matrix dat";
+      return "Odstrani prezrto dani matrix ID";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\xcen acest moment exist\u0103 " + count + " utilizatori bloca\u021bi.";
+      return "Trenutno je blokiranih " + count + " uporabnikov.";
     },
     get$restricted() {
-      return "Restric\u021bionat";
+      return "Omejeno";
     },
     get$markAsUnread() {
-      return "Marcheaz\u0103 ca necitit";
+      return "Ozna\u010di kot neprebrano";
     },
     userLevel$1(level) {
-      return "" + level + " - Utilizator";
+      return "" + level + " - Uporabnik";
     },
     moderatorLevel$1(level) {
       return "" + level + " - Moderator";
@@ -1178,337 +1178,337 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "" + level + " - Administrator";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Schimb\u0103 vizibilitatea istoricului chat-ului";
+      return "Spremeni vidnost zgodovine klepeta";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Schimb\u0103 adresa principal\u0103 a chat-ului public";
+      return "Spremeni glavni javni naslov klepeta";
     },
     get$sendRoomNotifications() {
-      return "Trimite notific\u0103ri @room";
+      return "Po\u0161lji obvestila @room";
     },
     get$chatPermissionsDescription() {
-      return "Define\u0219te nivelul de putere necesar pentru anumite ac\u021biuni \xeen acest chat. Nivelurile de putere 0, 50 \u0219i 100 reprezint\u0103 de obicei utilizatori, moderatori \u0219i administratori, dar orice grada\u021bie este posibil\u0103.";
+      return "Dolo\u010dite, katera raven mo\u010di je potrebna za dolo\u010dene dejavnosti v tem klepetu. Raven mo\u010di 0, 50 in 100 obi\u010dajno predstavljajo uporabnike, moderatorje in skrbnike, vendar je mo\u017ena tudi katera koli stopnja.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Actualizare " + version + " instalat\u0103!";
+      return "\ud83c\udf89 Posodobitev " + version + " je name\u0161\u010dena!";
     },
     get$sendCanceled() {
-      return "Trimiterea a fost anulat\u0103";
+      return "Po\u0161iljanje preklicano";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Se pare c\u0103 nu este un server de acas\u0103 compatibil. URL gre\u0219it?";
+      return "Zdi se, da ni zdru\u017eljiv doma\u010di stre\u017enik. Napa\u010den URL?";
     },
     get$calculatingFileSize() {
-      return "Calcularea dimensiunii fi\u0219ierului...";
+      return "Izra\u010dun velikosti datoteke...";
     },
     get$prepareSendingAttachment() {
-      return "Preg\u0103tirea trimiterii ata\u0219amentului...";
+      return "Priprava po\u0161iljanja priponke...";
     },
     get$sendingAttachment() {
-      return "Trimitere ata\u0219ament...";
+      return "Po\u0161iljanje priponke...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Trimitere ata\u0219ament " + index + " din " + $length + "...";
+      return "Po\u0161iljanje priponke " + index + " od " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Limita serverului atins\u0103! A\u0219tepta\u021bi " + seconds + " secunde...";
+      return "Dose\u017eena je meja stre\u017enika! \u010cakanje " + seconds + " sekund...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Not\u0103: C\xe2nd conecta\u021bi toate dispozitivele dvs. la backup-ul de chat, acestea sunt verificate automat.";
+      return "Opomba: Ko pove\u017eete vse svoje naprave s varnostno kopijo klepeta, so samodejno preverjene.";
     },
     get$continueText() {
-      return "Continu\u0103";
+      return "Nadaljuj";
     },
     get$blur(_) {
-      return "Estompare:";
+      return "Zameglitev:";
     },
     get$opacity(_) {
-      return "Opacitate:";
+      return "Neprosojnost:";
     },
     get$setWallpaper() {
-      return "Seteaz\u0103 fundalul de ecran";
+      return "Nastavi ozadje";
     },
     get$noContactInformationProvided() {
-      return "Serverul nu furnizeaz\u0103 nicio informa\u021bie de contact valid\u0103";
+      return "Stre\u017enik ne zagotavlja veljavnih kontaktnih informacij";
     },
     get$contactServerAdmin() {
-      return "Contacta\u021bi administratorul serverului";
+      return "Kontaktirajte skrbnika stre\u017enika";
     },
     get$contactServerSecurity() {
-      return "Contacta\u021bi securitatea serverului";
+      return "Kontaktirajte varnost stre\u017enika";
     },
     get$supportPage() {
-      return "Pagin\u0103 de suport";
+      return "Stran za podporo";
     },
     get$serverInformation() {
-      return "Informa\u021bii despre server:";
+      return "Informacije o stre\u017eniku:";
     },
     get$name(_) {
-      return "Nume";
+      return "Ime";
     },
     get$version(_) {
-      return "Versiune";
+      return "Razli\u010dica";
     },
     get$compress() {
-      return "Comprim\u0103";
+      return "Stisni";
     },
     get$boldText() {
-      return "Text \xeengro\u0219at";
+      return "Krepko besedilo";
     },
     get$italicText() {
-      return "Text italic";
+      return "Le\u017ee\u010de besedilo";
     },
     get$strikeThrough() {
-      return "T\u0103iat cu linie";
+      return "Pre\u010drtano";
     },
     get$pleaseFillOut() {
-      return "V\u0103 rug\u0103m s\u0103 completa\u021bi";
+      return "Prosimo, izpolnite";
     },
     get$invalidUrl() {
-      return "URL invalid";
+      return "Neveljaven URL";
     },
     get$addLink() {
-      return "Adaug\u0103 link";
+      return "Dodaj povezavo";
     },
     get$unableToJoinChat() {
-      return "Imposibil de al\u0103turat chat-ului. Poate cealalt\u0103 parte a \xeenchis deja conversa\u021bia.";
+      return "Ni mogo\u010de sodelovati v klepetu. Morda je druga stran \u017ee zaprla pogovor.";
     },
     get$previous() {
-      return "Anterior";
+      return "Prej\u0161nje";
     },
     get$otherPartyNotLoggedIn() {
-      return "Cealalt\u0103 parte nu este conectat\u0103 \xeen prezent \u0219i, prin urmare, nu poate primi mesaje!";
+      return "Druga stran trenutno ni prijavljena in zato ne more prejemati sporo\u010dil!";
     },
     get$open(_) {
-      return "Deschide";
+      return "Odpri";
     },
     get$waitingForServer() {
-      return "Se a\u0219teapt\u0103 serverul...";
+      return "\u010cakanje na stre\u017enik...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Cerere de chat nou";
+      return "\ud83d\udce9 Nova zahteva za klepet";
     },
     get$contentNotificationSettings() {
-      return "Set\u0103ri notific\u0103ri con\u021binut";
+      return "Nastavitve obvestil o vsebini";
     },
     get$generalNotificationSettings() {
-      return "Set\u0103ri generale de notificare";
+      return "Splo\u0161ne nastavitve obvestil";
     },
     get$roomNotificationSettings() {
-      return "Set\u0103ri notific\u0103ri camer\u0103";
+      return "Nastavitve obvestil sobe";
     },
     get$userSpecificNotificationSettings() {
-      return "Set\u0103ri notific\u0103ri specifice utilizatorului";
+      return "Uporabni\u0161ko specifi\u010dne nastavitve obvestil";
     },
     get$otherNotificationSettings() {
-      return "Alte set\u0103ri de notificare";
+      return "Druge nastavitve obvestil";
     },
     get$notificationRuleContainsUserName() {
-      return "Con\u021bine Numele Utilizatorului";
+      return "Vsebuje uporabni\u0161ko ime";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Notific\u0103 utilizatorul c\xe2nd un mesaj con\u021bine numele s\u0103u de utilizator.";
+      return "Obve\u0161\u010da uporabnika, ko sporo\u010dilo vsebuje njegovo uporabni\u0161ko ime.";
     },
     get$notificationRuleMaster() {
-      return "Opre\u0219te toate notific\u0103rile";
+      return "Uti\u0161aj vsa obvestila";
     },
     get$notificationRuleMasterDescription() {
-      return "Suprascrie toate celelalte reguli \u0219i dezactiveaz\u0103 toate notific\u0103rile.";
+      return "Prekli\u010de vse druge pravila in onemogo\u010di vsa obvestila.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Suprim\u0103 mesajele automate";
+      return "Potla\u010di avtomatizirana sporo\u010dila";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Suprim\u0103 notific\u0103rile de la clien\u021bi automatiza\u021bi precum robo\u021bi.";
+      return "Potla\u010di obvestila iz avtomatiziranih odjemalcev, kot so bot-i.";
     },
     get$notificationRuleInviteForMe() {
-      return "Invit\u0103 pentru mine";
+      return "Vabilo zame";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Notific\u0103 utilizatorul c\xe2nd este invitat \xeentr-o camer\u0103.";
+      return "Obve\u0161\u010da uporabnika, ko je povabljen v sobo.";
     },
     get$notificationRuleMemberEvent() {
-      return "Eveniment membru";
+      return "Dogodek \u010dlana";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Suprim\u0103 notific\u0103rile pentru evenimentele de membru.";
+      return "Prepre\u010duje obvestila za dogodke \u010dlanstva.";
     },
     get$notificationRuleIsUserMention() {
-      return "Men\u021bionare utilizator";
+      return "Omenitev uporabnika";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Notific\u0103 utilizatorul c\xe2nd este men\u021bionat direct \xeentr-un mesaj.";
+      return "Obve\u0161\u010da uporabnika, ko je neposredno omenjen v sporo\u010dilu.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Con\u021bine Numele de Afi\u0219are";
+      return "Vsebuje prikazno ime";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Notific\u0103 utilizatorul c\xe2nd un mesaj con\u021bine numele s\u0103u de afi\u0219are.";
+      return "Obve\u0161\u010da uporabnika, ko sporo\u010dilo vsebuje njihovo prikazno ime.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Men\u021biune \xeen camer\u0103";
+      return "Omenitev sobe";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Notific\u0103 utilizatorul atunci c\xe2nd exist\u0103 o men\u021biune \xeen camer\u0103.";
+      return "Obve\u0161\u010da uporabnika, ko je omenjena soba.";
     },
     get$notificationRuleRoomnotif() {
-      return "Notificare camer\u0103";
+      return "Obvestilo sobe";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Notific\u0103 utilizatorul atunci c\xe2nd un mesaj con\u021bine '@room'.";
+      return "Obve\u0161\u010da uporabnika, ko sporo\u010dilo vsebuje '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Morm\xe2nt";
+      return "Spomenik";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Notific\u0103 utilizatorul despre mesajele de dezactivare a camerei.";
+      return "Obve\u0161\u010da uporabnika o sporo\u010dilih o deaktivaciji sobe.";
     },
     get$notificationRuleReaction() {
-      return "Reac\u021bie";
+      return "Reakcija";
     },
     get$notificationRuleReactionDescription() {
-      return "Suprim\u0103 notific\u0103rile pentru reac\u021bii.";
+      return "Prepre\u010duje obvestila za reakcije.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "ACL server camer\u0103";
+      return "Dovoljenja stre\u017enika sobe";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Suprim\u0103 notific\u0103rile pentru listele de control acces (ACL) ale serverului camerei.";
+      return "Prepre\u010duje obvestila za sezname dostopa stre\u017enika sobe (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Suprim\u0103 edit\u0103rile";
+      return "Prepre\u010di urejanja";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Suprim\u0103 notific\u0103rile pentru mesajele editate.";
+      return "Prepre\u010duje obvestila za urejena sporo\u010dila.";
     },
     get$notificationRuleCall() {
-      return "Apel";
+      return "Klic";
     },
     get$notificationRuleCallDescription() {
-      return "Notific\u0103 utilizatorul despre apeluri.";
+      return "Obve\u0161\u010da uporabnika o klicih.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Camer\u0103 criptat\u0103 unu-la-unu";
+      return "\u0160ifrirana soba ena na ena";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Notific\u0103 utilizatorul despre mesajele din camere criptate unu-la-unu.";
+      return "Obve\u0161\u010da uporabnika o sporo\u010dilih v \u0161ifriranih sobah ena na ena.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Camer\u0103 unu-la-unu";
+      return "Soba ena na ena";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Notific\u0103 utilizatorul despre mesaje \xeen camere unu-la-unu.";
+      return "Obve\u0161\u010da uporabnika o sporo\u010dilih v sobah ena na ena.";
     },
     get$notificationRuleMessage() {
-      return "Mesaj";
+      return "Sporo\u010dilo";
     },
     get$notificationRuleMessageDescription() {
-      return "Notific\u0103 utilizatorul despre mesaje generale.";
+      return "Obve\u0161\u010da uporabnika o splo\u0161nih sporo\u010dilih.";
     },
     get$notificationRuleEncrypted() {
-      return "Criptat";
+      return "\u0160ifrirano";
     },
     get$notificationRuleEncryptedDescription() {
-      return " Notific\u0103 utilizatorul despre mesajele din camerele criptate.";
+      return "Obve\u0161\u010da uporabnika o sporo\u010dilih v \u0161ifriranih sobah.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Notific\u0103 utilizatorul despre evenimentele widget-ului Jitsi.";
+      return "Obve\u0161\u010da uporabnika o dogodkih v vti\u010dniku Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "Suprim\u0103 evenimentele ACL ale serverului";
+      return "Potla\u010di dogodke stre\u017eni\u0161kega ACL";
     },
     get$notificationRuleServerAclDescription() {
-      return "Suprim\u0103 notific\u0103rile pentru evenimentele ACL ale serverului.";
+      return "Potla\u010di obvestila za dogodke stre\u017eni\u0161kega ACL.";
     },
     unknownPushRule$1(rule) {
-      return "Regul\u0103 de notificare necunoscut\u0103 '" + rule + "'";
+      return "Neznano pravilo potiska '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - Mesaj vocal de la " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Glasovno sporo\u010dilo od " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Dac\u0103 \u0219terge\u021bi aceast\u0103 setare de notificare, nu poate fi anulat\u0103.";
+      return "\u010ce izbri\u0161ete to nastavitev obvestila, tega ni mogo\u010de razveljaviti.";
     },
     get$more() {
-      return "Mai mult";
+      return "Ve\u010d";
     },
     get$shareKeysWith() {
-      return "Partajeaz\u0103 cheile cu...";
+      return "Deli klju\u010de z...";
     },
     get$shareKeysWithDescription() {
-      return "Care dispozitive trebuie s\u0103 fie de \xeencredere pentru a putea citi mesajele tale \xeen chat-urile criptate?";
+      return "Katera naprava naj bo zaupana, da bo lahko brala va\u0161a sporo\u010dila v \u0161ifriranih klepetih?";
     },
     get$allDevices() {
-      return "Toate dispozitivele";
+      return "Vse naprave";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Dispozitive verificate \xeencruci\u0219at dac\u0103 este activat";
+      return "Preveri preverjene naprave, \u010de je omogo\u010deno";
     },
     get$crossVerifiedDevices() {
-      return "Dispozitive verificate \xeencruci\u0219at";
+      return "Preverjene naprave";
     },
     get$verifiedDevicesOnly() {
-      return "Doar dispozitive verificate";
+      return "Samo preverjene naprave";
     },
     get$optionalMessage() {
-      return "(Op\u021bional) mesaj...";
+      return "(Neobvezno) sporo\u010dilo...";
     },
     get$notSupportedOnThisDevice() {
-      return "Nu este suportat pe acest dispozitiv";
+      return "Na tej napravi ni podprto";
     },
     get$enterNewChat() {
-      return "Intr\u0103 \xeen conversa\u021bie nou\u0103";
+      return "Vstopi v nov klepet";
     },
     get$approve() {
-      return "Aprob\u0103";
+      return "Odobri";
     },
     get$commandHint_logout() {
-      return "Deconecta\u021bi-v\u0103 de pe dispozitivul curent";
+      return "Odjava trenutne naprave";
     },
     get$commandHint_logoutall() {
-      return "Deconecta\u021bi toate dispozitivele active";
+      return "Odjava vseh aktivnih naprav";
     },
     get$customReaction() {
-      return "Reac\u021bie personalizat\u0103";
+      return "Prilagojena reakcija";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Tasteaz\u0103 \xeen " + l1 + " sau " + l2 + "...";
+      return "Vpi\u0161ite v " + l1 + " ali " + l2 + "...";
     },
     get$holdForInfo() {
-      return "\u021aine ap\u0103sat pentru informa\u021bii despre cuv\xe2nt.";
+      return "Kliknite in dr\u017eite za informacije o besedi.";
     },
     get$greenFeedback() {
-      return "Asta a\u0219 pune!";
+      return "To bi jaz vnesel!";
     },
     get$yellowFeedback() {
-      return "Hmmm, po\u021bi \xeencerca asta \u0219i vezi dac\u0103 func\u021bioneaz\u0103! Pentru a folosi acest cuv\xe2nt, doar f\u0103 clic din nou.";
+      return "Hm, poskusi to in poglej, \u010de deluje! Za uporabo te besede jo preprosto kliknite znova.";
     },
     get$redFeedback() {
-      return "Nu cred c\u0103 este corect...";
+      return "Mislim, da to ni prav...";
     },
     get$gaTooltip() {
-      return "L2 utilizare cu asisten\u021b\u0103 gramatical\u0103";
+      return "L2 uporaba z jezikovno pomo\u010djo";
     },
     get$taTooltip() {
-      return "L2 utilizare cu asisten\u021b\u0103 de traducere";
+      return "L2 uporaba z prevajalsko pomo\u010djo";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Traduc\u0103tor Interactiv";
+      return "Interaktivni prevajalnik";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Verificator Gramatic\u0103 Interactiv";
+      return "Interaktivni preverjevalnik slovnice";
     },
     get$waTooltip() {
-      return "L2 utilizare f\u0103r\u0103 asisten\u021b\u0103";
+      return "Uporaba L2 brez pomo\u010di";
     },
     get$noIdenticalLanguages() {
-      return "Te rog s\u0103 alegi limbi de baz\u0103 \u0219i \u021bint\u0103 diferite";
+      return "Prosim, izberi razli\u010dne osnovne in ciljne jezike";
     },
     get$joinWithClassCode() {
-      return "Particip\u0103 la curs";
+      return "Pridru\u017ei se te\u010daju";
     },
     get$languageLevelPreA1() {
       return "Novice Low (Pre A1)";
@@ -1517,292 +1517,292 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Novice Mid (A1)";
     },
     get$languageLevelA2() {
-      return "Novice \xcenalt (A2)";
+      return "Visoka za\u010detna (A2)";
     },
     get$languageLevelB1() {
-      return "Intermediar Mediu (B1)";
+      return "Srednja (B1)";
     },
     get$languageLevelB2() {
-      return "Avansat Sc\u0103zut (B2)";
+      return "Nizka napredna (B2)";
     },
     get$languageLevelC1() {
-      return "Avansat Mediu (C1)";
+      return "Srednja napredna (C1)";
     },
     get$languageLevelC2() {
-      return "Superior (C2)";
+      return "Visoka (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Schimb\u0103 numele";
+      return "Spremeni ime";
     },
     get$changeTheNameOfTheChat() {
-      return "Schimb\u0103 numele chat-ului";
+      return "Spremeni ime klepeta";
     },
     get$sorryNoResults() {
-      return "Ne pare r\u0103u, nu exist\u0103 rezultate.";
+      return "Oprostite, ni rezultatov.";
     },
     get$ignoreInThisText() {
-      return "Ignor\u0103";
+      return "Prezri";
     },
     needsItMessage$1(targetLanguage) {
-      return "A\u0219teapt\u0103, nu este " + targetLanguage + "! Ai nevoie de ajutor pentru traducere?";
+      return "Po\u010dakajte, to ni " + targetLanguage + "! Ali potrebujete pomo\u010d pri prevajanju?";
     },
     get$countryInformation() {
-      return "\u021aara mea";
+      return "Moja dr\u017eava";
     },
     get$targetLanguage() {
-      return "Limba \u021bint\u0103";
+      return "Ciljni jezik";
     },
     get$updateLanguage() {
-      return "Limbi ale mele";
+      return "Moji jeziki";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Ce limb\u0103 vrei s\u0103 \xeenve\u021bi?";
+      return "Kateri jezik \u017eeli\u0161 nau\u010diti?";
     },
     get$whatIsYourBaseLanguage() {
-      return "Care este limba ta de baz\u0103?";
+      return "Kak\u0161en je va\u0161 osnovni jezik?";
     },
     get$saveChanges() {
-      return "Salveaz\u0103 modific\u0103rile";
+      return "Shrani spremembe";
     },
     get$publicProfileTitle() {
-      return "Permite ca profilul meu s\u0103 fie g\u0103sit \xeen c\u0103utare";
+      return "Dovolim, da je moj profil najden v iskanju";
     },
     get$publicProfileDesc() {
-      return "Activ\xe2nd aceast\u0103 op\u021biune, permi\u021bi altor utilizatori s\u0103 g\u0103seasc\u0103 profilul t\u0103u \xeen bara de c\u0103utare global\u0103 \u0219i s\u0103 trimit\u0103 cereri de chat. \xcen acest moment, po\u021bi alege s\u0103 accep\u021bi sau s\u0103 refuzi cererea.";
+      return "Z vklopom omogo\u010dite drugim uporabnikom, da najdejo va\u0161 profil v globalni iskalni vrstici in po\u0161ljejo zahteve za klepet. V tem trenutku lahko izberete, ali \u017eelite sprejeti ali zavrniti zahtevo.";
     },
     get$errorDisableIT() {
-      return "Asisten\u021ba de traducere este dezactivat\u0103.";
+      return "Pomo\u010d pri prevajanju je izklopljena.";
     },
     get$errorDisableIGC() {
-      return "Asisten\u021ba gramatical\u0103 este dezactivat\u0103.";
+      return "Pomo\u010d pri slovnici je izklopljena.";
     },
     get$errorDisableLanguageAssistance() {
-      return "Asisten\u021ba de traducere \u0219i asisten\u021ba gramatical\u0103 sunt dezactivate.";
+      return "Pomo\u010d pri prevajanju in slovnici sta izklopljeni.";
     },
     get$errorDisableITUserDesc() {
-      return "Clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 pentru traducere";
+      return "Kliknite tukaj za posodobitev nastavitev pomo\u010di pri prevajanju";
     },
     get$errorDisableIGCUserDesc() {
-      return "Clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 gramatical\u0103";
+      return "Kliknite tukaj za posodobitev nastavitev pomo\u010di pri slovnici";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "Face\u021bi clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 pentru traducere \u0219i gramatic\u0103";
+      return "Kliknite tukaj za posodobitev nastavitev pomo\u010di pri prevajanju in slovnici";
     },
     get$errorDisableITClassDesc() {
-      return "Asisten\u021ba de traducere este dezactivat\u0103 pentru cursul \xeen care se afl\u0103 aceast\u0103 conversa\u021bie.";
+      return "Pomo\u010d pri prevajanju je izklopljena za te\u010daj, v katerem je ta klepet.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Asisten\u021ba de gramatic\u0103 este dezactivat\u0103 pentru cursul \xeen care se afl\u0103 aceast\u0103 conversa\u021bie.";
+      return "Pomo\u010d pri slovnici je izklopljena za te\u010daj, v katerem je ta klepet.";
     },
     get$error405Title() {
-      return "Limbi neconfigurate";
+      return "Jeziki niso nastavljeni";
     },
     get$error405Desc() {
-      return "V\u0103 rug\u0103m s\u0103 seta\u021bi limbile \xeen Meniu Principal > Set\u0103ri de \xcenv\u0103\u021bare.";
+      return "Prosimo, nastavite svoje jezike v Glavnem meniju > Nastavitve u\u010denja.";
     },
     get$termsAndConditions() {
-      return "Termenii \u0219i Condi\u021biile";
+      return "Pogoji in dolo\u010dila";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " \u0219i certific c\u0103 am cel pu\u021bin 16 ani.";
+      return "in potrjujem, da sem starej\u0161i od 16 let.";
     },
     get$error502504Title() {
-      return "Wow, sunt mul\u021bi elevi online!";
+      return "Vau, veliko je \u0161tudentov na spletu!";
     },
     get$error502504Desc() {
-      return "Instrumentele de traducere \u0219i gramatic\u0103 pot fi lente sau indisponibile \xeen timp ce robo\u021bii Pangea se actualizeaz\u0103.";
+      return "Orodja za prevajanje in slovnico so lahko po\u010dasna ali nedosegljiva, medtem ko se bot Pangea posodablja.";
     },
     get$error404Title() {
-      return "Eroare de traducere!";
+      return "Napaka pri prevajanju!";
     },
     get$error404Desc() {
-      return "Botul Pangea nu este sigur cum s\u0103 traduc\u0103 asta...";
+      return "Bot Pangea ni prepri\u010dan, kako naj to prevede...";
     },
     get$errorPleaseRefresh() {
-      return "Ne uit\u0103m la problem\u0103! V\u0103 rug\u0103m s\u0103 re\xeenc\u0103rca\u021bi \u0219i s\u0103 \xeencerca\u021bi din nou.";
+      return "Preu\u010dujemo to! Prosimo, osve\u017eite stran in poskusite znova.";
     },
     get$connectedToStaging() {
-      return "Conectat la Staging";
+      return "Povezano s testnim okoljem";
     },
     get$learningSettings() {
-      return "Set\u0103ri de \xeenv\u0103\u021bare";
+      return "Nastavitve u\u010denja";
     },
     get$participants() {
-      return "Participan\u021bi";
+      return "Udele\u017eenci";
     },
     get$clickMessageTitle() {
-      return "Ai nevoie de ajutor?";
+      return "Potrebujete pomo\u010d?";
     },
     get$clickMessageBody() {
-      return "F\u0103 clic pe un mesaj pentru instrumente de limbaj precum traducere, redare \u0219i altele!";
+      return "Kliknite sporo\u010dilo za jezikovne orodja, kot so prevajanje, predvajanje in ve\u010d!";
     },
     get$allDone() {
-      return "Totul este gata!";
+      return "Vse je opravljeno!";
     },
     get$vocab() {
-      return "Vocabular";
+      return "Vocab";
     },
     get$subscribe(_) {
-      return "Aboneaz\u0103-te";
+      return "Naro\u010di se";
     },
     get$getAccess() {
-      return "Aboneaz\u0103-te acum!";
+      return "Naro\u010di se zdaj!";
     },
     get$subscriptionDesc() {
-      return "Mesajele sunt gratuite! Aboneaz\u0103-te pentru a debloca traducerea interactiv\u0103, verificarea gramaticii \u0219i analizele de \xeenv\u0103\u021bare.";
+      return "Sporo\u010danje je brezpla\u010dno! Naro\u010dite se za odklepanje interaktivnega prevajanja, preverjanja slovnice in analitike u\u010denja.";
     },
     get$subscriptionManagement() {
-      return "Gestionare abonament";
+      return "Upravljanje naro\u010dnine";
     },
     get$currentSubscription() {
-      return "Abonament curent";
+      return "Trenutna naro\u010dnina";
     },
     get$cancelSubscription() {
-      return "Anuleaz\u0103 abonamentul t\u0103u";
+      return "Prekli\u010di naro\u010dnino";
     },
     get$selectYourPlan() {
-      return "Selecteaz\u0103-\u021bi planul";
+      return "Izberi svoj na\u010drt";
     },
     get$subsciptionPlatformTooltip() {
-      return "Te rug\u0103m s\u0103 te conectezi la dispozitivul t\u0103u original pentru a gestiona planul de abonament";
+      return "Prijavite se v svojo izvorno napravo, da upravljate svojo naro\u010dnino";
     },
     get$subscriptionManagementUnavailable() {
-      return "Gestionarea abonamentului nu este disponibil\u0103";
+      return "Upravljanje naro\u010dnine ni na voljo";
     },
     get$paymentMethod() {
-      return "Metoda de plat\u0103";
+      return "Na\u010din pla\u010dila";
     },
     get$paymentHistory() {
-      return "Istoricul pl\u0103\u021bilor";
+      return "Zgodovina pla\u010dil";
     },
     get$emptyChatDownloadWarning() {
-      return "Nu se poate desc\u0103rca chat gol";
+      return "Ne morete prenesti praznega klepeta";
     },
     get$toggleImmersionMode() {
-      return "Comutare Mod Imersiune";
+      return "Na\u010din potopitve";
     },
     get$toggleImmersionModeDesc() {
-      return "C\xe2nd este activat, toate mesajele sunt afi\u0219ate \xeen limba \u021bint\u0103. Aceast\u0103 setare este cel mai util \xeen schimburile de limbi.";
+      return "Ko je omogo\u010deno, so vsa sporo\u010dila prikazana v va\u0161em ciljnem jeziku. Ta nastavitev je najbolj uporabna pri jezikovnih izmenjavah.";
     },
     get$itToggleDescription() {
-      return "Acest instrument de \xeenv\u0103\u021bare a limbilor va identifica cuvintele \xeen limba de baz\u0103 \u0219i v\u0103 va ajuta s\u0103 le traduce\u021bi \xeen limba \u021bint\u0103. De\u0219i rar, AI poate face gre\u0219eli de traducere.";
+      return "Ta orodje za u\u010denje jezika bo prepoznalo besede v va\u0161em osnovnem jeziku in vam pomagalo prevesti jih v va\u0161 ciljni jezik. \u010ceprav redko, lahko AI naredi napake pri prevajanju.";
     },
     get$igcToggleDescription() {
-      return "Acest instrument de \xeenv\u0103\u021bare a limbilor va identifica gre\u0219elile comune de ortografie, gramatic\u0103 \u0219i punctua\u021bie din mesajul dvs. \u0219i va sugera corecturi. De\u0219i rar, AI poate face gre\u0219eli de corectare.";
+      return "To orodje za u\u010denje jezika bo prepoznalo pogoste napake v \u010drkovanju, slovnici in lo\u010dili v va\u0161em sporo\u010dilu ter predlagalo popravke. \u010ceprav redko, lahko AI naredi napake pri popravkih.";
     },
     get$originalMessage() {
-      return "Mesaj Original";
+      return "Izvirno sporo\u010dilo";
     },
     get$sentMessage() {
-      return "Mesaj Trimis";
+      return "Poslano sporo\u010dilo";
     },
     get$useType() {
-      return "Utilizare Tip";
+      return "Vrsta uporabe";
     },
     get$notAvailable() {
-      return "Indisponibil";
+      return "Ni na voljo";
     },
     get$taAndGaTooltip() {
-      return "Utilizare L2 cu asisten\u021b\u0103 de traducere \u0219i asisten\u021b\u0103 gramatical\u0103";
+      return "L2 uporaba z asisten\u010dno prevajanjem in slovni\u010dnim pomo\u010dnikom";
     },
     get$definitionsToolName() {
-      return "Defini\u021bii Cuvinte";
+      return "Dolo\u010ditve besed";
     },
     get$definitionsToolDescription() {
-      return "C\xe2nd este activat, cuvintele subliniate \xeen albastru pot fi f\u0103cute clic pentru defini\u021bii. Face\u021bi clic pe mesaje pentru a accesa defini\u021biile.";
+      return "Ko je omogo\u010deno, so besede pod\u010drtane v modro in jih je mogo\u010de klikniti za definicije. Kliknite na sporo\u010dila za dostop do definicij.";
     },
     get$welcomeBack() {
-      return "Bine ai revenit! Dac\u0103 ai fost parte din pilotul 2023-2024, te rug\u0103m s\u0103 ne contactezi pentru abonamentul t\u0103u special de pilot. Dac\u0103 e\u0219ti profesor care a achizi\u021bionat (sau institu\u021bia ta a achizi\u021bionat) licen\u021be pentru clasa ta, contacteaz\u0103-ne pentru abonamentul t\u0103u de profesor.";
+      return "Dobrodo\u0161li nazaj! \u010ce ste bili del pilotnega programa 2023-2024, nas kontaktirajte za va\u0161o posebno pilotno naro\u010dnino. \u010ce ste u\u010ditelj, ki je (ali va\u0161a institucija je) kupila licence za va\u0161o razred, nas kontaktirajte za va\u0161o u\u010diteljsko naro\u010dnino.";
     },
     get$downloadTxtFile() {
-      return "Descarc\u0103 Fi\u0219ier Text";
+      return "Prenesi besedilno datoteko";
     },
     get$downloadCSVFile() {
-      return "Descarc\u0103 Fi\u0219ier CSV";
+      return "Prenesi CSV datoteko";
     },
     get$promotionalSubscriptionDesc() {
-      return "\xcen prezent ai un abonament promo\u021bional pe via\u021b\u0103. Trimite un mesaj la support@pangea.chat pentru ajutor \xeen schimbarea abonamentului t\u0103u.";
+      return "Trenutno imate do\u017eivljenjsko promocijsko naro\u010dnino. Pi\u0161ite na support@pangea.chat za pomo\u010d pri spremembi va\u0161e naro\u010dnine.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Abonament achizi\u021bionat prin " + purchasePlatform;
+      return "Naro\u010dnina kupljena prek " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "Perioad\u0103 de \xeencercare de o s\u0103pt\u0103m\xe2n\u0103";
+      return "Preizkus za en teden";
     },
     get$downloadXLSXFile() {
-      return "Descarc\u0103 Fi\u0219ier Excel";
+      return "Prenesi Excel datoteko";
     },
     get$unkDisplayName() {
-      return "Necunoscut";
+      return "Neznano";
     },
     get$wwCountryDisplayName() {
-      return "Lumea \xeentreag\u0103";
+      return "Po vsem svetu";
     },
     get$afCountryDisplayName() {
       return "Afganistan";
     },
     get$axCountryDisplayName() {
-      return "Insulele Aland";
+      return "Oto\u010dja Aland";
     },
     get$alCountryDisplayName() {
-      return "Albania";
+      return "Albanija";
     },
     get$dzCountryDisplayName() {
-      return "Algeria";
+      return "Al\u017eirija";
     },
     get$asCountryDisplayName() {
-      return "Samoa American\u0103";
+      return "Ameri\u0161ka Samoa";
     },
     get$adCountryDisplayName() {
-      return "Andorra";
+      return "Andora";
     },
     get$aoCountryDisplayName() {
       return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "Anguilla";
+      return "Angvila";
     },
     get$agCountryDisplayName() {
-      return "Antigua \u0219i Barbuda";
+      return "Antigua in Barbuda";
     },
     get$arCountryDisplayName() {
       return "Argentina";
     },
     get$amCountryDisplayName() {
-      return "Armenia";
+      return "Armenija";
     },
     get$awCountryDisplayName() {
       return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "Insula Ascension";
+      return "Otoki Ascension";
     },
     get$auCountryDisplayName() {
-      return "Australia";
+      return "Avstralija";
     },
     get$atCountryDisplayName() {
-      return "Austria";
+      return "Avstrija";
     },
     get$azCountryDisplayName() {
-      return "Azerbaidjan";
+      return "Azerbejd\u017ean";
     },
     get$bsCountryDisplayName() {
-      return "Bahamas";
+      return "Bahami";
     },
     get$bhCountryDisplayName() {
       return "Bahrein";
     },
     get$bdCountryDisplayName() {
-      return "Bangladesh";
+      return "Banglade\u0161";
     },
     get$bbCountryDisplayName() {
       return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "Belarus";
+      return "Belorusija";
     },
     get$beCountryDisplayName() {
-      return "Belgia";
+      return "Belgija";
     },
     get$bzCountryDisplayName() {
       return "Belize";
@@ -1814,31 +1814,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "Bhutan";
+      return "Butan";
     },
     get$boCountryDisplayName() {
-      return "Bolivia";
+      return "Bolivija";
     },
     get$baCountryDisplayName() {
-      return "Bosnia \u0219i Herzegovina";
+      return "Bosna in Hercegovina";
     },
     get$bwCountryDisplayName() {
-      return "Botswana";
+      return "Botsvana";
     },
     get$brCountryDisplayName() {
-      return "Brazilia";
+      return "Brazilija";
     },
     get$ioCountryDisplayName() {
-      return "Teritoriul Britanic din Oceanul Indian";
+      return "Britanski Indijski Ocean";
     },
     get$vgCountryDisplayName() {
-      return "Insulele Virgine Britanice";
+      return "Britanski Devi\u0161ki otoki";
     },
     get$bnCountryDisplayName() {
       return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "Bulgaria";
+      return "Bolgarija";
     },
     get$bfCountryDisplayName() {
       return "Burkina Faso";
@@ -1847,190 +1847,190 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "Cambodgia";
+      return "Kambod\u017ea";
     },
     get$cmCountryDisplayName() {
-      return "Camerun";
+      return "Kamerun";
     },
     get$caCountryDisplayName() {
-      return "Canada";
+      return "Kanada";
     },
     get$cvCountryDisplayName() {
-      return "Capul Verde";
+      return "Zelenortski otoki";
     },
     get$bqCountryDisplayName() {
-      return "Insulele Caraibe Olandeze";
+      return "Karibske Nizozemske";
     },
     get$kyCountryDisplayName() {
-      return "Insulele Cayman";
+      return "Kajmanski otoki";
     },
     get$cfCountryDisplayName() {
-      return "Republica Centrafrican\u0103";
+      return "Centralnoafri\u0161ka republika";
     },
     get$tdCountryDisplayName() {
-      return "Ciad";
+      return "\u010cad";
     },
     get$clCountryDisplayName() {
-      return "Chile";
+      return "\u010cile";
     },
     get$cnCountryDisplayName() {
-      return "China";
+      return "Kitajska";
     },
     get$cxCountryDisplayName() {
-      return "Insula Christmas";
+      return "Bo\u017ei\u010dni otok";
     },
     get$ccCountryDisplayName() {
-      return "Insulele Cocos [Keeling]";
+      return "Kokosovi [Keeling] otoki";
     },
     get$coCountryDisplayName() {
-      return "Columbia";
+      return "Kolumbija";
     },
     get$kmCountryDisplayName() {
-      return "Comore";
+      return "Komori";
     },
     get$cdCountryDisplayName() {
-      return "Republica Democratic\u0103 Congo";
+      return "Demokrati\u010dna republika Kongo";
     },
     get$cgCountryDisplayName() {
-      return "Republica Congo";
+      return "Republika Kongo";
     },
     get$ckCountryDisplayName() {
-      return "Insulele Cook";
+      return "Cookovi otoki";
     },
     get$crCountryDisplayName() {
-      return "Costa Rica";
+      return "Kostarika";
     },
     get$ciCountryDisplayName() {
-      return "Coasta de Filde\u0219";
+      return "Obala Slonovine";
     },
     get$hrCountryDisplayName() {
-      return "Croa\u021bia";
+      return "Hrva\u0161ka";
     },
     get$cuCountryDisplayName() {
-      return "Cuba";
+      return "Kuba";
     },
     get$cwCountryDisplayName() {
       return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "Cipru";
+      return "Ciper";
     },
     get$czCountryDisplayName() {
-      return "Republica Ceh\u0103";
+      return "\u010ce\u0161ka";
     },
     get$dkCountryDisplayName() {
-      return "Danemarca";
+      return "Danska";
     },
     get$djCountryDisplayName() {
-      return "Djibouti";
+      return "D\u017eibuti";
     },
     get$dmCountryDisplayName() {
-      return "Dominica";
+      return "Dominika";
     },
     get$doCountryDisplayName() {
-      return "Republica Dominican\u0103";
+      return "Dominikanska republika";
     },
     get$tlCountryDisplayName() {
-      return "Timorul de Est";
+      return "Vzhodni Timor";
     },
     get$ecCountryDisplayName() {
-      return "Ecuador";
+      return "Ekvador";
     },
     get$egCountryDisplayName() {
       return "Egipt";
     },
     get$svCountryDisplayName() {
-      return "El Salvador";
+      return "Salvador";
     },
     get$gqCountryDisplayName() {
-      return "Guineea Ecuatorial\u0103";
+      return "Ekvatorialna Gvineja";
     },
     get$erCountryDisplayName() {
-      return "Eritreea";
+      return "Eritreja";
     },
     get$eeCountryDisplayName() {
-      return "Estonia";
+      return "Estonija";
     },
     get$szCountryDisplayName() {
-      return "Eswatini";
+      return "Esvatini";
     },
     get$etCountryDisplayName() {
-      return "Etiopia";
+      return "Etiopija";
     },
     get$fkCountryDisplayName() {
-      return "Insulele Falkland";
+      return "Folklandski otoki";
     },
     get$foCountryDisplayName() {
-      return "Insulele Feroe";
+      return "Ferski otoki";
     },
     get$fjCountryDisplayName() {
       return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "Finlanda";
+      return "Finska";
     },
     get$frCountryDisplayName() {
-      return "Fran\u021ba";
+      return "Francija";
     },
     get$gfCountryDisplayName() {
-      return "Guiana Francez\u0103";
+      return "Francoska Gvajana";
     },
     get$pfCountryDisplayName() {
-      return "Polinezia Francez\u0103";
+      return "Francoska Polinezija";
     },
     get$gaCountryDisplayName() {
       return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "Gambia";
+      return "Gambija";
     },
     get$geCountryDisplayName() {
-      return "Georgia";
+      return "Gruzija";
     },
     get$deCountryDisplayName() {
-      return "Germania";
+      return "Nem\u010dija";
     },
     get$ghCountryDisplayName() {
-      return "Ghana";
+      return "Gana";
     },
     get$giCountryDisplayName() {
       return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "Grecia";
+      return "Gr\u010dija";
     },
     get$glCountryDisplayName() {
-      return "Groenlanda";
+      return "Grenlandija";
     },
     get$gdCountryDisplayName() {
       return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "Guadelupa";
+      return "Gvajana";
     },
     get$guCountryDisplayName() {
       return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "Guatemala";
+      return "Gvatemala";
     },
     get$ggCountryDisplayName() {
       return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "Guineea Conakry";
+      return "Gvineja Conakry";
     },
     get$gwCountryDisplayName() {
-      return "Guineea-Bissau";
+      return "Gvineja-Bisao";
     },
     get$gyCountryDisplayName() {
-      return "Guyana";
+      return "Gvajana";
     },
     get$htCountryDisplayName() {
       return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "Insula Heard \u0219i Insulele McDonald";
+      return "Ostrvo Heard in otoki McDonald";
     },
     get$hnCountryDisplayName() {
       return "Honduras";
@@ -2039,16 +2039,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "Ungaria";
+      return "Mad\u017earska";
     },
     get$isCountryDisplayName() {
-      return "Islanda";
+      return " Islandija";
     },
     get$inCountryDisplayName() {
-      return "India";
+      return "Indija";
     },
     get$idCountryDisplayName() {
-      return "Indonezia";
+      return "Indonezija";
     },
     get$irCountryDisplayName() {
       return "Iran";
@@ -2057,34 +2057,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "Irlanda";
+      return "Irska";
     },
     get$imCountryDisplayName() {
-      return "Insula Man";
+      return "Otok Man";
     },
     get$ilCountryDisplayName() {
-      return "Israel";
+      return "Izrael";
     },
     get$itCountryDisplayName() {
-      return "Italia";
+      return "Italija";
     },
     get$jmCountryDisplayName() {
-      return "Jamaica";
+      return "Jamajka";
     },
     get$jpCountryDisplayName() {
-      return "Japonia";
+      return "Japonska";
     },
     get$jeCountryDisplayName() {
       return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "Iordania";
+      return "Jordan";
     },
     get$kzCountryDisplayName() {
       return "Kazahstan";
     },
     get$keCountryDisplayName() {
-      return "Kenya";
+      return "Kenija";
     },
     get$kiCountryDisplayName() {
       return "Kiribati";
@@ -2093,55 +2093,55 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "Kuweit";
+      return "Kuvajt";
     },
     get$kgCountryDisplayName() {
-      return "K\xe2rg\xe2zstan";
+      return "Kirgizistan";
     },
     get$laCountryDisplayName() {
       return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "Letonia";
+      return "Latvija";
     },
     get$lbCountryDisplayName() {
       return "Liban";
     },
     get$lsCountryDisplayName() {
-      return "Lesotho";
+      return "Lesoto";
     },
     get$lrCountryDisplayName() {
-      return "Liberia";
+      return "Liberija";
     },
     get$lyCountryDisplayName() {
-      return "Libia";
+      return "Libija";
     },
     get$liCountryDisplayName() {
-      return "Liechtenstein";
+      return "Lihten\u0161tajn";
     },
     get$ltCountryDisplayName() {
-      return "Lituania";
+      return "Litvanija";
     },
     get$luCountryDisplayName() {
-      return "Luxemburg";
+      return "Luksemburg";
     },
     get$moCountryDisplayName() {
-      return "Macau";
+      return "Makao";
     },
     get$mkCountryDisplayName() {
-      return "Macedonia";
+      return "Severna Makedonija";
     },
     get$mgCountryDisplayName() {
-      return "Madagascar";
+      return "Madagaskar";
     },
     get$mwCountryDisplayName() {
-      return "Malawi";
+      return "Malavi";
     },
     get$myCountryDisplayName() {
-      return "Malaysia";
+      return "Malezija";
     },
     get$mvCountryDisplayName() {
-      return "Maldives";
+      return "Maldivi";
     },
     get$mlCountryDisplayName() {
       return "Mali";
@@ -2150,13 +2150,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "Insulele Marshall";
+      return "Marshallovi otoki";
     },
     get$mqCountryDisplayName() {
-      return "Martinica";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "Mauritania";
+      return "Mauretanija";
     },
     get$muCountryDisplayName() {
       return "Mauritius";
@@ -2165,37 +2165,37 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "Mexic";
+      return "Mehiko";
     },
     get$fmCountryDisplayName() {
-      return "Micronezia";
+      return "Mikronezija";
     },
     get$mdCountryDisplayName() {
       return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "Monaco";
+      return "Monako";
     },
     get$mnCountryDisplayName() {
-      return "Mongolia";
+      return "Mongolija";
     },
     get$meCountryDisplayName() {
-      return "Muntenegru";
+      return "\u010crna gora";
     },
     get$msCountryDisplayName() {
       return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "Maroc";
+      return "Maroko";
     },
     get$mzCountryDisplayName() {
-      return "Mozambic";
+      return "Mozambik";
     },
     get$mmCountryDisplayName() {
-      return "Myanmar (Birmania)";
+      return "Mjanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return "Namibia";
+      return "Namibija";
     },
     get$nrCountryDisplayName() {
       return "Nauru";
@@ -2204,37 +2204,37 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\u021a\u0103rile de Jos";
+      return "Nizozemska";
     },
     get$ncCountryDisplayName() {
-      return "Noua Caledonie";
+      return "Nova Kaledonija";
     },
     get$nzCountryDisplayName() {
-      return "Noua Zeeland\u0103";
+      return "Nova Zelandija";
     },
     get$niCountryDisplayName() {
-      return "Nicaragua";
+      return "Nikaragva";
     },
     get$neCountryDisplayName() {
       return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "Nigeria";
+      return "Nigerija";
     },
     get$nuCountryDisplayName() {
       return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "Insula Norfolk";
+      return "Otok Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "Coreea de Nord";
+      return "Severna Koreja";
     },
     get$mpCountryDisplayName() {
-      return "Insulele Mariane de Nord";
+      return "Severni Marijanski otoki";
     },
     get$noCountryDisplayName() {
-      return "Norvegia";
+      return "Norve\u0161ka";
     },
     get$omCountryDisplayName() {
       return "Oman";
@@ -2246,52 +2246,52 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Palau";
     },
     get$psCountryDisplayName() {
-      return "Teritoriile Palestiniene";
+      return "Palestinske ozemlje";
     },
     get$paCountryDisplayName() {
       return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "Papua Noua Guinee";
+      return "Papua Nova Gvineja";
     },
     get$pyCountryDisplayName() {
-      return "Paraguay";
+      return "Paragvaj";
     },
     get$peCountryDisplayName() {
       return "Peru";
     },
     get$phCountryDisplayName() {
-      return "Filipine";
+      return "Filipini";
     },
     get$plCountryDisplayName() {
-      return "Polonia";
+      return "Poljska";
     },
     get$ptCountryDisplayName() {
-      return "Portugalia";
+      return "Portugalska";
     },
     get$prCountryDisplayName() {
-      return "Puerto Rico";
+      return "Portoriko";
     },
     get$qaCountryDisplayName() {
-      return "Qatar";
+      return "Katar";
     },
     get$reCountryDisplayName() {
-      return "Reunion";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "Rom\xe2nia";
+      return "Romunija";
     },
     get$ruCountryDisplayName() {
-      return "Rusia";
+      return "Rusija";
     },
     get$rwCountryDisplayName() {
-      return "Rwanda";
+      return "Ruanda";
     },
     get$blCountryDisplayName() {
       return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "Saint Helena";
+      return "Sveta Helena";
     },
     get$knCountryDisplayName() {
       return "St. Kitts";
@@ -2303,7 +2303,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "Saint Pierre \u0219i Miquelon";
+      return "Saint Pierre in Miquelon";
     },
     get$vcCountryDisplayName() {
       return "St. Vincent";
@@ -2315,58 +2315,58 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "Sao Tom\xe9 \u0219i Pr\xedncipe";
+      return "Sao Tome in Princese";
     },
     get$saCountryDisplayName() {
-      return "Arabia Saudit\u0103";
+      return "Savdska Arabija";
     },
     get$snCountryDisplayName() {
       return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "Serbia";
+      return "Srbija";
     },
     get$scCountryDisplayName() {
-      return "Seychelles";
+      return "Sej\u0161eli";
     },
     get$slCountryDisplayName() {
       return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "Singapore";
+      return "Singapur";
     },
     get$sxCountryDisplayName() {
       return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "Slovacia";
+      return "Slova\u0161ka";
     },
     get$siCountryDisplayName() {
-      return "Slovenia";
+      return "Slovenija";
     },
     get$sbCountryDisplayName() {
-      return "Insulele Solomon";
+      return "Salomonovi otoki";
     },
     get$soCountryDisplayName() {
-      return "Somalia";
+      return "Somalija";
     },
     get$zaCountryDisplayName() {
-      return "Africa de Sud";
+      return "Ju\u017ena Afrika";
     },
     get$gsCountryDisplayName() {
-      return "Georgia de Sud \u0219i Insulele Sandwich de Sud";
+      return "Ju\u017ena Georgija in Ju\u017eni Sandwich otoki";
     },
     get$krCountryDisplayName() {
-      return "Coreea de Sud";
+      return "Ju\u017ena Koreja";
     },
     get$ssCountryDisplayName() {
-      return "Sudan de Sud";
+      return "Ju\u017eni Sudan";
     },
     get$esCountryDisplayName() {
-      return "Spania";
+      return "\u0160panija";
     },
     get$lkCountryDisplayName() {
-      return "Sri Lanka";
+      return "\u0160rilanka";
     },
     get$sdCountryDisplayName() {
       return "Sudan";
@@ -2375,28 +2375,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard \u0219i Jan Mayen";
+      return "\u0160vedska in Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "Suedia";
+      return "\u0160vedska";
     },
     get$chCountryDisplayName() {
-      return "Elve\u021bia";
+      return "\u0160vica";
     },
     get$syCountryDisplayName() {
-      return "Siria";
+      return "Sirija";
     },
     get$twCountryDisplayName() {
-      return "Taiwan";
+      return "Tajvan";
     },
     get$tjCountryDisplayName() {
-      return "Tadjikistan";
+      return "Tad\u017eikistan";
     },
     get$tzCountryDisplayName() {
-      return "Tanzania";
+      return "Tanzanija";
     },
     get$thCountryDisplayName() {
-      return "Thailanda";
+      return "Tajska";
     },
     get$tgCountryDisplayName() {
       return "Togo";
@@ -2408,43 +2408,43 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "Trinidad/Tobago";
+      return "Trinidad in Tobago";
     },
     get$tnCountryDisplayName() {
-      return "Tunisia";
+      return "Tunizija";
     },
     get$trCountryDisplayName() {
-      return "Turcia";
+      return "Tur\u010dija";
     },
     get$tmCountryDisplayName() {
       return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "Insulele Turks \u0219i Caicos";
+      return "Turks in Caicos otoki";
     },
     get$tvCountryDisplayName() {
       return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "Insulele Virgine ale SUA";
+      return "Ameri\u0161ki Devi\u0161ki otoki";
     },
     get$ugCountryDisplayName() {
       return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "Ucraina";
+      return "Ukrajina";
     },
     get$aeCountryDisplayName() {
-      return "Emiratele Arabe Unite";
+      return "Zdru\u017eeni arabski emirati";
     },
     get$gbCountryDisplayName() {
-      return "Regatul Unit";
+      return "Zdru\u017eeno kraljestvo";
     },
     get$usCountryDisplayName() {
-      return "Statele Unite";
+      return "Zdru\u017eene dr\u017eave";
     },
     get$uyCountryDisplayName() {
-      return "Uruguay";
+      return "Urugvaj";
     },
     get$uzCountryDisplayName() {
       return "Uzbekistan";
@@ -2453,7 +2453,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "Vatican";
+      return "Vatikanski mesto";
     },
     get$veCountryDisplayName() {
       return "Venezuela";
@@ -2462,211 +2462,211 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "Wallis \u0219i Futuna";
+      return "Wallis in Futuna";
     },
     get$ehCountryDisplayName() {
-      return "Sahara Occidental\u0103";
+      return "Zahodna Sahara";
     },
     get$yeCountryDisplayName() {
-      return "Iordania";
+      return "Jemen";
     },
     get$zmCountryDisplayName() {
-      return "Zambia";
+      return "Zambija";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabwe";
+      return "Zimbabve";
     },
     get$pay() {
       return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " te-a invitat s\u0103 te al\u0103turi unui curs: " + space + "! Vrei s\u0103 accep\u021bi?";
+      return user + " vas je povabil, da se pridru\u017eite te\u010daju: " + space + "! Ali \u017eelite sprejeti?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 E\u0219ti invitat!";
+      return "\ud83d\udce9 Vabilo!";
     },
     invitedToChat$2($name, user) {
-      return user + " te-a invitat s\u0103 te al\u0103turi unui chat: " + $name + "! Vrei s\u0103 accep\u021bi?";
+      return user + " vas je povabil, da se pridru\u017eite klepetu: " + $name + "! Ali \u017eelite sprejeti?";
     },
     get$monthlySubscription() {
-      return "Lunar";
+      return "Mese\u010dno";
     },
     get$yearlySubscription() {
-      return "Anual";
+      return "Letno";
     },
     get$defaultSubscription() {
-      return "Abonament Pangea Chat";
+      return "Pangea Chat naro\u010dnina";
     },
     get$freeTrial() {
-      return "Perioad\u0103 de prob\u0103 gratuit\u0103";
+      return "Preizkusno obdobje";
     },
     get$noDataFound() {
-      return "Nu s-au g\u0103sit date";
+      return "Ni najdenih podatkov";
     },
     get$bestCorrectionFeedback() {
-      return "Corect!";
+      return "To je pravilno!";
     },
     get$distractorFeedback() {
-      return "Nu este chiar corect.";
+      return "Ni \u010disto prav.";
     },
     get$bestAnswerFeedback() {
-      return "Corect!";
+      return "To je pravilno!";
     },
     get$definitionDefaultPrompt() {
-      return "Ce \xeenseamn\u0103 acest cuv\xe2nt?";
+      return "Kaj pomeni ta beseda?";
     },
     get$practiceDefaultPrompt() {
-      return "Care este cel mai bun r\u0103spuns?";
+      return "Kak\u0161en je najbolj\u0161i odgovor?";
     },
     get$correctionDefaultPrompt() {
-      return "Care este cea mai bun\u0103 \xeenlocuire?";
+      return "Kak\u0161na je najbolj\u0161a zamenjava?";
     },
     get$reportToTeacher() {
-      return "Cui vrei s\u0103 raportezi acest mesaj?";
+      return "Kom \u017eelite prijaviti to sporo\u010dilo?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " a raportat un mesaj de la " + reportedUserId + " \xeen chat-ul " + roomName;
+      return reportingUserId + " je prijavil sporo\u010dilo od " + reportedUserId + " v klepetu " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Mesaj: " + reportedMessage + "\nMotiv: " + reason;
+      return "Sporo\u010dilo: " + reportedMessage + "\nRazlog: " + reason;
     },
     get$noTeachersFound() {
-      return "Nu au fost g\u0103si\u021bi profesori pentru raportare";
+      return "Ni najdenih u\u010diteljev za prijavo";
     },
     trialExpiration$1(expiration) {
-      return "Perioada de prob\u0103 gratuit\u0103 expir\u0103 la " + expiration;
+      return "Va\u0161a brezpla\u010dna preizkusna doba pote\u010de " + expiration;
     },
     get$freeTrialDesc() {
-      return "Utilizatorii noi primesc o perioad\u0103 de prob\u0103 gratuit\u0103 de o s\u0103pt\u0103m\xe2n\u0103 pentru Pangea Chat";
+      return "Novi uporabniki prejmejo enotedensko brezpla\u010dno preizkusno razli\u010dico Pangea Chata";
     },
     get$activateTrial() {
-      return "Perioad\u0103 de prob\u0103 gratuit\u0103 de 7 zile";
+      return "Brezpla\u010dna 7-dnevna preizkusna razli\u010dica";
     },
     get$successfullySubscribed() {
-      return "Te-ai abonat cu succes!";
+      return "Uspe\u0161no ste se naro\u010dili!";
     },
     get$clickToManageSubscription() {
-      return "Click aici pentru a-\u021bi gestiona abonamentul.";
+      return "Kliknite tukaj za upravljanje naro\u010dnine.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Te rug\u0103m s\u0103 alegi cel pu\u021bin " + min + " caractere.";
+      return "Prosimo, izberite vsaj " + min + " znakov.";
     },
     get$pleaseEnterValidEmail() {
-      return string$.V__rug;
+      return "Prosimo, vnesite veljaven e-po\u0161tni naslov.";
     },
     get$pleaseChooseAUsername() {
-      return "V\u0103 rug\u0103m s\u0103 alege\u021bi un nume de utilizator";
+      return "Prosimo, izberite uporabni\u0161ko ime";
     },
     get$listen() {
-      return "Ascult\u0103";
+      return "Poslu\u0161aj";
     },
     get$trialPeriodExpired() {
-      return "Perioada de \xeencercare a expirat";
+      return "Va\u0161 preizkusni \u010das je potekel";
     },
     get$subscribedToUnlockTools() {
-      return "Abona\u021bi-v\u0103 pentru a debloca traducerea interactiv\u0103 \u0219i verificarea gramaticii, redarea audio, activit\u0103\u021bi de practic\u0103 personalizate \u0219i analize de \xeenv\u0103\u021bare!";
+      return "Naro\u010dite se za odklepanje interaktivnega prevajanja, preverjanja slovnice, predvajanja zvoka, prilagojenih vaj in analitike u\u010denja!";
     },
     get$translationTooltip() {
-      return "Traducere";
+      return "Prevedi";
     },
     get$speechToTextTooltip() {
-      return "Transcriere";
+      return "Prepis";
     },
     get$kickBotWarning() {
-      return "\xcendep\u0103rtarea Pangea Bot va elimina botul de conversa\u021bie din acest chat.";
+      return "Odstranitev Pangea bota bo odstranila pogovornega bota iz tega klepeta.";
     },
     get$refresh(_) {
-      return "Re\xeemprosp\u0103teaz\u0103";
+      return "Osve\u017ei";
     },
     get$updatePhoneOS() {
-      return "Poate fi necesar s\u0103 actualiza\u021bi versiunea sistemului de operare al dispozitivului dvs.";
+      return "Morda boste morali posodobiti razli\u010dico operacijskega sistema naprave";
     },
     get$autoIGCToolName() {
-      return "Ruleaz\u0103 automat asisten\u021ba de scriere Pangea";
+      return "Samodejno za\u017eeni pomo\u010d pri pisanju Pangea";
     },
     get$autoIGCToolDescription() {
-      return "Porni\u021bi automat asisten\u021ba pentru scrierea gramaticii \u0219i traducerii \xeen Pangea Chat \xeenainte de a trimite mesajul meu.";
+      return "Samodejno za\u017eeni pomo\u010d pri slovnici in prevajanju v klepetu Pangea pred po\u0161iljanjem sporo\u010dila";
     },
     get$chatCapacity() {
-      return "Capacitatea chat-ului";
+      return "Kapaciteta klepeta";
     },
     get$roomFull() {
-      return "Aceast\u0103 camer\u0103 este deja plin\u0103.";
+      return "Ta soba je \u017ee polna";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Capacitatea chat-ului a fost schimbat\u0103";
+      return "Kapaciteta klepeta je bila spremenjena";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Capacitatea chat-ului trebuie s\u0103 fie cel pu\u021bin " + count + ".";
+      return "Kapaciteta klepeta mora biti vsaj " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "Capacitatea chat-ului limiteaz\u0103 num\u0103rul de membri permis \xeentr-un chat.";
+      return "Kapaciteta klepeta omejuje \u0161tevilo \u010dlanov, ki so lahko v klepetu.";
     },
     get$enterNumber() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi o valoare \xeentreag\u0103.";
+      return "Vnesite celotno \u0161tevilo.";
     },
     get$buildTranslation() {
-      return "Construie\u0219te traducerea ta din op\u021biunile de mai sus";
+      return "Sestavite prevod iz zgornjih mo\u017enosti";
     },
     get$practice() {
-      return "Exerseaz\u0103";
+      return "Vaja";
     },
     get$noLanguagesSet() {
-      return "Niciun limbaj configurat";
+      return "Jeziki niso nastavljeni";
     },
     get$speechToTextBody() {
-      return "Pentru mesajele vocale, po\u021bi vedea o transcriere precum \u0219i scorul de Cuvinte pe Minut al vorbitorului.";
+      return "Za glasovne sporo\u010dila lahko vidite prepis ter oceno govora na minuto.";
     },
     get$versionNotFound() {
-      return "Versiune Neg\u0103sit\u0103";
+      return "Razli\u010dica ni najdena";
     },
     get$fetchingVersion() {
-      return "Se preia versiunea...";
+      return "Pridobivanje razli\u010dice...";
     },
     get$versionFetchError() {
-      return "Eroare la preluarea versiunii";
+      return "Napaka pri pridobivanju razli\u010dice";
     },
     versionText$2(version, buildNumber) {
-      return "Versiune: " + version + "+" + buildNumber;
+      return "Razli\u010dica: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Mesajele \xeen limba ta de baz\u0103 nu vor fi traduse.";
+      return "Sporo\u010dila v va\u0161em osnovnem jeziku ne bodo prevedena.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Ai o abonare activ\u0103";
+      return "Imate aktivno naro\u010dnino";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u0218tergerea contului t\u0103u nu va anula automat abonamentul.";
+      return "Brisanje va\u0161ega ra\u010duna ne bo samodejno preklicalo va\u0161e naro\u010dnine.";
     },
     get$manageSubscription() {
-      return "Gestioneaz\u0103 Abonamentul";
+      return "Upravljanje naro\u010dnine";
     },
     get$error520Title() {
-      return "Te rug\u0103m s\u0103 \xeencerci din nou.";
+      return "Poskusite znova.";
     },
     get$error520Desc() {
-      return "Ne pare r\u0103u, nu am putut \xeen\u021belege mesajul t\u0103u...";
+      return "Oprostite, nismo mogli razumeti va\u0161e sporo\u010dilo...";
     },
     get$level(_) {
-      return "Nivel";
+      return "Raven";
     },
     get$translationChoicesBody() {
-      return "Face\u021bi clic \u0219i \u021bine\u021bi ap\u0103sat pe o op\u021biune pentru o sugestie.";
+      return "Kliknite in dr\u017eite mo\u017enost za namig.";
     },
     get$grammar() {
-      return "Gramatic\u0103";
+      return "Slovnica";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Contactul a fost invitat \xeen chat";
+      return "Stik je bil povabljen v klepet";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Invit\u0103 la chat";
+      return "\ud83d\udce8 Povabi v klepet";
     },
     get$chatName() {
-      return "Numele chat-ului";
+      return "Ime klepeta";
     },
     get$l2SupportNa() {
-      return "Indisponibil";
+      return "Ni na voljo";
     },
     get$l2SupportAlpha() {
       return "Alpha";
@@ -2675,232 +2675,232 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Beta";
     },
     get$l2SupportFull() {
-      return "Complet";
+      return "Polno";
     },
     get$playAudio() {
-      return "Red\u0103";
+      return "Predvajaj";
     },
     get$stop(_) {
-      return "Opre\u0219te";
+      return "Ustavi";
     },
     get$grammarCopyPOSsconj() {
-      return "Conjunc\u021bie subordinativ\u0103";
+      return "Podredni veznik";
     },
     get$grammarCopyPOSnum() {
-      return "Num\u0103r";
+      return "\u0160tevilo";
     },
     get$grammarCopyPOSverb() {
-      return "Verb";
+      return "Glagol";
     },
     get$grammarCopyPOSaffix() {
-      return "Afix";
+      return "Pripona";
     },
     get$grammarCopyPOSpart() {
-      return "Particle";
+      return "Del\u010dek";
     },
     get$grammarCopyPOSadj() {
-      return "Adjectiv";
+      return " Pridevnik";
     },
     get$grammarCopyPOScconj() {
-      return "Conjunc\u021bie coordonativ\u0103";
+      return "Soglasje";
     },
     get$grammarCopyPOSpunct() {
-      return "Punctua\u021bie";
+      return "Vpra\u0161alnik";
     },
     get$grammarCopyPOSadv() {
-      return "Adverb";
+      return "Prislov";
     },
     get$grammarCopyPOSaux() {
-      return "Auxiliar";
+      return "Pomo\u017eni";
     },
     get$grammarCopyPOSspace() {
-      return "Spa\u021biu";
+      return "Presledek";
     },
     get$grammarCopyPOSsym() {
       return "Simbol";
     },
     get$grammarCopyPOSdet() {
-      return "Determinant";
+      return "\u010clen";
     },
     get$grammarCopyPOSpron() {
-      return "Pronume";
+      return "Zaimek";
     },
     get$grammarCopyPOSadp() {
-      return "Adpozi\u021bie";
+      return "Predlo\u017eni izraz";
     },
     get$grammarCopyPOSpropn() {
-      return "Substantiv propriu";
+      return "Lastno ime";
     },
     get$grammarCopyPOSnoun() {
-      return "Substantiv";
+      return "Samostalnik";
     },
     get$grammarCopyPOSintj() {
-      return "Interjec\u021bie";
+      return "Vzik";
     },
     get$grammarCopyPOSx() {
-      return "Altele";
+      return "Drugo";
     },
     get$grammarCopyGENDERfem() {
-      return "Feminina";
+      return "\u017denski spol";
     },
     get$grammarCopyPERSON2() {
-      return "Persoana a doua";
+      return "Druga oseba";
     },
     get$grammarCopyMOODimp() {
-      return "Imperativ";
+      return "Ukazni na\u010din";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\xcentrebare";
+      return "Vpra\u0161anje";
     },
     get$grammarCopyASPECTperf() {
-      return "Perfect";
+      return "Perfectivno";
     },
     get$grammarCopyCASEaccnom() {
-      return "Acuzativ, Nominativ";
+      return "Akuzativ, Nominativ";
     },
     get$grammarCopyCASEobl() {
-      return "Oblic";
+      return "Okluziv";
     },
     get$grammarCopyVOICEact() {
-      return "Activ";
+      return "Aktivni glas";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Parantez\u0103";
+      return "Okvir";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Articol";
+      return "\u010clenek";
     },
     get$grammarCopyNUMBERsing() {
-      return "Singular";
+      return "Ednina";
     },
     get$grammarCopyGENDERmasc() {
-      return "Masculin";
+      return "Mo\u0161ki spol";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modal";
+      return "Modalni glagol";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Adverbial";
+      return "Prilastek";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifrastic";
+      return "Perifrasti\u010dni \u010das";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Cifr\u0103";
+      return "\u0160tevilka";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Nepotrivit";
+      return "Ni lastno ime";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Cardinal";
+      return "\u0160tevil\u010dni";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Propriu";
+      return "Lastno ime";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Liniu\u021b\u0103";
+      return "Pomik";
     },
     get$grammarCopyPUNCTTYPEyes() {
       return "Da";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Punct \u0219i virgul\u0103";
+      return "Podpi\u010dje";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Virgula";
+      return "Vejica";
     },
     get$grammarCopyMOODcnd() {
-      return "Conditional";
+      return "Pogojni";
     },
     get$grammarCopyCASEacc() {
-      return "Acuzativ";
+      return "Akuzativ";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partitiv";
+      return "Delni";
     },
     get$grammarCopyTENSEpast() {
-      return "Trecut";
+      return "Preteklik";
     },
     get$grammarCopyDEGREEsup() {
-      return "Superlativ";
+      return "Najvi\u0161ji stopnja";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Dou\u0103 puncte";
+      return "Dvojni dvopi\u010dje";
     },
     get$grammarCopyPERSON3() {
-      return "Persoana a III-a";
+      return "Tretja oseba";
     },
     get$grammarCopyNUMBERplur() {
-      return "Plural";
+      return "Mno\u017eina";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Substantiv propriu";
+      return "Lastno ime";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Interogativ";
+      return "Vpra\u0161alnica";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Informal";
+      return "Neformalno";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Timp";
+      return "\u010cas";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Negativ";
+      return "Negativno";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Total";
+      return "Skupno";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Adnominal";
+      return "Adnominalno";
     },
     get$grammarCopyASPECTprog() {
-      return "Progressiv";
+      return "Napredovanje";
     },
     get$grammarCopyMOODsub() {
-      return "Subjunctiv";
+      return "\u017deljni na\u010din";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Complementiv";
+      return "Dopolnilni";
     },
     get$grammarCopyCASEnom() {
       return "Nominativ";
     },
     get$grammarCopyTENSEfut() {
-      return "Viitor";
+      return "Prihodnost";
     },
     get$grammarCopyCASEdat() {
       return "Dativ";
     },
     get$grammarCopyTENSEpres() {
-      return "Prezent";
+      return "Sedanjik";
     },
     get$grammarCopyGENDERneut() {
-      return "Neutru";
+      return "Nevtralen";
     },
     get$grammarCopyPRONTYPErel() {
-      return " Relativ";
+      return "Relativno";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Termina\u021bie final\u0103";
+      return "Zaklju\u010dni konec";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Demonstrativ";
+      return "Demonstrativno";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Prepozi\u021bional";
+      return "Predlo\u017eni pade\u017e";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Finita";
+      return "Finite";
     },
     get$grammarCopyDEGREEpos() {
-      return "Pozitiv";
+      return "Pozitivno";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Citat";
+      return "Citati";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerunziu";
+      return "Gerundij";
     },
     get$grammarCopyVOICEpass() {
       return "Pasiv";
@@ -2909,13 +2909,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Genitiv";
     },
     get$grammarCopyTENSEprs() {
-      return "Prezent";
+      return "Sedanjik";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Definit";
+      return "Definitno";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Ordinal";
+      return "Oredni\u010dni";
     },
     get$grammarCopyCASEins() {
       return "Instrumental";
@@ -2924,175 +2924,175 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Infinitiv";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Auxiliar";
+      return "Pomo\u017eni glagol";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Lung";
+      return "Dolg";
     },
     get$grammarCopyCASEloc() {
-      return "Locativ";
+      return "Lokativ";
     },
     get$grammarCopyMOODind() {
       return "Indicativ";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Comparativ";
+      return "Primerjalni";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Relativ";
+      return "Relativni";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Exclamativ";
+      return "Vikend";
     },
     get$grammarCopyPERSON1() {
-      return "Persoana \xeent\xe2i";
+      return "Prva oseba";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Ini\u021bial";
+      return "Za\u010detno";
     },
     get$grammarCopyGENDERperson() {
-      return "Gen";
+      return "Oseba";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Str\u0103in";
+      return "Tuji";
     },
     get$grammarCopyVOICEvoice() {
-      return "Voce";
+      return "Glas";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Verb";
+      return "Glagol";
     },
     get$grammarCopyPOSSpass() {
-      return "Posesiv";
+      return "Posestveni";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Prepozi\u021bional";
+      return "Predlo\u017eni";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Numeral";
+      return "\u0160tevilka";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Substantiv";
+      return "Samostalnik";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Reflexiv";
+      return "Refleksivno";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Pronume";
+      return "Zaimek";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Lateral\u0103 de punctua\u021bie";
+      return "Stran lo\u010dil";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Verb";
+      return "Oblika glagola";
     },
     get$grammarCopyGENDERgender() {
-      return "Gen";
+      return "Spol";
     },
     get$grammarCopyMOODmood() {
-      return "Mod";
+      return "Na\u010drt";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspect";
+      return "Vidik";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Punctua\u021bie";
+      return "Lo\u010dilo";
     },
     get$grammarCopyTENSEtense() {
-      return "Timp";
+      return "\u010cas";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Grad";
+      return "Stopnja";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Politete";
+      return "Vljudnost";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Adverb";
+      return "Prislov";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Num\u0103r";
+      return "\u0160tevilka";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Conjunc\u021bie";
+      return "Veznik";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polaritare";
+      return "Polarnost";
     },
     get$grammarCopyCASEcase() {
-      return "Caz";
+      return "Sklep";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Definitivitate";
+      return "Definitnost";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Numeral";
+      return "\u0160tevil\u010dnica";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Adnominal";
+      return "Pridru\u017eni";
     },
     get$grammarCopyVOCvoc() {
-      return "Vocativ";
+      return "Vokativ";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Complementizator";
+      return "Dopolnilo";
     },
     get$grammarCopyADVadv() {
-      return "Adverbial";
+      return "Prislov";
     },
     get$grammarCopyMOODjus() {
-      return "Jussiv";
+      return "Na\u010delnik";
     },
     get$grammarCopyGENDERcom() {
-      return "Comun";
+      return "Spolni";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Reflectiv";
+      return "Vzporedno";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Partitiv";
+      return "Delni";
     },
     get$grammarCopySPCspc() {
-      return "Specific";
+      return "Specifi\u010den";
     },
     get$grammarCopyTENSEpqp() {
-      return "Plusquamperfect";
+      return "Pretekli perfekt";
     },
     get$grammarCopyREFLEXref() {
-      return "Reflectiv";
+      return "Vzporedno";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Scurt";
+      return "Kratko";
     },
     get$grammarCopyNUMBERdual() {
-      return "Dual";
+      return "Dvojina";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Lung";
+      return "Dolgo";
     },
     get$grammarCopyVOICEmid() {
-      return "Mijlociu";
+      return "Srednji";
     },
     get$grammarCopyINTRELintRel() {
-      return "Interogativ, Relativ";
+      return "Vpra\u0161alni, Relativni";
     },
     get$grammarCopyINTint() {
-      return "Interogativ";
+      return "Vpra\u0161alni";
     },
     get$grammarCopyVOICEcaus() {
-      return "Cauzativ";
+      return "Vzro\u010dni";
     },
     get$grammarCopyUnknown() {
-      return "Necunoscut";
+      return "Neznano";
     },
     get$grammarCopyEVIDENTevident() {
-      return "Eviden\u021bialitate";
+      return "Dokaznost";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Num\u0103rul de\u021bin\u0103torului";
+      return "\u0160tevilka posedovalca";
     },
     get$grammarCopyASPECThab() {
-      return "Obi\u0219nuit";
+      return "Navadno";
     },
     get$grammarCopyCASEabl() {
       return "Ablativ";
@@ -3107,7 +3107,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Translativ";
     },
     get$grammarCopyCASEequ() {
-      return "Equativ";
+      return "Ekvativ";
     },
     get$grammarCopyCASEdis() {
       return "Distributiv";
@@ -3119,598 +3119,598 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ergativ";
     },
     get$grammarCopyCASEcau() {
-      return "Cauzal";
+      return "Vzro\u010dni";
     },
     get$grammarCopyCASEben() {
-      return "Benefactiv";
+      return "Dobrodelni";
     },
     get$grammarCopyCASEtem() {
-      return "Temporal";
+      return "\u010casovni";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Coordonare";
+      return "Koordinirajo\u010de";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Stare de construc\u021bie";
+      return "Dolo\u010deno stanje";
     },
     get$grammarCopyDEGREEabs() {
-      return "Grad absolut";
+      return "Absolutni stopnja";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Eviden\u021bialitate factual\u0103";
+      return "Faktualna dokaznost";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Eviden\u021bialitate non-factual\u0103";
+      return "Ne-faktualna dokaznost";
     },
     get$grammarCopyMOODopt() {
       return "Optativ";
     },
     get$grammarCopyMOODadm() {
-      return "Admira\u021bie";
+      return "Admiraativ";
     },
     get$grammarCopyMOODdes() {
-      return "Doritiv";
+      return "\u017deljno";
     },
     get$grammarCopyMOODnec() {
-      return "Necesar";
+      return "Necessitivno";
     },
     get$grammarCopyMOODpot() {
-      return "Poten\u021bial";
+      return "Mo\u017enosti";
     },
     get$grammarCopyMOODprp() {
-      return "Propozi\u021bional";
+      return "Propozitivno";
     },
     get$grammarCopyMOODqot() {
-      return "Citat";
+      return "Kvantitativno";
     },
     get$grammarCopyNUMFORMword() {
-      return "Form\u0103 de cuv\xe2nt";
+      return "Oblika besede";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Numeral roman";
+      return "Rimska \u0161tevilka";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Form\u0103 de liter\u0103";
+      return "\u010crkovna oblika";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Multiplicativ";
+      return "Mno\u017eilno";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Frac\u021bional";
+      return "Ulomljeno";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Set";
+      return "Nabor";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Interval";
+      return "Razpon";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Distributiv";
+      return "Razdeljevalno";
     },
     get$grammarCopyNUMBERtri() {
-      return "Trial";
+      return "Preizkus";
     },
     get$grammarCopyNUMBERpauc() {
       return "Paucal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Paucal mai mare";
+      return "Ve\u010dji Paucal";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Plural mai mare";
+      return "Ve\u010dji mno\u017einski";
     },
     get$grammarCopyNUMBERinv() {
-      return "Invers";
+      return "Obratno";
     },
     get$grammarCopyPERSON0() {
-      return "Zero";
+      return "Nula";
     },
     get$grammarCopyPERSON4() {
-      return "Patru";
+      return "\u010cetrti";
     },
     get$grammarCopyPOLITEform() {
-      return "Formal";
+      return "Vljudno";
     },
     get$grammarCopyPOLITEelev() {
-      return "Elevat";
+      return "Vznemirljivo";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Umil";
+      return "Skromno";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Empatic";
+      return "Naglasno";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Exclamativ";
+      return "Vzikovno";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Reciprocat";
+      return "Medsebojno";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Interogativ-Relativ";
+      return "Vpra\u0161alno-Relativno";
     },
     get$grammarCopyTENSEaor() {
       return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "Epistemic";
+      return "Epistemik";
     },
     get$grammarCopyTENSEprosp() {
-      return "Prospetiv";
+      return "Perspektivno";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Participiu";
+      return "Pridevnik";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Converb";
+      return "Konverb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Substantiv verbal";
+      return "Glagolski samostalnik";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipassiv";
+      return "Antipassive";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Cauzativ";
+      return "Vzro\u010dni";
     },
     get$grammarCopyVOICedir() {
-      return "Direct";
+      return "Neposredni";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Invers";
+      return "Obratni";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Reciprocat";
+      return "Medsebojni";
     },
     get$grammarCopyPOS() {
-      return "Parte de vorbire";
+      return "Del govora";
     },
     get$grammarCopyGENDER() {
-      return "Gen";
+      return "Spol";
     },
     get$grammarCopyPERSON() {
-      return "Persoan\u0103";
+      return "Oseba";
     },
     get$grammarCopyMOOD() {
-      return "Mod";
+      return "Na\u010din";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Tip de punctua\u021bie";
+      return "Vrsta lo\u010dila";
     },
     get$grammarCopyASPECT() {
-      return "Aspect";
+      return "Vid";
     },
     get$grammarCopyCASE() {
-      return "Caz";
+      return "Skupaj";
     },
     get$grammarCopyVOICE() {
-      return "Voce";
+      return "Glas";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Tip de substantiv";
+      return "Vrsta samostalnika";
     },
     get$grammarCopyVERBTYPE() {
-      return "Tip de verb";
+      return "Vrsta glagola";
     },
     get$grammarCopyADVTYPE() {
-      return "Tip de adverb";
+      return "Vrsta prislova";
     },
     get$grammarCopyNUMFORM() {
-      return "Form\u0103 numeric\u0103";
+      return "Oblika \u0161tevila";
     },
     get$grammarCopyNUMTYPE() {
-      return "Tip numeric";
+      return "Vrsta \u0161tevila";
     },
     get$grammarCopyNUMBER() {
-      return "Num\u0103r";
+      return "\u0160tevilka";
     },
     get$grammarCopyDEFINITE() {
-      return "Definit";
+      return "Dolo\u010dnost";
     },
     get$grammarCopyDEGREE() {
-      return "Grad";
+      return "Stopnja";
     },
     get$grammarCopyEVIDENT() {
-      return "Eviden\u021bialitate";
+      return "Evidentnost";
     },
     get$grammarCopyFOREIGN() {
-      return "Str\u0103in";
+      return "Tuji";
     },
     get$grammarCopyPOLARITY() {
-      return "Polaritate";
+      return "Polarnost";
     },
     get$grammarCopyPOLITE() {
-      return "Politete";
+      return "Vljudnost";
     },
     get$grammarCopyPREPCASE() {
-      return "Caz prepozi\u021bional";
+      return "Predlo\u017eni pade\u017e";
     },
     get$grammarCopyPRONTYPE() {
-      return "Tip de pronume";
+      return "Vrsta zaimka";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Lateral\u0103 de punctua\u021bie";
+      return "Stran lo\u010dil";
     },
     get$grammarCopyREFLEX() {
-      return "Reflexiv";
+      return "Refleksivno";
     },
     get$grammarCopyTENSE() {
-      return "Timp";
+      return "\u010cas";
     },
     get$grammarCopyVERBFORM() {
-      return "Forma verbului";
+      return "Oblika glagola";
     },
     get$grammarCopyCONJTYPE() {
-      return "Tip de conjunc\u021bie";
+      return "Vrsta veznika";
     },
     get$grammarCopyUNKNOWN() {
-      return "Necunoscut";
+      return "Neznano";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Num\u0103rul posesiorului";
+      return "\u0160tevilo lastnika";
     },
     get$grammarCopyPOSS() {
-      return "Posesiv";
+      return "Vlastni\u0161ko";
     },
     get$grammarCopyASPECTimp() {
-      return "Aspect imperfectiv";
+      return "Nepopolni vidik";
     },
     get$grammarCopyCASEvoc() {
-      return "Vocativ";
+      return "Vokativ";
     },
     get$grammarCopyCASEcom() {
-      return "Comitativ";
+      return "Komitativen";
     },
     get$grammarCopyCASEpar() {
       return "Partitiv";
     },
     get$grammarCopyCASEadv() {
-      return "Adverbial";
+      return "Prislovni";
     },
     get$grammarCopyCASEref() {
-      return "Referen\u021bial";
+      return "Referen\u010dni";
     },
     get$grammarCopyCASErel() {
-      return "Relativ";
+      return "Relativni";
     },
     get$grammarCopyCASEsub() {
-      return "Subessiv";
+      return "Subessive";
     },
     get$grammarCopyCASEsup() {
-      return "Superessiv";
+      return "Superessive";
     },
     get$grammarCopyCASEaccdat() {
-      return "Acuzativ-Dativ";
+      return "Akuzativ-Dativ";
     },
     get$grammarCopyCASEpre() {
-      return "Prepozitional";
+      return "Predlo\u017eni";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Subordonare";
+      return "Podredni";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Comparativ";
+      return "Primerjalni";
     },
     get$grammarCopyDEFINITEind() {
-      return "Nedefinit";
+      return "Nedolo\u010den";
     },
     get$grammarCopyMOODint() {
-      return "Mod Interogativ";
+      return "Vpra\u0161alni na\u010din";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Substantiv Comun";
+      return "Obi\u010dna samostalnica";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Singularul de\u021binatorului";
+      return "Ednina lastnika";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Pluralul de\u021binatorului";
+      return "Mno\u017eina lastnika";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Dualul de\u021binatorului";
+      return "Dvojina lastnika";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Polaritare Pozitiv\u0103";
+      return "Pozitivna polariteta";
     },
     get$grammarCopyPOSSyes() {
-      return "Posesiv";
+      return "Vozni\u0161ko";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Non-prepozi\u021bional";
+      return "Nepredlo\u017eni";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Personal";
+      return "Osebno";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Interogativ";
+      return "Vpra\u0161alno";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Total";
+      return "Skupno";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Negativ";
+      return "Negativno";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Articol";
+      return "\u010clen";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Nedefinit";
+      return "Nedolo\u010den";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Interogativ-Relativ";
+      return "Vpra\u0161alno-Relativno";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Punctua\u021bie Final\u0103";
+      return "Zaklju\u010dni lo\u010dilo";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Punctua\u021bie";
+      return "Pika";
     },
     get$grammarCopyREFLEXyes() {
-      return "Reflexiv";
+      return "Vratno";
     },
     get$grammarCopyTENSEimp() {
-      return "Imperfect";
+      return "Nedovr\u0161ni";
     },
     get$grammarCopyVERBFORMsup() {
       return "Supin";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominal";
+      return "Adnominalno";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Lung";
+      return "Dolgo";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Scurt";
+      return "Kratko";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Verb cauzativ";
+      return "Vzro\u010dni glagol";
     },
     get$grammarCopyVOICEcau() {
-      return "Cauzativ";
+      return "Vzro\u010dni";
     },
     get$grammarCopyVOICEdir() {
-      return "Direct";
+      return "Neposredni";
     },
     get$grammarCopyVOICEinv() {
-      return "Invers";
+      return "Obratno";
     },
     get$grammarCopyVOICErcp() {
-      return "Reciprocat";
+      return "Medsebojno";
     },
     get$other() {
-      return "Altele";
+      return "Drugo";
     },
     levelShort$1(level) {
-      return "LVL " + level;
+      return "RAV " + level;
     },
     get$clickBestOption() {
-      return "Alege cele mai bune op\u021biuni pentru a traduce mesajul t\u0103u!";
+      return "Izberite najbolj\u0161e mo\u017enosti za prevod va\u0161ega sporo\u010dila!";
     },
     get$completeActivitiesToUnlock() {
-      return "Finaliza\u021bi cel pu\u021bin o activitate pentru a debloca traducerea!";
+      return "Dokon\u010dajte vsaj eno dejavnost za odklepanje prevoda!";
     },
     get$downloadGroupText() {
-      return "Descarc\u0103 textul grupului";
+      return "Prenesi skupinsko besedilo";
     },
     get$notificationsOn() {
-      return "Notific\u0103ri activate";
+      return "Obvestila vklju\u010dena";
     },
     get$notificationsOff() {
-      return "Notific\u0103ri dezactivate";
+      return "Obvestila izklju\u010dena";
     },
     get$createChatAndInviteUsers() {
-      return "Creeaz\u0103 chat \u0219i invit\u0103 utilizatori";
+      return "Ustvari klepet in povabi uporabnike";
     },
     get$updatedNewSpaceDescription() {
-      return "Cursurile \xee\u021bi permit s\u0103 consolidezi chat-urile \u0219i s\u0103 construie\u0219ti comunit\u0103\u021bi private sau publice.";
+      return "Te\u010daji vam omogo\u010dajo, da zdru\u017eite svoje klepete in zgradite zasebne ali javne skupnosti.";
     },
     get$joinWithCode() {
-      return "Al\u0103tur\u0103-te cu cod";
+      return "Pridru\u017ei se s kodo";
     },
     get$enterCodeToJoin() {
-      return "Introdu codul pentru a te al\u0103tura";
+      return "Vnesite kodo za pridru\u017eitev";
     },
     get$updateNow() {
-      return "Actualizeaz\u0103 acum";
+      return "Posodobi zdaj";
     },
     get$updateLater() {
-      return "Mai t\xe2rziu";
+      return "Pozneje";
     },
     get$constructUseWaDesc() {
-      return "Utilizat f\u0103r\u0103 ajutor";
+      return "Uporablja se brez pomo\u010di";
     },
     get$constructUseGaDesc() {
-      return "Asisten\u021b\u0103 gramatical\u0103";
+      return "Pomo\u010d pri slovnici";
     },
     get$constructUseTaDesc() {
-      return "Asisten\u021b\u0103 pentru traducere";
+      return "Pomo\u010d pri prevajanju";
     },
     get$constructUseUnkDesc() {
-      return "Necunoscut";
+      return "Neznano";
     },
     get$constructUseCorITDesc() {
-      return "Corect \xeen traducere";
+      return "Pravilno v prevodu";
     },
     get$constructUseIgnITDesc() {
-      return "Ignorat \xeen traducere";
+      return "Prezrto v prevodu";
     },
     get$constructUseIncITDesc() {
-      return "Incorect \xeen traducere";
+      return "Napa\u010dno v prevodu";
     },
     get$constructUseIgnIGCDesc() {
-      return "Ignorat \xeen corectarea gramatical\u0103";
+      return "Prezrto pri slovni\u010dni korekciji";
     },
     get$constructUseCorIGCDesc() {
-      return "Corect \xeen corectarea gramatical\u0103";
+      return "Pravilno pri slovni\u010dni korekciji";
     },
     get$constructUseIncIGCDesc() {
-      return "Incorect \xeen corectarea gramatical\u0103";
+      return "Napa\u010dno pri slovni\u010dni korekciji";
     },
     get$constructUseCorPADesc() {
-      return "Corect \xeen activitatea de \xeen\u021beles al cuv\xe2ntului";
+      return "Pravilno v aktivnosti pomena besede";
     },
     get$constructUseIgnPADesc() {
-      return "Ignorat \xeen activitatea de \xeen\u021beles al cuv\xe2ntului";
+      return "Prezrto v aktivnosti pomena besede";
     },
     get$constructUseIncPADesc() {
-      return "Incorect \xeen activitatea de \xeen\u021beles al cuv\xe2ntului";
+      return "Napa\u010dno v aktivnosti pomena besede";
     },
     get$constructUseCorWLDesc() {
-      return "Corect \xeen activitatea de ascultare a cuv\xe2ntului";
+      return "Pravilno v aktivnosti poslu\u0161anja besed";
     },
     get$constructUseIncWLDesc() {
-      return "Incorect \xeen activitatea de ascultare a cuv\xe2ntului";
+      return "Napa\u010dno v aktivnosti poslu\u0161anja besed";
     },
     get$constructUseIngWLDesc() {
-      return "Ignorat \xeen activitatea de ascultare a cuv\xe2ntului";
+      return "Prezrto v aktivnosti poslu\u0161anja besed";
     },
     get$constructUseCorHWLDesc() {
-      return "Corect \xeen activitatea de cuv\xe2nt ascuns";
+      return "Pravilno v aktivnosti skrite besede";
     },
     get$constructUseIncHWLDesc() {
-      return "Incorect \xeen activitatea de cuv\xe2nt ascuns";
+      return "Napa\u010dno v aktivnosti skrite besede";
     },
     get$constructUseIgnHWLDesc() {
-      return "Ignorat \xeen activitatea de cuv\xe2nt ascuns";
+      return "Prezrto v aktivnosti skrite besede";
     },
     get$constructUseCorLDesc() {
-      return "Corect \xeen activitatea de lemma";
+      return "Pravilno v aktivnosti lemme";
     },
     get$constructUseIncLDesc() {
-      return "Incorect \xeen activitatea de lemma";
+      return "Napa\u010dno v aktivnosti lemme";
     },
     get$constructUseIgnLDesc() {
-      return "Ignorat \xeen activitatea de lemma";
+      return "Prezrto v aktivnosti lemme";
     },
     get$constructUseCorMDesc() {
-      return "Corect \xeen activitatea de gramatic\u0103";
+      return "Pravilno v aktivnosti slovnice";
     },
     get$constructUseIncMDesc() {
-      return "Incorect \xeen activitatea de gramatic\u0103";
+      return "Napa\u010dno v aktivnosti slovnice";
     },
     get$constructUseIgnMDesc() {
-      return "Ignorat \xeen activitatea de gramatic\u0103";
+      return "Prezrto v aktivnosti slovnice";
     },
     get$constructUseEmojiDesc() {
-      return "Corect \xeen activitatea de emoji";
+      return "Pravilno v aktivnosti emojijev";
     },
     get$constructUseCollected() {
-      return "Colectat \xeen chat";
+      return "Zbrano v klepetu";
     },
     get$constructUseNanDesc() {
-      return "Nu se aplic\u0103";
+      return "Ni primerno";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "Activat textul vorbit";
+      return "Omogo\u010deno besedilno pretvarjanje v govor";
     },
     get$enableTTSToolDescription() {
-      return "Permite aplica\u021biei s\u0103 genereze ie\u0219ire text-vorbit pentru por\u021biuni de text \xeen limba \u021bint\u0103.";
+      return "Dovolite aplikaciji, da generira izhod besedilnega pretvarjanja v govor za dele besedila v va\u0161em ciljnem jeziku.";
     },
     get$yourUsername() {
-      return "Numele t\u0103u de utilizator";
+      return "Va\u0161e uporabni\u0161ko ime";
     },
     get$yourEmail() {
-      return "Adresa ta de email";
+      return "Va\u0161 e-po\u0161tni naslov";
     },
     get$iWantToLearn() {
-      return "Vreau s\u0103 \xeenv\u0103\u021b";
+      return "\u017delim se u\u010diti";
     },
     get$pleaseEnterEmail() {
-      return string$.V__rug;
+      return "Vnesite veljaven e-po\u0161tni naslov.";
     },
     get$myBaseLanguage() {
-      return "Limba mea de baz\u0103";
+      return "Moj osnovni jezik";
     },
     get$meaningSectionHeader() {
-      return "Sens:";
+      return "Pomen:";
     },
     get$formSectionHeader() {
-      return "Forme folosite \xeen chat:";
+      return "Oblike, uporabljene v klepetih:";
     },
     get$writingExercisesTooltip() {
-      return "Scriere";
+      return "Pisanje";
     },
     get$listeningExercisesTooltip() {
-      return "Ascultare";
+      return "Poslu\u0161anje";
     },
     get$readingExercisesTooltip() {
-      return "Citire";
+      return "Branje";
     },
     get$meaningNotFound() {
-      return "Sensul nu a putut fi g\u0103sit.";
+      return "Pomen ni bilo mogo\u010de najti.";
     },
     get$chooseBaseForm() {
-      return "Alege forma de baz\u0103";
+      return "Izberi osnovno obliko";
     },
     get$notTheCodeError() {
-      return "\xcemi pare r\u0103u, nu acesta este codul!";
+      return "Oprostite, to ni koda!";
     },
     get$totalXP() {
-      return "XP total";
+      return "Skupni XP";
     },
     get$numLemmas() {
-      return "Num\u0103rul total de leme";
+      return "Skupno \u0161tevilo lem";
     },
     get$numLemmasUsedCorrectly() {
-      return "Num\u0103rul de leme folosite corect cel pu\u021bin o dat\u0103";
+      return "\u0160tevilo lem, ki so bili uporabljeni pravilno vsaj enkrat";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Num\u0103rul de leme folosite incorect de 0 ori";
+      return "\u0160tevilo lem, ki so bili uporabljeni pravilno 0-krat";
     },
     get$numLemmasSmallXP() {
-      return "Num\u0103rul de leme cu 0 - 30 XP";
+      return "\u0160tevilo lem z 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "Num\u0103rul de leme cu 31 - 200 XP";
+      return "\u0160tevilo lem z 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "Num\u0103rul de leme cu > 200 XP";
+      return "\u0160tevilo lem z ve\u010d kot 200 XP";
     },
     get$numGrammarConcepts() {
-      return "Num\u0103rul de concepte gramaticale";
+      return "\u0160tevilo slovni\u010dnih konceptov";
     },
     get$listGrammarConcepts() {
-      return "Concepte gramaticale";
+      return "Slovni\u010dni koncepti";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Concepte gramaticale folosite corect \xeen mesajele originale cel pu\u021bin 80% din timp";
+      return "Slovni\u010dni koncepti pravilno uporabljeni v izvirnih sporo\u010dilih vsaj 80 % \u010dasa";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Concepte gramaticale folosite corect mai pu\u021bin de 80% din timp \xeen mesajele originale";
+      return "Slovni\u010dni koncepti pravilno uporabljeni v izvirnih sporo\u010dilih manj kot 80 % \u010dasa";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Concepte gramaticale alese corect din sugestiile generate de sistem cel pu\u021bin 80% din timp";
+      return "Slovni\u010dni koncepti pravilno izbrani iz sistemskih predlogov vsaj 80 % \u010dasa";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Concepte gramaticale alese corect din sugestiile generate de sistem mai pu\u021bin de 80% din timp";
+      return "Slovni\u010dni koncepti pravilno izbrani iz sistemskih predlogov manj kot 80 % \u010dasa";
     },
     get$listGrammarConceptsSmallXP() {
-      return "Concepte gramaticale cu 0-50 XP";
+      return "Slovni\u010dni koncepti z 0-50 izku\u0161njami";
     },
     get$listGrammarConceptsMediumXP() {
-      return "Concepte gramaticale cu 51-200 XP";
+      return "Slovni\u010dni koncepti z 51-200 izku\u0161njami";
     },
     get$listGrammarConceptsLargeXP() {
-      return "Concepte gramaticale 201-500 XP";
+      return "Slovni\u010dni koncepti z 201-500 izku\u0161njami";
     },
     get$listGrammarConceptsHugeXP() {
-      return "Concepte gramaticale >500 XP";
+      return "Slovni\u010dni koncepti >500 izku\u0161njami";
     },
     get$numMessagesSent() {
-      return "Num\u0103rul de mesaje trimise";
+      return "\u0160tevilo poslanih sporo\u010dil";
     },
     get$numWordsTyped() {
-      return "Num\u0103rul de cuvinte tastate \xeen mesajele originale";
+      return "\u0160tevilo vne\u0161enih besed v izvirnih sporo\u010dilih";
     },
     get$numCorrectChoices() {
-      return "Num\u0103rul de cuvinte corecte alese din sugestiile generate de sistem";
+      return "\u0160tevilo pravilno izbranih besed iz sistemskih predlogov";
     },
     get$numIncorrectChoices() {
-      return "Num\u0103rul de cuvinte incorecte alese din sugestiile generate de sistem";
+      return "\u0160tevilo nepravilno izbranih besed iz sistemskih predlogov";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3719,853 +3719,853 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "Tip fi\u0219ier";
+      return "Vrsta datoteke";
     },
     get$download(_) {
-      return "Descarc\u0103";
+      return "Prenesi";
     },
     get$analyticsNotAvailable() {
-      return "Analiticele utilizatorului nu sunt disponibile";
+      return "Analitika uporabnika ni na voljo";
     },
     get$downloading() {
-      return "Se descarc\u0103...";
+      return "Prenos...";
     },
     get$failedFetchUserAnalytics() {
-      return "Nu s-a putut desc\u0103rca analiticele utilizatorului";
+      return "Neuspe\u0161no prena\u0161anje uporabni\u0161kih analitik";
     },
     get$downloadComplete() {
-      return "Desc\u0103rcare complet\u0103!";
+      return "Prenos zaklju\u010den!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "Ce este " + morphologicalFeature + " din '" + wordForm + "'?";
+      return "Kaj je " + morphologicalFeature + " od '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "Disponibilitatea datelor";
+      return "Razpolo\u017eljivost podatkov";
     },
     get$available(_) {
-      return "Disponibil";
+      return "Na voljo";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot face gre\u0219eli \u0219i el!";
+      return "Pangea Bot tudi dela napake!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "Ce \xeenseamn\u0103 '" + lemma + "'?";
+      return "Kaj pomeni '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Potrive\u0219te sensurile cu cuvintele din mesaj!";
+      return "Ujemajte pomene z besedami v sporo\u010dilu!";
     },
     get$doubleClickToEdit() {
-      return "Dublu clic pentru editare.";
+      return "Dvakrat kliknite za urejanje.";
     },
     get$cefrLevelLabel() {
-      return "Nivel CEFR";
+      return "Raven CEFR";
     },
     get$image(_) {
-      return "Imagine";
+      return "Slika";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Alege\u021bi un subiect, mod, obiectiv de \xeenv\u0103\u021bare \u0219i genera\u021bi o activitate pentru chat!";
+      return "Izberi temo, na\u010din, u\u010dni cilj in ustvari dejavnost za klepet!";
     },
     get$constructUsePvmDesc() {
-      return "Produs \xeen mesaj vocal";
+      return "Ustvarjeno v zvo\u010dni sporo\u010dilu";
     },
     get$leaveSpaceDescription() {
-      return "P\u0103r\u0103sind cursul, vei p\u0103r\u0103si toate chat-urile din cadrul acestuia. Al\u021bi utilizatori vor vedea c\u0103 ai p\u0103r\u0103sit cursul.";
+      return "\u010ce zapustite te\u010daj, boste zapustili vse klepete znotraj njega. Drugi uporabniki bodo videli, da ste zapustili te\u010daj.";
     },
     get$constructUseCorMmDesc() {
-      return "Semnifica\u021bia mesajului corect";
+      return "Pravilno pomen sporo\u010dila";
     },
     get$constructUseIncMmDesc() {
-      return "Semnifica\u021bia mesajului incorect";
+      return "Napa\u010den pomen sporo\u010dila";
     },
     get$constructUseIgnMmDesc() {
-      return "Semnifica\u021bia mesajului ignorat";
+      return "Prezrti pomen sporo\u010dila";
     },
     get$meaning() {
-      return "Semnifica\u021bie";
+      return "Pomen";
     },
     chatWith$1(displayname) {
-      return "Grup cu " + displayname;
+      return "Skupina z " + displayname;
     },
     get$clickOnEmailLink() {
-      return "V\u0103 rug\u0103m s\u0103 face\u021bi clic pe link-ul din email \u0219i apoi s\u0103 continua\u021bi.\n\nVerifica\u021bi folderul de spam dac\u0103 email-ul nu a sosit.";
+      return "Prosimo, kliknite na povezavo v e-po\u0161ti in nadaljujte.\n\nPreverite mapo z vsiljeno po\u0161to, \u010de e-po\u0161ta ni prispela.";
     },
     get$dontForgetPassword() {
-      return "Nu uita parola ta!";
+      return "Ne pozabite gesla!";
     },
     get$enableAutocorrectToolName() {
-      return "Activeaz\u0103 corectarea automat\u0103 a dispozitivului";
+      return "Omogo\u010di samodejno popravljanje na napravi";
     },
     get$enableAutocorrectDescription() {
-      return "Dac\u0103 dispozitivul t\u0103u suport\u0103 limba pe care o \xeenve\u021bi, po\u021bi activa corectarea automat\u0103 pentru a corecta erorile comune \xeen timp ce tastezi.";
+      return "\u010ce va\u0161a naprava podpira jezik, ki ga u\u010dite, lahko omogo\u010dite samodejno popravljanje, da popravlja pogoste napake med tipkanjem.";
     },
     get$ttsDisbledTitle() {
-      return "Text-to-speech dezactivat";
+      return "Pretvorba besedila v govor onemogo\u010dena";
     },
     get$ttsDisabledBody() {
-      return "Po\u021bi activa func\u021bia text-to-speech \xeen set\u0103rile de \xeenv\u0103\u021bare";
+      return "V nastavitvah u\u010denja lahko omogo\u010dite pretvorbo besedila v govor";
     },
     get$noSpaceDescriptionYet() {
-      return "\xcenc\u0103 nu a fost creat\u0103 nicio descriere a cursului.";
+      return "\u0160e ni ustvarjen opis te\u010daja.";
     },
     get$tooLargeToSend() {
-      return "Mesajul este prea mare pentru a fi trimis";
+      return "To sporo\u010dilo je preveliko za po\u0161iljanje";
     },
     get$exitWithoutSaving() {
-      return "E\u0219ti sigur c\u0103 vrei s\u0103 ie\u0219i f\u0103r\u0103 a salva?";
+      return "Ste prepri\u010dani, da \u017eelite zapustiti brez shranjevanja?";
     },
     get$enableAutocorrectWarning() {
-      return "Avertisment! Necesit\u0103 ad\u0103ugarea tastaturii limbii tale \u021bint\u0103";
+      return "Opozorilo! Potrebno je dodati tipkovnico ciljanega jezika";
     },
     get$leaveRoomDescription() {
-      return "E\u0219ti pe cale s\u0103 p\u0103r\u0103se\u0219ti acest chat. Al\u021bi utilizatori vor vedea c\u0103 ai p\u0103r\u0103sit chat-ul.";
+      return "Pribli\u017eujete se izstopu iz tega klepeta. Drugi uporabniki bodo videli, da ste zapustili klepet.";
     },
     get$confirmUserId() {
-      return "Te rug\u0103m s\u0103 confirmi numele de utilizator Pangea Chat pentru a-\u021bi \u0219terge contul.";
+      return "Prosimo, potrdite svoje uporabni\u0161ko ime Pangea Chata, da izbri\u0161ete svoj ra\u010dun.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\xcencep\xe2nd cu " + startDate;
+      return "Za\u010dne se " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 Anuleaz\u0103 oric\xe2nd din set\u0103rile de abonament";
+      return " \u2022 Prekli\u010di kadarkoli v nastavitvah naro\u010dnine";
     },
     get$autocorrectNotAvailable() {
-      return "Din p\u0103cate, platforma dvs. nu este \xeen prezent compatibil\u0103 pentru aceast\u0103 func\u021bie. R\u0103m\xe2ne\u021bi aproape pentru dezvolt\u0103ri viitoare!";
+      return "Na \u017ealost va\u0161a platforma trenutno ni podprta za to funkcijo. Ostanite z nami za nadaljnji razvoj!";
     },
     get$pleaseUpdateApp() {
-      return "V\u0103 rug\u0103m s\u0103 actualiza\u021bi aplica\u021bia pentru a continua.";
+      return "Prosimo, posodobite aplikacijo za nadaljevanje.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Potrive\u0219te emoji-urile cu cuvintele pe care le reprezint\u0103 cel mai bine. Nu v\u0103 face\u021bi griji! Nu vor fi penaliz\u0103ri pentru dezacord. \ud83d\ude05";
+      return "Ujemajte emojije z besedami, ki jih najbolje predstavljajo. Ne skrbite! Ni kazni za nesoglasje. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "Aceasta este tot vocabularul t\u0103u! Pe m\u0103sur\u0103 ce c\xe2\u0219tigi XP pentru fiecare cuv\xe2nt, acestea vor trece de la s\u0103m\xe2n\u021b\u0103 la plin\u0103 \xeenflorire. F\u0103 clic pe orice cuv\xe2nt pentru mai multe detalii.";
+      return "To je va\u0161 celoten besednjak! Ko boste zaslu\u017eili XP za vsako besedo, bo ta od semena do polnega cveta. Kliknite katerokoli besedo za ve\u010d podrobnosti.";
     },
     get$morphAnalyticsListBody() {
-      return "Acestea sunt toate conceptele gramaticale din limba pe care o \xeenve\u021bi! Le vei debloca pe m\u0103sur\u0103 ce le \xeent\xe2lne\u0219ti \xeen timpul conversa\u021biei. F\u0103 clic pentru detalii.";
+      return "To so vsi slovni\u010dni koncepti v jeziku, ki ga u\u010dite! Odprli jih boste, ko jih boste sre\u010dali med klepetom. Kliknite za podrobnosti.";
     },
     get$knockSpaceSuccess() {
-      return "Ai solicitat s\u0103 te al\u0103turi acestui curs! Un administrator va r\u0103spunde cererii tale c\xe2nd o va primi \ud83d\ude0a";
+      return "Zahtevali ste, da se pridru\u017eite temu te\u010daju! Administrator bo odgovoril na va\u0161o zahtevo, ko jo bo prejel \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Ascult\u0103 mesajul complet. Apoi potrive\u0219te audio-urile cu cuvintele.";
+      return "Poslu\u0161ajte celotno sporo\u010dilo. Nato ujemajte zvo\u010dne posnetke z besedami.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "F\u0103 clic pe piesele de puzzle pentru \xeentreb\u0103ri gramaticale!";
+      return "Kliknite na sestavljene dele za vpra\u0161anja o slovnici!";
     },
     get$home() {
-      return "Acas\u0103";
+      return "Domov";
     },
     get$join(_) {
-      return "Al\u0103tur\u0103-te";
+      return "Pridru\u017ei se";
     },
     get$readingAssistanceOverviewBody() {
-      return "F\u0103 clic pe butoanele de mai jos pentru mini-jocuri de potrivire a emoji-urilor, audio-urilor, sensurilor cuvintelor \u0219i conceptelor gramaticale. Sau f\u0103 clic pe orice cuv\xe2nt pentru detalii.";
+      return "Kliknite na gumbe spodaj za mini igre o ujemanju emojijev, zvo\u010dnih posnetkov, pomenov besed in slovni\u010dnih konceptov. Ali pa kliknite na katero koli besedo za podrobnosti.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Reseteaz\u0103 sfaturile de instruc\u021biuni";
+      return "Ponastavi nasvete za navodila";
     },
     get$resetInstructionTooltipsDesc() {
-      return "F\u0103 clic pentru a afi\u0219a sfaturi de instruc\u021biuni precum pentru un utilizator nou.";
+      return "Kliknite, da prika\u017eete nasvete za navodila, kot za popolnega novega uporabnika.";
     },
     get$selectForGrammar() {
-      return "Selecteaz\u0103 o pictogram\u0103 de gramatic\u0103 pentru activit\u0103\u021bi \u0219i detalii.";
+      return "Izberite ikono slovnice za dejavnosti in podrobnosti.";
     },
     get$translationProblem() {
-      return "Problem\u0103 de traducere";
+      return "Te\u017eava pri prevajanju";
     },
     get$askToJoin() {
-      return "Cere s\u0103 te al\u0103turi";
+      return "Prosi za vstop";
     },
     get$emptyChatWarningTitle() {
-      return "Conversa\u021bia este goal\u0103";
+      return "Pogovor je prazen";
     },
     get$emptyChatWarningDesc() {
-      return "Nu ai invitat pe nimeni \xeen conversa\u021bia ta. Mergi la set\u0103rile de chat pentru a invita contactele sau Botul. Po\u021bi face acest lucru \u0219i mai t\xe2rziu.";
+      return "Niste povabili nikogar v svoj klepet. Pojdite na nastavitve klepeta, da povabite svoje stike ali bota. To lahko storite tudi kasneje.";
     },
     get$areYouLikeMe() {
-      return "E\u0219ti ca mine?";
+      return "Si kot jaz?";
     },
     get$tryAgainLater() {
-      return "Prea multe \xeencerc\u0103ri. Te rug\u0103m s\u0103 \xeencerci din nou \xeen 5 minute.";
+      return "Preve\u010d poskusov. Poskusite znova \u010dez 5 minut.";
     },
     get$enterSpaceCode() {
-      return "Introdu codul cursului";
+      return "Vnesite kodo te\u010daja";
     },
     get$shareSpaceLink() {
-      return "Distribuie link-ul";
+      return "Deli povezavo";
     },
     get$byUsingPangeaChat() {
-      return "Folosind Pangea Chat, sunt de acord cu ";
+      return "Z uporabo Pangea Chata se strinjam z ";
     },
     get$details(_) {
-      return "Detalii";
+      return "Podrobnosti";
     },
     get$languageLevelPreA1Desc() {
-      return "Nu am \xeenv\u0103\u021bat niciodat\u0103 sau nu am folosit limba.";
+      return "Nikoli nisem u\u010dil ali uporabljal jezika.";
     },
     get$languageLevelA1Desc() {
-      return "Pot \xeen\u021belege \u0219i folosi c\xe2teva expresii familiare din via\u021ba de zi cu zi \u0219i fraze foarte simple.";
+      return "Razumem in uporabljam nekaj znanih vsakdanjih izrazov in zelo osnovne fraze.";
     },
     get$languageLevelA2Desc() {
-      return "Pot \xeen\u021belege propozi\u021bii \u0219i expresii frecvent utilizate legate de domenii de relevan\u021b\u0103 imediat\u0103.";
+      return "Razumem stavke in pogosto uporabljene izraze, povezane z obmo\u010dji takoj\u0161nje relevance.";
     },
     get$languageLevelB1Desc() {
-      return "Pot face fa\u021b\u0103 celor mai multe situa\u021bii familiare \u0219i pot produce texte simple legate pe subiecte familiare.";
+      return "Zmorem se spopasti z ve\u010dino znanih situacij in lahko ustvarim preprost povezan tekst o znanih temah.";
     },
     get$languageLevelB2Desc() {
-      return "Pot \xeen\u021belege ideile principale ale textelor complexe \u0219i pot interac\u021biona cu un grad de fluen\u021b\u0103 \u0219i spontaneitate.";
+      return "Razumem glavne ideje kompleksnih besedil in komuniciram z dolo\u010deno stopnjo teko\u010dnosti in spontanenosti.";
     },
     get$languageLevelC1Desc() {
-      return "Pot exprima idei fluent \u0219i spontan f\u0103r\u0103 prea mult efort \u0219i pot \xeen\u021belege o gam\u0103 larg\u0103 de texte exigente.";
+      return "Znam izra\u017eati ideje teko\u010de in spontano brez ve\u010djih te\u017eav ter razumem \u0161irok razpon zahtevnih besedil.";
     },
     get$languageLevelC2Desc() {
-      return "Pot \xeen\u021belege aproape tot ce aud sau citesc \u0219i m\u0103 pot exprima fluent \u0219i precis.";
+      return "Razumem prakti\u010dno vse, kar sli\u0161im ali preberem, in se izra\u017eam teko\u010de ter natan\u010dno.";
     },
     get$newVocab() {
-      return "Vocabular nou";
+      return "Nove besede";
     },
     get$newGrammar() {
-      return "Concepte gramaticale noi";
+      return "Novi slovni\u010dni koncepti";
     },
     get$choosePracticeMode() {
-      return "F\u0103 clic pe unul dintre butoanele de mai sus pentru a \xeencepe o activitate de practic\u0103";
+      return "Kliknite na eno od zgornjih gumbov za za\u010detek vaje";
     },
     get$ban() {
-      return "Ban";
+      return "Blokiraj";
     },
     get$kick() {
-      return "Scoate";
+      return "Izvrzi";
     },
     get$lemma() {
-      return "Lem\u0103";
+      return "Lema";
     },
     get$grammarFeature() {
-      return "Caracteristic\u0103 gramatical\u0103";
+      return "Zna\u010dilnost slovnice";
     },
     get$grammarTag() {
-      return "Etichet\u0103 gramatical\u0103";
+      return "Oznaka slovnice";
     },
     get$forms() {
-      return "Forme";
+      return "Oblike";
     },
     get$exampleMessages() {
-      return "Mesaje de exemplu";
+      return "Primer sporo\u010dil";
     },
     get$timesUsedIndependently() {
-      return "Timpuri folosite independent";
+      return "\u0160t. uporabe neodvisno";
     },
     get$timesUsedWithAssistance() {
-      return "Timpuri folosite cu asisten\u021b\u0103";
+      return "\u0160t. uporabe z pomo\u010djo";
     },
     shareInviteCode$1(code) {
-      return "Partaja codul de invita\u021bie: " + code;
+      return "Deli kodo povabila: " + code;
     },
     get$skipForNow() {
-      return "Sari peste pentru moment";
+      return "Za zdaj presko\u010di";
     },
     get$permissions(_) {
-      return "Permisiuni";
+      return "Dovoljenja";
     },
     get$spaceChildPermission() {
-      return "Cine poate ad\u0103uga noi conversa\u021bii la acest curs";
+      return "Kdo lahko doda nove pogovore v ta te\u010daj";
     },
     get$addEnvironmentOverride() {
-      return "Adaug\u0103 suprascriere de mediu";
+      return "Dodaj prepis okolja";
     },
     get$defaultOption() {
-      return "Implicit";
+      return "Privzeto";
     },
     get$deleteChatDesc() {
-      return "E\u0219ti sigur c\u0103 vrei s\u0103 \u0219tergi aceast\u0103 conversa\u021bie? Va fi \u0219tears\u0103 pentru to\u021bi participan\u021bii \u0219i toate mesajele din conversa\u021bie nu vor mai fi disponibile pentru practic\u0103 sau analize de \xeenv\u0103\u021bare.";
+      return "Ali ste prepri\u010dani, da \u017eelite izbrisati ta pogovor? Izbrisal se bo za vse udele\u017eence in vsi sporo\u010dili v pogovoru ne bodo ve\u010d na voljo za prakso ali analitiko u\u010denja.";
     },
     get$deleteSpaceDesc() {
-      return "Cursul \u0219i orice conversa\u021bie selectat\u0103 vor fi \u0219terse pentru to\u021bi participan\u021bii \u0219i toate mesajele din conversa\u021bie nu vor mai fi disponibile pentru practic\u0103 sau analize de \xeenv\u0103\u021bare. Aceast\u0103 ac\u021biune nu poate fi anulat\u0103.";
+      return "Te\u010daj in vsi izbrani pogovori bodo izbrisani za vse udele\u017eence in vsi sporo\u010dili v pogovoru ne bodo ve\u010d na voljo za prakso ali analitiko u\u010denja. Ta dejanja ni mogo\u010de razveljaviti.";
     },
     get$configureSpace() {
-      return "Configureaz\u0103 cursul";
+      return "Konfiguriraj te\u010daj";
     },
     get$pinMessages() {
-      return "Fixeaz\u0103 mesaje";
+      return "Pripni sporo\u010dila";
     },
     get$setJoinRules() {
-      return "Seteaz\u0103 regulile de aderare";
+      return "Nastavi pravila za vstop";
     },
     get$changeGeneralSettings() {
-      return "Schimb\u0103 set\u0103rile generale";
+      return "Spremeni splo\u0161ne nastavitve";
     },
     get$inviteOtherUsersToRoom() {
-      return "Invit\u0103 al\u021bi utilizatori";
+      return "Vabi druge uporabnike";
     },
     get$changeTheNameOfTheSpace() {
-      return "Schimb\u0103 numele cursului";
+      return "Spremeni ime te\u010daja";
     },
     get$changeTheDescription() {
-      return "Schimb\u0103 descrierea";
+      return "Spremeni opis";
     },
     get$changeThePermissions() {
-      return "Schimb\u0103 permisiunile";
+      return "Spremeni dovoljenja";
     },
     get$introductions() {
-      return "Introduceri";
+      return "Uvodne predstavitve";
     },
     get$announcements() {
-      return "Anun\u021buri";
+      return "Obvestila";
     },
     get$activities() {
-      return "Activit\u0103\u021bi";
+      return "Dejavnosti";
     },
     get$access() {
-      return "Acces";
+      return "Dostop";
     },
     get$howSpaceCanBeFound() {
-      return "Cum poate fi g\u0103sit acest curs";
+      return "Kako je mogo\u010de najti ta te\u010daj";
     },
     get$$private() {
-      return "Privat";
+      return "Zasebno";
     },
     get$cannotBeFoundInSearch() {
-      return "Nu poate fi g\u0103sit \xeen c\u0103utare";
+      return "Ne more biti najdeno v iskanju";
     },
     get$$public(_) {
-      return "Public";
+      return "Javno";
     },
     get$visibleToCommunity() {
-      return 'Vizibil pentru comunitatea mai larg\u0103 Pangea Chat prin "G\u0103se\u0219te un curs"';
+      return 'Vidno \u0161ir\u0161i skupnosti Pangea Chat prek "Najdi te\u010daj"';
     },
     get$howSpaceCanBeJoined() {
-      return "Cum poate fi aderat acest curs";
+      return "Kako se lahko pridru\u017ei temu te\u010daju";
     },
     get$canBeFoundVia() {
-      return "Poate fi g\u0103sit prin:";
+      return "Lahko ga najdete prek:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 invita\u021bie";
+      return "\u2022 povabila";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 cod sau link";
+      return "\u2022 kode ali povezave";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 cerere de aderare \u0219i aprobare de administrator";
+      return "\u2022 zahteve za pridru\u017eitev in odobritev administratorja";
     },
     get$youHaveLeveledUp() {
-      return "Ai avansat de nivel!";
+      return "Napredovali ste!";
     },
     get$sendActivities() {
-      return "Trimite activit\u0103\u021bi";
+      return "Po\u0161lji dejavnosti";
     },
     get$directMessage() {
-      return "Mesaj direct";
+      return "Neposredna sporo\u010dila";
     },
     get$newDirectMessage() {
-      return "Mesaj direct nou";
+      return "Novo neposredno sporo\u010dilo";
     },
     get$speakingExercisesTooltip() {
-      return "Vorbire";
+      return "Govorenje";
     },
     get$transcriptionFailed() {
-      return "Nu s-a reu\u0219it transcrierea audio";
+      return "Prepisovanje zvoka ni uspelo";
     },
     get$aUserIsKnocking() {
-      return "Un utilizator solicit\u0103 s\u0103 se al\u0103ture cursului t\u0103u";
+      return "1 uporabnik \u017eeli pridru\u017eiti se va\u0161emu te\u010daju";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " utilizatori solicit\u0103 s\u0103 se al\u0103ture cursului t\u0103u";
+      return "" + users + " uporabnikov \u017eeli pridru\u017eiti se va\u0161emu te\u010daju";
     },
     get$failedToFetchTranscription() {
-      return "Nu s-a reu\u0219it preluarea transcrierii";
+      return "Ni uspelo pridobiti prepis";
     },
     get$deleteEmptySpaceDesc() {
-      return "Cursul va fi \u0219ters pentru to\u021bi participan\u021bii. Aceast\u0103 ac\u021biune nu poate fi anulat\u0103.";
+      return "Te\u010daj bo izbrisan za vse udele\u017eence. Te dejanje ni mogo\u010de razveljaviti.";
     },
     get$failedToPlayVideo() {
-      return "Nu s-a reu\u0219it redarea videoclipului";
+      return "Ne uspe prikazati videoposnetka";
     },
     get$done() {
-      return "Gata";
+      return "Dokon\u010dano";
     },
     get$inThisSpace() {
-      return "\xcen acest curs";
+      return "V tem prostoru";
     },
     get$myContacts() {
-      return "Contactele mele";
+      return "Moji stiki";
     },
     get$inviteAllInSpace() {
-      return "Invit\u0103 pe to\u021bi \xeen acest curs";
+      return "Vabite vse v tem prostoru";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "To\u021bi participan\u021bii la curs au fost invita\u021bi \xeen chat";
+      return "Vsi udele\u017eenci te\u010daja so bili povabljeni v klepet";
     },
     numKnocking$1(count) {
-      return "" + count + " solicit\u0103ri de intrare";
+      return "" + count + " trka";
     },
     numInvited$1(count) {
-      return "" + count + " invita\u021bi";
+      return "" + count + " povabljenih";
     },
     get$errorFetchingDefinition() {
-      return "E\u0219ec la preluarea defini\u021biei";
+      return "Ne uspe pridobiti definicije";
     },
     get$errorProcessAnalytics() {
-      return "E\u0219ec la procesarea analizelor";
+      return "Ne uspe obdelati analitike";
     },
     get$errorDownloading() {
-      return "E\u0219ec la desc\u0103rcare";
+      return "Prenos ni uspel";
     },
     get$errorFetchingLevelSummary() {
-      return "E\u0219ec la preluarea rezumatului nivelului";
+      return "Ne uspe pridobiti povzetka ravni";
     },
     get$errorLoadingSpaceChildren() {
-      return "E\u0219ec la \xeenc\u0103rcarea conversa\u021biilor din acest curs";
+      return "Ne uspe nalo\u017eiti klepetov znotraj tega te\u010daja";
     },
     get$unexpectedError() {
-      return "Eroare nea\u0219teptat\u0103.";
+      return "Nepri\u010dakovana napaka.";
     },
     get$pleaseReload() {
-      return "V\u0103 rug\u0103m s\u0103 re\xeenc\u0103rca\u021bi \u0219i s\u0103 \xeencerca\u021bi din nou.";
+      return "Prosimo, osve\u017eite stran in poskusite znova.";
     },
     get$translationError() {
-      return "Eroare de traducere";
+      return "Napaka pri prevajanju";
     },
     get$errorFetchingTranslation() {
-      return "E\u0219ec la preluarea traducerii";
+      return "Ni bilo mogo\u010de pridobiti prevoda";
     },
     get$errorFetchingActivity() {
-      return "E\u0219ec la preluarea activit\u0103\u021bii";
+      return "Ni bilo mogo\u010de pridobiti dejavnosti";
     },
     get$check(_) {
-      return "Verific\u0103";
+      return "Preveri";
     },
     get$unableToFindRoom() {
-      return "Niciun chat sau curs cu acest cod nu a fost g\u0103sit. V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou.";
+      return "Ni najdenega klepeta ali te\u010daja s tem kodo. Poskusite znova.";
     },
     viewingAnalytics$2(visible, users) {
-      return "Vizualizare " + visible + "/" + users + " Analize";
+      return "Ogled " + visible + "/" + users + " analitike";
     },
     get$request(_) {
-      return "Cerere";
+      return "Zahteva";
     },
     get$requestAll(_) {
-      return "Solicit\u0103 tot";
+      return "Zahtevaj vse";
     },
     get$confirmMessageUnpin() {
-      return "E\u0219ti sigur c\u0103 vrei s\u0103 dezlipe\u0219ti acest mesaj?";
+      return "Ste prepri\u010dani, da \u017eelite odpeti to sporo\u010dilo?";
     },
     get$pending(_) {
-      return "\xcen a\u0219teptare";
+      return "V obravnavi";
     },
     get$openRoleLabel() {
-      return "DESCHIS";
+      return "ODPRTO";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " s-a al\u0103turat ca " + role;
+      return "\ud83d\udc4b " + username + " se je pridru\u017eil kot " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " a \xeencheiat aceast\u0103 activitate";
+      return "\ud83c\udfaf " + username + " je zaklju\u010dil to dejavnost";
     },
     get$activitySummaryError() {
-      return "Rezumatul activit\u0103\u021bilor indisponibil";
+      return "Povzetki dejavnosti niso na voljo";
     },
     get$requestSummaries() {
-      return "Solicit\u0103 rezumate";
+      return "Zahtevaj povzetke";
     },
     get$requestAccessTitle() {
-      return "Solicita\u021bi acces la analize?";
+      return "Zahtevaj dostop do analitike?";
     },
     get$requestAccessDesc() {
-      return "Dori\u021bi s\u0103 solicita\u021bi acces pentru a vizualiza analizele participan\u021bilor?\n\nDac\u0103 participan\u021bii sunt de acord, administratorii acestui curs vor putea vizualiza:\n    \u2022 vocabularul total\n    \u2022 conceptele gramaticale totale\n    \u2022 sesiuni de activitate finalizate\n    \u2022 conceptele gramaticale specifice utilizate, corect \u0219i incorect\n\nEi nu vor putea vizualiza:\n    \u2022 mesajele din chat-urile din afara cursului\n    \u2022 lista de vocabular";
+      return "Ali \u017eelite zaprositi za dostop do ogledanja analitike udele\u017eencev?\n\n\u010ce se udele\u017eenci strinjajo, bodo skrbniki tega te\u010daja lahko videli:\n    \u2022 skupni slovar\n    \u2022 skupne gramati\u010dne koncepte\n    \u2022 \u0161tevilo opravljenih dejavnosti\n    \u2022 specifi\u010dne uporabljene gramati\u010dne koncepte, pravilno in nepravilno\n\nNe bodo mogli videti:\n    \u2022 sporo\u010dil v klepetih zunaj te\u010daja\n    \u2022 seznam slovarja";
     },
     get$analyticsInactiveTitle() {
-      return "Solicit\u0103rile c\u0103tre utilizatorii inactivi nu au putut fi trimise";
+      return "Zahtevki za neaktivne uporabnike niso bili poslani";
     },
     get$analyticsInactiveDesc() {
-      return "Utilizatorii inactivi care nu s-au autentificat de c\xe2nd a fost introdus\u0103 aceast\u0103 func\u021bie nu vor vedea solicitarea dvs.\n\nButonul de solicitare va ap\u0103rea odat\u0103 ce se vor \xeentoarce. Pute\u021bi retrimite solicitarea mai t\xe2rziu f\u0103c\xe2nd clic pe butonul Solicitare sub numele lor c\xe2nd este disponibil.";
+      return "Neaktivni uporabniki, ki se niso prijavili od uvedbe te funkcije, ne bodo videli va\u0161ega zahtevka.\n\nGumb Za\u017eeni se bo pojavil, ko se vrnejo. Kasneje lahko ponovno po\u0161ljete zahtevo s klikom na gumb Za\u017eeni pod njihovim imenom, ko bo na voljo.";
     },
     get$accessRequestedTitle() {
-      return "Solicitare de acces la analize";
+      return "Zahteva za dostop do analitike";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Solicit\xe2nd admin(i): " + admin + " \n\nAdminii din \u201e" + space + "\u201d solicit\u0103 s\u0103 vizualizeze analizele dumneavoastr\u0103 de \xeenv\u0103\u021bare.\n\nDac\u0103 sunte\u021bi de acord, ei vor putea s\u0103 vizualizeze:\n    \u2022 vocabularul total\n    \u2022 conceptele gramaticale totale\n    \u2022 totalul sesiunilor de activitate finalizate\n    \u2022 conceptele gramaticale specifice utilizate, corect \u0219i incorect\n\nEi nu vor putea s\u0103 vizualizeze:\n    \u2022 mesajele din chat-uri \xeen afara cursului\n    \u2022 lista de vocabular";
+      return "Zahtevajo admini: " + admin + " \n\nAdmini iz \u201c" + space + "\u201d zahtevajo ogled va\u0161ih analitik u\u010denja.\n\n\u010ce se strinjate, bodo lahko videli va\u0161e:\n    \u2022 skupno besedi\u0161\u010de\n    \u2022 skupne slovni\u010dne koncepte\n    \u2022 skupno \u0161tevilo zaklju\u010denih aktivnosti\n    \u2022 specifi\u010dne slovni\u010dne koncepte, uporabljene pravilno in nepravilno\n\nNe bodo mogli videti va\u0161ih:\n    \u2022 sporo\u010dil v klepetih zunaj te\u010daja\n    \u2022 seznama besed";
     },
     get$adminRequestedAccess() {
-      return "Administratorii au solicitat s\u0103 vad\u0103 analizele dvs.";
+      return "Administratorji so zaprosili za ogled va\u0161ih analiz.";
     },
     lastUpdated$1(time) {
-      return "Actualizat\n" + time;
+      return "Posodobljeno\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Totul finalizat!";
+      return "Vse je kon\u010dano!";
     },
     get$endForAll() {
-      return "Se \xeencheie pentru to\u021bi";
+      return "Kon\u010daj za vse";
     },
     get$newCourse() {
-      return "Curs nou";
+      return "Nov te\u010daj";
     },
     numModules$1(num) {
-      return "" + num + " module";
+      return "" + num + " modulov";
     },
     get$coursePlan() {
-      return "Plan de curs";
+      return "Na\u010drt te\u010daja";
     },
     get$editCourseLater() {
-      return "Po\u021bi edita titlul, descrierile \u0219i imaginea cursului mai t\xe2rziu.";
+      return "Lahko kasneje uredite naslov predloge, opise in sliko te\u010daja.";
     },
     get$newCourseAccess() {
-      return "\xcen mod implicit, cursurile sunt private \u0219i necesit\u0103 aprobarea administratorului pentru a te al\u0103tura. Po\u021bi edita aceste set\u0103ri oric\xe2nd.";
+      return "Privzeto so te\u010daji zasebni in zahtevajo odobritev administratorja za vstop. Te nastavitve lahko kadar koli uredite.";
     },
     get$createCourse() {
-      return "Creeaz\u0103 curs";
+      return "Ustvari te\u010daj";
     },
     get$stats() {
-      return "Statistici";
+      return "Statistika";
     },
     get$createGroupChat() {
-      return "Creeaz\u0103 chat de grup";
+      return "Ustvari skupinski klepet";
     },
     get$editCourse() {
-      return "Editeaz\u0103 cursul";
+      return "Uredi te\u010daj";
     },
     get$inviteDesc() {
-      return "Prin nume de utilizator, cod sau link";
+      return "Po uporabni\u0161kem imenu, po kodi ali povezavi";
     },
     get$editCourseDesc() {
-      return "Aici po\u021bi edita titlul, descrierea \u0219i altele ale cursului.";
+      return "Tukaj lahko uredite naslov te\u010daja, opis itd.";
     },
     get$permissionsDesc() {
-      return "Seteaz\u0103 permisiuni precum cine poate invita utilizatori, trimite mesaje, crea chat-uri etc.";
+      return "Nastavite dovoljenja, kot so kdo lahko povabi uporabnike, po\u0161lje sporo\u010dila, ustvari klepete itd.";
     },
     get$accessDesc() {
-      return "Po\u021bi face cursul t\u0103u deschis lumii! Sau, \xeel po\u021bi face privat \u0219i sigur.";
+      return "Lahko naredite svoj te\u010daj odprt za svet! Ali pa, naredite svoj te\u010daj zaseben in varen.";
     },
     get$createGroupChatDesc() {
-      return "\xcen timp ce sesiunile de activitate \xeencep \u0219i se termin\u0103, chat-urile de grup vor r\u0103m\xe2ne deschise pentru comunicare de rutin\u0103.";
+      return "Medtem ko se aktivnosti za\u010dnejo in kon\u010dajo, bodo skupinski klepeti ostali odprti za rutinsko komunikacijo.";
     },
     get$deleteDesc() {
-      return "Doar administratorii pot \u0219terge un curs. Aceasta este o ac\u021biune distructiv\u0103 care elimin\u0103 to\u021bi utilizatorii \u0219i \u0219terge toate chat-urile selectate din curs. Procedeaz\u0103 cu precau\u021bie.";
+      return "Samo skrbniki lahko izbri\u0161ejo te\u010daj. To je uni\u010dujo\u010da dejanje, ki odstrani vse uporabnike in izbri\u0161e vse izbrane klepete znotraj te\u010daja. Bodite previdni.";
     },
     get$noCourseFound() {
-      return "Oh, acest curs are nevoie de un plan!\n\nPlanurile de curs sunt o succesiune de subiecte \u0219i activit\u0103\u021bi de conversa\u021bie.";
+      return "O, ta te\u010daj potrebuje na\u010drt!\n\nNa\u010drti te\u010daja so zaporedje tem in dejavnosti pogovorov.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " al\u021bii";
+      return "+ " + num + " drugih";
     },
     get$directMessages() {
-      return "Mesaje directe";
+      return "Neposredna sporo\u010dila";
     },
     get$whatNow() {
-      return "Ce urmeaz\u0103?";
+      return "Kaj zdaj?";
     },
     get$chooseNextActivity() {
-      return "Alege urm\u0103toarea activitate!";
+      return "Izberi svojo naslednjo dejavnost!";
     },
     get$letsGo() {
-      return "Hai s\u0103 \xeencepem";
+      return "Gremo";
     },
     get$chooseRole() {
-      return "Alege un rol!";
+      return "Izberi vlogo!";
     },
     get$chooseRoleToParticipate() {
-      return "Alege un rol pentru a participa!";
+      return "Izberi vlogo za sodelovanje!";
     },
     waitingToFillRole$1(num) {
-      return "A\u0219tept s\u0103 completez " + num + " roluri...";
+      return "\u010cakanje na zasedbo " + num + " vlog...";
     },
     get$pingParticipants() {
-      return "Trimite notific\u0103ri participan\u021bilor la curs";
+      return "Po\u0161lji opozorilo udele\u017eencem te\u010daja";
     },
     get$playWithBot() {
-      return "Joac\u0103 cu Pangea Bot";
+      return "Igraj z Pangea Botom";
     },
     get$waitNotDone() {
-      return "A\u0219teapt\u0103, nu am terminat!";
+      return "Po\u010dakaj, \u0161e nisem kon\u010dal!";
     },
     get$waitingForOthersToFinish() {
-      return "A\u0219tept ca ceilal\u021bi s\u0103 termine...";
+      return "\u010cakam, da ostali zaklju\u010dijo...";
     },
     get$generatingSummary() {
-      return "Analiz\u0103m chat-ul \u0219i gener\u0103m rezultate";
+      return "Analiziram klepet in ustvarjam rezultate";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " caut\u0103 utilizatori pentru a se al\u0103tura sesiunii de activitate \xeen " + room;
+      return user + " i\u0161\u010de uporabnike za sodelovanje v aktivnosti v " + room;
     },
     get$courseName() {
-      return "Numele cursului";
+      return "Ime te\u010daja";
     },
     get$createNewCourse() {
-      return "Curs nou";
+      return "Nov te\u010daj";
     },
     goToCourse$1(course) {
-      return "Mergi la curs: " + course;
+      return "Pojdi na te\u010daj: " + course;
     },
     get$startNewSession() {
-      return "\xcencepe o sesiune nou\u0103";
+      return "Za\u010dni novo sejo";
     },
     get$joinOpenSession() {
-      return "Particip\u0103 la sesiune deschis\u0103";
+      return "Pridru\u017ei se odprti seji";
     },
     get$activityNotFound() {
-      return "Activitate neg\u0103sit\u0103";
+      return "Aktivnosti ni bilo mogo\u010de najti";
     },
     get$levelUp() {
-      return "Nivel superior";
+      return "Nadgradi raven";
     },
     get$myActivities() {
-      return "Activit\u0103\u021bile mele";
+      return "Moje dejavnosti";
     },
     get$openToJoin() {
-      return "Deschis pentru participare";
+      return "Odprto za pridru\u017eitev";
     },
     get$activityDone() {
-      return "Activitate finalizat\u0103!";
+      return "Dejavnost zaklju\u010dena!";
     },
     get$promoCodeInfo() {
-      return "Codurile promo\u021bionale pot fi introduse pe pagina urm\u0103toare";
+      return "Kodo za promocijo lahko vnesete na naslednji strani";
     },
     get$editsComingSoon() {
-      return "Func\u021bia de editare a ora\u0219elor \u0219i activit\u0103\u021bilor va fi disponibil\u0103 \xeen cur\xe2nd.";
+      return "Funkcija za urejanje mest in dejavnosti bo kmalu na voljo.";
     },
     get$editing() {
-      return "Editare";
+      return "Urejanje";
     },
     get$activityNeedsOneMember() {
-      return "Oho! Aceast\u0103 activitate are nevoie de \xeenc\u0103 o persoan\u0103.";
+      return "Uho! Ta dejavnost potrebuje \u0161e 1 osebo.";
     },
     activityNeedsMembers$1(num) {
-      return "Oho! Aceast\u0103 activitate are nevoie de " + num + " persoane \xeen plus.";
+      return "Uho! Ta dejavnost potrebuje \u0161e " + num + " ljudi.";
     },
     get$inviteFriendsToCourse() {
-      return "Invit\u0103 prieteni la cursul meu";
+      return "Vabite prijatelje na moj te\u010daj";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Aboneaz\u0103-te pentru a debloca rezumatele activit\u0103\u021bilor";
+      return "Naro\u010dite se na odklepanje povzetkov dejavnosti";
     },
     get$subscribeToUnlockDefinitions() {
-      return "Aboneaz\u0103-te pentru a debloca defini\u021biile";
+      return "Naro\u010dite se na odklepanje definicij";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Aboneaz\u0103-te pentru a debloca transcrierile";
+      return "Naro\u010dite se na odklepanje prepisov";
     },
     get$pingSent() {
-      return "\ud83d\udd14 Ping pentru curs trimis! \ud83d\udd14";
+      return "\ud83d\udd14 Po\u0161iljanje obvestila o te\u010daju! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "Titlul cursului";
+      return "Naslov te\u010daja";
     },
     get$courseDesc() {
-      return "Descrierea cursului";
+      return "Opis te\u010daja";
     },
     get$courseSavedSuccessfully() {
-      return "Curs salvat cu succes";
+      return "Te\u010daj je bil uspe\u0161no shranjen";
     },
     get$addCoursePlan() {
-      return "Adaug\u0103 un plan de curs";
+      return "Dodaj na\u010drt te\u010daja";
     },
     get$activityStatsButtonInstruction() {
-      return "Click aici pentru a vedea statisticile activit\u0103\u021bii \u0219i pentru a \xeenchide activitatea c\xe2nd termini";
+      return "Kliknite tukaj za ogled statistik va\u0161e dejavnosti in za zapiranje dejavnosti po kon\u010danem delu";
     },
     get$readingAnalyticsDesc() {
-      return "Click pe practic\u0103 pentru fiecare mesaj pentru activit\u0103\u021bi de citire.";
+      return "Kliknite na prakso na vsaki sporo\u010dilu za dejavnosti branja.";
     },
     get$speakingAnalyticsDesc() {
-      return " \xcenregistreaz\u0103 mesaje vocale pentru practic\u0103 de vorbire.";
+      return "Posnemite glasovne sporo\u010dila za vaje govora.";
     },
     get$audioAnalyticsDesc() {
-      return "Click pe practic\u0103 pentru fiecare mesaj pentru activit\u0103\u021bi de ascultare.";
+      return "Kliknite na prakso na vsaki sporo\u010dilu za dejavnosti poslu\u0161anja.";
     },
     get$loginToAccount() {
-      return "Autentific\u0103-te \xeen contul meu";
+      return "Prijavite se v svoj ra\u010dun";
     },
     get$appDescription() {
-      return "\xcenva\u021b\u0103 o limb\u0103\n\xeen timp ce trimi\u021bi mesaje prietenilor.";
+      return "U\u010dite se jezika\nmedtem ko po\u0161iljate sporo\u010dila prijateljem.";
     },
     get$languages(_) {
-      return "Limbi";
+      return "Jeziki";
     },
     get$chooseLanguage() {
-      return "Alege\u021bi o limb\u0103 \u021bint\u0103.";
+      return "Izberite ciljni jezik.";
     },
     get$startOwn() {
-      return "\xcencepe propriul meu";
+      return "Za\u010dni svojo lastno";
     },
     get$joinCourseDesc() {
-      return "Fiecare curs are 8-10 subiecte secven\u021biale cu o gam\u0103 de activit\u0103\u021bi de \xeenv\u0103\u021bare a limbajului bazate pe sarcini.";
+      return "Vsak te\u010daj ima 8-10 zaporednih tem z vrsto dejavnosti za u\u010denje jezika na podlagi nalog.";
     },
     get$courseCodeHint() {
-      return "Codul sau linkul c\u0103l\u0103toriei";
+      return "Potovalna \u0161ifra ali povezava";
     },
     get$signupOption() {
-      return "Cum vrei s\u0103 te \xeenscrii?";
+      return "Kako se \u017eeli\u0161 prijaviti?";
     },
     get$withApple() {
-      return "Cu Apple";
+      return "Z Apple-om";
     },
     get$withGoogle() {
-      return "Cu Google";
+      return "Z Google-om";
     },
     get$withEmail() {
-      return "Cu Email";
+      return "Z e-po\u0161to";
     },
     get$createAccount() {
-      return "Creeaz\u0103 cont";
+      return "Ustvari ra\u010dun";
     },
     get$loginWithEmail() {
-      return "Autentificare cu email";
+      return "Prijava z e-po\u0161to";
     },
     get$usernameOrEmail() {
-      return "Nume de utilizator sau email";
+      return "Uporabni\u0161ko ime ali e-po\u0161ta";
     },
     get$email() {
-      return "Email";
+      return "E-po\u0161ta";
     },
     get$forgotPassword() {
-      return "Ai uitat parola?";
+      return "Pozabljeno geslo?";
     },
     get$writingAnalyticsDesc() {
-      return "Trimite mesaje pentru a exersa scrierea.";
+      return "Po\u0161iljajte sporo\u010dila za vadbo pisanja.";
     },
     get$endActivity() {
-      return "\xcencheie activitatea";
+      return "Kon\u010daj dejavnost";
     },
     get$allLanguages() {
-      return "Toate limbile";
+      return "Vsi jeziki";
     },
     get$chatListTooltip() {
-      return "Aici vei g\u0103si mesajele tale directe! F\u0103 clic pe avatarul oric\u0103rui utilizator \u0219i \u201e\xeencepe conversa\u021bia\u201d pentru a trimite un mesaj direct.";
+      return "Tukaj boste na\u0161li svoja neposredna sporo\u010dila! Kliknite na avatar katerega koli uporabnika in izberite \xbbza\u010dni pogovor\xab, da po\u0161ljete DM.";
     },
     get$directMessageBotTitle() {
-      return "Mesaj direct Pangea Bot";
+      return "Neposredno sporo\u010dilo Pangea Bot";
     },
     get$feedbackTitle() {
-      return "Feedback despre activitate";
+      return "Povratne informacije o dejavnosti";
     },
     get$feedbackRespDesc() {
-      return "Verific\u0103 m\xe2ine pentru actualiz\u0103ri ale activit\u0103\u021bii.";
+      return "Vrnite se jutri za posodobitve aktivnosti.";
     },
     get$feedbackHint() {
-      return "Feedback-ul t\u0103u";
+      return "Va\u0161e povratne informacije";
     },
     get$feedbackButton() {
-      return "Trimite feedback";
+      return "Po\u0161lji povratne informacije";
     },
     get$directMessageBotDesc() {
-      return "Vorbitul cu oameni este mai distractiv, dar... AI este \xeentotdeauna preg\u0103tit!";
+      return "Govorenje z ljudmi je bolj zabavno, a... AI je vedno pripravljen!";
     },
     get$inviteYourFriends() {
-      return "Invit\u0103-\u021bi prietenii";
+      return "Vabite svoje prijatelje";
     },
     get$playWithAI() {
-      return "Joac\u0103 cu AI pentru moment";
+      return "Za zdaj igrajte z AI-jem";
     },
     get$courseStartDesc() {
-      return "Pangea Bot este gata oric\xe2nd!\n\n...dar \xeenv\u0103\u021barea este mai bun\u0103 cu prietenii!";
+      return "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje u\u010diti se s prijatelji!";
     },
     get$activityDropdownDesc() {
-      return "C\xe2nd termini aceast\u0103 activitate, f\u0103 clic mai jos";
+      return "Ko kon\u010date s to aktivnostjo, kliknite spodaj";
     },
     get$languageMismatchTitle() {
-      return "Incompatibilitate de limbaj";
+      return "Neujemanje jezika";
     },
     get$emptyChatSearch() {
-      return "Nu s-au g\u0103sit mesaje directe sau chat-uri. Asigur\u0103-te c\u0103 c\u0103utarea ta este scris\u0103 corect.";
+      return "Ni neposrednih sporo\u010dil ali klepetov. Prepri\u010dajte se, da je va\u0161e iskanje pravilno napisano.";
     },
     get$languageMismatchDesc() {
-      return "Limba \u021bint\u0103 nu se potrive\u0219te cu limba acestei activit\u0103\u021bi. Vrei s\u0103 actualizezi limba \u021bint\u0103?";
+      return "Va\u0161 ciljni jezik se ne ujema z jezikom te aktivnosti. Posodobiti ciljni jezik?";
     },
     get$reportWordIssueTooltip() {
-      return "Raporteaz\u0103 problem\u0103 cu informa\u021bia cuv\xe2ntului";
+      return "Prijavi te\u017eavo z informacijami o besedi";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Feedback despre Informa\u021bia Cuv\xe2ntului";
+      return "Povratne informacije o informacijah o besedi";
     },
     get$noPublicCoursesFound() {
-      return "Nu au fost g\u0103site cursuri publice. Vrei s\u0103 creezi unul?";
+      return "Ni najdenih javnih te\u010dajev. Bi \u017eeleli ustvariti enega?";
     },
     get$noCourseTemplatesFound() {
-      return "Nu am putut g\u0103si cursuri pentru limba ta \u021bint\u0103. \xcentre timp, po\u021bi conversa cu Pangea Bot \u0219i verifica mai t\xe2rziu pentru mai multe cursuri.";
+      return "Nismo mogli najti te\u010dajev za va\u0161 ciljni jezik. Medtem lahko klepetate z Pangea Botom in kasneje preverite ve\u010d te\u010dajev.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot r\u0103spunde cu \xeent\xe2rziere. Te rug\u0103m s\u0103 \xeencerci din nou mai t\xe2rziu sau s\u0103 invi\u021bi un prieten.";
+      return "Pangea Bot se odziva nekoliko po\u010dasi. Poskusite znova kasneje ali povabite prijatelja.";
     },
     get$unsubscribedResponseError() {
-      return "Aceast\u0103 func\u021bie necesit\u0103 abonament";
+      return "Ta funkcija zahteva naro\u010dnino";
     },
     get$leaveDesc() {
-      return "P\u0103r\u0103se\u0219te acest spa\u021biu \u0219i toate chat-urile din el";
+      return "Zapusti ta prostor in vse klepete znotraj njega";
     },
     get$selectAll() {
-      return "Selecteaz\u0103 tot";
+      return "Izberi vse";
     },
     get$deselectAll(_) {
-      return "Deselecteaz\u0103 tot";
+      return "Prekli\u010di izbor vseh";
     },
     get$shareCourse() {
-      return "Partajeaz\u0103 cursul";
+      return "Deli te\u010daj";
     },
     get$addCourse() {
-      return "Adaug\u0103 un curs";
+      return "Dodaj te\u010daj";
     },
     get$joinPublicCourse() {
-      return "Al\u0103tur\u0103-te cursului public";
+      return "Pridru\u017ei se javnemu te\u010daju";
     },
     get$vocabLevelsDesc() {
-      return "Aici vor fi plasate cuvintele de vocabular odat\u0103 ce le-ai nivelat!";
+      return "Tukaj bodo \u0161le besede za besednjak, ko jih boste nadgradili!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "Acestea sunt activit\u0103\u021bile tale salvate pentru revizuire \u0219i practic\u0103.";
+      return "To so va\u0161e shranjene dejavnosti za pregled in vadbo.";
     },
     get$numSavedActivities() {
-      return "Num\u0103rul de activit\u0103\u021bi salvate";
+      return "\u0160tevilo shranjenih dejavnosti";
     },
     get$saveActivityTitle() {
-      return "Salveaz\u0103 activitatea";
+      return "Shrani dejavnost";
     },
     get$saveActivityDesc() {
-      return "Bravo! Salveaz\u0103 aceast\u0103 activitate pentru revizuire \u0219i practic\u0103 ulterioar\u0103";
+      return "Dobra opravljena! Shranite to dejavnost za kasnej\u0161i pregled in vadbo";
     },
     get$levelInfoTooltip() {
-      return "Aici po\u021bi vedea toate punctele pe care le-ai c\xe2\u0219tigat \u0219i cum!";
+      return "Tukaj lahko vidite vse to\u010dke, ki ste jih zaslu\u017eili, in kako!";
     },
     get$alreadyInCourseWithID() {
-      return "E\u0219ti deja \xeentr-un curs cu acest plan. Vrei s\u0103 creezi un curs cu acela\u0219i plan sau s\u0103 mergi la cursul existent?";
+      return "\u017de ste v te\u010daju s tem na\u010drtom. Ali \u017eelite ustvariti te\u010daj s istim na\u010drtom ali iti na obstoje\u010di te\u010daj?";
     },
     get$goToExistingCourse() {
-      return "Mergi la cursul existent";
+      return "Pojdi na obstoje\u010di te\u010daj";
     },
     get$emojiView() {
-      return "Vizualizare emoji";
+      return "Pogled emojijev";
     },
     get$feedbackDialogDesc() {
-      return "Fac \u0219i eu gre\u0219eli! Ai ceva care s\u0103 m\u0103 ajute s\u0103 m\u0103 \xeembun\u0103t\u0103\u021besc?";
+      return "Tudi jaz delam napake! Kaj lahko storim, da se izbolj\u0161am?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Contactul a fost invitat la curs";
+      return "Kontakt je bil povabljen na te\u010daj";
     },
     get$inviteFriends() {
-      return "Invit\u0103 prieteni";
+      return "Vabite prijatelje";
     },
     get$activityStatsButtonTooltip() {
-      return "Informa\u021bii despre activitate";
+      return "Informacije o dejavnosti";
     },
     get$allow(_) {
-      return "Permite";
+      return "Dovoli";
     },
     get$deny() {
-      return "Refuz\u0103";
+      return "Zavrni";
     },
     get$enabledRenewal() {
-      return "Activeaz\u0103 re\xeennoirea abonamentului";
+      return "Omogo\u010di obnavljanje naro\u010dnine";
     },
     get$subscriptionEndsOn() {
-      return "Abonamentul se \xeencheie pe";
+      return "Naro\u010dnina se kon\u010da";
     },
     get$subscriptionRenewsOn() {
-      return "Abonamentul se re\xeennoie\u0219te pe";
+      return "Naro\u010dnina se obnavlja";
     },
     get$waitForSubscriptionChanges() {
-      return "Modific\u0103rile la abonamentul t\u0103u pot dura c\xe2teva momente pentru a se reflecta \xeen aplica\u021bie.";
+      return "Spremembe va\u0161e naro\u010dnine lahko trajajo trenutek, da se odra\u017eajo v aplikaciji.";
     },
     get$subscribeReadingAssistance() {
-      return "Aboneaz\u0103-te pentru a debloca instrumentele de mesagerie";
+      return "Naro\u010dite se za odklepanje orodij za sporo\u010danje";
     },
     get$aceDisplayName() {
       return "Achinese";
@@ -4583,13 +4583,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Alur";
     },
     get$amDisplayName() {
-      return "Amharic\u0103";
+      return "Amhar\u0161\u010dina";
     },
     get$arDisplayName() {
-      return "Arab\u0103";
+      return "Arab\u0161\u010dina";
     },
     get$asDisplayName() {
-      return "Asamese";
+      return "Assamese";
     },
     get$awaDisplayName() {
       return "Awadhi";
@@ -4598,19 +4598,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aymara";
     },
     get$azDisplayName() {
-      return "Azerbaidjan";
+      return "Azerbejd\u017ean\u0161\u010dina";
     },
     get$baDisplayName() {
-      return "Ba\u0219chir";
+      return "Ba\u0161kir\u0161\u010dina";
     },
     get$banDisplayName() {
-      return "Balinenez";
+      return "Balin\xe9ska";
     },
     get$bbcDisplayName() {
       return "Batak Toba";
     },
     get$beDisplayName() {
-      return "Bielorus";
+      return "Beloru\u0161\u010dina";
     },
     get$bemDisplayName() {
       return "Bemba";
@@ -4619,7 +4619,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Betawi";
     },
     get$bgDisplayName() {
-      return "Bulg\u0103reasc\u0103";
+      return "Bolgar\u0161\u010dina";
     },
     get$bhoDisplayName() {
       return "Bhojpuri";
@@ -4631,19 +4631,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bambara";
     },
     get$bnDisplayName() {
-      return "Bengalez\u0103";
+      return "Bengal\u0161\u010dina";
     },
     get$bnBDDisplayName() {
-      return "Bengalez\u0103 (Bangladesh)";
+      return "Bengal\u0161\u010dina (Banglade\u0161)";
     },
     get$bnINDisplayName() {
-      return "Bengalez\u0103 (India)";
+      return "Bengal\u0161\u010dina (Indija)";
     },
     get$brDisplayName() {
-      return "Breton\u0103";
+      return "Breton\u0161\u010dina";
     },
     get$bsDisplayName() {
-      return "Bosniac\u0103";
+      return "Bo\u0161nja\u0161\u010dina";
     },
     get$btsDisplayName() {
       return "Batak Simalungun";
@@ -4652,10 +4652,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "Buriat";
+      return "Buriat\u0161\u010dina";
     },
     get$caDisplayName() {
-      return "Catalan\u0103";
+      return "Katalon\u0161\u010dina";
     },
     get$cebDisplayName() {
       return "Cebuano";
@@ -4667,34 +4667,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mari";
     },
     get$ckbDisplayName() {
-      return "Kurd\u0103 Central\u0103";
+      return "Centralni kurdski";
     },
     get$cnhDisplayName() {
       return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "Corsican\u0103";
+      return "Korzikan\u0161\u010dina";
     },
     get$crhDisplayName() {
-      return "Turc\u0103 Crimeean\u0103";
+      return "Krimsko-tur\u0161ki";
     },
     get$crsDisplayName() {
-      return "Creol\u0103 Seselwa Francez\u0103";
+      return "Seselwa kreolski francoski";
     },
     get$csDisplayName() {
-      return "Ceh\u0103";
+      return "\u010ce\u0161\u010dina";
     },
     get$cvDisplayName() {
-      return "Ciuva\u0219\u0103";
+      return "\u010cuva\u0161";
     },
     get$cyDisplayName() {
-      return "Walez\u0103";
+      return "Wel\u0161\u010dina";
     },
     get$daDisplayName() {
-      return "Danez\u0103";
+      return "Dansko";
     },
     get$deDisplayName() {
-      return "German\u0103";
+      return "Nem\u0161\u010dina";
     },
     get$dinDisplayName() {
       return "Dinka";
@@ -4712,82 +4712,82 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ewe";
     },
     get$enDisplayName() {
-      return "Englez\u0103";
+      return "Angle\u0161\u010dina";
     },
     get$enAUDisplayName() {
-      return "Englez\u0103 (Australia)";
+      return "Angle\u0161\u010dina (Avstralija)";
     },
     get$enGBDisplayName() {
-      return "Englez\u0103 (Regatul Unit)";
+      return "Angle\u0161\u010dina (VB)";
     },
     get$enINDisplayName() {
-      return "Englez\u0103 (India)";
+      return "Angle\u0161\u010dina (Indija)";
     },
     get$enUSDisplayName() {
-      return "Englez\u0103 (SUA)";
+      return "Angle\u0161\u010dina (ZDA)";
     },
     get$eoDisplayName() {
       return "Esperanto";
     },
     get$esDisplayName() {
-      return "Spaniol\u0103";
+      return "\u0160pan\u0161\u010dina";
     },
     get$esESDisplayName() {
-      return "Spaniol\u0103 (Spania)";
+      return "\u0160pan\u0161\u010dina (\u0160panija)";
     },
     get$esMXDisplayName() {
-      return "Spaniol\u0103 (Mexic)";
+      return "\u0160pan\u0161\u010dina (Mehika)";
     },
     get$euDisplayName() {
-      return "Basc\u0103";
+      return "Baskov\u0161\u010dina";
     },
     get$faDisplayName() {
-      return "Persan\u0103";
+      return "Perzij\u0161\u010dina";
     },
     get$ffDisplayName() {
       return "Fulah";
     },
     get$fiDisplayName() {
-      return "Finlandez\u0103";
+      return "Fin\u0161\u010dina";
     },
     get$filDisplayName() {
-      return "Filipinez";
+      return "Filipino";
     },
     get$fjDisplayName() {
-      return "Fijian";
+      return "Fid\u017eijski";
     },
     get$foDisplayName() {
       return "Faroese";
     },
     get$frDisplayName() {
-      return "Francez\u0103";
+      return "Franco\u0161\u010dina";
     },
     get$frCADisplayName() {
-      return "Francez\u0103 (Canada)";
+      return "Franco\u0161\u010dina (Kanada)";
     },
     get$frFRDisplayName() {
-      return "Francez\u0103 (Fran\u021ba)";
+      return "Franco\u0161\u010dina (Francija)";
     },
     get$fyDisplayName() {
-      return "Frisian de Vest";
+      return "Zahodni Frisian";
     },
     get$gaDisplayName() {
-      return "Irlandez\u0103";
+      return "Ir\u0161\u010dina";
     },
     get$gaaDisplayName() {
       return "Ga";
     },
     get$gdDisplayName() {
-      return "Gaelic Sco\u021bian";
+      return "\u0160kotska gaili\u010d\u010dina";
     },
     get$glDisplayName() {
-      return "Galez\u0103";
+      return "Galicijan\u0161\u010dina";
     },
     get$gnDisplayName() {
       return "Guarani";
     },
     get$gomDisplayName() {
-      return "Konkani Goan";
+      return "Goanski konkani";
     },
     get$guDisplayName() {
       return "Gujarati";
@@ -4796,16 +4796,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hausa";
     },
     get$hawDisplayName() {
-      return "Hawaian\u0103";
+      return "Havaj\u0161\u010dina";
     },
     get$heDisplayName() {
-      return "Ebraic\u0103";
+      return "Hebrej\u0161\u010dina";
     },
     get$hiDisplayName() {
       return "Hindi";
     },
     get$hilDisplayName() {
-      return "Hiligaynon";
+      return "Hiligajnon";
     },
     get$hmnDisplayName() {
       return "Hmong";
@@ -4814,22 +4814,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "Croat\u0103";
+      return "Hrva\u0161ki";
     },
     get$hrxDisplayName() {
       return "Hunsrik";
     },
     get$htDisplayName() {
-      return "Creol\u0103 haitian\u0103";
+      return "Haitijska kreol\u0161\u010dina";
     },
     get$huDisplayName() {
-      return "Maghiar\u0103";
+      return "Mad\u017ear\u0161\u010dina";
     },
     get$hyDisplayName() {
-      return "Armean\u0103";
+      return "Armen\u0161\u010dina";
     },
     get$idDisplayName() {
-      return "Indonezian\u0103";
+      return "Indonezij\u0161\u010dina";
     },
     get$igDisplayName() {
       return "Igbo";
@@ -4838,31 +4838,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Iloko";
     },
     get$isDisplayName() {
-      return "Icelandic\u0103";
+      return "Island\u0161\u010dina";
     },
     get$itDisplayName() {
-      return "Italian\u0103";
+      return "Italijanski";
     },
     get$jaDisplayName() {
-      return "Japonez\u0103";
+      return "Japon\u0161\u010dina";
     },
     get$jvDisplayName() {
-      return "Javanese";
+      return "Javanski";
     },
     get$kaDisplayName() {
-      return "Georgian\u0103";
+      return "Gruzijski";
     },
     get$kkDisplayName() {
-      return "Kazah";
+      return "Kazah\u0161\u010dina";
     },
     get$kmDisplayName() {
-      return "Khmer";
+      return "Khmer\u0161\u010dina";
     },
     get$knDisplayName() {
       return "Kannada";
     },
     get$koDisplayName() {
-      return "Coreean\u0103";
+      return "Korej\u0161\u010dina";
     },
     get$kokDisplayName() {
       return "Konkani";
@@ -4871,34 +4871,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Krio";
     },
     get$ksDisplayName() {
-      return "Kashmiri";
+      return "Ka\u0161mirski";
     },
     get$ktuDisplayName() {
-      return "Kituba (Republica Democratic\u0103 Congo)";
+      return "Kituba (Demokrati\u010dna republika Kongo)";
     },
     get$kuDisplayName() {
-      return "Kurd\u0103";
+      return "Kurd\u0161\u010dina";
     },
     get$kyDisplayName() {
-      return "K\xe2rg\xe2z";
+      return "Kirgiz\u0161\u010dina";
     },
     get$laDisplayName() {
-      return "Latin\u0103";
+      return "Latin\u0161\u010dina";
     },
     get$lbDisplayName() {
-      return "Luxemburghez\u0103";
+      return "Luksembur\u0161\u010dina";
     },
     get$lgDisplayName() {
       return "Ganda";
     },
     get$liDisplayName() {
-      return "Limburghez\u0103";
+      return "Limbur\u0161\u010dina";
     },
     get$lijDisplayName() {
-      return "Ligurian\u0103";
+      return "Ligur\u0161\u010dina";
     },
     get$lmoDisplayName() {
-      return "Lombard\u0103";
+      return "Lombard\u0161\u010dina";
     },
     get$lnDisplayName() {
       return "Lingala";
@@ -4907,19 +4907,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Lao";
     },
     get$ltDisplayName() {
-      return "Lituanian\u0103";
+      return "Litov\u0161\u010dina";
     },
     get$ltgDisplayName() {
-      return "Latgalian\u0103";
+      return "Latgale";
     },
     get$luoDisplayName() {
-      return "Luo (Kenia \u0219i Tanzania)";
+      return "Luo (Kenija in Tanzanija)";
     },
     get$lusDisplayName() {
       return "Mizo";
     },
     get$lvDisplayName() {
-      return "Leton\u0103";
+      return "Latvij\u0161\u010dina";
     },
     get$maiDisplayName() {
       return "Maithili";
@@ -4928,7 +4928,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Makasar";
     },
     get$mgDisplayName() {
-      return "Malga\u0219\u0103";
+      return "Malga\u0161\u010dina";
     },
     get$miDisplayName() {
       return "Maori";
@@ -4937,13 +4937,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "Macedonean\u0103";
+      return "Makedonski";
     },
     get$mlDisplayName() {
-      return "Malayalam";
+      return "Malajalam";
     },
     get$mnDisplayName() {
-      return "Mongol\u0103";
+      return "Mongol\u0161\u010dina";
     },
     get$mniDisplayName() {
       return "Manipuri";
@@ -4952,49 +4952,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Marathi";
     },
     get$msDisplayName() {
-      return "Malay";
+      return "Malaj\u0161\u010dina";
     },
     get$msArabDisplayName() {
-      return "Malay (Arab\u0103)";
+      return "Malaj\u0161\u010dina (arab\u0161\u010dina)";
     },
     get$msMYDisplayName() {
-      return "Malay (Malaysia)";
+      return "Malaj\u0161\u010dina (Malezija)";
     },
     get$mtDisplayName() {
-      return "Maltese";
+      return "Malte\u0161\u010dina";
     },
     get$mwrDisplayName() {
       return "Marwari";
     },
     get$myDisplayName() {
-      return "Birmanez";
+      return "Burmansko";
     },
     get$nanDisplayName() {
       return "Min Nan";
     },
     get$nbDisplayName() {
-      return "Norvegian (Bokm\xe5l)";
+      return "Norve\u0161\u010dina (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "Nepalez";
+      return "Nepal\u0161\u010dina";
     },
     get$newDisplayName() {
       return "Newari";
     },
     get$nlDisplayName() {
-      return "Olandez";
+      return "Nizozem\u0161\u010dina";
     },
     get$nlBEDisplayName() {
-      return "Flamand";
+      return "Flamsko";
     },
     get$noDisplayName() {
-      return "Norvegian";
+      return "Norve\u0161\u010dina";
     },
     get$nrDisplayName() {
-      return "Ndebele de Sud";
+      return "Ju\u017eni Ndebele";
     },
     get$nsoDisplayName() {
-      return "Sotho de Nord";
+      return "Severni Sotho";
     },
     get$nusDisplayName() {
       return "Nuer";
@@ -5003,7 +5003,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nyanja";
     },
     get$ocDisplayName() {
-      return "Occitan";
+      return "Okcitanska";
     },
     get$omDisplayName() {
       return "Oromo";
@@ -5030,19 +5030,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Papiamento";
     },
     get$plDisplayName() {
-      return "Polonez\u0103";
+      return "Polj\u0161\u010dina";
     },
     get$psDisplayName() {
-      return "Pashto";
+      return "Pa\u0161to";
     },
     get$ptDisplayName() {
-      return "Portughez\u0103";
+      return "Portugal\u0161\u010dina";
     },
     get$ptBRDisplayName() {
-      return "Portughez\u0103 (Brazilia)";
+      return "Portugal\u0161\u010dina (Brazilija)";
     },
     get$ptPTDisplayName() {
-      return "Portughez\u0103 (Portugalia)";
+      return "Portugal\u0161\u010dina (Portugalska)";
     },
     get$quDisplayName() {
       return "Quechua";
@@ -5054,28 +5054,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Rundi";
     },
     get$roDisplayName() {
-      return "Rom\xe2n\u0103";
+      return "Romun\u0161\u010dina";
     },
     get$roMDDisplayName() {
-      return "Moldoveneasc\u0103";
+      return "Moldav\u0161\u010dina";
     },
     get$romDisplayName() {
-      return "Romani";
+      return "Rom\u0161\u010dina";
     },
     get$ruDisplayName() {
-      return "Rus\u0103";
+      return "Ru\u0161\u010dina";
     },
     get$rwDisplayName() {
       return "Kinyarwanda";
     },
     get$saDisplayName() {
-      return "Sanskrit";
+      return "Sanskrt";
     },
     get$satDisplayName() {
       return "Santali";
     },
     get$scnDisplayName() {
-      return "Sicilian\u0103";
+      return "Sicilijan\u0161\u010dina";
     },
     get$sdDisplayName() {
       return "Sindhi";
@@ -5090,46 +5090,46 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sinhala";
     },
     get$skDisplayName() {
-      return "Slovac\u0103";
+      return "Slova\u0161\u010dina";
     },
     get$slDisplayName() {
-      return "Sloven\u0103";
+      return "Sloven\u0161\u010dina";
     },
     get$smDisplayName() {
-      return "Samoan\u0103";
+      return "Samoan";
     },
     get$snDisplayName() {
       return "Shona";
     },
     get$soDisplayName() {
-      return "Somalez\u0103";
+      return "Somal\u0161\u010dina";
     },
     get$sqDisplayName() {
-      return "Albanez\u0103";
+      return "Alban\u0161\u010dina";
     },
     get$srDisplayName() {
-      return "S\xe2rbeasc\u0103";
+      return "Srb\u0161\u010dina";
     },
     get$srMEDisplayName() {
-      return "Montenegrin";
+      return "\u010crnogorski";
     },
     get$ssDisplayName() {
-      return "Swati";
+      return "Svati";
     },
     get$stDisplayName() {
-      return "Sotho de Sud";
+      return "Ju\u017eni Sotho";
     },
     get$suDisplayName() {
-      return "Sundanese";
+      return "Sundanski";
     },
     get$svDisplayName() {
-      return "Suedez\u0103";
+      return "\u0160vedski";
     },
     get$swDisplayName() {
-      return "Swahili";
+      return "Svahili";
     },
     get$szlDisplayName() {
-      return "Silezian";
+      return "Silezijski";
     },
     get$taDisplayName() {
       return "Tamil";
@@ -5141,13 +5141,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tetum";
     },
     get$tgDisplayName() {
-      return "Tadjik";
+      return "Tad\u017eik";
     },
     get$thDisplayName() {
-      return "Thailandez";
+      return "Tajski";
     },
     get$tiDisplayName() {
-      return "Tigrinya";
+      return "Tigrinija";
     },
     get$tkDisplayName() {
       return "Turkmen";
@@ -5159,7 +5159,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tswana";
     },
     get$trDisplayName() {
-      return "Turc";
+      return "Tur\u0161ki";
     },
     get$tsDisplayName() {
       return "Tsonga";
@@ -5168,25 +5168,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tatar";
     },
     get$ugDisplayName() {
-      return "Uighur";
+      return "Ujgurski";
     },
     get$ukDisplayName() {
-      return "Ucrainian\u0103";
+      return "Ukrajin\u0161\u010dina";
     },
     get$urDisplayName() {
       return "Urdu";
     },
     get$urINDisplayName() {
-      return "Urdu (India)";
+      return "Urdu (Indija)";
     },
     get$urPKDisplayName() {
       return "Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "Uzbec";
+      return "Uzbe\u0161\u010dina";
     },
     get$viDisplayName() {
-      return "Vietnamez\u0103";
+      return "Vietnam\u0161\u010dina";
     },
     get$wuuDisplayName() {
       return "Wu";
@@ -5195,34 +5195,40 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Xhosa";
     },
     get$yiDisplayName() {
-      return "Yiddish";
+      return "Jidi\u0161";
     },
     get$yoDisplayName() {
-      return "Yoruba";
+      return "Joruba";
     },
     get$yuaDisplayName() {
-      return "Yucatec";
+      return "Jukatek";
     },
     get$yueDisplayName() {
-      return "Cantonese";
+      return "Kantonsko";
     },
     get$yueCNDisplayName() {
-      return "Cantonese (China)";
+      return "Kantonsko (Kitajska)";
     },
     get$yueHKDisplayName() {
-      return "Cantonese (Hong Kong)";
+      return "Kantonsko (Hongkong)";
     },
     get$zhDisplayName() {
-      return "Chinez\u0103";
+      return "Kitaj\u0161\u010dina";
     },
     get$zhCNDisplayName() {
-      return "Chinez\u0103 (Simplificat\u0103)";
+      return "Kitaj\u0161\u010dina (poenostavljena)";
     },
     get$zhTWDisplayName() {
-      return "Chinez\u0103 (Tradi\u021bional\u0103)";
+      return "Kitaj\u0161\u010dina (tradicionalna)";
     },
     get$zuDisplayName() {
       return "Zulu";
+    },
+    get$teacherModeTitle() {
+      return "Na\u010din u\u010ditelja";
+    },
+    get$teacherModeDesc() {
+      return "Preklopi za odklepanje vseh tem in aktivnosti. Samo za skrbnike te\u010daja.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5231,16 +5237,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nRo, C.L10n);
+    _inherit(A.L10nSl, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nRo":{"L10n":[]}}'));
-  var string$ = {
-    V__rug: "V\u0103 rug\u0103m s\u0103 introduce\u021bi o adres\u0103 de email valid\u0103."
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSl":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["Uu9PYYsXF52ru9reSvRBHX+TDJM="] = d.current;
+  d["DYxIoRi9xGpKuqAHFI3+Ly9irHw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

@@ -5236,6 +5236,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$zuDisplayName() {
       return "Zulu";
     },
+    get$teacherModeTitle() {
+      return "Modo Professor";
+    },
+    get$teacherModeDesc() {
+      return string$.Ative_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10445,6 +10451,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$zuDisplayName() {
       return "Zulu";
+    },
+    get$teacherModeTitle() {
+      return "Modo Professor";
+    },
+    get$teacherModeDesc() {
+      return "Ative para desbloquear todos os t\xf3picos e atividades. Somente administrador do curso.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15656,6 +15668,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$zuDisplayName() {
       return "Zulu";
     },
+    get$teacherModeTitle() {
+      return "Modo Professor";
+    },
+    get$teacherModeDesc() {
+      return string$.Ative_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15696,6 +15714,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Assistt_: "Assist\xeancia de tradu\xe7\xe3o e assist\xeancia de gram\xe1tica est\xe3o desativadas.",
     Assistts: "Assist\xeancia de tradu\xe7\xe3o est\xe1 desativada para o curso em que esta conversa est\xe1.",
     Aten__: "Aten\xe7\xe3o! \xc9 necess\xe1rio adicionar o teclado do idioma alvo",
+    Ative_: "Ative para desbloquear todos os t\xf3picos e atividades. Apenas para administradores do curso.",
     Atuali: "Atualize esta sala para a vers\xe3o de sala fornecida",
     Bom_tr: "Bom trabalho! Salve esta atividade para revis\xe3o e pr\xe1tica posterior",
     Cliqueaag: "Clique aqui para atualizar as configura\xe7\xf5es de assist\xeancia de gram\xe1tica",
@@ -15839,7 +15858,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["P3wbIcIOY4QbpZGSWaLMAEvFZiw="] = d.current;
+  d["ouQ7n2kHhQ49tZQiXqfQqJrzJpE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map
