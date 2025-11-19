@@ -19,7 +19,6 @@ import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/utils/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -441,14 +440,14 @@ class HtmlMessage extends StatelessWidget {
                       : PlaceholderAlignment.middle,
               child: Column(
                 children: [
-                  if (token != null &&
-                      overlayController?.selectedMode == SelectMode.emoji)
+                  if (token != null && overlayController != null)
                     TokenEmojiButton(
-                      token: token,
-                      eventId: event.eventId,
+                      enabled: token.lemma.saveVocab,
+                      emoji: token.vocabConstructID.userSetEmoji.firstOrNull,
                       targetId: overlayController!.tokenEmojiPopupKey(token),
                       onSelect: () =>
                           overlayController!.showTokenEmojiPopup(token),
+                      selectModeNotifier: overlayController!.selectedMode,
                     ),
                   if (renderer.showCenterStyling && token != null)
                     TokenPracticeButton(
@@ -942,11 +941,11 @@ class HtmlMessage extends StatelessWidget {
               : PlaceholderAlignment.middle,
           child: Column(
             children: [
-              if (node.localName == 'nontoken' &&
-                  overlayController?.selectedMode == SelectMode.emoji)
+              if (node.localName == 'nontoken' && overlayController != null)
+                // Use TokenEmojiButton to ensure consistent vertical alignment for non-token elements (e.g., emojis) in practice mode.
                 TokenEmojiButton(
-                  token: null,
-                  eventId: event.eventId,
+                  selectModeNotifier: overlayController!.selectedMode,
+                  enabled: false,
                 ),
               RichText(
                 text: TextSpan(

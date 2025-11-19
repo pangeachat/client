@@ -22,8 +22,6 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   final double? iconSize;
   final Color? iconColor;
 
-  final bool enabled;
-
   final VoidCallback? onTranscriptionFetched;
 
   const PhoneticTranscriptionWidget({
@@ -33,7 +31,6 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
     this.style,
     this.iconSize,
     this.iconColor,
-    this.enabled = true,
     this.onTranscriptionFetched,
   });
 
@@ -141,86 +138,79 @@ class _PhoneticTranscriptionWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return IgnorePointer(
-      ignoring: !widget.enabled,
-      child: HoverBuilder(
-        builder: (context, hovering) {
-          return GestureDetector(
-            onTap: _handleAudioTap,
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 150),
-              decoration: BoxDecoration(
-                color: hovering
-                    ? Colors.grey.withAlpha((0.2 * 255).round())
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: CompositedTransformTarget(
-                link: MatrixState.pAnyState
+    return HoverBuilder(
+      builder: (context, hovering) {
+        return GestureDetector(
+          onTap: _handleAudioTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            decoration: BoxDecoration(
+              color: hovering
+                  ? Colors.grey.withAlpha((0.2 * 255).round())
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(6),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: CompositedTransformTarget(
+              link: MatrixState.pAnyState
+                  .layerLinkAndKey("phonetic-transcription-${widget.text}")
+                  .link,
+              child: Row(
+                key: MatrixState.pAnyState
                     .layerLinkAndKey("phonetic-transcription-${widget.text}")
-                    .link,
-                child: Row(
-                  key: MatrixState.pAnyState
-                      .layerLinkAndKey("phonetic-transcription-${widget.text}")
-                      .key,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (_error != null)
-                      _error is UnsubscribedException
-                          ? ErrorIndicator(
-                              message: L10n.of(context)
-                                  .subscribeToUnlockTranscriptions,
-                              onTap: () {
-                                MatrixState
-                                    .pangeaController.subscriptionController
-                                    .showPaywall(context);
-                              },
-                            )
-                          : ErrorIndicator(
-                              message:
-                                  L10n.of(context).failedToFetchTranscription,
-                            )
-                    else if (_isLoading || _transcription == null)
-                      const SizedBox(
-                        width: 16,
-                        height: 16,
-                        child: CircularProgressIndicator.adaptive(),
-                      )
-                    else
-                      Flexible(
-                        child: Text(
-                          _transcription!,
-                          textScaler: TextScaler.noScaling,
-                          style: widget.style ??
-                              Theme.of(context).textTheme.bodyMedium,
-                        ),
+                    .key,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (_error != null)
+                    _error is UnsubscribedException
+                        ? ErrorIndicator(
+                            message: L10n.of(context)
+                                .subscribeToUnlockTranscriptions,
+                            onTap: () {
+                              MatrixState
+                                  .pangeaController.subscriptionController
+                                  .showPaywall(context);
+                            },
+                          )
+                        : ErrorIndicator(
+                            message:
+                                L10n.of(context).failedToFetchTranscription,
+                          )
+                  else if (_isLoading || _transcription == null)
+                    const SizedBox(
+                      width: 16,
+                      height: 16,
+                      child: CircularProgressIndicator.adaptive(),
+                    )
+                  else
+                    Flexible(
+                      child: Text(
+                        _transcription!,
+                        textScaler: TextScaler.noScaling,
+                        style: widget.style ??
+                            Theme.of(context).textTheme.bodyMedium,
                       ),
-                    if (_transcription != null &&
-                        _error == null &&
-                        widget.enabled)
-                      const SizedBox(width: 8),
-                    if (_transcription != null &&
-                        _error == null &&
-                        widget.enabled)
-                      Tooltip(
-                        message: _isPlaying
-                            ? L10n.of(context).stop
-                            : L10n.of(context).playAudio,
-                        child: Icon(
-                          _isPlaying ? Icons.pause_outlined : Icons.volume_up,
-                          size: widget.iconSize ?? 24,
-                          color: widget.iconColor ??
-                              Theme.of(context).iconTheme.color,
-                        ),
+                    ),
+                  if (_transcription != null && _error == null)
+                    const SizedBox(width: 8),
+                  if (_transcription != null && _error == null)
+                    Tooltip(
+                      message: _isPlaying
+                          ? L10n.of(context).stop
+                          : L10n.of(context).playAudio,
+                      child: Icon(
+                        _isPlaying ? Icons.pause_outlined : Icons.volume_up,
+                        size: widget.iconSize ?? 24,
+                        color: widget.iconColor ??
+                            Theme.of(context).iconTheme.color,
                       ),
-                  ],
-                ),
+                    ),
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

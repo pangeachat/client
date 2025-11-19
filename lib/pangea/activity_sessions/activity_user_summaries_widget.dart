@@ -34,12 +34,34 @@ class ActivityUserSummaries extends StatelessWidget {
         spacing: 4.0,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            L10n.of(context).activityFinishedMessage,
-          ),
-          Text(
-            summary.summary,
-            textAlign: TextAlign.center,
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+            child: Center(
+              child: Material(
+                color: Theme.of(context).colorScheme.surface.withAlpha(128),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 4.0,
+                  ),
+                  child: Column(
+                    spacing: 4.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        L10n.of(context).activityFinishedMessage,
+                      ),
+                      Text(
+                        summary.summary,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(
