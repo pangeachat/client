@@ -110,7 +110,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
           height: 270.0,
           child: ListView(
             shrinkWrap: true,
-            controller: controller.carouselController,
+            controller: controller.activityController.carouselController,
             scrollDirection: Axis.horizontal,
             children: userSummaries.mapIndexed((i, p) {
               final user = room.getParticipants().firstWhereOrNull(
@@ -231,7 +231,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         ValueListenableBuilder(
-          valueListenable: controller.highlightedRole,
+          valueListenable: controller.activityController.highlightedRole,
           builder: (context, highlightedRole, __) {
             return Row(
               mainAxisSize: MainAxisSize.min,
@@ -250,8 +250,9 @@ class ButtonControlledCarouselView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4),
                   selected: highlightedRole?.id == userRole.id,
                   onTap: () {
-                    controller.highlightRole(userRole);
-                    controller.carouselController.jumpTo(i * 250.0);
+                    controller.activityController.highlightRole(userRole);
+                    controller.activityController.carouselController
+                        .jumpTo(i * 250.0);
                   },
                 );
               }).toList(),

@@ -27,8 +27,8 @@ import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
@@ -188,6 +188,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _analyticsSubscription;
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
+  late final ActivityChatController activityController;
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
 
@@ -536,6 +537,11 @@ class ChatController extends State<ChatPageWithRoom>
 
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
+    activityController = ActivityChatController(
+      userID: Matrix.of(context).client.userID!,
+      getAnalytics: room.getActivityAnalytics,
+    );
+
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
       pangeaController.languageController.showDialogOnEmptyLanguage(
@@ -782,14 +788,11 @@ class ChatController extends State<ChatPageWithRoom>
     _storeInputTimeoutTimer?.cancel();
     _displayChatDetailsColumn.dispose();
     timelineUpdateNotifier.dispose();
-    highlightedRole.dispose();
-    showInstructions.dispose();
-    showActivityDropdown.dispose();
-    hasRainedConfetti.dispose();
     typingCoolDown?.cancel();
     typingTimeout?.cancel();
     scrollController.removeListener(_updateScrollController);
     choreographer.dispose();
+    activityController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     showToolbarStream.close();
     stopMediaStream.close();
@@ -797,7 +800,6 @@ class ChatController extends State<ChatPageWithRoom>
     _analyticsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
-    carouselController.dispose();
     scrollController.dispose();
     inputFocus.dispose();
     TokensUtil.clearNewTokenCache();
@@ -2316,33 +2318,9 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  final ScrollController carouselController = ScrollController();
-
-  ValueNotifier<ActivityRoleModel?> highlightedRole = ValueNotifier(null);
-  void highlightRole(ActivityRoleModel role) {
-    if (mounted) highlightedRole.value = role;
-  }
-
-  ValueNotifier<bool> showInstructions = ValueNotifier(false);
-  void toggleShowInstructions() {
-    if (mounted) {
-      showInstructions.value = !showInstructions.value;
-    }
-  }
-
-  ValueNotifier<bool> showActivityDropdown = ValueNotifier(false);
-  void toggleShowDropdown() async {
-    if (mounted) {
-      inputFocus.unfocus();
-      showActivityDropdown.value = !showActivityDropdown.value;
-    }
-  }
-
-  ValueNotifier<bool> hasRainedConfetti = ValueNotifier(false);
-  void setHasRainedConfetti(bool show) {
-    if (mounted) {
-      hasRainedConfetti.value = show;
-    }
+  void toggleShowDropdown() {
+    inputFocus.unfocus();
+    activityController.toggleShowDropdown();
   }
   // Pangea#
 

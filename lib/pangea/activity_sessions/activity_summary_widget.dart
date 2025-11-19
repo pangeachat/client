@@ -9,21 +9,15 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 import 'package:matrix/src/utils/markdown.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySummary extends StatelessWidget {
   final ActivityPlanModel activity;
@@ -39,12 +33,15 @@ class ActivitySummary extends StatelessWidget {
   final bool Function(String)? isParticipantSelected;
   final double Function(ActivityRoleModel?)? getParticipantOpacity;
 
+  final ValueNotifier<Set<String>>? usedVocab;
+
   const ActivitySummary({
     super.key,
     required this.activity,
     required this.showInstructions,
     required this.toggleInstructions,
     required this.assignedRoles,
+    this.usedVocab,
     this.onTapParticipant,
     this.canSelectParticipant,
     this.isParticipantSelected,
@@ -183,75 +180,14 @@ class ActivitySummary extends StatelessWidget {
                       ActivitySessionDetailsRow(
                         icon: Symbols.dictionary,
                         iconSize: 16.0,
-                        child: Wrap(
-                          spacing: 4.0,
-                          runSpacing: 4.0,
-                          children: activity.vocab.map((vocab) {
-                            return CompositedTransformTarget(
-                              link: MatrixState.pAnyState
-                                  .layerLinkAndKey(
-                                    "activity-summary-vocab-${vocab.lemma}",
-                                  )
-                                  .link,
-                              child: InkWell(
-                                key: MatrixState.pAnyState
-                                    .layerLinkAndKey(
-                                      "activity-summary-vocab-${vocab.lemma}",
-                                    )
-                                    .key,
-                                borderRadius: BorderRadius.circular(
-                                  24.0,
-                                ),
-                                onTap: () {
-                                  OverlayUtil.showPositionedCard(
-                                    overlayKey:
-                                        "activity-summary-vocab-${vocab.lemma}",
-                                    context: context,
-                                    cardToShow: WordZoomWidget(
-                                      token: PangeaTokenText(
-                                        content: vocab.lemma,
-                                        length: vocab.lemma.characters.length,
-                                        offset: 0,
-                                      ),
-                                      construct: ConstructIdentifier(
-                                        lemma: vocab.lemma,
-                                        type: ConstructTypeEnum.vocab,
-                                        category: vocab.pos,
-                                      ),
-                                      langCode: activity.req.targetLanguage,
-                                      onClose: () {
-                                        MatrixState.pAnyState.closeOverlay(
-                                          "activity-summary-vocab-${vocab.lemma}",
-                                        );
-                                      },
-                                    ),
-                                    transformTargetId:
-                                        "activity-summary-vocab-${vocab.lemma}",
-                                    closePrevOverlay: false,
-                                    addBorder: false,
-                                    maxWidth: AppConfig.toolbarMinWidth,
-                                    maxHeight: AppConfig.toolbarMaxHeight,
-                                  );
-                                },
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0,
-                                    vertical: 4.0,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: theme.colorScheme.primary.withAlpha(
-                                      20,
-                                    ),
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Text(
-                                    vocab.lemma,
-                                    style: theme.textTheme.bodyMedium,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }).toList(),
+                        child: ActivityVocabWidget(
+                          key: ValueKey(
+                            "activity-summary-${activity.activityId}",
+                          ),
+                          vocab: activity.vocab,
+                          langCode: activity.req.targetLanguage,
+                          targetId: "activity-summary-vocab",
+                          usedVocab: usedVocab,
                         ),
                       ),
                     ],
