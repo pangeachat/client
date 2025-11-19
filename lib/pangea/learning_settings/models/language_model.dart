@@ -317,7 +317,7 @@ class LanguageModel {
     String searchValue,
     BuildContext context,
   ) {
-    if (item == null) return false;
+    if (item == null) return searchValue.isEmpty;
     final search = searchValue.toLowerCase();
     final displayName = item.displayName.toLowerCase();
     final displayNameLocal = item.getDisplayName(context).toLowerCase();
