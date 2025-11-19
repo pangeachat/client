@@ -97,7 +97,7 @@ class _VocabChip extends StatelessWidget {
             Theme.of(context).colorScheme.surface.withAlpha(150),
             AppConfig.gold,
           )
-        : Colors.transparent;
+        : Theme.of(context).colorScheme.primary.withAlpha(20);
 
     final linkAndKey = MatrixState.pAnyState.layerLinkAndKey(target);
     return CompositedTransformTarget(
