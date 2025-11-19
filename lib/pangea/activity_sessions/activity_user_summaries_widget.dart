@@ -109,6 +109,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
         SizedBox(
           height: 270.0,
           child: ListView(
+            key: PageStorageKey('summaries-carousel-${room.id}'),
             shrinkWrap: true,
             controller: controller.activityController.carouselController,
             scrollDirection: Axis.horizontal,
