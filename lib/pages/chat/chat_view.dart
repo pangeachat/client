@@ -237,34 +237,31 @@ class ChatView extends StatelessWidget {
                     // #Pangea
                     : controller.widget.backButton != null
                         ? controller.widget.backButton!
+                        // : FluffyThemes.isColumnMode(context)
+                        //     ? null
                         // Pangea#
-                        : FluffyThemes.isColumnMode(context)
-                            ? null
-                            : StreamBuilder<Object>(
-                                stream: Matrix.of(context)
-                                    .client
-                                    .onSync
-                                    .stream
-                                    .where(
+                        : StreamBuilder<Object>(
+                            stream:
+                                Matrix.of(context).client.onSync.stream.where(
                                       (syncUpdate) => syncUpdate.hasRoomUpdate,
                                     ),
-                                // #Pangea
-                                // builder: (context, _) => UnreadRoomsBadge(
-                                builder: (context, _) => Center(
-                                  child: SizedBox(
-                                    height: kToolbarHeight,
-                                    child: UnreadRoomsBadge(
-                                      // Pangea#
-                                      filter: (r) => r.id != controller.roomId,
-                                      badgePosition: BadgePosition.topEnd(
-                                        end: 8,
-                                        top: 4,
-                                      ),
-                                      child: const Center(child: BackButton()),
-                                    ),
+                            // #Pangea
+                            // builder: (context, _) => UnreadRoomsBadge(
+                            builder: (context, _) => Center(
+                              child: SizedBox(
+                                height: kToolbarHeight,
+                                child: UnreadRoomsBadge(
+                                  // Pangea#
+                                  filter: (r) => r.id != controller.roomId,
+                                  badgePosition: BadgePosition.topEnd(
+                                    end: 8,
+                                    top: 4,
                                   ),
+                                  child: const Center(child: BackButton()),
                                 ),
                               ),
+                            ),
+                          ),
                 titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
