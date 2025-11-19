@@ -11567,5 +11567,15 @@
   "@zuDisplayName": {
     "type": "String",
     "placeholders": {}
+  },
+  "teacherModeTitle": "Modo Professor",
+  "teacherModeDesc": "Ative para desbloquear todos os tópicos e atividades. Apenas para administradores do curso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

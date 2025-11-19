@@ -2598,7 +2598,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2025-11-17 16:15:05.019679",
+  "@@last_modified": "2025-11-19 10:07:17.607554",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11566,6 +11566,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "მასწავლებლის რეჟიმი",
+  "teacherModeDesc": "გამოიყენეთ, რომ გახსნათ ყველა თემა და აქტივობა. მხოლოდ კურსის ადმინისტრატორისთვის.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

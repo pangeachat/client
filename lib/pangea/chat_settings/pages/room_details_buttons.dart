@@ -11,6 +11,8 @@ class ButtonDetails {
   final bool visible;
   final bool enabled;
   final bool showInMainView;
+  final bool isToggle;
+  final bool value;
   final SpaceSettingsTabs? tab;
 
   const ButtonDetails({
@@ -20,6 +22,8 @@ class ButtonDetails {
     this.visible = true,
     this.enabled = true,
     this.onPressed,
+    this.isToggle = false,
+    this.value = false,
     this.showInMainView = true,
     this.tab,
   });

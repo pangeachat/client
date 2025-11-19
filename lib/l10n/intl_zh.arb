@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-17 16:00:49.489500",
+  "@@last_modified": "2025-11-19 10:06:55.893202",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10527,6 +10527,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "教师模式",
+  "teacherModeDesc": "切换以解锁所有主题和活动。仅限课程管理员。",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

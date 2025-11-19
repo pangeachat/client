@@ -4948,5 +4948,8 @@
   "zhDisplayName": "Chinese",
   "zhCNDisplayName": "Chinese (Simplified)",
   "zhTWDisplayName": "Chinese (Traditional)",
-  "zuDisplayName": "Zulu"
+  "zuDisplayName": "Zulu",
+  "highlightVocabTooltip": "Highlight target vocab words below by sending them or practicing with them in the chat",
+  "teacherModeTitle": "Teacher Mode",
+  "teacherModeDesc": "Toggle to unlock all topics and activities. Course admin only."
 }
