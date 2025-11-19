@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-10-16 13:32:26.039817",
+  "@@last_modified": "2025-11-19 10:06:21.916637",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11813,6 +11813,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Режим вчителя",
+  "teacherModeDesc": "Перемкніть, щоб розблокувати всі теми та активності. Тільки для адміністратора курсу.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

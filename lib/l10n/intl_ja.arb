@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-10-16 13:31:33.790667",
+  "@@last_modified": "2025-11-19 10:07:08.492783",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12609,6 +12609,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "教師モード",
+  "teacherModeDesc": "すべてのトピックとアクティビティをアンロックするために切り替えます。コース管理者のみ。",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

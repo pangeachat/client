@@ -101,4 +101,22 @@ extension CoursePlanRoomExtension on Room {
     }
     return roomID;
   }
+
+  bool get isTeacherMode {
+    final event = getState(PangeaEventTypes.teacherMode, client.userID!);
+    if (event == null) return false;
+    final content = event.content;
+    return content['enabled'] == true;
+  }
+
+  Future<void> setTeacherMode(bool enabled) async {
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.teacherMode,
+      client.userID!,
+      {
+        'enabled': enabled,
+      },
+    );
+  }
 }

@@ -118,6 +118,8 @@ class CourseSettings extends StatelessWidget {
             controller.course!,
           );
 
+    final teacherMode = room.isTeacherMode;
+
     return Column(
       spacing: isColumnMode ? 40.0 : 36.0,
       mainAxisSize: MainAxisSize.min,
@@ -130,9 +132,12 @@ class CourseSettings extends StatelessWidget {
         final usersInTopic = userTopics[topicId] ?? [];
         final activityError = controller.activityErrors[topicId];
 
-        final bool locked = topicIndex == null ? false : index > topicIndex;
+        final bool locked =
+            !teacherMode && (topicIndex == null ? false : index > topicIndex);
+
         final disabled =
             locked || controller.loadingActivities || activityError != null;
+
         return AbsorbPointer(
           absorbing: disabled,
           child: Opacity(

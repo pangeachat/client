@@ -2341,7 +2341,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-10-16 13:32:30.797608",
+  "@@last_modified": "2025-11-19 10:06:11.264487",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12910,6 +12910,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "教師模式",
+  "teacherModeDesc": "切換以解鎖所有主題和活動。僅限課程管理員。",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-10-16 13:31:18.226992",
+  "@@last_modified": "2025-11-19 10:05:49.974610",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -12191,6 +12191,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Način učitelja",
+  "teacherModeDesc": "Prebacite da otključate sve teme i aktivnosti. Samo za administratore tečaja.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

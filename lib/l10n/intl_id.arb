@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:31:25.902157",
+  "@@last_modified": "2025-11-19 10:05:43.101922",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11810,6 +11810,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Mode Guru",
+  "teacherModeDesc": "Alihkan untuk membuka semua topik dan aktivitas. Hanya untuk admin kursus.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

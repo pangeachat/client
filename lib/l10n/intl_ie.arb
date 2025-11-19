@@ -4853,7 +4853,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-10-16 13:31:28.322202",
+  "@@last_modified": "2025-11-19 10:05:48.013254",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12793,6 +12793,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Mod Teacher",
+  "teacherModeDesc": "Commutar per desbloquear todos os tópicos e atividades. Apenas para administradores do curso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

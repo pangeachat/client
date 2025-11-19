@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:31:39.341446",
+  "@@last_modified": "2025-11-19 10:05:24.832279",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11927,6 +11927,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "교사 모드",
+  "teacherModeDesc": "모든 주제와 활동을 잠금 해제하려면 전환하십시오. 과정 관리자 전용.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

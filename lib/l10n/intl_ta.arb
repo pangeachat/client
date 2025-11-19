@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-16 13:32:14.869459",
+  "@@last_modified": "2025-11-19 10:06:50.799508",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -12043,6 +12043,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "ஆசிரியர் முறை",
+  "teacherModeDesc": "எல்லா தலைப்புகள் மற்றும் செயல்பாடுகளை திறக்க மாற்றவும். பாடம் நிர்வாகி மட்டுமே.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

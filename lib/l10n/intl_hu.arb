@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-10-16 13:31:20.947240",
+  "@@last_modified": "2025-11-19 10:05:41.188788",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11820,6 +11820,16 @@
     "placeholders": {}
   },
   "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Tanári Mód",
+  "teacherModeDesc": "Kapcsolja be az összes téma és tevékenység feloldásához. Csak kurzusadminisztrátorok számára.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -4707,7 +4707,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-10-16 16:03:25.501925",
+  "@@last_modified": "2025-11-19 10:06:54.787613",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12662,5 +12662,15 @@
     "type": "String",
     "placeholders": {}
   },
-  "error": "The previous response was incomplete and caused a JSON parsing error due to truncation."
+  "error": "The previous response was incomplete and caused a JSON parsing error due to truncation.",
+  "teacherModeTitle": "Módus Dócentis",
+  "teacherModeDesc": "Commuta ut omnes themata et activitates aperias. Solum administratio cursus.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  }
 }
