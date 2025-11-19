@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_translation_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_mode_buttons.dart';
 
@@ -72,15 +70,6 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
                       ?.copyWith(fontStyle: FontStyle.italic),
                   textAlign: TextAlign.center,
                 );
-
-        case MessageMode.messageTranslation:
-          if (overlayController.isTranslationUnlocked) {
-            content = MessageTranslationCard(
-              messageEvent: overlayController.pangeaMessageEvent,
-            );
-          } else {
-            content = MessageModeLockedCard(controller: overlayController);
-          }
 
         case MessageMode.wordEmoji:
         case MessageMode.wordMeaning:

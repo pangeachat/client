@@ -34,7 +34,9 @@ class UnreadRoomsBadge extends StatelessWidget {
         .length;
     return b.Badge(
       badgeStyle: b.BadgeStyle(
+        // #Pangea
         padding: const EdgeInsetsGeometry.all(1),
+        // Pangea#
         badgeColor: theme.colorScheme.primary,
         elevation: 4,
         borderSide: BorderSide(
@@ -42,6 +44,14 @@ class UnreadRoomsBadge extends StatelessWidget {
           width: 2,
         ),
       ),
+      // #Pangea
+      // badgeContent: Text(
+      //   unreadCount.toString(),
+      //   style: TextStyle(
+      //     color: theme.colorScheme.onPrimary,
+      //     fontSize: 12,
+      //   ),
+      // ),
       badgeContent: SizedBox(
         width: 15,
         height: 15,
@@ -58,6 +68,7 @@ class UnreadRoomsBadge extends StatelessWidget {
           ),
         ),
       ),
+      // Pangea#
       showBadge: unreadCount != 0,
       badgeAnimation: const b.BadgeAnimation.scale(),
       position: badgePosition ?? b.BadgePosition.bottomEnd(),

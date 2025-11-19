@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/choreographer/models/choreo_edit.dart';
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_edit_model.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 
 void main() async {
   group("Optimized choreo record tests", () {
@@ -9,7 +9,7 @@ void main() async {
       const String originalText = "Parameter";
       const String editedText = "Perrimeter";
 
-      final ChoreoEdit edits = ChoreoEdit.fromText(
+      final ChoreoEditModel edits = ChoreoEditModel.fromText(
         originalText: originalText,
         editedText: editedText,
       );
@@ -23,7 +23,7 @@ void main() async {
       const String originalText = "step";
       const String editedText = "steps";
 
-      final ChoreoEdit edits = ChoreoEdit.fromText(
+      final ChoreoEditModel edits = ChoreoEditModel.fromText(
         originalText: originalText,
         editedText: editedText,
       );
@@ -41,7 +41,7 @@ void main() async {
       steps.add("");
       steps.add("Si");
 
-      final record = ChoreoRecord(
+      final record = ChoreoRecordModel(
         originalText: "Yes",
         choreoSteps: [],
         openMatches: [],
@@ -64,7 +64,7 @@ void main() async {
       steps.add("");
       steps.add("Si");
 
-      final record = ChoreoRecord(
+      final record = ChoreoRecordModel(
         originalText: "Yes",
         choreoSteps: [],
         openMatches: [],
@@ -75,7 +75,7 @@ void main() async {
       }
 
       final json = record.toJson();
-      final received = ChoreoRecord.fromJson(json);
+      final received = ChoreoRecordModel.fromJson(json);
 
       assert(
         received.choreoSteps[0].edits != null &&
@@ -94,7 +94,7 @@ void main() async {
       steps.add("Cinco");
       steps.add("Cincai");
 
-      final record = ChoreoRecord(
+      final record = ChoreoRecordModel(
         originalText: "One",
         choreoSteps: [],
         openMatches: [],
@@ -105,7 +105,7 @@ void main() async {
       }
 
       final json = record.toJson();
-      final received = ChoreoRecord.fromJson(json);
+      final received = ChoreoRecordModel.fromJson(json);
 
       // Initial step and steps following empty strings
       // will have text instead of edits

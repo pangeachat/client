@@ -56,7 +56,7 @@ class PermissionsController extends BaseController {
     }
   }
 
-  bool isToolEnabled(ToolSetting setting, Room? room) {
+  bool isToolEnabled(ToolSetting setting) {
     // Rules can't be edited; default to true
     return userToolSetting(setting);
     // if (room?.isSpaceAdmin ?? false) {

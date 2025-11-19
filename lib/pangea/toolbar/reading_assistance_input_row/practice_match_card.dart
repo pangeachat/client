@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/choice_animation.dart';
+import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';

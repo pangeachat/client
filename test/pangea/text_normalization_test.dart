@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 
-import 'package:fluffychat/pangea/choreographer/utils/normalize_text.dart';
+import 'package:fluffychat/pangea/choreographer/igc/text_normalization_util.dart';
 
 final List<Map<String, String>> normalizeTestCases = [
   // 1. Amharic (am) - beta

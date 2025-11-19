@@ -11,11 +11,14 @@ import 'package:just_audio/just_audio.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/instructions/instructions_show_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -334,11 +337,27 @@ class TtsController {
     BuildContext context,
     String targetID,
   ) async =>
-      instructionsShowPopup(
-        context,
-        InstructionsEnum.ttsDisabled,
-        targetID,
-        showToggle: false,
-        forceShow: true,
+      OverlayUtil.showPositionedCard(
+        context: context,
+        backDropToDismiss: false,
+        cardToShow: Column(
+          spacing: 12.0,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CardHeader(InstructionsEnum.ttsDisabled.title(L10n.of(context))),
+            Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Text(
+                InstructionsEnum.ttsDisabled.body(L10n.of(context)),
+                style: BotStyle.text(context),
+              ),
+            ),
+          ],
+        ),
+        maxHeight: 300,
+        maxWidth: 300,
+        transformTargetId: targetID,
+        closePrevOverlay: false,
+        overlayKey: InstructionsEnum.ttsDisabled.toString(),
       );
 }

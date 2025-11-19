@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-11-17 16:04:46.154707",
+  "@@last_modified": "2025-11-19 10:07:01.450034",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10536,6 +10536,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Tryb Nauczyciela",
+  "teacherModeDesc": "Przełącz, aby odblokować wszystkie tematy i aktywności. Tylko dla administratora kursu.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

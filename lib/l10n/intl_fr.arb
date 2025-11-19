@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-11-17 16:19:15.733218",
+  "@@last_modified": "2025-11-19 10:07:24.904940",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -10860,6 +10860,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Mode Enseignant",
+  "teacherModeDesc": "Basculer pour débloquer tous les sujets et activités. Administration du cours uniquement.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }
