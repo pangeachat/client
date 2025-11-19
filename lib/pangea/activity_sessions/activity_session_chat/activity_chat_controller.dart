@@ -61,7 +61,7 @@ class ActivityChatController {
     }
   }
 
-  void toggleShowDropdown() async {
+  void toggleShowDropdown() {
     if (!_disposed) {
       showActivityDropdown.value = !showActivityDropdown.value;
     }
