@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -234,18 +234,14 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
           ),
         ChoicesArray(
           isLoading: false,
-          originalSpan: "placeholder",
           onPressed: updateChoice,
           selectedChoiceIndex: selectedChoiceIndex,
           choices: choices(context),
-          isActive: true,
           id: currentRecordModel?.hashCode.toString(),
           enableAudio: practiceActivity.activityType.includeTTSOnClick,
           langCode:
               MatrixState.pangeaController.languageController.activeL2Code(),
           getDisplayCopy: _getDisplayCopy,
-          enableMultiSelect:
-              widget.currentActivity.activityType == ActivityTypeEnum.emoji,
         ),
       ],
     );

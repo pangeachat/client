@@ -334,8 +334,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   bool get hideWordCardContent =>
       readingAssistanceMode == ReadingAssistanceMode.practiceMode;
 
-  bool get isPracticeComplete => isTranslationUnlocked;
-
   bool isPracticeActivityDone(ActivityTypeEnum activityType) =>
       practiceSelection?.activities(activityType).every((a) => a.isComplete) ==
       true;
@@ -349,15 +347,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       isPracticeActivityDone(ActivityTypeEnum.wordFocusListening);
 
   bool get isMorphDone => isPracticeActivityDone(ActivityTypeEnum.morphId);
-
-  /// you have to complete one of the mode mini-games to unlock translation
-  bool get isTranslationUnlocked =>
-      pangeaMessageEvent.ownMessage == true ||
-      !messageInUserL2 ||
-      isEmojiDone ||
-      isMeaningDone ||
-      isListeningDone ||
-      isMorphDone;
 
   bool get isTotallyDone =>
       isEmojiDone && isMeaningDone && isListeningDone && isMorphDone;

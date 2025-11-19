@@ -4,8 +4,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
@@ -14,7 +14,7 @@ import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 /// this event is the child of a [EventTypes.Message]
 /// the event has two potential children events -
 /// [PangeaTokensEvent] and [PangeaIGCEvent]
-/// these events contain [PangeaMessageTokens] and [ChoreoRecord], respectively.
+/// these events contain [PangeaMessageTokens] and [ChoreoRecordModel], respectively.
 class PangeaRepresentation {
   /// system-detected language, possibly condensed from a list,
   /// but only with high certainty
@@ -101,7 +101,7 @@ class PangeaRepresentation {
     required List<PangeaToken> tokens,
     Event? event,
     ConstructUseMetaData? metadata,
-    ChoreoRecord? choreo,
+    ChoreoRecordModel? choreo,
   }) {
     final List<OneConstructUse> uses = [];
 
@@ -132,8 +132,7 @@ class PangeaRepresentation {
           .toList();
     }
 
-    if (choreo == null ||
-        (choreo.choreoSteps.isEmpty && choreo.itSteps.isEmpty)) {
+    if (choreo == null || choreo.choreoSteps.isEmpty) {
       for (final token in tokensToSave) {
         uses.addAll(
           token.allUses(
@@ -148,7 +147,7 @@ class PangeaRepresentation {
     }
 
     for (final token in tokensToSave) {
-      ChoreoRecordStep? tokenStep;
+      ChoreoRecordStepModel? tokenStep;
       for (final step in choreo.choreoSteps) {
         final igcMatch = step.acceptedOrIgnoredMatch;
         final itStep = step.itStep;
@@ -177,7 +176,7 @@ class PangeaRepresentation {
 
       if (tokenStep == null ||
           tokenStep.acceptedOrIgnoredMatch?.status ==
-              PangeaMatchStatus.automatic) {
+              PangeaMatchStatusEnum.automatic) {
         // if the token wasn't found in any IT or IGC step, so it was wa
         uses.addAll(
           token.allUses(
@@ -191,7 +190,7 @@ class PangeaRepresentation {
 
       if (tokenStep.acceptedOrIgnoredMatch != null &&
           tokenStep.acceptedOrIgnoredMatch?.status !=
-              PangeaMatchStatus.accepted) {
+              PangeaMatchStatusEnum.accepted) {
         uses.addAll(
           token.allUses(
             ConstructUseTypeEnum.ga,

@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -33,7 +33,7 @@ extension PangeaEvent on Event {
       case PangeaEventTypes.representation:
         return PangeaRepresentation.fromJson(json) as V;
       case PangeaEventTypes.choreoRecord:
-        return ChoreoRecord.fromJson(json) as V;
+        return ChoreoRecordModel.fromJson(json) as V;
       case PangeaEventTypes.pangeaActivity:
         return PracticeActivityModel.fromJson(json) as V;
       case PangeaEventTypes.activityRecord:

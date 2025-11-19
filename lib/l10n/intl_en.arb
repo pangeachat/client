@@ -4722,6 +4722,7 @@
   "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?",
   "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course",
   "inviteFriends": "Invite friends",
+  "failedToLoadFeedback": "Failed to load feedback.",
   "activityStatsButtonTooltip": "Activity info",
   "allow": "Allow",
   "deny": "Deny",

@@ -28,67 +28,52 @@ class ActivityUserSummaries extends StatelessWidget {
     final summary = room.activitySummary?.summary;
     if (summary == null) return const SizedBox();
 
-    return Column(
-      spacing: 4.0,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
-          child: Center(
-            child: Material(
-              color: Theme.of(context).colorScheme.surface.withAlpha(128),
-              borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-                child: Column(
-                  spacing: 4.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      L10n.of(context).activityFinishedMessage,
-                    ),
-                    Text(
-                      summary.summary,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        spacing: 4.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+            child: Center(
+              child: Material(
+                color: Theme.of(context).colorScheme.surface.withAlpha(128),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 4.0,
+                  ),
+                  child: Column(
+                    spacing: 4.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        L10n.of(context).activityFinishedMessage,
+                      ),
+                      Text(
+                        summary.summary,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        const Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 8.0,
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 8.0,
+            ),
           ),
-        ),
-        ButtonControlledCarouselView(
-          summary: summary,
-          controller: controller,
-        ),
-        // Row(
-        //   mainAxisSize: MainAxisSize.min,
-        //   children: userSummaries.map((p) {
-        //     final user = room.getParticipants().firstWhereOrNull(
-        //           (u) => u.id == p.participantId,
-        //         );
-        //     final userRole = assignedRoles.values.firstWhere(
-        //       (role) => role.userId == p.participantId,
-        //     );
-        //     final userRoleInfo = availableRoles[userRole.id]!;
-        //     return ActivityParticipantIndicator(
-        //       availableRole: userRoleInfo,
-        //       assignedRole: userRole,
-        //       avatarUrl:
-        //           userRoleInfo.avatarUrl ?? user?.avatarUrl?.toString(),
-        //       borderRadius: BorderRadius.circular(4),
-        //       selected: controller.highlightedRole?.id == userRole.id,
-        //       onTap: () => controller.highlightRole(userRole),
-        //     );
-        //   }).toList(),
-        // ),
-      ],
+          ButtonControlledCarouselView(
+            summary: summary,
+            controller: controller,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -245,28 +230,33 @@ class ButtonControlledCarouselView extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: userSummaries.mapIndexed((i, p) {
-            final user = room.getParticipants().firstWhereOrNull(
-                  (u) => u.id == p.participantId,
+        ValueListenableBuilder(
+          valueListenable: controller.highlightedRole,
+          builder: (context, highlightedRole, __) {
+            return Row(
+              mainAxisSize: MainAxisSize.min,
+              children: userSummaries.mapIndexed((i, p) {
+                final user = room.getParticipants().firstWhereOrNull(
+                      (u) => u.id == p.participantId,
+                    );
+                final userRole = assignedRoles.values.firstWhere(
+                  (role) => role.userId == p.participantId,
                 );
-            final userRole = assignedRoles.values.firstWhere(
-              (role) => role.userId == p.participantId,
+                final userRoleInfo = availableRoles[userRole.id]!;
+                return ActivityParticipantIndicator(
+                  name: userRoleInfo.name,
+                  userId: p.participantId,
+                  user: user,
+                  borderRadius: BorderRadius.circular(4),
+                  selected: highlightedRole?.id == userRole.id,
+                  onTap: () {
+                    controller.highlightRole(userRole);
+                    controller.carouselController.jumpTo(i * 250.0);
+                  },
+                );
+              }).toList(),
             );
-            final userRoleInfo = availableRoles[userRole.id]!;
-            return ActivityParticipantIndicator(
-              name: userRoleInfo.name,
-              userId: p.participantId,
-              user: user,
-              borderRadius: BorderRadius.circular(4),
-              selected: controller.highlightedRole?.id == userRole.id,
-              onTap: () {
-                controller.highlightRole(userRole);
-                controller.carouselController.jumpTo(i * 250.0);
-              },
-            );
-          }).toList(),
+          },
         ),
       ],
     );

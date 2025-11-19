@@ -3,6 +3,10 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
@@ -50,50 +54,45 @@ class OverlayUtil {
       }
 
       final OverlayEntry entry = OverlayEntry(
-        builder: (context) => AnimatedContainer(
-          duration: FluffyThemes.animationDuration,
-          curve: FluffyThemes.animationCurve,
-          child: Stack(
-            children: [
-              if (backDropToDismiss)
-                IgnorePointer(
-                  ignoring: ignorePointer,
-                  child: TransparentBackdrop(
-                    backgroundColor: backgroundColor,
-                    onDismiss: onDismiss,
-                    blurBackground: blurBackground,
-                  ),
+        builder: (context) => Stack(
+          children: [
+            if (backDropToDismiss)
+              IgnorePointer(
+                ignoring: ignorePointer,
+                child: TransparentBackdrop(
+                  backgroundColor: backgroundColor,
+                  onDismiss: onDismiss,
+                  blurBackground: blurBackground,
                 ),
-              Positioned(
-                top: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                right: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                left: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
-                child: (position != OverlayPositionEnum.transform)
-                    ? child
-                    : CompositedTransformFollower(
-                        targetAnchor: targetAnchor ?? Alignment.topCenter,
-                        followerAnchor:
-                            followerAnchor ?? Alignment.bottomCenter,
-                        link: MatrixState.pAnyState
-                            .layerLinkAndKey(transformTargetId!)
-                            .link,
-                        showWhenUnlinked: false,
-                        offset: offset ?? Offset.zero,
-                        child: child,
-                      ),
               ),
-            ],
-          ),
+            Positioned(
+              top: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              right: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              left: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
+              child: (position != OverlayPositionEnum.transform)
+                  ? child
+                  : CompositedTransformFollower(
+                      targetAnchor: targetAnchor ?? Alignment.topCenter,
+                      followerAnchor: followerAnchor ?? Alignment.bottomCenter,
+                      link: MatrixState.pAnyState
+                          .layerLinkAndKey(transformTargetId!)
+                          .link,
+                      showWhenUnlinked: false,
+                      offset: offset ?? Offset.zero,
+                      child: child,
+                    ),
+            ),
+          ],
         ),
       );
 
@@ -215,6 +214,30 @@ class OverlayUtil {
         data: {},
       );
     }
+  }
+
+  static void showIGCMatch(
+    PangeaMatchState match,
+    Choreographer choreographer,
+    BuildContext context,
+    VoidCallback showNextMatch,
+  ) {
+    MatrixState.pAnyState.closeAllOverlays();
+    showPositionedCard(
+      overlayKey:
+          "span_card_overlay_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
+      context: context,
+      cardToShow: SpanCard(
+        match: match,
+        choreographer: choreographer,
+        showNextMatch: showNextMatch,
+      ),
+      maxHeight: 325,
+      maxWidth: 325,
+      transformTargetId: ChoreoConstants.inputTransformTargetKey,
+      ignorePointer: true,
+      isScrollable: false,
+    );
   }
 
   static void showTutorialOverlay(

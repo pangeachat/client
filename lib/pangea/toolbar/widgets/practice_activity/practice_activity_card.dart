@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/card_error_widget.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
@@ -296,10 +296,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   Widget build(BuildContext context) {
     if (_error != null || (!fetchingActivity && currentActivity == null)) {
       debugger(when: kDebugMode);
-      return CardErrorWidget(
-        error: L10n.of(context).errorFetchingActivity,
-        maxWidth: 500,
-      );
+      return CardErrorWidget(L10n.of(context).errorFetchingActivity);
     }
 
     return Column(

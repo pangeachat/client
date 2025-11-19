@@ -8,15 +8,16 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
-import 'package:fluffychat/pangea/choreographer/repo/language_detection_repo.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -26,6 +27,8 @@ import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 import '../../learning_settings/constants/language_constants.dart';
@@ -95,20 +98,18 @@ class PangeaMessageEvent {
     _representations = null;
   }
 
-  Future<PangeaAudioFile?> getMatrixAudioFile(
+  Future<PangeaAudioFile> getMatrixAudioFile(
     String langCode,
   ) async {
     final RepresentationEvent? rep = representationByLanguage(langCode);
+    final tokensResp = await rep?.tokensGlobal(
+      senderId,
+      originServerTs,
+    );
 
     final TextToSpeechRequest params = TextToSpeechRequest(
       text: rep?.content.text ?? body,
-      tokens: (await rep?.tokensGlobal(
-            senderId,
-            originServerTs,
-          ))
-              ?.map((t) => t.text)
-              .toList() ??
-          [],
+      tokens: tokensResp?.result?.map((t) => t.text).toList() ?? [],
       langCode: langCode,
       userL1: l1Code ?? LanguageKeys.unknownLanguage,
       userL2: l2Code ?? LanguageKeys.unknownLanguage,
@@ -398,10 +399,10 @@ class PangeaMessageEvent {
     }
   }
 
-  ChoreoRecord? get _embeddedChoreo {
+  ChoreoRecordModel? get _embeddedChoreo {
     try {
       if (_latestEdit.content[ModelKey.choreoRecord] == null) return null;
-      return ChoreoRecord.fromJson(
+      return ChoreoRecordModel.fromJson(
         _latestEdit.content[ModelKey.choreoRecord] as Map<String, dynamic>,
         originalWrittenContent,
       );
@@ -655,7 +656,7 @@ class PangeaMessageEvent {
 
     final bool immersionMode = MatrixState
         .pangeaController.permissionsController
-        .isToolEnabled(ToolSetting.immersionMode, room);
+        .isToolEnabled(ToolSetting.immersionMode);
 
     final String? originalLangCode = originalSent?.langCode;
 

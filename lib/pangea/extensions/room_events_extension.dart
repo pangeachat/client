@@ -158,11 +158,11 @@ extension EventsRoomExtension on Room {
     return content;
   }
 
-  String sendFakeMessage({
+  Future<String> sendFakeMessage({
     required String text,
     Event? inReplyTo,
     String? editEventId,
-  }) {
+  }) async {
     // Create new transaction id
     final messageID = client.generateUniqueTransactionId();
 
@@ -180,9 +180,29 @@ extension EventsRoomExtension on Room {
       room: this,
       originServerTs: DateTime.now(),
       status: EventStatus.sending,
+      unsigned: {
+        messageSendingStatusKey: EventStatus.sending.intValue,
+        'transaction_id': messageID,
+      },
     );
 
-    timeline?.events.insert(0, event);
+    final syncUpdate = SyncUpdate(
+      nextBatch: '',
+      rooms: RoomsUpdate(
+        join: {
+          id: JoinedRoomUpdate(
+            timeline: TimelineUpdate(
+              events: [
+                event,
+              ],
+            ),
+          ),
+        },
+      ),
+    );
+    await client.database.transaction(() async {
+      await client.handleSync(syncUpdate);
+    });
     return messageID;
   }
 
@@ -200,9 +220,8 @@ extension EventsRoomExtension on Room {
     PangeaRepresentation? originalWritten,
     PangeaMessageTokens? tokensSent,
     PangeaMessageTokens? tokensWritten,
-    ChoreoRecord? choreo,
+    ChoreoRecordModel? choreo,
     String? messageTag,
-    String? tempEventId,
   }) {
     // if (parseCommands) {
     //   return client.parseAndRunCommand(
@@ -237,9 +256,6 @@ extension EventsRoomExtension on Room {
     }
     if (messageTag != null) {
       event[ModelKey.messageTags] = messageTag;
-    }
-    if (tempEventId != null) {
-      event[ModelKey.tempEventId] = tempEventId;
     }
 
     if (parseMarkdown) {
@@ -384,5 +400,41 @@ extension EventsRoomExtension on Room {
         .toList();
 
     return allPangeaMessages;
+  }
+
+  List<PreviousMessage> getPreviousMessages({int numMessages = 5}) {
+    if (timeline == null) return [];
+    final events = timeline!.events
+        .where(
+          (e) =>
+              e.type == EventTypes.Message &&
+              (e.messageType == MessageTypes.Text ||
+                  e.messageType == MessageTypes.Audio),
+        )
+        .toList();
+
+    final List<PreviousMessage> messages = [];
+    for (final Event event in events) {
+      final String? content = event.messageType == MessageTypes.Text
+          ? event.content.toString()
+          : PangeaMessageEvent(
+              event: event,
+              timeline: timeline!,
+              ownMessage: event.senderId == client.userID,
+            ).getSpeechToTextLocal()?.transcript.text.trim();
+
+      if (content == null) continue;
+      messages.add(
+        PreviousMessage(
+          content: content,
+          sender: event.senderId,
+          timestamp: event.originServerTs,
+        ),
+      );
+      if (messages.length >= numMessages) {
+        return messages;
+      }
+    }
+    return messages;
   }
 }
