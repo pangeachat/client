@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Kliknite a podr\u017ete pre inform\xe1cie o slove.";
     },
-    get$greenFeedback() {
-      return "To je to, \u010do by som dal!";
-    },
-    get$yellowFeedback() {
-      return "Hm, m\xf4\u017eete to vysk\xfa\u0161a\u0165 a zisti\u0165, \u010di to funguje! Ak chcete pou\u017ei\u0165 toto slovo, jednoducho na\u0148 op\xe4\u0165 kliknite.";
-    },
-    get$redFeedback() {
-      return "Nemysl\xedm si, \u017ee je to spr\xe1vne...";
-    },
     get$gaTooltip() {
       return "L2 pou\u017eitie s gramatickou asistenciou";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorova\u0165";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Po\u010dkaj, to nie je " + targetLanguage + "! Potrebuje\u0161 pomoc s prekladom?";
-    },
     get$countryInformation() {
       return "Moja krajina";
-    },
-    get$targetLanguage() {
-      return "Cie\u013eov\xfd jazyk";
     },
     get$updateLanguage() {
       return "Moje jazyky";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Pomoc s gramatikou je vypnut\xe1.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Pomoc s prekladom a gramatikou s\xfa vypnut\xe9.";
-    },
     get$errorDisableITUserDesc() {
       return "Kliknite sem na aktualiz\xe1ciu nastaven\xed pomoci s prekladom";
     },
     get$errorDisableIGCUserDesc() {
       return "Kliknite sem na aktualiz\xe1ciu nastaven\xed pomoci s gramatikou";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Kliknite sem na aktualiz\xe1ciu nastaven\xed pomoci s prekladom a gramatikou";
     },
     get$errorDisableITClassDesc() {
       return "Prekladov\xe1 pomoc je vypnut\xe1 pre kurz, v ktorom sa nach\xe1dza tento chat.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nena\u0161li sa \u017eiadne \xfadaje";
     },
-    get$bestCorrectionFeedback() {
-      return "To je spr\xe1vne!";
-    },
-    get$distractorFeedback() {
-      return "To nie je \xfaplne spr\xe1vne.";
-    },
-    get$bestAnswerFeedback() {
-      return "To je spr\xe1vne!";
-    },
-    get$definitionDefaultPrompt() {
-      return "\u010co znamen\xe1 toto slovo?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Ak\xe1 je najlep\u0161ia odpove\u010f?";
-    },
     get$correctionDefaultPrompt() {
       return "Ak\xe1 je najlep\u0161ia n\xe1hrada?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Cvi\u010di\u0165";
-    },
-    get$noLanguagesSet() {
-      return "Nastaven\xe9 \u017eiadne jazyky";
     },
     get$speechToTextBody() {
       return "Pre hlasov\xe9 spr\xe1vy m\xf4\u017eete vidie\u0165 prepis, ako aj sk\xf3re R\xfdchlosti slov za min\xfatu od hovoriaceho.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Chyba prekladu";
     },
-    get$errorFetchingTranslation() {
-      return "Nepodarilo sa na\u010d\xedta\u0165 preklad";
-    },
     get$errorFetchingActivity() {
       return "Nepodarilo sa na\u010d\xedta\u0165 aktivitu";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ukon\u010dil t\xfato aktivitu";
-    },
-    get$activitySummaryError() {
-      return "Preh\u013eady aktiv\xedt nie s\xfa dostupn\xe9";
-    },
-    get$requestSummaries() {
-      return "Po\u017eiada\u0165 o preh\u013eady";
     },
     get$requestAccessTitle() {
       return "Po\u017eiada\u0165 o pr\xedstup k analytike?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Hra\u0165 s Pangea Botom";
     },
-    get$waitNotDone() {
-      return "Po\u010dkajte, e\u0161te som nedokon\u010dil!";
-    },
-    get$waitingForOthersToFinish() {
-      return "\u010cak\xe1me na ostatn\xfdch, aby dokon\u010dili...";
-    },
-    get$generatingSummary() {
-      return "Analyzujeme chat a generujeme v\xfdsledky";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " h\u013ead\xe1 pou\u017e\xedvate\u013eov na pripojenie k rel\xe1cii aktivity v " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Pozva\u0165 priate\u013eov na m\xf4j kurz";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Prihl\xe1si\u0165 sa na odomknutie s\xfahrnov aktiv\xedt";
     },
     get$subscribeToUnlockDefinitions() {
       return "Prihl\xe1si\u0165 sa na odomknutie defin\xedci\xed";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Po\u010det ulo\u017een\xfdch aktiv\xedt";
     },
-    get$saveActivityTitle() {
-      return "Ulo\u017ei\u0165 aktivitu";
-    },
-    get$saveActivityDesc() {
-      return "Dobr\xe1 pr\xe1ca! Ulo\u017ete t\xfato aktivitu na neskor\u0161ie presk\xfamanie a cvi\u010denie";
-    },
     get$levelInfoTooltip() {
       return "Tu m\xf4\u017eete vidie\u0165 v\u0161etky body, ktor\xe9 ste z\xedskali a ako!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Pozva\u0165 priate\u013eov";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Inform\xe1cie o aktivite";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["d8gCFu5GlGxN68/llw8XLsaNGvs="] = d.current;
+  d["UwIQZ6fIa0QHdu+kTW3ATkB/KWg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_743.part.js.map

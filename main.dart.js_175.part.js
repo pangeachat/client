@@ -1481,15 +1481,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Fes clic i mant\xe9n premut per obtenir informaci\xf3 de la paraula.";
     },
-    get$greenFeedback() {
-      return "Aix\xf2 \xe9s el que jo posaria!";
-    },
-    get$yellowFeedback() {
-      return "Hm, pots provar aix\xf2 i veure si funciona! Per utilitzar aquesta paraula, simplement fes clic de nou.";
-    },
-    get$redFeedback() {
-      return "No crec que sigui correcte...";
-    },
     get$gaTooltip() {
       return "L2 utilitza amb assist\xe8ncia gramatical";
     },
@@ -1544,14 +1535,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignora";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Espera, aix\xf2 no \xe9s " + targetLanguage + "! Necessites ajuda per traduir?";
-    },
     get$countryInformation() {
       return "El meu pa\xeds";
-    },
-    get$targetLanguage() {
-      return "Llengua objectiu";
     },
     get$updateLanguage() {
       return "Les meves lleng\xfces";
@@ -1577,17 +1562,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "L'assist\xe8ncia de gram\xe0tica est\xe0 desactivada.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "L'assist\xe8ncia de traducci\xf3 i de gram\xe0tica estan desactivades.";
-    },
     get$errorDisableITUserDesc() {
       return "Fes clic aqu\xed per actualitzar la configuraci\xf3 d'assist\xe8ncia de traducci\xf3";
     },
     get$errorDisableIGCUserDesc() {
       return "Fes clic aqu\xed per actualitzar la configuraci\xf3 d'assist\xe8ncia de gram\xe0tica";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Fes clic aqu\xed per actualitzar la configuraci\xf3 d'assist\xe8ncia de traducci\xf3 i de gram\xe0tica";
     },
     get$errorDisableITClassDesc() {
       return "L'assist\xe8ncia de traducci\xf3 est\xe0 desactivada per al curs en qu\xe8 es troba aquest xat.";
@@ -2504,21 +2483,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "No s'han trobat dades";
     },
-    get$bestCorrectionFeedback() {
-      return "\xc9s correcte!";
-    },
-    get$distractorFeedback() {
-      return "No \xe9s del tot correcte.";
-    },
-    get$bestAnswerFeedback() {
-      return "\xc9s correcte!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Qu\xe8 vol dir aquesta paraula?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Quina \xe9s la millor resposta?";
-    },
     get$correctionDefaultPrompt() {
       return "Quina \xe9s la millor substituci\xf3?";
     },
@@ -2611,9 +2575,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Practica";
-    },
-    get$noLanguagesSet() {
-      return "No hi ha cap idioma configurat";
     },
     get$speechToTextBody() {
       return "Per a missatges de veu, pots veure una transcripci\xf3 aix\xed com la puntuaci\xf3 de Paraules per Minut del parlant.";
@@ -4127,9 +4088,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Error de traducci\xf3";
     },
-    get$errorFetchingTranslation() {
-      return "No s'ha pogut obtenir la traducci\xf3";
-    },
     get$errorFetchingActivity() {
       return "Error en obtenir l'activitat";
     },
@@ -4162,12 +4120,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ha finalitzat aquesta activitat";
-    },
-    get$activitySummaryError() {
-      return "Resum d'activitats no disponible";
-    },
-    get$requestSummaries() {
-      return "Sol\xb7licitar resums";
     },
     get$requestAccessTitle() {
       return "Sol\xb7licitar acc\xe9s a l'anal\xedtica?";
@@ -4277,15 +4229,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Juga amb Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Esperem, encara no he acabat!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Esperant que la resta acabi...";
-    },
-    get$generatingSummary() {
-      return "Analitzant el xat i generant resultats";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " busca usuaris per unir-se a la sessi\xf3 d'activitat a " + room;
     },
@@ -4336,9 +4279,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Convida amics al meu curs";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Subscriu-te per desbloquejar resums d'activitats";
     },
     get$subscribeToUnlockDefinitions() {
       return "Subscriu-te per desbloquejar definicions";
@@ -4517,12 +4457,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Nombre d'activitats desades";
     },
-    get$saveActivityTitle() {
-      return "Desa l'activitat";
-    },
-    get$saveActivityDesc() {
-      return "Bona feina! Desa aquesta activitat per a una revisi\xf3 i pr\xe0ctica posteriors";
-    },
     get$levelInfoTooltip() {
       return "Aqu\xed pots veure tots els punts que has guanyat i com!";
     },
@@ -4543,6 +4477,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Convida amics";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informaci\xf3 de l'activitat";
@@ -5247,7 +5184,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["W/+/I5jrlLlVQEbOIQrB0YtFIXQ="] = d.current;
+  d["TRB4Xfjy/WpaPUJv1JajOvi921E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_175.part.js.map

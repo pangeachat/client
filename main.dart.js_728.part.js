@@ -1481,15 +1481,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Kliknij i przytrzymaj, aby uzyska\u0107 informacje o s\u0142owie.";
     },
-    get$greenFeedback() {
-      return "To jest to, co bym wpisa\u0142!";
-    },
-    get$yellowFeedback() {
-      return "Hm, mo\u017cesz spr\xf3bowa\u0107 i zobaczy\u0107, czy to dzia\u0142a! Aby u\u017cy\u0107 tego s\u0142owa, po prostu kliknij je ponownie.";
-    },
-    get$redFeedback() {
-      return "Nie s\u0105dz\u0119, \u017ceby to by\u0142o poprawne...";
-    },
     get$gaTooltip() {
       return "L2 u\u017cycie z pomoc\u0105 gramatyczn\u0105";
     },
@@ -1544,14 +1535,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Zignoruj";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Czekaj, to nie jest " + targetLanguage + "! Czy potrzebujesz pomocy w t\u0142umaczeniu?";
-    },
     get$countryInformation() {
       return "Moje pa\u0144stwo";
-    },
-    get$targetLanguage() {
-      return "J\u0119zyk docelowy";
     },
     get$updateLanguage() {
       return "Moje j\u0119zyki";
@@ -1577,17 +1562,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Pomoc gramatyczna jest wy\u0142\u0105czona.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Pomoc w t\u0142umaczeniu i pomoc gramatyczna s\u0105 wy\u0142\u0105czone.";
-    },
     get$errorDisableITUserDesc() {
       return "Kliknij tutaj, aby zaktualizowa\u0107 ustawienia pomocy w t\u0142umaczeniu";
     },
     get$errorDisableIGCUserDesc() {
       return "Kliknij tutaj, aby zaktualizowa\u0107 ustawienia pomocy gramatycznej";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Kliknij tutaj, aby zaktualizowa\u0107 ustawienia pomocy w t\u0142umaczeniu i pomocy gramatycznej";
     },
     get$errorDisableITClassDesc() {
       return "Pomoc w t\u0142umaczeniu jest wy\u0142\u0105czona dla kursu, w kt\xf3rym znajduje si\u0119 ten czat.";
@@ -2504,21 +2483,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nie znaleziono danych";
     },
-    get$bestCorrectionFeedback() {
-      return "To jest poprawne!";
-    },
-    get$distractorFeedback() {
-      return "To nie jest do ko\u0144ca poprawne.";
-    },
-    get$bestAnswerFeedback() {
-      return "To jest poprawne!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Co oznacza to s\u0142owo?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Jaka jest najlepsza odpowied\u017a?";
-    },
     get$correctionDefaultPrompt() {
       return "Jaka jest najlepsza zamiana?";
     },
@@ -2611,9 +2575,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "\u0106wiczenia";
-    },
-    get$noLanguagesSet() {
-      return "Nie ustawiono j\u0119zyk\xf3w";
     },
     get$speechToTextBody() {
       return "Dla wiadomo\u015bci g\u0142osowych mo\u017cesz zobaczy\u0107 transkrypt oraz wynik s\u0142\xf3w na minut\u0119 m\xf3wcy.";
@@ -4127,9 +4088,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "B\u0142\u0105d t\u0142umaczenia";
     },
-    get$errorFetchingTranslation() {
-      return "Nie uda\u0142o si\u0119 pobra\u0107 t\u0142umaczenia";
-    },
     get$errorFetchingActivity() {
       return "Nie uda\u0142o si\u0119 pobra\u0107 aktywno\u015bci";
     },
@@ -4162,12 +4120,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " zako\u0144czy\u0142 t\u0119 aktywno\u015b\u0107";
-    },
-    get$activitySummaryError() {
-      return "Podsumowania aktywno\u015bci niedost\u0119pne";
-    },
-    get$requestSummaries() {
-      return "\u017b\u0105daj podsumowa\u0144";
     },
     get$requestAccessTitle() {
       return "Czy chcesz poprosi\u0107 o dost\u0119p do analityki?";
@@ -4277,15 +4229,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Graj z Pangea Botem";
     },
-    get$waitNotDone() {
-      return "Czekaj, nie sko\u0144czy\u0142em!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Czekanie na reszt\u0119 do uko\u0144czenia...";
-    },
-    get$generatingSummary() {
-      return "Analiza czatu i generowanie wynik\xf3w";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " szuka u\u017cytkownik\xf3w do do\u0142\u0105czenia do sesji aktywno\u015bci w " + room;
     },
@@ -4336,9 +4279,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Zapro\u015b znajomych do mojego kursu";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Subskrybuj, aby odblokowa\u0107 podsumowania aktywno\u015bci";
     },
     get$subscribeToUnlockDefinitions() {
       return "Subskrybuj, aby odblokowa\u0107 definicje";
@@ -4517,12 +4457,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Liczba zapisanych aktywno\u015bci";
     },
-    get$saveActivityTitle() {
-      return "Zapisz aktywno\u015b\u0107";
-    },
-    get$saveActivityDesc() {
-      return "Dobra robota! Zapisz t\u0119 aktywno\u015b\u0107 do p\xf3\u017aniejszego przegl\u0105du i \u0107wicze\u0144";
-    },
     get$levelInfoTooltip() {
       return "Tutaj mo\u017cesz zobaczy\u0107 wszystkie punkty, kt\xf3re zdoby\u0142e\u015b i jak!";
     },
@@ -4543,6 +4477,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Zapro\u015b znajomych";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informacje o aktywno\u015bci";
@@ -5244,7 +5181,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vNHNlmmFpyt3JFVLqvG92/05x3Y="] = d.current;
+  d["1355cCY7o4f/VNZ2LzAqLpFqNwo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_728.part.js.map

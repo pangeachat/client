@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Klicka och h\xe5ll f\xf6r ordinformation.";
     },
-    get$greenFeedback() {
-      return "Det \xe4r vad jag skulle ha skrivit!";
-    },
-    get$yellowFeedback() {
-      return "Hm, du kan prova det och se om det fungerar! F\xf6r att anv\xe4nda detta ord, klicka bara p\xe5 det igen.";
-    },
-    get$redFeedback() {
-      return "Jag tror inte att det \xe4r r\xe4tt...";
-    },
     get$gaTooltip() {
       return "L2 anv\xe4ndning med grammatikhj\xe4lp";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorera";
     },
-    needsItMessage$1(targetLanguage) {
-      return "V\xe4nta, det \xe4r inte " + targetLanguage + "! Beh\xf6ver du hj\xe4lp med att \xf6vers\xe4tta?";
-    },
     get$countryInformation() {
       return "Min land";
-    },
-    get$targetLanguage() {
-      return "M\xe5lspr\xe5k";
     },
     get$updateLanguage() {
       return "Mina spr\xe5k";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Grammatikhj\xe4lp \xe4r avst\xe4ngd.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "\xd6vers\xe4ttningshj\xe4lp och grammatikhj\xe4lp \xe4r avst\xe4ngda.";
-    },
     get$errorDisableITUserDesc() {
       return "Klicka h\xe4r f\xf6r att uppdatera inst\xe4llningar f\xf6r \xf6vers\xe4ttningshj\xe4lp";
     },
     get$errorDisableIGCUserDesc() {
       return "Klicka h\xe4r f\xf6r att uppdatera inst\xe4llningar f\xf6r grammatikhj\xe4lp";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klicka h\xe4r f\xf6r att uppdatera inst\xe4llningar f\xf6r \xf6vers\xe4ttningshj\xe4lp och grammatikhj\xe4lp";
     },
     get$errorDisableITClassDesc() {
       return "\xd6vers\xe4ttningshj\xe4lp \xe4r avst\xe4ngd f\xf6r kursen som denna chatt tillh\xf6r.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Inga data hittades";
     },
-    get$bestCorrectionFeedback() {
-      return "Det st\xe4mmer!";
-    },
-    get$distractorFeedback() {
-      return "Det \xe4r inte helt r\xe4tt.";
-    },
-    get$bestAnswerFeedback() {
-      return "Det st\xe4mmer!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Vad betyder detta ord?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Vad \xe4r det b\xe4sta svaret?";
-    },
     get$correctionDefaultPrompt() {
       return "Vad \xe4r det b\xe4sta ers\xe4ttningsordet?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "\xd6va";
-    },
-    get$noLanguagesSet() {
-      return "Inga spr\xe5k inst\xe4llda";
     },
     get$speechToTextBody() {
       return "F\xf6r r\xf6stmeddelanden kan du se en transkription samt talarens ord per minut-po\xe4ng.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "\xd6vers\xe4ttningsfel";
     },
-    get$errorFetchingTranslation() {
-      return "Misslyckades med att h\xe4mta \xf6vers\xe4ttning";
-    },
     get$errorFetchingActivity() {
       return "Misslyckades med att h\xe4mta aktivitet";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " avslutade denna aktivitet";
-    },
-    get$activitySummaryError() {
-      return "Sammanfattningar av aktivitet \xe4r otillg\xe4ngliga";
-    },
-    get$requestSummaries() {
-      return "Beg\xe4r sammanfattningar";
     },
     get$requestAccessTitle() {
       return "Beg\xe4r \xe5tkomst till analys?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Spela med Pangea Bot";
     },
-    get$waitNotDone() {
-      return "V\xe4nta, jag \xe4r inte klar!";
-    },
-    get$waitingForOthersToFinish() {
-      return "V\xe4ntar p\xe5 att resten ska bli klara...";
-    },
-    get$generatingSummary() {
-      return "Analyserar chatten och genererar resultat";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " letar efter anv\xe4ndare att delta i aktivitetssessionen i " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Bjud in v\xe4nner till min kurs";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Prenumerera f\xf6r att l\xe5sa upp aktivitets\xf6versikter";
     },
     get$subscribeToUnlockDefinitions() {
       return "Prenumerera f\xf6r att l\xe5sa upp definitioner";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Antal sparade aktiviteter";
     },
-    get$saveActivityTitle() {
-      return "Spara aktivitet";
-    },
-    get$saveActivityDesc() {
-      return "Bra jobbat! Spara denna aktivitet f\xf6r senare granskning och \xf6vning";
-    },
     get$levelInfoTooltip() {
       return "H\xe4r kan du se alla po\xe4ng du har tj\xe4nat och hur!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Bjud in v\xe4nner";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Aktivitetsinformation";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hFDfcEqW+Ty6noH8eQ8/XTgKqso="] = d.current;
+  d["FoOYMVnoFKW9X4keb38PG1VhMg8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_751.part.js.map

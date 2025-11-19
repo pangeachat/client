@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Klaku kaj teni por vorto-informoj.";
     },
-    get$greenFeedback() {
-      return "Tio estas, kion mi metus!";
-    },
-    get$yellowFeedback() {
-      return "Ho, vi povas provi tion kaj vidi \u0109u \u011di funkcias! Por uzi \u0109i tiun vorton, simple denove klaku \u011din.";
-    },
-    get$redFeedback() {
-      return "Mi ne pensas, ke tio estas \u011dusta...";
-    },
     get$gaTooltip() {
       return "L2 uzi kun gramatika helpo";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignori";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Atendu, tio ne estas " + targetLanguage + "! \u0108u vi bezonas helpon por traduki?";
-    },
     get$countryInformation() {
       return "Mia lando";
-    },
-    get$targetLanguage() {
-      return "Cel-lingvo";
     },
     get$updateLanguage() {
       return "Miaj lingvoj";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Gramatika helpo estas mal\u015daltita.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Tradukado-helpo kaj gramatika helpo estas mal\u015daltitaj.";
-    },
     get$errorDisableITUserDesc() {
       return "Klaku \u0109i tie por \u011disdatigi agordojn pri tradukhelpado";
     },
     get$errorDisableIGCUserDesc() {
       return "Klaku \u0109i tie por \u011disdatigi gramatikajn helpagordojn";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klaku \u0109i tie por \u011disdatigi traduk- kaj gramatikajn helpagordojn";
     },
     get$errorDisableITClassDesc() {
       return "Tradukhelpado estas mal\u015daltita por la kurso en kiu \u0109i tiu babilejo estas.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Neniu datumoj trovita";
     },
-    get$bestCorrectionFeedback() {
-      return "Tio estas \u011dusta!";
-    },
-    get$distractorFeedback() {
-      return "Tio ne estas tute \u011dusta.";
-    },
-    get$bestAnswerFeedback() {
-      return "Tio estas \u011dusta!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Kion signifas \u0109i tiu vorto?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Kio estas la plej bona respondo?";
-    },
     get$correctionDefaultPrompt() {
       return "Kio estas la plej bona anstata\u016da\u0135o?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Praktiko";
-    },
-    get$noLanguagesSet() {
-      return "Neniu lingvo agordita";
     },
     get$speechToTextBody() {
       return "Por vo\u0109mesa\u011doj, vi povas vidi transskribon same kiel la vortrapideco de la parolanto.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Eraro en traduko";
     },
-    get$errorFetchingTranslation() {
-      return "Malsukcesis akiri tradukon";
-    },
     get$errorFetchingActivity() {
       return "Malsukcesis akiri agadon";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " finis \u0109i tiun agadon";
-    },
-    get$activitySummaryError() {
-      return "Aktivitatresumoj ne disponeblas";
-    },
-    get$requestSummaries() {
-      return "Petaj resumoj";
     },
     get$requestAccessTitle() {
       return "Petu aliron al analitiko?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Ludi kun Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Atendu, mi ne finis!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Atendas la aliajn fini\u011di...";
-    },
-    get$generatingSummary() {
-      return "Analizante babiladon kaj generante rezultojn";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " ser\u0109as uzantojn por ali\u011di al la aktivec-sesio en " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Inviti amikojn al mia kurso";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Aboni por mal\u015dlosi aktivadajn resumojn";
     },
     get$subscribeToUnlockDefinitions() {
       return "Aboni por mal\u015dlosi difinojn";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Nombro de konservitaj aktivecoj";
     },
-    get$saveActivityTitle() {
-      return "Konservi aktivecon";
-    },
-    get$saveActivityDesc() {
-      return "Bonega laboro! Konservu \u0109i tiun aktivecon por posta revizio kaj praktiko";
-    },
     get$levelInfoTooltip() {
       return "\u0108i tie vi povas vidi \u0109iujn punktojn, kiujn vi gajnis kaj kiel!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Inviti amikojn";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Aktiveco informo";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kNBdkx+n7OdNONdam4buyWg1ASU="] = d.current;
+  d["IycjjmP624Hw/8oNaFFnr58KYVw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_465.part.js.map

@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Fai clic e mant\xe9n para obter informaci\xf3n sobre a palabra.";
     },
-    get$greenFeedback() {
-      return "Iso \xe9 o que eu po\xf1er\xeda!";
-    },
-    get$yellowFeedback() {
-      return "Hm, podes probalo e ver se funciona! Para usar esta palabra, s\xf3 fai clic de novo.";
-    },
-    get$redFeedback() {
-      return "Creo que iso non \xe9 correcto...";
-    },
     get$gaTooltip() {
       return "L2 con asistencia gramatical";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorar";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Espera, iso non \xe9 " + targetLanguage + "! Necesitas axuda para traducir?";
-    },
     get$countryInformation() {
       return "O meu pa\xeds";
-    },
-    get$targetLanguage() {
-      return "Linguaxe de destino";
     },
     get$updateLanguage() {
       return "As mi\xf1as linguas";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "A axuda de gram\xe1tica est\xe1 desactivada.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "A axuda de traduci\xf3n e a axuda de gram\xe1tica est\xe1n desactivadas.";
-    },
     get$errorDisableITUserDesc() {
       return "Fai clic aqu\xed para actualizar as configuraci\xf3ns de axuda de traduci\xf3n";
     },
     get$errorDisableIGCUserDesc() {
       return "Fai clic aqu\xed para actualizar as configuraci\xf3ns de axuda de gram\xe1tica";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Fai clic aqu\xed para actualizar as configuraci\xf3ns de axuda de traduci\xf3n e gram\xe1tica";
     },
     get$errorDisableITClassDesc() {
       return "A axuda de traduci\xf3n est\xe1 desactivada para o curso neste que se atopa este chat.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Non se atoparon datos";
     },
-    get$bestCorrectionFeedback() {
-      return "\xa1Eso \xe9 correcto!";
-    },
-    get$distractorFeedback() {
-      return "Non \xe9 del todo correcto.";
-    },
-    get$bestAnswerFeedback() {
-      return "\xa1Eso \xe9 correcto!";
-    },
-    get$definitionDefaultPrompt() {
-      return "\xbfQue significa esta palabra?";
-    },
-    get$practiceDefaultPrompt() {
-      return "\xbfCual \xe9 a mellor resposta?";
-    },
     get$correctionDefaultPrompt() {
       return "\xbfCual \xe9 a mellor substituci\xf3n?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Practicar";
-    },
-    get$noLanguagesSet() {
-      return "Non hai idiomas establecidos";
     },
     get$speechToTextBody() {
       return "Para mensaxes de voz, podes ver unha transcrici\xf3n as\xed como a puntuaci\xf3n de Palabras por Minuto do orador.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Erro de traduci\xf3n";
     },
-    get$errorFetchingTranslation() {
-      return "Fallou ao obter a traduci\xf3n";
-    },
     get$errorFetchingActivity() {
       return "Fallou ao obter a actividade";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " rematou esta actividade";
-    },
-    get$activitySummaryError() {
-      return "Res\xfamenes de actividade non dispo\xf1ibles";
-    },
-    get$requestSummaries() {
-      return "Solicitar res\xfamenes";
     },
     get$requestAccessTitle() {
       return "Solicitar acceso \xe1 anal\xedtica?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Xogar con Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Espera, a\xednda non rematei!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Agardando que o resto remate...";
-    },
-    get$generatingSummary() {
-      return "Analizando o chat e xerando resultados";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " est\xe1 a buscar usuarios para unirse \xe1 sesi\xf3n de actividade en " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invita amigos ao meu curso";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Suscr\xedbete para desbloquear res\xfamenes de actividades";
     },
     get$subscribeToUnlockDefinitions() {
       return "Suscr\xedbete para desbloquear definici\xf3ns";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "N\xfamero de actividades gardadas";
     },
-    get$saveActivityTitle() {
-      return "Gardar actividade";
-    },
-    get$saveActivityDesc() {
-      return "Bo traballo! Garda esta actividade para revisi\xf3n e pr\xe1ctica posteriores";
-    },
     get$levelInfoTooltip() {
       return "Aqu\xed podes ver todos os puntos que ga\xf1aches e como!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Invitar amigos";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informaci\xf3n da actividade";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["suWFVFzg10J3mFojooSsJUrIW9U="] = d.current;
+  d["woV5isYnTI3MW8bnPvtE9CnVGio="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

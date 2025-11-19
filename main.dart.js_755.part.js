@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Kelime bilgisi i\xe7in t\u0131klay\u0131p bas\u0131l\u0131 tut.";
     },
-    get$greenFeedback() {
-      return "Benim koyaca\u011f\u0131m bu olurdu!";
-    },
-    get$yellowFeedback() {
-      return "Hm, deneyebilir ve i\u015fe yaray\u0131p yaramad\u0131\u011f\u0131n\u0131 g\xf6rebilirsin! Bu kelimeyi kullanmak i\xe7in tekrar t\u0131kla.";
-    },
-    get$redFeedback() {
-      return "Sanm\u0131yorum ki bu do\u011fru...";
-    },
     get$gaTooltip() {
       return "Dilbilgisi yard\u0131m\u0131yla L2 kullan\u0131m\u0131";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Yoksay";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Bekle, bu " + targetLanguage + " de\u011fil! \xc7eviri yard\u0131m\u0131na ihtiyac\u0131n var m\u0131?";
-    },
     get$countryInformation() {
       return "\xdclkem";
-    },
-    get$targetLanguage() {
-      return "Hedef Dil";
     },
     get$updateLanguage() {
       return "Dillerim";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Dilbilgisi yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131ld\u0131.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "\xc7eviri ve dilbilgisi yard\u0131m\u0131 devre d\u0131\u015f\u0131.";
-    },
     get$errorDisableITUserDesc() {
       return "\xc7eviri yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
     },
     get$errorDisableIGCUserDesc() {
       return "Dilbilgisi yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "\xc7eviri ve dilbilgisi yard\u0131m\u0131 ayarlar\u0131n\u0131 g\xfcncellemek i\xe7in buraya t\u0131klay\u0131n";
     },
     get$errorDisableITClassDesc() {
       return "Bu sohbetin bulundu\u011fu kursta \xe7eviri yard\u0131m\u0131 devre d\u0131\u015f\u0131 b\u0131rak\u0131lm\u0131\u015ft\u0131r.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Veri bulunamad\u0131";
     },
-    get$bestCorrectionFeedback() {
-      return "Do\u011fru!";
-    },
-    get$distractorFeedback() {
-      return "Bu pek do\u011fru de\u011fil.";
-    },
-    get$bestAnswerFeedback() {
-      return "Do\u011fru!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Bu kelimenin anlam\u0131 nedir?";
-    },
-    get$practiceDefaultPrompt() {
-      return "En iyi cevap nedir?";
-    },
     get$correctionDefaultPrompt() {
       return "En iyi yerine koyma nedir?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Pratik yap";
-    },
-    get$noLanguagesSet() {
-      return "Dil ayar\u0131 yap\u0131lmam\u0131\u015f";
     },
     get$speechToTextBody() {
       return "Sesli mesajlar i\xe7in, hem transkripti g\xf6rebilir hem de konu\u015fmac\u0131n\u0131n Dakika Ba\u015f\u0131na Kelime (WPM) puan\u0131n\u0131 g\xf6rebilirsiniz.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "\xc7eviri hatas\u0131";
     },
-    get$errorFetchingTranslation() {
-      return "\xc7eviri al\u0131namad\u0131";
-    },
     get$errorFetchingActivity() {
       return "Etkinlik al\u0131namad\u0131";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " bu etkinli\u011fi tamamlad\u0131";
-    },
-    get$activitySummaryError() {
-      return "Etkinlik \xf6zetleri kullan\u0131lam\u0131yor";
-    },
-    get$requestSummaries() {
-      return "\xd6zetleri talep et";
     },
     get$requestAccessTitle() {
       return "Analitik eri\u015fimi talep edilsin mi?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Pangea Bot ile oyna";
     },
-    get$waitNotDone() {
-      return "Bekle, bitirmedim!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Di\u011ferlerinin bitirmesini bekliyorum...";
-    },
-    get$generatingSummary() {
-      return "Sohbeti analiz ediyor ve sonu\xe7lar olu\u015fturuyor";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " " + room + " i\xe7indeki etkinlik oturumuna kat\u0131lacak kullan\u0131c\u0131lar ar\u0131yor";
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Arkada\u015flar\u0131m\u0131 kursuma davet et";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Etkinlik \xf6zetlerini a\xe7mak i\xe7in abone ol";
     },
     get$subscribeToUnlockDefinitions() {
       return "Tan\u0131mlar\u0131 a\xe7mak i\xe7in abone ol";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Kaydedilen aktivitelerin say\u0131s\u0131";
     },
-    get$saveActivityTitle() {
-      return "Aktiviteyi kaydet";
-    },
-    get$saveActivityDesc() {
-      return "\u0130yi i\u015f! Bu aktiviteyi daha sonra g\xf6zden ge\xe7irmek ve pratik yapmak i\xe7in kaydedin";
-    },
     get$levelInfoTooltip() {
       return "Burada kazand\u0131\u011f\u0131n\u0131z t\xfcm puanlar\u0131 ve nas\u0131l kazand\u0131\u011f\u0131n\u0131z\u0131 g\xf6rebilirsiniz!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Arkada\u015flar\u0131 davet et";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Etkinlik bilgisi";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZOYg6lccMkc+dzif0xdfUp2Embc="] = d.current;
+  d["7cm9bBJyy5R+RnZXkh26ssjJefQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

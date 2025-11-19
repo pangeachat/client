@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Click and hold for word info.";
     },
-    get$greenFeedback() {
-      return "That's what I would put!";
-    },
-    get$yellowFeedback() {
-      return "Hm, you can try that and see if it works! To use this word, just click it again.";
-    },
-    get$redFeedback() {
-      return "I don't think that's right...";
-    },
     get$gaTooltip() {
       return "L2 use with grammar assistance";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignore";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
-    },
     get$countryInformation() {
       return "My country";
-    },
-    get$targetLanguage() {
-      return "Target Language";
     },
     get$updateLanguage() {
       return "My languages";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Grammar assistance is turned off.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Translation assistance and grammar assistance are turned off.";
-    },
     get$errorDisableITUserDesc() {
       return "Click here to update translation assistance settings";
     },
     get$errorDisableIGCUserDesc() {
       return "Click here to update grammar assistance settings";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Click here to update translation assistance and grammar assistance settings";
     },
     get$errorDisableITClassDesc() {
       return "Translation assistance is turned off for the course that this chat is in.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "No data found";
     },
-    get$bestCorrectionFeedback() {
-      return "That's correct!";
-    },
-    get$distractorFeedback() {
-      return "That's not quite right.";
-    },
-    get$bestAnswerFeedback() {
-      return "That's correct!";
-    },
-    get$definitionDefaultPrompt() {
-      return "What does this word mean?";
-    },
-    get$practiceDefaultPrompt() {
-      return "What is the best answer?";
-    },
     get$correctionDefaultPrompt() {
       return "What is the best replacement?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Practice";
-    },
-    get$noLanguagesSet() {
-      return "No languages set";
     },
     get$speechToTextBody() {
       return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Translation error";
     },
-    get$errorFetchingTranslation() {
-      return "Failed to fetch translation";
-    },
     get$errorFetchingActivity() {
       return "Failed to fetch activity";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " wrapped up this activity";
-    },
-    get$activitySummaryError() {
-      return "Activity summaries unavailable";
-    },
-    get$requestSummaries() {
-      return "Request summaries";
     },
     get$requestAccessTitle() {
       return "Request analytics access?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Play with Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Wait I\u2019m not done!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Waiting for the rest to finish up...";
-    },
-    get$generatingSummary() {
-      return "Analyzing chat and generating results";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " is looking for users to join the activity session in " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invite friends to my course";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Subscribe to unlock activity summaries";
     },
     get$subscribeToUnlockDefinitions() {
       return "Subscribe to unlock definitions";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Number of saved activities";
     },
-    get$saveActivityTitle() {
-      return "Save activity";
-    },
-    get$saveActivityDesc() {
-      return "Good job! Save this activity for later review and practice";
-    },
     get$levelInfoTooltip() {
       return "Here you can see all the points you\u2019ve earned and how!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Invite friends";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Activity info";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wVbG5eqFjb7spNcOagBiypp0dDU="] = d.current;
+  d["DTAmd7xJLm7EEKw7l4wr1XVkE5w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_408.part.js.map

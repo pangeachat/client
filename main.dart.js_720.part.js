@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Klikk og hold for ordinformasjon.";
     },
-    get$greenFeedback() {
-      return "Det er det jeg ville ha skrevet!";
-    },
-    get$yellowFeedback() {
-      return "Hm, du kan pr\xf8ve det og se om det fungerer! For \xe5 bruke dette ordet, klikk bare igjen.";
-    },
-    get$redFeedback() {
-      return "Jeg tror ikke det er riktig...";
-    },
     get$gaTooltip() {
       return "L2 bruk med grammatikkhjelp";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorer";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Vent, det er ikke " + targetLanguage + "! Trenger du hjelp med oversettelsen?";
-    },
     get$countryInformation() {
       return "Mitt land";
-    },
-    get$targetLanguage() {
-      return "M\xe5lspr\xe5k";
     },
     get$updateLanguage() {
       return "Mine spr\xe5k";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Grammatikkhjelp er sl\xe5tt av.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Oversettelses- og grammatikkhjelp er sl\xe5tt av.";
-    },
     get$errorDisableITUserDesc() {
       return "Klikk her for \xe5 oppdatere innstillingene for oversettelseshjelp";
     },
     get$errorDisableIGCUserDesc() {
       return "Klikk her for \xe5 oppdatere innstillingene for grammatikkhjelp";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klikk her for \xe5 oppdatere innstillingene for oversettelses- og grammatikkhjelp";
     },
     get$errorDisableITClassDesc() {
       return "Oversettelseshjelp er sl\xe5tt av for kurset som denne chatten er i.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Ingen data funnet";
     },
-    get$bestCorrectionFeedback() {
-      return "Det stemmer!";
-    },
-    get$distractorFeedback() {
-      return "Det er ikke helt riktig.";
-    },
-    get$bestAnswerFeedback() {
-      return "Det stemmer!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Hva betyr dette ordet?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Hva er det beste svaret?";
-    },
     get$correctionDefaultPrompt() {
       return "Hva er den beste erstatningen?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "\xd8v";
-    },
-    get$noLanguagesSet() {
-      return "Ingen spr\xe5k satt";
     },
     get$speechToTextBody() {
       return "For talebeskjeder kan du se en transkripsjon samt speakerens Words Per Minute-poengsum.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Oversettelsesfeil";
     },
-    get$errorFetchingTranslation() {
-      return "Mislyktes i \xe5 hente oversettelse";
-    },
     get$errorFetchingActivity() {
       return "Mislyktes i \xe5 hente aktivitet";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " avsluttet denne aktiviteten";
-    },
-    get$activitySummaryError() {
-      return "Aktivitetsoppsummeringer er utilgjengelige";
-    },
-    get$requestSummaries() {
-      return "Be om oppsummeringer";
     },
     get$requestAccessTitle() {
       return "Be om tilgang til analyser?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Lek med Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Vent, jeg er ikke ferdig!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Venter p\xe5 at de andre skal bli ferdige...";
-    },
-    get$generatingSummary() {
-      return "Analyserer chat og genererer resultater";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " ser etter brukere for \xe5 delta i aktivitets\xf8kten i " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Inviter venner til kurset mitt";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Abonner for \xe5 l\xe5se opp aktivitetsoppsummeringer";
     },
     get$subscribeToUnlockDefinitions() {
       return "Abonner for \xe5 l\xe5se opp definisjoner";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Antall lagrede aktiviteter";
     },
-    get$saveActivityTitle() {
-      return "Lagre aktivitet";
-    },
-    get$saveActivityDesc() {
-      return "Bra jobba! Lagre denne aktiviteten for senere gjennomgang og \xf8velse";
-    },
     get$levelInfoTooltip() {
       return "Her kan du se alle poengene du har tjent og hvordan!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Inviter venner";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Aktivitetsinfo";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eVJXryC4vzo2+Psakwlt5hWskTM="] = d.current;
+  d["/gp0u3kmh1Cjdev/adiE1Ka9aV0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_720.part.js.map

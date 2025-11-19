@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Klik og hold for ordinfo.";
     },
-    get$greenFeedback() {
-      return "Det er, hvad jeg ville have skrevet!";
-    },
-    get$yellowFeedback() {
-      return "Hm, du kan pr\xf8ve det og se, om det virker! For at bruge dette ord skal du bare klikke p\xe5 det igen.";
-    },
-    get$redFeedback() {
-      return "Jeg tror ikke, det er rigtigt...";
-    },
     get$gaTooltip() {
       return "L2 brug med grammatikassistance";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignorer";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Vent, det er ikke " + targetLanguage + "! Har du brug for hj\xe6lp til overs\xe6ttelse?";
-    },
     get$countryInformation() {
       return "Mit land";
-    },
-    get$targetLanguage() {
-      return "M\xe5lsprog";
     },
     get$updateLanguage() {
       return "Mine sprog";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Grammatikkens assistance er sl\xe5et fra.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Overs\xe6ttelses- og grammatikkens assistance er sl\xe5et fra.";
-    },
     get$errorDisableITUserDesc() {
       return "Klik her for at opdatere overs\xe6ttelsesassistanceindstillinger";
     },
     get$errorDisableIGCUserDesc() {
       return "Klik her for at opdatere grammatikkens assistanceindstillinger";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klik her for at opdatere overs\xe6ttelses- og grammatikkens assistanceindstillinger";
     },
     get$errorDisableITClassDesc() {
       return "Overs\xe6ttelsesassistance er deaktiveret for kurset, som denne chat er i.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Ingen data fundet";
     },
-    get$bestCorrectionFeedback() {
-      return "Det er korrekt!";
-    },
-    get$distractorFeedback() {
-      return "Det er ikke helt rigtigt.";
-    },
-    get$bestAnswerFeedback() {
-      return "Det er korrekt!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Hvad betyder dette ord?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Hvad er det bedste svar?";
-    },
     get$correctionDefaultPrompt() {
       return "Hvad er den bedste erstatning?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "\xd8v";
-    },
-    get$noLanguagesSet() {
-      return "Ingen sprog er indstillet";
     },
     get$speechToTextBody() {
       return "For stemmemeddelelser kan du se en transskription samt talerens ord pr. minut-score.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Overs\xe6ttelsesfejl";
     },
-    get$errorFetchingTranslation() {
-      return "Kunne ikke hente overs\xe6ttelse";
-    },
     get$errorFetchingActivity() {
       return "Kunne ikke hente aktivitet";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " afsluttede denne aktivitet";
-    },
-    get$activitySummaryError() {
-      return "Aktivitetsoversigter er ikke tilg\xe6ngelige";
-    },
-    get$requestSummaries() {
-      return "Anmod om oversigter";
     },
     get$requestAccessTitle() {
       return "Anmod om adgang til analyser?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Leg med Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Vent, jeg er ikke f\xe6rdig!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Venter p\xe5, at de andre bliver f\xe6rdige...";
-    },
-    get$generatingSummary() {
-      return "Analyserer chat og genererer resultater";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " leder efter brugere til at deltage i aktivitetssessionen i " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Inviter venner til min kursus";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Abonner for at l\xe5se op for aktivitetsoversigter";
     },
     get$subscribeToUnlockDefinitions() {
       return "Abonner for at l\xe5se op for definitioner";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Antal gemte aktiviteter";
     },
-    get$saveActivityTitle() {
-      return "Gem aktivitet";
-    },
-    get$saveActivityDesc() {
-      return "Godt klaret! Gem denne aktivitet til senere gennemgang og \xf8velse";
-    },
     get$levelInfoTooltip() {
       return "Her kan du se alle de point, du har tjent, og hvordan!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Inviter venner";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Aktivitetsinfo";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HnYUGAt5x7iVvneEfh01yD0kyVk="] = d.current;
+  d["dTIfjCzmIzePsrS72FYv9uG5qKY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_300.part.js.map

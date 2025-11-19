@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Kliknite in dr\u017eite za informacije o besedi.";
     },
-    get$greenFeedback() {
-      return "To bi jaz vnesel!";
-    },
-    get$yellowFeedback() {
-      return "Hm, poskusi to in poglej, \u010de deluje! Za uporabo te besede jo preprosto kliknite znova.";
-    },
-    get$redFeedback() {
-      return "Mislim, da to ni prav...";
-    },
     get$gaTooltip() {
       return "L2 uporaba z jezikovno pomo\u010djo";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Prezri";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Po\u010dakajte, to ni " + targetLanguage + "! Ali potrebujete pomo\u010d pri prevajanju?";
-    },
     get$countryInformation() {
       return "Moja dr\u017eava";
-    },
-    get$targetLanguage() {
-      return "Ciljni jezik";
     },
     get$updateLanguage() {
       return "Moji jeziki";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Pomo\u010d pri slovnici je izklopljena.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Pomo\u010d pri prevajanju in slovnici sta izklopljeni.";
-    },
     get$errorDisableITUserDesc() {
       return "Kliknite tukaj za posodobitev nastavitev pomo\u010di pri prevajanju";
     },
     get$errorDisableIGCUserDesc() {
       return "Kliknite tukaj za posodobitev nastavitev pomo\u010di pri slovnici";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Kliknite tukaj za posodobitev nastavitev pomo\u010di pri prevajanju in slovnici";
     },
     get$errorDisableITClassDesc() {
       return "Pomo\u010d pri prevajanju je izklopljena za te\u010daj, v katerem je ta klepet.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Ni najdenih podatkov";
     },
-    get$bestCorrectionFeedback() {
-      return "To je pravilno!";
-    },
-    get$distractorFeedback() {
-      return "Ni \u010disto prav.";
-    },
-    get$bestAnswerFeedback() {
-      return "To je pravilno!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Kaj pomeni ta beseda?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Kak\u0161en je najbolj\u0161i odgovor?";
-    },
     get$correctionDefaultPrompt() {
       return "Kak\u0161na je najbolj\u0161a zamenjava?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Vaja";
-    },
-    get$noLanguagesSet() {
-      return "Jeziki niso nastavljeni";
     },
     get$speechToTextBody() {
       return "Za glasovne sporo\u010dila lahko vidite prepis ter oceno govora na minuto.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Napaka pri prevajanju";
     },
-    get$errorFetchingTranslation() {
-      return "Ni bilo mogo\u010de pridobiti prevoda";
-    },
     get$errorFetchingActivity() {
       return "Ni bilo mogo\u010de pridobiti dejavnosti";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " je zaklju\u010dil to dejavnost";
-    },
-    get$activitySummaryError() {
-      return "Povzetki dejavnosti niso na voljo";
-    },
-    get$requestSummaries() {
-      return "Zahtevaj povzetke";
     },
     get$requestAccessTitle() {
       return "Zahtevaj dostop do analitike?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Igraj z Pangea Botom";
     },
-    get$waitNotDone() {
-      return "Po\u010dakaj, \u0161e nisem kon\u010dal!";
-    },
-    get$waitingForOthersToFinish() {
-      return "\u010cakam, da ostali zaklju\u010dijo...";
-    },
-    get$generatingSummary() {
-      return "Analiziram klepet in ustvarjam rezultate";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " i\u0161\u010de uporabnike za sodelovanje v aktivnosti v " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Vabite prijatelje na moj te\u010daj";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Naro\u010dite se na odklepanje povzetkov dejavnosti";
     },
     get$subscribeToUnlockDefinitions() {
       return "Naro\u010dite se na odklepanje definicij";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "\u0160tevilo shranjenih dejavnosti";
     },
-    get$saveActivityTitle() {
-      return "Shrani dejavnost";
-    },
-    get$saveActivityDesc() {
-      return "Dobra opravljena! Shranite to dejavnost za kasnej\u0161i pregled in vadbo";
-    },
     get$levelInfoTooltip() {
       return "Tukaj lahko vidite vse to\u010dke, ki ste jih zaslu\u017eili, in kako!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Vabite prijatelje";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informacije o dejavnosti";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DYxIoRi9xGpKuqAHFI3+Ly9irHw="] = d.current;
+  d["dELr+2ReKLdB2VP9HAaTq/Z5AaI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Clicca e tenea pro information de parola.";
     },
-    get$greenFeedback() {
-      return "Isto es lo que io adderia!";
-    },
-    get$yellowFeedback() {
-      return "Hm, tu pote provar lo e vider si illo funciona! Pro usar iste parola, simplemente clicca ancora una vice.";
-    },
-    get$redFeedback() {
-      return "Io non pensa que isto es justo...";
-    },
     get$gaTooltip() {
       return "L2 usance con adjuta grammatical";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignora";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Aspetta, illo non es " + targetLanguage + "! Es tu besonio de adjuta pro traducer?";
-    },
     get$countryInformation() {
       return "Mi pais";
-    },
-    get$targetLanguage() {
-      return "Lingua de destination";
     },
     get$updateLanguage() {
       return "Mi linguas";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Le assistentia de grammatica es disactivate.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Le assistentia de traduction e de grammatica es disactivate.";
-    },
     get$errorDisableITUserDesc() {
       return "Clicca hic pro actualizar le configuration de assistentia de traduction";
     },
     get$errorDisableIGCUserDesc() {
       return "Clicca hic pro actualizar le configuration de assistentia de grammatica";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Clicca hic pro actualizar le configuration de assistentia de traduction e de grammatica";
     },
     get$errorDisableITClassDesc() {
       return "Le assistance de traduction es disactivate pro le curso in le qual iste chat es.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nulle datos trovate";
     },
-    get$bestCorrectionFeedback() {
-      return "Isto es correct!";
-    },
-    get$distractorFeedback() {
-      return "Isto non es justo correct.";
-    },
-    get$bestAnswerFeedback() {
-      return "Isto es correct!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Que significa iste parola?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Qual es le melior responsa?";
-    },
     get$correctionDefaultPrompt() {
       return "Qual es le melior replacement?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Practica";
-    },
-    get$noLanguagesSet() {
-      return "Nulle linguas ha essite configurate";
     },
     get$speechToTextBody() {
       return "Pro messages de voce, tu pote vider un transcripto e etiam le punctuacion de Parolas Per Minuto del speaker.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Error de translation";
     },
-    get$errorFetchingTranslation() {
-      return "Fallite a reciper le translation";
-    },
     get$errorFetchingActivity() {
       return "Fallite a reciper le activity";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ha completate iste activitate";
-    },
-    get$activitySummaryError() {
-      return "Summarios de activitate non disponibile";
-    },
-    get$requestSummaries() {
-      return "Requerer summarios";
     },
     get$requestAccessTitle() {
       return "Demanar acc\xe8s a l'anal\xedtica?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jocar con Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Spere, io non ha finito!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Spere que le alios finisca...";
-    },
-    get$generatingSummary() {
-      return "Analizando le chat e generate resultatos";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " cerca usatores pro aderir a le session de activitate in " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invita amicos a mi curso";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Subscribi pro desbloquar resumos de actividades";
     },
     get$subscribeToUnlockDefinitions() {
       return "Subscribi pro desbloquar definitiones";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Numero di attivit\xe0 salvate";
     },
-    get$saveActivityTitle() {
-      return "Salva attivit\xe0";
-    },
-    get$saveActivityDesc() {
-      return "Buon lavoro! Salva questa attivit\xe0 per revisione e pratica futura";
-    },
     get$levelInfoTooltip() {
       return "Qui puoi vedere tutti i punti che hai guadagnato e come!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Invitar amicos";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Info aktivitas";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["i90WHlIvScu5+1cOsiHPsSNA9xw="] = d.current;
+  d["kUs7GW2BwVz/NnVp3Q7Gy2uEWag="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_666.part.js.map

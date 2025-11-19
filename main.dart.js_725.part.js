@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Klik en houd vast voor woordinformatie.";
     },
-    get$greenFeedback() {
-      return "Dat zou ik erin zetten!";
-    },
-    get$yellowFeedback() {
-      return "Hm, je kunt dat proberen en kijken of het werkt! Om dit woord te gebruiken, klik er gewoon nog een keer op.";
-    },
-    get$redFeedback() {
-      return "Ik denk niet dat dat klopt...";
-    },
     get$gaTooltip() {
       return "L2 gebruik met grammatica hulp";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Negeer";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Wacht, dat is niet " + targetLanguage + "! Heb je hulp nodig bij vertalen?";
-    },
     get$countryInformation() {
       return "Mijn land";
-    },
-    get$targetLanguage() {
-      return "Doeltaal";
     },
     get$updateLanguage() {
       return "Mijn talen";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Grammatica hulp is uitgeschakeld.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Vertaalhulp en grammatica hulp zijn uitgeschakeld.";
-    },
     get$errorDisableITUserDesc() {
       return "Klik hier om vertaalhulp-instellingen bij te werken";
     },
     get$errorDisableIGCUserDesc() {
       return "Klik hier om grammatica hulp-instellingen bij te werken";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klik hier om vertaalhulp en grammatica hulp-instellingen bij te werken";
     },
     get$errorDisableITClassDesc() {
       return "Vertaalhulp is uitgeschakeld voor de cursus waarin deze chat zich bevindt.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Geen gegevens gevonden";
     },
-    get$bestCorrectionFeedback() {
-      return "Dat klopt!";
-    },
-    get$distractorFeedback() {
-      return "Dat is niet helemaal correct.";
-    },
-    get$bestAnswerFeedback() {
-      return "Dat klopt!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Wat betekent dit woord?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Wat is het beste antwoord?";
-    },
     get$correctionDefaultPrompt() {
       return "Wat is de beste vervanging?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Oefenen";
-    },
-    get$noLanguagesSet() {
-      return "Geen talen ingesteld";
     },
     get$speechToTextBody() {
       return "Voor spraakberichten kunt u zowel een transcript als de woorden per minuut-score van de spreker zien.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Vertaalfout";
     },
-    get$errorFetchingTranslation() {
-      return "Fout bij het ophalen van vertaling";
-    },
     get$errorFetchingActivity() {
       return "Fout bij het ophalen van activiteit";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " heeft deze activiteit afgerond";
-    },
-    get$activitySummaryError() {
-      return "Samenvattingen van activiteiten niet beschikbaar";
-    },
-    get$requestSummaries() {
-      return "Vraag samenvattingen aan";
     },
     get$requestAccessTitle() {
       return "Toegang tot analyses aanvragen?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Speel met Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Wacht, ik ben nog niet klaar!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Wachten tot de rest klaar is...";
-    },
-    get$generatingSummary() {
-      return "Chat analyseren en resultaten genereren";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " zoekt gebruikers om deel te nemen aan de activiteitensessie in " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Vrienden uitnodigen voor mijn cursus";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Abonneer je om activuatsamenvattingen te ontgrendelen";
     },
     get$subscribeToUnlockDefinitions() {
       return "Abonneer je om definities te ontgrendelen";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Aantal opgeslagen activiteiten";
     },
-    get$saveActivityTitle() {
-      return "Activiteit opslaan";
-    },
-    get$saveActivityDesc() {
-      return "Goed gedaan! Sla deze activiteit op voor latere beoordeling en oefening";
-    },
     get$levelInfoTooltip() {
       return "Hier kun je alle punten zien die je hebt verdiend en hoe!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Nodig vrienden uit";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Activiteitsinformatie";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kYkbAQZK/ALyNM/0j9/X8DPx0e0="] = d.current;
+  d["QSWHA7cmBXRztQp54oMkEeOXh1w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_725.part.js.map

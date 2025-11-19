@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Paspauskite ir palaikykite \u017eod\u017eio informacijai.";
     },
-    get$greenFeedback() {
-      return "Tai, k\u0105 a\u0161 d\u0117\u010diau!";
-    },
-    get$yellowFeedback() {
-      return "Hm, galite tai i\u0161bandyti ir pamatyti, ar veikia! Nor\u0117dami naudoti \u0161\u012f \u017eod\u012f, tiesiog dar kart\u0105 paspauskite j\u012f.";
-    },
-    get$redFeedback() {
-      return "Manau, tai n\u0117ra teisinga...";
-    },
     get$gaTooltip() {
       return "L2 naudojimas su gramatikos pagalba";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignoruoti";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Palaukite, tai n\u0117ra " + targetLanguage + "! Ar jums reikia pagalbos ver\u010diant?";
-    },
     get$countryInformation() {
       return "Mano \u0161alis";
-    },
-    get$targetLanguage() {
-      return "Tikslo kalba";
     },
     get$updateLanguage() {
       return "Mano kalbos";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Gramatikos pagalba i\u0161jungta.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Vertimo ir gramatikos pagalba i\u0161jungta.";
-    },
     get$errorDisableITUserDesc() {
       return "Spustel\u0117kite \u010dia, nor\u0117dami atnaujinti vertimo pagalbos nustatymus";
     },
     get$errorDisableIGCUserDesc() {
       return "Spustel\u0117kite \u010dia, nor\u0117dami atnaujinti gramatikos pagalbos nustatymus";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Spustel\u0117kite \u010dia, nor\u0117dami atnaujinti vertimo ir gramatikos pagalbos nustatymus";
     },
     get$errorDisableITClassDesc() {
       return "Vertimo pagalba i\u0161jungta kursui, kuriame yra \u0161is pokalbis.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Duomen\u0173 nerasta";
     },
-    get$bestCorrectionFeedback() {
-      return "Tai teisinga!";
-    },
-    get$distractorFeedback() {
-      return "Tai n\u0117ra visi\u0161kai teisinga.";
-    },
-    get$bestAnswerFeedback() {
-      return "Tai teisinga!";
-    },
-    get$definitionDefaultPrompt() {
-      return "K\u0105 rei\u0161kia \u0161i \u017eodis?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Kokia yra geriausia atsakymo versija?";
-    },
     get$correctionDefaultPrompt() {
       return "Kokia yra geriausia pakeitimo versija?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Praktika";
-    },
-    get$noLanguagesSet() {
-      return "Nenurodyta joki\u0173 kalb\u0173";
     },
     get$speechToTextBody() {
       return "Gird\u0117dami balso \u017einutes, galite matyti transkript\u0105 bei kalb\u0117tojo \u017eod\u017ei\u0173 per minut\u0119 \u012fvertinim\u0105.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Vertimo klaida";
     },
-    get$errorFetchingTranslation() {
-      return "Nepavyko gauti vertimo";
-    },
     get$errorFetchingActivity() {
       return "Nepavyko gauti veiklos";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " u\u017ebaig\u0117 \u0161i\u0105 veikl\u0105";
-    },
-    get$activitySummaryError() {
-      return "Veiklos santrauk\u0173 n\u0117ra";
-    },
-    get$requestSummaries() {
-      return "Pra\u0161yti santrauk\u0173";
     },
     get$requestAccessTitle() {
       return "Pra\u0161yti analiz\u0117s prieigos?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "\u017daisti su Pangea botu";
     },
-    get$waitNotDone() {
-      return "Laukite, a\u0161 dar nesu baig\u0119s!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Laukiama kit\u0173 pabaigos...";
-    },
-    get$generatingSummary() {
-      return "Analizuojama pokalbis ir generuojami rezultatai";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " ie\u0161ko naudotoj\u0173 prisijungti prie veiklos sesijos " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Pakvieskite draugus \u012f mano kurs\u0105";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Prenumeruokite, kad atrakintum\u0117te veiklos santraukas";
     },
     get$subscribeToUnlockDefinitions() {
       return "Prenumeruokite, kad atrakintum\u0117te apibr\u0117\u017eimus";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "I\u0161saugot\u0173 veikl\u0173 skai\u010dius";
     },
-    get$saveActivityTitle() {
-      return "I\u0161saugoti veikl\u0105";
-    },
-    get$saveActivityDesc() {
-      return "Puikus darbas! I\u0161saugokite \u0161i\u0105 veikl\u0105 v\u0117lesnei per\u017ei\u016brai ir praktikai";
-    },
     get$levelInfoTooltip() {
       return "\u010cia galite pamatyti visus ta\u0161kus, kuriuos u\u017edirbote, ir kaip!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Pakvieskite draugus";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Veiklos informacija";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["N0iFG1+PLIErJL0Nfa1Q4Pr93Hs="] = d.current;
+  d["hQ0Wb9wrk0ObTEO2wDwIzspn8Pw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_707.part.js.map

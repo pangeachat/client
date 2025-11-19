@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Nospiediet un turiet, lai uzzin\u0101tu v\u0101rda inform\u0101ciju.";
     },
-    get$greenFeedback() {
-      return "Tas b\u016btu tas, ko es liktu!";
-    },
-    get$yellowFeedback() {
-      return "Hm, vari to pam\u0113\u0123in\u0101t un redz\u0113t, vai tas str\u0101d\u0101! Lai izmantotu \u0161o v\u0101rdu, vienk\u0101r\u0161i v\u0113lreiz noklik\u0161\u0137ini uz t\u0101.";
-    },
-    get$redFeedback() {
-      return "Es dom\u0101ju, ka tas nav pareizi...";
-    },
     get$gaTooltip() {
       return "L2 lieto\u0161ana ar gramatikas pal\u012bdz\u012bbu";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignor\u0113t";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Gaidiet, tas nav " + targetLanguage + "! Vai jums nepiecie\u0161ama pal\u012bdz\u012bba tulko\u0161an\u0101?";
-    },
     get$countryInformation() {
       return "Mana valsts";
-    },
-    get$targetLanguage() {
-      return "M\u0113r\u0137a valoda";
     },
     get$updateLanguage() {
       return "Manas valodas";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Gramatikas pal\u012bdz\u012bba ir izsl\u0113gta.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Tulko\u0161anas pal\u012bdz\u012bba un gramatikas pal\u012bdz\u012bba ir izsl\u0113gtas.";
-    },
     get$errorDisableITUserDesc() {
       return "Noklik\u0161\u0137iniet \u0161eit, lai atjaunin\u0101tu tulko\u0161anas pal\u012bdz\u012bbas iestat\u012bjumus";
     },
     get$errorDisableIGCUserDesc() {
       return "Noklik\u0161\u0137iniet \u0161eit, lai atjaunin\u0101tu gramatikas pal\u012bdz\u012bbas iestat\u012bjumus";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Noklik\u0161\u0137iniet \u0161eit, lai atjaunin\u0101tu tulko\u0161anas un gramatikas pal\u012bdz\u012bbas iestat\u012bjumus";
     },
     get$errorDisableITClassDesc() {
       return "Tulko\u0161anas pal\u012bdz\u012bba ir izsl\u0113gta kursam, kur\u0101 atrodas \u0161\u012b t\u0113rz\u0113\u0161ana.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Dati nav atrasti";
     },
-    get$bestCorrectionFeedback() {
-      return "Tas ir pareizi!";
-    },
-    get$distractorFeedback() {
-      return "Tas nav piln\u012bgi pareizi.";
-    },
-    get$bestAnswerFeedback() {
-      return "Tas ir pareizi!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Ko \u0161\u012b v\u0101rda noz\u012bm\u0113?";
-    },
-    get$practiceDefaultPrompt() {
-      return "K\u0101da ir lab\u0101k\u0101 atbilde?";
-    },
     get$correctionDefaultPrompt() {
       return "K\u0101da ir lab\u0101k\u0101 aizvietojuma iesp\u0113ja?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Prakse";
-    },
-    get$noLanguagesSet() {
-      return "Nav iestat\u012btas valodas";
     },
     get$speechToTextBody() {
       return "Balss zi\u0146ojumiem j\u016bs varat redz\u0113t transkriptu, k\u0101 ar\u012b run\u0101t\u0101ja v\u0101rdus min\u016bt\u0113.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Tulko\u0161anas k\u013c\u016bda";
     },
-    get$errorFetchingTranslation() {
-      return "Neizdev\u0101s ieg\u016bt tulkojumu";
-    },
     get$errorFetchingActivity() {
       return "Neizdev\u0101s ieg\u016bt aktivit\u0101ti";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " pabeidza \u0161o aktivit\u0101ti";
-    },
-    get$activitySummaryError() {
-      return "Aktivit\u0101tes kopsavilkumi nav pieejami";
-    },
-    get$requestSummaries() {
-      return "Piepras\u012bt kopsavilkumus";
     },
     get$requestAccessTitle() {
       return "Piepras\u012bt anal\u012btikas piek\u013cuvi?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Sp\u0113l\u0113t ar Pangea botu";
     },
-    get$waitNotDone() {
-      return "Gaidiet, es v\u0113l neesmu pabeidzis!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Gaid\u0101m, lai p\u0101r\u0113jie pabeigtu...";
-    },
-    get$generatingSummary() {
-      return "Analiz\u0113 \u010datu un \u0123ener\u0113 rezult\u0101tus";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " mekl\u0113 lietot\u0101jus, lai pievienotos aktivit\u0101tes sesijai " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Aicin\u0101t draugus uz manu kursu";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Abon\u0113t aktivit\u0101\u0161u kopsavilkumu atblo\u0137\u0113\u0161anu";
     },
     get$subscribeToUnlockDefinitions() {
       return "Abon\u0113t defin\u012bciju atblo\u0137\u0113\u0161anu";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Saglab\u0101to aktivit\u0101\u0161u skaits";
     },
-    get$saveActivityTitle() {
-      return "Saglab\u0101t aktivit\u0101ti";
-    },
-    get$saveActivityDesc() {
-      return "Lielisks darbs! Saglab\u0101jiet \u0161o aktivit\u0101ti turpm\u0101kai p\u0101rskat\u012b\u0161anai un praksei";
-    },
     get$levelInfoTooltip() {
       return "\u0160eit j\u016bs varat redz\u0113t visus punktus, ko esat nopeln\u012bjis, un k\u0101!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Aicin\u0101t draugus";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Aktivit\u0101tes inform\u0101cija";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qgIJ35t5Qy2YZT8WljRiEg4zyUg="] = d.current;
+  d["Kw2l2FxrIH6QfACZY/p3IJzGBKo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

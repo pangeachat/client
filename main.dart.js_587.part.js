@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Pindutin at hawakan para sa impormasyon ng salita.";
     },
-    get$greenFeedback() {
-      return "Ito ang ilalagay ko!";
-    },
-    get$yellowFeedback() {
-      return "Hm, subukan mo iyon at tingnan kung gagana! Upang magamit ang salitang ito, pindutin muli ito.";
-    },
-    get$redFeedback() {
-      return "Sa tingin ko hindi iyon tama...";
-    },
     get$gaTooltip() {
       return "L2 gamitin kasama ang tulong sa gramatika";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Balewalain";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Sandali, hindi iyon " + targetLanguage + "! Kailangan mo ba ng tulong sa pagsasalin?";
-    },
     get$countryInformation() {
       return "Impormasyon ng aking bansa";
-    },
-    get$targetLanguage() {
-      return "Target na Wika";
     },
     get$updateLanguage() {
       return "Aking mga wika";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Naka-off ang tulong sa gramatika.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Naka-off ang tulong sa pagsasalin at tulong sa gramatika.";
-    },
     get$errorDisableITUserDesc() {
       return "I-click dito upang i-update ang mga setting ng tulong sa pagsasalin";
     },
     get$errorDisableIGCUserDesc() {
       return "I-click dito upang i-update ang mga setting ng tulong sa gramatika";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "I-click dito upang i-update ang mga setting ng tulong sa pagsasalin at tulong sa gramatika";
     },
     get$errorDisableITClassDesc() {
       return "Naka-off ang tulong sa pagsasalin para sa kurso kung saan naroroon ang chat na ito.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Walang nahanap na data";
     },
-    get$bestCorrectionFeedback() {
-      return "Tama iyan!";
-    },
-    get$distractorFeedback() {
-      return "Hindi ito ganap na tama.";
-    },
-    get$bestAnswerFeedback() {
-      return "Tama iyan!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Ano ang ibig sabihin ng salitang ito?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Ano ang pinakamahusay na sagot?";
-    },
     get$correctionDefaultPrompt() {
       return "Ano ang pinakamahusay na kapalit?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Praktis";
-    },
-    get$noLanguagesSet() {
-      return "Walang nakatakdang wika";
     },
     get$speechToTextBody() {
       return "Para sa mga mensahe sa boses, makikita mo ang transcript pati na rin ang score na Words Per Minute ng tagapagsalita.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Error sa pagsasalin";
     },
-    get$errorFetchingTranslation() {
-      return "Nabigong makuha ang pagsasalin";
-    },
     get$errorFetchingActivity() {
       return "Nabigong makuha ang aktibidad";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ay nagtapos sa gawaing ito";
-    },
-    get$activitySummaryError() {
-      return "Hindi magagamit ang mga buod ng gawain";
-    },
-    get$requestSummaries() {
-      return "Humiling ng mga buod";
     },
     get$requestAccessTitle() {
       return "Humiling ng access sa analytics?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Maglaro kasama ang Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Hintay, hindi pa tapos!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Naghihintay na matapos ang iba...";
-    },
-    get$generatingSummary() {
-      return "Sinusuri ang chat at bumubuo ng mga resulta";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " ay naghahanap ng mga user na sumali sa sesyon ng aktibidad sa " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Imbitahan ang mga kaibigan sa aking kurso";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Mag-subscribe upang ma-unlock ang mga buod ng aktibidad";
     },
     get$subscribeToUnlockDefinitions() {
       return "Mag-subscribe upang ma-unlock ang mga kahulugan";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Bilang ng mga nai-save na aktibidad";
     },
-    get$saveActivityTitle() {
-      return "I-save ang aktibidad";
-    },
-    get$saveActivityDesc() {
-      return "Magandang trabaho! I-save ang aktibidad na ito para sa susunod na pagsusuri at pagsasanay";
-    },
     get$levelInfoTooltip() {
       return "Dito mo makikita ang lahat ng puntos na iyong nakuha at kung paano!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Invite friends";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Impormasyon ng aktibidad";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nhYtVrneRmgwZf1EwhFLOXU5qus="] = d.current;
+  d["PNwTHwBroqoQOrcQKF9AeZ845h8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_587.part.js.map

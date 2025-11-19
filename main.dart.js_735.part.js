@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "\u021aine ap\u0103sat pentru informa\u021bii despre cuv\xe2nt.";
     },
-    get$greenFeedback() {
-      return "Asta a\u0219 pune!";
-    },
-    get$yellowFeedback() {
-      return "Hmmm, po\u021bi \xeencerca asta \u0219i vezi dac\u0103 func\u021bioneaz\u0103! Pentru a folosi acest cuv\xe2nt, doar f\u0103 clic din nou.";
-    },
-    get$redFeedback() {
-      return "Nu cred c\u0103 este corect...";
-    },
     get$gaTooltip() {
       return "L2 utilizare cu asisten\u021b\u0103 gramatical\u0103";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignor\u0103";
     },
-    needsItMessage$1(targetLanguage) {
-      return "A\u0219teapt\u0103, nu este " + targetLanguage + "! Ai nevoie de ajutor pentru traducere?";
-    },
     get$countryInformation() {
       return "\u021aara mea";
-    },
-    get$targetLanguage() {
-      return "Limba \u021bint\u0103";
     },
     get$updateLanguage() {
       return "Limbi ale mele";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Asisten\u021ba gramatical\u0103 este dezactivat\u0103.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Asisten\u021ba de traducere \u0219i asisten\u021ba gramatical\u0103 sunt dezactivate.";
-    },
     get$errorDisableITUserDesc() {
       return "Clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 pentru traducere";
     },
     get$errorDisableIGCUserDesc() {
       return "Clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 gramatical\u0103";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Face\u021bi clic aici pentru a actualiza set\u0103rile de asisten\u021b\u0103 pentru traducere \u0219i gramatic\u0103";
     },
     get$errorDisableITClassDesc() {
       return "Asisten\u021ba de traducere este dezactivat\u0103 pentru cursul \xeen care se afl\u0103 aceast\u0103 conversa\u021bie.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nu s-au g\u0103sit date";
     },
-    get$bestCorrectionFeedback() {
-      return "Corect!";
-    },
-    get$distractorFeedback() {
-      return "Nu este chiar corect.";
-    },
-    get$bestAnswerFeedback() {
-      return "Corect!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Ce \xeenseamn\u0103 acest cuv\xe2nt?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Care este cel mai bun r\u0103spuns?";
-    },
     get$correctionDefaultPrompt() {
       return "Care este cea mai bun\u0103 \xeenlocuire?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Exerseaz\u0103";
-    },
-    get$noLanguagesSet() {
-      return "Niciun limbaj configurat";
     },
     get$speechToTextBody() {
       return "Pentru mesajele vocale, po\u021bi vedea o transcriere precum \u0219i scorul de Cuvinte pe Minut al vorbitorului.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Eroare de traducere";
     },
-    get$errorFetchingTranslation() {
-      return "E\u0219ec la preluarea traducerii";
-    },
     get$errorFetchingActivity() {
       return "E\u0219ec la preluarea activit\u0103\u021bii";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " a \xeencheiat aceast\u0103 activitate";
-    },
-    get$activitySummaryError() {
-      return "Rezumatul activit\u0103\u021bilor indisponibil";
-    },
-    get$requestSummaries() {
-      return "Solicit\u0103 rezumate";
     },
     get$requestAccessTitle() {
       return "Solicita\u021bi acces la analize?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Joac\u0103 cu Pangea Bot";
     },
-    get$waitNotDone() {
-      return "A\u0219teapt\u0103, nu am terminat!";
-    },
-    get$waitingForOthersToFinish() {
-      return "A\u0219tept ca ceilal\u021bi s\u0103 termine...";
-    },
-    get$generatingSummary() {
-      return "Analiz\u0103m chat-ul \u0219i gener\u0103m rezultate";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " caut\u0103 utilizatori pentru a se al\u0103tura sesiunii de activitate \xeen " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invit\u0103 prieteni la cursul meu";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Aboneaz\u0103-te pentru a debloca rezumatele activit\u0103\u021bilor";
     },
     get$subscribeToUnlockDefinitions() {
       return "Aboneaz\u0103-te pentru a debloca defini\u021biile";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Num\u0103rul de activit\u0103\u021bi salvate";
     },
-    get$saveActivityTitle() {
-      return "Salveaz\u0103 activitatea";
-    },
-    get$saveActivityDesc() {
-      return "Bravo! Salveaz\u0103 aceast\u0103 activitate pentru revizuire \u0219i practic\u0103 ulterioar\u0103";
-    },
     get$levelInfoTooltip() {
       return "Aici po\u021bi vedea toate punctele pe care le-ai c\xe2\u0219tigat \u0219i cum!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Invit\u0103 prieteni";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informa\u021bii despre activitate";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5+hn0Blcij/NTO/izQTLjck/8Ds="] = d.current;
+  d["rQ5g5ZofjP2gu4T9dekDz/qD/bY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

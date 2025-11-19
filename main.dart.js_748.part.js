@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Kliknite i dr\u017eite za informacije o re\u010di.";
     },
-    get$greenFeedback() {
-      return "To je ono \u0161to bih ja stavio!";
-    },
-    get$yellowFeedback() {
-      return "Hm, mo\u017eete poku\u0161ati to i videti da li radi! Da biste koristili ovu re\u010d, jednostavno je ponovo kliknite.";
-    },
-    get$redFeedback() {
-      return "Mislim da to nije ta\u010dno...";
-    },
     get$gaTooltip() {
       return "L2 upotreba sa gramati\u010dkom pomo\u0107i";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "\u0418\u0433\u043d\u043e\u0440\u0438\u0448\u0438";
     },
-    needsItMessage$1(targetLanguage) {
-      return "\u0427\u0435\u043a\u0430\u0458, \u0442\u043e \u043d\u0438\u0458\u0435 " + targetLanguage + "! \u0414\u0430 \u043b\u0438 \u0432\u0430\u043c \u0442\u0440\u0435\u0431\u0430 \u043f\u043e\u043c\u043e\u045b \u0443 \u043f\u0440\u0435\u0432\u043e\u0452\u0435\u045a\u0443?";
-    },
     get$countryInformation() {
       return "Moja zemlja";
-    },
-    get$targetLanguage() {
-      return "Ciljni jezik";
     },
     get$updateLanguage() {
       return "Moji jezici";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Pomo\u0107 u gramatici je isklju\u010dena.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Pomo\u0107 u prevodu i pomo\u0107 u gramatici su isklju\u010deni.";
-    },
     get$errorDisableITUserDesc() {
       return "Kliknite ovde da biste a\u017eurirali postavke pomo\u0107i u prevodu";
     },
     get$errorDisableIGCUserDesc() {
       return "Kliknite ovde da biste a\u017eurirali postavke pomo\u0107i u gramatici";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Kliknite ovde da biste a\u017eurirali postavke pomo\u0107i u prevodu i gramatici";
     },
     get$errorDisableITClassDesc() {
       return "Pomo\u0107 u prevodu je isklju\u010dena za kurs u kojem se nalazi ovaj chat.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nema prona\u0111enih podataka";
     },
-    get$bestCorrectionFeedback() {
-      return "To je ta\u010dno!";
-    },
-    get$distractorFeedback() {
-      return "Nije ba\u0161 tako.";
-    },
-    get$bestAnswerFeedback() {
-      return "To je ta\u010dno!";
-    },
-    get$definitionDefaultPrompt() {
-      return "\u0160ta zna\u010di ova re\u010d?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Koji je najbolji odgovor?";
-    },
     get$correctionDefaultPrompt() {
       return "Koja je najbolja zamena?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Ve\u017ebajte";
-    },
-    get$noLanguagesSet() {
-      return "Nije postavljen nijedan jezik";
     },
     get$speechToTextBody() {
       return "Za glasovne poruke, mo\u017eete videti transkript kao i rezultat govornika u re\u010dima po minutu.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Gre\u0161ka u prevodu";
     },
-    get$errorFetchingTranslation() {
-      return "Neuspe\u0161no preuzimanje prevoda";
-    },
     get$errorFetchingActivity() {
       return "Neuspe\u0161no preuzimanje aktivnosti";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " zavr\u0161io ovu aktivnost";
-    },
-    get$activitySummaryError() {
-      return "Sa\u017eeci aktivnosti nisu dostupni";
-    },
-    get$requestSummaries() {
-      return "Zatra\u017ei sa\u017eetke";
     },
     get$requestAccessTitle() {
       return "Zatra\u017ei pristup analitici?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "\u0418\u0433\u0440\u0430\u0458\u0442\u0435 \u0441\u0430 \u041f\u0430\u043d\u0433\u0435\u0438\u0458\u0435\u0432\u0438\u043c \u0431\u043e\u0442\u043e\u043c";
     },
-    get$waitNotDone() {
-      return "\u0427\u0435\u043a\u0430\u0458, \u043d\u0438\u0441\u0430\u043c \u0437\u0430\u0432\u0440\u0448\u0438\u043e!";
-    },
-    get$waitingForOthersToFinish() {
-      return "\u0427\u0435\u043a\u0430\u043c\u043e \u0434\u0430 \u043e\u0441\u0442\u0430\u043b\u0438 \u0437\u0430\u0432\u0440\u0448\u0435...";
-    },
-    get$generatingSummary() {
-      return "\u0410\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u0430\u045a\u0435 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430 \u0438 \u0433\u0435\u043d\u0435\u0440\u0438\u0441\u0430\u045a\u0435 \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442\u0430";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " tra\u017ei korisnike da se pridru\u017ee sesiji aktivnosti u " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "\u041f\u043e\u0437\u043e\u0432\u0438 \u043f\u0440\u0438\u0458\u0430\u0442\u0435\u0459\u0435 \u0443 \u043c\u043e\u0458 \u043a\u0443\u0440\u0441";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "\u041f\u0440\u0435\u0442\u043f\u043b\u0430\u0442\u0438 \u0441\u0435 \u0437\u0430 \u043e\u0442\u043a\u0459\u0443\u0447\u0430\u0432\u0430\u045a\u0435 \u0441\u0430\u0436\u0435\u0442\u0430\u043a\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438";
     },
     get$subscribeToUnlockDefinitions() {
       return "\u041f\u0440\u0435\u0442\u043f\u043b\u0430\u0442\u0438 \u0441\u0435 \u0437\u0430 \u043e\u0442\u043a\u0459\u0443\u0447\u0430\u0432\u0430\u045a\u0435 \u0434\u0435\u0444\u0438\u043d\u0438\u0446\u0438\u0458\u0430";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Broj sa\u010duvanih aktivnosti";
     },
-    get$saveActivityTitle() {
-      return "Sa\u010duvaj aktivnost";
-    },
-    get$saveActivityDesc() {
-      return "Dobar posao! Sa\u010duvajte ovu aktivnost za kasniji pregled i ve\u017ebu";
-    },
     get$levelInfoTooltip() {
       return "Ovde mo\u017eete videti sve poene koje ste osvojili i kako!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "\u041f\u043e\u0437\u043e\u0432\u0438\u0442\u0435 \u043f\u0440\u0438\u0458\u0430\u0442\u0435\u0459\u0435";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informacije o aktivnosti";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ae1eX/5zb2P4B+6ozK3WIJbtqYY="] = d.current;
+  d["v/Sj+5IpspW12I6hbEDqxqMQtd8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_748.part.js.map

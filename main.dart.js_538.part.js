@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Vajuta ja hoia s\xf5na info saamiseks.";
     },
-    get$greenFeedback() {
-      return "See on see, mida ma paneksin!";
-    },
-    get$yellowFeedback() {
-      return "Hm, v\xf5id proovida seda ja vaadata, kas see t\xf6\xf6tab! Selle s\xf5na kasutamiseks kl\xf5psa seda uuesti.";
-    },
-    get$redFeedback() {
-      return "Ma arvan, et see ei ole \xf5ige...";
-    },
     get$gaTooltip() {
       return "L2 kasutamine grammatika abiga";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignoreeri";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Oota, see ei ole " + targetLanguage + "! Kas vajad abi t\xf5lkimisel?";
-    },
     get$countryInformation() {
       return "Minu riik";
-    },
-    get$targetLanguage() {
-      return "Sihtkeel";
     },
     get$updateLanguage() {
       return "Minu keeled";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Grammatikaabi on v\xe4lja l\xfclitatud.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "T\xf5lkeabi ja grammatikaabi on v\xe4lja l\xfclitatud.";
-    },
     get$errorDisableITUserDesc() {
       return "Kl\xf5psake siin, et uuendada t\xf5lkeabi seadeid";
     },
     get$errorDisableIGCUserDesc() {
       return "Kl\xf5psake siin, et uuendada grammatikaabi seadeid";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Kl\xf5psake siin, et uuendada t\xf5lkeabi ja grammatikaabi seadeid";
     },
     get$errorDisableITClassDesc() {
       return "T\xf5lkeabi on v\xe4lja l\xfclitatud selle vestluse ruumi jaoks.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Andmeid ei leitud";
     },
-    get$bestCorrectionFeedback() {
-      return "See on \xf5ige!";
-    },
-    get$distractorFeedback() {
-      return "See ei ole p\xe4ris \xf5ige.";
-    },
-    get$bestAnswerFeedback() {
-      return "See on \xf5ige!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Mida see s\xf5na t\xe4hendab?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Mis on parim vastus?";
-    },
     get$correctionDefaultPrompt() {
       return "Mis on parim asendus?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Praktika";
-    },
-    get$noLanguagesSet() {
-      return "Keeli pole m\xe4\xe4ratud";
     },
     get$speechToTextBody() {
       return "K\xf5ne s\xf5numite jaoks saate n\xe4ha transkriptsiooni ning k\xf5neleja s\xf5nade minutis skoori.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "T\xf5lkeviga";
     },
-    get$errorFetchingTranslation() {
-      return "T\xf5lke toomine eba\xf5nnestus";
-    },
     get$errorFetchingActivity() {
       return "Tegevuse toomine eba\xf5nnestus";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " l\xf5petas selle tegevuse";
-    },
-    get$activitySummaryError() {
-      return "Tegevuste kokkuv\xf5tteid pole saadaval";
-    },
-    get$requestSummaries() {
-      return "Paluda kokkuv\xf5tteid";
     },
     get$requestAccessTitle() {
       return "K\xfcsi anal\xfc\xfctika ligip\xe4\xe4su?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "M\xe4ngi Pangea botiga";
     },
-    get$waitNotDone() {
-      return "Oota, ma ei ole veel valmis!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Ootan, kuni teised l\xf5petavad...";
-    },
-    get$generatingSummary() {
-      return "Vestluse anal\xfc\xfcs ja tulemuste genereerimine";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " otsib kasutajaid tegevusn\xf5upidamisse " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Kutsu s\xf5brad minu kursusele";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Telli tegevuste kokkuv\xf5tete avamine";
     },
     get$subscribeToUnlockDefinitions() {
       return "Telli definitsioonide avamine";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Salvestatud tegevuste arv";
     },
-    get$saveActivityTitle() {
-      return "Salvesta tegevus";
-    },
-    get$saveActivityDesc() {
-      return "Hea t\xf6\xf6! Salvesta see tegevus hilisemaks \xfclevaatamiseks ja harjutamiseks";
-    },
     get$levelInfoTooltip() {
       return "Siit n\xe4ete k\xf5iki punkte, mida olete teeninud ja kuidas!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Kutsu s\xf5pru";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Tegevuse info";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7q1eL/+stLmtYuoYtTH/nawNw0I="] = d.current;
+  d["cswqfzN7B28JxJgCl/gVFyPExS0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_538.part.js.map

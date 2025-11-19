@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Pid\xe4 painettuna sanan tiedoista.";
     },
-    get$greenFeedback() {
-      return "Se on mit\xe4 laittaisin!";
-    },
-    get$yellowFeedback() {
-      return "Hm, voit kokeilla sit\xe4 ja katsoa, toimiiko se! K\xe4ytt\xe4\xe4ksesi t\xe4t\xe4 sanaa, klikkaa sit\xe4 uudelleen.";
-    },
-    get$redFeedback() {
-      return "En usko, ett\xe4 se on oikein...";
-    },
     get$gaTooltip() {
       return "L2:n k\xe4ytt\xf6 kielioppiavustuksella";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ohita";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Odotas, se ei ole " + targetLanguage + "! Tarvitsetko apua k\xe4\xe4nt\xe4misess\xe4?";
-    },
     get$countryInformation() {
       return "Kotikuntani";
-    },
-    get$targetLanguage() {
-      return "Kohdekieli";
     },
     get$updateLanguage() {
       return "Kieleni";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Kielioppiohjeita ei ole k\xe4yt\xf6ss\xe4.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "K\xe4\xe4nn\xf6s- ja kielioppiohjeet on sammutettu.";
-    },
     get$errorDisableITUserDesc() {
       return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi k\xe4\xe4nn\xf6sohjeiden asetukset";
     },
     get$errorDisableIGCUserDesc() {
       return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi kielioppiohjeiden asetukset";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi k\xe4\xe4nn\xf6s- ja kielioppiohjeiden asetukset";
     },
     get$errorDisableITClassDesc() {
       return "K\xe4\xe4nn\xf6sohjeita ei ole k\xe4yt\xf6ss\xe4 t\xe4m\xe4n kurssin chatiss\xe4.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Tietoja ei l\xf6ytynyt";
     },
-    get$bestCorrectionFeedback() {
-      return "Se on oikein!";
-    },
-    get$distractorFeedback() {
-      return "Se ei ole aivan oikein.";
-    },
-    get$bestAnswerFeedback() {
-      return "Se on oikein!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Mit\xe4 t\xe4m\xe4 sana tarkoittaa?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Mik\xe4 on paras vastaus?";
-    },
     get$correctionDefaultPrompt() {
       return "Mik\xe4 on paras korvaus?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Harjoitus";
-    },
-    get$noLanguagesSet() {
-      return "Kieli\xe4 ei ole asetettu";
     },
     get$speechToTextBody() {
       return "\xc4\xe4niviesteiss\xe4 n\xe4et my\xf6s litteroinnin sek\xe4 puhujan Words Per Minute -pistem\xe4\xe4r\xe4n.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "K\xe4\xe4nn\xf6svirhe";
     },
-    get$errorFetchingTranslation() {
-      return "Virhe haettaessa k\xe4\xe4nn\xf6st\xe4";
-    },
     get$errorFetchingActivity() {
       return "Virhe haettaessa toimintaa";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " saatteli aktiviteetin p\xe4\xe4t\xf6kseen";
-    },
-    get$activitySummaryError() {
-      return "Aktiviteettien yhteenvetoja ei saatavilla";
-    },
-    get$requestSummaries() {
-      return "Pyyd\xe4 yhteenvetoja";
     },
     get$requestAccessTitle() {
       return "Pyyd\xe4 analytiikkap\xe4\xe4sy\xe4?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Leiki Pangea-botin kanssa";
     },
-    get$waitNotDone() {
-      return "Odotan, en ole valmis!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Odotetaan muiden valmistumista...";
-    },
-    get$generatingSummary() {
-      return "Analysoidaan keskustelua ja luodaan tuloksia";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " etsii k\xe4ytt\xe4ji\xe4 liittym\xe4\xe4n aktiviteettisessioon " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Kutsu yst\xe4vi\xe4 kurssilleni";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Tilaa aktiviteettien yhteenvetojen avaaminen";
     },
     get$subscribeToUnlockDefinitions() {
       return "Tilaa m\xe4\xe4ritelmien avaaminen";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Tallennettujen aktiviteettien m\xe4\xe4r\xe4";
     },
-    get$saveActivityTitle() {
-      return "Tallenna aktiviteetti";
-    },
-    get$saveActivityDesc() {
-      return "Hyv\xe4 ty\xf6! Tallenna t\xe4m\xe4 aktiviteetti my\xf6hemp\xe4\xe4 tarkistusta ja harjoittelua varten";
-    },
     get$levelInfoTooltip() {
       return "T\xe4\xe4lt\xe4 n\xe4et kaikki ansaitsemasi pisteet ja miten!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Kutsu yst\xe4vi\xe4";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Toimintatiedot";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8UNW85vRFsi3fW5dvEZW7WN2cmw="] = d.current;
+  d["wj0O9YX1NXltcjlPXKKLwBSTZc0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_575.part.js.map

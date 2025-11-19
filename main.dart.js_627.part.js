@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Kliknite i dr\u017eite za informacije o rije\u010di.";
     },
-    get$greenFeedback() {
-      return "To bih ja stavio!";
-    },
-    get$yellowFeedback() {
-      return "Hm, mo\u017eete poku\u0161ati s tim i vidjeti ho\u0107e li uspjeti! Da biste koristili ovu rije\u010d, jednostavno je kliknite ponovno.";
-    },
-    get$redFeedback() {
-      return "Mislim da to nije to...";
-    },
     get$gaTooltip() {
       return "L2 kori\u0161tenje s gramati\u010dkom pomo\u0107i";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignoriraj";
     },
-    needsItMessage$1(targetLanguage) {
-      return "\u010cekaj, to nije " + targetLanguage + "! Trebate li pomo\u0107 s prevo\u0111enjem?";
-    },
     get$countryInformation() {
       return "Moja zemlja";
-    },
-    get$targetLanguage() {
-      return "Ciljani jezik";
     },
     get$updateLanguage() {
       return "Moji jezici";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Pomo\u0107 pri gramatici je isklju\u010dena.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Pomo\u0107 pri prevo\u0111enju i gramatici su isklju\u010deni.";
-    },
     get$errorDisableITUserDesc() {
       return "Kliknite ovdje za a\u017euriranje postavki pomo\u0107i pri prevo\u0111enju";
     },
     get$errorDisableIGCUserDesc() {
       return "Kliknite ovdje za a\u017euriranje postavki pomo\u0107i pri gramatici";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Kliknite ovdje za a\u017euriranje postavki pomo\u0107i pri prevo\u0111enju i gramatici";
     },
     get$errorDisableITClassDesc() {
       return "Pomo\u0107 pri prevo\u0111enju je isklju\u010dena za te\u010daj u kojem se nalazi ovaj chat.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nema prona\u0111enih podataka";
     },
-    get$bestCorrectionFeedback() {
-      return "To je to\u010dno!";
-    },
-    get$distractorFeedback() {
-      return "Nije ba\u0161 to\u010dno.";
-    },
-    get$bestAnswerFeedback() {
-      return "To je to\u010dno!";
-    },
-    get$definitionDefaultPrompt() {
-      return "\u0160to zna\u010di ova rije\u010d?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Koji je najbolji odgovor?";
-    },
     get$correctionDefaultPrompt() {
       return "Koja je najbolja zamjena?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Vje\u017eba";
-    },
-    get$noLanguagesSet() {
-      return "Nema postavljenih jezika";
     },
     get$speechToTextBody() {
       return "Za glasovne poruke, mo\u017eete vidjeti transkript kao i rezultat govornika u rije\u010dima po minutu.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Pogre\u0161ka u prijevodu";
     },
-    get$errorFetchingTranslation() {
-      return "Neuspje\u0161no dohva\u0107anje prijevoda";
-    },
     get$errorFetchingActivity() {
       return "Neuspje\u0161no dohva\u0107anje aktivnosti";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " zavr\u0161io ovu aktivnost";
-    },
-    get$activitySummaryError() {
-      return "Sa\u017eeci aktivnosti nisu dostupni";
-    },
-    get$requestSummaries() {
-      return "Zatra\u017ei sa\u017eetke";
     },
     get$requestAccessTitle() {
       return "Zatra\u017ei pristup analitici?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Igraj s Pangea Botom";
     },
-    get$waitNotDone() {
-      return "\u010cekaj, nisam zavr\u0161io!";
-    },
-    get$waitingForOthersToFinish() {
-      return "\u010cekam da ostali zavr\u0161e...";
-    },
-    get$generatingSummary() {
-      return "Analiziranje chata i generiranje rezultata";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " tra\u017ei korisnike za pridru\u017eivanje sesiji aktivnosti u " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Pozovi prijatelje na moj te\u010daj";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Pretplatite se za sa\u017eetke aktivnosti otklju\u010davanja";
     },
     get$subscribeToUnlockDefinitions() {
       return "Pretplatite se za definicije otklju\u010davanja";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Broj spremljenih aktivnosti";
     },
-    get$saveActivityTitle() {
-      return "Spremi aktivnost";
-    },
-    get$saveActivityDesc() {
-      return "Dobar posao! Spremite ovu aktivnost za kasniji pregled i vje\u017ebu";
-    },
     get$levelInfoTooltip() {
       return "Ovdje mo\u017eete vidjeti sve bodove koje ste zaradili i kako!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Pozovi prijatelje";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informacije o aktivnosti";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3IYsiCGh30DJWxn9ve0bRNfDq1c="] = d.current;
+  d["54hMqHyxeNUh/tQ4vjfC1OImQxA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_627.part.js.map

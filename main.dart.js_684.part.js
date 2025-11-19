@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Klik dan tahan untuk info kata.";
     },
-    get$greenFeedback() {
-      return "Itu yang akan saya masukkan!";
-    },
-    get$yellowFeedback() {
-      return "Hm, kamu bisa mencoba itu dan lihat apakah berhasil! Untuk menggunakan kata ini, cukup klik lagi.";
-    },
-    get$redFeedback() {
-      return "Saya rasa itu tidak benar...";
-    },
     get$gaTooltip() {
       return "Penggunaan L2 dengan bantuan tata bahasa";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Abaikan";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Tunggu, itu bukan " + targetLanguage + "! Apakah Anda membutuhkan bantuan menerjemahkan?";
-    },
     get$countryInformation() {
       return "Negara saya";
-    },
-    get$targetLanguage() {
-      return "Bahasa Target";
     },
     get$updateLanguage() {
       return "Bahasa Saya";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "Bantuan tata bahasa dimatikan.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "Bantuan terjemahan dan bantuan tata bahasa dimatikan.";
-    },
     get$errorDisableITUserDesc() {
       return "Klik di sini untuk memperbarui pengaturan bantuan terjemahan";
     },
     get$errorDisableIGCUserDesc() {
       return "Klik di sini untuk memperbarui pengaturan bantuan tata bahasa";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Klik di sini untuk memperbarui pengaturan bantuan terjemahan dan tata bahasa";
     },
     get$errorDisableITClassDesc() {
       return "Bantuan terjemahan dimatikan untuk kursus tempat obrolan ini berada.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Data tidak ditemukan";
     },
-    get$bestCorrectionFeedback() {
-      return "Itu benar!";
-    },
-    get$distractorFeedback() {
-      return "Itu tidak sepenuhnya benar.";
-    },
-    get$bestAnswerFeedback() {
-      return "Itu benar!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Apa arti kata ini?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Jawaban terbaik apa?";
-    },
     get$correctionDefaultPrompt() {
       return "Pengganti terbaik apa?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Latihan";
-    },
-    get$noLanguagesSet() {
-      return "Tidak ada bahasa yang diatur";
     },
     get$speechToTextBody() {
       return "Untuk pesan suara, Anda dapat melihat transkrip serta skor Kata Per Menit dari pembicara.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Kesalahan terjemahan";
     },
-    get$errorFetchingTranslation() {
-      return "Gagal mengambil terjemahan";
-    },
     get$errorFetchingActivity() {
       return "Gagal mengambil aktivitas";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " menyelesaikan aktivitas ini";
-    },
-    get$activitySummaryError() {
-      return "Ringkasan aktivitas tidak tersedia";
-    },
-    get$requestSummaries() {
-      return "Minta ringkasan";
     },
     get$requestAccessTitle() {
       return "Minta akses analitik?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Main dengan Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Tunggu, saya belum selesai!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Menunggu yang lain selesai...";
-    },
-    get$generatingSummary() {
-      return "Menganalisis obrolan dan menghasilkan hasil";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " sedang mencari pengguna untuk bergabung dalam sesi aktivitas di " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Undang teman ke kursus saya";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Berlangganan untuk membuka ringkasan aktivitas";
     },
     get$subscribeToUnlockDefinitions() {
       return "Berlangganan untuk membuka definisi";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Jumlah aktivitas yang disimpan";
     },
-    get$saveActivityTitle() {
-      return "Simpan aktivitas";
-    },
-    get$saveActivityDesc() {
-      return "Kerja bagus! Simpan aktivitas ini untuk ditinjau dan dipraktikkan nanti";
-    },
     get$levelInfoTooltip() {
       return "Di sini Anda dapat melihat semua poin yang telah Anda peroleh dan bagaimana!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Undang teman";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Info aktivitas";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vtY54mMfEe1DE7tTK4IMZu5rTVE="] = d.current;
+  d["MdOdcv7aSjcDjTILSRQenwuOK8g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_684.part.js.map

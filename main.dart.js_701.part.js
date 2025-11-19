@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Tieni premuto per informazioni sulla parola.";
     },
-    get$greenFeedback() {
-      return "\xc8 quello che avrei scritto!";
-    },
-    get$yellowFeedback() {
-      return "Hmm, puoi provarlo e vedere se funziona! Per usare questa parola, cliccaci di nuovo.";
-    },
-    get$redFeedback() {
-      return "Non credo sia giusto...";
-    },
     get$gaTooltip() {
       return "L2 utilizzo con assistenza grammaticale";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignora";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Aspetta, non \xe8 " + targetLanguage + "! Hai bisogno di aiuto con la traduzione?";
-    },
     get$countryInformation() {
       return "Il mio paese";
-    },
-    get$targetLanguage() {
-      return "Lingua di destinazione";
     },
     get$updateLanguage() {
       return "Le mie lingue";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "L'assistenza grammaticale \xe8 disattivata.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "L'assistenza alla traduzione e l'assistenza grammaticale sono disattivate.";
-    },
     get$errorDisableITUserDesc() {
       return "Clicca qui per aggiornare le impostazioni di assistenza alla traduzione";
     },
     get$errorDisableIGCUserDesc() {
       return "Clicca qui per aggiornare le impostazioni di assistenza grammaticale";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Clicca qui per aggiornare le impostazioni di assistenza alla traduzione e grammaticale";
     },
     get$errorDisableITClassDesc() {
       return "L'assistenza alla traduzione \xe8 disattivata per il corso in cui si trova questa chat.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nessun dato trovato";
     },
-    get$bestCorrectionFeedback() {
-      return "Corretto!";
-    },
-    get$distractorFeedback() {
-      return "Non proprio.";
-    },
-    get$bestAnswerFeedback() {
-      return "Corretto!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Cosa significa questa parola?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Qual \xe8 la migliore risposta?";
-    },
     get$correctionDefaultPrompt() {
       return "Qual \xe8 la sostituzione migliore?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Pratica";
-    },
-    get$noLanguagesSet() {
-      return "Nessuna lingua impostata";
     },
     get$speechToTextBody() {
       return "Per i messaggi vocali, puoi vedere una trascrizione e il punteggio delle parole al minuto del parlante.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Errore di traduzione";
     },
-    get$errorFetchingTranslation() {
-      return "Impossibile recuperare la traduzione";
-    },
     get$errorFetchingActivity() {
       return "Impossibile recuperare l'attivit\xe0";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ha concluso questa attivit\xe0";
-    },
-    get$activitySummaryError() {
-      return "Riepiloghi dell'attivit\xe0 non disponibili";
-    },
-    get$requestSummaries() {
-      return "Richiedi riepiloghi";
     },
     get$requestAccessTitle() {
       return "Richiedi accesso alle analisi?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Gioca con Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Aspetta, non ho finito!";
-    },
-    get$waitingForOthersToFinish() {
-      return "In attesa che gli altri finiscano...";
-    },
-    get$generatingSummary() {
-      return "Analizzando la chat e generando risultati";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " sta cercando utenti per unirsi alla sessione dell'attivit\xe0 in " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invita amici al mio corso";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Iscriviti per sbloccare i riepiloghi delle attivit\xe0";
     },
     get$subscribeToUnlockDefinitions() {
       return "Iscriviti per sbloccare le definizioni";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Numero di attivit\xe0 salvate";
     },
-    get$saveActivityTitle() {
-      return "Salva attivit\xe0";
-    },
-    get$saveActivityDesc() {
-      return "Ottimo lavoro! Salva questa attivit\xe0 per una revisione e pratica future";
-    },
     get$levelInfoTooltip() {
       return "Qui puoi vedere tutti i punti che hai guadagnato e come!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Invita amici";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Informazioni sull'attivit\xe0";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aD/wAVST8ZeaKGJZnlMS8q9lrC0="] = d.current;
+  d["jY3jbe3mFHFw5errmz4NAPQLNl0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_701.part.js.map

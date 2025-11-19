@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Bain triail as agus coinnigh s\xedos le haghaidh eolas faoin bhfocal.";
     },
-    get$greenFeedback() {
-      return "Sin \xe9 an rud a chuirfinn!";
-    },
-    get$yellowFeedback() {
-      return "Hm, is f\xe9idir leat iarracht a dh\xe9anamh \xe9 sin a r\xe1 agus f\xe9ach cad a tharl\xf3idh! Chun an focal seo a \xfas\xe1id, clice\xe1il ar\xeds \xe9.";
-    },
-    get$redFeedback() {
-      return "N\xed d\xf3igh liom go bhfuil s\xe9 sin ceart...";
-    },
     get$gaTooltip() {
       return "\xdas\xe1id L2 le cabhair gramada\xed";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "D\xe9an neamhaird";
     },
-    needsItMessage$1(targetLanguage) {
-      return "Fan, n\xedl s\xe9 " + targetLanguage + "! An bhfuil uait cabhair le haistri\xfach\xe1n?";
-    },
     get$countryInformation() {
       return "Mo th\xedr";
-    },
-    get$targetLanguage() {
-      return "Teanga Sprioc";
     },
     get$updateLanguage() {
       return "Mo chuid teangacha";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "T\xe1 cabhair gramad\xe1la d\xedcheangailte.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "T\xe1 cabhair aistri\xfach\xe1in agus cabhair gramad\xe1la d\xedcheangailte.";
-    },
     get$errorDisableITUserDesc() {
       return "Clice\xe1il anseo chun socruithe cabhrach aistri\xfach\xe1in a nuashonr\xfa";
     },
     get$errorDisableIGCUserDesc() {
       return "Clice\xe1il anseo chun socruithe cabhrach gramad\xe1la a nuashonr\xfa";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Clice\xe1il anseo chun socruithe cabhrach aistri\xfach\xe1in agus gramad\xe1la a nuashonr\xfa";
     },
     get$errorDisableITClassDesc() {
       return "T\xe1 cabhair aistri\xfach\xe1in d\xedcheangailte don ch\xfarsa ina bhfuil an comhr\xe1 seo.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "N\xedor aims\xedodh aon sonra\xed";
     },
-    get$bestCorrectionFeedback() {
-      return "T\xe1 s\xe9 sin ceart!";
-    },
-    get$distractorFeedback() {
-      return "N\xedl s\xe9 sin go hioml\xe1n ceart.";
-    },
-    get$bestAnswerFeedback() {
-      return "T\xe1 s\xe9 sin ceart!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Cad is br\xed leis an bhfocal seo?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Cad \xe9 an freagra is fearr?";
-    },
     get$correctionDefaultPrompt() {
       return "Cad \xe9 an ionad ceart?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Cleachtadh";
-    },
-    get$noLanguagesSet() {
-      return "N\xedl aon teangacha socraithe";
     },
     get$speechToTextBody() {
       return "Maidir le teachtaireachta\xed gutha, is f\xe9idir leat trascr\xedobh a fheice\xe1il chomh maith le sc\xf3r Focal in aghaidh an N\xf3im\xe9id\xed an chainteora.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Earr\xe1id aistri\xfach\xe1in";
     },
-    get$errorFetchingTranslation() {
-      return "Theip ar f\xe1ilchur an aistri\xfach\xe1in";
-    },
     get$errorFetchingActivity() {
       return "Theip ar f\xe1ilchur an ghn\xedomha\xedochta";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " chr\xedochnaigh an gn\xedomha\xedocht seo";
-    },
-    get$activitySummaryError() {
-      return "N\xed f\xe9idir achoimrigh gn\xedomha\xedochta a fh\xe1il";
-    },
-    get$requestSummaries() {
-      return "Iarr achoimrigh";
     },
     get$requestAccessTitle() {
       return "An bhfuil t\xfa ag iarraidh rochtain ar an anail\xeds?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Imir le Pangea Bot";
     },
-    get$waitNotDone() {
-      return "Fan, n\xedl m\xe9 cr\xedochnaithe!";
-    },
-    get$waitingForOthersToFinish() {
-      return "Ag fanacht ar na daoine eile chun cr\xedochn\xfa...";
-    },
-    get$generatingSummary() {
-      return "Ag anail\xedsi\xfa comhr\xe1 agus tortha\xed a ghini\xfaint";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " ag lorg \xfas\xe1ideoir\xed chun rannph\xe1irt\xedocht sa seisi\xfan gn\xedomha\xedochta i " + room;
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Cuireadh a thabhairt do chairde chuig mo ch\xfarsa";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Cl\xe1raigh chun achoimre ar ghn\xedomha\xedochta\xed a dh\xedghlas\xe1il";
     },
     get$subscribeToUnlockDefinitions() {
       return "Cl\xe1raigh chun sainmh\xednni\xed a dh\xedghlas\xe1il";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Uimhir na ngn\xedomha\xedochta\xed s\xe1bh\xe1ilte";
     },
-    get$saveActivityTitle() {
-      return "S\xe1bh\xe1il gn\xedomha\xedocht";
-    },
-    get$saveActivityDesc() {
-      return "Maith th\xfa! S\xe1bh\xe1il an gn\xedomha\xedocht seo le haghaidh athbhreithnithe agus cleachtaidh n\xedos d\xe9ana\xed";
-    },
     get$levelInfoTooltip() {
       return "Anseo is f\xe9idir leat na point\xed go l\xe9ir at\xe1 tuillte agat a fheice\xe1il agus conas a fuair t\xfa iad!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Cuireadh cairde";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Eolas gn\xedomha\xedochta";
@@ -5246,7 +5183,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kxdaC/TQxP+PsdnTUdk2HPZznnQ="] = d.current;
+  d["s6mwx4OUKLkr2zPhaJrdlafQqw4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_609.part.js.map

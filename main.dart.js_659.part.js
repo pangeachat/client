@@ -1480,15 +1480,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$holdForInfo() {
       return "Kattints \xe9s tartsd lenyomva a sz\xf3 inform\xe1ci\xf3j\xe1\xe9rt.";
     },
-    get$greenFeedback() {
-      return "Ezt \xedrn\xe1m ide!";
-    },
-    get$yellowFeedback() {
-      return "Hm, kipr\xf3b\xe1lhatod, hogy m\u0171k\xf6dik-e! A sz\xf3 haszn\xe1lat\xe1hoz egyszer\u0171en kattints r\xe1 \xfajra.";
-    },
-    get$redFeedback() {
-      return "Nem hiszem, hogy ez helyes...";
-    },
     get$gaTooltip() {
       return "L2 haszn\xe1lata nyelvtani seg\xedts\xe9ggel";
     },
@@ -1543,14 +1534,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Figyelmen k\xedv\xfcl hagy";
     },
-    needsItMessage$1(targetLanguage) {
-      return "V\xe1rj, ez nem " + targetLanguage + "! Sz\xfcks\xe9ged van seg\xedts\xe9gre a ford\xedt\xe1sban?";
-    },
     get$countryInformation() {
       return "Orsz\xe1gom";
-    },
-    get$targetLanguage() {
-      return "C\xe9lnyelv";
     },
     get$updateLanguage() {
       return "Nyelveim";
@@ -1576,17 +1561,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorDisableIGC() {
       return "A Nyelvtani seg\xedts\xe9g kikapcsolva van.";
     },
-    get$errorDisableLanguageAssistance() {
-      return "A Ford\xedt\xe1si \xe9s nyelvtani seg\xedts\xe9g kikapcsolva van.";
-    },
     get$errorDisableITUserDesc() {
       return "Kattints ide a ford\xedt\xe1si seg\xedts\xe9g be\xe1ll\xedt\xe1sainak friss\xedt\xe9s\xe9hez";
     },
     get$errorDisableIGCUserDesc() {
       return "Kattints ide a nyelvtani seg\xedts\xe9g be\xe1ll\xedt\xe1sainak friss\xedt\xe9s\xe9hez";
-    },
-    get$errorDisableLanguageAssistanceUserDesc() {
-      return "Kattints ide a ford\xedt\xe1si \xe9s nyelvtani seg\xedts\xe9g be\xe1ll\xedt\xe1sainak friss\xedt\xe9s\xe9hez";
     },
     get$errorDisableITClassDesc() {
       return "A ford\xedt\xe1si seg\xedts\xe9g kikapcsolva van az adott kurzushoz tartoz\xf3 cseveg\xe9sben.";
@@ -2503,21 +2482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Nincs adat";
     },
-    get$bestCorrectionFeedback() {
-      return "Ez helyes!";
-    },
-    get$distractorFeedback() {
-      return "Ez nem eg\xe9szen helyes.";
-    },
-    get$bestAnswerFeedback() {
-      return "Ez helyes!";
-    },
-    get$definitionDefaultPrompt() {
-      return "Mit jelent ez a sz\xf3?";
-    },
-    get$practiceDefaultPrompt() {
-      return "Mi a legjobb v\xe1lasz?";
-    },
     get$correctionDefaultPrompt() {
       return "Mi a legjobb helyettes\xedt\xe9s?";
     },
@@ -2610,9 +2574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$practice() {
       return "Gyakorlat";
-    },
-    get$noLanguagesSet() {
-      return "Nincs be\xe1ll\xedtott nyelv";
     },
     get$speechToTextBody() {
       return "Hang\xfczenetek eset\xe9n l\xe1that\xf3 egy \xe1tirat, valamint a besz\xe9l\u0151 Szavak Per Perc (WPM) pontsz\xe1ma.";
@@ -4126,9 +4087,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Ford\xedt\xe1si hiba";
     },
-    get$errorFetchingTranslation() {
-      return "Nem siker\xfclt lek\xe9rni a ford\xedt\xe1st";
-    },
     get$errorFetchingActivity() {
       return "Nem siker\xfclt lek\xe9rni a tev\xe9kenys\xe9get";
     },
@@ -4161,12 +4119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " befejezte ezt a tev\xe9kenys\xe9get";
-    },
-    get$activitySummaryError() {
-      return "A tev\xe9kenys\xe9g \xf6sszegz\xe9sek nem el\xe9rhet\u0151k";
-    },
-    get$requestSummaries() {
-      return "\xd6sszegz\xe9sek k\xe9r\xe9s";
     },
     get$requestAccessTitle() {
       return "K\xe9rj\xfck az elemz\xe9si hozz\xe1f\xe9r\xe9st?";
@@ -4276,15 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "J\xe1tssz a Pangea Bot-tal";
     },
-    get$waitNotDone() {
-      return "V\xe1rj, m\xe9g nem v\xe9geztem!";
-    },
-    get$waitingForOthersToFinish() {
-      return "V\xe1rakoz\xe1s a t\xf6bbiek befejez\xe9s\xe9re...";
-    },
-    get$generatingSummary() {
-      return "Chat elemz\xe9se \xe9s eredm\xe9nyek gener\xe1l\xe1sa";
-    },
     pingParticipantsNotification$2(user, room) {
       return user + " keres felhaszn\xe1l\xf3kat a " + room + " szob\xe1ban a tev\xe9kenys\xe9ghez";
     },
@@ -4335,9 +4278,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Bar\xe1tok megh\xedv\xe1sa a kurzusomba";
-    },
-    get$subscribeToUnlockActivitySummaries() {
-      return "Feliratkoz\xe1s a tev\xe9kenys\xe9g \xf6sszefoglal\xf3k felold\xe1s\xe1ra";
     },
     get$subscribeToUnlockDefinitions() {
       return "Feliratkoz\xe1s a defin\xedci\xf3k felold\xe1s\xe1ra";
@@ -4516,12 +4456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numSavedActivities() {
       return "Mentett tev\xe9kenys\xe9gek sz\xe1ma";
     },
-    get$saveActivityTitle() {
-      return "Tev\xe9kenys\xe9g ment\xe9se";
-    },
-    get$saveActivityDesc() {
-      return "J\xf3 munka! Mentsd el ezt a tev\xe9kenys\xe9get k\xe9s\u0151bbi \xe1ttekint\xe9sre \xe9s gyakorl\xe1sra";
-    },
     get$levelInfoTooltip() {
       return "Itt l\xe1thatod az \xf6sszes pontot, amit szerezt\xe9l, \xe9s hogyan!";
     },
@@ -4542,6 +4476,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriends() {
       return "Bar\xe1tok megh\xedv\xe1sa";
+    },
+    get$failedToLoadFeedback() {
+      return "Failed to load feedback.";
     },
     get$activityStatsButtonTooltip() {
       return "Tev\xe9kenys\xe9gi inform\xe1ci\xf3";
@@ -5243,7 +5180,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ed259h9WJTWL9juvtT6F4EvasKc="] = d.current;
+  d["d526Zd39y09ZFz92Thb4xj3/35I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_659.part.js.map
