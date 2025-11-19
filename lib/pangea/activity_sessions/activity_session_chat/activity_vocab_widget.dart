@@ -20,78 +20,60 @@ class ActivityVocabWidget extends StatelessWidget {
     required this.vocab,
     required this.langCode,
     required this.targetId,
-    required this.usedVocab,
+    this.usedVocab,
   });
 
   @override
   Widget build(BuildContext context) {
     if (usedVocab == null) {
-      return Wrap(
-        spacing: 4.0,
-        runSpacing: 4.0,
-        children: [
-          ...vocab.map(
-            (vocab) => _VocabChip(
-              vocab: vocab,
-              targetId: targetId,
-              langCode: langCode,
-              usedVocab: const {},
-            ),
-          ),
-        ],
+      return _VocabChips(
+        vocab: vocab,
+        targetId: targetId,
+        langCode: langCode,
+        usedVocab: const {},
       );
     }
 
     return ValueListenableBuilder(
       valueListenable: usedVocab!,
-      builder: (context, used, __) {
-        return Wrap(
-          spacing: 4.0,
-          runSpacing: 4.0,
-          children: [
-            ...vocab.map(
-              (vocab) => _VocabChip(
-                vocab: vocab,
-                targetId: targetId,
-                langCode: langCode,
-                usedVocab: used,
-              ),
-            ),
-          ],
-        );
-      },
+      builder: (context, used, __) => _VocabChips(
+        vocab: vocab,
+        targetId: targetId,
+        langCode: langCode,
+        usedVocab: used,
+      ),
     );
   }
 }
 
-class _VocabChip extends StatelessWidget {
-  final Vocab vocab;
+class _VocabChips extends StatelessWidget {
+  final List<Vocab> vocab;
   final String targetId;
   final String langCode;
   final Set<String> usedVocab;
 
-  const _VocabChip({
+  const _VocabChips({
     required this.vocab,
     required this.targetId,
     required this.langCode,
     required this.usedVocab,
   });
 
-  void _onTap(BuildContext context) {
-    final target = "$targetId-${vocab.lemma}";
+  void _onTap(Vocab v, BuildContext context) {
+    final target = "$targetId-${v.lemma}";
     OverlayUtil.showPositionedCard(
       overlayKey: target,
       context: context,
       cardToShow: WordZoomWidget(
         token: PangeaTokenText(
-          content: vocab.lemma,
-          length: vocab.lemma.characters.length,
+          content: v.lemma,
+          length: v.lemma.characters.length,
           offset: 0,
         ),
         construct: ConstructIdentifier(
-          lemma: vocab.lemma,
+          lemma: v.lemma,
           type: ConstructTypeEnum.vocab,
-          category: vocab.pos,
+          category: v.pos,
         ),
         langCode: langCode,
         onClose: () {
@@ -108,41 +90,52 @@ class _VocabChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final target = "$targetId-${vocab.lemma}";
-    final color = usedVocab.contains(vocab.lemma.toLowerCase())
-        ? Color.alphaBlend(
-            Theme.of(context).colorScheme.surface.withAlpha(150),
-            AppConfig.gold,
-          )
-        : Theme.of(context).colorScheme.primary.withAlpha(20);
+    return Wrap(
+      spacing: 4.0,
+      runSpacing: 4.0,
+      children: [
+        ...vocab.map(
+          (v) {
+            final target = "$targetId-${v.lemma}";
+            final color = usedVocab.contains(v.lemma.toLowerCase())
+                ? Color.alphaBlend(
+                    Theme.of(context).colorScheme.surface.withAlpha(150),
+                    AppConfig.gold,
+                  )
+                : Theme.of(context).colorScheme.primary.withAlpha(20);
 
-    final linkAndKey = MatrixState.pAnyState.layerLinkAndKey(target);
-    return CompositedTransformTarget(
-      link: linkAndKey.link,
-      child: InkWell(
-        key: linkAndKey.key,
-        borderRadius: BorderRadius.circular(
-          24.0,
+            final linkAndKey = MatrixState.pAnyState.layerLinkAndKey(target);
+
+            return CompositedTransformTarget(
+              link: linkAndKey.link,
+              child: InkWell(
+                key: linkAndKey.key,
+                borderRadius: BorderRadius.circular(
+                  24.0,
+                ),
+                onTap: () => _onTap(v, context),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 4.0,
+                  ),
+                  decoration: BoxDecoration(
+                    color: color,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Text(
+                    v.lemma,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontSize: 14.0,
+                    ),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
-        onTap: () => _onTap(context),
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 8.0,
-            vertical: 4.0,
-          ),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Text(
-            vocab.lemma,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface,
-              fontSize: 14.0,
-            ),
-          ),
-        ),
-      ),
+      ],
     );
   }
 }

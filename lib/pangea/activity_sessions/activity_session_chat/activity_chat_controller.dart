@@ -30,15 +30,18 @@ class ActivityChatController {
   final ValueNotifier<bool> hasRainedConfetti = ValueNotifier(false);
 
   void init() {
-    _updateUsedVocab();
-    _analyticsSubscription = MatrixState
-        .pangeaController.getAnalytics.analyticsStream.stream
-        .listen((_) {
+    if (getAnalytics != null) {
       _updateUsedVocab();
-    });
+      _analyticsSubscription = MatrixState
+          .pangeaController.getAnalytics.analyticsStream.stream
+          .listen((_) {
+        _updateUsedVocab();
+      });
+    }
   }
 
   void dispose() {
+    _disposed = true;
     carouselController.dispose();
     _analyticsSubscription?.cancel();
     usedVocab.dispose();
@@ -46,7 +49,6 @@ class ActivityChatController {
     showInstructions.dispose();
     showActivityDropdown.dispose();
     hasRainedConfetti.dispose();
-    _disposed = true;
   }
 
   void highlightRole(ActivityRoleModel role) {
