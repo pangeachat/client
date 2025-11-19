@@ -5162,6 +5162,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$zuDisplayName() {
       return "Zulu";
     },
+    get$unreadPlus() {
+      return "99+";
+    },
     get$teacherModeTitle() {
       return "Tryb Nauczyciela";
     },
@@ -5181,7 +5184,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1355cCY7o4f/VNZ2LzAqLpFqNwo="] = d.current;
+  d["CcCq+uVicP8TZei27OPrsrct62k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_728.part.js.map
