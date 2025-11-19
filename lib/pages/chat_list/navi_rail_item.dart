@@ -94,7 +94,7 @@ class NaviRailItem extends StatelessWidget {
                   child: UnreadRoomsBadge(
                     filter: unreadBadgeFilter ?? (_) => false,
                     badgePosition: BadgePosition.topEnd(
-                      top: -4,
+                      top: 1,
                       end: isColumnMode ? 8 : 4,
                     ),
                     child: Container(
