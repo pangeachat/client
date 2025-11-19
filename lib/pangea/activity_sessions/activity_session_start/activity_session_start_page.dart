@@ -66,6 +66,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   String? _selectedRoleId;
 
   Timer? _pingCooldown;
+  final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
@@ -91,6 +92,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   @override
   void dispose() {
     _pingCooldown?.cancel();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -185,6 +187,13 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       return true;
     }
     return false;
+  }
+
+  void startNewActivity() {
+    scrollController.jumpTo(0);
+    context.go(
+      "/rooms/spaces/${widget.parentId}/activity/${widget.activityId}?launch=true",
+    );
   }
 
   void toggleInstructions() {

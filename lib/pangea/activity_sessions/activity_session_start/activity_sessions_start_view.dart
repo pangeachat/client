@@ -129,6 +129,7 @@ class ActivitySessionStartView extends StatelessWidget {
                         children: [
                           Expanded(
                             child: SingleChildScrollView(
+                              controller: controller.scrollController,
                               child: Container(
                                 constraints: const BoxConstraints(
                                   maxWidth: 600.0,
@@ -350,9 +351,7 @@ class _ActivityStartButtons extends StatelessWidget {
             ] else ...[
               ElevatedButton(
                 style: buttonStyle,
-                onPressed: () => context.go(
-                  "/rooms/spaces/${controller.widget.parentId}/activity/${controller.widget.activityId}?launch=true",
-                ),
+                onPressed: controller.startNewActivity,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
