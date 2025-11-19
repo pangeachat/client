@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-17 15:55:50.616379",
+  "@@last_modified": "2025-11-19 10:06:48.931764",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6106,6 +6106,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Chế độ Giáo viên",
+  "teacherModeDesc": "Chuyển đổi để mở khóa tất cả các chủ đề và hoạt động. Chỉ dành cho quản trị viên khóa học.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

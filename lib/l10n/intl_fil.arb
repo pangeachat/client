@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-11-17 15:47:37.803145",
+  "@@last_modified": "2025-11-19 10:06:38.816684",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11512,6 +11512,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Guro Mode",
+  "teacherModeDesc": "I-toggle upang i-unlock ang lahat ng mga paksa at aktibidad. Para lamang sa admin ng kurso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

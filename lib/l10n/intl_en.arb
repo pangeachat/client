@@ -4722,6 +4722,7 @@
   "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?",
   "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course",
   "inviteFriends": "Invite friends",
+  "failedToLoadFeedback": "Failed to load feedback.",
   "activityStatsButtonTooltip": "Activity info",
   "allow": "Allow",
   "deny": "Deny",
@@ -4948,5 +4949,8 @@
   "zhDisplayName": "Chinese",
   "zhCNDisplayName": "Chinese (Simplified)",
   "zhTWDisplayName": "Chinese (Traditional)",
-  "zuDisplayName": "Zulu"
+  "zuDisplayName": "Zulu",
+  "highlightVocabTooltip": "Highlight target vocab words below by sending them or practicing with them in the chat",
+  "teacherModeTitle": "Teacher Mode",
+  "teacherModeDesc": "Toggle to unlock all topics and activities. Course admin only."
 }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-17 16:16:27.345971",
+  "@@last_modified": "2025-11-19 10:07:20.801798",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11638,6 +11638,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Režim učitelja",
+  "teacherModeDesc": "Prebacite da otključate sve teme i aktivnosti. Samo za administratore kursa.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

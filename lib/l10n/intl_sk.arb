@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-11-17 15:19:03.130274",
+  "@@last_modified": "2025-11-19 10:05:46.486562",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11620,6 +11620,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Režim učiteľa",
+  "teacherModeDesc": "Prepnúť na odomknutie všetkých tém a aktivít. Iba administrátor kurzu.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

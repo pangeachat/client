@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-17 15:26:11.180037",
+  "@@last_modified": "2025-11-19 10:05:59.697842",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -10894,6 +10894,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Modo Professor",
+  "teacherModeDesc": "Ative para desbloquear todos os tópicos e atividades. Somente administrador do curso.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

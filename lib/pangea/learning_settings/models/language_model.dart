@@ -312,6 +312,21 @@ class LanguageModel {
     return _textDirection ?? _defaultTextDirection;
   }
 
+  static bool search(
+    LanguageModel? item,
+    String searchValue,
+    BuildContext context,
+  ) {
+    if (item == null) return false;
+    final search = searchValue.toLowerCase();
+    final displayName = item.displayName.toLowerCase();
+    final displayNameLocal = item.getDisplayName(context).toLowerCase();
+    final langCode = item.langCode.toLowerCase();
+    return displayName.startsWith(search) ||
+        displayNameLocal.startsWith(search) ||
+        langCode.startsWith(search);
+  }
+
   @override
   bool operator ==(Object other) {
     if (other is LanguageModel) {

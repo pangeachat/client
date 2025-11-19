@@ -51,6 +51,10 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
   }
 
   Future<void> _loadParticipants() async {
+    if (widget.room == null || widget.room!.participantListComplete) {
+      return;
+    }
+
     try {
       setState(() {
         loading = true;

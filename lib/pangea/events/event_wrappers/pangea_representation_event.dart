@@ -4,19 +4,19 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:matrix/src/utils/markdown.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/choreographer/event_wrappers/pangea_choreo_event.dart';
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/models/language_detection_model.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_choreo_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
@@ -26,13 +26,15 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class RepresentationEvent {
   Event? _event;
   PangeaRepresentation? _content;
   PangeaMessageTokens? _tokens;
-  ChoreoRecord? _choreo;
+  ChoreoRecordModel? _choreo;
   Timeline timeline;
   Event parentMessageEvent;
 
@@ -42,7 +44,7 @@ class RepresentationEvent {
     Event? event,
     PangeaRepresentation? content,
     PangeaMessageTokens? tokens,
-    ChoreoRecord? choreo,
+    ChoreoRecordModel? choreo,
   }) {
     if (event != null && event.type != PangeaEventTypes.representation) {
       throw Exception(
@@ -73,7 +75,7 @@ class RepresentationEvent {
   bool get botAuthored =>
       content.originalSent == false && content.originalWritten == false;
 
-  List<LanguageDetection>? get detections => _tokens?.detections;
+  List<LanguageDetectionModel>? get detections => _tokens?.detections;
 
   List<PangeaToken>? get tokens {
     if (_tokens != null) return _tokens!.tokens;
@@ -90,11 +92,11 @@ class RepresentationEvent {
     return _tokens?.tokens;
   }
 
-  Future<List<PangeaToken>> tokensGlobal(
+  Future<Result<List<PangeaToken>>> tokensGlobal(
     String senderID,
     DateTime timestamp,
   ) async {
-    if (tokens != null) return tokens!;
+    if (tokens != null) return Result.value(tokens!);
 
     if (_event == null && timestamp.isAfter(DateTime(2024, 9, 25))) {
       Sentry.addBreadcrumb(
@@ -110,8 +112,7 @@ class RepresentationEvent {
         ),
       );
     }
-    final TokensResponseModel res =
-        await MatrixState.pangeaController.messageData.getTokens(
+    final res = await MatrixState.pangeaController.messageData.getTokens(
       repEventId: _event?.eventId,
       room: _event?.room ?? parentMessageEvent.room,
       req: TokensRequestModel(
@@ -128,7 +129,11 @@ class RepresentationEvent {
       ),
     );
 
-    return res.tokens;
+    if (res.isError) {
+      return Result.error(res.error!);
+    } else {
+      return Result.value(res.result!.tokens);
+    }
   }
 
   Future<void> sendTokensEvent(
@@ -146,7 +151,7 @@ class RepresentationEvent {
       return;
     }
 
-    await MatrixState.pangeaController.messageData.sendTokensEvent(
+    await MatrixState.pangeaController.messageData.getTokens(
       repEventId: repEventID,
       room: room,
       req: TokensRequestModel(
@@ -223,7 +228,7 @@ class RepresentationEvent {
     );
   }
 
-  ChoreoRecord? get choreo {
+  ChoreoRecordModel? get choreo {
     if (_choreo != null) return _choreo;
 
     if (_event == null) {

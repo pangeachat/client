@@ -158,14 +158,11 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                 ),
               ),
             ),
-            searchMatchFn: (item, searchValue) {
-              final displayName =
-                  item.value?.getDisplayName(context).toLowerCase();
-              if (displayName == null) return false;
-
-              final search = searchValue.toLowerCase();
-              return displayName.startsWith(search);
-            },
+            searchMatchFn: (item, searchValue) => LanguageModel.search(
+              item.value,
+              searchValue,
+              context,
+            ),
           ),
           onMenuStateChange: (isOpen) {
             if (!isOpen) _searchController.clear();

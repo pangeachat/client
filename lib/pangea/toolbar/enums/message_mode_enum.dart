@@ -25,7 +25,6 @@ enum MessageMode {
   messageMeaning,
   listening,
   messageSpeechToText,
-  messageTranslation,
 
   // message not selected
   noneSelected,
@@ -34,8 +33,6 @@ enum MessageMode {
 extension MessageModeExtension on MessageMode {
   IconData get icon {
     switch (this) {
-      case MessageMode.messageTranslation:
-        return Icons.translate;
       case MessageMode.listening:
         return Icons.volume_up;
       case MessageMode.messageSpeechToText:
@@ -58,8 +55,6 @@ extension MessageModeExtension on MessageMode {
 
   String title(BuildContext context) {
     switch (this) {
-      case MessageMode.messageTranslation:
-        return L10n.of(context).translations;
       case MessageMode.listening:
         return L10n.of(context).messageAudio;
       case MessageMode.messageSpeechToText:
@@ -83,8 +78,6 @@ extension MessageModeExtension on MessageMode {
 
   String tooltip(BuildContext context) {
     switch (this) {
-      case MessageMode.messageTranslation:
-        return L10n.of(context).translationTooltip;
       case MessageMode.listening:
         return L10n.of(context).listen;
       case MessageMode.messageSpeechToText:
@@ -121,8 +114,6 @@ extension MessageModeExtension on MessageMode {
         return InstructionsEnum.chooseEmoji;
       case MessageMode.noneSelected:
         return InstructionsEnum.readingAssistanceOverview;
-      case MessageMode.messageTranslation:
-        return InstructionsEnum.completeActivitiesToUnlock;
       case MessageMode.messageMeaning:
       case MessageMode.wordZoom:
       case MessageMode.practiceActivity:
@@ -142,7 +133,6 @@ extension MessageModeExtension on MessageMode {
         return 0.5;
       case MessageMode.listening:
         return 0.3;
-      case MessageMode.messageTranslation:
       case MessageMode.messageSpeechToText:
       case MessageMode.wordZoom:
       case MessageMode.wordEmoji:
@@ -156,8 +146,6 @@ extension MessageModeExtension on MessageMode {
     MessageOverlayController overlayController,
   ) {
     switch (this) {
-      case MessageMode.messageTranslation:
-        return overlayController.isTranslationUnlocked;
       case MessageMode.practiceActivity:
       case MessageMode.listening:
       case MessageMode.messageSpeechToText:
@@ -175,8 +163,6 @@ extension MessageModeExtension on MessageMode {
 
   bool isModeDone(MessageOverlayController overlayController) {
     switch (this) {
-      case MessageMode.messageTranslation:
-        return overlayController.isTotallyDone;
       case MessageMode.listening:
         return overlayController.isListeningDone;
       case MessageMode.wordEmoji:
@@ -230,7 +216,6 @@ extension MessageModeExtension on MessageMode {
 
       case MessageMode.noneSelected:
       case MessageMode.messageMeaning:
-      case MessageMode.messageTranslation:
       case MessageMode.wordZoom:
       case MessageMode.messageSpeechToText:
       case MessageMode.practiceActivity:
@@ -290,7 +275,6 @@ extension MessageModeExtension on MessageMode {
 
       case MessageMode.noneSelected:
       case MessageMode.messageMeaning:
-      case MessageMode.messageTranslation:
       case MessageMode.wordZoom:
       case MessageMode.messageSpeechToText:
       case MessageMode.practiceActivity:

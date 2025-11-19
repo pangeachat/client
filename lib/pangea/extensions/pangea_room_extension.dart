@@ -22,6 +22,7 @@ import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
+import 'package:fluffychat/pangea/choreographer/igc/igc_request_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -33,7 +34,7 @@ import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import '../choreographer/models/choreo_record.dart';
+import '../choreographer/choreo_record_model.dart';
 import '../events/constants/pangea_event_types.dart';
 import '../events/models/representation_content_model.dart';
 

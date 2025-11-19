@@ -4460,7 +4460,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2025-11-17 16:07:39.170887",
+  "@@last_modified": "2025-11-19 10:07:05.042305",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11594,6 +11594,16 @@
     "placeholders": {}
   },
   "@zuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "teacherModeTitle": "Λειτουργία Δασκάλου",
+  "teacherModeDesc": "Εναλλαγή για να ξεκλειδώσετε όλα τα θέματα και τις δραστηριότητες. Μόνο για διαχειριστές μαθημάτων.",
+  "@teacherModeTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teacherModeDesc": {
     "type": "String",
     "placeholders": {}
   }

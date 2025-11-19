@@ -457,31 +457,29 @@ class MessageReactionPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (chatController.selectedEvents.length != 1) {
-      return const SizedBox.shrink();
-    }
-
     final theme = Theme.of(context);
     final sentReactions = <String>{};
-    final event = chatController.selectedEvents.first;
-    sentReactions.addAll(
-      event
-          .aggregatedEvents(
-            chatController.timeline!,
-            RelationshipTypes.reaction,
-          )
-          .where(
-            (event) =>
-                event.senderId == event.room.client.userID &&
-                event.type == 'm.reaction',
-          )
-          .map(
-            (event) => event.content
-                .tryGetMap<String, Object?>('m.relates_to')
-                ?.tryGet<String>('key'),
-          )
-          .whereType<String>(),
-    );
+    final event = chatController.selectedEvents.firstOrNull;
+    if (event != null) {
+      sentReactions.addAll(
+        event
+            .aggregatedEvents(
+              chatController.timeline!,
+              RelationshipTypes.reaction,
+            )
+            .where(
+              (event) =>
+                  event.senderId == event.room.client.userID &&
+                  event.type == 'm.reaction',
+            )
+            .map(
+              (event) => event.content
+                  .tryGetMap<String, Object?>('m.relates_to')
+                  ?.tryGet<String>('key'),
+            )
+            .whereType<String>(),
+      );
+    }
 
     return Material(
       elevation: 4,
@@ -517,7 +515,7 @@ class MessageReactionPicker extends StatelessWidget {
                   ),
                   onPressed: sentReactions.contains(emoji)
                       ? null
-                      : () => event.room.sendReaction(
+                      : () => event?.room.sendReaction(
                             event.eventId,
                             emoji,
                           ),
@@ -588,7 +586,7 @@ class MessageReactionPicker extends StatelessWidget {
                   );
                   if (emoji == null) return;
                   if (sentReactions.contains(emoji)) return;
-                  await event.room.sendReaction(
+                  await event?.room.sendReaction(
                     event.eventId,
                     emoji,
                   );

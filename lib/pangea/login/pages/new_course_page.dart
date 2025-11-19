@@ -55,6 +55,13 @@ class NewCoursePageState extends State<NewCoursePage> {
     _loadCourses();
   }
 
+  @override
+  void dispose() {
+    _courses.dispose();
+    _targetLanguageFilter.dispose();
+    super.dispose();
+  }
+
   CourseFilter get _filter {
     return CourseFilter(
       targetLanguage: _targetLanguageFilter.value,
