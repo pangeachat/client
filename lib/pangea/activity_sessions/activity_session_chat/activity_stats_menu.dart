@@ -5,23 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityStatsMenu extends StatefulWidget {
   final ChatController controller;
@@ -59,11 +52,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     _analyticsSubscription?.cancel();
     super.dispose();
   }
-
-  Set<String>? get _usedVocab => analytics?.constructs[room.client.userID!]
-      ?.constructsOfType(ConstructTypeEnum.vocab)
-      .map((id) => id.lemma.toLowerCase())
-      .toSet();
 
   Future<void> _updateUsedVocab() async {
     final analytics = await room.getActivityAnalytics();
@@ -135,7 +123,8 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     }
 
     return ValueListenableBuilder(
-      valueListenable: widget.controller.showActivityDropdown,
+      valueListenable:
+          widget.controller.activityController.showActivityDropdown,
       builder: (context, showDropdown, child) {
         return Positioned(
           top: 0,
@@ -196,19 +185,14 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                 ActivitySessionDetailsRow(
                   icon: Symbols.dictionary,
                   iconSize: 16.0,
-                  child: Wrap(
-                    spacing: 4.0,
-                    runSpacing: 4.0,
-                    children: [
-                      ...room.activityPlan!.vocab.map(
-                        (v) => VocabTile(
-                          vocab: v,
-                          langCode: room.activityPlan!.req.targetLanguage,
-                          isUsed: (_usedVocab ?? {})
-                              .contains(v.lemma.toLowerCase()),
-                        ),
-                      ),
-                    ],
+                  child: ActivityVocabWidget(
+                    key: ValueKey(
+                      "activity-stats-${room.activityPlan!.activityId}",
+                    ),
+                    vocab: room.activityPlan!.vocab,
+                    langCode: room.activityPlan!.req.targetLanguage,
+                    targetId: "activity-vocab",
+                    usedVocab: widget.controller.activityController.usedVocab,
                   ),
                 ),
               ],
@@ -272,92 +256,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                 ),
             ],
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class VocabTile extends StatelessWidget {
-  final Vocab vocab;
-  final String langCode;
-  final bool isUsed;
-
-  const VocabTile({
-    super.key,
-    required this.vocab,
-    required this.langCode,
-    required this.isUsed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = isUsed
-        ? Color.alphaBlend(
-            Theme.of(context).colorScheme.surface.withAlpha(150),
-            AppConfig.gold,
-          )
-        : Colors.transparent;
-    return CompositedTransformTarget(
-      link: MatrixState.pAnyState
-          .layerLinkAndKey(
-            "activity-vocab-${vocab.lemma}",
-          )
-          .link,
-      child: InkWell(
-        key: MatrixState.pAnyState
-            .layerLinkAndKey(
-              "activity-vocab-${vocab.lemma}",
-            )
-            .key,
-        borderRadius: BorderRadius.circular(
-          24.0,
-        ),
-        onTap: () {
-          OverlayUtil.showPositionedCard(
-            overlayKey: "activity-vocab-${vocab.lemma}",
-            context: context,
-            cardToShow: WordZoomWidget(
-              token: PangeaTokenText(
-                content: vocab.lemma,
-                length: vocab.lemma.characters.length,
-                offset: 0,
-              ),
-              construct: ConstructIdentifier(
-                lemma: vocab.lemma,
-                type: ConstructTypeEnum.vocab,
-                category: vocab.pos,
-              ),
-              langCode: langCode,
-              onClose: () {
-                MatrixState.pAnyState.closeOverlay(
-                  "activity-vocab-${vocab.lemma}",
-                );
-              },
-            ),
-            transformTargetId: "activity-vocab-${vocab.lemma}",
-            closePrevOverlay: false,
-            addBorder: false,
-            maxWidth: AppConfig.toolbarMinWidth,
-            maxHeight: AppConfig.toolbarMaxHeight,
-          );
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 8.0,
-            vertical: 4.0,
-          ),
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Text(
-            vocab.lemma,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface,
-              fontSize: 14.0,
-            ),
-          ),
         ),
       ),
     );

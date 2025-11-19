@@ -138,7 +138,7 @@ class Message extends StatelessWidget {
       if (event.type == PangeaEventTypes.activityPlan &&
           event.room.activityPlan != null) {
         return ValueListenableBuilder(
-          valueListenable: controller.showInstructions,
+          valueListenable: controller.activityController.showInstructions,
           builder: (context, show, __) {
             return ActivitySummary(
               activity: event.room.activityPlan!,
@@ -147,11 +147,13 @@ class Message extends StatelessWidget {
                   ? event.room.activityRoles?.roles ?? {}
                   : event.room.assignedRoles ?? {},
               showInstructions: show,
-              toggleInstructions: controller.toggleShowInstructions,
+              toggleInstructions:
+                  controller.activityController.toggleShowInstructions,
               getParticipantOpacity: (role) =>
                   role == null || role.isFinished ? 0.5 : 1.0,
               isParticipantSelected: (id) =>
                   controller.room.ownRoleState?.id == id,
+              usedVocab: controller.activityController.usedVocab,
             );
           },
         );

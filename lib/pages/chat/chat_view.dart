@@ -497,14 +497,16 @@ class ChatView extends StatelessWidget {
                     ActivityStatsMenu(controller),
                     if (controller.room.activitySummary?.summary != null)
                       ValueListenableBuilder(
-                        valueListenable: controller.hasRainedConfetti,
+                        valueListenable:
+                            controller.activityController.hasRainedConfetti,
                         builder: (context, hasRained, __) {
                           return hasRained
                               ? const SizedBox()
                               : StarRainWidget(
                                   showBlast: true,
-                                  onFinished: () =>
-                                      controller.setHasRainedConfetti(true),
+                                  onFinished: () => controller
+                                      .activityController
+                                      .setHasRainedConfetti(true),
                                 );
                         },
                       ),
