@@ -5197,6 +5197,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Jarduerak hemen agertuko dira amaitu eta gorde ondoren.";
     },
+    get$changeCourse() {
+      return "Aldatu ikasturtea";
+    },
+    get$changeCourseDesc() {
+      return "Hemen ikasturtea aldatu dezakezu ikasturte honen ikasturteen plana.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5213,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qqOLCcGXpiKD5llJ5z7pbccx5NY="] = d.current;
+  d["y4ekSj7OdQpAdw/2D1k79OuE0OQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

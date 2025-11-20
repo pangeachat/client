@@ -5197,6 +5197,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteter kommer att visas h\xe4r n\xe4r de \xe4r slutf\xf6rda och sparade.";
     },
+    get$changeCourse() {
+      return "\xc4ndra kurs";
+    },
+    get$changeCourseDesc() {
+      return "H\xe4r kan du \xe4ndra kursplanen f\xf6r denna kurs.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5210,7 +5216,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["o80PrpUy0ltiaywzjU7VwnOCjCk="] = d.current;
+  d["vOO8Jm5tENAfozI6FGh5VzCgxpw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

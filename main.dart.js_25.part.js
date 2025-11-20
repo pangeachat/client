@@ -5209,6 +5209,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return string$.As_ati;
     },
+    get$changeCourse() {
+      return "Mudar curso";
+    },
+    get$changeCourseDesc() {
+      return string$.Aqui_vm;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10391,6 +10397,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noSavedActivitiesYet() {
       return string$.As_ati;
+    },
+    get$changeCourse() {
+      return "Mudar curso";
+    },
+    get$changeCourseDesc() {
+      return string$.Aqui_vm;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15575,6 +15587,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return string$.As_ati;
     },
+    get$changeCourse() {
+      return "Mudar curso";
+    },
+    get$changeCourseDesc() {
+      return string$.Aqui_vm;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15607,6 +15625,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Ao_ati: "Ao ativar, voc\xea permite que outros usu\xe1rios encontrem seu perfil na barra de busca global e enviem solicita\xe7\xf5es para conversar. Neste momento, voc\xea pode escolher aceitar ou negar a solicita\xe7\xe3o.",
     Ao_sai: "Ao sair do curso, voc\xea deixar\xe1 todos os chats dentro dele. Outros usu\xe1rios ver\xe3o que voc\xea saiu do curso.",
     Aqui_ve: "Aqui voc\xea pode editar o t\xedtulo do curso, descri\xe7\xe3o, etc.",
+    Aqui_vm: "Aqui voc\xea pode mudar o plano de curso deste curso.",
     Aqui_vv: "Aqui voc\xea pode ver todos os pontos que voc\xea ganhou e como!",
     As_alt: "As altera\xe7\xf5es na sua assinatura podem levar um momento para refletir no aplicativo.",
     As_ati: "As atividades aparecer\xe3o aqui assim que forem conclu\xeddas e salvas.",
@@ -15757,7 +15776,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K9QXHsxPntB5zkS0X8HVG6SsS6Y="] = d.current;
+  d["tC69i3FAxl4pvbMmTXZCKtVSTck="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

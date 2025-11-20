@@ -5197,6 +5197,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivit\xe4ten erscheinen hier, sobald sie abgeschlossen und gespeichert sind.";
     },
+    get$changeCourse() {
+      return "Kurs \xe4ndern";
+    },
+    get$changeCourseDesc() {
+      return "Hier k\xf6nnen Sie den Kursplan dieses Kurses \xe4ndern.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5213,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Sgj+YhRzv4BOjUglw7H9ADK3st8="] = d.current;
+  d["mE9FJFM1pRYIAJpNZBnBLekoeCU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_379.part.js.map

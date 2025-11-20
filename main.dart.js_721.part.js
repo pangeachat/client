@@ -5197,6 +5197,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteter vil vises her n\xe5r de er fullf\xf8rt og lagret.";
     },
+    get$changeCourse() {
+      return "Endre kurs";
+    },
+    get$changeCourseDesc() {
+      return "Her kan du endre kursplanen for dette kurset.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5213,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Iv1CG0AJLK8FHkHClxjgse4EnUE="] = d.current;
+  d["rPXNZ0+Rx+CAe5M4xnChglm9JKA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

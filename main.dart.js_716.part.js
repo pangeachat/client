@@ -5197,6 +5197,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivit\u0101tes par\u0101d\u012bsies \u0161eit, kad t\u0101s tiks pabeigtas un saglab\u0101tas.";
     },
+    get$changeCourse() {
+      return "Main\u012bt kursu";
+    },
+    get$changeCourseDesc() {
+      return "\u0160eit j\u016bs varat main\u012bt \u0161\u012b kursa kursa pl\u0101nu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5210,7 +5216,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["omh1htMNBu9wRnNSyCejnj2yju4="] = d.current;
+  d["CLhPAhbulpQgorI7H6QWXtf9BZI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map
