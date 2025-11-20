@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/chat_emoji_picker.dart';
 import 'package:fluffychat/pages/chat/reply_display.dart';
@@ -19,6 +21,7 @@ class ChatInputBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -26,12 +29,81 @@ class ChatInputBar extends StatelessWidget {
           room: controller.room,
           hide: controller.choreographer.itController.open,
         ),
-        ITBar(choreographer: controller.choreographer),
-        ReplyDisplay(controller),
-        PangeaChatInputRow(
-          controller: controller,
+        Container(
+          margin: EdgeInsets.all(
+            FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+          ),
+          constraints: const BoxConstraints(
+            maxWidth: FluffyThemes.maxTimelineWidth,
+          ),
+          alignment: Alignment.center,
+          child: Material(
+            clipBehavior: Clip.hardEdge,
+            color: theme.colorScheme.surfaceContainerHigh,
+            borderRadius: const BorderRadius.all(
+              Radius.circular(24),
+            ),
+            child: controller.room.isAbandonedDMRoom == true
+                ? _AbandonedDMContent(controller: controller)
+                : Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ITBar(choreographer: controller.choreographer),
+                      ReplyDisplay(controller),
+                      PangeaChatInputRow(
+                        controller: controller,
+                      ),
+                      ChatEmojiPicker(controller),
+                    ],
+                  ),
+          ),
         ),
-        ChatEmojiPicker(controller),
+      ],
+    );
+  }
+}
+
+class _AbandonedDMContent extends StatelessWidget {
+  final ChatController controller;
+
+  const _AbandonedDMContent({
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        TextButton.icon(
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.all(
+              16,
+            ),
+            foregroundColor: Theme.of(context).colorScheme.error,
+          ),
+          icon: const Icon(
+            Icons.archive_outlined,
+          ),
+          onPressed: controller.leaveChat,
+          label: Text(
+            L10n.of(context).leave,
+          ),
+        ),
+        TextButton.icon(
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.all(
+              16,
+            ),
+          ),
+          icon: const Icon(
+            Icons.forum_outlined,
+          ),
+          onPressed: controller.recreateChat,
+          label: Text(
+            L10n.of(context).reopenChat,
+          ),
+        ),
       ],
     );
   }
