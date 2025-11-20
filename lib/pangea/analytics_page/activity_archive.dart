@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
@@ -32,10 +33,18 @@ class ActivityArchive extends StatelessWidget {
         itemCount: archive.length + 1,
         itemBuilder: (BuildContext context, int i) {
           if (i == 0) {
-            return const InstructionsInlineTooltip(
-              instructionsEnum: InstructionsEnum.activityAnalyticsList,
-              padding: EdgeInsets.all(8.0),
-            );
+            return archive.isEmpty
+                ? Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Text(
+                      L10n.of(context).noSavedActivitiesYet,
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+                : const InstructionsInlineTooltip(
+                    instructionsEnum: InstructionsEnum.activityAnalyticsList,
+                    padding: EdgeInsets.all(8.0),
+                  );
           }
           i--;
           return AnalyticsActivityItem(
