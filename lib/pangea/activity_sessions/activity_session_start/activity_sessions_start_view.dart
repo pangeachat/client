@@ -48,7 +48,14 @@ class ActivitySessionStartView extends StatelessWidget {
             leadingWidth: 52.0,
             title: controller.activity == null
                 ? null
-                : Text(controller.activity!.title),
+                : Text(
+                    controller.activity!.title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
             leading: Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Center(
