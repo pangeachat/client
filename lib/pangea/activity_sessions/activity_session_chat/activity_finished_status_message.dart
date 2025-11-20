@@ -27,7 +27,7 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
       );
 
       if (!resp.isError) {
-        context.push(
+        context.go(
           "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
         );
       }
