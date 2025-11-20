@@ -155,14 +155,11 @@ class OverlayUtil {
         final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
             (transformTargetSize.width / 2);
 
-        final verticalMidpoint =
-            transformTargetOffset.dy + (transformTargetSize.height / 2);
-
         final halfMaxWidth = maxWidth / 2;
         final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
         final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
             (MediaQuery.of(context).size.width - columnWidth - 10);
-        hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
+        hasTopOverflow = maxHeight + kToolbarHeight > transformTargetOffset.dy;
 
         double xOffset = 0;
 
