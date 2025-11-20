@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-11-20 12:38:18.326177",
+  "@@last_modified": "2025-11-20 14:53:32.298371",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10573,6 +10573,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Actividade de práctica completada",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

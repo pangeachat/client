@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:38:26.175424",
+  "@@last_modified": "2025-11-20 14:53:39.359488",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11311,6 +11311,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Activitate de practică finalizată",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-11-20 12:39:20.003666",
+  "@@last_modified": "2025-11-20 14:54:12.599201",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10576,6 +10576,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktywność praktyczna zakończona",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

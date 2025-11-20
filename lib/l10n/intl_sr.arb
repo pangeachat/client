@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:39:31.189262",
+  "@@last_modified": "2025-11-20 14:54:21.092644",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11678,6 +11678,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivnost vežbanja je završena",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-11-20 12:38:39.354858",
+  "@@last_modified": "2025-11-20 14:53:50.178435",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10583,6 +10583,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Übungsaktivität abgeschlossen",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

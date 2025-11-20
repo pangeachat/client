@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-11-20 12:39:28.706564",
+  "@@last_modified": "2025-11-20 14:54:19.249444",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10681,6 +10681,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Практическое задание завершено",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

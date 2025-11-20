@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:39:17.140740",
+  "@@last_modified": "2025-11-20 14:54:10.871486",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11680,6 +11680,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "অভ্যাস কার্যক্রম সম্পন্ন",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

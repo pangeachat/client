@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-11-20 12:38:23.399921",
+  "@@last_modified": "2025-11-20 14:53:36.261794",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10577,6 +10577,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Gyakorló tevékenység befejezve",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

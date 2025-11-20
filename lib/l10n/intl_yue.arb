@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-11-20 12:38:42.034948",
+  "@@last_modified": "2025-11-20 14:53:52.037690",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11667,6 +11667,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "練習活動已完成",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

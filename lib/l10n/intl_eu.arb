@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-11-20 12:38:36.071015",
+  "@@last_modified": "2025-11-20 14:53:47.461492",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10576,6 +10576,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Praktika jarduera amaituta",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

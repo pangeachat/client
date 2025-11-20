@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:38:25.008007",
+  "@@last_modified": "2025-11-20 14:53:37.035253",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10567,6 +10567,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivitas latihan selesai",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

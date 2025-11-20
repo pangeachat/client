@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:38:31.739043",
+  "@@last_modified": "2025-11-20 14:53:44.448591",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11625,6 +11625,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "פעילות תרגול הושלמה",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

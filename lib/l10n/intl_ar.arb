@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-11-20 12:39:04.749371",
+  "@@last_modified": "2025-11-20 14:54:02.760300",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10793,6 +10793,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "تم الانتهاء من نشاط الممارسة",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }
