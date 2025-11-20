@@ -2468,7 +2468,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-11-19 10:06:09.338917",
+  "@@last_modified": "2025-11-20 10:48:57.710755",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11627,6 +11627,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nalaganje povratnih informacij ni uspelo.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Označite ciljne besede spodaj tako, da jih pošljete ali vadite z njimi v klepetu",
+  "noSavedActivitiesYet": "Aktivnosti se bodo prikazale tukaj, ko bodo zaključene in shranjene.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

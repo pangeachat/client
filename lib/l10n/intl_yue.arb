@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-11-19 10:06:11.264487",
+  "@@last_modified": "2025-11-20 10:48:59.758433",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11637,6 +11637,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "無法加載反饋。",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "通過在聊天中發送或練習以下目標詞彙來突出顯示它們",
+  "noSavedActivitiesYet": "活動完成並保存後將會出現在這裡。",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

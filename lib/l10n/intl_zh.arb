@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-19 10:06:55.893202",
+  "@@last_modified": "2025-11-20 10:49:50.545294",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10537,6 +10537,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "加载反馈失败。",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
+  "noSavedActivitiesYet": "活动完成并保存后将出现在这里。",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

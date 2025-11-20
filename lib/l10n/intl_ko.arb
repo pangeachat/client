@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:05:24.832279",
+  "@@last_modified": "2025-11-20 10:48:04.055611",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10654,6 +10654,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "피드백을 불러오는 데 실패했습니다.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "아래의 목표 어휘 단어를 강조 표시하려면 채팅에서 보내거나 연습하세요.",
+  "noSavedActivitiesYet": "활동이 완료되고 저장되면 여기에 나타납니다.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

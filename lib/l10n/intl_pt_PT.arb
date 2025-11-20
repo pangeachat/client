@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-11-17 15:45:02.069825",
+  "@@last_modified": "2025-11-20 10:49:20.744171",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11575,6 +11575,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Falha ao carregar feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Destaque as palavras de vocabulário-alvo abaixo enviando-as ou praticando com elas no chat",
+  "noSavedActivitiesYet": "As atividades aparecerão aqui assim que forem concluídas e salvas.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

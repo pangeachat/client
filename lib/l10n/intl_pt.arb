@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:02.778781",
+  "@@last_modified": "2025-11-20 10:48:50.032925",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11646,6 +11646,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Falha ao carregar feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Destaque as palavras de vocabulário-alvo abaixo enviando-as ou praticando com elas no chat",
+  "noSavedActivitiesYet": "As atividades aparecerão aqui assim que forem concluídas e salvas.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

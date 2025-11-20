@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-19 10:06:43.229771",
+  "@@last_modified": "2025-11-20 10:49:33.650241",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10768,6 +10768,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Geri bildirimi yüklemek başarısız oldu.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
+  "noSavedActivitiesYet": "Aktiviteler tamamlandığında ve kaydedildiğinde burada görünecektir.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

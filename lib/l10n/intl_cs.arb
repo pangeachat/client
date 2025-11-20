@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-11-19 10:06:23.270366",
+  "@@last_modified": "2025-11-20 10:49:07.331005",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11153,6 +11153,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nepodařilo se načíst zpětnou vazbu.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
+  "noSavedActivitiesYet": "Aktivity se zde objeví, jakmile budou dokončeny a uloženy.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

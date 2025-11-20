@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-11-19 10:05:33.443954",
+  "@@last_modified": "2025-11-20 10:48:10.913290",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10543,6 +10543,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Fallou ao cargar a retroalimentación.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Destaca as palabras de vocabulario obxectivo abaixo enviándoas ou practicando con elas no chat",
+  "noSavedActivitiesYet": "As actividades aparecerán aquí unha vez que se completen e se gardan.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-11-19 10:07:08.492783",
+  "@@last_modified": "2025-11-20 10:50:32.719576",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11336,6 +11336,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "フィードバックの読み込みに失敗しました。",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "チャットで送信したり練習したりすることで、下のターゲット語彙をハイライトします。",
+  "noSavedActivitiesYet": "アクティビティは、完了して保存されるとここに表示されます。",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

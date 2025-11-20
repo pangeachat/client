@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:28.272487",
+  "@@last_modified": "2025-11-20 10:49:15.114513",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10570,6 +10570,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "No s'ha pogut carregar el feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Destaca les paraules de vocabulari objectiu a continuació enviant-les o practicant-les al xat",
+  "noSavedActivitiesYet": "Les activitats apareixeran aquí un cop estiguin completades i desades.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

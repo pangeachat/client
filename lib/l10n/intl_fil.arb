@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-11-19 10:06:38.816684",
+  "@@last_modified": "2025-11-20 10:49:25.976663",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11522,6 +11522,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nabigong i-load ang feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
+  "noSavedActivitiesYet": "Lilitaw ang mga aktibidad dito kapag natapos at na-save na ang mga ito.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

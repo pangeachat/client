@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:25.294989",
+  "@@last_modified": "2025-11-20 10:49:09.874072",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11639,6 +11639,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Kunne ikke laste tilbakemelding.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Fremhev målordene nedenfor ved å sende dem eller øve med dem i chatten",
+  "noSavedActivitiesYet": "Aktiviteter vil vises her når de er fullført og lagret.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }
