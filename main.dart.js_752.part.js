@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteter kommer att visas h\xe4r n\xe4r de \xe4r slutf\xf6rda och sparade.";
     },
+    get$practiceActivityCompleted() {
+      return "\xd6vningsaktivitet slutf\xf6rd";
+    },
     get$changeCourse() {
       return "\xc4ndra kurs";
     },
@@ -5216,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vOO8Jm5tENAfozI6FGh5VzCgxpw="] = d.current;
+  d["o+NujiSVE9w7pr/n+p1K2/g9AmI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

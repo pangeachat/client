@@ -5209,6 +5209,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return string$.As_ati;
     },
+    get$practiceActivityCompleted() {
+      return "Atividade de pr\xe1tica conclu\xedda";
+    },
     get$changeCourse() {
       return "Mudar curso";
     },
@@ -10397,6 +10400,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noSavedActivitiesYet() {
       return string$.As_ati;
+    },
+    get$practiceActivityCompleted() {
+      return "Atividade de pr\xe1tica conclu\xedda";
     },
     get$changeCourse() {
       return "Mudar curso";
@@ -15587,6 +15593,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return string$.As_ati;
     },
+    get$practiceActivityCompleted() {
+      return "Atividade de pr\xe1tica conclu\xedda";
+    },
     get$changeCourse() {
       return "Mudar curso";
     },
@@ -15776,7 +15785,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tC69i3FAxl4pvbMmTXZCKtVSTck="] = d.current;
+  d["uT1HF543jysJW9YvjWPZY2UIoMY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

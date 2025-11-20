@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivit\xe4ten erscheinen hier, sobald sie abgeschlossen und gespeichert sind.";
     },
+    get$practiceActivityCompleted() {
+      return "\xdcbungsaktivit\xe4t abgeschlossen";
+    },
     get$changeCourse() {
       return "Kurs \xe4ndern";
     },
@@ -5219,7 +5222,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mE9FJFM1pRYIAJpNZBnBLekoeCU="] = d.current;
+  d["tuDpgn3kanH374kJmP6L6rPQDsA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_379.part.js.map

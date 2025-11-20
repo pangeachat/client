@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivnosti \u0107e se ovde pojaviti kada budu zavr\u0161ene i sa\u010duvane.";
     },
+    get$practiceActivityCompleted() {
+      return "Aktivnost ve\u017ebanja je zavr\u0161ena";
+    },
     get$changeCourse() {
       return "Promeni kurs";
     },
@@ -5216,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uFgN/I/AHSRCUO/DLZqxDLsjGbQ="] = d.current;
+  d["PTHvrQKIIWDZAuiTcLLjHAMQXfw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "C\xe1c ho\u1ea1t \u0111\u1ed9ng s\u1ebd xu\u1ea5t hi\u1ec7n \u1edf \u0111\xe2y khi ch\xfang \u0111\u01b0\u1ee3c ho\xe0n th\xe0nh v\xe0 l\u01b0u l\u1ea1i.";
     },
+    get$practiceActivityCompleted() {
+      return "Ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh \u0111\xe3 ho\xe0n th\xe0nh";
+    },
     get$changeCourse() {
       return "Thay \u0111\u1ed5i kh\xf3a h\u1ecdc";
     },
@@ -5216,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zpBvyP/D1QTccGT9M1QYnSIHJoI="] = d.current;
+  d["8zpn2zYh1k4Rfy4mRkRBFW0sOxc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

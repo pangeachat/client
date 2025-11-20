@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "A tev\xe9kenys\xe9gek itt fognak megjelenni, miut\xe1n befejezt\xe9k \xe9s elmentett\xe9k \u0151ket.";
     },
+    get$practiceActivityCompleted() {
+      return "Gyakorl\xf3 tev\xe9kenys\xe9g befejezve";
+    },
     get$changeCourse() {
       return "Tanfolyam m\xf3dos\xedt\xe1sa";
     },
@@ -5216,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8AiwUd/DpmjsA1cufAvN57+gf2Y="] = d.current;
+  d["gnWs0Plmz8PgZl1wK1juASMVPPs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

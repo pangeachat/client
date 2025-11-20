@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Veiklos pasirodys \u010dia, kai bus u\u017ebaigtos ir i\u0161saugotos.";
     },
+    get$practiceActivityCompleted() {
+      return "Praktikos veikla baigta";
+    },
     get$changeCourse() {
       return "Pakeisti kurs\u0105";
     },
@@ -5219,7 +5222,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CrOLZwH9TrvsZJN777CQk4tptt0="] = d.current;
+  d["zv6j1LD53MDwRgKkE/x3Usnb7gw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

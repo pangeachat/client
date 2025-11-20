@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Tegevused ilmuvad siia, kui need on l\xf5petatud ja salvestatud.";
     },
+    get$practiceActivityCompleted() {
+      return "Harjutustegevus l\xf5petatud";
+    },
     get$changeCourse() {
       return "Muuda kursust";
     },
@@ -5216,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LG1fsq1FAJA6oM6WEYCOXzzxH7I="] = d.current;
+  d["MXkyQ6oyJaDyz0xsV1ccMC4Od8Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

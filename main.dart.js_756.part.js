@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteler tamamland\u0131\u011f\u0131nda ve kaydedildi\u011finde burada g\xf6r\xfcnecektir.";
     },
+    get$practiceActivityCompleted() {
+      return "Pratik etkinli\u011fi tamamland\u0131";
+    },
     get$changeCourse() {
       return "Ders de\u011fi\u015ftir";
     },
@@ -5219,7 +5222,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jqQi6i8aQagtbo19eq+Dt8hxqMQ="] = d.current;
+  d["YJOg94qZzdkYs7BQ5i7VmJfT7fY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Kegiatan akan muncul di sini setelah mereka diselesaikan dan disimpan.";
     },
+    get$practiceActivityCompleted() {
+      return "Aktivitas latihan selesai";
+    },
     get$changeCourse() {
       return "Ubah kursus";
     },
@@ -5219,7 +5222,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jussdbb4rhwkDwK0HVUw4G94PRU="] = d.current;
+  d["R2iYlsgFWNx8sBh+uayAG+BZNH0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

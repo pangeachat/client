@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Tiocfaidh gn\xedomha\xedochta\xed anseo nuair a bheidh siad cr\xedochnaithe agus s\xe1bh\xe1ilte.";
     },
+    get$practiceActivityCompleted() {
+      return "Cr\xedochna\xedodh an gn\xedomha\xedocht chleachtais";
+    },
     get$changeCourse() {
       return "Athraigh c\xfarsa";
     },
@@ -5219,7 +5222,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pe0W0nXcZqLKKzBSJnZAr/us83w="] = d.current;
+  d["mYjLt9xIHfzUufNdzzPLEHq36eI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

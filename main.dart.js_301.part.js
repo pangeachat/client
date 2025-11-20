@@ -5197,6 +5197,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteter vil vises her, n\xe5r de er afsluttet og gemt.";
     },
+    get$practiceActivityCompleted() {
+      return "\xd8velsesaktivitet fuldf\xf8rt";
+    },
     get$changeCourse() {
       return "\xc6ndre kursus";
     },
@@ -5216,7 +5219,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DeJkzYkET5YjoPHc6pgAUoaQfY0="] = d.current;
+  d["zmf8wAhFvzIUOuYjUfw1TzblgSU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_301.part.js.map
