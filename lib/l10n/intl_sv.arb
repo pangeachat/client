@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:50:25.978891",
+  "@@last_modified": "2025-11-20 12:39:21.247328",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11044,6 +11044,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ändra kurs",
+  "changeCourseDesc": "Här kan du ändra kursplanen för denna kurs.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -13,9 +13,11 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/pangea/spaces/utils/knock_space_extension.dart';
 import 'package:fluffychat/pangea/spaces/widgets/too_many_requests_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/controllers/base_controller.dart';
 
 class NotFoundException implements Exception {}
@@ -25,6 +27,7 @@ class SpaceCodeController extends BaseController {
   static final GetStorage _spaceStorage = GetStorage('class_storage');
 
   Completer<void> initCompleter = Completer<void>();
+  ValueNotifier<String?> codeNotifier = ValueNotifier<String?>(null);
 
   SpaceCodeController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
@@ -39,6 +42,7 @@ class SpaceCodeController extends BaseController {
       PLocalKey.cachedSpaceCodeToJoin,
       code,
     );
+    codeNotifier.value = code;
   }
 
   String? get justInputtedCode =>
@@ -174,6 +178,16 @@ class SpaceCodeController extends BaseController {
             .firstWhereOrNull((u) => u.id == room?.client.userID)
             ?.membership) {
       await room.requestParticipants();
+    }
+  }
+
+  static Future<void> onOpenAppViaUrl(Uri url) async {
+    if (url.fragment.isEmpty) return;
+    final fragment = Uri.parse(url.fragment);
+    final code = fragment.queryParameters[SpaceConstants.classCode];
+    if (code != null && fragment.path.contains('join_with_link')) {
+      await MatrixState.pangeaController.spaceCodeController
+          .cacheSpaceCode(code);
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-11-20 10:48:22.280693",
+  "@@last_modified": "2025-11-20 12:38:23.399921",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10567,6 +10567,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Tanfolyam módosítása",
+  "changeCourseDesc": "Itt módosíthatja ennek a tanfolyamnak a tantervét.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

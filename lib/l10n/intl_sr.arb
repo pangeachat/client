@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:50:49.830715",
+  "@@last_modified": "2025-11-20 12:39:31.189262",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11668,6 +11668,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Promeni kurs",
+  "changeCourseDesc": "Ovde možete promeniti plan kursa ovog kursa.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

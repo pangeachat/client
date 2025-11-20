@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:49:53.718544",
+  "@@last_modified": "2025-11-20 12:39:17.140740",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11670,6 +11670,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "কোর্স পরিবর্তন করুন",
+  "changeCourseDesc": "এখানে আপনি এই কোর্সের কোর্স পরিকল্পনা পরিবর্তন করতে পারেন।",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

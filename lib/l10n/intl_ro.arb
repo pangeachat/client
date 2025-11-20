@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:48:28.298439",
+  "@@last_modified": "2025-11-20 12:38:26.175424",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11301,6 +11301,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Schimbă cursul",
+  "changeCourseDesc": "Aici poți schimba planul de curs al acestui curs.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

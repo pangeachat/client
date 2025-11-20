@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:49:15.114513",
+  "@@last_modified": "2025-11-20 12:38:55.798385",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10590,6 +10590,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Canvia el curs",
+  "changeCourseDesc": "Aquí pots canviar el pla del curs d'aquest curs.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

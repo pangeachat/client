@@ -81,6 +81,10 @@ class ChatDetailsController extends State<ChatDetails>
       _loadCourseInfo();
       _loadSummaries();
     }
+
+    if (widget.activeTab == 'course' && oldWidget.activeTab != 'course') {
+      _loadSummaries();
+    }
   }
 
   @override

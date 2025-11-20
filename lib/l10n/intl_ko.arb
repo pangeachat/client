@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:48:04.055611",
+  "@@last_modified": "2025-11-20 12:38:15.496170",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10674,6 +10674,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "강좌 변경",
+  "changeCourseDesc": "여기에서 이 강좌의 강좌 계획을 변경할 수 있습니다.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

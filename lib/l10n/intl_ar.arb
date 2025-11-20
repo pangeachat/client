@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-11-20 10:49:31.498278",
+  "@@last_modified": "2025-11-20 12:39:04.749371",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10783,6 +10783,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "تغيير الدورة",
+  "changeCourseDesc": "هنا يمكنك تغيير خطة الدورة لهذه الدورة.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

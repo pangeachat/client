@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:49:23.406780",
+  "@@last_modified": "2025-11-20 12:39:00.347163",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10564,6 +10564,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "更改課程",
+  "changeCourseDesc": "在這裡您可以更改此課程的課程計劃。",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }
