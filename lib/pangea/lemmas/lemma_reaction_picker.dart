@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_emoji_picker.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaReactionPicker extends StatelessWidget {
   final List<String> emojis;
@@ -19,32 +18,45 @@ class LemmaReactionPicker extends StatelessWidget {
     required this.event,
   });
 
-  void setEmoji(String emoji, BuildContext context) {
+  Future<void> setEmoji(String emoji) async {
     if (event?.room.timeline == null) {
       throw Exception("Timeline is null in reaction picker");
     }
 
-    final allReactionEvents = event!.aggregatedEvents(
-      event!.room.timeline!,
-      RelationshipTypes.reaction,
+    final client = event!.room.client;
+    final userSentEmojis = event!
+        .aggregatedEvents(
+          event!.room.timeline!,
+          RelationshipTypes.reaction,
+        )
+        .where(
+          (e) =>
+              e.senderId == client.userID &&
+              emojis.contains(e.content.tryGetMap('m.relates_to')?['key']),
+        );
+
+    final reactionEvent = userSentEmojis.firstWhereOrNull(
+      (e) => e.content.tryGetMap('m.relates_to')?['key'] == emoji,
     );
 
-    final client = Matrix.of(context).client;
-    final reactionEvent = allReactionEvents.firstWhereOrNull(
-      (e) =>
-          e.senderId == client.userID &&
-          e.content.tryGetMap('m.relates_to')?['key'] == emoji,
-    );
+    try {
+      if (reactionEvent != null) {
+        await reactionEvent.redactEvent();
+        return;
+      }
 
-    if (reactionEvent != null) {
-      showFutureLoadingDialog(
-        context: context,
-        future: () => reactionEvent.redactEvent(),
-      );
-    } else {
-      event!.room.sendReaction(
-        event!.eventId,
-        emoji,
+      await Future.wait([
+        ...userSentEmojis.map((e) => e.redactEvent()),
+        event!.room.sendReaction(event!.eventId, emoji),
+      ]);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'emoji': emoji,
+          'eventId': event?.eventId,
+        },
       );
     }
   }
@@ -75,9 +87,7 @@ class LemmaReactionPicker extends StatelessWidget {
 
     return LemmaEmojiPicker(
       emojis: emojis,
-      onSelect: event?.room.timeline != null
-          ? (emoji) => setEmoji(emoji, context)
-          : null,
+      onSelect: event?.room.timeline != null ? setEmoji : null,
       disabled: (emoji) => sentReactions.contains(emoji),
       loading: loading,
     );
