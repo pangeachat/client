@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 
@@ -30,7 +31,11 @@ class ActivityRoleTooltip extends StatelessWidget {
           onClose: () async {
             await room.dismissGoalTooltip();
           },
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.only(
+            left: 16.0,
+            right: 16.0,
+            top: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+          ),
         );
       },
     );
