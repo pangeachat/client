@@ -322,6 +322,27 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     setState(() {});
   }
 
+  void onMatch(PangeaToken token, PracticeChoice choice) {
+    if (activity == null) return;
+    activity!.activityType == ActivityTypeEnum.morphId
+        ? activity!.onMultipleChoiceSelect(
+            token,
+            choice,
+            pangeaMessageEvent,
+            () => setState(() {}),
+          )
+        : activity!.onMatch(
+            token,
+            choice,
+            pangeaMessageEvent,
+            () => setState(() {}),
+          );
+
+    if (isTotallyDone) {
+      OverlayUtil.showStarRainOverlay(context);
+    }
+  }
+
   /////////////////////////////////////
   /// Getters
   ////////////////////////////////////
