@@ -4509,7 +4509,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u9080\u8bf7\u670b\u53cb";
     },
     get$failedToLoadFeedback() {
-      return "Failed to load feedback.";
+      return "\u52a0\u8f7d\u53cd\u9988\u5931\u8d25\u3002";
     },
     get$activityStatsButtonTooltip() {
       return "\u6d3b\u52a8\u4fe1\u606f";
@@ -5200,6 +5200,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$teacherModeDesc() {
       return "\u5207\u6362\u4ee5\u89e3\u9501\u6240\u6709\u4e3b\u9898\u548c\u6d3b\u52a8\u3002\u4ec5\u9650\u8bfe\u7a0b\u7ba1\u7406\u5458\u3002";
+    },
+    get$noSavedActivitiesYet() {
+      return "\u6d3b\u52a8\u5b8c\u6210\u5e76\u4fdd\u5b58\u540e\u5c06\u51fa\u73b0\u5728\u8fd9\u91cc\u3002";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -9688,6 +9691,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$contactHasBeenInvitedToTheCourse() {
       return "\u806f\u7d61\u4eba\u5df2\u88ab\u9080\u8acb\u53c3\u52a0\u8ab2\u7a0b";
     },
+    get$failedToLoadFeedback() {
+      return "\u7121\u6cd5\u52a0\u8f09\u53cd\u994b\u3002";
+    },
     get$activityStatsButtonTooltip() {
       return "\u6d3b\u52d5\u8cc7\u8a0a";
     },
@@ -10369,11 +10375,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$zuDisplayName() {
       return "\u7956\u9b6f\u8a9e";
     },
+    get$unreadPlus() {
+      return "99+";
+    },
     get$teacherModeTitle() {
       return "\u6559\u5e2b\u6a21\u5f0f";
     },
     get$teacherModeDesc() {
       return "\u5207\u63db\u4ee5\u89e3\u9396\u6240\u6709\u4e3b\u984c\u548c\u6d3b\u52d5\u3002\u50c5\u9650\u8ab2\u7a0b\u7ba1\u7406\u54e1\u3002";
+    },
+    get$noSavedActivitiesYet() {
+      return "\u6d3b\u52d5\u5b8c\u6210\u4e26\u4fdd\u5b58\u5f8c\u5c07\u986f\u793a\u5728\u9019\u88e1\u3002";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10389,7 +10401,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R4EOCBbBz/PliP+5wTancwA4tc0="] = d.current;
+  d["VpodkLqzi7xOYQUgYDDEJsLtgTQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
