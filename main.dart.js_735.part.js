@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " a \xeencheiat aceast\u0103 activitate";
     },
+    get$activitySummaryError() {
+      return "Rezumatul activit\u0103\u021bilor indisponibil";
+    },
+    get$requestSummaries() {
+      return "Solicit\u0103 rezumate";
+    },
     get$requestAccessTitle() {
       return "Solicita\u021bi acces la analize?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Joac\u0103 cu Pangea Bot";
     },
+    get$waitNotDone() {
+      return "A\u0219teapt\u0103, nu am terminat!";
+    },
+    get$waitingForOthersToFinish() {
+      return "A\u0219tept ca ceilal\u021bi s\u0103 termine...";
+    },
+    get$generatingSummary() {
+      return "Analiz\u0103m chat-ul \u0219i gener\u0103m rezultate";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " caut\u0103 utilizatori pentru a se al\u0103tura sesiunii de activitate \xeen " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invit\u0103 prieteni la cursul meu";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Aboneaz\u0103-te pentru a debloca rezumatele activit\u0103\u021bilor";
     },
     get$subscribeToUnlockDefinitions() {
       return "Aboneaz\u0103-te pentru a debloca defini\u021biile";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Num\u0103rul de activit\u0103\u021bi salvate";
+    },
+    get$saveActivityTitle() {
+      return "Salveaz\u0103 activitatea";
+    },
+    get$saveActivityDesc() {
+      return "Bravo! Salveaz\u0103 aceast\u0103 activitate pentru revizuire \u0219i practic\u0103 ulterioar\u0103";
     },
     get$levelInfoTooltip() {
       return "Aici po\u021bi vedea toate punctele pe care le-ai c\xe2\u0219tigat \u0219i cum!";
@@ -5186,7 +5210,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H2+c4PGuMt70J5YT23ccvjGAs/o="] = d.current;
+  d["lu+a+xMHj0eygJlMRmcIbpv/RXI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

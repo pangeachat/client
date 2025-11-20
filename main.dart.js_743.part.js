@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ukon\u010dil t\xfato aktivitu";
     },
+    get$activitySummaryError() {
+      return "Preh\u013eady aktiv\xedt nie s\xfa dostupn\xe9";
+    },
+    get$requestSummaries() {
+      return "Po\u017eiada\u0165 o preh\u013eady";
+    },
     get$requestAccessTitle() {
       return "Po\u017eiada\u0165 o pr\xedstup k analytike?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Hra\u0165 s Pangea Botom";
     },
+    get$waitNotDone() {
+      return "Po\u010dkajte, e\u0161te som nedokon\u010dil!";
+    },
+    get$waitingForOthersToFinish() {
+      return "\u010cak\xe1me na ostatn\xfdch, aby dokon\u010dili...";
+    },
+    get$generatingSummary() {
+      return "Analyzujeme chat a generujeme v\xfdsledky";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " h\u013ead\xe1 pou\u017e\xedvate\u013eov na pripojenie k rel\xe1cii aktivity v " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Pozva\u0165 priate\u013eov na m\xf4j kurz";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Prihl\xe1si\u0165 sa na odomknutie s\xfahrnov aktiv\xedt";
     },
     get$subscribeToUnlockDefinitions() {
       return "Prihl\xe1si\u0165 sa na odomknutie defin\xedci\xed";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Po\u010det ulo\u017een\xfdch aktiv\xedt";
+    },
+    get$saveActivityTitle() {
+      return "Ulo\u017ei\u0165 aktivitu";
+    },
+    get$saveActivityDesc() {
+      return "Dobr\xe1 pr\xe1ca! Ulo\u017ete t\xfato aktivitu na neskor\u0161ie presk\xfamanie a cvi\u010denie";
     },
     get$levelInfoTooltip() {
       return "Tu m\xf4\u017eete vidie\u0165 v\u0161etky body, ktor\xe9 ste z\xedskali a ako!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VYE6dQz/wuJ0p4tyXXZFj98SjRc="] = d.current;
+  d["nAnCP6LB4M1phuv/TNuXOauQTWs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_743.part.js.map

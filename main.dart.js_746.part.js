@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " je zaklju\u010dil to dejavnost";
     },
+    get$activitySummaryError() {
+      return "Povzetki dejavnosti niso na voljo";
+    },
+    get$requestSummaries() {
+      return "Zahtevaj povzetke";
+    },
     get$requestAccessTitle() {
       return "Zahtevaj dostop do analitike?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Igraj z Pangea Botom";
     },
+    get$waitNotDone() {
+      return "Po\u010dakaj, \u0161e nisem kon\u010dal!";
+    },
+    get$waitingForOthersToFinish() {
+      return "\u010cakam, da ostali zaklju\u010dijo...";
+    },
+    get$generatingSummary() {
+      return "Analiziram klepet in ustvarjam rezultate";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " i\u0161\u010de uporabnike za sodelovanje v aktivnosti v " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Vabite prijatelje na moj te\u010daj";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Naro\u010dite se na odklepanje povzetkov dejavnosti";
     },
     get$subscribeToUnlockDefinitions() {
       return "Naro\u010dite se na odklepanje definicij";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "\u0160tevilo shranjenih dejavnosti";
+    },
+    get$saveActivityTitle() {
+      return "Shrani dejavnost";
+    },
+    get$saveActivityDesc() {
+      return "Dobra opravljena! Shranite to dejavnost za kasnej\u0161i pregled in vadbo";
     },
     get$levelInfoTooltip() {
       return "Tukaj lahko vidite vse to\u010dke, ki ste jih zaslu\u017eili, in kako!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Sx8YpQt2Ao2Tb60hVHUjMIY0/Y0="] = d.current;
+  d["TaPPCf4mehTMSAs7LKhY8FeoJao="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_746.part.js.map

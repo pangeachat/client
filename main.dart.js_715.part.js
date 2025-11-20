@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " pabeidza \u0161o aktivit\u0101ti";
     },
+    get$activitySummaryError() {
+      return "Aktivit\u0101tes kopsavilkumi nav pieejami";
+    },
+    get$requestSummaries() {
+      return "Piepras\u012bt kopsavilkumus";
+    },
     get$requestAccessTitle() {
       return "Piepras\u012bt anal\u012btikas piek\u013cuvi?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Sp\u0113l\u0113t ar Pangea botu";
     },
+    get$waitNotDone() {
+      return "Gaidiet, es v\u0113l neesmu pabeidzis!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Gaid\u0101m, lai p\u0101r\u0113jie pabeigtu...";
+    },
+    get$generatingSummary() {
+      return "Analiz\u0113 \u010datu un \u0123ener\u0113 rezult\u0101tus";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " mekl\u0113 lietot\u0101jus, lai pievienotos aktivit\u0101tes sesijai " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Aicin\u0101t draugus uz manu kursu";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Abon\u0113t aktivit\u0101\u0161u kopsavilkumu atblo\u0137\u0113\u0161anu";
     },
     get$subscribeToUnlockDefinitions() {
       return "Abon\u0113t defin\u012bciju atblo\u0137\u0113\u0161anu";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Saglab\u0101to aktivit\u0101\u0161u skaits";
+    },
+    get$saveActivityTitle() {
+      return "Saglab\u0101t aktivit\u0101ti";
+    },
+    get$saveActivityDesc() {
+      return "Lielisks darbs! Saglab\u0101jiet \u0161o aktivit\u0101ti turpm\u0101kai p\u0101rskat\u012b\u0161anai un praksei";
     },
     get$levelInfoTooltip() {
       return "\u0160eit j\u016bs varat redz\u0113t visus punktus, ko esat nopeln\u012bjis, un k\u0101!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6kuDaqxsjtuXDz0Io45kkB/dagE="] = d.current;
+  d["VWHlkxbPBItAgme1/SN4b12Jb/A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

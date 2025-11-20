@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ay nagtapos sa gawaing ito";
     },
+    get$activitySummaryError() {
+      return "Hindi magagamit ang mga buod ng gawain";
+    },
+    get$requestSummaries() {
+      return "Humiling ng mga buod";
+    },
     get$requestAccessTitle() {
       return "Humiling ng access sa analytics?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Maglaro kasama ang Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Hintay, hindi pa tapos!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Naghihintay na matapos ang iba...";
+    },
+    get$generatingSummary() {
+      return "Sinusuri ang chat at bumubuo ng mga resulta";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " ay naghahanap ng mga user na sumali sa sesyon ng aktibidad sa " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Imbitahan ang mga kaibigan sa aking kurso";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Mag-subscribe upang ma-unlock ang mga buod ng aktibidad";
     },
     get$subscribeToUnlockDefinitions() {
       return "Mag-subscribe upang ma-unlock ang mga kahulugan";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Bilang ng mga nai-save na aktibidad";
+    },
+    get$saveActivityTitle() {
+      return "I-save ang aktibidad";
+    },
+    get$saveActivityDesc() {
+      return "Magandang trabaho! I-save ang aktibidad na ito para sa susunod na pagsusuri at pagsasanay";
     },
     get$levelInfoTooltip() {
       return "Dito mo makikita ang lahat ng puntos na iyong nakuha at kung paano!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dHdetdqE/nKEROWORzoTv1G5uSM="] = d.current;
+  d["UXyvORXHgt9ebUb8J639kkz8Ttc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_587.part.js.map

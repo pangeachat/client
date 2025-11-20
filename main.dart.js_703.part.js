@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfc6 " + username + " \u304c\u3053\u306e\u6d3b\u52d5\u3092\u7d42\u4e86\u3057\u307e\u3057\u305f";
     },
+    get$activitySummaryError() {
+      return "\u6d3b\u52d5\u306e\u6982\u8981\u3092\u5229\u7528\u3067\u304d\u307e\u305b\u3093";
+    },
+    get$requestSummaries() {
+      return "\u6982\u8981\u3092\u30ea\u30af\u30a8\u30b9\u30c8";
+    },
     get$requestAccessTitle() {
       return "\u5206\u6790\u30a2\u30af\u30bb\u30b9\u3092\u30ea\u30af\u30a8\u30b9\u30c8\u3057\u307e\u3059\u304b\uff1f";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Pangea Bot\u3068\u904a\u3076";
     },
+    get$waitNotDone() {
+      return "\u5f85\u3063\u3066\u3001\u307e\u3060\u7d42\u308f\u3063\u3066\u3044\u307e\u305b\u3093\uff01";
+    },
+    get$waitingForOthersToFinish() {
+      return "\u4ed6\u306e\u4eba\u304c\u7d42\u308f\u308b\u306e\u3092\u5f85\u3063\u3066\u3044\u307e\u3059...";
+    },
+    get$generatingSummary() {
+      return "\u30c1\u30e3\u30c3\u30c8\u3092\u5206\u6790\u3057\u3066\u7d50\u679c\u3092\u751f\u6210\u3057\u3066\u3044\u307e\u3059";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + "\u304c" + room + "\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u30bb\u30c3\u30b7\u30e7\u30f3\u306b\u53c2\u52a0\u3059\u308b\u30e6\u30fc\u30b6\u30fc\u3092\u63a2\u3057\u3066\u3044\u307e\u3059";
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "\u53cb\u9054\u3092\u30b3\u30fc\u30b9\u306b\u62db\u5f85";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u306e\u6982\u8981\u3092\u89e3\u9664\u3059\u308b\u306b\u306f\u8cfc\u8aad\u3057\u3066\u304f\u3060\u3055\u3044";
     },
     get$subscribeToUnlockDefinitions() {
       return "\u5b9a\u7fa9\u3092\u89e3\u9664\u3059\u308b\u306b\u306f\u8cfc\u8aad\u3057\u3066\u304f\u3060\u3055\u3044";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "\u4fdd\u5b58\u3055\u308c\u305f\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u306e\u6570";
+    },
+    get$saveActivityTitle() {
+      return "\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u3092\u4fdd\u5b58";
+    },
+    get$saveActivityDesc() {
+      return "\u3088\u304f\u3067\u304d\u307e\u3057\u305f\uff01\u3053\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u3092\u5f8c\u3067\u30ec\u30d3\u30e5\u30fc\u3068\u7df4\u7fd2\u306e\u305f\u3081\u306b\u4fdd\u5b58\u3057\u307e\u3059";
     },
     get$levelInfoTooltip() {
       return "\u3053\u3053\u3067\u3042\u306a\u305f\u304c\u7372\u5f97\u3057\u305f\u3059\u3079\u3066\u306e\u30dd\u30a4\u30f3\u30c8\u3068\u305d\u306e\u65b9\u6cd5\u3092\u898b\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\uff01";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ghu+89B3oKjaGw3IAFeJYZ/OPYg="] = d.current;
+  d["GuT2hfDv7Mp+eALVN/wGJzQ3n+M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_703.part.js.map

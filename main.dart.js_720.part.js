@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " avsluttet denne aktiviteten";
     },
+    get$activitySummaryError() {
+      return "Aktivitetsoppsummeringer er utilgjengelige";
+    },
+    get$requestSummaries() {
+      return "Be om oppsummeringer";
+    },
     get$requestAccessTitle() {
       return "Be om tilgang til analyser?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Lek med Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Vent, jeg er ikke ferdig!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Venter p\xe5 at de andre skal bli ferdige...";
+    },
+    get$generatingSummary() {
+      return "Analyserer chat og genererer resultater";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " ser etter brukere for \xe5 delta i aktivitets\xf8kten i " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Inviter venner til kurset mitt";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Abonner for \xe5 l\xe5se opp aktivitetsoppsummeringer";
     },
     get$subscribeToUnlockDefinitions() {
       return "Abonner for \xe5 l\xe5se opp definisjoner";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Antall lagrede aktiviteter";
+    },
+    get$saveActivityTitle() {
+      return "Lagre aktivitet";
+    },
+    get$saveActivityDesc() {
+      return "Bra jobba! Lagre denne aktiviteten for senere gjennomgang og \xf8velse";
     },
     get$levelInfoTooltip() {
       return "Her kan du se alle poengene du har tjent og hvordan!";
@@ -5186,7 +5210,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1rwS75H9HHpCwpM2VEeU7bdt/iA="] = d.current;
+  d["Lnmzrkjp85Q4MTZh5b4VmFuq1mU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_720.part.js.map

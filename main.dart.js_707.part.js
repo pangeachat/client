@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " u\u017ebaig\u0117 \u0161i\u0105 veikl\u0105";
     },
+    get$activitySummaryError() {
+      return "Veiklos santrauk\u0173 n\u0117ra";
+    },
+    get$requestSummaries() {
+      return "Pra\u0161yti santrauk\u0173";
+    },
     get$requestAccessTitle() {
       return "Pra\u0161yti analiz\u0117s prieigos?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "\u017daisti su Pangea botu";
     },
+    get$waitNotDone() {
+      return "Laukite, a\u0161 dar nesu baig\u0119s!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Laukiama kit\u0173 pabaigos...";
+    },
+    get$generatingSummary() {
+      return "Analizuojama pokalbis ir generuojami rezultatai";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " ie\u0161ko naudotoj\u0173 prisijungti prie veiklos sesijos " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Pakvieskite draugus \u012f mano kurs\u0105";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Prenumeruokite, kad atrakintum\u0117te veiklos santraukas";
     },
     get$subscribeToUnlockDefinitions() {
       return "Prenumeruokite, kad atrakintum\u0117te apibr\u0117\u017eimus";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "I\u0161saugot\u0173 veikl\u0173 skai\u010dius";
+    },
+    get$saveActivityTitle() {
+      return "I\u0161saugoti veikl\u0105";
+    },
+    get$saveActivityDesc() {
+      return "Puikus darbas! I\u0161saugokite \u0161i\u0105 veikl\u0105 v\u0117lesnei per\u017ei\u016brai ir praktikai";
     },
     get$levelInfoTooltip() {
       return "\u010cia galite pamatyti visus ta\u0161kus, kuriuos u\u017edirbote, ir kaip!";
@@ -5186,7 +5210,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GMeFvEaTXWWrbVryZ2ZtnYxrLKQ="] = d.current;
+  d["xhscunsv72HiWbRvFCWM650/7fo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_707.part.js.map

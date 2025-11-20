@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ukon\u010dil tuto aktivitu";
     },
+    get$activitySummaryError() {
+      return "Souhrny aktivit nejsou k dispozici";
+    },
+    get$requestSummaries() {
+      return "Po\u017e\xe1dat o souhrny";
+    },
     get$requestAccessTitle() {
       return "Po\u017e\xe1dat o p\u0159\xedstup k anal\xfdz\xe1m?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Hrajte s Pangea Botem";
     },
+    get$waitNotDone() {
+      return "Po\u010dkejte, nejsem hotov!";
+    },
+    get$waitingForOthersToFinish() {
+      return "\u010cek\xe1m na ostatn\xed, a\u017e dokon\u010d\xed...";
+    },
+    get$generatingSummary() {
+      return "Analyzuji chat a generuji v\xfdsledky";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " hled\xe1 u\u017eivatele, kte\u0159\xed se p\u0159ipoj\xed ke sch\u016fzce v " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Pozvat p\u0159\xe1tele na m\u016fj kurz";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "P\u0159ihl\xe1sit se k odemknut\xed souhrn\u016f aktivit";
     },
     get$subscribeToUnlockDefinitions() {
       return "P\u0159ihl\xe1sit se k odemknut\xed definic";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Po\u010det ulo\u017een\xfdch aktivit";
+    },
+    get$saveActivityTitle() {
+      return "Ulo\u017eit aktivitu";
+    },
+    get$saveActivityDesc() {
+      return "Dobr\xe1 pr\xe1ce! Ulo\u017ete tuto aktivitu pro pozd\u011bj\u0161\xed p\u0159ezkoum\xe1n\xed a procvi\u010dov\xe1n\xed";
     },
     get$levelInfoTooltip() {
       return "Zde m\u016f\u017eete vid\u011bt v\u0161echny body, kter\xe9 jste z\xedskali, a jak!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rT7ZfgYZWGaMncnwkO/IujJQ8UQ="] = d.current;
+  d["bWHGJJFK/beVC6wVTYPdEVlePxY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_235.part.js.map

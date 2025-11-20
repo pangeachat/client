@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " rematou esta actividade";
     },
+    get$activitySummaryError() {
+      return "Res\xfamenes de actividade non dispo\xf1ibles";
+    },
+    get$requestSummaries() {
+      return "Solicitar res\xfamenes";
+    },
     get$requestAccessTitle() {
       return "Solicitar acceso \xe1 anal\xedtica?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Xogar con Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Espera, a\xednda non rematei!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Agardando que o resto remate...";
+    },
+    get$generatingSummary() {
+      return "Analizando o chat e xerando resultados";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " est\xe1 a buscar usuarios para unirse \xe1 sesi\xf3n de actividade en " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invita amigos ao meu curso";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Suscr\xedbete para desbloquear res\xfamenes de actividades";
     },
     get$subscribeToUnlockDefinitions() {
       return "Suscr\xedbete para desbloquear definici\xf3ns";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "N\xfamero de actividades gardadas";
+    },
+    get$saveActivityTitle() {
+      return "Gardar actividade";
+    },
+    get$saveActivityDesc() {
+      return "Bo traballo! Garda esta actividade para revisi\xf3n e pr\xe1ctica posteriores";
     },
     get$levelInfoTooltip() {
       return "Aqu\xed podes ver todos os puntos que ga\xf1aches e como!";
@@ -5186,7 +5210,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oPXayeo9E5C9Q3ht2zlldDOMPjc="] = d.current;
+  d["RnMEo5qx3r/d+DpMwNKrJGz6jl0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_614.part.js.map

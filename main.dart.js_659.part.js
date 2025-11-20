@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " befejezte ezt a tev\xe9kenys\xe9get";
     },
+    get$activitySummaryError() {
+      return "A tev\xe9kenys\xe9g \xf6sszegz\xe9sek nem el\xe9rhet\u0151k";
+    },
+    get$requestSummaries() {
+      return "\xd6sszegz\xe9sek k\xe9r\xe9s";
+    },
     get$requestAccessTitle() {
       return "K\xe9rj\xfck az elemz\xe9si hozz\xe1f\xe9r\xe9st?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "J\xe1tssz a Pangea Bot-tal";
     },
+    get$waitNotDone() {
+      return "V\xe1rj, m\xe9g nem v\xe9geztem!";
+    },
+    get$waitingForOthersToFinish() {
+      return "V\xe1rakoz\xe1s a t\xf6bbiek befejez\xe9s\xe9re...";
+    },
+    get$generatingSummary() {
+      return "Chat elemz\xe9se \xe9s eredm\xe9nyek gener\xe1l\xe1sa";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " keres felhaszn\xe1l\xf3kat a " + room + " szob\xe1ban a tev\xe9kenys\xe9ghez";
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Bar\xe1tok megh\xedv\xe1sa a kurzusomba";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Feliratkoz\xe1s a tev\xe9kenys\xe9g \xf6sszefoglal\xf3k felold\xe1s\xe1ra";
     },
     get$subscribeToUnlockDefinitions() {
       return "Feliratkoz\xe1s a defin\xedci\xf3k felold\xe1s\xe1ra";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Mentett tev\xe9kenys\xe9gek sz\xe1ma";
+    },
+    get$saveActivityTitle() {
+      return "Tev\xe9kenys\xe9g ment\xe9se";
+    },
+    get$saveActivityDesc() {
+      return "J\xf3 munka! Mentsd el ezt a tev\xe9kenys\xe9get k\xe9s\u0151bbi \xe1ttekint\xe9sre \xe9s gyakorl\xe1sra";
     },
     get$levelInfoTooltip() {
       return "Itt l\xe1thatod az \xf6sszes pontot, amit szerezt\xe9l, \xe9s hogyan!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ECxR1vikoHRaXo22IKFJQd+Zau4="] = d.current;
+  d["yqJFgzXs10aq5t1/1T773txbY6o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_659.part.js.map

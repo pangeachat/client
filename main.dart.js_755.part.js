@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " bu etkinli\u011fi tamamlad\u0131";
     },
+    get$activitySummaryError() {
+      return "Etkinlik \xf6zetleri kullan\u0131lam\u0131yor";
+    },
+    get$requestSummaries() {
+      return "\xd6zetleri talep et";
+    },
     get$requestAccessTitle() {
       return "Analitik eri\u015fimi talep edilsin mi?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Pangea Bot ile oyna";
     },
+    get$waitNotDone() {
+      return "Bekle, bitirmedim!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Di\u011ferlerinin bitirmesini bekliyorum...";
+    },
+    get$generatingSummary() {
+      return "Sohbeti analiz ediyor ve sonu\xe7lar olu\u015fturuyor";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " " + room + " i\xe7indeki etkinlik oturumuna kat\u0131lacak kullan\u0131c\u0131lar ar\u0131yor";
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Arkada\u015flar\u0131m\u0131 kursuma davet et";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Etkinlik \xf6zetlerini a\xe7mak i\xe7in abone ol";
     },
     get$subscribeToUnlockDefinitions() {
       return "Tan\u0131mlar\u0131 a\xe7mak i\xe7in abone ol";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Kaydedilen aktivitelerin say\u0131s\u0131";
+    },
+    get$saveActivityTitle() {
+      return "Aktiviteyi kaydet";
+    },
+    get$saveActivityDesc() {
+      return "\u0130yi i\u015f! Bu aktiviteyi daha sonra g\xf6zden ge\xe7irmek ve pratik yapmak i\xe7in kaydedin";
     },
     get$levelInfoTooltip() {
       return "Burada kazand\u0131\u011f\u0131n\u0131z t\xfcm puanlar\u0131 ve nas\u0131l kazand\u0131\u011f\u0131n\u0131z\u0131 g\xf6rebilirsiniz!";
@@ -5186,7 +5210,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["M9cr1gI9QKv35c2DMrkwdelGFhk="] = d.current;
+  d["oVhw8kw6sFIeFZmpw4hrHL88zs4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

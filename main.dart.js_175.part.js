@@ -4121,6 +4121,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ha finalitzat aquesta activitat";
     },
+    get$activitySummaryError() {
+      return "Resum d'activitats no disponible";
+    },
+    get$requestSummaries() {
+      return "Sol\xb7licitar resums";
+    },
     get$requestAccessTitle() {
       return "Sol\xb7licitar acc\xe9s a l'anal\xedtica?";
     },
@@ -4229,6 +4235,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Juga amb Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Esperem, encara no he acabat!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Esperant que la resta acabi...";
+    },
+    get$generatingSummary() {
+      return "Analitzant el xat i generant resultats";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " busca usuaris per unir-se a la sessi\xf3 d'activitat a " + room;
     },
@@ -4279,6 +4294,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Convida amics al meu curs";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Subscriu-te per desbloquejar resums d'activitats";
     },
     get$subscribeToUnlockDefinitions() {
       return "Subscriu-te per desbloquejar definicions";
@@ -4456,6 +4474,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Nombre d'activitats desades";
+    },
+    get$saveActivityTitle() {
+      return "Desa l'activitat";
+    },
+    get$saveActivityDesc() {
+      return "Bona feina! Desa aquesta activitat per a una revisi\xf3 i pr\xe0ctica posteriors";
     },
     get$levelInfoTooltip() {
       return "Aqu\xed pots veure tots els punts que has guanyat i com!";
@@ -5187,7 +5211,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ubr69X5ORY3utBN41Lqb3tJfan0="] = d.current;
+  d["KAn7+O881aQcsnwyPsrzLhn3l7o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_175.part.js.map

@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " a termin\xe9 cette activit\xe9";
     },
+    get$activitySummaryError() {
+      return "R\xe9sum\xe9 des activit\xe9s indisponible";
+    },
+    get$requestSummaries() {
+      return "Demander des r\xe9sum\xe9s";
+    },
     get$requestAccessTitle() {
       return "Demander l'acc\xe8s aux analyses ?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jouer avec Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Attends, je n'ai pas fini !";
+    },
+    get$waitingForOthersToFinish() {
+      return "En attente que les autres terminent...";
+    },
+    get$generatingSummary() {
+      return "Analyse de la conversation et g\xe9n\xe9ration des r\xe9sultats";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " cherche des utilisateurs pour rejoindre la session d'activit\xe9 dans " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Inviter des amis \xe0 mon cours";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "S'abonner pour d\xe9bloquer les r\xe9sum\xe9s d'activit\xe9s";
     },
     get$subscribeToUnlockDefinitions() {
       return "S'abonner pour d\xe9bloquer les d\xe9finitions";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Nombre d'activit\xe9s enregistr\xe9es";
+    },
+    get$saveActivityTitle() {
+      return "Enregistrer l'activit\xe9";
+    },
+    get$saveActivityDesc() {
+      return "Bon travail ! Enregistrez cette activit\xe9 pour une r\xe9vision et une pratique ult\xe9rieures";
     },
     get$levelInfoTooltip() {
       return "Ici, vous pouvez voir tous les points que vous avez gagn\xe9s et comment !";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3xvmZnYRkzP1y9BsYvv3viqo8rA="] = d.current;
+  d["rNhii03pWgr+9nA+xpF/T0ExUV8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_594.part.js.map

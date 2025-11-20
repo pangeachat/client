@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " avslutade denna aktivitet";
     },
+    get$activitySummaryError() {
+      return "Sammanfattningar av aktivitet \xe4r otillg\xe4ngliga";
+    },
+    get$requestSummaries() {
+      return "Beg\xe4r sammanfattningar";
+    },
     get$requestAccessTitle() {
       return "Beg\xe4r \xe5tkomst till analys?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Spela med Pangea Bot";
     },
+    get$waitNotDone() {
+      return "V\xe4nta, jag \xe4r inte klar!";
+    },
+    get$waitingForOthersToFinish() {
+      return "V\xe4ntar p\xe5 att resten ska bli klara...";
+    },
+    get$generatingSummary() {
+      return "Analyserar chatten och genererar resultat";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " letar efter anv\xe4ndare att delta i aktivitetssessionen i " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Bjud in v\xe4nner till min kurs";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Prenumerera f\xf6r att l\xe5sa upp aktivitets\xf6versikter";
     },
     get$subscribeToUnlockDefinitions() {
       return "Prenumerera f\xf6r att l\xe5sa upp definitioner";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Antal sparade aktiviteter";
+    },
+    get$saveActivityTitle() {
+      return "Spara aktivitet";
+    },
+    get$saveActivityDesc() {
+      return "Bra jobbat! Spara denna aktivitet f\xf6r senare granskning och \xf6vning";
     },
     get$levelInfoTooltip() {
       return "H\xe4r kan du se alla po\xe4ng du har tj\xe4nat och hur!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PKAYK5VOYJFT/rooOGCtUZy7K+E="] = d.current;
+  d["11HBHFE9CYapJWL98kxk0aQkQNM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_751.part.js.map

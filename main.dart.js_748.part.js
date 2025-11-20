@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " zavr\u0161io ovu aktivnost";
     },
+    get$activitySummaryError() {
+      return "Sa\u017eeci aktivnosti nisu dostupni";
+    },
+    get$requestSummaries() {
+      return "Zatra\u017ei sa\u017eetke";
+    },
     get$requestAccessTitle() {
       return "Zatra\u017ei pristup analitici?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "\u0418\u0433\u0440\u0430\u0458\u0442\u0435 \u0441\u0430 \u041f\u0430\u043d\u0433\u0435\u0438\u0458\u0435\u0432\u0438\u043c \u0431\u043e\u0442\u043e\u043c";
     },
+    get$waitNotDone() {
+      return "\u0427\u0435\u043a\u0430\u0458, \u043d\u0438\u0441\u0430\u043c \u0437\u0430\u0432\u0440\u0448\u0438\u043e!";
+    },
+    get$waitingForOthersToFinish() {
+      return "\u0427\u0435\u043a\u0430\u043c\u043e \u0434\u0430 \u043e\u0441\u0442\u0430\u043b\u0438 \u0437\u0430\u0432\u0440\u0448\u0435...";
+    },
+    get$generatingSummary() {
+      return "\u0410\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u0430\u045a\u0435 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430 \u0438 \u0433\u0435\u043d\u0435\u0440\u0438\u0441\u0430\u045a\u0435 \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442\u0430";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " tra\u017ei korisnike da se pridru\u017ee sesiji aktivnosti u " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "\u041f\u043e\u0437\u043e\u0432\u0438 \u043f\u0440\u0438\u0458\u0430\u0442\u0435\u0459\u0435 \u0443 \u043c\u043e\u0458 \u043a\u0443\u0440\u0441";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "\u041f\u0440\u0435\u0442\u043f\u043b\u0430\u0442\u0438 \u0441\u0435 \u0437\u0430 \u043e\u0442\u043a\u0459\u0443\u0447\u0430\u0432\u0430\u045a\u0435 \u0441\u0430\u0436\u0435\u0442\u0430\u043a\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438";
     },
     get$subscribeToUnlockDefinitions() {
       return "\u041f\u0440\u0435\u0442\u043f\u043b\u0430\u0442\u0438 \u0441\u0435 \u0437\u0430 \u043e\u0442\u043a\u0459\u0443\u0447\u0430\u0432\u0430\u045a\u0435 \u0434\u0435\u0444\u0438\u043d\u0438\u0446\u0438\u0458\u0430";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Broj sa\u010duvanih aktivnosti";
+    },
+    get$saveActivityTitle() {
+      return "Sa\u010duvaj aktivnost";
+    },
+    get$saveActivityDesc() {
+      return "Dobar posao! Sa\u010duvajte ovu aktivnost za kasniji pregled i ve\u017ebu";
     },
     get$levelInfoTooltip() {
       return "Ovde mo\u017eete videti sve poene koje ste osvojili i kako!";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1gGjKIxRUHpmkW+cf140xkpitms="] = d.current;
+  d["1t3JSW0nMy6SUzC1mdxbN3FWcww="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_748.part.js.map

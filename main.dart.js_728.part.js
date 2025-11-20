@@ -4121,6 +4121,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " zako\u0144czy\u0142 t\u0119 aktywno\u015b\u0107";
     },
+    get$activitySummaryError() {
+      return "Podsumowania aktywno\u015bci niedost\u0119pne";
+    },
+    get$requestSummaries() {
+      return "\u017b\u0105daj podsumowa\u0144";
+    },
     get$requestAccessTitle() {
       return "Czy chcesz poprosi\u0107 o dost\u0119p do analityki?";
     },
@@ -4229,6 +4235,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Graj z Pangea Botem";
     },
+    get$waitNotDone() {
+      return "Czekaj, nie sko\u0144czy\u0142em!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Czekanie na reszt\u0119 do uko\u0144czenia...";
+    },
+    get$generatingSummary() {
+      return "Analiza czatu i generowanie wynik\xf3w";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " szuka u\u017cytkownik\xf3w do do\u0142\u0105czenia do sesji aktywno\u015bci w " + room;
     },
@@ -4279,6 +4294,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Zapro\u015b znajomych do mojego kursu";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Subskrybuj, aby odblokowa\u0107 podsumowania aktywno\u015bci";
     },
     get$subscribeToUnlockDefinitions() {
       return "Subskrybuj, aby odblokowa\u0107 definicje";
@@ -4456,6 +4474,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Liczba zapisanych aktywno\u015bci";
+    },
+    get$saveActivityTitle() {
+      return "Zapisz aktywno\u015b\u0107";
+    },
+    get$saveActivityDesc() {
+      return "Dobra robota! Zapisz t\u0119 aktywno\u015b\u0107 do p\xf3\u017aniejszego przegl\u0105du i \u0107wicze\u0144";
     },
     get$levelInfoTooltip() {
       return "Tutaj mo\u017cesz zobaczy\u0107 wszystkie punkty, kt\xf3re zdoby\u0142e\u015b i jak!";
@@ -5184,7 +5208,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CcCq+uVicP8TZei27OPrsrct62k="] = d.current;
+  d["Z3U8hqRD64f6jHHnyR+X8IVJOqs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_728.part.js.map

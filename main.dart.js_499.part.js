@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " finaliz\xf3 esta actividad";
     },
+    get$activitySummaryError() {
+      return "Res\xfamenes de actividades no disponibles";
+    },
+    get$requestSummaries() {
+      return "Solicitar res\xfamenes";
+    },
     get$requestAccessTitle() {
       return "\xbfSolicitar acceso a la anal\xedtica?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jugar con Pangea Bot";
     },
+    get$waitNotDone() {
+      return "\xa1Espera, no he terminado!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Esperando a que los dem\xe1s terminen...";
+    },
+    get$generatingSummary() {
+      return "Analizando el chat y generando resultados";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " busca usuarios para unirse a la sesi\xf3n de actividad en " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Invitar a amigos a mi curso";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Suscr\xedbete para desbloquear res\xfamenes de actividades";
     },
     get$subscribeToUnlockDefinitions() {
       return "Suscr\xedbete para desbloquear definiciones";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "N\xfamero de actividades guardadas";
+    },
+    get$saveActivityTitle() {
+      return "Guardar actividad";
+    },
+    get$saveActivityDesc() {
+      return "\xa1Buen trabajo! Guarda esta actividad para revisi\xf3n y pr\xe1ctica m\xe1s adelante";
     },
     get$levelInfoTooltip() {
       return "Aqu\xed puedes ver todos los puntos que has ganado y c\xf3mo.";
@@ -5183,7 +5207,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H2/MsummLSZQO34Z5AQ5uPg0XE0="] = d.current;
+  d["wF5+1O0mVGjSHqxQ4IsBaEOqljk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_499.part.js.map

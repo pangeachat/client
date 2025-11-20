@@ -4132,6 +4132,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " concluiu esta atividade";
     },
+    get$activitySummaryError() {
+      return "Resumos de atividades indispon\xedveis";
+    },
+    get$requestSummaries() {
+      return "Solicitar resumos";
+    },
     get$requestAccessTitle() {
       return "Solicitar acesso \xe0 an\xe1lise?";
     },
@@ -4240,6 +4246,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jogue com o Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Espere, ainda n\xe3o terminei!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Aguardando os demais terminarem...";
+    },
+    get$generatingSummary() {
+      return "Analisando o chat e gerando resultados";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + string$.x20est__ + room;
     },
@@ -4291,11 +4306,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriendsToCourse() {
       return "Convidar amigos para o meu curso";
     },
+    get$subscribeToUnlockActivitySummaries() {
+      return string$.Inscrer;
+    },
     get$subscribeToUnlockDefinitions() {
       return "Inscreva-se para desbloquear defini\xe7\xf5es";
     },
     get$subscribeToUnlockTranscriptions() {
-      return string$.Inscre;
+      return string$.Inscret;
     },
     get$pingSent() {
       return "\ud83d\udd14 Envio de ping do curso! \ud83d\udd14";
@@ -4467,6 +4485,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "N\xfamero de atividades salvas";
+    },
+    get$saveActivityTitle() {
+      return "Salvar atividade";
+    },
+    get$saveActivityDesc() {
+      return string$.Bom_tr;
     },
     get$levelInfoTooltip() {
       return string$.Aqui_vv;
@@ -9291,6 +9315,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " encerrou esta atividade";
     },
+    get$activitySummaryError() {
+      return "Resumos de atividades indispon\xedveis";
+    },
+    get$requestSummaries() {
+      return "Solicitar resumos";
+    },
     get$requestAccessTitle() {
       return "Solicitar acesso \xe0 an\xe1lise?";
     },
@@ -9399,6 +9429,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jogar com o Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Espere, ainda n\xe3o terminei!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Aguardando os demais terminarem...";
+    },
+    get$generatingSummary() {
+      return "Analisando o chat e gerando resultados";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + string$.x20est__ + room;
     },
@@ -9450,11 +9489,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriendsToCourse() {
       return "Convidar amigos para o meu curso";
     },
+    get$subscribeToUnlockActivitySummaries() {
+      return string$.Inscrer;
+    },
     get$subscribeToUnlockDefinitions() {
       return "Inscreva-se para desbloquear defini\xe7\xf5es";
     },
     get$subscribeToUnlockTranscriptions() {
-      return string$.Inscre;
+      return string$.Inscret;
     },
     get$pingSent() {
       return "\ud83d\udd14 Ping do curso enviado! \ud83d\udd14";
@@ -9626,6 +9668,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "N\xfamero de atividades salvas";
+    },
+    get$saveActivityTitle() {
+      return "Salvar atividade";
+    },
+    get$saveActivityDesc() {
+      return string$.Bom_tr;
     },
     get$levelInfoTooltip() {
       return string$.Aqui_vv;
@@ -14441,6 +14489,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " concluiu esta atividade";
     },
+    get$activitySummaryError() {
+      return "Resumos de atividades indispon\xedveis";
+    },
+    get$requestSummaries() {
+      return "Solicitar resumos";
+    },
     get$requestAccessTitle() {
       return "Solicitar acesso \xe0 an\xe1lise?";
     },
@@ -14549,6 +14603,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jogar com o Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Espera, ainda n\xe3o terminei!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Aguardando os restantes terminarem...";
+    },
+    get$generatingSummary() {
+      return "Analisando o chat e gerando resultados";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " est\xe1 a procurar utilizadores para participar na sess\xe3o de atividade em " + room;
     },
@@ -14599,6 +14662,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Convida amigos para o meu curso";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Subscrever para desbloquear resumos de atividade";
     },
     get$subscribeToUnlockDefinitions() {
       return "Subscrever para desbloquear defini\xe7\xf5es";
@@ -14776,6 +14842,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "N\xfamero de atividades salvas";
+    },
+    get$saveActivityTitle() {
+      return "Salvar atividade";
+    },
+    get$saveActivityDesc() {
+      return string$.Bom_tr;
     },
     get$levelInfoTooltip() {
       return string$.Aqui_vv;
@@ -15523,6 +15595,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Aten__: "Aten\xe7\xe3o! \xc9 necess\xe1rio adicionar o teclado do idioma alvo",
     Ative_: "Ative para desbloquear todos os t\xf3picos e atividades. Apenas para administradores do curso.",
     Atuali: "Atualize esta sala para a vers\xe3o de sala fornecida",
+    Bom_tr: "Bom trabalho! Salve esta atividade para revis\xe3o e pr\xe1tica posterior",
     Cliqueaag: "Clique aqui para atualizar as configura\xe7\xf5es de assist\xeancia de gram\xe1tica",
     Cliqueaat: "Clique aqui para atualizar as configura\xe7\xf5es de assist\xeancia de tradu\xe7\xe3o",
     Cliqueag: "Clique aqui para gerenciar sua assinatura.",
@@ -15570,7 +15643,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Ignoras: "Ignorado na atividade de significado da palavra",
     Ilhas_: "Ilhas Ge\xf3rgia do Sul e Ilhas Sandwich do Sul",
     Incorr: "Incorreto na atividade de escuta de palavras",
-    Inscre: "Inscreva-se para desbloquear transcri\xe7\xf5es",
+    Inscrer: "Inscreva-se para desbloquear resumos de atividades",
+    Inscret: "Inscreva-se para desbloquear transcri\xe7\xf5es",
     Marcar: "Marcar como sala de mensagem direta para o ID Matrix fornecido",
     Mensagn: "Mensagens no seu idioma base n\xe3o ser\xe3o traduzidas.",
     Mensags: "Mensagens s\xe3o gratuitas! Inscreva-se para desbloquear tradu\xe7\xe3o interativa, verifica\xe7\xe3o gramatical e an\xe1lises de aprendizagem.",
@@ -15661,7 +15735,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XWWDMa2eJ8cLGjh+QlQat5Q0kCg="] = d.current;
+  d["6cK3uM+ysVT6BjGKNOhvUmgkGJE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

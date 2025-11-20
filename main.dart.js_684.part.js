@@ -4120,6 +4120,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " menyelesaikan aktivitas ini";
     },
+    get$activitySummaryError() {
+      return "Ringkasan aktivitas tidak tersedia";
+    },
+    get$requestSummaries() {
+      return "Minta ringkasan";
+    },
     get$requestAccessTitle() {
       return "Minta akses analitik?";
     },
@@ -4228,6 +4234,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Main dengan Pangea Bot";
     },
+    get$waitNotDone() {
+      return "Tunggu, saya belum selesai!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Menunggu yang lain selesai...";
+    },
+    get$generatingSummary() {
+      return "Menganalisis obrolan dan menghasilkan hasil";
+    },
     pingParticipantsNotification$2(user, room) {
       return user + " sedang mencari pengguna untuk bergabung dalam sesi aktivitas di " + room;
     },
@@ -4278,6 +4293,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inviteFriendsToCourse() {
       return "Undang teman ke kursus saya";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Berlangganan untuk membuka ringkasan aktivitas";
     },
     get$subscribeToUnlockDefinitions() {
       return "Berlangganan untuk membuka definisi";
@@ -4455,6 +4473,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$numSavedActivities() {
       return "Jumlah aktivitas yang disimpan";
+    },
+    get$saveActivityTitle() {
+      return "Simpan aktivitas";
+    },
+    get$saveActivityDesc() {
+      return "Kerja bagus! Simpan aktivitas ini untuk ditinjau dan dipraktikkan nanti";
     },
     get$levelInfoTooltip() {
       return "Di sini Anda dapat melihat semua poin yang telah Anda peroleh dan bagaimana!";
@@ -5186,7 +5210,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1fgfHXctbWH2XlvFGIzuRSPqsXA="] = d.current;
+  d["F/aLrTKd4xNrPA65XMt+BtobVrE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_684.part.js.map
