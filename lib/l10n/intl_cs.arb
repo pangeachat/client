@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-11-20 10:49:07.331005",
+  "@@last_modified": "2025-11-20 12:38:46.113217",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11173,6 +11173,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Změnit kurz",
+  "changeCourseDesc": "Zde můžete změnit plán kurzu tohoto kurzu.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

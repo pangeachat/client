@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-11-20 10:49:04.898610",
+  "@@last_modified": "2025-11-20 12:38:44.579835",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10560,6 +10560,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Змінити курс",
+  "changeCourseDesc": "Тут ви можете змінити план курсу цього курсу.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

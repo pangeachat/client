@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-20 10:49:33.650241",
+  "@@last_modified": "2025-11-20 12:39:06.593277",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10788,6 +10788,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ders değiştir",
+  "changeCourseDesc": "Burada bu dersin ders planını değiştirebilirsiniz.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:49:46.550729",
+  "@@last_modified": "2025-11-20 12:39:13.229885",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10566,6 +10566,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Wijzig cursus",
+  "changeCourseDesc": "Hier kunt u het cursusplan van deze cursus wijzigen.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:50:39.287440",
+  "@@last_modified": "2025-11-20 12:39:27.591280",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11655,6 +11655,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ŝanĝi kurson",
+  "changeCourseDesc": "Ĉi tie vi povas ŝanĝi la kurplanon de ĉi tiu kurso.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

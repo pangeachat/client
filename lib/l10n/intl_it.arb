@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:49:02.420844",
+  "@@last_modified": "2025-11-20 12:38:43.010339",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10569,6 +10569,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Cambia corso",
+  "changeCourseDesc": "Qui puoi cambiare il piano del corso di questo corso.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

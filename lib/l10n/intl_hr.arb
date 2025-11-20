@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-11-20 10:48:37.329505",
+  "@@last_modified": "2025-11-20 12:38:30.674058",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -10938,6 +10938,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Promijeni tečaj",
+  "changeCourseDesc": "Ovdje možete promijeniti plan tečaja ovog tečaja.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-11-20 10:48:52.562935",
+  "@@last_modified": "2025-11-20 12:38:38.325390",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10837,6 +10837,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Muuda kursust",
+  "changeCourseDesc": "Siin saad muuta selle kursuse õppeplaani.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

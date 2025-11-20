@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-11-20 10:49:20.744171",
+  "@@last_modified": "2025-11-20 12:38:58.794363",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11595,6 +11595,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Mudar curso",
+  "changeCourseDesc": "Aqui você pode mudar o plano de curso deste curso.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-11-20 10:50:45.019562",
+  "@@last_modified": "2025-11-20 12:39:28.706564",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10671,6 +10671,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Изменить курс",
+  "changeCourseDesc": "Здесь вы можете изменить план курса этого курса.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -124,6 +124,15 @@ class SpaceDetailsContent extends StatelessWidget {
         showInMainView: false,
       ),
       ButtonDetails(
+        title: L10n.of(context).changeCourse,
+        description: L10n.of(context).changeCourseDesc,
+        icon: const Icon(Icons.assignment_outlined, size: 30.0),
+        onPressed: () =>
+            context.go('/rooms/spaces/${controller.roomId}/addcourse'),
+        enabled: room.isRoomAdmin,
+        showInMainView: false,
+      ),
+      ButtonDetails(
         title: L10n.of(context).teacherModeTitle,
         description: L10n.of(context).teacherModeDesc,
         icon: const Icon(Icons.school_outlined, size: 30.0),

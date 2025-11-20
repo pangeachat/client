@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-11-20 10:48:47.291297",
+  "@@last_modified": "2025-11-20 12:38:36.071015",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10566,6 +10566,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Aldatu ikasturtea",
+  "changeCourseDesc": "Hemen ikasturtea aldatu dezakezu ikasturte honen ikasturteen plana.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

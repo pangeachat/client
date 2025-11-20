@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:48:39.480429",
+  "@@last_modified": "2025-11-20 12:38:31.739043",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11615,6 +11615,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "שנה קורס",
+  "changeCourseDesc": "כאן אתה יכול לשנות את תוכנית הקורס של קורס זה.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

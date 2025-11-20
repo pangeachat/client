@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:49:44.607529",
+  "@@last_modified": "2025-11-20 12:39:12.125435",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10790,6 +10790,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "பாடத்தை மாற்றவும்",
+  "changeCourseDesc": "இங்கு நீங்கள் இந்த பாடத்தின் பாட திட்டத்தை மாற்றலாம்.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

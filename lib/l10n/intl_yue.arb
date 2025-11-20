@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-11-20 10:48:59.758433",
+  "@@last_modified": "2025-11-20 12:38:42.034948",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11657,6 +11657,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "更改課程",
+  "changeCourseDesc": "在這裡你可以更改這個課程的課程計劃。",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

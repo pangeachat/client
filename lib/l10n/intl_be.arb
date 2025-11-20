@@ -1915,7 +1915,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-11-20 10:49:12.969748",
+  "@@last_modified": "2025-11-20 12:38:48.985011",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11665,6 +11665,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Змяніць курс",
+  "changeCourseDesc": "Тут вы можаце змяніць план курса гэтага курса.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

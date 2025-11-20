@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:48:25.346075",
+  "@@last_modified": "2025-11-20 12:38:25.008007",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10557,6 +10557,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ubah kursus",
+  "changeCourseDesc": "Di sini Anda dapat mengubah rencana kursus ini.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }
