@@ -151,12 +151,7 @@ class ActivitySessionStartView extends StatelessWidget {
                                           controller.isParticipantSelected,
                                       canSelectParticipant:
                                           controller.canSelectParticipant,
-                                      assignedRoles: controller
-                                              .roomSummaries?[
-                                                  controller.widget.roomId]
-                                              ?.activityRoles
-                                              .roles ??
-                                          {},
+                                      assignedRoles: controller.assignedRoles,
                                     ),
                                   ],
                                 ),

@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
@@ -146,6 +147,13 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         SessionState.notStarted,
         SessionState.selectedRole,
       ].contains(state);
+
+  Map<String, ActivityRoleModel> get assignedRoles {
+    if (activityRoom != null && activityRoom!.membership == Membership.join) {
+      return activityRoom!.assignedRoles ?? {};
+    }
+    return roomSummaries?[widget.roomId]?.activityRoles.roles ?? {};
+  }
 
   bool canSelectParticipant(String id) {
     if (state == SessionState.confirmedRole ||
