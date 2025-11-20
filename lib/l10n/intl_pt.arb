@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:48:50.032925",
+  "@@last_modified": "2025-11-20 12:38:37.248064",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11666,6 +11666,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Mudar curso",
+  "changeCourseDesc": "Aqui você pode mudar o plano de curso deste curso.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

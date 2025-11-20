@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-20 10:49:50.545294",
+  "@@last_modified": "2025-11-20 12:39:15.698399",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10557,6 +10557,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "更改课程",
+  "changeCourseDesc": "在这里您可以更改此课程的课程计划。",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

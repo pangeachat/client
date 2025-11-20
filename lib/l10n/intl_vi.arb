@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:49:42.351465",
+  "@@last_modified": "2025-11-20 12:39:10.677258",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6136,6 +6136,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Thay đổi khóa học",
+  "changeCourseDesc": "Tại đây bạn có thể thay đổi kế hoạch khóa học của khóa học này.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

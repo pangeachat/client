@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 10:50:21.679633",
+  "@@last_modified": "2025-11-20 12:39:18.369784",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11298,6 +11298,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "تغییر دوره",
+  "changeCourseDesc": "اینجا می‌توانید برنامه درسی این دوره را تغییر دهید.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

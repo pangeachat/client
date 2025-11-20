@@ -4954,5 +4954,7 @@
   "highlightVocabTooltip": "Highlight target vocab words below by sending them or practicing with them in the chat",
   "teacherModeTitle": "Teacher Mode",
   "teacherModeDesc": "Toggle to unlock all topics and activities. Course admin only.",
-  "noSavedActivitiesYet": "Activities will appear here once they are completed and saved."
+  "noSavedActivitiesYet": "Activities will appear here once they are completed and saved.",
+  "changeCourse": "Change course",
+  "changeCourseDesc": "Here you can change this course's course plan."
 }

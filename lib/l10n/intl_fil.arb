@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-11-20 10:49:25.976663",
+  "@@last_modified": "2025-11-20 12:39:01.960523",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11542,6 +11542,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Palitan ang kurso",
+  "changeCourseDesc": "Dito maaari mong palitan ang plano ng kurso ng kursong ito.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

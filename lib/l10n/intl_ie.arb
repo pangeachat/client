@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-11-20 10:48:34.059317",
+  "@@last_modified": "2025-11-20 12:38:29.133545",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11540,6 +11540,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Cuir in ionad an chúrsa",
+  "changeCourseDesc": "Anseo is féidir leat plean cúrsa an chúrsa seo a athrú.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }

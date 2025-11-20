@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-11-20 10:50:56.088618",
+  "@@last_modified": "2025-11-20 12:39:33.718195",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -10890,6 +10890,16 @@
     "placeholders": {}
   },
   "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Changer de cours",
+  "changeCourseDesc": "Ici, vous pouvez changer le plan de cours de ce cours.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
     "type": "String",
     "placeholders": {}
   }
