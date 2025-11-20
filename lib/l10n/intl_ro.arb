@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:05:44.760968",
+  "@@last_modified": "2025-11-20 10:48:28.298439",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11281,6 +11281,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Încărcarea feedback-ului a eșuat.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Subliniază cuvintele țintă din vocabular de mai jos trimițându-le sau exersându-le în chat",
+  "noSavedActivitiesYet": "Activitățile vor apărea aici odată ce sunt finalizate și salvate.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

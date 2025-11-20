@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:07:12.448110",
+  "@@last_modified": "2025-11-20 10:50:39.287440",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11635,6 +11635,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Malsukcesis ŝarĝi la reagojn.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
+  "noSavedActivitiesYet": "Aktivecoj aperos ĉi tie post kiam ili estos kompletigitaj kaj konservitaj.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

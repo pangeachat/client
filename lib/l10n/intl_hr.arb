@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-11-19 10:05:49.974610",
+  "@@last_modified": "2025-11-20 10:48:37.329505",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -10918,6 +10918,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nije moguće učitati povratne informacije.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Istaknite ciljne riječi ispod tako da ih pošaljete ili vježbate s njima u chatu",
+  "noSavedActivitiesYet": "Aktivnosti će se ovdje pojaviti kada budu dovršene i spremljene.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-11-19 10:07:24.904940",
+  "@@last_modified": "2025-11-20 10:50:56.088618",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -10870,6 +10870,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Échec du chargement des retours.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Mettez en surbrillance les mots de vocabulaire cibles ci-dessous en les envoyant ou en les pratiquant dans le chat",
+  "noSavedActivitiesYet": "Les activités apparaîtront ici une fois qu'elles seront terminées et enregistrées.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

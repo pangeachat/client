@@ -4013,7 +4013,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-11-19 10:05:35.933081",
+  "@@last_modified": "2025-11-20 10:48:14.084150",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11169,6 +11169,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Palaute ei latautunut.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
+  "noSavedActivitiesYet": "Toiminnot näkyvät täällä, kun ne on suoritettu ja tallennettu.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

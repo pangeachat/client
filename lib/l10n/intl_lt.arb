@@ -3865,7 +3865,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-11-19 10:06:46.685695",
+  "@@last_modified": "2025-11-20 10:49:39.791348",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11351,6 +11351,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nepavyko įkelti atsiliepimų.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Išryškinkite tikslinius žodžius žemiau, juos siųsdami arba praktikuodami pokalbyje",
+  "noSavedActivitiesYet": "Veiklos pasirodys čia, kai bus užbaigtos ir išsaugotos.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

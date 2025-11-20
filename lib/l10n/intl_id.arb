@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:05:43.101922",
+  "@@last_modified": "2025-11-20 10:48:25.346075",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10537,6 +10537,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Gagal memuat umpan balik.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Sorot kata-kata kosakata target di bawah ini dengan mengirimkannya atau berlatih dengan mereka di obrolan",
+  "noSavedActivitiesYet": "Kegiatan akan muncul di sini setelah mereka diselesaikan dan disimpan.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

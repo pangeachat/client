@@ -4460,7 +4460,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-11-19 10:06:33.387069",
+  "@@last_modified": "2025-11-20 10:49:18.378350",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11604,6 +11604,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "ไม่สามารถโหลดข้อเสนอแนะได้",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "เน้นคำศัพท์เป้าหมายด้านล่างโดยการส่งหรือฝึกฝนกับพวกเขาในแชท",
+  "noSavedActivitiesYet": "กิจกรรมจะปรากฏที่นี่เมื่อเสร็จสิ้นและบันทึกแล้ว",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

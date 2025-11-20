@@ -4282,7 +4282,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-11-19 10:06:54.787613",
+  "@@last_modified": "2025-11-20 10:49:48.501817",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10296,6 +10296,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Ndaŋa tolo feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Ndaŋa hightlitaŋa vocab words below by sending them or practicing with them in the chat",
+  "noSavedActivitiesYet": "Activities will appear here once they are completed and saved.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

@@ -4487,7 +4487,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-11-19 10:07:10.242188",
+  "@@last_modified": "2025-11-20 10:50:35.489004",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11631,6 +11631,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "फीडबैक लोड करने में विफल।",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "नीचे लक्षित शब्दों को हाइलाइट करें, उन्हें चैट में भेजकर या उनके साथ अभ्यास करके।",
+  "noSavedActivitiesYet": "गतिविधियाँ यहाँ तब दिखाई देंगी जब वे पूरी हो जाएँगी और सहेजी जाएँगी।",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

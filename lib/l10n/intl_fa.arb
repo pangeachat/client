@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:59.403476",
+  "@@last_modified": "2025-11-20 10:50:21.679633",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11278,6 +11278,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "بارگذاری بازخورد ناموفق بود.",
+  "unreadPlus": "۹۹+",
+  "highlightVocabTooltip": "کلمات هدف را در زیر با ارسال یا تمرین کردن آنها در چت هایلایت کنید",
+  "noSavedActivitiesYet": "فعالیت‌ها پس از اتمام و ذخیره‌سازی در اینجا ظاهر خواهند شد.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-11-19 10:06:04.654636",
+  "@@last_modified": "2025-11-20 10:48:52.562935",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10817,6 +10817,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Tagasiside laadimine ebaõnnestus.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
+  "noSavedActivitiesYet": "Tegevused ilmuvad siia, kui need on lõpetatud ja salvestatud.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }

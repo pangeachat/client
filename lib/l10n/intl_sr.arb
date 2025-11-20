@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:07:20.801798",
+  "@@last_modified": "2025-11-20 10:50:49.830715",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11648,6 +11648,26 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nije uspelo učitavanje povratnih informacija.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Istaknite ciljne reči rečnika ispod tako što ćete ih poslati ili vežbati u čatu",
+  "noSavedActivitiesYet": "Aktivnosti će se ovde pojaviti kada budu završene i sačuvane.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
     "type": "String",
     "placeholders": {}
   }
