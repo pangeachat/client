@@ -116,13 +116,21 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       false;
 
   SessionState get state {
-    if (activityRoom?.hasPickedRole == true) return SessionState.confirmedRole;
-    if (_selectedRoleId != null) return SessionState.selectedRole;
-    if (activityRoom == null) {
+    if (activityRoom?.membership == Membership.join &&
+        activityRoom?.hasPickedRole == true) {
+      return SessionState.confirmedRole;
+    }
+
+    if (_selectedRoleId != null) {
+      return SessionState.selectedRole;
+    }
+
+    if (activityRoom == null || activityRoom!.membership != Membership.join) {
       return widget.roomId != null || widget.launch
           ? SessionState.notSelectedRole
           : SessionState.notStarted;
     }
+
     return SessionState.notSelectedRole;
   }
 

@@ -161,7 +161,7 @@ void chatContextMenuAction(
             ],
           ),
         ),
-      if (!room.isActivitySession || room.ownRole == null)
+      if (!room.isActivitySession || !room.isActivityStarted)
         PopupMenuItem(
           value: ChatContextAction.leave,
           child: Row(
