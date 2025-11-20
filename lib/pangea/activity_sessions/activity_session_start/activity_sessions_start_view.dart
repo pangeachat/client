@@ -48,7 +48,19 @@ class ActivitySessionStartView extends StatelessWidget {
             leadingWidth: 52.0,
             title: controller.activity == null
                 ? null
-                : Text(controller.activity!.title),
+                : Center(
+                    child: Text(
+                      controller.activity!.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: !FluffyThemes.isColumnMode(context)
+                          ? const TextStyle(
+                              fontSize: 16,
+                            )
+                          : null,
+                    ),
+                  ),
             leading: Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Center(
