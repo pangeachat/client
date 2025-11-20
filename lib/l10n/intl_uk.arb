@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-11-20 12:38:44.579835",
+  "@@last_modified": "2025-11-20 14:53:53.830897",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10570,6 +10570,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Практична діяльність завершена",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

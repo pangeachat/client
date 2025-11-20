@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-11-20 12:38:58.794363",
+  "@@last_modified": "2025-11-20 14:53:59.030209",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11605,6 +11605,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Atividade de prática concluída",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

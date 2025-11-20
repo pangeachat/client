@@ -179,13 +179,9 @@ class TokenPracticeButtonState extends State<TokenPracticeButton>
       );
       return;
     }
+
     widget.overlayController!.onChoiceSelect(null);
-    widget.overlayController!.activity!.onMatch(
-      widget.token,
-      form,
-      widget.overlayController!.pangeaMessageEvent,
-      () => widget.overlayController!.setState(() {}),
-    );
+    widget.overlayController!.onMatch(widget.token, form);
   }
 
   bool get _isEmpty {

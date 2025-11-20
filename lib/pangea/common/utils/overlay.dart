@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
@@ -271,6 +272,19 @@ class OverlayUtil {
       overlayKey: overlayKey,
       canPop: false,
       blockOverlay: true,
+    );
+  }
+
+  static void showStarRainOverlay(BuildContext context) {
+    showOverlay(
+      context: context,
+      position: OverlayPositionEnum.centered,
+      closePrevOverlay: false,
+      canPop: false,
+      overlayKey: "star_rain_level_up",
+      child: const StarRainWidget(
+        overlayKey: "star_rain_level_up",
+      ),
     );
   }
 }

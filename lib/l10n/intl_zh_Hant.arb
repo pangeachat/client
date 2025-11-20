@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:39:00.347163",
+  "@@last_modified": "2025-11-20 14:53:59.953711",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10574,6 +10574,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "練習活動已完成",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

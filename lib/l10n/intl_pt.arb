@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:38:37.248064",
+  "@@last_modified": "2025-11-20 14:53:48.565172",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11676,6 +11676,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Atividade de prática concluída",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

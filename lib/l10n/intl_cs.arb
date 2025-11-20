@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-11-20 12:38:46.113217",
+  "@@last_modified": "2025-11-20 14:53:54.804617",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11183,6 +11183,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivita cvičení byla dokončena",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

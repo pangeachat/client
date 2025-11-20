@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-20 12:39:15.698399",
+  "@@last_modified": "2025-11-20 14:54:09.943983",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10567,6 +10567,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "练习活动已完成",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

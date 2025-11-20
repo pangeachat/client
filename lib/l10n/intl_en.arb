@@ -4955,6 +4955,7 @@
   "teacherModeTitle": "Teacher Mode",
   "teacherModeDesc": "Toggle to unlock all topics and activities. Course admin only.",
   "noSavedActivitiesYet": "Activities will appear here once they are completed and saved.",
+  "practiceActivityCompleted": "Practice activity completed",
   "changeCourse": "Change course",
   "changeCourseDesc": "Here you can change this course's course plan."
 }

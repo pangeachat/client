@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-20 12:39:06.593277",
+  "@@last_modified": "2025-11-20 14:54:03.661128",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10798,6 +10798,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Pratik etkinliği tamamlandı",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

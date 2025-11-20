@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-11-20 12:39:23.909449",
+  "@@last_modified": "2025-11-20 14:54:15.873729",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11366,6 +11366,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "練習活動が完了しました",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

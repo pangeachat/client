@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:39:21.247328",
+  "@@last_modified": "2025-11-20 14:54:13.498644",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11054,6 +11054,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Övningsaktivitet slutförd",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

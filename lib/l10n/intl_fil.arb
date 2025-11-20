@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-11-20 12:39:01.960523",
+  "@@last_modified": "2025-11-20 14:54:01.155789",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11552,6 +11552,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Natapos ang aktibidad sa pagsasanay",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

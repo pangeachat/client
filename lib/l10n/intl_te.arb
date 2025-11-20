@@ -1924,7 +1924,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-11-20 12:39:07.913220",
+  "@@last_modified": "2025-11-20 14:54:04.730180",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11665,6 +11665,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "అభ్యాస కార్యకలాపం పూర్తయింది",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

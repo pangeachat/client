@@ -132,8 +132,7 @@ class MessageMorphInputBarContentState
                   ),
                   onTap: () {
                     setState(() => selectedTag = choice);
-
-                    widget.activity.onMultipleChoiceSelect(
+                    widget.overlayController.onMatch(
                       token,
                       PracticeChoice(
                         choiceContent: choice,
@@ -145,8 +144,6 @@ class MessageMorphInputBarContentState
                           form: token.text.content,
                         ),
                       ),
-                      widget.overlayController.pangeaMessageEvent,
-                      () => overlay.setState(() {}),
                     );
                   },
                   isSelected: selectedTag == choice,

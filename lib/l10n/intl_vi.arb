@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:39:10.677258",
+  "@@last_modified": "2025-11-20 14:54:06.548321",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6146,6 +6146,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Hoạt động thực hành đã hoàn thành",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }

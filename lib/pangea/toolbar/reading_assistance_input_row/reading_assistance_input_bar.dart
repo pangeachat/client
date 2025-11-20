@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_mode_buttons.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 const double minContentHeight = 120;
 
@@ -57,11 +58,7 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
         case MessageMode.noneSelected:
         case MessageMode.messageMeaning:
           content = overlayController.isTotallyDone
-              ? Text(
-                  L10n.of(context).allDone,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  textAlign: TextAlign.center,
-                )
+              ? const AllDoneWidget()
               : Text(
                   L10n.of(context).choosePracticeMode,
                   style: Theme.of(context)
@@ -74,9 +71,11 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
         case MessageMode.wordEmoji:
         case MessageMode.wordMeaning:
         case MessageMode.listening:
-          if (target == null || activityCompleted) {
+          if (overlayController.isTotallyDone) {
+            content = const AllDoneWidget();
+          } else if (target == null || activityCompleted) {
             content = Text(
-              L10n.of(context).allDone,
+              L10n.of(context).practiceActivityCompleted,
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             );
@@ -87,9 +86,11 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
             );
           }
         case MessageMode.wordMorph:
-          if (activityCompleted) {
+          if (overlayController.isTotallyDone) {
+            content = const AllDoneWidget();
+          } else if (activityCompleted) {
             content = Text(
-              L10n.of(context).allDone,
+              L10n.of(context).practiceActivityCompleted,
               style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             );
@@ -144,6 +145,35 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
               ),
             ),
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class AllDoneWidget extends StatelessWidget {
+  const AllDoneWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      spacing: 8,
+      children: [
+        Text(
+          L10n.of(context).allDone,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ),
+          textAlign: TextAlign.center,
+        ),
+        ElevatedButton(
+          child: Text(L10n.of(context).continueText),
+          onPressed: () {
+            MatrixState.pAnyState.closeOverlay();
+          },
         ),
       ],
     );

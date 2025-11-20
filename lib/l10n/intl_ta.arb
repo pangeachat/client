@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 12:39:12.125435",
+  "@@last_modified": "2025-11-20 14:54:07.409352",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10800,6 +10800,11 @@
     "placeholders": {}
   },
   "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "பயிற்சி செயல்பாடு முடிந்தது",
+  "@practiceActivityCompleted": {
     "type": "String",
     "placeholders": {}
   }
