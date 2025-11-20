@@ -9,6 +9,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/message_token_text/dotted_border_painter.dart';
@@ -50,6 +51,7 @@ class TokenPracticeButton extends StatefulWidget {
 
 class TokenPracticeButtonState extends State<TokenPracticeButton>
     with TickerProviderStateMixin {
+  bool _starRainShown = false;
   AnimationController? _controller;
   Animation<double>? _heightAnimation;
 
@@ -186,6 +188,19 @@ class TokenPracticeButtonState extends State<TokenPracticeButton>
       widget.overlayController!.pangeaMessageEvent,
       () => widget.overlayController!.setState(() {}),
     );
+
+    if (widget.overlayController!.isTotallyDone) {
+      if (mounted && !_starRainShown) {
+        setState(() {
+          _starRainShown = true;
+        });
+        Overlay.of(context).insert(
+          OverlayEntry(
+            builder: (context) => const StarRainWidget(),
+          ),
+        );
+      }
+    }
   }
 
   bool get _isEmpty {
