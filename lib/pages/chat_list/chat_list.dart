@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:app_links/app_links.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
 import 'package:go_router/go_router.dart';
@@ -105,7 +104,9 @@ class ChatListController extends State<ChatList>
 
   StreamSubscription? _intentFileStreamSubscription;
 
-  StreamSubscription? _intentUriStreamSubscription;
+  // #Pangea
+  // StreamSubscription? _intentUriStreamSubscription;
+  // Pangea#
 
   ActiveFilter activeFilter = AppConfig.separateChatTypes
       ? ActiveFilter.messages
@@ -463,6 +464,9 @@ class ChatListController extends State<ChatList>
 
   void _processIncomingSharedMedia(List<SharedMediaFile> files) {
     if (files.isEmpty) return;
+    // #Pangea
+    if (files.every((f) => f.type == SharedMediaType.url)) return;
+    // Pangea#
 
     showScaffoldDialog(
       context: context,
@@ -487,13 +491,15 @@ class ChatListController extends State<ChatList>
     );
   }
 
-  void _processIncomingUris(Uri? uri) async {
-    if (uri == null) return;
-    context.go('/rooms');
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      UrlLauncher(context, uri.toString()).openMatrixToUrl();
-    });
-  }
+  // #Pangea
+  // void _processIncomingUris(Uri? uri) async {
+  //   if (uri == null) return;
+  //   context.go('/rooms');
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     UrlLauncher(context, uri.toString()).openMatrixToUrl();
+  //   });
+  // }
+  // Pangea#
 
   void _initReceiveSharingIntent() {
     if (!PlatformInfos.isMobile) return;
@@ -508,9 +514,11 @@ class ChatListController extends State<ChatList>
         .getInitialMedia()
         .then(_processIncomingSharedMedia);
 
-    // For receiving shared Uris
-    _intentUriStreamSubscription =
-        AppLinks().uriLinkStream.listen(_processIncomingUris);
+    // #Pangea
+    // // For receiving shared Uris
+    // _intentUriStreamSubscription =
+    //     AppLinks().uriLinkStream.listen(_processIncomingUris);
+    // Pangea#
 
     if (PlatformInfos.isAndroid) {
       final shortcuts = FlutterShortcuts();
@@ -686,12 +694,14 @@ class ChatListController extends State<ChatList>
   void dispose() {
     _intentDataStreamSubscription?.cancel();
     _intentFileStreamSubscription?.cancel();
-    _intentUriStreamSubscription?.cancel();
     //#Pangea
+    // _intentUriStreamSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .removeListener(_onSubscribe);
+    MatrixState.pangeaController.spaceCodeController.codeNotifier
+        .removeListener(_onCacheSpaceCode);
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -1104,7 +1114,16 @@ class ChatListController extends State<ChatList>
     if (mounted) {
       MatrixState.pangeaController.spaceCodeController
           .joinCachedSpaceCode(context);
+      MatrixState.pangeaController.spaceCodeController.codeNotifier
+          .addListener(_onCacheSpaceCode);
     }
+  }
+
+  void _onCacheSpaceCode() {
+    if (!mounted) return;
+    MatrixState.pangeaController.spaceCodeController.joinCachedSpaceCode(
+      context,
+    );
   }
   // Pangea#
 

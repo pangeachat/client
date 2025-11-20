@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:app_links/app_links.dart';
 import 'package:collection/collection.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:http/http.dart' as http;
@@ -23,6 +24,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/locale_provider.dart';
+import 'package:fluffychat/pangea/spaces/controllers/space_code_controller.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -71,6 +73,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   // #Pangea
   static late PangeaController pangeaController;
   static PangeaAnyState pAnyState = PangeaAnyState();
+  late StreamSubscription? _uriListener;
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -275,6 +278,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       _setAppLanguage();
       _setLanguageListener();
     });
+    _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
   }
 
@@ -562,6 +566,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     linuxNotifications?.close();
     // #Pangea
     _languageListener?.cancel();
+    _uriListener?.cancel();
     // Pangea#
 
     super.dispose();
@@ -602,6 +607,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     final file = MatrixFile(bytes: exportBytes, name: exportFileName);
     file.save(context);
   }
+
+  // #Pangea
+  Future<void> _processIncomingUris(Uri? uri) async {
+    if (uri == null) return;
+    await SpaceCodeController.onOpenAppViaUrl(uri);
+  }
+  // Pangea#
 }
 
 class _AccountBundleWithClient {
