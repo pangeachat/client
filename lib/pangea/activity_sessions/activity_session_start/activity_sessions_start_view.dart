@@ -53,6 +53,7 @@ class ActivitySessionStartView extends StatelessWidget {
                       controller.activity!.title,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
                       style: !FluffyThemes.isColumnMode(context)
                           ? const TextStyle(
                               fontSize: 16,
