@@ -31,6 +31,7 @@ class ActivitySummary extends StatelessWidget {
   final Function(String)? onTapParticipant;
   final bool Function(String)? canSelectParticipant;
   final bool Function(String)? isParticipantSelected;
+  final bool Function(String)? isParticipantShimmering;
   final double Function(ActivityRoleModel?)? getParticipantOpacity;
 
   final ValueNotifier<Set<String>>? usedVocab;
@@ -45,6 +46,7 @@ class ActivitySummary extends StatelessWidget {
     this.onTapParticipant,
     this.canSelectParticipant,
     this.isParticipantSelected,
+    this.isParticipantShimmering,
     this.getParticipantOpacity,
     this.room,
     this.course,
@@ -82,6 +84,7 @@ class ActivitySummary extends StatelessWidget {
               onTap: onTapParticipant,
               canSelect: canSelectParticipant,
               isSelected: isParticipantSelected,
+              isShimmering: isParticipantShimmering,
               getOpacity: getParticipantOpacity,
             ),
             DecoratedBox(

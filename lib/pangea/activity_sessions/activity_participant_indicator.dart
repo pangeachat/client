@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:matrix/matrix.dart';
+import 'package:shimmer/shimmer.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -17,6 +19,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
   final VoidCallback? onTap;
   final bool selected;
   final bool selectable;
+  final bool shimmer;
   final double opacity;
 
   final EdgeInsetsGeometry? padding;
@@ -29,6 +32,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
     this.userId,
     this.selected = false,
     this.selectable = true,
+    this.shimmer = false,
     this.onTap,
     this.opacity = 1.0,
     this.padding,
@@ -70,35 +74,46 @@ class ActivityParticipantIndicator extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      userId != null
-                          ? user?.avatarUrl == null ||
-                                  user!.avatarUrl!.toString().startsWith("mxc")
-                              ? Avatar(
-                                  mxContent: user?.avatarUrl != null
-                                      ? user!.avatarUrl!
-                                      : null,
-                                  name: userId!.localpart,
-                                  size: 60.0,
-                                  userId: userId,
-                                )
-                              : ClipRRect(
-                                  borderRadius: BorderRadius.circular(30),
-                                  child: CachedNetworkImage(
-                                    imageUrl: user!.avatarUrl!.toString(),
-                                    width: 60.0,
-                                    height: 60.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                )
-                          : CircleAvatar(
-                              radius: 30.0,
-                              backgroundColor:
-                                  theme.colorScheme.primaryContainer,
-                              child: const Icon(
-                                Icons.question_mark,
-                                size: 30.0,
+                      Shimmer.fromColors(
+                        enabled: shimmer && !selected,
+                        baseColor: shimmer && !selected
+                            ? AppConfig.gold.withAlpha(20)
+                            : Colors.transparent,
+                        highlightColor: shimmer && !selected
+                            ? AppConfig.gold.withAlpha(50)
+                            : Colors.transparent,
+                        child: userId != null
+                            ? user?.avatarUrl == null ||
+                                    user!.avatarUrl!
+                                        .toString()
+                                        .startsWith("mxc")
+                                ? Avatar(
+                                    mxContent: user?.avatarUrl != null
+                                        ? user!.avatarUrl!
+                                        : null,
+                                    name: userId!.localpart,
+                                    size: 60.0,
+                                    userId: userId,
+                                  )
+                                : ClipRRect(
+                                    borderRadius: BorderRadius.circular(30),
+                                    child: CachedNetworkImage(
+                                      imageUrl: user!.avatarUrl!.toString(),
+                                      width: 60.0,
+                                      height: 60.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  )
+                            : CircleAvatar(
+                                radius: 30.0,
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                child: const Icon(
+                                  Icons.question_mark,
+                                  size: 30.0,
+                                ),
                               ),
-                            ),
+                      ),
                       Text(
                         name,
                         style: const TextStyle(

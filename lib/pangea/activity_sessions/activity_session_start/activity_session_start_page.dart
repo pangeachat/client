@@ -179,6 +179,21 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     return unassignedIds.contains(id);
   }
 
+  bool isParticipantShimmering(String id) {
+    if (state != SessionState.notSelectedRole) {
+      return false;
+    }
+
+    final availableRoles = activity!.roles;
+    final assignedRoles = activityRoom?.assignedRoles ??
+        roomSummaries?[widget.roomId]?.activityRoles.roles ??
+        {};
+    final unassignedIds = availableRoles.keys
+        .where((id) => !assignedRoles.containsKey(id))
+        .toList();
+    return unassignedIds.contains(id);
+  }
+
   bool isParticipantSelected(String id) {
     if (state == SessionState.confirmedRole) {
       return activityRoom?.ownRoleState?.id == id;
