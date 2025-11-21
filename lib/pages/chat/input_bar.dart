@@ -322,15 +322,7 @@ class InputBar extends StatelessWidget {
           size: size,
           client: client,
         ),
-        // #Pangea
-        // title: Text(suggestion['displayname'] ?? suggestion['mxid']!),
-        title: Flexible(
-          child: Text(
-            suggestion['displayname'] ?? suggestion['mxid']!,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        // Pangea#
+        title: Text(suggestion['displayname'] ?? suggestion['mxid']!),
       );
     }
     return const SizedBox.shrink();
