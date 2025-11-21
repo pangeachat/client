@@ -30,6 +30,7 @@ class ActivityArchive extends StatelessWidget {
     return MaxWidthBody(
       withScrolling: false,
       child: ListView.builder(
+        physics: const ClampingScrollPhysics(),
         itemCount: archive.length + 1,
         itemBuilder: (BuildContext context, int i) {
           if (i == 0) {
