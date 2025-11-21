@@ -104,6 +104,10 @@ class ButtonControlledCarouselView extends StatelessWidget {
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
+    if (userSummaries.isEmpty) {
+      return const SizedBox();
+    }
+
     return Column(
       children: [
         SizedBox(
