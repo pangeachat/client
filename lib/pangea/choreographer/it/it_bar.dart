@@ -12,8 +12,6 @@ import 'package:fluffychat/pangea/choreographer/it/it_feedback_card.dart';
 import 'package:fluffychat/pangea/choreographer/it/word_data_card.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -186,91 +184,79 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
       ),
       child: CompositedTransformTarget(
         link: MatrixState.pAnyState.layerLinkAndKey('it_bar').link,
-        child: Column(
-          children: [
-            if (!InstructionsEnum.clickBestOption.isToggledOff) ...[
-              const InstructionsInlineTooltip(
-                instructionsEnum: InstructionsEnum.clickBestOption,
-                animate: false,
-              ),
-              const SizedBox(height: 8.0),
-            ],
-            Container(
-              key: MatrixState.pAnyState.layerLinkAndKey('it_bar').key,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(24),
-                  topRight: Radius.circular(24),
-                ),
-                color: Theme.of(context).colorScheme.surfaceContainer,
-              ),
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                spacing: 12.0,
-                children: [
-                  _ITBarHeader(
-                    onClose: widget.choreographer.itController.closeIT,
-                    setEditing:
-                        widget.choreographer.itController.setEditingSourceText,
-                    editing: widget.choreographer.itController.editing,
-                    sourceTextController: _sourceTextController,
-                    sourceText: _sourceText,
-                    onSubmitEdits: (_) {
-                      widget.choreographer.itController.submitSourceTextEdits(
-                        _sourceTextController.text,
-                      );
-                    },
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                    constraints: const BoxConstraints(minHeight: 80),
-                    child: Center(
-                      child: widget.choreographer.errorService.isError
-                          ? Row(
-                              spacing: 8.0,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ErrorIndicator(
-                                  message: L10n.of(context).translationError,
-                                  style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    color: Theme.of(context).colorScheme.error,
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed:
-                                      widget.choreographer.itController.closeIT,
-                                  icon: const Icon(
-                                    Icons.close,
-                                    size: 20,
-                                  ),
-                                ),
-                              ],
-                            )
-                          : ValueListenableBuilder(
-                              valueListenable: widget
-                                  .choreographer.itController.currentITStep,
-                              builder: (context, step, __) {
-                                return step == null
-                                    ? CircularProgressIndicator(
-                                        strokeWidth: 2.0,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                      )
-                                    : _ITChoices(
-                                        continuances: step.continuances,
-                                        onPressed: _selectContinuance,
-                                        onLongPressed: _showFeedbackCard,
-                                      );
-                              },
-                            ),
-                    ),
-                  ),
-                ],
-              ),
+        child: Container(
+          key: MatrixState.pAnyState.layerLinkAndKey('it_bar').key,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
             ),
-          ],
+            color: Theme.of(context).colorScheme.surfaceContainer,
+          ),
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            spacing: 12.0,
+            children: [
+              _ITBarHeader(
+                onClose: widget.choreographer.itController.closeIT,
+                setEditing:
+                    widget.choreographer.itController.setEditingSourceText,
+                editing: widget.choreographer.itController.editing,
+                sourceTextController: _sourceTextController,
+                sourceText: _sourceText,
+                onSubmitEdits: (_) {
+                  widget.choreographer.itController.submitSourceTextEdits(
+                    _sourceTextController.text,
+                  );
+                },
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                constraints: const BoxConstraints(minHeight: 80),
+                child: Center(
+                  child: widget.choreographer.errorService.isError
+                      ? Row(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ErrorIndicator(
+                              message: L10n.of(context).translationError,
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Theme.of(context).colorScheme.error,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed:
+                                  widget.choreographer.itController.closeIT,
+                              icon: const Icon(
+                                Icons.close,
+                                size: 20,
+                              ),
+                            ),
+                          ],
+                        )
+                      : ValueListenableBuilder(
+                          valueListenable:
+                              widget.choreographer.itController.currentITStep,
+                          builder: (context, step, __) {
+                            return step == null
+                                ? CircularProgressIndicator(
+                                    strokeWidth: 2.0,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  )
+                                : _ITChoices(
+                                    continuances: step.continuances,
+                                    onPressed: _selectContinuance,
+                                    onLongPressed: _showFeedbackCard,
+                                  );
+                          },
+                        ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
