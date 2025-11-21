@@ -8,6 +8,8 @@ import 'package:fluffychat/pages/chat/reply_display.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_role_tooltip.dart';
 import 'package:fluffychat/pangea/chat/widgets/pangea_chat_input_row.dart';
 import 'package:fluffychat/pangea/choreographer/it/it_bar.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 
 class ChatInputBar extends StatelessWidget {
   final ChatController controller;
@@ -25,9 +27,24 @@ class ChatInputBar extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ActivityRoleTooltip(
-          room: controller.room,
-          hide: controller.choreographer.itController.open,
+        ValueListenableBuilder(
+          valueListenable: controller.choreographer.itController.open,
+          builder: (context, open, __) {
+            return open
+                ? InstructionsInlineTooltip(
+                    instructionsEnum: InstructionsEnum.clickBestOption,
+                    animate: false,
+                    padding: EdgeInsets.only(
+                      left: 16.0,
+                      right: 16.0,
+                      top: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+                    ),
+                  )
+                : ActivityRoleTooltip(
+                    room: controller.room,
+                    hide: controller.choreographer.itController.open,
+                  );
+          },
         ),
         Container(
           margin: EdgeInsets.all(
