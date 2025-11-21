@@ -20,6 +20,7 @@ class ActivityParticipantList extends StatelessWidget {
 
   final bool Function(String)? canSelect;
   final bool Function(String)? isSelected;
+  final bool Function(String)? isShimmering;
   final double Function(ActivityRoleModel?)? getOpacity;
 
   const ActivityParticipantList({
@@ -31,6 +32,7 @@ class ActivityParticipantList extends StatelessWidget {
     this.onTap,
     this.canSelect,
     this.isSelected,
+    this.isShimmering,
     this.getOpacity,
   });
 
@@ -76,6 +78,10 @@ class ActivityParticipantList extends StatelessWidget {
                 final selectable =
                     canSelect != null ? canSelect!(availableRole.id) : true;
 
+                final shimmering = isShimmering != null
+                    ? isShimmering!(availableRole.id)
+                    : false;
+
                 return ActivityParticipantIndicator(
                   name: availableRole.name,
                   userId: assignedRole?.userId,
@@ -86,6 +92,7 @@ class ActivityParticipantList extends StatelessWidget {
                       : null,
                   selected: selected,
                   selectable: selectable,
+                  shimmer: shimmering,
                 );
               }).toList(),
             ),

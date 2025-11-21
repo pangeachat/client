@@ -161,6 +161,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                       onTapParticipant: controller.selectRole,
                                       isParticipantSelected:
                                           controller.isParticipantSelected,
+                                      isParticipantShimmering:
+                                          controller.isParticipantShimmering,
                                       canSelectParticipant:
                                           controller.canSelectParticipant,
                                       assignedRoles: controller.assignedRoles,
