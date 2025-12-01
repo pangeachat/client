@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:37.035253",
+  "@@last_modified": "2025-12-01 12:39:37.053489",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10572,6 +10572,26 @@
   },
   "practiceActivityCompleted": "Aktivitas latihan selesai",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Buat Obrolan Perkenalan",
+  "introChatDesc": "Siapa pun di ruang ini dapat memposting.",
+  "announcementsChatTitle": "Obrolan Pengumuman",
+  "announcementsChatDesc": "Hanya admin ruang yang dapat memposting.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-11-20 14:53:52.037690",
+  "@@last_modified": "2025-12-01 12:40:05.012948",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11672,6 +11672,26 @@
   },
   "practiceActivityCompleted": "練習活動已完成",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "創建介紹聊天",
+  "introChatDesc": "任何人在這個空間都可以發帖。",
+  "announcementsChatTitle": "公告聊天",
+  "announcementsChatDesc": "只有空間管理員可以發帖。",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

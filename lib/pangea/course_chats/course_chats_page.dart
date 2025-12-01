@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
+import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
@@ -613,6 +614,42 @@ class CourseChatsController extends State<CourseChats>
       return 1;
     }
     return 0;
+  }
+
+  bool showDefaultChatCreation(CourseDefaultChatsEnum type) {
+    if (room == null || !room!.isRoomAdmin) return false;
+    return !room!.dismissedDefaultChat(type) && !room!.hasDefaultChat(type);
+  }
+
+  Future<void> dismissDefaultChatCreation(
+    CourseDefaultChatsEnum type,
+  ) async {
+    if (room == null) {
+      throw Exception("Room is null");
+    }
+
+    final settings = switch (type) {
+      CourseDefaultChatsEnum.introductions =>
+        room!.courseChatsSettings.copyWith(dismissedIntroChat: true),
+      CourseDefaultChatsEnum.announcements =>
+        room!.courseChatsSettings.copyWith(dismissedAnnouncementsChat: true),
+    };
+    await room!.setCourseChatsSettings(settings);
+  }
+
+  Future<void> createDefaultChat(
+    CourseDefaultChatsEnum type,
+  ) async {
+    if (room == null) {
+      throw Exception("Room is null");
+    }
+
+    final roomId = await room!.addDefaultChat(
+      type: type,
+      name: type.title(L10n.of(context)),
+    );
+
+    context.go('/rooms/spaces/${widget.roomId}/$roomId');
   }
 
   @override

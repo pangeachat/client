@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:55.552111",
+  "@@last_modified": "2025-12-01 12:40:12.703108",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11674,6 +11674,26 @@
   },
   "practiceActivityCompleted": "Øvingsaktivitet fullført",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Opprett Introduksjoner Chat",
+  "introChatDesc": "Alle i rommet kan legge ut.",
+  "announcementsChatTitle": "Kunngjøringer Chat",
+  "announcementsChatDesc": "Bare romadministratoren kan legge ut.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

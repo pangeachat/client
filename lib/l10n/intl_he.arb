@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:44.448591",
+  "@@last_modified": "2025-12-01 12:39:50.470332",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11630,6 +11630,26 @@
   },
   "practiceActivityCompleted": "פעילות תרגול הושלמה",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "צור צ'אט היכרות",
+  "introChatDesc": "כל אחד במרחב יכול לפרסם.",
+  "announcementsChatTitle": "צ'אט הודעות",
+  "announcementsChatDesc": "רק מנהל המרחב יכול לפרסם.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

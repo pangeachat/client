@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-11-20 14:54:15.873729",
+  "@@last_modified": "2025-12-01 12:41:02.154964",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11371,6 +11371,26 @@
   },
   "practiceActivityCompleted": "練習活動が完了しました",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "紹介チャットを作成",
+  "introChatDesc": "スペース内の誰でも投稿できます。",
+  "announcementsChatTitle": "お知らせチャット",
+  "announcementsChatDesc": "スペースの管理者のみが投稿できます。",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

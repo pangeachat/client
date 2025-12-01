@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:54:18.264427",
+  "@@last_modified": "2025-12-01 12:41:06.553946",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11670,6 +11670,26 @@
   },
   "practiceActivityCompleted": "Praktika aktiveco finita",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Krei Enkondukan Ĉaton",
+  "introChatDesc": "Ĉiu en la spaco povas afiŝi.",
+  "announcementsChatTitle": "Afiŝoj Ĉato",
+  "announcementsChatDesc": "Nur la administranto de la spaco povas afiŝi.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-11-20 14:54:02.760300",
+  "@@last_modified": "2025-12-01 12:40:30.614200",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10798,6 +10798,26 @@
   },
   "practiceActivityCompleted": "تم الانتهاء من نشاط الممارسة",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "إنشاء دردشة التعريفات",
+  "introChatDesc": "يمكن لأي شخص في المساحة النشر.",
+  "announcementsChatTitle": "دردشة الإعلانات",
+  "announcementsChatDesc": "يمكن فقط لمسؤول المساحة النشر.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-11-20 14:53:50.178435",
+  "@@last_modified": "2025-12-01 12:40:01.799437",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10588,6 +10588,26 @@
   },
   "practiceActivityCompleted": "Übungsaktivität abgeschlossen",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Erstelle Einführungs-Chat",
+  "introChatDesc": "Jeder im Raum kann posten.",
+  "announcementsChatTitle": "Ankündigungen-Chat",
+  "announcementsChatDesc": "Nur der Raum-Administrator kann posten.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

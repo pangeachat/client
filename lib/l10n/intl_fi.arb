@@ -4013,7 +4013,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-11-20 14:53:34.208462",
+  "@@last_modified": "2025-12-01 12:39:30.795641",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11204,6 +11204,26 @@
   },
   "practiceActivityCompleted": "Harjoitustoiminta suoritettu",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Luo esittelykeskustelu",
+  "introChatDesc": "Kuka tahansa tilassa voi julkaista.",
+  "announcementsChatTitle": "Ilmoitukset keskustelu",
+  "announcementsChatDesc": "Vain tilan ylläpitäjä voi julkaista.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

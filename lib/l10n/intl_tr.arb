@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-20 14:54:03.661128",
+  "@@last_modified": "2025-12-01 12:40:32.542590",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10803,6 +10803,26 @@
   },
   "practiceActivityCompleted": "Pratik etkinliği tamamlandı",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Tanıtım Sohbeti Oluştur",
+  "introChatDesc": "Mekandaki herkes paylaşımda bulunabilir.",
+  "announcementsChatTitle": "Duyurular Sohbeti",
+  "announcementsChatDesc": "Sadece mekan yöneticisi paylaşımda bulunabilir.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

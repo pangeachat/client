@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-11-20 14:53:59.030209",
+  "@@last_modified": "2025-12-01 12:40:21.887443",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11610,6 +11610,26 @@
   },
   "practiceActivityCompleted": "Atividade de prática concluída",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Criar Chat de Apresentações",
+  "introChatDesc": "Qualquer pessoa no espaço pode postar.",
+  "announcementsChatTitle": "Chat de Anúncios",
+  "announcementsChatDesc": "Apenas o administrador do espaço pode postar.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

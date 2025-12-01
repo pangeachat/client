@@ -4957,5 +4957,9 @@
   "noSavedActivitiesYet": "Activities will appear here once they are completed and saved.",
   "practiceActivityCompleted": "Practice activity completed",
   "changeCourse": "Change course",
-  "changeCourseDesc": "Here you can change this course's course plan."
+  "changeCourseDesc": "Here you can change this course's course plan.",
+  "introChatTitle": "Create Introductions Chat",
+  "introChatDesc": "Anyone in the space can post.",
+  "announcementsChatTitle": "Announcements Chat",
+  "announcementsChatDesc": "Only space admin can post."
 }

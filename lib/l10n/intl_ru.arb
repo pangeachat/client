@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-11-20 14:54:19.249444",
+  "@@last_modified": "2025-12-01 12:41:08.695760",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10686,6 +10686,26 @@
   },
   "practiceActivityCompleted": "Практическое задание завершено",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Создать чат для представлений",
+  "introChatDesc": "Любой в пространстве может публиковать.",
+  "announcementsChatTitle": "Чат объявлений",
+  "announcementsChatDesc": "Только администратор пространства может публиковать.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

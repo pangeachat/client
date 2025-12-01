@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-11-20 14:53:54.804617",
+  "@@last_modified": "2025-12-01 12:40:10.951068",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11188,6 +11188,26 @@
   },
   "practiceActivityCompleted": "Aktivita cvičení byla dokončena",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Vytvořit chat pro úvody",
+  "introChatDesc": "Kdokoli ve prostoru může přispět.",
+  "announcementsChatTitle": "Chat pro oznámení",
+  "announcementsChatDesc": "Pouze administrátor prostoru může přispět.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

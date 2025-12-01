@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-11-20 14:53:42.684180",
+  "@@last_modified": "2025-12-01 12:39:45.041098",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11555,6 +11555,26 @@
   },
   "practiceActivityCompleted": "Praktiko aktivita kompletita",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Cruthaigh Comhrá Réamhrá",
+  "introChatDesc": "Is féidir le haon duine sa spás post a chur.",
+  "announcementsChatTitle": "Comhrá Fógraí",
+  "announcementsChatDesc": "Ní féidir ach le h-ardán an spáis post a chur.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

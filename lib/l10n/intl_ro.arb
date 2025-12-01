@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:39.359488",
+  "@@last_modified": "2025-12-01 12:39:39.618148",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11316,6 +11316,26 @@
   },
   "practiceActivityCompleted": "Activitate de practică finalizată",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Creează chat de introduceri",
+  "introChatDesc": "Oricine din spațiu poate posta.",
+  "announcementsChatTitle": "Chat de anunțuri",
+  "announcementsChatDesc": "Numai administratorul spațiului poate posta.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

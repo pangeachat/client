@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-11-20 14:53:31.098192",
+  "@@last_modified": "2025-12-01 12:39:26.176542",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -7816,6 +7816,26 @@
   },
   "practiceActivityCompleted": "Actividad de práctica completada",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Crear Chat de Introducciones",
+  "introChatDesc": "Cualquiera en el espacio puede publicar.",
+  "announcementsChatTitle": "Chat de Anuncios",
+  "announcementsChatDesc": "Solo el administrador del espacio puede publicar.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

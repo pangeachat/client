@@ -1934,7 +1934,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-11-20 14:53:35.097620",
+  "@@last_modified": "2025-12-01 12:39:32.959549",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11643,6 +11643,26 @@
   },
   "practiceActivityCompleted": "Øvelsesaktivitet fuldført",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Opret Introduktioner Chat",
+  "introChatDesc": "Alle i rummet kan poste.",
+  "announcementsChatTitle": "Meddelelser Chat",
+  "announcementsChatDesc": "Kun rumadmin kan poste.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

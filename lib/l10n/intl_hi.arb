@@ -4487,7 +4487,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-11-20 14:54:17.425082",
+  "@@last_modified": "2025-12-01 12:41:04.318728",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11666,6 +11666,26 @@
   },
   "practiceActivityCompleted": "अभ्यास गतिविधि पूरी हुई",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "परिचय चैट बनाएं",
+  "introChatDesc": "इस स्थान में कोई भी पोस्ट कर सकता है।",
+  "announcementsChatTitle": "घोषणाएँ चैट",
+  "announcementsChatDesc": "केवल स्थान प्रशासक पोस्ट कर सकता है।",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

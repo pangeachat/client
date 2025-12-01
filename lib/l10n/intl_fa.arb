@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:54:11.691213",
+  "@@last_modified": "2025-12-01 12:40:53.664453",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11313,6 +11313,26 @@
   },
   "practiceActivityCompleted": "فعالیت تمرینی کامل شد",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "ایجاد چت معرفی",
+  "introChatDesc": "هر کسی در این فضا می‌تواند پست کند.",
+  "announcementsChatTitle": "چت اعلامیه‌ها",
+  "announcementsChatDesc": "فقط مدیر فضا می‌تواند پست کند.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

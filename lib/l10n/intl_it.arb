@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:53.093014",
+  "@@last_modified": "2025-12-01 12:40:06.959287",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10584,6 +10584,26 @@
   },
   "practiceActivityCompleted": "Attività di pratica completata",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Crea Chat di Introduzioni",
+  "introChatDesc": "Chiunque nello spazio può postare.",
+  "announcementsChatTitle": "Chat degli Annunci",
+  "announcementsChatDesc": "Solo l'amministratore dello spazio può postare.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }
