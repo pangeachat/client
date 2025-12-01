@@ -1,7 +1,5 @@
-import 'dart:developer';
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -9,7 +7,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/message_token_text/dotted_border_painter.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
@@ -19,357 +17,130 @@ import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/morph_selection.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_controller.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
 
 const double tokenButtonHeight = 40.0;
 const double tokenButtonDefaultFontSize = 10;
 const int maxEmojisPerLemma = 1;
-const double estimatedEmojiWidthRatio = 2;
 
-class TokenPracticeButton extends StatefulWidget {
-  final MessageOverlayController? overlayController;
+class TokenPracticeButton extends StatelessWidget {
+  final PracticeController controller;
   final PangeaToken token;
   final TextStyle textStyle;
   final double width;
-  final bool animateIn;
   final Color textColor;
 
   const TokenPracticeButton({
     super.key,
-    required this.overlayController,
+    required this.controller,
     required this.token,
     required this.textStyle,
     required this.width,
     required this.textColor,
-    this.animateIn = false,
-  });
-
-  @override
-  TokenPracticeButtonState createState() => TokenPracticeButtonState();
-}
-
-class TokenPracticeButtonState extends State<TokenPracticeButton>
-    with TickerProviderStateMixin {
-  AnimationController? _controller;
-  Animation<double>? _heightAnimation;
-
-  // New controller and animation for icon size
-  AnimationController? _iconSizeController;
-  Animation<double>? _iconSizeAnimation;
-
-  bool _isHovered = false;
-  bool _isSelected = false;
-  bool _finishedInitialAnimation = false;
-  bool _wasEmpty = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        milliseconds: AppConfig.overlayAnimationDuration,
-      ),
-    );
-
-    _heightAnimation = Tween<double>(
-      begin: 0,
-      end: tokenButtonHeight,
-    ).animate(CurvedAnimation(parent: _controller!, curve: Curves.easeOut));
-
-    // Initialize the new icon size controller and animation
-    _iconSizeController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 200),
-    );
-
-    _iconSizeAnimation = Tween<double>(
-      begin: 24, // Default icon size
-      end: 30, // Enlarged icon size
-    ).animate(
-      CurvedAnimation(parent: _iconSizeController!, curve: Curves.easeInOut),
-    );
-
-    _setSelected(); // Call _setSelected after initializing _iconSizeController
-
-    _wasEmpty = _isEmpty;
-
-    if (!_isEmpty) {
-      _controller?.forward().then((_) {
-        if (mounted) setState(() => _finishedInitialAnimation = true);
-      });
-    } else {
-      setState(() => _finishedInitialAnimation = true);
-    }
-  }
-
-  @override
-  void didUpdateWidget(covariant TokenPracticeButton oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _setSelected();
-    if (_isEmpty != _wasEmpty) {
-      if (_isEmpty && _animate) {
-        _controller?.reverse();
-      } else if (!_isEmpty && _animate) {
-        _controller?.forward();
-      }
-      setState(() => _wasEmpty = _isEmpty);
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller?.dispose();
-    _iconSizeController?.dispose(); // Dispose the new controller
-    super.dispose();
-  }
-
-  PracticeTarget? get _activity =>
-      widget.overlayController?.practiceTargetForToken(widget.token);
-
-  bool get _animate => widget.animateIn || _finishedInitialAnimation;
-
-  bool get _isActivityCompleteOrNullForToken =>
-      _activity?.isCompleteByToken(
-        widget.token,
-        _activity!.morphFeature,
-      ) ==
-      true;
-
-  void _setSelected() {
-    final selected =
-        widget.overlayController?.selectedMorph?.token == widget.token &&
-            widget.overlayController?.selectedMorph?.morph ==
-                _activity?.morphFeature;
-
-    if (selected != _isSelected) {
-      setState(() {
-        _isSelected = selected;
-      });
-
-      _isSelected
-          ? _iconSizeController?.forward()
-          : _iconSizeController?.reverse();
-    }
-  }
-
-  void _setHovered(bool isHovered) {
-    if (isHovered != _isHovered) {
-      setState(() {
-        _isHovered = isHovered;
-      });
-
-      if (!_isHovered && _isSelected) {
-        return;
-      }
-
-      _isHovered
-          ? _iconSizeController?.forward()
-          : _iconSizeController?.reverse();
-    }
-  }
-
-  void _onMatch(PracticeChoice form) {
-    if (widget.overlayController?.activity == null) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        m: "should not be in onAcceptWithDetails with null activity",
-        data: {"details": form},
-      );
-      return;
-    }
-
-    widget.overlayController!.onChoiceSelect(null);
-    widget.overlayController!.onMatch(widget.token, form);
-  }
-
-  bool get _isEmpty {
-    final mode = widget.overlayController?.toolbarMode;
-    if (MessageMode.wordEmoji == mode &&
-        widget.token.vocabConstructID.userSetEmoji.firstOrNull != null) {
-      return false;
-    }
-
-    return _activity == null ||
-        (_isActivityCompleteOrNullForToken &&
-            ![MessageMode.wordEmoji, MessageMode.wordMorph].contains(mode)) ||
-        (MessageMode.wordMorph == mode && _activity?.morphFeature == null);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (widget.overlayController == null) {
-      return const SizedBox.shrink();
-    }
-
-    if (!_animate && _iconSizeAnimation != null) {
-      return MessageTokenButtonContent(
-        activity: _activity,
-        messageMode: widget.overlayController!.toolbarMode,
-        token: widget.token,
-        selectedChoice: widget.overlayController?.selectedChoice,
-        isActivityCompleteOrNullForToken: _isActivityCompleteOrNullForToken,
-        isSelected: _isSelected,
-        height: tokenButtonHeight,
-        width: widget.width,
-        textStyle: widget.textStyle,
-        textColor: widget.textColor,
-        sizeAnimation: _iconSizeAnimation!,
-        onHover: _setHovered,
-        onTap: () => widget.overlayController!.onMorphActivitySelect(
-          MorphSelection(widget.token, _activity!.morphFeature!),
-        ),
-        onMatch: _onMatch,
-      );
-    }
-
-    if (_heightAnimation != null && _iconSizeAnimation != null) {
-      return AnimatedBuilder(
-        animation: _heightAnimation!,
-        builder: (context, child) {
-          return MessageTokenButtonContent(
-            activity: _activity,
-            messageMode: widget.overlayController!.toolbarMode,
-            token: widget.token,
-            selectedChoice: widget.overlayController?.selectedChoice,
-            isActivityCompleteOrNullForToken: _isActivityCompleteOrNullForToken,
-            isSelected: _isSelected,
-            height: _heightAnimation!.value,
-            width: widget.width,
-            textStyle: widget.textStyle,
-            textColor: widget.textColor,
-            sizeAnimation: _iconSizeAnimation!,
-            onHover: _setHovered,
-            onTap: () => widget.overlayController!.onMorphActivitySelect(
-              MorphSelection(widget.token, _activity!.morphFeature!),
-            ),
-            onMatch: _onMatch,
-          );
-        },
-      );
-    }
-
-    return const SizedBox.shrink();
-  }
-}
-
-class MessageTokenButtonContent extends StatelessWidget {
-  final PracticeTarget? activity;
-  final MessageMode messageMode;
-  final PangeaToken token;
-  final PracticeChoice? selectedChoice;
-
-  final bool isActivityCompleteOrNullForToken;
-  final bool isSelected;
-  final double height;
-  final double width;
-  final TextStyle textStyle;
-  final Color textColor;
-  final Animation<double> sizeAnimation;
-
-  final Function(bool)? onHover;
-  final Function()? onTap;
-  final Function(PracticeChoice)? onMatch;
-
-  const MessageTokenButtonContent({
-    super.key,
-    required this.activity,
-    required this.messageMode,
-    required this.token,
-    required this.selectedChoice,
-    required this.isActivityCompleteOrNullForToken,
-    required this.isSelected,
-    required this.height,
-    required this.width,
-    required this.textStyle,
-    required this.textColor,
-    required this.sizeAnimation,
-    this.onHover,
-    this.onTap,
-    this.onMatch,
   });
 
   TextStyle get _emojiStyle => TextStyle(
         fontSize: (textStyle.fontSize ?? tokenButtonDefaultFontSize) + 4,
       );
 
-  static final _borderRadius =
-      BorderRadius.circular(AppConfig.borderRadius - 4);
+  PracticeTarget? get _activity => controller.practiceTargetForToken(token);
+
+  bool get isActivityCompleteOrNullForToken {
+    return _activity?.isCompleteByToken(
+          token,
+          _activity!.morphFeature,
+        ) ==
+        true;
+  }
+
+  bool get _isEmpty {
+    final mode = controller.practiceMode;
+    if (MessageMode.wordEmoji == mode &&
+        token.vocabConstructID.userSetEmoji.firstOrNull != null) {
+      return false;
+    }
+
+    return _activity == null ||
+        (isActivityCompleteOrNullForToken &&
+            ![MessageMode.wordEmoji, MessageMode.wordMorph].contains(mode)) ||
+        (MessageMode.wordMorph == mode && _activity?.morphFeature == null);
+  }
+
+  bool get _isSelected =>
+      controller.selectedMorph?.token == token &&
+      controller.selectedMorph?.morph == _activity?.morphFeature;
+
+  void _onMatch(PracticeChoice form) {
+    controller.onChoiceSelect(null);
+    controller.onMatch(token, form);
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (isActivityCompleteOrNullForToken || activity == null) {
-      if (MessageMode.wordEmoji == messageMode) {
-        return SizedBox(
-          height: height,
-          child: Text(
-            activity?.record.responses
-                    .firstWhereOrNull(
-                      (res) =>
-                          res.cId == token.vocabConstructID && res.isCorrect,
-                    )
-                    ?.text ??
-                token.vocabConstructID.userSetEmoji.firstOrNull ??
-                '',
-            style: _emojiStyle,
-          ),
-        );
-      }
-      if (MessageMode.wordMorph == messageMode && activity != null) {
-        final morphFeature = activity!.morphFeature!;
-        final morphTag = token.morphIdByFeature(morphFeature);
-        if (morphTag != null) {
-          return Tooltip(
-            message: getGrammarCopy(
-              category: morphFeature.toShortString(),
-              lemma: morphTag.lemma,
-              context: context,
-            ),
-            child: SizedBox(
-              width: 24.0,
-              child: Center(
-                child: MorphIcon(
-                  morphFeature: morphFeature,
-                  morphTag: morphTag.lemma,
-                ),
+    return ListenableBuilder(
+      listenable: controller,
+      builder: (context, _) {
+        final practiceMode = controller.practiceMode;
+
+        Widget child;
+        if (isActivityCompleteOrNullForToken || _activity == null) {
+          child = _NoActivityContentButton(
+            practiceMode: practiceMode,
+            token: token,
+            target: _activity,
+            emojiStyle: _emojiStyle,
+          );
+        } else if (practiceMode == MessageMode.wordMorph) {
+          child = _MorphMatchButton(
+            active: _isSelected,
+            textColor: textColor,
+            onTap: () => controller.onSelectMorph(
+              MorphSelection(
+                token,
+                _activity!.morphFeature!,
               ),
             ),
           );
+        } else {
+          child = _StandardMatchButton(
+            selectedChoice: controller.selectedChoice,
+            width: width,
+            borderColor: textColor,
+            onMatch: (choice) => _onMatch(choice),
+          );
         }
-      } else {
-        return SizedBox(height: height);
-      }
-    }
 
-    if (MessageMode.wordMorph == messageMode) {
-      if (activity?.morphFeature == null) {
-        return SizedBox(height: height);
-      }
-
-      return InkWell(
-        onHover: onHover,
-        onTap: onTap,
-        borderRadius: _borderRadius,
-        child: SizedBox(
-          height: height,
-          child: Opacity(
-            opacity: isSelected ? 1.0 : 0.6,
-            child: AnimatedBuilder(
-              animation: sizeAnimation,
-              builder: (context, child) {
-                return Icon(
-                  Symbols.toys_and_games,
-                  color: textColor,
-                  size: sizeAnimation.value, // Use the new animation
-                );
-              },
-            ),
+        return AnimatedSize(
+          duration: const Duration(
+            milliseconds: AppConfig.overlayAnimationDuration,
           ),
-        ),
-      );
-    }
+          curve: Curves.easeOut,
+          alignment: Alignment.bottomCenter,
+          child: _isEmpty
+              ? const SizedBox(height: 0)
+              : SizedBox(height: tokenButtonHeight, child: child),
+        );
+      },
+    );
+  }
+}
 
+class _StandardMatchButton extends StatelessWidget {
+  final PracticeChoice? selectedChoice;
+  final double width;
+  final Color borderColor;
+  final Function(PracticeChoice choice) onMatch;
+
+  const _StandardMatchButton({
+    required this.selectedChoice,
+    required this.width,
+    required this.borderColor,
+    required this.onMatch,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return DragTarget<PracticeChoice>(
       builder: (BuildContext context, accepted, rejected) {
         final double colorAlpha = 0.3 +
@@ -377,40 +148,136 @@ class MessageTokenButtonContent extends StatelessWidget {
             (accepted.isNotEmpty ? 0.3 : 0.0);
 
         final theme = Theme.of(context);
+        final borderRadius = BorderRadius.circular(AppConfig.borderRadius - 4);
 
-        return InkWell(
-          onTap: selectedChoice != null
-              ? () => onMatch?.call(selectedChoice!)
-              : null,
-          borderRadius: _borderRadius,
-          child: CustomPaint(
-            painter: DottedBorderPainter(
-              color: textColor.withAlpha((colorAlpha * 255).toInt()),
-              borderRadius: _borderRadius,
-            ),
-            child: Shimmer.fromColors(
-              enabled: selectedChoice != null,
-              baseColor: selectedChoice != null
-                  ? AppConfig.gold.withAlpha(20)
-                  : Colors.transparent,
-              highlightColor: selectedChoice != null
-                  ? AppConfig.gold.withAlpha(50)
-                  : Colors.transparent,
-              child: Container(
-                height: height,
-                padding: const EdgeInsets.only(top: 10.0),
-                width: max(width, 24.0),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surface,
-                  borderRadius: _borderRadius,
+        return Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            onTap:
+                selectedChoice != null ? () => onMatch(selectedChoice!) : null,
+            borderRadius: borderRadius,
+            child: CustomPaint(
+              painter: DottedBorderPainter(
+                color: borderColor.withAlpha((colorAlpha * 255).toInt()),
+                borderRadius: borderRadius,
+              ),
+              child: Shimmer.fromColors(
+                enabled: selectedChoice != null,
+                baseColor: selectedChoice != null
+                    ? AppConfig.gold.withAlpha(20)
+                    : Colors.transparent,
+                highlightColor: selectedChoice != null
+                    ? AppConfig.gold.withAlpha(50)
+                    : Colors.transparent,
+                child: Container(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  width: max(width, 24.0),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surface,
+                    borderRadius: borderRadius,
+                  ),
                 ),
               ),
             ),
           ),
         );
       },
-      onAcceptWithDetails: (details) => onMatch?.call(details.data),
+      onAcceptWithDetails: (details) => onMatch(details.data),
     );
+  }
+}
+
+class _MorphMatchButton extends StatelessWidget {
+  final Function()? onTap;
+  final bool active;
+  final Color textColor;
+
+  const _MorphMatchButton({
+    required this.active,
+    required this.textColor,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      child: HoverBuilder(
+        builder: (context, hovered) {
+          return InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(AppConfig.borderRadius - 4),
+            child: Opacity(
+              opacity: active ? 1.0 : 0.6,
+              child: AnimatedScale(
+                scale: hovered || active ? 1.25 : 1.0,
+                duration: FluffyThemes.animationDuration,
+                curve: FluffyThemes.animationCurve,
+                child: Icon(
+                  Symbols.toys_and_games,
+                  color: textColor,
+                  size: 24.0,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _NoActivityContentButton extends StatelessWidget {
+  final MessageMode practiceMode;
+  final PangeaToken token;
+  final PracticeTarget? target;
+  final TextStyle emojiStyle;
+
+  const _NoActivityContentButton({
+    required this.practiceMode,
+    required this.token,
+    required this.target,
+    required this.emojiStyle,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (practiceMode == MessageMode.wordEmoji) {
+      final displayEmoji = target?.record.responses
+              .firstWhereOrNull(
+                (res) => res.cId == token.vocabConstructID && res.isCorrect,
+              )
+              ?.text ??
+          token.vocabConstructID.userSetEmoji.firstOrNull ??
+          '';
+      return Text(
+        displayEmoji,
+        style: emojiStyle,
+      );
+    }
+    if (practiceMode == MessageMode.wordMorph && target != null) {
+      final morphFeature = target!.morphFeature!;
+      final morphTag = token.morphIdByFeature(morphFeature);
+      if (morphTag != null) {
+        return Tooltip(
+          message: getGrammarCopy(
+            category: morphFeature.toShortString(),
+            lemma: morphTag.lemma,
+            context: context,
+          ),
+          child: SizedBox(
+            width: 24.0,
+            child: Center(
+              child: MorphIcon(
+                morphFeature: morphFeature,
+                morphTag: morphTag.lemma,
+              ),
+            ),
+          ),
+        );
+      }
+    }
+    return const SizedBox();
   }
 }

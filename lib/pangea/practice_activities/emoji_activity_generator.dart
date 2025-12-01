@@ -7,7 +7,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
 
 class EmojiActivityGenerator {
-  Future<MessageActivityResponse> get(
+  static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
   ) async {
     if (req.targetTokens.length <= 1) {
@@ -17,7 +17,7 @@ class EmojiActivityGenerator {
     return _matchActivity(req);
   }
 
-  Future<MessageActivityResponse> _matchActivity(
+  static Future<MessageActivityResponse> _matchActivity(
     MessageActivityRequest req,
   ) async {
     final Map<ConstructForm, List<String>> matchInfo = {};

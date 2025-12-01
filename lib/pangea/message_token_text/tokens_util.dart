@@ -99,7 +99,9 @@ class TokensUtil {
 
     final List<PangeaTokenText> newTokens = [];
     for (final token in tokens) {
-      if (!token.lemma.saveVocab || !token.isContentWord) continue;
+      if (!token.lemma.saveVocab || !token.vocabConstructID.isContentWord) {
+        continue;
+      }
       if (token.vocabConstruct.uses.isNotEmpty) continue;
       if (newTokens.any((t) => t == token.text)) continue;
 

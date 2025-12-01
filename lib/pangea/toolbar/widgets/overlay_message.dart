@@ -41,6 +41,7 @@ class OverlayMessage extends StatelessWidget {
 
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
+  final String overlayKey;
 
   const OverlayMessage(
     this.event, {
@@ -49,6 +50,7 @@ class OverlayMessage extends StatelessWidget {
     required this.timeline,
     required this.messageWidth,
     required this.messageHeight,
+    required this.overlayKey,
     this.nextEvent,
     this.previousEvent,
     this.sizeAnimation,
@@ -274,6 +276,7 @@ class OverlayMessage extends StatelessWidget {
     );
 
     return Material(
+      key: MatrixState.pAnyState.layerLinkAndKey(overlayKey).key,
       type: MaterialType.transparency,
       child: Container(
         clipBehavior: Clip.antiAlias,

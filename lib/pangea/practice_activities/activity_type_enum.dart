@@ -11,23 +11,7 @@ enum ActivityTypeEnum {
   lemmaId,
   emoji,
   morphId,
-  messageMeaning, // TODO: Add to L10n
-}
-
-extension ActivityTypeExtension on ActivityTypeEnum {
-  bool get hiddenType {
-    switch (this) {
-      case ActivityTypeEnum.wordMeaning:
-      case ActivityTypeEnum.wordFocusListening:
-      case ActivityTypeEnum.lemmaId:
-      case ActivityTypeEnum.emoji:
-      case ActivityTypeEnum.morphId:
-      case ActivityTypeEnum.messageMeaning:
-        return false;
-      case ActivityTypeEnum.hiddenWordListening:
-        return true;
-    }
-  }
+  messageMeaning;
 
   bool get includeTTSOnClick {
     switch (this) {
@@ -172,25 +156,6 @@ extension ActivityTypeExtension on ActivityTypeEnum {
     }
   }
 
-  Widget? get contentChallengeWidget {
-    switch (this) {
-      case ActivityTypeEnum.wordMeaning:
-        return null;
-      case ActivityTypeEnum.wordFocusListening:
-        return null;
-      case ActivityTypeEnum.hiddenWordListening:
-        return null;
-      case ActivityTypeEnum.lemmaId:
-        return null;
-      case ActivityTypeEnum.emoji:
-        return null;
-      case ActivityTypeEnum.morphId:
-        return null;
-      case ActivityTypeEnum.messageMeaning:
-        return null; // TODO: Add to L10n
-    }
-  }
-
   /// The minimum number of tokens in a message for this activity type to be available.
   /// Matching activities don't make sense for a single-word message.
   int get minTokensForMatchActivity {
@@ -206,4 +171,11 @@ extension ActivityTypeExtension on ActivityTypeEnum {
         return 1;
     }
   }
+
+  static List<ActivityTypeEnum> get practiceTypes => [
+        ActivityTypeEnum.emoji,
+        ActivityTypeEnum.wordMeaning,
+        ActivityTypeEnum.wordFocusListening,
+        ActivityTypeEnum.morphId,
+      ];
 }

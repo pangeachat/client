@@ -14,7 +14,7 @@ import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_morph_choice_item.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_controller.dart';
 
 // this widget will handle the content of the input bar when mode == MessageMode.wordMorph
 
@@ -29,13 +29,17 @@ import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart
 const int numberOfMorphDistractors = 3;
 
 class MessageMorphInputBarContent extends StatefulWidget {
-  final MessageOverlayController overlayController;
+  final PracticeController controller;
   final PracticeActivityModel activity;
+  final PangeaToken? selectedToken;
+  final double maxWidth;
 
   const MessageMorphInputBarContent({
     super.key,
-    required this.overlayController,
+    required this.controller,
     required this.activity,
+    required this.selectedToken,
+    required this.maxWidth,
   });
 
   @override
@@ -47,25 +51,19 @@ class MessageMorphInputBarContentState
     extends State<MessageMorphInputBarContent> {
   String? selectedTag;
 
-  MessageOverlayController get overlay => widget.overlayController;
   PangeaToken get token => widget.activity.targetTokens.first;
   MorphFeaturesEnum get morph => widget.activity.morphFeature!;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   void didUpdateWidget(covariant MessageMorphInputBarContent oldWidget) {
-    if (morph != oldWidget.overlayController.selectedMorph?.morph ||
-        token != oldWidget.overlayController.selectedToken) {
+    final selected = widget.controller.selectedMorph?.morph;
+    if (morph != selected || token != oldWidget.selectedToken) {
       setState(() {});
     }
     super.didUpdateWidget(oldWidget);
   }
 
-  TextStyle? textStyle(BuildContext context) => overlay.maxWidth > 600
+  TextStyle? textStyle(BuildContext context) => widget.maxWidth > 600
       ? Theme.of(context).textTheme.bodyLarge?.copyWith(
             fontWeight: FontWeight.bold,
           )
@@ -75,14 +73,14 @@ class MessageMorphInputBarContentState
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = overlay.maxWidth > 600
+    final iconSize = widget.maxWidth > 600
         ? 28.0
-        : overlay.maxWidth > 600
+        : widget.maxWidth > 600
             ? 24.0
             : 16.0;
-    final spacing = overlay.maxWidth > 600
+    final spacing = widget.maxWidth > 600
         ? 16.0
-        : overlay.maxWidth > 600
+        : widget.maxWidth > 600
             ? 8.0
             : 4.0;
 
@@ -132,7 +130,7 @@ class MessageMorphInputBarContentState
                   ),
                   onTap: () {
                     setState(() => selectedTag = choice);
-                    widget.overlayController.onMatch(
+                    widget.controller.onMatch(
                       token,
                       PracticeChoice(
                         choiceContent: choice,
@@ -156,13 +154,13 @@ class MessageMorphInputBarContentState
         if (selectedTag != null)
           Container(
             constraints: BoxConstraints(
-              minHeight: overlay.maxWidth > 600 ? 20 : 34,
+              minHeight: widget.maxWidth > 600 ? 20 : 34,
             ),
             alignment: Alignment.center,
             child: MorphMeaningWidget(
               feature: morph,
               tag: selectedTag!,
-              style: overlay.maxWidth > 600
+              style: widget.maxWidth > 600
                   ? Theme.of(context).textTheme.bodyLarge
                   : Theme.of(context).textTheme.bodySmall,
             ),

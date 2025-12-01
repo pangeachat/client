@@ -1,9 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -13,14 +11,13 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaActivityGenerator {
-  Future<MessageActivityResponse> get(
+  static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
-    BuildContext context,
   ) async {
     debugger(when: kDebugMode && req.targetTokens.length != 1);
 
     final token = req.targetTokens.first;
-    final List<String> choices = await lemmaActivityDistractors(token);
+    final choices = await _lemmaActivityDistractors(token);
 
     // TODO - modify MultipleChoiceActivity flow to allow no correct answer
     return MessageActivityResponse(
@@ -29,16 +26,16 @@ class LemmaActivityGenerator {
         targetTokens: [token],
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
-          question: L10n.of(context).chooseBaseForm,
           choices: choices,
-          answers: [token.lemma.text],
-          spanDisplayDetails: null,
+          answers: {token.lemma.text},
         ),
       ),
     );
   }
 
-  Future<List<String>> lemmaActivityDistractors(PangeaToken token) async {
+  static Future<Set<String>> _lemmaActivityDistractors(
+    PangeaToken token,
+  ) async {
     final List<String> lemmas = MatrixState
         .pangeaController.getAnalytics.constructListModel
         .constructList(type: ConstructTypeEnum.vocab)
@@ -58,32 +55,33 @@ class LemmaActivityGenerator {
       ..sort((a, b) => distances[a]!.compareTo(distances[b]!));
 
     // Take the shortest 4
-    final choices = sortedLemmas.take(4).toList();
+    final choices = sortedLemmas.take(4).toSet();
     if (choices.isEmpty) {
-      return [token.lemma.text];
+      return {token.lemma.text};
     }
 
     if (!choices.contains(token.lemma.text)) {
       choices.add(token.lemma.text);
-      choices.shuffle();
     }
     return choices;
   }
 
   // isolate helper function
-  Map<String, int> _computeDistancesInIsolate(Map<String, dynamic> params) {
+  static Map<String, int> _computeDistancesInIsolate(
+    Map<String, dynamic> params,
+  ) {
     final List<String> lemmas = params['lemmas'];
     final String target = params['target'];
 
     // Calculate Levenshtein distances
     final Map<String, int> distances = {};
     for (final lemma in lemmas) {
-      distances[lemma] = levenshteinDistanceSync(target, lemma);
+      distances[lemma] = _levenshteinDistanceSync(target, lemma);
     }
     return distances;
   }
 
-  int levenshteinDistanceSync(String s, String t) {
+  static int _levenshteinDistanceSync(String s, String t) {
     final int m = s.length;
     final int n = t.length;
     final List<List<int>> dp = List.generate(

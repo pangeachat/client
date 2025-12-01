@@ -13,16 +13,16 @@ import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/practice_match_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_controller.dart';
 
 class MatchActivityCard extends StatelessWidget {
   final PracticeActivityModel currentActivity;
-  final MessageOverlayController overlayController;
+  final PracticeController controller;
 
   const MatchActivityCard({
     super.key,
     required this.currentActivity,
-    required this.overlayController,
+    required this.controller,
   });
 
   PracticeActivityModel get activity => currentActivity;
@@ -59,8 +59,8 @@ class MatchActivityCard extends StatelessWidget {
             : Theme.of(context).textTheme.titleMedium?.fontSize) ??
         26;
 
-    if (overlayController.toolbarMode == MessageMode.listening ||
-        overlayController.toolbarMode == MessageMode.wordEmoji) {
+    final mode = controller.practiceMode;
+    if (mode == MessageMode.listening || mode == MessageMode.wordEmoji) {
       fontSize = fontSize * 1.5;
     }
 
@@ -69,10 +69,8 @@ class MatchActivityCard extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       spacing: 4.0,
       children: [
-        if (overlayController.toolbarMode == MessageMode.listening)
-          MessageAudioCard(
-            overlayController: overlayController,
-          ),
+        if (mode == MessageMode.listening)
+          MessageAudioCard(messageEvent: controller.pangeaMessageEvent),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 4.0,
@@ -82,13 +80,13 @@ class MatchActivityCard extends StatelessWidget {
               final bool? wasCorrect =
                   currentActivity.practiceTarget.wasCorrectMatch(cf);
               return ChoiceAnimationWidget(
-                isSelected: overlayController.selectedChoice == cf,
+                isSelected: controller.selectedChoice == cf,
                 isCorrect: wasCorrect,
                 child: PracticeMatchItem(
                   token: currentActivity.practiceTarget.tokens.firstWhereOrNull(
                     (t) => t.vocabConstructID == cf.form.cId,
                   ),
-                  isSelected: overlayController.selectedChoice == cf,
+                  isSelected: controller.selectedChoice == cf,
                   isCorrect: wasCorrect,
                   constructForm: cf,
                   content: choiceDisplayContent(cf.choiceContent, fontSize),
@@ -96,7 +94,7 @@ class MatchActivityCard extends StatelessWidget {
                       activityType == ActivityTypeEnum.wordFocusListening
                           ? cf.choiceContent
                           : null,
-                  overlayController: overlayController,
+                  controller: controller,
                 ),
               );
             },

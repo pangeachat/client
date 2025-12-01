@@ -14,7 +14,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
@@ -35,7 +34,6 @@ class AudioPlayerWidget extends StatefulWidget {
   final String roomId;
   final String senderId;
   final PangeaAudioFile? matrixFile;
-  final ChatController chatController;
   final MessageOverlayController? overlayController;
   final bool autoplay;
   // Pangea#
@@ -52,7 +50,6 @@ class AudioPlayerWidget extends StatefulWidget {
     required this.roomId,
     required this.senderId,
     this.matrixFile,
-    required this.chatController,
     this.overlayController,
     this.autoplay = false,
     // Pangea#

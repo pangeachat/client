@@ -8,10 +8,18 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PracticeMatchItem extends StatefulWidget {
+  final Widget content;
+  final PangeaToken? token;
+  final PracticeChoice constructForm;
+  final String? audioContent;
+  final PracticeController controller;
+  final bool? isCorrect;
+  final bool isSelected;
+
   const PracticeMatchItem({
     super.key,
     required this.content,
@@ -20,16 +28,8 @@ class PracticeMatchItem extends StatefulWidget {
     required this.isCorrect,
     required this.isSelected,
     this.audioContent,
-    required this.overlayController,
+    required this.controller,
   });
-
-  final Widget content;
-  final PangeaToken? token;
-  final PracticeChoice constructForm;
-  final String? audioContent;
-  final MessageOverlayController overlayController;
-  final bool? isCorrect;
-  final bool isSelected;
 
   @override
   PracticeMatchItemState createState() => PracticeMatchItemState();
@@ -110,9 +110,9 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   void onTap() {
     play();
-    isCorrect == null || !isCorrect! || widget.token == null
-        ? widget.overlayController.onChoiceSelect(widget.constructForm)
-        : widget.overlayController.updateSelectedSpan(widget.token!.text);
+    if (isCorrect == null || !isCorrect! || widget.token == null) {
+      widget.controller.onChoiceSelect(widget.constructForm);
+    }
   }
 
   @override

@@ -1,112 +1,211 @@
-import 'package:flutter/material.dart';
-
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+class _PracticeSelectionCacheEntry {
+  final PracticeSelection selection;
+  final DateTime timestamp;
+
+  _PracticeSelectionCacheEntry({
+    required this.selection,
+    required this.timestamp,
+  });
+
+  bool get isExpired => DateTime.now().difference(timestamp).inDays > 1;
+
+  Map<String, dynamic> toJson() => {
+        'selection': selection.toJson(),
+        'timestamp': timestamp.toIso8601String(),
+      };
+
+  factory _PracticeSelectionCacheEntry.fromJson(Map<String, dynamic> json) {
+    return _PracticeSelectionCacheEntry(
+      selection: PracticeSelection.fromJson(json['selection']),
+      timestamp: DateTime.parse(json['timestamp']),
+    );
+  }
+}
 
 class PracticeSelectionRepo {
   static final GetStorage _storage = GetStorage('practice_selection_cache');
-  static final Map<String, PracticeSelection> _memoryCache = {};
-  static const int _maxMemoryCacheSize = 50;
-
-  void dispose() {
-    _storage.erase();
-    _memoryCache.clear();
-  }
-
-  static void save(PracticeSelection entry) {
-    final key = _key(entry.tokens);
-    _storage.write(key, entry.toJson());
-    _memoryCache[key] = entry;
-  }
-
-  static MapEntry<String, PracticeSelection>? _parsePracticeSelection(
-    String key,
-  ) {
-    if (!_storage.hasData(key)) {
-      return null;
-    }
-    try {
-      final entry = PracticeSelection.fromJson(_storage.read(key));
-      return MapEntry(key, entry);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        m: 'Failed to parse PracticeSelection from JSON',
-        e: e,
-        s: s,
-        data: {
-          'key': key,
-          'json': _storage.read(key),
-        },
-      );
-      _storage.remove(key);
-      return null;
-    }
-  }
-
-  static void clean() {
-    final keys = _storage.getKeys();
-    if (keys.length > 300) {
-      final entries = keys
-          .map((key) => _parsePracticeSelection(key))
-          .where((entry) => entry != null)
-          .cast<MapEntry<String, PracticeSelection>>()
-          .toList()
-        ..sort((a, b) => a.value.createdAt.compareTo(b.value.createdAt));
-      for (var i = 0; i < 5 && i < entries.length; i++) {
-        _storage.remove(entries[i].key);
-      }
-    }
-    if (_memoryCache.length > _maxMemoryCacheSize) {
-      _memoryCache.remove(_memoryCache.keys.first);
-    }
-  }
-
-  static String _key(List<PangeaToken> tokens) =>
-      tokens.map((t) => t.text.content).join(' ');
 
   static PracticeSelection? get(
+    String eventId,
     String messageLanguage,
     List<PangeaToken> tokens,
   ) {
     final userL2 = MatrixState.pangeaController.languageController.userL2;
-    final String key = _key(tokens);
-    if (_memoryCache.containsKey(key)) {
-      final entry = _memoryCache[key];
-      return entry?.langCode.split("-").first == userL2?.langCodeShort
-          ? entry
-          : null;
+    if (userL2?.langCodeShort != messageLanguage.split("-").first) {
+      return null;
     }
 
-    final stored = _parsePracticeSelection(key);
-    if (stored != null) {
-      final entry = stored.value;
-      if (DateTime.now().difference(entry.createdAt).inDays > 1) {
-        debugPrint('removing old entry ${entry.createdAt}');
+    final cached = _getCached(eventId);
+    if (cached != null) return cached;
+
+    final newEntry = _fetch(
+      tokens: tokens,
+      langCode: messageLanguage,
+    );
+
+    _setCached(eventId, newEntry);
+    return newEntry;
+  }
+
+  static PracticeSelection _fetch({
+    required List<PangeaToken> tokens,
+    required String langCode,
+  }) {
+    if (langCode.split("-")[0] !=
+        MatrixState.pangeaController.languageController.userL2?.langCodeShort) {
+      return PracticeSelection({});
+    }
+
+    final eligibleTokens = tokens.where((t) => t.lemma.saveVocab).toList();
+    if (eligibleTokens.isEmpty) {
+      return PracticeSelection({});
+    }
+    final queue = _fillActivityQueue(eligibleTokens);
+    final selection = PracticeSelection(queue);
+    return selection;
+  }
+
+  static PracticeSelection? _getCached(
+    String eventId,
+  ) {
+    for (final String key in _storage.getKeys()) {
+      try {
+        final cacheEntry = _PracticeSelectionCacheEntry.fromJson(
+          _storage.read(key),
+        );
+        if (cacheEntry.isExpired) {
+          _storage.remove(key);
+        }
+      } catch (e) {
         _storage.remove(key);
-      } else {
-        _memoryCache[key] = entry;
-        return entry.langCode.split("-").first == userL2?.langCodeShort
-            ? entry
-            : null;
       }
     }
 
-    final newEntry = PracticeSelection(
-      langCode: messageLanguage,
-      tokens: tokens,
+    final entry = _storage.read(eventId);
+    if (entry == null) return null;
+
+    try {
+      return _PracticeSelectionCacheEntry.fromJson(
+        _storage.read(eventId),
+      ).selection;
+    } catch (e) {
+      _storage.remove(eventId);
+      return null;
+    }
+  }
+
+  static void _setCached(
+    String eventId,
+    PracticeSelection entry,
+  ) {
+    final cachedEntry = _PracticeSelectionCacheEntry(
+      selection: entry,
+      timestamp: DateTime.now(),
+    );
+    _storage.write(eventId, cachedEntry.toJson());
+  }
+
+  static Map<ActivityTypeEnum, List<PracticeTarget>> _fillActivityQueue(
+    List<PangeaToken> tokens,
+  ) {
+    final queue = <ActivityTypeEnum, List<PracticeTarget>>{};
+    for (final type in ActivityTypeEnum.practiceTypes) {
+      queue[type] = _buildActivity(type, tokens);
+    }
+    return queue;
+  }
+
+  static int _sortTokens(
+    PangeaToken a,
+    PangeaToken b,
+    ActivityTypeEnum activityType,
+  ) {
+    final bScore = b.activityPriorityScore(activityType, null);
+    final aScore = a.activityPriorityScore(activityType, null);
+    return bScore.compareTo(aScore);
+  }
+
+  static int _sortMorphTargets(PracticeTarget a, PracticeTarget b) {
+    final bScore = b.tokens.first.activityPriorityScore(
+      ActivityTypeEnum.morphId,
+      b.morphFeature!,
     );
 
-    _storage.write(key, newEntry.toJson());
-    _memoryCache[key] = newEntry;
+    final aScore = a.tokens.first.activityPriorityScore(
+      ActivityTypeEnum.morphId,
+      a.morphFeature!,
+    );
 
-    clean();
+    return bScore.compareTo(aScore);
+  }
 
-    return newEntry.langCode.split("-").first == userL2?.langCodeShort
-        ? newEntry
-        : null;
+  static List<PracticeTarget> _tokenToMorphTargets(PangeaToken t) {
+    return t.morphsBasicallyEligibleForPracticeByPriority
+        .map(
+          (m) => PracticeTarget(
+            tokens: [t],
+            activityType: ActivityTypeEnum.morphId,
+            morphFeature: MorphFeaturesEnumExtension.fromString(m.category),
+          ),
+        )
+        .toList();
+  }
+
+  static List<PracticeTarget> _buildActivity(
+    ActivityTypeEnum activityType,
+    List<PangeaToken> tokens,
+  ) {
+    if (activityType == ActivityTypeEnum.morphId) {
+      return _buildMorphActivity(tokens);
+    }
+
+    List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
+    final seenTexts = <String>{};
+    final seenLemmas = <String>{};
+    practiceTokens.retainWhere(
+      (token) =>
+          token.eligibleForPractice(activityType) &&
+          seenTexts.add(token.text.content.toLowerCase()) &&
+          seenLemmas.add(token.lemma.text.toLowerCase()),
+    );
+
+    if (practiceTokens.length < activityType.minTokensForMatchActivity) {
+      return [];
+    }
+
+    practiceTokens.sort((a, b) => _sortTokens(a, b, activityType));
+    practiceTokens = practiceTokens.take(8).toList();
+    practiceTokens.shuffle();
+
+    return [
+      PracticeTarget(
+        activityType: activityType,
+        tokens: practiceTokens.take(PracticeSelection.maxQueueLength).toList(),
+      ),
+    ];
+  }
+
+  static List<PracticeTarget> _buildMorphActivity(List<PangeaToken> tokens) {
+    final List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
+    final candidates = practiceTokens.expand(_tokenToMorphTargets).toList();
+    candidates.sort(_sortMorphTargets);
+
+    final seenTexts = <String>{};
+    final seenLemmas = <String>{};
+    candidates.retainWhere(
+      (target) =>
+          seenTexts.add(target.tokens.first.text.content.toLowerCase()) &&
+          seenLemmas.add(target.tokens.first.lemma.text.toLowerCase()),
+    );
+    return candidates.take(PracticeSelection.maxQueueLength).toList();
   }
 }

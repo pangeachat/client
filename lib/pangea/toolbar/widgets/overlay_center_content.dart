@@ -29,10 +29,11 @@ class OverlayCenterContent extends StatelessWidget {
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
 
-  final LabeledGlobalKey? overlayKey;
+  final String overlayKey;
 
   const OverlayCenterContent({
     required this.event,
+    required this.overlayKey,
     this.messageHeight,
     this.messageWidth,
     required this.overlayController,
@@ -44,7 +45,6 @@ class OverlayCenterContent extends StatelessWidget {
     this.sizeAnimation,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
-    this.overlayKey,
     super.key,
   });
 
@@ -69,7 +69,7 @@ class OverlayCenterContent extends StatelessWidget {
               MeasureRenderBox(
                 onChange: onChangeMessageSize,
                 child: OverlayMessage(
-                  key: overlayKey,
+                  overlayKey: overlayKey,
                   event,
                   controller: chatController,
                   overlayController: overlayController,

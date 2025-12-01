@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -21,16 +19,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 // TODO - make this static and take it out of the _pangeaController
 // will need to pass accessToken to the requests
-class MessageDataController extends BaseController {
-  late PangeaController _pangeaController;
-
-  MessageDataController(PangeaController pangeaController) {
-    _pangeaController = pangeaController;
-  }
-
+class MessageDataController {
   /// get tokens from the server
   /// if repEventId is not null, send the tokens to the room
-  Future<Result<TokensResponseModel>> getTokens({
+  static Future<Result<TokensResponseModel>> getTokens({
     required String? repEventId,
     required TokensRequestModel req,
     required Room? room,
@@ -67,18 +59,18 @@ class MessageDataController extends BaseController {
   /// if in cache, return from cache
   /// if not in cache, get from server
   /// send the translation to the room as a representation event
-  Future<PangeaRepresentation> getPangeaRepresentation({
+  static Future<PangeaRepresentation> getPangeaRepresentation({
     required FullTextTranslationRequestModel req,
     required Event messageEvent,
   }) =>
       _getPangeaRepresentation(req: req, messageEvent: messageEvent);
 
-  Future<PangeaRepresentation> _getPangeaRepresentation({
+  static Future<PangeaRepresentation> _getPangeaRepresentation({
     required FullTextTranslationRequestModel req,
     required Event messageEvent,
   }) async {
     final res = await FullTextTranslationRepo.get(
-      _pangeaController.userController.accessToken,
+      MatrixState.pangeaController.userController.accessToken,
       req,
     );
 
@@ -111,13 +103,13 @@ class MessageDataController extends BaseController {
     return rep;
   }
 
-  Future<String?> getPangeaRepresentationEvent({
+  static Future<String?> getPangeaRepresentationEvent({
     required FullTextTranslationRequestModel req,
     required PangeaMessageEvent messageEvent,
     bool originalSent = false,
   }) async {
     final res = await FullTextTranslationRepo.get(
-      _pangeaController.userController.accessToken,
+      MatrixState.pangeaController.userController.accessToken,
       req,
     );
 
@@ -154,7 +146,7 @@ class MessageDataController extends BaseController {
     }
   }
 
-  Future<SttTranslationModel> getSttTranslation({
+  static Future<SttTranslationModel> getSttTranslation({
     required String? repEventId,
     required FullTextTranslationRequestModel req,
     required Room? room,
@@ -165,13 +157,13 @@ class MessageDataController extends BaseController {
         room: room,
       );
 
-  Future<SttTranslationModel> _getSttTranslation({
+  static Future<SttTranslationModel> _getSttTranslation({
     required String? repEventId,
     required FullTextTranslationRequestModel req,
     required Room? room,
   }) async {
     final res = await FullTextTranslationRepo.get(
-      _pangeaController.userController.accessToken,
+      MatrixState.pangeaController.userController.accessToken,
       req,
     );
 

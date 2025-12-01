@@ -10,8 +10,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
@@ -19,12 +19,9 @@ import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
-import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
@@ -562,8 +559,7 @@ class PangeaMessageEvent {
     // clear representations cache so the new representation event can be added when next requested
     _representations = null;
 
-    return MatrixState.pangeaController.messageData
-        .getPangeaRepresentationEvent(
+    return MessageDataController.getPangeaRepresentationEvent(
       req: FullTextTranslationRequestModel(
         text: originalSent?.content.text ?? _latestEdit.body,
         srcLang: originalSent?.langCode,
@@ -607,7 +603,7 @@ class PangeaMessageEvent {
 
     // clear representations cache so the new representation event can be added when next requested
     _representations = null;
-    return MatrixState.pangeaController.messageData.getPangeaRepresentation(
+    return MessageDataController.getPangeaRepresentation(
       req: FullTextTranslationRequestModel(
         text: includedIT ? originalWrittenContent : messageDisplayText,
         srcLang: srcLang,
@@ -642,11 +638,6 @@ class PangeaMessageEvent {
   String? get l1Code =>
       MatrixState.pangeaController.languageController.userL1?.langCode;
 
-  /// Should almost always be true. Useful in the case that the message
-  /// display rep has the langCode "unk"
-  bool get messageDisplayLangIsL2 =>
-      messageDisplayLangCode.split("-")[0] == l2Code?.split("-")[0];
-
   String get messageDisplayLangCode {
     if (isAudioMessage) {
       final stt = getSpeechToTextLocal();
@@ -671,67 +662,6 @@ class PangeaMessageEvent {
   /// If the message display text is not available for the current language code,
   /// it returns the message body.
   String get messageDisplayText => messageDisplayRepresentation?.text ?? body;
-
-  /// Returns a list of all [PracticeActivityEvent] objects
-  /// associated with this message event.
-  List<PracticeActivityEvent> get _practiceActivityEvents {
-    final List<Event> events = _latestEdit
-        .aggregatedEvents(
-          timeline,
-          PangeaEventTypes.pangeaActivity,
-        )
-        .where((event) => !event.redacted)
-        .toList();
-
-    final List<PracticeActivityEvent> practiceEvents = [];
-    for (final event in events) {
-      try {
-        practiceEvents.add(
-          PracticeActivityEvent(
-            timeline: timeline,
-            event: event,
-          ),
-        );
-      } catch (e, s) {
-        ErrorHandler.logError(e: e, s: s, data: event.toJson());
-      }
-    }
-    return practiceEvents;
-  }
-
-  /// Returns a list of [PracticeActivityEvent] objects for the given [langCode].
-  List<PracticeActivityEvent> practiceActivitiesByLangCode(
-    String langCode, {
-    bool debug = false,
-  }) =>
-      _practiceActivityEvents
-          .where(
-            (event) =>
-                event.practiceActivity.langCode.split("-")[0] ==
-                langCode.split("")[0],
-          )
-          .toList();
-
-  /// Returns a list of [PracticeActivityEvent] for the user's active l2.
-  List<PracticeActivityEvent> get practiceActivities =>
-      l2Code == null ? [] : practiceActivitiesByLangCode(l2Code!);
-
-  bool shouldDoActivity({
-    required PangeaToken? token,
-    required ActivityTypeEnum a,
-    required MorphFeaturesEnum? feature,
-    required String? tag,
-  }) {
-    if (!messageDisplayLangIsL2 || token == null) {
-      return false;
-    }
-
-    return token.shouldDoActivity(
-      a: a,
-      feature: feature,
-      tag: tag,
-    );
-  }
 
   TextDirection get textDirection =>
       PLanguageStore.rtlLanguageCodes.contains(messageDisplayLangCode)

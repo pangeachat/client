@@ -68,11 +68,8 @@ class OverMessageOverlay extends StatelessWidget {
                         hasReactions: controller.hasReactions,
                         isTransitionAnimation: true,
                         readingAssistanceMode: controller.readingAssistanceMode,
-                        overlayKey: MatrixState.pAnyState
-                            .layerLinkAndKey(
-                              'overlay_message_${controller.widget.event.eventId}',
-                            )
-                            .key,
+                        overlayKey:
+                            'overlay_message_${controller.widget.event.eventId}',
                       );
                     },
                   ),
