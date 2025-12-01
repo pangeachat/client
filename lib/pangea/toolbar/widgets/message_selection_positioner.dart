@@ -55,8 +55,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   ScrollController? scrollController;
 
-  bool finishedTransition = false;
-  bool _startedTransition = false;
+  ValueNotifier<bool> finishedTransition = ValueNotifier(false);
+  final ValueNotifier<bool> _startedTransition = ValueNotifier(false);
 
   ReadingAssistanceMode readingAssistanceMode =
       ReadingAssistanceMode.selectMode;
@@ -355,19 +355,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   void onStartedTransition() {
-    if (mounted) {
-      setState(() {
-        _startedTransition = true;
-      });
-    }
+    if (mounted) _startedTransition.value = true;
   }
 
   void onFinishedTransition() {
-    if (mounted) {
-      setState(() {
-        finishedTransition = true;
-      });
-    }
+    if (mounted) finishedTransition.value = true;
   }
 
   void launchPractice(ReadingAssistanceMode mode) {
@@ -402,21 +394,30 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                   alignment:
                       ownMessage ? Alignment.centerRight : Alignment.centerLeft,
                   children: [
-                    if (!_startedTransition) ...[
-                      OverMessageOverlay(controller: this),
-                      if (shouldScroll)
-                        Positioned(
-                          top: 0,
-                          left: _wordCardLeftOffset,
-                          right: messageRightOffset,
-                          child: WordCardSwitcher(controller: this),
-                        ),
-                    ],
+                    ValueListenableBuilder(
+                      valueListenable: _startedTransition,
+                      builder: (context, started, __) {
+                        return !started
+                            ? OverMessageOverlay(controller: this)
+                            : const SizedBox();
+                      },
+                    ),
+                    ValueListenableBuilder(
+                      valueListenable: _startedTransition,
+                      builder: (context, started, __) {
+                        return !started && shouldScroll
+                            ? Positioned(
+                                top: 0,
+                                left: _wordCardLeftOffset,
+                                right: messageRightOffset,
+                                child: WordCardSwitcher(controller: this),
+                              )
+                            : const SizedBox();
+                      },
+                    ),
                     if (readingAssistanceMode ==
                         ReadingAssistanceMode.practiceMode) ...[
                       CenteredMessage(
-                        targetId:
-                            "overlay_center_message_${widget.event.eventId}",
                         controller: this,
                       ),
                       PracticeModeTransitionAnimation(
@@ -429,7 +430,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                         right: 0,
                         bottom: 20,
                         child: ReadingAssistanceInputBar(
-                          widget.overlayController,
+                          widget.overlayController.practiceController,
+                          maxWidth: widget.overlayController.maxWidth,
+                          selectedToken: widget.overlayController.selectedToken,
                         ),
                       ),
                     ],

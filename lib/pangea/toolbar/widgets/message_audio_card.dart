@@ -12,15 +12,14 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 
 class MessageAudioCard extends StatefulWidget {
-  final MessageOverlayController overlayController;
+  final PangeaMessageEvent messageEvent;
   final VoidCallback? onError;
 
   const MessageAudioCard({
     super.key,
-    required this.overlayController,
+    required this.messageEvent,
     this.onError,
   });
 
@@ -38,24 +37,21 @@ class MessageAudioCardState extends State<MessageAudioCard> {
     fetchAudio();
   }
 
-  PangeaMessageEvent get messageEvent =>
-      widget.overlayController.pangeaMessageEvent;
-
   Future<void> fetchAudio() async {
     if (!mounted) return;
     setState(() => _isLoading = true);
 
     try {
-      final String langCode = messageEvent.messageDisplayLangCode;
-      final Event? localEvent = messageEvent.getTextToSpeechLocal(
+      final String langCode = widget.messageEvent.messageDisplayLangCode;
+      final Event? localEvent = widget.messageEvent.getTextToSpeechLocal(
         langCode,
-        messageEvent.messageDisplayText,
+        widget.messageEvent.messageDisplayText,
       );
 
       if (localEvent != null) {
         audioFile = await localEvent.getPangeaAudioFile();
       } else {
-        audioFile = await messageEvent.getMatrixAudioFile(
+        audioFile = await widget.messageEvent.getMatrixAudioFile(
           langCode,
         );
       }
@@ -70,7 +66,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
         m: 'something wrong getting audio in MessageAudioCardState',
         data: {
           'widget.messageEvent.messageDisplayLangCode':
-              messageEvent.messageDisplayLangCode,
+              widget.messageEvent.messageDisplayLangCode,
         },
       );
       if (mounted) setState(() => _isLoading = false);
@@ -84,14 +80,12 @@ class MessageAudioCardState extends State<MessageAudioCard> {
         : audioFile != null
             ? AudioPlayerWidget(
                 null,
-                eventId: "${messageEvent.eventId}_practice",
-                roomId: messageEvent.room.id,
-                senderId: messageEvent.senderId,
+                eventId: "${widget.messageEvent.eventId}_practice",
+                roomId: widget.messageEvent.room.id,
+                senderId: widget.messageEvent.senderId,
                 matrixFile: audioFile,
                 color: Theme.of(context).colorScheme.onPrimaryContainer,
                 fontSize: AppConfig.messageFontSize * AppConfig.fontSizeFactor,
-                chatController: widget.overlayController.widget.chatController,
-                overlayController: widget.overlayController,
                 linkColor: Theme.of(context).brightness == Brightness.light
                     ? Theme.of(context).colorScheme.primary
                     : Theme.of(context).colorScheme.onPrimary,

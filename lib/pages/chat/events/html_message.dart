@@ -449,10 +449,12 @@ class HtmlMessage extends StatelessWidget {
                           overlayController!.showTokenEmojiPopup(token),
                       selectModeNotifier: overlayController!.selectedMode,
                     ),
-                  if (renderer.showCenterStyling && token != null)
+                  if (renderer.showCenterStyling &&
+                      token != null &&
+                      overlayController != null)
                     TokenPracticeButton(
                       token: token,
-                      overlayController: overlayController,
+                      controller: overlayController!.practiceController,
                       textStyle: renderer.style(
                         context,
                         color: renderer.backgroundColor(
@@ -465,7 +467,6 @@ class HtmlMessage extends StatelessWidget {
                         ),
                       ),
                       width: tokenWidth,
-                      animateIn: isTransitionAnimation,
                       textColor: textColor,
                     ),
                   CompositedTransformTarget(

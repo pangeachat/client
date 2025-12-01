@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_choreo_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
@@ -112,7 +113,7 @@ class RepresentationEvent {
         ),
       );
     }
-    final res = await MatrixState.pangeaController.messageData.getTokens(
+    final res = await MessageDataController.getTokens(
       repEventId: _event?.eventId,
       room: _event?.room ?? parentMessageEvent.room,
       req: TokensRequestModel(
@@ -151,7 +152,7 @@ class RepresentationEvent {
       return;
     }
 
-    await MatrixState.pangeaController.messageData.getTokens(
+    await MessageDataController.getTokens(
       repEventId: repEventID,
       room: room,
       req: TokensRequestModel(
@@ -216,7 +217,7 @@ class RepresentationEvent {
     final local = sttTranslations.firstWhereOrNull((t) => t.langCode == userL1);
     if (local != null) return local;
 
-    return MatrixState.pangeaController.messageData.getSttTranslation(
+    return MessageDataController.getSttTranslation(
       repEventId: _event?.eventId,
       room: _event?.room,
       req: FullTextTranslationRequestModel(

@@ -463,7 +463,7 @@ class PangeaToken {
     }
   }
 
-  List<String> morphActivityDistractors(
+  Set<String> morphActivityDistractors(
     MorphFeaturesEnum morphFeature,
     String morphTag,
   ) {
@@ -477,30 +477,7 @@ class PangeaToken {
         .toList();
 
     possibleDistractors.shuffle();
-    return possibleDistractors.take(numberOfMorphDistractors).toList();
-  }
-
-  /// initial default input mode for a token
-  MessageMode get modeForToken {
-    // if (getEmoji() == null) {
-    //   return MessageMode.wordEmoji;
-    // }
-
-    if (shouldDoActivity(
-      a: ActivityTypeEnum.wordMeaning,
-      feature: null,
-      tag: null,
-    )) {
-      return MessageMode.wordMeaning;
-    }
-
-    // final String? morph = nextMorphFeatureEligibleForActivity;
-    // if (morph != null) {
-    //   debugPrint("should do morph activity for ${text.content}");
-    //   return MessageMode.wordMorph;
-    // }
-
-    return MessageMode.wordZoom;
+    return possibleDistractors.take(numberOfMorphDistractors).toSet();
   }
 
   List<MorphFeaturesEnum> get allMorphFeatures => morph.keys.toList();
