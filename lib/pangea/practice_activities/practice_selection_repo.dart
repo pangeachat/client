@@ -173,6 +173,7 @@ class PracticeSelectionRepo {
     final seenLemmas = <String>{};
     practiceTokens.retainWhere(
       (token) =>
+          token.eligibleForPractice(activityType) &&
           seenTexts.add(token.text.content.toLowerCase()) &&
           seenLemmas.add(token.lemma.text.toLowerCase()),
     );

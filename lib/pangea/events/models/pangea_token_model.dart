@@ -281,5 +281,14 @@ class PangeaToken {
         (vocabConstructID.isContentWord ? 10 : 9);
   }
 
+  bool eligibleForPractice(ActivityTypeEnum activityType) {
+    switch (activityType) {
+      case ActivityTypeEnum.emoji:
+        return lemma.saveVocab && vocabConstructID.isContentWord;
+      default:
+        return lemma.saveVocab;
+    }
+  }
+
   String get uniqueId => "${text.content}::${text.offset}";
 }
