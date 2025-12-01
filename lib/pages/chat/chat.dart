@@ -31,7 +31,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
@@ -469,21 +468,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
-    if (update.targetID == null) return;
-    OverlayUtil.showOverlay(
-      overlayKey: "${update.targetID ?? ""}_points",
-      followerAnchor: Alignment.bottomCenter,
-      targetAnchor: Alignment.bottomCenter,
-      context: context,
-      child: PointsGainedAnimation(
-        points: update.points,
-        targetID: update.targetID!,
-      ),
-      transformTargetId: update.targetID ?? "",
-      closePrevOverlay: false,
-      backDropToDismiss: false,
-      ignorePointer: true,
-    );
+    if (update.targetID != null) {
+      OverlayUtil.showPointsGained(update.targetID!, context);
+    }
   }
 
   Future<void> _botAudioListener(SyncUpdate update) async {

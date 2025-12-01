@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_emoji_picker.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class TokenEmojiButton extends StatefulWidget {
   final ValueNotifier<SelectMode?> selectModeNotifier;
-  final bool enabled;
-  final String? emoji;
+  final ValueNotifier<PangeaToken?> selectedTokenNotifier;
+
+  final PangeaToken? token;
   final String? targetId;
-  final VoidCallback? onSelect;
+  final bool enabled;
 
   const TokenEmojiButton({
     super.key,
     required this.selectModeNotifier,
-    this.enabled = true,
-    this.emoji,
+    required this.selectedTokenNotifier,
+    this.token,
     this.targetId,
-    this.onSelect,
+    this.enabled = true,
   });
 
   @override
@@ -37,14 +44,18 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
     _initAnimation();
     _prevMode = widget.selectModeNotifier.value;
     widget.selectModeNotifier.addListener(_onUpdateSelectMode);
+    widget.selectedTokenNotifier.addListener(_onSelectToken);
   }
 
   @override
   void dispose() {
     _controller?.dispose();
     widget.selectModeNotifier.removeListener(_onUpdateSelectMode);
+    widget.selectedTokenNotifier.removeListener(_onSelectToken);
     super.dispose();
   }
+
+  String? get _emoji => widget.token?.vocabConstructID.userSetEmoji.firstOrNull;
 
   void _initAnimation() {
     if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
@@ -73,6 +84,73 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
     _prevMode = mode;
   }
 
+  void _onSelectToken() {
+    final selected = widget.selectedTokenNotifier.value;
+    if (selected != null && selected == widget.token) {
+      showTokenEmojiPopup();
+    }
+  }
+
+  void showTokenEmojiPopup() {
+    if (widget.targetId == null || widget.token == null) return;
+    OverlayUtil.showPositionedCard(
+      overlayKey: "overlay_emoji_selector_${widget.targetId}",
+      context: context,
+      cardToShow: LemmaMeaningBuilder(
+        langCode:
+            MatrixState.pangeaController.languageController.activeL2Code()!,
+        constructId: widget.token!.vocabConstructID,
+        builder: (context, controller) {
+          return Material(
+            type: MaterialType.transparency,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surface,
+                borderRadius: BorderRadius.circular(
+                  AppConfig.borderRadius,
+                ),
+              ),
+              child: LemmaEmojiPicker(
+                emojis: controller.lemmaInfo?.emoji ?? [],
+                onSelect: (emoji) async {
+                  final resp = await showFutureLoadingDialog(
+                    context: context,
+                    future: () => _setTokenEmoji(emoji),
+                  );
+                  if (mounted && !resp.isError) {
+                    MatrixState.pAnyState.closeOverlay(
+                      "overlay_emoji_selector_${widget.targetId}",
+                    );
+                  }
+                },
+                loading: controller.isLoading,
+              ),
+            ),
+          );
+        },
+      ),
+      transformTargetId: widget.targetId!,
+      closePrevOverlay: false,
+      addBorder: false,
+      maxWidth: (40 * 5) + (4 * 5) + 16,
+      maxHeight: 60,
+    );
+  }
+
+  Future<void> _setTokenEmoji(String emoji) async {
+    if (widget.targetId == null || widget.token == null) return;
+    // await widget.token!.vocabConstructID.setEmojiWithXP(
+    //   emoji: emoji,
+    //   targetId: widget.targetId!,
+    // );
+    await widget.token!.vocabConstructID.setUserLemmaInfo(
+      widget.token!.vocabConstructID.userLemmaInfo.copyWith(
+        emojis: [emoji],
+      ),
+    );
+    if (mounted) setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_sizeAnimation == null) {
@@ -81,11 +159,11 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
 
     final child = widget.enabled
         ? InkWell(
-            onTap: widget.onSelect,
+            onTap: showTokenEmojiPopup,
             borderRadius: BorderRadius.circular(99.0),
-            child: widget.emoji != null
+            child: _emoji != null
                 ? Text(
-                    widget.emoji!,
+                    _emoji!,
                     style: TextStyle(fontSize: buttonSize - 4.0),
                     textScaler: TextScaler.noScaling,
                   )

@@ -9,7 +9,6 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -118,6 +117,9 @@ class PracticeController with ChangeNotifier {
         ? _activity!.onMultipleChoiceSelect(token, choice)
         : _activity!.onMatch(token, choice);
 
+    final targetId =
+        "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";
+
     // we don't take off points for incorrect emoji matches
     if (_activity!.activityType != ActivityTypeEnum.emoji || isCorrect) {
       final constructUseType = _activity!.practiceTarget.record.responses.last
@@ -143,25 +145,25 @@ class PracticeController with ChangeNotifier {
               xp: constructUseType.pointValue,
             ),
           ],
-          targetID:
-              "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}",
+          targetID: targetId,
         ),
       );
     }
 
     if (isCorrect) {
       if (_activity!.activityType == ActivityTypeEnum.emoji) {
-        choice.form.cId.setEmojiWithXP(
-          emoji: choice.choiceContent,
-          isFromCorrectAnswer: true,
-          eventId: pangeaMessageEvent.eventId,
-          roomId: pangeaMessageEvent.room.id,
+        choice.form.cId.setUserLemmaInfo(
+          choice.form.cId.userLemmaInfo.copyWith(
+            emojis: [choice.choiceContent],
+          ),
         );
       }
 
       if (_activity!.activityType == ActivityTypeEnum.wordMeaning) {
         choice.form.cId.setUserLemmaInfo(
-          UserSetLemmaInfo(meaning: choice.choiceContent),
+          choice.form.cId.userLemmaInfo.copyWith(
+            meaning: choice.choiceContent,
+          ),
         );
       }
     }

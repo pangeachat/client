@@ -15,20 +15,16 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_emoji_picker.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_controller.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
@@ -63,6 +59,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   Event get event => widget._event;
 
   PangeaTokenText? _selectedSpan;
+  ValueNotifier<PangeaToken?> selectedTokenNotifier = ValueNotifier(null);
 
   List<PangeaTokenText>? _highlightedTokens;
 
@@ -96,6 +93,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     );
     selectModeController.dispose();
     practiceController.dispose();
+    selectedTokenNotifier.dispose();
     super.dispose();
   }
 
@@ -201,17 +199,35 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     if (selectedSpan == _selectedSpan) return;
-    // if (selectedMorph != null) {
-    //   selectedMorph = null;
-    // }
-
     _selectedSpan = selectedSpan;
-    if (selectedMode.value == SelectMode.emoji && selectedToken != null) {
-      showTokenEmojiPopup(selectedToken!);
-    }
+    selectedTokenNotifier.value = selectedToken;
     if (mounted) {
       setState(() {});
-      if (selectedToken != null) _onSelectNewToken(selectedToken!);
+      if (selectedToken != null && isNewToken(selectedToken!)) {
+        final token = selectedToken!;
+        MatrixState.pangeaController.putAnalytics.setState(
+          AnalyticsStream(
+            eventId: event.eventId,
+            roomId: event.room.id,
+            constructs: [
+              OneConstructUse(
+                useType: ConstructUseTypeEnum.click,
+                lemma: token.lemma.text,
+                constructType: ConstructTypeEnum.vocab,
+                metadata: ConstructUseMetaData(
+                  roomId: event.room.id,
+                  timeStamp: DateTime.now(),
+                  eventId: event.eventId,
+                ),
+                category: token.pos,
+                form: token.text.content,
+                xp: ConstructUseTypeEnum.click.pointValue,
+              ),
+            ],
+            targetID: "word-zoom-card-${token.text.uniqueKey}",
+          ),
+        );
+      }
     }
   }
 
@@ -303,32 +319,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     updateSelectedSpan(token.text);
   }
 
-  void _onSelectNewToken(PangeaToken token) {
-    if (!isNewToken(token)) return;
-    MatrixState.pangeaController.putAnalytics.setState(
-      AnalyticsStream(
-        eventId: event.eventId,
-        roomId: event.room.id,
-        constructs: [
-          OneConstructUse(
-            useType: ConstructUseTypeEnum.click,
-            lemma: token.lemma.text,
-            constructType: ConstructTypeEnum.vocab,
-            metadata: ConstructUseMetaData(
-              roomId: event.room.id,
-              timeStamp: DateTime.now(),
-              eventId: event.eventId,
-            ),
-            category: token.pos,
-            form: token.text.content,
-            xp: ConstructUseTypeEnum.click.pointValue,
-          ),
-        ],
-        targetID: "word-zoom-card-${token.text.uniqueKey}",
-      ),
-    );
-  }
-
   /// Whether the given token is currently selected or highlighted
   bool isTokenSelected(PangeaToken token) {
     final isSelected = _selectedSpan?.offset == token.text.offset &&
@@ -344,58 +334,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     return _highlightedTokens!.any(
       (t) => t.offset == token.text.offset && t.length == token.text.length,
     );
-  }
-
-  void showTokenEmojiPopup(
-    PangeaToken token,
-  ) {
-    OverlayUtil.showPositionedCard(
-      overlayKey: "overlay_emoji_selector_${event.eventId}",
-      context: context,
-      cardToShow: LemmaMeaningBuilder(
-        langCode:
-            MatrixState.pangeaController.languageController.activeL2Code()!,
-        constructId: token.vocabConstructID,
-        builder: (context, controller) {
-          return Material(
-            type: MaterialType.transparency,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
-              ),
-              child: LemmaEmojiPicker(
-                emojis: controller.lemmaInfo?.emoji ?? [],
-                onSelect: (emoji) async {
-                  final resp = await showFutureLoadingDialog(
-                    context: context,
-                    future: () => _setTokenEmoji(token, emoji),
-                  );
-                  if (mounted && !resp.isError) {
-                    MatrixState.pAnyState.closeOverlay(
-                      "overlay_emoji_selector_${event.eventId}",
-                    );
-                  }
-                },
-                loading: controller.isLoading,
-              ),
-            ),
-          );
-        },
-      ),
-      transformTargetId: tokenEmojiPopupKey(token),
-      closePrevOverlay: false,
-      addBorder: false,
-      maxWidth: (40 * 5) + (4 * 5) + 16,
-      maxHeight: 60,
-    );
-  }
-
-  Future<void> _setTokenEmoji(PangeaToken token, String emoji) async {
-    await token.setEmoji([emoji]);
-    if (mounted) setState(() {});
   }
 
   String tokenEmojiPopupKey(PangeaToken token) =>

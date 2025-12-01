@@ -8,9 +8,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
@@ -138,6 +135,9 @@ class ConstructIdentifier {
     );
   }
 
+  bool get isContentWord =>
+      PartOfSpeechEnumExtensions.fromString(category)?.isContentWord ?? false;
+
   ConstructUses get constructUses =>
       MatrixState.pangeaController.getAnalytics.constructListModel
           .getConstructUses(
@@ -150,73 +150,39 @@ class ConstructIdentifier {
         uses: [],
       );
 
-  List<String> get userSetEmoji => userLemmaInfo?.emojis ?? [];
+  LemmaInfoRequest get _lemmaInfoRequest => LemmaInfoRequest(
+        partOfSpeech: category,
+        lemmaLang: MatrixState
+                .pangeaController.languageController.userL2?.langCodeShort ??
+            LanguageKeys.defaultLanguage,
+        userL1: MatrixState
+                .pangeaController.languageController.userL1?.langCodeShort ??
+            LanguageKeys.defaultLanguage,
+        lemma: lemma,
+      );
 
-  UserSetLemmaInfo? get userLemmaInfo {
+  /// [lemmmaLang] if not set, assumed to be userL2
+  Future<LemmaInfoResponse> getLemmaInfo() => LemmaInfoRepo.get(
+        _lemmaInfoRequest,
+      );
+
+  List<String> get userSetEmoji => userLemmaInfo.emojis ?? [];
+
+  UserSetLemmaInfo get userLemmaInfo {
     switch (type) {
       case ConstructTypeEnum.vocab:
         return MatrixState.pangeaController.matrixState.client
-            .analyticsRoomLocal()
-            ?.getUserSetLemmaInfo(this);
+                .analyticsRoomLocal()
+                ?.getUserSetLemmaInfo(this) ??
+            UserSetLemmaInfo();
       case ConstructTypeEnum.morph:
         debugger(when: kDebugMode);
         ErrorHandler.logError(
           e: Exception("Morphs should not have userSetEmoji"),
           data: toJson(),
         );
-        return null;
+        return UserSetLemmaInfo();
     }
-  }
-
-  /// Sets emoji and awards XP if it's a NEW emoji selection or from game
-  Future<void> setEmojiWithXP({
-    required String emoji,
-    bool isFromCorrectAnswer = false,
-    String? eventId,
-    String? roomId,
-  }) async {
-    final hadEmojiPreviously = userSetEmoji.isNotEmpty;
-    //correct answers already award xp so we don't here, but we do still need to set the emoji if it isn't already set
-    final shouldAwardXP = !hadEmojiPreviously && !isFromCorrectAnswer;
-
-    //Set emoji representation
-    await setUserLemmaInfo(UserSetLemmaInfo(emojis: [emoji]));
-
-    if (shouldAwardXP) {
-      await _recordEmojiAnalytics(
-        eventId: eventId,
-        roomId: roomId,
-      );
-    }
-  }
-
-  Future<void> _recordEmojiAnalytics({
-    String? eventId,
-    String? roomId,
-  }) async {
-    const useType = ConstructUseTypeEnum.em;
-
-    MatrixState.pangeaController.putAnalytics.setState(
-      AnalyticsStream(
-        eventId: eventId,
-        roomId: roomId,
-        constructs: [
-          OneConstructUse(
-            useType: useType,
-            lemma: lemma,
-            constructType: type,
-            metadata: ConstructUseMetaData(
-              roomId: roomId,
-              timeStamp: DateTime.now(),
-              eventId: eventId,
-            ),
-            category: category,
-            form: lemma,
-            xp: useType.pointValue,
-          ),
-        ],
-      ),
-    );
   }
 
   Future<void> setUserLemmaInfo(UserSetLemmaInfo newLemmaInfo) async {
@@ -239,23 +205,4 @@ class ConstructIdentifier {
       );
     }
   }
-
-  LemmaInfoRequest get _lemmaInfoRequest => LemmaInfoRequest(
-        partOfSpeech: category,
-        lemmaLang: MatrixState
-                .pangeaController.languageController.userL2?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        userL1: MatrixState
-                .pangeaController.languageController.userL1?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        lemma: lemma,
-      );
-
-  /// [lemmmaLang] if not set, assumed to be userL2
-  Future<LemmaInfoResponse> getLemmaInfo() => LemmaInfoRepo.get(
-        _lemmaInfoRequest,
-      );
-
-  bool get isContentWord =>
-      PartOfSpeechEnumExtensions.fromString(category)?.isContentWord ?? false;
 }

@@ -23,6 +23,16 @@ class UserSetLemmaInfo {
     };
   }
 
+  UserSetLemmaInfo copyWith({
+    List<String>? emojis,
+    String? meaning,
+  }) {
+    return UserSetLemmaInfo(
+      emojis: emojis ?? this.emojis,
+      meaning: meaning ?? this.meaning,
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

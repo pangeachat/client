@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
+import 'package:fluffychat/pangea/analytics_misc/emoji_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -29,73 +30,70 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
 }
 
 class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
-  String? displayEmoji;
   bool _showShimmer = true;
-  bool _hasShimmered = false;
+  String? _selectedEmoji;
+
+  late StreamSubscription<AnalyticsStreamUpdate> _analyticsSubscription;
+  Timer? _shimmerTimer;
 
   @override
   void initState() {
     super.initState();
-    displayEmoji = widget.cId.userSetEmoji.firstOrNull;
-    _showShimmer = (displayEmoji == null);
-  }
-
-  void _startShimmer() {
-    if (!widget.controller.isLoading && _showShimmer) {
-      Future.delayed(const Duration(milliseconds: 1500), () {
-        if (mounted) {
-          setState(() => _showShimmer = false);
-          setState(() => _hasShimmered = true);
-        }
-      });
-    }
+    _analyticsSubscription = MatrixState
+        .pangeaController.getAnalytics.analyticsStream.stream
+        .listen(_onAnalyticsUpdate);
+    _setShimmer();
   }
 
   @override
-  didUpdateWidget(LemmaHighlightEmojiRow oldWidget) {
-    //Reset shimmer state for diff constructs in 2 column mode
-    if (oldWidget.cId != widget.cId) {
-      setState(() {
-        displayEmoji = widget.cId.userSetEmoji.firstOrNull;
-        _showShimmer = (displayEmoji == null);
-        _hasShimmered = false;
-      });
-    }
+  void didUpdateWidget(LemmaHighlightEmojiRow oldWidget) {
+    if (oldWidget.cId != widget.cId) _setShimmer();
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   void dispose() {
+    _analyticsSubscription.cancel();
+    _shimmerTimer?.cancel();
     super.dispose();
   }
 
-  String transformTargetId(String emoji) =>
-      "emoji-choice-item-$emoji-${widget.cId.lemma}";
+  void _setShimmer() {
+    setState(() {
+      _selectedEmoji = widget.cId.userSetEmoji.firstOrNull;
+      _showShimmer = _selectedEmoji == null;
 
-  Future<void> setEmoji(String emoji, BuildContext context) async {
-    try {
-      final String? userSetEmoji = widget.cId.userSetEmoji.firstOrNull;
-      setState(() => displayEmoji = emoji);
-      await widget.cId.setEmojiWithXP(
-        emoji: emoji,
-        isFromCorrectAnswer: false,
-      );
-      if (userSetEmoji == null) {
-        OverlayUtil.showOverlay(
-          overlayKey: "${transformTargetId(emoji)}_points",
-          followerAnchor: Alignment.bottomCenter,
-          targetAnchor: Alignment.bottomCenter,
-          context: context,
-          child: PointsGainedAnimation(
-            points: 2,
-            targetID: transformTargetId(emoji),
-          ),
-          transformTargetId: transformTargetId(emoji),
-          closePrevOverlay: false,
-          backDropToDismiss: false,
-          ignorePointer: true,
-        );
+      if (_showShimmer) {
+        _shimmerTimer?.cancel();
+        _shimmerTimer = Timer(const Duration(milliseconds: 1500), () {
+          if (mounted) {
+            setState(() {
+              _showShimmer = false;
+              _shimmerTimer?.cancel();
+              _shimmerTimer = null;
+            });
+          }
+        });
       }
+    });
+  }
+
+  void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
+    if (update.targetID != null) {
+      OverlayUtil.showPointsGained(update.targetID!, context);
+    }
+  }
+
+  Future<void> _setEmoji(String emoji, BuildContext context) async {
+    try {
+      setState(() => _selectedEmoji = emoji);
+      await widget.cId.setUserLemmaInfo(
+        widget.cId.userLemmaInfo.copyWith(emojis: [emoji]),
+      );
+      EmojiAnalyticsController.sendEmojiAnalytics(
+        widget.cId,
+        emoji,
+      );
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
@@ -107,7 +105,6 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
     if (widget.controller.isLoading) {
       return const CircularProgressIndicator.adaptive();
     }
-    _startShimmer();
 
     final emojis = widget.controller.lemmaInfo?.emoji;
     if (widget.controller.error != null || emojis == null || emojis.isEmpty) {
@@ -129,10 +126,11 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
                 .map(
                   (emoji) => EmojiChoiceItem(
                     emoji: emoji,
-                    onSelectEmoji: () => setEmoji(emoji, context),
-                    isDisplay: (displayEmoji == emoji),
-                    showShimmer: (_showShimmer && !_hasShimmered),
-                    transformTargetId: transformTargetId(emoji),
+                    onSelectEmoji: () => _setEmoji(emoji, context),
+                    isDisplay: _selectedEmoji == emoji,
+                    showShimmer: _showShimmer,
+                    transformTargetId:
+                        "emoji-choice-item-$emoji-${widget.cId.lemma}",
                   ),
                 )
                 .toList(),
