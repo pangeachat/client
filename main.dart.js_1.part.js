@@ -2540,9 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "\u7ffb\u8bd1";
     },
-    get$speechToTextTooltip() {
-      return "\u8f6c\u5f55";
-    },
     get$kickBotWarning() {
       return "\u8e22\u51faPangea\u673a\u5668\u4eba\u5c06\u4f1a\u5c06\u5bf9\u8bdd\u673a\u5668\u4eba\u4ece\u6b64\u804a\u5929\u4e2d\u79fb\u9664\u3002";
     },
@@ -3610,9 +3607,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "\u672a\u627e\u5230\u542b\u4e49\u3002";
-    },
-    get$chooseBaseForm() {
-      return "\u9009\u62e9\u57fa\u672c\u5f62\u5f0f";
     },
     get$notTheCodeError() {
       return "\u62b1\u6b49\uff0c\u90a3\u4e0d\u662f\u4ee3\u7801\uff01";
@@ -7747,9 +7741,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "\u7ffb\u8b6f";
     },
-    get$speechToTextTooltip() {
-      return "\u8f49\u9304";
-    },
     get$kickBotWarning() {
       return "\u8e22\u51fa Pangea \u6a5f\u5668\u4eba\u5c07\u6703\u79fb\u9664\u6b64\u804a\u5929\u4e2d\u7684\u5c0d\u8a71\u6a5f\u5668\u4eba\u3002";
     },
@@ -8817,9 +8808,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "\u672a\u80fd\u627e\u5230\u610f\u601d\u3002";
-    },
-    get$chooseBaseForm() {
-      return "\u9078\u64c7\u57fa\u672c\u5f62\u5f0f";
     },
     get$notTheCodeError() {
       return "\u62b1\u6b49\uff0c\u9019\u4e0d\u662f\u4ee3\u78bc\uff01";
@@ -10443,7 +10431,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VuRCchDnjo3wut6QsWWJHkt6QIE="] = d.current;
+  d["N4+rZR1agLXiO44BTIV2iIhLJ+E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

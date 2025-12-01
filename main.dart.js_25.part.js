@@ -2545,9 +2545,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "Traduzir";
     },
-    get$speechToTextTooltip() {
-      return "Transcri\xe7\xe3o";
-    },
     get$kickBotWarning() {
       return string$.Remove;
     },
@@ -3615,9 +3612,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "Significado n\xe3o p\xf4de ser encontrado.";
-    },
-    get$chooseBaseForm() {
-      return "Escolha a forma base";
     },
     get$notTheCodeError() {
       return "Desculpe, esse n\xe3o \xe9 o c\xf3digo!";
@@ -7752,9 +7746,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "Traduzir";
     },
-    get$speechToTextTooltip() {
-      return "Transcri\xe7\xe3o";
-    },
     get$kickBotWarning() {
       return string$.Remove;
     },
@@ -8822,9 +8813,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "Significado n\xe3o p\xf4de ser encontrado.";
-    },
-    get$chooseBaseForm() {
-      return "Escolha a forma base";
     },
     get$notTheCodeError() {
       return "Desculpe, esse n\xe3o \xe9 o c\xf3digo!";
@@ -12956,9 +12944,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "Traduzir";
     },
-    get$speechToTextTooltip() {
-      return "Transcri\xe7\xe3o";
-    },
     get$kickBotWarning() {
       return "Remover o Pangea Bot ir\xe1 eliminar o bot de conversa desta conversa.";
     },
@@ -14026,9 +14011,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "Significado n\xe3o p\xf4de ser encontrado.";
-    },
-    get$chooseBaseForm() {
-      return "Escolha a forma base";
     },
     get$notTheCodeError() {
       return "Desculpe, esse n\xe3o \xe9 o c\xf3digo!";
@@ -15822,7 +15804,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["knKm/zY3uHy3VCzZUgtZEpd1mJg="] = d.current;
+  d["2mylhNlyquwW3eK2KM/NQ40sPvo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

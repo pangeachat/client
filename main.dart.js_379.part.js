@@ -2533,9 +2533,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "\xdcbersetzen";
     },
-    get$speechToTextTooltip() {
-      return "Transkript";
-    },
     get$kickBotWarning() {
       return "Das Entfernen des Pangea-Bots entfernt den Konversationsbot aus diesem Chat.";
     },
@@ -3603,9 +3600,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "Bedeutung konnte nicht gefunden werden.";
-    },
-    get$chooseBaseForm() {
-      return "W\xe4hle die Grundform";
     },
     get$notTheCodeError() {
       return "Entschuldigung, das ist nicht der Code!";
@@ -5234,7 +5228,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["P87JOLsBChum+65jHLO7cQtgFQg="] = d.current;
+  d["fGpF1vYandiou+4+9CDD6hO7ktI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_379.part.js.map

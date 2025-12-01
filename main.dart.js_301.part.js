@@ -2533,9 +2533,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "Overs\xe6t";
     },
-    get$speechToTextTooltip() {
-      return "Transskription";
-    },
     get$kickBotWarning() {
       return "At fjerne Pangea Bot vil fjerne samtalebotten fra denne chat.";
     },
@@ -3603,9 +3600,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "Betydning kunne ikke findes.";
-    },
-    get$chooseBaseForm() {
-      return "V\xe6lg grundformen";
     },
     get$notTheCodeError() {
       return "Beklager, det er ikke koden!";
@@ -5231,7 +5225,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["G1EpkEwM/Tu5X/iMBtYjo8pDoCU="] = d.current;
+  d["d8ZwOhnhWMybzBNXdnqce9y+Z5s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_301.part.js.map

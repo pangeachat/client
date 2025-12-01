@@ -2534,9 +2534,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "Tradueix";
     },
-    get$speechToTextTooltip() {
-      return "Transcripci\xf3";
-    },
     get$kickBotWarning() {
       return "Treure el bot Pangea eliminar\xe0 el bot de conversa d'aquest xat.";
     },
@@ -3604,9 +3601,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "No s'ha pogut trobar el significat.";
-    },
-    get$chooseBaseForm() {
-      return "Tria la forma base";
     },
     get$notTheCodeError() {
       return "Ho sentim, aix\xf2 no \xe9s el codi!";
@@ -5235,7 +5229,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ant0XVvij5g/Ns7SB1mpWDnyWzo="] = d.current;
+  d["jTuZOcVzM7sgo2oDeSv0vEuIAvY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_176.part.js.map

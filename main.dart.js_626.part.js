@@ -5,3673 +5,3667 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nHe$() {
-      return new A.L10nHe(B.canonicalizedLocale("he"));
+    L10nHr$() {
+      return new A.L10nHr(B.canonicalizedLocale("hr"));
     },
-    L10nHe: function L10nHe(t0) {
+    L10nHr: function L10nHr(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[25], A);
-  A.L10nHe.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[27], A);
+  A.L10nHr.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\u05e9\u05d2\u05d5\u05d9";
+      return "true";
     },
     get$repeatPassword() {
-      return "\u05db\u05ea\u05d5\u05d1 \u05e9\u05d5\u05d1 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4";
+      return "Ponovi lozinku";
     },
     get$notAnImage() {
-      return "\u05d4\u05e7\u05d5\u05d1\u05e5 \u05d0\u05d9\u05e0\u05d5 \u05ea\u05de\u05d5\u05e0\u05d4.";
+      return "Nije slikovna datoteka.";
     },
     get$setCustomPermissionLevel() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05e8\u05de\u05ea \u05d4\u05e8\u05e9\u05d0\u05d4 \u05de\u05d5\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea";
+      return "Postavi prilago\u0111enu razinu dopu\u0161tenja";
     },
     get$setPermissionsLevelDescription() {
-      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05ea\u05e4\u05e7\u05d9\u05d3 \u05de\u05d5\u05d2\u05d3\u05e8 \u05de\u05e8\u05d0\u05e9 \u05dc\u05de\u05d8\u05d4 \u05d0\u05d5 \u05d4\u05d6\u05df \u05e8\u05de\u05ea \u05d4\u05e8\u05e9\u05d0\u05d4 \u05de\u05d5\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea \u05d1\u05d9\u05df 0 \u05dc-100.";
+      return "Molimo odaberite unaprijed definiranu ulogu ispod ili unesite prilago\u0111enu razinu dopu\u0161tenja izme\u0111u 0 i 100.";
     },
     get$ignoreUser() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05d4\u05de\u05e9\u05ea\u05de\u05e9";
+      return "Ignoriraj korisnika";
     },
     get$normalUser() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9 \u05e8\u05d2\u05d9\u05dc";
+      return "Obi\u010dan korisnik";
     },
     get$remove(_) {
-      return "\u05d4\u05e1\u05e8";
+      return "Ukloni";
     },
     get$importNow() {
-      return "\u05d9\u05d1\u05d0 \u05e2\u05db\u05e9\u05d9\u05d5";
+      return "Uvezi sada";
     },
     get$importEmojis() {
-      return "\u05d9\u05d1\u05d0 \u05d0\u05de\u05d5\u05d2'\u05d9\u05dd";
+      return "Uvezi emoji slike";
     },
     get$importFromZipFile() {
-      return "\u05d9\u05d1\u05d0 \u05de\u05e7\u05d5\u05d1\u05e5 .zip";
+      return "Uvezi iz .zip datoteke";
     },
     get$exportEmotePack() {
-      return "\u05d9\u05e6\u05d0 \u05d7\u05d1\u05d9\u05dc\u05ea \u05d0\u05de\u05d5\u05d8\u05d5\u05ea \u05db\u05e7\u05d5\u05d1\u05e5 .zip";
+      return "Izvezi paket emotikona kao .zip";
     },
     get$replace(_) {
-      return "\u05d4\u05d7\u05dc\u05e3";
+      return "Zamijeni";
     },
     aboutHomeserver$1(homeserver) {
-      return "\u05e2\u05dc " + homeserver;
+      return "O " + homeserver;
     },
     get$accept(_) {
-      return "\u05e7\u05d1\u05dc";
+      return "Prihvati";
     },
     acceptedTheInvitation$1(username) {
-      return username + " \u05e7\u05d9\u05d1\u05dc \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
+      return "\ud83d\udc4d " + username + " je prihvatio/la poziv";
     },
     get$account() {
-      return "\u05d7\u05e9\u05d1\u05d5\u05df";
+      return "Ra\u010dun";
     },
     activatedEndToEndEncryption$1(username) {
-      return username + " \u05d4\u05e4\u05e2\u05d9\u05dc \u05d4\u05e6\u05e4\u05e0\u05d4 \u05de\u05e7\u05e6\u05d4 \u05dc\u05e7\u05e6\u05d4";
+      return "\ud83d\udd10 " + username + " je aktivirao/la obostrano \u0161ifriranje";
     },
     get$addEmail() {
-      return "\u05d4\u05d5\u05e1\u05e3 \u05de\u05d9\u05d9\u05dc";
+      return "Dodaj e-mail";
     },
     supposedMxid$1(mxid) {
-      return "\u05d6\u05d4 \u05e6\u05e8\u05d9\u05da \u05dc\u05d4\u05d9\u05d5\u05ea " + mxid;
+      return "Trebao bi biti " + mxid;
     },
     get$admin() {
-      return "\u05de\u05e0\u05d4\u05dc";
+      return "Administrator";
     },
     get$commandHint_roomupgrade() {
-      return "\u05e9\u05d3\u05e8\u05d2 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05dc\u05d2\u05e8\u05e1\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d4\u05e0\u05ea\u05d5\u05e0\u05d4";
+      return "Nadogradi ovu sobu na zadanu verziju sobe";
     },
     get$commandHint_googly() {
-      return "\u05e9\u05dc\u05d7 \u05e2\u05d9\u05e0\u05d9\u05d9\u05dd \u05de\u05e6\u05d7\u05d9\u05e7\u05d5\u05ea";
+      return "Po\u0161alji kotrljaju\u0107e o\u010di";
     },
     get$commandHint_cuddle() {
-      return "\u05e9\u05dc\u05d7 \u05d7\u05d9\u05d1\u05d5\u05e7";
+      return "Po\u0161alji ma\u017eenje";
     },
     get$commandHint_hug() {
-      return "\u05e9\u05dc\u05d7 \u05d7\u05d9\u05d1\u05d5\u05e7";
+      return "Po\u0161alji grljenje";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u05e9\u05d5\u05dc\u05d7 \u05dc\u05da \u05e2\u05d9\u05e0\u05d9\u05d9\u05dd \u05de\u05e6\u05d7\u05d9\u05e7\u05d5\u05ea";
+      return senderName + " ti \u0161alje kotrljaju\u0107e o\u010di";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u05de\u05d7\u05d1\u05e7 \u05d0\u05d5\u05ea\u05da";
+      return senderName + " te mazi";
     },
     hugContent$1(senderName) {
-      return senderName + " \u05de\u05d7\u05d1\u05e7 \u05d0\u05d5\u05ea\u05da";
+      return senderName + " te grli";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u05e2\u05e0\u05d4 \u05dc\u05e9\u05d9\u05d7\u05d4";
+      return senderName + " je odgovorio/la na poziv";
     },
     get$anyoneCanJoin() {
-      return "\u05db\u05dc \u05d0\u05d7\u05d3 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3";
+      return "Svatko se mo\u017ee pridru\u017eiti";
     },
     get$archive() {
-      return "\u05d0\u05e8\u05db\u05d9\u05d5\u05df";
+      return "Arhiv";
     },
     get$areYouSure() {
-      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7?";
+      return "Stvarno to \u017eeli\u0161?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05e6\u05d0\u05ea?";
+      return "Stvarno se \u017eeli\u0161 odjaviti?";
     },
     get$askSSSSSign() {
-      return "\u05db\u05d3\u05d9 \u05e9\u05ea\u05d5\u05db\u05dc \u05dc\u05d7\u05ea\u05d5\u05dd \u05e2\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05d0\u05d7\u05e8 , \u05d4\u05d6\u05df \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da \u05d0\u05d5 \u05d0\u05ea \u05de\u05e4\u05ea\u05d7 \u05d4\u05e9\u05d7\u05d6\u05d5\u05e8.";
+      return "Za potpisivanje druge osobe, upi\u0161i svoju sigurnosnu lozinku ili klju\u010d za oporavak.";
     },
     askVerificationRequest$1(username) {
-      return "\u05dc\u05e7\u05d1\u05dc \u05d1\u05e7\u05e9\u05ea \u05d0\u05d9\u05de\u05d5\u05ea \u05d6\u05d5 \u05de- " + username + "?";
+      return "Prihvatiti ovaj zahtjev za potvr\u0111ivanje od " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u05e9\u05e8\u05ea \u05d4\u05d1\u05d9\u05ea \u05ea\u05d5\u05de\u05da \u05d1\u05e1\u05d5\u05d2\u05d9 \u05d4\u05db\u05e0\u05d9\u05e1\u05d4:\n" + serverVersions + "\n\u05d0\u05d1\u05dc \u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05d6\u05d5 \u05ea\u05d5\u05de\u05db\u05ea \u05e8\u05e7 \u05d1:\n" + supportedVersions;
+      return "Doma\u0107i poslu\u017eitelj podr\u017eava vrste prijave:\n" + serverVersions + "\nMe\u0111utim ovaj program podr\u017eava samo:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05e7\u05dc\u05d3\u05d4";
+      return "Po\u0161alji pismene obavijesti";
     },
     get$swipeRightToLeftToReply() {
-      return "\u05d4\u05d7\u05dc\u05e7 \u05d9\u05de\u05d9\u05e0\u05d4 \u05dc\u05e9\u05de\u05d0\u05dc \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05d9\u05d1";
+      return "Za odgovaranje povuci prstom zdesna ulijevo";
     },
     get$sendOnEnter() {
-      return "\u05e9\u05dc\u05d7 \u05d1\u05db\u05e0\u05d9\u05e1\u05d4";
+      return "Po\u0161alji pritiskom tipke enter";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " \u05e9\u05d9\u05d7\u05d5\u05ea \u05d5-" + participants + " \u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
+      return "" + chats + " razgovora i " + participants + " sudionika";
     },
     get$banned() {
-      return "\u05d7\u05e1\u05d5\u05dd";
+      return "Isklju\u010den";
     },
     bannedUser$2(username, targetName) {
-      return username + " \u05d7\u05e1\u05dd \u05d0\u05ea " + targetName;
+      return username + " je isklju\u010dio/la " + targetName;
     },
     get$blockDevice() {
-      return "\u05d7\u05e1\u05d5\u05dd \u05de\u05db\u05e9\u05d9\u05e8";
+      return "Blokiraj ure\u0111aj";
     },
     get$blocked() {
-      return "\u05d7\u05e1\u05d5\u05dd";
+      return "Blokirano";
     },
     get$cancel(_) {
-      return "\u05d1\u05d9\u05d8\u05d5\u05dc";
+      return "Odustani";
     },
     cantOpenUri$1(uri) {
-      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05e4\u05ea\u05d5\u05d7 \u05d0\u05ea \u05d4-URI " + uri;
+      return "URI adresa " + uri + " se ne mo\u017ee otvoriti";
     },
     get$changeDeviceName() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05de\u05db\u05e9\u05d9\u05e8";
+      return "Promijeni ime ure\u0111aja";
     },
     changedTheChatAvatar$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc \u05d4\u05e6'\u05d0\u05d8";
+      return username + " je promijenio/la avatar razgovora";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05ea\u05d9\u05d0\u05d5\u05e8 \u05d4\u05e6'\u05d0\u05d8 \u05dc: '" + description + "'";
+      return username + " je promijenio/la opis razgovora u: \u201e" + description + "\u201d";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05e6'\u05d0\u05d8 \u05dc: '" + chatname + "'";
+      return username + " je promijenio/la ime razgovora u: \u201e" + chatname + "\u201d";
     },
     changedTheChatPermissions$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05d4\u05e6'\u05d0\u05d8";
+      return username + " je promijenio/la dozvole razgovora";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4 \u05e9\u05dc\u05d5 \u05dc: '" + displayname + "'";
+      return username + " je promijenio/la ime u: \u201e" + displayname + "\u201d";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d2\u05d9\u05e9\u05d4 \u05dc\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd";
+      return username + " je promijenio/la pravila pristupa za goste";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d2\u05d9\u05e9\u05d4 \u05dc\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd \u05dc: " + rules;
+      return username + " je promijenio/la pravila pristupa za goste u: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d4";
+      return username + " je promijenio/la vidljivost kronologije";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d4 \u05dc: " + rules;
+      return username + " je promijenio/la vidljivost kronologije u: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
+      return username + " je promijenio/la pravila pridru\u017eivanja";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05dc\u05dc\u05d9 \u05d4\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea \u05dc: " + joinRules;
+      return username + " je promijenio/la pravila pridru\u017eivanja u: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc\u05d5";
+      return username + " je promijenio/la svoj avatar";
     },
     changedTheRoomAliases$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05db\u05d9\u05e0\u05d5\u05d9 \u05d4\u05d7\u05d3\u05e8";
+      return username + " je promijenio/la pseudonime soba";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " \u05e9\u05d9\u05e0\u05d4 \u05d0\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8 \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
+      return username + " je promijenio/la poveznicu poziva";
     },
     get$changePassword() {
-      return "\u05e9\u05e0\u05d4 \u05e1\u05d9\u05e1\u05de\u05d0";
+      return "Promijeni lozinku";
     },
     get$changeTheme() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05e1\u05d2\u05e0\u05d5\u05df \u05e9\u05dc\u05da";
+      return "Promijeni tvoj stil";
     },
     get$changeYourAvatar() {
-      return "\u05e9\u05d9\u05e0\u05d5\u05d9 \u05d4\u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc\u05da";
+      return "Promijeni svoj avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "\u05d4\u05d4\u05e6\u05e4\u05e0\u05d4 \u05e0\u05e4\u05d2\u05de\u05d4";
+      return "\u0160ifriranje je o\u0161te\u0107eno";
     },
     get$chat() {
-      return "\u05e6\u05f3\u05d0\u05d8";
+      return "Razgovor";
     },
     get$chatDetails() {
-      return "\u05e4\u05e8\u05d8\u05d9 \u05e6'\u05d0\u05d8";
+      return "Detalji razgovora";
     },
     get$chats() {
-      return "\u05e6'\u05d0\u05d8\u05d9\u05dd";
+      return "Razgovori";
     },
     get$chooseAStrongPassword() {
-      return "\u05d1\u05d7\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d7\u05d6\u05e7\u05d4";
+      return "Odaberi sna\u017enu lozinku";
     },
     get$clearArchive() {
-      return "\u05e0\u05e7\u05d4 \u05d0\u05e8\u05db\u05d9\u05d5\u05df";
+      return "Isprazni arhiv";
     },
     get$close(_) {
-      return "\u05e1\u05d2\u05d5\u05e8";
+      return "Zatvori";
     },
     get$commandHint_markasdm() {
-      return "\u05e1\u05de\u05df \u05db\u05d7\u05dc\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05e2\u05d1\u05d5\u05e8 \u05de\u05d6\u05d4\u05d4 Matrix \u05d4\u05e0\u05ea\u05d5\u05df";
+      return "Ozna\u010di kao sobu za izravnu razmjenu poruka za zadani Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "\u05e1\u05de\u05df \u05db\u05e7\u05d1\u05d5\u05e6\u05d4";
+      return "Ozna\u010di kao grupu";
     },
     get$commandHint_ban() {
-      return "\u05d7\u05e1\u05d5\u05dd \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05de\u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
+      return "Isklju\u010di navedenog korisnika iz ove sobe";
     },
     get$commandHint_clearcache() {
-      return "\u05e0\u05e7\u05d4 \u05de\u05d8\u05de\u05d5\u05df";
+      return "Isprazni predmemoriju";
     },
     get$commandHint_create() {
-      return "\u05e6\u05d5\u05e8 \u05e6'\u05d0\u05d8 \u05e7\u05d1\u05d5\u05e6\u05ea\u05d9 \u05e8\u05d9\u05e7\n\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1--no-encryption \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05d1\u05d9\u05ea \u05d0\u05ea \u05d4\u05d4\u05e6\u05e4\u05e0\u05d4";
+      return "Stvori prazan grupni razgovor\nKoristi --no-encryption za deaktiviranje \u0161ifriranja";
     },
     get$commandHint_discardsession() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05d4\u05e1\u05e9\u05df";
+      return "Odbaci sesiju";
     },
     get$commandHint_dm() {
-      return "\u05d4\u05ea\u05d7\u05dc \u05e6'\u05d0\u05d8 \u05d9\u05e9\u05d9\u05e8\n\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1--no-encryption \u05db\u05d3\u05d9 \u05dc\u05d4\u05e9\u05d1\u05d9\u05ea \u05d0\u05ea \u05d4\u05d4\u05e6\u05e4\u05e0\u05d4";
+      return "Zapo\u010dni izravni razgovor\nKoristi --no-encryption za deaktiviranje \u0161ifriranja";
     },
     get$commandHint_html() {
-      return "\u05e9\u05dc\u05d7 \u05d8\u05e7\u05e1\u05d8 \u05d1\u05ea\u05d1\u05e0\u05d9\u05ea HTML";
+      return "Po\u0161alji HTML formatirani tekst";
     },
     get$commandHint_invite() {
-      return "\u05d4\u05d6\u05de\u05df \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05dc\u05d7\u05d3\u05e8 \u05d6\u05d4";
+      return "Pozovi navedenog korisnika u ovu sobu";
     },
     get$commandHint_join() {
-      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05d7\u05d3\u05e8 \u05d4\u05e0\u05ea\u05d5\u05df";
+      return "Pridru\u017ei se navedenoj sobi";
     },
     get$commandHint_kick() {
-      return "\u05d4\u05e1\u05e8 \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05de\u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
+      return "Ukloni navedenog korisnika iz ove sobe";
     },
     get$commandHint_leave() {
-      return "\u05e2\u05d6\u05d5\u05d1 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
+      return "Napusti ovu sobu";
     },
     get$commandHint_me() {
-      return "\u05ea\u05d0\u05e8 \u05d0\u05ea \u05e2\u05e6\u05de\u05da";
+      return "Opi\u0161i se";
     },
     get$commandHint_myroomavatar() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05d0\u05ea \u05d4\u05ea\u05de\u05d5\u05e0\u05d4 \u05e9\u05dc\u05da \u05dc\u05d7\u05d3\u05e8 \u05d6\u05d4 (\u05e2\u05dc \u05d9\u05d3\u05d9 mxc-uri)";
+      return "Postavi svoju sliku za ovu sobu (mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05d0\u05ea \u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4 \u05e9\u05dc\u05da \u05e2\u05d1\u05d5\u05e8 \u05d7\u05d3\u05e8 \u05d6\u05d4";
+      return "Postavi svoje ime za ovu sobu";
     },
     get$commandHint_op() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05ea \u05e8\u05de\u05ea \u05e6\u05e8\u05d9\u05db\u05ea \u05d4\u05d7\u05e9\u05de\u05dc \u05e9\u05dc \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df (\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc: 50)";
+      return "Postavi razinu prava navedenog korisnika (standardno: 50)";
     },
     get$commandHint_plain() {
-      return "\u05e9\u05dc\u05d7 \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d0 \u05de\u05e2\u05d5\u05e6\u05d1";
+      return "Po\u0161alji neformatirani tekst";
     },
     get$commandHint_react() {
-      return "\u05e9\u05dc\u05d7 \u05ea\u05e9\u05d5\u05d1\u05d4 \u05db\u05ea\u05d2\u05d5\u05d1\u05d4";
+      return "Po\u0161alji odgovor kao reakciju";
     },
     get$commandHint_send() {
-      return "\u05e9\u05dc\u05d7 \u05d8\u05e7\u05e1\u05d8";
+      return "Po\u0161alji tekst";
     },
     get$commandHint_unban() {
-      return "\u05d1\u05d8\u05dc \u05d0\u05ea \u05d4\u05d7\u05e1\u05d9\u05de\u05d4 \u05e9\u05dc \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05e0\u05ea\u05d5\u05df \u05de\u05d4\u05d7\u05d3\u05e8 \u05d4\u05d6\u05d4";
+      return "Ponovo uklju\u010di navedenog korisnika u ovu sobu";
     },
     get$compareEmojiMatch() {
-      return "\u05d4\u05e9\u05d5\u05d5\u05d4 \u05d5\u05d5\u05d3\u05d0 \u05e9\u05d4\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05d4\u05d1\u05d0\u05d9\u05dd \u05ea\u05d5\u05d0\u05de\u05d9\u05dd \u05dc\u05d0\u05dc\u05d5 \u05e9\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05e9\u05e0\u05d9:";
+      return "Usporedi emoji sli\u010dice";
     },
     get$compareNumbersMatch() {
-      return "\u05d4\u05e9\u05d5\u05d5\u05d4 \u05d5\u05d5\u05d3\u05d0 \u05e9\u05d4\u05de\u05e1\u05e4\u05e8\u05d9\u05dd \u05d4\u05d1\u05d0\u05d9\u05dd \u05ea\u05d5\u05d0\u05de\u05d9\u05dd \u05dc\u05d0\u05dc\u05d4 \u05e9\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05e9\u05e0\u05d9:";
+      return "Usporedi brojeve";
     },
     get$configureChat() {
-      return "\u05e7\u05d1\u05d9\u05e2\u05ea \u05ea\u05e6\u05d5\u05e8\u05d4 \u05e9\u05dc \u05e6'\u05d0\u05d8";
+      return "Konfiguriraj razgovor";
     },
     get$confirm(_) {
-      return "\u05dc\u05d0\u05e9\u05e8";
+      return "Potvrdi";
     },
     get$copiedToClipboard() {
-      return "\u05d4\u05d5\u05e2\u05ea\u05e7 \u05dc\u05dc\u05d5\u05d7 \u05d4\u05d2\u05d6\u05d9\u05e8\u05d9\u05dd";
+      return "Kopirano u me\u0111uspremnik";
     },
     get$copy(_) {
-      return "\u05d4\u05e2\u05ea\u05e7";
+      return "Kopiraj";
     },
     couldNotDecryptMessage$1(error) {
-      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05e4\u05e2\u05e0\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4: " + error;
+      return "Neuspjelo de\u0161ifriranje poruke: " + error;
     },
     get$checkList() {
-      return "\u05e8\u05e9\u05d9\u05de\u05ea \u05d1\u05d3\u05d9\u05e7\u05d4";
+      return "Popis za provjeru";
     },
     countParticipants$1(count) {
-      return "" + count + " \u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
+      return "" + count + " sudionika";
     },
     countInvited$1(count) {
-      return "" + count + " \u05de\u05d5\u05d6\u05de\u05e0\u05d9\u05dd";
+      return "Pozvani: " + count;
     },
     get$create(_) {
-      return "\u05e6\u05d5\u05e8";
+      return "Stvori";
     },
     createdTheChat$1(username) {
-      return username + " \u05d9\u05e6\u05e8 \u05d0\u05ea \u05d4\u05e6'\u05d0\u05d8";
+      return "\ud83d\udcac " + username + " je zapo\u010deo/la razgovor";
     },
     get$createGroup() {
-      return "\u05e6\u05d5\u05e8 \u05e7\u05d1\u05d5\u05e6\u05d4";
+      return "Stvori grupu";
     },
     get$currentlyActive() {
-      return "\u05e4\u05e2\u05d9\u05dc \u05db\u05e2\u05ea";
+      return "Trenuta\u010dno aktivni";
     },
     get$darkTheme() {
-      return "\u05db\u05d4\u05d4";
+      return "Tamna";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05ea\u05e9\u05d1\u05d9\u05ea \u05d0\u05ea \u05d7\u05e9\u05d1\u05d5\u05df \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05da. \u05d0\u05d9 \u05d0\u05e4\u05e9\u05e8 \u05dc\u05d1\u05d8\u05dc \u05d0\u05ea \u05d6\u05d4! \u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7?";
+      return "Ovo \u0107e nepovratno deaktivirati tvoj korisni\u010dki ra\u010dun. Stvarno to \u017eeli\u0161?";
     },
     get$defaultPermissionLevel() {
-      return "\u05e8\u05de\u05ea \u05d4\u05e8\u05e9\u05d0\u05ea \u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc";
+      return "Standardna razina dozvole";
     },
     get$$delete(_) {
-      return "\u05de\u05d7\u05d9\u05e7\u05d4";
+      return "Izbri\u0161i";
     },
     get$deleteAccount() {
-      return "\u05de\u05d7\u05e7 \u05d7\u05e9\u05d1\u05d5\u05df";
+      return "Izbri\u0161i ra\u010dun";
     },
     get$deleteMessage() {
-      return "\u05de\u05d7\u05e7 \u05d4\u05d5\u05d3\u05e2\u05d4";
+      return "Izbri\u0161i poruku";
     },
     get$devices() {
-      return "\u05d4\u05ea\u05e7\u05e0\u05d9\u05dd";
+      return "Ure\u0111aji";
     },
     get$displaynameHasBeenChanged() {
-      return "\u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4 \u05d4\u05e9\u05ea\u05e0\u05d4";
+      return "Prikazno ime je promijenjeno";
     },
     get$downloadFile() {
-      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5";
+      return "Preuzmi datoteku";
     },
     get$edit() {
-      return "\u05e2\u05e8\u05d5\u05da";
+      return "Uredi";
     },
     get$editBlockedServers() {
-      return "\u05e2\u05e8\u05d5\u05da \u05e9\u05e8\u05ea\u05d9\u05dd \u05d7\u05e1\u05d5\u05de\u05d9\u05dd";
+      return "Uredi blokirane poslu\u017eitelje";
     },
     get$chatPermissions() {
-      return "\u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05e9\u05d9\u05d7\u05d4";
+      return "Dozvole za razgovor";
     },
     get$editDisplayname() {
-      return "\u05e2\u05e8\u05d5\u05da \u05d0\u05ea \u05e9\u05dd \u05d4\u05ea\u05e6\u05d5\u05d2\u05d4";
+      return "Uredi prikazano ime";
     },
     get$editRoomAvatar() {
-      return "\u05e2\u05e8\u05d9\u05db\u05ea \u05d0\u05d5\u05d5\u05d8\u05d0\u05e8 \u05e9\u05dc \u05d7\u05d3\u05e8";
+      return "Uredi avatar sobe";
     },
     get$emoteExists() {
-      return "\u05d0\u05d9\u05de\u05d5\u05d8 \u05db\u05d1\u05e8 \u05e7\u05d9\u05d9\u05dd!";
+      return "Emotikon ve\u0107 postoji!";
     },
     get$emoteInvalid() {
-      return "\u05e7\u05d5\u05d3 \u05e8\u05d2\u05e9 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9!";
+      return "Neispravna kratica emotikona!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\u05e8\u05d2\u05e9\u05d5\u05ea \u05e9\u05d4\u05d9\u05d5 \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05dc\u05d0\u05d7\u05e8\u05d5\u05e0\u05d4 \u05d9\u05d5\u05e4\u05d9\u05e2\u05d5 \u05db\u05d0\u05df...";
+      return "Ovdje \u0107e se pojaviti nedavno kori\u0161teni emotikoni \u2026";
     },
     get$emotePacks() {
-      return "\u05d7\u05d1\u05d9\u05dc\u05d5\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05dc\u05d7\u05d3\u05e8";
+      return "Paketi emotikona za sobu";
     },
     get$customEmojisAndStickers() {
-      return "\u05d0\u05de\u05d5\u05d2'\u05d9 \u05de\u05d3\u05d5\u05de\u05d9\u05dd \u05d5\u05e1\u05d8\u05d9\u05e7\u05e8\u05d9\u05dd \u05de\u05d5\u05ea\u05d0\u05de\u05d9\u05dd \u05d0\u05d9\u05e9\u05d9\u05ea";
+      return "Prilago\u0111eni emojiji i naljepnice";
     },
     get$emoteShortcode() {
-      return "\u05e7\u05d5\u05d3 \u05e7\u05e6\u05e8 \u05e9\u05dc \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9";
+      return "Kratica emotikona";
     },
     get$emoteWarnNeedToPick() {
-      return "\u05e2\u05dc\u05d9\u05da \u05dc\u05d1\u05d7\u05d5\u05e8 \u05e7\u05d5\u05d3 \u05e7\u05e6\u05e8 \u05e9\u05dc \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05d5\u05ea\u05de\u05d5\u05e0\u05d4!";
+      return "Mora\u0161 odabrati jednu kraticu emotikona i sliku!";
     },
     get$emptyChat() {
-      return "\u05e6'\u05d0\u05d8 \u05e8\u05d9\u05e7";
+      return "Prazan razgovor";
     },
     get$enableEmotesGlobally() {
-      return "\u05d4\u05e4\u05e2\u05dc\u05ea \u05d7\u05d1\u05d9\u05dc\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05d1\u05d0\u05d5\u05e4\u05df \u05d2\u05dc\u05d5\u05d1\u05dc\u05d9";
+      return "Aktiviraj paket emotikona globalno";
     },
     get$enableEncryption() {
-      return "\u05d0\u05e4\u05e9\u05e8 \u05d4\u05e6\u05e4\u05e0\u05d4";
+      return "Aktiviraj \u0161ifriranje";
     },
     get$encrypted() {
-      return "\u05de\u05d5\u05e6\u05e4\u05df";
+      return "\u0160ifrirano";
     },
     get$encryptionNotEnabled() {
-      return "\u05d4\u05d4\u05e6\u05e4\u05e0\u05d4 \u05d0\u05d9\u05e0\u05d4 \u05de\u05d5\u05e4\u05e2\u05dc\u05ea";
+      return "\u0160ifriranje nije aktivirano";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \u05e1\u05d9\u05d9\u05dd \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4";
+      return senderName + " je zavr\u0161io/la poziv";
     },
     get$enterAnEmailAddress() {
-      return "\u05d4\u05d6\u05df \u05db\u05ea\u05d5\u05d1\u05ea \u05d3\u05d5\u05d0\u05e8 \u05d0\u05dc\u05e7\u05d8\u05e8\u05d5\u05e0\u05d9";
+      return "Upi\u0161i e-adressu";
     },
     errorObtainingLocation$1(error) {
-      return "\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05d4\u05e9\u05d2\u05ea \u05de\u05d9\u05e7\u05d5\u05dd: " + error;
+      return "Gre\u0161ka u dohva\u0107anju lokacije: " + error;
     },
     get$fontSize(_) {
-      return "\u05d2\u05d5\u05d3\u05dc \u05d2\u05d5\u05e4\u05df";
+      return "Veli\u010dina fonta";
     },
     get$forward(_) {
-      return "\u05d4\u05e2\u05d1\u05e8";
+      return "Proslijedi";
     },
     get$fromJoining() {
-      return "\u05de\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
+      return "Od pridru\u017eivanja";
     },
     get$fromTheInvitation() {
-      return "\u05de\u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
+      return "Od poziva";
     },
     get$guestsAreForbidden() {
-      return "\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd \u05d0\u05e1\u05d5\u05e8\u05d9\u05dd";
+      return "Gosti su zabranjeni";
     },
     get$guestsCanJoin() {
-      return "\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3";
+      return "Gosti se mogu pridru\u017eiti";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " \u05d1\u05d9\u05d8\u05dc \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4 \u05e2\u05d1\u05d5\u05e8 " + targetName;
+      return username + " je povukao/la poziv za " + targetName;
     },
     get$help() {
-      return "\u05e2\u05d6\u05e8\u05d4";
+      return "Pomo\u0107";
     },
     get$hideRedactedMessages() {
-      return "\u05d4\u05e1\u05ea\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05de\u05e6\u05d5\u05e0\u05d6\u05e8\u05d5\u05ea";
+      return "Sakrij redigirane poruke";
     },
     get$hideRedactedMessagesBody() {
-      return "\u05d0\u05dd \u05de\u05d9\u05e9\u05d4\u05d5 \u05de\u05e6\u05e0\u05d6\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4, \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5 \u05dc\u05d0 \u05ea\u05d4\u05d9\u05d4 \u05e0\u05e8\u05d0\u05d9\u05ea \u05d9\u05d5\u05ea\u05e8 \u05d1\u05e9\u05d9\u05d7\u05d4.";
+      return "Ako netko redigira poruku, ta poruka vi\u0161e ne\u0107e biti vidljiva u razgovoru.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\u05d4\u05e1\u05ea\u05e8 \u05e4\u05d5\u05e8\u05de\u05d8\u05d9\u05dd \u05e9\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05dc\u05d0 \u05ea\u05e7\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2\u05d9\u05dd";
+      return "Sakrij neva\u017ee\u0107e ili nepoznate formate poruka";
     },
     get$block() {
-      return "\u05d7\u05e1\u05d5\u05dd";
+      return "Blokiraj";
     },
     get$blockedUsers() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d7\u05e1\u05d5\u05de\u05d9\u05dd";
+      return "Blokirani korisnici";
     },
     get$blockListDescription() {
-      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d7\u05e1\u05d5\u05dd \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05e9\u05de\u05e4\u05e8\u05d9\u05e2\u05d9\u05dd \u05dc\u05da. \u05dc\u05d0 \u05ea\u05d5\u05db\u05dc \u05dc\u05e7\u05d1\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d0\u05d5 \u05d4\u05d6\u05de\u05e0\u05d5\u05ea \u05dc\u05d7\u05d3\u05e8\u05d9\u05dd \u05de\u05d4\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d1\u05e8\u05e9\u05d9\u05de\u05ea \u05d4\u05d7\u05e1\u05d9\u05de\u05d4 \u05d4\u05d0\u05d9\u05e9\u05d9\u05ea \u05e9\u05dc\u05da.";
+      return "Mo\u017ee\u0161 blokirati korisnike koji te ometaju. Ne\u0107e\u0161 mo\u0107i primati poruke ili pozivnice za sobe od korisnika koji se nalaze u tvom osobnom popisu blokiranih.";
     },
     get$blockUsername() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
+      return "Zanemari korisni\u010dko ime";
     },
     get$iHaveClickedOnLink() {
-      return "\u05dc\u05d7\u05e6\u05ea\u05d9 \u05e2\u05dc \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Pritisnuo/la sam poveznicu";
     },
     get$incorrectPassphraseOrKey() {
-      return "\u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d0\u05d5 \u05de\u05e4\u05ea\u05d7 \u05e9\u05d7\u05d6\u05d5\u05e8 \u05e9\u05d2\u05d5\u05d9\u05d9\u05dd";
+      return "Neispravna lozinka ili klju\u010d za obnavljanje";
     },
     get$inviteContact() {
-      return "\u05d4\u05d6\u05de\u05df \u05d0\u05d9\u05e9 \u05e7\u05e9\u05e8";
+      return "Pozovi kontakt";
     },
     get$noChatDescriptionYet() {
-      return "\u05e2\u05d3\u05d9\u05d9\u05df \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8 \u05ea\u05d9\u05d0\u05d5\u05e8 \u05dc\u05e9\u05d9\u05d7\u05d4.";
+      return "Opis razgovora jo\u0161 nije stvoren.";
     },
     get$tryAgain() {
-      return "\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1";
+      return "Poku\u0161aj ponovo";
     },
     get$invited() {
-      return "\u05d4\u05d6\u05de\u05d9\u05df";
+      return "Pozvan/a";
     },
     get$redactMessageDescription() {
-      return "\u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05ea\u05d9\u05de\u05d7\u05e7 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d1\u05e9\u05d9\u05d7\u05d4 \u05d6\u05d5. \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc.";
+      return "Poruka \u0107e se redigirati za sve sudionike u ovom razgovoru. To se ne mo\u017ee poni\u0161titi.";
     },
     get$optionalRedactReason() {
-      return "(\u05d0\u05d5\u05e4\u05e6\u05d9\u05d5\u05e0\u05dc\u05d9) \u05e1\u05d9\u05d1\u05ea \u05de\u05d7\u05d9\u05e7\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4...";
+      return "(Opcionalno) Razlog za redigiranje ove poruke \u2026";
     },
     invitedUser$2(username, targetName) {
-      return username + " \u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05ea " + targetName;
+      return "\ud83d\udce9 " + username + " je pozvao/la " + targetName;
     },
     get$invitedUsersOnly() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05de\u05d5\u05d6\u05de\u05e0\u05d9\u05dd \u05d1\u05dc\u05d1\u05d3";
+      return "Samo pozvani korisnici";
     },
     get$inviteForMe() {
-      return "\u05d4\u05d6\u05de\u05e0\u05d4 \u05d1\u05e9\u05d1\u05d9\u05dc\u05d9";
+      return "Poziv za mene";
     },
     get$isTyping() {
-      return "\u05de\u05e7\u05dc\u05d9\u05d3/\u05d4\u2026";
+      return "pi\u0161e \u2026";
     },
     joinedTheChat$1(username) {
-      return username + " \u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e6'\u05d0\u05d8";
+      return "\ud83d\udc4b " + username + " se pridru\u017eio/la razgovoru";
     },
     kicked$2(username, targetName) {
-      return username + " \u05d1\u05e2\u05d8 \u05d1 " + targetName;
+      return "\ud83d\udc5e " + username + " je izbacio/la " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d7\u05e8\u05d5\u05e0\u05d4: " + localizedTimeShort;
+      return "Zadnja aktivnost: " + localizedTimeShort;
     },
     get$leave() {
-      return "\u05dc\u05e2\u05d6\u05d5\u05d1";
+      return "Napusti";
     },
     get$leftTheChat() {
-      return "\u05e2\u05d6\u05d1 \u05d0\u05ea \u05d4\u05e6'\u05d0\u05d8";
+      return "Napustio/la je razgovor";
     },
     get$lightTheme() {
-      return "\u05d1\u05d4\u05d9\u05e8";
+      return "Svijetla";
     },
     get$dehydrate() {
-      return "\u05d9\u05e6\u05d5\u05d0 \u05e1\u05e9\u05df \u05d5\u05e0\u05d9\u05e7\u05d5\u05d9 \u05de\u05db\u05e9\u05d9\u05e8";
+      return "Izvezi sesiju i izbri\u0161i ure\u0111aj";
     },
     get$dehydrateWarning() {
-      return "\u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc. \u05d5\u05d3\u05d0 \u05e9\u05d0\u05ea\u05d4 \u05e9\u05d5\u05de\u05e8 \u05d0\u05ea \u05e7\u05d5\u05d1\u05e5 \u05d4\u05d2\u05d9\u05d1\u05d5\u05d9 \u05d1\u05de\u05e7\u05d5\u05dd \u05d1\u05d8\u05d5\u05d7.";
+      return "Ovo je nepovratna radnja. Spremi datoteku sigurnosne kopije na sigurno mjeto.";
     },
     get$dehydrateTor() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9 TOR: \u05d9\u05e6\u05d5\u05d0 \u05e1\u05e9\u05df";
+      return "Korisnici TOR-a: izvezite sesiju";
     },
     get$dehydrateTorLong() {
-      return "\u05dc\u05de\u05e9\u05ea\u05de\u05e9\u05d9 TOR, \u05de\u05d5\u05de\u05dc\u05e5 \u05dc\u05d9\u05d9\u05e6\u05d0 \u05d0\u05ea \u05d4\u05e1\u05e9\u05df \u05dc\u05e4\u05e0\u05d9 \u05e1\u05d2\u05d9\u05e8\u05ea \u05d4\u05d7\u05dc\u05d5\u05df.";
+      return "Korisnicima TOR-a preporu\u010duje se izvoz sesije prije zatvaranja prozora.";
     },
     get$loadingPleaseWait() {
-      return "\u05d8\u05d5\u05e2\u05df \u05d0\u05e0\u05d0 \u05d4\u05de\u05ea\u05df.";
+      return "U\u010ditava se \u2026 Pri\u010dekaj.";
     },
     get$loadMore() {
-      return "\u05d8\u05e2\u05df \u05e2\u05d5\u05d3\u2026";
+      return "U\u010ditaj jo\u0161 \u2026";
     },
     get$locationDisabledNotice() {
-      return "\u05e9\u05d9\u05e8\u05d5\u05ea\u05d9 \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05de\u05d5\u05e9\u05d1\u05ea\u05d9\u05dd. \u05d0\u05e0\u05d0 \u05d4\u05e4\u05e2\u05dc \u05d0\u05d5\u05ea\u05dd \u05db\u05d3\u05d9 \u05dc\u05e9\u05ea\u05e3 \u05d0\u05ea \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05e9\u05dc\u05da.";
+      return "Lokacijske usluge su deaktivirane. Za dijeljenje tvoje lokacije aktiviraj ih.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\u05d4\u05e8\u05e9\u05d0\u05ea \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05e0\u05d3\u05d7\u05ea\u05d4. \u05d0\u05e0\u05d0 \u05d0\u05e4\u05e9\u05e8 \u05d0\u05ea \u05d4\u05d9\u05db\u05d5\u05dc\u05ea \u05dc\u05e9\u05ea\u05e3 \u05d0\u05ea \u05de\u05d9\u05e7\u05d5\u05de\u05da.";
+      return "Lokacijske dozvole su odbijene. Za dijeljenje tvoje lokacije dozvoli ih.";
     },
     get$login() {
-      return "\u05db\u05e0\u05d9\u05e1\u05d4";
+      return "Prijava";
     },
     get$logout() {
-      return "\u05d9\u05e6\u05d9\u05d0\u05d4";
+      return "Odjava";
     },
     get$mention() {
-      return "\u05d4\u05d6\u05db\u05d9\u05e8";
+      return "Spominjanje";
     },
     get$messages() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
+      return "Poruke";
     },
     get$messagesStyle() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea:";
+      return "Poruke:";
     },
     get$moderator() {
-      return "\u05de\u05e0\u05d7\u05d4";
+      return "Voditelj";
     },
     get$newChat() {
-      return "\u05e6'\u05d0\u05d8 \u05d7\u05d3\u05e9";
+      return "Novi razgovor";
     },
     get$newVerificationRequest() {
-      return "\u05d1\u05e7\u05e9\u05ea \u05d0\u05d9\u05de\u05d5\u05ea \u05d7\u05d3\u05e9\u05d4!";
+      return "Novi zahtjev za potvr\u0111ivanje!";
     },
     get$next(_) {
-      return "\u05d4\u05d1\u05d0";
+      return "Dalje";
     },
     get$no() {
-      return "\u05dc\u05d0";
+      return "Ne";
     },
     get$noConnectionToTheServer() {
-      return "\u05d0\u05d9\u05df \u05d7\u05d9\u05d1\u05d5\u05e8 \u05dc\u05e9\u05e8\u05ea";
+      return "Ne postoji veza s poslu\u017eiteljem";
     },
     get$noEmotesFound() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05d0\u05de\u05d5\u05d8\u05d9\u05e7\u05d5\u05e0\u05d9\u05dd. \ud83d\ude15";
+      return "Nema emotikona. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\u05e9\u05ea\u05e3 \u05e7\u05d9\u05e9\u05d5\u05e8 \u05d4\u05d6\u05de\u05e0\u05d4";
+      return "Dijeli poveznicu za poziv";
     },
     get$none() {
-      return "\u05dc\u05dc\u05d0";
+      return "Ni\u0161ta";
     },
     get$noPasswordRecoveryDescription() {
-      return "\u05e2\u05d3\u05d9\u05d9\u05df \u05dc\u05d0 \u05d4\u05d5\u05e1\u05e4\u05ea \u05d3\u05e8\u05da \u05dc\u05e9\u05d7\u05d6\u05e8 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da.";
+      return "Jo\u0161 nisi dodao/la na\u010din za obnavljanje lozinke.";
     },
     get$noPermission() {
-      return "\u05d0\u05d9\u05df \u05d4\u05e8\u05e9\u05d0\u05d4";
+      return "Bez dozvole";
     },
     get$noRoomsFound() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05d7\u05d3\u05e8\u05d9\u05dd\u2026";
+      return "Nema soba \u2026";
     },
     get$notifications() {
-      return "\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea";
+      return "Obavijesti";
     },
     get$obtainingLocation() {
-      return "\u05de\u05e9\u05d9\u05d2 \u05de\u05d9\u05e7\u05d5\u05dd\u2026";
+      return "Dohva\u0107anje lokacije \u2026";
     },
     get$offensive() {
-      return "\u05e4\u05d5\u05d2\u05e2\u05e0\u05d9";
+      return "Uvredljiv";
     },
     get$ok() {
-      return "\u05d0\u05d9\u05e9\u05d5\u05e8";
+      return "U redu";
     },
     get$oopsSomethingWentWrong() {
-      return "\u05d0\u05d5\u05e4\u05e1, \u05de\u05e9\u05d4\u05d5 \u05d4\u05e9\u05ea\u05d1\u05e9\u2026";
+      return "Ups, dogodila se gre\u0161ka \u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u05d0\u05d7\u05d3 \u05de\u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05e9\u05dc\u05da \u05d4\u05ea\u05e0\u05ea\u05e7";
+      return "Jedan od tvojih klijenata je odjavljen";
     },
     get$openInMaps() {
-      return "\u05e4\u05ea\u05d9\u05d7\u05d4 \u05d1\u05de\u05e4\u05d5\u05ea";
+      return "Otvori u kartama";
     },
     get$link() {
-      return "\u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Poveznica";
     },
     get$serverRequiresEmail() {
-      return "\u05e9\u05e8\u05ea \u05d6\u05d4 \u05e6\u05e8\u05d9\u05da \u05dc\u05d0\u05de\u05ea \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0\u05e8 \u05d4\u05d0\u05dc\u05e7\u05d8\u05e8\u05d5\u05e0\u05d9 \u05e9\u05dc\u05da \u05dc\u05e8\u05d9\u05e9\u05d5\u05dd.";
+      return "Za registraciju ovaj poslu\u017eitelj mora potvrditi tvoju e-mail adresu.";
     },
     get$participant() {
-      return "\u05de\u05e9\u05ea\u05ea\u05e3";
+      return "Sudionik";
     },
     get$passphraseOrKey() {
-      return "\u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d0\u05d5 \u05de\u05e4\u05ea\u05d7 \u05e9\u05d7\u05d6\u05d5\u05e8";
+      return "tajni izraz ili klju\u010d za obnavljanje";
     },
     get$password(_) {
-      return "\u05e1\u05d9\u05e1\u05de\u05d4";
+      return "Lozinka";
     },
     get$passwordForgotten() {
-      return "\u05e9\u05db\u05d7\u05ea\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4";
+      return "Zaboravljena lozinka";
     },
     get$passwordHasBeenChanged() {
-      return "\u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05d5\u05e0\u05ea\u05d4";
+      return "Lozinka je promijenjena";
     },
     get$overview() {
-      return "\u05e1\u05e7\u05d9\u05e8\u05d4";
+      return "Pregled";
     },
     get$passwordRecoverySettings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e9\u05d7\u05d6\u05d5\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4";
+      return "Postavke za obnavljanje lozinke";
     },
     get$passwordRecovery() {
-      return "\u05e9\u05d7\u05d6\u05d5\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4";
+      return "Obnavljanje lozinke";
     },
     get$pickImage() {
-      return "\u05d1\u05d7\u05e8 \u05ea\u05de\u05d5\u05e0\u05d4";
+      return "Odaberi sliku";
     },
     get$pin() {
-      return "\u05e7\u05d5\u05d3 pin";
+      return "Prikva\u010di";
     },
     get$pleaseChoose() {
-      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8";
+      return "Odaberi";
     },
     get$pleaseEnterYourPassword() {
-      return "\u05e0\u05d0 \u05d4\u05d6\u05df \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da";
+      return "Upi\u0161i svoju lozinku";
     },
     get$pleaseEnterYourPin() {
-      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05d0\u05ea \u05e7\u05d5\u05d3 \u05d4pin \u05e9\u05dc\u05da";
+      return "Upi\u0161i svoj pin";
     },
     get$pleaseEnterYourUsername() {
-      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
+      return "Upi\u0161i svoje korisni\u010dko ime";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\u05d0\u05e0\u05d0 \u05e2\u05e7\u05d5\u05d1 \u05d0\u05d7\u05e8 \u05d4\u05d4\u05d5\u05e8\u05d0\u05d5\u05ea \u05d1\u05d0\u05ea\u05e8 \u05d5\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05d1\u05d0.";
+      return "Slijedi upute na web-stranici i dodirni \u201eDalje\u201d.";
     },
     get$privacy() {
-      return "\u05e4\u05e8\u05d8\u05d9\u05d5\u05ea";
+      return "Privatnost";
     },
     get$reason(_) {
-      return "\u05e1\u05d9\u05d1\u05d4";
+      return "Razlog";
     },
     redactedBy$1(username) {
-      return "\u05e2\u05e8\u05d5\u05da \u05e2\u05dc \u05d9\u05d3\u05d9 " + username;
+      return "Preure\u0111eno od " + username;
     },
     get$directChat() {
-      return "\u05e9\u05d9\u05d7\u05ea \u05d9\u05e9\u05d9\u05e8\u05d4";
+      return "Izravni razgovor";
     },
     redactedByBecause$2(username, reason) {
-      return "\u05e2\u05e8\u05d5\u05da \u05e2\u05dc \u05d9\u05d3\u05d9 " + username + ' \u05db\u05d9: "' + reason + '"';
+      return "Preure\u0111eno od " + username + " zbog: \u201e" + reason + "\u201d";
     },
     redactedAnEvent$1(username) {
-      return username + " \u05e2\u05e8\u05da \u05d0\u05d9\u05e8\u05d5\u05e2";
+      return username + " je preuredio/la doga\u0111aj";
     },
     get$redactMessage() {
-      return "\u05e2\u05e8\u05d5\u05da \u05d4\u05d5\u05d3\u05e2\u05d4";
+      return "Ispravi poruku";
     },
     get$reject() {
-      return "\u05d3\u05d7\u05d4";
+      return "Odbij";
     },
     rejectedTheInvitation$1(username) {
-      return username + " \u05d3\u05d7\u05d4 \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
+      return username + " je odbio/la poziv";
     },
     get$removeAllOtherDevices() {
-      return "\u05d4\u05e1\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd";
+      return "Ukloni sve druge ure\u0111aje";
     },
     get$unbanFromChat() {
-      return "\u05d1\u05d8\u05dc \u05d7\u05e1\u05d9\u05de\u05d4 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4";
+      return "Ponovo uklju\u010di u razgovor";
     },
     get$removeYourAvatar() {
-      return "\u05d4\u05e1\u05e8 \u05d0\u05ea \u05d4\u05e1\u05de\u05dc \u05d4\u05d0\u05d9\u05e9\u05d9 \u05e9\u05dc\u05da";
+      return "Ukloni svoj avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\u05d4\u05d7\u05dc\u05e3 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d1\u05d2\u05e8\u05e1\u05d4 \u05d7\u05d3\u05e9\u05d4 \u05d9\u05d5\u05ea\u05e8";
+      return "Zamijeni sobu s novom verzijom";
     },
     get$reply(_) {
-      return "\u05d4\u05e9\u05d1";
+      return "Odgovori";
     },
     get$reportMessage() {
-      return "\u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4";
+      return "Prijavi poruku";
     },
     get$roomHasBeenUpgraded() {
-      return "\u05d4\u05d7\u05d3\u05e8 \u05e9\u05d5\u05d3\u05e8\u05d2";
+      return "Soba je nadogra\u0111ena";
     },
     get$search(_) {
-      return "\u05d7\u05d9\u05e4\u05d5\u05e9";
+      return "Tra\u017ei";
     },
     get$security() {
-      return "\u05d0\u05d1\u05d8\u05d7\u05d4";
+      return "Sigurnost";
     },
     get$send(_) {
-      return "\u05e9\u05dc\u05d7";
+      return "Po\u0161alji";
     },
     get$sendAMessage() {
-      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4";
+      return "Po\u0161alji poruku";
     },
     get$sendAudio() {
-      return "\u05e9\u05dc\u05d7 \u05d0\u05d5\u05d3\u05d9\u05d5";
+      return "Po\u0161alji audio datoteku";
     },
     get$sendFile() {
-      return "\u05e9\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5";
+      return "Po\u0161alji datoteku";
     },
     get$sendImage() {
-      return "\u05e9\u05dc\u05d7 \u05ea\u05de\u05d5\u05e0\u05d4";
+      return "Po\u0161alji sliku";
     },
     sendImages$1(count) {
-      return "\u05e9\u05dc\u05d7 " + count + " \u05ea\u05de\u05d5\u05e0\u05d5\u05ea";
+      return "Po\u0161alji " + count + " sliku";
     },
     get$sendMessages() {
-      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
+      return "\u0160alji poruke";
     },
     get$sendVideo() {
-      return "\u05e9\u05dc\u05d7 \u05d5\u05d9\u05d3\u05d0\u05d5";
+      return "Po\u0161alji video datoteku";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " \u05e9\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5";
+      return "\ud83d\udcc1 " + username + " ja poslao/la datoteku";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " \u05e9\u05dc\u05d7 \u05d0\u05d5\u05d3\u05d9\u05d5";
+      return "\ud83c\udfa4 " + username + " ja poslao/la audio snimku";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " \u05e9\u05dc\u05d7 \u05ea\u05de\u05d5\u05e0\u05d4";
+      return "\ud83d\uddbc\ufe0f " + username + " ja poslao/la sliku";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " \u05e9\u05dc\u05d7 \u05de\u05d3\u05d1\u05e7\u05d4";
+      return "\ud83d\ude0a " + username + " je poslao/la naljepnicu";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " \u05e9\u05dc\u05d7 \u05d5\u05d9\u05d3\u05d0\u05d5";
+      return "\ud83c\udfa5 " + username + " je poslao/la video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " \u05e9\u05dc\u05d7 \u05e4\u05e8\u05d8\u05d9 \u05e9\u05d9\u05d7\u05d4";
+      return senderName + " je poslao/la podatke poziva";
     },
     get$separateChatTypes() {
-      return "\u05d4\u05e4\u05e8\u05d3 \u05e9\u05d9\u05d7\u05d5\u05ea \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05d5\u05e7\u05d1\u05d5\u05e6\u05d5\u05ea";
+      return "Odvojeni izravni razgovori, grupe i prostori";
     },
     get$setChatDescription() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05ea\u05d9\u05d0\u05d5\u05e8 \u05e9\u05d9\u05d7\u05d4";
+      return "Postavi opis rzgovora";
     },
     get$setStatus() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05de\u05e6\u05d1";
+      return "Postavi stanje";
     },
     get$settings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea";
+      return "Postavke";
     },
     get$share(_) {
-      return "\u05e9\u05ea\u05e3";
+      return "Dijeli";
     },
     sharedTheLocation$1(username) {
-      return username + " \u05e9\u05d9\u05ea\u05e3 \u05d0\u05ea \u05d4\u05de\u05d9\u05e7\u05d5\u05dd \u05e9\u05dc\u05d4\u05dd";
+      return username + " je dijelio/la svoje mjesto";
     },
     get$shareLocation() {
-      return "\u05e9\u05ea\u05e3 \u05de\u05d9\u05e7\u05d5\u05dd";
+      return "Dijeli lokaciju";
     },
     get$presencesToggle() {
-      return "\u05d4\u05e6\u05d2 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e1\u05d8\u05d8\u05d5\u05e1 \u05de\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd";
+      return "Prika\u017ei poruke stanja od drugih korisnika";
     },
     get$skip(_) {
-      return "\u05d3\u05dc\u05d2";
+      return "Presko\u010di";
     },
     get$sourceCode() {
-      return "\u05e7\u05d5\u05d3 \u05de\u05e7\u05d5\u05e8";
+      return "Izvorni k\u020fd";
     },
     startedACall$1(senderName) {
-      return senderName + " \u05d4\u05ea\u05d7\u05d9\u05dc \u05e9\u05d9\u05d7\u05d4";
+      return senderName + " ja zapo\u010deo/la poziv";
     },
     get$status(_) {
-      return "\u05e1\u05d8\u05d8\u05d5\u05e1";
+      return "Stanje";
     },
     get$statusExampleMessage() {
-      return "\u05d0\u05d9\u05da \u05d0\u05ea\u05d4 \u05d4\u05d9\u05d5\u05dd?";
+      return "Kako si danas?";
     },
     get$submit(_) {
-      return "\u05e9\u05dc\u05d7";
+      return "Po\u0161alji";
     },
     get$synchronizingPleaseWait() {
-      return "\u05de\u05e1\u05ea\u05e0\u05db\u05e8\u05df\u2026 \u05d0\u05e0\u05d0 \u05d4\u05de\u05ea\u05df.";
+      return "Sinkronizira se \u2026 Pri\u010dekaj.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return "\u05de\u05e1\u05ea\u05e0\u05db\u05e8\u05df\u2026 (" + percentage + "%)";
+      return "Sinkronizacija\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\u05de\u05e2\u05e8\u05db\u05ea";
+      return "Sustav";
     },
     get$theyDontMatch() {
-      return "\u05d4\u05dd \u05dc\u05d0 \u05ea\u05d5\u05d0\u05de\u05d9\u05dd";
+      return "Ne poklapaju se";
     },
     get$theyMatch() {
-      return "\u05d4\u05dd \u05ea\u05d5\u05d0\u05de\u05d9\u05dd";
+      return "Poklapaju se";
     },
     get$tooManyRequestsWarning() {
-      return "\u05d9\u05d5\u05ea\u05e8 \u05de\u05d3\u05d9 \u05d1\u05e7\u05e9\u05d5\u05ea. \u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1 \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8!";
+      return "Previ\u0161e zahtjeva. Poku\u0161aj ponovo kasnije!";
     },
     get$tryToSendAgain() {
-      return "\u05e0\u05e1\u05d4 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05e9\u05d5\u05d1";
+      return "Poku\u0161aj ponovo poslati";
     },
     get$unavailable() {
-      return "\u05dc\u05d0 \u05d6\u05de\u05d9\u05df";
+      return "Nedostupno";
     },
     unbannedUser$2(username, targetName) {
-      return username + " \u05d4\u05d5\u05e1\u05e8 \u05d4\u05de\u05e0\u05d9\u05e2\u05d4 \u05de-" + targetName;
+      return username + " je ponovo uklju\u010dio/la " + targetName;
     },
     get$unblockDevice() {
-      return "\u05d1\u05d8\u05dc \u05d7\u05e1\u05d9\u05de\u05ea \u05de\u05db\u05e9\u05d9\u05e8";
+      return "Deblokiraj ure\u0111aj";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\u05d0\u05dc\u05d2\u05d5\u05e8\u05d9\u05ea\u05dd \u05d4\u05d4\u05e6\u05e4\u05e0\u05d4 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
+      return "Nepoznat algoritam \u0161ifriranja";
     },
     unknownEvent$1(type) {
-      return "\u05d0\u05d9\u05e8\u05d5\u05e2 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2 '" + type + "'";
+      return "Nepoznat doga\u0111aj \u201e" + type + "\u201d";
     },
     get$unpin() {
-      return "\u05d1\u05d8\u05dc \u05e7\u05d9\u05d1\u05d5\u05e2";
+      return "Otkva\u010di";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u05d5-" + count + " \u05d0\u05d7\u05e8\u05d9\u05dd \u05de\u05e7\u05dc\u05d9\u05d3\u05d9\u05dd\u2026";
+      return username + " i jo\u0161 " + count + " korisnika pi\u0161u \u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u05d5-" + username2 + " \u05de\u05e7\u05dc\u05d9\u05d3\u05d9\u05dd\u2026";
+      return username + " i " + username2 + " pi\u0161u \u2026";
     },
     userIsTyping$1(username) {
-      return username + " \u05de\u05e7\u05dc\u05d9\u05d3\u2026";
+      return username + " pi\u0161e \u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " \u05e2\u05d6\u05d1 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4";
+      return "\ud83d\udeaa " + username + " je napustio/la razgovor";
     },
     get$username(_) {
-      return "\u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
+      return "Korisni\u010dko ime";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " \u05e9\u05dc\u05d7 \u05d0\u05d9\u05e8\u05d5\u05e2 " + type;
+      return username + " ja poslao/la " + type + " doga\u0111aj";
     },
     get$unverified() {
-      return "\u05dc\u05d0 \u05de\u05d0\u05d5\u05de\u05ea";
+      return "Nepotvr\u0111eno";
     },
     get$verified() {
-      return "\u05de\u05d0\u05d5\u05de\u05ea";
+      return "Potvr\u0111eno";
     },
     get$verifyStart() {
-      return "\u05d4\u05ea\u05d7\u05dc \u05d0\u05d9\u05de\u05d5\u05ea";
+      return "Pokreni potvr\u0111ivanje";
     },
     get$verifySuccess() {
-      return "\u05d0\u05d9\u05de\u05d5\u05ea \u05d4\u05e6\u05dc\u05d9\u05d7!";
+      return "Uspje\u0161no si potvrdio/la!";
     },
     get$verifyTitle() {
-      return "\u05de\u05d0\u05de\u05ea \u05d7\u05e9\u05d1\u05d5\u05df \u05d0\u05d7\u05e8";
+      return "Potvr\u0111ivanje drugog ra\u010duna";
     },
     get$visibleForAllParticipants() {
-      return "\u05e0\u05e8\u05d0\u05d4 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
+      return "Vidljivo za sve sudionike";
     },
     get$visibleForEveryone() {
-      return "\u05e0\u05e8\u05d0\u05d4 \u05dc\u05db\u05d5\u05dc\u05dd";
+      return "Vidljivo za sve";
     },
     get$voiceMessage() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05dc";
+      return "Glasovna poruka";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d5\u05ea\u05e3 \u05dc\u05d0\u05e9\u05e8 \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4\u2026";
+      return "\u010ceka se na sugovornika da prihvati zahtjev \u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d5\u05ea\u05e3 \u05dc\u05d0\u05e9\u05e8 \u05d0\u05ea \u05d4\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9\u2026";
+      return "\u010ceka se na sugovornika da prihvati emoji \u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d5\u05ea\u05e3 \u05dc\u05d0\u05e9\u05e8 \u05d0\u05ea \u05d4\u05de\u05e1\u05e4\u05e8\u05d9\u05dd\u2026";
+      return "\u010ceka se na sugovornika da prihvati brojeve \u2026";
     },
     get$warning() {
-      return "\u05d0\u05d6\u05d4\u05e8\u05d4!";
+      return "Upozorenje!";
     },
     get$weSentYouAnEmail() {
-      return "\u05e9\u05dc\u05d7\u05e0\u05d5 \u05dc\u05da \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
+      return "Poslali smo ti e-poruku";
     },
     get$whyDoYouWantToReportThis() {
-      return "\u05de\u05d3\u05d5\u05e2 \u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05d6\u05d4?";
+      return "Za\u0161to \u017eeli\u0161 ovo prijaviti?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "\u05e2\u05dd \u05db\u05ea\u05d5\u05d1\u05d5\u05ea \u05d0\u05dc\u05d4 \u05ea\u05d5\u05db\u05dc \u05dc\u05e9\u05d7\u05d6\u05e8 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da.";
+      return "Lozinku mo\u017ee\u0161 obnoviti pomo\u0107u ovih adresa.";
     },
     get$writeAMessage() {
-      return "\u05db\u05ea\u05d5\u05d1 \u05d4\u05d5\u05d3\u05e2\u05d4\u2026";
+      return "Napi\u0161i poruku \u2026";
     },
     get$yes() {
-      return "\u05db\u05df";
+      return "Da";
     },
     get$you() {
-      return "\u05d0\u05ea\u05d4";
+      return "Ti";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\u05d0\u05ea\u05d4 \u05db\u05d1\u05e8 \u05dc\u05d0 \u05de\u05e9\u05ea\u05ea\u05e3 \u05d1\u05e6'\u05d0\u05d8 \u05d6\u05d4";
+      return "Vi\u0161e ne sudjeluje\u0161 u ovom razgovoru";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\u05e0\u05d0\u05e1\u05e8\u05ea \u05de\u05dc\u05d4\u05e9\u05ea\u05ea\u05e3 \u05d1\u05e6'\u05d0\u05d8 \u05d6\u05d4";
+      return "Isklju\u010den/a si iz ovog razgovora";
     },
     get$yourPublicKey() {
-      return "\u05d4\u05de\u05e4\u05ea\u05d7 \u05d4\u05e6\u05d9\u05d1\u05d5\u05e8\u05d9 \u05e9\u05dc\u05da";
+      return "Tvoj javni klju\u010d";
     },
     get$messageInfo() {
-      return "\u05e4\u05e8\u05d8\u05d9 \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4";
+      return "Informacija poruke";
     },
     get$time(_) {
-      return "\u05d6\u05de\u05df";
+      return "Vrijeme";
     },
     get$sender() {
-      return "\u05e9\u05d5\u05dc\u05d7 \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4";
+      return "Po\u0161iljatelj";
     },
     get$openGallery() {
-      return "\u05e4\u05ea\u05d7 \u05d2\u05dc\u05e8\u05d9\u05d4";
+      return "Otvori galeriju";
     },
     get$start(_) {
-      return "\u05d4\u05ea\u05d7\u05dc";
+      return "Po\u010detak";
     },
     get$markAsRead() {
-      return "\u05e1\u05de\u05df \u05db\u05e0\u05e7\u05e8\u05d0";
+      return "Ozna\u010di kao pro\u010ditano";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " \u05d4\u05d2\u05d9\u05d1 \u05d1-" + reaction;
+      return sender + " je reagirao/la sa " + reaction;
     },
     get$pinMessage() {
-      return "\u05e0\u05e2\u05e5 \u05d1\u05d7\u05d3\u05e8";
+      return "Prikva\u010di na sobu";
     },
     get$emojis() {
-      return "\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9\u05dd";
+      return "Emojiji";
     },
     get$youRejectedTheInvitation() {
-      return "\u05d3\u05d7\u05d9\u05ea \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
+      return "Odbio/la si poziv";
     },
     get$youJoinedTheChat() {
-      return "\u05d4\u05e6\u05d8\u05e8\u05e4\u05ea \u05dc\u05e9\u05d9\u05d7\u05d4";
+      return "Pridru\u017eio/la si se razgovoru";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \u05e7\u05d9\u05d1\u05dc\u05ea \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4";
+      return "\ud83d\udc4d Prihvatio/la si poziv";
     },
     youBannedUser$1(user) {
-      return "\u05d7\u05e1\u05de\u05ea \u05d0\u05ea " + user;
+      return "Isklju\u010dio/la si korisnika " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "\u05de\u05e9\u05db\u05ea \u05d0\u05ea \u05d4\u05d4\u05d6\u05de\u05e0\u05d4 \u05dc-" + user;
+      return "Povukao/la si poziv za korisnika " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 \u05d4\u05d5\u05d6\u05de\u05e0\u05ea \u05e2\u05dc \u05d9\u05d3\u05d9 " + user;
+      return "\ud83d\udce9 " + user + " te je pozvao/la";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 \u05d4\u05d6\u05de\u05e0\u05ea \u05d0\u05ea " + user;
+      return "\ud83d\udce9 Pozvao/la si korisnika " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e \u05d4\u05d5\u05e6\u05d0\u05ea \u05d0\u05ea " + user;
+      return "\ud83d\udc5e Izbacio/la si korisnika " + user;
     },
     youUnbannedUser$1(user) {
-      return "\u05e9\u05d9\u05d7\u05e8\u05e8\u05ea \u05d0\u05ea " + user;
+      return "Ponovo si uklju\u010dio/la korisnika " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " \u05d3\u05e4\u05e7 \u05d1\u05d3\u05dc\u05ea";
+      return "\ud83d\udeaa " + user + " je pokucao/la";
     },
     countFiles$1(count) {
-      return "" + count + " \u05e7\u05d1\u05e6\u05d9\u05dd";
+      return "Broj datoteka: " + count;
     },
     get$user() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9";
+      return "Korisnik";
     },
     get$custom() {
-      return "\u05de\u05d5\u05ea\u05d0\u05dd \u05d0\u05d9\u05e9\u05d9\u05ea";
+      return "Prilago\u0111eno";
     },
     get$noKeyForThisMessage() {
-      return "\u05d6\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e7\u05e8\u05d5\u05ea \u05d0\u05dd \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e0\u05e9\u05dc\u05d7\u05d4 \u05dc\u05e4\u05e0\u05d9 \u05e9\u05d4\u05ea\u05d7\u05d1\u05e8\u05ea \u05dc\u05d7\u05e9\u05d1\u05d5\u05e0\u05da \u05d1\u05de\u05db\u05e9\u05d9\u05e8 \u05d6\u05d4.\n\n\u05d9\u05db\u05d5\u05dc \u05d2\u05dd \u05dc\u05d4\u05d9\u05d5\u05ea \u05e9\u05d4\u05e9\u05d5\u05dc\u05d7 \u05d7\u05e1\u05dd \u05d0\u05ea \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05e9\u05dc\u05da \u05d0\u05d5 \u05e9\u05de\u05e9\u05d4\u05d5 \u05d4\u05e9\u05ea\u05d1\u05e9 \u05d1\u05d7\u05d9\u05d1\u05d5\u05e8 \u05dc\u05d0\u05d9\u05e0\u05d8\u05e8\u05e0\u05d8.\n\n\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e7\u05e8\u05d5\u05d0 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d1\u05e1\u05e9\u05df \u05d0\u05d7\u05e8? \u05d0\u05d6 \u05ea\u05d5\u05db\u05dc \u05dc\u05d4\u05e2\u05d1\u05d9\u05e8 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05de\u05e0\u05d5! \u05e2\u05d1\u05d5\u05e8 \u05dc\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea > \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d5\u05d5\u05d3\u05d0 \u05e9\u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05e9\u05dc\u05da \u05d0\u05d5\u05e9\u05e8\u05d5 \u05d6\u05d4 \u05d0\u05ea \u05d6\u05d4. \u05db\u05d0\u05e9\u05e8 \u05ea\u05e4\u05ea\u05d7 \u05d0\u05ea \u05d4\u05d7\u05d3\u05e8 \u05d1\u05e4\u05e2\u05dd \u05d4\u05d1\u05d0\u05d4 \u05d5\u05e9\u05e0\u05d9 \u05d4\u05e1\u05e9\u05e0\u05d9\u05dd \u05d9\u05d4\u05d9\u05d5 \u05d1\u05d7\u05d6\u05d9\u05ea, \u05d4\u05de\u05e4\u05ea\u05d7\u05d5\u05ea \u05d9\u05d5\u05e2\u05d1\u05e8\u05d5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea.\n\n\u05dc\u05d0 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d0\u05d1\u05d3 \u05d0\u05ea \u05d4\u05de\u05e4\u05ea\u05d7\u05d5\u05ea \u05d1\u05e2\u05ea \u05d9\u05e6\u05d9\u05d0\u05d4 \u05d0\u05d5 \u05d4\u05d7\u05dc\u05e4\u05ea \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd? \u05d5\u05d3\u05d0 \u05e9\u05d4\u05e4\u05e2\u05dc\u05ea \u05d0\u05ea \u05d2\u05d9\u05d1\u05d5\u05d9 \u05d4\u05e6'\u05d0\u05d8 \u05d1\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea.";
+      return "To se mo\u017ee dogoditi ako je poruka poslana prije prijave na tvoj ra\u010dun na ovom ure\u0111aju.\n\nTako\u0111er je mogu\u0107e da je po\u0161iljatelj blokirao tvoj ure\u0111aj ili je do\u0161lo do gre\u0161ke s internetskom vezom.\n\nMo\u017ee\u0161 li pro\u010ditati poruku na jednoj drugoj sesiji? U tom slu\u010daju mo\u017ee\u0161 prenijeti poruku iz nje! Idi na Postavke > Ure\u0111aji i uvjeri se da su se tvoji ure\u0111aji me\u0111usobno provjerili. Kada sljede\u0107i put otvori\u0161 sobu i obje sesije su u prednjem planu, klju\u010devi \u0107e se automatski prenijeti.\n\nNe \u017eeli\u0161 izgubiti klju\u010deve kada se odjavi\u0161 ili zamijeni\u0161 ure\u0111aje? Aktiviraj spremanje sigurnosne kopije razgovora u postavkama.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\u05e9\u05d9\u05d7\u05d4 \u05e8\u05d9\u05e7\u05d4 (\u05d4\u05d9\u05d9\u05ea\u05d4 " + oldDisplayName + ")";
+      return "Prazan razgovor (zvao se " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "\u05e4\u05ea\u05d7 \u05de\u05d7\u05d3\u05e9 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4";
+      return "Ponovo otvori razgovor";
     },
     get$noOtherDevicesFound() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd";
+      return "Nijedan drugi ure\u0111aj nije prona\u0111en";
     },
     fileIsTooBigForServer$1(max) {
-      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05e9\u05dc\u05d5\u05d7! \u05d4\u05e9\u05e8\u05ea \u05ea\u05d5\u05de\u05da \u05d1\u05e7\u05d1\u05e6\u05d9\u05dd \u05de\u05e6\u05d5\u05e8\u05e4\u05d9\u05dd \u05e2\u05d3 " + max + ".";
+      return "Neuspjelo slanje! Poslu\u017eitelj podr\u017eava samo priloge do " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "\u05e7\u05e4\u05d5\u05e5 \u05dc\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05e7\u05d5\u05d3\u05de\u05ea \u05e9\u05e0\u05e7\u05e8\u05d0\u05d4";
+      return "Sko\u010di na zadnju pro\u010ditanu poruku";
     },
     get$readUpToHere() {
-      return "\u05e7\u05e8\u05d0 \u05e2\u05d3 \u05db\u05d0\u05df";
+      return "Pro\u010ditaj do ovdje";
     },
     get$jump() {
-      return "\u05e7\u05e4\u05d5\u05e5";
+      return "Sko\u010di";
     },
     get$openLinkInBrowser() {
-      return "\u05e4\u05ea\u05d7 \u05d0\u05ea \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d1\u05d3\u05e4\u05d3\u05e4\u05df";
+      return "Otvori poveznicu u pregledniku";
     },
     get$setColorTheme() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05e0\u05d5\u05e9\u05d0 \u05e6\u05d1\u05e2:";
+      return "Postavi boju teme:";
     },
     get$invite() {
-      return "\u05d4\u05d6\u05de\u05df";
+      return "Pozovi";
     },
     get$invalidInput() {
-      return "\u05e7\u05dc\u05d8 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9!";
+      return "Neispravan unos!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u05e7\u05d5\u05d3 \u05e1\u05d5\u05d3\u05d9 \u05e9\u05d2\u05d5\u05d9 \u05d4\u05d5\u05d6\u05df! \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1 \u05d1\u05e2\u05d5\u05d3 " + seconds + " \u05e9\u05e0\u05d9\u05d5\u05ea...";
+      return "Unesen je pogre\u0161an PIN! Poku\u0161aj ponovo za " + seconds + " sekunde \u2026";
     },
     get$pleaseEnterANumber() {
-      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05de\u05e1\u05e4\u05e8 \u05d4\u05d2\u05d3\u05d5\u05dc \u05de-0";
+      return "Upi\u0161i broj ve\u0107i od 0";
     },
     get$removeDevicesDescription() {
-      return "\u05d0\u05ea\u05d4 \u05ea\u05ea\u05e0\u05ea\u05e7 \u05de\u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05d6\u05d4 \u05d5\u05dc\u05d0 \u05ea\u05d5\u05db\u05dc \u05e2\u05d5\u05d3 \u05dc\u05e7\u05d1\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea.";
+      return "Bit \u0107e\u0161 odjavljen/a s ovog ure\u0111aja i vi\u0161e ne\u0107e\u0161 mo\u0107i primati poruke.";
     },
     get$banUserDescription() {
-      return "\u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d9\u05d9\u05d0\u05e1\u05e8 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4 \u05d5\u05dc\u05d0 \u05d9\u05d5\u05db\u05dc \u05dc\u05d4\u05d9\u05db\u05e0\u05e1 \u05e9\u05d5\u05d1 \u05e2\u05d3 \u05e9\u05d9\u05d1\u05d5\u05d8\u05dc \u05d4\u05d0\u05d9\u05e1\u05d5\u05e8.";
+      return "Korisnik \u0107e biti isklju\u010den iz razgovora i mo\u0107i \u0107e ponovo prisustvovati razgovoru kad ga se deblokira.";
     },
     get$unbanUserDescription() {
-      return "\u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d9\u05d5\u05db\u05dc \u05dc\u05d4\u05d9\u05db\u05e0\u05e1 \u05e9\u05d5\u05d1 \u05dc\u05e9\u05d9\u05d7\u05d4 \u05d0\u05dd \u05d9\u05e0\u05e1\u05d4.";
+      return "Korisnik \u0107e se ponovo mo\u0107i pridru\u017eiti razgovoru ako poku\u0161a.";
     },
     get$kickUserDescription() {
-      return "\u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05de\u05d5\u05e6\u05d0 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4 \u05d0\u05da \u05dc\u05d0 \u05e0\u05d0\u05e1\u05e8. \u05d1\u05e9\u05d9\u05d7\u05d5\u05ea \u05e6\u05d9\u05d1\u05d5\u05e8\u05d9\u05d5\u05ea, \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05de\u05d7\u05d3\u05e9 \u05d1\u05db\u05dc \u05d6\u05de\u05df.";
+      return "Korisnik je izba\u010den iz razgovora, ali nije blokiran. U javnim razgovorima se korisnik mo\u017ee ponovo pridru\u017eiti u bilo kojem trenutku.";
     },
     get$makeAdminDescription() {
-      return "\u05d1\u05e8\u05d2\u05e2 \u05e9\u05ea\u05d4\u05e4\u05d5\u05da \u05d0\u05ea \u05de\u05e9\u05ea\u05de\u05e9 \u05d6\u05d4 \u05dc\u05de\u05e0\u05d4\u05dc, \u05d9\u05d9\u05ea\u05db\u05df \u05e9\u05dc\u05d0 \u05ea\u05d5\u05db\u05dc \u05dc\u05d1\u05d8\u05dc \u05d6\u05d0\u05ea \u05de\u05db\u05d9\u05d5\u05d5\u05df \u05e9\u05d9\u05d4\u05d9\u05d5 \u05dc\u05d5 \u05d0\u05d5\u05ea\u05df \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05db\u05de\u05d5\u05da.";
+      return "Nakon postavljanja ovog korisnika kao administratora, to mo\u017eda ne\u0107e\u0161 mo\u0107i poni\u0161titi jer \u0107e on tada imati iste dozvole kao i ti.";
     },
     get$yourGlobalUserIdIs() {
-      return "\u05d6\u05d9\u05d4\u05d5\u05d9 \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05d2\u05dc\u05d5\u05d1\u05dc\u05d9 \u05e9\u05dc\u05da \u05d4\u05d5\u05d0: ";
+      return "Tvoj globalni korisni\u010dki ID je: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\u05dc\u05e6\u05e2\u05e8\u05e0\u05d5 \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dd "' + query + '". \u05d0\u05e0\u05d0 \u05d1\u05d3\u05d5\u05e7 \u05d0\u05dd \u05d8\u05e2\u05d5\u05ea \u05d1\u05d4\u05e7\u05dc\u05d3\u05d4.';
+      return "Na\u017ealost nije prona\u0111en nijedan korisnik s \u201e" + query + "\u201d. Provjeri to\u010dnost upisa.";
     },
     get$knocking() {
-      return "\u05d3\u05d5\u05e4\u05e7";
+      return "Kucanje";
     },
     get$nothingFound() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05db\u05dc\u05d5\u05dd...";
+      return "Ni\u0161ta nije prona\u0111eno...";
     },
     get$groupName() {
-      return "\u05e9\u05dd \u05d4\u05e7\u05d1\u05d5\u05e6\u05d4";
+      return "Ime grupe";
     },
     get$wrongRecoveryKey() {
-      return "\u05e1\u05dc\u05d9\u05d7\u05d4... \u05d6\u05d4 \u05dc\u05d0 \u05e0\u05e8\u05d0\u05d4 \u05de\u05e4\u05ea\u05d7 \u05d4\u05e9\u05d7\u05d6\u05d5\u05e8 \u05d4\u05e0\u05db\u05d5\u05df.";
+      return "Oprosti \u2026 \u010dini se da ovo nije ispravan klju\u010d za obnavljanje.";
     },
     get$startConversation() {
-      return "\u05d4\u05ea\u05d7\u05dc \u05e9\u05d9\u05d7\u05d4";
+      return "Pokreni konverzaciju";
     },
     get$commandHint_sendraw() {
-      return "\u05e9\u05dc\u05d7 json \u05d2\u05d5\u05dc\u05de\u05d9";
+      return "Po\u0161alji neobra\u0111eni json";
     },
     get$leaveEmptyToClearStatus() {
-      return "\u05d4\u05e9\u05d0\u05e8 \u05e8\u05d9\u05e7 \u05db\u05d3\u05d9 \u05dc\u05e0\u05e7\u05d5\u05ea \u05d0\u05ea \u05d4\u05e1\u05d8\u05d8\u05d5\u05e1 \u05e9\u05dc\u05da.";
+      return "Ostavi prazno za brisanje tvog stanja.";
     },
     get$searchForUsers() {
-      return "\u05d7\u05e4\u05e9 \u05d1-@\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd...";
+      return "Tra\u017ei @users...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05d4\u05e0\u05d5\u05db\u05d7\u05d9\u05ea \u05e9\u05dc\u05da";
+      return "Upi\u0161i svoju trenuta\u010dnu lozinku";
     },
     get$newPassword() {
-      return "\u05e1\u05d9\u05e1\u05de\u05d4 \u05d7\u05d3\u05e9\u05d4";
+      return "Nova lozinka";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d7\u05d6\u05e7\u05d4";
+      return "Odaberi sna\u017enu lozinku";
     },
     get$passwordsDoNotMatch() {
-      return "\u05d4\u05e1\u05d9\u05e1\u05de\u05d0\u05d5\u05ea \u05d0\u05d9\u05e0\u05df \u05ea\u05d5\u05d0\u05de\u05d5\u05ea";
+      return "Lozinke se ne poklapaju";
     },
     get$passwordIsWrong() {
-      return "\u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05d4\u05d6\u05e0\u05ea \u05e9\u05d2\u05d5\u05d9\u05d4";
+      return "Tvoja upisana lozinka je kriva";
     },
     get$decline() {
-      return "\u05d3\u05d7\u05d4";
+      return "Odbij";
     },
     get$thisDevice() {
-      return "\u05d4\u05ea\u05e7\u05df \u05d6\u05d4:";
+      return "Ovaj ure\u0111aj:";
     },
     get$initAppError() {
-      return "\u05d0\u05d9\u05e8\u05e2\u05d4 \u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05e2\u05ea \u05d0\u05ea\u05d7\u05d5\u05dc \u05d4\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4";
+      return "Dogodila se gre\u0161ka prilikom inicijaliziranja aplikacije";
     },
     searchIn$1(chat) {
-      return '\u05d7\u05d9\u05e4\u05d5\u05e9 \u05d1"' + chat + '"...';
+      return "Tra\u017ei u razgovoru \u201e" + chat + "\u201d...";
     },
     get$searchMore() {
-      return "\u05d7\u05e4\u05e9 \u05e2\u05d5\u05d3...";
+      return "Tra\u017ei vi\u0161e...";
     },
     get$gallery() {
-      return "\u05d2\u05dc\u05e8\u05d9\u05d4";
+      return "Galerija";
     },
     get$files(_) {
-      return "\u05e7\u05d1\u05e6\u05d9\u05dd";
+      return "Datoteke";
     },
     sessionLostBody$2(url, error) {
-      return "\u05d4\u05e1\u05e9\u05df \u05e9\u05dc\u05da \u05d0\u05d1\u05d3. \u05d0\u05e0\u05d0 \u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05e9\u05d2\u05d9\u05d0\u05d4 \u05d6\u05d5 \u05dc\u05de\u05e4\u05ea\u05d7\u05d9\u05dd \u05d1-" + url + ". \u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d4\u05d9\u05d0: " + error;
+      return "Tvoja je sesija izgubljena. Prijavi ovu gre\u0161ku programerima na " + url + ". Poruka o gre\u0161ci glasi: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\u05d4\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05de\u05e0\u05e1\u05d4 \u05dc\u05e9\u05d7\u05d6\u05e8 \u05d0\u05ea \u05d4\u05e1\u05e9\u05df \u05e9\u05dc\u05da \u05de\u05d4\u05d2\u05d9\u05d1\u05d5\u05d9. \u05d0\u05e0\u05d0 \u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05e9\u05d2\u05d9\u05d0\u05d4 \u05d6\u05d5 \u05dc\u05de\u05e4\u05ea\u05d7\u05d9\u05dd \u05d1-" + url + ". \u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d4\u05d9\u05d0: " + error;
+      return "Aplikacija sada poku\u0161ava obnoviti tvoju sesiju iz sigurnosne kopije. Prijavi ovu gre\u0161ku programerima na " + url + ". Poruka o gre\u0161ci glasi: " + error;
     },
     get$sendReadReceipts() {
-      return "\u05e9\u05dc\u05d7 \u05d0\u05d9\u05e9\u05d5\u05e8\u05d9 \u05e7\u05e8\u05d9\u05d0\u05d4";
+      return "\u0160alji potvrde o \u010ditanju";
     },
     get$sendTypingNotificationsDescription() {
-      return "\u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05e8\u05d0\u05d5\u05ea \u05de\u05ea\u05d9 \u05d0\u05ea\u05d4 \u05de\u05e7\u05dc\u05d9\u05d3 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05d7\u05d3\u05e9\u05d4.";
+      return "Drugi sudionici u razgovoru mogu vidjeti kada pi\u0161e\u0161 novu poruku.";
     },
     get$sendReadReceiptsDescription() {
-      return "\u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05e8\u05d0\u05d5\u05ea \u05de\u05ea\u05d9 \u05e7\u05e8\u05d0\u05ea \u05d4\u05d5\u05d3\u05e2\u05d4.";
+      return "Drugi sudionici u raygovoru mogu vidjeti kada pro\u010dita\u0161 poruku.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05db\u05e9\u05d9\u05e8 \u05d0\u05d7\u05e8";
+      return "\ud83d\udd10 Potvrdi drugi ure\u0111aj";
     },
     get$verifyOtherDeviceDescription() {
-      return "\u05db\u05d0\u05e9\u05e8 \u05ea\u05d0\u05de\u05ea \u05de\u05db\u05e9\u05d9\u05e8 \u05d0\u05d7\u05e8, \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d0\u05dc\u05d4 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05d4\u05d7\u05dc\u05d9\u05e3 \u05de\u05e4\u05ea\u05d7\u05d5\u05ea, \u05de\u05d4 \u05e9\u05d9\u05e9\u05e4\u05e8 \u05d0\u05ea \u05d4\u05d0\u05d1\u05d8\u05d7\u05d4 \u05d4\u05db\u05d5\u05dc\u05dc\u05ea \u05e9\u05dc\u05da. \ud83d\udcaa \u05db\u05d0\u05e9\u05e8 \u05ea\u05ea\u05d7\u05d9\u05dc \u05ea\u05d4\u05dc\u05d9\u05da \u05d0\u05d9\u05de\u05d5\u05ea, \u05d9\u05d5\u05e4\u05d9\u05e2 \u05d7\u05dc\u05d5\u05df \u05e7\u05d5\u05e4\u05e5 \u05d1\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05d1\u05e9\u05e0\u05d9 \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd. \u05e9\u05dd \u05ea\u05e8\u05d0\u05d5 \u05e1\u05d3\u05e8\u05ea \u05d0\u05de\u05d5\u05d9\u05d5\u05ea \u05d0\u05d5 \u05de\u05e1\u05e4\u05e8\u05d9\u05dd \u05e9\u05e2\u05dc\u05d9\u05db\u05dd \u05dc\u05d4\u05e9\u05d5\u05d5\u05ea \u05d1\u05d9\u05e0\u05d9\u05d4\u05dd. \u05e2\u05d3\u05d9\u05e3 \u05e9\u05d9\u05d4\u05d9\u05d5 \u05e9\u05e0\u05d9 \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05dc\u05e4\u05e0\u05d9 \u05e9\u05ea\u05ea\u05d7\u05d9\u05dc \u05d0\u05ea \u05ea\u05d4\u05dc\u05d9\u05da \u05d4\u05d0\u05d9\u05de\u05d5\u05ea. \ud83e\udd33";
+      return "Kada potvrdi\u0161 jedan drugi ure\u0111aj, ti ure\u0111aji mogu razmjenjivati klju\u010deve, pove\u0107avaju\u0107i tvoju ukupnu sigurnost. \ud83d\udcaa Kada pokrene\u0161 provjeru, pojavit \u0107e se sko\u010dni prozor u aplikaciji na oba ure\u0111aja. Tamo \u0107e\u0161 tada vidjeti niz emojija ili brojeve koje mora\u0161 me\u0111usobno usporediti. Najbolje je imati oba ure\u0111aja pri ruci prije nego \u0161to zapo\u010dne\u0161 provjeru. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " \u05d0\u05d9\u05e9\u05e8 \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
+      return sender + " je prihvatio/la potvr\u0111ivanje klju\u010da";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " \u05d1\u05d9\u05d8\u05dc \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
+      return sender + " je prekinuo/la potvr\u0111ivanje klju\u010da";
     },
     completedKeyVerification$1(sender) {
-      return sender + " \u05e1\u05d9\u05d9\u05dd \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
+      return sender + " je dovr\u0161io/la potvr\u0111ivanje klju\u010da";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \u05de\u05d5\u05db\u05df \u05dc\u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
+      return sender + " je spreman/na za potvr\u0111ivanje klju\u010da";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " \u05d1\u05d9\u05e7\u05e9 \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
+      return sender + " je zatra\u017eio/la potvr\u0111ivanje klju\u010da";
     },
     startedKeyVerification$1(sender) {
-      return sender + " \u05d4\u05ea\u05d7\u05d9\u05dc \u05d0\u05d9\u05de\u05d5\u05ea \u05de\u05e4\u05ea\u05d7";
+      return sender + " je pokrenuo/la potvr\u0111ivanje klju\u010da";
     },
     get$commandHint_ignore() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05d6\u05d9\u05d4\u05d5\u05d9 \u05d4\u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d4\u05e0\u05ea\u05d5\u05df";
+      return "Zanemari navedeni matrix ID";
     },
     get$commandHint_unignore() {
-      return "\u05d1\u05d8\u05dc \u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05de\u05d6\u05d9\u05d4\u05d5\u05d9 \u05d4\u05de\u05d8\u05e8\u05d9\u05e6\u05d4 \u05d4\u05e0\u05ea\u05d5\u05df";
+      return "Poni\u0161ti zanemarivanje navedenog matrix ID-a";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u05db\u05e8\u05d2\u05e2 \u05d9\u05e9 " + count + " \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d7\u05e1\u05d5\u05de\u05d9\u05dd.";
+      return "Broj trenuta\u010dno blokiranih korisnika: " + count + ".";
     },
     get$restricted() {
-      return "\u05de\u05d5\u05d2\u05d1\u05dc";
+      return "Ograni\u010deni";
     },
     get$markAsUnread() {
-      return "\u05e1\u05de\u05df \u05db\u05dc\u05d0 \u05e0\u05e7\u05e8\u05d0";
+      return "Ozna\u010di kao nepro\u010ditano";
     },
     userLevel$1(level) {
-      return "" + level + " - \u05de\u05e9\u05ea\u05de\u05e9";
+      return "" + level + " - Korisnik";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \u05de\u05ea\u05d0\u05dd";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - \u05de\u05e0\u05d4\u05dc";
+      return "" + level + " - Administrator";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e0\u05e8\u05d0\u05d5\u05ea \u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d9\u05ea \u05d4\u05e6'\u05d0\u05d8";
+      return "Promijeni vidljivost povijesti chata";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05e6'\u05d0\u05d8 \u05d4\u05e6\u05d9\u05d1\u05d5\u05e8\u05d9 \u05d4\u05e8\u05d0\u05e9\u05d9\u05ea";
+      return "Promijeni glavni javni adresu chata";
     },
     get$sendRoomNotifications() {
-      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea @\u05d7\u05d3\u05e8";
+      return "Po\u0161alji obavijesti @room";
     },
     get$chatPermissionsDescription() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05d0\u05d9\u05d6\u05d4 \u05e8\u05de\u05ea \u05db\u05d5\u05d7 \u05e0\u05d3\u05e8\u05e9\u05ea \u05dc\u05d1\u05d9\u05e6\u05d5\u05e2 \u05e4\u05e2\u05d5\u05dc\u05d5\u05ea \u05de\u05e1\u05d5\u05d9\u05de\u05d5\u05ea \u05d1\u05e6'\u05d0\u05d8 \u05d6\u05d4. \u05e8\u05de\u05d5\u05ea \u05d4\u05db\u05d5\u05d7 0, 50 \u05d5-100 \u05d1\u05d3\u05e8\u05da \u05db\u05dc\u05dc \u05de\u05d9\u05d9\u05e6\u05d2\u05d5\u05ea \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd, \u05de\u05ea\u05d0\u05de\u05d9\u05dd \u05d5\u05de\u05e0\u05d4\u05dc\u05d9\u05dd, \u05d0\u05da \u05e0\u05d9\u05ea\u05df \u05dc\u05e7\u05d1\u05d5\u05e2 \u05db\u05dc \u05d3\u05e8\u05d2\u05d4.";
+      return "Definirajte koja razina mo\u0107i je potrebna za odre\u0111ene radnje u ovom chatu. Razine mo\u0107i 0, 50 i 100 obi\u010dno predstavljaju korisnike, moderatore i administratore, ali je mogu\u0107a bilo kakva gradacija.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u05e2\u05d3\u05db\u05d5\u05df " + version + " \u05d4\u05d5\u05ea\u05e7\u05df!";
+      return "\ud83c\udf89 Instalirana je nadogradnja " + version + "!";
     },
     get$sendCanceled() {
-      return "\u05d4\u05e9\u05dc\u05d9\u05d7\u05d4 \u05d1\u05d5\u05d8\u05dc\u05d4";
+      return "Slanje otkazano";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\u05e0\u05e8\u05d0\u05d4 \u05e9\u05d6\u05d4 \u05dc\u05d0 \u05e9\u05e8\u05ea \u05d1\u05d9\u05ea \u05ea\u05d5\u05d0\u05dd. \u05db\u05ea\u05d5\u05d1\u05ea URL \u05e9\u05d2\u05d5\u05d9\u05d4?";
+      return "\u010cini se da nije kompatibilan dom server. Pogre\u0161an URL?";
     },
     get$calculatingFileSize() {
-      return "\u05d7\u05d9\u05e9\u05d5\u05d1 \u05d2\u05d5\u05d3\u05dc \u05d4\u05e7\u05d5\u05d1\u05e5...";
+      return "Ra\u010dunanje veli\u010dine datoteke...";
     },
     get$prepareSendingAttachment() {
-      return "\u05d4\u05db\u05df \u05e9\u05dc\u05d9\u05d7\u05ea \u05e7\u05d5\u05d1\u05e5 \u05de\u05e6\u05d5\u05e8\u05e3...";
+      return "Pripremi slanje priloga \u2026";
     },
     get$sendingAttachment() {
-      return "\u05e9\u05d5\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5 \u05de\u05e6\u05d5\u05e8\u05e3...";
+      return "Slanje priloga \u2026";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "\u05e9\u05d5\u05dc\u05d7 \u05e7\u05d5\u05d1\u05e5 \u05de\u05e6\u05d5\u05e8\u05e3 " + index + " \u05de\u05ea\u05d5\u05da " + $length + "...";
+      return "Slanje priloga " + index + " od " + $length + " \u2026";
     },
     serverLimitReached$1(seconds) {
-      return "\u05d4\u05d2\u05d1\u05dc\u05ea \u05d4\u05e9\u05e8\u05ea \u05d4\u05d5\u05e9\u05d2\u05d4! \u05de\u05d7\u05db\u05d4 " + seconds + " \u05e9\u05e0\u05d9\u05d5\u05ea...";
+      return "Dosti\u0107i\u0107emo ograni\u010denje servera! \u010cekanje " + seconds + " sekundi...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\u05d4\u05e2\u05e8\u05d4: \u05db\u05d0\u05e9\u05e8 \u05d0\u05ea\u05d4 \u05de\u05d7\u05d1\u05e8 \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05dc\u05d2\u05d9\u05d1\u05d5\u05d9 \u05d4\u05e6'\u05d0\u05d8, \u05d4\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea.";
+      return "Napomena: Kada pove\u017eete sve svoje ure\u0111aje na sigurnosnu kopiju chata, oni se automatski verificiraju.";
     },
     get$continueText() {
-      return "\u05d4\u05de\u05e9\u05da";
+      return "Nastavi";
     },
     get$blur(_) {
-      return "\u05d8\u05e9\u05d8\u05d5\u05e9:";
+      return "Zamu\u0107enje:";
     },
     get$opacity(_) {
-      return "\u05d0\u05d8\u05d9\u05de\u05d5\u05ea:";
+      return "Prozirnost:";
     },
     get$setWallpaper() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05e8\u05e7\u05e2";
+      return "Postavi pozadinu";
     },
     get$noContactInformationProvided() {
-      return "\u05d4\u05e9\u05e8\u05ea \u05dc\u05d0 \u05de\u05e1\u05e4\u05e7 \u05e4\u05e8\u05d8\u05d9 \u05d9\u05e6\u05d9\u05e8\u05ea \u05e7\u05e9\u05e8 \u05ea\u05e7\u05e4\u05d9\u05dd";
+      return "Poslu\u017eitelj ne pru\u017ea valjane kontakt informacije";
     },
     get$contactServerAdmin() {
-      return "\u05e6\u05d5\u05e8 \u05e7\u05e9\u05e8 \u05e2\u05dd \u05de\u05e0\u05d4\u05dc \u05d4\u05e9\u05e8\u05ea";
+      return "Kontaktirajte administratora poslu\u017eitelja";
     },
     get$contactServerSecurity() {
-      return "\u05e6\u05d5\u05e8 \u05e7\u05e9\u05e8 \u05e2\u05dd \u05d0\u05d1\u05d8\u05d7\u05ea \u05d4\u05e9\u05e8\u05ea";
+      return "Kontaktirajte sigurnost poslu\u017eitelja";
     },
     get$supportPage() {
-      return "\u05d3\u05e3 \u05d4\u05ea\u05de\u05d9\u05db\u05d4";
+      return "Stranica podr\u0161ke";
     },
     get$serverInformation() {
-      return "\u05de\u05d9\u05d3\u05e2 \u05e2\u05dc \u05d4\u05e9\u05e8\u05ea:";
+      return "Informacije o poslu\u017eitelju:";
     },
     get$name(_) {
-      return "\u05e9\u05dd";
+      return "Ime";
     },
     get$version(_) {
-      return "\u05d2\u05e8\u05e1\u05d4";
+      return "Verzija";
     },
     get$compress() {
-      return "\u05d3\u05d7\u05d5\u05e1";
+      return "Kompresiraj";
     },
     get$boldText() {
-      return "\u05d8\u05e7\u05e1\u05d8 \u05de\u05d5\u05d3\u05d2\u05e9";
+      return "Podebljani tekst";
     },
     get$italicText() {
-      return "\u05d8\u05e7\u05e1\u05d8 \u05e0\u05d8\u05d5\u05d9";
+      return "Kurzivni tekst";
     },
     get$strikeThrough() {
-      return "\u05e7\u05d5 \u05d7\u05d5\u05e6\u05d4";
+      return "Precrtano";
     },
     get$pleaseFillOut() {
-      return "\u05d0\u05e0\u05d0 \u05de\u05dc\u05d0 \u05d0\u05ea \u05d4\u05d8\u05d5\u05e4\u05e1";
+      return "Molimo ispunite";
     },
     get$invalidUrl() {
-      return "\u05db\u05ea\u05d5\u05d1\u05ea URL \u05dc\u05d0 \u05ea\u05e7\u05d9\u05e0\u05d4";
+      return "Neva\u017ee\u0107i URL";
     },
     get$addLink() {
-      return "\u05d4\u05d5\u05e1\u05e3 \u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Dodaj poveznicu";
     },
     get$unableToJoinChat() {
-      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e9\u05d9\u05d7\u05d4. \u05d9\u05d9\u05ea\u05db\u05df \u05e9\u05d4\u05e6\u05d3 \u05d4\u05e9\u05e0\u05d9 \u05e1\u05d2\u05e8 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05db\u05d1\u05e8.";
+      return "Nemogu\u0107e se pridru\u017eiti razgovoru. Mo\u017eda je druga strana ve\u0107 zatvorila razgovor.";
     },
     get$previous() {
-      return "\u05e7\u05d5\u05d3\u05dd";
+      return "Prethodno";
     },
     get$otherPartyNotLoggedIn() {
-      return "\u05d4\u05e6\u05d3 \u05d4\u05e9\u05e0\u05d9 \u05db\u05e8\u05d2\u05e2 \u05dc\u05d0 \u05de\u05d7\u05d5\u05d1\u05e8 \u05d5\u05dc\u05db\u05df \u05dc\u05d0 \u05d9\u05db\u05d5\u05dc \u05dc\u05e7\u05d1\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea!";
+      return "Druga strana trenutno nije prijavljena i stoga ne mo\u017ee primati poruke!";
     },
     get$open(_) {
-      return "\u05e4\u05ea\u05d7";
+      return "Otvoriti";
     },
     get$waitingForServer() {
-      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05e8\u05ea...";
+      return "\u010cekanje na poslu\u017eitelj...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \u05d1\u05e7\u05e9\u05ea \u05e9\u05d9\u05d7\u05d4 \u05d7\u05d3\u05e9\u05d4";
+      return "\ud83d\udce9 Novi zahtjev za razgovor";
     },
     get$contentNotificationSettings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05ea\u05d5\u05db\u05df";
+      return "Postavke obavijesti o sadr\u017eaju";
     },
     get$generalNotificationSettings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05db\u05dc\u05dc\u05d9\u05d5\u05ea";
+      return "Op\u0107e postavke obavijesti";
     },
     get$roomNotificationSettings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05d7\u05d3\u05e8";
+      return "Postavke obavijesti za sobu";
     },
     get$userSpecificNotificationSettings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05d9\u05d9\u05d7\u05d5\u05d3\u05d9\u05d5\u05ea \u05dc\u05de\u05e9\u05ea\u05de\u05e9";
+      return "Korisni\u010dki specifi\u010dne postavke obavijesti";
     },
     get$otherNotificationSettings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05d0\u05d7\u05e8\u05d5\u05ea";
+      return "Ostale postavke obavijesti";
     },
     get$notificationRuleContainsUserName() {
-      return "\u05de\u05db\u05d9\u05dc \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
+      return "Sadr\u017ei korisni\u010dko ime";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\u05de\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05db\u05d9\u05dc\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05d5.";
+      return "Obavje\u0161tava korisnika kada poruka sadr\u017ei njihovo korisni\u010dko ime.";
     },
     get$notificationRuleMaster() {
-      return "\u05d4\u05e9\u05d1\u05ea \u05d0\u05ea \u05db\u05dc \u05d4\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea";
+      return "Uti\u0161aj sve obavijesti";
     },
     get$notificationRuleMasterDescription() {
-      return "\u05de\u05d1\u05d8\u05dc \u05d0\u05ea \u05db\u05dc \u05d4\u05db\u05dc\u05dc\u05d9\u05dd \u05d4\u05d0\u05d7\u05e8\u05d9\u05dd \u05d5\u05de\u05db\u05d1\u05d4 \u05d0\u05ea \u05db\u05dc \u05d4\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea.";
+      return "Prekida sve ostale pravila i onemogu\u0107ava sve obavijesti.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\u05d4\u05e9\u05ea\u05e7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05d5\u05ea";
+      return "Ugasiti automatske poruke";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\u05de\u05d5\u05e0\u05e2 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05de\u05dc\u05e7\u05d5\u05d7\u05d5\u05ea \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05d9\u05dd \u05db\u05de\u05d5 \u05d1\u05d5\u05d8\u05d9\u05dd.";
+      return "Ugasuje obavijesti od automatiziranih klijenata poput botova.";
     },
     get$notificationRuleInviteForMe() {
-      return "\u05d4\u05d6\u05de\u05e0\u05d4 \u05e2\u05d1\u05d5\u05e8\u05d9";
+      return "Poziv za mene";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\u05de\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d0 \u05de\u05d5\u05d6\u05de\u05df \u05dc\u05d7\u05d3\u05e8.";
+      return "Obavje\u0161tava korisnika kada je pozvan u sobu.";
     },
     get$notificationRuleMemberEvent() {
-      return "\u05d0\u05d9\u05e8\u05d5\u05e2 \u05d7\u05d1\u05e8";
+      return "Doga\u0111aj \u010dlana";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\u05de\u05d5\u05e0\u05e2 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d7\u05d1\u05e8\u05d5\u05ea.";
+      return "Ugasuje obavijesti za doga\u0111aje \u010dlanstva.";
     },
     get$notificationRuleIsUserMention() {
-      return "\u05d0\u05d6\u05db\u05d5\u05e8 \u05de\u05e9\u05ea\u05de\u05e9";
+      return "Spominjanje korisnika";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05de\u05e6\u05d9\u05d9\u05e0\u05d9\u05dd \u05d0\u05d5\u05ea\u05d5 \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05d1\u05d4\u05d5\u05d3\u05e2\u05d4.";
+      return "Obavje\u0161tava korisnika kada je izravno spomenut u poruci.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\u05de\u05db\u05d9\u05dc \u05e9\u05dd \u05ea\u05e6\u05d5\u05d2\u05d4";
+      return "Sadr\u017ei prikazno ime";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05db\u05d9\u05dc\u05d4 \u05d0\u05ea \u05e9\u05de\u05d5 \u05dc\u05ea\u05e6\u05d5\u05d2\u05d4.";
+      return "Obavje\u0161tava korisnika kada poruka sadr\u017ei njihovo prikazno ime.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\u05d0\u05d6\u05db\u05d5\u05e8 \u05d7\u05d3\u05e8";
+      return "Spominjanje sobe";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d9\u05e9 \u05d0\u05d6\u05db\u05d5\u05e8 \u05d7\u05d3\u05e8.";
+      return "Obavje\u0161tava korisnika kada postoji spominjanje sobe.";
     },
     get$notificationRuleRoomnotif() {
-      return "\u05d4\u05ea\u05e8\u05d0\u05d4 \u05e2\u05dc \u05d7\u05d3\u05e8";
+      return "Obavijest o sobi";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05db\u05d9\u05dc\u05d4 '@room'.";
+      return "Obavje\u0161tava korisnika kada poruka sadr\u017ei '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "\u05dc\u05d5\u05d7 \u05d6\u05d9\u05db\u05e8\u05d5\u05df";
+      return "Spomenik";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea Deactivation \u05e9\u05dc \u05d7\u05d3\u05e8.";
+      return "Obavje\u0161tava korisnika o porukama o deaktivaciji sobe.";
     },
     get$notificationRuleReaction() {
-      return "\u05ea\u05d2\u05d5\u05d1\u05d4";
+      return "Reakcija";
     },
     get$notificationRuleReactionDescription() {
-      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05ea\u05d2\u05d5\u05d1\u05d5\u05ea.";
+      return "Suzbija obavijesti za reakcije.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "\u05e8\u05e9\u05d9\u05de\u05ea \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e9\u05e8\u05ea \u05d4\u05d7\u05d3\u05e8";
+      return "ACL poslu\u017eitelja sobe";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05e8\u05e9\u05d9\u05de\u05d5\u05ea \u05d1\u05e7\u05e8\u05d4 \u05e9\u05dc \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e9\u05e8\u05ea \u05d4\u05d7\u05d3\u05e8 (ACL).";
+      return "Suzbija obavijesti za popise kontrole pristupa (ACL) poslu\u017eitelja sobe.";
     },
     get$notificationRuleSuppressEdits() {
-      return "\u05d4\u05d3\u05d7\u05ea \u05e2\u05e8\u05d9\u05db\u05d5\u05ea";
+      return "Suzbijanje ure\u0111ivanja";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e9\u05d4\u05d5\u05e2\u05ea\u05e7\u05d5.";
+      return "Suzbija obavijesti za ure\u0111ene poruke.";
     },
     get$notificationRuleCall() {
-      return "\u05e9\u05d9\u05d7\u05d4";
+      return "Poziv";
     },
     get$notificationRuleCallDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05e9\u05d9\u05d7\u05d5\u05ea.";
+      return "Obavje\u0161tava korisnika o pozivima.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "\u05d7\u05d3\u05e8 \u05de\u05d5\u05e6\u05e4\u05df \u05d0\u05d7\u05d3-\u05e2\u05dc-\u05d0\u05d7\u05d3";
+      return "\u0160ifrirana soba jedan na jedan";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05d7\u05d3\u05e8\u05d9\u05dd \u05de\u05d5\u05e6\u05e4\u05e0\u05d9\u05dd \u05d0\u05d7\u05d3-\u05e2\u05dc-\u05d0\u05d7\u05d3.";
+      return "Obavje\u0161tava korisnika o porukama u \u0161ifriranim sobama jedan na jedan.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "\u05d7\u05d3\u05e8 \u05d0\u05d7\u05d3 \u05e2\u05dc \u05d0\u05d7\u05d3";
+      return "Soba jedan na jedan";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05d7\u05d3\u05e8\u05d9\u05dd \u05d0\u05d7\u05d3 \u05e2\u05dc \u05d0\u05d7\u05d3.";
+      return "Obavje\u0161tava korisnika o porukama u sobama jedan na jedan.";
     },
     get$notificationRuleMessage() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d4";
+      return "Poruka";
     },
     get$notificationRuleMessageDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05db\u05dc\u05dc\u05d9\u05d5\u05ea.";
+      return "Obavje\u0161tava korisnika o op\u0107im porukama.";
     },
     get$notificationRuleEncrypted() {
-      return "\u05de\u05d5\u05e6\u05e4\u05df";
+      return "\u0160ifrirano";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05d7\u05d3\u05e8\u05d9\u05dd \u05de\u05d5\u05e6\u05e4\u05e0\u05d9\u05dd.";
+      return "Obavje\u0161tava korisnika o porukama u \u0161ifriranim sobama.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\u05de\u05d5\u05d3\u05d9\u05e2 \u05e2\u05dc \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d5\u05d5\u05d9\u05d3\u05d2'\u05d8 Jitsi.";
+      return "Obavje\u0161tava korisnika o doga\u0111ajima widgeta Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "\u05d3\u05d7\u05d9\u05d9\u05ea \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05e9\u05e8\u05ea";
+      return "Suzbijanje doga\u0111aja ACL poslu\u017eitelja";
     },
     get$notificationRuleServerAclDescription() {
-      return "\u05de\u05d3\u05db\u05d0 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05e2\u05dc \u05d0\u05d9\u05e8\u05d5\u05e2\u05d9 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05e9\u05e8\u05ea.";
+      return "Suzbija obavijesti za doga\u0111aje ACL poslu\u017eitelja.";
     },
     unknownPushRule$1(rule) {
-      return "\u05db\u05dc\u05dc \u05d3\u05d7\u05d9\u05e4\u05d4 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2 '" + rule + "'";
+      return "Nepoznato pravilo za obavijesti '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - \u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05dc \u05de-" + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Glasovna poruka od " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\u05d0\u05dd \u05ea\u05de\u05d7\u05e7 \u05d0\u05ea \u05d4\u05d2\u05d3\u05e8\u05ea \u05d4\u05d4\u05ea\u05e8\u05d0\u05d4 \u05d4\u05d6\u05d5, \u05d6\u05d4 \u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d1\u05d8\u05dc.";
+      return "Ako izbri\u0161ete ovu postavku obavijesti, to se ne mo\u017ee poni\u0161titi.";
     },
     get$more() {
-      return "\u05e2\u05d5\u05d3";
+      return "Vi\u0161e";
     },
     get$shareKeysWith() {
-      return "\u05e9\u05ea\u05e3 \u05de\u05e4\u05ea\u05d7\u05d5\u05ea \u05e2\u05dd...";
+      return "Dijeli klju\u010deve s...";
     },
     get$shareKeysWithDescription() {
-      return "\u05d0\u05d9\u05dc\u05d5 \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05e6\u05e8\u05d9\u05db\u05d9\u05dd \u05dc\u05d4\u05d9\u05d5\u05ea \u05de\u05d4\u05d9\u05de\u05e0\u05d9\u05dd \u05db\u05d3\u05d9 \u05e9\u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e7\u05e8\u05d5\u05d0 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e9\u05dc\u05da \u05d1\u05e9\u05d9\u05d7\u05d5\u05ea \u05de\u05d5\u05e6\u05e4\u05e0\u05d5\u05ea?";
+      return "Koje ure\u0111aje treba povjeriti kako bi mogli \u010ditati va\u0161e poruke u \u0161ifriranim razgovorima?";
     },
     get$allDevices() {
-      return "\u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd";
+      return "Svi ure\u0111aji";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd \u05d7\u05d5\u05e6\u05d9\u05dd \u05d0\u05dd \u05de\u05d5\u05e4\u05e2\u05dc";
+      return "Preko provjereni ure\u0111aji ako je omogu\u0107eno";
     },
     get$crossVerifiedDevices() {
-      return "\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd \u05d7\u05d5\u05e6\u05d9\u05dd";
+      return "Preko provjereni ure\u0111aji";
     },
     get$verifiedDevicesOnly() {
-      return "\u05e8\u05e7 \u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05de\u05d0\u05d5\u05de\u05ea\u05d9\u05dd";
+      return "Samo provjereni ure\u0111aji";
     },
     get$optionalMessage() {
-      return "(\u05d0\u05d5\u05e4\u05e6\u05d9\u05d5\u05e0\u05dc\u05d9) \u05d4\u05d5\u05d3\u05e2\u05d4...";
+      return "(Opcionalno) poruka...";
     },
     get$notSupportedOnThisDevice() {
-      return "\u05dc\u05d0 \u05e0\u05ea\u05de\u05da \u05d1\u05de\u05db\u05e9\u05d9\u05e8 \u05d6\u05d4";
+      return "Nije podr\u017eano na ovom ure\u0111aju";
     },
     get$enterNewChat() {
-      return "\u05d4\u05d9\u05db\u05e0\u05e1 \u05dc\u05e9\u05d9\u05d7\u05d4 \u05d7\u05d3\u05e9\u05d4";
+      return "U\u0111i u novi razgovor";
     },
     get$approve() {
-      return "\u05d0\u05e9\u05e8";
+      return "Odobri";
     },
     get$commandHint_logout() {
-      return "\u05d4\u05ea\u05e0\u05ea\u05e7 \u05de\u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05e0\u05d5\u05db\u05d7\u05d9 \u05e9\u05dc\u05da";
+      return "Odjavi se sa svog trenutnog ure\u0111aja";
     },
     get$commandHint_logoutall() {
-      return "\u05d4\u05ea\u05e0\u05ea\u05e7 \u05de\u05db\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8\u05d9\u05dd \u05d4\u05e4\u05e2\u05d9\u05dc\u05d9\u05dd";
+      return "Odjavi sve aktivne ure\u0111aje";
     },
     get$customReaction() {
-      return "\u05ea\u05d2\u05d5\u05d1\u05d4 \u05de\u05d5\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea";
+      return "Prilago\u0111ena reakcija";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "\u05d4\u05e7\u05dc\u05d9\u05d3 \u05d1-" + l1 + " \u05d0\u05d5 " + l2 + "...";
+      return "Upi\u0161ite na " + l1 + " ili " + l2 + "...";
     },
     get$holdForInfo() {
-      return "\u05dc\u05d7\u05e5 \u05d5\u05d4\u05d7\u05d6\u05e7 \u05dc\u05de\u05d9\u05d3\u05e2 \u05e2\u05dc \u05d4\u05de\u05d9\u05dc\u05d4.";
+      return "Kliknite i dr\u017eite za informacije o rije\u010di.";
     },
     get$gaTooltip() {
-      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2 \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9";
+      return "L2 kori\u0161tenje s gramati\u010dkom pomo\u0107i";
     },
     get$taTooltip() {
-      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2 \u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "L2 kori\u0161tenje s prijevodnom pomo\u0107i";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\u05de\u05ea\u05e8\u05d2\u05dd \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9";
+      return "Interaktivni prevoditelj";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\u05d1\u05d5\u05d3\u05e7 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9";
+      return "Interaktivni provjeriva\u010d gramatike";
     },
     get$waTooltip() {
-      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05dc\u05dc\u05d0 \u05e1\u05d9\u05d5\u05e2";
+      return "L2 kori\u0161tenje bez pomo\u0107i";
     },
     get$noIdenticalLanguages() {
-      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05e9\u05e4\u05d5\u05ea \u05d1\u05e1\u05d9\u05e1\u05d9\u05d5\u05ea \u05d5\u05de\u05d8\u05e8\u05d4 \u05e9\u05d5\u05e0\u05d5\u05ea";
+      return "Molimo odaberite razli\u010dite izvornu i ciljnu jezike";
     },
     get$joinWithClassCode() {
-      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1";
+      return "Pridru\u017ei se te\u010daju";
     },
     get$languageLevelPreA1() {
-      return "\u05de\u05ea\u05d7\u05d9\u05dc \u05e0\u05de\u05d5\u05da (\u05e4\u05e8\u05d4 A1)";
+      return "Novak Nizak (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\u05de\u05ea\u05d7\u05d9\u05dc \u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 (A1)";
+      return "Novice Mid (A1)";
     },
     get$languageLevelA2() {
-      return "\u05de\u05ea\u05d7\u05d9\u05dc \u05d2\u05d1\u05d5\u05d4 (A2)";
+      return "Po\u010detni Visoki (A2)";
     },
     get$languageLevelB1() {
-      return "\u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 \u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 (B1)";
+      return "Srednji Srednji (B1)";
     },
     get$languageLevelB2() {
-      return "\u05de\u05ea\u05e7\u05d3\u05dd \u05e0\u05de\u05d5\u05da (B2)";
+      return "Napredni Niski (B2)";
     },
     get$languageLevelC1() {
-      return "\u05de\u05ea\u05e7\u05d3\u05dd \u05d1\u05d9\u05e0\u05d5\u05e0\u05d9 (C1)";
+      return "Napredni Srednji (C1)";
     },
     get$languageLevelC2() {
-      return "\u05de\u05e2\u05dc (C2)";
+      return "Superiorni (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05e9\u05dd";
+      return "Promijeni ime";
     },
     get$changeTheNameOfTheChat() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05e6'\u05d0\u05d8";
+      return "Promijeni ime chata";
     },
     get$sorryNoResults() {
-      return "\u05e1\u05dc\u05d9\u05d7\u05d4, \u05d0\u05d9\u05df \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea.";
+      return "Oprostite, nema rezultata.";
     },
     get$ignoreInThisText() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd";
+      return "Ignoriraj";
     },
     get$countryInformation() {
-      return "\u05d0\u05e8\u05e6\u05d9";
+      return "Moja zemlja";
     },
     get$updateLanguage() {
-      return "\u05e9\u05e4\u05d5\u05ea\u05d9\u05d9";
+      return "Moji jezici";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\u05d0\u05d9\u05d6\u05d4 \u05e9\u05e4\u05d4 \u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05dc\u05de\u05d5\u05d3?";
+      return "Koji jezik \u017eeli\u0161 nau\u010diti?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\u05de\u05d4 \u05e9\u05e4\u05ea \u05d4\u05d1\u05e1\u05d9\u05e1 \u05e9\u05dc\u05da?";
+      return "Koji je tvoj osnovni jezik?";
     },
     get$saveChanges() {
-      return "\u05e9\u05de\u05d5\u05e8 \u05e9\u05d9\u05e0\u05d5\u05d9\u05d9\u05dd";
+      return "Spremi promjene";
     },
     get$publicProfileTitle() {
-      return "\u05d0\u05e4\u05e9\u05e8 \u05dc\u05de\u05e6\u05d5\u05d0 \u05d0\u05ea \u05d4\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc \u05e9\u05dc\u05d9 \u05d1\u05d7\u05d9\u05e4\u05d5\u05e9";
+      return "Dozvoli da moj profil bude prona\u0111en u pretra\u017eivanju";
     },
     get$publicProfileDesc() {
-      return "\u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05e4\u05e2\u05dc\u05d4, \u05d0\u05ea\u05d4 \u05de\u05d0\u05e4\u05e9\u05e8 \u05dc\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd \u05dc\u05de\u05e6\u05d5\u05d0 \u05d0\u05ea \u05d4\u05e4\u05e8\u05d5\u05e4\u05d9\u05dc \u05e9\u05dc\u05da \u05d1\u05e9\u05d5\u05e8\u05ea \u05d4\u05d7\u05d9\u05e4\u05d5\u05e9 \u05d4\u05d2\u05dc\u05d5\u05d1\u05dc\u05d9\u05ea \u05d5\u05dc\u05e9\u05dc\u05d5\u05d7 \u05d1\u05e7\u05e9\u05d5\u05ea \u05dc\u05e9\u05d9\u05d7\u05d4. \u05d1\u05e9\u05dc\u05d1 \u05d6\u05d4, \u05ea\u05d5\u05db\u05dc \u05dc\u05d1\u05d7\u05d5\u05e8 \u05dc\u05e7\u05d1\u05dc \u05d0\u05d5 \u05dc\u05d3\u05d7\u05d5\u05ea \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4.";
+      return "Uklju\u010divanjem omogu\u0107ujete drugim korisnicima da prona\u0111u va\u0161 profil u globalnoj tra\u017eilici i po\u0161alju zahtjeve za chat. U ovom trenutku mo\u017eete odabrati prihvatiti ili odbiti zahtjev.";
     },
     get$errorDisableIT() {
-      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05de\u05d5\u05e9\u05d1\u05ea\u05ea.";
+      return "Pomo\u0107 pri prevo\u0111enju je isklju\u010dena.";
     },
     get$errorDisableIGC() {
-      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7 \u05de\u05d5\u05e9\u05d1\u05ea\u05d4.";
+      return "Pomo\u0107 pri gramatici je isklju\u010dena.";
     },
     get$errorDisableITUserDesc() {
-      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05dc\u05e2\u05d3\u05db\u05d5\u05df \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "Kliknite ovdje za a\u017euriranje postavki pomo\u0107i pri prevo\u0111enju";
     },
     get$errorDisableIGCUserDesc() {
-      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05dc\u05e2\u05d3\u05db\u05d5\u05df \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Kliknite ovdje za a\u017euriranje postavki pomo\u0107i pri gramatici";
     },
     get$errorDisableITClassDesc() {
-      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05de\u05d5\u05e9\u05d1\u05ea\u05ea \u05e2\u05d1\u05d5\u05e8 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05e9\u05d1\u05d5 \u05e0\u05de\u05e6\u05d0 \u05d4\u05e6'\u05d0\u05d8 \u05d4\u05d6\u05d4.";
+      return "Pomo\u0107 pri prevo\u0111enju je isklju\u010dena za te\u010daj u kojem se nalazi ovaj chat.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7 \u05de\u05d5\u05e9\u05d1\u05ea\u05ea \u05e2\u05d1\u05d5\u05e8 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05e9\u05d1\u05d5 \u05e0\u05de\u05e6\u05d0 \u05d4\u05e6'\u05d0\u05d8 \u05d4\u05d6\u05d4.";
+      return "Pomo\u0107 pri gramatici je isklju\u010dena za te\u010daj u kojem se nalazi ovaj chat.";
     },
     get$error405Title() {
-      return "\u05e9\u05e4\u05d5\u05ea \u05dc\u05d0 \u05de\u05d5\u05d2\u05d3\u05e8\u05d5\u05ea";
+      return "Jezici nisu postavljeni";
     },
     get$error405Desc() {
-      return "\u05d0\u05e0\u05d0 \u05d4\u05d2\u05d3\u05e8 \u05d0\u05ea \u05e9\u05e4\u05d5\u05ea\u05d9\u05da \u05d1\u05ea\u05e4\u05e8\u05d9\u05d8 \u05d4\u05e8\u05d0\u05e9\u05d9 > \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05dc\u05de\u05d9\u05d3\u05d4.";
+      return "Molimo postavite svoje jezike u Glavnom izborniku > Postavke u\u010denja.";
     },
     get$termsAndConditions() {
-      return "\u05ea\u05e0\u05d0\u05d9\u05dd \u05d5\u05d4\u05d2\u05d1\u05dc\u05d5\u05ea";
+      return "Uvjetima i odredbama";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return "\u05d5\u05de\u05d0\u05e9\u05e8 \u05e9\u05d0\u05e0\u05d9 \u05d1\u05df \u05dc\u05e4\u05d7\u05d5\u05ea 16 \u05e9\u05e0\u05d9\u05dd.";
+      return " i potvr\u0111ujem da imam najmanje 16 godina.";
     },
     get$error502504Title() {
-      return "\u05d5\u05d5\u05d0\u05d5, \u05d9\u05e9 \u05d4\u05e8\u05d1\u05d4 \u05ea\u05dc\u05de\u05d9\u05d3\u05d9\u05dd \u05d1\u05d0\u05d9\u05e0\u05d8\u05e8\u05e0\u05d8!";
+      return "Vau, puno je u\u010denika online!";
     },
     get$error502504Desc() {
-      return "\u05db\u05dc\u05d9 \u05ea\u05e8\u05d2\u05d5\u05dd \u05d5\u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dc\u05d5\u05dc\u05d9\u05dd \u05dc\u05d4\u05d9\u05d5\u05ea \u05d0\u05d9\u05d8\u05d9\u05d9\u05dd \u05d0\u05d5 \u05dc\u05d0 \u05d6\u05de\u05d9\u05e0\u05d9\u05dd \u05d1\u05d6\u05de\u05df \u05e9\u05d4\u05d1\u05d5\u05d8\u05d9\u05dd \u05e9\u05dc \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05de\u05e2\u05d3\u05db\u05e0\u05d9\u05dd.";
+      return "Alati za prijevod i gramatiku mogu biti spori ili nedostupni dok Pangea botovi ne uhvate korak.";
     },
     get$error404Title() {
-      return "\u05e9\u05d2\u05d9\u05d0\u05ea \u05ea\u05e8\u05d2\u05d5\u05dd!";
+      return "Gre\u0161ka u prijevodu!";
     },
     get$error404Desc() {
-      return "\u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05dc\u05d0 \u05d1\u05d8\u05d5\u05d7 \u05d0\u05d9\u05da \u05dc\u05ea\u05e8\u05d2\u05dd \u05d0\u05ea \u05d6\u05d4...";
+      return "Pangea Bot nije siguran kako to prevesti...";
     },
     get$errorPleaseRefresh() {
-      return "\u05d0\u05e0\u05d7\u05e0\u05d5 \u05d1\u05d5\u05d3\u05e7\u05d9\u05dd \u05d0\u05ea \u05d6\u05d4! \u05d0\u05e0\u05d0 \u05d8\u05e2\u05df \u05de\u05d7\u05d3\u05e9 \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
+      return "Radimo na tome! Molimo osvje\u017eite i poku\u0161ajte ponovno.";
     },
     get$connectedToStaging() {
-      return "\u05de\u05d7\u05d5\u05d1\u05e8 \u05dc\u05e1\u05d1\u05d9\u05d1\u05ea \u05d1\u05d3\u05d9\u05e7\u05d4";
+      return "Povezano sa Stagingom";
     },
     get$learningSettings() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05dc\u05de\u05d9\u05d3\u05d4";
+      return "Postavke u\u010denja";
     },
     get$participants() {
-      return "\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd";
+      return "Sudionici";
     },
     get$clickMessageTitle() {
-      return "\u05e6\u05e8\u05d9\u05da \u05e2\u05d6\u05e8\u05d4?";
+      return "Treba\u0161 pomo\u0107?";
     },
     get$clickMessageBody() {
-      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05e7\u05d1\u05dc\u05ea \u05db\u05dc\u05d9\u05dd \u05dc\u05e9\u05e4\u05d4 \u05db\u05de\u05d5 \u05ea\u05e8\u05d2\u05d5\u05dd, \u05d4\u05e9\u05de\u05e2\u05d4 \u05d7\u05d5\u05d6\u05e8\u05ea \u05d5\u05e2\u05d5\u05d3!";
+      return "Klikni na poruku za jezi\u010dne alate poput prijevoda, reprodukcije i vi\u0161e!";
     },
     get$allDone() {
-      return "\u05e1\u05d9\u05d9\u05de\u05ea!";
+      return "Sve gotovo!";
     },
     get$vocab() {
-      return "\u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd";
+      return "Vokabular";
     },
     get$subscribe(_) {
-      return "\u05d4\u05d9\u05e8\u05e9\u05dd";
+      return "Pretplatite se";
     },
     get$getAccess() {
-      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05e2\u05db\u05e9\u05d9\u05d5!";
+      return "Pretplatite se sada!";
     },
     get$subscriptionDesc() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d7\u05d9\u05e0\u05dd! \u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05ea\u05e8\u05d2\u05d5\u05dd \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9, \u05d1\u05d3\u05d9\u05e7\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d5\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4.";
+      return "Poruke su besplatne! Pretplatite se za otklju\u010davanje interaktivnog prevo\u0111enja, provjere gramatike i analitike u\u010denja.";
     },
     get$subscriptionManagement() {
-      return "\u05e0\u05d9\u05d4\u05d5\u05dc \u05de\u05e0\u05d5\u05d9";
+      return "Upravljanje pretplatom";
     },
     get$currentSubscription() {
-      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05d4\u05e0\u05d5\u05db\u05d7\u05d9";
+      return "Trenutna pretplata";
     },
     get$cancelSubscription() {
-      return "\u05d1\u05d8\u05dc \u05d0\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da";
+      return "Otka\u017ei pretplatu";
     },
     get$selectYourPlan() {
-      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05e9\u05dc\u05da";
+      return "Odaberite svoj plan";
     },
     get$subsciptionPlatformTooltip() {
-      return "\u05d0\u05e0\u05d0 \u05d4\u05d9\u05db\u05e0\u05e1 \u05dc\u05de\u05db\u05e9\u05d9\u05e8 \u05d4\u05de\u05e7\u05d5\u05e8\u05d9 \u05e9\u05dc\u05da \u05db\u05d3\u05d9 \u05dc\u05e0\u05d4\u05dc \u05d0\u05ea \u05ea\u05db\u05e0\u05d9\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da";
+      return "Prijavite se na svoj originalni ure\u0111aj za upravljanje svojom pretplatom";
     },
     get$subscriptionManagementUnavailable() {
-      return "\u05e0\u05d9\u05d4\u05d5\u05dc \u05d4\u05de\u05e0\u05d5\u05d9 \u05d0\u05d9\u05e0\u05d5 \u05d6\u05de\u05d9\u05df";
+      return "Upravljanje pretplatom nije dostupno";
     },
     get$paymentMethod() {
-      return "\u05d0\u05de\u05e6\u05e2\u05d9 \u05ea\u05e9\u05dc\u05d5\u05dd";
+      return "Na\u010din pla\u0107anja";
     },
     get$paymentHistory() {
-      return "\u05d4\u05d9\u05e1\u05d8\u05d5\u05e8\u05d9\u05d9\u05ea \u05ea\u05e9\u05dc\u05d5\u05de\u05d9\u05dd";
+      return "Povijest pla\u0107anja";
     },
     get$emptyChatDownloadWarning() {
-      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05d5\u05e8\u05d9\u05d3 \u05e9\u05d9\u05d7\u05d4 \u05e8\u05d9\u05e7\u05d4";
+      return "Ne mo\u017eete preuzeti prazan chat";
     },
     get$toggleImmersionMode() {
-      return "\u05de\u05e6\u05d1 \u05d4\u05d8\u05de\u05e2\u05d4";
+      return "Na\u010din uranjanja";
     },
     get$toggleImmersionModeDesc() {
-      return "\u05db\u05d0\u05e9\u05e8 \u05de\u05d5\u05e4\u05e2\u05dc, \u05db\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05de\u05d5\u05e6\u05d2\u05d5\u05ea \u05d1\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da. \u05d4\u05d2\u05d3\u05e8\u05d4 \u05d6\u05d5 \u05e9\u05d9\u05de\u05d5\u05e9\u05d9\u05ea \u05d1\u05de\u05d9\u05d5\u05d7\u05d3 \u05d1\u05d4\u05d7\u05dc\u05e4\u05d5\u05ea \u05e9\u05e4\u05d5\u05ea.";
+      return "Kad je uklju\u010den, sve poruke prikazuju se na va\u0161em ciljanom jeziku. Ova postavka je najkorisnija u razmjenama jezika.";
     },
     get$itToggleDescription() {
-      return "\u05db\u05dc\u05d9 \u05d6\u05d4 \u05dc\u05dc\u05d9\u05de\u05d5\u05d3 \u05e9\u05e4\u05d5\u05ea \u05d9\u05d6\u05d4\u05d4 \u05de\u05d9\u05dc\u05d9\u05dd \u05d1\u05e9\u05e4\u05ea \u05d4\u05d1\u05e1\u05d9\u05e1 \u05e9\u05dc\u05da \u05d5\u05d9\u05e2\u05d6\u05d5\u05e8 \u05dc\u05ea\u05e8\u05d2\u05de\u05df \u05dc\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da. \u05dc\u05e2\u05d9\u05ea\u05d9\u05dd \u05e0\u05d3\u05d9\u05e8\u05d5\u05ea, \u05d4-AI \u05e2\u05dc\u05d5\u05dc \u05dc\u05d8\u05e2\u05d5\u05ea \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd.";
+      return "Ovaj alat za u\u010denje jezika identificirat \u0107e rije\u010di u va\u0161em osnovnom jeziku i pomo\u0107i vam da ih prevedete na ciljani jezik. Iako rijetko, AI mo\u017ee napraviti pogre\u0161ke u prijevodu.";
     },
     get$igcToggleDescription() {
-      return "\u05db\u05dc\u05d9 \u05d6\u05d4 \u05dc\u05dc\u05d9\u05de\u05d5\u05d3 \u05e9\u05e4\u05d5\u05ea \u05d9\u05d6\u05d4\u05d4 \u05e9\u05d2\u05d9\u05d0\u05d5\u05ea \u05db\u05ea\u05d9\u05d1, \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d5\u05e4\u05d9\u05e1\u05d5\u05e7 \u05e0\u05e4\u05d5\u05e6\u05d5\u05ea \u05d1\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05da \u05d5\u05d9\u05e6\u05d9\u05e2 \u05ea\u05d9\u05e7\u05d5\u05e0\u05d9\u05dd. \u05dc\u05e2\u05d9\u05ea\u05d9\u05dd \u05e0\u05d3\u05d9\u05e8\u05d5\u05ea, \u05d4-AI \u05e2\u05dc\u05d5\u05dc \u05dc\u05d8\u05e2\u05d5\u05ea \u05d1\u05ea\u05d9\u05e7\u05d5\u05e0\u05d9\u05dd.";
+      return "Ovaj alat za u\u010denje jezika identificirat \u0107e uobi\u010dajene pogre\u0161ke u pravopisu, gramatici i interpunkciji u va\u0161oj poruci te predlo\u017eiti ispravke. Iako rijetko, AI mo\u017ee napraviti pogre\u0161ke u korekciji.";
     },
     get$originalMessage() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05de\u05e7\u05d5\u05e8\u05d9\u05ea";
+      return "Original Message";
     },
     get$sentMessage() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05e0\u05e9\u05dc\u05d7\u05d4";
+      return "Poslana poruka";
     },
     get$useType() {
-      return "\u05e1\u05d5\u05d2 \u05e9\u05d9\u05de\u05d5\u05e9";
+      return "Vrsta kori\u0161tenja";
     },
     get$notAvailable() {
-      return "\u05dc\u05d0 \u05d6\u05de\u05d9\u05df";
+      return "Nije dostupno";
     },
     get$taAndGaTooltip() {
-      return "\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-L2 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd \u05d5\u05e1\u05d9\u05d5\u05e2 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "L2 kori\u0161tenje s pomo\u0107nikom za prijevod i pomo\u0107nikom za gramatiku";
     },
     get$definitionsToolName() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05de\u05d9\u05dc\u05d9\u05dd";
+      return "Definicije rije\u010di";
     },
     get$definitionsToolDescription() {
-      return "\u05db\u05d0\u05e9\u05e8 \u05de\u05d5\u05e4\u05e2\u05dc, \u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05de\u05d5\u05d3\u05d2\u05e9\u05d5\u05ea \u05d1\u05db\u05d7\u05d5\u05dc \u05e0\u05d9\u05ea\u05e0\u05d5\u05ea \u05dc\u05dc\u05d7\u05d9\u05e6\u05d4 \u05dc\u05e7\u05d1\u05dc\u05ea \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea. \u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05db\u05d3\u05d9 \u05dc\u05d2\u05e9\u05ea \u05dc\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea.";
+      return "Kad je omogu\u0107eno, rije\u010di podvu\u010dene plavom bojom mogu se kliknuti za definicije. Kliknite na poruke za pristup definicijama.";
     },
     get$welcomeBack() {
-      return "\u05d1\u05e8\u05d5\u05db\u05d9\u05dd \u05d4\u05e9\u05d1\u05d9\u05dd! \u05d0\u05dd \u05d4\u05d9\u05d9\u05ea \u05d7\u05dc\u05e7 \u05de\u05e0\u05d9\u05e1\u05d5\u05d9 2023-2024, \u05d0\u05e0\u05d0 \u05e6\u05d5\u05e8 \u05d0\u05d9\u05ea\u05e0\u05d5 \u05e7\u05e9\u05e8 \u05dc\u05e7\u05d1\u05dc\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05d4\u05de\u05d9\u05d5\u05d7\u05d3 \u05e9\u05dc\u05da \u05dc\u05e0\u05d9\u05e1\u05d5\u05d9. \u05d0\u05dd \u05d0\u05ea\u05d4 \u05de\u05d5\u05e8\u05d4 \u05e9\u05e8\u05db\u05e9 (\u05d0\u05d5 \u05d4\u05de\u05d5\u05e1\u05d3 \u05e9\u05dc\u05da \u05e8\u05db\u05e9) \u05e8\u05d9\u05e9\u05d9\u05d5\u05e0\u05d5\u05ea \u05dc\u05db\u05d9\u05ea\u05d4 \u05e9\u05dc\u05da, \u05e6\u05d5\u05e8 \u05d0\u05d9\u05ea\u05e0\u05d5 \u05e7\u05e9\u05e8 \u05dc\u05de\u05e0\u05d5\u05d9 \u05d4\u05de\u05d5\u05e8\u05d4 \u05e9\u05dc\u05da.";
+      return "Dobro do\u0161li nazad! Ako ste sudjelovali u pilot projektu 2023-2024, kontaktirajte nas za va\u0161u posebnu pilot pretplatu. Ako ste u\u010ditelj koji je (ili va\u0161a institucija je) kupio licence za va\u0161u razred, kontaktirajte nas za u\u010diteljevu pretplatu.";
     },
     get$downloadTxtFile() {
-      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5 \u05d8\u05e7\u05e1\u05d8";
+      return "Preuzmi tekstualnu datoteku";
     },
     get$downloadCSVFile() {
-      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5 CSV";
+      return "Preuzmi CSV datoteku";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u05d9\u05e9 \u05dc\u05da \u05db\u05e8\u05d2\u05e2 \u05de\u05e0\u05d5\u05d9 \u05e7\u05d9\u05d3\u05d5\u05dd \u05de\u05db\u05d9\u05e8\u05d5\u05ea \u05dc\u05db\u05dc \u05d4\u05d7\u05d9\u05d9\u05dd. \u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc-support@pangea.chat \u05dc\u05e2\u05d6\u05e8\u05d4 \u05d1\u05e9\u05d9\u05e0\u05d5\u05d9 \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da.";
+      return "Trenutno imate do\u017eivotnu promotivnu pretplatu. Po\u0161aljite poruku na support@pangea.chat za pomo\u0107 pri promjeni pretplate.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05e0\u05e8\u05db\u05e9 \u05d3\u05e8\u05da " + purchasePlatform;
+      return "Pretplata kupljena putem " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05dc\u05e9\u05d1\u05d5\u05e2 \u05d0\u05d7\u05d3";
+      return "Tjedan dana probnog razdoblja";
     },
     get$downloadXLSXFile() {
-      return "\u05d4\u05d5\u05e8\u05d3 \u05e7\u05d5\u05d1\u05e5 \u05d0\u05e7\u05e1\u05dc";
+      return "Preuzmi Excel datoteku";
     },
     get$unkDisplayName() {
-      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
+      return "Nepoznato";
     },
     get$wwCountryDisplayName() {
-      return "\u05e2\u05d5\u05dc\u05dd \u05e8\u05d7\u05d1";
+      return "Cijeli svijet";
     },
     get$afCountryDisplayName() {
-      return "\u05d0\u05e4\u05d2\u05e0\u05d9\u05e1\u05d8\u05df";
+      return "Afganistan";
     },
     get$axCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05d0\u05dc\u05e0\u05d3";
+      return "Olandski otoci";
     },
     get$alCountryDisplayName() {
-      return "\u05d0\u05dc\u05d1\u05e0\u05d9\u05d4";
+      return "Albanija";
     },
     get$dzCountryDisplayName() {
-      return "\u05d0\u05dc\u05d2'\u05d9\u05e8\u05d9\u05d4";
+      return "Al\u017eir";
     },
     get$asCountryDisplayName() {
-      return "\u05e1\u05de\u05d5\u05d0\u05d4 \u05d4\u05d0\u05de\u05e8\u05d9\u05e7\u05d0\u05d9\u05ea";
+      return "Ameri\u010dko Samoa";
     },
     get$adCountryDisplayName() {
-      return "\u05d0\u05e0\u05d3\u05d5\u05e8\u05d4";
+      return "Andora";
     },
     get$aoCountryDisplayName() {
-      return "\u05d0\u05e0\u05d2\u05d5\u05dc\u05d4";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\u05d0\u05e0\u05d2\u05d5\u05d5\u05d9\u05dc\u05d4";
+      return "Angvila";
     },
     get$agCountryDisplayName() {
-      return "\u05d0\u05e0\u05d8\u05d9\u05d2\u05d5\u05d0\u05d4 \u05d5\u05d1\u05e8\u05d1\u05d5\u05d3\u05d4";
+      return "Antigua i Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\u05d0\u05e8\u05d2\u05e0\u05d8\u05d9\u05e0\u05d4";
+      return "Argentina";
     },
     get$amCountryDisplayName() {
-      return "\u05d0\u05e8\u05de\u05e0\u05d9\u05d4";
+      return "Armenija";
     },
     get$awCountryDisplayName() {
-      return "\u05d0\u05e8\u05d5\u05d1\u05d4";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\u05d0\u05d9 \u05d4\u05d4\u05e9\u05e8\u05d0\u05d4";
+      return "Otoci Ascension";
     },
     get$auCountryDisplayName() {
-      return "\u05d0\u05d5\u05e1\u05d8\u05e8\u05dc\u05d9\u05d4";
+      return "Australija";
     },
     get$atCountryDisplayName() {
-      return "\u05d0\u05d5\u05e1\u05d8\u05e8\u05d9\u05d4";
+      return "Austrija";
     },
     get$azCountryDisplayName() {
-      return "\u05d0\u05d6\u05e8\u05d1\u05d9\u05d9\u05d2'\u05d0\u05df";
+      return "Azerbejd\u017ean";
     },
     get$bsCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05d1\u05d4\u05d0\u05de\u05d4";
+      return "Bahami";
     },
     get$bhCountryDisplayName() {
-      return "\u05d1\u05d7\u05e8\u05d9\u05d9\u05df";
+      return "Bahrein";
     },
     get$bdCountryDisplayName() {
-      return "\u05d1\u05e0\u05d2\u05dc\u05d3\u05e9";
+      return "Banglade\u0161";
     },
     get$bbCountryDisplayName() {
-      return "\u05d1\u05e8\u05d1\u05d3\u05d5\u05e1";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\u05d1\u05dc\u05d0\u05e8\u05d5\u05e1";
+      return "Bjelorusija";
     },
     get$beCountryDisplayName() {
-      return "\u05d1\u05dc\u05d2\u05d9\u05d4";
+      return "Belgija";
     },
     get$bzCountryDisplayName() {
-      return "\u05d1\u05dc\u05d9\u05d6";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
-      return "\u05d1\u05e0\u05d9\u05df";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "\u05d1\u05e8\u05de\u05d5\u05d3\u05d4";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "\u05d1\u05d4\u05d5\u05d8\u05df";
+      return "Butan";
     },
     get$boCountryDisplayName() {
-      return "\u05d1\u05d5\u05dc\u05d9\u05d1\u05d9\u05d4";
+      return "Bolivija";
     },
     get$baCountryDisplayName() {
-      return "\u05d1\u05d5\u05e1\u05e0\u05d9\u05d4 \u05d5\u05d4\u05e8\u05e6\u05d2\u05d5\u05d1\u05d9\u05e0\u05d4";
+      return "Bosna i Hercegovina";
     },
     get$bwCountryDisplayName() {
-      return "\u05d1\u05d5\u05d8\u05e1\u05d5\u05d0\u05e0\u05d4";
+      return "Botsvana";
     },
     get$brCountryDisplayName() {
-      return "\u05d1\u05e8\u05d6\u05d9\u05dc";
+      return "Brazil";
     },
     get$ioCountryDisplayName() {
-      return "\u05d8\u05e8\u05d9\u05d8\u05d5\u05e8\u05d9\u05d9\u05ea \u05d4\u05d4\u05d5\u05d3\u05d5 \u05d4\u05de\u05d6\u05e8\u05d7\u05d9 \u05d4\u05d1\u05e8\u05d9\u05d8\u05d9\u05ea";
+      return "Britanski Indijskooceanski teritorij";
     },
     get$vgCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05d4\u05d1\u05ea\u05d5\u05dc\u05d4 \u05d4\u05d1\u05e8\u05d9\u05d8\u05d9\u05d9\u05dd";
+      return "Britanski Djevi\u010danski otoci";
     },
     get$bnCountryDisplayName() {
-      return "\u05d1\u05e8\u05d5\u05e0\u05d9\u05d9";
+      return "Brunej";
     },
     get$bgCountryDisplayName() {
-      return "\u05d1\u05d5\u05dc\u05d2\u05e8\u05d9\u05d4";
+      return "Bugarska";
     },
     get$bfCountryDisplayName() {
-      return "\u05d1\u05d5\u05e8\u05e7\u05d9\u05e0\u05d4 \u05e4\u05d0\u05e1\u05d5";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\u05d1\u05d5\u05e8\u05d5\u05e0\u05d3\u05d9";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\u05e7\u05de\u05d1\u05d5\u05d3\u05d9\u05d4";
+      return "Kambod\u017ea";
     },
     get$cmCountryDisplayName() {
-      return "\u05e7\u05de\u05e8\u05d5\u05df";
+      return "Kamerun";
     },
     get$caCountryDisplayName() {
-      return "\u05e7\u05e0\u05d3\u05d4";
+      return "Kanada";
     },
     get$cvCountryDisplayName() {
-      return "\u05db\u05e3 \u05d5\u05e8\u05d3\u05d4";
+      return "Zelenortska Republika";
     },
     get$bqCountryDisplayName() {
-      return "\u05d4\u05d0\u05d9\u05d9\u05dd \u05d4\u05e7\u05e8\u05d9\u05d1\u05d9\u05d9\u05dd \u05d4\u05d4\u05d5\u05dc\u05e0\u05d3\u05d9\u05d9\u05dd";
+      return "Karipski Nizozemski";
     },
     get$kyCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05e7\u05d9\u05d9\u05de\u05df";
+      return "Kajmanski otoci";
     },
     get$cfCountryDisplayName() {
-      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05d4 \u05d4\u05de\u05e8\u05db\u05d6-\u05d0\u05e4\u05e8\u05d9\u05e7\u05d0\u05d9\u05ea";
+      return "Srednjoafri\u010dka Republika";
     },
     get$tdCountryDisplayName() {
-      return "\u05e6'\u05d0\u05d3";
+      return "\u010cad";
     },
     get$clCountryDisplayName() {
-      return "\u05e6'\u05d9\u05dc\u05d4";
+      return "\u010cile";
     },
     get$cnCountryDisplayName() {
-      return "\u05e1\u05d9\u05df";
+      return "Kina";
     },
     get$cxCountryDisplayName() {
-      return "\u05d0\u05d9 \u05d7\u05d2 \u05d4\u05de\u05d5\u05dc\u05d3";
+      return "Bo\u017ei\u0107ni otok";
     },
     get$ccCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05e7\u05d5\u05e7\u05d5\u05e1 [\u05e7\u05d9\u05dc\u05d9\u05e0\u05d2]";
+      return "Kokosovi [Keeling] otoci";
     },
     get$coCountryDisplayName() {
-      return "\u05e7\u05d5\u05dc\u05d5\u05de\u05d1\u05d9\u05d4";
+      return "Kolumbija";
     },
     get$kmCountryDisplayName() {
-      return "\u05e7\u05d5\u05de\u05d5\u05e8\u05d5\u05e1";
+      return "Komori";
     },
     get$cdCountryDisplayName() {
-      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05ea \u05e7\u05d5\u05e0\u05d2\u05d5 \u05d4\u05d3\u05de\u05d5\u05e7\u05e8\u05d8\u05d9\u05ea";
+      return "Demokratska Republika Kongo";
     },
     get$cgCountryDisplayName() {
-      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05ea \u05e7\u05d5\u05e0\u05d2\u05d5";
+      return "Republika Kongo";
     },
     get$ckCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05e7\u05d5\u05e7";
+      return "Cookovi otoci";
     },
     get$crCountryDisplayName() {
-      return "\u05e7\u05d5\u05e1\u05d8\u05d4 \u05e8\u05d9\u05e7\u05d4";
+      return "Kostarika";
     },
     get$ciCountryDisplayName() {
-      return "\u05d7\u05d5\u05e3 \u05d4\u05e9\u05e0\u05d4\u05d1";
+      return "Obala Bjelokosti";
     },
     get$hrCountryDisplayName() {
-      return "\u05e7\u05e8\u05d5\u05d0\u05d8\u05d9\u05d4";
+      return "Hrvatska";
     },
     get$cuCountryDisplayName() {
-      return "\u05e7\u05d5\u05d1\u05d4";
+      return "Kuba";
     },
     get$cwCountryDisplayName() {
-      return "\u05e7\u05d5\u05e8\u05d0\u05e1\u05d0\u05d5";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "\u05e7\u05e4\u05e8\u05d9\u05e1\u05d9\u05df";
+      return "Cipar";
     },
     get$czCountryDisplayName() {
-      return "\u05e6'\u05db\u05d9\u05d4";
+      return "\u010ce\u0161ka";
     },
     get$dkCountryDisplayName() {
-      return "\u05d3\u05e0\u05de\u05e8\u05e7";
+      return "Danska";
     },
     get$djCountryDisplayName() {
-      return "\u05d2'\u05d9\u05d1\u05d5\u05d8\u05d9";
+      return "D\u017eibuti";
     },
     get$dmCountryDisplayName() {
-      return "\u05d3\u05d5\u05de\u05d9\u05e0\u05d9\u05e7\u05d4";
+      return "Dominika";
     },
     get$doCountryDisplayName() {
-      return "\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05ea \u05d3\u05d5\u05de\u05d9\u05e0\u05d9\u05e7\u05d4";
+      return "Dominikanska Republika";
     },
     get$tlCountryDisplayName() {
-      return "\u05de\u05d6\u05e8\u05d7 \u05d8\u05d9\u05de\u05d5\u05e8";
+      return "Vijetnam";
     },
     get$ecCountryDisplayName() {
-      return "\u05d0\u05e7\u05d5\u05d5\u05d3\u05d5\u05e8";
+      return "Ekvador";
     },
     get$egCountryDisplayName() {
-      return "\u05de\u05e6\u05e8\u05d9\u05dd";
+      return "Egipat";
     },
     get$svCountryDisplayName() {
-      return "\u05d0\u05dc \u05e1\u05dc\u05d1\u05d3\u05d5\u05e8";
+      return "Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\u05d2\u05d9\u05e0\u05d0\u05d4 \u05d4\u05de\u05e9\u05d5\u05d5\u05e0\u05d9\u05ea";
+      return "Ekvatorijalna Gvineja";
     },
     get$erCountryDisplayName() {
-      return "\u05d0\u05e8\u05d9\u05ea\u05e8\u05d9\u05d0\u05d4";
+      return "Eritreja";
     },
     get$eeCountryDisplayName() {
-      return "\u05d0\u05e1\u05d8\u05d5\u05e0\u05d9\u05d4";
+      return "Estonija";
     },
     get$szCountryDisplayName() {
-      return "\u05d0\u05e1\u05d5\u05d5\u05d0\u05d8\u05d9\u05e0\u05d9";
+      return "Esvatini";
     },
     get$etCountryDisplayName() {
-      return "\u05d0\u05ea\u05d9\u05d5\u05e4\u05d9\u05d4";
+      return "Etiopija";
     },
     get$fkCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05e4\u05d5\u05e7\u05dc\u05e0\u05d3";
+      return "Folklandski otoci";
     },
     get$foCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05e4\u05d0\u05e8\u05d5";
+      return "Farski otoci";
     },
     get$fjCountryDisplayName() {
-      return "\u05e4\u05d9\u05d2'\u05d9";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\u05e4\u05d9\u05e0\u05dc\u05e0\u05d3";
+      return "Finska";
     },
     get$frCountryDisplayName() {
-      return "\u05e6\u05e8\u05e4\u05ea";
+      return "Francuska";
     },
     get$gfCountryDisplayName() {
-      return "\u05d2\u05d9\u05d0\u05e0\u05d4 \u05d4\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea";
+      return "Francuska Gvajana";
     },
     get$pfCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05e4\u05d5\u05dc\u05d9\u05e0\u05d6\u05d9\u05d4 \u05d4\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea";
+      return "Francuska Polinezija";
     },
     get$gaCountryDisplayName() {
-      return "\u05d2\u05d1\u05d5\u05df";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "\u05d2\u05de\u05d1\u05d9\u05d4";
+      return "Gambija";
     },
     get$geCountryDisplayName() {
-      return "\u05d2\u05d0\u05d5\u05e8\u05d2\u05d9\u05d4";
+      return "Gruzija";
     },
     get$deCountryDisplayName() {
-      return "\u05d2\u05e8\u05de\u05e0\u05d9\u05d4";
+      return "Njema\u010dka";
     },
     get$ghCountryDisplayName() {
-      return "\u05d2\u05d0\u05e0\u05d4";
+      return "Gana";
     },
     get$giCountryDisplayName() {
-      return "\u05d2\u05d9\u05d1\u05e8\u05dc\u05d8\u05e8";
+      return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "\u05d9\u05d5\u05d5\u05df";
+      return "Gr\u010dka";
     },
     get$glCountryDisplayName() {
-      return "\u05d2\u05e8\u05d9\u05e0\u05dc\u05e0\u05d3";
+      return "Grenland";
     },
     get$gdCountryDisplayName() {
-      return "\u05d2\u05e8\u05e0\u05d3\u05d4";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\u05d2\u05d5\u05d5\u05d0\u05d3\u05dc\u05d5\u05e4";
+      return "Gvadalupe";
     },
     get$guCountryDisplayName() {
-      return "\u05d2\u05d5\u05d0\u05dd";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\u05d2\u05d5\u05d0\u05d8\u05de\u05dc\u05d4";
+      return "Gvatemala";
     },
     get$ggCountryDisplayName() {
-      return "\u05d2\u05e8\u05e0\u05d6\u05d9";
+      return "Jersey";
     },
     get$gnCountryDisplayName() {
-      return "\u05d2\u05d9\u05e0\u05d0\u05d4 \u05e7\u05d5\u05e0\u05d0\u05e7\u05d9";
+      return "Gvineja Konakri";
     },
     get$gwCountryDisplayName() {
-      return "\u05d2\u05d9\u05e0\u05d0\u05d4 \u05d1\u05d9\u05e1\u05d0\u05d5";
+      return "Gvineja-Bisao";
     },
     get$gyCountryDisplayName() {
-      return "\u05d2\u05d9\u05d0\u05e0\u05d4";
+      return "Gvajana";
     },
     get$htCountryDisplayName() {
-      return "\u05d4\u05d0\u05d9\u05d8\u05d9";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "\u05d0\u05d9 \u05d4\u05e8\u05d3 \u05d5\u05d0\u05d9\u05d9 \u05de\u05e7\u05d3\u05d5\u05e0\u05dc\u05d3";
+      return "Ostrvo Heard i otoci McDonald";
     },
     get$hnCountryDisplayName() {
-      return "\u05d4\u05d5\u05e0\u05d3\u05d5\u05e8\u05e1";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\u05d4\u05d5\u05e0\u05d2 \u05e7\u05d5\u05e0\u05d2";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "\u05d4\u05d5\u05e0\u05d2\u05e8\u05d9\u05d4";
+      return "Ma\u0111arska";
     },
     get$isCountryDisplayName() {
-      return "\u05d0\u05d9\u05e1\u05dc\u05e0\u05d3";
+      return "Island";
     },
     get$inCountryDisplayName() {
-      return "\u05d4\u05d5\u05d3\u05d5";
+      return "Indija";
     },
     get$idCountryDisplayName() {
-      return "\u05d0\u05d9\u05e0\u05d3\u05d5\u05e0\u05d6\u05d9\u05d4";
+      return "Indonezija";
     },
     get$irCountryDisplayName() {
-      return "\u05d0\u05d9\u05e8\u05d0\u05df";
+      return "Iran";
     },
     get$iqCountryDisplayName() {
-      return "\u05e2\u05d9\u05e8\u05d0\u05e7";
+      return "Irak";
     },
     get$ieCountryDisplayName() {
-      return "\u05d0\u05d9\u05e8\u05dc\u05e0\u05d3";
+      return "Irska";
     },
     get$imCountryDisplayName() {
-      return "\u05d0\u05d9 \u05de\u05d0\u05df";
+      return "Otok Man";
     },
     get$ilCountryDisplayName() {
-      return "\u05d9\u05e9\u05e8\u05d0\u05dc";
+      return "Izrael";
     },
     get$itCountryDisplayName() {
-      return "\u05d0\u05d9\u05d8\u05dc\u05d9\u05d4";
+      return "Italija";
     },
     get$jmCountryDisplayName() {
-      return "\u05d2'\u05de\u05d9\u05d9\u05e7\u05d4";
+      return "Jamajka";
     },
     get$jpCountryDisplayName() {
-      return "\u05d9\u05e4\u05df";
+      return "Japan";
     },
     get$jeCountryDisplayName() {
-      return "\u05d2'\u05e8\u05d6\u05d9";
+      return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "\u05d9\u05e8\u05d3\u05df";
+      return "Jordan";
     },
     get$kzCountryDisplayName() {
-      return "\u05e7\u05d6\u05d7\u05e1\u05d8\u05df";
+      return "Kazahstan";
     },
     get$keCountryDisplayName() {
-      return "\u05e7\u05e0\u05d9\u05d4";
+      return "Kenija";
     },
     get$kiCountryDisplayName() {
-      return "\u05e7\u05d9\u05e8\u05d9\u05d1\u05d8\u05d9";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\u05e7\u05d5\u05e1\u05d5\u05d1\u05d5";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "\u05db\u05d5\u05d5\u05d9\u05ea";
+      return "Kuvajt";
     },
     get$kgCountryDisplayName() {
-      return "\u05e7\u05d9\u05e8\u05d2\u05d9\u05d6\u05e1\u05d8\u05df";
+      return "Kirgistan";
     },
     get$laCountryDisplayName() {
-      return "\u05dc\u05d0\u05d5\u05e1";
+      return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "\u05dc\u05d8\u05d1\u05d9\u05d4";
+      return "Letonija";
     },
     get$lbCountryDisplayName() {
-      return "\u05dc\u05d1\u05e0\u05d5\u05df";
+      return "Liban";
     },
     get$lsCountryDisplayName() {
-      return "\u05dc\u05e1\u05d5\u05d8\u05d5";
+      return "Lesoto";
     },
     get$lrCountryDisplayName() {
-      return "\u05dc\u05d1\u05d9\u05e8\u05d9\u05d4";
+      return "Liberija";
     },
     get$lyCountryDisplayName() {
-      return "\u05dc\u05d5\u05d1";
+      return "Libija";
     },
     get$liCountryDisplayName() {
-      return "\u05dc\u05d9\u05db\u05d8\u05e0\u05e9\u05d8\u05d9\u05d9\u05df";
+      return "Lihten\u0161tajn";
     },
     get$ltCountryDisplayName() {
-      return "\u05dc\u05d9\u05d8\u05d0";
+      return "Litvanija";
     },
     get$luCountryDisplayName() {
-      return "\u05dc\u05d5\u05e7\u05e1\u05de\u05d1\u05d5\u05e8\u05d2";
+      return "Luksemburg";
     },
     get$moCountryDisplayName() {
-      return "\u05de\u05e7\u05d0\u05d5";
+      return "Makao";
     },
     get$mkCountryDisplayName() {
-      return "\u05de\u05e7\u05d3\u05d5\u05e0\u05d9\u05d4";
+      return "Sjeverna Makedonija";
     },
     get$mgCountryDisplayName() {
-      return "\u05de\u05d3\u05d2\u05e1\u05e7\u05e8";
+      return "Madagaskar";
     },
     get$mwCountryDisplayName() {
-      return "\u05de\u05d0\u05dc\u05d5\u05d5\u05d9";
+      return "Malavi";
     },
     get$myCountryDisplayName() {
-      return "\u05de\u05dc\u05d6\u05d9\u05d4";
+      return "Malezija";
     },
     get$mvCountryDisplayName() {
-      return "\u05d4\u05d0\u05d9\u05d9\u05dd \u05d4\u05de\u05dc\u05d3\u05d9\u05d1\u05d9\u05d9\u05dd";
+      return "Maldivi";
     },
     get$mlCountryDisplayName() {
-      return "\u05de\u05d0\u05dc\u05d9";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\u05de\u05dc\u05d8\u05d4";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05de\u05e8\u05e9\u05dc";
+      return "Mar\u0161alski Otoci";
     },
     get$mqCountryDisplayName() {
-      return "\u05de\u05e8\u05d8\u05d9\u05e0\u05d9\u05e7";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "\u05de\u05d0\u05d5\u05e8\u05d9\u05d8\u05e0\u05d9\u05d4";
+      return "Mauretanija";
     },
     get$muCountryDisplayName() {
-      return "\u05de\u05d0\u05d5\u05e8\u05d9\u05e6\u05d9\u05d5\u05e1";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
-      return "\u05de\u05d0\u05d9\u05d5\u05d5\u05d8";
+      return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\u05de\u05e7\u05e1\u05d9\u05e7\u05d5";
+      return "Meksiko";
     },
     get$fmCountryDisplayName() {
-      return "\u05de\u05d9\u05e7\u05e8\u05d5\u05e0\u05d6\u05d9\u05d4";
+      return "Mikronezija";
     },
     get$mdCountryDisplayName() {
-      return "\u05de\u05d5\u05dc\u05d3\u05d5\u05d1\u05d4";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "\u05de\u05d5\u05e0\u05e7\u05d5";
+      return "Monako";
     },
     get$mnCountryDisplayName() {
-      return "\u05de\u05d5\u05e0\u05d2\u05d5\u05dc\u05d9\u05d4";
+      return "Mongolija";
     },
     get$meCountryDisplayName() {
-      return "\u05de\u05d5\u05e0\u05d8\u05e0\u05d2\u05e8\u05d5";
+      return "Crna Gora";
     },
     get$msCountryDisplayName() {
-      return "\u05de\u05d5\u05e0\u05e1\u05e8\u05d0\u05d8";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\u05de\u05e8\u05d5\u05e7\u05d5";
+      return "Maroko";
     },
     get$mzCountryDisplayName() {
-      return "\u05de\u05d5\u05d6\u05de\u05d1\u05d9\u05e7";
+      return "Mozambik";
     },
     get$mmCountryDisplayName() {
-      return "\u05de\u05d9\u05d0\u05e0\u05de\u05e8 (\u05d1\u05d5\u05e8\u05de\u05d4)";
+      return "Mjanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return " namibia";
+      return "Namibija";
     },
     get$nrCountryDisplayName() {
-      return "\u05e0\u05d0\u05d5\u05e8\u05d5";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\u05e0\u05e4\u05d0\u05dc";
+      return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\u05d4\u05d5\u05dc\u05e0\u05d3";
+      return "Nizozemska";
     },
     get$ncCountryDisplayName() {
-      return "\u05e7\u05dc\u05d3\u05d5\u05e0\u05d9\u05d4 \u05d4\u05d7\u05d3\u05e9\u05d4";
+      return "Nova Kaledonija";
     },
     get$nzCountryDisplayName() {
-      return "\u05e0\u05d9\u05d5 \u05d6\u05d9\u05dc\u05e0\u05d3";
+      return "Novi Zeland";
     },
     get$niCountryDisplayName() {
-      return "\u05e0\u05d9\u05e7\u05e8\u05d2\u05d5\u05d0\u05d4";
+      return "Nikaragva";
     },
     get$neCountryDisplayName() {
-      return "\u05e0\u05d9\u05d6'\u05e8";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "\u05e0\u05d9\u05d2\u05e8\u05d9\u05d4";
+      return "Nigerija";
     },
     get$nuCountryDisplayName() {
-      return "\u05e0\u05d9\u05d5\u05d0\u05d4";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\u05d0\u05d9 \u05e0\u05d5\u05e8\u05e4\u05d5\u05dc\u05e7";
+      return "Oto\u010dje Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "\u05e7\u05d5\u05e8\u05d9\u05d0\u05d4 \u05d4\u05e6\u05e4\u05d5\u05e0\u05d9\u05ea";
+      return "Sjeverna Koreja";
     },
     get$mpCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05de\u05e8\u05d9\u05d0\u05e0\u05d4 \u05d4\u05e6\u05e4\u05d5\u05e0\u05d9\u05d9\u05dd";
+      return "Sjeverni Marijanski Otoci";
     },
     get$noCountryDisplayName() {
-      return "\u05e0\u05d5\u05e8\u05d5\u05d5\u05d2\u05d9\u05d4";
+      return "Norve\u0161ka";
     },
     get$omCountryDisplayName() {
-      return "\u05e2\u05d5\u05de\u05d0\u05df";
+      return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "\u05e4\u05e7\u05d9\u05e1\u05d8\u05df";
+      return "Pakistan";
     },
     get$pwCountryDisplayName() {
-      return "\u05e4\u05dc\u05d0\u05d5";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\u05d4\u05e9\u05d8\u05d7\u05d9\u05dd \u05d4\u05e4\u05dc\u05e1\u05d8\u05d9\u05e0\u05d9\u05d9\u05dd";
+      return "Palestinske Teritorije";
     },
     get$paCountryDisplayName() {
-      return "\u05e4\u05e0\u05de\u05d4";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "\u05e4\u05e4\u05d5\u05d0\u05d4 \u05d2\u05d9\u05e0\u05d0\u05d4 \u05d4\u05d7\u05d3\u05e9\u05d4";
+      return "Papua Nova Gvineja";
     },
     get$pyCountryDisplayName() {
-      return "\u05e4\u05e8\u05d2\u05d5\u05d5\u05d0\u05d9";
+      return "Paragvaj";
     },
     get$peCountryDisplayName() {
-      return "\u05e4\u05e8\u05d5";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "\u05e4\u05d9\u05dc\u05d9\u05e4\u05d9\u05e0\u05d9\u05dd";
+      return "Filipini";
     },
     get$plCountryDisplayName() {
-      return "\u05e4\u05d5\u05dc\u05d9\u05df";
+      return "Poljska";
     },
     get$ptCountryDisplayName() {
-      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05dc";
+      return "Portugal";
     },
     get$prCountryDisplayName() {
-      return "\u05e4\u05d5\u05d0\u05e8\u05d8\u05d5 \u05e8\u05d9\u05e7\u05d5";
+      return "Portoriko";
     },
     get$qaCountryDisplayName() {
-      return "\u05e7\u05d8\u05d0\u05e8";
+      return "Katar";
     },
     get$reCountryDisplayName() {
-      return "\u05e8\u05d5\u05e0\u05d9\u05d5\u05df";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "\u05e8\u05d5\u05de\u05e0\u05d9\u05d4";
+      return "Rumunija";
     },
     get$ruCountryDisplayName() {
-      return "\u05e8\u05d5\u05e1\u05d9\u05d4";
+      return "Rusija";
     },
     get$rwCountryDisplayName() {
-      return "\u05e8\u05d5\u05d0\u05e0\u05d3\u05d4";
+      return "Ruanda";
     },
     get$blCountryDisplayName() {
-      return "\u05e1\u05e0\u05d8 \u05d1\u05e8\u05ea\u05d5\u05dc\u05d5\u05de\u05d9\u05d0\u05d5";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "\u05e1\u05e0\u05d8 \u05d4\u05dc\u05e0\u05d4";
+      return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "\u05e1\u05e0\u05d8 \u05e7\u05d9\u05d8\u05e1";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "\u05e1\u05e0\u05d8 \u05dc\u05d5\u05e1\u05d9\u05d4";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "\u05e1\u05e0\u05d8 \u05de\u05e8\u05d8\u05d9\u05df";
+      return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "\u05e1\u05e0\u05d8 \u05e4\u05d9\u05d9\u05e8 \u05d5\u05de\u05d9\u05e7\u05dc\u05d5\u05df";
+      return "Saint Pierre i Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "\u05e1\u05e0\u05d8 \u05d5\u05d9\u05e0\u05e1\u05e0\u05d8";
+      return "St. Vincent";
     },
     get$wsCountryDisplayName() {
-      return "\u05e1\u05de\u05d5\u05d0\u05d4";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\u05e1\u05df \u05de\u05e8\u05d9\u05e0\u05d5";
+      return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "\u05e1\u05d0\u05d5 \u05d8\u05d5\u05de\u05d4 \u05d5\u05e4\u05e8\u05d9\u05e0\u05e1\u05d9\u05e4\u05d4";
+      return "S\xe3o Tom\xe9 i Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\u05e2\u05e8\u05d1 \u05d4\u05e1\u05e2\u05d5\u05d3\u05d9\u05ea";
+      return "Saudijska Arabija";
     },
     get$snCountryDisplayName() {
-      return "\u05e1\u05e0\u05d2\u05dc";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\u05e1\u05e8\u05d1\u05d9\u05d4";
+      return "Srbija";
     },
     get$scCountryDisplayName() {
-      return "\u05e1\u05d9\u05d9\u05e9\u05dc";
+      return "Sej\u0161eli";
     },
     get$slCountryDisplayName() {
-      return "\u05e1\u05d9\u05d9\u05e8\u05d4 \u05dc\u05d0\u05d5\u05df";
+      return "Sijera Leone";
     },
     get$sgCountryDisplayName() {
-      return "\u05e1\u05d9\u05e0\u05d2\u05e4\u05d5\u05e8";
+      return "Singapur";
     },
     get$sxCountryDisplayName() {
-      return "\u05e1\u05d9\u05e0\u05d8 \u05de\u05d0\u05e8\u05d8\u05df";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "\u05e1\u05dc\u05d5\u05d1\u05e7\u05d9\u05d4";
+      return "Slova\u010dka";
     },
     get$siCountryDisplayName() {
-      return "\u05e1\u05dc\u05d5\u05d1\u05e0\u05d9\u05d4";
+      return "Slovenija";
     },
     get$sbCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05e9\u05dc\u05de\u05d4";
+      return "Salomonova Ostrva";
     },
     get$soCountryDisplayName() {
-      return "\u05e1\u05d5\u05de\u05dc\u05d9\u05d4";
+      return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "\u05d3\u05e8\u05d5\u05dd \u05d0\u05e4\u05e8\u05d9\u05e7\u05d4";
+      return "Ju\u017ena Afrika";
     },
     get$gsCountryDisplayName() {
-      return "\u05d2'\u05d5\u05e8\u05d2'\u05d9\u05d4 \u05d4\u05d3\u05e8\u05d5\u05de\u05d9\u05ea \u05d5\u05d0\u05d9\u05d9 \u05e1\u05d0\u05d5\u05ea' \u05d2'\u05d5\u05e8\u05d2'\u05d9\u05d4 \u05d5\u05e1\u05d0\u05d5\u05ea' \u05e1\u05e0\u05d3\u05d5\u05d5\u05d9\u05e5'";
+      return "Ju\u017ena Georgija i Ju\u017eni Sandwich otoci";
     },
     get$krCountryDisplayName() {
-      return "\u05e7\u05d5\u05e8\u05d9\u05d0\u05d4 \u05d4\u05d3\u05e8\u05d5\u05de\u05d9\u05ea";
+      return "Ju\u017ena Koreja";
     },
     get$ssCountryDisplayName() {
-      return "\u05e1\u05d5\u05d3\u05d0\u05df \u05d4\u05d3\u05e8\u05d5\u05de\u05d9\u05ea";
+      return "Ju\u017eni Sudan";
     },
     get$esCountryDisplayName() {
-      return "\u05e1\u05e4\u05e8\u05d3";
+      return "\u0160panjolska";
     },
     get$lkCountryDisplayName() {
-      return "\u05e1\u05e8\u05d9 \u05dc\u05e0\u05e7\u05d4";
+      return "\u0160ri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\u05e1\u05d5\u05d3\u05d0\u05df";
+      return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "\u05e1\u05d5\u05e8\u05d9\u05e0\u05d0\u05dd";
+      return "Surinam";
     },
     get$sjCountryDisplayName() {
-      return "\u05e1\u05d5\u05d5\u05d0\u05dc\u05d3\u05d0\u05e8\u05d3 \u05d5\u05d9\u05d0\u05df \u05de\u05d0\u05d9\u05d9\u05df";
+      return "Svalbard i Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u05e9\u05d5\u05d5\u05d9\u05d9\u05e5";
+      return "\u0160vedska";
     },
     get$chCountryDisplayName() {
-      return "\u05e9\u05d5\u05d5\u05d9\u05d9\u05e5";
+      return "\u0160vicarska";
     },
     get$syCountryDisplayName() {
-      return "\u05e1\u05d5\u05e8\u05d9\u05d4";
+      return "Syria";
     },
     get$twCountryDisplayName() {
-      return "\u05d8\u05d9\u05d9\u05d5\u05d5\u05d0\u05df";
+      return "Tajvan";
     },
     get$tjCountryDisplayName() {
-      return "\u05d8\u05d2'\u05d9\u05e7\u05d9\u05e1\u05d8\u05df";
+      return "Tad\u017eikistan";
     },
     get$tzCountryDisplayName() {
-      return "\u05d8\u05e0\u05d6\u05e0\u05d9\u05d4";
+      return "Tanzanija";
     },
     get$thCountryDisplayName() {
-      return "\u05ea\u05d0\u05d9\u05dc\u05e0\u05d3";
+      return "Tajland";
     },
     get$tgCountryDisplayName() {
-      return "\u05d8\u05d5\u05d2\u05d5";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
-      return "\u05d8\u05d5\u05e7\u05dc\u05d0\u05d5";
+      return "Tokelau";
     },
     get$toCountryDisplayName() {
-      return "\u05d8\u05d5\u05e0\u05d2\u05d4";
+      return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\u05d8\u05e8\u05d9\u05e0\u05d9\u05d3\u05d3 \u05d5\u05d8\u05d5\u05d1\u05d2\u05d5";
+      return "Trinidad i Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\u05ea\u05d5\u05e0\u05d9\u05e1\u05d9\u05d4";
+      return "Tunis";
     },
     get$trCountryDisplayName() {
-      return "\u05d8\u05d5\u05e8\u05e7\u05d9\u05d4";
+      return "Turska";
     },
     get$tmCountryDisplayName() {
-      return "\u05d8\u05d5\u05e8\u05e7\u05de\u05e0\u05d9\u05e1\u05d8\u05df";
+      return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "\u05d0\u05d9\u05d9 \u05d8\u05d5\u05e8\u05e7\u05e1 \u05d5\u05e7\u05d9\u05d9\u05e7\u05d5\u05e1";
+      return "Otoci Turks i Caicos";
     },
     get$tvCountryDisplayName() {
-      return "\u05d8\u05d5\u05d1\u05d0\u05dc\u05d5";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return '\u05d0\u05d9\u05d9 \u05d4\u05d1\u05ea\u05d5\u05dc\u05d4 \u05e9\u05dc \u05d0\u05e8\u05d4"\u05d1';
+      return "Ameri\u010dki Djevi\u010danski Otoci";
     },
     get$ugCountryDisplayName() {
-      return "\u05d0\u05d5\u05d2\u05e0\u05d3\u05d4";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\u05d0\u05d5\u05e7\u05e8\u05d0\u05d9\u05e0\u05d4";
+      return "Ukrajina";
     },
     get$aeCountryDisplayName() {
-      return "\u05d0\u05d9\u05d7\u05d5\u05d3 \u05d4\u05d0\u05de\u05d9\u05e8\u05d5\u05d9\u05d5\u05ea \u05d4\u05e2\u05e8\u05d1\u05d9\u05d5\u05ea";
+      return "Ujedinjeni Arapski Emirati";
     },
     get$gbCountryDisplayName() {
-      return "\u05d4\u05de\u05de\u05dc\u05db\u05d4 \u05d4\u05de\u05d0\u05d5\u05d7\u05d3\u05ea";
+      return "Ujedinjeno Kraljevstvo";
     },
     get$usCountryDisplayName() {
-      return "\u05d0\u05e8\u05e6\u05d5\u05ea \u05d4\u05d1\u05e8\u05d9\u05ea";
+      return "Sjedinjene Dr\u017eave";
     },
     get$uyCountryDisplayName() {
-      return "\u05d0\u05d5\u05e8\u05d5\u05d2\u05d5\u05d5\u05d0\u05d9";
+      return "Urugvaj";
     },
     get$uzCountryDisplayName() {
-      return "\u05d0\u05d5\u05d6\u05d1\u05e7\u05d9\u05e1\u05d8\u05df";
+      return "Uzbekistan";
     },
     get$vuCountryDisplayName() {
-      return "\u05d5\u05e0\u05d5\u05d0\u05d8\u05d5";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\u05d4\u05e2\u05d9\u05e8 \u05d5\u05d5\u05ea\u05d9\u05e7\u05df";
+      return "Vatikanski Grad";
     },
     get$veCountryDisplayName() {
-      return "\u05d5\u05e0\u05e6\u05d5\u05d0\u05dc\u05d4";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "\u05d5\u05d9\u05d9\u05d8\u05e0\u05d0\u05dd";
+      return "Vijetnam";
     },
     get$wfCountryDisplayName() {
-      return "\u05d5\u05dc\u05d9\u05e1 \u05d5\u05e4\u05d8\u05d5\u05e0\u05d4";
+      return "Wallis i Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\u05e1\u05d4\u05e8\u05d4 \u05d4\u05de\u05e2\u05e8\u05d1\u05d9\u05ea";
+      return "Zapadna Sahara";
     },
     get$yeCountryDisplayName() {
-      return "\u05ea\u05d9\u05de\u05df";
+      return "Jemen";
     },
     get$zmCountryDisplayName() {
-      return "\u05d6\u05de\u05d1\u05d9\u05d4";
+      return "Zambija";
     },
     get$zwCountryDisplayName() {
-      return "\u05d6\u05d9\u05de\u05d1\u05d1\u05d5\u05d0\u05d4";
+      return "Zimbabve";
     },
     get$pay() {
       return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " \u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05d5\u05ea\u05da \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1: " + space + "! \u05d4\u05d0\u05dd \u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05e7\u05d1\u05dc?";
+      return user + " vas je pozvao da se pridru\u017eite te\u010daju: " + space + "! \u017delite li prihvatiti?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \u05d0\u05ea\u05d4 \u05de\u05d5\u05d6\u05de\u05df!";
+      return "\ud83d\udce9 Pozvani ste!";
     },
     invitedToChat$2($name, user) {
-      return user + " \u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05d5\u05ea\u05da \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e9\u05d9\u05d7\u05d4: " + $name + "! \u05d4\u05d0\u05dd \u05ea\u05e8\u05e6\u05d4/\u05d9 \u05dc\u05e7\u05d1\u05dc?";
+      return user + " vas je pozvao da se pridru\u017eite razgovoru: " + $name + "! \u017delite li prihvatiti?";
     },
     get$monthlySubscription() {
-      return "\u05d7\u05d5\u05d3\u05e9\u05d9";
+      return "Mjese\u010dno";
     },
     get$yearlySubscription() {
-      return "\u05e9\u05e0\u05ea\u05d9";
+      return "Godi\u0161nje";
     },
     get$defaultSubscription() {
-      return "\u05de\u05e0\u05d5\u05d9 Pangea Chat";
+      return "Pangea Chat Pretplata";
     },
     get$freeTrial() {
-      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05d7\u05d9\u05e0\u05dd";
+      return "Besplatno probno razdoblje";
     },
     get$noDataFound() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd";
+      return "Nema prona\u0111enih podataka";
     },
     get$correctionDefaultPrompt() {
-      return "\u05de\u05d4 \u05d4\u05d4\u05d7\u05dc\u05e4\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d1\u05d9\u05d5\u05ea\u05e8?";
+      return "Koja je najbolja zamjena?";
     },
     get$reportToTeacher() {
-      return "\u05dc\u05de\u05d9 \u05ea\u05e8\u05e6\u05d4 \u05dc\u05d3\u05d5\u05d5\u05d7 \u05e2\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5?";
+      return "Kome \u017eelite prijaviti ovu poruku?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " \u05d3\u05d9\u05d5\u05d5\u05d7\u05d4 \u05e2\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05de-" + reportedUserId + " \u05d1\u05e9\u05d9\u05d7\u05d4 " + roomName;
+      return reportingUserId + " je prijavio poruku od " + reportedUserId + " u chatu " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d4: " + reportedMessage + "\n\u05e1\u05d9\u05d1\u05d4: " + reason;
+      return "Poruka: " + reportedMessage + "\nRazlog: " + reason;
     },
     get$noTeachersFound() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05de\u05d5\u05e8\u05d9\u05dd \u05dc\u05d3\u05d5\u05d5\u05d7 \u05d0\u05dc\u05d9\u05d4\u05dd";
+      return "Nema nastavnika za prijavu";
     },
     trialExpiration$1(expiration) {
-      return "\u05d4\u05de\u05d1\u05d7\u05df \u05d4\u05d7\u05d9\u05e0\u05de\u05d9 \u05e9\u05dc\u05da \u05d9\u05e4\u05d5\u05d2 \u05d1-" + expiration;
+      return "Va\u0161 besplatni probni rok istje\u010de " + expiration;
     },
     get$freeTrialDesc() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d7\u05d3\u05e9\u05d9\u05dd \u05de\u05e7\u05d1\u05dc\u05d9\u05dd \u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05d7\u05d9\u05e0\u05dd \u05e9\u05dc \u05e9\u05d1\u05d5\u05e2 \u05d1-Pangea Chat";
+      return "Novi korisnici dobivaju tjedan dana besplatnog probnog razdoblja Pangea Chata";
     },
     get$activateTrial() {
-      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05d7\u05d9\u05e0\u05dd \u05dc-7 \u05d9\u05de\u05d9\u05dd";
+      return "Aktiviraj besplatno 7-dnevno probno razdoblje";
     },
     get$successfullySubscribed() {
-      return "\u05e0\u05e8\u05e9\u05de\u05ea \u05d1\u05d4\u05e6\u05dc\u05d7\u05d4!";
+      return "Uspje\u0161no ste se pretplatili!";
     },
     get$clickToManageSubscription() {
-      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05db\u05d3\u05d9 \u05dc\u05e0\u05d4\u05dc \u05d0\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da.";
+      return "Kliknite ovdje za upravljanje pretplatom.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05dc\u05e4\u05d7\u05d5\u05ea " + min + " \u05ea\u05d5\u05d5\u05d9\u05dd.";
+      return "Molimo odaberite najmanje " + min + " znakova.";
     },
     get$pleaseEnterValidEmail() {
-      return '\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05db\u05ea\u05d5\u05d1\u05ea \u05d3\u05d5\u05d0"\u05dc \u05ea\u05e7\u05d9\u05e0\u05d4.';
+      return "Molimo unesite valjanu adresu e-po\u0161te.";
     },
     get$pleaseChooseAUsername() {
-      return "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9";
+      return "Molimo odaberite korisni\u010dko ime";
     },
     get$listen() {
-      return "\u05d4\u05d0\u05d6\u05df";
+      return "Slu\u0161aj";
     },
     get$trialPeriodExpired() {
-      return "\u05ea\u05e7\u05d5\u05e4\u05ea \u05d4\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05e9\u05dc\u05da \u05ea\u05de\u05d4";
+      return "Va\u0161e probno razdoblje je isteklo";
     },
     get$subscribedToUnlockTools() {
-      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05ea\u05e8\u05d2\u05d5\u05dd \u05d0\u05d9\u05e0\u05d8\u05e8\u05d0\u05e7\u05d8\u05d9\u05d1\u05d9 \u05d5\u05d1\u05d3\u05d9\u05e7\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7, \u05d4\u05e9\u05de\u05e2\u05ea \u05e7\u05d5\u05dc, \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05ea\u05e8\u05d2\u05d5\u05dc \u05de\u05d5\u05ea\u05d0\u05de\u05d5\u05ea \u05d0\u05d9\u05e9\u05d9\u05ea \u05d5\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4!";
+      return "Pretplatite se za otklju\u010davanje interaktivnog prijevoda i provjere gramatike, reprodukcije zvuka, personaliziranih aktivnosti vje\u017ebanja i analitike u\u010denja!";
     },
     get$translationTooltip() {
-      return "\u05ea\u05e8\u05d2\u05dd";
-    },
-    get$speechToTextTooltip() {
-      return "\u05ea\u05de\u05dc\u05d5\u05dc";
+      return "Prevedi";
     },
     get$kickBotWarning() {
-      return "\u05d4\u05e1\u05e8\u05ea \u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05ea\u05e1\u05d9\u05e8 \u05d0\u05ea \u05d1\u05d5\u05d8 \u05d4\u05e9\u05d9\u05d7\u05d4 \u05de\u05e9\u05d9\u05d7\u05d4 \u05d6\u05d5.";
+      return "Izbacivanje Pangea Bota uklonit \u0107e chat bota iz ovog razgovora.";
     },
     get$refresh(_) {
-      return "\u05e8\u05e2\u05e0\u05df";
+      return "Osvje\u017ei";
     },
     get$updatePhoneOS() {
-      return "\u05d9\u05d9\u05ea\u05db\u05df \u05e9\u05ea\u05e6\u05d8\u05e8\u05da \u05dc\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d2\u05e8\u05e1\u05ea \u05de\u05e2\u05e8\u05db\u05ea \u05d4\u05d4\u05e4\u05e2\u05dc\u05d4 \u05e9\u05dc \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05e9\u05dc\u05da.";
+      return "Mo\u017eda \u0107ete morati a\u017eurirati verziju OS-a na svom ure\u0111aju.";
     },
     get$autoIGCToolName() {
-      return "\u05d4\u05e8\u05e5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d0\u05ea \u05e2\u05d6\u05e8 \u05d4\u05db\u05ea\u05d9\u05d1\u05d4 \u05e9\u05dc \u05e4\u05d0\u05e0\u05d2\u05d9\u05d0\u05d4";
+      return "Automatski pokreni pomo\u0107 za pisanje Pangea";
     },
     get$autoIGCToolDescription() {
-      return "\u05d4\u05e8\u05e5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d0\u05ea \u05e2\u05d6\u05e8 \u05d4\u05db\u05ea\u05d9\u05d1\u05d4 \u05e9\u05dc \u05d3\u05e7\u05d3\u05d5\u05e7 \u05d5\u05ea\u05e8\u05d2\u05d5\u05dd \u05e9\u05dc \u05e4\u05d0\u05e0\u05d2\u05d9\u05d0\u05d4 \u05dc\u05e4\u05e0\u05d9 \u05e9\u05dc\u05d9\u05d7\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05d9.";
+      return "Automatski pokreni pomo\u0107 za gramatiku i prijevod Pangea Chat prije slanja moje poruke.";
     },
     get$chatCapacity() {
-      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05e9\u05d9\u05d7\u05d4";
+      return "Kapacitet chata";
     },
     get$roomFull() {
-      return "\u05d4\u05d7\u05d3\u05e8 \u05de\u05dc\u05d0 \u05db\u05d1\u05e8.";
+      return "Ova soba je ve\u0107 puna.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05e9\u05d5\u05e0\u05ea\u05d4";
+      return "Kapacitet chata je promijenjen";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d7\u05d9\u05d9\u05d1\u05ea \u05dc\u05d4\u05d9\u05d5\u05ea \u05dc\u05e4\u05d7\u05d5\u05ea " + count + ".";
+      return "Kapacitet chata mora biti najmanje " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "\u05e7\u05d9\u05d1\u05d5\u05dc\u05ea \u05e9\u05d9\u05d7\u05d4 \u05de\u05d2\u05d1\u05d9\u05dc\u05d4 \u05d0\u05ea \u05de\u05e1\u05e4\u05e8 \u05d4\u05d7\u05d1\u05e8\u05d9\u05dd \u05d4\u05de\u05d5\u05e8\u05e9\u05d9\u05dd \u05d1\u05e9\u05d9\u05d7\u05d4.";
+      return "Kapacitet chata ograni\u010dava broj \u010dlanova koji smiju biti u chatu.";
     },
     get$enterNumber() {
-      return "\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05e2\u05e8\u05da \u05de\u05e1\u05e4\u05e8 \u05e9\u05dc\u05dd.";
+      return "Molimo unesite cijeli broj.";
     },
     get$buildTranslation() {
-      return "\u05d1\u05e0\u05d4 \u05d0\u05ea \u05d4\u05ea\u05e8\u05d2\u05d5\u05dd \u05e9\u05dc\u05da \u05de\u05d4\u05d0\u05e4\u05e9\u05e8\u05d5\u05d9\u05d5\u05ea \u05dc\u05de\u05e2\u05dc\u05d4";
+      return "Izgradite svoj prijevod od gore navedenih opcija";
     },
     get$practice() {
-      return "\u05ea\u05e8\u05d2\u05d5\u05dc";
+      return "Vje\u017eba";
     },
     get$speechToTextBody() {
-      return "\u05dc\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e7\u05d5\u05dc\u05d9\u05d5\u05ea, \u05ea\u05d5\u05db\u05dc \u05dc\u05e8\u05d0\u05d5\u05ea \u05ea\u05de\u05dc\u05d5\u05dc \u05d5\u05d2\u05dd \u05d0\u05ea \u05e0\u05d9\u05e7\u05d5\u05d3 \u05de\u05d9\u05dc\u05d5\u05ea \u05dc\u05d3\u05e7\u05d4 \u05e9\u05dc \u05d4\u05d3\u05d5\u05d1\u05e8.";
+      return "Za glasovne poruke, mo\u017eete vidjeti transkript kao i rezultat govornika u rije\u010dima po minutu.";
     },
     get$versionNotFound() {
-      return "\u05d4\u05d2\u05e8\u05e1\u05d4 \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d4";
+      return "Verzija nije prona\u0111ena";
     },
     get$fetchingVersion() {
-      return "\u05de\u05d1\u05e6\u05e2 \u05d8\u05e2\u05d9\u05e0\u05ea \u05d2\u05e8\u05e1\u05d4...";
+      return "Preuzimanje verzije...";
     },
     get$versionFetchError() {
-      return "\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05d8\u05e2\u05d9\u05e0\u05ea \u05d4\u05d2\u05e8\u05e1\u05d4";
+      return "Pogre\u0161ka pri preuzimanju verzije";
     },
     versionText$2(version, buildNumber) {
-      return "\u05d2\u05e8\u05e1\u05d4: " + version + "+" + buildNumber;
+      return "Verzija: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05e9\u05e4\u05ea \u05d4\u05d9\u05e1\u05d5\u05d3 \u05e9\u05dc\u05da \u05dc\u05d0 \u05d9\u05ea\u05d5\u05e8\u05d2\u05de\u05d5.";
+      return "Poruke na va\u0161em osnovnom jeziku ne\u0107e biti prevedene.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\u05d9\u05e9 \u05dc\u05da \u05de\u05e0\u05d5\u05d9 \u05e4\u05e2\u05d9\u05dc";
+      return "Imate aktivnu pretplatu";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u05de\u05d7\u05d9\u05e7\u05ea \u05d4\u05d7\u05e9\u05d1\u05d5\u05df \u05e9\u05dc\u05da \u05dc\u05d0 \u05ea\u05d1\u05d8\u05dc \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d0\u05ea \u05d4\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da.";
+      return "Brisanje va\u0161eg ra\u010duna ne\u0107e automatski otkazati va\u0161u pretplatu.";
     },
     get$manageSubscription() {
-      return "\u05e0\u05d9\u05d4\u05d5\u05dc \u05d4\u05de\u05e0\u05d5\u05d9";
+      return "Upravljanje pretplatom";
     },
     get$error520Title() {
-      return "\u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
+      return "Poku\u0161ajte ponovno.";
     },
     get$error520Desc() {
-      return "\u05e1\u05dc\u05d9\u05d7\u05d4, \u05dc\u05d0 \u05d4\u05e6\u05dc\u05d7\u05e0\u05d5 \u05dc\u05d4\u05d1\u05d9\u05df \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05da...";
+      return "Oprostite, nismo mogli razumjeti va\u0161u poruku...";
     },
     get$level(_) {
-      return "\u05e8\u05de\u05d4";
+      return "Razina";
     },
     get$translationChoicesBody() {
-      return "\u05dc\u05d7\u05e5 \u05d5\u05d4\u05d7\u05d6\u05e7 \u05d0\u05e4\u05e9\u05e8\u05d5\u05ea \u05dc\u05e7\u05d1\u05dc\u05ea \u05e8\u05de\u05d6.";
+      return "Kliknite i dr\u017eite opciju za naznaku.";
     },
     get$grammar() {
-      return "\u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Gramatika";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u05d4\u05e7\u05e9\u05e8 \u05d4\u05d5\u05d6\u05de\u05df \u05dc\u05e9\u05d9\u05d7\u05d4";
+      return "Kontakt je pozvan u chat";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 \u05d4\u05d6\u05de\u05e0\u05ea \u05e9\u05d9\u05d7\u05d4";
+      return "Pozovi chat";
     },
     get$chatName() {
-      return "\u05e9\u05dd \u05d4\u05e9\u05d9\u05d7\u05d4";
+      return "Ime chata";
     },
     get$l2SupportNa() {
-      return "\u05dc\u05d0 \u05d6\u05de\u05d9\u05df";
+      return "Nije dostupno";
     },
     get$l2SupportAlpha() {
-      return "\u05d0\u05dc\u05e4\u05d0";
+      return "Alpha";
     },
     get$l2SupportBeta() {
-      return "\u05d1\u05d8\u05d0";
+      return "Beta";
     },
     get$l2SupportFull() {
-      return "\u05de\u05dc\u05d0";
+      return "Puno";
     },
     get$playAudio() {
-      return "\u05e0\u05d2\u05df";
+      return "Reproduciraj";
     },
     get$stop(_) {
-      return "\u05e2\u05e6\u05d5\u05e8";
+      return "Zaustavi";
     },
     get$grammarCopyPOSsconj() {
-      return "\u05de\u05d9\u05dc\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8 \u05de\u05e9\u05e0\u05d9\u05ea";
+      return "Podre\u0111uju\u0107i veznik";
     },
     get$grammarCopyPOSnum() {
-      return "\u05de\u05e1\u05e4\u05e8";
+      return "Broj";
     },
     get$grammarCopyPOSverb() {
-      return "\u05e4\u05d5\u05e2\u05dc";
+      return "Glagol";
     },
     get$grammarCopyPOSaffix() {
-      return "\u05e1\u05d9\u05d5\u05de\u05ea";
+      return "Prilog";
     },
     get$grammarCopyPOSpart() {
-      return "\u05d7\u05dc\u05e7\u05d9\u05e7";
+      return "\u010clanak";
     },
     get$grammarCopyPOSadj() {
-      return "\u05ea\u05d5\u05d0\u05e8 \u05ea\u05d5\u05d0\u05e8";
+      return "Pridjev";
     },
     get$grammarCopyPOScconj() {
-      return "\u05de\u05d9\u05dc\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8 \u05de\u05e9\u05d5\u05ea\u05e4\u05ea";
+      return "Koordinacijska Konjunkcija";
     },
     get$grammarCopyPOSpunct() {
-      return "\u05e1\u05d9\u05de\u05df \u05e4\u05d9\u05e1\u05d5\u05e7";
+      return "Interpunkcija";
     },
     get$grammarCopyPOSadv() {
-      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
+      return "Prilog";
     },
     get$grammarCopyPOSaux() {
-      return "\u05e2\u05d6\u05e8";
+      return "Pomo\u0107ni";
     },
     get$grammarCopyPOSspace() {
-      return "\u05e8\u05d5\u05d5\u05d7";
+      return "Razmak";
     },
     get$grammarCopyPOSsym() {
-      return "\u05e1\u05de\u05dc";
+      return "Simbol";
     },
     get$grammarCopyPOSdet() {
-      return "\u05de\u05d9\u05dc\u05d9\u05ea";
+      return "Odrednica";
     },
     get$grammarCopyPOSpron() {
-      return "\u05de\u05b4\u05e9\u05b0\u05c1\u05ea\u05b7\u05bc\u05de\u05b5\u05bc\u05e9\u05c1";
+      return "Zamjenica";
     },
     get$grammarCopyPOSadp() {
-      return "\u05d4\u05b7\u05e7\u05b0\u05e9\u05b8\u05c1\u05e8\u05b8\u05d4";
+      return "Prijedlog";
     },
     get$grammarCopyPOSpropn() {
-      return "\u05e9\u05b5\u05c1\u05dd \u05d9\u05b4\u05d9\u05d7\u05d5\u05bc\u05d3";
+      return "Vlastito Ime";
     },
     get$grammarCopyPOSnoun() {
-      return "\u05e9\u05b5\u05c1\u05dd";
+      return "Imenica";
     },
     get$grammarCopyPOSintj() {
-      return "\u05d4\u05b7\u05d4\u05b7\u05db\u05b8\u05bc\u05d7\u05b8\u05d4";
+      return "Umetnuta Rije\u010d";
     },
     get$grammarCopyPOSx() {
-      return "\u05d0\u05d7\u05e8";
+      return "Drugo";
     },
     get$grammarCopyGENDERfem() {
-      return "\u05e0\u05b0\u05e7\u05b5\u05d1\u05b8\u05d4";
+      return "\u017denski Rod";
     },
     get$grammarCopyPERSON2() {
-      return "\u05d0\u05d9\u05e9\u05b4\u05c1\u05d9\u05ea \u05e9\u05b5\u05c1\u05e0\u05b4\u05d9\u05ea";
+      return "Druga Osoba";
     },
     get$grammarCopyMOODimp() {
-      return "\u05e6\u05d9\u05d5\u05d5\u05d9";
+      return "Zapovjedni Na\u010din";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\u05e9\u05b0\u05c1\u05d0\u05b5\u05dc\u05b8\u05d4";
+      return "Pitanje";
     },
     get$grammarCopyASPECTperf() {
-      return "\u05e9\u05dc\u05dd";
+      return "Savr\u0161eno";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u05e0\u05b4\u05e1\u05b0\u05d9\u05d5\u05b9\u05df, \u05e9\u05b5\u05c1\u05dd \u05d4\u05b7\u05db\u05b0\u05bc\u05e8\u05d5\u05bc\u05ea";
+      return "Akuzativ, Nominativ";
     },
     get$grammarCopyCASEobl() {
-      return "\u05e2\u05b8\u05e7\u05b5\u05d1";
+      return "Obli";
     },
     get$grammarCopyVOICEact() {
-      return "\u05e4\u05e2\u05d9\u05dc";
+      return "Aktivno";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\u05e1\u05b0\u05d2\u05d5\u05b9\u05dc\u05b8\u05d4";
+      return "Zagrada";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\u05de\u05d0\u05de\u05e8";
+      return "\u010clanak";
     },
     get$grammarCopyNUMBERsing() {
-      return "\u05d9\u05d7\u05d9\u05d3";
+      return "Jednina";
     },
     get$grammarCopyGENDERmasc() {
-      return "\u05d6\u05b8\u05db\u05b8\u05e8";
+      return "Mu\u0161ki rod";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\u05de\u05d5\u05d3\u05d0\u05dc\u05d9";
+      return "Modalni";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
+      return "Prilog";
     },
     get$grammarCopyTENSEperi() {
-      return "\u05e4\u05e8\u05e4\u05e8\u05d6\u05d8\u05d9";
+      return "Perifrasti";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\u05e1\u05e4\u05e8\u05ea\u05d9";
+      return "Brojka";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\u05dc\u05d0 \u05e0\u05db\u05d5\u05df";
+      return "Nije vlastito";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\u05de\u05e1\u05e4\u05e8\u05d9";
+      return "Redni broj";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\u05e0\u05db\u05d5\u05df";
+      return "Vlastito";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\u05de\u05e7\u05e3";
+      return "Crta";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\u05db\u05df";
+      return "Da";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u05e0\u05e7\u05d5\u05d3\u05d4 \u05e4\u05e1\u05d9\u05e7";
+      return "To\u010dka-zarez";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\u05e4\u05e1\u05d9\u05e7";
+      return "Zarez";
     },
     get$grammarCopyMOODcnd() {
-      return "\u05ea\u05e0\u05d0\u05d9";
+      return "Uvjetno";
     },
     get$grammarCopyCASEacc() {
-      return "\u05e0\u05d5\u05e9\u05d0 \u05d9\u05e9\u05d9\u05e8";
+      return "Akuzativ";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u05d7\u05dc\u05e7\u05d9";
+      return "Dioznik";
     },
     get$grammarCopyTENSEpast() {
-      return "\u05e2\u05d1\u05e8";
+      return "Pro\u0161lo";
     },
     get$grammarCopyDEGREEsup() {
-      return "\u05e9\u05d9\u05d0";
+      return "Superlativ";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u05e0\u05e7\u05d5\u05d3\u05ea\u05d9\u05d9\u05dd";
+      return "Dvoto\u010dka";
     },
     get$grammarCopyPERSON3() {
-      return "\u05d2\u05d5\u05e3 \u05e9\u05dc\u05d9\u05e9\u05d9";
+      return "Tre\u0107e lice";
     },
     get$grammarCopyNUMBERplur() {
-      return "\u05e8\u05d1\u05d9\u05dd";
+      return "Mno\u017eina";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\u05e9\u05dd \u05e2\u05e6\u05dd \u05e4\u05e8\u05d8\u05d9";
+      return "Vlastito ime";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\u05e9\u05d0\u05dc\u05ea\u05d9\u05ea";
+      return "Upitno";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\u05dc\u05d0 \u05e4\u05d5\u05e8\u05de\u05dc\u05d9";
+      return "Neformalno";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\u05d6\u05de\u05df";
+      return "Vrijeme";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\u05e9\u05dc\u05d9\u05dc\u05d9";
+      return "Negativno";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\u05e1\u05da \u05d4\u05db\u05dc";
+      return "Ukupno";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u05e9\u05de\u05d5\u05ea \u05ea\u05d5\u05d0\u05e8";
+      return "Pridjevski";
     },
     get$grammarCopyASPECTprog() {
-      return "\u05de\u05ea\u05e7\u05d3\u05dd";
+      return "Napredni";
     },
     get$grammarCopyMOODsub() {
-      return "\u05e9\u05d5\u05dc\u05d9\u05d9\u05dd";
+      return "Subjunktiv";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\u05de\u05e9\u05dc\u05d9\u05dd";
+      return "Komplementivni";
     },
     get$grammarCopyCASEnom() {
-      return " nominative";
+      return "Nominativ";
     },
     get$grammarCopyTENSEfut() {
-      return "\u05e2\u05ea\u05d9\u05d3";
+      return "Budu\u0107e";
     },
     get$grammarCopyCASEdat() {
-      return "\u05d3\u05d0\u05d8\u05d9\u05d1";
+      return "Dativ";
     },
     get$grammarCopyTENSEpres() {
-      return "\u05d4\u05d5\u05d5\u05d4";
+      return "Sada\u0161nje";
     },
     get$grammarCopyGENDERneut() {
-      return "\u05e0\u05e7\u05d1\u05d4";
+      return "Neutralno";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u05d9\u05d7\u05e1\u05d9";
+      return "Relativno";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\u05e1\u05d9\u05d5\u05dd \u05e1\u05d5\u05e4\u05d9";
+      return "Zavr\u0161ni zavr\u0161etak";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\u05de\u05d5\u05e8\u05d4";
+      return "Pokazno";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\u05e7\u05d5\u05d3\u05dd";
+      return "Prijedlo\u017eni pade\u017e";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\u05e1\u05d5\u05e4\u05d9";
+      return "Finitiv";
     },
     get$grammarCopyDEGREEpos() {
-      return "\u05d7\u05d9\u05d5\u05d1\u05d9";
+      return "Pozitivno";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\u05e6\u05d9\u05d8\u05d5\u05d8";
+      return "Navodnici";
     },
     get$grammarCopyVERBFORMger() {
-      return "\u05d2\u05d6\u05d5\u05e8";
+      return "Gerundij";
     },
     get$grammarCopyVOICEpass() {
-      return "\u05e4\u05e1\u05d9\u05d1\u05d9";
+      return "Pasiv";
     },
     get$grammarCopyCASEgen() {
-      return "\u05d2\u05e0\u05d9\u05d8\u05d9\u05d1\u05d9";
+      return "Genitiv";
     },
     get$grammarCopyTENSEprs() {
-      return "\u05d4\u05d5\u05d5\u05d4";
+      return "Sada\u0161nje";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\u05de\u05d5\u05d2\u05d3\u05e8";
+      return "Odre\u0111eni";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\u05e1\u05d9\u05d3\u05d5\u05e8\u05d9";
+      return "Redni";
     },
     get$grammarCopyCASEins() {
-      return "\u05db\u05dc\u05d9";
+      return "Instrumental";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u05d1\u05d9\u05e0\u05d5\u05e0\u05d9";
+      return "Infinitiv";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\u05e2\u05d6\u05e8\u05d9";
+      return "Pomo\u0107ni glagol";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\u05d0\u05e8\u05d5\u05da";
+      return "Dugo";
     },
     get$grammarCopyCASEloc() {
-      return "\u05de\u05e7\u05d5\u05de\u05d9";
+      return "Lokativ";
     },
     get$grammarCopyMOODind() {
-      return "\u05de\u05e6\u05d1\u05d9\u05e2";
+      return "Indicativno";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\u05d4\u05e9\u05d5\u05d5\u05d0\u05ea\u05d9";
+      return "Komparativno";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u05d9\u05d7\u05e1\u05d9";
+      return "Relativno";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u05d4\u05ea\u05e8\u05d7\u05e9\u05d5\u05ea";
+      return "Uzvi\u010dno";
     },
     get$grammarCopyPERSON1() {
-      return "\u05d2\u05d5\u05e3 \u05e8\u05d0\u05e9\u05d5\u05df";
+      return "Prva osoba";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\u05d4\u05ea\u05d7\u05dc\u05ea\u05d9";
+      return "Po\u010detno";
     },
     get$grammarCopyGENDERperson() {
-      return "\u05de\u05d9\u05df";
+      return "Osoba";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\u05d6\u05e8";
+      return "Strano";
     },
     get$grammarCopyVOICEvoice() {
-      return "\u05e7\u05d5\u05dc";
+      return "Glas";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\u05e4\u05d5\u05e2\u05dc";
+      return "Glagolski";
     },
     get$grammarCopyPOSSpass() {
-      return "\u05e7\u05e0\u05d9\u05d9\u05df";
+      return "Posvojno";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\u05de\u05d9\u05dc\u05d9\u05ea \u05d9\u05d7\u05e1";
+      return "Prijedlo\u017eni";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\u05de\u05e1\u05e4\u05e8\u05d9";
+      return "Brojevni";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u05e9\u05b5\u05dd";
+      return "Imenica";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
+      return "Refleksivno";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u05de\u05b4\u05e9\u05b0\u05c1\u05de\u05b8\u05e8";
+      return "Zamjenica";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\u05e6\u05d3 \u05e1\u05d9\u05de\u05e0\u05d9 \u05e4\u05d9\u05e1\u05d5\u05e7";
+      return "Strana interpunkcije";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\u05e4\u05d5\u05e2\u05dc";
+      return "Oblik glagola";
     },
     get$grammarCopyGENDERgender() {
-      return "\u05de\u05d9\u05df";
+      return "Rod";
     },
     get$grammarCopyMOODmood() {
-      return "\u05de\u05e6\u05d1 \u05e8\u05d5\u05d7";
+      return "Na\u010din";
     },
     get$grammarCopyASPECTaspect() {
-      return "\u05d4\u05d9\u05d1\u05d8";
+      return "Aspekt";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\u05e1\u05d9\u05de\u05e0\u05d9 \u05e4\u05d9\u05e1\u05d5\u05e7";
+      return "Interpunkcija";
     },
     get$grammarCopyTENSEtense() {
-      return "\u05d6\u05de\u05df";
+      return "Vremenski oblik";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\u05d3\u05e8\u05d2\u05d4";
+      return "Stupanj";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\u05e0\u05d9\u05de\u05d5\u05e1";
+      return "Ljubaznost";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
+      return "Prilog";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\u05de\u05e1\u05e4\u05e8";
+      return "Broj";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\u05de\u05d9\u05dc\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Veza";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d4 \u05d7\u05d9\u05d5\u05d1\u05d9\u05ea/\u05e9\u05dc\u05d9\u05dc\u05d9\u05ea";
+      return "Polariteta";
     },
     get$grammarCopyCASEcase() {
-      return "\u05de\u05e7\u05e8\u05d4";
+      return "Pad";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d4";
+      return "Odre\u0111enost";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\u05de\u05e1\u05e4\u05e8\u05d9";
+      return "Brojevni izraz";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u05e9\u05de\u05d5\u05ea \u05ea\u05d5\u05d0\u05e8";
+      return "Pridjevski";
     },
     get$grammarCopyVOCvoc() {
-      return "\u05e7\u05e8\u05d9\u05d0\u05d4";
+      return "Vokativ";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\u05de\u05e9\u05dc\u05d9\u05dd";
+      return "Komplementator";
     },
     get$grammarCopyADVadv() {
-      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
+      return "Prilo\u017enik";
     },
     get$grammarCopyMOODjus() {
-      return "\u05e6\u05d9\u05d5\u05d5\u05d9";
+      return "Na\u010din";
     },
     get$grammarCopyGENDERcom() {
-      return "\u05de\u05d9\u05df \u05de\u05e9\u05d5\u05ea\u05e3";
+      return "Rod";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
+      return "Refleksivno";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\u05d7\u05dc\u05e7\u05d9";
+      return "Dio";
     },
     get$grammarCopySPCspc() {
-      return "\u05e1\u05e4\u05e6\u05d9\u05e4\u05d9";
+      return "Specifi\u010dno";
     },
     get$grammarCopyTENSEpqp() {
-      return "\u05d6\u05de\u05df \u05e2\u05d1\u05e8 \u05de\u05d5\u05e9\u05dc\u05dd";
+      return "Pluskvamperfekt";
     },
     get$grammarCopyREFLEXref() {
-      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
+      return "Refleksivno";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\u05e7\u05e6\u05e8";
+      return "Kratko";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u05d6\u05d5\u05d2\u05d9";
+      return "Dvojno";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\u05d0\u05e8\u05d5\u05da";
+      return "Dugo";
     },
     get$grammarCopyVOICEmid() {
-      return "\u05d0\u05de\u05e6\u05e2\u05d9";
+      return "Srednji";
     },
     get$grammarCopyINTRELintRel() {
-      return "\u05e9\u05d0\u05dc\u05d9, \u05d9\u05d7\u05e1";
+      return "Upitno, Relativno";
     },
     get$grammarCopyINTint() {
-      return "\u05e9\u05d0\u05dc\u05d9";
+      return "Upitno";
     },
     get$grammarCopyVOICEcaus() {
-      return "\u05e1\u05d9\u05d1\u05ea\u05d9";
+      return "Uzro\u010dni";
     },
     get$grammarCopyUnknown() {
-      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
+      return "Nepoznato";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u05e2\u05d3\u05d5\u05ea\u05d9\u05d5\u05ea";
+      return "Evidentnost";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d7\u05d6\u05d9\u05e7";
+      return "Broj posjeditelja";
     },
     get$grammarCopyASPECThab() {
-      return "\u05d4\u05e8\u05d2\u05dc\u05d9";
+      return "Navika";
     },
     get$grammarCopyCASEabl() {
-      return "\u05e1\u05d1\u05d9\u05dc";
+      return "Ablativ";
     },
     get$grammarCopyCASEall() {
-      return "\u05db\u05dc\u05dc\u05d9";
+      return "Allativ";
     },
     get$grammarCopyCASEess() {
-      return "\u05de\u05e6\u05d1\u05d9";
+      return "Essiv";
     },
     get$grammarCopyCASEtra() {
-      return "\u05d8\u05e8\u05e0\u05e1\u05dc\u05d9\u05d8\u05d9\u05d1\u05d9";
+      return "Translativ";
     },
     get$grammarCopyCASEequ() {
-      return "\u05e9\u05d5\u05d5\u05d9\u05d5\u05e0\u05d9";
+      return "Ekvativ";
     },
     get$grammarCopyCASEdis() {
-      return "\u05de\u05e4\u05d5\u05d6\u05e8";
+      return "Distributivno";
     },
     get$grammarCopyCASEabs() {
-      return "\u05d1\u05de\u05e7\u05e8\u05d4 \u05e1\u05d5\u05e4\u05d9";
+      return "Apsolutiv";
     },
     get$grammarCopyCASEerg() {
-      return "\u05d0\u05e8\u05d2\u05d8\u05d9\u05d1\u05d9";
+      return "Ergativ";
     },
     get$grammarCopyCASEcau() {
-      return "\u05e1\u05d9\u05d1\u05ea\u05d9";
+      return "Uzro\u010dni";
     },
     get$grammarCopyCASEben() {
-      return "\u05ea\u05d5\u05e2\u05dc\u05ea\u05e0\u05d9";
+      return "Dobrotvorni";
     },
     get$grammarCopyCASEtem() {
-      return "\u05d6\u05de\u05e0\u05d9";
+      return "Vremenski";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\u05e7\u05d5\u05d0\u05d5\u05e8\u05d3\u05d9\u05e0\u05d8\u05d9\u05d1\u05d9";
+      return "Koordinacijski";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\u05de\u05e6\u05d1 \u05d1\u05e0\u05d9\u05d9\u05df";
+      return "Konstruktivno stanje";
     },
     get$grammarCopyDEGREEabs() {
-      return "\u05d3\u05e8\u05d2\u05d4 \u05de\u05d5\u05d7\u05dc\u05d8\u05ea";
+      return "Apsolutni stupanj";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\u05e2\u05d3\u05d5\u05ea \u05e2\u05d5\u05d1\u05d3\u05ea\u05d9\u05ea";
+      return "\u010cinjeni\u010dna evidencija";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\u05e2\u05d3\u05d5\u05ea \u05dc\u05d0-\u05e2\u05d5\u05d1\u05d3\u05ea\u05d9\u05ea";
+      return "Ne\u010dinjeni\u010dna evidencija";
     },
     get$grammarCopyMOODopt() {
-      return "\u05e8\u05e6\u05d5\u05e0\u05d9";
+      return "Optativ";
     },
     get$grammarCopyMOODadm() {
-      return "\u05de\u05d0\u05de\u05e5";
+      return "Divertikalni";
     },
     get$grammarCopyMOODdes() {
-      return "\u05e8\u05e6\u05d5\u05e0\u05d9";
+      return "\u017deljni";
     },
     get$grammarCopyMOODnec() {
-      return "\u05e0\u05d7\u05d9\u05e6\u05d5\u05ea\u05d9";
+      return "Neophodni";
     },
     get$grammarCopyMOODpot() {
-      return "\u05e4\u05d5\u05d8\u05e0\u05e6\u05d9\u05d0\u05dc\u05d9";
+      return "Mogu\u0107i";
     },
     get$grammarCopyMOODprp() {
-      return "\u05d4\u05e6\u05e2\u05d4";
+      return "Propozitivni";
     },
     get$grammarCopyMOODqot() {
-      return "\u05e6\u05d9\u05d8\u05d5\u05d8\u05d9";
+      return "Kvantifikator";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05de\u05d9\u05dc\u05d4";
+      return "Rije\u010dni oblik";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05e8\u05d5\u05de\u05d0\u05d9";
+      return "Rimski brojevi";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05d0\u05d5\u05ea";
+      return "Slovni oblik";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\u05db\u05e4\u05dc";
+      return "Mno\u0161truko";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\u05e9\u05d1\u05e8";
+      return "Razlomak";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\u05e7\u05d1\u05d5\u05e6\u05d4";
+      return "Skup";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\u05d8\u05d5\u05d5\u05d7";
+      return "Opseg";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\u05de\u05e4\u05d5\u05d6\u05e8";
+      return "Distribucijski";
     },
     get$grammarCopyNUMBERtri() {
-      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Probni";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\u05e4\u05d0\u05d5\u05e7\u05d0\u05dc\u05d9";
+      return "Paukalni";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\u05e4\u05d0\u05d5\u05e7\u05d0\u05dc\u05d9 \u05d2\u05d3\u05d5\u05dc";
+      return "Ve\u0107i paukalni";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\u05e8\u05d1\u05d9\u05dd \u05d2\u05d3\u05d5\u05dc\u05d9\u05dd";
+      return "Ve\u0107i mno\u017einski";
     },
     get$grammarCopyNUMBERinv() {
-      return "\u05d4\u05e4\u05d5\u05da";
+      return "Inverzno";
     },
     get$grammarCopyPERSON0() {
-      return "\u05d0\u05e4\u05e1";
+      return "Nula";
     },
     get$grammarCopyPERSON4() {
-      return "\u05e8\u05d1\u05d9\u05e2\u05d9";
+      return "\u010cetvrti";
     },
     get$grammarCopyPOLITEform() {
-      return "\u05e8\u05e9\u05de\u05d9";
+      return "Formalno";
     },
     get$grammarCopyPOLITEelev() {
-      return "\u05de\u05d5\u05d2\u05d1\u05d4";
+      return "Uzdignuto";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\u05e2\u05e0\u05d5\u05d5\u05d4";
+      return "Skromno";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\u05d4\u05d3\u05d2\u05e9\u05d4";
+      return "Nagla\u0161eno";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u05d4\u05ea\u05e8\u05d7\u05e9\u05d5\u05ea \u05d1\u05d4\u05ea\u05e8\u05e1\u05d4";
+      return "Uzvi\u010dno";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\u05d4\u05d3\u05d3\u05d9";
+      return "Uzajamno";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\u05e9\u05d0\u05dc\u05ea\u05d9\u05ea-\u05d9\u05d7\u05e1\u05d9\u05ea";
+      return "Upitno-relativno";
     },
     get$grammarCopyTENSEaor() {
-      return "\u05e2\u05ea\u05d9\u05d3 \u05e4\u05e9\u05d5\u05d8";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\u05d0\u05e4\u05d9\u05e1\u05d8\u05de\u05d9";
+      return "Epistemi\u010dki";
     },
     get$grammarCopyTENSEprosp() {
-      return "\u05e2\u05ea\u05d9\u05d3\u05d9";
+      return "Perspektivni";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05d7\u05dc\u05e7";
+      return "Particip";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Konverb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\u05e9\u05dd \u05e4\u05d5\u05e2\u05dc \u05e9\u05de\u05e0\u05d9";
+      return "Glagolski imenica";
     },
     get$grammarCopyVOICEantip() {
-      return "\u05d0\u05e0\u05d8\u05d9-\u05e4\u05e1\u05d9\u05d1\u05d9";
+      return "Antipasiv";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\u05e1\u05d9\u05d1\u05ea\u05d9\u05ea";
+      return "Uzro\u010dni";
     },
     get$grammarCopyVOICedir() {
-      return "\u05d9\u05e9\u05d9\u05e8";
+      return "Izravni";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\u05d4\u05e4\u05d5\u05da";
+      return "Inverse";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\u05d4\u05d3\u05d3\u05d9";
+      return "Recipro\u010dni";
     },
     get$grammarCopyPOS() {
-      return "\u05d7\u05dc\u05e7 \u05d4\u05d3\u05d9\u05d1\u05d5\u05e8";
+      return "Vrsta rije\u010di";
     },
     get$grammarCopyGENDER() {
-      return "\u05de\u05d9\u05df";
+      return "Rod";
     },
     get$grammarCopyPERSON() {
-      return "\u05d0\u05d9\u05e9\u05d9\u05d5\u05ea";
+      return "Osoba";
     },
     get$grammarCopyMOOD() {
-      return "\u05de\u05e6\u05d1 \u05e8\u05d5\u05d7";
+      return "Na\u010din";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\u05e1\u05d5\u05d2 \u05e4\u05d9\u05e1\u05d5\u05e7";
+      return "Vrsta interpunkcije";
     },
     get$grammarCopyASPECT() {
-      return "\u05d4\u05d9\u05d1\u05d8";
+      return "Aspekt";
     },
     get$grammarCopyCASE() {
-      return "\u05de\u05e7\u05e8\u05d4";
+      return "Pad\u017e";
     },
     get$grammarCopyVOICE() {
-      return "\u05e7\u05d5\u05dc";
+      return "Glas";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u05e1\u05d5\u05d2 \u05e9\u05dd \u05e2\u05e6\u05dd";
+      return "Vrsta imenice";
     },
     get$grammarCopyVERBTYPE() {
-      return "\u05e1\u05d5\u05d2 \u05e4\u05d5\u05e2\u05dc";
+      return "Vrsta glagola";
     },
     get$grammarCopyADVTYPE() {
-      return "\u05e1\u05d5\u05d2 \u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
+      return "Vrsta priloga";
     },
     get$grammarCopyNUMFORM() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05de\u05e1\u05e4\u05e8";
+      return "Oblik broja";
     },
     get$grammarCopyNUMTYPE() {
-      return "\u05e1\u05d5\u05d2 \u05de\u05e1\u05e4\u05e8";
+      return "Vrsta broja";
     },
     get$grammarCopyNUMBER() {
-      return "\u05de\u05e1\u05e4\u05e8";
+      return "Broj";
     },
     get$grammarCopyDEFINITE() {
-      return "\u05d4\u05d2\u05d3\u05e8\u05d4";
+      return "Odre\u0111enost";
     },
     get$grammarCopyDEGREE() {
-      return "\u05d3\u05e8\u05d2\u05d4";
+      return "Stupanj";
     },
     get$grammarCopyEVIDENT() {
-      return "\u05e2\u05d3\u05d5\u05ea\u05d9\u05d5\u05ea";
+      return "Evidentnost";
     },
     get$grammarCopyFOREIGN() {
-      return "\u05d6\u05e8";
+      return "Strani";
     },
     get$grammarCopyPOLARITY() {
-      return "\u05d4\u05e4\u05db\u05d9\u05d5\u05ea";
+      return "Polarnost";
     },
     get$grammarCopyPOLITE() {
-      return "\u05e0\u05d9\u05de\u05d5\u05e1";
+      return "Ljubaznost";
     },
     get$grammarCopyPREPCASE() {
-      return "\u05de\u05e7\u05e8\u05d4 \u05d9\u05d7\u05e1";
+      return "Prijedlo\u017eni pade\u017e";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u05e1\u05d5\u05d2 \u05db\u05d9\u05e0\u05d5\u05d9";
+      return "Vrsta zamjenice";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\u05e6\u05d3 \u05e4\u05d9\u05e1\u05d5\u05e7";
+      return "Strana interpunkcije";
     },
     get$grammarCopyREFLEX() {
-      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
+      return "Refleksivno";
     },
     get$grammarCopyTENSE() {
-      return "\u05d6\u05de\u05df";
+      return "Vremenski oblik";
     },
     get$grammarCopyVERBFORM() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05d4\u05e4\u05d5\u05e2\u05dc";
+      return "Oblik glagola";
     },
     get$grammarCopyCONJTYPE() {
-      return "\u05e1\u05d5\u05d2 \u05e7\u05d5\u05e0 junction";
+      return "Vrsta veznika";
     },
     get$grammarCopyUNKNOWN() {
-      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
+      return "Nepoznato";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05de\u05d7\u05d6\u05d9\u05e7";
+      return "Broj posjednika";
     },
     get$grammarCopyPOSS() {
-      return "\u05e7\u05e0\u05d9\u05d9\u05e0\u05d9";
+      return "Posvojni";
     },
     get$grammarCopyASPECTimp() {
-      return "\u05d4\u05d9\u05d1\u05d8 \u05d1\u05dc\u05ea\u05d9 \u05de\u05d5\u05e9\u05dc\u05dd";
+      return "Nedovr\u0161ni aspekt";
     },
     get$grammarCopyCASEvoc() {
-      return "\u05e7\u05e8\u05d9\u05d0\u05d4";
+      return "Vokativ";
     },
     get$grammarCopyCASEcom() {
-      return "\u05e7\u05d5\u05de\u05d9\u05d8\u05d9\u05d1\u05d9";
+      return "Komitativ";
     },
     get$grammarCopyCASEpar() {
-      return "\u05d7\u05dc\u05e7\u05d9";
+      return "Partitiv";
     },
     get$grammarCopyCASEadv() {
-      return "\u05ea\u05d5\u05d0\u05e8 \u05d4\u05e4\u05d5\u05e2\u05dc";
+      return "Prilogni";
     },
     get$grammarCopyCASEref() {
-      return "\u05e8\u05e4\u05e8\u05e0\u05e6\u05d9\u05d0\u05dc\u05d9";
+      return "Referencijalni";
     },
     get$grammarCopyCASErel() {
-      return "\u05d9\u05d7\u05e1\u05d9";
+      return "Relativni";
     },
     get$grammarCopyCASEsub() {
-      return "\u05e1\u05d5\u05d1\u05e1\u05d9\u05d1\u05d9";
+      return "Subessiv";
     },
     get$grammarCopyCASEsup() {
-      return "\u05e2\u05dc-\u05de\u05e7\u05d5\u05de\u05d9";
+      return "Superessiv";
     },
     get$grammarCopyCASEaccdat() {
-      return "\u05d0\u05d5\u05d1\u05d9\u05d9\u05e7\u05d8\u05d9\u05d1\u05d9-\u05d3\u05d0\u05d8\u05d9\u05d1\u05d9";
+      return "Akuzativ-Dativ";
     },
     get$grammarCopyCASEpre() {
-      return "\u05dc\u05e4\u05e0\u05d9-\u05de\u05d9\u05dc\u05ea \u05d9\u05d7\u05e1";
+      return "Prijedlo\u017eni";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\u05de\u05e9\u05e0\u05d9";
+      return "Podre\u0111uju\u0107i";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\u05d4\u05e9\u05d5\u05d5\u05d0\u05ea\u05d9";
+      return "Usporedni";
     },
     get$grammarCopyDEFINITEind() {
-      return "\u05dc\u05d0 \u05de\u05d5\u05d2\u05d3\u05e8";
+      return "Neodre\u0111eni";
     },
     get$grammarCopyMOODint() {
-      return "\u05e9\u05d0\u05dc\u05d9";
+      return "Upitni na\u010din";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\u05e9\u05dd \u05e2\u05e6\u05dd \u05db\u05dc\u05dc\u05d9";
+      return "Zajedni\u010dka imenica";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "\u05d9\u05d7\u05d9\u05d3 \u05e9\u05dc \u05d1\u05e2\u05dc\u05d5\u05ea";
+      return "Posvojitelj u jednini";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\u05e8\u05d1\u05d9\u05dd \u05e9\u05dc \u05d1\u05e2\u05dc\u05d5\u05ea";
+      return "Posvojitelj u mno\u017eini";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\u05e9\u05e0\u05d9 \u05e9\u05dc \u05d1\u05e2\u05dc\u05d5\u05ea";
+      return "Posvojitelj u dvojini";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\u05d7\u05d9\u05d5\u05d1\u05d9";
+      return "Pozitivna polaritet";
     },
     get$grammarCopyPOSSyes() {
-      return "\u05d1\u05e2\u05dc\u05d5\u05ea";
+      return "Posvojno";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\u05dc\u05d0 \u05dc\u05e4\u05e0\u05d9-\u05de\u05d9\u05dc\u05ea \u05d9\u05d7\u05e1";
+      return "Bez prijedloga";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\u05d0\u05d9\u05e9\u05d9";
+      return "Osobno";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\u05e9\u05d0\u05dc\u05ea\u05d9";
+      return "Upitno";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\u05db\u05d5\u05dc\u05dc";
+      return "Ukupno";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\u05e9\u05dc\u05d9\u05dc\u05d9";
+      return "Negativno";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\u05de\u05d0\u05de\u05e8";
+      return "\u010clan";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\u05dc\u05d0 \u05de\u05d5\u05d2\u05d3\u05e8";
+      return "Neodre\u0111eno";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\u05e9\u05d0\u05dc\u05d4-\u05d9\u05d7\u05e1";
+      return "Upitno-odnosno";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\u05e1\u05d9\u05de\u05e0\u05d9 \u05e4\u05d9\u05e1\u05d5\u05e7 \u05e1\u05d5\u05e4\u05d9\u05d9\u05dd";
+      return "Zavr\u0161na interpunkcija";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\u05e0\u05e7\u05d5\u05d3\u05d4";
+      return "To\u010dka";
     },
     get$grammarCopyREFLEXyes() {
-      return "\u05e8\u05e4\u05dc\u05e7\u05e1\u05d9\u05d1\u05d9";
+      return "Refleksivno";
     },
     get$grammarCopyTENSEimp() {
-      return "\u05e2\u05d1\u05e8 \u05e4\u05e9\u05d5\u05d8";
+      return "Nedovr\u0161no";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05e1\u05d5\u05e4\u05d9\u05df";
+      return "Supin";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u05e6\u05d5\u05e8\u05ea \u05ea\u05d5\u05d0\u05e8 \u05e9\u05de\u05e0\u05d9";
+      return "Pridjevski";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\u05d0\u05e8\u05d5\u05db\u05d4";
+      return "Dug";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\u05e7\u05e6\u05e8\u05d4";
+      return "Kratko";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\u05e4\u05d5\u05e2\u05dc \u05e1\u05d9\u05d1\u05ea\u05d9";
+      return "Uzro\u010dni glagol";
     },
     get$grammarCopyVOICEcau() {
-      return "\u05e1\u05d9\u05d1\u05ea\u05d9";
+      return "Uzro\u010dni";
     },
     get$grammarCopyVOICEdir() {
-      return "\u05d9\u05e9\u05d9\u05e8";
+      return "Izravni";
     },
     get$grammarCopyVOICEinv() {
-      return "\u05d4\u05e4\u05d5\u05da";
+      return "Obrnuti";
     },
     get$grammarCopyVOICErcp() {
-      return "\u05d4\u05d3\u05d3\u05d9";
+      return "Recipro\u010dno";
     },
     get$other() {
-      return "\u05d0\u05d7\u05e8";
+      return "Ostalo";
     },
     levelShort$1(level) {
-      return "\u05e8\u05de\u05d4 " + level;
+      return "RAV " + level;
     },
     get$clickBestOption() {
-      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05d0\u05e4\u05e9\u05e8\u05d5\u05d9\u05d5\u05ea \u05d4\u05d8\u05d5\u05d1\u05d5\u05ea \u05d1\u05d9\u05d5\u05ea\u05e8 \u05dc\u05ea\u05e8\u05d2\u05d5\u05dd \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05dc\u05da!";
+      return "Odaberite najbolje opcije za prevo\u0111enje va\u0161e poruke!";
     },
     get$completeActivitiesToUnlock() {
-      return "\u05d4\u05e9\u05dc\u05dd \u05dc\u05e4\u05d7\u05d5\u05ea \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d7\u05ea \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05d0\u05ea \u05d4\u05ea\u05e8\u05d2\u05d5\u05dd!";
+      return "Dovr\u0161ite barem jednu aktivnost za otklju\u010davanje prijevoda!";
     },
     get$downloadGroupText() {
-      return "\u05d4\u05d5\u05e8\u05d3 \u05d8\u05e7\u05e1\u05d8 \u05de\u05e7\u05d1\u05d5\u05e6\u05d4";
+      return "Preuzmi tekst grupe";
     },
     get$notificationsOn() {
-      return "\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05de\u05d5\u05e4\u05e2\u05dc\u05d5\u05ea";
+      return "Obavijesti uklju\u010dene";
     },
     get$notificationsOff() {
-      return "\u05d4\u05d4\u05ea\u05e8\u05d0\u05d5\u05ea \u05db\u05d1\u05d5\u05d9\u05d5\u05ea";
+      return "Obavijesti isklju\u010dene";
     },
     get$createChatAndInviteUsers() {
-      return "\u05e6\u05d5\u05e8 \u05e6'\u05d0\u05d8 \u05d5\u05d4\u05d6\u05de\u05df \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd";
+      return "Stvori razgovor i pozovi korisnike";
     },
     get$updatedNewSpaceDescription() {
-      return "\u05e7\u05d5\u05e8\u05e1\u05d9\u05dd \u05de\u05d0\u05e4\u05e9\u05e8\u05d9\u05dd \u05dc\u05da \u05dc\u05d0\u05d7\u05d3 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05e9\u05dc\u05da \u05d5\u05dc\u05d1\u05e0\u05d5\u05ea \u05e7\u05d4\u05d9\u05dc\u05d5\u05ea \u05e4\u05e8\u05d8\u05d9\u05d5\u05ea \u05d0\u05d5 \u05e6\u05d9\u05d1\u05d5\u05e8\u05d9\u05d5\u05ea.";
+      return "Kursevi vam omogu\u0107uju da konsolidirate svoje razgovore i izgradite privatne ili javne zajednice.";
     },
     get$joinWithCode() {
-      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05e2\u05dd \u05e7\u05d5\u05d3";
+      return "Pridru\u017ei se s kodom";
     },
     get$enterCodeToJoin() {
-      return "\u05d4\u05d6\u05df \u05e7\u05d5\u05d3 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
+      return "Unesite kod za pridru\u017eivanje";
     },
     get$updateNow() {
-      return "\u05e2\u05d3\u05db\u05df \u05e2\u05db\u05e9\u05d9\u05d5";
+      return "A\u017euriraj sada";
     },
     get$updateLater() {
-      return "\u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8";
+      return "A\u017euriraj kasnije";
     },
     get$constructUseWaDesc() {
-      return "\u05de\u05e9\u05de\u05e9 \u05dc\u05dc\u05d0 \u05e2\u05d6\u05e8\u05d4";
+      return "Koristi se bez pomo\u0107i";
     },
     get$constructUseGaDesc() {
-      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Pomo\u0107 s gramatikom";
     },
     get$constructUseTaDesc() {
-      return "\u05e2\u05d6\u05e8\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "Pomo\u0107 s prijevodom";
     },
     get$constructUseUnkDesc() {
-      return "\u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
+      return "Nepoznato";
     },
     get$constructUseCorITDesc() {
-      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "Ispravno u prijevodu";
     },
     get$constructUseIgnITDesc() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "Ignorirano u prijevodu";
     },
     get$constructUseIncITDesc() {
-      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "Neispravno u prijevodu";
     },
     get$constructUseIgnIGCDesc() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05ea\u05d9\u05e7\u05d5\u05df \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9";
+      return "Ignorirano u gramati\u010dkoj korekciji";
     },
     get$constructUseCorIGCDesc() {
-      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Ispravno u gramati\u010dkoj korekciji";
     },
     get$constructUseIncIGCDesc() {
-      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Neispravno u gramati\u010dkoj korekciji";
     },
     get$constructUseCorPADesc() {
-      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
+      return "Ispravno u aktivnosti zna\u010denja rije\u010di";
     },
     get$constructUseIgnPADesc() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
+      return "Ignorirano u aktivnosti zna\u010denja rije\u010di";
     },
     get$constructUseIncPADesc() {
-      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
+      return "Neispravno u aktivnosti zna\u010denja rije\u010di";
     },
     get$constructUseCorWLDesc() {
-      return "\u05ea\u05d9\u05e7\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
+      return "Ispravno u aktivnosti slu\u0161anja rije\u010di";
     },
     get$constructUseIncWLDesc() {
-      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
+      return "Neispravno u aktivnosti slu\u0161anja rije\u010di";
     },
     get$constructUseIngWLDesc() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05de\u05d5\u05ea \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05ea \u05d4\u05de\u05d9\u05dc\u05d4";
+      return "Ignorirano u aktivnosti slu\u0161anja rije\u010di";
     },
     get$constructUseCorHWLDesc() {
-      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05d9\u05dc\u05d4 \u05e0\u05e1\u05ea\u05ea\u05e8\u05ea";
+      return "Ispravno u aktivnosti skrivene rije\u010di";
     },
     get$constructUseIncHWLDesc() {
-      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05d9\u05dc\u05d4 \u05e0\u05e1\u05ea\u05ea\u05e8\u05ea";
+      return "Neispravno u aktivnosti skrivene rije\u010di";
     },
     get$constructUseIgnHWLDesc() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05d9\u05dc\u05d4 \u05e0\u05e1\u05ea\u05ea\u05e8\u05ea";
+      return "Ignorirano u aktivnosti skrivene rije\u010di";
     },
     get$constructUseCorLDesc() {
-      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05b6\u05de\u05b8\u05d4";
+      return "Ispravno u aktivnosti leme";
     },
     get$constructUseIncLDesc() {
-      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05b6\u05de\u05b8\u05d4";
+      return "Neispravno u aktivnosti leme";
     },
     get$constructUseIgnLDesc() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05b6\u05de\u05b8\u05d4";
+      return "Ignorirano u aktivnosti leme";
     },
     get$constructUseCorMDesc() {
-      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Ispravno u aktivnosti gramatike";
     },
     get$constructUseIncMDesc() {
-      return "\u05e9\u05d2\u05d5\u05d9 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Neispravno u aktivnosti gramatike";
     },
     get$constructUseIgnMDesc() {
-      return "\u05d4\u05ea\u05e2\u05dc\u05dd \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Ignorirano u aktivnosti gramatike";
     },
     get$constructUseEmojiDesc() {
-      return "\u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9";
+      return "Ispravno u aktivnosti emojija";
     },
     get$constructUseCollected() {
-      return "\u05d0\u05e1\u05d5\u05e3 \u05d1\u05e6'\u05d0\u05d8";
+      return "Skupljeno u chatu";
     },
     get$constructUseNanDesc() {
-      return "\u05dc\u05d0 \u05e8\u05dc\u05d5\u05d5\u05e0\u05d8\u05d9";
+      return "Nije primjenjivo";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\u05d4\u05e4\u05e2\u05dc \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8";
+      return "Omogu\u0107eno pretvaranje teksta u govor";
     },
     get$enableTTSToolDescription() {
-      return "\u05d0\u05e4\u05e9\u05e8 \u05dc\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05dc\u05d9\u05d9\u05e6\u05e8 \u05e4\u05dc\u05d8 \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8 \u05dc\u05d7\u05dc\u05e7\u05d9 \u05d8\u05e7\u05e1\u05d8 \u05d1\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da.";
+      return "Dopustite aplikaciji da generira izlaz teksta u govor za dijelove teksta na va\u0161em ciljanom jeziku.";
     },
     get$yourUsername() {
-      return "\u05e9\u05dd \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05da";
+      return "Va\u0161e korisni\u010dko ime";
     },
     get$yourEmail() {
-      return '\u05d4\u05d3\u05d5\u05d0"\u05dc \u05e9\u05dc\u05da';
+      return "Va\u0161a e-po\u0161ta";
     },
     get$iWantToLearn() {
-      return "\u05d0\u05e0\u05d9 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05dc\u05de\u05d5\u05d3";
+      return "\u017delim nau\u010diti";
     },
     get$pleaseEnterEmail() {
-      return '\u05d0\u05e0\u05d0 \u05d4\u05d6\u05df \u05db\u05ea\u05d5\u05d1\u05ea \u05d3\u05d5\u05d0"\u05dc \u05ea\u05e7\u05d9\u05e0\u05d4.';
+      return "Molimo unesite valjanu adresu e-po\u0161te.";
     },
     get$myBaseLanguage() {
-      return "\u05e9\u05e4\u05ea \u05d4\u05d9\u05e1\u05d5\u05d3 \u05e9\u05dc\u05d9";
+      return "Moj osnovni jezik";
     },
     get$meaningSectionHeader() {
-      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea:";
+      return "Zna\u010denje:";
     },
     get$formSectionHeader() {
-      return "\u05e6\u05d5\u05e8\u05d5\u05ea \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1\u05e9\u05d9\u05d7\u05d5\u05ea:";
+      return "Obrasci kori\u0161teni u chatovima:";
     },
     get$writingExercisesTooltip() {
-      return "\u05db\u05ea\u05d9\u05d1\u05d4";
+      return "Pisanje";
     },
     get$listeningExercisesTooltip() {
-      return "\u05d4\u05d0\u05d6\u05e0\u05d4";
+      return "Slu\u0161anje";
     },
     get$readingExercisesTooltip() {
-      return "\u05e7\u05e8\u05d9\u05d0\u05d4";
+      return "\u010citanje";
     },
     get$meaningNotFound() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05de\u05e9\u05de\u05e2\u05d5\u05ea.";
-    },
-    get$chooseBaseForm() {
-      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05e6\u05d5\u05e8\u05d4 \u05d4\u05d1\u05e1\u05d9\u05e1\u05d9\u05ea";
+      return "Zna\u010denje nije prona\u0111eno.";
     },
     get$notTheCodeError() {
-      return "\u05e1\u05dc\u05d9\u05d7\u05d4, \u05d6\u05d4 \u05dc\u05d0 \u05d4\u05e7\u05d5\u05d3!";
+      return "Oprostite, to nije kod!";
     },
     get$totalXP() {
-      return "\u05e0\u05d9\u05e1\u05d9\u05d5\u05df \u05db\u05d5\u05dc\u05dc";
+      return "Ukupno XP";
     },
     get$numLemmas() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05d4\u05db\u05d5\u05dc\u05dc";
+      return "Ukupan broj lemmi";
     },
     get$numLemmasUsedCorrectly() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05e0\u05db\u05d5\u05df \u05dc\u05e4\u05d7\u05d5\u05ea \u05e4\u05e2\u05dd \u05d0\u05d7\u05ea";
+      return "Broj lema koji su ispravno kori\u0161teni barem jednom";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05dc\u05d0 \u05e0\u05db\u05d5\u05df 0 \u05e4\u05e2\u05de\u05d9\u05dd";
+      return "Broj lema koji nisu ispravno kori\u0161teni ni jednom";
     },
     get$numLemmasSmallXP() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e2\u05dd 0 - 30 \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Broj lema s 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e2\u05dd 31 - 200 \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Broj lema s 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05dc\u05d8\u05de\u05d9\u05dd \u05e2\u05dd \u05d9\u05d5\u05ea\u05e8 \u05de-200 \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Broj lema s > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Broj gramati\u010dkih koncepata";
     },
     get$listGrammarConcepts() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7";
+      return "Gramati\u010dki koncepti";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05e0\u05db\u05d5\u05df \u05d1\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05de\u05e7\u05d5\u05e8\u05d9\u05d5\u05ea \u05dc\u05e4\u05d7\u05d5\u05ea \u05d1-80% \u05de\u05d4\u05d6\u05de\u05df";
+      return "Gramati\u010dki koncepti ispravno kori\u0161teni u originalnim porukama najmanje 80% vremena";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd \u05e0\u05db\u05d5\u05df \u05d1\u05e4\u05d7\u05d5\u05ea \u05de-80% \u05de\u05d4\u05d6\u05de\u05df \u05d1\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05de\u05e7\u05d5\u05e8\u05d9\u05d5\u05ea";
+      return "Gramati\u010dki koncepti koji su ispravno kori\u0161teni u originalnim porukama manje od 80% vremena";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05e0\u05db\u05d5\u05df \u05de\u05ea\u05d5\u05da \u05d4\u05e6\u05e2\u05d5\u05ea \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea \u05dc\u05e4\u05d7\u05d5\u05ea \u05d1-80% \u05de\u05d4\u05d6\u05de\u05df";
+      return "Gramati\u010dki koncepti odabrani ispravno iz sustavom generiranih prijedloga najmanje 80% vremena";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05e0\u05db\u05d5\u05df \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea \u05e4\u05d7\u05d5\u05ea \u05de-80% \u05de\u05d4\u05d6\u05de\u05df";
+      return "Gramati\u010dki koncepti odabrani ispravno iz sustavom generiranih prijedloga manje od 80% vremena";
     },
     get$listGrammarConceptsSmallXP() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd 0-50 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Gramati\u010dki koncepti s 0-50 XP";
     },
     get$listGrammarConceptsMediumXP() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd 51-200 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Gramati\u010dki koncepti s 51-200 XP";
     },
     get$listGrammarConceptsLargeXP() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd 201-500 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Gramati\u010dki koncepti 201-500 XP";
     },
     get$listGrammarConceptsHugeXP() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05e2\u05dd \u05d9\u05d5\u05ea\u05e8 \u05de-500 \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e0\u05d9\u05e1\u05d9\u05d5\u05df";
+      return "Gramati\u010dki koncepti >500 XP";
     },
     get$numMessagesSent() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e9\u05e0\u05e9\u05dc\u05d7\u05d5";
+      return "Broj poslanih poruka";
     },
     get$numWordsTyped() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05d4\u05d5\u05e7\u05dc\u05d3\u05d5 \u05d1\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05de\u05e7\u05d5\u05e8\u05d9\u05d5\u05ea";
+      return "Broj upisanih rije\u010di u originalnim porukama";
     },
     get$numCorrectChoices() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05e0\u05db\u05d5\u05e0\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea";
+      return "Broj ispravno odabranih rije\u010di iz sustavom generiranih prijedloga";
     },
     get$numIncorrectChoices() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05e9\u05d2\u05d5\u05d9\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05de\u05e8\u05de\u05d6\u05d9\u05dd \u05e9\u05e0\u05d5\u05e6\u05e8\u05d5 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05d4\u05de\u05e2\u05e8\u05db\u05ea";
+      return "Broj pogre\u0161no odabranih rije\u010di iz sustavom generiranih prijedloga";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3680,1543 +3674,1543 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "\u05e1\u05d5\u05d2 \u05e7\u05d5\u05d1\u05e5";
+      return "Vrsta datoteke";
     },
     get$download(_) {
-      return "\u05d4\u05d5\u05e8\u05d3\u05d4";
+      return "Preuzmi";
     },
     get$analyticsNotAvailable() {
-      return "\u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d5\u05ea \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d0 \u05d6\u05de\u05d9\u05e0\u05d5\u05ea";
+      return "Analitika korisnika nije dostupna";
     },
     get$downloading() {
-      return "\u05d4\u05d5\u05e8\u05d3\u05d4...";
+      return "Preuzimanje...";
     },
     get$failedFetchUserAnalytics() {
-      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d4\u05d5\u05e8\u05d3\u05ea \u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d5\u05ea \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd";
+      return "Neuspje\u0161no preuzimanje analitike korisnika";
     },
     get$downloadComplete() {
-      return "\u05d4\u05d4\u05d5\u05e8\u05d3\u05d4 \u05d4\u05d5\u05e9\u05dc\u05de\u05d4!";
+      return "Preuzimanje zavr\u0161eno!";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "\u05de\u05d4 \u05d4-" + morphologicalFeature + " \u05e9\u05dc '" + wordForm + "'?";
+      return "\u0160to je " + morphologicalFeature + " od '" + wordForm + "'?";
     },
     get$dataAvailable() {
-      return "\u05d6\u05de\u05d9\u05e0\u05d5\u05ea \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd";
+      return "Dostupnost podataka";
     },
     get$available(_) {
-      return "\u05d6\u05de\u05d9\u05df";
+      return "Dostupno";
     },
     get$pangeaBotIsFallible() {
-      return "\u05d2\u05dd \u05d1\u05d9\u05d2 \u05d1\u05d5\u05d8 \u05e2\u05dc\u05d5\u05dc \u05dc\u05d8\u05e2\u05d5\u05ea!";
+      return "Pangea Bot tako\u0111er pravi pogre\u0161ke!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "\u05de\u05d4 \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05e9\u05dc '" + lemma + "'?";
+      return "\u0160to zna\u010di '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\u05d4\u05ea\u05d0\u05dd \u05d1\u05d9\u05df \u05d4\u05de\u05e9\u05de\u05e2\u05d5\u05d9\u05d5\u05ea \u05dc\u05de\u05d9\u05dc\u05d9\u05dd \u05d1\u05d4\u05d5\u05d3\u05e2\u05d4!";
+      return "Uskladite zna\u010denja s rije\u010dima u poruci!";
     },
     get$doubleClickToEdit() {
-      return "\u05dc\u05d7\u05e5 \u05e4\u05e2\u05de\u05d9\u05d9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e2\u05e8\u05d5\u05da.";
+      return "Dvostruki klik za ure\u0111ivanje.";
     },
     get$cefrLevelLabel() {
-      return "\u05e8\u05de\u05ea CEFR";
+      return "Razina CEFR-a";
     },
     get$image(_) {
-      return "\u05ea\u05de\u05d5\u05e0\u05d4";
+      return "Slika";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\u05d1\u05d7\u05e8 \u05e0\u05d5\u05e9\u05d0, \u05de\u05e6\u05d1, \u05de\u05d8\u05e8\u05d4 \u05dc\u05dc\u05de\u05d9\u05d3\u05d4 \u05d5\u05d9\u05e6\u05d5\u05e8 \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05e9\u05d9\u05d7\u05d4!";
+      return "Odaberite temu, na\u010din, cilj u\u010denja i generirajte aktivnost za chat!";
     },
     get$constructUsePvmDesc() {
-      return "\u05de\u05d9\u05d5\u05e6\u05e8 \u05d1\u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05dc";
+      return "Proizvedeno u glasovnoj poruci";
     },
     get$leaveSpaceDescription() {
-      return "\u05e2\u05dc \u05d9\u05d3\u05d9 \u05d9\u05e6\u05d9\u05d0\u05d4 \u05de\u05d4\u05e7\u05d5\u05e8\u05e1, \u05ea\u05e2\u05d6\u05d5\u05d1 \u05d0\u05ea \u05db\u05dc \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05d1\u05ea\u05d5\u05db\u05d5. \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05e8\u05d0\u05d5 \u05e9\u05d4\u05d9\u05d9\u05ea \u05d1\u05d7\u05d5\u05e5.";
+      return "Napustite te\u010daj, napustit \u0107ete sve razgovore unutar njega. Ostali korisnici \u0107e vidjeti da ste napustili te\u010daj.";
     },
     get$constructUseCorMmDesc() {
-      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05e0\u05db\u05d5\u05e0\u05d4";
+      return "To\u010dno zna\u010denje poruke";
     },
     get$constructUseIncMmDesc() {
-      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05e9\u05d2\u05d5\u05d9\u05d4";
+      return "Neto\u010dno zna\u010denje poruke";
     },
     get$constructUseIgnMmDesc() {
-      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05e9\u05d4\u05ea\u05e2\u05dc\u05de\u05d5 \u05de\u05de\u05e0\u05d4";
+      return "Zanemareno zna\u010denje poruke";
     },
     get$meaning() {
-      return "\u05de\u05e9\u05de\u05e2\u05d5\u05ea";
+      return "Zna\u010denje";
     },
     chatWith$1(displayname) {
-      return "\u05e7\u05d1\u05d5\u05e6\u05d4 \u05e2\u05dd " + displayname;
+      return "Grupa s " + displayname;
     },
     get$clickOnEmailLink() {
-      return "\u05d0\u05e0\u05d0 \u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d1\u05de\u05d9\u05d9\u05dc \u05d5\u05d4\u05de\u05e9\u05da.\n\n\u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05ea\u05d9\u05e7\u05d9\u05d9\u05ea \u05d4\u05e1\u05e4\u05d0\u05dd \u05d0\u05dd \u05d4\u05de\u05d9\u05d9\u05dc \u05dc\u05d0 \u05d4\u05d2\u05d9\u05e2.";
+      return "Molimo kliknite na poveznicu u e-po\u0161ti i nastavite.\n\nProvjerite svoju mapu ne\u017eeljene po\u0161te ako e-po\u0161ta nije stigla.";
     },
     get$dontForgetPassword() {
-      return "\u05d0\u05dc \u05ea\u05e9\u05db\u05d7 \u05d0\u05ea \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da!";
+      return "Ne zaboravite svoju lozinku!";
     },
     get$enableAutocorrectToolName() {
-      return "\u05d4\u05e4\u05e2\u05dc \u05ea\u05d9\u05e7\u05d5\u05df \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9 \u05d1\u05de\u05db\u05e9\u05d9\u05e8";
+      return "Omogu\u0107i automatsko ispravljanje na ure\u0111aju";
     },
     get$enableAutocorrectDescription() {
-      return "\u05d0\u05dd \u05d4\u05de\u05db\u05e9\u05d9\u05e8 \u05e9\u05dc\u05da \u05ea\u05d5\u05de\u05da \u05d1\u05e9\u05e4\u05d4 \u05e9\u05dc\u05d5\u05de\u05d3\u05d9\u05dd, \u05ea\u05d5\u05db\u05dc \u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05ea\u05d9\u05e7\u05d5\u05df \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9 \u05db\u05d3\u05d9 \u05dc\u05ea\u05e7\u05df \u05e9\u05d2\u05d9\u05d0\u05d5\u05ea \u05e0\u05e4\u05d5\u05e6\u05d5\u05ea \u05d1\u05d6\u05de\u05df \u05d4\u05d4\u05e7\u05dc\u05d3\u05d4.";
+      return "Ako va\u0161 ure\u0111aj podr\u017eava jezik koji u\u010dite, mo\u017eete omogu\u0107iti automatsko ispravljanje za ispravljanje uobi\u010dajenih pogre\u0161aka dok kucate.";
     },
     get$ttsDisbledTitle() {
-      return "\u05d4\u05de\u05e8\u05ea \u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8 \u05de\u05d5\u05e9\u05d1\u05ea\u05ea";
+      return "Pretvaranje teksta u govor onemogu\u0107eno";
     },
     get$ttsDisabledBody() {
-      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05d0\u05ea \u05ea\u05db\u05d5\u05e0\u05ea \u05d4\u05d4\u05de\u05e8\u05d4 \u05dc\u05d8\u05e7\u05e1\u05d8 \u05dc\u05d3\u05d9\u05d1\u05d5\u05e8 \u05d1\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05dc\u05de\u05d9\u05d3\u05d4 \u05e9\u05dc\u05da";
+      return "Mo\u017eete omogu\u0107iti pretvaranje teksta u govor u postavkama u\u010denja";
     },
     get$noSpaceDescriptionYet() {
-      return "\u05e2\u05d3\u05d9\u05d9\u05df \u05dc\u05d0 \u05e0\u05d5\u05e6\u05e8 \u05ea\u05d9\u05d0\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1.";
+      return "Jo\u0161 nije kreiran opis te\u010daja.";
     },
     get$tooLargeToSend() {
-      return "\u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5 \u05d2\u05d3\u05d5\u05dc\u05d4 \u05de\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d9\u05d7\u05d4";
+      return "Ova poruka je prevelika za slanje";
     },
     get$exitWithoutSaving() {
-      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05e6\u05d0\u05ea \u05de\u05d1\u05dc\u05d9 \u05dc\u05e9\u05de\u05d5\u05e8?";
+      return "Jeste li sigurni da \u017eelite iza\u0107i bez spremanja?";
     },
     get$enableAutocorrectWarning() {
-      return "\u05d0\u05d6\u05d4\u05e8\u05d4! \u05d3\u05d5\u05e8\u05e9 \u05d4\u05d5\u05e1\u05e4\u05ea \u05de\u05e7\u05dc\u05d3\u05ea \u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da";
+      return "Upozorenje! Potrebno je dodati tipkovnicu za ciljani jezik";
     },
     get$leaveRoomDescription() {
-      return "\u05d0\u05ea\u05d4 \u05e2\u05d5\u05de\u05d3 \u05dc\u05e2\u05d6\u05d5\u05d1 \u05d0\u05ea \u05d4\u05e9\u05d9\u05d7\u05d4 \u05d4\u05d6\u05d5. \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd \u05d9\u05e8\u05d0\u05d5 \u05e9\u05d4\u05d9\u05d9\u05ea\u05d4 \u05dc\u05da \u05d9\u05e6\u05d9\u05d0\u05d4 \u05de\u05d4\u05e9\u05d9\u05d7\u05d4.";
+      return "Upravo napu\u0161tate ovaj chat. Ostali korisnici \u0107e vidjeti da ste napustili chat.";
     },
     get$confirmUserId() {
-      return "\u05d0\u05e0\u05d0 \u05d0\u05e9\u05e8 \u05d0\u05ea \u05e9\u05dd \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05e9\u05dc\u05da \u05d1-Pangea Chat \u05db\u05d3\u05d9 \u05dc\u05de\u05d7\u05d5\u05e7 \u05d0\u05ea \u05d4\u05d7\u05e9\u05d1\u05d5\u05df \u05e9\u05dc\u05da.";
+      return "Molimo potvrdite svoje korisni\u010dko ime na Pangea Chatu kako biste izbrisali svoj ra\u010dun.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\u05d4\u05d7\u05dc \u05de-" + startDate;
+      return "Po\u010dinje " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \u05d1\u05d8\u05dc \u05d1\u05db\u05dc \u05e2\u05ea \u05d1\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d4\u05de\u05e0\u05d5\u05d9";
+      return "\u2022 Otka\u017eite u bilo kojem trenutku u postavkama pretplate";
     },
     get$autocorrectNotAvailable() {
-      return "\u05dc\u05e6\u05e2\u05e8\u05e0\u05d5 \u05d4\u05e4\u05dc\u05d8\u05e4\u05d5\u05e8\u05de\u05d4 \u05e9\u05dc\u05da \u05db\u05e8\u05d2\u05e2 \u05dc\u05d0 \u05e0\u05ea\u05de\u05db\u05ea \u05dc\u05ea\u05db\u05d5\u05e0\u05d4 \u05d6\u05d5. \u05d4\u05de\u05e9\u05da \u05dc\u05e2\u05e7\u05d5\u05d1 \u05dc\u05e4\u05d9\u05ea\u05d5\u05d7 \u05e2\u05ea\u05d9\u05d3\u05d9!";
+      return "Na\u017ealost, va\u0161a platforma trenutno nije podr\u017eana za ovu zna\u010dajku. Ostanite s nama za daljnji razvoj!";
     },
     get$pleaseUpdateApp() {
-      return "\u05d0\u05e0\u05d0 \u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05d4\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d4\u05de\u05e9\u05d9\u05da.";
+      return "Molimo a\u017eurirajte aplikaciju za nastavak.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\u05d4\u05ea\u05d0\u05dd \u05d0\u05ea \u05d4\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9\u05dd \u05dc\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05d4\u05dd \u05de\u05d9\u05d9\u05e6\u05d2\u05d9\u05dd \u05d4\u05db\u05d9 \u05d8\u05d5\u05d1. \u05d0\u05dc \u05ea\u05d3\u05d0\u05d2! \u05d0\u05d9\u05df \u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e2\u05dc \u05d0\u05d9 \u05d4\u05e1\u05db\u05de\u05d4. \ud83d\ude05";
+      return "Uskladite emojije s rije\u010dima koje najbolje predstavljaju. Ne brinite! Nema bodova za neslaganje. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "\u05d6\u05d4 \u05db\u05dc \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05dc\u05da! \u05db\u05db\u05dc \u05e9\u05ea\u05e6\u05d1\u05d5\u05e8 XP \u05e2\u05d1\u05d5\u05e8 \u05db\u05dc \u05de\u05d9\u05dc\u05d4, \u05d4\u05d9\u05d0 \u05ea\u05e2\u05d1\u05d5\u05e8 \u05de\u05d6\u05e8\u05e2 \u05dc\u05e4\u05e8\u05d9\u05d7\u05d4 \u05de\u05dc\u05d0\u05d4. \u05dc\u05d7\u05e5 \u05e2\u05dc \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u05db\u05d3\u05d9 \u05dc\u05e8\u05d0\u05d5\u05ea \u05e4\u05e8\u05d8\u05d9\u05dd \u05e0\u05d5\u05e1\u05e4\u05d9\u05dd.";
+      return "Ovo je sav va\u0161 rje\u010dnik! Kako zaradite XP za svaku rije\u010d, one \u0107e od sjemenke do\u0107i do punog cvata. Kliknite na bilo koju rije\u010d za vi\u0161e detalja.";
     },
     get$morphAnalyticsListBody() {
-      return "\u05d0\u05dc\u05d5 \u05db\u05dc \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7 \u05d1\u05e9\u05e4\u05d4 \u05e9\u05d0\u05ea\u05d4 \u05dc\u05d5\u05de\u05d3! \u05ea\u05e4\u05ea\u05d7 \u05d0\u05d5\u05ea\u05dd \u05db\u05db\u05dc \u05e9\u05ea\u05e4\u05d2\u05d5\u05e9 \u05d0\u05d5\u05ea\u05dd \u05d1\u05de\u05d4\u05dc\u05da \u05d4\u05e9\u05d9\u05d7\u05d4. \u05dc\u05d7\u05e5 \u05dc\u05e4\u05e8\u05d8\u05d9\u05dd.";
+      return "Ovo su svi gramati\u010dki koncepti u jeziku koji u\u010dite! Otklju\u010dat \u0107ete ih kako ih budete susretali tijekom razgovora. Kliknite za detalje.";
     },
     get$knockSpaceSuccess() {
-      return "\u05d1\u05d9\u05e7\u05e9\u05ea \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d6\u05d4! \u05de\u05e0\u05d4\u05dc \u05d9\u05e2\u05e0\u05d4 \u05dc\u05d1\u05e7\u05e9\u05ea\u05da \u05db\u05d0\u05e9\u05e8 \u05d9\u05e7\u05d1\u05dc \u05d0\u05d5\u05ea\u05d4 \ud83d\ude00";
+      return "Zatra\u017eili ste pridru\u017eivanje ovom te\u010daju! Administrator \u0107e odgovoriti na va\u0161 zahtjev kada ga primi. \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\u05d4\u05d0\u05d6\u05df \u05dc\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05de\u05dc\u05d0\u05d4. \u05dc\u05d0\u05d7\u05e8 \u05de\u05db\u05df, \u05d4\u05ea\u05d0\u05dd \u05d0\u05ea \u05d4\u05d4\u05e7\u05dc\u05d8\u05d5\u05ea \u05dc\u05de\u05d9\u05dc\u05d9\u05dd.";
+      return "Slu\u0161ajte cijelu poruku. Zatim uskladite audiozapise s rije\u010dima.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d7\u05dc\u05e7\u05d9 \u05d4\u05e4\u05d0\u05d6\u05dc \u05dc\u05e9\u05d0\u05dc\u05d5\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7!";
+      return "Kliknite na komade slagalice za gramati\u010dka pitanja!";
     },
     get$home() {
-      return "\u05d1\u05d9\u05ea";
+      return "Po\u010detna";
     },
     get$join(_) {
-      return "\u05d4\u05e6\u05d8\u05e8\u05e3";
+      return "Pridru\u017ei se";
     },
     get$readingAssistanceOverviewBody() {
-      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05db\u05e4\u05ea\u05d5\u05e8\u05d9\u05dd \u05dc\u05de\u05d8\u05d4 \u05dc\u05de\u05e9\u05d7\u05e7\u05d9 \u05de\u05d9\u05e0\u05d9 \u05e2\u05dc \u05d4\u05ea\u05d0\u05de\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9, \u05d0\u05d5\u05d3\u05d9\u05d5, \u05de\u05e9\u05de\u05e2\u05d5\u05d9\u05d5\u05ea \u05de\u05d9\u05dc\u05d9\u05dd \u05d5\u05de\u05d5\u05e9\u05d2\u05d9\u05dd \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05d9\u05dd. \u05d0\u05d5 \u05dc\u05d7\u05e5 \u05e2\u05dc \u05db\u05dc \u05de\u05d9\u05dc\u05d4 \u05dc\u05e4\u05e8\u05d8\u05d9\u05dd.";
+      return "Kliknite na gumbe ispod za mini-igre u uskla\u0111ivanju emojija, audiozapisa, zna\u010denja rije\u010di i gramati\u010dkih koncepata. Ili kliknite na bilo koju rije\u010d za detalje.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\u05d0\u05e4\u05e1 \u05d8\u05d9\u05e4\u05d9\u05dd \u05dc\u05d4\u05e0\u05d7\u05d9\u05d5\u05ea";
+      return "Resetiraj upute za alatne trake";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\u05dc\u05d7\u05e5 \u05db\u05d3\u05d9 \u05dc\u05d4\u05e6\u05d9\u05d2 \u05d8\u05d9\u05e4\u05d9\u05dd \u05dc\u05d4\u05e0\u05d7\u05d9\u05d5\u05ea \u05db\u05de\u05d5 \u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05d7\u05d3\u05e9.";
+      return "Kliknite za prikaz uputa poput za potpuno novog korisnika.";
     },
     get$selectForGrammar() {
-      return "\u05d1\u05d7\u05e8 \u05d0\u05d9\u05d9\u05e7\u05d5\u05df \u05d3\u05e7\u05d3\u05d5\u05e7 \u05dc\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05d5\u05dc\u05e4\u05e8\u05d8\u05d9\u05dd.";
+      return "Odaberite ikonu gramatike za aktivnosti i detalje.";
     },
     get$translationProblem() {
-      return "\u05d1\u05e2\u05d9\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "Problem s prijevodom";
     },
     get$askToJoin() {
-      return "\u05d1\u05e7\u05e9 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3";
+      return "Zatra\u017ei pridru\u017eivanje";
     },
     get$emptyChatWarningTitle() {
-      return "\u05d4\u05e9\u05d9\u05d7\u05d4 \u05e8\u05d9\u05e7\u05d4";
+      return "Chat je prazan";
     },
     get$emptyChatWarningDesc() {
-      return "\u05dc\u05d0 \u05d4\u05d6\u05de\u05e0\u05ea \u05d0\u05e3 \u05d0\u05d7\u05d3 \u05dc\u05e9\u05d9\u05d7\u05d4 \u05e9\u05dc\u05da. \u05e2\u05d1\u05d5\u05e8 \u05dc\u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05e9\u05d9\u05d7\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d4\u05d6\u05de\u05d9\u05df \u05d0\u05ea \u05d0\u05e0\u05e9\u05d9 \u05d4\u05e7\u05e9\u05e8 \u05e9\u05dc\u05da \u05d0\u05d5 \u05d0\u05ea \u05d4\u05d1\u05d5\u05d8. \u05d0\u05e4\u05e9\u05e8 \u05d2\u05dd \u05dc\u05e2\u05e9\u05d5\u05ea \u05d6\u05d0\u05ea \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8.";
+      return "Niste pozvali nikoga u svoj chat. Idite na postavke chata da pozovete svoje kontakte ili Bota. To mo\u017eete u\u010diniti i kasnije.";
     },
     get$areYouLikeMe() {
-      return "\u05d0\u05ea\u05d4 \u05db\u05de\u05d5\u05e0\u05d9?";
+      return "Jesi li kao ja?";
     },
     get$tryAgainLater() {
-      return "\u05e0\u05e2\u05e9\u05d5 \u05d9\u05d5\u05ea\u05e8 \u05de\u05d3\u05d9 \u05e0\u05d9\u05e1\u05d9\u05d5\u05e0\u05d5\u05ea. \u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1 \u05d1\u05e2\u05d5\u05d3 5 \u05d3\u05e7\u05d5\u05ea.";
+      return "Previ\u0161e poku\u0161aja. Molimo poku\u0161ajte ponovno za 5 minuta.";
     },
     get$enterSpaceCode() {
-      return "\u05d4\u05d6\u05df \u05e7\u05d5\u05d3 \u05e7\u05d5\u05e8\u05e1";
+      return "Unesite kod te\u010daja";
     },
     get$shareSpaceLink() {
-      return "\u05e9\u05ea\u05e3 \u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Podijeli poveznicu";
     },
     get$byUsingPangeaChat() {
-      return "\u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1-Pangea Chat, \u05d0\u05e0\u05d9 \u05de\u05e1\u05db\u05d9\u05dd \u05dc-";
+      return "Kori\u0161tenjem Pangea Chata, sla\u017eem se s ";
     },
     get$details(_) {
-      return "\u05e4\u05e8\u05d8\u05d9\u05dd";
+      return "Detalji";
     },
     get$languageLevelPreA1Desc() {
-      return "\u05de\u05e2\u05d5\u05dc\u05dd \u05dc\u05d0 \u05dc\u05de\u05d3\u05ea\u05d9 \u05d0\u05d5 \u05d4\u05e9\u05ea\u05de\u05e9\u05ea\u05d9 \u05d1\u05e9\u05e4\u05d4.";
+      return "Nikada nisam u\u010dio ili koristio taj jezik.";
     },
     get$languageLevelA1Desc() {
-      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05d5\u05dc\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1\u05d1\u05d9\u05d8\u05d5\u05d9\u05d9\u05dd \u05d9\u05d5\u05de\u05d9\u05d5\u05de\u05d9\u05d9\u05dd \u05d1\u05e1\u05d9\u05e1\u05d9\u05d9\u05dd \u05d5\u05de\u05d9\u05dc\u05d9\u05dd \u05e4\u05e9\u05d5\u05d8\u05d5\u05ea.";
+      return "Mogu razumjeti i koristiti neke poznate svakodnevne izraze i vrlo osnovne fraze.";
     },
     get$languageLevelA2Desc() {
-      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05de\u05e9\u05e4\u05d8\u05d9\u05dd \u05d5\u05d1\u05d9\u05d8\u05d5\u05d9\u05d9\u05dd \u05e0\u05e4\u05d5\u05e6\u05d9\u05dd \u05d4\u05e7\u05e9\u05d5\u05e8\u05d9\u05dd \u05dc\u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05e7\u05e8\u05d5\u05d1\u05d9\u05dd \u05dc\u05d9.";
+      return "Mogu razumjeti re\u010denice i \u010desto kori\u0161tene izraze povezane s podru\u010djima od neposredne va\u017enosti.";
     },
     get$languageLevelB1Desc() {
-      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05ea\u05de\u05d5\u05d3\u05d3 \u05e2\u05dd \u05e8\u05d5\u05d1 \u05d4\u05de\u05e6\u05d1\u05d9\u05dd \u05d4\u05d9\u05d5\u05de\u05d9\u05d5\u05de\u05d9\u05d9\u05dd \u05d5\u05dc\u05d9\u05e6\u05d5\u05e8 \u05d8\u05e7\u05e1\u05d8 \u05de\u05d7\u05d5\u05d1\u05e8 \u05e4\u05e9\u05d5\u05d8 \u05e2\u05dc \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05de\u05d5\u05db\u05e8\u05d9\u05dd.";
+      return "Mogu se nositi s ve\u0107inom poznatih situacija i mogu proizvesti jednostavan povezani tekst o poznatim temama.";
     },
     get$languageLevelB2Desc() {
-      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05d0\u05ea \u05d4\u05e8\u05e2\u05d9\u05d5\u05e0\u05d5\u05ea \u05d4\u05de\u05e8\u05db\u05d6\u05d9\u05d9\u05dd \u05e9\u05dc \u05d8\u05e7\u05e1\u05d8\u05d9\u05dd \u05de\u05d5\u05e8\u05db\u05d1\u05d9\u05dd \u05d5\u05dc\u05ea\u05e7\u05e9\u05e8 \u05d1\u05e8\u05de\u05d4 \u05e9\u05dc \u05e9\u05d5\u05d8\u05e4\u05d5\u05ea \u05d5 spontanity.";
+      return "Mogu razumjeti glavne ideje slo\u017eenih tekstova i komunicirati s razinom te\u010dnosti i spontanosti.";
     },
     get$languageLevelC1Desc() {
-      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d1\u05d8\u05d0 \u05e8\u05e2\u05d9\u05d5\u05e0\u05d5\u05ea \u05d1\u05d6\u05e8\u05d9\u05de\u05d4 \u05d5\u05d1 spontaneity \u05d5\u05dc\u05e7\u05e8\u05d5\u05d0 \u05d8\u05e7\u05e1\u05d8\u05d9\u05dd \u05ea\u05d5\u05d1\u05e2\u05e0\u05d9\u05d9\u05dd \u05d1\u05de\u05d2\u05d5\u05d5\u05df \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd.";
+      return "Mogu izra\u017eavati ideje te\u010dno i spontano bez ve\u0107ih pote\u0161ko\u0107a i razumjeti \u0161irok raspon zahtjevnih tekstova.";
     },
     get$languageLevelC2Desc() {
-      return "\u05d0\u05e0\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d1\u05d9\u05df \u05db\u05de\u05e2\u05d8 \u05d4\u05db\u05dc \u05e9\u05e0\u05e9\u05de\u05e2 \u05d0\u05d5 \u05e0\u05e7\u05e8\u05d0 \u05d5\u05dc\u05d1\u05d8\u05d0 \u05d0\u05ea \u05e2\u05e6\u05de\u05d9 \u05d1\u05d6\u05e8\u05d9\u05de\u05d4 \u05d5\u05d1\u05d3\u05d9\u05d5\u05e7.";
+      return "Mogu razumjeti gotovo sve \u0161to \u010dujem ili \u010ditam i izra\u017eavati se te\u010dno i precizno.";
     },
     get$newVocab() {
-      return "\u05de\u05d9\u05dc\u05d9\u05dd \u05d7\u05d3\u05e9\u05d5\u05ea";
+      return "Nove rije\u010di";
     },
     get$newGrammar() {
-      return "\u05de\u05d5\u05e9\u05d2\u05d9\u05dd \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05d9\u05dd \u05d7\u05d3\u05e9\u05d9\u05dd";
+      return "Novi gramati\u010dki koncepti";
     },
     get$choosePracticeMode() {
-      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05d0\u05d7\u05d3 \u05de\u05d4\u05db\u05e4\u05ea\u05d5\u05e8\u05d9\u05dd \u05dc\u05de\u05e2\u05dc\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d4\u05ea\u05d7\u05d9\u05dc \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05ea\u05e8\u05d2\u05d5\u05dc";
+      return "Kliknite na jedno od gornjih gumba za po\u010detak vje\u017ebe";
     },
     get$ban() {
-      return "\u05d7\u05e1\u05d5\u05dd";
+      return "Zabrani";
     },
     get$kick() {
-      return "\u05d4\u05e2\u05d1\u05e8";
+      return "Izbaci";
     },
     get$lemma() {
-      return "\u05dc\u05de\u05d4";
+      return "Lema";
     },
     get$grammarFeature() {
-      return "\u05de\u05d0\u05e4\u05d9\u05d9\u05df \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9";
+      return "Gramati\u010dka zna\u010dajka";
     },
     get$grammarTag() {
-      return "\u05ea\u05d2\u05d9\u05ea \u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05ea";
+      return "Gramati\u010dka oznaka";
     },
     get$forms() {
-      return "\u05d8\u05e4\u05e1\u05d9\u05dd";
+      return "Obrasci";
     },
     get$exampleMessages() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d3\u05d5\u05d2\u05de\u05d4";
+      return "Primjeri poruka";
     },
     get$timesUsedIndependently() {
-      return "\u05e4\u05e2\u05de\u05d9\u05dd \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05e2\u05e6\u05de\u05d0\u05d9";
+      return "Broj kori\u0161tenja neovisno";
     },
     get$timesUsedWithAssistance() {
-      return "\u05e4\u05e2\u05de\u05d9\u05dd \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05e2\u05dd \u05e1\u05d9\u05d5\u05e2";
+      return "Broj kori\u0161tenja uz pomo\u0107";
     },
     shareInviteCode$1(code) {
-      return "\u05e9\u05ea\u05e3 \u05e7\u05d5\u05d3 \u05d4\u05d6\u05de\u05e0\u05d4: " + code;
+      return "Podijeli pozivni kod: " + code;
     },
     get$skipForNow() {
-      return "\u05d3\u05dc\u05d2 \u05dc\u05e2\u05db\u05e9\u05d9\u05d5";
+      return "Presko\u010di za sada";
     },
     get$permissions(_) {
-      return "\u05d4\u05e8\u05e9\u05d0\u05d5\u05ea";
+      return "Dozvole";
     },
     get$spaceChildPermission() {
-      return "\u05de\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d5\u05e1\u05d9\u05e3 \u05e9\u05d9\u05d7\u05d5\u05ea \u05d7\u05d3\u05e9\u05d5\u05ea \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d6\u05d4";
+      return "Tko mo\u017ee dodati nove razgovore u ovaj te\u010daj";
     },
     get$addEnvironmentOverride() {
-      return "\u05d4\u05d5\u05e1\u05e3 \u05e9\u05d9\u05e0\u05d5\u05d9 \u05e1\u05d1\u05d9\u05d1\u05d4";
+      return "Dodaj nadja\u010davanje okru\u017eenja";
     },
     get$defaultOption() {
-      return "\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc";
+      return "Zadano";
     },
     get$deleteChatDesc() {
-      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05de\u05d7\u05d5\u05e7 \u05e9\u05d9\u05d7\u05d4 \u05d6\u05d5? \u05d4\u05d9\u05d0 \u05ea\u05d9\u05de\u05d7\u05e7 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d5\u05db\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05ea\u05d5\u05da \u05d4\u05e9\u05d9\u05d7\u05d4 \u05dc\u05d0 \u05d9\u05d4\u05d9\u05d5 \u05d6\u05de\u05d9\u05e0\u05d5\u05ea \u05e2\u05d5\u05d3 \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d0\u05d5 \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4.";
+      return "Jeste li sigurni da \u017eelite izbrisati ovaj razgovor? On \u0107e biti izbrisan za sve sudionike, a sve poruke unutar razgovora vi\u0161e ne\u0107e biti dostupne za vje\u017ebanje ili analitiku u\u010denja.";
     },
     get$deleteSpaceDesc() {
-      return "\u05d4\u05e7\u05d5\u05e8\u05e1 \u05d5\u05db\u05dc \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05d9\u05d9\u05de\u05d7\u05e7\u05d5 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d5\u05db\u05dc \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05ea\u05d5\u05da \u05d4\u05e9\u05d9\u05d7\u05d4 \u05dc\u05d0 \u05d9\u05d4\u05d9\u05d5 \u05d6\u05de\u05d9\u05e0\u05d5\u05ea \u05e2\u05d5\u05d3 \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d0\u05d5 \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05dc\u05de\u05d9\u05d3\u05d4. \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc.";
+      return "Te\u010daj i svi odabrani razgovori bit \u0107e izbrisani za sve sudionike, a sve poruke unutar razgovora vi\u0161e ne\u0107e biti dostupne za vje\u017ebanje ili analitiku u\u010denja. Ova radnja se ne mo\u017ee poni\u0161titi.";
     },
     get$configureSpace() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05e7\u05d5\u05e8\u05e1";
+      return "Konfiguriraj te\u010daj";
     },
     get$pinMessages() {
-      return "\u05e0\u05e2\u05e5 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
+      return "Prika\u010di poruke";
     },
     get$setJoinRules() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05db\u05dc\u05dc\u05d9 \u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
+      return "Postavi pravila pridru\u017eivanja";
     },
     get$changeGeneralSettings() {
-      return "\u05e9\u05e0\u05d4 \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05db\u05dc\u05dc\u05d9\u05d5\u05ea";
+      return "Promijeni op\u0107e postavke";
     },
     get$inviteOtherUsersToRoom() {
-      return "\u05d4\u05d6\u05de\u05df \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d0\u05d7\u05e8\u05d9\u05dd";
+      return "Pozovi druge korisnike";
     },
     get$changeTheNameOfTheSpace() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05e9\u05dd \u05d4\u05e7\u05d5\u05e8\u05e1";
+      return "Promijeni naziv te\u010daja";
     },
     get$changeTheDescription() {
-      return "\u05e9\u05e0\u05d4 \u05d0\u05ea \u05d4\u05ea\u05d9\u05d0\u05d5\u05e8";
+      return "Promijeni opis";
     },
     get$changeThePermissions() {
-      return "\u05e9\u05e0\u05d4 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea";
+      return "Promijeni dopu\u0161tenja";
     },
     get$introductions() {
-      return "\u05d4\u05e7\u05d3\u05de\u05d5\u05ea";
+      return "Uvodne informacije";
     },
     get$announcements() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
+      return "Obavijesti";
     },
     get$activities() {
-      return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea";
+      return "Aktivnosti";
     },
     get$access() {
-      return "\u05d2\u05d9\u05e9\u05d4";
+      return "Pristup";
     },
     get$howSpaceCanBeFound() {
-      return "\u05d0\u05d9\u05da \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e6\u05d5\u05d0 \u05d0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d6\u05d4";
+      return "Kako se mo\u017ee prona\u0107i ovaj te\u010daj";
     },
     get$$private() {
-      return "\u05e4\u05e8\u05d8\u05d9";
+      return "Privatno";
     },
     get$cannotBeFoundInSearch() {
-      return "\u05dc\u05d0 \u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e6\u05d5\u05d0 \u05d1\u05d7\u05d9\u05e4\u05d5\u05e9";
+      return "Ne mo\u017ee se prona\u0107i u pretra\u017eivanju";
     },
     get$$public(_) {
-      return "\u05e6\u05d9\u05d1\u05d5\u05e8\u05d9";
+      return "Javno";
     },
     get$visibleToCommunity() {
-      return '\u05e0\u05e8\u05d0\u05d4 \u05dc\u05e7\u05d4\u05d9\u05dc\u05ea \u05e4\u05d0\u05e0\u05d2\u05d9\u05d0\u05d4 \u05e6\'\u05d0\u05d8 \u05d4\u05e8\u05d7\u05d1\u05d4 \u05d1\u05d0\u05de\u05e6\u05e2\u05d5\u05ea "\u05de\u05e6\u05d0 \u05e7\u05d5\u05e8\u05e1"';
+      return 'Vidljivo \u0161iroj zajednici Pangea Chata putem "Prona\u0111i te\u010daj"';
     },
     get$howSpaceCanBeJoined() {
-      return "\u05d0\u05d9\u05da \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05de\u05e8\u05d7\u05d1 \u05d6\u05d4";
+      return "Kako se mo\u017ee pridru\u017eiti ovom te\u010daju";
     },
     get$canBeFoundVia() {
-      return "\u05e0\u05d9\u05ea\u05df \u05dc\u05de\u05e6\u05d5\u05d0 \u05d1\u05d0\u05de\u05e6\u05e2\u05d5\u05ea:";
+      return "Mo\u017ee se prona\u0107i putem:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \u05d4\u05d6\u05de\u05e0\u05d4";
+      return "\u2022 pozivnice";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \u05e7\u05d5\u05d3 \u05d0\u05d5 \u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "\u2022 koda ili linka";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \u05d1\u05e7\u05e9\u05d4 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05d5\u05d0\u05d9\u05e9\u05d5\u05e8 \u05de\u05e0\u05d4\u05dc";
+      return "\u2022 zahtjeva za pridru\u017eivanje i odobrenja administratora";
     },
     get$youHaveLeveledUp() {
-      return "\u05e2\u05dc\u05d9\u05ea \u05e8\u05de\u05d4!";
+      return "Napredovali ste!";
     },
     get$sendActivities() {
-      return "\u05e9\u05dc\u05d7 \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea";
+      return "Po\u0161alji aktivnosti";
     },
     get$directMessage() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4";
+      return "Izravna poruka";
     },
     get$newDirectMessage() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05d7\u05d3\u05e9\u05d4";
+      return "Nova izravna poruka";
     },
     get$speakingExercisesTooltip() {
-      return "\u05d3\u05d9\u05d1\u05d5\u05e8";
+      return "Govor";
     },
     get$transcriptionFailed() {
-      return "\u05d4\u05d4\u05de\u05e8\u05d4 \u05dc\u05e7\u05d5\u05dc \u05e0\u05db\u05e9\u05dc\u05d4";
+      return "Neuspje\u0161no pretvaranje zvuka u tekst";
     },
     get$aUserIsKnocking() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9 \u05d0\u05d7\u05d3 \u05de\u05d1\u05e7\u05e9 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05da";
+      return "1 korisnik tra\u017ei da se pridru\u017ei va\u0161em te\u010daju";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05de\u05d1\u05e7\u05e9\u05d9\u05dd \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05da";
+      return "" + users + " korisnika tra\u017ei da se pridru\u017ee va\u0161em te\u010daju";
     },
     get$failedToFetchTranscription() {
-      return "\u05d4\u05d8\u05e2\u05d9\u05e0\u05d4 \u05e9\u05dc \u05d4\u05d4\u05de\u05e8\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4";
+      return "Neuspjelo dohva\u0107anje transkripcije";
     },
     get$deleteEmptySpaceDesc() {
-      return "\u05d4\u05e7\u05d5\u05e8\u05e1 \u05d9\u05d9\u05de\u05d7\u05e7 \u05dc\u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd. \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d6\u05d5 \u05d0\u05d9\u05e0\u05d4 \u05e0\u05d9\u05ea\u05e0\u05ea \u05dc\u05d1\u05d9\u05d8\u05d5\u05dc.";
+      return "Te\u010daj \u0107e biti izbrisan za sve sudionike. Ova radnja se ne mo\u017ee poni\u0161titi.";
     },
     get$failedToPlayVideo() {
-      return "\u05e0\u05db\u05e9\u05dc\u05d4 \u05d4\u05d4\u05e4\u05e2\u05dc\u05d4 \u05e9\u05dc \u05d4\u05d5\u05d5\u05d9\u05d3\u05d0\u05d5";
+      return "Neuspje\u0161no reproduciranje videa";
     },
     get$done() {
-      return "\u05d4\u05d5\u05e9\u05dc\u05dd";
+      return "Gotovo";
     },
     get$inThisSpace() {
-      return "\u05d1\u05de\u05e7\u05d5\u05dd \u05d6\u05d4";
+      return "U ovom te\u010daju";
     },
     get$myContacts() {
-      return "\u05d4\u05d0\u05e0\u05e9\u05d9\u05dd \u05e9\u05dc\u05d9";
+      return "Moji kontakti";
     },
     get$inviteAllInSpace() {
-      return "\u05d4\u05d6\u05de\u05df \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d1\u05de\u05e7\u05d5\u05dd \u05d6\u05d4";
+      return "Pozovi sve u ovom te\u010daju";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\u05db\u05dc \u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d5\u05d6\u05de\u05e0\u05d5 \u05dc\u05e6'\u05d0\u05d8";
+      return "Svi sudionici te\u010daja su pozvani u chat";
     },
     numKnocking$1(count) {
-      return "" + count + " \u05de\u05e6\u05dc\u05e6\u05dc/\u05d9\u05dd";
+      return "" + count + " kucanje";
     },
     numInvited$1(count) {
-      return "" + count + " \u05d4\u05d5\u05d6\u05de\u05df/\u05d4";
+      return "" + count + " pozvano";
     },
     get$errorFetchingDefinition() {
-      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d0\u05d7\u05d6\u05d5\u05e8 \u05d4\u05d4\u05d2\u05d3\u05e8\u05d4";
+      return "Neuspje\u0161no dohva\u0107anje definicije";
     },
     get$errorProcessAnalytics() {
-      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05e2\u05d9\u05d1\u05d5\u05d3 \u05e0\u05d9\u05ea\u05d5\u05d7\u05d9\u05dd";
+      return "Neuspje\u0161no procesiranje analitike";
     },
     get$errorDownloading() {
-      return "\u05d4\u05d4\u05d5\u05e8\u05d3\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4";
+      return "Preuzimanje nije uspjelo";
     },
     get$errorFetchingLevelSummary() {
-      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d0\u05d7\u05d6\u05d5\u05e8 \u05e1\u05d9\u05db\u05d5\u05dd \u05d4\u05e8\u05de\u05d4";
+      return "Neuspje\u0161no dohva\u0107anje sa\u017eetka razine";
     },
     get$errorLoadingSpaceChildren() {
-      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d8\u05e2\u05d9\u05e0\u05ea \u05d4\u05e6'\u05d0\u05d8\u05d9\u05dd \u05d1\u05ea\u05d5\u05da \u05e7\u05d5\u05e8\u05e1 \u05d6\u05d4";
+      return "Neuspje\u0161no u\u010ditavanje razgovora unutar ovog te\u010daja";
     },
     get$unexpectedError() {
-      return "\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05dc\u05ea\u05d9 \u05e6\u05e4\u05d5\u05d9\u05d4.";
+      return "Neo\u010dekivana pogre\u0161ka.";
     },
     get$pleaseReload() {
-      return "\u05d0\u05e0\u05d0 \u05d8\u05e2\u05df \u05de\u05d7\u05d3\u05e9 \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
+      return "Molimo vas da ponovno u\u010ditate i poku\u0161ate ponovo.";
     },
     get$translationError() {
-      return "\u05e9\u05d2\u05d9\u05d0\u05ea \u05ea\u05e8\u05d2\u05d5\u05dd";
+      return "Pogre\u0161ka u prijevodu";
     },
     get$errorFetchingActivity() {
-      return "\u05e0\u05db\u05e9\u05dc \u05d1\u05d0\u05d7\u05d6\u05d5\u05e8 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
+      return "Neuspje\u0161no dohva\u0107anje aktivnosti";
     },
     get$check(_) {
-      return "\u05d1\u05d3\u05d5\u05e7";
+      return "Provjeri";
     },
     get$unableToFindRoom() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05e9\u05d9\u05d7\u05d4 \u05d0\u05d5 \u05e7\u05d5\u05e8\u05e1 \u05e2\u05dd \u05e7\u05d5\u05d3 \u05d6\u05d4. \u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
+      return "Nije prona\u0111en razgovor ili te\u010daj s tim kodom. Molimo poku\u0161ajte ponovno.";
     },
     viewingAnalytics$2(visible, users) {
-      return "\u05e6\u05e4\u05d9\u05d9\u05d4 \u05d1-" + visible + "/" + users + " \u05e0\u05d9\u05ea\u05d5\u05d7\u05d9\u05dd";
+      return "Prikaz " + visible + "/" + users + " analitike";
     },
     get$request(_) {
-      return "\u05d1\u05e7\u05e9\u05d4";
+      return "Zahtjev";
     },
     get$requestAll(_) {
-      return "\u05d1\u05e7\u05e9 \u05d0\u05ea \u05d4\u05db\u05dc";
+      return "Zatra\u017ei sve";
     },
     get$confirmMessageUnpin() {
-      return "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05d1\u05d8\u05d5\u05d7 \u05e9\u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05d4\u05e1\u05d9\u05e8 \u05d0\u05ea \u05d4\u05d4\u05e6\u05de\u05d3\u05d4 \u05e9\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05d6\u05d5?";
+      return "Jeste li sigurni da \u017eelite odvojiti ovu poruku?";
     },
     get$pending(_) {
-      return "\u05d1\u05d4\u05de\u05ea\u05e0\u05d4";
+      return "Na \u010dekanju";
     },
     get$openRoleLabel() {
-      return "\u05e4\u05ea\u05d5\u05d7";
+      return "OTVORENO";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " \u05d4\u05e6\u05d8\u05e8\u05e3 \u05db-" + role;
+      return "\ud83d\udc4b " + username + " pridru\u017eio se kao " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " \u05e1\u05d9\u05d9\u05dd \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d6\u05d5";
+      return "\ud83c\udfaf " + username + " zavr\u0161io ovu aktivnost";
     },
     get$activitySummaryError() {
-      return "\u05e1\u05d9\u05db\u05d5\u05de\u05d9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d0\u05d9\u05e0\u05dd \u05d6\u05de\u05d9\u05e0\u05d9\u05dd";
+      return "Sa\u017eeci aktivnosti nisu dostupni";
     },
     get$requestSummaries() {
-      return "\u05d1\u05e7\u05e9 \u05e1\u05d9\u05db\u05d5\u05de\u05d9\u05dd";
+      return "Zatra\u017ei sa\u017eetke";
     },
     get$requestAccessTitle() {
-      return "\u05dc\u05d1\u05e7\u05e9 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05e0\u05ea\u05d5\u05e0\u05d9\u05dd?";
+      return "Zatra\u017ei pristup analitici?";
     },
     get$requestAccessDesc() {
-      return "\u05d4\u05d0\u05dd \u05ea\u05e8\u05e6\u05d4 \u05dc\u05d1\u05e7\u05e9 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e6\u05e4\u05d9\u05d9\u05d4 \u05d1\u05e0\u05ea\u05d5\u05e0\u05d9 \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd?\n\n\u05d0\u05dd \u05d4\u05de\u05e9\u05ea\u05ea\u05e4\u05d9\u05dd \u05d9\u05e1\u05db\u05d9\u05de\u05d5, \u05de\u05e0\u05d4\u05dc\u05d9 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1:\n    \u2022 \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd \u05db\u05d5\u05dc\u05dc\n    \u2022 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d3\u05e7\u05d3\u05d5\u05e7 \u05db\u05d5\u05dc\u05dc\u05d9\u05dd\n    \u2022 \u05e1\u05da \u05db\u05dc \u05de\u05e4\u05d2\u05e9\u05d9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05d4\u05d5\u05e9\u05dc\u05de\u05d5\n    \u2022 \u05d4\u05de\u05d5\u05e9\u05d2\u05d9\u05dd \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7\u05d9\u05d9\u05dd \u05d4\u05e1\u05e4\u05e6\u05d9\u05e4\u05d9\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05d5 \u05d1\u05d4\u05dd, \u05e0\u05db\u05d5\u05df \u05d5\u05dc\u05d0 \u05e0\u05db\u05d5\u05df\n\n\u05d4\u05dd \u05dc\u05d0 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1:\n    \u2022 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05e6'\u05d0\u05d8 \u05de\u05d7\u05d5\u05e5 \u05dc\u05e7\u05d5\u05e8\u05e1\n    \u2022 \u05e8\u05e9\u05d9\u05de\u05ea \u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd";
+      return "\u017delite li zatra\u017eiti pristup za prikaz analitike sudionika?\n\nAko se sudionici slo\u017ee, administratori ovog te\u010daja mo\u0107i \u0107e vidjeti njihove:\n    \u2022 ukupni vokabular\n    \u2022 ukupne gramati\u010dke koncepte\n    \u2022 ukupne zavr\u0161ene sesije aktivnosti\n    \u2022 specifi\u010dne gramati\u010dke koncepte kori\u0161tene, ispravno i pogre\u0161no\n\nNe\u0107e mo\u0107i vidjeti njihove:\n    \u2022 poruke u chatovima izvan te\u010daja\n    \u2022 popis vokabulara";
     },
     get$analyticsInactiveTitle() {
-      return "\u05d1\u05e7\u05e9\u05d5\u05ea \u05dc\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d0 \u05e4\u05e2\u05d9\u05dc\u05d9\u05dd \u05dc\u05d0 \u05e0\u05e9\u05dc\u05d7\u05d5\u05ea";
+      return "Zahtjevi za neaktivne korisnike nisu mogli biti poslani";
     },
     get$analyticsInactiveDesc() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d0 \u05e4\u05e2\u05d9\u05dc\u05d9\u05dd \u05e9\u05dc\u05d0 \u05d4\u05ea\u05d7\u05d1\u05e8\u05d5 \u05de\u05d0\u05d6 \u05d4\u05d5\u05e1\u05e4\u05ea \u05ea\u05db\u05d5\u05e0\u05d4 \u05d6\u05d5 \u05dc\u05d0 \u05d9\u05e8\u05d0\u05d5 \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4 \u05e9\u05dc\u05da.\n\n\u05db\u05e4\u05ea\u05d5\u05e8 \u05d4\u05d1\u05e7\u05e9\u05d4 \u05d9\u05d5\u05e4\u05d9\u05e2 \u05db\u05d0\u05e9\u05e8 \u05d4\u05dd \u05d9\u05d7\u05d6\u05e8\u05d5. \u05ea\u05d5\u05db\u05dc \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d0\u05ea \u05d4\u05d1\u05e7\u05e9\u05d4 \u05de\u05d7\u05d3\u05e9 \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05dc\u05d7\u05d9\u05e6\u05d4 \u05e2\u05dc \u05db\u05e4\u05ea\u05d5\u05e8 \u05d4\u05d1\u05e7\u05e9\u05d4 \u05ea\u05d7\u05ea \u05e9\u05de\u05dd \u05db\u05d0\u05e9\u05e8 \u05d4\u05d5\u05d0 \u05d6\u05de\u05d9\u05df.";
+      return "Neaktivni korisnici koji se nisu prijavili od kada je ova zna\u010dajka uvedena ne\u0107e vidjeti va\u0161 zahtjev.\n\nGumb Zahtjev pojavit \u0107e se nakon njihovog povratka. Mo\u017eete ponovno poslati zahtjev kasnije klikom na gumb Zahtjev ispod njihovog imena kada bude dostupan.";
     },
     get$accessRequestedTitle() {
-      return "\u05d1\u05e7\u05e9\u05ea \u05d2\u05d9\u05e9\u05d4 \u05dc\u05e0\u05ea\u05d5\u05e0\u05d9 \u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d4";
+      return "Zahtjev za pristup analitici";
     },
     accessRequestedDesc$2(admin, space) {
-      return "\u05de\u05d1\u05e7\u05e9\u05d9\u05dd \u05de\u05e0\u05d4\u05dc(\u05d9\u05dd): " + admin + " \n\n\u05de\u05e0\u05d4\u05dc\u05d9\u05dd \u05de\u201c" + space + "\u201d \u05de\u05d1\u05e7\u05e9\u05d9\u05dd \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea \u05e0\u05d9\u05ea\u05d5\u05d7\u05d9 \u05d4\u05dc\u05de\u05d9\u05d3\u05d4 \u05e9\u05dc\u05da.\n\n\u05d0\u05dd \u05d0\u05ea\u05d4 \u05de\u05e1\u05db\u05d9\u05dd, \u05d4\u05dd \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea:\n    \u2022 \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d4\u05db\u05d5\u05dc\u05dc \u05e9\u05dc\u05da\n    \u2022 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7 \u05d4\u05db\u05d5\u05dc\u05dc\u05d9\u05dd\n    \u2022 \u05de\u05e1\u05e4\u05e8 \u05d4\u05de\u05e4\u05d2\u05e9\u05d9\u05dd \u05e9\u05d4\u05d5\u05e9\u05dc\u05de\u05d5\n    \u2022 \u05de\u05d5\u05e9\u05d2\u05d9 \u05d4\u05d3\u05e7\u05d3\u05d5\u05e7 \u05d4\u05e1\u05e4\u05e6\u05d9\u05e4\u05d9\u05d9\u05dd \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05ea \u05d1\u05d4\u05dd, \u05e0\u05db\u05d5\u05df \u05d5\u05dc\u05d0 \u05e0\u05db\u05d5\u05df\n\n\u05d4\u05dd \u05dc\u05d0 \u05d9\u05d5\u05db\u05dc\u05d5 \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea:\n    \u2022 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d1\u05e6'\u05d0\u05d8\u05d9\u05dd \u05de\u05d7\u05d5\u05e5 \u05dc\u05e7\u05d5\u05e8\u05e1\n    \u2022 \u05e8\u05e9\u05d9\u05de\u05ea \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd";
+      return "Zatra\u017eeni administrator(i): " + admin + " \n\nAdministratori iz \u201e" + space + "\u201d tra\u017ee pristup va\u0161oj analitici u\u010denja.\n\nAko se sla\u017eete, mo\u0107i \u0107e vidjeti va\u0161e:\n    \u2022 ukupni vokabular\n    \u2022 ukupni gramati\u010dki koncepti\n    \u2022 ukupni zavr\u0161eni aktivnostni sesiji\n    \u2022 specifi\u010dni gramati\u010dki koncepti kori\u0161teni, ispravno i neispravno\n\nNe\u0107e mo\u0107i vidjeti va\u0161e:\n    \u2022 poruke u chatovima izvan te\u010daja\n    \u2022 popis vokabulara";
     },
     get$adminRequestedAccess() {
-      return "\u05d4\u05de\u05e0\u05d4\u05dc\u05d9\u05dd \u05d1\u05d9\u05e7\u05e9\u05d5 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1\u05e0\u05ea\u05d5\u05e0\u05d9 \u05d4\u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d4 \u05e9\u05dc\u05da.";
+      return "Administratori su zatra\u017eili pristup va\u0161oj analitici.";
     },
     lastUpdated$1(time) {
-      return "\u05e2\u05d5\u05d3\u05db\u05df\n" + time;
+      return "A\u017eurirano\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\u05d4\u05db\u05dc \u05de\u05d5\u05db\u05df!";
+      return "Svi zavr\u0161ili!";
     },
     get$endForAll() {
-      return "\u05e1\u05d9\u05d5\u05dd \u05dc\u05db\u05d5\u05dc\u05dd";
+      return "Zavr\u0161i za sve";
     },
     get$newCourse() {
-      return "\u05e7\u05d5\u05e8\u05e1 \u05d7\u05d3\u05e9";
+      return "Novi te\u010daj";
     },
     numModules$1(num) {
-      return "" + num + " \u05de\u05d5\u05d3\u05d5\u05dc\u05d9\u05dd";
+      return "" + num + " modula";
     },
     get$coursePlan() {
-      return "\u05ea\u05db\u05e0\u05d9\u05ea \u05e7\u05d5\u05e8\u05e1";
+      return "Plan te\u010daja";
     },
     get$editCourseLater() {
-      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e2\u05e8\u05d5\u05da \u05d0\u05ea \u05db\u05d5\u05ea\u05e8\u05ea \u05d4\u05ea\u05d1\u05e0\u05d9\u05ea, \u05ea\u05d9\u05d0\u05d5\u05e8\u05d9\u05dd \u05d5\u05ea\u05de\u05d5\u05e0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8.";
+      return "Mo\u017eete kasnije urediti naslov predlo\u0161ka, opise i sliku te\u010daja.";
     },
     get$newCourseAccess() {
-      return "\u05d1\u05e8\u05d9\u05e8\u05ea \u05de\u05d7\u05d3\u05dc, \u05e7\u05d5\u05e8\u05e1\u05d9\u05dd \u05d4\u05dd \u05e4\u05e8\u05d8\u05d9\u05d9\u05dd \u05d5\u05d3\u05d5\u05e8\u05e9\u05d9\u05dd \u05d0\u05d9\u05e9\u05d5\u05e8 \u05de\u05e0\u05d4\u05dc \u05dc\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea. \u05ea\u05d5\u05db\u05dc \u05dc\u05e2\u05e8\u05d5\u05da \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea \u05d0\u05dc\u05d4 \u05d1\u05db\u05dc \u05e2\u05ea.";
+      return "Prema zadanim postavkama, te\u010dajevi su privatni i zahtijevaju odobrenje administratora za pridru\u017eivanje. Mo\u017eete ove postavke urediti u bilo koje vrijeme.";
     },
     get$createCourse() {
-      return "\u05e6\u05d5\u05e8 \u05e7\u05d5\u05e8\u05e1";
+      return "Stvori te\u010daj";
     },
     get$stats() {
-      return "\u05e1\u05d8\u05d8\u05d9\u05e1\u05d8\u05d9\u05e7\u05d5\u05ea";
+      return "Statistike";
     },
     get$createGroupChat() {
-      return "\u05e6\u05d5\u05e8 \u05e9\u05d9\u05d7\u05ea \u05e7\u05d1\u05d5\u05e6\u05ea\u05d9\u05ea";
+      return "Stvori grupni razgovor";
     },
     get$editCourse() {
-      return "\u05e2\u05e8\u05d5\u05da \u05e7\u05d5\u05e8\u05e1";
+      return "Uredi te\u010daj";
     },
     get$inviteDesc() {
-      return "\u05e2\u05dc \u05d9\u05d3\u05d9 \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9, \u05e7\u05d5\u05d3 \u05d0\u05d5 \u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Po korisni\u010dkom imenu, po kodu ili linku";
     },
     get$editCourseDesc() {
-      return "\u05db\u05d0\u05df \u05ea\u05d5\u05db\u05dc \u05dc\u05e2\u05e8\u05d5\u05da \u05d0\u05ea \u05db\u05d5\u05ea\u05e8\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1, \u05ea\u05d9\u05d0\u05d5\u05e8 \u05d5\u05e2\u05d5\u05d3.";
+      return "Ovdje mo\u017eete urediti naslov te\u010daja, opis itd.";
     },
     get$permissionsDesc() {
-      return "\u05d4\u05d2\u05d3\u05e8 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05db\u05d2\u05d5\u05df \u05de\u05d9 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d6\u05de\u05d9\u05df \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd, \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea, \u05dc\u05d9\u05e6\u05d5\u05e8 \u05e9\u05d9\u05d7\u05d5\u05ea, \u05d5\u05e2\u05d5\u05d3.";
+      return "Postavite dopu\u0161tenja poput tko mo\u017ee pozvati korisnike, slati poruke, stvarati chatove itd.";
     },
     get$accessDesc() {
-      return "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05e4\u05d5\u05da \u05d0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05da \u05dc\u05d2\u05dc\u05d5\u05d9 \u05dc\u05e2\u05d5\u05dc\u05dd! \u05d0\u05d5, \u05dc\u05d4\u05e4\u05d5\u05da \u05d0\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05dc\u05e4\u05e8\u05d8\u05d9 \u05d5\u05de\u05d0\u05d5\u05d1\u05d8\u05d7.";
+      return "Mo\u017eete u\u010diniti svoj te\u010daj otvorenim za svijet! Ili, u\u010diniti svoj te\u010daj privatnim i sigurnim.";
     },
     get$createGroupChatDesc() {
-      return "\u05d1\u05e2\u05d5\u05d3 \u05e9\u05de\u05e4\u05d2\u05e9\u05d9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05ea\u05d7\u05d9\u05dc\u05d9\u05dd \u05d5\u05de\u05e1\u05ea\u05d9\u05d9\u05de\u05d9\u05dd, \u05e9\u05d9\u05d7\u05d5\u05ea \u05e7\u05d1\u05d5\u05e6\u05ea\u05d9\u05d5\u05ea \u05d9\u05d9\u05e9\u05d0\u05e8\u05d5 \u05e4\u05ea\u05d5\u05d7\u05d5\u05ea \u05dc\u05ea\u05e7\u05e9\u05d5\u05e8\u05ea \u05e9\u05d5\u05d8\u05e4\u05ea.";
+      return "Dok sesije aktivnosti po\u010dinju i zavr\u0161avaju, grupni chatovi \u0107e ostati otvoreni za rutinsku komunikaciju.";
     },
     get$deleteDesc() {
-      return "\u05e8\u05e7 \u05de\u05e0\u05d4\u05dc\u05d9\u05dd \u05d9\u05db\u05d5\u05dc\u05d9\u05dd \u05dc\u05de\u05d7\u05d5\u05e7 \u05e7\u05d5\u05e8\u05e1. \u05d6\u05d5\u05d4\u05d9 \u05e4\u05e2\u05d5\u05dc\u05d4 \u05d4\u05e8\u05e1\u05e0\u05d9\u05ea \u05e9\u05de\u05e1\u05d9\u05e8\u05d4 \u05d0\u05ea \u05db\u05dc \u05d4\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05d5\u05de\u05d5\u05d7\u05e7\u05ea \u05d0\u05ea \u05db\u05dc \u05d4\u05e9\u05d9\u05d7\u05d5\u05ea \u05e9\u05e0\u05d1\u05d7\u05e8\u05d5 \u05d1\u05ea\u05d5\u05da \u05d4\u05e7\u05d5\u05e8\u05e1. \u05d4\u05de\u05e9\u05da \u05d1\u05d6\u05d4\u05d9\u05e8\u05d5\u05ea.";
+      return "Samo administratori mogu izbrisati te\u010daj. Ovo je destruktivna radnja koja uklanja sve korisnike i bri\u0161e sve odabrane chatove unutar te\u010daja. Budite oprezni.";
     },
     get$noCourseFound() {
-      return "\u05d0\u05d4, \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d6\u05d4 \u05e6\u05e8\u05d9\u05da \u05ea\u05db\u05e0\u05d9\u05ea!\n\n\u05ea\u05db\u05e0\u05d9\u05d5\u05ea \u05e7\u05d5\u05e8\u05e1 \u05d4\u05df \u05e8\u05e6\u05e3 \u05e9\u05dc \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05d5\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05d9\u05d7\u05d4.";
+      return "O, ovaj te\u010daj treba plan!\n\nPlanovi te\u010daja su niz tema i aktivnosti razgovora.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " \u05d0\u05d7\u05e8\u05d9\u05dd";
+      return "+ " + num + " drugih";
     },
     get$directMessages() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea";
+      return "Izravne poruke";
     },
     get$whatNow() {
-      return "\u05de\u05d4 \u05e2\u05db\u05e9\u05d9\u05d5?";
+      return "\u0160to sada?";
     },
     get$chooseNextActivity() {
-      return "\u05d1\u05d7\u05e8 \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d1\u05d0\u05d4 \u05e9\u05dc\u05da!";
+      return "Odaberite svoju sljede\u0107u aktivnost!";
     },
     get$letsGo() {
-      return "\u05d1\u05d5\u05d0 \u05e0\u05ea\u05d7\u05d9\u05dc";
+      return "Krenimo";
     },
     get$chooseRole() {
-      return "\u05d1\u05d7\u05e8 \u05ea\u05e4\u05e7\u05d9\u05d3!";
+      return "Odaberite ulogu!";
     },
     get$chooseRoleToParticipate() {
-      return "\u05d1\u05d7\u05e8 \u05ea\u05e4\u05e7\u05d9\u05d3 \u05dc\u05d4\u05e9\u05ea\u05ea\u05e4\u05d5\u05ea!";
+      return "Odaberite ulogu za sudjelovanje!";
     },
     waitingToFillRole$1(num) {
-      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05de\u05dc\u05d0 " + num + " \u05ea\u05e4\u05e7\u05d9\u05d3\u05d9\u05dd...";
+      return "\u010cekanje da se popuni " + num + " uloga...";
     },
     get$pingParticipants() {
-      return "\u05d4\u05e6\u05e2 \u05ea\u05d6\u05de\u05d5\u05df \u05dc\u05de\u05e9\u05ea\u05ea\u05e4\u05d9 \u05d4\u05e7\u05d5\u05e8\u05e1";
+      return "Ozna\u010di sudionike te\u010daja";
     },
     get$playWithBot() {
-      return "\u05e9\u05d7\u05e7 \u05e2\u05dd \u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4";
+      return "Igraj s Pangea Botom";
     },
     get$waitNotDone() {
-      return "\u05d7\u05db\u05d4, \u05d0\u05e0\u05d9 \u05dc\u05d0 \u05e1\u05d9\u05d9\u05de\u05ea\u05d9!";
+      return "\u010cekaj, nisam zavr\u0161io!";
     },
     get$waitingForOthersToFinish() {
-      return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d0\u05e8 \u05dc\u05e1\u05d9\u05d9\u05dd...";
+      return "\u010cekam da ostali zavr\u0161e...";
     },
     get$generatingSummary() {
-      return "\u05d0\u05e0\u05dc\u05d9\u05d6\u05ea \u05e9\u05d9\u05d7\u05d4 \u05d5\u05d9\u05e6\u05d9\u05e8\u05ea \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea";
+      return "Analiziranje chata i generiranje rezultata";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " \u05de\u05d7\u05e4\u05e9 \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05de\u05e4\u05d2\u05e9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d1-" + room;
+      return user + " tra\u017ei korisnike za pridru\u017eivanje sesiji aktivnosti u " + room;
     },
     get$courseName() {
-      return "\u05e9\u05dd \u05d4\u05e7\u05d5\u05e8\u05e1";
+      return "Naziv te\u010daja";
     },
     get$createNewCourse() {
-      return "\u05e7\u05d5\u05e8\u05e1 \u05d7\u05d3\u05e9";
+      return "Novi te\u010daj";
     },
     goToCourse$1(course) {
-      return "\u05e2\u05d1\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1: " + course;
+      return "Idi na te\u010daj: " + course;
     },
     get$startNewSession() {
-      return "\u05d4\u05ea\u05d7\u05dc \u05de\u05e4\u05d2\u05e9 \u05d7\u05d3\u05e9";
+      return "Zapo\u010dni novu sesiju";
     },
     get$joinOpenSession() {
-      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05de\u05e4\u05d2\u05e9 \u05e4\u05ea\u05d5\u05d7";
+      return "Pridru\u017ei se otvorenoj sesiji";
     },
     get$activityNotFound() {
-      return "\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d4";
+      return "Aktivnost nije prona\u0111ena";
     },
     get$levelUp() {
-      return "\u05e8\u05de\u05d4 \u05e2\u05dc\u05d9\u05d5\u05e0\u05d4";
+      return "Podigni razinu";
     },
     get$myActivities() {
-      return "\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05dc\u05d9";
+      return "Moje aktivnosti";
     },
     get$openToJoin() {
-      return "\u05e4\u05ea\u05d5\u05d7 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e4\u05d5\u05ea";
+      return "Otvoreno za pridru\u017eivanje";
     },
     get$activityDone() {
-      return "\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d5\u05e9\u05dc\u05de\u05d4!";
+      return "Aktivnost zavr\u0161ena!";
     },
     get$promoCodeInfo() {
-      return "\u05e7\u05d5\u05d3\u05d9 \u05e7\u05d9\u05d3\u05d5\u05dd \u05e0\u05d9\u05ea\u05df \u05dc\u05d4\u05d6\u05d9\u05df \u05d1\u05e2\u05de\u05d5\u05d3 \u05d4\u05d1\u05d0";
+      return "K\xf4dovi za popust mogu se unijeti na sljede\u0107oj stranici";
     },
     get$editsComingSoon() {
-      return "\u05d4\u05d9\u05db\u05d5\u05dc\u05ea \u05dc\u05e2\u05e8\u05d5\u05da \u05e2\u05e8\u05d9\u05dd \u05d5\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05ea\u05d2\u05d9\u05e2 \u05d1\u05e7\u05e8\u05d5\u05d1.";
+      return "Mogu\u0107nost ure\u0111ivanja gradova i aktivnosti uskoro sti\u017ee.";
     },
     get$editing() {
-      return "\u05e2\u05d5\u05e8\u05da";
+      return "Ure\u0111ivanje";
     },
     get$activityNeedsOneMember() {
-      return "\u05d0\u05d5\u05e4\u05e1! \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d6\u05d5 \u05d6\u05e7\u05d5\u05e7\u05d4 \u05dc\u05e2\u05d5\u05d3 \u05d0\u05d3\u05dd \u05d0\u05d7\u05d3.";
+      return "Ups! Ova aktivnost treba jo\u0161 1 osobu.";
     },
     activityNeedsMembers$1(num) {
-      return "\u05d0\u05d5\u05e4\u05e1! \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d6\u05d5 \u05d6\u05e7\u05d5\u05e7\u05d4 \u05dc-" + num + " \u05d0\u05e0\u05e9\u05d9\u05dd \u05e0\u05d5\u05e1\u05e4\u05d9\u05dd.";
+      return "Ups! Ova aktivnost treba jo\u0161 " + num + " osoba.";
     },
     get$inviteFriendsToCourse() {
-      return "\u05d4\u05d6\u05de\u05df \u05d7\u05d1\u05e8\u05d9\u05dd \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc\u05d9";
+      return "Pozovi prijatelje na moj te\u010daj";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05e1\u05d9\u05db\u05d5\u05de\u05d9 \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea";
+      return "Pretplatite se za sa\u017eetke aktivnosti otklju\u010davanja";
     },
     get$subscribeToUnlockDefinitions() {
-      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05d4\u05d2\u05d3\u05e8\u05d5\u05ea";
+      return "Pretplatite se za definicije otklju\u010davanja";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05ea\u05de\u05dc\u05d9\u05dc\u05d9\u05dd";
+      return "Pretplatite se za transkripcije otklju\u010davanja";
     },
     get$pingSent() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05ea \u05e7\u05d5\u05e8\u05e1 \u05e0\u05e9\u05dc\u05d7\u05d4! \ud83d\udd14";
+      return "\ud83d\udd14 Ping te\u010daja poslan! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "\u05db\u05d5\u05ea\u05e8\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1";
+      return "Naslov te\u010daja";
     },
     get$courseDesc() {
-      return "\u05ea\u05d9\u05d0\u05d5\u05e8 \u05d4\u05e7\u05d5\u05e8\u05e1";
+      return "Opis te\u010daja";
     },
     get$courseSavedSuccessfully() {
-      return "\u05d4\u05e7\u05d5\u05e8\u05e1 \u05e0\u05e9\u05de\u05e8 \u05d1\u05d4\u05e6\u05dc\u05d7\u05d4";
+      return "Te\u010daj je uspje\u0161no spremljen";
     },
     get$addCoursePlan() {
-      return "\u05d4\u05d5\u05e1\u05e3 \u05ea\u05db\u05e0\u05d9\u05ea \u05e7\u05d5\u05e8\u05e1";
+      return "Dodajte plan te\u010daja";
     },
     get$activityStatsButtonInstruction() {
-      return "\u05dc\u05d7\u05e5 \u05db\u05d0\u05df \u05db\u05d3\u05d9 \u05dc\u05e6\u05e4\u05d5\u05ea \u05d1\u05e1\u05d8\u05d8\u05d9\u05e1\u05d8\u05d9\u05e7\u05d5\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05dc\u05da \u05d5\u05dc\u05e1\u05d2\u05d5\u05e8 \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d1\u05e1\u05d9\u05d5\u05dd";
+      return "Kliknite ovdje za prikaz statistike va\u0161e aktivnosti i zatvaranje aktivnosti nakon zavr\u0161etka";
     },
     get$readingAnalyticsDesc() {
-      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05ea\u05e8\u05d2\u05d5\u05dc \u05d1\u05db\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e7\u05e8\u05d9\u05d0\u05d4.";
+      return "Kliknite na vje\u017ebu na svakoj poruci za aktivnosti \u010ditanja.";
     },
     get$speakingAnalyticsDesc() {
-      return "\u05d4\u05e7\u05dc\u05d8 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05e7\u05d5\u05dc\u05d9\u05d5\u05ea \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d3\u05d9\u05d1\u05d5\u05e8.";
+      return "Snimate glasovne poruke za vje\u017ebu govora.";
     },
     get$audioAnalyticsDesc() {
-      return "\u05dc\u05d7\u05e5 \u05e2\u05dc \u05ea\u05e8\u05d2\u05d5\u05dc \u05d1\u05db\u05dc \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05de\u05d9\u05e2\u05d4.";
+      return "Kliknite na vje\u017ebu na svakoj poruci za aktivnosti slu\u0161anja.";
     },
     get$loginToAccount() {
-      return "\u05d4\u05ea\u05d7\u05d1\u05e8 \u05dc\u05d7\u05e9\u05d1\u05d5\u05e0\u05d9";
+      return "Prijavite se na svoj ra\u010dun";
     },
     get$appDescription() {
-      return "\u05dc\u05de\u05d3 \u05e9\u05e4\u05d4\n\u05d1\u05d6\u05de\u05df \u05e9\u05dc\u05d9\u05d7\u05ea \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05dc\u05d7\u05d1\u05e8\u05d9\u05dd \u05e9\u05dc\u05da.";
+      return "U\u010dite jezik\ndok \u0161aljete poruke prijateljima.";
     },
     get$languages(_) {
-      return "\u05e9\u05e4\u05d5\u05ea";
+      return "Jezici";
     },
     get$chooseLanguage() {
-      return "\u05d1\u05d7\u05e8 \u05e9\u05e4\u05d4 \u05d9\u05e2\u05d3.";
+      return "Odaberite ciljani jezik.";
     },
     get$startOwn() {
-      return "\u05d4\u05ea\u05d7\u05dc \u05d0\u05ea \u05e9\u05dc\u05d9";
+      return "Zapo\u010dni svoj vlastiti";
     },
     get$joinCourseDesc() {
-      return "\u05dc\u05db\u05dc \u05e7\u05d5\u05e8\u05e1 \u05d9\u05e9 8-10 \u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05de\u05e1\u05d5\u05d3\u05e8\u05d9\u05dd \u05e2\u05dd \u05de\u05d2\u05d5\u05d5\u05df \u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05dc\u05de\u05d9\u05d3\u05d4 \u05de\u05d1\u05d5\u05e1\u05e1\u05d5\u05ea \u05de\u05e9\u05d9\u05de\u05d5\u05ea \u05d1\u05e9\u05e4\u05d4.";
+      return "Svaki te\u010daj ima 8-10 sekvenciranih tema s nizom aktivnosti za u\u010denje jezika temeljenih na zadacima.";
     },
     get$courseCodeHint() {
-      return "\u05e7\u05d5\u05d3 \u05d8\u05d9\u05d5\u05dc \u05d0\u05d5 \u05e7\u05d9\u05e9\u05d5\u05e8";
+      return "Kod putovanja ili poveznica";
     },
     get$signupOption() {
-      return "\u05d0\u05d9\u05da \u05ea\u05e8\u05e6\u05d4 \u05dc\u05d4\u05d9\u05e8\u05e9\u05dd?";
+      return "Kako \u017eeli\u0161 da se prijavi\u0161?";
     },
     get$withApple() {
-      return "\u05e2\u05dd Apple";
+      return "S Apple-om";
     },
     get$withGoogle() {
-      return "\u05e2\u05dd Google";
+      return "S Google-om";
     },
     get$withEmail() {
-      return "\u05e2\u05dd \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
+      return "S e-mailom";
     },
     get$createAccount() {
-      return "\u05e6\u05d5\u05e8 \u05d7\u05e9\u05d1\u05d5\u05df";
+      return "Kreiraj ra\u010dun";
     },
     get$loginWithEmail() {
-      return "\u05d4\u05ea\u05d7\u05d1\u05e8 \u05e2\u05dd \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
+      return "Prijava s e-mailom";
     },
     get$usernameOrEmail() {
-      return "\u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9 \u05d0\u05d5 \u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
+      return "Korisni\u010dko ime ili e-mail";
     },
     get$email() {
-      return "\u05d0\u05d9\u05de\u05d9\u05d9\u05dc";
+      return "E-mail";
     },
     get$forgotPassword() {
-      return "\u05e9\u05db\u05d7\u05ea \u05e1\u05d9\u05e1\u05de\u05d4?";
+      return "Zaboravili ste lozinku?";
     },
     get$writingAnalyticsDesc() {
-      return "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05dc\u05ea\u05e8\u05d2\u05d5\u05dc \u05d4\u05db\u05ea\u05d9\u05d1\u05d4.";
+      return "\u0160aljite poruke za vje\u017ebanje pisanja.";
     },
     get$endActivity() {
-      return "\u05e1\u05d9\u05d9\u05dd \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
+      return "Zavr\u0161ite aktivnost";
     },
     get$allLanguages() {
-      return "\u05db\u05dc \u05d4\u05e9\u05e4\u05d5\u05ea";
+      return "Svi jezici";
     },
     get$chatListTooltip() {
-      return "\u05db\u05d0\u05df \u05ea\u05de\u05e6\u05d0\u05d5 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05e9\u05dc\u05db\u05dd! \u05dc\u05d7\u05e6\u05d5 \u05e2\u05dc \u05d0\u05d9\u05d9\u05e7\u05d5\u05df \u05e9\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05dc\u05e9\u05d4\u05d5 \u05d5\u05f4\u05d4\u05ea\u05d7\u05dc \u05e9\u05d9\u05d7\u05d4\u05f4 \u05db\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05e4\u05e8\u05d8\u05d9\u05ea.";
+      return "Ovdje \u0107ete prona\u0107i svoje izravne poruke! Kliknite na avatar bilo kojeg korisnika i \u201czapo\u010dni razgovor\u201d za slanje DM-a.";
     },
     get$directMessageBotTitle() {
-      return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05dc\u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4";
+      return "Direktna poruka Pangea Bota";
     },
     get$feedbackTitle() {
-      return "\u05de\u05e9\u05d5\u05d1 \u05e2\u05dc \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
+      return "Povratne informacije o aktivnosti";
     },
     get$feedbackRespDesc() {
-      return "\u041f\u043e\u0432\u0440\u0430\u0449\u0430\u0439\u0442\u0435 \u043d\u0430\u043f\u043e\u0432\u0440\u0430\u0449\u0430\u043d\u0435 \u0437\u0430 \u043f\u0440\u0438\u044f\u0442\u0438\u0435 \u043d\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u0437\u0430\u0432\u0442\u0440\u0430";
+      return "Vratite se sutra za a\u017euriranja aktivnosti.";
     },
     get$feedbackHint() {
-      return "\u05d4\u05de\u05e9\u05d5\u05d1 \u05e9\u05dc\u05da";
+      return "Va\u0161e povratne informacije";
     },
     get$feedbackButton() {
-      return "\u05e9\u05dc\u05d7 \u05de\u05e9\u05d5\u05d1";
+      return "Po\u0161alji povratne informacije";
     },
     get$directMessageBotDesc() {
-      return "\u05dc\u05d3\u05d1\u05e8 \u05e2\u05dd \u05d1\u05e0\u05d9 \u05d0\u05d3\u05dd \u05d6\u05d4 \u05d9\u05d5\u05ea\u05e8 \u05db\u05d9\u05e3 \u05d0\u05d1\u05dc... \u05d1\u05d9\u05e0\u05d4 \u05de\u05dc\u05d0\u05db\u05d5\u05ea\u05d9\u05ea \u05ea\u05de\u05d9\u05d3 \u05de\u05d5\u05db\u05e0\u05d4!";
+      return "Razgovor s ljudima je zabavniji, ali... AI je uvijek spreman!";
     },
     get$inviteYourFriends() {
-      return "\u05d4\u05d6\u05de\u05df \u05d0\u05ea \u05d7\u05d1\u05e8\u05d9\u05da";
+      return "Pozovite svoje prijatelje";
     },
     get$playWithAI() {
-      return "\u05e9\u05d7\u05e7 \u05e2\u05dd \u05d1\u05d9\u05e0\u05d4 \u05de\u05dc\u05d0\u05db\u05d5\u05ea\u05d9\u05ea \u05dc\u05e2\u05db\u05e9\u05d9\u05d5";
+      return "Igraj s AI-jem za sada";
     },
     get$courseStartDesc() {
-      return "\u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05de\u05d5\u05db\u05df \u05dc\u05e4\u05e2\u05d5\u05dc\u05d4 \u05d1\u05db\u05dc \u05d6\u05de\u05df!\n\n...\u05d0\u05d1\u05dc \u05dc\u05dc\u05de\u05d5\u05d3 \u05d8\u05d5\u05d1 \u05d9\u05d5\u05ea\u05e8 \u05e2\u05dd \u05d7\u05d1\u05e8\u05d9\u05dd!";
+      return "Pangea Bot je spreman za rad u bilo koje vrijeme!\n\n...ali je bolje u\u010diti s prijateljima!";
     },
     get$activityDropdownDesc() {
-      return "\u041a\u043e\u0433\u0430\u0442\u043e \u0432\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c, \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043f\u043e\u0434\u043e\u0431\u043d\u043e";
+      return "Kad zavr\u0161ite s ovom aktivno\u0161\u0107u, kliknite ispod";
     },
     get$languageMismatchTitle() {
-      return "\u041d\u0435\u043f\u043e\u0434\u043e\u043b\u044f\u0442\u043d\u043e\u0441\u0442\u044c \u0435\u0437\u0438\u043a\u0430";
+      return "Neuskla\u0111enost jezika";
     },
     get$emptyChatSearch() {
-      return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05d0\u05d5 \u05e6'\u05d0\u05d8\u05d9\u05dd. \u05d5\u05d3\u05d0 \u05e9\u05d4\u05d7\u05d9\u05e4\u05d5\u05e9 \u05e9\u05dc\u05da \u05db\u05ea\u05d5\u05d1 \u05e0\u05db\u05d5\u05df.";
+      return "Nema DM-ova ili razgovora. Provjerite je li va\u0161a pretraga ispravno napisana.";
     },
     get$languageMismatchDesc() {
-      return "\u0412\u0430\u0448\u0435 \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435 \u043d\u0435\u043f\u043e\u0434\u043e\u043b\u044f\u0442\u043d\u043e \u043d\u0430 \u0435\u0437\u0438\u043a\u0430 \u043d\u0430 \u044d\u0442\u043e\u0442\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c. \u0418\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u043d\u0430\u0448\u0435 \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435\u0437\u0438\u043a\u0430?";
+      return "Va\u0161 ciljni jezik ne odgovara jeziku ove aktivnosti. \u017delite li a\u017eurirati svoj ciljni jezik?";
     },
     get$reportWordIssueTooltip() {
-      return "\u041e\u043f\u043e\u0432\u0435\u0449\u0430\u0439\u0442\u0435 \u0437\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u0437\u0430 \u0441\u043b\u043e\u0432\u043e";
+      return "Prijavite problem s informacijama o rije\u010di";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u041e\u043f\u043e\u0432\u0435\u0449\u0430\u0439\u0442\u0435 \u0437\u0430 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u0437\u0430 \u0441\u043b\u043e\u0432\u043e";
+      return "Povratne informacije o informacijama o rije\u010di";
     },
     get$noPublicCoursesFound() {
-      return "\u041d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e \u043d\u0438\u0447\u0435\u0433\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043e\u0432 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f. \u0418\u0441\u0442\u0435\u0447\u0435\u043d\u0435 \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430\u0442\u0430\u0440\u0430\u043d\u0430?";
+      return "Nema prona\u0111enih javnih te\u010dajeva. \u017delite li ga stvoriti?";
     },
     get$noCourseTemplatesFound() {
-      return "\u041d\u0435 \u043c\u043e\u0436\u0435\u043c\u043e \u043d\u0430\u0439\u0442\u0438 \u043a\u0430\u043a\u0438\u0435 \u043a\u0430\u0440\u0442\u043e\u0449\u0435\u043a\u0438 \u0437\u0430 \u0432\u0430\u0448\u0435\u0442\u043e \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435\u0437\u0438\u043a\u0430. \u0412 \u043f\u0435\u0440\u0435\u0434\u043d\u0438\u0442\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0438\u0430\u043a\u043e\u043d\u0430\u0442\u0435 \u0441 \u041f\u0430\u043d\u0433\u0435\u0430 \u0411\u043e\u0442 \u0432 \u0442\u0435\u0437\u0438\u043d\u0430\u0442\u0430, \u0438 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u043e \u043f\u043e\u0432\u0435\u0440\u043d\u0435\u0442\u0435 \u043a\u0430\u043c\u043f\u0430\u043d\u0438\u044f\u0442\u0430";
+      return "Nismo uspjeli prona\u0107i te\u010dajeve za va\u0161 ciljni jezik. U me\u0111uvremenu mo\u017eete razgovarati s Pangea Botom, a kasnije provjeriti ima li novih te\u010dajeva.";
     },
     get$botActivityJoinFailMessage() {
-      return "\u0411\u043e\u0442 \u041f\u0430\u043d\u0433\u0435\u0430 \u0411\u043e\u0442 \u043f\u043e\u0432\u0438\u043a\u0430 \u043d\u0430 \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u043d\u0438\u0435. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u043f\u0440\u043e\u0431\u0432\u0430\u0439\u0442\u0435 \u043d\u0430\u043f\u043e\u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u043d\u0430 \u043f\u043e\u0437\u043d\u0430\u043d\u0438\u0435 \u043d\u0430 \u043f\u043e\u0432\u0435\u0440\u043a\u0430\u0442\u0435\u043b\u0438, \u0438\u043b\u0438 \u043f\u0440\u043e\u0447\u0438\u0441\u043b\u0438 \u043f\u0440\u0438\u044f\u0442\u0435\u043b";
+      return "Pangea Bot se malo du\u017ee priprema za odgovor. Molimo poku\u0161ajte ponovno kasnije ili pozovite prijatelja.";
     },
     get$unsubscribedResponseError() {
-      return "\u0424\u0435\u0430\u0440\u0430 \u0444\u0435\u0430\u0440\u0430 \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u0430 \u043d\u0430 \u043f\u043e\u0434\u043f\u0438\u0441\u043a\u0430";
+      return "Ova zna\u010dajka zahtijeva pretplatu";
     },
     get$leaveDesc() {
-      return "\u041e\u0442\u0438\u0439\u0434\u0438\u0442\u0435 \u0441\u043f\u0430\u0441\u0430\u0435\u043c\u043e\u0441\u0442\u044c \u0438 \u0432\u0441\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u044b \u0432 \u043d\u0435\u0439";
+      return "Napusti ovaj prostor i sve razgovore unutar njega";
     },
     get$selectAll() {
-      return "\u0412\u044b\u0431\u0440\u0430\u0442\u0438 \u0432\u0441\u0435";
+      return "Odaberi sve";
     },
     get$deselectAll(_) {
-      return "\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u0435 \u0432\u0441\u0435";
+      return "Odzna\u010di sve";
     },
     get$shareCourse() {
-      return "\u05e9\u05ea\u05e3 \u05e7\u05d5\u05e8\u05e1";
+      return "Podijeli te\u010daj";
     },
     get$addCourse() {
-      return "\u05d4\u05d5\u05e1\u05e3 \u05e7\u05d5\u05e8\u05e1";
+      return "Dodaj te\u010daj";
     },
     get$joinPublicCourse() {
-      return "\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05e6\u05d9\u05d1\u05d5\u05e8\u05d9";
+      return "Pridru\u017ei se javnom te\u010daju";
     },
     get$vocabLevelsDesc() {
-      return "\u05d6\u05d4 \u05d4\u05de\u05e7\u05d5\u05dd \u05e9\u05d1\u05d5 \u05de\u05d9\u05dc\u05d5\u05ea \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d9\u05d5\u05e4\u05d9\u05e2\u05d5 \u05dc\u05d0\u05d7\u05e8 \u05e9\u05d4\u05e2\u05dc\u05d9\u05ea \u05d0\u05ea \u05e8\u05de\u05ea\u05df!";
+      return "Ovdje \u0107e i\u0107i rije\u010di vokabulara nakon \u0161to ih podignete na vi\u0161u razinu!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "\u05d0\u05dc\u05d4 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05e9\u05de\u05e8\u05ea \u05dc\u05e6\u05d5\u05e8\u05da \u05e1\u05e7\u05d9\u05e8\u05d4 \u05d5\u05ea\u05e8\u05d2\u05d5\u05dc.";
+      return "Ovo su va\u0161e spremljene aktivnosti za pregled i vje\u017ebu.";
     },
     get$numSavedActivities() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05d4\u05e9\u05de\u05d5\u05e8\u05d5\u05ea";
+      return "Broj spremljenih aktivnosti";
     },
     get$saveActivityTitle() {
-      return "\u05e9\u05de\u05d5\u05e8 \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
+      return "Spremi aktivnost";
     },
     get$saveActivityDesc() {
-      return "\u05e2\u05d1\u05d5\u05d3\u05d4 \u05d8\u05d5\u05d1\u05d4! \u05e9\u05de\u05d5\u05e8 \u05d0\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d4\u05d6\u05d5 \u05dc\u05e1\u05e7\u05d9\u05e8\u05d4 \u05d5\u05ea\u05e8\u05d2\u05d5\u05dc \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8";
+      return "Dobar posao! Spremite ovu aktivnost za kasniji pregled i vje\u017ebu";
     },
     get$levelInfoTooltip() {
-      return "\u05db\u05d0\u05df \u05ea\u05d5\u05db\u05dc \u05dc\u05e8\u05d0\u05d5\u05ea \u05d0\u05ea \u05db\u05dc \u05d4\u05e0\u05e7\u05d5\u05d3\u05d5\u05ea \u05e9\u05d4\u05e8\u05d5\u05d5\u05d7\u05ea \u05d5\u05d0\u05d9\u05da!";
+      return "Ovdje mo\u017eete vidjeti sve bodove koje ste zaradili i kako!";
     },
     get$alreadyInCourseWithID() {
-      return "\u05d0\u05ea\u05d4 \u05db\u05d1\u05e8 \u05d1\u05e7\u05d5\u05e8\u05e1 \u05e2\u05dd \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05d6\u05d5. \u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d9\u05e6\u05d5\u05e8 \u05e7\u05d5\u05e8\u05e1 \u05e2\u05dd \u05d0\u05d5\u05ea\u05d4 \u05ea\u05d5\u05db\u05e0\u05d9\u05ea, \u05d0\u05d5 \u05dc\u05e2\u05d1\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d4\u05e7\u05d9\u05d9\u05dd?";
+      return "Ve\u0107 ste u te\u010daju s ovim planom. \u017delite li stvoriti te\u010daj s istim planom ili oti\u0107i na postoje\u0107i te\u010daj?";
     },
     get$goToExistingCourse() {
-      return "\u05e2\u05d1\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1 \u05d4\u05e7\u05d9\u05d9\u05dd";
+      return "Idite na postoje\u0107i te\u010daj";
     },
     get$emojiView() {
-      return "\u05ea\u05e6\u05d5\u05d2\u05ea \u05d0\u05d9\u05de\u05d5\u05d2'\u05d9";
+      return "Prikaz emojija";
     },
     get$feedbackDialogDesc() {
-      return "\u05d2\u05dd \u05d0\u05e0\u05d9 \u05e2\u05d5\u05e9\u05d4 \u05d8\u05e2\u05d5\u05d9\u05d5\u05ea! \u05d9\u05e9 \u05de\u05e9\u05d4\u05d5 \u05e9\u05d9\u05db\u05d5\u05dc \u05dc\u05e2\u05d6\u05d5\u05e8 \u05dc\u05d9 \u05dc\u05d4\u05e9\u05ea\u05e4\u05e8?";
+      return "I ja grije\u0161im! Ima li ne\u0161to \u0161to bi mi pomoglo da se pobolj\u0161am?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "\u05d4\u05e7\u05e9\u05e8 \u05d4\u05d5\u05d6\u05de\u05df \u05dc\u05e7\u05d5\u05e8\u05e1";
+      return "Kontakt je pozvan na te\u010daj";
     },
     get$inviteFriends() {
-      return "\u05d4\u05d6\u05de\u05df \u05d7\u05d1\u05e8\u05d9\u05dd";
+      return "Pozovi prijatelje";
     },
     get$failedToLoadFeedback() {
-      return "\u05dc\u05d0 \u05d4\u05e6\u05dc\u05d7\u05e0\u05d5 \u05dc\u05d8\u05e2\u05d5\u05df \u05de\u05e9\u05d5\u05d1.";
+      return "Nije mogu\u0107e u\u010ditati povratne informacije.";
     },
     get$activityStatsButtonTooltip() {
-      return "\u05de\u05d9\u05d3\u05e2 \u05e2\u05dc \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
+      return "Informacije o aktivnosti";
     },
     get$allow(_) {
-      return "\u05d0\u05e4\u05e9\u05e8";
+      return "Dopusti";
     },
     get$deny() {
-      return "\u05e1\u05d9\u05e8\u05d1";
+      return "Odbij";
     },
     get$enabledRenewal() {
-      return "\u05d0\u05e4\u05e9\u05e8 \u05d7\u05d9\u05d3\u05d5\u05e9 \u05de\u05e0\u05d5\u05d9";
+      return "Omogu\u0107i obnavljanje pretplate";
     },
     get$subscriptionEndsOn() {
-      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05de\u05e1\u05ea\u05d9\u05d9\u05dd \u05d1";
+      return "Pretplata zavr\u0161ava";
     },
     get$subscriptionRenewsOn() {
-      return "\u05d4\u05de\u05e0\u05d5\u05d9 \u05de\u05ea\u05d7\u05d3\u05e9 \u05d1";
+      return "Pretplata se obnavlja";
     },
     get$waitForSubscriptionChanges() {
-      return "\u05e9\u05d9\u05e0\u05d5\u05d9\u05d9\u05dd \u05d1\u05de\u05e0\u05d5\u05d9 \u05e9\u05dc\u05da \u05e2\u05e9\u05d5\u05d9\u05d9\u05dd \u05dc\u05e7\u05d7\u05ea \u05e8\u05d2\u05e2 \u05dc\u05d4\u05d5\u05e4\u05d9\u05e2 \u05d1\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4.";
+      return "Promjene na va\u0161oj pretplati mogu potrajati trenutak da se odraze u aplikaciji.";
     },
     get$subscribeReadingAssistance() {
-      return "\u05d4\u05d9\u05e8\u05e9\u05dd \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05db\u05dc\u05d9\u05dd \u05dc\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
+      return "Pretplatite se za otklju\u010davanje alata za poruke";
     },
     get$aceDisplayName() {
-      return "\u05d0\u05db\u05d9\u05e0\u05d6\u05d9";
+      return "Achinese";
     },
     get$achDisplayName() {
-      return "\u05d0\u05e6'\u05d5\u05dc\u05d9";
+      return "Acoli";
     },
     get$afDisplayName() {
-      return "\u05d0\u05e4\u05e8\u05d9\u05e7\u05d0\u05e0\u05e1";
+      return "Afrikaans";
     },
     get$akDisplayName() {
-      return "\u05d0\u05e7\u05df";
+      return "Akan";
     },
     get$alzDisplayName() {
-      return "\u05d0\u05dc\u05d5\u05e8";
+      return "Alur";
     },
     get$amDisplayName() {
-      return "\u05d0\u05de\u05d4\u05e8\u05d9\u05ea";
+      return "Amharski";
     },
     get$arDisplayName() {
-      return "\u05e2\u05e8\u05d1\u05d9\u05ea";
+      return "Arapski";
     },
     get$asDisplayName() {
-      return "\u05d0\u05e1\u05d0\u05dd";
+      return "Asamski";
     },
     get$awaDisplayName() {
-      return "\u05d0\u05d5\u05d5\u05d0\u05d3\u05d9";
+      return "Awadhi";
     },
     get$ayDisplayName() {
-      return "\u05d0\u05d9\u05d9\u05de\u05e8\u05d4";
+      return "Aymara";
     },
     get$azDisplayName() {
-      return "\u05d0\u05d6\u05e8\u05d1\u05d9\u05d9\u05d2'\u05e0\u05d9\u05ea";
+      return "Azerbejd\u017eanski";
     },
     get$baDisplayName() {
-      return "\u05d1\u05d0\u05e9\u05e7\u05d9\u05e8";
+      return "Ba\u0161kirski";
     },
     get$banDisplayName() {
-      return "\u05d1\u05dc\u05d9\u05e0\u05d6\u05d9";
+      return "Baline\u017eanski";
     },
     get$bbcDisplayName() {
-      return "\u05d1\u05d8\u05d0\u05e7 \u05d8\u05d5\u05d1\u05d4";
+      return "Batak Toba";
     },
     get$beDisplayName() {
-      return "\u05d1\u05dc\u05d0\u05e8\u05d5\u05e1\u05d9\u05ea";
+      return "Bjeloruski";
     },
     get$bemDisplayName() {
-      return "\u05d1\u05de\u05d1\u05d4";
+      return "Bemba";
     },
     get$bewDisplayName() {
-      return "\u05d1\u05d8\u05d0\u05d5\u05d5\u05d9";
+      return "Betawi";
     },
     get$bgDisplayName() {
-      return "\u05d1\u05d5\u05dc\u05d2\u05e8\u05d9\u05ea";
+      return "Bugarski";
     },
     get$bhoDisplayName() {
-      return "\u05d1\u05d4\u05d5\u05d2'\u05e4\u05d5\u05e8\u05d9";
+      return "Bhojpuri";
     },
     get$bikDisplayName() {
-      return "\u05d1\u05d9\u05e7\u05d5\u05dc";
+      return "Bikol";
     },
     get$bmDisplayName() {
-      return "\u05d1\u05de\u05d1\u05e8\u05d4";
+      return "Bambara";
     },
     get$bnDisplayName() {
-      return "\u05d1\u05e0\u05d2\u05dc\u05d9\u05ea";
+      return "Bengalski";
     },
     get$bnBDDisplayName() {
-      return "\u05d1\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d1\u05e0\u05d2\u05dc\u05d3\u05e9)";
+      return "Bengalski (Banglade\u0161)";
     },
     get$bnINDisplayName() {
-      return "\u05d1\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d4\u05d5\u05d3\u05d5)";
+      return "Bengalski (Indija)";
     },
     get$brDisplayName() {
-      return "\u05d1\u05e8\u05d8\u05d5\u05e0\u05d9\u05ea";
+      return "Breton";
     },
     get$bsDisplayName() {
-      return "\u05d1\u05d5\u05e1\u05e0\u05d9\u05ea";
+      return "Bosanski";
     },
     get$btsDisplayName() {
-      return "\u05d1\u05d8\u05d0\u05e7 \u05e1\u05d9\u05de\u05dc\u05d5\u05e0\u05d2\u05d5\u05df";
+      return "Batak Simalungun";
     },
     get$btxDisplayName() {
-      return "\u05d1\u05d8\u05d0\u05e7 \u05e7\u05d0\u05e8\u05d5";
+      return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "\u05d1\u05d5\u05e8\u05d9\u05d0\u05d8";
+      return "Buriat";
     },
     get$caDisplayName() {
-      return "\u05e7\u05d8\u05dc\u05d0\u05e0\u05d9\u05ea";
+      return "Katalonski";
     },
     get$cebDisplayName() {
-      return "\u05e1\u05d1\u05d5\u05d5\u05d0\u05e0\u05d5";
+      return "Cebuano";
     },
     get$cggDisplayName() {
-      return "\u05e6'\u05d9\u05d2\u05d4";
+      return "Chiga";
     },
     get$chmDisplayName() {
-      return "\u05de\u05e8\u05d9";
+      return "Mari";
     },
     get$ckbDisplayName() {
-      return "\u05db\u05d5\u05e8\u05d3\u05d9\u05ea \u05de\u05e8\u05db\u05d6\u05d9\u05ea";
+      return "Centralni kurdski";
     },
     get$cnhDisplayName() {
-      return "\u05d7\u05db\u05d0\u05d4 \u05e6'\u05d9\u05df";
+      return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "\u05e7\u05d5\u05e8\u05e1\u05d9\u05e7\u05e0\u05d9\u05ea";
+      return "Korsi\u010danin";
     },
     get$crhDisplayName() {
-      return "\u05d8\u05d5\u05e8\u05e7\u05d9\u05ea \u05e7\u05e8\u05d9\u05de\u05d0\u05d9\u05ea";
+      return "Krimski turski";
     },
     get$crsDisplayName() {
-      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea \u05e7\u05e8\u05d9\u05d0\u05d5\u05dc\u05d9\u05ea \u05e1\u05e1\u05dc\u05d5\u05d5\u05d4";
+      return "Seselwa kreolski francuski";
     },
     get$csDisplayName() {
-      return "\u05e6'\u05db\u05d9";
+      return "\u010ce\u0161ki";
     },
     get$cvDisplayName() {
-      return "\u05e6'\u05d5\u05d1\u05e9";
+      return "\u010cuva\u0161ki";
     },
     get$cyDisplayName() {
-      return "\u05d5\u05d5\u05dc\u05e9\u05d9\u05ea";
+      return "Vel\u0161ki";
     },
     get$daDisplayName() {
-      return "\u05d3\u05e0\u05d9\u05ea";
+      return "Danski";
     },
     get$deDisplayName() {
-      return "\u05d2\u05e8\u05de\u05e0\u05d9\u05ea";
+      return "Njema\u010dki";
     },
     get$dinDisplayName() {
-      return "\u05d3\u05d9\u05e0\u05e7\u05d4";
+      return "Dinka";
     },
     get$doiDisplayName() {
-      return "\u05d3\u05d5\u05d2\u05e8\u05d9";
+      return "Dogri";
     },
     get$dovDisplayName() {
-      return "\u05d3\u05d5\u05de\u05d1\u05d4";
+      return "Dombe";
     },
     get$dzDisplayName() {
-      return "\u05d3\u05d6\u05d5\u05e0\u05d2\u05e7\u05d4";
+      return "Dzongkha";
     },
     get$eeDisplayName() {
-      return "\u05d0\u05b5\u05d5\u05b5\u05d4";
+      return "Ewe";
     },
     get$enDisplayName() {
-      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea";
+      return "Engleski";
     },
     get$enAUDisplayName() {
-      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d0\u05d5\u05e1\u05d8\u05e8\u05dc\u05d9\u05d4)";
+      return "Engleski (Australija)";
     },
     get$enGBDisplayName() {
-      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d1\u05e8\u05d9\u05d8\u05e0\u05d9\u05d4)";
+      return "Engleski (UK)";
     },
     get$enINDisplayName() {
-      return "\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d4\u05d5\u05d3\u05d5)";
+      return "Engleski (Indija)";
     },
     get$enUSDisplayName() {
-      return '\u05d0\u05e0\u05d2\u05dc\u05d9\u05ea (\u05d0\u05e8\u05d4"\u05d1)';
+      return "Engleski (SAD)";
     },
     get$eoDisplayName() {
-      return "\u05d0\u05e1\u05e4\u05e8\u05e0\u05d8\u05d5";
+      return "Esperanto";
     },
     get$esDisplayName() {
-      return "\u05e1\u05e4\u05e8\u05d3\u05d9\u05ea";
+      return "\u0160panjolski";
     },
     get$esESDisplayName() {
-      return "\u05e1\u05e4\u05e8\u05d3\u05d9\u05ea (\u05e1\u05e4\u05e8\u05d3)";
+      return "\u0160panjolski (\u0160panija)";
     },
     get$esMXDisplayName() {
-      return "\u05e1\u05e4\u05e8\u05d3\u05d9\u05ea (\u05de\u05e7\u05e1\u05d9\u05e7\u05d5)";
+      return "\u0160panjolski (Meksiko)";
     },
     get$euDisplayName() {
-      return "\u05d1\u05e1\u05e7\u05d9\u05ea";
+      return "Baskijski";
     },
     get$faDisplayName() {
-      return "\u05e4\u05e8\u05e1\u05d9\u05ea";
+      return "Perzijski";
     },
     get$ffDisplayName() {
-      return "\u05e4\u05d5\u05dc\u05d4";
+      return "Fulah";
     },
     get$fiDisplayName() {
-      return "\u05e4\u05d9\u05e0\u05d9\u05ea";
+      return "Finski";
     },
     get$filDisplayName() {
-      return "\u05e4\u05d9\u05dc\u05d9\u05e4\u05d9\u05e0\u05d9";
+      return "Filipinski";
     },
     get$fjDisplayName() {
-      return "\u05e4\u05d9\u05d2'\u05d9";
+      return "Fid\u017eijski";
     },
     get$foDisplayName() {
-      return "\u05e4\u05d0\u05e8\u05d5\u05d0\u05d6\u05d9";
+      return "Faro\u0161ki";
     },
     get$frDisplayName() {
-      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea";
+      return "Francuski";
     },
     get$frCADisplayName() {
-      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea (\u05e7\u05e0\u05d3\u05d4)";
+      return "Francuski (Kanada)";
     },
     get$frFRDisplayName() {
-      return "\u05e6\u05e8\u05e4\u05ea\u05d9\u05ea (\u05e6\u05e8\u05e4\u05ea)";
+      return "Francuski (Francuska)";
     },
     get$fyDisplayName() {
-      return "\u05e4\u05e8\u05d9\u05d6\u05d9\u05ea \u05de\u05e2\u05e8\u05d1\u05d9\u05ea";
+      return "Zapadni Frisijski";
     },
     get$gaDisplayName() {
-      return "\u05d0\u05d9\u05e8\u05d9\u05ea";
+      return "Irski";
     },
     get$gaaDisplayName() {
-      return "\u05d2\u05d4";
+      return "Ga";
     },
     get$gdDisplayName() {
-      return "\u05d2\u05d0\u05dc\u05d9\u05ea \u05e1\u05e7\u05d5\u05d8\u05d9\u05ea";
+      return "\u0160kotski galski";
     },
     get$glDisplayName() {
-      return "\u05d2\u05dc\u05d9\u05e6\u05d9\u05d0\u05e0\u05d9\u05ea";
+      return "Galicijski";
     },
     get$gnDisplayName() {
-      return "\u05d2\u05d5\u05d0\u05e8\u05d0\u05e0\u05d9";
+      return "Gvajanski";
     },
     get$gomDisplayName() {
-      return "\u05e7\u05d5\u05e0\u05e7\u05e0\u05d9 \u05d2\u05d5\u05d0\u05e0\u05d9";
+      return "Goanski Konkani";
     },
     get$guDisplayName() {
-      return "\u05d2\u05d5\u05d2'\u05e8\u05d0\u05d8\u05d9";
+      return "Gujarat";
     },
     get$haDisplayName() {
-      return "\u05d4\u05d0\u05d5\u05e1\u05d4";
+      return "Hausa";
     },
     get$hawDisplayName() {
-      return "\u05d4\u05d5\u05d5\u05d0\u05d9";
+      return "Havajski";
     },
     get$heDisplayName() {
-      return "\u05e2\u05d1\u05e8\u05d9\u05ea";
+      return "Hebrejski";
     },
     get$hiDisplayName() {
-      return "\u05d4\u05d9\u05e0\u05d3\u05d9";
+      return "Hindi";
     },
     get$hilDisplayName() {
-      return "\u05d4\u05d9\u05dc\u05d9\u05d2\u05d9\u05d9\u05e0\u05d5\u05df";
+      return "Hiligajnon";
     },
     get$hmnDisplayName() {
-      return "\u05d4\u05de\u05d5\u05e0\u05d2";
+      return "Hmong";
     },
     get$hneDisplayName() {
-      return "\u05e6'\u05d0\u05d8\u05d9\u05e1\u05d2\u05e8\u05d9";
+      return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "\u05e7\u05e8\u05d5\u05d0\u05d8\u05d9";
+      return "Hrvatski";
     },
     get$hrxDisplayName() {
-      return "\u05d4\u05d5\u05e0\u05e1\u05e8\u05d9\u05e7";
+      return "Hunsrik";
     },
     get$htDisplayName() {
-      return "\u05e7\u05e8\u05d9\u05d0\u05d5\u05dc\u05d9\u05ea \u05d4\u05d0\u05d9\u05d8\u05d9\u05ea";
+      return "Haitski kreolski";
     },
     get$huDisplayName() {
-      return "\u05d4\u05d5\u05e0\u05d2\u05e8\u05d9";
+      return "Ma\u0111arski";
     },
     get$hyDisplayName() {
-      return "\u05d0\u05e8\u05de\u05e0\u05d9";
+      return "Armenski";
     },
     get$idDisplayName() {
-      return "\u05d0\u05d9\u05e0\u05d3\u05d5\u05e0\u05d6\u05d9";
+      return "Indonezijski";
     },
     get$igDisplayName() {
-      return "\u05d0\u05d9\u05d2\u05d1\u05d5";
+      return "Igbo";
     },
     get$iloDisplayName() {
-      return "\u05d0\u05d9\u05dc\u05d5\u05e7\u05d5";
+      return "Iloko";
     },
     get$isDisplayName() {
-      return "\u05d0\u05d9\u05e1\u05dc\u05e0\u05d3\u05d9";
+      return "Islandski";
     },
     get$itDisplayName() {
-      return "\u05d0\u05d9\u05d8\u05dc\u05e7\u05d9\u05ea";
+      return "Talijanski";
     },
     get$jaDisplayName() {
-      return "\u05d9\u05e4\u05e0\u05d9\u05ea";
+      return "Japanski";
     },
     get$jvDisplayName() {
-      return "\u05d2'\u05d0\u05d5\u05d5\u05d4";
+      return "Javanski";
     },
     get$kaDisplayName() {
-      return "\u05d2\u05d0\u05d5\u05e8\u05d2\u05d9\u05ea";
+      return "Gruzijski";
     },
     get$kkDisplayName() {
-      return "\u05e7\u05d6\u05d7\u05d9\u05ea";
+      return "Kazahstanski";
     },
     get$kmDisplayName() {
-      return "\u05d7\u05de\u05e8";
+      return "Khmer";
     },
     get$knDisplayName() {
-      return "\u05e7\u05e0\u05d3\u05d4";
+      return "Kannada";
     },
     get$koDisplayName() {
-      return "\u05e7\u05d5\u05e8\u05d9\u05d0\u05e0\u05d9\u05ea";
+      return "Korejski";
     },
     get$kokDisplayName() {
-      return "\u05e7\u05d5\u05e0\u05e7\u05e0\u05d9";
+      return "Konkani";
     },
     get$kriDisplayName() {
-      return "\u05e7\u05e8\u05d9\u05d5";
+      return "Krio";
     },
     get$ksDisplayName() {
-      return "\u05e7\u05e9\u05de\u05d9\u05e8\u05d9";
+      return "Ka\u0161mirski";
     },
     get$ktuDisplayName() {
-      return "\u05e7\u05d9\u05d8\u05d5\u05d1\u05d4 (\u05d4\u05e8\u05e4\u05d5\u05d1\u05dc\u05d9\u05e7\u05d4 \u05d4\u05d3\u05de\u05d5\u05e7\u05e8\u05d8\u05d9\u05ea \u05e9\u05dc \u05e7\u05d5\u05e0\u05d2\u05d5)";
+      return "Kituba (Demokratska Republika Kongo)";
     },
     get$kuDisplayName() {
-      return "\u05db\u05d5\u05e8\u05d3\u05d9\u05ea";
+      return "Kurdsky";
     },
     get$kyDisplayName() {
-      return "\u05e7\u05d9\u05e8\u05d2\u05d9\u05d6\u05d9\u05ea";
+      return "Kirgizski";
     },
     get$laDisplayName() {
-      return "\u05dc\u05d8\u05d9\u05e0\u05d9\u05ea";
+      return "Latinski";
     },
     get$lbDisplayName() {
-      return "\u05dc\u05d5\u05e7\u05e1\u05de\u05d1\u05d5\u05e8\u05d2\u05d9\u05ea";
+      return "Luksembur\u0161ki";
     },
     get$lgDisplayName() {
-      return "\u05d2\u05d0\u05e0\u05d3\u05d4";
+      return "Ganda";
     },
     get$liDisplayName() {
-      return "\u05dc\u05d9\u05de\u05d1\u05d5\u05e8\u05d2\u05d9\u05ea";
+      return "Limbur\u0161ki";
     },
     get$lijDisplayName() {
-      return "\u05dc\u05d9\u05d2\u05d5\u05e8\u05d9\u05ea";
+      return "Ligurijski";
     },
     get$lmoDisplayName() {
-      return "\u05dc\u05d5\u05de\u05d1\u05e8\u05d3\u05d9\u05ea";
+      return "Lombardski";
     },
     get$lnDisplayName() {
-      return "\u05dc\u05d9\u05e0\u05d2\u05dc\u05d4";
+      return "Lingala";
     },
     get$loDisplayName() {
-      return "\u05dc\u05d0\u05d5";
+      return "Lao";
     },
     get$ltDisplayName() {
-      return "\u05dc\u05d9\u05d8\u05d0\u05d9\u05ea";
+      return "Litvanac";
     },
     get$ltgDisplayName() {
-      return "\u05dc\u05d8\u05d2\u05dc\u05d9\u05ea";
+      return "Latgalski";
     },
     get$luoDisplayName() {
-      return "\u05dc\u05d5\u05d0\u05d5 (\u05e7\u05e0\u05d9\u05d4 \u05d5\u05d8\u05e0\u05d6\u05e0\u05d9\u05d4)";
+      return "Luo (Kenija i Tanzanija)";
     },
     get$lusDisplayName() {
-      return "\u05de\u05d9\u05d6\u05d5";
+      return "Mizo";
     },
     get$lvDisplayName() {
-      return "\u05dc\u05d8\u05d1\u05d9\u05ea";
+      return "Latvijski";
     },
     get$maiDisplayName() {
-      return "\u05de\u05d0\u05d9\u05ea\u05d9\u05dc\u05d9";
+      return "Maithili";
     },
     get$makDisplayName() {
-      return "\u05de\u05e7\u05d0\u05e1\u05e8";
+      return "Makasar";
     },
     get$mgDisplayName() {
-      return "\u05de\u05dc\u05d2\u05e9\u05d9";
+      return "Malga\u0161ki";
     },
     get$miDisplayName() {
-      return "\u05de\u05d0\u05d5\u05e8\u05d9";
+      return "Maori";
     },
     get$minDisplayName() {
-      return "\u05de\u05d9\u05e0\u05e0\u05d2\u05e7\u05d0\u05d1\u05d0\u05d5";
+      return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "\u05de\u05e7\u05d3\u05d5\u05e0\u05d9";
+      return "Makedonski";
     },
     get$mlDisplayName() {
-      return "\u05de\u05dc\u05d9\u05d0\u05dc\u05d0\u05dd";
+      return "Malajalamski";
     },
     get$mnDisplayName() {
-      return "\u05de\u05d5\u05e0\u05d2\u05d5\u05dc\u05d9\u05ea";
+      return "Mongolski";
     },
     get$mniDisplayName() {
-      return "\u05de\u05e0\u05d9\u05e4\u05d5\u05e8\u05d9";
+      return "Manipuri";
     },
     get$mrDisplayName() {
-      return "\u05de\u05e8\u05d8\u05d4\u05d9";
+      return "Marathi";
     },
     get$msDisplayName() {
-      return "\u05de\u05dc\u05d0\u05d9";
+      return "Malajski";
     },
     get$msArabDisplayName() {
-      return "\u05de\u05dc\u05d0\u05d9 (\u05e2\u05e8\u05d1\u05d9)";
+      return "Malajski (arapski)";
     },
     get$msMYDisplayName() {
-      return "\u05de\u05dc\u05d0\u05d9 (\u05de\u05dc\u05d6\u05d9\u05d4)";
+      return "Malajski (Malezija)";
     },
     get$mtDisplayName() {
-      return "\u05de\u05dc\u05d8\u05d6\u05d9\u05ea";
+      return "Malte\u0161ki";
     },
     get$mwrDisplayName() {
-      return "\u05de\u05e8\u05d5\u05d5\u05d0\u05e8\u05d9";
+      return "Marwari";
     },
     get$myDisplayName() {
-      return "\u05d1\u05d5\u05e8\u05de\u05d6\u05d9\u05ea";
+      return "Burmanski";
     },
     get$nanDisplayName() {
-      return "\u05de\u05d9\u05df \u05e0\u05d0\u05df";
+      return "Min Nan";
     },
     get$nbDisplayName() {
-      return "\u05e0\u05d5\u05e8\u05d5\u05d5\u05d2\u05d9\u05ea (\u05d1\u05d5\u05e7\u05de\u05dc)";
+      return "Norve\u0161ki (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "\u05e0\u05e4\u05d0\u05dc\u05d9\u05ea";
+      return "Nepalski";
     },
     get$newDisplayName() {
-      return "\u05e0\u05d9\u05d5\u05d0\u05e8\u05d9";
+      return "Njuarski";
     },
     get$nlDisplayName() {
-      return "\u05d4\u05d5\u05dc\u05e0\u05d3\u05d9\u05ea";
+      return "Nizozemski";
     },
     get$nlBEDisplayName() {
-      return "\u05e4\u05dc\u05de\u05d9\u05ea";
+      return "Flamanski";
     },
     get$noDisplayName() {
-      return "\u05e0\u05d5\u05e8\u05d5\u05d5\u05d2\u05d9\u05ea";
+      return "Norve\u0161ki";
     },
     get$nrDisplayName() {
-      return "\u05d3\u05e8\u05d5\u05dd \u05e0\u05d3\u05d1\u05dc";
+      return "Ju\u017eni Ndebele";
     },
     get$nsoDisplayName() {
-      return "\u05e1\u05d5\u05d8\u05d5 \u05e6\u05e4\u05d5\u05e0\u05d9";
+      return "Sjeverni Sotho";
     },
     get$nusDisplayName() {
-      return "\u05e0\u05d5\u05d0\u05e8";
+      return "Nuer";
     },
     get$nyDisplayName() {
-      return "\u05e0\u05d9\u05d0\u05e0\u05d2'\u05d4";
+      return "Nyanja";
     },
     get$ocDisplayName() {
-      return "\u05d0\u05d5\u05e7\u05e1\u05d9\u05d8\u05e0\u05d9\u05ea";
+      return "Okcitanski";
     },
     get$omDisplayName() {
-      return "\u05d0\u05d5\u05e8\u05d5\u05de\u05d5";
+      return "Oromo";
     },
     get$orDisplayName() {
-      return "\u05d0\u05d5\u05d3\u05d9\u05d4";
+      return "Odia";
     },
     get$paDisplayName() {
-      return "\u05e4\u05e0\u05d2'\u05d0\u05d1\u05d9";
+      return "Punjabi";
     },
     get$paArabDisplayName() {
-      return "\u05e4\u05e0\u05d2'\u05d0\u05d1\u05d9 (\u05e9\u05d0\u05d4\u05de\u05d5\u05e7\u05d9)";
+      return "Punjabi (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "\u05e4\u05e0\u05d2'\u05d0\u05d1\u05d9 (\u05d2\u05d5\u05e8\u05de\u05d5\u05e7\u05d9)";
+      return "Punjabi (Gurmukhi)";
     },
     get$pagDisplayName() {
-      return "\u05e4\u05e0\u05d2\u05e1\u05d9\u05e0\u05d0\u05df";
+      return "Pangasinan";
     },
     get$pamDisplayName() {
-      return "\u05e4\u05d0\u05de\u05e4\u05e0\u05d2\u05d4";
+      return "Pampanga";
     },
     get$papDisplayName() {
-      return "\u05e4\u05d0\u05e4\u05d9\u05d0\u05de\u05e0\u05d8\u05d5";
+      return "Papiamento";
     },
     get$plDisplayName() {
-      return "\u05e4\u05d5\u05dc\u05e0\u05d9\u05ea";
+      return "Poljski";
     },
     get$psDisplayName() {
-      return "\u05e4\u05e9\u05d8\u05d5";
+      return "Pa\u0161tunski";
     },
     get$ptDisplayName() {
-      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05d6\u05d9\u05ea";
+      return "Portugalski";
     },
     get$ptBRDisplayName() {
-      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05d6\u05d9\u05ea (\u05d1\u05e8\u05d6\u05d9\u05dc)";
+      return "Portugalski (Brazil)";
     },
     get$ptPTDisplayName() {
-      return "\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05d6\u05d9\u05ea (\u05e4\u05d5\u05e8\u05d8\u05d5\u05d2\u05dc)";
+      return "Portugalski (Portugal)";
     },
     get$quDisplayName() {
-      return "\u05e7\u05e6'\u05d5\u05d0\u05d4";
+      return "Quechua";
     },
     get$rajDisplayName() {
-      return "\u05e8\u05d0\u05d2'\u05e1\u05d8\u05d0\u05e0\u05d9";
+      return "Rajasthani";
     },
     get$rnDisplayName() {
-      return "\u05e8\u05d5\u05e0\u05d3\u05d9";
+      return "Rundi";
     },
     get$roDisplayName() {
-      return "\u05e8\u05d5\u05de\u05e0\u05d9\u05ea";
+      return "Rumunjski";
     },
     get$roMDDisplayName() {
-      return "\u05de\u05d5\u05dc\u05d3\u05d5\u05d1\u05e0\u05d9\u05ea";
+      return "Moldavski";
     },
     get$romDisplayName() {
-      return "\u05e8\u05d5\u05de\u05d0\u05e0\u05d9";
+      return "Romani";
     },
     get$ruDisplayName() {
-      return "\u05e8\u05d5\u05e1\u05d9\u05ea";
+      return "Ruski";
     },
     get$rwDisplayName() {
-      return "\u05e7\u05d9\u05e0\u05d9\u05d0\u05e8\u05d5\u05d5\u05d0\u05e0\u05d3\u05d4";
+      return "Kinyarwanda";
     },
     get$saDisplayName() {
-      return "\u05e1\u05e0\u05e1\u05e7\u05e8\u05d9\u05d8";
+      return "Sanskrit";
     },
     get$satDisplayName() {
-      return "\u05e1\u05e0\u05d8\u05d0\u05dc\u05d9";
+      return "Santali";
     },
     get$scnDisplayName() {
-      return "\u05e1\u05d9\u05e6\u05d9\u05dc\u05d9\u05d0\u05e0\u05d9\u05ea";
+      return "Sicilijanski";
     },
     get$sdDisplayName() {
-      return "\u05e1\u05d9\u05e0\u05d3\u05d9";
+      return "Sindhi";
     },
     get$sgDisplayName() {
-      return "\u05e1\u05e0\u05d2\u05d5";
+      return "Sango";
     },
     get$shnDisplayName() {
-      return "\u05e9\u05d0\u05df";
+      return "Shan";
     },
     get$siDisplayName() {
-      return "\u05e1\u05d9\u05e0\u05d4\u05dc\u05d4";
+      return "Sinhala";
     },
     get$skDisplayName() {
-      return "\u05e1\u05dc\u05d5\u05d1\u05e7\u05d9\u05ea";
+      return "Slova\u010dki";
     },
     get$slDisplayName() {
-      return "\u05e1\u05dc\u05d5\u05d1\u05e0\u05d9\u05ea";
+      return "Slovenski";
     },
     get$smDisplayName() {
-      return "\u05e1\u05de\u05d5\u05d0\u05df";
+      return "Samoanski";
     },
     get$snDisplayName() {
-      return "\u05e9\u05d5\u05e0\u05d4";
+      return "Shona";
     },
     get$soDisplayName() {
-      return "\u05e1\u05d5\u05de\u05dc\u05d9";
+      return "Somalski";
     },
     get$sqDisplayName() {
-      return "\u05d0\u05dc\u05d1\u05e0\u05d9\u05ea";
+      return "Albanski";
     },
     get$srDisplayName() {
-      return "\u05e1\u05e8\u05d1\u05d9\u05ea";
+      return "Srpski";
     },
     get$srMEDisplayName() {
-      return "\u05de\u05d5\u05e0\u05d8\u05e0\u05d2\u05e8\u05d9";
+      return "Crnogorski";
     },
     get$ssDisplayName() {
-      return "\u05e1\u05d5\u05d5\u05d0\u05d8\u05d9";
+      return "Svati";
     },
     get$stDisplayName() {
-      return "\u05e1\u05d5\u05d8\u05d5 \u05d3\u05e8\u05d5\u05de\u05d9";
+      return "Ju\u017eni Sotho";
     },
     get$suDisplayName() {
-      return "\u05e1\u05d5\u05e0\u05d3\u05e0\u05d6\u05d9";
+      return "Sundanski";
     },
     get$svDisplayName() {
-      return "\u05e9\u05d1\u05d3\u05d9\u05ea";
+      return "\u0160vedski";
     },
     get$swDisplayName() {
-      return "\u05e1\u05d5\u05d5\u05d4\u05d9\u05dc\u05d9";
+      return "Svahili";
     },
     get$szlDisplayName() {
-      return "\u05e1\u05dc\u05d6\u05d9";
+      return "Silezijski";
     },
     get$taDisplayName() {
-      return "\u05d8\u05de\u05d9\u05dc\u05d9\u05ea";
+      return "Tamilski";
     },
     get$teDisplayName() {
-      return "\u05d8\u05dc\u05d5\u05d2\u05d5";
+      return "Telugu";
     },
     get$tetDisplayName() {
-      return "\u05d8\u05d8\u05d5\u05dd";
+      return "Tetum";
     },
     get$tgDisplayName() {
-      return "\u05d8\u05d2'\u05d9\u05e7\u05d9\u05ea";
+      return "Tad\u017eik";
     },
     get$thDisplayName() {
-      return "\u05ea\u05d0\u05d9\u05ea";
+      return "Tajski";
     },
     get$tiDisplayName() {
-      return "\u05d8\u05d9\u05d2\u05e8\u05d9\u05e0\u05d9\u05d4";
+      return "Tigrinja";
     },
     get$tkDisplayName() {
-      return "\u05d8\u05d5\u05e8\u05e7\u05de\u05e0\u05d9\u05ea";
+      return "Turkmen";
     },
     get$tlDisplayName() {
-      return "\u05d8\u05d2\u05dc\u05d5\u05d2";
+      return "Tagalog";
     },
     get$tnDisplayName() {
-      return "\u05e6\u05d5\u05d5\u05d0\u05e0\u05d4";
+      return "Tswana";
     },
     get$trDisplayName() {
-      return "\u05d8\u05d5\u05e8\u05e7\u05d9\u05ea";
+      return "Turski";
     },
     get$tsDisplayName() {
-      return "\u05e6\u05d5\u05e0\u05d2\u05d4";
+      return "Tsonga";
     },
     get$ttDisplayName() {
-      return "\u05d8\u05d8\u05e8\u05d9\u05ea";
+      return "Tatar";
     },
     get$ugDisplayName() {
-      return "\u05d0\u05d5\u05d9\u05d2\u05d5\u05e8";
+      return "Ujgurski";
     },
     get$ukDisplayName() {
-      return "\u05d0\u05d5\u05e7\u05e8\u05d0\u05d9\u05e0\u05d9\u05ea";
+      return "Ukrajinski";
     },
     get$urDisplayName() {
-      return "\u05d0\u05d5\u05e8\u05d3\u05d5";
+      return "Urdu";
     },
     get$urINDisplayName() {
-      return "\u05d0\u05d5\u05e8\u05d3\u05d5 (\u05d4\u05d5\u05d3\u05d5)";
+      return "Urdu (Indija)";
     },
     get$urPKDisplayName() {
-      return "\u05d0\u05d5\u05e8\u05d3\u05d5 (\u05e4\u05e7\u05d9\u05e1\u05d8\u05df)";
+      return "Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "\u05d0\u05d5\u05d6\u05d1\u05e7\u05d9\u05ea";
+      return "Uzbe\u010dki";
     },
     get$viDisplayName() {
-      return "\u05d5\u05d9\u05d9\u05d8\u05e0\u05d0\u05de\u05d9\u05ea";
+      return "Vijetnamski";
     },
     get$wuuDisplayName() {
-      return "\u05d5\u05d5";
+      return "Wu";
     },
     get$xhDisplayName() {
-      return "\u05d7\u05d5\u05e1\u05d4";
+      return "Xhosa";
     },
     get$yiDisplayName() {
-      return "\u05d9\u05d9\u05d3\u05d9\u05e9";
+      return "Jidi\u0161";
     },
     get$yoDisplayName() {
-      return "\u05d9\u05d5\u05e8\u05d5\u05d1\u05d4";
+      return "Joruba";
     },
     get$yuaDisplayName() {
-      return "\u05d9\u05d5\u05e7\u05d0\u05d8\u05e7\u05d5";
+      return "Jukatec";
     },
     get$yueDisplayName() {
-      return "\u05e7\u05e0\u05d8\u05d5\u05e0\u05d6\u05d9\u05ea";
+      return "Kantonski";
     },
     get$yueCNDisplayName() {
-      return "\u05e7\u05e0\u05d8\u05d5\u05e0\u05d6\u05d9\u05ea (\u05e1\u05d9\u05df)";
+      return "Kantonski (Kina)";
     },
     get$yueHKDisplayName() {
-      return "\u05e7\u05e0\u05d8\u05d5\u05e0\u05d6\u05d9\u05ea (\u05d4\u05d5\u05e0\u05d2 \u05e7\u05d5\u05e0\u05d2)";
+      return "Kantonski (Hong Kong)";
     },
     get$zhDisplayName() {
-      return "\u05e1\u05d9\u05e0\u05d9\u05ea";
+      return "Kineski";
     },
     get$zhCNDisplayName() {
-      return "\u05e1\u05d9\u05e0\u05d9\u05ea (\u05de\u05e4\u05d5\u05e9\u05d8\u05ea)";
+      return "Kineski ( pojednostavljeni)";
     },
     get$zhTWDisplayName() {
-      return "\u05e1\u05d9\u05e0\u05d9\u05ea (\u05de\u05e1\u05d5\u05e8\u05ea\u05d9\u05ea)";
+      return "Kineski (tradicionalni)";
     },
     get$zuDisplayName() {
-      return "\u05d6\u05d5\u05dc\u05d5";
+      return "Zulu";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "\u05de\u05e6\u05d1 \u05de\u05d5\u05e8\u05d4";
+      return "Na\u010din u\u010ditelja";
     },
     get$teacherModeDesc() {
-      return "\u05d4\u05e4\u05e2\u05dc \u05db\u05d3\u05d9 \u05dc\u05e4\u05ea\u05d5\u05d7 \u05d0\u05ea \u05db\u05dc \u05d4\u05e0\u05d5\u05e9\u05d0\u05d9\u05dd \u05d5\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea. \u05e8\u05e7 \u05de\u05e0\u05d4\u05dc \u05d4\u05e7\u05d5\u05e8\u05e1.";
+      return "Prebacite da otklju\u010date sve teme i aktivnosti. Samo za administratore te\u010daja.";
     },
     get$noSavedActivitiesYet() {
-      return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05d9\u05d5\u05e4\u05d9\u05e2\u05d5 \u05db\u05d0\u05df \u05d1\u05e8\u05d2\u05e2 \u05e9\u05d9\u05e1\u05d9\u05d9\u05de\u05d5 \u05d5\u05d9\u05e9\u05de\u05e8\u05d5.";
+      return "Aktivnosti \u0107e se ovdje pojaviti kada budu dovr\u0161ene i spremljene.";
     },
     get$practiceActivityCompleted() {
-      return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05ea\u05e8\u05d2\u05d5\u05dc \u05d4\u05d5\u05e9\u05dc\u05de\u05d4";
+      return "Aktivnost vje\u017ebanja zavr\u0161ena";
     },
     get$changeCourse() {
-      return "\u05e9\u05e0\u05d4 \u05e7\u05d5\u05e8\u05e1";
+      return "Promijeni te\u010daj";
     },
     get$changeCourseDesc() {
-      return "\u05db\u05d0\u05df \u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e9\u05e0\u05d5\u05ea \u05d0\u05ea \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05d4\u05e7\u05d5\u05e8\u05e1 \u05e9\u05dc \u05e7\u05d5\u05e8\u05e1 \u05d6\u05d4.";
+      return "Ovdje mo\u017eete promijeniti plan te\u010daja ovog te\u010daja.";
     },
     get$introChatTitle() {
-      return "\u05e6\u05d5\u05e8 \u05e6'\u05d0\u05d8 \u05d4\u05d9\u05db\u05e8\u05d5\u05ea";
+      return "Kreiraj chat za uvod";
     },
     get$introChatDesc() {
-      return "\u05db\u05dc \u05d0\u05d7\u05d3 \u05d1\u05de\u05e8\u05d7\u05d1 \u05d9\u05db\u05d5\u05dc \u05dc\u05e4\u05e8\u05e1\u05dd.";
+      return "Svako u prostoru mo\u017ee objavljivati.";
     },
     get$announcementsChatTitle() {
-      return "\u05e6'\u05d0\u05d8 \u05d4\u05d5\u05d3\u05e2\u05d5\u05ea";
+      return "Chat za obavijesti";
     },
     get$announcementsChatDesc() {
-      return "\u05e8\u05e7 \u05de\u05e0\u05d4\u05dc \u05d4\u05de\u05e8\u05d7\u05d1 \u05d9\u05db\u05d5\u05dc \u05dc\u05e4\u05e8\u05e1\u05dd.";
+      return "Samo administrator prostora mo\u017ee objavljivati.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5225,13 +5219,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nHe, C.L10n);
+    _inherit(A.L10nHr, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHe":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHr":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["m/i5Sm5tgo9mxBfQebz3FtC1QCs="] = d.current;
+  d["/0wJLL+ZCQn/oTM4v7nOtRhe/lg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_626.part.js.map

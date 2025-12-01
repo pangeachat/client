@@ -2533,9 +2533,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationTooltip() {
       return "P\u0159eklad";
     },
-    get$speechToTextTooltip() {
-      return "P\u0159epis";
-    },
     get$kickBotWarning() {
       return "Vyhozen\xed Pangea Bota odstran\xed konverza\u010dn\xedho bota z tohoto chatu.";
     },
@@ -3603,9 +3600,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "V\xfdznam nelze nal\xe9zt.";
-    },
-    get$chooseBaseForm() {
-      return "Vyberte z\xe1kladn\xed tvar";
     },
     get$notTheCodeError() {
       return "Omlouv\xe1m se, to nen\xed k\xf3d!";
@@ -5231,7 +5225,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wRCGcg8unMgwEDKntcsiC8UbmQA="] = d.current;
+  d["xPevUXtANpXpOFDjBijfE6+EnrA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_236.part.js.map
