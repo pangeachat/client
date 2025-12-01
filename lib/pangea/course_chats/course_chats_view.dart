@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
@@ -12,10 +13,12 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators
 import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
 import 'package:fluffychat/pangea/course_chats/activity_template_chat_list_item.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
+import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_chats/unjoined_chat_list_item.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_request_indicator.dart';
 import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class CourseChatsView extends StatelessWidget {
   final CourseChatsController controller;
@@ -62,7 +65,7 @@ class CourseChatsView extends StatelessWidget {
                 joinedSessions.length +
                 discoveredGroupChats.length +
                 discoveredSessions.length +
-                7,
+                9,
             itemBuilder: (context, i) {
               // courses chats title
               if (i == 0) {
@@ -98,6 +101,22 @@ class CourseChatsView extends StatelessWidget {
 
               if (i == 0) {
                 return AnalyticsRequestIndicator(room: room);
+              }
+              i--;
+
+              if (i == 0) {
+                return _DefaultChatCreationTile(
+                  type: CourseDefaultChatsEnum.introductions,
+                  controller: controller,
+                );
+              }
+              i--;
+
+              if (i == 0) {
+                return _DefaultChatCreationTile(
+                  type: CourseDefaultChatsEnum.announcements,
+                  controller: controller,
+                );
               }
               i--;
 
@@ -236,6 +255,41 @@ class CourseChatsView extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _DefaultChatCreationTile extends StatelessWidget {
+  final CourseDefaultChatsEnum type;
+  final CourseChatsController controller;
+
+  const _DefaultChatCreationTile({
+    required this.type,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (!controller.showDefaultChatCreation(type)) {
+      return const SizedBox();
+    }
+
+    final l10n = L10n.of(context);
+    return ListTile(
+      leading: const Icon(Symbols.chat_add_on),
+      title: Text(type.creationTitle(l10n)),
+      subtitle: Text(type.creationDesc(l10n)),
+      trailing: IconButton(
+        icon: const Icon(Icons.close),
+        onPressed: () => showFutureLoadingDialog(
+          context: context,
+          future: () => controller.dismissDefaultChatCreation(type),
+        ),
+      ),
+      onTap: () => showFutureLoadingDialog(
+        context: context,
+        future: () => controller.createDefaultChat(type),
+      ),
     );
   }
 }

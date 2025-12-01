@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:07:03.292476",
+  "@@last_modified": "2025-12-01 12:40:57.541160",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12307,6 +12307,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Misslyckades med att ladda feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Markera målvokabulärord nedan genom att skicka dem eller öva med dem i chatten",
+  "noSavedActivitiesYet": "Aktiviteter kommer att visas här när de är slutförda och sparade.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ändra kurs",
+  "changeCourseDesc": "Här kan du ändra kursplanen för denna kurs.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Övningsaktivitet slutförd",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Skapa Introduktionschatt",
+  "introChatDesc": "Alla i rummet kan posta.",
+  "announcementsChatTitle": "Meddelanden Chatt",
+  "announcementsChatDesc": "Endast rumsadministratören kan posta.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -2945,7 +2945,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-11-19 10:06:09.338917",
+  "@@last_modified": "2025-12-01 12:40:03.273120",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12910,6 +12910,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nalaganje povratnih informacij ni uspelo.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Označite ciljne besede spodaj tako, da jih pošljete ali vadite z njimi v klepetu",
+  "noSavedActivitiesYet": "Aktivnosti se bodo prikazale tukaj, ko bodo zaključene in shranjene.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Spremeni tečaj",
+  "changeCourseDesc": "Tukaj lahko spremenite načrt tečaja.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivnost vadbe zaključena",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Ustvari klepet za uvod",
+  "introChatDesc": "Kdor koli v prostoru lahko objavi.",
+  "announcementsChatTitle": "Klepet za obvestila",
+  "announcementsChatDesc": "Samo skrbnik prostora lahko objavi.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:07:20.801798",
+  "@@last_modified": "2025-12-01 12:41:13.018500",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12931,6 +12931,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nije uspelo učitavanje povratnih informacija.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Istaknite ciljne reči rečnika ispod tako što ćete ih poslati ili vežbati u čatu",
+  "noSavedActivitiesYet": "Aktivnosti će se ovde pojaviti kada budu završene i sačuvane.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Promeni kurs",
+  "changeCourseDesc": "Ovde možete promeniti plan kursa ovog kursa.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivnost vežbanja je završena",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Kreiraj chat za uvod",
+  "introChatDesc": "Svako u prostoru može da objavljuje.",
+  "announcementsChatTitle": "Chat za obaveštenja",
+  "announcementsChatDesc": "Samo administrator prostora može da objavljuje.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

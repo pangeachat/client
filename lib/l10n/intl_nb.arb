@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:25.294989",
+  "@@last_modified": "2025-12-01 12:40:12.703108",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12922,6 +12922,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Kunne ikke laste tilbakemelding.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Fremhev målordene nedenfor ved å sende dem eller øve med dem i chatten",
+  "noSavedActivitiesYet": "Aktiviteter vil vises her når de er fullført og lagret.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Endre kurs",
+  "changeCourseDesc": "Her kan du endre kursplanen for dette kurset.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Øvingsaktivitet fullført",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Opprett Introduksjoner Chat",
+  "introChatDesc": "Alle i rommet kan legge ut.",
+  "announcementsChatTitle": "Kunngjøringer Chat",
+  "announcementsChatDesc": "Bare romadministratoren kan legge ut.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

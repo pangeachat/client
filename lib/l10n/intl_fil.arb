@@ -3272,7 +3272,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-11-19 10:06:38.816684",
+  "@@last_modified": "2025-12-01 12:40:26.597168",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12805,6 +12805,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nabigong i-load ang feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
+  "noSavedActivitiesYet": "Lilitaw ang mga aktibidad dito kapag natapos at na-save na ang mga ito.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Palitan ang kurso",
+  "changeCourseDesc": "Dito maaari mong palitan ang plano ng kurso ng kursong ito.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Natapos ang aktibidad sa pagsasanay",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Lumikha ng Introductions Chat",
+  "introChatDesc": "Sinuman sa espasyo ay maaaring mag-post.",
+  "announcementsChatTitle": "Announcements Chat",
+  "announcementsChatDesc": "Tanging ang admin ng espasyo ang maaaring mag-post.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

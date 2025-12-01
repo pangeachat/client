@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-11-19 10:06:23.270366",
+  "@@last_modified": "2025-12-01 12:40:10.951068",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -12436,6 +12436,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nepodařilo se načíst zpětnou vazbu.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
+  "noSavedActivitiesYet": "Aktivity se zde objeví, jakmile budou dokončeny a uloženy.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Změnit kurz",
+  "changeCourseDesc": "Zde můžete změnit plán kurzu tohoto kurzu.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivita cvičení byla dokončena",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Vytvořit chat pro úvody",
+  "introChatDesc": "Kdokoli ve prostoru může přispět.",
+  "announcementsChatTitle": "Chat pro oznámení",
+  "announcementsChatDesc": "Pouze administrátor prostoru může přispět.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -21,6 +21,14 @@ extension ChildrenAndParentsRoomExtension on Room {
       )
       .toList();
 
+  List<Room> get pangeaSpaceChildren => client.rooms
+      .where(
+        (r) => spaceChildren.any(
+          (child) => r.id == child.roomId,
+        ),
+      )
+      .toList();
+
   /// Wrapper around call to setSpaceChild with added functionality
   /// to prevent adding one room to multiple spaces, and resets the
   /// subspace's JoinRules and Visibility to defaults.

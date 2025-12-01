@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-11-19 10:06:06.868954",
+  "@@last_modified": "2025-12-01 12:40:01.799437",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11836,6 +11836,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Fehler beim Laden des Feedbacks.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Hebe die Zielvokabeln unten hervor, indem du sie im Chat sendest oder mit ihnen übst.",
+  "noSavedActivitiesYet": "Aktivitäten erscheinen hier, sobald sie abgeschlossen und gespeichert sind.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Kurs ändern",
+  "changeCourseDesc": "Hier können Sie den Kursplan dieses Kurses ändern.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Übungsaktivität abgeschlossen",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Erstelle Einführungs-Chat",
+  "introChatDesc": "Jeder im Raum kann posten.",
+  "announcementsChatTitle": "Ankündigungen-Chat",
+  "announcementsChatDesc": "Nur der Raum-Administrator kann posten.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

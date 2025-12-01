@@ -2401,7 +2401,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-11-19 10:06:45.064200",
+  "@@last_modified": "2025-12-01 12:40:34.812634",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12918,6 +12918,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "ఫీడ్‌బ్యాక్‌ను లోడ్ చేయడంలో విఫలమైంది.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "చాట్‌లో వాటిని పంపడం లేదా వాటితో ప్రాక్టీస్ చేయడం ద్వారా కింద లక్ష్య పదజాల పదాలను హైలైట్ చేయండి",
+  "noSavedActivitiesYet": "చర్యలు పూర్తి చేసి సేవ్ చేసిన తర్వాత ఇక్కడ కనిపిస్తాయి.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "కోర్సు మార్చండి",
+  "changeCourseDesc": "ఇక్కడ మీరు ఈ కోర్సు యొక్క కోర్సు ప్రణాళికను మార్చవచ్చు.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "అభ్యాస కార్యకలాపం పూర్తయింది",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "పరిచయాల చాట్ సృష్టించండి",
+  "introChatDesc": "ఈ స్థలంలో ఎవ్వరైనా పోస్ట్ చేయవచ్చు.",
+  "announcementsChatTitle": "ప్రకటనల చాట్",
+  "announcementsChatDesc": "కేవలం స్థల నిర్వాహకుడు మాత్రమే పోస్ట్ చేయవచ్చు.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

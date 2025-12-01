@@ -2341,7 +2341,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-11-19 10:06:11.264487",
+  "@@last_modified": "2025-12-01 12:40:05.012948",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12920,6 +12920,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "無法加載反饋。",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "通過在聊天中發送或練習以下目標詞彙來突出顯示它們",
+  "noSavedActivitiesYet": "活動完成並保存後將會出現在這裡。",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "更改課程",
+  "changeCourseDesc": "在這裡你可以更改這個課程的課程計劃。",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "練習活動已完成",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "創建介紹聊天",
+  "introChatDesc": "任何人在這個空間都可以發帖。",
+  "announcementsChatTitle": "公告聊天",
+  "announcementsChatDesc": "只有空間管理員可以發帖。",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

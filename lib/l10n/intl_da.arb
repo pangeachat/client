@@ -2411,7 +2411,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-11-19 10:05:38.285183",
+  "@@last_modified": "2025-12-01 12:39:32.959549",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12891,6 +12891,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Kunne ikke indlæse feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Fremhæv målordene nedenfor ved at sende dem eller øve med dem i chatten",
+  "noSavedActivitiesYet": "Aktiviteter vil vises her, når de er afsluttet og gemt.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ændre kursus",
+  "changeCourseDesc": "Her kan du ændre denne kursus' kursusplan.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Øvelsesaktivitet fuldført",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Opret Introduktioner Chat",
+  "introChatDesc": "Alle i rummet kan poste.",
+  "announcementsChatTitle": "Meddelelser Chat",
+  "announcementsChatDesc": "Kun rumadmin kan poste.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

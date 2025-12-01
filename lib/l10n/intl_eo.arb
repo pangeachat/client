@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:07:12.448110",
+  "@@last_modified": "2025-12-01 12:41:06.553946",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12918,6 +12918,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Malsukcesis ŝarĝi la reagojn.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
+  "noSavedActivitiesYet": "Aktivecoj aperos ĉi tie post kiam ili estos kompletigitaj kaj konservitaj.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ŝanĝi kurson",
+  "changeCourseDesc": "Ĉi tie vi povas ŝanĝi la kurplanon de ĉi tiu kurso.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Praktika aktiveco finita",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Krei Enkondukan Ĉaton",
+  "introChatDesc": "Ĉiu en la spaco povas afiŝi.",
+  "announcementsChatTitle": "Afiŝoj Ĉato",
+  "announcementsChatDesc": "Nur la administranto de la spaco povas afiŝi.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

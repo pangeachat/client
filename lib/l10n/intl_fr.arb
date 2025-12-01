@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-11-19 10:07:24.904940",
+  "@@last_modified": "2025-12-01 12:41:17.297464",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -12153,6 +12153,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Échec du chargement des retours.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Mettez en surbrillance les mots de vocabulaire cibles ci-dessous en les envoyant ou en les pratiquant dans le chat",
+  "noSavedActivitiesYet": "Les activités apparaîtront ici une fois qu'elles seront terminées et enregistrées.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Changer de cours",
+  "changeCourseDesc": "Ici, vous pouvez changer le plan de cours de ce cours.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Activité de pratique terminée",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Créer un chat d'introduction",
+  "introChatDesc": "Tout le monde dans l'espace peut publier.",
+  "announcementsChatTitle": "Chat des annonces",
+  "announcementsChatDesc": "Seul l'administrateur de l'espace peut publier.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

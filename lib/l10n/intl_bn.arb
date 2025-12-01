@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:57.530222",
+  "@@last_modified": "2025-12-01 12:40:51.296376",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12933,6 +12933,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "ফিডব্যাক লোড করতে ব্যর্থ।",
+  "unreadPlus": "৯৯+",
+  "highlightVocabTooltip": "নিচে লক্ষ্য vocab শব্দগুলো হাইলাইট করুন তাদের পাঠিয়ে বা চ্যাটে তাদের সাথে অনুশীলন করে",
+  "noSavedActivitiesYet": "কার্যক্রমগুলো এখানে প্রদর্শিত হবে একবার সেগুলো সম্পন্ন এবং সংরক্ষিত হলে।",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "কোর্স পরিবর্তন করুন",
+  "changeCourseDesc": "এখানে আপনি এই কোর্সের কোর্স পরিকল্পনা পরিবর্তন করতে পারেন।",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "অভ্যাস কার্যক্রম সম্পন্ন",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "পরিচয় চ্যাট তৈরি করুন",
+  "introChatDesc": "স্পেসের যে কেউ পোস্ট করতে পারে।",
+  "announcementsChatTitle": "ঘোষণার চ্যাট",
+  "announcementsChatDesc": "শুধুমাত্র স্পেস প্রশাসক পোস্ট করতে পারে।",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-11-19 10:06:41.335038",
+  "@@last_modified": "2025-12-01 12:40:30.614200",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -12046,6 +12046,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "فشل في تحميل التعليقات.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدريب عليها في الدردشة",
+  "noSavedActivitiesYet": "ستظهر الأنشطة هنا بمجرد الانتهاء منها وحفظها.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "تغيير الدورة",
+  "changeCourseDesc": "هنا يمكنك تغيير خطة الدورة لهذه الدورة.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "تم الانتهاء من نشاط الممارسة",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "إنشاء دردشة التعريفات",
+  "introChatDesc": "يمكن لأي شخص في المساحة النشر.",
+  "announcementsChatTitle": "دردشة الإعلانات",
+  "announcementsChatDesc": "يمكن فقط لمسؤول المساحة النشر.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

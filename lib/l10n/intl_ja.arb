@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-11-19 10:07:08.492783",
+  "@@last_modified": "2025-12-01 12:41:02.154964",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12619,6 +12619,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "フィードバックの読み込みに失敗しました。",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "チャットで送信したり練習したりすることで、下のターゲット語彙をハイライトします。",
+  "noSavedActivitiesYet": "アクティビティは、完了して保存されるとここに表示されます。",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "コースを変更",
+  "changeCourseDesc": "ここでこのコースのコースプランを変更できます。",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "練習活動が完了しました",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "紹介チャットを作成",
+  "introChatDesc": "スペース内の誰でも投稿できます。",
+  "announcementsChatTitle": "お知らせチャット",
+  "announcementsChatDesc": "スペースの管理者のみが投稿できます。",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

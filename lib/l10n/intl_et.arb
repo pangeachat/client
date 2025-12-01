@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-11-19 10:06:04.654636",
+  "@@last_modified": "2025-12-01 12:40:00.288987",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -12100,6 +12100,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Tagasiside laadimine ebaõnnestus.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
+  "noSavedActivitiesYet": "Tegevused ilmuvad siia, kui need on lõpetatud ja salvestatud.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Muuda kursust",
+  "changeCourseDesc": "Siin saad muuta selle kursuse õppeplaani.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Harjutustegevus lõpetatud",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Loo tutvustuste vestlus",
+  "introChatDesc": "Igaüks ruumis saab postitada.",
+  "announcementsChatTitle": "Teadete vestlus",
+  "announcementsChatDesc": "Ainult ruumi administraator saab postitada.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

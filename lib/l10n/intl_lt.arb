@@ -4342,7 +4342,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-11-19 10:06:46.685695",
+  "@@last_modified": "2025-12-01 12:40:39.006993",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12634,6 +12634,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nepavyko įkelti atsiliepimų.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Išryškinkite tikslinius žodžius žemiau, juos siųsdami arba praktikuodami pokalbyje",
+  "noSavedActivitiesYet": "Veiklos pasirodys čia, kai bus užbaigtos ir išsaugotos.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Pakeisti kursą",
+  "changeCourseDesc": "Čia galite pakeisti šio kurso planą.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Praktikos veikla baigta",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Sukurti Įžangų Pokalbį",
+  "introChatDesc": "Bet kas erdvėje gali skelbti.",
+  "announcementsChatTitle": "Pranešimų Pokalbis",
+  "announcementsChatDesc": "Tik erdvės administratorius gali skelbti.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

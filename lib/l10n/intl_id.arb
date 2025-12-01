@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:05:43.101922",
+  "@@last_modified": "2025-12-01 12:39:37.053489",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11820,6 +11820,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Gagal memuat umpan balik.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Sorot kata-kata kosakata target di bawah ini dengan mengirimkannya atau berlatih dengan mereka di obrolan",
+  "noSavedActivitiesYet": "Kegiatan akan muncul di sini setelah mereka diselesaikan dan disimpan.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ubah kursus",
+  "changeCourseDesc": "Di sini Anda dapat mengubah rencana kursus ini.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivitas latihan selesai",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Buat Obrolan Perkenalan",
+  "introChatDesc": "Siapa pun di ruang ini dapat memposting.",
+  "announcementsChatTitle": "Obrolan Pengumuman",
+  "announcementsChatDesc": "Hanya admin ruang yang dapat memposting.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

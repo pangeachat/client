@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:28.272487",
+  "@@last_modified": "2025-12-01 12:40:17.930439",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -11853,6 +11853,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "No s'ha pogut carregar el feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Destaca les paraules de vocabulari objectiu a continuació enviant-les o practicant-les al xat",
+  "noSavedActivitiesYet": "Les activitats apareixeran aquí un cop estiguin completades i desades.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Canvia el curs",
+  "changeCourseDesc": "Aquí pots canviar el pla del curs d'aquest curs.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Activitat de pràctica completada",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Crear xat d'introduccions",
+  "introChatDesc": "Qualsevol persona de l'espai pot publicar.",
+  "announcementsChatTitle": "Xat d'anuncis",
+  "announcementsChatDesc": "Només l'administrador de l'espai pot publicar.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

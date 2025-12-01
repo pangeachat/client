@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-11-19 10:07:15.570964",
+  "@@last_modified": "2025-12-01 12:41:08.695760",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11934,6 +11934,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Не удалось загрузить отзывы.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Выделите целевые слова словаря ниже, отправив их или практикуя с ними в чате",
+  "noSavedActivitiesYet": "Здесь появятся активности, как только они будут завершены и сохранены.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Изменить курс",
+  "changeCourseDesc": "Здесь вы можете изменить план курса этого курса.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Практическое задание завершено",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Создать чат для представлений",
+  "introChatDesc": "Любой в пространстве может публиковать.",
+  "announcementsChatTitle": "Чат объявлений",
+  "announcementsChatDesc": "Только администратор пространства может публиковать.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

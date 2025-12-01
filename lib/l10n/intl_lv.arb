@@ -4958,7 +4958,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2025-11-19 10:06:40.043224",
+  "@@last_modified": "2025-12-01 12:40:28.664355",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -11815,6 +11815,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Neizdevās ielādēt atsauksmes.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Izceliet mērķa vārdu vārdnīcu zemāk, tos nosūtot vai praktizējot čatā.",
+  "noSavedActivitiesYet": "Aktivitātes parādīsies šeit, kad tās tiks pabeigtas un saglabātas.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Mainīt kursu",
+  "changeCourseDesc": "Šeit jūs varat mainīt šī kursa kursa plānu.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Prakses aktivitāte pabeigta",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Izveidot Ievada Čatu",
+  "introChatDesc": "Ikviens telpā var publicēt.",
+  "announcementsChatTitle": "Paziņojumu Čats",
+  "announcementsChatDesc": "Tikai telpas administrators var publicēt.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-11-19 10:05:41.188788",
+  "@@last_modified": "2025-12-01 12:39:34.911828",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11830,6 +11830,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "A visszajelzés betöltése nem sikerült.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Emeld ki a cél szókincset alább azáltal, hogy elküldöd őket vagy gyakorolsz velük a csevegésben.",
+  "noSavedActivitiesYet": "A tevékenységek itt fognak megjelenni, miután befejezték és elmentették őket.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Tanfolyam módosítása",
+  "changeCourseDesc": "Itt módosíthatja ennek a tanfolyamnak a tantervét.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Gyakorló tevékenység befejezve",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Bevezető Beszélgetés Létrehozása",
+  "introChatDesc": "A térben bárki posztolhat.",
+  "announcementsChatTitle": "Közlemények Beszélgetés",
+  "announcementsChatDesc": "Csak a tér adminisztrátora posztolhat.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

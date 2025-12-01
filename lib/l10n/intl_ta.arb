@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:50.799508",
+  "@@last_modified": "2025-12-01 12:40:43.100129",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -12053,6 +12053,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "பின்னூட்டத்தை ஏற்ற முடியவில்லை.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "சாட் மூலம் அனுப்புவதன் மூலம் அல்லது அவற்றுடன் பயிற்சி செய்வதன் மூலம் கீழே உள்ள இலக்கு சொற்களை வண்ணமயமாக்கவும்",
+  "noSavedActivitiesYet": "செயல்பாடுகள் முடிக்கப்பட்டு சேமிக்கப்பட்ட பிறகு இங்கே தோன்றும்.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "பாடத்தை மாற்றவும்",
+  "changeCourseDesc": "இங்கு நீங்கள் இந்த பாடத்தின் பாட திட்டத்தை மாற்றலாம்.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "பயிற்சி செயல்பாடு முடிந்தது",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "அறிமுக உரையாடல் உருவாக்கவும்",
+  "introChatDesc": "இடத்தில் உள்ள யாரும் பதிவேற்றலாம்.",
+  "announcementsChatTitle": "அறிக்கைகள் உரையாடல்",
+  "announcementsChatDesc": "மட்டுமல்லாமல் இட நிர்வாகி பதிவேற்றலாம்.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }
