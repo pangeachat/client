@@ -96,7 +96,6 @@ class PracticeController with ChangeNotifier {
   }
 
   void onChoiceSelect(PracticeChoice? choice, [bool force = false]) {
-    // WTODO error handling
     if (_activity == null) return;
     if (selectedChoice == choice && !force) {
       selectedChoice = null;
@@ -113,8 +112,6 @@ class PracticeController with ChangeNotifier {
   }
 
   void onMatch(PangeaToken token, PracticeChoice choice) {
-    debugPrint("on match");
-    // WTODO error handling
     if (_activity == null) return;
 
     final isCorrect = _activity!.activityType == ActivityTypeEnum.morphId

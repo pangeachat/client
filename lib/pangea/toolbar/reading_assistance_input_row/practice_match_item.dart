@@ -110,10 +110,6 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   void onTap() {
     play();
-    // WTODO
-    // isCorrect == null || !isCorrect! || widget.token == null
-    //     ? widget.controller.onChoiceSelect(widget.constructForm)
-    //     : widget.overlayController.updateSelectedSpan(widget.token!.text);
     if (isCorrect == null || !isCorrect! || widget.token == null) {
       widget.controller.onChoiceSelect(widget.constructForm);
     }
