@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -13,18 +12,14 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/emojis/emoji_stack.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
-import 'package:fluffychat/pangea/message_token_text/token_practice_button.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructIdentifier {
@@ -143,8 +138,6 @@ class ConstructIdentifier {
     );
   }
 
-  String get partialKey => "$lemma-${type.string}";
-
   ConstructUses get constructUses =>
       MatrixState.pangeaController.getAnalytics.constructListModel
           .getConstructUses(
@@ -158,8 +151,6 @@ class ConstructIdentifier {
       );
 
   List<String> get userSetEmoji => userLemmaInfo?.emojis ?? [];
-
-  String? get userSetMeaning => userLemmaInfo?.meaning;
 
   UserSetLemmaInfo? get userLemmaInfo {
     switch (type) {
@@ -265,116 +256,6 @@ class ConstructIdentifier {
         _lemmaInfoRequest,
       );
 
-  LemmaInfoResponse? getLemmaInfoCached([
-    String? lemmaLang,
-    String? userl1,
-  ]) =>
-      LemmaInfoRepo.getCached(
-        _lemmaInfoRequest,
-      );
-
   bool get isContentWord =>
       PartOfSpeechEnumExtensions.fromString(category)?.isContentWord ?? false;
-
-  /// [form] should be passed if available and is required for morphId
-  bool isActivityProbablyLevelAppropriate(ActivityTypeEnum a, String? form) {
-    switch (a) {
-      case ActivityTypeEnum.wordMeaning:
-        final double contentModifier = isContentWord ? 0.5 : 1;
-        if (daysSinceLastEligibleUseForMeaning <
-            3 * constructUses.points * contentModifier) {
-          return false;
-        }
-
-        return true;
-      case ActivityTypeEnum.emoji:
-        return userSetEmoji.length < maxEmojisPerLemma;
-      case ActivityTypeEnum.morphId:
-        if (form == null) {
-          debugger(when: kDebugMode);
-          ErrorHandler.logError(
-            e: Exception(
-              "form is null in isActivityProbablyLevelAppropriate for morphId",
-            ),
-            data: {
-              "activity": a,
-              "construct": toJson(),
-            },
-          );
-          return false;
-        }
-        final uses = constructUses.uses
-            .where((u) => u.form == form)
-            .map((u) => u.timeStamp)
-            .toList();
-
-        if (uses.isEmpty) return true;
-
-        final lastUsed = uses.reduce((a, b) => a.isAfter(b) ? a : b);
-
-        return DateTime.now().difference(lastUsed).inDays >
-            1 * constructUses.points;
-      case ActivityTypeEnum.wordFocusListening:
-        final pos = PartOfSpeechEnumExtensions.fromString(lemma) ??
-            PartOfSpeechEnumExtensions.fromString(category);
-
-        if (pos == null) {
-          debugger(when: kDebugMode);
-          return false;
-        }
-
-        return pos.canBeHeard;
-      default:
-        debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          e: Exception(
-            "Activity type $a not handled in ConstructIdentifier.isActivityProbablyLevelAppropriate",
-          ),
-          data: {
-            "activity": a,
-            "construct": toJson(),
-          },
-        );
-        return false;
-    }
-  }
-
-  /// days since last eligible use for meaning
-  /// this is the number of days since the last time the user used this word
-  /// in a way that would engage with the meaning of the word
-  /// importantly, this excludes emoji activities
-  /// we want users to be able to do an emoji activity as a ramp up to
-  /// a word meaning activity
-  int get daysSinceLastEligibleUseForMeaning {
-    final times = constructUses.uses
-        .where(
-          (u) =>
-              u.useType.sentByUser ||
-              ActivityTypeEnum.wordMeaning.associatedUseTypes
-                  .contains(u.useType) ||
-              ActivityTypeEnum.messageMeaning.associatedUseTypes
-                  .contains(u.useType),
-        )
-        .map((u) => u.timeStamp)
-        .toList();
-
-    if (times.isEmpty) return 1000;
-
-    // return the most recent timestamp
-    final last = times.reduce((a, b) => a.isAfter(b) ? a : b);
-
-    return DateTime.now().difference(last).inDays;
-  }
-
-  Widget get visual {
-    switch (type) {
-      case ConstructTypeEnum.vocab:
-        return EmojiStack(emoji: userSetEmoji);
-      case ConstructTypeEnum.morph:
-        return MorphIcon(
-          morphFeature: MorphFeaturesEnumExtension.fromString(category),
-          morphTag: lemma,
-        );
-    }
-  }
 }

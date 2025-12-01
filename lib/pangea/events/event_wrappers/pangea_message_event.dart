@@ -12,7 +12,6 @@ import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
@@ -20,8 +19,6 @@ import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
@@ -641,11 +638,6 @@ class PangeaMessageEvent {
   String? get l1Code =>
       MatrixState.pangeaController.languageController.userL1?.langCode;
 
-  /// Should almost always be true. Useful in the case that the message
-  /// display rep has the langCode "unk"
-  bool get messageDisplayLangIsL2 =>
-      messageDisplayLangCode.split("-")[0] == l2Code?.split("-")[0];
-
   String get messageDisplayLangCode {
     if (isAudioMessage) {
       final stt = getSpeechToTextLocal();
@@ -670,23 +662,6 @@ class PangeaMessageEvent {
   /// If the message display text is not available for the current language code,
   /// it returns the message body.
   String get messageDisplayText => messageDisplayRepresentation?.text ?? body;
-
-  bool shouldDoActivity({
-    required PangeaToken? token,
-    required ActivityTypeEnum a,
-    required MorphFeaturesEnum? feature,
-    required String? tag,
-  }) {
-    if (!messageDisplayLangIsL2 || token == null) {
-      return false;
-    }
-
-    return token.shouldDoActivity(
-      a: a,
-      feature: feature,
-      tag: tag,
-    );
-  }
 
   TextDirection get textDirection =>
       PLanguageStore.rtlLanguageCodes.contains(messageDisplayLangCode)
