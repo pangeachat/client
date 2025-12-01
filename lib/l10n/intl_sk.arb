@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-11-20 14:53:40.669714",
+  "@@last_modified": "2025-12-01 12:39:42.579953",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11665,6 +11665,26 @@
   },
   "practiceActivityCompleted": "Aktivita cvičenia dokončená",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Vytvoriť chat o predstaveniach",
+  "introChatDesc": "Ktokoľvek v priestore môže prispieť.",
+  "announcementsChatTitle": "Chat o oznámeniach",
+  "announcementsChatDesc": "Iba administrátor priestoru môže prispieť.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

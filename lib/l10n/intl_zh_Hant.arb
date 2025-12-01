@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:59.953711",
+  "@@last_modified": "2025-12-01 12:40:24.165409",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10579,6 +10579,26 @@
   },
   "practiceActivityCompleted": "練習活動已完成",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "創建介紹聊天",
+  "introChatDesc": "空間中的任何人都可以發帖。",
+  "announcementsChatTitle": "公告聊天",
+  "announcementsChatDesc": "只有空間管理員可以發帖。",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

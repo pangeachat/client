@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-11-20 14:53:49.442060",
+  "@@last_modified": "2025-12-01 12:40:00.288987",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10852,6 +10852,26 @@
   },
   "practiceActivityCompleted": "Harjutustegevus lõpetatud",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Loo tutvustuste vestlus",
+  "introChatDesc": "Igaüks ruumis saab postitada.",
+  "announcementsChatTitle": "Teadete vestlus",
+  "announcementsChatDesc": "Ainult ruumi administraator saab postitada.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

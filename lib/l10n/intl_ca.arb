@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:57.101713",
+  "@@last_modified": "2025-12-01 12:40:17.930439",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10605,6 +10605,26 @@
   },
   "practiceActivityCompleted": "Activitat de pràctica completada",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Crear xat d'introduccions",
+  "introChatDesc": "Qualsevol persona de l'espai pot publicar.",
+  "announcementsChatTitle": "Xat d'anuncis",
+  "announcementsChatDesc": "Només l'administrador de l'espai pot publicar.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -4460,7 +4460,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2025-11-20 14:54:14.475585",
+  "@@last_modified": "2025-12-01 12:41:00.324485",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11639,6 +11639,26 @@
   },
   "practiceActivityCompleted": "Η δραστηριότητα πρακτικής ολοκληρώθηκε",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Δημιουργία Συνομιλίας Εισαγωγών",
+  "introChatDesc": "Οποιοσδήποτε στον χώρο μπορεί να δημοσιεύσει.",
+  "announcementsChatTitle": "Συνομιλία Ανακοινώσεων",
+  "announcementsChatDesc": "Μόνο ο διαχειριστής του χώρου μπορεί να δημοσιεύσει.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

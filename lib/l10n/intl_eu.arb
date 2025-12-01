@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-11-20 14:53:47.461492",
+  "@@last_modified": "2025-12-01 12:39:55.136173",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10581,6 +10581,26 @@
   },
   "practiceActivityCompleted": "Praktika jarduera amaituta",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Sarrera Aurkezpen Txata sortu",
+  "introChatDesc": "Espazioan edonork postatu dezake.",
+  "announcementsChatTitle": "Iragarki Txata",
+  "announcementsChatDesc": "Espazioaren administratzaileak bakarrik postatu dezake.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -2468,7 +2468,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-11-20 14:53:51.206505",
+  "@@last_modified": "2025-12-01 12:40:03.273120",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11662,6 +11662,26 @@
   },
   "practiceActivityCompleted": "Aktivnost vadbe zaključena",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Ustvari klepet za uvod",
+  "introChatDesc": "Kdor koli v prostoru lahko objavi.",
+  "announcementsChatTitle": "Klepet za obvestila",
+  "announcementsChatDesc": "Samo skrbnik prostora lahko objavi.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

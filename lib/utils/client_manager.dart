@@ -151,6 +151,7 @@ abstract class ClientManager {
         PangeaEventTypes.coursePlan,
         PangeaEventTypes.courseUser,
         PangeaEventTypes.teacherMode,
+        PangeaEventTypes.courseChatList,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,

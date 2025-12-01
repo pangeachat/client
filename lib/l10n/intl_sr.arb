@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:54:21.092644",
+  "@@last_modified": "2025-12-01 12:41:13.018500",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11683,6 +11683,26 @@
   },
   "practiceActivityCompleted": "Aktivnost vežbanja je završena",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Kreiraj chat za uvod",
+  "introChatDesc": "Svako u prostoru može da objavljuje.",
+  "announcementsChatTitle": "Chat za obaveštenja",
+  "announcementsChatDesc": "Samo administrator prostora može da objavljuje.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

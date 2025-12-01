@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-11-20 14:53:53.830897",
+  "@@last_modified": "2025-12-01 12:40:09.213073",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10575,6 +10575,26 @@
   },
   "practiceActivityCompleted": "Практична діяльність завершена",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Створити чат для знайомств",
+  "introChatDesc": "Будь-хто в просторі може публікувати.",
+  "announcementsChatTitle": "Чат оголошень",
+  "announcementsChatDesc": "Тільки адміністратор простору може публікувати.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

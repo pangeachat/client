@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:54:06.548321",
+  "@@last_modified": "2025-12-01 12:40:41.049624",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6151,6 +6151,26 @@
   },
   "practiceActivityCompleted": "Hoạt động thực hành đã hoàn thành",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Tạo trò chuyện giới thiệu",
+  "introChatDesc": "Bất kỳ ai trong không gian đều có thể đăng bài.",
+  "announcementsChatTitle": "Trò chuyện thông báo",
+  "announcementsChatDesc": "Chỉ quản trị viên không gian mới có thể đăng bài.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

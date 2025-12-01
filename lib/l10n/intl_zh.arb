@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-20 14:54:09.943983",
+  "@@last_modified": "2025-12-01 12:40:49.294875",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10572,6 +10572,26 @@
   },
   "practiceActivityCompleted": "练习活动已完成",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "创建介绍聊天",
+  "introChatDesc": "空间中的任何人都可以发布。",
+  "announcementsChatTitle": "公告聊天",
+  "announcementsChatDesc": "只有空间管理员可以发布。",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

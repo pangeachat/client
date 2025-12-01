@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-11-20 14:53:36.261794",
+  "@@last_modified": "2025-12-01 12:39:34.911828",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10582,6 +10582,26 @@
   },
   "practiceActivityCompleted": "Gyakorló tevékenység befejezve",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Bevezető Beszélgetés Létrehozása",
+  "introChatDesc": "A térben bárki posztolhat.",
+  "announcementsChatTitle": "Közlemények Beszélgetés",
+  "announcementsChatDesc": "Csak a tér adminisztrátora posztolhat.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

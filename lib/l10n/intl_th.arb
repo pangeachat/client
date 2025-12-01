@@ -4460,7 +4460,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-11-20 14:53:58.064329",
+  "@@last_modified": "2025-12-01 12:40:19.963556",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11639,6 +11639,26 @@
   },
   "practiceActivityCompleted": "กิจกรรมการฝึกซ้อมเสร็จสิ้น",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "สร้างแชทแนะนำ",
+  "introChatDesc": "ใครก็ได้ในพื้นที่สามารถโพสต์ได้。",
+  "announcementsChatTitle": "แชทประกาศ",
+  "announcementsChatDesc": "เฉพาะผู้ดูแลพื้นที่เท่านั้นที่สามารถโพสต์ได้.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

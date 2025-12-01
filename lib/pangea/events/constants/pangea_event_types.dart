@@ -53,4 +53,5 @@ class PangeaEventTypes {
   static const coursePlan = "pangea.course_plan";
   static const courseUser = "p.course_user";
   static const teacherMode = "pangea.teacher_mode";
+  static const courseChatList = "pangea.course_chat_list";
 }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:54:07.409352",
+  "@@last_modified": "2025-12-01 12:40:43.100129",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10805,6 +10805,26 @@
   },
   "practiceActivityCompleted": "பயிற்சி செயல்பாடு முடிந்தது",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "அறிமுக உரையாடல் உருவாக்கவும்",
+  "introChatDesc": "இடத்தில் உள்ள யாரும் பதிவேற்றலாம்.",
+  "announcementsChatTitle": "அறிக்கைகள் உரையாடல்",
+  "announcementsChatDesc": "மட்டுமல்லாமல் இட நிர்வாகி பதிவேற்றலாம்.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

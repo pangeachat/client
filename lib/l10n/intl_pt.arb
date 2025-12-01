@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:53:48.565172",
+  "@@last_modified": "2025-12-01 12:39:56.923773",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11681,6 +11681,26 @@
   },
   "practiceActivityCompleted": "Atividade de prática concluída",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Criar Chat de Apresentações",
+  "introChatDesc": "Qualquer pessoa no espaço pode postar.",
+  "announcementsChatTitle": "Chat de Anúncios",
+  "announcementsChatDesc": "Apenas o administrador do espaço pode postar.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

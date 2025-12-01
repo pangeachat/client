@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-20 14:54:08.318051",
+  "@@last_modified": "2025-12-01 12:40:45.776161",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10581,6 +10581,26 @@
   },
   "practiceActivityCompleted": "Oefenactiviteit voltooid",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Maak Introductie Chat",
+  "introChatDesc": "Iedereen in de ruimte kan berichten plaatsen.",
+  "announcementsChatTitle": "Aankondigingen Chat",
+  "announcementsChatDesc": "Alleen de ruimtebeheerder kan berichten plaatsen.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

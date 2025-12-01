@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-11-20 14:54:12.599201",
+  "@@last_modified": "2025-12-01 12:40:55.496589",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10581,6 +10581,26 @@
   },
   "practiceActivityCompleted": "Aktywność praktyczna zakończona",
   "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Utwórz czat wprowadzający",
+  "introChatDesc": "Każdy w przestrzeni może publikować.",
+  "announcementsChatTitle": "Czat ogłoszeń",
+  "announcementsChatDesc": "Tylko administrator przestrzeni może publikować.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }
