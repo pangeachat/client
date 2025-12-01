@@ -5207,6 +5207,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Aqu\xed pots canviar el pla del curs d'aquest curs.";
     },
+    get$introChatTitle() {
+      return "Crear xat d'introduccions";
+    },
+    get$introChatDesc() {
+      return "Qualsevol persona de l'espai pot publicar.";
+    },
+    get$announcementsChatTitle() {
+      return "Xat d'anuncis";
+    },
+    get$announcementsChatDesc() {
+      return "Nom\xe9s l'administrador de l'espai pot publicar.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5223,7 +5235,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H/ZMKzE04Yv4vlPYSsk8eeVHdHw="] = d.current;
+  d["ant0XVvij5g/Ns7SB1mpWDnyWzo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_176.part.js.map

@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Tukaj lahko spremenite na\u010drt te\u010daja.";
     },
+    get$introChatTitle() {
+      return "Ustvari klepet za uvod";
+    },
+    get$introChatDesc() {
+      return "Kdor koli v prostoru lahko objavi.";
+    },
+    get$announcementsChatTitle() {
+      return "Klepet za obvestila";
+    },
+    get$announcementsChatDesc() {
+      return "Samo skrbnik prostora lahko objavi.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HlD2EmQ4j/AgZKIHhQZRR89jmgY="] = d.current;
+  d["hqp/fAdPX+WEUeci62ltC3jHHDs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

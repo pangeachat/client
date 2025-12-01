@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Qui puoi cambiare il piano del corso di questo corso.";
     },
+    get$introChatTitle() {
+      return "Crea Chat di Introduzioni";
+    },
+    get$introChatDesc() {
+      return "Chiunque nello spazio pu\xf2 postare.";
+    },
+    get$announcementsChatTitle() {
+      return "Chat degli Annunci";
+    },
+    get$announcementsChatDesc() {
+      return "Solo l'amministratore dello spazio pu\xf2 postare.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5222,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zVW5KWl2FXqxTTX5AThq/M45EGI="] = d.current;
+  d["UsmhQupe1pUe0K0F5oBxfgQYBUs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

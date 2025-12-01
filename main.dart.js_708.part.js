@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "\u010cia galite pakeisti \u0161io kurso plan\u0105.";
     },
+    get$introChatTitle() {
+      return "Sukurti \u012e\u017eang\u0173 Pokalb\u012f";
+    },
+    get$introChatDesc() {
+      return "Bet kas erdv\u0117je gali skelbti.";
+    },
+    get$announcementsChatTitle() {
+      return "Prane\u0161im\u0173 Pokalbis";
+    },
+    get$announcementsChatDesc() {
+      return "Tik erdv\u0117s administratorius gali skelbti.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5222,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zv6j1LD53MDwRgKkE/x3Usnb7gw="] = d.current;
+  d["yulhKgadIZQFN1Zzo45z795jhN4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "\u0108i tie vi povas \u015dan\u011di la kurplanon de \u0109i tiu kurso.";
     },
+    get$introChatTitle() {
+      return "Krei Enkondukan \u0108aton";
+    },
+    get$introChatDesc() {
+      return "\u0108iu en la spaco povas afi\u015di.";
+    },
+    get$announcementsChatTitle() {
+      return "Afi\u015doj \u0108ato";
+    },
+    get$announcementsChatDesc() {
+      return "Nur la administranto de la spaco povas afi\u015di.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dnMFG68/RN2CrkuDs855qtgOk50="] = d.current;
+  d["IqqgVFaR01/yzic7K4opXRWM/Hg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

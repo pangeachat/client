@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Burada bu dersin ders plan\u0131n\u0131 de\u011fi\u015ftirebilirsiniz.";
     },
+    get$introChatTitle() {
+      return "Tan\u0131t\u0131m Sohbeti Olu\u015ftur";
+    },
+    get$introChatDesc() {
+      return "Mekandaki herkes payla\u015f\u0131mda bulunabilir.";
+    },
+    get$announcementsChatTitle() {
+      return "Duyurular Sohbeti";
+    },
+    get$announcementsChatDesc() {
+      return "Sadece mekan y\xf6neticisi payla\u015f\u0131mda bulunabilir.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5222,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["YJOg94qZzdkYs7BQ5i7VmJfT7fY="] = d.current;
+  d["f/lnz/wJLlqtX1gOW3EJOM+k+4w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

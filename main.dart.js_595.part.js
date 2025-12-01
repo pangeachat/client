@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Ici, vous pouvez changer le plan de cours de ce cours.";
     },
+    get$introChatTitle() {
+      return "Cr\xe9er un chat d'introduction";
+    },
+    get$introChatDesc() {
+      return "Tout le monde dans l'espace peut publier.";
+    },
+    get$announcementsChatTitle() {
+      return "Chat des annonces";
+    },
+    get$announcementsChatDesc() {
+      return "Seul l'administrateur de l'espace peut publier.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PXxuoUtwaJIthPwDZBSlojqzfkM="] = d.current;
+  d["jRV5hcNkYIf9dnCANeG8V1SRq+M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

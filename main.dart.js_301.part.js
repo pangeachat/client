@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Her kan du \xe6ndre denne kursus' kursusplan.";
     },
+    get$introChatTitle() {
+      return "Opret Introduktioner Chat";
+    },
+    get$introChatDesc() {
+      return "Alle i rummet kan poste.";
+    },
+    get$announcementsChatTitle() {
+      return "Meddelelser Chat";
+    },
+    get$announcementsChatDesc() {
+      return "Kun rumadmin kan poste.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zmf8wAhFvzIUOuYjUfw1TzblgSU="] = d.current;
+  d["G1EpkEwM/Tu5X/iMBtYjo8pDoCU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_301.part.js.map

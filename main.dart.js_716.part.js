@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "\u0160eit j\u016bs varat main\u012bt \u0161\u012b kursa kursa pl\u0101nu.";
     },
+    get$introChatTitle() {
+      return "Izveidot Ievada \u010catu";
+    },
+    get$introChatDesc() {
+      return "Ikviens telp\u0101 var public\u0113t.";
+    },
+    get$announcementsChatTitle() {
+      return "Pazi\u0146ojumu \u010cats";
+    },
+    get$announcementsChatDesc() {
+      return "Tikai telpas administrators var public\u0113t.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["STNe9Xpz4wd2Mylsi3dc3/RwE+4="] = d.current;
+  d["h37Zl/P8pHrxEV08jlVYxnHlRdI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

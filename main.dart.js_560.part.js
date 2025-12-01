@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Hemen ikasturtea aldatu dezakezu ikasturte honen ikasturteen plana.";
     },
+    get$introChatTitle() {
+      return "Sarrera Aurkezpen Txata sortu";
+    },
+    get$introChatDesc() {
+      return "Espazioan edonork postatu dezake.";
+    },
+    get$announcementsChatTitle() {
+      return "Iragarki Txata";
+    },
+    get$announcementsChatDesc() {
+      return "Espazioaren administratzaileak bakarrik postatu dezake.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5222,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["v7dQC9BUjFk1Lpr6Bb9gIoClRw4="] = d.current;
+  d["dtA+zPgo48UvPAy5q/BjqnDOH1M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

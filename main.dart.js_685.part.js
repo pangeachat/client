@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Di sini Anda dapat mengubah rencana kursus ini.";
     },
+    get$introChatTitle() {
+      return "Buat Obrolan Perkenalan";
+    },
+    get$introChatDesc() {
+      return "Siapa pun di ruang ini dapat memposting.";
+    },
+    get$announcementsChatTitle() {
+      return "Obrolan Pengumuman";
+    },
+    get$announcementsChatDesc() {
+      return "Hanya admin ruang yang dapat memposting.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5222,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R2iYlsgFWNx8sBh+uayAG+BZNH0="] = d.current;
+  d["W5/TT+awGv5zvoVgUWbcQ9KFpII="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

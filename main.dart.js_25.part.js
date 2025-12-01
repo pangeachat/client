@@ -5218,6 +5218,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return string$.Aqui_vm;
     },
+    get$introChatTitle() {
+      return "Criar Chat de Apresenta\xe7\xf5es";
+    },
+    get$introChatDesc() {
+      return "Qualquer pessoa no espa\xe7o pode postar.";
+    },
+    get$announcementsChatTitle() {
+      return "Chat de An\xfancios";
+    },
+    get$announcementsChatDesc() {
+      return string$.Apenas;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10409,6 +10421,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeCourseDesc() {
       return string$.Aqui_vm;
+    },
+    get$introChatTitle() {
+      return "Criar Chat de Apresenta\xe7\xf5es";
+    },
+    get$introChatDesc() {
+      return "Qualquer pessoa no espa\xe7o pode postar.";
+    },
+    get$announcementsChatTitle() {
+      return "Chat de An\xfancios";
+    },
+    get$announcementsChatDesc() {
+      return string$.Apenas;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15602,6 +15626,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return string$.Aqui_vm;
     },
+    get$introChatTitle() {
+      return "Criar Chat de Apresenta\xe7\xf5es";
+    },
+    get$introChatDesc() {
+      return "Qualquer pessoa no espa\xe7o pode postar.";
+    },
+    get$announcementsChatTitle() {
+      return "Chat de An\xfancios";
+    },
+    get$announcementsChatDesc() {
+      return string$.Apenas;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15633,6 +15669,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Alterao: "Alterar o endere\xe7o principal do chat p\xfablico",
     Ao_ati: "Ao ativar, voc\xea permite que outros usu\xe1rios encontrem seu perfil na barra de busca global e enviem solicita\xe7\xf5es para conversar. Neste momento, voc\xea pode escolher aceitar ou negar a solicita\xe7\xe3o.",
     Ao_sai: "Ao sair do curso, voc\xea deixar\xe1 todos os chats dentro dele. Outros usu\xe1rios ver\xe3o que voc\xea saiu do curso.",
+    Apenas: "Apenas o administrador do espa\xe7o pode postar.",
     Aqui_ve: "Aqui voc\xea pode editar o t\xedtulo do curso, descri\xe7\xe3o, etc.",
     Aqui_vm: "Aqui voc\xea pode mudar o plano de curso deste curso.",
     Aqui_vv: "Aqui voc\xea pode ver todos os pontos que voc\xea ganhou e como!",
@@ -15785,7 +15822,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uT1HF543jysJW9YvjWPZY2UIoMY="] = d.current;
+  d["knKm/zY3uHy3VCzZUgtZEpd1mJg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "H\xe4r kan du \xe4ndra kursplanen f\xf6r denna kurs.";
     },
+    get$introChatTitle() {
+      return "Skapa Introduktionschatt";
+    },
+    get$introChatDesc() {
+      return "Alla i rummet kan posta.";
+    },
+    get$announcementsChatTitle() {
+      return "Meddelanden Chatt";
+    },
+    get$announcementsChatDesc() {
+      return "Endast rumsadministrat\xf6ren kan posta.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["o+NujiSVE9w7pr/n+p1K2/g9AmI="] = d.current;
+  d["zdTdRvXrMKqhwVHHSVGqoQdjhrk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

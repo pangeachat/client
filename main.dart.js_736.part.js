@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Aici po\u021bi schimba planul de curs al acestui curs.";
     },
+    get$introChatTitle() {
+      return "Creeaz\u0103 chat de introduceri";
+    },
+    get$introChatDesc() {
+      return "Oricine din spa\u021biu poate posta.";
+    },
+    get$announcementsChatTitle() {
+      return "Chat de anun\u021buri";
+    },
+    get$announcementsChatDesc() {
+      return "Numai administratorul spa\u021biului poate posta.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5222,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["q3mRjG7R7wmCsRDMg+AYMn/jxW0="] = d.current;
+  d["Mg61pWf1DWq0W17m42THn8WMFZs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

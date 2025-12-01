@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Dito maaari mong palitan ang plano ng kurso ng kursong ito.";
     },
+    get$introChatTitle() {
+      return "Lumikha ng Introductions Chat";
+    },
+    get$introChatDesc() {
+      return "Sinuman sa espasyo ay maaaring mag-post.";
+    },
+    get$announcementsChatTitle() {
+      return "Announcements Chat";
+    },
+    get$announcementsChatDesc() {
+      return "Tanging ang admin ng espasyo ang maaaring mag-post.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QU+sIYCrIoEtSJbiZeY4l8doxuQ="] = d.current;
+  d["viosNLnw8VDqgghQ4JLvWaMy5S0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

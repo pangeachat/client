@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "Siin saad muuta selle kursuse \xf5ppeplaani.";
     },
+    get$introChatTitle() {
+      return "Loo tutvustuste vestlus";
+    },
+    get$introChatDesc() {
+      return "Iga\xfcks ruumis saab postitada.";
+    },
+    get$announcementsChatTitle() {
+      return "Teadete vestlus";
+    },
+    get$announcementsChatDesc() {
+      return "Ainult ruumi administraator saab postitada.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MXkyQ6oyJaDyz0xsV1ccMC4Od8Q="] = d.current;
+  d["ppTAgInz0fGlGYIJWSy+huCA8g4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

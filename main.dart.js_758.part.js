@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "T\u1ea1i \u0111\xe2y b\u1ea1n c\xf3 th\u1ec3 thay \u0111\u1ed5i k\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc c\u1ee7a kh\xf3a h\u1ecdc n\xe0y.";
     },
+    get$introChatTitle() {
+      return "T\u1ea1o tr\xf2 chuy\u1ec7n gi\u1edbi thi\u1ec7u";
+    },
+    get$introChatDesc() {
+      return "B\u1ea5t k\u1ef3 ai trong kh\xf4ng gian \u0111\u1ec1u c\xf3 th\u1ec3 \u0111\u0103ng b\xe0i.";
+    },
+    get$announcementsChatTitle() {
+      return "Tr\xf2 chuy\u1ec7n th\xf4ng b\xe1o";
+    },
+    get$announcementsChatDesc() {
+      return "Ch\u1ec9 qu\u1ea3n tr\u1ecb vi\xean kh\xf4ng gian m\u1edbi c\xf3 th\u1ec3 \u0111\u0103ng b\xe0i.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8zpn2zYh1k4Rfy4mRkRBFW0sOxc="] = d.current;
+  d["jaHITdKnPjIPVZq3306HwzywKic="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

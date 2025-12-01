@@ -5206,6 +5206,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeCourseDesc() {
       return "T\xe4\xe4ll\xe4 voit vaihtaa t\xe4m\xe4n kurssin kurssisuunnitelmaa.";
     },
+    get$introChatTitle() {
+      return "Luo esittelykeskustelu";
+    },
+    get$introChatDesc() {
+      return "Kuka tahansa tilassa voi julkaista.";
+    },
+    get$announcementsChatTitle() {
+      return "Ilmoitukset keskustelu";
+    },
+    get$announcementsChatDesc() {
+      return "Vain tilan yll\xe4pit\xe4j\xe4 voi julkaista.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5219,7 +5231,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["S6IN8yo53OrVf5FUokOXAvVpGtA="] = d.current;
+  d["oaW/akIn37/9rU4j/umt+FXSNrE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map
