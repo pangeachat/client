@@ -67,37 +67,33 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   Client get _client => widget.controller.room.client;
 
   bool get _shouldShowInstructions {
-    if (InstructionsEnum.activityStatsMenu.isToggledOff ||
-        MatrixState.pAnyState.isOverlayOpen(
-          RegExp(r"^word-zoom-card-.*$"),
-        ) ||
+    if (AppConfig.showedActivityMenu ||
+        InstructionsEnum.activityStatsMenu.isToggledOff ||
+        MatrixState.pAnyState.isOverlayOpen(RegExp(r"^word-zoom-card-.*$")) ||
         widget.controller.timeline == null) {
       return false;
     }
 
-    // if someone has finished the activity, enable the tooltip
+    final userID = Matrix.of(context).client.userID!;
     final activityRoles =
-        widget.controller.room.activityRoles?.roles.values.toList() ?? [];
-    if (activityRoles.any((r) => r.isFinished)) {
-      return true;
+        widget.controller.room.activityRoles?.roles.values ?? [];
+    final finishedRoles = activityRoles.where((r) => r.isFinished);
+
+    if (finishedRoles.isNotEmpty) {
+      return !finishedRoles.any((r) => r.userId == userID);
     }
 
-    // otherwise, if no one has finished, only show if the user has sent >= 3 messages
-    int count = 0;
-    for (final event in widget.controller.timeline!.events) {
-      if (event.senderId == _client.userID &&
-          event.type == EventTypes.Message &&
-          [
-            MessageTypes.Text,
-            MessageTypes.Audio,
-          ].contains(event.messageType)) {
-        count++;
-      }
+    final count = widget.controller.timeline!.events
+        .where(
+          (event) =>
+              event.senderId == userID &&
+              event.type == EventTypes.Message &&
+              {MessageTypes.Text, MessageTypes.Audio}
+                  .contains(event.messageType),
+        )
+        .length;
 
-      if (count >= 3) return true;
-    }
-
-    return false;
+    return count >= 3;
   }
 
   int get _xpCount =>

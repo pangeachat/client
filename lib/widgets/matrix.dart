@@ -541,6 +541,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
     // #Pangea
     AppConfig.volume = store.getDouble(SettingKeys.volume) ?? AppConfig.volume;
+
+    AppConfig.showedActivityMenu =
+        store.getBool(SettingKeys.showedActivityMenu) ??
+            AppConfig.showedActivityMenu;
     // Pangea#
   }
 
