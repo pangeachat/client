@@ -8,7 +8,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 extension ActivityMenuLogic on ChatController {
   bool get shouldShowActivityInstructions {
-    if (AppConfig.showedActivityMenuTutorial ||
+    if (AppConfig.showedActivityMenu ||
         InstructionsEnum.activityStatsMenu.isToggledOff ||
         MatrixState.pAnyState.isOverlayOpen(RegExp(r"^word-zoom-card-.*$")) ||
         timeline == null) {

@@ -36,7 +36,7 @@ abstract class SettingKeys {
       'chat.fluffy.display_navigation_rail';
   // #Pangea
   static const String volume = 'pangea.volume';
-  static const String showedActivityMenuTutorial =
+  static const String showedActivityMenu =
       'pangea.showed_activity_menu_tutorial';
   // Pangea#
 }
