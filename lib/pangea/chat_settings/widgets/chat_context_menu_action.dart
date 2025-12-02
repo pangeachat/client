@@ -252,6 +252,12 @@ void chatContextMenuAction(
         context: context,
         future: room.isSpace ? room.leaveSpace : room.leave,
       );
+
+      final r = room.client.getRoomById(room.id);
+      if (r != null && r.membership != Membership.leave) {
+        await room.client.waitForRoomInSync(room.id, leave: true);
+      }
+
       if (!resp.isError) {
         outerContext.go(
           room.courseParent != null

@@ -40,7 +40,8 @@ class ActivityParticipantList extends StatelessWidget {
       room: room,
       builder: (context, participants) {
         final theme = Theme.of(context);
-        final availableRoles = activity.roles;
+        final availableRoles =
+            activity.roles.values.sorted((a, b) => a.id.compareTo(b.id));
 
         final remainingMembers = participants.participants.where(
           (p) => !assignedRoles.values.any((r) => r.userId == p.id),
@@ -53,7 +54,7 @@ class ActivityParticipantList extends StatelessWidget {
               alignment: WrapAlignment.center,
               spacing: 12.0,
               runSpacing: 12.0,
-              children: availableRoles.values.map((availableRole) {
+              children: availableRoles.map((availableRole) {
                 final selected =
                     isSelected != null ? isSelected!(availableRole.id) : false;
 

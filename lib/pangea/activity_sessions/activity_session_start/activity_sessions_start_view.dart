@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -7,6 +8,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart';
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_request_dialog.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
@@ -449,13 +451,22 @@ class _ActivityStatuses extends StatelessWidget {
                       ),
                     ),
                     ...entry.entries.map((e) {
-                      final summary = e.value;
+                      // if user is in the room, use the room info instead of the
+                      // room summary response to get real-time activity roles info
                       final roomId = e.key;
+                      final room =
+                          Matrix.of(context).client.getRoomById(roomId);
+                      final activityPlan =
+                          room?.activityPlan ?? e.value.activityPlan;
+                      final activityRoles =
+                          room?.assignedRoles ?? e.value.activityRoles.roles;
+
                       return ListTile(
                         title: OpenRolesIndicator(
-                          roles: summary.activityPlan.roles.values.toList(),
-                          assignedRoles:
-                              summary.activityRoles.roles.values.toList(),
+                          roles: activityPlan.roles.values
+                              .sorted((a, b) => a.id.compareTo(b.id))
+                              .toList(),
+                          assignedRoles: activityRoles.values.toList(),
                           size: 40.0,
                           spacing: 8.0,
                           space: space,
