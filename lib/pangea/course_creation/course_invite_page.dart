@@ -11,6 +11,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -49,7 +51,17 @@ class CourseInvitePageController extends State<CourseInvitePage>
     if (widget.courseCreationCompleter == null) {
       throw Exception("No course creation completer provided");
     }
-    return widget.courseCreationCompleter!.future;
+    final spaceId = await widget.courseCreationCompleter!.future;
+    final room = Matrix.of(context).client.getRoomById(spaceId);
+    if (room == null || room.coursePlan == null) {
+      await Matrix.of(context).client.onRoomState.stream.firstWhere((event) {
+        return event.roomId == spaceId &&
+            event.state.type == PangeaEventTypes.coursePlan;
+      }).timeout(
+        const Duration(seconds: 10),
+      );
+    }
+    return spaceId;
   }
 
   @override

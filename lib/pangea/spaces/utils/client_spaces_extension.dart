@@ -35,6 +35,11 @@ extension SpacesClientExtension on Client {
         if (initialState != null) ...initialState,
       ],
     );
+
+    if (getRoomById(roomId) == null) {
+      await waitForRoomInSync(roomId, join: true);
+    }
+
     return roomId;
   }
 }
