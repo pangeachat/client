@@ -54,9 +54,8 @@ class ChatListItemSubtitle extends StatelessWidget {
         );
       } else if (!room.isActivityStarted) {
         return OpenRolesIndicator(
-          totalSlots: room.activityPlan!.req.numberOfParticipants,
-          userIds:
-              room.assignedRoles?.values.map((r) => r.userId).toList() ?? [],
+          roles: room.activityPlan!.roles.values.toList(),
+          assignedRoles: room.assignedRoles?.values.toList() ?? [],
           room: room,
           space: room.courseParent,
         );

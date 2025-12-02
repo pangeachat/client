@@ -87,6 +87,7 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
         widget.controller.toggleShowDropdown();
       },
     );
+
     setState(() => _showShimmer = true);
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -9,13 +10,17 @@ import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.da
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartController controller;
@@ -148,7 +153,6 @@ class ActivitySessionStartView extends StatelessWidget {
                                 ),
                                 padding: const EdgeInsets.all(12.0),
                                 child: Column(
-                                  spacing: 12.0,
                                   children: [
                                     ActivitySummary(
                                       activity: controller.activity!,
@@ -167,6 +171,12 @@ class ActivitySessionStartView extends StatelessWidget {
                                           controller.canSelectParticipant,
                                       assignedRoles: controller.assignedRoles,
                                     ),
+                                    if (controller.courseParent != null)
+                                      _ActivityStatuses(
+                                        statuses: controller.activityStatuses,
+                                        space: controller.courseParent!,
+                                        onTap: controller.joinActivityByRoomId,
+                                      ),
                                   ],
                                 ),
                               ),
@@ -400,6 +410,83 @@ class _ActivityStartButtons extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class _ActivityStatuses extends StatelessWidget {
+  final Map<ActivitySummaryStatus, Map<String, RoomSummaryResponse>> statuses;
+  final Room space;
+  final Function(String) onTap;
+
+  const _ActivityStatuses({
+    required this.statuses,
+    required this.space,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        maxWidth: FluffyThemes.columnWidth * 1.5,
+      ),
+      child: Column(
+        children: [
+          ...ActivitySummaryStatus.values.map(
+            (status) {
+              final entry = statuses[status];
+              if (entry!.isEmpty) {
+                return const SizedBox.shrink();
+              }
+
+              return Padding(
+                padding: const EdgeInsetsGeometry.symmetric(
+                  horizontal: 20.0,
+                  vertical: 16.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        status.label(L10n.of(context), entry.length),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    ...entry.entries.map((e) {
+                      final summary = e.value;
+                      final roomId = e.key;
+                      return ListTile(
+                        title: OpenRolesIndicator(
+                          roles: summary.activityPlan.roles.values.toList(),
+                          assignedRoles:
+                              summary.activityRoles.roles.values.toList(),
+                          size: 40.0,
+                          spacing: 8.0,
+                          space: space,
+                          onUserTap: (user, context) {
+                            showMemberActionsPopupMenu(
+                              context: context,
+                              user: user,
+                            );
+                          },
+                        ),
+                        trailing: const Icon(Icons.arrow_forward),
+                        onTap: space.isRoomAdmin ? () => onTap(roomId) : null,
+                      );
+                    }),
+                  ],
+                ),
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }

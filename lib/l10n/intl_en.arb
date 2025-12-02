@@ -4961,5 +4961,32 @@
   "introChatTitle": "Create Introductions Chat",
   "introChatDesc": "Anyone in the space can post.",
   "announcementsChatTitle": "Announcements Chat",
-  "announcementsChatDesc": "Only space admin can post."
+  "announcementsChatDesc": "Only space admin can post.",
+  "notStartedActivitiesTitle": "Open sessions ({num})",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "inProgressActivitiesTitle": "Happening now ({num})",
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "completedActivitiesTitle": "Done ({num})",
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  }
 }

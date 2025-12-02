@@ -82,8 +82,8 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: OpenRolesIndicator(
-                        totalSlots: activity.req.numberOfParticipants,
-                        userIds: e.userIds,
+                        roles: activity.roles.values.toList(),
+                        assignedRoles: e.assignedRoles,
                         space: space,
                       ),
                     ),
