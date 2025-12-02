@@ -98,15 +98,6 @@ class SpanData {
       return -1;
     }
 
-    // if user ever selected the correct choice, automatically select it
-    final selectedCorrectIndex = choices!.indexWhere((choice) {
-      return choice.selected && choice.isBestCorrection;
-    });
-
-    if (selectedCorrectIndex != -1) {
-      return selectedCorrectIndex;
-    }
-
     SpanChoice? mostRecent;
     for (int i = 0; i < choices!.length; i++) {
       final choice = choices![i];
