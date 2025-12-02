@@ -4,13 +4,30 @@ import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class EmojiAnalyticsController {
-  void sendEmojiAnalytics(
+mixin LemmaEmojiSetter {
+  Future<void> setLemmaEmoji(
     ConstructIdentifier constructId,
+    String emoji,
+    String? targetId,
+  ) async {
+    if (constructId.userSetEmoji.isEmpty) {
+      _sendEmojiAnalytics(
+        constructId,
+        targetId: targetId,
+      );
+    }
+
+    await constructId.setUserLemmaInfo(
+      constructId.userLemmaInfo.copyWith(emojis: [emoji]),
+    );
+  }
+
+  void _sendEmojiAnalytics(
+    ConstructIdentifier constructId, {
     String? eventId,
     String? roomId,
     String? targetId,
-  ) {
+  }) {
     MatrixState.pangeaController.putAnalytics.setState(
       AnalyticsStream(
         eventId: eventId,

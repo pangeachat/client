@@ -84,6 +84,7 @@ class PangeaAnyState {
     if (entry != null) {
       try {
         entry.entry.remove();
+        entry.entry.dispose();
       } catch (err, s) {
         ErrorHandler.logError(
           e: err,
@@ -117,6 +118,7 @@ class PangeaAnyState {
     for (int i = 0; i < shouldRemove.length; i++) {
       try {
         shouldRemove[i].entry.remove();
+        shouldRemove[i].entry.dispose();
       } catch (err, s) {
         ErrorHandler.logError(
           e: err,

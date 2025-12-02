@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/emoji_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -29,7 +29,8 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
   LemmaHighlightEmojiRowState createState() => LemmaHighlightEmojiRowState();
 }
 
-class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
+class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
+    with LemmaEmojiSetter {
   bool _showShimmer = true;
   String? _selectedEmoji;
 
@@ -87,12 +88,10 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
   Future<void> _setEmoji(String emoji, BuildContext context) async {
     try {
       setState(() => _selectedEmoji = emoji);
-      await widget.cId.setUserLemmaInfo(
-        widget.cId.userLemmaInfo.copyWith(emojis: [emoji]),
-      );
-      EmojiAnalyticsController.sendEmojiAnalytics(
+      await setLemmaEmoji(
         widget.cId,
         emoji,
+        "emoji-choice-item-$emoji-${widget.cId.lemma}",
       );
     } catch (e, s) {
       debugger(when: kDebugMode);
