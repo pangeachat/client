@@ -113,6 +113,17 @@ class SelectModeController {
     contentChangedStream.close();
   }
 
+  static List<SelectMode> get textModes => [
+        SelectMode.audio,
+        SelectMode.translate,
+        SelectMode.practice,
+        SelectMode.emoji,
+      ];
+
+  static List<SelectMode> get audioModes => [
+        SelectMode.speechTranslation,
+      ];
+
   ValueNotifier<AsyncState<String>> get translationState =>
       _translationLoader.state;
 
@@ -123,6 +134,24 @@ class SelectModeController {
       _sttTranslationLoader.state;
 
   (PangeaAudioFile, File?)? get audioFile => _audioLoader.value;
+
+  List<SelectMode> get readingAssistanceModes {
+    final validTypes = {MessageTypes.Text, MessageTypes.Audio};
+    if (!messageEvent.event.status.isSent ||
+        messageEvent.event.type != EventTypes.Message ||
+        !validTypes.contains(messageEvent.event.messageType)) {
+      return [];
+    }
+
+    if (messageEvent.event.messageType == MessageTypes.Text) {
+      final matchesL2 = messageEvent.messageDisplayLangCode.split("-").first ==
+          MatrixState.pangeaController.languageController.userL2!.langCodeShort;
+
+      return matchesL2 ? textModes : [SelectMode.translate];
+    }
+
+    return audioModes;
+  }
 
   bool get isLoading => currentModeStateNotifier?.value is AsyncLoading;
 
