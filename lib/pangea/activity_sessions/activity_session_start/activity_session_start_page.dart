@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
@@ -186,6 +187,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
     return false;
   }
+
+  Map<ActivitySummaryStatus, Map<String, RoomSummaryResponse>>
+      get activityStatuses => activitySessionStatuses(widget.activityId);
 
   void toggleInstructions() {
     setState(() {
@@ -394,6 +398,33 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     return joinedSessionId;
+  }
+
+  Future<void> joinActivityByRoomId(String roomId) async {
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        await courseParent!.client.joinRoom(
+          roomId,
+          via: courseParent?.spaceChildren
+              .firstWhereOrNull(
+                (child) => child.roomId == roomId,
+              )
+              ?.via,
+        );
+
+        final room = courseParent!.client.getRoomById(roomId);
+        if (room == null || room.membership != Membership.join) {
+          await courseParent!.client.waitForRoomInSync(roomId, join: true);
+        }
+      },
+    );
+
+    if (!resp.isError) {
+      widget.parentId != null
+          ? context.go("/rooms/spaces/${widget.parentId}/$roomId")
+          : context.go("/rooms/$roomId");
+    }
   }
 
   Future<void> pingCourse() async {

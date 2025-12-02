@@ -131,8 +131,7 @@ class CourseChatsController extends State<CourseChats>
       }
 
       final activity = summary.activityPlan;
-      final users =
-          summary.activityRoles.roles.values.map((r) => r.userId).toList();
+      final users = summary.activityRoles.roles.values.toList();
 
       if (users.isEmpty || !validIDs.contains(activity.activityId)) {
         continue;
@@ -155,7 +154,7 @@ class CourseChatsController extends State<CourseChats>
       sessionsMap[activity]!.add(
         ExtendedSpaceRoomsChunk(
           chunk: chunk,
-          userIds: users,
+          assignedRoles: users,
         ),
       );
     }
@@ -454,7 +453,9 @@ class CourseChatsController extends State<CourseChats>
     String activityId,
     ExtendedSpaceRoomsChunk chunk,
   ) async {
-    final hasRole = chunk.userIds.contains(widget.client.userID);
+    final hasRole = chunk.assignedRoles.any(
+      (role) => role.userId == widget.client.userID,
+    );
     final roomId = chunk.chunk.roomId;
     if (!hasRole) {
       context.go(

@@ -2,11 +2,29 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+enum ActivitySummaryStatus {
+  notStarted,
+  inProgress,
+  completed;
+
+  String label(L10n l10n, int count) {
+    switch (this) {
+      case ActivitySummaryStatus.notStarted:
+        return l10n.notStartedActivitiesTitle(count);
+      case ActivitySummaryStatus.inProgress:
+        return l10n.inProgressActivitiesTitle(count);
+      case ActivitySummaryStatus.completed:
+        return l10n.completedActivitiesTitle(count);
+    }
+  }
+}
 
 mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
   Map<String, RoomSummaryResponse>? roomSummaries;
@@ -21,6 +39,44 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     if (mounted) {
       setState(() => roomSummaries = resp.summaries);
     }
+  }
+
+  Map<String, RoomSummaryResponse> activitySessions(String activityId) =>
+      Map.fromEntries(
+        roomSummaries?.entries
+                .where((v) => v.value.activityPlan.activityId == activityId) ??
+            [],
+      );
+
+  Map<ActivitySummaryStatus, Map<String, RoomSummaryResponse>>
+      activitySessionStatuses(
+    String activityId,
+  ) {
+    final statuses = <ActivitySummaryStatus, Map<String, RoomSummaryResponse>>{
+      ActivitySummaryStatus.notStarted: {},
+      ActivitySummaryStatus.inProgress: {},
+      ActivitySummaryStatus.completed: {},
+    };
+
+    final sessions = activitySessions(activityId);
+    for (final entry in sessions.entries) {
+      final session = entry.value;
+      final roomId = entry.key;
+      final roles = session.activityRoles.roles.values;
+
+      if (roles.isNotEmpty &&
+          (roles.any((r) => r.isArchived) ||
+              roles.every((r) => r.isFinished))) {
+        statuses[ActivitySummaryStatus.completed]![roomId] = session;
+      } else if (session.activityRoles.roles.length <
+          session.activityPlan.req.numberOfParticipants) {
+        statuses[ActivitySummaryStatus.notStarted]![roomId] = session;
+      } else {
+        statuses[ActivitySummaryStatus.inProgress]![roomId] = session;
+      }
+    }
+
+    return statuses;
   }
 
   Set<String> openSessions(String activityId) {
