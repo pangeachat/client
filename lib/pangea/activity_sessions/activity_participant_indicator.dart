@@ -56,6 +56,33 @@ class ActivityParticipantIndicator extends StatelessWidget {
           absorbing: !selectable,
           child: HoverBuilder(
             builder: (context, hovered) {
+              final avatar = userId != null
+                  ? user?.avatarUrl == null ||
+                          user!.avatarUrl!.toString().startsWith("mxc")
+                      ? Avatar(
+                          mxContent:
+                              user?.avatarUrl != null ? user!.avatarUrl! : null,
+                          name: userId!.localpart,
+                          size: 60.0,
+                          userId: userId,
+                        )
+                      : ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: CachedNetworkImage(
+                            imageUrl: user!.avatarUrl!.toString(),
+                            width: 60.0,
+                            height: 60.0,
+                            fit: BoxFit.cover,
+                          ),
+                        )
+                  : CircleAvatar(
+                      radius: 30.0,
+                      backgroundColor: theme.colorScheme.primaryContainer,
+                      child: const Icon(
+                        Icons.question_mark,
+                        size: 30.0,
+                      ),
+                    );
               return Opacity(
                 opacity: opacity,
                 child: Container(
@@ -74,46 +101,13 @@ class ActivityParticipantIndicator extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Shimmer.fromColors(
-                        enabled: shimmer && !selected,
-                        baseColor: shimmer && !selected
-                            ? AppConfig.gold.withAlpha(20)
-                            : Colors.transparent,
-                        highlightColor: shimmer && !selected
-                            ? AppConfig.gold.withAlpha(50)
-                            : Colors.transparent,
-                        child: userId != null
-                            ? user?.avatarUrl == null ||
-                                    user!.avatarUrl!
-                                        .toString()
-                                        .startsWith("mxc")
-                                ? Avatar(
-                                    mxContent: user?.avatarUrl != null
-                                        ? user!.avatarUrl!
-                                        : null,
-                                    name: userId!.localpart,
-                                    size: 60.0,
-                                    userId: userId,
-                                  )
-                                : ClipRRect(
-                                    borderRadius: BorderRadius.circular(30),
-                                    child: CachedNetworkImage(
-                                      imageUrl: user!.avatarUrl!.toString(),
-                                      width: 60.0,
-                                      height: 60.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                            : CircleAvatar(
-                                radius: 30.0,
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                child: const Icon(
-                                  Icons.question_mark,
-                                  size: 30.0,
-                                ),
-                              ),
-                      ),
+                      shimmer && !selected
+                          ? Shimmer.fromColors(
+                              baseColor: AppConfig.gold.withAlpha(20),
+                              highlightColor: AppConfig.gold.withAlpha(50),
+                              child: avatar,
+                            )
+                          : avatar,
                       Text(
                         name,
                         style: const TextStyle(
