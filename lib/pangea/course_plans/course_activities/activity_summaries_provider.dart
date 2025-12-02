@@ -91,8 +91,10 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
         continue;
       }
 
-      final isOpen = summary.activityRoles.roles.length <
-          summary.activityPlan.req.numberOfParticipants;
+      final isOpen =
+          !summary.activityRoles.roles.values.any((r) => r.isArchived) &&
+              (summary.activityRoles.roles.length <
+                  summary.activityPlan.req.numberOfParticipants);
 
       if (isOpen) {
         sessions.add(roomId);
