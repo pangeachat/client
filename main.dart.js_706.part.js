@@ -5212,6 +5212,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcementsChatDesc() {
       return "Tik erdv\u0117s administratorius gali skelbti.";
     },
+    notStartedActivitiesTitle$1(num) {
+      return "Open sessions (" + num + ")";
+    },
+    inProgressActivitiesTitle$1(num) {
+      return "Happening now (" + num + ")";
+    },
+    completedActivitiesTitle$1(num) {
+      return "Done (" + num + ")";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5228,7 +5237,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XaiugeyioWomnUWxlkI5TWhjJVw="] = d.current;
+  d["NlEsQu8O+nVpopFloTkIDBGudsE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_706.part.js.map

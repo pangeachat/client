@@ -5212,6 +5212,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcementsChatDesc() {
       return "\u0e40\u0e09\u0e1e\u0e32\u0e30\u0e1c\u0e39\u0e49\u0e14\u0e39\u0e41\u0e25\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e40\u0e17\u0e48\u0e32\u0e19\u0e31\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e42\u0e1e\u0e2a\u0e15\u0e4c\u0e44\u0e14\u0e49.";
     },
+    notStartedActivitiesTitle$1(num) {
+      return "Open sessions (" + num + ")";
+    },
+    inProgressActivitiesTitle$1(num) {
+      return "Happening now (" + num + ")";
+    },
+    completedActivitiesTitle$1(num) {
+      return "Done (" + num + ")";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5225,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7LkHfthEl19q5IVusTZ1G04Ls7w="] = d.current;
+  d["pymctdqTvOR1n3zT1WMT/HGF5yk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_753.part.js.map

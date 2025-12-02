@@ -5212,6 +5212,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcementsChatDesc() {
       return "S\xf3lo o administrador do espazo pode publicar.";
     },
+    notStartedActivitiesTitle$1(num) {
+      return "Open sessions (" + num + ")";
+    },
+    inProgressActivitiesTitle$1(num) {
+      return "Happening now (" + num + ")";
+    },
+    completedActivitiesTitle$1(num) {
+      return "Done (" + num + ")";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5228,7 +5237,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eTXIZg1NHgb0ujvYGUGIfRmhWuQ="] = d.current;
+  d["8kVeFzZilaFtmis3opMpbiqE6go="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_613.part.js.map

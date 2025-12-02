@@ -5213,6 +5213,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcementsChatDesc() {
       return "\u0422\u043e\u043b\u044c\u043a\u0456 \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u0430\u0440 \u043f\u0440\u0430\u0441\u0442\u043e\u0440\u044b \u043c\u043e\u0436\u0430 \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0432\u0430\u0446\u044c.";
     },
+    notStartedActivitiesTitle$1(num) {
+      return "Open sessions (" + num + ")";
+    },
+    inProgressActivitiesTitle$1(num) {
+      return "Happening now (" + num + ")";
+    },
+    completedActivitiesTitle$1(num) {
+      return "Done (" + num + ")";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5229,7 +5238,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["97KYwO8nJPfbE3PNQoK9TBKXh4g="] = d.current;
+  d["sAr7YI8Mkzw6mTJOeGiJBi1T4vM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map

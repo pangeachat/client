@@ -5212,6 +5212,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcementsChatDesc() {
       return "\u0915\u0947\u0935\u0932 \u0938\u094d\u0925\u093e\u0928 \u092a\u094d\u0930\u0936\u093e\u0938\u0915 \u092a\u094b\u0938\u094d\u091f \u0915\u0930 \u0938\u0915\u0924\u093e \u0939\u0948\u0964";
     },
+    notStartedActivitiesTitle$1(num) {
+      return "Open sessions (" + num + ")";
+    },
+    inProgressActivitiesTitle$1(num) {
+      return "Happening now (" + num + ")";
+    },
+    completedActivitiesTitle$1(num) {
+      return "Done (" + num + ")";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5225,7 +5234,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZAYi3UQd/0igvLtAxpWSDTrpUVk="] = d.current;
+  d["uQPUzohdBOObFosrtxJnmPpbRco="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_625.part.js.map
