@@ -476,7 +476,9 @@ class _ActivityStatuses extends StatelessWidget {
                             );
                           },
                         ),
-                        trailing: const Icon(Icons.arrow_forward),
+                        trailing: space.isRoomAdmin
+                            ? const Icon(Icons.arrow_forward)
+                            : null,
                         onTap: space.isRoomAdmin ? () => onTap(roomId) : null,
                       );
                     }),
