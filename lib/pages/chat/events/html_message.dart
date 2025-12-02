@@ -442,12 +442,12 @@ class HtmlMessage extends StatelessWidget {
                 children: [
                   if (token != null && overlayController != null)
                     TokenEmojiButton(
+                      token: token,
                       enabled: token.lemma.saveVocab,
-                      emoji: token.vocabConstructID.userSetEmoji.firstOrNull,
                       targetId: overlayController!.tokenEmojiPopupKey(token),
-                      onSelect: () =>
-                          overlayController!.showTokenEmojiPopup(token),
                       selectModeNotifier: overlayController!.selectedMode,
+                      selectedTokenNotifier:
+                          overlayController!.selectedTokenNotifier,
                     ),
                   if (renderer.showCenterStyling &&
                       token != null &&
@@ -946,6 +946,8 @@ class HtmlMessage extends StatelessWidget {
                 // Use TokenEmojiButton to ensure consistent vertical alignment for non-token elements (e.g., emojis) in practice mode.
                 TokenEmojiButton(
                   selectModeNotifier: overlayController!.selectedMode,
+                  selectedTokenNotifier:
+                      overlayController!.selectedTokenNotifier,
                   enabled: false,
                 ),
               RichText(

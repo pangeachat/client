@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
@@ -282,6 +283,26 @@ class OverlayUtil {
       child: const StarRainWidget(
         overlayKey: "star_rain_level_up",
       ),
+    );
+  }
+
+  static void showPointsGained(
+    String targetId,
+    BuildContext context,
+  ) {
+    showOverlay(
+      overlayKey: "${targetId}_points",
+      followerAnchor: Alignment.bottomCenter,
+      targetAnchor: Alignment.bottomCenter,
+      context: context,
+      child: PointsGainedAnimation(
+        points: 2,
+        targetID: targetId,
+      ),
+      transformTargetId: targetId,
+      closePrevOverlay: false,
+      backDropToDismiss: false,
+      ignorePointer: true,
     );
   }
 }
