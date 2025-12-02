@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+
 /// A generic sealed class that represents the state of an asynchronous operation.
 sealed class AsyncState<T> {
   /// Base constructor for all asynchronous state variants.
@@ -52,4 +56,48 @@ class AsyncError<T> extends AsyncState<T> {
 
   /// Creates an error [AsyncState] with an [error].
   const AsyncError(this.error);
+}
+
+abstract class AsyncLoader<T> {
+  final ValueNotifier<AsyncState<T>> state = ValueNotifier(AsyncState.idle());
+  bool _disposed = false;
+
+  bool get isIdle => state.value is AsyncIdle<T>;
+  bool get isLoading => state.value is AsyncLoading<T>;
+  bool get isLoaded => state.value is AsyncLoaded<T>;
+  bool get isError => state.value is AsyncError<T>;
+
+  T? get value => isLoaded ? (state.value as AsyncLoaded<T>).value : null;
+
+  void dispose() {
+    _disposed = true;
+    state.dispose();
+  }
+
+  Future<T> fetch();
+
+  Future<void> load() async {
+    if (state.value is AsyncLoading || state.value is AsyncLoaded) {
+      // If already loading or loaded, do nothing.
+      return;
+    }
+
+    state.value = AsyncState.loading();
+
+    try {
+      final result = await fetch();
+      if (_disposed) return;
+      state.value = AsyncState.loaded(result);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {},
+      );
+
+      if (!_disposed) {
+        state.value = AsyncState.error(e);
+      }
+    }
+  }
 }
