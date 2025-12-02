@@ -146,17 +146,6 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   StreamSubscription? _playerStateSub;
   StreamSubscription? _audioSub;
 
-  static List<SelectMode> get textModes => [
-        SelectMode.audio,
-        SelectMode.translate,
-        SelectMode.practice,
-        SelectMode.emoji,
-      ];
-
-  static List<SelectMode> get audioModes => [
-        SelectMode.speechTranslation,
-      ];
-
   MatrixState? matrix;
 
   @override
@@ -309,13 +298,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final List<SelectMode> modes =
-        widget.overlayController.showLanguageAssistance
-            ? messageEvent.isAudioMessage == true
-                ? audioModes
-                : textModes
-            : [];
-
+    final modes = controller.readingAssistanceModes;
     return Material(
       type: MaterialType.transparency,
       child: SizedBox(

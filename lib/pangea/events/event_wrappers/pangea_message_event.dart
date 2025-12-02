@@ -13,7 +13,6 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
-import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
@@ -258,44 +257,20 @@ class PangeaMessageEvent {
         .speechToText;
   }
 
-  Future<SpeechToTextModel?> getSpeechToText(
+  Future<SpeechToTextModel> getSpeechToText(
     String l1Code,
     String l2Code,
   ) async {
     if (!isAudioMessage) {
-      ErrorHandler.logError(
-        e: 'Calling getSpeechToText on non-audio message',
-        s: StackTrace.current,
-        data: {
-          "content": _event.content,
-          "eventId": _event.eventId,
-          "roomId": _event.roomId,
-          "userId": _event.room.client.userID,
-          "account_data": _event.room.client.accountData,
-        },
-      );
-      return null;
+      throw 'Calling getSpeechToText on non-audio message';
     }
 
     final rawBotTranscription =
         event.content.tryGetMap(ModelKey.botTranscription);
     if (rawBotTranscription != null) {
-      SpeechToTextModel botTranscription;
-      try {
-        botTranscription = SpeechToTextModel.fromJson(
-          Map<String, dynamic>.from(rawBotTranscription),
-        );
-      } catch (err, s) {
-        ErrorHandler.logError(
-          e: err,
-          s: s,
-          data: {
-            "event": _event.toJson(),
-          },
-          m: "error parsing botTranscription",
-        );
-        return null;
-      }
+      final SpeechToTextModel botTranscription = SpeechToTextModel.fromJson(
+        Map<String, dynamic>.from(rawBotTranscription),
+      );
 
       _representations ??= [];
       _representations!.add(
@@ -361,7 +336,7 @@ class PangeaMessageEvent {
     return response;
   }
 
-  Future<SttTranslationModel?> sttTranslationByLanguageGlobal({
+  Future<String> sttTranslationByLanguageGlobal({
     required String langCode,
     required String l1Code,
     required String l2Code,
@@ -376,8 +351,12 @@ class PangeaMessageEvent {
       (element) => element.content.speechToText != null,
     );
 
-    if (rep == null) return null;
-    return rep.getSttTranslation(userL1: l1Code, userL2: l2Code);
+    if (rep == null) {
+      throw Exception("No speech to text representation found");
+    }
+
+    final resp = await rep.getSttTranslation(userL1: l1Code, userL2: l2Code);
+    return resp.translation;
   }
 
   PangeaMessageTokens? _tokensSafe(Map<String, dynamic>? content) {
@@ -572,7 +551,7 @@ class PangeaMessageEvent {
     );
   }
 
-  Future<PangeaRepresentation> l1Respresentation() async {
+  Future<String> l1Respresentation() async {
     if (l1Code == null || l2Code == null) {
       throw Exception("Missing language codes");
     }
@@ -595,7 +574,7 @@ class PangeaMessageEvent {
       );
     }
 
-    if (rep != null) return rep.content;
+    if (rep != null) return rep.content.text;
 
     final String srcLang = includedIT
         ? (originalWritten?.langCode ?? l1Code!)
@@ -603,7 +582,7 @@ class PangeaMessageEvent {
 
     // clear representations cache so the new representation event can be added when next requested
     _representations = null;
-    return MessageDataController.getPangeaRepresentation(
+    final resp = await MessageDataController.getPangeaRepresentation(
       req: FullTextTranslationRequestModel(
         text: includedIT ? originalWrittenContent : messageDisplayText,
         srcLang: srcLang,
@@ -613,6 +592,7 @@ class PangeaMessageEvent {
       ),
       messageEvent: _event,
     );
+    return resp.text;
   }
 
   RepresentationEvent? get originalSent => representations

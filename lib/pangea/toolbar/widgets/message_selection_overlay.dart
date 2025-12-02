@@ -134,16 +134,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  /// Decides whether an _initialSelectedToken should be used
-  /// for a first practice activity on the word meaning
-  Future<void> _initializeSelectedToken() async {
-    // if there is no initial selected token, then we don't need to do anything
-    if (widget._initialSelectedToken == null) {
-      return;
-    }
-
-    updateSelectedSpan(widget._initialSelectedToken!.text);
-  }
+  void _initializeSelectedToken() => widget._initialSelectedToken != null
+      ? updateSelectedSpan(widget._initialSelectedToken!.text)
+      : null;
 
   /////////////////////////////////////
   /// State setting
@@ -250,19 +243,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         ?.firstWhereOrNull(isTokenSelected);
   }
 
-  bool get showLanguageAssistance {
-    if (!event.status.isSent || event.type != EventTypes.Message) {
-      return false;
-    }
-
-    if (event.messageType == MessageTypes.Text) {
-      return pangeaMessageEvent.messageDisplayLangCode.split("-").first ==
-          MatrixState.pangeaController.languageController.userL2!.langCodeShort;
-    }
-
-    return event.messageType == MessageTypes.Audio;
-  }
-
   /// If sentence TTS is playing a word, highlight that word in message overlay
   void highlightCurrentText(int currentPosition, List<TTSToken> ttsTokens) {
     final List<TTSToken> textToSelect = [];
@@ -302,22 +282,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   void onClickOverlayMessageToken(
     PangeaToken token,
-  ) {
-    // /// we don't want to associate the audio with the text in this mode
-    // if (practiceSelection?.hasActiveActivityByToken(
-    //           ActivityTypeEnum.wordFocusListening,
-    //           token,
-    //         ) ==
-    //         false ||
-    //     !hideWordCardContent) {
-    //   TtsController.tryToSpeak(
-    //     token.text.content,
-    //     targetID: null,
-    //     langCode: pangeaMessageEvent.messageDisplayLangCode,
-    //   );
-    // }
-    updateSelectedSpan(token.text);
-  }
+  ) =>
+      updateSelectedSpan(token.text);
 
   /// Whether the given token is currently selected or highlighted
   bool isTokenSelected(PangeaToken token) {

@@ -2130,7 +2130,7 @@ class ChatController extends State<ChatPageWithRoom>
         MatrixState.pangeaController.languageController.userL2?.langCodeShort ??
             LanguageKeys.unknownLanguage,
       );
-      if (stt == null || stt.transcript.sttTokens.isEmpty) return;
+      if (stt.transcript.sttTokens.isEmpty) return;
       final constructs = stt.constructs(roomId, eventId);
       if (constructs.isEmpty) return;
 

@@ -58,7 +58,7 @@ class OverMessageOverlay extends StatelessWidget {
                             ? controller.originalMessageSize.height
                             : null,
                         messageWidth: controller.widget.overlayController
-                                .selectModeController.showingExtraContent
+                                .selectModeController.isShowingExtraContent
                             ? max(controller.originalMessageSize.width, 150)
                             : controller.originalMessageSize.width,
                         overlayController: controller.widget.overlayController,
