@@ -196,6 +196,7 @@ abstract class AppConfig {
   static String errorSubscriptionId = "pangea_subscription_error";
 
   static double volume = 1.0;
+  static bool showedActivityMenu = false;
   // Pangea#
 
   static void loadFromJson(Map<String, dynamic> json) {
