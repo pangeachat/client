@@ -2321,6 +2321,14 @@ class ChatController extends State<ChatPageWithRoom>
   void toggleShowDropdown() {
     inputFocus.unfocus();
     activityController.toggleShowDropdown();
+
+    if (!AppConfig.showedActivityMenu) {
+      AppConfig.showedActivityMenu = true;
+      Matrix.of(context).store.setBool(
+            SettingKeys.showedActivityMenu,
+            AppConfig.showedActivityMenu,
+          );
+    }
   }
   // Pangea#
 
