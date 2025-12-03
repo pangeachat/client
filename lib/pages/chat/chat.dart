@@ -2246,6 +2246,13 @@ class ChatController extends State<ChatPageWithRoom>
 
   bool showActivityDropdown = false;
   void setShowDropdown(bool show) async {
+    if (show && !AppConfig.showedActivityMenu) {
+      AppConfig.showedActivityMenu = true;
+      Matrix.of(context).store.setBool(
+            SettingKeys.showedActivityMenu,
+            AppConfig.showedActivityMenu,
+          );
+    }
     setState(() => showActivityDropdown = show);
   }
 
