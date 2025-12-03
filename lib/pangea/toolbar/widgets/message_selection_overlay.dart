@@ -20,7 +20,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_ev
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';

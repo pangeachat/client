@@ -24,7 +24,9 @@ import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_repo.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
@@ -360,7 +362,7 @@ class PangeaMessageEvent {
 
     final rep = representationByLanguage(langCode);
     final tokensResp = await rep?.requestTokens();
-    final request = TextToSpeechRequest(
+    final request = TextToSpeechRequestModel(
       text: rep?.content.text ?? body,
       tokens: tokensResp?.result?.map((t) => t.text).toList() ?? [],
       langCode: langCode,
@@ -368,10 +370,18 @@ class PangeaMessageEvent {
       userL2: _l2Code ?? LanguageKeys.unknownLanguage,
     );
 
-    final response = await MatrixState.pangeaController.textToSpeech.get(
+    final result = await TextToSpeechRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
       request,
     );
 
+    if (result.error != null) {
+      throw Exception(
+        "Error getting text to speech: ${result.error}",
+      );
+    }
+
+    final response = result.result!;
     final audioBytes = base64.decode(response.audioContent);
     final fileName =
         "audio_for_${_event.eventId}_$langCode.${response.fileExtension}";

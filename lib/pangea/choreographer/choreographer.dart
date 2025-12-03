@@ -21,7 +21,7 @@ import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';

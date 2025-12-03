@@ -20,7 +20,10 @@ import 'package:fluffychat/pangea/common/widgets/card_header.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_repo.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart'
@@ -263,35 +266,26 @@ class TtsController {
     String langCode,
     List<PangeaTokenText> tokens,
   ) async {
-    TextToSpeechResponse? ttsRes;
-    try {
-      loadingChoreoStream.add(true);
-      ttsRes = await MatrixState.pangeaController.textToSpeech.get(
-        TextToSpeechRequest(
-          text: text,
-          langCode: langCode,
-          tokens: tokens,
-          userL1:
-              MatrixState.pangeaController.languageController.activeL1Code() ??
-                  LanguageKeys.unknownLanguage,
-          userL2:
-              MatrixState.pangeaController.languageController.activeL2Code() ??
-                  LanguageKeys.unknownLanguage,
-        ),
-      );
-    } catch (e, s) {
-      error_handler.ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'text': text,
-        },
-      );
-    } finally {
-      loadingChoreoStream.add(false);
-    }
+    TextToSpeechResponseModel? ttsRes;
 
-    if (ttsRes == null) return;
+    loadingChoreoStream.add(true);
+    final result = await TextToSpeechRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      TextToSpeechRequestModel(
+        text: text,
+        langCode: langCode,
+        tokens: tokens,
+        userL1:
+            MatrixState.pangeaController.languageController.activeL1Code() ??
+                LanguageKeys.unknownLanguage,
+        userL2:
+            MatrixState.pangeaController.languageController.activeL2Code() ??
+                LanguageKeys.unknownLanguage,
+      ),
+    );
+    loadingChoreoStream.add(false);
+    if (result.isError) return;
+    ttsRes = result.result!;
 
     try {
       Logs().i('Speaking from choreo: $text, langCode: $langCode');

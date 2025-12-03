@@ -10,7 +10,7 @@ import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 
 class MessageAudioCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;

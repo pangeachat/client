@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_repo.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_request.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
