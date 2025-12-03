@@ -30,6 +30,7 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
@@ -1994,8 +1995,13 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
+    final langCode =
+        pangeaMessageEvent?.originalSent?.langCode.split('-').first;
+
     if (LanguageMismatchRepo.shouldShowByEvent(event.eventId) &&
-        pangeaMessageEvent?.originalSent?.content.langCodeMatchesL2 == false) {
+        langCode != null &&
+        pangeaMessageEvent?.originalSent?.content.langCodeMatchesL2 == false &&
+        room.client.allMyAnalyticsRooms.any((r) => r.madeForLang == langCode)) {
       LanguageMismatchRepo.setEvent(event.eventId);
       OverlayUtil.showLanguageMismatchPopup(
         context: context,
