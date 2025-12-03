@@ -19,9 +19,10 @@ import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
+import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
-import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -227,13 +228,13 @@ class PangeaMessageEvent {
             null;
       }).toSet();
 
-  SpeechToTextModel? getSpeechToTextLocal() {
+  SpeechToTextResponseModel? getSpeechToTextLocal() {
     final rawBotTranscription =
         event.content.tryGetMap(ModelKey.botTranscription);
 
     if (rawBotTranscription != null) {
       try {
-        return SpeechToTextModel.fromJson(
+        return SpeechToTextResponseModel.fromJson(
           Map<String, dynamic>.from(rawBotTranscription),
         );
       } catch (err, s) {
@@ -257,7 +258,7 @@ class PangeaMessageEvent {
         .speechToText;
   }
 
-  Future<SpeechToTextModel> getSpeechToText(
+  Future<SpeechToTextResponseModel> getSpeechToText(
     String l1Code,
     String l2Code,
   ) async {
@@ -268,7 +269,8 @@ class PangeaMessageEvent {
     final rawBotTranscription =
         event.content.tryGetMap(ModelKey.botTranscription);
     if (rawBotTranscription != null) {
-      final SpeechToTextModel botTranscription = SpeechToTextModel.fromJson(
+      final SpeechToTextResponseModel botTranscription =
+          SpeechToTextResponseModel.fromJson(
         Map<String, dynamic>.from(rawBotTranscription),
       );
 
@@ -290,7 +292,7 @@ class PangeaMessageEvent {
       return botTranscription;
     }
 
-    final SpeechToTextModel? speechToTextLocal = representations
+    final SpeechToTextResponseModel? speechToTextLocal = representations
         .firstWhereOrNull(
           (element) => element.content.speechToText != null,
         )
@@ -303,7 +305,7 @@ class PangeaMessageEvent {
 
     final matrixFile = await _event.downloadAndDecryptAttachment();
 
-    final SpeechToTextModel response =
+    final SpeechToTextResponseModel response =
         await MatrixState.pangeaController.speechToText.get(
       SpeechToTextRequestModel(
         audioContent: matrixFile.bytes,

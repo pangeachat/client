@@ -21,8 +21,8 @@ import 'package:fluffychat/pangea/learning_settings/controllers/language_control
 import 'package:fluffychat/pangea/learning_settings/utils/locale_provider.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/spaces/controllers/space_code_controller.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_controller.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/speech_to_text_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/user/controllers/permissions_controller.dart';

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
-import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 
 class SttTranscriptTokens extends StatelessWidget {
-  final SpeechToTextModel model;
+  final SpeechToTextResponseModel model;
   final TextStyle? style;
 
   final void Function(PangeaToken)? onClick;

@@ -26,11 +26,8 @@ enum AudioEncodingEnum {
   speexWithHeaderByte,
   mp3,
   mp4,
-  webmOpus,
-}
+  webmOpus;
 
-// Utility extension to map enum values to their corresponding string value as used by the API
-extension AudioEncodingExtension on AudioEncodingEnum {
   String get value {
     switch (this) {
       case AudioEncodingEnum.linear16:

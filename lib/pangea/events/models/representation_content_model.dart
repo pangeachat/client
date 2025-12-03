@@ -8,7 +8,7 @@ import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/choreographer/igc/pangea_match_status_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// this class is contained within a [RepresentationEvent]
@@ -30,7 +30,7 @@ class PangeaRepresentation {
   bool originalWritten;
 
   // a representation can be create via speech to text on the original message
-  SpeechToTextModel? speechToText;
+  SpeechToTextResponseModel? speechToText;
 
   // how do we know which representation was sent by author?
   // RepresentationEvent.text == PangeaMessageEvent.event.body
@@ -70,7 +70,7 @@ class PangeaRepresentation {
       originalWritten: json[_originalWrittenKey] ?? false,
       speechToText: json[_speechToTextKey] == null
           ? null
-          : SpeechToTextModel.fromJson(json[_speechToTextKey]),
+          : SpeechToTextResponseModel.fromJson(json[_speechToTextKey]),
     );
   }
 
