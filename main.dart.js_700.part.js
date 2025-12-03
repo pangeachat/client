@@ -5224,6 +5224,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Scegli un'attivit\xe0 diversa";
     },
+    get$messageLanguageMismatchMessage() {
+      return "La tua lingua di destinazione non corrisponde a questo messaggio. Vuoi aggiornare la tua lingua di destinazione?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["70KRHTTsiOwdxAQ6aCjUG3BnpME="] = d.current;
+  d["I1y2Es45kCOkXz7dOwTnrwUabGI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_700.part.js.map

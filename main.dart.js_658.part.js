@@ -5224,6 +5224,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "V\xe1lassz egy m\xe1sik tev\xe9kenys\xe9get";
     },
+    get$messageLanguageMismatchMessage() {
+      return "A c\xe9l nyelve nem egyezik meg ezzel az \xfczenettel. Friss\xedti a c\xe9l nyelv\xe9t?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5237,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aAieCvwxluPIhjLk8SE1N+gXbe8="] = d.current;
+  d["GQxkTfFG0PoOJ6jWxuKW3vPimDg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

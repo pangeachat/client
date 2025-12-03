@@ -5224,6 +5224,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Velg en annen aktivitet";
     },
+    get$messageLanguageMismatchMessage() {
+      return "M\xe5l spr\xe5ket ditt samsvarer ikke med denne meldingen. Vil du oppdatere m\xe5lspr\xe5ket ditt?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XD/dzOqQB94S7kxw8c+oW2rBJZE="] = d.current;
+  d["7HEsR4Jx+YNSPx7XWhFMLim/bY0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_719.part.js.map

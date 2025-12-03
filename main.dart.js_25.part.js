@@ -5236,6 +5236,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Escolha uma atividade diferente";
     },
+    get$messageLanguageMismatchMessage() {
+      return string$.O_seu_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10445,6 +10448,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pickDifferentActivity() {
       return "Escolha uma atividade diferente";
+    },
+    get$messageLanguageMismatchMessage() {
+      return "Seu idioma de destino n\xe3o corresponde a esta mensagem. Atualizar seu idioma de destino?";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15656,6 +15662,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Escolha uma atividade diferente";
     },
+    get$messageLanguageMismatchMessage() {
+      return string$.O_seu_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15782,6 +15791,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     O_curss: "O curso ser\xe1 exclu\xeddo para todos os participantes. Esta a\xe7\xe3o n\xe3o pode ser desfeita.",
     O_idio: "O idioma de destino n\xe3o corresponde ao idioma desta atividade. Deseja atualizar seu idioma de destino?",
     O_serv: "O servidor n\xe3o fornece nenhuma informa\xe7\xe3o de contato v\xe1lida",
+    O_seu_: "O seu idioma de destino n\xe3o corresponde a esta mensagem. Atualizar o seu idioma de destino?",
     Oculta: "Ocultar formatos de mensagem inv\xe1lidos ou desconhecidos",
     Oh__es: "Oh, este curso precisa de um plano!\n\nPlanos de curso s\xe3o uma sequ\xeancia de t\xf3picos e atividades de conversa.",
     Ops__E: "Ops! Esta atividade precisa de mais 1 pessoa.",
@@ -15840,7 +15850,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4Mmf1NQix/FIsvBde/1XZ0ExnPM="] = d.current;
+  d["s3cm7subdnGFhsNTBS/vRuwDSSo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

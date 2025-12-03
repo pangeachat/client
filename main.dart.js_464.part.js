@@ -5224,6 +5224,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Elektu alian aktivon";
     },
+    get$messageLanguageMismatchMessage() {
+      return "Via celolingvo ne kongruas kun \u0109i tiu mesa\u011do. \u0108u \u011disdatigi vian celolingvon?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5237,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0+uUZ+Irfl8Rw6J5LlyEq4m92HM="] = d.current;
+  d["0hv+ioX8QiLAl+C/xzIBGpYDnl0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_464.part.js.map

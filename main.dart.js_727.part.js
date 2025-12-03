@@ -5225,6 +5225,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Wybierz inn\u0105 aktywno\u015b\u0107";
     },
+    get$messageLanguageMismatchMessage() {
+      return "Tw\xf3j docelowy j\u0119zyk nie pasuje do tej wiadomo\u015bci. Zaktualizowa\u0107 sw\xf3j docelowy j\u0119zyk?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5238,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DkOOpaP4hKRqiL6N1BJaLye5HUM="] = d.current;
+  d["Vqvkfhk7zxYF4EC8Y32+mmSh+nY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_727.part.js.map

@@ -5224,6 +5224,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "V\xe6lg en anden aktivitet";
     },
+    get$messageLanguageMismatchMessage() {
+      return "Dit m\xe5lsprog stemmer ikke overens med denne besked. Opdater dit m\xe5lsprog?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5237,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DzktiRF/MXbuS0cTyRFDWeN8t04="] = d.current;
+  d["qi/SbebN48bwOnPBZ70su4ailSE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_301.part.js.map

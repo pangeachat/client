@@ -5224,6 +5224,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Pasirinkite kit\u0105 veikl\u0105";
     },
+    get$messageLanguageMismatchMessage() {
+      return "J\u016bs\u0173 tikslin\u0117 kalba nesutampa su \u0161iuo prane\u0161imu. Ar norite atnaujinti savo tikslin\u0119 kalb\u0105?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2LStsqha6ATScPutysDwIKfuRys="] = d.current;
+  d["V9QgfdXBZWW1wu515D7hnw6LAMw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_706.part.js.map

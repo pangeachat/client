@@ -5224,6 +5224,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Vali teine tegevus";
     },
+    get$messageLanguageMismatchMessage() {
+      return "Teie sihtkeel ei \xfchti selle s\xf5numiga. Kas soovite oma sihtkeelt uuendada?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5237,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vdqCVgUsWRSxFjiMyw7yv44/wxs="] = d.current;
+  d["7sxAMBeOu+6+se58u9AY9prTdOg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_537.part.js.map
