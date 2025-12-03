@@ -27,6 +27,7 @@ enum InstructionsEnum {
   emptyChatWarning,
   activityStatsMenu,
   chatListTooltip,
+  noSavedActivitiesYet,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -53,6 +54,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.chatListTooltip:
       case InstructionsEnum.activityAnalyticsList:
       case InstructionsEnum.levelAnalytics:
+      case InstructionsEnum.noSavedActivitiesYet:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -109,6 +111,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.chatListTooltip;
       case InstructionsEnum.levelAnalytics:
         return l10n.levelInfoTooltip;
+      case InstructionsEnum.noSavedActivitiesYet:
+        return l10n.noSavedActivitiesYet;
     }
   }
 
