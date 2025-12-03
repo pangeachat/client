@@ -41,6 +41,38 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     }
   }
 
+  bool isActivityStarted(String roomId) {
+    if (isActivityFinished(roomId)) return true;
+    final roomSummary = roomSummaries?[roomId];
+    if (roomSummary == null) return false;
+
+    final activityPlan = roomSummary.activityPlan;
+    final assignedRoles = roomSummary.joinedUsersWithRoles;
+    return activityPlan.roles.length - assignedRoles.length <= 0;
+  }
+
+  bool isActivityFinished(String roomId) {
+    final roomSummary = roomSummaries?[roomId];
+    if (roomSummary == null) return false;
+
+    final activityRoles = roomSummary.activityRoles;
+    final roles = activityRoles.roles.values.where(
+      (r) => r.userId != BotName.byEnvironment,
+    );
+
+    if (roles.isEmpty) return false;
+    if (!roles.any((r) => r.isFinished)) return false;
+
+    return roles.every((r) {
+      if (r.isFinished) return true;
+
+      // if the user is in the chat (not null && membership is join),
+      // then the activity is not finished for them
+      final membership = roomSummary.getMembershipForUserId(r.userId);
+      return membership == null || membership != Membership.join;
+    });
+  }
+
   Map<String, RoomSummaryResponse> activitySessions(String activityId) =>
       Map.fromEntries(
         roomSummaries?.entries
@@ -62,17 +94,13 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     for (final entry in sessions.entries) {
       final session = entry.value;
       final roomId = entry.key;
-      final roles = session.activityRoles.roles.values;
 
-      if (roles.isNotEmpty &&
-          (roles.any((r) => r.isArchived) ||
-              roles.every((r) => r.isFinished))) {
+      if (isActivityFinished(roomId)) {
         statuses[ActivitySummaryStatus.completed]![roomId] = session;
-      } else if (session.activityRoles.roles.length <
-          session.activityPlan.req.numberOfParticipants) {
-        statuses[ActivitySummaryStatus.notStarted]![roomId] = session;
-      } else {
+      } else if (isActivityStarted(roomId)) {
         statuses[ActivitySummaryStatus.inProgress]![roomId] = session;
+      } else {
+        statuses[ActivitySummaryStatus.notStarted]![roomId] = session;
       }
     }
 
@@ -91,12 +119,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
         continue;
       }
 
-      final isOpen =
-          !summary.activityRoles.roles.values.any((r) => r.isArchived) &&
-              (summary.activityRoles.roles.length <
-                  summary.activityPlan.req.numberOfParticipants);
-
-      if (isOpen) {
+      if (!isActivityStarted(roomId)) {
         sessions.add(roomId);
       }
     }
