@@ -5,85 +5,61 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/constants/local.key.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/pangea/spaces/space_code_repo.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/spaces/utils/knock_space_extension.dart';
 import 'package:fluffychat/pangea/spaces/widgets/too_many_requests_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../common/controllers/base_controller.dart';
+import '../common/controllers/base_controller.dart';
 
 class NotFoundException implements Exception {}
 
 class SpaceCodeController extends BaseController {
-  late PangeaController _pangeaController;
-  static final GetStorage _spaceStorage = GetStorage('class_storage');
+  static ValueNotifier<String?> codeNotifier = ValueNotifier<String?>(null);
 
-  Completer<void> initCompleter = Completer<void>();
-  ValueNotifier<String?> codeNotifier = ValueNotifier<String?>(null);
-
-  SpaceCodeController(PangeaController pangeaController) : super() {
-    _pangeaController = pangeaController;
-    GetStorage.init('class_storage').then(
-      (_) => initCompleter.complete(),
-    );
+  static Future<void> onOpenAppViaUrl(Uri url) async {
+    if (url.fragment.isEmpty) return;
+    final fragment = Uri.parse(url.fragment);
+    final code = fragment.queryParameters[SpaceConstants.classCode];
+    if (code != null && fragment.path.contains('join_with_link')) {
+      await SpaceCodeRepo.setSpaceCode(code);
+      codeNotifier.value = code;
+    }
   }
 
-  Future<void> cacheSpaceCode(String code) async {
-    if (code.isEmpty) return;
-    await _spaceStorage.write(
-      PLocalKey.cachedSpaceCodeToJoin,
-      code,
-    );
-    codeNotifier.value = code;
-  }
-
-  String? get justInputtedCode =>
-      _spaceStorage.read(PLocalKey.justInputtedCode);
-
-  String? get cachedSpaceCode =>
-      _spaceStorage.read(PLocalKey.cachedSpaceCodeToJoin);
-
-  Future<String?> joinCachedSpaceCode(BuildContext context) async {
-    final String? spaceCode = cachedSpaceCode;
+  static Future<String?> joinCachedSpaceCode(BuildContext context) async {
+    final String? spaceCode = SpaceCodeRepo.spaceCode;
     if (spaceCode == null) return null;
     final spaceId = await joinSpaceWithCode(
       context,
       spaceCode,
     );
 
-    await _spaceStorage.remove(
-      PLocalKey.cachedSpaceCodeToJoin,
-    );
-
+    await SpaceCodeRepo.clearSpaceCode();
     if (spaceId != null) {
-      final room = _pangeaController.matrixState.client.getRoomById(spaceId);
+      final room =
+          MatrixState.pangeaController.matrixState.client.getRoomById(spaceId);
       room?.isSpace ?? true
           ? context.go('/rooms/spaces/$spaceId/details')
           : context.go('/rooms/${room?.id}');
       return spaceId;
     }
-
     return null;
   }
 
-  Future<String?> joinSpaceWithCode(
+  static Future<String?> joinSpaceWithCode(
     BuildContext context,
     String spaceCode, {
     String? notFoundError,
   }) async {
-    final client = _pangeaController.matrixState.client;
-    await _spaceStorage.write(
-      PLocalKey.justInputtedCode,
-      spaceCode,
-    );
+    final client = MatrixState.pangeaController.matrixState.client;
+    await SpaceCodeRepo.setRecentCode(spaceCode);
 
     final resp = await showFutureLoadingDialog<KnockSpaceResponse>(
       context: context,
@@ -148,8 +124,8 @@ class SpaceCodeController extends BaseController {
     return roomIdToJoin;
   }
 
-  Future<void> _joinSpace(String spaceId) async {
-    final client = _pangeaController.matrixState.client;
+  static Future<void> _joinSpace(String spaceId) async {
+    final client = MatrixState.pangeaController.matrixState.client;
     await client.joinRoomById(spaceId);
     Room? room = client.getRoomById(spaceId);
 
@@ -178,16 +154,6 @@ class SpaceCodeController extends BaseController {
             .firstWhereOrNull((u) => u.id == room?.client.userID)
             ?.membership) {
       await room.requestParticipants();
-    }
-  }
-
-  static Future<void> onOpenAppViaUrl(Uri url) async {
-    if (url.fragment.isEmpty) return;
-    final fragment = Uri.parse(url.fragment);
-    final code = fragment.queryParameters[SpaceConstants.classCode];
-    if (code != null && fragment.path.contains('join_with_link')) {
-      await MatrixState.pangeaController.spaceCodeController
-          .cacheSpaceCode(code);
     }
   }
 }

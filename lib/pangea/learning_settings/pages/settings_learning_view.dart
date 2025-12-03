@@ -13,12 +13,12 @@ import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/instructions/reset_instructions_list_tile.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/country_picker_tile.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_settings_switch_list_tile.dart';
-import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

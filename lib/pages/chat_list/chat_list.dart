@@ -20,6 +20,8 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_code_controller.dart';
+import 'package:fluffychat/pangea/spaces/space_code_repo.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -39,6 +41,7 @@ import '../../widgets/matrix.dart';
 
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
+
 
 enum PopupMenuAction {
   settings,
@@ -587,10 +590,8 @@ class ChatListController extends State<ChatList>
             spaceId,
           );
 
-          final String? justInputtedCode =
-              MatrixState.pangeaController.spaceCodeController.justInputtedCode;
-          final newSpaceCode = space?.classCode;
-          if (newSpaceCode?.toLowerCase() == justInputtedCode?.toLowerCase()) {
+          if (space?.classCode?.toLowerCase() ==
+              SpaceCodeRepo.recentCode?.toLowerCase()) {
             return;
           }
 
@@ -700,8 +701,7 @@ class ChatListController extends State<ChatList>
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .removeListener(_onSubscribe);
-    MatrixState.pangeaController.spaceCodeController.codeNotifier
-        .removeListener(_onCacheSpaceCode);
+    SpaceCodeController.codeNotifier.removeListener(_onCacheSpaceCode);
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -1112,18 +1112,14 @@ class ChatListController extends State<ChatList>
   void _initPangeaControllers(Client client) {
     MatrixState.pangeaController.initControllers();
     if (mounted) {
-      MatrixState.pangeaController.spaceCodeController
-          .joinCachedSpaceCode(context);
-      MatrixState.pangeaController.spaceCodeController.codeNotifier
-          .addListener(_onCacheSpaceCode);
+      SpaceCodeController.joinCachedSpaceCode(context);
+      SpaceCodeController.codeNotifier.addListener(_onCacheSpaceCode);
     }
   }
 
   void _onCacheSpaceCode() {
     if (!mounted) return;
-    MatrixState.pangeaController.spaceCodeController.joinCachedSpaceCode(
-      context,
-    );
+    SpaceCodeController.joinCachedSpaceCode(context);
   }
   // Pangea#
 

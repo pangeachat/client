@@ -45,6 +45,7 @@ void main() async {
   final List<Future> initFutures = [
     GetStorage.init(),
     GetStorage.init("subscription_storage"),
+    GetStorage.init('class_storage'),
   ];
   await Future.wait(initFutures);
   // Pangea#

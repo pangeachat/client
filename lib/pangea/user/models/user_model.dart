@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/spaces/models/space_model.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../learning_settings/models/language_model.dart';
 

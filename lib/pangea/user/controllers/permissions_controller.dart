@@ -2,7 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/spaces/models/space_model.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
 
 class PermissionsController extends BaseController {
   late PangeaController _pangeaController;

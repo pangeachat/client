@@ -1,5 +1,5 @@
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 enum CourseDefaultChatsEnum {
   introductions,

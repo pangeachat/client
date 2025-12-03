@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/pangea/spaces/space_code_controller.dart';
 
 //if on home with classcode in url and not logged in, then save it soemhow and after llogin, join class automatically
 //if on home with classcode in url and logged in, then join class automatically
@@ -33,8 +33,7 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
       }
 
       if (widget.classCode != null) {
-        await MatrixState.pangeaController.spaceCodeController
-            .cacheSpaceCode(widget.classCode!);
+        await SpaceCodeController.cacheSpaceCode(widget.classCode!);
       }
       context.push("/home");
     });

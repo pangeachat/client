@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_rooms_chunk_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_code_controller.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -83,8 +84,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
   bool get _isKnockRoom => widget.chunk?.joinRule == 'knock';
 
   Future<void> _joinWithCode() async {
-    final resp = await MatrixState.pangeaController.spaceCodeController
-        .joinSpaceWithCode(
+    final resp = await SpaceCodeController.joinSpaceWithCode(
       context,
       _codeController.text,
       notFoundError: L10n.of(context).notTheCodeError,
