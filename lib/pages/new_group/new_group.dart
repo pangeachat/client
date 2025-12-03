@@ -197,8 +197,6 @@ class NewGroupController extends State<NewGroup> {
     // context.pop<String>(spaceId);
     final spaceId = await Matrix.of(context).client.createPangeaSpace(
           name: nameController.text,
-          introChatName: L10n.of(context).introductions,
-          announcementsChatName: L10n.of(context).announcements,
           visibility: sdk.Visibility.private,
           joinRules: sdk.JoinRules.knock,
           avatarUrl: avatarUrl.toString(),

@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-11-19 10:05:49.974610",
+  "@@last_modified": "2025-12-01 12:39:46.878014",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -12201,6 +12201,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nije moguće učitati povratne informacije.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Istaknite ciljne riječi ispod tako da ih pošaljete ili vježbate s njima u chatu",
+  "noSavedActivitiesYet": "Aktivnosti će se ovdje pojaviti kada budu dovršene i spremljene.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Promijeni tečaj",
+  "changeCourseDesc": "Ovdje možete promijeniti plan tečaja ovog tečaja.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktivnost vježbanja završena",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Kreiraj chat za uvod",
+  "introChatDesc": "Svako u prostoru može objavljivati.",
+  "announcementsChatTitle": "Chat za obavijesti",
+  "announcementsChatDesc": "Samo administrator prostora može objavljivati.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

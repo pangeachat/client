@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-11-19 10:06:43.229771",
+  "@@last_modified": "2025-12-01 12:40:32.542590",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -12051,6 +12051,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Geri bildirimi yüklemek başarısız oldu.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
+  "noSavedActivitiesYet": "Aktiviteler tamamlandığında ve kaydedildiğinde burada görünecektir.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Ders değiştir",
+  "changeCourseDesc": "Burada bu dersin ders planını değiştirebilirsiniz.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Pratik etkinliği tamamlandı",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Tanıtım Sohbeti Oluştur",
+  "introChatDesc": "Mekandaki herkes paylaşımda bulunabilir.",
+  "announcementsChatTitle": "Duyurular Sohbeti",
+  "announcementsChatDesc": "Sadece mekan yöneticisi paylaşımda bulunabilir.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

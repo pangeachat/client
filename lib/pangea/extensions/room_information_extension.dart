@@ -8,20 +8,6 @@ extension RoomInformationRoomExtension on Room {
     return creationEvent?.originServerTs;
   }
 
-  bool isFirstOrSecondChild(String roomId) {
-    return isSpace &&
-        (spaceChildren.any((room) => room.roomId == roomId) ||
-            spaceChildren
-                .where((sc) => sc.roomId != null)
-                .map((sc) => client.getRoomById(sc.roomId!))
-                .any(
-                  (room) =>
-                      room != null &&
-                      room.isSpace &&
-                      room.spaceChildren.any((room) => room.roomId == roomId),
-                ));
-  }
-
   Future<bool> get botIsInRoom async {
     final List<User> participants = await requestParticipants();
     return participants.any(

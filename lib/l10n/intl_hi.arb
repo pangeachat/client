@@ -4964,7 +4964,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-11-19 10:07:10.242188",
+  "@@last_modified": "2025-12-01 12:41:04.318728",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12914,6 +12914,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "फीडबैक लोड करने में विफल।",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "नीचे लक्षित शब्दों को हाइलाइट करें, उन्हें चैट में भेजकर या उनके साथ अभ्यास करके।",
+  "noSavedActivitiesYet": "गतिविधियाँ यहाँ तब दिखाई देंगी जब वे पूरी हो जाएँगी और सहेजी जाएँगी।",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "कोर्स बदलें",
+  "changeCourseDesc": "यहाँ आप इस कोर्स की कोर्स योजना बदल सकते हैं।",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "अभ्यास गतिविधि पूरी हुई",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "परिचय चैट बनाएं",
+  "introChatDesc": "इस स्थान में कोई भी पोस्ट कर सकता है।",
+  "announcementsChatTitle": "घोषणाएँ चैट",
+  "announcementsChatDesc": "केवल स्थान प्रशासक पोस्ट कर सकता है।",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

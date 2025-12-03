@@ -3816,7 +3816,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-11-19 10:06:34.617095",
+  "@@last_modified": "2025-12-01 12:40:21.887443",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12858,6 +12858,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Falha ao carregar feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Destaque as palavras de vocabulário-alvo abaixo enviando-as ou praticando com elas no chat",
+  "noSavedActivitiesYet": "As atividades aparecerão aqui assim que forem concluídas e salvas.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Mudar curso",
+  "changeCourseDesc": "Aqui você pode mudar o plano de curso deste curso.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Atividade de prática concluída",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Criar Chat de Apresentações",
+  "introChatDesc": "Qualquer pessoa no espaço pode postar.",
+  "announcementsChatTitle": "Chat de Anúncios",
+  "announcementsChatDesc": "Apenas o administrador do espaço pode postar.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

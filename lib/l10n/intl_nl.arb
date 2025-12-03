@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:52.228480",
+  "@@last_modified": "2025-12-01 12:40:45.776161",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -11829,6 +11829,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Kon feedback niet laden.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Markeer doelwoordenschat hieronder door ze te verzenden of ermee te oefenen in de chat",
+  "noSavedActivitiesYet": "Activiteiten verschijnen hier zodra ze zijn voltooid en opgeslagen.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Wijzig cursus",
+  "changeCourseDesc": "Hier kunt u het cursusplan van deze cursus wijzigen.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Oefenactiviteit voltooid",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Maak Introductie Chat",
+  "introChatDesc": "Iedereen in de ruimte kan berichten plaatsen.",
+  "announcementsChatTitle": "Aankondigingen Chat",
+  "announcementsChatDesc": "Alleen de ruimtebeheerder kan berichten plaatsen.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

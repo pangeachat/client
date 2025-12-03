@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:59.403476",
+  "@@last_modified": "2025-12-01 12:40:53.664453",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -12561,6 +12561,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "بارگذاری بازخورد ناموفق بود.",
+  "unreadPlus": "۹۹+",
+  "highlightVocabTooltip": "کلمات هدف را در زیر با ارسال یا تمرین کردن آنها در چت هایلایت کنید",
+  "noSavedActivitiesYet": "فعالیت‌ها پس از اتمام و ذخیره‌سازی در اینجا ظاهر خواهند شد.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "تغییر دوره",
+  "changeCourseDesc": "اینجا می‌توانید برنامه درسی این دوره را تغییر دهید.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "فعالیت تمرینی کامل شد",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "ایجاد چت معرفی",
+  "introChatDesc": "هر کسی در این فضا می‌تواند پست کند.",
+  "announcementsChatTitle": "چت اعلامیه‌ها",
+  "announcementsChatDesc": "فقط مدیر فضا می‌تواند پست کند.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

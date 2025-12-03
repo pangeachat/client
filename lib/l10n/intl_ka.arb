@@ -3075,7 +3075,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2025-11-19 10:07:17.607554",
+  "@@last_modified": "2025-12-01 12:41:10.546351",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12859,6 +12859,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "უკვე ვერ ჩაიწერა უკუკავშირი.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "გამოაჩინე მიზნობრივი სიტყვები ქვემოთ, მათი გაგზავნით ან ჩატში ვარჯიშით",
+  "noSavedActivitiesYet": "აქტივობები აქ გამოჩნდება, როგორც კი ისინი დასრულდება და შენახული იქნება.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "კურსის შეცვლა",
+  "changeCourseDesc": "აქ შეგიძლიათ შეცვალოთ ამ კურსის კურსის გეგმა.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "პრაქტიკის აქტივობა დასრულდა",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "შექმენით გაცნობის ჩატი",
+  "introChatDesc": "ყოველთვის სივრცეში შეუძლია პოსტი.",
+  "announcementsChatTitle": "განცხადებების ჩატი",
+  "announcementsChatDesc": "მხოლოდ სივრცის ადმინისტრატორი შეუძლია პოსტი.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

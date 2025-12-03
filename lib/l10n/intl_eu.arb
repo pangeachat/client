@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-11-19 10:06:01.640967",
+  "@@last_modified": "2025-12-01 12:39:55.136173",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11829,6 +11829,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Feedback-a kargatzea huts egin du.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Azpian dauden helburu vocab hitzak nabarmentzeko, bidali edo txatean praktikatu.",
+  "noSavedActivitiesYet": "Jarduerak hemen agertuko dira amaitu eta gorde ondoren.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Aldatu ikasturtea",
+  "changeCourseDesc": "Hemen ikasturtea aldatu dezakezu ikasturte honen ikasturteen plana.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Praktika jarduera amaituta",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Sarrera Aurkezpen Txata sortu",
+  "introChatDesc": "Espazioan edonork postatu dezake.",
+  "announcementsChatTitle": "Iragarki Txata",
+  "announcementsChatDesc": "Espazioaren administratzaileak bakarrik postatu dezake.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

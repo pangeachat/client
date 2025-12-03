@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-11-19 10:07:01.450034",
+  "@@last_modified": "2025-12-01 12:40:55.496589",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -11829,6 +11829,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Nie udało się załadować opinii.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Podświetl docelowe słowa słownictwa poniżej, wysyłając je lub ćwicząc z nimi na czacie",
+  "noSavedActivitiesYet": "Aktywności pojawią się tutaj, gdy zostaną ukończone i zapisane.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Zmień kurs",
+  "changeCourseDesc": "Tutaj możesz zmienić plan kursu tego kursu.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Aktywność praktyczna zakończona",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Utwórz czat wprowadzający",
+  "introChatDesc": "Każdy w przestrzeni może publikować.",
+  "announcementsChatTitle": "Czat ogłoszeń",
+  "announcementsChatDesc": "Tylko administrator przestrzeni może publikować.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

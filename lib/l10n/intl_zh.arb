@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-11-19 10:06:55.893202",
+  "@@last_modified": "2025-12-01 12:40:49.294875",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11820,6 +11820,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "加载反馈失败。",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
+  "noSavedActivitiesYet": "活动完成并保存后将出现在这里。",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "更改课程",
+  "changeCourseDesc": "在这里您可以更改此课程的课程计划。",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "练习活动已完成",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "创建介绍聊天",
+  "introChatDesc": "空间中的任何人都可以发布。",
+  "announcementsChatTitle": "公告聊天",
+  "announcementsChatDesc": "只有空间管理员可以发布。",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

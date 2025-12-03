@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:48.931764",
+  "@@last_modified": "2025-12-01 12:40:41.049624",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -5770,6 +5770,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Không thể tải phản hồi.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Đánh dấu các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc thực hành với chúng trong trò chuyện",
+  "noSavedActivitiesYet": "Các hoạt động sẽ xuất hiện ở đây khi chúng được hoàn thành và lưu lại.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Thay đổi khóa học",
+  "changeCourseDesc": "Tại đây bạn có thể thay đổi kế hoạch khóa học của khóa học này.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Hoạt động thực hành đã hoàn thành",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Tạo trò chuyện giới thiệu",
+  "introChatDesc": "Bất kỳ ai trong không gian đều có thể đăng bài.",
+  "announcementsChatTitle": "Trò chuyện thông báo",
+  "announcementsChatDesc": "Chỉ quản trị viên không gian mới có thể đăng bài.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

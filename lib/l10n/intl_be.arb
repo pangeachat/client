@@ -2392,7 +2392,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-11-19 10:06:26.729429",
+  "@@last_modified": "2025-12-01 12:40:15.499665",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12928,6 +12928,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Не ўдалося загрузіць водгук.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Выдзяліце мэтавыя словы ніжэй, адпраўляючы іх або практыкуючы з імі ў чаце",
+  "noSavedActivitiesYet": "Дзеянні з'явяцца тут, як толькі яны будуць завершаны і захаваны.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Змяніць курс",
+  "changeCourseDesc": "Тут вы можаце змяніць план курса гэтага курса.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Практычная дзейнасць завершана",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Стварыць чат для ўвядзення",
+  "introChatDesc": "Кожны ў прасторы можа публікаваць.",
+  "announcementsChatTitle": "Чат аб'яў",
+  "announcementsChatDesc": "Толькі адміністратар прасторы можа публікаваць.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

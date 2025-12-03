@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:05:51.297421",
+  "@@last_modified": "2025-12-01 12:39:50.470332",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12878,6 +12878,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "לא הצלחנו לטעון משוב.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "הדגש את המילים היעד למטה על ידי שליחתם או תרגול איתן בצ'אט",
+  "noSavedActivitiesYet": "פעילויות יופיעו כאן ברגע שיסיימו וישמרו.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "שנה קורס",
+  "changeCourseDesc": "כאן אתה יכול לשנות את תוכנית הקורס של קורס זה.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "פעילות תרגול הושלמה",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "צור צ'אט היכרות",
+  "introChatDesc": "כל אחד במרחב יכול לפרסם.",
+  "announcementsChatTitle": "צ'אט הודעות",
+  "announcementsChatDesc": "רק מנהל המרחב יכול לפרסם.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

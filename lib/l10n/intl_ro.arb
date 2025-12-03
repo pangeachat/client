@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:05:44.760968",
+  "@@last_modified": "2025-12-01 12:39:39.618148",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12564,6 +12564,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Încărcarea feedback-ului a eșuat.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Subliniază cuvintele țintă din vocabular de mai jos trimițându-le sau exersându-le în chat",
+  "noSavedActivitiesYet": "Activitățile vor apărea aici odată ce sunt finalizate și salvate.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Schimbă cursul",
+  "changeCourseDesc": "Aici poți schimba planul de curs al acestui curs.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Activitate de practică finalizată",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Creează chat de introduceri",
+  "introChatDesc": "Oricine din spațiu poate posta.",
+  "announcementsChatTitle": "Chat de anunțuri",
+  "announcementsChatDesc": "Numai administratorul spațiului poate posta.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }

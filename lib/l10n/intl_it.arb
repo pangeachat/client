@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-11-19 10:06:20.176972",
+  "@@last_modified": "2025-12-01 12:40:06.959287",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11832,6 +11832,61 @@
     "placeholders": {}
   },
   "@teacherModeDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "failedToLoadFeedback": "Impossibile caricare il feedback.",
+  "unreadPlus": "99+",
+  "highlightVocabTooltip": "Evidenzia le parole di vocabolario target qui sotto inviandole o praticandole nella chat",
+  "noSavedActivitiesYet": "Le attività appariranno qui una volta completate e salvate.",
+  "@failedToLoadFeedback": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unreadPlus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noSavedActivitiesYet": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "changeCourse": "Cambia corso",
+  "changeCourseDesc": "Qui puoi cambiare il piano del corso di questo corso.",
+  "@changeCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@changeCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "practiceActivityCompleted": "Attività di pratica completata",
+  "@practiceActivityCompleted": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "introChatTitle": "Crea Chat di Introduzioni",
+  "introChatDesc": "Chiunque nello spazio può postare.",
+  "announcementsChatTitle": "Chat degli Annunci",
+  "announcementsChatDesc": "Solo l'amministratore dello spazio può postare.",
+  "@introChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@introChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@announcementsChatDesc": {
     "type": "String",
     "placeholders": {}
   }
