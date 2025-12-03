@@ -14,10 +14,10 @@ import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart'
 import 'package:fluffychat/pangea/choreographer/pangea_message_content_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
+import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
@@ -265,15 +265,14 @@ class Choreographer extends ChangeNotifier {
     final l1LangCode =
         MatrixState.pangeaController.languageController.userL1?.langCode;
     if (l1LangCode != null && l2LangCode != null) {
-      final res = await MessageDataController.getTokens(
-        repEventId: null,
-        room: null,
-        req: TokensRequestModel(
+      final res = await TokensRepo.get(
+        MatrixState.pangeaController.userController.accessToken,
+        TokensRequestModel(
           fullText: message,
           senderL1: l1LangCode,
           senderL2: l2LangCode,
         ),
-      ).timeout(const Duration(seconds: 10));
+      );
       tokensResp = res.isValue ? res.result : null;
     }
 

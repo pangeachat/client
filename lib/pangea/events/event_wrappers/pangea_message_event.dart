@@ -10,20 +10,22 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
@@ -305,15 +307,13 @@ class PangeaMessageEvent {
 
     final matrixFile = await _event.downloadAndDecryptAttachment();
 
-    final SpeechToTextResponseModel response =
-        await MatrixState.pangeaController.speechToText.get(
+    final result = await SpeechToTextRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
       SpeechToTextRequestModel(
         audioContent: matrixFile.bytes,
         audioEvent: _event,
         config: SpeechToTextAudioConfigModel(
           encoding: mimeTypeToAudioEncoding(matrixFile.mimeType),
-          //this is the default in the RecordConfig in record package
-          //TODO: check if this is the correct value and make it a constant somewhere
           sampleRateHertz: 22050,
           userL1: l1Code,
           userL2: l2Code,
@@ -321,6 +321,13 @@ class PangeaMessageEvent {
       ),
     );
 
+    if (result.error != null) {
+      throw Exception(
+        "Error getting speech to text: ${result.error}",
+      );
+    }
+
+    final SpeechToTextResponseModel response = result.result!;
     _representations?.add(
       RepresentationEvent(
         timeline: timeline,
@@ -540,17 +547,29 @@ class PangeaMessageEvent {
     // clear representations cache so the new representation event can be added when next requested
     _representations = null;
 
-    return MessageDataController.getPangeaRepresentationEvent(
-      req: FullTextTranslationRequestModel(
+    final res = await FullTextTranslationRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      FullTextTranslationRequestModel(
         text: originalSent?.content.text ?? _latestEdit.body,
         srcLang: originalSent?.langCode,
         tgtLang: langCode,
         userL2: l2Code ?? LanguageKeys.unknownLanguage,
         userL1: l1Code ?? LanguageKeys.unknownLanguage,
       ),
-      messageEvent: this,
-      originalSent: true,
     );
+
+    if (res.isError) return null;
+    final repEvent = await room.sendPangeaEvent(
+      content: PangeaRepresentation(
+        langCode: langCode,
+        text: res.result!,
+        originalSent: originalSent == null,
+        originalWritten: false,
+      ).toJson(),
+      parentEventId: eventId,
+      type: PangeaEventTypes.representation,
+    );
+    return repEvent?.eventId;
   }
 
   Future<String> l1Respresentation() async {
@@ -584,17 +603,30 @@ class PangeaMessageEvent {
 
     // clear representations cache so the new representation event can be added when next requested
     _representations = null;
-    final resp = await MessageDataController.getPangeaRepresentation(
-      req: FullTextTranslationRequestModel(
+
+    final resp = await FullTextTranslationRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      FullTextTranslationRequestModel(
         text: includedIT ? originalWrittenContent : messageDisplayText,
         srcLang: srcLang,
         tgtLang: l1Code!,
         userL2: l2Code!,
         userL1: l1Code!,
       ),
-      messageEvent: _event,
     );
-    return resp.text;
+
+    if (resp.isError) throw resp.error!;
+    room.sendPangeaEvent(
+      content: PangeaRepresentation(
+        langCode: l1Code!,
+        text: resp.result!,
+        originalSent: false,
+        originalWritten: false,
+      ).toJson(),
+      parentEventId: eventId,
+      type: PangeaEventTypes.representation,
+    );
+    return resp.result!;
   }
 
   RepresentationEvent? get originalSent => representations
