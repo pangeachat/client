@@ -131,7 +131,7 @@ class CourseChatsController extends State<CourseChats>
       }
 
       final activity = summary.activityPlan;
-      final users = summary.activityRoles.roles.values.toList();
+      final users = summary.joinedUsersWithRoles;
 
       if (users.isEmpty || !validIDs.contains(activity.activityId)) {
         continue;
@@ -154,7 +154,7 @@ class CourseChatsController extends State<CourseChats>
       sessionsMap[activity]!.add(
         ExtendedSpaceRoomsChunk(
           chunk: chunk,
-          assignedRoles: users,
+          assignedRoles: users.values.toList(),
         ),
       );
     }

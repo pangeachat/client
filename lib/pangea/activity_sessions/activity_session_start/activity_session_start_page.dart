@@ -154,7 +154,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
     final availableRoles = activity!.roles;
     final assignedRoles = activityRoom?.assignedRoles ??
-        roomSummaries?[widget.roomId]?.activityRoles.roles ??
+        roomSummaries?[widget.roomId]?.joinedUsersWithRoles ??
         {};
     final unassignedIds = availableRoles.keys
         .where((id) => !assignedRoles.containsKey(id))
@@ -401,6 +401,14 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<void> joinActivityByRoomId(String roomId) async {
+    final room = Matrix.of(context).client.getRoomById(roomId);
+    if (room != null && room.membership == Membership.join) {
+      widget.parentId != null
+          ? context.go("/rooms/spaces/${widget.parentId}/$roomId")
+          : context.go("/rooms/$roomId");
+      return;
+    }
+
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () async {

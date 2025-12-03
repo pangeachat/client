@@ -8,6 +8,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart';
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_request_dialog.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_response_dialog.dart';
@@ -153,8 +154,7 @@ class ActivitySessionStartView extends StatelessWidget {
                                       assignedRoles: controller
                                               .roomSummaries?[
                                                   controller.widget.roomId]
-                                              ?.activityRoles
-                                              .roles ??
+                                              ?.joinedUsersWithRoles ??
                                           {},
                                     ),
                                     if (controller.courseParent != null)
@@ -456,10 +456,23 @@ class _ActivityStatuses extends StatelessWidget {
                       final roomId = e.key;
                       final room =
                           Matrix.of(context).client.getRoomById(roomId);
+
                       final activityPlan =
                           room?.activityPlan ?? e.value.activityPlan;
-                      final activityRoles =
-                          room?.assignedRoles ?? e.value.activityRoles.roles;
+
+                      // If activity is completed, show all roles, even for users who have left the
+                      // room (like the bot). Otherwise, show only joined users with roles
+                      Map<String, ActivityRoleModel> activityRoles =
+                          status == ActivitySummaryStatus.completed
+                              ? e.value.activityRoles.roles
+                              : e.value.joinedUsersWithRoles;
+
+                      // If the user is in the activity room and it's not completed, use the room's
+                      // state events to determine roles to update them in real-time
+                      if (room?.assignedRoles != null &&
+                          status != ActivitySummaryStatus.completed) {
+                        activityRoles = room!.assignedRoles!;
+                      }
 
                       return ListTile(
                         title: OpenRolesIndicator(
