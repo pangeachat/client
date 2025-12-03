@@ -1962,7 +1962,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2025-12-01 12:39:51.766931",
+  "@@last_modified": "2025-12-03 10:29:49.294834",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11679,6 +11679,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
+  "inProgressActivitiesTitle": "En curso ({num})",
+  "completedActivitiesTitle": "Hecho ({num})",
+  "pickDifferentActivity": "Elige una actividad diferente",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

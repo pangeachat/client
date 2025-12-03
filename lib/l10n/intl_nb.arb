@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:12.703108",
+  "@@last_modified": "2025-12-03 10:30:10.936757",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11694,6 +11694,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Åpne økter ({num})",
+  "inProgressActivitiesTitle": "Pågår nå ({num})",
+  "completedActivitiesTitle": "Ferdig ({num})",
+  "pickDifferentActivity": "Velg en annen aktivitet",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

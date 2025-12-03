@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-01 12:40:49.294875",
+  "@@last_modified": "2025-12-03 10:30:45.297060",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10592,6 +10592,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "开放的会议 ({num})",
+  "inProgressActivitiesTitle": "正在进行中 ({num})",
+  "completedActivitiesTitle": "完成 ({num})",
+  "pickDifferentActivity": "选择其他活动",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

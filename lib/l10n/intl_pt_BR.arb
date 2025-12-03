@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:39:53.340170",
+  "@@last_modified": "2025-12-03 10:29:51.928516",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -10959,6 +10959,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sessões abertas ({num})",
+  "inProgressActivitiesTitle": "Acontecendo agora ({num})",
+  "completedActivitiesTitle": "Concluído ({num})",
+  "pickDifferentActivity": "Escolha uma atividade diferente",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:41.049624",
+  "@@last_modified": "2025-12-03 10:30:37.893660",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6171,6 +6171,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Phiên mở ({num})",
+  "inProgressActivitiesTitle": "Đang diễn ra ({num})",
+  "completedActivitiesTitle": "Đã hoàn thành ({num})",
+  "pickDifferentActivity": "Chọn một hoạt động khác",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

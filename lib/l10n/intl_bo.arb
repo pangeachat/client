@@ -4282,7 +4282,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-12-01 12:40:47.506429",
+  "@@last_modified": "2025-12-03 10:30:43.532170",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10351,6 +10351,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sesyonan e hapura ({num})",
+  "inProgressActivitiesTitle": "Po ndodhin tani ({num})",
+  "completedActivitiesTitle": "E përfunduar ({num})",
+  "pickDifferentActivity": "Zgjidh një aktivitet tjetër",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

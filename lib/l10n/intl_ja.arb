@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-01 12:41:02.154964",
+  "@@last_modified": "2025-12-03 10:30:59.054527",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11391,6 +11391,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "オープンセッション ({num})",
+  "inProgressActivitiesTitle": "現在進行中 ({num})",
+  "completedActivitiesTitle": "完了 ({num})",
+  "pickDifferentActivity": "別のアクティビティを選択",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

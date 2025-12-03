@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:41:13.018500",
+  "@@last_modified": "2025-12-03 10:31:09.729056",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11703,6 +11703,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Otvorene sesije ({num})",
+  "inProgressActivitiesTitle": "Dešava se sada ({num})",
+  "completedActivitiesTitle": "Završeno ({num})",
+  "pickDifferentActivity": "Izaberi drugu aktivnost",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

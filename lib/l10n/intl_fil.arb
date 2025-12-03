@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-01 12:40:26.597168",
+  "@@last_modified": "2025-12-03 10:30:24.695985",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11577,6 +11577,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Bukas na sesyon ({num})",
+  "inProgressActivitiesTitle": "Nangyayari ngayon ({num})",
+  "completedActivitiesTitle": "Tapos na ({num})",
+  "pickDifferentActivity": "Pumili ng ibang aktibidad",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

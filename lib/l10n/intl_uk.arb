@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-12-01 12:40:09.213073",
+  "@@last_modified": "2025-12-03 10:30:06.811114",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10595,6 +10595,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Відкриті сесії ({num})",
+  "inProgressActivitiesTitle": "Відбувається зараз ({num})",
+  "completedActivitiesTitle": "Завершено ({num})",
+  "pickDifferentActivity": "Виберіть іншу активність",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

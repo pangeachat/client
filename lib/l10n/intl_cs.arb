@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-01 12:40:10.951068",
+  "@@last_modified": "2025-12-03 10:30:09.271970",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11208,6 +11208,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Otevřené sezení ({num})",
+  "inProgressActivitiesTitle": "Probíhá nyní ({num})",
+  "completedActivitiesTitle": "Hotovo ({num})",
+  "pickDifferentActivity": "Vyberte jinou aktivitu",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:39:39.618148",
+  "@@last_modified": "2025-12-03 10:29:37.617394",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11336,6 +11336,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sesiuni deschise ({num})",
+  "inProgressActivitiesTitle": "Se desfășoară acum ({num})",
+  "completedActivitiesTitle": "Finalizate ({num})",
+  "pickDifferentActivity": "Alege o activitate diferită",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

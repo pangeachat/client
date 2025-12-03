@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:53.664453",
+  "@@last_modified": "2025-12-03 10:30:49.073619",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11333,6 +11333,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "جلسات باز ({num})",
+  "inProgressActivitiesTitle": "در حال حاضر ({num})",
+  "completedActivitiesTitle": "انجام شده ({num})",
+  "pickDifferentActivity": "یک فعالیت متفاوت انتخاب کنید",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

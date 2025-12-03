@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:39:37.053489",
+  "@@last_modified": "2025-12-03 10:29:35.057047",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10592,6 +10592,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sesi terbuka ({num})",
+  "inProgressActivitiesTitle": "Sedang berlangsung ({num})",
+  "completedActivitiesTitle": "Selesai ({num})",
+  "pickDifferentActivity": "Pilih aktivitas yang berbeda",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }
