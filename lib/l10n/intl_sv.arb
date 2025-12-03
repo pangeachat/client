@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:55.022846",
+  "@@last_modified": "2025-12-03 11:37:10.758797",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11111,6 +11111,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Ditt målspråk matchar inte detta meddelande. Vill du uppdatera ditt målspråk?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

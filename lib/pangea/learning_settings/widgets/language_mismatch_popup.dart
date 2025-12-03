@@ -7,13 +7,29 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LanguageMismatchPopup extends StatelessWidget {
+  final String message;
   final String overlayId;
-  final Future<void> Function() onConfirm;
+  final String targetLanguage;
+  final VoidCallback onConfirm;
+
   const LanguageMismatchPopup({
     super.key,
+    required this.message,
     required this.overlayId,
+    required this.targetLanguage,
     required this.onConfirm,
   });
+
+  Future<void> _updateLanguage() async {
+    await MatrixState.pangeaController.userController.updateProfile(
+      (profile) {
+        profile.userSettings.targetLanguage = targetLanguage;
+        return profile;
+      },
+      waitForDataInSync: true,
+    );
+    onConfirm();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +45,7 @@ class LanguageMismatchPopup extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                L10n.of(context).languageMismatchDesc,
+                message,
                 style: BotStyle.text(context),
                 textAlign: TextAlign.center,
               ),
@@ -39,7 +55,7 @@ class LanguageMismatchPopup extends StatelessWidget {
                   onPressed: () async {
                     await showFutureLoadingDialog(
                       context: context,
-                      future: onConfirm,
+                      future: _updateLanguage,
                     );
                     MatrixState.pAnyState.closeOverlay(overlayId);
                   },

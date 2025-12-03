@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-03 10:30:59.054527",
+  "@@last_modified": "2025-12-03 11:37:13.415132",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11423,6 +11423,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "ターゲット言語がこのメッセージと一致しません。ターゲット言語を更新しますか？",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:31:09.729056",
+  "@@last_modified": "2025-12-03 11:37:19.859367",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11735,6 +11735,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Vaš ciljni jezik se ne poklapa sa ovom porukom. Da li želite da ažurirate svoj ciljni jezik?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

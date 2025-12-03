@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-12-03 10:31:05.575917",
+  "@@last_modified": "2025-12-03 11:37:16.847372",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10738,6 +10738,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Ваш целевой язык не соответствует этому сообщению. Обновить ваш целевой язык?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

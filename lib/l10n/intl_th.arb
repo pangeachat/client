@@ -4460,7 +4460,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-12-03 10:30:18.986154",
+  "@@last_modified": "2025-12-03 11:36:48.052510",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11691,6 +11691,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "ภาษาที่คุณเลือกไม่ตรงกับข้อความนี้ ต้องการอัปเดตภาษาที่คุณเลือกหรือไม่?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

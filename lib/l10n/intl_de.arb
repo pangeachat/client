@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-03 10:29:59.289566",
+  "@@last_modified": "2025-12-03 11:36:37.054264",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10640,6 +10640,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Ihre Zielsprache stimmt nicht mit dieser Nachricht überein. Möchten Sie Ihre Zielsprache aktualisieren?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

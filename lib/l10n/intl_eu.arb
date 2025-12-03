@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-03 10:29:53.791099",
+  "@@last_modified": "2025-12-03 11:36:32.505093",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10633,6 +10633,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Zure helburu hizkuntza ez da mezu honekin bat etortzen. Eguneratu al dezakezu zure helburu hizkuntza?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

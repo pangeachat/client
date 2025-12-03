@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:40.029007",
+  "@@last_modified": "2025-12-03 11:37:02.609418",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10857,6 +10857,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "உங்கள் இலக்கு மொழி இந்த செய்தியுடன் பொருந்தவில்லை. உங்கள் இலக்கு மொழியை புதுப்பிக்கவா?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

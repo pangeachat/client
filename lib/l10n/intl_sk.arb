@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-03 10:29:39.057337",
+  "@@last_modified": "2025-12-03 11:36:25.077269",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11717,6 +11717,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Vaša cieľová jazyková verzia sa nezhoduje s touto správou. Chcete aktualizovať svoju cieľovú jazykovú verziu?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

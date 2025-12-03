@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-03 10:29:57.478134",
+  "@@last_modified": "2025-12-03 11:36:35.627602",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10904,6 +10904,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Teie sihtkeel ei ühti selle sõnumiga. Kas soovite oma sihtkeelt uuendada?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

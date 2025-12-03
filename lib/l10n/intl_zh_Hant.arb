@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:22.582679",
+  "@@last_modified": "2025-12-03 11:36:51.200682",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10631,6 +10631,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "您的目標語言與此消息不匹配。要更新您的目標語言嗎？",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

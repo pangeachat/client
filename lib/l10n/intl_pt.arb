@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:29:55.539620",
+  "@@last_modified": "2025-12-03 11:36:34.084326",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11733,6 +11733,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "O seu idioma de destino não corresponde a esta mensagem. Atualizar o seu idioma de destino?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

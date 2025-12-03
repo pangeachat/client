@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-12-03 10:29:43.328965",
+  "@@last_modified": "2025-12-03 11:36:27.424602",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11005,6 +11005,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Vaš ciljni jezik se ne podudara s ovom porukom. Želite li ažurirati svoj ciljni jezik?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

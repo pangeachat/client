@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-12-03 10:29:25.436969",
+  "@@last_modified": "2025-12-03 11:36:16.780690",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10630,6 +10630,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "A súa lingua de destino non coincide con este mensaxe. Actualizar a súa lingua de destino?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:15.655552",
+  "@@last_modified": "2025-12-03 11:36:46.628205",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10657,6 +10657,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "El teu idioma de destinació no coincideix amb aquest missatge. Vols actualitzar el teu idioma de destinació?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

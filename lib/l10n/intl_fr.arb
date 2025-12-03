@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-12-03 10:31:16.115668",
+  "@@last_modified": "2025-12-03 11:37:22.098085",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -10957,6 +10957,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Votre langue cible ne correspond pas à ce message. Voulez-vous mettre à jour votre langue cible ?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

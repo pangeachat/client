@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-03 10:29:41.092414",
+  "@@last_modified": "2025-12-03 11:36:26.117148",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11607,6 +11607,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Tua lingua target non concordat cum hoc nuntio. Renovare linguam tuam target?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }
