@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:29:51.928516",
+  "@@last_modified": "2025-12-03 11:36:31.334762",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -10991,6 +10991,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Seu idioma de destino não corresponde a esta mensagem. Atualizar seu idioma de destino?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

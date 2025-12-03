@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:29:37.617394",
+  "@@last_modified": "2025-12-03 11:36:22.939099",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11368,6 +11368,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Limba țintă nu se potrivește cu acest mesaj. Doriți să actualizați limba țintă?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

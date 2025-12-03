@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:46.970936",
+  "@@last_modified": "2025-12-03 11:37:07.254419",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11737,6 +11737,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "আপনার লক্ষ্য ভাষা এই বার্তার সাথে মেলে না। আপনার লক্ষ্য ভাষা আপডেট করবেন?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

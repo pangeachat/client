@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:41.689144",
+  "@@last_modified": "2025-12-03 11:37:03.689136",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10633,6 +10633,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Uw doeltaal komt niet overeen met dit bericht. Wilt u uw doeltaal bijwerken?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

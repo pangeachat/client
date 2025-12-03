@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-03 10:30:30.590666",
+  "@@last_modified": "2025-12-03 11:36:56.511057",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10855,6 +10855,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Hedef diliniz bu mesajla eşleşmiyor. Hedef dilinizi güncelleyebilir misiniz?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

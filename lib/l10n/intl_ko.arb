@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:29:21.753863",
+  "@@last_modified": "2025-12-03 11:36:14.042097",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10741,6 +10741,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "대상 언어가 이 메시지와 일치하지 않습니다. 대상 언어를 업데이트하시겠습니까?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -4989,5 +4989,6 @@
       }
     }
   },
-  "pickDifferentActivity": "Pick a different activity"
+  "pickDifferentActivity": "Pick a different activity",
+  "messageLanguageMismatchMessage": "Your target language doesn't match this message. Update your target language?"
 }

@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-12-03 10:30:20.842171",
+  "@@last_modified": "2025-12-03 11:36:49.262059",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11662,6 +11662,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "O seu idioma de destino não corresponde a esta mensagem. Atualizar o seu idioma de destino?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

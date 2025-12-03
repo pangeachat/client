@@ -2,41 +2,46 @@ import 'package:get_storage/get_storage.dart';
 
 class LanguageMismatchRepo {
   static final GetStorage _storage = GetStorage('language_mismatch');
-  static const String key = 'shown_timestamp';
   static const Duration displayInterval = Duration(minutes: 30);
 
-  static Future<void> set() async {
-    await _storage.write(key, DateTime.now().toIso8601String());
+  static String _roomKey(String roomId) => 'language_mismatch_room_$roomId';
+  static String _eventKey(String eventId) => 'language_mismatch_event_$eventId';
+
+  static bool shouldShowByRoom(String roomId) => _get(_roomKey(roomId));
+  static bool shouldShowByEvent(String eventId) => _get(_eventKey(eventId));
+
+  static Future<void> setRoom(String roomId) async => _set(_roomKey(roomId));
+  static Future<void> setEvent(String eventId) async =>
+      _set(_eventKey(eventId));
+
+  static Future<void> _set(String key) async {
+    await _storage.write(
+      key,
+      DateTime.now().toIso8601String(),
+    );
   }
 
-  static DateTime? _get() {
+  static bool _get(String key) {
+    final lastShown = _getCached(key);
+    if (lastShown == null) return true;
+    return DateTime.now().difference(lastShown) >= displayInterval;
+  }
+
+  static DateTime? _getCached(String key) {
     final entry = _storage.read(key);
     if (entry == null) return null;
 
-    try {
-      final value = DateTime.tryParse(entry);
-      if (value != null) {
-        final timeSince = DateTime.now().difference(value);
-        if (timeSince > displayInterval) {
-          _delete();
-          return null;
-        }
-        return value;
-      }
-    } catch (_) {
-      _delete();
+    final value = DateTime.tryParse(entry);
+    if (value == null) {
+      _storage.remove(key);
+      return null;
     }
 
-    return null;
-  }
-
-  static Future<void> _delete() async {
-    await _storage.remove(key);
-  }
-
-  static bool get shouldShow {
-    final lastShown = _get();
-    if (lastShown == null) return true;
-    return DateTime.now().difference(lastShown) >= displayInterval;
+    final timeSince = DateTime.now().difference(value);
+    if (timeSince > displayInterval) {
+      _storage.remove(key);
+      return null;
+    }
+    return value;
   }
 }

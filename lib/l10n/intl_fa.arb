@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:49.073619",
+  "@@last_modified": "2025-12-03 11:37:08.469937",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11365,6 +11365,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "زبان هدف شما با این پیام مطابقت ندارد. آیا زبان هدف خود را به‌روزرسانی کنید؟",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 10:30:37.893660",
+  "@@last_modified": "2025-12-03 11:37:01.540762",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6203,6 +6203,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Ngôn ngữ mục tiêu của bạn không khớp với thông điệp này. Cập nhật ngôn ngữ mục tiêu của bạn?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

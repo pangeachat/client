@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-03 10:30:52.793986",
+  "@@last_modified": "2025-12-03 11:37:09.726956",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10633,6 +10633,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Twój docelowy język nie pasuje do tej wiadomości. Zaktualizować swój docelowy język?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

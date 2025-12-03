@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-12-03 10:30:06.811114",
+  "@@last_modified": "2025-12-03 11:36:41.416683",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10627,6 +10627,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Ваша цільова мова не відповідає цьому повідомленню. Оновити вашу цільову мову?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }

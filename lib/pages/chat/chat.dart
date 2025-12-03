@@ -29,6 +29,8 @@ import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
@@ -58,7 +60,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/repo/language_mismatch_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
@@ -1994,6 +1995,31 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
+    final langCode =
+        pangeaMessageEvent?.originalSent?.langCode.split('-').first;
+
+    if (LanguageMismatchRepo.shouldShowByEvent(event.eventId) &&
+        langCode != null &&
+        pangeaMessageEvent?.originalSent?.content.langCodeMatchesL2 == false &&
+        room.client.allMyAnalyticsRooms.any((r) => r.madeForLang == langCode)) {
+      LanguageMismatchRepo.setEvent(event.eventId);
+      OverlayUtil.showLanguageMismatchPopup(
+        context: context,
+        targetId: event.eventId,
+        message: L10n.of(context).messageLanguageMismatchMessage,
+        targetLanguage: pangeaMessageEvent!.originalSent!.langCode,
+        onConfirm: () => showToolbar(
+          event,
+          pangeaMessageEvent: pangeaMessageEvent,
+          selectedToken: selectedToken,
+          mode: mode,
+          nextEvent: nextEvent,
+          prevEvent: prevEvent,
+        ),
+      );
+      return;
+    }
+
     final overlayEntry = MessageSelectionOverlay(
       chatController: this,
       event: event,
@@ -2060,8 +2086,7 @@ class ChatController extends State<ChatPageWithRoom>
     // There's a listen in my_analytics_controller that decides when to auto-update
     // analytics based on when / how many messages the logged in user send. This
     // stream sends the data for newly sent messages.
-    if (originalSent?.langCode.split("-").first !=
-        MatrixState.pangeaController.languageController.userL2?.langCodeShort) {
+    if (originalSent?.langCodeMatchesL2 != true) {
       return;
     }
 
@@ -2155,23 +2180,6 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  bool get shouldShowLanguageMismatchPopup {
-    if (!LanguageMismatchRepo.shouldShow) {
-      return false;
-    }
-
-    final l1 =
-        MatrixState.pangeaController.languageController.userL1?.langCodeShort;
-    final l2 =
-        MatrixState.pangeaController.languageController.userL2?.langCodeShort;
-    final activityLang = room.activityPlan?.req.targetLanguage.split('-').first;
-
-    return activityLang != null &&
-        l2 != null &&
-        l2 != activityLang &&
-        l1 != activityLang;
-  }
-
   void showNextMatch() {
     MatrixState.pAnyState.closeOverlay();
     final match = choreographer.igcController.openMatches.firstOrNull;
@@ -2194,7 +2202,7 @@ class ChatController extends State<ChatPageWithRoom>
     bool manual = false,
     bool autosend = false,
   }) async {
-    if (shouldShowLanguageMismatchPopup) {
+    if (shouldShowLanguageMismatchPopupByActivity) {
       return showLanguageMismatchPopup();
     }
 
@@ -2209,34 +2217,20 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void showLanguageMismatchPopup() {
-    if (!shouldShowLanguageMismatchPopup) {
+    if (!shouldShowLanguageMismatchPopupByActivity) {
       return;
     }
 
     final targetLanguage = room.activityPlan!.req.targetLanguage;
-    LanguageMismatchRepo.set();
-    OverlayUtil.showPositionedCard(
+    LanguageMismatchRepo.setRoom(roomId);
+    OverlayUtil.showLanguageMismatchPopup(
       context: context,
-      cardToShow: LanguageMismatchPopup(
-        overlayId: 'language_mismatch_popup',
-        onConfirm: () async {
-          await MatrixState.pangeaController.userController.updateProfile(
-            (profile) {
-              profile.userSettings.targetLanguage = targetLanguage;
-              return profile;
-            },
-            waitForDataInSync: true,
-          );
-
-          WidgetsBinding.instance.addPostFrameCallback(
-            (_) => onRequestWritingAssistance(manual: false, autosend: true),
-          );
-        },
+      targetId: ChoreoConstants.inputTransformTargetKey,
+      message: L10n.of(context).languageMismatchDesc,
+      targetLanguage: targetLanguage,
+      onConfirm: () => WidgetsBinding.instance.addPostFrameCallback(
+        (_) => onRequestWritingAssistance(manual: false, autosend: true),
       ),
-      maxHeight: 325,
-      maxWidth: 325,
-      transformTargetId: ChoreoConstants.inputTransformTargetKey,
-      overlayKey: 'language_mismatch_popup',
     );
   }
 

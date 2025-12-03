@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
+import 'package:fluffychat/pangea/learning_settings/widgets/language_mismatch_popup.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
@@ -303,6 +304,28 @@ class OverlayUtil {
       closePrevOverlay: false,
       backDropToDismiss: false,
       ignorePointer: true,
+    );
+  }
+
+  static void showLanguageMismatchPopup({
+    required BuildContext context,
+    required String targetId,
+    required String message,
+    required String targetLanguage,
+    required VoidCallback onConfirm,
+  }) {
+    showPositionedCard(
+      context: context,
+      cardToShow: LanguageMismatchPopup(
+        message: message,
+        overlayId: 'language_mismatch_popup',
+        onConfirm: onConfirm,
+        targetLanguage: targetLanguage,
+      ),
+      maxHeight: 325,
+      maxWidth: 325,
+      transformTargetId: targetId,
+      overlayKey: 'language_mismatch_popup',
     );
   }
 }

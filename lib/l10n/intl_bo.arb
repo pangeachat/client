@@ -4282,7 +4282,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-12-03 10:30:43.532170",
+  "@@last_modified": "2025-12-03 11:37:05.020486",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10383,6 +10383,11 @@
     }
   },
   "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Bokmål mål språket ditt samsvarer ikke med denne meldingen. Oppdater målspråket ditt?",
+  "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
   }
