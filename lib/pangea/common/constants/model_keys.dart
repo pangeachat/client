@@ -9,6 +9,7 @@ class ModelKey {
   static const String userDateOfBirth = 'date_of_birth';
   static const String userTargetLanguage = 'target_language';
   static const String userSourceLanguage = 'source_language';
+  static const String userGender = 'gender';
   static const String userSpeaks = 'speaks';
   static const String userCountry = 'country';
   static const String hasJoinedHelpSpace = 'has_joined_help_space';
