@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:17.930439",
+  "@@last_modified": "2025-12-03 10:30:15.655552",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10625,6 +10625,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sessions obertes ({num})",
+  "inProgressActivitiesTitle": "Succeint ara ({num})",
+  "completedActivitiesTitle": "Fet ({num})",
+  "pickDifferentActivity": "Trieu una activitat diferent",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

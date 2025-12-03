@@ -4521,7 +4521,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-01 12:41:14.642020",
+  "@@last_modified": "2025-12-03 10:31:12.355807",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10599,6 +10599,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Seisiúin oscailte ({num})",
+  "inProgressActivitiesTitle": "Ag tarlú anois ({num})",
+  "completedActivitiesTitle": "Críochnaithe ({num})",
+  "pickDifferentActivity": "Roghnaigh gníomhaíocht dhifriúil",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

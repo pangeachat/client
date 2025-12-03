@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:51.296376",
+  "@@last_modified": "2025-12-03 10:30:46.970936",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11705,6 +11705,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "খোলা সেশন ({num})",
+  "inProgressActivitiesTitle": "এখন হচ্ছে ({num})",
+  "completedActivitiesTitle": "সম্পন্ন ({num})",
+  "pickDifferentActivity": "একটি ভিন্ন কার্যকলাপ বেছে নিন",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

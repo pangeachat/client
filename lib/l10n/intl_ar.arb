@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-01 12:40:30.614200",
+  "@@last_modified": "2025-12-03 10:30:28.531390",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10818,6 +10818,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "جلسات مفتوحة ({num})",
+  "inProgressActivitiesTitle": "تحدث الآن ({num})",
+  "completedActivitiesTitle": "تم ({num})",
+  "pickDifferentActivity": "اختر نشاطًا مختلفًا",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

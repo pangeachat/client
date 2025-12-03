@@ -1924,7 +1924,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-12-01 12:40:34.812634",
+  "@@last_modified": "2025-12-03 10:30:32.508974",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11690,6 +11690,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "ఓపెన్ సెషన్స్ ({num})",
+  "inProgressActivitiesTitle": "ఇప్పుడు జరుగుతోంది ({num})",
+  "completedActivitiesTitle": "చేయబడింది ({num})",
+  "pickDifferentActivity": "ఇంకొక కార్యకలాపాన్ని ఎంచుకోండి",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

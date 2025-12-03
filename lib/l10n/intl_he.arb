@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:39:50.470332",
+  "@@last_modified": "2025-12-03 10:29:47.561493",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11650,6 +11650,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "סשנים פתוחים ({num})",
+  "inProgressActivitiesTitle": "מתרחש עכשיו ({num})",
+  "completedActivitiesTitle": "בוצע ({num})",
+  "pickDifferentActivity": "בחר פעילות שונה",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

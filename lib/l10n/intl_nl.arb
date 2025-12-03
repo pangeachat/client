@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:45.776161",
+  "@@last_modified": "2025-12-03 10:30:41.689144",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10601,6 +10601,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Open sessies ({num})",
+  "inProgressActivitiesTitle": "Bezig ({num})",
+  "completedActivitiesTitle": "Klaar ({num})",
+  "pickDifferentActivity": "Kies een andere activiteit",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -370,6 +370,20 @@ class _ActivityStartButtons extends StatelessWidget {
                   ],
                 ),
               ),
+              ElevatedButton(
+                style: buttonStyle,
+                onPressed: () => context.push(
+                  "/rooms/spaces/${controller.courseParent!.id}/details?tab=course",
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      L10n.of(context).pickDifferentActivity,
+                    ),
+                  ],
+                ),
+              ),
             ] else ...[
               ElevatedButton(
                 style: buttonStyle,

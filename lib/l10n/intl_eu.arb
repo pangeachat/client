@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-01 12:39:55.136173",
+  "@@last_modified": "2025-12-03 10:29:53.791099",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10601,6 +10601,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Ireki saioak ({num})",
+  "inProgressActivitiesTitle": "Orain gertatzen ari da ({num})",
+  "completedActivitiesTitle": "Eginda ({num})",
+  "pickDifferentActivity": "Aldatu jarduera bat",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }

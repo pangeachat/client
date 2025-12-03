@@ -4988,5 +4988,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "pickDifferentActivity": "Pick a different activity"
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-12-01 12:39:46.878014",
+  "@@last_modified": "2025-12-03 10:29:43.328965",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -10973,6 +10973,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Otvorene sesije ({num})",
+  "inProgressActivitiesTitle": "U tijeku ({num})",
+  "completedActivitiesTitle": "Završeno ({num})",
+  "pickDifferentActivity": "Odaberite drugu aktivnost",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@pickDifferentActivity": {
     "type": "String",
     "placeholders": {}
   }
