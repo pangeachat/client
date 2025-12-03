@@ -5213,13 +5213,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Samo administrator prostora mo\u017ee objavljivati.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Otvorene sesije (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "U tijeku (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Zavr\u0161eno (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Odaberite drugu aktivnost";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5234,7 +5237,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LhbcqBPuT91T8dXd6km97Hgjwjo="] = d.current;
+  d["BgxEJnkVRD+EAi5rVKQPaYPcRGQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_626.part.js.map

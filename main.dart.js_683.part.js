@@ -5213,13 +5213,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hanya admin ruang yang dapat memposting.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Sesi terbuka (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "Sedang berlangsung (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Selesai (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Pilih aktivitas yang berbeda";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5237,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CuAOKguDkv94Jo5MQ9MDJpOIA4c="] = d.current;
+  d["clTVGg/rRnlYqa3IFHQr57HTHIM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_683.part.js.map

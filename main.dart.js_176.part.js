@@ -5214,13 +5214,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nom\xe9s l'administrador de l'espai pot publicar.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Sessions obertes (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "Succeint ara (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Fet (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Trieu una activitat diferent";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5238,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fzafGEFUjlfR/h5XczpNanON3Jk="] = d.current;
+  d["oFFj8v6nsRnKO/dxZUc7NK+y7rg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_176.part.js.map

@@ -5221,6 +5221,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     completedActivitiesTitle$1(num) {
       return "Done (" + num + ")";
     },
+    get$pickDifferentActivity() {
+      return "Pick a different activity";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5234,7 +5237,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8WuepKwv8Rl4aQcCnrOZgdQ6zKI="] = d.current;
+  d["N0iuTQrx2kSVFETBgNqGK0EYMH4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_408.part.js.map

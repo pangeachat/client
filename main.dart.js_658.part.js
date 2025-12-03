@@ -5213,13 +5213,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Csak a t\xe9r adminisztr\xe1tora posztolhat.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Nyitott \xfcl\xe9sek (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "Jelenleg zajlik (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "K\xe9sz (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "V\xe1lassz egy m\xe1sik tev\xe9kenys\xe9get";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5234,7 +5237,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fl1Xq5VYn15Rx7OjSvJx7r4egLg="] = d.current;
+  d["aAieCvwxluPIhjLk8SE1N+gXbe8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

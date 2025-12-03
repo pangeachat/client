@@ -5213,13 +5213,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sadece mekan y\xf6neticisi payla\u015f\u0131mda bulunabilir.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "A\xe7\u0131k oturumlar (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "\u015eu anda ger\xe7ekle\u015fiyor (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Tamamland\u0131 (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Farkl\u0131 bir etkinlik se\xe7";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5237,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["I+HmIlCYKGcNKeV2CS0csGl0Sfw="] = d.current;
+  d["RHnY58ACH+II3q8xSHA6NwCGrqM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

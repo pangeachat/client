@@ -5225,13 +5225,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Apenas;
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Sess\xf5es abertas (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "Acontecendo agora (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Conclu\xeddo (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Escolha uma atividade diferente";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10431,6 +10434,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcementsChatDesc() {
       return string$.Apenas;
     },
+    notStartedActivitiesTitle$1(num) {
+      return "Sess\xf5es abertas (" + num + ")";
+    },
+    inProgressActivitiesTitle$1(num) {
+      return "Acontecendo agora (" + num + ")";
+    },
+    completedActivitiesTitle$1(num) {
+      return "Conclu\xeddo (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Escolha uma atividade diferente";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15629,6 +15644,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcementsChatDesc() {
       return string$.Apenas;
     },
+    notStartedActivitiesTitle$1(num) {
+      return "Sess\xf5es abertas (" + num + ")";
+    },
+    inProgressActivitiesTitle$1(num) {
+      return "Acontecendo agora (" + num + ")";
+    },
+    completedActivitiesTitle$1(num) {
+      return "Conclu\xeddo (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Escolha uma atividade diferente";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15813,7 +15840,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Sggl+r04dKzP+NkAqDBapszlsUo="] = d.current;
+  d["4Mmf1NQix/FIsvBde/1XZ0ExnPM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -5213,13 +5213,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "N\xed f\xe9idir ach le hoifigeach sp\xe1is post a chur.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Seisi\xfain oscailte (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "Ag tarl\xfa anois (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Cr\xedochnaithe (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Roghnaigh gn\xedomha\xedocht dhifri\xfail";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5237,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vqMki5cwWI1wmdP0csqHOWyLGUE="] = d.current;
+  d["LnnR/XFAgyPsDTpRyee97N4khMc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_608.part.js.map

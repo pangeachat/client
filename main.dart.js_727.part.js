@@ -5214,13 +5214,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tylko administrator przestrzeni mo\u017ce publikowa\u0107.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Otwarte sesje (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "Trwa teraz (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Zrobione (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Wybierz inn\u0105 aktywno\u015b\u0107";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5235,7 +5238,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fQwWSBXyCPbaS54d1KoFTgMN8Lo="] = d.current;
+  d["DkOOpaP4hKRqiL6N1BJaLye5HUM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_727.part.js.map

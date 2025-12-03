@@ -5214,13 +5214,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u064a\u0645\u0643\u0646 \u0641\u0642\u0637 \u0644\u0645\u0633\u0624\u0648\u0644 \u0627\u0644\u0645\u0633\u0627\u062d\u0629 \u0627\u0644\u0646\u0634\u0631.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "\u062c\u0644\u0633\u0627\u062a \u0645\u0641\u062a\u0648\u062d\u0629 (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "\u062a\u062d\u062f\u062b \u0627\u0644\u0622\u0646 (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "\u062a\u0645 (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "\u0627\u062e\u062a\u0631 \u0646\u0634\u0627\u0637\u064b\u0627 \u0645\u062e\u062a\u0644\u0641\u064b\u0627";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5235,7 +5238,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ow/bHb+fvOT6bxRryEtAHJrqGUs="] = d.current;
+  d["84/Mq1FLjz6xAOdidgcKxkE41co="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_140.part.js.map

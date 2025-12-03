@@ -5213,13 +5213,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Iba administr\xe1tor priestoru m\xf4\u017ee prispie\u0165.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Open sessions (" + num + ")";
+      return "Otvoren\xe9 rel\xe1cie (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Happening now (" + num + ")";
+      return "Prebieha teraz (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Done (" + num + ")";
+      return "Hotovo (" + num + ")";
+    },
+    get$pickDifferentActivity() {
+      return "Vyberte in\xfa aktivitu";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5234,7 +5237,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3TSukMNDPsLoLThJXAck2fzjji4="] = d.current;
+  d["xmdwyRqhDcoUzsnqw6SnPj8bYpI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_742.part.js.map
