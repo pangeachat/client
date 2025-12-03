@@ -45,7 +45,7 @@ class ActivitySummaryAnalyticsModel {
   }
 
   void addMessageConstructs(PangeaMessageEvent event) {
-    final uses = event.originalSent?.vocabAndMorphUses();
+    final uses = event.originalSent?.vocabAndMorphUses;
     if (uses == null || uses.isEmpty) return;
     addConstructs(event.senderId, uses);
   }

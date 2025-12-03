@@ -112,12 +112,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       }
 
       if (repEvent?.event != null) {
-        await repEvent!.sendTokensEvent(
-          repEvent.event!.eventId,
-          widget._event.room,
-          MatrixState.pangeaController.languageController.userL1!.langCode,
-          MatrixState.pangeaController.languageController.userL2!.langCode,
-        );
+        await repEvent!.requestTokens();
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
@@ -268,7 +263,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         pangeaMessageEvent.messageDisplayRepresentation;
 
     if (repEvent != null) return repEvent;
-    final eventID = await pangeaMessageEvent.representationByDetectedLanguage();
+    final eventID =
+        await pangeaMessageEvent.requestRepresentationByDetectedLanguage();
 
     if (eventID == null) return null;
     final event = await widget._event.room.getEventById(eventID);

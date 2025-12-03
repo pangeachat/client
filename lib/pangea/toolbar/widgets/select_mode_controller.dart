@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
@@ -19,7 +18,7 @@ class _TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
   _TranscriptionLoader(this.messageEvent) : super();
 
   @override
-  Future<SpeechToTextResponseModel> fetch() => messageEvent.getSpeechToText(
+  Future<SpeechToTextResponseModel> fetch() => messageEvent.requestSpeechToText(
         MatrixState.pangeaController.languageController.userL1!.langCodeShort,
         MatrixState.pangeaController.languageController.userL2!.langCodeShort,
       );
@@ -30,7 +29,7 @@ class _STTTranslationLoader extends AsyncLoader<String> {
   _STTTranslationLoader(this.messageEvent) : super();
 
   @override
-  Future<String> fetch() => messageEvent.sttTranslationByLanguageGlobal(
+  Future<String> fetch() => messageEvent.requestSttTranslation(
         langCode: MatrixState
             .pangeaController.languageController.userL1!.langCodeShort,
         l1Code: MatrixState
@@ -45,7 +44,7 @@ class _TranslationLoader extends AsyncLoader<String> {
   _TranslationLoader(this.messageEvent) : super();
 
   @override
-  Future<String> fetch() => messageEvent.l1Respresentation();
+  Future<String> fetch() => messageEvent.requestRespresentationByL1();
 }
 
 class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
@@ -54,24 +53,9 @@ class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
 
   @override
   Future<(PangeaAudioFile, File?)> fetch() async {
-    final String langCode = messageEvent.messageDisplayLangCode;
-
-    final Event? localEvent = messageEvent.getTextToSpeechLocal(
-      langCode,
-      messageEvent.messageDisplayText,
+    final audioBytes = await messageEvent.requestTextToSpeech(
+      messageEvent.messageDisplayLangCode,
     );
-
-    PangeaAudioFile? audioBytes;
-    if (localEvent != null) {
-      audioBytes = await localEvent.getPangeaAudioFile();
-    } else {
-      audioBytes = await messageEvent.getMatrixAudioFile(
-        langCode,
-      );
-    }
-    if (audioBytes == null) {
-      throw Exception('Audio bytes are null');
-    }
 
     File? audioFile;
     if (!kIsWeb) {

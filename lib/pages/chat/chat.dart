@@ -2149,7 +2149,7 @@ class ChatController extends State<ChatPageWithRoom>
         ownMessage: true,
       );
 
-      final stt = await messageEvent.getSpeechToText(
+      final stt = await messageEvent.requestSpeechToText(
         MatrixState.pangeaController.languageController.userL1?.langCodeShort ??
             LanguageKeys.unknownLanguage,
         MatrixState.pangeaController.languageController.userL2?.langCodeShort ??

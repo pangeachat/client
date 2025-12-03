@@ -16,4 +16,16 @@ class LanguageDetectionRequest {
       'sender_l2': senderl2,
     };
   }
+
+  @override
+  int get hashCode => text.hashCode ^ senderl1.hashCode ^ senderl2.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is LanguageDetectionRequest &&
+        other.text == text &&
+        other.senderl1 == senderl1 &&
+        other.senderl2 == senderl2;
+  }
 }
