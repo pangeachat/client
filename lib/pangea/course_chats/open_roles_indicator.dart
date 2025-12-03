@@ -1,63 +1,75 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
 class OpenRolesIndicator extends StatelessWidget {
-  final int totalSlots;
-  final List<String> userIds;
+  final List<ActivityRole> roles;
+  final List<ActivityRoleModel> assignedRoles;
   final Room? room;
   final Room? space;
 
+  final double? spacing;
+  final double? size;
+  final Function(User, BuildContext)? onUserTap;
+
   const OpenRolesIndicator({
     super.key,
-    required this.totalSlots,
-    required this.userIds,
+    required this.roles,
+    required this.assignedRoles,
     this.room,
     this.space,
+    this.spacing,
+    this.size,
+    this.onUserTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final remainingSlots = max(
-      0,
-      totalSlots - userIds.length,
-    );
-
     final roomParticipants = room?.getParticipants() ?? [];
     final spaceParticipants = space?.getParticipants() ?? [];
 
     return Row(
-      spacing: 2.0,
+      spacing: spacing ?? 2.0,
       children: [
-        ...userIds.map((u) {
-          final user = roomParticipants.firstWhereOrNull((p) => p.id == u) ??
-              spaceParticipants.firstWhereOrNull((p) => p.id == u);
+        ...roles.map((role) {
+          final assigned =
+              assignedRoles.firstWhereOrNull((r) => r.id == role.id);
 
-          return Avatar(
-            mxContent: user?.avatarUrl,
-            name: user?.calcDisplayname() ?? u.localpart ?? u,
-            size: 16,
-            userId: u,
-          );
-        }),
-        ...List.generate(remainingSlots, (_) {
-          return Stack(
-            alignment: Alignment.center,
-            children: [
-              CircleAvatar(
-                radius: 8,
-                backgroundColor: Theme.of(context).colorScheme.primary,
+          final user = assigned != null
+              ? roomParticipants
+                      .firstWhereOrNull((p) => p.id == assigned.userId) ??
+                  spaceParticipants
+                      .firstWhereOrNull((p) => p.id == assigned.userId)
+              : null;
+
+          if (assigned != null) {
+            return Builder(
+              builder: (context) => Avatar(
+                mxContent: user?.avatarUrl,
+                name: user?.calcDisplayname() ??
+                    assigned.userId.localpart ??
+                    assigned.userId,
+                size: size ?? 16,
+                userId: assigned.userId,
+                onTap: onUserTap != null && user != null
+                    ? () => onUserTap!(user, context)
+                    : null,
               ),
-              CircleAvatar(
-                radius: 7,
-                backgroundColor: Theme.of(context).colorScheme.surface,
-              ),
-            ],
+            );
+          }
+
+          return CircleAvatar(
+            radius: size != null ? size! / 2 : 8,
+            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+            child: Icon(
+              Icons.question_mark,
+              size: size != null ? (size! / 2) : 8,
+            ),
           );
         }),
       ],

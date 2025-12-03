@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
@@ -64,11 +65,30 @@ class RoomSummariesResponse {
 class RoomSummaryResponse {
   final ActivityPlanModel activityPlan;
   final ActivityRolesModel activityRoles;
+  final Map<String, String> membershipSummary;
 
   RoomSummaryResponse({
     required this.activityPlan,
     required this.activityRoles,
+    required this.membershipSummary,
   });
+
+  Membership? getMembershipForUserId(String userId) {
+    final membershipString = membershipSummary[userId];
+    if (membershipString == null) return null;
+    return Membership.values.firstWhere(
+      (m) => m.name == membershipString,
+      orElse: () => Membership.join,
+    );
+  }
+
+  Map<String, ActivityRoleModel> get joinedUsersWithRoles {
+    return Map.fromEntries(
+      activityRoles.roles.entries.where(
+        (role) => getMembershipForUserId(role.value.userId) == Membership.join,
+      ),
+    );
+  }
 
   factory RoomSummaryResponse.fromJson(Map<String, dynamic> json) {
     return RoomSummaryResponse(
@@ -78,6 +98,9 @@ class RoomSummaryResponse {
       activityRoles: ActivityRolesModel.fromJson(
         json[PangeaEventTypes.activityRole]?["default"]?["content"] ?? {},
       ),
+      membershipSummary: Map<String, String>.from(
+        json['membership_summary'] ?? {},
+      ),
     );
   }
 
@@ -85,6 +108,7 @@ class RoomSummaryResponse {
     return {
       PangeaEventTypes.activityPlan: activityPlan.toJson(),
       PangeaEventTypes.activityRole: activityRoles.toJson(),
+      'membership_summary': membershipSummary,
     };
   }
 }

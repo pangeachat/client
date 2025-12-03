@@ -5307,5 +5307,32 @@
   "vocabLevelsDesc": "This is where vocab words will go once you’ve leveled them up!",
   "highlightVocabTooltip": "Highlight target vocab words below by sending them or practicing with them in the chat",
   "teacherModeTitle": "Teacher Mode",
-  "teacherModeDesc": "Toggle to unlock all topics and activities. Course admin only."
+  "teacherModeDesc": "Toggle to unlock all topics and activities. Course admin only.",
+  "notStartedActivitiesTitle": "Open sessions ({num})",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "inProgressActivitiesTitle": "Happening now ({num})",
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "completedActivitiesTitle": "Done ({num})",
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  }
 }
