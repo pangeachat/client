@@ -57,14 +57,6 @@ class PutAnalyticsController {
   }
 
   void initialize() {
-    final Room? analyticsRoom = _client.analyticsRoomLocal(
-      _pangeaController.languageController.userL2!,
-    );
-
-    if (analyticsRoom != null) {
-      savedActivitiesNotifier.value = analyticsRoom.activityRoomIds;
-    }
-
     _languageStream ??= _pangeaController.userController.languageStream.stream
         .listen(_onUpdateLanguages);
     _refreshAnalyticsIfOutdated();

@@ -147,7 +147,10 @@ class ChatView extends StatelessWidget {
     if (controller.room.showActivityChatUI) {
       return [
         ActivityMenuButton(controller: controller),
-        ActivitySessionPopupMenu(controller.room),
+        ActivitySessionPopupMenu(
+          controller.room,
+          onLeave: controller.onLeave,
+        ),
       ];
     }
 
