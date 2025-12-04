@@ -37,12 +37,12 @@ import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
+import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/find_your_people/find_your_people_constants.dart';
-import 'package:fluffychat/pangea/guard/p_vguard.dart';
+import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/course_code_page.dart';
@@ -54,7 +54,6 @@ import 'package:fluffychat/pangea/login/pages/public_courses_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
-import 'package:fluffychat/pangea/spaces/widgets/join_with_link_page.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
@@ -347,7 +346,7 @@ abstract class AppRoutes {
                     child: CachedNetworkImage(
                       width: 250.0,
                       imageUrl:
-                          "${AppConfig.assetsBaseURL}/${FindYourPeopleConstants.sideBearFileName}",
+                          "${AppConfig.assetsBaseURL}/${SpaceConstants.sideBearFileName}",
                     ),
                   )
                 // Pangea#

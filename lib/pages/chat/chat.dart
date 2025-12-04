@@ -61,14 +61,14 @@ import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
-import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
-import 'package:fluffychat/pangea/spaces/widgets/load_participants_builder.dart';
+import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_notification.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
-import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
@@ -1972,7 +1972,7 @@ class ChatController extends State<ChatPageWithRoom>
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
     PangeaToken? selectedToken,
-    MessageMode? mode,
+    MessagePracticeMode? mode,
     Event? nextEvent,
     Event? prevEvent,
   }) {

@@ -14,7 +14,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_morph_choice.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';

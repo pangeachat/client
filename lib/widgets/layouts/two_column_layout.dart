@@ -10,7 +10,7 @@ import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/pangea/find_your_people/find_your_people_constants.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
 
 class TwoColumnLayout extends StatelessWidget {
@@ -140,7 +140,7 @@ class _MainView extends StatelessWidget {
           width: 250.0,
           child: CachedNetworkImage(
             imageUrl:
-                "${AppConfig.assetsBaseURL}/${FindYourPeopleConstants.sideBearFileName}",
+                "${AppConfig.assetsBaseURL}/${SpaceConstants.sideBearFileName}",
             errorWidget: (context, url, error) => const SizedBox(),
             placeholder: (context, url) => const Center(
               child: CircularProgressIndicator.adaptive(),

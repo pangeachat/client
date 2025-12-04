@@ -16,7 +16,7 @@ import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
+import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
