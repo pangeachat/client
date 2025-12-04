@@ -36,7 +36,6 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
@@ -2106,14 +2105,11 @@ class ChatController extends State<ChatPageWithRoom>
       ];
 
       _showAnalyticsFeedback(constructs, eventId);
-
-      pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          eventId: eventId,
-          targetID: eventId,
-          roomId: room.id,
-          constructs: constructs,
-        ),
+      pangeaController.putAnalytics.addAnalytics(
+        constructs,
+        eventId: eventId,
+        targetId: eventId,
+        roomId: room.id,
       );
     }
   }
@@ -2160,13 +2156,11 @@ class ChatController extends State<ChatPageWithRoom>
       if (constructs.isEmpty) return;
 
       _showAnalyticsFeedback(constructs, eventId);
-      MatrixState.pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          eventId: eventId,
-          targetID: eventId,
-          roomId: room.id,
-          constructs: constructs,
-        ),
+      MatrixState.pangeaController.putAnalytics.addAnalytics(
+        constructs,
+        eventId: eventId,
+        targetId: eventId,
+        roomId: room.id,
       );
     } catch (e, s) {
       ErrorHandler.logError(

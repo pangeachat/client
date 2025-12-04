@@ -135,6 +135,14 @@ class ConstructListModel {
     level = calculateLevelWithXp(totalXP);
   }
 
+  void deleteLemma(String lemma, int offset) {
+    _uses.removeWhere((use) => use.lemma == lemma);
+    _constructMap.removeWhere(
+      (key, value) => value.lemma == lemma,
+    );
+    updateConstructs([], offset);
+  }
+
   List<ConstructUses> constructList({ConstructTypeEnum? type}) => _constructList
       .where(
         (constructUse) => type == null || constructUse.constructType == type,

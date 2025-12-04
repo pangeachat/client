@@ -5,27 +5,24 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum AnalyticsUpdateType { server, local, activities, init }
+enum AnalyticsUpdateType { server, local, activities, init, delete }
 
 /// handles the processing of analytics for
 /// 1) messages sent by the user and
 /// 2) constructs used by the user, both in sending messages and doing practice activities
-class PutAnalyticsController extends BaseController<AnalyticsStream> {
+class PutAnalyticsController {
   late PangeaController _pangeaController;
   StreamController<AnalyticsUpdate> analyticsUpdateStream =
       StreamController.broadcast();
 
-  StreamSubscription<AnalyticsStream>? _analyticsStream;
   StreamSubscription? _languageStream;
   Timer? _updateTimer;
 
@@ -53,31 +50,20 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   }
 
   void initialize() {
-    // Listen for calls to setState on the analytics stream
-    // and update the analytics room if necessary
-    _analyticsStream ??=
-        stateStream.listen((data) => _onNewAnalyticsData(data));
-
-    // Listen for changes to the user's language settings
-    _languageStream ??=
-        _pangeaController.userController.languageStream.stream.listen((update) {
-      _onUpdateLanguages(update.prevTargetLang);
-    });
+    _languageStream ??= _pangeaController.userController.languageStream.stream
+        .listen(_onUpdateLanguages);
 
     _refreshAnalyticsIfOutdated();
   }
 
   /// Reset analytics last updated time to null.
-  @override
   void dispose() {
     _updateTimer?.cancel();
     lastUpdated = null;
     lastUpdatedCompleter = Completer<DateTime?>();
-    _analyticsStream?.cancel();
-    _analyticsStream = null;
     _languageStream?.cancel();
     _languageStream = null;
-    clearMessagesSinceUpdate();
+    MatrixState.pangeaController.getAnalytics.clearMessagesCache();
   }
 
   /// If analytics haven't been updated in the last day, update them
@@ -112,135 +98,16 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   /// Given new construct uses, format and cache
   /// the data locally and reset the update timer
   /// Decide whether to update the analytics room
-  void _onNewAnalyticsData(AnalyticsStream data) {
-    final String? eventID = data.eventId;
-    final String? roomID = data.roomId;
-
-    final List<OneConstructUse> constructs = [];
-    // if (roomID != null) {
-    //   constructs = _getDraftUses(roomID);
-    // }
-
-    constructs.addAll(data.constructs);
-
-    if (kDebugMode) {
-      for (final use in constructs) {
-        debugPrint(
-          "_onNewAnalyticsData filtered use: ${use.constructType.string} ${use.useType.string} ${use.lemma} ${use.xp}",
-        );
-      }
-    }
-
+  void addAnalytics(
+    List<OneConstructUse> constructs, {
+    String? eventId,
+    String? roomId,
+    String? targetId,
+  }) {
     final level = _pangeaController.getAnalytics.constructListModel.level;
-
-    _addLocalMessage(eventID, constructs).then(
-      (_) {
-        if (roomID != null) _clearDraftUses(roomID);
-        _decideWhetherToUpdateAnalyticsRoom(
-          level,
-          data.targetID,
-          data.constructs,
-        );
-      },
+    _addLocalMessage(eventId, constructs).then(
+      (_) => _sendAnalytics(level, targetId, constructs),
     );
-  }
-
-  Future<void> _onUpdateLanguages(LanguageModel? previousL2) async {
-    await sendLocalAnalyticsToAnalyticsRoom(
-      l2Override: previousL2,
-    );
-    _pangeaController.resetAnalytics().then((_) {
-      final level = _pangeaController.getAnalytics.constructListModel.level;
-      _pangeaController.userController.updateAnalyticsProfile(level: level);
-    });
-  }
-
-  // void addDraftUses(
-  //   List<PangeaToken> tokens,
-  //   String roomID,
-  //   ConstructUseTypeEnum useType, {
-  //   String? targetID,
-  // }) {
-  //   final metadata = ConstructUseMetaData(
-  //     roomId: roomID,
-  //     timeStamp: DateTime.now(),
-  //   );
-
-  //   // we only save those with saveVocab == true
-  //   final tokensToSave =
-  //       tokens.where((token) => token.lemma.saveVocab).toList();
-
-  //   // get all our vocab constructs
-  //   final uses = tokensToSave
-  //       .map(
-  //         (token) => OneConstructUse(
-  //           useType: useType,
-  //           lemma: token.lemma.text,
-  //           form: token.text.content,
-  //           constructType: ConstructTypeEnum.vocab,
-  //           metadata: metadata,
-  //           category: token.pos,
-  //         ),
-  //       )
-  //       .toList();
-
-  //   // get all our grammar constructs
-  //   for (final token in tokensToSave) {
-  //     uses.add(
-  //       OneConstructUse(
-  //         useType: useType,
-  //         lemma: token.pos,
-  //         form: token.text.content,
-  //         category: "POS",
-  //         constructType: ConstructTypeEnum.morph,
-  //         metadata: metadata,
-  //       ),
-  //     );
-  //     for (final entry in token.morph.entries) {
-  //       uses.add(
-  //         OneConstructUse(
-  //           useType: useType,
-  //           lemma: entry.value,
-  //           form: token.text.content,
-  //           category: entry.key,
-  //           constructType: ConstructTypeEnum.morph,
-  //           metadata: metadata,
-  //         ),
-  //       );
-  //     }
-  //   }
-
-  //   if (kDebugMode) {
-  //     for (final use in uses) {
-  //       debugPrint(
-  //         "Draft use: ${use.constructType.string} ${use.useType.string} ${use.lemma} ${use.useType.pointValue}",
-  //       );
-  //     }
-  //   }
-
-  //   final level = _pangeaController.getAnalytics.constructListModel.level;
-
-  //   // the list 'uses' gets altered in the _addLocalMessage method,
-  //   // so copy it here to that the list of new uses is accurate
-  //   final List<OneConstructUse> newUses = List.from(uses);
-  //   _addLocalMessage('draft$roomID', uses).then(
-  //     (_) => _decideWhetherToUpdateAnalyticsRoom(
-  //       level,
-  //       targetID,
-  //       newUses,
-  //     ),
-  //   );
-  // }
-
-  // List<OneConstructUse> _getDraftUses(String roomID) {
-  //   final currentCache = _pangeaController.getAnalytics.messagesSinceUpdate;
-  //   return currentCache['draft$roomID'] ?? [];
-  // }
-
-  void _clearDraftUses(String roomID) {
-    final currentCache = _pangeaController.getAnalytics.messagesSinceUpdate;
-    currentCache.remove('draft$roomID');
-    _setMessagesSinceUpdate(currentCache);
   }
 
   /// Add a list of construct uses for a new message to the local
@@ -255,7 +122,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 
       // if this is not a draft message, add the eventId to the metadata
       // if it's missing (it will be missing for draft constructs)
-      if (cacheKey != null && !cacheKey.startsWith('draft')) {
+      if (cacheKey != null) {
         constructs = constructs.map((construct) {
           if (construct.metadata.eventId != null) return construct;
           construct.metadata.eventId = cacheKey;
@@ -283,7 +150,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   /// If the addition brought the total number of messages in the cache
   /// to the max, or if the addition triggered a level-up, update the analytics.
   /// Otherwise, add a local update to the alert stream.
-  void _decideWhetherToUpdateAnalyticsRoom(
+  void _sendAnalytics(
     int prevLevel,
     String? targetID,
     List<OneConstructUse> newConstructs,
@@ -311,25 +178,14 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     );
   }
 
-  /// Clears the local cache of recently sent constructs. Called before updating analytics
-  void clearMessagesSinceUpdate({clearDrafts = false}) {
-    if (clearDrafts) {
-      MatrixState.pangeaController.getAnalytics.clearMessagesCache();
-      return;
-    }
-
-    final localCache = _pangeaController.getAnalytics.messagesSinceUpdate;
-    final draftKeys = localCache.keys.where((key) => key.startsWith('draft'));
-    if (draftKeys.isEmpty) {
-      MatrixState.pangeaController.getAnalytics.clearMessagesCache();
-      return;
-    }
-
-    final Map<String, List<OneConstructUse>> newCache = {};
-    for (final key in draftKeys) {
-      newCache[key] = localCache[key]!;
-    }
-    _setMessagesSinceUpdate(newCache);
+  Future<void> _onUpdateLanguages(LanguageUpdate update) async {
+    await sendLocalAnalyticsToAnalyticsRoom(
+      l2Override: update.prevTargetLang,
+    );
+    _pangeaController.resetAnalytics().then((_) {
+      final level = _pangeaController.getAnalytics.constructListModel.level;
+      _pangeaController.userController.updateAnalyticsProfile(level: level);
+    });
   }
 
   /// Save the local cache of recently sent constructs to the local storage
@@ -369,7 +225,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     _updateCompleter = Completer<void>();
     try {
       await _updateAnalytics(l2Override: l2Override);
-      clearMessagesSinceUpdate();
+      MatrixState.pangeaController.getAnalytics.clearMessagesCache();
 
       lastUpdated = DateTime.now();
       analyticsUpdateStream.add(
@@ -434,37 +290,14 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     );
   }
 
-  Future<void> removeActivityAnalytics(String roomId) async {
-    if (_pangeaController.matrixState.client.userID == null) return;
-    if (_pangeaController.languageController.userL2 == null) return;
-
-    final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
-      _pangeaController.languageController.userL2!,
-    );
-    if (analyticsRoom == null) return;
-    await analyticsRoom.removeActivityRoomId(roomId);
+  Future<void> onBlockLemma() async {
     analyticsUpdateStream.add(
       AnalyticsUpdate(
-        AnalyticsUpdateType.activities,
+        AnalyticsUpdateType.delete,
         [],
       ),
     );
   }
-}
-
-class AnalyticsStream {
-  final String? eventId;
-  final String? roomId;
-  final String? targetID;
-
-  final List<OneConstructUse> constructs;
-
-  AnalyticsStream({
-    required this.eventId,
-    required this.roomId,
-    required this.constructs,
-    this.targetID,
-  });
 }
 
 class AnalyticsUpdate {

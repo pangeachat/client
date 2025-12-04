@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -95,6 +96,20 @@ class GetAnalyticsController extends BaseController {
 
       final offset =
           _pangeaController.userController.analyticsProfile?.xpOffset ?? 0;
+
+      final allUses = [
+        ...(_getConstructsLocal() ?? []),
+        ..._locallyCachedConstructs,
+      ];
+
+      final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+      final blockedLemmas = analyticsRoom?.analyticsSettings?.blockedLemmas;
+      if (blockedLemmas != null && blockedLemmas.isNotEmpty) {
+        allUses.removeWhere(
+          (use) => blockedLemmas.contains(use.identifier.lemma),
+        );
+      }
+
       constructListModel.updateConstructs(
         [
           ...(_getConstructsLocal() ?? []),
@@ -129,7 +144,6 @@ class GetAnalyticsController extends BaseController {
     _joinSpaceSubscription = null;
     initCompleter = Completer<void>();
     _cache.clear();
-    // perMessage.dispose();
   }
 
   Future<void> _onAnalyticsUpdate(
@@ -286,8 +300,7 @@ class GetAnalyticsController extends BaseController {
         return formattedCache;
       } catch (err) {
         // if something goes wrong while trying to format the local data, clear it
-        _pangeaController.putAnalytics
-            .clearMessagesSinceUpdate(clearDrafts: true);
+        clearMessagesCache();
         return {};
       }
     } catch (exception, stackTrace) {
