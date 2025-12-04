@@ -37,7 +37,7 @@ class PangeaController {
   final MatrixState matrixState;
 
   PangeaController({required this.matrixState}) {
-    userController = UserController(this);
+    userController = UserController();
     getAnalytics = GetAnalyticsController(this);
     putAnalytics = PutAnalyticsController(this);
     subscriptionController = SubscriptionController(this);

@@ -1,14 +1,12 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -17,8 +15,8 @@ import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
-import 'package:fluffychat/pangea/user/activities_profile_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'user_model.dart';
 
 class LanguageUpdate {
@@ -37,43 +35,28 @@ class LanguageUpdate {
 
 /// Controller that manages saving and reading of user/profile information
 class UserController {
-  late PangeaController _pangeaController;
-
   final StreamController<LanguageUpdate> languageStream =
       StreamController.broadcast();
   final StreamController settingsUpdateStream =
       StreamController<Profile>.broadcast();
-
-  UserController(PangeaController pangeaController) : super() {
-    _pangeaController = pangeaController;
-  }
-
-  matrix.Client get client => _pangeaController.matrixState.client;
-
-  /// Convenience function that returns the user ID currently stored in the client.
-  String? get userId => client.userID;
 
   /// Cached version of the user profile, so it doesn't have
   /// to be read in from client's account data each time it is accessed.
   Profile? _cachedProfile;
 
   AnalyticsProfileModel? analyticsProfile;
-  ActivitiesProfileModel? activitiesProfile;
 
   /// Listens for account updates and updates the cached profile
   StreamSubscription? _profileListener;
 
-  /// Listen for updates to account data in syncs and update the cached profile
-  void _addProfileListener() {
-    _profileListener ??= client.onSync.stream
-        .where((sync) => sync.accountData != null)
-        .listen((sync) {
-      final profileData = client.accountData[ModelKey.userProfile]?.content;
-      final Profile? fromAccountData = Profile.fromAccountData(profileData);
-      if (fromAccountData != null) {
-        _cachedProfile = fromAccountData;
-      }
-    });
+  matrix.Client get client => MatrixState.pangeaController.matrixState.client;
+
+  void _onProfileUpdate(matrix.SyncUpdate sync) {
+    final profileData = client.accountData[ModelKey.userProfile]?.content;
+    final Profile? fromAccountData = Profile.fromAccountData(profileData);
+    if (fromAccountData != null) {
+      _cachedProfile = fromAccountData;
+    }
   }
 
   /// The user's profile. Will be empty if the client's accountData hasn't
@@ -109,8 +92,8 @@ class UserController {
     waitForDataInSync = false,
   }) async {
     await initialize();
-    final prevTargetLang = _pangeaController.userController.userL2;
-    final prevBaseLang = _pangeaController.userController.userL1;
+    final prevTargetLang = userL2;
+    final prevBaseLang = userL1;
     final prevHash = profile.hashCode;
 
     final Profile updatedProfile = update(profile);
@@ -121,12 +104,11 @@ class UserController {
 
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
 
-    if ((prevTargetLang != _pangeaController.userController.userL2) ||
-        (prevBaseLang != _pangeaController.userController.userL1)) {
+    if ((prevTargetLang != userL2) || (prevBaseLang != userL1)) {
       languageStream.add(
         LanguageUpdate(
-          baseLang: _pangeaController.userController.userL1!,
-          targetLang: _pangeaController.userController.userL2!,
+          baseLang: userL1!,
+          targetLang: userL2!,
           prevBaseLang: prevBaseLang,
           prevTargetLang: prevTargetLang,
         ),
@@ -152,12 +134,16 @@ class UserController {
 
     try {
       await _initialize();
-      _addProfileListener();
+
+      _profileListener ??= client.onSync.stream
+          .where((sync) => sync.accountData != null)
+          .listen(_onProfileUpdate);
+
       _addAnalyticsRoomIdsToPublicProfile();
 
       if (profile.userSettings.targetLanguage != null &&
           profile.userSettings.targetLanguage!.isNotEmpty &&
-          _pangeaController.userController.userL2 == null) {
+          userL2 == null) {
         // update the language list and send an update to refresh analytics summary
         await PLanguageStore.initialize(forceRefresh: true);
       }
@@ -191,24 +177,22 @@ class UserController {
       final resp = await client.getUserProfile(client.userID!);
       analyticsProfile =
           AnalyticsProfileModel.fromJson(resp.additionalProperties);
-      activitiesProfile =
-          ActivitiesProfileModel.fromJson(resp.additionalProperties);
     } catch (e) {
       // getting a 404 error for some users without pre-existing profile
       // still want to set other properties, so catch this error
       analyticsProfile = AnalyticsProfileModel();
-      activitiesProfile = ActivitiesProfileModel.empty;
     }
 
     // Do not await. This function pulls level from analytics,
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
     // finish initializing, so this would cause a deadlock.
     if (analyticsProfile!.isEmpty) {
-      _pangeaController.getAnalytics.initCompleter.future
+      MatrixState.pangeaController.getAnalytics.initCompleter.future
           .timeout(const Duration(seconds: 10))
           .then((_) {
         updateAnalyticsProfile(
-          level: _pangeaController.getAnalytics.constructListModel.level,
+          level: MatrixState
+              .pangeaController.getAnalytics.constructListModel.level,
         );
       }).catchError((e, s) {
         ErrorHandler.logError(
@@ -240,9 +224,6 @@ class UserController {
     await initialize();
   }
 
-  /// Returns a boolean value indicating whether a new JWT (JSON Web Token) is needed.
-  bool needNewJWT(String token) => Jwt.isExpired(token);
-
   /// Retrieves matrix access token.
   String get accessToken {
     final token = client.accessToken;
@@ -250,21 +231,6 @@ class UserController {
       throw ("Trying to get accessToken with null token. User is not logged in.");
     }
     return token;
-  }
-
-  /// Returns the full name of the user.
-  /// If the [userId] is null, an error will be logged and null will be returned.
-  /// The full name is obtained by extracting the substring before the first occurrence of ":" in the [userId]
-  /// and then replacing all occurrences of "@" with an empty string.
-  String? get fullname {
-    if (userId == null) {
-      ErrorHandler.logError(
-        e: "calling fullname with userId == null",
-        data: {},
-      );
-      return null;
-    }
-    return userId!.substring(0, userId!.indexOf(":")).replaceAll("@", "");
   }
 
   /// Checks if user data is available and the user's l2 is set.
@@ -294,39 +260,6 @@ class UserController {
     return createdAt.isAfter(
       DateTime.now().subtract(Duration(days: trialDays)),
     );
-  }
-
-  /// Checks if the user's languages are set.
-  /// Returns a [Future] that completes with a [bool] value
-  /// indicating whether the user's languages are set.
-  ///
-  /// A user's languages are considered set if the source and target languages
-  /// are not null, not empty, and not equal to the [LanguageKeys.unknownLanguage] constant.
-  ///
-  /// If an error occurs during the process, it logs the error and returns `false`.
-  Future<bool> get areUserLanguagesSet async {
-    try {
-      final String? srcLang = profile.userSettings.sourceLanguage;
-      final String? tgtLang = profile.userSettings.targetLanguage;
-      return srcLang != null &&
-          tgtLang != null &&
-          srcLang.isNotEmpty &&
-          tgtLang.isNotEmpty &&
-          srcLang != LanguageKeys.unknownLanguage &&
-          tgtLang != LanguageKeys.unknownLanguage;
-    } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
-      return false;
-    }
-  }
-
-  /// Returns a boolean value indicating whether the user's profile is public.
-  bool get isPublic {
-    return profile.userSettings.publicProfile ?? true;
   }
 
   /// Retrieves the user's email address.
@@ -366,8 +299,8 @@ class UserController {
     LanguageModel? baseLanguage,
     LanguageModel? targetLanguage,
   }) async {
-    targetLanguage ??= _pangeaController.userController.userL2;
-    baseLanguage ??= _pangeaController.userController.userL1;
+    targetLanguage ??= userL2;
+    baseLanguage ??= userL1;
     if (targetLanguage == null || analyticsProfile == null) return;
 
     final analyticsRoom = client.analyticsRoomLocal(targetLanguage);
@@ -426,7 +359,7 @@ class UserController {
   }
 
   Future<void> addXPOffset(int offset) async {
-    final targetLanguage = _pangeaController.userController.userL2;
+    final targetLanguage = userL2;
     if (targetLanguage == null || analyticsProfile == null) return;
 
     analyticsProfile!.addXPOffset(
@@ -439,68 +372,6 @@ class UserController {
       analyticsProfile!.toJson(),
     );
   }
-
-  Future<void> addBookmarkedActivity({
-    required String activityId,
-  }) async {
-    if (activitiesProfile == null) {
-      throw Exception("Activities profile is not initialized");
-    }
-
-    activitiesProfile!.addBookmark(activityId);
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileActivities,
-      activitiesProfile!.toJson(),
-    );
-  }
-
-  // Future<List<ActivityPlanModel>> getBookmarkedActivities() async {
-  //   if (activitiesProfile == null) {
-  //     throw Exception("Activities profile is not initialized");
-  //   }
-
-  //   return activitiesProfile!.getBookmarkedActivities();
-  // }
-
-  // List<ActivityPlanModel> getBookmarkedActivitiesSync() {
-  //   if (activitiesProfile == null) {
-  //     throw Exception("Activities profile is not initialized");
-  //   }
-
-  //   return activitiesProfile!.getBookmarkedActivitiesSync();
-  // }
-
-  Future<void> updateBookmarkedActivity({
-    required String activityId,
-    required String newActivityId,
-  }) async {
-    if (activitiesProfile == null) {
-      throw Exception("Activities profile is not initialized");
-    }
-
-    activitiesProfile!.removeBookmark(activityId);
-    activitiesProfile!.addBookmark(newActivityId);
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileActivities,
-      activitiesProfile!.toJson(),
-    );
-  }
-
-  Future<void> removeBookmarkedActivity({
-    required String activityId,
-  }) async {
-    if (activitiesProfile == null) {
-      throw Exception("Activities profile is not initialized");
-    }
-
-    activitiesProfile!.removeBookmark(activityId);
-    await _savePublicProfileUpdate(
-      PangeaEventTypes.profileActivities,
-      activitiesProfile!.toJson(),
-    );
-  }
-
-  bool isBookmarked(String id) => activitiesProfile?.isBookmarked(id) ?? false;
 
   Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
     String userId,

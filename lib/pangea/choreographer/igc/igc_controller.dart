@@ -68,7 +68,7 @@ class IgcController {
   ) =>
       IGCRequestModel(
         fullText: text,
-        userId: MatrixState.pangeaController.userController.userId!,
+        userId: MatrixState.pangeaController.userController.client.userID!,
         userL1: MatrixState.pangeaController.userController.userL1Code!,
         userL2: MatrixState.pangeaController.userController.userL2Code!,
         enableIGC: true,
