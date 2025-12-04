@@ -81,7 +81,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
     if (update.targetID != null) {
-      OverlayUtil.showPointsGained(update.targetID!, context);
+      OverlayUtil.showPointsGained(update.targetID!, update.points, context);
     }
   }
 

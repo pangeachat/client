@@ -85,6 +85,12 @@ class GetAnalyticsController extends BaseController {
           .putAnalytics.analyticsUpdateStream.stream
           .listen(_onAnalyticsUpdate);
 
+      _pangeaController.putAnalytics.savedActivitiesNotifier
+          .addListener(_onActivityAnalyticsUpdate);
+
+      _pangeaController.putAnalytics.blockedConstructsNotifier
+          .addListener(_onBlockedConstructsUpdate);
+
       // When a newly-joined space comes through in a sync
       // update, add the analytics rooms to the space
       _joinSpaceSubscription ??= _client.onSync.stream
@@ -103,10 +109,10 @@ class GetAnalyticsController extends BaseController {
       ];
 
       final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
-      final blockedLemmas = analyticsRoom?.analyticsSettings?.blockedLemmas;
+      final blockedLemmas = analyticsRoom?.analyticsSettings?.blockedConstructs;
       if (blockedLemmas != null && blockedLemmas.isNotEmpty) {
         allUses.removeWhere(
-          (use) => blockedLemmas.contains(use.identifier.lemma),
+          (use) => blockedLemmas.contains(use.identifier),
         );
       }
 
@@ -124,11 +130,7 @@ class GetAnalyticsController extends BaseController {
         data: {},
       );
     } finally {
-      _updateAnalyticsStream(
-        type: AnalyticsUpdateType.init,
-        points: 0,
-        newConstructs: [],
-      );
+      _updateAnalyticsStream(AnalyticsStreamUpdate());
       if (!initCompleter.isCompleted) initCompleter.complete();
       _initializing = false;
     }
@@ -143,22 +145,16 @@ class GetAnalyticsController extends BaseController {
     _joinSpaceSubscription?.cancel();
     _joinSpaceSubscription = null;
     initCompleter = Completer<void>();
+    _pangeaController.putAnalytics.savedActivitiesNotifier
+        .removeListener(_onActivityAnalyticsUpdate);
+    _pangeaController.putAnalytics.blockedConstructsNotifier
+        .removeListener(_onBlockedConstructsUpdate);
     _cache.clear();
   }
 
   Future<void> _onAnalyticsUpdate(
     AnalyticsUpdate analyticsUpdate,
   ) async {
-    final validTypes = [AnalyticsUpdateType.local, AnalyticsUpdateType.server];
-    if (!validTypes.contains(analyticsUpdate.type)) {
-      _updateAnalyticsStream(
-        type: analyticsUpdate.type,
-        points: 0,
-        newConstructs: [],
-      );
-      return;
-    }
-
     if (analyticsUpdate.isLogout) return;
 
     final oldLevel = constructListModel.level;
@@ -173,9 +169,6 @@ class GetAnalyticsController extends BaseController {
         )
         .toSet();
 
-    final prevUnlockedVocab =
-        constructListModel.unlockedLemmas(ConstructTypeEnum.vocab).toSet();
-
     constructListModel.updateConstructs(analyticsUpdate.newConstructs, offset);
 
     final newUnlockedMorphs = constructListModel
@@ -185,11 +178,6 @@ class GetAnalyticsController extends BaseController {
         )
         .toSet()
         .difference(prevUnlockedMorphs);
-
-    final newUnlockedVocab = constructListModel
-        .unlockedLemmas(ConstructTypeEnum.vocab)
-        .toSet()
-        .difference(prevUnlockedVocab);
 
     if (analyticsUpdate.type == AnalyticsUpdateType.server) {
       await _getConstructs(forceUpdate: true);
@@ -206,13 +194,13 @@ class GetAnalyticsController extends BaseController {
       _onUnlockMorphLemmas(newUnlockedMorphs);
     }
     _updateAnalyticsStream(
-      type: analyticsUpdate.type,
-      points: analyticsUpdate.newConstructs.fold<int>(
-        0,
-        (previousValue, element) => previousValue + element.xp,
+      AnalyticsStreamUpdate(
+        points: analyticsUpdate.newConstructs.fold<int>(
+          0,
+          (previousValue, element) => previousValue + element.xp,
+        ),
+        targetID: analyticsUpdate.targetID,
       ),
-      targetID: analyticsUpdate.targetID,
-      newConstructs: [...newUnlockedMorphs, ...newUnlockedVocab],
     );
     // Update public profile each time that new analytics are added.
     // If the level hasn't changed, this will not send an update to the server.
@@ -223,20 +211,8 @@ class GetAnalyticsController extends BaseController {
     );
   }
 
-  void _updateAnalyticsStream({
-    required AnalyticsUpdateType type,
-    required int points,
-    required List<ConstructIdentifier> newConstructs,
-    String? targetID,
-  }) =>
-      analyticsStream.add(
-        AnalyticsStreamUpdate(
-          type: type,
-          points: points,
-          newConstructs: newConstructs,
-          targetID: targetID,
-        ),
-      );
+  void _updateAnalyticsStream(AnalyticsStreamUpdate update) =>
+      analyticsStream.add(update);
 
   void _onLevelUp(final int lowerLevel, final int upperLevel) {
     setState({
@@ -265,6 +241,21 @@ class GetAnalyticsController extends BaseController {
     };
 
     setState({'unlocked_constructs': filtered});
+  }
+
+  void _onActivityAnalyticsUpdate() =>
+      _updateAnalyticsStream(AnalyticsStreamUpdate());
+
+  void _onBlockedConstructsUpdate() {
+    final constructId =
+        _pangeaController.putAnalytics.blockedConstructsNotifier.value;
+    if (constructId == null) return;
+
+    constructListModel.deleteConstruct(
+      constructId,
+      _pangeaController.userController.analyticsProfile?.xpOffset ?? 0,
+    );
+    _updateAnalyticsStream(AnalyticsStreamUpdate());
   }
 
   /// A local cache of eventIds and construct uses for messages sent since the last update.
@@ -484,19 +475,6 @@ class GetAnalyticsController extends BaseController {
     return newConstructCount;
   }
 
-//   Future<GenerateConstructSummaryResult?>
-//       _generateLevelUpAnalyticsAndSaveToStateEvent(
-//     final int lowerLevel,
-//     final int upperLevel,
-//   ) async {
-//     // generate level up analytics as a construct summary
-//     ConstructSummary summary;
-//     try {
-//       final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
-//       final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);
-//       int diffXP = maxXP - minXP;
-//       if (diffXP < 0) diffXP = 0;
-
   ConstructSummary? getConstructSummaryFromStateEvent() {
     try {
       final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
@@ -662,15 +640,11 @@ class AnalyticsCacheEntry {
 }
 
 class AnalyticsStreamUpdate {
-  final AnalyticsUpdateType type;
   final int points;
-  final List<ConstructIdentifier> newConstructs;
   final String? targetID;
 
   AnalyticsStreamUpdate({
-    required this.type,
-    required this.points,
-    required this.newConstructs,
+    this.points = 0,
     this.targetID,
   });
 }

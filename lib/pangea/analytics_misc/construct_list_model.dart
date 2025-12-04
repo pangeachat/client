@@ -135,10 +135,10 @@ class ConstructListModel {
     level = calculateLevelWithXp(totalXP);
   }
 
-  void deleteLemma(String lemma, int offset) {
-    _uses.removeWhere((use) => use.lemma == lemma);
+  void deleteConstruct(ConstructIdentifier constructId, int offset) {
+    _uses.removeWhere((use) => use.identifier == constructId);
     _constructMap.removeWhere(
-      (key, value) => value.lemma == lemma,
+      (key, value) => value.id == constructId,
     );
     updateConstructs([], offset);
   }

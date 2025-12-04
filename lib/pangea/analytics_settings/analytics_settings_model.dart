@@ -1,34 +1,36 @@
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+
 class AnalyticsSettingsModel {
-  final Set<String> blockedLemmas;
+  final Set<ConstructIdentifier> blockedConstructs;
 
   const AnalyticsSettingsModel({
-    required this.blockedLemmas,
+    required this.blockedConstructs,
   });
 
   AnalyticsSettingsModel copyWith({
-    Set<String>? blockedLemmas,
+    Set<ConstructIdentifier>? blockedConstructs,
   }) {
     return AnalyticsSettingsModel(
-      blockedLemmas: blockedLemmas ?? this.blockedLemmas,
+      blockedConstructs: blockedConstructs ?? this.blockedConstructs,
     );
   }
 
   factory AnalyticsSettingsModel.fromJson(Map<String, dynamic> json) {
-    final blockedLemmas = <String>{};
-    if (json['blocked_lemmas'] != null) {
-      final lemmas = json['blocked_lemmas'] as List<dynamic>;
+    final blockedConstructs = <ConstructIdentifier>{};
+    if (json['blocked_constructs'] != null) {
+      final lemmas = json['blocked_constructs'] as List<dynamic>;
       for (final lemma in lemmas) {
-        blockedLemmas.add(lemma as String);
+        blockedConstructs.add(ConstructIdentifier.fromJson(lemma));
       }
     }
     return AnalyticsSettingsModel(
-      blockedLemmas: blockedLemmas,
+      blockedConstructs: blockedConstructs,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'blocked_lemmas': blockedLemmas.toList(),
+      'blocked_constructs': blockedConstructs.map((c) => c.toJson()).toList(),
     };
   }
 }

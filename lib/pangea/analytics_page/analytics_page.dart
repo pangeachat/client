@@ -8,10 +8,8 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page_constants.dart';
-import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/pangea/analytics_summary/level_dialog_content.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
@@ -43,7 +41,8 @@ class AnalyticsPage extends StatelessWidget {
     if (resp != OkCancelResult.ok) return;
     final res = await showFutureLoadingDialog(
       context: context,
-      future: () => Matrix.of(context).client.blockLemma(construct!.lemma),
+      future: () =>
+          MatrixState.pangeaController.putAnalytics.blockConstruct(construct!),
     );
 
     if (!res.isError) {
@@ -70,12 +69,9 @@ class AnalyticsPage extends StatelessWidget {
             )
           : null,
       body: SafeArea(
-        child: StreamBuilder(
-          stream: MatrixState
-              .pangeaController.getAnalytics.analyticsStream.stream
-              .where(
-            (u) => u.type == AnalyticsUpdateType.init,
-          ),
+        child: FutureBuilder(
+          future:
+              MatrixState.pangeaController.getAnalytics.initCompleter.future,
           builder: (context, snapshot) {
             return Padding(
               padding: const EdgeInsetsGeometry.all(16.0),

@@ -469,7 +469,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
     if (update.targetID != null) {
-      OverlayUtil.showPointsGained(update.targetID!, context);
+      OverlayUtil.showPointsGained(update.targetID!, update.points, context);
     }
   }
 

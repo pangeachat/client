@@ -6,14 +6,17 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum AnalyticsUpdateType { server, local, activities, init, delete }
+enum AnalyticsUpdateType { server, local }
 
 /// handles the processing of analytics for
 /// 1) messages sent by the user and
@@ -22,6 +25,10 @@ class PutAnalyticsController {
   late PangeaController _pangeaController;
   StreamController<AnalyticsUpdate> analyticsUpdateStream =
       StreamController.broadcast();
+
+  ValueNotifier<List<String>> savedActivitiesNotifier = ValueNotifier([]);
+  ValueNotifier<ConstructIdentifier?> blockedConstructsNotifier =
+      ValueNotifier(null);
 
   StreamSubscription? _languageStream;
   Timer? _updateTimer;
@@ -50,9 +57,16 @@ class PutAnalyticsController {
   }
 
   void initialize() {
+    final Room? analyticsRoom = _client.analyticsRoomLocal(
+      _pangeaController.languageController.userL2!,
+    );
+
+    if (analyticsRoom != null) {
+      savedActivitiesNotifier.value = analyticsRoom.activityRoomIds;
+    }
+
     _languageStream ??= _pangeaController.userController.languageStream.stream
         .listen(_onUpdateLanguages);
-
     _refreshAnalyticsIfOutdated();
   }
 
@@ -281,22 +295,31 @@ class PutAnalyticsController {
     );
     if (analyticsRoom == null) return;
     await analyticsRoom.addActivityRoomId(roomId);
-
-    analyticsUpdateStream.add(
-      AnalyticsUpdate(
-        AnalyticsUpdateType.activities,
-        [],
-      ),
-    );
+    savedActivitiesNotifier.value = analyticsRoom.activityRoomIds;
   }
 
-  Future<void> onBlockLemma() async {
-    analyticsUpdateStream.add(
-      AnalyticsUpdate(
-        AnalyticsUpdateType.delete,
-        [],
-      ),
+  Future<void> blockConstruct(ConstructIdentifier constructId) async {
+    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_pangeaController.languageController.userL2 == null) return;
+
+    final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
+      _pangeaController.languageController.userL2!,
     );
+    if (analyticsRoom == null) return;
+
+    final current = analyticsRoom.analyticsSettings ??
+        const AnalyticsSettingsModel(blockedConstructs: {});
+
+    final blockedConstructs = current.blockedConstructs;
+    final updated = current.copyWith(
+      blockedConstructs: {
+        ...blockedConstructs,
+        constructId,
+      },
+    );
+
+    await analyticsRoom.setAnalyticsSettings(updated);
+    blockedConstructsNotifier.value = constructId;
   }
 }
 
