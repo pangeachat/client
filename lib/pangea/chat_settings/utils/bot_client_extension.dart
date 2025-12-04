@@ -41,8 +41,8 @@ extension BotClientExtension on Client {
           StateEvent(
             content: BotOptionsModel(
               mode: BotMode.directChat,
-              targetLanguage: MatrixState
-                  .pangeaController.languageController.userL2?.langCode,
+              targetLanguage:
+                  MatrixState.pangeaController.userController.userL2?.langCode,
               languageLevel: MatrixState.pangeaController.userController.profile
                   .userSettings.cefrLevel,
             ).toJson(),

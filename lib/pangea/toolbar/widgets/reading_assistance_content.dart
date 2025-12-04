@@ -60,8 +60,7 @@ class ReadingAssistanceContent extends StatelessWidget {
               overlayController.pangeaMessageEvent.messageDisplayLangCode,
           tokens: tokens ?? [],
           selectedToken: selectedTokenIndex,
-          wordCardL1:
-              MatrixState.pangeaController.languageController.activeL1Code()!,
+          wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
         );
         overlayController.widget.chatController.showTokenFeedbackDialog(
           requestData,

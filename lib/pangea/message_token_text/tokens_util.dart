@@ -81,7 +81,7 @@ class TokensUtil {
     }
 
     final messageInUserL2 = event.messageDisplayLangCode.split("-")[0] ==
-        MatrixState.pangeaController.languageController.userL2?.langCodeShort;
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     final cached = _getCachedNewTokens(event.eventId);
     if (cached != null) {

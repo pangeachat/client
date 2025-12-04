@@ -88,7 +88,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
   }
 
   String? get userL2 =>
-      MatrixState.pangeaController.languageController.userL2?.langCode;
+      MatrixState.pangeaController.userController.userL2?.langCode;
 
   Future<void> _runDownload() async {
     try {

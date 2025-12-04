@@ -228,10 +228,10 @@ class RepresentationEvent {
         fullText: text,
         langCode: langCode,
         senderL1:
-            MatrixState.pangeaController.languageController.userL1?.langCode ??
+            MatrixState.pangeaController.userController.userL1?.langCode ??
                 LanguageKeys.unknownLanguage,
         senderL2:
-            MatrixState.pangeaController.languageController.userL2?.langCode ??
+            MatrixState.pangeaController.userController.userL2?.langCode ??
                 LanguageKeys.unknownLanguage,
       ),
     );

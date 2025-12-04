@@ -72,7 +72,7 @@ class _PhoneticTranscriptionWidgetState
         _transcription = null;
       });
 
-      if (MatrixState.pangeaController.languageController.userL1 == null) {
+      if (MatrixState.pangeaController.userController.userL1 == null) {
         ErrorHandler.logError(
           e: Exception('User L1 is not set'),
           data: {
@@ -85,7 +85,7 @@ class _PhoneticTranscriptionWidgetState
       }
       final req = PhoneticTranscriptionRequest(
         arc: LanguageArc(
-          l1: MatrixState.pangeaController.languageController.userL1!,
+          l1: MatrixState.pangeaController.userController.userL1!,
           l2: widget.textLanguage,
         ),
         content: PangeaTokenText.fromString(widget.text),

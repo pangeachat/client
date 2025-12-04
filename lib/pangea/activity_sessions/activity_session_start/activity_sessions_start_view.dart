@@ -106,10 +106,10 @@ class ActivitySessionStartView extends StatelessWidget {
                         activityId: controller.widget.activityId,
                         feedbackText: feedback,
                         userId: Matrix.of(context).client.userID!,
-                        userL1: MatrixState.pangeaController.languageController
-                            .activeL1Code()!,
-                        userL2: MatrixState.pangeaController.languageController
-                            .activeL2Code()!,
+                        userL1: MatrixState
+                            .pangeaController.userController.userL1Code!,
+                        userL2: MatrixState
+                            .pangeaController.userController.userL2Code!,
                       ),
                     ),
                   );
@@ -120,8 +120,7 @@ class ActivitySessionStartView extends StatelessWidget {
 
                   CourseActivityRepo.setSentFeedback(
                     controller.widget.activityId,
-                    MatrixState.pangeaController.languageController
-                        .activeL1Code()!,
+                    MatrixState.pangeaController.userController.userL1Code!,
                   );
 
                   await showDialog(

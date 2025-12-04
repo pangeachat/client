@@ -94,7 +94,7 @@ class PangeaRepresentation {
 
   bool get langCodeMatchesL2 =>
       langCode.split("-").first ==
-      MatrixState.pangeaController.languageController.userL2?.langCodeShort;
+      MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
   /// Get construct uses for the message that weren't captured during language assistance.
   /// Takes a list of tokens and a choreo record, which is searched

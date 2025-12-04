@@ -62,12 +62,9 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
   FullTextTranslationRequestModel _translationRequest(String text) =>
       FullTextTranslationRequestModel(
         text: text,
-        tgtLang:
-            MatrixState.pangeaController.languageController.userL1!.langCode,
-        userL1:
-            MatrixState.pangeaController.languageController.userL1!.langCode,
-        userL2:
-            MatrixState.pangeaController.languageController.userL2!.langCode,
+        tgtLang: MatrixState.pangeaController.userController.userL1!.langCode,
+        userL1: MatrixState.pangeaController.userController.userL1!.langCode,
+        userL2: MatrixState.pangeaController.userController.userL2!.langCode,
       );
 
   void _openListener() {
@@ -105,8 +102,8 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
       cardToShow: selected
           ? WordDataCard(
               word: text,
-              langCode: MatrixState
-                  .pangeaController.languageController.userL2!.langCode,
+              langCode:
+                  MatrixState.pangeaController.userController.userL2!.langCode,
               fullText: _sourceText.value ?? widget.choreographer.currentText,
             )
           : ITFeedbackCard(_translationRequest(text)),
@@ -394,7 +391,7 @@ class _ITChoices extends StatelessWidget {
       onPressed: (value, index) => onPressed(index),
       onLongPress: (value, index) => onLongPressed(continuances[index]),
       selectedChoiceIndex: null,
-      langCode: MatrixState.pangeaController.languageController.activeL2Code(),
+      langCode: MatrixState.pangeaController.userController.userL2Code!,
     );
   }
 }

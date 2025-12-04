@@ -86,12 +86,10 @@ class MorphInfoRepo {
   }) async {
     final res = await _get(
       MorphInfoRequest(
-        userL1:
-            MatrixState.pangeaController.languageController.userL1?.langCode ??
-                LanguageKeys.defaultLanguage,
-        userL2:
-            MatrixState.pangeaController.languageController.userL2?.langCode ??
-                LanguageKeys.defaultLanguage,
+        userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+            LanguageKeys.defaultLanguage,
+        userL2: MatrixState.pangeaController.userController.userL2?.langCode ??
+            LanguageKeys.defaultLanguage,
       ),
     );
     final morph = res.getFeatureByCode(feature.name);
@@ -107,10 +105,10 @@ class MorphInfoRepo {
     required String defintion,
   }) async {
     final userL1 =
-        MatrixState.pangeaController.languageController.userL1?.langCode ??
+        MatrixState.pangeaController.userController.userL1?.langCode ??
             LanguageKeys.defaultLanguage;
     final userL2 =
-        MatrixState.pangeaController.languageController.userL2?.langCode ??
+        MatrixState.pangeaController.userController.userL2?.langCode ??
             LanguageKeys.defaultLanguage;
     final userL1Short = userL1.split('-').first;
     final userL2Short = userL2.split('-').first;

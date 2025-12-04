@@ -59,6 +59,7 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
 import 'package:fluffychat/pangea/learning_settings/repo/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
@@ -532,7 +533,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
-      pangeaController.languageController.showDialogOnEmptyLanguage(
+      LanguageController.showDialogOnEmptyLanguage(
         context,
         () => () => setState(() {}),
       );
@@ -1153,8 +1154,8 @@ class ChatController extends State<ChatPageWithRoom>
               'waveform': result.waveform,
             },
             // #Pangea
-            'speaker_l1': pangeaController.languageController.activeL1Code(),
-            'speaker_l2': pangeaController.languageController.activeL2Code(),
+            'speaker_l1': pangeaController.userController.userL1Code,
+            'speaker_l2': pangeaController.userController.userL2Code,
             // Pangea#
           },
           // #Pangea
@@ -1990,7 +1991,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     // Check if the user has set their languages. If not, prompt them to do so.
-    if (!MatrixState.pangeaController.languageController.languagesSet) {
+    if (!MatrixState.pangeaController.userController.languagesSet) {
       pLanguageDialog(context, () {});
       return;
     }
@@ -2150,9 +2151,9 @@ class ChatController extends State<ChatPageWithRoom>
       );
 
       final stt = await messageEvent.requestSpeechToText(
-        MatrixState.pangeaController.languageController.userL1?.langCodeShort ??
+        MatrixState.pangeaController.userController.userL1?.langCodeShort ??
             LanguageKeys.unknownLanguage,
-        MatrixState.pangeaController.languageController.userL2?.langCodeShort ??
+        MatrixState.pangeaController.userController.userL2?.langCodeShort ??
             LanguageKeys.unknownLanguage,
       );
       if (stt.transcript.sttTokens.isEmpty) return;

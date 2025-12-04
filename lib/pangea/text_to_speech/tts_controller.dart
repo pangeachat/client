@@ -275,12 +275,10 @@ class TtsController {
         text: text,
         langCode: langCode,
         tokens: tokens,
-        userL1:
-            MatrixState.pangeaController.languageController.activeL1Code() ??
-                LanguageKeys.unknownLanguage,
-        userL2:
-            MatrixState.pangeaController.languageController.activeL2Code() ??
-                LanguageKeys.unknownLanguage,
+        userL1: MatrixState.pangeaController.userController.userL1Code ??
+            LanguageKeys.unknownLanguage,
+        userL2: MatrixState.pangeaController.userController.userL2Code ??
+            LanguageKeys.unknownLanguage,
       ),
     );
     loadingChoreoStream.add(false);

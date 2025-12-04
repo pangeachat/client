@@ -27,7 +27,7 @@ extension AnalyticsClientExtension on Client {
   /// optional userId (if not specified, uses current user).
   /// If user is invited to the room, joins the room.
   Room? analyticsRoomLocal([LanguageModel? lang, String? userIdParam]) {
-    lang ??= MatrixState.pangeaController.languageController.userL2;
+    lang ??= MatrixState.pangeaController.userController.userL2;
 
     if (lang == null) {
       debugger(when: kDebugMode);

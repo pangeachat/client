@@ -44,7 +44,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
   void initState() {
     super.initState();
 
-    final target = MatrixState.pangeaController.languageController.userL2;
+    final target = MatrixState.pangeaController.userController.userL2;
     if (target != null) {
       setTargetLanguageFilter(target);
     }
@@ -120,7 +120,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
         GetLocalizedCoursesRequest(
           coursePlanIds:
               discoveredCourses.map((c) => c.courseId).toSet().toList(),
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
       final searchResult = resp.coursePlans;

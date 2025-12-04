@@ -404,7 +404,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     if (cachedConstructs.isEmpty || onlyDraft) return;
 
     // if missing important info, don't send analytics. Could happen if user just signed up.
-    final l2 = l2Override ?? _pangeaController.languageController.userL2;
+    final l2 = l2Override ?? _pangeaController.userController.userL2;
     if (l2 == null || _client.userID == null) return;
 
     // analytics room for the user and current target language
@@ -418,10 +418,10 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 
   Future<void> sendActivityAnalytics(String roomId) async {
     if (_pangeaController.matrixState.client.userID == null) return;
-    if (_pangeaController.languageController.userL2 == null) return;
+    if (_pangeaController.userController.userL2 == null) return;
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
-      _pangeaController.languageController.userL2!,
+      _pangeaController.userController.userL2!,
     );
     if (analyticsRoom == null) return;
     await analyticsRoom.addActivityRoomId(roomId);
@@ -436,10 +436,10 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 
   Future<void> removeActivityAnalytics(String roomId) async {
     if (_pangeaController.matrixState.client.userID == null) return;
-    if (_pangeaController.languageController.userL2 == null) return;
+    if (_pangeaController.userController.userL2 == null) return;
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
-      _pangeaController.languageController.userL2!,
+      _pangeaController.userController.userL2!,
     );
     if (analyticsRoom == null) return;
     await analyticsRoom.removeActivityRoomId(roomId);

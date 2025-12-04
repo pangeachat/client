@@ -21,7 +21,7 @@ class ChatListItemSubtitle extends StatelessWidget {
   });
 
   bool _showPangeaContent(Event event) {
-    return MatrixState.pangeaController.languageController.languagesSet &&
+    return MatrixState.pangeaController.userController.languagesSet &&
         !event.redacted &&
         event.type == EventTypes.Message &&
         event.messageType == MessageTypes.Text &&

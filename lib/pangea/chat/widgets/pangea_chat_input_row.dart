@@ -24,9 +24,9 @@ class PangeaChatInputRow extends StatelessWidget {
   });
 
   LanguageModel? get activel1 =>
-      controller.pangeaController.languageController.activeL1Model();
+      controller.pangeaController.userController.userL1;
   LanguageModel? get activel2 =>
-      controller.pangeaController.languageController.activeL2Model();
+      controller.pangeaController.userController.userL2;
 
   @override
   Widget build(BuildContext context) {

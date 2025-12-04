@@ -135,9 +135,9 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     final req = PhoneticTranscriptionRequest(
       arc: LanguageArc(
         l1: PLanguageStore.byLangCode(requestData.wordCardL1) ??
-            MatrixState.pangeaController.languageController.userL1!,
+            MatrixState.pangeaController.userController.userL1!,
         l2: PLanguageStore.byLangCode(langCode) ??
-            MatrixState.pangeaController.languageController.userL2!,
+            MatrixState.pangeaController.userController.userL2!,
       ),
       content: response.content,
     );

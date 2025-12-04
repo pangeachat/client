@@ -78,7 +78,7 @@ class MorphsRepo {
   /// if not, we can make it async and update uses of this function
   /// to be async as well
   static Future<MorphFeaturesAndTags> get([LanguageModel? language]) async {
-    language ??= MatrixState.pangeaController.languageController.userL2;
+    language ??= MatrixState.pangeaController.userController.userL2;
 
     if (language == null) {
       return defaultMorphMapping;
@@ -111,12 +111,12 @@ class MorphsRepo {
   }
 
   static MorphFeaturesAndTags get cached {
-    if (MatrixState.pangeaController.languageController.userL2?.langCodeShort ==
+    if (MatrixState.pangeaController.userController.userL2?.langCodeShort ==
         null) {
       return defaultMorphMapping;
     }
     final cachedJson = _morphsStorage.read(
-      MatrixState.pangeaController.languageController.userL2!.langCodeShort,
+      MatrixState.pangeaController.userController.userL2!.langCodeShort,
     );
     if (cachedJson != null) {
       return MorphsRepo.fromJson(cachedJson);

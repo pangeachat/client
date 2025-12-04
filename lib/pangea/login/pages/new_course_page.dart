@@ -51,7 +51,7 @@ class NewCoursePageState extends State<NewCoursePage> {
     super.initState();
 
     _targetLanguageFilter.value =
-        MatrixState.pangeaController.languageController.userL2;
+        MatrixState.pangeaController.userController.userL2;
 
     _loadCourses();
   }

@@ -494,8 +494,8 @@ class _MessageBubbleTranscription extends StatelessWidget {
                         onClick: onTokenSelected,
                         isSelected: isTokenSelected,
                       ),
-                      if (MatrixState.pangeaController.languageController
-                          .showTranscription)
+                      if (MatrixState
+                          .pangeaController.userController.showTranscription)
                         PhoneticTranscriptionWidget(
                           text: transcription.transcript.text,
                           textLanguage: PLanguageStore.byLangCode(

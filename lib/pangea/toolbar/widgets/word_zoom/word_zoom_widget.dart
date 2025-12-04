@@ -126,8 +126,8 @@ class WordZoomWidget extends StatelessWidget {
                               spacing: 12.0,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                if (MatrixState.pangeaController
-                                    .languageController.showTranscription)
+                                if (MatrixState.pangeaController.userController
+                                    .showTranscription)
                                   PhoneticTranscriptionWidget(
                                     text: token.content,
                                     textLanguage: PLanguageStore.byLangCode(

@@ -58,8 +58,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         setState(() => _isPlaying = true);
       }
       try {
-        final l2 =
-            MatrixState.pangeaController.languageController.activeL2Code();
+        final l2 = MatrixState.pangeaController.userController.userL2Code;
         if (l2 != null) {
           await TtsController.tryToSpeak(
             widget.audioContent!,

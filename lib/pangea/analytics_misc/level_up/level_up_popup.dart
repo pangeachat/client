@@ -107,10 +107,9 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
   Uri? avatarUrl;
   final bool _hasBlastedConfetti = false;
 
-  String language = MatrixState.pangeaController.languageController
-          .activeL2Code()
-          ?.toUpperCase() ??
-      LanguageKeys.unknownLanguage;
+  String language =
+      MatrixState.pangeaController.userController.userL2Code?.toUpperCase() ??
+          LanguageKeys.unknownLanguage;
 
   ConstructSummary? _constructSummary;
   Object? _error;

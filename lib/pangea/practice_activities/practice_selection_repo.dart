@@ -39,7 +39,7 @@ class PracticeSelectionRepo {
     String messageLanguage,
     List<PangeaToken> tokens,
   ) {
-    final userL2 = MatrixState.pangeaController.languageController.userL2;
+    final userL2 = MatrixState.pangeaController.userController.userL2;
     if (userL2?.langCodeShort != messageLanguage.split("-").first) {
       return null;
     }
@@ -61,7 +61,7 @@ class PracticeSelectionRepo {
     required String langCode,
   }) {
     if (langCode.split("-")[0] !=
-        MatrixState.pangeaController.languageController.userL2?.langCodeShort) {
+        MatrixState.pangeaController.userController.userL2?.langCodeShort) {
       return PracticeSelection({});
     }
 

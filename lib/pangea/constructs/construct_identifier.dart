@@ -152,12 +152,12 @@ class ConstructIdentifier {
 
   LemmaInfoRequest get _lemmaInfoRequest => LemmaInfoRequest(
         partOfSpeech: category,
-        lemmaLang: MatrixState
-                .pangeaController.languageController.userL2?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        userL1: MatrixState
-                .pangeaController.languageController.userL1?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
+        lemmaLang:
+            MatrixState.pangeaController.userController.userL2?.langCodeShort ??
+                LanguageKeys.defaultLanguage,
+        userL1:
+            MatrixState.pangeaController.userController.userL1?.langCodeShort ??
+                LanguageKeys.defaultLanguage,
         lemma: lemma,
       );
 
@@ -187,7 +187,7 @@ class ConstructIdentifier {
 
   Future<void> setUserLemmaInfo(UserSetLemmaInfo newLemmaInfo) async {
     final client = MatrixState.pangeaController.matrixState.client;
-    final l2 = MatrixState.pangeaController.languageController.userL2;
+    final l2 = MatrixState.pangeaController.userController.userL2;
     if (l2 == null) return;
 
     final analyticsRoom = await client.getMyAnalyticsRoom(l2);

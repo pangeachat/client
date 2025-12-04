@@ -50,9 +50,8 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
         lemma: widget.constructId.lemma,
         partOfSpeech: widget.constructId.category,
         lemmaLang: widget.langCode,
-        userL1:
-            MatrixState.pangeaController.languageController.userL1?.langCode ??
-                LanguageKeys.defaultLanguage,
+        userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+            LanguageKeys.defaultLanguage,
       );
 
   Future<void> _fetchLemmaMeaning() async {

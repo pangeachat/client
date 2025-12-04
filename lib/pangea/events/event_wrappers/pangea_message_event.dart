@@ -75,11 +75,10 @@ class PangeaMessageEvent {
 
   bool get isAudioMessage => _event.messageType == MessageTypes.Audio;
 
-  String? get _l2Code =>
-      MatrixState.pangeaController.languageController.activeL2Code();
+  String? get _l2Code => MatrixState.pangeaController.userController.userL2Code;
 
   String? get _l1Code =>
-      MatrixState.pangeaController.languageController.userL1?.langCode;
+      MatrixState.pangeaController.userController.userL1?.langCode;
 
   Event? _latestEditCache;
   Event get _latestEdit => _latestEditCache ??= _event
@@ -255,8 +254,7 @@ class PangeaMessageEvent {
       return stt.langCode;
     }
 
-    final bool immersionMode = MatrixState
-        .pangeaController.permissionsController
+    final bool immersionMode = MatrixState.pangeaController.userController
         .isToolEnabled(ToolSetting.immersionMode);
 
     final String? originalLangCode = originalSent?.langCode;

@@ -13,6 +13,8 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/user/models/activities_profile_model.dart';
@@ -107,8 +109,8 @@ class UserController {
     waitForDataInSync = false,
   }) async {
     await initialize();
-    final prevTargetLang = _pangeaController.languageController.userL2;
-    final prevBaseLang = _pangeaController.languageController.userL1;
+    final prevTargetLang = _pangeaController.userController.userL2;
+    final prevBaseLang = _pangeaController.userController.userL1;
     final prevHash = profile.hashCode;
 
     final Profile updatedProfile = update(profile);
@@ -119,12 +121,12 @@ class UserController {
 
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
 
-    if ((prevTargetLang != _pangeaController.languageController.userL2) ||
-        (prevBaseLang != _pangeaController.languageController.userL1)) {
+    if ((prevTargetLang != _pangeaController.userController.userL2) ||
+        (prevBaseLang != _pangeaController.userController.userL1)) {
       languageStream.add(
         LanguageUpdate(
-          baseLang: _pangeaController.languageController.userL1!,
-          targetLang: _pangeaController.languageController.userL2!,
+          baseLang: _pangeaController.userController.userL1!,
+          targetLang: _pangeaController.userController.userL2!,
           prevBaseLang: prevBaseLang,
           prevTargetLang: prevTargetLang,
         ),
@@ -155,7 +157,7 @@ class UserController {
 
       if (profile.userSettings.targetLanguage != null &&
           profile.userSettings.targetLanguage!.isNotEmpty &&
-          _pangeaController.languageController.userL2 == null) {
+          _pangeaController.userController.userL2 == null) {
         // update the language list and send an update to refresh analytics summary
         await PLanguageStore.initialize(forceRefresh: true);
       }
@@ -364,8 +366,8 @@ class UserController {
     LanguageModel? baseLanguage,
     LanguageModel? targetLanguage,
   }) async {
-    targetLanguage ??= _pangeaController.languageController.userL2;
-    baseLanguage ??= _pangeaController.languageController.userL1;
+    targetLanguage ??= _pangeaController.userController.userL2;
+    baseLanguage ??= _pangeaController.userController.userL1;
     if (targetLanguage == null || analyticsProfile == null) return;
 
     final analyticsRoom =
@@ -426,7 +428,7 @@ class UserController {
   }
 
   Future<void> addXPOffset(int offset) async {
-    final targetLanguage = _pangeaController.languageController.userL2;
+    final targetLanguage = _pangeaController.userController.userL2;
     if (targetLanguage == null || analyticsProfile == null) return;
 
     analyticsProfile!.addXPOffset(
@@ -525,4 +527,66 @@ class UserController {
       return AnalyticsProfileModel();
     }
   }
+
+  bool isToolEnabled(ToolSetting setting) {
+    return userToolSetting(setting);
+  }
+
+  bool userToolSetting(ToolSetting setting) {
+    switch (setting) {
+      case ToolSetting.interactiveTranslator:
+        return profile.toolSettings.interactiveTranslator;
+      case ToolSetting.interactiveGrammar:
+        return profile.toolSettings.interactiveGrammar;
+      case ToolSetting.immersionMode:
+        return profile.toolSettings.immersionMode;
+      case ToolSetting.definitions:
+        return profile.toolSettings.definitions;
+      case ToolSetting.autoIGC:
+        return profile.toolSettings.autoIGC;
+      default:
+        return false;
+    }
+  }
+
+  String? get userL1Code {
+    final source = profile.userSettings.sourceLanguage;
+    return source == null || source.isEmpty
+        ? LanguageController.systemLanguage?.langCode
+        : source;
+  }
+
+  String? get userL2Code {
+    final target = profile.userSettings.targetLanguage;
+    return target == null || target.isEmpty ? null : target;
+  }
+
+  LanguageModel? get userL1 {
+    if (userL1Code == null) return null;
+    final langModel = PLanguageStore.byLangCode(userL1Code!);
+    return langModel?.langCode == LanguageKeys.unknownLanguage
+        ? null
+        : langModel;
+  }
+
+  LanguageModel? get userL2 {
+    if (userL2Code == null) return null;
+    final langModel = PLanguageStore.byLangCode(userL2Code!);
+    return langModel?.langCode == LanguageKeys.unknownLanguage
+        ? null
+        : langModel;
+  }
+
+  bool get languagesSet =>
+      userL1Code != null &&
+      userL2Code != null &&
+      userL1Code!.isNotEmpty &&
+      userL2Code!.isNotEmpty &&
+      userL1Code != LanguageKeys.unknownLanguage &&
+      userL2Code != LanguageKeys.unknownLanguage;
+
+  bool get showTranscription =>
+      (userL1 != null && userL2 != null && userL1?.script != userL2?.script) ||
+      (userL1?.script != LanguageKeys.unknownLanguage ||
+          userL2?.script == LanguageKeys.unknownLanguage);
 }

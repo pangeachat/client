@@ -19,8 +19,8 @@ class _TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
 
   @override
   Future<SpeechToTextResponseModel> fetch() => messageEvent.requestSpeechToText(
-        MatrixState.pangeaController.languageController.userL1!.langCodeShort,
-        MatrixState.pangeaController.languageController.userL2!.langCodeShort,
+        MatrixState.pangeaController.userController.userL1!.langCodeShort,
+        MatrixState.pangeaController.userController.userL2!.langCodeShort,
       );
 }
 
@@ -30,12 +30,12 @@ class _STTTranslationLoader extends AsyncLoader<String> {
 
   @override
   Future<String> fetch() => messageEvent.requestSttTranslation(
-        langCode: MatrixState
-            .pangeaController.languageController.userL1!.langCodeShort,
-        l1Code: MatrixState
-            .pangeaController.languageController.userL1!.langCodeShort,
-        l2Code: MatrixState
-            .pangeaController.languageController.userL2!.langCodeShort,
+        langCode:
+            MatrixState.pangeaController.userController.userL1!.langCodeShort,
+        l1Code:
+            MatrixState.pangeaController.userController.userL1!.langCodeShort,
+        l2Code:
+            MatrixState.pangeaController.userController.userL2!.langCodeShort,
       );
 }
 
@@ -129,7 +129,7 @@ class SelectModeController {
 
     if (messageEvent.event.messageType == MessageTypes.Text) {
       final matchesL2 = messageEvent.messageDisplayLangCode.split("-").first ==
-          MatrixState.pangeaController.languageController.userL2!.langCodeShort;
+          MatrixState.pangeaController.userController.userL2!.langCodeShort;
 
       return matchesL2 ? textModes : [SelectMode.translate];
     }

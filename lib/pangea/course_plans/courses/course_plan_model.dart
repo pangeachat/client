@@ -95,7 +95,7 @@ class CoursePlanModel {
   Map<String, CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
         TranslateTopicRequest(
           topicIds: topicIds,
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       ).topics;
 
@@ -106,7 +106,7 @@ class CoursePlanModel {
     final resp = await CourseTopicRepo.get(
       TranslateTopicRequest(
         topicIds: topicIds,
-        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       ),
       uuid,
     );

@@ -43,7 +43,7 @@ class LevelUpManager {
         .numConstructs(ConstructTypeEnum.vocab);
 
     final LanguageModel? l2 =
-        MatrixState.pangeaController.languageController.userL2;
+        MatrixState.pangeaController.userController.userL2;
     final Room? analyticsRoom =
         MatrixState.pangeaController.matrixState.client.analyticsRoomLocal(l2!);
 

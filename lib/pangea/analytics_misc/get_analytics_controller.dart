@@ -45,8 +45,8 @@ class GetAnalyticsController extends BaseController {
     _pangeaController = pangeaController;
   }
 
-  LanguageModel? get _l1 => _pangeaController.languageController.userL1;
-  LanguageModel? get _l2 => _pangeaController.languageController.userL2;
+  LanguageModel? get _l1 => _pangeaController.userController.userL1;
+  LanguageModel? get _l2 => _pangeaController.userController.userL2;
 
   Client get _client => _pangeaController.matrixState.client;
 

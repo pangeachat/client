@@ -31,7 +31,7 @@ class VocabDetailsView extends StatelessWidget {
 
   /// Get the language code for the current lemma
   String? get _userL2 =>
-      MatrixState.pangeaController.languageController.userL2?.langCode;
+      MatrixState.pangeaController.userController.userL2?.langCode;
 
   List<String> get forms =>
       MatrixState.pangeaController.getAnalytics.constructListModel
@@ -69,14 +69,13 @@ class VocabDetailsView extends StatelessWidget {
                   );
                 },
               ),
-              if (MatrixState
-                  .pangeaController.languageController.showTranscription)
+              if (MatrixState.pangeaController.userController.showTranscription)
                 Padding(
                   padding: const EdgeInsets.only(top: 4.0),
                   child: PhoneticTranscriptionWidget(
                     text: _construct.lemma,
                     textLanguage:
-                        MatrixState.pangeaController.languageController.userL2!,
+                        MatrixState.pangeaController.userController.userL2!,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: textColor.withAlpha((0.7 * 255).toInt()),
                           fontSize: 18,

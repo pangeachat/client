@@ -125,7 +125,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   Room? get room => Matrix.of(context).client.getRoomById(widget.roomId);
 
   LanguageModel? get _userL2 {
-    final l2 = MatrixState.pangeaController.languageController.userL2;
+    final l2 = MatrixState.pangeaController.userController.userL2;
     if (l2 == null) return null;
 
     // Attempt to find the language model by its short code, since analytics

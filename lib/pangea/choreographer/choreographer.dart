@@ -223,8 +223,8 @@ class Choreographer extends ChangeNotifier {
         MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
     if (canSendStatus != SubscriptionStatus.subscribed ||
-        MatrixState.pangeaController.languageController.userL2 == null ||
-        MatrixState.pangeaController.languageController.userL1 == null ||
+        MatrixState.pangeaController.userController.userL2 == null ||
+        MatrixState.pangeaController.userController.userL1 == null ||
         (!ToolSetting.interactiveGrammar.enabled &&
             !ToolSetting.interactiveTranslator.enabled) ||
         (!ToolSetting.autoIGC.enabled &&
@@ -261,9 +261,9 @@ class Choreographer extends ChangeNotifier {
   Future<PangeaMessageContentModel> getMessageContent(String message) async {
     TokensResponseModel? tokensResp;
     final l2LangCode =
-        MatrixState.pangeaController.languageController.userL2?.langCode;
+        MatrixState.pangeaController.userController.userL2?.langCode;
     final l1LangCode =
-        MatrixState.pangeaController.languageController.userL1?.langCode;
+        MatrixState.pangeaController.userController.userL1?.langCode;
     if (l1LangCode != null && l2LangCode != null) {
       final res = await TokensRepo.get(
         MatrixState.pangeaController.userController.accessToken,

@@ -59,9 +59,9 @@
 //     super.initState();
 
 //     selectedLanguageOfInstructions =
-//         MatrixState.pangeaController.languageController.userL1?.langCode;
+//         MatrixState.pangeaController.userController.userL1?.langCode;
 //     selectedTargetLanguage =
-//         MatrixState.pangeaController.languageController.userL2?.langCode;
+//         MatrixState.pangeaController.userController.userL2?.langCode;
 //     selectedCefrLevel = LanguageLevelTypeEnum.a1;
 //     selectedNumberOfParticipants = 3;
 //     _setMode();
@@ -79,7 +79,7 @@
 
 //   ActivitySettingRequestSchema get req => ActivitySettingRequestSchema(
 //         langCode:
-//             MatrixState.pangeaController.languageController.userL1?.langCode ??
+//             MatrixState.pangeaController.userController.userL1?.langCode ??
 //                 LanguageKeys.defaultLanguage,
 //       );
 
@@ -139,9 +139,9 @@
 //       modeController.clear();
 //       selectedMedia = MediaEnum.nan;
 //       selectedLanguageOfInstructions =
-//           MatrixState.pangeaController.languageController.userL1?.langCode;
+//           MatrixState.pangeaController.userController.userL1?.langCode;
 //       selectedTargetLanguage =
-//           MatrixState.pangeaController.languageController.userL2?.langCode;
+//           MatrixState.pangeaController.userController.userL2?.langCode;
 //       selectedCefrLevel = LanguageLevelTypeEnum.a1;
 //       selectedNumberOfParticipants = 3;
 //     });

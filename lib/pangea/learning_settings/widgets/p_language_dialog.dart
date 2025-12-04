@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -21,10 +22,9 @@ Future<void> pLanguageDialog(
 ) async {
   final PangeaController pangeaController = MatrixState.pangeaController;
   //PTODO: if source language not set by user, default to languge from device settings
-  final LanguageModel? userL1 = pangeaController.languageController.userL1;
-  final LanguageModel? userL2 = pangeaController.languageController.userL2;
-  final LanguageModel? systemLanguage =
-      pangeaController.languageController.systemLanguage;
+  final LanguageModel? userL1 = pangeaController.userController.userL1;
+  final LanguageModel? userL2 = pangeaController.userController.userL2;
+  final LanguageModel? systemLanguage = LanguageController.systemLanguage;
 
   LanguageModel? selectedSourceLanguage = systemLanguage;
   if (userL1 != null && userL1.langCode != LanguageKeys.unknownLanguage) {

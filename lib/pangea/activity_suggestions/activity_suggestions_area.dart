@@ -75,10 +75,10 @@
 //   double get cardWidth => _isColumnMode ? 225.0 : 150.0;
 
 //   String get instructionLanguage =>
-//       MatrixState.pangeaController.languageController.userL1?.langCode ??
+//       MatrixState.pangeaController.userController.userL1?.langCode ??
 //       LanguageKeys.defaultLanguage;
 //   String get targetLanguage =>
-//       MatrixState.pangeaController.languageController.userL2?.langCode ??
+//       MatrixState.pangeaController.userController.userL2?.langCode ??
 //       LanguageKeys.defaultLanguage;
 
 //   ActivityPlanRequest get _request {

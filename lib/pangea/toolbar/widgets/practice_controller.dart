@@ -59,8 +59,8 @@ class PracticeController with ChangeNotifier {
     PracticeTarget target,
   ) async {
     final req = MessageActivityRequest(
-      userL1: MatrixState.pangeaController.languageController.userL1!.langCode,
-      userL2: MatrixState.pangeaController.languageController.userL2!.langCode,
+      userL1: MatrixState.pangeaController.userController.userL1!.langCode,
+      userL2: MatrixState.pangeaController.userController.userL2!.langCode,
       messageText: pangeaMessageEvent.messageDisplayText,
       messageTokens:
           pangeaMessageEvent.messageDisplayRepresentation?.tokens ?? [],

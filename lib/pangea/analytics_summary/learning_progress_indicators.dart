@@ -97,8 +97,8 @@ class LearningProgressIndicatorsState
       return const SizedBox();
     }
 
-    final userL1 = MatrixState.pangeaController.languageController.userL1;
-    final userL2 = MatrixState.pangeaController.languageController.userL2;
+    final userL1 = MatrixState.pangeaController.userController.userL1;
+    final userL2 = MatrixState.pangeaController.userController.userL2;
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
 

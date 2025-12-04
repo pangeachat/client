@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -17,12 +16,10 @@ import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart'
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
-import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/locale_provider.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/pangea/user/controllers/permissions_controller.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/firebase_analytics.dart';
@@ -30,8 +27,6 @@ import '../utils/firebase_analytics.dart';
 class PangeaController {
   ///pangeaControllers
   late UserController userController;
-  late LanguageController languageController;
-  late PermissionsController permissionsController;
   late GetAnalyticsController getAnalytics;
   late PutAnalyticsController putAnalytics;
   late SubscriptionController subscriptionController;
@@ -46,16 +41,13 @@ class PangeaController {
   MatrixState matrixState;
   Matrix matrix;
 
-  int? randomint;
   PangeaController({required this.matrix, required this.matrixState}) {
-    _setup();
+    userController = UserController(this);
+    getAnalytics = GetAnalyticsController(this);
+    putAnalytics = PutAnalyticsController(this);
+    subscriptionController = SubscriptionController(this);
+    PAuthGaurd.pController = this;
     _setSettingsSubscriptions();
-    randomint = Random().nextInt(2000);
-  }
-
-  /// Pangea Initialization
-  void _setup() {
-    _addRefInObjects();
   }
 
   /// Initializes various controllers and settings.
@@ -69,18 +61,7 @@ class PangeaController {
     TtsController.setAvailableLanguages();
   }
 
-  /// Initialize controllers
-  _addRefInObjects() {
-    userController = UserController(this);
-    languageController = LanguageController(this);
-    permissionsController = PermissionsController(this);
-    getAnalytics = GetAnalyticsController(this);
-    putAnalytics = PutAnalyticsController(this);
-    subscriptionController = SubscriptionController(this);
-    PAuthGaurd.pController = this;
-  }
-
-  _logOutfromPangea(BuildContext context) {
+  void _logOutfromPangea(BuildContext context) {
     debugPrint("Pangea logout");
     GoogleAnalytics.logout();
     clearCache();
@@ -243,7 +224,7 @@ class PangeaController {
       return;
     }
 
-    final targetLanguage = languageController.userL2?.langCode;
+    final targetLanguage = userController.userL2?.langCode;
     final cefrLevel = userController.profile.userSettings.cefrLevel;
     final updateBotOptions = botDM.botOptions ?? BotOptionsModel();
 

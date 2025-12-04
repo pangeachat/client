@@ -162,9 +162,9 @@ class VocabRepo {
   }
 
   static VocabResponse placeholderData([LanguageModel? language]) {
-    language ??= MatrixState.pangeaController.languageController.userL2 == null
+    language ??= MatrixState.pangeaController.userController.userL2 == null
         ? PLanguageStore.byLangCode(LanguageKeys.defaultLanguage)
-        : MatrixState.pangeaController.languageController.userL2!;
+        : MatrixState.pangeaController.userController.userL2!;
 
     //TODO - move this to the server and fill out all our languages
     final Map<String, VocabResponse> placeholder = {

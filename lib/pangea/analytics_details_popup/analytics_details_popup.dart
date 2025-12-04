@@ -60,7 +60,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {"l2": MatrixState.pangeaController.languageController.userL2},
+        data: {"l2": MatrixState.pangeaController.userController.userL2},
       );
     } finally {
       features.sort(

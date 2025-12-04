@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
+import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
@@ -234,8 +235,7 @@ class SettingsLearningController extends State<SettingsLearning> {
       _profile.userSettings.targetLanguage != null && _targetLanguage != null;
 
   LanguageModel? get selectedSourceLanguage {
-    return _selectedBaseLanguage ??
-        pangeaController.languageController.systemLanguage;
+    return _selectedBaseLanguage ?? LanguageController.systemLanguage;
   }
 
   LanguageModel? get selectedTargetLanguage {
@@ -255,8 +255,8 @@ class SettingsLearningController extends State<SettingsLearning> {
           ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
           : null;
 
-  LanguageModel? get userL1 => pangeaController.languageController.userL1;
-  LanguageModel? get userL2 => pangeaController.languageController.userL2;
+  LanguageModel? get userL1 => pangeaController.userController.userL1;
+  LanguageModel? get userL2 => pangeaController.userController.userL2;
 
   bool get publicProfile => _profile.userSettings.publicProfile ?? false;
 

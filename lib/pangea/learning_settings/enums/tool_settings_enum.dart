@@ -66,5 +66,5 @@ enum ToolSetting {
   }
 
   bool get enabled =>
-      MatrixState.pangeaController.permissionsController.isToolEnabled(this);
+      MatrixState.pangeaController.userController.isToolEnabled(this);
 }
