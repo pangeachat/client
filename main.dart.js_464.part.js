@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "Via celolingvo ne kongruas kun \u0109i tiu mesa\u011do. \u0108u \u011disdatigi vian celolingvon?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0hv+ioX8QiLAl+C/xzIBGpYDnl0="] = d.current;
+  d["k4UUrJhDQzi9QMK7+QGK+9Xpa04="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_464.part.js.map

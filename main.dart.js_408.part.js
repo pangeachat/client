@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "Your target language doesn't match this message. Update your target language?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bdC+xif7JnXJuXYHwAGtklFaNw0="] = d.current;
+  d["L4/SvB2WrJ7Hto7Ieic0xV5834s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_408.part.js.map

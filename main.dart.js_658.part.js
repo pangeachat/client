@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "A c\xe9l nyelve nem egyezik meg ezzel az \xfczenettel. Friss\xedti a c\xe9l nyelv\xe9t?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GQxkTfFG0PoOJ6jWxuKW3vPimDg="] = d.current;
+  d["QYTgvUK1S4UIpq4AgU8L+y9rn9Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "J\u016bs\u0173 tikslin\u0117 kalba nesutampa su \u0161iuo prane\u0161imu. Ar norite atnaujinti savo tikslin\u0119 kalb\u0105?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5243,7 +5246,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["V9QgfdXBZWW1wu515D7hnw6LAMw="] = d.current;
+  d["652Ji3lwQ4TO5nTdU4RMVhbJ6R8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_706.part.js.map

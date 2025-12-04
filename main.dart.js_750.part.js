@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "Ditt m\xe5lspr\xe5k matchar inte detta meddelande. Vill du uppdatera ditt m\xe5lspr\xe5k?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uUs7xulBHB95C3Y3jm7CD1ak/r4="] = d.current;
+  d["hG6r6IJ06+sfNon84W6DC/iBaRs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_750.part.js.map

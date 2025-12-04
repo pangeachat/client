@@ -5229,6 +5229,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "Bokm\xe5l m\xe5l spr\xe5ket ditt samsvarer ikke med denne meldingen. Oppdater m\xe5lspr\xe5ket ditt?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9fF1sezSVAVodO4rcCn00NHOpQ0="] = d.current;
+  d["1GqyS9fk0/eBd1d6XC04uUnehLA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

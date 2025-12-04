@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da \u05d0\u05d9\u05e0\u05d4 \u05ea\u05d5\u05d0\u05de\u05ea \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5. \u05d4\u05d0\u05dd \u05dc\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["du5eUsaSt11LcEek/N5wVKEJZ9M="] = d.current;
+  d["6091FLXrZC8DYznak3LHHjT2wHk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_624.part.js.map

@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "\u0906\u092a\u0915\u0940 \u0932\u0915\u094d\u0937\u093f\u0924 \u092d\u093e\u0937\u093e \u0907\u0938 \u0938\u0902\u0926\u0947\u0936 \u0938\u0947 \u092e\u0947\u0932 \u0928\u0939\u0940\u0902 \u0916\u093e\u0924\u0940\u0964 \u0915\u094d\u092f\u093e \u0906\u092a \u0905\u092a\u0928\u0940 \u0932\u0915\u094d\u0937\u093f\u0924 \u092d\u093e\u0937\u093e \u0905\u092a\u0921\u0947\u091f \u0915\u0930\u0928\u093e \u091a\u093e\u0939\u0947\u0902\u0917\u0947?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TN4/2dqCZIqntqXY/C+ZcvwS4nk="] = d.current;
+  d["oQ0oA4CtIZ6e1SfbVKOwrdcWnMg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_625.part.js.map

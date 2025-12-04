@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u304c\u3053\u306e\u30e1\u30c3\u30bb\u30fc\u30b8\u3068\u4e00\u81f4\u3057\u307e\u305b\u3093\u3002\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u3092\u66f4\u65b0\u3057\u307e\u3059\u304b\uff1f";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Nj33wCEO3NbpL0KlyG3OMG6UDVY="] = d.current;
+  d["thBDbRVVomRQISfA9bSX9VmtjAM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "Jazyk c\xedle neodpov\xedd\xe1 t\xe9to zpr\xe1v\u011b. Chcete aktualizovat sv\u016fj c\xedlov\xfd jazyk?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/NcUsGfM9e7jbblG0N6uN91GjiQ="] = d.current;
+  d["uItp/FaM/MijZxldr1q8mvZmZzQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_236.part.js.map

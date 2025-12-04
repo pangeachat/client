@@ -5227,6 +5227,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return "J\u016bsu m\u0113r\u0137a valoda nesakr\u012bt ar \u0161o zi\u0146ojumu. Vai v\u0113laties atjaunin\u0101t savu m\u0113r\u0137a valodu?";
     },
+    get$blockLemmaConfirmation() {
+      return "This vocab word will be permanently removed from your analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5240,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NisvDKCAkNnKPXGrm3WGHqDlqk8="] = d.current;
+  d["wY5KrlHwxmb88OgovI/GKuT7kI8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_714.part.js.map
