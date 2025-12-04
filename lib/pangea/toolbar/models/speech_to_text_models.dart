@@ -9,6 +9,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
 
 const int thresholdForGreen = 80;
@@ -20,11 +21,13 @@ class SpeechToTextAudioConfigModel {
   final bool enableAutomaticPunctuation;
   final String userL1;
   final String userL2;
+  final GenderEnum userGender;
 
   SpeechToTextAudioConfigModel({
     required this.encoding,
     required this.userL1,
     required this.userL2,
+    required this.userGender,
     this.sampleRateHertz = 16000,
     this.enableWordConfidence = true,
     this.enableAutomaticPunctuation = true,
@@ -35,6 +38,7 @@ class SpeechToTextAudioConfigModel {
         "sample_rate_hertz": sampleRateHertz,
         "user_l1": userL1,
         "user_l2": userL2,
+        "user_gender": userGender.string,
         "enable_word_confidence": enableWordConfidence,
         "enable_automatic_punctuation": enableAutomaticPunctuation,
       };

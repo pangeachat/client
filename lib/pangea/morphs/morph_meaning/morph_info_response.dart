@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
+
 class MorphologicalTag {
   final String code;
   final String l1Title;
@@ -69,11 +71,13 @@ class MorphologicalFeature {
 class MorphInfoResponse {
   final String userL1;
   final String userL2;
+  final GenderEnum userGender;
   final List<MorphologicalFeature> features;
 
   MorphInfoResponse({
     required this.userL1,
     required this.userL2,
+    required this.userGender,
     required this.features,
   });
 
@@ -86,6 +90,9 @@ class MorphInfoResponse {
     return MorphInfoResponse(
       userL1: json['user_l1'],
       userL2: json['user_l2'],
+      userGender: json['userGender'] is String
+          ? GenderEnumExtension.fromString(json['userGender'])
+          : GenderEnum.unselected,
       features: featuresList,
     );
   }
@@ -94,6 +101,7 @@ class MorphInfoResponse {
     return {
       'user_l1': userL1,
       'user_l2': userL2,
+      'user_gender': userGender.string,
       'features': features.map((feature) => feature.toJson()).toList(),
     };
   }

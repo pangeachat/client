@@ -110,6 +110,8 @@ class ActivitySessionStartView extends StatelessWidget {
                             .activeL1Code()!,
                         userL2: MatrixState.pangeaController.languageController
                             .activeL2Code()!,
+                        userGender: MatrixState.pangeaController.userController
+                            .profile.userSettings.gender,
                       ),
                     ),
                   );

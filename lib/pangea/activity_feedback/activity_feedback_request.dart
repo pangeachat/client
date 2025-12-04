@@ -1,9 +1,12 @@
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
+
 class ActivityFeedbackRequest {
   final String activityId;
   final String feedbackText;
   final String userId;
   final String userL1;
   final String userL2;
+  final GenderEnum userGender;
 
   ActivityFeedbackRequest({
     required this.activityId,
@@ -11,6 +14,7 @@ class ActivityFeedbackRequest {
     required this.userId,
     required this.userL1,
     required this.userL2,
+    this.userGender = GenderEnum.unselected,
   });
 
   Map<String, dynamic> toJson() {
@@ -20,6 +24,7 @@ class ActivityFeedbackRequest {
       'user_id': userId,
       'user_l1': userL1,
       'user_l2': userL2,
+      'user_gender': userGender,
     };
   }
 
@@ -32,7 +37,8 @@ class ActivityFeedbackRequest {
           feedbackText == other.feedbackText &&
           userId == other.userId &&
           userL1 == other.userL1 &&
-          userL2 == other.userL2;
+          userL2 == other.userL2 &&
+          userGender == other.userGender;
 
   @override
   int get hashCode =>
@@ -40,5 +46,6 @@ class ActivityFeedbackRequest {
       feedbackText.hashCode ^
       userId.hashCode ^
       userL1.hashCode ^
-      userL2.hashCode;
+      userL2.hashCode ^
+      userGender.hashCode;
 }

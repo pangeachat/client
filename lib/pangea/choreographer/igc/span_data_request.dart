@@ -1,9 +1,11 @@
 import 'package:fluffychat/pangea/choreographer/igc/span_data_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
 
 class SpanDetailsRequest {
   final String userL1;
   final String userL2;
+  final GenderEnum userGender;
   final bool enableIT;
   final bool enableIGC;
   final SpanData span;
@@ -11,6 +13,7 @@ class SpanDetailsRequest {
   const SpanDetailsRequest({
     required this.userL1,
     required this.userL2,
+    required this.userGender,
     required this.enableIGC,
     required this.enableIT,
     required this.span,
@@ -19,6 +22,7 @@ class SpanDetailsRequest {
   Map<String, dynamic> toJson() => {
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
+        ModelKey.userGender: userGender.string,
         "enable_it": enableIT,
         "enable_igc": enableIGC,
         'span': span.toJson(),
@@ -30,6 +34,7 @@ class SpanDetailsRequest {
     if (other is! SpanDetailsRequest) return false;
     if (other.userL1 != userL1) return false;
     if (other.userL2 != userL2) return false;
+    if (other.userGender != userGender) return false;
     if (other.enableIT != enableIT) return false;
     if (other.enableIGC != enableIGC) return false;
     if (other.span != span) return false;
@@ -40,6 +45,7 @@ class SpanDetailsRequest {
   int get hashCode {
     return userL1.hashCode ^
         userL2.hashCode ^
+        userGender.hashCode ^
         enableIT.hashCode ^
         enableIGC.hashCode ^
         span.hashCode;

@@ -1,4 +1,5 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
 
 class FullTextTranslationRequestModel {
   final String text;
@@ -6,6 +7,7 @@ class FullTextTranslationRequestModel {
   final String tgtLang;
   final String userL1;
   final String userL2;
+  final GenderEnum userGender;
   final bool? deepL;
   final int? offset;
   final int? length;
@@ -16,6 +18,7 @@ class FullTextTranslationRequestModel {
     required this.tgtLang,
     required this.userL2,
     required this.userL1,
+    this.userGender = GenderEnum.unselected,
     this.deepL = false,
     this.offset,
     this.length,
@@ -27,6 +30,7 @@ class FullTextTranslationRequestModel {
         ModelKey.tgtLang: tgtLang,
         ModelKey.userL2: userL2,
         ModelKey.userL1: userL1,
+        ModelKey.userGender: userGender.string,
         ModelKey.deepL: deepL,
         ModelKey.offset: offset,
         ModelKey.length: length,
@@ -43,6 +47,7 @@ class FullTextTranslationRequestModel {
         other.tgtLang == tgtLang &&
         other.userL2 == userL2 &&
         other.userL1 == userL1 &&
+        other.userGender == userGender &&
         other.deepL == deepL &&
         other.offset == offset &&
         other.length == length;
@@ -55,6 +60,7 @@ class FullTextTranslationRequestModel {
       tgtLang.hashCode ^
       userL2.hashCode ^
       userL1.hashCode ^
+      userGender.hashCode ^
       deepL.hashCode ^
       offset.hashCode ^
       length.hashCode;

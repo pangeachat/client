@@ -71,6 +71,8 @@ class IgcController {
         userId: MatrixState.pangeaController.userController.userId!,
         userL1: MatrixState.pangeaController.languageController.activeL1Code()!,
         userL2: MatrixState.pangeaController.languageController.activeL2Code()!,
+        userGender: MatrixState
+            .pangeaController.userController.profile.userSettings.gender,
         enableIGC: true,
         enableIT: true,
         prevMessages: prevMessages,
@@ -79,6 +81,8 @@ class IgcController {
   SpanDetailsRequest _spanDetailsRequest(SpanData span) => SpanDetailsRequest(
         userL1: MatrixState.pangeaController.languageController.activeL1Code()!,
         userL2: MatrixState.pangeaController.languageController.activeL2Code()!,
+        userGender: MatrixState
+            .pangeaController.userController.profile.userSettings.gender,
         enableIGC: true,
         enableIT: true,
         span: span,

@@ -92,6 +92,8 @@ class MorphInfoRepo {
         userL2:
             MatrixState.pangeaController.languageController.userL2?.langCode ??
                 LanguageKeys.defaultLanguage,
+        userGender: MatrixState
+            .pangeaController.userController.profile.userSettings.gender,
       ),
     );
     final morph = res.getFeatureByCode(feature.name);
@@ -112,6 +114,8 @@ class MorphInfoRepo {
     final userL2 =
         MatrixState.pangeaController.languageController.userL2?.langCode ??
             LanguageKeys.defaultLanguage;
+    final userGender =
+        MatrixState.pangeaController.userController.profile.userSettings.gender;
     final userL1Short = userL1.split('-').first;
     final userL2Short = userL2.split('-').first;
     final cachedJson = _morphMeaningStorage.read(userL1Short + userL2Short);
@@ -119,6 +123,7 @@ class MorphInfoRepo {
     MorphInfoResponse? resp = MorphInfoResponse(
       userL1: userL1,
       userL2: userL2,
+      userGender: userGender,
       features: [],
     );
 

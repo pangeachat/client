@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
@@ -109,6 +110,7 @@ class PangeaMessageEvent {
       langCode: langCode,
       userL1: l1Code ?? LanguageKeys.unknownLanguage,
       userL2: l2Code ?? LanguageKeys.unknownLanguage,
+      userGender: userGender,
     );
 
     final TextToSpeechResponse response =
@@ -315,6 +317,8 @@ class PangeaMessageEvent {
           sampleRateHertz: 22050,
           userL1: l1Code,
           userL2: l2Code,
+          userGender: MatrixState
+              .pangeaController.userController.profile.userSettings.gender,
         ),
       ),
     );
@@ -545,6 +549,7 @@ class PangeaMessageEvent {
         tgtLang: langCode,
         userL2: l2Code ?? LanguageKeys.unknownLanguage,
         userL1: l1Code ?? LanguageKeys.unknownLanguage,
+        userGender: userGender,
       ),
       messageEvent: this,
       originalSent: true,
@@ -589,6 +594,7 @@ class PangeaMessageEvent {
         tgtLang: l1Code!,
         userL2: l2Code!,
         userL1: l1Code!,
+        userGender: userGender,
       ),
       messageEvent: _event,
     );
@@ -617,6 +623,9 @@ class PangeaMessageEvent {
 
   String? get l1Code =>
       MatrixState.pangeaController.languageController.userL1?.langCode;
+
+  GenderEnum get userGender =>
+      MatrixState.pangeaController.userController.profile.userSettings.gender;
 
   String get messageDisplayLangCode {
     if (isAudioMessage) {

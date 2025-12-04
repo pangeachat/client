@@ -225,6 +225,8 @@ class RepresentationEvent {
         tgtLang: userL1,
         userL2: userL2,
         userL1: userL1,
+        userGender: MatrixState
+            .pangeaController.userController.profile.userSettings.gender,
       ),
     );
   }

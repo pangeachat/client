@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -50,6 +51,7 @@ class ActivityQualityFeedback {
 class MessageActivityRequest {
   final String userL1;
   final String userL2;
+  final GenderEnum userGender;
 
   final String messageText;
   final List<PangeaToken> messageTokens;
@@ -63,6 +65,7 @@ class MessageActivityRequest {
   MessageActivityRequest({
     required this.userL1,
     required this.userL2,
+    required this.userGender,
     required this.messageText,
     required this.messageTokens,
     required this.activityQualityFeedback,
@@ -79,6 +82,7 @@ class MessageActivityRequest {
     return {
       'user_l1': userL1,
       'user_l2': userL2,
+      'user_gender': userGender.string,
       'message_text': messageText,
       'message_tokens': messageTokens.map((e) => e.toJson()).toList(),
       'activity_quality_feedback': activityQualityFeedback?.toJson(),

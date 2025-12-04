@@ -277,6 +277,8 @@ class TtsController {
           userL2:
               MatrixState.pangeaController.languageController.activeL2Code() ??
                   LanguageKeys.unknownLanguage,
+          userGender: MatrixState
+              .pangeaController.userController.profile.userSettings.gender,
         ),
       );
     } catch (e, s) {

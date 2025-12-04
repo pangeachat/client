@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/learning_settings/enums/gender_enum.dart';
 
 class PangeaAudioEventData {
   final String text;
@@ -82,6 +83,7 @@ class TextToSpeechRequest {
   String langCode;
   String userL1;
   String userL2;
+  GenderEnum userGender;
   List<PangeaTokenText> tokens;
 
   TextToSpeechRequest({
@@ -89,6 +91,7 @@ class TextToSpeechRequest {
     required this.langCode,
     required this.userL1,
     required this.userL2,
+    required this.userGender,
     required this.tokens,
   });
 
@@ -97,6 +100,7 @@ class TextToSpeechRequest {
         ModelKey.langCode: langCode,
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
+        ModelKey.userGender: userGender.string,
         ModelKey.tokens: tokens.map((token) => token.toJson()).toList(),
       };
 
