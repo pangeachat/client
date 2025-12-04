@@ -5,15 +5,17 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page_constants.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/pangea/analytics_summary/level_dialog_content.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPage extends StatelessWidget {
@@ -28,18 +30,48 @@ class AnalyticsPage extends StatelessWidget {
     this.isSidebar = false,
   });
 
+  Future<void> _blockLemma(BuildContext context) async {
+    final resp = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).blockLemmaConfirmation,
+      isDestructive: true,
+    );
+
+    if (resp != OkCancelResult.ok) return;
+    final res = await showFutureLoadingDialog(
+      context: context,
+      future: () =>
+          MatrixState.pangeaController.putAnalytics.blockConstruct(construct!),
+    );
+
+    if (!res.isError) {
+      context.go("/rooms/analytics/${ConstructTypeEnum.vocab.name}");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final analyticsRoomId = GoRouterState.of(context).pathParameters['roomid'];
     return Scaffold(
-      appBar: construct != null ? AppBar() : null,
+      appBar: construct != null
+          ? AppBar(
+              actions: indicator == ProgressIndicatorEnum.wordsUsed
+                  ? [
+                      IconButton(
+                        icon: const Icon(Icons.delete_forever_outlined),
+                        color: Theme.of(context).colorScheme.error,
+                        tooltip: L10n.of(context).delete,
+                        onPressed: () => _blockLemma(context),
+                      ),
+                    ]
+                  : null,
+            )
+          : null,
       body: SafeArea(
-        child: StreamBuilder(
-          stream: MatrixState
-              .pangeaController.getAnalytics.analyticsStream.stream
-              .where(
-            (u) => u.type == AnalyticsUpdateType.init,
-          ),
+        child: FutureBuilder(
+          future:
+              MatrixState.pangeaController.getAnalytics.initCompleter.future,
           builder: (context, snapshot) {
             return Padding(
               padding: const EdgeInsetsGeometry.all(16.0),

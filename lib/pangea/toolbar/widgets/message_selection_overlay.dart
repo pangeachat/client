@@ -13,7 +13,6 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
@@ -198,27 +197,26 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       setState(() {});
       if (selectedToken != null && isNewToken(selectedToken!)) {
         final token = selectedToken!;
-        MatrixState.pangeaController.putAnalytics.setState(
-          AnalyticsStream(
-            eventId: event.eventId,
-            roomId: event.room.id,
-            constructs: [
-              OneConstructUse(
-                useType: ConstructUseTypeEnum.click,
-                lemma: token.lemma.text,
-                constructType: ConstructTypeEnum.vocab,
-                metadata: ConstructUseMetaData(
-                  roomId: event.room.id,
-                  timeStamp: DateTime.now(),
-                  eventId: event.eventId,
-                ),
-                category: token.pos,
-                form: token.text.content,
-                xp: ConstructUseTypeEnum.click.pointValue,
-              ),
-            ],
-            targetID: "word-zoom-card-${token.text.uniqueKey}",
+        final constructs = [
+          OneConstructUse(
+            useType: ConstructUseTypeEnum.click,
+            lemma: token.lemma.text,
+            constructType: ConstructTypeEnum.vocab,
+            metadata: ConstructUseMetaData(
+              roomId: event.room.id,
+              timeStamp: DateTime.now(),
+              eventId: event.eventId,
+            ),
+            category: token.pos,
+            form: token.text.content,
+            xp: ConstructUseTypeEnum.click.pointValue,
           ),
+        ];
+        MatrixState.pangeaController.putAnalytics.addAnalytics(
+          constructs,
+          eventId: event.eventId,
+          roomId: event.room.id,
+          targetId: "word-zoom-card-${token.text.uniqueKey}",
         );
       }
     }

@@ -289,6 +289,7 @@ class OverlayUtil {
 
   static void showPointsGained(
     String targetId,
+    int points,
     BuildContext context,
   ) {
     showOverlay(
@@ -297,7 +298,7 @@ class OverlayUtil {
       targetAnchor: Alignment.bottomCenter,
       context: context,
       child: PointsGainedAnimation(
-        points: 2,
+        points: points,
         targetID: targetId,
       ),
       transformTargetId: targetId,
