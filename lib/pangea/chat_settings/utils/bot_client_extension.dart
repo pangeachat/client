@@ -53,4 +53,23 @@ extension BotClientExtension on Client {
           ),
         ],
       );
+
+  Future<void> updateBotOptions() async {
+    if (!isLogged() || botDM == null) return;
+
+    final targetLanguage =
+        MatrixState.pangeaController.userController.userL2?.langCode;
+    final cefrLevel = MatrixState
+        .pangeaController.userController.profile.userSettings.cefrLevel;
+    final updateBotOptions = botDM!.botOptions ?? BotOptionsModel();
+
+    if (updateBotOptions.targetLanguage == targetLanguage &&
+        updateBotOptions.languageLevel == cefrLevel) {
+      return;
+    }
+
+    updateBotOptions.targetLanguage = targetLanguage;
+    updateBotOptions.languageLevel = cefrLevel;
+    await botDM!.setBotOptions(updateBotOptions);
+  }
 }

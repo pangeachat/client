@@ -17,9 +17,9 @@ import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
-import 'package:fluffychat/pangea/user/models/activities_profile_model.dart';
-import 'package:fluffychat/pangea/user/models/analytics_profile_model.dart';
-import '../models/user_model.dart';
+import 'package:fluffychat/pangea/user/activities_profile_model.dart';
+import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
+import 'user_model.dart';
 
 class LanguageUpdate {
   final LanguageModel? prevBaseLang;
@@ -370,8 +370,7 @@ class UserController {
     baseLanguage ??= _pangeaController.userController.userL1;
     if (targetLanguage == null || analyticsProfile == null) return;
 
-    final analyticsRoom =
-        _pangeaController.matrixState.client.analyticsRoomLocal(targetLanguage);
+    final analyticsRoom = client.analyticsRoomLocal(targetLanguage);
 
     if (analyticsProfile!.targetLanguage == targetLanguage &&
         analyticsProfile!.baseLanguage == baseLanguage &&
@@ -396,8 +395,7 @@ class UserController {
 
   Future<void> _addAnalyticsRoomIdsToPublicProfile() async {
     if (analyticsProfile?.languageAnalytics == null) return;
-    final analyticsRooms =
-        _pangeaController.matrixState.client.allMyAnalyticsRooms;
+    final analyticsRooms = client.allMyAnalyticsRooms;
 
     if (analyticsRooms.isEmpty) return;
     for (final analyticsRoom in analyticsRooms) {
@@ -434,9 +432,7 @@ class UserController {
     analyticsProfile!.addXPOffset(
       targetLanguage,
       offset,
-      _pangeaController.matrixState.client
-          .analyticsRoomLocal(targetLanguage)
-          ?.id,
+      client.analyticsRoomLocal(targetLanguage)?.id,
     );
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileAnalytics,

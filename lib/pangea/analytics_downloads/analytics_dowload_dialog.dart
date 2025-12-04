@@ -83,6 +83,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
       return;
     }
 
+    final client = Matrix.of(context).client;
     try {
       if (_downloadType == DownloadType.csv) {
         final vocabContent = _getCSVFileContent(
@@ -96,10 +97,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         );
 
         final vocabFileName =
-            "analytics_vocab_${MatrixState.pangeaController.matrixState.client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
+            "analytics_vocab_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
 
         final morphFileName =
-            "analytics_morph_${MatrixState.pangeaController.matrixState.client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
+            "analytics_morph_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
 
         final futures = [
           DownloadUtil.downloadFile(
@@ -122,7 +123,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         });
 
         final fileName =
-            "analytics_${MatrixState.pangeaController.matrixState.client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx'}";
+            "analytics_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx'}";
 
         await DownloadUtil.downloadFile(
           content,
@@ -263,8 +264,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
     final List<PangeaMessageEvent> examples = [];
     for (final OneConstructUse use in allUses) {
       if (use.metadata.roomId == null) continue;
-      final Room? room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(use.metadata.roomId!);
+      final client = Matrix.of(context).client;
+      final Room? room = client.getRoomById(use.metadata.roomId!);
       if (room == null) continue;
 
       if (use.useType.skillsEnumType != LearningSkillsEnum.writing ||
@@ -287,12 +288,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
       final Event? event = await room.getEventById(use.metadata.eventId!);
 
-      if (event == null || event.senderId != room.client.userID) continue;
+      if (event == null || event.senderId != client.userID) continue;
       final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
         event: event,
         timeline: timeline!,
-        ownMessage: event.senderId ==
-            MatrixState.pangeaController.matrixState.client.userID,
+        ownMessage: event.senderId == client.userID,
       );
       examples.add(pangeaMessageEvent);
       if (examples.length >= 5) break;

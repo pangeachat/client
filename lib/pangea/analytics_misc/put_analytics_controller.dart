@@ -83,7 +83,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   /// If analytics haven't been updated in the last day, update them
   Future<void> _refreshAnalyticsIfOutdated() async {
     // don't set anything is the user is not logged in
-    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_client.userID == null) return;
     try {
       // if lastUpdated hasn't been set yet, set it
       lastUpdated ??=
@@ -359,7 +359,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     onLogout = false,
     LanguageModel? l2Override,
   }) async {
-    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_client.userID == null) return;
     if (_pangeaController.getAnalytics.messagesSinceUpdate.isEmpty) return;
 
     if (!(_updateCompleter?.isCompleted ?? true)) {
@@ -417,7 +417,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   }
 
   Future<void> sendActivityAnalytics(String roomId) async {
-    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_client.userID == null) return;
     if (_pangeaController.userController.userL2 == null) return;
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
@@ -435,7 +435,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   }
 
   Future<void> removeActivityAnalytics(String roomId) async {
-    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_client.userID == null) return;
     if (_pangeaController.userController.userL2 == null) return;
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(

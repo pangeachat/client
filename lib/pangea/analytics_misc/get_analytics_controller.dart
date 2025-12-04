@@ -379,8 +379,8 @@ class GetAnalyticsController extends BaseController {
     // this function gets called soon after login, so first
     // make sure that the user's l2 is loaded, if the user has set their l2
     if (_client.userID != null && _l2 == null) {
-      if (_pangeaController.matrixState.client.prevBatch == null) {
-        await _pangeaController.matrixState.client.onSync.stream.first;
+      if (_client.prevBatch == null) {
+        await _client.onSync.stream.first;
       }
       if (_l2 == null) return null;
     }

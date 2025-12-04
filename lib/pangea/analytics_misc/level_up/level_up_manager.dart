@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
@@ -27,7 +25,6 @@ class LevelUpManager {
   bool shouldAutoPopup = false;
 
   Future<void> preloadAnalytics(
-    BuildContext context,
     int level,
     int prevLevel,
   ) async {

@@ -106,7 +106,6 @@ class LevelUpBannerState extends State<LevelUpBanner>
     _loadConstructSummary();
 
     LevelUpManager.instance.preloadAnalytics(
-      context,
       widget.level,
       widget.prevLevel,
     );

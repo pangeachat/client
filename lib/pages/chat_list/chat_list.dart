@@ -42,6 +42,7 @@ import '../../widgets/matrix.dart';
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
+
 enum PopupMenuAction {
   settings,
   invite,
@@ -565,8 +566,10 @@ class ChatListController extends State<ChatList>
     _checkTorBrowser();
 
     //#Pangea
-    _invitedSpaceSubscription = MatrixState
-        .pangeaController.matrixState.client.onSync.stream
+    _invitedSpaceSubscription = Matrix.of(context)
+        .client
+        .onSync
+        .stream
         .where((event) => event.rooms?.invite != null)
         .listen((event) async {
       for (final inviteEntry in event.rooms!.invite!.entries) {
@@ -584,10 +587,9 @@ class ChatListController extends State<ChatList>
 
         if (isSpace) {
           final spaceId = inviteEntry.key;
-          final space =
-              MatrixState.pangeaController.matrixState.client.getRoomById(
-            spaceId,
-          );
+          final space = Matrix.of(context).client.getRoomById(
+                spaceId,
+              );
 
           if (space?.classCode?.toLowerCase() ==
               SpaceCodeRepo.recentCode?.toLowerCase()) {
@@ -603,8 +605,8 @@ class ChatListController extends State<ChatList>
         }
 
         if (isAnalytics) {
-          final analyticsRoom = MatrixState.pangeaController.matrixState.client
-              .getRoomById(inviteEntry.key);
+          final analyticsRoom =
+              Matrix.of(context).client.getRoomById(inviteEntry.key);
           try {
             await analyticsRoom?.join();
           } catch (err, s) {
@@ -626,7 +628,7 @@ class ChatListController extends State<ChatList>
     // listen for space child updates for any space that is not the active space
     // so that when the user navigates to the space that was updated, it will
     // reload any rooms that have been added / removed
-    final client = MatrixState.pangeaController.matrixState.client;
+    final client = Matrix.of(context).client;
 
     // listen for room join events and leave room if over capacity
     _roomCapacitySubscription ??= client.onSync.stream

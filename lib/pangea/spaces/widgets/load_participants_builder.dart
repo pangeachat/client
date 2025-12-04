@@ -5,7 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/user/models/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LoadParticipantsBuilder extends StatefulWidget {

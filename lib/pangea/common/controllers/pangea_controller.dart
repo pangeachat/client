@@ -7,20 +7,16 @@ import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
-import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
+import 'package:fluffychat/pangea/user/pangea_push_rules_extension.dart';
+import 'package:fluffychat/pangea/user/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/firebase_analytics.dart';
 
@@ -38,16 +34,15 @@ class PangeaController {
   StreamSubscription? _settingsSubscription;
 
   ///Matrix Variables
-  MatrixState matrixState;
-  Matrix matrix;
+  final MatrixState matrixState;
 
-  PangeaController({required this.matrix, required this.matrixState}) {
+  PangeaController({required this.matrixState}) {
     userController = UserController(this);
     getAnalytics = GetAnalyticsController(this);
     putAnalytics = PutAnalyticsController(this);
     subscriptionController = SubscriptionController(this);
     PAuthGaurd.pController = this;
-    _setSettingsSubscriptions();
+    _registerSubscriptions();
   }
 
   /// Initializes various controllers and settings.
@@ -57,15 +52,113 @@ class PangeaController {
   void initControllers() {
     _initAnalyticsControllers();
     subscriptionController.initialize();
-    setPangeaPushRules();
+    matrixState.client.setPangeaPushRules();
     TtsController.setAvailableLanguages();
   }
 
-  void _logOutfromPangea(BuildContext context) {
-    debugPrint("Pangea logout");
+  void _onLogin(BuildContext context) {
+    initControllers();
+    _registerSubscriptions();
+
+    userController.reinitialize().then((_) {
+      final l1 = userController.profile.userSettings.sourceLanguage;
+      Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
+    });
+    subscriptionController.reinitialize();
+  }
+
+  void _onLogout(BuildContext context) {
+    _disposeAnalyticsControllers();
+    userController.clear();
+    _languageSubscription?.cancel();
+    _settingsSubscription?.cancel();
+    _languageSubscription = null;
+    _settingsSubscription = null;
+
     GoogleAnalytics.logout();
-    clearCache();
+    _clearCache();
     Provider.of<LocaleProvider>(context, listen: false).setLocale(null);
+  }
+
+  void handleLoginStateChange(
+    LoginState state,
+    String? userID,
+    BuildContext context,
+  ) {
+    switch (state) {
+      case LoginState.loggedOut:
+      case LoginState.softLoggedOut:
+        _onLogout(context);
+        break;
+      case LoginState.loggedIn:
+        _onLogin(context);
+        break;
+    }
+
+    Sentry.configureScope(
+      (scope) => scope.setUser(
+        SentryUser(
+          id: userID,
+          name: userID,
+        ),
+      ),
+    );
+    GoogleAnalytics.analyticsUserUpdate(userID);
+  }
+
+  void _disposeAnalyticsControllers() {
+    putAnalytics.dispose();
+    getAnalytics.dispose();
+  }
+
+  void _registerSubscriptions() {
+    _languageSubscription?.cancel();
+    _languageSubscription =
+        userController.languageStream.stream.listen(_onLanguageUpdate);
+
+    _settingsSubscription?.cancel();
+    _settingsSubscription = userController.settingsUpdateStream.stream
+        .listen((_) => matrixState.client.updateBotOptions());
+  }
+
+  Future<void> _clearCache({List<String> exclude = const []}) async {
+    final List<Future<void>> futures = [];
+    for (final key in _storageKeys) {
+      if (exclude.contains(key)) continue;
+      futures.add(GetStorage(key).erase());
+    }
+    await Future.wait(futures);
+  }
+
+  Future<void> _initAnalyticsControllers() async {
+    putAnalytics.initialize();
+    await getAnalytics.initialize();
+  }
+
+  Future<void> resetAnalytics() async {
+    _disposeAnalyticsControllers();
+    await _initAnalyticsControllers();
+  }
+
+  Future<void> _onLanguageUpdate(LanguageUpdate update) async {
+    final exclude = [
+      'analytics_storage',
+      'course_location_media_storage',
+      'course_location_storage',
+      'course_media_storage',
+    ];
+
+    // only clear course data if the base language has changed
+    if (update.prevBaseLang == update.baseLang) {
+      exclude.addAll([
+        'course_storage',
+        'course_topic_storage',
+        'course_activity_storage',
+      ]);
+    }
+
+    _clearCache(exclude: exclude);
+    matrixState.client.updateBotOptions();
   }
 
   static final List<String> _storageKeys = [
@@ -96,186 +189,4 @@ class PangeaController {
     'course_location_media_storage',
     'language_mismatch',
   ];
-
-  Future<void> clearCache({List<String> exclude = const []}) async {
-    final List<Future<void>> futures = [];
-    for (final key in _storageKeys) {
-      if (exclude.contains(key)) continue;
-      futures.add(GetStorage(key).erase());
-    }
-    await Future.wait(futures);
-  }
-
-  Future<Client> checkHomeServerAction() async {
-    final client = await matrixState.getLoginClient();
-    if (client.homeserver != null) {
-      await Future.delayed(Duration.zero);
-      return client;
-    }
-
-    final String homeServer =
-        AppConfig.defaultHomeserver.trim().toLowerCase().replaceAll(' ', '-');
-    var homeserver = Uri.parse(homeServer);
-    if (homeserver.scheme.isEmpty) {
-      homeserver = Uri.https(homeServer, '');
-    }
-
-    try {
-      await client.register();
-      matrixState.loginRegistrationSupported = true;
-    } on MatrixException catch (e) {
-      matrixState.loginRegistrationSupported =
-          e.requireAdditionalAuthentication;
-    }
-    return client;
-  }
-
-  /// check user information if not found then redirect to Date of birth page
-  void handleLoginStateChange(
-    LoginState state,
-    String? userID,
-    BuildContext context,
-  ) {
-    switch (state) {
-      case LoginState.loggedOut:
-      case LoginState.softLoggedOut:
-        // Reset cached analytics data
-        _disposeAnalyticsControllers();
-        userController.clear();
-        _languageSubscription?.cancel();
-        _settingsSubscription?.cancel();
-        _languageSubscription = null;
-        _settingsSubscription = null;
-        _logOutfromPangea(context);
-        break;
-      case LoginState.loggedIn:
-        // Initialize analytics data
-        initControllers();
-        _setSettingsSubscriptions();
-
-        userController.reinitialize().then((_) {
-          final l1 = userController.profile.userSettings.sourceLanguage;
-          Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
-        });
-        subscriptionController.reinitialize();
-        break;
-    }
-
-    Sentry.configureScope(
-      (scope) => scope.setUser(
-        SentryUser(
-          id: userID,
-          name: userID,
-        ),
-      ),
-    );
-    GoogleAnalytics.analyticsUserUpdate(userID);
-  }
-
-  Future<void> _initAnalyticsControllers() async {
-    putAnalytics.initialize();
-    await getAnalytics.initialize();
-  }
-
-  void _disposeAnalyticsControllers() {
-    putAnalytics.dispose();
-    getAnalytics.dispose();
-  }
-
-  Future<void> resetAnalytics() async {
-    _disposeAnalyticsControllers();
-    await _initAnalyticsControllers();
-  }
-
-  void _setSettingsSubscriptions() {
-    _languageSubscription?.cancel();
-    _languageSubscription =
-        userController.languageStream.stream.listen(_onLanguageUpdate);
-    _settingsSubscription?.cancel();
-    _settingsSubscription = userController.settingsUpdateStream.stream
-        .listen((_) => _updateBotOptions());
-  }
-
-  Future<void> _onLanguageUpdate(LanguageUpdate update) async {
-    final exclude = [
-      'analytics_storage',
-      'course_location_media_storage',
-      'course_location_storage',
-      'course_media_storage',
-    ];
-
-    // only clear course data if the base language has changed
-    if (update.prevBaseLang == update.baseLang) {
-      exclude.addAll([
-        'course_storage',
-        'course_topic_storage',
-        'course_activity_storage',
-      ]);
-    }
-
-    clearCache(exclude: exclude);
-    _updateBotOptions();
-  }
-
-  Future<void> _updateBotOptions() async {
-    if (!matrixState.client.isLogged()) return;
-    final botDM = matrixState.client.botDM;
-    if (botDM == null) {
-      return;
-    }
-
-    final targetLanguage = userController.userL2?.langCode;
-    final cefrLevel = userController.profile.userSettings.cefrLevel;
-    final updateBotOptions = botDM.botOptions ?? BotOptionsModel();
-
-    if (updateBotOptions.targetLanguage == targetLanguage &&
-        updateBotOptions.languageLevel == cefrLevel) {
-      return;
-    }
-
-    updateBotOptions.targetLanguage = targetLanguage;
-    updateBotOptions.languageLevel = cefrLevel;
-    await botDM.setBotOptions(updateBotOptions);
-  }
-
-  Future<void> setPangeaPushRules() async {
-    if (!matrixState.client.isLogged()) return;
-    final List<Room> analyticsRooms =
-        matrixState.client.rooms.where((room) => room.isAnalyticsRoom).toList();
-
-    for (final Room room in analyticsRooms) {
-      final pushRule = room.pushRuleState;
-      if (pushRule != PushRuleState.dontNotify) {
-        await room.setPushRuleState(PushRuleState.dontNotify);
-      }
-    }
-
-    if (!(matrixState.client.globalPushRules?.override?.any(
-          (element) => element.ruleId == PangeaEventTypes.textToSpeechRule,
-        ) ??
-        false)) {
-      await matrixState.client.setPushRule(
-        PushRuleKind.override,
-        PangeaEventTypes.textToSpeechRule,
-        [PushRuleAction.dontNotify],
-        conditions: [
-          PushCondition(
-            kind: 'event_match',
-            key: 'content.msgtype',
-            pattern: MessageTypes.Audio,
-          ),
-          PushCondition(
-            kind: 'event_match',
-            key: 'content.transcription.lang_code',
-            pattern: '*',
-          ),
-          PushCondition(
-            kind: 'event_match',
-            key: 'content.transcription.text',
-            pattern: '*',
-          ),
-        ],
-      );
-    }
-  }
 }

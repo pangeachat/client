@@ -19,7 +19,7 @@ import 'package:fluffychat/pangea/space_analytics/space_analytics_download_enum.
 import 'package:fluffychat/pangea/space_analytics/space_analytics_inactive_dialog.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_request_dialog.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_view.dart';
-import 'package:fluffychat/pangea/user/models/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

@@ -6,7 +6,7 @@ import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../languages/language_model.dart';
+import '../languages/language_model.dart';
 
 /// The user's settings learning settings.
 class UserSettings {

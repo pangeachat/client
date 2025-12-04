@@ -273,7 +273,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         ),
       ),
     );
-    pangeaController = PangeaController(matrix: widget, matrixState: this);
+    pangeaController = PangeaController(matrixState: this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
