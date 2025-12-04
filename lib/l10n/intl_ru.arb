@@ -1,7 +1,7 @@
 {
   "@@locale": "ru",
   "@@last_modified": "2025-12-03 11:37:16.847372",
-  "about": "О проекте",
+  "about": "o проекте",
   "@about": {
     "type": "String",
     "placeholders": {}
