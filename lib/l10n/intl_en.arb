@@ -4991,8 +4991,9 @@
   },
   "pickDifferentActivity": "Pick a different activity",
   "messageLanguageMismatchMessage": "Your target language doesn't match this message. Update your target language?",
-  "woman": "woman",
-  "man": "man",
-  "otherGender": "other",
-  "unselectedGender": "Please select a gender option"
+  "woman": "Woman",
+  "man": "Man",
+  "otherGender": "Other",
+  "unselectedGender": "Select a gender option",
+  "gender": "Gender"
 }

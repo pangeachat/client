@@ -25,12 +25,12 @@ extension GenderEnumExtension on GenderEnum {
 
   static GenderEnum fromString(String? value) {
     switch (value) {
-      case 'other':
-        return GenderEnum.other;
-      case 'man':
-        return GenderEnum.man;
       case 'woman':
         return GenderEnum.woman;
+      case 'man':
+        return GenderEnum.man;
+      case 'other':
+        return GenderEnum.other;
       default:
         return GenderEnum.unselected;
     }

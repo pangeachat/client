@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/chat_settings/widgets/gender_dropdown.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
@@ -212,6 +213,10 @@ class SettingsLearningView extends StatelessWidget {
                                   LanguageLevelDropdown(
                                     initialLevel: controller.cefrLevel,
                                     onChanged: controller.setCefrLevel,
+                                  ),
+                                  GenderDropdown(
+                                    initialGender: controller.gender,
+                                    onChanged: controller.setGender,
                                   ),
                                   Container(
                                     decoration: BoxDecoration(
