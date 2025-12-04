@@ -1,10 +1,4 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:app_settings/app_settings.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -13,88 +7,18 @@ import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/instructions/reset_instructions_list_tile.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/country_picker_tile.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/p_settings_switch_list_tile.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/learning_settings/country_picker_tile.dart';
+import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
+import 'package:fluffychat/pangea/learning_settings/p_settings_switch_list_tile.dart';
+import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
+import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SettingsLearningView extends StatelessWidget {
   final SettingsLearningController controller;
   const SettingsLearningView(this.controller, {super.key});
-
-  void _showKeyboardSettingsDialog(BuildContext context) {
-    String title;
-    String? steps;
-    String? description;
-    String buttonText;
-    VoidCallback buttonAction;
-
-    if (kIsWeb) {
-      title = L10n.of(context).autocorrectNotAvailable; // Default
-      buttonText = 'OK';
-      buttonAction = () {
-        Navigator.of(context).pop();
-      };
-    } else if (Platform.isIOS) {
-      title = L10n.of(context).enableAutocorrectPopupTitle;
-      steps = L10n.of(context).enableAutocorrectPopupSteps;
-      description = L10n.of(context).enableAutocorrectPopupDescription;
-      buttonText = L10n.of(context).settings;
-      buttonAction = () {
-        AppSettings.openAppSettings();
-      };
-    } else {
-      title = L10n.of(context).downloadGboardTitle;
-      steps = L10n.of(context).downloadGboardSteps;
-      description = L10n.of(context).downloadGboardDescription;
-      buttonText = L10n.of(context).downloadGboard;
-      buttonAction = () {
-        launchUrlString(
-          'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
-        );
-      };
-    }
-
-    showAdaptiveDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog.adaptive(
-          title: Text(L10n.of(context).enableAutocorrectWarning),
-          content: SingleChildScrollView(
-            child: Column(
-              spacing: 8.0,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(title),
-                if (steps != null)
-                  Text(
-                    steps,
-                    textAlign: TextAlign.start,
-                  ),
-                if (description != null) Text(description),
-              ],
-            ),
-          ),
-          actions: [
-            TextButton(
-              child: Text(L10n.of(context).close),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              onPressed: buttonAction,
-              child: Text(buttonText),
-            ),
-          ],
-        );
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -255,9 +179,8 @@ class SettingsLearningView extends StatelessWidget {
                                               value,
                                             );
                                             if (value) {
-                                              _showKeyboardSettingsDialog(
-                                                context,
-                                              );
+                                              controller
+                                                  .showKeyboardSettingsDialog();
                                             }
                                           },
                                           enabled: true,

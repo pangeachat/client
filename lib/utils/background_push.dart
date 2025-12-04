@@ -34,7 +34,7 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import '../config/app_config.dart';

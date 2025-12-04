@@ -16,8 +16,8 @@ import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart'
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/locale_provider.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';

@@ -58,10 +58,10 @@ import 'package:fluffychat/pangea/events/models/representation_content_model.dar
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
-import 'package:fluffychat/pangea/learning_settings/repo/language_mismatch_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
+import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/spaces/widgets/load_participants_builder.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
@@ -533,7 +533,7 @@ class ChatController extends State<ChatPageWithRoom>
 
     Future.delayed(const Duration(seconds: 1), () async {
       if (!mounted) return;
-      LanguageController.showDialogOnEmptyLanguage(
+      LanguageService.showDialogOnEmptyLanguage(
         context,
         () => () => setState(() {}),
       );

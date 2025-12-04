@@ -23,7 +23,7 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';

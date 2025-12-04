@@ -6,7 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/it/contextual_definition_repo.dart';
 import 'package:fluffychat/pangea/choreographer/it/contextual_definition_request_model.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';

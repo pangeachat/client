@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 
-enum LanguageLevelTypeEnum { preA1, a1, a2, b1, b2, c1, c2 }
+enum LanguageLevelTypeEnum {
+  preA1,
+  a1,
+  a2,
+  b1,
+  b2,
+  c1,
+  c2;
 
-extension LanguageLevelTypeEnumExtension on LanguageLevelTypeEnum {
   // Makes enum a string
   String get string {
     switch (this) {

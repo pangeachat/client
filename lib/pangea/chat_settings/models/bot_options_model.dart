@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class BotOptionsModel {
   LanguageLevelTypeEnum languageLevel;
@@ -63,9 +63,9 @@ class BotOptionsModel {
       // General Bot Options
       //////////////////////////////////////////////////////////////////////////
       languageLevel: json[ModelKey.languageLevel] is int
-          ? LanguageLevelTypeEnumExtension.fromInt(json[ModelKey.languageLevel])
+          ? LanguageLevelTypeEnum.fromInt(json[ModelKey.languageLevel])
           : json[ModelKey.languageLevel] is String
-              ? LanguageLevelTypeEnumExtension.fromString(
+              ? LanguageLevelTypeEnum.fromString(
                   json[ModelKey.languageLevel],
                 )
               : LanguageLevelTypeEnum.a1,

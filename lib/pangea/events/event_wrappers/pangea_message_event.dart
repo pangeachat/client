@@ -18,8 +18,7 @@ import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
@@ -33,7 +32,7 @@ import 'package:fluffychat/pangea/translation/full_text_translation_request_mode
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
-import '../../learning_settings/constants/language_constants.dart';
+import '../../languages/language_constants.dart';
 import '../constants/pangea_event_types.dart';
 
 class PangeaMessageEvent {
@@ -272,7 +271,7 @@ class PangeaMessageEvent {
   String get messageDisplayText => messageDisplayRepresentation?.text ?? body;
 
   TextDirection get textDirection =>
-      PLanguageStore.rtlLanguageCodes.contains(messageDisplayLangCode)
+      LanguageConstants.rtlLanguageCodes.contains(messageDisplayLangCode)
           ? TextDirection.rtl
           : TextDirection.ltr;
 

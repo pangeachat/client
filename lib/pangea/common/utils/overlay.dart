@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/language_mismatch_popup.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';

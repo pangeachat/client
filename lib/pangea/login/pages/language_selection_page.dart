@@ -4,10 +4,10 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -31,7 +31,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   @override
   void initState() {
     super.initState();
-    _baseLanguage = LanguageController.systemLanguage;
+    _baseLanguage = LanguageService.systemLanguage;
     _setFromCache();
   }
 

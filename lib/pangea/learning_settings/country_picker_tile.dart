@@ -6,8 +6,8 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/country_display.dart';
+import 'package:fluffychat/pangea/learning_settings/country_display.dart';
+import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CountryPickerDropdown extends StatefulWidget {

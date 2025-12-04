@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/choreographer/it/it_feedback_card.dart';
 import 'package:fluffychat/pangea/choreographer/it/word_data_card.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/overlay.dart';

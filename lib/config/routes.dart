@@ -43,7 +43,7 @@ import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/find_your_people/find_your_people_constants.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
-import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/course_code_page.dart';
 import 'package:fluffychat/pangea/login/pages/create_pangea_account_page.dart';

@@ -1,5 +1,5 @@
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_arc_model.dart';
 
 class PhoneticTranscriptionRequest {
   final LanguageArc arc;

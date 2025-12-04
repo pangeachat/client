@@ -1,23 +1,24 @@
-import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
-
 class LanguageKeys {
   static const unknownLanguage = "unk";
-  static const mixedLanguage = "mixed";
   static const defaultLanguage = "en";
-  static const multiLanguage = "multi";
 }
 
-class PrefKey {
-  static const lastFetched = 'p_lang_lastfetched';
-  static const languagesKey = 'p_lang_flag';
-}
+class LanguageConstants {
+  static final List<String> rtlLanguageCodes = [
+    'ar',
+    'arc',
+    'dv',
+    'fa',
+    'ha',
+    'he',
+    'khw',
+    'ks',
+    'ku',
+    'ps',
+    'ur',
+    'yi',
+  ];
 
-const LanguageDetectionModel unknownLanguageDetection = LanguageDetectionModel(
-  langCode: LanguageKeys.unknownLanguage,
-  confidence: 0.5,
-);
-
-class FallbackLanguage {
   static List<Map<String, dynamic>> get languageList => [
         {
           "language_code": "ab",

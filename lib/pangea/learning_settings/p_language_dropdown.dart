@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/l2_support_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'flag.dart';
+import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 
 class PLanguageDropdown extends StatefulWidget {
   final List<LanguageModel> languages;
@@ -210,8 +210,9 @@ class LanguageDropDownEntry extends StatelessWidget {
       children: [
         Opacity(
           opacity: enabled ? 1 : 0.5,
-          child: LanguageFlag(
-            language: languageModel,
+          child: Avatar(
+            name: languageModel.langCode,
+            size: 30,
           ),
         ),
         const SizedBox(width: 10),

@@ -12,11 +12,11 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/tool_settings_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/user/models/activities_profile_model.dart';
 import 'package:fluffychat/pangea/user/models/analytics_profile_model.dart';
 import '../models/user_model.dart';
@@ -552,7 +552,7 @@ class UserController {
   String? get userL1Code {
     final source = profile.userSettings.sourceLanguage;
     return source == null || source.isEmpty
-        ? LanguageController.systemLanguage?.langCode
+        ? LanguageService.systemLanguage?.langCode
         : source;
   }
 

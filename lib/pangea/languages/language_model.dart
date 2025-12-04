@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/l2_support_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/l2_support_enum.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 
 class LanguageModel {
   final String langCode;
@@ -44,7 +43,7 @@ class LanguageModel {
     );
   }
 
-  toJson() => {
+  Map<String, dynamic> toJson() => {
         'language_code': langCode,
         'language_name': displayName,
         'script': script,
@@ -303,7 +302,7 @@ class LanguageModel {
   String get langCodeShort => langCode.split('-').first;
 
   TextDirection get _defaultTextDirection {
-    return PLanguageStore.rtlLanguageCodes.contains(langCodeShort)
+    return LanguageConstants.rtlLanguageCodes.contains(langCodeShort)
         ? TextDirection.rtl
         : TextDirection.ltr;
   }
@@ -337,28 +336,4 @@ class LanguageModel {
 
   @override
   int get hashCode => langCode.hashCode;
-}
-
-class LanguageArc {
-  final LanguageModel l1;
-  final LanguageModel l2;
-
-  LanguageArc({
-    required this.l1,
-    required this.l2,
-  });
-
-  factory LanguageArc.fromJson(Map<String, dynamic> json) {
-    return LanguageArc(
-      l1: LanguageModel.fromJson(json['l1'] as Map<String, dynamic>),
-      l2: LanguageModel.fromJson(json['l2'] as Map<String, dynamic>),
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'l1': l1.toJson(),
-      'l2': l2.toJson(),
-    };
-  }
 }

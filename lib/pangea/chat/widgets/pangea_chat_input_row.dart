@@ -11,7 +11,7 @@ import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_send_button.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/igc/start_igc_button.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

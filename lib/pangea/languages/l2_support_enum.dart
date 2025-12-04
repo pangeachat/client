@@ -6,10 +6,8 @@ enum L2SupportEnum {
   na,
   alpha,
   beta,
-  full,
-}
+  full;
 
-extension L2SupportEnumExtension on L2SupportEnum {
   String get storageString {
     switch (this) {
       case L2SupportEnum.na:

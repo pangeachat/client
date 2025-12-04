@@ -13,8 +13,8 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/pangea/spaces/space_code_controller.dart';
 import 'package:fluffychat/pangea/spaces/space_code_repo.dart';
@@ -53,7 +53,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
   Future<String?> get _baseLangCode async =>
       (await _cachedLangCode)?.baseLangCode ??
-      LanguageController.systemLanguage?.langCode;
+      LanguageService.systemLanguage?.langCode;
 
   String? get _cachedSpaceCode => SpaceCodeRepo.spaceCode;
 
@@ -188,7 +188,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         if (targetLangCode != null)
           MatrixState.pangeaController.userController.updateAnalyticsProfile(
             targetLanguage: PLanguageStore.byLangCode(targetLangCode),
-            baseLanguage: LanguageController.systemLanguage,
+            baseLanguage: LanguageService.systemLanguage,
             level: 1,
           ),
       ];

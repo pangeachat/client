@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';

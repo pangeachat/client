@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum AnalyticsUpdateType { server, local, activities, init }

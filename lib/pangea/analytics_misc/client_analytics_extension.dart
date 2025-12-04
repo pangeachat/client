@@ -11,7 +11,7 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension AnalyticsClientExtension on Client {

@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicator_button.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicator.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 

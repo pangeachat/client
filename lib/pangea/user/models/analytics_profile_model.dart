@@ -1,7 +1,7 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 
 class AnalyticsProfileModel {
   LanguageModel? baseLanguage;

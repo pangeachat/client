@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:universal_io/io.dart';
 
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../widgets/p_language_dialog.dart';
+import '../learning_settings/p_language_dialog.dart';
 
-class LanguageController {
+class LanguageService {
   static void showDialogOnEmptyLanguage(
     BuildContext context,
     Function callback,

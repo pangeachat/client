@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 
 class CourseInfoChip extends StatelessWidget {
   final IconData icon;
