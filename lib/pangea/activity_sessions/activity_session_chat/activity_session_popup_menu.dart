@@ -6,15 +6,14 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_download_provider.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 enum ActivityPopupMenuActions { invite, leave, download }
 
 class ActivitySessionPopupMenu extends StatefulWidget {
   final Room room;
+  final VoidCallback onLeave;
 
-  const ActivitySessionPopupMenu(this.room, {super.key});
+  const ActivitySessionPopupMenu(this.room, {required this.onLeave, super.key});
 
   @override
   ActivitySessionPopupMenuState createState() =>
@@ -30,28 +29,7 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
       onSelected: (choice) async {
         switch (choice) {
           case ActivityPopupMenuActions.leave:
-            final parentSpaceId = widget.room.courseParent?.id;
-            final router = GoRouter.of(context);
-            final confirmed = await showOkCancelAlertDialog(
-              context: context,
-              title: L10n.of(context).areYouSure,
-              message: L10n.of(context).leaveRoomDescription,
-              okLabel: L10n.of(context).leave,
-              cancelLabel: L10n.of(context).cancel,
-              isDestructive: true,
-            );
-            if (confirmed != OkCancelResult.ok) return;
-            final result = await showFutureLoadingDialog(
-              context: context,
-              future: () => widget.room.leave(),
-            );
-            if (result.error == null) {
-              router.go(
-                parentSpaceId != null
-                    ? '/rooms/spaces/$parentSpaceId'
-                    : '/rooms',
-              );
-            }
+            widget.onLeave();
             break;
           case ActivityPopupMenuActions.invite:
             context.go(

@@ -2305,6 +2305,36 @@ class ChatController extends State<ChatPageWithRoom>
           );
     }
   }
+
+  Future<void> onLeave() async {
+    final parentSpaceId = room.courseParent?.id;
+    final confirmed = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).leaveRoomDescription,
+      okLabel: L10n.of(context).leave,
+      cancelLabel: L10n.of(context).cancel,
+      isDestructive: true,
+    );
+    if (confirmed != OkCancelResult.ok) return;
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: widget.room.leave,
+    );
+
+    if (result.isError) return;
+    final r = Matrix.of(context).client.getRoomById(widget.room.id);
+    if (r != null && r.membership != Membership.leave) {
+      await Matrix.of(context).client.waitForRoomInSync(
+            widget.room.id,
+            leave: true,
+          );
+    }
+
+    context.go(
+      parentSpaceId != null ? '/rooms/spaces/$parentSpaceId' : '/rooms',
+    );
+  }
   // Pangea#
 
   late final ValueNotifier<bool> _displayChatDetailsColumn;
