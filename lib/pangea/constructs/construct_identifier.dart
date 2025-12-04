@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -152,12 +152,12 @@ class ConstructIdentifier {
 
   LemmaInfoRequest get _lemmaInfoRequest => LemmaInfoRequest(
         partOfSpeech: category,
-        lemmaLang: MatrixState
-                .pangeaController.languageController.userL2?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        userL1: MatrixState
-                .pangeaController.languageController.userL1?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
+        lemmaLang:
+            MatrixState.pangeaController.userController.userL2?.langCodeShort ??
+                LanguageKeys.defaultLanguage,
+        userL1:
+            MatrixState.pangeaController.userController.userL1?.langCodeShort ??
+                LanguageKeys.defaultLanguage,
         lemma: lemma,
       );
 
@@ -187,7 +187,7 @@ class ConstructIdentifier {
 
   Future<void> setUserLemmaInfo(UserSetLemmaInfo newLemmaInfo) async {
     final client = MatrixState.pangeaController.matrixState.client;
-    final l2 = MatrixState.pangeaController.languageController.userL2;
+    final l2 = MatrixState.pangeaController.userController.userL2;
     if (l2 == null) return;
 
     final analyticsRoom = await client.getMyAnalyticsRoom(l2);

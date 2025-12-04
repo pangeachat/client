@@ -4,7 +4,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/repo/language_mismatch_repo.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension ActivityMenuLogic on ChatController {
@@ -43,9 +43,9 @@ extension ActivityMenuLogic on ChatController {
     }
 
     final l1 =
-        MatrixState.pangeaController.languageController.userL1?.langCodeShort;
+        MatrixState.pangeaController.userController.userL1?.langCodeShort;
     final l2 =
-        MatrixState.pangeaController.languageController.userL2?.langCodeShort;
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
     final activityLang = room.activityPlan?.req.targetLanguage.split('-').first;
 
     return activityLang != null &&

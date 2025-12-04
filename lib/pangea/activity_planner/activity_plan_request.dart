@@ -1,6 +1,6 @@
 import 'package:fluffychat/pangea/activity_generator/media_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class ActivityPlanRequest {
   final String topic;
@@ -49,7 +49,7 @@ class ActivityPlanRequest {
         objective: json[ModelKey.activityRequestObjective],
         media: MediaEnum.nan.fromString(json[ModelKey.activityRequestMedia]),
         cefrLevel: json[ModelKey.activityRequestCefrLevel] != null
-            ? LanguageLevelTypeEnumExtension.fromString(
+            ? LanguageLevelTypeEnum.fromString(
                 json[ModelKey.activityRequestCefrLevel],
               )
             : LanguageLevelTypeEnum.a1,

@@ -22,7 +22,7 @@ import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -46,8 +46,8 @@ class GetAnalyticsController extends BaseController {
     _pangeaController = pangeaController;
   }
 
-  LanguageModel? get _l1 => _pangeaController.languageController.userL1;
-  LanguageModel? get _l2 => _pangeaController.languageController.userL2;
+  LanguageModel? get _l1 => _pangeaController.userController.userL1;
+  LanguageModel? get _l2 => _pangeaController.userController.userL2;
 
   Client get _client => _pangeaController.matrixState.client;
 
@@ -383,8 +383,8 @@ class GetAnalyticsController extends BaseController {
     // this function gets called soon after login, so first
     // make sure that the user's l2 is loaded, if the user has set their l2
     if (_client.userID != null && _l2 == null) {
-      if (_pangeaController.matrixState.client.prevBatch == null) {
-        await _pangeaController.matrixState.client.onSync.stream.first;
+      if (_client.prevBatch == null) {
+        await _client.onSync.stream.first;
       }
       if (_l2 == null) return null;
     }

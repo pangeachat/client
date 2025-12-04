@@ -7,10 +7,11 @@ import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_arc_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_repo.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_request.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -72,7 +73,7 @@ class _PhoneticTranscriptionWidgetState
         _transcription = null;
       });
 
-      if (MatrixState.pangeaController.languageController.userL1 == null) {
+      if (MatrixState.pangeaController.userController.userL1 == null) {
         ErrorHandler.logError(
           e: Exception('User L1 is not set'),
           data: {
@@ -85,7 +86,7 @@ class _PhoneticTranscriptionWidgetState
       }
       final req = PhoneticTranscriptionRequest(
         arc: LanguageArc(
-          l1: MatrixState.pangeaController.languageController.userL1!,
+          l1: MatrixState.pangeaController.userController.userL1!,
           l2: widget.textLanguage,
         ),
         content: PangeaTokenText.fromString(widget.text),

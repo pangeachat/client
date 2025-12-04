@@ -20,6 +20,8 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_code_controller.dart';
+import 'package:fluffychat/pangea/spaces/space_code_repo.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -563,8 +565,10 @@ class ChatListController extends State<ChatList>
     _checkTorBrowser();
 
     //#Pangea
-    _invitedSpaceSubscription = MatrixState
-        .pangeaController.matrixState.client.onSync.stream
+    _invitedSpaceSubscription = Matrix.of(context)
+        .client
+        .onSync
+        .stream
         .where((event) => event.rooms?.invite != null)
         .listen((event) async {
       for (final inviteEntry in event.rooms!.invite!.entries) {
@@ -582,15 +586,12 @@ class ChatListController extends State<ChatList>
 
         if (isSpace) {
           final spaceId = inviteEntry.key;
-          final space =
-              MatrixState.pangeaController.matrixState.client.getRoomById(
-            spaceId,
-          );
+          final space = Matrix.of(context).client.getRoomById(
+                spaceId,
+              );
 
-          final String? justInputtedCode =
-              MatrixState.pangeaController.spaceCodeController.justInputtedCode;
-          final newSpaceCode = space?.classCode;
-          if (newSpaceCode?.toLowerCase() == justInputtedCode?.toLowerCase()) {
+          if (space?.classCode?.toLowerCase() ==
+              SpaceCodeRepo.recentCode?.toLowerCase()) {
             return;
           }
 
@@ -603,8 +604,8 @@ class ChatListController extends State<ChatList>
         }
 
         if (isAnalytics) {
-          final analyticsRoom = MatrixState.pangeaController.matrixState.client
-              .getRoomById(inviteEntry.key);
+          final analyticsRoom =
+              Matrix.of(context).client.getRoomById(inviteEntry.key);
           try {
             await analyticsRoom?.join();
           } catch (err, s) {
@@ -626,7 +627,7 @@ class ChatListController extends State<ChatList>
     // listen for space child updates for any space that is not the active space
     // so that when the user navigates to the space that was updated, it will
     // reload any rooms that have been added / removed
-    final client = MatrixState.pangeaController.matrixState.client;
+    final client = Matrix.of(context).client;
 
     // listen for room join events and leave room if over capacity
     _roomCapacitySubscription ??= client.onSync.stream
@@ -700,8 +701,7 @@ class ChatListController extends State<ChatList>
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .removeListener(_onSubscribe);
-    MatrixState.pangeaController.spaceCodeController.codeNotifier
-        .removeListener(_onCacheSpaceCode);
+    SpaceCodeController.codeNotifier.removeListener(_onCacheSpaceCode);
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -1112,18 +1112,14 @@ class ChatListController extends State<ChatList>
   void _initPangeaControllers(Client client) {
     MatrixState.pangeaController.initControllers();
     if (mounted) {
-      MatrixState.pangeaController.spaceCodeController
-          .joinCachedSpaceCode(context);
-      MatrixState.pangeaController.spaceCodeController.codeNotifier
-          .addListener(_onCacheSpaceCode);
+      SpaceCodeController.joinCachedSpaceCode(context);
+      SpaceCodeController.codeNotifier.addListener(_onCacheSpaceCode);
     }
   }
 
   void _onCacheSpaceCode() {
     if (!mounted) return;
-    MatrixState.pangeaController.spaceCodeController.joinCachedSpaceCode(
-      context,
-    );
+    SpaceCodeController.joinCachedSpaceCode(context);
   }
   // Pangea#
 

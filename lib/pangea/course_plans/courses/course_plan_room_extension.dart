@@ -15,7 +15,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 extension CoursePlanRoomExtension on Room {
   CoursePlanEvent? get coursePlan {

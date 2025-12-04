@@ -20,7 +20,7 @@ import 'package:fluffychat/pangea/analytics_summary/progress_bar/progress_bar_de
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
@@ -107,10 +107,9 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
   Uri? avatarUrl;
   final bool _hasBlastedConfetti = false;
 
-  String language = MatrixState.pangeaController.languageController
-          .activeL2Code()
-          ?.toUpperCase() ??
-      LanguageKeys.unknownLanguage;
+  String language =
+      MatrixState.pangeaController.userController.userL2Code?.toUpperCase() ??
+          LanguageKeys.unknownLanguage;
 
   ConstructSummary? _constructSummary;
   Object? _error;

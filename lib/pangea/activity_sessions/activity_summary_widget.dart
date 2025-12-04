@@ -17,7 +17,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_vocab_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 
 class ActivitySummary extends StatelessWidget {
   final ActivityPlanModel activity;

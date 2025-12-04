@@ -43,7 +43,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
       course = await CoursePlansRepo.get(
         GetLocalizedCoursesRequest(
           coursePlanIds: [courseId],
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
     } catch (e) {

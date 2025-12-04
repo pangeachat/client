@@ -309,7 +309,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     final activitiesResponse = await CourseActivityRepo.get(
       TranslateActivityRequest(
         activityIds: [widget.activityId],
-        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       ),
       widget.activityId,
     );

@@ -177,8 +177,7 @@ class SpanCardState extends State<SpanCard> {
                             widget.match.updatedMatch.match.selectedChoiceIndex,
                         id: widget.match.hashCode.toString(),
                         langCode: MatrixState
-                            .pangeaController.languageController
-                            .activeL2Code(),
+                            .pangeaController.userController.userL2Code!,
                       ),
                       _SpanCardFeedback(
                         _selectedChoice != null,

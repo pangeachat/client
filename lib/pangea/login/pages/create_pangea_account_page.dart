@@ -13,8 +13,11 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
+import 'package:fluffychat/pangea/spaces/space_code_controller.dart';
+import 'package:fluffychat/pangea/spaces/space_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CreatePangeaAccountPage extends StatefulWidget {
@@ -50,10 +53,9 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
   Future<String?> get _baseLangCode async =>
       (await _cachedLangCode)?.baseLangCode ??
-      MatrixState.pangeaController.languageController.systemLanguage?.langCode;
+      LanguageService.systemLanguage?.langCode;
 
-  String? get _cachedSpaceCode =>
-      MatrixState.pangeaController.spaceCodeController.cachedSpaceCode;
+  String? get _cachedSpaceCode => SpaceCodeRepo.spaceCode;
 
   Future<void> _createProfile() async {
     setState(() {
@@ -72,13 +74,10 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   }
 
   Future<void> _joinCachedCourse() async {
-    await MatrixState.pangeaController.spaceCodeController.initCompleter.future;
     if (_cachedSpaceCode == null) return;
 
     try {
-      final spaceId = await MatrixState.pangeaController.spaceCodeController
-          .joinCachedSpaceCode(context);
-
+      final spaceId = await SpaceCodeController.joinCachedSpaceCode(context);
       if (spaceId == null) {
         throw Exception('Failed to join space with code $_cachedSpaceCode');
       }
@@ -101,7 +100,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       final course = await CoursePlansRepo.get(
         GetLocalizedCoursesRequest(
           coursePlanIds: [courseId],
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
 
@@ -189,8 +188,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         if (targetLangCode != null)
           MatrixState.pangeaController.userController.updateAnalyticsProfile(
             targetLanguage: PLanguageStore.byLangCode(targetLangCode),
-            baseLanguage:
-                MatrixState.pangeaController.languageController.systemLanguage,
+            baseLanguage: LanguageService.systemLanguage,
             level: 1,
           ),
       ];

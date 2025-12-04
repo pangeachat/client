@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
+import 'package:fluffychat/pangea/spaces/space_code_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseCodePage extends StatefulWidget {
@@ -39,8 +40,7 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
-    final roomId = await MatrixState.pangeaController.spaceCodeController
-        .joinSpaceWithCode(
+    final roomId = await SpaceCodeController.joinSpaceWithCode(
       context,
       _code,
     );

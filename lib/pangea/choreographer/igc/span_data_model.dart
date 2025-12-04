@@ -128,7 +128,7 @@ class SpanData {
     final errorSpan = fullText.characters.skip(offset).take(length).toString();
 
     final l2Code =
-        MatrixState.pangeaController.languageController.userL2?.langCodeShort;
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
     return correctChoice != null &&
         l2Code != null &&

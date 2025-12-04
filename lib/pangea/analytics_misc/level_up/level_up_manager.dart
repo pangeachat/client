@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelUpManager {
@@ -27,7 +25,6 @@ class LevelUpManager {
   bool shouldAutoPopup = false;
 
   Future<void> preloadAnalytics(
-    BuildContext context,
     int level,
     int prevLevel,
   ) async {
@@ -43,7 +40,7 @@ class LevelUpManager {
         .numConstructs(ConstructTypeEnum.vocab);
 
     final LanguageModel? l2 =
-        MatrixState.pangeaController.languageController.userL2;
+        MatrixState.pangeaController.userController.userL2;
     final Room? analyticsRoom =
         MatrixState.pangeaController.matrixState.client.analyticsRoomLocal(l2!);
 

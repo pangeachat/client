@@ -14,14 +14,14 @@ import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart'
 import 'package:fluffychat/pangea/choreographer/pangea_message_content_model.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/spaces/models/space_model.dart';
+import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../widgets/matrix.dart';
 import 'choreographer_error_controller.dart';
@@ -223,8 +223,8 @@ class Choreographer extends ChangeNotifier {
         MatrixState.pangeaController.subscriptionController.subscriptionStatus;
 
     if (canSendStatus != SubscriptionStatus.subscribed ||
-        MatrixState.pangeaController.languageController.userL2 == null ||
-        MatrixState.pangeaController.languageController.userL1 == null ||
+        MatrixState.pangeaController.userController.userL2 == null ||
+        MatrixState.pangeaController.userController.userL1 == null ||
         (!ToolSetting.interactiveGrammar.enabled &&
             !ToolSetting.interactiveTranslator.enabled) ||
         (!ToolSetting.autoIGC.enabled &&
@@ -261,19 +261,18 @@ class Choreographer extends ChangeNotifier {
   Future<PangeaMessageContentModel> getMessageContent(String message) async {
     TokensResponseModel? tokensResp;
     final l2LangCode =
-        MatrixState.pangeaController.languageController.userL2?.langCode;
+        MatrixState.pangeaController.userController.userL2?.langCode;
     final l1LangCode =
-        MatrixState.pangeaController.languageController.userL1?.langCode;
+        MatrixState.pangeaController.userController.userL1?.langCode;
     if (l1LangCode != null && l2LangCode != null) {
-      final res = await MessageDataController.getTokens(
-        repEventId: null,
-        room: null,
-        req: TokensRequestModel(
+      final res = await TokensRepo.get(
+        MatrixState.pangeaController.userController.accessToken,
+        TokensRequestModel(
           fullText: message,
           senderL1: l1LangCode,
           senderL2: l2LangCode,
         ),
-      ).timeout(const Duration(seconds: 10));
+      );
       tokensResp = res.isValue ? res.result : null;
     }
 

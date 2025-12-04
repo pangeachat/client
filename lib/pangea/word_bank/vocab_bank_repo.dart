@@ -12,9 +12,9 @@ import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -162,9 +162,9 @@ class VocabRepo {
   }
 
   static VocabResponse placeholderData([LanguageModel? language]) {
-    language ??= MatrixState.pangeaController.languageController.userL2 == null
+    language ??= MatrixState.pangeaController.userController.userL2 == null
         ? PLanguageStore.byLangCode(LanguageKeys.defaultLanguage)
-        : MatrixState.pangeaController.languageController.userL2!;
+        : MatrixState.pangeaController.userController.userL2!;
 
     //TODO - move this to the server and fill out all our languages
     final Map<String, VocabResponse> placeholder = {

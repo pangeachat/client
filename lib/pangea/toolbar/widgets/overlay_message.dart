@@ -14,8 +14,8 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -494,8 +494,8 @@ class _MessageBubbleTranscription extends StatelessWidget {
                         onClick: onTokenSelected,
                         isSelected: isTokenSelected,
                       ),
-                      if (MatrixState.pangeaController.languageController
-                          .showTranscription)
+                      if (MatrixState
+                          .pangeaController.userController.showTranscription)
                         PhoneticTranscriptionWidget(
                           text: transcription.transcript.text,
                           textLanguage: PLanguageStore.byLangCode(

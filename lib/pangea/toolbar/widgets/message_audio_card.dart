@@ -10,8 +10,7 @@ import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
 
 class MessageAudioCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;
@@ -42,19 +41,9 @@ class MessageAudioCardState extends State<MessageAudioCard> {
     setState(() => _isLoading = true);
 
     try {
-      final String langCode = widget.messageEvent.messageDisplayLangCode;
-      final Event? localEvent = widget.messageEvent.getTextToSpeechLocal(
-        langCode,
-        widget.messageEvent.messageDisplayText,
+      audioFile = await widget.messageEvent.requestTextToSpeech(
+        widget.messageEvent.messageDisplayLangCode,
       );
-
-      if (localEvent != null) {
-        audioFile = await localEvent.getPangeaAudioFile();
-      } else {
-        audioFile = await widget.messageEvent.getMatrixAudioFile(
-          langCode,
-        );
-      }
       debugPrint("audio file is now: $audioFile. setting starts and ends...");
       if (mounted) setState(() => _isLoading = false);
     } catch (e, s) {

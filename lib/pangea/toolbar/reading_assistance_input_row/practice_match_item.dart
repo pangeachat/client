@@ -7,7 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -58,8 +58,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         setState(() => _isPlaying = true);
       }
       try {
-        final l2 =
-            MatrixState.pangeaController.languageController.activeL2Code();
+        final l2 = MatrixState.pangeaController.userController.userL2Code;
         if (l2 != null) {
           await TtsController.tryToSpeak(
             widget.audioContent!,

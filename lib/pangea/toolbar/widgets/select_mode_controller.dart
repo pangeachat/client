@@ -8,20 +8,19 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
-import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class _TranscriptionLoader extends AsyncLoader<SpeechToTextModel> {
+class _TranscriptionLoader extends AsyncLoader<SpeechToTextResponseModel> {
   final PangeaMessageEvent messageEvent;
   _TranscriptionLoader(this.messageEvent) : super();
 
   @override
-  Future<SpeechToTextModel> fetch() => messageEvent.getSpeechToText(
-        MatrixState.pangeaController.languageController.userL1!.langCodeShort,
-        MatrixState.pangeaController.languageController.userL2!.langCodeShort,
+  Future<SpeechToTextResponseModel> fetch() => messageEvent.requestSpeechToText(
+        MatrixState.pangeaController.userController.userL1!.langCodeShort,
+        MatrixState.pangeaController.userController.userL2!.langCodeShort,
       );
 }
 
@@ -30,13 +29,13 @@ class _STTTranslationLoader extends AsyncLoader<String> {
   _STTTranslationLoader(this.messageEvent) : super();
 
   @override
-  Future<String> fetch() => messageEvent.sttTranslationByLanguageGlobal(
-        langCode: MatrixState
-            .pangeaController.languageController.userL1!.langCodeShort,
-        l1Code: MatrixState
-            .pangeaController.languageController.userL1!.langCodeShort,
-        l2Code: MatrixState
-            .pangeaController.languageController.userL2!.langCodeShort,
+  Future<String> fetch() => messageEvent.requestSttTranslation(
+        langCode:
+            MatrixState.pangeaController.userController.userL1!.langCodeShort,
+        l1Code:
+            MatrixState.pangeaController.userController.userL1!.langCodeShort,
+        l2Code:
+            MatrixState.pangeaController.userController.userL2!.langCodeShort,
       );
 }
 
@@ -45,7 +44,7 @@ class _TranslationLoader extends AsyncLoader<String> {
   _TranslationLoader(this.messageEvent) : super();
 
   @override
-  Future<String> fetch() => messageEvent.l1Respresentation();
+  Future<String> fetch() => messageEvent.requestRespresentationByL1();
 }
 
 class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
@@ -54,24 +53,9 @@ class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
 
   @override
   Future<(PangeaAudioFile, File?)> fetch() async {
-    final String langCode = messageEvent.messageDisplayLangCode;
-
-    final Event? localEvent = messageEvent.getTextToSpeechLocal(
-      langCode,
-      messageEvent.messageDisplayText,
+    final audioBytes = await messageEvent.requestTextToSpeech(
+      messageEvent.messageDisplayLangCode,
     );
-
-    PangeaAudioFile? audioBytes;
-    if (localEvent != null) {
-      audioBytes = await localEvent.getPangeaAudioFile();
-    } else {
-      audioBytes = await messageEvent.getMatrixAudioFile(
-        langCode,
-      );
-    }
-    if (audioBytes == null) {
-      throw Exception('Audio bytes are null');
-    }
 
     File? audioFile;
     if (!kIsWeb) {
@@ -127,7 +111,7 @@ class SelectModeController {
   ValueNotifier<AsyncState<String>> get translationState =>
       _translationLoader.state;
 
-  ValueNotifier<AsyncState<SpeechToTextModel>> get transcriptionState =>
+  ValueNotifier<AsyncState<SpeechToTextResponseModel>> get transcriptionState =>
       _transcriptLoader.state;
 
   ValueNotifier<AsyncState<String>> get speechTranslationState =>
@@ -145,7 +129,7 @@ class SelectModeController {
 
     if (messageEvent.event.messageType == MessageTypes.Text) {
       final matchesL2 = messageEvent.messageDisplayLangCode.split("-").first ==
-          MatrixState.pangeaController.languageController.userL2!.langCodeShort;
+          MatrixState.pangeaController.userController.userL2!.langCodeShort;
 
       return matchesL2 ? textModes : [SelectMode.translate];
     }

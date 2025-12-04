@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -50,9 +50,8 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
         lemma: widget.constructId.lemma,
         partOfSpeech: widget.constructId.category,
         lemmaLang: widget.langCode,
-        userL1:
-            MatrixState.pangeaController.languageController.userL1?.langCode ??
-                LanguageKeys.defaultLanguage,
+        userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+            LanguageKeys.defaultLanguage,
       );
 
   Future<void> _fetchLemmaMeaning() async {

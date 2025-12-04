@@ -6,8 +6,8 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_arc_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_repo.dart';
@@ -135,9 +135,9 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     final req = PhoneticTranscriptionRequest(
       arc: LanguageArc(
         l1: PLanguageStore.byLangCode(requestData.wordCardL1) ??
-            MatrixState.pangeaController.languageController.userL1!,
+            MatrixState.pangeaController.userController.userL1!,
         l2: PLanguageStore.byLangCode(langCode) ??
-            MatrixState.pangeaController.languageController.userL2!,
+            MatrixState.pangeaController.userController.userL2!,
       ),
       content: response.content,
     );

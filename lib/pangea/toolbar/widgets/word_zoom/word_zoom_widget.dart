@@ -7,8 +7,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_unsubscribed_card.dart';
@@ -126,8 +126,8 @@ class WordZoomWidget extends StatelessWidget {
                               spacing: 12.0,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                if (MatrixState.pangeaController
-                                    .languageController.showTranscription)
+                                if (MatrixState.pangeaController.userController
+                                    .showTranscription)
                                   PhoneticTranscriptionWidget(
                                     text: token.content,
                                     textLanguage: PLanguageStore.byLangCode(

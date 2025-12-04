@@ -41,10 +41,8 @@ class ITController {
     return ITRequestModel(
       text: _sourceText.value!,
       customInput: textInput,
-      sourceLangCode:
-          MatrixState.pangeaController.languageController.activeL1Code()!,
-      targetLangCode:
-          MatrixState.pangeaController.languageController.activeL2Code()!,
+      sourceLangCode: MatrixState.pangeaController.userController.userL1Code!,
+      targetLangCode: MatrixState.pangeaController.userController.userL2Code!,
       goldTranslation: _goldRouteTracker?.fullTranslation,
       goldContinuances: _goldRouteTracker?.continuances,
     );

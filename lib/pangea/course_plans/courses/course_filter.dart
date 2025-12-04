@@ -1,5 +1,5 @@
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class CourseFilter {
   final LanguageModel? targetLanguage;

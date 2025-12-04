@@ -16,8 +16,8 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_client_extens
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_response.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -51,7 +51,7 @@ class NewCoursePageState extends State<NewCoursePage> {
     super.initState();
 
     _targetLanguageFilter.value =
-        MatrixState.pangeaController.languageController.userL2;
+        MatrixState.pangeaController.userController.userL2;
 
     _loadCourses();
   }

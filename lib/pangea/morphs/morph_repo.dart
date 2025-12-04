@@ -9,7 +9,7 @@ import 'package:http/http.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -78,7 +78,7 @@ class MorphsRepo {
   /// if not, we can make it async and update uses of this function
   /// to be async as well
   static Future<MorphFeaturesAndTags> get([LanguageModel? language]) async {
-    language ??= MatrixState.pangeaController.languageController.userL2;
+    language ??= MatrixState.pangeaController.userController.userL2;
 
     if (language == null) {
       return defaultMorphMapping;
@@ -111,12 +111,12 @@ class MorphsRepo {
   }
 
   static MorphFeaturesAndTags get cached {
-    if (MatrixState.pangeaController.languageController.userL2?.langCodeShort ==
+    if (MatrixState.pangeaController.userController.userL2?.langCodeShort ==
         null) {
       return defaultMorphMapping;
     }
     final cachedJson = _morphsStorage.read(
-      MatrixState.pangeaController.languageController.userL2!.langCodeShort,
+      MatrixState.pangeaController.userController.userL2!.langCodeShort,
     );
     if (cachedJson != null) {
       return MorphsRepo.fromJson(cachedJson);

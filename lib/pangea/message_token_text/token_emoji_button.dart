@@ -100,8 +100,7 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
       overlayKey: "overlay_emoji_selector",
       context: context,
       cardToShow: LemmaMeaningBuilder(
-        langCode:
-            MatrixState.pangeaController.languageController.activeL2Code()!,
+        langCode: MatrixState.pangeaController.userController.userL2Code!,
         constructId: widget.token!.vocabConstructID,
         builder: (context, controller) {
           return Material(

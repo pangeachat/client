@@ -12,8 +12,8 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/user/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum AnalyticsUpdateType { server, local }
@@ -75,7 +75,7 @@ class PutAnalyticsController {
   /// If analytics haven't been updated in the last day, update them
   Future<void> _refreshAnalyticsIfOutdated() async {
     // don't set anything is the user is not logged in
-    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_client.userID == null) return;
     try {
       // if lastUpdated hasn't been set yet, set it
       lastUpdated ??=
@@ -221,7 +221,7 @@ class PutAnalyticsController {
     onLogout = false,
     LanguageModel? l2Override,
   }) async {
-    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_client.userID == null) return;
     if (_pangeaController.getAnalytics.messagesSinceUpdate.isEmpty) return;
 
     if (!(_updateCompleter?.isCompleted ?? true)) {
@@ -266,7 +266,7 @@ class PutAnalyticsController {
     if (cachedConstructs.isEmpty || onlyDraft) return;
 
     // if missing important info, don't send analytics. Could happen if user just signed up.
-    final l2 = l2Override ?? _pangeaController.languageController.userL2;
+    final l2 = l2Override ?? _pangeaController.userController.userL2;
     if (l2 == null || _client.userID == null) return;
 
     // analytics room for the user and current target language
@@ -279,11 +279,11 @@ class PutAnalyticsController {
   }
 
   Future<void> sendActivityAnalytics(String roomId) async {
-    if (_pangeaController.matrixState.client.userID == null) return;
-    if (_pangeaController.languageController.userL2 == null) return;
+    if (_client.userID == null) return;
+    if (_pangeaController.userController.userL2 == null) return;
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
-      _pangeaController.languageController.userL2!,
+      _pangeaController.userController.userL2!,
     );
     if (analyticsRoom == null) return;
     await analyticsRoom.addActivityRoomId(roomId);
@@ -292,10 +292,10 @@ class PutAnalyticsController {
 
   Future<void> blockConstruct(ConstructIdentifier constructId) async {
     if (_pangeaController.matrixState.client.userID == null) return;
-    if (_pangeaController.languageController.userL2 == null) return;
+    if (_pangeaController.userController.userL2 == null) return;
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
-      _pangeaController.languageController.userL2!,
+      _pangeaController.userController.userL2!,
     );
     if (analyticsRoom == null) return;
 

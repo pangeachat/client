@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -44,7 +44,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
   void initState() {
     super.initState();
 
-    final target = MatrixState.pangeaController.languageController.userL2;
+    final target = MatrixState.pangeaController.userController.userL2;
     if (target != null) {
       setTargetLanguageFilter(target);
     }
@@ -120,7 +120,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
         GetLocalizedCoursesRequest(
           coursePlanIds:
               discoveredCourses.map((c) => c.courseId).toSet().toList(),
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
       final searchResult = resp.coursePlans;

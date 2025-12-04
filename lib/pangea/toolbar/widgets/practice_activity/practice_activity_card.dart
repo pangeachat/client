@@ -65,7 +65,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
 
   Future<void> _fetchActivity() async {
     _activityState.value = const AsyncState.loading();
-    if (!MatrixState.pangeaController.languageController.languagesSet) {
+    if (!MatrixState.pangeaController.userController.languagesSet) {
       _activityState.value = const AsyncState.error("Error fetching activity");
       return;
     }

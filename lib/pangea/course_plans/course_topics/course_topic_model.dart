@@ -90,7 +90,7 @@ class CourseTopicModel {
       CourseActivityRepo.getCached(
         TranslateActivityRequest(
           activityIds: activityIds,
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       ).plans;
 
@@ -98,7 +98,7 @@ class CourseTopicModel {
     final resp = await CourseActivityRepo.get(
       TranslateActivityRequest(
         activityIds: activityIds,
-        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       ),
       uuid,
     );

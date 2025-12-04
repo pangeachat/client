@@ -10,8 +10,8 @@ import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_download_model.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_requests_repo.dart';
@@ -19,7 +19,7 @@ import 'package:fluffychat/pangea/space_analytics/space_analytics_download_enum.
 import 'package:fluffychat/pangea/space_analytics/space_analytics_inactive_dialog.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_request_dialog.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_view.dart';
-import 'package:fluffychat/pangea/user/models/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -125,7 +125,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   Room? get room => Matrix.of(context).client.getRoomById(widget.roomId);
 
   LanguageModel? get _userL2 {
-    final l2 = MatrixState.pangeaController.languageController.userL2;
+    final l2 = MatrixState.pangeaController.userController.userL2;
     if (l2 == null) return null;
 
     // Attempt to find the language model by its short code, since analytics
