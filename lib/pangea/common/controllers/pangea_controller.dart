@@ -6,7 +6,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
@@ -127,6 +130,19 @@ class PangeaController {
       if (exclude.contains(key)) continue;
       futures.add(GetStorage(key).erase());
     }
+
+    if (AppConfig.showedActivityMenu) {
+      futures.add(
+        SharedPreferences.getInstance().then((prefs) async {
+          AppConfig.showedActivityMenu = false;
+          prefs.setBool(
+            SettingKeys.showedActivityMenu,
+            AppConfig.showedActivityMenu,
+          );
+        }),
+      );
+    }
+
     await Future.wait(futures);
   }
 

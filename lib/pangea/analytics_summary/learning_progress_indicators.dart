@@ -51,11 +51,11 @@ class LearningProgressIndicatorsState
     // if getAnalytics has already finished initializing,
     // the data is loaded and should be displayed.
     if (MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted) {
-      updateData(null);
+      updateData();
     }
     _analyticsSubscription = MatrixState
         .pangeaController.getAnalytics.analyticsStream.stream
-        .listen(updateData);
+        .listen((_) => updateData());
 
     // rebuild when target language changes
     _languageSubscription = MatrixState
@@ -71,10 +71,11 @@ class LearningProgressIndicatorsState
     _analyticsSubscription = null;
     _languageSubscription?.cancel();
     _languageSubscription = null;
+
     super.dispose();
   }
 
-  void updateData(AnalyticsStreamUpdate? _) {
+  void updateData() {
     if (_loading) _loading = false;
     if (mounted) setState(() {});
   }

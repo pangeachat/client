@@ -77,17 +77,19 @@ class PracticeSelectionRepo {
   static PracticeSelection? _getCached(
     String eventId,
   ) {
-    for (final String key in _storage.getKeys()) {
-      try {
+    try {
+      final keys = List.from(_storage.getKeys());
+      for (final String key in keys) {
         final cacheEntry = _PracticeSelectionCacheEntry.fromJson(
           _storage.read(key),
         );
         if (cacheEntry.isExpired) {
           _storage.remove(key);
         }
-      } catch (e) {
-        _storage.remove(key);
       }
+    } catch (e) {
+      _storage.erase();
+      return null;
     }
 
     final entry = _storage.read(eventId);

@@ -135,6 +135,14 @@ class ConstructListModel {
     level = calculateLevelWithXp(totalXP);
   }
 
+  void deleteConstruct(ConstructIdentifier constructId, int offset) {
+    _uses.removeWhere((use) => use.identifier == constructId);
+    _constructMap.removeWhere(
+      (key, value) => value.id == constructId,
+    );
+    updateConstructs([], offset);
+  }
+
   List<ConstructUses> constructList({ConstructTypeEnum? type}) => _constructList
       .where(
         (constructUse) => type == null || constructUse.constructType == type,

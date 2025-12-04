@@ -36,7 +36,6 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
@@ -471,7 +470,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
     if (update.targetID != null) {
-      OverlayUtil.showPointsGained(update.targetID!, context);
+      OverlayUtil.showPointsGained(update.targetID!, update.points, context);
     }
   }
 
@@ -2107,14 +2106,11 @@ class ChatController extends State<ChatPageWithRoom>
       ];
 
       _showAnalyticsFeedback(constructs, eventId);
-
-      pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          eventId: eventId,
-          targetID: eventId,
-          roomId: room.id,
-          constructs: constructs,
-        ),
+      pangeaController.putAnalytics.addAnalytics(
+        constructs,
+        eventId: eventId,
+        targetId: eventId,
+        roomId: room.id,
       );
     }
   }
@@ -2161,13 +2157,11 @@ class ChatController extends State<ChatPageWithRoom>
       if (constructs.isEmpty) return;
 
       _showAnalyticsFeedback(constructs, eventId);
-      MatrixState.pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          eventId: eventId,
-          targetID: eventId,
-          roomId: room.id,
-          constructs: constructs,
-        ),
+      MatrixState.pangeaController.putAnalytics.addAnalytics(
+        constructs,
+        eventId: eventId,
+        targetId: eventId,
+        roomId: room.id,
       );
     } catch (e, s) {
       ErrorHandler.logError(
@@ -2311,6 +2305,36 @@ class ChatController extends State<ChatPageWithRoom>
             AppConfig.showedActivityMenu,
           );
     }
+  }
+
+  Future<void> onLeave() async {
+    final parentSpaceId = room.courseParent?.id;
+    final confirmed = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).leaveRoomDescription,
+      okLabel: L10n.of(context).leave,
+      cancelLabel: L10n.of(context).cancel,
+      isDestructive: true,
+    );
+    if (confirmed != OkCancelResult.ok) return;
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: widget.room.leave,
+    );
+
+    if (result.isError) return;
+    final r = Matrix.of(context).client.getRoomById(widget.room.id);
+    if (r != null && r.membership != Membership.leave) {
+      await Matrix.of(context).client.waitForRoomInSync(
+            widget.room.id,
+            leave: true,
+          );
+    }
+
+    context.go(
+      parentSpaceId != null ? '/rooms/spaces/$parentSpaceId' : '/rooms',
+    );
   }
   // Pangea#
 

@@ -6,7 +6,6 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -125,28 +124,28 @@ class PracticeController with ChangeNotifier {
       final constructUseType = _activity!.practiceTarget.record.responses.last
           .useType(_activity!.activityType);
 
-      MatrixState.pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          eventId: pangeaMessageEvent.eventId,
-          roomId: pangeaMessageEvent.room.id,
-          constructs: [
-            OneConstructUse(
-              useType: constructUseType,
-              lemma: token.lemma.text,
-              constructType: ConstructTypeEnum.vocab,
-              metadata: ConstructUseMetaData(
-                roomId: pangeaMessageEvent.room.id,
-                timeStamp: DateTime.now(),
-                eventId: pangeaMessageEvent.eventId,
-              ),
-              category: token.pos,
-              // in the case of a wrong answer, the cId doesn't match the token
-              form: token.text.content,
-              xp: constructUseType.pointValue,
-            ),
-          ],
-          targetID: targetId,
+      final constructs = [
+        OneConstructUse(
+          useType: constructUseType,
+          lemma: token.lemma.text,
+          constructType: ConstructTypeEnum.vocab,
+          metadata: ConstructUseMetaData(
+            roomId: pangeaMessageEvent.room.id,
+            timeStamp: DateTime.now(),
+            eventId: pangeaMessageEvent.eventId,
+          ),
+          category: token.pos,
+          // in the case of a wrong answer, the cId doesn't match the token
+          form: token.text.content,
+          xp: constructUseType.pointValue,
         ),
+      ];
+
+      MatrixState.pangeaController.putAnalytics.addAnalytics(
+        constructs,
+        eventId: pangeaMessageEvent.eventId,
+        roomId: pangeaMessageEvent.room.id,
+        targetId: targetId,
       );
     }
 
