@@ -2540,9 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Actualitza";
     },
-    get$updatePhoneOS() {
-      return "Pot ser que necessitis actualitzar la versi\xf3 del sistema operatiu del teu dispositiu.";
-    },
     get$autoIGCToolName() {
       return "Executa autom\xe0ticament l'assist\xe8ncia d'escriptura Pangea";
     },
@@ -5247,7 +5244,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wfiASeeJJW6nlmc6Cldk0hdBuXk="] = d.current;
+  d["6jwNTxtFnk2kaan/m4jv8032Aq8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_176.part.js.map

@@ -2546,9 +2546,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u5237\u65b0";
     },
-    get$updatePhoneOS() {
-      return "\u60a8\u53ef\u80fd\u9700\u8981\u66f4\u65b0\u8bbe\u5907\u7684\u64cd\u4f5c\u7cfb\u7edf\u7248\u672c\u3002";
-    },
     get$autoIGCToolName() {
       return "\u81ea\u52a8\u8fd0\u884cPangea\u5199\u4f5c\u8f85\u52a9";
     },
@@ -7765,9 +7762,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u91cd\u65b0\u6574\u7406";
     },
-    get$updatePhoneOS() {
-      return "\u60a8\u53ef\u80fd\u9700\u8981\u66f4\u65b0\u8a2d\u5099\u7684\u4f5c\u696d\u7cfb\u7d71\u7248\u672c\u3002";
-    },
     get$autoIGCToolName() {
       return "\u81ea\u52d5\u904b\u884cPangea\u5beb\u4f5c\u5354\u52a9";
     },
@@ -10464,7 +10458,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2Mo8rZKV64aNJm9GkYlebABfWSM="] = d.current;
+  d["Fd2579KTGHN1ej2QhcV2hwOguWM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

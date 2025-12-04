@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u66f4\u65b0";
     },
-    get$updatePhoneOS() {
-      return "\u30c7\u30d0\u30a4\u30b9\u306eOS\u30d0\u30fc\u30b8\u30e7\u30f3\u3092\u66f4\u65b0\u3059\u308b\u5fc5\u8981\u304c\u3042\u308b\u304b\u3082\u3057\u308c\u307e\u305b\u3093\u3002";
-    },
     get$autoIGCToolName() {
       return "Pangea\u306e\u30e9\u30a4\u30c6\u30a3\u30f3\u30b0\u652f\u63f4\u3092\u81ea\u52d5\u7684\u306b\u5b9f\u884c";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["thBDbRVVomRQISfA9bSX9VmtjAM="] = d.current;
+  d["HnN29Jsm0pdi0kXBTDQ05ejYP5o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

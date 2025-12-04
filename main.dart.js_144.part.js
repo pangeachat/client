@@ -2540,9 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u0410\u0431\u043d\u0430\u0432\u0456\u0446\u044c";
     },
-    get$updatePhoneOS() {
-      return "\u041c\u0430\u0433\u0447\u044b\u043c\u0430, \u0432\u0430\u043c \u0442\u0440\u044d\u0431\u0430 \u0430\u0431\u043d\u0430\u0432\u0456\u0446\u044c \u0432\u0435\u0440\u0441\u0456\u044e \u0430\u043f\u0435\u0440\u0430\u0446\u044b\u0439\u043d\u0430\u0439 \u0441\u0456\u0441\u0442\u044d\u043c\u044b \u0432\u0430\u0448\u0430\u0433\u0430 \u043f\u0440\u044b\u043b\u0430\u0434\u044b.";
-    },
     get$autoIGCToolName() {
       return "\u0410\u045e\u0442\u0430\u043c\u0430\u0442\u044b\u0447\u043d\u0430 \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0446\u044c \u0434\u0430\u043f\u0430\u043c\u043e\u0433\u0443 \u0434\u043b\u044f \u043f\u0456\u0441\u044c\u043c\u0430 Pangea";
     },
@@ -5247,7 +5244,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eE5+dIXS67ciOueZGSKiE6rNRcU="] = d.current;
+  d["/kyCJ2ODt2BBW1RQu4OZi0SNjjs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map

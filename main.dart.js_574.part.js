@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "P\xe4ivit\xe4";
     },
-    get$updatePhoneOS() {
-      return "Saattaa olla, ett\xe4 sinun t\xe4ytyy p\xe4ivitt\xe4\xe4 laitteesi k\xe4ytt\xf6j\xe4rjestelm\xe4n versio.";
-    },
     get$autoIGCToolName() {
       return "Aja Pangea kirjoitusavustusta automaattisesti";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FyVBvgh/oIY9EQsTTy5uGmvVV0E="] = d.current;
+  d["cf9K+pAuswBMgGYNPwnmZnvOj1w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_574.part.js.map

@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Uppdatera";
     },
-    get$updatePhoneOS() {
-      return "Du kan beh\xf6va uppdatera din enhets operativsystemversion.";
-    },
     get$autoIGCToolName() {
       return "K\xf6r Pangea skrivhj\xe4lp automatiskt";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hG6r6IJ06+sfNon84W6DC/iBaRs="] = d.current;
+  d["deaspfvBD7Siurgw03/gNuHqTWE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_750.part.js.map

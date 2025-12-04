@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\uc0c8\ub85c \uace0\uce68";
     },
-    get$updatePhoneOS() {
-      return "\uae30\uae30\uc758 OS \ubc84\uc804\uc744 \uc5c5\ub370\uc774\ud2b8\ud574\uc57c \ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
-    },
     get$autoIGCToolName() {
       return "\ud310\uac8c\uc544 \uc791\ubb38 \uc9c0\uc6d0 \uc790\ub3d9 \uc2e4\ud589";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["W+GfV1sPBtPU0k0n6+bTKx766oc="] = d.current;
+  d["deG0IY6fci9fjG4EMLIxDH9C/gM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_705.part.js.map

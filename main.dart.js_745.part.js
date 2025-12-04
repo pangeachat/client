@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Osve\u017ei";
     },
-    get$updatePhoneOS() {
-      return "Morda boste morali posodobiti razli\u010dico operacijskega sistema naprave";
-    },
     get$autoIGCToolName() {
       return "Samodejno za\u017eeni pomo\u010d pri pisanju Pangea";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CgTa/pMhBqm5LI8m0vzyi8S9yqg="] = d.current;
+  d["dJ5TWg3KO2Tsag9yIf9s0JTNUu4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Oppdater";
     },
-    get$updatePhoneOS() {
-      return "Du kan trenge \xe5 oppdatere enhetens OS-versjon.";
-    },
     get$autoIGCToolName() {
       return "Kj\xf8r Pangea skrivehjelp automatisk";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TUEUpRAaGQulF2El2pwncsBmGrg="] = d.current;
+  d["hkZTy5e3POiIAr+pKZZhzhfolyc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_719.part.js.map

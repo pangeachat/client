@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Opdater";
     },
-    get$updatePhoneOS() {
-      return "Du kan v\xe6re n\xf8dt til at opdatere din enheds OS-version.";
-    },
     get$autoIGCToolName() {
       return "K\xf8r Pangea skriveassistance automatisk";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Z3MQJ3FtA8P6pNWoZcPl76/EEbY="] = d.current;
+  d["86vjd2Q/hivoYE/zWLfElUjy1tI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_301.part.js.map

@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Re\xeemprosp\u0103teaz\u0103";
     },
-    get$updatePhoneOS() {
-      return "Poate fi necesar s\u0103 actualiza\u021bi versiunea sistemului de operare al dispozitivului dvs.";
-    },
     get$autoIGCToolName() {
       return "Ruleaz\u0103 automat asisten\u021ba de scriere Pangea";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wLNOvzUq5aBoCnV1izrTlzFA2jY="] = d.current;
+  d["xewqrKySZT+FejAvXIFYA7Pgtek="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_734.part.js.map

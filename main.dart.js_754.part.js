@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Yenile";
     },
-    get$updatePhoneOS() {
-      return "Cihaz\u0131n\u0131z\u0131n i\u015fletim sistemi s\xfcr\xfcm\xfcn\xfc g\xfcncellemeniz gerekebilir.";
-    },
     get$autoIGCToolName() {
       return "Pangea yazma yard\u0131m\u0131n\u0131 otomatik \xe7al\u0131\u015ft\u0131r";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K5z+HduGCfTBqMmAhkwE17L7J/c="] = d.current;
+  d["PUf2YFO1hwUwOFlxqZxTrVT64PI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

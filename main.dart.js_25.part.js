@@ -2551,9 +2551,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Atualizar";
     },
-    get$updatePhoneOS() {
-      return string$.Pode_s;
-    },
     get$autoIGCToolName() {
       return string$.Executs;
     },
@@ -7770,9 +7767,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Atualizar";
     },
-    get$updatePhoneOS() {
-      return "Voc\xea pode precisar atualizar a vers\xe3o do sistema operacional do seu dispositivo.";
-    },
     get$autoIGCToolName() {
       return string$.Executs;
     },
@@ -12983,9 +12977,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Atualizar";
     },
-    get$updatePhoneOS() {
-      return string$.Pode_s;
-    },
     get$autoIGCToolName() {
       return string$.Executs;
     },
@@ -15804,7 +15795,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Parece: "Parece que n\xe3o \xe9 um servidor principal compat\xedvel. URL incorreta?",
     Permite: "Permite que o aplicativo gere sa\xedda de texto para fala para trechos de texto no seu idioma de destino.",
     Permiti: "Permitir que meu perfil seja encontrado na busca",
-    Pode_s: "Pode ser necess\xe1rio atualizar a vers\xe3o do sistema operacional do seu dispositivo.",
     Por_faa: "Por favor, atualize o aplicativo para continuar.",
     Por_fac: "Por favor, confirme seu nome de usu\xe1rio no Pangea Chat para excluir sua conta.",
     Por_faei: "Por favor, escolha idiomas base e alvo diferentes",
@@ -15853,7 +15843,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3NtVIX+EITq+DlhNqT3NwFVwDeU="] = d.current;
+  d["C0n977ycPWJv6zYYVSJrjEtqY9Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

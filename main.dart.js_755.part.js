@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u041e\u043d\u043e\u0432\u0438\u0442\u0438";
     },
-    get$updatePhoneOS() {
-      return "\u041c\u043e\u0436\u043b\u0438\u0432\u043e, \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043e\u043d\u043e\u0432\u0438\u0442\u0438 \u0432\u0435\u0440\u0441\u0456\u044e \u041e\u0421 \u0432\u0430\u0448\u043e\u0433\u043e \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e.";
-    },
     get$autoIGCToolName() {
       return "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0443 \u0437 \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u043d\u044f Pangea";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hxZMYTiJZEUTfhql8svuKFPQv9o="] = d.current;
+  d["Wofma9E4yivjNlHARy2po2uHJqA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

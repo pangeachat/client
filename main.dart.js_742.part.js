@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Obnovi\u0165";
     },
-    get$updatePhoneOS() {
-      return "Mo\u017eno budete musie\u0165 aktualizova\u0165 verziu opera\u010dn\xe9ho syst\xe9mu zariadenia";
-    },
     get$autoIGCToolName() {
       return "Automaticky spusti\u0165 pomoc pri p\xedsan\xed Pangea";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CHmbg+XBk4M9CLZzWxE8wsQKmzw="] = d.current;
+  d["+2DNG3PiFN/CJGIG3N5b9FonIHg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_742.part.js.map

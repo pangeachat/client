@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Berrabiatu";
     },
-    get$updatePhoneOS() {
-      return "Baliteke zure gailuaren OS bertsioa eguneratu behar izatea.";
-    },
     get$autoIGCToolName() {
       return "Exekutatu Pangea idazketa laguntza automatikoki";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KveMpfoJ1SK2GCEHkR1nyzRR9Ho="] = d.current;
+  d["qE4ZSvGgBloCc5jJjQFjR457htc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_558.part.js.map

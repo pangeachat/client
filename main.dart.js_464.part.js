@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Refre\u015digi";
     },
-    get$updatePhoneOS() {
-      return "Eble vi bezonas \u011disdatigi la version de la operaciumo de via aparato.";
-    },
     get$autoIGCToolName() {
       return "Kurigu Pangea verkhelpilo a\u016dtomate";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["k4UUrJhDQzi9QMK7+QGK+9Xpa04="] = d.current;
+  d["B3h900t0lImslT+5BdzN7IBUx5A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_464.part.js.map

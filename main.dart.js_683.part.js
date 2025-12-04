@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Segarkan";
     },
-    get$updatePhoneOS() {
-      return "Anda mungkin perlu memperbarui versi OS perangkat Anda.";
-    },
     get$autoIGCToolName() {
       return "Jalankan otomatis bantuan penulisan Pangea";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bChRAoURvSM1uoIAu+kM/eFg+rE="] = d.current;
+  d["pH0WPd0Nwaa/DBBfYk+hcmEXmNk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_683.part.js.map

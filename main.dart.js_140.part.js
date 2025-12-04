@@ -2540,9 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u062a\u062d\u062f\u064a\u062b";
     },
-    get$updatePhoneOS() {
-      return "\u0642\u062f \u062a\u062d\u062a\u0627\u062c \u0625\u0644\u0649 \u062a\u062d\u062f\u064a\u062b \u0625\u0635\u062f\u0627\u0631 \u0646\u0638\u0627\u0645 \u062a\u0634\u063a\u064a\u0644 \u062c\u0647\u0627\u0632\u0643.";
-    },
     get$autoIGCToolName() {
       return "\u062a\u0634\u063a\u064a\u0644 \u0645\u0633\u0627\u0639\u062f\u0629 \u0627\u0644\u0643\u062a\u0627\u0628\u0629 Pangea \u062a\u0644\u0642\u0627\u0626\u064a\u064b\u0627";
     },
@@ -5244,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IIWEa6zOWiXPKypPNxjosZYTCCI="] = d.current;
+  d["GzyByEqdVVdsN7xu0a97pWZi3xg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_140.part.js.map

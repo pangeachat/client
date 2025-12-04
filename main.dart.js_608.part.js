@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Athnuachan";
     },
-    get$updatePhoneOS() {
-      return "D'fh\xe9adfadh go mbeadh ort do leagan OS a nuashonr\xfa ar do ghl\xe9as.";
-    },
     get$autoIGCToolName() {
       return "Rith cabhair scr\xedbhneoireachta Pangea go huathoibr\xedoch";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["P5Buhn4KiIoWSpRekPhdiZpXHS0="] = d.current;
+  d["kY/INltLinqK/nNHVTPYRdj0FFM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_608.part.js.map

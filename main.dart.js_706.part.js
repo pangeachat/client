@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Atnaujinti";
     },
-    get$updatePhoneOS() {
-      return "Gali b\u016bti, kad reik\u0117s atnaujinti \u012frenginio operacin\u0117s sistemos versij\u0105.";
-    },
     get$autoIGCToolName() {
       return "Automati\u0161kai paleisti Pangea ra\u0161ymo pagalb\u0105";
     },
@@ -5246,7 +5243,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["652Ji3lwQ4TO5nTdU4RMVhbJ6R8="] = d.current;
+  d["KOBvPBiK7Yq9Ur/ksx1WakCYvxw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_706.part.js.map

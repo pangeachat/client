@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "V\xe4rskenda";
     },
-    get$updatePhoneOS() {
-      return "V\xf5ib olla vajalik uuendada oma seadme operatsioonis\xfcsteemi versiooni.";
-    },
     get$autoIGCToolName() {
       return "K\xe4ivita Pangea kirjutamisabi automaatselt";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["f97obqZuBwMdQEtqVHGdn3H53wY="] = d.current;
+  d["4NeTK/l2pcfI1x3rn1OohU4vfQ0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_537.part.js.map

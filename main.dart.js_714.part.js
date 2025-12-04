@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Atjaunot";
     },
-    get$updatePhoneOS() {
-      return "Var b\u016bt nepiecie\u0161ams atjaunin\u0101t ier\u012bces oper\u0113t\u0101jsist\u0113mas versiju.";
-    },
     get$autoIGCToolName() {
       return "Autom\u0101tiski palaist Pangea rakst\u012b\u0161anas pal\u012bgu";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wY5KrlHwxmb88OgovI/GKuT7kI8="] = d.current;
+  d["xKRWbqX1FKxnWs+0Rk6ULk1joaU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_714.part.js.map

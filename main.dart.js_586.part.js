@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "I-refresh";
     },
-    get$updatePhoneOS() {
-      return "Maaaring kailangan mong i-update ang bersyon ng OS ng iyong device.";
-    },
     get$autoIGCToolName() {
       return "Awtomatikong patakbuhin ang Pangea writing assistance";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GrQ9N7ggVEj27JlkXKv7jrqoYYU="] = d.current;
+  d["vkd7vgXyRzRuO4UFjGSU9iDEsuY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_586.part.js.map

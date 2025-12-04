@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Verversen";
     },
-    get$updatePhoneOS() {
-      return "U moet mogelijk de OS-versie van uw apparaat bijwerken.";
-    },
     get$autoIGCToolName() {
       return "Voer Pangea schrijfhulp automatisch uit";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qKJXhxQjXIMZY38FUvAui/cjCSE="] = d.current;
+  d["oM8TmebCDlV9ah0bKhCfF9Q2BQY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_724.part.js.map

@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Rafra\xeechir";
     },
-    get$updatePhoneOS() {
-      return "Vous devrez peut-\xeatre mettre \xe0 jour la version du syst\xe8me d'exploitation de votre appareil.";
-    },
     get$autoIGCToolName() {
       return "Ex\xe9cuter automatiquement l'assistance \xe0 l'\xe9criture Pangea";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SjyQpFxwl/Eq5jGj/B8rnR5ZmcE="] = d.current;
+  d["dZOhix77BI5wF4ChW1wJieKm7pI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_593.part.js.map

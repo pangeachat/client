@@ -2540,9 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Od\u015bwie\u017c";
     },
-    get$updatePhoneOS() {
-      return "Mo\u017cesz potrzebowa\u0107 zaktualizowa\u0107 wersj\u0119 systemu operacyjnego swojego urz\u0105dzenia.";
-    },
     get$autoIGCToolName() {
       return "Uruchom automatycznie pomoc w pisaniu Pangea";
     },
@@ -5244,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MXgaiNeiCIUM7sAvmmGFwq8EHQE="] = d.current;
+  d["ov7T6nlUUkUD6xcj9qwpUgZDPbY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_727.part.js.map

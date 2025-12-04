@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\xdajrat\xf6lt\xe9s";
     },
-    get$updatePhoneOS() {
-      return "El\u0151fordulhat, hogy friss\xedtenie kell az eszk\xf6z oper\xe1ci\xf3s rendszer\xe9t.";
-    },
     get$autoIGCToolName() {
       return "A Pangea \xedr\xe1sseg\xe9d automatikus futtat\xe1sa";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QYTgvUK1S4UIpq4AgU8L+y9rn9Q="] = d.current;
+  d["BIMJWazlcB2EepfVUT6MDXNk16U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

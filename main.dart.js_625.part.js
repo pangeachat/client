@@ -2539,9 +2539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u0930\u093f\u092b\u094d\u0930\u0947\u0936 \u0915\u0930\u0947\u0902";
     },
-    get$updatePhoneOS() {
-      return "\u0906\u092a\u0915\u094b \u0905\u092a\u0928\u0947 \u0921\u093f\u0935\u093e\u0907\u0938 \u0915\u093e OS \u0938\u0902\u0938\u094d\u0915\u0930\u0923 \u0905\u092a\u0921\u0947\u091f \u0915\u0930\u0928\u0947 \u0915\u0940 \u0906\u0935\u0936\u094d\u092f\u0915\u0924\u093e \u0939\u094b \u0938\u0915\u0924\u0940 \u0939\u0948\u0964";
-    },
     get$autoIGCToolName() {
       return "\u0938\u094d\u0935\u091a\u093e\u0932\u093f\u0924 \u0930\u0942\u092a \u0938\u0947 \u092a\u0948\u0902\u091c\u093f\u092f\u093e \u0932\u0947\u0916\u0928 \u0938\u0939\u093e\u092f\u0924\u093e \u091a\u0932\u093e\u090f\u0901";
     },
@@ -5243,7 +5240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oQ0oA4CtIZ6e1SfbVKOwrdcWnMg="] = d.current;
+  d["0xlltfLRQr2d3+1U1NtYLTympls="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_625.part.js.map

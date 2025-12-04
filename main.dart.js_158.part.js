@@ -2540,9 +2540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "\u09b0\u09bf\u09ab\u09cd\u09b0\u09c7\u09b6";
     },
-    get$updatePhoneOS() {
-      return "\u0986\u09aa\u09a8\u09be\u09b0 \u09a1\u09bf\u09ad\u09be\u0987\u09b8\u09c7\u09b0 \u0985\u09aa\u09be\u09b0\u09c7\u099f\u09bf\u0982 \u09b8\u09bf\u09b8\u09cd\u099f\u09c7\u09ae\u09c7\u09b0 \u09b8\u0982\u09b8\u09cd\u0995\u09b0\u09a3 \u0986\u09aa\u09a1\u09c7\u099f\u09c7\u09b0 \u09aa\u09cd\u09b0\u09af\u09bc\u09cb\u099c\u09a8 \u09b9\u09a4\u09c7 \u09aa\u09be\u09b0\u09c7\u0964";
-    },
     get$autoIGCToolName() {
       return "\u09aa\u09be\u0999\u09cd\u0997\u09bf\u09af\u09bc\u09be \u09b2\u09c7\u0996\u09a8\u09c0 \u09b8\u09b9\u09be\u09af\u09bc\u09a4\u09be \u09b8\u09cd\u09ac\u09af\u09bc\u0982\u0995\u09cd\u09b0\u09bf\u09af\u09bc\u09ad\u09be\u09ac\u09c7 \u099a\u09be\u09b2\u09be\u09a8";
     },
@@ -5244,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yTfQmL8IuPaMWhluyDhM3JWe5/o="] = d.current;
+  d["0DV1hrniP1lEChNOaY0I7vmJFBI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map
