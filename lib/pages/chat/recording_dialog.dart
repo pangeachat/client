@@ -12,7 +12,6 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/toolbar/utils/update_version_dialog.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'events/audio_player.dart';
@@ -66,32 +65,19 @@ class RecordingDialogState extends State<RecordingDialog> {
       }
       await WakelockPlus.enable();
 
-      // #Pangea
-      final isNotError = await showUpdateVersionDialog(
-        future: () async =>
-            // Pangea#
-            await _audioRecorder.start(
-          RecordConfig(
-            bitRate: AppSettings.audioRecordingBitRate.getItem(store),
-            sampleRate: AppSettings.audioRecordingSamplingRate.getItem(store),
-            numChannels: AppSettings.audioRecordingNumChannels.getItem(store),
-            autoGain: AppSettings.audioRecordingAutoGain.getItem(store),
-            echoCancel: AppSettings.audioRecordingEchoCancel.getItem(store),
-            noiseSuppress:
-                AppSettings.audioRecordingNoiseSuppress.getItem(store),
-            encoder: codec,
-          ),
-          path: path ?? '',
+      await _audioRecorder.start(
+        RecordConfig(
+          bitRate: AppSettings.audioRecordingBitRate.getItem(store),
+          sampleRate: AppSettings.audioRecordingSamplingRate.getItem(store),
+          numChannels: AppSettings.audioRecordingNumChannels.getItem(store),
+          autoGain: AppSettings.audioRecordingAutoGain.getItem(store),
+          echoCancel: AppSettings.audioRecordingEchoCancel.getItem(store),
+          noiseSuppress: AppSettings.audioRecordingNoiseSuppress.getItem(store),
+          encoder: codec,
         ),
-        // #Pangea
-        context: context,
+        path: path ?? '',
       );
 
-      if (!isNotError) {
-        Navigator.of(context).pop();
-        return;
-      }
-      // Pangea#
       setState(() => _duration = Duration.zero);
       _recorderSubscription?.cancel();
       _recorderSubscription =

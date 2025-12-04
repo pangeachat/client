@@ -26,4 +26,6 @@ class SpaceConstants {
     '${AppConfig.assetsBaseURL}/Space+template+5.png',
     '${AppConfig.assetsBaseURL}/Space+template+6.png',
   ];
+
+  static const String sideBearFileName = "Bear_Find_your_people.png";
 }

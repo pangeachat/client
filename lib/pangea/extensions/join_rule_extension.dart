@@ -2,7 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/spaces/utils/space_code_extension.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_extension.dart';
 
 extension JoinRuleExtension on Client {
   Future<StateEvent> pangeaJoinRules(

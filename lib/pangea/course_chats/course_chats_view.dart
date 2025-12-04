@@ -16,7 +16,7 @@ import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_chats/unjoined_chat_list_item.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_request_indicator.dart';
-import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
