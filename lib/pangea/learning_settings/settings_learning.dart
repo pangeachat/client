@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning_view.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
@@ -165,6 +166,11 @@ class SettingsLearningController extends State<SettingsLearning> {
     if (mounted) setState(() {});
   }
 
+  void setGender(GenderEnum? gender) {
+    _profile.userSettings.gender = gender ?? GenderEnum.unselected;
+    if (mounted) setState(() {});
+  }
+
   void setPublicProfile(bool isPublic) {
     _profile.userSettings.publicProfile = isPublic;
     if (mounted) setState(() {});
@@ -281,6 +287,8 @@ class SettingsLearningController extends State<SettingsLearning> {
       _profile.userSettings.targetLanguage != null
           ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
           : null;
+
+  GenderEnum get gender => _profile.userSettings.gender;
 
   bool getToolSetting(ToolSetting toolSetting) {
     final toolSettings = _profile.toolSettings;
