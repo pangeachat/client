@@ -47,6 +47,7 @@ class ModelKey {
 
   static const String userL1 = "user_l1";
   static const String userL2 = "user_l2";
+  static const String userGender = "user_gender";
   static const String fullText = "full_text";
   static const String fullTextLang = "full_text_lang";
   static const String tokens = "tokens";

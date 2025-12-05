@@ -4991,5 +4991,10 @@
   },
   "pickDifferentActivity": "Pick a different activity",
   "messageLanguageMismatchMessage": "Your target language doesn't match this message. Update your target language?",
-  "blockLemmaConfirmation": "This vocab word will be permanently removed from your analytics"
+  "blockLemmaConfirmation": "This vocab word will be permanently removed from your analytics",
+  "woman": "Woman",
+  "man": "Man",
+  "otherGender": "Other",
+  "unselectedGender": "Select a gender option",
+  "gender": "Gender"
 }
