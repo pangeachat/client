@@ -152,12 +152,12 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corIt:
       case ConstructUseTypeEnum.incIt:
       case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.ta:
         return Icons.translate;
       case ConstructUseTypeEnum.ignIGC:
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.corIGC:
       case ConstructUseTypeEnum.ga:
-      case ConstructUseTypeEnum.ta:
         return Icons.spellcheck;
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.incPA:
