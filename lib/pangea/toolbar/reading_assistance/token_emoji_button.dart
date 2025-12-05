@@ -34,7 +34,7 @@ class TokenEmojiButton extends StatefulWidget {
 
 class TokenEmojiButtonState extends State<TokenEmojiButton>
     with TickerProviderStateMixin, LemmaEmojiSetter {
-  final double buttonSize = 20.0;
+  final double buttonSize = 24.0;
   SelectMode? _prevMode;
   AnimationController? _controller;
   Animation<double>? _sizeAnimation;
@@ -156,21 +156,17 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
     }
 
     final child = widget.enabled
-        ? InkWell(
-            onTap: showTokenEmojiPopup,
-            borderRadius: BorderRadius.circular(99.0),
-            child: _emoji != null
-                ? Text(
-                    _emoji!,
-                    style: TextStyle(fontSize: buttonSize - 4.0),
-                    textScaler: TextScaler.noScaling,
-                  )
-                : Icon(
-                    Icons.add_reaction_outlined,
-                    size: buttonSize - 4.0,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-          )
+        ? _emoji != null
+            ? Text(
+                _emoji!,
+                style: TextStyle(fontSize: buttonSize - 8.0),
+                textScaler: TextScaler.noScaling,
+              )
+            : Icon(
+                Icons.add_reaction_outlined,
+                size: buttonSize - 8.0,
+                color: Theme.of(context).colorScheme.primary,
+              )
         : null;
 
     final content = ValueListenableBuilder(
@@ -186,11 +182,17 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
                 animation: _sizeAnimation!,
                 child: child,
                 builder: (context, child) {
-                  return Container(
-                    height: _sizeAnimation!.value,
-                    width: widget.enabled ? _sizeAnimation!.value : 0,
-                    alignment: Alignment.center,
-                    child: child,
+                  return InkWell(
+                    onTap: showTokenEmojiPopup,
+                    borderRadius: BorderRadius.circular(99.0),
+                    child: Container(
+                      height: _sizeAnimation!.value,
+                      width: widget.enabled ? _sizeAnimation!.value : 0,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green)),
+                      child: child,
+                    ),
                   );
                 },
               )
