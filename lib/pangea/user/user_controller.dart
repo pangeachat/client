@@ -411,6 +411,8 @@ class UserController {
         return profile.toolSettings.definitions;
       case ToolSetting.autoIGC:
         return profile.toolSettings.autoIGC;
+      case ToolSetting.enableAutocorrect:
+        return profile.toolSettings.enableAutocorrect;
       default:
         return false;
     }

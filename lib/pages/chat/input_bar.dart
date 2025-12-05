@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/choreographer/text_editing/edit_type_enum.dart
 import 'package:fluffychat/pangea/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
+import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/utils/markdown_context_builder.dart';
@@ -480,6 +481,8 @@ class InputBar extends StatelessWidget {
                 markdownContextBuilder(c, e, controller!),
             onTap: () => _onInputTap(context),
             readOnly: choreographer.choreoMode == ChoreoModeEnum.it,
+            autocorrect: MatrixState.pangeaController.userController
+                .isToolEnabled(ToolSetting.enableAutocorrect),
             // Pangea#
             contentInsertionConfiguration: ContentInsertionConfiguration(
               onContentInserted: (KeyboardInsertedContent content) {
