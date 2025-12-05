@@ -3,6 +3,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
+import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -15,6 +16,7 @@ class UserSettings {
   bool? publicProfile;
   String? targetLanguage;
   String? sourceLanguage;
+  GenderEnum gender;
   String? country;
   LanguageLevelTypeEnum cefrLevel;
 
@@ -24,6 +26,7 @@ class UserSettings {
     this.publicProfile,
     this.targetLanguage,
     this.sourceLanguage,
+    this.gender = GenderEnum.unselected,
     this.country,
     this.cefrLevel = LanguageLevelTypeEnum.a1,
   });
@@ -38,6 +41,11 @@ class UserSettings {
         publicProfile: json[ModelKey.publicProfile],
         targetLanguage: json[ModelKey.l2LanguageKey],
         sourceLanguage: json[ModelKey.l1LanguageKey],
+        gender: json[ModelKey.userGender] is String
+            ? GenderEnumExtension.fromString(
+                json[ModelKey.userGender],
+              )
+            : GenderEnum.unselected,
         country: json[ModelKey.userCountry],
         cefrLevel: json[ModelKey.cefrLevel] is String
             ? LanguageLevelTypeEnum.fromString(
@@ -53,6 +61,7 @@ class UserSettings {
     data[ModelKey.publicProfile] = publicProfile;
     data[ModelKey.l2LanguageKey] = targetLanguage;
     data[ModelKey.l1LanguageKey] = sourceLanguage;
+    data[ModelKey.userGender] = gender.string;
     data[ModelKey.userCountry] = country;
     data[ModelKey.cefrLevel] = cefrLevel.string;
     return data;
@@ -111,6 +120,7 @@ class UserSettings {
       publicProfile: publicProfile,
       targetLanguage: targetLanguage,
       sourceLanguage: sourceLanguage,
+      gender: gender,
       country: country,
       cefrLevel: cefrLevel,
     );
@@ -126,6 +136,7 @@ class UserSettings {
         (other.publicProfile ?? false) == (publicProfile ?? false) &&
         other.targetLanguage == targetLanguage &&
         other.sourceLanguage == sourceLanguage &&
+        other.gender == gender &&
         other.country == country &&
         other.cefrLevel == cefrLevel;
   }
@@ -137,6 +148,7 @@ class UserSettings {
         (publicProfile ?? false).hashCode,
         targetLanguage.hashCode,
         sourceLanguage.hashCode,
+        gender.hashCode,
         country.hashCode,
         cefrLevel.hashCode,
       ]);

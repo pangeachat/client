@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 
 class IGCRequestModel {
   final String fullText;
   final String userL1;
   final String userL2;
+  final GenderEnum userGender;
   final bool enableIT;
   final bool enableIGC;
   final String userId;
@@ -15,6 +17,7 @@ class IGCRequestModel {
     required this.fullText,
     required this.userL1,
     required this.userL2,
+    required this.userGender,
     required this.enableIGC,
     required this.enableIT,
     required this.userId,
@@ -25,6 +28,7 @@ class IGCRequestModel {
         ModelKey.fullText: fullText,
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
+        ModelKey.userGender: userGender.string,
         "enable_it": enableIT,
         "enable_igc": enableIGC,
         ModelKey.userId: userId,
@@ -42,6 +46,7 @@ class IGCRequestModel {
         fullText == other.fullText &&
         userL1 == other.userL1 &&
         userL2 == other.userL2 &&
+        userGender == other.userGender &&
         enableIT == other.enableIT &&
         userId == other.userId;
   }
@@ -51,6 +56,7 @@ class IGCRequestModel {
         fullText.trim(),
         userL1,
         userL2,
+        userGender,
         enableIT,
         enableIGC,
         userId,
