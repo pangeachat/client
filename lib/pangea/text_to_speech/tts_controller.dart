@@ -279,8 +279,6 @@ class TtsController {
             LanguageKeys.unknownLanguage,
         userL2: MatrixState.pangeaController.userController.userL2Code ??
             LanguageKeys.unknownLanguage,
-        userGender: MatrixState
-            .pangeaController.userController.profile.userSettings.gender,
       ),
     );
     loadingChoreoStream.add(false);

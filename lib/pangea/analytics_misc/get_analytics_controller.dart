@@ -23,7 +23,6 @@ import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -49,9 +48,6 @@ class GetAnalyticsController extends BaseController {
 
   LanguageModel? get _l1 => _pangeaController.userController.userL1;
   LanguageModel? get _l2 => _pangeaController.userController.userL2;
-
-  GenderEnum get gender =>
-      MatrixState.pangeaController.userController.profile.userSettings.gender;
 
   Client get _client => _pangeaController.matrixState.client;
 
@@ -568,7 +564,6 @@ class GetAnalyticsController extends BaseController {
       messages: messages,
       userL1: _l1!.langCodeShort,
       userL2: _l2!.langCodeShort,
-      userGender: gender,
       upperLevel: upperLevel,
       lowerLevel: lowerLevel,
     );
