@@ -189,8 +189,6 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
                       height: _sizeAnimation!.value,
                       width: widget.enabled ? _sizeAnimation!.value : 0,
                       alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green)),
                       child: child,
                     ),
                   );
