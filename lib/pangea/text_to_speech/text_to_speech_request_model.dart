@@ -1,13 +1,11 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 
 class TextToSpeechRequestModel {
   String text;
   String langCode;
   String userL1;
   String userL2;
-  GenderEnum userGender;
   List<PangeaTokenText> tokens;
 
   TextToSpeechRequestModel({
@@ -15,7 +13,6 @@ class TextToSpeechRequestModel {
     required this.langCode,
     required this.userL1,
     required this.userL2,
-    required this.userGender,
     required this.tokens,
   });
 
@@ -24,7 +21,6 @@ class TextToSpeechRequestModel {
         ModelKey.langCode: langCode,
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
-        ModelKey.userGender: userGender.string,
         ModelKey.tokens: tokens.map((token) => token.toJson()).toList(),
       };
 
@@ -34,10 +30,9 @@ class TextToSpeechRequestModel {
 
     return other is TextToSpeechRequestModel &&
         other.text == text &&
-        other.langCode == langCode &&
-        other.userGender == userGender;
+        other.langCode == langCode;
   }
 
   @override
-  int get hashCode => text.hashCode ^ langCode.hashCode ^ userGender.hashCode;
+  int get hashCode => text.hashCode ^ langCode.hashCode;
 }

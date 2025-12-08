@@ -18,7 +18,6 @@ import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
 import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/gender_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
@@ -79,9 +78,6 @@ class PangeaMessageEvent {
 
   String? get _l1Code =>
       MatrixState.pangeaController.userController.userL1?.langCode;
-
-  GenderEnum get gender =>
-      MatrixState.pangeaController.userController.profile.userSettings.gender;
 
   Event? _latestEditCache;
   Event get _latestEdit => _latestEditCache ??= _event
@@ -369,7 +365,6 @@ class PangeaMessageEvent {
       langCode: langCode,
       userL1: _l1Code ?? LanguageKeys.unknownLanguage,
       userL2: _l2Code ?? LanguageKeys.unknownLanguage,
-      userGender: gender,
     );
 
     final result = await TextToSpeechRepo.get(
@@ -577,7 +572,6 @@ class PangeaMessageEvent {
         tgtLang: targetLang,
         userL2: _l2Code ?? LanguageKeys.unknownLanguage,
         userL1: _l1Code ?? LanguageKeys.unknownLanguage,
-        userGender: gender,
       ),
     );
 

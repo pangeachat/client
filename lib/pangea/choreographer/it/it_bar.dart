@@ -65,8 +65,6 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
         tgtLang: MatrixState.pangeaController.userController.userL1!.langCode,
         userL1: MatrixState.pangeaController.userController.userL1!.langCode,
         userL2: MatrixState.pangeaController.userController.userL2!.langCode,
-        userGender: MatrixState
-            .pangeaController.userController.profile.userSettings.gender,
       );
 
   void _openListener() {
