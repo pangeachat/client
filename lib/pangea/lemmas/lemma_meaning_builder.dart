@@ -13,7 +13,18 @@ class _LemmaMeaningLoader extends AsyncLoader<LemmaInfoResponse> {
   _LemmaMeaningLoader(this.request) : super();
 
   @override
-  Future<LemmaInfoResponse> fetch() => LemmaInfoRepo.get(request);
+  Future<LemmaInfoResponse> fetch() async {
+    final result = await LemmaInfoRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      request,
+    );
+
+    if (result.isError) {
+      throw result.asError!.error;
+    }
+
+    return result.asValue!.value;
+  }
 }
 
 class LemmaMeaningBuilder extends StatefulWidget {

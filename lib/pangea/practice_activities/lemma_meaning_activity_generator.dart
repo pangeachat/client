@@ -1,26 +1,34 @@
 import 'dart:async';
 
+import 'package:async/async.dart';
+
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class LemmaMeaningActivityGenerator {
   static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
   ) async {
-    final List<Future<LemmaInfoResponse>> lemmaInfoFutures = req.targetTokens
+    final List<Future<Result<LemmaInfoResponse>>> lemmaInfoFutures = req
+        .targetTokens
         .map((token) => token.vocabConstructID.getLemmaInfo())
         .toList();
 
-    final List<LemmaInfoResponse> lemmaInfos =
+    final List<Result<LemmaInfoResponse>> lemmaInfos =
         await Future.wait(lemmaInfoFutures);
+
+    if (lemmaInfos.any((result) => result.isError)) {
+      throw lemmaInfos.firstWhere((result) => result.isError).error!;
+    }
 
     final Map<ConstructForm, List<String>> matchInfo = Map.fromIterables(
       req.targetTokens.map((token) => token.vocabForm),
-      lemmaInfos.map((lemmaInfo) => [lemmaInfo.meaning]),
+      lemmaInfos.map((lemmaInfo) => [lemmaInfo.asValue!.value.meaning]),
     );
 
     return MessageActivityResponse(

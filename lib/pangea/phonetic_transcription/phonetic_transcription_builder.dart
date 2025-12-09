@@ -14,9 +14,17 @@ class _TranscriptLoader extends AsyncLoader<String> {
 
   @override
   Future<String> fetch() async {
-    final resp = await PhoneticTranscriptionRepo.get(request);
-    return resp.phoneticTranscriptionResult.phoneticTranscription.first
-        .phoneticL1Transcription.content;
+    final resp = await PhoneticTranscriptionRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      request,
+    );
+
+    if (resp.isError) {
+      throw resp.asError!.error;
+    }
+
+    return resp.asValue!.value.phoneticTranscriptionResult.phoneticTranscription
+        .first.phoneticL1Transcription.content;
   }
 }
 

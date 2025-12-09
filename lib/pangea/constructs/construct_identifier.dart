@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -162,7 +163,8 @@ class ConstructIdentifier {
       );
 
   /// [lemmmaLang] if not set, assumed to be userL2
-  Future<LemmaInfoResponse> getLemmaInfo() => LemmaInfoRepo.get(
+  Future<Result<LemmaInfoResponse>> getLemmaInfo() => LemmaInfoRepo.get(
+        MatrixState.pangeaController.userController.accessToken,
         lemmaInfoRequest,
       );
 

@@ -3,12 +3,10 @@ import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 class LemmaInfoResponse implements JsonSerializable {
   final List<String> emoji;
   final String meaning;
-  DateTime? expireAt;
 
   LemmaInfoResponse({
     required this.emoji,
     required this.meaning,
-    this.expireAt,
   });
 
   factory LemmaInfoResponse.fromJson(Map<String, dynamic> json) {
@@ -16,9 +14,6 @@ class LemmaInfoResponse implements JsonSerializable {
       // NOTE: This is a workaround for the fact that the server sometimes sends more than 3 emojis
       emoji: (json['emoji'] as List<dynamic>).map((e) => e as String).toList(),
       meaning: json['meaning'] as String,
-      expireAt: json['expireAt'] == null
-          ? null
-          : DateTime.parse(json['expireAt'] as String),
     );
   }
 
@@ -32,7 +27,6 @@ class LemmaInfoResponse implements JsonSerializable {
     return {
       'emoji': emoji,
       'meaning': meaning,
-      'expireAt': expireAt?.toIso8601String(),
     };
   }
 
