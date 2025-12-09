@@ -13,10 +13,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LemmaInfoRepo {
   static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
 
-  static void set(LemmaInfoRequest request, LemmaInfoResponse response) {
+  static Future<void> set(
+    LemmaInfoRequest request,
+    LemmaInfoResponse response,
+  ) async {
     // set expireAt if not set
     response.expireAt ??= DateTime.now().add(const Duration(days: 100));
-    _lemmaStorage.write(request.storageKey, response.toJson());
+    await _lemmaStorage.write(request.storageKey, response.toJson());
   }
 
   static LemmaInfoResponse? getCached(LemmaInfoRequest request) {

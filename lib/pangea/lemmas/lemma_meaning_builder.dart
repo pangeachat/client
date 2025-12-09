@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+class _LemmaMeaningLoader extends AsyncLoader<LemmaInfoResponse> {
+  final LemmaInfoRequest request;
+  _LemmaMeaningLoader(this.request) : super();
+
+  @override
+  Future<LemmaInfoResponse> fetch() => LemmaInfoRepo.get(request);
+}
 
 class LemmaMeaningBuilder extends StatefulWidget {
   final String langCode;
@@ -27,14 +36,12 @@ class LemmaMeaningBuilder extends StatefulWidget {
 }
 
 class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
-  LemmaInfoResponse? lemmaInfo;
-  bool isLoading = true;
-  Object? error;
+  late _LemmaMeaningLoader _loader;
 
   @override
   void initState() {
     super.initState();
-    _fetchLemmaMeaning();
+    _reload();
   }
 
   @override
@@ -42,9 +49,24 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.constructId != widget.constructId ||
         oldWidget.langCode != widget.langCode) {
-      _fetchLemmaMeaning();
+      _loader.dispose();
+      _reload();
     }
   }
+
+  @override
+  void dispose() {
+    _loader.dispose();
+    super.dispose();
+  }
+
+  bool get isLoading => _loader.isLoading;
+  bool get isError => _loader.isError;
+
+  Object? get error =>
+      isError ? (_loader.state.value as AsyncError).error : null;
+
+  LemmaInfoResponse? get lemmaInfo => _loader.value;
 
   LemmaInfoRequest get _request => LemmaInfoRequest(
         lemma: widget.constructId.lemma,
@@ -54,27 +76,19 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
             LanguageKeys.defaultLanguage,
       );
 
-  Future<void> _fetchLemmaMeaning() async {
-    setState(() {
-      isLoading = true;
-      error = null;
-    });
-
-    try {
-      final resp = await LemmaInfoRepo.get(_request);
-      lemmaInfo = resp;
-    } catch (e) {
-      error = e;
-    } finally {
-      if (mounted) setState(() => isLoading = false);
-    }
+  void _reload() {
+    _loader = _LemmaMeaningLoader(_request);
+    _loader.load();
   }
 
   @override
   Widget build(BuildContext context) {
-    return widget.builder(
-      context,
-      this,
+    return ValueListenableBuilder(
+      valueListenable: _loader.state,
+      builder: (context, _, __) => widget.builder(
+        context,
+        this,
+      ),
     );
   }
 }

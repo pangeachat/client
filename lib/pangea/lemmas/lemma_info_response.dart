@@ -22,6 +22,11 @@ class LemmaInfoResponse implements JsonSerializable {
     );
   }
 
+  static LemmaInfoResponse get error => LemmaInfoResponse(
+        emoji: [],
+        meaning: 'ERROR',
+      );
+
   @override
   Map<String, dynamic> toJson() {
     return {

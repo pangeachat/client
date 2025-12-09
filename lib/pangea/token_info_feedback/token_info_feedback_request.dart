@@ -8,8 +8,8 @@ class TokenInfoFeedbackRequestData {
   final String detectedLanguage;
   final List<PangeaToken> tokens;
   final int selectedToken;
-  final LemmaInfoResponse? lemmaInfo;
-  final String? phonetics;
+  final LemmaInfoResponse lemmaInfo;
+  final String phonetics;
   final String wordCardL1;
 
   TokenInfoFeedbackRequestData({
@@ -19,8 +19,8 @@ class TokenInfoFeedbackRequestData {
     required this.detectedLanguage,
     required this.tokens,
     required this.selectedToken,
-    this.lemmaInfo,
-    this.phonetics,
+    required this.lemmaInfo,
+    required this.phonetics,
     required this.wordCardL1,
   });
 
@@ -67,7 +67,7 @@ class TokenInfoFeedbackRequest {
       'detected_language': data.detectedLanguage,
       'tokens': data.tokens.map((token) => token.toJson()).toList(),
       'selected_token': data.selectedToken,
-      'lemma_info': data.lemmaInfo?.toJson(),
+      'lemma_info': data.lemmaInfo.toJson(),
       'phonetics': data.phonetics,
       'user_feedback': userFeedback,
       'word_card_l1': data.wordCardL1,

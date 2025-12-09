@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/new_word_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/word_card/lemma_meaning_display.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/message_unsubscribed_card.dart';
+import 'package:fluffychat/pangea/toolbar/word_card/token_feedback_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class WordZoomWidget extends StatelessWidget {
@@ -28,10 +28,7 @@ class WordZoomWidget extends StatelessWidget {
   final Event? event;
 
   final VoidCallback? onDismissNewWordOverlay;
-  final VoidCallback? onFlagTokenInfo;
-
-  // final TokenInfoFeedbackRequestData? requestData;
-  // final PangeaMessageEvent? pangeaMessageEvent;
+  final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
 
   const WordZoomWidget({
     super.key,
@@ -55,6 +52,8 @@ class WordZoomWidget extends StatelessWidget {
     final bool? subscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
     final overlayColor = Theme.of(context).scaffoldBackgroundColor;
+    final showTranscript =
+        MatrixState.pangeaController.userController.showTranscription;
 
     final Widget content = subscribed != null && !subscribed
         ? const MessageUnsubscribedCard()
@@ -106,11 +105,14 @@ class WordZoomWidget extends StatelessWidget {
                               ),
                             ),
                             onFlagTokenInfo != null
-                                ? IconButton(
-                                    icon: const Icon(Icons.flag_outlined),
-                                    onPressed: onFlagTokenInfo,
-                                    tooltip:
-                                        L10n.of(context).reportWordIssueTooltip,
+                                ? TokenFeedbackButton(
+                                    textLanguage: PLanguageStore.byLangCode(
+                                          langCode,
+                                        ) ??
+                                        LanguageModel.unknown,
+                                    constructId: construct,
+                                    text: token.content,
+                                    onFlagTokenInfo: onFlagTokenInfo!,
                                   )
                                 : const SizedBox(
                                     width: 40.0,
@@ -118,17 +120,12 @@ class WordZoomWidget extends StatelessWidget {
                                   ),
                           ],
                         ),
-                        LemmaMeaningBuilder(
-                          langCode: langCode,
-                          constructId: construct,
-                          builder: (context, controller) {
-                            return Column(
-                              spacing: 12.0,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                if (MatrixState.pangeaController.userController
-                                    .showTranscription)
-                                  PhoneticTranscriptionWidget(
+                        Column(
+                          spacing: 12.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            showTranscript
+                                ? PhoneticTranscriptionWidget(
                                     text: token.content,
                                     textLanguage: PLanguageStore.byLangCode(
                                           langCode,
@@ -137,62 +134,23 @@ class WordZoomWidget extends StatelessWidget {
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                   )
-                                else
-                                  WordAudioButton(
+                                : WordAudioButton(
                                     text: token.content,
                                     uniqueID: "lemma-content-${token.content}",
                                     langCode: langCode,
                                     iconSize: 24.0,
                                   ),
-                                LemmaReactionPicker(
-                                  emojis: controller.lemmaInfo?.emoji ?? [],
-                                  loading: controller.isLoading,
-                                  event: event,
-                                ),
-                                if (controller.error != null)
-                                  ErrorIndicator(
-                                    message: L10n.of(context)
-                                        .errorFetchingDefinition,
-                                    style: const TextStyle(fontSize: 14.0),
-                                  )
-                                else if (controller.isLoading ||
-                                    controller.lemmaInfo == null)
-                                  const CircularProgressIndicator.adaptive()
-                                else
-                                  construct.lemma.toLowerCase() ==
-                                          token.content.toLowerCase()
-                                      ? Text(
-                                          controller.lemmaInfo!.meaning,
-                                          style:
-                                              const TextStyle(fontSize: 14.0),
-                                          textAlign: TextAlign.center,
-                                        )
-                                      : RichText(
-                                          text: TextSpan(
-                                            style: DefaultTextStyle.of(context)
-                                                .style
-                                                .copyWith(
-                                                  fontSize: 14.0,
-                                                ),
-                                            children: [
-                                              TextSpan(text: construct.lemma),
-                                              const WidgetSpan(
-                                                child: SizedBox(width: 8.0),
-                                              ),
-                                              const TextSpan(text: ":"),
-                                              const WidgetSpan(
-                                                child: SizedBox(width: 8.0),
-                                              ),
-                                              TextSpan(
-                                                text: controller
-                                                    .lemmaInfo!.meaning,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                              ],
-                            );
-                          },
+                            LemmaReactionPicker(
+                              construct: construct,
+                              langCode: langCode,
+                              event: event,
+                            ),
+                            LemmaMeaningDisplay(
+                              langCode: langCode,
+                              constructId: construct,
+                              text: token.content,
+                            ),
+                          ],
                         ),
                       ],
                     ),
