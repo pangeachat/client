@@ -30,4 +30,16 @@ class PhoneticTranscriptionRequest {
   }
 
   String get storageKey => '${arc.l1}-${arc.l2}-${content.hashCode}';
+
+  @override
+  int get hashCode =>
+      content.hashCode ^ arc.hashCode ^ requiresTokenization.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other is PhoneticTranscriptionRequest &&
+        other.content == content &&
+        other.arc == arc &&
+        other.requiresTokenization == requiresTokenization;
+  }
 }

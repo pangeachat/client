@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -150,7 +151,7 @@ class ConstructIdentifier {
         uses: [],
       );
 
-  LemmaInfoRequest get _lemmaInfoRequest => LemmaInfoRequest(
+  LemmaInfoRequest get lemmaInfoRequest => LemmaInfoRequest(
         partOfSpeech: category,
         lemmaLang:
             MatrixState.pangeaController.userController.userL2?.langCodeShort ??
@@ -162,8 +163,9 @@ class ConstructIdentifier {
       );
 
   /// [lemmmaLang] if not set, assumed to be userL2
-  Future<LemmaInfoResponse> getLemmaInfo() => LemmaInfoRepo.get(
-        _lemmaInfoRequest,
+  Future<Result<LemmaInfoResponse>> getLemmaInfo() => LemmaInfoRepo.get(
+        MatrixState.pangeaController.userController.accessToken,
+        lemmaInfoRequest,
       );
 
   List<String> get userSetEmoji => userLemmaInfo.emojis ?? [];

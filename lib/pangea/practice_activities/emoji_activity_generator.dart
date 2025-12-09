@@ -1,3 +1,5 @@
+import 'package:async/async.dart';
+
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -35,15 +37,20 @@ class EmojiActivityGenerator {
       }
     }
 
-    final List<Future<LemmaInfoResponse>> lemmaInfoFutures = missingEmojis
-        .map((token) => token.vocabConstructID.getLemmaInfo())
-        .toList();
+    final List<Future<Result<LemmaInfoResponse>>> lemmaInfoFutures =
+        missingEmojis
+            .map((token) => token.vocabConstructID.getLemmaInfo())
+            .toList();
 
-    final List<LemmaInfoResponse> lemmaInfos =
+    final List<Result<LemmaInfoResponse>> lemmaInfos =
         await Future.wait(lemmaInfoFutures);
 
     for (int i = 0; i < missingEmojis.length; i++) {
-      final e = lemmaInfos[i].emoji.firstWhere(
+      if (lemmaInfos[i].isError) {
+        throw lemmaInfos[i].asError!.error;
+      }
+
+      final e = lemmaInfos[i].asValue!.value.emoji.firstWhere(
             (e) => !usedEmojis.contains(e),
             orElse: () => throw Exception(
               "Not enough unique emojis for tokens in message",

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -88,6 +90,10 @@ abstract class AsyncLoader<T> {
       final result = await fetch();
       if (_disposed) return;
       state.value = AsyncState.loaded(result);
+    } on HttpException catch (e) {
+      if (!_disposed) {
+        state.value = AsyncState.error(e);
+      }
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
