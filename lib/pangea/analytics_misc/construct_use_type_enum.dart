@@ -70,7 +70,15 @@ enum ConstructUseTypeEnum {
   click,
 
   /// not defined, likely a new construct introduced by choreo and not yet classified by an old version of the client
-  nan
+  nan,
+
+  // vocab lemma definition activity
+  corLM,
+  incLM,
+
+  // vocab lemma audio activity
+  corLA,
+  incLA,
 }
 
 extension ConstructUseTypeExtension on ConstructUseTypeEnum {
@@ -142,6 +150,14 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return L10n.of(context).constructUseCollected;
       case ConstructUseTypeEnum.nan:
         return L10n.of(context).constructUseNanDesc;
+      case ConstructUseTypeEnum.corLM:
+        return L10n.of(context).constructUseCorLMDesc;
+      case ConstructUseTypeEnum.incLM:
+        return L10n.of(context).constructUseIncLMDesc;
+      case ConstructUseTypeEnum.corLA:
+        return L10n.of(context).constructUseCorLADesc;
+      case ConstructUseTypeEnum.incLA:
+        return L10n.of(context).constructUseIncLADesc;
     }
   }
 
@@ -162,10 +178,14 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.incPA:
       case ConstructUseTypeEnum.ignPA:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
         return ActivityTypeEnum.wordMeaning.icon;
       case ConstructUseTypeEnum.ignWL:
       case ConstructUseTypeEnum.incWL:
       case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
         return ActivityTypeEnum.wordFocusListening.icon;
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.ignHWL:
@@ -206,6 +226,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.corWL:
       case ConstructUseTypeEnum.corM:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.corLA:
         return 5;
 
       case ConstructUseTypeEnum.pvm:
@@ -249,6 +271,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incWL:
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.incL:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
         return -2;
     }
   }
@@ -289,6 +313,10 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.em:
       case ConstructUseTypeEnum.click:
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
         return false;
     }
   }
@@ -313,6 +341,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corHWL:
       case ConstructUseTypeEnum.ignHWL:
       case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
         return LearningSkillsEnum.hearing;
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.ignPA:
@@ -328,6 +358,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ignMM:
       case ConstructUseTypeEnum.em:
       case ConstructUseTypeEnum.click:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
         return LearningSkillsEnum.reading;
       case ConstructUseTypeEnum.pvm:
         return LearningSkillsEnum.speaking;
@@ -354,6 +386,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.em:
       case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.corLA:
         return SpaceAnalyticsSummaryEnum.numChoicesCorrect;
 
       case ConstructUseTypeEnum.incIt:
@@ -364,6 +398,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incL:
       case ConstructUseTypeEnum.incM:
       case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
         return SpaceAnalyticsSummaryEnum.numChoicesIncorrect;
 
       case ConstructUseTypeEnum.ignIt:

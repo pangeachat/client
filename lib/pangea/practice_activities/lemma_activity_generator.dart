@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
@@ -17,7 +18,7 @@ class LemmaActivityGenerator {
     debugger(when: kDebugMode && req.targetTokens.length != 1);
 
     final token = req.targetTokens.first;
-    final choices = await _lemmaActivityDistractors(token);
+    final choices = await lemmaActivityDistractors(token);
 
     // TODO - modify MultipleChoiceActivity flow to allow no correct answer
     return MessageActivityResponse(
@@ -26,25 +27,25 @@ class LemmaActivityGenerator {
         targetTokens: [token],
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
-          choices: choices,
+          choices: choices.map((c) => c.lemma).toSet(),
           answers: {token.lemma.text},
         ),
       ),
     );
   }
 
-  static Future<Set<String>> _lemmaActivityDistractors(
+  static Future<Set<ConstructIdentifier>> lemmaActivityDistractors(
     PangeaToken token,
   ) async {
-    final List<String> lemmas = MatrixState
+    final List<ConstructIdentifier> lemmas = MatrixState
         .pangeaController.getAnalytics.constructListModel
         .constructList(type: ConstructTypeEnum.vocab)
-        .map((c) => c.lemma)
+        .map((c) => c.id)
         .toSet()
         .toList();
 
     // Offload computation to an isolate
-    final Map<String, int> distances =
+    final Map<ConstructIdentifier, int> distances =
         await compute(_computeDistancesInIsolate, {
       'lemmas': lemmas,
       'target': token.lemma.text,
@@ -57,26 +58,26 @@ class LemmaActivityGenerator {
     // Take the shortest 4
     final choices = sortedLemmas.take(4).toSet();
     if (choices.isEmpty) {
-      return {token.lemma.text};
+      return {token.vocabConstructID};
     }
 
-    if (!choices.contains(token.lemma.text)) {
-      choices.add(token.lemma.text);
+    if (!choices.contains(token.vocabConstructID)) {
+      choices.add(token.vocabConstructID);
     }
     return choices;
   }
 
   // isolate helper function
-  static Map<String, int> _computeDistancesInIsolate(
+  static Map<ConstructIdentifier, int> _computeDistancesInIsolate(
     Map<String, dynamic> params,
   ) {
-    final List<String> lemmas = params['lemmas'];
+    final List<ConstructIdentifier> lemmas = params['lemmas'];
     final String target = params['target'];
 
     // Calculate Levenshtein distances
-    final Map<String, int> distances = {};
+    final Map<ConstructIdentifier, int> distances = {};
     for (final lemma in lemmas) {
-      distances[lemma] = _levenshteinDistanceSync(target, lemma);
+      distances[lemma] = _levenshteinDistanceSync(target, lemma.lemma);
     }
     return distances;
   }

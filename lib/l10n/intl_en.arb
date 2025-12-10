@@ -4996,5 +4996,16 @@
   "man": "Man",
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
-  "gender": "Gender"
+  "gender": "Gender",
+  "constructUseCorLMDesc": "Correct vocab definition practice",
+  "constructUseIncLMDesc": "Incorrect vocab definition practice",
+  "constructUseCorLADesc": "Correct vocab audio practice",
+  "constructUseIncLADesc": "Incorrect vocab audio practice",
+  "practiceVocab": "Practice vocabulary",
+  "selectMeaning": "Select the meaning",
+  "selectAudio": "Select the matching audio",
+  "congratulations": "Congratulations!",
+  "yourResult": "Your results",
+  "addXP": "Add XP",
+  "anotherRound": "Another round"
 }

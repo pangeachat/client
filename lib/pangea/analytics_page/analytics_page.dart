@@ -129,6 +129,15 @@ class AnalyticsPage extends StatelessWidget {
           },
         ),
       ),
+      floatingActionButton:
+          indicator == ProgressIndicatorEnum.wordsUsed && construct == null
+              ? FloatingActionButton.extended(
+                  onPressed: () => context.go(
+                    "/rooms/analytics/${ConstructTypeEnum.vocab.name}/practice",
+                  ),
+                  label: Text(L10n.of(context).practiceVocab),
+                )
+              : null,
     );
   }
 }
