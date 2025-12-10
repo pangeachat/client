@@ -54,6 +54,16 @@ class VocabPracticeState extends State<VocabPractice> {
   bool get isFinished =>
       sessionLoader.isLoaded && sessionLoader.value!.isFinshed;
 
+  double get progress =>
+      sessionLoader.isLoaded ? sessionLoader.value!.progress : 0.0;
+
+  int get availableActivities => sessionLoader.isLoaded
+      ? sessionLoader.value!.currentAvailableActivities
+      : 0;
+
+  int get completedActivities =>
+      sessionLoader.isLoaded ? sessionLoader.value!.currentIndex : 0;
+
   Future<void> _waitForAnalytics() async {
     if (!MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted) {
       MatrixState.pangeaController.initControllers();
@@ -182,7 +192,9 @@ class VocabPracticeState extends State<VocabPractice> {
   Future<void> onSelectChoice(String choice) async {
     if (currentActivity == null) return;
     final activity = currentActivity!;
-    final correct = activity.onMultipleChoiceSelect(choice);
+
+    activity.onMultipleChoiceSelect(choice);
+    final correct = activity.multipleChoiceContent!.isCorrect(choice);
     if (!correct) return;
 
     // display the fact that the choice was correct before loading the next activity

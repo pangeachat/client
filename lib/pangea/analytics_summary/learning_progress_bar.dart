@@ -33,8 +33,6 @@ class LearningProgressBar extends StatelessWidget {
     return AnimatedProgressBar(
       height: height,
       widthPercent: MatrixState.pangeaController.getAnalytics.levelProgress,
-      barColor: AppConfig.goldLight,
-      backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_summary/progress_bar/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
@@ -21,7 +22,22 @@ class VocabPracticeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Row(
+          spacing: 8.0,
+          children: [
+            Expanded(
+              child: AnimatedProgressBar(
+                height: 20.0,
+                widthPercent: controller.progress,
+              ),
+            ),
+            Text(
+              "${controller.completedActivities} / ${controller.availableActivities}",
+            ),
+          ],
+        ),
+      ),
       body: MaxWidthBody(
         withScrolling: false,
         showBorder: false,

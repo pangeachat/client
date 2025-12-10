@@ -45,8 +45,16 @@ class VocabPracticeSessionModel {
 
   bool get isFinshed => finished || currentIndex >= sortedConstructIds.length;
 
+  int get currentAvailableActivities => min(
+        ((currentGroup + 1) * practiceGroupSize),
+        sortedConstructIds.length,
+      );
+
   bool get hasCompletedCurrentGroup =>
-      currentIndex >= ((currentGroup + 1) * practiceGroupSize);
+      currentIndex >= currentAvailableActivities;
+
+  double get progress =>
+      (currentIndex / currentAvailableActivities).clamp(0.0, 1.0);
 
   List<ConstructIdentifier> get currentPracticeGroup => sortedConstructIds
       .skip(currentGroup * practiceGroupSize)
