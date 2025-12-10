@@ -52,7 +52,10 @@ class VocabPracticeState extends State<VocabPractice> {
       sessionLoader.isLoaded && sessionLoader.value!.hasCompletedCurrentGroup;
 
   bool get isFinished =>
-      sessionLoader.isLoaded && sessionLoader.value!.isFinshed;
+      sessionLoader.isLoaded && sessionLoader.value!.finished;
+
+  bool get canContinueSession =>
+      sessionLoader.isLoaded && sessionLoader.value!.canContinueSession;
 
   double get progress =>
       sessionLoader.isLoaded ? sessionLoader.value!.progress : 0.0;
@@ -79,7 +82,7 @@ class VocabPracticeState extends State<VocabPractice> {
 
   Future<void> continueSession() async {
     if (!sessionLoader.isLoaded) return;
-    sessionLoader.value!.incrementGroup();
+    sessionLoader.value!.continueSession();
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
     _loadActivity();

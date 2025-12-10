@@ -11,13 +11,16 @@ class VocabAudioActivityGenerator {
     final choices =
         await LemmaActivityGenerator.lemmaActivityDistractors(token);
 
+    final choicesList = choices.map((c) => c.lemma).toList();
+    choicesList.shuffle();
+
     return MessageActivityResponse(
       activity: PracticeActivityModel(
         activityType: req.targetType,
         targetTokens: [token],
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
-          choices: choices.map((c) => c.lemma).toSet(),
+          choices: choicesList.toSet(),
           answers: {token.lemma.text},
         ),
       ),

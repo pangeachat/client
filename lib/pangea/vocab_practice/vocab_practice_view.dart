@@ -237,10 +237,11 @@ class _CompletedActivitySessionView extends StatelessWidget {
           onPressed: controller.completeActivitySession,
           child: Text(L10n.of(context).addXP),
         ),
-        TextButton(
-          onPressed: controller.continueSession,
-          child: Text(L10n.of(context).anotherRound),
-        ),
+        if (controller.canContinueSession)
+          TextButton(
+            onPressed: controller.continueSession,
+            child: Text(L10n.of(context).anotherRound),
+          ),
       ],
     );
   }

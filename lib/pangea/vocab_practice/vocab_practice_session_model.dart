@@ -43,12 +43,12 @@ class VocabPracticeSessionModel {
 
   static const int practiceGroupSize = 10;
 
-  bool get isFinshed => finished || currentIndex >= sortedConstructIds.length;
-
   int get currentAvailableActivities => min(
         ((currentGroup + 1) * practiceGroupSize),
         sortedConstructIds.length,
       );
+
+  bool get canContinueSession => currentIndex < sortedConstructIds.length;
 
   bool get hasCompletedCurrentGroup =>
       currentIndex >= currentAvailableActivities;
@@ -129,7 +129,13 @@ class VocabPracticeSessionModel {
     );
   }
 
-  void incrementGroup() {
+  void continueSession() {
+    if (!canContinueSession) {
+      throw Exception(
+        "Cannot continue session, already finished all activities.",
+      );
+    }
+
     currentGroup += 1;
     currentIndex = max(currentIndex, currentGroup * practiceGroupSize);
 
