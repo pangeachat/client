@@ -20,9 +20,6 @@ class LevelDialogContent extends StatelessWidget {
   GetAnalyticsController get analytics =>
       MatrixState.pangeaController.getAnalytics;
 
-  int get level => analytics.constructListModel.level;
-  int get totalXP => analytics.constructListModel.totalXP;
-  int get maxLevelXP => analytics.minXPForNextLevel;
   List<OneConstructUse> get uses => analytics.constructListModel.truncatedUses;
 
   bool get _loading =>
@@ -31,6 +28,7 @@ class LevelDialogContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
+    final analyticsService = Matrix.of(context).analyticsDataService;
 
     return StreamBuilder(
       stream: analytics.analyticsStream.stream,
@@ -45,30 +43,40 @@ class LevelDialogContent extends StatelessWidget {
           appBar: AppBar(
             titleSpacing: 0,
             automaticallyImplyLeading: false,
-            title: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "⭐ ${L10n.of(context).levelShort(level)}",
-                    style: TextStyle(
-                      fontSize: isColumnMode ? 24 : 16,
-                      fontWeight: FontWeight.w900,
-                      color: AppConfig.gold,
-                    ),
-                  ),
-                  Text(
-                    L10n.of(context).xpIntoLevel(totalXP, maxLevelXP),
-                    style: TextStyle(
-                      fontSize: isColumnMode ? 24 : 16,
-                      fontWeight: FontWeight.w900,
-                      color: AppConfig.gold,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            title: analyticsService != null
+                ? FutureBuilder(
+                    future: analyticsService.derivedData,
+                    builder: (context, snapshot) {
+                      final totalXP = snapshot.data?.totalXP ?? 0;
+                      final maxLevelXP = snapshot.data?.minXPForNextLevel ?? 0;
+                      final level = snapshot.data?.level ?? 0;
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "⭐ ${L10n.of(context).levelShort(level)}",
+                              style: TextStyle(
+                                fontSize: isColumnMode ? 24 : 16,
+                                fontWeight: FontWeight.w900,
+                                color: AppConfig.gold,
+                              ),
+                            ),
+                            Text(
+                              L10n.of(context).xpIntoLevel(totalXP, maxLevelXP),
+                              style: TextStyle(
+                                fontSize: isColumnMode ? 24 : 16,
+                                fontWeight: FontWeight.w900,
+                                color: AppConfig.gold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  )
+                : null,
           ),
           body: Column(
             children: [

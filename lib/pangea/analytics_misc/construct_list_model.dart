@@ -132,7 +132,7 @@ class ConstructListModel {
     if (totalXP < 0) {
       totalXP = 0;
     }
-    level = calculateLevelWithXp(totalXP);
+    level = _calculateLevelWithXp(totalXP);
   }
 
   void deleteConstruct(ConstructIdentifier constructId, int offset) {
@@ -182,7 +182,7 @@ class ConstructListModel {
 
   int numConstructs(ConstructTypeEnum type) => constructList(type: type).length;
 
-  int calculateLevelWithXp(int totalXP) {
+  int _calculateLevelWithXp(int totalXP) {
     final doubleScore = (1 + sqrt((1 + (8.0 * totalXP / D)) / 2.0));
     if (!doubleScore.isNaN && doubleScore.isFinite) {
       return doubleScore.floor();

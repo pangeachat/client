@@ -93,6 +93,7 @@ class LearningProgressIndicatorsState
 
   @override
   Widget build(BuildContext context) {
+    Matrix.of(context).analyticsDataService?.getMergedCombinedAggregates();
     final client = Matrix.of(context).client;
     if (client.userID == null) {
       return const SizedBox();
@@ -102,6 +103,7 @@ class LearningProgressIndicatorsState
     final userL2 = MatrixState.pangeaController.userController.userL2;
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
+    final analyticsService = Matrix.of(context).analyticsDataService;
 
     return Row(
       children: [
@@ -230,32 +232,40 @@ class LearningProgressIndicatorsState
                                   context.go("/rooms/analytics/level");
                                 }
                               : null,
-                          child: Row(
-                            spacing: 8.0,
-                            children: [
-                              Expanded(
-                                child: LearningProgressBar(
-                                  level: _constructsModel.level,
-                                  totalXP: _constructsModel.totalXP,
-                                  height: 24.0,
-                                  loading: _loading,
-                                ),
-                              ),
-                              if (!_loading)
-                                Text(
-                                  "⭐ ${_constructsModel.level}",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                      ),
-                                ),
-                            ],
-                          ),
+                          child: analyticsService != null
+                              ? FutureBuilder(
+                                  future: analyticsService.derivedData,
+                                  builder: (context, snapshot) {
+                                    return Row(
+                                      spacing: 8.0,
+                                      children: [
+                                        Expanded(
+                                          child: LearningProgressBar(
+                                            height: 24.0,
+                                            loading: !snapshot.hasData,
+                                            totalXP: snapshot.data?.totalXP,
+                                            levelProgress:
+                                                snapshot.data?.levelProgress,
+                                          ),
+                                        ),
+                                        if (snapshot.hasData)
+                                          Text(
+                                            "⭐ ${snapshot.data!.level}",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                          ),
+                                      ],
+                                    );
+                                  },
+                                )
+                              : const SizedBox(),
                         ),
                       ),
                     );

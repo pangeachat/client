@@ -44,7 +44,7 @@ class PutAnalyticsController {
 
   /// the max number of messages that will be cached before
   /// an automatic update is triggered
-  final int _maxMessagesCached = 10;
+  final int _maxMessagesCached = 1;
 
   /// the number of minutes before an automatic update is triggered
   final int _minutesBeforeUpdate = 5;
@@ -110,9 +110,8 @@ class PutAnalyticsController {
     String? roomId,
     String? targetId,
   }) {
-    final level = _pangeaController.getAnalytics.constructListModel.level;
     _addLocalMessage(eventId, constructs).then(
-      (_) => _sendAnalytics(level, targetId, constructs),
+      (_) => _sendAnalytics(targetId, constructs),
     );
   }
 
@@ -157,7 +156,6 @@ class PutAnalyticsController {
   /// to the max, or if the addition triggered a level-up, update the analytics.
   /// Otherwise, add a local update to the alert stream.
   void _sendAnalytics(
-    int prevLevel,
     String? targetID,
     List<OneConstructUse> newConstructs,
   ) {
@@ -175,13 +173,16 @@ class PutAnalyticsController {
       sendLocalAnalyticsToAnalyticsRoom();
       return;
     }
-    analyticsUpdateStream.add(
-      AnalyticsUpdate(
-        AnalyticsUpdateType.local,
-        newConstructs,
-        targetID: targetID,
-      ),
+
+    final update = AnalyticsUpdate(
+      AnalyticsUpdateType.local,
+      newConstructs,
+      targetID: targetID,
     );
+
+    analyticsUpdateStream.add(update);
+    _pangeaController.matrixState.analyticsDataService
+        ?.updateLocalAnalytics(update);
   }
 
   Future<void> _onUpdateLanguages(LanguageUpdate update) async {
@@ -232,6 +233,8 @@ class PutAnalyticsController {
     try {
       await _updateAnalytics(l2Override: l2Override);
       MatrixState.pangeaController.getAnalytics.clearMessagesCache();
+      MatrixState.pangeaController.matrixState.analyticsDataService
+          ?.clearLocalAnalytics();
 
       lastUpdated = DateTime.now();
       analyticsUpdateStream.add(

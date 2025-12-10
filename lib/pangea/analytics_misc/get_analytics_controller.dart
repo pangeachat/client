@@ -51,26 +51,6 @@ class GetAnalyticsController extends BaseController {
 
   Client get _client => _pangeaController.matrixState.client;
 
-  // the minimum XP required for a given level
-  int get _minXPForLevel {
-    return constructListModel.calculateXpWithLevel(constructListModel.level);
-  }
-
-  // the minimum XP required for the next level
-  int get _minXPForNextLevel {
-    return constructListModel
-        .calculateXpWithLevel(constructListModel.level + 1);
-  }
-
-  int get minXPForNextLevel => _minXPForNextLevel;
-
-  // the progress within the current level as a percentage (0.0 to 1.0)
-  double get levelProgress {
-    final progress = (constructListModel.totalXP - _minXPForLevel) /
-        (_minXPForNextLevel - _minXPForLevel);
-    return progress >= 0 ? progress : 0;
-  }
-
   Future<void> initialize() async {
     if (_initializing || initCompleter.isCompleted) return;
     _initializing = true;
@@ -216,7 +196,7 @@ class GetAnalyticsController extends BaseController {
 
   void _onLevelUp(final int lowerLevel, final int upperLevel) {
     setState({
-      'level_up': constructListModel.level,
+      'level_up': upperLevel,
       'upper_level': upperLevel,
       'lower_level': lowerLevel,
     });
@@ -226,9 +206,16 @@ class GetAnalyticsController extends BaseController {
     final offset = constructListModel.calculateXpWithLevel(lowerLevel) -
         constructListModel.totalXP;
     await _pangeaController.userController.addXPOffset(offset);
+    final newOffset =
+        _pangeaController.userController.analyticsProfile!.xpOffset!;
+
+    _pangeaController.matrixState.analyticsDataService?.updateXPOffset(
+      newOffset,
+    );
+
     constructListModel.updateConstructs(
       [],
-      _pangeaController.userController.analyticsProfile!.xpOffset!,
+      newOffset,
     );
   }
 
