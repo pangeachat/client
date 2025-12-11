@@ -4996,5 +4996,6 @@
   "man": "Man",
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
-  "gender": "Gender"
+  "gender": "Gender",
+  "modeDisabled": "Learning tools are disabled for messages that aren't in your target language."
 }
