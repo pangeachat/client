@@ -53,8 +53,7 @@ class PracticeActivityModel {
       );
 
   bool onMultipleChoiceSelect(
-    PangeaToken token,
-    PracticeChoice choice,
+    String choiceContent,
   ) {
     if (multipleChoiceContent == null) {
       debugger(when: kDebugMode);
@@ -68,24 +67,23 @@ class PracticeActivityModel {
 
     if (practiceTarget.isComplete ||
         practiceTarget.record.alreadyHasMatchResponse(
-          choice.form.cId,
-          choice.choiceContent,
+          targetTokens.first.vocabConstructID,
+          choiceContent,
         )) {
       // the user has already selected this choice
       // so we don't want to record it again
       return false;
     }
 
-    final bool isCorrect =
-        multipleChoiceContent!.isCorrect(choice.choiceContent);
+    final bool isCorrect = multipleChoiceContent!.isCorrect(choiceContent);
 
     // NOTE: the response is associated with the contructId of the choice, not the selected token
     // example: the user selects the word "cat" to match with the emoji 🐶
     // the response is associated with correct word "dog", not the word "cat"
     practiceTarget.record.addResponse(
-      cId: choice.form.cId,
+      cId: targetTokens.first.vocabConstructID,
       target: practiceTarget,
-      text: choice.choiceContent,
+      text: choiceContent,
       score: isCorrect ? 1 : 0,
     );
 
@@ -165,8 +163,7 @@ class PracticeActivityModel {
 
     return PracticeActivityModel(
       langCode: json['lang_code'] as String,
-      activityType:
-          ActivityTypeEnum.wordMeaning.fromString(json['activity_type']),
+      activityType: ActivityTypeEnum.fromString(json['activity_type']),
       multipleChoiceContent: json['content'] != null
           ? MultipleChoiceActivity.fromJson(contentMap)
           : null,

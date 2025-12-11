@@ -207,4 +207,15 @@ class ConstructIdentifier {
       );
     }
   }
+
+  /// lastUsed by activity type, construct and form
+  DateTime? lastUsedByActivityType(
+    String form,
+  ) {
+    final correctUseTimestamps =
+        constructUses.uses.where((u) => u.form == form).map((u) => u.timeStamp);
+
+    if (correctUseTimestamps.isEmpty) return null;
+    return correctUseTimestamps.reduce((a, b) => a.isAfter(b) ? a : b);
+  }
 }
