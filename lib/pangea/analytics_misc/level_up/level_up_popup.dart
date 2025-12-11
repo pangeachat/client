@@ -12,11 +12,10 @@ import 'package:matrix/matrix_api_lite/generated/model.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_up/level_popup_progess_bar.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_manager.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_bar/level_bar.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_bar/progress_bar_details.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
@@ -193,11 +192,6 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
   @override
   @override
   Widget build(BuildContext context) {
-    final Animation<double> progressAnimation =
-        Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: const Interval(0.0, 0.5)),
-    );
-
     final Animation<int> vocabAnimation =
         IntTween(begin: _startVocab, end: _endVocab).animate(
       CurvedAnimation(
@@ -282,23 +276,10 @@ class _LevelUpPopupContentState extends State<LevelUpPopupContent>
                 animation: _controller,
                 builder: (_, __) => Row(
                   children: [
-                    Expanded(
-                      child: LayoutBuilder(
-                        builder: (context, constraints) {
-                          return LevelBar(
-                            details: const LevelBarDetails(
-                              fillColor: AppConfig.goldLight,
-                              currentPoints: 0,
-                              widthMultiplier: 1,
-                            ),
-                            progressBarDetails: ProgressBarDetails(
-                              totalWidth: constraints.maxWidth *
-                                  progressAnimation.value,
-                              height: 20,
-                              borderColor: colorScheme.primary,
-                            ),
-                          );
-                        },
+                    const Expanded(
+                      child: LevelPopupProgressBar(
+                        height: 20,
+                        duration: Duration(milliseconds: 1000),
                       ),
                     ),
                     const SizedBox(width: 8),

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
@@ -69,6 +70,8 @@ class PracticeRepo {
 
       _setCached(req, res);
       return Result.value(res.activity);
+    } on HttpException catch (e, s) {
+      return Result.error(e, s);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

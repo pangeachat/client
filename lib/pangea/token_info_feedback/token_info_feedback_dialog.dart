@@ -8,8 +8,8 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_arc_model.dart';
 import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_repo.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_request.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_response.dart';
@@ -115,19 +115,11 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
   Future<void> _updateLemmaInfo(
     PangeaToken token,
     LemmaInfoResponse response,
-  ) async {
-    final construct = token.vocabConstructID;
-
-    final currentLemmaInfo = construct.userLemmaInfo;
-    final updatedLemmaInfo = UserSetLemmaInfo(
-      meaning: response.meaning,
-      emojis: response.emoji,
-    );
-
-    if (currentLemmaInfo != updatedLemmaInfo) {
-      await construct.setUserLemmaInfo(updatedLemmaInfo);
-    }
-  }
+  ) =>
+      LemmaInfoRepo.set(
+        token.vocabConstructID.lemmaInfoRequest,
+        response,
+      );
 
   Future<void> _updatePhoneticTranscription(
     PhoneticTranscriptionResponse response,
