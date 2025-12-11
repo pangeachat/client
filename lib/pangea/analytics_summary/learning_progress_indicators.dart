@@ -243,9 +243,9 @@ class LearningProgressIndicatorsState
                                           child: LearningProgressBar(
                                             height: 24.0,
                                             loading: !snapshot.hasData,
-                                            totalXP: snapshot.data?.totalXP,
-                                            levelProgress:
-                                                snapshot.data?.levelProgress,
+                                            progress:
+                                                snapshot.data?.levelProgress ??
+                                                    0.0,
                                           ),
                                         ),
                                         if (snapshot.hasData)

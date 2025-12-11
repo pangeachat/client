@@ -22,4 +22,12 @@ class LanguageArc {
       'l2': l2.toJson(),
     };
   }
+
+  @override
+  int get hashCode => l1.hashCode ^ l2.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other is LanguageArc && other.l1 == l1 && other.l2 == l2;
+  }
 }

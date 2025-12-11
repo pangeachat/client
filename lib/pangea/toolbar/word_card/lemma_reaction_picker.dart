@@ -4,21 +4,26 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/lemma_emoji_picker.dart';
 
 class LemmaReactionPicker extends StatelessWidget {
-  final List<String> emojis;
-  final bool loading;
   final Event? event;
+  final ConstructIdentifier construct;
+  final String langCode;
 
   const LemmaReactionPicker({
     super.key,
-    required this.emojis,
-    required this.loading,
-    required this.event,
+    required this.construct,
+    required this.langCode,
+    this.event,
   });
 
-  Future<void> setEmoji(String emoji) async {
+  Future<void> setEmoji(
+    String emoji,
+    List<String> emojis,
+  ) async {
     if (event?.room.timeline == null) {
       throw Exception("Timeline is null in reaction picker");
     }
@@ -63,33 +68,44 @@ class LemmaReactionPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sentReactions = <String>{};
-    if (event?.room.timeline != null) {
-      sentReactions.addAll(
-        event!
-            .aggregatedEvents(
-              event!.room.timeline!,
-              RelationshipTypes.reaction,
-            )
-            .where(
-              (event) =>
-                  event.senderId == event.room.client.userID &&
-                  event.type == 'm.reaction',
-            )
-            .map(
-              (event) => event.content
-                  .tryGetMap<String, Object?>('m.relates_to')
-                  ?.tryGet<String>('key'),
-            )
-            .whereType<String>(),
-      );
-    }
+    return LemmaMeaningBuilder(
+      langCode: langCode,
+      constructId: construct,
+      builder: (context, controller) {
+        final sentReactions = <String>{};
+        if (event?.room.timeline != null) {
+          sentReactions.addAll(
+            event!
+                .aggregatedEvents(
+                  event!.room.timeline!,
+                  RelationshipTypes.reaction,
+                )
+                .where(
+                  (event) =>
+                      event.senderId == event.room.client.userID &&
+                      event.type == 'm.reaction',
+                )
+                .map(
+                  (event) => event.content
+                      .tryGetMap<String, Object?>('m.relates_to')
+                      ?.tryGet<String>('key'),
+                )
+                .whereType<String>(),
+          );
+        }
 
-    return LemmaEmojiPicker(
-      emojis: emojis,
-      onSelect: event?.room.timeline != null ? setEmoji : null,
-      disabled: (emoji) => sentReactions.contains(emoji),
-      loading: loading,
+        return LemmaEmojiPicker(
+          emojis: controller.lemmaInfo?.emoji ?? [],
+          onSelect: event?.room.timeline != null
+              ? (emoji) => setEmoji(
+                    emoji,
+                    controller.lemmaInfo?.emoji ?? [],
+                  )
+              : null,
+          disabled: (emoji) => sentReactions.contains(emoji),
+          loading: controller.isLoading,
+        );
+      },
     );
   }
 }
