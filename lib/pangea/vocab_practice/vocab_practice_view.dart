@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_bar/animated_progress_bar.dart';
@@ -7,12 +5,14 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/vocab_practice/animated_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class VocabPracticeView extends StatelessWidget {
   final VocabPracticeState controller;
@@ -98,90 +98,136 @@ class _VocabActivityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      spacing: 8.0,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(constructId.lemma),
-        FutureBuilder<List<InlineSpan>?>(
-          future: controller.getExampleMessage(constructId),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData || snapshot.data == null) {
-              return const SizedBox();
-            }
-
-            return Container(
-              decoration: BoxDecoration(
-                color: ConstructLevelEnum.seeds.color(context),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
-              margin: const EdgeInsets.only(bottom: 8),
-              child: RichText(
-                text: TextSpan(
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimaryFixed,
-                    fontSize:
-                        AppConfig.fontSizeFactor * AppConfig.messageFontSize,
-                  ),
-                  children: snapshot.data!,
-                ),
-              ),
-            );
-          },
-        ),
-        Text(
-          activityType == ActivityTypeEnum.lemmaMeaning
-              ? L10n.of(context).selectMeaning
-              : L10n.of(context).selectAudio,
-        ),
-        Builder(
-          builder: (context) {
-            if (controller.activityError != null) {
-              return ErrorIndicator(
-                message: controller.activityError!,
-              );
-            }
-
-            final activity = controller.currentActivity;
-
-            if (controller.isLoadingActivity || activity == null) {
-              return const SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator.adaptive(),
-              );
-            }
-
-            return Column(
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(32.0, 16.0, 32.0, 32.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(
+            activityType == ActivityTypeEnum.lemmaMeaning
+                ? L10n.of(context).selectMeaning
+                : L10n.of(context).selectAudio,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: Theme.of(context).textTheme.titleLarge!.fontSize!,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 8,
               children: [
-                ...activity.multipleChoiceContent!.choices.map(
-                  (c) => _VocabPracticeChoiceButton(
-                    choice: c,
-                    onPressed: () {
-                      controller.onSelectChoice(c);
-                    },
-                    type: activity.activityType,
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    constructId.lemma,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize:
+                          Theme.of(context).textTheme.titleLarge!.fontSize! *
+                              1.5,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
+                ),
+                FutureBuilder<List<InlineSpan>?>(
+                  future: controller.getExampleMessage(constructId),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData || snapshot.data == null) {
+                      return const SizedBox();
+                    }
+
+                    return Align(
+                      alignment: Alignment.center,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Color.alphaBlend(
+                              Colors.white.withAlpha(180),
+                              ThemeData.dark().colorScheme.primary,
+                            ),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(16),
+                            ),
+                          ),
+                          child: RichText(
+                            text: TextSpan(
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryFixed,
+                                fontSize: AppConfig.fontSizeFactor *
+                                    AppConfig.messageFontSize,
+                              ),
+                              children: snapshot.data!,
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                Builder(
+                  builder: (context) {
+                    if (controller.activityError != null) {
+                      return ErrorIndicator(
+                        message: controller.activityError!,
+                      );
+                    }
+
+                    final activity = controller.currentActivity;
+
+                    if (controller.isLoadingActivity || activity == null) {
+                      return const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator.adaptive(),
+                      );
+                    }
+
+                    return Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ...activity.multipleChoiceContent!.choices.map(
+                            (c) => _VocabPracticeChoiceButton(
+                              activity: activity,
+                              choice: c,
+                              onPressed: () {
+                                controller.onSelectChoice(c);
+                              },
+                              type: activity.activityType,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ],
-            );
-          },
-        ),
-      ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
 
 class _VocabPracticeChoiceButton extends StatelessWidget {
+  final PracticeActivityModel activity;
   final String choice;
   final VoidCallback onPressed;
   final ActivityTypeEnum type;
 
   const _VocabPracticeChoiceButton({
+    required this.activity,
     required this.choice,
     required this.onPressed,
     required this.type,
@@ -208,11 +254,10 @@ class _VocabPracticeChoiceButton extends StatelessWidget {
       );
     }
 
-    return TextButton(
+    return AnimatedChoiceCard(
+      choice: choice,
       onPressed: onPressed,
-      child: Text(choice),
-      // Ava TODO: style buttons based on currentActivity's response record to show
-      // incorrect/correct selections
+      isCorrect: activity.multipleChoiceContent!.isCorrect(choice),
     );
   }
 }

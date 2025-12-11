@@ -143,7 +143,7 @@ class VocabPracticeSessionModel {
     final r = Random();
     final activityTypeOptions = [
       ActivityTypeEnum.lemmaMeaning,
-      ActivityTypeEnum.lemmaAudio,
+      //ActivityTypeEnum.lemmaAudio,
     ];
     activityTypes.addAll(
       List.generate(
