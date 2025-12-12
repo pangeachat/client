@@ -2598,7 +2598,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2025-12-03 11:37:18.523462",
+  "@@last_modified": "2025-12-12 14:57:09.365040",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10351,6 +10351,7 @@
   "addCourse": "დაამატე კურსი",
   "joinPublicCourse": "შეერთდი საჯარო კურსთან",
   "vocabLevelsDesc": "ეს არის ადგილი, სადაც სიტყვები განთავსდება, როგორც კი მათ დონე გაუმჯობესდება!",
+  "highlightVocabTooltip": "გამოაჩინე მიზნობრივი სიტყვები ქვემოთ, მათი გაგზავნით ან ჩატში ვარჯიშით",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11581,17 +11582,12 @@
   },
   "failedToLoadFeedback": "უკვე ვერ ჩაიწერა უკუკავშირი.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "გამოაჩინე მიზნობრივი სიტყვები ქვემოთ, მათი გაგზავნით ან ჩატში ვარჯიშით",
   "noSavedActivitiesYet": "აქტივობები აქ გამოჩნდება, როგორც კი ისინი დასრულდება და შენახული იქნება.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11638,6 +11634,7 @@
   "inProgressActivitiesTitle": "მიმდინარე ({num})",
   "completedActivitiesTitle": "დასრულებულია ({num})",
   "pickDifferentActivity": "აირჩიეთ სხვა აქტივობა",
+  "inOngoingActivity": "თქვენ გაქვთ მიმდინარე აქტივობა!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11668,6 +11665,10 @@
   },
   "messageLanguageMismatchMessage": "თქვენი მიზნობრივი ენა არ ემთხვევა ამ შეტყობინებას. განაახლეთ თქვენი მიზნობრივი ენა?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

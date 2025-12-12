@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-03 11:36:55.312756",
+  "@@last_modified": "2025-12-12 14:56:32.447193",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -9538,6 +9538,7 @@
   "addCourse": "إضافة دورة",
   "joinPublicCourse": "الانضمام إلى دورة عامة",
   "vocabLevelsDesc": "هذا هو المكان الذي ستذهب إليه كلمات المفردات بمجرد ترقيتها!",
+  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدريب عليها في الدردشة",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10768,17 +10769,12 @@
   },
   "failedToLoadFeedback": "فشل في تحميل التعليقات.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدريب عليها في الدردشة",
   "noSavedActivitiesYet": "ستظهر الأنشطة هنا بمجرد الانتهاء منها وحفظها.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10825,6 +10821,7 @@
   "inProgressActivitiesTitle": "تحدث الآن ({num})",
   "completedActivitiesTitle": "تم ({num})",
   "pickDifferentActivity": "اختر نشاطًا مختلفًا",
+  "inOngoingActivity": "لديك نشاط جارٍ!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10855,6 +10852,10 @@
   },
   "messageLanguageMismatchMessage": "لغة الهدف الخاصة بك لا تتطابق مع هذه الرسالة. هل تريد تحديث لغة الهدف الخاصة بك؟",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

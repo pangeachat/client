@@ -4996,5 +4996,6 @@
   "man": "Man",
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
-  "gender": "Gender"
+  "gender": "Gender",
+  "inOngoingActivity": "You have an ongoing activity!"
 }

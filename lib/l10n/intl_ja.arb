@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-03 11:37:13.415132",
+  "@@last_modified": "2025-12-12 14:57:02.463257",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -10111,6 +10111,7 @@
   "addCourse": "コースを追加",
   "joinPublicCourse": "公開コースに参加",
   "vocabLevelsDesc": "これが語彙をレベルアップしたら表示される場所です！",
+  "highlightVocabTooltip": "チャットで送信したり練習したりすることで、下のターゲット語彙をハイライトします。",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11341,17 +11342,12 @@
   },
   "failedToLoadFeedback": "フィードバックの読み込みに失敗しました。",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "チャットで送信したり練習したりすることで、下のターゲット語彙をハイライトします。",
   "noSavedActivitiesYet": "アクティビティは、完了して保存されるとここに表示されます。",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11398,6 +11394,7 @@
   "inProgressActivitiesTitle": "現在進行中 ({num})",
   "completedActivitiesTitle": "完了 ({num})",
   "pickDifferentActivity": "別のアクティビティを選択",
+  "inOngoingActivity": "進行中のアクティビティがあります！",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11428,6 +11425,10 @@
   },
   "messageLanguageMismatchMessage": "ターゲット言語がこのメッセージと一致しません。ターゲット言語を更新しますか？",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

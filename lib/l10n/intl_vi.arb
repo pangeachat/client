@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:01.540762",
+  "@@last_modified": "2025-12-12 14:56:39.506888",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -4859,6 +4859,7 @@
   "addCourse": "Thêm khóa học",
   "joinPublicCourse": "Tham gia khóa học công khai",
   "vocabLevelsDesc": "Đây là nơi các từ vựng sẽ xuất hiện sau khi bạn nâng cấp chúng!",
+  "highlightVocabTooltip": "Đánh dấu các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc thực hành với chúng trong trò chuyện",
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
@@ -6121,17 +6122,12 @@
   },
   "failedToLoadFeedback": "Không thể tải phản hồi.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Đánh dấu các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc thực hành với chúng trong trò chuyện",
   "noSavedActivitiesYet": "Các hoạt động sẽ xuất hiện ở đây khi chúng được hoàn thành và lưu lại.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -6178,6 +6174,7 @@
   "inProgressActivitiesTitle": "Đang diễn ra ({num})",
   "completedActivitiesTitle": "Đã hoàn thành ({num})",
   "pickDifferentActivity": "Chọn một hoạt động khác",
+  "inOngoingActivity": "Bạn có một hoạt động đang diễn ra!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -6208,6 +6205,10 @@
   },
   "messageLanguageMismatchMessage": "Ngôn ngữ mục tiêu của bạn không khớp với thông điệp này. Cập nhật ngôn ngữ mục tiêu của bạn?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

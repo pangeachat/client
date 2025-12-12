@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:34.084326",
+  "@@last_modified": "2025-12-12 14:56:03.478395",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -10421,6 +10421,7 @@
   "addCourse": "Adicionar um curso",
   "joinPublicCourse": "Entrar no curso público",
   "vocabLevelsDesc": "É aqui que as palavras de vocabulário irão aparecer assim que você as evoluir!",
+  "highlightVocabTooltip": "Destaque as palavras de vocabulário-alvo abaixo enviando-as ou praticando com elas no chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11651,17 +11652,12 @@
   },
   "failedToLoadFeedback": "Falha ao carregar feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Destaque as palavras de vocabulário-alvo abaixo enviando-as ou praticando com elas no chat",
   "noSavedActivitiesYet": "As atividades aparecerão aqui assim que forem concluídas e salvas.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11708,6 +11704,7 @@
   "inProgressActivitiesTitle": "Acontecendo agora ({num})",
   "completedActivitiesTitle": "Concluído ({num})",
   "pickDifferentActivity": "Escolha uma atividade diferente",
+  "inOngoingActivity": "Você tem uma atividade em andamento!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11738,6 +11735,10 @@
   },
   "messageLanguageMismatchMessage": "O seu idioma de destino não corresponde a esta mensagem. Atualizar o seu idioma de destino?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

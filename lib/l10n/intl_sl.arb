@@ -2468,7 +2468,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-12-03 11:36:37.990886",
+  "@@last_modified": "2025-12-12 14:56:08.288965",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10402,6 +10402,7 @@
   "addCourse": "Dodaj tečaj",
   "joinPublicCourse": "Pridruži se javnemu tečaju",
   "vocabLevelsDesc": "Tukaj bodo šle besede za besednjak, ko jih boste nadgradili!",
+  "highlightVocabTooltip": "Označite ciljne besede spodaj tako, da jih pošljete ali vadite z njimi v klepetu",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11632,17 +11633,12 @@
   },
   "failedToLoadFeedback": "Nalaganje povratnih informacij ni uspelo.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Označite ciljne besede spodaj tako, da jih pošljete ali vadite z njimi v klepetu",
   "noSavedActivitiesYet": "Aktivnosti se bodo prikazale tukaj, ko bodo zaključene in shranjene.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11689,6 +11685,7 @@
   "inProgressActivitiesTitle": "Poteka zdaj ({num})",
   "completedActivitiesTitle": "Končano ({num})",
   "pickDifferentActivity": "Izberite drugo dejavnost",
+  "inOngoingActivity": "Imate potekajočo dejavnost!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11719,6 +11716,10 @@
   },
   "messageLanguageMismatchMessage": "Vaš cilj jezik ne ustreza temu sporočilu. Ali želite posodobiti svoj cilj jezik?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }
