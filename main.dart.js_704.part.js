@@ -5242,6 +5242,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gender";
     },
+    get$inOngoingActivity() {
+      return "\u10d7\u10e5\u10d5\u10d4\u10dc \u10d2\u10d0\u10e5\u10d5\u10d7 \u10db\u10d8\u10db\u10d3\u10d8\u10dc\u10d0\u10e0\u10d4 \u10d0\u10e5\u10e2\u10d8\u10d5\u10dd\u10d1\u10d0!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XCsvci1/y7mfmdnXoGssLZnDm7s="] = d.current;
+  d["bULDh4VQereRg0hvbYxD0EK7hfE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_704.part.js.map

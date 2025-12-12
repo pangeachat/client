@@ -5218,7 +5218,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Po ndodhin tani (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "E p\xebrfunduar (" + num + ")";
+      return "P\xebrfunduar (" + num + ")";
     },
     get$pickDifferentActivity() {
       return "Zgjidh nj\xeb aktivitet tjet\xebr";
@@ -5243,6 +5243,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$gender() {
       return "Gender";
+    },
+    get$inOngoingActivity() {
+      return "Keni nj\xeb aktivitet n\xeb vazhdim!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5270,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m7hNgQpom+tSNLIvKfgEFSNFbh0="] = d.current;
+  d["w+FRL6hb4fSwj3WNKaIGzs8SWV8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

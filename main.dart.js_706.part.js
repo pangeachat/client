@@ -5213,7 +5213,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Atidarytos sesijos (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "Vyksta dabar (" + num + ")";
+      return "Dabar vyksta (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
       return "Baigta (" + num + ")";
@@ -5242,6 +5242,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gender";
     },
+    get$inOngoingActivity() {
+      return "Turite vykdom\u0105 veikl\u0105!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Pw+1b8S0kiBI59/NusB6wuE1JjE="] = d.current;
+  d["2xzp+JFeUQF+1zjjshhH5T3+e1s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_706.part.js.map

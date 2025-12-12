@@ -5254,6 +5254,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gender";
     },
+    get$inOngoingActivity() {
+      return "Voc\xea tem uma atividade em andamento!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10463,6 +10466,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$messageLanguageMismatchMessage() {
       return "Seu idioma de destino n\xe3o corresponde a esta mensagem. Atualizar seu idioma de destino?";
+    },
+    get$inOngoingActivity() {
+      return "Voc\xea tem uma atividade em andamento!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15674,6 +15680,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return string$.O_seu_;
     },
+    get$inOngoingActivity() {
+      return "Voc\xea tem uma atividade em andamento!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15858,7 +15867,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RxHbi2vlgzKGrYYAIc6SNsap2VU="] = d.current;
+  d["8GbEpg5v1tEGoy1x0SVbSjOWS1Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

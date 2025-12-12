@@ -5213,10 +5213,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sesiones abiertas (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "En curso (" + num + ")";
+      return "Sucedendo agora (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Hecho (" + num + ")";
+      return "Feito (" + num + ")";
     },
     get$pickDifferentActivity() {
       return "Elige una actividad diferente";
@@ -5242,6 +5242,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gender";
     },
+    get$inOngoingActivity() {
+      return "Voc\xea tem uma atividade em andamento!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sD21L8rSZRioRv/yxfVOZ5fLTes="] = d.current;
+  d["RoAdw3VDuBbgDLWR6cn7TRgGAZI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_665.part.js.map
