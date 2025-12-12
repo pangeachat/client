@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-01 12:39:34.911828",
+  "@@last_modified": "2025-12-12 14:55:43.397189",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11786,7 +11786,7 @@
   "joinCourseWithCode": "Csatlakozás kurzushoz kóddal",
   "joinPublicCourse": "Csatlakozás nyilvános kurzushoz",
   "vocabLevelsDesc": "Itt jelennek meg a szókincs szavai, amint szintet lépnek!",
-  "highlightVocabTooltip": "Emelje ki a cél szókincs szavait az alábbiakban azzal, hogy elküldi vagy gyakorolja őket a csevegésben",
+  "highlightVocabTooltip": "Emeld ki a cél szókincset alább azáltal, hogy elküldöd őket vagy gyakorolsz velük a csevegésben.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11835,17 +11835,12 @@
   },
   "failedToLoadFeedback": "A visszajelzés betöltése nem sikerült.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Emeld ki a cél szókincset alább azáltal, hogy elküldöd őket vagy gyakorolsz velük a csevegésben.",
   "noSavedActivitiesYet": "A tevékenységek itt fognak megjelenni, miután befejezték és elmentették őket.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11885,6 +11880,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Nyitott ülések ({num})",
+  "inProgressActivitiesTitle": "Jelenleg zajlik ({num})",
+  "completedActivitiesTitle": "Kész ({num})",
+  "inOngoingActivity": "Folyamatban lévő tevékenységed van!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

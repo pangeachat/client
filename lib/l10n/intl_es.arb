@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-12-01 12:39:26.176542",
+  "@@last_modified": "2025-12-12 14:55:35.099744",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -7445,17 +7445,12 @@
   },
   "failedToLoadFeedback": "Error al cargar los comentarios.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Resalta las palabras de vocabulario objetivo a continuación enviándolas o practicando con ellas en el chat",
   "noSavedActivitiesYet": "Las actividades aparecerán aquí una vez que se completen y se guarden.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -7495,6 +7490,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
+  "inProgressActivitiesTitle": "Sucedió ahora ({num})",
+  "completedActivitiesTitle": "Hecho ({num})",
+  "inOngoingActivity": "¡Tienes una actividad en curso!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -322,6 +322,8 @@ class _ActivityStartButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final hasActiveSession = controller.canJoinExistingSession;
+    final joinedActivityRoom = controller.joinedActivityRoomId;
+
     return FutureBuilder(
       future: controller.neededCourseParticipants(),
       builder: (context, snapshot) {
@@ -354,6 +356,19 @@ class _ActivityStartButtons extends StatelessWidget {
                     Text(
                       L10n.of(context).inviteFriendsToCourse,
                     ),
+                  ],
+                ),
+              ),
+            ] else if (joinedActivityRoom != null) ...[
+              ElevatedButton(
+                style: buttonStyle,
+                onPressed: () => context.go(
+                  "/rooms/spaces/${controller.widget.parentId}/$joinedActivityRoom",
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(L10n.of(context).continueText),
                   ],
                 ),
               ),

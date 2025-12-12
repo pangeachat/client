@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:41:06.553946",
+  "@@last_modified": "2025-12-12 14:57:05.939954",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12874,7 +12874,7 @@
   "joinCourseWithCode": "Aliĝi al kurso kun kodo",
   "joinPublicCourse": "Aliĝi al publika kurso",
   "vocabLevelsDesc": "Jen kie vortoj de vortprovizo iros post kiam vi ilin plibonigos!",
-  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktiko kun ili en la babilejo",
+  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12923,17 +12923,12 @@
   },
   "failedToLoadFeedback": "Malsukcesis ŝarĝi la reagojn.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
   "noSavedActivitiesYet": "Aktivecoj aperos ĉi tie post kiam ili estos kompletigitaj kaj konservitaj.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12973,6 +12968,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Malfermitaj sesioj ({num})",
+  "inProgressActivitiesTitle": "Okazas nun ({num})",
+  "completedActivitiesTitle": "Finiĝis ({num})",
+  "inOngoingActivity": "Vi havas daŭrantan aktivon!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

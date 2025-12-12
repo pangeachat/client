@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-12-01 12:39:28.351166",
+  "@@last_modified": "2025-12-12 14:55:36.646073",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -11782,7 +11782,7 @@
   "joinCourseWithCode": "Unirse ao curso con código",
   "joinPublicCourse": "Unirse ao curso público",
   "vocabLevelsDesc": "Aquí é onde as palabras de vocabulario irán unha vez que as mellores de nivel!",
-  "highlightVocabTooltip": "Destaca as palabras de vocabulario obxectivo abaixo enviándoas ou practicándoas no chat",
+  "highlightVocabTooltip": "Destaca as palabras de vocabulario obxectivo abaixo enviándoas ou practicando con elas no chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11831,17 +11831,12 @@
   },
   "failedToLoadFeedback": "Fallou ao cargar a retroalimentación.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Destaca as palabras de vocabulario obxectivo abaixo enviándoas ou practicando con elas no chat",
   "noSavedActivitiesYet": "As actividades aparecerán aquí unha vez que se completen e se gardan.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11881,6 +11876,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sesións abertas ({num})",
+  "inProgressActivitiesTitle": "Acontecendo agora ({num})",
+  "completedActivitiesTitle": "Feito ({num})",
+  "inOngoingActivity": "¡Tes unha actividade en curso!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

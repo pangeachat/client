@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-01 12:40:30.614200",
+  "@@last_modified": "2025-12-12 14:56:32.447193",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -12002,7 +12002,7 @@
   "joinCourseWithCode": "الانضمام إلى الدورة باستخدام الرمز",
   "joinPublicCourse": "الانضمام إلى دورة عامة",
   "vocabLevelsDesc": "هذا هو المكان الذي ستذهب إليه كلمات المفردات بمجرد ترقيتها!",
-  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدرب عليها في الدردشة",
+  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدريب عليها في الدردشة",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12051,17 +12051,12 @@
   },
   "failedToLoadFeedback": "فشل في تحميل التعليقات.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدريب عليها في الدردشة",
   "noSavedActivitiesYet": "ستظهر الأنشطة هنا بمجرد الانتهاء منها وحفظها.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12101,6 +12096,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "جلسات مفتوحة ({num})",
+  "inProgressActivitiesTitle": "تحدث الآن ({num})",
+  "completedActivitiesTitle": "تم ({num})",
+  "inOngoingActivity": "لديك نشاط جارٍ!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

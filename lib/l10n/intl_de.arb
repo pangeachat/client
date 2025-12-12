@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-01 12:40:01.799437",
+  "@@last_modified": "2025-12-12 14:56:06.649574",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11792,7 +11792,7 @@
   "joinCourseWithCode": "Kurs mit Code beitreten",
   "joinPublicCourse": "Öffentlichen Kurs beitreten",
   "vocabLevelsDesc": "Hier kommen die Vokabeln hin, sobald du sie aufgestuft hast!",
-  "highlightVocabTooltip": "Hebe die Zielvokabeln unten hervor, indem du sie sendest oder mit ihnen im Chat übst",
+  "highlightVocabTooltip": "Hebe die Zielvokabeln unten hervor, indem du sie im Chat sendest oder mit ihnen übst.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11841,17 +11841,12 @@
   },
   "failedToLoadFeedback": "Fehler beim Laden des Feedbacks.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Hebe die Zielvokabeln unten hervor, indem du sie im Chat sendest oder mit ihnen übst.",
   "noSavedActivitiesYet": "Aktivitäten erscheinen hier, sobald sie abgeschlossen und gespeichert sind.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11891,6 +11886,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Offene Sitzungen ({num})",
+  "inProgressActivitiesTitle": "Gerade jetzt ({num})",
+  "completedActivitiesTitle": "Fertig ({num})",
+  "inOngoingActivity": "Sie haben eine laufende Aktivität!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

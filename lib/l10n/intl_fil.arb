@@ -3272,7 +3272,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-01 12:40:26.597168",
+  "@@last_modified": "2025-12-12 14:56:28.662833",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12761,7 +12761,7 @@
   "joinCourseWithCode": "Sumali sa kurso gamit ang code",
   "joinPublicCourse": "Sumali sa pampublikong kurso",
   "vocabLevelsDesc": "Dito mapupunta ang mga salita sa bokabularyo kapag na-level up mo na sila!",
-  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala ng mga ito o pagsasanay gamit ang mga ito sa chat",
+  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12810,17 +12810,12 @@
   },
   "failedToLoadFeedback": "Nabigong i-load ang feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
   "noSavedActivitiesYet": "Lilitaw ang mga aktibidad dito kapag natapos at na-save na ang mga ito.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12860,6 +12855,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Bukas na sesyon ({num})",
+  "inProgressActivitiesTitle": "Nangyayari ngayon ({num})",
+  "completedActivitiesTitle": "Tapos na ({num})",
+  "inOngoingActivity": "Mayroon kang patuloy na aktibidad!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-01 12:40:49.294875",
+  "@@last_modified": "2025-12-12 14:56:47.615356",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11776,7 +11776,7 @@
   "joinCourseWithCode": "用代码加入课程",
   "joinPublicCourse": "加入公共课程",
   "vocabLevelsDesc": "这是你提升词汇等级后，词汇将会显示的地方！",
-  "highlightVocabTooltip": "通过在聊天中发送或练习，将目标词汇高亮显示",
+  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11825,17 +11825,12 @@
   },
   "failedToLoadFeedback": "加载反馈失败。",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
   "noSavedActivitiesYet": "活动完成并保存后将出现在这里。",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11875,6 +11870,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "开放的会议 ({num})",
+  "inProgressActivitiesTitle": "正在进行中 ({num})",
+  "completedActivitiesTitle": "完成 ({num})",
+  "inOngoingActivity": "您有一个正在进行的活动！",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }
