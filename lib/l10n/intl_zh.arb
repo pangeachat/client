@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-03 11:37:06.135839",
+  "@@last_modified": "2025-12-12 11:22:56.010823",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10629,6 +10629,11 @@
   },
   "messageLanguageMismatchMessage": "您的目标语言与此消息不匹配。要更新您的目标语言吗？",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "这是本课程中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

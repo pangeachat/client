@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-03 11:36:39.120785",
+  "@@last_modified": "2025-12-12 11:22:27.638160",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11729,6 +11729,11 @@
   },
   "messageLanguageMismatchMessage": "您的目標語言與此消息不匹配。要更新您的目標語言嗎？",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "這是這個課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」來發送私信。",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-03 11:36:55.312756",
+  "@@last_modified": "2025-12-12 11:22:45.259408",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10855,6 +10855,11 @@
   },
   "messageLanguageMismatchMessage": "لغة الهدف الخاصة بك لا تتطابق مع هذه الرسالة. هل تريد تحديث لغة الهدف الخاصة بك؟",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "هؤلاء هم جميع المشاركين في هذه الدورة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

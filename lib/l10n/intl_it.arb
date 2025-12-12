@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:40.442034",
+  "@@last_modified": "2025-12-12 11:22:29.065797",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10641,6 +10641,11 @@
   },
   "messageLanguageMismatchMessage": "La tua lingua di destinazione non corrisponde a questo messaggio. Vuoi aggiornare la tua lingua di destinazione?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Questa è tutta la gente in questo corso. Clicca sull'avatar di qualsiasi utente e \"inizia conversazione\" per inviare un DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

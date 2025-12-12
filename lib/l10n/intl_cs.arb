@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-03 11:36:43.008688",
+  "@@last_modified": "2025-12-12 11:22:32.253899",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11245,6 +11245,11 @@
   },
   "messageLanguageMismatchMessage": "Jazyk cíle neodpovídá této zprávě. Chcete aktualizovat svůj cílový jazyk?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Toto jsou všichni účastníci tohoto kurzu. Klikněte na avatara jakéhokoli uživatele a „zahájit konverzaci“, abyste poslali přímou zprávu.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:01.540762",
+  "@@last_modified": "2025-12-12 11:22:51.204134",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6208,6 +6208,11 @@
   },
   "messageLanguageMismatchMessage": "Ngôn ngữ mục tiêu của bạn không khớp với thông điệp này. Cập nhật ngôn ngữ mục tiêu của bạn?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

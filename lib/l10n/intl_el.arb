@@ -4460,7 +4460,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2025-12-03 11:37:12.093444",
+  "@@last_modified": "2025-12-12 11:23:05.358697",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11696,6 +11696,11 @@
   },
   "messageLanguageMismatchMessage": "Η γλώσσα στόχου σας δεν ταιριάζει με αυτό το μήνυμα. Θέλετε να ενημερώσετε τη γλώσσα στόχου σας;",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Αυτοί είναι όλοι σε αυτό το μάθημα. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

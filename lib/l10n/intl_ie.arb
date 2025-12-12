@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-03 11:36:26.117148",
+  "@@last_modified": "2025-12-12 11:22:13.516741",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11612,6 +11612,11 @@
   },
   "messageLanguageMismatchMessage": "Tua lingua target non concordat cum hoc nuntio. Renovare linguam tuam target?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Isto é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

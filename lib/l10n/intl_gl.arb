@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-12-03 11:36:16.780690",
+  "@@last_modified": "2025-12-12 11:22:01.210854",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10635,6 +10635,11 @@
   },
   "messageLanguageMismatchMessage": "A súa lingua de destino non coincide con este mensaxe. Actualizar a súa lingua de destino?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Isto é todo o mundo neste curso. Fai clic na avatar de calquera usuario e \"comeza a conversa\" para enviar un DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

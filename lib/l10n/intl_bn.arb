@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:07.254419",
+  "@@last_modified": "2025-12-12 11:22:57.414700",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11742,6 +11742,11 @@
   },
   "messageLanguageMismatchMessage": "আপনার লক্ষ্য ভাষা এই বার্তার সাথে মেলে না। আপনার লক্ষ্য ভাষা আপডেট করবেন?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "এটি এই কোর্সের সকল সদস্য। যে কোনো ব্যবহারকারীর অবতার ক্লিক করুন এবং \"আলাপ শুরু করুন\" এ ডিএম পাঠাতে।",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

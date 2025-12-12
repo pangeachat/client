@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-03 11:36:20.356699",
+  "@@last_modified": "2025-12-12 11:22:07.365377",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10639,6 +10639,11 @@
   },
   "messageLanguageMismatchMessage": "A cél nyelve nem egyezik meg ezzel az üzenettel. Frissíti a cél nyelvét?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ez mindenki, aki ebben a kurzusban részt vesz. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

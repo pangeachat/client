@@ -1934,7 +1934,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-12-03 11:36:19.185422",
+  "@@last_modified": "2025-12-12 11:22:05.726597",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11700,6 +11700,11 @@
   },
   "messageLanguageMismatchMessage": "Dit målsprog stemmer ikke overens med denne besked. Opdater dit målsprog?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Dette er alle i dette kursus. Klik på enhver brugers avatar og \"start samtale\" for at sende en DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

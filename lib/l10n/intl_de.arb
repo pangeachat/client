@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-03 11:36:37.054264",
+  "@@last_modified": "2025-12-12 11:22:24.463065",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10645,6 +10645,11 @@
   },
   "messageLanguageMismatchMessage": "Ihre Zielsprache stimmt nicht mit dieser Nachricht überein. Möchten Sie Ihre Zielsprache aktualisieren?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Das sind alle in diesem Kurs. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

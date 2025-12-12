@@ -1924,7 +1924,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-12-03 11:36:57.737104",
+  "@@last_modified": "2025-12-12 11:22:48.456149",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11727,6 +11727,11 @@
   },
   "messageLanguageMismatchMessage": "మీ లక్ష్య భాష ఈ సందేశానికి సరిపోలడం లేదు. మీ లక్ష్య భాషను నవీకరించాలా?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "ఈ కోర్సులో ఉన్న అందరూ ఇక్కడ ఉన్నారు. ఏ వినియోగదారుడి అవతారంపై క్లిక్ చేసి \"సంభాషణ ప్రారంభించండి\" అని నేరుగా సందేశం పంపండి.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

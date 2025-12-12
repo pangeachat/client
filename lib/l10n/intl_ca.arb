@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:46.628205",
+  "@@last_modified": "2025-12-12 11:22:36.750546",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10662,6 +10662,11 @@
   },
   "messageLanguageMismatchMessage": "El teu idioma de destinació no coincideix amb aquest missatge. Vols actualitzar el teu idioma de destinació?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

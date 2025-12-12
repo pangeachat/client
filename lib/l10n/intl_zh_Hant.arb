@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:51.200682",
+  "@@last_modified": "2025-12-12 11:22:40.535487",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10636,6 +10636,11 @@
   },
   "messageLanguageMismatchMessage": "您的目標語言與此消息不匹配。要更新您的目標語言嗎？",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "這是這門課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

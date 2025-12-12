@@ -1915,7 +1915,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-12-03 11:36:45.348859",
+  "@@last_modified": "2025-12-12 11:22:35.230247",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11737,6 +11737,11 @@
   },
   "messageLanguageMismatchMessage": "Ваша мэтавая мова не супадае з гэтым паведамленнем. Абнавіць вашу мэтавую мову?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага курса. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

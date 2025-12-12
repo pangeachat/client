@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:08.469937",
+  "@@last_modified": "2025-12-12 11:22:59.393792",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11370,6 +11370,11 @@
   },
   "messageLanguageMismatchMessage": "زبان هدف شما با این پیام مطابقت ندارد. آیا زبان هدف خود را به‌روزرسانی کنید؟",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "این همه افرادی هستند که در این دوره حضور دارند. بر روی آواتار هر کاربر کلیک کنید و \"شروع گفتگو\" را بزنید تا یک پیام مستقیم ارسال کنید.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }
