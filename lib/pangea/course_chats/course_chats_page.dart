@@ -9,7 +9,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
@@ -115,10 +114,9 @@ class CourseChatsController extends State<CourseChats>
       )
       .toList();
 
-  Map<ActivityPlanModel, List<ExtendedSpaceRoomsChunk>> discoveredActivities() {
+  Map<String, List<ExtendedSpaceRoomsChunk>> discoveredActivities() {
     if (discoveredChildren == null || roomSummaries == null) return {};
-    final Map<ActivityPlanModel, List<ExtendedSpaceRoomsChunk>> sessionsMap =
-        {};
+    final Map<String, List<ExtendedSpaceRoomsChunk>> sessionsMap = {};
 
     final validIDs = course?.activityIDs ?? {};
     for (final chunk in discoveredChildren!) {
@@ -151,11 +149,12 @@ class CourseChatsController extends State<CourseChats>
         continue;
       }
 
-      sessionsMap[activity] ??= [];
-      sessionsMap[activity]!.add(
+      sessionsMap[activity.activityId] ??= [];
+      sessionsMap[activity.activityId]!.add(
         ExtendedSpaceRoomsChunk(
           chunk: chunk,
           assignedRoles: users.values.toList(),
+          activity: activity,
         ),
       );
     }
