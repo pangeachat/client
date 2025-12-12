@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:19.859367",
+  "@@last_modified": "2025-12-12 11:23:14.629360",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11740,6 +11740,11 @@
   },
   "messageLanguageMismatchMessage": "Vaš ciljni jezik se ne poklapa sa ovom porukom. Da li želite da ažurirate svoj ciljni jezik?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ovo su svi u ovom kursu. Kliknite na avatar bilo kog korisnika i “počnite razgovor” da pošaljete DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

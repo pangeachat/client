@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-12-03 11:36:27.424602",
+  "@@last_modified": "2025-12-12 11:22:14.634709",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11010,6 +11010,11 @@
   },
   "messageLanguageMismatchMessage": "Vaš ciljni jezik se ne podudara s ovom porukom. Želite li ažurirati svoj ciljni jezik?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ovo su svi u ovom tečaju. Kliknite na avatar bilo kojeg korisnika i \"započni razgovor\" da pošaljete DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

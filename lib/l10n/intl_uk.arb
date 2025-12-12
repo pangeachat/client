@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-12-03 11:36:41.416683",
+  "@@last_modified": "2025-12-12 11:22:30.496942",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10632,6 +10632,11 @@
   },
   "messageLanguageMismatchMessage": "Ваша цільова мова не відповідає цьому повідомленню. Оновити вашу цільову мову?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Це всі учасники цього курсу. Натисніть на аватар будь-якого користувача та виберіть \"почати розмову\", щоб надіслати особисте повідомлення.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

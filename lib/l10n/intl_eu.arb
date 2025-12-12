@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-03 11:36:32.505093",
+  "@@last_modified": "2025-12-12 11:22:20.368827",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10638,6 +10638,11 @@
   },
   "messageLanguageMismatchMessage": "Zure helburu hizkuntza ez da mezu honekin bat etortzen. Eguneratu al dezakezu zure helburu hizkuntza?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-03 11:37:09.726956",
+  "@@last_modified": "2025-12-12 11:23:02.555382",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10638,6 +10638,11 @@
   },
   "messageLanguageMismatchMessage": "Twój docelowy język nie pasuje do tej wiadomości. Zaktualizować swój docelowy język?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "To są wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

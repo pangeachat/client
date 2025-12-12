@@ -8,6 +8,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -70,210 +72,226 @@ class RoomParticipantsSection extends StatelessWidget {
           return 0;
         });
 
-        return Wrap(
-          spacing: 8.0,
-          alignment: WrapAlignment.center,
-          runAlignment: WrapAlignment.center,
-          children: [...filteredParticipants, null].mapIndexed((index, user) {
-            if (user == null) {
-              return room.canInvite && !room.isDirectChat
-                  ? MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        onTap: () => context.go(
-                          "/rooms/${room.id}/details/invite",
-                        ),
-                        child: HoverBuilder(
-                          builder: (context, hovered) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: hovered
-                                    ? Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withAlpha(50)
-                                    : Colors.transparent,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
-                              width: _width,
-                              child: Column(
-                                spacing: 4.0,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.all(12.0),
-                                    child: Icon(
-                                      Icons.person_add_outlined,
-                                      size: 50.0,
-                                    ),
-                                  ),
-                                  Text(
-                                    L10n.of(context).invite,
-                                    style: const TextStyle(fontSize: 16.0),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    )
-                  : const SizedBox();
-            }
-            final permissionBatch = user.powerLevel >= 100
-                ? L10n.of(context).admin
-                : user.powerLevel >= 50
-                    ? L10n.of(context).moderator
-                    : '';
-
-            final membershipBatch = switch (user.membership) {
-              Membership.ban => null,
-              Membership.invite => L10n.of(context).invited,
-              Membership.join => null,
-              Membership.knock => L10n.of(context).knocking,
-              Membership.leave => null,
-            };
-
-            final publicProfile = participantsLoader.getAnalyticsProfile(
-              user.id,
-            );
-
-            final leaderIndex = originalLeaders.indexOf(user);
-            LinearGradient? gradient;
-            if (leaderIndex != -1) {
-              gradient = leaderIndex.leaderboardGradient;
-              if (user.id == BotName.byEnvironment ||
-                  publicProfile == null ||
-                  publicProfile.level == null) {
-                gradient = null;
-              }
-            }
-
-            return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
-              child: SizedBox(
-                width: _width,
-                child: Opacity(
-                  opacity: user.membership == Membership.join ? 1.0 : 0.5,
-                  child: Column(
-                    spacing: 4.0,
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          if (gradient != null)
-                            CircleAvatar(
-                              radius: _width / 2,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: gradient,
-                                ),
-                              ),
-                            )
-                          else
-                            SizedBox(
-                              height: _width,
-                              width: _width,
+        return Column(
+          children: [
+            Wrap(
+              spacing: 8.0,
+              alignment: WrapAlignment.center,
+              runAlignment: WrapAlignment.center,
+              children:
+                  [...filteredParticipants, null].mapIndexed((index, user) {
+                if (user == null) {
+                  return room.canInvite && !room.isDirectChat
+                      ? MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: GestureDetector(
+                            onTap: () => context.go(
+                              "/rooms/${room.id}/details/invite",
                             ),
-                          Builder(
-                            builder: (context) {
-                              return MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: GestureDetector(
-                                  onTap: () => showMemberActionsPopupMenu(
-                                    context: context,
-                                    user: user,
+                            child: HoverBuilder(
+                              builder: (context, hovered) {
+                                return Container(
+                                  decoration: BoxDecoration(
+                                    color: hovered
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .primary
+                                            .withAlpha(50)
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: Center(
-                                    child: Avatar(
-                                      mxContent: user.avatarUrl,
-                                      name: user.calcDisplayname(),
-                                      size: _width - 6.0,
-                                      presenceUserId: user.id,
-                                      presenceOffset: const Offset(0, 0),
-                                      presenceSize: 18.0,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 12.0),
+                                  width: _width,
+                                  child: Column(
+                                    spacing: 4.0,
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.all(12.0),
+                                        child: Icon(
+                                          Icons.person_add_outlined,
+                                          size: 50.0,
+                                        ),
+                                      ),
+                                      Text(
+                                        L10n.of(context).invite,
+                                        style: const TextStyle(fontSize: 16.0),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        )
+                      : const SizedBox();
+                }
+                final permissionBatch = user.powerLevel >= 100
+                    ? L10n.of(context).admin
+                    : user.powerLevel >= 50
+                        ? L10n.of(context).moderator
+                        : '';
+
+                final membershipBatch = switch (user.membership) {
+                  Membership.ban => null,
+                  Membership.invite => L10n.of(context).invited,
+                  Membership.join => null,
+                  Membership.knock => L10n.of(context).knocking,
+                  Membership.leave => null,
+                };
+
+                final publicProfile = participantsLoader.getAnalyticsProfile(
+                  user.id,
+                );
+
+                final leaderIndex = originalLeaders.indexOf(user);
+                LinearGradient? gradient;
+                if (leaderIndex != -1) {
+                  gradient = leaderIndex.leaderboardGradient;
+                  if (user.id == BotName.byEnvironment ||
+                      publicProfile == null ||
+                      publicProfile.level == null) {
+                    gradient = null;
+                  }
+                }
+
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  child: SizedBox(
+                    width: _width,
+                    child: Opacity(
+                      opacity: user.membership == Membership.join ? 1.0 : 0.5,
+                      child: Column(
+                        spacing: 4.0,
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              if (gradient != null)
+                                CircleAvatar(
+                                  radius: _width / 2,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      gradient: gradient,
                                     ),
                                   ),
+                                )
+                              else
+                                SizedBox(
+                                  height: _width,
+                                  width: _width,
                                 ),
-                              );
-                            },
+                              Builder(
+                                builder: (context) {
+                                  return MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: GestureDetector(
+                                      onTap: () => showMemberActionsPopupMenu(
+                                        context: context,
+                                        user: user,
+                                      ),
+                                      child: Center(
+                                        child: Avatar(
+                                          mxContent: user.avatarUrl,
+                                          name: user.calcDisplayname(),
+                                          size: _width - 6.0,
+                                          presenceUserId: user.id,
+                                          presenceOffset: const Offset(0, 0),
+                                          presenceSize: 18.0,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      Text(
-                        user.calcDisplayname(),
-                        style: theme.textTheme.labelLarge?.copyWith(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Container(
-                        height: 20.0,
-                        alignment: Alignment.center,
-                        child: LevelDisplayName(
-                          userId: user.id,
-                          textStyle: theme.textTheme.labelSmall,
-                        ),
-                      ),
-                      Container(
-                        height: 24.0,
-                        alignment: Alignment.center,
-                        child: membershipBatch != null
-                            ? Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 4,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: theme.colorScheme.secondaryContainer,
-                                  borderRadius: BorderRadius.circular(
-                                    AppConfig.borderRadius,
-                                  ),
-                                ),
-                                child: Text(
-                                  membershipBatch,
-                                  style: theme.textTheme.labelSmall?.copyWith(
-                                    color:
-                                        theme.colorScheme.onSecondaryContainer,
-                                  ),
-                                ),
-                              )
-                            : permissionBatch.isNotEmpty
+                          Text(
+                            user.calcDisplayname(),
+                            style: theme.textTheme.labelLarge?.copyWith(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Container(
+                            height: 20.0,
+                            alignment: Alignment.center,
+                            child: LevelDisplayName(
+                              userId: user.id,
+                              textStyle: theme.textTheme.labelSmall,
+                            ),
+                          ),
+                          Container(
+                            height: 24.0,
+                            alignment: Alignment.center,
+                            child: membershipBatch != null
                                 ? Container(
                                     padding: const EdgeInsets.symmetric(
                                       horizontal: 12,
                                       vertical: 4,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: user.powerLevel >= 100
-                                          ? theme.colorScheme.tertiary
-                                          : theme.colorScheme.tertiaryContainer,
+                                      color:
+                                          theme.colorScheme.secondaryContainer,
                                       borderRadius: BorderRadius.circular(
                                         AppConfig.borderRadius,
                                       ),
                                     ),
                                     child: Text(
-                                      permissionBatch,
+                                      membershipBatch,
                                       style:
                                           theme.textTheme.labelSmall?.copyWith(
-                                        color: user.powerLevel >= 100
-                                            ? theme.colorScheme.onTertiary
-                                            : theme.colorScheme
-                                                .onTertiaryContainer,
+                                        color: theme
+                                            .colorScheme.onSecondaryContainer,
                                       ),
                                     ),
                                   )
-                                : null,
+                                : permissionBatch.isNotEmpty
+                                    ? Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12,
+                                          vertical: 4,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: user.powerLevel >= 100
+                                              ? theme.colorScheme.tertiary
+                                              : theme.colorScheme
+                                                  .tertiaryContainer,
+                                          borderRadius: BorderRadius.circular(
+                                            AppConfig.borderRadius,
+                                          ),
+                                        ),
+                                        child: Text(
+                                          permissionBatch,
+                                          style: theme.textTheme.labelSmall
+                                              ?.copyWith(
+                                            color: user.powerLevel >= 100
+                                                ? theme.colorScheme.onTertiary
+                                                : theme.colorScheme
+                                                    .onTertiaryContainer,
+                                          ),
+                                        ),
+                                      )
+                                    : null,
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                );
+              }).toList(),
+            ),
+            const InstructionsInlineTooltip(
+              instructionsEnum: InstructionsEnum.courseParticipantTooltip,
+              padding: EdgeInsets.only(
+                left: 16.0,
+                right: 16.0,
+                bottom: 16.0,
               ),
-            );
-          }).toList(),
+            ),
+          ],
         );
       },
     );

@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-03 11:36:25.077269",
+  "@@last_modified": "2025-12-12 11:22:12.385416",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11722,6 +11722,11 @@
   },
   "messageLanguageMismatchMessage": "Vaša cieľová jazyková verzia sa nezhoduje s touto správou. Chcete aktualizovať svoju cieľovú jazykovú verziu?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Toto sú všetci účastníci tohto kurzu. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“, aby ste poslali súkromnú správu.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

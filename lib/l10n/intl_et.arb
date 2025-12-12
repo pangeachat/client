@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-03 11:36:35.627602",
+  "@@last_modified": "2025-12-12 11:22:22.855531",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10909,6 +10909,11 @@
   },
   "messageLanguageMismatchMessage": "Teie sihtkeel ei ühti selle sõnumiga. Kas soovite oma sihtkeelt uuendada?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "See on kõik, kes on selles kursuses. Klõpsake mis tahes kasutaja avatari ja valige \"alusta vestlust\", et saata DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

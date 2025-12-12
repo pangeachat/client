@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-03 11:36:52.845643",
+  "@@last_modified": "2025-12-12 11:22:41.980644",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11614,6 +11614,11 @@
   },
   "messageLanguageMismatchMessage": "Ang iyong target na wika ay hindi tumutugma sa mensaheng ito. I-update ang iyong target na wika?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ito ang lahat ng tao sa kursong ito. I-click ang avatar ng sinumang user at \"magsimula ng pag-uusap\" upang magpadala ng DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

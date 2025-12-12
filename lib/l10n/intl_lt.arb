@@ -3865,7 +3865,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-12-03 11:37:00.421228",
+  "@@last_modified": "2025-12-12 11:22:49.766035",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11443,6 +11443,11 @@
   },
   "messageLanguageMismatchMessage": "Jūsų tikslinė kalba nesutampa su šiuo pranešimu. Ar norite atnaujinti savo tikslinę kalbą?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Tai yra visi šio kurso dalyviai. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

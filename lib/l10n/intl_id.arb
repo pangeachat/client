@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:21.817521",
+  "@@last_modified": "2025-12-12 11:22:09.301272",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10629,6 +10629,11 @@
   },
   "messageLanguageMismatchMessage": "Bahasa target Anda tidak cocok dengan pesan ini. Perbarui bahasa target Anda?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:10.758797",
+  "@@last_modified": "2025-12-12 11:23:03.889982",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11116,6 +11116,11 @@
   },
   "messageLanguageMismatchMessage": "Ditt målspråk matchar inte detta meddelande. Vill du uppdatera ditt målspråk?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Detta är alla i den här kursen. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

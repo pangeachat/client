@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-12-03 11:37:16.847372",
+  "@@last_modified": "2025-12-12 11:23:10.654414",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10743,6 +10743,11 @@
   },
   "messageLanguageMismatchMessage": "Ваш целевой язык не соответствует этому сообщению. Обновить ваш целевой язык?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Это все участники этого курса. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

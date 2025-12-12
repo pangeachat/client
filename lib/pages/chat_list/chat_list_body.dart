@@ -12,8 +12,6 @@ import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
-import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
@@ -215,15 +213,6 @@ class ChatListViewBody extends StatelessWidget {
                     //     title: L10n.of(context).chats,
                     //     icon: const Icon(Icons.forum_outlined),
                     //   ),
-                    if (!controller.isSearchMode)
-                      const InstructionsInlineTooltip(
-                        instructionsEnum: InstructionsEnum.chatListTooltip,
-                        padding: EdgeInsets.only(
-                          left: 16.0,
-                          right: 16.0,
-                          bottom: 16.0,
-                        ),
-                      ),
                     if (controller.isSearchMode &&
                         rooms
                             .where(

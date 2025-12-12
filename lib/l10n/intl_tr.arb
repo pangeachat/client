@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-03 11:36:56.511057",
+  "@@last_modified": "2025-12-12 11:22:46.710341",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10860,6 +10860,11 @@
   },
   "messageLanguageMismatchMessage": "Hedef diliniz bu mesajla eşleşmiyor. Hedef dilinizi güncelleyebilir misiniz?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

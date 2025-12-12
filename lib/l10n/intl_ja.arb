@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-03 11:37:13.415132",
+  "@@last_modified": "2025-12-12 11:23:06.863514",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11428,6 +11428,11 @@
   },
   "messageLanguageMismatchMessage": "ターゲット言語がこのメッセージと一致しません。ターゲット言語を更新しますか？",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "これはこのコースの全員です。任意のユーザーのアバターをクリックし、「会話を開始」を選択してDMを送信します。",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

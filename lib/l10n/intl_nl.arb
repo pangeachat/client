@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:03.689136",
+  "@@last_modified": "2025-12-12 11:22:53.341960",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10638,6 +10638,11 @@
   },
   "messageLanguageMismatchMessage": "Uw doeltaal komt niet overeen met dit bericht. Wilt u uw doeltaal bijwerken?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Dit zijn alle deelnemers aan deze cursus. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

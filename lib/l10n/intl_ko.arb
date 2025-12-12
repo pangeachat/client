@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:14.042097",
+  "@@last_modified": "2025-12-12 11:21:57.471198",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10746,6 +10746,11 @@
   },
   "messageLanguageMismatchMessage": "대상 언어가 이 메시지와 일치하지 않습니다. 대상 언어를 업데이트하시겠습니까?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "이것은 이 과정의 모든 사람입니다. 사용자의 아바타를 클릭하고 \"대화 시작\"을 클릭하여 DM을 보내세요.",
+  "@courseParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }
