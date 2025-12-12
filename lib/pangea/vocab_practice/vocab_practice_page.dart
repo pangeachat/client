@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -12,6 +10,7 @@ import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_repo.dar
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_view.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class SessionLoader extends AsyncLoader<VocabPracticeSessionModel> {
   @override
@@ -198,10 +197,21 @@ class VocabPracticeState extends State<VocabPractice> {
 
     activity.onMultipleChoiceSelect(choice);
     final correct = activity.multipleChoiceContent!.isCorrect(choice);
-    if (!correct) return;
+
+    // Show points gained/lost animation
+    final contextToUse = context;
+    final transformTargetId =
+        'vocab-choice-card-${choice.replaceAll(' ', '_')}';
+    if (correct) {
+      OverlayUtil.showPointsGained(transformTargetId, 5, contextToUse);
+    } else {
+      OverlayUtil.showPointsGained(transformTargetId, -2, contextToUse);
+    }
 
     // display the fact that the choice was correct before loading the next activity
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 1000));
+
+    if (!correct) return;
 
     sessionLoader.value!.completeActivity(activity);
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);

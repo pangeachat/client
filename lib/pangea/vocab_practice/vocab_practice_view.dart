@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.da
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class VocabPracticeView extends StatelessWidget {
   final VocabPracticeState controller;
@@ -185,11 +186,7 @@ class _VocabActivityView extends StatelessWidget {
                     final activity = controller.currentActivity;
 
                     if (controller.isLoadingActivity || activity == null) {
-                      return const SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: CircularProgressIndicator.adaptive(),
-                      );
+                      return const ChoiceCardPlaceholder();
                     }
 
                     return Center(
@@ -254,10 +251,16 @@ class _VocabPracticeChoiceButton extends StatelessWidget {
       );
     }
 
-    return AnimatedChoiceCard(
-      choice: choice,
-      onPressed: onPressed,
-      isCorrect: activity.multipleChoiceContent!.isCorrect(choice),
+    final String transformTargetId =
+        'vocab-choice-card-${choice.replaceAll(' ', '_')}';
+    return CompositedTransformTarget(
+      link: MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link,
+      child: AnimatedChoiceCard(
+        key: ValueKey(choice), //prevents flipped card persistence
+        choice: choice,
+        onPressed: onPressed,
+        isCorrect: activity.multipleChoiceContent!.isCorrect(choice),
+      ),
     );
   }
 }
@@ -288,6 +291,43 @@ class _CompletedActivitySessionView extends StatelessWidget {
             child: Text(L10n.of(context).anotherRound),
           ),
       ],
+    );
+  }
+}
+
+class ChoiceCardPlaceholder extends StatelessWidget {
+  final int cardCount;
+  const ChoiceCardPlaceholder({super.key, this.cardCount = 3});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    const double cardHeight = 60;
+    const double borderRadius = 16.0;
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(
+          cardCount,
+          (index) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6.0),
+            child: Shimmer.fromColors(
+              baseColor: theme.colorScheme.primary.withAlpha(20),
+              highlightColor: theme.colorScheme.primary.withAlpha(50),
+              child: SizedBox(
+                width: double.infinity,
+                height: cardHeight,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainer,
+                    borderRadius: BorderRadius.circular(borderRadius),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
