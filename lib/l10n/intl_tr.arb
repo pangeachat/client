@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-01 12:40:32.542590",
+  "@@last_modified": "2025-12-12 14:56:34.173135",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -12007,7 +12007,7 @@
   "joinCourseWithCode": "Kod ile kursa katıl",
   "joinPublicCourse": "Herkese açık kursa katıl",
   "vocabLevelsDesc": "Kelime seviyelerini yükselttiğinizde buraya kelimeler gelir!",
-  "highlightVocabTooltip": "Hedef kelimeleri aşağıda vurgula, onları göndererek veya sohbetle pratik yaparak",
+  "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12056,17 +12056,12 @@
   },
   "failedToLoadFeedback": "Geri bildirimi yüklemek başarısız oldu.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
   "noSavedActivitiesYet": "Aktiviteler tamamlandığında ve kaydedildiğinde burada görünecektir.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12106,6 +12101,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Açık oturumlar ({num})",
+  "inProgressActivitiesTitle": "Şu anda gerçekleşiyor ({num})",
+  "completedActivitiesTitle": "Tamamlandı ({num})",
+  "inOngoingActivity": "Devam eden bir etkinliğiniz var!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

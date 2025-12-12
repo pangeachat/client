@@ -322,10 +322,6 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
             activityEntry.key,
           );
 
-          final activityRoomId = widget.room.activeActivityRoomId(
-            activityEntry.key,
-          );
-
           final activity = activityEntry.value;
           return Padding(
             padding: const EdgeInsets.only(right: 24.0),
@@ -333,9 +329,7 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
                 onTap: () => context.go(
-                  activityRoomId != null
-                      ? "/rooms/spaces/${widget.room.id}/$activityRoomId"
-                      : "/rooms/spaces/${widget.room.id}/activity/${activityEntry.key}",
+                  "/rooms/spaces/${widget.room.id}/activity/${activityEntry.key}",
                 ),
                 child: Stack(
                   children: [

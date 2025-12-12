@@ -132,6 +132,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       case SessionState.selectedRole:
         return activity!.roles[_selectedRoleId!]!.goal;
       case SessionState.notStarted:
+        if (joinedActivityRoomId != null) {
+          return L10n.of(context).inOngoingActivity;
+        }
         return null;
 
       case SessionState.notSelectedRole:
@@ -173,6 +176,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     if (activityRoom != null) return false;
     return numOpenSessions(widget.activityId) > 0;
   }
+
+  String? get joinedActivityRoomId =>
+      courseParent?.activeActivityRoomId(widget.activityId);
 
   bool get canPingParticipants {
     if (activityRoom == null || courseParent == null) return false;

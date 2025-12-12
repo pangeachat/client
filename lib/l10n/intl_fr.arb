@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-12-01 12:41:17.297464",
+  "@@last_modified": "2025-12-12 14:57:14.235816",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -12109,7 +12109,7 @@
   "joinCourseWithCode": "Rejoindre le cours avec un code",
   "joinPublicCourse": "Rejoindre un cours public",
   "vocabLevelsDesc": "C'est ici que les mots de vocabulaire seront placés une fois que vous les aurez améliorés !",
-  "highlightVocabTooltip": "Mettez en évidence les mots de vocabulaire cibles ci-dessous en les envoyant ou en pratiquant avec eux dans le chat",
+  "highlightVocabTooltip": "Mettez en surbrillance les mots de vocabulaire cibles ci-dessous en les envoyant ou en les pratiquant dans le chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12158,17 +12158,12 @@
   },
   "failedToLoadFeedback": "Échec du chargement des retours.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Mettez en surbrillance les mots de vocabulaire cibles ci-dessous en les envoyant ou en les pratiquant dans le chat",
   "noSavedActivitiesYet": "Les activités apparaîtront ici une fois qu'elles seront terminées et enregistrées.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12208,6 +12203,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sessions ouvertes ({num})",
+  "inProgressActivitiesTitle": "En cours ({num})",
+  "completedActivitiesTitle": "Terminé ({num})",
+  "inOngoingActivity": "Vous avez une activité en cours !",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

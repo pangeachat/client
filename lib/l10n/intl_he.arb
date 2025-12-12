@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:39:50.470332",
+  "@@last_modified": "2025-12-12 14:55:56.162697",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12834,7 +12834,7 @@
   "joinCourseWithCode": "הצטרף לקורס עם קוד",
   "joinPublicCourse": "הצטרף לקורס ציבורי",
   "vocabLevelsDesc": "זה המקום שבו מילות אוצר המילים יופיעו לאחר שהעלית את רמתן!",
-  "highlightVocabTooltip": "הדגש את מילות אוצר המילים היעדיות למטה על ידי שליחתן או תרגול איתן בצ'אט",
+  "highlightVocabTooltip": "הדגש את המילים היעד למטה על ידי שליחתם או תרגול איתן בצ'אט",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12883,17 +12883,12 @@
   },
   "failedToLoadFeedback": "לא הצלחנו לטעון משוב.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "הדגש את המילים היעד למטה על ידי שליחתם או תרגול איתן בצ'אט",
   "noSavedActivitiesYet": "פעילויות יופיעו כאן ברגע שיסיימו וישמרו.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12933,6 +12928,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "סשנים פתוחים ({num})",
+  "inProgressActivitiesTitle": "מתרחש עכשיו ({num})",
+  "completedActivitiesTitle": "בוצע ({num})",
+  "inOngoingActivity": "יש לך פעילות מתמשכת!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

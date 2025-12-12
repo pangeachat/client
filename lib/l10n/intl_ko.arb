@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:39:24.159740",
+  "@@last_modified": "2025-12-12 14:55:32.554351",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11893,7 +11893,7 @@
   "joinCourseWithCode": "코드로 강좌 참여",
   "joinPublicCourse": "공개 강좌 참여",
   "vocabLevelsDesc": "단어를 레벨업하면 여기에 단어가 표시됩니다!",
-  "highlightVocabTooltip": "아래 대상 어휘를 채팅에서 보내거나 연습하여 강조 표시하세요",
+  "highlightVocabTooltip": "아래의 목표 어휘 단어를 강조 표시하려면 채팅에서 보내거나 연습하세요.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11942,17 +11942,12 @@
   },
   "failedToLoadFeedback": "피드백을 불러오는 데 실패했습니다.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "아래의 목표 어휘 단어를 강조 표시하려면 채팅에서 보내거나 연습하세요.",
   "noSavedActivitiesYet": "활동이 완료되고 저장되면 여기에 나타납니다.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11992,6 +11987,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "열린 세션 ({num})",
+  "inProgressActivitiesTitle": "현재 진행 중 ({num})",
+  "completedActivitiesTitle": "완료됨 ({num})",
+  "inOngoingActivity": "진행 중인 활동이 있습니다!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:06.959287",
+  "@@last_modified": "2025-12-12 14:56:12.230518",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -11788,7 +11788,7 @@
   "joinCourseWithCode": "Unisciti al corso con il codice",
   "joinPublicCourse": "Unisciti al corso pubblico",
   "vocabLevelsDesc": "Qui andranno le parole di vocabolario una volta che le avrai potenziate!",
-  "highlightVocabTooltip": "Evidenzia le parole di vocabolario target di seguito inviandole o praticandole nella chat",
+  "highlightVocabTooltip": "Evidenzia le parole di vocabolario target qui sotto inviandole o praticandole nella chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11837,17 +11837,12 @@
   },
   "failedToLoadFeedback": "Impossibile caricare il feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Evidenzia le parole di vocabolario target qui sotto inviandole o praticandole nella chat",
   "noSavedActivitiesYet": "Le attività appariranno qui una volta completate e salvate.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11887,6 +11882,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Sessioni aperte ({num})",
+  "inProgressActivitiesTitle": "In corso ({num})",
+  "completedActivitiesTitle": "Fatto ({num})",
+  "inOngoingActivity": "Hai un'attività in corso!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

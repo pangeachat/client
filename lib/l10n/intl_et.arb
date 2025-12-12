@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-01 12:40:00.288987",
+  "@@last_modified": "2025-12-12 14:56:04.911626",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -12052,7 +12052,7 @@
   "joinCourseWithCode": "Liitu kursusega koodiga",
   "joinPublicCourse": "Liitu avaliku kursusega",
   "vocabLevelsDesc": "Siia lähevad sõnad, kui oled need tasemele tõstnud!",
-  "highlightVocabTooltip": "Tõsta sihitud sõnad allpool esile, saates need või harjutades nendega vestluses",
+  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
@@ -12105,17 +12105,12 @@
   },
   "failedToLoadFeedback": "Tagasiside laadimine ebaõnnestus.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
   "noSavedActivitiesYet": "Tegevused ilmuvad siia, kui need on lõpetatud ja salvestatud.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12155,6 +12150,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Avatud seansid ({num})",
+  "inProgressActivitiesTitle": "Toimub praegu ({num})",
+  "completedActivitiesTitle": "Tehtud ({num})",
+  "inOngoingActivity": "Teil on käimasolev tegevus!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

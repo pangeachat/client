@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-01 12:39:55.136173",
+  "@@last_modified": "2025-12-12 14:56:01.835283",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11785,7 +11785,7 @@
   "joinCourseWithCode": "Hasi ikastaroa kodearekin",
   "joinPublicCourse": "Hasi ikastaro publikoa",
   "vocabLevelsDesc": "Hemen daude hitz-berriak mailakatzen dituzunean!",
-  "highlightVocabTooltip": "Azpimarratu behean dauden target hitz-berriak mezuak bidaliz edo praktikatuz txatean",
+  "highlightVocabTooltip": "Azpian dauden helburu vocab hitzak nabarmentzeko, bidali edo txatean praktikatu.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11834,17 +11834,12 @@
   },
   "failedToLoadFeedback": "Feedback-a kargatzea huts egin du.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Azpian dauden helburu vocab hitzak nabarmentzeko, bidali edo txatean praktikatu.",
   "noSavedActivitiesYet": "Jarduerak hemen agertuko dira amaitu eta gorde ondoren.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11884,6 +11879,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Ireki saioak ({num})",
+  "inProgressActivitiesTitle": "Orain gertatzen ari da ({num})",
+  "completedActivitiesTitle": "Eginda ({num})",
+  "inOngoingActivity": "Zure aktibitate bat martxan dago!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

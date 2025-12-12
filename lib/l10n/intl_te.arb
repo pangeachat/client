@@ -2401,7 +2401,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-12-01 12:40:34.812634",
+  "@@last_modified": "2025-12-12 14:56:35.809423",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12874,7 +12874,7 @@
   "joinCourseWithCode": "కోడ్‌తో కోర్సులో చేరండి",
   "joinPublicCourse": "పబ్లిక్ కోర్సులో చేరండి",
   "vocabLevelsDesc": "మీరు వాటిని లెవెల్ చేయగానే ఇది వాక్యబోధన పదాలు అక్కడికి పోతాయి!",
-  "highlightVocabTooltip": "గమ్య వాక్యబోధన పదాలను క్రింద హైలైట్ చేయండి, వాటిని పంపడం లేదా చాట్‌లో ప్రాక్టీస్ చేయడం ద్వారా",
+  "highlightVocabTooltip": "చాట్‌లో వాటిని పంపడం లేదా వాటితో ప్రాక్టీస్ చేయడం ద్వారా కింద లక్ష్య పదజాల పదాలను హైలైట్ చేయండి",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12923,17 +12923,12 @@
   },
   "failedToLoadFeedback": "ఫీడ్‌బ్యాక్‌ను లోడ్ చేయడంలో విఫలమైంది.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "చాట్‌లో వాటిని పంపడం లేదా వాటితో ప్రాక్టీస్ చేయడం ద్వారా కింద లక్ష్య పదజాల పదాలను హైలైట్ చేయండి",
   "noSavedActivitiesYet": "చర్యలు పూర్తి చేసి సేవ్ చేసిన తర్వాత ఇక్కడ కనిపిస్తాయి.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12973,6 +12968,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "ఓపెన్ సెషన్స్ ({num})",
+  "inProgressActivitiesTitle": "ఇప్పుడు జరుగుతోంది ({num})",
+  "completedActivitiesTitle": "చేయబడింది ({num})",
+  "inOngoingActivity": "మీకు ఒక కొనసాగుతున్న కార్యకలాపం ఉంది!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

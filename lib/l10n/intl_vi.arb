@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-01 12:40:41.049624",
+  "@@last_modified": "2025-12-12 14:56:39.506888",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -5722,7 +5722,7 @@
   "joinCourseWithCode": "Tham gia khóa học bằng mã",
   "joinPublicCourse": "Tham gia khóa học công khai",
   "vocabLevelsDesc": "Đây là nơi các từ vựng sẽ xuất hiện sau khi bạn nâng cấp chúng!",
-  "highlightVocabTooltip": "Nổi bật các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc luyện tập với chúng trong trò chuyện",
+  "highlightVocabTooltip": "Đánh dấu các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc thực hành với chúng trong trò chuyện",
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
@@ -5775,17 +5775,12 @@
   },
   "failedToLoadFeedback": "Không thể tải phản hồi.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Đánh dấu các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc thực hành với chúng trong trò chuyện",
   "noSavedActivitiesYet": "Các hoạt động sẽ xuất hiện ở đây khi chúng được hoàn thành và lưu lại.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -5825,6 +5820,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Phiên mở ({num})",
+  "inProgressActivitiesTitle": "Đang diễn ra ({num})",
+  "completedActivitiesTitle": "Đã hoàn thành ({num})",
+  "inOngoingActivity": "Bạn có một hoạt động đang diễn ra!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

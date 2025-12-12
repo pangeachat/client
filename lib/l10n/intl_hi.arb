@@ -4964,7 +4964,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-12-01 12:41:04.318728",
+  "@@last_modified": "2025-12-12 14:57:04.374272",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12870,7 +12870,7 @@
   "joinCourseWithCode": "कोड के साथ कोर्स में शामिल हों",
   "joinPublicCourse": "सार्वजनिक कोर्स में शामिल हों",
   "vocabLevelsDesc": "यहां वे शब्द जाएंगे जब आप उन्हें स्तर देंगे!",
-  "highlightVocabTooltip": "नीचे लक्षित शब्दों को हाइलाइट करें उन्हें भेजकर या चैट में अभ्यास करके",
+  "highlightVocabTooltip": "नीचे लक्षित शब्दों को हाइलाइट करें, उन्हें चैट में भेजकर या उनके साथ अभ्यास करके।",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12919,17 +12919,12 @@
   },
   "failedToLoadFeedback": "फीडबैक लोड करने में विफल।",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "नीचे लक्षित शब्दों को हाइलाइट करें, उन्हें चैट में भेजकर या उनके साथ अभ्यास करके।",
   "noSavedActivitiesYet": "गतिविधियाँ यहाँ तब दिखाई देंगी जब वे पूरी हो जाएँगी और सहेजी जाएँगी।",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12969,6 +12964,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "खुले सत्र ({num})",
+  "inProgressActivitiesTitle": "अब हो रहा है ({num})",
+  "completedActivitiesTitle": "पूरा हुआ ({num})",
+  "inOngoingActivity": "आपके पास एक चल रही गतिविधि है!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

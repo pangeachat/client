@@ -4998,7 +4998,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-01 12:41:14.642020",
+  "@@last_modified": "2025-12-12 14:57:12.595251",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -11783,7 +11783,7 @@
   "joinCourseWithCode": "Cláraigh i gcúrsa le cód",
   "joinPublicCourse": "Cláraigh i gcúrsa poiblí",
   "vocabLevelsDesc": "Seo áit a dtéann focail fhocail a bhfuil leibhéal acu nuair a dhéantar iad a leibhéalú!",
-  "highlightVocabTooltip": "Bain úsáid as an téacs thíos chun focail fhocail spriocdhírithe a shoiléiriú trí iad a sheoladh nó trí chleachtadh leo sa chomhrá",
+  "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin a bhfuiltear ag iarraidh a ghrúpáil thíos trína sheoladh nó trína chleachtadh sa chomhrá",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11832,17 +11832,12 @@
   },
   "failedToLoadFeedback": "Theip ar an aiseolas a luchtú.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin a bhfuiltear ag iarraidh a ghrúpáil thíos trína sheoladh nó trína chleachtadh sa chomhrá",
   "noSavedActivitiesYet": "Tiocfaidh gníomhaíochtaí anseo nuair a bheidh siad críochnaithe agus sábháilte.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11882,6 +11877,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Seisiúin oscailte ({num})",
+  "inProgressActivitiesTitle": "Ag tarlú anois ({num})",
+  "completedActivitiesTitle": "Críochnaithe ({num})",
+  "inOngoingActivity": "Tá gníomhaíocht ar siúl agat!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

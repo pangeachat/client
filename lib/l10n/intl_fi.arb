@@ -4512,7 +4512,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-12-01 12:39:30.795641",
+  "@@last_modified": "2025-12-12 14:55:38.794396",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12430,7 +12430,7 @@
   "joinCourseWithCode": "Liity kurssille koodilla",
   "joinPublicCourse": "Liity julkiseen kurssiin",
   "vocabLevelsDesc": "Tässä kohtaa sanat menevät, kun olet nostanut niiden tasoa!",
-  "highlightVocabTooltip": "Korosta alla olevat kohdesanat lähettämällä ne tai harjoittelemalla niiden kanssa chatissa",
+  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12479,17 +12479,12 @@
   },
   "failedToLoadFeedback": "Palaute ei latautunut.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
   "noSavedActivitiesYet": "Toiminnot näkyvät täällä, kun ne on suoritettu ja tallennettu.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12529,6 +12524,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Avoimet istunnot ({num})",
+  "inProgressActivitiesTitle": "Käynnissä nyt ({num})",
+  "completedActivitiesTitle": "Valmis ({num})",
+  "inOngoingActivity": "Sinulla on meneillään oleva aktiviteetti!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

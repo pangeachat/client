@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-01 12:39:42.579953",
+  "@@last_modified": "2025-12-12 14:55:49.234609",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12869,7 +12869,7 @@
   "joinCourseWithCode": "Pripojiť sa ku kurzu s kódom",
   "joinPublicCourse": "Pripojiť sa k verejnému kurzu",
   "vocabLevelsDesc": "Sem pôjdu slovíčka, keď ich vylepšíte na vyššiu úroveň!",
-  "highlightVocabTooltip": "Zvýraznite cieľové slovíčka nižšie ich odoslaním alebo precvičovaním v chate",
+  "highlightVocabTooltip": "Zvýraznite cieľové slovíčka nižšie ich odoslaním alebo cvičením s nimi v chate",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -12918,17 +12918,12 @@
   },
   "failedToLoadFeedback": "Nepodarilo sa načítať spätnú väzbu.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Zvýraznite cieľové slovíčka nižšie ich odoslaním alebo cvičením s nimi v chate",
   "noSavedActivitiesYet": "Aktivity sa tu objavia, keď budú dokončené a uložené.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -12968,6 +12963,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Otvorené relácie ({num})",
+  "inProgressActivitiesTitle": "Prebieha teraz ({num})",
+  "completedActivitiesTitle": "Hotovo ({num})",
+  "inOngoingActivity": "Máte prebiehajúcu aktivitu!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

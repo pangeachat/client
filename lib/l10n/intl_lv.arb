@@ -4958,7 +4958,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2025-12-01 12:40:28.664355",
+  "@@last_modified": "2025-12-12 14:56:30.616551",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -11771,7 +11771,7 @@
   "joinCourseWithCode": "Pievienoties kursam ar kodu",
   "joinPublicCourse": "Pievienoties publiskajam kursam",
   "vocabLevelsDesc": "Šeit ietilps vārdu krājuma vārdi, kad jūs tos uzlabosiet līmenī!",
-  "highlightVocabTooltip": "Izcel mērķa vārdu zemāk, nosūtot tos vai praktizējoties ar tiem čatā",
+  "highlightVocabTooltip": "Izceliet mērķa vārdu vārdnīcu zemāk, tos nosūtot vai praktizējot čatā.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11820,17 +11820,12 @@
   },
   "failedToLoadFeedback": "Neizdevās ielādēt atsauksmes.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Izceliet mērķa vārdu vārdnīcu zemāk, tos nosūtot vai praktizējot čatā.",
   "noSavedActivitiesYet": "Aktivitātes parādīsies šeit, kad tās tiks pabeigtas un saglabātas.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11870,6 +11865,38 @@
     "placeholders": {}
   },
   "@announcementsChatDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "notStartedActivitiesTitle": "Atvērtās sesijas ({num})",
+  "inProgressActivitiesTitle": "Notiek tagad ({num})",
+  "completedActivitiesTitle": "Pabeigts ({num})",
+  "inOngoingActivity": "Jums ir notiekoša aktivitāte!",
+  "@notStartedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inProgressActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@completedActivitiesTitle": {
+    "type": "String",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

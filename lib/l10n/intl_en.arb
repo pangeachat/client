@@ -5342,5 +5342,6 @@
   "introChatTitle": "Create Introductions Chat",
   "introChatDesc": "Anyone in the space can post.",
   "announcementsChatTitle": "Announcements Chat",
-  "announcementsChatDesc": "Only space admin can post."
+  "announcementsChatDesc": "Only space admin can post.",
+  "inOngoingActivity": "You have an ongoing activity!"
 }
