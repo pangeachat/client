@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-03 11:36:32.505093",
+  "@@last_modified": "2025-12-12 14:56:01.835283",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -9321,6 +9321,7 @@
   "addCourse": "Gehitu ikastaroa",
   "joinPublicCourse": "Hasi ikastaro publikoa",
   "vocabLevelsDesc": "Hemen daude hitz-berriak mailakatzen dituzunean!",
+  "highlightVocabTooltip": "Azpian dauden helburu vocab hitzak nabarmentzeko, bidali edo txatean praktikatu.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10551,17 +10552,12 @@
   },
   "failedToLoadFeedback": "Feedback-a kargatzea huts egin du.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Azpian dauden helburu vocab hitzak nabarmentzeko, bidali edo txatean praktikatu.",
   "noSavedActivitiesYet": "Jarduerak hemen agertuko dira amaitu eta gorde ondoren.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10608,6 +10604,7 @@
   "inProgressActivitiesTitle": "Orain gertatzen ari da ({num})",
   "completedActivitiesTitle": "Eginda ({num})",
   "pickDifferentActivity": "Aldatu jarduera bat",
+  "inOngoingActivity": "Zure aktibitate bat martxan dago!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10638,6 +10635,10 @@
   },
   "messageLanguageMismatchMessage": "Zure helburu hizkuntza ez da mezu honekin bat etortzen. Eguneratu al dezakezu zure helburu hizkuntza?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

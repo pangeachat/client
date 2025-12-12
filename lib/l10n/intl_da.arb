@@ -1934,7 +1934,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-12-03 11:36:19.185422",
+  "@@last_modified": "2025-12-12 14:55:40.954552",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11613,17 +11613,12 @@
   },
   "failedToLoadFeedback": "Kunne ikke indlæse feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Fremhæv målordene nedenfor ved at sende dem eller øve med dem i chatten",
   "noSavedActivitiesYet": "Aktiviteter vil vises her, når de er afsluttet og gemt.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11670,6 +11665,7 @@
   "inProgressActivitiesTitle": "Foregår nu ({num})",
   "completedActivitiesTitle": "Færdig ({num})",
   "pickDifferentActivity": "Vælg en anden aktivitet",
+  "inOngoingActivity": "Du har en igangværende aktivitet!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11700,6 +11696,10 @@
   },
   "messageLanguageMismatchMessage": "Dit målsprog stemmer ikke overens med denne besked. Opdater dit målsprog?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

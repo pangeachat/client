@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-03 11:37:06.135839",
+  "@@last_modified": "2025-12-12 14:56:47.615356",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -9312,6 +9312,7 @@
   "addCourse": "添加课程",
   "joinPublicCourse": "加入公共课程",
   "vocabLevelsDesc": "这是你提升词汇等级后，词汇将会显示的地方！",
+  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10542,17 +10543,12 @@
   },
   "failedToLoadFeedback": "加载反馈失败。",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
   "noSavedActivitiesYet": "活动完成并保存后将出现在这里。",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10599,6 +10595,7 @@
   "inProgressActivitiesTitle": "正在进行中 ({num})",
   "completedActivitiesTitle": "完成 ({num})",
   "pickDifferentActivity": "选择其他活动",
+  "inOngoingActivity": "您有一个正在进行的活动！",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10629,6 +10626,10 @@
   },
   "messageLanguageMismatchMessage": "您的目标语言与此消息不匹配。要更新您的目标语言吗？",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

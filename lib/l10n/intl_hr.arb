@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-12-03 11:36:27.424602",
+  "@@last_modified": "2025-12-12 14:55:54.655811",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -9693,6 +9693,7 @@
   "addCourse": "Dodaj tečaj",
   "joinPublicCourse": "Pridruži se javnom tečaju",
   "vocabLevelsDesc": "Ovdje će ići riječi vokabulara nakon što ih podignete na višu razinu!",
+  "highlightVocabTooltip": "Istaknite ciljne riječi ispod tako da ih pošaljete ili vježbate s njima u chatu",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10923,17 +10924,12 @@
   },
   "failedToLoadFeedback": "Nije moguće učitati povratne informacije.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Istaknite ciljne riječi ispod tako da ih pošaljete ili vježbate s njima u chatu",
   "noSavedActivitiesYet": "Aktivnosti će se ovdje pojaviti kada budu dovršene i spremljene.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10977,9 +10973,10 @@
     "placeholders": {}
   },
   "notStartedActivitiesTitle": "Otvorene sesije ({num})",
-  "inProgressActivitiesTitle": "U tijeku ({num})",
-  "completedActivitiesTitle": "Završeno ({num})",
   "pickDifferentActivity": "Odaberite drugu aktivnost",
+  "inProgressActivitiesTitle": "Trenutno se događa ({num})",
+  "completedActivitiesTitle": "Završeno ({num})",
+  "inOngoingActivity": "Imate aktivnost koja traje!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11010,6 +11007,10 @@
   },
   "messageLanguageMismatchMessage": "Vaš ciljni jezik se ne podudara s ovom porukom. Želite li ažurirati svoj ciljni jezik?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

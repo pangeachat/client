@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-03 11:36:35.627602",
+  "@@last_modified": "2025-12-12 14:56:04.911626",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -9588,6 +9588,7 @@
   "addCourse": "Lisa kursus",
   "joinPublicCourse": "Liitu avaliku kursusega",
   "vocabLevelsDesc": "Siia lähevad sõnad, kui oled need tasemele tõstnud!",
+  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
@@ -10822,17 +10823,12 @@
   },
   "failedToLoadFeedback": "Tagasiside laadimine ebaõnnestus.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
   "noSavedActivitiesYet": "Tegevused ilmuvad siia, kui need on lõpetatud ja salvestatud.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10879,6 +10875,7 @@
   "inProgressActivitiesTitle": "Toimub praegu ({num})",
   "completedActivitiesTitle": "Tehtud ({num})",
   "pickDifferentActivity": "Vali teine tegevus",
+  "inOngoingActivity": "Teil on käimasolev tegevus!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10909,6 +10906,10 @@
   },
   "messageLanguageMismatchMessage": "Teie sihtkeel ei ühti selle sõnumiga. Kas soovite oma sihtkeelt uuendada?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

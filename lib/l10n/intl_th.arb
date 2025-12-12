@@ -4460,7 +4460,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-12-03 11:36:48.052510",
+  "@@last_modified": "2025-12-12 14:56:22.826920",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10379,6 +10379,7 @@
   "addCourse": "เพิ่มหลักสูตร",
   "joinPublicCourse": "เข้าร่วมหลักสูตรสาธารณะ",
   "vocabLevelsDesc": "นี่คือที่ที่คำศัพท์จะไปเมื่อคุณเลเวลอัปมันแล้ว!",
+  "highlightVocabTooltip": "เน้นคำศัพท์เป้าหมายด้านล่างโดยการส่งหรือฝึกฝนกับพวกเขาในแชท",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11609,17 +11610,12 @@
   },
   "failedToLoadFeedback": "ไม่สามารถโหลดข้อเสนอแนะได้",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "เน้นคำศัพท์เป้าหมายด้านล่างโดยการส่งหรือฝึกฝนกับพวกเขาในแชท",
   "noSavedActivitiesYet": "กิจกรรมจะปรากฏที่นี่เมื่อเสร็จสิ้นและบันทึกแล้ว",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11663,9 +11659,10 @@
     "placeholders": {}
   },
   "notStartedActivitiesTitle": "เปิดเซสชัน ({num})",
-  "inProgressActivitiesTitle": "กำลังดำเนินการ ({num})",
-  "completedActivitiesTitle": "เสร็จสิ้น ({num})",
   "pickDifferentActivity": "เลือกกิจกรรมอื่น",
+  "inProgressActivitiesTitle": "กำลังดำเนินการอยู่ ({num})",
+  "completedActivitiesTitle": "เสร็จสิ้น ({num})",
+  "inOngoingActivity": "คุณมีการดำเนินการที่กำลังเกิดขึ้น!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11696,6 +11693,10 @@
   },
   "messageLanguageMismatchMessage": "ภาษาที่คุณเลือกไม่ตรงกับข้อความนี้ ต้องการอัปเดตภาษาที่คุณเลือกหรือไม่?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }
