@@ -4,7 +4,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
@@ -13,20 +12,19 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class ActivityTemplateChatListItem extends StatelessWidget {
   final Room space;
-  final ActivityPlanModel activity;
   final List<ExtendedSpaceRoomsChunk> sessions;
   final Function(ExtendedSpaceRoomsChunk) joinActivity;
 
   const ActivityTemplateChatListItem({
     super.key,
     required this.space,
-    required this.activity,
     required this.sessions,
     required this.joinActivity,
   });
 
   @override
   Widget build(BuildContext context) {
+    final activity = sessions.first.activity;
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 8,
@@ -97,7 +95,7 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                   children: [
                     Expanded(
                       child: OpenRolesIndicator(
-                        roles: activity.roles.values.toList(),
+                        roles: e.activity.roles.values.toList(),
                         assignedRoles: e.assignedRoles,
                         space: space,
                       ),
