@@ -4521,7 +4521,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-03 11:37:21.302431",
+  "@@last_modified": "2025-12-12 14:57:12.595251",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -9319,6 +9319,7 @@
   "addCourse": "Cuir cúrsa leis",
   "joinPublicCourse": "Cláraigh i gcúrsa poiblí",
   "vocabLevelsDesc": "Seo áit a dtéann focail fhocail a bhfuil leibhéal acu nuair a dhéantar iad a leibhéalú!",
+  "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin a bhfuiltear ag iarraidh a ghrúpáil thíos trína sheoladh nó trína chleachtadh sa chomhrá",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10549,17 +10550,12 @@
   },
   "failedToLoadFeedback": "Theip ar an aiseolas a luchtú.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin a bhfuiltear ag iarraidh a ghrúpáil thíos trína sheoladh nó trína chleachtadh sa chomhrá",
   "noSavedActivitiesYet": "Tiocfaidh gníomhaíochtaí anseo nuair a bheidh siad críochnaithe agus sábháilte.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10606,6 +10602,7 @@
   "inProgressActivitiesTitle": "Ag tarlú anois ({num})",
   "completedActivitiesTitle": "Críochnaithe ({num})",
   "pickDifferentActivity": "Roghnaigh gníomhaíocht dhifriúil",
+  "inOngoingActivity": "Tá gníomhaíocht ar siúl agat!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10636,6 +10633,10 @@
   },
   "messageLanguageMismatchMessage": "Ní comhoiriúnach do theanga sprioc le haghaidh an teachtaireachta seo. An nuashonraigh do theanga sprioc?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

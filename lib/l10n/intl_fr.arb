@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-12-03 11:37:22.098085",
+  "@@last_modified": "2025-12-12 14:57:14.235816",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -9645,6 +9645,7 @@
   "addCourse": "Ajouter un cours",
   "joinPublicCourse": "Rejoindre un cours public",
   "vocabLevelsDesc": "C'est ici que les mots de vocabulaire seront placés une fois que vous les aurez améliorés !",
+  "highlightVocabTooltip": "Mettez en surbrillance les mots de vocabulaire cibles ci-dessous en les envoyant ou en les pratiquant dans le chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10875,17 +10876,12 @@
   },
   "failedToLoadFeedback": "Échec du chargement des retours.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Mettez en surbrillance les mots de vocabulaire cibles ci-dessous en les envoyant ou en les pratiquant dans le chat",
   "noSavedActivitiesYet": "Les activités apparaîtront ici une fois qu'elles seront terminées et enregistrées.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10932,6 +10928,7 @@
   "inProgressActivitiesTitle": "En cours ({num})",
   "completedActivitiesTitle": "Terminé ({num})",
   "pickDifferentActivity": "Choisissez une activité différente",
+  "inOngoingActivity": "Vous avez une activité en cours !",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10962,6 +10959,10 @@
   },
   "messageLanguageMismatchMessage": "Votre langue cible ne correspond pas à ce message. Voulez-vous mettre à jour votre langue cible ?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

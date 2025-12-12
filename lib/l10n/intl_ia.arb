@@ -1962,7 +1962,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2025-12-03 11:36:30.210370",
+  "@@last_modified": "2025-12-12 14:55:58.378450",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10399,6 +10399,7 @@
   "addCourse": "Adder un curso",
   "joinPublicCourse": "Joiner curso publice",
   "vocabLevelsDesc": "Isto es le loco ubi le vocabularies va in post una vice que tu ha levelate los!",
+  "highlightVocabTooltip": "Thekso fjalët e synuara të vocab-it më poshtë duke i dërguar ato ose duke praktikuar me to në bisedë",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11629,17 +11630,12 @@
   },
   "failedToLoadFeedback": "Nuk e ngarkoi feedback-un.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Thekso fjalët e synuara të vocab-it më poshtë duke i dërguar ato ose duke praktikuar me to në bisedë",
   "noSavedActivitiesYet": "Aktivitetet do të shfaqen këtu sapo të përfundojnë dhe të ruhen.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11683,9 +11679,10 @@
     "placeholders": {}
   },
   "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
-  "inProgressActivitiesTitle": "En curso ({num})",
-  "completedActivitiesTitle": "Hecho ({num})",
   "pickDifferentActivity": "Elige una actividad diferente",
+  "inProgressActivitiesTitle": "Sucedendo agora ({num})",
+  "completedActivitiesTitle": "Feito ({num})",
+  "inOngoingActivity": "Você tem uma atividade em andamento!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11716,6 +11713,10 @@
   },
   "messageLanguageMismatchMessage": "Tua lingua target non concordat cum hoc nuntio. Renovare tuam linguam target?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

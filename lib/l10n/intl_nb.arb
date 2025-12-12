@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:44.135739",
+  "@@last_modified": "2025-12-12 14:56:17.485955",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -10414,6 +10414,7 @@
   "addCourse": "Legg til et kurs",
   "joinPublicCourse": "Bli med på offentlig kurs",
   "vocabLevelsDesc": "Dette er hvor vokabularord vil komme når du har nivåert dem opp!",
+  "highlightVocabTooltip": "Fremhev målordene nedenfor ved å sende dem eller øve med dem i chatten",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11644,17 +11645,12 @@
   },
   "failedToLoadFeedback": "Kunne ikke laste tilbakemelding.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Fremhev målordene nedenfor ved å sende dem eller øve med dem i chatten",
   "noSavedActivitiesYet": "Aktiviteter vil vises her når de er fullført og lagret.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11701,6 +11697,7 @@
   "inProgressActivitiesTitle": "Pågår nå ({num})",
   "completedActivitiesTitle": "Ferdig ({num})",
   "pickDifferentActivity": "Velg en annen aktivitet",
+  "inOngoingActivity": "Du har en pågående aktivitet!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11731,6 +11728,10 @@
   },
   "messageLanguageMismatchMessage": "Mål språket ditt samsvarer ikke med denne meldingen. Vil du oppdatere målspråket ditt?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

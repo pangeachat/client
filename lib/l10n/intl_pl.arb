@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-03 11:37:09.726956",
+  "@@last_modified": "2025-12-12 14:56:55.860719",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10551,17 +10551,12 @@
   },
   "failedToLoadFeedback": "Nie udało się załadować opinii.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Podświetl docelowe słowa słownictwa poniżej, wysyłając je lub ćwicząc z nimi na czacie",
   "noSavedActivitiesYet": "Aktywności pojawią się tutaj, gdy zostaną ukończone i zapisane.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10607,7 +10602,7 @@
   "notStartedActivitiesTitle": "Otwarte sesje ({num})",
   "inProgressActivitiesTitle": "Trwa teraz ({num})",
   "completedActivitiesTitle": "Zrobione ({num})",
-  "pickDifferentActivity": "Wybierz inną aktywność",
+  "inOngoingActivity": "Masz trwającą aktywność!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10638,6 +10633,10 @@
   },
   "messageLanguageMismatchMessage": "Twój docelowy język nie pasuje do tej wiadomości. Zaktualizować swój docelowy język?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

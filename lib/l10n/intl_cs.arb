@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-03 11:36:43.008688",
+  "@@last_modified": "2025-12-12 14:56:15.654816",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -9928,6 +9928,7 @@
   "addCourse": "Přidat kurz",
   "joinPublicCourse": "Připojit se k veřejnému kurzu",
   "vocabLevelsDesc": "Zde se objeví slovíčka, jakmile je vylepšíte na vyšší úroveň!",
+  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11158,17 +11159,12 @@
   },
   "failedToLoadFeedback": "Nepodařilo se načíst zpětnou vazbu.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
   "noSavedActivitiesYet": "Aktivity se zde objeví, jakmile budou dokončeny a uloženy.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11215,6 +11211,7 @@
   "inProgressActivitiesTitle": "Probíhá nyní ({num})",
   "completedActivitiesTitle": "Hotovo ({num})",
   "pickDifferentActivity": "Vyberte jinou aktivitu",
+  "inOngoingActivity": "Máte probíhající aktivitu!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11245,6 +11242,10 @@
   },
   "messageLanguageMismatchMessage": "Jazyk cíle neodpovídá této zprávě. Chcete aktualizovat svůj cílový jazyk?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

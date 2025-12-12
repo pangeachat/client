@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-03 11:36:39.120785",
+  "@@last_modified": "2025-12-12 14:56:10.080732",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -10412,6 +10412,7 @@
   "addCourse": "加入課程",
   "joinPublicCourse": "加入公開課程",
   "vocabLevelsDesc": "呢度會放你升級後嘅詞彙！",
+  "highlightVocabTooltip": "通過在聊天中發送或練習以下目標詞彙來突出顯示它們",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11642,17 +11643,12 @@
   },
   "failedToLoadFeedback": "無法加載反饋。",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "通過在聊天中發送或練習以下目標詞彙來突出顯示它們",
   "noSavedActivitiesYet": "活動完成並保存後將會出現在這裡。",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11697,8 +11693,9 @@
   },
   "notStartedActivitiesTitle": "開放會議 ({num})",
   "inProgressActivitiesTitle": "正在進行中 ({num})",
-  "completedActivitiesTitle": "完成 ({num})",
   "pickDifferentActivity": "選擇其他活動",
+  "completedActivitiesTitle": "已完成 ({num})",
+  "inOngoingActivity": "你有一個正在進行的活動！",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11729,6 +11726,10 @@
   },
   "messageLanguageMismatchMessage": "您的目標語言與此消息不匹配。要更新您的目標語言嗎？",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }
