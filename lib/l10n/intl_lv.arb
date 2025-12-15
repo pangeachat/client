@@ -4486,7 +4486,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2025-12-12 14:56:30.616551",
+  "@@last_modified": "2025-12-15 09:25:03.820132",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10621,6 +10621,46 @@
   },
   "messageLanguageMismatchMessage": "Jūsu mērķa valoda nesakrīt ar šo ziņojumu. Vai vēlaties atjaunināt savu mērķa valodu?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Šeit ir visi šī kursa dalībnieki. Noklikšķiniet uz jebkura lietotāja avatāra un izvēlieties \"sākt sarunu\", lai nosūtītu DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Šis vārds tiks pastāvīgi noņemts no jūsu analīzes",
+  "woman": "Sieviete",
+  "man": "Vīrietis",
+  "otherGender": "Cits",
+  "unselectedGender": "Izvēlieties dzimuma opciju",
+  "gender": "Dzimums",
+  "chatParticipantTooltip": "Šeit ir visi šajā čatā. Noklikšķiniet uz jebkura lietotāja avatara un \"sākt sarunu\", lai nosūtītu DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

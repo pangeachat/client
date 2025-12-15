@@ -4282,7 +4282,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-12-12 14:56:46.077004",
+  "@@last_modified": "2025-12-15 09:25:25.306340",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10389,6 +10389,46 @@
   },
   "messageLanguageMismatchMessage": "Bokmål mål språket ditt samsvarer ikke med denne meldingen. Oppdater målspråket ditt?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ita ne boma in this course. Click on any user’s avatar and “start conversation” to send a DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ita vocab word will be permanently removed from your analytics",
+  "woman": "Baba",
+  "man": "Baba",
+  "otherGender": "Bola",
+  "unselectedGender": "Select a gender option",
+  "gender": "Bola",
+  "chatParticipantTooltip": "Ita is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

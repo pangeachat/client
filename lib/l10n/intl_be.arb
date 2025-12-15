@@ -1915,7 +1915,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-12-12 14:56:19.028442",
+  "@@last_modified": "2025-12-15 09:24:47.929034",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11734,6 +11734,46 @@
   },
   "messageLanguageMismatchMessage": "Ваша мэтавая мова не супадае з гэтым паведамленнем. Абнавіць вашу мэтавую мову?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага курса. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Гэтае слова будзе назаўсёды выдалена з вашай аналітыкі",
+  "woman": "Жанчына",
+  "man": "Мужчына",
+  "otherGender": "Іншае",
+  "unselectedGender": "Выберыце опцыю полу",
+  "gender": "Пол",
+  "chatParticipantTooltip": "Гэта ўсе ўдзельнікі гэтага чата. Націсніце на аватар любога карыстальніка і выберыце «пачаць размову», каб адправіць асабістае паведамленне.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

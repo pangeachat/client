@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:55:45.570582",
+  "@@last_modified": "2025-12-15 09:23:51.105281",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10626,6 +10626,46 @@
   },
   "messageLanguageMismatchMessage": "Bahasa target Anda tidak cocok dengan pesan ini. Perbarui bahasa target Anda?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Kata vocab ini akan dihapus secara permanen dari analitik Anda",
+  "woman": "Wanita",
+  "man": "Pria",
+  "otherGender": "Lainnya",
+  "unselectedGender": "Pilih opsi gender",
+  "gender": "Gender",
+  "chatParticipantTooltip": "Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

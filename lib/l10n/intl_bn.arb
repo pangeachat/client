@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:49.857662",
+  "@@last_modified": "2025-12-15 09:25:31.476425",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11739,6 +11739,46 @@
   },
   "messageLanguageMismatchMessage": "আপনার লক্ষ্য ভাষা এই বার্তার সাথে মেলে না। আপনার লক্ষ্য ভাষা আপডেট করবেন?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "এটি এই কোর্সের সকল সদস্য। যে কোনো ব্যবহারকারীর অবতার ক্লিক করুন এবং \"আলাপ শুরু করুন\" এ ডিএম পাঠাতে।",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "এই শব্দটি আপনার বিশ্লেষণ থেকে স্থায়ীভাবে মুছে ফেলা হবে",
+  "woman": "মহিলা",
+  "man": "পুরুষ",
+  "otherGender": "অন্যান্য",
+  "unselectedGender": "একটি লিঙ্গ বিকল্প নির্বাচন করুন",
+  "gender": "লিঙ্গ",
+  "chatParticipantTooltip": "এটি এই চ্যাটে সকলেই। যে কোনও ব্যবহারকারীর অ্যাভাটারে ক্লিক করুন এবং \"কথোপকথন শুরু করুন\" ডিএম পাঠাতে।",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

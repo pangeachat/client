@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:12.230518",
+  "@@last_modified": "2025-12-15 09:24:35.431468",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10638,6 +10638,46 @@
   },
   "messageLanguageMismatchMessage": "La tua lingua di destinazione non corrisponde a questo messaggio. Vuoi aggiornare la tua lingua di destinazione?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Questa è tutta la gente in questo corso. Clicca sull'avatar di qualsiasi utente e \"inizia conversazione\" per inviare un DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Questa parola di vocabolario verrà rimossa permanentemente dalle tue analisi",
+  "woman": "Donna",
+  "man": "Uomo",
+  "otherGender": "Altro",
+  "unselectedGender": "Seleziona un'opzione di genere",
+  "gender": "Genere",
+  "chatParticipantTooltip": "Questa è la lista di tutti in questa chat. Clicca sull'avatar di un utente e \"inizia conversazione\" per inviare un DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

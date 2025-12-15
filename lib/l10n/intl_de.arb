@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-12 14:56:06.649574",
+  "@@last_modified": "2025-12-15 09:24:26.934819",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10642,6 +10642,46 @@
   },
   "messageLanguageMismatchMessage": "Ihre Zielsprache stimmt nicht mit dieser Nachricht überein. Möchten Sie Ihre Zielsprache aktualisieren?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Das sind alle in diesem Kurs. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Dieses Vokabelwort wird dauerhaft aus Ihren Analysen entfernt",
+  "woman": "Frau",
+  "man": "Mann",
+  "otherGender": "Sonstiges",
+  "unselectedGender": "Wählen Sie eine Geschlechtsoption",
+  "gender": "Geschlecht",
+  "chatParticipantTooltip": "Das sind alle in diesem Chat. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-12 14:56:55.860719",
+  "@@last_modified": "2025-12-15 09:25:36.267119",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10633,6 +10633,46 @@
   },
   "messageLanguageMismatchMessage": "Twój docelowy język nie pasuje do tej wiadomości. Zaktualizować swój docelowy język?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "To są wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "To słowo w słownictwie zostanie trwale usunięte z twojej analizy",
+  "woman": "Kobieta",
+  "man": "Mężczyzna",
+  "otherGender": "Inna",
+  "unselectedGender": "Wybierz opcję płci",
+  "gender": "Płeć",
+  "chatParticipantTooltip": "To wszyscy w tym czacie. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:17.485955",
+  "@@last_modified": "2025-12-15 09:24:44.765104",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11728,6 +11728,46 @@
   },
   "messageLanguageMismatchMessage": "Mål språket ditt samsvarer ikke med denne meldingen. Vil du oppdatere målspråket ditt?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Dette er alle i dette kurset. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Dette ordet vil bli permanent fjernet fra analysene dine",
+  "woman": "Kvinne",
+  "man": "Mann",
+  "otherGender": "Annet",
+  "unselectedGender": "Velg et kjønnsalternativ",
+  "gender": "Kjønn",
+  "chatParticipantTooltip": "Dette er alle i denne chatten. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:03.478395",
+  "@@last_modified": "2025-12-15 09:24:21.361590",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11735,6 +11735,46 @@
   },
   "messageLanguageMismatchMessage": "O seu idioma de destino não corresponde a esta mensagem. Atualizar o seu idioma de destino?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Este é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Esta palavra de vocabulário será removida permanentemente da sua análise",
+  "woman": "Mulher",
+  "man": "Homem",
+  "otherGender": "Outro",
+  "unselectedGender": "Selecione uma opção de gênero",
+  "gender": "Gênero",
+  "chatParticipantTooltip": "Estas são todas as pessoas neste chat. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

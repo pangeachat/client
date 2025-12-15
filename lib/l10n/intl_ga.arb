@@ -4521,7 +4521,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-12 14:57:12.595251",
+  "@@last_modified": "2025-12-15 09:26:02.085109",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10633,6 +10633,46 @@
   },
   "messageLanguageMismatchMessage": "Ní comhoiriúnach do theanga sprioc le haghaidh an teachtaireachta seo. An nuashonraigh do theanga sprioc?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Is é seo gach duine sa chúrsa seo. Cliceáil ar avatar aon úsáideora agus \"tús a chur le comhrá\" chun DM a sheoladh.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Déanfidh an focal foclóra seo a bhaint go buan ó do anailísí",
+  "woman": "Bean",
+  "man": "Duine",
+  "otherGender": "Duine eile",
+  "unselectedGender": "Roghnaigh rogha gnéis",
+  "gender": "Gnéis",
+  "chatParticipantTooltip": "Is iad seo go léir atá sa chomhrá seo. Cliceáil ar avatar aon úsáideora agus \"tosaigh comhrá\" chun DM a sheoladh.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },

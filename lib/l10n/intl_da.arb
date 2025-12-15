@@ -1934,7 +1934,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-12-12 14:55:40.954552",
+  "@@last_modified": "2025-12-15 09:23:44.464746",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11696,6 +11696,46 @@
   },
   "messageLanguageMismatchMessage": "Dit målsprog stemmer ikke overens med denne besked. Opdater dit målsprog?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Dette er alle i dette kursus. Klik på enhver brugers avatar og \"start samtale\" for at sende en DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Dette ord vil blive permanent fjernet fra din analyse",
+  "woman": "Kvinde",
+  "man": "Mand",
+  "otherGender": "Andet",
+  "unselectedGender": "Vælg en kønsoption",
+  "gender": "Køn",
+  "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   },
