@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 11:22:36.750546",
+  "@@last_modified": "2025-12-15 09:24:50.199630",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10667,6 +10667,41 @@
   },
   "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Aquesta paraula de vocabulari s'eliminarà permanentment de les teves analítiques",
+  "woman": "Dona",
+  "man": "Home",
+  "otherGender": "Altre",
+  "unselectedGender": "Selecciona una opció de gènere",
+  "gender": "Gènere",
+  "chatParticipantTooltip": "Això és tothom en aquest xat. Fes clic a l'avatar de qualsevol usuari i \"inicia una conversa\" per enviar un DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

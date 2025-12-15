@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-12 11:22:12.385416",
+  "@@last_modified": "2025-12-15 09:23:56.649549",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11727,6 +11727,41 @@
   },
   "courseParticipantTooltip": "Toto sú všetci účastníci tohto kurzu. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“, aby ste poslali súkromnú správu.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Toto slovo v slovnej zásobe bude trvalo odstránené z vašich analytických údajov",
+  "woman": "Žena",
+  "man": "Muž",
+  "otherGender": "Iné",
+  "unselectedGender": "Vyberte možnosť pohlavia",
+  "gender": "Pohlavie",
+  "chatParticipantTooltip": "Toto sú všetci v tomto chate. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“ na odoslanie priamej správy.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

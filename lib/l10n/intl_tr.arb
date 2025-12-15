@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-12 11:22:46.710341",
+  "@@last_modified": "2025-12-15 09:25:08.869456",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10865,6 +10865,41 @@
   },
   "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Bu kelime analitiklerinizden kalıcı olarak kaldırılacaktır.",
+  "woman": "Kadın",
+  "man": "Erkek",
+  "otherGender": "Diğer",
+  "unselectedGender": "Bir cinsiyet seçeneği seçin",
+  "gender": "Cinsiyet",
+  "chatParticipantTooltip": "Bu sohbetin içindeki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneği ile DM gönderin.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

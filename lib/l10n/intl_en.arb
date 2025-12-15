@@ -4996,5 +4996,6 @@
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
   "gender": "Gender",
-  "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM."
+  "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
+  "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM."
 }

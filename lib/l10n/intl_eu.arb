@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-12 11:22:20.368827",
+  "@@last_modified": "2025-12-15 09:24:19.274460",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10643,6 +10643,41 @@
   },
   "courseParticipantTooltip": "Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Hau vocab hitza zure analitiketatik behin betiko ezabatuko da",
+  "woman": "Emakumea",
+  "man": "Gizona",
+  "otherGender": "Bestea",
+  "unselectedGender": "Aukeratu genero aukera bat",
+  "gender": "Generoa",
+  "chatParticipantTooltip": "Hau da txat honetan dena. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

@@ -4487,7 +4487,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-12-12 11:23:08.093437",
+  "@@last_modified": "2025-12-15 09:25:48.980649",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11728,6 +11728,41 @@
   },
   "courseParticipantTooltip": "यह इस पाठ्यक्रम में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेज सकें।",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "यह शब्द आपके विश्लेषण से स्थायी रूप से हटा दिया जाएगा",
+  "woman": "महिला",
+  "man": "पुरुष",
+  "otherGender": "अन्य",
+  "unselectedGender": "एक लिंग विकल्प चुनें",
+  "gender": "लिंग",
+  "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

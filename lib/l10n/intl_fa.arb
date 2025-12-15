@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 11:22:59.393792",
+  "@@last_modified": "2025-12-15 09:25:33.498201",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11375,6 +11375,41 @@
   },
   "courseParticipantTooltip": "این همه افرادی هستند که در این دوره حضور دارند. بر روی آواتار هر کاربر کلیک کنید و \"شروع گفتگو\" را بزنید تا یک پیام مستقیم ارسال کنید.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "این کلمه واژگان به طور دائمی از تجزیه و تحلیل شما حذف خواهد شد",
+  "woman": "زن",
+  "man": "مرد",
+  "otherGender": "سایر",
+  "unselectedGender": "یک گزینه جنسیتی انتخاب کنید",
+  "gender": "جنسیت",
+  "chatParticipantTooltip": "این افراد در این چت هستند. روی آواتار هر کاربر کلیک کنید و \"شروع مکالمه\" را بزنید تا یک پیام مستقیم ارسال کنید.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

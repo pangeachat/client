@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-12-12 11:22:39.104788",
+  "@@last_modified": "2025-12-15 09:24:55.525923",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11672,6 +11672,41 @@
   },
   "courseParticipantTooltip": "Estes são todos os participantes deste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Esta palavra de vocabulário será removida permanentemente de suas análises",
+  "woman": "Mulher",
+  "man": "Homem",
+  "otherGender": "Outro",
+  "unselectedGender": "Selecione uma opção de gênero",
+  "gender": "Gênero",
+  "chatParticipantTooltip": "Estas são todas as pessoas neste chat. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

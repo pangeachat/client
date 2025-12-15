@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-12 11:22:27.638160",
+  "@@last_modified": "2025-12-15 09:24:32.997112",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11734,6 +11734,41 @@
   },
   "courseParticipantTooltip": "這是這個課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」來發送私信。",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "這個詞彙將會從你的分析中永久移除",
+  "woman": "女性",
+  "man": "男性",
+  "otherGender": "其他",
+  "unselectedGender": "選擇一個性別選項",
+  "gender": "性別",
+  "chatParticipantTooltip": "這是這個聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」來發送私信。",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

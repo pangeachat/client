@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 11:22:53.341960",
+  "@@last_modified": "2025-12-15 09:25:23.479505",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10643,6 +10643,41 @@
   },
   "courseParticipantTooltip": "Dit zijn alle deelnemers aan deze cursus. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Dit vocabulairewoord wordt permanent verwijderd uit uw analyses",
+  "woman": "Vrouw",
+  "man": "Man",
+  "otherGender": "Anders",
+  "unselectedGender": "Selecteer een geslachtsoptie",
+  "gender": "Geslacht",
+  "chatParticipantTooltip": "Dit zijn alle deelnemers in deze chat. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

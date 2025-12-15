@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-12 11:22:41.980644",
+  "@@last_modified": "2025-12-15 09:25:00.951576",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11619,6 +11619,41 @@
   },
   "courseParticipantTooltip": "Ito ang lahat ng tao sa kursong ito. I-click ang avatar ng sinumang user at \"magsimula ng pag-uusap\" upang magpadala ng DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ang salitang bokabularyo na ito ay permanenteng aalisin mula sa iyong analytics",
+  "woman": "Babae",
+  "man": "Lalaki",
+  "otherGender": "Iba",
+  "unselectedGender": "Pumili ng opsyon sa kasarian",
+  "gender": "Kasarian",
+  "chatParticipantTooltip": "Ito ang lahat ng tao sa chat na ito. I-click ang avatar ng sinumang user at \"simulan ang pag-uusap\" upang magpadala ng DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

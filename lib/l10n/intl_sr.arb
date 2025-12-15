@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 11:23:14.629360",
+  "@@last_modified": "2025-12-15 09:25:59.116282",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11745,6 +11745,41 @@
   },
   "courseParticipantTooltip": "Ovo su svi u ovom kursu. Kliknite na avatar bilo kog korisnika i “počnite razgovor” da pošaljete DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ova reč u rečniku će biti trajno uklonjena iz vaših analitika",
+  "woman": "Žena",
+  "man": "Muškarac",
+  "otherGender": "Drugo",
+  "unselectedGender": "Izaberite opciju pola",
+  "gender": "Pol",
+  "chatParticipantTooltip": "Ovo su svi u ovom čatu. Kliknite na avatar bilo kog korisnika i \"započnite razgovor\" da pošaljete DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

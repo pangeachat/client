@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-12 11:22:13.516741",
+  "@@last_modified": "2025-12-15 09:24:00.441332",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11617,6 +11617,41 @@
   },
   "courseParticipantTooltip": "Isto é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Tēnā, ka tangohia tēnei kupu mōhiohio i tō rātaka mō ake tonu atu",
+  "woman": "Wāhine",
+  "man": "Tāne",
+  "otherGender": "Ētahi atu",
+  "unselectedGender": "Tīpakohia he kōwhiringa ira",
+  "gender": "Ira",
+  "chatParticipantTooltip": "Ko te katoa tēnei i roto i tēnei kōrero. Pāwhiritia te whakaahua o te kaiwhakamahi ka \"tīmata kōrero\" ki te tuku karere ki a ia.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

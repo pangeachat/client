@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-12 11:22:07.365377",
+  "@@last_modified": "2025-12-15 09:23:48.032476",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10644,6 +10644,41 @@
   },
   "courseParticipantTooltip": "Ez mindenki, aki ebben a kurzusban részt vesz. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ez a szókincs szó véglegesen eltávolításra kerül az elemzéseidből",
+  "woman": "Nő",
+  "man": "Férfi",
+  "otherGender": "Egyéb",
+  "unselectedGender": "Válassz egy nemi opciót",
+  "gender": "Neme",
+  "chatParticipantTooltip": "Ez mindenki ebben a csevegésben. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy DM-et küldj.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

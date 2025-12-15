@@ -26,6 +26,7 @@ enum InstructionsEnum {
   readingAssistanceOverview,
   emptyChatWarning,
   activityStatsMenu,
+  chatParticipantTooltip,
   courseParticipantTooltip,
   noSavedActivitiesYet,
 }
@@ -51,6 +52,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.morphAnalyticsList:
       case InstructionsEnum.readingAssistanceOverview:
       case InstructionsEnum.activityStatsMenu:
+      case InstructionsEnum.chatParticipantTooltip:
       case InstructionsEnum.courseParticipantTooltip:
       case InstructionsEnum.activityAnalyticsList:
       case InstructionsEnum.levelAnalytics:
@@ -107,6 +109,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.emptyChatWarningDesc;
       case InstructionsEnum.activityStatsMenu:
         return l10n.activityStatsButtonInstruction;
+      case InstructionsEnum.chatParticipantTooltip:
+        return l10n.chatParticipantTooltip;
       case InstructionsEnum.courseParticipantTooltip:
         return l10n.courseParticipantTooltip;
       case InstructionsEnum.levelAnalytics:

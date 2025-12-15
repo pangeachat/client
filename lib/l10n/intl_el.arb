@@ -4460,7 +4460,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2025-12-12 11:23:05.358697",
+  "@@last_modified": "2025-12-15 09:25:43.652561",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11701,6 +11701,41 @@
   },
   "courseParticipantTooltip": "Αυτοί είναι όλοι σε αυτό το μάθημα. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Αυτή η λέξη λεξιλογίου θα αφαιρεθεί μόνιμα από την ανάλυσή σας",
+  "woman": "Γυναίκα",
+  "man": "Άνδρας",
+  "otherGender": "Άλλο",
+  "unselectedGender": "Επιλέξτε μια επιλογή φύλου",
+  "gender": "Φύλο",
+  "chatParticipantTooltip": "Αυτοί είναι όλοι σε αυτή τη συνομιλία. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

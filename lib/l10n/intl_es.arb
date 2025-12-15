@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-12-12 11:21:59.477903",
+  "@@last_modified": "2025-12-15 09:23:36.120926",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -7878,6 +7878,41 @@
   },
   "courseParticipantTooltip": "Estos son todos en este curso. Haz clic en el avatar de cualquier usuario y \"iniciar conversación\" para enviar un DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Esta palabra de vocabulario será eliminada permanentemente de tus análisis",
+  "woman": "Mujer",
+  "man": "Hombre",
+  "otherGender": "Otro",
+  "unselectedGender": "Selecciona una opción de género",
+  "gender": "Género",
+  "chatParticipantTooltip": "Estas son todas las personas en este chat. Haz clic en el avatar de cualquier usuario y \"iniciar conversación\" para enviar un DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

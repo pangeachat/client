@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 11:22:40.535487",
+  "@@last_modified": "2025-12-15 09:24:57.877657",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10641,6 +10641,41 @@
   },
   "courseParticipantTooltip": "這是這門課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "此詞彙將永久從您的分析中移除",
+  "woman": "女性",
+  "man": "男性",
+  "otherGender": "其他",
+  "unselectedGender": "選擇性別選項",
+  "gender": "性別",
+  "chatParticipantTooltip": "這是此聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

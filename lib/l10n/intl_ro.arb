@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 11:22:10.631025",
+  "@@last_modified": "2025-12-15 09:23:54.051050",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11378,6 +11378,41 @@
   },
   "courseParticipantTooltip": "Aceasta este toată lumea din acest curs. Faceți clic pe avatarul oricărui utilizator și „începeți conversația” pentru a trimite un mesaj direct.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Această cuvânt de vocabular va fi eliminat permanent din analizele tale",
+  "woman": "Femeie",
+  "man": "Bărbat",
+  "otherGender": "Altul",
+  "unselectedGender": "Selectați o opțiune de gen",
+  "gender": "Gen",
+  "chatParticipantTooltip": "Aceasta este toată lumea din acest chat. Faceți clic pe avatarul oricărui utilizator și “începeți conversația” pentru a trimite un DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

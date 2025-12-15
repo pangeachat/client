@@ -3865,7 +3865,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-12-12 11:22:49.766035",
+  "@@last_modified": "2025-12-15 09:25:15.189261",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11448,6 +11448,41 @@
   },
   "courseParticipantTooltip": "Tai yra visi šio kurso dalyviai. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Šis žodynas bus nuolat pašalintas iš jūsų analizės",
+  "woman": "Moteris",
+  "man": "Vyras",
+  "otherGender": "Kitas",
+  "unselectedGender": "Pasirinkite lyties parinktį",
+  "gender": "Lytis",
+  "chatParticipantTooltip": "Tai visi šioje pokalbyje. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

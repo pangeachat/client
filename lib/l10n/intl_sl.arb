@@ -2468,7 +2468,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-12-12 11:22:25.737883",
+  "@@last_modified": "2025-12-15 09:24:29.191300",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11724,6 +11724,41 @@
   },
   "courseParticipantTooltip": "To so vsi v tem tečaju. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ta beseda v besedi bo trajno odstranjena iz vaših analiz.",
+  "woman": "Ženska",
+  "man": "Moški",
+  "otherGender": "Drugo",
+  "unselectedGender": "Izberite možnost spola",
+  "gender": "Spol",
+  "chatParticipantTooltip": "To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }

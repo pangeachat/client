@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-12 11:22:22.855531",
+  "@@last_modified": "2025-12-15 09:24:23.916121",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10914,6 +10914,41 @@
   },
   "courseParticipantTooltip": "See on kõik, kes on selles kursuses. Klõpsake mis tahes kasutaja avatari ja valige \"alusta vestlust\", et saata DM.",
   "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "See sõnavara sõna eemaldatakse teie analüüsist püsivalt",
+  "woman": "Naine",
+  "man": "Mees",
+  "otherGender": "Muu",
+  "unselectedGender": "Valige soo valik",
+  "gender": "Sugu",
+  "chatParticipantTooltip": "See on kõik, kes on selles vestluses. Klõpsake mis tahes kasutaja avatarile ja valige \"alusta vestlust\", et saata DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
     "type": "String",
     "placeholders": {}
   }
