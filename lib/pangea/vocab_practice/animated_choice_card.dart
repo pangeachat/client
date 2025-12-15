@@ -5,11 +5,13 @@ class AnimatedChoiceCard extends StatefulWidget {
   final String choice;
   final VoidCallback onPressed;
   final bool isCorrect;
+  final double height;
 
   const AnimatedChoiceCard({
     required this.choice,
     required this.onPressed,
     required this.isCorrect,
+    this.height = 72.0,
     super.key,
   });
 
@@ -80,7 +82,7 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
         ? AppConfig.success.withValues(alpha: 0.3)
         : AppConfig.error.withValues(alpha: 0.3);
 
-    const double baseHeight = 72;
+    final double baseHeight = widget.height;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -118,11 +120,16 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
                     opacity: showText ? 1.0 : 0.0,
                     child: Text(
                       _textContent,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize:
-                            Theme.of(context).textTheme.titleMedium?.fontSize ??
-                                18,
-                        fontWeight: FontWeight.w600,
+                        fontSize: (Theme.of(context)
+                                    .textTheme
+                                    .titleMedium
+                                    ?.fontSize ??
+                                16) *
+                            (baseHeight / 72.0).clamp(1.0, 1.4),
                       ),
                     ),
                   ),
