@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-12 14:56:32.447193",
+  "@@last_modified": "2025-12-15 14:43:38.968604",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10855,8 +10855,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "هؤلاء هم جميع المشاركين في هذه الدورة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "ستتم إزالة هذه الكلمة من تحليلاتك بشكل دائم",
+  "woman": "امرأة",
+  "man": "رجل",
+  "otherGender": "آخر",
+  "unselectedGender": "اختر خيار الجنس",
+  "gender": "الجنس",
+  "chatParticipantTooltip": "هؤلاء هم جميع الأشخاص في هذه الدردشة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "أدوات التعلم معطلة للرسائل التي ليست باللغة المستهدفة.",
+  "vocabEmoji": "رمز التعبير عن المفردات",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "طلب إعادة التوليد",
+  "optionalRegenerateReason": "(اختياري) السبب",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "لقد قمت بتعيين الرموز التعبيرية لـ {lemma}! سنستخدم هذا الرمز التعبيري لتمثيل الكلمة في أنشطة الممارسة في المستقبل.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

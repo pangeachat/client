@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-12-12 14:56:24.160772",
+  "@@last_modified": "2025-12-15 14:43:33.549800",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11667,8 +11667,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Estes são todos os participantes deste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Esta palavra de vocabulário será removida permanentemente de suas análises",
+  "woman": "Mulher",
+  "man": "Homem",
+  "otherGender": "Outro",
+  "unselectedGender": "Selecione uma opção de gênero",
+  "gender": "Gênero",
+  "chatParticipantTooltip": "Estas são todas as pessoas neste chat. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "As ferramentas de aprendizado estão desativadas para mensagens que não estão no seu idioma-alvo.",
+  "vocabEmoji": "Emoji de vocabulário",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Solicitar regeneração",
+  "optionalRegenerateReason": "(Opcional) Motivo",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Você definiu o emoji para {lemma}! Usaremos este emoji para representar a palavra nas atividades práticas daqui para frente.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

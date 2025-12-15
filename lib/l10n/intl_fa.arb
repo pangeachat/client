@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:51.600012",
+  "@@last_modified": "2025-12-15 14:43:54.300365",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11370,8 +11370,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "این همه افرادی هستند که در این دوره حضور دارند. بر روی آواتار هر کاربر کلیک کنید و \"شروع گفتگو\" را بزنید تا یک پیام مستقیم ارسال کنید.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "این کلمه واژگان به طور دائمی از تجزیه و تحلیل شما حذف خواهد شد",
+  "woman": "زن",
+  "man": "مرد",
+  "otherGender": "سایر",
+  "unselectedGender": "یک گزینه جنسیتی انتخاب کنید",
+  "gender": "جنسیت",
+  "chatParticipantTooltip": "این افراد در این چت هستند. روی آواتار هر کاربر کلیک کنید و \"شروع مکالمه\" را بزنید تا یک پیام مستقیم ارسال کنید.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "ابزارهای یادگیری برای پیام‌هایی که به زبان هدف شما نیستند غیرفعال شده‌اند.",
+  "vocabEmoji": "ایموجی واژگان",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "درخواست تجدید",
+  "optionalRegenerateReason": "(اختیاری) دلیل",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "شما ایموجی را برای {lemma} تنظیم کرده‌اید! ما از این ایموجی برای نمایش کلمه در فعالیت‌های عملی در آینده استفاده خواهیم کرد.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

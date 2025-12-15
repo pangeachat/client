@@ -95,8 +95,9 @@ class RoomParticipantsSection extends StatelessWidget {
                                     : Colors.transparent,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 12.0,
+                              ),
                               width: _width,
                               child: Column(
                                 spacing: 4.0,

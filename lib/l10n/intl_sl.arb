@@ -2468,7 +2468,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-12-12 14:56:08.288965",
+  "@@last_modified": "2025-12-15 14:43:19.279445",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11719,8 +11719,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "To so vsi v tem tečaju. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ta beseda v besedi bo trajno odstranjena iz vaših analiz.",
+  "woman": "Ženska",
+  "man": "Moški",
+  "otherGender": "Drugo",
+  "unselectedGender": "Izberite možnost spola",
+  "gender": "Spol",
+  "chatParticipantTooltip": "To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Orodja za učenje so onemogočena za sporočila, ki niso v vašem ciljnem jeziku.",
+  "vocabEmoji": "Emojiji za besedišče",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Zahtevaj regeneracijo",
+  "optionalRegenerateReason": "(Neobvezno) Razlog",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Nastavili ste emoji za {lemma}! Ta emoji bomo uporabili za predstavitev besede v praktičnih dejavnostih v prihodnje.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

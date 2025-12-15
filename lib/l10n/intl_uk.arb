@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-12-12 14:56:13.994412",
+  "@@last_modified": "2025-12-15 14:43:25.022859",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10632,8 +10632,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Це всі учасники цього курсу. Натисніть на аватар будь-якого користувача та виберіть \"почати розмову\", щоб надіслати особисте повідомлення.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Це слово vocab буде назавжди видалено з вашої аналітики",
+  "woman": "Жінка",
+  "man": "Чоловік",
+  "otherGender": "Інше",
+  "unselectedGender": "Виберіть варіант статі",
+  "gender": "Стать",
+  "chatParticipantTooltip": "Це всі учасники цього чату. Натисніть на аватар будь-якого користувача та \"почати розмову\", щоб надіслати особисте повідомлення.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Інструменти навчання вимкнені для повідомлень, які не є вашою цільовою мовою.",
+  "vocabEmoji": "Емодзі словника",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Запит на регенерацію",
+  "optionalRegenerateReason": "(Необов'язково) Причина",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Ви встановили емодзі для {lemma}! Ми будемо використовувати цей емодзі для представлення слова в практичних завданнях у майбутньому.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

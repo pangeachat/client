@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-12 14:56:34.173135",
+  "@@last_modified": "2025-12-15 14:43:40.183100",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10860,8 +10860,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Bu kelime analitiklerinizden kalıcı olarak kaldırılacaktır.",
+  "woman": "Kadın",
+  "man": "Erkek",
+  "otherGender": "Diğer",
+  "unselectedGender": "Bir cinsiyet seçeneği seçin",
+  "gender": "Cinsiyet",
+  "chatParticipantTooltip": "Bu sohbetin içindeki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneği ile DM gönderin.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Öğrenme araçları, hedef dilinizde olmayan mesajlar için devre dışıdır.",
+  "vocabEmoji": "Kelime emojisi",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Yeniden oluşturma talep et",
+  "optionalRegenerateReason": "(Opsiyonel) Sebep",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma} için emojiyi ayarladınız! Bu emojiyi, pratik aktivitelerde kelimeyi temsil etmek için kullanacağız.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

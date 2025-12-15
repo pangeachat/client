@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:39.506888",
+  "@@last_modified": "2025-12-15 14:43:45.911331",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6208,8 +6208,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Từ vựng này sẽ bị xóa vĩnh viễn khỏi phân tích của bạn",
+  "woman": "Phụ nữ",
+  "man": "Nam",
+  "otherGender": "Khác",
+  "unselectedGender": "Chọn một tùy chọn giới tính",
+  "gender": "Giới tính",
+  "chatParticipantTooltip": "Đây là tất cả mọi người trong cuộc trò chuyện này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Công cụ học tập bị vô hiệu hóa cho các tin nhắn không phải bằng ngôn ngữ mục tiêu của bạn.",
+  "vocabEmoji": "Biểu tượng từ vựng",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Yêu cầu tái tạo",
+  "optionalRegenerateReason": "(Tùy chọn) Lý do",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các hoạt động thực hành trong tương lai.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

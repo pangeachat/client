@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-12 14:56:01.835283",
+  "@@last_modified": "2025-12-15 14:43:14.531001",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10638,8 +10638,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Hau vocab hitza zure analitiketatik behin betiko ezabatuko da",
+  "woman": "Emakumea",
+  "man": "Gizona",
+  "otherGender": "Bestea",
+  "unselectedGender": "Aukeratu genero aukera bat",
+  "gender": "Generoa",
+  "chatParticipantTooltip": "Hau da txat honetan dena. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Ikaskuntza tresnak desgaituta daude zure helburu hizkuntzan ez dauden mezuetarako.",
+  "vocabEmoji": "Vocab emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Eskaera berritzea",
+  "optionalRegenerateReason": "(Aukerakoa) Arrazoia",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma} hitzaren emoji-a ezarri duzu! Etorkizuneko praktiketan hitz hori irudikatzeko emoji hau erabiliko dugu.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

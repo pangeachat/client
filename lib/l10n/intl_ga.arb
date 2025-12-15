@@ -4521,7 +4521,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-12 14:57:12.595251",
+  "@@last_modified": "2025-12-15 14:44:07.686971",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10636,8 +10636,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Is é seo gach duine sa chúrsa seo. Cliceáil ar avatar aon úsáideora agus \"tús a chur le comhrá\" chun DM a sheoladh.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Déanfidh an focal foclóra seo a bhaint go buan ó do anailísí",
+  "woman": "Bean",
+  "man": "Duine",
+  "otherGender": "Duine eile",
+  "unselectedGender": "Roghnaigh rogha gnéis",
+  "gender": "Gnéis",
+  "chatParticipantTooltip": "Is iad seo go léir atá sa chomhrá seo. Cliceáil ar avatar aon úsáideora agus \"tosaigh comhrá\" chun DM a sheoladh.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Tá na huirlisí foghlama dí-úsáidte do theachtaireachtaí nach bhfuil i do theanga sprioc.",
+  "vocabEmoji": "Emoji foclóra",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Iarr ar athghiniúint",
+  "optionalRegenerateReason": "(Roghnach) Cúis",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur in iúl i ngníomhaíochtaí cleachtais amach anseo.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

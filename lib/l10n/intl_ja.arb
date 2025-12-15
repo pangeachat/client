@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-12 14:57:02.463257",
+  "@@last_modified": "2025-12-15 14:43:59.878807",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11428,8 +11428,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "これはこのコースの全員です。任意のユーザーのアバターをクリックし、「会話を開始」を選択してDMを送信します。",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "この語彙はあなたの分析から永久に削除されます",
+  "woman": "女性",
+  "man": "男性",
+  "otherGender": "その他",
+  "unselectedGender": "性別オプションを選択してください",
+  "gender": "性別",
+  "chatParticipantTooltip": "これはこのチャットの全員です。任意のユーザーのアバターをクリックして「会話を開始」を選択すると、DMを送信できます。",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "学習ツールは、ターゲット言語でないメッセージには無効です。",
+  "vocabEmoji": "語彙絵文字",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "再生成をリクエスト",
+  "optionalRegenerateReason": "(オプション) 理由",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma}の絵文字が設定されました！今後の練習活動ではこの絵文字を使ってその単語を表現します。",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

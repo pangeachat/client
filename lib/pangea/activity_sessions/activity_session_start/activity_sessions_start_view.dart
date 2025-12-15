@@ -173,7 +173,9 @@ class ActivitySessionStartView extends StatelessWidget {
                                           controller.canSelectParticipant,
                                       assignedRoles: controller.assignedRoles,
                                     ),
-                                    if (controller.courseParent != null)
+                                    if (controller.courseParent != null &&
+                                        controller.state ==
+                                            SessionState.notStarted)
                                       _ActivityStatuses(
                                         statuses: controller.activityStatuses,
                                         space: controller.courseParent!,

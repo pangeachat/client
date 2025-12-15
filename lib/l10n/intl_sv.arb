@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:57.524563",
+  "@@last_modified": "2025-12-15 14:43:56.890657",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11116,8 +11116,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Detta är alla i den här kursen. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Detta vokabulärord kommer att tas bort permanent från din analys",
+  "woman": "Kvinna",
+  "man": "Man",
+  "otherGender": "Annat",
+  "unselectedGender": "Välj ett könsalternativ",
+  "gender": "Kön",
+  "chatParticipantTooltip": "Detta är alla i denna chatt. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Lärverktyg är inaktiverade för meddelanden som inte är på ditt målspråk.",
+  "vocabEmoji": "Vokabulärsemoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Begär regenerering",
+  "optionalRegenerateReason": "(Valfritt) Orsak",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Du har ställt in emojin för {lemma}! Vi kommer att använda denna emoji för att representera ordet i praktiska aktiviteter framöver.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

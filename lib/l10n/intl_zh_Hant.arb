@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:26.718989",
+  "@@last_modified": "2025-12-15 14:43:35.064582",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10636,8 +10636,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "這是這門課程中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "此詞彙將永久從您的分析中移除",
+  "woman": "女性",
+  "man": "男性",
+  "otherGender": "其他",
+  "unselectedGender": "選擇性別選項",
+  "gender": "性別",
+  "chatParticipantTooltip": "這是此聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "學習工具對於不在目標語言中的消息已被禁用。",
+  "vocabEmoji": "詞彙表情符號",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "請求再生",
+  "optionalRegenerateReason": "(選填) 原因",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "您已為 {lemma} 設定了表情符號！我們將在未來的練習活動中使用這個表情符號來代表這個詞。",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

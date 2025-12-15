@@ -4460,7 +4460,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-12-12 14:56:22.826920",
+  "@@last_modified": "2025-12-15 14:43:32.503180",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11696,8 +11696,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "นี่คือทุกคนในหลักสูตรนี้ คลิกที่อวาตาร์ของผู้ใช้ใด ๆ และ \"เริ่มการสนทนา\" เพื่อส่งข้อความส่วนตัว",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "คำศัพท์นี้จะถูกลบออกจากการวิเคราะห์ของคุณอย่างถาวร",
+  "woman": "ผู้หญิง",
+  "man": "ผู้ชาย",
+  "otherGender": "อื่นๆ",
+  "unselectedGender": "เลือกตัวเลือกเพศ",
+  "gender": "เพศ",
+  "chatParticipantTooltip": "นี่คือทุกคนในแชทนี้ คลิกที่อวาตาร์ของผู้ใช้ใด ๆ และ \"เริ่มการสนทนา\" เพื่อส่งข้อความส่วนตัว",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "เครื่องมือการเรียนรู้ถูกปิดใช้งานสำหรับข้อความที่ไม่ใช่ภาษาที่คุณต้องการ",
+  "vocabEmoji": "อีโมจิคำศัพท์",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "ขอการสร้างใหม่",
+  "optionalRegenerateReason": "(ไม่บังคับ) เหตุผล",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "คุณได้ตั้งค่าอีโมจิสำหรับ {lemma} แล้ว! เราจะใช้อีโมจินี้เพื่อแทนคำในกิจกรรมการฝึกฝนต่อไป",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

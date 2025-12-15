@@ -4487,7 +4487,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-12-12 14:57:04.374272",
+  "@@last_modified": "2025-12-15 14:44:00.905904",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11723,8 +11723,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "यह इस पाठ्यक्रम में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेज सकें।",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "यह शब्द आपके विश्लेषण से स्थायी रूप से हटा दिया जाएगा",
+  "woman": "महिला",
+  "man": "पुरुष",
+  "otherGender": "अन्य",
+  "unselectedGender": "एक लिंग विकल्प चुनें",
+  "gender": "लिंग",
+  "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "लर्निंग टूल्स उन संदेशों के लिए बंद हैं जो आपकी लक्षित भाषा में नहीं हैं।",
+  "vocabEmoji": "शब्दावली इमोजी",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "पुनर्जनन का अनुरोध करें",
+  "optionalRegenerateReason": "(वैकल्पिक) कारण",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास गतिविधियों में इस इमोजी का उपयोग करेंगे।",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

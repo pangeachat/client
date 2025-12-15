@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:55:45.570582",
+  "@@last_modified": "2025-12-15 14:42:56.674775",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10629,8 +10629,77 @@
     "type": "String",
     "placeholders": {}
   },
+  "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Kata vocab ini akan dihapus secara permanen dari analitik Anda",
+  "woman": "Wanita",
+  "man": "Pria",
+  "otherGender": "Lainnya",
+  "unselectedGender": "Pilih opsi gender",
+  "gender": "Gender",
+  "chatParticipantTooltip": "Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
+  },
+  "modeDisabled": "Alat pembelajaran dinonaktifkan untuk pesan yang tidak dalam bahasa target Anda.",
+  "vocabEmoji": "Emoji kosakata",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Permintaan regenerasi",
+  "optionalRegenerateReason": "(Opsional) Alasan",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Anda telah menetapkan emoji untuk {lemma}! Kami akan menggunakan emoji ini untuk mewakili kata dalam aktivitas praktik ke depan.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }
