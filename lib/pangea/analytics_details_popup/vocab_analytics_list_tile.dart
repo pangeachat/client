@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
-import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 
 class VocabAnalyticsListTile extends StatefulWidget {
   const VocabAnalyticsListTile({
     super.key,
     required this.emoji,
-    required this.constructUse,
-    required this.onTap,
+    required this.constructId,
+    required this.textColor,
+    required this.icon,
+    this.onTap,
   });
 
   final String? emoji;
-  final void Function() onTap;
-  final ConstructUses constructUse;
+  final void Function()? onTap;
+  final ConstructIdentifier constructId;
+  final Color textColor;
+  final Widget icon;
 
   @override
   VocabAnalyticsListTileState createState() => VocabAnalyticsListTileState();
@@ -43,9 +46,7 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
             padding: EdgeInsets.all(padding),
             decoration: BoxDecoration(
               color: _isHovered
-                  ? widget.constructUse.constructLevel
-                      .color(context)
-                      .withAlpha(20)
+                  ? widget.textColor.withAlpha(20)
                   : Colors.transparent,
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
             ),
@@ -55,28 +56,18 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
                 Container(
                   alignment: Alignment.center,
                   height: (maxWidth - padding * 2) * 0.6,
-                  child: widget.emoji != null
-                      ? Text(
-                          widget.emoji!,
-                          style: const TextStyle(
-                            fontSize: 22,
-                          ),
-                        )
-                      : widget.constructUse.constructLevel.icon(36.0),
+                  child: widget.icon,
                 ),
                 Container(
                   alignment: Alignment.topCenter,
                   padding: const EdgeInsets.only(top: 4),
                   height: (maxWidth - padding * 2) * 0.4,
                   child: ShrinkableText(
-                    text: widget.constructUse.lemma,
+                    text: widget.constructId.lemma,
                     maxWidth: maxWidth - padding * 2,
                     style: TextStyle(
                       fontSize: 16,
-                      color: Theme.of(context).brightness == Brightness.light
-                          ? widget.constructUse.constructLevel
-                              .darkColor(context)
-                          : widget.constructUse.constructLevel.color(context),
+                      color: widget.textColor,
                     ),
                   ),
                 ),

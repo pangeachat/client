@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-15 13:09:39.405643",
+  "@@last_modified": "2025-12-15 14:43:14.531001",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10701,5 +10701,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma} hitzaren emoji-a ezarri duzu! Etorkizuneko praktiketan hitz hori irudikatzeko emoji hau erabiliko dugu.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

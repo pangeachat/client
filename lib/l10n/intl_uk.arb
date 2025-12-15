@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-12-15 13:09:47.980810",
+  "@@last_modified": "2025-12-15 14:43:25.022859",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10695,5 +10695,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Ви встановили емодзі для {lemma}! Ми будемо використовувати цей емодзі для представлення слова в практичних завданнях у майбутньому.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

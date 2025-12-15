@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-15 13:10:17.963932",
+  "@@last_modified": "2025-12-15 14:43:59.878807",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11491,5 +11491,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma}の絵文字が設定されました！今後の練習活動ではこの絵文字を使ってその単語を表現します。",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -2598,7 +2598,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2025-12-15 13:10:22.979686",
+  "@@last_modified": "2025-12-15 14:44:05.262676",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11731,5 +11731,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "თქვენ დააყენეთ ემოჯი {lemma}-ისთვის! ჩვენ ამ ემოჯის გამოყენებას ვაპირებთ სიტყვების პრაქტიკული აქტივობების წარმოსადგენად.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

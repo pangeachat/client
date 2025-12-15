@@ -4013,7 +4013,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-12-15 13:09:25.461324",
+  "@@last_modified": "2025-12-15 14:42:51.625904",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11324,5 +11324,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Olet asettanut emojin {lemma} varten! Käytämme tätä emojia sanan edustamiseen käytännön aktiviteeteissa tulevaisuudessa.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

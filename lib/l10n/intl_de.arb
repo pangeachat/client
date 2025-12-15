@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-15 13:09:43.173559",
+  "@@last_modified": "2025-12-15 14:43:18.204232",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10708,5 +10708,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Sie haben das Emoji für {lemma} festgelegt! Wir werden dieses Emoji verwenden, um das Wort in zukünftigen Übungsaktivitäten darzustellen.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

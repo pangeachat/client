@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-15 13:09:49.179864",
+  "@@last_modified": "2025-12-15 14:43:26.456306",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11308,5 +11308,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Nastavili jste emoji pro {lemma}! Toto emoji použijeme k reprezentaci slova v praktických aktivitách v budoucnu.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

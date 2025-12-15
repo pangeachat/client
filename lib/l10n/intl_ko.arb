@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 13:09:21.214976",
+  "@@last_modified": "2025-12-15 14:42:46.121270",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10809,5 +10809,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma}에 대한 이모지를 설정했습니다! 앞으로 연습 활동에서 이 이모지를 사용하여 단어를 나타낼 것입니다.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

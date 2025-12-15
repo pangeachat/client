@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 13:10:08.027282",
+  "@@last_modified": "2025-12-15 14:43:48.784024",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10701,5 +10701,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Je hebt de emoji voor {lemma} ingesteld! We zullen deze emoji gebruiken om het woord in de praktijkactiviteiten voortaan weer te geven.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

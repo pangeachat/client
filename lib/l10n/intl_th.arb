@@ -4460,7 +4460,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-12-15 13:09:53.958347",
+  "@@last_modified": "2025-12-15 14:43:32.503180",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11759,5 +11759,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "คุณได้ตั้งค่าอีโมจิสำหรับ {lemma} แล้ว! เราจะใช้อีโมจินี้เพื่อแทนคำในกิจกรรมการฝึกฝนต่อไป",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

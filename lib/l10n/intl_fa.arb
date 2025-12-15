@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 13:10:12.289964",
+  "@@last_modified": "2025-12-15 14:43:54.300365",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11433,5 +11433,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "شما ایموجی را برای {lemma} تنظیم کرده‌اید! ما از این ایموجی برای نمایش کلمه در فعالیت‌های عملی در آینده استفاده خواهیم کرد.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -5002,5 +5002,14 @@
   "inOngoingActivity": "You have an ongoing activity!",
   "vocabEmoji": "Vocab emoji",
   "requestRegeneration": "Request regeneration",
-  "optionalRegenerateReason": "(Optional) Reason"
+  "optionalRegenerateReason": "(Optional) Reason",
+  "emojiSelectedSnackbar": "You’ve set the emoji for {lemma}! We’ll use this emoji to represent the word in practice activities going forward.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  }
 }

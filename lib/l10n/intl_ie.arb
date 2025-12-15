@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-15 13:09:34.373708",
+  "@@last_modified": "2025-12-15 14:43:07.923977",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11675,5 +11675,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Tú setaste an emoji pa {lemma}! Usaremos este emoji pa representar la palabra en les actividaes de práctica d'ora en adelante.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }
