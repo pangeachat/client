@@ -336,8 +336,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                         opacity: enabled ? 1.0 : 0.5,
                         child: PressableButton(
                           borderRadius: BorderRadius.circular(20),
-                          depressed: mode == selectedMode,
-                          color: theme.colorScheme.primaryContainer,
+                          depressed: mode == selectedMode || !enabled,
+                          color: enabled
+                              ? theme.colorScheme.primaryContainer
+                              : theme.disabledColor,
                           onPressed:
                               enabled ? () => updateMode(mode) : modeDisabled,
                           playSound: enabled && mode != SelectMode.audio,
