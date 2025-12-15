@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-15 12:08:55.118158",
+  "@@last_modified": "2025-12-15 13:10:00.150906",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10906,6 +10906,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "طلب إعادة التوليد",
+  "optionalRegenerateReason": "(اختياري) السبب",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

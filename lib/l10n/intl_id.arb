@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:08:14.523338",
+  "@@last_modified": "2025-12-15 13:09:30.033862",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10680,6 +10680,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Permintaan regenerasi",
+  "optionalRegenerateReason": "(Opsional) Alasan",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

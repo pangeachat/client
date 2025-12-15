@@ -50,6 +50,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -1960,6 +1961,16 @@ class ChatController extends State<ChatPageWithRoom>
       )
       ?.eventId;
 
+  String? get refreshEventID => timeline!.events
+      .firstWhereOrNull(
+        (event) =>
+            event.isVisibleInGui &&
+            event.senderId != room.client.userID &&
+            event.senderId == BotName.byEnvironment &&
+            !event.redacted,
+      )
+      ?.eventId;
+
   final StreamController<String> showToolbarStream =
       StreamController.broadcast();
 
@@ -2334,6 +2345,33 @@ class ChatController extends State<ChatPageWithRoom>
 
     context.go(
       parentSpaceId != null ? '/rooms/spaces/$parentSpaceId' : '/rooms',
+    );
+  }
+
+  Future<void> requestRegeneration(String eventId) async {
+    final reason = await showTextInputDialog(
+      context: context,
+      title: L10n.of(context).requestRegeneration,
+      hintText: L10n.of(context).optionalRegenerateReason,
+      autoSubmit: true,
+      maxLines: 5,
+    );
+
+    if (reason == null) return;
+    await showFutureLoadingDialog(
+      context: context,
+      future: () => room.sendEvent(
+        {
+          "m.relates_to": {
+            "rel_type": PangeaEventTypes.regenerationRequest,
+            "event_id": eventId,
+          },
+          PangeaEventTypes.regenerationRequest: {
+            "reason": reason,
+          },
+        },
+        type: PangeaEventTypes.regenerationRequest,
+      ),
     );
   }
   // Pangea#

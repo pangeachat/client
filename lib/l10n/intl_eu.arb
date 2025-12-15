@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-15 12:08:25.715230",
+  "@@last_modified": "2025-12-15 13:09:39.405643",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10689,6 +10689,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Eskaera berritzea",
+  "optionalRegenerateReason": "(Aukerakoa) Arrazoia",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

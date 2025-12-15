@@ -4282,7 +4282,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-12-15 12:09:05.659457",
+  "@@last_modified": "2025-12-15 13:10:08.949661",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10443,6 +10443,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Begär regenerering",
+  "optionalRegenerateReason": "(Valfritt) Orsak",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

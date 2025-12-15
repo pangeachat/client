@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:09:09.425648",
+  "@@last_modified": "2025-12-15 13:10:12.289964",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11421,6 +11421,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "درخواست تجدید",
+  "optionalRegenerateReason": "(اختیاری) دلیل",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

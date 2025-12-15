@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:08:36.478690",
+  "@@last_modified": "2025-12-15 13:09:46.808373",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10692,6 +10692,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Richiedi rigenerazione",
+  "optionalRegenerateReason": "(Facoltativo) Motivo",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

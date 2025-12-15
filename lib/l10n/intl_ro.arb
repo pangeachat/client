@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:08:15.866680",
+  "@@last_modified": "2025-12-15 13:09:31.920399",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11424,6 +11424,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Solicita regenerarea",
+  "optionalRegenerateReason": "(Opțional) Motiv",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

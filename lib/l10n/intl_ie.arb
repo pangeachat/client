@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-15 12:08:18.858371",
+  "@@last_modified": "2025-12-15 13:09:34.373708",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11663,6 +11663,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "D'iarr athghiniú",
+  "optionalRegenerateReason": "(Roghnach) Cúis",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

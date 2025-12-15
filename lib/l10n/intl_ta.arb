@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:09:02.883580",
+  "@@last_modified": "2025-12-15 13:10:06.701558",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10913,6 +10913,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "மறுசீரமைப்பை கோருங்கள்",
+  "optionalRegenerateReason": "(விருப்பம்) காரணம்",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

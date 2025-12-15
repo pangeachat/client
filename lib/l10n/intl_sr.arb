@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:09:24.388934",
+  "@@last_modified": "2025-12-15 13:10:24.291700",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11791,6 +11791,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Zatraži regeneraciju",
+  "optionalRegenerateReason": "(Opcionalno) Razlog",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

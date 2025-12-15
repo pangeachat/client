@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-12-15 12:08:20.497984",
+  "@@last_modified": "2025-12-15 13:09:35.275706",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11061,6 +11061,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Zatraži regeneraciju",
+  "optionalRegenerateReason": "(Opcionalno) Razlog",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

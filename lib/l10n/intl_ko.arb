@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:08:01.209019",
+  "@@last_modified": "2025-12-15 13:09:21.214976",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10797,6 +10797,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "재생 요청",
+  "optionalRegenerateReason": "(선택 사항) 이유",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

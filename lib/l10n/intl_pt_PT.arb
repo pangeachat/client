@@ -3335,7 +3335,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2025-12-15 12:08:45.986778",
+  "@@last_modified": "2025-12-15 13:09:54.999629",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11718,6 +11718,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Solicitar regeneração",
+  "optionalRegenerateReason": "(Opcional) Motivo",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

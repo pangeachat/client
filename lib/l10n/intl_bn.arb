@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:09:08.421474",
+  "@@last_modified": "2025-12-15 13:10:11.203206",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11793,6 +11793,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "পুনর্জন্মের জন্য অনুরোধ করুন",
+  "optionalRegenerateReason": "(ঐচ্ছিক) কারণ",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }
