@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-12-15 09:25:53.787422",
+  "@@last_modified": "2025-12-15 12:09:21.331850",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10784,6 +10784,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Инструменты обучения отключены для сообщений, которые не на вашем целевом языке.",
+  "vocabEmoji": "Эмодзи словарного запаса",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

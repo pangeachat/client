@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-15 09:24:26.934819",
+  "@@last_modified": "2025-12-15 12:08:31.951599",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10686,6 +10686,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Lernwerkzeuge sind für Nachrichten, die nicht in deiner Zielsprache sind, deaktiviert.",
+  "vocabEmoji": "Vokabel-Emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

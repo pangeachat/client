@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:25:39.245643",
+  "@@last_modified": "2025-12-15 12:09:13.720212",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11157,6 +11157,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Lärverktyg är inaktiverade för meddelanden som inte är på ditt målspråk.",
+  "vocabEmoji": "Vokabulärsemoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

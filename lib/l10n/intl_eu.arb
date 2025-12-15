@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-15 09:24:19.274460",
+  "@@last_modified": "2025-12-15 12:08:25.715230",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10679,6 +10679,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Ikaskuntza tresnak desgaituta daude zure helburu hizkuntzan ez dauden mezuetarako.",
+  "vocabEmoji": "Vocab emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

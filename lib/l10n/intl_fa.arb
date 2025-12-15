@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:25:33.498201",
+  "@@last_modified": "2025-12-15 12:09:09.425648",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11411,6 +11411,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "ابزارهای یادگیری برای پیام‌هایی که به زبان هدف شما نیستند غیرفعال شده‌اند.",
+  "vocabEmoji": "ایموجی واژگان",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

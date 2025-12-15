@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-15 09:24:23.916121",
+  "@@last_modified": "2025-12-15 12:08:29.165916",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10950,6 +10950,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Õppimise tööriistad on keelatud sõnumite jaoks, mis ei ole teie sihtkeeles.",
+  "vocabEmoji": "Sõnavara emojid",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

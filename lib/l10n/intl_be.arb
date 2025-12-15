@@ -1915,7 +1915,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-12-15 09:24:47.929034",
+  "@@last_modified": "2025-12-15 12:08:42.207839",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11778,6 +11778,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Інструменты навучання адключаны для паведамленняў, якія не знаходзяцца на вашай мове мэты.",
+  "vocabEmoji": "Эмодзі слоўніка",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

@@ -113,6 +113,13 @@ class VocabDetailsView extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 16.0),
+              Text(
+                L10n.of(context).vocabEmoji,
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      fontStyle: FontStyle.italic,
+                      color: textColor,
+                    ),
+              ),
               LemmaHighlightEmojiRow(
                 controller: controller,
                 cId: constructId,

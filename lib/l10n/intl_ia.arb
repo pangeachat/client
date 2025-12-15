@@ -1962,7 +1962,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2025-12-15 09:24:13.541449",
+  "@@last_modified": "2025-12-15 12:08:23.429617",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11757,6 +11757,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Ileŋa tools are disabled for messages that aren't in your target language.",
+  "vocabEmoji": "Vocab emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

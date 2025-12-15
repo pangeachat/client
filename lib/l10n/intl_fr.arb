@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-12-15 09:26:05.054908",
+  "@@last_modified": "2025-12-15 12:09:27.334083",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11003,6 +11003,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Les outils d'apprentissage sont désactivés pour les messages qui ne sont pas dans votre langue cible.",
+  "vocabEmoji": "Émoji de vocabulaire",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }
