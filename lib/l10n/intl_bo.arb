@@ -4282,7 +4282,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-12-15 13:10:08.949661",
+  "@@last_modified": "2025-12-15 14:43:49.837126",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10455,5 +10455,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "A’n setti emoji për {lemma}! Ne do ta përdorim këtë emoji për të përfaqësuar fjalën në aktivitetet praktike në vazhdim.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

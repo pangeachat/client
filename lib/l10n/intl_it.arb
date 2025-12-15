@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 13:09:46.808373",
+  "@@last_modified": "2025-12-15 14:43:23.466924",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10704,5 +10704,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Hai impostato l'emoji per {lemma}! Useremo questa emoji per rappresentare la parola nelle attività pratiche in futuro.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

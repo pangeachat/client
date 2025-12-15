@@ -29,6 +29,7 @@ enum InstructionsEnum {
   chatParticipantTooltip,
   courseParticipantTooltip,
   noSavedActivitiesYet,
+  setLemmaEmoji,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -57,6 +58,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.activityAnalyticsList:
       case InstructionsEnum.levelAnalytics:
       case InstructionsEnum.noSavedActivitiesYet:
+      case InstructionsEnum.setLemmaEmoji:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -117,6 +119,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.levelInfoTooltip;
       case InstructionsEnum.noSavedActivitiesYet:
         return l10n.noSavedActivitiesYet;
+      case InstructionsEnum.setLemmaEmoji:
+        return "";
     }
   }
 

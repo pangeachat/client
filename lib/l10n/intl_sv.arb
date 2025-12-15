@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 13:10:15.788663",
+  "@@last_modified": "2025-12-15 14:43:56.890657",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11179,5 +11179,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Du har ställt in emojin för {lemma}! Vi kommer att använda denna emoji för att representera ordet i praktiska aktiviteter framöver.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

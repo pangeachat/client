@@ -177,8 +177,20 @@ class VocabAnalyticsListView extends StatelessWidget {
                             onTap: () => context.go(
                               "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(vocabItem.id.string)}",
                             ),
-                            constructUse: vocabItem,
+                            constructId: vocabItem.id,
+                            textColor:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? vocabItem.lemmaCategory.darkColor(context)
+                                    : vocabItem.lemmaCategory.color(context),
                             emoji: vocabItem.id.userSetEmoji.firstOrNull,
+                            icon: vocabItem.id.userSetEmoji.isNotEmpty
+                                ? Text(
+                                    vocabItem.id.userSetEmoji.first,
+                                    style: const TextStyle(
+                                      fontSize: 22,
+                                    ),
+                                  )
+                                : vocabItem.lemmaCategory.icon(36.0),
                           );
                         },
                         childCount: _filteredVocab.length,

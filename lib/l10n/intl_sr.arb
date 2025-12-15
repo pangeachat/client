@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 13:10:24.291700",
+  "@@last_modified": "2025-12-15 14:44:06.530821",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11803,5 +11803,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti da predstavimo reč u praktičnim aktivnostima ubuduće.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

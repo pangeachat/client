@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 13:09:31.920399",
+  "@@last_modified": "2025-12-15 14:42:58.811266",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11436,5 +11436,14 @@
   "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Ai setat emoji-ul pentru {lemma}! Vom folosi acest emoji pentru a reprezenta cuvântul în activitățile practice de acum înainte.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }
