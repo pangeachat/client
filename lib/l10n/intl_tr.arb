@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-15 09:25:08.869456",
+  "@@last_modified": "2025-12-15 12:08:56.126544",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10901,6 +10901,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Öğrenme araçları, hedef dilinizde olmayan mesajlar için devre dışıdır.",
+  "vocabEmoji": "Kelime emojisi",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

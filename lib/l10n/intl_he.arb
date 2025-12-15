@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:24:10.268936",
+  "@@last_modified": "2025-12-15 12:08:22.241555",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11728,6 +11728,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "כלי הלמידה מושבתים עבור הודעות שאינן בשפת היעד שלך.",
+  "vocabEmoji": "אימוג'י אוצר מילים",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

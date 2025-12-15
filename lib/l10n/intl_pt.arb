@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:24:21.361590",
+  "@@last_modified": "2025-12-15 12:08:27.053836",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11779,6 +11779,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "As ferramentas de aprendizado estão desativadas para mensagens que não estão no seu idioma-alvo.",
+  "vocabEmoji": "Emoji de vocabulário",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

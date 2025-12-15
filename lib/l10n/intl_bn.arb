@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:25:31.476425",
+  "@@last_modified": "2025-12-15 12:09:08.421474",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11783,6 +11783,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "আপনার লক্ষ্য ভাষায় নয় এমন বার্তাগুলির জন্য শেখার সরঞ্জামগুলি অক্ষম করা হয়েছে।",
+  "vocabEmoji": "শব্দ ইমোজি",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

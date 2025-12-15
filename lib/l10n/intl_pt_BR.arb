@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:24:16.398324",
+  "@@last_modified": "2025-12-15 12:08:24.622046",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11037,6 +11037,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "As ferramentas de aprendizado estão desativadas para mensagens que não estão no seu idioma-alvo.",
+  "vocabEmoji": "Emoji de vocabulário",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

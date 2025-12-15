@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-15 09:25:28.907528",
+  "@@last_modified": "2025-12-15 12:09:06.977362",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10670,6 +10670,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "学习工具对不在目标语言中的消息是禁用的。",
+  "vocabEmoji": "词汇表情符号",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

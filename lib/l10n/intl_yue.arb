@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-15 09:24:32.997112",
+  "@@last_modified": "2025-12-15 12:08:35.097898",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11770,6 +11770,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "學習工具對於不在目標語言中的消息是禁用的。",
+  "vocabEmoji": "詞彙表情符號",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

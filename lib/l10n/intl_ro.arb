@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:23:54.051050",
+  "@@last_modified": "2025-12-15 12:08:15.866680",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11414,6 +11414,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Instrumentele de învățare sunt dezactivate pentru mesajele care nu sunt în limba ta țintă.",
+  "vocabEmoji": "Emoji vocabular",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

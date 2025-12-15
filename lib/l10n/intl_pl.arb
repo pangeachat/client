@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-15 09:25:36.267119",
+  "@@last_modified": "2025-12-15 12:09:12.410471",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10677,6 +10677,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Narzędzia do nauki są wyłączone dla wiadomości, które nie są w twoim docelowym języku.",
+  "vocabEmoji": "Emoji słownictwa",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

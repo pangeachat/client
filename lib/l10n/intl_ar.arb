@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-15 09:25:06.739901",
+  "@@last_modified": "2025-12-15 12:08:55.118158",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10896,6 +10896,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "أدوات التعلم معطلة للرسائل التي ليست باللغة المستهدفة.",
+  "vocabEmoji": "رمز التعبير عن المفردات",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

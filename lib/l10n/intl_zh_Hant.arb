@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:24:57.877657",
+  "@@last_modified": "2025-12-15 12:08:47.738143",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10677,6 +10677,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "學習工具對於不在目標語言中的消息已被禁用。",
+  "vocabEmoji": "詞彙表情符號",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

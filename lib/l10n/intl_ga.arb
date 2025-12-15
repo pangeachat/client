@@ -4521,7 +4521,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-15 09:26:02.085109",
+  "@@last_modified": "2025-12-15 12:09:25.820630",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10677,6 +10677,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Tá na huirlisí foghlama dí-úsáidte do theachtaireachtaí nach bhfuil i do theanga sprioc.",
+  "vocabEmoji": "Emoji foclóra",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

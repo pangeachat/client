@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:25:51.333694",
+  "@@last_modified": "2025-12-15 12:09:19.885781",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11768,6 +11768,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Lerniloj estas malaktivigitaj por mesaĝoj, kiuj ne estas en via cellingvo.",
+  "vocabEmoji": "Vocab emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

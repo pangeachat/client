@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:25:17.953771",
+  "@@last_modified": "2025-12-15 12:09:01.141337",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6249,6 +6249,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Công cụ học tập bị vô hiệu hóa cho các tin nhắn không phải bằng ngôn ngữ mục tiêu của bạn.",
+  "vocabEmoji": "Biểu tượng từ vựng",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

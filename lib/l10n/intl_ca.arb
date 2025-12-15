@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:24:50.199630",
+  "@@last_modified": "2025-12-15 12:08:43.538573",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10703,6 +10703,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Les eines d'aprenentatge estan desactivades per a missatges que no estan en el teu idioma objectiu.",
+  "vocabEmoji": "Emoji de vocabulari",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

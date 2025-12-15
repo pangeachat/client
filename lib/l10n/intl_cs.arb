@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-15 09:24:42.015689",
+  "@@last_modified": "2025-12-15 12:08:39.446987",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11286,6 +11286,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Nástroje pro učení jsou zakázány pro zprávy, které nejsou ve vašem cílovém jazyce.",
+  "vocabEmoji": "Emoji slovní zásoby",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

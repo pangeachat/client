@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-15 09:23:48.032476",
+  "@@last_modified": "2025-12-15 12:08:12.316889",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10680,6 +10680,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "A tanulási eszközök le vannak tiltva azokra az üzenetekre, amelyek nem a célnyelveden vannak.",
+  "vocabEmoji": "Szókincs emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

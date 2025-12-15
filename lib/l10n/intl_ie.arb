@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-15 09:24:00.441332",
+  "@@last_modified": "2025-12-15 12:08:18.858371",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11653,6 +11653,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Naidheachdan ionnsachaidh air an cur dheth airson teachdaireachdan nach eil ann an do chànan targaid.",
+  "vocabEmoji": "Emoji faclair",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

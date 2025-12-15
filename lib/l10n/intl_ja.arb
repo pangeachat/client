@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-15 09:25:46.202019",
+  "@@last_modified": "2025-12-15 12:09:16.362955",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11469,6 +11469,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "学習ツールは、ターゲット言語でないメッセージには無効です。",
+  "vocabEmoji": "語彙絵文字",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }

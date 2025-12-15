@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 09:23:51.105281",
+  "@@last_modified": "2025-12-15 12:08:14.523338",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10670,6 +10670,16 @@
     "placeholders": {}
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Alat pembelajaran dinonaktifkan untuk pesan yang tidak dalam bahasa target Anda.",
+  "vocabEmoji": "Emoji kosakata",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
     "type": "String",
     "placeholders": {}
   }
