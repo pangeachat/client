@@ -5252,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "G\xeanero";
     },
     get$modeDisabled() {
-      return "Learning tools are disabled for messages that aren't in your target language.";
+      return string$.As_fer;
     },
     get$courseParticipantTooltip() {
       return string$.Este__;
@@ -5262,6 +5262,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
+    },
+    get$vocabEmoji() {
+      return "Emoji de vocabul\xe1rio";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10488,6 +10491,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "G\xeanero";
     },
+    get$modeDisabled() {
+      return string$.As_fer;
+    },
     get$courseParticipantTooltip() {
       return string$.Este__;
     },
@@ -10496,6 +10502,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
+    },
+    get$vocabEmoji() {
+      return "Emoji de vocabul\xe1rio";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15722,6 +15731,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "G\xeanero";
     },
+    get$modeDisabled() {
+      return string$.As_fer;
+    },
     get$courseParticipantTooltip() {
       return 'Estes s\xe3o todos os participantes deste curso. Clique no avatar de qualquer usu\xe1rio e "iniciar conversa" para enviar uma DM.';
     },
@@ -15730,6 +15742,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
+    },
+    get$vocabEmoji() {
+      return "Emoji de vocabul\xe1rio";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15768,6 +15783,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Aqui_vv: "Aqui voc\xea pode ver todos os pontos que voc\xea ganhou e como!",
     As_alt: "As altera\xe7\xf5es na sua assinatura podem levar um momento para refletir no aplicativo.",
     As_ati: "As atividades aparecer\xe3o aqui assim que forem conclu\xeddas e salvas.",
+    As_fer: "As ferramentas de aprendizado est\xe3o desativadas para mensagens que n\xe3o est\xe3o no seu idioma-alvo.",
     Assine: "Assine para desbloquear ferramentas de mensagem",
     Assistgx20: "Assist\xeancia de gram\xe1tica est\xe1 desativada para o curso em que esta conversa est\xe1.",
     Assistgx2e: "Assist\xeancia de gram\xe1tica est\xe1 desativada.",
@@ -15918,7 +15934,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RN4oFRsvW003Lh35wpatGs2Z1HU="] = d.current;
+  d["nimYQKntd2ECBnfaRGituqdXIsg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

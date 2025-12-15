@@ -5241,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u09b2\u09bf\u0999\u09cd\u0997";
     },
     get$modeDisabled() {
-      return "Learning tools are disabled for messages that aren't in your target language.";
+      return "\u0986\u09aa\u09a8\u09be\u09b0 \u09b2\u0995\u09cd\u09b7\u09cd\u09af \u09ad\u09be\u09b7\u09be\u09af\u09bc \u09a8\u09af\u09bc \u098f\u09ae\u09a8 \u09ac\u09be\u09b0\u09cd\u09a4\u09be\u0997\u09c1\u09b2\u09bf\u09b0 \u099c\u09a8\u09cd\u09af \u09b6\u09c7\u0996\u09be\u09b0 \u09b8\u09b0\u099e\u09cd\u099c\u09be\u09ae\u0997\u09c1\u09b2\u09bf \u0985\u0995\u09cd\u09b7\u09ae \u0995\u09b0\u09be \u09b9\u09af\u09bc\u09c7\u099b\u09c7\u0964";
     },
     get$courseParticipantTooltip() {
       return '\u098f\u099f\u09bf \u098f\u0987 \u0995\u09cb\u09b0\u09cd\u09b8\u09c7\u09b0 \u09b8\u0995\u09b2 \u09b8\u09a6\u09b8\u09cd\u09af\u0964 \u09af\u09c7 \u0995\u09cb\u09a8\u09cb \u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0\u0995\u09be\u09b0\u09c0\u09b0 \u0985\u09ac\u09a4\u09be\u09b0 \u0995\u09cd\u09b2\u09bf\u0995 \u0995\u09b0\u09c1\u09a8 \u098f\u09ac\u0982 "\u0986\u09b2\u09be\u09aa \u09b6\u09c1\u09b0\u09c1 \u0995\u09b0\u09c1\u09a8" \u098f \u09a1\u09bf\u098f\u09ae \u09aa\u09be\u09a0\u09be\u09a4\u09c7\u0964';
@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "\u0986\u09aa\u09a8\u09be\u09b0 \u098f\u0995\u099f\u09bf \u099a\u09b2\u09ae\u09be\u09a8 \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae \u0986\u099b\u09c7!";
+    },
+    get$vocabEmoji() {
+      return "\u09b6\u09ac\u09cd\u09a6 \u0987\u09ae\u09cb\u099c\u09bf";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5265,7 +5268,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3enLTomKJxcuBw1ZuWOTHT8aykw="] = d.current;
+  d["HfWpviSi4lmEIZnnLavUoaHxn6U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map

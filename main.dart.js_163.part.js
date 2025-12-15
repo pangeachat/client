@@ -5242,7 +5242,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bola";
     },
     get$modeDisabled() {
-      return "Learning tools are disabled for messages that aren't in your target language.";
+      return "Lernwerkzeuge sind f\xfcr Nachrichten, die nicht in deiner Zielsprache sind, deaktiviert.";
     },
     get$courseParticipantTooltip() {
       return "Ita ne boma in this course. Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
@@ -5252,6 +5252,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "Keni nj\xeb aktivitet n\xeb vazhdim!";
+    },
+    get$vocabEmoji() {
+      return "Vokabel-Emoji";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5279,7 +5282,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GeaknjRk7fyHbihWE3raLjxmYUA="] = d.current;
+  d["QSnp+pVZ4BC0a6HfG8nJeJRE48A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

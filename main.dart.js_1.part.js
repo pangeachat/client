@@ -5247,7 +5247,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u6027\u522b";
     },
     get$modeDisabled() {
-      return "Learning tools are disabled for messages that aren't in your target language.";
+      return "\u5b66\u4e60\u5de5\u5177\u5bf9\u4e0d\u5728\u76ee\u6807\u8bed\u8a00\u4e2d\u7684\u6d88\u606f\u662f\u7981\u7528\u7684\u3002";
     },
     get$courseParticipantTooltip() {
       return "\u8fd9\u662f\u672c\u8bfe\u7a0b\u4e2d\u7684\u6240\u6709\u4eba\u3002\u70b9\u51fb\u4efb\u4f55\u7528\u6237\u7684\u5934\u50cf\u5e76\u9009\u62e9\u201c\u5f00\u59cb\u5bf9\u8bdd\u201d\u4ee5\u53d1\u9001\u79c1\u4fe1\u3002";
@@ -5257,6 +5257,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "\u60a8\u6709\u4e00\u4e2a\u6b63\u5728\u8fdb\u884c\u7684\u6d3b\u52a8\uff01";
+    },
+    get$vocabEmoji() {
+      return "\u8bcd\u6c47\u8868\u60c5\u7b26\u53f7";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10483,6 +10486,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "\u6027\u5225";
     },
+    get$modeDisabled() {
+      return "\u5b78\u7fd2\u5de5\u5177\u5c0d\u65bc\u4e0d\u5728\u76ee\u6a19\u8a9e\u8a00\u4e2d\u7684\u6d88\u606f\u5df2\u88ab\u7981\u7528\u3002";
+    },
     get$courseParticipantTooltip() {
       return "\u9019\u662f\u9019\u9580\u8ab2\u7a0b\u4e2d\u7684\u6240\u6709\u4eba\u3002\u9ede\u64ca\u4efb\u4f55\u7528\u6236\u7684\u982d\u50cf\u4e26\u9078\u64c7\u300c\u958b\u59cb\u5c0d\u8a71\u300d\u4ee5\u767c\u9001\u79c1\u4fe1\u3002";
     },
@@ -10491,6 +10497,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "\u60a8\u6709\u4e00\u500b\u6b63\u5728\u9032\u884c\u7684\u6d3b\u52d5\uff01";
+    },
+    get$vocabEmoji() {
+      return "\u8a5e\u5f59\u8868\u60c5\u7b26\u865f";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10506,7 +10515,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["l1Kseef8vuy4S//cX/NH9+75J8w="] = d.current;
+  d["IPjxumcg3XzTo59Tl9h85K6ChAc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

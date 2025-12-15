@@ -5241,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0627\u0644\u062c\u0646\u0633";
     },
     get$modeDisabled() {
-      return "Learning tools are disabled for messages that aren't in your target language.";
+      return "\u0623\u062f\u0648\u0627\u062a \u0627\u0644\u062a\u0639\u0644\u0645 \u0645\u0639\u0637\u0644\u0629 \u0644\u0644\u0631\u0633\u0627\u0626\u0644 \u0627\u0644\u062a\u064a \u0644\u064a\u0633\u062a \u0628\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0645\u0633\u062a\u0647\u062f\u0641\u0629.";
     },
     get$courseParticipantTooltip() {
       return '\u0647\u0624\u0644\u0627\u0621 \u0647\u0645 \u062c\u0645\u064a\u0639 \u0627\u0644\u0645\u0634\u0627\u0631\u0643\u064a\u0646 \u0641\u064a \u0647\u0630\u0647 \u0627\u0644\u062f\u0648\u0631\u0629. \u0627\u0646\u0642\u0631 \u0639\u0644\u0649 \u0635\u0648\u0631\u0629 \u0623\u064a \u0645\u0633\u062a\u062e\u062f\u0645 \u0648"\u0627\u0628\u062f\u0623 \u0645\u062d\u0627\u062f\u062b\u0629" \u0644\u0625\u0631\u0633\u0627\u0644 \u0631\u0633\u0627\u0644\u0629 \u0645\u0628\u0627\u0634\u0631\u0629.';
@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "\u0644\u062f\u064a\u0643 \u0646\u0634\u0627\u0637 \u062c\u0627\u0631\u064d!";
+    },
+    get$vocabEmoji() {
+      return "\u0631\u0645\u0632 \u0627\u0644\u062a\u0639\u0628\u064a\u0631 \u0639\u0646 \u0627\u0644\u0645\u0641\u0631\u062f\u0627\u062a";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5265,7 +5268,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["V3BuJZ41A359eG/Wcc42GOZW6+M="] = d.current;
+  d["eqCBZzwHLG74ELGtWZZPbM1HkiY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_140.part.js.map

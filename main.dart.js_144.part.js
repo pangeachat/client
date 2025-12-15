@@ -5241,7 +5241,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u041f\u043e\u043b";
     },
     get$modeDisabled() {
-      return "Learning tools are disabled for messages that aren't in your target language.";
+      return "\u0406\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b \u043d\u0430\u0432\u0443\u0447\u0430\u043d\u043d\u044f \u0430\u0434\u043a\u043b\u044e\u0447\u0430\u043d\u044b \u0434\u043b\u044f \u043f\u0430\u0432\u0435\u0434\u0430\u043c\u043b\u0435\u043d\u043d\u044f\u045e, \u044f\u043a\u0456\u044f \u043d\u0435 \u0437\u043d\u0430\u0445\u043e\u0434\u0437\u044f\u0446\u0446\u0430 \u043d\u0430 \u0432\u0430\u0448\u0430\u0439 \u043c\u043e\u0432\u0435 \u043c\u044d\u0442\u044b.";
     },
     get$courseParticipantTooltip() {
       return "\u0413\u044d\u0442\u0430 \u045e\u0441\u0435 \u045e\u0434\u0437\u0435\u043b\u044c\u043d\u0456\u043a\u0456 \u0433\u044d\u0442\u0430\u0433\u0430 \u043a\u0443\u0440\u0441\u0430. \u041d\u0430\u0446\u0456\u0441\u043d\u0456\u0446\u0435 \u043d\u0430 \u0430\u0432\u0430\u0442\u0430\u0440 \u043b\u044e\u0431\u043e\u0433\u0430 \u043a\u0430\u0440\u044b\u0441\u0442\u0430\u043b\u044c\u043d\u0456\u043a\u0430 \u0456 \u0432\u044b\u0431\u0435\u0440\u044b\u0446\u0435 \xab\u043f\u0430\u0447\u0430\u0446\u044c \u0440\u0430\u0437\u043c\u043e\u0432\u0443\xbb, \u043a\u0430\u0431 \u0430\u0434\u043f\u0440\u0430\u0432\u0456\u0446\u044c \u0430\u0441\u0430\u0431\u0456\u0441\u0442\u0430\u0435 \u043f\u0430\u0432\u0435\u0434\u0430\u043c\u043b\u0435\u043d\u043d\u0435.";
@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "\u0423 \u0432\u0430\u0441 \u0451\u0441\u0446\u044c \u0431\u044f\u0433\u0443\u0447\u0430\u044f \u0430\u043a\u0442\u044b\u045e\u043d\u0430\u0441\u0446\u044c!";
+    },
+    get$vocabEmoji() {
+      return "\u042d\u043c\u043e\u0434\u0437\u0456 \u0441\u043b\u043e\u045e\u043d\u0456\u043a\u0430";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5268,7 +5271,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["p37uCcYOVV7mSG7nuVHJHCKs4Ss="] = d.current;
+  d["klDPXpl8c73qpVo85jJVELJdwPU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map
