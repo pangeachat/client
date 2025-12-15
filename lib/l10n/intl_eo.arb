@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:15.815743",
+  "@@last_modified": "2025-12-15 09:25:51.333694",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -10410,6 +10410,7 @@
   "addCourse": "Aldoni kurson",
   "joinPublicCourse": "Aliĝi al publika kurso",
   "vocabLevelsDesc": "Jen kie vortoj de vortprovizo iros post kiam vi ilin plibonigos!",
+  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11640,17 +11641,12 @@
   },
   "failedToLoadFeedback": "Malsukcesis ŝarĝi la reagojn.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
   "noSavedActivitiesYet": "Aktivecoj aperos ĉi tie post kiam ili estos kompletigitaj kaj konservitaj.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11697,6 +11693,7 @@
   "inProgressActivitiesTitle": "Okazas nun ({num})",
   "completedActivitiesTitle": "Finiĝis ({num})",
   "pickDifferentActivity": "Elektu alian aktivon",
+  "inOngoingActivity": "Vi havas daŭrantan aktivon!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11727,6 +11724,50 @@
   },
   "messageLanguageMismatchMessage": "Via celolingvo ne kongruas kun ĉi tiu mesaĝo. Ĉu ĝisdatigi vian celolingvon?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu kurso. Klaku sur la avatareto de iu ajn uzanto kaj \"komencu konversacion\" por sendi DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ĉi tiu vortaro vorto estos permanente forigita el viaj analizoj",
+  "woman": "Virino",
+  "man": "Viro",
+  "otherGender": "Alia",
+  "unselectedGender": "Elektu genran opcion",
+  "gender": "Genro",
+  "chatParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu konversacio. Klaku sur la avataro de iu ajn kaj \"komenci konversacion\" por sendi DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

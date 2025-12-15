@@ -21,6 +21,8 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extensio
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/course_settings.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -317,7 +319,20 @@ class SpaceDetailsContent extends StatelessWidget {
                   );
                 case SpaceSettingsTabs.participants:
                   return SingleChildScrollView(
-                    child: RoomParticipantsSection(room: room),
+                    child: Column(
+                      children: [
+                        const InstructionsInlineTooltip(
+                          instructionsEnum:
+                              InstructionsEnum.courseParticipantTooltip,
+                          padding: EdgeInsets.only(
+                            bottom: 16.0,
+                            left: 16.0,
+                            right: 16.0,
+                          ),
+                        ),
+                        RoomParticipantsSection(room: room),
+                      ],
+                    ),
                   );
                 case SpaceSettingsTabs.analytics:
                   return SingleChildScrollView(

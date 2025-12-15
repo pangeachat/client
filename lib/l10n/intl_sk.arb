@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-03 11:36:25.077269",
+  "@@last_modified": "2025-12-15 09:23:56.649549",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -10405,6 +10405,7 @@
   "addCourse": "Pridať kurz",
   "joinPublicCourse": "Pripojiť sa k verejnému kurzu",
   "vocabLevelsDesc": "Sem pôjdu slovíčka, keď ich vylepšíte na vyššiu úroveň!",
+  "highlightVocabTooltip": "Zvýraznite cieľové slovíčka nižšie ich odoslaním alebo cvičením s nimi v chate",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11635,17 +11636,12 @@
   },
   "failedToLoadFeedback": "Nepodarilo sa načítať spätnú väzbu.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Zvýraznite cieľové slovíčka nižšie ich odoslaním alebo cvičením s nimi v chate",
   "noSavedActivitiesYet": "Aktivity sa tu objavia, keď budú dokončené a uložené.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11692,6 +11688,7 @@
   "inProgressActivitiesTitle": "Prebieha teraz ({num})",
   "completedActivitiesTitle": "Hotovo ({num})",
   "pickDifferentActivity": "Vyberte inú aktivitu",
+  "inOngoingActivity": "Máte prebiehajúcu aktivitu!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11722,6 +11719,50 @@
   },
   "messageLanguageMismatchMessage": "Vaša cieľová jazyková verzia sa nezhoduje s touto správou. Chcete aktualizovať svoju cieľovú jazykovú verziu?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Toto sú všetci účastníci tohto kurzu. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“, aby ste poslali súkromnú správu.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Toto slovo v slovnej zásobe bude trvalo odstránené z vašich analytických údajov",
+  "woman": "Žena",
+  "man": "Muž",
+  "otherGender": "Iné",
+  "unselectedGender": "Vyberte možnosť pohlavia",
+  "gender": "Pohlavie",
+  "chatParticipantTooltip": "Toto sú všetci v tomto chate. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“ na odoslanie priamej správy.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

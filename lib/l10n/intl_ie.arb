@@ -4376,7 +4376,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-03 11:36:26.117148",
+  "@@last_modified": "2025-12-15 09:24:00.441332",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10295,6 +10295,7 @@
   "addCourse": "Zontar un corsa",
   "joinPublicCourse": "Kumencar corsa publice",
   "vocabLevelsDesc": "Chest è il loc dove i parôls di vocabulari a saran miss in plance une volte che tu o i às nivellâts!",
+  "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin atá mar sprioc thíos trína sheoladh nó trína chleachtadh sa chomhrá",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11525,17 +11526,12 @@
   },
   "failedToLoadFeedback": "Níl an t-eolas ar fáil.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin atá mar sprioc thíos trína sheoladh nó trína chleachtadh sa chomhrá",
   "noSavedActivitiesYet": "Tiocfaidh gníomhaíochtaí anseo nuair a bheidh siad críochnaithe agus sábháilte.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11579,9 +11575,10 @@
     "placeholders": {}
   },
   "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
-  "inProgressActivitiesTitle": "En curso ({num})",
-  "completedActivitiesTitle": "Hecho ({num})",
   "pickDifferentActivity": "Elige una actividad diferente",
+  "inProgressActivitiesTitle": "Sucedió ahora ({num})",
+  "completedActivitiesTitle": "Hecho ({num})",
+  "inOngoingActivity": "¡Tienes una actividad en curso!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11612,6 +11609,50 @@
   },
   "messageLanguageMismatchMessage": "Tua lingua target non concordat cum hoc nuntio. Renovare linguam tuam target?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Isto é todo mundo neste curso. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Tēnā, ka tangohia tēnei kupu mōhiohio i tō rātaka mō ake tonu atu",
+  "woman": "Wāhine",
+  "man": "Tāne",
+  "otherGender": "Ētahi atu",
+  "unselectedGender": "Tīpakohia he kōwhiringa ira",
+  "gender": "Ira",
+  "chatParticipantTooltip": "Ko te katoa tēnei i roto i tēnei kōrero. Pāwhiritia te whakaahua o te kaiwhakamahi ka \"tīmata kōrero\" ki te tuku karere ki a ia.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

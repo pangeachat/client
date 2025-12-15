@@ -4487,7 +4487,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-12-03 11:37:14.540576",
+  "@@last_modified": "2025-12-15 09:25:48.980649",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10406,6 +10406,7 @@
   "addCourse": "कोर्स जोड़ें",
   "joinPublicCourse": "सार्वजनिक कोर्स में शामिल हों",
   "vocabLevelsDesc": "यहां वे शब्द जाएंगे जब आप उन्हें स्तर देंगे!",
+  "highlightVocabTooltip": "नीचे लक्षित शब्दों को हाइलाइट करें, उन्हें चैट में भेजकर या उनके साथ अभ्यास करके।",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11636,17 +11637,12 @@
   },
   "failedToLoadFeedback": "फीडबैक लोड करने में विफल।",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "नीचे लक्षित शब्दों को हाइलाइट करें, उन्हें चैट में भेजकर या उनके साथ अभ्यास करके।",
   "noSavedActivitiesYet": "गतिविधियाँ यहाँ तब दिखाई देंगी जब वे पूरी हो जाएँगी और सहेजी जाएँगी।",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11693,6 +11689,7 @@
   "inProgressActivitiesTitle": "अब हो रहा है ({num})",
   "completedActivitiesTitle": "पूरा हुआ ({num})",
   "pickDifferentActivity": "एक अलग गतिविधि चुनें",
+  "inOngoingActivity": "आपके पास एक चल रही गतिविधि है!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11723,6 +11720,50 @@
   },
   "messageLanguageMismatchMessage": "आपकी लक्षित भाषा इस संदेश से मेल नहीं खाती। क्या आप अपनी लक्षित भाषा अपडेट करना चाहेंगे?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "यह इस पाठ्यक्रम में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेज सकें।",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "यह शब्द आपके विश्लेषण से स्थायी रूप से हटा दिया जाएगा",
+  "woman": "महिला",
+  "man": "पुरुष",
+  "otherGender": "अन्य",
+  "unselectedGender": "एक लिंग विकल्प चुनें",
+  "gender": "लिंग",
+  "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

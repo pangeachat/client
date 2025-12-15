@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:21.817521",
+  "@@last_modified": "2025-12-15 09:23:51.105281",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -9312,6 +9312,7 @@
   "addCourse": "Tambahkan kursus",
   "joinPublicCourse": "Gabung kursus publik",
   "vocabLevelsDesc": "Di sinilah kata-kata kosakata akan ditempatkan setelah Anda meningkatkannya!",
+  "highlightVocabTooltip": "Sorot kata-kata kosakata target di bawah ini dengan mengirimkannya atau berlatih dengan mereka di obrolan",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10542,17 +10543,12 @@
   },
   "failedToLoadFeedback": "Gagal memuat umpan balik.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Sorot kata-kata kosakata target di bawah ini dengan mengirimkannya atau berlatih dengan mereka di obrolan",
   "noSavedActivitiesYet": "Kegiatan akan muncul di sini setelah mereka diselesaikan dan disimpan.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10599,6 +10595,7 @@
   "inProgressActivitiesTitle": "Sedang berlangsung ({num})",
   "completedActivitiesTitle": "Selesai ({num})",
   "pickDifferentActivity": "Pilih aktivitas yang berbeda",
+  "inOngoingActivity": "Anda memiliki aktivitas yang sedang berlangsung!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10629,6 +10626,50 @@
   },
   "messageLanguageMismatchMessage": "Bahasa target Anda tidak cocok dengan pesan ini. Perbarui bahasa target Anda?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Kata vocab ini akan dihapus secara permanen dari analitik Anda",
+  "woman": "Wanita",
+  "man": "Pria",
+  "otherGender": "Lainnya",
+  "unselectedGender": "Pilih opsi gender",
+  "gender": "Gender",
+  "chatParticipantTooltip": "Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

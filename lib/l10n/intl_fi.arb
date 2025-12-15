@@ -4013,7 +4013,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-12-03 11:36:17.887679",
+  "@@last_modified": "2025-12-15 09:23:41.697411",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9944,6 +9944,7 @@
   "addCourse": "Lisää kurssi",
   "joinPublicCourse": "Liity julkiseen kurssiin",
   "vocabLevelsDesc": "Tässä kohtaa sanat menevät, kun olet nostanut niiden tasoa!",
+  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11174,17 +11175,12 @@
   },
   "failedToLoadFeedback": "Palaute ei latautunut.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
   "noSavedActivitiesYet": "Toiminnot näkyvät täällä, kun ne on suoritettu ja tallennettu.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11231,6 +11227,7 @@
   "inProgressActivitiesTitle": "Käynnissä nyt ({num})",
   "completedActivitiesTitle": "Valmis ({num})",
   "pickDifferentActivity": "Valitse toinen aktiviteetti",
+  "inOngoingActivity": "Sinulla on meneillään oleva aktiviteetti!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11261,6 +11258,50 @@
   },
   "messageLanguageMismatchMessage": "Kohdekielesi ei vastaa tätä viestiä. Päivitäkö kohdekielesi?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Tässä ovat kaikki tämän kurssin osallistujat. Napsauta kenen tahansa käyttäjän avataria ja valitse \"aloita keskustelu\" lähettääksesi yksityisviestin.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Tämä sanavihkon sana poistetaan pysyvästi analytiikastasi",
+  "woman": "Nainen",
+  "man": "Mies",
+  "otherGender": "Muu",
+  "unselectedGender": "Valitse sukupuoli vaihtoehto",
+  "gender": "Sukupuoli",
+  "chatParticipantTooltip": "Tässä ovat kaikki tässä keskustelussa. Napsauta mitä tahansa käyttäjän avatarista ja \"aloita keskustelu\" lähettääksesi yksityisviestin.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

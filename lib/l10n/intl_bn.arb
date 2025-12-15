@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:07.254419",
+  "@@last_modified": "2025-12-15 09:25:31.476425",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -10425,6 +10425,7 @@
   "addCourse": "একটি কোর্স যোগ করুন",
   "joinPublicCourse": "পাবলিক কোর্সে যোগ দিন",
   "vocabLevelsDesc": "এখানে আপনি শব্দের স্তর উন্নত করলে শব্দগুলি যাবে!",
+  "highlightVocabTooltip": "নিচে লক্ষ্য vocab শব্দগুলো হাইলাইট করুন তাদের পাঠিয়ে বা চ্যাটে তাদের সাথে অনুশীলন করে",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11655,17 +11656,12 @@
   },
   "failedToLoadFeedback": "ফিডব্যাক লোড করতে ব্যর্থ।",
   "unreadPlus": "৯৯+",
-  "highlightVocabTooltip": "নিচে লক্ষ্য vocab শব্দগুলো হাইলাইট করুন তাদের পাঠিয়ে বা চ্যাটে তাদের সাথে অনুশীলন করে",
   "noSavedActivitiesYet": "কার্যক্রমগুলো এখানে প্রদর্শিত হবে একবার সেগুলো সম্পন্ন এবং সংরক্ষিত হলে।",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11712,6 +11708,7 @@
   "inProgressActivitiesTitle": "এখন হচ্ছে ({num})",
   "completedActivitiesTitle": "সম্পন্ন ({num})",
   "pickDifferentActivity": "একটি ভিন্ন কার্যকলাপ বেছে নিন",
+  "inOngoingActivity": "আপনার একটি চলমান কার্যক্রম আছে!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11742,6 +11739,50 @@
   },
   "messageLanguageMismatchMessage": "আপনার লক্ষ্য ভাষা এই বার্তার সাথে মেলে না। আপনার লক্ষ্য ভাষা আপডেট করবেন?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "এটি এই কোর্সের সকল সদস্য। যে কোনো ব্যবহারকারীর অবতার ক্লিক করুন এবং \"আলাপ শুরু করুন\" এ ডিএম পাঠাতে।",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "এই শব্দটি আপনার বিশ্লেষণ থেকে স্থায়ীভাবে মুছে ফেলা হবে",
+  "woman": "মহিলা",
+  "man": "পুরুষ",
+  "otherGender": "অন্যান্য",
+  "unselectedGender": "একটি লিঙ্গ বিকল্প নির্বাচন করুন",
+  "gender": "লিঙ্গ",
+  "chatParticipantTooltip": "এটি এই চ্যাটে সকলেই। যে কোনও ব্যবহারকারীর অ্যাভাটারে ক্লিক করুন এবং \"কথোপকথন শুরু করুন\" ডিএম পাঠাতে।",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-03 11:36:56.511057",
+  "@@last_modified": "2025-12-15 09:25:08.869456",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -9543,6 +9543,7 @@
   "addCourse": "Bir kurs ekle",
   "joinPublicCourse": "Herkese açık kursa katıl",
   "vocabLevelsDesc": "Kelime seviyelerini yükselttiğinizde buraya kelimeler gelir!",
+  "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10773,17 +10774,12 @@
   },
   "failedToLoadFeedback": "Geri bildirimi yüklemek başarısız oldu.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
   "noSavedActivitiesYet": "Aktiviteler tamamlandığında ve kaydedildiğinde burada görünecektir.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10830,6 +10826,7 @@
   "inProgressActivitiesTitle": "Şu anda gerçekleşiyor ({num})",
   "completedActivitiesTitle": "Tamamlandı ({num})",
   "pickDifferentActivity": "Farklı bir etkinlik seç",
+  "inOngoingActivity": "Devam eden bir etkinliğiniz var!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10860,6 +10857,50 @@
   },
   "messageLanguageMismatchMessage": "Hedef diliniz bu mesajla eşleşmiyor. Hedef dilinizi güncelleyebilir misiniz?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Bu kelime analitiklerinizden kalıcı olarak kaldırılacaktır.",
+  "woman": "Kadın",
+  "man": "Erkek",
+  "otherGender": "Diğer",
+  "unselectedGender": "Bir cinsiyet seçeneği seçin",
+  "gender": "Cinsiyet",
+  "chatParticipantTooltip": "Bu sohbetin içindeki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneği ile DM gönderin.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

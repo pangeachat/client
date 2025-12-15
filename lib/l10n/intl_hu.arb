@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-03 11:36:20.356699",
+  "@@last_modified": "2025-12-15 09:23:48.032476",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -9322,6 +9322,7 @@
   "addCourse": "Kurzus hozzáadása",
   "joinPublicCourse": "Csatlakozás nyilvános kurzushoz",
   "vocabLevelsDesc": "Itt jelennek meg a szókincs szavai, amint szintet lépnek!",
+  "highlightVocabTooltip": "Emeld ki a cél szókincset alább azáltal, hogy elküldöd őket vagy gyakorolsz velük a csevegésben.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10552,17 +10553,12 @@
   },
   "failedToLoadFeedback": "A visszajelzés betöltése nem sikerült.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Emeld ki a cél szókincset alább azáltal, hogy elküldöd őket vagy gyakorolsz velük a csevegésben.",
   "noSavedActivitiesYet": "A tevékenységek itt fognak megjelenni, miután befejezték és elmentették őket.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10609,6 +10605,7 @@
   "inProgressActivitiesTitle": "Jelenleg zajlik ({num})",
   "completedActivitiesTitle": "Kész ({num})",
   "pickDifferentActivity": "Válassz egy másik tevékenységet",
+  "inOngoingActivity": "Folyamatban lévő tevékenységed van!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10639,6 +10636,50 @@
   },
   "messageLanguageMismatchMessage": "A cél nyelve nem egyezik meg ezzel az üzenettel. Frissíti a cél nyelvét?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ez mindenki, aki ebben a kurzusban részt vesz. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy közvetlen üzenetet küldj.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ez a szókincs szó véglegesen eltávolításra kerül az elemzéseidből",
+  "woman": "Nő",
+  "man": "Férfi",
+  "otherGender": "Egyéb",
+  "unselectedGender": "Válassz egy nemi opciót",
+  "gender": "Neme",
+  "chatParticipantTooltip": "Ez mindenki ebben a csevegésben. Kattints bármelyik felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy DM-et küldj.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

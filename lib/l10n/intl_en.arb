@@ -4679,7 +4679,6 @@
   "writingAnalyticsDesc": "Send messages to practice writing.",
   "endActivity": "End activity",
   "allLanguages": "All languages",
-  "chatListTooltip": "Here you’ll find your direct messages! Click on any user’s avatar and “start conversation” to send a DM.",
   "directMessageBotTitle": "Direct message Pangea Bot",
   "feedbackTitle": "Activity Feedback",
   "feedbackRespDesc": "Check back tomorrow for activity updates.",
@@ -4997,5 +4996,8 @@
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
   "gender": "Gender",
-  "modeDisabled": "Learning tools are disabled for messages that aren't in your target language."
+  "modeDisabled": "Learning tools are disabled for messages that aren't in your target language.",
+  "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
+  "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
+  "inOngoingActivity": "You have an ongoing activity!"
 }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:46.628205",
+  "@@last_modified": "2025-12-15 09:24:50.199630",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -9345,6 +9345,7 @@
   "addCourse": "Afegeix un curs",
   "joinPublicCourse": "Uneix-te al curs públic",
   "vocabLevelsDesc": "Aquí és on aniran les paraules de vocabulari un cop les hagis pujat de nivell!",
+  "highlightVocabTooltip": "Destaca les paraules de vocabulari objectiu a continuació enviant-les o practicant-les al xat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10575,17 +10576,12 @@
   },
   "failedToLoadFeedback": "No s'ha pogut carregar el feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Destaca les paraules de vocabulari objectiu a continuació enviant-les o practicant-les al xat",
   "noSavedActivitiesYet": "Les activitats apareixeran aquí un cop estiguin completades i desades.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10632,6 +10628,7 @@
   "inProgressActivitiesTitle": "Succeint ara ({num})",
   "completedActivitiesTitle": "Fet ({num})",
   "pickDifferentActivity": "Trieu una activitat diferent",
+  "inOngoingActivity": "Tens una activitat en curs!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10662,6 +10659,50 @@
   },
   "messageLanguageMismatchMessage": "El teu idioma de destinació no coincideix amb aquest missatge. Vols actualitzar el teu idioma de destinació?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Això és tothom en aquest curs. Feu clic a l'avatar de qualsevol usuari i \"comenceu la conversa\" per enviar un DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Aquesta paraula de vocabulari s'eliminarà permanentment de les teves analítiques",
+  "woman": "Dona",
+  "man": "Home",
+  "otherGender": "Altre",
+  "unselectedGender": "Selecciona una opció de gènere",
+  "gender": "Gènere",
+  "chatParticipantTooltip": "Això és tothom en aquest xat. Fes clic a l'avatar de qualsevol usuari i \"inicia una conversa\" per enviar un DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

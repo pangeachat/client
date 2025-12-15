@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-12-03 11:36:15.055874",
+  "@@last_modified": "2025-12-15 09:23:36.120926",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -7786,17 +7786,12 @@
   },
   "failedToLoadFeedback": "Error al cargar los comentarios.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Resalta las palabras de vocabulario objetivo a continuación enviándolas o practicando con ellas en el chat",
   "noSavedActivitiesYet": "Las actividades aparecerán aquí una vez que se completen y se guarden.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -7840,9 +7835,10 @@
     "placeholders": {}
   },
   "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
-  "inProgressActivitiesTitle": "Sucediendo ahora ({num})",
-  "completedActivitiesTitle": "Hecho ({num})",
   "pickDifferentActivity": "Elige una actividad diferente",
+  "inProgressActivitiesTitle": "Sucedió ahora ({num})",
+  "completedActivitiesTitle": "Hecho ({num})",
+  "inOngoingActivity": "¡Tienes una actividad en curso!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -7873,6 +7869,50 @@
   },
   "messageLanguageMismatchMessage": "El idioma de destino no coincide con este mensaje. ¿Actualizar el idioma de destino?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Estos son todos en este curso. Haz clic en el avatar de cualquier usuario y \"iniciar conversación\" para enviar un DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Esta palabra de vocabulario será eliminada permanentemente de tus análisis",
+  "woman": "Mujer",
+  "man": "Hombre",
+  "otherGender": "Otro",
+  "unselectedGender": "Selecciona una opción de género",
+  "gender": "Género",
+  "chatParticipantTooltip": "Estas son todas las personas en este chat. Haz clic en el avatar de cualquier usuario y \"iniciar conversación\" para enviar un DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

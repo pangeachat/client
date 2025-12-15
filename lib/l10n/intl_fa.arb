@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:08.469937",
+  "@@last_modified": "2025-12-15 09:25:33.498201",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -10053,6 +10053,7 @@
   "addCourse": "افزودن دوره",
   "joinPublicCourse": "پیوستن به دوره عمومی",
   "vocabLevelsDesc": "اینجا جایی است که کلمات واژگان پس از ارتقاء سطح قرار می‌گیرند!",
+  "highlightVocabTooltip": "کلمات هدف را در زیر با ارسال یا تمرین کردن آنها در چت هایلایت کنید",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11283,17 +11284,12 @@
   },
   "failedToLoadFeedback": "بارگذاری بازخورد ناموفق بود.",
   "unreadPlus": "۹۹+",
-  "highlightVocabTooltip": "کلمات هدف را در زیر با ارسال یا تمرین کردن آنها در چت هایلایت کنید",
   "noSavedActivitiesYet": "فعالیت‌ها پس از اتمام و ذخیره‌سازی در اینجا ظاهر خواهند شد.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11340,6 +11336,7 @@
   "inProgressActivitiesTitle": "در حال حاضر ({num})",
   "completedActivitiesTitle": "انجام شده ({num})",
   "pickDifferentActivity": "یک فعالیت متفاوت انتخاب کنید",
+  "inOngoingActivity": "شما یک فعالیت در حال انجام دارید!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11370,6 +11367,50 @@
   },
   "messageLanguageMismatchMessage": "زبان هدف شما با این پیام مطابقت ندارد. آیا زبان هدف خود را به‌روزرسانی کنید؟",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "این همه افرادی هستند که در این دوره حضور دارند. بر روی آواتار هر کاربر کلیک کنید و \"شروع گفتگو\" را بزنید تا یک پیام مستقیم ارسال کنید.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "این کلمه واژگان به طور دائمی از تجزیه و تحلیل شما حذف خواهد شد",
+  "woman": "زن",
+  "man": "مرد",
+  "otherGender": "سایر",
+  "unselectedGender": "یک گزینه جنسیتی انتخاب کنید",
+  "gender": "جنسیت",
+  "chatParticipantTooltip": "این افراد در این چت هستند. روی آواتار هر کاربر کلیک کنید و \"شروع مکالمه\" را بزنید تا یک پیام مستقیم ارسال کنید.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

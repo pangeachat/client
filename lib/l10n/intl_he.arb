@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:29.117862",
+  "@@last_modified": "2025-12-15 09:24:10.268936",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -10370,6 +10370,7 @@
   "addCourse": "הוסף קורס",
   "joinPublicCourse": "הצטרף לקורס ציבורי",
   "vocabLevelsDesc": "זה המקום שבו מילות אוצר המילים יופיעו לאחר שהעלית את רמתן!",
+  "highlightVocabTooltip": "הדגש את המילים היעד למטה על ידי שליחתם או תרגול איתן בצ'אט",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11600,17 +11601,12 @@
   },
   "failedToLoadFeedback": "לא הצלחנו לטעון משוב.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "הדגש את המילים היעד למטה על ידי שליחתם או תרגול איתן בצ'אט",
   "noSavedActivitiesYet": "פעילויות יופיעו כאן ברגע שיסיימו וישמרו.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11657,6 +11653,7 @@
   "inProgressActivitiesTitle": "מתרחש עכשיו ({num})",
   "completedActivitiesTitle": "בוצע ({num})",
   "pickDifferentActivity": "בחר פעילות שונה",
+  "inOngoingActivity": "יש לך פעילות מתמשכת!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11687,6 +11684,50 @@
   },
   "messageLanguageMismatchMessage": "שפת היעד שלך אינה תואמת את ההודעה הזו. האם לעדכן את שפת היעד שלך?",
   "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "אלה כולם בקורס הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "מילת הווקב הזו תוסר לצמיתות מהאנליטיקה שלך",
+  "woman": "אישה",
+  "man": "גבר",
+  "otherGender": "אחר",
+  "unselectedGender": "בחר אפשרות מגדר",
+  "gender": "מגדר",
+  "chatParticipantTooltip": "אלה כולם בצ'אט הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }
