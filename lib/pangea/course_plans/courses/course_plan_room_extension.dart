@@ -38,6 +38,23 @@ extension CoursePlanRoomExtension on Room {
   }
 
   Future<void> addCourseToSpace(String courseId) async {
+    // Ensure students in course can launch activity rooms
+    final powerLevels = Map<String, dynamic>.from(
+      getState(EventTypes.RoomPowerLevels)?.content ?? {},
+    );
+    powerLevels['events'] ??= <String, dynamic>{};
+    final events = Map<String, dynamic>.from(powerLevels['events']);
+    if (events["m.space.child"] != 0) {
+      events["m.space.child"] = 0;
+      powerLevels['events'] = events;
+      await client.setRoomStateWithKey(
+        id,
+        EventTypes.RoomPowerLevels,
+        '',
+        powerLevels,
+      );
+    }
+
     if (coursePlan?.uuid == courseId) return;
     final future = waitForRoomInSync();
     await client.setRoomStateWithKey(
