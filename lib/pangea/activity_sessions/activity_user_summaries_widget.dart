@@ -155,7 +155,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                           child: Text(
                             "${userRole.role ?? L10n.of(context).participant} | ${user?.calcDisplayname() ?? p.participantId.localpart}",
                             style: const TextStyle(
-                              fontSize: 12.0,
+                              fontSize: 14.0,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -170,7 +170,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                 p.participantId.localpart ??
                                 p.participantId,
                           ),
-                          style: const TextStyle(fontSize: 12.0),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                       ),
                     ),
@@ -188,7 +188,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                               Text(
                                 p.cefrLevel,
                                 style: const TextStyle(
-                                  fontSize: 12.0,
+                                  fontSize: 14.0,
                                 ),
                               ),
                               //const SizedBox(width: 8),
@@ -217,10 +217,9 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                 ),
                               ],
                               if (p.superlatives.isNotEmpty) ...[
-                                //const SizedBox(width: 8),
                                 Text(
                                   p.superlatives.first,
-                                  style: const TextStyle(fontSize: 12.0),
+                                  style: const TextStyle(fontSize: 14.0),
                                 ),
                               ],
                             ],
@@ -287,7 +286,7 @@ class SuperlativeTile extends StatelessWidget {
         const Text(
           "1st",
           style: TextStyle(
-            fontSize: 12.0,
+            fontSize: 14.0,
           ),
         ),
       ],
