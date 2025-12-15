@@ -10,12 +10,14 @@ class LanguageModel {
   final String langCode;
   final String displayName;
   final String script;
+  final String? localeEmoji;
   final L2SupportEnum l2Support;
   final TextDirection? _textDirection;
 
   LanguageModel({
     required this.langCode,
     required this.displayName,
+    this.localeEmoji,
     this.script = LanguageKeys.unknownLanguage,
     this.l2Support = L2SupportEnum.na,
     TextDirection? textDirection,
@@ -40,6 +42,7 @@ class LanguageModel {
               (e) => e.name == json['text_direction'],
             )
           : null,
+      localeEmoji: json['locale_emoji'],
     );
   }
 
@@ -49,6 +52,7 @@ class LanguageModel {
         'script': script,
         'l2_support': l2Support.storageString,
         'text_direction': textDirection.name,
+        'locale_emoji': localeEmoji,
       };
 
   bool get l2 => l2Support != L2SupportEnum.na;
@@ -296,7 +300,13 @@ class LanguageModel {
       "zuDisplayName": l10n.zuDisplayName,
     };
 
-    return displayNameMap[langKey] ?? displayName;
+    final display = displayNameMap[langKey] ?? displayName;
+    if (langCode.contains('-') && localeEmoji != null) {
+      // use regex to replace parentheses content with the locale emoji
+      final regex = RegExp(r'\s*\(.*?\)\s*');
+      return display.replaceFirst(regex, ' $localeEmoji ');
+    }
+    return display;
   }
 
   String get langCodeShort => langCode.split('-').first;

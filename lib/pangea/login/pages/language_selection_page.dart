@@ -98,6 +98,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
+    final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -138,8 +139,8 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                   bottom: 60.0,
                                 ),
                                 child: Wrap(
-                                  spacing: 8.0,
-                                  runSpacing: 8.0,
+                                  spacing: isColumnMode ? 16.0 : 8.0,
+                                  runSpacing: isColumnMode ? 16.0 : 8.0,
                                   alignment: WrapAlignment.center,
                                   children: languages
                                       .where(
@@ -164,7 +165,9 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                                           ),
                                           label: Text(
                                             l.getDisplayName(context),
-                                            style: theme.textTheme.bodyMedium,
+                                            style: isColumnMode
+                                                ? theme.textTheme.bodyLarge
+                                                : theme.textTheme.bodyMedium,
                                           ),
                                           onSelected: (selected) {
                                             _setSelectedLanguage(
