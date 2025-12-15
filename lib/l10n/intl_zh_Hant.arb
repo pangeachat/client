@@ -9319,6 +9319,7 @@
   "addCourse": "添加課程",
   "joinPublicCourse": "加入公開課程",
   "vocabLevelsDesc": "這是你升級後詞彙將會放置的地方！",
+  "highlightVocabTooltip": "通過在聊天中發送或練習以下目標詞彙來突出顯示它們",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10549,17 +10550,12 @@
   },
   "failedToLoadFeedback": "無法加載反饋。",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "通過在聊天中發送或練習以下目標詞彙來突出顯示它們",
   "noSavedActivitiesYet": "活動完成並保存後將顯示在這裡。",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10606,6 +10602,7 @@
   "inProgressActivitiesTitle": "正在進行中 ({num})",
   "completedActivitiesTitle": "已完成 ({num})",
   "pickDifferentActivity": "選擇其他活動",
+  "inOngoingActivity": "您有一個正在進行的活動！",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10676,6 +10673,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

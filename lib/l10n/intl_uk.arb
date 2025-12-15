@@ -9315,6 +9315,7 @@
   "addCourse": "Додати курс",
   "joinPublicCourse": "Приєднатися до публічного курсу",
   "vocabLevelsDesc": "Тут з'являться слова словника, коли ви їх підвищите рівень!",
+  "highlightVocabTooltip": "Виділіть цільові слова словникового запасу нижче, надіславши їх або практикуючи з ними в чаті",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10545,17 +10546,12 @@
   },
   "failedToLoadFeedback": "Не вдалося завантажити відгук.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Виділіть цільові слова словникового запасу нижче, надіславши їх або практикуючи з ними в чаті",
   "noSavedActivitiesYet": "Активності з'являться тут, як тільки вони будуть завершені та збережені.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10602,6 +10598,7 @@
   "inProgressActivitiesTitle": "Відбувається зараз ({num})",
   "completedActivitiesTitle": "Завершено ({num})",
   "pickDifferentActivity": "Виберіть іншу активність",
+  "inOngoingActivity": "У вас є активність, що триває!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10672,6 +10669,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

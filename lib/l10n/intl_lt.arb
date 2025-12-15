@@ -10126,6 +10126,7 @@
   "addCourse": "Pridėti kursą",
   "joinPublicCourse": "Prisijungti prie viešo kurso",
   "vocabLevelsDesc": "Čia pateks žodžiai, kai juos pakelsite į aukštesnį lygį!",
+  "highlightVocabTooltip": "Išryškinkite tikslinius žodžius žemiau, juos siųsdami arba praktikuodami pokalbyje",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11356,17 +11357,12 @@
   },
   "failedToLoadFeedback": "Nepavyko įkelti atsiliepimų.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Išryškinkite tikslinius žodžius žemiau, juos siųsdami arba praktikuodami pokalbyje",
   "noSavedActivitiesYet": "Veiklos pasirodys čia, kai bus užbaigtos ir išsaugotos.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11410,9 +11406,10 @@
     "placeholders": {}
   },
   "notStartedActivitiesTitle": "Atidarytos sesijos ({num})",
-  "inProgressActivitiesTitle": "Vyksta dabar ({num})",
-  "completedActivitiesTitle": "Baigta ({num})",
   "pickDifferentActivity": "Pasirinkite kitą veiklą",
+  "inProgressActivitiesTitle": "Dabar vyksta ({num})",
+  "completedActivitiesTitle": "Baigta ({num})",
+  "inOngoingActivity": "Turite vykdomą veiklą!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11483,6 +11480,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

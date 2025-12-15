@@ -11613,17 +11613,12 @@
   },
   "failedToLoadFeedback": "Kunne ikke indlæse feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Fremhæv målordene nedenfor ved at sende dem eller øve med dem i chatten",
   "noSavedActivitiesYet": "Aktiviteter vil vises her, når de er afsluttet og gemt.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11670,6 +11665,7 @@
   "inProgressActivitiesTitle": "Foregår nu ({num})",
   "completedActivitiesTitle": "Færdig ({num})",
   "pickDifferentActivity": "Vælg en anden aktivitet",
+  "inOngoingActivity": "Du har en igangværende aktivitet!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11740,6 +11736,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

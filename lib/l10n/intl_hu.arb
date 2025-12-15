@@ -9322,6 +9322,7 @@
   "addCourse": "Kurzus hozzáadása",
   "joinPublicCourse": "Csatlakozás nyilvános kurzushoz",
   "vocabLevelsDesc": "Itt jelennek meg a szókincs szavai, amint szintet lépnek!",
+  "highlightVocabTooltip": "Emeld ki a cél szókincset alább azáltal, hogy elküldöd őket vagy gyakorolsz velük a csevegésben.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10552,17 +10553,12 @@
   },
   "failedToLoadFeedback": "A visszajelzés betöltése nem sikerült.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Emeld ki a cél szókincset alább azáltal, hogy elküldöd őket vagy gyakorolsz velük a csevegésben.",
   "noSavedActivitiesYet": "A tevékenységek itt fognak megjelenni, miután befejezték és elmentették őket.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10609,6 +10605,7 @@
   "inProgressActivitiesTitle": "Jelenleg zajlik ({num})",
   "completedActivitiesTitle": "Kész ({num})",
   "pickDifferentActivity": "Válassz egy másik tevékenységet",
+  "inOngoingActivity": "Folyamatban lévő tevékenységed van!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10679,6 +10676,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

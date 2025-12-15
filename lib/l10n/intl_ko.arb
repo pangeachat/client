@@ -9429,6 +9429,7 @@
   "addCourse": "강좌 추가",
   "joinPublicCourse": "공개 강좌 참여",
   "vocabLevelsDesc": "단어를 레벨업하면 여기에 단어가 표시됩니다!",
+  "highlightVocabTooltip": "아래의 목표 어휘 단어를 강조 표시하려면 채팅에서 보내거나 연습하세요.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10659,17 +10660,12 @@
   },
   "failedToLoadFeedback": "피드백을 불러오는 데 실패했습니다.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "아래의 목표 어휘 단어를 강조 표시하려면 채팅에서 보내거나 연습하세요.",
   "noSavedActivitiesYet": "활동이 완료되고 저장되면 여기에 나타납니다.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10716,6 +10712,7 @@
   "inProgressActivitiesTitle": "현재 진행 중 ({num})",
   "completedActivitiesTitle": "완료됨 ({num})",
   "pickDifferentActivity": "다른 활동 선택",
+  "inOngoingActivity": "진행 중인 활동이 있습니다!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10786,6 +10783,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

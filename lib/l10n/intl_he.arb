@@ -10370,6 +10370,7 @@
   "addCourse": "הוסף קורס",
   "joinPublicCourse": "הצטרף לקורס ציבורי",
   "vocabLevelsDesc": "זה המקום שבו מילות אוצר המילים יופיעו לאחר שהעלית את רמתן!",
+  "highlightVocabTooltip": "הדגש את המילים היעד למטה על ידי שליחתם או תרגול איתן בצ'אט",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11600,17 +11601,12 @@
   },
   "failedToLoadFeedback": "לא הצלחנו לטעון משוב.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "הדגש את המילים היעד למטה על ידי שליחתם או תרגול איתן בצ'אט",
   "noSavedActivitiesYet": "פעילויות יופיעו כאן ברגע שיסיימו וישמרו.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11657,6 +11653,7 @@
   "inProgressActivitiesTitle": "מתרחש עכשיו ({num})",
   "completedActivitiesTitle": "בוצע ({num})",
   "pickDifferentActivity": "בחר פעילות שונה",
+  "inOngoingActivity": "יש לך פעילות מתמשכת!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11727,6 +11724,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

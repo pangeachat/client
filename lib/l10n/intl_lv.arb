@@ -9307,6 +9307,7 @@
   "addCourse": "Pievienot kursu",
   "joinPublicCourse": "Pievienoties publiskajam kursam",
   "vocabLevelsDesc": "Šeit ietilps vārdu krājuma vārdi, kad jūs tos uzlabosiet līmenī!",
+  "highlightVocabTooltip": "Izceliet mērķa vārdu vārdnīcu zemāk, tos nosūtot vai praktizējot čatā.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10537,17 +10538,12 @@
   },
   "failedToLoadFeedback": "Neizdevās ielādēt atsauksmes.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Izceliet mērķa vārdu vārdnīcu zemāk, tos nosūtot vai praktizējot čatā.",
   "noSavedActivitiesYet": "Aktivitātes parādīsies šeit, kad tās tiks pabeigtas un saglabātas.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10594,6 +10590,7 @@
   "inProgressActivitiesTitle": "Notiek tagad ({num})",
   "completedActivitiesTitle": "Pabeigts ({num})",
   "pickDifferentActivity": "Izvēlieties citu aktivitāti",
+  "inOngoingActivity": "Jums ir notiekoša aktivitāte!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10664,6 +10661,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

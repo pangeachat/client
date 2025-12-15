@@ -9928,6 +9928,7 @@
   "addCourse": "Přidat kurz",
   "joinPublicCourse": "Připojit se k veřejnému kurzu",
   "vocabLevelsDesc": "Zde se objeví slovíčka, jakmile je vylepšíte na vyšší úroveň!",
+  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11158,17 +11159,12 @@
   },
   "failedToLoadFeedback": "Nepodařilo se načíst zpětnou vazbu.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
   "noSavedActivitiesYet": "Aktivity se zde objeví, jakmile budou dokončeny a uloženy.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11215,6 +11211,7 @@
   "inProgressActivitiesTitle": "Probíhá nyní ({num})",
   "completedActivitiesTitle": "Hotovo ({num})",
   "pickDifferentActivity": "Vyberte jinou aktivitu",
+  "inOngoingActivity": "Máte probíhající aktivitu!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11285,6 +11282,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

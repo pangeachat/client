@@ -9944,6 +9944,7 @@
   "addCourse": "Lisää kurssi",
   "joinPublicCourse": "Liity julkiseen kurssiin",
   "vocabLevelsDesc": "Tässä kohtaa sanat menevät, kun olet nostanut niiden tasoa!",
+  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11174,17 +11175,12 @@
   },
   "failedToLoadFeedback": "Palaute ei latautunut.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Korosta alla olevia kohdesanastoja lähettämällä niitä tai harjoittelemalla niitä chatissa",
   "noSavedActivitiesYet": "Toiminnot näkyvät täällä, kun ne on suoritettu ja tallennettu.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11231,6 +11227,7 @@
   "inProgressActivitiesTitle": "Käynnissä nyt ({num})",
   "completedActivitiesTitle": "Valmis ({num})",
   "pickDifferentActivity": "Valitse toinen aktiviteetti",
+  "inOngoingActivity": "Sinulla on meneillään oleva aktiviteetti!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11301,6 +11298,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -9321,6 +9321,7 @@
   "addCourse": "Voeg een cursus toe",
   "joinPublicCourse": "Deelname openbare cursus",
   "vocabLevelsDesc": "Hier komen de vocabulaire woorden zodra je ze hebt opgewaardeerd!",
+  "highlightVocabTooltip": "Markeer doelwoordenschat hieronder door ze te verzenden of ermee te oefenen in de chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10551,17 +10552,12 @@
   },
   "failedToLoadFeedback": "Kon feedback niet laden.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Markeer doelwoordenschat hieronder door ze te verzenden of ermee te oefenen in de chat",
   "noSavedActivitiesYet": "Activiteiten verschijnen hier zodra ze zijn voltooid en opgeslagen.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10608,6 +10604,7 @@
   "inProgressActivitiesTitle": "Bezig ({num})",
   "completedActivitiesTitle": "Klaar ({num})",
   "pickDifferentActivity": "Kies een andere activiteit",
+  "inOngoingActivity": "Je hebt een lopende activiteit!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10678,6 +10675,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

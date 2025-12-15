@@ -10356,8 +10356,9 @@
   },
   "notStartedActivitiesTitle": "Sesyonan e hapura ({num})",
   "inProgressActivitiesTitle": "Po ndodhin tani ({num})",
-  "completedActivitiesTitle": "E përfunduar ({num})",
   "pickDifferentActivity": "Zgjidh një aktivitet tjetër",
+  "completedActivitiesTitle": "Përfunduar ({num})",
+  "inOngoingActivity": "Keni një aktivitet në vazhdim!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10428,6 +10429,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -10410,6 +10410,7 @@
   "addCourse": "కోర్సును జోడించండి",
   "joinPublicCourse": "పబ్లిక్ కోర్సులో చేరండి",
   "vocabLevelsDesc": "మీరు వాటిని లెవెల్ చేయగానే ఇది వాక్యబోధన పదాలు అక్కడికి పోతాయి!",
+  "highlightVocabTooltip": "చాట్‌లో వాటిని పంపడం లేదా వాటితో ప్రాక్టీస్ చేయడం ద్వారా కింద లక్ష్య పదజాల పదాలను హైలైట్ చేయండి",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11640,17 +11641,12 @@
   },
   "failedToLoadFeedback": "ఫీడ్‌బ్యాక్‌ను లోడ్ చేయడంలో విఫలమైంది.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "చాట్‌లో వాటిని పంపడం లేదా వాటితో ప్రాక్టీస్ చేయడం ద్వారా కింద లక్ష్య పదజాల పదాలను హైలైట్ చేయండి",
   "noSavedActivitiesYet": "చర్యలు పూర్తి చేసి సేవ్ చేసిన తర్వాత ఇక్కడ కనిపిస్తాయి.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11697,6 +11693,7 @@
   "inProgressActivitiesTitle": "ఇప్పుడు జరుగుతోంది ({num})",
   "completedActivitiesTitle": "చేయబడింది ({num})",
   "pickDifferentActivity": "ఇంకొక కార్యకలాపాన్ని ఎంచుకోండి",
+  "inOngoingActivity": "మీకు ఒక కొనసాగుతున్న కార్యకలాపం ఉంది!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11767,6 +11764,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

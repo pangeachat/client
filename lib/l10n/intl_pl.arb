@@ -10551,17 +10551,12 @@
   },
   "failedToLoadFeedback": "Nie udało się załadować opinii.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Podświetl docelowe słowa słownictwa poniżej, wysyłając je lub ćwicząc z nimi na czacie",
   "noSavedActivitiesYet": "Aktywności pojawią się tutaj, gdy zostaną ukończone i zapisane.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10607,7 +10602,7 @@
   "notStartedActivitiesTitle": "Otwarte sesje ({num})",
   "inProgressActivitiesTitle": "Trwa teraz ({num})",
   "completedActivitiesTitle": "Zrobione ({num})",
-  "pickDifferentActivity": "Wybierz inną aktywność",
+  "inOngoingActivity": "Masz trwającą aktywność!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10678,6 +10673,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -9426,6 +9426,7 @@
   "addCourse": "Добавить курс",
   "joinPublicCourse": "Присоединиться к публичному курсу",
   "vocabLevelsDesc": "Здесь появятся слова словаря, как только вы их повысите!",
+  "highlightVocabTooltip": "Выделите целевые слова словаря ниже, отправив их или практикуя с ними в чате",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10656,17 +10657,12 @@
   },
   "failedToLoadFeedback": "Не удалось загрузить отзывы.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Выделите целевые слова словаря ниже, отправив их или практикуя с ними в чате",
   "noSavedActivitiesYet": "Здесь появятся активности, как только они будут завершены и сохранены.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10713,6 +10709,7 @@
   "inProgressActivitiesTitle": "Происходит сейчас ({num})",
   "completedActivitiesTitle": "Завершено ({num})",
   "pickDifferentActivity": "Выберите другую активность",
+  "inOngoingActivity": "У вас есть текущая активность!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10783,6 +10780,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

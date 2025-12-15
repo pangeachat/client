@@ -10410,6 +10410,7 @@
   "addCourse": "Aldoni kurson",
   "joinPublicCourse": "Aliĝi al publika kurso",
   "vocabLevelsDesc": "Jen kie vortoj de vortprovizo iros post kiam vi ilin plibonigos!",
+  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11640,17 +11641,12 @@
   },
   "failedToLoadFeedback": "Malsukcesis ŝarĝi la reagojn.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktikado kun ili en la babilejo",
   "noSavedActivitiesYet": "Aktivecoj aperos ĉi tie post kiam ili estos kompletigitaj kaj konservitaj.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11697,6 +11693,7 @@
   "inProgressActivitiesTitle": "Okazas nun ({num})",
   "completedActivitiesTitle": "Finiĝis ({num})",
   "pickDifferentActivity": "Elektu alian aktivon",
+  "inOngoingActivity": "Vi havas daŭrantan aktivon!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11767,6 +11764,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

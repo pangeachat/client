@@ -9799,6 +9799,7 @@
   "addCourse": "Lägg till en kurs",
   "joinPublicCourse": "Gå med i offentlig kurs",
   "vocabLevelsDesc": "Det här är platsen där vokabulärord kommer att hamna när du har nivåer upp dem!",
+  "highlightVocabTooltip": "Markera målvokabulärord nedan genom att skicka dem eller öva med dem i chatten",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11029,17 +11030,12 @@
   },
   "failedToLoadFeedback": "Misslyckades med att ladda feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Markera målvokabulärord nedan genom att skicka dem eller öva med dem i chatten",
   "noSavedActivitiesYet": "Aktiviteter kommer att visas här när de är slutförda och sparade.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11084,8 +11080,9 @@
   },
   "notStartedActivitiesTitle": "Öppna sessioner ({num})",
   "inProgressActivitiesTitle": "Pågår nu ({num})",
-  "completedActivitiesTitle": "Klart ({num})",
   "pickDifferentActivity": "Välj en annan aktivitet",
+  "completedActivitiesTitle": "Avklarad ({num})",
+  "inOngoingActivity": "Du har en pågående aktivitet!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11156,6 +11153,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

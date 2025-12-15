@@ -10420,6 +10420,7 @@
   "addCourse": "Дадаць курс",
   "joinPublicCourse": "Далучыцца да публічнага курса",
   "vocabLevelsDesc": "Тут будуць размяшчацца словы слоўніка, калі вы іх узнясеце ўзровень!",
+  "highlightVocabTooltip": "Выдзяліце мэтавыя словы ніжэй, адпраўляючы іх або практыкуючы з імі ў чаце",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11650,17 +11651,12 @@
   },
   "failedToLoadFeedback": "Не ўдалося загрузіць водгук.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Выдзяліце мэтавыя словы ніжэй, адпраўляючы іх або практыкуючы з імі ў чаце",
   "noSavedActivitiesYet": "Дзеянні з'явяцца тут, як толькі яны будуць завершаны і захаваны.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11707,6 +11703,7 @@
   "inProgressActivitiesTitle": "Ідзе зараз ({num})",
   "completedActivitiesTitle": "Завершана ({num})",
   "pickDifferentActivity": "Выберыце іншую дзейнасць",
+  "inOngoingActivity": "У вас ёсць бягучая актыўнасць!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11777,6 +11774,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

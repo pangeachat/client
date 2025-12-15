@@ -9345,6 +9345,7 @@
   "addCourse": "Afegeix un curs",
   "joinPublicCourse": "Uneix-te al curs públic",
   "vocabLevelsDesc": "Aquí és on aniran les paraules de vocabulari un cop les hagis pujat de nivell!",
+  "highlightVocabTooltip": "Destaca les paraules de vocabulari objectiu a continuació enviant-les o practicant-les al xat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10575,17 +10576,12 @@
   },
   "failedToLoadFeedback": "No s'ha pogut carregar el feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Destaca les paraules de vocabulari objectiu a continuació enviant-les o practicant-les al xat",
   "noSavedActivitiesYet": "Les activitats apareixeran aquí un cop estiguin completades i desades.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10632,6 +10628,7 @@
   "inProgressActivitiesTitle": "Succeint ara ({num})",
   "completedActivitiesTitle": "Fet ({num})",
   "pickDifferentActivity": "Trieu una activitat diferent",
+  "inOngoingActivity": "Tens una activitat en curs!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10702,6 +10699,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

@@ -10056,6 +10056,7 @@
   "addCourse": "Adaugă un curs",
   "joinPublicCourse": "Alătură-te cursului public",
   "vocabLevelsDesc": "Aici vor fi plasate cuvintele de vocabular odată ce le-ai nivelat!",
+  "highlightVocabTooltip": "Subliniază cuvintele țintă din vocabular de mai jos trimițându-le sau exersându-le în chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11286,17 +11287,12 @@
   },
   "failedToLoadFeedback": "Încărcarea feedback-ului a eșuat.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Subliniază cuvintele țintă din vocabular de mai jos trimițându-le sau exersându-le în chat",
   "noSavedActivitiesYet": "Activitățile vor apărea aici odată ce sunt finalizate și salvate.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11343,6 +11339,7 @@
   "inProgressActivitiesTitle": "Se desfășoară acum ({num})",
   "completedActivitiesTitle": "Finalizate ({num})",
   "pickDifferentActivity": "Alege o activitate diferită",
+  "inOngoingActivity": "Ai o activitate în desfășurare!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11413,6 +11410,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

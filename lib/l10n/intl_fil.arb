@@ -10297,6 +10297,7 @@
   "addCourse": "Magdagdag ng kurso",
   "joinPublicCourse": "Sumali sa pampublikong kurso",
   "vocabLevelsDesc": "Dito mapupunta ang mga salita sa bokabularyo kapag na-level up mo na sila!",
+  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11527,17 +11528,12 @@
   },
   "failedToLoadFeedback": "Nabigong i-load ang feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
   "noSavedActivitiesYet": "Lilitaw ang mga aktibidad dito kapag natapos at na-save na ang mga ito.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11584,6 +11580,7 @@
   "inProgressActivitiesTitle": "Nangyayari ngayon ({num})",
   "completedActivitiesTitle": "Tapos na ({num})",
   "pickDifferentActivity": "Pumili ng ibang aktibidad",
+  "inOngoingActivity": "Mayroon kang patuloy na aktibidad!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11654,6 +11651,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }

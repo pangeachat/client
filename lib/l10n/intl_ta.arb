@@ -9545,6 +9545,7 @@
   "addCourse": "பாடத்தைச் சேர்க்கவும்",
   "joinPublicCourse": "பொது பாடத்தில் சேரவும்",
   "vocabLevelsDesc": "நீங்கள் அவற்றை மேம்படுத்தியபின் சொற்பொருள் வார்த்தைகள் இங்கே செல்லும்!",
+  "highlightVocabTooltip": "சாட் மூலம் அனுப்புவதன் மூலம் அல்லது அவற்றுடன் பயிற்சி செய்வதன் மூலம் கீழே உள்ள இலக்கு சொற்களை வண்ணமயமாக்கவும்",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10775,17 +10776,12 @@
   },
   "failedToLoadFeedback": "பின்னூட்டத்தை ஏற்ற முடியவில்லை.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "சாட் மூலம் அனுப்புவதன் மூலம் அல்லது அவற்றுடன் பயிற்சி செய்வதன் மூலம் கீழே உள்ள இலக்கு சொற்களை வண்ணமயமாக்கவும்",
   "noSavedActivitiesYet": "செயல்பாடுகள் முடிக்கப்பட்டு சேமிக்கப்பட்ட பிறகு இங்கே தோன்றும்.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10832,6 +10828,7 @@
   "inProgressActivitiesTitle": "இப்போது நடைபெற்று வருகிறது ({num})",
   "completedActivitiesTitle": "முடிந்தது ({num})",
   "pickDifferentActivity": "மற்றொரு செயல்பாட்டை தேர்ந்தெடுக்கவும்",
+  "inOngoingActivity": "உங்களுக்கு ஒரு தொடர்ந்த செயல்பாடு உள்ளது!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10902,6 +10899,10 @@
     "placeholders": {}
   },
   "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
     "type": "String",
     "placeholders": {}
   }
