@@ -119,6 +119,19 @@ class SelectModeController {
 
   (PangeaAudioFile, File?)? get audioFile => _audioLoader.value;
 
+  List<SelectMode> get allModes {
+    final validTypes = {MessageTypes.Text, MessageTypes.Audio};
+    if (!messageEvent.event.status.isSent ||
+        messageEvent.event.type != EventTypes.Message ||
+        !validTypes.contains(messageEvent.event.messageType)) {
+      return [];
+    }
+
+    return messageEvent.event.messageType == MessageTypes.Text
+        ? _textModes
+        : _audioModes;
+  }
+
   List<SelectMode> get readingAssistanceModes {
     final validTypes = {MessageTypes.Text, MessageTypes.Audio};
     if (!messageEvent.event.status.isSent ||
