@@ -5266,6 +5266,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabEmoji() {
       return "Emoji de vocabul\xe1rio";
     },
+    get$requestRegeneration() {
+      return "Solicitar regenera\xe7\xe3o";
+    },
+    get$optionalRegenerateReason() {
+      return "(Opcional) Motivo";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10505,6 +10511,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$vocabEmoji() {
       return "Emoji de vocabul\xe1rio";
+    },
+    get$requestRegeneration() {
+      return "Solicitar regenera\xe7\xe3o";
+    },
+    get$optionalRegenerateReason() {
+      return "(Opcional) Motivo";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15746,6 +15758,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabEmoji() {
       return "Emoji de vocabul\xe1rio";
     },
+    get$requestRegeneration() {
+      return "Solicitar regenera\xe7\xe3o";
+    },
+    get$optionalRegenerateReason() {
+      return "(Opcional) Motivo";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15934,7 +15952,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nimYQKntd2ECBnfaRGituqdXIsg="] = d.current;
+  d["2Kn3FflbBBoTdUXm7zsWafrUNQ8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

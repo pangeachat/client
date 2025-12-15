@@ -5256,6 +5256,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabEmoji() {
       return "Vokabel-Emoji";
     },
+    get$requestRegeneration() {
+      return "Beg\xe4r regenerering";
+    },
+    get$optionalRegenerateReason() {
+      return "(Valfritt) Orsak";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5282,7 +5288,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QSnp+pVZ4BC0a6HfG8nJeJRE48A="] = d.current;
+  d["7Wx3fASZX9K+4nIsezeKc8xzvhs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

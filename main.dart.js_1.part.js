@@ -5261,6 +5261,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabEmoji() {
       return "\u8bcd\u6c47\u8868\u60c5\u7b26\u53f7";
     },
+    get$requestRegeneration() {
+      return "\u8bf7\u6c42\u518d\u751f";
+    },
+    get$optionalRegenerateReason() {
+      return "(\u53ef\u9009) \u539f\u56e0";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10501,6 +10507,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabEmoji() {
       return "\u8a5e\u5f59\u8868\u60c5\u7b26\u865f";
     },
+    get$requestRegeneration() {
+      return "\u8acb\u6c42\u518d\u751f";
+    },
+    get$optionalRegenerateReason() {
+      return "(\u9078\u586b) \u539f\u56e0";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10515,7 +10527,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IPjxumcg3XzTo59Tl9h85K6ChAc="] = d.current;
+  d["xLp1BAu5loLLF2/1a9nrSczNoyk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
