@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-12-15 12:08:37.892592",
+  "@@last_modified": "2025-12-15 13:09:47.980810",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10683,6 +10683,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Запит на регенерацію",
+  "optionalRegenerateReason": "(Необов'язково) Причина",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

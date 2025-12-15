@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-15 12:08:39.446987",
+  "@@last_modified": "2025-12-15 13:09:49.179864",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11296,6 +11296,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Žádat o regeneraci",
+  "optionalRegenerateReason": "(Volitelné) Důvod",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

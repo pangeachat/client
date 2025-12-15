@@ -4521,7 +4521,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-15 12:09:25.820630",
+  "@@last_modified": "2025-12-15 13:10:25.578909",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10687,6 +10687,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Iarr ar athghiniúint",
+  "optionalRegenerateReason": "(Roghnach) Cúis",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

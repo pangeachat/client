@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-12-15 12:08:05.415824",
+  "@@last_modified": "2025-12-15 13:09:24.082576",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10686,6 +10686,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Solicitar rexeneración",
+  "optionalRegenerateReason": "(Opcional) Razón",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

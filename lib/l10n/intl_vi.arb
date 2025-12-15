@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:09:01.141337",
+  "@@last_modified": "2025-12-15 13:10:05.261556",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6259,6 +6259,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Yêu cầu tái tạo",
+  "optionalRegenerateReason": "(Tùy chọn) Lý do",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

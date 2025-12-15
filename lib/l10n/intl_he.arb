@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:08:22.241555",
+  "@@last_modified": "2025-12-15 13:09:36.374126",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11738,6 +11738,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "בקש חידוש",
+  "optionalRegenerateReason": "(אופציונלי) סיבה",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

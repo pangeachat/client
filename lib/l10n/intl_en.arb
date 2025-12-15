@@ -5000,5 +5000,7 @@
   "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
   "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
   "inOngoingActivity": "You have an ongoing activity!",
-  "vocabEmoji": "Vocab emoji"
+  "vocabEmoji": "Vocab emoji",
+  "requestRegeneration": "Request regeneration",
+  "optionalRegenerateReason": "(Optional) Reason"
 }

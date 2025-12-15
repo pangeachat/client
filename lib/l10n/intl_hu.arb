@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-15 12:08:12.316889",
+  "@@last_modified": "2025-12-15 13:09:28.639253",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10690,6 +10690,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Regenerálás kérése",
+  "optionalRegenerateReason": "(Opcionális) Indok",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

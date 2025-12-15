@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-15 12:08:49.579904",
+  "@@last_modified": "2025-12-15 13:09:57.098421",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11665,6 +11665,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Humiling ng muling pagbuo",
+  "optionalRegenerateReason": "(Opsyonal) Dahilan",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

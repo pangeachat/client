@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-15 12:09:16.362955",
+  "@@last_modified": "2025-12-15 13:10:17.963932",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11479,6 +11479,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "再生成をリクエスト",
+  "optionalRegenerateReason": "(オプション) 理由",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

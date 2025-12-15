@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 12:08:27.053836",
+  "@@last_modified": "2025-12-15 13:09:40.663100",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11789,6 +11789,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Solicitar regeneração",
+  "optionalRegenerateReason": "(Opcional) Motivo",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

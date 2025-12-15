@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-15 12:08:29.165916",
+  "@@last_modified": "2025-12-15 13:09:41.916204",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10960,6 +10960,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Küsi regeneratsiooni",
+  "optionalRegenerateReason": "(Valikuline) Põhjus",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

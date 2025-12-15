@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-15 12:08:56.126544",
+  "@@last_modified": "2025-12-15 13:10:01.271793",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10911,6 +10911,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Yeniden oluşturma talep et",
+  "optionalRegenerateReason": "(Opsiyonel) Sebep",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }

@@ -1860,7 +1860,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-15 12:08:35.097898",
+  "@@last_modified": "2025-12-15 13:09:45.810126",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11780,6 +11780,16 @@
     "placeholders": {}
   },
   "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "請求再生",
+  "optionalRegenerateReason": "(可選) 原因",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
     "type": "String",
     "placeholders": {}
   }
