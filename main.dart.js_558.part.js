@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Generoa";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta "hasieratu elkarrizketa" DM bat bidaltzeko.';
     },
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RLOyLVEvNJTtwh03WNM5Qy/UXLo="] = d.current;
+  d["2d3jyOF4GN1ghcr0FNg9477BfVg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_558.part.js.map

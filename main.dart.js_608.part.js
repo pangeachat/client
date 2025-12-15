@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gn\xe9is";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'Is \xe9 seo gach duine sa ch\xfarsa seo. Clice\xe1il ar avatar aon \xfas\xe1ideora agus "t\xfas a chur le comhr\xe1" chun DM a sheoladh.';
     },
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LwrYjGPj7AnxjTAWxB2+6ceO2pE="] = d.current;
+  d["nA76zT7KhgiAUnFUoJWDmHEobvo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_608.part.js.map

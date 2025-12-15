@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Kasarian";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'Ito ang lahat ng tao sa kursong ito. I-click ang avatar ng sinumang user at "magsimula ng pag-uusap" upang magpadala ng DM.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UF9OSdmSTiH7/MPrNGURq6wxaG0="] = d.current;
+  d["SGymUSH1yui1XjQgmP3fVdRC5v8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_586.part.js.map

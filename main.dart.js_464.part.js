@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Genro";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return '\u0108i tio estas \u0109iuj en \u0109i tiu kurso. Klaku sur la avatareto de iu ajn uzanto kaj "komencu konversacion" por sendi DM.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+a0ZatSR0ZOORpsrzMZA6SP7a4s="] = d.current;
+  d["w3onaL39FmOcZENs9fviemI/CXc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_464.part.js.map

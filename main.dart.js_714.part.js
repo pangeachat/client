@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Dzimums";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return '\u0160eit ir visi \u0161\u012b kursa dal\u012bbnieki. Noklik\u0161\u0137iniet uz jebkura lietot\u0101ja avat\u0101ra un izv\u0113lieties "s\u0101kt sarunu", lai nos\u016bt\u012btu DM.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8rYSepCAbzREM8Mz9fkkO7HAkDI="] = d.current;
+  d["Q0XNEjLowl2zXBZcaAJL61cNGKQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_714.part.js.map

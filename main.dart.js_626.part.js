@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Spol";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'Ovo su svi u ovom te\u010daju. Kliknite na avatar bilo kojeg korisnika i "zapo\u010dni razgovor" da po\u0161aljete DM.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BJ++kDUiX0MoSQSY/zLrPizIrzQ="] = d.current;
+  d["8PP7PDDabY575ZxaYRqTQXKq+EY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_626.part.js.map

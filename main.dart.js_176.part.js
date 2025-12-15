@@ -5240,6 +5240,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "G\xe8nere";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'Aix\xf2 \xe9s tothom en aquest curs. Feu clic a l\'avatar de qualsevol usuari i "comenceu la conversa" per enviar un DM.';
     },
@@ -5265,7 +5268,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["B5cgb465LZY43VD7S6J9j2ARUT8="] = d.current;
+  d["UcxslnVTwZt/q7TIsJpL4DGlSXg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_176.part.js.map

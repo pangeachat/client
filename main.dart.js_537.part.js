@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Sugu";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'See on k\xf5ik, kes on selles kursuses. Kl\xf5psake mis tahes kasutaja avatari ja valige "alusta vestlust", et saata DM.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OxG9jxU4vc/tPrO16DXgxmzMIuc="] = d.current;
+  d["HzMtLWz1S8TwSA0SLDDgV8T0KiU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_537.part.js.map

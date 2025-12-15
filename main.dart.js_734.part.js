@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gen";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return "Aceasta este toat\u0103 lumea din acest curs. Face\u021bi clic pe avatarul oric\u0103rui utilizator \u0219i \u201e\xeencepe\u021bi conversa\u021bia\u201d pentru a trimite un mesaj direct.";
     },
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2DzLOcWDivLHRi/EiYVVbl0lg0Y="] = d.current;
+  d["Dwbdvx1xrQJak0MorjiEbPLTPIc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_734.part.js.map

@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gender";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan "mulai percakapan" untuk mengirim DM.';
     },
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WFSHg3uCSAvWtEcLi5/8uh/Ao40="] = d.current;
+  d["wfqTq6wUR6tqlqI+Ouzlbeka64I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_683.part.js.map

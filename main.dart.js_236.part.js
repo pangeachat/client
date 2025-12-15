@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Pohlav\xed";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return "Toto jsou v\u0161ichni \xfa\u010dastn\xedci tohoto kurzu. Klikn\u011bte na avatara jak\xe9hokoli u\u017eivatele a \u201ezah\xe1jit konverzaci\u201c, abyste poslali p\u0159\xedmou zpr\xe1vu.";
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QzkyoJw917xj7zqWJEHLchSp5R0="] = d.current;
+  d["QgqaRdetb/fUhWcGF0FxNKG/CfY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_236.part.js.map

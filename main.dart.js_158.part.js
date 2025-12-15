@@ -5240,6 +5240,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "\u09b2\u09bf\u0999\u09cd\u0997";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return '\u098f\u099f\u09bf \u098f\u0987 \u0995\u09cb\u09b0\u09cd\u09b8\u09c7\u09b0 \u09b8\u0995\u09b2 \u09b8\u09a6\u09b8\u09cd\u09af\u0964 \u09af\u09c7 \u0995\u09cb\u09a8\u09cb \u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0\u0995\u09be\u09b0\u09c0\u09b0 \u0985\u09ac\u09a4\u09be\u09b0 \u0995\u09cd\u09b2\u09bf\u0995 \u0995\u09b0\u09c1\u09a8 \u098f\u09ac\u0982 "\u0986\u09b2\u09be\u09aa \u09b6\u09c1\u09b0\u09c1 \u0995\u09b0\u09c1\u09a8" \u098f \u09a1\u09bf\u098f\u09ae \u09aa\u09be\u09a0\u09be\u09a4\u09c7\u0964';
     },
@@ -5262,7 +5265,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9/J7qAmucUEeKb3tHBCVWHJRDOg="] = d.current;
+  d["3enLTomKJxcuBw1ZuWOTHT8aykw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map

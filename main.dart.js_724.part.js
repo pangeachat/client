@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Geslacht";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'Dit zijn alle deelnemers aan deze cursus. Klik op het avatar van een gebruiker en "start gesprek" om een DM te sturen.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NwTGW4Iwn3Sr5xqpZLsZ9XFpo7U="] = d.current;
+  d["vMFerrm5qaT7bWXU1zpyOk/kmwA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_724.part.js.map

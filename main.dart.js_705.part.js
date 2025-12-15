@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "\uc131\ubcc4";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return '\uc774\uac83\uc740 \uc774 \uacfc\uc815\uc758 \ubaa8\ub4e0 \uc0ac\ub78c\uc785\ub2c8\ub2e4. \uc0ac\uc6a9\uc790\uc758 \uc544\ubc14\ud0c0\ub97c \ud074\ub9ad\ud558\uace0 "\ub300\ud654 \uc2dc\uc791"\uc744 \ud074\ub9ad\ud558\uc5ec DM\uc744 \ubcf4\ub0b4\uc138\uc694.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2vPajlI2Sql2DWSZ25KC/yY0Dp4="] = d.current;
+  d["nk4HHoVVNMDj4HL03/qmuxgyyfk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_705.part.js.map

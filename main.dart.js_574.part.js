@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Sukupuoli";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return 'T\xe4ss\xe4 ovat kaikki t\xe4m\xe4n kurssin osallistujat. Napsauta kenen tahansa k\xe4ytt\xe4j\xe4n avataria ja valitse "aloita keskustelu" l\xe4hett\xe4\xe4ksesi yksityisviestin.';
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aIq9/f7QOAQoG5sEPeOGmbn3zwg="] = d.current;
+  d["hprFV1FK51qICV+VlEhgrutw5wc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_574.part.js.map

@@ -5239,6 +5239,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Neme";
     },
+    get$modeDisabled() {
+      return "Learning tools are disabled for messages that aren't in your target language.";
+    },
     get$courseParticipantTooltip() {
       return "Ez mindenki, aki ebben a kurzusban r\xe9szt vesz. Kattints b\xe1rmelyik felhaszn\xe1l\xf3 avatarj\xe1ra, \xe9s v\xe1laszd a \u201ebesz\xe9lget\xe9s ind\xedt\xe1sa\u201d lehet\u0151s\xe9get, hogy k\xf6zvetlen \xfczenetet k\xfcldj.";
     },
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["w8AtgOkEfX9A1R/x2tnIFsS3F1o="] = d.current;
+  d["UT6Js1v8tR1s9CjeIS5tDkwFlX0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map
