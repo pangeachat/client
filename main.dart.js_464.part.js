@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "\u0108iuj lingvoj";
     },
-    get$chatListTooltip() {
-      return "\u0108i tie vi trovos viajn rektajn mesa\u011dojn! Klaku sur ajna uzantoprofilo kaj \u201ckomencu konversacion\u201d por sendi DM.";
-    },
     get$directMessageBotTitle() {
       return "Rekta mesa\u011do Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Via celolingvo ne kongruas kun \u0109i tiu mesa\u011do. \u0108u \u011disdatigi vian celolingvon?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "\u0108i tiu vortaro vorto estos permanente forigita el viaj analizoj";
     },
     get$woman() {
-      return "Woman";
+      return "Virino";
     },
     get$man() {
-      return "Man";
+      return "Viro";
     },
     get$otherGender() {
-      return "Other";
+      return "Alia";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Elektu genran opcion";
     },
     get$gender() {
-      return "Gender";
+      return "Genro";
+    },
+    get$courseParticipantTooltip() {
+      return '\u0108i tio estas \u0109iuj en \u0109i tiu kurso. Klaku sur la avatareto de iu ajn uzanto kaj "komencu konversacion" por sendi DM.';
+    },
+    get$chatParticipantTooltip() {
+      return '\u0108i tio estas \u0109iuj en \u0109i tiu konversacio. Klaku sur la avataro de iu ajn kaj "komenci konversacion" por sendi DM.';
     },
     get$inOngoingActivity() {
       return "Vi havas da\u016drantan aktivon!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["q7vrJwYjB1lghf0GDH3HFdSpFs4="] = d.current;
+  d["+a0ZatSR0ZOORpsrzMZA6SP7a4s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_464.part.js.map

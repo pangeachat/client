@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Todos los idiomas";
     },
-    get$chatListTooltip() {
-      return '\xa1Aqu\xed encontrar\xe1s tus mensajes directos! Haz clic en el avatar de cualquier usuario y "iniciar conversaci\xf3n" para enviar un mensaje directo.';
-    },
     get$directMessageBotTitle() {
       return "Mensaje directo Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "El idioma de destino no coincide con este mensaje. \xbfActualizar el idioma de destino?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Esta palabra de vocabulario ser\xe1 eliminada permanentemente de tus an\xe1lisis";
     },
     get$woman() {
-      return "Woman";
+      return "Mujer";
     },
     get$man() {
-      return "Man";
+      return "Hombre";
     },
     get$otherGender() {
-      return "Other";
+      return "Otro";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Selecciona una opci\xf3n de g\xe9nero";
     },
     get$gender() {
-      return "Gender";
+      return "G\xe9nero";
+    },
+    get$courseParticipantTooltip() {
+      return 'Estos son todos en este curso. Haz clic en el avatar de cualquier usuario y "iniciar conversaci\xf3n" para enviar un DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Estas son todas las personas en este chat. Haz clic en el avatar de cualquier usuario y "iniciar conversaci\xf3n" para enviar un DM.';
     },
     get$inOngoingActivity() {
       return "\xa1Tienes una actividad en curso!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QNIi1P7UMtLE9Fu+PGCGSmQ/Rbk="] = d.current;
+  d["fsbF/uKVHpZdFN3azRog6GxCgSo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_498.part.js.map

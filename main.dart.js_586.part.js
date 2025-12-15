@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Lahat ng wika";
     },
-    get$chatListTooltip() {
-      return "Dito mo makikita ang iyong mga direktang mensahe! I-click ang avatar ng kahit anong user at \u201csimulan ang pag-uusap\u201d upang magpadala ng DM.";
-    },
     get$directMessageBotTitle() {
       return "Direktang mensahe Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ang iyong target na wika ay hindi tumutugma sa mensaheng ito. I-update ang iyong target na wika?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ang salitang bokabularyo na ito ay permanenteng aalisin mula sa iyong analytics";
     },
     get$woman() {
-      return "Woman";
+      return "Babae";
     },
     get$man() {
-      return "Man";
+      return "Lalaki";
     },
     get$otherGender() {
-      return "Other";
+      return "Iba";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Pumili ng opsyon sa kasarian";
     },
     get$gender() {
-      return "Gender";
+      return "Kasarian";
+    },
+    get$courseParticipantTooltip() {
+      return 'Ito ang lahat ng tao sa kursong ito. I-click ang avatar ng sinumang user at "magsimula ng pag-uusap" upang magpadala ng DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Ito ang lahat ng tao sa chat na ito. I-click ang avatar ng sinumang user at "simulan ang pag-uusap" upang magpadala ng DM.';
     },
     get$inOngoingActivity() {
       return "Mayroon kang patuloy na aktibidad!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["scRHcVxQzQFSzZUQZY37ZIM2VvI="] = d.current;
+  d["UF9OSdmSTiH7/MPrNGURq6wxaG0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_586.part.js.map

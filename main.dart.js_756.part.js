@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "T\u1ea5t c\u1ea3 c\xe1c ng\xf4n ng\u1eef";
     },
-    get$chatListTooltip() {
-      return "B\u1ea1n s\u1ebd t\xecm th\u1ea5y tin nh\u1eafn tr\u1ef1c ti\u1ebfp c\u1ee7a m\xecnh \u1edf \u0111\xe2y! Nh\u1ea5p v\xe0o \u1ea3nh \u0111\u1ea1i di\u1ec7n c\u1ee7a b\u1ea5t k\u1ef3 ng\u01b0\u1eddi d\xf9ng n\xe0o v\xe0 ch\u1ecdn \u201cb\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n\u201d \u0111\u1ec3 g\u1eedi tin nh\u1eafn tr\u1ef1c ti\u1ebfp.";
-    },
     get$directMessageBotTitle() {
       return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp v\u1edbi Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n kh\xf4ng kh\u1edbp v\u1edbi th\xf4ng \u0111i\u1ec7p n\xe0y. C\u1eadp nh\u1eadt ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "T\u1eeb v\u1ef1ng n\xe0y s\u1ebd b\u1ecb x\xf3a v\u0129nh vi\u1ec5n kh\u1ecfi ph\xe2n t\xedch c\u1ee7a b\u1ea1n";
     },
     get$woman() {
-      return "Woman";
+      return "Ph\u1ee5 n\u1eef";
     },
     get$man() {
-      return "Man";
+      return "Nam";
     },
     get$otherGender() {
-      return "Other";
+      return "Kh\xe1c";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Ch\u1ecdn m\u1ed9t t\xf9y ch\u1ecdn gi\u1edbi t\xednh";
     },
     get$gender() {
-      return "Gender";
+      return "Gi\u1edbi t\xednh";
+    },
+    get$courseParticipantTooltip() {
+      return '\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 m\u1ecdi ng\u01b0\u1eddi trong kh\xf3a h\u1ecdc n\xe0y. Nh\u1ea5p v\xe0o avatar c\u1ee7a b\u1ea5t k\u1ef3 ng\u01b0\u1eddi d\xf9ng n\xe0o v\xe0 "b\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n" \u0111\u1ec3 g\u1eedi tin nh\u1eafn tr\u1ef1c ti\u1ebfp.';
+    },
+    get$chatParticipantTooltip() {
+      return '\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 m\u1ecdi ng\u01b0\u1eddi trong cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. Nh\u1ea5p v\xe0o avatar c\u1ee7a b\u1ea5t k\u1ef3 ng\u01b0\u1eddi d\xf9ng n\xe0o v\xe0 "b\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n" \u0111\u1ec3 g\u1eedi tin nh\u1eafn tr\u1ef1c ti\u1ebfp.';
     },
     get$inOngoingActivity() {
       return "B\u1ea1n c\xf3 m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111ang di\u1ec5n ra!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4XtgnAs+B8cjuMrLuYsMH5CZYXM="] = d.current;
+  d["rpaJsCfkV4rEkqygyN3seSPOkjc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

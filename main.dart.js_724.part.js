@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Alle talen";
     },
-    get$chatListTooltip() {
-      return "Hier vind je je directe berichten! Klik op de avatar van een gebruiker en \u201cstart een gesprek\u201d om een DM te sturen.";
-    },
     get$directMessageBotTitle() {
       return "Direct bericht Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Uw doeltaal komt niet overeen met dit bericht. Wilt u uw doeltaal bijwerken?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Dit vocabulairewoord wordt permanent verwijderd uit uw analyses";
     },
     get$woman() {
-      return "Woman";
+      return "Vrouw";
     },
     get$man() {
       return "Man";
     },
     get$otherGender() {
-      return "Other";
+      return "Anders";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Selecteer een geslachtsoptie";
     },
     get$gender() {
-      return "Gender";
+      return "Geslacht";
+    },
+    get$courseParticipantTooltip() {
+      return 'Dit zijn alle deelnemers aan deze cursus. Klik op het avatar van een gebruiker en "start gesprek" om een DM te sturen.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Dit zijn alle deelnemers in deze chat. Klik op het avatar van een gebruiker en "start gesprek" om een DM te sturen.';
     },
     get$inOngoingActivity() {
       return "Je hebt een lopende activiteit!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["AfK6NDVCZVzKjQHjDZvqPfGitqE="] = d.current;
+  d["NwTGW4Iwn3Sr5xqpZLsZ9XFpo7U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_724.part.js.map

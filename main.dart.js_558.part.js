@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Hizkuntza guztiak";
     },
-    get$chatListTooltip() {
-      return "Hemen zure mezu zuzenean aurkituko dituzu! Sakatu edozein erabiltzailearen avatarra eta \u201chasi elkarrizketa\u201d mezu zuzena bidaltzeko.";
-    },
     get$directMessageBotTitle() {
       return "Pangea Bot mezu zuzena";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zure helburu hizkuntza ez da mezu honekin bat etortzen. Eguneratu al dezakezu zure helburu hizkuntza?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Hau vocab hitza zure analitiketatik behin betiko ezabatuko da";
     },
     get$woman() {
-      return "Woman";
+      return "Emakumea";
     },
     get$man() {
-      return "Man";
+      return "Gizona";
     },
     get$otherGender() {
-      return "Other";
+      return "Bestea";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Aukeratu genero aukera bat";
     },
     get$gender() {
-      return "Gender";
+      return "Generoa";
+    },
+    get$courseParticipantTooltip() {
+      return 'Hau ikastaro honetan dauden guztiak dira. Egin klik edozein erabiltzaileen irudian eta "hasieratu elkarrizketa" DM bat bidaltzeko.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Hau da txat honetan dena. Egin klik edozein erabiltzaileen irudian eta "hasieratu elkarrizketa" DM bat bidaltzeko.';
     },
     get$inOngoingActivity() {
       return "Zure aktibitate bat martxan dago!";
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PV6Azz+T52QyAwGByCRcQRu38Rg="] = d.current;
+  d["RLOyLVEvNJTtwh03WNM5Qy/UXLo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_558.part.js.map

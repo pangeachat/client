@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Toate limbile";
     },
-    get$chatListTooltip() {
-      return "Aici vei g\u0103si mesajele tale directe! F\u0103 clic pe avatarul oric\u0103rui utilizator \u0219i \u201e\xeencepe conversa\u021bia\u201d pentru a trimite un mesaj direct.";
-    },
     get$directMessageBotTitle() {
       return "Mesaj direct Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Limba \u021bint\u0103 nu se potrive\u0219te cu acest mesaj. Dori\u021bi s\u0103 actualiza\u021bi limba \u021bint\u0103?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Aceast\u0103 cuv\xe2nt de vocabular va fi eliminat permanent din analizele tale";
     },
     get$woman() {
-      return "Woman";
+      return "Femeie";
     },
     get$man() {
-      return "Man";
+      return "B\u0103rbat";
     },
     get$otherGender() {
-      return "Other";
+      return "Altul";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Selecta\u021bi o op\u021biune de gen";
     },
     get$gender() {
-      return "Gender";
+      return "Gen";
+    },
+    get$courseParticipantTooltip() {
+      return "Aceasta este toat\u0103 lumea din acest curs. Face\u021bi clic pe avatarul oric\u0103rui utilizator \u0219i \u201e\xeencepe\u021bi conversa\u021bia\u201d pentru a trimite un mesaj direct.";
+    },
+    get$chatParticipantTooltip() {
+      return "Aceasta este toat\u0103 lumea din acest chat. Face\u021bi clic pe avatarul oric\u0103rui utilizator \u0219i \u201c\xeencepe\u021bi conversa\u021bia\u201d pentru a trimite un DM.";
     },
     get$inOngoingActivity() {
       return "Ai o activitate \xeen desf\u0103\u0219urare!";
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["G+f4lIL5cfilCwk+hIZu3F6o8c0="] = d.current;
+  d["2DzLOcWDivLHRi/EiYVVbl0lg0Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_734.part.js.map

@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "V\u0161echny jazyky";
     },
-    get$chatListTooltip() {
-      return "Zde najdete sv\xe9 p\u0159\xedm\xe9 zpr\xe1vy! Klikn\u011bte na avatar jak\xe9hokoliv u\u017eivatele a \u201cza\u010dn\u011bte konverzaci\u201d pro odesl\xe1n\xed DM.";
-    },
     get$directMessageBotTitle() {
       return "P\u0159\xedm\xe1 zpr\xe1va Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Jazyk c\xedle neodpov\xedd\xe1 t\xe9to zpr\xe1v\u011b. Chcete aktualizovat sv\u016fj c\xedlov\xfd jazyk?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Toto slovo ve slovn\xed z\xe1sob\u011b bude trvale odstran\u011bno z va\u0161ich anal\xfdz";
     },
     get$woman() {
-      return "Woman";
+      return "\u017dena";
     },
     get$man() {
-      return "Man";
+      return "Mu\u017e";
     },
     get$otherGender() {
-      return "Other";
+      return "Jin\xe9";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Vyberte mo\u017enost pohlav\xed";
     },
     get$gender() {
-      return "Gender";
+      return "Pohlav\xed";
+    },
+    get$courseParticipantTooltip() {
+      return "Toto jsou v\u0161ichni \xfa\u010dastn\xedci tohoto kurzu. Klikn\u011bte na avatara jak\xe9hokoli u\u017eivatele a \u201ezah\xe1jit konverzaci\u201c, abyste poslali p\u0159\xedmou zpr\xe1vu.";
+    },
+    get$chatParticipantTooltip() {
+      return "Toto jsou v\u0161ichni v tomto chatu. Klikn\u011bte na avatar jak\xe9hokoli u\u017eivatele a \u201cza\u010dn\u011bte konverzaci\u201d pro odesl\xe1n\xed DM.";
     },
     get$inOngoingActivity() {
       return "M\xe1te prob\xedhaj\xedc\xed aktivitu!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZmoYqqs9OQe8/ZAx34M7qd6iLsM="] = d.current;
+  d["QzkyoJw917xj7zqWJEHLchSp5R0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_236.part.js.map

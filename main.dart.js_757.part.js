@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "\u6240\u6709\u8a9e\u8a00";
     },
-    get$chatListTooltip() {
-      return "\u55ba\u5462\u5ea6\u4f60\u6703\u6435\u5230\u4f60\u5605\u76f4\u63a5\u8a0a\u606f\uff01\u9ede\u64ca\u4efb\u4f55\u7528\u6236\u5605\u982d\u50cf\u540c\u300c\u958b\u59cb\u5c0d\u8a71\u300d\u569f\u767c\u9001\u79c1\u8a0a\u3002";
-    },
     get$directMessageBotTitle() {
       return "\u76f4\u63a5\u8a0a\u606f Pangea \u6a5f\u68b0\u4eba";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u8207\u6b64\u6d88\u606f\u4e0d\u5339\u914d\u3002\u8981\u66f4\u65b0\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u55ce\uff1f";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "\u9019\u500b\u8a5e\u5f59\u5c07\u6703\u5f9e\u4f60\u7684\u5206\u6790\u4e2d\u6c38\u4e45\u79fb\u9664";
     },
     get$woman() {
-      return "Woman";
+      return "\u5973\u6027";
     },
     get$man() {
-      return "Man";
+      return "\u7537\u6027";
     },
     get$otherGender() {
-      return "Other";
+      return "\u5176\u4ed6";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "\u9078\u64c7\u4e00\u500b\u6027\u5225\u9078\u9805";
     },
     get$gender() {
-      return "Gender";
+      return "\u6027\u5225";
+    },
+    get$courseParticipantTooltip() {
+      return "\u9019\u662f\u9019\u500b\u8ab2\u7a0b\u4e2d\u7684\u6240\u6709\u4eba\u3002\u9ede\u64ca\u4efb\u4f55\u7528\u6236\u7684\u982d\u50cf\u4e26\u9078\u64c7\u300c\u958b\u59cb\u5c0d\u8a71\u300d\u4f86\u767c\u9001\u79c1\u4fe1\u3002";
+    },
+    get$chatParticipantTooltip() {
+      return "\u9019\u662f\u9019\u500b\u804a\u5929\u4e2d\u7684\u6240\u6709\u4eba\u3002\u9ede\u64ca\u4efb\u4f55\u7528\u6236\u7684\u982d\u50cf\u4e26\u9078\u64c7\u300c\u958b\u59cb\u5c0d\u8a71\u300d\u4f86\u767c\u9001\u79c1\u4fe1\u3002";
     },
     get$inOngoingActivity() {
       return "\u4f60\u6709\u4e00\u500b\u6b63\u5728\u9032\u884c\u7684\u6d3b\u52d5\uff01";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["39368T0i5kvBvRiZRQVcEeZrFCs="] = d.current;
+  d["P9cy+yT1t1zpg5ym1di0lTiz6zQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_757.part.js.map

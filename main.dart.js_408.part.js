@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "All languages";
     },
-    get$chatListTooltip() {
-      return "Here you\u2019ll find your direct messages! Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
-    },
     get$directMessageBotTitle() {
       return "Direct message Pangea Bot";
     },
@@ -5242,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$gender() {
       return "Gender";
     },
+    get$courseParticipantTooltip() {
+      return "This is everybody in this course. Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
+    },
+    get$chatParticipantTooltip() {
+      return "This is everybody in this chat. Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
+    },
     get$inOngoingActivity() {
       return "You have an ongoing activity!";
     },
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7TmPehB26D60co3EjpYjztaWwI4="] = d.current;
+  d["j22rnQEsyjgK4vR/4flAgSxL7wE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_408.part.js.map

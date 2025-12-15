@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "V\u0161etky jazyky";
     },
-    get$chatListTooltip() {
-      return "Tu n\xe1jdete svoje priame spr\xe1vy! Kliknite na avatar ak\xe9hoko\u013evek pou\u017e\xedvate\u013ea a \u201eza\u010da\u0165 konverz\xe1ciu\u201c, aby ste poslali DM.";
-    },
     get$directMessageBotTitle() {
       return "Priama spr\xe1va Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Va\u0161a cie\u013eov\xe1 jazykov\xe1 verzia sa nezhoduje s touto spr\xe1vou. Chcete aktualizova\u0165 svoju cie\u013eov\xfa jazykov\xfa verziu?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Toto slovo v slovnej z\xe1sobe bude trvalo odstr\xe1nen\xe9 z va\u0161ich analytick\xfdch \xfadajov";
     },
     get$woman() {
-      return "Woman";
+      return "\u017dena";
     },
     get$man() {
-      return "Man";
+      return "Mu\u017e";
     },
     get$otherGender() {
-      return "Other";
+      return "In\xe9";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Vyberte mo\u017enos\u0165 pohlavia";
     },
     get$gender() {
-      return "Gender";
+      return "Pohlavie";
+    },
+    get$courseParticipantTooltip() {
+      return "Toto s\xfa v\u0161etci \xfa\u010dastn\xedci tohto kurzu. Kliknite na avatar ak\xe9hoko\u013evek pou\u017e\xedvate\u013ea a \u201eza\u010da\u0165 konverz\xe1ciu\u201c, aby ste poslali s\xfakromn\xfa spr\xe1vu.";
+    },
+    get$chatParticipantTooltip() {
+      return "Toto s\xfa v\u0161etci v tomto chate. Kliknite na avatar ak\xe9hoko\u013evek pou\u017e\xedvate\u013ea a \u201eza\u010da\u0165 konverz\xe1ciu\u201c na odoslanie priamej spr\xe1vy.";
     },
     get$inOngoingActivity() {
       return "M\xe1te prebiehaj\xfacu aktivitu!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["acH5bi2nbTXGzqHqPgUAmHJKysU="] = d.current;
+  d["b4HTwmHVEpdRTgUqOY/c4Kqq4Bs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_742.part.js.map

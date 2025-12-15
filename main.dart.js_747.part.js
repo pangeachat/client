@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Svi jezici";
     },
-    get$chatListTooltip() {
-      return "Ovde \u0107ete prona\u0107i svoje direktne poruke! Kliknite na avatar bilo kojeg korisnika i \u201czapo\u010dni razgovor\u201d da biste poslali DM.";
-    },
     get$directMessageBotTitle() {
       return "Direktna poruka Pangea Bota";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Va\u0161 ciljni jezik se ne poklapa sa ovom porukom. Da li \u017eelite da a\u017eurirate svoj ciljni jezik?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ova re\u010d u re\u010dniku \u0107e biti trajno uklonjena iz va\u0161ih analitika";
     },
     get$woman() {
-      return "Woman";
+      return "\u017dena";
     },
     get$man() {
-      return "Man";
+      return "Mu\u0161karac";
     },
     get$otherGender() {
-      return "Other";
+      return "Drugo";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Izaberite opciju pola";
     },
     get$gender() {
-      return "Gender";
+      return "Pol";
+    },
+    get$courseParticipantTooltip() {
+      return "Ovo su svi u ovom kursu. Kliknite na avatar bilo kog korisnika i \u201cpo\u010dnite razgovor\u201d da po\u0161aljete DM.";
+    },
+    get$chatParticipantTooltip() {
+      return 'Ovo su svi u ovom \u010datu. Kliknite na avatar bilo kog korisnika i "zapo\u010dnite razgovor" da po\u0161aljete DM.';
     },
     get$inOngoingActivity() {
       return "Imate aktivnost u toku!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["AigqGgYoXVfI5SrwhbBaOJzKn+A="] = d.current;
+  d["oAiS1V85cql+R1RlopO7vxmH7w0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

@@ -4379,9 +4379,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Tots els idiomes";
     },
-    get$chatListTooltip() {
-      return "Aqu\xed trobar\xe0s els teus missatges directes! Fes clic a la icona d'un usuari i \u201cInicia una conversa\u201d per enviar un missatge privat.";
-    },
     get$directMessageBotTitle() {
       return "Missatge directe del Pangea Bot";
     },
@@ -5226,22 +5223,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "El teu idioma de destinaci\xf3 no coincideix amb aquest missatge. Vols actualitzar el teu idioma de destinaci\xf3?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Aquesta paraula de vocabulari s'eliminar\xe0 permanentment de les teves anal\xedtiques";
     },
     get$woman() {
-      return "Woman";
+      return "Dona";
     },
     get$man() {
-      return "Man";
+      return "Home";
     },
     get$otherGender() {
-      return "Other";
+      return "Altre";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Selecciona una opci\xf3 de g\xe8nere";
     },
     get$gender() {
-      return "Gender";
+      return "G\xe8nere";
+    },
+    get$courseParticipantTooltip() {
+      return 'Aix\xf2 \xe9s tothom en aquest curs. Feu clic a l\'avatar de qualsevol usuari i "comenceu la conversa" per enviar un DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Aix\xf2 \xe9s tothom en aquest xat. Fes clic a l\'avatar de qualsevol usuari i "inicia una conversa" per enviar un DM.';
     },
     get$inOngoingActivity() {
       return "Tens una activitat en curs!";
@@ -5262,7 +5265,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zYTgXFUJmN31BVTY0N6j+VFdCCU="] = d.current;
+  d["B5cgb465LZY43VD7S6J9j2ARUT8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_176.part.js.map

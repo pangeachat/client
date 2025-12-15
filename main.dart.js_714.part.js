@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Visas valodas";
     },
-    get$chatListTooltip() {
-      return "\u0160eit atrad\u012bsiet savas tie\u0161\u0101s zi\u0146as! Noklik\u0161\u0137iniet uz jebkura lietot\u0101ja avatara un izv\u0113lieties \u201es\u0101kt sarunu\u201d, lai nos\u016bt\u012btu DM.";
-    },
     get$directMessageBotTitle() {
       return "Tie\u0161\u0101s zi\u0146as Pangea botam";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "J\u016bsu m\u0113r\u0137a valoda nesakr\u012bt ar \u0161o zi\u0146ojumu. Vai v\u0113laties atjaunin\u0101t savu m\u0113r\u0137a valodu?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "\u0160is v\u0101rds tiks past\u0101v\u012bgi no\u0146emts no j\u016bsu anal\u012bzes";
     },
     get$woman() {
-      return "Woman";
+      return "Sieviete";
     },
     get$man() {
-      return "Man";
+      return "V\u012brietis";
     },
     get$otherGender() {
-      return "Other";
+      return "Cits";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Izv\u0113lieties dzimuma opciju";
     },
     get$gender() {
-      return "Gender";
+      return "Dzimums";
+    },
+    get$courseParticipantTooltip() {
+      return '\u0160eit ir visi \u0161\u012b kursa dal\u012bbnieki. Noklik\u0161\u0137iniet uz jebkura lietot\u0101ja avat\u0101ra un izv\u0113lieties "s\u0101kt sarunu", lai nos\u016bt\u012btu DM.';
+    },
+    get$chatParticipantTooltip() {
+      return '\u0160eit ir visi \u0161aj\u0101 \u010dat\u0101. Noklik\u0161\u0137iniet uz jebkura lietot\u0101ja avatara un "s\u0101kt sarunu", lai nos\u016bt\u012btu DM.';
     },
     get$inOngoingActivity() {
       return "Jums ir notieko\u0161a aktivit\u0101te!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jBHjpuIqnDyJq4UhdAPUuIC4Ils="] = d.current;
+  d["8rYSepCAbzREM8Mz9fkkO7HAkDI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_714.part.js.map

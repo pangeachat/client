@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Svi jezici";
     },
-    get$chatListTooltip() {
-      return "Ovdje \u0107ete prona\u0107i svoje izravne poruke! Kliknite na avatar bilo kojeg korisnika i \u201czapo\u010dni razgovor\u201d za slanje DM-a.";
-    },
     get$directMessageBotTitle() {
       return "Direktna poruka Pangea Bota";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Va\u0161 ciljni jezik se ne podudara s ovom porukom. \u017delite li a\u017eurirati svoj ciljni jezik?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ova rije\u010d \u0107e biti trajno uklonjena iz va\u0161ih analitika";
     },
     get$woman() {
-      return "Woman";
+      return "\u017dena";
     },
     get$man() {
-      return "Man";
+      return "Mu\u0161karac";
     },
     get$otherGender() {
-      return "Other";
+      return "Ostalo";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Odaberite opciju spola";
     },
     get$gender() {
-      return "Gender";
+      return "Spol";
+    },
+    get$courseParticipantTooltip() {
+      return 'Ovo su svi u ovom te\u010daju. Kliknite na avatar bilo kojeg korisnika i "zapo\u010dni razgovor" da po\u0161aljete DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Ovo su svi u ovom chatu. Kliknite na avatar bilo kojeg korisnika i "zapo\u010dnite razgovor" da po\u0161aljete DM.';
     },
     get$inOngoingActivity() {
       return "Imate aktivnost koja traje!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ADXHnbP8de6RHGaQFgJZ/VKqjpM="] = d.current;
+  d["BJ++kDUiX0MoSQSY/zLrPizIrzQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_626.part.js.map

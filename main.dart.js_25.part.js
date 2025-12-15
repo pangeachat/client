@@ -4390,9 +4390,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Todos os idiomas";
     },
-    get$chatListTooltip() {
-      return 'Aqui voc\xea encontrar\xe1 suas mensagens diretas! Clique no avatar de qualquer usu\xe1rio e "iniciar conversa" para enviar uma DM.';
-    },
     get$directMessageBotTitle() {
       return "Mensagem direta Pangea Bot";
     },
@@ -4472,7 +4469,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.xc9_aqui;
     },
     get$activityAnalyticsTooltipBody() {
-      return string$.Estas_;
+      return string$.Estas_s;
     },
     get$numSavedActivities() {
       return "N\xfamero de atividades salvas";
@@ -5237,22 +5234,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.O_seu_;
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return string$.Esta_p;
     },
     get$woman() {
-      return "Woman";
+      return "Mulher";
     },
     get$man() {
-      return "Man";
+      return "Homem";
     },
     get$otherGender() {
-      return "Other";
+      return "Outro";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Selecione uma op\xe7\xe3o de g\xeanero";
     },
     get$gender() {
-      return "Gender";
+      return "G\xeanero";
+    },
+    get$courseParticipantTooltip() {
+      return string$.Este__;
+    },
+    get$chatParticipantTooltip() {
+      return string$.Estas_t;
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
@@ -9624,9 +9627,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Todos os idiomas";
     },
-    get$chatListTooltip() {
-      return 'Aqui voc\xea encontrar\xe1 suas mensagens diretas! Clique na foto de perfil de qualquer usu\xe1rio e "comece uma conversa" para enviar uma DM.';
-    },
     get$directMessageBotTitle() {
       return "Mensagem direta do Pangea Bot";
     },
@@ -9706,7 +9706,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.xc9_aqui;
     },
     get$activityAnalyticsTooltipBody() {
-      return string$.Estas_;
+      return string$.Estas_s;
     },
     get$numSavedActivities() {
       return "N\xfamero de atividades salvas";
@@ -10466,6 +10466,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$messageLanguageMismatchMessage() {
       return "Seu idioma de destino n\xe3o corresponde a esta mensagem. Atualizar seu idioma de destino?";
+    },
+    get$blockLemmaConfirmation() {
+      return string$.Esta_p;
+    },
+    get$woman() {
+      return "Mulher";
+    },
+    get$man() {
+      return "Homem";
+    },
+    get$otherGender() {
+      return "Outro";
+    },
+    get$unselectedGender() {
+      return "Selecione uma op\xe7\xe3o de g\xeanero";
+    },
+    get$gender() {
+      return "G\xeanero";
+    },
+    get$courseParticipantTooltip() {
+      return string$.Este__;
+    },
+    get$chatParticipantTooltip() {
+      return string$.Estas_t;
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
@@ -14837,9 +14861,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Todas as l\xednguas";
     },
-    get$chatListTooltip() {
-      return "Aqui voc\xea encontrar\xe1 as suas mensagens diretas! Clique no avatar de qualquer utilizador e \u201ccomece uma conversa\u201d para enviar uma DM.";
-    },
     get$directMessageBotTitle() {
       return "Mensagem direta Pangea Bot";
     },
@@ -14919,7 +14940,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\xc9 aqui que as palavras de vocabul\xe1rio ir\xe3o aparecer assim que as tiveres evolu\xeddo!";
     },
     get$activityAnalyticsTooltipBody() {
-      return string$.Estas_;
+      return string$.Estas_s;
     },
     get$numSavedActivities() {
       return "N\xfamero de atividades salvas";
@@ -15680,6 +15701,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$messageLanguageMismatchMessage() {
       return string$.O_seu_;
     },
+    get$blockLemmaConfirmation() {
+      return "Esta palavra de vocabul\xe1rio ser\xe1 removida permanentemente de suas an\xe1lises";
+    },
+    get$woman() {
+      return "Mulher";
+    },
+    get$man() {
+      return "Homem";
+    },
+    get$otherGender() {
+      return "Outro";
+    },
+    get$unselectedGender() {
+      return "Selecione uma op\xe7\xe3o de g\xeanero";
+    },
+    get$gender() {
+      return "G\xeanero";
+    },
+    get$courseParticipantTooltip() {
+      return 'Estes s\xe3o todos os participantes deste curso. Clique no avatar de qualquer usu\xe1rio e "iniciar conversa" para enviar uma DM.';
+    },
+    get$chatParticipantTooltip() {
+      return string$.Estas_t;
+    },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
     },
@@ -15762,8 +15807,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Escolhu: "Escolha um t\xf3pico, modo, objetivo de aprendizagem e gere uma atividade para o chat!",
     Esta_f: "Esta ferramenta de aprendizado de idiomas identificar\xe1 palavras no seu idioma base e ajudar\xe1 voc\xea a traduzi-las para o seu idioma de destino. Embora raro, a IA pode cometer erros de tradu\xe7\xe3o.",
     Esta_m: "Esta mensagem \xe9 grande demais para enviar",
+    Esta_p: "Esta palavra de vocabul\xe1rio ser\xe1 removida permanentemente da sua an\xe1lise",
     Estamo: "Estamos investigando! Por favor, recarregue e tente novamente.",
-    Estas_: "Estas s\xe3o suas atividades salvas para revis\xe3o e pr\xe1tica.",
+    Estas_s: "Estas s\xe3o suas atividades salvas para revis\xe3o e pr\xe1tica.",
+    Estas_t: 'Estas s\xe3o todas as pessoas neste chat. Clique no avatar de qualquer usu\xe1rio e "iniciar conversa" para enviar uma DM.',
+    Este__: 'Este \xe9 todo mundo neste curso. Clique no avatar de qualquer usu\xe1rio e "iniciar conversa" para enviar uma DM.',
     Eu_tam: "Eu tamb\xe9m cometo erros! Algo para me ajudar a melhorar?",
     Exclui: "Excluir sua conta n\xe3o cancelar\xe1 automaticamente sua assinatura.",
     Executs: "Executar assist\xeancia de escrita Pangea automaticamente",
@@ -15867,7 +15915,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8GbEpg5v1tEGoy1x0SVbSjOWS1Y="] = d.current;
+  d["D2yzt53s6elj+yu/cwRhZkoGZU0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

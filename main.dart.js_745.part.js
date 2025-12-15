@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Vsi jeziki";
     },
-    get$chatListTooltip() {
-      return "Tukaj boste na\u0161li svoja neposredna sporo\u010dila! Kliknite na avatar katerega koli uporabnika in izberite \xbbza\u010dni pogovor\xab, da po\u0161ljete DM.";
-    },
     get$directMessageBotTitle() {
       return "Neposredno sporo\u010dilo Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Va\u0161 cilj jezik ne ustreza temu sporo\u010dilu. Ali \u017eelite posodobiti svoj cilj jezik?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ta beseda v besedi bo trajno odstranjena iz va\u0161ih analiz.";
     },
     get$woman() {
-      return "Woman";
+      return "\u017denska";
     },
     get$man() {
-      return "Man";
+      return "Mo\u0161ki";
     },
     get$otherGender() {
-      return "Other";
+      return "Drugo";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Izberite mo\u017enost spola";
     },
     get$gender() {
-      return "Gender";
+      return "Spol";
+    },
+    get$courseParticipantTooltip() {
+      return 'To so vsi v tem te\u010daju. Kliknite na avatar katerega koli uporabnika in "za\u010dnite pogovor", da po\u0161ljete DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in "za\u010dnite pogovor", da po\u0161ljete DM.';
     },
     get$inOngoingActivity() {
       return "Imate potekajo\u010do dejavnost!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rY7s1QrjprFZOuyBCiJ29igmyTY="] = d.current;
+  d["6uGrRzTDlJUWLUldoVhRN+/7VCM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

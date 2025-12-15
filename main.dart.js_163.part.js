@@ -4380,9 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "\u0e97\u0eb1\u0e87\u0eab\u0ea1\u0ebb\u0e94\u0e9e\u0eb2\u0eaa\u0eb2";
     },
-    get$chatListTooltip() {
-      return "\u0e99\u0eb5\u0ec9\u0ec1\u0ea1\u0ec8\u0e99\u0ea5\u0eb2\u0e8d\u0e81\u0eb2\u0e99\u0e82\u0ead\u0e87\u0e82\u0ecd\u0ec9\u0e84\u0ea7\u0eb2\u0ea1\u0e95\u0ebb\u0ea7\u0eaa\u0eb0\u0ec0\u0eab\u0ebc\u0eb5\u0ea1! \u0ec3\u0eab\u0ec9\u0e81\u0ebb\u0e94\u0e97\u0eb8\u0e81\u0e9c\u0eb9\u0ec9\u0ec3\u0e8a\u0ec9\u0e97\u0eb5\u0ec8\u0ea1\u0eb5\u0eae\u0eb9\u0e9a\u0e9e\u0eb2\u0e9a\u0ec1\u0ea5\u0eb0 \u201c\u0ec0\u0ea5\u0eb5\u0ec8\u0ea1\u0e81\u0eb2\u0e99\u0eaa\u0ebb\u0e99\u0e97\u0eb0\u0e99\u0eb2\u201d\u0ec0\u0e9e\u0eb7\u0ec8\u0ead\u0eaa\u0ebb\u0ec8\u0e87\u0e82\u0ecd\u0ec9\u0e84\u0ea7\u0eb2\u0ea1 DM.";
-    },
     get$directMessageBotTitle() {
       return "\u0e82\u0ecd\u0ec9\u0e84\u0ea7\u0eb2\u0ea1\u0e81\u0eb1\u0e9a\u0e9a\u0ead\u0e94 Pangea";
     },
@@ -5227,22 +5224,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bokm\xe5l m\xe5l spr\xe5ket ditt samsvarer ikke med denne meldingen. Oppdater m\xe5lspr\xe5ket ditt?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ita vocab word will be permanently removed from your analytics";
     },
     get$woman() {
-      return "Woman";
+      return "Baba";
     },
     get$man() {
-      return "Man";
+      return "Baba";
     },
     get$otherGender() {
-      return "Other";
+      return "Bola";
     },
     get$unselectedGender() {
       return "Select a gender option";
     },
     get$gender() {
-      return "Gender";
+      return "Bola";
+    },
+    get$courseParticipantTooltip() {
+      return "Ita ne boma in this course. Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
+    },
+    get$chatParticipantTooltip() {
+      return "Ita is everybody in this chat. Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
     },
     get$inOngoingActivity() {
       return "Keni nj\xeb aktivitet n\xeb vazhdim!";
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["w+FRL6hb4fSwj3WNKaIGzs8SWV8="] = d.current;
+  d["Qz/dc2LzvZvtGrV3M+0paTW1khA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "T\xfcm diller";
     },
-    get$chatListTooltip() {
-      return 'Burada do\u011frudan mesajlar\u0131n\u0131z\u0131 bulacaks\u0131n\u0131z! Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fiyle DM g\xf6nderebilirsiniz.';
-    },
     get$directMessageBotTitle() {
       return "Pangea Bot ile Do\u011frudan Mesaj";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hedef diliniz bu mesajla e\u015fle\u015fmiyor. Hedef dilinizi g\xfcncelleyebilir misiniz?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Bu kelime analitiklerinizden kal\u0131c\u0131 olarak kald\u0131r\u0131lacakt\u0131r.";
     },
     get$woman() {
-      return "Woman";
+      return "Kad\u0131n";
     },
     get$man() {
-      return "Man";
+      return "Erkek";
     },
     get$otherGender() {
-      return "Other";
+      return "Di\u011fer";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Bir cinsiyet se\xe7ene\u011fi se\xe7in";
     },
     get$gender() {
-      return "Gender";
+      return "Cinsiyet";
+    },
+    get$courseParticipantTooltip() {
+      return 'Bu kurstaki herkes. Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fini se\xe7erek bir DM g\xf6nderin.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Bu sohbetin i\xe7indeki herkes. Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fi ile DM g\xf6nderin.';
     },
     get$inOngoingActivity() {
       return "Devam eden bir etkinli\u011finiz var!";
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["S1aVJjVdyo5N2Is2Je1eTHhEAgE="] = d.current;
+  d["1UlAYFA/apF2m6yQ+4AQ+YkWMaM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

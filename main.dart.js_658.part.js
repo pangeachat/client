@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Minden nyelv";
     },
-    get$chatListTooltip() {
-      return "Itt tal\xe1lod a k\xf6zvetlen \xfczeneteidet! Kattints b\xe1rmely felhaszn\xe1l\xf3 avatarj\xe1ra, \xe9s v\xe1laszd a \u201ebesz\xe9lget\xe9s ind\xedt\xe1sa\u201d lehet\u0151s\xe9get, hogy \xfczenetet k\xfcldj.";
-    },
     get$directMessageBotTitle() {
       return "K\xf6zvetlen \xfczenet Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "A c\xe9l nyelve nem egyezik meg ezzel az \xfczenettel. Friss\xedti a c\xe9l nyelv\xe9t?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ez a sz\xf3kincs sz\xf3 v\xe9glegesen elt\xe1vol\xedt\xe1sra ker\xfcl az elemz\xe9seidb\u0151l";
     },
     get$woman() {
-      return "Woman";
+      return "N\u0151";
     },
     get$man() {
-      return "Man";
+      return "F\xe9rfi";
     },
     get$otherGender() {
-      return "Other";
+      return "Egy\xe9b";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "V\xe1lassz egy nemi opci\xf3t";
     },
     get$gender() {
-      return "Gender";
+      return "Neme";
+    },
+    get$courseParticipantTooltip() {
+      return "Ez mindenki, aki ebben a kurzusban r\xe9szt vesz. Kattints b\xe1rmelyik felhaszn\xe1l\xf3 avatarj\xe1ra, \xe9s v\xe1laszd a \u201ebesz\xe9lget\xe9s ind\xedt\xe1sa\u201d lehet\u0151s\xe9get, hogy k\xf6zvetlen \xfczenetet k\xfcldj.";
+    },
+    get$chatParticipantTooltip() {
+      return "Ez mindenki ebben a cseveg\xe9sben. Kattints b\xe1rmelyik felhaszn\xe1l\xf3 avatarj\xe1ra, \xe9s v\xe1laszd a \u201ebesz\xe9lget\xe9s ind\xedt\xe1sa\u201d lehet\u0151s\xe9get, hogy DM-et k\xfcldj.";
     },
     get$inOngoingActivity() {
       return "Folyamatban l\xe9v\u0151 tev\xe9kenys\xe9ged van!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VT0gUN4Ipfr2zbm10l0r4fIHciY="] = d.current;
+  d["w8AtgOkEfX9A1R/x2tnIFsS3F1o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

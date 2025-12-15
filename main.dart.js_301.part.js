@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Alle sprog";
     },
-    get$chatListTooltip() {
-      return "Her finder du dine direkte beskeder! Klik p\xe5 en brugers avatar og \u201cstart samtale\u201d for at sende en DM.";
-    },
     get$directMessageBotTitle() {
       return "Direkte besked Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Dit m\xe5lsprog stemmer ikke overens med denne besked. Opdater dit m\xe5lsprog?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Dette ord vil blive permanent fjernet fra din analyse";
     },
     get$woman() {
-      return "Woman";
+      return "Kvinde";
     },
     get$man() {
-      return "Man";
+      return "Mand";
     },
     get$otherGender() {
-      return "Other";
+      return "Andet";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "V\xe6lg en k\xf8nsoption";
     },
     get$gender() {
-      return "Gender";
+      return "K\xf8n";
+    },
+    get$courseParticipantTooltip() {
+      return 'Dette er alle i dette kursus. Klik p\xe5 enhver brugers avatar og "start samtale" for at sende en DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Dette er alle i denne chat. Klik p\xe5 en brugers avatar og "start samtale" for at sende en DM.';
     },
     get$inOngoingActivity() {
       return "Du har en igangv\xe6rende aktivitet!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["x65d5XaS/t2UF4pOxeQv26iooho="] = d.current;
+  d["HxXeCXy0mdngFY/lXFQyHqe0z7k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_301.part.js.map

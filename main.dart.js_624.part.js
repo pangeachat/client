@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "\u05db\u05dc \u05d4\u05e9\u05e4\u05d5\u05ea";
     },
-    get$chatListTooltip() {
-      return "\u05db\u05d0\u05df \u05ea\u05de\u05e6\u05d0\u05d5 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d5\u05ea \u05d4\u05d9\u05e9\u05d9\u05e8\u05d5\u05ea \u05e9\u05dc\u05db\u05dd! \u05dc\u05d7\u05e6\u05d5 \u05e2\u05dc \u05d0\u05d9\u05d9\u05e7\u05d5\u05df \u05e9\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05db\u05dc\u05e9\u05d4\u05d5 \u05d5\u05f4\u05d4\u05ea\u05d7\u05dc \u05e9\u05d9\u05d7\u05d4\u05f4 \u05db\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05e4\u05e8\u05d8\u05d9\u05ea.";
-    },
     get$directMessageBotTitle() {
       return "\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d9\u05e9\u05d9\u05e8\u05d4 \u05dc\u05d1\u05d5\u05d8 \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da \u05d0\u05d9\u05e0\u05d4 \u05ea\u05d5\u05d0\u05de\u05ea \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5. \u05d4\u05d0\u05dd \u05dc\u05e2\u05d3\u05db\u05df \u05d0\u05ea \u05e9\u05e4\u05ea \u05d4\u05d9\u05e2\u05d3 \u05e9\u05dc\u05da?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "\u05de\u05d9\u05dc\u05ea \u05d4\u05d5\u05d5\u05e7\u05d1 \u05d4\u05d6\u05d5 \u05ea\u05d5\u05e1\u05e8 \u05dc\u05e6\u05de\u05d9\u05ea\u05d5\u05ea \u05de\u05d4\u05d0\u05e0\u05dc\u05d9\u05d8\u05d9\u05e7\u05d4 \u05e9\u05dc\u05da";
     },
     get$woman() {
-      return "Woman";
+      return "\u05d0\u05d9\u05e9\u05d4";
     },
     get$man() {
-      return "Man";
+      return "\u05d2\u05d1\u05e8";
     },
     get$otherGender() {
-      return "Other";
+      return "\u05d0\u05d7\u05e8";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "\u05d1\u05d7\u05e8 \u05d0\u05e4\u05e9\u05e8\u05d5\u05ea \u05de\u05d2\u05d3\u05e8";
     },
     get$gender() {
-      return "Gender";
+      return "\u05de\u05d2\u05d3\u05e8";
+    },
+    get$courseParticipantTooltip() {
+      return '\u05d0\u05dc\u05d4 \u05db\u05d5\u05dc\u05dd \u05d1\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d6\u05d4. \u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05ea\u05de\u05d5\u05e0\u05d4 \u05e9\u05dc \u05db\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05d5"\u05d4\u05ea\u05d7\u05dc \u05e9\u05d9\u05d7\u05d4" \u05db\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05e4\u05e8\u05d8\u05d9\u05ea.';
+    },
+    get$chatParticipantTooltip() {
+      return '\u05d0\u05dc\u05d4 \u05db\u05d5\u05dc\u05dd \u05d1\u05e6\'\u05d0\u05d8 \u05d4\u05d6\u05d4. \u05dc\u05d7\u05e5 \u05e2\u05dc \u05d4\u05ea\u05de\u05d5\u05e0\u05d4 \u05e9\u05dc \u05db\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05d5"\u05d4\u05ea\u05d7\u05dc \u05e9\u05d9\u05d7\u05d4" \u05db\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05e4\u05e8\u05d8\u05d9\u05ea.';
     },
     get$inOngoingActivity() {
       return "\u05d9\u05e9 \u05dc\u05da \u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05de\u05ea\u05de\u05e9\u05db\u05ea!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PiSbiNaPnCpkU6sSrjGO3ljc+QY="] = d.current;
+  d["h6Qy61mNjyqP0pVtDOiAhoQs8JY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_624.part.js.map

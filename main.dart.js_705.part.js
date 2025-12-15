@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "\ubaa8\ub4e0 \uc5b8\uc5b4";
     },
-    get$chatListTooltip() {
-      return "\uc5ec\uae30\uc11c \uc9c1\uc811 \uba54\uc2dc\uc9c0\ub97c \ucc3e\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4! \uc0ac\uc6a9\uc790 \uc544\ubc14\ud0c0\ub97c \ud074\ub9ad\ud558\uace0 \u201c\ub300\ud654 \uc2dc\uc791\u201d\uc744 \uc120\ud0dd\ud558\uc5ec DM\uc744 \ubcf4\ub0b4\uc138\uc694.";
-    },
     get$directMessageBotTitle() {
       return "\ud30c\ub2c8\uc544 \ubd07\uc5d0\uac8c \uc9c1\uc811 \uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\ub300\uc0c1 \uc5b8\uc5b4\uac00 \uc774 \uba54\uc2dc\uc9c0\uc640 \uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ub300\uc0c1 \uc5b8\uc5b4\ub97c \uc5c5\ub370\uc774\ud2b8\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "\uc774 \uc5b4\ud718 \ub2e8\uc5b4\ub294 \uadc0\ud558\uc758 \ubd84\uc11d\uc5d0\uc11c \uc601\uad6c\uc801\uc73c\ub85c \uc81c\uac70\ub429\ub2c8\ub2e4.";
     },
     get$woman() {
-      return "Woman";
+      return "\uc5ec\uc131";
     },
     get$man() {
-      return "Man";
+      return "\ub0a8\uc131";
     },
     get$otherGender() {
-      return "Other";
+      return "\uae30\ud0c0";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "\uc131\ubcc4 \uc635\uc158\uc744 \uc120\ud0dd\ud558\uc138\uc694";
     },
     get$gender() {
-      return "Gender";
+      return "\uc131\ubcc4";
+    },
+    get$courseParticipantTooltip() {
+      return '\uc774\uac83\uc740 \uc774 \uacfc\uc815\uc758 \ubaa8\ub4e0 \uc0ac\ub78c\uc785\ub2c8\ub2e4. \uc0ac\uc6a9\uc790\uc758 \uc544\ubc14\ud0c0\ub97c \ud074\ub9ad\ud558\uace0 "\ub300\ud654 \uc2dc\uc791"\uc744 \ud074\ub9ad\ud558\uc5ec DM\uc744 \ubcf4\ub0b4\uc138\uc694.';
+    },
+    get$chatParticipantTooltip() {
+      return "\uc774 \ucc44\ud305\uc758 \ubaa8\ub4e0 \uc0ac\ub78c\uc785\ub2c8\ub2e4. \uc0ac\uc6a9\uc790 \uc544\ubc14\ud0c0\ub97c \ud074\ub9ad\ud558\uace0 '\ub300\ud654 \uc2dc\uc791'\uc744 \ud074\ub9ad\ud558\uc5ec DM\uc744 \ubcf4\ub0b4\uc138\uc694.";
     },
     get$inOngoingActivity() {
       return "\uc9c4\ud589 \uc911\uc778 \ud65c\ub3d9\uc774 \uc788\uc2b5\ub2c8\ub2e4!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DjiE6ANE8ezFDHADGCDAVqeYBJQ="] = d.current;
+  d["2vPajlI2Sql2DWSZ25KC/yY0Dp4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_705.part.js.map

@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "\u3059\u3079\u3066\u306e\u8a00\u8a9e";
     },
-    get$chatListTooltip() {
-      return "\u3053\u3053\u306b\u3042\u306a\u305f\u306e\u30c0\u30a4\u30ec\u30af\u30c8\u30e1\u30c3\u30bb\u30fc\u30b8\u304c\u3042\u308a\u307e\u3059\uff01\u4efb\u610f\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u30a2\u30d0\u30bf\u30fc\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u300c\u4f1a\u8a71\u3092\u958b\u59cb\u300d\u3057\u3001DM\u3092\u9001\u4fe1\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
-    },
     get$directMessageBotTitle() {
       return "\u30c0\u30a4\u30ec\u30af\u30c8\u30e1\u30c3\u30bb\u30fc\u30b8 Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u304c\u3053\u306e\u30e1\u30c3\u30bb\u30fc\u30b8\u3068\u4e00\u81f4\u3057\u307e\u305b\u3093\u3002\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u3092\u66f4\u65b0\u3057\u307e\u3059\u304b\uff1f";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "\u3053\u306e\u8a9e\u5f59\u306f\u3042\u306a\u305f\u306e\u5206\u6790\u304b\u3089\u6c38\u4e45\u306b\u524a\u9664\u3055\u308c\u307e\u3059";
     },
     get$woman() {
-      return "Woman";
+      return "\u5973\u6027";
     },
     get$man() {
-      return "Man";
+      return "\u7537\u6027";
     },
     get$otherGender() {
-      return "Other";
+      return "\u305d\u306e\u4ed6";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "\u6027\u5225\u30aa\u30d7\u30b7\u30e7\u30f3\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044";
     },
     get$gender() {
-      return "Gender";
+      return "\u6027\u5225";
+    },
+    get$courseParticipantTooltip() {
+      return "\u3053\u308c\u306f\u3053\u306e\u30b3\u30fc\u30b9\u306e\u5168\u54e1\u3067\u3059\u3002\u4efb\u610f\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u30a2\u30d0\u30bf\u30fc\u3092\u30af\u30ea\u30c3\u30af\u3057\u3001\u300c\u4f1a\u8a71\u3092\u958b\u59cb\u300d\u3092\u9078\u629e\u3057\u3066DM\u3092\u9001\u4fe1\u3057\u307e\u3059\u3002";
+    },
+    get$chatParticipantTooltip() {
+      return "\u3053\u308c\u306f\u3053\u306e\u30c1\u30e3\u30c3\u30c8\u306e\u5168\u54e1\u3067\u3059\u3002\u4efb\u610f\u306e\u30e6\u30fc\u30b6\u30fc\u306e\u30a2\u30d0\u30bf\u30fc\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u300c\u4f1a\u8a71\u3092\u958b\u59cb\u300d\u3092\u9078\u629e\u3059\u308b\u3068\u3001DM\u3092\u9001\u4fe1\u3067\u304d\u307e\u3059\u3002";
     },
     get$inOngoingActivity() {
       return "\u9032\u884c\u4e2d\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u304c\u3042\u308a\u307e\u3059\uff01";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+9sqhDjabI+AhmeNmTf4ah9/p+g="] = d.current;
+  d["uHXebp4NpR0PtKpWL1oIkZUjIHk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

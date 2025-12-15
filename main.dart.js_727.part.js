@@ -4379,9 +4379,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Wszystkie j\u0119zyki";
     },
-    get$chatListTooltip() {
-      return "Tutaj znajdziesz swoje wiadomo\u015bci bezpo\u015brednie! Kliknij avatar dowolnego u\u017cytkownika i \u201erozpocznij rozmow\u0119\u201d, aby wys\u0142a\u0107 wiadomo\u015b\u0107 prywatn\u0105.";
-    },
     get$directMessageBotTitle() {
       return "Wiadomo\u015b\u0107 bezpo\u015brednia Pangea Bot";
     },
@@ -5226,22 +5223,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tw\xf3j docelowy j\u0119zyk nie pasuje do tej wiadomo\u015bci. Zaktualizowa\u0107 sw\xf3j docelowy j\u0119zyk?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "To s\u0142owo w s\u0142ownictwie zostanie trwale usuni\u0119te z twojej analizy";
     },
     get$woman() {
-      return "Woman";
+      return "Kobieta";
     },
     get$man() {
-      return "Man";
+      return "M\u0119\u017cczyzna";
     },
     get$otherGender() {
-      return "Other";
+      return "Inna";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Wybierz opcj\u0119 p\u0142ci";
     },
     get$gender() {
-      return "Gender";
+      return "P\u0142e\u0107";
+    },
+    get$courseParticipantTooltip() {
+      return "To s\u0105 wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego u\u017cytkownika i wybierz \u201erozpocznij rozmow\u0119\u201d, aby wys\u0142a\u0107 wiadomo\u015b\u0107 prywatn\u0105.";
+    },
+    get$chatParticipantTooltip() {
+      return "To wszyscy w tym czacie. Kliknij na avatar dowolnego u\u017cytkownika i wybierz \u201erozpocznij rozmow\u0119\u201d, aby wys\u0142a\u0107 wiadomo\u015b\u0107 prywatn\u0105.";
     },
     get$inOngoingActivity() {
       return "Masz trwaj\u0105c\u0105 aktywno\u015b\u0107!";
@@ -5259,7 +5262,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4QAtiiD80UhhQc0wvV5Y5Nqr6Zc="] = d.current;
+  d["YKtP4de0FbsPAoRab76QIP3qnRg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_727.part.js.map

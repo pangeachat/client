@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Semua bahasa";
     },
-    get$chatListTooltip() {
-      return 'Di sini Anda akan menemukan pesan langsung Anda! Klik avatar pengguna mana pun dan "mulai percakapan" untuk mengirim DM.';
-    },
     get$directMessageBotTitle() {
       return "Pesan langsung Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bahasa target Anda tidak cocok dengan pesan ini. Perbarui bahasa target Anda?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Kata vocab ini akan dihapus secara permanen dari analitik Anda";
     },
     get$woman() {
-      return "Woman";
+      return "Wanita";
     },
     get$man() {
-      return "Man";
+      return "Pria";
     },
     get$otherGender() {
-      return "Other";
+      return "Lainnya";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Pilih opsi gender";
     },
     get$gender() {
       return "Gender";
+    },
+    get$courseParticipantTooltip() {
+      return 'Ini adalah semua orang di kursus ini. Klik pada avatar pengguna mana pun dan "mulai percakapan" untuk mengirim DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan "mulai percakapan" untuk mengirim DM.';
     },
     get$inOngoingActivity() {
       return "Anda memiliki aktivitas yang sedang berlangsung!";
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["noqFcjjW3rERGcN3AAHy3/Ck5EI="] = d.current;
+  d["WFSHg3uCSAvWtEcLi5/8uh/Ao40="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_683.part.js.map

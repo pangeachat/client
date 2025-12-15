@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Toutes les langues";
     },
-    get$chatListTooltip() {
-      return "Ici, vous trouverez vos messages directs ! Cliquez sur l'avatar d'un utilisateur et \xab d\xe9marrer une conversation \xbb pour envoyer un message priv\xe9.";
-    },
     get$directMessageBotTitle() {
       return "Message direct Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Votre langue cible ne correspond pas \xe0 ce message. Voulez-vous mettre \xe0 jour votre langue cible ?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ce mot de vocabulaire sera d\xe9finitivement supprim\xe9 de vos analyses";
     },
     get$woman() {
-      return "Woman";
+      return "Femme";
     },
     get$man() {
-      return "Man";
+      return "Homme";
     },
     get$otherGender() {
-      return "Other";
+      return "Autre";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "S\xe9lectionnez une option de genre";
     },
     get$gender() {
-      return "Gender";
+      return "Genre";
+    },
+    get$courseParticipantTooltip() {
+      return "Voici tout le monde dans ce cours. Cliquez sur l'avatar de n'importe quel utilisateur et \"d\xe9marrer une conversation\" pour envoyer un DM.";
+    },
+    get$chatParticipantTooltip() {
+      return "Ce sont tous les participants de ce chat. Cliquez sur l'avatar de n'importe quel utilisateur et \"d\xe9marrer une conversation\" pour envoyer un message direct.";
     },
     get$inOngoingActivity() {
       return "Vous avez une activit\xe9 en cours !";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nCTZEjDPhXaFjn2eAxAqpMYPlZk="] = d.current;
+  d["V2U1Mj8vyE/Mzc8AWV0TTf8fOmc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_593.part.js.map

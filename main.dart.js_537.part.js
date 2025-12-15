@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "K\xf5ik keeled";
     },
-    get$chatListTooltip() {
-      return "Siin leiad oma otsevestlused! Kl\xf5psa mis tahes kasutaja avataril ja vali \u201eAlusta vestlust\u201c, et saata otsevestlus.";
-    },
     get$directMessageBotTitle() {
       return "Otsevestlus Pangea botiga";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Teie sihtkeel ei \xfchti selle s\xf5numiga. Kas soovite oma sihtkeelt uuendada?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "See s\xf5navara s\xf5na eemaldatakse teie anal\xfc\xfcsist p\xfcsivalt";
     },
     get$woman() {
-      return "Woman";
+      return "Naine";
     },
     get$man() {
-      return "Man";
+      return "Mees";
     },
     get$otherGender() {
-      return "Other";
+      return "Muu";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Valige soo valik";
     },
     get$gender() {
-      return "Gender";
+      return "Sugu";
+    },
+    get$courseParticipantTooltip() {
+      return 'See on k\xf5ik, kes on selles kursuses. Kl\xf5psake mis tahes kasutaja avatari ja valige "alusta vestlust", et saata DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'See on k\xf5ik, kes on selles vestluses. Kl\xf5psake mis tahes kasutaja avatarile ja valige "alusta vestlust", et saata DM.';
     },
     get$inOngoingActivity() {
       return "Teil on k\xe4imasolev tegevus!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["o6REF4INbhDMcwrrvKP6Mb2raa0="] = d.current;
+  d["OxG9jxU4vc/tPrO16DXgxmzMIuc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_537.part.js.map

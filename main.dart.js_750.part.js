@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Alla spr\xe5k";
     },
-    get$chatListTooltip() {
-      return "H\xe4r hittar du dina direktmeddelanden! Klicka p\xe5 en anv\xe4ndares avatar och \u201cstarta konversation\u201d f\xf6r att skicka ett DM.";
-    },
     get$directMessageBotTitle() {
       return "Direktmeddelande Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ditt m\xe5lspr\xe5k matchar inte detta meddelande. Vill du uppdatera ditt m\xe5lspr\xe5k?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Detta vokabul\xe4rord kommer att tas bort permanent fr\xe5n din analys";
     },
     get$woman() {
-      return "Woman";
+      return "Kvinna";
     },
     get$man() {
       return "Man";
     },
     get$otherGender() {
-      return "Other";
+      return "Annat";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "V\xe4lj ett k\xf6nsalternativ";
     },
     get$gender() {
-      return "Gender";
+      return "K\xf6n";
+    },
+    get$courseParticipantTooltip() {
+      return 'Detta \xe4r alla i den h\xe4r kursen. Klicka p\xe5 vilken anv\xe4ndares avatar som helst och "starta konversation" f\xf6r att skicka ett DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Detta \xe4r alla i denna chatt. Klicka p\xe5 vilken anv\xe4ndares avatar som helst och "starta konversation" f\xf6r att skicka ett DM.';
     },
     get$inOngoingActivity() {
       return "Du har en p\xe5g\xe5ende aktivitet!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C311xMcxCI1xolAJ843NgW+clnI="] = d.current;
+  d["FLohKEHnpHWB9tcvQSKKRKfdN98="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_750.part.js.map

@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Tutte le linguas";
     },
-    get$chatListTooltip() {
-      return "Qua tu trovarai to mesages directes! Clicca su qualunque avatar de usator e 'comencia conversation' pro mandar un DM.";
-    },
     get$directMessageBotTitle() {
       return "Messagie Direkte Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tua lingua target non concordat cum hoc nuntio. Renovare linguam tuam target?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "T\u0113n\u0101, ka tangohia t\u0113nei kupu m\u014dhiohio i t\u014d r\u0101taka m\u014d ake tonu atu";
     },
     get$woman() {
-      return "Woman";
+      return "W\u0101hine";
     },
     get$man() {
-      return "Man";
+      return "T\u0101ne";
     },
     get$otherGender() {
-      return "Other";
+      return "\u0112tahi atu";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "T\u012bpakohia he k\u014dwhiringa ira";
     },
     get$gender() {
-      return "Gender";
+      return "Ira";
+    },
+    get$courseParticipantTooltip() {
+      return 'Isto \xe9 todo mundo neste curso. Clique no avatar de qualquer usu\xe1rio e "iniciar conversa" para enviar uma DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Ko te katoa t\u0113nei i roto i t\u0113nei k\u014drero. P\u0101whiritia te whakaahua o te kaiwhakamahi ka "t\u012bmata k\u014drero" ki te tuku karere ki a ia.';
     },
     get$inOngoingActivity() {
       return "\xa1Tienes una actividad en curso!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kFkmaGNdj4ISnkftbSCMACMJcis="] = d.current;
+  d["GBWMNo77vx08AmrSfzs/cH81D2c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_693.part.js.map

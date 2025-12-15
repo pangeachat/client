@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Tote linguas";
     },
-    get$chatListTooltip() {
-      return "Ici tu trovara tu messages directe! Clicca super le avatar de qualcunque usator e 'comenciar conversation' pro inviar un DM.";
-    },
     get$directMessageBotTitle() {
       return "Message directe a Pangea Bot";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tua lingua target non concordat cum hoc nuntio. Renovare tuam linguam target?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "Ita vocab parola va essere permanentemente rimossa da tuas analytics";
     },
     get$woman() {
-      return "Woman";
+      return "Femin";
     },
     get$man() {
-      return "Man";
+      return "Mascul";
     },
     get$otherGender() {
-      return "Other";
+      return "Altre";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Seleziona un'opzione di genere";
     },
     get$gender() {
-      return "Gender";
+      return "Genere";
+    },
+    get$courseParticipantTooltip() {
+      return 'Ita est omnes in hoc cursu. Clicca in cuiuslibet usoris avatar et "initium colloquii" ad mittendum DM.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Ita es tutti in ista chat. Clicca su qualunque avatar de utente e "inizia conversazione" pro inviar un DM.';
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
@@ -5258,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RoAdw3VDuBbgDLWR6cn7TRgGAZI="] = d.current;
+  d["aYt5EYvntxrCTBMGK0n6bHrpFd8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_665.part.js.map

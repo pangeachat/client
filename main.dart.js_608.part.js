@@ -4378,9 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "Gach teanga";
     },
-    get$chatListTooltip() {
-      return "Anseo gheobhaidh t\xfa do theachtaireachta\xed d\xedreacha! Clice\xe1il ar avatar aon \xfas\xe1ideora agus \u201ctosaigh comhr\xe1\u201d chun DM a sheoladh.";
-    },
     get$directMessageBotTitle() {
       return "Bot Teachtaireachta D\xedreacha Pangea";
     },
@@ -5225,22 +5222,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "N\xed comhoiri\xfanach do theanga sprioc le haghaidh an teachtaireachta seo. An nuashonraigh do theanga sprioc?";
     },
     get$blockLemmaConfirmation() {
-      return "This vocab word will be permanently removed from your analytics";
+      return "D\xe9anfidh an focal focl\xf3ra seo a bhaint go buan \xf3 do anail\xeds\xed";
     },
     get$woman() {
-      return "Woman";
+      return "Bean";
     },
     get$man() {
-      return "Man";
+      return "Duine";
     },
     get$otherGender() {
-      return "Other";
+      return "Duine eile";
     },
     get$unselectedGender() {
-      return "Select a gender option";
+      return "Roghnaigh rogha gn\xe9is";
     },
     get$gender() {
-      return "Gender";
+      return "Gn\xe9is";
+    },
+    get$courseParticipantTooltip() {
+      return 'Is \xe9 seo gach duine sa ch\xfarsa seo. Clice\xe1il ar avatar aon \xfas\xe1ideora agus "t\xfas a chur le comhr\xe1" chun DM a sheoladh.';
+    },
+    get$chatParticipantTooltip() {
+      return 'Is iad seo go l\xe9ir at\xe1 sa chomhr\xe1 seo. Clice\xe1il ar avatar aon \xfas\xe1ideora agus "tosaigh comhr\xe1" chun DM a sheoladh.';
     },
     get$inOngoingActivity() {
       return "T\xe1 gn\xedomha\xedocht ar si\xfal agat!";
@@ -5261,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0Vc3JK7HFp6tJCP49ymWRFFYlCQ="] = d.current;
+  d["LwrYjGPj7AnxjTAWxB2+6ceO2pE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_608.part.js.map
