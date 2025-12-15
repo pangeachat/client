@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Aukerakoa) Arrazoia";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return lemma + " hitzaren emoji-a ezarri duzu! Etorkizuneko praktiketan hitz hori irudikatzeko emoji hau erabiliko dugu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Jeii+aKakAcxyAYjdBxrHyJWFM0="] = d.current;
+  d["9ylCXAqTmdLgSJC2KhPk3ty6bdQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_561.part.js.map

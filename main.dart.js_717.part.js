@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Nepiecie\u0161ams) Iemesls";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "J\u016bs esat iestat\u012bjis emocijz\u012bmi " + lemma + "! M\u0113s izmantosim \u0161o emocijz\u012bmi, lai p\u0101rst\u0101v\u0113tu v\u0101rdu praktiskaj\u0101s aktivit\u0101t\u0113s turpm\u0101k.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aEPeN8ZwVqO+7+sg/CpF9cPpNRw="] = d.current;
+  d["/vWfaIzIW/dN8yaXchv8t4yUeIo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_717.part.js.map

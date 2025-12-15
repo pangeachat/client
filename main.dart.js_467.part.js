@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opcie) Kialo";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Vi havas metitan la emoji por " + lemma + "! Ni uzos \u0109i tiun emoji por reprezenti la vorton en praktikaj aktivadoj en la estonteco.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/rFS6txEuheUjIWbJ1q4VvBjcKY="] = d.current;
+  d["q77+AGQOaK4wx8pl3DL5ooeWYL0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_467.part.js.map

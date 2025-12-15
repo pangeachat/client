@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Valgfri) \xc5rsag";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Du har indstillet emoji'en for " + lemma + "! Vi vil bruge denne emoji til at repr\xe6sentere ordet i praksisaktiviteter fremover.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qAfEYEF/J6EZyXqzX/v0+EZ5bJ0="] = d.current;
+  d["lAEPz5p1HFFxyGb7+T5hD8fExkc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

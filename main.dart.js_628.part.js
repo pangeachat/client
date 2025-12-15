@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(\u0935\u0948\u0915\u0932\u094d\u092a\u093f\u0915) \u0915\u093e\u0930\u0923";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "\u0906\u092a\u0928\u0947 " + lemma + " \u0915\u0947 \u0932\u093f\u090f \u0907\u092e\u094b\u091c\u0940 \u0938\u0947\u091f \u0915\u093f\u092f\u093e \u0939\u0948! \u0939\u092e \u0906\u0917\u0947 \u0915\u0947 \u0905\u092d\u094d\u092f\u093e\u0938 \u0917\u0924\u093f\u0935\u093f\u0927\u093f\u092f\u094b\u0902 \u092e\u0947\u0902 \u0907\u0938 \u0907\u092e\u094b\u091c\u0940 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0947\u0902\u0917\u0947\u0964";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NAw1lC1L2uW3EOt6y3KocFgVh4w="] = d.current;
+  d["BNX1RX5vyMzzBz8X1F+UmrdlTLk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

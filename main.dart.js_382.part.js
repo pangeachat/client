@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Optional) Grund";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Sie haben das Emoji f\xfcr " + lemma + " festgelegt! Wir werden dieses Emoji verwenden, um das Wort in zuk\xfcnftigen \xdcbungsaktivit\xe4ten darzustellen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TULon546RAllxnZAIdaK6TcyVMw="] = d.current;
+  d["fV+Ko/0mM9pSUCykkddsISB0A0M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_382.part.js.map

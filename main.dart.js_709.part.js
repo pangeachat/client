@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Pasirinktinai) Prie\u017eastis";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "J\u016bs nustat\u0117te emocij\u0105 " + lemma + "! Mes naudosime \u0161i\u0105 emocij\u0105, kad atstovautume \u017eod\u017eiui praktin\u0117se veiklose ateityje.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/VZPTDLT71KIfsQHwxdse5N4sHA="] = d.current;
+  d["n6geBtqdE7Ut4AVrpxwZQumWoK0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

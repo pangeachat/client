@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(\u03a0\u03c1\u03bf\u03b1\u03b9\u03c1\u03b5\u03c4\u03b9\u03ba\u03cc) \u039b\u03cc\u03b3\u03bf\u03c2";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "\u0388\u03c7\u03b5\u03c4\u03b5 \u03bf\u03c1\u03af\u03c3\u03b5\u03b9 \u03c4\u03bf emoji \u03b3\u03b9\u03b1 " + lemma + "! \u0398\u03b1 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03bf\u03c5\u03bc\u03b5 \u03b1\u03c5\u03c4\u03cc \u03c4\u03bf emoji \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b5\u03ba\u03c0\u03c1\u03bf\u03c3\u03c9\u03c0\u03ae\u03c3\u03bf\u03c5\u03bc\u03b5 \u03c4\u03b7 \u03bb\u03ad\u03be\u03b7 \u03c3\u03b5 \u03c0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ad\u03c2 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b5\u03c2 \u03c3\u03c4\u03bf \u03b5\u03be\u03ae\u03c2.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DYMI23IEOzUw+z3RQZkH+g7XNqE="] = d.current;
+  d["k7X/jy13PyRFjSoekRh8yMHuJRo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_410.part.js.map

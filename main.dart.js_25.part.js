@@ -5272,6 +5272,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opcional) Motivo";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10517,6 +10520,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$optionalRegenerateReason() {
       return "(Opcional) Motivo";
+    },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15764,6 +15770,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opcional) Motivo";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15782,6 +15791,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     x20e_cer: " e certifico que tenho pelo menos 16 anos de idade.",
     x20est__: " est\xe1 procurando usu\xe1rios para participar da sess\xe3o de atividade em ",
     x20usu_r: " usu\xe1rios est\xe3o solicitando entrar no seu curso",
+    x21_Usar: "! Usaremos este emoji para representar a palavra nas atividades pr\xe1ticas daqui para frente.",
     x28Opcio: "(Opcional) Motivo para redigir esta mensagem...",
     x31_usu_: "1 usu\xe1rio est\xe1 solicitando entrar no seu curso",
     A_capae: "A capacidade de editar cidades e atividades estar\xe1 dispon\xedvel em breve.",
@@ -15952,7 +15962,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2Kn3FflbBBoTdUXm7zsWafrUNQ8="] = d.current;
+  d["UMbXBXoH2aBCt7zkbGGPd+h+Q5w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

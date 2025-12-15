@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Op\u021bional) Motiv";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Ai setat emoji-ul pentru " + lemma + "! Vom folosi acest emoji pentru a reprezenta cuv\xe2ntul \xeen activit\u0103\u021bile practice de acum \xeenainte.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["chRrRmxxzUOYLTXXnkOtVpNNMBo="] = d.current;
+  d["DyRPdeamwSuRaviKtqwBKFtCYN0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_737.part.js.map

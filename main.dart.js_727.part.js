@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Optioneel) Reden";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Je hebt de emoji voor " + lemma + " ingesteld! We zullen deze emoji gebruiken om het woord in de praktijkactiviteiten voortaan weer te geven.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TE3e+Kc/9e5s+r5H5gXWkMaAcuY="] = d.current;
+  d["36PCT+CR5Vb+cRGGD5yN1ZpWAmk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_727.part.js.map

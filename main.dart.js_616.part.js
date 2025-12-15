@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opcional) Raz\xf3n";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Estableciches o emoji para " + lemma + "! Usaremos este emoji para representar a palabra nas actividades pr\xe1cticas a partir de agora.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LQrzgsuu1inTu69OY/trlOYSAFs="] = d.current;
+  d["uGqSm5uLbljK+yJztmvs2qVfJWc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_616.part.js.map

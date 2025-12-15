@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opsional) Alasan";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Anda telah menetapkan emoji untuk " + lemma + "! Kami akan menggunakan emoji ini untuk mewakili kata dalam aktivitas praktik ke depan.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+0+5bz5F7w9IJ6n9o0F1RXpTS7Y="] = d.current;
+  d["A46xgvKowR8ICv2/qafiH09++Cs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_686.part.js.map

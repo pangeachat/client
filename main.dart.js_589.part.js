@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opsyonal) Dahilan";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Naitakda mo na ang emoji para sa " + lemma + "! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga aktibidad sa pagsasanay mula ngayon.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Qc/9F55FA7ZlEzDSnBAc7JlwGSA="] = d.current;
+  d["HvDFDFML1m6uqD9w5c5WEA5RYFE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_589.part.js.map

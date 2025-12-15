@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opsiyonel) Sebep";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return lemma + " i\xe7in emojiyi ayarlad\u0131n\u0131z! Bu emojiyi, pratik aktivitelerde kelimeyi temsil etmek i\xe7in kullanaca\u011f\u0131z.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fQ0McmuEbswKKUYGyFAkNZPIQbA="] = d.current;
+  d["ohwsC4IuRSoXeHauNYO+kacTIrM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_757.part.js.map

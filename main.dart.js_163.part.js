@@ -5262,6 +5262,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Valfritt) Orsak";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "A\u2019n setti emoji p\xebr " + lemma + "! Ne do ta p\xebrdorim k\xebt\xeb emoji p\xebr t\xeb p\xebrfaq\xebsuar fjal\xebn n\xeb aktivitetet praktike n\xeb vazhdim.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5288,7 +5291,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7Wx3fASZX9K+4nIsezeKc8xzvhs="] = d.current;
+  d["ITuTJRI7CmqDGC+rpYYprQhY3TM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

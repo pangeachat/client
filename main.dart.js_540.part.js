@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Valikuline) P\xf5hjus";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Oled seadnud emotikoni " + lemma + " jaoks! Kasutame seda emotikoni s\xf5na esindamiseks praktika tegevustes edaspidi.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["YfriVAJJR9Drh09d+//6my0F8sM="] = d.current;
+  d["AEQfqb26XfQNcj+la7/2+Dwyq6w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_540.part.js.map

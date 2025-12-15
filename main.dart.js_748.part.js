@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Neobvezno) Razlog";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Nastavili ste emoji za " + lemma + "! Ta emoji bomo uporabili za predstavitev besede v prakti\u010dnih dejavnostih v prihodnje.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ImH/gSQy0fxQhuOg163L6TAFcu0="] = d.current;
+  d["OVbksLjijDrBp/F+y/hzzraZYpU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_748.part.js.map

@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Volite\u013en\xe9) D\xf4vod";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Nastavili ste emoji pre " + lemma + "! Tento emoji budeme pou\u017e\xedva\u0165 na reprezent\xe1ciu slova v praktick\xfdch aktivit\xe1ch v bud\xfacnosti.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6Ji48K/WrXB4FvJOH1+CGSir3m0="] = d.current;
+  d["Jaojlmj3yZfN5/Yzhv6BC12Njgg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

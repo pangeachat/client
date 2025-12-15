@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Valinnainen) Syyn\xe4";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Olet asettanut emojin " + lemma + " varten! K\xe4yt\xe4mme t\xe4t\xe4 emojia sanan edustamiseen k\xe4yt\xe4nn\xf6n aktiviteeteissa tulevaisuudessa.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["u4yvAY6IYrz0M0ls2skvOV0Q8xA="] = d.current;
+  d["cqWGKtVllzE/cpXHOEN2UaT92BE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_577.part.js.map

@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Roghnach) C\xfais";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "T\xe1 an emoji socraithe agat do " + lemma + "! \xdas\xe1idfimid an emoji seo chun an focal a chur in i\xfal i ngn\xedomha\xedochta\xed cleachtais amach anseo.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5276,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R1Stsb0eCxUwpMzTw1WEIFD9NZc="] = d.current;
+  d["YpVA+VzjoOZEd50uMqbhHWxZWwQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_611.part.js.map

@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Optionnel) Raison";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Vous avez d\xe9fini l'emoji pour " + lemma + " ! Nous utiliserons cet emoji pour repr\xe9senter le mot dans les activit\xe9s pratiques \xe0 l'avenir.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fz+uPbRChMDaOD47dCTAmoNSGZE="] = d.current;
+  d["H8FmUoqg3D6tVXCiLX3KODPeuOo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_596.part.js.map

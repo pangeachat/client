@@ -5260,6 +5260,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$optionalRegenerateReason() {
       return "(Opcionalno) Razlog";
     },
+    emojiSelectedSnackbar$1(lemma) {
+      return "Postavili ste emoji za " + lemma + "! Ovaj emoji \u0107emo koristiti da predstavimo re\u010d u prakti\u010dnim aktivnostima ubudu\u0107e.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5273,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CHWiQaeBwXAYfRhAOBvzMc+yg+A="] = d.current;
+  d["U3RIOcMxYLXjoCDetUjib3zn09I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_750.part.js.map
