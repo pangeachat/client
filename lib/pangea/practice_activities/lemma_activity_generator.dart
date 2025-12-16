@@ -1,7 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -10,6 +8,7 @@ import 'package:fluffychat/pangea/practice_activities/message_activity_request.d
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
 
 class LemmaActivityGenerator {
   static Future<MessageActivityResponse> get(
@@ -55,16 +54,33 @@ class LemmaActivityGenerator {
     final sortedLemmas = distances.keys.toList()
       ..sort((a, b) => distances[a]!.compareTo(distances[b]!));
 
-    // Take the shortest 4
-    final choices = sortedLemmas.take(4).toSet();
-    if (choices.isEmpty) {
+    // Take up to 4 lemmas ensuring uniqueness by lemma text
+    final List<ConstructIdentifier> uniqueByLemma = [];
+    for (final cid in sortedLemmas) {
+      if (!uniqueByLemma.any((c) => c.lemma == cid.lemma)) {
+        uniqueByLemma.add(cid);
+        if (uniqueByLemma.length == 4) break;
+      }
+    }
+
+    if (uniqueByLemma.isEmpty) {
       return {token.vocabConstructID};
     }
 
-    if (!choices.contains(token.vocabConstructID)) {
-      choices.add(token.vocabConstructID);
+    // Ensure the target lemma (token.vocabConstructID) is included while keeping unique lemma texts
+    final int existingIndex = uniqueByLemma
+        .indexWhere((c) => c.lemma == token.vocabConstructID.lemma);
+    if (existingIndex >= 0) {
+      uniqueByLemma[existingIndex] = token.vocabConstructID;
+    } else {
+      if (uniqueByLemma.length < 4) {
+        uniqueByLemma.add(token.vocabConstructID);
+      } else {
+        uniqueByLemma[uniqueByLemma.length - 1] = token.vocabConstructID;
+      }
     }
-    return choices;
+
+    return uniqueByLemma.toSet();
   }
 
   // isolate helper function
