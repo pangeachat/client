@@ -2,11 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:shimmer/shimmer.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -158,55 +157,40 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
 
   @override
   Widget build(BuildContext context) {
-    final shimmerColor = (Theme.of(context).brightness == Brightness.dark)
-        ? Colors.white
-        : Theme.of(context).colorScheme.primary;
     return HoverBuilder(
       builder: (context, hovered) => GestureDetector(
         onTap: widget.onSelectEmoji,
         child: Stack(
           children: [
-            CompositedTransformTarget(
-              link: layerLink,
-              child: AnimatedContainer(
-                duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: hovered
-                      ? Theme.of(context).colorScheme.primary.withAlpha(50)
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                  border: widget.selected
-                      ? Border.all(
-                          color: AppConfig.goldLight.withAlpha(200),
-                          width: 2,
-                        )
-                      : null,
-                ),
-                child: Text(
-                  widget.emoji,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              ),
-            ),
-            if (shimmer)
-              Positioned.fill(
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                  child: Shimmer.fromColors(
-                    baseColor: shimmerColor.withValues(alpha: 0.1),
-                    highlightColor: shimmerColor.withValues(alpha: 0.6),
-                    direction: ShimmerDirection.ltr,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: shimmerColor.withValues(alpha: 0.3),
-                        borderRadius:
-                            BorderRadius.circular(AppConfig.borderRadius),
-                      ),
-                    ),
+            ShimmerBackground(
+              enabled: shimmer,
+              shimmerColor: (Theme.of(context).brightness == Brightness.dark)
+                  ? Colors.white
+                  : Theme.of(context).colorScheme.primary,
+              child: CompositedTransformTarget(
+                link: layerLink,
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: hovered
+                        ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                    border: widget.selected
+                        ? Border.all(
+                            color: AppConfig.goldLight.withAlpha(200),
+                            width: 2,
+                          )
+                        : null,
+                  ),
+                  child: Text(
+                    widget.emoji,
+                    style: Theme.of(context).textTheme.headlineSmall,
                   ),
                 ),
               ),
+            ),
             if (widget.badge != null)
               Positioned(
                 right: 0,
