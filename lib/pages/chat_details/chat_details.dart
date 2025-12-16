@@ -77,7 +77,9 @@ class ChatDetailsController extends State<ChatDetails>
   @override
   void didUpdateWidget(covariant ChatDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.roomId != widget.roomId) {
+    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    if (oldWidget.roomId != widget.roomId ||
+        course?.uuid != room?.coursePlan?.uuid) {
       _loadCourseInfo();
       _loadSummaries();
     }
