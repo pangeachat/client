@@ -6,7 +6,10 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
@@ -71,7 +74,7 @@ class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
   }
 }
 
-class SelectModeController {
+class SelectModeController with LemmaEmojiSetter {
   final PangeaMessageEvent messageEvent;
   final _TranscriptionLoader _transcriptLoader;
   final _TranslationLoader _translationLoader;
@@ -86,10 +89,14 @@ class SelectModeController {
         _sttTranslationLoader = _STTTranslationLoader(messageEvent);
 
   ValueNotifier<SelectMode?> selectedMode = ValueNotifier<SelectMode?>(null);
+  ValueNotifier<(ConstructIdentifier, String)?> constructEmojiNotifier =
+      ValueNotifier<(ConstructIdentifier, String)?>(null);
+
   final StreamController contentChangedStream = StreamController.broadcast();
 
   void dispose() {
     selectedMode.dispose();
+    constructEmojiNotifier.dispose();
     _transcriptLoader.dispose();
     _translationLoader.dispose();
     _sttTranslationLoader.dispose();
@@ -183,6 +190,27 @@ class SelectModeController {
   void setSelectMode(SelectMode? mode) {
     if (selectedMode.value == mode) return;
     selectedMode.value = mode;
+  }
+
+  Future<void> setTokenEmoji(
+    ConstructIdentifier constructId,
+    String emoji,
+    String targetId,
+  ) async {
+    constructEmojiNotifier.value = (constructId, emoji);
+    try {
+      await setLemmaEmoji(
+        constructId,
+        emoji,
+        targetId,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        data: constructId.toJson(),
+        e: e,
+        s: s,
+      );
+    }
   }
 
   Future<void> fetchAudio() => _audioLoader.load();

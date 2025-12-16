@@ -11,16 +11,18 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance/lemma_emoji_picker.
 class LemmaReactionPicker extends StatelessWidget {
   final Event? event;
   final ConstructIdentifier construct;
+  final Future<void> Function(String)? setEmoji;
   final String langCode;
 
   const LemmaReactionPicker({
     super.key,
     required this.construct,
+    required this.setEmoji,
     required this.langCode,
     this.event,
   });
 
-  Future<void> setEmoji(
+  Future<void> onSelect(
     String emoji,
     List<String> emojis,
   ) async {
@@ -45,6 +47,8 @@ class LemmaReactionPicker extends StatelessWidget {
     );
 
     try {
+      await setEmoji?.call(emoji);
+
       if (reactionEvent != null) {
         await reactionEvent.redactEvent();
         return;
@@ -97,7 +101,7 @@ class LemmaReactionPicker extends StatelessWidget {
         return LemmaEmojiPicker(
           emojis: controller.lemmaInfo?.emoji ?? [],
           onSelect: event?.room.timeline != null
-              ? (emoji) => setEmoji(
+              ? (emoji) => onSelect(
                     emoji,
                     controller.lemmaInfo?.emoji ?? [],
                   )

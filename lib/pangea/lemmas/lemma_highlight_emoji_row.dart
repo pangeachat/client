@@ -93,6 +93,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
         emoji,
         "emoji-choice-item-$emoji-${widget.cId.lemma}",
       );
+      showLemmaEmojiSnackbar(context, widget.cId, emoji);
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
