@@ -211,6 +211,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> modeDisabled() async {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(L10n.of(context).modeDisabled),
