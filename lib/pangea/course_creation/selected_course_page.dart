@@ -143,7 +143,7 @@ class SelectedCourseController extends State<SelectedCourse>
     }
 
     if (!mounted) return;
-    context.push("/rooms/spaces/${space.id}/details?tab=course");
+    context.go("/rooms/spaces/${space.id}/details?tab=course");
   }
 
   Future<void> joinCourse() async {
