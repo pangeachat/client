@@ -30,17 +30,29 @@ class MatchActivityCard extends StatelessWidget {
   ActivityTypeEnum get activityType => currentActivity.activityType;
 
   Widget choiceDisplayContent(
+    BuildContext context,
     String choice,
     double? fontSize,
   ) {
     switch (activityType) {
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.wordMeaning:
-        return Text(
+        final text = Text(
           choice,
           style: TextStyle(fontSize: fontSize),
           textAlign: TextAlign.center,
         );
+
+        // if (controller.selectedChoice == null &&
+        //     !currentActivity.practiceTarget.hasAnyCorrectChoices) {
+        //   return Shimmer.fromColors(
+        //     baseColor: Theme.of(context).colorScheme.onSurface,
+        //     highlightColor: AppConfig.goldLight,
+        //     child: text,
+        //   );
+        // }
+
+        return text;
       case ActivityTypeEnum.wordFocusListening:
         return Icon(
           Icons.volume_up,
@@ -90,7 +102,8 @@ class MatchActivityCard extends StatelessWidget {
                   isSelected: controller.selectedChoice == cf,
                   isCorrect: wasCorrect,
                   constructForm: cf,
-                  content: choiceDisplayContent(cf.choiceContent, fontSize),
+                  content:
+                      choiceDisplayContent(context, cf.choiceContent, fontSize),
                   audioContent:
                       activityType == ActivityTypeEnum.wordFocusListening
                           ? cf.choiceContent
