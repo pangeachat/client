@@ -10,7 +10,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-mixin LemmaEmojiSetter<T extends StatefulWidget> on State<T> {
+mixin LemmaEmojiSetter {
   Future<void> setLemmaEmoji(
     ConstructIdentifier constructId,
     String emoji,
@@ -26,11 +26,13 @@ mixin LemmaEmojiSetter<T extends StatefulWidget> on State<T> {
     await constructId.setUserLemmaInfo(
       constructId.userLemmaInfo.copyWith(emojis: [emoji]),
     );
-
-    _showSnackbar(constructId, emoji);
   }
 
-  void _showSnackbar(ConstructIdentifier constructId, String emoji) {
+  void showLemmaEmojiSnackbar(
+    BuildContext context,
+    ConstructIdentifier constructId,
+    String emoji,
+  ) {
     if (InstructionsEnum.setLemmaEmoji.isToggledOff) return;
     InstructionsEnum.setLemmaEmoji.setToggledOff(true);
 

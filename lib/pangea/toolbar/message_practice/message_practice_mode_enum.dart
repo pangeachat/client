@@ -4,6 +4,7 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 
 enum MessagePracticeMode {
@@ -70,4 +71,19 @@ enum MessagePracticeMode {
         MessagePracticeMode.wordMeaning,
         MessagePracticeMode.wordEmoji,
       ];
+
+  InstructionsEnum? get instruction {
+    switch (this) {
+      case MessagePracticeMode.listening:
+        return InstructionsEnum.chooseWordAudio;
+      case MessagePracticeMode.wordMeaning:
+        return InstructionsEnum.chooseLemmaMeaning;
+      case MessagePracticeMode.wordEmoji:
+        return InstructionsEnum.chooseEmoji;
+      case MessagePracticeMode.wordMorph:
+        return InstructionsEnum.chooseMorphs;
+      default:
+        return null;
+    }
+  }
 }

@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/lemma_emoji_picker.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class TokenEmojiButton extends StatefulWidget {
   final ValueNotifier<SelectMode?> selectModeNotifier;
-  final ValueNotifier<PangeaToken?> selectedTokenNotifier;
+  final ValueNotifier<(ConstructIdentifier, String)?> constructEmojiNotifier;
+  final VoidCallback onTap;
 
   final PangeaToken? token;
   final String? targetId;
@@ -22,7 +19,8 @@ class TokenEmojiButton extends StatefulWidget {
   const TokenEmojiButton({
     super.key,
     required this.selectModeNotifier,
-    required this.selectedTokenNotifier,
+    required this.constructEmojiNotifier,
+    required this.onTap,
     this.token,
     this.targetId,
     this.enabled = true,
@@ -49,14 +47,14 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
     _initAnimation();
     _prevMode = widget.selectModeNotifier.value;
     widget.selectModeNotifier.addListener(_onUpdateSelectMode);
-    widget.selectedTokenNotifier.addListener(_onSelectToken);
+    widget.constructEmojiNotifier.addListener(_onUpdateEmoji);
   }
 
   @override
   void dispose() {
     _controller?.dispose();
     widget.selectModeNotifier.removeListener(_onUpdateSelectMode);
-    widget.selectedTokenNotifier.removeListener(_onSelectToken);
+    widget.constructEmojiNotifier.removeListener(_onUpdateEmoji);
     super.dispose();
   }
 
@@ -87,66 +85,16 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
     _prevMode = mode;
   }
 
-  void _onSelectToken() {
-    final selected = widget.selectedTokenNotifier.value;
-    if (selected != null && selected == widget.token) {
-      showTokenEmojiPopup();
+  void _onUpdateEmoji() {
+    final value = widget.constructEmojiNotifier.value;
+    if (value == null) return;
+
+    final constructId = value.$1;
+    final emoji = value.$2;
+
+    if (mounted && constructId == widget.token?.vocabConstructID) {
+      setState(() => _emoji = emoji);
     }
-  }
-
-  void showTokenEmojiPopup() {
-    if (widget.targetId == null || widget.token == null) return;
-    OverlayUtil.showPositionedCard(
-      overlayKey: "overlay_emoji_selector",
-      context: context,
-      cardToShow: LemmaMeaningBuilder(
-        langCode: MatrixState.pangeaController.userController.userL2Code!,
-        constructId: widget.token!.vocabConstructID,
-        builder: (context, controller) {
-          return Material(
-            type: MaterialType.transparency,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
-              ),
-              child: LemmaEmojiPicker(
-                emojis: controller.lemmaInfo?.emoji ?? [],
-                onSelect: (emoji) {
-                  _setTokenEmoji(emoji);
-                  MatrixState.pAnyState.closeOverlay("overlay_emoji_selector");
-                },
-                loading: controller.isLoading,
-              ),
-            ),
-          );
-        },
-      ),
-      transformTargetId: widget.targetId!,
-      closePrevOverlay: false,
-      addBorder: false,
-      maxWidth: (40 * 5) + (4 * 5) + 16,
-      maxHeight: 60,
-    );
-  }
-
-  void _setTokenEmoji(String emoji) {
-    setState(() => _emoji = emoji);
-
-    if (widget.targetId == null || widget.token == null) return;
-    setLemmaEmoji(
-      widget.token!.vocabConstructID,
-      emoji,
-      widget.targetId,
-    ).catchError((e, s) {
-      ErrorHandler.logError(
-        data: widget.token!.toJson(),
-        e: e,
-        s: s,
-      );
-    });
   }
 
   @override
@@ -183,7 +131,7 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
                 child: child,
                 builder: (context, child) {
                   return InkWell(
-                    onTap: showTokenEmojiPopup,
+                    onTap: widget.onTap,
                     borderRadius: BorderRadius.circular(99.0),
                     child: Container(
                       height: _sizeAnimation!.value,

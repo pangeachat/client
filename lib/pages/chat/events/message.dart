@@ -601,7 +601,7 @@ class Message extends StatelessWidget {
                                                     color: color,
                                                     visible:
                                                         isButton && !noBubble,
-                                                    child:
+                                                    builder: (context, _, __) =>
                                                         // Pangea#
                                                         Container(
                                                       decoration: BoxDecoration(
