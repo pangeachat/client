@@ -29,7 +29,7 @@ class WordZoomWidget extends StatelessWidget {
 
   final VoidCallback? onDismissNewWordOverlay;
   final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
-  final Future<void> Function(String)? setEmoji;
+  final Function(String)? setEmoji;
 
   const WordZoomWidget({
     super.key,
@@ -143,10 +143,10 @@ class WordZoomWidget extends StatelessWidget {
                                     iconSize: 24.0,
                                   ),
                             LemmaReactionPicker(
-                              construct: construct,
+                              constructId: construct,
                               langCode: langCode,
+                              onSetEmoji: setEmoji,
                               event: event,
-                              setEmoji: setEmoji,
                             ),
                             LemmaMeaningDisplay(
                               langCode: langCode,

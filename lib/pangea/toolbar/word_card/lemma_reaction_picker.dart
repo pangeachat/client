@@ -3,68 +3,107 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance/lemma_emoji_picker.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_highlight_emoji_row.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
-class LemmaReactionPicker extends StatelessWidget {
+class LemmaReactionPicker extends StatefulWidget {
   final Event? event;
-  final ConstructIdentifier construct;
-  final Future<void> Function(String)? setEmoji;
+  final ConstructIdentifier constructId;
+  final Function(String)? onSetEmoji;
   final String langCode;
 
   const LemmaReactionPicker({
     super.key,
-    required this.construct,
-    required this.setEmoji,
+    required this.constructId,
+    required this.onSetEmoji,
     required this.langCode,
     this.event,
   });
 
-  Future<void> onSelect(
-    String emoji,
-    List<String> emojis,
-  ) async {
-    if (event?.room.timeline == null) {
-      throw Exception("Timeline is null in reaction picker");
-    }
+  @override
+  State<LemmaReactionPicker> createState() => LemmaReactionPickerState();
+}
 
-    final client = event!.room.client;
-    final userSentEmojis = event!
+class LemmaReactionPickerState extends State<LemmaReactionPicker>
+    with LemmaEmojiSetter {
+  String? _selectedEmoji;
+
+  @override
+  void initState() {
+    super.initState();
+    _setInitialEmoji();
+  }
+
+  @override
+  void didUpdateWidget(covariant LemmaReactionPicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.constructId != widget.constructId) {
+      _setInitialEmoji();
+    }
+  }
+
+  void _setInitialEmoji() {
+    setState(
+      () {
+        _selectedEmoji = widget.constructId.userLemmaInfo.emojis?.firstOrNull;
+      },
+    );
+  }
+
+  Event? _sentReaction(String emoji) {
+    final userSentEmojis = widget.event!
         .aggregatedEvents(
-          event!.room.timeline!,
+          widget.event!.room.timeline!,
           RelationshipTypes.reaction,
         )
         .where(
-          (e) =>
-              e.senderId == client.userID &&
-              emojis.contains(e.content.tryGetMap('m.relates_to')?['key']),
+          (e) => e.senderId == Matrix.of(context).client.userID,
         );
 
-    final reactionEvent = userSentEmojis.firstWhereOrNull(
+    return userSentEmojis.firstWhereOrNull(
       (e) => e.content.tryGetMap('m.relates_to')?['key'] == emoji,
     );
+  }
+
+  Future<void> _setEmoji(String emoji) async {
+    setState(() => _selectedEmoji = emoji);
+    widget.onSetEmoji?.call(emoji);
+
+    await setLemmaEmoji(
+      widget.constructId,
+      emoji,
+      "emoji-choice-item-$emoji-${widget.constructId.lemma}",
+    );
+
+    if (mounted) {
+      showLemmaEmojiSnackbar(context, widget.constructId, emoji);
+    }
+  }
+
+  Future<void> _sendOrRedactReaction(String emoji) async {
+    if (widget.event?.room.timeline == null) return;
 
     try {
-      await setEmoji?.call(emoji);
-
+      final reactionEvent = _sentReaction(emoji);
       if (reactionEvent != null) {
         await reactionEvent.redactEvent();
         return;
       }
 
-      await Future.wait([
-        ...userSentEmojis.map((e) => e.redactEvent()),
-        event!.room.sendReaction(event!.eventId, emoji),
-      ]);
+      await widget.event!.room.sendReaction(
+        widget.event!.eventId,
+        emoji,
+      );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
         s: s,
         data: {
           'emoji': emoji,
-          'eventId': event?.eventId,
+          'eventId': widget.event?.eventId,
         },
       );
     }
@@ -72,44 +111,28 @@ class LemmaReactionPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LemmaMeaningBuilder(
-      langCode: langCode,
-      constructId: construct,
-      builder: (context, controller) {
-        final sentReactions = <String>{};
-        if (event?.room.timeline != null) {
-          sentReactions.addAll(
-            event!
-                .aggregatedEvents(
-                  event!.room.timeline!,
-                  RelationshipTypes.reaction,
-                )
-                .where(
-                  (event) =>
-                      event.senderId == event.room.client.userID &&
-                      event.type == 'm.reaction',
-                )
-                .map(
-                  (event) => event.content
-                      .tryGetMap<String, Object?>('m.relates_to')
-                      ?.tryGet<String>('key'),
-                )
-                .whereType<String>(),
-          );
-        }
-
-        return LemmaEmojiPicker(
-          emojis: controller.lemmaInfo?.emoji ?? [],
-          onSelect: event?.room.timeline != null
-              ? (emoji) => onSelect(
-                    emoji,
-                    controller.lemmaInfo?.emoji ?? [],
-                  )
-              : null,
-          disabled: (emoji) => sentReactions.contains(emoji),
-          loading: controller.isLoading,
-        );
-      },
+    return LemmaHighlightEmojiRow(
+      cId: widget.constructId,
+      langCode: widget.langCode,
+      onEmojiSelected: (emoji) => emoji != _selectedEmoji
+          ? _setEmoji(emoji)
+          : _sendOrRedactReaction(emoji),
+      emoji: _selectedEmoji,
+      selectedEmojiBadge: widget.event != null &&
+              _selectedEmoji != null &&
+              _sentReaction(_selectedEmoji!) == null
+          ? CircleAvatar(
+              backgroundColor: Theme.of(context).colorScheme.onSurface,
+              radius: 8.0,
+              child: Center(
+                child: Icon(
+                  Icons.send,
+                  size: 12.0,
+                  color: Theme.of(context).colorScheme.surface,
+                ),
+              ),
+            )
+          : null,
     );
   }
 }

@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
@@ -192,26 +191,11 @@ class SelectModeController with LemmaEmojiSetter {
     selectedMode.value = mode;
   }
 
-  Future<void> setTokenEmoji(
+  void setTokenEmoji(
     ConstructIdentifier constructId,
     String emoji,
-    String targetId,
-  ) async {
-    constructEmojiNotifier.value = (constructId, emoji);
-    try {
-      await setLemmaEmoji(
-        constructId,
-        emoji,
-        targetId,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        data: constructId.toJson(),
-        e: e,
-        s: s,
-      );
-    }
-  }
+  ) =>
+      constructEmojiNotifier.value = (constructId, emoji);
 
   Future<void> fetchAudio() => _audioLoader.load();
   Future<void> fetchTranslation() => _translationLoader.load();

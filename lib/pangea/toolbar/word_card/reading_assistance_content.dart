@@ -54,7 +54,6 @@ class ReadingAssistanceContent extends StatelessWidget {
       setEmoji: (emoji) => overlayController.selectModeController.setTokenEmoji(
         overlayController.selectedToken!.vocabConstructID,
         emoji,
-        overlayController.tokenEmojiPopupKey(overlayController.selectedToken!),
       ),
       onFlagTokenInfo: (LemmaInfoResponse lemmaInfo, String phonetics) {
         if (selectedTokenIndex < 0) return;
