@@ -163,6 +163,19 @@ class AnalyticsDatabase with DatabaseFileStorage {
     );
   }
 
+  Future<void> clear() async {
+    _lastEventTimestampBox.clearQuickAccessCache();
+    _serverConstructsBox.clearQuickAccessCache();
+    _localConstructsBox.clearQuickAccessCache();
+    _aggregatedServerVocabConstructsBox.clearQuickAccessCache();
+    _aggregatedLocalVocabConstructsBox.clearQuickAccessCache();
+    _aggregatedServerMorphConstructsBox.clearQuickAccessCache();
+    _aggregatedLocalMorphConstructsBox.clearQuickAccessCache();
+    _derivedServerStatsBox.clearQuickAccessCache();
+    _derivedLocalStatsBox.clearQuickAccessCache();
+    await _collection.clear();
+  }
+
   Future<void> _transaction(Future<void> Function() action) async {
     final txn = _collection.transaction(action);
     _txnCache.add(txn);

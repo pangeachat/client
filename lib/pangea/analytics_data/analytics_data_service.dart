@@ -102,7 +102,6 @@ class AnalyticsDataService {
 
   Future<void> _initDatabase(Client client) async {
     _clearCache();
-    await _closeDatabase();
 
     final database = await analyticsDatabaseBuilder(
       "${client.clientName}_analytics",
@@ -154,7 +153,14 @@ class AnalyticsDataService {
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
     _initCompleter = Completer<void>();
+    await _clearDatabase();
     await _initDatabase(_analyticsClientGetter.client);
+  }
+
+  Future<void> _clearDatabase() async {
+    await _analyticsClient?.database.clear();
+    _clearCache();
+    ConstructMergeTable.instance.clear();
   }
 
   Future<void> _closeDatabase() async {
