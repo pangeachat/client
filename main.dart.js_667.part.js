@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Conceptos de grammatica nove";
     },
-    get$choosePracticeMode() {
-      return "Clique super un del button superi pro comenciar un activitate de practica";
-    },
     get$ban() {
       return "Banna";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivitetet do t\xeb shfaqen k\xebtu sapo t\xeb p\xebrfundojn\xeb dhe t\xeb ruhen.";
     },
-    get$practiceActivityCompleted() {
-      return "Praktiko aktivita finita";
-    },
     get$changeCourse() {
       return "Cambi\xe1 el curso";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5fEYfT0nhFYk/CGO1premipguKo="] = d.current;
+  d["GAIPLuc8P+VEqPgA5ae+xpe0JKI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

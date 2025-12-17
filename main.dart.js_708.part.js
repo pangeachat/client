@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nauji gramatikos konceptai";
     },
-    get$choosePracticeMode() {
-      return "Paspauskite vien\u0105 i\u0161 vir\u0161uje esan\u010di\u0173 mygtuk\u0173, kad prad\u0117tum\u0117te praktikos veikl\u0105";
-    },
     get$ban() {
       return "U\u017edrausti";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Veiklos pasirodys \u010dia, kai bus u\u017ebaigtos ir i\u0161saugotos.";
     },
-    get$practiceActivityCompleted() {
-      return "Praktikos veikla baigta";
-    },
     get$changeCourse() {
       return "Pakeisti kurs\u0105";
     },
@@ -5270,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xyfxuu3r5j0018xxnp8UAwxLdNI="] = d.current;
+  d["8SpuSK3e/f6VYIOhbU7OywRgZK8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

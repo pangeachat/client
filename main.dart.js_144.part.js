@@ -3878,9 +3878,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "\u041d\u043e\u0432\u044b\u044f \u0433\u0440\u0430\u043c\u0430\u0442\u044b\u0447\u043d\u044b\u044f \u043a\u0430\u043d\u0446\u044d\u043f\u0446\u044b\u0456";
     },
-    get$choosePracticeMode() {
-      return "\u041d\u0430\u0446\u0456\u0441\u043d\u0456\u0446\u0435 \u043d\u0430 \u0430\u0434\u043d\u0443 \u0437 \u043a\u043d\u043e\u043f\u0430\u043a \u0432\u044b\u0448\u044d\u0439, \u043a\u0430\u0431 \u043f\u0430\u0447\u0430\u0446\u044c \u043f\u0440\u0430\u043a\u0442\u044b\u043a\u0430\u0432\u0430\u043d\u043d\u0435";
-    },
     get$ban() {
       return "\u0417\u0430\u0431\u0430\u0440\u043e\u043d\u0456\u0446\u044c";
     },
@@ -5180,9 +5177,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "\u0414\u0437\u0435\u044f\u043d\u043d\u0456 \u0437'\u044f\u0432\u044f\u0446\u0446\u0430 \u0442\u0443\u0442, \u044f\u043a \u0442\u043e\u043b\u044c\u043a\u0456 \u044f\u043d\u044b \u0431\u0443\u0434\u0443\u0446\u044c \u0437\u0430\u0432\u0435\u0440\u0448\u0430\u043d\u044b \u0456 \u0437\u0430\u0445\u0430\u0432\u0430\u043d\u044b.";
     },
-    get$practiceActivityCompleted() {
-      return "\u041f\u0440\u0430\u043a\u0442\u044b\u0447\u043d\u0430\u044f \u0434\u0437\u0435\u0439\u043d\u0430\u0441\u0446\u044c \u0437\u0430\u0432\u0435\u0440\u0448\u0430\u043d\u0430";
-    },
     get$changeCourse() {
       return "\u0417\u043c\u044f\u043d\u0456\u0446\u044c \u043a\u0443\u0440\u0441";
     },
@@ -5271,7 +5265,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bnmT2xTm1ynd1HMe7qJp/kpo8lY="] = d.current;
+  d["jLbmvb5PU+rOdwqCeQFKv+zECMg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map

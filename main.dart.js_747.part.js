@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Novi slovni\u010dni koncepti";
     },
-    get$choosePracticeMode() {
-      return "Kliknite na eno od zgornjih gumbov za za\u010detek vaje";
-    },
     get$ban() {
       return "Blokiraj";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivnosti se bodo prikazale tukaj, ko bodo zaklju\u010dene in shranjene.";
     },
-    get$practiceActivityCompleted() {
-      return "Aktivnost vadbe zaklju\u010dena";
-    },
     get$changeCourse() {
       return "Spremeni te\u010daj";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IVQ0YHztdZUOYrp4ASkD2T8heoQ="] = d.current;
+  d["UmQ5r6/VRNGNgmK4oawdogQZk7w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

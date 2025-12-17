@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Gramatika kontzeptu berriak";
     },
-    get$choosePracticeMode() {
-      return "Klik egin goiko botoietako batean praktika jarduera bat hasteko";
-    },
     get$ban() {
       return "Zigorra ezarri";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Jarduerak hemen agertuko dira amaitu eta gorde ondoren.";
     },
-    get$practiceActivityCompleted() {
-      return "Praktika jarduera amaituta";
-    },
     get$changeCourse() {
       return "Aldatu ikasturtea";
     },
@@ -5270,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jvrhgBddzt2+iMNivmp7c34rY38="] = d.current;
+  d["PspE8hkpxWJasBxzGfQx/TRHDKQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

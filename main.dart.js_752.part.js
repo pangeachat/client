@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nya grammatikbegrepp";
     },
-    get$choosePracticeMode() {
-      return "Klicka p\xe5 en av knapparna ovan f\xf6r att starta en \xf6vningsaktivitet";
-    },
     get$ban() {
       return "Bannlys";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteter kommer att visas h\xe4r n\xe4r de \xe4r slutf\xf6rda och sparade.";
     },
-    get$practiceActivityCompleted() {
-      return "\xd6vningsaktivitet slutf\xf6rd";
-    },
     get$changeCourse() {
       return "\xc4ndra kurs";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["89OPcJLQZK/2WAxuQ6GiGwrq3C4="] = d.current;
+  d["4W7VX5bqbYqicappm6lI+UBNGEE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

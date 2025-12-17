@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Coincheapa gramada\xed nua";
     },
-    get$choosePracticeMode() {
-      return "Clice\xe1il ar cheann de na cnaipeanna thuas chun gn\xedomha\xedocht chleachtadh a thos\xfa";
-    },
     get$ban() {
       return "Cosaint";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Tiocfaidh gn\xedomha\xedochta\xed anseo nuair a bheidh siad cr\xedochnaithe agus s\xe1bh\xe1ilte.";
     },
-    get$practiceActivityCompleted() {
-      return "Cr\xedochna\xedodh an gn\xedomha\xedocht chleachtais";
-    },
     get$changeCourse() {
       return "Athraigh c\xfarsa";
     },
@@ -5270,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xe5eDqKcV9ORp1AuJq2q6nlATiw="] = d.current;
+  d["HkQMbft0tRxxQBmiBnoUpcbpv+A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

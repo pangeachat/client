@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Concepts de gram\xe0tica novs";
     },
-    get$choosePracticeMode() {
-      return "Clicca sus una dels boton\xe0s de sus per comenc\xe0 una ativit\xe0 de practica";
-    },
     get$ban() {
       return "Bani";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Tiocfaidh gn\xedomha\xedochta\xed anseo nuair a bheidh siad cr\xedochnaithe agus s\xe1bh\xe1ilte.";
     },
-    get$practiceActivityCompleted() {
-      return "Praktiko aktivita kompletita";
-    },
     get$changeCourse() {
       return "Cuir in ionad an ch\xfarsa";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Va6AzzxO4NDPvnV7ukXJcamaiEU="] = d.current;
+  d["r4Txd8qNm0lq625oD95UcdrB7x8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_695.part.js.map

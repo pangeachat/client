@@ -3878,9 +3878,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nowe zagadnienia gramatyczne";
     },
-    get$choosePracticeMode() {
-      return "Kliknij jeden z powy\u017cszych przycisk\xf3w, aby rozpocz\u0105\u0107 \u0107wiczenie";
-    },
     get$ban() {
       return "Zbanuj";
     },
@@ -5180,9 +5177,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktywno\u015bci pojawi\u0105 si\u0119 tutaj, gdy zostan\u0105 uko\u0144czone i zapisane.";
     },
-    get$practiceActivityCompleted() {
-      return "Aktywno\u015b\u0107 praktyczna zako\u0144czona";
-    },
     get$changeCourse() {
       return "Zmie\u0144 kurs";
     },
@@ -5268,7 +5262,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["z89dlMIUCb3PKF9Is46QDPi/2iM="] = d.current;
+  d["/Wl79yRbfbXy/J3CJHvIhthBx90="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

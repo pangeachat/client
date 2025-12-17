@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nye grammatikkonsepter";
     },
-    get$choosePracticeMode() {
-      return "Klikk p\xe5 en av knappene ovenfor for \xe5 starte en \xf8velsesaktivitet";
-    },
     get$ban() {
       return "Blokker";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteter vil vises her n\xe5r de er fullf\xf8rt og lagret.";
     },
-    get$practiceActivityCompleted() {
-      return "\xd8vingsaktivitet fullf\xf8rt";
-    },
     get$changeCourse() {
       return "Endre kurs";
     },
@@ -5270,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WEMxTnJSzEvMLLuEtVx7XIvGLmk="] = d.current;
+  d["9tqy6NLT0olZl6PReKymT6ERDCk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

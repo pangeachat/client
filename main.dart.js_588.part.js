@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Bagong mga konsepto sa gramatika";
     },
-    get$choosePracticeMode() {
-      return "Pindutin ang isa sa mga button sa itaas upang simulan ang isang aktibidad sa pagsasanay";
-    },
     get$ban() {
       return "Ban";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Lilitaw ang mga aktibidad dito kapag natapos at na-save na ang mga ito.";
     },
-    get$practiceActivityCompleted() {
-      return "Natapos ang aktibidad sa pagsasanay";
-    },
     get$changeCourse() {
       return "Palitan ang kurso";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9WyFGndEWi0fsMBcSzrv/1k+cvw="] = d.current;
+  d["8nhnyQ2RI9hL55HNmOrR/7EKMuo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

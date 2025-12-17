@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nouveaux concepts grammaticaux";
     },
-    get$choosePracticeMode() {
-      return "Cliquez sur l'un des boutons ci-dessus pour commencer une activit\xe9 d'entra\xeenement";
-    },
     get$ban() {
       return "Bannir";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Les activit\xe9s appara\xeetront ici une fois qu'elles seront termin\xe9es et enregistr\xe9es.";
     },
-    get$practiceActivityCompleted() {
-      return "Activit\xe9 de pratique termin\xe9e";
-    },
     get$changeCourse() {
       return "Changer de cours";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kwWH3hio1XdxuNBgkB0tTeUeuuY="] = d.current;
+  d["6tljXVYljjsnRC66nor2beCwua8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u062c\u062f\u06cc\u062f";
     },
-    get$choosePracticeMode() {
-      return "\u0628\u0631\u0627\u06cc \u0634\u0631\u0648\u0639 \u06cc\u06a9 \u0641\u0639\u0627\u0644\u06cc\u062a \u062a\u0645\u0631\u06cc\u0646\u06cc \u0631\u0648\u06cc \u06cc\u06a9\u06cc \u0627\u0632 \u062f\u06a9\u0645\u0647\u200c\u0647\u0627\u06cc \u0628\u0627\u0644\u0627 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f";
-    },
     get$ban() {
       return "\u0645\u0633\u062f\u0648\u062f \u06a9\u0631\u062f\u0646";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "\u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u067e\u0633 \u0627\u0632 \u0627\u062a\u0645\u0627\u0645 \u0648 \u0630\u062e\u06cc\u0631\u0647\u200c\u0633\u0627\u0632\u06cc \u062f\u0631 \u0627\u06cc\u0646\u062c\u0627 \u0638\u0627\u0647\u0631 \u062e\u0648\u0627\u0647\u0646\u062f \u0634\u062f.";
     },
-    get$practiceActivityCompleted() {
-      return "\u0641\u0639\u0627\u0644\u06cc\u062a \u062a\u0645\u0631\u06cc\u0646\u06cc \u06a9\u0627\u0645\u0644 \u0634\u062f";
-    },
     get$changeCourse() {
       return "\u062a\u063a\u06cc\u06cc\u0631 \u062f\u0648\u0631\u0647";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CI0ic0EG0YksfIrdzfs9SYIZm1w="] = d.current;
+  d["GyqIxYN8UtzQYieD+1UEIkenPIA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_574.part.js.map

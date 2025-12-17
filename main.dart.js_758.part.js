@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p m\u1edbi";
     },
-    get$choosePracticeMode() {
-      return "Nh\u1ea5p v\xe0o m\u1ed9t trong c\xe1c n\xfat \u1edf tr\xean \u0111\u1ec3 b\u1eaft \u0111\u1ea7u m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh";
-    },
     get$ban() {
       return "C\u1ea5m";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "C\xe1c ho\u1ea1t \u0111\u1ed9ng s\u1ebd xu\u1ea5t hi\u1ec7n \u1edf \u0111\xe2y khi ch\xfang \u0111\u01b0\u1ee3c ho\xe0n th\xe0nh v\xe0 l\u01b0u l\u1ea1i.";
     },
-    get$practiceActivityCompleted() {
-      return "Ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh \u0111\xe3 ho\xe0n th\xe0nh";
-    },
     get$changeCourse() {
       return "Thay \u0111\u1ed5i kh\xf3a h\u1ecdc";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Npgy1ZZLmWdRI/Pt2S5EXN/aSq8="] = d.current;
+  d["tuAXXVcp+UUaPDdIcEO2VGBwOQs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

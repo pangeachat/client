@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Uued grammatikakontseptsioonid";
     },
-    get$choosePracticeMode() {
-      return "Kl\xf5psa \xfchel \xfclaltoodud nupust, et alustada harjutus\xfclesannet";
-    },
     get$ban() {
       return "Keela";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Tegevused ilmuvad siia, kui need on l\xf5petatud ja salvestatud.";
     },
-    get$practiceActivityCompleted() {
-      return "Harjutustegevus l\xf5petatud";
-    },
     get$changeCourse() {
       return "Muuda kursust";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XO2jAeBnkS/mWElijP3VIKT4dYQ="] = d.current;
+  d["sYMDgU/4U0tymgLJVUg7MMufiGw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

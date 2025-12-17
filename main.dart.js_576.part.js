@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Uudet kielioppik\xe4sitteet";
     },
-    get$choosePracticeMode() {
-      return "Klikkaa yll\xe4 olevista painikkeista aloittaaksesi harjoitustoiminnan";
-    },
     get$ban() {
       return "Kielto";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Toiminnot n\xe4kyv\xe4t t\xe4\xe4ll\xe4, kun ne on suoritettu ja tallennettu.";
     },
-    get$practiceActivityCompleted() {
-      return "Harjoitustoiminta suoritettu";
-    },
     get$changeCourse() {
       return "Vaihda kurssia";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xa+chg1XSS4sdpFrqim6b/7Hugo="] = d.current;
+  d["cx7KWCP2rR+ku0wSPZeakOSm1Nw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map

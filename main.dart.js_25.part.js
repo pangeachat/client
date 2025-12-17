@@ -1625,7 +1625,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Precisa de ajuda?";
     },
     get$clickMessageBody() {
-      return string$.Cliqueemua;
+      return string$.Cliqueemu;
     },
     get$allDone() {
       return "Tudo pronto!";
@@ -3889,9 +3889,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Novos conceitos gramaticais";
     },
-    get$choosePracticeMode() {
-      return string$.Cliqueemu_;
-    },
     get$ban() {
       return "Banir";
     },
@@ -5190,9 +5187,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noSavedActivitiesYet() {
       return string$.As_ati;
-    },
-    get$practiceActivityCompleted() {
-      return "Atividade de pr\xe1tica conclu\xedda";
     },
     get$changeCourse() {
       return "Mudar curso";
@@ -6868,7 +6862,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Precisa de ajuda?";
     },
     get$clickMessageBody() {
-      return string$.Cliqueemua;
+      return string$.Cliqueemu;
     },
     get$allDone() {
       return "Tudo pronto!";
@@ -9132,9 +9126,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Novos conceitos gramaticais";
     },
-    get$choosePracticeMode() {
-      return string$.Cliqueemu_;
-    },
     get$ban() {
       return "Banir";
     },
@@ -10430,9 +10421,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noSavedActivitiesYet() {
       return string$.As_ati;
-    },
-    get$practiceActivityCompleted() {
-      return "Atividade de pr\xe1tica conclu\xedda";
     },
     get$changeCourse() {
       return "Mudar curso";
@@ -14372,9 +14360,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Novos conceitos gramaticais";
     },
-    get$choosePracticeMode() {
-      return "Clique num dos bot\xf5es acima para iniciar uma atividade de pr\xe1tica";
-    },
     get$ban() {
       return "Banir";
     },
@@ -15671,9 +15656,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return string$.As_ati;
     },
-    get$practiceActivityCompleted() {
-      return "Atividade de pr\xe1tica conclu\xedda";
-    },
     get$changeCourse() {
       return "Mudar curso";
     },
@@ -15800,8 +15782,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Cliquee_p: "Clique e segure para informa\xe7\xf5es da palavra.",
     Cliquee_u: "Clique e segure uma op\xe7\xe3o para obter uma dica.",
     Cliqueemp: "Clique em pr\xe1tica em cada mensagem para atividades de leitura.",
-    Cliqueemu_: "Clique em um dos bot\xf5es acima para iniciar uma atividade de pr\xe1tica",
-    Cliqueemua: "Clique em uma mensagem para ferramentas de idioma como tradu\xe7\xe3o, reprodu\xe7\xe3o e mais!",
+    Cliqueemu: "Clique em uma mensagem para ferramentas de idioma como tradu\xe7\xe3o, reprodu\xe7\xe3o e mais!",
     Cliquena: "Clique nas pe\xe7as do quebra-cabe\xe7a para perguntas de gram\xe1tica!",
     Cliqueno: "Clique nos bot\xf5es abaixo para mini-jogos de combina\xe7\xe3o de emojis, \xe1udios, significados de palavras e conceitos gramaticais. Ou clique em qualquer palavra para detalhes.",
     Combine: "Combine emojis com as palavras que eles representam melhor. N\xe3o se preocupe! N\xe3o h\xe1 penaliza\xe7\xf5es por discordar. \ud83d\ude05",
@@ -15935,7 +15916,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NIBP0ay8I92+ImMWxkYoScHYnfA="] = d.current;
+  d["HkELS1EYksITHLzPCAF/sMOMVEY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

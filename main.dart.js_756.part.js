@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Yeni dilbilgisi kavramlar\u0131";
     },
-    get$choosePracticeMode() {
-      return "Bir uygulama etkinli\u011fi ba\u015flatmak i\xe7in yukar\u0131daki d\xfc\u011fmelerden birine t\u0131klay\u0131n";
-    },
     get$ban() {
       return "Yasakla";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktiviteler tamamland\u0131\u011f\u0131nda ve kaydedildi\u011finde burada g\xf6r\xfcnecektir.";
     },
-    get$practiceActivityCompleted() {
-      return "Pratik etkinli\u011fi tamamland\u0131";
-    },
     get$changeCourse() {
       return "Ders de\u011fi\u015ftir";
     },
@@ -5270,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cYsjEp0rllqmlPFMt/f5Yd1aflk="] = d.current;
+  d["jJJD+fRtmv6Fa7GJdNqkHs8Ty6Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

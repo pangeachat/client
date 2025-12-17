@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "\u041d\u043e\u0432\u0438 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043a\u0438 \u043a\u043e\u043d\u0446\u0435\u043f\u0442\u0438";
     },
-    get$choosePracticeMode() {
-      return "\u041a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u043d\u0430 \u0458\u0435\u0434\u0430\u043d \u043e\u0434 \u0433\u043e\u0440\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0445 \u0442\u0430\u0441\u0442\u0435\u0440\u0430 \u0434\u0430 \u0431\u0438\u0441\u0442\u0435 \u0437\u0430\u043f\u043e\u0447\u0435\u043b\u0438 \u0432\u0435\u0436\u0431\u0430\u045a\u0435";
-    },
     get$ban() {
       return "\u0417\u0430\u0431\u0440\u0430\u043d\u0438";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivnosti \u0107e se ovde pojaviti kada budu zavr\u0161ene i sa\u010duvane.";
     },
-    get$practiceActivityCompleted() {
-      return "Aktivnost ve\u017ebanja je zavr\u0161ena";
-    },
     get$changeCourse() {
       return "Promeni kurs";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Io9XogC4xUdhF/IUw7DyFn+cWsk="] = d.current;
+  d["Bo4Stk90G+esNJID7hQERE8sz9g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

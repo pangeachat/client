@@ -3878,9 +3878,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nous conceptes gramaticals";
     },
-    get$choosePracticeMode() {
-      return "Fes clic en un dels botons de dalt per comen\xe7ar una activitat de pr\xe0ctica";
-    },
     get$ban() {
       return "Prohibir";
     },
@@ -5180,9 +5177,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Les activitats apareixeran aqu\xed un cop estiguin completades i desades.";
     },
-    get$practiceActivityCompleted() {
-      return "Activitat de pr\xe0ctica completada";
-    },
     get$changeCourse() {
       return "Canvia el curs";
     },
@@ -5271,7 +5265,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["laAr8pp0wCC8bVi1uT+imf+zApU="] = d.current;
+  d["Sig0ns8cs4hsof6USHQYHQw7iZM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

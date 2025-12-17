@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nov\xe9 gramatick\xe9 koncepty";
     },
-    get$choosePracticeMode() {
-      return "Klikn\u011bte na jedno z tla\u010d\xedtek v\xfd\u0161e a za\u010dn\u011bte cvi\u010debn\xed aktivitu";
-    },
     get$ban() {
       return "Blokovat";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivity se zde objev\xed, jakmile budou dokon\u010deny a ulo\u017eeny.";
     },
-    get$practiceActivityCompleted() {
-      return "Aktivita cvi\u010den\xed byla dokon\u010dena";
-    },
     get$changeCourse() {
       return "Zm\u011bnit kurz";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["u9JJw/CiayR5hjR66G9RQ/Mgy+8="] = d.current;
+  d["SG0FtQufKbe4Zkfkhi2AwPRAjUo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

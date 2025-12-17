@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Konsep tata bahasa baru";
     },
-    get$choosePracticeMode() {
-      return "Klik salah satu tombol di atas untuk memulai aktivitas latihan";
-    },
     get$ban() {
       return "Blokir";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Kegiatan akan muncul di sini setelah mereka diselesaikan dan disimpan.";
     },
-    get$practiceActivityCompleted() {
-      return "Aktivitas latihan selesai";
-    },
     get$changeCourse() {
       return "Ubah kursus";
     },
@@ -5270,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zo7a3wmnQvJaGP4xCdsuxxrb6c0="] = d.current;
+  d["zOoUGk+ZZZTC4VV/QGSPj0axXqI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

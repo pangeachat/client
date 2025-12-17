@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Novaj gramatikaj konceptoj";
     },
-    get$choosePracticeMode() {
-      return "Klaku unu el la supraj butonoj por komenci praktikan agadon";
-    },
     get$ban() {
       return "Bani";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "Aktivecoj aperos \u0109i tie post kiam ili estos kompletigitaj kaj konservitaj.";
     },
-    get$practiceActivityCompleted() {
-      return "Praktika aktiveco finita";
-    },
     get$changeCourse() {
       return "\u015can\u011di kurson";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aXna8MEcKxUW4rJw28mm2nqGr28="] = d.current;
+  d["q04LCk+PMShzvS4uBRyQaL8/UO0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

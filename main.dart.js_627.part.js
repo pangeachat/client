@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "\u0928\u0908 \u0935\u094d\u092f\u093e\u0915\u0930\u0923 \u0905\u0935\u0927\u093e\u0930\u0923\u093e\u090f\u0901";
     },
-    get$choosePracticeMode() {
-      return "\u092a\u094d\u0930\u0948\u0915\u094d\u091f\u093f\u0938 \u0917\u0924\u093f\u0935\u093f\u0927\u093f \u0936\u0941\u0930\u0942 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u090a\u092a\u0930 \u0926\u093f\u090f \u0917\u090f \u092c\u091f\u0928\u094b\u0902 \u092e\u0947\u0902 \u0938\u0947 \u0915\u093f\u0938\u0940 \u090f\u0915 \u092a\u0930 \u0915\u094d\u0932\u093f\u0915 \u0915\u0930\u0947\u0902";
-    },
     get$ban() {
       return "\u092c\u0948\u0928 \u0915\u0930\u0947\u0902";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "\u0917\u0924\u093f\u0935\u093f\u0927\u093f\u092f\u093e\u0901 \u092f\u0939\u093e\u0901 \u0924\u092c \u0926\u093f\u0916\u093e\u0908 \u0926\u0947\u0902\u0917\u0940 \u091c\u092c \u0935\u0947 \u092a\u0942\u0930\u0940 \u0939\u094b \u091c\u093e\u090f\u0901\u0917\u0940 \u0914\u0930 \u0938\u0939\u0947\u091c\u0940 \u091c\u093e\u090f\u0901\u0917\u0940\u0964";
     },
-    get$practiceActivityCompleted() {
-      return "\u0905\u092d\u094d\u092f\u093e\u0938 \u0917\u0924\u093f\u0935\u093f\u0927\u093f \u092a\u0942\u0930\u0940 \u0939\u0941\u0908";
-    },
     get$changeCourse() {
       return "\u0915\u094b\u0930\u094d\u0938 \u092c\u0926\u0932\u0947\u0902";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LNGMUxv+MkL+fANWUQ6GXddbGkc="] = d.current;
+  d["Fp0TsjoejLytjytxC+UNrYmSgxo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_627.part.js.map

@@ -3877,9 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "\xdaj nyelvtani fogalmak";
     },
-    get$choosePracticeMode() {
-      return "Kattints az egyik fenti gombra a gyakorl\xe1si tev\xe9kenys\xe9g elind\xedt\xe1s\xe1hoz";
-    },
     get$ban() {
       return "Tilt\xe1s";
     },
@@ -5179,9 +5176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSavedActivitiesYet() {
       return "A tev\xe9kenys\xe9gek itt fognak megjelenni, miut\xe1n befejezt\xe9k \xe9s elmentett\xe9k \u0151ket.";
     },
-    get$practiceActivityCompleted() {
-      return "Gyakorl\xf3 tev\xe9kenys\xe9g befejezve";
-    },
     get$changeCourse() {
       return "Tanfolyam m\xf3dos\xedt\xe1sa";
     },
@@ -5267,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rzCuQW3W7nWIpXxD93YFA916/v0="] = d.current;
+  d["aJCsPVHiEciXNWFLn2yiakgv28k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map
