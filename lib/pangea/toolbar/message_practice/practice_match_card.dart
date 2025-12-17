@@ -7,7 +7,6 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
-import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
@@ -38,28 +37,20 @@ class MatchActivityCard extends StatelessWidget {
     switch (activityType) {
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.wordMeaning:
-        return ShimmerBackground(
-          enabled: controller.selectedChoice == null &&
-              !currentActivity.practiceTarget.hasAnyCorrectChoices,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(
-              choice,
-              style: TextStyle(fontSize: fontSize),
-              textAlign: TextAlign.center,
-            ),
+        return Padding(
+          padding: const EdgeInsets.all(8),
+          child: Text(
+            choice,
+            style: TextStyle(fontSize: fontSize),
+            textAlign: TextAlign.center,
           ),
         );
       case ActivityTypeEnum.wordFocusListening:
-        return ShimmerBackground(
-          enabled: controller.selectedChoice == null &&
-              !currentActivity.practiceTarget.hasAnyCorrectChoices,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Icon(
-              Icons.volume_up,
-              size: fontSize,
-            ),
+        return Padding(
+          padding: const EdgeInsets.all(8),
+          child: Icon(
+            Icons.volume_up,
+            size: fontSize,
           ),
         );
       default:
@@ -113,6 +104,8 @@ class MatchActivityCard extends StatelessWidget {
                           ? cf.choiceContent
                           : null,
                   controller: controller,
+                  shimmer: controller.selectedChoice == null &&
+                      !currentActivity.practiceTarget.hasAnyCorrectChoices,
                 ),
               );
             },
