@@ -48,7 +48,7 @@ class VocabPracticeSessionModel {
         sortedConstructIds.length,
       );
 
-  bool get canContinueSession => currentIndex < sortedConstructIds.length;
+  //bool get canContinueSession => currentIndex < sortedConstructIds.length;
 
   bool get hasCompletedCurrentGroup =>
       currentIndex >= currentAvailableActivities;
@@ -103,54 +103,36 @@ class VocabPracticeSessionModel {
 
   void finishSession() => finished = true;
 
-  void completeActivity(PracticeActivityModel activity) {
-    currentIndex += 1;
-    completedUses.addAll(
-      activity.practiceTarget.record.responses.map(
-        (r) {
-          final useType = r.isCorrect
-              ? activity.activityType.correctUse
-              : activity.activityType.incorrectUse;
+  void submitAnswer(PracticeActivityModel activity) {
+    // Get the most recent response
+    final latestResponse = activity.practiceTarget.record.latestResponse;
+    if (latestResponse == null) return;
 
-          return OneConstructUse(
-            useType: useType,
-            constructType: ConstructTypeEnum.vocab,
-            metadata: ConstructUseMetaData(
-              roomId: null,
-              timeStamp: DateTime.now(),
-            ),
-            category: activity.targetTokens.first.pos,
-            lemma: activity.targetTokens.first.lemma.text,
-            form: activity.targetTokens.first.lemma.text,
-            xp: useType.pointValue,
-          );
-        },
+    final useType = latestResponse.isCorrect
+        ? activity.activityType.correctUse
+        : activity.activityType.incorrectUse;
+
+    final use = OneConstructUse(
+      useType: useType,
+      constructType: ConstructTypeEnum.vocab,
+      metadata: ConstructUseMetaData(
+        roomId: null,
+        timeStamp: DateTime.now(),
       ),
+      category: activity.targetTokens.first.pos,
+      lemma: activity.targetTokens.first.lemma.text,
+      form: activity.targetTokens.first.lemma.text,
+      xp: useType.pointValue,
     );
+
+    completedUses.add(use);
+
+    // Give XP immediately
+    MatrixState.pangeaController.putAnalytics.addAnalytics([use]);
   }
 
-  void continueSession() {
-    if (!canContinueSession) {
-      throw Exception(
-        "Cannot continue session, already finished all activities.",
-      );
-    }
-
-    currentGroup += 1;
-    currentIndex = max(currentIndex, currentGroup * practiceGroupSize);
-
-    activityTypes.clear();
-    final r = Random();
-    final activityTypeOptions = [
-      ActivityTypeEnum.lemmaMeaning,
-      //ActivityTypeEnum.lemmaAudio,
-    ];
-    activityTypes.addAll(
-      List.generate(
-        practiceGroupSize,
-        (_) => activityTypeOptions[r.nextInt(activityTypeOptions.length)],
-      ),
-    );
+  void completeActivity(PracticeActivityModel activity) {
+    currentIndex += 1;
   }
 
   factory VocabPracticeSessionModel.fromJson(Map<String, dynamic> json) {

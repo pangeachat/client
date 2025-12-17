@@ -3,17 +3,16 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_bar/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/vocab_practice/animated_choice_card.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/basic_choice_card.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/choice_card_wrapper.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/meaning_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class VocabPracticeView extends StatelessWidget {
   final VocabPracticeState controller;
@@ -237,29 +236,14 @@ class _ActivityChoicesWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: choices.map((choiceId) {
-                final isMeaning =
-                    activity.activityType == ActivityTypeEnum.lemmaMeaning;
-                if (!isMeaning) {
-                  return _VocabPracticeChoiceButton(
+                return ChoiceCardWrapper(
+                  choiceId: choiceId,
+                  child: _buildChoiceCard(
                     activity: activity,
                     choiceId: choiceId,
-                    choice: choiceId,
-                    onPressed: () => controller.onSelectChoice(choiceId),
-                    type: activity.activityType,
                     cardHeight: cardHeight,
-                  );
-                }
-
-                final choiceText = controller.getChoiceText(choiceId);
-                final emoji = controller.getChoiceEmoji(choiceId);
-                return _VocabPracticeChoiceButton(
-                  activity: activity,
-                  choiceId: choiceId,
-                  choice: choiceText,
-                  leadingEmoji: emoji,
-                  onPressed: () => controller.onSelectChoice(choiceId),
-                  type: activity.activityType,
-                  cardHeight: cardHeight,
+                    onPressed: () => controller.onSelectChoice(choiceId),
+                  ),
                 );
               }).toList(),
             ),
@@ -268,92 +252,45 @@ class _ActivityChoicesWidget extends StatelessWidget {
       },
     );
   }
-}
 
-class _VocabPracticeChoiceButton extends StatelessWidget {
-  final PracticeActivityModel activity;
-  final String choiceId; // construct ID string used for logic
-  final String choice;
-  final String? leadingEmoji;
-  final VoidCallback onPressed;
-  final ActivityTypeEnum type;
-  final double cardHeight;
+  Widget _buildChoiceCard({
+    required activity,
+    required String choiceId,
+    required double cardHeight,
+    required VoidCallback onPressed,
+  }) {
+    final isCorrect = activity.multipleChoiceContent!.isCorrect(choiceId);
 
-  const _VocabPracticeChoiceButton({
-    required this.activity,
-    required this.choiceId,
-    required this.choice,
-    this.leadingEmoji,
-    required this.onPressed,
-    required this.type,
-    this.cardHeight = 72.0,
-  });
+    switch (activity.activityType) {
+      case ActivityTypeEnum.lemmaMeaning:
+        return MeaningChoiceCard(
+          key: ValueKey('meaning_$choiceId'),
+          choiceId: choiceId,
+          displayText: controller.getChoiceText(choiceId),
+          emoji: controller.getChoiceEmoji(choiceId),
+          onPressed: onPressed,
+          isCorrect: isCorrect,
+          height: cardHeight,
+        );
 
-  @override
-  Widget build(BuildContext context) {
-    final transformTargetId =
-        'vocab-choice-card-${choice.replaceAll(' ', '_')}';
+      case ActivityTypeEnum.lemmaAudio:
+        return AudioChoiceCard(
+          key: ValueKey('audio_$choiceId'),
+          text: choiceId,
+          onPressed: onPressed,
+          isCorrect: isCorrect,
+          height: cardHeight,
+        );
 
-    return CompositedTransformTarget(
-      link: MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link,
-      child: type == ActivityTypeEnum.lemmaAudio
-          ? _AudioChoiceWidget(
-              choice: choice,
-              onPressed: onPressed,
-              cardHeight: cardHeight,
-            )
-          : AnimatedChoiceCard(
-              key: ValueKey(choice),
-              choice: choice,
-              emoji: leadingEmoji,
-              altText: activity.activityType == ActivityTypeEnum.lemmaMeaning
-                  ? ConstructIdentifier.fromString(choiceId)!.lemma
-                  : null,
-              onPressed: onPressed,
-              isCorrect: activity.multipleChoiceContent!.isCorrect(choiceId),
-              height: cardHeight,
-            ),
-    );
-  }
-}
-
-class _AudioChoiceWidget extends StatelessWidget {
-  final String choice;
-  final VoidCallback onPressed;
-  final double cardHeight;
-
-  const _AudioChoiceWidget({
-    required this.choice,
-    required this.onPressed,
-    required this.cardHeight,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: cardHeight,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: WordAudioButton(
-              text: choice,
-              uniqueID: "vocab_practice_choice_$choice",
-              langCode:
-                  MatrixState.pangeaController.userController.userL2!.langCode,
-            ),
-          ),
-          TextButton(
-            onPressed: onPressed,
-            child: Text(L10n.of(context).select),
-          ),
-        ],
-      ),
-    );
+      default:
+        return BasicChoiceCard(
+          key: ValueKey('basic_$choiceId'),
+          onPressed: onPressed,
+          isCorrect: isCorrect,
+          height: cardHeight,
+          child: Text(controller.getChoiceText(choiceId)),
+        );
+    }
   }
 }
 
@@ -377,49 +314,7 @@ class _CompletedActivitySessionView extends StatelessWidget {
           onPressed: controller.completeActivitySession,
           child: Text(L10n.of(context).addXP),
         ),
-        if (controller.canContinueSession)
-          TextButton(
-            onPressed: controller.continueSession,
-            child: Text(L10n.of(context).anotherRound),
-          ),
       ],
-    );
-  }
-}
-
-class ChoiceCardPlaceholder extends StatelessWidget {
-  final int cardCount;
-  const ChoiceCardPlaceholder({super.key, this.cardCount = 3});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    const double cardHeight = 60;
-    const double borderRadius = 16.0;
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: List.generate(
-          cardCount,
-          (index) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 6.0),
-            child: Shimmer.fromColors(
-              baseColor: theme.colorScheme.primary.withAlpha(20),
-              highlightColor: theme.colorScheme.primary.withAlpha(50),
-              child: SizedBox(
-                width: double.infinity,
-                height: cardHeight,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainer,
-                    borderRadius: BorderRadius.circular(borderRadius),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

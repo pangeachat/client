@@ -54,9 +54,13 @@ class LemmaActivityGenerator {
     final sortedLemmas = distances.keys.toList()
       ..sort((a, b) => distances[a]!.compareTo(distances[b]!));
 
+    // Skip the first 7 lemmas (to avoid very similar and conjugated forms of verbs) if we have enough lemmas
+    final int startIndex = sortedLemmas.length > 11 ? 7 : 0;
+
     // Take up to 4 lemmas ensuring uniqueness by lemma text
     final List<ConstructIdentifier> uniqueByLemma = [];
-    for (final cid in sortedLemmas) {
+    for (int i = startIndex; i < sortedLemmas.length; i++) {
+      final cid = sortedLemmas[i];
       if (!uniqueByLemma.any((c) => c.lemma == cid.lemma)) {
         uniqueByLemma.add(cid);
         if (uniqueByLemma.length == 4) break;

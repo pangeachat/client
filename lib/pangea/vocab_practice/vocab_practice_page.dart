@@ -60,9 +60,6 @@ class VocabPracticeState extends State<VocabPractice> {
   bool get isFinished =>
       sessionLoader.isLoaded && sessionLoader.value!.finished;
 
-  bool get canContinueSession =>
-      sessionLoader.isLoaded && sessionLoader.value!.canContinueSession;
-
   double get progress =>
       sessionLoader.isLoaded ? sessionLoader.value!.progress : 0.0;
 
@@ -86,18 +83,8 @@ class VocabPracticeState extends State<VocabPractice> {
     loadActivity();
   }
 
-  Future<void> continueSession() async {
-    if (!sessionLoader.isLoaded) return;
-    sessionLoader.value!.continueSession();
-    await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
-
-    loadActivity();
-  }
-
   Future<void> completeActivitySession() async {
     if (!sessionLoader.isLoaded) return;
-    final uses = sessionLoader.value!.completedUses;
-    MatrixState.pangeaController.putAnalytics.addAnalytics(uses);
 
     sessionLoader.value!.finishSession();
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
@@ -218,14 +205,17 @@ class VocabPracticeState extends State<VocabPractice> {
     activity.onMultipleChoiceSelect(choice);
     final correct = activity.multipleChoiceContent!.isCorrect(choice);
 
+    // Submit answer immediately (records use and gives XP)
+    sessionLoader.value!.submitAnswer(activity);
+    await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
+
     // Show points gained/lost animation
-    final contextToUse = context;
     final transformTargetId =
         'vocab-choice-card-${choice.replaceAll(' ', '_')}';
     if (correct) {
-      OverlayUtil.showPointsGained(transformTargetId, 5, contextToUse);
+      OverlayUtil.showPointsGained(transformTargetId, 5, context);
     } else {
-      OverlayUtil.showPointsGained(transformTargetId, -2, contextToUse);
+      OverlayUtil.showPointsGained(transformTargetId, -2, context);
     }
 
     // display the fact that the choice was correct before loading the next activity
@@ -233,6 +223,7 @@ class VocabPracticeState extends State<VocabPractice> {
 
     if (!correct) return;
 
+    // Only move to next activity when answer is correct
     sessionLoader.value!.completeActivity(activity);
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
@@ -260,9 +251,8 @@ class VocabPracticeState extends State<VocabPractice> {
         final cId = ConstructIdentifier.fromString(id);
         if (cId == null) return null;
         try {
-          return await cId
-              .getLemmaInfo()
-              .timeout(const Duration(milliseconds: 3000));
+          return await cId.getLemmaInfo();
+          //.timeout(const Duration(milliseconds: 3000));
         } catch (_) {
           return null;
         }
