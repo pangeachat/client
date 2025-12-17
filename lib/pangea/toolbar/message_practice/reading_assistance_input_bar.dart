@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_activity_card.dart';
@@ -59,19 +60,12 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
                       m.associatedActivityType!,
                     ),
                     isSelected: widget.controller.practiceMode == m,
+                    shimmer: widget.controller.practiceMode ==
+                        MessagePracticeMode.noneSelected,
                   ),
                 ),
               ],
             ),
-            if (widget.controller.practiceMode.instruction != null)
-              InstructionsInlineTooltip(
-                instructionsEnum: widget.controller.practiceMode.instruction!,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16.0,
-                  vertical: 4.0,
-                ),
-                animate: false,
-              ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Material(
@@ -133,13 +127,9 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
       case MessagePracticeMode.noneSelected:
         return controller.isTotallyDone
             ? const _AllDoneWidget()
-            : Text(
-                L10n.of(context).choosePracticeMode,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(fontStyle: FontStyle.italic),
-                textAlign: TextAlign.center,
+            : const Icon(
+                Symbols.fitness_center,
+                size: 60.0,
               );
 
       case MessagePracticeMode.wordEmoji:
@@ -151,10 +141,10 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
 
         final target = controller.practiceSelection?.getTarget(activityType!);
         if (target == null || activityCompleted) {
-          return Text(
-            L10n.of(context).practiceActivityCompleted,
-            style: Theme.of(context).textTheme.bodyLarge,
-            textAlign: TextAlign.center,
+          return const Icon(
+            Symbols.fitness_center,
+            size: 60.0,
+            color: AppConfig.goldLight,
           );
         }
 
@@ -169,10 +159,10 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
           return const _AllDoneWidget();
         }
         if (activityCompleted) {
-          return Text(
-            L10n.of(context).practiceActivityCompleted,
-            style: Theme.of(context).textTheme.bodyLarge,
-            textAlign: TextAlign.center,
+          return const Icon(
+            Symbols.fitness_center,
+            size: 60.0,
+            color: AppConfig.goldLight,
           );
         }
 
@@ -186,11 +176,10 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
         }
 
         if (target == null) {
-          return Center(
-            child: Text(
-              L10n.of(context).selectForGrammar,
-              style: Theme.of(context).textTheme.bodyLarge,
-              textAlign: TextAlign.center,
+          return const Center(
+            child: Icon(
+              Symbols.fitness_center,
+              size: 60.0,
             ),
           );
         }

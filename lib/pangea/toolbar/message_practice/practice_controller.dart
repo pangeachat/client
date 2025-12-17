@@ -54,6 +54,30 @@ class PracticeController with ChangeNotifier {
       practiceSelection?.activities(activityType).every((a) => a.isComplete) ==
       true;
 
+  bool isPracticeButtonEmpty(PangeaToken token) {
+    final target = practiceTargetForToken(token);
+
+    if (MessagePracticeMode.wordEmoji == practiceMode) {
+      if (token.vocabConstructID.userSetEmoji.firstOrNull != null) {
+        return false;
+      }
+      // Keep open even when completed to show emoji
+      return target == null;
+    }
+
+    if (MessagePracticeMode.wordMorph == practiceMode) {
+      // Keep open even when completed to show morph icon
+      return target == null;
+    }
+
+    return target == null ||
+        target.isCompleteByToken(
+              token,
+              _activity?.morphFeature,
+            ) ==
+            true;
+  }
+
   Future<Result<PracticeActivityModel>> fetchActivityModel(
     PracticeTarget target,
   ) async {

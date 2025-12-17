@@ -35,7 +35,7 @@ abstract class AppConfig {
   static const double toolbarButtonsHeight = 50.0;
   static const double toolbarSpacing = 8.0;
   static const double toolbarIconSize = 24.0;
-  static const double readingAssistanceInputBarHeight = 140.0;
+  static const double readingAssistanceInputBarHeight = 175.0;
   static const double reactionsPickerHeight = 48.0;
   static const double chatInputRowOverlayPadding = 8.0;
   static const double selectModeInputBarHeight = 0;

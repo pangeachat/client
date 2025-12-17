@@ -14,6 +14,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/toolbar/layout/over_message_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/layout/practice_mode_transition_animation.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
@@ -433,6 +434,36 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                           widget.overlayController.practiceController,
                           maxWidth: widget.overlayController.maxWidth,
                           selectedToken: widget.overlayController.selectedToken,
+                        ),
+                      ),
+                      Positioned(
+                        top: switch (MediaQuery.heightOf(context)) {
+                          < 700 => 0,
+                          > 900 => 160,
+                          _ => 80,
+                        },
+                        left: 0,
+                        right: 0,
+                        child: ListenableBuilder(
+                          listenable:
+                              widget.overlayController.practiceController,
+                          builder: (context, _) {
+                            final instruction = widget.overlayController
+                                .practiceController.practiceMode.instruction;
+                            if (instruction != null) {
+                              return InstructionsInlineTooltip(
+                                instructionsEnum: widget
+                                    .overlayController
+                                    .practiceController
+                                    .practiceMode
+                                    .instruction!,
+                                padding: const EdgeInsets.all(16.0),
+                                animate: false,
+                              );
+                            }
+
+                            return const SizedBox();
+                          },
                         ),
                       ),
                     ],

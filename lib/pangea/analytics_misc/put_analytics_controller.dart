@@ -111,7 +111,7 @@ class PutAnalyticsController {
     String? targetId,
   }) {
     final level = _pangeaController.getAnalytics.constructListModel.level;
-    _addLocalMessage(eventId, constructs).then(
+    _addLocalMessage(eventId, List.from(constructs)).then(
       (_) => _sendAnalytics(level, targetId, constructs),
     );
   }

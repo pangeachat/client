@@ -64,22 +64,27 @@ class MessageAudioCardState extends State<MessageAudioCard> {
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading
-        ? const TextLoadingShimmer(width: 200)
-        : audioFile != null
-            ? AudioPlayerWidget(
-                null,
-                eventId: "${widget.messageEvent.eventId}_practice",
-                roomId: widget.messageEvent.room.id,
-                senderId: widget.messageEvent.senderId,
-                matrixFile: audioFile,
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
-                fontSize: AppConfig.messageFontSize * AppConfig.fontSizeFactor,
-                linkColor: Theme.of(context).brightness == Brightness.light
-                    ? Theme.of(context).colorScheme.primary
-                    : Theme.of(context).colorScheme.onPrimary,
-              )
-            : const SizedBox();
+    return Container(
+      height: 60.0,
+      alignment: Alignment.center,
+      child: _isLoading
+          ? const TextLoadingShimmer(width: 200)
+          : audioFile != null
+              ? AudioPlayerWidget(
+                  null,
+                  eventId: "${widget.messageEvent.eventId}_practice",
+                  roomId: widget.messageEvent.room.id,
+                  senderId: widget.messageEvent.senderId,
+                  matrixFile: audioFile,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  fontSize:
+                      AppConfig.messageFontSize * AppConfig.fontSizeFactor,
+                  linkColor: Theme.of(context).brightness == Brightness.light
+                      ? Theme.of(context).colorScheme.primary
+                      : Theme.of(context).colorScheme.onPrimary,
+                )
+              : const SizedBox(),
+    );
   }
 }
 
