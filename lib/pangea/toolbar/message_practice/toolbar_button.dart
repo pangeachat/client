@@ -35,11 +35,11 @@ class ToolbarButton extends StatelessWidget {
           playSound: true,
           colorFactor:
               Theme.of(context).brightness == Brightness.light ? 0.55 : 0.3,
-          child: Container(
+          builder: (context, depressed, shadowColor) => Container(
             height: 40.0,
             width: 40.0,
             decoration: BoxDecoration(
-              color: color,
+              color: depressed ? shadowColor : color,
               shape: BoxShape.circle,
             ),
             child: Icon(

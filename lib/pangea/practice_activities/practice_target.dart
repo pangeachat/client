@@ -153,4 +153,13 @@ class PracticeTarget {
     }
     return null;
   }
+
+  bool get hasAnyCorrectChoices {
+    for (final response in record.responses) {
+      if (response.isCorrect) {
+        return true;
+      }
+    }
+    return false;
+  }
 }

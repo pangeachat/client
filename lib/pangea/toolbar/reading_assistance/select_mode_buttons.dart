@@ -211,6 +211,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> modeDisabled() async {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(L10n.of(context).modeDisabled),
@@ -345,12 +346,15 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                           playSound: enabled && mode != SelectMode.audio,
                           colorFactor:
                               theme.brightness == Brightness.light ? 0.55 : 0.3,
-                          child: AnimatedContainer(
+                          builder: (context, depressed, shadowColor) =>
+                              AnimatedContainer(
                             duration: FluffyThemes.animationDuration,
                             height: buttonSize,
                             width: buttonSize,
                             decoration: BoxDecoration(
-                              color: theme.colorScheme.primaryContainer,
+                              color: depressed
+                                  ? shadowColor
+                                  : theme.colorScheme.primaryContainer,
                               shape: BoxShape.circle,
                             ),
                             child: _SelectModeButtonIcon(
@@ -577,12 +581,12 @@ class _MoreButton extends StatelessWidget {
         onPressed: () => _showMenu(context),
         playSound: true,
         colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
-        child: AnimatedContainer(
+        builder: (context, depressed, shadowColor) => AnimatedContainer(
           duration: FluffyThemes.animationDuration,
           height: 40.0,
           width: 40.0,
           decoration: BoxDecoration(
-            color: theme.colorScheme.primaryContainer,
+            color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
             shape: BoxShape.circle,
           ),
           child: const Icon(

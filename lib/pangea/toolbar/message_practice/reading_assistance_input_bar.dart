@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_activity_card.dart';
@@ -62,6 +63,15 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
                 ),
               ],
             ),
+            if (widget.controller.practiceMode.instruction != null)
+              InstructionsInlineTooltip(
+                instructionsEnum: widget.controller.practiceMode.instruction!,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 4.0,
+                ),
+                animate: false,
+              ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Material(
