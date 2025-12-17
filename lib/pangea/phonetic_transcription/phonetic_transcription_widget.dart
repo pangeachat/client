@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
@@ -105,10 +106,9 @@ class _PhoneticTranscriptionWidgetState
 
                   if (controller.isLoading ||
                       controller.transcription == null) {
-                    return const SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: CircularProgressIndicator.adaptive(),
+                    return const TextLoadingShimmer(
+                      width: 125.0,
+                      height: 20.0,
                     );
                   }
 

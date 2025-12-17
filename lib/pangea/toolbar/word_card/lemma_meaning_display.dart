@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
@@ -31,7 +32,10 @@ class LemmaMeaningDisplay extends StatelessWidget {
         }
 
         if (controller.isLoading || controller.lemmaInfo == null) {
-          return const CircularProgressIndicator.adaptive();
+          return const TextLoadingShimmer(
+            width: 125.0,
+            height: 20.0,
+          );
         }
 
         if (constructId.lemma.toLowerCase() == text.toLowerCase()) {
