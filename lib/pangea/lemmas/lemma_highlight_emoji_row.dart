@@ -88,6 +88,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
                     badge: widget.emoji == emoji
                         ? widget.selectedEmojiBadge
                         : null,
+                    showShimmer: widget.emoji == null,
                   ),
                 )
                 .toList(),
@@ -105,6 +106,7 @@ class EmojiChoiceItem extends StatefulWidget {
   final bool selected;
   final String transformTargetId;
   final Widget? badge;
+  final bool showShimmer;
 
   const EmojiChoiceItem({
     super.key,
@@ -114,6 +116,7 @@ class EmojiChoiceItem extends StatefulWidget {
     required this.onSelectEmoji,
     required this.transformTargetId,
     this.badge,
+    this.showShimmer = true,
   });
 
   @override
@@ -121,7 +124,7 @@ class EmojiChoiceItem extends StatefulWidget {
 }
 
 class EmojiChoiceItemState extends State<EmojiChoiceItem> {
-  bool shimmer = true;
+  bool shimmer = false;
   Timer? _shimmerTimer;
 
   @override
@@ -145,6 +148,8 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   }
 
   void _showShimmer() {
+    if (!widget.showShimmer) return;
+
     setState(() => shimmer = true);
     _shimmerTimer?.cancel();
     _shimmerTimer = Timer(const Duration(milliseconds: 1500), () {
