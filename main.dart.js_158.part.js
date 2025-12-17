@@ -3581,9 +3581,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "\u0986\u09ae\u09be\u09b0 \u09ae\u09c2\u09b2 \u09ad\u09be\u09b7\u09be";
     },
-    get$meaningSectionHeader() {
-      return "\u0985\u09b0\u09cd\u09a5:";
-    },
     get$formSectionHeader() {
       return "\u099a\u09cd\u09af\u09be\u099f\u09c7 \u09ac\u09cd\u09af\u09ac\u09b9\u09c3\u09a4 \u09b0\u09c2\u09aa:";
     },
@@ -4288,9 +4285,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$subscribeToUnlockActivitySummaries() {
       return "\u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae\u09c7\u09b0 \u09b8\u09be\u09b0\u09be\u0982\u09b6 \u0986\u09a8\u09b2\u0995 \u0995\u09b0\u09a4\u09c7 \u09b8\u09be\u09ac\u09b8\u09cd\u0995\u09cd\u09b0\u09be\u0987\u09ac \u0995\u09b0\u09c1\u09a8";
-    },
-    get$subscribeToUnlockDefinitions() {
-      return "\u09b8\u0982\u099c\u09cd\u099e\u09be\u0997\u09c1\u09b2\u09bf \u0986\u09a8\u09b2\u0995 \u0995\u09b0\u09a4\u09c7 \u09b8\u09be\u09ac\u09b8\u09cd\u0995\u09cd\u09b0\u09be\u0987\u09ac \u0995\u09b0\u09c1\u09a8";
     },
     get$subscribeToUnlockTranscriptions() {
       return "\u099f\u09cd\u09b0\u09be\u09a8\u09cd\u09b8\u0995\u09cd\u09b0\u09bf\u09aa\u09b6\u09a8 \u0986\u09a8\u09b2\u0995 \u0995\u09b0\u09a4\u09c7 \u09b8\u09be\u09ac\u09b8\u09cd\u0995\u09cd\u09b0\u09be\u0987\u09ac \u0995\u09b0\u09c1\u09a8";
@@ -5252,9 +5246,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inOngoingActivity() {
       return "\u0986\u09aa\u09a8\u09be\u09b0 \u098f\u0995\u099f\u09bf \u099a\u09b2\u09ae\u09be\u09a8 \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae \u0986\u099b\u09c7!";
     },
-    get$vocabEmoji() {
-      return "\u09b6\u09ac\u09cd\u09a6 \u0987\u09ae\u09cb\u099c\u09bf";
-    },
     get$requestRegeneration() {
       return "\u09aa\u09c1\u09a8\u09b0\u09cd\u099c\u09a8\u09cd\u09ae\u09c7\u09b0 \u099c\u09a8\u09cd\u09af \u0985\u09a8\u09c1\u09b0\u09cb\u09a7 \u0995\u09b0\u09c1\u09a8";
     },
@@ -5277,7 +5268,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rvWpnKMLSFMXl7zHhRJieyq3q+w="] = d.current;
+  d["mmFi3KuTnQ4sfghXnUnar7NLkxU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map

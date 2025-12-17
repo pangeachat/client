@@ -3580,9 +3580,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "Moje z\xe1kladn\xed jazyk";
     },
-    get$meaningSectionHeader() {
-      return "V\xfdznam:";
-    },
     get$formSectionHeader() {
       return "Pou\u017e\xedvan\xe9 tvary v chatech:";
     },
@@ -4287,9 +4284,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$subscribeToUnlockActivitySummaries() {
       return "P\u0159ihl\xe1sit se k odemknut\xed souhrn\u016f aktivit";
-    },
-    get$subscribeToUnlockDefinitions() {
-      return "P\u0159ihl\xe1sit se k odemknut\xed definic";
     },
     get$subscribeToUnlockTranscriptions() {
       return "P\u0159ihl\xe1sit se k odemknut\xed p\u0159epis\u016f";
@@ -5251,9 +5245,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inOngoingActivity() {
       return "M\xe1te prob\xedhaj\xedc\xed aktivitu!";
     },
-    get$vocabEmoji() {
-      return "Emoji slovn\xed z\xe1soby";
-    },
     get$requestRegeneration() {
       return "\u017d\xe1dat o regeneraci";
     },
@@ -5276,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hnL2j3E6oshQot0wggcEJITPJnw="] = d.current;
+  d["u9JJw/CiayR5hjR66G9RQ/Mgy+8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

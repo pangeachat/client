@@ -3592,9 +3592,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "Meu idioma base";
     },
-    get$meaningSectionHeader() {
-      return "Significado:";
-    },
     get$formSectionHeader() {
       return "Formas usadas em chats:";
     },
@@ -4299,9 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$subscribeToUnlockActivitySummaries() {
       return string$.Inscrer;
-    },
-    get$subscribeToUnlockDefinitions() {
-      return "Inscreva-se para desbloquear defini\xe7\xf5es";
     },
     get$subscribeToUnlockTranscriptions() {
       return string$.Inscret;
@@ -5262,9 +5256,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
-    },
-    get$vocabEmoji() {
-      return "Emoji de vocabul\xe1rio";
     },
     get$requestRegeneration() {
       return "Solicitar regenera\xe7\xe3o";
@@ -8844,9 +8835,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "Meu idioma base";
     },
-    get$meaningSectionHeader() {
-      return "Significado:";
-    },
     get$formSectionHeader() {
       return "Formas usadas em chats:";
     },
@@ -9551,9 +9539,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$subscribeToUnlockActivitySummaries() {
       return string$.Inscrer;
-    },
-    get$subscribeToUnlockDefinitions() {
-      return "Inscreva-se para desbloquear defini\xe7\xf5es";
     },
     get$subscribeToUnlockTranscriptions() {
       return string$.Inscret;
@@ -10511,9 +10496,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
-    },
-    get$vocabEmoji() {
-      return "Emoji de vocabul\xe1rio";
     },
     get$requestRegeneration() {
       return "Solicitar regenera\xe7\xe3o";
@@ -14093,9 +14075,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "O meu idioma base";
     },
-    get$meaningSectionHeader() {
-      return "Significado:";
-    },
     get$formSectionHeader() {
       return "Formas usadas em chats:";
     },
@@ -14800,9 +14779,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$subscribeToUnlockActivitySummaries() {
       return "Subscrever para desbloquear resumos de atividade";
-    },
-    get$subscribeToUnlockDefinitions() {
-      return "Subscrever para desbloquear defini\xe7\xf5es";
     },
     get$subscribeToUnlockTranscriptions() {
       return "Subscrever para desbloquear transcri\xe7\xf5es";
@@ -15761,9 +15737,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inOngoingActivity() {
       return "Voc\xea tem uma atividade em andamento!";
     },
-    get$vocabEmoji() {
-      return "Emoji de vocabul\xe1rio";
-    },
     get$requestRegeneration() {
       return "Solicitar regenera\xe7\xe3o";
     },
@@ -15962,7 +15935,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UMbXBXoH2aBCt7zkbGGPd+h+Q5w="] = d.current;
+  d["NIBP0ay8I92+ImMWxkYoScHYnfA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

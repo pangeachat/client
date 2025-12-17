@@ -3580,9 +3580,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "Mit grundsprog";
     },
-    get$meaningSectionHeader() {
-      return "Betydning:";
-    },
     get$formSectionHeader() {
       return "Brugte former i chats:";
     },
@@ -4287,9 +4284,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$subscribeToUnlockActivitySummaries() {
       return "Abonner for at l\xe5se op for aktivitetsoversigter";
-    },
-    get$subscribeToUnlockDefinitions() {
-      return "Abonner for at l\xe5se op for definitioner";
     },
     get$subscribeToUnlockTranscriptions() {
       return "Abonner for at l\xe5se op for transkriptioner";
@@ -5251,9 +5245,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inOngoingActivity() {
       return "Du har en igangv\xe6rende aktivitet!";
     },
-    get$vocabEmoji() {
-      return "Vocab emoji";
-    },
     get$requestRegeneration() {
       return "Anmod om regenerering";
     },
@@ -5276,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lAEPz5p1HFFxyGb7+T5hD8fExkc="] = d.current;
+  d["mli/FNx0NZN9duUYiwPQeZVG5qM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

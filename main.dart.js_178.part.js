@@ -3581,9 +3581,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "El meu idioma base";
     },
-    get$meaningSectionHeader() {
-      return "Significat:";
-    },
     get$formSectionHeader() {
       return "Formes utilitzades en xats:";
     },
@@ -4288,9 +4285,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$subscribeToUnlockActivitySummaries() {
       return "Subscriu-te per desbloquejar resums d'activitats";
-    },
-    get$subscribeToUnlockDefinitions() {
-      return "Subscriu-te per desbloquejar definicions";
     },
     get$subscribeToUnlockTranscriptions() {
       return "Subscriu-te per desbloquejar transcripcions";
@@ -5252,9 +5246,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inOngoingActivity() {
       return "Tens una activitat en curs!";
     },
-    get$vocabEmoji() {
-      return "Emoji de vocabulari";
-    },
     get$requestRegeneration() {
       return "Sol\xb7licitar regeneraci\xf3";
     },
@@ -5280,7 +5271,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vlCzLLOWzOSYg9FDtQdOuF5OR7M="] = d.current;
+  d["laAr8pp0wCC8bVi1uT+imf+zApU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map
