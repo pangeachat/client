@@ -198,7 +198,7 @@ class ConstructIdentifier {
 
   String get storageKey => TupleKey(lemma, type.name, category).toString();
 
-  String get compositeKey => '$lemma|${type.name}';
+  String get compositeKey => '$lemma|${type.name}'.toLowerCase();
 
   static ConstructIdentifier fromStorageKey(String key) {
     final parts = key.split('|');

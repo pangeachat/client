@@ -9,7 +9,7 @@ class ConstructUses {
   final List<OneConstructUse> uses;
   final ConstructTypeEnum constructType;
   final String lemma;
-  final String? _category;
+  String? _category;
   DateTime? _lastUsed;
 
   ConstructUses({
@@ -122,7 +122,8 @@ class ConstructUses {
   }
 
   void merge(ConstructUses other) {
-    if (other.lemma != lemma || other.constructType != constructType) {
+    if (other.lemma.toLowerCase() != lemma.toLowerCase() ||
+        other.constructType != constructType) {
       throw ArgumentError(
         'Cannot merge ConstructUses with different lemmas or types',
       );
@@ -132,5 +133,23 @@ class ConstructUses {
     if (other.lastUsed != null) {
       setLastUsed(other.lastUsed!);
     }
+
+    if (category == 'other' && other.category != 'other') {
+      _category = other.category;
+    }
+  }
+
+  ConstructUses copyWith({
+    List<OneConstructUse>? uses,
+    ConstructTypeEnum? constructType,
+    String? lemma,
+    String? category,
+  }) {
+    return ConstructUses(
+      uses: uses ?? this.uses,
+      constructType: constructType ?? this.constructType,
+      lemma: lemma ?? this.lemma,
+      category: category ?? _category,
+    );
   }
 }

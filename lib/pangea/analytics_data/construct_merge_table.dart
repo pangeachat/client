@@ -52,9 +52,7 @@ class ConstructMergeTable {
   Map<ConstructIdentifier, LastUsedSummary> lastUsedCache = {};
 
   void addConstructs(List<ConstructUses> constructs) {
-    for (final construct in constructs) {
-      addConstructsByUses(construct.uses);
-    }
+    addConstructsByUses(constructs.expand((c) => c.uses).toList());
   }
 
   void addConstructsByUses(List<OneConstructUse> uses) {
@@ -73,10 +71,14 @@ class ConstructMergeTable {
         use.form ?? use.lemma,
         use.metadata.timeStamp,
       );
+    }
 
+    for (final use in uses) {
+      final id = use.identifier;
+      final composite = id.compositeKey;
       if (id.category == 'other' && !otherToSpecific.containsKey(id)) {
         final specific = lemmaTypeGroups[composite]!.firstWhereOrNull(
-          (k) => k != id && k.category != 'other',
+          (k) => k.category != 'other',
         );
         if (specific != null) {
           otherToSpecific[id] = specific;
