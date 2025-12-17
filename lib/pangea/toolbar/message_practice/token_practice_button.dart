@@ -98,6 +98,7 @@ class TokenPracticeButton extends StatelessWidget {
           child = _MorphMatchButton(
             active: _isSelected,
             textColor: textColor,
+            width: tokenButtonHeight,
             onTap: () => controller.onSelectMorph(
               MorphSelection(
                 token,
@@ -198,10 +199,12 @@ class _MorphMatchButton extends StatelessWidget {
   final bool active;
   final Color textColor;
   final bool shimmer;
+  final double width;
 
   const _MorphMatchButton({
     required this.active,
     required this.textColor,
+    required this.width,
     this.shimmer = false,
     this.onTap,
   });
@@ -218,7 +221,7 @@ class _MorphMatchButton extends StatelessWidget {
             child: ShimmerBackground(
               enabled: shimmer,
               child: SizedBox(
-                width: 24.0,
+                width: width,
                 child: Center(
                   child: Opacity(
                     opacity: active ? 1.0 : 0.6,
@@ -282,7 +285,6 @@ class _NoActivityContentButton extends StatelessWidget {
             context: context,
           ),
           child: SizedBox(
-            width: 24.0,
             child: Center(
               child: MorphIcon(
                 morphFeature: morphFeature,

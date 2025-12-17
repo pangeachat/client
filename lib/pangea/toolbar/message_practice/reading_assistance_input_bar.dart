@@ -176,11 +176,10 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
         }
 
         if (target == null) {
-          return Center(
-            child: Text(
-              L10n.of(context).selectForGrammar,
-              style: Theme.of(context).textTheme.bodyLarge,
-              textAlign: TextAlign.center,
+          return const Center(
+            child: Icon(
+              Symbols.fitness_center,
+              size: 60.0,
             ),
           );
         }
