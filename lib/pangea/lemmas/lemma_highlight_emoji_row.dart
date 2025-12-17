@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:shimmer/shimmer.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
@@ -62,36 +64,50 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
       langCode: widget.langCode,
       constructId: widget.cId,
       builder: (context, controller) {
-        if (controller.isLoading) {
-          return const CircularProgressIndicator.adaptive();
-        }
-
-        final emojis = controller.lemmaInfo?.emoji;
-        if (controller.error != null || emojis == null || emojis.isEmpty) {
+        if (controller.error != null) {
           return const SizedBox.shrink();
         }
 
+        final emojis = controller.lemmaInfo?.emoji;
         return SizedBox(
           height: 70.0,
           child: Row(
             spacing: 4.0,
             mainAxisSize: MainAxisSize.min,
-            children: emojis
-                .map(
-                  (emoji) => EmojiChoiceItem(
-                    cId: widget.cId,
-                    emoji: emoji,
-                    onSelectEmoji: () => widget.onEmojiSelected(emoji),
-                    selected: widget.emoji == emoji,
-                    transformTargetId:
-                        "emoji-choice-item-$emoji-${widget.cId.lemma}",
-                    badge: widget.emoji == emoji
-                        ? widget.selectedEmojiBadge
-                        : null,
-                    showShimmer: widget.emoji == null,
-                  ),
-                )
-                .toList(),
+            children: emojis == null || emojis.isEmpty
+                ? List.generate(
+                    3,
+                    (_) => Shimmer.fromColors(
+                      baseColor: Colors.transparent,
+                      highlightColor:
+                          Theme.of(context).colorScheme.primary.withAlpha(70),
+                      child: Container(
+                        height: 55.0,
+                        width: 55.0,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius:
+                              BorderRadius.circular(AppConfig.borderRadius),
+                        ),
+                      ),
+                    ),
+                  )
+                : emojis
+                    .map(
+                      (emoji) => EmojiChoiceItem(
+                        cId: widget.cId,
+                        emoji: emoji,
+                        onSelectEmoji: () => widget.onEmojiSelected(emoji),
+                        selected: widget.emoji == emoji,
+                        transformTargetId:
+                            "emoji-choice-item-$emoji-${widget.cId.lemma}",
+                        badge: widget.emoji == emoji
+                            ? widget.selectedEmojiBadge
+                            : null,
+                        showShimmer: widget.emoji == null,
+                      ),
+                    )
+                    .toList(),
           ),
         );
       },
