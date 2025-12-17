@@ -121,16 +121,9 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
       selectedEmojiBadge: widget.event != null &&
               _selectedEmoji != null &&
               _sentReaction(_selectedEmoji!) == null
-          ? CircleAvatar(
-              backgroundColor: Theme.of(context).colorScheme.onSurface,
-              radius: 8.0,
-              child: Center(
-                child: Icon(
-                  Icons.send,
-                  size: 12.0,
-                  color: Theme.of(context).colorScheme.surface,
-                ),
-              ),
+          ? const Icon(
+              Icons.add_reaction,
+              size: 12.0,
             )
           : null,
     );
