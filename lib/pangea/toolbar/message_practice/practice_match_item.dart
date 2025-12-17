@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
@@ -19,6 +20,7 @@ class PracticeMatchItem extends StatefulWidget {
   final PracticeController controller;
   final bool? isCorrect;
   final bool isSelected;
+  final bool shimmer;
 
   const PracticeMatchItem({
     super.key,
@@ -29,6 +31,7 @@ class PracticeMatchItem extends StatefulWidget {
     required this.isSelected,
     this.audioContent,
     required this.controller,
+    this.shimmer = false,
   });
 
   @override
@@ -121,7 +124,6 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
       children: [
         Flexible(
           child: Container(
-            padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: color(context).withAlpha((0.4 * 255).toInt()),
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
@@ -152,7 +154,10 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         onHover: (isHovered) => setState(() => _isHovered = isHovered),
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         onTap: onTap,
-        child: content,
+        child: ShimmerBackground(
+          enabled: widget.shimmer,
+          child: content,
+        ),
       ),
     );
   }

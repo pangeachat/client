@@ -8,6 +8,7 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -103,6 +104,8 @@ class TokenPracticeButton extends StatelessWidget {
                 _activity!.morphFeature!,
               ),
             ),
+            shimmer: controller.selectedMorph == null &&
+                _activity?.hasAnyCorrectChoices == false,
           );
         } else {
           child = _StandardMatchButton(
@@ -194,10 +197,12 @@ class _MorphMatchButton extends StatelessWidget {
   final Function()? onTap;
   final bool active;
   final Color textColor;
+  final bool shimmer;
 
   const _MorphMatchButton({
     required this.active,
     required this.textColor,
+    this.shimmer = false,
     this.onTap,
   });
 
@@ -210,16 +215,24 @@ class _MorphMatchButton extends StatelessWidget {
           return InkWell(
             onTap: onTap,
             borderRadius: BorderRadius.circular(AppConfig.borderRadius - 4),
-            child: Opacity(
-              opacity: active ? 1.0 : 0.6,
-              child: AnimatedScale(
-                scale: hovered || active ? 1.25 : 1.0,
-                duration: FluffyThemes.animationDuration,
-                curve: FluffyThemes.animationCurve,
-                child: Icon(
-                  Symbols.toys_and_games,
-                  color: textColor,
-                  size: 24.0,
+            child: ShimmerBackground(
+              enabled: shimmer,
+              child: SizedBox(
+                width: 24.0,
+                child: Center(
+                  child: Opacity(
+                    opacity: active ? 1.0 : 0.6,
+                    child: AnimatedScale(
+                      scale: hovered || active ? 1.25 : 1.0,
+                      duration: FluffyThemes.animationDuration,
+                      curve: FluffyThemes.animationCurve,
+                      child: Icon(
+                        Symbols.toys_and_games,
+                        color: textColor,
+                        size: 24.0,
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
