@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "\u0628\u0631\u0627\u06cc \u0646\u0645\u0627\u06cc\u0634 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc \u0627\u0628\u0632\u0627\u0631 \u0645\u0627\u0646\u0646\u062f \u06a9\u0627\u0631\u0628\u0631 \u062c\u062f\u06cc\u062f\u060c \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
-    get$selectForGrammar() {
-      return "\u06cc\u06a9 \u0622\u06cc\u06a9\u0648\u0646 \u06af\u0631\u0627\u0645\u0631 \u0628\u0631\u0627\u06cc \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u0648 \u062c\u0632\u0626\u06cc\u0627\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f.";
-    },
     get$translationProblem() {
       return "\u0645\u0634\u06a9\u0644 \u062a\u0631\u062c\u0645\u0647";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GyqIxYN8UtzQYieD+1UEIkenPIA="] = d.current;
+  d["QQApLcW+XeJu7P0sUGkvH65eoyg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_574.part.js.map

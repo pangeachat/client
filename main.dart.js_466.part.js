@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klaku por montri instrukciajn ilustra\u0135ojn kiel por tute nova uzanto.";
     },
-    get$selectForGrammar() {
-      return "Elektu gramatikan ikonon por agadoj kaj detaloj.";
-    },
     get$translationProblem() {
       return "Tradukproblemo";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["q04LCk+PMShzvS4uBRyQaL8/UO0="] = d.current;
+  d["6xFilIVbGpvE/x3O9N1/tZL6od4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klikkige, et n\xe4idata juhiste t\xf6\xf6riistaribasid nagu uuel kasutajal.";
     },
-    get$selectForGrammar() {
-      return "Vali grammatika ikoon tegevuste ja detailide jaoks.";
-    },
     get$translationProblem() {
       return "T\xf5lke probleem";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sYMDgU/4U0tymgLJVUg7MMufiGw="] = d.current;
+  d["t0yN1C8iBx16YiGbvUfbIdBNXiU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

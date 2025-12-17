@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "F\u0103 clic pentru a afi\u0219a sfaturi de instruc\u021biuni precum pentru un utilizator nou.";
     },
-    get$selectForGrammar() {
-      return "Selecteaz\u0103 o pictogram\u0103 de gramatic\u0103 pentru activit\u0103\u021bi \u0219i detalii.";
-    },
     get$translationProblem() {
       return "Problem\u0103 de traducere";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Znyhsav2r5glFW7ajkuKvwCHHvg="] = d.current;
+  d["UBkWw/RKqWg6B0lGExaH7HWduEU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

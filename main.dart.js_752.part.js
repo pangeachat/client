@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klicka f\xf6r att visa instruktionstips som f\xf6r en helt ny anv\xe4ndare.";
     },
-    get$selectForGrammar() {
-      return "V\xe4lj en grammatikikon f\xf6r aktiviteter och detaljer.";
-    },
     get$translationProblem() {
       return "\xd6vers\xe4ttningsproblem";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4W7VX5bqbYqicappm6lI+UBNGEE="] = d.current;
+  d["YjE07opFTF4fZCMRyRnxa5ansVU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

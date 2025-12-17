@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klicke, um Anleitungstooltips wie f\xfcr einen v\xf6llig neuen Benutzer anzuzeigen.";
     },
-    get$selectForGrammar() {
-      return "W\xe4hle ein Grammatik-Icon f\xfcr Aktivit\xe4ten und Details.";
-    },
     get$translationProblem() {
       return "\xdcbersetzungsproblem";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fAAzGYIKO3wEC8o8jCk15PJ8pr8="] = d.current;
+  d["ers6p05ZLrCunvd0T4fuUvQo1IM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_381.part.js.map

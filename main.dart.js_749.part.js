@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "\u041a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u0434\u0430 \u0431\u0438\u0441\u0442\u0435 \u043f\u0440\u0438\u043a\u0430\u0437\u0430\u043b\u0438 \u0443\u043f\u0443\u0442\u0441\u0442\u0432\u0430 \u043a\u0430\u043e \u0437\u0430 \u043f\u043e\u0442\u043f\u0443\u043d\u043e \u043d\u043e\u0432\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430.";
     },
-    get$selectForGrammar() {
-      return "\u0418\u0437\u0430\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u043a\u043e\u043d\u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0435 \u0437\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u0438 \u0434\u0435\u0442\u0430\u0459\u0435.";
-    },
     get$translationProblem() {
       return "\u041f\u0440\u043e\u0431\u043b\u0435\u043c \u0441\u0430 \u043f\u0440\u0435\u0432\u043e\u0434\u043e\u043c";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Bo4Stk90G+esNJID7hQERE8sz9g="] = d.current;
+  d["rK4ClR5xpyLwjz3wfmu+R8kmsrE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

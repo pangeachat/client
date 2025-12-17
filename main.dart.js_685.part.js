@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klik untuk menampilkan tooltip instruksi seperti untuk pengguna baru.";
     },
-    get$selectForGrammar() {
-      return "Pilih ikon tata bahasa untuk aktivitas dan detail.";
-    },
     get$translationProblem() {
       return "Masalah terjemahan";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zOoUGk+ZZZTC4VV/QGSPj0axXqI="] = d.current;
+  d["a5ibPH5JuqIpbAegQ6z2jHSQLv8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

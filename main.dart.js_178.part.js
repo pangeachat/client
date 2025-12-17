@@ -3818,9 +3818,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Fes clic per mostrar pistes d'instruccions com per a un usuari completament nou.";
     },
-    get$selectForGrammar() {
-      return "Selecciona una icona de gram\xe0tica per a activitats i detalls.";
-    },
     get$translationProblem() {
       return "Problema de traducci\xf3";
     },
@@ -5265,7 +5262,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Sig0ns8cs4hsof6USHQYHQw7iZM="] = d.current;
+  d["96YG1ULVzo9nnwT4IlxghKBXDc4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

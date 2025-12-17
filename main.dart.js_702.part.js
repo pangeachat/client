@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Clicca per mostrare i suggerimenti delle istruzioni come per un utente nuovo.";
     },
-    get$selectForGrammar() {
-      return "Seleziona un'icona grammaticale per attivit\xe0 e dettagli.";
-    },
     get$translationProblem() {
       return "Problema di traduzione";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pMaAknbWXIa3dg+dhn42FAq1ZzQ="] = d.current;
+  d["jr7Iutl7sZfYts+UD0PB3JmCSMQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

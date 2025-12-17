@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klikn\u011bte pro zobrazen\xed instruk\u010dn\xedch n\xe1pov\u011bd, jako pro \xfapln\xe9ho nov\xe1\u010dka.";
     },
-    get$selectForGrammar() {
-      return "Vyberte ikonu gramatiky pro aktivity a podrobnosti.";
-    },
     get$translationProblem() {
       return "Probl\xe9m s p\u0159ekladem";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SG0FtQufKbe4Zkfkhi2AwPRAjUo="] = d.current;
+  d["NSlj0HunVQ1GSXCjuVoF90FiLm8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

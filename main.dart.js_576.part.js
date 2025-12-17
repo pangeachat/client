@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klikkaa n\xe4ytt\xe4\xe4ksesi ohjeiden ty\xf6kaluvihjeet kuten uudelle k\xe4ytt\xe4j\xe4lle.";
     },
-    get$selectForGrammar() {
-      return "Valitse kielioppikuvake aktiviteetteihin ja yksityiskohtiin.";
-    },
     get$translationProblem() {
       return "K\xe4\xe4nn\xf6songelma";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cx7KWCP2rR+ku0wSPZeakOSm1Nw="] = d.current;
+  d["UR3/1pxxzK7Br1sML2amOByb9Sc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map

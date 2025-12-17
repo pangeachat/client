@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "I-click upang ipakita ang mga tooltip ng instruksyon tulad ng para sa isang bagong user.";
     },
-    get$selectForGrammar() {
-      return "Pumili ng icon ng gramatika para sa mga aktibidad at detalye.";
-    },
     get$translationProblem() {
       return "Problema sa pagsasalin";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8nhnyQ2RI9hL55HNmOrR/7EKMuo="] = d.current;
+  d["a9DrRamKwDcu7eE4lTrAcULwtPs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

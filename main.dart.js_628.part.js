@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Kliknite za prikaz uputa poput za potpuno novog korisnika.";
     },
-    get$selectForGrammar() {
-      return "Odaberite ikonu gramatike za aktivnosti i detalje.";
-    },
     get$translationProblem() {
       return "Problem s prijevodom";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Kt7f2mOIIvrlw/Dx7R0VHec2vPo="] = d.current;
+  d["MWJU4RI2BsgwY7me4f3wht6xU/U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

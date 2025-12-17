@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Clice\xe1il chun na t\xe9acsleabhair treorach a thaispe\xe1int ar n\xf3s do \xfas\xe1ideoir nua.";
     },
-    get$selectForGrammar() {
-      return "Roghnaigh deilbh\xedn gramadach le haghaidh gn\xedomha\xedochta\xed agus sonra\xed.";
-    },
     get$translationProblem() {
       return "Fadhb aistri\xfach\xe1in";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HkQMbft0tRxxQBmiBnoUpcbpv+A="] = d.current;
+  d["L0jvWhxbVn3ds5c3sTZmkGg1E+4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

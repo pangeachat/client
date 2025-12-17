@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Kattints az \xfatmutat\xf3 eszk\xf6ztippek megjelen\xedt\xe9s\xe9hez, mint egy teljesen \xfaj felhaszn\xe1l\xf3 eset\xe9n.";
     },
-    get$selectForGrammar() {
-      return "V\xe1lassz nyelvtani ikont a tev\xe9kenys\xe9gekhez \xe9s r\xe9szletekhez.";
-    },
     get$translationProblem() {
       return "Ford\xedt\xe1si probl\xe9ma";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aJCsPVHiEciXNWFLn2yiakgv28k="] = d.current;
+  d["4wEJE9jQuweKQzVMDM8s9Qs9aVI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

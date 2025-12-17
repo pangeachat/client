@@ -3829,9 +3829,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Clique para mostrar dicas de instru\xe7\xf5es como para um usu\xe1rio totalmente novo.";
     },
-    get$selectForGrammar() {
-      return string$.Seleci;
-    },
     get$translationProblem() {
       return "Problema de tradu\xe7\xe3o";
     },
@@ -9066,9 +9063,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Clique para mostrar dicas de instru\xe7\xf5es, como para um usu\xe1rio novo.";
     },
-    get$selectForGrammar() {
-      return string$.Seleci;
-    },
     get$translationProblem() {
       return "Problema de tradu\xe7\xe3o";
     },
@@ -14300,9 +14294,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Clique para mostrar dicas de instru\xe7\xf5es como para um utilizador novo.";
     },
-    get$selectForGrammar() {
-      return string$.Seleci;
-    },
     get$translationProblem() {
       return "Problema de tradu\xe7\xe3o";
     },
@@ -15888,7 +15879,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Report: "Reportar problema na informa\xe7\xe3o da palavra",
     Sair_d: "Sair deste espa\xe7o e de todas as conversas nele",
     Se_seu: "Se seu dispositivo suportar o idioma que voc\xea est\xe1 aprendendo, voc\xea pode ativar a autocorre\xe7\xe3o do dispositivo para corrigir erros comuns enquanto digita.",
-    Seleci: "Selecione um \xedcone de gram\xe1tica para atividades e detalhes.",
     Sobres: "Sobrescreve todas as outras regras e desativa todas as notifica\xe7\xf5es.",
     Solici: "Solicita\xe7\xf5es para usu\xe1rios inativos n\xe3o puderam ser enviadas",
     Soment: "Somente administradores podem excluir um curso. Esta \xe9 uma a\xe7\xe3o destrutiva que remove todos os usu\xe1rios e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
@@ -15916,7 +15906,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HkELS1EYksITHLzPCAF/sMOMVEY="] = d.current;
+  d["GxeVUtHvWMfz26GL3+mZbTk1KEQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

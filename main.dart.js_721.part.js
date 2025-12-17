@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klikk for \xe5 vise instruksjonstips som for en helt ny bruker.";
     },
-    get$selectForGrammar() {
-      return "Velg et grammatikkikon for aktiviteter og detaljer.";
-    },
     get$translationProblem() {
       return "Oversettelsesproblem";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9tqy6NLT0olZl6PReKymT6ERDCk="] = d.current;
+  d["IL5hPmX93FW4Ujjez09/khYsUu8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

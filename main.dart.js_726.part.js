@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klik om instructiehulpmiddelen te tonen, zoals voor een gloednieuwe gebruiker.";
     },
-    get$selectForGrammar() {
-      return "Selecteer een grammatica-icoon voor activiteiten en details.";
-    },
     get$translationProblem() {
       return "Vertaalprobleem";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0AohzufKIs7n27qZbO8S/lsgSM0="] = d.current;
+  d["avXn+8bNbMZbR505n+IVV4JvAAE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_726.part.js.map

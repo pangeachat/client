@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Yeni bir kullan\u0131c\u0131 gibi talimat ipu\xe7lar\u0131n\u0131 g\xf6stermek i\xe7in t\u0131klay\u0131n.";
     },
-    get$selectForGrammar() {
-      return "Etkinlikler ve detaylar i\xe7in bir dilbilgisi simgesi se\xe7in.";
-    },
     get$translationProblem() {
       return "\xc7eviri sorunu";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jJJD+fRtmv6Fa7GJdNqkHs8Ty6Y="] = d.current;
+  d["Ie5flmobGMXe0tN/HyX34CXvT7s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

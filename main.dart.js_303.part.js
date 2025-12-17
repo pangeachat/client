@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klik for at vise vejledningstips som for en helt ny bruger.";
     },
-    get$selectForGrammar() {
-      return "V\xe6lg et grammatik-ikon til aktiviteter og detaljer.";
-    },
     get$translationProblem() {
       return "Overs\xe6ttelsesproblem";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pz7fO7iMDlcBfx6uxGQuOCOQt2c="] = d.current;
+  d["jzF8MavmSV4kqLPOYqz+cJ5Zzl8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

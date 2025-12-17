@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klik\u0161\u0137iniet, lai par\u0101d\u012btu instrukciju r\u012bkjoslas, k\u0101 jauns lietot\u0101js.";
     },
-    get$selectForGrammar() {
-      return "Izv\u0113lieties gramatikas ikonu aktivit\u0101t\u0113m un deta\u013c\u0101m.";
-    },
     get$translationProblem() {
       return "Tulko\u0161anas probl\u0113ma";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["j8oYDd+F0wS+ktYOtjwAvvGc9JY="] = d.current;
+  d["oeslTqSNYGS/vlykrKSia2O9rZk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

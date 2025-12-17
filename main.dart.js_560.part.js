@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Klik egin argibide-txertaketak erakusteko, erabiltzaile berri baten moduan.";
     },
-    get$selectForGrammar() {
-      return "Hizkuntzaren ikono bat aukeratu jardueretarako eta xehetasunei.";
-    },
     get$translationProblem() {
       return "Itzulpen arazoa";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PspE8hkpxWJasBxzGfQx/TRHDKQ="] = d.current;
+  d["sze70FU+iazMuRynwcG8JajYYQo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

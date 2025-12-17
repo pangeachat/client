@@ -3817,9 +3817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Spustel\u0117kite, kad parodytum\u0117te instrukcij\u0173 patarimus kaip naujam vartotojui.";
     },
-    get$selectForGrammar() {
-      return "Pasirinkite gramatikos piktogram\u0105 veikloms ir detal\u0117ms.";
-    },
     get$translationProblem() {
       return "Vertimo problema";
     },
@@ -5264,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8SpuSK3e/f6VYIOhbU7OywRgZK8="] = d.current;
+  d["ZZ4IwtIqHsRyAqLKJFXrv5bMGvM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map
