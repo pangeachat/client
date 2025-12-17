@@ -581,29 +581,10 @@ class Message extends StatelessWidget {
                                                 child: MouseRegion(
                                                   cursor:
                                                       SystemMouseCursors.click,
-                                                  child: PressableButton(
-                                                    buttonHeight: 5,
-                                                    triggerAnimation: controller
-                                                        .showToolbarStream
-                                                        .stream
-                                                        .where(
-                                                      (eventID) =>
-                                                          eventID ==
-                                                          event.eventId,
-                                                    ),
-                                                    depressed: !isButton,
-                                                    borderRadius: borderRadius,
-                                                    onPressed: () {
-                                                      showToolbar(
-                                                        pangeaMessageEvent,
-                                                      );
-                                                    },
-                                                    color: color,
-                                                    visible:
-                                                        isButton && !noBubble,
-                                                    builder: (context, _, __) =>
-                                                        // Pangea#
-                                                        Container(
+                                                  child: ValueListenableBuilder(
+                                                    valueListenable: controller
+                                                        .depressMessageButton,
+                                                    child: Container(
                                                       decoration: BoxDecoration(
                                                         color: noBubble
                                                             ? Colors.transparent
@@ -823,6 +804,31 @@ class Message extends StatelessWidget {
                                                         ),
                                                       ),
                                                     ),
+                                                    // #Pangea
+                                                    builder: (
+                                                      context,
+                                                      depressed,
+                                                      child,
+                                                    ) =>
+                                                        PressableButton(
+                                                      buttonHeight: 5,
+                                                      depressed: !isButton ||
+                                                          depressed,
+                                                      borderRadius:
+                                                          borderRadius,
+                                                      onPressed: () {
+                                                        showToolbar(
+                                                          pangeaMessageEvent,
+                                                        );
+                                                      },
+                                                      color: color,
+                                                      visible:
+                                                          isButton && !noBubble,
+                                                      builder:
+                                                          (context, _, __) =>
+                                                              child!,
+                                                    ),
+                                                    // Pangea#
                                                   ),
                                                 ),
                                               ),
