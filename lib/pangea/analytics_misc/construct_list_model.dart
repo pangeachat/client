@@ -174,12 +174,6 @@ class ConstructListModel {
     }
   }
 
-  List<ConstructUses> getConstructUsesByLemma(String lemma) => _constructList
-      .where(
-        (constructUse) => constructUse.lemma == lemma,
-      )
-      .toList();
-
   int numConstructs(ConstructTypeEnum type) => constructList(type: type).length;
 
   int _calculateLevelWithXp(int totalXP) {
@@ -215,29 +209,6 @@ class ConstructListModel {
     // Floor or clamp to ensure non-negative.
     final int xp = xpDouble.floor();
     return (xp < 0) ? 0 : xp;
-  }
-
-  /// Unique construct identifiers with XP >= [threshold]
-  /// Used on analytics update to determine newly 'unlocked' constructs
-  List<ConstructIdentifier> unlockedLemmas(
-    ConstructTypeEnum type, {
-    int threshold = 0,
-  }) {
-    final constructs = constructList(type: type);
-    final List<ConstructIdentifier> unlocked = [];
-    final constructsSet = constructList(type: type).map((e) => e.lemma).toSet();
-
-    for (final lemma in constructsSet) {
-      final matches = constructs.where((m) => m.lemma == lemma);
-      final totalPoints = matches.fold<int>(
-        0,
-        (total, match) => total + match.points,
-      );
-      if (totalPoints > threshold) {
-        unlocked.add(matches.first.id);
-      }
-    }
-    return unlocked;
   }
 
   // Not storing this for now to reduce memory load

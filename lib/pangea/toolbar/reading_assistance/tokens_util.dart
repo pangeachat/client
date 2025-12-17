@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
@@ -102,7 +103,11 @@ class TokensUtil {
       if (!token.lemma.saveVocab || !token.vocabConstructID.isContentWord) {
         continue;
       }
-      if (token.vocabConstruct.uses.isNotEmpty) continue;
+
+      if (ConstructMergeTable.instance.constructUsed(token.vocabConstructID)) {
+        continue;
+      }
+
       if (newTokens.any((t) => t == token.text)) continue;
 
       newTokens.add(token.text);

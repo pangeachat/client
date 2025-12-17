@@ -1,5 +1,6 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
@@ -27,6 +28,7 @@ class LevelUpManager {
   Future<void> preloadAnalytics(
     int level,
     int prevLevel,
+    AnalyticsDataService analyticsService,
   ) async {
     this.level = level;
     this.prevLevel = prevLevel;
@@ -34,10 +36,8 @@ class LevelUpManager {
     //For on route change behavior, if added in the future
     shouldAutoPopup = true;
 
-    nextGrammar = MatrixState.pangeaController.getAnalytics.constructListModel
-        .numConstructs(ConstructTypeEnum.morph);
-    nextVocab = MatrixState.pangeaController.getAnalytics.constructListModel
-        .numConstructs(ConstructTypeEnum.vocab);
+    nextGrammar = analyticsService.numConstructs(ConstructTypeEnum.morph);
+    nextVocab = analyticsService.numConstructs(ConstructTypeEnum.vocab);
 
     final LanguageModel? l2 =
         MatrixState.pangeaController.userController.userL2;

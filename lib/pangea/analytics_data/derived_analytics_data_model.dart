@@ -30,9 +30,9 @@ class DerivedAnalyticsDataModel {
     return progress >= 0 ? progress : 0;
   }
 
-  final double D = Environment.isStagingEnvironment ? 500 : 1500;
+  static final double D = Environment.isStagingEnvironment ? 500 : 1500;
 
-  int calculateXpWithLevel(int level) {
+  static int calculateXpWithLevel(int level) {
     // If level <= 1, XP should be 0 or negative by this math.
     // In practice, you might clamp it to 0:
     if (level <= 1) {

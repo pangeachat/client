@@ -17,7 +17,7 @@ mixin LemmaEmojiSetter {
     String? targetId,
   ) async {
     if (constructId.userSetEmoji.isEmpty) {
-      _sendEmojiAnalytics(
+      _getEmojiAnalytics(
         constructId,
         targetId: targetId,
       );
@@ -74,7 +74,7 @@ mixin LemmaEmojiSetter {
     );
   }
 
-  void _sendEmojiAnalytics(
+  void _getEmojiAnalytics(
     ConstructIdentifier constructId, {
     String? eventId,
     String? roomId,
@@ -96,11 +96,10 @@ mixin LemmaEmojiSetter {
       ),
     ];
 
-    MatrixState.pangeaController.putAnalytics.addAnalytics(
+    MatrixState.pangeaController.matrixState.analyticsDataService.updateService
+        .addAnalytics(
+      targetId,
       constructs,
-      eventId: eventId,
-      roomId: roomId,
-      targetId: targetId,
     );
   }
 }

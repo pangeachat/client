@@ -5,6 +5,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dar
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -33,6 +34,8 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   MorphFeaturesAndTags morphs = defaultMorphMapping;
   List<MorphFeature> features = defaultMorphMapping.displayFeatures;
 
+  List<ConstructUses>? vocab;
+
   bool isSearching = false;
   ConstructLevelEnum? selectedConstructLevel;
 
@@ -40,6 +43,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   void initState() {
     super.initState();
     _setMorphs();
+    _setVocab();
     searchController.addListener(() {
       if (mounted) setState(() {});
     });
@@ -49,6 +53,18 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   void dispose() {
     searchController.dispose();
     super.dispose();
+  }
+
+  Future<void> _setVocab() async {
+    try {
+      final analyticsService = Matrix.of(context).analyticsDataService;
+      final data = await analyticsService
+          .getAggregatedConstructs(ConstructTypeEnum.vocab);
+
+      vocab = data.values.toList();
+    } finally {
+      if (mounted) setState(() {});
+    }
   }
 
   Future<void> _setMorphs() async {

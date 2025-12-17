@@ -207,12 +207,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
             xp: ConstructUseTypeEnum.click.pointValue,
           ),
         ];
-        MatrixState.pangeaController.putAnalytics.addAnalytics(
-          constructs,
-          eventId: event.eventId,
-          roomId: event.room.id,
-          targetId: "word-zoom-card-${token.text.uniqueKey}",
-        );
+        Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+              "word-zoom-card-${token.text.uniqueKey}",
+              constructs,
+            );
       }
     }
   }

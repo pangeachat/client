@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
@@ -139,18 +139,6 @@ class ConstructIdentifier {
   bool get isContentWord =>
       PartOfSpeechEnumExtensions.fromString(category)?.isContentWord ?? false;
 
-  ConstructUses get constructUses =>
-      MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUses(
-        this,
-      ) ??
-      ConstructUses(
-        lemma: lemma,
-        constructType: ConstructTypeEnum.morph,
-        category: category,
-        uses: [],
-      );
-
   LemmaInfoRequest get lemmaInfoRequest => LemmaInfoRequest(
         partOfSpeech: category,
         lemmaLang:
@@ -206,5 +194,27 @@ class ConstructIdentifier {
         s: s,
       );
     }
+  }
+
+  String get storageKey => TupleKey(lemma, type.name, category).toString();
+
+  String get compositeKey => '$lemma|${type.name}';
+
+  static ConstructIdentifier fromStorageKey(String key) {
+    final parts = key.split('|');
+    final lemma = parts[0];
+    final typeName = parts[1];
+    final category = parts[2];
+
+    final type = ConstructTypeEnum.values.firstWhereOrNull(
+          (e) => e.name == typeName,
+        ) ??
+        ConstructTypeEnum.vocab;
+
+    return ConstructIdentifier(
+      lemma: lemma,
+      type: type,
+      category: category,
+    );
   }
 }

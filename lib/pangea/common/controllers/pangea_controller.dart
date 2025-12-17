@@ -10,8 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
@@ -26,8 +25,6 @@ import '../utils/firebase_analytics.dart';
 class PangeaController {
   ///pangeaControllers
   late UserController userController;
-  late GetAnalyticsController getAnalytics;
-  late PutAnalyticsController putAnalytics;
   late SubscriptionController subscriptionController;
 
   ///store Services
@@ -35,14 +32,13 @@ class PangeaController {
 
   StreamSubscription? _languageSubscription;
   StreamSubscription? _settingsSubscription;
+  StreamSubscription? _joinSpaceSubscription;
 
   ///Matrix Variables
   final MatrixState matrixState;
 
   PangeaController({required this.matrixState}) {
     userController = UserController();
-    getAnalytics = GetAnalyticsController(this);
-    putAnalytics = PutAnalyticsController(this);
     subscriptionController = SubscriptionController(this);
     PAuthGaurd.pController = this;
     _registerSubscriptions();
@@ -53,7 +49,7 @@ class PangeaController {
   /// because of order of execution does not matter,
   /// and running them at the same times speeds them up.
   void initControllers() {
-    _initAnalyticsControllers();
+    _initAnalytics();
     subscriptionController.initialize();
     matrixState.client.setPangeaPushRules();
     TtsController.setAvailableLanguages();
@@ -71,12 +67,13 @@ class PangeaController {
   }
 
   void _onLogout(BuildContext context) {
-    _disposeAnalyticsControllers();
     userController.clear();
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
+    _joinSpaceSubscription?.cancel();
     _languageSubscription = null;
     _settingsSubscription = null;
+    _joinSpaceSubscription = null;
 
     GoogleAnalytics.logout();
     _clearCache();
@@ -109,11 +106,6 @@ class PangeaController {
     GoogleAnalytics.analyticsUserUpdate(userID);
   }
 
-  void _disposeAnalyticsControllers() {
-    putAnalytics.dispose();
-    getAnalytics.dispose();
-  }
-
   void _registerSubscriptions() {
     _languageSubscription?.cancel();
     _languageSubscription =
@@ -122,6 +114,11 @@ class PangeaController {
     _settingsSubscription?.cancel();
     _settingsSubscription = userController.settingsUpdateStream.stream
         .listen((_) => matrixState.client.updateBotOptions());
+
+    _joinSpaceSubscription?.cancel();
+    _joinSpaceSubscription ??= matrixState.client.onSync.stream
+        .where(matrixState.client.isJoinSpaceSyncUpdate)
+        .listen((_) => matrixState.client.addAnalyticsRoomsToSpaces());
   }
 
   Future<void> _clearCache({List<String> exclude = const []}) async {
@@ -146,14 +143,16 @@ class PangeaController {
     await Future.wait(futures);
   }
 
-  Future<void> _initAnalyticsControllers() async {
-    putAnalytics.initialize();
-    await getAnalytics.initialize();
+  Future<void> _initAnalytics() async {
+    await GetStorage.init("analytics_storage");
+    await GetStorage.init("activity_analytics_storage");
+
+    matrixState.client.updateAnalyticsRoomJoinRules();
+    matrixState.client.addAnalyticsRoomsToSpaces();
   }
 
   Future<void> resetAnalytics() async {
-    _disposeAnalyticsControllers();
-    await _initAnalyticsControllers();
+    await _initAnalytics();
   }
 
   Future<void> _onLanguageUpdate(LanguageUpdate update) async {

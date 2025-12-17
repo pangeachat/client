@@ -18,7 +18,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class AnalyticsPage extends StatelessWidget {
+class AnalyticsPage extends StatefulWidget {
   final ProgressIndicatorEnum? indicator;
   final ConstructIdentifier? construct;
   final bool isSidebar;
@@ -30,7 +30,18 @@ class AnalyticsPage extends StatelessWidget {
     this.isSidebar = false,
   });
 
-  Future<void> _blockLemma(BuildContext context) async {
+  @override
+  AnalyticsPageState createState() => AnalyticsPageState();
+}
+
+class AnalyticsPageState extends State<AnalyticsPage> {
+  @override
+  void initState() {
+    super.initState();
+    MatrixState.pangeaController.initControllers();
+  }
+
+  Future<void> _blockLemma() async {
     final resp = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).areYouSure,
@@ -41,8 +52,10 @@ class AnalyticsPage extends StatelessWidget {
     if (resp != OkCancelResult.ok) return;
     final res = await showFutureLoadingDialog(
       context: context,
-      future: () =>
-          MatrixState.pangeaController.putAnalytics.blockConstruct(construct!),
+      future: () => Matrix.of(context)
+          .analyticsDataService
+          .updateService
+          .blockConstruct(widget.construct!),
     );
 
     if (!res.isError) {
@@ -54,79 +67,73 @@ class AnalyticsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final analyticsRoomId = GoRouterState.of(context).pathParameters['roomid'];
     return Scaffold(
-      appBar: construct != null
+      appBar: widget.construct != null
           ? AppBar(
-              actions: indicator == ProgressIndicatorEnum.wordsUsed
+              actions: widget.indicator == ProgressIndicatorEnum.wordsUsed
                   ? [
                       IconButton(
                         icon: const Icon(Icons.delete_forever_outlined),
                         color: Theme.of(context).colorScheme.error,
                         tooltip: L10n.of(context).delete,
-                        onPressed: () => _blockLemma(context),
+                        onPressed: _blockLemma,
                       ),
                     ]
                   : null,
             )
           : null,
       body: SafeArea(
-        child: FutureBuilder(
-          future:
-              MatrixState.pangeaController.getAnalytics.initCompleter.future,
-          builder: (context, snapshot) {
-            return Padding(
-              padding: const EdgeInsetsGeometry.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (isSidebar ||
-                      (!FluffyThemes.isColumnMode(context) &&
-                          construct == null))
-                    LearningProgressIndicators(
-                      selected: indicator,
-                      canSelect: indicator != ProgressIndicatorEnum.level,
-                    ),
-                  Expanded(
-                    child: () {
-                      if (indicator == ProgressIndicatorEnum.level) {
-                        return const LevelDialogContent();
-                      } else if (indicator ==
-                          ProgressIndicatorEnum.morphsUsed) {
-                        return ConstructAnalyticsView(
-                          construct: construct,
-                          view: ConstructTypeEnum.morph,
-                        );
-                      } else if (indicator == ProgressIndicatorEnum.wordsUsed) {
-                        return ConstructAnalyticsView(
-                          construct: construct,
-                          view: ConstructTypeEnum.vocab,
-                        );
-                      } else if (indicator ==
-                          ProgressIndicatorEnum.activities) {
-                        return ActivityArchive(
-                          selectedRoomId: analyticsRoomId,
-                        );
-                      }
+        child: Padding(
+          padding: const EdgeInsetsGeometry.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.isSidebar ||
+                  (!FluffyThemes.isColumnMode(context) &&
+                      widget.construct == null))
+                LearningProgressIndicators(
+                  selected: widget.indicator,
+                  canSelect: widget.indicator != ProgressIndicatorEnum.level,
+                ),
+              Expanded(
+                child: () {
+                  if (widget.indicator == ProgressIndicatorEnum.level) {
+                    return const LevelDialogContent();
+                  } else if (widget.indicator ==
+                      ProgressIndicatorEnum.morphsUsed) {
+                    return ConstructAnalyticsView(
+                      construct: widget.construct,
+                      view: ConstructTypeEnum.morph,
+                    );
+                  } else if (widget.indicator ==
+                      ProgressIndicatorEnum.wordsUsed) {
+                    return ConstructAnalyticsView(
+                      construct: widget.construct,
+                      view: ConstructTypeEnum.vocab,
+                    );
+                  } else if (widget.indicator ==
+                      ProgressIndicatorEnum.activities) {
+                    return ActivityArchive(
+                      selectedRoomId: analyticsRoomId,
+                    );
+                  }
 
-                      return Center(
-                        child: SizedBox(
-                          width: 250.0,
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                "${AppConfig.assetsBaseURL}/${AnalyticsPageConstants.dinoBotFileName}",
-                            errorWidget: (context, url, error) =>
-                                const SizedBox(),
-                            placeholder: (context, url) => const Center(
-                              child: CircularProgressIndicator.adaptive(),
-                            ),
-                          ),
+                  return Center(
+                    child: SizedBox(
+                      width: 250.0,
+                      child: CachedNetworkImage(
+                        imageUrl:
+                            "${AppConfig.assetsBaseURL}/${AnalyticsPageConstants.dinoBotFileName}",
+                        errorWidget: (context, url, error) => const SizedBox(),
+                        placeholder: (context, url) => const Center(
+                          child: CircularProgressIndicator.adaptive(),
                         ),
-                      );
-                    }(),
-                  ),
-                ],
+                      ),
+                    ),
+                  );
+                }(),
               ),
-            );
-          },
+            ],
+          ),
         ),
       ),
     );

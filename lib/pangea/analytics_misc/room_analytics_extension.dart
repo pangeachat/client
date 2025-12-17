@@ -351,4 +351,36 @@ extension AnalyticsRoomExtension on Room {
       await syncFuture;
     }
   }
+
+  Future<void> setLevelUpSummary(ConstructSummary summary) =>
+      client.setRoomStateWithKey(
+        id,
+        PangeaEventTypes.constructSummary,
+        '',
+        summary.toJson(),
+      );
+
+  ConstructSummary? get levelUpSummary {
+    final state = getState(PangeaEventTypes.constructSummary);
+    if (state == null) return null;
+    try {
+      return ConstructSummary.fromJson(state.content);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  List<Room> get archivedActivities {
+    return activityRoomIds
+        .map((id) => client.getRoomById(id))
+        .whereType<Room>()
+        .where(
+          (room) =>
+              room.membership != Membership.leave &&
+              room.membership != Membership.ban,
+        )
+        .toList();
+  }
+
+  int get archivedActivitiesCount => archivedActivities.length;
 }

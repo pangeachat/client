@@ -4,15 +4,19 @@ import 'package:flutter/material.dart';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_manager.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_popup.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelUpConstants {
@@ -105,9 +109,11 @@ class LevelUpBannerState extends State<LevelUpBanner>
 
     _loadConstructSummary();
 
+    final analyticsService = Matrix.of(context).analyticsDataService;
     LevelUpManager.instance.preloadAnalytics(
       widget.level,
       widget.prevLevel,
+      analyticsService,
     );
 
     _slideController = AnimationController(
@@ -162,9 +168,23 @@ class LevelUpBannerState extends State<LevelUpBanner>
 
   Future<void> _loadConstructSummary() async {
     try {
-      final summary = MatrixState.pangeaController.getAnalytics
-          .generateLevelUpAnalytics(widget.prevLevel, widget.level);
+      final analyticsRoom = await Matrix.of(context).client.getMyAnalyticsRoom(
+            MatrixState.pangeaController.userController.userL2!,
+          );
+
+      final lastLevelUp =
+          analyticsRoom!.getState(PangeaEventTypes.constructSummary);
+      final timestamp =
+          lastLevelUp is Event ? lastLevelUp.originServerTs : null;
+
+      final analyticsService = Matrix.of(context).analyticsDataService;
+      final summary = await analyticsService.getLevelUpAnalytics(
+        widget.prevLevel,
+        widget.level,
+        timestamp,
+      );
       _constructSummaryCompleter.complete(summary);
+      analyticsRoom.setLevelUpSummary(summary);
     } catch (e) {
       debugPrint("Error generating level up analytics: $e");
       _constructSummaryCompleter.completeError(e);

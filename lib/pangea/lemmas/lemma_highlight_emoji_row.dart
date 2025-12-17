@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -39,8 +39,11 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
   @override
   void initState() {
     super.initState();
-    _analyticsSubscription = MatrixState
-        .pangeaController.getAnalytics.analyticsStream.stream
+    Matrix.of(context)
+        .analyticsDataService
+        .streamService
+        .constructUpdateStream
+        .stream
         .listen(_onAnalyticsUpdate);
   }
 

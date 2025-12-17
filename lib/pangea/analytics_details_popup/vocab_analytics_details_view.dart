@@ -6,7 +6,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_details_emoji_selector.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -26,160 +25,166 @@ class VocabDetailsView extends StatelessWidget {
     required this.constructId,
   });
 
-  ConstructUses get _construct => constructId.constructUses;
-
-  /// Get the language code for the current lemma
   String? get _userL2 =>
       MatrixState.pangeaController.userController.userL2?.langCode;
-
-  List<String> get forms =>
-      MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUsesByLemma(_construct.lemma)
-          .map((e) => e.uses)
-          .expand((element) => element)
-          .map((e) => e.form?.toLowerCase())
-          .toSet()
-          .whereType<String>()
-          .toList();
 
   final double _iconSize = 24.0;
 
   @override
   Widget build(BuildContext context) {
-    final Color textColor = (Theme.of(context).brightness != Brightness.light
-        ? _construct.lemmaCategory.color(context)
-        : _construct.lemmaCategory.darkColor(context));
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    return FutureBuilder(
+      future: analyticsService.getConstructUse(constructId),
+      builder: (context, snapshot) {
+        final construct = snapshot.data;
+        final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
 
-    return AnalyticsDetailsViewContent(
-      title: Column(
-        children: [
-          LayoutBuilder(
-            builder: (context, constraints) {
-              return ShrinkableText(
-                text: _construct.lemma,
-                maxWidth: constraints.maxWidth - 40.0,
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      color: textColor,
-                    ),
-              );
-            },
-          ),
-          if (MatrixState.pangeaController.userController.showTranscription)
-            Padding(
-              padding: const EdgeInsets.only(top: 4.0),
-              child: PhoneticTranscriptionWidget(
-                text: _construct.lemma,
-                textLanguage:
-                    MatrixState.pangeaController.userController.userL2!,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: textColor.withAlpha((0.7 * 255).toInt()),
-                      fontSize: 18,
-                    ),
-                iconSize: _iconSize * 0.8,
-              ),
-            ),
-        ],
-      ),
-      subtitle: Column(
-        children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 8.0,
+        final Color textColor = Theme.of(context).brightness != Brightness.light
+            ? level.color(context)
+            : level.darkColor(context);
+
+        final List<String> forms = construct?.uses
+                .map((e) => e.form?.toLowerCase())
+                .toSet()
+                .whereType<String>()
+                .toList() ??
+            [];
+
+        return AnalyticsDetailsViewContent(
+          construct: construct,
+          title: Column(
             children: [
-              Text(
-                getGrammarCopy(
-                      category: "POS",
-                      lemma: _construct.category,
-                      context: context,
-                    ) ??
-                    _construct.lemma,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: textColor,
-                    ),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  return ShrinkableText(
+                    text: constructId.lemma,
+                    maxWidth: constraints.maxWidth - 40.0,
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          color: textColor,
+                        ),
+                  );
+                },
               ),
-              SizedBox(
-                width: _iconSize,
-                height: _iconSize,
-                child: MorphIcon(
-                  morphFeature: MorphFeaturesEnum.Pos,
-                  morphTag: _construct.category,
+              if (MatrixState.pangeaController.userController.showTranscription)
+                Padding(
+                  padding: const EdgeInsets.only(top: 4.0),
+                  child: PhoneticTranscriptionWidget(
+                    text: constructId.lemma,
+                    textLanguage:
+                        MatrixState.pangeaController.userController.userL2!,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: textColor.withAlpha((0.7 * 255).toInt()),
+                          fontSize: 18,
+                        ),
+                    iconSize: _iconSize * 0.8,
+                  ),
                 ),
-              ),
             ],
           ),
-          const SizedBox(height: 16.0),
-          Text(
-            L10n.of(context).vocabEmoji,
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  fontStyle: FontStyle.italic,
-                  color: textColor,
-                ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: VocabDetailsEmojiSelector(constructId),
-          ),
-        ],
-      ),
-      headerContent: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-        child: Column(
-          spacing: 8.0,
-          children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: _userL2 == null
-                  ? Text(L10n.of(context).meaningNotFound)
-                  : LemmaMeaningWidget(
-                      constructId: constructId,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                      leading: TextSpan(
-                        text: L10n.of(context).meaningSectionHeader,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                      ),
-                    ),
-            ),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Wrap(
-                alignment: WrapAlignment.start,
-                runAlignment: WrapAlignment.start,
-                crossAxisAlignment: WrapCrossAlignment.center,
+          subtitle: Column(
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 8.0,
                 children: [
                   Text(
-                    L10n.of(context).formSectionHeader,
+                    getGrammarCopy(
+                          category: "POS",
+                          lemma: constructId.category,
+                          context: context,
+                        ) ??
+                        constructId.lemma,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
+                          color: textColor,
                         ),
                   ),
-                  const SizedBox(width: 6.0),
-                  ...forms.mapIndexed(
-                    (i, form) => Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        WordTextWithAudioButton(
-                          text: form,
-                          style:
-                              Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color: textColor,
-                                  ),
-                          uniqueID: "$form-${_construct.lemma}-$i",
-                          langCode: _userL2!,
-                        ),
-                        if (i != forms.length - 1) const Text(",  "),
-                      ],
+                  SizedBox(
+                    width: _iconSize,
+                    height: _iconSize,
+                    child: MorphIcon(
+                      morphFeature: MorphFeaturesEnum.Pos,
+                      morphTag: constructId.category,
                     ),
                   ),
                 ],
               ),
+              const SizedBox(height: 16.0),
+              Text(
+                L10n.of(context).vocabEmoji,
+                style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                      fontStyle: FontStyle.italic,
+                      color: textColor,
+                    ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: VocabDetailsEmojiSelector(constructId),
+              ),
+            ],
+          ),
+          headerContent: Padding(
+            padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+            child: Column(
+              spacing: 8.0,
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: _userL2 == null
+                      ? Text(L10n.of(context).meaningNotFound)
+                      : LemmaMeaningWidget(
+                          constructId: constructId,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                          leading: TextSpan(
+                            text: L10n.of(context).meaningSectionHeader,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                          ),
+                        ),
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Wrap(
+                    alignment: WrapAlignment.start,
+                    runAlignment: WrapAlignment.start,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    children: [
+                      Text(
+                        L10n.of(context).formSectionHeader,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      const SizedBox(width: 6.0),
+                      ...forms.mapIndexed(
+                        (i, form) => Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            WordTextWithAudioButton(
+                              text: form,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge
+                                  ?.copyWith(
+                                    color: textColor,
+                                  ),
+                              uniqueID: "$form-${constructId.lemma}-$i",
+                              langCode: _userL2!,
+                            ),
+                            if (i != forms.length - 1) const Text(",  "),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      xpIcon: _construct.lemmaCategory.icon(_iconSize + 6.0),
-      constructId: constructId,
+          ),
+          xpIcon: level.icon(_iconSize + 6.0),
+        );
+      },
     );
   }
 }

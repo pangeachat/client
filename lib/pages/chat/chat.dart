@@ -30,10 +30,11 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_update_stream_service.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -50,6 +51,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -186,6 +188,7 @@ class ChatController extends State<ChatPageWithRoom>
   late GoRouter _router;
 
   StreamSubscription? _levelSubscription;
+  StreamSubscription? _constructsSubscription;
   StreamSubscription? _analyticsSubscription;
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
@@ -454,19 +457,20 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   // #Pangea
-  void _onLevelUp(dynamic update) {
-    if (update['level_up'] != null) {
-      LevelUpUtil.showLevelUpDialog(
-        update['upper_level'],
-        update['lower_level'],
-        context,
-      );
-    } else if (update['unlocked_constructs'] != null) {
-      ConstructNotificationUtil.addUnlockedConstruct(
-        List.from(update['unlocked_constructs']),
-        context,
-      );
-    }
+  void _onLevelUp(LevelUpdate update) {
+    LevelUpUtil.showLevelUpDialog(
+      update.newLevel,
+      update.prevLevel,
+      context,
+    );
+  }
+
+  void _onUnlockConstructs(Set<ConstructIdentifier> constructs) {
+    if (constructs.isEmpty) return;
+    ConstructNotificationUtil.addUnlockedConstruct(
+      List.from(constructs),
+      context,
+    );
   }
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
@@ -517,18 +521,21 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _pangeaInit() {
     choreographer = Choreographer(inputFocus);
-    _levelSubscription =
-        pangeaController.getAnalytics.stateStream.listen(_onLevelUp);
+    final updater = Matrix.of(context).analyticsDataService.streamService;
 
-    _analyticsSubscription = pangeaController
-        .getAnalytics.analyticsStream.stream
-        .listen(_onAnalyticsUpdate);
+    _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
+
+    _constructsSubscription =
+        updater.unlockedConstructsStream.stream.listen(_onUnlockConstructs);
+
+    _analyticsSubscription =
+        updater.constructUpdateStream.stream.listen(_onAnalyticsUpdate);
 
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
     activityController = ActivityChatController(
       userID: Matrix.of(context).client.userID!,
-      getAnalytics: room.getActivityAnalytics,
+      room: room,
     );
 
     Future.delayed(const Duration(seconds: 1), () async {
@@ -787,6 +794,7 @@ class ChatController extends State<ChatPageWithRoom>
     _levelSubscription?.cancel();
     _analyticsSubscription?.cancel();
     _botAudioSubscription?.cancel();
+    _constructsSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();
@@ -2118,12 +2126,10 @@ class ChatController extends State<ChatPageWithRoom>
       ];
 
       _showAnalyticsFeedback(constructs, eventId);
-      pangeaController.putAnalytics.addAnalytics(
-        constructs,
-        eventId: eventId,
-        targetId: eventId,
-        roomId: room.id,
-      );
+      Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+            eventId,
+            constructs,
+          );
     }
   }
 
@@ -2169,12 +2175,10 @@ class ChatController extends State<ChatPageWithRoom>
       if (constructs.isEmpty) return;
 
       _showAnalyticsFeedback(constructs, eventId);
-      MatrixState.pangeaController.putAnalytics.addAnalytics(
-        constructs,
-        eventId: eventId,
-        targetId: eventId,
-        roomId: room.id,
-      );
+      Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+            eventId,
+            constructs,
+          );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -2241,17 +2245,17 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _showAnalyticsFeedback(
+  Future<void> _showAnalyticsFeedback(
     List<OneConstructUse> constructs,
     String eventId,
-  ) {
-    final newGrammarConstructs =
-        pangeaController.getAnalytics.newConstructCount(
+  ) async {
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    final newGrammarConstructs = await analyticsService.getNewConstructCount(
       constructs,
       ConstructTypeEnum.morph,
     );
 
-    final newVocabConstructs = pangeaController.getAnalytics.newConstructCount(
+    final newVocabConstructs = await analyticsService.getNewConstructCount(
       constructs,
       ConstructTypeEnum.vocab,
     );

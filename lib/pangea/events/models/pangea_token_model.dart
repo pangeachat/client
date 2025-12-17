@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
@@ -15,7 +15,6 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -175,18 +174,6 @@ class PangeaToken {
     return null;
   }
 
-  ConstructUses get vocabConstruct =>
-      MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUses(
-        vocabConstructID,
-      ) ??
-      ConstructUses(
-        lemma: lemma.text,
-        constructType: ConstructTypeEnum.vocab,
-        category: pos,
-        uses: [],
-      );
-
   ConstructIdentifier? morphIdByFeature(MorphFeaturesEnum feature) {
     final tag = getMorphTag(feature);
     if (tag == null) return null;
@@ -211,16 +198,7 @@ class PangeaToken {
         : vocabConstructID;
 
     if (cId == null) return null;
-
-    final correctUseTimestamps = cId.constructUses.uses
-        .where((u) => u.form == text.content)
-        .map((u) => u.timeStamp)
-        .toList();
-
-    if (correctUseTimestamps.isEmpty) return null;
-
-    // return the most recent timestamp
-    return correctUseTimestamps.reduce((a, b) => a.isAfter(b) ? a : b);
+    return ConstructMergeTable.instance.getLastUsedByForm(cId, text.content);
   }
 
   /// daysSinceLastUse by activity type

@@ -141,11 +141,11 @@ class PracticeController with ChangeNotifier {
         ),
       ];
 
-      MatrixState.pangeaController.putAnalytics.addAnalytics(
+      MatrixState
+          .pangeaController.matrixState.analyticsDataService.updateService
+          .addAnalytics(
+        targetId,
         constructs,
-        eventId: pangeaMessageEvent.eventId,
-        roomId: pangeaMessageEvent.room.id,
-        targetId: targetId,
       );
     }
 

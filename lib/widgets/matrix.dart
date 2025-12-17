@@ -103,8 +103,15 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   // #Pangea
-  AnalyticsDataService? get analyticsDataService =>
-      _analyticsServices[client.clientName];
+  AnalyticsDataService get analyticsDataService {
+    if (_analyticsServices[client.clientName] == null) {
+      Logs().w(
+        'Tried to access AnalyticsDataService for client ${client.clientName}, but it does not exist.',
+      );
+      _analyticsServices[client.clientName] = AnalyticsDataService(client);
+    }
+    return _analyticsServices[client.clientName]!;
+  }
   // Pangea#
 
   VoipPlugin? voipPlugin;
@@ -295,8 +302,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
     _languageListener?.cancel();
-    _languageListener = pangeaController.userController.languageStream.stream
-        .listen((_) => _setAppLanguage());
+    _languageListener =
+        pangeaController.userController.languageStream.stream.listen((update) {
+      _setAppLanguage();
+      analyticsDataService.updateService.onUpdateLanguages(update);
+    });
   }
 
   void _setAppLanguage() {

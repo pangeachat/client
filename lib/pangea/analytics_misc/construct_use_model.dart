@@ -120,4 +120,17 @@ class ConstructUses {
       return ConstructLevelEnum.flowers;
     }
   }
+
+  void merge(ConstructUses other) {
+    if (other.lemma != lemma || other.constructType != constructType) {
+      throw ArgumentError(
+        'Cannot merge ConstructUses with different lemmas or types',
+      );
+    }
+
+    uses.addAll(other.uses);
+    if (other.lastUsed != null) {
+      setLastUsed(other.lastUsed!);
+    }
+  }
 }

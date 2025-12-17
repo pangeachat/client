@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_message.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityMenuButton extends StatefulWidget {
   final ChatController controller;
@@ -34,8 +35,11 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
   void initState() {
     super.initState();
 
-    _analyticsSubscription = widget
-        .controller.pangeaController.getAnalytics.analyticsStream.stream
+    _analyticsSubscription = Matrix.of(context)
+        .analyticsDataService
+        .streamService
+        .constructUpdateStream
+        .stream
         .listen(_showStatsMenuDropdownInstructions);
 
     _rolesSubscription = widget.controller.room.client.onRoomState.stream
