@@ -55,20 +55,7 @@ class TokenPracticeButton extends StatelessWidget {
         true;
   }
 
-  bool get _isEmpty {
-    final mode = controller.practiceMode;
-    if (MessagePracticeMode.wordEmoji == mode &&
-        token.vocabConstructID.userSetEmoji.firstOrNull != null) {
-      return false;
-    }
-
-    return _activity == null ||
-        (isActivityCompleteOrNullForToken &&
-            ![MessagePracticeMode.wordEmoji, MessagePracticeMode.wordMorph]
-                .contains(mode)) ||
-        (MessagePracticeMode.wordMorph == mode &&
-            _activity?.morphFeature == null);
-  }
+  bool get _isEmpty => controller.isPracticeButtonEmpty(token);
 
   bool get _isSelected =>
       controller.selectedMorph?.token == token &&
@@ -124,8 +111,14 @@ class TokenPracticeButton extends StatelessWidget {
           curve: Curves.easeOut,
           alignment: Alignment.bottomCenter,
           child: _isEmpty
-              ? const SizedBox(height: 0)
-              : SizedBox(height: tokenButtonHeight, child: child),
+              ? const SizedBox()
+              : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 16.0),
+                    SizedBox(height: tokenButtonHeight, child: child),
+                  ],
+                ),
         );
       },
     );
