@@ -783,7 +783,6 @@ class ChatController extends State<ChatPageWithRoom>
     choreographer.dispose();
     activityController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
-    showToolbarStream.close();
     stopMediaStream.close();
     _levelSubscription?.cancel();
     _analyticsSubscription?.cancel();
@@ -791,6 +790,7 @@ class ChatController extends State<ChatPageWithRoom>
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();
+    depressMessageButton.dispose();
     TokensUtil.clearNewTokenCache();
     //Pangea#
     super.dispose();
@@ -1614,6 +1614,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (!mounted) return;
     if (!_isToolbarOpen && selectedEvents.isEmpty) return;
     MatrixState.pAnyState.closeAllOverlays();
+    depressMessageButton.value = false;
+
     setState(() {
       selectedEvents.clear();
       showEmojiPicker = false;
@@ -1952,6 +1954,8 @@ class ChatController extends State<ChatPageWithRoom>
         editEvent = null;
       });
   // #Pangea
+  ValueNotifier<bool> depressMessageButton = ValueNotifier(false);
+
   String? get buttonEventID => timeline!.events
       .firstWhereOrNull(
         (event) =>
@@ -1970,9 +1974,6 @@ class ChatController extends State<ChatPageWithRoom>
             !event.redacted,
       )
       ?.eventId;
-
-  final StreamController<String> showToolbarStream =
-      StreamController.broadcast();
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
 
@@ -2043,13 +2044,13 @@ class ChatController extends State<ChatPageWithRoom>
     // you've clicked a message so lets turn this off
     InstructionsEnum.clickMessage.setToggledOff(true);
 
-    showToolbarStream.add(event.eventId);
     if (!kIsWeb) {
       HapticFeedback.mediumImpact();
     }
     stopMediaStream.add(null);
 
     if (buttonEventID == event.eventId) {
+      depressMessageButton.value = true;
       Future.delayed(const Duration(milliseconds: 200), () {
         if (_router.state.path != ':roomid') {
           // The user has navigated away from the chat,
