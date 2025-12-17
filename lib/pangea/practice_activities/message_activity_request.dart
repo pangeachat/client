@@ -51,9 +51,6 @@ class MessageActivityRequest {
   final String userL1;
   final String userL2;
 
-  final String messageText;
-  final List<PangeaToken> messageTokens;
-
   final List<PangeaToken> targetTokens;
   final ActivityTypeEnum targetType;
   final MorphFeaturesEnum? targetMorphFeature;
@@ -63,8 +60,6 @@ class MessageActivityRequest {
   MessageActivityRequest({
     required this.userL1,
     required this.userL2,
-    required this.messageText,
-    required this.messageTokens,
     required this.activityQualityFeedback,
     required this.targetTokens,
     required this.targetType,
@@ -79,8 +74,6 @@ class MessageActivityRequest {
     return {
       'user_l1': userL1,
       'user_l2': userL2,
-      'message_text': messageText,
-      'message_tokens': messageTokens.map((e) => e.toJson()).toList(),
       'activity_quality_feedback': activityQualityFeedback?.toJson(),
       'target_tokens': targetTokens.map((e) => e.toJson()).toList(),
       'target_type': targetType.name,
@@ -93,7 +86,6 @@ class MessageActivityRequest {
     if (identical(this, other)) return true;
 
     return other is MessageActivityRequest &&
-        other.messageText == messageText &&
         other.targetType == targetType &&
         other.activityQualityFeedback?.feedbackText ==
             activityQualityFeedback?.feedbackText &&
@@ -103,8 +95,7 @@ class MessageActivityRequest {
 
   @override
   int get hashCode {
-    return messageText.hashCode ^
-        targetType.hashCode ^
+    return targetType.hashCode ^
         activityQualityFeedback.hashCode ^
         targetTokens.hashCode ^
         targetMorphFeature.hashCode;

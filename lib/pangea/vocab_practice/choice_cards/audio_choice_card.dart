@@ -1,0 +1,44 @@
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/basic_choice_card.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+
+/// Displays an audio button with a select label in a row layout
+/// TODO: needs a better design and button handling
+class AudioChoiceCard extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final bool isCorrect;
+  final double height;
+
+  const AudioChoiceCard({
+    required this.text,
+    required this.onPressed,
+    required this.isCorrect,
+    this.height = 72.0,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BasicChoiceCard(
+      onPressed: onPressed,
+      isCorrect: isCorrect,
+      height: height,
+      child: Row(
+        children: [
+          Expanded(
+            child: WordAudioButton(
+              text: text,
+              uniqueID: "vocab_practice_choice_$text",
+              langCode:
+                  MatrixState.pangeaController.userController.userL2!.langCode,
+            ),
+          ),
+          Text(L10n.of(context).select),
+        ],
+      ),
+    );
+  }
+}

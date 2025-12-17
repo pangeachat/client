@@ -8,14 +8,14 @@ class AnimatedProgressBar extends StatelessWidget {
   final double widthPercent;
 
   final Color barColor;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Duration? duration;
 
   const AnimatedProgressBar({
     required this.height,
     required this.widthPercent,
-    required this.barColor,
-    required this.backgroundColor,
+    this.barColor = AppConfig.goldLight,
+    this.backgroundColor,
     this.duration,
     super.key,
   });
@@ -36,7 +36,8 @@ class AnimatedProgressBar extends StatelessWidget {
                   borderRadius: const BorderRadius.all(
                     Radius.circular(AppConfig.borderRadius),
                   ),
-                  color: backgroundColor,
+                  color: backgroundColor ??
+                      Theme.of(context).colorScheme.secondaryContainer,
                 ),
               ),
             ),

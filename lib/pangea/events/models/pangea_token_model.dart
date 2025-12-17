@@ -211,16 +211,7 @@ class PangeaToken {
         : vocabConstructID;
 
     if (cId == null) return null;
-
-    final correctUseTimestamps = cId.constructUses.uses
-        .where((u) => u.form == text.content)
-        .map((u) => u.timeStamp)
-        .toList();
-
-    if (correctUseTimestamps.isEmpty) return null;
-
-    // return the most recent timestamp
-    return correctUseTimestamps.reduce((a, b) => a.isAfter(b) ? a : b);
+    return cId.lastUsedByActivityType(text.content);
   }
 
   /// daysSinceLastUse by activity type

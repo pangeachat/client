@@ -55,6 +55,7 @@ import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
@@ -568,6 +569,16 @@ abstract class AppRoutes {
                   ),
                   redirect: loggedOutRedirect,
                   routes: [
+                    GoRoute(
+                      path: 'practice',
+                      pageBuilder: (context, state) {
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          const VocabPractice(),
+                        );
+                      },
+                    ),
                     GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {

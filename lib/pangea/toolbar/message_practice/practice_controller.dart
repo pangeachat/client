@@ -84,9 +84,6 @@ class PracticeController with ChangeNotifier {
     final req = MessageActivityRequest(
       userL1: MatrixState.pangeaController.userController.userL1!.langCode,
       userL2: MatrixState.pangeaController.userController.userL2!.langCode,
-      messageText: pangeaMessageEvent.messageDisplayText,
-      messageTokens:
-          pangeaMessageEvent.messageDisplayRepresentation?.tokens ?? [],
       activityQualityFeedback: null,
       targetTokens: target.tokens,
       targetType: target.activityType,
@@ -137,7 +134,9 @@ class PracticeController with ChangeNotifier {
     if (_activity == null) return;
 
     final isCorrect = _activity!.activityType == ActivityTypeEnum.morphId
-        ? _activity!.onMultipleChoiceSelect(token, choice)
+        ? _activity!.onMultipleChoiceSelect(
+            choice.choiceContent,
+          )
         : _activity!.onMatch(token, choice);
 
     final targetId =
