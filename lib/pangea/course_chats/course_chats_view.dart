@@ -223,10 +223,8 @@ class CourseChatsView extends StatelessWidget {
                 final sessions = discoveredSessions[i].value;
                 return ActivityTemplateChatListItem(
                   space: room,
-                  activity: activity,
                   sessions: sessions,
-                  joinActivity: (e) =>
-                      controller.joinActivity(activity.activityId, e),
+                  joinActivity: (e) => controller.joinActivity(activity, e),
                 );
               }
               i -= discoveredSessions.length;

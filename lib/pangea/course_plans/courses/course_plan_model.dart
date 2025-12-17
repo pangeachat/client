@@ -131,5 +131,5 @@ class CoursePlanModel {
       ? loadedTopics.values
           .lastWhereOrNull((topic) => topic.imageUrl != null)
           ?.imageUrl
-      : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first}";
+      : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first.url}";
 }

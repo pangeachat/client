@@ -2791,7 +2791,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-03 11:36:52.845643",
+  "@@last_modified": "2025-12-15 14:43:36.288461",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -10297,6 +10297,7 @@
   "addCourse": "Magdagdag ng kurso",
   "joinPublicCourse": "Sumali sa pampublikong kurso",
   "vocabLevelsDesc": "Dito mapupunta ang mga salita sa bokabularyo kapag na-level up mo na sila!",
+  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11527,17 +11528,12 @@
   },
   "failedToLoadFeedback": "Nabigong i-load ang feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala sa kanila o pagsasanay gamit ang mga ito sa chat",
   "noSavedActivitiesYet": "Lilitaw ang mga aktibidad dito kapag natapos at na-save na ang mga ito.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11584,6 +11580,7 @@
   "inProgressActivitiesTitle": "Nangyayari ngayon ({num})",
   "completedActivitiesTitle": "Tapos na ({num})",
   "pickDifferentActivity": "Pumili ng ibang aktibidad",
+  "inOngoingActivity": "Mayroon kang patuloy na aktibidad!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11616,5 +11613,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ito ang lahat ng tao sa kursong ito. I-click ang avatar ng sinumang user at \"magsimula ng pag-uusap\" upang magpadala ng DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ang salitang bokabularyo na ito ay permanenteng aalisin mula sa iyong analytics",
+  "woman": "Babae",
+  "man": "Lalaki",
+  "otherGender": "Iba",
+  "unselectedGender": "Pumili ng opsyon sa kasarian",
+  "gender": "Kasarian",
+  "chatParticipantTooltip": "Ito ang lahat ng tao sa chat na ito. I-click ang avatar ng sinumang user at \"simulan ang pag-uusap\" upang magpadala ng DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Ang mga kasangkapan sa pag-aaral ay hindi pinagana para sa mga mensahe na hindi nasa iyong target na wika.",
+  "vocabEmoji": "Emoji ng bokabularyo",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Humiling ng muling pagbuo",
+  "optionalRegenerateReason": "(Opsyonal) Dahilan",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Naitakda mo na ang emoji para sa {lemma}! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga aktibidad sa pagsasanay mula ngayon.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

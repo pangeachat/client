@@ -50,6 +50,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -782,7 +783,6 @@ class ChatController extends State<ChatPageWithRoom>
     choreographer.dispose();
     activityController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
-    showToolbarStream.close();
     stopMediaStream.close();
     _levelSubscription?.cancel();
     _analyticsSubscription?.cancel();
@@ -790,6 +790,7 @@ class ChatController extends State<ChatPageWithRoom>
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
     inputFocus.dispose();
+    depressMessageButton.dispose();
     TokensUtil.clearNewTokenCache();
     //Pangea#
     super.dispose();
@@ -1613,6 +1614,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (!mounted) return;
     if (!_isToolbarOpen && selectedEvents.isEmpty) return;
     MatrixState.pAnyState.closeAllOverlays();
+    depressMessageButton.value = false;
+
     setState(() {
       selectedEvents.clear();
       showEmojiPicker = false;
@@ -1951,6 +1954,8 @@ class ChatController extends State<ChatPageWithRoom>
         editEvent = null;
       });
   // #Pangea
+  ValueNotifier<bool> depressMessageButton = ValueNotifier(false);
+
   String? get buttonEventID => timeline!.events
       .firstWhereOrNull(
         (event) =>
@@ -1960,8 +1965,15 @@ class ChatController extends State<ChatPageWithRoom>
       )
       ?.eventId;
 
-  final StreamController<String> showToolbarStream =
-      StreamController.broadcast();
+  String? get refreshEventID => timeline!.events
+      .firstWhereOrNull(
+        (event) =>
+            event.isVisibleInGui &&
+            event.senderId != room.client.userID &&
+            event.senderId == BotName.byEnvironment &&
+            !event.redacted,
+      )
+      ?.eventId;
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
 
@@ -2032,13 +2044,13 @@ class ChatController extends State<ChatPageWithRoom>
     // you've clicked a message so lets turn this off
     InstructionsEnum.clickMessage.setToggledOff(true);
 
-    showToolbarStream.add(event.eventId);
     if (!kIsWeb) {
       HapticFeedback.mediumImpact();
     }
     stopMediaStream.add(null);
 
     if (buttonEventID == event.eventId) {
+      depressMessageButton.value = true;
       Future.delayed(const Duration(milliseconds: 200), () {
         if (_router.state.path != ':roomid') {
           // The user has navigated away from the chat,
@@ -2334,6 +2346,33 @@ class ChatController extends State<ChatPageWithRoom>
 
     context.go(
       parentSpaceId != null ? '/rooms/spaces/$parentSpaceId' : '/rooms',
+    );
+  }
+
+  Future<void> requestRegeneration(String eventId) async {
+    final reason = await showTextInputDialog(
+      context: context,
+      title: L10n.of(context).requestRegeneration,
+      hintText: L10n.of(context).optionalRegenerateReason,
+      autoSubmit: true,
+      maxLines: 5,
+    );
+
+    if (reason == null) return;
+    await showFutureLoadingDialog(
+      context: context,
+      future: () => room.sendEvent(
+        {
+          "m.relates_to": {
+            "rel_type": PangeaEventTypes.regenerationRequest,
+            "event_id": eventId,
+          },
+          PangeaEventTypes.regenerationRequest: {
+            "reason": reason,
+          },
+        },
+        type: PangeaEventTypes.regenerationRequest,
+      ),
     );
   }
   // Pangea#

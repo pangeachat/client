@@ -2598,7 +2598,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2025-12-03 11:37:18.523462",
+  "@@last_modified": "2025-12-15 14:44:05.262676",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10351,6 +10351,7 @@
   "addCourse": "დაამატე კურსი",
   "joinPublicCourse": "შეერთდი საჯარო კურსთან",
   "vocabLevelsDesc": "ეს არის ადგილი, სადაც სიტყვები განთავსდება, როგორც კი მათ დონე გაუმჯობესდება!",
+  "highlightVocabTooltip": "გამოაჩინე მიზნობრივი სიტყვები ქვემოთ, მათი გაგზავნით ან ჩატში ვარჯიშით",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11581,17 +11582,12 @@
   },
   "failedToLoadFeedback": "უკვე ვერ ჩაიწერა უკუკავშირი.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "გამოაჩინე მიზნობრივი სიტყვები ქვემოთ, მათი გაგზავნით ან ჩატში ვარჯიშით",
   "noSavedActivitiesYet": "აქტივობები აქ გამოჩნდება, როგორც კი ისინი დასრულდება და შენახული იქნება.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11638,6 +11634,7 @@
   "inProgressActivitiesTitle": "მიმდინარე ({num})",
   "completedActivitiesTitle": "დასრულებულია ({num})",
   "pickDifferentActivity": "აირჩიეთ სხვა აქტივობა",
+  "inOngoingActivity": "თქვენ გაქვთ მიმდინარე აქტივობა!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11670,5 +11667,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "ეს არის ყველა ადამიანი ამ კურსში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „დაიწყეთ საუბარი“, რომ მოიგზავნოთ პირადი შეტყობინება.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "ეს სიტყვა მუდმივად წაიშლება თქვენი ანალიტიკიდან",
+  "woman": "ქალი",
+  "man": "კაცი",
+  "otherGender": "სხვა",
+  "unselectedGender": "აირჩიეთ სქესის ვარიანტი",
+  "gender": "სქესი",
+  "chatParticipantTooltip": "ეს არის ყველა ადამიანი ამ ჩატში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „საუბრის დაწყება“, რომ გამოგიგზავნოთ პირადი შეტყობინება.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "სწავლების ინსტრუმენტები გამორთულია იმ შეტყობინებებისთვის, რომლებიც არ არის თქვენს მიზნობრივ ენაზე.",
+  "vocabEmoji": "ვოკაბულარის ემოჯი",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "მოთხოვნა რეგენერაციისთვის",
+  "optionalRegenerateReason": "(Optional) მიზეზი",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "თქვენ დააყენეთ ემოჯი {lemma}-ისთვის! ჩვენ ამ ემოჯის გამოყენებას ვაპირებთ სიტყვების პრაქტიკული აქტივობების წარმოსადგენად.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

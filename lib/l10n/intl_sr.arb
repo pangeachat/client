@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:37:19.859367",
+  "@@last_modified": "2025-12-15 14:44:06.530821",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -10423,6 +10423,7 @@
   "addCourse": "Dodaj kurs",
   "joinPublicCourse": "Pridruži se javnom kursu",
   "vocabLevelsDesc": "Ovde će ići reči vokabulara nakon što ih podignete na viši nivo!",
+  "highlightVocabTooltip": "Istaknite ciljne reči rečnika ispod tako što ćete ih poslati ili vežbati u čatu",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11653,17 +11654,12 @@
   },
   "failedToLoadFeedback": "Nije uspelo učitavanje povratnih informacija.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Istaknite ciljne reči rečnika ispod tako što ćete ih poslati ili vežbati u čatu",
   "noSavedActivitiesYet": "Aktivnosti će se ovde pojaviti kada budu završene i sačuvane.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11710,6 +11706,7 @@
   "inProgressActivitiesTitle": "Dešava se sada ({num})",
   "completedActivitiesTitle": "Završeno ({num})",
   "pickDifferentActivity": "Izaberi drugu aktivnost",
+  "inOngoingActivity": "Imate aktivnost u toku!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11742,5 +11739,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Ovo su svi u ovom kursu. Kliknite na avatar bilo kog korisnika i “počnite razgovor” da pošaljete DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Ova reč u rečniku će biti trajno uklonjena iz vaših analitika",
+  "woman": "Žena",
+  "man": "Muškarac",
+  "otherGender": "Drugo",
+  "unselectedGender": "Izaberite opciju pola",
+  "gender": "Pol",
+  "chatParticipantTooltip": "Ovo su svi u ovom čatu. Kliknite na avatar bilo kog korisnika i \"započnite razgovor\" da pošaljete DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Alati za učenje su onemogućeni za poruke koje nisu na vašem ciljanom jeziku.",
+  "vocabEmoji": "Emoji reči",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Zatraži regeneraciju",
+  "optionalRegenerateReason": "(Opcionalno) Razlog",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti da predstavimo reč u praktičnim aktivnostima ubuduće.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -3865,7 +3865,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-12-03 11:37:00.421228",
+  "@@last_modified": "2025-12-15 14:43:43.050040",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10126,6 +10126,7 @@
   "addCourse": "Pridėti kursą",
   "joinPublicCourse": "Prisijungti prie viešo kurso",
   "vocabLevelsDesc": "Čia pateks žodžiai, kai juos pakelsite į aukštesnį lygį!",
+  "highlightVocabTooltip": "Išryškinkite tikslinius žodžius žemiau, juos siųsdami arba praktikuodami pokalbyje",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11356,17 +11357,12 @@
   },
   "failedToLoadFeedback": "Nepavyko įkelti atsiliepimų.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Išryškinkite tikslinius žodžius žemiau, juos siųsdami arba praktikuodami pokalbyje",
   "noSavedActivitiesYet": "Veiklos pasirodys čia, kai bus užbaigtos ir išsaugotos.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11410,9 +11406,10 @@
     "placeholders": {}
   },
   "notStartedActivitiesTitle": "Atidarytos sesijos ({num})",
-  "inProgressActivitiesTitle": "Vyksta dabar ({num})",
-  "completedActivitiesTitle": "Baigta ({num})",
   "pickDifferentActivity": "Pasirinkite kitą veiklą",
+  "inProgressActivitiesTitle": "Dabar vyksta ({num})",
+  "completedActivitiesTitle": "Baigta ({num})",
+  "inOngoingActivity": "Turite vykdomą veiklą!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11445,5 +11442,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Tai yra visi šio kurso dalyviai. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Šis žodynas bus nuolat pašalintas iš jūsų analizės",
+  "woman": "Moteris",
+  "man": "Vyras",
+  "otherGender": "Kitas",
+  "unselectedGender": "Pasirinkite lyties parinktį",
+  "gender": "Lytis",
+  "chatParticipantTooltip": "Tai visi šioje pokalbyje. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Mokymosi įrankiai yra išjungti žinutėms, kurios nėra jūsų tikslinėje kalboje.",
+  "vocabEmoji": "Žodyno emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Prašyti regeneracijos",
+  "optionalRegenerateReason": "(Pasirinktinai) Priežastis",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Jūs nustatėte emociją {lemma}! Mes naudosime šią emociją, kad atstovautume žodžiui praktinėse veiklose ateityje.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

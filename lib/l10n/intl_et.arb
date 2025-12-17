@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-03 11:36:35.627602",
+  "@@last_modified": "2025-12-15 14:43:16.857704",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -9588,6 +9588,7 @@
   "addCourse": "Lisa kursus",
   "joinPublicCourse": "Liitu avaliku kursusega",
   "vocabLevelsDesc": "Siia lähevad sõnad, kui oled need tasemele tõstnud!",
+  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
@@ -10822,17 +10823,12 @@
   },
   "failedToLoadFeedback": "Tagasiside laadimine ebaõnnestus.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Tõsta esile sihtvokaabuli sõnad allpool, saates neid või harjutades nendega vestluses.",
   "noSavedActivitiesYet": "Tegevused ilmuvad siia, kui need on lõpetatud ja salvestatud.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10879,6 +10875,7 @@
   "inProgressActivitiesTitle": "Toimub praegu ({num})",
   "completedActivitiesTitle": "Tehtud ({num})",
   "pickDifferentActivity": "Vali teine tegevus",
+  "inOngoingActivity": "Teil on käimasolev tegevus!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10911,5 +10908,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "See on kõik, kes on selles kursuses. Klõpsake mis tahes kasutaja avatari ja valige \"alusta vestlust\", et saata DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "See sõnavara sõna eemaldatakse teie analüüsist püsivalt",
+  "woman": "Naine",
+  "man": "Mees",
+  "otherGender": "Muu",
+  "unselectedGender": "Valige soo valik",
+  "gender": "Sugu",
+  "chatParticipantTooltip": "See on kõik, kes on selles vestluses. Klõpsake mis tahes kasutaja avatarile ja valige \"alusta vestlust\", et saata DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Õppimise tööriistad on keelatud sõnumite jaoks, mis ei ole teie sihtkeeles.",
+  "vocabEmoji": "Sõnavara emojid",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Küsi regeneratsiooni",
+  "optionalRegenerateReason": "(Valikuline) Põhjus",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Oled seadnud emotikoni {lemma} jaoks! Kasutame seda emotikoni sõna esindamiseks praktika tegevustes edaspidi.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

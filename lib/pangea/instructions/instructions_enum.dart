@@ -26,8 +26,10 @@ enum InstructionsEnum {
   readingAssistanceOverview,
   emptyChatWarning,
   activityStatsMenu,
-  chatListTooltip,
+  chatParticipantTooltip,
+  courseParticipantTooltip,
   noSavedActivitiesYet,
+  setLemmaEmoji,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -51,10 +53,12 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.morphAnalyticsList:
       case InstructionsEnum.readingAssistanceOverview:
       case InstructionsEnum.activityStatsMenu:
-      case InstructionsEnum.chatListTooltip:
+      case InstructionsEnum.chatParticipantTooltip:
+      case InstructionsEnum.courseParticipantTooltip:
       case InstructionsEnum.activityAnalyticsList:
       case InstructionsEnum.levelAnalytics:
       case InstructionsEnum.noSavedActivitiesYet:
+      case InstructionsEnum.setLemmaEmoji:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -107,12 +111,16 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.emptyChatWarningDesc;
       case InstructionsEnum.activityStatsMenu:
         return l10n.activityStatsButtonInstruction;
-      case InstructionsEnum.chatListTooltip:
-        return l10n.chatListTooltip;
+      case InstructionsEnum.chatParticipantTooltip:
+        return l10n.chatParticipantTooltip;
+      case InstructionsEnum.courseParticipantTooltip:
+        return l10n.courseParticipantTooltip;
       case InstructionsEnum.levelAnalytics:
         return l10n.levelInfoTooltip;
       case InstructionsEnum.noSavedActivitiesYet:
         return l10n.noSavedActivitiesYet;
+      case InstructionsEnum.setLemmaEmoji:
+        return "";
     }
   }
 

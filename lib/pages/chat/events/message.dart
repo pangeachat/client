@@ -52,6 +52,7 @@ class Message extends StatelessWidget {
   // #Pangea
   final ChatController controller;
   final bool isButton;
+  final bool canRefresh;
   // Pangea#
 
   const Message(
@@ -78,6 +79,7 @@ class Message extends StatelessWidget {
     // #Pangea
     required this.controller,
     this.isButton = false,
+    this.canRefresh = false,
     // Pangea#
     super.key,
   });
@@ -579,29 +581,10 @@ class Message extends StatelessWidget {
                                                 child: MouseRegion(
                                                   cursor:
                                                       SystemMouseCursors.click,
-                                                  child: PressableButton(
-                                                    buttonHeight: 5,
-                                                    triggerAnimation: controller
-                                                        .showToolbarStream
-                                                        .stream
-                                                        .where(
-                                                      (eventID) =>
-                                                          eventID ==
-                                                          event.eventId,
-                                                    ),
-                                                    depressed: !isButton,
-                                                    borderRadius: borderRadius,
-                                                    onPressed: () {
-                                                      showToolbar(
-                                                        pangeaMessageEvent,
-                                                      );
-                                                    },
-                                                    color: color,
-                                                    visible:
-                                                        isButton && !noBubble,
-                                                    child:
-                                                        // Pangea#
-                                                        Container(
+                                                  child: ValueListenableBuilder(
+                                                    valueListenable: controller
+                                                        .depressMessageButton,
+                                                    child: Container(
                                                       decoration: BoxDecoration(
                                                         color: noBubble
                                                             ? Colors.transparent
@@ -821,6 +804,31 @@ class Message extends StatelessWidget {
                                                         ),
                                                       ),
                                                     ),
+                                                    // #Pangea
+                                                    builder: (
+                                                      context,
+                                                      depressed,
+                                                      child,
+                                                    ) =>
+                                                        PressableButton(
+                                                      buttonHeight: 5,
+                                                      depressed: !isButton ||
+                                                          depressed,
+                                                      borderRadius:
+                                                          borderRadius,
+                                                      onPressed: () {
+                                                        showToolbar(
+                                                          pangeaMessageEvent,
+                                                        );
+                                                      },
+                                                      color: color,
+                                                      visible:
+                                                          isButton && !noBubble,
+                                                      builder:
+                                                          (context, _, __) =>
+                                                              child!,
+                                                    ),
+                                                    // Pangea#
                                                   ),
                                                 ),
                                               ),
@@ -1034,6 +1042,19 @@ class Message extends StatelessWidget {
                                       ],
                                     ),
                                   ),
+                                  if (canRefresh)
+                                    Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: IconButton(
+                                        tooltip: L10n.of(context)
+                                            .requestRegeneration,
+                                        icon: const Icon(
+                                          Icons.refresh_outlined,
+                                        ),
+                                        onPressed: () => controller
+                                            .requestRegeneration(event.eventId),
+                                      ),
+                                    ),
                                 ],
                               ),
                             ],

@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-03 11:36:55.312756",
+  "@@last_modified": "2025-12-15 14:43:38.968604",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -9538,6 +9538,7 @@
   "addCourse": "إضافة دورة",
   "joinPublicCourse": "الانضمام إلى دورة عامة",
   "vocabLevelsDesc": "هذا هو المكان الذي ستذهب إليه كلمات المفردات بمجرد ترقيتها!",
+  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدريب عليها في الدردشة",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10768,17 +10769,12 @@
   },
   "failedToLoadFeedback": "فشل في تحميل التعليقات.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدريب عليها في الدردشة",
   "noSavedActivitiesYet": "ستظهر الأنشطة هنا بمجرد الانتهاء منها وحفظها.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10825,6 +10821,7 @@
   "inProgressActivitiesTitle": "تحدث الآن ({num})",
   "completedActivitiesTitle": "تم ({num})",
   "pickDifferentActivity": "اختر نشاطًا مختلفًا",
+  "inOngoingActivity": "لديك نشاط جارٍ!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10857,5 +10854,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "هؤلاء هم جميع المشاركين في هذه الدورة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "ستتم إزالة هذه الكلمة من تحليلاتك بشكل دائم",
+  "woman": "امرأة",
+  "man": "رجل",
+  "otherGender": "آخر",
+  "unselectedGender": "اختر خيار الجنس",
+  "gender": "الجنس",
+  "chatParticipantTooltip": "هؤلاء هم جميع الأشخاص في هذه الدردشة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "أدوات التعلم معطلة للرسائل التي ليست باللغة المستهدفة.",
+  "vocabEmoji": "رمز التعبير عن المفردات",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "طلب إعادة التوليد",
+  "optionalRegenerateReason": "(اختياري) السبب",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "لقد قمت بتعيين الرموز التعبيرية لـ {lemma}! سنستخدم هذا الرمز التعبيري لتمثيل الكلمة في أنشطة الممارسة في المستقبل.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

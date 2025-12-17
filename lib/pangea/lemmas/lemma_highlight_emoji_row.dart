@@ -1,41 +1,42 @@
 import 'dart:async';
-import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaHighlightEmojiRow extends StatefulWidget {
-  final LemmaMeaningBuilderState controller;
   final ConstructIdentifier cId;
+  final String langCode;
+
+  final Function(String) onEmojiSelected;
+
+  final String? emoji;
+  final Widget? selectedEmojiBadge;
 
   const LemmaHighlightEmojiRow({
     super.key,
-    required this.controller,
     required this.cId,
+    required this.langCode,
+    required this.onEmojiSelected,
+    this.emoji,
+    this.selectedEmojiBadge,
   });
 
   @override
-  LemmaHighlightEmojiRowState createState() => LemmaHighlightEmojiRowState();
+  State<LemmaHighlightEmojiRow> createState() => LemmaHighlightEmojiRowState();
 }
 
-class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
-    with LemmaEmojiSetter {
-  bool _showShimmer = true;
-  String? _selectedEmoji;
-
+class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
   late StreamSubscription<AnalyticsStreamUpdate> _analyticsSubscription;
-  Timer? _shimmerTimer;
 
   @override
   void initState() {
@@ -43,40 +44,12 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
     _analyticsSubscription = MatrixState
         .pangeaController.getAnalytics.analyticsStream.stream
         .listen(_onAnalyticsUpdate);
-    _setShimmer();
-  }
-
-  @override
-  void didUpdateWidget(LemmaHighlightEmojiRow oldWidget) {
-    if (oldWidget.cId != widget.cId) _setShimmer();
-    super.didUpdateWidget(oldWidget);
   }
 
   @override
   void dispose() {
     _analyticsSubscription.cancel();
-    _shimmerTimer?.cancel();
     super.dispose();
-  }
-
-  void _setShimmer() {
-    setState(() {
-      _selectedEmoji = widget.cId.userSetEmoji.firstOrNull;
-      _showShimmer = _selectedEmoji == null;
-
-      if (_showShimmer) {
-        _shimmerTimer?.cancel();
-        _shimmerTimer = Timer(const Duration(milliseconds: 1500), () {
-          if (mounted) {
-            setState(() {
-              _showShimmer = false;
-              _shimmerTimer?.cancel();
-              _shimmerTimer = null;
-            });
-          }
-        });
-      }
-    });
   }
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
@@ -85,114 +58,149 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
     }
   }
 
-  Future<void> _setEmoji(String emoji, BuildContext context) async {
-    try {
-      setState(() => _selectedEmoji = emoji);
-      await setLemmaEmoji(
-        widget.cId,
-        emoji,
-        "emoji-choice-item-$emoji-${widget.cId.lemma}",
-      );
-    } catch (e, s) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (widget.controller.isLoading) {
-      return const CircularProgressIndicator.adaptive();
-    }
+    return LemmaMeaningBuilder(
+      langCode: widget.langCode,
+      constructId: widget.cId,
+      builder: (context, controller) {
+        if (controller.error != null) {
+          return const SizedBox.shrink();
+        }
 
-    final emojis = widget.controller.lemmaInfo?.emoji;
-    if (widget.controller.error != null || emojis == null || emojis.isEmpty) {
-      return const SizedBox.shrink();
-    }
-
-    return Material(
-      borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-      child: Container(
-        padding: const EdgeInsets.all(8),
-        height: 80,
-        alignment: Alignment.center,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
+        final emojis = controller.lemmaInfo?.emoji;
+        return SizedBox(
+          height: 70.0,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 4.0,
             mainAxisSize: MainAxisSize.min,
-            children: emojis
-                .map(
-                  (emoji) => EmojiChoiceItem(
-                    emoji: emoji,
-                    onSelectEmoji: () => _setEmoji(emoji, context),
-                    isDisplay: _selectedEmoji == emoji,
-                    showShimmer: _showShimmer,
-                    transformTargetId:
-                        "emoji-choice-item-$emoji-${widget.cId.lemma}",
-                  ),
-                )
-                .toList(),
+            children: emojis == null || emojis.isEmpty
+                ? List.generate(
+                    3,
+                    (_) => Shimmer.fromColors(
+                      baseColor: Colors.transparent,
+                      highlightColor:
+                          Theme.of(context).colorScheme.primary.withAlpha(70),
+                      child: Container(
+                        height: 55.0,
+                        width: 55.0,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius:
+                              BorderRadius.circular(AppConfig.borderRadius),
+                        ),
+                      ),
+                    ),
+                  )
+                : emojis
+                    .map(
+                      (emoji) => EmojiChoiceItem(
+                        cId: widget.cId,
+                        emoji: emoji,
+                        onSelectEmoji: () => widget.onEmojiSelected(emoji),
+                        selected: widget.emoji == emoji,
+                        transformTargetId:
+                            "emoji-choice-item-$emoji-${widget.cId.lemma}",
+                        badge: widget.emoji == emoji
+                            ? widget.selectedEmojiBadge
+                            : null,
+                        showShimmer: widget.emoji == null,
+                      ),
+                    )
+                    .toList(),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
 
 class EmojiChoiceItem extends StatefulWidget {
+  final ConstructIdentifier cId;
   final String emoji;
   final VoidCallback onSelectEmoji;
-  final bool isDisplay;
-  final bool showShimmer;
+  final bool selected;
   final String transformTargetId;
+  final Widget? badge;
+  final bool showShimmer;
 
   const EmojiChoiceItem({
     super.key,
+    required this.cId,
     required this.emoji,
-    required this.isDisplay,
+    required this.selected,
     required this.onSelectEmoji,
-    required this.showShimmer,
     required this.transformTargetId,
+    this.badge,
+    this.showShimmer = true,
   });
 
   @override
-  EmojiChoiceItemState createState() => EmojiChoiceItemState();
+  State<EmojiChoiceItem> createState() => EmojiChoiceItemState();
 }
 
 class EmojiChoiceItemState extends State<EmojiChoiceItem> {
-  bool _isHovered = false;
+  bool shimmer = false;
+  Timer? _shimmerTimer;
+
+  @override
+  void initState() {
+    super.initState();
+    _showShimmer();
+  }
+
+  @override
+  void didUpdateWidget(covariant EmojiChoiceItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.emoji != widget.emoji) {
+      _showShimmer();
+    }
+  }
+
+  @override
+  void dispose() {
+    _shimmerTimer?.cancel();
+    super.dispose();
+  }
+
+  void _showShimmer() {
+    if (!widget.showShimmer) return;
+
+    setState(() => shimmer = true);
+    _shimmerTimer?.cancel();
+    _shimmerTimer = Timer(const Duration(milliseconds: 1500), () {
+      if (mounted) setState(() => shimmer = false);
+    });
+  }
 
   LayerLink get layerLink =>
       MatrixState.pAnyState.layerLinkAndKey(widget.transformTargetId).link;
 
   @override
   Widget build(BuildContext context) {
-    final shimmerColor = (Theme.of(context).brightness == Brightness.dark)
-        ? Colors.white
-        : Theme.of(context).colorScheme.primary;
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: GestureDetector(
+    return HoverBuilder(
+      builder: (context, hovered) => GestureDetector(
         onTap: widget.onSelectEmoji,
-        child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Stack(
-            children: [
-              CompositedTransformTarget(
+        child: Stack(
+          children: [
+            ShimmerBackground(
+              enabled: shimmer,
+              shimmerColor: (Theme.of(context).brightness == Brightness.dark)
+                  ? Colors.white
+                  : Theme.of(context).colorScheme.primary,
+              child: CompositedTransformTarget(
                 link: layerLink,
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: _isHovered
-                        ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                    color: hovered || widget.selected
+                        ? Theme.of(context).colorScheme.secondary.withAlpha(30)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                    border: widget.isDisplay
+                    border: widget.selected
                         ? Border.all(
-                            color: AppConfig.goldLight,
+                            color: Colors.transparent,
                             width: 4,
                           )
                         : null,
@@ -203,26 +211,14 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
                   ),
                 ),
               ),
-              if (widget.showShimmer)
-                Positioned.fill(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                    child: Shimmer.fromColors(
-                      baseColor: shimmerColor.withValues(alpha: 0.1),
-                      highlightColor: shimmerColor.withValues(alpha: 0.6),
-                      direction: ShimmerDirection.ltr,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: shimmerColor.withValues(alpha: 0.3),
-                          borderRadius:
-                              BorderRadius.circular(AppConfig.borderRadius),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+            ),
+            if (widget.badge != null)
+              Positioned(
+                right: 6,
+                bottom: 6,
+                child: widget.badge!,
+              ),
+          ],
         ),
       ),
     );

@@ -210,6 +210,15 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
   }
 
+  Future<void> modeDisabled() async {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(L10n.of(context).modeDisabled),
+      ),
+    );
+  }
+
   Future<void> playAudio() async {
     final playerID = "${messageEvent.eventId}_button";
 
@@ -299,15 +308,17 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final modes = controller.readingAssistanceModes;
+    final allModes = controller.allModes;
     return Material(
       type: MaterialType.transparency,
       child: SizedBox(
         height: AppConfig.toolbarMenuHeight,
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          children: List.generate(modes.length + 1, (index) {
-            if (index < modes.length) {
-              final mode = modes[index];
+          children: List.generate(allModes.length + 1, (index) {
+            if (index < allModes.length) {
+              final mode = allModes[index];
+              final enabled = modes.contains(mode);
               return Container(
                 width: 45.0,
                 alignment: Alignment.center,
@@ -322,29 +333,38 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                     ),
                     builder: (context, _) {
                       final selectedMode = controller.selectedMode.value;
-                      return PressableButton(
-                        borderRadius: BorderRadius.circular(20),
-                        depressed: mode == selectedMode,
-                        color: theme.colorScheme.primaryContainer,
-                        onPressed: () => updateMode(mode),
-                        playSound: mode != SelectMode.audio,
-                        colorFactor:
-                            theme.brightness == Brightness.light ? 0.55 : 0.3,
-                        child: AnimatedContainer(
-                          duration: FluffyThemes.animationDuration,
-                          height: buttonSize,
-                          width: buttonSize,
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.primaryContainer,
-                            shape: BoxShape.circle,
-                          ),
-                          child: _SelectModeButtonIcon(
-                            mode: mode,
-                            loading:
-                                controller.isLoading && mode == selectedMode,
-                            playing: mode == SelectMode.audio &&
-                                matrix?.audioPlayer?.playerState.playing ==
-                                    true,
+                      return Opacity(
+                        opacity: enabled ? 1.0 : 0.5,
+                        child: PressableButton(
+                          borderRadius: BorderRadius.circular(20),
+                          depressed: mode == selectedMode || !enabled,
+                          color: enabled
+                              ? theme.colorScheme.primaryContainer
+                              : theme.disabledColor,
+                          onPressed:
+                              enabled ? () => updateMode(mode) : modeDisabled,
+                          playSound: enabled && mode != SelectMode.audio,
+                          colorFactor:
+                              theme.brightness == Brightness.light ? 0.55 : 0.3,
+                          builder: (context, depressed, shadowColor) =>
+                              AnimatedContainer(
+                            duration: FluffyThemes.animationDuration,
+                            height: buttonSize,
+                            width: buttonSize,
+                            decoration: BoxDecoration(
+                              color: depressed
+                                  ? shadowColor
+                                  : theme.colorScheme.primaryContainer,
+                              shape: BoxShape.circle,
+                            ),
+                            child: _SelectModeButtonIcon(
+                              mode: mode,
+                              loading:
+                                  controller.isLoading && mode == selectedMode,
+                              playing: mode == SelectMode.audio &&
+                                  matrix?.audioPlayer?.playerState.playing ==
+                                      true,
+                            ),
                           ),
                         ),
                       );
@@ -561,12 +581,12 @@ class _MoreButton extends StatelessWidget {
         onPressed: () => _showMenu(context),
         playSound: true,
         colorFactor: theme.brightness == Brightness.light ? 0.55 : 0.3,
-        child: AnimatedContainer(
+        builder: (context, depressed, shadowColor) => AnimatedContainer(
           duration: FluffyThemes.animationDuration,
           height: 40.0,
           width: 40.0,
           decoration: BoxDecoration(
-            color: theme.colorScheme.primaryContainer,
+            color: depressed ? shadowColor : theme.colorScheme.primaryContainer,
             shape: BoxShape.circle,
           ),
           child: const Icon(

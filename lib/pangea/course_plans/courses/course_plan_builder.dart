@@ -46,6 +46,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
           l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
+      await course!.fetchMediaUrls();
     } catch (e) {
       courseError = e;
     } finally {
@@ -64,11 +65,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
         throw Exception("Course is null");
       }
 
-      final courseFutures = <Future>[
-        course!.fetchMediaUrls(),
-        course!.fetchTopics(),
-      ];
-      await Future.wait(courseFutures);
+      await course!.fetchTopics();
       await _loadTopicsMedia();
     } catch (e) {
       topicError = e;

@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-03 11:37:09.726956",
+  "@@last_modified": "2025-12-15 14:43:55.454694",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10551,17 +10551,12 @@
   },
   "failedToLoadFeedback": "Nie udało się załadować opinii.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Podświetl docelowe słowa słownictwa poniżej, wysyłając je lub ćwicząc z nimi na czacie",
   "noSavedActivitiesYet": "Aktywności pojawią się tutaj, gdy zostaną ukończone i zapisane.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10607,7 +10602,7 @@
   "notStartedActivitiesTitle": "Otwarte sesje ({num})",
   "inProgressActivitiesTitle": "Trwa teraz ({num})",
   "completedActivitiesTitle": "Zrobione ({num})",
-  "pickDifferentActivity": "Wybierz inną aktywność",
+  "inOngoingActivity": "Masz trwającą aktywność!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10640,5 +10635,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "To są wszyscy uczestnicy tego kursu. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "To słowo w słownictwie zostanie trwale usunięte z twojej analizy",
+  "woman": "Kobieta",
+  "man": "Mężczyzna",
+  "otherGender": "Inna",
+  "unselectedGender": "Wybierz opcję płci",
+  "gender": "Płeć",
+  "chatParticipantTooltip": "To wszyscy w tym czacie. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Narzędzia do nauki są wyłączone dla wiadomości, które nie są w twoim docelowym języku.",
+  "vocabEmoji": "Emoji słownictwa",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Poproś o regenerację",
+  "optionalRegenerateReason": "(Opcjonalne) Powód",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Ustawiłeś emoji dla {lemma}! Będziemy używać tego emoji do reprezentowania słowa w nadchodzących aktywnościach praktycznych.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

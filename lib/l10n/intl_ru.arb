@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-12-03 11:37:16.847372",
+  "@@last_modified": "2025-12-15 14:44:03.535697",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -9426,6 +9426,7 @@
   "addCourse": "Добавить курс",
   "joinPublicCourse": "Присоединиться к публичному курсу",
   "vocabLevelsDesc": "Здесь появятся слова словаря, как только вы их повысите!",
+  "highlightVocabTooltip": "Выделите целевые слова словаря ниже, отправив их или практикуя с ними в чате",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10656,17 +10657,12 @@
   },
   "failedToLoadFeedback": "Не удалось загрузить отзывы.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Выделите целевые слова словаря ниже, отправив их или практикуя с ними в чате",
   "noSavedActivitiesYet": "Здесь появятся активности, как только они будут завершены и сохранены.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10713,6 +10709,7 @@
   "inProgressActivitiesTitle": "Происходит сейчас ({num})",
   "completedActivitiesTitle": "Завершено ({num})",
   "pickDifferentActivity": "Выберите другую активность",
+  "inOngoingActivity": "У вас есть текущая активность!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10745,5 +10742,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Это все участники этого курса. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Это слово будет навсегда удалено из вашей аналитики",
+  "woman": "Женщина",
+  "man": "Мужчина",
+  "otherGender": "Другое",
+  "unselectedGender": "Выберите вариант пола",
+  "gender": "Пол",
+  "chatParticipantTooltip": "Это все участники этого чата. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Инструменты обучения отключены для сообщений, которые не на вашем целевом языке.",
+  "vocabEmoji": "Эмодзи словарного запаса",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Запросить регенерацию",
+  "optionalRegenerateReason": "(Необязательно) Причина",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Вы установили эмодзи для {lemma}! Мы будем использовать этот эмодзи для представления слова в практических заданиях в будущем.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

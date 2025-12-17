@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-03 11:37:06.135839",
+  "@@last_modified": "2025-12-15 14:43:51.241424",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -9312,6 +9312,7 @@
   "addCourse": "添加课程",
   "joinPublicCourse": "加入公共课程",
   "vocabLevelsDesc": "这是你提升词汇等级后，词汇将会显示的地方！",
+  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10542,17 +10543,12 @@
   },
   "failedToLoadFeedback": "加载反馈失败。",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "通过在聊天中发送或练习下面的目标词汇来突出显示它们",
   "noSavedActivitiesYet": "活动完成并保存后将出现在这里。",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10599,6 +10595,7 @@
   "inProgressActivitiesTitle": "正在进行中 ({num})",
   "completedActivitiesTitle": "完成 ({num})",
   "pickDifferentActivity": "选择其他活动",
+  "inOngoingActivity": "您有一个正在进行的活动！",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10631,5 +10628,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "这是本课程中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "这个词汇将从您的分析中永久删除",
+  "woman": "女性",
+  "man": "男性",
+  "otherGender": "其他",
+  "unselectedGender": "选择一个性别选项",
+  "gender": "性别",
+  "chatParticipantTooltip": "这就是这个聊天中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "学习工具对不在目标语言中的消息是禁用的。",
+  "vocabEmoji": "词汇表情符号",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "请求再生",
+  "optionalRegenerateReason": "(可选) 原因",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "您已为 {lemma} 设置了表情符号！我们将使用此表情符号在今后的实践活动中表示该词。",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

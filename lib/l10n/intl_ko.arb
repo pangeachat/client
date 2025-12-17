@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:14.042097",
+  "@@last_modified": "2025-12-15 14:42:46.121270",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -9429,6 +9429,7 @@
   "addCourse": "강좌 추가",
   "joinPublicCourse": "공개 강좌 참여",
   "vocabLevelsDesc": "단어를 레벨업하면 여기에 단어가 표시됩니다!",
+  "highlightVocabTooltip": "아래의 목표 어휘 단어를 강조 표시하려면 채팅에서 보내거나 연습하세요.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10659,17 +10660,12 @@
   },
   "failedToLoadFeedback": "피드백을 불러오는 데 실패했습니다.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "아래의 목표 어휘 단어를 강조 표시하려면 채팅에서 보내거나 연습하세요.",
   "noSavedActivitiesYet": "활동이 완료되고 저장되면 여기에 나타납니다.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10716,6 +10712,7 @@
   "inProgressActivitiesTitle": "현재 진행 중 ({num})",
   "completedActivitiesTitle": "완료됨 ({num})",
   "pickDifferentActivity": "다른 활동 선택",
+  "inOngoingActivity": "진행 중인 활동이 있습니다!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10748,5 +10745,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "이것은 이 과정의 모든 사람입니다. 사용자의 아바타를 클릭하고 \"대화 시작\"을 클릭하여 DM을 보내세요.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "이 어휘 단어는 귀하의 분석에서 영구적으로 제거됩니다.",
+  "woman": "여성",
+  "man": "남성",
+  "otherGender": "기타",
+  "unselectedGender": "성별 옵션을 선택하세요",
+  "gender": "성별",
+  "chatParticipantTooltip": "이 채팅의 모든 사람입니다. 사용자 아바타를 클릭하고 '대화 시작'을 클릭하여 DM을 보내세요.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "학습 도구는 목표 언어가 아닌 메시지에 대해 비활성화되어 있습니다.",
+  "vocabEmoji": "어휘 이모지",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "재생 요청",
+  "optionalRegenerateReason": "(선택 사항) 이유",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma}에 대한 이모지를 설정했습니다! 앞으로 연습 활동에서 이 이모지를 사용하여 단어를 나타낼 것입니다.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

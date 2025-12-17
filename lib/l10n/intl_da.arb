@@ -1934,7 +1934,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-12-03 11:36:19.185422",
+  "@@last_modified": "2025-12-15 14:42:53.307740",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11613,17 +11613,12 @@
   },
   "failedToLoadFeedback": "Kunne ikke indlæse feedback.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Fremhæv målordene nedenfor ved at sende dem eller øve med dem i chatten",
   "noSavedActivitiesYet": "Aktiviteter vil vises her, når de er afsluttet og gemt.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11670,6 +11665,7 @@
   "inProgressActivitiesTitle": "Foregår nu ({num})",
   "completedActivitiesTitle": "Færdig ({num})",
   "pickDifferentActivity": "Vælg en anden aktivitet",
+  "inOngoingActivity": "Du har en igangværende aktivitet!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11702,5 +11698,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Dette er alle i dette kursus. Klik på enhver brugers avatar og \"start samtale\" for at sende en DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Dette ord vil blive permanent fjernet fra din analyse",
+  "woman": "Kvinde",
+  "man": "Mand",
+  "otherGender": "Andet",
+  "unselectedGender": "Vælg en kønsoption",
+  "gender": "Køn",
+  "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Læringsværktøjer er deaktiveret for beskeder, der ikke er på dit målsprog.",
+  "vocabEmoji": "Vocab emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Anmod om regenerering",
+  "optionalRegenerateReason": "(Valgfri) Årsag",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Du har indstillet emoji'en for {lemma}! Vi vil bruge denne emoji til at repræsentere ordet i praksisaktiviteter fremover.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

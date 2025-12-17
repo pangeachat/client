@@ -19,15 +19,15 @@ class WordCardSwitcher extends StatelessWidget {
               ? Alignment.bottomRight
               : Alignment.bottomLeft,
           duration: FluffyThemes.animationDuration,
-          child: mode == SelectMode.emoji
-              ? const SizedBox()
-              : controller.widget.overlayController.selectedToken != null
-                  ? ReadingAssistanceContent(
-                      overlayController: controller.widget.overlayController,
-                    )
-                  : MessageReactionPicker(
+          child: controller.widget.overlayController.selectedToken != null
+              ? ReadingAssistanceContent(
+                  overlayController: controller.widget.overlayController,
+                )
+              : mode != SelectMode.emoji
+                  ? MessageReactionPicker(
                       chatController: controller.widget.chatController,
-                    ),
+                    )
+                  : const SizedBox.shrink(),
         );
       },
     );

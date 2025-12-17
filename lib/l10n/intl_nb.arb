@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-03 11:36:44.135739",
+  "@@last_modified": "2025-12-15 14:43:27.926249",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -10414,6 +10414,7 @@
   "addCourse": "Legg til et kurs",
   "joinPublicCourse": "Bli med på offentlig kurs",
   "vocabLevelsDesc": "Dette er hvor vokabularord vil komme når du har nivåert dem opp!",
+  "highlightVocabTooltip": "Fremhev målordene nedenfor ved å sende dem eller øve med dem i chatten",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11644,17 +11645,12 @@
   },
   "failedToLoadFeedback": "Kunne ikke laste tilbakemelding.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Fremhev målordene nedenfor ved å sende dem eller øve med dem i chatten",
   "noSavedActivitiesYet": "Aktiviteter vil vises her når de er fullført og lagret.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11701,6 +11697,7 @@
   "inProgressActivitiesTitle": "Pågår nå ({num})",
   "completedActivitiesTitle": "Ferdig ({num})",
   "pickDifferentActivity": "Velg en annen aktivitet",
+  "inOngoingActivity": "Du har en pågående aktivitet!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11733,5 +11730,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Dette er alle i dette kurset. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Dette ordet vil bli permanent fjernet fra analysene dine",
+  "woman": "Kvinne",
+  "man": "Mann",
+  "otherGender": "Annet",
+  "unselectedGender": "Velg et kjønnsalternativ",
+  "gender": "Kjønn",
+  "chatParticipantTooltip": "Dette er alle i denne chatten. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Læringsverktøy er deaktivert for meldinger som ikke er på målspråket ditt.",
+  "vocabEmoji": "Vokabular emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Be om regenerering",
+  "optionalRegenerateReason": "(Valgfritt) Årsak",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i praksisaktiviteter fremover.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

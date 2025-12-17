@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-03 11:36:43.008688",
+  "@@last_modified": "2025-12-15 14:43:26.456306",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -9928,6 +9928,7 @@
   "addCourse": "Přidat kurz",
   "joinPublicCourse": "Připojit se k veřejnému kurzu",
   "vocabLevelsDesc": "Zde se objeví slovíčka, jakmile je vylepšíte na vyšší úroveň!",
+  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -11158,17 +11159,12 @@
   },
   "failedToLoadFeedback": "Nepodařilo se načíst zpětnou vazbu.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Zvýrazněte cílová slovíčka níže tím, že je pošlete nebo s nimi cvičíte v chatu",
   "noSavedActivitiesYet": "Aktivity se zde objeví, jakmile budou dokončeny a uloženy.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -11215,6 +11211,7 @@
   "inProgressActivitiesTitle": "Probíhá nyní ({num})",
   "completedActivitiesTitle": "Hotovo ({num})",
   "pickDifferentActivity": "Vyberte jinou aktivitu",
+  "inOngoingActivity": "Máte probíhající aktivitu!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -11247,5 +11244,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Toto jsou všichni účastníci tohoto kurzu. Klikněte na avatara jakéhokoli uživatele a „zahájit konverzaci“, abyste poslali přímou zprávu.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Toto slovo ve slovní zásobě bude trvale odstraněno z vašich analýz",
+  "woman": "Žena",
+  "man": "Muž",
+  "otherGender": "Jiné",
+  "unselectedGender": "Vyberte možnost pohlaví",
+  "gender": "Pohlaví",
+  "chatParticipantTooltip": "Toto jsou všichni v tomto chatu. Klikněte na avatar jakéhokoli uživatele a “začněte konverzaci” pro odeslání DM.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Nástroje pro učení jsou zakázány pro zprávy, které nejsou ve vašem cílovém jazyce.",
+  "vocabEmoji": "Emoji slovní zásoby",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Žádat o regeneraci",
+  "optionalRegenerateReason": "(Volitelné) Důvod",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Nastavili jste emoji pro {lemma}! Toto emoji použijeme k reprezentaci slova v praktických aktivitách v budoucnu.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

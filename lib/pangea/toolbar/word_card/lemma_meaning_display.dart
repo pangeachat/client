@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
+import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 
 class LemmaMeaningDisplay extends StatelessWidget {
   final String langCode;
@@ -31,18 +33,18 @@ class LemmaMeaningDisplay extends StatelessWidget {
         }
 
         if (controller.isLoading || controller.lemmaInfo == null) {
-          return const CircularProgressIndicator.adaptive();
-        }
-
-        if (constructId.lemma.toLowerCase() == text.toLowerCase()) {
-          return Text(
-            controller.lemmaInfo!.meaning,
-            style: const TextStyle(
-              fontSize: 14.0,
-            ),
-            textAlign: TextAlign.center,
+          return const TextLoadingShimmer(
+            width: 125.0,
+            height: 20.0,
           );
         }
+
+        final pos = getGrammarCopy(
+              category: "POS",
+              lemma: constructId.category,
+              context: context,
+            ) ??
+            L10n.of(context).other;
 
         return RichText(
           text: TextSpan(
@@ -51,7 +53,7 @@ class LemmaMeaningDisplay extends StatelessWidget {
                 ),
             children: [
               TextSpan(
-                text: constructId.lemma,
+                text: "${constructId.lemma} ($pos)",
               ),
               const WidgetSpan(
                 child: SizedBox(width: 8.0),

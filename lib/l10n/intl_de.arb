@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-03 11:36:37.054264",
+  "@@last_modified": "2025-12-15 14:43:18.204232",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -9328,6 +9328,7 @@
   "addCourse": "Einen Kurs hinzufügen",
   "joinPublicCourse": "Öffentlichen Kurs beitreten",
   "vocabLevelsDesc": "Hier kommen die Vokabeln hin, sobald du sie aufgestuft hast!",
+  "highlightVocabTooltip": "Hebe die Zielvokabeln unten hervor, indem du sie im Chat sendest oder mit ihnen übst.",
   "@startOwn": {
     "type": "String",
     "placeholders": {}
@@ -10558,17 +10559,12 @@
   },
   "failedToLoadFeedback": "Fehler beim Laden des Feedbacks.",
   "unreadPlus": "99+",
-  "highlightVocabTooltip": "Hebe die Zielvokabeln unten hervor, indem du sie im Chat sendest oder mit ihnen übst.",
   "noSavedActivitiesYet": "Aktivitäten erscheinen hier, sobald sie abgeschlossen und gespeichert sind.",
   "@failedToLoadFeedback": {
     "type": "String",
     "placeholders": {}
   },
   "@unreadPlus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10615,6 +10611,7 @@
   "inProgressActivitiesTitle": "Gerade jetzt ({num})",
   "completedActivitiesTitle": "Fertig ({num})",
   "pickDifferentActivity": "Wählen Sie eine andere Aktivität",
+  "inOngoingActivity": "Sie haben eine laufende Aktivität!",
   "@notStartedActivitiesTitle": {
     "type": "String",
     "placeholders": {
@@ -10647,5 +10644,78 @@
   "@messageLanguageMismatchMessage": {
     "type": "String",
     "placeholders": {}
+  },
+  "courseParticipantTooltip": "Das sind alle in diesem Kurs. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Dieses Vokabelwort wird dauerhaft aus Ihren Analysen entfernt",
+  "woman": "Frau",
+  "man": "Mann",
+  "otherGender": "Sonstiges",
+  "unselectedGender": "Wählen Sie eine Geschlechtsoption",
+  "gender": "Geschlecht",
+  "chatParticipantTooltip": "Das sind alle in diesem Chat. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Lernwerkzeuge sind für Nachrichten, die nicht in deiner Zielsprache sind, deaktiviert.",
+  "vocabEmoji": "Vokabel-Emoji",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Anforderung der Regeneration",
+  "optionalRegenerateReason": "(Optional) Grund",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Sie haben das Emoji für {lemma} festgelegt! Wir werden dieses Emoji verwenden, um das Wort in zukünftigen Übungsaktivitäten darzustellen.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
   }
 }

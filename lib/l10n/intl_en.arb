@@ -4679,7 +4679,6 @@
   "writingAnalyticsDesc": "Send messages to practice writing.",
   "endActivity": "End activity",
   "allLanguages": "All languages",
-  "chatListTooltip": "Here you’ll find your direct messages! Click on any user’s avatar and “start conversation” to send a DM.",
   "directMessageBotTitle": "Direct message Pangea Bot",
   "feedbackTitle": "Activity Feedback",
   "feedbackRespDesc": "Check back tomorrow for activity updates.",
@@ -4997,6 +4996,22 @@
   "otherGender": "Other",
   "unselectedGender": "Select a gender option",
   "gender": "Gender",
+  "modeDisabled": "Learning tools are disabled for messages that aren't in your target language.",
+  "courseParticipantTooltip": "This is everybody in this course. Click on any user’s avatar and “start conversation” to send a DM.",
+  "chatParticipantTooltip": "This is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
+  "inOngoingActivity": "You have an ongoing activity!",
+  "vocabEmoji": "Vocab emoji",
+  "requestRegeneration": "Request regeneration",
+  "optionalRegenerateReason": "(Optional) Reason",
+  "emojiSelectedSnackbar": "You’ve set the emoji for {lemma}! We’ll use this emoji to represent the word in practice activities going forward.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  },
   "constructUseCorLMDesc": "Correct vocab definition practice",
   "constructUseIncLMDesc": "Incorrect vocab definition practice",
   "constructUseCorLADesc": "Correct vocab audio practice",
