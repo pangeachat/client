@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -24,34 +24,57 @@ class MorphDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final analyticsService = Matrix.of(context).analyticsDataService;
     return FutureBuilder(
-      future: analyticsService.getConstructUse(constructId),
+      future:
+          Matrix.of(context).analyticsDataService.getConstructUse(constructId),
       builder: (context, snapshot) {
-        final level = snapshot.hasData
-            ? snapshot.data!.lemmaCategory
-            : ConstructLevelEnum.seeds;
-
+        final construct = snapshot.data;
+        final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
         final Color textColor = Theme.of(context).brightness != Brightness.light
             ? level.color(context)
             : level.darkColor(context);
 
-        return AnalyticsDetailsViewContent(
-          construct: snapshot.data,
-          subtitle: MorphFeatureDisplay(morphFeature: _morphFeature),
-          title: MorphTagDisplay(
-            morphFeature: _morphFeature,
-            morphTag: _morphTag,
-            textColor: textColor,
+        return SingleChildScrollView(
+          child: Column(
+            spacing: 16.0,
+            children: [
+              MorphTagDisplay(
+                morphFeature: _morphFeature,
+                morphTag: _morphTag,
+                textColor: textColor,
+              ),
+              MorphFeatureDisplay(morphFeature: _morphFeature),
+              MorphMeaningWidget(
+                feature: _morphFeature,
+                tag: _morphTag,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const Divider(),
+              if (construct != null)
+                Row(
+                  spacing: 16.0,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ConstructXpWidget(
+                      construct: construct,
+                    ),
+                    Text(
+                      "${construct.points} XP",
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: textColor,
+                          ),
+                    ),
+                  ],
+                ),
+              if (construct != null)
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: AnalyticsDetailsUsageContent(
+                    construct: construct,
+                  ),
+                ),
+            ],
           ),
-          headerContent: MorphMeaningWidget(
-            feature: _morphFeature,
-            tag: _morphTag,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          xpIcon: snapshot.hasData
-              ? ConstructXpWidget(construct: snapshot.data!)
-              : const SizedBox.shrink(),
         );
       },
     );

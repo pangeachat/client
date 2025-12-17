@@ -62,6 +62,9 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           .getAggregatedConstructs(ConstructTypeEnum.vocab);
 
       vocab = data.values.toList();
+      vocab!.sort(
+        (a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()),
+      );
     } finally {
       if (mounted) setState(() {});
     }

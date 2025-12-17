@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/toolbar/layout/message_selection_positioner.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/reading_assistance_content.dart';
 
 class WordCardSwitcher extends StatelessWidget {
@@ -22,9 +23,11 @@ class WordCardSwitcher extends StatelessWidget {
               ? ReadingAssistanceContent(
                   overlayController: controller.widget.overlayController,
                 )
-              : MessageReactionPicker(
-                  chatController: controller.widget.chatController,
-                ),
+              : mode != SelectMode.emoji
+                  ? MessageReactionPicker(
+                      chatController: controller.widget.chatController,
+                    )
+                  : const SizedBox.shrink(),
         );
       },
     );

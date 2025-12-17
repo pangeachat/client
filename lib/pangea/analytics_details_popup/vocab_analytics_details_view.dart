@@ -3,17 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
-import 'package:fluffychat/pangea/analytics_details_popup/vocab_details_emoji_selector.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
-import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_meaning_widget.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_icon.dart';
-import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays information about selected lemma, and its usage
@@ -25,166 +20,136 @@ class VocabDetailsView extends StatelessWidget {
     required this.constructId,
   });
 
-  String? get _userL2 =>
-      MatrixState.pangeaController.userController.userL2?.langCode;
-
   final double _iconSize = 24.0;
 
   @override
   Widget build(BuildContext context) {
-    final analyticsService = Matrix.of(context).analyticsDataService;
     return FutureBuilder(
-      future: analyticsService.getConstructUse(constructId),
+      future:
+          Matrix.of(context).analyticsDataService.getConstructUse(constructId),
       builder: (context, snapshot) {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
 
-        final Color textColor = Theme.of(context).brightness != Brightness.light
-            ? level.color(context)
-            : level.darkColor(context);
+        final Color textColor =
+            (Theme.of(context).brightness != Brightness.light
+                ? level.color(context)
+                : level.darkColor(context));
 
-        final List<String> forms = construct?.uses
-                .map((e) => e.form?.toLowerCase())
-                .toSet()
+        final forms = construct?.uses
+                .map((e) => e.form)
                 .whereType<String>()
+                .toSet()
                 .toList() ??
             [];
 
-        return AnalyticsDetailsViewContent(
-          construct: construct,
-          title: Column(
+        return SingleChildScrollView(
+          child: Column(
+            spacing: 16.0,
             children: [
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  return ShrinkableText(
-                    text: constructId.lemma,
-                    maxWidth: constraints.maxWidth - 40.0,
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                          color: textColor,
-                        ),
-                  );
-                },
+              WordZoomWidget(
+                token: PangeaTokenText.fromString(constructId.lemma),
+                langCode:
+                    MatrixState.pangeaController.userController.userL2Code!,
+                construct: constructId,
               ),
-              if (MatrixState.pangeaController.userController.showTranscription)
-                Padding(
-                  padding: const EdgeInsets.only(top: 4.0),
-                  child: PhoneticTranscriptionWidget(
-                    text: constructId.lemma,
-                    textLanguage:
-                        MatrixState.pangeaController.userController.userL2!,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: textColor.withAlpha((0.7 * 255).toInt()),
-                          fontSize: 18,
-                        ),
-                    iconSize: _iconSize * 0.8,
-                  ),
-                ),
-            ],
-          ),
-          subtitle: Column(
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                spacing: 8.0,
+              Column(
                 children: [
-                  Text(
-                    getGrammarCopy(
-                          category: "POS",
-                          lemma: constructId.category,
-                          context: context,
-                        ) ??
-                        constructId.lemma,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: textColor,
+                  if (construct != null)
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Row(
+                        spacing: 16.0,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          level.icon(_iconSize + 6.0),
+                          Text(
+                            "${construct.points} XP",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  color: textColor,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: _VocabForms(
+                            lemma: constructId.lemma,
+                            forms: forms,
+                            textColor: textColor,
+                          ),
                         ),
-                  ),
-                  SizedBox(
-                    width: _iconSize,
-                    height: _iconSize,
-                    child: MorphIcon(
-                      morphFeature: MorphFeaturesEnum.Pos,
-                      morphTag: constructId.category,
+                        if (construct != null)
+                          AnalyticsDetailsUsageContent(
+                            construct: construct,
+                          ),
+                      ],
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 16.0),
-              Text(
-                L10n.of(context).vocabEmoji,
-                style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                      fontStyle: FontStyle.italic,
-                      color: textColor,
-                    ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: VocabDetailsEmojiSelector(constructId),
-              ),
             ],
           ),
-          headerContent: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-            child: Column(
-              spacing: 8.0,
+        );
+      },
+    );
+  }
+}
+
+class _VocabForms extends StatelessWidget {
+  final String lemma;
+  final List<String> forms;
+  final Color textColor;
+
+  const _VocabForms({
+    required this.lemma,
+    required this.forms,
+    required this.textColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Wrap(
+        alignment: WrapAlignment.start,
+        runAlignment: WrapAlignment.start,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        children: [
+          Text(
+            L10n.of(context).formSectionHeader,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          const SizedBox(width: 6.0),
+          ...forms.mapIndexed(
+            (i, form) => Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: _userL2 == null
-                      ? Text(L10n.of(context).meaningNotFound)
-                      : LemmaMeaningWidget(
-                          constructId: constructId,
-                          style: Theme.of(context).textTheme.bodyLarge,
-                          leading: TextSpan(
-                            text: L10n.of(context).meaningSectionHeader,
-                            style:
-                                Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                          ),
-                        ),
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Wrap(
-                    alignment: WrapAlignment.start,
-                    runAlignment: WrapAlignment.start,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      Text(
-                        L10n.of(context).formSectionHeader,
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                WordTextWithAudioButton(
+                  text: form,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: textColor,
                       ),
-                      const SizedBox(width: 6.0),
-                      ...forms.mapIndexed(
-                        (i, form) => Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            WordTextWithAudioButton(
-                              text: form,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                    color: textColor,
-                                  ),
-                              uniqueID: "$form-${constructId.lemma}-$i",
-                              langCode: _userL2!,
-                            ),
-                            if (i != forms.length - 1) const Text(",  "),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  uniqueID: "$form-$lemma-$i",
+                  langCode:
+                      MatrixState.pangeaController.userController.userL2Code!,
                 ),
+                if (i != forms.length - 1) const Text(",  "),
               ],
             ),
           ),
-          xpIcon: level.icon(_iconSize + 6.0),
-        );
-      },
+        ],
+      ),
     );
   }
 }
