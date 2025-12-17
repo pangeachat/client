@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -59,6 +61,8 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
                       m.associatedActivityType!,
                     ),
                     isSelected: widget.controller.practiceMode == m,
+                    shimmer: widget.controller.practiceMode ==
+                        MessagePracticeMode.noneSelected,
                   ),
                 ),
               ],
@@ -133,13 +137,9 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
       case MessagePracticeMode.noneSelected:
         return controller.isTotallyDone
             ? const _AllDoneWidget()
-            : Text(
-                L10n.of(context).choosePracticeMode,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge
-                    ?.copyWith(fontStyle: FontStyle.italic),
-                textAlign: TextAlign.center,
+            : const Icon(
+                Symbols.fitness_center,
+                size: 60.0,
               );
 
       case MessagePracticeMode.wordEmoji:
