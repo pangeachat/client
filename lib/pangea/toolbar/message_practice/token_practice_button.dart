@@ -55,20 +55,7 @@ class TokenPracticeButton extends StatelessWidget {
         true;
   }
 
-  bool get _isEmpty {
-    final mode = controller.practiceMode;
-    if (MessagePracticeMode.wordEmoji == mode &&
-        token.vocabConstructID.userSetEmoji.firstOrNull != null) {
-      return false;
-    }
-
-    return _activity == null ||
-        (isActivityCompleteOrNullForToken &&
-            ![MessagePracticeMode.wordEmoji, MessagePracticeMode.wordMorph]
-                .contains(mode)) ||
-        (MessagePracticeMode.wordMorph == mode &&
-            _activity?.morphFeature == null);
-  }
+  bool get _isEmpty => controller.isPracticeButtonEmpty(token);
 
   bool get _isSelected =>
       controller.selectedMorph?.token == token &&
@@ -98,6 +85,7 @@ class TokenPracticeButton extends StatelessWidget {
           child = _MorphMatchButton(
             active: _isSelected,
             textColor: textColor,
+            width: tokenButtonHeight,
             onTap: () => controller.onSelectMorph(
               MorphSelection(
                 token,
@@ -123,8 +111,14 @@ class TokenPracticeButton extends StatelessWidget {
           curve: Curves.easeOut,
           alignment: Alignment.bottomCenter,
           child: _isEmpty
-              ? const SizedBox(height: 0)
-              : SizedBox(height: tokenButtonHeight, child: child),
+              ? const SizedBox()
+              : Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 16.0),
+                    SizedBox(height: tokenButtonHeight, child: child),
+                  ],
+                ),
         );
       },
     );
@@ -198,10 +192,12 @@ class _MorphMatchButton extends StatelessWidget {
   final bool active;
   final Color textColor;
   final bool shimmer;
+  final double width;
 
   const _MorphMatchButton({
     required this.active,
     required this.textColor,
+    required this.width,
     this.shimmer = false,
     this.onTap,
   });
@@ -218,7 +214,7 @@ class _MorphMatchButton extends StatelessWidget {
             child: ShimmerBackground(
               enabled: shimmer,
               child: SizedBox(
-                width: 24.0,
+                width: width,
                 child: Center(
                   child: Opacity(
                     opacity: active ? 1.0 : 0.6,
@@ -282,7 +278,6 @@ class _NoActivityContentButton extends StatelessWidget {
             context: context,
           ),
           child: SizedBox(
-            width: 24.0,
             child: Center(
               child: MorphIcon(
                 morphFeature: morphFeature,
