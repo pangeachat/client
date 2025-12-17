@@ -14,6 +14,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/token_practice_button.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_emoji_button.dart';
@@ -513,6 +514,26 @@ class HtmlMessage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  if (renderer.showCenterStyling &&
+                      token != null &&
+                      overlayController != null)
+                    ListenableBuilder(
+                      listenable: overlayController!.practiceController,
+                      builder: (context, _) => AnimatedSize(
+                        duration: const Duration(
+                          milliseconds: AppConfig.overlayAnimationDuration,
+                        ),
+                        curve: Curves.easeOut,
+                        child: SizedBox(
+                          height: overlayController!
+                                      .practiceController.practiceMode !=
+                                  MessagePracticeMode.noneSelected
+                              ? 16.0
+                              : 0.0,
+                          width: tokenWidth,
+                        ),
+                      ),
+                    ),
                 ],
                 // ),
               ),

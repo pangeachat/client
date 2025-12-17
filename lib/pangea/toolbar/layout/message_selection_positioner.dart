@@ -395,28 +395,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                   alignment:
                       ownMessage ? Alignment.centerRight : Alignment.centerLeft,
                   children: [
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      child: ListenableBuilder(
-                        listenable: widget.overlayController.practiceController,
-                        builder: (context, _) {
-                          final instruction = widget.overlayController
-                              .practiceController.practiceMode.instruction;
-                          if (instruction != null) {
-                            return InstructionsInlineTooltip(
-                              instructionsEnum: widget.overlayController
-                                  .practiceController.practiceMode.instruction!,
-                              padding: const EdgeInsets.all(16.0),
-                              animate: false,
-                            );
-                          }
-
-                          return const SizedBox();
-                        },
-                      ),
-                    ),
                     ValueListenableBuilder(
                       valueListenable: _startedTransition,
                       builder: (context, started, __) {
@@ -456,6 +434,36 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                           widget.overlayController.practiceController,
                           maxWidth: widget.overlayController.maxWidth,
                           selectedToken: widget.overlayController.selectedToken,
+                        ),
+                      ),
+                      Positioned(
+                        top: switch (MediaQuery.heightOf(context)) {
+                          < 700 => 0,
+                          > 900 => 160,
+                          _ => 80,
+                        },
+                        left: 0,
+                        right: 0,
+                        child: ListenableBuilder(
+                          listenable:
+                              widget.overlayController.practiceController,
+                          builder: (context, _) {
+                            final instruction = widget.overlayController
+                                .practiceController.practiceMode.instruction;
+                            if (instruction != null) {
+                              return InstructionsInlineTooltip(
+                                instructionsEnum: widget
+                                    .overlayController
+                                    .practiceController
+                                    .practiceMode
+                                    .instruction!,
+                                padding: const EdgeInsets.all(16.0),
+                                animate: false,
+                              );
+                            }
+
+                            return const SizedBox();
+                          },
                         ),
                       ),
                     ],
