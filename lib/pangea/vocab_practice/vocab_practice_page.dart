@@ -1,8 +1,11 @@
 import 'package:collection/collection.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
@@ -31,6 +34,10 @@ class VocabPracticeState extends State<VocabPractice> {
   PracticeActivityModel? currentActivity;
   bool isLoadingActivity = true;
   String? activityError;
+
+  bool isLoadingLemmaInfo = false;
+  final Map<String, String> _choiceTexts = {};
+  final Map<String, String?> _choiceEmojis = {};
 
   @override
   void initState() {
@@ -76,7 +83,7 @@ class VocabPracticeState extends State<VocabPractice> {
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await sessionLoader.load();
-    _loadActivity();
+    loadActivity();
   }
 
   Future<void> continueSession() async {
@@ -84,7 +91,7 @@ class VocabPracticeState extends State<VocabPractice> {
     sessionLoader.value!.continueSession();
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
-    _loadActivity();
+    loadActivity();
   }
 
   Future<void> completeActivitySession() async {
@@ -156,7 +163,7 @@ class VocabPracticeState extends State<VocabPractice> {
     return null;
   }
 
-  Future<void> _loadActivity() async {
+  Future<void> loadActivity() async {
     if (!sessionLoader.isLoaded) {
       try {
         await sessionLoader.completer.future;
@@ -171,6 +178,8 @@ class VocabPracticeState extends State<VocabPractice> {
       currentActivity = null;
       isLoadingActivity = true;
       activityError = null;
+      _choiceTexts.clear();
+      _choiceEmojis.clear();
     });
 
     final session = sessionLoader.value!;
@@ -184,11 +193,22 @@ class VocabPracticeState extends State<VocabPractice> {
     }
 
     final result = await PracticeRepo.getPracticeActivity(activityRequest);
-    result.isError
-        ? activityError = result.error.toString()
-        : currentActivity = result.result!;
+    if (result.isError) {
+      activityError = L10n.of(context).oopsSomethingWentWrong;
+    } else {
+      currentActivity = result.result!;
+    }
 
-    if (mounted) setState(() => isLoadingActivity = false);
+    // Prefetch lemma info for meaning activities before marking ready
+    if (currentActivity != null &&
+        currentActivity!.activityType == ActivityTypeEnum.lemmaMeaning) {
+      final choices = currentActivity!.multipleChoiceContent!.choices.toList();
+      await _prefetchLemmaInfo(choices);
+    }
+
+    if (mounted) {
+      setState(() => isLoadingActivity = false);
+    }
   }
 
   Future<void> onSelectChoice(String choice) async {
@@ -216,9 +236,69 @@ class VocabPracticeState extends State<VocabPractice> {
     sessionLoader.value!.completeActivity(activity);
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
-    await _loadActivity();
+    await loadActivity();
   }
 
   @override
   Widget build(BuildContext context) => VocabPracticeView(this);
+
+  String getChoiceText(String choiceId) {
+    if (_choiceTexts.containsKey(choiceId)) return _choiceTexts[choiceId]!;
+    final cId = ConstructIdentifier.fromString(choiceId);
+    return cId?.lemma ?? choiceId;
+  }
+
+  String? getChoiceEmoji(String choiceId) => _choiceEmojis[choiceId];
+
+  Future<void> _prefetchLemmaInfo(List<String> choiceIds) async {
+    if (!mounted) return;
+
+    setState(() => isLoadingLemmaInfo = true);
+
+    final results = await Future.wait(
+      choiceIds.map((id) async {
+        final cId = ConstructIdentifier.fromString(id);
+        if (cId == null) return null;
+        try {
+          return await cId
+              .getLemmaInfo()
+              .timeout(const Duration(milliseconds: 3000));
+        } catch (_) {
+          return null;
+        }
+      }),
+    );
+
+    // Check if any result is an error
+    for (int i = 0; i < results.length; i++) {
+      final res = results[i];
+      if (res != null && res.isError) {
+        // Clear cache for failed items so retry will fetch fresh
+        final failedId = choiceIds[i];
+        final cId = ConstructIdentifier.fromString(failedId);
+        if (cId != null) {
+          LemmaInfoRepo.clearCache(cId.lemmaInfoRequest);
+        }
+
+        if (mounted) {
+          setState(() {
+            activityError = L10n.of(context).oopsSomethingWentWrong;
+            isLoadingLemmaInfo = false;
+          });
+        }
+        return;
+      }
+      // Update choice texts/emojis if successful
+      if (res != null && !res.isError) {
+        final id = choiceIds[i];
+        final info = res.result!;
+        _choiceTexts[id] = info.meaning;
+        _choiceEmojis[id] = _choiceEmojis[id] ?? info.emoji.firstOrNull;
+      }
+    }
+
+    if (mounted) {
+      setState(() => isLoadingLemmaInfo = false);
+    }
+  }
 }

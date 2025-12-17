@@ -80,6 +80,9 @@ class LemmaActivityGenerator {
       }
     }
 
+    //shuffle so correct answer isn't always first
+    uniqueByLemma.shuffle();
+
     return uniqueByLemma.toSet();
   }
 

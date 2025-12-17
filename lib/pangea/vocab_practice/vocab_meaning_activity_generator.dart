@@ -1,10 +1,7 @@
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/practice_activities/lemma_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class VocabMeaningActivityGenerator {
   static Future<MessageActivityResponse> get(
@@ -18,18 +15,7 @@ class VocabMeaningActivityGenerator {
       choices.add(token.vocabConstructID);
     }
 
-    final Map<ConstructIdentifier, LemmaInfoResponse> lemmaMeanings = {};
-    final List<Future> futures = [];
-    for (final choice in choices) {
-      final future = choice.getLemmaInfo().then((result) {
-        if (result.isError) {
-          throw result.error!;
-        }
-        lemmaMeanings[choice] = result.result!;
-      });
-      futures.add(future);
-    }
-    await Future.wait(futures);
+    final Set<String> constructIdChoices = choices.map((c) => c.string).toSet();
 
     return MessageActivityResponse(
       activity: PracticeActivityModel(
@@ -37,8 +23,8 @@ class VocabMeaningActivityGenerator {
         targetTokens: [token],
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
-          choices: lemmaMeanings.values.map((l) => l.meaning).toSet(),
-          answers: {lemmaMeanings[token.vocabConstructID]!.meaning},
+          choices: constructIdChoices,
+          answers: {token.vocabConstructID.string},
         ),
       ),
     );

@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 
 class AnimatedChoiceCard extends StatefulWidget {
   final String choice;
+  final String? emoji;
+  final String? altText;
   final VoidCallback onPressed;
   final bool isCorrect;
   final double height;
 
   const AnimatedChoiceCard({
     required this.choice,
+    this.emoji,
+    this.altText,
     required this.onPressed,
     required this.isCorrect,
     this.height = 72.0,
@@ -47,9 +51,8 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
     //Change text when card is fully shrunk
     if (_controller.value >= 0.95 && !_flipped) {
       setState(() {
-        _textContent = widget.isCorrect
-            ? "Correct!"
-            : "Incorrect"; // TODO - make alt text the translated version of the choice
+        // Replace the text with provided alt text (or keep the original if none provided)
+        _textContent = widget.altText ?? widget.choice;
         _flipped = true;
       });
     }
@@ -83,6 +86,10 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
         : AppConfig.error.withValues(alpha: 0.3);
 
     final double baseHeight = widget.height;
+    final double baseTextSize =
+        (Theme.of(context).textTheme.titleMedium?.fontSize ?? 16) *
+            (baseHeight / 72.0).clamp(1.0, 1.4);
+    final double emojiSize = baseTextSize * 1.2;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -118,19 +125,32 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
                   alignment: Alignment.center,
                   child: Opacity(
                     opacity: showText ? 1.0 : 0.0,
-                    child: Text(
-                      _textContent,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: (Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.fontSize ??
-                                16) *
-                            (baseHeight / 72.0).clamp(1.0, 1.4),
-                      ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (widget.emoji != null && widget.emoji!.isNotEmpty)
+                          SizedBox(
+                            width: baseHeight,
+                            height: baseHeight,
+                            child: Center(
+                              child: Text(
+                                widget.emoji!,
+                                style: TextStyle(fontSize: emojiSize),
+                              ),
+                            ),
+                          ),
+                        Expanded(
+                          child: Text(
+                            _textContent,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: baseTextSize,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

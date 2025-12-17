@@ -194,11 +194,25 @@ class _ActivityChoicesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (controller.activityError != null) {
-      return ErrorIndicator(message: controller.activityError!);
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ErrorIndicator(message: controller.activityError!),
+          const SizedBox(height: 16),
+          TextButton.icon(
+            onPressed: controller.loadActivity,
+            icon: const Icon(Icons.refresh),
+            label: Text(L10n.of(context).tryAgain),
+          ),
+        ],
+      );
     }
 
     final activity = controller.currentActivity;
-    if (controller.isLoadingActivity || activity == null) {
+    if (controller.isLoadingActivity ||
+        activity == null ||
+        (activity.activityType == ActivityTypeEnum.lemmaMeaning &&
+            controller.isLoadingLemmaInfo)) {
       return Container(
         constraints: const BoxConstraints(maxHeight: 400.0),
         child: const Center(
@@ -222,17 +236,32 @@ class _ActivityChoicesWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: choices
-                  .map(
-                    (choice) => _VocabPracticeChoiceButton(
-                      activity: activity,
-                      choice: choice,
-                      onPressed: () => controller.onSelectChoice(choice),
-                      type: activity.activityType,
-                      cardHeight: cardHeight,
-                    ),
-                  )
-                  .toList(),
+              children: choices.map((choiceId) {
+                final isMeaning =
+                    activity.activityType == ActivityTypeEnum.lemmaMeaning;
+                if (!isMeaning) {
+                  return _VocabPracticeChoiceButton(
+                    activity: activity,
+                    choiceId: choiceId,
+                    choice: choiceId,
+                    onPressed: () => controller.onSelectChoice(choiceId),
+                    type: activity.activityType,
+                    cardHeight: cardHeight,
+                  );
+                }
+
+                final choiceText = controller.getChoiceText(choiceId);
+                final emoji = controller.getChoiceEmoji(choiceId);
+                return _VocabPracticeChoiceButton(
+                  activity: activity,
+                  choiceId: choiceId,
+                  choice: choiceText,
+                  leadingEmoji: emoji,
+                  onPressed: () => controller.onSelectChoice(choiceId),
+                  type: activity.activityType,
+                  cardHeight: cardHeight,
+                );
+              }).toList(),
             ),
           ),
         );
@@ -243,14 +272,18 @@ class _ActivityChoicesWidget extends StatelessWidget {
 
 class _VocabPracticeChoiceButton extends StatelessWidget {
   final PracticeActivityModel activity;
+  final String choiceId; // construct ID string used for logic
   final String choice;
+  final String? leadingEmoji;
   final VoidCallback onPressed;
   final ActivityTypeEnum type;
   final double cardHeight;
 
   const _VocabPracticeChoiceButton({
     required this.activity,
+    required this.choiceId,
     required this.choice,
+    this.leadingEmoji,
     required this.onPressed,
     required this.type,
     this.cardHeight = 72.0,
@@ -272,8 +305,12 @@ class _VocabPracticeChoiceButton extends StatelessWidget {
           : AnimatedChoiceCard(
               key: ValueKey(choice),
               choice: choice,
+              emoji: leadingEmoji,
+              altText: activity.activityType == ActivityTypeEnum.lemmaMeaning
+                  ? ConstructIdentifier.fromString(choiceId)!.lemma
+                  : null,
               onPressed: onPressed,
-              isCorrect: activity.multipleChoiceContent!.isCorrect(choice),
+              isCorrect: activity.multipleChoiceContent!.isCorrect(choiceId),
               height: cardHeight,
             ),
     );
