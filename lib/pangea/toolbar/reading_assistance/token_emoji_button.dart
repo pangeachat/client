@@ -104,17 +104,11 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
     }
 
     final child = widget.enabled
-        ? _emoji != null
-            ? Text(
-                _emoji!,
-                style: TextStyle(fontSize: buttonSize - 8.0),
-                textScaler: TextScaler.noScaling,
-              )
-            : Icon(
-                Icons.add_reaction_outlined,
-                size: buttonSize - 8.0,
-                color: Theme.of(context).colorScheme.primary,
-              )
+        ? Text(
+            _emoji ?? "-",
+            style: TextStyle(fontSize: buttonSize - 8.0),
+            textScaler: TextScaler.noScaling,
+          )
         : null;
 
     final content = ValueListenableBuilder(

@@ -72,7 +72,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
         }
 
         return SizedBox(
-          height: 60.0,
+          height: 70.0,
           child: Row(
             spacing: 4.0,
             mainAxisSize: MainAxisSize.min,
@@ -88,6 +88,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
                     badge: widget.emoji == emoji
                         ? widget.selectedEmojiBadge
                         : null,
+                    showShimmer: widget.emoji == null,
                   ),
                 )
                 .toList(),
@@ -105,6 +106,7 @@ class EmojiChoiceItem extends StatefulWidget {
   final bool selected;
   final String transformTargetId;
   final Widget? badge;
+  final bool showShimmer;
 
   const EmojiChoiceItem({
     super.key,
@@ -114,6 +116,7 @@ class EmojiChoiceItem extends StatefulWidget {
     required this.onSelectEmoji,
     required this.transformTargetId,
     this.badge,
+    this.showShimmer = true,
   });
 
   @override
@@ -121,7 +124,7 @@ class EmojiChoiceItem extends StatefulWidget {
 }
 
 class EmojiChoiceItemState extends State<EmojiChoiceItem> {
-  bool shimmer = true;
+  bool shimmer = false;
   Timer? _shimmerTimer;
 
   @override
@@ -145,6 +148,8 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   }
 
   void _showShimmer() {
+    if (!widget.showShimmer) return;
+
     setState(() => shimmer = true);
     _shimmerTimer?.cancel();
     _shimmerTimer = Timer(const Duration(milliseconds: 1500), () {
@@ -171,16 +176,16 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
                 link: layerLink,
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: hovered
-                        ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                    color: hovered || widget.selected
+                        ? Theme.of(context).colorScheme.secondary.withAlpha(30)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                     border: widget.selected
                         ? Border.all(
-                            color: AppConfig.goldLight.withAlpha(200),
-                            width: 2,
+                            color: Colors.transparent,
+                            width: 4,
                           )
                         : null,
                   ),
@@ -193,8 +198,8 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
             ),
             if (widget.badge != null)
               Positioned(
-                right: 0,
-                bottom: 0,
+                right: 6,
+                bottom: 6,
                 child: widget.badge!,
               ),
           ],
