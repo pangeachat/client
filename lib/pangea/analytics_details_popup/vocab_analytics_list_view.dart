@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays vocab analytics, sorted into categories
@@ -174,9 +175,16 @@ class VocabAnalyticsListView extends StatelessWidget {
                         (context, index) {
                           final vocabItem = _filteredVocab[index];
                           return VocabAnalyticsListTile(
-                            onTap: () => context.go(
-                              "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(vocabItem.id.string)}",
-                            ),
+                            onTap: () {
+                              TtsController.tryToSpeak(
+                                vocabItem.id.lemma,
+                                langCode: MatrixState.pangeaController
+                                    .userController.userL2Code!,
+                              );
+                              context.go(
+                                "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(vocabItem.id.string)}",
+                              );
+                            },
                             constructId: vocabItem.id,
                             textColor:
                                 Theme.of(context).brightness == Brightness.light

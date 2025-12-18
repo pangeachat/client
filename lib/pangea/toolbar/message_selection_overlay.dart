@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_ev
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/layout/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -201,6 +202,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     _selectedSpan = selectedSpan;
     selectedTokenNotifier.value = selectedToken;
     selectModeController.setPlayingToken(selectedToken?.text);
+
+    if (selectedToken != null) {
+      TtsController.tryToSpeak(
+        selectedToken!.text.content,
+        langCode: pangeaMessageEvent.messageDisplayLangCode,
+      );
+    }
 
     if (mounted) {
       setState(() {});
