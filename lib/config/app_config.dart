@@ -27,7 +27,7 @@ abstract class AppConfig {
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
   // #Pangea
-  static const double toolbarMaxHeight = 235.0;
+  static const double toolbarMaxHeight = 250.0;
   static const double toolbarMinHeight = 150.0;
   static const double toolbarMinWidth = 350.0;
   static const double toolbarMenuHeight = 50.0;
