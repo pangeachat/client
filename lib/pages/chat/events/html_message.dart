@@ -985,6 +985,24 @@ class HtmlMessage extends StatelessWidget {
                   ),
                 ),
               ),
+              if (overlayController != null)
+                ListenableBuilder(
+                  listenable: overlayController!.practiceController,
+                  builder: (context, _) => AnimatedSize(
+                    duration: const Duration(
+                      milliseconds: AppConfig.overlayAnimationDuration,
+                    ),
+                    curve: Curves.easeOut,
+                    child: SizedBox(
+                      height:
+                          overlayController!.practiceController.practiceMode !=
+                                  MessagePracticeMode.noneSelected
+                              ? 16.0
+                              : 0.0,
+                      width: 0,
+                    ),
+                  ),
+                ),
             ],
           ),
         );
