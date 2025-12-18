@@ -54,7 +54,7 @@ class MessageSelectionOverlay extends StatefulWidget {
 }
 
 class MessageOverlayController extends State<MessageSelectionOverlay>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   Event get event => widget._event;
 
   PangeaTokenText? _selectedSpan;
@@ -77,6 +77,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     selectModeController = SelectModeController(pangeaMessageEvent);
     practiceController = PracticeController(pangeaMessageEvent);
     _initializeTokensAndMode();
@@ -86,10 +87,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    widget.chatController.clearSelectedEvents();
+  }
+
+  @override
   void dispose() {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.clearSelectedEvents(),
     );
+    WidgetsBinding.instance.removeObserver(this);
     selectModeController.dispose();
     practiceController.dispose();
     selectedTokenNotifier.dispose();
