@@ -44,18 +44,10 @@ class MorphDetailsView extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           const Divider(),
-          Row(
-            spacing: 16.0,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ConstructXpWidget(id: constructId),
-              Text(
-                "${construct.points} XP",
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: textColor,
-                    ),
-              ),
-            ],
+          ConstructXpWidget(
+            icon: construct.lemmaCategory.icon(30.0),
+            level: construct.lemmaCategory,
+            points: construct.points,
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
