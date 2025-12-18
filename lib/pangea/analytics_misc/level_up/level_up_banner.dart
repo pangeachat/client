@@ -178,7 +178,7 @@ class LevelUpBannerState extends State<LevelUpBanner>
           lastLevelUp is Event ? lastLevelUp.originServerTs : null;
 
       final analyticsService = Matrix.of(context).analyticsDataService;
-      final summary = await analyticsService.getLevelUpAnalytics(
+      final summary = await analyticsService.levelUpService.getLevelUpAnalytics(
         widget.prevLevel,
         widget.level,
         timestamp,
