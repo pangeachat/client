@@ -36,8 +36,8 @@ class MultipleChoiceActivity {
 
   Map<String, dynamic> toJson() {
     return {
-      'choices': choices,
-      'answer': answers,
+      'choices': List.from(choices),
+      'answer': List.from(answers),
     };
   }
 
