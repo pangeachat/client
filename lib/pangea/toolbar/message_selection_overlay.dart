@@ -193,9 +193,15 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       return;
     }
 
-    if (selectedSpan == _selectedSpan) return;
+    if (selectedSpan == _selectedSpan) {
+      selectModeController.setPlayingToken(selectedToken?.text);
+      return;
+    }
+
     _selectedSpan = selectedSpan;
     selectedTokenNotifier.value = selectedToken;
+    selectModeController.setPlayingToken(selectedToken?.text);
+
     if (mounted) {
       setState(() {});
       if (selectedToken != null && isNewToken(selectedToken!)) {

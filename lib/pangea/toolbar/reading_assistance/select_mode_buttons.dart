@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
@@ -156,6 +157,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     if (messageEvent.isAudioMessage == true) {
       controller.fetchTranscription();
     }
+
+    controller.playTokenNotifier.addListener(_playToken);
   }
 
   @override
@@ -165,6 +168,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.voiceMessageEventId.value = null;
     _audioSub?.cancel();
     _playerStateSub?.cancel();
+    controller.playTokenNotifier.removeListener(_playToken);
     super.dispose();
   }
 
@@ -301,6 +305,26 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   void _onUpdatePlayerState(PlayerState state) {
     if (state.processingState == ProcessingState.completed) {
       updateMode(null);
+    }
+  }
+
+  void _playToken() {
+    final token = controller.playTokenNotifier.value;
+
+    if (token == null ||
+        controller.audioFile?.$1.tokens == null ||
+        controller.selectedMode.value != SelectMode.audio) {
+      return;
+    }
+
+    final ttsToken = controller.audioFile!.$1.tokens!.firstWhereOrNull(
+      (t) => t.text == token,
+    );
+
+    if (ttsToken != null && matrix?.audioPlayer != null) {
+      final start = Duration(milliseconds: ttsToken.startMS);
+      matrix!.audioPlayer!.seek(start);
+      matrix!.audioPlayer!.play();
     }
   }
 
