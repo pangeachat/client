@@ -29,7 +29,7 @@ class VocabPractice extends StatefulWidget {
 }
 
 class VocabPracticeState extends State<VocabPractice> {
-  final SessionLoader sessionLoader = SessionLoader();
+  SessionLoader sessionLoader = SessionLoader();
 
   PracticeActivityModel? currentActivity;
   bool isLoadingActivity = true;
@@ -48,17 +48,24 @@ class VocabPracticeState extends State<VocabPractice> {
   @override
   void dispose() {
     sessionLoader.dispose();
-    if (isFinished) {
+    if (isComplete) {
       VocabPracticeSessionRepo.clearSession();
     }
     super.dispose();
   }
 
+  /// Resets all session state without disposing the widget
+  void _resetState() {
+    currentActivity = null;
+    isLoadingActivity = true;
+    activityError = null;
+    isLoadingLemmaInfo = false;
+    _choiceTexts.clear();
+    _choiceEmojis.clear();
+  }
+
   bool get isComplete =>
       sessionLoader.isLoaded && sessionLoader.value!.hasCompletedCurrentGroup;
-
-  bool get isFinished =>
-      sessionLoader.isLoaded && sessionLoader.value!.finished;
 
   double get progress =>
       sessionLoader.isLoaded ? sessionLoader.value!.progress : 0.0;
@@ -90,6 +97,24 @@ class VocabPracticeState extends State<VocabPractice> {
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
     setState(() {});
+  }
+
+  Future<void> reloadSession() async {
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        // Clear current session storage, dispose old session loader, and clear state variables
+        await VocabPracticeSessionRepo.clearSession();
+        sessionLoader.dispose();
+        sessionLoader = SessionLoader();
+        _resetState();
+        await _startSession();
+      },
+    );
+
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<List<InlineSpan>?> getExampleMessage(
@@ -227,7 +252,37 @@ class VocabPracticeState extends State<VocabPractice> {
     sessionLoader.value!.completeActivity(activity);
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
+    if (isComplete) {
+      await completeActivitySession();
+    }
+
     await loadActivity();
+  }
+
+  Map<String, double> calculateProgressChange(int xpGained) {
+    final getAnalytics = MatrixState.pangeaController.getAnalytics;
+    final currentXP = getAnalytics.constructListModel.totalXP;
+    final currentLevel = getAnalytics.constructListModel.level;
+
+    final minXPForCurrentLevel =
+        getAnalytics.constructListModel.calculateXpWithLevel(currentLevel);
+    final minXPForNextLevel = getAnalytics.minXPForNextLevel;
+
+    final xpRange = minXPForNextLevel - minXPForCurrentLevel;
+
+    // Progress before XP gain
+    final progressBefore =
+        ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+
+    // Progress after XP gain
+    final newTotalXP = currentXP + xpGained;
+    final progressAfter =
+        ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+
+    return {
+      'before': progressBefore,
+      'after': progressAfter,
+    };
   }
 
   @override

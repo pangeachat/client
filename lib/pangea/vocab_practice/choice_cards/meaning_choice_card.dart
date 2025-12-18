@@ -36,7 +36,7 @@ class MeaningChoiceCard extends StatelessWidget {
         children: [
           if (emoji != null && emoji!.isNotEmpty)
             SizedBox(
-              width: height,
+              width: height * .7,
               height: height,
               child: Center(
                 child: Text(

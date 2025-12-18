@@ -101,6 +101,16 @@ class VocabPracticeSessionModel {
     );
   }
 
+  // Analytics functions
+  int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
+
+  double get accuracy {
+    if (completedUses.isEmpty) return 0.0;
+    final correct = completedUses.where((use) => use.xp > 0).length;
+    final result = correct / completedUses.length;
+    return (result * 100).truncateToDouble();
+  }
+
   void finishSession() => finished = true;
 
   void submitAnswer(PracticeActivityModel activity) {

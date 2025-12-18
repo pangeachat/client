@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/basic_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/choice_card_wrapper.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/meaning_choice_card.dart';
+import 'package:fluffychat/pangea/vocab_practice/completed_activity_session_view.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -30,6 +31,7 @@ class VocabPracticeView extends StatelessWidget {
               child: AnimatedProgressBar(
                 height: 20.0,
                 widthPercent: controller.progress,
+                barColor: Theme.of(context).colorScheme.primary,
               ),
             ),
             Text(
@@ -43,7 +45,7 @@ class VocabPracticeView extends StatelessWidget {
         padding: const EdgeInsets.all(0.0),
         showBorder: false,
         child: controller.isComplete
-            ? _CompletedActivitySessionView(controller)
+            ? CompletedActivitySessionView(controller)
             : _OngoingActivitySessionView(controller),
       ),
     );
@@ -110,7 +112,9 @@ class _VocabActivityView extends StatelessWidget {
               ? L10n.of(context).selectMeaning
               : L10n.of(context).selectAudio,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.titleSmall,
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
         Expanded(
           child: Column(
@@ -291,30 +295,5 @@ class _ActivityChoicesWidget extends StatelessWidget {
           child: Text(controller.getChoiceText(choiceId)),
         );
     }
-  }
-}
-
-class _CompletedActivitySessionView extends StatelessWidget {
-  final VocabPracticeState controller;
-  const _CompletedActivitySessionView(this.controller);
-
-  @override
-  Widget build(BuildContext context) {
-    if (controller.isFinished) {
-      return Center(child: Text(L10n.of(context).allDone));
-    }
-
-    return Column(
-      spacing: 8.0,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(L10n.of(context).congratulations),
-        Text(L10n.of(context).yourResult),
-        TextButton(
-          onPressed: controller.completeActivitySession,
-          child: Text(L10n.of(context).addXP),
-        ),
-      ],
-    );
   }
 }
