@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -14,12 +15,14 @@ class MessageMorphChoiceItem extends StatefulWidget {
     required this.isSelected,
     required this.isGold,
     required this.cId,
+    this.shimmer = false,
   });
 
   final ConstructIdentifier cId;
   final void Function() onTap;
   final bool isSelected;
   final bool? isGold;
+  final bool shimmer;
 
   @override
   MessageMorphChoiceItemState createState() => MessageMorphChoiceItemState();
@@ -69,50 +72,53 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
       onHover: (isHovered) => setState(() => _isHovered = isHovered),
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),
       onTap: onTap,
-      child: IntrinsicWidth(
-        child: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-            border: Border.all(
-              color: widget.isSelected || _isHovered
-                  ? color.withAlpha(255)
-                  : Colors.transparent,
-              width: 2.0,
+      child: ShimmerBackground(
+        enabled: widget.shimmer,
+        child: IntrinsicWidth(
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              border: Border.all(
+                color: widget.isSelected || _isHovered
+                    ? color.withAlpha(255)
+                    : Colors.transparent,
+                width: 2.0,
+              ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 8.0,
-            horizontal: 12.0,
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 8.0,
-            children: [
-              SizedBox(
-                width: iconSize,
-                height: iconSize,
-                child: MorphIcon(
-                  morphFeature: MorphFeaturesEnumExtension.fromString(
-                    widget.cId.category,
+            padding: const EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 12.0,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 8.0,
+              children: [
+                SizedBox(
+                  width: iconSize,
+                  height: iconSize,
+                  child: MorphIcon(
+                    morphFeature: MorphFeaturesEnumExtension.fromString(
+                      widget.cId.category,
+                    ),
+                    morphTag: widget.cId.lemma,
+                    size: Size(iconSize, iconSize),
+                    showTooltip: false,
                   ),
-                  morphTag: widget.cId.lemma,
-                  size: Size(iconSize, iconSize),
-                  showTooltip: false,
                 ),
-              ),
-              Text(
-                getGrammarCopy(
-                      category: widget.cId.category,
-                      lemma: widget.cId.lemma,
-                      context: context,
-                    ) ??
-                    widget.cId.lemma,
-                style: style,
-              ),
-            ],
+                Text(
+                  getGrammarCopy(
+                        category: widget.cId.category,
+                        lemma: widget.cId.lemma,
+                        context: context,
+                      ) ??
+                      widget.cId.lemma,
+                  style: style,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -154,6 +154,8 @@ class PracticeTarget {
     return null;
   }
 
+  bool get hasAnyResponses => record.responses.isNotEmpty;
+
   bool get hasAnyCorrectChoices {
     for (final response in record.responses) {
       if (response.isCorrect) {

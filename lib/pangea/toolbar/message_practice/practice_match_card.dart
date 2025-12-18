@@ -104,8 +104,7 @@ class MatchActivityCard extends StatelessWidget {
                           ? cf.choiceContent
                           : null,
                   controller: controller,
-                  shimmer: controller.selectedChoice == null &&
-                      !currentActivity.practiceTarget.hasAnyCorrectChoices,
+                  shimmer: controller.showChoiceShimmer,
                 ),
               );
             },
