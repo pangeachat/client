@@ -118,6 +118,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
           ? _setEmoji(emoji)
           : _sendOrRedactReaction(emoji),
       emoji: _selectedEmoji,
+      messageInfo: widget.event?.content ?? {},
       selectedEmojiBadge: widget.event != null &&
               _selectedEmoji != null &&
               _sentReaction(_selectedEmoji!) == null

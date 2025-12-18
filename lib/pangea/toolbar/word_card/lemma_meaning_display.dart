@@ -11,12 +11,14 @@ class LemmaMeaningDisplay extends StatelessWidget {
   final String langCode;
   final ConstructIdentifier constructId;
   final String text;
+  final Map<String, dynamic> messageInfo;
 
   const LemmaMeaningDisplay({
     super.key,
     required this.langCode,
     required this.constructId,
     required this.text,
+    required this.messageInfo,
   });
 
   @override
@@ -24,6 +26,7 @@ class LemmaMeaningDisplay extends StatelessWidget {
     return LemmaMeaningBuilder(
       langCode: langCode,
       constructId: constructId,
+      messageInfo: messageInfo,
       builder: (context, controller) {
         if (controller.isError) {
           return ErrorIndicator(

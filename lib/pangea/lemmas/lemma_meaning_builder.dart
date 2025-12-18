@@ -30,6 +30,8 @@ class _LemmaMeaningLoader extends AsyncLoader<LemmaInfoResponse> {
 class LemmaMeaningBuilder extends StatefulWidget {
   final String langCode;
   final ConstructIdentifier constructId;
+  final Map<String, dynamic> messageInfo;
+
   final Widget Function(
     BuildContext context,
     LemmaMeaningBuilderState controller,
@@ -40,6 +42,7 @@ class LemmaMeaningBuilder extends StatefulWidget {
     required this.langCode,
     required this.constructId,
     required this.builder,
+    required this.messageInfo,
   });
 
   @override
@@ -85,6 +88,7 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
         lemmaLang: widget.langCode,
         userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
             LanguageKeys.defaultLanguage,
+        messageInfo: widget.messageInfo,
       );
 
   void _reload() {

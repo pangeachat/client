@@ -6,7 +6,7 @@ abstract class JsonSerializable {
 }
 
 class ContentFeedback<T extends JsonSerializable> {
-  final JsonSerializable content;
+  final T content;
   final String feedback;
 
   ContentFeedback(this.content, this.feedback);

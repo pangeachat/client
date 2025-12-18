@@ -13,6 +13,7 @@ class TokenFeedbackButton extends StatelessWidget {
   final String text;
 
   final Function(LemmaInfoResponse, String) onFlagTokenInfo;
+  final Map<String, dynamic> messageInfo;
 
   const TokenFeedbackButton({
     super.key,
@@ -20,6 +21,7 @@ class TokenFeedbackButton extends StatelessWidget {
     required this.constructId,
     required this.text,
     required this.onFlagTokenInfo,
+    required this.messageInfo,
   });
 
   @override
@@ -27,6 +29,7 @@ class TokenFeedbackButton extends StatelessWidget {
     return LemmaMeaningBuilder(
       langCode: textLanguage.langCode,
       constructId: constructId,
+      messageInfo: messageInfo,
       builder: (context, lemmaController) {
         return PhoneticTranscriptionBuilder(
           textLanguage: textLanguage,

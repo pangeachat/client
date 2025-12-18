@@ -34,7 +34,9 @@ class PhoneticTranscriptionRepo {
   static Future<Result<PhoneticTranscriptionResponse>> get(
     String accessToken,
     PhoneticTranscriptionRequest request,
-  ) {
+  ) async {
+    await GetStorage.init('phonetic_transcription_storage');
+
     // 1. Try memory cache
     final cached = _getCached(request);
     if (cached != null) {
@@ -66,6 +68,7 @@ class PhoneticTranscriptionRepo {
     PhoneticTranscriptionRequest request,
     PhoneticTranscriptionResponse resultFuture,
   ) async {
+    await GetStorage.init('phonetic_transcription_storage');
     final key = request.hashCode.toString();
     try {
       await _storage.write(key, resultFuture.toJson());

@@ -12,11 +12,12 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class LemmaMeaningActivityGenerator {
   static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+    MessageActivityRequest req, {
+    required Map<String, dynamic> messageInfo,
+  }) async {
     final List<Future<Result<LemmaInfoResponse>>> lemmaInfoFutures = req
         .targetTokens
-        .map((token) => token.vocabConstructID.getLemmaInfo())
+        .map((token) => token.vocabConstructID.getLemmaInfo(messageInfo))
         .toList();
 
     final List<Result<LemmaInfoResponse>> lemmaInfos =

@@ -93,7 +93,10 @@ class PracticeController with ChangeNotifier {
       targetMorphFeature: target.morphFeature,
     );
 
-    final result = await PracticeRepo.getPracticeActivity(req);
+    final result = await PracticeRepo.getPracticeActivity(
+      req,
+      messageInfo: pangeaMessageEvent.event.content,
+    );
     if (result.isValue) {
       _activity = result.result;
     }

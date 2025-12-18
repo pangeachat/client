@@ -151,7 +151,8 @@ class ConstructIdentifier {
         uses: [],
       );
 
-  LemmaInfoRequest get lemmaInfoRequest => LemmaInfoRequest(
+  LemmaInfoRequest lemmaInfoRequest(Map<String, dynamic> messageInfo) =>
+      LemmaInfoRequest(
         partOfSpeech: category,
         lemmaLang:
             MatrixState.pangeaController.userController.userL2?.langCodeShort ??
@@ -160,12 +161,16 @@ class ConstructIdentifier {
             MatrixState.pangeaController.userController.userL1?.langCodeShort ??
                 LanguageKeys.defaultLanguage,
         lemma: lemma,
+        messageInfo: messageInfo,
       );
 
   /// [lemmmaLang] if not set, assumed to be userL2
-  Future<Result<LemmaInfoResponse>> getLemmaInfo() => LemmaInfoRepo.get(
+  Future<Result<LemmaInfoResponse>> getLemmaInfo(
+    Map<String, dynamic> messageInfo,
+  ) =>
+      LemmaInfoRepo.get(
         MatrixState.pangeaController.userController.accessToken,
-        lemmaInfoRequest,
+        lemmaInfoRequest(messageInfo),
       );
 
   List<String> get userSetEmoji => userLemmaInfo.emojis ?? [];
