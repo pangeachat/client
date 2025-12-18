@@ -46,6 +46,7 @@ class TokenFeedbackButton extends StatelessWidget {
             final transcript = transcriptController.transcription ?? 'ERROR';
 
             return IconButton(
+              color: Theme.of(context).iconTheme.color,
               icon: const Icon(Icons.flag_outlined),
               onPressed: enabled
                   ? () {

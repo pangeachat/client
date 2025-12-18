@@ -78,6 +78,7 @@ class WordZoomWidget extends StatelessWidget {
                           children: [
                             onClose != null
                                 ? IconButton(
+                                    color: Theme.of(context).iconTheme.color,
                                     icon: const Icon(Icons.close),
                                     onPressed: onClose,
                                   )
