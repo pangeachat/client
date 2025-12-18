@@ -27,7 +27,7 @@ enum SelectMode {
   audio(Icons.volume_up),
   translate(Icons.translate),
   practice(Symbols.fitness_center),
-  emoji(Icons.visibility_outlined),
+  emoji(Icons.add_reaction_outlined),
   speechTranslation(Icons.translate);
 
   final IconData icon;
