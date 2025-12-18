@@ -17,18 +17,12 @@ class LevelUpdate {
   });
 }
 
-// enum AnalyticsUpdateType { server, local }
-
 class AnalyticsUpdate {
-  // final AnalyticsUpdateType type;
   final List<OneConstructUse> newConstructs;
-  // final bool isLogout;
   final String? targetID;
 
   AnalyticsUpdate(
-    // this.type,
     this.newConstructs, {
-    // this.isLogout = false,
     this.targetID,
   });
 }

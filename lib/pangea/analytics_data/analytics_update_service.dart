@@ -25,7 +25,6 @@ class AnalyticsUpdateService {
     await sendLocalAnalyticsToAnalyticsRoom(
       l2Override: update.prevTargetLang,
     );
-    // await _pangeaController.resetAnalytics();
     await dataService.reinitialize();
 
     final data = await dataService.derivedData;

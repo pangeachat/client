@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common/sqflite.dart';
+import 'package:synchronized/synchronized.dart';
 
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -100,7 +101,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     this.deleteFilesAfterDuration = deleteFilesAfterDuration;
   }
 
-  final List<Future> _txnCache = [];
+  final _lock = Lock();
 
   Future<void> open() async {
     _collection = await BoxCollection.open(
@@ -152,11 +153,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
   }
 
   Future<void> delete() async {
-    Logs().i("Cache length before delete: ${_txnCache.length}");
-    final txns = List<Future>.from(_txnCache);
-    await Future.wait(txns);
-    Logs().i("Cache length after waiting: ${_txnCache.length}");
-
     await _collection.deleteDatabase(
       database?.path ?? name,
       sqfliteFactory ?? idbFactory,
@@ -176,15 +172,17 @@ class AnalyticsDatabase with DatabaseFileStorage {
     await _collection.clear();
   }
 
-  Future<void> _transaction(Future<void> Function() action) async {
-    final txn = _collection.transaction(action);
-    _txnCache.add(txn);
-    try {
-      await txn;
-    } finally {
-      _txnCache.remove(txn);
-    }
+  Future<T> _transaction<T>(Future<T> Function() action) {
+    return _lock.synchronized(action);
   }
+
+  Box<Map> _aggBox(ConstructTypeEnum type, bool local) =>
+      switch ((type, local)) {
+        (ConstructTypeEnum.vocab, true) => _aggregatedLocalVocabConstructsBox,
+        (ConstructTypeEnum.vocab, false) => _aggregatedServerVocabConstructsBox,
+        (ConstructTypeEnum.morph, true) => _aggregatedLocalMorphConstructsBox,
+        (ConstructTypeEnum.morph, false) => _aggregatedServerMorphConstructsBox,
+      };
 
   Future<DateTime?> getLastEventTimestamp() async {
     final timestampString =
@@ -214,11 +212,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<DerivedAnalyticsDataModel> getDerivedStats() async {
     DerivedAnalyticsDataModel server = DerivedAnalyticsDataModel();
     DerivedAnalyticsDataModel local = DerivedAnalyticsDataModel();
-    await _transaction(() async {
-      server = await _getDerivedServerStats();
-      local = await _getDerivedLocalStats();
-    });
-
+    server = await _getDerivedServerStats();
+    local = await _getDerivedLocalStats();
     return server.merge(local);
   }
 
@@ -227,98 +222,98 @@ class AnalyticsDatabase with DatabaseFileStorage {
     String? roomId,
     DateTime? since,
   }) async {
+    final stopwatch = Stopwatch()..start();
     final List<OneConstructUse> uses = [];
-    await _transaction(() async {
-      // first, get all of the local (most recent) keys
-      final localKeys = await _localConstructsBox.getAllKeys();
-      final localValues = await _localConstructsBox.getAll(localKeys);
-      final local = Map.fromIterables(
-        localKeys,
-        localValues,
-      ).entries.toList();
 
-      local.sort(
-        (a, b) => DateTime.parse(b.key).compareTo(DateTime.parse(a.key)),
-      );
+    // first, get all of the local (most recent) keys
+    final localKeys = await _localConstructsBox.getAllKeys();
+    final localValues = await _localConstructsBox.getAll(localKeys);
+    final local = Map.fromIterables(
+      localKeys,
+      localValues,
+    ).entries.toList();
 
-      final localUses = [];
-      for (final entry in local) {
-        // filter by date
-        if (since != null && DateTime.parse(entry.key).isBefore(since)) {
+    local.sort(
+      (a, b) => int.parse(b.key).compareTo(int.parse(a.key)),
+    );
+
+    for (final entry in local) {
+      // filter by date
+      if (since != null &&
+          int.parse(entry.key) < since.millisecondsSinceEpoch) {
+        continue;
+      }
+
+      final rawUses = entry.value;
+      if (rawUses == null) continue;
+      for (final raw in rawUses) {
+        // filter by count
+        if (count != null && uses.length >= count) break;
+
+        final use = OneConstructUse.fromJson(
+          Map<String, dynamic>.from(raw),
+        );
+
+        // filter by roomID
+        if (roomId != null && use.metadata.roomId != roomId) {
           continue;
         }
 
-        final rawUses = entry.value;
-        if (rawUses == null) continue;
-        for (final raw in rawUses) {
-          // filter by count
-          if (count != null && uses.length >= count) break;
-
-          final use = OneConstructUse.fromJson(
-            Map<String, dynamic>.from(raw),
-          );
-
-          // filter by roomID
-          if (roomId != null && use.metadata.roomId != roomId) {
-            continue;
-          }
-
-          localUses.add(use);
-          uses.add(use);
-        }
-        if (count != null && uses.length >= count) break;
+        uses.add(use);
       }
-      if (count != null && uses.length >= count) return;
+      if (count != null && uses.length >= count) break;
+    }
+    if (count != null && uses.length >= count) return uses;
 
-      // then get server uses
-      final serverKeys = await _serverConstructsBox.getAllKeys();
-      serverKeys.sort(
-        (a, b) => DateTime.parse(b.split('|')[1])
-            .compareTo(DateTime.parse(a.split('|')[1])),
-      );
-      for (final key in serverKeys) {
-        // filter by count
+    // then get server uses
+    final serverKeys = await _serverConstructsBox.getAllKeys();
+    serverKeys.sort(
+      (a, b) =>
+          int.parse(b.split('|')[1]).compareTo(int.parse(a.split('|')[1])),
+    );
+    for (final key in serverKeys) {
+      // filter by count
+      if (count != null && uses.length >= count) break;
+      final rawUses = await _serverConstructsBox.get(key);
+      if (rawUses == null) continue;
+      for (final raw in rawUses) {
         if (count != null && uses.length >= count) break;
-        final rawUses = await _serverConstructsBox.get(key);
-        if (rawUses == null) continue;
-        for (final raw in rawUses) {
-          if (count != null && uses.length >= count) break;
-          final use = OneConstructUse.fromJson(
-            Map<String, dynamic>.from(raw),
-          );
+        final use = OneConstructUse.fromJson(
+          Map<String, dynamic>.from(raw),
+        );
 
-          // filter by roomID
-          if (roomId != null && use.metadata.roomId != roomId) {
-            continue;
-          }
-
-          // filter by date
-          if (since != null && use.timeStamp.isBefore(since)) {
-            continue;
-          }
-          uses.add(use);
+        // filter by roomID
+        if (roomId != null && use.metadata.roomId != roomId) {
+          continue;
         }
+
+        // filter by date
+        if (since != null && use.timeStamp.isBefore(since)) {
+          continue;
+        }
+        uses.add(use);
       }
-    });
+    }
+
+    stopwatch.stop();
+    Logs().i("Get uses took ${stopwatch.elapsedMilliseconds} ms");
 
     return uses.take(count ?? uses.length).toList();
   }
 
   Future<List<OneConstructUse>> getLocalUses() async {
     final List<OneConstructUse> uses = [];
-    await _transaction(() async {
-      final localKeys = await _localConstructsBox.getAllKeys();
-      final localValues = await _localConstructsBox.getAll(localKeys);
-      for (final rawList in localValues) {
-        if (rawList == null) continue;
-        for (final raw in rawList) {
-          final use = OneConstructUse.fromJson(
-            Map<String, dynamic>.from(raw),
-          );
-          uses.add(use);
-        }
+    final localKeys = await _localConstructsBox.getAllKeys();
+    final localValues = await _localConstructsBox.getAll(localKeys);
+    for (final rawList in localValues) {
+      if (rawList == null) continue;
+      for (final raw in rawList) {
+        final use = OneConstructUse.fromJson(
+          Map<String, dynamic>.from(raw),
+        );
+        uses.add(use);
       }
-    });
+    }
     return uses;
   }
 
@@ -345,57 +340,42 @@ class AnalyticsDatabase with DatabaseFileStorage {
     Logs().i("Construct IDs: ${ids.map((id) => id.string).toList()}");
     assert(ids.isNotEmpty);
 
-    final construct = ConstructUses(
+    final ConstructUses construct = ConstructUses(
       uses: [],
       constructType: ids.first.type,
       lemma: ids.first.lemma,
       category: ids.first.category,
     );
 
-    await _transaction(() async {
-      for (final id in ids) {
-        final key = id.storageKey;
+    Logs().i("Construct IDs: ${ids.map((id) => id.string).toList()}");
+    assert(ids.isNotEmpty);
 
-        ConstructUses? server;
-        ConstructUses? local;
-        if (id.type == ConstructTypeEnum.vocab) {
-          final serverRaw = await _aggregatedServerVocabConstructsBox.get(key);
+    for (final id in ids) {
+      final key = id.storageKey;
 
-          if (serverRaw != null) {
-            server = ConstructUses.fromJson(
-              Map<String, dynamic>.from(serverRaw),
-            );
-          }
+      ConstructUses? server;
+      ConstructUses? local;
 
-          final localRaw = await _aggregatedLocalVocabConstructsBox.get(key);
+      final serverBox = _aggBox(id.type, false);
+      final localBox = _aggBox(id.type, true);
 
-          if (localRaw != null) {
-            local = ConstructUses.fromJson(
-              Map<String, dynamic>.from(localRaw),
-            );
-          }
-        } else {
-          final serverRaw = await _aggregatedServerMorphConstructsBox.get(key);
-
-          if (serverRaw != null) {
-            server = ConstructUses.fromJson(
-              Map<String, dynamic>.from(serverRaw),
-            );
-          }
-
-          final localRaw = await _aggregatedLocalMorphConstructsBox.get(key);
-
-          if (localRaw != null) {
-            local = ConstructUses.fromJson(
-              Map<String, dynamic>.from(localRaw),
-            );
-          }
-        }
-
-        if (server != null) construct.merge(server);
-        if (local != null) construct.merge(local);
+      final serverRaw = await serverBox.get(key);
+      if (serverRaw != null) {
+        server = ConstructUses.fromJson(
+          Map<String, dynamic>.from(serverRaw),
+        );
       }
-    });
+
+      final localRaw = await localBox.get(key);
+      if (localRaw != null) {
+        local = ConstructUses.fromJson(
+          Map<String, dynamic>.from(localRaw),
+        );
+      }
+
+      if (server != null) construct.merge(server);
+      if (local != null) construct.merge(local);
+    }
     return construct;
   }
 
@@ -403,12 +383,10 @@ class AnalyticsDatabase with DatabaseFileStorage {
     Map<ConstructIdentifier, List<ConstructIdentifier>> ids,
   ) async {
     final Map<ConstructIdentifier, ConstructUses> results = {};
-    await _transaction(() async {
-      for (final entry in ids.entries) {
-        final construct = await getConstructUse(entry.value);
-        results[entry.key] = construct;
-      }
-    });
+    for (final entry in ids.entries) {
+      final construct = await getConstructUse(entry.value);
+      results[entry.key] = construct;
+    }
     return results;
   }
 
@@ -470,14 +448,69 @@ class AnalyticsDatabase with DatabaseFileStorage {
   }
 
   Future<Map<String, ConstructUses>> _aggregateFromBox(
-    Box box,
+    Box<Map> box,
     Map<String, List<OneConstructUse>> grouped,
   ) async {
-    final existingRaw = <String, Map<dynamic, dynamic>?>{};
-    for (final key in grouped.keys) {
-      existingRaw[key] = await box.get(key);
+    final keys = grouped.keys.toList();
+    final existing = await box.getAll(keys);
+
+    final existingMap = Map.fromIterables(keys, existing);
+    return _aggregateConstructs(grouped, existingMap);
+  }
+
+  Future<List<ConstructUses>> getAggregatedConstructs(
+    ConstructTypeEnum type,
+  ) async {
+    Map<String, ConstructUses> combined = {};
+    final stopwatch = Stopwatch()..start();
+
+    final localKeys = await _aggBox(type, true).getAllKeys();
+    final serverKeys = await _aggBox(type, false).getAllKeys();
+
+    final serverValues = await _aggBox(type, false).getAll(serverKeys);
+    final serverConstructs = serverValues
+        .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
+        .toList();
+
+    final serverAgg = Map.fromIterables(
+      serverKeys,
+      serverConstructs,
+    );
+
+    if (localKeys.isEmpty) {
+      combined = serverAgg;
+    } else {
+      final localValues = await _aggBox(type, true).getAll(localKeys);
+      final localConstructs = localValues
+          .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
+          .toList();
+
+      final localAgg = Map.fromIterables(
+        localKeys,
+        localConstructs,
+      );
+
+      combined = Map<String, ConstructUses>.from(serverAgg);
+      for (final entry in localAgg.entries) {
+        final key = entry.key;
+        final localModel = entry.value;
+
+        if (combined.containsKey(key)) {
+          final serverModel = combined[key]!;
+          serverModel.merge(localModel);
+          combined[key] = serverModel;
+        } else {
+          combined[key] = localModel;
+        }
+      }
     }
-    return _aggregateConstructs(grouped, existingRaw);
+
+    stopwatch.stop();
+    Logs().i(
+      "Combining aggregates took ${stopwatch.elapsedMilliseconds} ms",
+    );
+
+    return combined.values.toList();
   }
 
   Future<void> updateXPOffset(int offset) {
@@ -524,7 +557,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
         final ts = event.event.originServerTs;
         final key = TupleKey(
           event.event.eventId,
-          ts.toIso8601String(),
+          ts.millisecondsSinceEpoch.toString(),
         ).toString();
 
         if (lastUpdated != null && ts.isBefore(lastUpdated)) continue;
@@ -609,9 +642,9 @@ class AnalyticsDatabase with DatabaseFileStorage {
     final stopwatch = Stopwatch()..start();
     await _transaction(() async {
       // Store local constructs
-      final key = DateTime.now().toIso8601String();
+      final key = DateTime.now().millisecondsSinceEpoch;
       _localConstructsBox.put(
-        key,
+        key.toString(),
         uses.map((u) => u.toJson()).toList(),
       );
 
@@ -647,97 +680,17 @@ class AnalyticsDatabase with DatabaseFileStorage {
           entry.value.toJson(),
         );
       }
-    });
 
-    // Update derived stats
-    final derivedData = await _getDerivedLocalStats();
-    final updatedDerivedStats = derivedData.update(uses);
-    await _derivedLocalStatsBox.put(
-      'derived_stats',
-      updatedDerivedStats.toJson(),
-    );
+      // Update derived stats
+      final derivedData = await _getDerivedLocalStats();
+      final updatedDerivedStats = derivedData.update(uses);
+      await _derivedLocalStatsBox.put(
+        'derived_stats',
+        updatedDerivedStats.toJson(),
+      );
+    });
 
     stopwatch.stop();
     Logs().i("Local analytics update took ${stopwatch.elapsedMilliseconds} ms");
-  }
-
-  Future<List<ConstructUses>> getAggregatedConstructs(
-    ConstructTypeEnum type,
-  ) async {
-    Map<String, ConstructUses> combined = {};
-    final stopwatch = Stopwatch()..start();
-    await _transaction(() async {
-      final localKeys = await switch (type) {
-        ConstructTypeEnum.vocab =>
-          _aggregatedLocalVocabConstructsBox.getAllKeys(),
-        ConstructTypeEnum.morph =>
-          _aggregatedLocalMorphConstructsBox.getAllKeys()
-      };
-
-      final serverKeys = await switch (type) {
-        ConstructTypeEnum.vocab =>
-          _aggregatedServerVocabConstructsBox.getAllKeys(),
-        ConstructTypeEnum.morph =>
-          _aggregatedServerMorphConstructsBox.getAllKeys()
-      };
-
-      final serverValues = await switch (type) {
-        ConstructTypeEnum.vocab =>
-          _aggregatedServerVocabConstructsBox.getAll(serverKeys),
-        ConstructTypeEnum.morph =>
-          _aggregatedServerMorphConstructsBox.getAll(serverKeys)
-      };
-
-      final serverConstructs = serverValues
-          .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
-          .toList();
-
-      final serverAgg = Map.fromIterables(
-        serverKeys,
-        serverConstructs,
-      );
-
-      if (localKeys.isEmpty) {
-        combined = serverAgg;
-        return;
-      }
-
-      final localValues = await switch (type) {
-        ConstructTypeEnum.vocab =>
-          _aggregatedLocalVocabConstructsBox.getAll(localKeys),
-        ConstructTypeEnum.morph =>
-          _aggregatedLocalMorphConstructsBox.getAll(localKeys)
-      };
-
-      final localConstructs = localValues
-          .map((e) => ConstructUses.fromJson(Map<String, dynamic>.from(e!)))
-          .toList();
-
-      final localAgg = Map.fromIterables(
-        localKeys,
-        localConstructs,
-      );
-
-      combined = Map<String, ConstructUses>.from(serverAgg);
-      for (final entry in localAgg.entries) {
-        final key = entry.key;
-        final localModel = entry.value;
-
-        if (combined.containsKey(key)) {
-          final serverModel = combined[key]!;
-          serverModel.merge(localModel);
-          combined[key] = serverModel;
-        } else {
-          combined[key] = localModel;
-        }
-      }
-    });
-
-    stopwatch.stop();
-    Logs().i(
-      "Combining aggregates took ${stopwatch.elapsedMilliseconds} ms",
-    );
-
-    return combined.values.toList();
   }
 }
