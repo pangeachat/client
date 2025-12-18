@@ -80,6 +80,7 @@ class TokenPracticeButton extends StatelessWidget {
             token: token,
             target: _activity,
             emojiStyle: _emojiStyle,
+            width: tokenButtonHeight,
           );
         } else if (practiceMode == MessagePracticeMode.wordMorph) {
           child = _MorphMatchButton(
@@ -244,12 +245,14 @@ class _NoActivityContentButton extends StatelessWidget {
   final PangeaToken token;
   final PracticeTarget? target;
   final TextStyle emojiStyle;
+  final double width;
 
   const _NoActivityContentButton({
     required this.practiceMode,
     required this.token,
     required this.target,
     required this.emojiStyle,
+    required this.width,
   });
 
   @override
@@ -278,6 +281,7 @@ class _NoActivityContentButton extends StatelessWidget {
             context: context,
           ),
           child: SizedBox(
+            width: width,
             child: Center(
               child: MorphIcon(
                 morphFeature: morphFeature,
