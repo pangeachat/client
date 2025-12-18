@@ -115,6 +115,7 @@ class WordZoomWidget extends StatelessWidget {
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
+                                    messageInfo: event?.content ?? {},
                                   )
                                 : const SizedBox(
                                     width: 40.0,
@@ -152,6 +153,7 @@ class WordZoomWidget extends StatelessWidget {
                               langCode: langCode,
                               constructId: construct,
                               text: token.content,
+                              messageInfo: event?.content ?? {},
                             ),
                           ],
                         ),

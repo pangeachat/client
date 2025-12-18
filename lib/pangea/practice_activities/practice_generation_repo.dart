@@ -57,8 +57,9 @@ class PracticeRepo {
 
   /// [event] is optional and used for saving the activity event to Matrix
   static Future<Result<PracticeActivityModel>> getPracticeActivity(
-    MessageActivityRequest req,
-  ) async {
+    MessageActivityRequest req, {
+    required Map<String, dynamic> messageInfo,
+  }) async {
     final cached = _getCached(req);
     if (cached != null) return Result.value(cached);
 
@@ -66,6 +67,7 @@ class PracticeRepo {
       final MessageActivityResponse res = await _routePracticeActivity(
         accessToken: MatrixState.pangeaController.userController.accessToken,
         req: req,
+        messageInfo: messageInfo,
       );
 
       _setCached(req, res);
@@ -109,18 +111,19 @@ class PracticeRepo {
   static Future<MessageActivityResponse> _routePracticeActivity({
     required String accessToken,
     required MessageActivityRequest req,
+    required Map<String, dynamic> messageInfo,
   }) async {
     // some activities we'll get from the server and others we'll generate locally
     switch (req.targetType) {
       case ActivityTypeEnum.emoji:
-        return EmojiActivityGenerator.get(req);
+        return EmojiActivityGenerator.get(req, messageInfo: messageInfo);
       case ActivityTypeEnum.lemmaId:
         return LemmaActivityGenerator.get(req);
       case ActivityTypeEnum.morphId:
         return MorphActivityGenerator.get(req);
       case ActivityTypeEnum.wordMeaning:
         debugger(when: kDebugMode);
-        return LemmaMeaningActivityGenerator.get(req);
+        return LemmaMeaningActivityGenerator.get(req, messageInfo: messageInfo);
       case ActivityTypeEnum.messageMeaning:
       case ActivityTypeEnum.wordFocusListening:
         return WordFocusListeningGenerator.get(req);

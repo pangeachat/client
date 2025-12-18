@@ -10,18 +10,20 @@ import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
 
 class EmojiActivityGenerator {
   static Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+    MessageActivityRequest req, {
+    required Map<String, dynamic> messageInfo,
+  }) async {
     if (req.targetTokens.length <= 1) {
       throw Exception("Emoji activity requires at least 2 tokens");
     }
 
-    return _matchActivity(req);
+    return _matchActivity(req, messageInfo: messageInfo);
   }
 
   static Future<MessageActivityResponse> _matchActivity(
-    MessageActivityRequest req,
-  ) async {
+    MessageActivityRequest req, {
+    required Map<String, dynamic> messageInfo,
+  }) async {
     final Map<ConstructForm, List<String>> matchInfo = {};
     final List<PangeaToken> missingEmojis = [];
 
@@ -39,7 +41,7 @@ class EmojiActivityGenerator {
 
     final List<Future<Result<LemmaInfoResponse>>> lemmaInfoFutures =
         missingEmojis
-            .map((token) => token.vocabConstructID.getLemmaInfo())
+            .map((token) => token.vocabConstructID.getLemmaInfo(messageInfo))
             .toList();
 
     final List<Result<LemmaInfoResponse>> lemmaInfos =

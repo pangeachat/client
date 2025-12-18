@@ -117,7 +117,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     LemmaInfoResponse response,
   ) =>
       LemmaInfoRepo.set(
-        token.vocabConstructID.lemmaInfoRequest,
+        token.vocabConstructID.lemmaInfoRequest(event.event.content),
         response,
       );
 
