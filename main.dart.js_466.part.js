@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Elsaluti de \u0109iuj aktivaj aparatoj";
     },
-    get$customReaction() {
-      return "Propra reagado";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Tajpu en " + l1 + " a\u016d " + l2 + "...";
     },
@@ -5258,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6xFilIVbGpvE/x3O9N1/tZL6od4="] = d.current;
+  d["mFCgs6hgjS0rQKb9yKP2gqTvqBw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

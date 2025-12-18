@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Logi k\xf5ikidest aktiivsetest seadmetest v\xe4lja";
     },
-    get$customReaction() {
-      return "Kohandatud reaktsioon";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Kirjuta " + l1 + " v\xf5i " + l2 + "...";
     },
@@ -5258,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["t0yN1C8iBx16YiGbvUfbIdBNXiU="] = d.current;
+  d["sD8JsVD8HCct3DsE+2l/kPdm3e8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

@@ -1472,9 +1472,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Wyloguj si\u0119 ze wszystkich aktywnych urz\u0105dze\u0144";
     },
-    get$customReaction() {
-      return "Niestandardowa reakcja";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Piszesz w " + l1 + " lub " + l2 + "...";
     },
@@ -5259,7 +5256,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pKDDFDS9gHlYJkxYP4GV8NyfPcE="] = d.current;
+  d["olQOifKxQof2Ew5HJnKEEz1kTHo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

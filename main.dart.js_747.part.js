@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Odjava vseh aktivnih naprav";
     },
-    get$customReaction() {
-      return "Prilagojena reakcija";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Vpi\u0161ite v " + l1 + " ali " + l2 + "...";
     },
@@ -5258,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fkqKvxd/GMRxyP+qe8ssnngRFWc="] = d.current;
+  d["jmBItKFaXccIvEi3N7eRVkd9qWM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

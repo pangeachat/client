@@ -1472,9 +1472,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Tanca la sessi\xf3 de tots els dispositius actius";
     },
-    get$customReaction() {
-      return "Reacci\xf3 personalitzada";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Escriu en " + l1 + " o " + l2 + "...";
     },
@@ -5262,7 +5259,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["96YG1ULVzo9nnwT4IlxghKBXDc4="] = d.current;
+  d["VqsBH61W6ZFIBY+ef5VF0wzwPto="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

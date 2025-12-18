@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Disconecta tote le dispositivos active";
     },
-    get$customReaction() {
-      return "Reactor personalisate";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Typa in " + l1 + " o " + l2 + "...";
     },
@@ -5258,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["t+oFzgqQXkr+F3IjocqqxYDUM7k="] = d.current;
+  d["pFtkJOInywT9fcMVWEalLQUZPzI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

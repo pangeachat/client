@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Odjavi se sa svih aktivnih ure\u0111aja";
     },
-    get$customReaction() {
-      return "Prilago\u0111ena reakcija";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Kucajte na " + l1 + " ili " + l2 + "...";
     },
@@ -5258,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rK4ClR5xpyLwjz3wfmu+R8kmsrE="] = d.current;
+  d["tDskIA/mb1orLZhddYQlEDAD0fU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

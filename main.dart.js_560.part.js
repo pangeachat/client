@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Saioa itxi gailu aktibo guztietan";
     },
-    get$customReaction() {
-      return "Erreakzio pertsonalizatua";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Idatzi " + l1 + " edo " + l2 + "...";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sze70FU+iazMuRynwcG8JajYYQo="] = d.current;
+  d["ZCtuzz+sag4w0KNi6KFfL+4o9OE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

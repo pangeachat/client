@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Logg ut av alle aktive enheter";
     },
-    get$customReaction() {
-      return "Egendefinert reaksjon";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Skriv inn " + l1 + " eller " + l2 + "...";
     },
@@ -5261,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IL5hPmX93FW4Ujjez09/khYsUu8="] = d.current;
+  d["IacYpsxxtnkfkpewEbd5HbDeJRc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

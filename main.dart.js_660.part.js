@@ -1471,9 +1471,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_logoutall() {
       return "Kijelentkez\xe9s minden akt\xedv eszk\xf6zr\u0151l";
     },
-    get$customReaction() {
-      return "Egyedi reakci\xf3";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "\xcdrj " + l1 + " vagy " + l2 + " nyelven...";
     },
@@ -5258,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4wEJE9jQuweKQzVMDM8s9Qs9aVI="] = d.current;
+  d["9z+sZLHxU5j0072Uf0MiyCW9Rv4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map
