@@ -146,6 +146,7 @@ class MessageMorphInputBarContentState
                   },
                   isSelected: selectedTag == choice,
                   isGold: wasCorrect,
+                  shimmer: widget.controller.showChoiceShimmer,
                 ),
               );
             },

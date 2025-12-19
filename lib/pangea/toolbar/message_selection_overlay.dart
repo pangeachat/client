@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_ev
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/layout/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -54,7 +55,7 @@ class MessageSelectionOverlay extends StatefulWidget {
 }
 
 class MessageOverlayController extends State<MessageSelectionOverlay>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   Event get event => widget._event;
 
   PangeaTokenText? _selectedSpan;
@@ -77,6 +78,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     selectModeController = SelectModeController(pangeaMessageEvent);
     practiceController = PracticeController(pangeaMessageEvent);
     _initializeTokensAndMode();
@@ -86,10 +88,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    widget.chatController.clearSelectedEvents();
+  }
+
+  @override
   void dispose() {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.clearSelectedEvents(),
     );
+    WidgetsBinding.instance.removeObserver(this);
     selectModeController.dispose();
     practiceController.dispose();
     selectedTokenNotifier.dispose();
@@ -185,9 +194,23 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       return;
     }
 
-    if (selectedSpan == _selectedSpan) return;
+    if (selectedSpan == _selectedSpan) {
+      selectModeController.setPlayingToken(selectedToken?.text);
+      return;
+    }
+
     _selectedSpan = selectedSpan;
     selectedTokenNotifier.value = selectedToken;
+    selectModeController.setPlayingToken(selectedToken?.text);
+
+    if (selectedToken != null &&
+        selectModeController.selectedMode.value != SelectMode.audio) {
+      TtsController.tryToSpeak(
+        selectedToken!.text.content,
+        langCode: pangeaMessageEvent.messageDisplayLangCode,
+      );
+    }
+
     if (mounted) {
       setState(() {});
       if (selectedToken != null && isNewToken(selectedToken!)) {

@@ -78,6 +78,18 @@ class PracticeController with ChangeNotifier {
             true;
   }
 
+  bool get showChoiceShimmer {
+    if (_activity == null) return false;
+
+    if (_activity!.activityType == ActivityTypeEnum.morphId) {
+      return selectedMorph != null &&
+          !_activity!.practiceTarget.hasAnyResponses;
+    }
+
+    return selectedChoice == null &&
+        !_activity!.practiceTarget.hasAnyCorrectChoices;
+  }
+
   Future<Result<PracticeActivityModel>> fetchActivityModel(
     PracticeTarget target,
   ) async {
@@ -93,7 +105,10 @@ class PracticeController with ChangeNotifier {
       targetMorphFeature: target.morphFeature,
     );
 
-    final result = await PracticeRepo.getPracticeActivity(req);
+    final result = await PracticeRepo.getPracticeActivity(
+      req,
+      messageInfo: pangeaMessageEvent.event.content,
+    );
     if (result.isValue) {
       _activity = result.result;
     }

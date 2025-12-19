@@ -34,7 +34,9 @@ class LemmaInfoRepo {
   static Future<Result<LemmaInfoResponse>> get(
     String accessToken,
     LemmaInfoRequest request,
-  ) {
+  ) async {
+    await GetStorage.init('lemma_storage');
+
     // 1. Try memory cache
     final cached = _getCached(request);
     if (cached != null) {
@@ -44,7 +46,7 @@ class LemmaInfoRepo {
     // 2. Try disk cache
     final stored = _getStored(request);
     if (stored != null) {
-      return Future.value(Result.value(stored));
+      return Result.value(stored);
     }
 
     // 3. Fetch from network (safe future)
@@ -66,6 +68,8 @@ class LemmaInfoRepo {
     LemmaInfoRequest request,
     LemmaInfoResponse resultFuture,
   ) async {
+    await GetStorage.init('lemma_storage');
+
     final key = request.hashCode.toString();
     try {
       await _storage.write(key, resultFuture.toJson());

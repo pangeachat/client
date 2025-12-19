@@ -69,15 +69,17 @@ class WordZoomWidget extends StatelessWidget {
                 ),
                 child: CompositedTransformTarget(
                   link: layerLink,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      spacing: 12.0,
-                      children: [
-                        Row(
+                  child: Column(
+                    spacing: 12.0,
+                    children: [
+                      SizedBox(
+                        height: 40.0,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             onClose != null
                                 ? IconButton(
+                                    color: Theme.of(context).iconTheme.color,
                                     icon: const Icon(Icons.close),
                                     onPressed: onClose,
                                   )
@@ -102,6 +104,7 @@ class WordZoomWidget extends StatelessWidget {
                                             Brightness.light
                                         ? AppConfig.yellowDark
                                         : AppConfig.yellowLight,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
@@ -115,6 +118,7 @@ class WordZoomWidget extends StatelessWidget {
                                     constructId: construct,
                                     text: token.content,
                                     onFlagTokenInfo: onFlagTokenInfo!,
+                                    messageInfo: event?.content ?? {},
                                   )
                                 : const SizedBox(
                                     width: 40.0,
@@ -122,9 +126,11 @@ class WordZoomWidget extends StatelessWidget {
                                   ),
                           ],
                         ),
-                        Column(
-                          spacing: 12.0,
-                          mainAxisSize: MainAxisSize.min,
+                      ),
+                      Expanded(
+                        child: Column(
+                          spacing: 4.0,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
@@ -152,11 +158,12 @@ class WordZoomWidget extends StatelessWidget {
                               langCode: langCode,
                               constructId: construct,
                               text: token.content,
+                              messageInfo: event?.content ?? {},
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

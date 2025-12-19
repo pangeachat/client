@@ -63,6 +63,7 @@ class VocabDetailsEmojiSelectorState extends State<VocabDetailsEmojiSelector>
       langCode: MatrixState.pangeaController.userController.userL2Code!,
       emoji: selectedEmoji,
       onEmojiSelected: _setEmoji,
+      messageInfo: const {},
     );
   }
 }

@@ -18,6 +18,7 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
   final String langCode;
 
   final Function(String) onEmojiSelected;
+  final Map<String, dynamic> messageInfo;
 
   final String? emoji;
   final Widget? selectedEmojiBadge;
@@ -27,6 +28,7 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
     required this.cId,
     required this.langCode,
     required this.onEmojiSelected,
+    required this.messageInfo,
     this.emoji,
     this.selectedEmojiBadge,
   });
@@ -66,6 +68,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
     return LemmaMeaningBuilder(
       langCode: widget.langCode,
       constructId: widget.cId,
+      messageInfo: widget.messageInfo,
       builder: (context, controller) {
         if (controller.error != null) {
           return const SizedBox.shrink();

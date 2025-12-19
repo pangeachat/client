@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -93,9 +94,15 @@ class SelectModeController with LemmaEmojiSetter {
 
   final StreamController contentChangedStream = StreamController.broadcast();
 
+  // Sometimes the same token is clicked twice. Setting it to the same value
+  // won't trigger the notifier, so use the bool for force it to trigger.
+  ValueNotifier<(PangeaTokenText?, bool)> playTokenNotifier =
+      ValueNotifier<(PangeaTokenText?, bool)>((null, false));
+
   void dispose() {
     selectedMode.dispose();
     constructEmojiNotifier.dispose();
+    playTokenNotifier.dispose();
     _transcriptLoader.dispose();
     _translationLoader.dispose();
     _sttTranslationLoader.dispose();
@@ -196,6 +203,9 @@ class SelectModeController with LemmaEmojiSetter {
     String emoji,
   ) =>
       constructEmojiNotifier.value = (constructId, emoji);
+
+  void setPlayingToken(PangeaTokenText? token) =>
+      playTokenNotifier.value = (token, !playTokenNotifier.value.$2);
 
   Future<void> fetchAudio() => _audioLoader.load();
   Future<void> fetchTranslation() => _translationLoader.load();

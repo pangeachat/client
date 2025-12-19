@@ -8,11 +8,12 @@ import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_b
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays information about selected lemma, and its usage
-class VocabDetailsView extends StatelessWidget {
+class VocabDetailsView extends StatefulWidget {
   final ConstructIdentifier constructId;
 
   const VocabDetailsView({
@@ -20,7 +21,26 @@ class VocabDetailsView extends StatelessWidget {
     required this.constructId,
   });
 
-  final double _iconSize = 24.0;
+  @override
+  State<VocabDetailsView> createState() => VocabDetailsViewState();
+}
+
+class VocabDetailsViewState extends State<VocabDetailsView> {
+  ConstructIdentifier get constructId => widget.constructId;
+
+  final ValueNotifier<String?> _emojiNotifier = ValueNotifier<String?>(null);
+
+  @override
+  void initState() {
+    super.initState();
+    _emojiNotifier.value = constructId.userLemmaInfo.emojis?.firstOrNull;
+  }
+
+  @override
+  void dispose() {
+    _emojiNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,50 +72,45 @@ class VocabDetailsView extends StatelessWidget {
                 langCode:
                     MatrixState.pangeaController.userController.userL2Code!,
                 construct: constructId,
+                setEmoji: (emoji) => _emojiNotifier.value = emoji,
               ),
-              Column(
-                children: [
-                  if (construct != null)
+              if (construct != null)
+                Column(
+                  children: [
                     Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Row(
-                        spacing: 16.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      child: ConstructXpWidget(
+                        icon: ValueListenableBuilder(
+                          valueListenable: _emojiNotifier,
+                          builder: (context, emoji, __) => Text(
+                            emoji ?? "-",
+                            style: const TextStyle(fontSize: 24.0),
+                          ),
+                        ),
+                        level: construct.lemmaCategory,
+                        points: construct.points,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
                         children: [
-                          level.icon(_iconSize + 6.0),
-                          Text(
-                            "${construct.points} XP",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                                  color: textColor,
-                                ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: _VocabForms(
+                              lemma: constructId.lemma,
+                              forms: forms,
+                              textColor: textColor,
+                            ),
+                          ),
+                          AnalyticsDetailsUsageContent(
+                            construct: construct,
                           ),
                         ],
                       ),
                     ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Column(
-                      children: [
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: _VocabForms(
-                            lemma: constructId.lemma,
-                            forms: forms,
-                            textColor: textColor,
-                          ),
-                        ),
-                        if (construct != null)
-                          AnalyticsDetailsUsageContent(
-                            construct: construct,
-                          ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
             ],
           ),
         );

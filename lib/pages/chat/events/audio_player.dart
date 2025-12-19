@@ -15,7 +15,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
-import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -34,7 +33,6 @@ class AudioPlayerWidget extends StatefulWidget {
   final String roomId;
   final String senderId;
   final PangeaAudioFile? matrixFile;
-  final MessageOverlayController? overlayController;
   final bool autoplay;
   // Pangea#
 
@@ -50,7 +48,6 @@ class AudioPlayerWidget extends StatefulWidget {
     required this.roomId,
     required this.senderId,
     this.matrixFile,
-    this.overlayController,
     this.autoplay = false,
     // Pangea#
     super.key,
@@ -72,7 +69,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   String? _durationString;
 
   // #Pangea
-  StreamSubscription? _onAudioPositionChanged;
   StreamSubscription? _onAudioStateChanged;
 
   double playbackSpeed = 1.0;
@@ -154,7 +150,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       audioPlayer.dispose();
       matrix.voiceMessageEventId.value = matrix.audioPlayer = null;
       // #Pangea
-      _onAudioPositionChanged?.cancel();
       _onAudioStateChanged?.cancel();
       // Pangea#
     }
@@ -262,18 +257,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
 
     // #Pangea
     audioPlayer.setSpeed(playbackSpeed);
-    _onAudioPositionChanged?.cancel();
-    _onAudioPositionChanged =
-        matrix.audioPlayer!.positionStream.listen((state) {
-      // Pass current timestamp to overlay, so it can highlight as necessary
-      if (widget.matrixFile?.tokens != null) {
-        widget.overlayController?.highlightCurrentText(
-          state.inMilliseconds,
-          widget.matrixFile!.tokens!,
-        );
-      }
-    });
-
     _onAudioStateChanged?.cancel();
     _onAudioStateChanged =
         matrix.audioPlayer!.playerStateStream.listen((state) {

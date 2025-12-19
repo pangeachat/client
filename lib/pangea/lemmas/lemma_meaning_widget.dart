@@ -12,10 +12,12 @@ class LemmaMeaningWidget extends StatelessWidget {
   final ConstructIdentifier constructId;
   final TextStyle? style;
   final InlineSpan? leading;
+  final Map<String, dynamic> messageInfo;
 
   const LemmaMeaningWidget({
     super.key,
     required this.constructId,
+    required this.messageInfo,
     this.style,
     this.leading,
   });
@@ -25,6 +27,7 @@ class LemmaMeaningWidget extends StatelessWidget {
     return LemmaMeaningBuilder(
       langCode: MatrixState.pangeaController.userController.userL2!.langCode,
       constructId: constructId,
+      messageInfo: messageInfo,
       builder: (context, controller) {
         if (controller.isLoading) {
           return const TextLoadingShimmer();
