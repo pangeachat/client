@@ -93,13 +93,6 @@ class AnalyticsDataService {
     );
     _analyticsClient = _AnalyticsClient(client: client, database: database);
 
-    _syncController?.dispose();
-    _syncController = AnalyticsSyncController(
-      client: client,
-      dataService: this,
-    );
-    _syncController!.start();
-
     if (client.isLogged()) {
       await _initAnalytics();
     } else {
@@ -122,8 +115,17 @@ class AnalyticsDataService {
       final analyticsProfile =
           AnalyticsProfileModel.fromJson(resp.additionalProperties);
 
+      _syncController?.dispose();
+      _syncController = AnalyticsSyncController(
+        client: client,
+        dataService: this,
+      );
+
       await updateXPOffset(analyticsProfile.xpOffset ?? 0);
+
       await _syncController!.bulkUpdate();
+      _syncController!.start();
+
       await _initMergeTable();
     } catch (e) {
       Logs().e("Error initializing analytics: $e");
