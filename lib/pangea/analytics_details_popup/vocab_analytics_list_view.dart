@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -182,7 +184,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                                     .userController.userL2Code!,
                               );
                               context.go(
-                                "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(vocabItem.id.string)}",
+                                "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(jsonEncode(vocabItem.id.toJson()))}",
                               );
                             },
                             constructId: vocabItem.id,

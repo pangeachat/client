@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -540,9 +541,10 @@ abstract class AppRoutes {
                     GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {
-                        final construct = ConstructIdentifier.fromString(
-                          state.pathParameters['construct']!,
+                        final construct = ConstructIdentifier.fromJson(
+                          jsonDecode(state.pathParameters['construct']!),
                         );
+
                         return defaultPageBuilder(
                           context,
                           state,
@@ -571,8 +573,8 @@ abstract class AppRoutes {
                     GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {
-                        final construct = ConstructIdentifier.fromString(
-                          state.pathParameters['construct']!,
+                        final construct = ConstructIdentifier.fromJson(
+                          jsonDecode(state.pathParameters['construct']!),
                         );
                         return defaultPageBuilder(
                           context,
