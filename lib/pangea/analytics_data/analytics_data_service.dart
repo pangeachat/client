@@ -45,7 +45,7 @@ class AnalyticsDataService {
   late final AnalyticsUpdateStreamService streamService;
   late final AnalyticsUpdateService updateService;
   late final LevelUpAnalyticsService levelUpService;
-  late final AnalyticsSyncController _syncController;
+  AnalyticsSyncController? _syncController;
 
   Completer<void> _initCompleter = Completer<void>();
 
@@ -57,14 +57,7 @@ class AnalyticsDataService {
       ensureInitialized: () => _ensureInitialized(),
       getUses: (since) => getUses(since: since),
     );
-    _initDatabase(client).then((_) {
-      _syncController = AnalyticsSyncController(
-        client: client,
-        dataService: this,
-      );
-
-      _syncController.start();
-    });
+    _initDatabase(client);
   }
 
   int _cacheVersion = 0;
@@ -82,7 +75,7 @@ class AnalyticsDataService {
       _analyticsClientGetter.client.getMyAnalyticsRoom(l2);
 
   void dispose() {
-    _syncController.dispose();
+    _syncController?.dispose();
     streamService.dispose();
     _closeDatabase();
   }
@@ -100,6 +93,13 @@ class AnalyticsDataService {
     );
     _analyticsClient = _AnalyticsClient(client: client, database: database);
 
+    _syncController?.dispose();
+    _syncController = AnalyticsSyncController(
+      client: client,
+      dataService: this,
+    );
+    _syncController!.start();
+
     if (client.isLogged()) {
       await _initAnalytics();
     } else {
@@ -116,21 +116,14 @@ class AnalyticsDataService {
       if (client.prevBatch == null) {
         await client.onSync.stream.first;
       }
-      Logs().i("Initializing analytics database.");
 
       _invalidateCaches();
       final resp = await client.getUserProfile(client.userID!);
       final analyticsProfile =
           AnalyticsProfileModel.fromJson(resp.additionalProperties);
 
-      Logs().i(
-        "Loaded analytics profile: xpOffset=${analyticsProfile.xpOffset}",
-      );
-
       await updateXPOffset(analyticsProfile.xpOffset ?? 0);
-      Logs().i("Syncing analytics data.");
-      await _syncController.bulkUpdate();
-      Logs().i("Initializing merge table.");
+      await _syncController!.bulkUpdate();
       await _initMergeTable();
     } catch (e) {
       Logs().e("Error initializing analytics: $e");
@@ -177,6 +170,10 @@ class AnalyticsDataService {
   int numConstructs(ConstructTypeEnum type) =>
       ConstructMergeTable.instance.uniqueConstructsByType(type);
 
+  Future<void> waitForSync() async {
+    await _syncController?.syncStream.stream.first;
+  }
+
   Future<DerivedAnalyticsDataModel> get derivedData async {
     await _ensureInitialized();
 
@@ -190,7 +187,6 @@ class AnalyticsDataService {
   }
 
   Future<DateTime?> getLastUpdatedAnalytics() async {
-    await _ensureInitialized();
     return _analyticsClientGetter.database.getLastEventTimestamp();
   }
 
@@ -312,7 +308,6 @@ class AnalyticsDataService {
     List<ConstructAnalyticsEvent> events,
   ) async {
     _invalidateCaches();
-    await _ensureInitialized();
     await _analyticsClientGetter.database.updateServerAnalytics(events);
   }
 

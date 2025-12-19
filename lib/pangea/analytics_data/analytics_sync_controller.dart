@@ -15,6 +15,8 @@ class AnalyticsSyncController {
   final AnalyticsDataService dataService;
 
   StreamSubscription? _subscription;
+  StreamController<List<String>> syncStream =
+      StreamController<List<String>>.broadcast();
 
   AnalyticsSyncController({
     required this.client,
@@ -28,6 +30,7 @@ class AnalyticsSyncController {
   void dispose() {
     _subscription?.cancel();
     _subscription = null;
+    syncStream.close();
   }
 
   Future<void> _onSync(SyncUpdate update) async {
@@ -59,6 +62,10 @@ class AnalyticsSyncController {
         event.content.uses,
       );
     }
+
+    syncStream.add(
+      List<String>.from(constructEvents.map((e) => e.event.eventId)),
+    );
   }
 
   Future<void> bulkUpdate() async {

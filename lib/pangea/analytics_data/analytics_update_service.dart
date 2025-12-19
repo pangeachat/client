@@ -90,7 +90,9 @@ class AnalyticsUpdateService {
     final analyticsRoom = await dataService.getAnalyticsRoom(l2);
 
     // and send cached analytics data to the room
+    final future = dataService.waitForSync();
     await analyticsRoom?.sendConstructsEvent(localConstructs);
+    await future;
   }
 
   Future<void> sendActivityAnalytics(String roomId) async {
