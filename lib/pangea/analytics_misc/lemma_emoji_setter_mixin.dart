@@ -38,6 +38,7 @@ mixin LemmaEmojiSetter {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        padding: const EdgeInsets.all(8.0),
         content: Row(
           spacing: 8.0,
           children: [
@@ -58,7 +59,7 @@ mixin LemmaEmojiSetter {
                 );
               },
             ),
-            Flexible(
+            Expanded(
               child: Text(
                 L10n.of(context).emojiSelectedSnackbar(constructId.lemma),
                 textAlign: TextAlign.center,
@@ -66,6 +67,12 @@ mixin LemmaEmojiSetter {
                       color: Theme.of(context).colorScheme.surface,
                     ),
               ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.close),
+              color: Theme.of(context).colorScheme.surface,
+              onPressed: () =>
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
             ),
           ],
         ),
