@@ -37,6 +37,14 @@ class VocabDetailsViewState extends State<VocabDetailsView> {
   }
 
   @override
+  void didUpdateWidget(covariant VocabDetailsView oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.constructId != widget.constructId) {
+      _emojiNotifier.value = constructId.userLemmaInfo.emojis?.firstOrNull;
+    }
+  }
+
+  @override
   void dispose() {
     _emojiNotifier.dispose();
     super.dispose();
