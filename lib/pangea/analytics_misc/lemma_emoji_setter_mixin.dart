@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
@@ -55,7 +57,7 @@ mixin LemmaEmojiSetter {
               onTap: () {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 context.go(
-                  "/rooms/analytics/${constructId.type.name}/${Uri.encodeComponent(constructId.string)}",
+                  "/rooms/analytics/${constructId.type.name}/${Uri.encodeComponent(jsonEncode(constructId.toJson()))}",
                 );
               },
             ),

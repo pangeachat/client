@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -164,7 +166,7 @@ class MorphFeatureBox extends StatelessWidget {
                             morphTag: morphTag,
                             constructAnalytics: analytics,
                             onTap: () => context.go(
-                              "/rooms/analytics/${id.type.string}/${Uri.encodeComponent(id.string)}",
+                              "/rooms/analytics/${id.type.string}/${Uri.encodeComponent(jsonEncode(id.toJson()))}",
                             ),
                           );
                         },

@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages, implementation_imports
 
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -168,7 +169,7 @@ class ConstructNotificationOverlayState
 
   void _showDetails() {
     context.go(
-      "/rooms/analytics/${ConstructTypeEnum.morph.string}/${Uri.encodeComponent(widget.construct.string)}",
+      "/rooms/analytics/${ConstructTypeEnum.morph.string}/${Uri.encodeComponent(jsonEncode(widget.construct.toJson()))}",
     );
   }
 
