@@ -203,7 +203,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     selectedTokenNotifier.value = selectedToken;
     selectModeController.setPlayingToken(selectedToken?.text);
 
-    if (selectedToken != null) {
+    if (selectedToken != null &&
+        selectModeController.selectedMode.value != SelectMode.audio) {
       TtsController.tryToSpeak(
         selectedToken!.text.content,
         langCode: pangeaMessageEvent.messageDisplayLangCode,
