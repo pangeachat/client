@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/vocab_practice/choice_cards/meaning_choice_car
 import 'package:fluffychat/pangea/vocab_practice/completed_activity_session_view.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_timer_widget.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:flutter/material.dart';
 
@@ -34,8 +35,19 @@ class VocabPracticeView extends StatelessWidget {
                 barColor: Theme.of(context).colorScheme.primary,
               ),
             ),
-            Text(
-              "${controller.completedActivities} / ${controller.availableActivities}",
+            ValueListenableBuilder(
+              valueListenable: controller.sessionLoader.state,
+              builder: (context, state, __) {
+                if (state is AsyncLoaded<VocabPracticeSessionModel>) {
+                  return VocabTimerWidget(
+                    key: ValueKey(state.value.startedAt),
+                    initialSeconds: state.value.elapsedSeconds,
+                    onTimeUpdate: controller.updateElapsedTime,
+                    isRunning: !controller.isComplete,
+                  );
+                }
+                return const SizedBox.shrink();
+              },
             ),
           ],
         ),

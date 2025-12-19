@@ -47,11 +47,19 @@ class VocabPracticeState extends State<VocabPractice> {
 
   @override
   void dispose() {
-    sessionLoader.dispose();
     if (isComplete) {
       VocabPracticeSessionRepo.clearSession();
+    } else {
+      _saveCurrentTime();
     }
+    sessionLoader.dispose();
     super.dispose();
+  }
+
+  void _saveCurrentTime() {
+    if (sessionLoader.isLoaded) {
+      VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
+    }
   }
 
   /// Resets all session state without disposing the widget
@@ -77,6 +85,15 @@ class VocabPracticeState extends State<VocabPractice> {
   int get completedActivities =>
       sessionLoader.isLoaded ? sessionLoader.value!.currentIndex : 0;
 
+  int get elapsedSeconds =>
+      sessionLoader.isLoaded ? sessionLoader.value!.elapsedSeconds : 0;
+
+  void updateElapsedTime(int seconds) {
+    if (sessionLoader.isLoaded) {
+      sessionLoader.value!.elapsedSeconds = seconds;
+    }
+  }
+
   Future<void> _waitForAnalytics() async {
     if (!MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted) {
       MatrixState.pangeaController.initControllers();
@@ -93,6 +110,7 @@ class VocabPracticeState extends State<VocabPractice> {
   Future<void> completeActivitySession() async {
     if (!sessionLoader.isLoaded) return;
 
+    _saveCurrentTime();
     sessionLoader.value!.finishSession();
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 

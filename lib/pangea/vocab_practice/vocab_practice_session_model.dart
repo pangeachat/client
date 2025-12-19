@@ -22,6 +22,7 @@ class VocabPracticeSessionModel {
 
   final List<OneConstructUse> completedUses;
   bool finished;
+  int elapsedSeconds;
 
   VocabPracticeSessionModel({
     required this.startedAt,
@@ -31,6 +32,7 @@ class VocabPracticeSessionModel {
     this.currentIndex = 0,
     this.currentGroup = 0,
     this.finished = false,
+    this.elapsedSeconds = 0,
   })  : assert(
           activityTypes.every(
             (t) => {ActivityTypeEnum.lemmaMeaning, ActivityTypeEnum.lemmaAudio}
@@ -168,6 +170,7 @@ class VocabPracticeSessionModel {
               .toList() ??
           [],
       finished: json['finished'] as bool? ?? false,
+      elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
     );
   }
 
@@ -180,6 +183,7 @@ class VocabPracticeSessionModel {
       'currentGroup': currentGroup,
       'completedUses': completedUses.map((e) => e.toJson()).toList(),
       'finished': finished,
+      'elapsedSeconds': elapsedSeconds,
     };
   }
 }

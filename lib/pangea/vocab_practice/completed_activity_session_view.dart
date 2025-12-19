@@ -60,6 +60,12 @@ class _CompletedActivitySessionViewState
     });
   }
 
+  String _formatTime(int seconds) {
+    final minutes = seconds ~/ 60;
+    final remainingSeconds = seconds % 60;
+    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
+
   @override
   Widget build(BuildContext context) {
     final username =
@@ -153,25 +159,13 @@ class _CompletedActivitySessionViewState
                     ),
                     StatCard(
                       icon: Icons.my_location,
-                      text: "Time: 0:35 sec", // TODO: Replace with actual time
-                      isAchievement: false,
+                      text:
+                          "Time: ${_formatTime(widget.controller.sessionLoader.value!.elapsedSeconds)}",
+                      isAchievement: (widget
+                              .controller.sessionLoader.value!.elapsedSeconds <=
+                          60),
                       achievementText: "+ 5 XP",
-                      child: PercentMarkerBar(
-                        height: 20.0,
-                        widthPercent: .5,
-                        markerWidth: 20.0,
-                        markerColor: Theme.of(context).colorScheme.primary,
-                        backgroundColor: true
-                            ? Theme.of(context)
-                                .colorScheme
-                                .surfaceContainerHighest
-                            : Color.alphaBlend(
-                                AppConfig.gold.withOpacity(0.1),
-                                Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest,
-                              ),
-                      ),
+                      child: const SizedBox.shrink(),
                     ),
                     Column(
                       children: [
