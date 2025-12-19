@@ -23,13 +23,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 class TokenInfoFeedbackDialog extends StatelessWidget {
   final TokenInfoFeedbackRequestData requestData;
   final String langCode;
-  final PangeaMessageEvent event;
+  final PangeaMessageEvent? event;
 
   const TokenInfoFeedbackDialog({
     super.key,
     required this.requestData,
     required this.langCode,
-    required this.event,
+    this.event,
   });
 
   Future<String> _submitFeedback(String feedback) async {
@@ -59,7 +59,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       );
     }
 
-    final originalSent = event.originalSent;
+    final originalSent = event?.originalSent;
 
     // if no other changes, just return the message
     final hasTokenUpdate = response.updatedToken != null;
@@ -81,22 +81,24 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       originalSent.content.langCode = response.updatedLanguage!;
     }
 
-    await event.room.pangeaSendTextEvent(
-      requestData.fullText,
-      editEventId: event.eventId,
-      originalSent: originalSent?.content,
-      originalWritten: event.originalWritten?.content,
-      tokensSent: PangeaMessageTokens(
-        tokens: tokens,
-      ),
-      tokensWritten: event.originalWritten?.tokens != null
-          ? PangeaMessageTokens(
-              tokens: event.originalWritten!.tokens!,
-              detections: event.originalWritten?.detections,
-            )
-          : null,
-      choreo: originalSent?.choreo,
-    );
+    if (requestData.fullText != null && event != null) {
+      await event!.room.pangeaSendTextEvent(
+        requestData.fullText!,
+        editEventId: event!.eventId,
+        originalSent: originalSent?.content,
+        originalWritten: event!.originalWritten?.content,
+        tokensSent: PangeaMessageTokens(
+          tokens: tokens,
+        ),
+        tokensWritten: event!.originalWritten?.tokens != null
+            ? PangeaMessageTokens(
+                tokens: event!.originalWritten!.tokens!,
+                detections: event!.originalWritten?.detections,
+              )
+            : null,
+        choreo: originalSent?.choreo,
+      );
+    }
 
     return response.userFriendlyMessage;
   }
@@ -117,7 +119,9 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     LemmaInfoResponse response,
   ) =>
       LemmaInfoRepo.set(
-        token.vocabConstructID.lemmaInfoRequest(event.event.content),
+        token.vocabConstructID.lemmaInfoRequest(
+          event?.event.content ?? {},
+        ),
         response,
       );
 
