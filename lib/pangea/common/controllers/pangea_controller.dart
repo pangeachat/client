@@ -144,7 +144,6 @@ class PangeaController {
   }
 
   Future<void> _initAnalytics() async {
-    await GetStorage.init("analytics_storage");
     await GetStorage.init("activity_analytics_storage");
 
     matrixState.client.updateAnalyticsRoomJoinRules();
@@ -157,7 +156,6 @@ class PangeaController {
 
   Future<void> _onLanguageUpdate(LanguageUpdate update) async {
     final exclude = [
-      'analytics_storage',
       'course_location_media_storage',
       'course_location_storage',
       'course_media_storage',
@@ -183,7 +181,6 @@ class PangeaController {
     'objective_list_storage',
     'topic_list_storage',
     'activity_plan_search_storage',
-    "analytics_storage",
     "version_storage",
     'lemma_storage',
     'svg_cache',
