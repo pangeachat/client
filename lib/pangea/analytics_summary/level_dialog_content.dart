@@ -29,7 +29,7 @@ class LevelDialogContent extends StatelessWidget {
     final analyticsService = Matrix.of(context).analyticsDataService;
 
     return StreamBuilder(
-      stream: analyticsService.streamService.constructUpdateStream.stream,
+      stream: analyticsService.updateDispatcher.constructUpdateStream.stream,
       builder: (context, _) {
         return Scaffold(
           appBar: AppBar(

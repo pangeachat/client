@@ -49,7 +49,8 @@ class LearningProgressIndicators extends StatelessWidget {
             analyticsRoom?.archivedActivitiesCount ?? 0;
 
         return StreamBuilder(
-          stream: analyticsService.streamService.constructUpdateStream.stream,
+          stream:
+              analyticsService.updateDispatcher.constructUpdateStream.stream,
           builder: (context, _) {
             return Row(
               children: [

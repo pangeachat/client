@@ -31,7 +31,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_update_stream_service.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -521,7 +521,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _pangeaInit() {
     choreographer = Choreographer(inputFocus);
-    final updater = Matrix.of(context).analyticsDataService.streamService;
+    final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
 

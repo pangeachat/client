@@ -5,8 +5,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_database.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_database_builder.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_sync_controller.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_service.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_update_stream_service.dart';
 import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_data/level_up_analytics_service.dart';
@@ -18,6 +19,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class _AnalyticsClient {
   final Client client;
@@ -42,7 +44,7 @@ class AnalyticsStreamUpdate {
 class AnalyticsDataService {
   _AnalyticsClient? _analyticsClient;
 
-  late final AnalyticsUpdateStreamService streamService;
+  late final AnalyticsUpdateDispatcher updateDispatcher;
   late final AnalyticsUpdateService updateService;
   late final LevelUpAnalyticsService levelUpService;
   AnalyticsSyncController? _syncController;
@@ -50,7 +52,7 @@ class AnalyticsDataService {
   Completer<void> _initCompleter = Completer<void>();
 
   AnalyticsDataService(Client client) {
-    streamService = AnalyticsUpdateStreamService(this);
+    updateDispatcher = AnalyticsUpdateDispatcher(this);
     updateService = AnalyticsUpdateService(this);
     levelUpService = LevelUpAnalyticsService(
       client: client,
@@ -59,6 +61,8 @@ class AnalyticsDataService {
     );
     _initDatabase(client);
   }
+
+  static const int morphUnlockXP = 30;
 
   int _cacheVersion = 0;
   int _derivedCacheVersion = -1;
@@ -76,7 +80,7 @@ class AnalyticsDataService {
 
   void dispose() {
     _syncController?.dispose();
-    streamService.dispose();
+    updateDispatcher.dispose();
     _closeDatabase();
   }
 
@@ -132,7 +136,7 @@ class AnalyticsDataService {
     } finally {
       Logs().i("Analytics database initialized.");
       _initCompleter.complete();
-      streamService.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
+      updateDispatcher.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
     }
   }
 
@@ -294,9 +298,19 @@ class AnalyticsDataService {
     await _analyticsClientGetter.database.updateXPOffset(offset);
   }
 
-  Future<void> updateLocalAnalytics(
+  Future<List<AnalyticsUpdateEvent>> updateLocalAnalytics(
     AnalyticsUpdate update,
   ) async {
+    final events = <AnalyticsUpdateEvent>[];
+
+    final morphIds = update.newConstructs
+        .where((c) => c.constructType == ConstructTypeEnum.morph)
+        .map((c) => c.identifier)
+        .toSet();
+
+    final prevData = await derivedData;
+    final prevMorphs = await getConstructUses(morphIds.toList());
+
     _invalidateCaches();
     await _ensureInitialized();
     await _analyticsClientGetter.database.updateLocalAnalytics(
@@ -304,6 +318,46 @@ class AnalyticsDataService {
     );
 
     ConstructMergeTable.instance.addConstructsByUses(update.newConstructs);
+
+    final newData = await derivedData;
+
+    // Update public profile each time that new analytics are added.
+    // If the level hasn't changed, this will not send an update to the server.
+    // Do this on all updates (not just on level updates) to account for cases
+    // of target language updates being missed (https://github.com/pangeachat/client/issues/2006)
+    MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      level: newData.level,
+    );
+
+    if (newData.level > prevData.level) {
+      events.add(LevelUpEvent(prevData.level, newData.level));
+    } else if (newData.level < prevData.level) {
+      final lowerLevelXP = DerivedAnalyticsDataModel.calculateXpWithLevel(
+        prevData.level,
+      );
+
+      final offset = lowerLevelXP - newData.totalXP;
+      await MatrixState.pangeaController.userController.addXPOffset(offset);
+      await updateXPOffset(
+        MatrixState.pangeaController.userController.analyticsProfile!.xpOffset!,
+      );
+    }
+
+    final newMorphs = await getConstructUses(morphIds.toList());
+    final newUnlockedMorphs = morphIds.where((id) {
+      final prevPoints = prevMorphs[id]?.points ?? 0;
+      final newPoints = newMorphs[id]?.points ?? 0;
+      return prevPoints < morphUnlockXP && newPoints >= morphUnlockXP;
+    }).toSet();
+
+    if (newUnlockedMorphs.isNotEmpty) {
+      events.add(MorphUnlockedEvent(newUnlockedMorphs));
+    }
+
+    final points = update.newConstructs.fold(0, (s, c) => s + c.xp);
+    events.add(XPGainedEvent(points, update.targetID));
+
+    return events;
   }
 
   Future<void> updateServerAnalytics(

@@ -45,7 +45,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
     super.initState();
     Matrix.of(context)
         .analyticsDataService
-        .streamService
+        .updateDispatcher
         .constructUpdateStream
         .stream
         .listen(_onAnalyticsUpdate);

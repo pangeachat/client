@@ -37,7 +37,7 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
 
     _analyticsSubscription = Matrix.of(context)
         .analyticsDataService
-        .streamService
+        .updateDispatcher
         .constructUpdateStream
         .stream
         .listen(_showStatsMenuDropdownInstructions);

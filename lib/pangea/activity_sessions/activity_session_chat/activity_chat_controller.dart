@@ -37,7 +37,7 @@ class ActivityChatController {
   void init() {
     _updateUsedVocab();
     _analyticsSubscription = MatrixState.pangeaController.matrixState
-        .analyticsDataService.streamService.constructUpdateStream.stream
+        .analyticsDataService.updateDispatcher.constructUpdateStream.stream
         .listen((_) => _updateUsedVocab());
   }
 

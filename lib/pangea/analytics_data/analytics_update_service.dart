@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_update_stream_service.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
@@ -36,7 +36,7 @@ class AnalyticsUpdateService {
     String? targetID,
     List<OneConstructUse> newConstructs,
   ) async {
-    await dataService.streamService.sendConstructAnalyticsUpdate(
+    await dataService.updateDispatcher.sendConstructAnalyticsUpdate(
       AnalyticsUpdate(
         newConstructs,
         targetID: targetID,
@@ -55,14 +55,18 @@ class AnalyticsUpdateService {
   Future<void> sendLocalAnalyticsToAnalyticsRoom({
     LanguageModel? l2Override,
   }) async {
-    if (!(_updateCompleter?.isCompleted ?? true)) {
+    final inProgress =
+        _updateCompleter != null && !_updateCompleter!.isCompleted;
+
+    if (inProgress) {
       await _updateCompleter!.future;
       return;
     }
+
     _updateCompleter = Completer<void>();
     try {
       await _updateAnalytics(l2Override: l2Override);
-      dataService.clearLocalAnalytics();
+      await dataService.clearLocalAnalytics();
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -104,7 +108,7 @@ class AnalyticsUpdateService {
     if (analyticsRoom == null) return;
 
     await analyticsRoom.addActivityRoomId(roomId);
-    dataService.streamService.sendActivityAnalyticsUpdate(roomId);
+    dataService.updateDispatcher.sendActivityAnalyticsUpdate(roomId);
   }
 
   Future<void> blockConstruct(ConstructIdentifier constructId) async {
