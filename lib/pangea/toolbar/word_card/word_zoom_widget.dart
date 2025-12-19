@@ -69,11 +69,12 @@ class WordZoomWidget extends StatelessWidget {
                 ),
                 child: CompositedTransformTarget(
                   link: layerLink,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      spacing: 12.0,
-                      children: [
-                        Row(
+                  child: Column(
+                    spacing: 12.0,
+                    children: [
+                      SizedBox(
+                        height: 40.0,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             onClose != null
@@ -103,6 +104,7 @@ class WordZoomWidget extends StatelessWidget {
                                             Brightness.light
                                         ? AppConfig.yellowDark
                                         : AppConfig.yellowLight,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
@@ -124,9 +126,11 @@ class WordZoomWidget extends StatelessWidget {
                                   ),
                           ],
                         ),
-                        Column(
-                          spacing: 12.0,
-                          mainAxisSize: MainAxisSize.min,
+                      ),
+                      Expanded(
+                        child: Column(
+                          spacing: 4.0,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
@@ -158,8 +162,8 @@ class WordZoomWidget extends StatelessWidget {
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

@@ -50,6 +50,8 @@ class LemmaMeaningDisplay extends StatelessWidget {
             L10n.of(context).other;
 
         return RichText(
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
           text: TextSpan(
             style: DefaultTextStyle.of(context).style.copyWith(
