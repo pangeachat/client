@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -13,12 +13,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LevelUpAnalyticsService {
   final Client client;
   final Future<void> Function() ensureInitialized;
-  final Future<List<OneConstructUse>> Function(DateTime?) getUses;
+  final AnalyticsDataService dataService;
 
   const LevelUpAnalyticsService({
     required this.client,
     required this.ensureInitialized,
-    required this.getUses,
+    required this.dataService,
   });
 
   Future<ConstructSummary> getLevelUpAnalytics(
@@ -28,7 +28,7 @@ class LevelUpAnalyticsService {
   ) async {
     await ensureInitialized();
 
-    final uses = await getUses(lastLevelUpTimestamp);
+    final uses = await dataService.getUses(since: lastLevelUpTimestamp);
     final messages = await _buildMessageContext(uses);
 
     final userController = MatrixState.pangeaController.userController;
@@ -44,10 +44,10 @@ class LevelUpAnalyticsService {
     final response = await ConstructRepo.generateConstructSummary(request);
     final summary = response.summary;
 
-    summary.levelVocabConstructs = ConstructMergeTable.instance
-        .uniqueConstructsByType(ConstructTypeEnum.vocab);
-    summary.levelGrammarConstructs = ConstructMergeTable.instance
-        .uniqueConstructsByType(ConstructTypeEnum.morph);
+    summary.levelVocabConstructs =
+        dataService.uniqueConstructsByType(ConstructTypeEnum.vocab);
+    summary.levelGrammarConstructs =
+        dataService.uniqueConstructsByType(ConstructTypeEnum.morph);
 
     return summary;
   }

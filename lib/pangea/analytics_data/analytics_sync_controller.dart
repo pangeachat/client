@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -56,12 +55,6 @@ class AnalyticsSyncController {
 
     if (constructEvents.isEmpty) return;
     await dataService.updateServerAnalytics(constructEvents);
-
-    for (final event in constructEvents) {
-      ConstructMergeTable.instance.addConstructsByUses(
-        event.content.uses,
-      );
-    }
 
     syncStream.add(
       List<String>.from(constructEvents.map((e) => e.event.eventId)),

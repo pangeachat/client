@@ -48,6 +48,7 @@ class AnalyticsDataService {
   late final AnalyticsUpdateService updateService;
   late final LevelUpAnalyticsService levelUpService;
   AnalyticsSyncController? _syncController;
+  final ConstructMergeTable _mergeTable = ConstructMergeTable();
 
   Completer<void> _initCompleter = Completer<void>();
 
@@ -57,7 +58,7 @@ class AnalyticsDataService {
     levelUpService = LevelUpAnalyticsService(
       client: client,
       ensureInitialized: () => _ensureInitialized(),
-      getUses: (since) => getUses(since: since),
+      dataService: this,
     );
     _initDatabase(client);
   }
@@ -146,8 +147,8 @@ class AnalyticsDataService {
     final morph = await _analyticsClientGetter.database
         .getAggregatedConstructs(ConstructTypeEnum.morph);
 
-    ConstructMergeTable.instance.addConstructs(vocab);
-    ConstructMergeTable.instance.addConstructs(morph);
+    _mergeTable.addConstructs(vocab);
+    _mergeTable.addConstructs(morph);
   }
 
   Future<void> reinitialize() async {
@@ -160,21 +161,30 @@ class AnalyticsDataService {
   Future<void> _clearDatabase() async {
     await _analyticsClient?.database.clear();
     _invalidateCaches();
-    ConstructMergeTable.instance.clear();
+    _mergeTable.clear();
   }
 
   Future<void> _closeDatabase() async {
     await _analyticsClient?.database.delete();
     _analyticsClient = null;
     _invalidateCaches();
-    ConstructMergeTable.instance.clear();
+    _mergeTable.clear();
   }
 
   Future<void> _ensureInitialized() =>
       _initCompleter.isCompleted ? Future.value() : _initCompleter.future;
 
   int numConstructs(ConstructTypeEnum type) =>
-      ConstructMergeTable.instance.uniqueConstructsByType(type);
+      _mergeTable.uniqueConstructsByType(type);
+
+  bool hasUsedConstruct(ConstructIdentifier id) =>
+      _mergeTable.constructUsed(id);
+
+  DateTime? lastUsedByForm(ConstructIdentifier id, String form) =>
+      _mergeTable.getLastUsedByForm(id, form);
+
+  int uniqueConstructsByType(ConstructTypeEnum type) =>
+      _mergeTable.uniqueConstructsByType(type);
 
   Future<void> waitForSync() async {
     await _syncController?.syncStream.stream.first;
@@ -221,7 +231,7 @@ class AnalyticsDataService {
 
   Future<ConstructUses> getConstructUse(ConstructIdentifier id) async {
     await _ensureInitialized();
-    final ids = ConstructMergeTable.instance.groupedIds(id);
+    final ids = _mergeTable.groupedIds(id);
     return _analyticsClientGetter.database.getConstructUse(ids);
   }
 
@@ -231,7 +241,7 @@ class AnalyticsDataService {
     await _ensureInitialized();
     final Map<ConstructIdentifier, List<ConstructIdentifier>> request = {};
     for (final id in ids) {
-      request[id] = ConstructMergeTable.instance.groupedIds(id);
+      request[id] = _mergeTable.groupedIds(id);
     }
 
     return _analyticsClientGetter.database.getConstructUses(request);
@@ -248,7 +258,7 @@ class AnalyticsDataService {
 
     final cleaned = <ConstructIdentifier, ConstructUses>{};
     for (final entry in combined) {
-      final canonical = ConstructMergeTable.instance.resolve(entry.id);
+      final canonical = _mergeTable.resolve(entry.id);
 
       // Insert or merge
       final existing = cleaned[canonical];
@@ -317,7 +327,7 @@ class AnalyticsDataService {
       update.newConstructs,
     );
 
-    ConstructMergeTable.instance.addConstructsByUses(update.newConstructs);
+    _mergeTable.addConstructsByUses(update.newConstructs);
 
     final newData = await derivedData;
 
@@ -364,6 +374,11 @@ class AnalyticsDataService {
     List<ConstructAnalyticsEvent> events,
   ) async {
     _invalidateCaches();
+    for (final event in events) {
+      _mergeTable.addConstructsByUses(
+        event.content.uses,
+      );
+    }
     await _analyticsClientGetter.database.updateServerAnalytics(events);
   }
 

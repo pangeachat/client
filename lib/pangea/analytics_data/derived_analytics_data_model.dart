@@ -50,7 +50,7 @@ class DerivedAnalyticsDataModel {
     return (xp < 0) ? 0 : xp;
   }
 
-  int calculateLevelWithXp(int totalXP) {
+  static int calculateLevelWithXp(int totalXP) {
     final doubleScore = (1 + sqrt((1 + (8.0 * totalXP / D)) / 2.0));
     if (!doubleScore.isNaN && doubleScore.isFinite) {
       return doubleScore.floor();

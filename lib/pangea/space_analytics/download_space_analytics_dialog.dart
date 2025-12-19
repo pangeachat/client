@@ -9,9 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/download/download_file_util.dart';
@@ -170,19 +168,10 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
         if (mounted) setState(() => _downloadStatuses[userID] = -1);
         return SpaceAnalyticsSummaryModel.emptyModel(userID);
       }
-
-      final List<OneConstructUse> uses = [];
-      for (final event in constructEvents) {
-        uses.addAll(event.content.uses);
-      }
-
-      final constructs = ConstructListModel(uses: uses);
-      summary = SpaceAnalyticsSummaryModel.fromConstructListModel(
+      summary = SpaceAnalyticsSummaryModel.fromEvents(
         userID,
-        constructs,
-        0,
-        getCopy,
-        context,
+        constructEvents,
+        analyticsRoom.archivedActivitiesCount,
       );
       if (mounted) setState(() => _downloadStatuses[userID] = 2);
     } catch (e, s) {

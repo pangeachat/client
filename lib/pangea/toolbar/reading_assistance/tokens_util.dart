@@ -1,6 +1,5 @@
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
@@ -99,12 +98,14 @@ class TokensUtil {
     }
 
     final List<PangeaTokenText> newTokens = [];
+    final analyticsService =
+        MatrixState.pangeaController.matrixState.analyticsDataService;
     for (final token in tokens) {
       if (!token.lemma.saveVocab || !token.vocabConstructID.isContentWord) {
         continue;
       }
 
-      if (ConstructMergeTable.instance.constructUsed(token.vocabConstructID)) {
+      if (analyticsService.hasUsedConstruct(token.vocabConstructID)) {
         continue;
       }
 

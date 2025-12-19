@@ -44,9 +44,6 @@ class LastUsedSummary {
 }
 
 class ConstructMergeTable {
-  static final ConstructMergeTable instance = ConstructMergeTable._();
-  ConstructMergeTable._();
-
   Map<String, Set<ConstructIdentifier>> lemmaTypeGroups = {};
   Map<ConstructIdentifier, ConstructIdentifier> otherToSpecific = {};
   Map<ConstructIdentifier, LastUsedSummary> lastUsedCache = {};

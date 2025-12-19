@@ -349,6 +349,9 @@ extension EventsRoomExtension on Room {
       return events.where((e) => e.originServerTs.isAfter(since)).toList();
     }
 
+    debugPrint("Num searches: $numSearches");
+    debugPrint("Total events found: ${events.length}");
+
     return events.toList();
   }
 
