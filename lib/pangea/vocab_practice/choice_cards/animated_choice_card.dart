@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 /// A reusable animated choice card that handles tap animations and correct/incorrect styling.
 class AnimatedChoiceCard extends StatefulWidget {
   final Widget child;
+  final Widget? altChild;
   final VoidCallback onPressed;
   final bool isCorrect;
   final double height;
 
   const AnimatedChoiceCard({
     required this.child,
+    this.altChild,
     required this.onPressed,
     required this.isCorrect,
     this.height = 72.0,
@@ -26,6 +28,7 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
   late Animation<double> _scaleAnim;
   bool _flipped = false;
   bool _isHovered = false;
+  bool _useAltChild = false;
 
   @override
   void initState() {
@@ -43,6 +46,11 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
   }
 
   void _onAnimationUpdate() {
+    // Swap to altChild when card is almost fully shrunk
+    if (_controller.value >= 0.95 && !_useAltChild && widget.altChild != null) {
+      setState(() => _useAltChild = true);
+    }
+
     // Mark as flipped when card is fully shrunk
     if (_controller.value >= 0.95 && !_flipped) {
       setState(() => _flipped = true);
@@ -110,7 +118,9 @@ class AnimatedChoiceCardState extends State<AnimatedChoiceCard>
                   alignment: Alignment.center,
                   child: Opacity(
                     opacity: showContent ? 1.0 : 0.0,
-                    child: widget.child,
+                    child: _useAltChild && widget.altChild != null
+                        ? widget.altChild!
+                        : widget.child,
                   ),
                 ),
               );

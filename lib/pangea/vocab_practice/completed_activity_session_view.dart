@@ -106,11 +106,9 @@ class _CompletedActivitySessionViewState
                           child: AnimatedProgressBar(
                             height: 20.0,
                             widthPercent: currentProgress,
-                            backgroundColor: Color.lerp(
-                              Theme.of(context).colorScheme.surface,
-                              Colors.grey,
-                              0.1,
-                            ),
+                            backgroundColor: Theme.of(context)
+                                .colorScheme
+                                .surfaceContainerHighest,
                             duration: const Duration(milliseconds: 500),
                           ),
                         ),
@@ -131,6 +129,7 @@ class _CompletedActivitySessionViewState
                       isAchievement:
                           (widget.controller.sessionLoader.value!.accuracy ==
                               100),
+                      achievementText: "+ 5 XP",
                       child: PercentMarkerBar(
                         height: 20.0,
                         widthPercent:
@@ -138,6 +137,40 @@ class _CompletedActivitySessionViewState
                                 100.0,
                         markerWidth: 20.0,
                         markerColor: AppConfig.success,
+                        backgroundColor:
+                            !(widget.controller.sessionLoader.value!.accuracy ==
+                                    100)
+                                ? Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHighest
+                                : Color.alphaBlend(
+                                    AppConfig.goldLight.withOpacity(0.3),
+                                    Theme.of(context)
+                                        .colorScheme
+                                        .surfaceContainerHighest,
+                                  ),
+                      ),
+                    ),
+                    StatCard(
+                      icon: Icons.my_location,
+                      text: "Time: 0:35 sec", // TODO: Replace with actual time
+                      isAchievement: false,
+                      achievementText: "+ 5 XP",
+                      child: PercentMarkerBar(
+                        height: 20.0,
+                        widthPercent: .5,
+                        markerWidth: 20.0,
+                        markerColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor: true
+                            ? Theme.of(context)
+                                .colorScheme
+                                .surfaceContainerHighest
+                            : Color.alphaBlend(
+                                AppConfig.gold.withOpacity(0.1),
+                                Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHighest,
+                              ),
                       ),
                     ),
                     Column(

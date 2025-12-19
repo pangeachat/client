@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/animated_choice_card.dart';
 import 'package:flutter/material.dart';
 
@@ -31,6 +32,33 @@ class MeaningChoiceCard extends StatelessWidget {
       onPressed: onPressed,
       isCorrect: isCorrect,
       height: height,
+      altChild: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          if (emoji != null && emoji!.isNotEmpty)
+            SizedBox(
+              width: height * .7,
+              height: height,
+              child: Center(
+                child: Text(
+                  emoji!,
+                  style: TextStyle(fontSize: emojiSize),
+                ),
+              ),
+            ),
+          Expanded(
+            child: Text(
+              ConstructIdentifier.fromString(choiceId)!.lemma,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: baseTextSize,
+              ),
+            ),
+          ),
+        ],
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

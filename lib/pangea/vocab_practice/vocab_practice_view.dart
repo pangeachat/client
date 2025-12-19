@@ -44,9 +44,11 @@ class VocabPracticeView extends StatelessWidget {
         withScrolling: false,
         padding: const EdgeInsets.all(0.0),
         showBorder: false,
-        child: controller.isComplete
-            ? CompletedActivitySessionView(controller)
-            : _OngoingActivitySessionView(controller),
+        child: Expanded(
+          child: controller.isComplete
+              ? CompletedActivitySessionView(controller)
+              : _OngoingActivitySessionView(controller),
+        ),
       ),
     );
   }

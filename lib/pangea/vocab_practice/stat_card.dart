@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 class StatCard extends StatelessWidget {
   final IconData icon;
   final String text;
+  final String achievementText;
   final Widget child;
   final bool isAchievement;
 
   const StatCard({
     required this.icon,
     required this.text,
+    required this.achievementText,
     required this.child,
     this.isAchievement = false,
     super.key,
@@ -20,10 +22,10 @@ class StatCard extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final backgroundColor = isAchievement
         ? Color.alphaBlend(
-            Theme.of(context).colorScheme.surface.withAlpha(200),
-            AppConfig.gold,
+            Theme.of(context).colorScheme.surface.withAlpha(170),
+            AppConfig.goldLight,
           )
-        : colorScheme.surfaceContainerHighest;
+        : colorScheme.surfaceContainer;
 
     return Container(
       decoration: BoxDecoration(
@@ -47,6 +49,15 @@ class StatCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
               ),
+              if (isAchievement) ...[
+                const Spacer(),
+                Text(
+                  achievementText,
+                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ],
             ],
           ),
           const SizedBox(height: 8),
