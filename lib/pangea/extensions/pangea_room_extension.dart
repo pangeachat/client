@@ -7,7 +7,6 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:html_unescape/html_unescape.dart';
 import 'package:matrix/matrix.dart';
 import 'package:matrix/src/utils/markdown.dart';

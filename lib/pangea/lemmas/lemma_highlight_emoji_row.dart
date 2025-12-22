@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
@@ -37,32 +36,8 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
   State<LemmaHighlightEmojiRow> createState() => LemmaHighlightEmojiRowState();
 }
 
-class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
-  late StreamSubscription<AnalyticsStreamUpdate> _analyticsSubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    Matrix.of(context)
-        .analyticsDataService
-        .updateDispatcher
-        .constructUpdateStream
-        .stream
-        .listen(_onAnalyticsUpdate);
-  }
-
-  @override
-  void dispose() {
-    _analyticsSubscription.cancel();
-    super.dispose();
-  }
-
-  void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
-    if (update.targetID != null) {
-      OverlayUtil.showPointsGained(update.targetID!, update.points, context);
-    }
-  }
-
+class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
+    with AnalyticsUpdater {
   @override
   Widget build(BuildContext context) {
     return LemmaMeaningBuilder(
@@ -145,7 +120,8 @@ class EmojiChoiceItem extends StatefulWidget {
   State<EmojiChoiceItem> createState() => EmojiChoiceItemState();
 }
 
-class EmojiChoiceItemState extends State<EmojiChoiceItem> {
+class EmojiChoiceItemState extends State<EmojiChoiceItem>
+    with AnalyticsUpdater {
   bool shimmer = false;
   Timer? _shimmerTimer;
 

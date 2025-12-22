@@ -30,8 +30,8 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_controller.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -181,7 +181,7 @@ class ChatPageWithRoom extends StatefulWidget {
 }
 
 class ChatController extends State<ChatPageWithRoom>
-    with WidgetsBindingObserver {
+    with WidgetsBindingObserver, AnalyticsUpdater {
   // #Pangea
   final PangeaController pangeaController = MatrixState.pangeaController;
   late Choreographer choreographer;
@@ -189,7 +189,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _levelSubscription;
   StreamSubscription? _constructsSubscription;
-  StreamSubscription? _analyticsSubscription;
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
@@ -473,12 +472,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
-  void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
-    if (update.targetID != null) {
-      OverlayUtil.showPointsGained(update.targetID!, update.points, context);
-    }
-  }
-
   Future<void> _botAudioListener(SyncUpdate update) async {
     if (update.rooms?.join?[roomId]?.timeline?.events == null) return;
     final timeline = update.rooms!.join![roomId]!.timeline!;
@@ -527,9 +520,6 @@ class ChatController extends State<ChatPageWithRoom>
 
     _constructsSubscription =
         updater.unlockedConstructsStream.stream.listen(_onUnlockConstructs);
-
-    _analyticsSubscription =
-        updater.constructUpdateStream.stream.listen(_onAnalyticsUpdate);
 
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
@@ -792,7 +782,6 @@ class ChatController extends State<ChatPageWithRoom>
     MatrixState.pAnyState.closeAllOverlays(force: true);
     stopMediaStream.close();
     _levelSubscription?.cancel();
-    _analyticsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _constructsSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
@@ -2126,10 +2115,7 @@ class ChatController extends State<ChatPageWithRoom>
       ];
 
       _showAnalyticsFeedback(constructs, eventId);
-      Matrix.of(context).analyticsDataService.updateService.addAnalytics(
-            eventId,
-            constructs,
-          );
+      addAnalytics(constructs, eventId);
     }
   }
 
