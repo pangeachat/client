@@ -55,7 +55,7 @@ class MessageSelectionOverlay extends StatefulWidget {
 }
 
 class MessageOverlayController extends State<MessageSelectionOverlay>
-    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
+    with SingleTickerProviderStateMixin {
   Event get event => widget._event;
 
   PangeaTokenText? _selectedSpan;
@@ -70,6 +70,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       selectModeController.selectedMode;
 
   late PracticeController practiceController;
+  double? screenWidth;
 
   /////////////////////////////////////
   /// Lifecycle
@@ -78,7 +79,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     selectModeController = SelectModeController(pangeaMessageEvent);
     practiceController = PracticeController(pangeaMessageEvent);
     _initializeTokensAndMode();
@@ -88,9 +88,14 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   @override
-  void didChangeMetrics() {
-    super.didChangeMetrics();
-    widget.chatController.clearSelectedEvents();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final newWidth = MediaQuery.widthOf(context);
+    if (screenWidth != null && screenWidth != newWidth) {
+      widget.chatController.clearSelectedEvents();
+      return;
+    }
+    screenWidth = newWidth;
   }
 
   @override
@@ -98,7 +103,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.clearSelectedEvents(),
     );
-    WidgetsBinding.instance.removeObserver(this);
     selectModeController.dispose();
     practiceController.dispose();
     selectedTokenNotifier.dispose();
