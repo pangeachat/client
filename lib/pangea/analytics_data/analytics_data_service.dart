@@ -116,6 +116,8 @@ class AnalyticsDataService {
       }
 
       _invalidateCaches();
+      await _clearDatabase();
+
       final resp = await client.getUserProfile(client.userID!);
       final analyticsProfile =
           AnalyticsProfileModel.fromJson(resp.additionalProperties);
@@ -154,7 +156,6 @@ class AnalyticsDataService {
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
     _initCompleter = Completer<void>();
-    await _clearDatabase();
     await _initDatabase(_analyticsClientGetter.client);
   }
 
