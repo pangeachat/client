@@ -451,6 +451,7 @@ class HtmlMessage extends StatelessWidget {
                           overlayController!.onClickOverlayMessageToken(token),
                       constructEmojiNotifier: overlayController!
                           .selectModeController.constructEmojiNotifier,
+                      textColor: textColor,
                     ),
                   if (renderer.showCenterStyling &&
                       token != null &&
@@ -973,6 +974,7 @@ class HtmlMessage extends StatelessWidget {
                   enabled: false,
                   constructEmojiNotifier: overlayController!
                       .selectModeController.constructEmojiNotifier,
+                  textColor: textColor,
                 ),
               RichText(
                 text: TextSpan(
