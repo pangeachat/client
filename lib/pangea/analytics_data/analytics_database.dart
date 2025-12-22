@@ -337,7 +337,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
   Future<ConstructUses> getConstructUse(
     List<ConstructIdentifier> ids,
   ) async {
-    Logs().i("Construct IDs: ${ids.map((id) => id.string).toList()}");
     assert(ids.isNotEmpty);
 
     final ConstructUses construct = ConstructUses(
@@ -347,7 +346,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
       category: ids.first.category,
     );
 
-    Logs().i("Construct IDs: ${ids.map((id) => id.string).toList()}");
     assert(ids.isNotEmpty);
 
     for (final id in ids) {
