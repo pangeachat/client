@@ -1,7 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -14,7 +10,6 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -184,32 +179,6 @@ class PangeaToken {
     );
   }
 
-  /// lastUsed by activity type, construct and form
-  DateTime? _lastUsedByActivityType(
-    ActivityTypeEnum a,
-    MorphFeaturesEnum? feature,
-  ) {
-    if (a == ActivityTypeEnum.morphId && feature == null) {
-      debugger(when: kDebugMode);
-      return null;
-    }
-    final ConstructIdentifier? cId = a == ActivityTypeEnum.morphId
-        ? morphIdByFeature(feature!)
-        : vocabConstructID;
-
-    if (cId == null) return null;
-    return MatrixState.pangeaController.matrixState.analyticsDataService
-        .lastUsedByForm(cId, text.content);
-  }
-
-  /// daysSinceLastUse by activity type
-  /// returns 1000 if there is no last use
-  int daysSinceLastUseByType(ActivityTypeEnum a, MorphFeaturesEnum? feature) {
-    final lastUsed = _lastUsedByActivityType(a, feature);
-    if (lastUsed == null) return 20;
-    return DateTime.now().difference(lastUsed).inDays;
-  }
-
   ConstructIdentifier get vocabConstructID => ConstructIdentifier(
         lemma: lemma.text,
         type: ConstructTypeEnum.vocab,
@@ -246,15 +215,6 @@ class PangeaToken {
           category: f.name,
         );
       }).toList();
-
-  /// [0,infinity) - a higher number means higher priority
-  int activityPriorityScore(
-    ActivityTypeEnum a,
-    MorphFeaturesEnum? morphFeature,
-  ) {
-    return daysSinceLastUseByType(a, morphFeature) *
-        (vocabConstructID.isContentWord ? 10 : 9);
-  }
 
   bool eligibleForPractice(ActivityTypeEnum activityType) {
     switch (activityType) {

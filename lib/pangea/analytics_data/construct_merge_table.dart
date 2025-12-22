@@ -2,51 +2,12 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-
-class LastUsedSummary {
-  DateTime? lastUsed;
-  final Map<ConstructUseTypeEnum, DateTime> lastUsedByType;
-  final Map<String, DateTime> lastUsedByForm;
-
-  LastUsedSummary({
-    required this.lastUsedByType,
-    required this.lastUsedByForm,
-  });
-
-  void setLastUsed(DateTime timestamp) {
-    if (lastUsed == null || timestamp.isAfter(lastUsed!)) {
-      lastUsed = timestamp;
-    }
-  }
-
-  void setLastUsedByType(
-    ConstructUseTypeEnum type,
-    DateTime timestamp,
-  ) {
-    final existing = lastUsedByType[type];
-    if (existing == null || timestamp.isAfter(existing)) {
-      lastUsedByType[type] = timestamp;
-    }
-  }
-
-  void setLastUsedByForm(
-    String form,
-    DateTime timestamp,
-  ) {
-    final existing = lastUsedByForm[form];
-    if (existing == null || timestamp.isAfter(existing)) {
-      lastUsedByForm[form] = timestamp;
-    }
-  }
-}
 
 class ConstructMergeTable {
   Map<String, Set<ConstructIdentifier>> lemmaTypeGroups = {};
   Map<ConstructIdentifier, ConstructIdentifier> otherToSpecific = {};
-  Map<ConstructIdentifier, LastUsedSummary> lastUsedCache = {};
 
   void addConstructs(List<ConstructUses> constructs) {
     addConstructsByUses(constructs.expand((c) => c.uses).toList());
@@ -57,17 +18,6 @@ class ConstructMergeTable {
       final id = use.identifier;
       final composite = id.compositeKey;
       (lemmaTypeGroups[composite] ??= {}).add(id);
-
-      lastUsedCache[id] ??= LastUsedSummary(
-        lastUsedByType: {},
-        lastUsedByForm: {},
-      );
-      lastUsedCache[id]!.setLastUsed(use.metadata.timeStamp);
-      lastUsedCache[id]!.setLastUsedByType(use.useType, use.metadata.timeStamp);
-      lastUsedCache[id]!.setLastUsedByForm(
-        use.form ?? use.lemma,
-        use.metadata.timeStamp,
-      );
     }
 
     for (final use in uses) {
@@ -147,18 +97,8 @@ class ConstructMergeTable {
   bool constructUsed(ConstructIdentifier id) =>
       lemmaTypeGroups[id.compositeKey]?.contains(id) ?? false;
 
-  LastUsedSummary? _getLastUsedSummary(ConstructIdentifier id) =>
-      lastUsedCache[resolve(id)];
-
-  DateTime? getLastUsedByForm(
-    ConstructIdentifier id,
-    String form,
-  ) =>
-      _getLastUsedSummary(id)?.lastUsedByForm[form];
-
   void clear() {
     lemmaTypeGroups.clear();
     otherToSpecific.clear();
-    lastUsedCache.clear();
   }
 }

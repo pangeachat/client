@@ -24,7 +24,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 class PracticeController with ChangeNotifier {
   final PangeaMessageEvent pangeaMessageEvent;
 
-  PracticeController(this.pangeaMessageEvent);
+  PracticeController(this.pangeaMessageEvent) {
+    _fetchPracticeSelection();
+  }
 
   PracticeActivityModel? _activity;
 
@@ -35,14 +37,7 @@ class PracticeController with ChangeNotifier {
 
   PracticeActivityModel? get activity => _activity;
 
-  PracticeSelection? get practiceSelection =>
-      pangeaMessageEvent.messageDisplayRepresentation?.tokens != null
-          ? PracticeSelectionRepo.get(
-              pangeaMessageEvent.eventId,
-              pangeaMessageEvent.messageDisplayLangCode,
-              pangeaMessageEvent.messageDisplayRepresentation!.tokens!,
-            )
-          : null;
+  PracticeSelection? practiceSelection;
 
   bool get isTotallyDone =>
       isPracticeActivityDone(ActivityTypeEnum.emoji) &&
@@ -88,6 +83,15 @@ class PracticeController with ChangeNotifier {
 
     return selectedChoice == null &&
         !_activity!.practiceTarget.hasAnyCorrectChoices;
+  }
+
+  Future<void> _fetchPracticeSelection() async {
+    if (pangeaMessageEvent.messageDisplayRepresentation?.tokens == null) return;
+    practiceSelection = await PracticeSelectionRepo.get(
+      pangeaMessageEvent.eventId,
+      pangeaMessageEvent.messageDisplayLangCode,
+      pangeaMessageEvent.messageDisplayRepresentation!.tokens!,
+    );
   }
 
   Future<Result<PracticeActivityModel>> fetchActivityModel(

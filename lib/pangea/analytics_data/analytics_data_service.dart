@@ -181,9 +181,6 @@ class AnalyticsDataService {
   bool hasUsedConstruct(ConstructIdentifier id) =>
       _mergeTable.constructUsed(id);
 
-  DateTime? lastUsedByForm(ConstructIdentifier id, String form) =>
-      _mergeTable.getLastUsedByForm(id, form);
-
   int uniqueConstructsByType(ConstructTypeEnum type) =>
       _mergeTable.uniqueConstructsByType(type);
 
