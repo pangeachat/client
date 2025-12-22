@@ -11794,5 +11794,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Čakáme na dokončenie prihlásenia",
+  "ssoDialogDesc": "Otvárame novú kartu, aby ste sa mohli prihlásiť bezpečne.",
+  "ssoDialogHelpText": "🤔 Ak ste nevideli novú kartu, skontrolujte prosím svoj blokovač vyskakovacích okien.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

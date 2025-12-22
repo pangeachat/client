@@ -11500,5 +11500,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "サインインの完了を待っています",
+  "ssoDialogDesc": "安全にサインインできるように新しいタブを開きました。",
+  "ssoDialogHelpText": "🤔 新しいタブが表示されない場合は、ポップアップブロッカーを確認してください。",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

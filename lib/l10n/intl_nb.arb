@@ -11803,5 +11803,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Venter på at påloggingen skal fullføres",
+  "ssoDialogDesc": "Vi åpnet en ny fane slik at du kan logge inn sikkert.",
+  "ssoDialogHelpText": "🤔 Hvis du ikke så den nye fanen, vennligst sjekk popup-blokkeringen din.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

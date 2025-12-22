@@ -11791,5 +11791,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Čakanje na dokončanje prijave",
+  "ssoDialogDesc": "Odprli smo nov zavihek, da se lahko varno prijavite.",
+  "ssoDialogHelpText": "🤔 Če niste videli novega zavihka, preverite svoj blokator pojavnih oken.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

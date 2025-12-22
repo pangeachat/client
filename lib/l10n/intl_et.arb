@@ -10981,5 +10981,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Ootame sisselogimise lõpetamist",
+  "ssoDialogDesc": "Avasime uue vahekaart, et saaksite turvaliselt sisse logida.",
+  "ssoDialogHelpText": "🤔 Kui te ei näinud uut vahekaarti, kontrollige palun oma hüpikakna blokeerijat.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

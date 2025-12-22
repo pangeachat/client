@@ -11812,5 +11812,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Čekanje na završetak prijavljivanja",
+  "ssoDialogDesc": "Otvorili smo novu karticu kako biste se mogli sigurno prijaviti.",
+  "ssoDialogHelpText": "🤔 Ako niste videli novu karticu, molimo proverite svoj blokator iskačućih prozora.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -8,6 +8,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
+import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
 import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
 
 class LoginOptionsView extends StatelessWidget {
@@ -35,17 +36,13 @@ class LoginOptionsView extends StatelessWidget {
               spacing: 16.0,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                PangeaSsoButton(
+                const PangeaSsoButton(
                   provider: SSOProvider.apple,
                   title: "Apple",
-                  loading: controller.loadingAppleSSO,
-                  setLoading: controller.setLoadingSSO,
                 ),
-                PangeaSsoButton(
+                const PangeaSsoButton(
                   provider: SSOProvider.google,
                   title: "Google",
-                  loading: controller.loadingGoogleSSO,
-                  setLoading: controller.setLoadingSSO,
                 ),
                 ElevatedButton(
                   onPressed: () => context.go('/home/login/email'),

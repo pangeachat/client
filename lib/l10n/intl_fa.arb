@@ -11442,5 +11442,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "در حال انتظار برای تکمیل ورود",
+  "ssoDialogDesc": "ما یک تب جدید باز کردیم تا شما بتوانید به صورت امن وارد شوید.",
+  "ssoDialogHelpText": "🤔 اگر تب جدید را ندیدید، لطفاً مسدودکننده پاپ آپ خود را بررسی کنید.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

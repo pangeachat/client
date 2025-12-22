@@ -10696,5 +10696,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Gaidām, kamēr pieteikšanās tiks pabeigta",
+  "ssoDialogDesc": "Mēs atvērām jaunu cilni, lai jūs varētu droši pieteikties.",
+  "ssoDialogHelpText": "🤔 Ja neredzējāt jauno cilni, lūdzu, pārbaudiet savu uznirstošo logu bloķētāju.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

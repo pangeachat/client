@@ -7,7 +7,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/authentication/p_login.dart';
 import 'package:fluffychat/pangea/login/pages/login_options_view.dart';
 import 'package:fluffychat/pangea/login/pages/pangea_login_view.dart';
-import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -43,8 +42,6 @@ class LoginController extends State<Login> {
 
   // #Pangea
   bool loadingSignIn = false;
-  bool loadingAppleSSO = false;
-  bool loadingGoogleSSO = false;
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -95,17 +92,6 @@ class LoginController extends State<Login> {
     if (mounted) {
       setState(() => loadingSignIn = loading);
     }
-  }
-
-  void setLoadingSSO(bool loading, SSOProvider provider) {
-    if (provider == SSOProvider.apple) {
-      loadingAppleSSO = loading;
-      loadingGoogleSSO = false;
-    } else if (provider == SSOProvider.google) {
-      loadingGoogleSSO = loading;
-      loadingAppleSSO = false;
-    }
-    if (mounted) setState(() {});
   }
 
   void login() async => pLoginAction(controller: this, context: context);

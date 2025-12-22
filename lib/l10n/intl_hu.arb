@@ -10711,5 +10711,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Várakozás a bejelentkezés befejezésére",
+  "ssoDialogDesc": "Megnyitottunk egy új lapot, hogy biztonságosan be tudj jelentkezni.",
+  "ssoDialogHelpText": "🤔 Ha nem láttad az új lapot, kérlek ellenőrizd a felugró ablak blokkolódat.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

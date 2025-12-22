@@ -10708,5 +10708,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "等待登入完成",
+  "ssoDialogDesc": "我們已開啟一個新標籤頁，以便您安全地登入。",
+  "ssoDialogHelpText": "🤔 如果您沒有看到新標籤頁，請檢查您的彈出式窗口阻擋器。",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }
