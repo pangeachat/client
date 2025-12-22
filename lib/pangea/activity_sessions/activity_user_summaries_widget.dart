@@ -108,6 +108,8 @@ class ButtonControlledCarouselView extends StatelessWidget {
       return const SizedBox();
     }
 
+    final cardWidth = isColumnMode ? 400.0 : 350.0;
+
     return Column(
       children: [
         SizedBox(
@@ -125,7 +127,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                 (role) => role.userId == p.participantId,
               );
               return Container(
-                width: isColumnMode ? 400.0 : 350.0,
+                width: cardWidth,
                 margin: const EdgeInsets.only(right: 5.0),
                 padding: const EdgeInsets.all(12.0),
                 decoration: ShapeDecoration(
@@ -255,8 +257,32 @@ class ButtonControlledCarouselView extends StatelessWidget {
                   selected: highlightedRole?.id == userRole.id,
                   onTap: () {
                     controller.activityController.highlightRole(userRole);
-                    controller.activityController.carouselController
-                        .jumpTo(i * 250.0);
+
+                    final scrollController =
+                        controller.activityController.carouselController;
+
+                    if (!scrollController.hasClients) return;
+
+                    const spacing = 5.0;
+                    final itemExtent = cardWidth + spacing;
+
+                    final viewportWidth =
+                        scrollController.position.viewportDimension;
+
+                    final itemCenter = (i * itemExtent) + (cardWidth / 2);
+
+                    final targetOffset = itemCenter - (viewportWidth / 2);
+
+                    final clampedOffset = targetOffset.clamp(
+                      scrollController.position.minScrollExtent,
+                      scrollController.position.maxScrollExtent,
+                    );
+
+                    scrollController.animateTo(
+                      clampedOffset,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOutCubic,
+                    );
                   },
                 );
               }).toList(),
