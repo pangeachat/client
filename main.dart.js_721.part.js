@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Du har satt emoji for " + lemma + "! Vi vil bruke denne emojien for \xe5 representere ordet i praksisaktiviteter fremover.";
     },
+    get$ssoDialogTitle() {
+      return "Venter p\xe5 at p\xe5loggingen skal fullf\xf8res";
+    },
+    get$ssoDialogDesc() {
+      return "Vi \xe5pnet en ny fane slik at du kan logge inn sikkert.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Hvis du ikke s\xe5 den nye fanen, vennligst sjekk popup-blokkeringen din.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IacYpsxxtnkfkpewEbd5HbDeJRc="] = d.current;
+  d["4tbTeRmvBx3fKxqQo+XeLCiv2p4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

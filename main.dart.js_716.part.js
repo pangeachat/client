@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "J\u016bs esat iestat\u012bjis emocijz\u012bmi " + lemma + "! M\u0113s izmantosim \u0161o emocijz\u012bmi, lai p\u0101rst\u0101v\u0113tu v\u0101rdu praktiskaj\u0101s aktivit\u0101t\u0113s turpm\u0101k.";
     },
+    get$ssoDialogTitle() {
+      return "Gaid\u0101m, kam\u0113r pieteik\u0161an\u0101s tiks pabeigta";
+    },
+    get$ssoDialogDesc() {
+      return "M\u0113s atv\u0113r\u0101m jaunu cilni, lai j\u016bs var\u0113tu dro\u0161i pieteikties.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Ja neredz\u0113j\u0101t jauno cilni, l\u016bdzu, p\u0101rbaudiet savu uznirsto\u0161o logu blo\u0137\u0113t\u0101ju.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3kugO3LHgeL/3pSjwR849jG7M7E="] = d.current;
+  d["gyOCihh2lt3WrAP+LejVfkXzsrk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Nastavili ste emoji pre " + lemma + "! Tento emoji budeme pou\u017e\xedva\u0165 na reprezent\xe1ciu slova v praktick\xfdch aktivit\xe1ch v bud\xfacnosti.";
     },
+    get$ssoDialogTitle() {
+      return "\u010cak\xe1me na dokon\u010denie prihl\xe1senia";
+    },
+    get$ssoDialogDesc() {
+      return "Otv\xe1rame nov\xfa kartu, aby ste sa mohli prihl\xe1si\u0165 bezpe\u010dne.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Ak ste nevideli nov\xfa kartu, skontrolujte pros\xedm svoj blokova\u010d vyskakovac\xedch okien.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/1PdO7B9q9e1iD/LQ/mQZfTKUDE="] = d.current;
+  d["O7PHqv5t6YKPBxGgXE69fklI/oU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "T\xfa setaste an emoji pa " + lemma + "! Usaremos este emoji pa representar la palabra en les actividaes de pr\xe1ctica d'ora en adelante.";
     },
+    get$ssoDialogTitle() {
+      return "Acht na sign in a chr\xedochn\xfa";
+    },
+    get$ssoDialogDesc() {
+      return "Oscla\xedomar cluais nua ionas go bhf\xe9adfaidh t\xfa s\xedni\xfa isteach go s\xe1bh\xe1ilte.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 M\xe1 chonaic t\xfa an cluais nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FQ0cBSJ8x0e8xn62RIJq1x26NzQ="] = d.current;
+  d["R88X2cfxvRci7qtzNF9iYHgT+9o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_695.part.js.map

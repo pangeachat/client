@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Postavili ste emoji za " + lemma + "! Ovaj emoji \u0107emo koristiti da predstavimo re\u010d u prakti\u010dnim aktivnostima ubudu\u0107e.";
     },
+    get$ssoDialogTitle() {
+      return "\u010cekanje na zavr\u0161etak prijavljivanja";
+    },
+    get$ssoDialogDesc() {
+      return "Otvorili smo novu karticu kako biste se mogli sigurno prijaviti.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Ako niste videli novu karticu, molimo proverite svoj blokator iska\u010du\u0107ih prozora.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tDskIA/mb1orLZhddYQlEDAD0fU="] = d.current;
+  d["OGMs9y2MmeeogQAjHp5X9bfChXY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

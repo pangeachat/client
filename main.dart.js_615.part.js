@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Estableciches o emoji para " + lemma + "! Usaremos este emoji para representar a palabra nas actividades pr\xe1cticas a partir de agora.";
     },
+    get$ssoDialogTitle() {
+      return "Agardando a finalizaci\xf3n do inicio de sesi\xf3n";
+    },
+    get$ssoDialogDesc() {
+      return "Abrimos unha nova pestana para que poidas iniciar sesi\xf3n de forma segura.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Se non ves a nova pestana, por favor, verifica o teu bloqueador de vent\xe1s emerxentes.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aJeVlXLr6x17gJzmb7i0GQYs6DA="] = d.current;
+  d["sP6xwnuemYZbRIs/sCsdQATwgvQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_615.part.js.map

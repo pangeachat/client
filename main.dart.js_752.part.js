@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Du har st\xe4llt in emojin f\xf6r " + lemma + "! Vi kommer att anv\xe4nda denna emoji f\xf6r att representera ordet i praktiska aktiviteter fram\xf6ver.";
     },
+    get$ssoDialogTitle() {
+      return "V\xe4ntar p\xe5 att inloggningen ska slutf\xf6ras";
+    },
+    get$ssoDialogDesc() {
+      return "Vi har \xf6ppnat en ny flik s\xe5 att du kan logga in s\xe4kert.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Om du inte s\xe5g den nya fliken, v\xe4nligen kontrollera din popup-blockerare.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OOdQWKu4Ic2TlVyFmyDN4wVcalY="] = d.current;
+  d["GpFqGiQ5bNSqnRXZCxbnwi+tH0c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

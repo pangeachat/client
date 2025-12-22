@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return lemma + " i\xe7in emojiyi ayarlad\u0131n\u0131z! Bu emojiyi, pratik aktivitelerde kelimeyi temsil etmek i\xe7in kullanaca\u011f\u0131z.";
     },
+    get$ssoDialogTitle() {
+      return "Giri\u015fin tamamlanmas\u0131n\u0131 bekliyoruz";
+    },
+    get$ssoDialogDesc() {
+      return "G\xfcvenli bir \u015fekilde giri\u015f yapabilmeniz i\xe7in yeni bir sekme a\xe7t\u0131k.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Yeni sekmeyi g\xf6rmediyseniz, l\xfctfen a\xe7\u0131l\u0131r pencere engelleyicinizi kontrol edin.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C8dxOPM5yu1usNshFfDTs4aGHE0="] = d.current;
+  d["NvGy/XFU7LbeNvHZRef9rNhOknw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

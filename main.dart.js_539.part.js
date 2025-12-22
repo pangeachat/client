@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Oled seadnud emotikoni " + lemma + " jaoks! Kasutame seda emotikoni s\xf5na esindamiseks praktika tegevustes edaspidi.";
     },
+    get$ssoDialogTitle() {
+      return "Ootame sisselogimise l\xf5petamist";
+    },
+    get$ssoDialogDesc() {
+      return "Avasime uue vahekaart, et saaksite turvaliselt sisse logida.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Kui te ei n\xe4inud uut vahekaarti, kontrollige palun oma h\xfcpikakna blokeerijat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sD8JsVD8HCct3DsE+2l/kPdm3e8="] = d.current;
+  d["eOaVSa0si8tj/G5VNEDs3+NqX6o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

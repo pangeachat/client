@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "T\xe1 an emoji socraithe agat do " + lemma + "! \xdas\xe1idfimid an emoji seo chun an focal a chur in i\xfal i ngn\xedomha\xedochta\xed cleachtais amach anseo.";
     },
+    get$ssoDialogTitle() {
+      return "Ag fanacht le s\xedni\xfa isteach a chr\xedochn\xfa";
+    },
+    get$ssoDialogDesc() {
+      return "Oscl\xf3imid cluais\xedn nua ionas gur f\xe9idir leat s\xedni\xfa isteach go s\xe1bh\xe1ilte.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 M\xe1 chonaic t\xfa an cluais\xedn nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1Thl4RaUu4elFNeFl4r0KYRctfY="] = d.current;
+  d["yBvAAerobjbbq+K8AjG/drXhC+E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

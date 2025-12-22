@@ -5244,6 +5244,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "A\u2019n setti emoji p\xebr " + lemma + "! Ne do ta p\xebrdorim k\xebt\xeb emoji p\xebr t\xeb p\xebrfaq\xebsuar fjal\xebn n\xeb aktivitetet praktike n\xeb vazhdim.";
     },
+    get$ssoDialogTitle() {
+      return "Nunggu kanggo mlebu rampung";
+    },
+    get$ssoDialogDesc() {
+      return "Kita wis mbukak tab anyar supaya sampeyan bisa mlebu kanthi aman.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Yen sampeyan ora ndeleng tab anyar, mangga priksa pemblokir popup sampeyan.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5270,7 +5279,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1uOssVmCe/8sqwREEzfJRzaTHZ4="] = d.current;
+  d["tFWogN7g0xRY6fPsQG/XPkLZkkU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

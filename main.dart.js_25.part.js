@@ -5254,6 +5254,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
     },
+    get$ssoDialogTitle() {
+      return "Aguardando a conclus\xe3o do login";
+    },
+    get$ssoDialogDesc() {
+      return string$.Abrimo;
+    },
+    get$ssoDialogHelpText() {
+      return string$.ud83e__Se_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10481,6 +10490,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     emojiSelectedSnackbar$1(lemma) {
       return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
+    },
+    get$ssoDialogTitle() {
+      return "Aguardando a conclus\xe3o do login";
+    },
+    get$ssoDialogDesc() {
+      return string$.Abrimo;
+    },
+    get$ssoDialogHelpText() {
+      return string$.ud83e__Se_;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15710,6 +15728,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
     },
+    get$ssoDialogTitle() {
+      return "Aguardando a conclus\xe3o do login";
+    },
+    get$ssoDialogDesc() {
+      return string$.Abrimo;
+    },
+    get$ssoDialogHelpText() {
+      return string$.ud83e__Se_;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15735,6 +15762,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     A_capaod: "A capacidade do chat deve ser pelo menos ",
     A_capaol: "A capacidade do chat limita o n\xfamero de membros permitidos em um chat.",
     A_outr: "A outra parte atualmente n\xe3o est\xe1 conectada e, portanto, n\xe3o pode receber mensagens!",
+    Abrimo: "Abrimos uma nova aba para que voc\xea possa fazer login com seguran\xe7a.",
     Aceita: "Aceitar esta solicita\xe7\xe3o de verifica\xe7\xe3o de ",
     Aguard: "Aguardando o parceiro aceitar os n\xfameros\u2026",
     Ainda_: "Ainda n\xe3o foi criada uma descri\xe7\xe3o do curso.",
@@ -15892,12 +15920,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     xc9_aqui: "\xc9 aqui que as palavras de vocabul\xe1rio ir\xe3o aparecer assim que voc\xea as evoluir!",
     u201d_est_: "\u201d est\xe3o solicitando visualizar suas an\xe1lises de aprendizado.\n\nSe voc\xea concordar, eles poder\xe3o visualizar seu:\n    \u2022 vocabul\xe1rio total\n    \u2022 total de conceitos gramaticais\n    \u2022 total de sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o visualizar seu:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
     u2022_Canc: "\u2022 Cancelar a qualquer momento nas configura\xe7\xf5es de assinatura",
-    u2022_soli: "\u2022 solicita\xe7\xe3o para entrar e aprova\xe7\xe3o do administrador"
+    u2022_soli: "\u2022 solicita\xe7\xe3o para entrar e aprova\xe7\xe3o do administrador",
+    ud83e__Se_: "\ud83e\udd14 Se voc\xea n\xe3o viu a nova aba, verifique seu bloqueador de pop-ups."
   };
 };
 ;
 (d => {
-  d["iBw1K5oLqX3wZt3yQGE0pOQ7R48="] = d.current;
+  d["4q13L8XtIYDh6IONEbR8QgMS8NM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

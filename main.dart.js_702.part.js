@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Hai impostato l'emoji per " + lemma + "! Useremo questa emoji per rappresentare la parola nelle attivit\xe0 pratiche in futuro.";
     },
+    get$ssoDialogTitle() {
+      return "In attesa del completamento dell'accesso";
+    },
+    get$ssoDialogDesc() {
+      return "Abbiamo aperto una nuova scheda in modo che tu possa accedere in modo sicuro.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nNboLtJXtE6q2EdyXfAS2tVmBdc="] = d.current;
+  d["pHo8CLgVEbl2Ezloc4fMZDr4kGc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

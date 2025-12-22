@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Anda telah menetapkan emoji untuk " + lemma + "! Kami akan menggunakan emoji ini untuk mewakili kata dalam aktivitas praktik ke depan.";
     },
+    get$ssoDialogTitle() {
+      return "Menunggu penyelesaian masuk";
+    },
+    get$ssoDialogDesc() {
+      return "Kami membuka tab baru agar Anda dapat masuk dengan aman.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0SA7i/w4z8XHLMZeYt35f2DaW0E="] = d.current;
+  d["TJ+iLz6G01IC/lS/OmFm0IBupOM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

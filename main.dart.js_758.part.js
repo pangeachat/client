@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "B\u1ea1n \u0111\xe3 \u0111\u1eb7t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho " + lemma + "! Ch\xfang t\xf4i s\u1ebd s\u1eed d\u1ee5ng bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac n\xe0y \u0111\u1ec3 \u0111\u1ea1i di\u1ec7n cho t\u1eeb trong c\xe1c ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh trong t\u01b0\u01a1ng lai.";
     },
+    get$ssoDialogTitle() {
+      return "\u0110ang ch\u1edd ho\xe0n t\u1ea5t \u0111\u0103ng nh\u1eadp";
+    },
+    get$ssoDialogDesc() {
+      return "Ch\xfang t\xf4i \u0111\xe3 m\u1edf m\u1ed9t tab m\u1edbi \u0111\u1ec3 b\u1ea1n c\xf3 th\u1ec3 \u0111\u0103ng nh\u1eadp m\u1ed9t c\xe1ch an to\xe0n.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 N\u1ebfu b\u1ea1n kh\xf4ng th\u1ea5y tab m\u1edbi, vui l\xf2ng ki\u1ec3m tra tr\xecnh ch\u1eb7n popup c\u1ee7a b\u1ea1n.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Gm+UW/YMvz1e36OSwMmrKsWjdfU="] = d.current;
+  d["WwQJCU1QyePMrpk7cYYd3Ir0t/c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

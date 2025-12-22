@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Vi havas metitan la emoji por " + lemma + "! Ni uzos \u0109i tiun emoji por reprezenti la vorton en praktikaj aktivadoj en la estonteco.";
     },
+    get$ssoDialogTitle() {
+      return "Atendante, ke ensaluto fini\u011du";
+    },
+    get$ssoDialogDesc() {
+      return "Ni malfermis novan langeton por ke vi povu ensaluti sekure.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Se vi ne vidis la novan langeton, bonvolu kontroli vian popup-blokilon.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mFCgs6hgjS0rQKb9yKP2gqTvqBw="] = d.current;
+  d["8Ldqwv1ahYyVHBv8D3rvXe/2R6c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

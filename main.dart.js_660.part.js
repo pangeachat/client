@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Be\xe1ll\xedtottad a " + lemma + " emoji-t! Ezt az emojit fogjuk haszn\xe1lni a sz\xf3 k\xe9pviselet\xe9re a gyakorlati tev\xe9kenys\xe9gek sor\xe1n a j\xf6v\u0151ben.";
     },
+    get$ssoDialogTitle() {
+      return "V\xe1rakoz\xe1s a bejelentkez\xe9s befejez\xe9s\xe9re";
+    },
+    get$ssoDialogDesc() {
+      return "Megnyitottunk egy \xfaj lapot, hogy biztons\xe1gosan be tudj jelentkezni.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Ha nem l\xe1ttad az \xfaj lapot, k\xe9rlek ellen\u0151rizd a felugr\xf3 ablak blokkol\xf3dat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9z+sZLHxU5j0072Uf0MiyCW9Rv4="] = d.current;
+  d["eVvYAwxGoHmn0zYoWoC31oDUkX4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

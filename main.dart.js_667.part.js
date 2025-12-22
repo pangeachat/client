@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "A\u021bi setat emoji-ul pentru " + lemma + "! Vom folosi acest emoji pentru a reprezenta cuv\xe2ntul \xeen activit\u0103\u021bile practice de acum \xeenainte.";
     },
+    get$ssoDialogTitle() {
+      return "Atingindo para a conclus\xe3o do login";
+    },
+    get$ssoDialogDesc() {
+      return "Abrimos uma nova aba para que voc\xea possa fazer login com seguran\xe7a.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Se voc\xea n\xe3o viu a nova aba, verifique seu bloqueador de pop-ups.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pFtkJOInywT9fcMVWEalLQUZPzI="] = d.current;
+  d["2EZwEuTDwfsrVxkzsZooM4sZZVo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

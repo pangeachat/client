@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Olet asettanut emojin " + lemma + " varten! K\xe4yt\xe4mme t\xe4t\xe4 emojia sanan edustamiseen k\xe4yt\xe4nn\xf6n aktiviteeteissa tulevaisuudessa.";
     },
+    get$ssoDialogTitle() {
+      return "Odotetaan kirjautumisen valmistumista";
+    },
+    get$ssoDialogDesc() {
+      return "Avasimme uuden v\xe4lilehden, jotta voit kirjautua sis\xe4\xe4n turvallisesti.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Jos et n\xe4hnyt uutta v\xe4lilehte\xe4, tarkista ponnahdusikkunoiden est\xe4j\xe4si.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CBAFcZVPKmp+HGcu8IL++UlCk5o="] = d.current;
+  d["6DQAz8/ZoZCCbRnda0H4fahjlQ4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map

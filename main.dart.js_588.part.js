@@ -5242,6 +5242,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Naitakda mo na ang emoji para sa " + lemma + "! Gagamitin namin ang emoji na ito upang kumatawan sa salita sa mga aktibidad sa pagsasanay mula ngayon.";
     },
+    get$ssoDialogTitle() {
+      return "Naghihintay na makumpleto ang pag-sign in";
+    },
+    get$ssoDialogDesc() {
+      return "Nagbukas kami ng bagong tab upang makapag-sign in ka nang ligtas.";
+    },
+    get$ssoDialogHelpText() {
+      return "\ud83e\udd14 Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q8CsCGqvSHeqEIQxAwwfQ0ioPik="] = d.current;
+  d["J23lCsl2py7RKKqug4c5XShWPEo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map
