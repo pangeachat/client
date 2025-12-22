@@ -523,9 +523,12 @@ class InputBar extends StatelessWidget {
             // decoration: decoration!,
             // Pangea#
             decoration: decoration.copyWith(
+              // #Pangea
+              // hint: ShrinkableText(
               hint: SizedBox(
                 height: 24,
                 child: ShrinkableText(
+                  // Pangea#
                   text: choreographer.itController.open.value
                       ? L10n.of(context).buildTranslation
                       : _defaultHintText(context),
