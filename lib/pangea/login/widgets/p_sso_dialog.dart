@@ -7,8 +7,6 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
 class SSODialog extends StatefulWidget {
   final Future<void> Function() future;
@@ -53,55 +51,82 @@ class SSODialogState extends State<SSODialog> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog.adaptive(
-      title: _error == null
-          ? ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 256),
-              child: Text(L10n.of(context).ssoDialogTitle),
-            )
-          : Icon(
-              Icons.error_outline_outlined,
-              color: Theme.of(context).colorScheme.error,
-              size: 48,
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      child: Container(
+        padding: const EdgeInsets.all(12.0),
+        constraints: const BoxConstraints(maxWidth: 450),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: const Icon(Icons.close),
+              ),
             ),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 256),
-        child: _error == null
-            ? Column(
+            _error == null
+                ? Text(
+                    L10n.of(context).ssoDialogTitle,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                    textAlign: TextAlign.center,
+                  )
+                : Icon(
+                    Icons.error_outline_outlined,
+                    color: Theme.of(context).colorScheme.error,
+                    size: 48,
+                  ),
+            Container(
+              alignment: Alignment.center,
+              constraints: const BoxConstraints(minHeight: 150),
+              padding: const EdgeInsets.all(4.0),
+              child: Column(
+                spacing: 16.0,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  SelectableLinkify(
-                    text: L10n.of(context).ssoDialogDesc,
-                    textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
-                    linkStyle: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      decorationColor: Theme.of(context).colorScheme.primary,
+                  if (_error != null)
+                    Text(
+                      _error!.toLocalizedString(context),
+                      style: Theme.of(context).textTheme.titleMedium,
+                      textAlign: TextAlign.center,
+                    )
+                  else ...[
+                    SelectableLinkify(
+                      text: L10n.of(context).ssoDialogDesc,
+                      textScaleFactor:
+                          MediaQuery.textScalerOf(context).scale(1),
+                      linkStyle: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        decorationColor: Theme.of(context).colorScheme.primary,
+                      ),
+                      options: const LinkifyOptions(humanize: false),
+                      onOpen: (url) =>
+                          UrlLauncher(context, url.url).launchUrl(),
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      textAlign: TextAlign.center,
                     ),
-                    options: const LinkifyOptions(humanize: false),
-                    onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
-                  ),
-                  const SizedBox(height: 16),
-                  _showHint
-                      ? Text(
-                          L10n.of(context).ssoDialogHelpText,
-                          style: Theme.of(context).textTheme.bodySmall,
-                        )
-                      : const SizedBox(
-                          height: 16.0,
-                          width: 16.0,
-                          child: CircularProgressIndicator.adaptive(),
-                        ),
+                    _showHint
+                        ? Text(
+                            L10n.of(context).ssoDialogHelpText,
+                            style: Theme.of(context).textTheme.bodyLarge,
+                            textAlign: TextAlign.center,
+                          )
+                        : const SizedBox(
+                            height: 16.0,
+                            width: 16.0,
+                            child: CircularProgressIndicator.adaptive(),
+                          ),
+                  ],
                 ],
-              )
-            : Text(_error!.toLocalizedString(context)),
-      ),
-      actions: [
-        AdaptiveDialogAction(
-          onPressed: () =>
-              Navigator.of(context).pop<OkCancelResult>(OkCancelResult.cancel),
-          child: Text(L10n.of(context).cancel),
+              ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
