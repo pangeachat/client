@@ -63,7 +63,7 @@ class AnalyticsDataService {
     _initDatabase(client);
   }
 
-  static const int morphUnlockXP = 30;
+  static const int _morphUnlockXP = 30;
 
   int _cacheVersion = 0;
   int _derivedCacheVersion = -1;
@@ -358,7 +358,7 @@ class AnalyticsDataService {
     final newUnlockedMorphs = morphIds.where((id) {
       final prevPoints = prevMorphs[id]?.points ?? 0;
       final newPoints = newMorphs[id]?.points ?? 0;
-      return prevPoints < morphUnlockXP && newPoints >= morphUnlockXP;
+      return prevPoints < _morphUnlockXP && newPoints >= _morphUnlockXP;
     }).toSet();
 
     if (newUnlockedMorphs.isNotEmpty) {

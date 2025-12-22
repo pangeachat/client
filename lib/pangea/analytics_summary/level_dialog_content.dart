@@ -15,14 +15,6 @@ class LevelDialogContent extends StatelessWidget {
     super.key,
   });
 
-  // GetAnalyticsController get analytics =>
-  //     MatrixState.pangeaController.getAnalytics;
-
-  // List<OneConstructUse> get uses => analytics.constructListModel.truncatedUses;
-
-  // bool get _loading =>
-  //     !MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted;
-
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
