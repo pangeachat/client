@@ -15,12 +15,14 @@ class TokenEmojiButton extends StatefulWidget {
   final PangeaToken? token;
   final String? targetId;
   final bool enabled;
+  final Color textColor;
 
   const TokenEmojiButton({
     super.key,
     required this.selectModeNotifier,
     required this.constructEmojiNotifier,
     required this.onTap,
+    required this.textColor,
     this.token,
     this.targetId,
     this.enabled = true,
@@ -106,7 +108,9 @@ class TokenEmojiButtonState extends State<TokenEmojiButton>
     final child = widget.enabled
         ? Text(
             _emoji ?? "-",
-            style: TextStyle(fontSize: buttonSize - 8.0),
+            style: TextStyle(fontSize: buttonSize - 8.0).copyWith(
+              color: widget.textColor,
+            ),
             textScaler: TextScaler.noScaling,
           )
         : null;

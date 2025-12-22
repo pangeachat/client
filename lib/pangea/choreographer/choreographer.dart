@@ -183,8 +183,8 @@ class Choreographer extends ChangeNotifier {
     }
     // update assistance state from no message => not fetched and vice versa
     if (_lastChecked == null ||
-        _lastChecked!.isEmpty ||
-        textController.text.isEmpty) {
+        _lastChecked!.trim().isEmpty ||
+        textController.text.trim().isEmpty) {
       notifyListeners();
     }
 
