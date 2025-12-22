@@ -469,6 +469,8 @@ class HtmlMessage extends StatelessWidget {
                               ReadingAssistanceMode.practiceMode,
                         ),
                       ),
+                      addBackground: pangeaMessageEvent!.ownMessage &&
+                          Theme.of(context).brightness != Brightness.light,
                       width: tokenWidth,
                       textColor: textColor,
                     ),
