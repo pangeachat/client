@@ -11515,5 +11515,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Laukiama, kol prisijungimas bus baigtas",
+  "ssoDialogDesc": "Atidarėme naują skirtuką, kad galėtumėte saugiai prisijungti.",
+  "ssoDialogHelpText": "🤔 Jei nematėte naujo skirtuko, patikrinkite savo iššokančių langų blokatorių.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

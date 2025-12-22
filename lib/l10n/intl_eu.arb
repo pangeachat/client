@@ -10710,5 +10710,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Saioa hasi arte itxaroten",
+  "ssoDialogDesc": "Segurtasunez saioa hasi dezazun, fitxa berri bat ireki dugu.",
+  "ssoDialogHelpText": "🤔 Fitxa berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -11801,5 +11801,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "等待登錄完成",
+  "ssoDialogDesc": "我們已經打開了一個新標籤，以便您可以安全地登錄。",
+  "ssoDialogHelpText": "🤔 如果您沒有看到新標籤，請檢查您的彈出窗口阻止程序。",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

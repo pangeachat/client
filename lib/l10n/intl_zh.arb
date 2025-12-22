@@ -10701,5 +10701,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "等待登录完成",
+  "ssoDialogDesc": "我们打开了一个新标签页，以便您可以安全地登录。",
+  "ssoDialogHelpText": "🤔 如果您没有看到新标签页，请检查您的弹出窗口拦截器。",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

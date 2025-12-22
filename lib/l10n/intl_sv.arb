@@ -11188,5 +11188,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Väntar på att inloggningen ska slutföras",
+  "ssoDialogDesc": "Vi har öppnat en ny flik så att du kan logga in säkert.",
+  "ssoDialogHelpText": "🤔 Om du inte såg den nya fliken, vänligen kontrollera din popup-blockerare.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

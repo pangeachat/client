@@ -5011,5 +5011,8 @@
         "type": "String"
       }
     }
-  }
+  },
+  "ssoDialogTitle": "Waiting for sign in to complete",
+  "ssoDialogDesc": "We opened a new tab so you can sign in securely.",
+  "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker."
 }

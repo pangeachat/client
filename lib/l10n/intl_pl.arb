@@ -10708,5 +10708,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Czekam na zakończenie logowania",
+  "ssoDialogDesc": "Otworzyliśmy nową kartę, abyś mógł się zalogować bezpiecznie.",
+  "ssoDialogHelpText": "🤔 Jeśli nie widzisz nowej karty, sprawdź swój blokadę wyskakujących okienek.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

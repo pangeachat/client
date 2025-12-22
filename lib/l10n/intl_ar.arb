@@ -10927,5 +10927,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "انتظار اكتمال تسجيل الدخول",
+  "ssoDialogDesc": "لقد فتحنا علامة تبويب جديدة حتى تتمكن من تسجيل الدخول بأمان.",
+  "ssoDialogHelpText": "🤔 إذا لم ترَ علامة التبويب الجديدة، يرجى التحقق من مانع النوافذ المنبثقة.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

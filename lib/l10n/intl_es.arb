@@ -7944,5 +7944,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Esperando a que se complete el inicio de sesión",
+  "ssoDialogDesc": "Abrimos una nueva pestaña para que puedas iniciar sesión de forma segura.",
+  "ssoDialogHelpText": "🤔 Si no viste la nueva pestaña, por favor revisa tu bloqueador de ventanas emergentes.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

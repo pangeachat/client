@@ -10710,5 +10710,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Wachten op het voltooien van de aanmelding",
+  "ssoDialogDesc": "We hebben een nieuw tabblad geopend zodat je veilig kunt inloggen.",
+  "ssoDialogHelpText": "🤔 Als je het nieuwe tabblad niet hebt gezien, controleer dan je pop-up blocker.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

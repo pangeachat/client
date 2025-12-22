@@ -10717,5 +10717,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Warten auf den Abschluss der Anmeldung",
+  "ssoDialogDesc": "Wir haben einen neuen Tab geöffnet, damit Sie sich sicher anmelden können.",
+  "ssoDialogHelpText": "🤔 Wenn Sie den neuen Tab nicht gesehen haben, überprüfen Sie bitte Ihren Popup-Blocker.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

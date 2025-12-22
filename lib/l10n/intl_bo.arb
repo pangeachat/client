@@ -10464,5 +10464,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Nunggu kanggo mlebu rampung",
+  "ssoDialogDesc": "Kita wis mbukak tab anyar supaya sampeyan bisa mlebu kanthi aman.",
+  "ssoDialogHelpText": "🤔 Yen sampeyan ora ndeleng tab anyar, mangga priksa pemblokir popup sampeyan.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

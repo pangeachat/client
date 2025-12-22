@@ -11759,5 +11759,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "ממתינים להשלים את הכניסה",
+  "ssoDialogDesc": "פתחנו לשונית חדשה כדי שתוכל להיכנס בצורה מאובטחת.",
+  "ssoDialogHelpText": "🤔 אם לא ראית את הלשונית החדשה, אנא בדוק את חוסם הפופ-אפ שלך.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -11768,5 +11768,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Περιμένοντας την ολοκλήρωση της σύνδεσης",
+  "ssoDialogDesc": "Ανοίξαμε μια νέα καρτέλα ώστε να μπορέσετε να συνδεθείτε με ασφάλεια.",
+  "ssoDialogHelpText": "🤔 Αν δεν είδατε τη νέα καρτέλα, παρακαλώ ελέγξτε τον αποκλειστή αναδυόμενων παραθύρων σας.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

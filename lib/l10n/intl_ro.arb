@@ -11445,5 +11445,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Așteptând finalizarea autentificării",
+  "ssoDialogDesc": "Am deschis un nou tab pentru a te putea autentifica în siguranță.",
+  "ssoDialogHelpText": "🤔 Dacă nu ai văzut noul tab, te rugăm să verifici blocatorul de feronete.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }
