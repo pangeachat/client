@@ -31,7 +31,6 @@ class TokenPracticeButton extends StatelessWidget {
   final TextStyle textStyle;
   final double width;
   final Color textColor;
-  final bool addBackground;
 
   const TokenPracticeButton({
     super.key,
@@ -40,7 +39,6 @@ class TokenPracticeButton extends StatelessWidget {
     required this.textStyle,
     required this.width,
     required this.textColor,
-    this.addBackground = false,
   });
 
   TextStyle get _emojiStyle => TextStyle(
@@ -83,7 +81,6 @@ class TokenPracticeButton extends StatelessWidget {
             target: _activity,
             emojiStyle: _emojiStyle,
             width: tokenButtonHeight,
-            addBackground: addBackground,
           );
         } else if (practiceMode == MessagePracticeMode.wordMorph) {
           child = _MorphMatchButton(
@@ -249,7 +246,6 @@ class _NoActivityContentButton extends StatelessWidget {
   final PracticeTarget? target;
   final TextStyle emojiStyle;
   final double width;
-  final bool addBackground;
 
   const _NoActivityContentButton({
     required this.practiceMode,
@@ -257,7 +253,6 @@ class _NoActivityContentButton extends StatelessWidget {
     required this.target,
     required this.emojiStyle,
     required this.width,
-    required this.addBackground,
   });
 
   @override
@@ -288,17 +283,19 @@ class _NoActivityContentButton extends StatelessWidget {
           child: SizedBox(
             width: width,
             child: Center(
-              child: IconButton.filled(
-                style: IconButton.styleFrom(
-                  backgroundColor: addBackground
-                      ? Theme.of(context).colorScheme.surface.withAlpha(180)
-                      : Colors.white.withAlpha(0),
-                ),
-                padding: const EdgeInsets.all(4),
-                onPressed: () => {},
-                icon: MorphIcon(
-                  morphFeature: morphFeature,
-                  morphTag: morphTag.lemma,
+              child: CircleAvatar(
+                radius: width / 2,
+                backgroundColor:
+                    Theme.of(context).brightness != Brightness.light
+                        ? Theme.of(context).colorScheme.surface.withAlpha(100)
+                        : null,
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: MorphIcon(
+                    morphFeature: morphFeature,
+                    morphTag: morphTag.lemma,
+                    size: Size.fromWidth(width - 8.0),
+                  ),
                 ),
               ),
             ),
