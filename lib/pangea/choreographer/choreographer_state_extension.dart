@@ -8,7 +8,7 @@ extension ChoregrapherStateExtension on Choreographer {
     final isSubscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
     if (isSubscribed == false) return AssistanceStateEnum.noSub;
-    if (currentText.isEmpty && itController.sourceText.value == null) {
+    if (currentText.trim().isEmpty && itController.sourceText.value == null) {
       return AssistanceStateEnum.noMessage;
     }
 
