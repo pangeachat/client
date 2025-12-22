@@ -10701,5 +10701,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Menunggu penyelesaian masuk",
+  "ssoDialogDesc": "Kami membuka tab baru agar Anda dapat masuk dengan aman.",
+  "ssoDialogHelpText": "🤔 Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

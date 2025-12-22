@@ -11034,5 +11034,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "En attente de la connexion",
+  "ssoDialogDesc": "Nous avons ouvert un nouvel onglet pour que vous puissiez vous connecter en toute sécurité.",
+  "ssoDialogHelpText": "🤔 Si vous n'avez pas vu le nouvel onglet, veuillez vérifier votre bloqueur de fenêtres contextuelles.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

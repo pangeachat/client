@@ -11739,5 +11739,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Aguardando a conclusão do login",
+  "ssoDialogDesc": "Abrimos uma nova aba para que você possa fazer login com segurança.",
+  "ssoDialogHelpText": "🤔 Se você não viu a nova aba, verifique seu bloqueador de pop-ups.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

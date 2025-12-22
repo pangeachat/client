@@ -10713,5 +10713,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "In attesa del completamento dell'accesso",
+  "ssoDialogDesc": "Abbiamo aperto una nuova scheda in modo che tu possa accedere in modo sicuro.",
+  "ssoDialogHelpText": "🤔 Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

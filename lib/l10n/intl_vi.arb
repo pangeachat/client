@@ -6280,5 +6280,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Đang chờ hoàn tất đăng nhập",
+  "ssoDialogDesc": "Chúng tôi đã mở một tab mới để bạn có thể đăng nhập một cách an toàn.",
+  "ssoDialogHelpText": "🤔 Nếu bạn không thấy tab mới, vui lòng kiểm tra trình chặn popup của bạn.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

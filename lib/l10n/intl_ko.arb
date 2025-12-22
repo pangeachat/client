@@ -10818,5 +10818,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "로그인 완료 대기 중",
+  "ssoDialogDesc": "안전하게 로그인할 수 있도록 새 탭을 열었습니다.",
+  "ssoDialogHelpText": "🤔 새 탭이 보이지 않으면 팝업 차단기를 확인하세요.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

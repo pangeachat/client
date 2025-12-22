@@ -10707,5 +10707,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Agardando a finalización do inicio de sesión",
+  "ssoDialogDesc": "Abrimos unha nova pestana para que poidas iniciar sesión de forma segura.",
+  "ssoDialogHelpText": "🤔 Se non ves a nova pestana, por favor, verifica o teu bloqueador de ventás emerxentes.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

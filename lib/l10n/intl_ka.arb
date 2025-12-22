@@ -11740,5 +11740,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "მოლოდინი შესვლის დასრულებამდე",
+  "ssoDialogDesc": "ჩვენ გავხსენით ახალი ჩანართი, რათა უსაფრთხოდ შეხვიდეთ.",
+  "ssoDialogHelpText": "🤔 თუ ახალი ჩანართი არ გინახავთ, გთხოვთ შეამოწმოთ თქვენი პოპ-აპ ბლოკერი.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

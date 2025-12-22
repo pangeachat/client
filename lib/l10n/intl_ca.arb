@@ -10734,5 +10734,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Esperant que la signatura es completi",
+  "ssoDialogDesc": "Hem obert una nova pestanya perquè puguis iniciar sessió de manera segura.",
+  "ssoDialogHelpText": "🤔 Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

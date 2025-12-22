@@ -11771,5 +11771,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Venter på, at login skal fuldføres",
+  "ssoDialogDesc": "Vi har åbnet en ny fane, så du kan logge ind sikkert.",
+  "ssoDialogHelpText": "🤔 Hvis du ikke så den nye fane, skal du tjekke din popup-blokker.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

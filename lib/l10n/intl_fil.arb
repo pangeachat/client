@@ -11686,5 +11686,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Naghihintay na makumpleto ang pag-sign in",
+  "ssoDialogDesc": "Nagbukas kami ng bagong tab upang makapag-sign in ka nang ligtas.",
+  "ssoDialogHelpText": "🤔 Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -10708,5 +10708,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Ag fanacht le síniú isteach a chríochnú",
+  "ssoDialogDesc": "Osclóimid cluaisín nua ionas gur féidir leat síniú isteach go sábháilte.",
+  "ssoDialogHelpText": "🤔 Má chonaic tú an cluaisín nua, seiceáil le do thoil do bhacadóir pop-up.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }

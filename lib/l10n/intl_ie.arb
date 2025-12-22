@@ -11684,5 +11684,20 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Acht na sign in a chríochnú",
+  "ssoDialogDesc": "Osclaíomar cluais nua ionas go bhféadfaidh tú síniú isteach go sábháilte.",
+  "ssoDialogHelpText": "🤔 Má chonaic tú an cluais nua, seiceáil le do thoil do bhacadóir pop-up.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
   }
 }
