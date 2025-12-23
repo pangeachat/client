@@ -11,7 +11,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page_constants.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
-import 'package:fluffychat/pangea/analytics_summary/level_dialog_content.dart';
+import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_content.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -97,7 +97,7 @@ class AnalyticsPageState extends State<AnalyticsPage> {
               Expanded(
                 child: () {
                   if (widget.indicator == ProgressIndicatorEnum.level) {
-                    return const LevelDialogContent();
+                    return const LevelAnalyticsDetailsContent();
                   } else if (widget.indicator ==
                       ProgressIndicatorEnum.morphsUsed) {
                     return ConstructAnalyticsView(

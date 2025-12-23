@@ -10,8 +10,8 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class LevelDialogContent extends StatelessWidget {
-  const LevelDialogContent({
+class LevelAnalyticsDetailsContent extends StatelessWidget {
+  const LevelAnalyticsDetailsContent({
     super.key,
   });
 

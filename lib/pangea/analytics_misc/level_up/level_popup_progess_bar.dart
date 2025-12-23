@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_bar/animated_progress_bar.dart';
+import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 
 class LevelPopupProgressBar extends StatefulWidget {
   final double height;
