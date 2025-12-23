@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart' as matrix;
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -187,25 +186,11 @@ class UserController {
     // so it waits for analytics to finish initializing. Analytics waits for user controller to
     // finish initializing, so this would cause a deadlock.
     if (analyticsProfile!.isEmpty) {
-      MatrixState.pangeaController.getAnalytics.initCompleter.future
-          .timeout(const Duration(seconds: 10))
-          .then((_) {
-        updateAnalyticsProfile(
-          level: MatrixState
-              .pangeaController.getAnalytics.constructListModel.level,
-        );
-      }).catchError((e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            "publicProfile": analyticsProfile?.toJson(),
-            "userId": client.userID,
-          },
-          level:
-              e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
-        );
-      });
+      final analyticsService =
+          MatrixState.pangeaController.matrixState.analyticsDataService;
+
+      final data = await analyticsService.derivedData;
+      updateAnalyticsProfile(level: data.level);
     }
   }
 

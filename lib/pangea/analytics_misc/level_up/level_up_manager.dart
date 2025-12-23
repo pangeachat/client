@@ -1,9 +1,9 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/constructs/construct_repo.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_summary_extension.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -27,6 +27,7 @@ class LevelUpManager {
   Future<void> preloadAnalytics(
     int level,
     int prevLevel,
+    AnalyticsDataService analyticsService,
   ) async {
     this.level = level;
     this.prevLevel = prevLevel;
@@ -34,10 +35,8 @@ class LevelUpManager {
     //For on route change behavior, if added in the future
     shouldAutoPopup = true;
 
-    nextGrammar = MatrixState.pangeaController.getAnalytics.constructListModel
-        .numConstructs(ConstructTypeEnum.morph);
-    nextVocab = MatrixState.pangeaController.getAnalytics.constructListModel
-        .numConstructs(ConstructTypeEnum.vocab);
+    nextGrammar = analyticsService.numConstructs(ConstructTypeEnum.morph);
+    nextVocab = analyticsService.numConstructs(ConstructTypeEnum.vocab);
 
     final LanguageModel? l2 =
         MatrixState.pangeaController.userController.userL2;
@@ -45,25 +44,7 @@ class LevelUpManager {
         MatrixState.pangeaController.matrixState.client.analyticsRoomLocal(l2!);
 
     if (analyticsRoom != null) {
-      // How to get all summary events in the timeline
-      final timeline = await analyticsRoom.getTimeline();
-      final summaryEvents = timeline.events
-          .where(
-            (e) => e.type == PangeaEventTypes.constructSummary,
-          )
-          .map(
-            (e) => ConstructSummary.fromJson(e.content),
-          )
-          .toList();
-
-      //Find previous summary to get grammar constructs and vocab numbers from
-      final lastSummary = summaryEvents
-              .where((summary) => summary.upperLevel == prevLevel)
-              .toList()
-              .isNotEmpty
-          ? summaryEvents
-              .firstWhere((summary) => summary.upperLevel == prevLevel)
-          : null;
+      final lastSummary = analyticsRoom.levelUpSummary;
 
       //Set grammar and vocab from last level summary, if there is one. Otherwise set to placeholder data
       if (lastSummary != null &&

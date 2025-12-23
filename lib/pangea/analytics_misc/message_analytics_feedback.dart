@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 
 class MessageAnalyticsFeedback extends StatefulWidget {
   final int newGrammarConstructs;

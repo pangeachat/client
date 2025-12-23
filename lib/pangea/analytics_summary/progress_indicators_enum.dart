@@ -25,9 +25,7 @@ enum ProgressIndicatorEnum {
         return null;
     }
   }
-}
 
-extension ProgressIndicatorsExtension on ProgressIndicatorEnum {
   IconData get icon {
     switch (this) {
       case ProgressIndicatorEnum.wordsUsed:

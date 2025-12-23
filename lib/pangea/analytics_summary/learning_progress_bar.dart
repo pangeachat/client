@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_bar/animated_progress_bar.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 
 class LearningProgressBar extends StatelessWidget {
-  final int level;
-  final int totalXP;
+  final double progress;
   final double height;
   final bool loading;
 
   const LearningProgressBar({
-    required this.level,
-    required this.totalXP,
+    required this.progress,
     required this.loading,
     required this.height,
     super.key,
@@ -32,7 +29,7 @@ class LearningProgressBar extends StatelessWidget {
 
     return AnimatedProgressBar(
       height: height,
-      widthPercent: MatrixState.pangeaController.getAnalytics.levelProgress,
+      widthPercent: progress,
       barColor: AppConfig.goldLight,
       backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
     );

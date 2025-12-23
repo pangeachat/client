@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -29,13 +28,8 @@ class VocabAnalyticsListView extends StatelessWidget {
     required this.controller,
   });
 
-  List<ConstructUses> get _vocab => MatrixState
-      .pangeaController.getAnalytics.constructListModel
-      .constructList(type: ConstructTypeEnum.vocab)
-      .sorted((a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()));
-
-  List<ConstructUses> get _filteredVocab => _vocab
-      .where(
+  List<ConstructUses>? get _filteredVocab => controller.vocab
+      ?.where(
         (use) =>
             use.lemma.isNotEmpty &&
             (controller.selectedConstructLevel == null
@@ -51,11 +45,14 @@ class VocabAnalyticsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final vocab = controller.vocab;
     final List<Widget> filters = ConstructLevelEnum.values.reversed
         .map((constructLevelCategory) {
-          final int count = _vocab
-              .where((e) => e.lemmaCategory == constructLevelCategory)
-              .length;
+          final int count = vocab
+                  ?.where((e) => e.lemmaCategory == constructLevelCategory)
+                  .length ??
+              0;
+
           return InkWell(
             onTap: () =>
                 controller.setSelectedConstructLevel(constructLevelCategory),
@@ -152,60 +149,60 @@ class VocabAnalyticsListView extends StatelessWidget {
                 ),
 
               // Grid of vocab tiles
-              _filteredVocab.isEmpty
-                  ? SliverToBoxAdapter(
-                      child: controller.selectedConstructLevel != null
-                          ? Padding(
-                              padding: const EdgeInsets.all(24.0),
-                              child: Text(
-                                L10n.of(context).vocabLevelsDesc,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                                textAlign: TextAlign.center,
-                              ),
-                            )
-                          : const SizedBox.shrink(),
-                    )
-                  : SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 100.0,
-                        mainAxisExtent: 100.0,
-                        crossAxisSpacing: 8.0,
-                        mainAxisSpacing: 8.0,
+              if (vocab == null)
+                const SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  ),
+                )
+              else
+                vocab.isEmpty
+                    ? SliverToBoxAdapter(
+                        child: controller.selectedConstructLevel != null
+                            ? Padding(
+                                padding: const EdgeInsets.all(24.0),
+                                child: Text(
+                                  L10n.of(context).vocabLevelsDesc,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                            : const SizedBox.shrink(),
+                      )
+                    : SliverGrid(
+                        gridDelegate:
+                            const SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: 100.0,
+                          mainAxisExtent: 100.0,
+                          crossAxisSpacing: 8.0,
+                          mainAxisSpacing: 8.0,
+                        ),
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            final vocabItem = _filteredVocab![index];
+                            return VocabAnalyticsListTile(
+                              onTap: () {
+                                TtsController.tryToSpeak(
+                                  vocabItem.id.lemma,
+                                  langCode: MatrixState.pangeaController
+                                      .userController.userL2Code!,
+                                );
+                                context.go(
+                                  "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(jsonEncode(vocabItem.id.toJson()))}",
+                                );
+                              },
+                              constructId: vocabItem.id,
+                              textColor: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? vocabItem.lemmaCategory.darkColor(context)
+                                  : vocabItem.lemmaCategory.color(context),
+                              level: vocabItem.lemmaCategory,
+                            );
+                          },
+                          childCount: _filteredVocab!.length,
+                        ),
                       ),
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          final vocabItem = _filteredVocab[index];
-                          return VocabAnalyticsListTile(
-                            onTap: () {
-                              TtsController.tryToSpeak(
-                                vocabItem.id.lemma,
-                                langCode: MatrixState.pangeaController
-                                    .userController.userL2Code!,
-                              );
-                              context.go(
-                                "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(jsonEncode(vocabItem.id.toJson()))}",
-                              );
-                            },
-                            constructId: vocabItem.id,
-                            textColor:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? vocabItem.lemmaCategory.darkColor(context)
-                                    : vocabItem.lemmaCategory.color(context),
-                            emoji: vocabItem.id.userSetEmoji.firstOrNull,
-                            icon: vocabItem.id.userSetEmoji.isNotEmpty
-                                ? Text(
-                                    vocabItem.id.userSetEmoji.first,
-                                    style: const TextStyle(
-                                      fontSize: 22,
-                                    ),
-                                  )
-                                : vocabItem.lemmaCategory.icon(36.0),
-                          );
-                        },
-                        childCount: _filteredVocab.length,
-                      ),
-                    ),
             ],
           ),
         ),

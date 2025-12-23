@@ -18,16 +18,16 @@ mixin LemmaEmojiSetter {
     String emoji,
     String? targetId,
   ) async {
-    if (constructId.userSetEmoji.isEmpty) {
-      _sendEmojiAnalytics(
+    if (constructId.userSetEmoji == null) {
+      _getEmojiAnalytics(
         constructId,
         targetId: targetId,
       );
     }
 
-    await constructId.setUserLemmaInfo(
-      constructId.userLemmaInfo.copyWith(emojis: [emoji]),
-    );
+    await MatrixState
+        .pangeaController.matrixState.analyticsDataService.updateService
+        .setLemmaInfo(constructId, emoji: emoji);
   }
 
   void showLemmaEmojiSnackbar(
@@ -46,14 +46,7 @@ mixin LemmaEmojiSetter {
           children: [
             VocabAnalyticsListTile(
               constructId: constructId,
-              emoji: emoji,
               textColor: Theme.of(context).colorScheme.surface,
-              icon: Text(
-                emoji,
-                style: const TextStyle(
-                  fontSize: 22,
-                ),
-              ),
               onTap: () {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 context.go(
@@ -83,7 +76,7 @@ mixin LemmaEmojiSetter {
     );
   }
 
-  void _sendEmojiAnalytics(
+  void _getEmojiAnalytics(
     ConstructIdentifier constructId, {
     String? eventId,
     String? roomId,
@@ -105,11 +98,10 @@ mixin LemmaEmojiSetter {
       ),
     ];
 
-    MatrixState.pangeaController.putAnalytics.addAnalytics(
+    MatrixState.pangeaController.matrixState.analyticsDataService.updateService
+        .addAnalytics(
+      targetId,
       constructs,
-      eventId: eventId,
-      roomId: roomId,
-      targetId: targetId,
     );
   }
 }

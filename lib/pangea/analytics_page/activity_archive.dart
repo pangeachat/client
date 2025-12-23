@@ -6,6 +6,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -21,11 +23,10 @@ class ActivityArchive extends StatelessWidget {
     this.selectedRoomId,
   });
 
-  List<Room> get archive =>
-      MatrixState.pangeaController.getAnalytics.archivedActivities;
-
   @override
   Widget build(BuildContext context) {
+    final Room? analyticsRoom = Matrix.of(context).client.analyticsRoomLocal();
+    final archive = analyticsRoom?.archivedActivities ?? [];
     return MaxWidthBody(
       withScrolling: false,
       child: ListView.builder(

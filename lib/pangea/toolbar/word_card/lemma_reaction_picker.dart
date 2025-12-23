@@ -9,54 +9,22 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_highlight_emoji_row.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class LemmaReactionPicker extends StatefulWidget {
+class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
   final Event? event;
   final ConstructIdentifier constructId;
-  final Function(String)? onSetEmoji;
   final String langCode;
 
   const LemmaReactionPicker({
     super.key,
     required this.constructId,
-    required this.onSetEmoji,
     required this.langCode,
     this.event,
   });
 
-  @override
-  State<LemmaReactionPicker> createState() => LemmaReactionPickerState();
-}
-
-class LemmaReactionPickerState extends State<LemmaReactionPicker>
-    with LemmaEmojiSetter {
-  String? _selectedEmoji;
-
-  @override
-  void initState() {
-    super.initState();
-    _setInitialEmoji();
-  }
-
-  @override
-  void didUpdateWidget(covariant LemmaReactionPicker oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.constructId != widget.constructId) {
-      _setInitialEmoji();
-    }
-  }
-
-  void _setInitialEmoji() {
-    setState(
-      () {
-        _selectedEmoji = widget.constructId.userLemmaInfo.emojis?.firstOrNull;
-      },
-    );
-  }
-
-  Event? _sentReaction(String emoji) {
-    final userSentEmojis = widget.event!
+  Event? _sentReaction(String emoji, BuildContext context) {
+    final userSentEmojis = event!
         .aggregatedEvents(
-          widget.event!.room.timeline!,
+          event!.room.timeline!,
           RelationshipTypes.reaction,
         )
         .where(
@@ -68,33 +36,27 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
     );
   }
 
-  Future<void> _setEmoji(String emoji) async {
-    setState(() => _selectedEmoji = emoji);
-    widget.onSetEmoji?.call(emoji);
-
+  Future<void> _setEmoji(String emoji, BuildContext context) async {
     await setLemmaEmoji(
-      widget.constructId,
+      constructId,
       emoji,
-      "emoji-choice-item-$emoji-${widget.constructId.lemma}",
+      "emoji-choice-item-$emoji-${constructId.lemma}",
     );
-
-    if (mounted) {
-      showLemmaEmojiSnackbar(context, widget.constructId, emoji);
-    }
+    showLemmaEmojiSnackbar(context, constructId, emoji);
   }
 
-  Future<void> _sendOrRedactReaction(String emoji) async {
-    if (widget.event?.room.timeline == null) return;
+  Future<void> _sendOrRedactReaction(String emoji, BuildContext context) async {
+    if (event?.room.timeline == null) return;
 
     try {
-      final reactionEvent = _sentReaction(emoji);
+      final reactionEvent = _sentReaction(emoji, context);
       if (reactionEvent != null) {
         await reactionEvent.redactEvent();
         return;
       }
 
-      await widget.event!.room.sendReaction(
-        widget.event!.eventId,
+      await event!.room.sendReaction(
+        event!.eventId,
         emoji,
       );
     } catch (e, s) {
@@ -103,7 +65,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
         s: s,
         data: {
           'emoji': emoji,
-          'eventId': widget.event?.eventId,
+          'eventId': event?.eventId,
         },
       );
     }
@@ -111,22 +73,35 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
 
   @override
   Widget build(BuildContext context) {
-    return LemmaHighlightEmojiRow(
-      cId: widget.constructId,
-      langCode: widget.langCode,
-      onEmojiSelected: (emoji) => emoji != _selectedEmoji
-          ? _setEmoji(emoji)
-          : _sendOrRedactReaction(emoji),
-      emoji: _selectedEmoji,
-      messageInfo: widget.event?.content ?? {},
-      selectedEmojiBadge: widget.event != null &&
-              _selectedEmoji != null &&
-              _sentReaction(_selectedEmoji!) == null
-          ? const Icon(
-              Icons.add_reaction,
-              size: 12.0,
-            )
-          : null,
+    final stream = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .lemmaUpdateStream(constructId);
+
+    return StreamBuilder(
+      stream: stream,
+      builder: (context, snapshot) {
+        final selectedEmoji =
+            snapshot.data?.emojis?.firstOrNull ?? constructId.userSetEmoji;
+
+        return LemmaHighlightEmojiRow(
+          cId: constructId,
+          langCode: langCode,
+          onEmojiSelected: (emoji) => emoji != selectedEmoji
+              ? _setEmoji(emoji, context)
+              : _sendOrRedactReaction(emoji, context),
+          emoji: selectedEmoji,
+          messageInfo: event?.content ?? {},
+          selectedEmojiBadge: event != null &&
+                  selectedEmoji != null &&
+                  _sentReaction(selectedEmoji, context) == null
+              ? const Icon(
+                  Icons.add_reaction,
+                  size: 12.0,
+                )
+              : null,
+        );
+      },
     );
   }
 }

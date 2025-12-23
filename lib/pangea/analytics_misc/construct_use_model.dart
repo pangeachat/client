@@ -1,6 +1,5 @@
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -10,7 +9,7 @@ class ConstructUses {
   final List<OneConstructUse> uses;
   final ConstructTypeEnum constructType;
   final String lemma;
-  final String? _category;
+  String? _category;
   DateTime? _lastUsed;
 
   ConstructUses({
@@ -38,7 +37,9 @@ class ConstructUses {
   }
 
   void setLastUsed(DateTime time) {
-    _lastUsed = time;
+    if (_lastUsed == null || time.isAfter(_lastUsed!)) {
+      _lastUsed = time;
+    }
   }
 
   String get category {
@@ -60,11 +61,31 @@ class ConstructUses {
       'construct_id': id.toJson(),
       'xp': points,
       'last_used': lastUsed?.toIso8601String(),
-
-      /// NOTE - sent to server as just the useTypes
-      'uses': uses.map((e) => e.useType.string).toList(),
+      'uses': uses.map((e) => e.toJson()).toList(),
     };
     return json;
+  }
+
+  factory ConstructUses.fromJson(Map<String, dynamic> json) {
+    final constructId = ConstructIdentifier.fromJson(
+      Map<String, dynamic>.from(json['construct_id']),
+    );
+
+    List<dynamic> usesJson = [];
+    if (json['uses'] is List) {
+      usesJson = List<dynamic>.from(json['uses']);
+    }
+
+    final uses = usesJson
+        .map((e) => OneConstructUse.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
+
+    return ConstructUses(
+      uses: uses,
+      constructType: constructId.type,
+      lemma: constructId.lemma,
+      category: constructId.category,
+    );
   }
 
   /// Get the lemma category, based on points
@@ -98,5 +119,37 @@ class ConstructUses {
     } else {
       return ConstructLevelEnum.flowers;
     }
+  }
+
+  void merge(ConstructUses other) {
+    if (other.lemma.toLowerCase() != lemma.toLowerCase() ||
+        other.constructType != constructType) {
+      throw ArgumentError(
+        'Cannot merge ConstructUses with different lemmas or types',
+      );
+    }
+
+    uses.addAll(other.uses);
+    if (other.lastUsed != null) {
+      setLastUsed(other.lastUsed!);
+    }
+
+    if (category == 'other' && other.category != 'other') {
+      _category = other.category;
+    }
+  }
+
+  ConstructUses copyWith({
+    List<OneConstructUse>? uses,
+    ConstructTypeEnum? constructType,
+    String? lemma,
+    String? category,
+  }) {
+    return ConstructUses(
+      uses: uses ?? this.uses,
+      constructType: constructType ?? this.constructType,
+      lemma: lemma ?? this.lemma,
+      category: category ?? _category,
+    );
   }
 }

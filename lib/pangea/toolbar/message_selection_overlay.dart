@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -55,7 +56,7 @@ class MessageSelectionOverlay extends StatefulWidget {
 }
 
 class MessageOverlayController extends State<MessageSelectionOverlay>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AnalyticsUpdater {
   Event get event => widget._event;
 
   PangeaTokenText? _selectedSpan;
@@ -234,12 +235,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
             xp: ConstructUseTypeEnum.click.pointValue,
           ),
         ];
-        MatrixState.pangeaController.putAnalytics.addAnalytics(
-          constructs,
-          eventId: event.eventId,
-          roomId: event.room.id,
-          targetId: "word-zoom-card-${token.text.uniqueKey}",
-        );
+        addAnalytics(constructs, "word-zoom-card-${token.text.uniqueKey}");
       }
     }
   }

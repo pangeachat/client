@@ -36,7 +36,9 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
   Future<void> _archiveToAnalytics(BuildContext context) async {
     await controller.room.archiveActivity();
-    await MatrixState.pangeaController.putAnalytics
+    await Matrix.of(context)
+        .analyticsDataService
+        .updateService
         .sendActivityAnalytics(controller.room.id);
   }
 

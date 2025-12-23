@@ -98,11 +98,17 @@ class TokensUtil {
     }
 
     final List<PangeaTokenText> newTokens = [];
+    final analyticsService =
+        MatrixState.pangeaController.matrixState.analyticsDataService;
     for (final token in tokens) {
       if (!token.lemma.saveVocab || !token.vocabConstructID.isContentWord) {
         continue;
       }
-      if (token.vocabConstruct.uses.isNotEmpty) continue;
+
+      if (analyticsService.hasUsedConstruct(token.vocabConstructID)) {
+        continue;
+      }
+
       if (newTokens.any((t) => t == token.text)) continue;
 
       newTokens.add(token.text);

@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays information about selected lemma, and its usage
-class VocabDetailsView extends StatefulWidget {
+class VocabDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
 
   const VocabDetailsView({
@@ -22,99 +22,88 @@ class VocabDetailsView extends StatefulWidget {
   });
 
   @override
-  State<VocabDetailsView> createState() => VocabDetailsViewState();
-}
-
-class VocabDetailsViewState extends State<VocabDetailsView> {
-  ConstructIdentifier get constructId => widget.constructId;
-
-  final ValueNotifier<String?> _emojiNotifier = ValueNotifier<String?>(null);
-
-  @override
-  void initState() {
-    super.initState();
-    _emojiNotifier.value = constructId.userLemmaInfo.emojis?.firstOrNull;
-  }
-
-  @override
-  void didUpdateWidget(covariant VocabDetailsView oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.constructId != widget.constructId) {
-      _emojiNotifier.value = constructId.userLemmaInfo.emojis?.firstOrNull;
-    }
-  }
-
-  @override
-  void dispose() {
-    _emojiNotifier.dispose();
-    super.dispose();
-  }
-
-  List<String> get forms =>
-      MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUsesByLemma(constructId.lemma)
-          .map((e) => e.uses)
-          .expand((element) => element)
-          .map((e) => e.form?.toLowerCase())
-          .toSet()
-          .whereType<String>()
-          .toList();
-
-  @override
   Widget build(BuildContext context) {
-    final construct = constructId.constructUses;
-    final Color textColor = (Theme.of(context).brightness != Brightness.light
-        ? construct.lemmaCategory.color(context)
-        : construct.lemmaCategory.darkColor(context));
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    return FutureBuilder(
+      future: analyticsService.getConstructUse(constructId),
+      builder: (context, snapshot) {
+        final construct = snapshot.data;
+        final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
 
-    return SingleChildScrollView(
-      child: Column(
-        spacing: 16.0,
-        children: [
-          WordZoomWidget(
-            token: PangeaTokenText.fromString(constructId.lemma),
-            langCode: MatrixState.pangeaController.userController.userL2Code!,
-            construct: constructId,
-            setEmoji: (emoji) => _emojiNotifier.value = emoji,
-          ),
-          Column(
+        final Color textColor =
+            (Theme.of(context).brightness != Brightness.light
+                ? level.color(context)
+                : level.darkColor(context));
+
+        final forms = construct?.uses
+                .map((e) => e.form)
+                .whereType<String>()
+                .toSet()
+                .toList() ??
+            [];
+
+        return SingleChildScrollView(
+          child: Column(
+            spacing: 16.0,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: ConstructXpWidget(
-                  icon: ValueListenableBuilder(
-                    valueListenable: _emojiNotifier,
-                    builder: (context, emoji, __) => Text(
-                      emoji ?? "-",
-                      style: const TextStyle(fontSize: 24.0),
-                    ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  WordZoomWidget(
+                    token: PangeaTokenText.fromString(constructId.lemma),
+                    langCode:
+                        MatrixState.pangeaController.userController.userL2Code!,
+                    construct: constructId,
                   ),
-                  level: construct.lemmaCategory,
-                  points: construct.points,
-                ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
+              if (construct != null)
+                Column(
                   children: [
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: _VocabForms(
-                        lemma: constructId.lemma,
-                        forms: forms,
-                        textColor: textColor,
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: ConstructXpWidget(
+                        icon: StreamBuilder(
+                          key: ValueKey(constructId.string),
+                          stream: analyticsService.updateDispatcher
+                              .lemmaUpdateStream(constructId),
+                          builder: (context, update) {
+                            final emoji = update.data?.emojis?.firstOrNull ??
+                                constructId.userSetEmoji;
+                            return Text(
+                              emoji ?? "-",
+                              style: const TextStyle(fontSize: 24.0),
+                            );
+                          },
+                        ),
+                        level: construct.lemmaCategory,
+                        points: construct.points,
                       ),
                     ),
-                    AnalyticsDetailsUsageContent(
-                      construct: construct,
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: _VocabForms(
+                              lemma: constructId.lemma,
+                              forms: forms,
+                              textColor: textColor,
+                            ),
+                          ),
+                          AnalyticsDetailsUsageContent(
+                            construct: construct,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              ),
             ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

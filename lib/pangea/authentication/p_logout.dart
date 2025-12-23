@@ -31,8 +31,10 @@ void pLogoutAction(
   final client = Matrix.of(context).client;
 
   // before wiping out locally cached construct data, save it to the server
-  await MatrixState.pangeaController.putAnalytics
-      .sendLocalAnalyticsToAnalyticsRoom(onLogout: true);
+  await Matrix.of(context)
+      .analyticsDataService
+      .updateService
+      .sendLocalAnalyticsToAnalyticsRoom();
 
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state != LoginState.loggedIn)
