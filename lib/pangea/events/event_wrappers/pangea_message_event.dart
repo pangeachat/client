@@ -319,13 +319,33 @@ class PangeaMessageEvent {
   }
 
   SpeechToTextResponseModel? getSpeechToTextLocal() {
+    final rep = representations
+        .firstWhereOrNull(
+          (element) => element.content.speechToText != null,
+        )
+        ?.content
+        .speechToText;
+
+    if (rep != null) {
+      return rep;
+    }
+
     final rawBotTranscription =
         event.content.tryGetMap(ModelKey.botTranscription);
 
     if (rawBotTranscription != null) {
       try {
-        return SpeechToTextResponseModel.fromJson(
+        final stt = SpeechToTextResponseModel.fromJson(
           Map<String, dynamic>.from(rawBotTranscription),
+        );
+        _sendRepresentationEvent(
+          PangeaRepresentation(
+            langCode: stt.langCode,
+            text: stt.transcript.text,
+            originalSent: false,
+            originalWritten: false,
+            speechToText: stt,
+          ),
         );
       } catch (err, s) {
         ErrorHandler.logError(
@@ -340,12 +360,7 @@ class PangeaMessageEvent {
       }
     }
 
-    return representations
-        .firstWhereOrNull(
-          (element) => element.content.speechToText != null,
-        )
-        ?.content
-        .speechToText;
+    return null;
   }
 
   Future<PangeaAudioFile> requestTextToSpeech(
@@ -456,6 +471,16 @@ class PangeaMessageEvent {
     }
 
     _representations = null;
+    _sendRepresentationEvent(
+      PangeaRepresentation(
+        langCode: result.result!.langCode,
+        text: result.result!.transcript.text,
+        originalSent: false,
+        originalWritten: false,
+        speechToText: result.result!,
+      ),
+    );
+
     return result.result!;
   }
 
