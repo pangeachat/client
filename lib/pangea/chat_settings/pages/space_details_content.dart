@@ -313,12 +313,14 @@ class SpaceDetailsContent extends StatelessWidget {
                   );
                 case SpaceSettingsTabs.course:
                   return SingleChildScrollView(
+                    controller: controller.scrollController,
                     child: CourseSettings(
                       controller: controller,
                     ),
                   );
                 case SpaceSettingsTabs.participants:
                   return SingleChildScrollView(
+                    controller: controller.scrollController,
                     child: Column(
                       children: [
                         const InstructionsInlineTooltip(
@@ -336,6 +338,7 @@ class SpaceDetailsContent extends StatelessWidget {
                   );
                 case SpaceSettingsTabs.analytics:
                   return SingleChildScrollView(
+                    controller: controller.scrollController,
                     child: Center(
                       child: SpaceAnalytics(roomId: room.id),
                     ),
@@ -348,6 +351,7 @@ class SpaceDetailsContent extends StatelessWidget {
                       .toList();
 
                   return SingleChildScrollView(
+                    controller: controller.scrollController,
                     child: Column(
                       children: [
                         if (room.topic.isNotEmpty) ...[

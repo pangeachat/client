@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_download_provider.dart';
@@ -55,6 +56,8 @@ class ChatDetailsController extends State<ChatDetails>
     with ActivitySummariesProvider, CoursePlanProvider, ChatDownloadProvider {
   bool loadingActivities = true;
   bool loadingCourseSummary = true;
+
+  final AutoScrollController scrollController = AutoScrollController();
 
   // listen to language updates to refresh course info
   StreamSubscription? _languageSubscription;
