@@ -1,6 +1,18 @@
 part of "../extensions/pangea_room_extension.dart";
 
 extension AnalyticsRoomExtension on Room {
+  String? get madeForLang {
+    final creationContent = getState(EventTypes.RoomCreate)?.content;
+    return creationContent?.tryGet<String>(ModelKey.langCode) ??
+        creationContent?.tryGet<String>(ModelKey.oldLangCode);
+  }
+
+  bool isMadeForLang(String langCode) {
+    final creationContent = getState(EventTypes.RoomCreate)?.content;
+    return creationContent?.tryGet<String>(ModelKey.langCode) == langCode ||
+        creationContent?.tryGet<String>(ModelKey.oldLangCode) == langCode;
+  }
+
   Future<List<ConstructAnalyticsEvent>?> getAnalyticsEvents({
     required String userId,
     DateTime? since,
@@ -12,18 +24,6 @@ extension AnalyticsRoomExtension on Room {
     }
 
     return analyticsEvents;
-  }
-
-  String? get madeForLang {
-    final creationContent = getState(EventTypes.RoomCreate)?.content;
-    return creationContent?.tryGet<String>(ModelKey.langCode) ??
-        creationContent?.tryGet<String>(ModelKey.oldLangCode);
-  }
-
-  bool isMadeForLang(String langCode) {
-    final creationContent = getState(EventTypes.RoomCreate)?.content;
-    return creationContent?.tryGet<String>(ModelKey.langCode) == langCode ||
-        creationContent?.tryGet<String>(ModelKey.oldLangCode) == langCode;
   }
 
   /// Sends construct events to the server.
@@ -88,90 +88,4 @@ extension AnalyticsRoomExtension on Room {
       );
     }
   }
-
-  UserSetLemmaInfo? getUserSetLemmaInfo(ConstructIdentifier cId) {
-    final state = getState(PangeaEventTypes.userSetLemmaInfo, cId.string);
-    if (state == null) return null;
-    try {
-      return UserSetLemmaInfo.fromJson(state.content);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "roomID": id,
-          "stateContent": state.content,
-          "stateKey": state.stateKey,
-        },
-      );
-      return null;
-    }
-  }
-
-  Future<void> setUserSetLemmaInfo(
-    ConstructIdentifier cId,
-    UserSetLemmaInfo info,
-  ) async {
-    final syncFuture = client.onRoomState.stream.firstWhere((event) {
-      return event.roomId == id &&
-          event.state.type == PangeaEventTypes.userSetLemmaInfo;
-    });
-    client.setRoomStateWithKey(
-      id,
-      PangeaEventTypes.userSetLemmaInfo,
-      cId.string,
-      info.toJson(),
-    );
-    await syncFuture.timeout(const Duration(seconds: 10));
-  }
-
-  List<String> get _activityRoomIds {
-    final state = getState(PangeaEventTypes.activityRoomIds);
-    if (state?.content[ModelKey.roomIds] is List) {
-      return List<String>.from(state!.content[ModelKey.roomIds] as List);
-    }
-    return [];
-  }
-
-  Future<void> addActivityRoomId(String roomId) async {
-    final List<String> ids = List.from(_activityRoomIds);
-    if (ids.contains(roomId)) return;
-
-    final prevLength = ids.length;
-    ids.add(roomId);
-
-    final syncFuture = client.waitForRoomInSync(id, join: true);
-    await client.setRoomStateWithKey(
-      id,
-      PangeaEventTypes.activityRoomIds,
-      "",
-      {ModelKey.roomIds: ids},
-    );
-    final newLength = _activityRoomIds.length;
-    if (newLength == prevLength) {
-      await syncFuture;
-    }
-  }
-
-  Future<void> setLevelUpSummary(ConstructSummary summary) =>
-      client.setRoomStateWithKey(
-        id,
-        PangeaEventTypes.constructSummary,
-        '',
-        summary.toJson(),
-      );
-
-  List<Room> get archivedActivities {
-    return _activityRoomIds
-        .map((id) => client.getRoomById(id))
-        .whereType<Room>()
-        .where(
-          (room) =>
-              room.membership != Membership.leave &&
-              room.membership != Membership.ban,
-        )
-        .toList();
-  }
-
-  int get archivedActivitiesCount => archivedActivities.length;
 }

@@ -9,8 +9,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
@@ -161,45 +161,13 @@ class ConstructIdentifier {
         lemmaInfoRequest(messageInfo),
       );
 
-  List<String> get userSetEmoji => userLemmaInfo.emojis ?? [];
+  String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 
-  UserSetLemmaInfo get userLemmaInfo {
-    switch (type) {
-      case ConstructTypeEnum.vocab:
-        return MatrixState.pangeaController.matrixState.client
-                .analyticsRoomLocal()
-                ?.getUserSetLemmaInfo(this) ??
-            UserSetLemmaInfo();
-      case ConstructTypeEnum.morph:
-        debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          e: Exception("Morphs should not have userSetEmoji"),
-          data: toJson(),
-        );
-        return UserSetLemmaInfo();
-    }
-  }
-
-  Future<void> setUserLemmaInfo(UserSetLemmaInfo newLemmaInfo) async {
-    final client = MatrixState.pangeaController.matrixState.client;
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return;
-
-    final analyticsRoom = await client.getMyAnalyticsRoom(l2);
-    if (analyticsRoom == null) return;
-    if (userLemmaInfo == newLemmaInfo) return;
-
-    try {
-      await analyticsRoom.setUserSetLemmaInfo(this, newLemmaInfo);
-    } catch (err, s) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        data: newLemmaInfo.toJson(),
-        s: s,
-      );
-    }
-  }
+  UserSetLemmaInfo get _userLemmaInfo =>
+      MatrixState.pangeaController.matrixState.client
+          .analyticsRoomLocal()
+          ?.getUserSetLemmaInfo(this) ??
+      UserSetLemmaInfo();
 
   String get storageKey => TupleKey(lemma, type.name, category).toString();
 

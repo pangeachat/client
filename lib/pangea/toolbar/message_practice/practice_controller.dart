@@ -53,7 +53,7 @@ class PracticeController with ChangeNotifier {
     final target = practiceTargetForToken(token);
 
     if (MessagePracticeMode.wordEmoji == practiceMode) {
-      if (token.vocabConstructID.userSetEmoji.firstOrNull != null) {
+      if (token.vocabConstructID.userSetEmoji != null) {
         return false;
       }
       // Keep open even when completed to show emoji
@@ -162,6 +162,9 @@ class PracticeController with ChangeNotifier {
     final targetId =
         "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";
 
+    final updateService = MatrixState
+        .pangeaController.matrixState.analyticsDataService.updateService;
+
     // we don't take off points for incorrect emoji matches
     if (_activity!.activityType != ActivityTypeEnum.emoji || isCorrect) {
       final constructUseType = _activity!.practiceTarget.record.responses.last
@@ -184,9 +187,7 @@ class PracticeController with ChangeNotifier {
         ),
       ];
 
-      MatrixState
-          .pangeaController.matrixState.analyticsDataService.updateService
-          .addAnalytics(
+      updateService.addAnalytics(
         targetId,
         constructs,
       );
@@ -194,18 +195,16 @@ class PracticeController with ChangeNotifier {
 
     if (isCorrect) {
       if (_activity!.activityType == ActivityTypeEnum.emoji) {
-        choice.form.cId.setUserLemmaInfo(
-          choice.form.cId.userLemmaInfo.copyWith(
-            emojis: [choice.choiceContent],
-          ),
+        updateService.setLemmaInfo(
+          choice.form.cId,
+          emoji: choice.choiceContent,
         );
       }
 
       if (_activity!.activityType == ActivityTypeEnum.wordMeaning) {
-        choice.form.cId.setUserLemmaInfo(
-          choice.form.cId.userLemmaInfo.copyWith(
-            meaning: choice.choiceContent,
-          ),
+        updateService.setLemmaInfo(
+          choice.form.cId,
+          meaning: choice.choiceContent,
         );
       }
     }

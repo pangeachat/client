@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays information about selected lemma, and its usage
-class VocabDetailsView extends StatefulWidget {
+class VocabDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
 
   const VocabDetailsView({
@@ -22,39 +22,10 @@ class VocabDetailsView extends StatefulWidget {
   });
 
   @override
-  State<VocabDetailsView> createState() => VocabDetailsViewState();
-}
-
-class VocabDetailsViewState extends State<VocabDetailsView> {
-  ConstructIdentifier get constructId => widget.constructId;
-
-  final ValueNotifier<String?> _emojiNotifier = ValueNotifier<String?>(null);
-
-  @override
-  void initState() {
-    super.initState();
-    _emojiNotifier.value = constructId.userLemmaInfo.emojis?.firstOrNull;
-  }
-
-  @override
-  void didUpdateWidget(covariant VocabDetailsView oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.constructId != widget.constructId) {
-      _emojiNotifier.value = constructId.userLemmaInfo.emojis?.firstOrNull;
-    }
-  }
-
-  @override
-  void dispose() {
-    _emojiNotifier.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final analyticsService = Matrix.of(context).analyticsDataService;
     return FutureBuilder(
-      future:
-          Matrix.of(context).analyticsDataService.getConstructUse(constructId),
+      future: analyticsService.getConstructUse(constructId),
       builder: (context, snapshot) {
         final construct = snapshot.data;
         final level = construct?.lemmaCategory ?? ConstructLevelEnum.seeds;
@@ -75,12 +46,16 @@ class VocabDetailsViewState extends State<VocabDetailsView> {
           child: Column(
             spacing: 16.0,
             children: [
-              WordZoomWidget(
-                token: PangeaTokenText.fromString(constructId.lemma),
-                langCode:
-                    MatrixState.pangeaController.userController.userL2Code!,
-                construct: constructId,
-                setEmoji: (emoji) => _emojiNotifier.value = emoji,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  WordZoomWidget(
+                    token: PangeaTokenText.fromString(constructId.lemma),
+                    langCode:
+                        MatrixState.pangeaController.userController.userL2Code!,
+                    construct: constructId,
+                  ),
+                ],
               ),
               if (construct != null)
                 Column(
@@ -88,12 +63,18 @@ class VocabDetailsViewState extends State<VocabDetailsView> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: ConstructXpWidget(
-                        icon: ValueListenableBuilder(
-                          valueListenable: _emojiNotifier,
-                          builder: (context, emoji, __) => Text(
-                            emoji ?? "-",
-                            style: const TextStyle(fontSize: 24.0),
-                          ),
+                        icon: StreamBuilder(
+                          key: ValueKey(constructId.string),
+                          stream: analyticsService.updateDispatcher
+                              .lemmaUpdateStream(constructId),
+                          builder: (context, update) {
+                            final emoji = update.data?.emojis?.firstOrNull ??
+                                constructId.userSetEmoji;
+                            return Text(
+                              emoji ?? "-",
+                              style: const TextStyle(fontSize: 24.0),
+                            );
+                          },
                         ),
                         level: construct.lemmaCategory,
                         points: construct.points,

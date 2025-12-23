@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -198,15 +197,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                                       Brightness.light
                                   ? vocabItem.lemmaCategory.darkColor(context)
                                   : vocabItem.lemmaCategory.color(context),
-                              emoji: vocabItem.id.userSetEmoji.firstOrNull,
-                              icon: vocabItem.id.userSetEmoji.isNotEmpty
-                                  ? Text(
-                                      vocabItem.id.userSetEmoji.first,
-                                      style: const TextStyle(
-                                        fontSize: 22,
-                                      ),
-                                    )
-                                  : vocabItem.lemmaCategory.icon(36.0),
+                              level: vocabItem.lemmaCategory,
                             );
                           },
                           childCount: _filteredVocab!.length,

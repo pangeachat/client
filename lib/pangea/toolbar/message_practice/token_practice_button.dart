@@ -263,7 +263,7 @@ class _NoActivityContentButton extends StatelessWidget {
                 (res) => res.cId == token.vocabConstructID && res.isCorrect,
               )
               ?.text ??
-          token.vocabConstructID.userSetEmoji.firstOrNull ??
+          token.vocabConstructID.userSetEmoji ??
           '';
       return Text(
         displayEmoji,

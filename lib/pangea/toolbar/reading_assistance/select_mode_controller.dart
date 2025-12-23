@@ -8,7 +8,6 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
@@ -89,8 +88,6 @@ class SelectModeController with LemmaEmojiSetter {
         _sttTranslationLoader = _STTTranslationLoader(messageEvent);
 
   ValueNotifier<SelectMode?> selectedMode = ValueNotifier<SelectMode?>(null);
-  ValueNotifier<(ConstructIdentifier, String)?> constructEmojiNotifier =
-      ValueNotifier<(ConstructIdentifier, String)?>(null);
 
   final StreamController contentChangedStream = StreamController.broadcast();
 
@@ -101,7 +98,6 @@ class SelectModeController with LemmaEmojiSetter {
 
   void dispose() {
     selectedMode.dispose();
-    constructEmojiNotifier.dispose();
     playTokenNotifier.dispose();
     _transcriptLoader.dispose();
     _translationLoader.dispose();
@@ -197,12 +193,6 @@ class SelectModeController with LemmaEmojiSetter {
     if (selectedMode.value == mode) return;
     selectedMode.value = mode;
   }
-
-  void setTokenEmoji(
-    ConstructIdentifier constructId,
-    String emoji,
-  ) =>
-      constructEmojiNotifier.value = (constructId, emoji);
 
   void setPlayingToken(PangeaTokenText? token) =>
       playTokenNotifier.value = (token, !playTokenNotifier.value.$2);

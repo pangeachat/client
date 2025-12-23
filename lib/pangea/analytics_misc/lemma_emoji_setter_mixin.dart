@@ -18,16 +18,16 @@ mixin LemmaEmojiSetter {
     String emoji,
     String? targetId,
   ) async {
-    if (constructId.userSetEmoji.isEmpty) {
+    if (constructId.userSetEmoji == null) {
       _getEmojiAnalytics(
         constructId,
         targetId: targetId,
       );
     }
 
-    await constructId.setUserLemmaInfo(
-      constructId.userLemmaInfo.copyWith(emojis: [emoji]),
-    );
+    await MatrixState
+        .pangeaController.matrixState.analyticsDataService.updateService
+        .setLemmaInfo(constructId, emoji: emoji);
   }
 
   void showLemmaEmojiSnackbar(
@@ -46,14 +46,7 @@ mixin LemmaEmojiSetter {
           children: [
             VocabAnalyticsListTile(
               constructId: constructId,
-              emoji: emoji,
               textColor: Theme.of(context).colorScheme.surface,
-              icon: Text(
-                emoji,
-                style: const TextStyle(
-                  fontSize: 22,
-                ),
-              ),
               onTap: () {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 context.go(

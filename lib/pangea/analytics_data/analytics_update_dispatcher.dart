@@ -4,6 +4,7 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 
 class LevelUpdate {
   final int prevLevel;
@@ -42,6 +43,10 @@ class AnalyticsUpdateDispatcher {
   final StreamController<LevelUpdate> levelUpdateStream =
       StreamController<LevelUpdate>.broadcast();
 
+  final StreamController<MapEntry<ConstructIdentifier, UserSetLemmaInfo>>
+      _lemmaInfoUpdateStream = StreamController<
+          MapEntry<ConstructIdentifier, UserSetLemmaInfo>>.broadcast();
+
   AnalyticsUpdateDispatcher(this.dataService);
 
   void dispose() {
@@ -49,12 +54,26 @@ class AnalyticsUpdateDispatcher {
     activityAnalyticsStream.close();
     unlockedConstructsStream.close();
     levelUpdateStream.close();
+    _lemmaInfoUpdateStream.close();
   }
+
+  Stream<UserSetLemmaInfo> lemmaUpdateStream(
+    ConstructIdentifier constructId,
+  ) =>
+      _lemmaInfoUpdateStream.stream
+          .where((update) => update.key == constructId)
+          .map((update) => update.value);
 
   void sendActivityAnalyticsUpdate(
     String activityAnalytics,
   ) =>
       activityAnalyticsStream.add(activityAnalytics);
+
+  void sendLemmaInfoUpdate(
+    ConstructIdentifier constructId,
+    UserSetLemmaInfo lemmaInfo,
+  ) =>
+      _lemmaInfoUpdateStream.add(MapEntry(constructId, lemmaInfo));
 
   Future<void> sendConstructAnalyticsUpdate(
     AnalyticsUpdate analyticsUpdate,

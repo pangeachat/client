@@ -120,8 +120,7 @@ class EmojiChoiceItem extends StatefulWidget {
   State<EmojiChoiceItem> createState() => EmojiChoiceItemState();
 }
 
-class EmojiChoiceItemState extends State<EmojiChoiceItem>
-    with AnalyticsUpdater {
+class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   bool shimmer = false;
   Timer? _shimmerTimer;
 
@@ -155,9 +154,6 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem>
     });
   }
 
-  LayerLink get layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(widget.transformTargetId).link;
-
   @override
   Widget build(BuildContext context) {
     return HoverBuilder(
@@ -171,8 +167,13 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem>
                   ? Colors.white
                   : Theme.of(context).colorScheme.primary,
               child: CompositedTransformTarget(
-                link: layerLink,
+                link: MatrixState.pAnyState
+                    .layerLinkAndKey(widget.transformTargetId)
+                    .link,
                 child: AnimatedContainer(
+                  key: MatrixState.pAnyState
+                      .layerLinkAndKey(widget.transformTargetId)
+                      .key,
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(

@@ -4,19 +4,17 @@ import 'package:flutter/material.dart';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_summary_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_manager.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_popup.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelUpConstants {
@@ -172,11 +170,7 @@ class LevelUpBannerState extends State<LevelUpBanner>
             MatrixState.pangeaController.userController.userL2!,
           );
 
-      final lastLevelUp =
-          analyticsRoom!.getState(PangeaEventTypes.constructSummary);
-      final timestamp =
-          lastLevelUp is Event ? lastLevelUp.originServerTs : null;
-
+      final timestamp = analyticsRoom!.lastLevelUpTimestamp;
       final analyticsService = Matrix.of(context).analyticsDataService;
       final summary = await analyticsService.levelUpService.getLevelUpAnalytics(
         widget.prevLevel,

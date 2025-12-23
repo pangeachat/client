@@ -1,8 +1,15 @@
 import 'dart:async';
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -19,6 +26,16 @@ class AnalyticsUpdateService {
   AnalyticsUpdateService(this.dataService);
 
   Completer<void>? _updateCompleter;
+
+  LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
+
+  Future<Room?> _getAnalyticsRoom() async {
+    final l2 = _l2;
+    if (l2 == null) return null;
+
+    final analyticsRoom = await dataService.getAnalyticsRoom(l2);
+    return analyticsRoom;
+  }
 
   Future<void> onUpdateLanguages(LanguageUpdate update) async {
     await sendLocalAnalyticsToAnalyticsRoom(
@@ -84,13 +101,7 @@ class AnalyticsUpdateService {
   Future<void> _updateAnalytics({LanguageModel? l2Override}) async {
     final localConstructs = await dataService.getLocalUses();
     if (localConstructs.isEmpty) return;
-
-    // if missing important info, don't send analytics. Could happen if user just signed up.
-    final l2 = l2Override ?? MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return;
-
-    // analytics room for the user and current target language
-    final analyticsRoom = await dataService.getAnalyticsRoom(l2);
+    final analyticsRoom = await _getAnalyticsRoom();
 
     // and send cached analytics data to the room
     final future = dataService.waitForSync();
@@ -99,11 +110,7 @@ class AnalyticsUpdateService {
   }
 
   Future<void> sendActivityAnalytics(String roomId) async {
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return;
-
-    // analytics room for the user and current target language
-    final analyticsRoom = await dataService.getAnalyticsRoom(l2);
+    final analyticsRoom = await _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
     await analyticsRoom.addActivityRoomId(roomId);
@@ -111,11 +118,7 @@ class AnalyticsUpdateService {
   }
 
   Future<void> blockConstruct(ConstructIdentifier constructId) async {
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return;
-
-    // analytics room for the user and current target language
-    final analyticsRoom = await dataService.getAnalyticsRoom(l2);
+    final analyticsRoom = await _getAnalyticsRoom();
     if (analyticsRoom == null) return;
 
     final current = analyticsRoom.analyticsSettings;
@@ -129,5 +132,33 @@ class AnalyticsUpdateService {
 
     await analyticsRoom.setAnalyticsSettings(updated);
     await dataService.updateBlockedConstructs(constructId);
+  }
+
+  Future<void> setLemmaInfo(
+    ConstructIdentifier constructId, {
+    String? emoji,
+    String? meaning,
+  }) async {
+    final analyticsRoom = await _getAnalyticsRoom();
+    if (analyticsRoom == null) return;
+
+    final userLemmaInfo = analyticsRoom.getUserSetLemmaInfo(constructId);
+    final updated = userLemmaInfo.copyWith(
+      emojis: emoji == null ? null : [emoji],
+      meaning: meaning,
+    );
+    if (userLemmaInfo == updated) return;
+    dataService.updateDispatcher.sendLemmaInfoUpdate(constructId, updated);
+
+    try {
+      await analyticsRoom.setUserSetLemmaInfo(constructId, updated);
+    } catch (err, s) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        e: err,
+        data: userLemmaInfo.toJson(),
+        s: s,
+      );
+    }
   }
 }
