@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
@@ -263,6 +264,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       summary = SpaceAnalyticsSummaryModel.fromEvents(
         userID,
         constructEvents,
+        analyticsRoom.blockedConstructs,
         analyticsRoom.archivedActivitiesCount,
       );
 

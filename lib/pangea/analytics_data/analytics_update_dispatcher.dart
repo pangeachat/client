@@ -16,11 +16,13 @@ class LevelUpdate {
 }
 
 class AnalyticsUpdate {
-  final List<OneConstructUse> newConstructs;
+  final List<OneConstructUse> addedConstructs;
+  final ConstructIdentifier? blockedConstruct;
   final String? targetID;
 
   AnalyticsUpdate(
-    this.newConstructs, {
+    this.addedConstructs, {
+    this.blockedConstruct,
     this.targetID,
   });
 }
@@ -74,6 +76,9 @@ class AnalyticsUpdateDispatcher {
       case final XPGainedEvent e:
         _onXPGained(e.points, e.targetID);
         break;
+      case final ConstructBlockedEvent e:
+        _onBlockedConstruct(e.blockedConstruct);
+        break;
     }
   }
 
@@ -103,6 +108,13 @@ class AnalyticsUpdateDispatcher {
     final update = AnalyticsStreamUpdate(
       points: points,
       targetID: targetID,
+    );
+    constructUpdateStream.add(update);
+  }
+
+  void _onBlockedConstruct(ConstructIdentifier constructId) {
+    final update = AnalyticsStreamUpdate(
+      blockedConstruct: constructId,
     );
     constructUpdateStream.add(update);
   }

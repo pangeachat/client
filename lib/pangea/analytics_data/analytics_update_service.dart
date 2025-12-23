@@ -4,7 +4,6 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
-import 'package:fluffychat/pangea/analytics_settings/analytics_settings_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -119,9 +118,7 @@ class AnalyticsUpdateService {
     final analyticsRoom = await dataService.getAnalyticsRoom(l2);
     if (analyticsRoom == null) return;
 
-    final current = analyticsRoom.analyticsSettings ??
-        const AnalyticsSettingsModel(blockedConstructs: {});
-
+    final current = analyticsRoom.analyticsSettings;
     final blockedConstructs = current.blockedConstructs;
     final updated = current.copyWith(
       blockedConstructs: {
@@ -131,5 +128,6 @@ class AnalyticsUpdateService {
     );
 
     await analyticsRoom.setAnalyticsSettings(updated);
+    await dataService.updateBlockedConstructs(constructId);
   }
 }

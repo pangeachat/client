@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
@@ -33,10 +34,12 @@ class _AnalyticsClient {
 
 class AnalyticsStreamUpdate {
   final int points;
+  final ConstructIdentifier? blockedConstruct;
   final String? targetID;
 
   AnalyticsStreamUpdate({
     this.points = 0,
+    this.blockedConstruct,
     this.targetID,
   });
 }
@@ -134,8 +137,8 @@ class AnalyticsDataService {
       _syncController!.start();
 
       await _initMergeTable();
-    } catch (e) {
-      Logs().e("Error initializing analytics: $e");
+    } catch (e, s) {
+      Logs().e("Error initializing analytics: $e, $s");
     } finally {
       Logs().i("Analytics database initialized.");
       _initCompleter.complete();
@@ -149,8 +152,9 @@ class AnalyticsDataService {
     final morph = await _analyticsClientGetter.database
         .getAggregatedConstructs(ConstructTypeEnum.morph);
 
-    _mergeTable.addConstructs(vocab);
-    _mergeTable.addConstructs(morph);
+    final blocked = blockedConstructs;
+    _mergeTable.addConstructs(vocab, blocked);
+    _mergeTable.addConstructs(morph, blocked);
   }
 
   Future<void> reinitialize() async {
@@ -184,6 +188,11 @@ class AnalyticsDataService {
   int uniqueConstructsByType(ConstructTypeEnum type) =>
       _mergeTable.uniqueConstructsByType(type);
 
+  Set<ConstructIdentifier> get blockedConstructs {
+    final analyticsRoom = _analyticsClientGetter.client.analyticsRoomLocal();
+    return analyticsRoom?.blockedConstructs ?? {};
+  }
+
   Future<void> waitForSync() async {
     await _syncController?.syncStream.stream.first;
   }
@@ -210,11 +219,14 @@ class AnalyticsDataService {
     DateTime? since,
   }) async {
     await _ensureInitialized();
-    return _analyticsClientGetter.database.getUses(
+    final uses = await _analyticsClientGetter.database.getUses(
       count: count,
       roomId: roomId,
       since: since,
     );
+
+    final blocked = blockedConstructs;
+    return uses.where((use) => !blocked.contains(use.identifier)).toList();
   }
 
   Future<List<OneConstructUse>> getLocalUses() async {
@@ -229,7 +241,17 @@ class AnalyticsDataService {
 
   Future<ConstructUses> getConstructUse(ConstructIdentifier id) async {
     await _ensureInitialized();
-    final ids = _mergeTable.groupedIds(id);
+    final blocked = blockedConstructs;
+    final ids = _mergeTable.groupedIds(id, blocked);
+    if (ids.isEmpty) {
+      return ConstructUses(
+        uses: [],
+        constructType: id.type,
+        lemma: id.lemma,
+        category: id.category,
+      );
+    }
+
     return _analyticsClientGetter.database.getConstructUse(ids);
   }
 
@@ -238,8 +260,10 @@ class AnalyticsDataService {
   ) async {
     await _ensureInitialized();
     final Map<ConstructIdentifier, List<ConstructIdentifier>> request = {};
+    final blocked = blockedConstructs;
     for (final id in ids) {
-      request[id] = _mergeTable.groupedIds(id);
+      if (blocked.contains(id)) continue;
+      request[id] = _mergeTable.groupedIds(id, blocked);
     }
 
     return _analyticsClientGetter.database.getConstructUses(request);
@@ -255,6 +279,7 @@ class AnalyticsDataService {
     final stopwatch = Stopwatch()..start();
 
     final cleaned = <ConstructIdentifier, ConstructUses>{};
+    final blocked = blockedConstructs;
     for (final entry in combined) {
       final canonical = _mergeTable.resolve(entry.id);
 
@@ -262,7 +287,7 @@ class AnalyticsDataService {
       final existing = cleaned[canonical];
       if (existing != null) {
         existing.merge(entry);
-      } else {
+      } else if (!blocked.contains(canonical)) {
         cleaned[canonical] = entry;
       }
     }
@@ -280,7 +305,13 @@ class AnalyticsDataService {
     ConstructTypeEnum type,
   ) async {
     await _ensureInitialized();
-    final uses = newConstructs.where((c) => c.constructType == type);
+    final blocked = blockedConstructs;
+    final uses = newConstructs
+        .where(
+          (c) => c.constructType == type && !blocked.contains(c.identifier),
+        )
+        .toList();
+
     final Map<ConstructIdentifier, int> constructPoints = {};
     for (final use in uses) {
       constructPoints[use.identifier] ??= 0;
@@ -311,7 +342,7 @@ class AnalyticsDataService {
   ) async {
     final events = <AnalyticsUpdateEvent>[];
 
-    final morphIds = update.newConstructs
+    final morphIds = update.addedConstructs
         .where((c) => c.constructType == ConstructTypeEnum.morph)
         .map((c) => c.identifier)
         .toSet();
@@ -322,10 +353,11 @@ class AnalyticsDataService {
     _invalidateCaches();
     await _ensureInitialized();
     await _analyticsClientGetter.database.updateLocalAnalytics(
-      update.newConstructs,
+      update.addedConstructs,
     );
 
-    _mergeTable.addConstructsByUses(update.newConstructs);
+    final blocked = blockedConstructs;
+    _mergeTable.addConstructsByUses(update.addedConstructs, blocked);
 
     final newData = await derivedData;
 
@@ -362,8 +394,12 @@ class AnalyticsDataService {
       events.add(MorphUnlockedEvent(newUnlockedMorphs));
     }
 
-    final points = update.newConstructs.fold(0, (s, c) => s + c.xp);
+    final points = update.addedConstructs.fold(0, (s, c) => s + c.xp);
     events.add(XPGainedEvent(points, update.targetID));
+
+    if (update.blockedConstruct != null) {
+      events.add(ConstructBlockedEvent(update.blockedConstruct!));
+    }
 
     return events;
   }
@@ -372,12 +408,44 @@ class AnalyticsDataService {
     List<ConstructAnalyticsEvent> events,
   ) async {
     _invalidateCaches();
+    final blocked = blockedConstructs;
     for (final event in events) {
       _mergeTable.addConstructsByUses(
         event.content.uses,
+        blocked,
       );
     }
     await _analyticsClientGetter.database.updateServerAnalytics(events);
+  }
+
+  Future<void> updateBlockedConstructs(
+    ConstructIdentifier constructId,
+  ) async {
+    await _ensureInitialized();
+    _mergeTable.removeConstruct(constructId);
+
+    final construct =
+        await _analyticsClientGetter.database.getConstructUse([constructId]);
+
+    final derived = await derivedData;
+    final newXP = derived.totalXP - construct.points;
+    final newLevel = DerivedAnalyticsDataModel.calculateLevelWithXp(newXP);
+
+    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      level: newLevel,
+    );
+
+    await _analyticsClientGetter.database.updateDerivedStats(
+      DerivedAnalyticsDataModel(totalXP: newXP),
+    );
+
+    _invalidateCaches();
+    updateDispatcher.sendConstructAnalyticsUpdate(
+      AnalyticsUpdate(
+        [],
+        blockedConstruct: constructId,
+      ),
+    );
   }
 
   Future<void> clearLocalAnalytics() async {

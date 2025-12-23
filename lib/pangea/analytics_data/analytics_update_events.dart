@@ -18,3 +18,8 @@ class XPGainedEvent extends AnalyticsUpdateEvent {
   final String? targetID;
   XPGainedEvent(this.points, this.targetID);
 }
+
+class ConstructBlockedEvent extends AnalyticsUpdateEvent {
+  final ConstructIdentifier blockedConstruct;
+  ConstructBlockedEvent(this.blockedConstruct);
+}

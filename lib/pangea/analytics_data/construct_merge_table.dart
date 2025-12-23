@@ -9,18 +9,26 @@ class ConstructMergeTable {
   Map<String, Set<ConstructIdentifier>> lemmaTypeGroups = {};
   Map<ConstructIdentifier, ConstructIdentifier> otherToSpecific = {};
 
-  void addConstructs(List<ConstructUses> constructs) {
-    addConstructsByUses(constructs.expand((c) => c.uses).toList());
+  void addConstructs(
+    List<ConstructUses> constructs,
+    Set<ConstructIdentifier> exclude,
+  ) {
+    addConstructsByUses(constructs.expand((c) => c.uses).toList(), exclude);
   }
 
-  void addConstructsByUses(List<OneConstructUse> uses) {
+  void addConstructsByUses(
+    List<OneConstructUse> uses,
+    Set<ConstructIdentifier> exclude,
+  ) {
     for (final use in uses) {
       final id = use.identifier;
+      if (exclude.contains(id)) continue;
       final composite = id.compositeKey;
       (lemmaTypeGroups[composite] ??= {}).add(id);
     }
 
     for (final use in uses) {
+      if (exclude.contains(use.identifier)) continue;
       final id = use.identifier;
       final composite = id.compositeKey;
       if (id.category == 'other' && !otherToSpecific.containsKey(id)) {
@@ -34,11 +42,39 @@ class ConstructMergeTable {
     }
   }
 
+  void removeConstruct(ConstructIdentifier id) {
+    final composite = id.compositeKey;
+    final group = lemmaTypeGroups[composite];
+    if (group == null) return;
+
+    group.remove(id);
+    if (group.isEmpty) {
+      lemmaTypeGroups.remove(composite);
+    }
+
+    if (id.category != 'other') {
+      final otherId = ConstructIdentifier(
+        lemma: id.lemma,
+        type: id.type,
+        category: 'other',
+      );
+      otherToSpecific.remove(otherId);
+    } else {
+      otherToSpecific.remove(id);
+    }
+  }
+
   ConstructIdentifier resolve(ConstructIdentifier key) =>
       otherToSpecific[key] ?? key;
 
-  List<ConstructIdentifier> groupedIds(ConstructIdentifier id) {
-    final keys = [id];
+  List<ConstructIdentifier> groupedIds(
+    ConstructIdentifier id,
+    Set<ConstructIdentifier> exclude,
+  ) {
+    final keys = <ConstructIdentifier>[];
+    if (!exclude.contains(id)) {
+      keys.add(id);
+    }
 
     if (id.category == 'other') {
       final specificKey = otherToSpecific[id];

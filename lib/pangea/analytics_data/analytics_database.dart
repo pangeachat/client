@@ -346,8 +346,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
       category: ids.first.category,
     );
 
-    assert(ids.isNotEmpty);
-
     for (final id in ids) {
       final key = id.storageKey;
 
@@ -533,6 +531,12 @@ class AnalyticsDatabase with DatabaseFileStorage {
       );
     });
   }
+
+  Future<void> updateDerivedStats(DerivedAnalyticsDataModel newStats) =>
+      _derivedServerStatsBox.put(
+        'derived_stats',
+        newStats.toJson(),
+      );
 
   Future<void> updateServerAnalytics(
     List<ConstructAnalyticsEvent> events,

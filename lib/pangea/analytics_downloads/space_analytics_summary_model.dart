@@ -94,6 +94,7 @@ class SpaceAnalyticsSummaryModel {
   static SpaceAnalyticsSummaryModel fromEvents(
     String username,
     List<ConstructAnalyticsEvent> events,
+    Set<ConstructIdentifier> blockedConstructs,
     int numCompletedActivities,
   ) {
     int totalXP = 0;
@@ -110,7 +111,7 @@ class SpaceAnalyticsSummaryModel {
     final ConstructMergeTable mergeTable = ConstructMergeTable();
 
     for (final e in events) {
-      mergeTable.addConstructsByUses(e.content.uses);
+      mergeTable.addConstructsByUses(e.content.uses, blockedConstructs);
 
       for (final use in e.content.uses) {
         totalXP += use.xp;

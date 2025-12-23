@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_details_view.dart';
@@ -38,21 +41,40 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
   bool isSearching = false;
   ConstructLevelEnum? selectedConstructLevel;
+  StreamSubscription<AnalyticsStreamUpdate>? _blockedConstructSub;
 
   @override
   void initState() {
     super.initState();
     _setMorphs();
     _setVocab();
+
     searchController.addListener(() {
       if (mounted) setState(() {});
     });
+
+    _blockedConstructSub = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .constructUpdateStream
+        .stream
+        .listen(_onBlockConstruct);
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    _blockedConstructSub?.cancel();
     super.dispose();
+  }
+
+  void _onBlockConstruct(AnalyticsStreamUpdate update) {
+    final blocked = update.blockedConstruct;
+    if (blocked == null) return;
+    vocab?.removeWhere((e) => e.id == blocked);
+    if (widget.view == ConstructTypeEnum.vocab && widget.construct == null) {
+      setState(() {});
+    }
   }
 
   Future<void> _setVocab() async {

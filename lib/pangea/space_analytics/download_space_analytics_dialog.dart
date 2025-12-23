@@ -10,6 +10,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/download/download_file_util.dart';
@@ -171,6 +172,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
       summary = SpaceAnalyticsSummaryModel.fromEvents(
         userID,
         constructEvents,
+        analyticsRoom.blockedConstructs,
         analyticsRoom.archivedActivitiesCount,
       );
       if (mounted) setState(() => _downloadStatuses[userID] = 2);
