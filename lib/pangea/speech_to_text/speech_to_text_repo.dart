@@ -48,7 +48,7 @@ class SpeechToTextRepo {
     );
 
     final Response res = await req.post(
-      url: PApiUrls.simpleTranslation,
+      url: PApiUrls.speechToText,
       body: request.toJson(),
     );
 
