@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 If you didn't see the new tab, please check your popup blocker.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Disable language tools";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Would you like to disable automatic language assistance?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ns3dJKVRaEb9r12ke/KMaC7kPOc="] = d.current;
+  d["R8JNQ/IJIjMINrMTNMxgvStD1CE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_410.part.js.map

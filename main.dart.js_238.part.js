@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Pokud jste novou kartu nevid\u011bli, zkontrolujte pros\xedm blok\xe1tor vyskakovac\xedch oken.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Deaktivovat jazykov\xe9 n\xe1stroje";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Cht\u011bli byste deaktivovat automatickou jazykovou pomoc?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QvT9uOMdIRHzuRVEL4Fy++aZMmM="] = d.current;
+  d["9a/NrIE8tX+zlo0A7JOhNI1mBNA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

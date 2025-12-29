@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Jei nemat\u0117te naujo skirtuko, patikrinkite savo i\u0161\u0161okan\u010di\u0173 lang\u0173 blokatori\u0173.";
     },
+    get$disableLanguageToolsTitle() {
+      return "I\u0161jungti kalbos \u012frankius";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Ar nor\u0117tum\u0117te i\u0161jungti automatin\u0119 kalbos pagalb\u0105?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yYoXer3EvQS+dzTwBMaTeqz8+lA="] = d.current;
+  d["kj+di1SBrf65OH7znNbKFI9PdGk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

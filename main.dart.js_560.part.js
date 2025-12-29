@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Fitxa berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Desaktibatu hizkuntza tresnak";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Desaktibatu nahi al duzu hizkuntza laguntza automatikoa?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vops21s3K+9liBAV1gKee4e/biE="] = d.current;
+  d["QkEAYTm24wBeOQzGJiO5o70vEA8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

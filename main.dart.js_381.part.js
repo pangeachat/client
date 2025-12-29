@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Wenn Sie den neuen Tab nicht gesehen haben, \xfcberpr\xfcfen Sie bitte Ihren Popup-Blocker.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Spracheinstellungen deaktivieren";
+    },
+    get$disableLanguageToolsDesc() {
+      return "M\xf6chten Sie die automatische Sprachunterst\xfctzung deaktivieren?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ijZdPcBdTCU+qTz0NW348sGeYgU="] = d.current;
+  d["odJaqONwDij+yTwGg2hJz9POCQM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_381.part.js.map

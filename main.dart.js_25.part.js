@@ -5251,6 +5251,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return string$.ud83e__Se_;
     },
+    get$disableLanguageToolsTitle() {
+      return "Desativar ferramentas de idioma";
+    },
+    get$disableLanguageToolsDesc() {
+      return string$.Voc__g;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10475,6 +10481,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$ssoDialogHelpText() {
       return string$.ud83e__Se_;
+    },
+    get$disableLanguageToolsTitle() {
+      return "Desativar ferramentas de idioma";
+    },
+    get$disableLanguageToolsDesc() {
+      return string$.Voc__g;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15701,6 +15713,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return string$.ud83e__Se_;
     },
+    get$disableLanguageToolsTitle() {
+      return "Desativar ferramentas de idioma";
+    },
+    get$disableLanguageToolsDesc() {
+      return string$.Voc__g;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15875,6 +15893,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Vis_ve: 'Vis\xedvel para a comunidade mais ampla do Pangea Chat via "Encontrar um curso"',
     Voc__a: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
     Voc__e: "Voc\xea est\xe1 prestes a sair deste chat. Outros usu\xe1rios ver\xe3o que voc\xea saiu do chat.",
+    Voc__g: "Voc\xea gostaria de desativar a assist\xeancia autom\xe1tica de idioma?",
     Voc__j: "Voc\xea j\xe1 est\xe1 em um curso com este plano. Voc\xea quer criar um curso com o mesmo plano ou ir para o curso existente?",
     Voc__n: "Voc\xea n\xe3o convidou ningu\xe9m para o seu chat. V\xe1 para Configura\xe7\xf5es de Chat para convidar seus contatos ou o Bot. Voc\xea tamb\xe9m pode fazer isso mais tarde.",
     Voc__p: "Voc\xea pode tornar seu curso aberto ao mundo! Ou, tornar seu curso privado e seguro.",
@@ -15888,7 +15907,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aMY9HqML1g8A/xD2wEhBh1qz76k="] = d.current;
+  d["lARNJ7zHeGUni0gdnbc8mW6l53k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

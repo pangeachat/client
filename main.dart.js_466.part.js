@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Se vi ne vidis la novan langeton, bonvolu kontroli vian popup-blokilon.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Malaktivigi lingvo-ilojn";
+    },
+    get$disableLanguageToolsDesc() {
+      return "\u0108u vi \u015datus malaktivigi a\u016dtomatan lingvohelpon?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["b2+VS+ok8KvEG53O5+kFQlTLUx0="] = d.current;
+  d["60gPVI3TboiuP/Ichu/zIr0tbRM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

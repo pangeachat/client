@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Dac\u0103 nu ai v\u0103zut noul tab, te rug\u0103m s\u0103 verifici blocatorul de feronete.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Dezactiveaz\u0103 uneltele de limb\u0103";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Dori\u021bi s\u0103 dezactiva\u021bi asisten\u021ba automat\u0103 pentru limb\u0103?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hqBND6u0Lk/KHurCgPN94CZYGhY="] = d.current;
+  d["IJu9udFBksngNV+rZ7fVl82m+vg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

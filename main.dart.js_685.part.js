@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Nonaktifkan alat bahasa";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Apakah Anda ingin menonaktifkan bantuan bahasa otomatis?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pfZaGOe0RyCHXzTtbEg7tTIL5vs="] = d.current;
+  d["PiG3rCTUPTC1XtInUU/5AVoU9kE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

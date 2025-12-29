@@ -5241,6 +5241,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Yen sampeyan ora ndeleng tab anyar, mangga priksa pemblokir popup sampeyan.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Disa\u0253a \u0253e laawol \u0257e";
+    },
+    get$disableLanguageToolsDesc() {
+      return "A\u0257a yi\u0257i \u0257a\u0253\u0253ita ca\u0257eele laawol \u0253e naatnude?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5266,7 +5272,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rP5SSzcqkQGCg8fDZ2SlKE8uyQQ="] = d.current;
+  d["wZ8Jq2sMDEa6s6Xjui9vBExey4Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.";
     },
+    get$disableLanguageToolsTitle() {
+      return "I-disable ang mga kasangkapan sa wika";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Gusto mo bang i-disable ang awtomatikong tulong sa wika?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cOhXaFiiJyYjtvmJMUDGZJx9kqw="] = d.current;
+  d["00lcfzpIlKr+4Nv9Soi8AaipDk4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

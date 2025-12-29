@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Als je het nieuwe tabblad niet hebt gezien, controleer dan je pop-up blocker.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Schakel taalhulpmiddelen uit";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Wilt u automatische taalsupport uitschakelen?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gQ4I3WRaAX+v8TZOyzLMn3rgekE="] = d.current;
+  d["f47EP26/e/W6aCJA7AehddjoLC0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_726.part.js.map

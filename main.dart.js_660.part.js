@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ha nem l\xe1ttad az \xfaj lapot, k\xe9rlek ellen\u0151rizd a felugr\xf3 ablak blokkol\xf3dat.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Nyelvi eszk\xf6z\xf6k letilt\xe1sa";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Szeretn\xe9 letiltani az automatikus nyelvi seg\xedts\xe9get?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oxaNF1KsZvEbv56Y6c5m3eXp4GM="] = d.current;
+  d["ZR7fPauqOTSR2Oi+pPze9IOgelY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ako niste videli novu karticu, molimo proverite svoj blokator iska\u010du\u0107ih prozora.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Onemogu\u0107i alate za jezik";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Da li \u017eelite da onemogu\u0107ite automatsku jezi\u010dku pomo\u0107?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iAws7xyww6T6Hi7G516JCwwBVng="] = d.current;
+  d["mjWFuRJ+0NUYemlMiI5PlfurMlU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

@@ -5240,6 +5240,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Je\u015bli nie widzisz nowej karty, sprawd\u017a sw\xf3j blokad\u0119 wyskakuj\u0105cych okienek.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Wy\u0142\u0105cz narz\u0119dzia j\u0119zykowe";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Czy chcesz wy\u0142\u0105czy\u0107 automatyczn\u0105 pomoc j\u0119zykow\u0105?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5253,7 +5259,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+kUCYtCAEM+VUDE4Dncld3GRmAI="] = d.current;
+  d["BY6sNdm5wQmgFUsQjlhJlkTPnCk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 M\xe1 chonaic t\xfa an cluais\xedn nua, seice\xe1il le do thoil do bhacad\xf3ir pop-up.";
     },
+    get$disableLanguageToolsTitle() {
+      return "D\xedchur uirlis\xed teanga";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Ar mhaith leat uirlis\xed cabhrach teanga uathoibr\xedoch a d\xedchur?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R9Ia2SH4FeRUAymao7Sv04uLJrs="] = d.current;
+  d["JqPDsY4WYZ65kDnKSWrrh2Myb/A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

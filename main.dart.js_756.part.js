@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Yeni sekmeyi g\xf6rmediyseniz, l\xfctfen a\xe7\u0131l\u0131r pencere engelleyicinizi kontrol edin.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Dil ara\xe7lar\u0131n\u0131 devre d\u0131\u015f\u0131 b\u0131rak";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Otomatik dil yard\u0131m\u0131n\u0131 devre d\u0131\u015f\u0131 b\u0131rakmak ister misiniz?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ttW4UrsNxUZ0gFaOaPD1Yc5kTug="] = d.current;
+  d["3U9pF9t1HQHrdFtbxZpUnoZX++0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

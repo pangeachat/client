@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 \u0391\u03bd \u03b4\u03b5\u03bd \u03b5\u03af\u03b4\u03b1\u03c4\u03b5 \u03c4\u03b7 \u03bd\u03ad\u03b1 \u03ba\u03b1\u03c1\u03c4\u03ad\u03bb\u03b1, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bb\u03ad\u03b3\u03be\u03c4\u03b5 \u03c4\u03bf\u03bd \u03b1\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03c4\u03ae \u03b1\u03bd\u03b1\u03b4\u03c5\u03cc\u03bc\u03b5\u03bd\u03c9\u03bd \u03c0\u03b1\u03c1\u03b1\u03b8\u03cd\u03c1\u03c9\u03bd \u03c3\u03b1\u03c2.";
     },
+    get$disableLanguageToolsTitle() {
+      return "\u0391\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b7 \u03b5\u03c1\u03b3\u03b1\u03bb\u03b5\u03af\u03c9\u03bd \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2";
+    },
+    get$disableLanguageToolsDesc() {
+      return "\u0398\u03b1 \u03b8\u03ad\u03bb\u03b1\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b1\u03c5\u03c4\u03cc\u03bc\u03b1\u03c4\u03b7 \u03b2\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1 \u03b3\u03bb\u03ce\u03c3\u03c3\u03b1\u03c2;";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lcCdUmje4AxMJQWdCAtLbSveUV4="] = d.current;
+  d["ng/kZTg0feDpnvK6p/GhXZRWjaw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_409.part.js.map

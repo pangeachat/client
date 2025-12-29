@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Om du inte s\xe5g den nya fliken, v\xe4nligen kontrollera din popup-blockerare.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Inaktivera spr\xe5kinstrument";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Vill du inaktivera automatisk spr\xe5khj\xe4lp?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VBfJ9NnlKQmO0tZVUxLwveZQFRk="] = d.current;
+  d["ZPEEKapsOoAS1y5USSez4FR1OQg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

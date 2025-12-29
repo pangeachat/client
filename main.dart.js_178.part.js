@@ -5240,6 +5240,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Desactivar eines d'idioma";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Voleu desactivar l'assist\xe8ncia autom\xe0tica d'idioma?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5256,7 +5262,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Jasd+6QFThn0mwpBb6n4cgI0+Jk="] = d.current;
+  d["Q1omyHKKT7lzdAy6zS4r/yfSspc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

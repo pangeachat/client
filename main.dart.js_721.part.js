@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Hvis du ikke s\xe5 den nye fanen, vennligst sjekk popup-blokkeringen din.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Deaktiver spr\xe5kv\xe6rkt\xf8y";
+    },
+    get$disableLanguageToolsDesc() {
+      return "\xd8nsker du \xe5 deaktivere automatisk spr\xe5kassistanse?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Yvq78EjGT/Yo4A3DB6HTK9jHI1Q="] = d.current;
+  d["RHeywDUIUEdp6r4UpCHqUpNt9xI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

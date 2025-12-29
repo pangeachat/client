@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Ja neredz\u0113j\u0101t jauno cilni, l\u016bdzu, p\u0101rbaudiet savu uznirsto\u0161o logu blo\u0137\u0113t\u0101ju.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Atsp\u0113jot valodas r\u012bkus";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Vai v\u0113laties atsp\u0113jot autom\u0101tisko valodas pal\u012bdz\u012bbu?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oLl5f0ODpGGFcd3NnGsRw3vtAnI="] = d.current;
+  d["cBv2VcJR3U0pZszX1g/bylOGp7A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Si vous n'avez pas vu le nouvel onglet, veuillez v\xe9rifier votre bloqueur de fen\xeatres contextuelles.";
     },
+    get$disableLanguageToolsTitle() {
+      return "D\xe9sactiver les outils linguistiques";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Souhaitez-vous d\xe9sactiver l'assistance linguistique automatique ?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["08QhYtMTnhAXkDVlA+tX2qadobk="] = d.current;
+  d["QIv/OzbhPCls1axyQwVrLvX0yDY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

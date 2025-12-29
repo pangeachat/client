@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Se non ves a nova pestana, por favor, verifica o teu bloqueador de vent\xe1s emerxentes.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Desactivar ferramentas de idioma";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Gustar\xedache desactivar a asistencia autom\xe1tica de idioma?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5255,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["916d9B3LUOEMNKMwPFszM5h/zgI="] = d.current;
+  d["jauCqA2wffnTXk90ckedQp1DzG0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_615.part.js.map

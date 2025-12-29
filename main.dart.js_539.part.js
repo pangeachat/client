@@ -5239,6 +5239,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ssoDialogHelpText() {
       return "\ud83e\udd14 Kui te ei n\xe4inud uut vahekaarti, kontrollige palun oma h\xfcpikakna blokeerijat.";
     },
+    get$disableLanguageToolsTitle() {
+      return "Keela keele t\xf6\xf6riistad";
+    },
+    get$disableLanguageToolsDesc() {
+      return "Kas soovite automaatset keeleabi keelata?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5252,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["M5GXR29wNA7CeQmI09yRPjCk+Oo="] = d.current;
+  d["GnesyI4CNVqJcw3Yh76qr/ockr4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map
