@@ -527,7 +527,7 @@ class HtmlMessage extends StatelessWidget {
                           height: overlayController!
                                       .practiceController.practiceMode !=
                                   MessagePracticeMode.noneSelected
-                              ? 16.0
+                              ? 8.0
                               : 0.0,
                           width: tokenWidth,
                         ),
@@ -995,7 +995,7 @@ class HtmlMessage extends StatelessWidget {
                       height:
                           overlayController!.practiceController.practiceMode !=
                                   MessagePracticeMode.noneSelected
-                              ? 16.0
+                              ? 8.0
                               : 0.0,
                       width: 0,
                     ),
