@@ -1045,14 +1045,24 @@ class Message extends StatelessWidget {
                                   if (canRefresh)
                                     Padding(
                                       padding: const EdgeInsets.all(16.0),
-                                      child: IconButton(
-                                        tooltip: L10n.of(context)
-                                            .requestRegeneration,
-                                        icon: const Icon(
-                                          Icons.refresh_outlined,
+                                      child: CircleAvatar(
+                                        radius: (IconTheme.of(context).size ??
+                                                24.0) -
+                                            4,
+                                        backgroundColor: theme
+                                            .colorScheme.surface
+                                            .withAlpha(128),
+                                        child: IconButton(
+                                          tooltip: L10n.of(context)
+                                              .requestRegeneration,
+                                          icon: const Icon(
+                                            Icons.refresh_outlined,
+                                          ),
+                                          onPressed: () =>
+                                              controller.requestRegeneration(
+                                            event.eventId,
+                                          ),
                                         ),
-                                        onPressed: () => controller
-                                            .requestRegeneration(event.eventId),
                                       ),
                                     ),
                                 ],
