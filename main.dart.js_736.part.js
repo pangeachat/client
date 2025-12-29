@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Click aici pentru a vedea statisticile activit\u0103\u021bii \u0219i pentru a \xeenchide activitatea c\xe2nd termini";
     },
-    get$readingAnalyticsDesc() {
-      return "Click pe practic\u0103 pentru fiecare mesaj pentru activit\u0103\u021bi de citire.";
-    },
-    get$speakingAnalyticsDesc() {
-      return " \xcenregistreaz\u0103 mesaje vocale pentru practic\u0103 de vorbire.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Click pe practic\u0103 pentru fiecare mesaj pentru activit\u0103\u021bi de ascultare.";
-    },
     get$loginToAccount() {
       return "Autentific\u0103-te \xeen contul meu";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Ai uitat parola?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Trimite mesaje pentru a exersa scrierea.";
     },
     get$endActivity() {
       return "\xcencheie activitatea";
@@ -5267,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Wj82CW5io06OqJ9Y8tNKS0tGkHI="] = d.current;
+  d["hqBND6u0Lk/KHurCgPN94CZYGhY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map

@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Etkinlik istatistiklerinizi g\xf6rmek ve tamamland\u0131\u011f\u0131nda etkinli\u011fi kapatmak i\xe7in buraya t\u0131klay\u0131n";
     },
-    get$readingAnalyticsDesc() {
-      return "Okuma etkinlikleri i\xe7in her mesajda pratik yapmaya t\u0131klay\u0131n.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Konu\u015fma prati\u011fi i\xe7in sesli mesajlar kaydedin.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Dinleme etkinlikleri i\xe7in her mesajda pratik yapmaya t\u0131klay\u0131n.";
-    },
     get$loginToAccount() {
       return "Hesab\u0131n\u0131za giri\u015f yap\u0131n";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "\u015eifremi unuttum?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Yazma al\u0131\u015ft\u0131rmas\u0131 yapmak i\xe7in mesaj g\xf6nderin.";
     },
     get$endActivity() {
       return "Etkinli\u011fi sonland\u0131r";
@@ -5267,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NvGy/XFU7LbeNvHZRef9rNhOknw="] = d.current;
+  d["ttW4UrsNxUZ0gFaOaPD1Yc5kTug="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

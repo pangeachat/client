@@ -4298,15 +4298,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Kliknij tutaj, aby zobaczy\u0107 statystyki aktywno\u015bci i zamkn\u0105\u0107 aktywno\u015b\u0107 po zako\u0144czeniu";
     },
-    get$readingAnalyticsDesc() {
-      return "Kliknij \u0107wiczenie na ka\u017cdej wiadomo\u015bci, aby rozpocz\u0105\u0107 aktywno\u015bci czytania.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Nagrywaj wiadomo\u015bci g\u0142osowe, aby \u0107wiczy\u0107 m\xf3wienie.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Kliknij \u0107wiczenie na ka\u017cdej wiadomo\u015bci, aby rozpocz\u0105\u0107 aktywno\u015bci s\u0142uchania.";
-    },
     get$loginToAccount() {
       return "Zaloguj si\u0119 do mojego konta";
     },
@@ -4354,9 +4345,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Zapomnia\u0142e\u015b has\u0142a?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Wy\u015blij wiadomo\u015bci, aby \u0107wiczy\u0107 pisanie.";
     },
     get$endActivity() {
       return "Zako\u0144cz aktywno\u015b\u0107";
@@ -5265,7 +5253,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dwo6oarUZ9dKr1KgdKcfNSb8Oeo="] = d.current;
+  d["+kUCYtCAEM+VUDE4Dncld3GRmAI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

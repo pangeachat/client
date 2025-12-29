@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Klik her for at se dine aktivitetsstatistikker og for at lukke aktiviteten, n\xe5r du er f\xe6rdig";
     },
-    get$readingAnalyticsDesc() {
-      return "Klik p\xe5 \xf8velse p\xe5 hver besked for l\xe6seaktiviteter.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Optag stemmemeddelelser til taletr\xe6ning.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Klik p\xe5 \xf8velse p\xe5 hver besked for lytteaktiviteter.";
-    },
     get$loginToAccount() {
       return "Log ind p\xe5 min konto";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Glemt adgangskode?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Send beskeder for at \xf8ve skrivning.";
     },
     get$endActivity() {
       return "Afslut aktivitet";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2R6eHUe3rAxHxhxgBvfKjuPXKRw="] = d.current;
+  d["vyfhS0CAP8jaPsd23dx6/NGYmRE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

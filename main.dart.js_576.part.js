@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Klikkaa t\xe4st\xe4 n\xe4hd\xe4ksesi aktiviteettitilastosi ja sulkeaksesi aktiviteetin lopuksi";
     },
-    get$readingAnalyticsDesc() {
-      return "Klikkaa harjoitusta jokaisessa viestiss\xe4 lukuharjoituksia varten.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Tallenna \xe4\xe4niviestej\xe4 puheharjoituksia varten.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Klikkaa harjoitusta jokaisessa viestiss\xe4 kuunteluharjoituksia varten.";
-    },
     get$loginToAccount() {
       return "Kirjaudu tililleni";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Unohditko salasanan?";
-    },
-    get$writingAnalyticsDesc() {
-      return "L\xe4het\xe4 viestej\xe4 harjoitellaksesi kirjoittamista.";
     },
     get$endActivity() {
       return "Lopeta toiminta";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6DQAz8/ZoZCCbRnda0H4fahjlQ4="] = d.current;
+  d["PFqmi8XIfQmcIjdB3o72UyP96/M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map

@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Clice\xe1il anseo chun do staitistic\xed gn\xedomha\xedochta a fheice\xe1il agus an gn\xedomha\xedocht a dh\xfanadh nuair a bheidh s\xe9 cr\xedochnaithe";
     },
-    get$readingAnalyticsDesc() {
-      return "Clice\xe1il cleachtadh ar gach teachtaireacht le haghaidh gn\xedomha\xedochta\xed l\xe9itheoireachta.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Cl\xe1raigh teachtaireachta\xed gutha le haghaidh cleachtadh labhartha.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Clice\xe1il cleachtadh ar gach teachtaireacht le haghaidh gn\xedomha\xedochta\xed \xe9isteachta.";
-    },
     get$loginToAccount() {
       return "Log\xe1il isteach i mo chuntas";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "An bhfuil do phasfhocal dearmadta?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Seol teachtaireachta\xed chun cleachtadh scr\xedbhneoireachta a dh\xe9anamh.";
     },
     get$endActivity() {
       return "Cr\xedochnaigh an ghn\xedomha\xedocht";
@@ -5267,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yBvAAerobjbbq+K8AjG/drXhC+E="] = d.current;
+  d["R9Ia2SH4FeRUAymao7Sv04uLJrs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

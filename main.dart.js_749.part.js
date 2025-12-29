@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "\u041a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u043e\u0432\u0434\u0435 \u0434\u0430 \u0432\u0438\u0434\u0438\u0442\u0435 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u0438 \u0434\u0430 \u0437\u0430\u0442\u0432\u043e\u0440\u0438\u0442\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442 \u043d\u0430\u043a\u043e\u043d \u0437\u0430\u0432\u0440\u0448\u0435\u0442\u043a\u0430";
     },
-    get$readingAnalyticsDesc() {
-      return "\u041a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u043d\u0430 \u043f\u0440\u0430\u043a\u0441\u0443 \u043d\u0430 \u0441\u0432\u0430\u043a\u043e\u0458 \u043f\u043e\u0440\u0443\u0446\u0438 \u0437\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438 \u0447\u0438\u0442\u0430\u045a\u0430.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "\u0417\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u0433\u043b\u0430\u0441\u043e\u0432\u043d\u0435 \u043f\u043e\u0440\u0443\u043a\u0435 \u0437\u0430 \u0432\u0435\u0436\u0431\u0430\u045a\u0435 \u0433\u043e\u0432\u043e\u0440\u0430.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Kliknite na svaku poruku za ve\u017ebe slu\u0161anja.";
-    },
     get$loginToAccount() {
       return "Prijavi se na svoj nalog";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Zaboravili ste lozinku?";
-    },
-    get$writingAnalyticsDesc() {
-      return "\u0160aljite poruke za ve\u017ebanje pisanja.";
     },
     get$endActivity() {
       return "Zavr\u0161i aktivnost";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OGMs9y2MmeeogQAjHp5X9bfChXY="] = d.current;
+  d["iAws7xyww6T6Hi7G516JCwwBVng="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

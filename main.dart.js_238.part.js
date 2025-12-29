@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Klikn\u011bte zde pro zobrazen\xed statistik va\u0161\xed aktivity a pro uzav\u0159en\xed aktivity po dokon\u010den\xed";
     },
-    get$readingAnalyticsDesc() {
-      return "Klikn\u011bte na cvi\u010den\xed u ka\u017ed\xe9 zpr\xe1vy pro aktivity \u010dten\xed.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Nahrajte hlasov\xe9 zpr\xe1vy pro procvi\u010dov\xe1n\xed mluven\xed.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Klikn\u011bte na cvi\u010den\xed u ka\u017ed\xe9 zpr\xe1vy pro poslechov\xe9 aktivity.";
-    },
     get$loginToAccount() {
       return "P\u0159ihl\xe1sit se ke sv\xe9mu \xfa\u010dtu";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Zapomn\u011bli jste heslo?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Pos\xedlejte zpr\xe1vy pro procvi\u010dov\xe1n\xed psan\xed.";
     },
     get$endActivity() {
       return "Ukon\u010dit aktivitu";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["k1fyXwtMds7xZG8oFqi3eim0L2o="] = d.current;
+  d["QvT9uOMdIRHzuRVEL4Fy++aZMmM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

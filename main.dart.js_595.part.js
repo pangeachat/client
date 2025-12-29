@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Cliquez ici pour voir vos statistiques d'activit\xe9 et pour fermer l'activit\xe9 une fois termin\xe9e";
     },
-    get$readingAnalyticsDesc() {
-      return "Cliquez sur pratiquer sur chaque message pour les activit\xe9s de lecture.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Enregistrez des messages vocaux pour la pratique de la parole.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Cliquez sur pratiquer sur chaque message pour les activit\xe9s d'\xe9coute.";
-    },
     get$loginToAccount() {
       return "Se connecter \xe0 mon compte";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Mot de passe oubli\xe9 ?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Envoyez des messages pour pratiquer l'\xe9criture.";
     },
     get$endActivity() {
       return "Terminer l'activit\xe9";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iPNvS2T9IsO4QeZz1/447sIQ4xw="] = d.current;
+  d["08QhYtMTnhAXkDVlA+tX2qadobk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Kl\xf5psa siia, et vaadata oma tegevuse statistikat ja sulgeda tegevus p\xe4rast l\xf5petamist";
     },
-    get$readingAnalyticsDesc() {
-      return "Kl\xf5psa iga s\xf5numi peal, et teha lugemisharjutusi.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Salvesta h\xe4\xe4lteateid r\xe4\xe4kimisharjutuste jaoks.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Kl\xf5psa iga s\xf5numi peal, et teha kuulamis\xfclesandeid.";
-    },
     get$loginToAccount() {
       return "Logi sisse oma kontole";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Unustasid parooli?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Saada s\xf5numeid kirjutamise harjutamiseks.";
     },
     get$endActivity() {
       return "L\xf5peta tegevus";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eOaVSa0si8tj/G5VNEDs3+NqX6o="] = d.current;
+  d["M5GXR29wNA7CeQmI09yRPjCk+Oo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

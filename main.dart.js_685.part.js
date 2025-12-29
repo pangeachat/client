@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Klik di sini untuk melihat statistik aktivitas Anda dan menutup aktivitas saat selesai";
     },
-    get$readingAnalyticsDesc() {
-      return "Klik latihan pada setiap pesan untuk aktivitas membaca.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Rekam pesan suara untuk latihan berbicara.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Klik latihan pada setiap pesan untuk aktivitas mendengarkan.";
-    },
     get$loginToAccount() {
       return "Masuk ke akun saya";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Lupa kata sandi?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Kirim pesan untuk berlatih menulis.";
     },
     get$endActivity() {
       return "Akhiri aktivitas";
@@ -5267,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TJ+iLz6G01IC/lS/OmFm0IBupOM="] = d.current;
+  d["pfZaGOe0RyCHXzTtbEg7tTIL5vs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

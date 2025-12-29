@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Kattintson ide az aktivit\xe1si statisztik\xe1k megtekint\xe9s\xe9hez \xe9s a tev\xe9kenys\xe9g bez\xe1r\xe1s\xe1hoz, ha befejezte";
     },
-    get$readingAnalyticsDesc() {
-      return "Kattintson a gyakorlatra minden \xfczenetn\xe9l az olvas\xe1si tev\xe9kenys\xe9gekhez.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Felv\xe9tel hang\xfczeneteket a besz\xe9dgyakorlatokhoz.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Kattintson a gyakorlatra minden \xfczenetn\xe9l a hallgat\xe1si tev\xe9kenys\xe9gekhez.";
-    },
     get$loginToAccount() {
       return "Jelentkezzen be a fi\xf3komba";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Elfelejtetted a jelsz\xf3t?";
-    },
-    get$writingAnalyticsDesc() {
-      return "\xdczenetek k\xfcld\xe9se a \xedr\xe1s gyakorl\xe1s\xe1hoz.";
     },
     get$endActivity() {
       return "Tev\xe9kenys\xe9g befejez\xe9se";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eVvYAwxGoHmn0zYoWoC31oDUkX4="] = d.current;
+  d["oxaNF1KsZvEbv56Y6c5m3eXp4GM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

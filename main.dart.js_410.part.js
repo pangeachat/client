@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Click here to view your activity stats and to close the activity when finished";
     },
-    get$readingAnalyticsDesc() {
-      return "Click practice on each message for reading activities.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Record voice messages for speaking practice.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Click practice on each message for listening activities.";
-    },
     get$loginToAccount() {
       return "Login to my account";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Forgot password?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Send messages to practice writing.";
     },
     get$endActivity() {
       return "End activity";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m3p0XDXoE75UP7Cpqa/DJzWlvp4="] = d.current;
+  d["ns3dJKVRaEb9r12ke/KMaC7kPOc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_410.part.js.map

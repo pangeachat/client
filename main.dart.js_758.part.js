@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 xem th\u1ed1ng k\xea ho\u1ea1t \u0111\u1ed9ng c\u1ee7a b\u1ea1n v\xe0 \u0111\xf3ng ho\u1ea1t \u0111\u1ed9ng khi ho\xe0n th\xe0nh";
     },
-    get$readingAnalyticsDesc() {
-      return "Nh\u1ea5n luy\u1ec7n t\u1eadp tr\xean t\u1eebng tin nh\u1eafn \u0111\u1ec3 th\u1ef1c hi\u1ec7n c\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\u1ecdc.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Ghi \xe2m tin nh\u1eafn tho\u1ea1i \u0111\u1ec3 luy\u1ec7n n\xf3i.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Nh\u1ea5n luy\u1ec7n t\u1eadp tr\xean t\u1eebng tin nh\u1eafn \u0111\u1ec3 th\u1ef1c hi\u1ec7n c\xe1c ho\u1ea1t \u0111\u1ed9ng nghe.";
-    },
     get$loginToAccount() {
       return "\u0110\u0103ng nh\u1eadp v\xe0o t\xe0i kho\u1ea3n c\u1ee7a t\xf4i";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Qu\xean m\u1eadt kh\u1ea9u?";
-    },
-    get$writingAnalyticsDesc() {
-      return "G\u1eedi tin nh\u1eafn \u0111\u1ec3 luy\u1ec7n vi\u1ebft.";
     },
     get$endActivity() {
       return "K\u1ebft th\xfac ho\u1ea1t \u0111\u1ed9ng";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WwQJCU1QyePMrpk7cYYd3Ir0t/c="] = d.current;
+  d["yK/BUj/k2E5j+Dbz3kVy3qlG1O0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

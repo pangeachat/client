@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Klicken Sie hier, um Ihre Aktivit\xe4tsstatistiken anzuzeigen und die Aktivit\xe4t bei Abschluss zu schlie\xdfen";
     },
-    get$readingAnalyticsDesc() {
-      return "Klicken Sie auf \xdcbung bei jeder Nachricht f\xfcr Leseaktivit\xe4ten.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Aufnahmen von Sprachnachrichten f\xfcr Sprech\xfcbungen machen.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Klicken Sie auf \xdcbung bei jeder Nachricht f\xfcr H\xf6raktivit\xe4ten.";
-    },
     get$loginToAccount() {
       return "In mein Konto einloggen";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Passwort vergessen?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Senden Sie Nachrichten, um das Schreiben zu \xfcben.";
     },
     get$endActivity() {
       return "Aktivit\xe4t beenden";
@@ -5267,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wwYz8yF9u9eU0sbrD8vLjrWzF4U="] = d.current;
+  d["ijZdPcBdTCU+qTz0NW348sGeYgU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_381.part.js.map

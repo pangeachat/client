@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Clicca qui per visualizzare le statistiche della tua attivit\xe0 e per chiudere l'attivit\xe0 quando hai finito";
     },
-    get$readingAnalyticsDesc() {
-      return "Clicca su pratica su ogni messaggio per le attivit\xe0 di lettura.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Registra messaggi vocali per la pratica del parlato.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Clicca su pratica su ogni messaggio per le attivit\xe0 di ascolto.";
-    },
     get$loginToAccount() {
       return "Accedi al mio account";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Hai dimenticato la password?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Invia messaggi per esercitarti a scrivere.";
     },
     get$endActivity() {
       return "Termina attivit\xe0";
@@ -5267,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pHo8CLgVEbl2Ezloc4fMZDr4kGc="] = d.current;
+  d["hsldXcC7YCu5e50qOBttJzCEm3k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

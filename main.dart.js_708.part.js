@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Spustel\u0117kite \u010dia, nor\u0117dami per\u017ei\u016br\u0117ti savo veiklos statistik\u0105 ir u\u017edaryti veikl\u0105, kai baigsite";
     },
-    get$readingAnalyticsDesc() {
-      return "Spustel\u0117kite praktika ant kiekvienos \u017einut\u0117s skaitymo veikloms.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "\u012era\u0161ykite balso \u017einutes kalb\u0117jimo praktikai.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Spustel\u0117kite praktika ant kiekvienos \u017einut\u0117s klausymo veikloms.";
-    },
     get$loginToAccount() {
       return "Prisijungti prie mano paskyros";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Pamir\u0161ote slapta\u017eod\u012f?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Si\u0173skite \u017einutes praktikuodami ra\u0161ym\u0105.";
     },
     get$endActivity() {
       return "Baigti veikl\u0105";
@@ -5267,7 +5255,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["soZKo55uiTAhQpybLY3wUbbu/4c="] = d.current;
+  d["yYoXer3EvQS+dzTwBMaTeqz8+lA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Clika qua pro vider tuas statisticas de activitate e pro serrar l'activitate quando finit";
     },
-    get$readingAnalyticsDesc() {
-      return "Clika praticar su cata message pro activitates de lectura.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Registrara messages de voce pro practicar de parlar.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Clika praticar su cata message pro activitates de ascoltar.";
-    },
     get$loginToAccount() {
       return "Login a mi conto";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Oblidate la parola de pass?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Manda messages pro practicar scriver.";
     },
     get$endActivity() {
       return "Finir l'activitate";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R88X2cfxvRci7qtzNF9iYHgT+9o="] = d.current;
+  d["5xsArydrxiZx+cb54Mz0z6/a1W0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_695.part.js.map

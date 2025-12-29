@@ -1622,7 +1622,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Precisa de ajuda?";
     },
     get$clickMessageBody() {
-      return string$.Cliqueemu;
+      return string$.Cliqueem;
     },
     get$allDone() {
       return "Tudo pronto!";
@@ -4309,15 +4309,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return string$.Cliqueav;
     },
-    get$readingAnalyticsDesc() {
-      return string$.Cliqueemp;
-    },
-    get$speakingAnalyticsDesc() {
-      return string$.Grave_;
-    },
-    get$audioAnalyticsDesc() {
-      return "Clique em pr\xe1tica em cada mensagem para atividades de audi\xe7\xe3o.";
-    },
     get$loginToAccount() {
       return "Fa\xe7a login na minha conta";
     },
@@ -4365,9 +4356,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Esqueceu a senha?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Enviar mensagens para praticar a escrita.";
     },
     get$endActivity() {
       return "Encerrar atividade";
@@ -6862,7 +6850,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Precisa de ajuda?";
     },
     get$clickMessageBody() {
-      return string$.Cliqueemu;
+      return string$.Cliqueem;
     },
     get$allDone() {
       return "Tudo pronto!";
@@ -9549,15 +9537,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return string$.Cliqueav;
     },
-    get$readingAnalyticsDesc() {
-      return "Clique em praticar em cada mensagem para atividades de leitura.";
-    },
-    get$speakingAnalyticsDesc() {
-      return string$.Grave_;
-    },
-    get$audioAnalyticsDesc() {
-      return "Clique em praticar em cada mensagem para atividades de escuta.";
-    },
     get$loginToAccount() {
       return "Fa\xe7a login na minha conta";
     },
@@ -9605,9 +9584,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Esqueceu a senha?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Envie mensagens para praticar a escrita.";
     },
     get$endActivity() {
       return "Encerrar atividade";
@@ -14786,15 +14762,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Clique aqui para ver as suas estat\xedsticas de atividade e para fechar a atividade quando terminar";
     },
-    get$readingAnalyticsDesc() {
-      return string$.Cliqueemp;
-    },
-    get$speakingAnalyticsDesc() {
-      return string$.Grave_;
-    },
-    get$audioAnalyticsDesc() {
-      return "Clique em pr\xe1tica em cada mensagem para atividades de audi\xeancia.";
-    },
     get$loginToAccount() {
       return "Entrar na minha conta";
     },
@@ -14842,9 +14809,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Esqueceu a palavra-passe?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Envie mensagens para praticar a escrita.";
     },
     get$endActivity() {
       return "Terminar atividade";
@@ -15791,8 +15755,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Cliqueav: "Clique aqui para ver suas estat\xedsticas de atividade e fechar a atividade quando terminar",
     Cliquee_p: "Clique e segure para informa\xe7\xf5es da palavra.",
     Cliquee_u: "Clique e segure uma op\xe7\xe3o para obter uma dica.",
-    Cliqueemp: "Clique em pr\xe1tica em cada mensagem para atividades de leitura.",
-    Cliqueemu: "Clique em uma mensagem para ferramentas de idioma como tradu\xe7\xe3o, reprodu\xe7\xe3o e mais!",
+    Cliqueem: "Clique em uma mensagem para ferramentas de idioma como tradu\xe7\xe3o, reprodu\xe7\xe3o e mais!",
     Cliquena: "Clique nas pe\xe7as do quebra-cabe\xe7a para perguntas de gram\xe1tica!",
     Cliqueno: "Clique nos bot\xf5es abaixo para mini-jogos de combina\xe7\xe3o de emojis, \xe1udios, significados de palavras e conceitos gramaticais. Ou clique em qualquer palavra para detalhes.",
     Combine: "Combine emojis com as palavras que eles representam melhor. N\xe3o se preocupe! N\xe3o h\xe1 penaliza\xe7\xf5es por discordar. \ud83d\ude05",
@@ -15829,7 +15792,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Executu: "Executar automaticamente a assist\xeancia de escrita de gram\xe1tica e tradu\xe7\xe3o do Pangea Chat antes de enviar minha mensagem.",
     Ferram: "Ferramentas de tradu\xe7\xe3o e gram\xe1tica podem estar lentas ou indispon\xedveis enquanto os bots Pangea se atualizam.",
     Gostar: "Gostaria de solicitar acesso para visualizar as an\xe1lises dos participantes?\n\nSe os participantes concordarem, os administradores deste curso poder\xe3o ver:\n    \u2022 vocabul\xe1rio total\n    \u2022 conceitos gramaticais totais\n    \u2022 sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o ver:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
-    Grave_: "Grave mensagens de voz para pr\xe1tica de fala.",
     Ignorae: "Ignorado na atividade de escuta de palavras",
     Ignoras: "Ignorado na atividade de significado da palavra",
     Ilhas_: "Ilhas Ge\xf3rgia do Sul e Ilhas Sandwich do Sul",
@@ -15926,7 +15888,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4q13L8XtIYDh6IONEbR8QgMS8NM="] = d.current;
+  d["aMY9HqML1g8A/xD2wEhBh1qz76k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Klicka h\xe4r f\xf6r att se dina aktivitetsstatistik och f\xf6r att st\xe4nga aktiviteten n\xe4r du \xe4r klar";
     },
-    get$readingAnalyticsDesc() {
-      return "Klicka p\xe5 \xf6vning f\xf6r varje meddelande f\xf6r l\xe4saktiviteter.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Spela in r\xf6stmeddelanden f\xf6r tal\xf6vningar.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Klicka p\xe5 \xf6vning f\xf6r varje meddelande f\xf6r lyssningsaktiviteter.";
-    },
     get$loginToAccount() {
       return "Logga in p\xe5 mitt konto";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Gl\xf6mt l\xf6senord?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Skicka meddelanden f\xf6r att \xf6va p\xe5 att skriva.";
     },
     get$endActivity() {
       return "Avsluta aktivitet";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GpFqGiQ5bNSqnRXZCxbnwi+tH0c="] = d.current;
+  d["VBfJ9NnlKQmO0tZVUxLwveZQFRk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

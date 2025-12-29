@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Kliknite ovdje za prikaz statistike va\u0161e aktivnosti i zatvaranje aktivnosti nakon zavr\u0161etka";
     },
-    get$readingAnalyticsDesc() {
-      return "Kliknite na vje\u017ebu na svakoj poruci za aktivnosti \u010ditanja.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Snimate glasovne poruke za vje\u017ebu govora.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Kliknite na vje\u017ebu na svakoj poruci za aktivnosti slu\u0161anja.";
-    },
     get$loginToAccount() {
       return "Prijavite se na svoj ra\u010dun";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Zaboravili ste lozinku?";
-    },
-    get$writingAnalyticsDesc() {
-      return "\u0160aljite poruke za vje\u017ebanje pisanja.";
     },
     get$endActivity() {
       return "Zavr\u0161ite aktivnost";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hLMDBXRcurTnuMwN+PQC6AX++8o="] = d.current;
+  d["iQjJ3nCg7/r/gw4B3n6Nz/2Cv4o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

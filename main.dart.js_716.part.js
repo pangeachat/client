@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Noklik\u0161\u0137iniet \u0161eit, lai skat\u012btu savu aktivit\u0101tes statistiku un aizv\u0113rtu aktivit\u0101ti, kad t\u0101 ir pabeigta";
     },
-    get$readingAnalyticsDesc() {
-      return "Noklik\u0161\u0137iniet uz prakses katr\u0101 zi\u0146ojum\u0101, lai veiktu las\u012b\u0161anas aktivit\u0101tes.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Ierakstiet balss zi\u0146ojumus, lai praktiz\u0113tu run\u0101\u0161anu.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Noklik\u0161\u0137iniet uz prakses katr\u0101 zi\u0146ojum\u0101, lai veiktu klaus\u012b\u0161an\u0101s aktivit\u0101tes.";
-    },
     get$loginToAccount() {
       return "Pierakstieties sav\u0101 kont\u0101";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Aizmirs\u0101t paroli?";
-    },
-    get$writingAnalyticsDesc() {
-      return "S\u016btiet zi\u0146ojumus, lai praktiz\u0113tu rakst\u012b\u0161anu.";
     },
     get$endActivity() {
       return "Beigt aktivit\u0101ti";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gyOCihh2lt3WrAP+LejVfkXzsrk="] = d.current;
+  d["oLl5f0ODpGGFcd3NnGsRw3vtAnI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

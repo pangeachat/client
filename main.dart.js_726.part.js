@@ -4297,15 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityStatsButtonInstruction() {
       return "Klik hier om je activiteitsstatistieken te bekijken en de activiteit te sluiten wanneer je klaar bent";
     },
-    get$readingAnalyticsDesc() {
-      return "Klik op oefenen bij elk bericht voor leesactiviteiten.";
-    },
-    get$speakingAnalyticsDesc() {
-      return "Neem spraakberichten op voor spreekvaardigheid.";
-    },
-    get$audioAnalyticsDesc() {
-      return "Klik op oefenen bij elk bericht voor luisteractiviteiten.";
-    },
     get$loginToAccount() {
       return "Log in op mijn account";
     },
@@ -4353,9 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$forgotPassword() {
       return "Wachtwoord vergeten?";
-    },
-    get$writingAnalyticsDesc() {
-      return "Stuur berichten om schrijven te oefenen.";
     },
     get$endActivity() {
       return "Eind activiteit";
@@ -5264,7 +5252,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mg25scCpKk22bui9Z3x9ZdSl55U="] = d.current;
+  d["gQ4I3WRaAX+v8TZOyzLMn3rgekE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_726.part.js.map
