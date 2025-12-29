@@ -2557,9 +2557,6 @@
   "courseSavedSuccessfully": "კურსი წარმატებით შენახულია",
   "addCoursePlan": "კურსის გეგმის დამატება",
   "activityStatsButtonInstruction": "აწკაპუნეთ აქ თქვენი აქტივობის სტატისტიკის სანახავად და აქტივობის დახურვისთვის, როდესაც დასრულდება",
-  "readingAnalyticsDesc": "წაიკითხეთ პრაქტიკა თითოეულ შეტყობინებაზე, წაკითხვის აქტივობებისთვის.",
-  "speakingAnalyticsDesc": "ჩაწერეთ ხმოვანი შეტყობინებები საუბრის პრაქტიკისთვის.",
-  "audioAnalyticsDesc": "აწკაპუნეთ პრაქტიკა თითოეულ შეტყობინებაზე, მოსმენის აქტივობებისთვის.",
   "loginToAccount": "შესვლა ჩემს ანგარიშზე",
   "appDescription": "სწავლა ენის\nმეგობრებთან მესენჯერში საუბრის დროს.",
   "languages": "ენები",
@@ -2585,7 +2582,6 @@
   "usernameOrEmail": "მომხმარებლის სახელი ან ელფოსტა",
   "email": "ელფოსტა",
   "forgotPassword": "დაგავიწყდათ პაროლი?",
-  "writingAnalyticsDesc": "გაგზავნეთ შეტყობინებები წერის პრაქტიკისთვის.",
   "endActivity": "ფართოება აქტივობა",
   "allLanguages": "ყველა ენა",
   "chatListTooltip": "აქ ნახავთ თქვენს პირდაპირ შეტყობინებებს! დაწკაპეთ ნებისმიერი მომხმარებლის ავატარი და „საუბრის დაწყება“, რათა გაგზავნოთ შეტყობინება.",
@@ -10119,18 +10115,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10228,10 +10212,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

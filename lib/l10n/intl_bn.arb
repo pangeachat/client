@@ -4465,9 +4465,6 @@
   "courseSavedSuccessfully": "কোর্স সফলভাবে সংরক্ষিত হয়েছে",
   "addCoursePlan": "একটি কোর্স পরিকল্পনা যোগ করুন",
   "activityStatsButtonInstruction": "আপনার কার্যকলাপ পরিসংখ্যান দেখার জন্য এখানে ক্লিক করুন এবং শেষ হলে কার্যকলাপ বন্ধ করুন",
-  "readingAnalyticsDesc": "পাঠের জন্য প্রতিটি বার্তায় অনুশীলনে ক্লিক করুন।",
-  "speakingAnalyticsDesc": "বক্তব্য অনুশীলনের জন্য ভয়েস বার্তা রেকর্ড করুন।",
-  "audioAnalyticsDesc": "শোনার কার্যকলাপের জন্য প্রতিটি বার্তায় অনুশীলনে ক্লিক করুন।",
   "loginToAccount": "আমার অ্যাকাউন্টে লগইন করুন",
   "appDescription": "একটি ভাষা শিখুন\nআপনার বন্ধুদের সাথে মেসেজিং করার সময়।",
   "languages": "ভাষাসমূহ",
@@ -4493,7 +4490,6 @@
   "usernameOrEmail": "ব্যবহারকার নাম বা ইমেইল",
   "email": "ইমেইল",
   "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
-  "writingAnalyticsDesc": "লিখতে অনুশীলনের জন্য বার্তা পাঠান।",
   "endActivity": "ক্রিয়াকলাপ শেষ করুন",
   "allLanguages": "সব ভাষা",
   "chatListTooltip": "এখানে আপনি আপনার সরাসরি বার্তা খুঁজে পাবেন! যেকোনো ব্যবহারকারীর অবতার ক্লিক করুন এবং “আলাপ শুরু করুন” ক্লিক করে একটি ডিএম পাঠান।",
@@ -10193,18 +10189,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10302,10 +10286,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

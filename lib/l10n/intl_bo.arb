@@ -4269,9 +4269,6 @@
   "courseSavedSuccessfully": "ཚོགས་ཚོགས་བརྗོད་སྤྱོད་འབད་ཡོད།",
   "addCoursePlan": "ཚོགས་ཚོགས་རིམ་ལོག",
   "activityStatsButtonInstruction": "འདིར་ཤེས་བརྗོད་གནང་བ་དང་ཚོད་ལྟ་ལས་འགོ་བཙུགས་བྱེད་སློབ་ཚན་ལ་བརྗེ་བཅོས་འབད།",
-  "readingAnalyticsDesc": "ཚོད་ལྟ་ལས་འགོ་བཙུགས་ལ་ལས་སྒྲིག་ལག་ལེན་གྱི་ཚོད་ལྟ་ལས་འགོ་བཙུགས་ལ་སྤྱོད་སྒོམ།",
-  "speakingAnalyticsDesc": "སྐད་ཆ་སྒྲིག་ལག་ལེན་གྱི་སྒྲིག་ལག་ལ་ལས་སྒྲིག་ལག་ལེན་གྱི་སྤྱོད་སྒོམ།",
-  "audioAnalyticsDesc": "ཚོད་ལྟ་ལས་འགོ་བཙུགས་ལ་ལས་སྒྲིག་ལག་ལེན་གྱི་ཚོད་ལྟ་ལས་འགོ་བཙུགས་ལ་སྤྱོད་སྒོམ།",
   "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
   "appDescription": "ཚོགས་ཚོགས་སྐད་ཡིག་སློབ་ཚན་ལས་སྤྱོད་སྒོམ།\nཁྱེད་ཀྱི་གྲོགས་མཚན་ལ་རྟག་པ་སྤྱོད་སྒོམ་ལས་སྤྱོད་སྒོམ།",
   "languages": "ཚོད་ལྟ",
@@ -9436,18 +9433,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10028,7 +10013,6 @@
   "downloadCSVFile": "CSV ཡིག་ཚགས་འགྱོ་བཅོས་",
   "promotionalSubscriptionDesc": "ཁྱེད་ཀྱིས་ད་ལྟ་ལ་ལོ་རྒྱལ་ཁབ་ལ་ལོག་འབད་ཡོད་པའི་སྤྱི་ཚེས་ལ་ལོག་འབད་ཡོད། ཁྱེད་ཀྱིས་འབྲེལ་བ་བྱེད་ལས་སྤྱོད་ལེན་ལ་བསྐུར་གནང་བའི་ལས་ཁེར་ལ་འདེམས་སོ།",
   "originalSubscriptionPlatform": "ལོག་འབད་ཚུལ་ཁང་ {purchasePlatform} ལས་འབྲེལ་བ་བྱེད་ཡོད།",
-  "writingAnalyticsDesc": "ສົ່ງຂໍ້ຄວາມເພື່ອຝຶກຝนການຂຽນ",
   "endActivity": "ສິ້ນສຸດກິດຈະກຳ",
   "allLanguages": "ທັງຫມົດພາສາ",
   "chatListTooltip": "ນີ້ແມ່ນລາຍການຂອງຂໍ້ຄວາມຕົວສະເຫຼີມ! ໃຫ້ກົດທຸກຜູ້ໃຊ້ທີ່ມີຮູບພາບແລະ “ເລີ່ມການສົນທະນາ”ເພື່ອສົ່ງຂໍ້ຄວາມ DM.",
@@ -10219,10 +10203,6 @@
         "type": "String"
       }
     }
-  },
-  "@writingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
   },
   "@endActivity": {
     "type": "String",

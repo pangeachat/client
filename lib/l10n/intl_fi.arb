@@ -3972,9 +3972,6 @@
   "courseSavedSuccessfully": "Kurssi tallennettu onnistuneesti",
   "addCoursePlan": "Lisää kurssisuunnitelma",
   "activityStatsButtonInstruction": "Klikkaa tästä nähdäksesi aktiviteettitilastosi ja sulkeaksesi aktiviteetin lopuksi",
-  "readingAnalyticsDesc": "Klikkaa harjoitusta jokaisessa viestissä lukuharjoituksia varten.",
-  "speakingAnalyticsDesc": "Tallenna ääniviestejä puheharjoituksia varten.",
-  "audioAnalyticsDesc": "Klikkaa harjoitusta jokaisessa viestissä kuunteluharjoituksia varten.",
   "loginToAccount": "Kirjaudu tililleni",
   "appDescription": "Opiskele kieltä\nlähettämällä viestejä ystävillesi.",
   "languages": "Kielet",
@@ -4000,7 +3997,6 @@
   "usernameOrEmail": "Käyttäjätunnus tai sähköposti",
   "email": "Sähköposti",
   "forgotPassword": "Unohditko salasanan?",
-  "writingAnalyticsDesc": "Lähetä viestejä harjoitellaksesi kirjoittamista.",
   "endActivity": "Lopeta toiminta",
   "allLanguages": "Kaikki kielet",
   "chatListTooltip": "Täältä löydät yksityisviestisi! Klikkaa minkä tahansa käyttäjän avataria ja \"aloita keskustelu\" lähettääksesi yksityisviestin.",
@@ -9712,18 +9708,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9821,10 +9805,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

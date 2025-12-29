@@ -5,12 +5,12 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -83,37 +83,25 @@ class VocabDetailsView extends StatelessWidget {
                     langCode:
                         MatrixState.pangeaController.userController.userL2Code!,
                     construct: constructId,
+                    onClose: Navigator.of(context).pop,
                   ),
                 ],
               ),
               if (construct != null)
                 Column(
+                  spacing: 20.0,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: ConstructXpWidget(
-                        icon: StreamBuilder(
-                          key: ValueKey(constructId.string),
-                          stream: analyticsService.updateDispatcher
-                              .lemmaUpdateStream(constructId),
-                          builder: (context, update) {
-                            final emoji = update.data?.emojis?.firstOrNull ??
-                                constructId.userSetEmoji;
-                            return Text(
-                              emoji ?? "-",
-                              style: const TextStyle(fontSize: 24.0),
-                            );
-                          },
-                        ),
-                        level: construct.lemmaCategory,
-                        points: construct.points,
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: ConstructXPProgressBar(
+                        construct: constructId,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Align(
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Align(
                             alignment: Alignment.centerLeft,
                             child: _VocabForms(
                               lemma: constructId.lemma,
@@ -121,27 +109,27 @@ class VocabDetailsView extends StatelessWidget {
                               textColor: textColor,
                             ),
                           ),
-                          AnalyticsDetailsUsageContent(
-                            construct: construct,
+                        ),
+                        AnalyticsDetailsUsageContent(
+                          construct: construct,
+                        ),
+                        ListTile(
+                          leading: Icon(
+                            Icons.delete_outline,
+                            color: Theme.of(context).colorScheme.error,
                           ),
-                        ],
-                      ),
+                          title: Text(
+                            L10n.of(context).delete,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                          onTap: () => _blockLemma(context),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ListTile(
-                leading: Icon(
-                  Icons.delete_outline,
-                  color: Theme.of(context).colorScheme.error,
-                ),
-                title: Text(
-                  L10n.of(context).delete,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                ),
-                onTap: () => _blockLemma(context),
-              ),
             ],
           ),
         );

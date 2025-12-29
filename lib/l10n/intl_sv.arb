@@ -4133,9 +4133,6 @@
   "courseSavedSuccessfully": "Kursen sparades framgångsrikt",
   "addCoursePlan": "Lägg till en kursplan",
   "activityStatsButtonInstruction": "Klicka här för att se dina aktivitetsstatistik och för att stänga aktiviteten när du är klar",
-  "readingAnalyticsDesc": "Klicka på övning för varje meddelande för läsaktiviteter.",
-  "speakingAnalyticsDesc": "Spela in röstmeddelanden för talövningar.",
-  "audioAnalyticsDesc": "Klicka på övning för varje meddelande för lyssningsaktiviteter.",
   "loginToAccount": "Logga in på mitt konto",
   "appDescription": "Lär dig ett språk\nmedan du skickar meddelanden till dina vänner.",
   "languages": "Språk",
@@ -4161,7 +4158,6 @@
   "usernameOrEmail": "Användarnamn eller e-post",
   "email": "E-post",
   "forgotPassword": "Glömt lösenord?",
-  "writingAnalyticsDesc": "Skicka meddelanden för att öva på att skriva.",
   "endActivity": "Avsluta aktivitet",
   "allLanguages": "Alla språk",
   "chatListTooltip": "Här hittar du dina direktmeddelanden! Klicka på en användares avatar och “starta konversation” för att skicka ett DM.",
@@ -9567,18 +9563,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9676,10 +9660,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

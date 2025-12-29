@@ -4474,9 +4474,6 @@
   "courseSavedSuccessfully": "Kursus berhasil disimpan",
   "addCoursePlan": "Tambahkan rencana kursus",
   "activityStatsButtonInstruction": "Klik di sini untuk melihat statistik aktivitas Anda dan menutup aktivitas saat selesai",
-  "readingAnalyticsDesc": "Klik latihan pada setiap pesan untuk aktivitas membaca.",
-  "speakingAnalyticsDesc": "Rekam pesan suara untuk latihan berbicara.",
-  "audioAnalyticsDesc": "Klik latihan pada setiap pesan untuk aktivitas mendengarkan.",
   "loginToAccount": "Masuk ke akun saya",
   "appDescription": "Pelajari bahasa\nsambil mengirim pesan kepada teman.",
   "languages": "Bahasa",
@@ -4502,7 +4499,6 @@
   "usernameOrEmail": "Nama pengguna atau email",
   "email": "Email",
   "forgotPassword": "Lupa kata sandi?",
-  "writingAnalyticsDesc": "Kirim pesan untuk berlatih menulis.",
   "endActivity": "Akhiri aktivitas",
   "allLanguages": "Semua bahasa",
   "chatListTooltip": "Di sini Anda akan menemukan pesan langsung Anda! Klik avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
@@ -9080,18 +9076,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9189,10 +9173,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

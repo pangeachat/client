@@ -8873,9 +8873,6 @@
   "courseSavedSuccessfully": "Kursus salvestati edukalt",
   "addCoursePlan": "Lisa kursuseplaan",
   "activityStatsButtonInstruction": "Klõpsa siia, et vaadata oma tegevuse statistikat ja sulgeda tegevus pärast lõpetamist",
-  "readingAnalyticsDesc": "Klõpsa iga sõnumi peal, et teha lugemisharjutusi.",
-  "speakingAnalyticsDesc": "Salvesta häälteateid rääkimisharjutuste jaoks.",
-  "audioAnalyticsDesc": "Klõpsa iga sõnumi peal, et teha kuulamisülesandeid.",
   "loginToAccount": "Logi sisse oma kontole",
   "appDescription": "Õpi keelt\nsõpradega sõnumite saatmise ajal.",
   "languages": "Keeled",
@@ -8901,7 +8898,6 @@
   "usernameOrEmail": "Kasutajanimi või e-post",
   "email": "E-post",
   "forgotPassword": "Unustasid parooli?",
-  "writingAnalyticsDesc": "Saada sõnumeid kirjutamise harjutamiseks.",
   "endActivity": "Lõpeta tegevus",
   "allLanguages": "Kõik keeled",
   "chatListTooltip": "Siin leiad oma otsevestlused! Klõpsa mis tahes kasutaja avataril ja vali „Alusta vestlust“, et saata otsevestlus.",
@@ -9355,18 +9351,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9464,10 +9448,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

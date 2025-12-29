@@ -4419,9 +4419,6 @@
   "courseSavedSuccessfully": "Το μάθημα αποθηκεύτηκε με επιτυχία",
   "addCoursePlan": "Προσθήκη σχεδίου μαθήματος",
   "activityStatsButtonInstruction": "Κάντε κλικ εδώ για να δείτε τα στατιστικά της δραστηριότητάς σας και να κλείσετε τη δραστηριότητα όταν τελειώσετε",
-  "readingAnalyticsDesc": "Κάντε κλικ στην πρακτική σε κάθε μήνυμα για δραστηριότητες ανάγνωσης.",
-  "speakingAnalyticsDesc": "Καταγράψτε φωνητικά μηνύματα για πρακτική ομιλίας.",
-  "audioAnalyticsDesc": "Κάντε κλικ στην πρακτική σε κάθε μήνυμα για δραστηριότητες ακρόασης.",
   "loginToAccount": "Συνδεθείτε στον λογαριασμό μου",
   "appDescription": "Μάθε μια γλώσσα\nενώ στέλνεις μηνύματα στους φίλους σου.",
   "languages": "Γλώσσες",
@@ -4447,7 +4444,6 @@
   "usernameOrEmail": "Όνομα χρήστη ή email",
   "email": "Email",
   "forgotPassword": "Ξεχάσατε τον κωδικό;",
-  "writingAnalyticsDesc": "Αποστέλλετε μηνύματα για να εξασκηθείτε στη γραφή.",
   "endActivity": "Τέλος δραστηριότητας",
   "allLanguages": "Όλες οι γλώσσες",
   "chatListTooltip": "Εδώ θα βρείτε τα άμεσα μηνύματά σας! Κάντε κλικ σε οποιονδήποτε avatar χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
@@ -10147,18 +10143,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10256,10 +10240,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

@@ -1874,9 +1874,6 @@
   "courseSavedSuccessfully": "Курс паспяхова захаваны",
   "addCoursePlan": "Дадаць план курса",
   "activityStatsButtonInstruction": "Націсніце тут, каб праглядаць статыстыку вашай дзейнасці і закрыць дзейнасць пасля завяршэння",
-  "readingAnalyticsDesc": "Націсніце практыкаванне на кожным паведамленні для практыкаванняў чытання.",
-  "speakingAnalyticsDesc": "Запісвайце галасавыя паведамленні для практыкаванняў маўлення.",
-  "audioAnalyticsDesc": "Націсніце практыкаванне на кожным паведамленні для практыкаванняў слухання.",
   "loginToAccount": "Увайсці ў мой рахунак",
   "appDescription": "Вучыце мову\nпраз адпраўку тэкставых паведамленняў сябрам.",
   "languages": "Мовы",
@@ -1902,7 +1899,6 @@
   "usernameOrEmail": "Імя карыстальніка або электронная пошта",
   "email": "Электронная пошта",
   "forgotPassword": "Забылі пароль?",
-  "writingAnalyticsDesc": "Адпраўляйце паведамленні для практыкі пісьма.",
   "endActivity": "Завяршыць дзейнасць",
   "allLanguages": "Усе мовы",
   "chatListTooltip": "Тут вы знойдзеце свае прамыя паведамленні! Націсніце на аватар любога карыстальніка і абярыце «пачаць размову», каб адправіць ДМ.",
@@ -10188,18 +10184,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10297,10 +10281,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

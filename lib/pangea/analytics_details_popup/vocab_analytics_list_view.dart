@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_t
 import 'package:fluffychat/pangea/analytics_downloads/analytics_download_button.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
@@ -85,6 +86,20 @@ class VocabAnalyticsListView extends StatelessWidget {
 
     if (kIsWeb) {
       filters.add(const DownloadAnalyticsButton());
+    }
+
+    final constructParam =
+        GoRouterState.of(context).pathParameters['construct'];
+
+    ConstructIdentifier? selectedConstruct;
+    if (constructParam != null) {
+      try {
+        selectedConstruct = ConstructIdentifier.fromJson(
+          jsonDecode(constructParam),
+        );
+      } catch (e) {
+        debugPrint("Invalid construct ID format in route: $constructParam");
+      }
     }
 
     return Column(
@@ -198,6 +213,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                                   ? vocabItem.lemmaCategory.darkColor(context)
                                   : vocabItem.lemmaCategory.color(context),
                               level: vocabItem.lemmaCategory,
+                              selected: vocabItem.id == selectedConstruct,
                             );
                           },
                           childCount: _filteredVocab!.length,

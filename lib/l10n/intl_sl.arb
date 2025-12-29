@@ -2427,9 +2427,6 @@
   "courseSavedSuccessfully": "Tečaj je bil uspešno shranjen",
   "addCoursePlan": "Dodaj načrt tečaja",
   "activityStatsButtonInstruction": "Kliknite tukaj za ogled statistik vaše dejavnosti in za zapiranje dejavnosti po končanem delu",
-  "readingAnalyticsDesc": "Kliknite na prakso na vsaki sporočilu za dejavnosti branja.",
-  "speakingAnalyticsDesc": "Posnemite glasovne sporočila za vaje govora.",
-  "audioAnalyticsDesc": "Kliknite na prakso na vsaki sporočilu za dejavnosti poslušanja.",
   "loginToAccount": "Prijavite se v svoj račun",
   "appDescription": "Učite se jezika\nmedtem ko pošiljate sporočila prijateljem.",
   "languages": "Jeziki",
@@ -2455,7 +2452,6 @@
   "usernameOrEmail": "Uporabniško ime ali e-pošta",
   "email": "E-pošta",
   "forgotPassword": "Pozabljeno geslo?",
-  "writingAnalyticsDesc": "Pošiljajte sporočila za vadbo pisanja.",
   "endActivity": "Končaj dejavnost",
   "allLanguages": "Vsi jeziki",
   "chatListTooltip": "Tukaj boste našli svoja neposredna sporočila! Kliknite na avatar katerega koli uporabnika in izberite »začni pogovor«, da pošljete DM.",
@@ -10170,18 +10166,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10279,10 +10263,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

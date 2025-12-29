@@ -4410,9 +4410,6 @@
   "courseSavedSuccessfully": "Курс софранился соответство",
   "addCoursePlan": "Добавить план курса",
   "activityStatsButtonInstruction": "Нажмите закатовок, чтобы проверить статистику вашей детальности и закрути курс концем",
-  "readingAnalyticsDesc": "Нажимайте практику на кожном сообщении для обыкновенную детальность.",
-  "speakingAnalyticsDesc": "Записывайте ковозновую обобовую повесь для практики говорения.",
-  "audioAnalyticsDesc": "Нажимайте практику на кождом сообщении для обыкновенную нашительность.",
   "loginToAccount": "войти в мой установки",
   "appDescription": "Совседанно наступайте человеческий язык,например, в котором написате друзям.",
   "languages": "Конфедерации",
@@ -4438,7 +4435,6 @@
   "usernameOrEmail": "Имя пользователя или email",
   "email": "Email",
   "forgotPassword": "Забыли пароль?",
-  "writingAnalyticsDesc": "Отправляйте сообщения для практики письма.",
   "endActivity": "Завершить деятельность",
   "allLanguages": "Все языки",
   "chatListTooltip": "Здесь вы найдете свои личные сообщения! Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
@@ -9194,18 +9190,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9303,10 +9287,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

@@ -4480,9 +4480,6 @@
   "courseSavedSuccessfully": "Sábháladh an cúrsa go rathúil",
   "addCoursePlan": "Cuir plean cúrsa leis",
   "activityStatsButtonInstruction": "Cliceáil anseo chun do staitisticí gníomhaíochta a fheiceáil agus an gníomhaíocht a dhúnadh nuair a bheidh sé críochnaithe",
-  "readingAnalyticsDesc": "Cliceáil cleachtadh ar gach teachtaireacht le haghaidh gníomhaíochtaí léitheoireachta.",
-  "speakingAnalyticsDesc": "Cláraigh teachtaireachtaí gutha le haghaidh cleachtadh labhartha.",
-  "audioAnalyticsDesc": "Cliceáil cleachtadh ar gach teachtaireacht le haghaidh gníomhaíochtaí éisteachta.",
   "loginToAccount": "Logáil isteach i mo chuntas",
   "appDescription": "Foghlaim teanga\nag an am céanna le do chairde.",
   "languages": "Teangacha",
@@ -4508,7 +4505,6 @@
   "usernameOrEmail": "Ainm úsáideora nó ríomhphost",
   "email": "Ríomhphost",
   "forgotPassword": "An bhfuil do phasfhocal dearmadta?",
-  "writingAnalyticsDesc": "Seol teachtaireachtaí chun cleachtadh scríbhneoireachta a dhéanamh.",
   "endActivity": "Críochnaigh an ghníomhaíocht",
   "allLanguages": "Gach teanga",
   "chatListTooltip": "Anseo gheobhaidh tú do theachtaireachtaí díreacha! Cliceáil ar avatar aon úsáideora agus “tosaigh comhrá” chun DM a sheoladh.",
@@ -9087,18 +9083,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9196,10 +9180,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

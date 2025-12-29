@@ -3508,9 +3508,6 @@
   "courseSavedSuccessfully": "Курс успешно сачуван",
   "addCoursePlan": "Додај план курса",
   "activityStatsButtonInstruction": "Кликните овде да видите статистику активности и да затворите активност након завршетка",
-  "readingAnalyticsDesc": "Кликните на праксу на свакој поруци за активности читања.",
-  "speakingAnalyticsDesc": "Запишите гласовне поруке за вежбање говора.",
-  "audioAnalyticsDesc": "Kliknite na svaku poruku za vežbe slušanja.",
   "loginToAccount": "Prijavi se na svoj nalog",
   "appDescription": "Uči jezik\ndok šalješ poruke prijateljima.",
   "languages": "Jezici",
@@ -3536,7 +3533,6 @@
   "usernameOrEmail": "Korisničko ime ili email",
   "email": "Email",
   "forgotPassword": "Zaboravili ste lozinku?",
-  "writingAnalyticsDesc": "Šaljite poruke za vežbanje pisanja.",
   "endActivity": "Završi aktivnost",
   "allLanguages": "Svi jezici",
   "chatListTooltip": "Ovde ćete pronaći svoje direktne poruke! Kliknite na avatar bilo kojeg korisnika i “započni razgovor” da biste poslali DM.",
@@ -10191,18 +10187,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10300,10 +10284,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

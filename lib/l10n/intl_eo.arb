@@ -3598,9 +3598,6 @@
   "courseSavedSuccessfully": "Kurso sukcese konservita",
   "addCoursePlan": "Aldoni kurso-planon",
   "activityStatsButtonInstruction": "Klaku ĉi tie por vidi viajn aktivadstatistikojn kaj por fermi la aktivadon kiam vi finos",
-  "readingAnalyticsDesc": "Klaku praktiki ĉe ĉiu mesaĝo por legaj aktivecoj.",
-  "speakingAnalyticsDesc": "Registru voĉmesaĝojn por parolpractiko.",
-  "audioAnalyticsDesc": "Klaku praktiki ĉe ĉiu mesaĝo por aŭskultaj aktivecoj.",
   "loginToAccount": "Ensaluti al mia konto",
   "appDescription": "Lernu lingvon\ndum tekstdonado al viaj amikojn.",
   "languages": "Lingvoj",
@@ -3626,7 +3623,6 @@
   "usernameOrEmail": "Uzantnomo aŭ retpoŝto",
   "email": "Retpoŝto",
   "forgotPassword": "Ĉu vi forgesis la pasvorton?",
-  "writingAnalyticsDesc": "Sendu mesaĝojn por praktiki skribadon.",
   "endActivity": "Fini aktivecon",
   "allLanguages": "Ĉiuj lingvoj",
   "chatListTooltip": "Ĉi tie vi trovos viajn rektajn mesaĝojn! Klaku sur ajna uzantoprofilo kaj “komencu konversacion” por sendi DM.",
@@ -10178,18 +10174,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10287,10 +10271,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

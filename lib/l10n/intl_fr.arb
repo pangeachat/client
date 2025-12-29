@@ -4302,9 +4302,6 @@
   "courseSavedSuccessfully": "Cours enregistré avec succès",
   "addCoursePlan": "Ajouter un plan de cours",
   "activityStatsButtonInstruction": "Cliquez ici pour voir vos statistiques d'activité et pour fermer l'activité une fois terminée",
-  "readingAnalyticsDesc": "Cliquez sur pratiquer sur chaque message pour les activités de lecture.",
-  "speakingAnalyticsDesc": "Enregistrez des messages vocaux pour la pratique de la parole.",
-  "audioAnalyticsDesc": "Cliquez sur pratiquer sur chaque message pour les activités d'écoute.",
   "loginToAccount": "Se connecter à mon compte",
   "appDescription": "Apprenez une langue\ntout en envoyant des messages à vos amis.",
   "languages": "Langues",
@@ -4330,7 +4327,6 @@
   "usernameOrEmail": "Nom d'utilisateur ou email",
   "email": "Email",
   "forgotPassword": "Mot de passe oublié ?",
-  "writingAnalyticsDesc": "Envoyez des messages pour pratiquer l'écriture.",
   "endActivity": "Terminer l'activité",
   "allLanguages": "Toutes les langues",
   "chatListTooltip": "Ici, vous trouverez vos messages directs ! Cliquez sur l'avatar d'un utilisateur et « démarrer une conversation » pour envoyer un message privé.",
@@ -9413,18 +9409,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9522,10 +9506,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

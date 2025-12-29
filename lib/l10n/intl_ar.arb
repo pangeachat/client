@@ -4358,9 +4358,6 @@
   "courseSavedSuccessfully": "تم حفظ الدورة بنجاح",
   "addCoursePlan": "إضافة خطة دورة",
   "activityStatsButtonInstruction": "انقر هنا لعرض إحصائيات نشاطك ولإغلاق النشاط عند الانتهاء",
-  "readingAnalyticsDesc": "انقر على الممارسة على كل رسالة لتمارين القراءة.",
-  "speakingAnalyticsDesc": "سجل رسائل صوتية لممارسة التحدث.",
-  "audioAnalyticsDesc": "انقر على الممارسة على كل رسالة لتمارين الاستماع.",
   "loginToAccount": "تسجيل الدخول إلى حسابي",
   "appDescription": "تعلم لغة\nأثناء مراسلة أصدقائك.",
   "languages": "اللغات",
@@ -4386,7 +4383,6 @@
   "usernameOrEmail": "اسم المستخدم أو البريد الإلكتروني",
   "email": "البريد الإلكتروني",
   "forgotPassword": "هل نسيت كلمة المرور؟",
-  "writingAnalyticsDesc": "أرسل رسائل لممارسة الكتابة.",
   "endActivity": "إنهاء النشاط",
   "allLanguages": "جميع اللغات",
   "chatListTooltip": "ستجد هنا رسائلك المباشرة! انقر على صورة أي مستخدم وابدأ محادثة لإرسال رسالة خاصة.",
@@ -9306,18 +9302,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9415,10 +9399,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

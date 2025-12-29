@@ -4473,9 +4473,6 @@
   "courseSavedSuccessfully": "Kurzus sikeresen mentve",
   "addCoursePlan": "Kurzus terv hozzáadása",
   "activityStatsButtonInstruction": "Kattintson ide az aktivitási statisztikák megtekintéséhez és a tevékenység bezárásához, ha befejezte",
-  "readingAnalyticsDesc": "Kattintson a gyakorlatra minden üzenetnél az olvasási tevékenységekhez.",
-  "speakingAnalyticsDesc": "Felvétel hangüzeneteket a beszédgyakorlatokhoz.",
-  "audioAnalyticsDesc": "Kattintson a gyakorlatra minden üzenetnél a hallgatási tevékenységekhez.",
   "loginToAccount": "Jelentkezzen be a fiókomba",
   "appDescription": "Tanulj egy nyelvet\nüzenetküldés közben a barátaidnak.",
   "languages": "Nyelvek",
@@ -4501,7 +4498,6 @@
   "usernameOrEmail": "Felhasználónév vagy e-mail",
   "email": "E-mail",
   "forgotPassword": "Elfelejtetted a jelszót?",
-  "writingAnalyticsDesc": "Üzenetek küldése a írás gyakorlásához.",
   "endActivity": "Tevékenység befejezése",
   "allLanguages": "Minden nyelv",
   "chatListTooltip": "Itt találod a közvetlen üzeneteidet! Kattints bármely felhasználó avatarjára, és válaszd a „beszélgetés indítása” lehetőséget, hogy üzenetet küldj.",
@@ -9090,18 +9086,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9199,10 +9183,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

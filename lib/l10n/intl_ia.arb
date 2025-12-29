@@ -1921,9 +1921,6 @@
   "courseSavedSuccessfully": "Curso salvat con successo",
   "addCoursePlan": "Adder un plan de curso",
   "activityStatsButtonInstruction": "Clicca hic pro vider tu statisticas de actividad e pro clauder le actividad quando es finite",
-  "readingAnalyticsDesc": "Clicca 'practica' super cata message pro actividades de lectura.",
-  "speakingAnalyticsDesc": "Registrate messages de voce pro practica de parola.",
-  "audioAnalyticsDesc": "Clicca 'practica' super cata message pro actividades de ascolto.",
   "loginToAccount": "Intra in mi conto",
   "appDescription": "Impara un idioma\ndum il texta a tu amicos.",
   "languages": "Linguas",
@@ -1949,7 +1946,6 @@
   "usernameOrEmail": "Nomine de usator o email",
   "email": "Email",
   "forgotPassword": "Oblida le parola?",
-  "writingAnalyticsDesc": "Manda messages pro practicar le scriber.",
   "endActivity": "Terminar le activitate",
   "allLanguages": "Tote linguas",
   "chatListTooltip": "Ici tu trovara tu messages directe! Clicca super le avatar de qualcunque usator e 'comenciar conversation' pro inviar un DM.",
@@ -10167,18 +10163,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10276,10 +10260,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

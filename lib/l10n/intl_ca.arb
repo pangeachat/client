@@ -4444,9 +4444,6 @@
   "courseSavedSuccessfully": "Curs desat amb èxit",
   "addCoursePlan": "Afegeix un pla de curs",
   "activityStatsButtonInstruction": "Fes clic aquí per veure les teves estadístiques d'activitat i per tancar l'activitat quan hagis acabat",
-  "readingAnalyticsDesc": "Fes clic a practicar en cada missatge per a activitats de lectura.",
-  "speakingAnalyticsDesc": "Grava missatges de veu per a pràctica d'expressió oral.",
-  "audioAnalyticsDesc": "Fes clic a practicar en cada missatge per a activitats d'escolta.",
   "loginToAccount": "Inicia sessió al meu compte",
   "appDescription": "Aprèn un idioma\nmentre xatejes amb els teus amics.",
   "languages": "Idiomes",
@@ -4472,7 +4469,6 @@
   "usernameOrEmail": "Nom d'usuari o correu electrònic",
   "email": "Correu electrònic",
   "forgotPassword": "Has oblidat la contrasenya?",
-  "writingAnalyticsDesc": "Envia missatges per practicar l'escriptura.",
   "endActivity": "Finalitzar l'activitat",
   "allLanguages": "Tots els idiomes",
   "chatListTooltip": "Aquí trobaràs els teus missatges directes! Fes clic a la icona d'un usuari i “Inicia una conversa” per enviar un missatge privat.",
@@ -9113,18 +9109,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9222,10 +9206,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
