@@ -1962,15 +1962,23 @@ class ChatController extends State<ChatPageWithRoom>
       )
       ?.eventId;
 
-  String? get refreshEventID => timeline!.events
-      .firstWhereOrNull(
-        (event) =>
-            event.isVisibleInGui &&
-            event.senderId != room.client.userID &&
-            event.senderId == BotName.byEnvironment &&
-            !event.redacted,
-      )
-      ?.eventId;
+  String? get refreshEventID {
+    final candidate = timeline!.events.firstWhereOrNull(
+      (event) =>
+          event.isVisibleInGui &&
+          event.senderId != room.client.userID &&
+          event.senderId == BotName.byEnvironment &&
+          !event.redacted,
+    );
+    if (candidate?.hasAggregatedEvents(
+          timeline!,
+          RelationshipTypes.edit,
+        ) ==
+        true) {
+      return null;
+    }
+    return candidate?.eventId;
+  }
 
   final StreamController<void> stopMediaStream = StreamController.broadcast();
 
