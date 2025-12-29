@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
@@ -70,8 +69,10 @@ class LearningProgressIndicators extends StatelessWidget {
                                   (c) => HoverButton(
                                     selected: selected == c.indicator,
                                     onPressed: () {
-                                      context.go(
-                                        "/rooms/analytics/${c.string}",
+                                      AnalyticsNavigationUtil
+                                          .navigateToAnalytics(
+                                        context: context,
+                                        view: c.indicator,
                                       );
                                     },
                                     child: ProgressIndicatorBadge(
@@ -85,8 +86,9 @@ class LearningProgressIndicators extends StatelessWidget {
                                   selected: selected ==
                                       ProgressIndicatorEnum.activities,
                                   onPressed: () {
-                                    context.go(
-                                      "/rooms/analytics/activities",
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: ProgressIndicatorEnum.activities,
                                     );
                                   },
                                   child: Tooltip(
@@ -181,7 +183,11 @@ class LearningProgressIndicators extends StatelessWidget {
                                 child: GestureDetector(
                                   onTap: canSelect
                                       ? () {
-                                          context.go("/rooms/analytics/level");
+                                          AnalyticsNavigationUtil
+                                              .navigateToAnalytics(
+                                            context: context,
+                                            view: ProgressIndicatorEnum.level,
+                                          );
                                         }
                                       : null,
                                   child: FutureBuilder(

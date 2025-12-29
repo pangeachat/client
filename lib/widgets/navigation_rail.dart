@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/navi_rail_item.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -92,7 +93,9 @@ class SpacesNavigationRail extends StatelessWidget {
                           return NaviRailItem(
                             isSelected: isAnalytics,
                             onTap: () {
-                              context.go("/rooms/analytics");
+                              AnalyticsNavigationUtil.navigateToAnalytics(
+                                context: context,
+                              );
                             },
                             backgroundColor: Colors.transparent,
                             icon: FutureBuilder<Profile>(

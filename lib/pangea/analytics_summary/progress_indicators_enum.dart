@@ -69,4 +69,17 @@ enum ProgressIndicatorEnum {
         return ConstructTypeEnum.vocab;
     }
   }
+
+  String get route {
+    switch (this) {
+      case level:
+        return 'level';
+      case wordsUsed:
+        return ConstructTypeEnum.vocab.name;
+      case morphsUsed:
+        return ConstructTypeEnum.morph.name;
+      case activities:
+        return 'activities';
+    }
+  }
 }

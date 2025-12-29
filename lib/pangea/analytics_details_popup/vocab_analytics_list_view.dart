@@ -10,8 +10,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/pangea/analytics_downloads/analytics_download_button.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
@@ -203,8 +204,10 @@ class VocabAnalyticsListView extends StatelessWidget {
                                   langCode: MatrixState.pangeaController
                                       .userController.userL2Code!,
                                 );
-                                context.go(
-                                  "/rooms/analytics/${vocabItem.id.type.string}/${Uri.encodeComponent(jsonEncode(vocabItem.id.toJson()))}",
+                                AnalyticsNavigationUtil.navigateToAnalytics(
+                                  context: context,
+                                  view: ProgressIndicatorEnum.wordsUsed,
+                                  construct: vocabItem.id,
                                 );
                               },
                               constructId: vocabItem.id,
