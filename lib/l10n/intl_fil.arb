@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-15 14:43:36.288461",
+  "@@last_modified": "2025-12-29 16:03:16.522907",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11679,6 +11679,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "I-disable ang mga kasangkapan sa wika",
+  "disableLanguageToolsDesc": "Gusto mo bang i-disable ang awtomatikong tulong sa wika?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

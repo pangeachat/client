@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-15 14:43:20.879510",
+  "@@last_modified": "2025-12-29 16:03:04.289126",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11794,6 +11794,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "禁用語言工具",
+  "disableLanguageToolsDesc": "你想要禁用自動語言輔助嗎？",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

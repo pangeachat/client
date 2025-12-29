@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:47.415907",
+  "@@last_modified": "2025-12-29 16:03:26.474123",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10927,6 +10927,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "மொழி கருவிகளை முடக்கு",
+  "disableLanguageToolsDesc": "தானாக மொழி உதவியை முடக்க விரும்புகிறீர்களா?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

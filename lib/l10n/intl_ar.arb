@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-15 14:43:38.968604",
+  "@@last_modified": "2025-12-29 16:03:18.962096",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10920,6 +10920,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "تعطيل أدوات اللغة",
+  "disableLanguageToolsDesc": "هل ترغب في تعطيل المساعدة اللغوية التلقائية؟",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

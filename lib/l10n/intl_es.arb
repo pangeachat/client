@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-12-15 14:42:48.159542",
+  "@@last_modified": "2025-12-29 16:02:35.926601",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -7937,6 +7937,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Desactivar herramientas de idioma",
+  "disableLanguageToolsDesc": "¿Te gustaría desactivar la asistencia automática de idioma?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

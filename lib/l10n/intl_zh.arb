@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-15 14:43:51.241424",
+  "@@last_modified": "2025-12-29 16:03:30.606395",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10694,6 +10694,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "禁用语言工具",
+  "disableLanguageToolsDesc": "您想要禁用自动语言辅助吗？",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

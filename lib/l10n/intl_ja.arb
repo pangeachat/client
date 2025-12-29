@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-15 14:43:59.878807",
+  "@@last_modified": "2025-12-29 16:03:40.520099",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11493,6 +11493,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "言語ツールを無効にする",
+  "disableLanguageToolsDesc": "自動言語支援を無効にしますか？",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:52.981237",
+  "@@last_modified": "2025-12-29 16:03:32.174961",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11807,6 +11807,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "ভাষার সরঞ্জাম নিষ্ক্রিয় করুন",
+  "disableLanguageToolsDesc": "আপনি কি স্বয়ংক্রিয় ভাষা সহায়তা নিষ্ক্রিয় করতে চান?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

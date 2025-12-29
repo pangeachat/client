@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-12-15 14:43:09.046460",
+  "@@last_modified": "2025-12-29 16:02:51.585781",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11075,6 +11075,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Onemogući alate za jezik",
+  "disableLanguageToolsDesc": "Želite li onemogućiti automatsku jezičnu pomoć?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

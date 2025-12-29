@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-15 14:43:40.183100",
+  "@@last_modified": "2025-12-29 16:03:20.417520",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10925,6 +10925,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Dil araçlarını devre dışı bırak",
+  "disableLanguageToolsDesc": "Otomatik dil yardımını devre dışı bırakmak ister misiniz?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

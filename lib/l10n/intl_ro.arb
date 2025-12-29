@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:42:58.811266",
+  "@@last_modified": "2025-12-29 16:02:46.166745",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11438,6 +11438,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Dezactivează uneltele de limbă",
+  "disableLanguageToolsDesc": "Doriți să dezactivați asistența automată pentru limbă?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }
