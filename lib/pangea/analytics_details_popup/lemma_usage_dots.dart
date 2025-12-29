@@ -69,20 +69,18 @@ class LemmaUsageDots extends StatelessWidget {
           color: textColor.withValues(alpha: 0.7),
         ),
       ),
-      title: Flexible(
-        child: dots.isEmpty
-            ? Text(
-                L10n.of(context).noDataFound,
-                style: const TextStyle(
-                  fontStyle: FontStyle.italic,
-                ),
-              )
-            : Wrap(
-                spacing: 3,
-                runSpacing: 5,
-                children: dots,
+      title: dots.isEmpty
+          ? Text(
+              L10n.of(context).noDataFound,
+              style: const TextStyle(
+                fontStyle: FontStyle.italic,
               ),
-      ),
+            )
+          : Wrap(
+              spacing: 3,
+              runSpacing: 5,
+              children: dots,
+            ),
     );
   }
 }
