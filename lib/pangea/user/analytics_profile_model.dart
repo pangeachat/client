@@ -108,7 +108,7 @@ class AnalyticsProfileModel {
     }
 
     final currentRoomId = analyticsRoomIdByLanguage(language);
-    if (currentRoomId == null) {
+    if (currentRoomId != analyticsRoomId) {
       languageAnalytics![language]!.analyticsRoomId = analyticsRoomId;
     }
     languageAnalytics![language]!.level = level;
