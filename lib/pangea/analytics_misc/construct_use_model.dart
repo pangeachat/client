@@ -116,15 +116,11 @@ class ConstructUses {
     }
   }
 
-  ConstructLevelEnum get constructLevel {
-    if (points < 30) {
-      return ConstructLevelEnum.seeds;
-    } else if (points < 100) {
-      return ConstructLevelEnum.greens;
-    } else {
-      return ConstructLevelEnum.flowers;
-    }
-  }
+  ConstructLevelEnum get constructLevel => switch (points) {
+        < AnalyticsConstants.xpForGreens => ConstructLevelEnum.seeds,
+        < AnalyticsConstants.xpForFlower => ConstructLevelEnum.greens,
+        _ => ConstructLevelEnum.flowers,
+      };
 
   void merge(ConstructUses other) {
     if (other.lemma.toLowerCase() != lemma.toLowerCase() ||

@@ -27,36 +27,42 @@ class ConstructXPProgressBar extends StatelessWidget {
 
     final analyticsService = Matrix.of(context).analyticsDataService;
 
-    return Column(
-      spacing: 8.0,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [...categories.map((c) => c.icon())],
-        ),
-        StreamBuilder(
-          stream:
-              analyticsService.updateDispatcher.constructUpdateStream.stream,
+    return StreamBuilder(
+      stream: analyticsService.updateDispatcher.constructUpdateStream.stream,
+      builder: (context, snapshot) {
+        return FutureBuilder(
+          future: analyticsService.getConstructUse(construct),
           builder: (context, snapshot) {
-            return FutureBuilder(
-              future: analyticsService.getConstructUse(construct),
-              builder: (context, snapshot) {
-                final points = snapshot.data?.points ?? 0;
-                final progress =
-                    min(1.0, points / AnalyticsConstants.xpForFlower);
-
-                return AnimatedProgressBar(
+            final points = snapshot.data?.points ?? 0;
+            final progress = min(1.0, points / AnalyticsConstants.xpForFlower);
+            final level =
+                snapshot.data?.constructLevel ?? ConstructLevelEnum.seeds;
+            return Column(
+              spacing: 8.0,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ...categories.map(
+                      (c) => Opacity(
+                        opacity: level == c ? 1.0 : 0.4,
+                        child: c.icon(),
+                      ),
+                    ),
+                  ],
+                ),
+                AnimatedProgressBar(
                   height: 20.0,
                   widthPercent: progress,
                   barColor: AppConfig.goldLight,
                   backgroundColor:
                       Theme.of(context).colorScheme.secondaryContainer,
-                );
-              },
+                ),
+              ],
             );
           },
-        ),
-      ],
+        );
+      },
     );
   }
 }
