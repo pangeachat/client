@@ -155,7 +155,7 @@ class CourseChatsView extends StatelessWidget {
                         title: Text(L10n.of(context).whatNow),
                         subtitle: Text(L10n.of(context).chooseNextActivity),
                         trailing: const Icon(Icons.arrow_forward),
-                        onTap: () => context.go(
+                        onTap: () => context.pushReplacement(
                           "/rooms/spaces/${room.id}/details?tab=course",
                         ),
                       )
