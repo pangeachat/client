@@ -62,6 +62,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
@@ -514,6 +515,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _pangeaInit() {
     choreographer = Choreographer(inputFocus);
+    choreographer.timesClosedIT.addListener(_onCloseIT);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
@@ -785,6 +787,7 @@ class ChatController extends State<ChatPageWithRoom>
     _botAudioSubscription?.cancel();
     _constructsSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
+    choreographer.timesClosedIT.removeListener(_onCloseIT);
     scrollController.dispose();
     inputFocus.dispose();
     depressMessageButton.dispose();
@@ -2236,6 +2239,30 @@ class ChatController extends State<ChatPageWithRoom>
       onConfirm: () => WidgetsBinding.instance.addPostFrameCallback(
         (_) => onRequestWritingAssistance(manual: false, autosend: true),
       ),
+    );
+  }
+
+  void _onCloseIT() {
+    if (choreographer.timesClosedIT.value >= 3) {
+      showDisableLanguageToolsPopup();
+    }
+  }
+
+  void showDisableLanguageToolsPopup() {
+    if (InstructionsEnum.disableLanguageTools.isToggledOff) {
+      return;
+    }
+
+    InstructionsEnum.disableLanguageTools.setToggledOff(true);
+    OverlayUtil.showPositionedCard(
+      context: context,
+      cardToShow: const DisableLanguageToolsPopup(
+        overlayId: 'disable_language_tools_popup',
+      ),
+      maxHeight: 325,
+      maxWidth: 325,
+      transformTargetId: ChoreoConstants.inputTransformTargetKey,
+      overlayKey: 'disable_language_tools_popup',
     );
   }
 

@@ -5010,5 +5010,7 @@
   },
   "ssoDialogTitle": "Waiting for sign in to complete",
   "ssoDialogDesc": "We opened a new tab so you can sign in securely.",
-  "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker."
+  "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",
+  "disableLanguageToolsTitle": "Disable language tools",
+  "disableLanguageToolsDesc": "Would you like to disable automatic language assistance?"
 }

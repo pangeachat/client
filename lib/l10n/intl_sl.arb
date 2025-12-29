@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-12-15 14:43:19.279445",
+  "@@last_modified": "2025-12-29 16:03:03.060738",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11784,6 +11784,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Onemogoči jezikovna orodja",
+  "disableLanguageToolsDesc": "Ali želite onemogočiti samodejno jezikovno pomoč?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

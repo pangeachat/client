@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-12-15 14:44:03.535697",
+  "@@last_modified": "2025-12-29 16:03:45.093189",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10808,6 +10808,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Отключить языковые инструменты",
+  "disableLanguageToolsDesc": "Вы хотите отключить автоматическую языковую помощь?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

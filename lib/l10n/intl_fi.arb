@@ -4009,7 +4009,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-12-15 14:42:51.625904",
+  "@@last_modified": "2025-12-29 16:02:38.790567",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11326,6 +11326,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Poista kielityökalut käytöstä",
+  "disableLanguageToolsDesc": "Haluaisitko poistaa automaattisen kieliavun käytöstä?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

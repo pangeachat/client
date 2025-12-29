@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:44:06.530821",
+  "@@last_modified": "2025-12-29 16:03:48.066706",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11805,6 +11805,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Onemogući alate za jezik",
+  "disableLanguageToolsDesc": "Da li želite da onemogućite automatsku jezičku pomoć?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:48.784024",
+  "@@last_modified": "2025-12-29 16:03:27.645859",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10703,6 +10703,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Schakel taalhulpmiddelen uit",
+  "disableLanguageToolsDesc": "Wilt u automatische taalsupport uitschakelen?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

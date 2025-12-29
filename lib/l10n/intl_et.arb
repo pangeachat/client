@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-15 14:43:16.857704",
+  "@@last_modified": "2025-12-29 16:03:00.536194",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10974,6 +10974,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Keela keele tööriistad",
+  "disableLanguageToolsDesc": "Kas soovite automaatset keeleabi keelata?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

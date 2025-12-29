@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-15 14:42:55.436150",
+  "@@last_modified": "2025-12-29 16:02:43.810168",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10704,6 +10704,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Nyelvi eszközök letiltása",
+  "disableLanguageToolsDesc": "Szeretné letiltani az automatikus nyelvi segítséget?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

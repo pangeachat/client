@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-15 14:43:26.456306",
+  "@@last_modified": "2025-12-29 16:03:07.960576",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11310,6 +11310,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Deaktivovat jazykové nástroje",
+  "disableLanguageToolsDesc": "Chtěli byste deaktivovat automatickou jazykovou pomoc?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

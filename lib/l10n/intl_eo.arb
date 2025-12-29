@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:44:02.283480",
+  "@@last_modified": "2025-12-29 16:03:43.433863",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11792,6 +11792,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Malaktivigi lingvo-ilojn",
+  "disableLanguageToolsDesc": "Ĉu vi ŝatus malaktivigi aŭtomatan lingvohelpon?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

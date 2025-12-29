@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:54.300365",
+  "@@last_modified": "2025-12-29 16:03:33.677336",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11435,6 +11435,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "غیرفعال کردن ابزارهای زبانی",
+  "disableLanguageToolsDesc": "آیا می‌خواهید کمک‌های زبانی خودکار را غیرفعال کنید؟",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

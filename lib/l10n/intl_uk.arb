@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-12-15 14:43:25.022859",
+  "@@last_modified": "2025-12-29 16:03:06.773179",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10697,6 +10697,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Вимкнути мовні інструменти",
+  "disableLanguageToolsDesc": "Ви хочете вимкнути автоматичну мовну допомогу?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

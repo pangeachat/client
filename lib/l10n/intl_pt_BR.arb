@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:13.571791",
+  "@@last_modified": "2025-12-29 16:02:56.955668",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11061,6 +11061,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Desativar ferramentas de idioma",
+  "disableLanguageToolsDesc": "Você gostaria de desativar a assistência automática de idioma?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-15 14:43:07.923977",
+  "@@last_modified": "2025-12-29 16:02:50.259140",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11677,6 +11677,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Díghá na huirlisí teanga",
+  "disableLanguageToolsDesc": "An bhfuil tú ag iarraidh na cabhrach teanga uathoibríoch a dhíghníomhachtú?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

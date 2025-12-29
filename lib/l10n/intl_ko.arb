@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:42:46.121270",
+  "@@last_modified": "2025-12-29 16:02:33.926636",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10811,6 +10811,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "언어 도구 비활성화",
+  "disableLanguageToolsDesc": "자동 언어 지원을 비활성화하시겠습니까?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

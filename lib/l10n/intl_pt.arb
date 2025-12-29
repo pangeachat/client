@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:15.620362",
+  "@@last_modified": "2025-12-29 16:02:59.371193",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11803,6 +11803,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Desativar ferramentas de idioma",
+  "disableLanguageToolsDesc": "Você gostaria de desativar a assistência automática de idioma?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }

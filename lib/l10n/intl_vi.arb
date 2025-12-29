@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:45.911331",
+  "@@last_modified": "2025-12-29 16:03:25.275842",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6273,6 +6273,16 @@
     "placeholders": {}
   },
   "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Vô hiệu hóa công cụ ngôn ngữ",
+  "disableLanguageToolsDesc": "Bạn có muốn vô hiệu hóa trợ giúp ngôn ngữ tự động không?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
     "type": "String",
     "placeholders": {}
   }
