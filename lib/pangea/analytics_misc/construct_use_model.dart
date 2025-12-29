@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -21,9 +23,12 @@ class ConstructUses {
 
   // Total points for all uses of this lemma
   int get points {
-    return uses.fold<int>(
-      0,
-      (total, use) => total + use.xp,
+    return min(
+      uses.fold<int>(
+        0,
+        (total, use) => total + use.xp,
+      ),
+      AnalyticsConstants.xpForFlower,
     );
   }
 

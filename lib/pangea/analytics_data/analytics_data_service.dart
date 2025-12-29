@@ -131,10 +131,19 @@ class AnalyticsDataService {
         client: client,
         dataService: this,
       );
-
-      await updateXPOffset(analyticsProfile.xpOffset ?? 0);
-
       await _syncController!.bulkUpdate();
+
+      final vocab = await getAggregatedConstructs(ConstructTypeEnum.vocab);
+      final morphs = await getAggregatedConstructs(ConstructTypeEnum.morph);
+      final constructs = [...vocab.values, ...morphs.values];
+      final totalXP = constructs.fold(0, (total, c) => total + c.points);
+      await _analyticsClientGetter.database.updateDerivedStats(
+        DerivedAnalyticsDataModel(
+          totalXP: totalXP,
+          offset: analyticsProfile.xpOffset ?? 0,
+        ),
+      );
+
       _syncController!.start();
 
       await _initMergeTable();
@@ -273,7 +282,6 @@ class AnalyticsDataService {
   Future<Map<ConstructIdentifier, ConstructUses>> getAggregatedConstructs(
     ConstructTypeEnum type,
   ) async {
-    await _ensureInitialized();
     final combined =
         await _analyticsClientGetter.database.getAggregatedConstructs(type);
 
@@ -342,14 +350,10 @@ class AnalyticsDataService {
     AnalyticsUpdate update,
   ) async {
     final events = <AnalyticsUpdateEvent>[];
-
-    final morphIds = update.addedConstructs
-        .where((c) => c.constructType == ConstructTypeEnum.morph)
-        .map((c) => c.identifier)
-        .toSet();
+    final updateIds = update.addedConstructs.map((c) => c.identifier).toList();
 
     final prevData = await derivedData;
-    final prevMorphs = await getConstructUses(morphIds.toList());
+    final prevConstructs = await getConstructUses(updateIds);
 
     _invalidateCaches();
     await _ensureInitialized();
@@ -360,7 +364,17 @@ class AnalyticsDataService {
     final blocked = blockedConstructs;
     _mergeTable.addConstructsByUses(update.addedConstructs, blocked);
 
-    final newData = await derivedData;
+    final newConstructs = await getConstructUses(updateIds);
+    int points = 0;
+    for (final id in updateIds) {
+      final prevPoints = prevConstructs[id]?.points ?? 0;
+      final newPoints = newConstructs[id]?.points ?? 0;
+      points += (newPoints - prevPoints);
+    }
+    events.add(XPGainedEvent(points, update.targetID));
+
+    final newData = prevData.copyWith(totalXP: prevData.totalXP + points);
+    await _analyticsClientGetter.database.updateDerivedStats(newData);
 
     // Update public profile each time that new analytics are added.
     // If the level hasn't changed, this will not send an update to the server.
@@ -384,19 +398,16 @@ class AnalyticsDataService {
       );
     }
 
-    final newMorphs = await getConstructUses(morphIds.toList());
-    final newUnlockedMorphs = morphIds.where((id) {
-      final prevPoints = prevMorphs[id]?.points ?? 0;
-      final newPoints = newMorphs[id]?.points ?? 0;
+    final newUnlockedMorphs = updateIds.where((id) {
+      if (id.type != ConstructTypeEnum.morph) return false;
+      final prevPoints = prevConstructs[id]?.points ?? 0;
+      final newPoints = newConstructs[id]?.points ?? 0;
       return prevPoints < _morphUnlockXP && newPoints >= _morphUnlockXP;
     }).toSet();
 
     if (newUnlockedMorphs.isNotEmpty) {
       events.add(MorphUnlockedEvent(newUnlockedMorphs));
     }
-
-    final points = update.addedConstructs.fold(0, (s, c) => s + c.xp);
-    events.add(XPGainedEvent(points, update.targetID));
 
     if (update.blockedConstruct != null) {
       events.add(ConstructBlockedEvent(update.blockedConstruct!));
