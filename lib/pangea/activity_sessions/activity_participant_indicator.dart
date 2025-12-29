@@ -97,9 +97,10 @@ class ActivityParticipantIndicator extends StatelessWidget {
                         ? theme.colorScheme.surfaceContainerHighest
                         : theme.colorScheme.surface.withAlpha(130),
                   ),
-                  constraints: const BoxConstraints(maxWidth: 200.0),
+                  height: 125.0,
+                  constraints: const BoxConstraints(maxWidth: 100.0),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       shimmer && !selected
                           ? Shimmer.fromColors(
