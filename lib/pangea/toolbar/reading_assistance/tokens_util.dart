@@ -47,6 +47,7 @@ class TokensUtil {
   /// A cache of calculated adjacent token positions
   static final Map<String, _TokenPositionCacheItem> _tokenPositionCache = {};
   static final Map<String, _NewTokenCacheItem> _newTokenCache = {};
+  static PangeaTokenText? _lastCollected;
 
   static const Duration _cacheDuration = Duration(minutes: 1);
 
@@ -124,9 +125,19 @@ class TokensUtil {
     return newTokens.any((t) => t == token.text);
   }
 
-  static clearNewTokenCache() {
+  static void clearNewTokenCache() {
     _newTokenCache.clear();
   }
+
+  static void collectToken(String eventId, PangeaTokenText token) {
+    _newTokenCache[eventId]?.tokens.remove(token);
+    _lastCollected = token;
+  }
+
+  static bool isRecentlyCollected(PangeaTokenText token) =>
+      _lastCollected == token;
+
+  static void clearRecentlyCollected() => _lastCollected = null;
 
   static List<TokenPosition>? _getCachedTokenPositions(String eventID) {
     final cacheItem = _tokenPositionCache[eventID];

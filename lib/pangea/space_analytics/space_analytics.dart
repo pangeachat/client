@@ -289,7 +289,14 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     try {
       final roomId = _analyticsRoomIdOfUser(user);
       if (roomId == null) return;
-      await Matrix.of(context).client.knockRoom(roomId);
+      await Matrix.of(context).client.knockRoom(
+            roomId,
+            via: room?.spaceChildren
+                .firstWhereOrNull(
+                  (child) => child.roomId == roomId,
+                )
+                ?.via,
+          );
       status = RequestStatus.requested;
     } catch (e) {
       status = RequestStatus.unavailable;
