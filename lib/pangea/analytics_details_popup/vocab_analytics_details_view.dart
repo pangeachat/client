@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/word_text_with_audio_button.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays information about selected lemma, and its usage
@@ -20,6 +25,28 @@ class VocabDetailsView extends StatelessWidget {
     super.key,
     required this.constructId,
   });
+
+  Future<void> _blockLemma(BuildContext context) async {
+    final resp = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).blockLemmaConfirmation,
+      isDestructive: true,
+    );
+
+    if (resp != OkCancelResult.ok) return;
+    final res = await showFutureLoadingDialog(
+      context: context,
+      future: () => Matrix.of(context)
+          .analyticsDataService
+          .updateService
+          .blockConstruct(constructId),
+    );
+
+    if (!res.isError) {
+      context.go("/rooms/analytics/${ConstructTypeEnum.vocab.name}");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +69,9 @@ class VocabDetailsView extends StatelessWidget {
                 .toList() ??
             [];
 
-        return SingleChildScrollView(
+        return MaxWidthBody(
+          maxWidth: 600.0,
+          showBorder: false,
           child: Column(
             spacing: 16.0,
             children: [
@@ -100,6 +129,19 @@ class VocabDetailsView extends StatelessWidget {
                     ),
                   ],
                 ),
+              ListTile(
+                leading: Icon(
+                  Icons.delete_outline,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                title: Text(
+                  L10n.of(context).delete,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
+                  ),
+                ),
+                onTap: () => _blockLemma(context),
+              ),
             ],
           ),
         );

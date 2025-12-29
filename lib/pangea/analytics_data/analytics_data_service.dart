@@ -113,6 +113,7 @@ class AnalyticsDataService {
 
   Future<void> _initAnalytics() async {
     try {
+      Logs().i("Initializing analytics database.");
       final client = _analyticsClientGetter.client;
       if (client.prevBatch == null) {
         await client.onSync.stream.first;
