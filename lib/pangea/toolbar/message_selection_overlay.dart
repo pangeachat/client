@@ -216,28 +216,35 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       );
     }
 
-    if (mounted) {
-      setState(() {});
-      if (selectedToken != null && isNewToken(selectedToken!)) {
-        final token = selectedToken!;
-        final constructs = [
-          OneConstructUse(
-            useType: ConstructUseTypeEnum.click,
-            lemma: token.lemma.text,
-            constructType: ConstructTypeEnum.vocab,
-            metadata: ConstructUseMetaData(
-              roomId: event.room.id,
-              timeStamp: DateTime.now(),
-              eventId: event.eventId,
-            ),
-            category: token.pos,
-            form: token.text.content,
-            xp: ConstructUseTypeEnum.click.pointValue,
+    if (!mounted) return;
+    if (selectedToken != null && isNewToken(selectedToken!)) {
+      TokensUtil.collectToken(event.eventId, selectedToken!.text);
+      final token = selectedToken!;
+      final constructs = [
+        OneConstructUse(
+          useType: ConstructUseTypeEnum.click,
+          lemma: token.lemma.text,
+          constructType: ConstructTypeEnum.vocab,
+          metadata: ConstructUseMetaData(
+            roomId: event.room.id,
+            timeStamp: DateTime.now(),
+            eventId: event.eventId,
           ),
-        ];
-        addAnalytics(constructs, "word-zoom-card-${token.text.uniqueKey}");
-      }
+          category: token.pos,
+          form: token.text.content,
+          xp: ConstructUseTypeEnum.click.pointValue,
+        ),
+      ];
+
+      addAnalytics(constructs, "word-zoom-card-${token.text.uniqueKey}")
+          .then((_) {
+        TokensUtil.clearNewTokenCache();
+        if (mounted) setState(() {});
+      });
+      return;
     }
+
+    setState(() {});
   }
 
   PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(
