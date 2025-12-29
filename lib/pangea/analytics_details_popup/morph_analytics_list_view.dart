@@ -1,15 +1,13 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_downloads/analytics_download_button.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -156,9 +154,13 @@ class MorphFeatureBox extends StatelessWidget {
                           morphFeature: morphFeature,
                           morphTag: morphTag,
                           constructAnalytics: snapshot.data,
-                          onTap: () => context.go(
-                            "/rooms/analytics/${id.type.string}/${Uri.encodeComponent(jsonEncode(id.toJson()))}",
-                          ),
+                          onTap: () {
+                            AnalyticsNavigationUtil.navigateToAnalytics(
+                              context: context,
+                              view: ProgressIndicatorEnum.morphsUsed,
+                              construct: id,
+                            );
+                          },
                         ),
                       );
                     },

@@ -3891,9 +3891,6 @@
   "courseSavedSuccessfully": "Curs salvat cu succes",
   "addCoursePlan": "Adaugă un plan de curs",
   "activityStatsButtonInstruction": "Click aici pentru a vedea statisticile activității și pentru a închide activitatea când termini",
-  "readingAnalyticsDesc": "Click pe practică pentru fiecare mesaj pentru activități de citire.",
-  "speakingAnalyticsDesc": " Înregistrează mesaje vocale pentru practică de vorbire.",
-  "audioAnalyticsDesc": "Click pe practică pentru fiecare mesaj pentru activități de ascultare.",
   "loginToAccount": "Autentifică-te în contul meu",
   "appDescription": "Învață o limbă\nîn timp ce trimiți mesaje prietenilor.",
   "languages": "Limbi",
@@ -3919,7 +3916,6 @@
   "usernameOrEmail": "Nume de utilizator sau email",
   "email": "Email",
   "forgotPassword": "Ai uitat parola?",
-  "writingAnalyticsDesc": "Trimite mesaje pentru a exersa scrierea.",
   "endActivity": "Încheie activitatea",
   "allLanguages": "Toate limbile",
   "chatListTooltip": "Aici vei găsi mesajele tale directe! Fă clic pe avatarul oricărui utilizator și „începe conversația” pentru a trimite un mesaj direct.",
@@ -9824,18 +9820,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9933,10 +9917,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

@@ -4001,9 +4001,6 @@
   "courseSavedSuccessfully": "Kurz úspěšně uložen",
   "addCoursePlan": "Přidat plán kurzu",
   "activityStatsButtonInstruction": "Klikněte zde pro zobrazení statistik vaší aktivity a pro uzavření aktivity po dokončení",
-  "readingAnalyticsDesc": "Klikněte na cvičení u každé zprávy pro aktivity čtení.",
-  "speakingAnalyticsDesc": "Nahrajte hlasové zprávy pro procvičování mluvení.",
-  "audioAnalyticsDesc": "Klikněte na cvičení u každé zprávy pro poslechové aktivity.",
   "loginToAccount": "Přihlásit se ke svému účtu",
   "appDescription": "Učte se jazyk\npři psaní zpráv přátelům.",
   "languages": "Jazyky",
@@ -4029,7 +4026,6 @@
   "usernameOrEmail": "Uživatelské jméno nebo e-mail",
   "email": "E-mail",
   "forgotPassword": "Zapomněli jste heslo?",
-  "writingAnalyticsDesc": "Posílejte zprávy pro procvičování psaní.",
   "endActivity": "Ukončit aktivitu",
   "allLanguages": "Všechny jazyky",
   "chatListTooltip": "Zde najdete své přímé zprávy! Klikněte na avatar jakéhokoliv uživatele a “začněte konverzaci” pro odeslání DM.",
@@ -9696,18 +9692,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9805,10 +9789,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

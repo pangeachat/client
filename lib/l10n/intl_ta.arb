@@ -4348,9 +4348,6 @@
   "courseSavedSuccessfully": "பாடம் வெற்றிகரமாக சேமிக்கப்பட்டது",
   "addCoursePlan": "பாடத்திட்டத்தைச் சேர்க்கவும்",
   "activityStatsButtonInstruction": "உங்கள் செயல்பாட்டு புள்ளிவிவரங்களைப் பார்க்க இங்கே கிளிக் செய்யவும் மற்றும் முடிந்ததும் செயல்பாட்டை மூடவும்",
-  "readingAnalyticsDesc": "ஒவ்வொரு செய்தியிலும் பயிற்சி செய்ய வாசிப்பு செயல்பாடுகளுக்காக கிளிக் செய்யவும்.",
-  "speakingAnalyticsDesc": "பேச்சு பயிற்சிக்காக குரல் செய்திகளை பதிவு செய்யவும்.",
-  "audioAnalyticsDesc": "ஒவ்வொரு செய்தியிலும் கேட்கும் செயல்பாடுகளுக்காக கிளிக் செய்யவும்.",
   "loginToAccount": "என் கணக்கில் உள்நுழையவும்",
   "appDescription": "ஒரு மொழியை கற்றுக்கொள்ளுங்கள்\nஉங்கள் நண்பர்களுடன் உரையாடும் போது.",
   "languages": "மொழிகள்",
@@ -4376,7 +4373,6 @@
   "usernameOrEmail": "பயனர்பெயர் அல்லது மின்னஞ்சல்",
   "email": "மின்னஞ்சல்",
   "forgotPassword": "கடவுச்சொல்லை மறந்துவிட்டீர்களா?",
-  "writingAnalyticsDesc": "எழுதும் பயிற்சிக்கு செய்திகள் அனுப்பவும்.",
   "endActivity": "செயல்பாட்டை முடிக்கவும்",
   "allLanguages": "அனைத்து மொழிகள்",
   "chatListTooltip": "இங்கே நீங்கள் நேரடி செய்திகளை காணலாம்! எந்த பயனரின் அவதாரத்தையும் கிளிக் செய்து “பேச்சு தொடங்கவும்” என்பதைக் கிளிக் செய்து DM அனுப்பவும்.",
@@ -9313,18 +9309,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9422,10 +9406,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

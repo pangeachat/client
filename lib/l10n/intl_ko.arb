@@ -4408,9 +4408,6 @@
   "courseSavedSuccessfully": "강좌가 성공적으로 저장되었습니다",
   "addCoursePlan": "강좌 계획 추가",
   "activityStatsButtonInstruction": "여기를 클릭하여 활동 통계를 보고 완료 시 활동을 종료하세요",
-  "readingAnalyticsDesc": "읽기 활동을 위해 각 메시지에서 연습을 클릭하세요.",
-  "speakingAnalyticsDesc": "말하기 연습을 위해 음성 메시지를 녹음하세요.",
-  "audioAnalyticsDesc": "듣기 활동을 위해 각 메시지에서 연습을 클릭하세요.",
   "loginToAccount": "내 계정에 로그인",
   "appDescription": "친구들과 문자 메시지를 보내며 언어를 배우세요.",
   "languages": "언어",
@@ -4436,7 +4433,6 @@
   "usernameOrEmail": "사용자 이름 또는 이메일",
   "email": "이메일",
   "forgotPassword": "비밀번호를 잊으셨나요?",
-  "writingAnalyticsDesc": "글쓰기를 연습하려면 메시지를 보내세요.",
   "endActivity": "활동 종료",
   "allLanguages": "모든 언어",
   "chatListTooltip": "여기서 직접 메시지를 찾을 수 있습니다! 사용자 아바타를 클릭하고 “대화 시작”을 선택하여 DM을 보내세요.",
@@ -9197,18 +9193,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9306,10 +9290,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

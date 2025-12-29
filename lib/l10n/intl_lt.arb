@@ -3824,9 +3824,6 @@
   "courseSavedSuccessfully": "Kursas sėkmingai išsaugotas",
   "addCoursePlan": "Pridėti kurso planą",
   "activityStatsButtonInstruction": "Spustelėkite čia, norėdami peržiūrėti savo veiklos statistiką ir uždaryti veiklą, kai baigsite",
-  "readingAnalyticsDesc": "Spustelėkite praktika ant kiekvienos žinutės skaitymo veikloms.",
-  "speakingAnalyticsDesc": "Įrašykite balso žinutes kalbėjimo praktikai.",
-  "audioAnalyticsDesc": "Spustelėkite praktika ant kiekvienos žinutės klausymo veikloms.",
   "loginToAccount": "Prisijungti prie mano paskyros",
   "appDescription": "Išmokite kalbą\nnaudodamiesi tekstais su draugais.",
   "languages": "Kalbos",
@@ -3852,7 +3849,6 @@
   "usernameOrEmail": "Vartotojo vardas arba el. paštas",
   "email": "El. paštas",
   "forgotPassword": "Pamiršote slaptažodį?",
-  "writingAnalyticsDesc": "Siųskite žinutes praktikuodami rašymą.",
   "endActivity": "Baigti veiklą",
   "allLanguages": "Visos kalbos",
   "chatListTooltip": "Čia rasite savo tiesiogines žinutes! Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad išsiųstumėte tiesioginę žinutę.",
@@ -9894,18 +9890,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10003,10 +9987,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

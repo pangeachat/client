@@ -31,9 +31,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   late Box<Map> _aggregatedLocalVocabConstructsBox;
   late Box<Map> _aggregatedServerMorphConstructsBox;
   late Box<Map> _aggregatedLocalMorphConstructsBox;
-
-  late Box<Map> _derivedServerStatsBox;
-  late Box<Map> _derivedLocalStatsBox;
+  late Box<Map> _derivedStatsBox;
 
   static const String _serverConstructsBoxName = 'box_server_constructs';
 
@@ -52,9 +50,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
   static const String _aggregatedLocalMorphConstructsBoxName =
       'box_aggregated_local_morph_constructs';
 
-  static const String _derivedServerStatsBoxName = 'box_derived_server_stats';
-
-  static const String _derivedLocalStatsBoxName = 'box_derived_local_stats';
+  static const String _derivedStatsBoxName = 'box_derived_stats';
 
   static const String _lastEventTimestampBoxName = 'box_last_event_timestamp';
 
@@ -114,8 +110,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
         _aggregatedLocalVocabConstructsBoxName,
         _aggregatedServerMorphConstructsBoxName,
         _aggregatedLocalMorphConstructsBoxName,
-        _derivedServerStatsBoxName,
-        _derivedLocalStatsBoxName,
+        _derivedStatsBoxName,
       },
       sqfliteDatabase: database,
       sqfliteFactory: sqfliteFactory,
@@ -144,11 +139,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _aggregatedLocalMorphConstructsBox = _collection.openBox<Map>(
       _aggregatedLocalMorphConstructsBoxName,
     );
-    _derivedServerStatsBox = _collection.openBox<Map>(
-      _derivedServerStatsBoxName,
-    );
-    _derivedLocalStatsBox = _collection.openBox<Map>(
-      _derivedLocalStatsBoxName,
+    _derivedStatsBox = _collection.openBox<Map>(
+      _derivedStatsBoxName,
     );
   }
 
@@ -167,8 +159,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     _aggregatedLocalVocabConstructsBox.clearQuickAccessCache();
     _aggregatedServerMorphConstructsBox.clearQuickAccessCache();
     _aggregatedLocalMorphConstructsBox.clearQuickAccessCache();
-    _derivedServerStatsBox.clearQuickAccessCache();
-    _derivedLocalStatsBox.clearQuickAccessCache();
+    _derivedStatsBox.clearQuickAccessCache();
     await _collection.clear();
   }
 
@@ -191,30 +182,13 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return DateTime.parse(timestampString);
   }
 
-  Future<DerivedAnalyticsDataModel> _getDerivedServerStats() async {
-    final raw = await _derivedServerStatsBox.get('derived_stats');
-    return raw == null
-        ? DerivedAnalyticsDataModel()
-        : DerivedAnalyticsDataModel.fromJson(
-            Map<String, dynamic>.from(raw),
-          );
-  }
-
-  Future<DerivedAnalyticsDataModel> _getDerivedLocalStats() async {
-    final raw = await _derivedLocalStatsBox.get('derived_stats');
-    return raw == null
-        ? DerivedAnalyticsDataModel()
-        : DerivedAnalyticsDataModel.fromJson(
-            Map<String, dynamic>.from(raw),
-          );
-  }
-
   Future<DerivedAnalyticsDataModel> getDerivedStats() async {
-    DerivedAnalyticsDataModel server = DerivedAnalyticsDataModel();
-    DerivedAnalyticsDataModel local = DerivedAnalyticsDataModel();
-    server = await _getDerivedServerStats();
-    local = await _getDerivedLocalStats();
-    return server.merge(local);
+    final raw = await _derivedStatsBox.get('derived_stats');
+    return raw == null
+        ? DerivedAnalyticsDataModel()
+        : DerivedAnalyticsDataModel.fromJson(
+            Map<String, dynamic>.from(raw),
+          );
   }
 
   Future<List<OneConstructUse>> getUses({
@@ -391,7 +365,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
       await _localConstructsBox.clear();
       await _aggregatedLocalVocabConstructsBox.clear();
       await _aggregatedLocalMorphConstructsBox.clear();
-      await _derivedLocalStatsBox.clear();
     });
   }
 
@@ -511,29 +484,17 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
   Future<void> updateXPOffset(int offset) {
     return _transaction(() async {
-      final serverStats = await _getDerivedServerStats();
-      final localStats = await _getDerivedLocalStats();
-
-      final updatedServerStats = serverStats.copyWith(
-        offset: offset,
-      );
-      final updatedLocalStats = localStats.copyWith(
-        offset: offset,
-      );
-
-      await _derivedServerStatsBox.put(
+      final stats = await getDerivedStats();
+      final updatedStats = stats.copyWith(offset: offset);
+      await _derivedStatsBox.put(
         'derived_stats',
-        updatedServerStats.toJson(),
-      );
-      await _derivedLocalStatsBox.put(
-        'derived_stats',
-        updatedLocalStats.toJson(),
+        updatedStats.toJson(),
       );
     });
   }
 
   Future<void> updateDerivedStats(DerivedAnalyticsDataModel newStats) =>
-      _derivedServerStatsBox.put(
+      _derivedStatsBox.put(
         'derived_stats',
         newStats.toJson(),
       );
@@ -546,7 +507,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
     final stopwatch = Stopwatch()..start();
     await _transaction(() async {
       final lastUpdated = await getLastEventTimestamp();
-      final derivedData = await _getDerivedServerStats();
 
       DateTime mostRecent = lastUpdated ?? events.first.event.originServerTs;
       final existingKeys = (await _serverConstructsBox.getAllKeys()).toSet();
@@ -610,19 +570,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
         );
       }
 
-      // Update derived stats
-      final updatedDerivedStats = derivedData.update(
-        [
-          ...aggregatedVocabUses,
-          ...aggregatedMorphUses,
-        ],
-      );
-
-      await _derivedServerStatsBox.put(
-        'derived_stats',
-        updatedDerivedStats.toJson(),
-      );
-
       // Update timestamp
       await _lastEventTimestampBox.put(
         'last_event_timestamp',
@@ -682,14 +629,6 @@ class AnalyticsDatabase with DatabaseFileStorage {
           entry.value.toJson(),
         );
       }
-
-      // Update derived stats
-      final derivedData = await _getDerivedLocalStats();
-      final updatedDerivedStats = derivedData.update(uses);
-      await _derivedLocalStatsBox.put(
-        'derived_stats',
-        updatedDerivedStats.toJson(),
-      );
     });
 
     stopwatch.stop();

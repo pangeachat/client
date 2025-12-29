@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
+import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class MorphDetailsView extends StatelessWidget {
@@ -34,7 +35,9 @@ class MorphDetailsView extends StatelessWidget {
             ? level.color(context)
             : level.darkColor(context);
 
-        return SingleChildScrollView(
+        return MaxWidthBody(
+          maxWidth: 600.0,
+          showBorder: false,
           child: Column(
             spacing: 16.0,
             children: [

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 
 class MessageAnalyticsFeedback extends StatefulWidget {
@@ -127,7 +126,8 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
-        onTap: () => context.go("/rooms/analytics"),
+        onTap: () =>
+            AnalyticsNavigationUtil.navigateToAnalytics(context: context),
         child: ScaleTransition(
           scale: _bubbleScaleAnimation,
           alignment: Alignment.bottomRight,
@@ -195,7 +195,10 @@ class _NewConstructsBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => context.go("/rooms/analytics/${type.string}"),
+      onTap: () => AnalyticsNavigationUtil.navigateToAnalytics(
+        context: context,
+        view: type.indicator,
+      ),
       child: Tooltip(
         message: tooltip,
         child: AnimatedBuilder(

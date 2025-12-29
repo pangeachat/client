@@ -4474,9 +4474,6 @@
   "courseSavedSuccessfully": "Курс успішно збережено",
   "addCoursePlan": "Додати план курсу",
   "activityStatsButtonInstruction": "Натисніть тут, щоб переглянути статистику вашої активності та закрити активність після завершення",
-  "readingAnalyticsDesc": "Натисніть практику на кожному повідомленні для читання активностей.",
-  "speakingAnalyticsDesc": "Запишіть голосові повідомлення для практики говоріння.",
-  "audioAnalyticsDesc": "Натисніть практику на кожному повідомленні для слухання активностей.",
   "loginToAccount": "Увійти до мого облікового запису",
   "appDescription": "Вивчайте мову\nпишучи повідомлення друзям.",
   "languages": "Мови",
@@ -4502,7 +4499,6 @@
   "usernameOrEmail": "Ім'я користувача або електронна пошта",
   "email": "Електронна пошта",
   "forgotPassword": "Забули пароль?",
-  "writingAnalyticsDesc": "Надсилайте повідомлення для практики написання.",
   "endActivity": "Завершити діяльність",
   "allLanguages": "Всі мови",
   "chatListTooltip": "Тут ви знайдете свої особисті повідомлення! Натисніть на аватар будь-якого користувача і «почати розмову», щоб надіслати особисте повідомлення.",
@@ -9083,18 +9079,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9192,10 +9176,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

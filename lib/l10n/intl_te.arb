@@ -1883,9 +1883,6 @@
   "courseSavedSuccessfully": "కోర్సు విజయవంతంగా సేవ్ చేయబడింది",
   "addCoursePlan": "కోర్సు ప్రణాళికను జోడించండి",
   "activityStatsButtonInstruction": "మీ కార్యకలాప గణాంకాలను చూడడానికి ఇక్కడ క్లిక్ చేయండి మరియు పూర్తి చేసినప్పుడు కార్యకలాపాన్ని మూసివేయండి",
-  "readingAnalyticsDesc": "పఠన కార్యకలాపాల కోసం ప్రతి సందేశంపై అభ్యాసం క్లిక్ చేయండి.",
-  "speakingAnalyticsDesc": "మాట్లాడే అభ్యాసం కోసం వాయిస్ సందేశాలను రికార్డ్ చేయండి.",
-  "audioAnalyticsDesc": "శ్రవణ కార్యకలాపాల కోసం ప్రతి సందేశంపై అభ్యాసం క్లిక్ చేయండి.",
   "loginToAccount": "నా ఖాతాలో లాగిన్ అవ్వండి",
   "appDescription": "భాష నేర్చుకోండి\nమీ స్నేహితులతో సందేశాలు పంపుతూ.",
   "languages": "భాషలు",
@@ -1911,7 +1908,6 @@
   "usernameOrEmail": "యూజర్‌నేమ్ లేదా ఇమెయిల్",
   "email": "ఇమెయిల్",
   "forgotPassword": "పాస్వర్డ్ మర్చిపోయారా?",
-  "writingAnalyticsDesc": "రాయడం సాధన కోసం సందేశాలు పంపండి.",
   "endActivity": "చర్యను ముగించండి",
   "allLanguages": "అన్ని భాషలు",
   "chatListTooltip": "ఇక్కడ మీరు మీ ప్రత్యక్ష సందేశాలను కనుగొంటారు! ఏదైనా యూజర్ యొక్క అవతారంపై క్లిక్ చేసి \"సంభాషణ ప్రారంభించండి\" అని క్లిక్ చేయండి.",
@@ -10178,18 +10174,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10287,10 +10271,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

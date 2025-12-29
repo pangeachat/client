@@ -3892,9 +3892,6 @@
   "courseSavedSuccessfully": "دوره با موفقیت ذخیره شد",
   "addCoursePlan": "افزودن برنامه دوره",
   "activityStatsButtonInstruction": "برای مشاهده آمار فعالیت خود و بستن فعالیت پس از اتمام اینجا کلیک کنید",
-  "readingAnalyticsDesc": "برای فعالیت‌های خواندن، روی هر پیام تمرین کنید.",
-  "speakingAnalyticsDesc": "برای تمرین صحبت، پیام‌های صوتی ضبط کنید.",
-  "audioAnalyticsDesc": "برای فعالیت‌های شنیداری، روی هر پیام تمرین کنید.",
   "loginToAccount": "وارد حساب کاربری من شوید",
   "appDescription": "یادگیری زبان\nدر حین پیام‌رسانی به دوستانتان.",
   "languages": "زبان‌ها",
@@ -3920,7 +3917,6 @@
   "usernameOrEmail": "نام کاربری یا ایمیل",
   "email": "ایمیل",
   "forgotPassword": "رمز عبور را فراموش کرده‌اید؟",
-  "writingAnalyticsDesc": "برای تمرین نوشتن پیام ارسال کنید.",
   "endActivity": "پایان فعالیت",
   "allLanguages": "همه زبان‌ها",
   "chatListTooltip": "در اینجا پیام‌های مستقیم خود را پیدا خواهید کرد! روی آواتار هر کاربر کلیک کنید و «شروع مکالمه» را بزنید تا پیام مستقیم ارسال کنید.",
@@ -9821,18 +9817,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9930,10 +9914,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

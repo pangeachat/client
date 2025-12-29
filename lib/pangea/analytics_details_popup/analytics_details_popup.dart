@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_detail
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -129,12 +130,30 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
   @override
   Widget build(BuildContext context) {
-    return widget.view == ConstructTypeEnum.morph
-        ? widget.construct == null
-            ? MorphAnalyticsListView(controller: this)
-            : MorphDetailsView(constructId: widget.construct!)
-        : widget.construct == null
-            ? VocabAnalyticsListView(controller: this)
-            : VocabDetailsView(constructId: widget.construct!);
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsetsGeometry.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.construct == null)
+                LearningProgressIndicators(
+                  selected: widget.view.indicator,
+                ),
+              Expanded(
+                child: widget.view == ConstructTypeEnum.morph
+                    ? widget.construct == null
+                        ? MorphAnalyticsListView(controller: this)
+                        : MorphDetailsView(constructId: widget.construct!)
+                    : widget.construct == null
+                        ? VocabAnalyticsListView(controller: this)
+                        : VocabDetailsView(constructId: widget.construct!),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

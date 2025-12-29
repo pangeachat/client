@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -49,8 +47,10 @@ mixin LemmaEmojiSetter {
               textColor: Theme.of(context).colorScheme.surface,
               onTap: () {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                context.go(
-                  "/rooms/analytics/${constructId.type.name}/${Uri.encodeComponent(jsonEncode(constructId.toJson()))}",
+                AnalyticsNavigationUtil.navigateToAnalytics(
+                  context: context,
+                  view: constructId.type.indicator,
+                  construct: constructId,
                 );
               },
             ),

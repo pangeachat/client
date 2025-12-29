@@ -4419,9 +4419,6 @@
   "courseSavedSuccessfully": "บันทึกคอร์สเรียบร้อยแล้ว",
   "addCoursePlan": "เพิ่มแผนคอร์ส",
   "activityStatsButtonInstruction": "คลิกที่นี่เพื่อดูสถิติกิจกรรมของคุณและปิดกิจกรรมเมื่อเสร็จสิ้น",
-  "readingAnalyticsDesc": "คลิกฝึกฝนในแต่ละข้อความสำหรับกิจกรรมการอ่าน",
-  "speakingAnalyticsDesc": "บันทึกข้อความเสียงเพื่อฝึกพูด",
-  "audioAnalyticsDesc": "คลิกฝึกฝนในแต่ละข้อความเพื่อกิจกรรมการฟัง",
   "loginToAccount": "เข้าสู่ระบบบัญชีของฉัน",
   "appDescription": "เรียนรู้ภาษา\nในขณะส่งข้อความถึงเพื่อนของคุณ",
   "languages": "ภาษา",
@@ -4447,7 +4444,6 @@
   "usernameOrEmail": "ชื่อผู้ใช้หรืออีเมล",
   "email": "อีเมล",
   "forgotPassword": "ลืมรหัสผ่าน?",
-  "writingAnalyticsDesc": "ส่งข้อความเพื่อฝึกฝนการเขียน",
   "endActivity": "สิ้นสุดกิจกรรม",
   "allLanguages": "ทุกภาษา",
   "chatListTooltip": "ที่นี่คุณจะพบข้อความส่วนตัวของคุณ! คลิกที่อวาตาร์ของผู้ใช้ใดก็ได้และ \"เริ่มสนทนา\" เพื่อส่งข้อความส่วนตัว",
@@ -10147,18 +10143,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10256,10 +10240,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

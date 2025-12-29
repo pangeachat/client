@@ -4445,9 +4445,6 @@
   "courseSavedSuccessfully": "Kursu veiksmīgi saglabāts",
   "addCoursePlan": "Pievienot kursa plānu",
   "activityStatsButtonInstruction": "Noklikšķiniet šeit, lai skatītu savu aktivitātes statistiku un aizvērtu aktivitāti, kad tā ir pabeigta",
-  "readingAnalyticsDesc": "Noklikšķiniet uz prakses katrā ziņojumā, lai veiktu lasīšanas aktivitātes.",
-  "speakingAnalyticsDesc": "Ierakstiet balss ziņojumus, lai praktizētu runāšanu.",
-  "audioAnalyticsDesc": "Noklikšķiniet uz prakses katrā ziņojumā, lai veiktu klausīšanās aktivitātes.",
   "loginToAccount": "Pierakstieties savā kontā",
   "appDescription": "Mācieties valodu\nrakstot ziņas draugiem.",
   "languages": "Valodas",
@@ -4473,7 +4470,6 @@
   "usernameOrEmail": "Lietotājvārds vai e-pasts",
   "email": "E-pasts",
   "forgotPassword": "Aizmirsāt paroli?",
-  "writingAnalyticsDesc": "Sūtiet ziņojumus, lai praktizētu rakstīšanu.",
   "endActivity": "Beigt aktivitāti",
   "allLanguages": "Visas valodas",
   "chatListTooltip": "Šeit atradīsiet savas tiešās ziņas! Noklikšķiniet uz jebkura lietotāja avatara un izvēlieties „sākt sarunu”, lai nosūtītu DM.",
@@ -9075,18 +9071,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9184,10 +9168,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

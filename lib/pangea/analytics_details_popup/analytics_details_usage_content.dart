@@ -17,7 +17,10 @@ class AnalyticsDetailsUsageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        LemmaUseExampleMessages(construct: construct),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: LemmaUseExampleMessages(construct: construct),
+        ),
         ...LearningSkillsEnum.values.where((v) => v.isVisible).map((skill) {
           return LemmaUsageDots(
             construct: construct,

@@ -1806,9 +1806,6 @@
   "courseSavedSuccessfully": "課程已成功保存",
   "addCoursePlan": "添加課程計劃",
   "activityStatsButtonInstruction": "點擊此處查看您的活動統計數據，完成後關閉活動",
-  "readingAnalyticsDesc": "點擊每條消息進行閱讀練習。",
-  "speakingAnalyticsDesc": "錄製語音消息進行口語練習。",
-  "audioAnalyticsDesc": "點擊每條消息進行聽力練習。",
   "loginToAccount": "登入我的帳戶",
   "appDescription": "學習一種語言\n同時與朋友發訊息。",
   "languages": "語言",
@@ -1834,7 +1831,6 @@
   "usernameOrEmail": "用戶名或電郵",
   "email": "電郵",
   "forgotPassword": "忘記密碼？",
-  "writingAnalyticsDesc": "發送訊息練習寫作。",
   "endActivity": "結束活動",
   "allLanguages": "所有語言",
   "chatListTooltip": "喺呢度你會搵到你嘅直接訊息！點擊任何用戶嘅頭像同「開始對話」嚟發送私訊。",
@@ -9774,18 +9770,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9883,10 +9867,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

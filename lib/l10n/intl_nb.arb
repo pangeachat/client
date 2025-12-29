@@ -3387,9 +3387,6 @@
   "courseSavedSuccessfully": "Kurset er lagret vellykket",
   "addCoursePlan": "Legg til en kursplan",
   "activityStatsButtonInstruction": "Klikk her for å se aktivitetsstatistikken din og for å lukke aktiviteten når du er ferdig",
-  "readingAnalyticsDesc": "Klikk på praksis på hver melding for leseaktiviteter.",
-  "speakingAnalyticsDesc": "Ta opp talebeskjeder for å øve på å snakke.",
-  "audioAnalyticsDesc": "Klikk på praksis på hver melding for lytteaktiviteter.",
   "loginToAccount": "Logg inn på kontoen min",
   "appDescription": "Lær et språk\nmens du sender tekst til vennene dine.",
   "languages": "Språk",
@@ -3415,7 +3412,6 @@
   "usernameOrEmail": "Brukernavn eller e-post",
   "email": "E-post",
   "forgotPassword": "Glemt passord?",
-  "writingAnalyticsDesc": "Send meldinger for å øve på å skrive.",
   "endActivity": "Avslutt aktivitet",
   "allLanguages": "Alle språk",
   "chatListTooltip": "Her finner du dine direktemeldinger! Klikk på en brukers avatar og «start samtale» for å sende en DM.",
@@ -10182,18 +10178,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10291,10 +10275,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },

@@ -4471,9 +4471,6 @@
   "courseSavedSuccessfully": "Cursus succesvol opgeslagen",
   "addCoursePlan": "Voeg een cursusplan toe",
   "activityStatsButtonInstruction": "Klik hier om je activiteitsstatistieken te bekijken en de activiteit te sluiten wanneer je klaar bent",
-  "readingAnalyticsDesc": "Klik op oefenen bij elk bericht voor leesactiviteiten.",
-  "speakingAnalyticsDesc": "Neem spraakberichten op voor spreekvaardigheid.",
-  "audioAnalyticsDesc": "Klik op oefenen bij elk bericht voor luisteractiviteiten.",
   "loginToAccount": "Log in op mijn account",
   "appDescription": "Leer een taal\nterwijl je met je vrienden chat.",
   "languages": "Talen",
@@ -4499,7 +4496,6 @@
   "usernameOrEmail": "Gebruikersnaam of e-mail",
   "email": "E-mail",
   "forgotPassword": "Wachtwoord vergeten?",
-  "writingAnalyticsDesc": "Stuur berichten om schrijven te oefenen.",
   "endActivity": "Eind activiteit",
   "allLanguages": "Alle talen",
   "chatListTooltip": "Hier vind je je directe berichten! Klik op de avatar van een gebruiker en “start een gesprek” om een DM te sturen.",
@@ -9089,18 +9085,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9198,10 +9182,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
