@@ -78,28 +78,26 @@ def search_and_replace(name: str, value: str, repo_path: str):
             text=True
         )
 
-        counter = 0
-
         # Remove model_keys.dart and any non-dart files 
         files = result.stdout.strip().split('\n')
         for file in files:
             if ("model_keys.dart" not in file) & file.endswith('.dart'):
                 with open(file, 'r+') as f:
                     file_content = f.read()
-                    # Replace instances of hardcoded value in file
-                    file_content = re.sub(search, replace, file_content)
 
-                    # Add import statement if needed
+                    # Files without ModelKey import statements 
+                    # may not need edits - leave to user discretion
                     import_str = "import 'package:fluffychat/pangea/common/constants/model_keys.dart';"
                     if import_str not in file_content:
-                        file_content = import_str + "\n" + file_content
-                        
-                    f.seek(0)
-                    f.write(file_content)
-                    f.truncate()
-                counter += 1
-        if counter > 0:
-            print(str(counter) + " files containing \"" + value + "\"") 
+                        print("The file " + file + " contains the text \"" + value + "\"")
+                        # file_content = import_str + "\n" + file_content
+
+                    else:
+                        # Replace instances of hardcoded value in file
+                        file_content = re.sub(search, replace, file_content)
+                        f.seek(0)
+                        f.write(file_content)
+                        f.truncate()
 
     except subprocess.CalledProcessError:
         return False
