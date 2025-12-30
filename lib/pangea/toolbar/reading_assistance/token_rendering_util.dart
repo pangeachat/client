@@ -1,52 +1,43 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 
 class TokenRenderingUtil {
-  final PangeaMessageEvent? pangeaMessageEvent;
-  final ReadingAssistanceMode? readingAssistanceMode;
-  final MessageOverlayController? overlayController;
-  final bool isTransitionAnimation;
   final TextStyle existingStyle;
+
+  TokenRenderingUtil({
+    required this.existingStyle,
+  });
 
   static final Map<String, double> _tokensWidthCache = {};
 
-  TokenRenderingUtil({
-    required this.pangeaMessageEvent,
-    required this.readingAssistanceMode,
-    required this.existingStyle,
-    this.overlayController,
-    this.isTransitionAnimation = false,
-  });
-
-  bool get showCenterStyling {
-    if (overlayController == null) return false;
-    if (!isTransitionAnimation) return true;
-    return readingAssistanceMode == ReadingAssistanceMode.practiceMode;
-  }
-
-  double? fontSize(BuildContext context) => showCenterStyling
-      ? overlayController != null && overlayController!.maxWidth > 600
-          ? Theme.of(context).textTheme.titleLarge?.fontSize
-          : Theme.of(context).textTheme.bodyLarge?.fontSize
-      : null;
-
-  TextStyle style(
-    BuildContext context, {
-    Color? color,
+  TextStyle style({
+    required Color underlineColor,
+    double? fontSize,
+    bool selected = false,
+    bool highlighted = false,
+    bool isNew = false,
+    bool practiceMode = false,
   }) =>
       existingStyle.copyWith(
-        fontSize: fontSize(context),
+        fontSize: fontSize,
         decoration: TextDecoration.underline,
         decorationThickness: 4,
-        decorationColor: color ?? Colors.white.withAlpha(0),
+        decorationColor: _underlineColor(
+          underlineColor,
+          selected: selected,
+          highlighted: highlighted,
+          isNew: isNew,
+          practiceMode: practiceMode,
+        ),
       );
 
-  double tokenTextWidthForContainer(BuildContext context, String text) {
-    final tokenSizeKey = "$text-${fontSize(context)}";
+  double tokenTextWidthForContainer(
+    String text,
+    Color underlineColor, {
+    double? fontSize,
+  }) {
+    final tokenSizeKey = "$text-$fontSize";
     if (_tokensWidthCache.containsKey(tokenSizeKey)) {
       return _tokensWidthCache[tokenSizeKey]!;
     }
@@ -54,7 +45,10 @@ class TokenRenderingUtil {
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
-        style: style(context),
+        style: style(
+          underlineColor: underlineColor,
+          fontSize: fontSize,
+        ),
       ),
       maxLines: 1,
       textDirection: TextDirection.ltr,
@@ -66,40 +60,16 @@ class TokenRenderingUtil {
     return width;
   }
 
-  // Only one token on the screen can have the token's unique key at a time.
-  // When readingAssistanceMode is not null, there are two messages - the centered message and the transition message.
-  // When in word mode, the key goes to the transition message.
-  // If actively transitioning, neither gets the keys.
-  // If in message mode, the key goes to the centered message (isTransitionAnimation == false).
-  bool get assignTokenKey {
-    if (readingAssistanceMode == null) {
-      return false;
-    }
-
-    switch (readingAssistanceMode!) {
-      case ReadingAssistanceMode.selectMode:
-        return isTransitionAnimation;
-      case ReadingAssistanceMode.transitionMode:
-        return false;
-      case ReadingAssistanceMode.practiceMode:
-        return !isTransitionAnimation;
-    }
-  }
-
-  Color backgroundColor(
-    BuildContext context,
-    bool selected,
-    bool highlighted,
-    bool isNew,
-    bool practiceMode,
-  ) {
+  Color _underlineColor(
+    Color underlineColor, {
+    bool selected = false,
+    bool highlighted = false,
+    bool isNew = false,
+    bool practiceMode = false,
+  }) {
     if (practiceMode) return Colors.white.withAlpha(0);
-    if (highlighted) {
-      return Theme.of(context).colorScheme.primary.withAlpha(200);
-    }
+    if (highlighted) return underlineColor;
     if (isNew) return AppConfig.success.withAlpha(200);
-    return selected
-        ? Theme.of(context).colorScheme.primary.withAlpha(200)
-        : Colors.white.withAlpha(0);
+    return selected ? underlineColor : Colors.white.withAlpha(0);
   }
 }

@@ -388,8 +388,6 @@ class HtmlMessage extends StatelessWidget {
 
     // #Pangea
     final renderer = TokenRenderingUtil(
-      pangeaMessageEvent: pangeaMessageEvent,
-      readingAssistanceMode: readingAssistanceMode,
       existingStyle: pangeaMessageEvent != null
           ? textStyle.merge(
               AppConfig.messageTextStyle(
@@ -398,11 +396,18 @@ class HtmlMessage extends StatelessWidget {
               ),
             )
           : textStyle,
-      overlayController: overlayController,
-      isTransitionAnimation: isTransitionAnimation,
     );
 
-    final fontSize = renderer.fontSize(context) ?? this.fontSize;
+    double fontSize = this.fontSize;
+    if (readingAssistanceMode == ReadingAssistanceMode.practiceMode) {
+      fontSize = (overlayController != null && overlayController!.maxWidth > 600
+              ? Theme.of(context).textTheme.titleLarge?.fontSize
+              : Theme.of(context).textTheme.bodyLarge?.fontSize) ??
+          this.fontSize;
+    }
+
+    final underlineColor = Theme.of(context).colorScheme.primary.withAlpha(200);
+
     final newTokens =
         pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
             ? TokensUtil.getNewTokens(pangeaMessageEvent!)
@@ -428,8 +433,9 @@ class HtmlMessage extends StatelessWidget {
 
         final isNew = token != null && newTokens.contains(token.text);
         final tokenWidth = renderer.tokenTextWidthForContainer(
-          context,
           node.text,
+          Theme.of(context).colorScheme.primary.withAlpha(200),
+          fontSize: fontSize,
         );
 
         return TextSpan(
@@ -451,22 +457,16 @@ class HtmlMessage extends StatelessWidget {
                           overlayController!.onClickOverlayMessageToken(token),
                       textColor: textColor,
                     ),
-                  if (renderer.showCenterStyling &&
+                  if (readingAssistanceMode ==
+                          ReadingAssistanceMode.practiceMode &&
                       token != null &&
                       overlayController != null)
                     TokenPracticeButton(
                       token: token,
                       controller: overlayController!.practiceController,
                       textStyle: renderer.style(
-                        context,
-                        color: renderer.backgroundColor(
-                          context,
-                          selected,
-                          highlighted,
-                          isNew,
-                          readingAssistanceMode ==
-                              ReadingAssistanceMode.practiceMode,
-                        ),
+                        fontSize: fontSize,
+                        underlineColor: underlineColor,
                       ),
                       width: tokenWidth,
                       textColor: textColor,
@@ -493,15 +493,13 @@ class HtmlMessage extends StatelessWidget {
                               LinkifySpan(
                                 text: node.text.trim(),
                                 style: renderer.style(
-                                  context,
-                                  color: renderer.backgroundColor(
-                                    context,
-                                    selected,
-                                    highlighted,
-                                    isNew,
-                                    readingAssistanceMode ==
-                                        ReadingAssistanceMode.practiceMode,
-                                  ),
+                                  fontSize: fontSize,
+                                  underlineColor: underlineColor,
+                                  selected: selected,
+                                  highlighted: highlighted,
+                                  isNew: isNew,
+                                  practiceMode: readingAssistanceMode ==
+                                      ReadingAssistanceMode.practiceMode,
                                 ),
                                 linkStyle: linkStyle,
                                 onOpen: (url) =>
@@ -513,7 +511,8 @@ class HtmlMessage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (renderer.showCenterStyling &&
+                  if (readingAssistanceMode ==
+                          ReadingAssistanceMode.practiceMode &&
                       token != null &&
                       overlayController != null)
                     ListenableBuilder(
@@ -657,14 +656,8 @@ class HtmlMessage extends StatelessWidget {
                     TextSpan(
                       text: '• ',
                       style: renderer.style(
-                        context,
-                        color: renderer.backgroundColor(
-                          context,
-                          false,
-                          false,
-                          false,
-                          false,
-                        ),
+                        underlineColor: underlineColor,
+                        fontSize: fontSize,
                       ),
                     ),
                   // Pangea#
@@ -675,14 +668,8 @@ class HtmlMessage extends StatelessWidget {
                       // #Pangea
                       // style: textStyle,
                       style: renderer.style(
-                        context,
-                        color: renderer.backgroundColor(
-                          context,
-                          false,
-                          false,
-                          false,
-                          false,
-                        ),
+                        underlineColor: underlineColor,
+                        fontSize: fontSize,
                       ),
                       // Pangea#
                     ),
