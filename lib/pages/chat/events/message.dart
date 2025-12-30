@@ -798,7 +798,69 @@ class Message extends StatelessWidget {
                                                                       ),
                                                                     ],
                                                                   ),
+                                                                )
+                                                              // #Pangea
+                                                              else if (canRefresh)
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                          .only(
+                                                                    bottom: 8.0,
+                                                                    left: 16.0,
+                                                                    right: 16.0,
+                                                                  ),
+                                                                  child:
+                                                                      TextButton(
+                                                                    style: TextButton
+                                                                        .styleFrom(
+                                                                      padding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      minimumSize:
+                                                                          const Size(
+                                                                        0,
+                                                                        0,
+                                                                      ),
+                                                                    ),
+                                                                    child: Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .min,
+                                                                      spacing:
+                                                                          4.0,
+                                                                      children: [
+                                                                        Icon(
+                                                                          Icons
+                                                                              .refresh,
+                                                                          color:
+                                                                              textColor.withAlpha(
+                                                                            164,
+                                                                          ),
+                                                                          size:
+                                                                              14,
+                                                                        ),
+                                                                        Text(
+                                                                          L10n.of(
+                                                                            context,
+                                                                          ).requestRegeneration,
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                textColor.withAlpha(
+                                                                              164,
+                                                                            ),
+                                                                            fontSize:
+                                                                                11,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                    onPressed: () =>
+                                                                        controller
+                                                                            .requestRegeneration(event.eventId),
+                                                                  ),
                                                                 ),
+                                                              // Pangea#
                                                             ],
                                                           ),
                                                         ),
@@ -1044,27 +1106,6 @@ class Message extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              if (canRefresh)
-                                Positioned(
-                                  right: 8.0,
-                                  top: 8.0,
-                                  child: CircleAvatar(
-                                    radius: 20.0,
-                                    backgroundColor: theme.colorScheme.surface
-                                        .withAlpha(128),
-                                    child: IconButton(
-                                      tooltip:
-                                          L10n.of(context).requestRegeneration,
-                                      icon: const Icon(
-                                        Icons.refresh_outlined,
-                                      ),
-                                      onPressed: () =>
-                                          controller.requestRegeneration(
-                                        event.eventId,
-                                      ),
-                                    ),
-                                  ),
-                                ),
                             ],
                           ),
                   );
