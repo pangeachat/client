@@ -65,7 +65,14 @@ class VocabAnalyticsListTile extends StatelessWidget {
                                 fontSize: 22,
                               ),
                             )
-                          : level.icon(36.0),
+                          : Text(
+                              "-",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                                color: textColor.withAlpha(100),
+                              ),
+                            ),
                     );
                   },
                 ),
