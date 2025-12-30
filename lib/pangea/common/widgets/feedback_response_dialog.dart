@@ -2,12 +2,19 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 
-class ActivityFeedbackResponseDialog extends StatelessWidget {
+class FeedbackResponseDialog extends StatelessWidget {
+  final String title;
   final String feedback;
-  const ActivityFeedbackResponseDialog({super.key, required this.feedback});
+  final String? description;
+
+  const FeedbackResponseDialog({
+    super.key,
+    required this.title,
+    required this.feedback,
+    this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,7 @@ class ActivityFeedbackResponseDialog extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        L10n.of(context).feedbackTitle,
+                        title,
                         style: Theme.of(context).textTheme.titleLarge,
                         textAlign: TextAlign.center,
                       ),
@@ -65,10 +72,11 @@ class ActivityFeedbackResponseDialog extends StatelessWidget {
                       feedback,
                       textAlign: TextAlign.center,
                     ),
-                    Text(
-                      L10n.of(context).feedbackRespDesc,
-                      textAlign: TextAlign.center,
-                    ),
+                    if (description != null)
+                      Text(
+                        description!,
+                        textAlign: TextAlign.center,
+                      ),
                     const SizedBox.shrink(),
                   ],
                 ),
