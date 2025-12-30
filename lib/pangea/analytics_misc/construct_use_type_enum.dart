@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:flutter/material.dart';
 
 enum ConstructUseTypeEnum {
   /// produced in chat by user, igc was run, and we've judged it to be a correct use
@@ -68,6 +67,9 @@ enum ConstructUseTypeEnum {
 
   /// lemma collected by clicking on it
   click,
+
+  /// Bonus XP, ignored by level analytics page
+  bonus,
 
   /// not defined, likely a new construct introduced by choreo and not yet classified by an old version of the client
   nan,
@@ -148,6 +150,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return L10n.of(context).constructUseIgnMmDesc;
       case ConstructUseTypeEnum.click:
         return L10n.of(context).constructUseCollected;
+      case ConstructUseTypeEnum.bonus:
+        return L10n.of(context).constructUseBonus;
       case ConstructUseTypeEnum.nan:
         return L10n.of(context).constructUseNanDesc;
       case ConstructUseTypeEnum.corLM:
@@ -212,6 +216,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return Icons.help;
       case ConstructUseTypeEnum.click:
         return Icons.format_color_text;
+      case ConstructUseTypeEnum.bonus:
+        return Icons.star;
     }
   }
 
@@ -245,6 +251,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
 
       case ConstructUseTypeEnum.corIt:
       case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.bonus:
         return 1;
 
       case ConstructUseTypeEnum.ignIt:
@@ -317,6 +324,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.bonus:
         return false;
     }
   }
@@ -363,6 +371,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return LearningSkillsEnum.reading;
       case ConstructUseTypeEnum.pvm:
         return LearningSkillsEnum.speaking;
+      case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
         return LearningSkillsEnum.other;
     }
@@ -411,6 +420,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ignM:
       case ConstructUseTypeEnum.ignMM:
       case ConstructUseTypeEnum.click:
+      case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
         return null;
     }

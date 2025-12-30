@@ -55,6 +55,8 @@ class VocabPracticeSessionModel {
   bool get hasCompletedCurrentGroup =>
       currentIndex >= currentAvailableActivities;
 
+  int get timeForBonus => 60;
+
   double get progress =>
       (currentIndex / currentAvailableActivities).clamp(0.0, 1.0);
 
@@ -113,7 +115,54 @@ class VocabPracticeSessionModel {
     return (result * 100).truncateToDouble();
   }
 
-  void finishSession() => finished = true;
+  void finishSession() {
+    finished = true;
+
+    // give bonus XP uses for each constructif earned
+    if (accuracy >= 100) {
+      final bonusUses = completedUses
+          .where((use) => use.xp > 0)
+          .map(
+            (use) => OneConstructUse(
+              useType: ConstructUseTypeEnum.bonus,
+              constructType: use.constructType,
+              metadata: ConstructUseMetaData(
+                roomId: use.metadata.roomId,
+                timeStamp: DateTime.now(),
+              ),
+              category: use.category,
+              lemma: use.lemma,
+              form: use.form,
+              xp: ConstructUseTypeEnum.bonus.pointValue,
+            ),
+          )
+          .toList();
+
+      MatrixState.pangeaController.putAnalytics.addAnalytics(bonusUses);
+    }
+
+    if (elapsedSeconds <= timeForBonus) {
+      final bonusUses = completedUses
+          .where((use) => use.xp > 0)
+          .map(
+            (use) => OneConstructUse(
+              useType: ConstructUseTypeEnum.bonus,
+              constructType: use.constructType,
+              metadata: ConstructUseMetaData(
+                roomId: use.metadata.roomId,
+                timeStamp: DateTime.now(),
+              ),
+              category: use.category,
+              lemma: use.lemma,
+              form: use.form,
+              xp: ConstructUseTypeEnum.bonus.pointValue,
+            ),
+          )
+          .toList();
+
+      MatrixState.pangeaController.putAnalytics.addAnalytics(bonusUses);
+    }
+  }
 
   void submitAnswer(PracticeActivityModel activity) {
     // Get the most recent response

@@ -19,13 +19,15 @@ class VocabTimerWidget extends StatefulWidget {
 }
 
 class VocabTimerWidgetState extends State<VocabTimerWidget> {
-  late int _elapsedSeconds;
+  final Stopwatch _stopwatch = Stopwatch();
+  late int _initialSeconds;
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _elapsedSeconds = widget.initialSeconds;
+    _initialSeconds = widget.initialSeconds;
+    // Add the initial seconds to the stopwatch by starting from a future time
     if (widget.isRunning) {
       _startTimer();
     }
@@ -48,17 +50,22 @@ class VocabTimerWidgetState extends State<VocabTimerWidget> {
   }
 
   void _startTimer() {
+    _stopwatch.start();
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      setState(() {
-        _elapsedSeconds++;
-      });
-      widget.onTimeUpdate(_elapsedSeconds);
+      final currentSeconds = _getCurrentSeconds();
+      setState(() {});
+      widget.onTimeUpdate(currentSeconds);
     });
   }
 
   void _stopTimer() {
+    _stopwatch.stop();
     _timer?.cancel();
     _timer = null;
+  }
+
+  int _getCurrentSeconds() {
+    return _initialSeconds + (_stopwatch.elapsedMilliseconds / 1000).round();
   }
 
   String _formatTime(int seconds) {
@@ -70,7 +77,7 @@ class VocabTimerWidgetState extends State<VocabTimerWidget> {
   @override
   Widget build(BuildContext context) {
     return Text(
-      _formatTime(_elapsedSeconds),
+      _formatTime(_getCurrentSeconds()),
       style: Theme.of(context).textTheme.titleMedium,
     );
   }

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -11,6 +9,7 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class LevelDialogContent extends StatelessWidget {
   const LevelDialogContent({
@@ -23,7 +22,9 @@ class LevelDialogContent extends StatelessWidget {
   int get level => analytics.constructListModel.level;
   int get totalXP => analytics.constructListModel.totalXP;
   int get maxLevelXP => analytics.minXPForNextLevel;
-  List<OneConstructUse> get uses => analytics.constructListModel.truncatedUses;
+  List<OneConstructUse> get uses => analytics.constructListModel.truncatedUses
+      .where((use) => use.useType != ConstructUseTypeEnum.bonus)
+      .toList();
 
   bool get _loading =>
       !MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted;

@@ -5016,6 +5016,7 @@
   "constructUseIncLMDesc": "Incorrect vocab definition practice",
   "constructUseCorLADesc": "Correct vocab audio practice",
   "constructUseIncLADesc": "Incorrect vocab audio practice",
+  "constructUseBonus": "Bonus during vocab practice",
   "practiceVocab": "Practice vocabulary",
   "selectMeaning": "Select the meaning",
   "selectAudio": "Select the matching audio",
