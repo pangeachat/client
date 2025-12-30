@@ -10,7 +10,12 @@ import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart'
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
+import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -72,6 +77,18 @@ class VocabDetailsView extends StatelessWidget {
                 .toList() ??
             [];
 
+        final tokenText = PangeaTokenText.fromString(constructId.lemma);
+        final token = PangeaToken(
+          text: tokenText,
+          pos: constructId.category,
+          morph: {},
+          lemma: Lemma(
+            text: constructId.lemma,
+            form: constructId.lemma,
+            saveVocab: true,
+          ),
+        );
+
         return MaxWidthBody(
           maxWidth: 600.0,
           showBorder: false,
@@ -82,11 +99,32 @@ class VocabDetailsView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   WordZoomWidget(
-                    token: PangeaTokenText.fromString(constructId.lemma),
+                    token: tokenText,
                     langCode:
                         MatrixState.pangeaController.userController.userL2Code!,
                     construct: constructId,
                     onClose: Navigator.of(context).pop,
+                    onFlagTokenInfo:
+                        (LemmaInfoResponse lemmaInfo, String phonetics) {
+                      final requestData = TokenInfoFeedbackRequestData(
+                        userId: Matrix.of(context).client.userID!,
+                        detectedLanguage: MatrixState
+                            .pangeaController.userController.userL2Code!,
+                        tokens: [token],
+                        selectedToken: 0,
+                        wordCardL1: MatrixState
+                            .pangeaController.userController.userL1Code!,
+                        lemmaInfo: lemmaInfo,
+                        phonetics: phonetics,
+                      );
+
+                      TokenFeedbackUtil.showTokenFeedbackDialog(
+                        context,
+                        requestData: requestData,
+                        langCode: MatrixState
+                            .pangeaController.userController.userL2Code!,
+                      );
+                    },
                   ),
                 ],
               ),

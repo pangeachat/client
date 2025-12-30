@@ -3,8 +3,8 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
 class TokenInfoFeedbackRequestData {
   final String userId;
-  final String roomId;
-  final String fullText;
+  final String? roomId;
+  final String? fullText;
   final String detectedLanguage;
   final List<PangeaToken> tokens;
   final int selectedToken;
@@ -14,14 +14,14 @@ class TokenInfoFeedbackRequestData {
 
   TokenInfoFeedbackRequestData({
     required this.userId,
-    required this.roomId,
-    required this.fullText,
     required this.detectedLanguage,
     required this.tokens,
     required this.selectedToken,
     required this.lemmaInfo,
     required this.phonetics,
     required this.wordCardL1,
+    this.roomId,
+    this.fullText,
   });
 
   @override

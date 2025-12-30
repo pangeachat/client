@@ -15,8 +15,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LemmaHighlightEmojiRow extends StatefulWidget {
   final ConstructIdentifier cId;
   final String langCode;
+  final String targetId;
 
-  final Function(String) onEmojiSelected;
+  final Function(String, String) onEmojiSelected;
   final Map<String, dynamic> messageInfo;
 
   final String? emoji;
@@ -26,6 +27,7 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
     super.key,
     required this.cId,
     required this.langCode,
+    required this.targetId,
     required this.onEmojiSelected,
     required this.messageInfo,
     this.emoji,
@@ -73,22 +75,23 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
                       ),
                     ),
                   )
-                : emojis
-                    .map(
-                      (emoji) => EmojiChoiceItem(
+                : emojis.map(
+                    (emoji) {
+                      final targetId = "${widget.targetId}-$emoji";
+                      return EmojiChoiceItem(
                         cId: widget.cId,
                         emoji: emoji,
-                        onSelectEmoji: () => widget.onEmojiSelected(emoji),
+                        onSelectEmoji: () =>
+                            widget.onEmojiSelected(emoji, targetId),
                         selected: widget.emoji == emoji,
-                        transformTargetId:
-                            "emoji-choice-item-$emoji-${widget.cId.lemma}",
+                        transformTargetId: targetId,
                         badge: widget.emoji == emoji
                             ? widget.selectedEmojiBadge
                             : null,
                         showShimmer: widget.emoji == null,
-                      ),
-                    )
-                    .toList(),
+                      );
+                    },
+                  ).toList(),
           ),
         );
       },
