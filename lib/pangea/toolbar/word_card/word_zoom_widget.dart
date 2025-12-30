@@ -174,26 +174,32 @@ class WordZoomWidget extends StatelessWidget {
             ],
           );
 
-    return Material(
-      type: MaterialType.transparency,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
-          border: Border.all(
-            color: Theme.of(context).colorScheme.primary,
-            width: 4.0,
+    return GestureDetector(
+      onTap: () {
+        // Absorb taps to prevent them from propagating
+        // to widgets below and closing the overlay.
+      },
+      child: Material(
+        type: MaterialType.transparency,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            border: Border.all(
+              color: Theme.of(context).colorScheme.primary,
+              width: 4.0,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(AppConfig.borderRadius),
+            ),
           ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(AppConfig.borderRadius),
+          height: AppConfig.toolbarMaxHeight,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              content,
+            ],
           ),
-        ),
-        height: AppConfig.toolbarMaxHeight,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            content,
-          ],
         ),
       ),
     );
