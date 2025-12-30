@@ -153,7 +153,17 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
     setState(() => shimmer = true);
     _shimmerTimer?.cancel();
     _shimmerTimer = Timer(const Duration(milliseconds: 1500), () {
-      if (mounted) setState(() => shimmer = false);
+      if (mounted) {
+        setState(() => shimmer = false);
+        _repeatShimmer();
+      }
+    });
+  }
+
+  void _repeatShimmer() {
+    _shimmerTimer?.cancel();
+    _shimmerTimer = Timer(const Duration(seconds: 5), () {
+      if (mounted) _showShimmer();
     });
   }
 
