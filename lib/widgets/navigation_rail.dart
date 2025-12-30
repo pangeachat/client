@@ -22,6 +22,8 @@ class SpacesNavigationRail extends StatelessWidget {
   // final void Function() onGoToChats;
   // final void Function(String) onGoToSpaceId;
   final String? path;
+  final double width;
+  final bool expanded;
   // Pangea#
 
   const SpacesNavigationRail({
@@ -30,6 +32,8 @@ class SpacesNavigationRail extends StatelessWidget {
     // required this.onGoToChats,
     // required this.onGoToSpaceId,
     required this.path,
+    required this.width,
+    this.expanded = false,
     // Pangea#
     super.key,
   });
@@ -47,10 +51,6 @@ class SpacesNavigationRail extends StatelessWidget {
     final isAnalytics = path?.contains('analytics') ?? false;
     final isCourse = path?.contains('course') ?? false;
     final isColumnMode = FluffyThemes.isColumnMode(context);
-
-    final width = isColumnMode
-        ? FluffyThemes.navRailWidth
-        : FluffyThemes.navRailWidth - 8.0;
     // return StreamBuilder(
     return Material(
       child: SafeArea(
@@ -118,6 +118,9 @@ class SpacesNavigationRail extends StatelessWidget {
                               ),
                             ),
                             toolTip: L10n.of(context).home,
+                            // #Pangea
+                            expanded: expanded,
+                            // Pangea#
                           );
                         }
                         i--;
@@ -147,6 +150,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             toolTip: L10n.of(context).directMessages,
                             unreadBadgeFilter: (room) =>
                                 room.firstSpaceParent == null,
+                            expanded: expanded,
                             // Pangea#
                           );
                         }
@@ -183,6 +187,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               ),
                             ),
                             toolTip: L10n.of(context).addCourse,
+                            expanded: expanded,
                             // Pangea#
                           );
                         }
@@ -260,6 +265,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               ),
                             ),
                           ),
+                          expanded: expanded,
                           // Pangea#
                         );
                       },
@@ -279,6 +285,7 @@ class SpacesNavigationRail extends StatelessWidget {
                     // ),
                     icon: const Icon(Icons.settings_outlined),
                     selectedIcon: const Icon(Icons.settings),
+                    expanded: expanded,
                     // Pangea#
                     toolTip: L10n.of(context).settings,
                   ),
