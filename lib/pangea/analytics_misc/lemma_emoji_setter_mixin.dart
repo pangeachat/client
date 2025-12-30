@@ -29,6 +29,7 @@ mixin LemmaEmojiSetter {
   }
 
   void showLemmaEmojiSnackbar(
+    ScaffoldMessengerState messenger,
     BuildContext context,
     ConstructIdentifier constructId,
     String emoji,
@@ -36,7 +37,7 @@ mixin LemmaEmojiSetter {
     if (InstructionsEnum.setLemmaEmoji.isToggledOff) return;
     InstructionsEnum.setLemmaEmoji.setToggledOff(true);
 
-    ScaffoldMessenger.of(context).showSnackBar(
+    messenger.showSnackBar(
       SnackBar(
         padding: const EdgeInsets.all(8.0),
         content: Row(
@@ -46,7 +47,7 @@ mixin LemmaEmojiSetter {
               constructId: constructId,
               textColor: Theme.of(context).colorScheme.surface,
               onTap: () {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                messenger.hideCurrentSnackBar();
                 AnalyticsNavigationUtil.navigateToAnalytics(
                   context: context,
                   view: constructId.type.indicator,

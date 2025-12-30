@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_highlight_emoji_row.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
+class LemmaReactionPicker extends StatefulWidget with LemmaEmojiSetter {
   final Event? event;
   final ConstructIdentifier constructId;
   final String langCode;
@@ -21,10 +21,24 @@ class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
     this.event,
   });
 
-  Event? _sentReaction(String emoji, BuildContext context) {
-    final userSentEmojis = event!
+  @override
+  LemmaReactionPickerState createState() => LemmaReactionPickerState();
+}
+
+class LemmaReactionPickerState extends State<LemmaReactionPicker> {
+  ScaffoldMessengerState? messenger;
+
+  @override
+  void dispose() {
+    messenger?.hideCurrentSnackBar();
+    messenger = null;
+    super.dispose();
+  }
+
+  Event? _sentReaction(String emoji) {
+    final userSentEmojis = widget.event!
         .aggregatedEvents(
-          event!.room.timeline!,
+          widget.event!.room.timeline!,
           RelationshipTypes.reaction,
         )
         .where(
@@ -38,25 +52,29 @@ class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
 
   Future<void> _setEmoji(
     String emoji,
-    BuildContext context,
     String targetId,
   ) async {
-    await setLemmaEmoji(constructId, emoji, targetId);
-    showLemmaEmojiSnackbar(context, constructId, emoji);
+    await widget.setLemmaEmoji(widget.constructId, emoji, targetId);
+    messenger = ScaffoldMessenger.of(context);
+    widget.showLemmaEmojiSnackbar(
+      messenger!,
+      context,
+      widget.constructId,
+      emoji,
+    );
   }
 
-  Future<void> _sendOrRedactReaction(String emoji, BuildContext context) async {
-    if (event?.room.timeline == null) return;
-
+  Future<void> _sendOrRedactReaction(String emoji) async {
+    if (widget.event?.room.timeline == null) return;
     try {
-      final reactionEvent = _sentReaction(emoji, context);
+      final reactionEvent = _sentReaction(emoji);
       if (reactionEvent != null) {
         await reactionEvent.redactEvent();
         return;
       }
 
-      await event!.room.sendReaction(
-        event!.eventId,
+      await widget.event!.room.sendReaction(
+        widget.event!.eventId,
         emoji,
       );
     } catch (e, s) {
@@ -65,7 +83,7 @@ class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
         s: s,
         data: {
           'emoji': emoji,
-          'eventId': event?.eventId,
+          'eventId': widget.event?.eventId,
         },
       );
     }
@@ -76,27 +94,27 @@ class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
     final stream = Matrix.of(context)
         .analyticsDataService
         .updateDispatcher
-        .lemmaUpdateStream(constructId);
+        .lemmaUpdateStream(widget.constructId);
 
-    final targetId = "emoji-choice-item-${constructId.lemma}-$hashCode";
+    final targetId = "emoji-choice-item-${widget.constructId.lemma}-$hashCode";
     return StreamBuilder(
       stream: stream,
       builder: (context, snapshot) {
-        final selectedEmoji =
-            snapshot.data?.emojis?.firstOrNull ?? constructId.userSetEmoji;
+        final selectedEmoji = snapshot.data?.emojis?.firstOrNull ??
+            widget.constructId.userSetEmoji;
 
         return LemmaHighlightEmojiRow(
-          cId: constructId,
-          langCode: langCode,
+          cId: widget.constructId,
+          langCode: widget.langCode,
           targetId: targetId,
           onEmojiSelected: (emoji, target) => emoji != selectedEmoji
-              ? _setEmoji(emoji, context, target)
-              : _sendOrRedactReaction(emoji, context),
+              ? _setEmoji(emoji, target)
+              : _sendOrRedactReaction(emoji),
           emoji: selectedEmoji,
-          messageInfo: event?.content ?? {},
-          selectedEmojiBadge: event != null &&
+          messageInfo: widget.event?.content ?? {},
+          selectedEmojiBadge: widget.event != null &&
                   selectedEmoji != null &&
-                  _sentReaction(selectedEmoji, context) == null
+                  _sentReaction(selectedEmoji) == null
               ? const Icon(
                   Icons.add_reaction,
                   size: 12.0,
