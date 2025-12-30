@@ -22,7 +22,7 @@ class SpacesNavigationRail extends StatelessWidget {
   // final void Function() onGoToChats;
   // final void Function(String) onGoToSpaceId;
   final String? path;
-  final double width;
+  final double railWidth;
   final bool expanded;
   // Pangea#
 
@@ -32,7 +32,7 @@ class SpacesNavigationRail extends StatelessWidget {
     // required this.onGoToChats,
     // required this.onGoToSpaceId,
     required this.path,
-    required this.width,
+    required this.railWidth,
     this.expanded = false,
     // Pangea#
     super.key,
@@ -51,6 +51,10 @@ class SpacesNavigationRail extends StatelessWidget {
     final isAnalytics = path?.contains('analytics') ?? false;
     final isCourse = path?.contains('course') ?? false;
     final isColumnMode = FluffyThemes.isColumnMode(context);
+
+    final width = isColumnMode
+        ? FluffyThemes.navRailWidth
+        : FluffyThemes.navRailWidth - 8.0;
     // return StreamBuilder(
     return Material(
       child: SafeArea(
@@ -73,10 +77,12 @@ class SpacesNavigationRail extends StatelessWidget {
                 )
                 .toList();
 
-            return SizedBox(
-              // #Pangea
+            // #Pangea
+            // return SizedBox(
+            return AnimatedContainer(
               // width: FluffyThemes.navRailWidth,
-              width: width,
+              width: railWidth,
+              duration: FluffyThemes.animationDuration,
               // Pangea#
               child: Column(
                 children: [

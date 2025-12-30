@@ -55,6 +55,7 @@ class NaviRailItem extends StatelessWidget {
         // return SizedBox(
         //   height: 72,
         return Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
               height: width - (isColumnMode ? 16.0 : 12.0),
@@ -151,10 +152,15 @@ class NaviRailItem extends StatelessWidget {
                       toolTip,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodyMedium,
                     ),
                     onTap: onTap,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 0.0,
                     ),
                   ),
                 ),

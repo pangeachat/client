@@ -61,7 +61,8 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
         ? navRailExtraWidth + railWidth
         : baseWidth;
 
-    return SizedBox(
+    return AnimatedContainer(
+      duration: FluffyThemes.animationDuration,
       width: _expand ? expandedWidth : baseWidth,
       child: Stack(
         children: [
@@ -104,7 +105,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                     SpacesNavigationRail(
                       activeSpaceId: widget.state.pathParameters['spaceid'],
                       path: widget.state.fullPath,
-                      width: _expand
+                      railWidth: _expand
                           ? navRailWidth + navRailExtraWidth
                           : navRailWidth,
                       expanded: _expand,
