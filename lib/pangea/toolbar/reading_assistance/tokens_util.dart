@@ -77,7 +77,9 @@ class TokensUtil {
   ) {
     if (!event.eventId.isValidMatrixId ||
         (MatrixState.pangeaController.subscriptionController.isSubscribed ==
-            false)) {
+            false) ||
+        MatrixState
+            .pangeaController.matrixState.analyticsDataService.isInitializing) {
       return [];
     }
 
