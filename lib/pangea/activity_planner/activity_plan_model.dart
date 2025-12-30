@@ -1,8 +1,12 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
 
 class ActivityPlanModel {
   final String activityId;
@@ -179,6 +183,21 @@ class Vocab {
     return Vocab(
       lemma: json['lemma'],
       pos: json['pos'],
+    );
+  }
+
+  PangeaToken asToken() {
+    final text = PangeaTokenText(
+      content: lemma,
+      length: lemma.characters.length,
+      offset: 0,
+    );
+
+    return PangeaToken(
+      text: text,
+      lemma: Lemma(text: lemma, saveVocab: true, form: lemma),
+      pos: pos,
+      morph: {},
     );
   }
 

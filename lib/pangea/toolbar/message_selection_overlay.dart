@@ -11,9 +11,6 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
@@ -26,6 +23,7 @@ import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.d
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
+import 'package:fluffychat/pangea/toolbar/token_rendering_mixin.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
@@ -56,7 +54,7 @@ class MessageSelectionOverlay extends StatefulWidget {
 }
 
 class MessageOverlayController extends State<MessageSelectionOverlay>
-    with SingleTickerProviderStateMixin, AnalyticsUpdater {
+    with SingleTickerProviderStateMixin, AnalyticsUpdater, TokenRenderingMixin {
   Event get event => widget._event;
 
   PangeaTokenText? _selectedSpan;
@@ -218,27 +216,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
     if (!mounted) return;
     if (selectedToken != null && isNewToken(selectedToken!)) {
-      TokensUtil.collectToken(event.eventId, selectedToken!.text);
       final token = selectedToken!;
-      final constructs = [
-        OneConstructUse(
-          useType: ConstructUseTypeEnum.click,
-          lemma: token.lemma.text,
-          constructType: ConstructTypeEnum.vocab,
-          metadata: ConstructUseMetaData(
-            roomId: event.room.id,
-            timeStamp: DateTime.now(),
-            eventId: event.eventId,
-          ),
-          category: token.pos,
-          form: token.text.content,
-          xp: ConstructUseTypeEnum.click.pointValue,
-        ),
-      ];
-
-      addAnalytics(constructs, "word-zoom-card-${token.text.uniqueKey}")
-          .then((_) {
-        TokensUtil.clearNewTokenCache();
+      collectNewToken(
+        event.eventId,
+        "word-zoom-card-${token.text.uniqueKey}",
+        token,
+        Matrix.of(context).analyticsDataService,
+      ).then((_) {
         if (mounted) setState(() {});
       });
       return;
@@ -317,7 +301,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   bool isNewToken(PangeaToken token) =>
-      TokensUtil.isNewToken(token, pangeaMessageEvent);
+      TokensUtil.isNewTokenByEvent(token, pangeaMessageEvent);
 
   bool isTokenHighlighted(PangeaToken token) {
     if (_highlightedTokens == null) return false;
