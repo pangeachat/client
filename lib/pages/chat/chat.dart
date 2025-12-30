@@ -67,8 +67,7 @@ import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart'
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
-import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_dialog.dart';
-import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_notification.dart';
+import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
@@ -2304,31 +2303,12 @@ class ChatController extends State<ChatPageWithRoom>
     PangeaMessageEvent event,
   ) async {
     clearSelectedEvents();
-    final resp = await showDialog(
-      context: context,
-      builder: (context) => TokenInfoFeedbackDialog(
-        requestData: requestData,
-        langCode: langCode,
-        event: event,
-      ),
+    await TokenFeedbackUtil.showTokenFeedbackDialog(
+      context,
+      requestData: requestData,
+      langCode: langCode,
+      event: event,
     );
-
-    if (resp != null && resp is String) {
-      OverlayUtil.showOverlay(
-        overlayKey: "token_feedback_snackbar",
-        context: context,
-        child: TokenFeedbackNotification(message: resp),
-        transformTargetId: '',
-        position: OverlayPositionEnum.top,
-        backDropToDismiss: false,
-        closePrevOverlay: false,
-        canPop: false,
-      );
-
-      Future.delayed(const Duration(seconds: 10), () {
-        MatrixState.pAnyState.closeOverlay("token_feedback_snackbar");
-      });
-    }
   }
 
   void toggleShowDropdown() {

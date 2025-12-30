@@ -41,7 +41,7 @@ class _PhoneticTranscriptionWidgetState
     extends State<PhoneticTranscriptionWidget> {
   bool _isPlaying = false;
 
-  Future<void> _handleAudioTap() async {
+  Future<void> _handleAudioTap(String targetId) async {
     if (_isPlaying) {
       await TtsController.stop();
       setState(() => _isPlaying = false);
@@ -49,7 +49,7 @@ class _PhoneticTranscriptionWidgetState
       await TtsController.tryToSpeak(
         widget.text,
         context: context,
-        targetID: 'phonetic-transcription-${widget.text}',
+        targetID: targetId,
         langCode: widget.textLanguage.langCode,
         onStart: () {
           if (mounted) setState(() => _isPlaying = true);
@@ -63,10 +63,11 @@ class _PhoneticTranscriptionWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final targetId = 'phonetic-transcription-${widget.text}-$hashCode';
     return HoverBuilder(
       builder: (context, hovering) {
         return GestureDetector(
-          onTap: _handleAudioTap,
+          onTap: () => _handleAudioTap(targetId),
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 150),
             decoration: BoxDecoration(
@@ -77,13 +78,9 @@ class _PhoneticTranscriptionWidgetState
             ),
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             child: CompositedTransformTarget(
-              link: MatrixState.pAnyState
-                  .layerLinkAndKey("phonetic-transcription-${widget.text}")
-                  .link,
+              link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
               child: PhoneticTranscriptionBuilder(
-                key: MatrixState.pAnyState
-                    .layerLinkAndKey("phonetic-transcription-${widget.text}")
-                    .key,
+                key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
                 textLanguage: widget.textLanguage,
                 text: widget.text,
                 builder: (context, controller) {

@@ -36,12 +36,12 @@ class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
     );
   }
 
-  Future<void> _setEmoji(String emoji, BuildContext context) async {
-    await setLemmaEmoji(
-      constructId,
-      emoji,
-      "emoji-choice-item-$emoji-${constructId.lemma}",
-    );
+  Future<void> _setEmoji(
+    String emoji,
+    BuildContext context,
+    String targetId,
+  ) async {
+    await setLemmaEmoji(constructId, emoji, targetId);
     showLemmaEmojiSnackbar(context, constructId, emoji);
   }
 
@@ -78,6 +78,7 @@ class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
         .updateDispatcher
         .lemmaUpdateStream(constructId);
 
+    final targetId = "emoji-choice-item-${constructId.lemma}-$hashCode";
     return StreamBuilder(
       stream: stream,
       builder: (context, snapshot) {
@@ -87,8 +88,9 @@ class LemmaReactionPicker extends StatelessWidget with LemmaEmojiSetter {
         return LemmaHighlightEmojiRow(
           cId: constructId,
           langCode: langCode,
-          onEmojiSelected: (emoji) => emoji != selectedEmoji
-              ? _setEmoji(emoji, context)
+          targetId: targetId,
+          onEmojiSelected: (emoji, target) => emoji != selectedEmoji
+              ? _setEmoji(emoji, context, target)
               : _sendOrRedactReaction(emoji, context),
           emoji: selectedEmoji,
           messageInfo: event?.content ?? {},
