@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
+import 'package:fluffychat/pangea/chat/widgets/request_regeneration_button.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -801,63 +802,14 @@ class Message extends StatelessWidget {
                                                                 )
                                                               // #Pangea
                                                               else if (canRefresh)
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                          .only(
-                                                                    bottom: 8.0,
-                                                                    left: 16.0,
-                                                                    right: 16.0,
-                                                                  ),
-                                                                  child:
-                                                                      TextButton(
-                                                                    style: TextButton
-                                                                        .styleFrom(
-                                                                      padding:
-                                                                          EdgeInsets
-                                                                              .zero,
-                                                                      minimumSize:
-                                                                          const Size(
-                                                                        0,
-                                                                        0,
-                                                                      ),
-                                                                    ),
-                                                                    child: Row(
-                                                                      mainAxisSize:
-                                                                          MainAxisSize
-                                                                              .min,
-                                                                      spacing:
-                                                                          4.0,
-                                                                      children: [
-                                                                        Icon(
-                                                                          Icons
-                                                                              .refresh,
-                                                                          color:
-                                                                              textColor.withAlpha(
-                                                                            164,
-                                                                          ),
-                                                                          size:
-                                                                              14,
-                                                                        ),
-                                                                        Text(
-                                                                          L10n.of(
-                                                                            context,
-                                                                          ).requestRegeneration,
-                                                                          style:
-                                                                              TextStyle(
-                                                                            color:
-                                                                                textColor.withAlpha(
-                                                                              164,
-                                                                            ),
-                                                                            fontSize:
-                                                                                11,
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                    onPressed: () =>
-                                                                        controller
-                                                                            .requestRegeneration(event.eventId),
+                                                                RequestRegenerationButton(
+                                                                  textColor:
+                                                                      textColor,
+                                                                  onPressed: () =>
+                                                                      controller
+                                                                          .requestRegeneration(
+                                                                    event
+                                                                        .eventId,
                                                                   ),
                                                                 ),
                                                               // Pangea#
