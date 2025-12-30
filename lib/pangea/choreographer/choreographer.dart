@@ -107,7 +107,6 @@ class Choreographer extends ChangeNotifier {
   void clear() {
     _lastChecked = null;
     _timesClicked = 0;
-    _timesClosedIT.value = 0;
     _isFetching.value = false;
     _choreoRecord = null;
     itController.closeIT();
