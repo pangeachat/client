@@ -51,11 +51,11 @@ class TokensUtil {
 
   static const Duration _cacheDuration = Duration(minutes: 1);
 
-  static List<PangeaTokenText>? _getCachedNewTokens(String eventID) {
-    final cacheItem = _newTokenCache[eventID];
+  static List<PangeaTokenText>? _getCachedNewTokens(String cacheKey) {
+    final cacheItem = _newTokenCache[cacheKey];
     if (cacheItem == null) return null;
     if (cacheItem.timestamp.isBefore(DateTime.now().subtract(_cacheDuration))) {
-      _newTokenCache.remove(eventID);
+      _newTokenCache.remove(cacheKey);
       return null;
     }
 
@@ -63,16 +63,47 @@ class TokensUtil {
   }
 
   static void _setCachedNewTokens(
-    String eventID,
+    String cacheKey,
     List<PangeaTokenText> tokens,
   ) {
-    _newTokenCache[eventID] = _NewTokenCacheItem(
+    _newTokenCache[cacheKey] = _NewTokenCacheItem(
       tokens,
       DateTime.now(),
     );
   }
 
   static List<PangeaTokenText> getNewTokens(
+    String cacheKey,
+    List<PangeaToken> tokens, {
+    int? maxTokens,
+  }) {
+    final cached = _getCachedNewTokens(cacheKey);
+    if (cached != null) return cached;
+
+    final List<PangeaTokenText> newTokens = [];
+    final analyticsService =
+        MatrixState.pangeaController.matrixState.analyticsDataService;
+
+    for (final token in tokens) {
+      if (!token.lemma.saveVocab || !token.vocabConstructID.isContentWord) {
+        continue;
+      }
+
+      if (analyticsService.hasUsedConstruct(token.vocabConstructID)) {
+        continue;
+      }
+
+      if (newTokens.any((t) => t == token.text)) continue;
+
+      newTokens.add(token.text);
+      if (maxTokens != null && newTokens.length >= maxTokens) break;
+    }
+
+    _setCachedNewTokens(cacheKey, newTokens);
+    return newTokens;
+  }
+
+  static List<PangeaTokenText> getNewTokensByEvent(
     PangeaMessageEvent event,
   ) {
     if (!event.eventId.isValidMatrixId ||
@@ -100,30 +131,19 @@ class TokensUtil {
       return [];
     }
 
-    final List<PangeaTokenText> newTokens = [];
-    final analyticsService =
-        MatrixState.pangeaController.matrixState.analyticsDataService;
-    for (final token in tokens) {
-      if (!token.lemma.saveVocab || !token.vocabConstructID.isContentWord) {
-        continue;
-      }
-
-      if (analyticsService.hasUsedConstruct(token.vocabConstructID)) {
-        continue;
-      }
-
-      if (newTokens.any((t) => t == token.text)) continue;
-
-      newTokens.add(token.text);
-      if (newTokens.length >= 3) break;
-    }
-
-    _setCachedNewTokens(event.eventId, newTokens);
-    return newTokens;
+    return getNewTokens(event.eventId, tokens, maxTokens: 3);
   }
 
-  static bool isNewToken(PangeaToken token, PangeaMessageEvent event) {
-    final newTokens = getNewTokens(event);
+  static bool isNewToken(
+    String cacheKey,
+    PangeaToken token,
+  ) {
+    final newTokens = getNewTokens(cacheKey, [token]);
+    return newTokens.any((t) => t == token.text);
+  }
+
+  static bool isNewTokenByEvent(PangeaToken token, PangeaMessageEvent event) {
+    final newTokens = getNewTokensByEvent(event);
     return newTokens.any((t) => t == token.text);
   }
 
@@ -131,8 +151,8 @@ class TokensUtil {
     _newTokenCache.clear();
   }
 
-  static void collectToken(String eventId, PangeaTokenText token) {
-    _newTokenCache[eventId]?.tokens.remove(token);
+  static void collectToken(String cachedKey, PangeaTokenText token) {
+    _newTokenCache[cachedKey]?.tokens.remove(token);
     _lastCollected = token;
   }
 
@@ -141,11 +161,11 @@ class TokensUtil {
 
   static void clearRecentlyCollected() => _lastCollected = null;
 
-  static List<TokenPosition>? _getCachedTokenPositions(String eventID) {
-    final cacheItem = _tokenPositionCache[eventID];
+  static List<TokenPosition>? _getCachedTokenPositions(String cacheKey) {
+    final cacheItem = _tokenPositionCache[cacheKey];
     if (cacheItem == null) return null;
     if (cacheItem.timestamp.isBefore(DateTime.now().subtract(_cacheDuration))) {
-      _tokenPositionCache.remove(eventID);
+      _tokenPositionCache.remove(cacheKey);
       return null;
     }
 
@@ -153,10 +173,10 @@ class TokensUtil {
   }
 
   static void _setCachedTokenPositions(
-    String eventID,
+    String cacheKey,
     List<TokenPosition> positions,
   ) {
-    _tokenPositionCache[eventID] = _TokenPositionCacheItem(
+    _tokenPositionCache[cacheKey] = _TokenPositionCacheItem(
       positions,
       DateTime.now(),
     );

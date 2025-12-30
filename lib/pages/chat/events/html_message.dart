@@ -410,7 +410,7 @@ class HtmlMessage extends StatelessWidget {
 
     final newTokens =
         pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
-            ? TokensUtil.getNewTokens(pangeaMessageEvent!)
+            ? TokensUtil.getNewTokensByEvent(pangeaMessageEvent!)
             : [];
     // Pangea#
 
