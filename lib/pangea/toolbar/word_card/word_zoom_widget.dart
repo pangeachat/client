@@ -69,60 +69,66 @@ class WordZoomWidget extends StatelessWidget {
                   child: Column(
                     spacing: 12.0,
                     children: [
-                      SizedBox(
-                        height: 40.0,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            onClose != null
-                                ? IconButton(
-                                    color: Theme.of(context).iconTheme.color,
-                                    icon: const Icon(Icons.close),
-                                    onPressed: onClose,
-                                  )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          return SizedBox(
+                            height: 40.0,
+                            width: constraints.maxWidth - 24.0,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                onClose != null
+                                    ? IconButton(
+                                        color:
+                                            Theme.of(context).iconTheme.color,
+                                        icon: const Icon(Icons.close),
+                                        onPressed: onClose,
+                                      )
+                                    : const SizedBox(
+                                        width: 40.0,
+                                        height: 40.0,
+                                      ),
+                                Flexible(
+                                  child: Container(
+                                    constraints: const BoxConstraints(
+                                      minHeight: 40.0,
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      token.content,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 28.0,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.2,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.light
+                                            ? AppConfig.yellowDark
+                                            : AppConfig.yellowLight,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
                                   ),
-                            Flexible(
-                              child: Container(
-                                constraints: const BoxConstraints(
-                                  minHeight: 40.0,
                                 ),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  token.content,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.2,
-                                    color: Theme.of(context).brightness ==
-                                            Brightness.light
-                                        ? AppConfig.yellowDark
-                                        : AppConfig.yellowLight,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                              ),
+                                onFlagTokenInfo != null
+                                    ? TokenFeedbackButton(
+                                        textLanguage: PLanguageStore.byLangCode(
+                                              langCode,
+                                            ) ??
+                                            LanguageModel.unknown,
+                                        constructId: construct,
+                                        text: token.content,
+                                        onFlagTokenInfo: onFlagTokenInfo!,
+                                        messageInfo: event?.content ?? {},
+                                      )
+                                    : const SizedBox(
+                                        width: 40.0,
+                                        height: 40.0,
+                                      ),
+                              ],
                             ),
-                            onFlagTokenInfo != null
-                                ? TokenFeedbackButton(
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
-                                        LanguageModel.unknown,
-                                    constructId: construct,
-                                    text: token.content,
-                                    onFlagTokenInfo: onFlagTokenInfo!,
-                                    messageInfo: event?.content ?? {},
-                                  )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
-                          ],
-                        ),
+                          );
+                        },
                       ),
                       Expanded(
                         child: Column(
