@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -32,8 +33,12 @@ import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
 import 'package:fluffychat/pages/settings_style/settings_style.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
+import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
+import 'package:fluffychat/pangea/analytics_page/empty_analytics_page.dart';
+import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_content.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
@@ -517,11 +522,11 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                AnalyticsPage(
-                  indicator: FluffyThemes.isColumnMode(context)
-                      ? null
-                      : ProgressIndicatorEnum.wordsUsed,
-                ),
+                FluffyThemes.isColumnMode(context)
+                    ? const EmptyAnalyticsPage()
+                    : const ConstructAnalyticsView(
+                        view: ConstructTypeEnum.vocab,
+                      ),
               ),
               routes: [
                 GoRoute(
@@ -529,26 +534,27 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.morphsUsed,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const ConstructAnalyticsView(
+                            view: ConstructTypeEnum.morph,
+                          ),
                   ),
                   redirect: loggedOutRedirect,
                   routes: [
                     GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {
-                        final construct = ConstructIdentifier.fromString(
-                          state.pathParameters['construct']!,
+                        final construct = ConstructIdentifier.fromJson(
+                          jsonDecode(state.pathParameters['construct']!),
                         );
+
                         return defaultPageBuilder(
                           context,
                           state,
-                          AnalyticsPage(
-                            indicator: ProgressIndicatorEnum.morphsUsed,
+                          ConstructAnalyticsView(
                             construct: construct,
+                            view: ConstructTypeEnum.morph,
                           ),
                         );
                       },
@@ -560,26 +566,26 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.wordsUsed,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const ConstructAnalyticsView(
+                            view: ConstructTypeEnum.vocab,
+                          ),
                   ),
                   redirect: loggedOutRedirect,
                   routes: [
                     GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {
-                        final construct = ConstructIdentifier.fromString(
-                          state.pathParameters['construct']!,
+                        final construct = ConstructIdentifier.fromJson(
+                          jsonDecode(state.pathParameters['construct']!),
                         );
                         return defaultPageBuilder(
                           context,
                           state,
-                          AnalyticsPage(
-                            indicator: ProgressIndicatorEnum.wordsUsed,
+                          ConstructAnalyticsView(
                             construct: construct,
+                            view: ConstructTypeEnum.vocab,
                           ),
                         );
                       },
@@ -591,11 +597,9 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.activities,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const ActivityArchive(),
                   ),
                   redirect: loggedOutRedirect,
                   routes: [
@@ -608,9 +612,12 @@ abstract class AppRoutes {
                           roomId: state.pathParameters['roomid']!,
                           eventId: state.uri.queryParameters['event'],
                           backButton: BackButton(
-                            onPressed: () => context.go(
-                              "/rooms/analytics/activities",
-                            ),
+                            onPressed: () {
+                              AnalyticsNavigationUtil.navigateToAnalytics(
+                                context: context,
+                                view: ProgressIndicatorEnum.activities,
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -623,11 +630,9 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.level,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const LevelAnalyticsDetailsContent(),
                   ),
                   redirect: loggedOutRedirect,
                 ),

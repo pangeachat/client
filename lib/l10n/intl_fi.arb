@@ -3972,9 +3972,6 @@
   "courseSavedSuccessfully": "Kurssi tallennettu onnistuneesti",
   "addCoursePlan": "Lisää kurssisuunnitelma",
   "activityStatsButtonInstruction": "Klikkaa tästä nähdäksesi aktiviteettitilastosi ja sulkeaksesi aktiviteetin lopuksi",
-  "readingAnalyticsDesc": "Klikkaa harjoitusta jokaisessa viestissä lukuharjoituksia varten.",
-  "speakingAnalyticsDesc": "Tallenna ääniviestejä puheharjoituksia varten.",
-  "audioAnalyticsDesc": "Klikkaa harjoitusta jokaisessa viestissä kuunteluharjoituksia varten.",
   "loginToAccount": "Kirjaudu tililleni",
   "appDescription": "Opiskele kieltä\nlähettämällä viestejä ystävillesi.",
   "languages": "Kielet",
@@ -4000,7 +3997,6 @@
   "usernameOrEmail": "Käyttäjätunnus tai sähköposti",
   "email": "Sähköposti",
   "forgotPassword": "Unohditko salasanan?",
-  "writingAnalyticsDesc": "Lähetä viestejä harjoitellaksesi kirjoittamista.",
   "endActivity": "Lopeta toiminta",
   "allLanguages": "Kaikki kielet",
   "chatListTooltip": "Täältä löydät yksityisviestisi! Klikkaa minkä tahansa käyttäjän avataria ja \"aloita keskustelu\" lähettääksesi yksityisviestin.",
@@ -4013,7 +4009,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-12-15 14:42:51.625904",
+  "@@last_modified": "2025-12-29 16:02:38.790567",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -9712,18 +9708,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9821,10 +9805,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11333,5 +11313,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Odotetaan kirjautumisen valmistumista",
+  "ssoDialogDesc": "Avasimme uuden välilehden, jotta voit kirjautua sisään turvallisesti.",
+  "ssoDialogHelpText": "🤔 Jos et nähnyt uutta välilehteä, tarkista ponnahdusikkunoiden estäjäsi.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Poista kielityökalut käytöstä",
+  "disableLanguageToolsDesc": "Haluaisitko poistaa automaattisen kieliavun käytöstä?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -172,17 +172,6 @@ abstract class ClientManager {
       onSoftLogout:
           enableSoftLogout ? (client) => client.refreshAccessToken() : null,
       // #Pangea
-      syncFilter: Filter(
-        room: RoomFilter(
-          state: StateFilter(lazyLoadMembers: true),
-          timeline: StateFilter(
-            notTypes: [
-              PangeaEventTypes.construct,
-              PangeaEventTypes.summaryAnalytics,
-            ],
-          ),
-        ),
-      ),
       shouldReplaceRoomLastEvent: (_, event) {
         return event.content.tryGet(ModelKey.transcription) == null &&
             !event.type.startsWith("p.") &&

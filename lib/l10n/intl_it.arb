@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:23.466924",
+  "@@last_modified": "2025-12-29 16:03:05.491594",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -4451,9 +4451,6 @@
   "courseSavedSuccessfully": "Corso salvato con successo",
   "addCoursePlan": "Aggiungi un piano del corso",
   "activityStatsButtonInstruction": "Clicca qui per visualizzare le statistiche della tua attività e per chiudere l'attività quando hai finito",
-  "readingAnalyticsDesc": "Clicca su pratica su ogni messaggio per le attività di lettura.",
-  "speakingAnalyticsDesc": "Registra messaggi vocali per la pratica del parlato.",
-  "audioAnalyticsDesc": "Clicca su pratica su ogni messaggio per le attività di ascolto.",
   "loginToAccount": "Accedi al mio account",
   "appDescription": "Impara una lingua\nmentre scrivi ai tuoi amici.",
   "languages": "Lingue",
@@ -4479,7 +4476,6 @@
   "usernameOrEmail": "Nome utente o email",
   "email": "Email",
   "forgotPassword": "Hai dimenticato la password?",
-  "writingAnalyticsDesc": "Invia messaggi per esercitarti a scrivere.",
   "endActivity": "Termina attività",
   "allLanguages": "Tutte le lingue",
   "chatListTooltip": "Qui troverai i tuoi messaggi diretti! Clicca sull'avatar di qualsiasi utente e “inizia conversazione” per inviare un messaggio diretto.",
@@ -9092,18 +9088,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9201,10 +9185,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10713,5 +10693,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "In attesa del completamento dell'accesso",
+  "ssoDialogDesc": "Abbiamo aperto una nuova scheda in modo che tu possa accedere in modo sicuro.",
+  "ssoDialogHelpText": "🤔 Se non hai visto la nuova scheda, controlla il tuo blocco dei popup.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Disabilita gli strumenti linguistici",
+  "disableLanguageToolsDesc": "Vuoi disabilitare l'assistenza linguistica automatica?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

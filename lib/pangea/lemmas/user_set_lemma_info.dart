@@ -42,5 +42,6 @@ class UserSetLemmaInfo {
           meaning == other.meaning;
 
   @override
-  int get hashCode => meaning.hashCode ^ Object.hashAll(emojis ?? []);
+  int get hashCode =>
+      meaning.hashCode ^ const ListEquality().hash(emojis ?? []);
 }

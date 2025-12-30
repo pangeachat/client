@@ -2427,9 +2427,6 @@
   "courseSavedSuccessfully": "Tečaj je bil uspešno shranjen",
   "addCoursePlan": "Dodaj načrt tečaja",
   "activityStatsButtonInstruction": "Kliknite tukaj za ogled statistik vaše dejavnosti in za zapiranje dejavnosti po končanem delu",
-  "readingAnalyticsDesc": "Kliknite na prakso na vsaki sporočilu za dejavnosti branja.",
-  "speakingAnalyticsDesc": "Posnemite glasovne sporočila za vaje govora.",
-  "audioAnalyticsDesc": "Kliknite na prakso na vsaki sporočilu za dejavnosti poslušanja.",
   "loginToAccount": "Prijavite se v svoj račun",
   "appDescription": "Učite se jezika\nmedtem ko pošiljate sporočila prijateljem.",
   "languages": "Jeziki",
@@ -2455,7 +2452,6 @@
   "usernameOrEmail": "Uporabniško ime ali e-pošta",
   "email": "E-pošta",
   "forgotPassword": "Pozabljeno geslo?",
-  "writingAnalyticsDesc": "Pošiljajte sporočila za vadbo pisanja.",
   "endActivity": "Končaj dejavnost",
   "allLanguages": "Vsi jeziki",
   "chatListTooltip": "Tukaj boste našli svoja neposredna sporočila! Kliknite na avatar katerega koli uporabnika in izberite »začni pogovor«, da pošljete DM.",
@@ -2468,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-12-15 14:43:19.279445",
+  "@@last_modified": "2025-12-29 16:03:03.060738",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10170,18 +10166,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10279,10 +10263,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11791,5 +11771,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Čakanje na dokončanje prijave",
+  "ssoDialogDesc": "Odprli smo nov zavihek, da se lahko varno prijavite.",
+  "ssoDialogHelpText": "🤔 Če niste videli novega zavihka, preverite svoj blokator pojavnih oken.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Onemogoči jezikovna orodja",
+  "disableLanguageToolsDesc": "Ali želite onemogočiti samodejno jezikovno pomoč?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -1042,21 +1042,29 @@ class Message extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  if (canRefresh)
-                                    Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: IconButton(
-                                        tooltip: L10n.of(context)
-                                            .requestRegeneration,
-                                        icon: const Icon(
-                                          Icons.refresh_outlined,
-                                        ),
-                                        onPressed: () => controller
-                                            .requestRegeneration(event.eventId),
-                                      ),
-                                    ),
                                 ],
                               ),
+                              if (canRefresh)
+                                Positioned(
+                                  right: 8.0,
+                                  top: 8.0,
+                                  child: CircleAvatar(
+                                    radius: 20.0,
+                                    backgroundColor: theme.colorScheme.surface
+                                        .withAlpha(128),
+                                    child: IconButton(
+                                      tooltip:
+                                          L10n.of(context).requestRegeneration,
+                                      icon: const Icon(
+                                        Icons.refresh_outlined,
+                                      ),
+                                      onPressed: () =>
+                                          controller.requestRegeneration(
+                                        event.eventId,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                             ],
                           ),
                   );

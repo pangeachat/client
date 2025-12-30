@@ -36,12 +36,12 @@ class LemmaActivityGenerator {
   static Future<Set<String>> _lemmaActivityDistractors(
     PangeaToken token,
   ) async {
-    final List<String> lemmas = MatrixState
-        .pangeaController.getAnalytics.constructListModel
-        .constructList(type: ConstructTypeEnum.vocab)
-        .map((c) => c.lemma)
-        .toSet()
-        .toList();
+    final constructs = await MatrixState
+        .pangeaController.matrixState.analyticsDataService
+        .getAggregatedConstructs(ConstructTypeEnum.vocab);
+
+    final List<String> lemmas =
+        constructs.values.map((c) => c.lemma).toSet().toList();
 
     // Offload computation to an isolate
     final Map<String, int> distances =

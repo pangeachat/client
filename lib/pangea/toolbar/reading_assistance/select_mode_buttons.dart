@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
@@ -144,6 +145,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   static const double buttonSize = 40.0;
 
   StreamSubscription? _playerStateSub;
+  final ValueNotifier<bool> _isPlayingNotifier = ValueNotifier(false);
   StreamSubscription? _audioSub;
 
   MatrixState? matrix;
@@ -156,6 +158,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     if (messageEvent.isAudioMessage == true) {
       controller.fetchTranscription();
     }
+
+    controller.playTokenNotifier.addListener(_playToken);
   }
 
   @override
@@ -165,6 +169,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.voiceMessageEventId.value = null;
     _audioSub?.cancel();
     _playerStateSub?.cancel();
+    _isPlayingNotifier.dispose();
+    controller.playTokenNotifier.removeListener(_playToken);
     super.dispose();
   }
 
@@ -221,19 +227,22 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   Future<void> playAudio() async {
     final playerID = "${messageEvent.eventId}_button";
+    final isPlaying = matrix?.audioPlayer != null &&
+        matrix?.voiceMessageEventId.value == playerID &&
+        matrix!.audioPlayer!.playerState.processingState !=
+            ProcessingState.completed;
 
-    if (matrix?.audioPlayer != null &&
-        matrix?.voiceMessageEventId.value == playerID) {
-      // If the audio player is already initialized and playing the same message, pause it
-      if (matrix!.audioPlayer!.playerState.playing) {
-        await matrix!.audioPlayer!.pause();
-        return;
-      }
-      // If the audio player is paused, resume it
-      await matrix!.audioPlayer!.play();
+    if (isPlaying) {
+      matrix!.audioPlayer!.playerState.playing
+          ? await matrix!.audioPlayer!.pause()
+          : await matrix!.audioPlayer!.play();
       return;
     }
 
+    _reloadAudio();
+  }
+
+  Future<void> _reloadAudio({Duration? seek}) async {
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = AudioPlayer();
     matrix?.voiceMessageEventId.value = "${messageEvent.eventId}_button";
@@ -246,21 +255,12 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     _audioSub = matrix?.audioPlayer?.positionStream.listen(_onPlayAudio);
 
     try {
-      if (matrix?.audioPlayer != null &&
-          matrix!.audioPlayer!.playerState.playing) {
-        await matrix!.audioPlayer!.pause();
-        return;
-      } else if (matrix?.audioPlayer?.position != Duration.zero) {
-        TtsController.stop();
-        await matrix?.audioPlayer?.play();
-        return;
-      }
-
       if (controller.audioFile == null) {
         await controller.fetchAudio();
       }
 
       if (controller.audioFile == null) return;
+
       final (PangeaAudioFile pangeaAudioFile, File? audioFile) =
           controller.audioFile!;
 
@@ -276,6 +276,11 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       }
 
       TtsController.stop();
+
+      if (seek != null) {
+        matrix!.audioPlayer!.seek(seek);
+      }
+
       await matrix?.audioPlayer?.play();
     } catch (e, s) {
       ErrorHandler.logError(
@@ -299,8 +304,43 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   void _onUpdatePlayerState(PlayerState state) {
-    if (state.processingState == ProcessingState.completed) {
-      updateMode(null);
+    final current = _isPlayingNotifier.value;
+    if (!current &&
+        state.processingState == ProcessingState.ready &&
+        state.playing) {
+      _isPlayingNotifier.value = true;
+    } else if (current &&
+        (!state.playing ||
+            state.processingState == ProcessingState.completed)) {
+      _isPlayingNotifier.value = false;
+    }
+  }
+
+  void _playToken() {
+    final token = controller.playTokenNotifier.value.$1;
+
+    if (token == null ||
+        controller.audioFile?.$1.tokens == null ||
+        controller.selectedMode.value != SelectMode.audio) {
+      return;
+    }
+
+    final ttsToken = controller.audioFile!.$1.tokens!.firstWhereOrNull(
+      (t) => t.text == token,
+    );
+
+    if (ttsToken == null) return;
+
+    final isPlaying = matrix?.audioPlayer != null &&
+        matrix!.audioPlayer!.playerState.processingState !=
+            ProcessingState.completed;
+
+    final start = Duration(milliseconds: ttsToken.startMS);
+    if (isPlaying) {
+      matrix!.audioPlayer!.seek(start);
+      matrix!.audioPlayer!.play();
+    } else {
+      _reloadAudio(seek: start);
     }
   }
 
@@ -357,13 +397,15 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                   : theme.colorScheme.primaryContainer,
                               shape: BoxShape.circle,
                             ),
-                            child: _SelectModeButtonIcon(
-                              mode: mode,
-                              loading:
-                                  controller.isLoading && mode == selectedMode,
-                              playing: mode == SelectMode.audio &&
-                                  matrix?.audioPlayer?.playerState.playing ==
-                                      true,
+                            child: ValueListenableBuilder(
+                              valueListenable: _isPlayingNotifier,
+                              builder: (context, playing, __) =>
+                                  _SelectModeButtonIcon(
+                                mode: mode,
+                                loading: controller.isLoading &&
+                                    mode == selectedMode,
+                                playing: mode == SelectMode.audio && playing,
+                              ),
                             ),
                           ),
                         ),

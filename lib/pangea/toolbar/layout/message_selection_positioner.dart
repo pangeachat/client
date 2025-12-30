@@ -434,11 +434,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                         ),
                       ),
                       Positioned(
-                        top: switch (MediaQuery.heightOf(context)) {
-                          < 700 => 0,
-                          > 900 => 160,
-                          _ => 80,
-                        },
+                        top: FluffyThemes.isColumnMode(context)
+                            ? switch (MediaQuery.heightOf(context)) {
+                                < 700 => 0,
+                                > 900 => 160,
+                                _ => 80,
+                              }
+                            : 0,
                         left: 0,
                         right: 0,
                         child: ListenableBuilder(

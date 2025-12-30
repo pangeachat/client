@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -97,6 +98,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
               )
             : null,
         choreo: originalSent?.choreo,
+        messageTag: ModelKey.tokenFeedbackEdit,
       );
     }
 

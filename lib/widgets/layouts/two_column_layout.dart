@@ -7,9 +7,10 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
+import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_content.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
 
@@ -113,21 +114,14 @@ class _MainView extends StatelessWidget {
     }
 
     if (path.contains("analytics")) {
-      ProgressIndicatorEnum indicator = ProgressIndicatorEnum.wordsUsed;
       if (path.contains("analytics/level")) {
-        indicator = ProgressIndicatorEnum.level;
-      } else if (path.contains("analytics/${ConstructTypeEnum.morph.string}")) {
-        indicator = ProgressIndicatorEnum.morphsUsed;
-      } else if (path.contains("analytics/${ConstructTypeEnum.vocab.string}")) {
-        indicator = ProgressIndicatorEnum.wordsUsed;
+        return const LevelAnalyticsDetailsContent();
       } else if (path.contains("analytics/activities")) {
-        indicator = ProgressIndicatorEnum.activities;
+        return const ActivityArchive();
+      } else if (path.contains("analytics/${ConstructTypeEnum.morph.string}")) {
+        return const ConstructAnalyticsView(view: ConstructTypeEnum.morph);
       }
-
-      return AnalyticsPage(
-        indicator: indicator,
-        isSidebar: true,
-      );
+      return const ConstructAnalyticsView(view: ConstructTypeEnum.vocab);
     }
 
     if (path.contains("settings")) {

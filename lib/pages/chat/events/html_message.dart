@@ -449,8 +449,7 @@ class HtmlMessage extends StatelessWidget {
                       selectModeNotifier: overlayController!.selectedMode,
                       onTap: () =>
                           overlayController!.onClickOverlayMessageToken(token),
-                      constructEmojiNotifier: overlayController!
-                          .selectModeController.constructEmojiNotifier,
+                      textColor: textColor,
                     ),
                   if (renderer.showCenterStyling &&
                       token != null &&
@@ -528,7 +527,7 @@ class HtmlMessage extends StatelessWidget {
                           height: overlayController!
                                       .practiceController.practiceMode !=
                                   MessagePracticeMode.noneSelected
-                              ? 16.0
+                              ? 8.0
                               : 0.0,
                           width: tokenWidth,
                         ),
@@ -971,8 +970,7 @@ class HtmlMessage extends StatelessWidget {
                   selectModeNotifier: overlayController!.selectedMode,
                   onTap: () {},
                   enabled: false,
-                  constructEmojiNotifier: overlayController!
-                      .selectModeController.constructEmojiNotifier,
+                  textColor: textColor,
                 ),
               RichText(
                 text: TextSpan(
@@ -997,7 +995,7 @@ class HtmlMessage extends StatelessWidget {
                       height:
                           overlayController!.practiceController.practiceMode !=
                                   MessagePracticeMode.noneSelected
-                              ? 16.0
+                              ? 8.0
                               : 0.0,
                       width: 0,
                     ),

@@ -4445,9 +4445,6 @@
   "courseSavedSuccessfully": "Kursu veiksmīgi saglabāts",
   "addCoursePlan": "Pievienot kursa plānu",
   "activityStatsButtonInstruction": "Noklikšķiniet šeit, lai skatītu savu aktivitātes statistiku un aizvērtu aktivitāti, kad tā ir pabeigta",
-  "readingAnalyticsDesc": "Noklikšķiniet uz prakses katrā ziņojumā, lai veiktu lasīšanas aktivitātes.",
-  "speakingAnalyticsDesc": "Ierakstiet balss ziņojumus, lai praktizētu runāšanu.",
-  "audioAnalyticsDesc": "Noklikšķiniet uz prakses katrā ziņojumā, lai veiktu klausīšanās aktivitātes.",
   "loginToAccount": "Pierakstieties savā kontā",
   "appDescription": "Mācieties valodu\nrakstot ziņas draugiem.",
   "languages": "Valodas",
@@ -4473,7 +4470,6 @@
   "usernameOrEmail": "Lietotājvārds vai e-pasts",
   "email": "E-pasts",
   "forgotPassword": "Aizmirsāt paroli?",
-  "writingAnalyticsDesc": "Sūtiet ziņojumus, lai praktizētu rakstīšanu.",
   "endActivity": "Beigt aktivitāti",
   "allLanguages": "Visas valodas",
   "chatListTooltip": "Šeit atradīsiet savas tiešās ziņas! Noklikšķiniet uz jebkura lietotāja avatara un izvēlieties „sākt sarunu”, lai nosūtītu DM.",
@@ -4486,7 +4482,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2025-12-15 14:43:37.722676",
+  "@@last_modified": "2025-12-29 16:03:17.707946",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9075,18 +9071,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9184,10 +9168,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10696,5 +10676,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Gaidām, kamēr pieteikšanās tiks pabeigta",
+  "ssoDialogDesc": "Mēs atvērām jaunu cilni, lai jūs varētu droši pieteikties.",
+  "ssoDialogHelpText": "🤔 Ja neredzējāt jauno cilni, lūdzu, pārbaudiet savu uznirstošo logu bloķētāju.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Atspējot valodas rīkus",
+  "disableLanguageToolsDesc": "Vai vēlaties atspējot automātisko valodas palīdzību?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

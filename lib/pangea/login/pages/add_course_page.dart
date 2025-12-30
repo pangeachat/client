@@ -32,6 +32,7 @@ class AddCoursePage extends StatelessWidget {
           ],
         ),
         automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Center(

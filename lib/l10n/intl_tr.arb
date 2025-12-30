@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-15 14:43:40.183100",
+  "@@last_modified": "2025-12-29 16:03:20.417520",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -4355,9 +4355,6 @@
   "courseSavedSuccessfully": "Kurs başarıyla kaydedildi",
   "addCoursePlan": "Bir kurs planı ekle",
   "activityStatsButtonInstruction": "Etkinlik istatistiklerinizi görmek ve tamamlandığında etkinliği kapatmak için buraya tıklayın",
-  "readingAnalyticsDesc": "Okuma etkinlikleri için her mesajda pratik yapmaya tıklayın.",
-  "speakingAnalyticsDesc": "Konuşma pratiği için sesli mesajlar kaydedin.",
-  "audioAnalyticsDesc": "Dinleme etkinlikleri için her mesajda pratik yapmaya tıklayın.",
   "loginToAccount": "Hesabınıza giriş yapın",
   "appDescription": "Bir dil öğrenin\narkadaşlarınıza mesaj atarken.",
   "languages": "Diller",
@@ -4383,7 +4380,6 @@
   "usernameOrEmail": "Kullanıcı adı veya e-posta",
   "email": "E-posta",
   "forgotPassword": "Şifremi unuttum?",
-  "writingAnalyticsDesc": "Yazma alıştırması yapmak için mesaj gönderin.",
   "endActivity": "Etkinliği sonlandır",
   "allLanguages": "Tüm diller",
   "chatListTooltip": "Burada doğrudan mesajlarınızı bulacaksınız! Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğiyle DM gönderebilirsiniz.",
@@ -9311,18 +9307,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9420,10 +9404,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10932,5 +10912,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Girişin tamamlanmasını bekliyoruz",
+  "ssoDialogDesc": "Güvenli bir şekilde giriş yapabilmeniz için yeni bir sekme açtık.",
+  "ssoDialogHelpText": "🤔 Yeni sekmeyi görmediyseniz, lütfen açılır pencere engelleyicinizi kontrol edin.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Dil araçlarını devre dışı bırak",
+  "disableLanguageToolsDesc": "Otomatik dil yardımını devre dışı bırakmak ister misiniz?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-12-15 14:42:48.159542",
+  "@@last_modified": "2025-12-29 16:02:35.926601",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -5747,9 +5747,6 @@
   "courseSavedSuccessfully": "Curso guardado con éxito",
   "addCoursePlan": "Agregar un plan de curso",
   "activityStatsButtonInstruction": "Haz clic aquí para ver tus estadísticas de actividad y cerrar la actividad cuando termines",
-  "readingAnalyticsDesc": "Haz clic en practicar en cada mensaje para actividades de lectura.",
-  "speakingAnalyticsDesc": "Graba mensajes de voz para practicar speaking.",
-  "audioAnalyticsDesc": "Haz clic en practicar en cada mensaje para actividades de listening.",
   "loginToAccount": "Iniciar sesión en mi cuenta",
   "appDescription": "Aprende un idioma\nmientras envías mensajes a tus amigos.",
   "languages": "Idiomas",
@@ -5775,7 +5772,6 @@
   "usernameOrEmail": "Nombre de usuario o correo electrónico",
   "email": "Correo electrónico",
   "forgotPassword": "¿Olvidaste tu contraseña?",
-  "writingAnalyticsDesc": "Envía mensajes para practicar la escritura.",
   "endActivity": "Finalizar actividad",
   "allLanguages": "Todos los idiomas",
   "chatListTooltip": "¡Aquí encontrarás tus mensajes directos! Haz clic en el avatar de cualquier usuario y \"iniciar conversación\" para enviar un mensaje directo.",
@@ -6292,18 +6288,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -6401,10 +6385,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -7944,5 +7924,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Esperando a que se complete el inicio de sesión",
+  "ssoDialogDesc": "Abrimos una nueva pestaña para que puedas iniciar sesión de forma segura.",
+  "ssoDialogHelpText": "🤔 Si no viste la nueva pestaña, por favor revisa tu bloqueador de ventanas emergentes.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Desactivar herramientas de idioma",
+  "disableLanguageToolsDesc": "¿Te gustaría desactivar la asistencia automática de idioma?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

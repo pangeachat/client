@@ -20,6 +20,7 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -74,6 +75,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   static late PangeaController pangeaController;
   static PangeaAnyState pAnyState = PangeaAnyState();
   late StreamSubscription? _uriListener;
+
+  final Map<String, AnalyticsDataService> _analyticsServices = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -98,6 +101,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // Pangea#
     return widget.clients[_activeClient];
   }
+
+  // #Pangea
+  AnalyticsDataService get analyticsDataService {
+    if (_analyticsServices[client.clientName] == null) {
+      Logs().w(
+        'Tried to access AnalyticsDataService for client ${client.clientName}, but it does not exist.',
+      );
+      _analyticsServices[client.clientName] = AnalyticsDataService(client);
+    }
+    return _analyticsServices[client.clientName]!;
+  }
+  // Pangea#
 
   VoipPlugin? voipPlugin;
 
@@ -287,8 +302,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
     _languageListener?.cancel();
-    _languageListener = pangeaController.userController.languageStream.stream
-        .listen((_) => _setAppLanguage());
+    _languageListener =
+        pangeaController.userController.languageStream.stream.listen((update) {
+      _setAppLanguage();
+      analyticsDataService.updateService.onUpdateLanguages(update);
+    });
   }
 
   void _setAppLanguage() {
@@ -413,6 +431,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             c.onNotification.stream.listen(showLocalNotification);
       });
     }
+    // #Pangea
+    _analyticsServices[name] ??= AnalyticsDataService(c);
+    // Pangea#
   }
 
   void _cancelSubs(String name) {
@@ -427,6 +448,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
+    _analyticsServices[name]?.dispose();
+    _analyticsServices.remove(name);
     // Pangea#
   }
 

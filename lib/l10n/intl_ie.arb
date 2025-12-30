@@ -4335,9 +4335,6 @@
   "courseSavedSuccessfully": "Cors salvat con success",
   "addCoursePlan": "Aggiungi un plan de cors",
   "activityStatsButtonInstruction": "Clika qua pro vider tuas statisticas de activitate e pro serrar l'activitate quando finit",
-  "readingAnalyticsDesc": "Clika praticar su cata message pro activitates de lectura.",
-  "speakingAnalyticsDesc": "Registrara messages de voce pro practicar de parlar.",
-  "audioAnalyticsDesc": "Clika praticar su cata message pro activitates de ascoltar.",
   "loginToAccount": "Login a mi conto",
   "appDescription": "Impara un linguage\ndurante scriver a tui amicos.",
   "languages": "Linguages",
@@ -4363,7 +4360,6 @@
   "usernameOrEmail": "Nom de usator o email",
   "email": "Email",
   "forgotPassword": "Oblidate la parola de pass?",
-  "writingAnalyticsDesc": "Manda messages pro practicar scriver.",
   "endActivity": "Finir l'activitate",
   "allLanguages": "Tutte le linguas",
   "chatListTooltip": "Qua tu trovarai to mesages directes! Clicca su qualunque avatar de usator e 'comencia conversation' pro mandar un DM.",
@@ -4376,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-15 14:43:07.923977",
+  "@@last_modified": "2025-12-29 16:02:50.259140",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10063,18 +10059,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10172,10 +10156,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11684,5 +11664,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Acht na sign in a chríochnú",
+  "ssoDialogDesc": "Osclaíomar cluais nua ionas go bhféadfaidh tú síniú isteach go sábháilte.",
+  "ssoDialogHelpText": "🤔 Má chonaic tú an cluais nua, seiceáil le do thoil do bhacadóir pop-up.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Díghá na huirlisí teanga",
+  "disableLanguageToolsDesc": "An bhfuil tú ag iarraidh na cabhrach teanga uathoibríoch a dhíghníomhachtú?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

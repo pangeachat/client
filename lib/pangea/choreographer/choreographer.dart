@@ -38,6 +38,7 @@ class Choreographer extends ChangeNotifier {
   ChoreoRecordModel? _choreoRecord;
 
   final ValueNotifier<bool> _isFetching = ValueNotifier(false);
+  final ValueNotifier<int> _timesClosedIT = ValueNotifier(0);
 
   int _timesClicked = 0;
   Timer? _debounceTimer;
@@ -57,6 +58,7 @@ class Choreographer extends ChangeNotifier {
 
   int get timesClicked => _timesClicked;
   ValueNotifier<bool> get isFetching => _isFetching;
+  ValueNotifier<int> get timesClosedIT => _timesClosedIT;
   ChoreoModeEnum get choreoMode => _choreoMode;
   String get currentText => textController.text;
 
@@ -105,6 +107,7 @@ class Choreographer extends ChangeNotifier {
   void clear() {
     _lastChecked = null;
     _timesClicked = 0;
+    _timesClosedIT.value = 0;
     _isFetching.value = false;
     _choreoRecord = null;
     itController.closeIT();
@@ -132,6 +135,7 @@ class Choreographer extends ChangeNotifier {
     errorService.dispose();
     textController.dispose();
     _isFetching.dispose();
+    _timesClosedIT.dispose();
 
     TtsController.stop();
     super.dispose();
@@ -183,8 +187,8 @@ class Choreographer extends ChangeNotifier {
     }
     // update assistance state from no message => not fetched and vice versa
     if (_lastChecked == null ||
-        _lastChecked!.isEmpty ||
-        textController.text.isEmpty) {
+        _lastChecked!.trim().isEmpty ||
+        textController.text.trim().isEmpty) {
       notifyListeners();
     }
 
@@ -337,6 +341,7 @@ class Choreographer extends ChangeNotifier {
       );
     }
 
+    _timesClosedIT.value = _timesClosedIT.value + 1;
     _setChoreoMode(ChoreoModeEnum.igc);
     errorService.resetError();
   }

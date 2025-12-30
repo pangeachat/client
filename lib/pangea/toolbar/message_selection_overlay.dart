@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -19,6 +20,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_ev
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/layout/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/select_mode_buttons.dart';
@@ -54,7 +56,7 @@ class MessageSelectionOverlay extends StatefulWidget {
 }
 
 class MessageOverlayController extends State<MessageSelectionOverlay>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AnalyticsUpdater {
   Event get event => widget._event;
 
   PangeaTokenText? _selectedSpan;
@@ -69,6 +71,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       selectModeController.selectedMode;
 
   late PracticeController practiceController;
+  double? screenWidth;
 
   /////////////////////////////////////
   /// Lifecycle
@@ -83,6 +86,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.setSelectedEvent(event),
     );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final newWidth = MediaQuery.widthOf(context);
+    if (screenWidth != null && screenWidth != newWidth) {
+      widget.chatController.clearSelectedEvents();
+      return;
+    }
+    screenWidth = newWidth;
   }
 
   @override
@@ -185,36 +199,52 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       return;
     }
 
-    if (selectedSpan == _selectedSpan) return;
+    if (selectedSpan == _selectedSpan) {
+      selectModeController.setPlayingToken(selectedToken?.text);
+      return;
+    }
+
     _selectedSpan = selectedSpan;
     selectedTokenNotifier.value = selectedToken;
-    if (mounted) {
-      setState(() {});
-      if (selectedToken != null && isNewToken(selectedToken!)) {
-        final token = selectedToken!;
-        final constructs = [
-          OneConstructUse(
-            useType: ConstructUseTypeEnum.click,
-            lemma: token.lemma.text,
-            constructType: ConstructTypeEnum.vocab,
-            metadata: ConstructUseMetaData(
-              roomId: event.room.id,
-              timeStamp: DateTime.now(),
-              eventId: event.eventId,
-            ),
-            category: token.pos,
-            form: token.text.content,
-            xp: ConstructUseTypeEnum.click.pointValue,
-          ),
-        ];
-        MatrixState.pangeaController.putAnalytics.addAnalytics(
-          constructs,
-          eventId: event.eventId,
-          roomId: event.room.id,
-          targetId: "word-zoom-card-${token.text.uniqueKey}",
-        );
-      }
+    selectModeController.setPlayingToken(selectedToken?.text);
+
+    if (selectedToken != null &&
+        selectModeController.selectedMode.value != SelectMode.audio) {
+      TtsController.tryToSpeak(
+        selectedToken!.text.content,
+        langCode: pangeaMessageEvent.messageDisplayLangCode,
+      );
     }
+
+    if (!mounted) return;
+    if (selectedToken != null && isNewToken(selectedToken!)) {
+      TokensUtil.collectToken(event.eventId, selectedToken!.text);
+      final token = selectedToken!;
+      final constructs = [
+        OneConstructUse(
+          useType: ConstructUseTypeEnum.click,
+          lemma: token.lemma.text,
+          constructType: ConstructTypeEnum.vocab,
+          metadata: ConstructUseMetaData(
+            roomId: event.room.id,
+            timeStamp: DateTime.now(),
+            eventId: event.eventId,
+          ),
+          category: token.pos,
+          form: token.text.content,
+          xp: ConstructUseTypeEnum.click.pointValue,
+        ),
+      ];
+
+      addAnalytics(constructs, "word-zoom-card-${token.text.uniqueKey}")
+          .then((_) {
+        TokensUtil.clearNewTokenCache();
+        if (mounted) setState(() {});
+      });
+      return;
+    }
+
+    setState(() {});
   }
 
   PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(

@@ -29,11 +29,10 @@ class EmojiActivityGenerator {
 
     final List<String> usedEmojis = [];
     for (final token in req.targetTokens) {
-      final List<String> userSavedEmojis = token.vocabConstructID.userSetEmoji;
-      if (userSavedEmojis.isNotEmpty &&
-          !usedEmojis.contains(userSavedEmojis.first)) {
-        matchInfo[token.vocabForm] = [userSavedEmojis.first];
-        usedEmojis.add(userSavedEmojis.first);
+      final userSavedEmoji = token.vocabConstructID.userSetEmoji;
+      if (userSavedEmoji != null && !usedEmojis.contains(userSavedEmoji)) {
+        matchInfo[token.vocabForm] = [userSavedEmoji];
+        usedEmojis.add(userSavedEmoji);
       } else {
         missingEmojis.add(token);
       }

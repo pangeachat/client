@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:42:58.811266",
+  "@@last_modified": "2025-12-29 16:02:46.166745",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -3891,9 +3891,6 @@
   "courseSavedSuccessfully": "Curs salvat cu succes",
   "addCoursePlan": "Adaugă un plan de curs",
   "activityStatsButtonInstruction": "Click aici pentru a vedea statisticile activității și pentru a închide activitatea când termini",
-  "readingAnalyticsDesc": "Click pe practică pentru fiecare mesaj pentru activități de citire.",
-  "speakingAnalyticsDesc": " Înregistrează mesaje vocale pentru practică de vorbire.",
-  "audioAnalyticsDesc": "Click pe practică pentru fiecare mesaj pentru activități de ascultare.",
   "loginToAccount": "Autentifică-te în contul meu",
   "appDescription": "Învață o limbă\nîn timp ce trimiți mesaje prietenilor.",
   "languages": "Limbi",
@@ -3919,7 +3916,6 @@
   "usernameOrEmail": "Nume de utilizator sau email",
   "email": "Email",
   "forgotPassword": "Ai uitat parola?",
-  "writingAnalyticsDesc": "Trimite mesaje pentru a exersa scrierea.",
   "endActivity": "Încheie activitatea",
   "allLanguages": "Toate limbile",
   "chatListTooltip": "Aici vei găsi mesajele tale directe! Fă clic pe avatarul oricărui utilizator și „începe conversația” pentru a trimite un mesaj direct.",
@@ -9824,18 +9820,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9933,10 +9917,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11445,5 +11425,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Așteptând finalizarea autentificării",
+  "ssoDialogDesc": "Am deschis un nou tab pentru a te putea autentifica în siguranță.",
+  "ssoDialogHelpText": "🤔 Dacă nu ai văzut noul tab, te rugăm să verifici blocatorul de feronete.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Dezactivează uneltele de limbă",
+  "disableLanguageToolsDesc": "Doriți să dezactivați asistența automată pentru limbă?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

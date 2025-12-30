@@ -1893,9 +1893,6 @@
   "courseSavedSuccessfully": "Kursus gemt med succes",
   "addCoursePlan": "Tilføj en kursusplan",
   "activityStatsButtonInstruction": "Klik her for at se dine aktivitetsstatistikker og for at lukke aktiviteten, når du er færdig",
-  "readingAnalyticsDesc": "Klik på øvelse på hver besked for læseaktiviteter.",
-  "speakingAnalyticsDesc": "Optag stemmemeddelelser til taletræning.",
-  "audioAnalyticsDesc": "Klik på øvelse på hver besked for lytteaktiviteter.",
   "loginToAccount": "Log ind på min konto",
   "appDescription": "Lær et sprog\nmens du sender beskeder til dine venner.",
   "languages": "Sprog",
@@ -1921,7 +1918,6 @@
   "usernameOrEmail": "Brugernavn eller e-mail",
   "email": "E-mail",
   "forgotPassword": "Glemt adgangskode?",
-  "writingAnalyticsDesc": "Send beskeder for at øve skrivning.",
   "endActivity": "Afslut aktivitet",
   "allLanguages": "Alle sprog",
   "chatListTooltip": "Her finder du dine direkte beskeder! Klik på en brugers avatar og “start samtale” for at sende en DM.",
@@ -1934,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-12-15 14:42:53.307740",
+  "@@last_modified": "2025-12-29 16:02:40.223869",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -10151,18 +10147,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10260,10 +10244,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11771,5 +11751,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Venter på, at login skal fuldføres",
+  "ssoDialogDesc": "Vi har åbnet en ny fane, så du kan logge ind sikkert.",
+  "ssoDialogHelpText": "🤔 Hvis du ikke så den nye fane, skal du tjekke din popup-blokker.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Deaktiver sprogværktøjer",
+  "disableLanguageToolsDesc": "Vil du deaktivere automatisk sprogassistance?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -27,8 +26,6 @@ void pLoginAction({
     ),
     onError: (e, s) {
       controller.setLoadingSignIn(false);
-      controller.setLoadingSSO(false, SSOProvider.apple);
-      controller.setLoadingSSO(false, SSOProvider.google);
       return e is MatrixException
           ? e.errorMessage
           : L10n.of(context).oopsSomethingWentWrong;

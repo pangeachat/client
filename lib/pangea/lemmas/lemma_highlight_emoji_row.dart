@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
@@ -37,29 +36,8 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
   State<LemmaHighlightEmojiRow> createState() => LemmaHighlightEmojiRowState();
 }
 
-class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
-  late StreamSubscription<AnalyticsStreamUpdate> _analyticsSubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    _analyticsSubscription = MatrixState
-        .pangeaController.getAnalytics.analyticsStream.stream
-        .listen(_onAnalyticsUpdate);
-  }
-
-  @override
-  void dispose() {
-    _analyticsSubscription.cancel();
-    super.dispose();
-  }
-
-  void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
-    if (update.targetID != null) {
-      OverlayUtil.showPointsGained(update.targetID!, update.points, context);
-    }
-  }
-
+class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
+    with AnalyticsUpdater {
   @override
   Widget build(BuildContext context) {
     return LemmaMeaningBuilder(
@@ -176,9 +154,6 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
     });
   }
 
-  LayerLink get layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(widget.transformTargetId).link;
-
   @override
   Widget build(BuildContext context) {
     return HoverBuilder(
@@ -192,8 +167,13 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
                   ? Colors.white
                   : Theme.of(context).colorScheme.primary,
               child: CompositedTransformTarget(
-                link: layerLink,
+                link: MatrixState.pAnyState
+                    .layerLinkAndKey(widget.transformTargetId)
+                    .link,
                 child: AnimatedContainer(
+                  key: MatrixState.pAnyState
+                      .layerLinkAndKey(widget.transformTargetId)
+                      .key,
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -45,7 +47,9 @@ class AnimatedProgressBar extends StatelessWidget {
               child: AnimatedContainer(
                 duration: duration ?? FluffyThemes.animationDuration,
                 height: height,
-                width: constraints.maxWidth * widthPercent,
+                width: widthPercent == 0
+                    ? 0
+                    : max(18, constraints.maxWidth * widthPercent),
                 decoration: BoxDecoration(
                   color: barColor,
                   borderRadius: const BorderRadius.all(

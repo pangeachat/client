@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -16,16 +16,16 @@ mixin LemmaEmojiSetter {
     String emoji,
     String? targetId,
   ) async {
-    if (constructId.userSetEmoji.isEmpty) {
-      _sendEmojiAnalytics(
+    if (constructId.userSetEmoji == null) {
+      _getEmojiAnalytics(
         constructId,
         targetId: targetId,
       );
     }
 
-    await constructId.setUserLemmaInfo(
-      constructId.userLemmaInfo.copyWith(emojis: [emoji]),
-    );
+    await MatrixState
+        .pangeaController.matrixState.analyticsDataService.updateService
+        .setLemmaInfo(constructId, emoji: emoji);
   }
 
   void showLemmaEmojiSnackbar(
@@ -38,27 +38,23 @@ mixin LemmaEmojiSetter {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        padding: const EdgeInsets.all(8.0),
         content: Row(
           spacing: 8.0,
           children: [
             VocabAnalyticsListTile(
               constructId: constructId,
-              emoji: emoji,
               textColor: Theme.of(context).colorScheme.surface,
-              icon: Text(
-                emoji,
-                style: const TextStyle(
-                  fontSize: 22,
-                ),
-              ),
               onTap: () {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                context.go(
-                  "/rooms/analytics/${constructId.type.name}/${Uri.encodeComponent(constructId.string)}",
+                AnalyticsNavigationUtil.navigateToAnalytics(
+                  context: context,
+                  view: constructId.type.indicator,
+                  construct: constructId,
                 );
               },
             ),
-            Flexible(
+            Expanded(
               child: Text(
                 L10n.of(context).emojiSelectedSnackbar(constructId.lemma),
                 textAlign: TextAlign.center,
@@ -67,6 +63,12 @@ mixin LemmaEmojiSetter {
                     ),
               ),
             ),
+            IconButton(
+              icon: const Icon(Icons.close),
+              color: Theme.of(context).colorScheme.surface,
+              onPressed: () =>
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar(),
+            ),
           ],
         ),
         duration: const Duration(seconds: 30),
@@ -74,7 +76,7 @@ mixin LemmaEmojiSetter {
     );
   }
 
-  void _sendEmojiAnalytics(
+  void _getEmojiAnalytics(
     ConstructIdentifier constructId, {
     String? eventId,
     String? roomId,
@@ -96,11 +98,10 @@ mixin LemmaEmojiSetter {
       ),
     ];
 
-    MatrixState.pangeaController.putAnalytics.addAnalytics(
+    MatrixState.pangeaController.matrixState.analyticsDataService.updateService
+        .addAnalytics(
+      targetId,
       constructs,
-      eventId: eventId,
-      roomId: roomId,
-      targetId: targetId,
     );
   }
 }

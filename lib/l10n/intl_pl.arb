@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-15 14:43:55.454694",
+  "@@last_modified": "2025-12-29 16:03:35.212238",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -4472,9 +4472,6 @@
   "courseSavedSuccessfully": "Kurs zapisano pomyślnie",
   "addCoursePlan": "Dodaj plan kursu",
   "activityStatsButtonInstruction": "Kliknij tutaj, aby zobaczyć statystyki aktywności i zamknąć aktywność po zakończeniu",
-  "readingAnalyticsDesc": "Kliknij ćwiczenie na każdej wiadomości, aby rozpocząć aktywności czytania.",
-  "speakingAnalyticsDesc": "Nagrywaj wiadomości głosowe, aby ćwiczyć mówienie.",
-  "audioAnalyticsDesc": "Kliknij ćwiczenie na każdej wiadomości, aby rozpocząć aktywności słuchania.",
   "loginToAccount": "Zaloguj się do mojego konta",
   "appDescription": "Ucz się języka\npoprzez pisanie wiadomości do znajomych.",
   "languages": "Języki",
@@ -4500,7 +4497,6 @@
   "usernameOrEmail": "Nazwa użytkownika lub e-mail",
   "email": "E-mail",
   "forgotPassword": "Zapomniałeś hasła?",
-  "writingAnalyticsDesc": "Wyślij wiadomości, aby ćwiczyć pisanie.",
   "endActivity": "Zakończ aktywność",
   "allLanguages": "Wszystkie języki",
   "chatListTooltip": "Tutaj znajdziesz swoje wiadomości bezpośrednie! Kliknij avatar dowolnego użytkownika i „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
@@ -9089,18 +9085,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9198,10 +9182,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10708,5 +10688,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Czekam na zakończenie logowania",
+  "ssoDialogDesc": "Otworzyliśmy nową kartę, abyś mógł się zalogować bezpiecznie.",
+  "ssoDialogHelpText": "🤔 Jeśli nie widzisz nowej karty, sprawdź swój blokadę wyskakujących okienek.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Wyłącz narzędzia językowe",
+  "disableLanguageToolsDesc": "Czy chcesz wyłączyć automatyczną pomoc językową?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

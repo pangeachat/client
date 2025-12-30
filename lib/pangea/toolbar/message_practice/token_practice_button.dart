@@ -116,7 +116,7 @@ class TokenPracticeButton extends StatelessWidget {
               : Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 16.0),
+                    const SizedBox(height: 8.0),
                     SizedBox(height: tokenButtonHeight, child: child),
                   ],
                 ),
@@ -263,7 +263,7 @@ class _NoActivityContentButton extends StatelessWidget {
                 (res) => res.cId == token.vocabConstructID && res.isCorrect,
               )
               ?.text ??
-          token.vocabConstructID.userSetEmoji.firstOrNull ??
+          token.vocabConstructID.userSetEmoji ??
           '';
       return Text(
         displayEmoji,
@@ -283,9 +283,20 @@ class _NoActivityContentButton extends StatelessWidget {
           child: SizedBox(
             width: width,
             child: Center(
-              child: MorphIcon(
-                morphFeature: morphFeature,
-                morphTag: morphTag.lemma,
+              child: CircleAvatar(
+                radius: width / 2,
+                backgroundColor:
+                    Theme.of(context).brightness != Brightness.light
+                        ? Theme.of(context).colorScheme.surface.withAlpha(100)
+                        : null,
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: MorphIcon(
+                    morphFeature: morphFeature,
+                    morphTag: morphTag.lemma,
+                    size: Size.fromWidth(width - 8.0),
+                  ),
+                ),
               ),
             ),
           ),
