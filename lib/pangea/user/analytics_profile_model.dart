@@ -21,12 +21,12 @@ class AnalyticsProfileModel {
 
     final profileJson = json[PangeaEventTypes.profileAnalytics];
 
-    final baseLanguage = profileJson[ModelKey.userSourceLanguage] != null
-        ? PLanguageStore.byLangCode(profileJson[ModelKey.userSourceLanguage])
+    final baseLanguage = profileJson[ModelKey.sourceLanguage] != null
+        ? PLanguageStore.byLangCode(profileJson[ModelKey.sourceLanguage])
         : null;
 
-    final targetLanguage = profileJson[ModelKey.userTargetLanguage] != null
-        ? PLanguageStore.byLangCode(profileJson[ModelKey.userTargetLanguage])
+    final targetLanguage = profileJson[ModelKey.targetLanguage] != null
+        ? PLanguageStore.byLangCode(profileJson[ModelKey.targetLanguage])
         : null;
 
     final languageAnalytics = <LanguageModel, LanguageAnalyticsProfileEntry>{};
@@ -59,11 +59,11 @@ class AnalyticsProfileModel {
     final json = <String, dynamic>{};
 
     if (targetLanguage != null) {
-      json[ModelKey.userTargetLanguage] = targetLanguage!.langCodeShort;
+      json[ModelKey.targetLanguage] = targetLanguage!.langCodeShort;
     }
 
     if (baseLanguage != null) {
-      json[ModelKey.userSourceLanguage] = baseLanguage!.langCodeShort;
+      json[ModelKey.sourceLanguage] = baseLanguage!.langCodeShort;
     }
 
     final analytics = {};

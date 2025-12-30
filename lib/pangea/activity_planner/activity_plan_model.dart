@@ -80,7 +80,7 @@ class ActivityPlanModel {
       instructions: json[ModelKey.activityPlanInstructions],
       req: req,
       title: json[ModelKey.activityPlanTitle],
-      description: json[ModelKey.activityPlanDescription] ??
+      description: json[ModelKey.description] ??
           json[ModelKey.activityPlanLearningObjective],
       learningObjective: json[ModelKey.activityPlanLearningObjective],
       vocab: List<Vocab>.from(
@@ -109,7 +109,7 @@ class ActivityPlanModel {
       ModelKey.activityPlanInstructions: instructions,
       ModelKey.activityPlanRequest: req.toJson(),
       ModelKey.activityPlanTitle: title,
-      ModelKey.activityPlanDescription: description,
+      ModelKey.description: description,
       ModelKey.activityPlanLearningObjective: learningObjective,
       ModelKey.activityPlanVocab: vocab.map((vocab) => vocab.toJson()).toList(),
       ModelKey.activityPlanEndAt: endAt?.toIso8601String(),
