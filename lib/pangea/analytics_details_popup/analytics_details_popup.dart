@@ -79,9 +79,9 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   void _onConstructUpdate(AnalyticsStreamUpdate update) {
     if (update.blockedConstruct != null) {
       _onBlockConstruct(update);
+    } else {
+      _setAnalyticsData();
     }
-
-    _setAnalyticsData();
   }
 
   void _onBlockConstruct(AnalyticsStreamUpdate update) {
