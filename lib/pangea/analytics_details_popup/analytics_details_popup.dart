@@ -42,31 +42,46 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
   bool isSearching = false;
   ConstructLevelEnum? selectedConstructLevel;
-  StreamSubscription<AnalyticsStreamUpdate>? _blockedConstructSub;
+  StreamSubscription<AnalyticsStreamUpdate>? _constructUpdateSub;
 
   @override
   void initState() {
     super.initState();
-    _setMorphs();
-    _setVocab();
+    _setAnalyticsData();
 
     searchController.addListener(() {
       if (mounted) setState(() {});
     });
 
-    _blockedConstructSub = Matrix.of(context)
+    _constructUpdateSub = Matrix.of(context)
         .analyticsDataService
         .updateDispatcher
         .constructUpdateStream
         .stream
-        .listen(_onBlockConstruct);
+        .listen(_onConstructUpdate);
   }
 
   @override
   void dispose() {
     searchController.dispose();
-    _blockedConstructSub?.cancel();
+    _constructUpdateSub?.cancel();
     super.dispose();
+  }
+
+  Future<void> _setAnalyticsData() async {
+    final future = <Future>[
+      _setMorphs(),
+      _setVocab(),
+    ];
+    await Future.wait(future);
+  }
+
+  void _onConstructUpdate(AnalyticsStreamUpdate update) {
+    if (update.blockedConstruct != null) {
+      _onBlockConstruct(update);
+    }
+
+    _setAnalyticsData();
   }
 
   void _onBlockConstruct(AnalyticsStreamUpdate update) {
