@@ -134,11 +134,6 @@ class ButtonControlledCarouselView extends StatelessWidget {
           ),
         )
         .toList();
-    if (userSummaries.isNotEmpty) {
-      userSummaries.add(userSummaries.first);
-      userSummaries.add(userSummaries.first);
-      userSummaries.add(userSummaries.first);
-    }
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
