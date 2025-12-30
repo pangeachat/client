@@ -356,7 +356,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         AppConfig.toolbarMenuHeight +
         4.0;
 
-    return bottomOffset > _screenHeight!;
+    return bottomOffset >
+        (_screenHeight! + MediaQuery.paddingOf(context).bottom);
   }
 
   double get spaceBelowContent {
