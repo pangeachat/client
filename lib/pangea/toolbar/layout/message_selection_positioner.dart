@@ -262,8 +262,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     );
   }
 
-  bool get _isRtl {
-    final locale = Provider.of<LocaleProvider>(context).locale?.languageCode;
+  bool get isRtl {
+    final locale = Provider.of<LocaleProvider>(context, listen: false)
+        .locale
+        ?.languageCode;
     return locale != null &&
         LanguageConstants.rtlLanguageCodes.contains(locale);
   }
@@ -271,7 +273,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double? get messageLeftOffset {
     if (ownMessage) return null;
 
-    if (_isRtl) {
+    if (isRtl) {
       return _originalMessageOffset.dx -
           (showDetails ? FluffyThemes.columnWidth : 0);
     }
@@ -283,7 +285,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double? get messageRightOffset {
     if (mediaQuery == null || !ownMessage) return null;
 
-    if (_isRtl) {
+    if (isRtl) {
       return mediaQuery!.size.width -
           columnWidth -
           _originalMessageOffset.dx -
@@ -301,7 +303,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   CrossAxisAlignment get messageColumnAlignment {
-    if (_isRtl) {
+    if (isRtl) {
       return ownMessage ? CrossAxisAlignment.start : CrossAxisAlignment.end;
     }
     return ownMessage ? CrossAxisAlignment.end : CrossAxisAlignment.start;
