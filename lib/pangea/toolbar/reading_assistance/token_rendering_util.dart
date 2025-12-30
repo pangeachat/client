@@ -18,6 +18,7 @@ class TokenRenderingUtil {
     bool highlighted = false,
     bool isNew = false,
     bool practiceMode = false,
+    bool hovered = false,
   }) =>
       existingStyle.copyWith(
         fontSize: fontSize,
@@ -29,6 +30,7 @@ class TokenRenderingUtil {
           highlighted: highlighted,
           isNew: isNew,
           practiceMode: practiceMode,
+          hovered: hovered,
         ),
       );
 
@@ -66,10 +68,13 @@ class TokenRenderingUtil {
     bool highlighted = false,
     bool isNew = false,
     bool practiceMode = false,
+    bool hovered = false,
   }) {
     if (practiceMode) return Colors.white.withAlpha(0);
     if (highlighted) return underlineColor;
     if (isNew) return AppConfig.success.withAlpha(200);
-    return selected ? underlineColor : Colors.white.withAlpha(0);
+    if (selected) return underlineColor;
+    if (hovered) return underlineColor.withAlpha(100);
+    return Colors.white.withAlpha(0);
   }
 }

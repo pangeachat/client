@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_uti
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/token_rendering_mixin.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityVocabWidget extends StatelessWidget {
@@ -160,22 +161,27 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
                   24.0,
                 ),
                 onTap: () => _onTap(v, isNew),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 4.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: color,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Text(
-                    v.lemma,
-                    style: renderer.style(
-                      underlineColor:
-                          Theme.of(context).colorScheme.primary.withAlpha(200),
-                      isNew: isNew,
-                      selected: _selectedVocab == v,
+                child: HoverBuilder(
+                  builder: (context, hovered) => Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                      vertical: 4.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: color,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Text(
+                      v.lemma,
+                      style: renderer.style(
+                        underlineColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withAlpha(200),
+                        isNew: isNew,
+                        selected: _selectedVocab == v,
+                        hovered: hovered,
+                      ),
                     ),
                   ),
                 ),

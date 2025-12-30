@@ -77,6 +77,11 @@ class TokensUtil {
     List<PangeaToken> tokens, {
     int? maxTokens,
   }) {
+    if (MatrixState
+        .pangeaController.matrixState.analyticsDataService.isInitializing) {
+      return [];
+    }
+
     final cached = _getCachedNewTokens(cacheKey);
     if (cached != null) return cached;
 

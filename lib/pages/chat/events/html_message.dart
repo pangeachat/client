@@ -23,6 +23,7 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import '../../../utils/url_launcher.dart';
@@ -486,27 +487,33 @@ class HtmlMessage extends StatelessWidget {
                         onTap: onClick != null && token != null
                             ? () => onClick?.call(token)
                             : null,
-                        child: RichText(
-                          textDirection: pangeaMessageEvent?.textDirection,
-                          text: TextSpan(
-                            children: [
-                              LinkifySpan(
-                                text: node.text.trim(),
-                                style: renderer.style(
-                                  fontSize: fontSize,
-                                  underlineColor: underlineColor,
-                                  selected: selected,
-                                  highlighted: highlighted,
-                                  isNew: isNew,
-                                  practiceMode: readingAssistanceMode ==
-                                      ReadingAssistanceMode.practiceMode,
-                                ),
-                                linkStyle: linkStyle,
-                                onOpen: (url) =>
-                                    UrlLauncher(context, url.url).launchUrl(),
+                        child: HoverBuilder(
+                          builder: (context, hovered) {
+                            return RichText(
+                              textDirection: pangeaMessageEvent?.textDirection,
+                              text: TextSpan(
+                                children: [
+                                  LinkifySpan(
+                                    text: node.text.trim(),
+                                    style: renderer.style(
+                                      fontSize: fontSize,
+                                      underlineColor: underlineColor,
+                                      selected: selected,
+                                      highlighted: highlighted,
+                                      isNew: isNew,
+                                      practiceMode: readingAssistanceMode ==
+                                          ReadingAssistanceMode.practiceMode,
+                                      hovered: hovered,
+                                    ),
+                                    linkStyle: linkStyle,
+                                    onOpen: (url) =>
+                                        UrlLauncher(context, url.url)
+                                            .launchUrl(),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
                       ),
                     ),
