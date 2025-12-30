@@ -22,7 +22,7 @@ class FullTextTranslationRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        "text": text,
+        ModelKey.text: text,
         ModelKey.srcLang: srcLang,
         ModelKey.tgtLang: tgtLang,
         ModelKey.userL2: userL2,

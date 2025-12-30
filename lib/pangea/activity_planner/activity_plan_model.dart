@@ -177,14 +177,14 @@ class Vocab {
 
   factory Vocab.fromJson(Map<String, dynamic> json) {
     return Vocab(
-      lemma: json['lemma'],
+      lemma: json[ModelKey.lemma],
       pos: json['pos'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'lemma': lemma,
+      ModelKey.lemma: lemma,
       'pos': pos,
     };
   }

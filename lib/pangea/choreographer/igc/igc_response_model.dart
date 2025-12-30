@@ -36,8 +36,8 @@ class IGCResponseModel {
       fullTextCorrection: json["full_text_correction"],
       userL1: json[ModelKey.userL1],
       userL2: json[ModelKey.userL2],
-      enableIT: json["enable_it"],
-      enableIGC: json["enable_igc"],
+      enableIT: json[ModelKey.enableIT],
+      enableIGC: json[ModelKey.enableIGC],
     );
   }
 
@@ -47,7 +47,7 @@ class IGCResponseModel {
         "matches": matches.map((e) => e.toJson()).toList(),
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
-        "enable_it": enableIT,
-        "enable_igc": enableIGC,
+        ModelKey.enableIT: enableIT,
+        ModelKey.enableIGC: enableIGC,
       };
 }
