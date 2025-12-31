@@ -191,6 +191,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _levelSubscription;
   StreamSubscription? _constructsSubscription;
+  StreamSubscription? _constructLevelSubscription;
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
   late final ActivityChatController activityController;
@@ -527,6 +528,13 @@ class ChatController extends State<ChatPageWithRoom>
     _constructsSubscription =
         updater.unlockedConstructsStream.stream.listen(_onUnlockConstructs);
 
+    _constructLevelSubscription =
+        updater.constructLevelUpdateStream.stream.listen((entry) {
+      debugPrint(
+        "Construct level update received: ${entry.key.string} -> ${entry.value}",
+      );
+    });
+
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
 
     activityController = ActivityChatController(
@@ -790,6 +798,7 @@ class ChatController extends State<ChatPageWithRoom>
     _levelSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _constructsSubscription?.cancel();
+    _constructLevelSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     choreographer.timesClosedIT.removeListener(_onCloseIT);
     scrollController.dispose();
