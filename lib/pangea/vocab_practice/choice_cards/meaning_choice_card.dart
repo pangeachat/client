@@ -1,5 +1,5 @@
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/animated_choice_card.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
 import 'package:flutter/material.dart';
 
 /// Choice card for meaning activity with emoji, and alt text on flip
@@ -28,7 +28,9 @@ class MeaningChoiceCard extends StatelessWidget {
             (height / 72.0).clamp(1.0, 1.4);
     final emojiSize = baseTextSize * 1.2;
 
-    return AnimatedChoiceCard(
+    return GameChoiceCard(
+      shouldFlip: true,
+      transformId: choiceId,
       onPressed: onPressed,
       isCorrect: isCorrect,
       height: height,

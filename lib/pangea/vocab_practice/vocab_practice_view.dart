@@ -6,8 +6,7 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/basic_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/choice_card_wrapper.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/meaning_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/completed_activity_session_view.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
@@ -146,7 +145,11 @@ class _VocabActivityView extends StatelessWidget {
               ),
               _ExampleMessageWidget(controller, constructId),
               Flexible(
-                child: _ActivityChoicesWidget(controller, activityType),
+                child: _ActivityChoicesWidget(
+                  controller,
+                  activityType,
+                  constructId,
+                ),
               ),
             ],
           ),
@@ -205,8 +208,13 @@ class _ExampleMessageWidget extends StatelessWidget {
 class _ActivityChoicesWidget extends StatelessWidget {
   final VocabPracticeState controller;
   final ActivityTypeEnum activityType;
+  final ConstructIdentifier constructId;
 
-  const _ActivityChoicesWidget(this.controller, this.activityType);
+  const _ActivityChoicesWidget(
+    this.controller,
+    this.activityType,
+    this.constructId,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -254,14 +262,11 @@ class _ActivityChoicesWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: choices.map((choiceId) {
-                return ChoiceCardWrapper(
+                return _buildChoiceCard(
+                  activity: activity,
                   choiceId: choiceId,
-                  child: _buildChoiceCard(
-                    activity: activity,
-                    choiceId: choiceId,
-                    cardHeight: cardHeight,
-                    onPressed: () => controller.onSelectChoice(choiceId),
-                  ),
+                  cardHeight: cardHeight,
+                  onPressed: () => controller.onSelectChoice(choiceId),
                 );
               }).toList(),
             ),
@@ -282,7 +287,9 @@ class _ActivityChoicesWidget extends StatelessWidget {
     switch (activity.activityType) {
       case ActivityTypeEnum.lemmaMeaning:
         return MeaningChoiceCard(
-          key: ValueKey('meaning_$choiceId'),
+          key: ValueKey(
+            '${constructId.string}_${activityType.name}_meaning_$choiceId',
+          ),
           choiceId: choiceId,
           displayText: controller.getChoiceText(choiceId),
           emoji: controller.getChoiceEmoji(choiceId),
@@ -293,7 +300,9 @@ class _ActivityChoicesWidget extends StatelessWidget {
 
       case ActivityTypeEnum.lemmaAudio:
         return AudioChoiceCard(
-          key: ValueKey('audio_$choiceId'),
+          key: ValueKey(
+            '${constructId.string}_${activityType.name}_audio_$choiceId',
+          ),
           text: choiceId,
           onPressed: onPressed,
           isCorrect: isCorrect,
@@ -301,8 +310,12 @@ class _ActivityChoicesWidget extends StatelessWidget {
         );
 
       default:
-        return BasicChoiceCard(
-          key: ValueKey('basic_$choiceId'),
+        return GameChoiceCard(
+          key: ValueKey(
+            '${constructId.string}_${activityType.name}_basic_$choiceId',
+          ),
+          shouldFlip: false,
+          transformId: choiceId,
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,

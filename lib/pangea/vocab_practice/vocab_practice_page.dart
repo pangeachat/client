@@ -247,12 +247,10 @@ class VocabPracticeState extends State<VocabPractice> {
 
     activity.onMultipleChoiceSelect(choice);
     final correct = activity.multipleChoiceContent!.isCorrect(choice);
-
     // Submit answer immediately (records use and gives XP)
     sessionLoader.value!.submitAnswer(activity);
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
-    // Show points gained/lost animation
     final transformTargetId =
         'vocab-choice-card-${choice.replaceAll(' ', '_')}';
     if (correct) {
@@ -288,11 +286,9 @@ class VocabPracticeState extends State<VocabPractice> {
 
     final xpRange = minXPForNextLevel - minXPForCurrentLevel;
 
-    // Progress before XP gain
     final progressBefore =
         ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
 
-    // Progress after XP gain
     final newTotalXP = currentXP + xpGained;
     final progressAfter =
         ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);

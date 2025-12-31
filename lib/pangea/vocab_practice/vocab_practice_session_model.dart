@@ -50,8 +50,6 @@ class VocabPracticeSessionModel {
         sortedConstructIds.length,
       );
 
-  //bool get canContinueSession => currentIndex < sortedConstructIds.length;
-
   bool get hasCompletedCurrentGroup =>
       currentIndex >= currentAvailableActivities;
 
@@ -105,7 +103,6 @@ class VocabPracticeSessionModel {
     );
   }
 
-  // Analytics functions
   int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
 
   double get accuracy {

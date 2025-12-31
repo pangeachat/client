@@ -1,6 +1,6 @@
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/basic_choice_card.dart';
+import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,9 @@ class AudioChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BasicChoiceCard(
+    return GameChoiceCard(
+      shouldFlip: false,
+      transformId: text,
       onPressed: onPressed,
       isCorrect: isCorrect,
       height: height,

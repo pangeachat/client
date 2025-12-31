@@ -41,10 +41,6 @@ class _CompletedActivitySessionViewState
       widget.controller.sessionLoader.value!.totalXpGained,
     );
 
-    debugPrint(
-      "Progress Change: ${progressChange['before']} -> ${progressChange['after']}",
-    );
-
     //start with before progress
     currentProgress = progressChange['before'] ?? 0.0;
 
