@@ -336,7 +336,13 @@ class HtmlMessage extends StatelessWidget {
     // Pangea#
     int depth = 1,
   }) {
-    final onlyElements = nodes.whereType<dom.Element>().toList();
+    // #Pangea
+    // final onlyElements = nodes.whereType<dom.Element>().toList();
+    final onlyElements = nodes
+        .whereType<dom.Element>()
+        .where((e) => e.localName != 'nontoken')
+        .toList();
+    // Pangea#
     return [
       for (var i = 0; i < nodes.length; i++) ...[
         // Actually render the node child:
@@ -348,8 +354,10 @@ class HtmlMessage extends StatelessWidget {
         if (nodes[i] is dom.Element &&
             onlyElements.indexOf(nodes[i] as dom.Element) <
                 onlyElements.length - 1) ...[
-          if (blockHtmlTags.contains((nodes[i] as dom.Element).localName))
-            const TextSpan(text: '\n\n'),
+          // #Pangea
+          // if (blockHtmlTags.contains((nodes[i] as dom.Element).localName))
+          //   const TextSpan(text: '\n\n'),
+          // Pangea#
           if (fullLineHtmlTag.contains((nodes[i] as dom.Element).localName))
             const TextSpan(text: '\n'),
         ],
