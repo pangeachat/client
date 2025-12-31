@@ -125,6 +125,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                         Expanded(
                           child: TextField(
                             autofocus: true,
+                            focusNode: controller.searchFocusNode,
                             controller: controller.searchController,
                             decoration: const InputDecoration(
                               contentPadding: EdgeInsets.symmetric(
