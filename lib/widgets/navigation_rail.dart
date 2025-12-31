@@ -159,7 +159,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               collapse();
                               context.go("/rooms");
                             },
-                            toolTip: L10n.of(context).directMessages,
+                            toolTip: L10n.of(context).allChats,
                             unreadBadgeFilter: (room) =>
                                 room.firstSpaceParent == null,
                             expanded: expanded,
