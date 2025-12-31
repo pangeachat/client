@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart'
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -359,7 +360,7 @@ class ChatDetailsController extends State<ChatDetails>
     );
 
     if (resp.isError || resp.result == null || !mounted) return;
-    context.go('/rooms/${resp.result}/invite');
+    NavigationUtil.goToSpaceRoute('/rooms/${resp.result}/invite', context);
   }
 
   Future<void> _loadCourseInfo() async {

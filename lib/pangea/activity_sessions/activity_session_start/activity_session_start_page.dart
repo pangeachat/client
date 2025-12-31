@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/course_plans/course_activities/course_activity
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -377,7 +378,10 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       }
     }
 
-    context.go("/rooms/spaces/${widget.parentId}/${widget.roomId}");
+    NavigationUtil.goToSpaceRoute(
+      "/rooms/${widget.roomId}",
+      context,
+    );
   }
 
   Future<void> confirmRoleSelection() async {
@@ -404,7 +408,10 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       );
 
       if (!resp.isError) {
-        context.go("/rooms/spaces/${widget.parentId}/${resp.result}");
+        NavigationUtil.goToSpaceRoute(
+          "/rooms/${resp.result}",
+          context,
+        );
       }
     }
   }
@@ -449,9 +456,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   Future<void> joinActivityByRoomId(String roomId) async {
     final room = Matrix.of(context).client.getRoomById(roomId);
     if (room != null && room.membership == Membership.join) {
-      widget.parentId != null
-          ? context.go("/rooms/spaces/${widget.parentId}/$roomId")
-          : context.go("/rooms/$roomId");
+      NavigationUtil.goToSpaceRoute("/rooms/$roomId", context);
       return;
     }
 
@@ -475,9 +480,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     );
 
     if (!resp.isError) {
-      widget.parentId != null
-          ? context.go("/rooms/spaces/${widget.parentId}/$roomId")
-          : context.go("/rooms/$roomId");
+      NavigationUtil.goToSpaceRoute("/rooms/$roomId", context);
     }
   }
 

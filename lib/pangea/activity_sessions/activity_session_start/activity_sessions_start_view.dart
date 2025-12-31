@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -272,9 +273,12 @@ class ActivitySessionStartView extends StatelessWidget {
                                                 ),
                                               ElevatedButton(
                                                 style: buttonStyle,
-                                                onPressed: () => context.go(
-                                                  "/rooms/${controller.activityRoom!.id}/invite",
-                                                ),
+                                                onPressed: () {
+                                                  NavigationUtil.goToSpaceRoute(
+                                                    "/rooms/${controller.activityRoom!.id}/invite",
+                                                    context,
+                                                  );
+                                                },
                                                 child: Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -392,9 +396,12 @@ class _ActivityStartButtons extends StatelessWidget {
             ] else if (joinedActivityRoom != null) ...[
               ElevatedButton(
                 style: buttonStyle,
-                onPressed: () => context.go(
-                  "/rooms/spaces/${controller.widget.parentId}/$joinedActivityRoom",
-                ),
+                onPressed: () {
+                  NavigationUtil.goToSpaceRoute(
+                    "/rooms/$joinedActivityRoom",
+                    context,
+                  );
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -427,8 +434,9 @@ class _ActivityStartButtons extends StatelessWidget {
                     );
 
                     if (!resp.isError) {
-                      context.go(
-                        "/rooms/spaces/${controller.widget.parentId}/${resp.result}",
+                      NavigationUtil.goToSpaceRoute(
+                        "/rooms/${resp.result}",
+                        context,
                       );
                     }
                   },

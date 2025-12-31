@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
@@ -16,6 +15,7 @@ import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selectio
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
@@ -72,9 +72,8 @@ class PangeaInvitationSelectionView extends StatelessWidget {
           ),
         ],
       ),
-      onPressed: () => context.go(
-        room.isSpace ? "/rooms/spaces/${room.id}/details" : "/rooms/${room.id}",
-      ),
+      onPressed: () =>
+          NavigationUtil.goToSpaceRoute('/rooms/${room.id}', context),
     );
 
     return Scaffold(

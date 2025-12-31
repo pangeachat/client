@@ -24,6 +24,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart'
 import 'package:fluffychat/pangea/chat/widgets/chat_floating_action_button.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_view_background.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -159,7 +160,10 @@ class ChatView extends StatelessWidget {
         icon: const Icon(Icons.search_outlined),
         tooltip: L10n.of(context).search,
         onPressed: () {
-          context.go('/rooms/${controller.room.id}/search');
+          NavigationUtil.goToSpaceRoute(
+            '/rooms/${controller.room.id}/search',
+            context,
+          );
         },
       ),
       IconButton(
@@ -167,9 +171,15 @@ class ChatView extends StatelessWidget {
         tooltip: L10n.of(context).chatDetails,
         onPressed: () {
           if (GoRouterState.of(context).uri.path.endsWith('/details')) {
-            context.go('/rooms/${controller.room.id}');
+            NavigationUtil.goToSpaceRoute(
+              '/rooms/${controller.room.id}',
+              context,
+            );
           } else {
-            context.go('/rooms/${controller.room.id}/details');
+            NavigationUtil.goToSpaceRoute(
+              '/rooms/${controller.room.id}/details',
+              context,
+            );
           }
         },
       ),

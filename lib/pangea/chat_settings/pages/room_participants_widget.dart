@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -80,8 +80,9 @@ class RoomParticipantsSection extends StatelessWidget {
                   ? MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
-                        onTap: () => context.go(
+                        onTap: () => NavigationUtil.goToSpaceRoute(
                           "/rooms/${room.id}/details/invite",
+                          context,
                         ),
                         child: HoverBuilder(
                           builder: (context, hovered) {

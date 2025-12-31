@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/sync_status_localization.dart';
@@ -37,7 +37,13 @@ class ChatAppBarTitle extends StatelessWidget {
           ? null
           : () => FluffyThemes.isThreeColumnMode(context)
               ? controller.toggleDisplayChatDetailsColumn()
-              : context.go('/rooms/${room.id}/details'),
+              // #Pangea
+              // : context.go('/rooms/${room.id}/details'),
+              : NavigationUtil.goToSpaceRoute(
+                  '/rooms/${room.id}/details',
+                  context,
+                ),
+      // Pangea#
       child: Row(
         children: [
           Hero(

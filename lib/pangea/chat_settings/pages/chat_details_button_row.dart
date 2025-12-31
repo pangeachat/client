@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -13,6 +12,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -70,7 +70,12 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
       ButtonDetails(
         title: l10n.permissions,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-        onPressed: () => context.go('/rooms/${room.id}/details/permissions'),
+        onPressed: () {
+          NavigationUtil.goToSpaceRoute(
+            '/rooms/${room.id}/details/permissions',
+            context,
+          );
+        },
         enabled: room.isRoomAdmin,
         visible: !room.isDirectChat,
         showInMainView: false,
@@ -102,7 +107,10 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
           if (room.getParticipants([Membership.knock]).isEmpty) {
             filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
           }
-          context.go('/rooms/${room.id}/details/invite?filter=$filter');
+          NavigationUtil.goToSpaceRoute(
+            '/rooms/${room.id}/details/invite?filter=$filter',
+            context,
+          );
         },
         enabled: room.canInvite,
         visible: !room.isDirectChat,
@@ -142,7 +150,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.leave,
           );
           if (!resp.isError) {
-            context.go("/rooms");
+            NavigationUtil.goToSpaceRoute("/rooms", context);
           }
         },
         enabled: room.membership == Membership.join,
@@ -152,7 +160,6 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.delete,
         icon: const Icon(Icons.delete_outline, size: 30.0),
         onPressed: () async {
-          final parentSpaceId = room.courseParent?.id;
           final confirmed = await showOkCancelAlertDialog(
             context: context,
             title: L10n.of(context).areYouSure,
@@ -168,11 +175,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.delete,
           );
           if (resp.isError) return;
-          context.go(
-            parentSpaceId != null
-                ? "/rooms/spaces/$parentSpaceId/details"
-                : "/rooms",
-          );
+          NavigationUtil.goToSpaceRoute("/rooms", context);
         },
         enabled: room.isRoomAdmin,
         visible: !room.isDirectChat,

@@ -66,6 +66,7 @@ import 'package:fluffychat/pangea/languages/language_service.dart';
 import 'package:fluffychat/pangea/learning_settings/disable_language_tools_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/p_language_dialog.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/pangea/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
@@ -129,7 +130,7 @@ class ChatPage extends StatelessWidget {
         s: StackTrace.current,
         data: {"roomId": roomId},
       );
-      context.go("/rooms");
+      NavigationUtil.goToSpaceRoute('/rooms', context);
     }
 
     if (room == null || room.membership == Membership.leave) {
@@ -287,7 +288,10 @@ class ChatController extends State<ChatPageWithRoom>
       future: room.leave,
     );
     if (success.error != null) return;
-    context.go('/rooms');
+    // #Pangea
+    // context.go('/rooms');
+    NavigationUtil.goToSpaceRoute('/rooms', context);
+    // Pangea#
   }
 
   // #Pangea
@@ -808,7 +812,7 @@ class ChatController extends State<ChatPageWithRoom>
         s: StackTrace.current,
         data: {"roomId": roomId},
       );
-      context.go("/rooms");
+      NavigationUtil.goToSpaceRoute('/rooms', context);
     }
   }
 
@@ -2339,7 +2343,6 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   Future<void> onLeave() async {
-    final parentSpaceId = room.courseParent?.id;
     final confirmed = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).areYouSure,
@@ -2363,9 +2366,7 @@ class ChatController extends State<ChatPageWithRoom>
           );
     }
 
-    context.go(
-      parentSpaceId != null ? '/rooms/spaces/$parentSpaceId' : '/rooms',
-    );
+    NavigationUtil.goToSpaceRoute('/rooms', context);
   }
 
   Future<void> requestRegeneration(String eventId) async {

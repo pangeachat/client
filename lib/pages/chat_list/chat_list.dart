@@ -22,6 +22,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -212,7 +213,14 @@ class ChatListController extends State<ChatList>
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
-          context.go('/rooms/settings/security/ignorelist', extra: userId);
+          // #Pangea
+          // context.go('/rooms/settings/security/ignorelist', extra: userId);
+          NavigationUtil.goToSpaceRoute(
+            '/rooms/settings/security/ignorelist',
+            context,
+            extra: userId,
+          );
+          // Pangea#
           return;
       }
       if (!mounted) return;
@@ -241,7 +249,13 @@ class ChatListController extends State<ChatList>
     }
 
     if (room.membership == Membership.leave) {
-      context.go('/rooms/archive/${room.id}');
+      // #Pangea
+      // context.go('/rooms/archive/${room.id}');
+      NavigationUtil.goToSpaceRoute(
+        '/rooms/archive/${room.id}',
+        context,
+      );
+      // Pangea#
       return;
     }
 
@@ -250,7 +264,13 @@ class ChatListController extends State<ChatList>
       return;
     }
 
-    context.go('/rooms/${room.id}');
+    // #Pangea
+    // context.go('/rooms/${room.id}');
+    NavigationUtil.goToSpaceRoute(
+      '/rooms/${room.id}',
+      context,
+    );
+    // Pangea#
   }
 
   bool Function(Room) getRoomFilterByActiveFilter(ActiveFilter activeFilter) {
@@ -258,36 +278,24 @@ class ChatListController extends State<ChatList>
       case ActiveFilter.allChats:
         // #Pangea
         // return (room) => true;
-        return (room) =>
-            !room.isHiddenRoom &&
-            !room.isSpace &&
-            room.firstSpaceParent == null;
+        return (room) => !room.isHiddenRoom && !room.isSpace;
       // Pangea#
       case ActiveFilter.messages:
         // #Pangea
         // return (room) => !room.isSpace && room.isDirectChat;
         return (room) =>
-            !room.isSpace &&
-            room.isDirectChat &&
-            !room.isHiddenRoom &&
-            room.firstSpaceParent == null;
+            !room.isSpace && room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.groups:
         // #Pangea
         // return (room) => !room.isSpace && !room.isDirectChat;
         return (room) =>
-            !room.isSpace &&
-            !room.isDirectChat &&
-            !room.isHiddenRoom &&
-            room.firstSpaceParent == null;
+            !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.unread:
         // #Pangea
         // return (room) => room.isUnreadOrInvited;
-        return (room) =>
-            room.isUnreadOrInvited &&
-            !room.isHiddenRoom &&
-            room.firstSpaceParent == null;
+        return (room) => room.isUnreadOrInvited && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.spaces:
         return (room) => room.isSpace;
@@ -659,7 +667,10 @@ class ChatListController extends State<ChatList>
           future: () async {
             await room.leave();
             if (GoRouterState.of(context).uri.toString().contains(roomID)) {
-              context.go("/rooms");
+              NavigationUtil.goToSpaceRoute(
+                "/rooms",
+                context,
+              );
             }
             throw L10n.of(context).roomFull;
           },
