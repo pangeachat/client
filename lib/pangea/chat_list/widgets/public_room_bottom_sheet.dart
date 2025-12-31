@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_rooms_chunk_extension.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -96,7 +97,10 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
 
   void _goToRoom(String roomID) {
     if (chunk?.roomType != 'm.space' && !client.getRoomById(roomID)!.isSpace) {
-      outerContext.go("/rooms/$roomID");
+      NavigationUtil.goToSpaceRoute(
+        "/rooms/$roomID",
+        context,
+      );
     } else {
       context.go('/rooms/spaces/$roomID/details');
     }
