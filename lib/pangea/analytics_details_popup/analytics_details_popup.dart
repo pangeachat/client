@@ -41,6 +41,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   List<ConstructUses>? vocab;
 
   bool isSearching = false;
+  FocusNode searchFocusNode = FocusNode();
   ConstructLevelEnum? selectedConstructLevel;
   StreamSubscription<AnalyticsStreamUpdate>? _constructUpdateSub;
 
@@ -65,6 +66,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   void dispose() {
     searchController.dispose();
     _constructUpdateSub?.cancel();
+    searchFocusNode.dispose();
     super.dispose();
   }
 
@@ -140,6 +142,14 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       isSearching = !isSearching;
       selectedConstructLevel = null;
       searchController.clear();
+    });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (isSearching) {
+        FocusScope.of(context).requestFocus(searchFocusNode);
+      } else {
+        searchFocusNode.unfocus();
+      }
     });
   }
 
