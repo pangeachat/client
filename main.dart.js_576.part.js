@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Yll\xe4pit\xe4j\xe4";
     },
+    get$allChats() {
+      return "Kaikki keskustelut";
+    },
     get$commandHint_roomupgrade() {
       return "P\xe4ivit\xe4 t\xe4m\xe4 huone annettuun huonetyyppiin";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " muuta";
     },
-    get$directMessages() {
-      return "Suorat viestit";
-    },
     get$whatNow() {
       return "Mit\xe4 nyt?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fXf/WyEy1pCLXf3sPKpPfz7Fp6U="] = d.current;
+  d["m/kll42Ck/wM/uSpoDlweXgkDzM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map

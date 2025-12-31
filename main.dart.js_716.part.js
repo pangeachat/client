@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "P\u0101rvald\u012bt\u0101js";
     },
+    get$allChats() {
+      return "Visas t\u0113rz\u0113\u0161anas";
+    },
     get$commandHint_roomupgrade() {
       return "Uzlabot \u0161o istabu uz nor\u0101d\u012bto istabas versiju";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " citi";
     },
-    get$directMessages() {
-      return "Tie\u0161zi\u0146as";
-    },
     get$whatNow() {
       return "Kas tagad?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cBv2VcJR3U0pZszX1g/bylOGp7A="] = d.current;
+  d["Uxa65c0krD2Phosb+b8WUDfWwY4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

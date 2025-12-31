@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Administrator";
     },
+    get$allChats() {
+      return "Alle chats";
+    },
     get$commandHint_roomupgrade() {
       return "Opgrader dette rum til den angivne rumversion";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " andre";
     },
-    get$directMessages() {
-      return "Direkte beskeder";
-    },
     get$whatNow() {
       return "Hvad nu?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OKHIQ3ghgk9J2iv/zD4i15Vdd0E="] = d.current;
+  d["fygjpba15picC+PcjGKb+2j2Vv0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

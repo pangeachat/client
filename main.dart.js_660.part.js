@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Adminisztr\xe1tor";
     },
+    get$allChats() {
+      return "\xd6sszes cseveg\xe9s";
+    },
     get$commandHint_roomupgrade() {
       return "Szoba friss\xedt\xe9se a megadott szoba verzi\xf3ra";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " m\xe1sok";
     },
-    get$directMessages() {
-      return "K\xf6zvetlen \xfczenetek";
-    },
     get$whatNow() {
       return "Most mi?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZR7fPauqOTSR2Oi+pPze9IOgelY="] = d.current;
+  d["VXXJTjvWP14gkx0hAtgSYTGzui4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Peakasutaja";
     },
+    get$allChats() {
+      return "K\xf5ik vestlused";
+    },
     get$commandHint_roomupgrade() {
       return "Uuenda see jututuba antud jututoa versioonini";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " teist";
     },
-    get$directMessages() {
-      return "Otsevestlused";
-    },
     get$whatNow() {
       return "Mis n\xfc\xfcd?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GnesyI4CNVqJcw3Yh76qr/ockr4="] = d.current;
+  d["PGC3/4eR7XkE10t+SxGxU9cJr7g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

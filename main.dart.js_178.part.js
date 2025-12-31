@@ -80,6 +80,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Administraci\xf3";
     },
+    get$allChats() {
+      return "Tots els xats";
+    },
     get$commandHint_roomupgrade() {
       return "Actualitza aquesta sala a la versi\xf3 indicada";
     },
@@ -4187,9 +4190,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " altres";
     },
-    get$directMessages() {
-      return "Missatges directes";
-    },
     get$whatNow() {
       return "I ara qu\xe8?";
     },
@@ -5262,7 +5262,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q1omyHKKT7lzdAy6zS4r/yfSspc="] = d.current;
+  d["fbNHmD31hIeYk+tvug2nYYIO63Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

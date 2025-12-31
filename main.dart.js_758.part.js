@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Qu\u1ea3n tr\u1ecb vi\xean";
     },
+    get$allChats() {
+      return "T\u1ea5t c\u1ea3 h\u1ed9i tho\u1ea1i";
+    },
     get$commandHint_roomupgrade() {
       return "N\xe2ng c\u1ea5p ph\xf2ng n\xe0y l\xean phi\xean b\u1ea3n ph\xf2ng \u0111\xe3 cho";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " ng\u01b0\u1eddi kh\xe1c";
     },
-    get$directMessages() {
-      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp";
-    },
     get$whatNow() {
       return "B\xe2y gi\u1edd l\xe0m g\xec?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WesuW0ORC1CEz71zo3sUbENOl6U="] = d.current;
+  d["ESZHZii2431FcrzF7CM2MaAjMm8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

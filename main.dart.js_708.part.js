@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Administratorius";
     },
+    get$allChats() {
+      return "Visi pokalbiai";
+    },
     get$commandHint_roomupgrade() {
       return "Atnaujinti \u0161\u012f kambar\u012f \u012f nurodyt\u0105 kambario versij\u0105";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " kiti";
     },
-    get$directMessages() {
-      return "Tiesiogin\u0117s \u017einut\u0117s";
-    },
     get$whatNow() {
       return "Kas dabar?";
     },
@@ -5261,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kj+di1SBrf65OH7znNbKFI9PdGk="] = d.current;
+  d["C3XTANU2GVytzllmQ23krZFNJ68="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

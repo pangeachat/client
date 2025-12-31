@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Y\xf6netici";
     },
+    get$allChats() {
+      return "T\xfcm sohbetler";
+    },
     get$commandHint_roomupgrade() {
       return "Bu odan\u0131n s\xfcr\xfcm\xfcn\xfc verilen oda s\xfcr\xfcm\xfcne y\xfckselt";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " di\u011fer";
     },
-    get$directMessages() {
-      return "Do\u011frudan Mesajlar";
-    },
     get$whatNow() {
       return "\u015eimdi ne olacak?";
     },
@@ -5261,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3U9pF9t1HQHrdFtbxZpUnoZX++0="] = d.current;
+  d["6Z3jzQoHmLcG1STwDI9RF9rIiC4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

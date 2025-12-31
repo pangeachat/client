@@ -91,6 +91,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
+    get$allChats() {
+      return "Todos os chats";
+    },
     get$commandHint_roomupgrade() {
       return string$.Atuali;
     },
@@ -4198,9 +4201,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " outros";
     },
-    get$directMessages() {
-      return "Mensagens Diretas";
-    },
     get$whatNow() {
       return "E agora?";
     },
@@ -5324,6 +5324,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$admin() {
       return "Admin";
+    },
+    get$allChats() {
+      return "Todas as conversas";
     },
     get$commandHint_roomupgrade() {
       return string$.Atuali;
@@ -9432,9 +9435,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " outros";
     },
-    get$directMessages() {
-      return "Mensagens Diretas";
-    },
     get$whatNow() {
       return "E agora?";
     },
@@ -10555,6 +10555,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$admin() {
       return "Admin";
+    },
+    get$allChats() {
+      return "Todas as conversas";
     },
     get$commandHint_roomupgrade() {
       return "Atualizar esta sala para a vers\xe3o de sala fornecida";
@@ -14663,9 +14666,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " outros";
     },
-    get$directMessages() {
-      return "Mensagens Diretas";
-    },
     get$whatNow() {
       return "E agora?";
     },
@@ -15907,7 +15907,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lARNJ7zHeGUni0gdnbc8mW6l53k="] = d.current;
+  d["sNsBdt9RvvFHOivhJKXPhogVSGI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

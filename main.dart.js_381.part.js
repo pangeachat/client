@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
+    get$allChats() {
+      return "Alle Chats";
+    },
     get$commandHint_roomupgrade() {
       return "Aktualisieren Sie diesen Raum auf die angegebene Raumversion";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " weitere";
     },
-    get$directMessages() {
-      return "Direktnachrichten";
-    },
     get$whatNow() {
       return "Was jetzt?";
     },
@@ -5261,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["odJaqONwDij+yTwGg2hJz9POCQM="] = d.current;
+  d["rr1xRBQA5XiEveaX9bVQlNMBHVY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_381.part.js.map

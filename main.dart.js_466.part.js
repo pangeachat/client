@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Administranto";
     },
+    get$allChats() {
+      return "\u0108iuj babiloj";
+    },
     get$commandHint_roomupgrade() {
       return "Pligrandigi \u0109i tiun \u0109ambron al la donita \u0109ambra versio";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " aliaj";
     },
-    get$directMessages() {
-      return "Rektaj Mesa\u011doj";
-    },
     get$whatNow() {
       return "Kio nun?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["60gPVI3TboiuP/Ichu/zIr0tbRM="] = d.current;
+  d["lYJRMESHzHEOFrSPVy0Tr72oSn0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

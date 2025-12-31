@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
+    get$allChats() {
+      return "Lahat ng mga chat";
+    },
     get$commandHint_roomupgrade() {
       return "I-upgrade ang kuwartong ito sa ibinigay na bersyon ng kuwarto";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " iba pa";
     },
-    get$directMessages() {
-      return "Mga Direktang Mensahe";
-    },
     get$whatNow() {
       return "Ano na ngayon?";
     },
@@ -5258,7 +5258,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["00lcfzpIlKr+4Nv9Soi8AaipDk4="] = d.current;
+  d["JUNZs6TaHh5spqX+YS0NSkAS2ZI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

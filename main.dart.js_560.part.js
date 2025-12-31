@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Administratzailea";
     },
+    get$allChats() {
+      return "Txat guztiak";
+    },
     get$commandHint_roomupgrade() {
       return "Bertsio-berritu gela adierazitako gela-bertsiora";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " beste";
     },
-    get$directMessages() {
-      return "Mezularitza zuzena";
-    },
     get$whatNow() {
       return "Zer orain?";
     },
@@ -5261,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QkEAYTm24wBeOQzGJiO5o70vEA8="] = d.current;
+  d["0ahNRIgHliDYI65bXUsdcbGJnYA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

@@ -79,6 +79,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
+    get$allChats() {
+      return "Semua obrolan";
+    },
     get$commandHint_roomupgrade() {
       return "Tingkatkan ruangan ini ke versi ruangan yang ditentukan";
     },
@@ -4186,9 +4189,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     additionalParticipants$1(num) {
       return "+ " + num + " lainnya";
     },
-    get$directMessages() {
-      return "Pesan Langsung";
-    },
     get$whatNow() {
       return "Apa sekarang?";
     },
@@ -5261,7 +5261,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PiG3rCTUPTC1XtInUU/5AVoU9kE="] = d.current;
+  d["gdMgdYL2DRsH7BZanP87UXIioMs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map
