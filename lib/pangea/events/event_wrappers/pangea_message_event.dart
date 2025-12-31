@@ -293,7 +293,7 @@ class PangeaMessageEvent {
   Event? getTextToSpeechLocal(String langCode, String text) {
     for (final audio in allAudio) {
       final dataMap = audio.content.tryGetMap(ModelKey.transcription);
-      if (dataMap == null || !dataMap.containsKey('tokens')) continue;
+      if (dataMap == null || !dataMap.containsKey(ModelKey.tokens)) continue;
 
       try {
         final PangeaAudioEventData audioData = PangeaAudioEventData.fromJson(
@@ -413,11 +413,11 @@ class PangeaMessageEvent {
       extraContent: {
         'info': {
           ...file.info,
-          'duration': response.durationMillis,
+          ModelKey.duration: response.durationMillis,
         },
         'org.matrix.msc3245.voice': {},
         'org.matrix.msc1767.audio': {
-          'duration': response.durationMillis,
+          ModelKey.duration: response.durationMillis,
           'waveform': response.waveform,
         },
         ModelKey.transcription: response
