@@ -24,6 +24,7 @@ class SpacesNavigationRail extends StatelessWidget {
   final String? path;
   final double railWidth;
   final bool expanded;
+  final VoidCallback collapse;
   // Pangea#
 
   const SpacesNavigationRail({
@@ -33,6 +34,7 @@ class SpacesNavigationRail extends StatelessWidget {
     // required this.onGoToSpaceId,
     required this.path,
     required this.railWidth,
+    required this.collapse,
     this.expanded = false,
     // Pangea#
     super.key,
@@ -99,6 +101,7 @@ class SpacesNavigationRail extends StatelessWidget {
                           return NaviRailItem(
                             isSelected: isAnalytics,
                             onTap: () {
+                              collapse();
                               AnalyticsNavigationUtil.navigateToAnalytics(
                                 context: context,
                               );
@@ -152,7 +155,10 @@ class SpacesNavigationRail extends StatelessWidget {
                             // unreadBadgeFilter: (room) => true,
                             icon: const Icon(Icons.forum_outlined),
                             selectedIcon: const Icon(Icons.forum),
-                            onTap: () => context.go("/rooms"),
+                            onTap: () {
+                              collapse();
+                              context.go("/rooms");
+                            },
                             toolTip: L10n.of(context).directMessages,
                             unreadBadgeFilter: (room) =>
                                 room.firstSpaceParent == null,
@@ -175,6 +181,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(0),
                             isSelected: isCourse,
                             onTap: () {
+                              collapse();
                               context.go('/rooms/course');
                             },
                             icon: ClipPath(
@@ -212,6 +219,7 @@ class SpacesNavigationRail extends StatelessWidget {
                           borderRadius: BorderRadius.circular(0),
                           // onTap: () => onGoToSpaceId(rootSpaces[i].id),
                           onTap: () {
+                            collapse();
                             final room = client.getRoomById(rootSpaces[i].id);
                             if (room != null) {
                               chatListHandleSpaceTap(
@@ -279,8 +287,8 @@ class SpacesNavigationRail extends StatelessWidget {
                   ),
                   NaviRailItem(
                     isSelected: isSettings,
-                    onTap: () => context.go('/rooms/settings'),
                     // #Pangea
+                    // onTap: () => context.go('/rooms/settings'),
                     // icon: const Padding(
                     //   padding: EdgeInsets.all(10.0),
                     //   child: Icon(Icons.settings_outlined),
@@ -289,6 +297,10 @@ class SpacesNavigationRail extends StatelessWidget {
                     //   padding: EdgeInsets.all(10.0),
                     //   child: Icon(Icons.settings),
                     // ),
+                    onTap: () {
+                      collapse();
+                      context.go('/rooms/settings');
+                    },
                     icon: const Icon(Icons.settings_outlined),
                     selectedIcon: const Icon(Icons.settings),
                     expanded: expanded,
