@@ -413,11 +413,11 @@ class PangeaMessageEvent {
       extraContent: {
         'info': {
           ...file.info,
-          ModelKey.activityPlanDuration: response.durationMillis,
+          ModelKey.duration: response.durationMillis,
         },
         'org.matrix.msc3245.voice': {},
         'org.matrix.msc1767.audio': {
-          ModelKey.activityPlanDuration: response.durationMillis,
+          ModelKey.duration: response.durationMillis,
           'waveform': response.waveform,
         },
         ModelKey.transcription: response

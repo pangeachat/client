@@ -156,6 +156,7 @@ class ModelKey {
   static const String activityPlanRequest = "req";
   static const String activityPlanTitle = "title";
   static const String description = "description";
+  static const String duration = "duration";
   static const String activityPlanLocation = "location";
   static const String activityPlanLearningObjective = "learning_objective";
   static const String activityPlanInstructions = "instructions";
@@ -163,7 +164,6 @@ class ModelKey {
   static const String activityPlanImageURL = "image_url";
   static const String activityId = "activity_id";
   static const String activityPlanEndAt = "end_at";
-  static const String activityPlanDuration = "duration";
   static const String activityPlanTopicId = "topic_id";
 
   static const String activityRequestTopic = "topic";
