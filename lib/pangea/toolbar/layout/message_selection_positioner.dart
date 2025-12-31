@@ -159,6 +159,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     return hasReactions ? 28.0 : 0.0;
   }
 
+  double get reactionsWidth {
+    if (_reactionsRenderBox != null) {
+      return _reactionsRenderBox!.size.width;
+    }
+    return 0.0;
+  }
+
   bool get ownMessage =>
       widget.event.senderId == widget.event.room.client.userID;
 
