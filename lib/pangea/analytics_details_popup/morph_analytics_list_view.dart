@@ -67,7 +67,6 @@ class MorphAnalyticsListView extends StatelessWidget {
                               morphFeature: feature.feature,
                               allTags: controller.morphs
                                   .getDisplayTags(feature.feature)
-                                  .map((tag) => tag.toLowerCase())
                                   .toSet(),
                             ),
                           )
