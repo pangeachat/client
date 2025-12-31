@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/course_plans/course_activities/activity_summar
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -428,7 +429,7 @@ class CourseChatsController extends State<CourseChats>
       return;
     }
 
-    context.go('/rooms/${room.id}');
+    NavigationUtil.goToSpaceRoute('/rooms/${room.id}', context);
   }
 
   void joinChildRoom(SpaceRoomsChunk item) async {

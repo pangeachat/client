@@ -46,7 +46,6 @@ import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
@@ -993,30 +992,7 @@ abstract class AppRoutes {
                   ),
                 );
               },
-              // #Pangea
-              // redirect: loggedOutRedirect,
-              redirect: (context, state) {
-                String subroute = state.fullPath!.split('roomid').last;
-                if (state.uri.queryParameters.isNotEmpty) {
-                  final queryString = state.uri.queryParameters.entries
-                      .map((e) => '${e.key}=${e.value}')
-                      .join('&');
-                  subroute = '$subroute?$queryString';
-                }
-
-                final roomId = state.pathParameters['roomid']!;
-                final room = Matrix.of(context).client.getRoomById(roomId);
-                if (room != null && room.isSpace) {
-                  return "/rooms/spaces/${room.id}$subroute";
-                }
-
-                final parent = room?.firstSpaceParent;
-                if (parent != null && state.fullPath != null) {
-                  return "/rooms/spaces/${parent.id}/$roomId$subroute";
-                }
-                return loggedOutRedirect(context, state);
-              },
-              // Pangea#
+              redirect: loggedOutRedirect,
               routes: [
                 GoRoute(
                   path: 'search',
