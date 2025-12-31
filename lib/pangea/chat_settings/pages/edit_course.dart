@@ -103,6 +103,10 @@ class EditCourseController extends State<EditCourse> {
         ),
       );
     }
+
+    if (!resp.isError) {
+      Navigator.of(context).pop();
+    }
   }
 
   Future<void> _setAvatarAction() async {
