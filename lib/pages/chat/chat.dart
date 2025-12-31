@@ -51,6 +51,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -2058,6 +2059,19 @@ class ChatController extends State<ChatPageWithRoom>
 
     if (buttonEventID == event.eventId) {
       depressMessageButton.value = true;
+      OverlayUtil.showOverlay(
+        context: context,
+        child: TransparentBackdrop(
+          backgroundColor: Colors.black,
+          onDismiss: clearSelectedEvents,
+          blurBackground: true,
+          animateBackground: true,
+          backgroundAnimationDuration: const Duration(milliseconds: 200),
+        ),
+        position: OverlayPositionEnum.centered,
+        overlayKey: "button_message_backdrop",
+      );
+
       Future.delayed(const Duration(milliseconds: 200), () {
         if (_router.state.path != ':roomid') {
           // The user has navigated away from the chat,
