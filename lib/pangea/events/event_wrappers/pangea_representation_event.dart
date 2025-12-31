@@ -24,8 +24,6 @@ import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
-import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
-import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -252,44 +250,7 @@ class RepresentationEvent {
         : Result.value(res.result!.tokens);
   }
 
-  Future<SttTranslationModel> requestSttTranslation({
-    required String userL1,
-    required String userL2,
-  }) async {
-    if (content.speechToText == null) {
-      throw Exception(
-        "RepresentationEvent.getSttTranslation called on a representation without speechToText",
-      );
-    }
-
-    final local = sttTranslations.firstWhereOrNull((t) => t.langCode == userL1);
-    if (local != null) return local;
-
-    final res = await FullTextTranslationRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      FullTextTranslationRequestModel(
-        text: content.speechToText!.transcript.text,
-        tgtLang: userL1,
-        userL2: userL2,
-        userL1: userL1,
-      ),
-    );
-
-    if (res.isError) {
-      throw res.error!;
-    }
-
-    final translation = SttTranslationModel(
-      translation: res.result!,
-      langCode: userL1,
-    );
-
-    _event?.room.sendPangeaEvent(
-      content: translation.toJson(),
-      parentEventId: _event!.eventId,
-      type: PangeaEventTypes.sttTranslation,
-    );
-
-    return translation;
+  SttTranslationModel? getSpeechToTextTranslationLocal(String langCode) {
+    return sttTranslations.firstWhereOrNull((t) => t.langCode == langCode);
   }
 }
