@@ -144,6 +144,7 @@ class WordZoomWidget extends StatelessWidget {
                                         LanguageModel.unknown,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
+                                    maxLines: 2,
                                   )
                                 : WordAudioButton(
                                     text: token.content,

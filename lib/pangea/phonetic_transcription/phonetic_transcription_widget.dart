@@ -19,6 +19,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   final TextStyle? style;
   final double? iconSize;
   final Color? iconColor;
+  final int? maxLines;
 
   final VoidCallback? onTranscriptionFetched;
 
@@ -29,6 +30,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
     this.style,
     this.iconSize,
     this.iconColor,
+    this.maxLines,
     this.onTranscriptionFetched,
   });
 
@@ -119,6 +121,8 @@ class _PhoneticTranscriptionWidgetState
                           textScaler: TextScaler.noScaling,
                           style: widget.style ??
                               Theme.of(context).textTheme.bodyMedium,
+                          maxLines: widget.maxLines,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       Tooltip(
