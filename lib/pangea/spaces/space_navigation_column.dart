@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -27,7 +29,39 @@ class SpaceNavigationColumn extends StatefulWidget {
 }
 
 class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
-  bool _expand = false;
+  bool _expanded = false;
+  Timer? _debounceTimer;
+
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    _debounceTimer = null;
+    super.dispose();
+  }
+
+  void _expand() {
+    if (_debounceTimer?.isActive == true) return;
+    if (!_expanded) {
+      setState(() => _expanded = true);
+    }
+  }
+
+  void _collapse() {
+    if (_expanded) {
+      setState(() {
+        _expanded = false;
+        _debounce();
+      });
+    }
+  }
+
+  void _debounce() {
+    _debounceTimer?.cancel();
+    _debounceTimer = Timer(const Duration(milliseconds: 300), () {
+      _debounceTimer?.cancel();
+      _debounceTimer = null;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +97,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
 
     return AnimatedContainer(
       duration: FluffyThemes.animationDuration,
-      width: _expand ? expandedWidth : baseWidth,
+      width: _expanded ? expandedWidth : baseWidth,
       child: Stack(
         children: [
           if (isColumnMode)
@@ -91,13 +125,9 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
           if (showNavRail)
             HoverBuilder(
               builder: (context, hovered) {
-                if (_expand != hovered) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    setState(() {
-                      _expand = hovered;
-                    });
-                  });
-                }
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  hovered ? _expand() : _collapse();
+                });
 
                 return Row(
                   mainAxisSize: MainAxisSize.min,
@@ -105,10 +135,11 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                     SpacesNavigationRail(
                       activeSpaceId: widget.state.pathParameters['spaceid'],
                       path: widget.state.fullPath,
-                      railWidth: _expand
+                      railWidth: _expanded
                           ? navRailWidth + navRailExtraWidth
                           : navRailWidth,
-                      expanded: _expand,
+                      expanded: _expanded,
+                      collapse: _collapse,
                     ),
                     Container(
                       width: 1,
