@@ -136,7 +136,6 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         icon: const Icon(Icons.logout_outlined, size: 30.0),
         onPressed: () async {
           final confirmed = await showOkCancelAlertDialog(
-            useRootNavigator: false,
             context: context,
             title: L10n.of(context).areYouSure,
             okLabel: L10n.of(context).leave,
