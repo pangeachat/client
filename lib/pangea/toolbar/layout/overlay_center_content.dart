@@ -96,13 +96,11 @@ class OverlayCenterContent extends StatelessWidget {
                   top: 4.0,
                   left: ownMessage ? 0.0 : 4.0,
                 ),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(maxWidth: reactionsWidth ?? 0.0),
-                  child: PangeaMessageReactions(
-                    event,
-                    chatController.timeline!,
-                    chatController,
-                  ),
+                child: PangeaMessageReactions(
+                  event,
+                  chatController.timeline!,
+                  chatController,
+                  maxWidth: reactionsWidth ?? 0.0,
                 ),
               ),
             ],
