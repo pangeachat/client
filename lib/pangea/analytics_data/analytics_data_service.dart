@@ -120,7 +120,11 @@ class AnalyticsDataService {
       }
 
       _invalidateCaches();
-      await _clearDatabase();
+      final analyticsUserId = await _analyticsClientGetter.database.getUserID();
+      if (analyticsUserId != client.userID) {
+        await _clearDatabase();
+        await _analyticsClientGetter.database.updateUserID(client.userID!);
+      }
 
       final resp = await client.getUserProfile(client.userID!);
       final analyticsProfile =
@@ -367,7 +371,7 @@ class AnalyticsDataService {
     final newConstructs = await getConstructUses(updateIds);
 
     int points = 0;
-    if (blocked.isEmpty || updateIds.isNotEmpty) {
+    if (update.blockedConstruct == null || updateIds.isNotEmpty) {
       for (final id in updateIds) {
         final prevPoints = prevConstructs[id]?.points ?? 0;
         final newPoints = newConstructs[id]?.points ?? 0;
