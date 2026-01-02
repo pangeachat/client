@@ -20,11 +20,13 @@ class PangeaMessageReactions extends StatefulWidget {
   final Event event;
   final Timeline timeline;
   final ChatController controller;
+  final double? maxWidth;
 
   const PangeaMessageReactions(
     this.event,
     this.timeline,
     this.controller, {
+    this.maxWidth,
     super.key,
   });
 
@@ -120,13 +122,12 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
         .aggregatedEvents(widget.timeline, RelationshipTypes.reaction)
         .toList();
 
-    return Directionality(
-      textDirection: ownMessage ? TextDirection.rtl : TextDirection.ltr,
-      child: AnimatedSize(
-        duration: FluffyThemes.animationDuration,
-        curve: FluffyThemes.animationCurve,
-        alignment: ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
-        clipBehavior: Clip.none,
+    return SizedBox(
+      width: allReactionEvents.any((e) => e.status.isSending)
+          ? null
+          : widget.maxWidth,
+      child: Directionality(
+        textDirection: ownMessage ? TextDirection.rtl : TextDirection.ltr,
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           runSpacing: 4.0,
