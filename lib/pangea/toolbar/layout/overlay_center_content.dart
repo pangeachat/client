@@ -85,7 +85,10 @@ class OverlayCenterContent extends StatelessWidget {
                   messageHeight: messageHeight,
                   isTransitionAnimation: isTransitionAnimation,
                   readingAssistanceMode: readingAssistanceMode,
-                  canRefresh: event.eventId == chatController.refreshEventID,
+                  canRefresh:
+                      (event.eventId == chatController.refreshEventID) &&
+                          (readingAssistanceMode !=
+                              ReadingAssistanceMode.practiceMode),
                 ),
               ),
               Padding(
