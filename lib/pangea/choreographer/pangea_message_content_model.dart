@@ -4,7 +4,6 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 
 class PangeaMessageContentModel {
   final String message;
-  final PangeaRepresentation? originalSent;
   final PangeaRepresentation? originalWritten;
   final PangeaMessageTokens? tokensSent;
   final PangeaMessageTokens? tokensWritten;
@@ -12,7 +11,6 @@ class PangeaMessageContentModel {
 
   const PangeaMessageContentModel({
     required this.message,
-    this.originalSent,
     this.originalWritten,
     this.tokensSent,
     this.tokensWritten,

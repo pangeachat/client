@@ -4,6 +4,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -78,19 +79,26 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       tokens[requestData.selectedToken] = response.updatedToken!;
     }
 
-    if (hasLangUpdate) {
-      originalSent.content.langCode = response.updatedLanguage!;
-    }
+    final updatedLanguage =
+        response.updatedLanguage ?? event?.originalSent?.langCode;
+
+    final tokensSent = PangeaMessageTokens(
+      tokens: tokens,
+      detections: [
+        if (updatedLanguage != null)
+          LanguageDetectionModel(
+            langCode: updatedLanguage,
+            confidence: 1,
+          ),
+      ],
+    );
 
     if (requestData.fullText != null && event != null) {
       await event!.room.pangeaSendTextEvent(
         requestData.fullText!,
         editEventId: event!.eventId,
-        originalSent: originalSent?.content,
         originalWritten: event!.originalWritten?.content,
-        tokensSent: PangeaMessageTokens(
-          tokens: tokens,
-        ),
+        tokensSent: tokensSent,
         tokensWritten: event!.originalWritten?.tokens != null
             ? PangeaMessageTokens(
                 tokens: event!.originalWritten!.tokens!,

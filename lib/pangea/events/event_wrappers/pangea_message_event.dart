@@ -164,38 +164,47 @@ class PangeaMessageEvent {
   List<RepresentationEvent> get representations {
     if (_representations != null) return _representations!;
     _representations = [];
-    if (_latestEdit.content[ModelKey.originalSent] != null) {
-      try {
-        final RepresentationEvent sent = RepresentationEvent(
-          parentMessageEvent: _event,
-          content: PangeaRepresentation.fromJson(
-            _latestEdit.content[ModelKey.originalSent] as Map<String, dynamic>,
-          ),
-          tokens: _tokensSafe(
-            _latestEdit.content[ModelKey.tokensSent] as Map<String, dynamic>?,
-          ),
-          choreo: _embeddedChoreo,
-          timeline: timeline,
+    try {
+      final tokens = _tokensSafe(
+        _latestEdit.content[ModelKey.tokensSent] as Map<String, dynamic>?,
+      );
+
+      // If originalSent has no tokens, there is not way to generate a tokens event
+      // and send it as a related event, since original sent has not eventID to set
+      // as parentEventId. In this case, it's better to generate a new representation
+      // with an eventID and send the related tokens event to that representation.
+      // This is a rare situation, and has only been seen with some bot messages.
+      if (tokens != null) {
+        final lang = tokens.detections?.isNotEmpty == true
+            ? tokens.detections!.first.langCode
+            : null;
+
+        final original = PangeaRepresentation(
+          langCode: lang ?? LanguageKeys.unknownLanguage,
+          text: _event.body,
+          originalSent: true,
+          originalWritten: false,
         );
 
-        // If originalSent has no tokens, there is not way to generate a tokens event
-        // and send it as a related event, since original sent has not eventID to set
-        // as parentEventId. In this case, it's better to generate a new representation
-        // with an eventID and send the related tokens event to that representation.
-        // This is a rare situation, and has only been seen with some bot messages.
-        if (sent.tokens != null) {
-          _representations!.add(sent);
-        }
-      } catch (err, s) {
-        ErrorHandler.logError(
-          m: "error parsing originalSent",
-          e: err,
-          s: s,
-          data: {
-            "event": _event.toJson(),
-          },
+        _representations!.add(
+          RepresentationEvent(
+            parentMessageEvent: _event,
+            content: original,
+            tokens: tokens,
+            choreo: _embeddedChoreo,
+            timeline: timeline,
+          ),
         );
       }
+    } catch (err, s) {
+      ErrorHandler.logError(
+        m: "error parsing originalSent",
+        e: err,
+        s: s,
+        data: {
+          "event": _event.toJson(),
+        },
+      );
     }
 
     if (_latestEdit.content[ModelKey.originalWritten] != null) {
