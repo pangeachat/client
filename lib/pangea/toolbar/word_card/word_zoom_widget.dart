@@ -27,6 +27,7 @@ class WordZoomWidget extends StatelessWidget {
 
   final Event? event;
 
+  final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
   final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
 
@@ -37,6 +38,7 @@ class WordZoomWidget extends StatelessWidget {
     required this.langCode,
     this.onClose,
     this.event,
+    this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
   });
@@ -156,6 +158,7 @@ class WordZoomWidget extends StatelessWidget {
                               constructId: construct,
                               langCode: langCode,
                               event: event,
+                              enabled: enableEmojiSelection,
                             ),
                             LemmaMeaningDisplay(
                               langCode: langCode,

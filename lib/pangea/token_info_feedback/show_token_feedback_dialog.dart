@@ -22,6 +22,7 @@ class TokenFeedbackUtil {
       ),
     );
 
+    if (resp == null) return;
     await showDialog(
       context: context,
       builder: (context) {

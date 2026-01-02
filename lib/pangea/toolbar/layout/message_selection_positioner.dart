@@ -110,9 +110,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     _reactionSubscription?.cancel();
     _contentChangedSubscription?.cancel();
     scrollController?.dispose();
-    Matrix.of(context).audioPlayer
-      ?..stop()
-      ..dispose();
     super.dispose();
   }
 

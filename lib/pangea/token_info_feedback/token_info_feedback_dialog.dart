@@ -152,6 +152,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
         token: selectedToken.text,
         construct: selectedToken.vocabConstructID,
         langCode: langCode,
+        enableEmojiSelection: false,
       ),
     );
   }
