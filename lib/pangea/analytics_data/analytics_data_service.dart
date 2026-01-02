@@ -365,13 +365,16 @@ class AnalyticsDataService {
     _mergeTable.addConstructsByUses(update.addedConstructs, blocked);
 
     final newConstructs = await getConstructUses(updateIds);
+
     int points = 0;
-    for (final id in updateIds) {
-      final prevPoints = prevConstructs[id]?.points ?? 0;
-      final newPoints = newConstructs[id]?.points ?? 0;
-      points += (newPoints - prevPoints);
+    if (updateIds.isNotEmpty) {
+      for (final id in updateIds) {
+        final prevPoints = prevConstructs[id]?.points ?? 0;
+        final newPoints = newConstructs[id]?.points ?? 0;
+        points += (newPoints - prevPoints);
+      }
+      events.add(XPGainedEvent(points, update.targetID));
     }
-    events.add(XPGainedEvent(points, update.targetID));
 
     final newData = prevData.copyWith(totalXP: prevData.totalXP + points);
     await _analyticsClientGetter.database.updateDerivedStats(newData);
