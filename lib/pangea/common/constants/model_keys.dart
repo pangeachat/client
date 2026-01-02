@@ -69,7 +69,6 @@ class ModelKey {
   static const String prevSender = "prev_sender";
   static const String prevTimestamp = "prev_timestamp";
 
-  static const String originalSent = "original_sent";
   static const String originalWritten = "original_written";
   static const String tokensSent = "tokens_sent";
   static const String tokensWritten = "tokens_written";

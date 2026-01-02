@@ -285,13 +285,6 @@ class Choreographer extends ChangeNotifier {
     return PangeaMessageContentModel(
       message: message,
       choreo: _record,
-      originalSent: PangeaRepresentation(
-        langCode: tokensResp?.detections.firstOrNull?.langCode ??
-            LanguageKeys.unknownLanguage,
-        text: message,
-        originalSent: true,
-        originalWritten: hasOriginalWritten,
-      ),
       originalWritten: hasOriginalWritten
           ? PangeaRepresentation(
               langCode: l1LangCode ?? LanguageKeys.unknownLanguage,

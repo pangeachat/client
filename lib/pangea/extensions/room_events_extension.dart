@@ -216,7 +216,6 @@ extension EventsRoomExtension on Room {
     String msgtype = MessageTypes.Text,
     String? threadRootEventId,
     String? threadLastEventId,
-    PangeaRepresentation? originalSent,
     PangeaRepresentation? originalWritten,
     PangeaMessageTokens? tokensSent,
     PangeaMessageTokens? tokensWritten,
@@ -241,9 +240,6 @@ extension EventsRoomExtension on Room {
     };
     if (choreo != null) {
       event[ModelKey.choreoRecord] = choreo.toJson();
-    }
-    if (originalSent != null) {
-      event[ModelKey.originalSent] = originalSent.toJson();
     }
     if (originalWritten != null) {
       event[ModelKey.originalWritten] = originalWritten.toJson();

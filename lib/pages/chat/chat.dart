@@ -947,7 +947,6 @@ class ChatController extends State<ChatPageWithRoom>
       inReplyTo: reply,
       editEventId: edit?.eventId,
       parseCommands: parseCommands,
-      originalSent: content.originalSent,
       originalWritten: content.originalWritten,
       tokensSent: content.tokensSent,
       tokensWritten: content.tokensWritten,
@@ -962,7 +961,13 @@ class ChatController extends State<ChatPageWithRoom>
         // stream sends the data for newly sent messages.
         _sendMessageAnalytics(
           msgEventId,
-          originalSent: content.originalSent,
+          originalSent: PangeaRepresentation(
+            langCode: content.tokensSent?.detections?.firstOrNull?.langCode ??
+                LanguageKeys.unknownLanguage,
+            text: message,
+            originalSent: true,
+            originalWritten: false,
+          ),
           tokensSent: content.tokensSent,
           choreo: content.choreo,
         );
