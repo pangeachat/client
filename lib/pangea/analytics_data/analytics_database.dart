@@ -175,6 +175,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
         (ConstructTypeEnum.morph, false) => _aggregatedServerMorphConstructsBox,
       };
 
+  Future<String?> getUserID() => _lastEventTimestampBox.get('user_id');
+
   Future<DateTime?> getLastEventTimestamp() async {
     final timestampString =
         await _lastEventTimestampBox.get('last_event_timestamp');
@@ -480,6 +482,15 @@ class AnalyticsDatabase with DatabaseFileStorage {
     );
 
     return combined.values.toList();
+  }
+
+  Future<void> updateUserID(String userID) {
+    return _transaction(() async {
+      await _lastEventTimestampBox.put(
+        'user_id',
+        userID,
+      );
+    });
   }
 
   Future<void> updateXPOffset(int offset) {
