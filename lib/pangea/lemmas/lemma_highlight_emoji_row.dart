@@ -22,6 +22,7 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
 
   final String? emoji;
   final Widget? selectedEmojiBadge;
+  final bool enabled;
 
   const LemmaHighlightEmojiRow({
     super.key,
@@ -32,6 +33,7 @@ class LemmaHighlightEmojiRow extends StatefulWidget {
     required this.messageInfo,
     this.emoji,
     this.selectedEmojiBadge,
+    this.enabled = true,
   });
 
   @override
@@ -89,6 +91,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
                             ? widget.selectedEmojiBadge
                             : null,
                         showShimmer: widget.emoji == null,
+                        enabled: widget.enabled,
                       );
                     },
                   ).toList(),
@@ -107,6 +110,7 @@ class EmojiChoiceItem extends StatefulWidget {
   final String transformTargetId;
   final Widget? badge;
   final bool showShimmer;
+  final bool enabled;
 
   const EmojiChoiceItem({
     super.key,
@@ -117,6 +121,7 @@ class EmojiChoiceItem extends StatefulWidget {
     required this.transformTargetId,
     this.badge,
     this.showShimmer = true,
+    this.enabled = true,
   });
 
   @override
@@ -148,7 +153,7 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   }
 
   void _showShimmer() {
-    if (!widget.showShimmer) return;
+    if (!widget.showShimmer || !widget.enabled) return;
 
     setState(() => shimmer = true);
     _shimmerTimer?.cancel();
@@ -171,7 +176,7 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   Widget build(BuildContext context) {
     return HoverBuilder(
       builder: (context, hovered) => GestureDetector(
-        onTap: widget.onSelectEmoji,
+        onTap: widget.enabled ? widget.onSelectEmoji : null,
         child: Stack(
           children: [
             ShimmerBackground(
@@ -190,7 +195,7 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: hovered || widget.selected
+                    color: widget.enabled && (hovered || widget.selected)
                         ? Theme.of(context).colorScheme.secondary.withAlpha(30)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(AppConfig.borderRadius),

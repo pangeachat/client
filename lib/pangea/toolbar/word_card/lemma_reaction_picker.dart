@@ -13,12 +13,14 @@ class LemmaReactionPicker extends StatefulWidget with LemmaEmojiSetter {
   final Event? event;
   final ConstructIdentifier constructId;
   final String langCode;
+  final bool enabled;
 
   const LemmaReactionPicker({
     super.key,
     required this.constructId,
     required this.langCode,
     this.event,
+    this.enabled = true,
   });
 
   @override
@@ -120,6 +122,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
                   size: 12.0,
                 )
               : null,
+          enabled: widget.enabled,
         );
       },
     );
