@@ -99,22 +99,27 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
     OverlayUtil.showPositionedCard(
       overlayKey: target,
       context: context,
-      cardToShow: WordZoomWidget(
-        token: PangeaTokenText(
-          content: v.lemma,
-          length: v.lemma.characters.length,
-          offset: 0,
+      cardToShow: StatefulBuilder(
+        builder: (context, setState) => WordZoomWidget(
+          token: PangeaTokenText(
+            content: v.lemma,
+            length: v.lemma.characters.length,
+            offset: 0,
+          ),
+          construct: ConstructIdentifier(
+            lemma: v.lemma,
+            type: ConstructTypeEnum.vocab,
+            category: v.pos,
+          ),
+          langCode: widget.langCode,
+          onClose: () {
+            MatrixState.pAnyState.closeOverlay(target);
+            setState(() => _selectedVocab = null);
+          },
+          onDismissNewWordOverlay: () {
+            if (mounted) setState(() {});
+          },
         ),
-        construct: ConstructIdentifier(
-          lemma: v.lemma,
-          type: ConstructTypeEnum.vocab,
-          category: v.pos,
-        ),
-        langCode: widget.langCode,
-        onClose: () {
-          MatrixState.pAnyState.closeOverlay(target);
-          setState(() => _selectedVocab = null);
-        },
       ),
       transformTargetId: target,
       closePrevOverlay: false,
