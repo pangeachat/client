@@ -244,6 +244,13 @@ class Choreographer extends ChangeNotifier {
       [],
     );
 
+    // init choreo record to record the original text before any matches are applied
+    _choreoRecord ??= ChoreoRecordModel(
+      originalText: textController.text,
+      choreoSteps: [],
+      openMatches: [],
+    );
+
     if (igcController.openAutomaticMatches.isNotEmpty) {
       await igcController.acceptNormalizationMatches();
     } else {

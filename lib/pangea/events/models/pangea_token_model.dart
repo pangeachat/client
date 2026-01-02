@@ -84,18 +84,19 @@ class PangeaToken {
   factory PangeaToken.fromJson(Map<String, dynamic> json) {
     final PangeaTokenText text =
         PangeaTokenText.fromJson(json[_textKey] as Map<String, dynamic>);
+    final morph = json['morph'] != null
+        ? (json['morph'] as Map<String, dynamic>).map(
+            (key, value) => MapEntry(
+              MorphFeaturesEnumExtension.fromString(key),
+              value as String,
+            ),
+          )
+        : <MorphFeaturesEnum, String>{};
     return PangeaToken(
       text: text,
       lemma: _getLemmas(text.content, json[_lemmaKey]),
-      pos: json['pos'] ?? '',
-      morph: json['morph'] != null
-          ? (json['morph'] as Map<String, dynamic>).map(
-              (key, value) => MapEntry(
-                MorphFeaturesEnumExtension.fromString(key),
-                value as String,
-              ),
-            )
-          : {},
+      pos: morph[MorphFeaturesEnum.Pos] ?? '',
+      morph: morph,
     );
   }
 
@@ -105,8 +106,6 @@ class PangeaToken {
   Map<String, dynamic> toJson() => {
         _textKey: text.toJson(),
         _lemmaKey: [lemma.toJson()],
-        'pos': pos,
-        // store morph as a map of strings ie Map<feature.name,tag>
         'morph': morph.map(
           (key, value) => MapEntry(key.name, value),
         ),

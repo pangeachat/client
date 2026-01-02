@@ -1,6 +1,4 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 
 class PangeaTokenText {
   int offset;
@@ -14,11 +12,11 @@ class PangeaTokenText {
   });
 
   factory PangeaTokenText.fromJson(Map<String, dynamic> json) {
-    debugger(when: kDebugMode && json[_offsetKey] == null);
+    final content = json[_contentKey] as String;
     return PangeaTokenText(
       offset: json[_offsetKey],
-      content: json[_contentKey],
-      length: json[_lengthKey] ?? (json[_contentKey] as String).length,
+      content: content,
+      length: content.characters.length,
     );
   }
 
@@ -26,16 +24,14 @@ class PangeaTokenText {
     return PangeaTokenText(
       offset: 0,
       content: content,
-      length: content.length,
+      length: content.characters.length,
     );
   }
 
   static const String _offsetKey = "offset";
   static const String _contentKey = "content";
-  static const String _lengthKey = "length";
 
-  Map<String, dynamic> toJson() =>
-      {_offsetKey: offset, _contentKey: content, _lengthKey: length};
+  Map<String, dynamic> toJson() => {_offsetKey: offset, _contentKey: content};
 
   //override equals and hashcode
   @override
