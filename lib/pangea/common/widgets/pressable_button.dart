@@ -166,9 +166,10 @@ class PressableButtonState extends State<PressableButton>
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                          height: _depressed
-                              ? widget.buttonHeight
-                              : _tweenAnimation.value),
+                        height: _depressed
+                            ? widget.buttonHeight
+                            : _tweenAnimation.value,
+                      ),
                       Container(
                         decoration: BoxDecoration(
                           color: shadowColor,
