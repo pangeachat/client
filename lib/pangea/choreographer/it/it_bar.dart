@@ -195,7 +195,8 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
             spacing: 12.0,
             children: [
               _ITBarHeader(
-                onClose: widget.choreographer.itController.closeIT,
+                onClose: () =>
+                    widget.choreographer.itController.closeIT(dismiss: true),
                 setEditing:
                     widget.choreographer.itController.setEditingSourceText,
                 editing: widget.choreographer.itController.editing,
