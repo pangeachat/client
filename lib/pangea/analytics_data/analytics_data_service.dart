@@ -367,7 +367,7 @@ class AnalyticsDataService {
     final newConstructs = await getConstructUses(updateIds);
 
     int points = 0;
-    if (updateIds.isNotEmpty) {
+    if (blocked.isEmpty || updateIds.isNotEmpty) {
       for (final id in updateIds) {
         final prevPoints = prevConstructs[id]?.points ?? 0;
         final newPoints = newConstructs[id]?.points ?? 0;
