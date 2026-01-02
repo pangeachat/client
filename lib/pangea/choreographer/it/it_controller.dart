@@ -35,6 +35,7 @@ class ITController {
       StreamController.broadcast();
 
   bool _continuing = false;
+  bool dismissed = false;
 
   ITRequestModel _request(String textInput) {
     assert(_sourceText.value != null);
@@ -61,6 +62,10 @@ class ITController {
     _sourceText.value = null;
   }
 
+  void clearDissmissed() {
+    dismissed = false;
+  }
+
   void dispose() {
     acceptedContinuanceStream.close();
     _open.dispose();
@@ -75,10 +80,14 @@ class ITController {
     _continueIT();
   }
 
-  void closeIT() {
+  void closeIT({bool dismiss = false}) {
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
 
     setEditingSourceText(false);
+    if (dismiss) {
+      dismissed = true;
+    }
+
     _open.value = false;
     _queue.clear();
     _currentITStep.value = null;
