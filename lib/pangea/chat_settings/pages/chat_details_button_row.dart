@@ -214,6 +214,16 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
                   return const SizedBox();
                 }
 
+                if (otherButtons.length == 1) {
+                  return Expanded(
+                    child: RoomDetailsButton(
+                      mini: mini,
+                      buttonDetails: otherButtons.first,
+                      height: mini ? _miniButtonWidth : _buttonHeight,
+                    ),
+                  );
+                }
+
                 return Expanded(
                   child: PopupMenuButton(
                     useRootNavigator: true,
