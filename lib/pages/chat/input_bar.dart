@@ -525,17 +525,21 @@ class InputBar extends StatelessWidget {
             decoration: decoration.copyWith(
               // #Pangea
               // hint: ShrinkableText(
-              hint: SizedBox(
-                height: 24,
-                child: ShrinkableText(
-                  // Pangea#
-                  text: choreographer.itController.open.value
-                      ? L10n.of(context).buildTranslation
-                      : _defaultHintText(context),
-                  maxWidth: double.infinity,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).disabledColor,
-                      ),
+              hint: StreamBuilder(
+                stream: MatrixState
+                    .pangeaController.userController.languageStream.stream,
+                builder: (context, _) => SizedBox(
+                  height: 24,
+                  child: ShrinkableText(
+                    // Pangea#
+                    text: choreographer.itController.open.value
+                        ? L10n.of(context).buildTranslation
+                        : _defaultHintText(context),
+                    maxWidth: double.infinity,
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).disabledColor,
+                        ),
+                  ),
                 ),
               ),
             ),
