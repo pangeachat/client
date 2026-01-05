@@ -307,6 +307,7 @@ class OverlayMessage extends StatelessWidget {
                     isSubscribed != false,
                 maxWidth: maxWidth,
                 style: style,
+                eventId: event.eventId,
                 onTokenSelected: overlayController.onClickOverlayMessageToken,
                 isTokenSelected: overlayController.isTokenSelected,
               ),
@@ -437,6 +438,7 @@ class _MessageBubbleTranscription extends StatelessWidget {
   final bool enabled;
   final double maxWidth;
   final TextStyle style;
+  final String eventId;
 
   final Function(PangeaToken) onTokenSelected;
   final bool Function(PangeaToken) isTokenSelected;
@@ -446,6 +448,7 @@ class _MessageBubbleTranscription extends StatelessWidget {
     required this.enabled,
     required this.maxWidth,
     required this.style,
+    required this.eventId,
     required this.onTokenSelected,
     required this.isTokenSelected,
   });
@@ -497,6 +500,7 @@ class _MessageBubbleTranscription extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SttTranscriptTokens(
+                        eventId: eventId,
                         model: transcription,
                         style: style.copyWith(fontStyle: FontStyle.italic),
                         onClick: onTokenSelected,

@@ -337,7 +337,6 @@ void showMemberActionsPopupMenu({
           enableEncryption: false,
         ),
       );
-      Navigator.of(context).pop();
       final roomId = roomIdResult.result;
       if (roomId == null) return;
       router.go('/rooms/$roomId');

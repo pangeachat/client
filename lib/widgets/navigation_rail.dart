@@ -87,6 +87,9 @@ class SpacesNavigationRail extends StatelessWidget {
               duration: FluffyThemes.animationDuration,
               // Pangea#
               child: Column(
+                // #Pangea
+                crossAxisAlignment: CrossAxisAlignment.start,
+                // Pangea#
                 children: [
                   Expanded(
                     child: ListView.builder(

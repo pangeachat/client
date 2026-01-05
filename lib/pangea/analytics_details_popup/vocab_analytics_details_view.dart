@@ -90,38 +90,33 @@ class VocabDetailsView extends StatelessWidget {
           child: Column(
             spacing: 16.0,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  WordZoomWidget(
-                    token: tokenText,
+              WordZoomWidget(
+                token: tokenText,
+                langCode:
+                    MatrixState.pangeaController.userController.userL2Code!,
+                construct: constructId,
+                onClose: Navigator.of(context).pop,
+                onFlagTokenInfo:
+                    (LemmaInfoResponse lemmaInfo, String phonetics) {
+                  final requestData = TokenInfoFeedbackRequestData(
+                    userId: Matrix.of(context).client.userID!,
+                    detectedLanguage:
+                        MatrixState.pangeaController.userController.userL2Code!,
+                    tokens: [token],
+                    selectedToken: 0,
+                    wordCardL1:
+                        MatrixState.pangeaController.userController.userL1Code!,
+                    lemmaInfo: lemmaInfo,
+                    phonetics: phonetics,
+                  );
+
+                  TokenFeedbackUtil.showTokenFeedbackDialog(
+                    context,
+                    requestData: requestData,
                     langCode:
                         MatrixState.pangeaController.userController.userL2Code!,
-                    construct: constructId,
-                    onClose: Navigator.of(context).pop,
-                    onFlagTokenInfo:
-                        (LemmaInfoResponse lemmaInfo, String phonetics) {
-                      final requestData = TokenInfoFeedbackRequestData(
-                        userId: Matrix.of(context).client.userID!,
-                        detectedLanguage: MatrixState
-                            .pangeaController.userController.userL2Code!,
-                        tokens: [token],
-                        selectedToken: 0,
-                        wordCardL1: MatrixState
-                            .pangeaController.userController.userL1Code!,
-                        lemmaInfo: lemmaInfo,
-                        phonetics: phonetics,
-                      );
-
-                      TokenFeedbackUtil.showTokenFeedbackDialog(
-                        context,
-                        requestData: requestData,
-                        langCode: MatrixState
-                            .pangeaController.userController.userL2Code!,
-                      );
-                    },
-                  ),
-                ],
+                  );
+                },
               ),
               if (construct != null)
                 Column(
