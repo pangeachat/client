@@ -116,7 +116,7 @@ class TokenPracticeButton extends StatelessWidget {
               : Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height: 4.0),
                     SizedBox(height: tokenButtonHeight, child: child),
                   ],
                 ),
