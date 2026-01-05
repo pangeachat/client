@@ -1,11 +1,5 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
@@ -15,7 +9,7 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -90,18 +84,19 @@ class PangeaToken {
   factory PangeaToken.fromJson(Map<String, dynamic> json) {
     final PangeaTokenText text =
         PangeaTokenText.fromJson(json[_textKey] as Map<String, dynamic>);
+    final morph = json['morph'] != null
+        ? (json['morph'] as Map<String, dynamic>).map(
+            (key, value) => MapEntry(
+              MorphFeaturesEnumExtension.fromString(key),
+              value as String,
+            ),
+          )
+        : <MorphFeaturesEnum, String>{};
     return PangeaToken(
       text: text,
       lemma: _getLemmas(text.content, json[_lemmaKey]),
-      pos: json['pos'] ?? '',
-      morph: json['morph'] != null
-          ? (json['morph'] as Map<String, dynamic>).map(
-              (key, value) => MapEntry(
-                MorphFeaturesEnumExtension.fromString(key),
-                value as String,
-              ),
-            )
-          : {},
+      pos: morph[MorphFeaturesEnum.Pos] ?? '',
+      morph: morph,
     );
   }
 
@@ -111,8 +106,6 @@ class PangeaToken {
   Map<String, dynamic> toJson() => {
         _textKey: text.toJson(),
         _lemmaKey: [lemma.toJson()],
-        'pos': pos,
-        // store morph as a map of strings ie Map<feature.name,tag>
         'morph': morph.map(
           (key, value) => MapEntry(key.name, value),
         ),
@@ -175,18 +168,6 @@ class PangeaToken {
     return null;
   }
 
-  ConstructUses get vocabConstruct =>
-      MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUses(
-        vocabConstructID,
-      ) ??
-      ConstructUses(
-        lemma: lemma.text,
-        constructType: ConstructTypeEnum.vocab,
-        category: pos,
-        uses: [],
-      );
-
   ConstructIdentifier? morphIdByFeature(MorphFeaturesEnum feature) {
     final tag = getMorphTag(feature);
     if (tag == null) return null;
@@ -195,31 +176,6 @@ class PangeaToken {
       type: ConstructTypeEnum.morph,
       category: feature.name,
     );
-  }
-
-  /// lastUsed by activity type, construct and form
-  DateTime? _lastUsedByActivityType(
-    ActivityTypeEnum a,
-    MorphFeaturesEnum? feature,
-  ) {
-    if (a == ActivityTypeEnum.morphId && feature == null) {
-      debugger(when: kDebugMode);
-      return null;
-    }
-    final ConstructIdentifier? cId = a == ActivityTypeEnum.morphId
-        ? morphIdByFeature(feature!)
-        : vocabConstructID;
-
-    if (cId == null) return null;
-    return cId.lastUsedByActivityType(text.content);
-  }
-
-  /// daysSinceLastUse by activity type
-  /// returns 1000 if there is no last use
-  int daysSinceLastUseByType(ActivityTypeEnum a, MorphFeaturesEnum? feature) {
-    final lastUsed = _lastUsedByActivityType(a, feature);
-    if (lastUsed == null) return 20;
-    return DateTime.now().difference(lastUsed).inDays;
   }
 
   ConstructIdentifier get vocabConstructID => ConstructIdentifier(
@@ -258,15 +214,6 @@ class PangeaToken {
           category: f.name,
         );
       }).toList();
-
-  /// [0,infinity) - a higher number means higher priority
-  int activityPriorityScore(
-    ActivityTypeEnum a,
-    MorphFeaturesEnum? morphFeature,
-  ) {
-    return daysSinceLastUseByType(a, morphFeature) *
-        (vocabConstructID.isContentWord ? 10 : 9);
-  }
 
   bool eligibleForPractice(ActivityTypeEnum activityType) {
     switch (activityType) {

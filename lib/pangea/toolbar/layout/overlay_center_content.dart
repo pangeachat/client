@@ -25,6 +25,7 @@ class OverlayCenterContent extends StatelessWidget {
   final double? messageWidth;
 
   final bool hasReactions;
+  final double? reactionsWidth;
 
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
@@ -41,6 +42,7 @@ class OverlayCenterContent extends StatelessWidget {
     required this.nextEvent,
     required this.prevEvent,
     required this.hasReactions,
+    this.reactionsWidth,
     this.onChangeMessageSize,
     this.sizeAnimation,
     this.isTransitionAnimation = false,
@@ -83,18 +85,22 @@ class OverlayCenterContent extends StatelessWidget {
                   messageHeight: messageHeight,
                   isTransitionAnimation: isTransitionAnimation,
                   readingAssistanceMode: readingAssistanceMode,
+                  canRefresh:
+                      (event.eventId == chatController.refreshEventID) &&
+                          (readingAssistanceMode !=
+                              ReadingAssistanceMode.practiceMode),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(
                   top: 4.0,
-                  left: 4.0,
-                  right: ownMessage ? 0 : 12.0,
+                  left: ownMessage ? 0.0 : 4.0,
                 ),
                 child: PangeaMessageReactions(
                   event,
                   chatController.timeline!,
                   chatController,
+                  maxWidth: reactionsWidth ?? 0.0,
                 ),
               ),
             ],

@@ -39,8 +39,8 @@ class UserSettings {
             ? DateTime.parse(json[ModelKey.userCreatedAt])
             : null,
         publicProfile: json[ModelKey.publicProfile],
-        targetLanguage: json[ModelKey.l2LanguageKey],
-        sourceLanguage: json[ModelKey.l1LanguageKey],
+        targetLanguage: json[ModelKey.targetLanguage],
+        sourceLanguage: json[ModelKey.sourceLanguage],
         gender: json[ModelKey.userGender] is String
             ? GenderEnumExtension.fromString(
                 json[ModelKey.userGender],
@@ -59,8 +59,8 @@ class UserSettings {
     data[ModelKey.userDateOfBirth] = dateOfBirth?.toIso8601String();
     data[ModelKey.userCreatedAt] = createdAt?.toIso8601String();
     data[ModelKey.publicProfile] = publicProfile;
-    data[ModelKey.l2LanguageKey] = targetLanguage;
-    data[ModelKey.l1LanguageKey] = sourceLanguage;
+    data[ModelKey.targetLanguage] = targetLanguage;
+    data[ModelKey.sourceLanguage] = sourceLanguage;
     data[ModelKey.userGender] = gender.string;
     data[ModelKey.userCountry] = country;
     data[ModelKey.cefrLevel] = cefrLevel.string;
@@ -104,10 +104,10 @@ class UserSettings {
       publicProfile: (accountData[ModelKey.publicProfile]
               ?.content[ModelKey.publicProfile] as bool?) ??
           false,
-      targetLanguage: accountData[ModelKey.l2LanguageKey]
-          ?.content[ModelKey.l2LanguageKey] as String?,
-      sourceLanguage: accountData[ModelKey.l1LanguageKey]
-          ?.content[ModelKey.l1LanguageKey] as String?,
+      targetLanguage: accountData[ModelKey.targetLanguage]
+          ?.content[ModelKey.targetLanguage] as String?,
+      sourceLanguage: accountData[ModelKey.sourceLanguage]
+          ?.content[ModelKey.sourceLanguage] as String?,
       country: accountData[ModelKey.userCountry]?.content[ModelKey.userCountry]
           as String?,
     );
@@ -420,10 +420,10 @@ class PangeaProfile {
 
   factory PangeaProfile.fromJson(Map<String, dynamic> json) {
     final l2 = LanguageModel.codeFromNameOrCode(
-      json[ModelKey.l2LanguageKey],
+      json[ModelKey.targetLanguage],
     );
     final l1 = LanguageModel.codeFromNameOrCode(
-      json[ModelKey.l1LanguageKey],
+      json[ModelKey.sourceLanguage],
     );
 
     return PangeaProfile(
@@ -442,8 +442,8 @@ class PangeaProfile {
     data[ModelKey.userCreatedAt] = createdAt;
     data[ModelKey.userPangeaUserId] = pangeaUserId;
     data[ModelKey.userDateOfBirth] = dateOfBirth;
-    data[ModelKey.l2LanguageKey] = targetLanguage;
-    data[ModelKey.l1LanguageKey] = sourceLanguage;
+    data[ModelKey.targetLanguage] = targetLanguage;
+    data[ModelKey.sourceLanguage] = sourceLanguage;
     data[ModelKey.publicProfile] = publicProfile;
     data[ModelKey.userCountry] = country;
     return data;

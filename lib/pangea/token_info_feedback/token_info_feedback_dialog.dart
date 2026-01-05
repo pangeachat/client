@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -23,13 +25,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 class TokenInfoFeedbackDialog extends StatelessWidget {
   final TokenInfoFeedbackRequestData requestData;
   final String langCode;
-  final PangeaMessageEvent event;
+  final PangeaMessageEvent? event;
 
   const TokenInfoFeedbackDialog({
     super.key,
     required this.requestData,
     required this.langCode,
-    required this.event,
+    this.event,
   });
 
   Future<String> _submitFeedback(String feedback) async {
@@ -59,7 +61,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       );
     }
 
-    final originalSent = event.originalSent;
+    final originalSent = event?.originalSent;
 
     // if no other changes, just return the message
     final hasTokenUpdate = response.updatedToken != null;
@@ -77,26 +79,36 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       tokens[requestData.selectedToken] = response.updatedToken!;
     }
 
-    if (hasLangUpdate) {
-      originalSent.content.langCode = response.updatedLanguage!;
-    }
+    final updatedLanguage =
+        response.updatedLanguage ?? event?.originalSent?.langCode;
 
-    await event.room.pangeaSendTextEvent(
-      requestData.fullText,
-      editEventId: event.eventId,
-      originalSent: originalSent?.content,
-      originalWritten: event.originalWritten?.content,
-      tokensSent: PangeaMessageTokens(
-        tokens: tokens,
-      ),
-      tokensWritten: event.originalWritten?.tokens != null
-          ? PangeaMessageTokens(
-              tokens: event.originalWritten!.tokens!,
-              detections: event.originalWritten?.detections,
-            )
-          : null,
-      choreo: originalSent?.choreo,
+    final tokensSent = PangeaMessageTokens(
+      tokens: tokens,
+      detections: [
+        if (updatedLanguage != null)
+          LanguageDetectionModel(
+            langCode: updatedLanguage,
+            confidence: 1,
+          ),
+      ],
     );
+
+    if (requestData.fullText != null && event != null) {
+      await event!.room.pangeaSendTextEvent(
+        requestData.fullText!,
+        editEventId: event!.eventId,
+        originalWritten: event!.originalWritten?.content,
+        tokensSent: tokensSent,
+        tokensWritten: event!.originalWritten?.tokens != null
+            ? PangeaMessageTokens(
+                tokens: event!.originalWritten!.tokens!,
+                detections: event!.originalWritten?.detections,
+              )
+            : null,
+        choreo: originalSent?.choreo,
+        messageTag: ModelKey.tokenFeedbackEdit,
+      );
+    }
 
     return response.userFriendlyMessage;
   }
@@ -117,7 +129,9 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
     LemmaInfoResponse response,
   ) =>
       LemmaInfoRepo.set(
-        token.vocabConstructID.lemmaInfoRequest,
+        token.vocabConstructID.lemmaInfoRequest(
+          event?.event.content ?? {},
+        ),
         response,
       );
 
@@ -146,6 +160,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
         token: selectedToken.text,
         construct: selectedToken.vocabConstructID,
         langCode: langCode,
+        enableEmojiSelection: false,
       ),
     );
   }

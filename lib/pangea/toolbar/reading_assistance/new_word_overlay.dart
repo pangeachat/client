@@ -74,7 +74,7 @@ class _NewWordOverlayState extends State<NewWordOverlay>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _showFlyingWidget();
       _controller?.forward().then((_) {
-        TokensUtil.clearNewTokenCache();
+        TokensUtil.clearRecentlyCollected();
         widget.onDismiss?.call();
       });
     });

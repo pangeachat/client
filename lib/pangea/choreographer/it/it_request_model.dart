@@ -22,11 +22,11 @@ class ITRequestModel {
   });
 
   factory ITRequestModel.fromJson(json) => ITRequestModel(
-        text: json['text'],
+        text: json[ModelKey.text],
         customInput: json['custom_input'],
         sourceLangCode: json[ModelKey.srcLang],
         targetLangCode: json[ModelKey.tgtLang],
-        goldTranslation: json['gold_translation'],
+        goldTranslation: json[ModelKey.goldTranslation],
         goldContinuances: json['gold_continuances'] != null
             ? (json['gold_continuances'])
                 .map((e) => ContinuanceModel.fromJson(e))
@@ -35,11 +35,11 @@ class ITRequestModel {
       );
 
   Map<String, dynamic> toJson() => {
-        'text': text,
+        ModelKey.text: text,
         'custom_input': customInput,
         ModelKey.srcLang: sourceLangCode,
         ModelKey.tgtLang: targetLangCode,
-        'gold_translation': goldTranslation,
+        ModelKey.goldTranslation: goldTranslation,
         'gold_continuances': goldContinuances != null
             ? List.from(goldContinuances!.map((e) => e.toJson()))
             : null,

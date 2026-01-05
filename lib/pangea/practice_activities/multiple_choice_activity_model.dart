@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/config/app_config.dart';
+import 'package:flutter/material.dart';
 
 class MultipleChoiceActivity {
   /// choices, including the correct answer
@@ -36,8 +34,8 @@ class MultipleChoiceActivity {
 
   Map<String, dynamic> toJson() {
     return {
-      'choices': choices.toList(),
-      'answer': answers.toList(),
+      'choices': List.from(choices),
+      'answer': List.from(answers),
     };
   }
 

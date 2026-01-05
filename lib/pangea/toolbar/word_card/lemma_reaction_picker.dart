@@ -9,48 +9,32 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_highlight_emoji_row.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class LemmaReactionPicker extends StatefulWidget {
+class LemmaReactionPicker extends StatefulWidget with LemmaEmojiSetter {
   final Event? event;
   final ConstructIdentifier constructId;
-  final Function(String)? onSetEmoji;
   final String langCode;
+  final bool enabled;
 
   const LemmaReactionPicker({
     super.key,
     required this.constructId,
-    required this.onSetEmoji,
     required this.langCode,
     this.event,
+    this.enabled = true,
   });
 
   @override
-  State<LemmaReactionPicker> createState() => LemmaReactionPickerState();
+  LemmaReactionPickerState createState() => LemmaReactionPickerState();
 }
 
-class LemmaReactionPickerState extends State<LemmaReactionPicker>
-    with LemmaEmojiSetter {
-  String? _selectedEmoji;
+class LemmaReactionPickerState extends State<LemmaReactionPicker> {
+  ScaffoldMessengerState? messenger;
 
   @override
-  void initState() {
-    super.initState();
-    _setInitialEmoji();
-  }
-
-  @override
-  void didUpdateWidget(covariant LemmaReactionPicker oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.constructId != widget.constructId) {
-      _setInitialEmoji();
-    }
-  }
-
-  void _setInitialEmoji() {
-    setState(
-      () {
-        _selectedEmoji = widget.constructId.userLemmaInfo.emojis?.firstOrNull;
-      },
-    );
+  void dispose() {
+    messenger?.hideCurrentSnackBar();
+    messenger = null;
+    super.dispose();
   }
 
   Event? _sentReaction(String emoji) {
@@ -68,24 +52,22 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
     );
   }
 
-  Future<void> _setEmoji(String emoji) async {
-    setState(() => _selectedEmoji = emoji);
-    widget.onSetEmoji?.call(emoji);
-
-    await setLemmaEmoji(
+  Future<void> _setEmoji(
+    String emoji,
+    String targetId,
+  ) async {
+    await widget.setLemmaEmoji(widget.constructId, emoji, targetId);
+    messenger = ScaffoldMessenger.of(context);
+    widget.showLemmaEmojiSnackbar(
+      messenger!,
+      context,
       widget.constructId,
       emoji,
-      "emoji-choice-item-$emoji-${widget.constructId.lemma}",
     );
-
-    if (mounted) {
-      showLemmaEmojiSnackbar(context, widget.constructId, emoji);
-    }
   }
 
   Future<void> _sendOrRedactReaction(String emoji) async {
     if (widget.event?.room.timeline == null) return;
-
     try {
       final reactionEvent = _sentReaction(emoji);
       if (reactionEvent != null) {
@@ -111,21 +93,38 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
 
   @override
   Widget build(BuildContext context) {
-    return LemmaHighlightEmojiRow(
-      cId: widget.constructId,
-      langCode: widget.langCode,
-      onEmojiSelected: (emoji) => emoji != _selectedEmoji
-          ? _setEmoji(emoji)
-          : _sendOrRedactReaction(emoji),
-      emoji: _selectedEmoji,
-      selectedEmojiBadge: widget.event != null &&
-              _selectedEmoji != null &&
-              _sentReaction(_selectedEmoji!) == null
-          ? const Icon(
-              Icons.add_reaction,
-              size: 12.0,
-            )
-          : null,
+    final stream = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .lemmaUpdateStream(widget.constructId);
+
+    final targetId = "emoji-choice-item-${widget.constructId.lemma}-$hashCode";
+    return StreamBuilder(
+      stream: stream,
+      builder: (context, snapshot) {
+        final selectedEmoji = snapshot.data?.emojis?.firstOrNull ??
+            widget.constructId.userSetEmoji;
+
+        return LemmaHighlightEmojiRow(
+          cId: widget.constructId,
+          langCode: widget.langCode,
+          targetId: targetId,
+          onEmojiSelected: (emoji, target) => emoji != selectedEmoji
+              ? _setEmoji(emoji, target)
+              : _sendOrRedactReaction(emoji),
+          emoji: selectedEmoji,
+          messageInfo: widget.event?.content ?? {},
+          selectedEmojiBadge: widget.event != null &&
+                  selectedEmoji != null &&
+                  _sentReaction(selectedEmoji) == null
+              ? const Icon(
+                  Icons.add_reaction,
+                  size: 12.0,
+                )
+              : null,
+          enabled: widget.enabled,
+        );
+      },
     );
   }
 }

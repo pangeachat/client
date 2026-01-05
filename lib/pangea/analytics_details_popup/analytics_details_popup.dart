@@ -1,10 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -33,22 +38,76 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   MorphFeaturesAndTags morphs = defaultMorphMapping;
   List<MorphFeature> features = defaultMorphMapping.displayFeatures;
 
+  List<ConstructUses>? vocab;
+
   bool isSearching = false;
+  FocusNode searchFocusNode = FocusNode();
   ConstructLevelEnum? selectedConstructLevel;
+  StreamSubscription<AnalyticsStreamUpdate>? _constructUpdateSub;
 
   @override
   void initState() {
     super.initState();
-    _setMorphs();
+    _setAnalyticsData();
+
     searchController.addListener(() {
       if (mounted) setState(() {});
     });
+
+    _constructUpdateSub = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .constructUpdateStream
+        .stream
+        .listen(_onConstructUpdate);
   }
 
   @override
   void dispose() {
     searchController.dispose();
+    _constructUpdateSub?.cancel();
+    searchFocusNode.dispose();
     super.dispose();
+  }
+
+  Future<void> _setAnalyticsData() async {
+    final future = <Future>[
+      _setMorphs(),
+      _setVocab(),
+    ];
+    await Future.wait(future);
+  }
+
+  void _onConstructUpdate(AnalyticsStreamUpdate update) {
+    if (update.blockedConstruct != null) {
+      _onBlockConstruct(update);
+    } else {
+      _setAnalyticsData();
+    }
+  }
+
+  void _onBlockConstruct(AnalyticsStreamUpdate update) {
+    final blocked = update.blockedConstruct;
+    if (blocked == null) return;
+    vocab?.removeWhere((e) => e.id == blocked);
+    if (widget.view == ConstructTypeEnum.vocab && widget.construct == null) {
+      setState(() {});
+    }
+  }
+
+  Future<void> _setVocab() async {
+    try {
+      final analyticsService = Matrix.of(context).analyticsDataService;
+      final data = await analyticsService
+          .getAggregatedConstructs(ConstructTypeEnum.vocab);
+
+      vocab = data.values.toList();
+      vocab!.sort(
+        (a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()),
+      );
+    } finally {
+      if (mounted) setState(() {});
+    }
   }
 
   Future<void> _setMorphs() async {
@@ -84,16 +143,42 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
       selectedConstructLevel = null;
       searchController.clear();
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (isSearching) {
+        FocusScope.of(context).requestFocus(searchFocusNode);
+      } else {
+        searchFocusNode.unfocus();
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return widget.view == ConstructTypeEnum.morph
-        ? widget.construct == null
-            ? MorphAnalyticsListView(controller: this)
-            : MorphDetailsView(constructId: widget.construct!)
-        : widget.construct == null
-            ? VocabAnalyticsListView(controller: this)
-            : VocabDetailsView(constructId: widget.construct!);
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsetsGeometry.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (widget.construct == null)
+                LearningProgressIndicators(
+                  selected: widget.view.indicator,
+                ),
+              Expanded(
+                child: widget.view == ConstructTypeEnum.morph
+                    ? widget.construct == null
+                        ? MorphAnalyticsListView(controller: this)
+                        : MorphDetailsView(constructId: widget.construct!)
+                    : widget.construct == null
+                        ? VocabAnalyticsListView(controller: this)
+                        : VocabDetailsView(constructId: widget.construct!),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

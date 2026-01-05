@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-15 14:43:14.531001",
+  "@@last_modified": "2025-12-29 16:02:58.251989",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -4472,9 +4472,6 @@
   "courseSavedSuccessfully": "Ikastaroa arrakastaz gorde da",
   "addCoursePlan": "Gehitu ikastaro plan bat",
   "activityStatsButtonInstruction": "Klikatu hemen zure jarduera estatistikak ikusteko eta jarduera amaitzean ixteko",
-  "readingAnalyticsDesc": "Klikatu praktika bakoitzean irakurketa jarduerak egiteko.",
-  "speakingAnalyticsDesc": "Grabatu ahots mezuak mintzatzeko praktika egiteko.",
-  "audioAnalyticsDesc": "Klikatu praktika bakoitzean entzute jarduerak egiteko.",
   "loginToAccount": "Hasi saioa nire kontuan",
   "appDescription": "Ikasi hizkuntza\nzure lagunekin mezularitza egiten bitartean.",
   "languages": "Hizkuntzak",
@@ -4500,7 +4497,6 @@
   "usernameOrEmail": "Erabiltzaile-izena edo emaila",
   "email": "Emaila",
   "forgotPassword": "Aizu galdu?",
-  "writingAnalyticsDesc": "Bidali mezuak idazketa praktikatzen laguntzeko.",
   "endActivity": "Amaitu jarduera",
   "allLanguages": "Hizkuntza guztiak",
   "chatListTooltip": "Hemen zure mezu zuzenean aurkituko dituzu! Sakatu edozein erabiltzailearen avatarra eta “hasi elkarrizketa” mezu zuzena bidaltzeko.",
@@ -9089,18 +9085,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9198,10 +9182,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10710,5 +10690,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Saioa hasi arte itxaroten",
+  "ssoDialogDesc": "Segurtasunez saioa hasi dezazun, fitxa berri bat ireki dugu.",
+  "ssoDialogHelpText": "🤔 Fitxa berri hori ikusi ez baduzu, mesedez, begiratu zure pop-up blokeatzailea.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Desaktibatu hizkuntza tresnak",
+  "disableLanguageToolsDesc": "Desaktibatu nahi al duzu hizkuntza laguntza automatikoa?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

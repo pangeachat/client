@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/navi_rail_item.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -21,6 +22,9 @@ class SpacesNavigationRail extends StatelessWidget {
   // final void Function() onGoToChats;
   // final void Function(String) onGoToSpaceId;
   final String? path;
+  final double railWidth;
+  final bool expanded;
+  final VoidCallback collapse;
   // Pangea#
 
   const SpacesNavigationRail({
@@ -29,6 +33,9 @@ class SpacesNavigationRail extends StatelessWidget {
     // required this.onGoToChats,
     // required this.onGoToSpaceId,
     required this.path,
+    required this.railWidth,
+    required this.collapse,
+    this.expanded = false,
     // Pangea#
     super.key,
   });
@@ -72,10 +79,12 @@ class SpacesNavigationRail extends StatelessWidget {
                 )
                 .toList();
 
-            return SizedBox(
-              // #Pangea
+            // #Pangea
+            // return SizedBox(
+            return AnimatedContainer(
               // width: FluffyThemes.navRailWidth,
-              width: width,
+              width: railWidth,
+              duration: FluffyThemes.animationDuration,
               // Pangea#
               child: Column(
                 children: [
@@ -92,7 +101,10 @@ class SpacesNavigationRail extends StatelessWidget {
                           return NaviRailItem(
                             isSelected: isAnalytics,
                             onTap: () {
-                              context.go("/rooms/analytics");
+                              collapse();
+                              AnalyticsNavigationUtil.navigateToAnalytics(
+                                context: context,
+                              );
                             },
                             backgroundColor: Colors.transparent,
                             icon: FutureBuilder<Profile>(
@@ -115,6 +127,9 @@ class SpacesNavigationRail extends StatelessWidget {
                               ),
                             ),
                             toolTip: L10n.of(context).home,
+                            // #Pangea
+                            expanded: expanded,
+                            // Pangea#
                           );
                         }
                         i--;
@@ -140,10 +155,14 @@ class SpacesNavigationRail extends StatelessWidget {
                             // unreadBadgeFilter: (room) => true,
                             icon: const Icon(Icons.forum_outlined),
                             selectedIcon: const Icon(Icons.forum),
-                            onTap: () => context.go("/rooms"),
-                            toolTip: L10n.of(context).directMessages,
+                            onTap: () {
+                              collapse();
+                              context.go("/rooms");
+                            },
+                            toolTip: L10n.of(context).allChats,
                             unreadBadgeFilter: (room) =>
                                 room.firstSpaceParent == null,
+                            expanded: expanded,
                             // Pangea#
                           );
                         }
@@ -162,6 +181,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(0),
                             isSelected: isCourse,
                             onTap: () {
+                              collapse();
                               context.go('/rooms/course');
                             },
                             icon: ClipPath(
@@ -180,6 +200,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               ),
                             ),
                             toolTip: L10n.of(context).addCourse,
+                            expanded: expanded,
                             // Pangea#
                           );
                         }
@@ -198,6 +219,7 @@ class SpacesNavigationRail extends StatelessWidget {
                           borderRadius: BorderRadius.circular(0),
                           // onTap: () => onGoToSpaceId(rootSpaces[i].id),
                           onTap: () {
+                            collapse();
                             final room = client.getRoomById(rootSpaces[i].id);
                             if (room != null) {
                               chatListHandleSpaceTap(
@@ -257,6 +279,7 @@ class SpacesNavigationRail extends StatelessWidget {
                               ),
                             ),
                           ),
+                          expanded: expanded,
                           // Pangea#
                         );
                       },
@@ -264,8 +287,8 @@ class SpacesNavigationRail extends StatelessWidget {
                   ),
                   NaviRailItem(
                     isSelected: isSettings,
-                    onTap: () => context.go('/rooms/settings'),
                     // #Pangea
+                    // onTap: () => context.go('/rooms/settings'),
                     // icon: const Padding(
                     //   padding: EdgeInsets.all(10.0),
                     //   child: Icon(Icons.settings_outlined),
@@ -274,8 +297,13 @@ class SpacesNavigationRail extends StatelessWidget {
                     //   padding: EdgeInsets.all(10.0),
                     //   child: Icon(Icons.settings),
                     // ),
+                    onTap: () {
+                      collapse();
+                      context.go('/rooms/settings');
+                    },
                     icon: const Icon(Icons.settings_outlined),
                     selectedIcon: const Icon(Icons.settings),
+                    expanded: expanded,
                     // Pangea#
                     toolTip: L10n.of(context).settings,
                   ),

@@ -25,8 +25,8 @@ class IGCRequestModel {
         ModelKey.fullText: fullText,
         ModelKey.userL1: userL1,
         ModelKey.userL2: userL2,
-        "enable_it": enableIT,
-        "enable_igc": enableIGC,
+        ModelKey.enableIT: enableIT,
+        ModelKey.enableIGC: enableIGC,
         ModelKey.userId: userId,
         ModelKey.prevMessages:
             jsonEncode(prevMessages.map((x) => x.toJson()).toList()),

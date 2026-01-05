@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 
 class LemmaInfoResponse implements JsonSerializable {
@@ -35,12 +37,9 @@ class LemmaInfoResponse implements JsonSerializable {
       identical(this, other) ||
       other is LemmaInfoResponse &&
           runtimeType == other.runtimeType &&
-          emoji.length == other.emoji.length &&
-          emoji.every((element) => other.emoji.contains(element)) &&
+          const ListEquality().equals(emoji, other.emoji) &&
           meaning == other.meaning;
 
   @override
-  int get hashCode =>
-      emoji.fold(0, (prev, element) => prev ^ element.hashCode) ^
-      meaning.hashCode;
+  int get hashCode => const ListEquality().hash(emoji) ^ meaning.hashCode;
 }

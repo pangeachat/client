@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:15.620362",
+  "@@last_modified": "2025-12-29 16:02:59.371193",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -4462,9 +4462,6 @@
   "courseSavedSuccessfully": "Curso salvo com sucesso",
   "addCoursePlan": "Adicionar um plano de curso",
   "activityStatsButtonInstruction": "Clique aqui para ver suas estatísticas de atividade e fechar a atividade quando terminar",
-  "readingAnalyticsDesc": "Clique em prática em cada mensagem para atividades de leitura.",
-  "speakingAnalyticsDesc": "Grave mensagens de voz para prática de fala.",
-  "audioAnalyticsDesc": "Clique em prática em cada mensagem para atividades de audição.",
   "loginToAccount": "Faça login na minha conta",
   "appDescription": "Aprenda um idioma\nenquanto envia mensagens aos seus amigos.",
   "languages": "Idiomas",
@@ -4490,7 +4487,6 @@
   "usernameOrEmail": "Nome de usuário ou email",
   "email": "Email",
   "forgotPassword": "Esqueceu a senha?",
-  "writingAnalyticsDesc": "Enviar mensagens para praticar a escrita.",
   "endActivity": "Encerrar atividade",
   "allLanguages": "Todos os idiomas",
   "chatListTooltip": "Aqui você encontrará suas mensagens diretas! Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
@@ -10189,18 +10185,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10298,10 +10282,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11810,5 +11790,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Aguardando a conclusão do login",
+  "ssoDialogDesc": "Abrimos uma nova aba para que você possa fazer login com segurança.",
+  "ssoDialogHelpText": "🤔 Se você não viu a nova aba, verifique seu bloqueador de pop-ups.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Desativar ferramentas de idioma",
+  "disableLanguageToolsDesc": "Você gostaria de desativar a assistência automática de idioma?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

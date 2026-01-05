@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:45.911331",
+  "@@last_modified": "2025-12-29 16:03:25.275842",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -4037,9 +4037,6 @@
   "courseSavedSuccessfully": "Lưu khóa học thành công",
   "addCoursePlan": "Thêm kế hoạch khóa học",
   "activityStatsButtonInstruction": "Nhấn vào đây để xem thống kê hoạt động của bạn và đóng hoạt động khi hoàn thành",
-  "readingAnalyticsDesc": "Nhấn luyện tập trên từng tin nhắn để thực hiện các hoạt động đọc.",
-  "speakingAnalyticsDesc": "Ghi âm tin nhắn thoại để luyện nói.",
-  "audioAnalyticsDesc": "Nhấn luyện tập trên từng tin nhắn để thực hiện các hoạt động nghe.",
   "loginToAccount": "Đăng nhập vào tài khoản của tôi",
   "appDescription": "Học một ngôn ngữ\ntrong khi nhắn tin với bạn bè.",
   "languages": "Ngôn ngữ",
@@ -4065,7 +4062,6 @@
   "usernameOrEmail": "Tên người dùng hoặc email",
   "email": "Email",
   "forgotPassword": "Quên mật khẩu?",
-  "writingAnalyticsDesc": "Gửi tin nhắn để luyện viết.",
   "endActivity": "Kết thúc hoạt động",
   "allLanguages": "Tất cả các ngôn ngữ",
   "chatListTooltip": "Bạn sẽ tìm thấy tin nhắn trực tiếp của mình ở đây! Nhấp vào ảnh đại diện của bất kỳ người dùng nào và chọn “bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp.",
@@ -4626,18 +4622,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -4735,10 +4719,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -6280,5 +6260,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Đang chờ hoàn tất đăng nhập",
+  "ssoDialogDesc": "Chúng tôi đã mở một tab mới để bạn có thể đăng nhập một cách an toàn.",
+  "ssoDialogHelpText": "🤔 Nếu bạn không thấy tab mới, vui lòng kiểm tra trình chặn popup của bạn.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Vô hiệu hóa công cụ ngôn ngữ",
+  "disableLanguageToolsDesc": "Bạn có muốn vô hiệu hóa trợ giúp ngôn ngữ tự động không?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

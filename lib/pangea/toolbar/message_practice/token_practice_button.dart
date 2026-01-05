@@ -80,6 +80,7 @@ class TokenPracticeButton extends StatelessWidget {
             token: token,
             target: _activity,
             emojiStyle: _emojiStyle,
+            width: tokenButtonHeight,
           );
         } else if (practiceMode == MessagePracticeMode.wordMorph) {
           child = _MorphMatchButton(
@@ -115,7 +116,7 @@ class TokenPracticeButton extends StatelessWidget {
               : Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const SizedBox(height: 16.0),
+                    const SizedBox(height: 8.0),
                     SizedBox(height: tokenButtonHeight, child: child),
                   ],
                 ),
@@ -244,12 +245,14 @@ class _NoActivityContentButton extends StatelessWidget {
   final PangeaToken token;
   final PracticeTarget? target;
   final TextStyle emojiStyle;
+  final double width;
 
   const _NoActivityContentButton({
     required this.practiceMode,
     required this.token,
     required this.target,
     required this.emojiStyle,
+    required this.width,
   });
 
   @override
@@ -260,7 +263,7 @@ class _NoActivityContentButton extends StatelessWidget {
                 (res) => res.cId == token.vocabConstructID && res.isCorrect,
               )
               ?.text ??
-          token.vocabConstructID.userSetEmoji.firstOrNull ??
+          token.vocabConstructID.userSetEmoji ??
           '';
       return Text(
         displayEmoji,
@@ -278,10 +281,22 @@ class _NoActivityContentButton extends StatelessWidget {
             context: context,
           ),
           child: SizedBox(
+            width: width,
             child: Center(
-              child: MorphIcon(
-                morphFeature: morphFeature,
-                morphTag: morphTag.lemma,
+              child: CircleAvatar(
+                radius: width / 2,
+                backgroundColor:
+                    Theme.of(context).brightness != Brightness.light
+                        ? Theme.of(context).colorScheme.surface.withAlpha(100)
+                        : null,
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: MorphIcon(
+                    morphFeature: morphFeature,
+                    morphTag: morphTag.lemma,
+                    size: Size.fromWidth(width - 8.0),
+                  ),
+                ),
               ),
             ),
           ),

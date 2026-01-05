@@ -3,25 +3,25 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:matrix/matrix.dart';
+import 'package:provider/provider.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/pangea/toolbar/layout/over_message_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/layout/practice_mode_transition_animation.dart';
 import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/reading_assistance_input_bar.dart';
 import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_card_switcher.dart';
-import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -110,9 +110,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     _reactionSubscription?.cancel();
     _contentChangedSubscription?.cancel();
     scrollController?.dispose();
-    Matrix.of(context).audioPlayer
-      ?..stop()
-      ..dispose();
     super.dispose();
   }
 
@@ -157,6 +154,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       return _reactionsRenderBox!.size.height;
     }
     return hasReactions ? 28.0 : 0.0;
+  }
+
+  double get reactionsWidth {
+    if (_reactionsRenderBox != null) {
+      return _reactionsRenderBox!.size.width;
+    }
+    return 0.0;
   }
 
   bool get ownMessage =>
@@ -262,17 +266,51 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     );
   }
 
+  bool get isRtl {
+    final locale = Provider.of<LocaleProvider>(context, listen: false)
+        .locale
+        ?.languageCode;
+    return locale != null &&
+        LanguageConstants.rtlLanguageCodes.contains(locale);
+  }
+
   double? get messageLeftOffset {
+    if (ownMessage) return null;
+
+    if (isRtl) {
+      return _originalMessageOffset.dx -
+          (showDetails ? FluffyThemes.columnWidth : 0);
+    }
+
     if (ownMessage) return null;
     return max(_originalMessageOffset.dx - columnWidth, 0);
   }
 
   double? get messageRightOffset {
     if (mediaQuery == null || !ownMessage) return null;
+
+    if (isRtl) {
+      return mediaQuery!.size.width -
+          columnWidth -
+          _originalMessageOffset.dx -
+          originalMessageSize.width;
+    }
+
     return mediaQuery!.size.width -
         _originalMessageOffset.dx -
         originalMessageSize.width -
         (showDetails ? FluffyThemes.columnWidth : 0);
+  }
+
+  Alignment get messageAlignment {
+    return ownMessage ? Alignment.bottomRight : Alignment.bottomLeft;
+  }
+
+  CrossAxisAlignment get messageColumnAlignment {
+    if (isRtl) {
+      return ownMessage ? CrossAxisAlignment.start : CrossAxisAlignment.end;
+    }
+    return ownMessage ? CrossAxisAlignment.end : CrossAxisAlignment.start;
   }
 
   double get _contentHeight {
@@ -322,7 +360,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         AppConfig.toolbarMenuHeight +
         4.0;
 
-    return bottomOffset > _screenHeight!;
+    return bottomOffset >
+        (_screenHeight! + MediaQuery.paddingOf(context).bottom);
   }
 
   double get spaceBelowContent {
@@ -437,11 +476,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                         ),
                       ),
                       Positioned(
-                        top: switch (MediaQuery.heightOf(context)) {
-                          < 700 => 0,
-                          > 900 => 160,
-                          _ => 80,
-                        },
+                        top: FluffyThemes.isColumnMode(context)
+                            ? switch (MediaQuery.heightOf(context)) {
+                                < 700 => 0,
+                                > 900 => 160,
+                                _ => 80,
+                              }
+                            : 0,
                         left: 0,
                         right: 0,
                         child: ListenableBuilder(
@@ -555,77 +596,77 @@ class MessageReactionPicker extends StatelessWidget {
                           ),
                 ),
               ),
-              IconButton(
-                icon: const Icon(
-                  Icons.add_reaction_outlined,
-                ),
-                tooltip: L10n.of(context).customReaction,
-                onPressed: () async {
-                  final emoji = await showAdaptiveBottomSheet<String>(
-                    context: context,
-                    builder: (context) => Scaffold(
-                      appBar: AppBar(
-                        title: Text(
-                          L10n.of(context).customReaction,
-                        ),
-                        leading: CloseButton(
-                          onPressed: () => Navigator.of(
-                            context,
-                          ).pop(
-                            null,
-                          ),
-                        ),
-                      ),
-                      body: SizedBox(
-                        height: double.infinity,
-                        child: EmojiPicker(
-                          onEmojiSelected: (
-                            _,
-                            emoji,
-                          ) =>
-                              Navigator.of(
-                            context,
-                          ).pop(
-                            emoji.emoji,
-                          ),
-                          config: Config(
-                            emojiViewConfig: const EmojiViewConfig(
-                              backgroundColor: Colors.transparent,
-                            ),
-                            bottomActionBarConfig: const BottomActionBarConfig(
-                              enabled: false,
-                            ),
-                            categoryViewConfig: CategoryViewConfig(
-                              initCategory: Category.SMILEYS,
-                              backspaceColor: theme.colorScheme.primary,
-                              iconColor: theme.colorScheme.primary.withAlpha(
-                                128,
-                              ),
-                              iconColorSelected: theme.colorScheme.primary,
-                              indicatorColor: theme.colorScheme.primary,
-                              backgroundColor: theme.colorScheme.surface,
-                            ),
-                            skinToneConfig: SkinToneConfig(
-                              dialogBackgroundColor: Color.lerp(
-                                theme.colorScheme.surface,
-                                theme.colorScheme.primaryContainer,
-                                0.75,
-                              )!,
-                              indicatorColor: theme.colorScheme.onSurface,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                  if (emoji == null) return;
-                  if (sentReactions.contains(emoji)) return;
-                  await event?.room.sendReaction(
-                    event.eventId,
-                    emoji,
-                  );
-                },
-              ),
+              // IconButton(
+              //   icon: const Icon(
+              //     Icons.add_reaction_outlined,
+              //   ),
+              //   tooltip: L10n.of(context).customReaction,
+              //   onPressed: () async {
+              //     final emoji = await showAdaptiveBottomSheet<String>(
+              //       context: context,
+              //       builder: (context) => Scaffold(
+              //         appBar: AppBar(
+              //           title: Text(
+              //             L10n.of(context).customReaction,
+              //           ),
+              //           leading: CloseButton(
+              //             onPressed: () => Navigator.of(
+              //               context,
+              //             ).pop(
+              //               null,
+              //             ),
+              //           ),
+              //         ),
+              //         body: SizedBox(
+              //           height: double.infinity,
+              //           child: EmojiPicker(
+              //             onEmojiSelected: (
+              //               _,
+              //               emoji,
+              //             ) =>
+              //                 Navigator.of(
+              //               context,
+              //             ).pop(
+              //               emoji.emoji,
+              //             ),
+              //             config: Config(
+              //               emojiViewConfig: const EmojiViewConfig(
+              //                 backgroundColor: Colors.transparent,
+              //               ),
+              //               bottomActionBarConfig: const BottomActionBarConfig(
+              //                 enabled: false,
+              //               ),
+              //               categoryViewConfig: CategoryViewConfig(
+              //                 initCategory: Category.SMILEYS,
+              //                 backspaceColor: theme.colorScheme.primary,
+              //                 iconColor: theme.colorScheme.primary.withAlpha(
+              //                   128,
+              //                 ),
+              //                 iconColorSelected: theme.colorScheme.primary,
+              //                 indicatorColor: theme.colorScheme.primary,
+              //                 backgroundColor: theme.colorScheme.surface,
+              //               ),
+              //               skinToneConfig: SkinToneConfig(
+              //                 dialogBackgroundColor: Color.lerp(
+              //                   theme.colorScheme.surface,
+              //                   theme.colorScheme.primaryContainer,
+              //                   0.75,
+              //                 )!,
+              //                 indicatorColor: theme.colorScheme.onSurface,
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     );
+              //     if (emoji == null) return;
+              //     if (sentReactions.contains(emoji)) return;
+              //     await event?.room.sendReaction(
+              //       event.eventId,
+              //       emoji,
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),

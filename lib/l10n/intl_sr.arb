@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:44:06.530821",
+  "@@last_modified": "2025-12-29 16:03:48.066706",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -3508,9 +3508,6 @@
   "courseSavedSuccessfully": "Курс успешно сачуван",
   "addCoursePlan": "Додај план курса",
   "activityStatsButtonInstruction": "Кликните овде да видите статистику активности и да затворите активност након завршетка",
-  "readingAnalyticsDesc": "Кликните на праксу на свакој поруци за активности читања.",
-  "speakingAnalyticsDesc": "Запишите гласовне поруке за вежбање говора.",
-  "audioAnalyticsDesc": "Kliknite na svaku poruku za vežbe slušanja.",
   "loginToAccount": "Prijavi se na svoj nalog",
   "appDescription": "Uči jezik\ndok šalješ poruke prijateljima.",
   "languages": "Jezici",
@@ -3536,7 +3533,6 @@
   "usernameOrEmail": "Korisničko ime ili email",
   "email": "Email",
   "forgotPassword": "Zaboravili ste lozinku?",
-  "writingAnalyticsDesc": "Šaljite poruke za vežbanje pisanja.",
   "endActivity": "Završi aktivnost",
   "allLanguages": "Svi jezici",
   "chatListTooltip": "Ovde ćete pronaći svoje direktne poruke! Kliknite na avatar bilo kojeg korisnika i “započni razgovor” da biste poslali DM.",
@@ -10191,18 +10187,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10300,10 +10284,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11812,5 +11792,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Čekanje na završetak prijavljivanja",
+  "ssoDialogDesc": "Otvorili smo novu karticu kako biste se mogli sigurno prijaviti.",
+  "ssoDialogHelpText": "🤔 Ako niste videli novu karticu, molimo proverite svoj blokator iskačućih prozora.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Onemogući alate za jezik",
+  "disableLanguageToolsDesc": "Da li želite da onemogućite automatsku jezičku pomoć?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

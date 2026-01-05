@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
@@ -16,53 +15,39 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LemmaHighlightEmojiRow extends StatefulWidget {
   final ConstructIdentifier cId;
   final String langCode;
+  final String targetId;
 
-  final Function(String) onEmojiSelected;
+  final Function(String, String) onEmojiSelected;
+  final Map<String, dynamic> messageInfo;
 
   final String? emoji;
   final Widget? selectedEmojiBadge;
+  final bool enabled;
 
   const LemmaHighlightEmojiRow({
     super.key,
     required this.cId,
     required this.langCode,
+    required this.targetId,
     required this.onEmojiSelected,
+    required this.messageInfo,
     this.emoji,
     this.selectedEmojiBadge,
+    this.enabled = true,
   });
 
   @override
   State<LemmaHighlightEmojiRow> createState() => LemmaHighlightEmojiRowState();
 }
 
-class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
-  late StreamSubscription<AnalyticsStreamUpdate> _analyticsSubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    _analyticsSubscription = MatrixState
-        .pangeaController.getAnalytics.analyticsStream.stream
-        .listen(_onAnalyticsUpdate);
-  }
-
-  @override
-  void dispose() {
-    _analyticsSubscription.cancel();
-    super.dispose();
-  }
-
-  void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
-    if (update.targetID != null) {
-      OverlayUtil.showPointsGained(update.targetID!, update.points, context);
-    }
-  }
-
+class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
+    with AnalyticsUpdater {
   @override
   Widget build(BuildContext context) {
     return LemmaMeaningBuilder(
       langCode: widget.langCode,
       constructId: widget.cId,
+      messageInfo: widget.messageInfo,
       builder: (context, controller) {
         if (controller.error != null) {
           return const SizedBox.shrink();
@@ -92,22 +77,24 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
                       ),
                     ),
                   )
-                : emojis
-                    .map(
-                      (emoji) => EmojiChoiceItem(
+                : emojis.map(
+                    (emoji) {
+                      final targetId = "${widget.targetId}-$emoji";
+                      return EmojiChoiceItem(
                         cId: widget.cId,
                         emoji: emoji,
-                        onSelectEmoji: () => widget.onEmojiSelected(emoji),
+                        onSelectEmoji: () =>
+                            widget.onEmojiSelected(emoji, targetId),
                         selected: widget.emoji == emoji,
-                        transformTargetId:
-                            "emoji-choice-item-$emoji-${widget.cId.lemma}",
+                        transformTargetId: targetId,
                         badge: widget.emoji == emoji
                             ? widget.selectedEmojiBadge
                             : null,
                         showShimmer: widget.emoji == null,
-                      ),
-                    )
-                    .toList(),
+                        enabled: widget.enabled,
+                      );
+                    },
+                  ).toList(),
           ),
         );
       },
@@ -123,6 +110,7 @@ class EmojiChoiceItem extends StatefulWidget {
   final String transformTargetId;
   final Widget? badge;
   final bool showShimmer;
+  final bool enabled;
 
   const EmojiChoiceItem({
     super.key,
@@ -133,6 +121,7 @@ class EmojiChoiceItem extends StatefulWidget {
     required this.transformTargetId,
     this.badge,
     this.showShimmer = true,
+    this.enabled = true,
   });
 
   @override
@@ -164,23 +153,30 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   }
 
   void _showShimmer() {
-    if (!widget.showShimmer) return;
+    if (!widget.showShimmer || !widget.enabled) return;
 
     setState(() => shimmer = true);
     _shimmerTimer?.cancel();
     _shimmerTimer = Timer(const Duration(milliseconds: 1500), () {
-      if (mounted) setState(() => shimmer = false);
+      if (mounted) {
+        setState(() => shimmer = false);
+        _repeatShimmer();
+      }
     });
   }
 
-  LayerLink get layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(widget.transformTargetId).link;
+  void _repeatShimmer() {
+    _shimmerTimer?.cancel();
+    _shimmerTimer = Timer(const Duration(seconds: 5), () {
+      if (mounted) _showShimmer();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return HoverBuilder(
       builder: (context, hovered) => GestureDetector(
-        onTap: widget.onSelectEmoji,
+        onTap: widget.enabled ? widget.onSelectEmoji : null,
         child: Stack(
           children: [
             ShimmerBackground(
@@ -189,12 +185,17 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
                   ? Colors.white
                   : Theme.of(context).colorScheme.primary,
               child: CompositedTransformTarget(
-                link: layerLink,
+                link: MatrixState.pAnyState
+                    .layerLinkAndKey(widget.transformTargetId)
+                    .link,
                 child: AnimatedContainer(
+                  key: MatrixState.pAnyState
+                      .layerLinkAndKey(widget.transformTargetId)
+                      .key,
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: hovered || widget.selected
+                    color: widget.enabled && (hovered || widget.selected)
                         ? Theme.of(context).colorScheme.secondary.withAlpha(30)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(AppConfig.borderRadius),

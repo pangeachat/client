@@ -282,8 +282,15 @@ class ChoreoRecordStepModel {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data[_editKey] = edits?.toJson();
-    data[_acceptedOrIgnoredMatchKey] = acceptedOrIgnoredMatch?.toJson();
-    data[_stepKey] = itStep?.toJson();
+
+    if (acceptedOrIgnoredMatch != null) {
+      data[_acceptedOrIgnoredMatchKey] = acceptedOrIgnoredMatch?.toJson();
+    }
+
+    if (itStep != null) {
+      data[_stepKey] = itStep?.toJson();
+    }
+
     return data;
   }
 

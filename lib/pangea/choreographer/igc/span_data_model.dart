@@ -71,18 +71,32 @@ class SpanData {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'message': message,
-        'short_message': shortMessage,
-        'choices': choices != null
-            ? List<dynamic>.from(choices!.map((x) => x.toJson()))
-            : null,
-        'offset': offset,
-        'length': length,
-        'full_text': fullText,
-        'type': type.toJson(),
-        'rule': rule?.toJson(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'offset': offset,
+      'length': length,
+      'full_text': fullText,
+      'type': type.toJson(),
+    };
+
+    if (message != null) {
+      data['message'] = message;
+    }
+
+    if (shortMessage != null) {
+      data['short_message'] = shortMessage;
+    }
+
+    if (choices != null) {
+      data['choices'] = List<dynamic>.from(choices!.map((x) => x.toJson()));
+    }
+
+    if (rule != null) {
+      data['rule'] = rule!.toJson();
+    }
+
+    return data;
+  }
 
   bool isOffsetInMatchSpan(int offset) =>
       offset >= this.offset && offset <= this.offset + length;
@@ -221,13 +235,26 @@ class SpanChoice {
     );
   }
 
-  Map<String, dynamic> toJson() => {
-        'value': value,
-        'type': type.name,
-        'selected': selected,
-        'feedback': feedback,
-        'timestamp': timestamp?.toIso8601String(),
-      };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
+      'value': value,
+      'type': type.name,
+    };
+
+    if (selected) {
+      data['selected'] = selected;
+    }
+
+    if (feedback != null) {
+      data['feedback'] = feedback;
+    }
+
+    if (timestamp != null) {
+      data['timestamp'] = timestamp!.toIso8601String();
+    }
+
+    return data;
+  }
 
   String feedbackToDisplay(BuildContext context) {
     if (feedback == null) {

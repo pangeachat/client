@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/new_word_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_meaning_display.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/message_unsubscribed_card.dart';
@@ -24,22 +25,20 @@ class WordZoomWidget extends StatelessWidget {
   final String langCode;
   final VoidCallback? onClose;
 
-  final bool wordIsNew;
   final Event? event;
 
+  final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
   final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
-  final Function(String)? setEmoji;
 
   const WordZoomWidget({
     super.key,
     required this.token,
     required this.construct,
     required this.langCode,
-    this.setEmoji,
     this.onClose,
-    this.wordIsNew = false,
     this.event,
+    this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
   });
@@ -69,62 +68,74 @@ class WordZoomWidget extends StatelessWidget {
                 ),
                 child: CompositedTransformTarget(
                   link: layerLink,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      spacing: 12.0,
-                      children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            onClose != null
-                                ? IconButton(
-                                    icon: const Icon(Icons.close),
-                                    onPressed: onClose,
-                                  )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
+                  child: Column(
+                    spacing: 12.0,
+                    children: [
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          return SizedBox(
+                            height: 40.0,
+                            width: constraints.maxWidth - 24.0,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                onClose != null
+                                    ? IconButton(
+                                        color:
+                                            Theme.of(context).iconTheme.color,
+                                        icon: const Icon(Icons.close),
+                                        onPressed: onClose,
+                                      )
+                                    : const SizedBox(
+                                        width: 40.0,
+                                        height: 40.0,
+                                      ),
+                                Flexible(
+                                  child: Container(
+                                    constraints: const BoxConstraints(
+                                      minHeight: 40.0,
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      token.content,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 28.0,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.2,
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.light
+                                            ? AppConfig.yellowDark
+                                            : AppConfig.yellowLight,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
                                   ),
-                            Flexible(
-                              child: Container(
-                                constraints: const BoxConstraints(
-                                  minHeight: 40.0,
                                 ),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  token.content,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 28.0,
-                                    fontWeight: FontWeight.w600,
-                                    height: 1.2,
-                                    color: Theme.of(context).brightness ==
-                                            Brightness.light
-                                        ? AppConfig.yellowDark
-                                        : AppConfig.yellowLight,
-                                  ),
-                                ),
-                              ),
+                                onFlagTokenInfo != null
+                                    ? TokenFeedbackButton(
+                                        textLanguage: PLanguageStore.byLangCode(
+                                              langCode,
+                                            ) ??
+                                            LanguageModel.unknown,
+                                        constructId: construct,
+                                        text: token.content,
+                                        onFlagTokenInfo: onFlagTokenInfo!,
+                                        messageInfo: event?.content ?? {},
+                                      )
+                                    : const SizedBox(
+                                        width: 40.0,
+                                        height: 40.0,
+                                      ),
+                              ],
                             ),
-                            onFlagTokenInfo != null
-                                ? TokenFeedbackButton(
-                                    textLanguage: PLanguageStore.byLangCode(
-                                          langCode,
-                                        ) ??
-                                        LanguageModel.unknown,
-                                    constructId: construct,
-                                    text: token.content,
-                                    onFlagTokenInfo: onFlagTokenInfo!,
-                                  )
-                                : const SizedBox(
-                                    width: 40.0,
-                                    height: 40.0,
-                                  ),
-                          ],
-                        ),
-                        Column(
-                          spacing: 12.0,
-                          mainAxisSize: MainAxisSize.min,
+                          );
+                        },
+                      ),
+                      Expanded(
+                        child: Column(
+                          spacing: 4.0,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             showTranscript
                                 ? PhoneticTranscriptionWidget(
@@ -135,6 +146,7 @@ class WordZoomWidget extends StatelessWidget {
                                         LanguageModel.unknown,
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
+                                    maxLines: 2,
                                   )
                                 : WordAudioButton(
                                     text: token.content,
@@ -145,22 +157,23 @@ class WordZoomWidget extends StatelessWidget {
                             LemmaReactionPicker(
                               constructId: construct,
                               langCode: langCode,
-                              onSetEmoji: setEmoji,
                               event: event,
+                              enabled: enableEmojiSelection,
                             ),
                             LemmaMeaningDisplay(
                               langCode: langCode,
                               constructId: construct,
                               text: token.content,
+                              messageInfo: event?.content ?? {},
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              wordIsNew
+              TokensUtil.isRecentlyCollected(token)
                   ? NewWordOverlay(
                       key: ValueKey(transformTargetId),
                       overlayColor: overlayColor,
@@ -171,26 +184,32 @@ class WordZoomWidget extends StatelessWidget {
             ],
           );
 
-    return Material(
-      type: MaterialType.transparency,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Theme.of(context).cardColor,
-          border: Border.all(
-            color: Theme.of(context).colorScheme.primary,
-            width: 4.0,
+    return GestureDetector(
+      onTap: () {
+        // Absorb taps to prevent them from propagating
+        // to widgets below and closing the overlay.
+      },
+      child: Material(
+        type: MaterialType.transparency,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
+            border: Border.all(
+              color: Theme.of(context).colorScheme.primary,
+              width: 4.0,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(AppConfig.borderRadius),
+            ),
           ),
-          borderRadius: const BorderRadius.all(
-            Radius.circular(AppConfig.borderRadius),
+          height: AppConfig.toolbarMaxHeight,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              content,
+            ],
           ),
-        ),
-        height: AppConfig.toolbarMaxHeight,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            content,
-          ],
         ),
       ),
     );

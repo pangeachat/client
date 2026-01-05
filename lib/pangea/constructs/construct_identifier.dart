@@ -4,13 +4,13 @@ import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
@@ -139,19 +139,8 @@ class ConstructIdentifier {
   bool get isContentWord =>
       PartOfSpeechEnumExtensions.fromString(category)?.isContentWord ?? false;
 
-  ConstructUses get constructUses =>
-      MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUses(
-        this,
-      ) ??
-      ConstructUses(
-        lemma: lemma,
-        constructType: ConstructTypeEnum.morph,
-        category: category,
-        uses: [],
-      );
-
-  LemmaInfoRequest get lemmaInfoRequest => LemmaInfoRequest(
+  LemmaInfoRequest lemmaInfoRequest(Map<String, dynamic> messageInfo) =>
+      LemmaInfoRequest(
         partOfSpeech: category,
         lemmaLang:
             MatrixState.pangeaController.userController.userL2?.langCodeShort ??
@@ -160,52 +149,46 @@ class ConstructIdentifier {
             MatrixState.pangeaController.userController.userL1?.langCodeShort ??
                 LanguageKeys.defaultLanguage,
         lemma: lemma,
+        messageInfo: messageInfo,
       );
 
   /// [lemmmaLang] if not set, assumed to be userL2
-  Future<Result<LemmaInfoResponse>> getLemmaInfo() => LemmaInfoRepo.get(
+  Future<Result<LemmaInfoResponse>> getLemmaInfo(
+    Map<String, dynamic> messageInfo,
+  ) =>
+      LemmaInfoRepo.get(
         MatrixState.pangeaController.userController.accessToken,
-        lemmaInfoRequest,
+        lemmaInfoRequest(messageInfo),
       );
 
-  List<String> get userSetEmoji => userLemmaInfo.emojis ?? [];
+  String? get userSetEmoji => _userLemmaInfo.emojis?.firstOrNull;
 
-  UserSetLemmaInfo get userLemmaInfo {
-    switch (type) {
-      case ConstructTypeEnum.vocab:
-        return MatrixState.pangeaController.matrixState.client
-                .analyticsRoomLocal()
-                ?.getUserSetLemmaInfo(this) ??
-            UserSetLemmaInfo();
-      case ConstructTypeEnum.morph:
-        debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          e: Exception("Morphs should not have userSetEmoji"),
-          data: toJson(),
-        );
-        return UserSetLemmaInfo();
-    }
-  }
+  UserSetLemmaInfo get _userLemmaInfo =>
+      MatrixState.pangeaController.matrixState.client
+          .analyticsRoomLocal()
+          ?.getUserSetLemmaInfo(this) ??
+      UserSetLemmaInfo();
 
-  Future<void> setUserLemmaInfo(UserSetLemmaInfo newLemmaInfo) async {
-    final client = MatrixState.pangeaController.matrixState.client;
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return;
+  String get storageKey => TupleKey(lemma, type.name, category).toString();
 
-    final analyticsRoom = await client.getMyAnalyticsRoom(l2);
-    if (analyticsRoom == null) return;
-    if (userLemmaInfo == newLemmaInfo) return;
+  String get compositeKey => '$lemma|${type.name}'.toLowerCase();
 
-    try {
-      await analyticsRoom.setUserSetLemmaInfo(this, newLemmaInfo);
-    } catch (err, s) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        data: newLemmaInfo.toJson(),
-        s: s,
-      );
-    }
+  static ConstructIdentifier fromStorageKey(String key) {
+    final parts = key.split('|');
+    final lemma = parts[0];
+    final typeName = parts[1];
+    final category = parts[2];
+
+    final type = ConstructTypeEnum.values.firstWhereOrNull(
+          (e) => e.name == typeName,
+        ) ??
+        ConstructTypeEnum.vocab;
+
+    return ConstructIdentifier(
+      lemma: lemma,
+      type: type,
+      category: category,
+    );
   }
 
   /// lastUsed by activity type, construct and form

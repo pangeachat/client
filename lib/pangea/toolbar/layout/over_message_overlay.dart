@@ -17,8 +17,7 @@ class OverMessageOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment:
-          controller.ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
+      alignment: controller.messageAlignment,
       child: Padding(
         padding: EdgeInsets.only(
           left: controller.messageLeftOffset ?? 0.0,
@@ -29,9 +28,7 @@ class OverMessageOverlay extends StatelessWidget {
           child: SingleChildScrollView(
             controller: controller.scrollController,
             child: Column(
-              crossAxisAlignment: controller.ownMessage
-                  ? CrossAxisAlignment.end
-                  : CrossAxisAlignment.start,
+              crossAxisAlignment: controller.messageColumnAlignment,
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (!controller.shouldScroll) ...[
@@ -70,6 +67,7 @@ class OverMessageOverlay extends StatelessWidget {
                         readingAssistanceMode: controller.readingAssistanceMode,
                         overlayKey:
                             'overlay_message_${controller.widget.event.eventId}',
+                        reactionsWidth: controller.reactionsWidth,
                       );
                     },
                   ),

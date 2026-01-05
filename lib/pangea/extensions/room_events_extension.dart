@@ -216,7 +216,6 @@ extension EventsRoomExtension on Room {
     String msgtype = MessageTypes.Text,
     String? threadRootEventId,
     String? threadLastEventId,
-    PangeaRepresentation? originalSent,
     PangeaRepresentation? originalWritten,
     PangeaMessageTokens? tokensSent,
     PangeaMessageTokens? tokensWritten,
@@ -241,9 +240,6 @@ extension EventsRoomExtension on Room {
     };
     if (choreo != null) {
       event[ModelKey.choreoRecord] = choreo.toJson();
-    }
-    if (originalSent != null) {
-      event[ModelKey.originalSent] = originalSent.toJson();
     }
     if (originalWritten != null) {
       event[ModelKey.originalWritten] = originalWritten.toJson();
@@ -297,46 +293,59 @@ extension EventsRoomExtension on Room {
   Future<List<Event>> getRoomAnalyticsEvents({
     String? userID,
     int? count,
+    DateTime? since,
   }) async {
     userID ??= client.userID;
     if (userID == null) return [];
-    GetRoomEventsResponse resp = await client.getRoomEvents(
-      id,
-      Direction.b,
-      limit: count ?? 100,
-      filter: jsonEncode(
-        StateFilter(
+
+    final timeline = await getTimeline();
+
+    int numSearches = 0;
+    while (numSearches < 10 && timeline.canRequestFuture) {
+      await timeline.requestFuture(
+        historyCount: 100,
+        filter: StateFilter(
           types: [
             PangeaEventTypes.construct,
           ],
           senders: [userID],
         ),
-      ),
-    );
-
-    int numSearches = 0;
-    while (numSearches < 10 && resp.end != null) {
-      if (count != null && resp.chunk.length <= count) break;
-      final nextResp = await client.getRoomEvents(
-        id,
-        Direction.b,
-        limit: count ?? 100,
-        filter: jsonEncode(
-          StateFilter(
-            types: [
-              PangeaEventTypes.construct,
-            ],
-            senders: [userID],
-          ),
-        ),
-        from: resp.end,
       );
-      nextResp.chunk.addAll(resp.chunk);
-      resp = nextResp;
       numSearches += 1;
     }
 
-    return resp.chunk.map((e) => Event.fromMatrixEvent(e, this)).toList();
+    while (numSearches < 10 &&
+        timeline.canRequestHistory &&
+        (count == null || timeline.events.length < count) &&
+        (since == null ||
+            timeline.chunk.events.first.originServerTs.isAfter(since))) {
+      await timeline.requestHistory(
+        historyCount: 100,
+        filter: StateFilter(
+          types: [
+            PangeaEventTypes.construct,
+          ],
+          senders: [userID],
+        ),
+      );
+      numSearches += 1;
+    }
+
+    final events = timeline.chunk.events
+        .where(
+          (e) => e.type == PangeaEventTypes.construct && e.senderId == userID,
+        )
+        .map((e) => Event.fromMatrixEvent(e, this));
+
+    if (count != null) {
+      return events.take(count).toList();
+    }
+
+    if (since != null) {
+      return events.where((e) => e.originServerTs.isAfter(since)).toList();
+    }
+
+    return events.toList();
   }
 
   Future<List<Event>> getAllEvents({String? since}) async {

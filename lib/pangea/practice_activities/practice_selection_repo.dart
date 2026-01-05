@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -34,11 +35,11 @@ class _PracticeSelectionCacheEntry {
 class PracticeSelectionRepo {
   static final GetStorage _storage = GetStorage('practice_selection_cache');
 
-  static PracticeSelection? get(
+  static Future<PracticeSelection?> get(
     String eventId,
     String messageLanguage,
     List<PangeaToken> tokens,
-  ) {
+  ) async {
     final userL2 = MatrixState.pangeaController.userController.userL2;
     if (userL2?.langCodeShort != messageLanguage.split("-").first) {
       return null;
@@ -47,7 +48,7 @@ class PracticeSelectionRepo {
     final cached = _getCached(eventId);
     if (cached != null) return cached;
 
-    final newEntry = _fetch(
+    final newEntry = await _fetch(
       tokens: tokens,
       langCode: messageLanguage,
     );
@@ -56,10 +57,10 @@ class PracticeSelectionRepo {
     return newEntry;
   }
 
-  static PracticeSelection _fetch({
+  static Future<PracticeSelection> _fetch({
     required List<PangeaToken> tokens,
     required String langCode,
-  }) {
+  }) async {
     if (langCode.split("-")[0] !=
         MatrixState.pangeaController.userController.userL2?.langCodeShort) {
       return PracticeSelection({});
@@ -69,7 +70,7 @@ class PracticeSelectionRepo {
     if (eligibleTokens.isEmpty) {
       return PracticeSelection({});
     }
-    final queue = _fillActivityQueue(eligibleTokens);
+    final queue = await _fillActivityQueue(eligibleTokens);
     final selection = PracticeSelection(queue);
     return selection;
   }
@@ -116,12 +117,12 @@ class PracticeSelectionRepo {
     _storage.write(eventId, cachedEntry.toJson());
   }
 
-  static Map<ActivityTypeEnum, List<PracticeTarget>> _fillActivityQueue(
+  static Future<Map<ActivityTypeEnum, List<PracticeTarget>>> _fillActivityQueue(
     List<PangeaToken> tokens,
-  ) {
+  ) async {
     final queue = <ActivityTypeEnum, List<PracticeTarget>>{};
     for (final type in ActivityTypeEnum.practiceTypes) {
-      queue[type] = _buildActivity(type, tokens);
+      queue[type] = await _buildActivity(type, tokens);
     }
     return queue;
   }
@@ -129,26 +130,18 @@ class PracticeSelectionRepo {
   static int _sortTokens(
     PangeaToken a,
     PangeaToken b,
-    ActivityTypeEnum activityType,
-  ) {
-    final bScore = b.activityPriorityScore(activityType, null);
-    final aScore = a.activityPriorityScore(activityType, null);
-    return bScore.compareTo(aScore);
-  }
+    int aScore,
+    int bScore,
+  ) =>
+      bScore.compareTo(aScore);
 
-  static int _sortMorphTargets(PracticeTarget a, PracticeTarget b) {
-    final bScore = b.tokens.first.activityPriorityScore(
-      ActivityTypeEnum.morphId,
-      b.morphFeature!,
-    );
-
-    final aScore = a.tokens.first.activityPriorityScore(
-      ActivityTypeEnum.morphId,
-      a.morphFeature!,
-    );
-
-    return bScore.compareTo(aScore);
-  }
+  static int _sortMorphTargets(
+    PracticeTarget a,
+    PracticeTarget b,
+    int aScore,
+    int bScore,
+  ) =>
+      bScore.compareTo(aScore);
 
   static List<PracticeTarget> _tokenToMorphTargets(PangeaToken t) {
     return t.morphsBasicallyEligibleForPracticeByPriority
@@ -162,10 +155,10 @@ class PracticeSelectionRepo {
         .toList();
   }
 
-  static List<PracticeTarget> _buildActivity(
+  static Future<List<PracticeTarget>> _buildActivity(
     ActivityTypeEnum activityType,
     List<PangeaToken> tokens,
-  ) {
+  ) async {
     if (activityType == ActivityTypeEnum.morphId) {
       return _buildMorphActivity(tokens);
     }
@@ -184,7 +177,12 @@ class PracticeSelectionRepo {
       return [];
     }
 
-    practiceTokens.sort((a, b) => _sortTokens(a, b, activityType));
+    final scores = await _fetchPriorityScores(
+      practiceTokens,
+      activityType,
+    );
+
+    practiceTokens.sort((a, b) => _sortTokens(a, b, scores[a]!, scores[b]!));
     practiceTokens = practiceTokens.take(8).toList();
     practiceTokens.shuffle();
 
@@ -196,10 +194,23 @@ class PracticeSelectionRepo {
     ];
   }
 
-  static List<PracticeTarget> _buildMorphActivity(List<PangeaToken> tokens) {
+  static Future<List<PracticeTarget>> _buildMorphActivity(
+    List<PangeaToken> tokens,
+  ) async {
     final List<PangeaToken> practiceTokens = List<PangeaToken>.from(tokens);
     final candidates = practiceTokens.expand(_tokenToMorphTargets).toList();
-    candidates.sort(_sortMorphTargets);
+    final scores = await _fetchPriorityScores(
+      practiceTokens,
+      ActivityTypeEnum.morphId,
+    );
+    candidates.sort(
+      (a, b) => _sortMorphTargets(
+        a,
+        b,
+        scores[a.tokens.first]!,
+        scores[b.tokens.first]!,
+      ),
+    );
 
     final seenTexts = <String>{};
     final seenLemmas = <String>{};
@@ -209,5 +220,39 @@ class PracticeSelectionRepo {
           seenLemmas.add(target.tokens.first.lemma.text.toLowerCase()),
     );
     return candidates.take(PracticeSelection.maxQueueLength).toList();
+  }
+
+  static Future<Map<PangeaToken, int>> _fetchPriorityScores(
+    List<PangeaToken> tokens,
+    ActivityTypeEnum activityType,
+  ) async {
+    final scores = <PangeaToken, int>{};
+    for (final token in tokens) {
+      scores[token] = 0;
+    }
+
+    final ids = tokens.map((t) => t.vocabConstructID).toList();
+    final idMap = {
+      for (final token in tokens) token: token.vocabConstructID,
+    };
+
+    final constructs = await MatrixState
+        .pangeaController.matrixState.analyticsDataService
+        .getConstructUses(ids);
+
+    for (final token in tokens) {
+      final construct = constructs[idMap[token]];
+      final lastUsed = construct?.uses.firstWhereOrNull(
+        (u) => activityType.associatedUseTypes.contains(u.useType),
+      );
+
+      final daysSinceLastUsed = lastUsed == null
+          ? 20
+          : DateTime.now().difference(lastUsed.timeStamp).inDays;
+
+      scores[token] =
+          daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 9);
+    }
+    return scores;
   }
 }

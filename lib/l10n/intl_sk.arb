@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-15 14:43:00.627770",
+  "@@last_modified": "2025-12-29 16:02:47.860221",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -3095,9 +3095,6 @@
   "courseSavedSuccessfully": "Kurz bol úspešne uložený",
   "addCoursePlan": "Pridať plán kurzu",
   "activityStatsButtonInstruction": "Kliknite sem pre zobrazenie štatistík vašej aktivity a na zatvorenie aktivity po dokončení",
-  "readingAnalyticsDesc": "Kliknite na cvičenie pri každej správe pre aktivity čítania.",
-  "speakingAnalyticsDesc": "Nahrávajte hlasové správy pre hovorené cvičenia.",
-  "audioAnalyticsDesc": "Kliknite na cvičenie pri každej správe pre aktivity počúvania.",
   "loginToAccount": "Prihlásiť sa do môjho účtu",
   "appDescription": "Naučte sa jazyk\npočas písania správ priateľom.",
   "languages": "Jazyky",
@@ -3123,7 +3120,6 @@
   "usernameOrEmail": "Používateľské meno alebo e-mail",
   "email": "E-mail",
   "forgotPassword": "Zabudli ste heslo?",
-  "writingAnalyticsDesc": "Posielajte správy na precvičovanie písania.",
   "endActivity": "Ukončiť aktivitu",
   "allLanguages": "Všetky jazyky",
   "chatListTooltip": "Tu nájdete svoje priame správy! Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“, aby ste poslali DM.",
@@ -10173,18 +10169,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10282,10 +10266,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11794,5 +11774,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Čakáme na dokončenie prihlásenia",
+  "ssoDialogDesc": "Otvárame novú kartu, aby ste sa mohli prihlásiť bezpečne.",
+  "ssoDialogHelpText": "🤔 Ak ste nevideli novú kartu, skontrolujte prosím svoj blokovač vyskakovacích okien.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Deaktivovať jazykové nástroje",
+  "disableLanguageToolsDesc": "Chceli by ste deaktivovať automatickú jazykovú pomoc?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

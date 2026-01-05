@@ -1,8 +1,12 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
 
 class ActivityPlanModel {
   final String activityId;
@@ -80,7 +84,7 @@ class ActivityPlanModel {
       instructions: json[ModelKey.activityPlanInstructions],
       req: req,
       title: json[ModelKey.activityPlanTitle],
-      description: json[ModelKey.activityPlanDescription] ??
+      description: json[ModelKey.description] ??
           json[ModelKey.activityPlanLearningObjective],
       learningObjective: json[ModelKey.activityPlanLearningObjective],
       vocab: List<Vocab>.from(
@@ -89,11 +93,11 @@ class ActivityPlanModel {
       endAt: json[ModelKey.activityPlanEndAt] != null
           ? DateTime.parse(json[ModelKey.activityPlanEndAt])
           : null,
-      duration: json[ModelKey.activityPlanDuration] != null
+      duration: json[ModelKey.duration] != null
           ? Duration(
-              days: json[ModelKey.activityPlanDuration]['days'] ?? 0,
-              hours: json[ModelKey.activityPlanDuration]['hours'] ?? 0,
-              minutes: json[ModelKey.activityPlanDuration]['minutes'] ?? 0,
+              days: json[ModelKey.duration]['days'] ?? 0,
+              hours: json[ModelKey.duration]['hours'] ?? 0,
+              minutes: json[ModelKey.duration]['minutes'] ?? 0,
             )
           : null,
       roles: roles,
@@ -109,11 +113,11 @@ class ActivityPlanModel {
       ModelKey.activityPlanInstructions: instructions,
       ModelKey.activityPlanRequest: req.toJson(),
       ModelKey.activityPlanTitle: title,
-      ModelKey.activityPlanDescription: description,
+      ModelKey.description: description,
       ModelKey.activityPlanLearningObjective: learningObjective,
       ModelKey.activityPlanVocab: vocab.map((vocab) => vocab.toJson()).toList(),
       ModelKey.activityPlanEndAt: endAt?.toIso8601String(),
-      ModelKey.activityPlanDuration: {
+      ModelKey.duration: {
         'days': duration?.inDays ?? 0,
         'hours': duration?.inHours.remainder(24) ?? 0,
         'minutes': duration?.inMinutes.remainder(60) ?? 0,
@@ -177,14 +181,29 @@ class Vocab {
 
   factory Vocab.fromJson(Map<String, dynamic> json) {
     return Vocab(
-      lemma: json['lemma'],
+      lemma: json[ModelKey.lemma],
       pos: json['pos'],
+    );
+  }
+
+  PangeaToken asToken() {
+    final text = PangeaTokenText(
+      content: lemma,
+      length: lemma.characters.length,
+      offset: 0,
+    );
+
+    return PangeaToken(
+      text: text,
+      lemma: Lemma(text: lemma, saveVocab: true, form: lemma),
+      pos: pos,
+      morph: {},
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'lemma': lemma,
+      ModelKey.lemma: lemma,
       'pos': pos,
     };
   }

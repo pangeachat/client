@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-15 14:43:59.878807",
+  "@@last_modified": "2025-12-29 16:03:40.520099",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -3815,9 +3815,6 @@
   "courseSavedSuccessfully": "コースが正常に保存されました",
   "addCoursePlan": "コースプランを追加",
   "activityStatsButtonInstruction": "ここをクリックして活動統計を表示し、終了時に活動を閉じます",
-  "readingAnalyticsDesc": "各メッセージの練習をクリックして読解活動を行います。",
-  "speakingAnalyticsDesc": "話す練習のために音声メッセージを録音します。",
-  "audioAnalyticsDesc": "各メッセージの練習をクリックしてリスニング活動を行います。",
   "loginToAccount": "マイアカウントにログイン",
   "appDescription": "友達とメッセージを送りながら言語を学びましょう。",
   "languages": "言語",
@@ -3843,7 +3840,6 @@
   "usernameOrEmail": "ユーザー名またはメール",
   "email": "メール",
   "forgotPassword": "パスワードをお忘れですか？",
-  "writingAnalyticsDesc": "書き取り練習のためにメッセージを送信します。",
   "endActivity": "アクティビティを終了",
   "allLanguages": "すべての言語",
   "chatListTooltip": "ここにあなたのダイレクトメッセージがあります！任意のユーザーのアバターをクリックして「会話を開始」し、DMを送信してください。",
@@ -9879,18 +9875,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9988,10 +9972,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11500,5 +11480,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "サインインの完了を待っています",
+  "ssoDialogDesc": "安全にサインインできるように新しいタブを開きました。",
+  "ssoDialogHelpText": "🤔 新しいタブが表示されない場合は、ポップアップブロッカーを確認してください。",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "言語ツールを無効にする",
+  "disableLanguageToolsDesc": "自動言語支援を無効にしますか？",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-12-15 14:43:38.968604",
+  "@@last_modified": "2025-12-29 16:03:18.962096",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -4358,9 +4358,6 @@
   "courseSavedSuccessfully": "تم حفظ الدورة بنجاح",
   "addCoursePlan": "إضافة خطة دورة",
   "activityStatsButtonInstruction": "انقر هنا لعرض إحصائيات نشاطك ولإغلاق النشاط عند الانتهاء",
-  "readingAnalyticsDesc": "انقر على الممارسة على كل رسالة لتمارين القراءة.",
-  "speakingAnalyticsDesc": "سجل رسائل صوتية لممارسة التحدث.",
-  "audioAnalyticsDesc": "انقر على الممارسة على كل رسالة لتمارين الاستماع.",
   "loginToAccount": "تسجيل الدخول إلى حسابي",
   "appDescription": "تعلم لغة\nأثناء مراسلة أصدقائك.",
   "languages": "اللغات",
@@ -4386,7 +4383,6 @@
   "usernameOrEmail": "اسم المستخدم أو البريد الإلكتروني",
   "email": "البريد الإلكتروني",
   "forgotPassword": "هل نسيت كلمة المرور؟",
-  "writingAnalyticsDesc": "أرسل رسائل لممارسة الكتابة.",
   "endActivity": "إنهاء النشاط",
   "allLanguages": "جميع اللغات",
   "chatListTooltip": "ستجد هنا رسائلك المباشرة! انقر على صورة أي مستخدم وابدأ محادثة لإرسال رسالة خاصة.",
@@ -9306,18 +9302,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9415,10 +9399,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10927,5 +10907,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "انتظار اكتمال تسجيل الدخول",
+  "ssoDialogDesc": "لقد فتحنا علامة تبويب جديدة حتى تتمكن من تسجيل الدخول بأمان.",
+  "ssoDialogHelpText": "🤔 إذا لم ترَ علامة التبويب الجديدة، يرجى التحقق من مانع النوافذ المنبثقة.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "تعطيل أدوات اللغة",
+  "disableLanguageToolsDesc": "هل ترغب في تعطيل المساعدة اللغوية التلقائية؟",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

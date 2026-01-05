@@ -147,8 +147,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<List<AnalyticsSummaryModel>> _getVocabAnalytics() async {
-    final uses = MatrixState.pangeaController.getAnalytics.constructListModel
-        .constructList(type: ConstructTypeEnum.vocab);
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    final aggregatedVocab =
+        await analyticsService.getAggregatedConstructs(ConstructTypeEnum.vocab);
+
+    final uses = aggregatedVocab.values.toList();
     final Map<String, List<ConstructUses>> lemmasToUses = {};
     for (final use in uses) {
       lemmasToUses[use.lemma] ??= [];
@@ -194,8 +197,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<List<AnalyticsSummaryModel>> _getMorphAnalytics() async {
-    final constructListModel =
-        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final analyticsService = Matrix.of(context).analyticsDataService;
 
     final morphs = await MorphsRepo.get();
     final List<AnalyticsSummaryModel> summaries = [];
@@ -212,8 +214,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
           category: feature.feature,
         );
 
-        final uses = constructListModel.getConstructUses(id);
-        if (uses == null) continue;
+        final uses = await analyticsService.getConstructUse(id);
 
         final xp = uses.points;
         final exampleMessages = await _getExampleMessages([uses]);

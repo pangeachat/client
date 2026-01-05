@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:35.064582",
+  "@@last_modified": "2025-12-29 16:03:15.448722",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -4450,9 +4450,6 @@
   "courseSavedSuccessfully": "课程已成功保存",
   "addCoursePlan": "添加课程计划",
   "activityStatsButtonInstruction": "点击这里查看你的活动统计，并在完成后关闭活动",
-  "readingAnalyticsDesc": "点击每条消息的练习以进行阅读活动。",
-  "speakingAnalyticsDesc": "录制语音消息进行口语练习。",
-  "audioAnalyticsDesc": "点击每条消息的练习以进行听力活动。",
   "loginToAccount": "登录我的账户",
   "appDescription": "学习一门语言\n同时给朋友发短信。",
   "languages": "語言",
@@ -4478,7 +4475,6 @@
   "usernameOrEmail": "用户名或电子邮件",
   "email": "电子邮件",
   "forgotPassword": "忘记密码？",
-  "writingAnalyticsDesc": "发送消息以练习写作。",
   "endActivity": "结束活动",
   "allLanguages": "所有语言",
   "chatListTooltip": "在这里你会找到你的直接消息！点击任何用户的头像并选择“开始对话”以发送私信。",
@@ -9100,18 +9096,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9209,10 +9193,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10708,5 +10688,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "等待登入完成",
+  "ssoDialogDesc": "我們已開啟一個新標籤頁，以便您安全地登入。",
+  "ssoDialogHelpText": "🤔 如果您沒有看到新標籤頁，請檢查您的彈出式窗口阻擋器。",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "禁用語言工具",
+  "disableLanguageToolsDesc": "您想要禁用自動語言輔助嗎？",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

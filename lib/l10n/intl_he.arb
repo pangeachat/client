@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:10.892818",
+  "@@last_modified": "2025-12-29 16:02:53.990837",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -3058,9 +3058,6 @@
   "courseSavedSuccessfully": "הקורס נשמר בהצלחה",
   "addCoursePlan": "הוסף תכנית קורס",
   "activityStatsButtonInstruction": "לחץ כאן כדי לצפות בסטטיסטיקות הפעילות שלך ולסגור את הפעילות בסיום",
-  "readingAnalyticsDesc": "לחץ על תרגול בכל הודעה לפעילויות קריאה.",
-  "speakingAnalyticsDesc": "הקלט הודעות קוליות לתרגול דיבור.",
-  "audioAnalyticsDesc": "לחץ על תרגול בכל הודעה לפעילויות שמיעה.",
   "loginToAccount": "התחבר לחשבוני",
   "appDescription": "למד שפה\nבזמן שליחת הודעות לחברים שלך.",
   "languages": "שפות",
@@ -3086,7 +3083,6 @@
   "usernameOrEmail": "שם משתמש או אימייל",
   "email": "אימייל",
   "forgotPassword": "שכחת סיסמה?",
-  "writingAnalyticsDesc": "שלח הודעות לתרגול הכתיבה.",
   "endActivity": "סיים פעילות",
   "allLanguages": "כל השפות",
   "chatListTooltip": "כאן תמצאו את ההודעות הישירות שלכם! לחצו על אייקון של משתמש כלשהו ו״התחל שיחה״ כדי לשלוח הודעה פרטית.",
@@ -10138,18 +10134,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10247,10 +10231,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11759,5 +11739,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "ממתינים להשלים את הכניסה",
+  "ssoDialogDesc": "פתחנו לשונית חדשה כדי שתוכל להיכנס בצורה מאובטחת.",
+  "ssoDialogHelpText": "🤔 אם לא ראית את הלשונית החדשה, אנא בדוק את חוסם הפופ-אפ שלך.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "כבה כלים לשפה",
+  "disableLanguageToolsDesc": "האם תרצה לכבות את העזרה האוטומטית בשפה?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

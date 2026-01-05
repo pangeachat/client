@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_download_provider.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 
 enum ActivityPopupMenuActions { invite, leave, download }
 
@@ -32,10 +31,9 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
             widget.onLeave();
             break;
           case ActivityPopupMenuActions.invite:
-            context.go(
-              widget.room.courseParent != null
-                  ? '/rooms/spaces/${widget.room.courseParent!.id}/${widget.room.id}/invite'
-                  : '/rooms/${widget.room.id}/invite',
+            NavigationUtil.goToSpaceRoute(
+              '/rooms/${widget.room.id}/invite',
+              context,
             );
             break;
           case ActivityPopupMenuActions.download:

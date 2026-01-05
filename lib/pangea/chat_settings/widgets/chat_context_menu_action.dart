@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -248,9 +249,10 @@ void chatContextMenuAction(
       );
       if (confirmed != OkCancelResult.ok) return;
 
+      final isSpace = room.isSpace;
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: room.isSpace ? room.leaveSpace : room.leave,
+        future: isSpace ? room.leaveSpace : room.leave,
       );
 
       final r = room.client.getRoomById(room.id);
@@ -259,11 +261,9 @@ void chatContextMenuAction(
       }
 
       if (!resp.isError) {
-        outerContext.go(
-          room.courseParent != null
-              ? "/rooms/spaces/${room.courseParent!.id}/details"
-              : "/rooms",
-        );
+        isSpace
+            ? context.go('/rooms')
+            : NavigationUtil.goToSpaceRoute("/rooms", context);
       }
 
       return;
@@ -277,7 +277,6 @@ void chatContextMenuAction(
           context.go("/rooms");
         }
       } else {
-        final parentSpaceId = room.courseParent?.id;
         final confirmed = await showOkCancelAlertDialog(
           context: context,
           title: l10n.areYouSure,
@@ -292,11 +291,7 @@ void chatContextMenuAction(
           future: room.delete,
         );
         if (!resp.isError) {
-          outerContext.go(
-            parentSpaceId != null
-                ? "/rooms/spaces/$parentSpaceId/details"
-                : "/rooms",
-          );
+          NavigationUtil.goToSpaceRoute("/rooms", context);
         }
       }
       return;

@@ -4,12 +4,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
+import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/chat/widgets/icon_rain.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -167,8 +166,10 @@ class ConstructNotificationOverlayState
   }
 
   void _showDetails() {
-    context.go(
-      "/rooms/analytics/${ConstructTypeEnum.morph.string}/${Uri.encodeComponent(widget.construct.string)}",
+    AnalyticsNavigationUtil.navigateToAnalytics(
+      context: context,
+      view: ProgressIndicatorEnum.morphsUsed,
+      construct: widget.construct,
     );
   }
 

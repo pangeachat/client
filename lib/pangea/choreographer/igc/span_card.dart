@@ -157,7 +157,7 @@ class SpanCardState extends State<SpanCard> {
               child: SingleChildScrollView(
                 controller: scrollController,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     spacing: 12.0,
                     children: [

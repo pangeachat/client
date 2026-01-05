@@ -38,6 +38,7 @@ class Choreographer extends ChangeNotifier {
   ChoreoRecordModel? _choreoRecord;
 
   final ValueNotifier<bool> _isFetching = ValueNotifier(false);
+  final ValueNotifier<int> _timesDismissedIT = ValueNotifier(0);
 
   int _timesClicked = 0;
   Timer? _debounceTimer;
@@ -57,6 +58,7 @@ class Choreographer extends ChangeNotifier {
 
   int get timesClicked => _timesClicked;
   ValueNotifier<bool> get isFetching => _isFetching;
+  ValueNotifier<int> get timesDismissedIT => _timesDismissedIT;
   ChoreoModeEnum get choreoMode => _choreoMode;
   String get currentText => textController.text;
 
@@ -109,6 +111,7 @@ class Choreographer extends ChangeNotifier {
     _choreoRecord = null;
     itController.closeIT();
     itController.clearSourceText();
+    itController.clearDissmissed();
     igcController.clear();
     _resetDebounceTimer();
     _setChoreoMode(ChoreoModeEnum.igc);
@@ -132,6 +135,7 @@ class Choreographer extends ChangeNotifier {
     errorService.dispose();
     textController.dispose();
     _isFetching.dispose();
+    _timesDismissedIT.dispose();
 
     TtsController.stop();
     super.dispose();
@@ -146,7 +150,7 @@ class Choreographer extends ChangeNotifier {
       // if user is doing IT, call closeIT here to
       // ensure source text is replaced when needed
       if (itController.open.value && _timesClicked > 1) {
-        itController.closeIT();
+        itController.closeIT(dismiss: true);
       }
     }
   }
@@ -183,8 +187,8 @@ class Choreographer extends ChangeNotifier {
     }
     // update assistance state from no message => not fetched and vice versa
     if (_lastChecked == null ||
-        _lastChecked!.isEmpty ||
-        textController.text.isEmpty) {
+        _lastChecked!.trim().isEmpty ||
+        textController.text.trim().isEmpty) {
       notifyListeners();
     }
 
@@ -241,6 +245,13 @@ class Choreographer extends ChangeNotifier {
       [],
     );
 
+    // init choreo record to record the original text before any matches are applied
+    _choreoRecord ??= ChoreoRecordModel(
+      originalText: textController.text,
+      choreoSteps: [],
+      openMatches: [],
+    );
+
     if (igcController.openAutomaticMatches.isNotEmpty) {
       await igcController.acceptNormalizationMatches();
     } else {
@@ -282,13 +293,6 @@ class Choreographer extends ChangeNotifier {
     return PangeaMessageContentModel(
       message: message,
       choreo: _record,
-      originalSent: PangeaRepresentation(
-        langCode: tokensResp?.detections.firstOrNull?.langCode ??
-            LanguageKeys.unknownLanguage,
-        text: message,
-        originalSent: true,
-        originalWritten: hasOriginalWritten,
-      ),
       originalWritten: hasOriginalWritten
           ? PangeaRepresentation(
               langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
@@ -337,6 +341,10 @@ class Choreographer extends ChangeNotifier {
       );
     }
 
+    debugPrint("DISMISSED: ${itController.dismissed}");
+    if (itController.dismissed) {
+      _timesDismissedIT.value = _timesDismissedIT.value + 1;
+    }
     _setChoreoMode(ChoreoModeEnum.igc);
     errorService.resetError();
   }

@@ -53,16 +53,20 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ...MessagePracticeMode.practiceModes.map(
-                  (m) => ToolbarButton(
-                    mode: m,
-                    setMode: () => widget.controller.updateToolbarMode(m),
-                    isComplete: widget.controller.isPracticeActivityDone(
+                  (m) {
+                    final complete = widget.controller.isPracticeActivityDone(
                       m.associatedActivityType!,
-                    ),
-                    isSelected: widget.controller.practiceMode == m,
-                    shimmer: widget.controller.practiceMode ==
-                        MessagePracticeMode.noneSelected,
-                  ),
+                    );
+                    return ToolbarButton(
+                      mode: m,
+                      setMode: () => widget.controller.updateToolbarMode(m),
+                      isComplete: complete,
+                      isSelected: widget.controller.practiceMode == m,
+                      shimmer: widget.controller.practiceMode ==
+                              MessagePracticeMode.noneSelected &&
+                          !complete,
+                    );
+                  },
                 ),
               ],
             ),

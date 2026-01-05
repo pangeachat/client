@@ -1806,9 +1806,6 @@
   "courseSavedSuccessfully": "課程已成功保存",
   "addCoursePlan": "添加課程計劃",
   "activityStatsButtonInstruction": "點擊此處查看您的活動統計數據，完成後關閉活動",
-  "readingAnalyticsDesc": "點擊每條消息進行閱讀練習。",
-  "speakingAnalyticsDesc": "錄製語音消息進行口語練習。",
-  "audioAnalyticsDesc": "點擊每條消息進行聽力練習。",
   "loginToAccount": "登入我的帳戶",
   "appDescription": "學習一種語言\n同時與朋友發訊息。",
   "languages": "語言",
@@ -1834,7 +1831,6 @@
   "usernameOrEmail": "用戶名或電郵",
   "email": "電郵",
   "forgotPassword": "忘記密碼？",
-  "writingAnalyticsDesc": "發送訊息練習寫作。",
   "endActivity": "結束活動",
   "allLanguages": "所有語言",
   "chatListTooltip": "喺呢度你會搵到你嘅直接訊息！點擊任何用戶嘅頭像同「開始對話」嚟發送私訊。",
@@ -1860,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-15 14:43:20.879510",
+  "@@last_modified": "2025-12-29 16:03:04.289126",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -9774,18 +9770,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9883,10 +9867,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11801,5 +11781,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "等待登錄完成",
+  "ssoDialogDesc": "我們已經打開了一個新標籤，以便您可以安全地登錄。",
+  "ssoDialogHelpText": "🤔 如果您沒有看到新標籤，請檢查您的彈出窗口阻止程序。",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "禁用語言工具",
+  "disableLanguageToolsDesc": "你想要禁用自動語言輔助嗎？",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

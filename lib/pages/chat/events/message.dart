@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
+import 'package:fluffychat/pangea/chat/widgets/request_regeneration_button.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -798,7 +799,20 @@ class Message extends StatelessWidget {
                                                                       ),
                                                                     ],
                                                                   ),
+                                                                )
+                                                              // #Pangea
+                                                              else if (canRefresh)
+                                                                RequestRegenerationButton(
+                                                                  textColor:
+                                                                      textColor,
+                                                                  onPressed: () =>
+                                                                      controller
+                                                                          .requestRegeneration(
+                                                                    event
+                                                                        .eventId,
+                                                                  ),
                                                                 ),
+                                                              // Pangea#
                                                             ],
                                                           ),
                                                         ),
@@ -1042,19 +1056,6 @@ class Message extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  if (canRefresh)
-                                    Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: IconButton(
-                                        tooltip: L10n.of(context)
-                                            .requestRegeneration,
-                                        icon: const Icon(
-                                          Icons.refresh_outlined,
-                                        ),
-                                        onPressed: () => controller
-                                            .requestRegeneration(event.eventId),
-                                      ),
-                                    ),
                                 ],
                               ),
                             ],

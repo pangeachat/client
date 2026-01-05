@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-15 14:43:31.134664",
+  "@@last_modified": "2025-12-29 16:03:11.864159",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -4444,9 +4444,6 @@
   "courseSavedSuccessfully": "Curs desat amb èxit",
   "addCoursePlan": "Afegeix un pla de curs",
   "activityStatsButtonInstruction": "Fes clic aquí per veure les teves estadístiques d'activitat i per tancar l'activitat quan hagis acabat",
-  "readingAnalyticsDesc": "Fes clic a practicar en cada missatge per a activitats de lectura.",
-  "speakingAnalyticsDesc": "Grava missatges de veu per a pràctica d'expressió oral.",
-  "audioAnalyticsDesc": "Fes clic a practicar en cada missatge per a activitats d'escolta.",
   "loginToAccount": "Inicia sessió al meu compte",
   "appDescription": "Aprèn un idioma\nmentre xatejes amb els teus amics.",
   "languages": "Idiomes",
@@ -4472,7 +4469,6 @@
   "usernameOrEmail": "Nom d'usuari o correu electrònic",
   "email": "Correu electrònic",
   "forgotPassword": "Has oblidat la contrasenya?",
-  "writingAnalyticsDesc": "Envia missatges per practicar l'escriptura.",
   "endActivity": "Finalitzar l'activitat",
   "allLanguages": "Tots els idiomes",
   "chatListTooltip": "Aquí trobaràs els teus missatges directes! Fes clic a la icona d'un usuari i “Inicia una conversa” per enviar un missatge privat.",
@@ -9113,18 +9109,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -9222,10 +9206,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -10734,5 +10714,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Esperant que la signatura es completi",
+  "ssoDialogDesc": "Hem obert una nova pestanya perquè puguis iniciar sessió de manera segura.",
+  "ssoDialogHelpText": "🤔 Si no has vist la nova pestanya, si us plau, comprova el teu bloquejador de finestres emergents.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Desactivar eines d'idioma",
+  "disableLanguageToolsDesc": "Voleu desactivar l'assistència automàtica d'idioma?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

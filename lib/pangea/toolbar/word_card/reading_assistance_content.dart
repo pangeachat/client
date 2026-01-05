@@ -47,14 +47,9 @@ class ReadingAssistanceContent extends StatelessWidget {
       token: overlayController.selectedToken!.text,
       construct: overlayController.selectedToken!.vocabConstructID,
       event: overlayController.event,
-      wordIsNew: overlayController.isNewToken(overlayController.selectedToken!),
       onClose: () => overlayController.updateSelectedSpan(null),
       langCode: overlayController.pangeaMessageEvent.messageDisplayLangCode,
       onDismissNewWordOverlay: () => overlayController.setState(() {}),
-      setEmoji: (emoji) => overlayController.selectModeController.setTokenEmoji(
-        overlayController.selectedToken!.vocabConstructID,
-        emoji,
-      ),
       onFlagTokenInfo: (LemmaInfoResponse lemmaInfo, String phonetics) {
         if (selectedTokenIndex < 0) return;
         final requestData = TokenInfoFeedbackRequestData(

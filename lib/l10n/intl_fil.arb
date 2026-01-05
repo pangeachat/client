@@ -2737,9 +2737,6 @@
   "courseSavedSuccessfully": "Matagumpay na na-save ang kurso",
   "addCoursePlan": "Magdagdag ng plano sa kurso",
   "activityStatsButtonInstruction": "Pindutin dito upang makita ang iyong mga istatistika ng aktibidad at isara ang aktibidad kapag tapos na",
-  "readingAnalyticsDesc": "Pindutin ang practice sa bawat mensahe para sa mga aktibidad sa pagbasa.",
-  "speakingAnalyticsDesc": "Mag-record ng mga voice message para sa pagsasanay sa pagsasalita.",
-  "audioAnalyticsDesc": "Pindutin ang practice sa bawat mensahe para sa mga aktibidad sa pakikinig.",
   "loginToAccount": "Mag-login sa aking account",
   "appDescription": "Matuto ng isang wika\nhabang nagte-text sa iyong mga kaibigan.",
   "languages": "Mga Wika",
@@ -2765,7 +2762,6 @@
   "usernameOrEmail": "Username o email",
   "email": "Email",
   "forgotPassword": "Nakalimutan ang password?",
-  "writingAnalyticsDesc": "Magpadala ng mga mensahe upang sanayin ang pagsusulat.",
   "endActivity": "Tapusin ang aktibidad",
   "allLanguages": "Lahat ng wika",
   "chatListTooltip": "Dito mo makikita ang iyong mga direktang mensahe! I-click ang avatar ng kahit anong user at “simulan ang pag-uusap” upang magpadala ng DM.",
@@ -2791,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-15 14:43:36.288461",
+  "@@last_modified": "2025-12-29 16:03:16.522907",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -10078,18 +10074,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -10187,10 +10171,6 @@
     "placeholders": {}
   },
   "@forgotPassword": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@writingAnalyticsDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11686,5 +11666,30 @@
         "type": "String"
       }
     }
+  },
+  "ssoDialogTitle": "Naghihintay na makumpleto ang pag-sign in",
+  "ssoDialogDesc": "Nagbukas kami ng bagong tab upang makapag-sign in ka nang ligtas.",
+  "ssoDialogHelpText": "🤔 Kung hindi mo nakita ang bagong tab, mangyaring suriin ang iyong popup blocker.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "I-disable ang mga kasangkapan sa wika",
+  "disableLanguageToolsDesc": "Gusto mo bang i-disable ang awtomatikong tulong sa wika?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
   }
 }

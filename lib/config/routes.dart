@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
@@ -32,8 +33,12 @@ import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
 import 'package:fluffychat/pages/settings_style/settings_style.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
+import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
+import 'package:fluffychat/pangea/analytics_page/empty_analytics_page.dart';
+import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_content.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
@@ -41,7 +46,6 @@ import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
@@ -518,11 +522,11 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                AnalyticsPage(
-                  indicator: FluffyThemes.isColumnMode(context)
-                      ? null
-                      : ProgressIndicatorEnum.wordsUsed,
-                ),
+                FluffyThemes.isColumnMode(context)
+                    ? const EmptyAnalyticsPage()
+                    : const ConstructAnalyticsView(
+                        view: ConstructTypeEnum.vocab,
+                      ),
               ),
               routes: [
                 GoRoute(
@@ -530,26 +534,27 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.morphsUsed,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const ConstructAnalyticsView(
+                            view: ConstructTypeEnum.morph,
+                          ),
                   ),
                   redirect: loggedOutRedirect,
                   routes: [
                     GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {
-                        final construct = ConstructIdentifier.fromString(
-                          state.pathParameters['construct']!,
+                        final construct = ConstructIdentifier.fromJson(
+                          jsonDecode(state.pathParameters['construct']!),
                         );
+
                         return defaultPageBuilder(
                           context,
                           state,
-                          AnalyticsPage(
-                            indicator: ProgressIndicatorEnum.morphsUsed,
+                          ConstructAnalyticsView(
                             construct: construct,
+                            view: ConstructTypeEnum.morph,
                           ),
                         );
                       },
@@ -561,11 +566,11 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.wordsUsed,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const ConstructAnalyticsView(
+                            view: ConstructTypeEnum.vocab,
+                          ),
                   ),
                   redirect: loggedOutRedirect,
                   routes: [
@@ -582,15 +587,15 @@ abstract class AppRoutes {
                     GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {
-                        final construct = ConstructIdentifier.fromString(
-                          state.pathParameters['construct']!,
+                        final construct = ConstructIdentifier.fromJson(
+                          jsonDecode(state.pathParameters['construct']!),
                         );
                         return defaultPageBuilder(
                           context,
                           state,
-                          AnalyticsPage(
-                            indicator: ProgressIndicatorEnum.wordsUsed,
+                          ConstructAnalyticsView(
                             construct: construct,
+                            view: ConstructTypeEnum.vocab,
                           ),
                         );
                       },
@@ -602,11 +607,9 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.activities,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const ActivityArchive(),
                   ),
                   redirect: loggedOutRedirect,
                   routes: [
@@ -619,9 +622,12 @@ abstract class AppRoutes {
                           roomId: state.pathParameters['roomid']!,
                           eventId: state.uri.queryParameters['event'],
                           backButton: BackButton(
-                            onPressed: () => context.go(
-                              "/rooms/analytics/activities",
-                            ),
+                            onPressed: () {
+                              AnalyticsNavigationUtil.navigateToAnalytics(
+                                context: context,
+                                view: ProgressIndicatorEnum.activities,
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -634,11 +640,9 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    AnalyticsPage(
-                      indicator: FluffyThemes.isColumnMode(context)
-                          ? null
-                          : ProgressIndicatorEnum.level,
-                    ),
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyAnalyticsPage()
+                        : const LevelAnalyticsDetailsContent(),
                   ),
                   redirect: loggedOutRedirect,
                 ),
@@ -999,30 +1003,7 @@ abstract class AppRoutes {
                   ),
                 );
               },
-              // #Pangea
-              // redirect: loggedOutRedirect,
-              redirect: (context, state) {
-                String subroute = state.fullPath!.split('roomid').last;
-                if (state.uri.queryParameters.isNotEmpty) {
-                  final queryString = state.uri.queryParameters.entries
-                      .map((e) => '${e.key}=${e.value}')
-                      .join('&');
-                  subroute = '$subroute?$queryString';
-                }
-
-                final roomId = state.pathParameters['roomid']!;
-                final room = Matrix.of(context).client.getRoomById(roomId);
-                if (room != null && room.isSpace) {
-                  return "/rooms/spaces/${room.id}$subroute";
-                }
-
-                final parent = room?.firstSpaceParent;
-                if (parent != null && state.fullPath != null) {
-                  return "/rooms/spaces/${parent.id}/$roomId$subroute";
-                }
-                return loggedOutRedirect(context, state);
-              },
-              // Pangea#
+              redirect: loggedOutRedirect,
               routes: [
                 GoRoute(
                   path: 'search',

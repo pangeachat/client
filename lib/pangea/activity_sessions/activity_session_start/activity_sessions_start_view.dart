@@ -10,16 +10,17 @@ import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart'
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -126,8 +127,10 @@ class ActivitySessionStartView extends StatelessWidget {
                   await showDialog(
                     context: context,
                     builder: (context) {
-                      return ActivityFeedbackResponseDialog(
+                      return FeedbackResponseDialog(
+                        title: L10n.of(context).feedbackTitle,
                         feedback: resp.result!.userFriendlyResponse,
+                        description: L10n.of(context).feedbackRespDesc,
                       );
                     },
                   );
@@ -270,9 +273,12 @@ class ActivitySessionStartView extends StatelessWidget {
                                                 ),
                                               ElevatedButton(
                                                 style: buttonStyle,
-                                                onPressed: () => context.go(
-                                                  "/rooms/${controller.activityRoom!.id}/invite",
-                                                ),
+                                                onPressed: () {
+                                                  NavigationUtil.goToSpaceRoute(
+                                                    "/rooms/${controller.activityRoom!.id}/invite",
+                                                    context,
+                                                  );
+                                                },
                                                 child: Row(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -390,9 +396,12 @@ class _ActivityStartButtons extends StatelessWidget {
             ] else if (joinedActivityRoom != null) ...[
               ElevatedButton(
                 style: buttonStyle,
-                onPressed: () => context.go(
-                  "/rooms/spaces/${controller.widget.parentId}/$joinedActivityRoom",
-                ),
+                onPressed: () {
+                  NavigationUtil.goToSpaceRoute(
+                    "/rooms/$joinedActivityRoom",
+                    context,
+                  );
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -425,8 +434,9 @@ class _ActivityStartButtons extends StatelessWidget {
                     );
 
                     if (!resp.isError) {
-                      context.go(
-                        "/rooms/spaces/${controller.widget.parentId}/${resp.result}",
+                      NavigationUtil.goToSpaceRoute(
+                        "/rooms/${resp.result}",
+                        context,
                       );
                     }
                   },
