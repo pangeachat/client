@@ -174,6 +174,7 @@ class AnalyticsDataService {
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
     _initCompleter = Completer<void>();
+    await _clearDatabase();
     await _initDatabase(_analyticsClientGetter.client);
   }
 
