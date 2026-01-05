@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Ka\u017ekas nepavyko. Rekomenduojame naudoti \u201eChrome\u201c nar\u0161ykl\u0119 \u012fra\u0161ant prane\u0161imus.";
     },
+    get$screenSizeWarning() {
+      return "Norint geriausiai naudotis \u0161ia programa, pra\u0161ome padidinti ekrano dyd\u012f.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5270,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hXFp4/w+d+MbZ/O4bpbzAQN0WMs="] = d.current;
+  d["BtnjdKanVTlbIZY2MrfnNf3bdSU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Valami hiba t\xf6rt\xe9nt. Javasoljuk, hogy a Chrome b\xf6ng\xe9sz\u0151t haszn\xe1lja az \xfczenetek r\xf6gz\xedt\xe9sekor.";
     },
+    get$screenSizeWarning() {
+      return "A legjobb \xe9lm\xe9ny \xe9rdek\xe9ben, k\xe9rj\xfck, b\u0151v\xedtse a k\xe9perny\u0151 m\xe9ret\xe9t ennek az alkalmaz\xe1snak a haszn\xe1lata sor\xe1n.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1YWP2iOnODLujP1hmtpCfz3+9uk="] = d.current;
+  d["df6xQhC6lx1FcDZ35DprQtXrtLY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

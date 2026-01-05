@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Etwas ist schiefgelaufen. Wir empfehlen, den Chrome-Browser zu verwenden, wenn Sie Nachrichten aufnehmen.";
     },
+    get$screenSizeWarning() {
+      return "F\xfcr das beste Erlebnis mit dieser Anwendung erweitern Sie bitte Ihre Bildschirmgr\xf6\xdfe.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5270,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bc3oiHz/3a/YEVVklwkoPET0VWg="] = d.current;
+  d["iqPEH37b5t1g2EWtwNnayzf7Xvs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_381.part.js.map

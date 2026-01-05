@@ -5263,6 +5263,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return string$.Algo_d;
     },
+    get$screenSizeWarning() {
+      return string$.Para_a;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10499,6 +10502,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$genericWebRecordingError() {
       return string$.Algo_d;
+    },
+    get$screenSizeWarning() {
+      return string$.Para_a;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15737,6 +15743,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return string$.Algo_d;
     },
+    get$screenSizeWarning() {
+      return string$.Para_a;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15872,6 +15881,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Oh__es: "Oh, este curso precisa de um plano!\n\nPlanos de curso s\xe3o uma sequ\xeancia de t\xf3picos e atividades de conversa.",
     Ops__E: "Ops! Esta atividade precisa de mais 1 pessoa.",
     Ou_a_a: "Ou\xe7a a mensagem completa. Depois, associe os \xe1udios \xe0s palavras.",
+    Para_a: "Para a melhor experi\xeancia ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
     Para_m: "Para mensagens de voz, voc\xea pode ver uma transcri\xe7\xe3o, bem como a pontua\xe7\xe3o de Palavras Por Minuto do falante.",
     Para_q: "Para quem voc\xea quer reportar esta mensagem?",
     Parece: "Parece que n\xe3o \xe9 um servidor principal compat\xedvel. URL incorreta?",
@@ -15927,7 +15937,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CtxSfkp0bNHpKKdkTXPHWJt5FlY="] = d.current;
+  d["i7LcOdI8r7xyjrv7RqjXHmVS08Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

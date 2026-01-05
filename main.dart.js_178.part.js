@@ -5252,6 +5252,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Alguna cosa ha anat malament. Recomanem utilitzar el navegador Chrome quan gravis missatges.";
     },
+    get$screenSizeWarning() {
+      return "Per a la millor experi\xe8ncia utilitzant aquesta aplicaci\xf3, si us plau, amplia la mida de la teva pantalla.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5268,7 +5271,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8B+Z5W+l9FDxlKmyHJPk3q2kPLE="] = d.current;
+  d["j7/QtpYbN415wXNCMmZ27V4RSFI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

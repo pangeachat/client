@@ -5252,6 +5252,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Co\u015b posz\u0142o nie tak. Zalecamy korzystanie z przegl\u0105darki Chrome podczas nagrywania wiadomo\u015bci.";
     },
+    get$screenSizeWarning() {
+      return "Aby uzyska\u0107 najlepsze wra\u017cenia podczas korzystania z tej aplikacji, prosz\u0119 powi\u0119kszy\u0107 rozmiar ekranu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5265,7 +5268,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tXP9ZbVuT9NQbx0d6VSdyNrizc8="] = d.current;
+  d["KXiPykjzaNolLjOCrctu4I6ueRQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

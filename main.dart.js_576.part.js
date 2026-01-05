@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Jotain meni pieleen. Suosittelemme k\xe4ytt\xe4m\xe4\xe4n Chrome-selainta viestien tallentamiseen.";
     },
+    get$screenSizeWarning() {
+      return "Parhaan k\xe4ytt\xf6kokemuksen saamiseksi t\xe4m\xe4n sovelluksen k\xe4yt\xf6ss\xe4, laajenna n\xe4ytt\xf6kokoasi.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZbSbZDSkD0k3tA27t0pMVMCYNBs="] = d.current;
+  d["zzjkkTDYK3Gsvv0nrYVgkpNbEXE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map

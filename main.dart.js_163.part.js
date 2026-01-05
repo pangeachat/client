@@ -5253,6 +5253,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Di\xe7ka shkoi keq. Ne rekomandojm\xeb t\xeb p\xebrdorni shfletuesin Chrome kur regjistroni mesazhe.";
     },
+    get$screenSizeWarning() {
+      return "Bokor na b\u025by\u025b a, b\u0254k\u0254 a \u025by\u025b f\u025b a, y\u025bsr\u025b s\u025b b\u0254 wo b\u0254k\u0254 no mu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5278,7 +5281,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZVfKX0N+vsxqfdHhuTjllScblkA="] = d.current;
+  d["/QGEPHZJzv2woB7J63cCP+iHzFo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

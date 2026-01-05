@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Midagi l\xe4ks valesti. Soovitame s\xf5numite salvestamiseks kasutada Chrome'i brauserit.";
     },
+    get$screenSizeWarning() {
+      return "Parima kogemuse saamiseks selle rakenduse kasutamisel palun suurendage oma ekraani suurust.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VHcXOYtkAx8oDosXJ4Uj8UX/zeE="] = d.current;
+  d["/HXC5cOtXeKMq1MV32GCZg1UEM8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

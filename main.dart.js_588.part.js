@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "May nangyaring mali. Inirerekomenda naming gumamit ng Chrome browser kapag nagre-record ng mga mensahe.";
     },
+    get$screenSizeWarning() {
+      return "Para sa pinakamahusay na karanasan sa paggamit ng application na ito, mangyaring palawakin ang laki ng iyong screen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ho6vSoaf0xIfu001R0oiSyWCjBo="] = d.current;
+  d["QcMU3nbemYbJDlMa2IMssgNoOpU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

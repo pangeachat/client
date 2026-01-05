@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Algu reso mal. Nos rekomenda usar el navegador Chrome cuando registrando mensajes.";
     },
+    get$screenSizeWarning() {
+      return "Per la mejor experiencia usando esta aplicaci\xf3n, por favor expande el tama\xf1o de tu pantalla.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ND195cgC3CjkHsPORN4Lk73ZUT8="] = d.current;
+  d["UQq4OxhHWsnHpdYNZJ5xTGa6O9M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

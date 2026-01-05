@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Ceva a mers prost. Recomand\u0103m utilizarea browserului Chrome atunci c\xe2nd \xeenregistra\u021bi mesaje.";
     },
+    get$screenSizeWarning() {
+      return "Aby uzyska\u0107 najlepsze wra\u017cenia podczas korzystania z tej aplikacji, prosz\u0119 powi\u0119kszy\u0107 rozmiar ekranu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5fnAklCzh94fjYr58y/CBTAP7Ww="] = d.current;
+  d["cXnbHxj8NyjiGTa8ENfyX0QZHSQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_695.part.js.map

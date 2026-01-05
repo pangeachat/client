@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Noget gik galt. Vi anbefaler at bruge Chrome-browseren, n\xe5r du optager beskeder.";
     },
+    get$screenSizeWarning() {
+      return "For den bedste oplevelse med denne applikation, bedes du udvide din sk\xe6rmst\xf8rrelse.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vD2zjVbcDttTetqpSjHQAKZS1pI="] = d.current;
+  d["YUsWZzI7Wx9JXBYmCrpx1SV6KmI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

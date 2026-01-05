@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Noe gikk galt. Vi anbefaler \xe5 bruke Chrome-nettleseren n\xe5r du tar opp meldinger.";
     },
+    get$screenSizeWarning() {
+      return "For den beste opplevelsen med denne applikasjonen, vennligst utvid skjermst\xf8rrelsen din.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5270,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mWlokWcQhqZneGszgRE1EwJNaCc="] = d.current;
+  d["Q9QqhFJqnzWsoML3D/fXuj21MOI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

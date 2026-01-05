@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "N\u011bco se pokazilo. Doporu\u010dujeme pou\u017e\xedvat pro nahr\xe1v\xe1n\xed zpr\xe1v prohl\xed\u017ee\u010d Chrome.";
     },
+    get$screenSizeWarning() {
+      return "Pro nejlep\u0161\xed z\xe1\u017eitek z pou\u017e\xedv\xe1n\xed t\xe9to aplikace pros\xedm zv\u011bt\u0161ete velikost obrazovky.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sIQRxp0Fl4w2he1pW23Y3U27ygI="] = d.current;
+  d["B1XPuDx9iY2997pzAEMlpW6Y4uY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

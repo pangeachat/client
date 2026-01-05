@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Ada yang tidak beres. Kami sarankan menggunakan browser Chrome saat merekam pesan.";
     },
+    get$screenSizeWarning() {
+      return "Untuk pengalaman terbaik menggunakan aplikasi ini, silakan perbesar ukuran layar Anda.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5270,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zHV7op/YjO0zPjIl0mqgNPCqq0g="] = d.current;
+  d["avcD3qjW+ukesqcM3XZrLZBkKwU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

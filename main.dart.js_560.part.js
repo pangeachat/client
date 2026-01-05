@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Zerbait oker joan da. Mezuak grabatzerakoan Chrome nabigatzailea erabiltzea gomendatzen dugu.";
     },
+    get$screenSizeWarning() {
+      return "Aplikazio hau erabiltzeko esperientzia onena izateko, mesedez, handitu zure pantailaren tamaina.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5270,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["t/Tqln9qaQkprDd7PM0sLjMm9Fs="] = d.current;
+  d["rHJMw9EOSFFsO1ecSmFH6CL0WSU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_560.part.js.map

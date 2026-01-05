@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Io misfunkciis. Ni rekomendas uzi la Chrome-brauzilon kiam vi registras mesa\u011dojn.";
     },
+    get$screenSizeWarning() {
+      return "Por la plej bona sperto uzante \u0109i tiun aplika\u0135on, bonvolu vastigi vian ekranan grandecon.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2SEhr4uyttKqPqrOreWmr78YDsc="] = d.current;
+  d["gkWy6tbMTDamz5JYlReDc8B6cHg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

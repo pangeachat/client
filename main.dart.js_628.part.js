@@ -5251,6 +5251,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$genericWebRecordingError() {
       return "Ne\u0161to je po\u0161lo po zlu. Preporu\u010dujemo kori\u0161tenje Chrome preglednika prilikom snimanja poruka.";
     },
+    get$screenSizeWarning() {
+      return "Za najbolje iskustvo kori\u0161tenja ove aplikacije, molimo vas da pove\u0107ate veli\u010dinu svog ekrana.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5264,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iXskaIxMhpJXLviL41yuowf99YA="] = d.current;
+  d["DztsnsUsKbsHyKoh4IrG0aAZCd8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map
