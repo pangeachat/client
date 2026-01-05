@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
 
 class SttTranscriptTokens extends StatelessWidget {
+  final String eventId;
   final SpeechToTextResponseModel model;
   final TextStyle? style;
 
@@ -13,6 +16,7 @@ class SttTranscriptTokens extends StatelessWidget {
 
   const SttTranscriptTokens({
     super.key,
+    required this.eventId,
     required this.model,
     this.onClick,
     this.isSelected,
@@ -24,6 +28,7 @@ class SttTranscriptTokens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("Tokens: ${tokens.map((t) => t.toJson())}");
     if (model.transcript.sttTokens.isEmpty) {
       return Text(
         model.transcript.text,
@@ -33,6 +38,11 @@ class SttTranscriptTokens extends StatelessWidget {
     }
 
     final messageCharacters = model.transcript.text.characters;
+    final renderer = TokenRenderingUtil(
+      existingStyle: (style ?? DefaultTextStyle.of(context).style),
+    );
+
+    final newTokens = TokensUtil.getNewTokens(eventId, tokens);
     return RichText(
       textScaler: TextScaler.noScaling,
       text: TextSpan(
@@ -55,21 +65,24 @@ class SttTranscriptTokens extends StatelessWidget {
           final selected = isSelected?.call(token) ?? false;
 
           return WidgetSpan(
-            child: MouseRegion(
-              cursor: SystemMouseCursors.click,
-              child: GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: onClick != null ? () => onClick?.call(token) : null,
-                child: RichText(
-                  text: TextSpan(
-                    text: text,
-                    style:
-                        (style ?? DefaultTextStyle.of(context).style).copyWith(
-                      decoration: TextDecoration.underline,
-                      decorationThickness: 4,
-                      decorationColor: selected
-                          ? Theme.of(context).colorScheme.primary
-                          : Colors.white.withAlpha(0),
+            child: HoverBuilder(
+              builder: (context, hovered) => MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: onClick != null ? () => onClick?.call(token) : null,
+                  child: RichText(
+                    text: TextSpan(
+                      text: text,
+                      style: renderer.style(
+                        underlineColor: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withAlpha(200),
+                        hovered: hovered,
+                        selected: selected,
+                        isNew: newTokens.any((t) => t == token.text),
+                      ),
                     ),
                   ),
                 ),
