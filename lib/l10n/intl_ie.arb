@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-29 16:02:50.259140",
+  "@@last_modified": "2026-01-05 15:40:43.869495",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11687,6 +11687,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permisiunea a fost refuzată. Activați permisiunile de înregistrare pentru a înregistra mesaje audio.",
+  "genericWebRecordingError": "Ceva a mers prost. Recomandăm utilizarea browserului Chrome atunci când înregistrați mesaje.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

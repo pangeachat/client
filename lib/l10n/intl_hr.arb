@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-12-29 16:02:51.585781",
+  "@@last_modified": "2026-01-05 15:40:45.319259",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11085,6 +11085,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Dozvola odbijena. Omogućite dozvole za snimanje kako biste snimili audio poruke.",
+  "genericWebRecordingError": "Nešto je pošlo po zlu. Preporučujemo korištenje Chrome preglednika prilikom snimanja poruka.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

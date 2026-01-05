@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2025-12-29 16:02:37.559201",
+  "@@last_modified": "2026-01-05 15:40:30.472790",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10710,6 +10710,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permiso denegado. Habilita os permisos de gravación para gravar mensaxes de audio.",
+  "genericWebRecordingError": "Algo saíu mal. Recoméndase usar o navegador Chrome ao gravar mensaxes.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

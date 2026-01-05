@@ -4456,7 +4456,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2025-12-29 16:03:38.899795",
+  "@@last_modified": "2026-01-05 15:41:43.611388",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11771,6 +11771,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Η άδεια απορρίφθηκε. Ενεργοποιήστε τις άδειες εγγραφής για να καταγράψετε ηχητικά μηνύματα.",
+  "genericWebRecordingError": "Κάτι πήγε στραβά. Συνιστούμε να χρησιμοποιείτε τον περιηγητή Chrome κατά την εγγραφή μηνυμάτων.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

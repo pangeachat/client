@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:26.474123",
+  "@@last_modified": "2026-01-05 15:41:29.223500",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10937,6 +10937,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "அனுமதி மறுக்கப்பட்டது. ஒலி செய்திகளை பதிவு செய்ய பதிவு அனுமதிகளை இயக்கவும்.",
+  "genericWebRecordingError": "எதோ தவறு நடந்தது. செய்திகளை பதிவு செய்ய Chrome உலாவியை பயன்படுத்த பரிந்துரைக்கிறோம்.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2025-12-29 16:03:04.289126",
+  "@@last_modified": "2026-01-05 15:41:00.635764",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11804,6 +11804,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "權限被拒絕。請啟用錄音權限以錄製音頻消息。",
+  "genericWebRecordingError": "發生錯誤。我們建議在錄製消息時使用 Chrome 瀏覽器。",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }
