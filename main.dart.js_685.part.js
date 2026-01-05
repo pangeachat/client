@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Apakah Anda ingin menonaktifkan bantuan bahasa otomatis?";
     },
+    get$recordingPermissionDenied() {
+      return "Izin ditolak. Aktifkan izin perekaman untuk merekam pesan audio.";
+    },
+    get$genericWebRecordingError() {
+      return "Ada yang tidak beres. Kami sarankan menggunakan browser Chrome saat merekam pesan.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5261,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gdMgdYL2DRsH7BZanP87UXIioMs="] = d.current;
+  d["zHV7op/YjO0zPjIl0mqgNPCqq0g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

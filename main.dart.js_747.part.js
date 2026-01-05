@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Ali \u017eelite onemogo\u010diti samodejno jezikovno pomo\u010d?";
     },
+    get$recordingPermissionDenied() {
+      return "Dovoljenje zavrnjeno. Omogo\u010dite dovoljenja za snemanje, da lahko snemate avdio sporo\u010dila.";
+    },
+    get$genericWebRecordingError() {
+      return "Pri\u0161lo je do napake. Priporo\u010damo uporabo brskalnika Chrome pri snemanju sporo\u010dil.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9fDWYy56EJx1df5Cv2VmSXG/aRc="] = d.current;
+  d["eLdF59F4KejEky2MY2yPV3N3mCM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

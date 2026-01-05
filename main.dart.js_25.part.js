@@ -5257,6 +5257,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return string$.Voc__g;
     },
+    get$recordingPermissionDenied() {
+      return string$.Permis;
+    },
+    get$genericWebRecordingError() {
+      return string$.Algo_d;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10487,6 +10493,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$disableLanguageToolsDesc() {
       return string$.Voc__g;
+    },
+    get$recordingPermissionDenied() {
+      return string$.Permis;
+    },
+    get$genericWebRecordingError() {
+      return string$.Algo_d;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15719,6 +15731,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return string$.Voc__g;
     },
+    get$recordingPermissionDenied() {
+      return string$.Permis;
+    },
+    get$genericWebRecordingError() {
+      return string$.Algo_d;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15748,6 +15766,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Aceita: "Aceitar esta solicita\xe7\xe3o de verifica\xe7\xe3o de ",
     Aguard: "Aguardando o parceiro aceitar os n\xfameros\u2026",
     Ainda_: "Ainda n\xe3o foi criada uma descri\xe7\xe3o do curso.",
+    Algo_d: "Algo deu errado. Recomendamos usar o navegador Chrome ao gravar mensagens.",
     Alteraa: "Alterar a visibilidade do hist\xf3rico do chat",
     Alterao: "Alterar o endere\xe7o principal do chat p\xfablico",
     Ao_ati: "Ao ativar, voc\xea permite que outros usu\xe1rios encontrem seu perfil na barra de busca global e enviem solicita\xe7\xf5es para conversar. Neste momento, voc\xea pode escolher aceitar ou negar a solicita\xe7\xe3o.",
@@ -15856,6 +15875,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Para_m: "Para mensagens de voz, voc\xea pode ver uma transcri\xe7\xe3o, bem como a pontua\xe7\xe3o de Palavras Por Minuto do falante.",
     Para_q: "Para quem voc\xea quer reportar esta mensagem?",
     Parece: "Parece que n\xe3o \xe9 um servidor principal compat\xedvel. URL incorreta?",
+    Permis: "Permiss\xe3o negada. Ative as permiss\xf5es de grava\xe7\xe3o para gravar mensagens de \xe1udio.",
     Permite: "Permite que o aplicativo gere sa\xedda de texto para fala para trechos de texto no seu idioma de destino.",
     Permiti: "Permitir que meu perfil seja encontrado na busca",
     Por_faa: "Por favor, atualize o aplicativo para continuar.",
@@ -15907,7 +15927,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sNsBdt9RvvFHOivhJKXPhogVSGI="] = d.current;
+  d["CtxSfkp0bNHpKKdkTXPHWJt5FlY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

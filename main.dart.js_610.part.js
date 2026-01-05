@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Ar mhaith leat uirlis\xed cabhrach teanga uathoibr\xedoch a d\xedchur?";
     },
+    get$recordingPermissionDenied() {
+      return "Di\xfalta\xedodh an cead. Gn\xedomhachtaigh ceadanna taifeadta chun teachtaireachta\xed guth a thaifeadadh.";
+    },
+    get$genericWebRecordingError() {
+      return "Tharla rud \xe9igin m\xedcheart. Molaimid \xfas\xe1id a bhaint as brabhs\xe1la\xed Chrome nuair a bh\xedonn teachtaireachta\xed \xe1 gcur ar taifead.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5261,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZvpQ+iFk73W5fNTN3/62zjUVBq0="] = d.current;
+  d["h4TABhC6vgwTXM2R3LrbZdsdfEs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

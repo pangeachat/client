@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Vai v\u0113laties atsp\u0113jot autom\u0101tisko valodas pal\u012bdz\u012bbu?";
     },
+    get$recordingPermissionDenied() {
+      return "At\u013cauja noraid\u012bta. Iesp\u0113jot ieraksta at\u013caujas, lai ierakst\u012btu audio zi\u0146ojumus.";
+    },
+    get$genericWebRecordingError() {
+      return "Kaut kas nog\u0101ja greizi. M\u0113s iesak\u0101m izmantot Chrome p\u0101rl\u016bkprogrammu, ierakstot zi\u0146ojumus.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Uxa65c0krD2Phosb+b8WUDfWwY4="] = d.current;
+  d["/cqt29LGkzheixvj45FkENNIPww="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

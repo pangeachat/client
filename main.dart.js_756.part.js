@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Otomatik dil yard\u0131m\u0131n\u0131 devre d\u0131\u015f\u0131 b\u0131rakmak ister misiniz?";
     },
+    get$recordingPermissionDenied() {
+      return "\u0130zin reddedildi. Sesli mesajlar kaydetmek i\xe7in kay\u0131t izinlerini etkinle\u015ftirin.";
+    },
+    get$genericWebRecordingError() {
+      return "Bir \u015feyler yanl\u0131\u015f gitti. Mesajlar\u0131 kaydederken Chrome taray\u0131c\u0131s\u0131n\u0131 kullanman\u0131z\u0131 \xf6neririz.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5261,7 +5267,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6Z3jzQoHmLcG1STwDI9RF9rIiC4="] = d.current;
+  d["EOJim761PZmJSYxT3ZSTeHg7XdM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

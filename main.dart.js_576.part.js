@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Haluaisitko poistaa automaattisen kieliavun k\xe4yt\xf6st\xe4?";
     },
+    get$recordingPermissionDenied() {
+      return "Oikeus ev\xe4tty. Ota k\xe4ytt\xf6\xf6n tallennusoikeudet \xe4\xe4niviestien tallentamiseksi.";
+    },
+    get$genericWebRecordingError() {
+      return "Jotain meni pieleen. Suosittelemme k\xe4ytt\xe4m\xe4\xe4n Chrome-selainta viestien tallentamiseen.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["m/kll42Ck/wM/uSpoDlweXgkDzM="] = d.current;
+  d["ZbSbZDSkD0k3tA27t0pMVMCYNBs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_576.part.js.map

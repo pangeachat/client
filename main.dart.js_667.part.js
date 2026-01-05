@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Voul\xe9z-vous d\xe9sabl\xe9 l'assistance langaj otomatik?";
     },
+    get$recordingPermissionDenied() {
+      return "Permisiun denegada. Aktivar permisiun de registru por registru mesajes de audio.";
+    },
+    get$genericWebRecordingError() {
+      return "Algu reso mal. Nos rekomenda usar el navegador Chrome cuando registrando mensajes.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SvXRaS+AHaCVtOSfE5YJcSjKwBc="] = d.current;
+  d["ND195cgC3CjkHsPORN4Lk73ZUT8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

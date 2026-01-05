@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Kas soovite automaatset keeleabi keelata?";
     },
+    get$recordingPermissionDenied() {
+      return "Luba keelatud. Aktiveeri salvestamise \xf5igused, et salvestada helis\xf5numeid.";
+    },
+    get$genericWebRecordingError() {
+      return "Midagi l\xe4ks valesti. Soovitame s\xf5numite salvestamiseks kasutada Chrome'i brauserit.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PGC3/4eR7XkE10t+SxGxU9cJr7g="] = d.current;
+  d["VHcXOYtkAx8oDosXJ4Uj8UX/zeE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

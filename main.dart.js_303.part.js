@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Vil du deaktivere automatisk sprogassistance?";
     },
+    get$recordingPermissionDenied() {
+      return "Tilladelse n\xe6gtet. Aktiv\xe9r optagelsestilladelser for at optage lydbeskeder.";
+    },
+    get$genericWebRecordingError() {
+      return "Noget gik galt. Vi anbefaler at bruge Chrome-browseren, n\xe5r du optager beskeder.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fygjpba15picC+PcjGKb+2j2Vv0="] = d.current;
+  d["vD2zjVbcDttTetqpSjHQAKZS1pI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

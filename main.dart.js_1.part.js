@@ -5252,6 +5252,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "\u60a8\u60f3\u8981\u7981\u7528\u81ea\u52a8\u8bed\u8a00\u8f85\u52a9\u5417\uff1f";
     },
+    get$recordingPermissionDenied() {
+      return "\u6743\u9650\u88ab\u62d2\u7edd\u3002\u8bf7\u542f\u7528\u5f55\u97f3\u6743\u9650\u4ee5\u5f55\u5236\u97f3\u9891\u6d88\u606f\u3002";
+    },
+    get$genericWebRecordingError() {
+      return "\u51fa\u73b0\u4e86\u95ee\u9898\u3002\u6211\u4eec\u5efa\u8bae\u5728\u5f55\u5236\u6d88\u606f\u65f6\u4f7f\u7528Chrome\u6d4f\u89c8\u5668\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10483,6 +10489,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "\u60a8\u60f3\u8981\u7981\u7528\u81ea\u52d5\u8a9e\u8a00\u8f14\u52a9\u55ce\uff1f";
     },
+    get$recordingPermissionDenied() {
+      return "\u6b0a\u9650\u88ab\u62d2\u7d55\u3002\u8acb\u555f\u7528\u9304\u97f3\u6b0a\u9650\u4ee5\u9304\u88fd\u97f3\u983b\u6d88\u606f\u3002";
+    },
+    get$genericWebRecordingError() {
+      return "\u767c\u751f\u932f\u8aa4\u3002\u6211\u5011\u5efa\u8b70\u5728\u9304\u88fd\u6d88\u606f\u6642\u4f7f\u7528 Chrome \u700f\u89bd\u5668\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10497,7 +10509,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6jUcF9LAeYWv6dgioSDkRS+zpxE="] = d.current;
+  d["23dEhy1peL4yUES4YM3xSRQiR7s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Szeretn\xe9 letiltani az automatikus nyelvi seg\xedts\xe9get?";
     },
+    get$recordingPermissionDenied() {
+      return "Enged\xe9ly megtagadva. Enged\xe9lyezze a felv\xe9teli enged\xe9lyeket az audio\xfczenetek r\xf6gz\xedt\xe9s\xe9hez.";
+    },
+    get$genericWebRecordingError() {
+      return "Valami hiba t\xf6rt\xe9nt. Javasoljuk, hogy a Chrome b\xf6ng\xe9sz\u0151t haszn\xe1lja az \xfczenetek r\xf6gz\xedt\xe9sekor.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VXXJTjvWP14gkx0hAtgSYTGzui4="] = d.current;
+  d["1YWP2iOnODLujP1hmtpCfz3+9uk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

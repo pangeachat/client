@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "\u81ea\u52d5\u8a00\u8a9e\u652f\u63f4\u3092\u7121\u52b9\u306b\u3057\u307e\u3059\u304b\uff1f";
     },
+    get$recordingPermissionDenied() {
+      return "\u6a29\u9650\u304c\u62d2\u5426\u3055\u308c\u307e\u3057\u305f\u3002\u97f3\u58f0\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u9332\u97f3\u3059\u308b\u306b\u306f\u3001\u9332\u97f3\u6a29\u9650\u3092\u6709\u52b9\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
+    },
+    get$genericWebRecordingError() {
+      return "\u4f55\u304b\u304c\u3046\u307e\u304f\u3044\u304d\u307e\u305b\u3093\u3067\u3057\u305f\u3002\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u9332\u97f3\u3059\u308b\u969b\u306f\u3001Chrome\u30d6\u30e9\u30a6\u30b6\u306e\u4f7f\u7528\u3092\u304a\u52e7\u3081\u3057\u307e\u3059\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["W4iZ5HXpKQLMr5QGjEITVOcAdnM="] = d.current;
+  d["Uk+VoBg++FaP6PFSZjSoRbwfkzs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_704.part.js.map

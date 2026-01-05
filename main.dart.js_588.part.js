@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Gusto mo bang i-disable ang awtomatikong tulong sa wika?";
     },
+    get$recordingPermissionDenied() {
+      return "Tanggihan ang pahintulot. I-enable ang mga pahintulot sa pag-record upang makapag-record ng mga mensaheng audio.";
+    },
+    get$genericWebRecordingError() {
+      return "May nangyaring mali. Inirerekomenda naming gumamit ng Chrome browser kapag nagre-record ng mga mensahe.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JUNZs6TaHh5spqX+YS0NSkAS2ZI="] = d.current;
+  d["Ho6vSoaf0xIfu001R0oiSyWCjBo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

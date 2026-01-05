@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Chceli by ste deaktivova\u0165 automatick\xfa jazykov\xfa pomoc?";
     },
+    get$recordingPermissionDenied() {
+      return "Povolenie zamietnut\xe9. Aktivujte povolenia na nahr\xe1vanie, aby ste mohli nahr\xe1va\u0165 audio spr\xe1vy.";
+    },
+    get$genericWebRecordingError() {
+      return "Nie\u010do sa pokazilo. Odpor\xfa\u010dame pou\u017e\xedva\u0165 prehliada\u010d Chrome pri nahr\xe1van\xed spr\xe1v.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rVcGmKWdL7+3hJD4yXhgcS7PE2A="] = d.current;
+  d["Um7stSM6w+PHqBIYlGLmPev+ipk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

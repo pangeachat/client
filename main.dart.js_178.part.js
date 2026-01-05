@@ -5246,6 +5246,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "Voleu desactivar l'assist\xe8ncia autom\xe0tica d'idioma?";
     },
+    get$recordingPermissionDenied() {
+      return "Perm\xeds denegat. Habilita els permisos de gravaci\xf3 per gravar missatges d'\xe0udio.";
+    },
+    get$genericWebRecordingError() {
+      return "Alguna cosa ha anat malament. Recomanem utilitzar el navegador Chrome quan gravis missatges.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5262,7 +5268,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fbNHmD31hIeYk+tvug2nYYIO63Q="] = d.current;
+  d["8B+Z5W+l9FDxlKmyHJPk3q2kPLE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

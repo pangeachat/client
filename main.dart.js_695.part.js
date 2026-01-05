@@ -5245,6 +5245,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$disableLanguageToolsDesc() {
       return "An bhfuil t\xfa ag iarraidh na cabhrach teanga uathoibr\xedoch a dh\xedghn\xedomhacht\xfa?";
     },
+    get$recordingPermissionDenied() {
+      return "Permisiunea a fost refuzat\u0103. Activa\u021bi permisiunile de \xeenregistrare pentru a \xeenregistra mesaje audio.";
+    },
+    get$genericWebRecordingError() {
+      return "Ceva a mers prost. Recomand\u0103m utilizarea browserului Chrome atunci c\xe2nd \xeenregistra\u021bi mesaje.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5258,7 +5264,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4Hnc4niuTiZK227Zxcegzq5hRO4="] = d.current;
+  d["5fnAklCzh94fjYr58y/CBTAP7Ww="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_695.part.js.map
