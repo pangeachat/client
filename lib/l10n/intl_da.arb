@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-12-29 16:02:40.223869",
+  "@@last_modified": "2026-01-05 15:40:34.660186",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11774,6 +11774,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Tilladelse nægtet. Aktivér optagelsestilladelser for at optage lydbeskeder.",
+  "genericWebRecordingError": "Noget gik galt. Vi anbefaler at bruge Chrome-browseren, når du optager beskeder.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

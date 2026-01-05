@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:02:44.967200",
+  "@@last_modified": "2026-01-05 15:40:38.150165",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10704,6 +10704,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Izin ditolak. Aktifkan izin perekaman untuk merekam pesan audio.",
+  "genericWebRecordingError": "Ada yang tidak beres. Kami sarankan menggunakan browser Chrome saat merekam pesan.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

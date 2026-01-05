@@ -4009,7 +4009,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-12-29 16:02:38.790567",
+  "@@last_modified": "2026-01-05 15:40:32.519262",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11336,6 +11336,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Oikeus evätty. Ota käyttöön tallennusoikeudet ääniviestien tallentamiseksi.",
+  "genericWebRecordingError": "Jotain meni pieleen. Suosittelemme käyttämään Chrome-selainta viestien tallentamiseen.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-29 16:03:40.520099",
+  "@@last_modified": "2026-01-05 15:41:45.314854",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11503,6 +11503,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "権限が拒否されました。音声メッセージを録音するには、録音権限を有効にしてください。",
+  "genericWebRecordingError": "何かがうまくいきませんでした。メッセージを録音する際は、Chromeブラウザの使用をお勧めします。",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

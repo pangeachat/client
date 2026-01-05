@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:48.066706",
+  "@@last_modified": "2026-01-05 15:41:54.261907",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11815,6 +11815,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Dozvola odbijena. Omogućite dozvole za snimanje da biste snimali audio poruke.",
+  "genericWebRecordingError": "Nešto je pošlo po zlu. Preporučujemo korišćenje Chrome pretraživača prilikom snimanja poruka.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

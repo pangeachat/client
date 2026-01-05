@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:32.174961",
+  "@@last_modified": "2026-01-05 15:41:36.205550",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11817,6 +11817,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "অনুমতি অস্বীকৃত। অডিও বার্তা রেকর্ড করার জন্য রেকর্ডিং অনুমতি সক্রিয় করুন।",
+  "genericWebRecordingError": "কিছু ভুল হয়েছে। বার্তা রেকর্ড করার সময় ক্রোম ব্রাউজার ব্যবহার করার পরামর্শ দেওয়া হচ্ছে।",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

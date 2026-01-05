@@ -4483,7 +4483,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2025-12-29 16:03:42.358809",
+  "@@last_modified": "2026-01-05 15:41:47.469587",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11798,6 +11798,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "अनुमति अस्वीकृत। ऑडियो संदेश रिकॉर्ड करने के लिए रिकॉर्डिंग अनुमतियाँ सक्षम करें।",
+  "genericWebRecordingError": "कुछ गलत हो गया। हम संदेश रिकॉर्ड करते समय क्रोम ब्राउज़र का उपयोग करने की सिफारिश करते हैं।",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

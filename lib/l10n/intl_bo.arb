@@ -4279,7 +4279,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-12-29 16:03:29.478557",
+  "@@last_modified": "2026-01-05 15:41:32.823673",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10467,6 +10467,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permisiun ditë. Aktivizoni lejet e regjistrimit për të regjistruar mesazhe audio.",
+  "genericWebRecordingError": "Diçka shkoi keq. Ne rekomandojmë të përdorni shfletuesin Chrome kur regjistroni mesazhe.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

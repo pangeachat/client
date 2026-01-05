@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-29 16:03:20.417520",
+  "@@last_modified": "2026-01-05 15:41:21.358224",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10935,6 +10935,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "İzin reddedildi. Sesli mesajlar kaydetmek için kayıt izinlerini etkinleştirin.",
+  "genericWebRecordingError": "Bir şeyler yanlış gitti. Mesajları kaydederken Chrome tarayıcısını kullanmanızı öneririz.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

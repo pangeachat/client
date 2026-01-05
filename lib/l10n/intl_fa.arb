@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:33.677336",
+  "@@last_modified": "2026-01-05 15:41:37.531088",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11445,6 +11445,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "دسترسی رد شد. برای ضبط پیام‌های صوتی، دسترسی‌های ضبط را فعال کنید.",
+  "genericWebRecordingError": "مشکلی پیش آمد. ما توصیه می‌کنیم هنگام ضبط پیام‌ها از مرورگر کروم استفاده کنید.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }

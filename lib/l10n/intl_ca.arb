@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:11.864159",
+  "@@last_modified": "2026-01-05 15:41:09.595276",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10737,6 +10737,16 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permís denegat. Habilita els permisos de gravació per gravar missatges d'àudio.",
+  "genericWebRecordingError": "Alguna cosa ha anat malament. Recomanem utilitzar el navegador Chrome quan gravis missatges.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
     "type": "String",
     "placeholders": {}
   }
