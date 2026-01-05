@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:40:50.734964",
+  "@@last_modified": "2026-01-05 16:37:52.450718",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11081,6 +11081,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Para a melhor experiência ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

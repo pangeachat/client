@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-05 15:40:36.400840",
+  "@@last_modified": "2026-01-05 16:37:43.701539",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10724,6 +10724,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "A legjobb élmény érdekében, kérjük, bővítse a képernyő méretét ennek az alkalmazásnak a használata során.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

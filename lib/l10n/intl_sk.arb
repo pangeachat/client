@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-05 15:40:42.341115",
+  "@@last_modified": "2026-01-05 16:37:46.929621",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11807,6 +11807,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Pre najlepší zážitok z používania tejto aplikácie, prosím, zväčšite veľkosť obrazovky.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

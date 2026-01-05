@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:41:06.923354",
+  "@@last_modified": "2026-01-05 16:38:04.551246",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11816,6 +11816,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "For den beste opplevelsen med denne applikasjonen, vennligst utvid skjermstørrelsen din.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

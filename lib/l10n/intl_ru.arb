@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-05 15:41:50.642849",
+  "@@last_modified": "2026-01-05 16:38:34.147725",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10828,6 +10828,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Для наилучшего использования этого приложения, пожалуйста, увеличьте размер экрана.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

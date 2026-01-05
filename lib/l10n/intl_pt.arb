@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:40:53.570259",
+  "@@last_modified": "2026-01-05 16:37:54.720470",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11823,6 +11823,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Para a melhor experiência ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-05 15:41:16.342526",
+  "@@last_modified": "2026-01-05 16:38:11.298437",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11699,6 +11699,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Para sa pinakamahusay na karanasan sa paggamit ng application na ito, mangyaring palawakin ang laki ng iyong screen.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

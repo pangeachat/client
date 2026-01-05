@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-05 15:41:00.635764",
+  "@@last_modified": "2026-01-05 16:37:59.724310",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11814,6 +11814,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "為了獲得最佳的應用體驗，請擴大您的螢幕大小。",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

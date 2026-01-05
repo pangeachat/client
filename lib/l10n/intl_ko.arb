@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:40:26.274698",
+  "@@last_modified": "2026-01-05 16:37:38.047396",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10831,6 +10831,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "이 애플리케이션을 최상의 경험으로 사용하려면 화면 크기를 확장해 주십시오.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

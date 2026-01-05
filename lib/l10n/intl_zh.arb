@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-05 15:41:34.514898",
+  "@@last_modified": "2026-01-05 16:38:22.675043",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10714,6 +10714,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "为了获得最佳的应用体验，请扩大您的屏幕尺寸。",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

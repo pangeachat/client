@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-05 15:40:34.660186",
+  "@@last_modified": "2026-01-05 16:37:42.228072",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11784,6 +11784,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "For den bedste oplevelse med denne applikation, bedes du udvide din skærmstørrelse.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }
