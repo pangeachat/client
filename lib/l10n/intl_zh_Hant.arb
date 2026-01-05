@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:41:14.381657",
+  "@@last_modified": "2026-01-05 16:38:10.069994",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10721,6 +10721,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "為了獲得最佳的應用體驗，請擴大您的螢幕大小。",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

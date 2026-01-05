@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-05 15:40:52.261580",
+  "@@last_modified": "2026-01-05 16:37:53.798875",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10723,6 +10723,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Aplikazio hau erabiltzeko esperientzia onena izateko, mesedez, handitu zure pantailaren tamaina.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

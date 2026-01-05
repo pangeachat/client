@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:41:09.595276",
+  "@@last_modified": "2026-01-05 16:38:06.597232",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10747,6 +10747,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Per a la millor experiència utilitzant aquesta aplicació, si us plau, amplia la mida de la teva pantalla.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

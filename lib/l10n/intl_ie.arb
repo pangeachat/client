@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-05 15:40:43.869495",
+  "@@last_modified": "2026-01-05 16:37:48.179981",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11697,6 +11697,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Aby uzyskać najlepsze wrażenia podczas korzystania z tej aplikacji, proszę powiększyć rozmiar ekranu.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

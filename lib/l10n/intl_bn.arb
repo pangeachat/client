@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:41:36.205550",
+  "@@last_modified": "2026-01-05 16:38:23.798517",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11827,6 +11827,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "এই অ্যাপ্লিকেশনটি ব্যবহার করার জন্য সেরা অভিজ্ঞতার জন্য, দয়া করে আপনার স্ক্রীনের আকার বাড়ান।",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

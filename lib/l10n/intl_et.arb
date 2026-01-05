@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-05 15:40:54.935867",
+  "@@last_modified": "2026-01-05 16:37:55.798786",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10994,6 +10994,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Parima kogemuse saamiseks selle rakenduse kasutamisel palun suurendage oma ekraani suurust.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

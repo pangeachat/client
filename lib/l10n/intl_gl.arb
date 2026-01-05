@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-05 15:40:30.472790",
+  "@@last_modified": "2026-01-05 16:37:40.076175",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10720,6 +10720,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Para a mellor experiencia ao usar esta aplicación, por favor, amplía o tamaño da túa pantalla.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

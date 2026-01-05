@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-05 15:40:45.319259",
+  "@@last_modified": "2026-01-05 16:37:49.277534",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11095,6 +11095,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Za najbolje iskustvo korištenja ove aplikacije, molimo vas da povećate veličinu svog ekrana.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

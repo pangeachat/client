@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:40:38.150165",
+  "@@last_modified": "2026-01-05 16:37:44.683070",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10714,6 +10714,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Untuk pengalaman terbaik menggunakan aplikasi ini, silakan perbesar ukuran layar Anda.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

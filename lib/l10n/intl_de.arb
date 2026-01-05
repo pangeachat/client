@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-05 15:40:57.186294",
+  "@@last_modified": "2026-01-05 16:37:56.618492",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10730,6 +10730,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Für das beste Erlebnis mit dieser Anwendung erweitern Sie bitte Ihre Bildschirmgröße.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

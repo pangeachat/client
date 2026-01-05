@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 15:41:54.261907",
+  "@@last_modified": "2026-01-05 16:38:36.598473",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11825,6 +11825,11 @@
     "placeholders": {}
   },
   "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Za najbolje iskustvo korišćenja ove aplikacije, molimo vas da povećate veličinu ekrana.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }
