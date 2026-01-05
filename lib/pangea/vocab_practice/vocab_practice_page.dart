@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -95,9 +96,11 @@ class VocabPracticeState extends State<VocabPractice> {
   }
 
   Future<void> _waitForAnalytics() async {
-    if (!MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted) {
+    if (!MatrixState.pangeaController.matrixState.analyticsDataService
+        .initCompleter.isCompleted) {
       MatrixState.pangeaController.initControllers();
-      await MatrixState.pangeaController.getAnalytics.initCompleter.future;
+      await MatrixState.pangeaController.matrixState.analyticsDataService
+          .initCompleter.future;
     }
   }
 
@@ -138,7 +141,10 @@ class VocabPracticeState extends State<VocabPractice> {
   Future<List<InlineSpan>?> getExampleMessage(
     ConstructIdentifier construct,
   ) async {
-    for (final use in construct.constructUses.uses) {
+    final ConstructUses constructUse = await Matrix.of(context)
+        .analyticsDataService
+        .getConstructUse(construct);
+    for (final use in constructUse.uses) {
       if (use.metadata.eventId == null || use.metadata.roomId == null) {
         continue;
       }
@@ -222,7 +228,10 @@ class VocabPracticeState extends State<VocabPractice> {
       return;
     }
 
-    final result = await PracticeRepo.getPracticeActivity(activityRequest);
+    final result = await PracticeRepo.getPracticeActivity(
+      activityRequest,
+      messageInfo: {},
+    );
     if (result.isError) {
       activityError = L10n.of(context).oopsSomethingWentWrong;
     } else {
@@ -276,22 +285,25 @@ class VocabPracticeState extends State<VocabPractice> {
   }
 
   Map<String, double> calculateProgressChange(int xpGained) {
-    final getAnalytics = MatrixState.pangeaController.getAnalytics;
-    final currentXP = getAnalytics.constructListModel.totalXP;
-    final currentLevel = getAnalytics.constructListModel.level;
+    //check
+    // final getAnalytics = MatrixState.pangeaController.getAnalytics;
+    // final currentXP = getAnalytics.constructListModel.totalXP;
+    // final currentLevel = getAnalytics.constructListModel.level;
 
-    final minXPForCurrentLevel =
-        getAnalytics.constructListModel.calculateXpWithLevel(currentLevel);
-    final minXPForNextLevel = getAnalytics.minXPForNextLevel;
+    // final minXPForCurrentLevel =
+    //     getAnalytics.constructListModel.calculateXpWithLevel(currentLevel);
+    // final minXPForNextLevel = getAnalytics.minXPForNextLevel;
 
-    final xpRange = minXPForNextLevel - minXPForCurrentLevel;
+    // final xpRange = minXPForNextLevel - minXPForCurrentLevel;
 
-    final progressBefore =
-        ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+    // final progressBefore =
+    //     ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
 
-    final newTotalXP = currentXP + xpGained;
-    final progressAfter =
-        ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+    // final newTotalXP = currentXP + xpGained;
+    // final progressAfter =
+    //     ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+    const double progressBefore = 10;
+    const double progressAfter = 20;
 
     return {
       'before': progressBefore,
@@ -312,17 +324,18 @@ class VocabPracticeState extends State<VocabPractice> {
 
   Future<void> _prefetchLemmaInfo(List<String> choiceIds) async {
     if (!mounted) return;
-
     setState(() => isLoadingLemmaInfo = true);
 
     final results = await Future.wait(
       choiceIds.map((id) async {
         final cId = ConstructIdentifier.fromString(id);
-        if (cId == null) return null;
+        if (cId == null) {
+          return null;
+        }
         try {
-          return await cId.getLemmaInfo();
-          //.timeout(const Duration(milliseconds: 3000));
-        } catch (_) {
+          final result = await cId.getLemmaInfo({});
+          return result;
+        } catch (e) {
           return null;
         }
       }),
@@ -336,7 +349,7 @@ class VocabPracticeState extends State<VocabPractice> {
         final failedId = choiceIds[i];
         final cId = ConstructIdentifier.fromString(failedId);
         if (cId != null) {
-          LemmaInfoRepo.clearCache(cId.lemmaInfoRequest);
+          LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
         }
 
         if (mounted) {

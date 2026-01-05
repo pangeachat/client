@@ -135,7 +135,13 @@ class VocabPracticeSessionModel {
           )
           .toList();
 
-      MatrixState.pangeaController.putAnalytics.addAnalytics(bonusUses);
+      //MatrixState.pangeaController.putAnalytics.addAnalytics(bonusUses);
+      MatrixState
+          .pangeaController.matrixState.analyticsDataService.updateService
+          .addAnalytics(
+        null,
+        bonusUses,
+      );
     }
 
     if (elapsedSeconds <= timeForBonus) {
@@ -157,7 +163,12 @@ class VocabPracticeSessionModel {
           )
           .toList();
 
-      MatrixState.pangeaController.putAnalytics.addAnalytics(bonusUses);
+      MatrixState
+          .pangeaController.matrixState.analyticsDataService.updateService
+          .addAnalytics(
+        null,
+        bonusUses,
+      );
     }
   }
 
@@ -186,7 +197,12 @@ class VocabPracticeSessionModel {
     completedUses.add(use);
 
     // Give XP immediately
-    MatrixState.pangeaController.putAnalytics.addAnalytics([use]);
+    //MatrixState.pangeaController.putAnalytics.addAnalytics([use]);
+    MatrixState.pangeaController.matrixState.analyticsDataService.updateService
+        .addAnalytics(
+      null,
+      [use],
+    );
   }
 
   void completeActivity(PracticeActivityModel activity) {

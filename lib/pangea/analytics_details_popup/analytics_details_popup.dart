@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
@@ -17,6 +16,8 @@ import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
   const ConstructAnalyticsView({
@@ -179,6 +180,69 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           ),
         ),
       ),
+      floatingActionButton: _buildVocabPracticeButton(context),
     );
   }
+}
+
+Widget _buildVocabPracticeButton(BuildContext context) {
+  // Check if analytics is loaded first
+  if (MatrixState
+      .pangeaController.matrixState.analyticsDataService.isInitializing) {
+    return FloatingActionButton.extended(
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Loading vocabulary data...',
+            ),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      },
+      label: Text(L10n.of(context).practiceVocab),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      foregroundColor:
+          Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+    );
+  }
+
+  final vocabCount = MatrixState
+      .pangeaController.matrixState.analyticsDataService
+      .numConstructs(ConstructTypeEnum.vocab);
+  final hasEnoughVocab = vocabCount >= 10;
+
+  return FloatingActionButton.extended(
+    onPressed: hasEnoughVocab
+        ? () {
+            context.go(
+              "/rooms/analytics/${ConstructTypeEnum.vocab.name}/practice",
+            );
+          }
+        : () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!', //TODO: add to l10 file
+                ),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+          },
+    backgroundColor:
+        hasEnoughVocab ? null : Theme.of(context).colorScheme.surfaceContainer,
+    foregroundColor: hasEnoughVocab
+        ? null
+        : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+    label: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (!hasEnoughVocab) ...[
+          const Icon(Icons.lock_outline, size: 18),
+          const SizedBox(width: 4),
+        ],
+        Text(L10n.of(context).practiceVocab),
+      ],
+    ),
+  );
 }

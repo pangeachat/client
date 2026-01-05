@@ -1,6 +1,6 @@
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_bar/animated_progress_bar.dart';
+import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';

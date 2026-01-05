@@ -40,13 +40,11 @@ class LemmaActivityGenerator {
         .pangeaController.matrixState.analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.vocab);
 
-    final List<String> lemmas =
-        constructs.values.map((c) => c.lemma).toSet().toList();
-
+    final List<ConstructIdentifier> constructIds = constructs.keys.toList();
     // Offload computation to an isolate
     final Map<ConstructIdentifier, int> distances =
         await compute(_computeDistancesInIsolate, {
-      'lemmas': lemmas,
+      'lemmas': constructIds,
       'target': token.lemma.text,
     });
 

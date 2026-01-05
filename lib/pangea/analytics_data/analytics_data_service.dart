@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/analytics_data/analytics_database.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_database_builder.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_sync_controller.dart';
@@ -21,6 +19,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:matrix/matrix.dart';
 
 class _AnalyticsClient {
   final Client client;
@@ -53,7 +52,7 @@ class AnalyticsDataService {
   AnalyticsSyncController? _syncController;
   final ConstructMergeTable _mergeTable = ConstructMergeTable();
 
-  Completer<void> _initCompleter = Completer<void>();
+  Completer<void> initCompleter = Completer<void>();
 
   AnalyticsDataService(Client client) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
@@ -77,7 +76,7 @@ class AnalyticsDataService {
     return _analyticsClient!;
   }
 
-  bool get isInitializing => !_initCompleter.isCompleted;
+  bool get isInitializing => !initCompleter.isCompleted;
 
   Future<Room?> getAnalyticsRoom(LanguageModel l2) =>
       _analyticsClientGetter.client.getMyAnalyticsRoom(l2);
@@ -155,7 +154,7 @@ class AnalyticsDataService {
       Logs().e("Error initializing analytics: $e, $s");
     } finally {
       Logs().i("Analytics database initialized.");
-      _initCompleter.complete();
+      initCompleter.complete();
       updateDispatcher.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
     }
   }
@@ -173,7 +172,7 @@ class AnalyticsDataService {
 
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
-    _initCompleter = Completer<void>();
+    initCompleter = Completer<void>();
     await _initDatabase(_analyticsClientGetter.client);
   }
 
@@ -191,7 +190,7 @@ class AnalyticsDataService {
   }
 
   Future<void> _ensureInitialized() =>
-      _initCompleter.isCompleted ? Future.value() : _initCompleter.future;
+      initCompleter.isCompleted ? Future.value() : initCompleter.future;
 
   int numConstructs(ConstructTypeEnum type) =>
       _mergeTable.uniqueConstructsByType(type);

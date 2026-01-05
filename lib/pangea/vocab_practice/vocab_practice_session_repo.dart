@@ -51,9 +51,14 @@ class VocabPracticeSessionRepo {
   static Future<void> clearSession() => _storage.erase();
 
   static Future<List<ConstructIdentifier>> _fetch() async {
-    final constructs = MatrixState
-        .pangeaController.getAnalytics.constructListModel
-        .constructList(type: ConstructTypeEnum.vocab);
+    // final constructs = MatrixState
+    //     .pangeaController.getAnalytics.constructListModel
+    //     .constructList(type: ConstructTypeEnum.vocab);
+
+    final constructs = await MatrixState
+        .pangeaController.matrixState.analyticsDataService
+        .getAggregatedConstructs(ConstructTypeEnum.vocab)
+        .then((map) => map.values.toList());
 
     // maintain a Map of ConstructIDs to last use dates and a sorted list of ConstructIDs
     // based on last use. Update the map / list on practice completion

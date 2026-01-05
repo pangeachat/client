@@ -1,6 +1,6 @@
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_bar/animated_progress_bar.dart';
+import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/vocab_practice/percent_marker_bar.dart';
 import 'package:fluffychat/pangea/vocab_practice/stat_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
