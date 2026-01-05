@@ -15,10 +15,6 @@ extension RoomInformationRoomExtension on Room {
     );
   }
 
-  Future<bool> get isBotDM async {
-    return botOptions?.mode == BotMode.directChat && await botIsInRoom;
-  }
-
   String? get roomType =>
       getState(EventTypes.RoomCreate)?.content.tryGet<String>('type');
 
