@@ -137,7 +137,7 @@ class ConstructIdentifier {
   }
 
   bool get isContentWord =>
-      PartOfSpeechEnumExtensions.fromString(category)?.isContentWord ?? false;
+      PartOfSpeechEnum.fromString(category)?.isContentWord ?? false;
 
   LemmaInfoRequest lemmaInfoRequest(Map<String, dynamic> messageInfo) =>
       LemmaInfoRequest(
