@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/input_bar.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_send_button.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
@@ -57,6 +58,7 @@ class PangeaChatInputRow extends StatelessWidget {
                 ValueListenableBuilder(
                   valueListenable: controller.sendController,
                   builder: (context, text, __) {
+                    final isBotDM = controller.room.isBotDM;
                     return AnimatedContainer(
                       duration: FluffyThemes.animationDuration,
                       curve: FluffyThemes.animationCurve,
@@ -74,18 +76,19 @@ class PangeaChatInputRow extends StatelessWidget {
                         onSelected: controller.onAddPopupMenuButtonSelected,
                         itemBuilder: (BuildContext context) =>
                             <PopupMenuEntry<String>>[
-                          PopupMenuItem<String>(
-                            value: 'file',
-                            child: ListTile(
-                              leading: const CircleAvatar(
-                                backgroundColor: Colors.green,
-                                foregroundColor: Colors.white,
-                                child: Icon(Icons.attachment_outlined),
+                          if (!isBotDM)
+                            PopupMenuItem<String>(
+                              value: 'file',
+                              child: ListTile(
+                                leading: const CircleAvatar(
+                                  backgroundColor: Colors.green,
+                                  foregroundColor: Colors.white,
+                                  child: Icon(Icons.attachment_outlined),
+                                ),
+                                title: Text(L10n.of(context).sendFile),
+                                contentPadding: const EdgeInsets.all(0),
                               ),
-                              title: Text(L10n.of(context).sendFile),
-                              contentPadding: const EdgeInsets.all(0),
                             ),
-                          ),
                           PopupMenuItem<String>(
                             value: 'image',
                             child: ListTile(
@@ -111,32 +114,34 @@ class PangeaChatInputRow extends StatelessWidget {
                                 contentPadding: const EdgeInsets.all(0),
                               ),
                             ),
-                          if (PlatformInfos.isMobile)
-                            PopupMenuItem<String>(
-                              value: 'camera-video',
-                              child: ListTile(
-                                leading: const CircleAvatar(
-                                  backgroundColor: Colors.red,
-                                  foregroundColor: Colors.white,
-                                  child: Icon(Icons.videocam_outlined),
+                          if (!isBotDM)
+                            if (PlatformInfos.isMobile)
+                              PopupMenuItem<String>(
+                                value: 'camera-video',
+                                child: ListTile(
+                                  leading: const CircleAvatar(
+                                    backgroundColor: Colors.red,
+                                    foregroundColor: Colors.white,
+                                    child: Icon(Icons.videocam_outlined),
+                                  ),
+                                  title: Text(L10n.of(context).openVideoCamera),
+                                  contentPadding: const EdgeInsets.all(0),
                                 ),
-                                title: Text(L10n.of(context).openVideoCamera),
-                                contentPadding: const EdgeInsets.all(0),
                               ),
-                            ),
-                          if (PlatformInfos.isMobile)
-                            PopupMenuItem<String>(
-                              value: 'location',
-                              child: ListTile(
-                                leading: const CircleAvatar(
-                                  backgroundColor: Colors.brown,
-                                  foregroundColor: Colors.white,
-                                  child: Icon(Icons.gps_fixed_outlined),
+                          if (!isBotDM)
+                            if (PlatformInfos.isMobile)
+                              PopupMenuItem<String>(
+                                value: 'location',
+                                child: ListTile(
+                                  leading: const CircleAvatar(
+                                    backgroundColor: Colors.brown,
+                                    foregroundColor: Colors.white,
+                                    child: Icon(Icons.gps_fixed_outlined),
+                                  ),
+                                  title: Text(L10n.of(context).shareLocation),
+                                  contentPadding: const EdgeInsets.all(0),
                                 ),
-                                title: Text(L10n.of(context).shareLocation),
-                                contentPadding: const EdgeInsets.all(0),
                               ),
-                            ),
                         ],
                       ),
                     );

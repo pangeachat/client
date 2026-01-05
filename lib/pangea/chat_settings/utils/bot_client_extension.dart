@@ -10,16 +10,7 @@ import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension BotClientExtension on Client {
-  bool get hasBotDM => rooms.any((room) {
-        if (room.isDirectChat &&
-            room.directChatMatrixID == BotName.byEnvironment) {
-          return true;
-        }
-        if (room.botOptions?.mode == BotMode.directChat) {
-          return true;
-        }
-        return false;
-      });
+  bool get hasBotDM => rooms.any((r) => r.isBotDM);
 
   Room? get botDM => rooms.firstWhereOrNull(
         (room) {
