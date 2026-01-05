@@ -138,7 +138,7 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
                 decoration: BoxDecoration(
                   color: Theme.of(context)
                       .colorScheme
-                      .surfaceContainerHighest
+                      .surfaceContainer
                       .withAlpha((_bubbleOpacityAnimation.value * 255).round()),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16.0),
