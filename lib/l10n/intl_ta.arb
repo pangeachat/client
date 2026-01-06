@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:42.385850",
+  "@@last_modified": "2026-01-06 13:02:17.997622",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -12135,6 +12135,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "அடுத்த தலைப்பை திறக்க செயல்பாடுகள்",
+  "activitiesToUnlockTopicDesc": "அடுத்த பாடத்தொகுப்பை திறக்க செயல்பாடுகளின் எண்ணிக்கையை அமைக்கவும்",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

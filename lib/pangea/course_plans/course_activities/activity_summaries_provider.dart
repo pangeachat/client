@@ -152,14 +152,23 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
   bool _hasCompletedTopic(
     String userID,
     CourseTopicModel topic,
+    int? activitiesToCompleteOverride,
   ) {
     final topicActivityIds = topic.activityIds.toSet();
+    final completedTopicActivities =
+        _completedActivities(userID).intersection(topicActivityIds);
+
+    if (completedTopicActivities.length >= topicActivityIds.length) {
+      return true;
+    }
+
+    if (activitiesToCompleteOverride != null) {
+      return completedTopicActivities.length >= activitiesToCompleteOverride;
+    }
+
     final numTwoPersonActivities = topic.loadedActivities.values
         .where((a) => a.req.numberOfParticipants <= 2)
         .length;
-
-    final completedTopicActivities =
-        _completedActivities(userID).intersection(topicActivityIds);
 
     return completedTopicActivities.length >= numTwoPersonActivities;
   }
@@ -167,6 +176,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
   String? currentTopicId(
     String userID,
     CoursePlanModel course,
+    int? activitiesToCompleteOverride,
   ) {
     if (course.loadedTopics.isEmpty) {
       return null;
@@ -180,7 +190,12 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
         return null;
       }
 
-      if (!_hasCompletedTopic(userID, topic) && topic.activityIds.isNotEmpty) {
+      if (!_hasCompletedTopic(
+            userID,
+            topic,
+            activitiesToCompleteOverride,
+          ) &&
+          topic.activityIds.isNotEmpty) {
         return topicId;
       }
     }
@@ -190,12 +205,17 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
   Map<String, List<User>> topicsToUsers(
     Room room,
     CoursePlanModel course,
+    int? activitiesToCompleteOverride,
   ) {
     final Map<String, List<User>> topicUserMap = {};
     final users = room.getParticipants();
     for (final user in users) {
       if (user.id == BotName.byEnvironment) continue;
-      final topicId = currentTopicId(user.id, course);
+      final topicId = currentTopicId(
+        user.id,
+        course,
+        activitiesToCompleteOverride,
+      );
       if (topicId != null) {
         topicUserMap.putIfAbsent(topicId, () => []).add(user);
       }

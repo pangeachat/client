@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-12 14:55:49.234609",
+  "@@last_modified": "2026-01-06 13:01:15.636781",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12995,6 +12995,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktivity na odomknutie nasledujúcej témy",
+  "activitiesToUnlockTopicDesc": "Nastavte počet aktivít na odomknutie nasledujúcej témy kurzu",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

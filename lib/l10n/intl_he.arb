@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:55:56.162697",
+  "@@last_modified": "2026-01-06 13:01:22.903727",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12960,6 +12960,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "פעילויות לפתיחת נושא הבא",
+  "activitiesToUnlockTopicDesc": "קבע את מספר הפעילויות לפתיחת נושא הקורס הבא",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

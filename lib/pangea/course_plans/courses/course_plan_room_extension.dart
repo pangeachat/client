@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/course_chats/course_chats_settings_model.dart';
 import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/pangea/course_settings/teacher_mode_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -107,21 +108,22 @@ extension CoursePlanRoomExtension on Room {
     return roomID;
   }
 
-  bool get isTeacherMode {
-    final event = getState(PangeaEventTypes.teacherMode, client.userID!);
-    if (event == null) return false;
-    final content = event.content;
-    return content['enabled'] == true;
+  TeacherModeModel get teacherMode {
+    final state = getState(PangeaEventTypes.teacherMode);
+    if (state == null) {
+      return const TeacherModeModel(enabled: false);
+    }
+    return TeacherModeModel.fromJson(state.content);
   }
 
-  Future<void> setTeacherMode(bool enabled) async {
+  bool get isTeacherMode => teacherMode.enabled && isRoomAdmin;
+
+  Future<void> setTeacherMode(TeacherModeModel model) async {
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.teacherMode,
-      client.userID!,
-      {
-        'enabled': enabled,
-      },
+      '',
+      model.toJson(),
     );
   }
 

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-12 14:56:01.835283",
+  "@@last_modified": "2026-01-06 13:01:29.144037",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11911,6 +11911,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Hurrengo gaia irekitzeko jarduerak",
+  "activitiesToUnlockTopicDesc": "Hurrengo ikastaro gaia irekitzeko jardueren kopurua ezarri",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

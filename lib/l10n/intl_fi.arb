@@ -4512,7 +4512,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-12-12 14:55:38.794396",
+  "@@last_modified": "2026-01-06 13:01:04.204663",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12556,6 +12556,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Toiminnot seuraavan aiheen avaamiseksi",
+  "activitiesToUnlockTopicDesc": "Aseta toimintojen määrä seuraavan kurssiaiheen avaamiseksi",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

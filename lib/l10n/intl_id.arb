@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:55:45.570582",
+  "@@last_modified": "2026-01-06 13:01:11.059266",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -11902,6 +11902,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Kegiatan untuk Membuka Topik Berikutnya",
+  "activitiesToUnlockTopicDesc": "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

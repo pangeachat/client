@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-12-12 14:57:14.235816",
+  "@@last_modified": "2026-01-06 13:02:50.687446",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -12235,6 +12235,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Activités à débloquer pour le prochain sujet",
+  "activitiesToUnlockTopicDesc": "Définissez le nombre d'activités pour débloquer le prochain sujet de cours",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

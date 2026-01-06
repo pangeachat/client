@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-12-12 14:57:02.463257",
+  "@@last_modified": "2026-01-06 13:02:37.951868",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12701,6 +12701,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "次のトピックをアンロックするためのアクティビティ",
+  "activitiesToUnlockTopicDesc": "次のコーストピックをアンロックするためのアクティビティの数を設定します",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

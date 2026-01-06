@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-12-12 14:56:34.173135",
+  "@@last_modified": "2026-01-06 13:02:09.596458",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -12133,6 +12133,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Sonraki Konuyu Açmak için Aktiviteler",
+  "activitiesToUnlockTopicDesc": "Sonraki kurs konusunu açmak için aktivite sayısını ayarlayın",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

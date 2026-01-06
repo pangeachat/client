@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:55:32.554351",
+  "@@last_modified": "2026-01-06 13:00:55.145584",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -12019,6 +12019,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "다음 주제를 잠금 해제할 활동",
+  "activitiesToUnlockTopicDesc": "다음 과정 주제를 잠금 해제할 활동 수를 설정하세요",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

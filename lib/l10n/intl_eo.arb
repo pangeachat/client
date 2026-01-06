@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:57:05.939954",
+  "@@last_modified": "2026-01-06 13:02:41.310107",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -13000,6 +13000,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktivecoj por Malŝlosi Sekvan Temon",
+  "activitiesToUnlockTopicDesc": "Agordu la nombron de aktivecoj por malŝlosi la sekvan kurson",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }
