@@ -377,12 +377,12 @@ class AnalyticsDataService {
 
     _invalidateCaches();
     await _ensureInitialized();
-    await _analyticsClientGetter.database.updateLocalAnalytics(
-      update.addedConstructs,
-    );
 
     final blocked = blockedConstructs;
     _mergeTable.addConstructsByUses(update.addedConstructs, blocked);
+    await _analyticsClientGetter.database.updateLocalAnalytics(
+      update.addedConstructs,
+    );
 
     final newConstructs = await getConstructUses(updateIds);
 
