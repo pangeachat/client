@@ -92,7 +92,7 @@ class WordZoomWidget extends StatelessWidget {
                                   minHeight: 40.0,
                                 ),
                                 alignment: Alignment.center,
-                                child: Text(
+                                child: SelectableText(
                                   token.content,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
