@@ -17,6 +17,7 @@ class ActivityVocabWidget extends StatelessWidget {
   final List<Vocab> vocab;
   final String langCode;
   final String targetId;
+  final String activityLangCode;
   final ValueNotifier<Set<String>>? usedVocab;
 
   const ActivityVocabWidget({
@@ -24,6 +25,7 @@ class ActivityVocabWidget extends StatelessWidget {
     required this.vocab,
     required this.langCode,
     required this.targetId,
+    required this.activityLangCode,
     this.usedVocab,
   });
 
@@ -35,6 +37,7 @@ class ActivityVocabWidget extends StatelessWidget {
         targetId: targetId,
         langCode: langCode,
         usedVocab: const {},
+        activityLangCode: activityLangCode,
       );
     }
 
@@ -45,6 +48,7 @@ class ActivityVocabWidget extends StatelessWidget {
         targetId: targetId,
         langCode: langCode,
         usedVocab: used,
+        activityLangCode: activityLangCode,
       ),
     );
   }
@@ -54,12 +58,14 @@ class _VocabChips extends StatefulWidget {
   final List<Vocab> vocab;
   final String targetId;
   final String langCode;
+  final String activityLangCode;
   final Set<String> usedVocab;
 
   const _VocabChips({
     required this.vocab,
     required this.targetId,
     required this.langCode,
+    required this.activityLangCode,
     required this.usedVocab,
   });
 
@@ -132,7 +138,11 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
   @override
   Widget build(BuildContext context) {
     final tokens = widget.vocab.map((v) => v.asToken()).toList();
-    final newTokens = TokensUtil.getNewTokens("activity_tokens", tokens);
+    final newTokens = TokensUtil.getNewTokens(
+      "activity_tokens",
+      tokens,
+      widget.activityLangCode,
+    );
     final renderer = TokenRenderingUtil(
       existingStyle: TextStyle(
         color: Theme.of(context).colorScheme.onSurface,

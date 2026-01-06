@@ -74,7 +74,8 @@ class TokensUtil {
 
   static List<PangeaTokenText> getNewTokens(
     String cacheKey,
-    List<PangeaToken> tokens, {
+    List<PangeaToken> tokens,
+    String tokensLangCode, {
     int? maxTokens,
   }) {
     if (MatrixState
@@ -82,8 +83,19 @@ class TokensUtil {
       return [];
     }
 
+    final messageInUserL2 = tokensLangCode.split('-').first ==
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
+
     final cached = _getCachedNewTokens(cacheKey);
-    if (cached != null) return cached;
+    if (cached != null) {
+      if (!messageInUserL2) {
+        _newTokenCache.remove(cacheKey);
+        return [];
+      }
+      return cached;
+    }
+
+    if (!messageInUserL2) return [];
 
     final List<PangeaTokenText> newTokens = [];
     final analyticsService =
@@ -136,15 +148,12 @@ class TokensUtil {
       return [];
     }
 
-    return getNewTokens(event.eventId, tokens, maxTokens: 3);
-  }
-
-  static bool isNewToken(
-    String cacheKey,
-    PangeaToken token,
-  ) {
-    final newTokens = getNewTokens(cacheKey, [token]);
-    return newTokens.any((t) => t == token.text);
+    return getNewTokens(
+      event.eventId,
+      tokens,
+      event.messageDisplayLangCode,
+      maxTokens: 3,
+    );
   }
 
   static bool isNewTokenByEvent(PangeaToken token, PangeaMessageEvent event) {

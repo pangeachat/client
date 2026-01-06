@@ -154,6 +154,8 @@ class ActivityStatsMenu extends StatelessWidget {
                     langCode: controller.room.activityPlan!.req.targetLanguage,
                     targetId: "activity-vocab",
                     usedVocab: controller.activityController.usedVocab,
+                    activityLangCode:
+                        controller.room.activityPlan!.req.targetLanguage,
                   ),
                 ),
               ],
