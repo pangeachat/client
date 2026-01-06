@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-05 16:38:34.147725",
+  "@@last_modified": "2026-01-06 13:02:42.875671",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10833,6 +10833,16 @@
   },
   "screenSizeWarning": "Для наилучшего использования этого приложения, пожалуйста, увеличьте размер экрана.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Деятельности для разблокировки следующей темы",
+  "activitiesToUnlockTopicDesc": "Установите количество действий для разблокировки следующей темы курса",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

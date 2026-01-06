@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:37:44.683070",
+  "@@last_modified": "2026-01-06 13:01:11.059266",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10719,6 +10719,16 @@
   },
   "screenSizeWarning": "Untuk pengalaman terbaik menggunakan aplikasi ini, silakan perbesar ukuran layar Anda.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Kegiatan untuk Membuka Topik Berikutnya",
+  "activitiesToUnlockTopicDesc": "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

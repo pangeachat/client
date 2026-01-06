@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:37:50.615411",
+  "@@last_modified": "2026-01-06 13:01:22.903727",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11777,6 +11777,16 @@
   },
   "screenSizeWarning": "כדי לקבל את החוויה הטובה ביותר בשימוש באפליקציה זו, אנא הרחיבו את גודל המסך שלכם.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "פעילויות לפתיחת נושא הבא",
+  "activitiesToUnlockTopicDesc": "קבע את מספר הפעילויות לפתיחת נושא הקורס הבא",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-05 16:37:43.701539",
+  "@@last_modified": "2026-01-06 13:01:08.359844",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10729,6 +10729,16 @@
   },
   "screenSizeWarning": "A legjobb élmény érdekében, kérjük, bővítse a képernyő méretét ennek az alkalmazásnak a használata során.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Tevékenységek a következő téma feloldásához",
+  "activitiesToUnlockTopicDesc": "Állítsa be a tevékenységek számát a következő tanfolyam téma feloldásához",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

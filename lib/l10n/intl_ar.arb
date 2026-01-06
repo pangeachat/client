@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-05 16:38:13.770707",
+  "@@last_modified": "2026-01-06 13:02:07.966839",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -10945,6 +10945,16 @@
   },
   "screenSizeWarning": "لأفضل تجربة عند استخدام هذا التطبيق، يرجى توسيع حجم الشاشة لديك.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "الأنشطة لفتح الموضوع التالي",
+  "activitiesToUnlockTopicDesc": "حدد عدد الأنشطة لفتح موضوع الدورة التالي",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

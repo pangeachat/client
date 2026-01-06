@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-05 16:38:22.675043",
+  "@@last_modified": "2026-01-06 13:02:25.686469",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10719,6 +10719,16 @@
   },
   "screenSizeWarning": "为了获得最佳的应用体验，请扩大您的屏幕尺寸。",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "解锁下一个主题的活动",
+  "activitiesToUnlockTopicDesc": "设置解锁下一个课程主题所需的活动数量",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

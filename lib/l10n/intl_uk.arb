@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-05 16:38:01.988748",
+  "@@last_modified": "2026-01-06 13:01:42.034870",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10722,6 +10722,16 @@
   },
   "screenSizeWarning": "Для найкращого досвіду використання цього додатку, будь ласка, розширте розмір екрану.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Дії для розблокування наступної теми",
+  "activitiesToUnlockTopicDesc": "Встановіть кількість дій для розблокування наступної теми курсу",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

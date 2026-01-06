@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-05 16:38:05.473989",
+  "@@last_modified": "2026-01-06 13:01:53.730932",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11827,6 +11827,16 @@
   },
   "screenSizeWarning": "Для найлепшага досведу выкарыстання гэтага прыкладання, калі ласка, пашырыце памер экрана.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Дзеянні для адкрыцця наступнай тэмы",
+  "activitiesToUnlockTopicDesc": "Усталюйце колькасць дзеянняў для адкрыцця наступнай тэмы курса",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

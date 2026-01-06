@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-05 16:37:55.798786",
+  "@@last_modified": "2026-01-06 13:01:32.507692",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10999,6 +10999,16 @@
   },
   "screenSizeWarning": "Parima kogemuse saamiseks selle rakenduse kasutamisel palun suurendage oma ekraani suurust.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Tegevused järgmise teema avamiseks",
+  "activitiesToUnlockTopicDesc": "Määrake tegevuste arv järgmise kursuse teema avamiseks",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-05 16:37:56.618492",
+  "@@last_modified": "2026-01-06 13:01:34.264308",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10735,6 +10735,16 @@
   },
   "screenSizeWarning": "Für das beste Erlebnis mit dieser Anwendung erweitern Sie bitte Ihre Bildschirmgröße.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktivitäten zum Freischalten des nächsten Themas",
+  "activitiesToUnlockTopicDesc": "Legen Sie die Anzahl der Aktivitäten fest, um das nächste Kursthema freizuschalten",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }
