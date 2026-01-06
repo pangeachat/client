@@ -115,25 +115,28 @@ class NaviRailItem extends StatelessWidget {
                             horizontal: isColumnMode ? 16.0 : 12.0,
                             vertical: isColumnMode ? 8.0 : 6.0,
                           ),
-                          // Pangea#
-                          child: Tooltip(
-                            message: toolTip,
-                            child: InkWell(
-                              borderRadius: borderRadius,
-                              onTap: onTap,
-                              // #Pangea
-                              child: icon,
-                              // child: unreadBadgeFilter == null
-                              //     ? icon
-                              //     : UnreadRoomsBadge(
-                              //         filter: unreadBadgeFilter,
-                              //         badgePosition: BadgePosition.topEnd(
-                              //           top: -12,
-                              //           end: -8,
-                              //         ),
-                              //         child: icon,
-                              //       ),
-                              // Pangea#
+                          child: TooltipVisibility(
+                            visible: !expanded,
+                            // Pangea#
+                            child: Tooltip(
+                              message: toolTip,
+                              child: InkWell(
+                                borderRadius: borderRadius,
+                                onTap: onTap,
+                                // #Pangea
+                                child: icon,
+                                // child: unreadBadgeFilter == null
+                                //     ? icon
+                                //     : UnreadRoomsBadge(
+                                //         filter: unreadBadgeFilter,
+                                //         badgePosition: BadgePosition.topEnd(
+                                //           top: -12,
+                                //           end: -8,
+                                //         ),
+                                //         child: icon,
+                                //       ),
+                                // Pangea#
+                              ),
                             ),
                           ),
                         ),
