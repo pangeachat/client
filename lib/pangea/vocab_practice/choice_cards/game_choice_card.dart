@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 /// A unified choice card that handles flipping, color tinting, hovering, and alt widgets
 class GameChoiceCard extends StatefulWidget {

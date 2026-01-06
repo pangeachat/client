@@ -5039,5 +5039,7 @@
   "announcementsChatDesc": "Only space admin can post.",
   "inOngoingActivity": "You have an ongoing activity!",
   "activitiesToUnlockTopicTitle": "Activities to Unlock Next Topic",
-  "activitiesToUnlockTopicDesc": "Set the number of activities to unlock the next course topic"
+  "activitiesToUnlockTopicDesc": "Set the number of activities to unlock the next course topic",
+  "mustHave10Words" : "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!"
+
 }

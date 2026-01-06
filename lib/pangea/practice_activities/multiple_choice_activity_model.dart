@@ -1,6 +1,8 @@
-import 'package:collection/collection.dart';
-import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/material.dart';
+
+import 'package:collection/collection.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 
 class MultipleChoiceActivity {
   /// choices, including the correct answer

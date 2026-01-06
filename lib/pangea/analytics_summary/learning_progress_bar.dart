@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
-import 'package:flutter/material.dart';
 
 class LearningProgressBar extends StatelessWidget {
   final double progress;

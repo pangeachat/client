@@ -1,11 +1,12 @@
 import 'dart:math';
 
+import 'package:get_storage/get_storage.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:get_storage/get_storage.dart';
 
 class VocabPracticeSessionRepo {
   static final GetStorage _storage = GetStorage('vocab_practice_session');

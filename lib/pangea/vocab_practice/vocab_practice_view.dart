@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
@@ -15,7 +17,6 @@ import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_timer_widget.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
-import 'package:flutter/material.dart';
 
 class VocabPracticeView extends StatelessWidget {
   final VocabPracticeState controller;

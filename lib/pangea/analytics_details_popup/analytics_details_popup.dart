@@ -1,5 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_list_view.dart';
@@ -16,8 +20,6 @@ import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
   const ConstructAnalyticsView({
@@ -224,9 +226,9 @@ Widget _buildVocabPracticeButton(BuildContext context) {
           }
         : () {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text(
-                  'You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!', //TODO: add to l10 file
+                  L10n.of(context).mustHave10Words,
                 ),
                 behavior: SnackBarBehavior.floating,
               ),

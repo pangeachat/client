@@ -1,6 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -17,7 +20,6 @@ import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_repo.dar
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_view.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class SessionLoader extends AsyncLoader<VocabPracticeSessionModel> {
   @override

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/analytics_data/analytics_database.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_database_builder.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_sync_controller.dart';
@@ -19,7 +21,6 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:matrix/matrix.dart';
 
 class _AnalyticsClient {
   final Client client;

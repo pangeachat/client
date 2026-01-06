@@ -1,5 +1,6 @@
-import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 
 class StatCard extends StatelessWidget {
   final IconData icon;

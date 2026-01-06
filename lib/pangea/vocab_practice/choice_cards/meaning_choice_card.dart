@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
-import 'package:flutter/material.dart';
 
 /// Choice card for meaning activity with emoji, and alt text on flip
 class MeaningChoiceCard extends StatelessWidget {
