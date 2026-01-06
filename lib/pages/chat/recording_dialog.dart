@@ -218,7 +218,10 @@ class RecordingDialogState extends State<RecordingDialog> {
               ),
             ),
           ),
-          if (error != true)
+          // #Pangea
+          // if (error != true)
+          if (error == null)
+            // Pangea#
             CupertinoDialogAction(
               onPressed: _stopAndSend,
               child: Text(L10n.of(context).send),
@@ -238,7 +241,10 @@ class RecordingDialogState extends State<RecordingDialog> {
             ),
           ),
         ),
-        if (error != true)
+        // #Pangea
+        // if (error != true)
+        if (error == null)
+          // Pangea#
           TextButton(
             onPressed: _stopAndSend,
             child: Text(L10n.of(context).send),
