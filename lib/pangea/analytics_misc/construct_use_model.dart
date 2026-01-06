@@ -38,6 +38,7 @@ class ConstructUses {
   }
 
   DateTime? get lastUsed => _uses.lastOrNull?.timeStamp;
+  DateTime? get cappedLastUse => cappedUses.lastOrNull?.timeStamp;
 
   String get category {
     if (_category == null || _category!.isEmpty) return "other";

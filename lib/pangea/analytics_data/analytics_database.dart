@@ -199,82 +199,55 @@ class AnalyticsDatabase with DatabaseFileStorage {
     DateTime? since,
   }) async {
     final stopwatch = Stopwatch()..start();
-    final List<OneConstructUse> uses = [];
+    final results = <OneConstructUse>[];
 
-    // first, get all of the local (most recent) keys
-    final localKeys = await _localConstructsBox.getAllKeys();
-    final localValues = await _localConstructsBox.getAll(localKeys);
-    final local = Map.fromIterables(
-      localKeys,
-      localValues,
-    ).entries.toList();
-
-    local.sort(
-      (a, b) => int.parse(b.key).compareTo(int.parse(a.key)),
-    );
-
-    for (final entry in local) {
-      // filter by date
-      if (since != null &&
-          int.parse(entry.key) < since.millisecondsSinceEpoch) {
-        continue;
+    bool addUseIfValid(OneConstructUse use) {
+      if (since != null && use.timeStamp.isBefore(since)) {
+        return false; // stop iteration entirely
+      }
+      if (roomId != null && use.metadata.roomId != roomId) {
+        return true; // skip but continue
       }
 
-      final rawUses = entry.value;
-      if (rawUses == null) continue;
-      for (final raw in rawUses) {
-        // filter by count
-        if (count != null && uses.length >= count) break;
-
-        final use = OneConstructUse.fromJson(
-          Map<String, dynamic>.from(raw),
-        );
-
-        // filter by roomID
-        if (roomId != null && use.metadata.roomId != roomId) {
-          continue;
-        }
-
-        uses.add(use);
-      }
-      if (count != null && uses.length >= count) break;
+      results.add(use);
+      return count == null || results.length < count;
     }
-    if (count != null && uses.length >= count) return uses;
 
-    // then get server uses
-    final serverKeys = await _serverConstructsBox.getAllKeys();
-    serverKeys.sort(
-      (a, b) =>
-          int.parse(b.split('|')[1]).compareTo(int.parse(a.split('|')[1])),
-    );
+    // ---- Local uses ----
+    final localUses = await getLocalUses()
+      ..sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
+
+    for (final use in localUses) {
+      if (!addUseIfValid(use)) break;
+    }
+
+    if (count != null && results.length >= count) {
+      stopwatch.stop();
+      Logs().i("Get uses took ${stopwatch.elapsedMilliseconds} ms");
+      return results;
+    }
+
+    // ---- Server uses ----
+    final serverKeys = await _serverConstructsBox.getAllKeys()
+      ..sort(
+        (a, b) =>
+            int.parse(b.split('|')[1]).compareTo(int.parse(a.split('|')[1])),
+      );
+
     for (final key in serverKeys) {
-      // filter by count
-      if (count != null && uses.length >= count) break;
-      final rawUses = await _serverConstructsBox.get(key);
-      if (rawUses == null) continue;
-      for (final raw in rawUses) {
-        if (count != null && uses.length >= count) break;
-        final use = OneConstructUse.fromJson(
-          Map<String, dynamic>.from(raw),
-        );
+      final serverUses = await getServerUses(key)
+        ..sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
 
-        // filter by roomID
-        if (roomId != null && use.metadata.roomId != roomId) {
-          continue;
-        }
-
-        // filter by date
-        if (since != null && use.timeStamp.isBefore(since)) {
-          continue;
-        }
-        uses.add(use);
+      for (final use in serverUses) {
+        if (!addUseIfValid(use)) break;
       }
+
+      if (count != null && results.length >= count) break;
     }
 
     stopwatch.stop();
     Logs().i("Get uses took ${stopwatch.elapsedMilliseconds} ms");
-
-    return uses.take(count ?? uses.length).toList();
+    return results;
   }
 
   Future<List<OneConstructUse>> getLocalUses() async {
@@ -289,6 +262,21 @@ class AnalyticsDatabase with DatabaseFileStorage {
         );
         uses.add(use);
       }
+    }
+    return uses;
+  }
+
+  Future<List<OneConstructUse>> getServerUses(String key) async {
+    final List<OneConstructUse> uses = [];
+    final serverValues = await _serverConstructsBox.get(key);
+    if (serverValues == null) return [];
+
+    for (final entry in serverValues) {
+      uses.add(
+        OneConstructUse.fromJson(
+          Map<String, dynamic>.from(entry),
+        ),
+      );
     }
     return uses;
   }
