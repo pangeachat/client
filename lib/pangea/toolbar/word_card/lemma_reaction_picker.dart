@@ -45,7 +45,6 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
   void didUpdateWidget(LemmaReactionPicker oldWidget) {
     if (oldWidget.constructId != widget.constructId) {
       setState(() => _selectedEmoji = widget.constructId.userSetEmoji);
-      _emojiSub?.cancel();
       _setEmojiSub();
     }
     super.didUpdateWidget(oldWidget);
