@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:collection/collection.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
@@ -34,23 +37,30 @@ class VocabPracticeState extends State<VocabPractice> {
 
   PracticeActivityModel? currentActivity;
   bool isLoadingActivity = true;
+  bool isAwaitingNextActivity = false;
   String? activityError;
 
   bool isLoadingLemmaInfo = false;
   final Map<String, String> _choiceTexts = {};
   final Map<String, String?> _choiceEmojis = {};
 
+  StreamSubscription<void>? _languageStreamSubscription;
+  bool _sessionClearedDueToLanguageChange = false;
+
   @override
   void initState() {
     super.initState();
     _startSession();
+    _listenToLanguageChanges();
   }
 
   @override
   void dispose() {
+    _languageStreamSubscription?.cancel();
     if (isComplete) {
       VocabPracticeSessionRepo.clearSession();
-    } else {
+    } else if (!_sessionClearedDueToLanguageChange) {
+      // Only save if we didn't already clear due to language change
       _saveCurrentTime();
     }
     sessionLoader.dispose();
@@ -67,6 +77,7 @@ class VocabPracticeState extends State<VocabPractice> {
   void _resetState() {
     currentActivity = null;
     isLoadingActivity = true;
+    isAwaitingNextActivity = false;
     activityError = null;
     isLoadingLemmaInfo = false;
     _choiceTexts.clear();
@@ -104,10 +115,51 @@ class VocabPracticeState extends State<VocabPractice> {
     }
   }
 
+  void _listenToLanguageChanges() {
+    _languageStreamSubscription = MatrixState
+        .pangeaController.userController.languageStream.stream
+        .listen((_) async {
+      // If language changed, clear session and back out of vocab practice
+      if (await _shouldReloadSession()) {
+        _sessionClearedDueToLanguageChange = true;
+        await VocabPracticeSessionRepo.clearSession();
+        if (mounted) {
+          Navigator.of(context).pop();
+        }
+      }
+    });
+  }
+
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await sessionLoader.load();
+
+    // Check if critical session data has changed and needs reload
+    if (await _shouldReloadSession()) {
+      await VocabPracticeSessionRepo.clearSession();
+      sessionLoader.dispose();
+      sessionLoader = SessionLoader();
+      await sessionLoader.load();
+    }
+
     loadActivity();
+  }
+
+  /// Check if session should be reloaded due to changed user settings
+  Future<bool> _shouldReloadSession() async {
+    if (!sessionLoader.isLoaded) return false;
+
+    final session = sessionLoader.value!;
+    final currentL1 =
+        MatrixState.pangeaController.userController.userL1?.langCode;
+    final currentL2 =
+        MatrixState.pangeaController.userController.userL2?.langCode;
+
+    // Check if user languages have changed
+    if (session.userL1 != currentL1 || session.userL2 != currentL2) {
+      return true;
+    }
+    return false;
   }
 
   Future<void> completeActivitySession() async {
@@ -211,6 +263,7 @@ class VocabPracticeState extends State<VocabPractice> {
     if (!mounted) return;
 
     setState(() {
+      isAwaitingNextActivity = false;
       currentActivity = null;
       isLoadingActivity = true;
       activityError = null;
@@ -256,8 +309,9 @@ class VocabPracticeState extends State<VocabPractice> {
 
     activity.onMultipleChoiceSelect(choice);
     final correct = activity.multipleChoiceContent!.isCorrect(choice);
+
     // Submit answer immediately (records use and gives XP)
-    sessionLoader.value!.submitAnswer(activity);
+    sessionLoader.value!.submitAnswer(activity, correct);
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
     final transformTargetId =
@@ -267,11 +321,12 @@ class VocabPracticeState extends State<VocabPractice> {
     } else {
       OverlayUtil.showPointsGained(transformTargetId, -2, context);
     }
+    if (!correct) return;
 
     // display the fact that the choice was correct before loading the next activity
+    setState(() => isAwaitingNextActivity = true);
     await Future.delayed(const Duration(milliseconds: 1000));
-
-    if (!correct) return;
+    setState(() => isAwaitingNextActivity = false);
 
     // Only move to next activity when answer is correct
     sessionLoader.value!.completeActivity(activity);
@@ -284,26 +339,29 @@ class VocabPracticeState extends State<VocabPractice> {
     await loadActivity();
   }
 
-  Map<String, double> calculateProgressChange(int xpGained) {
+  Future<Map<String, double>> calculateProgressChange(int xpGained) async {
     //check
     // final getAnalytics = MatrixState.pangeaController.getAnalytics;
     // final currentXP = getAnalytics.constructListModel.totalXP;
     // final currentLevel = getAnalytics.constructListModel.level;
 
-    // final minXPForCurrentLevel =
-    //     getAnalytics.constructListModel.calculateXpWithLevel(currentLevel);
-    // final minXPForNextLevel = getAnalytics.minXPForNextLevel;
+    final derivedData = await MatrixState
+        .pangeaController.matrixState.analyticsDataService.derivedData;
+    final currentLevel = derivedData.level;
+    final currentXP = derivedData.totalXP;
 
-    // final xpRange = minXPForNextLevel - minXPForCurrentLevel;
+    final minXPForCurrentLevel =
+        DerivedAnalyticsDataModel.calculateXpWithLevel(currentLevel);
+    final minXPForNextLevel = derivedData.minXPForNextLevel;
 
-    // final progressBefore =
-    //     ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+    final xpRange = minXPForNextLevel - minXPForCurrentLevel;
 
-    // final newTotalXP = currentXP + xpGained;
-    // final progressAfter =
-    //     ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
-    const double progressBefore = 10;
-    const double progressAfter = 20;
+    final progressBefore =
+        ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+
+    final newTotalXP = currentXP + xpGained;
+    final progressAfter =
+        ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
 
     return {
       'before': progressBefore,

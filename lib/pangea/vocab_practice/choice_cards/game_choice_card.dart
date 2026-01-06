@@ -11,6 +11,7 @@ class GameChoiceCard extends StatefulWidget {
   final double height;
   final bool shouldFlip;
   final String? transformId;
+  final bool isEnabled;
 
   const GameChoiceCard({
     required this.child,
@@ -20,6 +21,7 @@ class GameChoiceCard extends StatefulWidget {
     this.height = 72.0,
     this.shouldFlip = false,
     this.transformId,
+    this.isEnabled = true,
     super.key,
   });
 
@@ -76,6 +78,8 @@ class _GameChoiceCardState extends State<GameChoiceCard>
   }
 
   Future<void> _handleTap() async {
+    if (!widget.isEnabled) return;
+
     if (widget.shouldFlip) {
       if (_flipped) return;
       // Animate forward (shrink), then reverse (expand)
@@ -100,8 +104,10 @@ class _GameChoiceCardState extends State<GameChoiceCard>
         : AppConfig.error.withValues(alpha: 0.3);
 
     Widget card = MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+      onEnter:
+          widget.isEnabled ? ((_) => setState(() => _isHovered = true)) : null,
+      onExit:
+          widget.isEnabled ? ((_) => setState(() => _isHovered = false)) : null,
       child: SizedBox(
         width: double.infinity,
         height: widget.height,

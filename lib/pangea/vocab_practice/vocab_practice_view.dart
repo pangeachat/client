@@ -262,10 +262,12 @@ class _ActivityChoicesWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: choices.map((choiceId) {
+                final bool isEnabled = !controller.isAwaitingNextActivity;
                 return _buildChoiceCard(
                   activity: activity,
                   choiceId: choiceId,
                   cardHeight: cardHeight,
+                  isEnabled: isEnabled,
                   onPressed: () => controller.onSelectChoice(choiceId),
                 );
               }).toList(),
@@ -280,6 +282,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
     required activity,
     required String choiceId,
     required double cardHeight,
+    required bool isEnabled,
     required VoidCallback onPressed,
   }) {
     final isCorrect = activity.multipleChoiceContent!.isCorrect(choiceId);
@@ -296,6 +299,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: isEnabled,
         );
 
       case ActivityTypeEnum.lemmaAudio:
@@ -307,6 +311,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: isEnabled,
         );
 
       default:
@@ -319,6 +324,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: isEnabled,
           child: Text(controller.getChoiceText(choiceId)),
         );
     }

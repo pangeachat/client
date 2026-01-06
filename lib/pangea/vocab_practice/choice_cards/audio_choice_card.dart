@@ -11,12 +11,14 @@ class AudioChoiceCard extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isCorrect;
   final double height;
+  final bool isEnabled;
 
   const AudioChoiceCard({
     required this.text,
     required this.onPressed,
     required this.isCorrect,
     this.height = 72.0,
+    this.isEnabled = true,
     super.key,
   });
 
@@ -28,6 +30,7 @@ class AudioChoiceCard extends StatelessWidget {
       onPressed: onPressed,
       isCorrect: isCorrect,
       height: height,
+      isEnabled: isEnabled,
       child: Row(
         children: [
           Expanded(

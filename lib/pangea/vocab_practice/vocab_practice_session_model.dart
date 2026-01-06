@@ -16,6 +16,8 @@ class VocabPracticeSessionModel {
   final DateTime startedAt;
   final List<ConstructIdentifier> sortedConstructIds;
   final List<ActivityTypeEnum> activityTypes;
+  final String userL1;
+  final String userL2;
 
   int currentIndex;
   int currentGroup;
@@ -28,6 +30,8 @@ class VocabPracticeSessionModel {
     required this.startedAt,
     required this.sortedConstructIds,
     required this.activityTypes,
+    required this.userL1,
+    required this.userL2,
     required this.completedUses,
     this.currentIndex = 0,
     this.currentGroup = 0,
@@ -83,8 +87,8 @@ class VocabPracticeSessionModel {
 
     final activityType = currentActivityType;
     return MessageActivityRequest(
-      userL1: MatrixState.pangeaController.userController.userL1!.langCode,
-      userL2: MatrixState.pangeaController.userController.userL2!.langCode,
+      userL1: userL1,
+      userL2: userL2,
       activityQualityFeedback: null,
       targetTokens: [
         PangeaToken(
@@ -135,7 +139,6 @@ class VocabPracticeSessionModel {
           )
           .toList();
 
-      //MatrixState.pangeaController.putAnalytics.addAnalytics(bonusUses);
       MatrixState
           .pangeaController.matrixState.analyticsDataService.updateService
           .addAnalytics(
@@ -172,12 +175,8 @@ class VocabPracticeSessionModel {
     }
   }
 
-  void submitAnswer(PracticeActivityModel activity) {
-    // Get the most recent response
-    final latestResponse = activity.practiceTarget.record.latestResponse;
-    if (latestResponse == null) return;
-
-    final useType = latestResponse.isCorrect
+  void submitAnswer(PracticeActivityModel activity, bool isCorrect) {
+    final useType = isCorrect
         ? activity.activityType.correctUse
         : activity.activityType.incorrectUse;
 
@@ -197,7 +196,6 @@ class VocabPracticeSessionModel {
     completedUses.add(use);
 
     // Give XP immediately
-    //MatrixState.pangeaController.putAnalytics.addAnalytics([use]);
     MatrixState.pangeaController.matrixState.analyticsDataService.updateService
         .addAnalytics(
       null,
@@ -224,6 +222,8 @@ class VocabPracticeSessionModel {
           )
           .whereType<ActivityTypeEnum>()
           .toList(),
+      userL1: json['userL1'] as String,
+      userL2: json['userL2'] as String,
       currentIndex: json['currentIndex'] as int,
       currentGroup: json['currentGroup'] as int,
       completedUses: (json['completedUses'] as List<dynamic>?)
@@ -241,6 +241,8 @@ class VocabPracticeSessionModel {
       'startedAt': startedAt.toIso8601String(),
       'sortedConstructIds': sortedConstructIds.map((e) => e.toJson()).toList(),
       'activityTypes': activityTypes.map((e) => e.name).toList(),
+      'userL1': userL1,
+      'userL2': userL2,
       'currentIndex': currentIndex,
       'currentGroup': currentGroup,
       'completedUses': completedUses.map((e) => e.toJson()).toList(),

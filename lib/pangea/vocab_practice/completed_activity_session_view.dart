@@ -20,8 +20,8 @@ class CompletedActivitySessionView extends StatefulWidget {
 
 class _CompletedActivitySessionViewState
     extends State<CompletedActivitySessionView> {
-  late final Map<String, double> progressChange;
-  late double currentProgress;
+  late final Future<Map<String, double>> progressChangeFuture;
+  double currentProgress = 0.0;
   Uri? avatarUrl;
   bool shouldShowRain = false;
 
@@ -37,10 +37,12 @@ class _CompletedActivitySessionViewState
       }
     });
 
-    progressChange = widget.controller.calculateProgressChange(
+    progressChangeFuture = widget.controller.calculateProgressChange(
       widget.controller.sessionLoader.value!.totalXpGained,
     );
+  }
 
+  void _onProgressChangeLoaded(Map<String, double> progressChange) {
     //start with before progress
     currentProgress = progressChange['before'] ?? 0.0;
 
@@ -66,128 +68,156 @@ class _CompletedActivitySessionViewState
   Widget build(BuildContext context) {
     final username =
         Matrix.of(context).client.userID?.split(':').first.substring(1) ?? '';
+    final bool accuracyAchievement =
+        widget.controller.sessionLoader.value!.accuracy == 100;
+    final bool timeAchievement =
+        widget.controller.sessionLoader.value!.elapsedSeconds <= 60;
+    final int numBonusPoints = widget
+        .controller.sessionLoader.value!.completedUses
+        .where((use) => use.xp > 0)
+        .length;
+    //give double bonus for both, single for one, none for zero
+    final int bonusXp = (accuracyAchievement && timeAchievement)
+        ? numBonusPoints * 2
+        : (accuracyAchievement || timeAchievement)
+            ? numBonusPoints
+            : 0;
 
-    return Stack(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
-          child: Column(
-            children: [
-              Text(
-                "Congratulations! You've completed the practice session.",
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                textAlign: TextAlign.center,
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: avatarUrl == null
-                          ? Avatar(
-                              name: username,
-                              showPresence: false,
-                              size: 100,
-                            )
-                          : ClipOval(
-                              child: MxcImage(
-                                uri: avatarUrl,
-                                width: 100,
-                                height: 100,
-                              ),
-                            ),
-                    ),
-                    Column(
+    return FutureBuilder<Map<String, double>>(
+      future: progressChangeFuture,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const SizedBox.shrink();
+        }
+
+        // Initialize progress when data is available
+        if (currentProgress == 0.0 && !shouldShowRain) {
+          _onProgressChangeLoaded(snapshot.data!);
+        }
+
+        return Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
+              child: Column(
+                children: [
+                  Text(
+                    "Congratulations! You've completed the practice session.",
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Padding(
-                          padding:
-                              const EdgeInsets.only(top: 16.0, bottom: 16.0),
-                          child: AnimatedProgressBar(
-                            height: 20.0,
-                            widthPercent: currentProgress,
-                            backgroundColor: Theme.of(context)
-                                .colorScheme
-                                .surfaceContainerHighest,
-                            duration: const Duration(milliseconds: 500),
-                          ),
+                          padding: const EdgeInsets.all(16.0),
+                          child: avatarUrl == null
+                              ? Avatar(
+                                  name: username,
+                                  showPresence: false,
+                                  size: 100,
+                                )
+                              : ClipOval(
+                                  child: MxcImage(
+                                    uri: avatarUrl,
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                                ),
                         ),
-                        Text(
-                          "+ ${widget.controller.sessionLoader.value!.totalXpGained} XP",
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 16.0,
+                                bottom: 16.0,
+                              ),
+                              child: AnimatedProgressBar(
+                                height: 20.0,
+                                widthPercent: currentProgress,
+                                backgroundColor: Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHighest,
+                                duration: const Duration(milliseconds: 500),
+                              ),
+                            ),
+                            Text(
+                              "+ ${widget.controller.sessionLoader.value!.totalXpGained + bonusXp} XP",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge
+                                  ?.copyWith(
                                     color: AppConfig.goldLight,
                                     fontWeight: FontWeight.bold,
                                   ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    StatCard(
-                      icon: Icons.my_location,
-                      text:
-                          "Accuracy: ${widget.controller.sessionLoader.value!.accuracy}%",
-                      isAchievement:
-                          (widget.controller.sessionLoader.value!.accuracy ==
-                              100),
-                      achievementText: "+ 5 XP",
-                      child: PercentMarkerBar(
-                        height: 20.0,
-                        widthPercent:
-                            widget.controller.sessionLoader.value!.accuracy /
+                        StatCard(
+                          icon: Icons.my_location,
+                          text:
+                              "Accuracy: ${widget.controller.sessionLoader.value!.accuracy}%",
+                          isAchievement: accuracyAchievement,
+                          achievementText: "+ $numBonusPoints XP",
+                          child: PercentMarkerBar(
+                            height: 20.0,
+                            widthPercent: widget
+                                    .controller.sessionLoader.value!.accuracy /
                                 100.0,
-                        markerWidth: 20.0,
-                        markerColor: AppConfig.success,
-                        backgroundColor:
-                            !(widget.controller.sessionLoader.value!.accuracy ==
+                            markerWidth: 20.0,
+                            markerColor: AppConfig.success,
+                            backgroundColor: !(widget.controller.sessionLoader
+                                        .value!.accuracy ==
                                     100)
                                 ? Theme.of(context)
                                     .colorScheme
                                     .surfaceContainerHighest
                                 : Color.alphaBlend(
-                                    AppConfig.goldLight.withOpacity(0.3),
+                                    AppConfig.goldLight.withValues(alpha: 0.3),
                                     Theme.of(context)
                                         .colorScheme
                                         .surfaceContainerHighest,
                                   ),
-                      ),
-                    ),
-                    StatCard(
-                      icon: Icons.my_location,
-                      text:
-                          "Time: ${_formatTime(widget.controller.sessionLoader.value!.elapsedSeconds)}",
-                      isAchievement: (widget
-                              .controller.sessionLoader.value!.elapsedSeconds <=
-                          60),
-                      achievementText: "+ 5 XP",
-                      child: const SizedBox.shrink(),
-                    ),
-                    Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: widget.controller.reloadSession,
-                          child: const Text("Practice Again"),
+                          ),
                         ),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () => Navigator.of(context).pop(),
-                          child: const Text("Finish"),
+                        StatCard(
+                          icon: Icons.my_location,
+                          text:
+                              "Time: ${_formatTime(widget.controller.sessionLoader.value!.elapsedSeconds)}",
+                          isAchievement: timeAchievement,
+                          achievementText: "+ $numBonusPoints XP",
+                          child: const SizedBox.shrink(),
+                        ),
+                        Column(
+                          children: [
+                            ElevatedButton(
+                              onPressed: widget.controller.reloadSession,
+                              child: const Text("Practice Again"),
+                            ),
+                            const SizedBox(height: 16),
+                            ElevatedButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: const Text("Finish"),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        if (shouldShowRain)
-          const StarRainWidget(
-            showBlast: true,
-            rainDuration: Duration(seconds: 5),
-          ),
-      ],
+            ),
+            if (shouldShowRain)
+              const StarRainWidget(
+                showBlast: true,
+                rainDuration: Duration(seconds: 5),
+              ),
+          ],
+        );
+      },
     );
   }
 }

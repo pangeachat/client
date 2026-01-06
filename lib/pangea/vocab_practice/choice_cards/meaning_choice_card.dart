@@ -10,6 +10,7 @@ class MeaningChoiceCard extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isCorrect;
   final double height;
+  final bool isEnabled;
 
   const MeaningChoiceCard({
     required this.choiceId,
@@ -18,6 +19,7 @@ class MeaningChoiceCard extends StatelessWidget {
     required this.onPressed,
     required this.isCorrect,
     this.height = 72.0,
+    this.isEnabled = true,
     super.key,
   });
 
@@ -34,6 +36,7 @@ class MeaningChoiceCard extends StatelessWidget {
       onPressed: onPressed,
       isCorrect: isCorrect,
       height: height,
+      isEnabled: isEnabled,
       altChild: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

@@ -29,6 +29,8 @@ class VocabPracticeSessionRepo {
 
     final targets = await _fetch();
     final session = VocabPracticeSessionModel(
+      userL1: MatrixState.pangeaController.userController.userL1!.langCode,
+      userL2: MatrixState.pangeaController.userController.userL2!.langCode,
       startedAt: DateTime.now(),
       sortedConstructIds: targets,
       activityTypes: types,
@@ -51,10 +53,6 @@ class VocabPracticeSessionRepo {
   static Future<void> clearSession() => _storage.erase();
 
   static Future<List<ConstructIdentifier>> _fetch() async {
-    // final constructs = MatrixState
-    //     .pangeaController.getAnalytics.constructListModel
-    //     .constructList(type: ConstructTypeEnum.vocab);
-
     final constructs = await MatrixState
         .pangeaController.matrixState.analyticsDataService
         .getAggregatedConstructs(ConstructTypeEnum.vocab)
