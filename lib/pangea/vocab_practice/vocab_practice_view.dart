@@ -4,6 +4,8 @@ import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
@@ -120,14 +122,9 @@ class _VocabActivityView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          activityType == ActivityTypeEnum.lemmaMeaning
-              ? L10n.of(context).selectMeaning
-              : L10n.of(context).selectAudio,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+        const InstructionsInlineTooltip(
+          instructionsEnum: InstructionsEnum.selectMeaning,
+          padding: EdgeInsets.symmetric(vertical: 16.0),
         ),
         Expanded(
           child: Column(

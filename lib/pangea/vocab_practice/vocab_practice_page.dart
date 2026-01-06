@@ -196,7 +196,7 @@ class VocabPracticeState extends State<VocabPractice> {
     final ConstructUses constructUse = await Matrix.of(context)
         .analyticsDataService
         .getConstructUse(construct);
-    for (final use in constructUse.uses) {
+    for (final use in constructUse.cappedUses) {
       if (use.metadata.eventId == null || use.metadata.roomId == null) {
         continue;
       }
@@ -275,7 +275,7 @@ class VocabPracticeState extends State<VocabPractice> {
     final activityRequest = session.currentActivityRequest;
     if (activityRequest == null) {
       setState(() {
-        activityError = "No current activity request.";
+        activityError = L10n.of(context).noActivityRequest;
         isLoadingActivity = false;
       });
       return;
@@ -340,11 +340,6 @@ class VocabPracticeState extends State<VocabPractice> {
   }
 
   Future<Map<String, double>> calculateProgressChange(int xpGained) async {
-    //check
-    // final getAnalytics = MatrixState.pangeaController.getAnalytics;
-    // final currentXP = getAnalytics.constructListModel.totalXP;
-    // final currentLevel = getAnalytics.constructListModel.level;
-
     final derivedData = await MatrixState
         .pangeaController.matrixState.analyticsDataService.derivedData;
     final currentLevel = derivedData.level;

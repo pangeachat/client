@@ -1,10 +1,9 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
 
 enum InstructionsEnum {
   clickMessage,
@@ -31,6 +30,7 @@ enum InstructionsEnum {
   noSavedActivitiesYet,
   setLemmaEmoji,
   disableLanguageTools,
+  selectMeaning,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -41,6 +41,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisbledTitle;
       case InstructionsEnum.chooseWordAudio:
+      case InstructionsEnum.selectMeaning:
       case InstructionsEnum.chooseEmoji:
       case InstructionsEnum.activityPlannerOverview:
       case InstructionsEnum.speechToText:
@@ -125,6 +126,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;
+      case InstructionsEnum.selectMeaning:
+        return l10n.selectMeaning;
     }
   }
 

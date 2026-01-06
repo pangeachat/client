@@ -76,9 +76,17 @@ class VocabTimerWidgetState extends State<VocabTimerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      _formatTime(_getCurrentSeconds()),
-      style: Theme.of(context).textTheme.titleMedium,
+    return Row(
+      children: [
+        const Icon(Icons.alarm, size: 20),
+        const SizedBox(width: 4.0),
+        Text(
+          _formatTime(_getCurrentSeconds()),
+          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+        ),
+      ],
     );
   }
 }

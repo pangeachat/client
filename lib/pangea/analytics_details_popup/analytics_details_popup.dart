@@ -180,7 +180,10 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           ),
         ),
       ),
-      floatingActionButton: _buildVocabPracticeButton(context),
+      floatingActionButton:
+          widget.view == ConstructTypeEnum.vocab && widget.construct == null
+              ? _buildVocabPracticeButton(context)
+              : null,
     );
   }
 }

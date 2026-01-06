@@ -1,4 +1,5 @@
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/vocab_practice/percent_marker_bar.dart';
@@ -102,7 +103,7 @@ class _CompletedActivitySessionViewState
               child: Column(
                 children: [
                   Text(
-                    "Congratulations! You've completed the practice session.",
+                    L10n.of(context).congratulationsYouveCompletedPractice,
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -159,7 +160,7 @@ class _CompletedActivitySessionViewState
                         StatCard(
                           icon: Icons.my_location,
                           text:
-                              "Accuracy: ${widget.controller.sessionLoader.value!.accuracy}%",
+                              "${L10n.of(context).accuracy}: ${widget.controller.sessionLoader.value!.accuracy}%",
                           isAchievement: accuracyAchievement,
                           achievementText: "+ $numBonusPoints XP",
                           child: PercentMarkerBar(
@@ -184,23 +185,56 @@ class _CompletedActivitySessionViewState
                           ),
                         ),
                         StatCard(
-                          icon: Icons.my_location,
+                          icon: Icons.alarm,
                           text:
-                              "Time: ${_formatTime(widget.controller.sessionLoader.value!.elapsedSeconds)}",
+                              "${L10n.of(context).time}: ${_formatTime(widget.controller.sessionLoader.value!.elapsedSeconds)}",
                           isAchievement: timeAchievement,
                           achievementText: "+ $numBonusPoints XP",
-                          child: const SizedBox.shrink(),
+                          child: TimeStarsWidget(
+                            elapsedSeconds: widget
+                                .controller.sessionLoader.value!.elapsedSeconds,
+                            timeForBonus: widget
+                                .controller.sessionLoader.value!.timeForBonus,
+                          ),
                         ),
                         Column(
                           children: [
+                            //expanded row button
                             ElevatedButton(
-                              onPressed: widget.controller.reloadSession,
-                              child: const Text("Practice Again"),
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12.0,
+                                  vertical: 8.0,
+                                ),
+                              ),
+                              onPressed: () =>
+                                  widget.controller.reloadSession(),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).anotherRound,
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 16),
                             ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12.0,
+                                  vertical: 8.0,
+                                ),
+                              ),
                               onPressed: () => Navigator.of(context).pop(),
-                              child: const Text("Finish"),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).quit,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -218,6 +252,40 @@ class _CompletedActivitySessionViewState
           ],
         );
       },
+    );
+  }
+}
+
+class TimeStarsWidget extends StatelessWidget {
+  final int elapsedSeconds;
+  final int timeForBonus;
+
+  const TimeStarsWidget({
+    required this.elapsedSeconds,
+    required this.timeForBonus,
+    super.key,
+  });
+
+  int get starCount {
+    if (elapsedSeconds <= timeForBonus) return 5;
+    if (elapsedSeconds <= timeForBonus * 1.5) return 4;
+    if (elapsedSeconds <= timeForBonus * 2) return 3;
+    if (elapsedSeconds <= timeForBonus * 2.5) return 2;
+    return 1; // anything above 3x timeForBonus
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: List.generate(
+        5,
+        (index) => Icon(
+          index < starCount ? Icons.star : Icons.star_outline,
+          color: AppConfig.goldLight,
+          size: 36,
+        ),
+      ),
     );
   }
 }
