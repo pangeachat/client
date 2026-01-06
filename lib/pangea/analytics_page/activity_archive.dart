@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -83,11 +82,7 @@ class AnalyticsActivityItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final objective = room.activityPlan?.learningObjective ?? '';
-    final cefrLevel = room.activitySummary?.summary?.participants
-        .firstWhereOrNull(
-          (p) => p.participantId == room.client.userID,
-        )
-        ?.cefrLevel;
+    final cefrLevel = room.activityPlan?.req.cefrLevel;
 
     final theme = Theme.of(context);
     return Padding(
@@ -127,7 +122,7 @@ class AnalyticsActivityItem extends StatelessWidget {
                     vertical: 4,
                   ),
                   child: Text(
-                    cefrLevel.toUpperCase(),
+                    cefrLevel.string,
                     style: const TextStyle(fontSize: 14.0),
                   ),
                 )
