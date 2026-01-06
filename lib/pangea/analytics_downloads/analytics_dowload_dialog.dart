@@ -165,7 +165,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
       final xp = uses.map((e) => e.points).reduce((a, total) => a + total);
       final exampleMessages = await _getExampleMessages(uses);
-      final allUses = uses.map((u) => u.uses).expand((element) => element);
+      final allUses =
+          uses.map((u) => u.cappedUses).expand((element) => element);
 
       int independantUseOccurrences = 0;
       int assistedUseOccurrences = 0;
@@ -218,7 +219,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
         final xp = uses.points;
         final exampleMessages = await _getExampleMessages([uses]);
-        final allUses = uses.uses;
+        final allUses = uses.cappedUses;
 
         int independantUseOccurrences = 0;
         int assistedUseOccurrences = 0;
@@ -261,7 +262,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   Future<List<String>> _getExampleMessages(
     List<ConstructUses> constructUses,
   ) async {
-    final allUses = constructUses.map((e) => e.uses).expand((e) => e).toList();
+    final allUses =
+        constructUses.map((e) => e.cappedUses).expand((e) => e).toList();
     final List<PangeaMessageEvent> examples = [];
     for (final OneConstructUse use in allUses) {
       if (use.metadata.roomId == null) continue;

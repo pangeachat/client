@@ -15,7 +15,6 @@ class ConstructUses {
   final ConstructTypeEnum constructType;
   final String lemma;
   String? _category;
-  DateTime? _lastUsed;
 
   ConstructUses({
     required List<OneConstructUse> uses,
@@ -23,7 +22,9 @@ class ConstructUses {
     required this.lemma,
     required category,
   })  : _category = category,
-        _uses = uses;
+        _uses = List<OneConstructUse>.from(uses) {
+    _sortUses();
+  }
 
   // Total points for all uses of this lemma
   int get points {
@@ -36,20 +37,7 @@ class ConstructUses {
     );
   }
 
-  DateTime? get lastUsed {
-    if (_lastUsed != null) return _lastUsed;
-    final lastUse = _uses.fold<DateTime?>(null, (DateTime? last, use) {
-      if (last == null) return use.timeStamp;
-      return use.timeStamp.isAfter(last) ? use.timeStamp : last;
-    });
-    return _lastUsed = lastUse;
-  }
-
-  void setLastUsed(DateTime time) {
-    if (_lastUsed == null || time.isAfter(_lastUsed!)) {
-      _lastUsed = time;
-    }
-  }
+  DateTime? get lastUsed => _uses.lastOrNull?.timeStamp;
 
   String get category {
     if (_category == null || _category!.isEmpty) return "other";
@@ -64,38 +52,6 @@ class ConstructUses {
         type: constructType,
         category: category,
       );
-
-  Map<String, dynamic> toJson() {
-    final json = {
-      'construct_id': id.toJson(),
-      'xp': points,
-      'last_used': lastUsed?.toIso8601String(),
-      'uses': _uses.map((e) => e.toJson()).toList(),
-    };
-    return json;
-  }
-
-  factory ConstructUses.fromJson(Map<String, dynamic> json) {
-    final constructId = ConstructIdentifier.fromJson(
-      Map<String, dynamic>.from(json['construct_id']),
-    );
-
-    List<dynamic> usesJson = [];
-    if (json['uses'] is List) {
-      usesJson = List<dynamic>.from(json['uses']);
-    }
-
-    final uses = usesJson
-        .map((e) => OneConstructUse.fromJson(Map<String, dynamic>.from(e)))
-        .toList();
-
-    return ConstructUses(
-      uses: uses,
-      constructType: constructId.type,
-      lemma: constructId.lemma,
-      category: constructId.category,
-    );
-  }
 
   /// Get the lemma category, based on points
   ConstructLevelEnum get lemmaCategory {
@@ -129,10 +85,62 @@ class ConstructUses {
   List<String> get forms =>
       _uses.map((e) => e.form).whereType<String>().toSet().toList();
 
-  DateTime? lastUseByTypes(List<ConstructUseTypeEnum> types) =>
-      _uses.firstWhereOrNull((u) => types.contains(u.useType))?.timeStamp;
+  List<OneConstructUse> get cappedUses {
+    final result = <OneConstructUse>[];
+    var totalXp = 0;
 
-  void addUse(OneConstructUse use) => _uses.add(use);
+    for (final use in _uses) {
+      if (totalXp >= AnalyticsConstants.xpForFlower) break;
+      totalXp += use.xp;
+      result.add(use);
+    }
+
+    return result;
+  }
+
+  DateTime? lastUseByTypes(List<ConstructUseTypeEnum> types) =>
+      _uses.lastWhereOrNull((u) => types.contains(u.useType))?.timeStamp;
+
+  Map<String, dynamic> toJson() {
+    final json = {
+      'construct_id': id.toJson(),
+      'xp': points,
+      'last_used': lastUsed?.toIso8601String(),
+      'uses': _uses.map((e) => e.toJson()).toList(),
+    };
+    return json;
+  }
+
+  factory ConstructUses.fromJson(Map<String, dynamic> json) {
+    final constructId = ConstructIdentifier.fromJson(
+      Map<String, dynamic>.from(json['construct_id']),
+    );
+
+    List<dynamic> usesJson = [];
+    if (json['uses'] is List) {
+      usesJson = List<dynamic>.from(json['uses']);
+    }
+
+    final uses = usesJson
+        .map((e) => OneConstructUse.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
+
+    return ConstructUses(
+      uses: uses,
+      constructType: constructId.type,
+      lemma: constructId.lemma,
+      category: constructId.category,
+    );
+  }
+
+  void _sortUses() {
+    _uses.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
+  }
+
+  void addUse(OneConstructUse use) {
+    _uses.add(use);
+    _sortUses();
+  }
 
   void merge(ConstructUses other) {
     if (other.lemma.toLowerCase() != lemma.toLowerCase() ||
@@ -143,9 +151,7 @@ class ConstructUses {
     }
 
     _uses.addAll(other._uses);
-    if (other.lastUsed != null) {
-      setLastUsed(other.lastUsed!);
-    }
+    _sortUses();
 
     if (category == 'other' && other.category != 'other') {
       _category = other.category;
