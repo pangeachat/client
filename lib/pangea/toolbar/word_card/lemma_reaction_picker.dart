@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -29,12 +31,45 @@ class LemmaReactionPicker extends StatefulWidget with LemmaEmojiSetter {
 
 class LemmaReactionPickerState extends State<LemmaReactionPicker> {
   ScaffoldMessengerState? messenger;
+  StreamSubscription? _emojiSub;
+  String? _selectedEmoji;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedEmoji = widget.constructId.userSetEmoji;
+    _setEmojiSub();
+  }
+
+  @override
+  void didUpdateWidget(LemmaReactionPicker oldWidget) {
+    if (oldWidget.constructId != widget.constructId) {
+      setState(() => _selectedEmoji = widget.constructId.userSetEmoji);
+      _emojiSub?.cancel();
+      _setEmojiSub();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
 
   @override
   void dispose() {
     messenger?.hideCurrentSnackBar();
     messenger = null;
+    _emojiSub?.cancel();
     super.dispose();
+  }
+
+  void _setEmojiSub() {
+    _emojiSub?.cancel();
+    _emojiSub = Matrix.of(context)
+        .analyticsDataService
+        .updateDispatcher
+        .lemmaUpdateStream(widget.constructId)
+        .listen((update) => _setSelectedEmoji(update.emojis?.firstOrNull));
+  }
+
+  void _setSelectedEmoji(String? emoji) {
+    setState(() => _selectedEmoji = emoji);
   }
 
   Event? _sentReaction(String emoji) {
@@ -93,38 +128,25 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
 
   @override
   Widget build(BuildContext context) {
-    final stream = Matrix.of(context)
-        .analyticsDataService
-        .updateDispatcher
-        .lemmaUpdateStream(widget.constructId);
-
     final targetId = "emoji-choice-item-${widget.constructId.lemma}-$hashCode";
-    return StreamBuilder(
-      stream: stream,
-      builder: (context, snapshot) {
-        final selectedEmoji = snapshot.data?.emojis?.firstOrNull ??
-            widget.constructId.userSetEmoji;
-
-        return LemmaHighlightEmojiRow(
-          cId: widget.constructId,
-          langCode: widget.langCode,
-          targetId: targetId,
-          onEmojiSelected: (emoji, target) => emoji != selectedEmoji
-              ? _setEmoji(emoji, target)
-              : _sendOrRedactReaction(emoji),
-          emoji: selectedEmoji,
-          messageInfo: widget.event?.content ?? {},
-          selectedEmojiBadge: widget.event != null &&
-                  selectedEmoji != null &&
-                  _sentReaction(selectedEmoji) == null
-              ? const Icon(
-                  Icons.add_reaction,
-                  size: 12.0,
-                )
-              : null,
-          enabled: widget.enabled,
-        );
-      },
+    return LemmaHighlightEmojiRow(
+      cId: widget.constructId,
+      langCode: widget.langCode,
+      targetId: targetId,
+      onEmojiSelected: (emoji, target) => emoji != _selectedEmoji
+          ? _setEmoji(emoji, target)
+          : _sendOrRedactReaction(emoji),
+      emoji: _selectedEmoji,
+      messageInfo: widget.event?.content ?? {},
+      selectedEmojiBadge: widget.event != null &&
+              _selectedEmoji != null &&
+              _sentReaction(_selectedEmoji!) == null
+          ? const Icon(
+              Icons.add_reaction,
+              size: 12.0,
+            )
+          : null,
+      enabled: widget.enabled,
     );
   }
 }
