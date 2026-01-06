@@ -42,7 +42,12 @@ class SttTranscriptTokens extends StatelessWidget {
       existingStyle: (style ?? DefaultTextStyle.of(context).style),
     );
 
-    final newTokens = TokensUtil.getNewTokens(eventId, tokens);
+    final newTokens = TokensUtil.getNewTokens(
+      eventId,
+      tokens,
+      model.langCode,
+    );
+
     return RichText(
       textScaler: TextScaler.noScaling,
       text: TextSpan(
