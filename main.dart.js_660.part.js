@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "A legjobb \xe9lm\xe9ny \xe9rdek\xe9ben, k\xe9rj\xfck, b\u0151v\xedtse a k\xe9perny\u0151 m\xe9ret\xe9t ennek az alkalmaz\xe1snak a haszn\xe1lata sor\xe1n.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Tev\xe9kenys\xe9gek a k\xf6vetkez\u0151 t\xe9ma felold\xe1s\xe1hoz";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "\xc1ll\xedtsa be a tev\xe9kenys\xe9gek sz\xe1m\xe1t a k\xf6vetkez\u0151 tanfolyam t\xe9ma felold\xe1s\xe1hoz";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["df6xQhC6lx1FcDZ35DprQtXrtLY="] = d.current;
+  d["y6lfDKzWYaYjVMC35DoHbbVwkaQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

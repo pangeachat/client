@@ -5266,6 +5266,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return string$.Para_a;
     },
+    get$activitiesToUnlockTopicTitle() {
+      return string$.Ativid;
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return string$.Definao;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10505,6 +10511,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$screenSizeWarning() {
       return string$.Para_a;
+    },
+    get$activitiesToUnlockTopicTitle() {
+      return string$.Ativid;
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return string$.Definao;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15746,6 +15758,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return string$.Para_a;
     },
+    get$activitiesToUnlockTopicTitle() {
+      return string$.Ativid;
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return string$.Definao;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15793,6 +15811,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Assistt: "Assist\xeancia de tradu\xe7\xe3o est\xe1 desativada para o curso em que esta conversa est\xe1.",
     Aten__: "Aten\xe7\xe3o! \xc9 necess\xe1rio adicionar o teclado do idioma alvo",
     Ative_: "Ative para desbloquear todos os t\xf3picos e atividades. Apenas para administradores do curso.",
+    Ativid: "Atividades para Desbloquear o Pr\xf3ximo T\xf3pico",
     Atuali: "Atualize esta sala para a vers\xe3o de sala fornecida",
     Bom_tr: "Bom trabalho! Salve esta atividade para revis\xe3o e pr\xe1tica posterior",
     Cliqueaag: "Clique aqui para atualizar as configura\xe7\xf5es de assist\xeancia de gram\xe1tica",
@@ -15817,6 +15836,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Correts: "Correto na atividade de significado da palavra",
     Cursos: "Cursos permitem consolidar seus chats e construir comunidades privadas ou p\xfablicas.",
     C_digo: "C\xf3digos promocionais podem ser inseridos na pr\xf3xima p\xe1gina",
+    Definao: "Defina o n\xfamero de atividades para desbloquear o pr\xf3ximo t\xf3pico do curso",
     Definap: "Defina permiss\xf5es como quem pode convidar usu\xe1rios, enviar mensagens, criar chats, etc.",
     Definaq: "Defina qual n\xedvel de poder \xe9 necess\xe1rio para certas a\xe7\xf5es neste chat. Os n\xedveis de poder 0, 50 e 100 geralmente representam usu\xe1rios, moderadores e administradores, mas qualquer grada\xe7\xe3o \xe9 poss\xedvel.",
     Descul: "Desculpe, n\xe3o conseguimos entender sua mensagem...",
@@ -15937,7 +15957,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["i7LcOdI8r7xyjrv7RqjXHmVS08Q="] = d.current;
+  d["GpdunMHP7Q81BKnBG2akBTJC/qo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Por la plej bona sperto uzante \u0109i tiun aplika\u0135on, bonvolu vastigi vian ekranan grandecon.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Aktivecoj por Mal\u015dlosi Sekvan Temon";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Agordu la nombron de aktivecoj por mal\u015dlosi la sekvan kurson";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gkWy6tbMTDamz5JYlReDc8B6cHg="] = d.current;
+  d["hE04dEpzWcRpxua9fRrTAWke1jA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

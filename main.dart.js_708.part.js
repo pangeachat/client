@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Norint geriausiai naudotis \u0161ia programa, pra\u0161ome padidinti ekrano dyd\u012f.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Veiklos, kad atrakintum\u0117te kit\u0105 tem\u0105";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Nustatykite veikl\u0173 skai\u010di\u0173, kad atrakintum\u0117te kit\u0105 kurso tem\u0105";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5270,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BtnjdKanVTlbIZY2MrfnNf3bdSU="] = d.current;
+  d["lGwnXWH25PuixvDF5P1oQb0Zt8s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

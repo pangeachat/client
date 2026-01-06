@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u10d0\u10db \u10d0\u10de\u10da\u10d8\u10d9\u10d0\u10ea\u10d8\u10d8\u10e1 \u10e1\u10d0\u10e3\u10d9\u10d4\u10d7\u10d4\u10e1\u10dd \u10d2\u10d0\u10db\u10dd\u10ea\u10d3\u10d8\u10da\u10d4\u10d1\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1, \u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10d2\u10d0\u10d0\u10e4\u10d0\u10e0\u10d7\u10dd\u10d5\u10dd\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10d4\u10d9\u10e0\u10d0\u10dc\u10d8\u10e1 \u10d6\u10dd\u10db\u10d0.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "\u10d0\u10e5\u10e2\u10d8\u10d5\u10dd\u10d1\u10d4\u10d1\u10d8 \u10e8\u10d4\u10db\u10d3\u10d4\u10d2 \u10d7\u10d4\u10db\u10d0\u10d6\u10d4 \u10d2\u10d0\u10d3\u10d0\u10e1\u10d0\u10e1\u10d5\u10da\u10d4\u10da\u10d0\u10d3";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "\u10d2\u10d0\u10dc\u10e1\u10d0\u10d6\u10e6\u10d5\u10e0\u10d4\u10d7 \u10d0\u10e5\u10e2\u10d8\u10d5\u10dd\u10d1\u10d4\u10d1\u10d8\u10e1 \u10e0\u10d0\u10dd\u10d3\u10d4\u10dc\u10dd\u10d1\u10d0, \u10e0\u10d0\u10d7\u10d0 \u10d2\u10d0\u10ee\u10e1\u10dc\u10d0\u10d7 \u10e8\u10d4\u10db\u10d3\u10d4\u10d2\u10d8 \u10d9\u10e3\u10e0\u10e1\u10d8\u10e1 \u10d7\u10d4\u10db\u10d0";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["frH2UwSMTIj6U+rmdf5R0rKzxzQ="] = d.current;
+  d["W54jW0fgNoD4V2P6g30HYH6nuZo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_706.part.js.map

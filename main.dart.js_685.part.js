@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Untuk pengalaman terbaik menggunakan aplikasi ini, silakan perbesar ukuran layar Anda.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Kegiatan untuk Membuka Topik Berikutnya";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5270,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["avcD3qjW+ukesqcM3XZrLZBkKwU="] = d.current;
+  d["DwktpAcV9f2JuhOYtB6otBatiCk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

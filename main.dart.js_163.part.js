@@ -5256,6 +5256,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Bokor na b\u025by\u025b a, b\u0254k\u0254 a \u025by\u025b f\u025b a, y\u025bsr\u025b s\u025b b\u0254 wo b\u0254k\u0254 no mu.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Aktiviteti p\xebr t\xeb \xc7liruar Tem\xebn Tjet\xebr";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Caktoni numrin e aktiviteteve p\xebr t\xeb \xe7liruar tem\xebn tjet\xebr t\xeb kursit";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5281,7 +5287,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/QGEPHZJzv2woB7J63cCP+iHzFo="] = d.current;
+  d["DgIATztV7YwBBfkMyDXqidt6cN4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

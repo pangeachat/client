@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Voor de beste ervaring met deze applicatie, vergroot alstublieft uw schermgrootte.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Activiteiten om het Volgende Onderwerp te Ontgrendelen";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Stel het aantal activiteiten in om het volgende cursusonderwerp te ontgrendelen";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KrvS1VIP/XAclhqf4XO5sf+RIXg="] = d.current;
+  d["X5oMgrOa3GFNlXjUzXt/O1zrSgg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_726.part.js.map

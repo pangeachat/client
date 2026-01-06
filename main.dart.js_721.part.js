@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "For den beste opplevelsen med denne applikasjonen, vennligst utvid skjermst\xf8rrelsen din.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Aktiviteter for \xe5 l\xe5se opp neste emne";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Sett antall aktiviteter for \xe5 l\xe5se opp neste kurs emne";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5270,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q9QqhFJqnzWsoML3D/fXuj21MOI="] = d.current;
+  d["bflNq3ZD/E+XchZHSpuhmqOUKt0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

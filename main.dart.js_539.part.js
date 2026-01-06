@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Parima kogemuse saamiseks selle rakenduse kasutamisel palun suurendage oma ekraani suurust.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Tegevused j\xe4rgmise teema avamiseks";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "M\xe4\xe4rake tegevuste arv j\xe4rgmise kursuse teema avamiseks";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/HXC5cOtXeKMq1MV32GCZg1UEM8="] = d.current;
+  d["vbkiPd1/sviutCRKVHHayxAmQLg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

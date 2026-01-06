@@ -5255,6 +5255,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Per a la millor experi\xe8ncia utilitzant aquesta aplicaci\xf3, si us plau, amplia la mida de la teva pantalla.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Activitats per Desbloquejar el Proper Tema";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Estableix el nombre d'activitats per desbloquejar el proper tema del curs";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5271,7 +5277,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["j7/QtpYbN415wXNCMmZ27V4RSFI="] = d.current;
+  d["/Ow7B2EVg9dtpgJsCw/H5Tma4bs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "F\xf6r b\xe4sta upplevelse med denna applikation, v\xe4nligen ut\xf6ka din sk\xe4rmstorlek.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Aktiviteter f\xf6r att l\xe5sa upp n\xe4sta \xe4mne";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Ange antalet aktiviteter f\xf6r att l\xe5sa upp n\xe4sta kurs\xe4mne";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["A+ZGrKP65JAT9KamTSzJVhlMb1M="] = d.current;
+  d["5QeN4QDsdfJFI+9ZaFGT0DLP+BM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

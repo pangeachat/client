@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "F\xfcr das beste Erlebnis mit dieser Anwendung erweitern Sie bitte Ihre Bildschirmgr\xf6\xdfe.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Aktivit\xe4ten zum Freischalten des n\xe4chsten Themas";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Legen Sie die Anzahl der Aktivit\xe4ten fest, um das n\xe4chste Kursthema freizuschalten";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5270,7 +5276,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iqPEH37b5t1g2EWtwNnayzf7Xvs="] = d.current;
+  d["2qI8lUXphoE7Hy1pSbJ3UDSS/zs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_381.part.js.map

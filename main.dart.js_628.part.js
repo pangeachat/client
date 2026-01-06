@@ -5254,6 +5254,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Za najbolje iskustvo kori\u0161tenja ove aplikacije, molimo vas da pove\u0107ate veli\u010dinu svog ekrana.";
     },
+    get$activitiesToUnlockTopicTitle() {
+      return "Aktivnosti za otklju\u010davanje sljede\u0107e teme";
+    },
+    get$activitiesToUnlockTopicDesc() {
+      return "Postavite broj aktivnosti za otklju\u010davanje sljede\u0107e teme te\u010daja";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5267,7 +5273,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DztsnsUsKbsHyKoh4IrG0aAZCd8="] = d.current;
+  d["bdmBE1Updk/ehJe2LJN7lxPPkJU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map
