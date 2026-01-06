@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -242,13 +241,11 @@ class PracticeSelectionRepo {
 
     for (final token in tokens) {
       final construct = constructs[idMap[token]];
-      final lastUsed = construct?.uses.firstWhereOrNull(
-        (u) => activityType.associatedUseTypes.contains(u.useType),
-      );
+      final lastUsed =
+          construct?.lastUseByTypes(activityType.associatedUseTypes);
 
-      final daysSinceLastUsed = lastUsed == null
-          ? 20
-          : DateTime.now().difference(lastUsed.timeStamp).inDays;
+      final daysSinceLastUsed =
+          lastUsed == null ? 20 : DateTime.now().difference(lastUsed).inDays;
 
       scores[token] =
           daysSinceLastUsed * (token.vocabConstructID.isContentWord ? 10 : 9);

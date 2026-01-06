@@ -408,7 +408,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
       }
 
       for (final u in usesForKey) {
-        model.uses.add(u);
+        model.addUse(u);
         model.setLastUsed(u.timeStamp);
       }
 

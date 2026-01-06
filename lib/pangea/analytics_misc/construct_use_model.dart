@@ -1,30 +1,34 @@
 import 'dart:math';
 
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 
 /// One lemma and a list of construct uses for that lemma
 class ConstructUses {
-  final List<OneConstructUse> uses;
+  final List<OneConstructUse> _uses;
   final ConstructTypeEnum constructType;
   final String lemma;
   String? _category;
   DateTime? _lastUsed;
 
   ConstructUses({
-    required this.uses,
+    required List<OneConstructUse> uses,
     required this.constructType,
     required this.lemma,
     required category,
-  }) : _category = category;
+  })  : _category = category,
+        _uses = uses;
 
   // Total points for all uses of this lemma
   int get points {
     return min(
-      uses.fold<int>(
+      _uses.fold<int>(
         0,
         (total, use) => total + use.xp,
       ),
@@ -34,7 +38,7 @@ class ConstructUses {
 
   DateTime? get lastUsed {
     if (_lastUsed != null) return _lastUsed;
-    final lastUse = uses.fold<DateTime?>(null, (DateTime? last, use) {
+    final lastUse = _uses.fold<DateTime?>(null, (DateTime? last, use) {
       if (last == null) return use.timeStamp;
       return use.timeStamp.isAfter(last) ? use.timeStamp : last;
     });
@@ -52,8 +56,8 @@ class ConstructUses {
     return _category!.toLowerCase();
   }
 
-  bool get hasCorrectUse => uses.any((use) => use.xp > 0);
-  bool get hasIncorrectUse => uses.any((use) => use.xp < 0);
+  bool get hasCorrectUse => _uses.any((use) => use.xp > 0);
+  bool get hasIncorrectUse => _uses.any((use) => use.xp < 0);
 
   ConstructIdentifier get id => ConstructIdentifier(
         lemma: lemma,
@@ -66,7 +70,7 @@ class ConstructUses {
       'construct_id': id.toJson(),
       'xp': points,
       'last_used': lastUsed?.toIso8601String(),
-      'uses': uses.map((e) => e.toJson()).toList(),
+      'uses': _uses.map((e) => e.toJson()).toList(),
     };
     return json;
   }
@@ -122,6 +126,14 @@ class ConstructUses {
         _ => ConstructLevelEnum.flowers,
       };
 
+  List<String> get forms =>
+      _uses.map((e) => e.form).whereType<String>().toSet().toList();
+
+  DateTime? lastUseByTypes(List<ConstructUseTypeEnum> types) =>
+      _uses.firstWhereOrNull((u) => types.contains(u.useType))?.timeStamp;
+
+  void addUse(OneConstructUse use) => _uses.add(use);
+
   void merge(ConstructUses other) {
     if (other.lemma.toLowerCase() != lemma.toLowerCase() ||
         other.constructType != constructType) {
@@ -130,7 +142,7 @@ class ConstructUses {
       );
     }
 
-    uses.addAll(other.uses);
+    _uses.addAll(other._uses);
     if (other.lastUsed != null) {
       setLastUsed(other.lastUsed!);
     }
@@ -147,7 +159,7 @@ class ConstructUses {
     String? category,
   }) {
     return ConstructUses(
-      uses: uses ?? this.uses,
+      uses: uses ?? _uses,
       constructType: constructType ?? this.constructType,
       lemma: lemma ?? this.lemma,
       category: category ?? _category,
