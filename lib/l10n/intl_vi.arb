@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:38:18.272455",
+  "@@last_modified": "2026-01-06 13:02:16.250270",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6298,6 +6298,16 @@
   },
   "screenSizeWarning": "Để có trải nghiệm tốt nhất khi sử dụng ứng dụng này, vui lòng mở rộng kích thước màn hình của bạn.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Các hoạt động để mở khóa chủ đề tiếp theo",
+  "activitiesToUnlockTopicDesc": "Đặt số lượng hoạt động để mở khóa chủ đề khóa học tiếp theo",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

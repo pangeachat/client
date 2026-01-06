@@ -106,6 +106,7 @@ class CourseSettings extends StatelessWidget {
     final activeTopicId = controller.currentTopicId(
       Matrix.of(context).client.userID!,
       controller.course!,
+      room.teacherMode.activitiesToUnlockTopic,
     );
 
     final int? topicIndex = activeTopicId == null
@@ -117,6 +118,7 @@ class CourseSettings extends StatelessWidget {
         : controller.topicsToUsers(
             room,
             controller.course!,
+            room.teacherMode.activitiesToUnlockTopic,
           );
 
     final teacherMode = room.isTeacherMode;

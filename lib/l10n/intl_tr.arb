@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-05 16:38:14.793952",
+  "@@last_modified": "2026-01-06 13:02:09.596458",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10950,6 +10950,16 @@
   },
   "screenSizeWarning": "Bu uygulamayı en iyi şekilde kullanabilmek için lütfen ekran boyutunuzu genişletin.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Sonraki Konuyu Açmak için Aktiviteler",
+  "activitiesToUnlockTopicDesc": "Sonraki kurs konusunu açmak için aktivite sayısını ayarlayın",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

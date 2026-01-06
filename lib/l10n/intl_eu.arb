@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-05 16:37:53.798875",
+  "@@last_modified": "2026-01-06 13:01:29.144037",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10728,6 +10728,16 @@
   },
   "screenSizeWarning": "Aplikazio hau erabiltzeko esperientzia onena izateko, mesedez, handitu zure pantailaren tamaina.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Hurrengo gaia irekitzeko jarduerak",
+  "activitiesToUnlockTopicDesc": "Hurrengo ikastaro gaia irekitzeko jardueren kopurua ezarri",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

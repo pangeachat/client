@@ -4279,7 +4279,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-05 16:38:21.732804",
+  "@@last_modified": "2026-01-06 13:02:23.320520",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10482,6 +10482,16 @@
   },
   "screenSizeWarning": "Bokor na bɛyɛ a, bɔkɔ a ɛyɛ fɛ a, yɛsrɛ sɛ bɔ wo bɔkɔ no mu.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktiviteti për të Çliruar Temën Tjetër",
+  "activitiesToUnlockTopicDesc": "Caktoni numrin e aktiviteteve për të çliruar temën tjetër të kursit",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

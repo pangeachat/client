@@ -4483,7 +4483,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-05 16:38:31.274500",
+  "@@last_modified": "2026-01-06 13:02:39.726780",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11813,6 +11813,16 @@
   },
   "screenSizeWarning": "इस एप्लिकेशन का सर्वोत्तम अनुभव प्राप्त करने के लिए, कृपया अपनी स्क्रीन का आकार बढ़ाएँ।",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "अगले विषय को अनलॉक करने के लिए गतिविधियाँ",
+  "activitiesToUnlockTopicDesc": "अगले पाठ्यक्रम विषय को अनलॉक करने के लिए गतिविधियों की संख्या निर्धारित करें",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

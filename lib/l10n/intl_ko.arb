@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:37:38.047396",
+  "@@last_modified": "2026-01-06 13:00:55.145584",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10836,6 +10836,16 @@
   },
   "screenSizeWarning": "이 애플리케이션을 최상의 경험으로 사용하려면 화면 크기를 확장해 주십시오.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "다음 주제를 잠금 해제할 활동",
+  "activitiesToUnlockTopicDesc": "다음 과정 주제를 잠금 해제할 활동 수를 설정하세요",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-05 16:38:29.839926",
+  "@@last_modified": "2026-01-06 13:02:37.951868",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11518,6 +11518,16 @@
   },
   "screenSizeWarning": "このアプリケーションを最適に使用するには、画面サイズを拡大してください。",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "次のトピックをアンロックするためのアクティビティ",
+  "activitiesToUnlockTopicDesc": "次のコーストピックをアンロックするためのアクティビティの数を設定します",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }
