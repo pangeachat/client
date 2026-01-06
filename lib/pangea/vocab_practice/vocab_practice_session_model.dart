@@ -119,7 +119,7 @@ class VocabPracticeSessionModel {
   void finishSession() {
     finished = true;
 
-    // give bonus XP uses for each constructif earned
+    // give bonus XP uses for each construct if earned
     if (accuracy >= 100) {
       final bonusUses = completedUses
           .where((use) => use.xp > 0)

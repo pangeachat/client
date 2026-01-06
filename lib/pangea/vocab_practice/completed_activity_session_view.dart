@@ -271,7 +271,7 @@ class TimeStarsWidget extends StatelessWidget {
     if (elapsedSeconds <= timeForBonus * 1.5) return 4;
     if (elapsedSeconds <= timeForBonus * 2) return 3;
     if (elapsedSeconds <= timeForBonus * 2.5) return 2;
-    return 1; // anything above 3x timeForBonus
+    return 1; // anything above 2.5x timeForBonus
   }
 
   @override

@@ -34,7 +34,6 @@ class VocabPractice extends StatefulWidget {
 
 class VocabPracticeState extends State<VocabPractice> {
   SessionLoader sessionLoader = SessionLoader();
-
   PracticeActivityModel? currentActivity;
   bool isLoadingActivity = true;
   bool isAwaitingNextActivity = false;
@@ -60,7 +59,7 @@ class VocabPracticeState extends State<VocabPractice> {
     if (isComplete) {
       VocabPracticeSessionRepo.clearSession();
     } else if (!_sessionClearedDueToLanguageChange) {
-      // Only save if we didn't already clear due to language change
+      //don't save if session was cleared due to language change
       _saveCurrentTime();
     }
     sessionLoader.dispose();
@@ -134,7 +133,7 @@ class VocabPracticeState extends State<VocabPractice> {
     await _waitForAnalytics();
     await sessionLoader.load();
 
-    // Check if critical session data has changed and needs reload
+    // If user languages have changed since last session, clear session
     if (await _shouldReloadSession()) {
       await VocabPracticeSessionRepo.clearSession();
       sessionLoader.dispose();
@@ -145,7 +144,7 @@ class VocabPracticeState extends State<VocabPractice> {
     loadActivity();
   }
 
-  /// Check if session should be reloaded due to changed user settings
+  // check if current l1 and l2 have changed from those of the loaded session
   Future<bool> _shouldReloadSession() async {
     if (!sessionLoader.isLoaded) return false;
 
@@ -155,7 +154,6 @@ class VocabPracticeState extends State<VocabPractice> {
     final currentL2 =
         MatrixState.pangeaController.userController.userL2?.langCode;
 
-    // Check if user languages have changed
     if (session.userL1 != currentL1 || session.userL2 != currentL2) {
       return true;
     }
@@ -375,6 +373,7 @@ class VocabPracticeState extends State<VocabPractice> {
 
   String? getChoiceEmoji(String choiceId) => _choiceEmojis[choiceId];
 
+  //fetches display info for all choices from constructIDs
   Future<void> _prefetchLemmaInfo(List<String> choiceIds) async {
     if (!mounted) return;
     setState(() => isLoadingLemmaInfo = true);

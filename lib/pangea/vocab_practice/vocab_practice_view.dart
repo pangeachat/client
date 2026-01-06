@@ -36,6 +36,7 @@ class VocabPracticeView extends StatelessWidget {
                 barColor: Theme.of(context).colorScheme.primary,
               ),
             ),
+            //keep track of state to update timer
             ValueListenableBuilder(
               valueListenable: controller.sessionLoader.state,
               builder: (context, state, __) {
@@ -122,9 +123,10 @@ class _VocabActivityView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //per-activity instructions, add switch statement once there are more types
         const InstructionsInlineTooltip(
           instructionsEnum: InstructionsEnum.selectMeaning,
-          padding: EdgeInsets.symmetric(vertical: 16.0),
+          padding: EdgeInsets.symmetric(horizontal: 16.0),
         ),
         Expanded(
           child: Column(
@@ -172,6 +174,7 @@ class _ExampleMessageWidget extends StatelessWidget {
         }
 
         return Padding(
+          //styling like sent message bubble
           padding: const EdgeInsets.all(16.0),
           child: Container(
             padding: const EdgeInsets.symmetric(
@@ -219,6 +222,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          //allow try to reload activity in case of error
           ErrorIndicator(message: controller.activityError!),
           const SizedBox(height: 16),
           TextButton.icon(
@@ -246,7 +250,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
     final choices = activity.multipleChoiceContent!.choices.toList();
     return LayoutBuilder(
       builder: (context, constraints) {
-        //Constrain the maximum height to prevent excessive spacing
+        //Constrain max height to keep choices together on large screens, and allow shrinking to fit on smaller screens
         final constrainedHeight = constraints.maxHeight.clamp(0.0, 400.0);
         final cardHeight =
             (constrainedHeight / (choices.length + 1)).clamp(50.0, 80.0);

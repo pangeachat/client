@@ -1,9 +1,11 @@
 import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/material.dart';
 
+// A progress bar with a rounded marker indicating a percentage position
+
 class PercentMarkerBar extends StatelessWidget {
   final double height;
-  final double widthPercent; // 0.0 to 1.0
+  final double widthPercent;
   final double markerWidth;
   final Color markerColor;
   final Color? backgroundColor;

@@ -27,7 +27,6 @@ class VocabTimerWidgetState extends State<VocabTimerWidget> {
   void initState() {
     super.initState();
     _initialSeconds = widget.initialSeconds;
-    // Add the initial seconds to the stopwatch by starting from a future time
     if (widget.isRunning) {
       _startTimer();
     }
