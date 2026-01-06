@@ -131,6 +131,8 @@ class OverlayUtil {
     bool addBorder = true,
     VoidCallback? onDismiss,
     bool ignorePointer = false,
+    Alignment? targetAnchor,
+    Alignment? followerAnchor,
   }) {
     try {
       final LayerLinkAndKey layerLinkAndKey =
@@ -199,10 +201,10 @@ class OverlayUtil {
         closePrevOverlay: closePrevOverlay,
         offset: offset,
         overlayKey: overlayKey,
-        targetAnchor:
-            hasTopOverflow ? Alignment.bottomCenter : Alignment.topCenter,
-        followerAnchor:
-            hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter,
+        targetAnchor: targetAnchor ??
+            (hasTopOverflow ? Alignment.bottomCenter : Alignment.topCenter),
+        followerAnchor: followerAnchor ??
+            (hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter),
         onDismiss: onDismiss,
         ignorePointer: ignorePointer,
       );
@@ -237,6 +239,8 @@ class OverlayUtil {
       transformTargetId: ChoreoConstants.inputTransformTargetKey,
       ignorePointer: true,
       isScrollable: false,
+      targetAnchor: Alignment.topCenter,
+      followerAnchor: Alignment.bottomCenter,
     );
   }
 
