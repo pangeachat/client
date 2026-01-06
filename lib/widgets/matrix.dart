@@ -19,7 +19,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -307,20 +306,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   Future<void> _showScreenSizeDialog() async {
-    if (_showingScreenSizeDialog) return;
-    _showingScreenSizeDialog = true;
-
-    final screenSize = MediaQuery.sizeOf(context);
-    final columnMode = screenSize.width >
-        (FluffyThemes.columnWidth * 2 + FluffyThemes.navRailWidth);
-
-    final shortScreen = screenSize.height <= 500;
-
-    if (!columnMode || !shortScreen) {
-      _showingScreenSizeDialog = false;
+    if (_showingScreenSizeDialog ||
+        !kIsWeb ||
+        MediaQuery.heightOf(context) > 500) {
       return;
     }
 
+    _showingScreenSizeDialog = true;
     await showOkAlertDialog(
       context:
           FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
