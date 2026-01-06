@@ -252,7 +252,7 @@ class SpaceAnalyticsSummaryModel {
       final systemUsesCorrect = [];
       final systemUsesIncorrect = [];
 
-      for (final use in entry.uses) {
+      for (final use in entry.cappedUses) {
         if (originalUseTypes.contains(use.useType)) {
           use.xp > 0
               ? originalUsesCorrect.add(use)
