@@ -2401,7 +2401,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-12-12 14:56:35.809423",
+  "@@last_modified": "2026-01-06 13:02:11.522520",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -13000,6 +13000,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "తరువాతి అంశాన్ని అన్లాక్ చేయడానికి కార్యకలాపాలు",
+  "activitiesToUnlockTopicDesc": "తరువాతి కోర్సు అంశాన్ని అన్లాక్ చేయడానికి కార్యకలాపాల సంఖ్యను సెట్ చేయండి",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

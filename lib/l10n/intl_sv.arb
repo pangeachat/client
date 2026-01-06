@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:57.524563",
+  "@@last_modified": "2026-01-06 13:02:34.358506",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12389,6 +12389,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktiviteter för att låsa upp nästa ämne",
+  "activitiesToUnlockTopicDesc": "Ange antalet aktiviteter för att låsa upp nästa kursämne",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

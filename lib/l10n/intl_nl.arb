@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:43.921908",
+  "@@last_modified": "2026-01-06 13:02:20.252502",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -11911,6 +11911,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Activiteiten om het Volgende Onderwerp te Ontgrendelen",
+  "activitiesToUnlockTopicDesc": "Stel het aantal activiteiten in om het volgende cursusonderwerp te ontgrendelen",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

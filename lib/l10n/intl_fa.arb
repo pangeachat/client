@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-12 14:56:51.600012",
+  "@@last_modified": "2026-01-06 13:02:30.390244",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -12643,6 +12643,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "فعالیت‌ها برای باز کردن موضوع بعدی",
+  "activitiesToUnlockTopicDesc": "تعداد فعالیت‌ها را برای باز کردن موضوع بعدی دوره تنظیم کنید",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

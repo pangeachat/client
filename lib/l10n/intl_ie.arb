@@ -4853,7 +4853,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-12-12 14:55:51.396585",
+  "@@last_modified": "2026-01-06 13:01:17.481803",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12885,6 +12885,16 @@
     }
   },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Gníomhaíochtaí le hOscail an Conradh Nua",
+  "activitiesToUnlockTopicDesc": "Socraigh an líon gníomhaíochtaí le hOscail an chéad ábhar cúrsa",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }
