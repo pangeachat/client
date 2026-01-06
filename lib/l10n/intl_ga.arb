@@ -4517,7 +4517,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-05 16:38:37.925567",
+  "@@last_modified": "2026-01-06 13:02:48.899020",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10726,6 +10726,16 @@
   },
   "screenSizeWarning": "Chun an taithí is fearr a fháil ag úsáid an iarratais seo, le do thoil leathnaigh do mhéid scáileáin.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Gníomhaíochtaí le hOscail an Topaic Seo chugainn",
+  "activitiesToUnlockTopicDesc": "Socraigh an líon gníomhaíochtaí le hOscail an topaic chúrsa seo chugainn",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

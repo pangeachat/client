@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path_lib;
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
-import 'package:universal_html/html.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -158,7 +158,7 @@ class RecordingDialogState extends State<RecordingDialog> {
     final content = error != null
         ? ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 250.0),
-            child: error is DomException
+            child: error is html.DomException
                 ? Text(L10n.of(context).recordingPermissionDenied)
                 : kIsWeb
                     ? Text(L10n.of(context).genericWebRecordingError)

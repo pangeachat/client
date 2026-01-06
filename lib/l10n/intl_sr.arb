@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:38:36.598473",
+  "@@last_modified": "2026-01-06 13:02:46.667322",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11830,6 +11830,16 @@
   },
   "screenSizeWarning": "Za najbolje iskustvo korišćenja ove aplikacije, molimo vas da povećate veličinu ekrana.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktivnosti za otključavanje sledeće teme",
+  "activitiesToUnlockTopicDesc": "Postavite broj aktivnosti za otključavanje sledeće teme kursa",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -5028,5 +5028,16 @@
   "screenSizeWarning": "For the best experience using this application, please expand your screen size.",
   "noActivityRequest": "No current activity request.",
   "quit": "Quit",
-  "congratulationsYouveCompletedPractice": "Congratulations! You've completed the practice session."
+  "congratulationsYouveCompletedPractice": "Congratulations! You've completed the practice session.",
+  "noSavedActivitiesYet": "Activities will appear here once they are completed and saved.",
+  "practiceActivityCompleted": "Practice activity completed",
+  "changeCourse": "Change course",
+  "changeCourseDesc": "Here you can change this course's course plan.",
+  "introChatTitle": "Create Introductions Chat",
+  "introChatDesc": "Anyone in the space can post.",
+  "announcementsChatTitle": "Announcements Chat",
+  "announcementsChatDesc": "Only space admin can post.",
+  "inOngoingActivity": "You have an ongoing activity!",
+  "activitiesToUnlockTopicTitle": "Activities to Unlock Next Topic",
+  "activitiesToUnlockTopicDesc": "Set the number of activities to unlock the next course topic"
 }

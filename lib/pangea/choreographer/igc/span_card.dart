@@ -219,7 +219,7 @@ class _SpanCardFeedback extends StatelessWidget {
   Widget build(BuildContext context) {
     return ConstrainedBox(
       constraints: const BoxConstraints(
-        minHeight: 100.0,
+        minHeight: 50.0,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

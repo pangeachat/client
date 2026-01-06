@@ -4456,7 +4456,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-05 16:38:28.703056",
+  "@@last_modified": "2026-01-06 13:02:36.159093",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11786,6 +11786,16 @@
   },
   "screenSizeWarning": "Για την καλύτερη εμπειρία χρήσης αυτής της εφαρμογής, παρακαλώ επεκτείνετε το μέγεθος της οθόνης σας.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Δραστηριότητες για Ξεκλείδωμα Επόμενου Θέματος",
+  "activitiesToUnlockTopicDesc": "Ορίστε τον αριθμό των δραστηριοτήτων για να ξεκλειδώσετε το επόμενο θέμα του μαθήματος",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:38:04.551246",
+  "@@last_modified": "2026-01-06 13:01:49.200225",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11821,6 +11821,16 @@
   },
   "screenSizeWarning": "For den beste opplevelsen med denne applikasjonen, vennligst utvid skjermstørrelsen din.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktiviteter for å låse opp neste emne",
+  "activitiesToUnlockTopicDesc": "Sett antall aktiviteter for å låse opp neste kurs emne",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

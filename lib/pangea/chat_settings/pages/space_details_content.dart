@@ -26,6 +26,7 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -140,12 +141,58 @@ class SpaceDetailsContent extends StatelessWidget {
         icon: const Icon(Icons.school_outlined, size: 30.0),
         onPressed: () => showFutureLoadingDialog(
           context: context,
-          future: () => room.setTeacherMode(!room.isTeacherMode),
+          future: () => room.setTeacherMode(
+            room.teacherMode.copyWith(enabled: !room.isTeacherMode),
+          ),
         ),
         enabled: room.isRoomAdmin,
         showInMainView: false,
         isToggle: true,
         value: room.isTeacherMode,
+      ),
+      ButtonDetails(
+        title: L10n.of(context).activitiesToUnlockTopicTitle,
+        description: L10n.of(context).activitiesToUnlockTopicDesc,
+        icon: const Icon(Icons.lock_open_outlined, size: 30.0),
+        onPressed: () async {
+          final current = room.teacherMode.activitiesToUnlockTopic;
+          final resp = await showTextInputDialog(
+            context: context,
+            title: L10n.of(context).activitiesToUnlockTopicTitle,
+            keyboardType: TextInputType.number,
+            validator: (input) {
+              if (input.isEmpty ||
+                  int.tryParse(input) == null ||
+                  int.parse(input) < 0) {
+                return L10n.of(context).enterNumber;
+              }
+              return null;
+            },
+            initialText: current != null ? "$current" : null,
+          );
+
+          if (resp == null) return;
+          await showFutureLoadingDialog(
+            context: context,
+            future: () => room.setTeacherMode(
+              room.teacherMode.copyWith(
+                activitiesToUnlockTopic: int.parse(resp),
+              ),
+            ),
+          );
+        },
+        enabled: room.isRoomAdmin,
+        visible: room.isTeacherMode,
+        showInMainView: false,
+        trailing: room.teacherMode.activitiesToUnlockTopic != null
+            ? Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text(
+                  "${room.teacherMode.activitiesToUnlockTopic}",
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              )
+            : null,
       ),
       ButtonDetails(
         title: l10n.permissions,
@@ -390,6 +437,7 @@ class SpaceDetailsContent extends StatelessWidget {
                                       onTap: b.enabled
                                           ? () => b.onPressed?.call()
                                           : null,
+                                      trailing: b.trailing,
                                     ),
                             );
                           }).toList(),

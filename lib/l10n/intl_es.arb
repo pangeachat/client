@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-05 16:37:39.035821",
+  "@@last_modified": "2026-01-06 13:00:57.006469",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -7962,6 +7962,16 @@
   },
   "screenSizeWarning": "Para la mejor experiencia al usar esta aplicación, por favor amplía el tamaño de tu pantalla.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Actividades para Desbloquear el Siguiente Tema",
+  "activitiesToUnlockTopicDesc": "Establecer el número de actividades para desbloquear el siguiente tema del curso",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-05 16:37:48.179981",
+  "@@last_modified": "2026-01-06 13:01:17.481803",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11702,6 +11702,16 @@
   },
   "screenSizeWarning": "Aby uzyskać najlepsze wrażenia podczas korzystania z tej aplikacji, proszę powiększyć rozmiar ekranu.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Gníomhaíochtaí le hOscail an Conradh Nua",
+  "activitiesToUnlockTopicDesc": "Socraigh an líon gníomhaíochtaí le hOscail an chéad ábhar cúrsa",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

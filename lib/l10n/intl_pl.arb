@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-05 16:38:26.150302",
+  "@@last_modified": "2026-01-06 13:02:32.127346",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10726,6 +10726,16 @@
   },
   "screenSizeWarning": "Aby uzyskać najlepsze wrażenia podczas korzystania z tej aplikacji, proszę powiększyć rozmiar ekranu.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktywności do odblokowania następnego tematu",
+  "activitiesToUnlockTopicDesc": "Ustaw liczbę aktywności do odblokowania następnego tematu kursu",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

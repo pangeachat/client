@@ -4456,7 +4456,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-05 16:38:08.017220",
+  "@@last_modified": "2026-01-06 13:01:57.436131",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11786,6 +11786,16 @@
   },
   "screenSizeWarning": "เพื่อประสบการณ์ที่ดีที่สุดในการใช้แอปพลิเคชันนี้ โปรดขยายขนาดหน้าจอของคุณ.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "กิจกรรมเพื่อปลดล็อกหัวข้อถัดไป",
+  "activitiesToUnlockTopicDesc": "กำหนดจำนวนกิจกรรมเพื่อปลดล็อกหัวข้อหลักสูตรถัดไป",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

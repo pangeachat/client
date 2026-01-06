@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-05 16:38:03.220672",
+  "@@last_modified": "2026-01-06 13:01:46.866113",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11335,6 +11335,16 @@
   },
   "screenSizeWarning": "Pro nejlepší zážitek z používání této aplikace prosím zvětšete velikost obrazovky.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktivity k odemčení dalšího tématu",
+  "activitiesToUnlockTopicDesc": "Nastavte počet aktivit k odemčení dalšího tématu kurzu",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

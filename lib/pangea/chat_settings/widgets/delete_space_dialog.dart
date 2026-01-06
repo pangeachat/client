@@ -145,18 +145,18 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.error,
+        ),
+        borderRadius: BorderRadius.circular(32.0),
+      ),
       child: Container(
         constraints: const BoxConstraints(
           maxWidth: 400,
           maxHeight: 600,
         ),
         padding: const EdgeInsets.symmetric(vertical: 20),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Theme.of(context).colorScheme.error,
-          ),
-          borderRadius: BorderRadius.circular(32.0),
-        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

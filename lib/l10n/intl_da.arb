@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-05 16:37:42.228072",
+  "@@last_modified": "2026-01-06 13:01:06.115252",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11789,6 +11789,16 @@
   },
   "screenSizeWarning": "For den bedste oplevelse med denne applikation, bedes du udvide din skærmstørrelse.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Aktiviteter til at låse op for næste emne",
+  "activitiesToUnlockTopicDesc": "Indstil antallet af aktiviteter for at låse op for det næste kursusemne",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

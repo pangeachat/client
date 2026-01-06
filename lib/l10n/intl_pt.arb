@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:37:54.720470",
+  "@@last_modified": "2026-01-06 13:01:30.651964",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11828,6 +11828,16 @@
   },
   "screenSizeWarning": "Para a melhor experiência ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Atividades para Desbloquear o Próximo Tópico",
+  "activitiesToUnlockTopicDesc": "Defina o número de atividades para desbloquear o próximo tópico do curso",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-05 16:38:00.729830",
+  "@@last_modified": "2026-01-06 13:01:39.801417",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10731,6 +10731,16 @@
   },
   "screenSizeWarning": "Per la migliore esperienza nell'utilizzo di questa applicazione, si prega di espandere la dimensione dello schermo.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Attività per sbloccare il prossimo argomento",
+  "activitiesToUnlockTopicDesc": "Imposta il numero di attività per sbloccare il prossimo argomento del corso",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

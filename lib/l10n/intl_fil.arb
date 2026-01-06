@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-05 16:38:11.298437",
+  "@@last_modified": "2026-01-06 13:02:03.027217",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11704,6 +11704,16 @@
   },
   "screenSizeWarning": "Para sa pinakamahusay na karanasan sa paggamit ng application na ito, mangyaring palawakin ang laki ng iyong screen.",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "Mga Aktibidad upang I-unlock ang Susunod na Paksa",
+  "activitiesToUnlockTopicDesc": "Itakda ang bilang ng mga aktibidad upang i-unlock ang susunod na paksa ng kurso",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

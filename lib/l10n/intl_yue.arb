@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-05 16:37:59.724310",
+  "@@last_modified": "2026-01-06 13:01:38.057632",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11819,6 +11819,16 @@
   },
   "screenSizeWarning": "為了獲得最佳的應用體驗，請擴大您的螢幕大小。",
   "@screenSizeWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "activitiesToUnlockTopicTitle": "解鎖下一主題的活動",
+  "activitiesToUnlockTopicDesc": "設置解鎖下一課程主題所需的活動數量",
+  "@activitiesToUnlockTopicTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitiesToUnlockTopicDesc": {
     "type": "String",
     "placeholders": {}
   }

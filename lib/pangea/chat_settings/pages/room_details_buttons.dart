@@ -14,6 +14,7 @@ class ButtonDetails {
   final bool isToggle;
   final bool value;
   final SpaceSettingsTabs? tab;
+  final Widget? trailing;
 
   const ButtonDetails({
     required this.title,
@@ -26,6 +27,7 @@ class ButtonDetails {
     this.value = false,
     this.showInMainView = true,
     this.tab,
+    this.trailing,
   });
 }
 
