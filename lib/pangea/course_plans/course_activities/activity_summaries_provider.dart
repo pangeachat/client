@@ -158,6 +158,10 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     final completedTopicActivities =
         _completedActivities(userID).intersection(topicActivityIds);
 
+    if (completedTopicActivities.length >= topicActivityIds.length) {
+      return true;
+    }
+
     if (activitiesToCompleteOverride != null) {
       return completedTopicActivities.length >= activitiesToCompleteOverride;
     }
@@ -165,6 +169,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     final numTwoPersonActivities = topic.loadedActivities.values
         .where((a) => a.req.numberOfParticipants <= 2)
         .length;
+
     return completedTopicActivities.length >= numTwoPersonActivities;
   }
 
