@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:09.114788",
+  "@@last_modified": "2026-01-05 16:38:04.551246",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11806,6 +11806,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Tillatelse nektet. Aktiver opptakstillatelser for å ta opp lydmeldinger.",
+  "genericWebRecordingError": "Noe gikk galt. Vi anbefaler å bruke Chrome-nettleseren når du tar opp meldinger.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "For den beste opplevelsen med denne applikasjonen, vennligst utvid skjermstørrelsen din.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

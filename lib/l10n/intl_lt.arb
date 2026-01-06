@@ -3861,7 +3861,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-12-29 16:03:23.746515",
+  "@@last_modified": "2026-01-05 16:38:17.264007",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11518,6 +11518,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Leidimas atmestas. Įgalinkite įrašymo leidimus, kad galėtumėte įrašyti garso pranešimus.",
+  "genericWebRecordingError": "Kažkas nepavyko. Rekomenduojame naudoti „Chrome“ naršyklę įrašant pranešimus.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Norint geriausiai naudotis šia programa, prašome padidinti ekrano dydį.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

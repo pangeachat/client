@@ -25,7 +25,7 @@ class LemmaUseExampleMessages extends StatelessWidget {
 
   Future<List<ExampleMessage>> _getExampleMessages() async {
     final List<ExampleMessage> examples = [];
-    for (final OneConstructUse use in construct.uses) {
+    for (final OneConstructUse use in construct.cappedUses) {
       if (use.useType.skillsEnumType != LearningSkillsEnum.writing ||
           use.metadata.eventId == null ||
           use.form == null ||

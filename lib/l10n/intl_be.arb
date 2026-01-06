@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-12-29 16:03:10.535828",
+  "@@last_modified": "2026-01-05 16:38:05.473989",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11812,6 +11812,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Дазвол адхілены. Уключыце дазволы на запіс, каб запісваць аўдыё паведамленні.",
+  "genericWebRecordingError": "Што-то пайшло не так. Мы рэкамендуем выкарыстоўваць браўзер Chrome для запісу паведамленняў.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Для найлепшага досведу выкарыстання гэтага прыкладання, калі ласка, пашырыце памер экрана.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

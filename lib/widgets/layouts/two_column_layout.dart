@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/spaces/space_navigation_column.dart';
 
 class TwoColumnLayout extends StatelessWidget {
@@ -23,13 +24,42 @@ class TwoColumnLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     // #Pangea
     // final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    bool showNavRail = isColumnMode;
+    if (!showNavRail) {
+      final roomID = state.pathParameters['roomid'];
+      final spaceID = state.pathParameters['spaceid'];
+
+      if (roomID == null && spaceID == null) {
+        showNavRail = !["newcourse", ":construct"].any(
+          (p) => state.fullPath?.contains(p) ?? false,
+        );
+      } else if (roomID == null) {
+        showNavRail = state.fullPath?.endsWith(':spaceid') == true;
+      }
+    }
+
+    final columnWidth =
+        (showNavRail ? (FluffyThemes.navRailWidth + 1.0) : 0.0) +
+            (isColumnMode ? (FluffyThemes.columnWidth + 1.0) : 0.0);
     // Pangea#
     return ScaffoldMessenger(
       child: Scaffold(
-        body: Row(
+        // #Pangea
+        // body: Row(
+        body: Stack(
+          fit: StackFit.expand,
+          // Pangea#
           children: [
             // #Pangea
-            SpaceNavigationColumn(state: state),
+            Positioned.fill(
+              left: columnWidth,
+              child: ClipRRect(child: sideView),
+            ),
+            SpaceNavigationColumn(
+              state: state,
+              showNavRail: showNavRail,
+            ),
             // Container(
             //   clipBehavior: Clip.antiAlias,
             //   decoration: const BoxDecoration(),
@@ -37,8 +67,8 @@ class TwoColumnLayout extends StatelessWidget {
             //   child: mainView,
             // ),
             // Container(width: 1.0, color: theme.dividerColor),
+            // Expanded(child: ClipRRect(child: sideView)),
             // Pangea#
-            Expanded(child: ClipRRect(child: sideView)),
           ],
         ),
       ),

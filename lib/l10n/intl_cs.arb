@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2025-12-29 16:03:07.960576",
+  "@@last_modified": "2026-01-05 16:38:03.220672",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11320,6 +11320,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Přístup odepřen. Povolte oprávnění pro nahrávání, abyste mohli nahrávat audio zprávy.",
+  "genericWebRecordingError": "Něco se pokazilo. Doporučujeme používat pro nahrávání zpráv prohlížeč Chrome.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Pro nejlepší zážitek z používání této aplikace prosím zvětšete velikost obrazovky.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

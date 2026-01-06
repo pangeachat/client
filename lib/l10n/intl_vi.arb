@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:25.275842",
+  "@@last_modified": "2026-01-05 16:38:18.272455",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6283,6 +6283,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Quyền truy cập bị từ chối. Bật quyền ghi âm để ghi lại tin nhắn âm thanh.",
+  "genericWebRecordingError": "Có điều gì đó không đúng. Chúng tôi khuyên bạn nên sử dụng trình duyệt Chrome khi ghi lại tin nhắn.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Để có trải nghiệm tốt nhất khi sử dụng ứng dụng này, vui lòng mở rộng kích thước màn hình của bạn.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

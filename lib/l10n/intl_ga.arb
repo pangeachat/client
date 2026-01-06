@@ -4517,7 +4517,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-12-29 16:03:49.650305",
+  "@@last_modified": "2026-01-05 16:38:37.925567",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10711,6 +10711,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Diúltaíodh an cead. Gníomhachtaigh ceadanna taifeadta chun teachtaireachtaí guth a thaifeadadh.",
+  "genericWebRecordingError": "Tharla rud éigin mícheart. Molaimid úsáid a bhaint as brabhsálaí Chrome nuair a bhíonn teachtaireachtaí á gcur ar taifead.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Chun an taithí is fearr a fháil ag úsáid an iarratais seo, le do thoil leathnaigh do mhéid scáileáin.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2025-12-29 16:03:51.414933",
+  "@@last_modified": "2026-01-05 16:38:38.848549",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11037,6 +11037,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permission refusée. Activez les autorisations d'enregistrement pour enregistrer des messages audio.",
+  "genericWebRecordingError": "Une erreur s'est produite. Nous recommandons d'utiliser le navigateur Chrome lors de l'enregistrement de messages.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Pour la meilleure expérience avec cette application, veuillez agrandir la taille de votre écran.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

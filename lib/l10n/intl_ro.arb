@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:02:46.166745",
+  "@@last_modified": "2026-01-05 16:37:45.672693",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11448,6 +11448,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permisiune refuzată. Activați permisiunile de înregistrare pentru a înregistra mesaje audio.",
+  "genericWebRecordingError": "Ceva a mers prost. Recomandăm utilizarea browserului Chrome atunci când înregistrați mesaje.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Pentru cea mai bună experiență utilizând această aplicație, vă rugăm să extindeți dimensiunea ecranului.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2025-12-29 16:03:35.212238",
+  "@@last_modified": "2026-01-05 16:38:26.150302",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10711,6 +10711,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Odmowa dostępu. Włącz uprawnienia do nagrywania, aby nagrywać wiadomości audio.",
+  "genericWebRecordingError": "Coś poszło nie tak. Zalecamy korzystanie z przeglądarki Chrome podczas nagrywania wiadomości.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Aby uzyskać najlepsze wrażenia podczas korzystania z tej aplikacji, proszę powiększyć rozmiar ekranu.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:05.491594",
+  "@@last_modified": "2026-01-05 16:38:00.729830",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10716,6 +10716,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permesso negato. Abilita i permessi di registrazione per registrare messaggi audio.",
+  "genericWebRecordingError": "Qualcosa è andato storto. Ti consigliamo di utilizzare il browser Chrome quando registri messaggi.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Per la migliore esperienza nell'utilizzo di questa applicazione, si prega di espandere la dimensione dello schermo.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

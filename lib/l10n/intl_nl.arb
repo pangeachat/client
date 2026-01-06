@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:27.645859",
+  "@@last_modified": "2026-01-05 16:38:20.626242",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10713,6 +10713,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Toestemming geweigerd. Schakel opnamepermissies in om audioberichten op te nemen.",
+  "genericWebRecordingError": "Er is iets misgegaan. We raden aan de Chrome-browser te gebruiken bij het opnemen van berichten.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Voor de beste ervaring met deze applicatie, vergroot alstublieft uw schermgrootte.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

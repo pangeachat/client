@@ -13,7 +13,10 @@ class ConstructMergeTable {
     List<ConstructUses> constructs,
     Set<ConstructIdentifier> exclude,
   ) {
-    addConstructsByUses(constructs.expand((c) => c.uses).toList(), exclude);
+    addConstructsByUses(
+      constructs.expand((c) => c.cappedUses).toList(),
+      exclude,
+    );
   }
 
   void addConstructsByUses(

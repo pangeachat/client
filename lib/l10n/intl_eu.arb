@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-12-29 16:02:58.251989",
+  "@@last_modified": "2026-01-05 16:37:53.798875",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10713,6 +10713,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Baimena ukatu da. Aktibatu grabatzeko baimenak audio mezuak grabatzeko.",
+  "genericWebRecordingError": "Zerbait oker joan da. Mezuak grabatzerakoan Chrome nabigatzailea erabiltzea gomendatzen dugu.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Aplikazio hau erabiltzeko esperientzia onena izateko, mesedez, handitu zure pantailaren tamaina.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

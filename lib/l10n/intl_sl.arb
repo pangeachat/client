@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-12-29 16:03:03.060738",
+  "@@last_modified": "2026-01-05 16:37:58.302159",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11794,6 +11794,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Dovoljenje zavrnjeno. Omogočite dovoljenja za snemanje, da lahko snemate avdio sporočila.",
+  "genericWebRecordingError": "Prišlo je do napake. Priporočamo uporabo brskalnika Chrome pri snemanju sporočil.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Za najboljšo izkušnjo pri uporabi te aplikacije, prosimo, razširite velikost zaslona.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

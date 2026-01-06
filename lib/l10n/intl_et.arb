@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-12-29 16:03:00.536194",
+  "@@last_modified": "2026-01-05 16:37:55.798786",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -10984,6 +10984,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Luba keelatud. Aktiveeri salvestamise õigused, et salvestada helisõnumeid.",
+  "genericWebRecordingError": "Midagi läks valesti. Soovitame sõnumite salvestamiseks kasutada Chrome'i brauserit.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Parima kogemuse saamiseks selle rakenduse kasutamisel palun suurendage oma ekraani suurust.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

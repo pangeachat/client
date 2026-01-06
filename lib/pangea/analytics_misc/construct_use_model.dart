@@ -1,30 +1,35 @@
 import 'dart:math';
 
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 
 /// One lemma and a list of construct uses for that lemma
 class ConstructUses {
-  final List<OneConstructUse> uses;
+  final List<OneConstructUse> _uses;
   final ConstructTypeEnum constructType;
   final String lemma;
   String? _category;
-  DateTime? _lastUsed;
 
   ConstructUses({
-    required this.uses,
+    required List<OneConstructUse> uses,
     required this.constructType,
     required this.lemma,
     required category,
-  }) : _category = category;
+  })  : _category = category,
+        _uses = List<OneConstructUse>.from(uses) {
+    _sortUses();
+  }
 
   // Total points for all uses of this lemma
   int get points {
     return min(
-      uses.fold<int>(
+      _uses.fold<int>(
         0,
         (total, use) => total + use.xp,
       ),
@@ -32,66 +37,22 @@ class ConstructUses {
     );
   }
 
-  DateTime? get lastUsed {
-    if (_lastUsed != null) return _lastUsed;
-    final lastUse = uses.fold<DateTime?>(null, (DateTime? last, use) {
-      if (last == null) return use.timeStamp;
-      return use.timeStamp.isAfter(last) ? use.timeStamp : last;
-    });
-    return _lastUsed = lastUse;
-  }
-
-  void setLastUsed(DateTime time) {
-    if (_lastUsed == null || time.isAfter(_lastUsed!)) {
-      _lastUsed = time;
-    }
-  }
+  DateTime? get lastUsed => _uses.lastOrNull?.timeStamp;
+  DateTime? get cappedLastUse => cappedUses.lastOrNull?.timeStamp;
 
   String get category {
     if (_category == null || _category!.isEmpty) return "other";
     return _category!.toLowerCase();
   }
 
-  bool get hasCorrectUse => uses.any((use) => use.xp > 0);
-  bool get hasIncorrectUse => uses.any((use) => use.xp < 0);
+  bool get hasCorrectUse => _uses.any((use) => use.xp > 0);
+  bool get hasIncorrectUse => _uses.any((use) => use.xp < 0);
 
   ConstructIdentifier get id => ConstructIdentifier(
         lemma: lemma,
         type: constructType,
         category: category,
       );
-
-  Map<String, dynamic> toJson() {
-    final json = {
-      'construct_id': id.toJson(),
-      'xp': points,
-      'last_used': lastUsed?.toIso8601String(),
-      'uses': uses.map((e) => e.toJson()).toList(),
-    };
-    return json;
-  }
-
-  factory ConstructUses.fromJson(Map<String, dynamic> json) {
-    final constructId = ConstructIdentifier.fromJson(
-      Map<String, dynamic>.from(json['construct_id']),
-    );
-
-    List<dynamic> usesJson = [];
-    if (json['uses'] is List) {
-      usesJson = List<dynamic>.from(json['uses']);
-    }
-
-    final uses = usesJson
-        .map((e) => OneConstructUse.fromJson(Map<String, dynamic>.from(e)))
-        .toList();
-
-    return ConstructUses(
-      uses: uses,
-      constructType: constructId.type,
-      lemma: constructId.lemma,
-      category: constructId.category,
-    );
-  }
 
   /// Get the lemma category, based on points
   ConstructLevelEnum get lemmaCategory {
@@ -122,6 +83,66 @@ class ConstructUses {
         _ => ConstructLevelEnum.flowers,
       };
 
+  List<String> get forms =>
+      _uses.map((e) => e.form).whereType<String>().toSet().toList();
+
+  List<OneConstructUse> get cappedUses {
+    final result = <OneConstructUse>[];
+    var totalXp = 0;
+
+    for (final use in _uses) {
+      if (totalXp >= AnalyticsConstants.xpForFlower) break;
+      totalXp += use.xp;
+      result.add(use);
+    }
+
+    return result;
+  }
+
+  DateTime? lastUseByTypes(List<ConstructUseTypeEnum> types) =>
+      _uses.lastWhereOrNull((u) => types.contains(u.useType))?.timeStamp;
+
+  Map<String, dynamic> toJson() {
+    final json = {
+      'construct_id': id.toJson(),
+      'xp': points,
+      'last_used': lastUsed?.toIso8601String(),
+      'uses': _uses.map((e) => e.toJson()).toList(),
+    };
+    return json;
+  }
+
+  factory ConstructUses.fromJson(Map<String, dynamic> json) {
+    final constructId = ConstructIdentifier.fromJson(
+      Map<String, dynamic>.from(json['construct_id']),
+    );
+
+    List<dynamic> usesJson = [];
+    if (json['uses'] is List) {
+      usesJson = List<dynamic>.from(json['uses']);
+    }
+
+    final uses = usesJson
+        .map((e) => OneConstructUse.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
+
+    return ConstructUses(
+      uses: uses,
+      constructType: constructId.type,
+      lemma: constructId.lemma,
+      category: constructId.category,
+    );
+  }
+
+  void _sortUses() {
+    _uses.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
+  }
+
+  void addUse(OneConstructUse use) {
+    _uses.add(use);
+    _sortUses();
+  }
+
   void merge(ConstructUses other) {
     if (other.lemma.toLowerCase() != lemma.toLowerCase() ||
         other.constructType != constructType) {
@@ -130,10 +151,8 @@ class ConstructUses {
       );
     }
 
-    uses.addAll(other.uses);
-    if (other.lastUsed != null) {
-      setLastUsed(other.lastUsed!);
-    }
+    _uses.addAll(other._uses);
+    _sortUses();
 
     if (category == 'other' && other.category != 'other') {
       _category = other.category;
@@ -147,7 +166,7 @@ class ConstructUses {
     String? category,
   }) {
     return ConstructUses(
-      uses: uses ?? this.uses,
+      uses: uses ?? _uses,
       constructType: constructType ?? this.constructType,
       lemma: lemma ?? this.lemma,
       category: category ?? _category,

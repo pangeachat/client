@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-12-29 16:03:01.766114",
+  "@@last_modified": "2026-01-05 16:37:56.618492",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10720,6 +10720,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Zugriff verweigert. Aktivieren Sie die Aufnahmeberechtigungen, um Sprachnachrichten aufzunehmen.",
+  "genericWebRecordingError": "Etwas ist schiefgelaufen. Wir empfehlen, den Chrome-Browser zu verwenden, wenn Sie Nachrichten aufnehmen.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Für das beste Erlebnis mit dieser Anwendung erweitern Sie bitte Ihre Bildschirmgröße.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

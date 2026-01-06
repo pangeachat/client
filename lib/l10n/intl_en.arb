@@ -5024,5 +5024,8 @@
   "ssoDialogDesc": "We opened a new tab so you can sign in securely.",
   "ssoDialogHelpText": "🤔 If you didn't see the new tab, please check your popup blocker.",
   "disableLanguageToolsTitle": "Disable language tools",
-  "disableLanguageToolsDesc": "Would you like to disable automatic language assistance?"
+  "disableLanguageToolsDesc": "Would you like to disable automatic language assistance?",
+  "recordingPermissionDenied": "Permission denied. Enable recording permissions to record audio messages.",
+  "genericWebRecordingError": "Something went wrong. We recommend using the Chrome browser when recording messages.",
+  "screenSizeWarning": "For the best experience using this application, please expand your screen size."
 }

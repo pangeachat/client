@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-12-29 16:02:43.810168",
+  "@@last_modified": "2026-01-05 16:37:43.701539",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10714,6 +10714,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Engedély megtagadva. Engedélyezze a felvételi engedélyeket az audioüzenetek rögzítéséhez.",
+  "genericWebRecordingError": "Valami hiba történt. Javasoljuk, hogy a Chrome böngészőt használja az üzenetek rögzítésekor.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "A legjobb élmény érdekében, kérjük, bővítse a képernyő méretét ennek az alkalmazásnak a használata során.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

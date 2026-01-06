@@ -19,8 +19,10 @@ import 'package:fluffychat/widgets/navigation_rail.dart';
 
 class SpaceNavigationColumn extends StatefulWidget {
   final GoRouterState state;
+  final bool showNavRail;
   const SpaceNavigationColumn({
     required this.state,
+    required this.showNavRail,
     super.key,
   });
 
@@ -67,29 +69,16 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    bool showNavRail = isColumnMode;
-    if (!showNavRail) {
-      final roomID = widget.state.pathParameters['roomid'];
-      final spaceID = widget.state.pathParameters['spaceid'];
-
-      if (roomID == null && spaceID == null) {
-        showNavRail = !["newcourse", ":construct"].any(
-          (p) => widget.state.fullPath?.contains(p) ?? false,
-        );
-      } else if (roomID == null) {
-        showNavRail = widget.state.fullPath?.endsWith(':spaceid') == true;
-      }
-    }
 
     final navRailWidth = isColumnMode
         ? FluffyThemes.navRailWidth
         : FluffyThemes.navRailWidth - 8.0;
 
-    final double navRailExtraWidth = showNavRail ? 250.0 : 0.0;
+    final double navRailExtraWidth = widget.showNavRail ? 250.0 : 0.0;
     final double columnWidth =
         isColumnMode ? FluffyThemes.columnWidth + 1.0 : 0;
 
-    final double railWidth = showNavRail ? navRailWidth + 1.0 : 0;
+    final double railWidth = widget.showNavRail ? navRailWidth + 1.0 : 0;
     final double baseWidth = columnWidth + railWidth;
     final double expandedWidth = baseWidth < navRailExtraWidth
         ? navRailExtraWidth + railWidth
@@ -122,7 +111,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                 ),
               ),
             ),
-          if (showNavRail)
+          if (widget.showNavRail)
             HoverBuilder(
               builder: (context, hovered) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {

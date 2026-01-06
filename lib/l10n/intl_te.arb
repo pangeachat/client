@@ -1920,7 +1920,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2025-12-29 16:03:22.199306",
+  "@@last_modified": "2026-01-05 16:38:15.933952",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11802,6 +11802,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "అనుమతి నిరాకరించబడింది. ఆడియో సందేశాలను రికార్డ్ చేయడానికి రికార్డింగ్ అనుమతులను ప్రారంభించండి.",
+  "genericWebRecordingError": "ఏదో తప్పు జరిగింది. సందేశాలను రికార్డ్ చేయడానికి Chrome బ్రౌజర్‌ను ఉపయోగించడం సిఫారసు చేస్తాము.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "ఈ అనువర్తనం ఉపయోగించడానికి ఉత్తమ అనుభవం కోసం, దయచేసి మీ స్క్రీన్ పరిమాణాన్ని విస్తరించండి.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

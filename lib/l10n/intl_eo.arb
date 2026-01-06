@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:43.433863",
+  "@@last_modified": "2026-01-05 16:38:33.016786",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11802,6 +11802,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Permeso malakceptita. Aktivigu la registradpermesojn por registri aŭdmesaĝojn.",
+  "genericWebRecordingError": "Io misfunkciis. Ni rekomendas uzi la Chrome-brauzilon kiam vi registras mesaĝojn.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Por la plej bona sperto uzante ĉi tiun aplikaĵon, bonvolu vastigi vian ekranan grandecon.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

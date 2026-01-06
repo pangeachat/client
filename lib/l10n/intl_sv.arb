@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:03:36.702673",
+  "@@last_modified": "2026-01-05 16:38:27.488003",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11191,6 +11191,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Åtkomst nekad. Aktivera inspelningsbehörigheter för att spela in ljudmeddelanden.",
+  "genericWebRecordingError": "Något gick fel. Vi rekommenderar att du använder webbläsaren Chrome när du spelar in meddelanden.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "För bästa upplevelse med denna applikation, vänligen utöka din skärmstorlek.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-12-29 16:03:30.606395",
+  "@@last_modified": "2026-01-05 16:38:22.675043",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10704,6 +10704,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "权限被拒绝。请启用录音权限以录制音频消息。",
+  "genericWebRecordingError": "出现了问题。我们建议在录制消息时使用Chrome浏览器。",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "为了获得最佳的应用体验，请扩大您的屏幕尺寸。",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

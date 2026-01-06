@@ -4456,7 +4456,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2025-12-29 16:03:13.573254",
+  "@@last_modified": "2026-01-05 16:38:08.017220",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11771,6 +11771,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "การอนุญาตถูกปฏิเสธ เปิดใช้งานการอนุญาตการบันทึกเพื่อบันทึกข้อความเสียง",
+  "genericWebRecordingError": "เกิดข้อผิดพลาดบางอย่าง เราขอแนะนำให้ใช้เบราว์เซอร์ Chrome เมื่อบันทึกข้อความ",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "เพื่อประสบการณ์ที่ดีที่สุดในการใช้แอปพลิเคชันนี้ โปรดขยายขนาดหน้าจอของคุณ.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

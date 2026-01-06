@@ -65,13 +65,7 @@ class VocabDetailsView extends StatelessWidget {
                 ? level.color(context)
                 : level.darkColor(context));
 
-        final forms = construct?.uses
-                .map((e) => e.form)
-                .whereType<String>()
-                .toSet()
-                .toList() ??
-            [];
-
+        final forms = construct?.forms ?? [];
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
         final token = PangeaToken(
           text: tokenText,

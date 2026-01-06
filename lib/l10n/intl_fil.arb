@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-12-29 16:03:16.522907",
+  "@@last_modified": "2026-01-05 16:38:11.298437",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11689,6 +11689,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Tanggihan ang pahintulot. I-enable ang mga pahintulot sa pag-record upang makapag-record ng mga mensaheng audio.",
+  "genericWebRecordingError": "May nangyaring mali. Inirerekomenda naming gumamit ng Chrome browser kapag nagre-record ng mga mensahe.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Para sa pinakamahusay na karanasan sa paggamit ng application na ito, mangyaring palawakin ang laki ng iyong screen.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

@@ -26,7 +26,7 @@ class LemmaUsageDots extends StatelessWidget {
   /// Find lemma uses for the given exercise type, to create dot list
   List<bool> sortedUses(LearningSkillsEnum category) {
     final List<bool> useList = [];
-    for (final OneConstructUse use in construct.uses) {
+    for (final OneConstructUse use in construct.cappedUses) {
       if (use.xp == 0) {
         continue;
       }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-12-29 16:02:53.990837",
+  "@@last_modified": "2026-01-05 16:37:50.615411",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11762,6 +11762,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "ההרשאה נדחתה. אפשר הרשאות הקלטה כדי להקליט הודעות קול.",
+  "genericWebRecordingError": "משהו השתבש. אנו ממליצים להשתמש בדפדפן כרום כאשר מקליטים הודעות.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "כדי לקבל את החוויה הטובה ביותר בשימוש באפליקציה זו, אנא הרחיבו את גודל המסך שלכם.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

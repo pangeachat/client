@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-12-29 16:02:47.860221",
+  "@@last_modified": "2026-01-05 16:37:46.929621",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11797,6 +11797,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Povolenie zamietnuté. Aktivujte povolenia na nahrávanie, aby ste mohli nahrávať audio správy.",
+  "genericWebRecordingError": "Niečo sa pokazilo. Odporúčame používať prehliadač Chrome pri nahrávaní správ.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Pre najlepší zážitok z používania tejto aplikácie, prosím, zväčšite veľkosť obrazovky.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

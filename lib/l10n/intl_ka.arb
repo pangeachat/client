@@ -2594,7 +2594,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2025-12-29 16:03:46.785003",
+  "@@last_modified": "2026-01-05 16:38:35.679503",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11743,6 +11743,21 @@
     "placeholders": {}
   },
   "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "შეთავაზება უარყოფილია. გააქტიურეთ ჩანაწერის უფლებები აუდიო შეტყობინებების ჩაწერისთვის.",
+  "genericWebRecordingError": "რაღაც არასწორი მოხდა. რეკომენდებულია Chrome ბრაუზერის გამოყენება შეტყობინებების ჩაწერისას.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "ამ აპლიკაციის საუკეთესო გამოცდილებისათვის, გთხოვთ, გააფართოვოთ თქვენი ეკრანის ზომა.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   }

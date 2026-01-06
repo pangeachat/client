@@ -19,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -298,6 +299,37 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   // #Pangea
+  bool _showingScreenSizeDialog = false;
+  @override
+  void didChangeMetrics() {
+    _showScreenSizeDialog();
+    super.didChangeMetrics();
+  }
+
+  Future<void> _showScreenSizeDialog() async {
+    if (_showingScreenSizeDialog) return;
+    _showingScreenSizeDialog = true;
+
+    final screenSize = MediaQuery.sizeOf(context);
+    final columnMode = screenSize.width >
+        (FluffyThemes.columnWidth * 2 + FluffyThemes.navRailWidth);
+
+    final shortScreen = screenSize.height <= 500;
+
+    if (!columnMode || !shortScreen) {
+      _showingScreenSizeDialog = false;
+      return;
+    }
+
+    await showOkAlertDialog(
+      context:
+          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
+              context,
+      title: L10n.of(context).screenSizeWarning,
+    );
+    _showingScreenSizeDialog = false;
+  }
+
   StreamSubscription? _languageListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();

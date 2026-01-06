@@ -240,7 +240,23 @@ class AnalyticsDataService {
     );
 
     final blocked = blockedConstructs;
-    return uses.where((use) => !blocked.contains(use.identifier)).toList();
+    final List<OneConstructUse> filtered = [];
+
+    final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
+    for (final use in uses) {
+      if (blocked.contains(use.identifier)) continue;
+      if (!cappedLastUseCache.containsKey(use.identifier)) {
+        final constructs = await getConstructUse(use.identifier);
+        cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
+      }
+      final cappedLastUse = cappedLastUseCache[use.identifier];
+      if (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse)) {
+        continue;
+      }
+      filtered.add(use);
+    }
+
+    return filtered;
   }
 
   Future<List<OneConstructUse>> getLocalUses() async {
