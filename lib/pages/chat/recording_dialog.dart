@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' as path_lib;
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
-import 'package:universal_html/html.dart' as html;
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -17,6 +16,8 @@ import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'events/audio_player.dart';
+
+class PermissionException implements Exception {}
 
 class RecordingDialog extends StatefulWidget {
   const RecordingDialog({
@@ -63,14 +64,14 @@ class RecordingDialogState extends State<RecordingDialog> {
         path = path_lib.join(tempDir.path, fileName);
       }
 
-      // #Pangea
-      await _audioRecorder.hasPermission();
-      // final result = await _audioRecorder.hasPermission();
-      // if (result != true) {
-      //   setState(() => error = true);
-      //   return;
-      // }
-      // Pangea#
+      final result = await _audioRecorder.hasPermission();
+      if (result != true) {
+        // #Pangea
+        throw PermissionException();
+        // setState(() => error = true);
+        // return;
+        // Pangea#
+      }
       await WakelockPlus.enable();
 
       await _audioRecorder.start(
@@ -158,7 +159,7 @@ class RecordingDialogState extends State<RecordingDialog> {
     final content = error != null
         ? ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 250.0),
-            child: error is html.DomException
+            child: error is PermissionException
                 ? Text(L10n.of(context).recordingPermissionDenied)
                 : kIsWeb
                     ? Text(L10n.of(context).genericWebRecordingError)
