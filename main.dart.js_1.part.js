@@ -1547,6 +1547,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u6211\u7684\u56fd\u5bb6";
     },
+    get$targetLanguage() {
+      return "\u76ee\u6807\u8bed\u8a00";
+    },
     get$updateLanguage() {
       return "\u6211\u7684\u8bed\u8a00";
     },
@@ -5244,28 +5247,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u60a8\u5df2\u4e3a " + lemma + " \u8bbe\u7f6e\u4e86\u8868\u60c5\u7b26\u53f7\uff01\u6211\u4eec\u5c06\u4f7f\u7528\u6b64\u8868\u60c5\u7b26\u53f7\u5728\u4eca\u540e\u7684\u5b9e\u8df5\u6d3b\u52a8\u4e2d\u8868\u793a\u8be5\u8bcd\u3002";
     },
     get$constructUseCorLMDesc() {
-      return "Correct vocab definition practice";
+      return "\u6b63\u786e\u7684\u8bcd\u6c47\u5b9a\u4e49\u7ec3\u4e60";
     },
     get$constructUseIncLMDesc() {
-      return "Incorrect vocab definition practice";
+      return "\u9519\u8bef\u7684\u8bcd\u6c47\u5b9a\u4e49\u7ec3\u4e60";
     },
     get$constructUseCorLADesc() {
-      return "Correct vocab audio practice";
+      return "\u6b63\u786e\u7684\u8bcd\u6c47\u97f3\u9891\u7ec3\u4e60";
     },
     get$constructUseIncLADesc() {
-      return "Incorrect vocab audio practice";
+      return "\u9519\u8bef\u7684\u8bcd\u6c47\u97f3\u9891\u7ec3\u4e60";
     },
     get$constructUseBonus() {
-      return "Bonus during vocab practice";
+      return "\u8bcd\u6c47\u7ec3\u4e60\u671f\u95f4\u7684\u5956\u52b1";
     },
     get$practiceVocab() {
-      return "Practice vocabulary";
+      return "\u7ec3\u4e60\u8bcd\u6c47";
     },
     get$selectMeaning() {
-      return "Select the meaning";
+      return "\u9009\u62e9\u610f\u601d";
     },
     get$anotherRound() {
-      return "Another round";
+      return "\u518d\u6765\u4e00\u8f6e";
     },
     get$ssoDialogTitle() {
       return "\u7b49\u5f85\u767b\u5f55\u5b8c\u6210";
@@ -5292,13 +5295,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u4e3a\u4e86\u83b7\u5f97\u6700\u4f73\u7684\u5e94\u7528\u4f53\u9a8c\uff0c\u8bf7\u6269\u5927\u60a8\u7684\u5c4f\u5e55\u5c3a\u5bf8\u3002";
     },
     get$noActivityRequest() {
-      return "No current activity request.";
+      return "\u5f53\u524d\u6ca1\u6709\u6d3b\u52a8\u8bf7\u6c42\u3002";
     },
     get$quit() {
-      return "Quit";
+      return "\u9000\u51fa";
     },
     get$congratulationsYouveCompletedPractice() {
-      return "Congratulations! You've completed the practice session.";
+      return "\u606d\u559c\uff01\u60a8\u5df2\u5b8c\u6210\u7ec3\u4e60\u8bfe\u7a0b\u3002";
     },
     get$activitiesToUnlockTopicTitle() {
       return "\u89e3\u9501\u4e0b\u4e00\u4e2a\u4e3b\u9898\u7684\u6d3b\u52a8";
@@ -5307,7 +5310,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u8bbe\u7f6e\u89e3\u9501\u4e0b\u4e00\u4e2a\u8bfe\u7a0b\u4e3b\u9898\u6240\u9700\u7684\u6d3b\u52a8\u6570\u91cf";
     },
     get$mustHave10Words() {
-      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
+      return "\u60a8\u5fc5\u987b\u81f3\u5c11\u6709 10 \u4e2a\u8bcd\u6c47\u6765\u8fdb\u884c\u7ec3\u4e60\u3002\u5c1d\u8bd5\u4e0e\u670b\u53cb\u6216 Pangea Bot \u4ea4\u8c08\u4ee5\u53d1\u73b0\u66f4\u591a\uff01";
+    },
+    get$botSettings() {
+      return "\u673a\u5668\u4eba\u8bbe\u7f6e";
+    },
+    get$activitySettingsOverrideWarning() {
+      return "\u6d3b\u52a8\u8ba1\u5212\u786e\u5b9a\u7684\u8bed\u8a00\u548c\u8bed\u8a00\u7ea7\u522b";
+    },
+    get$voice(_) {
+      return "\u58f0\u97f3";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6837,6 +6849,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$countryInformation() {
       return "\u6211\u7684\u570b\u5bb6";
+    },
+    get$targetLanguage() {
+      return "\u76ee\u6a19\u8a9e\u8a00";
     },
     get$updateLanguage() {
       return "\u6211\u7684\u8a9e\u8a00";
@@ -10531,6 +10546,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "\u60a8\u5df2\u70ba " + lemma + " \u8a2d\u5b9a\u4e86\u8868\u60c5\u7b26\u865f\uff01\u6211\u5011\u5c07\u5728\u672a\u4f86\u7684\u7df4\u7fd2\u6d3b\u52d5\u4e2d\u4f7f\u7528\u9019\u500b\u8868\u60c5\u7b26\u865f\u4f86\u4ee3\u8868\u9019\u500b\u8a5e\u3002";
     },
+    get$constructUseCorLMDesc() {
+      return "\u6b63\u78ba\u7684\u8a5e\u5f59\u5b9a\u7fa9\u7df4\u7fd2";
+    },
+    get$constructUseIncLMDesc() {
+      return "\u4e0d\u6b63\u78ba\u7684\u8a5e\u5f59\u5b9a\u7fa9\u7df4\u7fd2";
+    },
+    get$constructUseCorLADesc() {
+      return "\u6b63\u78ba\u7684\u8a5e\u5f59\u97f3\u983b\u7df4\u7fd2";
+    },
+    get$constructUseIncLADesc() {
+      return "\u4e0d\u6b63\u78ba\u7684\u8a5e\u5f59\u97f3\u983b\u7df4\u7fd2";
+    },
+    get$constructUseBonus() {
+      return "\u8a5e\u5f59\u7df4\u7fd2\u671f\u9593\u7684\u734e\u52f5";
+    },
+    get$practiceVocab() {
+      return "\u7df4\u7fd2\u8a5e\u5f59";
+    },
+    get$selectMeaning() {
+      return "\u9078\u64c7\u610f\u601d";
+    },
+    get$anotherRound() {
+      return "\u518d\u4f86\u4e00\u8f2a";
+    },
     get$ssoDialogTitle() {
       return "\u7b49\u5f85\u767b\u5165\u5b8c\u6210";
     },
@@ -10555,11 +10594,32 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u70ba\u4e86\u7372\u5f97\u6700\u4f73\u7684\u61c9\u7528\u9ad4\u9a57\uff0c\u8acb\u64f4\u5927\u60a8\u7684\u87a2\u5e55\u5927\u5c0f\u3002";
     },
+    get$noActivityRequest() {
+      return "\u76ee\u524d\u6c92\u6709\u6d3b\u52d5\u8acb\u6c42\u3002";
+    },
+    get$quit() {
+      return "\u9000\u51fa";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "\u606d\u559c\uff01\u60a8\u5df2\u5b8c\u6210\u7df4\u7fd2\u8ab2\u7a0b\u3002";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "\u89e3\u9396\u4e0b\u4e00\u4e3b\u984c\u7684\u6d3b\u52d5";
     },
     get$activitiesToUnlockTopicDesc() {
       return "\u8a2d\u5b9a\u89e3\u9396\u4e0b\u4e00\u8ab2\u7a0b\u4e3b\u984c\u6240\u9700\u7684\u6d3b\u52d5\u6578\u91cf";
+    },
+    get$mustHave10Words() {
+      return "\u60a8\u5fc5\u9808\u81f3\u5c11\u6709 10 \u500b\u8a5e\u5f59\u4f86\u9032\u884c\u7df4\u7fd2\u3002\u5617\u8a66\u8207\u670b\u53cb\u6216 Pangea Bot \u4ea4\u8ac7\u4ee5\u767c\u73fe\u66f4\u591a\uff01";
+    },
+    get$botSettings() {
+      return "\u6a5f\u5668\u4eba\u8a2d\u5b9a";
+    },
+    get$activitySettingsOverrideWarning() {
+      return "\u8a9e\u8a00\u548c\u8a9e\u8a00\u7d1a\u5225\u7531\u6d3b\u52d5\u8a08\u5283\u6c7a\u5b9a";
+    },
+    get$voice(_) {
+      return "\u8072\u97f3";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10575,7 +10635,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zVSAE2YYDKOTVHv7azD+d1cWOJ4="] = d.current;
+  d["++O+eK4Q8rAcv7sgPn9lnnAqjVk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

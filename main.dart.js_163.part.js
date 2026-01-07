@@ -1541,6 +1541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u0f44\u0f60\u0f72\u0f0b\u0f62\u0f92\u0fb1\u0f63\u0f0b\u0f41\u0f56\u0f0d";
     },
+    get$targetLanguage() {
+      return "\u0f63\u0f74\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f66\u0f90\u0f51";
+    },
     get$updateLanguage() {
       return "\u0f44\u0f60\u0f72\u0f0b\u0f66\u0f90\u0f51\u0f0b\u0f5a\u0f72\u0f42";
     },
@@ -5239,28 +5242,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "A\u2019n setti emoji p\xebr " + lemma + "! Ne do ta p\xebrdorim k\xebt\xeb emoji p\xebr t\xeb p\xebrfaq\xebsuar fjal\xebn n\xeb aktivitetet praktike n\xeb vazhdim.";
     },
     get$constructUseCorLMDesc() {
-      return "Correct vocab definition practice";
+      return "Korekt vokab definicij praksi";
     },
     get$constructUseIncLMDesc() {
-      return "Incorrect vocab definition practice";
+      return "Nekorekt vokab definicij praksi";
     },
     get$constructUseCorLADesc() {
-      return "Correct vocab audio practice";
+      return "Korekt vokab audio praksi";
     },
     get$constructUseIncLADesc() {
-      return "Incorrect vocab audio practice";
+      return "Nekorekt vokab audio praksi";
     },
     get$constructUseBonus() {
-      return "Bonus during vocab practice";
+      return "Bonus tokom vokab prakse";
     },
     get$practiceVocab() {
-      return "Practice vocabulary";
+      return "Ve\u017ebaj vokabular";
     },
     get$selectMeaning() {
-      return "Select the meaning";
+      return "Izaberi zna\u010denje";
     },
     get$anotherRound() {
-      return "Another round";
+      return "Jo\u0161 jedan krug";
     },
     get$ssoDialogTitle() {
       return "Nunggu kanggo mlebu rampung";
@@ -5287,13 +5290,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bokor na b\u025by\u025b a, b\u0254k\u0254 a \u025by\u025b f\u025b a, y\u025bsr\u025b s\u025b b\u0254 wo b\u0254k\u0254 no mu.";
     },
     get$noActivityRequest() {
-      return "No current activity request.";
+      return "Ninguna solicitud de actividad actual.";
     },
     get$quit() {
-      return "Quit";
+      return "Salir";
     },
     get$congratulationsYouveCompletedPractice() {
-      return "Congratulations! You've completed the practice session.";
+      return "\xa1Felicidades! Has completado la sesi\xf3n de pr\xe1ctica.";
     },
     get$activitiesToUnlockTopicTitle() {
       return "Aktiviteti p\xebr t\xeb \xc7liruar Tem\xebn Tjet\xebr";
@@ -5302,7 +5305,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Caktoni numrin e aktiviteteve p\xebr t\xeb \xe7liruar tem\xebn tjet\xebr t\xeb kursit";
     },
     get$mustHave10Words() {
-      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
+      return "Debes tener al menos 10 palabras de vocabulario para practicarlas. \xa1Intenta hablar con un amigo o con Pangea Bot para descubrir m\xe1s!";
+    },
+    get$botSettings() {
+      return "Configuraciones del Bot";
+    },
+    get$activitySettingsOverrideWarning() {
+      return "Idioma y nivel de idioma determinados por el plan de actividad";
+    },
+    get$voice(_) {
+      return "Voz";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5329,7 +5341,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4rVOUd9t1K/SVFoiJZfIuqxiBeE="] = d.current;
+  d["05vPbth9v6WDhVVswTDw+ZuZoQ4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

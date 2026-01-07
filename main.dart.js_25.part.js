@@ -1552,6 +1552,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Meu pa\xeds";
     },
+    get$targetLanguage() {
+      return "L\xedngua alvo";
+    },
     get$updateLanguage() {
       return "Minhas l\xednguas";
     },
@@ -5249,28 +5252,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
     },
     get$constructUseCorLMDesc() {
-      return "Correct vocab definition practice";
+      return string$.Pr_ticc;
     },
     get$constructUseIncLMDesc() {
-      return "Incorrect vocab definition practice";
+      return string$.Pr_ticid;
     },
     get$constructUseCorLADesc() {
-      return "Correct vocab audio practice";
+      return "Pr\xe1tica correta de \xe1udio de vocabul\xe1rio";
     },
     get$constructUseIncLADesc() {
-      return "Incorrect vocab audio practice";
+      return string$.Pr_tici_;
     },
     get$constructUseBonus() {
-      return "Bonus during vocab practice";
+      return "B\xf4nus durante a pr\xe1tica de vocabul\xe1rio";
     },
     get$practiceVocab() {
-      return "Practice vocabulary";
+      return "Praticar vocabul\xe1rio";
     },
     get$selectMeaning() {
-      return "Select the meaning";
+      return "Selecione o significado";
     },
     get$anotherRound() {
-      return "Another round";
+      return "Outra rodada";
     },
     get$ssoDialogTitle() {
       return "Aguardando a conclus\xe3o do login";
@@ -5297,13 +5300,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Para_a;
     },
     get$noActivityRequest() {
-      return "No current activity request.";
+      return "Nenhum pedido de atividade atual.";
     },
     get$quit() {
-      return "Quit";
+      return "Sair";
     },
     get$congratulationsYouveCompletedPractice() {
-      return "Congratulations! You've completed the practice session.";
+      return string$.Parab_;
     },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
@@ -5312,7 +5315,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return string$.Definao;
     },
     get$mustHave10Words() {
-      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
+      return string$.Voc__d;
+    },
+    get$botSettings() {
+      return "Configura\xe7\xf5es do Bot";
+    },
+    get$activitySettingsOverrideWarning() {
+      return string$.Idioma;
+    },
+    get$voice(_) {
+      return "Voz";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6842,6 +6854,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$countryInformation() {
       return "Meu pa\xeds";
+    },
+    get$targetLanguage() {
+      return "L\xedngua alvo";
     },
     get$updateLanguage() {
       return "Meus idiomas";
@@ -10536,6 +10551,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
     },
+    get$constructUseCorLMDesc() {
+      return "Pr\xe1tica de defini\xe7\xe3o de vocabul\xe1rio correta";
+    },
+    get$constructUseIncLMDesc() {
+      return "Pr\xe1tica de defini\xe7\xe3o de vocabul\xe1rio incorreta";
+    },
+    get$constructUseCorLADesc() {
+      return "Pr\xe1tica de \xe1udio de vocabul\xe1rio correta";
+    },
+    get$constructUseIncLADesc() {
+      return "Pr\xe1tica de \xe1udio de vocabul\xe1rio incorreta";
+    },
+    get$constructUseBonus() {
+      return "B\xf4nus durante a pr\xe1tica de vocabul\xe1rio";
+    },
+    get$practiceVocab() {
+      return "Praticar vocabul\xe1rio";
+    },
+    get$selectMeaning() {
+      return "Selecione o significado";
+    },
+    get$anotherRound() {
+      return "Outra rodada";
+    },
     get$ssoDialogTitle() {
       return "Aguardando a conclus\xe3o do login";
     },
@@ -10560,11 +10599,32 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return string$.Para_a;
     },
+    get$noActivityRequest() {
+      return "Nenhum pedido de atividade atual.";
+    },
+    get$quit() {
+      return "Sair";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return string$.Parab_;
+    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
+    },
+    get$mustHave10Words() {
+      return string$.Voc__d;
+    },
+    get$botSettings() {
+      return "Configura\xe7\xf5es do Bot";
+    },
+    get$activitySettingsOverrideWarning() {
+      return string$.Idioma;
+    },
+    get$voice(_) {
+      return "Voz";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -12094,6 +12154,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$countryInformation() {
       return "O meu pa\xeds";
+    },
+    get$targetLanguage() {
+      return "L\xedngua alvo";
     },
     get$updateLanguage() {
       return "As minhas l\xednguas";
@@ -15788,6 +15851,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
     },
+    get$constructUseCorLMDesc() {
+      return string$.Pr_ticc;
+    },
+    get$constructUseIncLMDesc() {
+      return string$.Pr_ticid;
+    },
+    get$constructUseCorLADesc() {
+      return "Pr\xe1tica correta de \xe1udio de vocabul\xe1rio";
+    },
+    get$constructUseIncLADesc() {
+      return string$.Pr_tici_;
+    },
+    get$constructUseBonus() {
+      return "B\xf4nus durante a pr\xe1tica de vocabul\xe1rio";
+    },
+    get$practiceVocab() {
+      return "Praticar vocabul\xe1rio";
+    },
+    get$selectMeaning() {
+      return "Selecione o significado";
+    },
+    get$anotherRound() {
+      return "Outra rodada";
+    },
     get$ssoDialogTitle() {
       return "Aguardando a conclus\xe3o do login";
     },
@@ -15812,11 +15899,32 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return string$.Para_a;
     },
+    get$noActivityRequest() {
+      return "Nenhum pedido de atividade atual.";
+    },
+    get$quit() {
+      return "Sair";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return string$.Parab_;
+    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
+    },
+    get$mustHave10Words() {
+      return "Voc\xea deve ter pelo menos 10 palavras de vocabul\xe1rio para praticar. Tente conversar com um amigo ou com o Pangea Bot para descobrir mais!";
+    },
+    get$botSettings() {
+      return "Configura\xe7\xf5es do Bot";
+    },
+    get$activitySettingsOverrideWarning() {
+      return string$.Idioma;
+    },
+    get$voice(_) {
+      return "Voz";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15912,6 +16020,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Executu: "Executar automaticamente a assist\xeancia de escrita de gram\xe1tica e tradu\xe7\xe3o do Pangea Chat antes de enviar minha mensagem.",
     Ferram: "Ferramentas de tradu\xe7\xe3o e gram\xe1tica podem estar lentas ou indispon\xedveis enquanto os bots Pangea se atualizam.",
     Gostar: "Gostaria de solicitar acesso para visualizar as an\xe1lises dos participantes?\n\nSe os participantes concordarem, os administradores deste curso poder\xe3o ver:\n    \u2022 vocabul\xe1rio total\n    \u2022 conceitos gramaticais totais\n    \u2022 sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o ver:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
+    Idioma: "Idioma e n\xedvel de idioma determinados pelo plano de atividade",
     Ignorae: "Ignorado na atividade de escuta de palavras",
     Ignoras: "Ignorado na atividade de significado da palavra",
     Ilhas_: "Ilhas Ge\xf3rgia do Sul e Ilhas Sandwich do Sul",
@@ -15958,6 +16067,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Para_a: "Para a melhor experi\xeancia ao usar este aplicativo, por favor, amplie o tamanho da sua tela.",
     Para_m: "Para mensagens de voz, voc\xea pode ver uma transcri\xe7\xe3o, bem como a pontua\xe7\xe3o de Palavras Por Minuto do falante.",
     Para_q: "Para quem voc\xea quer reportar esta mensagem?",
+    Parab_: "Parab\xe9ns! Voc\xea completou a sess\xe3o de pr\xe1tica.",
     Parece: "Parece que n\xe3o \xe9 um servidor principal compat\xedvel. URL incorreta?",
     Permis: "Permiss\xe3o negada. Ative as permiss\xf5es de grava\xe7\xe3o para gravar mensagens de \xe1udio.",
     Permite: "Permite que o aplicativo gere sa\xedda de texto para fala para trechos de texto no seu idioma de destino.",
@@ -15974,6 +16084,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Posso_en: "Posso entender e usar algumas express\xf5es cotidianas familiares e frases muito b\xe1sicas.",
     Posso_ex: "Posso expressar ideias fluentemente e espontaneamente sem muita dificuldade e entender uma ampla variedade de textos exigentes.",
     Posso_l: "Posso lidar com a maioria das situa\xe7\xf5es familiares e produzir textos simples conectados sobre t\xf3picos familiares.",
+    Pr_ticc: "Pr\xe1tica correta de defini\xe7\xe3o de vocabul\xe1rio",
+    Pr_ticid: "Pr\xe1tica incorreta de defini\xe7\xe3o de vocabul\xe1rio",
+    Pr_tici_: "Pr\xe1tica incorreta de \xe1udio de vocabul\xe1rio",
     Quais_: "Quais dispositivos devem ser confi\xe1veis para que possam ler suas mensagens em chats criptografados?",
     Quandoa: "Quando ativado, palavras sublinhadas em azul podem ser clicadas para obter defini\xe7\xf5es. Clique nas mensagens para acessar defini\xe7\xf5es.",
     Quandot: "Quando terminar esta atividade, clique abaixo",
@@ -15996,6 +16109,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Usu_ri: "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o deste recurso n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.",
     Vis_ve: 'Vis\xedvel para a comunidade mais ampla do Pangea Chat via "Encontrar um curso"',
     Voc__a: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
+    Voc__d: "Voc\xea deve ter pelo menos 10 palavras de vocabul\xe1rio para pratic\xe1-las. Tente conversar com um amigo ou com o Pangea Bot para descobrir mais!",
     Voc__e: "Voc\xea est\xe1 prestes a sair deste chat. Outros usu\xe1rios ver\xe3o que voc\xea saiu do chat.",
     Voc__g: "Voc\xea gostaria de desativar a assist\xeancia autom\xe1tica de idioma?",
     Voc__j: "Voc\xea j\xe1 est\xe1 em um curso com este plano. Voc\xea quer criar um curso com o mesmo plano ou ir para o curso existente?",
@@ -16011,7 +16125,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZsRxBmO4bhW22FPbWDw0xBXTSpc="] = d.current;
+  d["/3fislRcIhp/8EfLqjOide8fwk0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map
