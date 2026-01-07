@@ -269,13 +269,7 @@ void chatContextMenuAction(
       return;
     case ChatContextAction.delete:
       if (room.isSpace) {
-        final resp = await showDialog<bool?>(
-          context: context,
-          builder: (_) => DeleteSpaceDialog(space: room),
-        );
-        if (resp == true) {
-          context.go("/rooms");
-        }
+        await DeleteSpaceDialog.show(room, context);
       } else {
         final confirmed = await showOkCancelAlertDialog(
           context: context,
