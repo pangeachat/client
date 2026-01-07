@@ -27,7 +27,7 @@ class ActivityParticipantList extends StatelessWidget {
     super.key,
     required this.activity,
     required this.assignedRoles,
-    required this.room,
+    this.room,
     this.course,
     this.onTap,
     this.canSelect,
@@ -94,6 +94,7 @@ class ActivityParticipantList extends StatelessWidget {
                   selected: selected,
                   selectable: selectable,
                   shimmer: shimmering,
+                  room: room,
                 );
               }).toList(),
             ),
@@ -106,6 +107,7 @@ class ActivityParticipantList extends StatelessWidget {
                   onTap: () => showMemberActionsPopupMenu(
                     context: context,
                     user: member,
+                    room: room,
                   ),
                   child: Container(
                     decoration: BoxDecoration(

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-06 13:02:30.390244",
+  "@@last_modified": "2026-01-07 14:28:12.371773",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11470,6 +11470,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "تمرین تعریف واژه صحیح",
+  "constructUseIncLMDesc": "تمرین تعریف واژه نادرست",
+  "constructUseCorLADesc": "تمرین صوتی واژه صحیح",
+  "constructUseIncLADesc": "تمرین صوتی واژه نادرست",
+  "constructUseBonus": "پاداش در حین تمرین واژه",
+  "practiceVocab": "تمرین واژگان",
+  "selectMeaning": "معنی را انتخاب کنید",
+  "selectAudio": "صوت مطابقتی را انتخاب کنید",
+  "congratulations": "تبریک می‌گویم!",
+  "anotherRound": "یک دور دیگر",
+  "noActivityRequest": "درخواست فعالیت فعلی وجود ندارد.",
+  "quit": "خروج",
+  "congratulationsYouveCompletedPractice": "تبریک! شما جلسه تمرین را کامل کرده‌اید.",
+  "mustHave10Words": "شما باید حداقل 10 کلمه واژگان برای تمرین داشته باشید. سعی کنید با یک دوست یا ربات پانژیا صحبت کنید تا بیشتر کشف کنید!",
+  "botSettings": "تنظیمات ربات",
+  "activitySettingsOverrideWarning": "زبان و سطح زبان تعیین شده توسط برنامه فعالیت",
+  "voice": "صدا",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

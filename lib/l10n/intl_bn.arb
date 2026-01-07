@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-06 13:02:28.649450",
+  "@@last_modified": "2026-01-07 14:28:06.931186",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11842,6 +11842,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "সঠিক শব্দভাণ্ডার সংজ্ঞা অনুশীলন",
+  "constructUseIncLMDesc": "ভুল শব্দভাণ্ডার সংজ্ঞা অনুশীলন",
+  "constructUseCorLADesc": "সঠিক শব্দভাণ্ডার অডিও অনুশীলন",
+  "constructUseIncLADesc": "ভুল শব্দভাণ্ডার অডিও অনুশীলন",
+  "constructUseBonus": "শব্দভাণ্ডার অনুশীলনের সময় বোনাস",
+  "practiceVocab": "শব্দভাণ্ডার অনুশীলন",
+  "selectMeaning": "অর্থ নির্বাচন করুন",
+  "selectAudio": "মিলানো অডিও নির্বাচন করুন",
+  "congratulations": "অভিনন্দন!",
+  "anotherRound": "আরেকটি রাউন্ড",
+  "noActivityRequest": "বর্তমান কোন কার্যকলাপের অনুরোধ নেই।",
+  "quit": "বিরতি",
+  "congratulationsYouveCompletedPractice": "অভিনন্দন! আপনি অনুশীলন সেশন সম্পন্ন করেছেন।",
+  "mustHave10Words": "আপনার অনুশীলনের জন্য অন্তত 10টি শব্দ থাকতে হবে। আরও জানার জন্য একটি বন্ধুর সাথে কথা বলুন বা Pangea Bot এর সাথে কথা বলুন!",
+  "botSettings": "বট সেটিংস",
+  "activitySettingsOverrideWarning": "কার্যকলাপ পরিকল্পনার দ্বারা নির্ধারিত ভাষা এবং ভাষার স্তর",
+  "voice": "কণ্ঠ",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

@@ -13,6 +13,7 @@ class LanguageModel {
   final String? localeEmoji;
   final L2SupportEnum l2Support;
   final TextDirection? _textDirection;
+  final List<String> voices;
 
   LanguageModel({
     required this.langCode,
@@ -20,6 +21,7 @@ class LanguageModel {
     this.localeEmoji,
     this.script = LanguageKeys.unknownLanguage,
     this.l2Support = L2SupportEnum.na,
+    this.voices = const [],
     TextDirection? textDirection,
   }) : _textDirection = textDirection;
 
@@ -43,6 +45,7 @@ class LanguageModel {
             )
           : null,
       localeEmoji: json['locale_emoji'],
+      voices: json['voices'] != null ? List<String>.from(json['voices']) : [],
     );
   }
 
@@ -53,6 +56,7 @@ class LanguageModel {
         'l2_support': l2Support.storageString,
         'text_direction': textDirection.name,
         'locale_emoji': localeEmoji,
+        'voices': voices,
       };
 
   bool get l2 => l2Support != L2SupportEnum.na;

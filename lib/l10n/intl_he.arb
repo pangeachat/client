@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-06 13:01:22.903727",
+  "@@last_modified": "2026-01-07 14:24:41.103817",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11787,6 +11787,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "תרגול הגדרה נכונה של אוצר מילים",
+  "constructUseIncLMDesc": "תרגול הגדרה שגויה של אוצר מילים",
+  "constructUseCorLADesc": "תרגול שמע נכון של אוצר מילים",
+  "constructUseIncLADesc": "תרגול שמע שגוי של אוצר מילים",
+  "constructUseBonus": "בונוס במהלך תרגול אוצר מילים",
+  "practiceVocab": "תרגל אוצר מילים",
+  "selectMeaning": "בחר את המשמעות",
+  "selectAudio": "בחר את השמע התואם",
+  "congratulations": "מזל טוב!",
+  "anotherRound": "סיבוב נוסף",
+  "noActivityRequest": "אין בקשת פעילות נוכחית.",
+  "quit": "צא",
+  "congratulationsYouveCompletedPractice": "מזל טוב! סיימת את מושב האימון.",
+  "mustHave10Words": "עליך שיהיו לפחות 10 מילים לאוצר מילים כדי לתרגל אותן. נסה לדבר עם חבר או עם פנגיאה בוט כדי לגלות עוד!",
+  "botSettings": "הגדרות בוט",
+  "activitySettingsOverrideWarning": "שפה ורמת שפה נקבעות על ידי תוכנית הפעילות",
+  "voice": "קול",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

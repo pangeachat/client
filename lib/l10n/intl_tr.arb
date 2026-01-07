@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-06 13:02:09.596458",
+  "@@last_modified": "2026-01-07 14:27:16.503973",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -10960,6 +10960,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Doğru kelime tanımı pratiği",
+  "constructUseIncLMDesc": "Yanlış kelime tanımı pratiği",
+  "constructUseCorLADesc": "Doğru kelime ses pratiği",
+  "constructUseIncLADesc": "Yanlış kelime ses pratiği",
+  "constructUseBonus": "Kelime pratiği sırasında bonus",
+  "practiceVocab": "Kelime pratiği yap",
+  "selectMeaning": "Anlamı seç",
+  "selectAudio": "Eşleşen sesi seç",
+  "congratulations": "Tebrikler!",
+  "anotherRound": "Bir tur daha",
+  "noActivityRequest": "Şu anda etkinlik talebi yok.",
+  "quit": "Çık",
+  "congratulationsYouveCompletedPractice": "Tebrikler! Pratik oturumunu tamamladınız.",
+  "mustHave10Words": "Pratik yapmak için en az 10 kelimeye sahip olmalısınız. Daha fazla keşfetmek için bir arkadaşınızla veya Pangea Bot ile konuşmayı deneyin!",
+  "botSettings": "Bot Ayarları",
+  "activitySettingsOverrideWarning": "Etkinlik planı tarafından belirlenen dil ve dil seviyesi",
+  "voice": "Ses",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

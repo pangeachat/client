@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-06 13:01:21.058681",
+  "@@last_modified": "2026-01-07 14:24:33.836325",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11110,6 +11110,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Ispravna praksa definicije vokabulara",
+  "constructUseIncLMDesc": "Neispravna praksa definicije vokabulara",
+  "constructUseCorLADesc": "Ispravna praksa audio vokabulara",
+  "constructUseIncLADesc": "Neispravna praksa audio vokabulara",
+  "constructUseBonus": "Bonus tijekom prakse vokabulara",
+  "practiceVocab": "Vježbajte vokabular",
+  "selectMeaning": "Odaberite značenje",
+  "selectAudio": "Odaberite odgovarajući audio",
+  "congratulations": "Čestitamo!",
+  "anotherRound": "Još jedan krug",
+  "noActivityRequest": "Nema trenutnog zahtjeva za aktivnost.",
+  "quit": "Izlaz",
+  "congratulationsYouveCompletedPractice": "Čestitamo! Završili ste sesiju vježbanja.",
+  "mustHave10Words": "Morate imati najmanje 10 riječi za vokabular kako biste ih vježbali. Pokušajte razgovarati s prijateljem ili Pangea Botom kako biste otkrili više!",
+  "botSettings": "Postavke Bota",
+  "activitySettingsOverrideWarning": "Jezik i razina jezika određeni planom aktivnosti",
+  "voice": "Glas",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

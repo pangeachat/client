@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-06 13:02:25.686469",
+  "@@last_modified": "2026-01-07 14:27:59.550670",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10729,6 +10729,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "正确的词汇定义练习",
+  "constructUseIncLMDesc": "错误的词汇定义练习",
+  "constructUseCorLADesc": "正确的词汇音频练习",
+  "constructUseIncLADesc": "错误的词汇音频练习",
+  "constructUseBonus": "词汇练习期间的奖励",
+  "practiceVocab": "练习词汇",
+  "selectMeaning": "选择意思",
+  "selectAudio": "选择匹配的音频",
+  "congratulations": "恭喜！",
+  "anotherRound": "再来一轮",
+  "noActivityRequest": "当前没有活动请求。",
+  "quit": "退出",
+  "congratulationsYouveCompletedPractice": "恭喜！您已完成练习课程。",
+  "mustHave10Words": "您必须至少有 10 个词汇来进行练习。尝试与朋友或 Pangea Bot 交谈以发现更多！",
+  "botSettings": "机器人设置",
+  "activitySettingsOverrideWarning": "活动计划确定的语言和语言级别",
+  "voice": "声音",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

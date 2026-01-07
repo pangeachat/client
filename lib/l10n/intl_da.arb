@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-06 13:01:06.115252",
+  "@@last_modified": "2026-01-07 14:23:47.042043",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11799,6 +11799,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Korrekt orddefinition praksis",
+  "constructUseIncLMDesc": "Forkert orddefinition praksis",
+  "constructUseCorLADesc": "Korrekt ordlyd praksis",
+  "constructUseIncLADesc": "Forkert ordlyd praksis",
+  "constructUseBonus": "Bonus under ordpraksis",
+  "practiceVocab": "Øv ordforråd",
+  "selectMeaning": "Vælg betydningen",
+  "selectAudio": "Vælg den matchende lyd",
+  "congratulations": "Tillykke!",
+  "anotherRound": "En runde mere",
+  "noActivityRequest": "Ingen aktuelle aktivitetsanmodning.",
+  "quit": "Afslut",
+  "congratulationsYouveCompletedPractice": "Tillykke! Du har gennemført øvelsessessionen.",
+  "mustHave10Words": "Du skal have mindst 10 ordforrådsord for at øve dem. Prøv at tale med en ven eller Pangea Bot for at opdage mere!",
+  "botSettings": "Botindstillinger",
+  "activitySettingsOverrideWarning": "Sprog og sprogniveau bestemt af aktivitetsplan",
+  "voice": "Stemme",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

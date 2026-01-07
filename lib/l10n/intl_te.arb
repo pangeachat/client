@@ -1920,7 +1920,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-06 13:02:11.522520",
+  "@@last_modified": "2026-01-07 14:27:24.330788",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11827,6 +11827,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "సరైన పదకోశ నిర్వచన అభ్యాసం",
+  "constructUseIncLMDesc": "తప్పు పదకోశ నిర్వచన అభ్యాసం",
+  "constructUseCorLADesc": "సరైన పదకోశ ఆడియో అభ్యాసం",
+  "constructUseIncLADesc": "తప్పు పదకోశ ఆడియో అభ్యాసం",
+  "constructUseBonus": "పదకోశ అభ్యాసం సమయంలో బోనస్",
+  "practiceVocab": "పదకోశాన్ని అభ్యాసం చేయండి",
+  "selectMeaning": "అర్థాన్ని ఎంచుకోండి",
+  "selectAudio": "సమానమైన ఆడియోను ఎంచుకోండి",
+  "congratulations": "అభినందనలు!",
+  "anotherRound": "మరొక రౌండ్",
+  "noActivityRequest": "ప్రస్తుతం ఎలాంటి కార్యకలాపం అభ్యర్థన లేదు.",
+  "quit": "విడుదల",
+  "congratulationsYouveCompletedPractice": "అభినందనలు! మీరు అభ్యాస సెషన్‌ను పూర్తి చేశారు.",
+  "mustHave10Words": "మీరు వాటిని అభ్యాసం చేయడానికి కనీసం 10 పదాలను కలిగి ఉండాలి. మరింత తెలుసుకోవడానికి మీ స్నేహితుడితో లేదా పాంజియా బాట్‌తో మాట్లాడండి!",
+  "botSettings": "బాట్ సెట్టింగులు",
+  "activitySettingsOverrideWarning": "కార్యకలాపం ప్రణాళిక ద్వారా నిర్ణయించబడిన భాష మరియు భాష స్థాయి",
+  "voice": "శబ్దం",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

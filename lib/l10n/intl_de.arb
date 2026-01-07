@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-06 13:01:34.264308",
+  "@@last_modified": "2026-01-07 14:25:24.418870",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10745,6 +10745,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Korrekte Vokabeldefinitionsübung",
+  "constructUseIncLMDesc": "Falsche Vokabeldefinitionsübung",
+  "constructUseCorLADesc": "Korrekte Vokabelaudioübung",
+  "constructUseIncLADesc": "Falsche Vokabelaudioübung",
+  "constructUseBonus": "Bonus während der Vokabelübung",
+  "practiceVocab": "Vokabeln üben",
+  "selectMeaning": "Wähle die Bedeutung",
+  "selectAudio": "Wähle das passende Audio",
+  "congratulations": "Herzlichen Glückwunsch!",
+  "anotherRound": "Eine weitere Runde",
+  "noActivityRequest": "Keine aktuellen Aktivitätsanfragen.",
+  "quit": "Beenden",
+  "congratulationsYouveCompletedPractice": "Herzlichen Glückwunsch! Sie haben die Übungssitzung abgeschlossen.",
+  "mustHave10Words": "Sie müssen mindestens 10 Vokabeln haben, um sie zu üben. Versuchen Sie, mit einem Freund oder dem Pangea Bot zu sprechen, um mehr zu entdecken!",
+  "botSettings": "Bot-Einstellungen",
+  "activitySettingsOverrideWarning": "Sprache und Sprachniveau werden durch den Aktivitätsplan bestimmt",
+  "voice": "Stimme",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

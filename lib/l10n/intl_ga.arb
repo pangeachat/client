@@ -4517,7 +4517,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-06 13:02:48.899020",
+  "@@last_modified": "2026-01-07 14:29:21.686769",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10736,6 +10736,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Cleachtadh ar shainmhíniú ceart foclóra",
+  "constructUseIncLMDesc": "Cleachtadh ar shainmhíniú mícheart foclóra",
+  "constructUseCorLADesc": "Cleachtadh ar chluastuiscint ceart foclóra",
+  "constructUseIncLADesc": "Cleachtadh ar chluastuiscint mícheart foclóra",
+  "constructUseBonus": "Bónas le linn cleachtaidh foclóra",
+  "practiceVocab": "Cleachtadh foclóra",
+  "selectMeaning": "Roghnaigh an bhrí",
+  "selectAudio": "Roghnaigh an chluastuiscint comhoiriúnach",
+  "congratulations": "Comhghairdeas!",
+  "anotherRound": "Ciorcal eile",
+  "noActivityRequest": "Níl aon iarratas gníomhaíochta reatha.",
+  "quit": "Dícheangail",
+  "congratulationsYouveCompletedPractice": "Comhghairdeas! Tá an seisiún cleachtaidh críochnaithe agat.",
+  "mustHave10Words": "Caithfidh go mbeidh 10 focal le haghaidh cleachtaidh agat ar a laghad. Bain triail as labhairt le cara nó le Pangea Bot chun tuilleadh a fháil amach!",
+  "botSettings": "Socruithe an Bhot",
+  "activitySettingsOverrideWarning": "Teanga agus leibhéal teanga a chinneadh de réir plean gníomhaíochta",
+  "voice": "Guth",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

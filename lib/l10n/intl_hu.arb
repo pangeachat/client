@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-06 13:01:08.359844",
+  "@@last_modified": "2026-01-07 14:23:56.196432",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10739,6 +10739,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Helyes szókincs definíció gyakorlás",
+  "constructUseIncLMDesc": "Helytelen szókincs definíció gyakorlás",
+  "constructUseCorLADesc": "Helyes szókincs audio gyakorlás",
+  "constructUseIncLADesc": "Helytelen szókincs audio gyakorlás",
+  "constructUseBonus": "Bónusz a szókincs gyakorlás során",
+  "practiceVocab": "Szókincs gyakorlás",
+  "selectMeaning": "Jelöld ki a jelentést",
+  "selectAudio": "Válaszd ki a megfelelő audiót",
+  "congratulations": "Gratulálunk!",
+  "anotherRound": "Még egy kör",
+  "noActivityRequest": "Jelenleg nincs aktivitás kérés.",
+  "quit": "Kilépés",
+  "congratulationsYouveCompletedPractice": "Gratulálunk! Befejezted a gyakorló ülést.",
+  "mustHave10Words": "Legalább 10 szókincsszót kellene gyakorolnod. Próbálj meg beszélni egy baráttal vagy a Pangea Bot-tal, hogy többet felfedezhess!",
+  "botSettings": "Bot beállítások",
+  "activitySettingsOverrideWarning": "A nyelvet és a nyelvi szintet az aktivitási terv határozza meg",
+  "voice": "Hang",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

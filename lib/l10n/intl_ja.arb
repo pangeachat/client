@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-06 13:02:37.951868",
+  "@@last_modified": "2026-01-07 14:28:40.112996",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11528,6 +11528,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "正しい語彙定義の練習",
+  "constructUseIncLMDesc": "誤った語彙定義の練習",
+  "constructUseCorLADesc": "正しい語彙音声の練習",
+  "constructUseIncLADesc": "誤った語彙音声の練習",
+  "constructUseBonus": "語彙練習中のボーナス",
+  "practiceVocab": "語彙を練習する",
+  "selectMeaning": "意味を選択する",
+  "selectAudio": "一致する音声を選択する",
+  "congratulations": "おめでとうございます！",
+  "anotherRound": "もう一回",
+  "noActivityRequest": "現在のアクティビティリクエストはありません。",
+  "quit": "終了",
+  "congratulationsYouveCompletedPractice": "おめでとうございます！練習セッションを完了しました。",
+  "mustHave10Words": "練習するには、少なくとも10語の語彙が必要です。友達やPangea Botに話しかけて、もっと発見してみてください！",
+  "botSettings": "ボット設定",
+  "activitySettingsOverrideWarning": "アクティビティプランによって決定された言語と言語レベル",
+  "voice": "声",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

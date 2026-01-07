@@ -6,6 +6,8 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -15,6 +17,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
   final String name;
   final String? userId;
   final User? user;
+  final Room? room;
 
   final VoidCallback? onTap;
   final bool selected;
@@ -29,6 +32,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
     super.key,
     required this.name,
     this.user,
+    this.room,
     this.userId,
     this.selected = false,
     this.selectable = true,
@@ -50,6 +54,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                 ? () => showMemberActionsPopupMenu(
                       context: context,
                       user: user!,
+                      room: room,
                     )
                 : null),
         child: AbsorbPointer(
@@ -65,6 +70,14 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           name: userId!.localpart,
                           size: 60.0,
                           userId: userId,
+                          miniIcon:
+                              room != null && userId == BotName.byEnvironment
+                                  ? BotSettingsLanguageIcon(room: room!)
+                                  : null,
+                          presenceOffset:
+                              room != null && userId == BotName.byEnvironment
+                                  ? const Offset(0, 0)
+                                  : null,
                         )
                       : ClipRRect(
                           borderRadius: BorderRadius.circular(30),

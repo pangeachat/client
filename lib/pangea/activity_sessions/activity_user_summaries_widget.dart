@@ -297,6 +297,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4),
                     selected: highlightedRole?.id == userRole.id,
                     onTap: () => _scrollToUser(userRole, index, cardWidth),
+                    room: controller.room,
                   );
                 },
               );

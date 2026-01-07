@@ -2594,7 +2594,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-06 13:02:45.195897",
+  "@@last_modified": "2026-01-07 14:29:07.353656",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11768,6 +11768,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "სწორი სიტყვების განმარტების პრაქტიკა",
+  "constructUseIncLMDesc": "არასწორი სიტყვების განმარტების პრაქტიკა",
+  "constructUseCorLADesc": "სწორი სიტყვების აუდიო პრაქტიკა",
+  "constructUseIncLADesc": "არასწორი სიტყვების აუდიო პრაქტიკა",
+  "constructUseBonus": "ბონუსი სიტყვების პრაქტიკის დროს",
+  "practiceVocab": "სიტყვების პრაქტიკა",
+  "selectMeaning": "მნიშვნელობის არჩევა",
+  "selectAudio": "შესაბამის აუდიოს არჩევა",
+  "congratulations": "გილოცავთ!",
+  "anotherRound": "მეორე რაუნდი",
+  "noActivityRequest": "ამჟამად აქტივობის მოთხოვნა არ არის.",
+  "quit": "გამოსვლა",
+  "congratulationsYouveCompletedPractice": "გილოცავთ! თქვენ დაასრულეთ პრაქტიკის სესია.",
+  "mustHave10Words": "თქვენ უნდა გქონდეთ მინიმუმ 10 სიტყვა, რომ მათ პრაქტიკაში გამოიყენოთ. სცადეთ მეგობართან ან Pangea Bot-თან საუბარი, რომ მეტი აღმოაჩინოთ!",
+  "botSettings": "ბოტის პარამეტრები",
+  "activitySettingsOverrideWarning": "ენასა და ენების დონეს განსაზღვრავს აქტივობის გეგმა",
+  "voice": "ხმა",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

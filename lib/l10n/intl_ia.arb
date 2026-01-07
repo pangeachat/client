@@ -1958,7 +1958,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-01-06 13:01:24.542087",
+  "@@last_modified": "2026-01-07 14:24:47.787013",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11816,6 +11816,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Praktiko de ĝusta vortaro difino",
+  "constructUseIncLMDesc": "Praktiko de malĝusta vortaro difino",
+  "constructUseCorLADesc": "Praktiko de ĝusta vortaro aŭdio",
+  "constructUseIncLADesc": "Praktiko de malĝusta vortaro aŭdio",
+  "constructUseBonus": "Bonus dum vortaro praktiko",
+  "practiceVocab": "Praktiki vortaron",
+  "selectMeaning": "Elekti la signifon",
+  "selectAudio": "Elekti la kongruan aŭdion",
+  "congratulations": "Gratulon!",
+  "anotherRound": "Alia rundo",
+  "noActivityRequest": "Ninguna solicitud de actividad actual.",
+  "quit": "Salir",
+  "congratulationsYouveCompletedPractice": "¡Felicidades! Has completado la sesión de práctica.",
+  "mustHave10Words": "Debes tener al menos 10 palabras de vocabulario para practicarlas. ¡Intenta hablar con un amigo o con Pangea Bot para descubrir más!",
+  "botSettings": "Configuraciones del Bot",
+  "activitySettingsOverrideWarning": "Idioma y nivel de idioma determinados por el plan de actividad",
+  "voice": "Voz",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

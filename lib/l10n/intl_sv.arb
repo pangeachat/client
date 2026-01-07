@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-06 13:02:34.358506",
+  "@@last_modified": "2026-01-07 14:28:25.359543",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11216,6 +11216,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Korrekt vokabulär definitionsövning",
+  "constructUseIncLMDesc": "Inkorrekt vokabulär definitionsövning",
+  "constructUseCorLADesc": "Korrekt vokabulär ljudövning",
+  "constructUseIncLADesc": "Inkorrekt vokabulär ljudövning",
+  "constructUseBonus": "Bonus under vokabulärövning",
+  "practiceVocab": "Öva vokabulär",
+  "selectMeaning": "Välj betydelsen",
+  "selectAudio": "Välj den matchande ljudfilen",
+  "congratulations": "Grattis!",
+  "anotherRound": "En runda till",
+  "noActivityRequest": "Ingen aktuell aktivitetsförfrågan.",
+  "quit": "Avsluta",
+  "congratulationsYouveCompletedPractice": "Grattis! Du har slutfört övningssessionen.",
+  "mustHave10Words": "Du måste ha minst 10 ord för att öva dem. Försök att prata med en vän eller Pangea Bot för att upptäcka mer!",
+  "botSettings": "Botinställningar",
+  "activitySettingsOverrideWarning": "Språk och språknivå bestäms av aktivitetsplanen",
+  "voice": "Röst",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

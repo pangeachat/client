@@ -187,6 +187,7 @@ class RoomParticipantsSection extends StatelessWidget {
                                   onTap: () => showMemberActionsPopupMenu(
                                     context: context,
                                     user: user,
+                                    room: room,
                                   ),
                                   child: Center(
                                     child: Avatar(
