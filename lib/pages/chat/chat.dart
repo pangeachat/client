@@ -1997,6 +1997,17 @@ class ChatController extends State<ChatPageWithRoom>
   bool get _isToolbarOpen =>
       MatrixState.pAnyState.isOverlayOpen(RegExp(r'^message_toolbar_overlay$'));
 
+  bool showMessageShimmer(Event event) {
+    if (event.type != EventTypes.Message) return false;
+    if (event.messageType == MessageTypes.Text) {
+      return !InstructionsEnum.clickTextMessages.isToggledOff;
+    }
+    if (event.messageType == MessageTypes.Audio) {
+      return !InstructionsEnum.clickAudioMessages.isToggledOff;
+    }
+    return false;
+  }
+
   void showToolbar(
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
@@ -2060,6 +2071,14 @@ class ChatController extends State<ChatPageWithRoom>
 
     // you've clicked a message so lets turn this off
     InstructionsEnum.clickMessage.setToggledOff(true);
+    if (event.messageType == MessageTypes.Text &&
+        !InstructionsEnum.clickTextMessages.isToggledOff) {
+      InstructionsEnum.clickTextMessages.setToggledOff(true);
+    }
+    if (event.messageType == MessageTypes.Audio &&
+        !InstructionsEnum.clickAudioMessages.isToggledOff) {
+      InstructionsEnum.clickAudioMessages.setToggledOff(true);
+    }
 
     if (!kIsWeb) {
       HapticFeedback.mediumImpact();
