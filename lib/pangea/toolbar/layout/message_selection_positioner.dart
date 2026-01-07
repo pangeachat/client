@@ -454,9 +454,18 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                           listenable:
                               widget.overlayController.practiceController,
                           builder: (context, _) {
-                            final instruction = widget.overlayController
-                                .practiceController.practiceMode.instruction;
-                            if (instruction != null) {
+                            final practice =
+                                widget.overlayController.practiceController;
+
+                            final instruction =
+                                practice.practiceMode.instruction;
+
+                            final type =
+                                practice.practiceMode.associatedActivityType;
+                            final complete = type != null &&
+                                practice.isPracticeActivityDone(type);
+
+                            if (instruction != null && !complete) {
                               return InstructionsInlineTooltip(
                                 instructionsEnum: widget
                                     .overlayController
