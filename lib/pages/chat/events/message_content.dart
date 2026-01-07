@@ -208,6 +208,7 @@ class MessageContent extends StatelessWidget {
                 roomId: event.room.id,
                 senderId: event.senderId,
                 autoplay: overlayController != null && isTransitionAnimation,
+                enableClicks: overlayController != null,
                 // Pangea#
               );
             }

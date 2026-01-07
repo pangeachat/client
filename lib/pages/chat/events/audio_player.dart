@@ -34,6 +34,7 @@ class AudioPlayerWidget extends StatefulWidget {
   final String senderId;
   final PangeaAudioFile? matrixFile;
   final bool autoplay;
+  final bool enableClicks;
   // Pangea#
 
   static const int wavesCount = 40;
@@ -49,6 +50,7 @@ class AudioPlayerWidget extends StatefulWidget {
     required this.senderId,
     this.matrixFile,
     this.autoplay = false,
+    this.enableClicks = true,
     // Pangea#
     super.key,
   });
@@ -564,13 +566,25 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                         : Colors.transparent,
                                     max: maxPosition,
                                     value: currentPosition,
-                                    onChanged: (position) => audioPlayer == null
-                                        ? _onButtonTap()
-                                        : audioPlayer.seek(
-                                            Duration(
-                                              milliseconds: position.round(),
-                                            ),
-                                          ),
+                                    // #Pangea
+                                    onChanged: !widget.enableClicks
+                                        ? null
+                                        : (position) => audioPlayer == null
+                                            ? _onButtonTap()
+                                            : audioPlayer.seek(
+                                                Duration(
+                                                  milliseconds:
+                                                      position.round(),
+                                                ),
+                                              ),
+                                    // onChanged: (position) => audioPlayer == null
+                                    //     ? _onButtonTap()
+                                    //     : audioPlayer.seek(
+                                    //         Duration(
+                                    //           milliseconds: position.round(),
+                                    //         ),
+                                    //       ),
+                                    // Pangea#
                                   ),
                                 ),
                               ],
@@ -605,7 +619,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                             child: InkWell(
                               borderRadius:
                                   BorderRadius.circular(AppConfig.borderRadius),
-                              onTap: _toggleSpeed,
+                              onTap: !widget.enableClicks ? null : _toggleSpeed,
                               child: SizedBox(
                                 width: 32,
                                 height: 20,
