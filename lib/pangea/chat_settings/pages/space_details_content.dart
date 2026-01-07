@@ -254,16 +254,7 @@ class SpaceDetailsContent extends StatelessWidget {
           Icons.delete_outline,
           size: 30.0,
         ),
-        onPressed: () async {
-          final resp = await showDialog<bool?>(
-            context: context,
-            builder: (_) => DeleteSpaceDialog(space: room),
-          );
-
-          if (resp == true) {
-            context.go("/rooms");
-          }
-        },
+        onPressed: () => DeleteSpaceDialog.show(room, context),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),

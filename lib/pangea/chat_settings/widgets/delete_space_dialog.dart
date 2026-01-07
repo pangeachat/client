@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -9,6 +10,7 @@ import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class DeleteSpaceDialog extends StatefulWidget {
   final Room space;
@@ -16,6 +18,48 @@ class DeleteSpaceDialog extends StatefulWidget {
     super.key,
     required this.space,
   });
+
+  static Future<void> show(
+    Room room,
+    BuildContext context,
+  ) async {
+    final resp = await showDialog<List<SpaceRoomsChunk>?>(
+      context: context,
+      builder: (_) => DeleteSpaceDialog(space: room),
+    );
+    if (resp == null) return;
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: () => _deleteSpace(room, resp),
+    );
+
+    if (!result.isError) {
+      context.go("/rooms");
+    }
+  }
+
+  static Future<void> _deleteSpace(
+    Room space,
+    List<SpaceRoomsChunk> rooms,
+  ) async {
+    final List<Future<void>> futures = [];
+    for (final room in rooms) {
+      final roomInstance = space.client.getRoomById(room.roomId);
+      if (roomInstance != null) {
+        // Niether delete not leave activities the user has archived,
+        // since they're hidden in the main chat UI.
+        if (roomInstance.isActivitySession) {
+          if (!roomInstance.hasArchivedActivity) {
+            futures.add(roomInstance.leave());
+          }
+        } else {
+          futures.add(roomInstance.delete());
+        }
+      }
+    }
+    await Future.wait(futures);
+    await space.delete();
+  }
 
   @override
   State<DeleteSpaceDialog> createState() => DeleteSpaceDialogState();
@@ -28,7 +72,7 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
   bool _loadingRooms = true;
   String? _roomLoadError;
 
-  bool _deleting = false;
+  final bool _deleting = false;
   String? _deleteError;
 
   @override
@@ -97,49 +141,6 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
           room.membership == Membership.join &&
           room.isRoomAdmin;
     }).toList();
-  }
-
-  Future<void> _deleteSpace() async {
-    setState(() {
-      _deleting = true;
-      _deleteError = null;
-    });
-
-    try {
-      final List<Future<void>> futures = [];
-      for (final room in _roomsToDelete) {
-        final roomInstance = widget.space.client.getRoomById(room.roomId);
-        if (roomInstance != null) {
-          // Niether delete not leave activities the user has archived,
-          // since they're hidden in the main chat UI.
-          if (roomInstance.isActivitySession) {
-            if (!roomInstance.hasArchivedActivity) {
-              futures.add(roomInstance.leave());
-            }
-          } else {
-            futures.add(roomInstance.delete());
-          }
-        }
-      }
-      await Future.wait(futures);
-      await widget.space.delete();
-      Navigator.of(context).pop(true);
-    } catch (e, s) {
-      _deleteError = L10n.of(context).oopsSomethingWentWrong;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "roomID": widget.space.id,
-        },
-      );
-    } finally {
-      if (mounted) {
-        setState(() {
-          _deleting = false;
-        });
-      }
-    }
   }
 
   @override
@@ -271,7 +272,8 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
                   AnimatedSize(
                     duration: FluffyThemes.animationDuration,
                     child: OutlinedButton(
-                      onPressed: _deleting ? null : _deleteSpace,
+                      onPressed: () =>
+                          Navigator.of(context).pop(_roomsToDelete),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Theme.of(context).colorScheme.error,
                         side: BorderSide(
