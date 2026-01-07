@@ -159,8 +159,7 @@ class HtmlMessage extends StatelessWidget {
           ?.where(
             (t) =>
                 !["SYM"].contains(t.pos) &&
-                !t.lemma.text.contains(RegExp(r'[0-9]')) &&
-                t.lemma.text.length <= 50,
+                !t.lemma.text.contains(RegExp(r'[0-9]')),
           )
           .toList();
 
