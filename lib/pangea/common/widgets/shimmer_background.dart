@@ -7,12 +7,14 @@ import 'package:fluffychat/config/app_config.dart';
 class ShimmerBackground extends StatelessWidget {
   final Widget child;
   final Color shimmerColor;
+  final Color? baseColor;
   final bool enabled;
 
   const ShimmerBackground({
     super.key,
     required this.child,
     this.shimmerColor = AppConfig.goldLight,
+    this.baseColor,
     this.enabled = true,
   });
 
@@ -27,7 +29,7 @@ class ShimmerBackground extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                 child: Shimmer.fromColors(
-                  baseColor: shimmerColor.withValues(alpha: 0.1),
+                  baseColor: baseColor ?? shimmerColor.withValues(alpha: 0.1),
                   highlightColor: shimmerColor.withValues(alpha: 0.6),
                   direction: ShimmerDirection.ltr,
                   child: Container(
