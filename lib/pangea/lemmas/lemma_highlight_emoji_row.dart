@@ -184,6 +184,7 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
               shimmerColor: (Theme.of(context).brightness == Brightness.dark)
                   ? Colors.white
                   : Theme.of(context).colorScheme.primary,
+              baseColor: Theme.of(context).colorScheme.surface,
               child: CompositedTransformTarget(
                 link: MatrixState.pAnyState
                     .layerLinkAndKey(widget.transformTargetId)
