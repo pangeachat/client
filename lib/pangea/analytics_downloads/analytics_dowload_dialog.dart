@@ -123,7 +123,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         });
 
         final fileName =
-            "analytics_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx'}";
+            "analytics_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx";
 
         await DownloadUtil.downloadFile(
           content,
