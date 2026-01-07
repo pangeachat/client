@@ -51,9 +51,6 @@ class MessageSelectionPositioner extends StatefulWidget {
 
 class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     with TickerProviderStateMixin {
-  StreamSubscription? _reactionSubscription;
-  StreamSubscription? _contentChangedSubscription;
-
   ScrollController? scrollController;
 
   ValueNotifier<bool> finishedTransition = ValueNotifier(false);
@@ -79,36 +76,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         });
       },
     );
-
-    _reactionSubscription =
-        widget.chatController.room.client.onSync.stream.where(
-      (update) {
-        // check if this sync update has a reaction event or a
-        // redaction (of a reaction event). If so, rebuild the overlay
-        final room = widget.chatController.room;
-        final timelineEvents = update.rooms?.join?[room.id]?.timeline?.events;
-        if (timelineEvents == null) return false;
-
-        final eventID = widget.event.eventId;
-        return timelineEvents.any(
-          (e) =>
-              e.type == EventTypes.Redaction ||
-              (e.type == EventTypes.Reaction &&
-                  Event.fromMatrixEvent(e, room).relationshipEventId ==
-                      eventID),
-        );
-      },
-    ).listen((_) => setState(() {}));
-
-    _contentChangedSubscription = widget
-        .overlayController.selectModeController.contentChangedStream.stream
-        .listen(_onContentSizeChanged);
   }
 
   @override
   void dispose() {
-    _reactionSubscription?.cancel();
-    _contentChangedSubscription?.cancel();
     scrollController?.dispose();
     super.dispose();
   }
@@ -156,11 +127,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     return hasReactions ? 28.0 : 0.0;
   }
 
-  double get reactionsWidth {
+  double? get reactionsWidth {
     if (_reactionsRenderBox != null) {
       return _reactionsRenderBox!.size.width;
     }
-    return 0.0;
+    return null;
   }
 
   bool get ownMessage =>
@@ -386,12 +357,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     return boxHeight;
-  }
-
-  void _onContentSizeChanged(_) {
-    Future.delayed(FluffyThemes.animationDuration, () {
-      if (mounted) setState(() {});
-    });
   }
 
   void onStartedTransition() {

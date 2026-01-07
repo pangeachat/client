@@ -100,7 +100,7 @@ class OverlayCenterContent extends StatelessWidget {
                   event,
                   chatController.timeline!,
                   chatController,
-                  maxWidth: reactionsWidth,
+                  width: reactionsWidth,
                 ),
               ),
             ],
