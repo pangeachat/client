@@ -20,13 +20,13 @@ class PangeaMessageReactions extends StatefulWidget {
   final Event event;
   final Timeline timeline;
   final ChatController controller;
-  final double? maxWidth;
+  final double? width;
 
   const PangeaMessageReactions(
     this.event,
     this.timeline,
     this.controller, {
-    this.maxWidth,
+    this.width,
     super.key,
   });
 
@@ -125,7 +125,7 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
     return SizedBox(
       width: allReactionEvents.any((e) => e.status.isSending)
           ? null
-          : widget.maxWidth,
+          : widget.width,
       child: Directionality(
         textDirection: ownMessage ? TextDirection.rtl : TextDirection.ltr,
         child: Wrap(
