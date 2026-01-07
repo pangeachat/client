@@ -21,6 +21,8 @@ import 'package:fluffychat/pangea/practice_activities/message_activity_request.d
 import 'package:fluffychat/pangea/practice_activities/morph_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/word_focus_listening_generator.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_audio_activity_generator.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents an item in the completion cache.
@@ -70,7 +72,7 @@ class PracticeRepo {
         messageInfo: messageInfo,
       );
 
-      _setCached(req, res);
+      await _setCached(req, res);
       return Result.value(res.activity);
     } on HttpException catch (e, s) {
       return Result.error(e, s);
@@ -119,6 +121,10 @@ class PracticeRepo {
         return EmojiActivityGenerator.get(req, messageInfo: messageInfo);
       case ActivityTypeEnum.lemmaId:
         return LemmaActivityGenerator.get(req);
+      case ActivityTypeEnum.lemmaMeaning:
+        return VocabMeaningActivityGenerator.get(req);
+      case ActivityTypeEnum.lemmaAudio:
+        return VocabAudioActivityGenerator.get(req);
       case ActivityTypeEnum.morphId:
         return MorphActivityGenerator.get(req);
       case ActivityTypeEnum.wordMeaning:
@@ -161,16 +167,15 @@ class PracticeRepo {
     return null;
   }
 
-  static void _setCached(
+  static Future<void> _setCached(
     MessageActivityRequest req,
     MessageActivityResponse res,
-  ) {
-    _storage.write(
-      req.hashCode.toString(),
-      _RequestCacheItem(
-        practiceActivity: res.activity,
-        timestamp: DateTime.now(),
-      ).toJson(),
-    );
-  }
+  ) =>
+      _storage.write(
+        req.hashCode.toString(),
+        _RequestCacheItem(
+          practiceActivity: res.activity,
+          timestamp: DateTime.now(),
+        ).toJson(),
+      );
 }

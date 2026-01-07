@@ -53,7 +53,7 @@ class AnalyticsDataService {
   AnalyticsSyncController? _syncController;
   final ConstructMergeTable _mergeTable = ConstructMergeTable();
 
-  Completer<void> _initCompleter = Completer<void>();
+  Completer<void> initCompleter = Completer<void>();
 
   AnalyticsDataService(Client client) {
     updateDispatcher = AnalyticsUpdateDispatcher(this);
@@ -77,7 +77,7 @@ class AnalyticsDataService {
     return _analyticsClient!;
   }
 
-  bool get isInitializing => !_initCompleter.isCompleted;
+  bool get isInitializing => !initCompleter.isCompleted;
 
   Future<Room?> getAnalyticsRoom(LanguageModel l2) =>
       _analyticsClientGetter.client.getMyAnalyticsRoom(l2);
@@ -155,7 +155,7 @@ class AnalyticsDataService {
       Logs().e("Error initializing analytics: $e, $s");
     } finally {
       Logs().i("Analytics database initialized.");
-      _initCompleter.complete();
+      initCompleter.complete();
       updateDispatcher.sendConstructAnalyticsUpdate(AnalyticsUpdate([]));
     }
   }
@@ -173,7 +173,7 @@ class AnalyticsDataService {
 
   Future<void> reinitialize() async {
     Logs().i("Reinitializing analytics database.");
-    _initCompleter = Completer<void>();
+    initCompleter = Completer<void>();
     await _clearDatabase();
     await _initDatabase(_analyticsClientGetter.client);
   }
@@ -192,7 +192,7 @@ class AnalyticsDataService {
   }
 
   Future<void> _ensureInitialized() =>
-      _initCompleter.isCompleted ? Future.value() : _initCompleter.future;
+      initCompleter.isCompleted ? Future.value() : initCompleter.future;
 
   int numConstructs(ConstructTypeEnum type) =>
       _mergeTable.uniqueConstructsByType(type);

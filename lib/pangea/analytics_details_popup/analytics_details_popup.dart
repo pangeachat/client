@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
@@ -179,6 +182,72 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
           ),
         ),
       ),
+      floatingActionButton:
+          widget.view == ConstructTypeEnum.vocab && widget.construct == null
+              ? _buildVocabPracticeButton(context)
+              : null,
     );
   }
+}
+
+Widget _buildVocabPracticeButton(BuildContext context) {
+  // Check if analytics is loaded first
+  if (MatrixState
+      .pangeaController.matrixState.analyticsDataService.isInitializing) {
+    return FloatingActionButton.extended(
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'Loading vocabulary data...',
+            ),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      },
+      label: Text(L10n.of(context).practiceVocab),
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      foregroundColor:
+          Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+    );
+  }
+
+  final vocabCount = MatrixState
+      .pangeaController.matrixState.analyticsDataService
+      .numConstructs(ConstructTypeEnum.vocab);
+  final hasEnoughVocab = vocabCount >= 10;
+
+  return FloatingActionButton.extended(
+    onPressed: hasEnoughVocab
+        ? () {
+            context.go(
+              "/rooms/analytics/${ConstructTypeEnum.vocab.name}/practice",
+            );
+          }
+        : () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  L10n.of(context).mustHave10Words,
+                ),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
+          },
+    backgroundColor:
+        hasEnoughVocab ? null : Theme.of(context).colorScheme.surfaceContainer,
+    foregroundColor: hasEnoughVocab
+        ? null
+        : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+    label: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        if (!hasEnoughVocab) ...[
+          const Icon(Icons.lock_outline, size: 18),
+          const SizedBox(width: 4),
+        ],
+        Text(L10n.of(context).practiceVocab),
+      ],
+    ),
+  );
 }

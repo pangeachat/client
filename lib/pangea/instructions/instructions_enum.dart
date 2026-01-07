@@ -31,6 +31,7 @@ enum InstructionsEnum {
   noSavedActivitiesYet,
   setLemmaEmoji,
   disableLanguageTools,
+  selectMeaning,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -41,6 +42,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisbledTitle;
       case InstructionsEnum.chooseWordAudio:
+      case InstructionsEnum.selectMeaning:
       case InstructionsEnum.chooseEmoji:
       case InstructionsEnum.activityPlannerOverview:
       case InstructionsEnum.speechToText:
@@ -125,6 +127,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;
+      case InstructionsEnum.selectMeaning:
+        return l10n.selectMeaning;
     }
   }
 

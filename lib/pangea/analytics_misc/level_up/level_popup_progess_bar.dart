@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 
 class LevelPopupProgressBar extends StatefulWidget {
@@ -35,8 +34,6 @@ class LevelPopupProgressBarState extends State<LevelPopupProgressBar> {
     return AnimatedProgressBar(
       height: widget.height,
       widthPercent: width,
-      barColor: AppConfig.goldLight,
-      backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
       duration: widget.duration,
     );
   }

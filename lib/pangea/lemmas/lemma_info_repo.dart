@@ -83,6 +83,16 @@ class LemmaInfoRepo {
     }
   }
 
+  ///clear cache of a specific request to retry if failed
+  static void clearCache(LemmaInfoRequest request) {
+    final key = request.hashCode.toString();
+    _cache.remove(key);
+  }
+
+  static void clearAllCache() {
+    _cache.clear();
+  }
+
   static Future<Result<LemmaInfoResponse>> _safeFetch(
     String token,
     LemmaInfoRequest request,

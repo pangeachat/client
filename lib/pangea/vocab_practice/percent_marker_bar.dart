@@ -1,24 +1,22 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 
-class AnimatedProgressBar extends StatelessWidget {
+// A progress bar with a rounded marker indicating a percentage position
+
+class PercentMarkerBar extends StatelessWidget {
   final double height;
   final double widthPercent;
-
-  final Color barColor;
+  final double markerWidth;
+  final Color markerColor;
   final Color? backgroundColor;
-  final Duration? duration;
 
-  const AnimatedProgressBar({
+  const PercentMarkerBar({
     required this.height,
     required this.widthPercent,
-    this.barColor = AppConfig.goldLight,
+    this.markerWidth = 10.0,
+    this.markerColor = AppConfig.goldLight,
     this.backgroundColor,
-    this.duration,
     super.key,
   });
 
@@ -26,36 +24,42 @@ class AnimatedProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
+        final totalWidth = constraints.maxWidth;
+        final halfMarker = markerWidth / 2;
+
+        // Calculate the center position of the marker
+        final targetPosition = totalWidth * widthPercent.clamp(0.0, 1.0);
+
+        // Calculate the start position, clamping to keep marker within bounds
+        final markerStart =
+            (targetPosition - halfMarker).clamp(0.0, totalWidth - markerWidth);
+
         return Stack(
           alignment: Alignment.centerLeft,
           children: [
+            // Background bar
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 2),
               child: Container(
                 height: height,
                 width: constraints.maxWidth,
                 decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(AppConfig.borderRadius),
-                  ),
+                  borderRadius: BorderRadius.circular(height / 2),
                   color: backgroundColor ??
                       Theme.of(context).colorScheme.secondaryContainer,
                 ),
               ),
             ),
+            // Marker circle
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 2),
-              child: AnimatedContainer(
-                duration: duration ?? FluffyThemes.animationDuration,
+              child: Container(
+                margin: EdgeInsets.only(left: markerStart),
                 height: height,
-                width: widthPercent == 0
-                    ? 0
-                    : max(18, constraints.maxWidth * widthPercent),
+                width: markerWidth,
                 decoration: BoxDecoration(
-                  color: barColor,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(AppConfig.borderRadius),
-                  ),
+                  color: markerColor,
+                  borderRadius: BorderRadius.circular(height / 2),
                 ),
               ),
             ),

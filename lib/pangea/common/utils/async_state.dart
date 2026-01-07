@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -71,6 +72,8 @@ abstract class AsyncLoader<T> {
 
   T? get value => isLoaded ? (state.value as AsyncLoaded<T>).value : null;
 
+  final Completer<T> completer = Completer<T>();
+
   void dispose() {
     _disposed = true;
     state.dispose();
@@ -79,7 +82,7 @@ abstract class AsyncLoader<T> {
   Future<T> fetch();
 
   Future<void> load() async {
-    if (state.value is AsyncLoading || state.value is AsyncLoaded) {
+    if (state.value is AsyncLoaded) {
       // If already loading or loaded, do nothing.
       return;
     }
@@ -90,19 +93,19 @@ abstract class AsyncLoader<T> {
       final result = await fetch();
       if (_disposed) return;
       state.value = AsyncState.loaded(result);
-    } on HttpException catch (e) {
+      completer.complete(result);
+    } catch (e, s) {
+      completer.completeError(e);
       if (!_disposed) {
         state.value = AsyncState.error(e);
       }
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {},
-      );
 
-      if (!_disposed) {
-        state.value = AsyncState.error(e);
+      if (e is! HttpException) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {},
+        );
       }
     }
   }

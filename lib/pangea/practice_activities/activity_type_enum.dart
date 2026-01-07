@@ -11,7 +11,9 @@ enum ActivityTypeEnum {
   lemmaId,
   emoji,
   morphId,
-  messageMeaning;
+  messageMeaning,
+  lemmaMeaning,
+  lemmaAudio;
 
   bool get includeTTSOnClick {
     switch (this) {
@@ -23,11 +25,13 @@ enum ActivityTypeEnum {
         return false;
       case ActivityTypeEnum.wordFocusListening:
       case ActivityTypeEnum.hiddenWordListening:
+      case ActivityTypeEnum.lemmaAudio:
+      case ActivityTypeEnum.lemmaMeaning:
         return true;
     }
   }
 
-  ActivityTypeEnum fromString(String value) {
+  static ActivityTypeEnum fromString(String value) {
     final split = value.split('.').last;
     switch (split) {
       // used to be called multiple_choice, but we changed it to word_meaning
@@ -52,6 +56,12 @@ enum ActivityTypeEnum {
         return ActivityTypeEnum.morphId;
       case 'message_meaning':
         return ActivityTypeEnum.messageMeaning; // TODO: Add to L10n
+      case 'lemma_meaning':
+      case 'lemmaMeaning':
+        return ActivityTypeEnum.lemmaMeaning;
+      case 'lemma_audio':
+      case 'lemmaAudio':
+        return ActivityTypeEnum.lemmaAudio;
       default:
         throw Exception('Unknown activity type: $split');
     }
@@ -96,7 +106,17 @@ enum ActivityTypeEnum {
           ConstructUseTypeEnum.corMM,
           ConstructUseTypeEnum.incMM,
           ConstructUseTypeEnum.ignMM,
-        ]; // TODO: Add to L10n
+        ];
+      case ActivityTypeEnum.lemmaAudio:
+        return [
+          ConstructUseTypeEnum.corLA,
+          ConstructUseTypeEnum.incLA,
+        ];
+      case ActivityTypeEnum.lemmaMeaning:
+        return [
+          ConstructUseTypeEnum.corLM,
+          ConstructUseTypeEnum.incLM,
+        ];
     }
   }
 
@@ -116,6 +136,10 @@ enum ActivityTypeEnum {
         return ConstructUseTypeEnum.corM;
       case ActivityTypeEnum.messageMeaning:
         return ConstructUseTypeEnum.corMM;
+      case ActivityTypeEnum.lemmaAudio:
+        return ConstructUseTypeEnum.corLA;
+      case ActivityTypeEnum.lemmaMeaning:
+        return ConstructUseTypeEnum.corLM;
     }
   }
 
@@ -135,15 +159,21 @@ enum ActivityTypeEnum {
         return ConstructUseTypeEnum.incM;
       case ActivityTypeEnum.messageMeaning:
         return ConstructUseTypeEnum.incMM;
+      case ActivityTypeEnum.lemmaAudio:
+        return ConstructUseTypeEnum.incLA;
+      case ActivityTypeEnum.lemmaMeaning:
+        return ConstructUseTypeEnum.incLM;
     }
   }
 
   IconData get icon {
     switch (this) {
       case ActivityTypeEnum.wordMeaning:
+      case ActivityTypeEnum.lemmaMeaning:
         return Icons.translate;
       case ActivityTypeEnum.wordFocusListening:
       case ActivityTypeEnum.hiddenWordListening:
+      case ActivityTypeEnum.lemmaAudio:
         return Icons.volume_up;
       case ActivityTypeEnum.lemmaId:
         return Symbols.dictionary;
@@ -168,6 +198,8 @@ enum ActivityTypeEnum {
       case ActivityTypeEnum.hiddenWordListening:
       case ActivityTypeEnum.morphId:
       case ActivityTypeEnum.messageMeaning:
+      case ActivityTypeEnum.lemmaMeaning:
+      case ActivityTypeEnum.lemmaAudio:
         return 1;
     }
   }
