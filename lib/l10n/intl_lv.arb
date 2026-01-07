@@ -4482,7 +4482,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-01-06 13:02:05.693062",
+  "@@last_modified": "2026-01-07 14:27:04.364429",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10724,6 +10724,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Pareiza vārdu definīciju prakse",
+  "constructUseIncLMDesc": "Nepareiza vārdu definīciju prakse",
+  "constructUseCorLADesc": "Pareiza vārdu audio prakse",
+  "constructUseIncLADesc": "Nepareiza vārdu audio prakse",
+  "constructUseBonus": "Bonuss vārdu praksē",
+  "practiceVocab": "Praktizēt vārdu krājumu",
+  "selectMeaning": "Izvēlieties nozīmi",
+  "selectAudio": "Izvēlieties atbilstošo audio",
+  "congratulations": "Apsveicam!",
+  "anotherRound": "Vēl viena kārta",
+  "noActivityRequest": "Nav pašreizējo aktivitāšu pieprasījumu.",
+  "quit": "Iziet",
+  "congratulationsYouveCompletedPractice": "Apsveicam! Jūs esat pabeidzis prakses sesiju.",
+  "mustHave10Words": "Jums jābūt vismaz 10 vārdiem, lai tos praktizētu. Mēģiniet parunāt ar draugu vai Pangea Bot, lai uzzinātu vairāk!",
+  "botSettings": "Bota iestatījumi",
+  "activitySettingsOverrideWarning": "Valoda un valodas līmenis, ko nosaka aktivitāšu plāns",
+  "voice": "Balss",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

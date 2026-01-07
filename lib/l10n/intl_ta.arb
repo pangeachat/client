@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-06 13:02:17.997622",
+  "@@last_modified": "2026-01-07 14:27:42.869267",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -10962,6 +10962,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "சரியான சொல் வரையறை பயிற்சி",
+  "constructUseIncLMDesc": "தவறான சொல் வரையறை பயிற்சி",
+  "constructUseCorLADesc": "சரியான சொல் ஒலிப்பதிவு பயிற்சி",
+  "constructUseIncLADesc": "தவறான சொல் ஒலிப்பதிவு பயிற்சி",
+  "constructUseBonus": "சொல் பயிற்சியின் போது போனஸ்",
+  "practiceVocab": "சொற்களை பயிற்சி செய்யுங்கள்",
+  "selectMeaning": "அர்த்தத்தை தேர்ந்தெடுக்கவும்",
+  "selectAudio": "ஒலியை தேர்ந்தெடுக்கவும்",
+  "congratulations": "வாழ்த்துகள்!",
+  "anotherRound": "மற்றொரு சுற்று",
+  "noActivityRequest": "தற்போதைய செயல்பாட்டுக்கான கோரிக்கை இல்லை.",
+  "quit": "விலகுங்கள்",
+  "congratulationsYouveCompletedPractice": "வாழ்த்துகள்! நீங்கள் பயிற்சி அமர்வை முடித்துவிட்டீர்கள்.",
+  "mustHave10Words": "நீங்கள் பயிற்சிக்காக குறைந்தது 10 சொற்களை வைத்திருக்க வேண்டும். மேலும் கண்டுபிடிக்க நண்பருடன் அல்லது பாஙோ பாட்டுடன் பேச முயற்சிக்கவும்!",
+  "botSettings": "பாடல் அமைப்புகள்",
+  "activitySettingsOverrideWarning": "செயல்பாட்டு திட்டத்தால் நிர்ணயிக்கப்பட்ட மொழி மற்றும் மொழி நிலை",
+  "voice": "குரல்",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

@@ -84,6 +84,7 @@ class LanguageLevelDropdown extends StatelessWidget {
           : null,
       value: initialLevel,
       validator: validator,
+      enableFeedback: enabled,
     );
   }
 }

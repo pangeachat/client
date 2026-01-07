@@ -363,6 +363,7 @@ class PangeaMessageEvent {
 
   Future<PangeaAudioFile> requestTextToSpeech(
     String langCode,
+    String? voice,
   ) async {
     final local = getTextToSpeechLocal(langCode, messageDisplayText);
     if (local != null) {
@@ -378,6 +379,7 @@ class PangeaMessageEvent {
       langCode: langCode,
       userL1: _l1Code ?? LanguageKeys.unknownLanguage,
       userL2: _l2Code ?? LanguageKeys.unknownLanguage,
+      voice: voice,
     );
 
     final result = await TextToSpeechRepo.get(

@@ -19,6 +19,7 @@ class PLanguageDropdown extends StatefulWidget {
   final String? error;
   final Color? backgroundColor;
   final bool hasError;
+  final bool enabled;
 
   const PLanguageDropdown({
     super.key,
@@ -30,6 +31,7 @@ class PLanguageDropdown extends StatefulWidget {
     this.error,
     this.backgroundColor,
     this.hasError = false,
+    this.enabled = true,
   });
 
   @override
@@ -89,6 +91,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                   languageModel: widget.initialLanguage!,
                   isL2List: widget.isL2List,
                   isDropdown: true,
+                  enabled: widget.enabled,
                 )
               : null,
           menuItemStyleData: const MenuItemStyleData(
@@ -143,7 +146,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
               ),
             ),
           ],
-          onChanged: (value) => widget.onChange(value!),
+          onChanged: widget.enabled ? (value) => widget.onChange(value!) : null,
           value: widget.initialLanguage,
           dropdownSearchData: DropdownSearchData(
             searchController: _searchController,
@@ -167,6 +170,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
           onMenuStateChange: (isOpen) {
             if (!isOpen) _searchController.clear();
           },
+          enableFeedback: widget.enabled,
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
