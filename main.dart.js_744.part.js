@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Nechajte pr\xe1zdne na vymazanie v\xe1\u0161ho stavu.";
     },
+    get$select(_) {
+      return "Vybra\u0165";
+    },
     get$searchForUsers() {
       return "H\u013eada\u0165 @pou\u017e\xedvate\u013eov...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Obnovi\u0165";
+    },
+    get$accuracy(_) {
+      return "Presnos\u0165";
     },
     get$autoIGCToolName() {
       return "Automaticky spusti\u0165 pomoc pri p\xedsan\xed Pangea";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Nastavili ste emoji pre " + lemma + "! Tento emoji budeme pou\u017e\xedva\u0165 na reprezent\xe1ciu slova v praktick\xfdch aktivit\xe1ch v bud\xfacnosti.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u010cak\xe1me na dokon\u010denie prihl\xe1senia";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Pre najlep\u0161\xed z\xe1\u017eitok z pou\u017e\xedvania tejto aplik\xe1cie, pros\xedm, zv\xe4\u010d\u0161ite ve\u013ekos\u0165 obrazovky.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivity na odomknutie nasleduj\xfacej t\xe9my";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Nastavte po\u010det aktiv\xedt na odomknutie nasleduj\xfacej t\xe9my kurzu";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["N50XJNiTVuSMaQI36aL+gSLjUgg="] = d.current;
+  d["ZF22q0th59F5cubeIcJgPwFJ/wI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

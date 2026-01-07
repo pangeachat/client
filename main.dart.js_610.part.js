@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "F\xe1g folamh chun do st\xe1das a ghlanadh.";
     },
+    get$select(_) {
+      return "Roghnaigh";
+    },
     get$searchForUsers() {
       return "Cuardaigh @users...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Athnuachan";
+    },
+    get$accuracy(_) {
+      return "Beachtas";
     },
     get$autoIGCToolName() {
       return "Rith cabhair scr\xedbhneoireachta Pangea go huathoibr\xedoch";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "T\xe1 an emoji socraithe agat do " + lemma + "! \xdas\xe1idfimid an emoji seo chun an focal a chur in i\xfal i ngn\xedomha\xedochta\xed cleachtais amach anseo.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Ag fanacht le s\xedni\xfa isteach a chr\xedochn\xfa";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Chun an taith\xed is fearr a fh\xe1il ag \xfas\xe1id an iarratais seo, le do thoil leathnaigh do mh\xe9id sc\xe1ile\xe1in.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Gn\xedomha\xedochta\xed le hOscail an Topaic Seo chugainn";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Socraigh an l\xedon gn\xedomha\xedochta\xed le hOscail an topaic ch\xfarsa seo chugainn";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5276,7 +5318,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RuMwIAvfFuIbU+aP4JildbIVntU="] = d.current;
+  d["CTu4K95BkV5IpGPe3+ZY+yj+UlM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

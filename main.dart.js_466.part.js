@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Lasu malplenan por forigi vian statustexton.";
     },
+    get$select(_) {
+      return "Elekti";
+    },
     get$searchForUsers() {
       return "Ser\u0109u uzantojn @...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Refre\u015digi";
+    },
+    get$accuracy(_) {
+      return "Precizeco";
     },
     get$autoIGCToolName() {
       return "Kurigu Pangea verkhelpilo a\u016dtomate";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Vi havas metitan la emoji por " + lemma + "! Ni uzos \u0109i tiun emoji por reprezenti la vorton en praktikaj aktivadoj en la estonteco.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Atendante, ke ensaluto fini\u011du";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Por la plej bona sperto uzante \u0109i tiun aplika\u0135on, bonvolu vastigi vian ekranan grandecon.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivecoj por Mal\u015dlosi Sekvan Temon";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Agordu la nombron de aktivecoj por mal\u015dlosi la sekvan kurson";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hE04dEpzWcRpxua9fRrTAWke1jA="] = d.current;
+  d["CNn5ntaAxzRXbLfcQMLIj0uTLb8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_466.part.js.map

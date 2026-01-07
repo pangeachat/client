@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Leer lassen, um den Status zu l\xf6schen.";
     },
+    get$select(_) {
+      return "Ausw\xe4hlen";
+    },
     get$searchForUsers() {
       return "Suche nach @benutzer ...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Aktualisieren";
+    },
+    get$accuracy(_) {
+      return "Genauigkeit";
     },
     get$autoIGCToolName() {
       return "Pangea Schreibhilfe automatisch ausf\xfchren";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Sie haben das Emoji f\xfcr " + lemma + " festgelegt! Wir werden dieses Emoji verwenden, um das Wort in zuk\xfcnftigen \xdcbungsaktivit\xe4ten darzustellen.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Warten auf den Abschluss der Anmeldung";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "F\xfcr das beste Erlebnis mit dieser Anwendung erweitern Sie bitte Ihre Bildschirmgr\xf6\xdfe.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivit\xe4ten zum Freischalten des n\xe4chsten Themas";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Legen Sie die Anzahl der Aktivit\xe4ten fest, um das n\xe4chste Kursthema freizuschalten";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5276,7 +5318,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2qI8lUXphoE7Hy1pSbJ3UDSS/zs="] = d.current;
+  d["kWBM/MgZClXTUFi/Lk1My7KUvwk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_381.part.js.map

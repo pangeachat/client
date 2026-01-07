@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "\u0c2e\u0c40 \u0c38\u0c4d\u0c25\u0c3f\u0c24\u0c3f\u0c28\u0c3f \u0c15\u0c4d\u0c32\u0c3f\u0c2f\u0c30\u0c4d \u0c1a\u0c47\u0c2f\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c16\u0c3e\u0c33\u0c40\u0c17\u0c3e \u0c09\u0c02\u0c1a\u0c02\u0c21\u0c3f.";
     },
+    get$select(_) {
+      return "\u0c0e\u0c02\u0c1a\u0c41\u0c15\u0c4b\u0c02\u0c21\u0c3f";
+    },
     get$searchForUsers() {
       return "@\u0c2f\u0c42\u0c1c\u0c30\u0c4d\u0c32 \u0c15\u0c4b\u0c38\u0c02 \u0c36\u0c4b\u0c27\u0c28 \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "\u0c2a\u0c41\u0c28\u0c03\u0c2a\u0c4d\u0c30\u0c3e\u0c30\u0c02\u0c2d\u0c3f\u0c02\u0c1a\u0c02\u0c21\u0c3f";
+    },
+    get$accuracy(_) {
+      return "\u0c16\u0c1a\u0c4d\u0c1a\u0c3f\u0c24\u0c24\u0c4d\u0c35\u0c02";
     },
     get$autoIGCToolName() {
       return "\u0c2a\u0c3e\u0c02\u0c1c\u0c3f\u0c2f\u0c3e \u0c30\u0c3e\u0c2f\u0c21\u0c02 \u0c38\u0c39\u0c3e\u0c2f\u0c3e\u0c28\u0c4d\u0c28\u0c3f \u0c38\u0c4d\u0c35\u0c2f\u0c02\u0c1a\u0c3e\u0c32\u0c15\u0c02\u0c17\u0c3e \u0c28\u0c21\u0c2a\u0c02\u0c21\u0c3f";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return lemma + " \u0c15\u0c4b\u0c38\u0c02 \u0c2e\u0c40\u0c30\u0c41 \u0c08 \u0c0e\u0c2e\u0c4b\u0c1c\u0c40\u0c28\u0c3f \u0c38\u0c46\u0c1f\u0c4d \u0c1a\u0c47\u0c38\u0c3e\u0c30\u0c41! \u0c2e\u0c47\u0c2e\u0c41 \u0c08 \u0c0e\u0c2e\u0c4b\u0c1c\u0c40\u0c28\u0c3f \u0c2a\u0c4d\u0c30\u0c3e\u0c15\u0c4d\u0c1f\u0c40\u0c38\u0c4d \u0c15\u0c3e\u0c30\u0c4d\u0c2f\u0c15\u0c32\u0c3e\u0c2a\u0c3e\u0c32\u0c32\u0c4b \u0c2a\u0c26\u0c3e\u0c28\u0c4d\u0c28\u0c3f \u0c2a\u0c4d\u0c30\u0c3e\u0c24\u0c3f\u0c28\u0c3f\u0c27\u0c4d\u0c2f\u0c02 \u0c35\u0c39\u0c3f\u0c02\u0c1a\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c09\u0c2a\u0c2f\u0c4b\u0c17\u0c3f\u0c38\u0c4d\u0c24\u0c3e\u0c2e\u0c41.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u0c38\u0c48\u0c28\u0c4d \u0c07\u0c28\u0c4d \u0c2a\u0c42\u0c30\u0c4d\u0c24\u0c3f \u0c15\u0c3e\u0c35\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c35\u0c47\u0c1a\u0c3f \u0c09\u0c02\u0c26\u0c3f";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u0c08 \u0c05\u0c28\u0c41\u0c35\u0c30\u0c4d\u0c24\u0c28\u0c02 \u0c09\u0c2a\u0c2f\u0c4b\u0c17\u0c3f\u0c02\u0c1a\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c09\u0c24\u0c4d\u0c24\u0c2e \u0c05\u0c28\u0c41\u0c2d\u0c35\u0c02 \u0c15\u0c4b\u0c38\u0c02, \u0c26\u0c2f\u0c1a\u0c47\u0c38\u0c3f \u0c2e\u0c40 \u0c38\u0c4d\u0c15\u0c4d\u0c30\u0c40\u0c28\u0c4d \u0c2a\u0c30\u0c3f\u0c2e\u0c3e\u0c23\u0c3e\u0c28\u0c4d\u0c28\u0c3f \u0c35\u0c3f\u0c38\u0c4d\u0c24\u0c30\u0c3f\u0c02\u0c1a\u0c02\u0c21\u0c3f.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "\u0c24\u0c30\u0c41\u0c35\u0c3e\u0c24\u0c3f \u0c05\u0c02\u0c36\u0c3e\u0c28\u0c4d\u0c28\u0c3f \u0c05\u0c28\u0c4d\u0c32\u0c3e\u0c15\u0c4d \u0c1a\u0c47\u0c2f\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c15\u0c3e\u0c30\u0c4d\u0c2f\u0c15\u0c32\u0c3e\u0c2a\u0c3e\u0c32\u0c41";
     },
     get$activitiesToUnlockTopicDesc() {
       return "\u0c24\u0c30\u0c41\u0c35\u0c3e\u0c24\u0c3f \u0c15\u0c4b\u0c30\u0c4d\u0c38\u0c41 \u0c05\u0c02\u0c36\u0c3e\u0c28\u0c4d\u0c28\u0c3f \u0c05\u0c28\u0c4d\u0c32\u0c3e\u0c15\u0c4d \u0c1a\u0c47\u0c2f\u0c21\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c15\u0c3e\u0c30\u0c4d\u0c2f\u0c15\u0c32\u0c3e\u0c2a\u0c3e\u0c32 \u0c38\u0c02\u0c16\u0c4d\u0c2f\u0c28\u0c41 \u0c38\u0c46\u0c1f\u0c4d \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qLP1RXrmSPW5Or1i4CL+vDoQFxY="] = d.current;
+  d["J17AxkMn+VCPtyrdAM6weoKONq8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

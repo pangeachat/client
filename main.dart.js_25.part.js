@@ -1090,6 +1090,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Deixe vazio para limpar seu status.";
     },
+    get$select(_) {
+      return "Selecionar";
+    },
     get$searchForUsers() {
       return "Pesquisar por @usu\xe1rios...";
     },
@@ -2550,6 +2553,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Atualizar";
+    },
+    get$accuracy(_) {
+      return "Precis\xe3o";
     },
     get$autoIGCToolName() {
       return string$.Executs;
@@ -5242,6 +5248,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Voc\xea definiu o emoji para " + lemma + string$.x21_Usar;
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Aguardando a conclus\xe3o do login";
     },
@@ -5266,11 +5296,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return string$.Para_a;
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return string$.Ativid;
     },
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6338,6 +6380,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$leaveEmptyToClearStatus() {
       return "Deixe em branco para limpar seu Status.";
+    },
+    get$select(_) {
+      return "Selecionar";
     },
     get$searchForUsers() {
       return "Buscar por @usu\xe1rios...";
@@ -7799,6 +7844,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Atualizar";
+    },
+    get$accuracy(_) {
+      return "Precis\xe3o";
     },
     get$autoIGCToolName() {
       return string$.Executs;
@@ -11585,6 +11633,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Deixe vazio para limpar o seu estado.";
     },
+    get$select(_) {
+      return "Selecionar";
+    },
     get$searchForUsers() {
       return "Pesquisar por @utilizadores...";
     },
@@ -13045,6 +13096,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Atualizar";
+    },
+    get$accuracy(_) {
+      return "Precis\xe3o";
     },
     get$autoIGCToolName() {
       return string$.Executs;
@@ -15957,7 +16011,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GpdunMHP7Q81BKnBG2akBTJC/qo="] = d.current;
+  d["ZsRxBmO4bhW22FPbWDw0xBXTSpc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "\u7a7a\u306e\u307e\u307e\u306b\u3059\u308b\u3068\u30b9\u30c6\u30fc\u30bf\u30b9\u304c\u30af\u30ea\u30a2\u3055\u308c\u307e\u3059\u3002";
     },
+    get$select(_) {
+      return "\u9078\u629e";
+    },
     get$searchForUsers() {
       return "@\u30e6\u30fc\u30b6\u30fc\u3092\u691c\u7d22...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "\u66f4\u65b0";
+    },
+    get$accuracy(_) {
+      return "\u6b63\u78ba\u3055";
     },
     get$autoIGCToolName() {
       return "Pangea\u306e\u30e9\u30a4\u30c6\u30a3\u30f3\u30b0\u652f\u63f4\u3092\u81ea\u52d5\u7684\u306b\u5b9f\u884c";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return lemma + "\u306e\u7d75\u6587\u5b57\u304c\u8a2d\u5b9a\u3055\u308c\u307e\u3057\u305f\uff01\u4eca\u5f8c\u306e\u7df4\u7fd2\u6d3b\u52d5\u3067\u306f\u3053\u306e\u7d75\u6587\u5b57\u3092\u4f7f\u3063\u3066\u305d\u306e\u5358\u8a9e\u3092\u8868\u73fe\u3057\u307e\u3059\u3002";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u30b5\u30a4\u30f3\u30a4\u30f3\u306e\u5b8c\u4e86\u3092\u5f85\u3063\u3066\u3044\u307e\u3059";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u3053\u306e\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3\u3092\u6700\u9069\u306b\u4f7f\u7528\u3059\u308b\u306b\u306f\u3001\u753b\u9762\u30b5\u30a4\u30ba\u3092\u62e1\u5927\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "\u6b21\u306e\u30c8\u30d4\u30c3\u30af\u3092\u30a2\u30f3\u30ed\u30c3\u30af\u3059\u308b\u305f\u3081\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3";
     },
     get$activitiesToUnlockTopicDesc() {
       return "\u6b21\u306e\u30b3\u30fc\u30b9\u30c8\u30d4\u30c3\u30af\u3092\u30a2\u30f3\u30ed\u30c3\u30af\u3059\u308b\u305f\u3081\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u306e\u6570\u3092\u8a2d\u5b9a\u3057\u307e\u3059";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xo6q0PcWN9JHOat9otEK+h3j+Sk="] = d.current;
+  d["aQQDqQm4DcZ1eKfOKuAzf/J9rMU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_704.part.js.map

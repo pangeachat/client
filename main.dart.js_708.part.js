@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Palikite tu\u0161\u010di\u0105, kad i\u0161valytum\u0117te savo b\u016bsen\u0105.";
     },
+    get$select(_) {
+      return "Pasirinkti";
+    },
     get$searchForUsers() {
       return "Ie\u0161koti @vartotoj\u0173...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Atnaujinti";
+    },
+    get$accuracy(_) {
+      return "Tikslumas";
     },
     get$autoIGCToolName() {
       return "Automati\u0161kai paleisti Pangea ra\u0161ymo pagalb\u0105";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "J\u016bs nustat\u0117te emocij\u0105 " + lemma + "! Mes naudosime \u0161i\u0105 emocij\u0105, kad atstovautume \u017eod\u017eiui praktin\u0117se veiklose ateityje.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Laukiama, kol prisijungimas bus baigtas";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Norint geriausiai naudotis \u0161ia programa, pra\u0161ome padidinti ekrano dyd\u012f.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Veiklos, kad atrakintum\u0117te kit\u0105 tem\u0105";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Nustatykite veikl\u0173 skai\u010di\u0173, kad atrakintum\u0117te kit\u0105 kurso tem\u0105";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5276,7 +5318,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lGwnXWH25PuixvDF5P1oQb0Zt8s="] = d.current;
+  d["UlOg2pgdNlFVFILSdal0F83CrbE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_708.part.js.map

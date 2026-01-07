@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Atst\u0101t tuk\u0161u, lai not\u012br\u012btu savu st\u0101vokli.";
     },
+    get$select(_) {
+      return "Atlas\u012bt";
+    },
     get$searchForUsers() {
       return "Mekl\u0113t @lietot\u0101jus...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Atjaunot";
+    },
+    get$accuracy(_) {
+      return "Precizit\u0101te";
     },
     get$autoIGCToolName() {
       return "Autom\u0101tiski palaist Pangea rakst\u012b\u0161anas pal\u012bgu";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "J\u016bs esat iestat\u012bjis emocijz\u012bmi " + lemma + "! M\u0113s izmantosim \u0161o emocijz\u012bmi, lai p\u0101rst\u0101v\u0113tu v\u0101rdu praktiskaj\u0101s aktivit\u0101t\u0113s turpm\u0101k.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Gaid\u0101m, kam\u0113r pieteik\u0161an\u0101s tiks pabeigta";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Lai ieg\u016btu lab\u0101ko pieredzi, lietojot \u0161o lietotni, l\u016bdzu, papla\u0161iniet ekr\u0101na izm\u0113ru.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivit\u0101tes, lai atblo\u0137\u0113tu n\u0101kamo t\u0113mu";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Iestatiet aktivit\u0101\u0161u skaitu, lai atblo\u0137\u0113tu n\u0101kamo kursa t\u0113mu";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dtHSogwGgTw5tx2UxL4z8LcHJWc="] = d.current;
+  d["qILoUWhPBW082uxB4WSA2OE95Bs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

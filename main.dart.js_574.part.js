@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "\u0628\u0631\u0627\u06cc \u067e\u0627\u06a9 \u06a9\u0631\u062f\u0646 \u0648\u0636\u0639\u06cc\u062a \u062e\u0648\u062f\u060c \u062e\u0627\u0644\u06cc \u0628\u06af\u0630\u0627\u0631\u06cc\u062f";
     },
+    get$select(_) {
+      return "\u0627\u0646\u062a\u062e\u0627\u0628";
+    },
     get$searchForUsers() {
       return "\u062c\u0633\u062a\u062c\u0648 \u0628\u0631\u0627\u06cc @\u06a9\u0627\u0631\u0628\u0631\u0627\u0646...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "\u062a\u0627\u0632\u0647\u200c\u0633\u0627\u0632\u06cc";
+    },
+    get$accuracy(_) {
+      return "\u062f\u0642\u062a";
     },
     get$autoIGCToolName() {
       return "\u0627\u062c\u0631\u0627\u06cc \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u0645\u06a9 \u0646\u0648\u0634\u062a\u0646 \u067e\u0646\u06af\u0626\u0627";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "\u0634\u0645\u0627 \u0627\u06cc\u0645\u0648\u062c\u06cc \u0631\u0627 \u0628\u0631\u0627\u06cc " + lemma + " \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f! \u0645\u0627 \u0627\u0632 \u0627\u06cc\u0646 \u0627\u06cc\u0645\u0648\u062c\u06cc \u0628\u0631\u0627\u06cc \u0646\u0645\u0627\u06cc\u0634 \u06a9\u0644\u0645\u0647 \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0639\u0645\u0644\u06cc \u062f\u0631 \u0622\u06cc\u0646\u062f\u0647 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u062e\u0648\u0627\u0647\u06cc\u0645 \u06a9\u0631\u062f.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u062f\u0631 \u062d\u0627\u0644 \u0627\u0646\u062a\u0638\u0627\u0631 \u0628\u0631\u0627\u06cc \u062a\u06a9\u0645\u06cc\u0644 \u0648\u0631\u0648\u062f";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u0628\u0631\u0627\u06cc \u0628\u0647\u062a\u0631\u06cc\u0646 \u062a\u062c\u0631\u0628\u0647 \u062f\u0631 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0627\u06cc\u0646 \u0628\u0631\u0646\u0627\u0645\u0647\u060c \u0644\u0637\u0641\u0627\u064b \u0627\u0646\u062f\u0627\u0632\u0647 \u0635\u0641\u062d\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u0632\u0631\u06af\u062a\u0631 \u06a9\u0646\u06cc\u062f.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "\u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0645\u0648\u0636\u0648\u0639 \u0628\u0639\u062f\u06cc";
     },
     get$activitiesToUnlockTopicDesc() {
       return "\u062a\u0639\u062f\u0627\u062f \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u0631\u0627 \u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0645\u0648\u0636\u0648\u0639 \u0628\u0639\u062f\u06cc \u062f\u0648\u0631\u0647 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kJUNtmSsRLw/Im/vnimYhb9maTQ="] = d.current;
+  d["8KaL2XKDwKsCbX0qQvEO30DY0z0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_574.part.js.map

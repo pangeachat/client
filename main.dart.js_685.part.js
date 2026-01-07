@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Tinggalkan kosong untuk menghapus statusmu.";
     },
+    get$select(_) {
+      return "Pilih";
+    },
     get$searchForUsers() {
       return "Cari @pengguna...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Segarkan";
+    },
+    get$accuracy(_) {
+      return "Akurasi";
     },
     get$autoIGCToolName() {
       return "Jalankan otomatis bantuan penulisan Pangea";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Anda telah menetapkan emoji untuk " + lemma + "! Kami akan menggunakan emoji ini untuk mewakili kata dalam aktivitas praktik ke depan.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Menunggu penyelesaian masuk";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Untuk pengalaman terbaik menggunakan aplikasi ini, silakan perbesar ukuran layar Anda.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Kegiatan untuk Membuka Topik Berikutnya";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5276,7 +5318,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DwktpAcV9f2JuhOYtB6otBatiCk="] = d.current;
+  d["1TUh9uyR0VeDnyBkgoHyGDnPh24="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_685.part.js.map

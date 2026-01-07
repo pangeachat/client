@@ -1079,6 +1079,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Pozostaw puste, aby wyczy\u015bci\u0107 sw\xf3j status.";
     },
+    get$select(_) {
+      return "Zaznacz";
+    },
     get$searchForUsers() {
       return "Szukaj @u\u017cytkownik\xf3w...";
     },
@@ -2539,6 +2542,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Od\u015bwie\u017c";
+    },
+    get$accuracy(_) {
+      return "Dok\u0142adno\u015b\u0107";
     },
     get$autoIGCToolName() {
       return "Uruchom automatycznie pomoc w pisaniu Pangea";
@@ -5231,6 +5237,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Ustawi\u0142e\u015b emoji dla " + lemma + "! B\u0119dziemy u\u017cywa\u0107 tego emoji do reprezentowania s\u0142owa w nadchodz\u0105cych aktywno\u015bciach praktycznych.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Czekam na zako\u0144czenie logowania";
     },
@@ -5255,11 +5285,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Aby uzyska\u0107 najlepsze wra\u017cenia podczas korzystania z tej aplikacji, prosz\u0119 powi\u0119kszy\u0107 rozmiar ekranu.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktywno\u015bci do odblokowania nast\u0119pnego tematu";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Ustaw liczb\u0119 aktywno\u015bci do odblokowania nast\u0119pnego tematu kursu";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5274,7 +5316,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BLJ9CLNvbW9WwCz0AIzAZODGNZM="] = d.current;
+  d["E7loIeSNoOysdDGWMCH1LuSvY8E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_729.part.js.map

@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Hagyja \xfcresen a st\xe1tusz kit\xf6rl\xe9s\xe9hez.";
     },
+    get$select(_) {
+      return "Kiv\xe1laszt";
+    },
     get$searchForUsers() {
       return "Keressen @felhaszn\xe1l\xf3kat...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "\xdajrat\xf6lt\xe9s";
+    },
+    get$accuracy(_) {
+      return "Pontoss\xe1g";
     },
     get$autoIGCToolName() {
       return "A Pangea \xedr\xe1sseg\xe9d automatikus futtat\xe1sa";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Be\xe1ll\xedtottad a " + lemma + " emoji-t! Ezt az emojit fogjuk haszn\xe1lni a sz\xf3 k\xe9pviselet\xe9re a gyakorlati tev\xe9kenys\xe9gek sor\xe1n a j\xf6v\u0151ben.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "V\xe1rakoz\xe1s a bejelentkez\xe9s befejez\xe9s\xe9re";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "A legjobb \xe9lm\xe9ny \xe9rdek\xe9ben, k\xe9rj\xfck, b\u0151v\xedtse a k\xe9perny\u0151 m\xe9ret\xe9t ennek az alkalmaz\xe1snak a haszn\xe1lata sor\xe1n.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Tev\xe9kenys\xe9gek a k\xf6vetkez\u0151 t\xe9ma felold\xe1s\xe1hoz";
     },
     get$activitiesToUnlockTopicDesc() {
       return "\xc1ll\xedtsa be a tev\xe9kenys\xe9gek sz\xe1m\xe1t a k\xf6vetkez\u0151 tanfolyam t\xe9ma felold\xe1s\xe1hoz";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["y6lfDKzWYaYjVMC35DoHbbVwkaQ="] = d.current;
+  d["8X9dkWy3MmZDYW6P3Md9mJv5mpU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_660.part.js.map

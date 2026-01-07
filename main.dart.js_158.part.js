@@ -1079,6 +1079,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "\u0986\u09aa\u09a8\u09be\u09b0 \u0985\u09ac\u09b8\u09cd\u09a5\u09be \u09aa\u09b0\u09bf\u09b7\u09cd\u0995\u09be\u09b0 \u0995\u09b0\u09a4\u09c7 \u0996\u09be\u09b2\u09bf \u09b0\u09be\u0996\u09c1\u09a8\u0964";
     },
+    get$select(_) {
+      return "\u09a8\u09bf\u09b0\u09cd\u09ac\u09be\u099a\u09a8 \u0995\u09b0\u09c1\u09a8";
+    },
     get$searchForUsers() {
       return "@\u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0\u0995\u09be\u09b0\u09c0\u09a6\u09c7\u09b0 \u099c\u09a8\u09cd\u09af \u0985\u09a8\u09c1\u09b8\u09a8\u09cd\u09a7\u09be\u09a8 \u0995\u09b0\u09c1\u09a8...";
     },
@@ -2539,6 +2542,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "\u09b0\u09bf\u09ab\u09cd\u09b0\u09c7\u09b6";
+    },
+    get$accuracy(_) {
+      return "\u09b8\u09a0\u09bf\u0995\u09a4\u09be";
     },
     get$autoIGCToolName() {
       return "\u09aa\u09be\u0999\u09cd\u0997\u09bf\u09af\u09bc\u09be \u09b2\u09c7\u0996\u09a8\u09c0 \u09b8\u09b9\u09be\u09af\u09bc\u09a4\u09be \u09b8\u09cd\u09ac\u09af\u09bc\u0982\u0995\u09cd\u09b0\u09bf\u09af\u09bc\u09ad\u09be\u09ac\u09c7 \u099a\u09be\u09b2\u09be\u09a8";
@@ -5231,6 +5237,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "\u0986\u09aa\u09a8\u09bf " + lemma + " \u098f\u09b0 \u099c\u09a8\u09cd\u09af \u0987\u09ae\u09cb\u099c\u09bf \u09b8\u09c7\u099f \u0995\u09b0\u09c7\u099b\u09c7\u09a8! \u0986\u09ae\u09b0\u09be \u09ad\u09ac\u09bf\u09b7\u09cd\u09af\u09a4\u09c7 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8 \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae\u09c7 \u098f\u0987 \u0987\u09ae\u09cb\u099c\u09bf\u099f\u09bf \u09b6\u09ac\u09cd\u09a6\u099f\u09bf \u0989\u09aa\u09b8\u09cd\u09a5\u09be\u09aa\u09a8 \u0995\u09b0\u09a4\u09c7 \u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0 \u0995\u09b0\u09ac\u0964";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u09b8\u09be\u0987\u09a8 \u0987\u09a8 \u09b8\u09ae\u09cd\u09aa\u09a8\u09cd\u09a8 \u09b9\u0993\u09af\u09bc\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u0985\u09aa\u09c7\u0995\u09cd\u09b7\u09be \u0995\u09b0\u099b\u09c7";
     },
@@ -5255,11 +5285,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u098f\u0987 \u0985\u09cd\u09af\u09be\u09aa\u09cd\u09b2\u09bf\u0995\u09c7\u09b6\u09a8\u099f\u09bf \u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0 \u0995\u09b0\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u09b8\u09c7\u09b0\u09be \u0985\u09ad\u09bf\u099c\u09cd\u099e\u09a4\u09be\u09b0 \u099c\u09a8\u09cd\u09af, \u09a6\u09af\u09bc\u09be \u0995\u09b0\u09c7 \u0986\u09aa\u09a8\u09be\u09b0 \u09b8\u09cd\u0995\u09cd\u09b0\u09c0\u09a8\u09c7\u09b0 \u0986\u0995\u09be\u09b0 \u09ac\u09be\u09a1\u09bc\u09be\u09a8\u0964";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "\u09aa\u09b0\u09ac\u09b0\u09cd\u09a4\u09c0 \u09ac\u09bf\u09b7\u09af\u09bc \u0989\u09a8\u09cd\u09ae\u09c1\u0995\u09cd\u09a4 \u0995\u09b0\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae";
     },
     get$activitiesToUnlockTopicDesc() {
       return "\u09aa\u09b0\u09ac\u09b0\u09cd\u09a4\u09c0 \u0995\u09cb\u09b0\u09cd\u09b8 \u09ac\u09bf\u09b7\u09af\u09bc \u0989\u09a8\u09cd\u09ae\u09c1\u0995\u09cd\u09a4 \u0995\u09b0\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae\u09c7\u09b0 \u09b8\u0982\u0996\u09cd\u09af\u09be \u09a8\u09bf\u09b0\u09cd\u09a7\u09be\u09b0\u09a3 \u0995\u09b0\u09c1\u09a8";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5274,7 +5316,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HEg76ZDRM/TpSEradq2N79TUYgc="] = d.current;
+  d["tEXagNqwYsiTA+HT2QQq5kGPIrU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map

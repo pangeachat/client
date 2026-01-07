@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Efterlad tom for at rydde din status.";
     },
+    get$select(_) {
+      return "V\xe6lg";
+    },
     get$searchForUsers() {
       return "S\xf8g efter @brugere...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Opdater";
+    },
+    get$accuracy(_) {
+      return "N\xf8jagtighed";
     },
     get$autoIGCToolName() {
       return "K\xf8r Pangea skriveassistance automatisk";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Du har indstillet emoji'en for " + lemma + "! Vi vil bruge denne emoji til at repr\xe6sentere ordet i praksisaktiviteter fremover.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "Venter p\xe5, at login skal fuldf\xf8res";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "For den bedste oplevelse med denne applikation, bedes du udvide din sk\xe6rmst\xf8rrelse.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktiviteter til at l\xe5se op for n\xe6ste emne";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Indstil antallet af aktiviteter for at l\xe5se op for det n\xe6ste kursusemne";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ymdp4xS4ixroomjPvmDk8O1HRSU="] = d.current;
+  d["xnNYXWdnN4ubjlF3HuaRGN8ppZI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_303.part.js.map

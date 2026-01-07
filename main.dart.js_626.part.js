@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "\u05d4\u05e9\u05d0\u05e8 \u05e8\u05d9\u05e7 \u05db\u05d3\u05d9 \u05dc\u05e0\u05e7\u05d5\u05ea \u05d0\u05ea \u05d4\u05e1\u05d8\u05d8\u05d5\u05e1 \u05e9\u05dc\u05da.";
     },
+    get$select(_) {
+      return "\u05d1\u05d7\u05e8";
+    },
     get$searchForUsers() {
       return "\u05d7\u05e4\u05e9 \u05d1-@\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "\u05e8\u05e2\u05e0\u05df";
+    },
+    get$accuracy(_) {
+      return "\u05d3\u05d9\u05d5\u05e7";
     },
     get$autoIGCToolName() {
       return "\u05d4\u05e8\u05e5 \u05d0\u05d5\u05d8\u05d5\u05de\u05d8\u05d9\u05ea \u05d0\u05ea \u05e2\u05d6\u05e8 \u05d4\u05db\u05ea\u05d9\u05d1\u05d4 \u05e9\u05dc \u05e4\u05d0\u05e0\u05d2\u05d9\u05d0\u05d4";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "\u05d4\u05d2\u05d3\u05e8\u05ea \u05d0\u05ea \u05d4\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05e2\u05d1\u05d5\u05e8 " + lemma + "! \u05e0\u05e9\u05ea\u05de\u05e9 \u05d1\u05d0\u05d9\u05de\u05d5\u05d2'\u05d9 \u05d4\u05d6\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d9\u05d9\u05e6\u05d2 \u05d0\u05ea \u05d4\u05de\u05d9\u05dc\u05d4 \u05d1\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05ea\u05e8\u05d2\u05d5\u05dc \u05de\u05e2\u05ea\u05d4 \u05d5\u05d0\u05d9\u05dc\u05da.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u05de\u05de\u05ea\u05d9\u05e0\u05d9\u05dd \u05dc\u05d4\u05e9\u05dc\u05d9\u05dd \u05d0\u05ea \u05d4\u05db\u05e0\u05d9\u05e1\u05d4";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "\u05db\u05d3\u05d9 \u05dc\u05e7\u05d1\u05dc \u05d0\u05ea \u05d4\u05d7\u05d5\u05d5\u05d9\u05d4 \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d1\u05d9\u05d5\u05ea\u05e8 \u05d1\u05e9\u05d9\u05de\u05d5\u05e9 \u05d1\u05d0\u05e4\u05dc\u05d9\u05e7\u05e6\u05d9\u05d4 \u05d6\u05d5, \u05d0\u05e0\u05d0 \u05d4\u05e8\u05d7\u05d9\u05d1\u05d5 \u05d0\u05ea \u05d2\u05d5\u05d3\u05dc \u05d4\u05de\u05e1\u05da \u05e9\u05dc\u05db\u05dd.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05dc\u05e4\u05ea\u05d9\u05d7\u05ea \u05e0\u05d5\u05e9\u05d0 \u05d4\u05d1\u05d0";
     },
     get$activitiesToUnlockTopicDesc() {
       return "\u05e7\u05d1\u05e2 \u05d0\u05ea \u05de\u05e1\u05e4\u05e8 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05dc\u05e4\u05ea\u05d9\u05d7\u05ea \u05e0\u05d5\u05e9\u05d0 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d1\u05d0";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FcAKsw2Q1nUyehJO8tiPFXo8qPE="] = d.current;
+  d["mJdzJwLblPFWSaahD9u5LGWQFms="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_626.part.js.map

@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Pustite prazno, da po\u010distite svoj status.";
     },
+    get$select(_) {
+      return "Izberi";
+    },
     get$searchForUsers() {
       return "I\u0161\u010di @uporabnike...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Osve\u017ei";
+    },
+    get$accuracy(_) {
+      return "Natan\u010dnost";
     },
     get$autoIGCToolName() {
       return "Samodejno za\u017eeni pomo\u010d pri pisanju Pangea";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Nastavili ste emoji za " + lemma + "! Ta emoji bomo uporabili za predstavitev besede v prakti\u010dnih dejavnostih v prihodnje.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u010cakanje na dokon\u010danje prijave";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Za najbolj\u0161o izku\u0161njo pri uporabi te aplikacije, prosimo, raz\u0161irite velikost zaslona.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Dejavnosti za odklepanje naslednje teme";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Dolo\u010dite \u0161tevilo dejavnosti za odklepanje naslednje teme te\u010daja";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+gvdiyh/2+BFls3q5PNkoWhgGq8="] = d.current;
+  d["aONApOh6C+33DSw6Ix8w9egMstY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_747.part.js.map

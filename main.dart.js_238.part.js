@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Nechte pr\xe1zdn\xe9 pro vymaz\xe1n\xed va\u0161eho stavu.";
     },
+    get$select(_) {
+      return "Vybrat";
+    },
     get$searchForUsers() {
       return "Hledat @u\u017eivatele...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Obnovit";
+    },
+    get$accuracy(_) {
+      return "P\u0159esnost";
     },
     get$autoIGCToolName() {
       return "Automaticky spustit pomoc s psan\xedm Pangea";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Nastavili jste emoji pro " + lemma + "! Toto emoji pou\u017eijeme k reprezentaci slova v praktick\xfdch aktivit\xe1ch v budoucnu.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u010cek\xe1n\xed na dokon\u010den\xed p\u0159ihl\xe1\u0161en\xed";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Pro nejlep\u0161\xed z\xe1\u017eitek z pou\u017e\xedv\xe1n\xed t\xe9to aplikace pros\xedm zv\u011bt\u0161ete velikost obrazovky.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivity k odem\u010den\xed dal\u0161\xedho t\xe9matu";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Nastavte po\u010det aktivit k odem\u010den\xed dal\u0161\xedho t\xe9matu kurzu";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8yzmfGaRUupjMbsYo2l4JS+efMc="] = d.current;
+  d["4dZIk7F4cvIUKW/OtuG+xMfp1mo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

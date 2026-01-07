@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "Ostavite prazno da biste o\u010distili svoj status.";
     },
+    get$select(_) {
+      return "Izaberi";
+    },
     get$searchForUsers() {
       return "Pretra\u017ei @korisnike...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "\u041e\u0441\u0432\u0435\u0436\u0438";
+    },
+    get$accuracy(_) {
+      return "Ta\u010dnost";
     },
     get$autoIGCToolName() {
       return "\u0410\u0443\u0442\u043e\u043c\u0430\u0442\u0441\u043a\u0438 \u043f\u043e\u043a\u0440\u0435\u043d\u0438\u0442\u0435 \u041f\u0430\u043d\u0433\u0435\u0435 \u043f\u043e\u043c\u043e\u045b \u0437\u0430 \u043f\u0438\u0441\u0430\u045a\u0435";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Postavili ste emoji za " + lemma + "! Ovaj emoji \u0107emo koristiti da predstavimo re\u010d u prakti\u010dnim aktivnostima ubudu\u0107e.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "\u010cekanje na zavr\u0161etak prijavljivanja";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Za najbolje iskustvo kori\u0161\u0107enja ove aplikacije, molimo vas da pove\u0107ate veli\u010dinu ekrana.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Aktivnosti za otklju\u010davanje slede\u0107e teme";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Postavite broj aktivnosti za otklju\u010davanje slede\u0107e teme kursa";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5273,7 +5315,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["M/J5PO8Ok/gqo5ILbBm53exWN+o="] = d.current;
+  d["KMgvFDtsnbOo7lbm/bNV2zgWIJ0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_749.part.js.map

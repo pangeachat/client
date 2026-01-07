@@ -1078,6 +1078,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveEmptyToClearStatus() {
       return "L\u0103sa\u021bi gol pentru a \u0219terge starea dvs.";
     },
+    get$select(_) {
+      return "Selecteaz\u0103";
+    },
     get$searchForUsers() {
       return "Caut\u0103 @utilizatori...";
     },
@@ -2538,6 +2541,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$refresh(_) {
       return "Re\xeemprosp\u0103teaz\u0103";
+    },
+    get$accuracy(_) {
+      return "Acurate\u021be";
     },
     get$autoIGCToolName() {
       return "Ruleaz\u0103 automat asisten\u021ba de scriere Pangea";
@@ -5230,6 +5236,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     emojiSelectedSnackbar$1(lemma) {
       return "Ai setat emoji-ul pentru " + lemma + "! Vom folosi acest emoji pentru a reprezenta cuv\xe2ntul \xeen activit\u0103\u021bile practice de acum \xeenainte.";
     },
+    get$constructUseCorLMDesc() {
+      return "Correct vocab definition practice";
+    },
+    get$constructUseIncLMDesc() {
+      return "Incorrect vocab definition practice";
+    },
+    get$constructUseCorLADesc() {
+      return "Correct vocab audio practice";
+    },
+    get$constructUseIncLADesc() {
+      return "Incorrect vocab audio practice";
+    },
+    get$constructUseBonus() {
+      return "Bonus during vocab practice";
+    },
+    get$practiceVocab() {
+      return "Practice vocabulary";
+    },
+    get$selectMeaning() {
+      return "Select the meaning";
+    },
+    get$anotherRound() {
+      return "Another round";
+    },
     get$ssoDialogTitle() {
       return "A\u0219tept\xe2nd finalizarea autentific\u0103rii";
     },
@@ -5254,11 +5284,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$screenSizeWarning() {
       return "Pentru cea mai bun\u0103 experien\u021b\u0103 utiliz\xe2nd aceast\u0103 aplica\u021bie, v\u0103 rug\u0103m s\u0103 extinde\u021bi dimensiunea ecranului.";
     },
+    get$noActivityRequest() {
+      return "No current activity request.";
+    },
+    get$quit() {
+      return "Quit";
+    },
+    get$congratulationsYouveCompletedPractice() {
+      return "Congratulations! You've completed the practice session.";
+    },
     get$activitiesToUnlockTopicTitle() {
       return "Activit\u0103\u021bi pentru deblocarea urm\u0103torului subiect";
     },
     get$activitiesToUnlockTopicDesc() {
       return "Stabile\u0219te num\u0103rul de activit\u0103\u021bi pentru a debloca urm\u0103torul subiect al cursului";
+    },
+    get$mustHave10Words() {
+      return "You must have at least 10 vocab words to practice them. Try talking to a friend or Pangea Bot to discover more!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5276,7 +5318,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LS341YR43pWCSqPJ0oBwsc5/Vvo="] = d.current;
+  d["Gz72cygknO4BO6t4S/4KsOPKzrQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_736.part.js.map
