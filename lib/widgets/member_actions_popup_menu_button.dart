@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 import 'adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -123,7 +124,7 @@ void showMemberActionsPopupMenu({
             ],
           ),
         ),
-      if (user.id == BotName.byEnvironment && room != null)
+      if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
         PopupMenuItem(
           value: _MemberActions.botSettings,
           child: Row(

@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 class BotSettingsLanguageIcon extends StatelessWidget {
   final Room room;
@@ -27,10 +28,12 @@ class BotSettingsLanguageIcon extends StatelessWidget {
     langCode = langCode.split('-').first;
     return InkWell(
       borderRadius: BorderRadius.circular(32.0),
-      onTap: () => BotChatSettingsDialog.show(
-        context: context,
-        room: room,
-      ),
+      onTap: room.isRoomAdmin
+          ? () => BotChatSettingsDialog.show(
+                context: context,
+                room: room,
+              )
+          : null,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.0),
