@@ -163,7 +163,9 @@ class ButtonControlledCarouselView extends StatelessWidget {
               );
               return Container(
                 width: cardWidth,
-                margin: const EdgeInsets.only(right: 5.0),
+                margin: i == userSummaries.length - 1
+                    ? null
+                    : const EdgeInsets.only(right: 5.0),
                 padding: const EdgeInsets.all(12.0),
                 decoration: ShapeDecoration(
                   color: Color.alphaBlend(
