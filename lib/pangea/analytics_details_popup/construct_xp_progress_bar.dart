@@ -37,19 +37,36 @@ class ConstructXPProgressBar extends StatelessWidget {
             final progress = min(1.0, points / AnalyticsConstants.xpForFlower);
             final level =
                 snapshot.data?.constructLevel ?? ConstructLevelEnum.seeds;
+            const iconSize = 40.0;
             return Column(
               spacing: 8.0,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ...categories.map(
-                      (c) => Opacity(
-                        opacity: level == c ? 1.0 : 0.4,
-                        child: c.icon(),
-                      ),
-                    ),
-                  ],
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    double availableGap =
+                        constraints.maxWidth - (categories.length * iconSize);
+                    const totalPoints = AnalyticsConstants.xpForFlower;
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ...categories.map(
+                          (c) {
+                            final gapPercent = (c.xpNeeded / totalPoints);
+                            final gap = availableGap * gapPercent;
+                            availableGap -= gap;
+                            return Container(
+                              width: iconSize + gap,
+                              alignment: Alignment.centerRight,
+                              child: Opacity(
+                                opacity: level == c ? 1.0 : 0.4,
+                                child: c.icon(iconSize),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 ),
                 AnimatedProgressBar(
                   height: 20.0,
