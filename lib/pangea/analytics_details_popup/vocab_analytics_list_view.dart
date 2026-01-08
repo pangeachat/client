@@ -235,6 +235,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                           childCount: _filteredVocab!.length,
                         ),
                       ),
+              const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],
           ),
         ),
