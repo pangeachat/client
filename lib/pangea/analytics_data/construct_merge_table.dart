@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 class ConstructMergeTable {
   Map<String, Set<ConstructIdentifier>> lemmaTypeGroups = {};
   Map<ConstructIdentifier, ConstructIdentifier> otherToSpecific = {};
+  final Map<ConstructIdentifier, ConstructIdentifier> caseInsensitive = {};
 
   void addConstructs(
     List<ConstructUses> constructs,
@@ -31,6 +32,18 @@ class ConstructMergeTable {
     }
 
     for (final use in uses) {
+      final id = use.identifier;
+      if (exclude.contains(id)) continue;
+      final group = lemmaTypeGroups[id.compositeKey];
+      if (group == null) continue;
+      final matches = group.where((m) => m != id && m.string == id.string);
+      for (final match in matches) {
+        caseInsensitive[match] = id;
+        caseInsensitive[id] = id;
+      }
+    }
+
+    for (final use in uses) {
       if (exclude.contains(use.identifier)) continue;
       final id = use.identifier;
       final composite = id.compositeKey;
@@ -39,7 +52,7 @@ class ConstructMergeTable {
           (k) => k.category != 'other',
         );
         if (specific != null) {
-          otherToSpecific[id] = specific;
+          otherToSpecific[id] = caseInsensitive[specific] ?? specific;
         }
       }
     }
@@ -65,10 +78,18 @@ class ConstructMergeTable {
     } else {
       otherToSpecific.remove(id);
     }
+
+    final caseEntry = caseInsensitive[id];
+    if (caseEntry != null && caseEntry != id) {
+      caseInsensitive.remove(caseEntry);
+    }
+    caseInsensitive.remove(id);
   }
 
-  ConstructIdentifier resolve(ConstructIdentifier key) =>
-      otherToSpecific[key] ?? key;
+  ConstructIdentifier resolve(ConstructIdentifier key) {
+    final specific = otherToSpecific[key] ?? key;
+    return caseInsensitive[specific] ?? specific;
+  }
 
   List<ConstructIdentifier> groupedIds(
     ConstructIdentifier id,
@@ -79,6 +100,16 @@ class ConstructMergeTable {
       keys.add(id);
     }
 
+    // if this key maps to a different case variant, include that as well
+    final differentCase = caseInsensitive[id];
+    if (differentCase != null && differentCase != id) {
+      if (!exclude.contains(differentCase)) {
+        keys.add(differentCase);
+      }
+    }
+
+    // if this is an broad ('other') key, find the specific key it maps to
+    // and include it if available
     if (id.category == 'other') {
       final specificKey = otherToSpecific[id];
       if (specificKey != null) {
@@ -87,21 +118,17 @@ class ConstructMergeTable {
       return keys;
     }
 
-    final group = lemmaTypeGroups[id.compositeKey];
-    if (group == null) return keys;
+    // if this is a specific key, and there existing an 'other' construct
+    // in the same group, and that 'other' construct maps to this specific key,
+    // include the 'other' construct as well
+    final otherEntry = lemmaTypeGroups[id.compositeKey]
+        ?.firstWhereOrNull((k) => k.category == 'other');
+    if (otherEntry == null) {
+      return keys;
+    }
 
-    final otherEntry = group.firstWhereOrNull((k) => k.category == 'other');
-    if (otherEntry == null) return keys;
-
-    final otherSpecificEntry = otherToSpecific[otherEntry];
-    if (otherSpecificEntry == id) {
-      keys.add(
-        ConstructIdentifier(
-          lemma: id.lemma,
-          type: id.type,
-          category: 'other',
-        ),
-      );
+    if (otherToSpecific[otherEntry] == id) {
+      keys.add(otherEntry);
     }
     return keys;
   }
@@ -111,26 +138,13 @@ class ConstructMergeTable {
       (composite) => composite.endsWith('|${type.name}'),
     );
 
-    int count = 0;
+    final Set<ConstructIdentifier> unique = {};
     for (final composite in keys) {
       final group = lemmaTypeGroups[composite]!;
-      if (group.any((e) => e.category == 'other')) {
-        // if this is the only entry in the group, it's a unique construct
-        if (group.length == 1) {
-          count += 1;
-          continue;
-        }
-        // otherwise, count all but the 'other' entry,
-        // which is merged into a more specific construct
-        count += group.length - 1;
-        continue;
-      }
-
-      // all specific constructs, count them all
-      count += group.length;
+      unique.addAll(group.map((c) => resolve(c)));
     }
 
-    return count;
+    return unique.length;
   }
 
   bool constructUsed(ConstructIdentifier id) =>
@@ -139,5 +153,6 @@ class ConstructMergeTable {
   void clear() {
     lemmaTypeGroups.clear();
     otherToSpecific.clear();
+    caseInsensitive.clear();
   }
 }
