@@ -383,8 +383,8 @@ class AnalyticsDatabase with DatabaseFileStorage {
 
       ConstructUses model;
 
-      if (raw is Map<String, dynamic>) {
-        model = ConstructUses.fromJson(raw);
+      if (raw != null) {
+        model = ConstructUses.fromJson(Map<String, dynamic>.from(raw));
       } else {
         final u = usesForKey.first;
         model = ConstructUses(
