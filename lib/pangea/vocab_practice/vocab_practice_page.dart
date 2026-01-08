@@ -303,19 +303,22 @@ class VocabPracticeState extends State<VocabPractice> {
     }
   }
 
-  Future<void> onSelectChoice(String choice) async {
+  Future<void> onSelectChoice(
+    ConstructIdentifier choiceConstruct,
+    String choiceContent,
+  ) async {
     if (currentActivity == null) return;
     final activity = currentActivity!;
 
-    activity.onMultipleChoiceSelect(choice);
-    final correct = activity.multipleChoiceContent!.isCorrect(choice);
+    activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
+    final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
 
     // Submit answer immediately (records use and gives XP)
     sessionLoader.value!.submitAnswer(activity, correct);
     await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
 
     final transformTargetId =
-        'vocab-choice-card-${choice.replaceAll(' ', '_')}';
+        'vocab-choice-card-${choiceContent.replaceAll(' ', '_')}';
     if (correct) {
       OverlayUtil.showPointsGained(transformTargetId, 5, context);
     } else {

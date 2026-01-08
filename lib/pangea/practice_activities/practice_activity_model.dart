@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -53,7 +54,8 @@ class PracticeActivityModel {
       );
 
   bool onMultipleChoiceSelect(
-    String choiceContent,
+    ConstructIdentifier choiceConstruct,
+    String choice,
   ) {
     if (multipleChoiceContent == null) {
       debugger(when: kDebugMode);
@@ -67,23 +69,23 @@ class PracticeActivityModel {
 
     if (practiceTarget.isComplete ||
         practiceTarget.record.alreadyHasMatchResponse(
-          targetTokens.first.vocabConstructID,
-          choiceContent,
+          choiceConstruct,
+          choice,
         )) {
       // the user has already selected this choice
       // so we don't want to record it again
       return false;
     }
 
-    final bool isCorrect = multipleChoiceContent!.isCorrect(choiceContent);
+    final bool isCorrect = multipleChoiceContent!.isCorrect(choice);
 
     // NOTE: the response is associated with the contructId of the choice, not the selected token
     // example: the user selects the word "cat" to match with the emoji 🐶
     // the response is associated with correct word "dog", not the word "cat"
     practiceTarget.record.addResponse(
-      cId: targetTokens.first.vocabConstructID,
+      cId: choiceConstruct,
       target: practiceTarget,
-      text: choiceContent,
+      text: choice,
       score: isCorrect ? 1 : 0,
     );
 

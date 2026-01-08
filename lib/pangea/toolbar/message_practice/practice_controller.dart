@@ -153,9 +153,8 @@ class PracticeController with ChangeNotifier {
     if (_activity == null) return;
 
     final isCorrect = _activity!.activityType == ActivityTypeEnum.morphId
-        ? _activity!.onMultipleChoiceSelect(
-            choice.choiceContent,
-          )
+        ? _activity!
+            .onMultipleChoiceSelect(choice.form.cId, choice.choiceContent)
         : _activity!.onMatch(token, choice);
 
     final targetId =

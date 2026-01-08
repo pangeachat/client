@@ -268,7 +268,8 @@ class _ActivityChoicesWidget extends StatelessWidget {
                   choiceId: choiceId,
                   cardHeight: cardHeight,
                   isEnabled: isEnabled,
-                  onPressed: () => controller.onSelectChoice(choiceId),
+                  onPressed: () =>
+                      controller.onSelectChoice(constructId, choiceId),
                 );
               }).toList(),
             ),
