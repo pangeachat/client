@@ -273,7 +273,7 @@ class AnalyticsDataService {
   Future<ConstructUses> getConstructUse(ConstructIdentifier id) async {
     await _ensureInitialized();
     final blocked = blockedConstructs;
-    final ids = _mergeTable.groupedIds(id, blocked);
+    final ids = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
     if (ids.isEmpty) {
       return ConstructUses(
         uses: [],
@@ -294,7 +294,7 @@ class AnalyticsDataService {
     final blocked = blockedConstructs;
     for (final id in ids) {
       if (blocked.contains(id)) continue;
-      request[id] = _mergeTable.groupedIds(id, blocked);
+      request[id] = _mergeTable.groupedIds(_mergeTable.resolve(id), blocked);
     }
 
     return _analyticsClientGetter.database.getConstructUses(request);
