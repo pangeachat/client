@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -30,20 +31,31 @@ class VocabAnalyticsListView extends StatelessWidget {
     required this.controller,
   });
 
-  List<ConstructUses>? get _filteredVocab => controller.vocab
-      ?.where(
-        (use) =>
-            use.lemma.isNotEmpty &&
-            (controller.selectedConstructLevel == null
-                ? true
-                : use.lemmaCategory == controller.selectedConstructLevel) &&
-            (controller.isSearching
-                ? use.lemma
-                    .toLowerCase()
-                    .contains(controller.searchController.text.toLowerCase())
-                : true),
-      )
-      .toList();
+  List<ConstructUses>? get _filteredVocab =>
+      controller.vocab?.where(_vocabFilter).toList();
+
+  bool _vocabFilter(ConstructUses use) =>
+      use.lemma.isNotEmpty && _levelFilter(use) && _searchFilter(use);
+
+  bool _levelFilter(ConstructUses use) {
+    if (controller.selectedConstructLevel == null) {
+      return true;
+    }
+    return use.lemmaCategory == controller.selectedConstructLevel;
+  }
+
+  bool _searchFilter(ConstructUses use) {
+    if (!controller.isSearching ||
+        controller.searchController.text.trim().isEmpty) {
+      return true;
+    }
+
+    final normalizedLemma = removeDiacritics(use.lemma).toLowerCase();
+    final normalizedSearch =
+        removeDiacritics(controller.searchController.text).toLowerCase();
+
+    return normalizedLemma.contains(normalizedSearch);
+  }
 
   @override
   Widget build(BuildContext context) {
