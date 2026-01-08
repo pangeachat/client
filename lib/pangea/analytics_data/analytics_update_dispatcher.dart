@@ -4,7 +4,6 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 
 class LevelUpdate {
@@ -41,9 +40,8 @@ class AnalyticsUpdateDispatcher {
   final StreamController<Set<ConstructIdentifier>> unlockedConstructsStream =
       StreamController<Set<ConstructIdentifier>>.broadcast();
 
-  final StreamController<MapEntry<ConstructIdentifier, ConstructLevelEnum>>
-      constructLevelUpdateStream = StreamController<
-          MapEntry<ConstructIdentifier, ConstructLevelEnum>>.broadcast();
+  final StreamController<ConstructLevelUpEvent> constructLevelUpdateStream =
+      StreamController<ConstructLevelUpEvent>.broadcast();
 
   final StreamController<LevelUpdate> levelUpdateStream =
       StreamController<LevelUpdate>.broadcast();
@@ -105,7 +103,7 @@ class AnalyticsUpdateDispatcher {
         _onBlockedConstruct(e.blockedConstruct);
         break;
       case final ConstructLevelUpEvent e:
-        _onConstructLevelUp(e.constructId, e.level);
+        _onConstructLevelUp(e);
         break;
     }
   }
@@ -147,12 +145,7 @@ class AnalyticsUpdateDispatcher {
     constructUpdateStream.add(update);
   }
 
-  void _onConstructLevelUp(
-    ConstructIdentifier constructId,
-    ConstructLevelEnum level,
-  ) {
-    constructLevelUpdateStream.add(
-      MapEntry(constructId, level),
-    );
+  void _onConstructLevelUp(ConstructLevelUpEvent event) {
+    constructLevelUpdateStream.add(event);
   }
 }

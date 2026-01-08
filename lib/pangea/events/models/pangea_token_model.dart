@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -10,6 +9,7 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_morph_choice.dart';
+
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -132,6 +132,7 @@ class PangeaToken {
       metadata: metadata,
       category: pos,
       xp: xp,
+      id: text.uniqueKey,
     );
   }
 
@@ -154,6 +155,7 @@ class PangeaToken {
           metadata: metadata,
           category: morphFeature,
           xp: xp,
+          id: text.uniqueKey,
         ),
       );
     }

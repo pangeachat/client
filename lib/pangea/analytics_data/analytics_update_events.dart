@@ -17,10 +17,15 @@ class MorphUnlockedEvent extends AnalyticsUpdateEvent {
 class ConstructLevelUpEvent extends AnalyticsUpdateEvent {
   final ConstructIdentifier constructId;
   final ConstructLevelEnum level;
+  final String? eventId;
+  final String? tokenKey;
+
   ConstructLevelUpEvent(
     this.constructId,
-    this.level,
-  );
+    this.level, {
+    this.eventId,
+    this.tokenKey,
+  });
 }
 
 class XPGainedEvent extends AnalyticsUpdateEvent {

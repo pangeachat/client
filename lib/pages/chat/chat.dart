@@ -1,23 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:universal_html/html.dart' as html;
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -38,6 +24,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/chat/utils/construct_level_up_token_overlay.dart';
 import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/assistance_state_enum.dart';
@@ -53,6 +40,7 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -88,6 +76,19 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_html/html.dart' as html;
+
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
@@ -529,10 +530,22 @@ class ChatController extends State<ChatPageWithRoom>
         updater.unlockedConstructsStream.stream.listen(_onUnlockConstructs);
 
     _constructLevelSubscription =
-        updater.constructLevelUpdateStream.stream.listen((entry) {
-      debugPrint(
-        "Construct level update received: ${entry.key.string} -> ${entry.value}",
-      );
+        updater.constructLevelUpdateStream.stream.listen((e) {
+      // Prefer pinning above the specific token if available
+      final String? transformTargetId =
+          (e.tokenKey != null && e.eventId != null)
+              ? "message-token-${e.tokenKey}-${e.eventId}"
+              : e.eventId;
+
+      // fallback to message-level anchoring
+      if (transformTargetId != null) {
+        ConstructLevelUpOverlayUtil.show(
+          context,
+          construct: e.constructId,
+          level: e.level,
+          transformTargetId: transformTargetId,
+        );
+      }
     });
 
     _botAudioSubscription = room.client.onSync.stream.listen(_botAudioListener);
@@ -2307,6 +2320,18 @@ class ChatController extends State<ChatPageWithRoom>
       ConstructTypeEnum.vocab,
     );
 
+    final newGreensConstructs =
+        await analyticsService.getNewConstructLevelCount(
+      constructs,
+      ConstructLevelEnum.greens,
+    );
+
+    final newFlowersConstructs =
+        await analyticsService.getNewConstructLevelCount(
+      constructs,
+      ConstructLevelEnum.flowers,
+    );
+
     OverlayUtil.showOverlay(
       overlayKey: "msg_analytics_feedback_$eventId",
       followerAnchor: Alignment.bottomRight,
@@ -2315,6 +2340,8 @@ class ChatController extends State<ChatPageWithRoom>
       child: MessageAnalyticsFeedback(
         newGrammarConstructs: newGrammarConstructs,
         newVocabConstructs: newVocabConstructs,
+        newGreensConstructs: newGreensConstructs,
+        newFlowersConstructs: newFlowersConstructs,
         close: () => MatrixState.pAnyState
             .closeOverlay("msg_analytics_feedback_$eventId"),
       ),
@@ -2429,7 +2456,7 @@ class ChatController extends State<ChatPageWithRoom>
         }
         // Pangea#
         final theme = Theme.of(context);
-        return Row(
+        final content = Row(
           children: [
             Expanded(
               child: ChatView(this),
@@ -2464,6 +2491,35 @@ class ChatController extends State<ChatPageWithRoom>
                           ),
                         ),
             ),
+          ],
+        );
+        return Stack(
+          children: [
+            content,
+            if (kDebugMode)
+              Positioned(
+                right: 16,
+                bottom: 16,
+                child: FloatingActionButton(
+                  heroTag: 'fab_levelup_demo',
+                  onPressed: () {
+                    final fake = ConstructIdentifier(
+                      lemma: 'demo-word',
+                      type: ConstructTypeEnum.vocab,
+                      category: 'other',
+                    );
+                    const targetId = ChoreoConstants.inputTransformTargetKey;
+
+                    ConstructLevelUpOverlayUtil.show(
+                      context,
+                      construct: fake,
+                      level: ConstructLevelEnum.greens,
+                      transformTargetId: targetId,
+                    );
+                  },
+                  child: const Icon(Icons.celebration),
+                ),
+              ),
           ],
         );
       },

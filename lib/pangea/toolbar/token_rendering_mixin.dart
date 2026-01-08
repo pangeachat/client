@@ -28,6 +28,7 @@ mixin TokenRenderingMixin {
         category: token.pos,
         form: token.text.content,
         xp: ConstructUseTypeEnum.click.pointValue,
+        id: token.text.uniqueKey,
       ),
     ];
 

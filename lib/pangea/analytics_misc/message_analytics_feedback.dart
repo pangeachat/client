@@ -1,18 +1,22 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:flutter/material.dart';
 
 class MessageAnalyticsFeedback extends StatefulWidget {
   final int newGrammarConstructs;
   final int newVocabConstructs;
+  final int newGreensConstructs;
+  final int newFlowersConstructs;
   final VoidCallback close;
 
   const MessageAnalyticsFeedback({
     required this.newGrammarConstructs,
     required this.newVocabConstructs,
+    required this.newGreensConstructs,
+    required this.newFlowersConstructs,
     required this.close,
     super.key,
   });
@@ -34,6 +38,8 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
 
   Animation<int>? _grammarTickerAnimation;
   Animation<int>? _vocabTickerAnimation;
+  Animation<int>? _greensTickerAnimation;
+  Animation<int>? _flowersTickerAnimation;
 
   @override
   void initState() {
@@ -113,13 +119,36 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
       ),
     );
 
+    _greensTickerAnimation = IntTween(
+      begin: 0,
+      end: widget.newGreensConstructs,
+    ).animate(
+      CurvedAnimation(
+        parent: _tickerController,
+        curve: Curves.easeOutCubic,
+      ),
+    );
+
+    _flowersTickerAnimation = IntTween(
+      begin: 0,
+      end: widget.newFlowersConstructs,
+    ).animate(
+      CurvedAnimation(
+        parent: _tickerController,
+        curve: Curves.easeOutCubic,
+      ),
+    );
+
     setState(() {});
     _tickerController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.newVocabConstructs <= 0 && widget.newGrammarConstructs <= 0) {
+    if (widget.newVocabConstructs <= 0 &&
+        widget.newGrammarConstructs <= 0 &&
+        widget.newGreensConstructs <= 0 &&
+        widget.newFlowersConstructs <= 0) {
       return const SizedBox.shrink();
     }
 
@@ -167,6 +196,20 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
                         tickerAnimation: _grammarTickerAnimation,
                         type: ConstructTypeEnum.morph,
                         tooltip: L10n.of(context).newGrammar,
+                      ),
+                    if (widget.newGreensConstructs > 0)
+                      _NewConstructsLevelBadge(
+                        opacityAnimation: _numbersOpacityAnimation,
+                        tickerAnimation: _greensTickerAnimation,
+                        level: ConstructLevelEnum.greens,
+                        tooltip: "New Greens",
+                      ),
+                    if (widget.newFlowersConstructs > 0)
+                      _NewConstructsLevelBadge(
+                        opacityAnimation: _numbersOpacityAnimation,
+                        tickerAnimation: _flowersTickerAnimation,
+                        level: ConstructLevelEnum.flowers,
+                        tooltip: "New Flowers",
                       ),
                   ],
                 ),
@@ -222,6 +265,58 @@ class _NewConstructsBadge extends StatelessWidget {
                       animation: tickerAnimation,
                       style: TextStyle(
                         color: type.indicator.color(context),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class _NewConstructsLevelBadge extends StatelessWidget {
+  final Animation<double> opacityAnimation;
+  final Animation<int>? tickerAnimation;
+  final ConstructLevelEnum level;
+  final String tooltip;
+
+  const _NewConstructsLevelBadge({
+    required this.opacityAnimation,
+    required this.tickerAnimation,
+    required this.level,
+    required this.tooltip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => AnalyticsNavigationUtil.navigateToAnalytics(
+        context: context,
+      ),
+      child: Tooltip(
+        message: tooltip,
+        child: AnimatedBuilder(
+          animation: opacityAnimation,
+          builder: (context, child) {
+            return Opacity(
+              opacity: opacityAnimation.value,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    level.icon(24),
+                    const SizedBox(width: 4.0),
+                    _AnimatedCounter(
+                      key: ValueKey("$level-counter"),
+                      animation: tickerAnimation,
+                      style: TextStyle(
+                        color: ConstructTypeEnum.vocab.indicator.color(context),
                         fontWeight: FontWeight.bold,
                       ),
                     ),

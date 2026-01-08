@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/analytics_data/analytics_database.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_database_builder.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_sync_controller.dart';
@@ -22,6 +20,7 @@ import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:matrix/matrix.dart';
 
 class _AnalyticsClient {
   final Client client;
@@ -342,6 +341,36 @@ class AnalyticsDataService {
     return newConstructCount;
   }
 
+  Future<int> getNewConstructLevelCount(
+    List<OneConstructUse> newConstructs,
+    ConstructLevelEnum level,
+  ) async {
+    await _ensureInitialized();
+    final blocked = blockedConstructs;
+    final uses =
+        newConstructs.where((c) => !blocked.contains(c.identifier)).toList();
+
+    final Map<ConstructIdentifier, int> constructPoints = {};
+    for (final use in uses) {
+      constructPoints[use.identifier] ??= 0;
+      constructPoints[use.identifier] =
+          constructPoints[use.identifier]! + use.xp;
+    }
+
+    final constructs = await getConstructUses(constructPoints.keys.toList());
+
+    int newConstructCount = 0;
+    for (final entry in constructPoints.entries) {
+      final construct = constructs[entry.key]!;
+      if (construct.points == entry.value &&
+          construct.constructLevel == level) {
+        newConstructCount++;
+      }
+    }
+
+    return newConstructCount;
+  }
+
   Future<void> updateXPOffset(int offset) async {
     _invalidateCaches();
     await _analyticsClientGetter.database.updateXPOffset(offset);
@@ -417,10 +446,26 @@ class AnalyticsDataService {
       final prevLevel = prevConstruct.lemmaCategory;
       final newLevel = entry.value.lemmaCategory;
       if (newLevel.xpNeeded > prevLevel.xpNeeded) {
+        // Try to attribute this level-up to the current update batch
+        // by finding a matching OneConstructUse. If found, use its id
+        // (token uniqueKey) and metadata.eventId for anchoring.
+        OneConstructUse? matchingUse;
+        for (final u in update.addedConstructs) {
+          if (u.identifier == entry.key) {
+            matchingUse = u;
+            break;
+          }
+        }
+
+        final tokenKey = matchingUse?.id;
+        final eventId = update.targetID ?? matchingUse?.metadata.eventId;
+
         events.add(
           ConstructLevelUpEvent(
             entry.key,
             newLevel,
+            eventId: eventId,
+            tokenKey: tokenKey,
           ),
         );
       }
