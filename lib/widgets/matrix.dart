@@ -299,6 +299,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   bool _showingScreenSizeDialog = false;
+  double? _lastShownPopupHeight;
   @override
   void didChangeMetrics() {
     _showScreenSizeDialog();
@@ -306,19 +307,29 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   Future<void> _showScreenSizeDialog() async {
-    if (_showingScreenSizeDialog ||
-        !kIsWeb ||
-        MediaQuery.heightOf(context) > 500) {
+    if (_showingScreenSizeDialog || !kIsWeb) {
+      return;
+    }
+
+    final height = MediaQuery.heightOf(context);
+    if (height > 500) {
+      _lastShownPopupHeight = null;
+      return;
+    }
+
+    if (_lastShownPopupHeight != null && height >= _lastShownPopupHeight!) {
       return;
     }
 
     _showingScreenSizeDialog = true;
+    _lastShownPopupHeight = height;
     await showOkAlertDialog(
       context:
           FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
               context,
       title: L10n.of(context).screenSizeWarning,
     );
+    _lastShownPopupHeight = MediaQuery.heightOf(context);
     _showingScreenSizeDialog = false;
   }
 
