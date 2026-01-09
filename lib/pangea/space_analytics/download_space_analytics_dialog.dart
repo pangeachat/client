@@ -378,23 +378,24 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
-              child: OutlinedButton(
-                onPressed: _loading || !_initialized ? null : _runDownload,
-                child: _initialized && !_loading
-                    ? Text(
-                        _loading
-                            ? L10n.of(context).downloading
-                            : L10n.of(context).download,
-                      )
-                    : const SizedBox(
-                        height: 10,
-                        width: 100,
-                        child: LinearProgressIndicator(),
-                      ),
+            if (!_downloaded)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
+                child: OutlinedButton(
+                  onPressed: _loading || !_initialized ? null : _runDownload,
+                  child: _initialized && !_loading
+                      ? Text(
+                          _loading
+                              ? L10n.of(context).downloading
+                              : L10n.of(context).download,
+                        )
+                      : const SizedBox(
+                          height: 10,
+                          width: 100,
+                          child: LinearProgressIndicator(),
+                        ),
+                ),
               ),
-            ),
             AnimatedSize(
               duration: FluffyThemes.animationDuration,
               child: _statusText != null

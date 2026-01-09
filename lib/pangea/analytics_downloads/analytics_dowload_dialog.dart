@@ -439,19 +439,20 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
-              child: OutlinedButton(
-                onPressed: _downloading ? null : _downloadAnalytics,
-                child: _downloading
-                    ? const SizedBox(
-                        height: 10,
-                        width: 100,
-                        child: LinearProgressIndicator(),
-                      )
-                    : Text(L10n.of(context).download),
+            if (!_downloaded)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
+                child: OutlinedButton(
+                  onPressed: _downloading ? null : _downloadAnalytics,
+                  child: _downloading
+                      ? const SizedBox(
+                          height: 10,
+                          width: 100,
+                          child: LinearProgressIndicator(),
+                        )
+                      : Text(L10n.of(context).download),
+                ),
               ),
-            ),
             AnimatedSize(
               duration: FluffyThemes.animationDuration,
               child: _statusText != null
