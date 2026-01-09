@@ -322,7 +322,7 @@ class VocabPracticeState extends State<VocabPractice> {
     if (correct) {
       OverlayUtil.showPointsGained(transformTargetId, 5, context);
     } else {
-      OverlayUtil.showPointsGained(transformTargetId, -2, context);
+      OverlayUtil.showPointsGained(transformTargetId, -1, context);
     }
     if (!correct) return;
 
