@@ -78,7 +78,7 @@ class PLanguageStore {
       return true;
     }
 
-    final DateTime targetDate = DateTime(2025, 2, 26);
+    final DateTime targetDate = DateTime(2026, 1, 9);
     if (lastFetchedDate.isBefore(targetDate)) {
       return true;
     }
