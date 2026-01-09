@@ -273,14 +273,14 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incIt:
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
         return -1;
 
       case ConstructUseTypeEnum.incPA:
       case ConstructUseTypeEnum.incWL:
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.incL:
-      case ConstructUseTypeEnum.incLM:
-      case ConstructUseTypeEnum.incLA:
         return -2;
     }
   }
