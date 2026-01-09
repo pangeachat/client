@@ -13,9 +13,17 @@ import 'package:fluffychat/widgets/matrix.dart';
 mixin LemmaEmojiSetter {
   Future<void> setLemmaEmoji(
     ConstructIdentifier constructId,
+    String langCode,
     String emoji,
     String? targetId,
   ) async {
+    final userL2 =
+        MatrixState.pangeaController.userController.userL2?.langCodeShort;
+    if (langCode.split("-").first != userL2) {
+      // only set emoji for user's L2 language
+      return;
+    }
+
     if (constructId.userSetEmoji == null) {
       _getEmojiAnalytics(
         constructId,
