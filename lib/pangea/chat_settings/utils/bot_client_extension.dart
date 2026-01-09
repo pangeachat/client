@@ -59,6 +59,11 @@ extension BotClientExtension on Client {
       return;
     }
 
+    if (targetLanguage != null &&
+        updateBotOptions.targetLanguage != targetLanguage) {
+      updateBotOptions.targetVoice = null;
+    }
+
     updateBotOptions.targetLanguage = targetLanguage;
     updateBotOptions.languageLevel = cefrLevel;
     await botDM!.setBotOptions(updateBotOptions);

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
@@ -150,19 +149,18 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
                   customButton: _selectedVoice != null
                       ? CustomDropdownTextButton(text: _selectedVoice!)
                       : null,
-                  menuItemStyleData: MenuItemStyleData(
-                    padding: const EdgeInsets.symmetric(
+                  menuItemStyleData: const MenuItemStyleData(
+                    padding: EdgeInsets.symmetric(
                       vertical: 8.0,
                       horizontal: 16.0,
                     ),
-                    height: FluffyThemes.isColumnMode(context) ? 100.0 : 150.0,
                   ),
                   decoration: InputDecoration(
                     labelText: L10n.of(context).voice,
                   ),
                   isExpanded: true,
                   dropdownStyleData: DropdownStyleData(
-                    maxHeight: kIsWeb ? 500 : null,
+                    maxHeight: kIsWeb ? 250 : null,
                     decoration: BoxDecoration(
                       color: Theme.of(context).colorScheme.surfaceContainerHigh,
                       borderRadius: BorderRadius.circular(14.0),
