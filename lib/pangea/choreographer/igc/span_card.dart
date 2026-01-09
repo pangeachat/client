@@ -154,40 +154,45 @@ class SpanCardState extends State<SpanCard> {
           Expanded(
             child: Scrollbar(
               controller: scrollController,
-              child: SingleChildScrollView(
-                controller: scrollController,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12.0,
-                    horizontal: 24.0,
-                  ),
-                  child: Column(
-                    spacing: 12.0,
-                    children: [
-                      ChoicesArray(
-                        isLoading: _loadingChoices,
-                        choices: widget.match.updatedMatch.match.choices
-                            ?.map(
-                              (e) => Choice(
-                                text: e.value,
-                                color: e.selected ? e.type.color : null,
-                                isGold: e.type.name == 'bestCorrection',
-                              ),
-                            )
-                            .toList(),
-                        onPressed: (value, index) => _onChoiceSelect(index),
-                        selectedChoiceIndex:
-                            widget.match.updatedMatch.match.selectedChoiceIndex,
-                        id: widget.match.hashCode.toString(),
-                        langCode: MatrixState
-                            .pangeaController.userController.userL2Code!,
-                      ),
-                      _SpanCardFeedback(
-                        _selectedChoice != null,
-                        _fetchFeedback,
-                        _feedbackState,
-                      ),
-                    ],
+              child: Container(
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.green)),
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12.0,
+                      horizontal: 24.0,
+                    ),
+                    child: Column(
+                      spacing: 12.0,
+                      children: [
+                        ChoicesArray(
+                          isLoading: _loadingChoices,
+                          choices: widget.match.updatedMatch.match.choices
+                              ?.map(
+                                (e) => Choice(
+                                  text: e.value,
+                                  color: e.selected ? e.type.color : null,
+                                  isGold: e.type.name == 'bestCorrection',
+                                ),
+                              )
+                              .toList(),
+                          onPressed: (value, index) => _onChoiceSelect(index),
+                          selectedChoiceIndex: widget
+                              .match.updatedMatch.match.selectedChoiceIndex,
+                          id: widget.match.hashCode.toString(),
+                          langCode: MatrixState
+                              .pangeaController.userController.userL2Code!,
+                        ),
+                        const SizedBox(),
+                        _SpanCardFeedback(
+                          _selectedChoice != null,
+                          _fetchFeedback,
+                          _feedbackState,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -217,42 +222,37 @@ class _SpanCardFeedback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(
-        minHeight: 50.0,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ValueListenableBuilder(
-            valueListenable: feedbackState,
-            builder: (context, state, __) {
-              return switch (state) {
-                AsyncIdle<String>() => hasSelectedChoice
-                    ? IconButton(
-                        onPressed: fetchFeedback,
-                        icon: const Icon(Icons.lightbulb_outline, size: 24),
-                      )
-                    : Text(
-                        L10n.of(context).correctionDefaultPrompt,
-                        style: BotStyle.text(context).copyWith(
-                          fontStyle: FontStyle.italic,
-                        ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ValueListenableBuilder(
+          valueListenable: feedbackState,
+          builder: (context, state, __) {
+            return switch (state) {
+              AsyncIdle<String>() => hasSelectedChoice
+                  ? IconButton(
+                      onPressed: fetchFeedback,
+                      icon: const Icon(Icons.lightbulb_outline, size: 24),
+                    )
+                  : Text(
+                      L10n.of(context).correctionDefaultPrompt,
+                      style: BotStyle.text(context).copyWith(
+                        fontStyle: FontStyle.italic,
                       ),
-                AsyncLoading<String>() => const SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(),
-                  ),
-                AsyncError<String>(:final error) =>
-                  ErrorIndicator(message: error.toString()),
-                AsyncLoaded<String>(:final value) =>
-                  Text(value, style: BotStyle.text(context)),
-              };
-            },
-          ),
-        ],
-      ),
+                    ),
+              AsyncLoading<String>() => const SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(),
+                ),
+              AsyncError<String>(:final error) =>
+                ErrorIndicator(message: error.toString()),
+              AsyncLoaded<String>(:final value) =>
+                Text(value, style: BotStyle.text(context)),
+            };
+          },
+        ),
+      ],
     );
   }
 }
