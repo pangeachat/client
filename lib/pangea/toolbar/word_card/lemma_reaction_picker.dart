@@ -58,6 +58,11 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
     super.dispose();
   }
 
+  bool get _enabled =>
+      (widget.langCode.split("-").first ==
+          MatrixState.pangeaController.userController.userL2?.langCodeShort) &&
+      widget.enabled;
+
   void _setEmojiSub() {
     _emojiSub?.cancel();
     _emojiSub = Matrix.of(context)
@@ -90,7 +95,12 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
     String emoji,
     String targetId,
   ) async {
-    await widget.setLemmaEmoji(widget.constructId, emoji, targetId);
+    await widget.setLemmaEmoji(
+      widget.constructId,
+      widget.langCode,
+      emoji,
+      targetId,
+    );
     messenger = ScaffoldMessenger.of(context);
     widget.showLemmaEmojiSnackbar(
       messenger!,
@@ -145,7 +155,7 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker> {
               size: 12.0,
             )
           : null,
-      enabled: widget.enabled,
+      enabled: _enabled,
     );
   }
 }
