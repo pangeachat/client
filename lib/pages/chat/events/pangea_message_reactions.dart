@@ -10,6 +10,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/emoji_burst.dart';
+import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -35,10 +36,10 @@ class PangeaMessageReactions extends StatefulWidget {
 }
 
 class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
-  StreamSubscription? _reactionSubscription;
   Map<String, _ReactionEntry> _reactionMap = {};
   Set<String> _newlyAddedReactions = {};
   late Client client;
+  ReactionListener? _reactionListener;
 
   @override
   void initState() {
@@ -48,23 +49,17 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
     _setupReactionStream();
   }
 
-  void _setupReactionStream() {
-    _reactionSubscription = widget.controller.room.client.onSync.stream.where(
-      (update) {
-        final room = widget.controller.room;
-        final timelineEvents = update.rooms?.join?[room.id]?.timeline?.events;
-        if (timelineEvents == null) return false;
+  @override
+  void dispose() {
+    _reactionListener?.dispose();
+    super.dispose();
+  }
 
-        final eventID = widget.event.eventId;
-        return timelineEvents.any(
-          (e) =>
-              e.type == EventTypes.Redaction ||
-              (e.type == EventTypes.Reaction &&
-                  Event.fromMatrixEvent(e, room).relationshipEventId ==
-                      eventID),
-        );
-      },
-    ).listen(_onReactionUpdate);
+  void _setupReactionStream() {
+    _reactionListener = ReactionListener(
+      event: widget.event,
+      onUpdate: _onReactionUpdate,
+    );
   }
 
   void _onReactionUpdate(SyncUpdate update) {
@@ -104,12 +99,6 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
     }
 
     _reactionMap = newReactionMap;
-  }
-
-  @override
-  void dispose() {
-    _reactionSubscription?.cancel();
-    super.dispose();
   }
 
   @override
