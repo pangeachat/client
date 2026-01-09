@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 
 class StatCard extends StatelessWidget {
   final IconData icon;
@@ -20,13 +21,31 @@ class StatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    final colorScheme = theme.colorScheme;
     final backgroundColor = isAchievement
         ? Color.alphaBlend(
-            Theme.of(context).colorScheme.surface.withAlpha(170),
+            colorScheme.surface.withAlpha(170),
             AppConfig.goldLight,
           )
         : colorScheme.surfaceContainer;
+
+    TextStyle? titleStyle = theme.textTheme.titleMedium;
+    if (!isColumnMode) {
+      titleStyle = theme.textTheme.bodyMedium;
+    }
+    titleStyle = titleStyle?.copyWith(
+      fontWeight: FontWeight.bold,
+    );
+
+    TextStyle? achievementStyle = theme.textTheme.titleSmall;
+    if (!isColumnMode) {
+      achievementStyle = theme.textTheme.bodySmall;
+    }
+    achievementStyle = achievementStyle?.copyWith(
+      fontWeight: FontWeight.bold,
+    );
 
     return Container(
       decoration: BoxDecoration(
@@ -46,17 +65,13 @@ class StatCard extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 text,
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                style: titleStyle,
               ),
               if (isAchievement) ...[
                 const Spacer(),
                 Text(
                   achievementText,
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: achievementStyle,
                 ),
               ],
             ],
