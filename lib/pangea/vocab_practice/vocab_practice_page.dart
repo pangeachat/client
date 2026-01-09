@@ -426,8 +426,53 @@ class VocabPracticeState extends State<VocabPractice> {
       }
     }
 
+    // Check for duplicate choice texts and remove duplicates
+    _removeDuplicateChoices();
+
     if (mounted) {
       setState(() => isLoadingLemmaInfo = false);
+    }
+  }
+
+  /// Removes duplicate choice texts, keeping the correct answer if it's a duplicate, or the first otherwise
+  void _removeDuplicateChoices() {
+    if (currentActivity?.multipleChoiceContent == null) return;
+
+    final activity = currentActivity!.multipleChoiceContent!;
+    final correctAnswers = activity.answers;
+
+    final Map<String, List<String>> textToIds = {};
+
+    for (final id in _choiceTexts.keys) {
+      final text = _choiceTexts[id]!;
+      textToIds.putIfAbsent(text, () => []).add(id);
+    }
+
+    // Find duplicates and remove them
+    final Set<String> idsToRemove = {};
+    for (final entry in textToIds.entries) {
+      final duplicateIds = entry.value;
+      if (duplicateIds.length > 1) {
+        // Find if any of the duplicates is the correct answer
+        final correctId = duplicateIds.firstWhereOrNull(
+          (id) => correctAnswers.contains(id),
+        );
+
+        // Remove all duplicates except one
+        if (correctId != null) {
+          idsToRemove.addAll(duplicateIds.where((id) => id != correctId));
+        } else {
+          idsToRemove.addAll(duplicateIds.skip(1));
+        }
+      }
+    }
+
+    if (idsToRemove.isNotEmpty) {
+      activity.choices.removeAll(idsToRemove);
+      for (final id in idsToRemove) {
+        _choiceTexts.remove(id);
+        _choiceEmojis.remove(id);
+      }
     }
   }
 }
