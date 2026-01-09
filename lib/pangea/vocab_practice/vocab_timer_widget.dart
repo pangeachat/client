@@ -64,6 +64,9 @@ class VocabTimerWidgetState extends State<VocabTimerWidget> {
   }
 
   int _getCurrentSeconds() {
+    if (!_stopwatch.isRunning) {
+      return widget.initialSeconds;
+    }
     return _initialSeconds + (_stopwatch.elapsedMilliseconds / 1000).round();
   }
 
