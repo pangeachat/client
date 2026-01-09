@@ -366,7 +366,9 @@ class TopicActivitiesListState extends State<TopicActivitiesList> {
 
           final activity = activityEntry.value;
           return Padding(
-            padding: const EdgeInsets.only(right: 24.0),
+            padding: index != (activityEntries.length - 1)
+                ? const EdgeInsets.only(right: 24.0)
+                : EdgeInsets.zero,
             child: MouseRegion(
               cursor: SystemMouseCursors.click,
               child: GestureDetector(
