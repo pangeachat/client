@@ -11,9 +11,9 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/emoji_burst.dart';
 import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
@@ -161,10 +161,16 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
             e.senderId == e.room.client.userID &&
             e.content.tryGetMap('m.relates_to')?['key'] == reaction.key,
       );
-      if (evt != null) {
-        await showFutureLoadingDialog(
-          context: context,
-          future: () => evt.redactEvent(),
+      try {
+        await evt?.redactEvent();
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            'message': 'Failed to redact reaction event',
+            'event_id': evt?.eventId,
+          },
         );
       }
     } else {
