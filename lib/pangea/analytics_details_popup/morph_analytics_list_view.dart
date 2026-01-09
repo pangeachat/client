@@ -195,7 +195,7 @@ class MorphTagChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final unlocked =
-        constructAnalytics != null && constructAnalytics!.points > 0 ||
+        constructAnalytics != null && constructAnalytics!.numTotalUses > 0 ||
             Matrix.of(context).client.userID == Environment.supportUserId;
 
     return Material(

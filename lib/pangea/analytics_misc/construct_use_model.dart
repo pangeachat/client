@@ -48,6 +48,8 @@ class ConstructUses {
   bool get hasCorrectUse => _uses.any((use) => use.xp > 0);
   bool get hasIncorrectUse => _uses.any((use) => use.xp < 0);
 
+  int get numTotalUses => _uses.length;
+
   ConstructIdentifier get id => ConstructIdentifier(
         lemma: lemma,
         type: constructType,
