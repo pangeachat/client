@@ -32,7 +32,8 @@ class ActivitySessionPopupMenuState extends State<ActivitySessionPopupMenu>
             break;
           case ActivityPopupMenuActions.invite:
             NavigationUtil.goToSpaceRoute(
-              '/rooms/${widget.room.id}/invite',
+              widget.room.id,
+              ['invite'],
               context,
             );
             break;

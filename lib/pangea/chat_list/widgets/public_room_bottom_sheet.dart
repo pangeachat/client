@@ -98,7 +98,8 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
   void _goToRoom(String roomID) {
     if (chunk?.roomType != 'm.space' && !client.getRoomById(roomID)!.isSpace) {
       NavigationUtil.goToSpaceRoute(
-        "/rooms/$roomID",
+        roomID,
+        [],
         context,
       );
     } else {

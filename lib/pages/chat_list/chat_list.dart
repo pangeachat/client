@@ -43,6 +43,7 @@ import '../../widgets/matrix.dart';
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
+
 enum PopupMenuAction {
   settings,
   invite,
@@ -213,14 +214,7 @@ class ChatListController extends State<ChatList>
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
-          // #Pangea
-          // context.go('/rooms/settings/security/ignorelist', extra: userId);
-          NavigationUtil.goToSpaceRoute(
-            '/rooms/settings/security/ignorelist',
-            context,
-            extra: userId,
-          );
-          // Pangea#
+          context.go('/rooms/settings/security/ignorelist', extra: userId);
           return;
       }
       if (!mounted) return;
@@ -249,13 +243,7 @@ class ChatListController extends State<ChatList>
     }
 
     if (room.membership == Membership.leave) {
-      // #Pangea
-      // context.go('/rooms/archive/${room.id}');
-      NavigationUtil.goToSpaceRoute(
-        '/rooms/archive/${room.id}',
-        context,
-      );
-      // Pangea#
+      context.go('/rooms/archive/${room.id}');
       return;
     }
 
@@ -266,10 +254,7 @@ class ChatListController extends State<ChatList>
 
     // #Pangea
     // context.go('/rooms/${room.id}');
-    NavigationUtil.goToSpaceRoute(
-      '/rooms/${room.id}',
-      context,
-    );
+    NavigationUtil.goToSpaceRoute(room.id, [], context);
     // Pangea#
   }
 
@@ -667,10 +652,7 @@ class ChatListController extends State<ChatList>
           future: () async {
             await room.leave();
             if (GoRouterState.of(context).uri.toString().contains(roomID)) {
-              NavigationUtil.goToSpaceRoute(
-                "/rooms",
-                context,
-              );
+              NavigationUtil.goToSpaceRoute(null, [], context);
             }
             throw L10n.of(context).roomFull;
           },

@@ -72,8 +72,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
           ),
         ],
       ),
-      onPressed: () =>
-          NavigationUtil.goToSpaceRoute('/rooms/${room.id}', context),
+      onPressed: () => NavigationUtil.goToSpaceRoute(room.id, [], context),
     );
 
     return Scaffold(

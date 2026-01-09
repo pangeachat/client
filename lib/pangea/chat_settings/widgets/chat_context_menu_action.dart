@@ -263,7 +263,7 @@ void chatContextMenuAction(
       if (!resp.isError) {
         isSpace
             ? context.go('/rooms')
-            : NavigationUtil.goToSpaceRoute("/rooms", context);
+            : NavigationUtil.goToSpaceRoute(null, [], context);
       }
 
       return;
@@ -285,7 +285,7 @@ void chatContextMenuAction(
           future: room.delete,
         );
         if (!resp.isError) {
-          NavigationUtil.goToSpaceRoute("/rooms", context);
+          NavigationUtil.goToSpaceRoute(null, [], context);
         }
       }
       return;

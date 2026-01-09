@@ -120,8 +120,12 @@ class ChatDetailsContent extends StatelessWidget {
                           onPressed: room.isDirectChat || !room.canInvite
                               ? null
                               : () => NavigationUtil.goToSpaceRoute(
-                                    '/rooms/${controller.roomId}/details/invite?filter=participants',
+                                    controller.roomId,
+                                    ['details', 'invite'],
                                     context,
+                                    queryParams: {
+                                      'filter': 'participants',
+                                    },
                                   ),
                           icon: const Icon(
                             Icons.group_outlined,

@@ -72,7 +72,8 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
         onPressed: () {
           NavigationUtil.goToSpaceRoute(
-            '/rooms/${room.id}/details/permissions',
+            room.id,
+            ['details', 'permissions'],
             context,
           );
         },
@@ -108,8 +109,12 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
           }
           NavigationUtil.goToSpaceRoute(
-            '/rooms/${room.id}/details/invite?filter=$filter',
+            room.id,
+            ['details', 'invite'],
             context,
+            queryParams: {
+              'filter': filter,
+            },
           );
         },
         enabled: room.canInvite,
@@ -149,7 +154,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.leave,
           );
           if (!resp.isError) {
-            NavigationUtil.goToSpaceRoute("/rooms", context);
+            NavigationUtil.goToSpaceRoute(null, [], context);
           }
         },
         enabled: room.membership == Membership.join,
@@ -174,7 +179,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.delete,
           );
           if (resp.isError) return;
-          NavigationUtil.goToSpaceRoute("/rooms", context);
+          NavigationUtil.goToSpaceRoute(null, [], context);
         },
         enabled: room.isRoomAdmin,
         visible: !room.isDirectChat,
