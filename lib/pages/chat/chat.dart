@@ -130,7 +130,7 @@ class ChatPage extends StatelessWidget {
         s: StackTrace.current,
         data: {"roomId": roomId},
       );
-      NavigationUtil.goToSpaceRoute('/rooms', context);
+      NavigationUtil.goToSpaceRoute(null, [], context);
     }
 
     if (room == null || room.membership == Membership.leave) {
@@ -290,7 +290,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (success.error != null) return;
     // #Pangea
     // context.go('/rooms');
-    NavigationUtil.goToSpaceRoute('/rooms', context);
+    NavigationUtil.goToSpaceRoute(null, [], context);
     // Pangea#
   }
 
@@ -812,7 +812,7 @@ class ChatController extends State<ChatPageWithRoom>
         s: StackTrace.current,
         data: {"roomId": roomId},
       );
-      NavigationUtil.goToSpaceRoute('/rooms', context);
+      NavigationUtil.goToSpaceRoute(null, [], context);
     }
   }
 
@@ -2390,7 +2390,7 @@ class ChatController extends State<ChatPageWithRoom>
           );
     }
 
-    NavigationUtil.goToSpaceRoute('/rooms', context);
+    NavigationUtil.goToSpaceRoute(null, [], context);
   }
 
   Future<void> requestRegeneration(String eventId) async {

@@ -379,7 +379,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     NavigationUtil.goToSpaceRoute(
-      "/rooms/${widget.roomId}",
+      widget.roomId,
+      [],
       context,
     );
   }
@@ -409,7 +410,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
       if (!resp.isError) {
         NavigationUtil.goToSpaceRoute(
-          "/rooms/${resp.result}",
+          resp.result,
+          [],
           context,
         );
       }
@@ -456,7 +458,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   Future<void> joinActivityByRoomId(String roomId) async {
     final room = Matrix.of(context).client.getRoomById(roomId);
     if (room != null && room.membership == Membership.join) {
-      NavigationUtil.goToSpaceRoute("/rooms/$roomId", context);
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
       return;
     }
 
@@ -480,7 +482,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     );
 
     if (!resp.isError) {
-      NavigationUtil.goToSpaceRoute("/rooms/$roomId", context);
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
     }
   }
 

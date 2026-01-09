@@ -40,7 +40,8 @@ class ChatAppBarTitle extends StatelessWidget {
               // #Pangea
               // : context.go('/rooms/${room.id}/details'),
               : NavigationUtil.goToSpaceRoute(
-                  '/rooms/${room.id}/details',
+                  room.id,
+                  ['details'],
                   context,
                 ),
       // Pangea#

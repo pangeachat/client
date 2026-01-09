@@ -161,7 +161,8 @@ class ChatView extends StatelessWidget {
         tooltip: L10n.of(context).search,
         onPressed: () {
           NavigationUtil.goToSpaceRoute(
-            '/rooms/${controller.room.id}/search',
+            controller.room.id,
+            ['search'],
             context,
           );
         },
@@ -172,12 +173,14 @@ class ChatView extends StatelessWidget {
         onPressed: () {
           if (GoRouterState.of(context).uri.path.endsWith('/details')) {
             NavigationUtil.goToSpaceRoute(
-              '/rooms/${controller.room.id}',
+              controller.room.id,
+              [],
               context,
             );
           } else {
             NavigationUtil.goToSpaceRoute(
-              '/rooms/${controller.room.id}/details',
+              controller.room.id,
+              ['details'],
               context,
             );
           }

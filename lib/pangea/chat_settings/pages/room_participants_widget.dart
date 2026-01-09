@@ -70,7 +70,8 @@ class RoomParticipantsSection extends StatelessWidget {
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () => NavigationUtil.goToSpaceRoute(
-                          "/rooms/${room.id}/details/invite",
+                          room.id,
+                          ['details', 'invite'],
                           context,
                         ),
                         child: HoverBuilder(

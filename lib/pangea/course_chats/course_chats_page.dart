@@ -391,9 +391,8 @@ class CourseChatsController extends State<CourseChats>
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
-          NavigationUtil.goToSpaceRoute(
+          context.go(
             '/rooms/settings/security/ignorelist',
-            context,
             extra: userId,
           );
           return;
@@ -424,19 +423,16 @@ class CourseChatsController extends State<CourseChats>
     }
 
     if (room.membership == Membership.leave) {
-      NavigationUtil.goToSpaceRoute('/rooms/archive/${room.id}', context);
+      context.go('/rooms/archive/${room.id}');
       return;
     }
 
     if (room.isSpace) {
-      NavigationUtil.goToSpaceRoute(
-        "/rooms/spaces/${room.id}/details",
-        context,
-      );
+      context.go("/rooms/spaces/${room.id}/details");
       return;
     }
 
-    NavigationUtil.goToSpaceRoute('/rooms/${room.id}', context);
+    NavigationUtil.goToSpaceRoute(room.id, [], context);
   }
 
   void joinChildRoom(SpaceRoomsChunk item) async {

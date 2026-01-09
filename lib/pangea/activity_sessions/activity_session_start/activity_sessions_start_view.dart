@@ -275,7 +275,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                                 style: buttonStyle,
                                                 onPressed: () {
                                                   NavigationUtil.goToSpaceRoute(
-                                                    "/rooms/${controller.activityRoom!.id}/invite",
+                                                    controller.activityRoom!.id,
+                                                    ['invite'],
                                                     context,
                                                   );
                                                 },
@@ -398,7 +399,8 @@ class _ActivityStartButtons extends StatelessWidget {
                 style: buttonStyle,
                 onPressed: () {
                   NavigationUtil.goToSpaceRoute(
-                    "/rooms/$joinedActivityRoom",
+                    joinedActivityRoom,
+                    [],
                     context,
                   );
                 },
@@ -435,7 +437,8 @@ class _ActivityStartButtons extends StatelessWidget {
 
                     if (!resp.isError) {
                       NavigationUtil.goToSpaceRoute(
-                        "/rooms/${resp.result}",
+                        resp.result,
+                        [],
                         context,
                       );
                     }

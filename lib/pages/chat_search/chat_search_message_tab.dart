@@ -208,8 +208,10 @@ class _MessageSearchResultListTile extends StatelessWidget {
         //   )}',
         // ),
         onPressed: () => NavigationUtil.goToSpaceRoute(
-          '/rooms/${room.id}?event=${event.eventId}',
+          room.id,
+          [],
           context,
+          queryParams: {'event': event.eventId},
         ),
         // Pangea#
       ),

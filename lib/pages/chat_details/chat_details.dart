@@ -360,7 +360,7 @@ class ChatDetailsController extends State<ChatDetails>
     );
 
     if (resp.isError || resp.result == null || !mounted) return;
-    NavigationUtil.goToSpaceRoute('/rooms/${resp.result}/invite', context);
+    NavigationUtil.goToSpaceRoute(resp.result, ['invite'], context);
   }
 
   Future<void> _loadCourseInfo() async {
