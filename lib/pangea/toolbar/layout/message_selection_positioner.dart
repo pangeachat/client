@@ -10,6 +10,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -62,6 +63,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   PangeaMessageEvent get pangeaMessageEvent =>
       widget.overlayController.pangeaMessageEvent;
 
+  ReactionListener? _reactionListener;
+  final ValueNotifier<double?> reactionNotifier = ValueNotifier(null);
+
   @override
   void initState() {
     super.initState();
@@ -76,10 +80,25 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         });
       },
     );
+
+    reactionNotifier.value = _reactionsWidth;
+    _reactionListener = ReactionListener(
+      event: widget.event,
+      onUpdate: (update) {
+        if (mounted) {
+          final newWidth = _reactionsWidth;
+          if (newWidth != reactionNotifier.value) {
+            reactionNotifier.value = newWidth;
+          }
+        }
+      },
+    );
   }
 
   @override
   void dispose() {
+    reactionNotifier.dispose();
+    _reactionListener?.dispose();
     scrollController?.dispose();
     super.dispose();
   }
@@ -127,7 +146,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     return hasReactions ? 28.0 : 0.0;
   }
 
-  double? get reactionsWidth {
+  double? get _reactionsWidth {
     if (_reactionsRenderBox != null) {
       return _reactionsRenderBox!.size.width;
     }

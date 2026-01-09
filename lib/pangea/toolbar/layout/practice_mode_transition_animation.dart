@@ -145,6 +145,7 @@ class PracticeModeTransitionAnimationState
                         widget.controller.readingAssistanceMode,
                     overlayKey:
                         "overlay_transition_message_${widget.controller.widget.event.eventId}",
+                    reactionsWidth: widget.controller.reactionNotifier,
                   ),
                 );
               },
@@ -195,6 +196,7 @@ class CenteredMessage extends StatelessWidget {
                     overlayKey:
                         "overlay_center_message_${controller.widget.event.eventId}",
                     readingAssistanceMode: controller.readingAssistanceMode,
+                    reactionsWidth: controller.reactionNotifier,
                   ),
                   const SizedBox(
                     height: AppConfig.readingAssistanceInputBarHeight + 60.0,
