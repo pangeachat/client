@@ -33,41 +33,30 @@ class RoomParticipantsSection extends StatelessWidget {
         final filteredParticipants = participantsLoader.sortedParticipants;
         final originalLeaders = filteredParticipants.take(3).toList();
         filteredParticipants.sort((a, b) {
-          // always sort bot to the end
+          // Always put bot at the very end
           final aIsBot = a.id == BotName.byEnvironment;
           final bIsBot = b.id == BotName.byEnvironment;
-          if (aIsBot && !bIsBot) {
-            return 1;
-          } else if (bIsBot && !aIsBot) {
-            return -1;
+          if (aIsBot != bIsBot) {
+            return aIsBot ? 1 : -1;
           }
 
-          // put knocking users at the front
-          if (a.membership == Membership.knock &&
-              b.membership != Membership.knock) {
-            return -1;
-          } else if (b.membership == Membership.knock &&
-              a.membership != Membership.knock) {
-            return 1;
+          int rankOf(p) {
+            // Admins first
+            if (p.powerLevel == 100) return 0;
+
+            switch (p.membership) {
+              case Membership.join:
+                return 1;
+              case Membership.invite:
+                return 2;
+              case Membership.knock:
+                return 3;
+              default:
+                return 4;
+            }
           }
 
-          // then invited users
-          if (a.membership == Membership.invite &&
-              b.membership != Membership.invite) {
-            return -1;
-          } else if (b.membership == Membership.invite &&
-              a.membership != Membership.invite) {
-            return 1;
-          }
-
-          // then admins
-          if (a.powerLevel == 100 && b.powerLevel != 100) {
-            return -1;
-          } else if (b.powerLevel == 100 && a.powerLevel != 100) {
-            return 1;
-          }
-
-          return 0;
+          return rankOf(a).compareTo(rankOf(b));
         });
 
         return Wrap(
