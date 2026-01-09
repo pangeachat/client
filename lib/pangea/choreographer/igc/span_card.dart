@@ -154,45 +154,41 @@ class SpanCardState extends State<SpanCard> {
           Expanded(
             child: Scrollbar(
               controller: scrollController,
-              child: Container(
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.green)),
-                child: SingleChildScrollView(
-                  controller: scrollController,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 12.0,
-                      horizontal: 24.0,
-                    ),
-                    child: Column(
-                      spacing: 12.0,
-                      children: [
-                        ChoicesArray(
-                          isLoading: _loadingChoices,
-                          choices: widget.match.updatedMatch.match.choices
-                              ?.map(
-                                (e) => Choice(
-                                  text: e.value,
-                                  color: e.selected ? e.type.color : null,
-                                  isGold: e.type.name == 'bestCorrection',
-                                ),
-                              )
-                              .toList(),
-                          onPressed: (value, index) => _onChoiceSelect(index),
-                          selectedChoiceIndex: widget
-                              .match.updatedMatch.match.selectedChoiceIndex,
-                          id: widget.match.hashCode.toString(),
-                          langCode: MatrixState
-                              .pangeaController.userController.userL2Code!,
-                        ),
-                        const SizedBox(),
-                        _SpanCardFeedback(
-                          _selectedChoice != null,
-                          _fetchFeedback,
-                          _feedbackState,
-                        ),
-                      ],
-                    ),
+              child: SingleChildScrollView(
+                controller: scrollController,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12.0,
+                    horizontal: 24.0,
+                  ),
+                  child: Column(
+                    spacing: 12.0,
+                    children: [
+                      ChoicesArray(
+                        isLoading: _loadingChoices,
+                        choices: widget.match.updatedMatch.match.choices
+                            ?.map(
+                              (e) => Choice(
+                                text: e.value,
+                                color: e.selected ? e.type.color : null,
+                                isGold: e.type.name == 'bestCorrection',
+                              ),
+                            )
+                            .toList(),
+                        onPressed: (value, index) => _onChoiceSelect(index),
+                        selectedChoiceIndex:
+                            widget.match.updatedMatch.match.selectedChoiceIndex,
+                        id: widget.match.hashCode.toString(),
+                        langCode: MatrixState
+                            .pangeaController.userController.userL2Code!,
+                      ),
+                      const SizedBox(),
+                      _SpanCardFeedback(
+                        _selectedChoice != null,
+                        _fetchFeedback,
+                        _feedbackState,
+                      ),
+                    ],
                   ),
                 ),
               ),
