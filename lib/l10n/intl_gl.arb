@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-07 14:23:32.582541",
+  "@@last_modified": "2026-01-12 13:37:54.645351",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10820,6 +10820,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Saíches do chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

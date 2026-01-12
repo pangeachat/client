@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:24:11.005786",
+  "@@last_modified": "2026-01-12 13:38:02.025580",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11558,6 +11558,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Ai părăsit chat-ul",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-07 14:28:18.089845",
+  "@@last_modified": "2026-01-12 13:38:49.632250",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10821,6 +10821,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Opuszczono czat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/authentication/p_login.dart';
 import 'package:fluffychat/pangea/login/pages/login_options_view.dart';
 import 'package:fluffychat/pangea/login/pages/pangea_login_view.dart';
+import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -290,6 +291,19 @@ class LoginController extends State<Login> {
       obscureText: true,
       minLines: 1,
       maxLines: 1,
+      // #Pangea
+      validator: (value) {
+        if (value.isEmpty) {
+          return L10n.of(context).chooseAStrongPassword;
+        }
+        if (value.length < SignupPageController.minPassLength) {
+          return L10n.of(context).pleaseChooseAtLeastChars(
+            SignupPageController.minPassLength.toString(),
+          );
+        }
+        return null;
+      },
+      // Pangea#
     );
     if (password == null) return;
     final ok = await showOkAlertDialog(

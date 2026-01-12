@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:26:11.727122",
+  "@@last_modified": "2026-01-12 13:38:23.301738",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11916,6 +11916,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Du forlot chatten",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

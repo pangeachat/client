@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:24:41.103817",
+  "@@last_modified": "2026-01-12 13:38:08.146254",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11872,6 +11872,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 עזבת את הצ'אט",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

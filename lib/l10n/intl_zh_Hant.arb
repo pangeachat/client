@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:26:51.046421",
+  "@@last_modified": "2026-01-12 13:38:28.676918",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10821,6 +10821,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 你已離開聊天",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-07 14:28:59.154241",
+  "@@last_modified": "2026-01-12 13:38:57.315339",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10928,6 +10928,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Вы покинули чат",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

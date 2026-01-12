@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-07 14:23:22.356161",
+  "@@last_modified": "2026-01-12 13:37:53.262601",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8057,6 +8057,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Has salido del chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

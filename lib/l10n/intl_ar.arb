@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-07 14:27:10.974178",
+  "@@last_modified": "2026-01-12 13:38:32.529749",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11040,6 +11040,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 لقد غادرت الدردشة",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }
