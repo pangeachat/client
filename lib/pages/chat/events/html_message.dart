@@ -20,6 +20,7 @@ import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_emoji_button.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -395,17 +396,6 @@ class HtmlMessage extends StatelessWidget {
     if (!allowedHtmlTags.contains(node.localName)) return const TextSpan();
 
     // #Pangea
-    final renderer = TokenRenderingUtil(
-      existingStyle: pangeaMessageEvent != null
-          ? textStyle.merge(
-              AppConfig.messageTextStyle(
-                pangeaMessageEvent!.event,
-                textColor,
-              ),
-            )
-          : textStyle,
-    );
-
     double fontSize = this.fontSize;
     if (readingAssistanceMode == ReadingAssistanceMode.practiceMode) {
       fontSize = (overlayController != null && overlayController!.maxWidth > 600
@@ -413,6 +403,19 @@ class HtmlMessage extends StatelessWidget {
               : Theme.of(context).textTheme.bodyLarge?.fontSize) ??
           this.fontSize;
     }
+
+    final existingStyle = pangeaMessageEvent != null
+        ? textStyle
+            .merge(
+              AppConfig.messageTextStyle(
+                pangeaMessageEvent!.event,
+                textColor,
+              ),
+            )
+            .copyWith(fontSize: fontSize)
+        : textStyle.copyWith(fontSize: fontSize);
+
+    final renderer = TokenRenderingUtil();
 
     final underlineColor = Theme.of(context).colorScheme.primary.withAlpha(200);
 
@@ -443,7 +446,8 @@ class HtmlMessage extends StatelessWidget {
         final tokenWidth = renderer.tokenTextWidthForContainer(
           node.text,
           Theme.of(context).colorScheme.primary.withAlpha(200),
-          fontSize: fontSize,
+          existingStyle,
+          fontSize,
         );
 
         return TextSpan(
@@ -472,10 +476,7 @@ class HtmlMessage extends StatelessWidget {
                     TokenPracticeButton(
                       token: token,
                       controller: overlayController!.practiceController,
-                      textStyle: renderer.style(
-                        fontSize: fontSize,
-                        underlineColor: underlineColor,
-                      ),
+                      textStyle: existingStyle,
                       width: tokenWidth,
                       textColor: textColor,
                     ),
@@ -496,28 +497,19 @@ class HtmlMessage extends StatelessWidget {
                             : null,
                         child: HoverBuilder(
                           builder: (context, hovered) {
-                            return RichText(
+                            return UnderlineText(
+                              text: node.text.trim(),
+                              style: existingStyle,
+                              linkStyle: linkStyle,
                               textDirection: pangeaMessageEvent?.textDirection,
-                              text: TextSpan(
-                                children: [
-                                  LinkifySpan(
-                                    text: node.text.trim(),
-                                    style: renderer.style(
-                                      fontSize: fontSize,
-                                      underlineColor: underlineColor,
-                                      selected: selected,
-                                      highlighted: highlighted,
-                                      isNew: isNew,
-                                      practiceMode: readingAssistanceMode ==
-                                          ReadingAssistanceMode.practiceMode,
-                                      hovered: hovered,
-                                    ),
-                                    linkStyle: linkStyle,
-                                    onOpen: (url) =>
-                                        UrlLauncher(context, url.url)
-                                            .launchUrl(),
-                                  ),
-                                ],
+                              underlineColor: TokenRenderingUtil.underlineColor(
+                                underlineColor,
+                                selected: selected,
+                                highlighted: highlighted,
+                                isNew: isNew,
+                                practiceMode: readingAssistanceMode ==
+                                    ReadingAssistanceMode.practiceMode,
+                                hovered: hovered,
                               ),
                             );
                           },
@@ -669,10 +661,7 @@ class HtmlMessage extends StatelessWidget {
                     // const TextSpan(text: '• '),
                     TextSpan(
                       text: '• ',
-                      style: renderer.style(
-                        underlineColor: underlineColor,
-                        fontSize: fontSize,
-                      ),
+                      style: existingStyle,
                     ),
                   // Pangea#
                   if (node.parent?.localName == 'ol')
@@ -681,10 +670,7 @@ class HtmlMessage extends StatelessWidget {
                           '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
                       // #Pangea
                       // style: textStyle,
-                      style: renderer.style(
-                        underlineColor: underlineColor,
-                        fontSize: fontSize,
-                      ),
+                      style: existingStyle,
                       // Pangea#
                     ),
                   if (node.className == 'task-list-item')
