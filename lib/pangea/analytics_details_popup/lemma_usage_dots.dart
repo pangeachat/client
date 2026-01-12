@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -25,7 +26,7 @@ class LemmaUsageDots extends StatelessWidget {
   /// Find lemma uses for the given exercise type, to create dot list
   List<bool> sortedUses(LearningSkillsEnum category) {
     final List<bool> useList = [];
-    for (final OneConstructUse use in construct.uses) {
+    for (final OneConstructUse use in construct.cappedUses) {
       if (use.xp == 0) {
         continue;
       }
@@ -58,42 +59,28 @@ class LemmaUsageDots extends StatelessWidget {
         ? construct.lemmaCategory.color(context)
         : construct.lemmaCategory.darkColor(context));
 
-    final description = category.description(context);
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Tooltip(
-            triggerMode: TooltipTriggerMode.tap,
-            message: tooltip,
-            child: Icon(
-              icon,
-              size: 24,
-              color: textColor.withValues(alpha: 0.7),
-            ),
-          ),
-          const SizedBox(width: 8.0),
-          Flexible(
-            child: dots.isEmpty
-                ? description != null
-                    ? Text(
-                        description,
-                        style: const TextStyle(
-                          fontStyle: FontStyle.italic,
-                        ),
-                      )
-                    : const SizedBox()
-                : Wrap(
-                    spacing: 3,
-                    runSpacing: 5,
-                    children: dots,
-                  ),
-          ),
-        ],
+    return ListTile(
+      leading: Tooltip(
+        triggerMode: TooltipTriggerMode.tap,
+        message: tooltip,
+        child: Icon(
+          icon,
+          size: 24,
+          color: textColor.withValues(alpha: 0.7),
+        ),
       ),
+      title: dots.isEmpty
+          ? Text(
+              L10n.of(context).noDataFound,
+              style: const TextStyle(
+                fontStyle: FontStyle.italic,
+              ),
+            )
+          : Wrap(
+              spacing: 3,
+              runSpacing: 5,
+              children: dots,
+            ),
     );
   }
 }

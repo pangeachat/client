@@ -158,7 +158,7 @@
 //                                 controller.selectedLanguageOfInstructions!,
 //                               )
 //                             : MatrixState
-//                                 .pangeaController.languageController.userL1,
+//                                 .pangeaController.userController.userL1,
 //                     isL2List: false,
 //                     decorationText:
 //                         L10n.of(context).languageOfInstructionsLabel,
@@ -174,7 +174,7 @@
 //                             controller.selectedTargetLanguage!,
 //                           )
 //                         : MatrixState
-//                             .pangeaController.languageController.userL2,
+//                             .pangeaController.userController.userL2,
 //                     decorationText: L10n.of(context).targetLanguageLabel,
 //                     isL2List: true,
 //                   ),

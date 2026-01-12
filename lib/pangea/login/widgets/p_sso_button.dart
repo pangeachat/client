@@ -1,81 +1,116 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:matrix/matrix_api_lite/model/matrix_exception.dart';
+import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+import 'package:universal_html/html.dart' as html;
 
-import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/homeserver_picker/homeserver_picker.dart';
-import 'package:fluffychat/pangea/login/utils/sso_login_action.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-
-enum SSOProvider { google, apple }
-
-extension on SSOProvider {
-  String get id {
-    switch (this) {
-      case SSOProvider.google:
-        return "oidc-google";
-      case SSOProvider.apple:
-        return "oidc-apple";
-    }
-  }
-
-  String get asset {
-    switch (this) {
-      case SSOProvider.google:
-        return "assets/pangea/google.svg";
-      case SSOProvider.apple:
-        return "assets/pangea/apple.svg";
-    }
-  }
-
-  String description(BuildContext context) {
-    switch (this) {
-      case SSOProvider.google:
-        return L10n.of(context).withGoogle;
-      case SSOProvider.apple:
-        return L10n.of(context).withApple;
-    }
-  }
-}
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
+import 'package:fluffychat/pangea/login/widgets/p_sso_dialog.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/fluffy_chat_app.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class PangeaSsoButton extends StatelessWidget {
-  final String? title;
   final SSOProvider provider;
-
-  final Function(bool, SSOProvider) setLoading;
-  final bool loading;
-  final bool? Function()? validator;
+  final String? title;
 
   const PangeaSsoButton({
     required this.provider,
-    required this.setLoading,
     this.title,
-    this.loading = false,
-    this.validator,
     super.key,
   });
 
-  Future<void> _runSSOLogin(BuildContext context) async {
-    setLoading(true, provider);
-    await showFutureLoadingDialog(
-      context: context,
-      future: () async => pangeaSSOLoginAction(
-        IdentityProvider(
-          id: provider.id,
-          name: provider.name,
+  Future<void> _runSSOLogin(BuildContext context) => showAdaptiveDialog(
+        context: context,
+        builder: (context) => SSODialog(
+          future: () => _ssoAction(
+            IdentityProvider(
+              id: provider.id,
+              name: provider.name,
+            ),
+            context,
+          ),
         ),
-        context,
-      ),
-      onError: (e, s) {
-        setLoading(false, provider);
-        return e is MatrixException
-            ? e.errorMessage
-            : L10n.of(context).oopsSomethingWentWrong;
-      },
-      onDismiss: () => setLoading(false, provider),
+      );
+
+  Future<void> _ssoAction(
+    IdentityProvider provider,
+    BuildContext context,
+  ) async {
+    final bool isDefaultPlatform = (PlatformInfos.isMobile ||
+        PlatformInfos.isWeb ||
+        PlatformInfos.isMacOS);
+    final redirectUrl = kIsWeb
+        ? Uri.parse(html.window.location.href)
+            .resolveUri(
+              Uri(pathSegments: ['auth.html']),
+            )
+            .toString()
+        : isDefaultPlatform
+            ? '${AppConfig.appOpenUrlScheme.toLowerCase()}://login'
+            : 'http://localhost:3001//login';
+    final client = await Matrix.of(context).getLoginClient();
+    final url = client.homeserver!.replace(
+      path: '/_matrix/client/v3/login/sso/redirect/${provider.id ?? ''}',
+      queryParameters: {'redirectUrl': redirectUrl},
     );
-    setLoading(false, provider);
+
+    final urlScheme = isDefaultPlatform
+        ? Uri.parse(redirectUrl).scheme
+        : "http://localhost:3001";
+    String result;
+    try {
+      result = await FlutterWebAuth2.authenticate(
+        url: url.toString(),
+        callbackUrlScheme: urlScheme,
+      );
+    } catch (err) {
+      if (err is PlatformException && err.code == 'CANCELED') {
+        debugPrint("user cancelled SSO login");
+        return;
+      }
+      rethrow;
+    }
+    final token = Uri.parse(result).queryParameters['loginToken'];
+    if (token?.isEmpty ?? false) return;
+
+    final redirect = client.onLoginStateChanged.stream
+        .where((state) => state == LoginState.loggedIn)
+        .first
+        .then(
+      (_) {
+        final route = FluffyChatApp.router.state.fullPath;
+        if (route == null ||
+            (!route.contains("/rooms") && !route.contains('registration'))) {
+          context.go('/rooms');
+        }
+      },
+    ).timeout(const Duration(seconds: 30));
+
+    final loginRes = await client.login(
+      LoginType.mLoginToken,
+      token: token,
+      initialDeviceDisplayName: PlatformInfos.clientName,
+    );
+
+    if (client.onLoginStateChanged.value == LoginState.loggedIn) {
+      final route = FluffyChatApp.router.state.fullPath;
+      if (route == null ||
+          (!route.contains("/rooms") && !route.contains('registration'))) {
+        context.go('/rooms');
+      }
+    } else {
+      await redirect;
+    }
+
+    GoogleAnalytics.login(provider.name!, loginRes.userId);
   }
 
   @override
@@ -102,13 +137,7 @@ class PangeaSsoButton extends StatelessWidget {
           Text(title ?? provider.description(context)),
         ],
       ),
-      onPressed: () {
-        if (validator != null) {
-          final valid = validator!.call() ?? false;
-          if (!valid) return;
-        }
-        _runSSOLogin(context);
-      },
+      onPressed: () => _runSSOLogin(context),
     );
   }
 }

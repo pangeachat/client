@@ -32,11 +32,12 @@ class AddCoursePage extends StatelessWidget {
           ],
         ),
         automaticallyImplyLeading: false,
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(20.0),
             constraints: const BoxConstraints(
               maxWidth: 350,
               maxHeight: 600,
@@ -72,7 +73,12 @@ class AddCoursePage extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ),
-                          Text(L10n.of(context).joinCourseWithCode),
+                          Flexible(
+                            child: Text(
+                              L10n.of(context).joinWithCode,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -93,7 +99,12 @@ class AddCoursePage extends StatelessWidget {
                             size: 24.0,
                             color: theme.colorScheme.onPrimaryContainer,
                           ),
-                          Text(L10n.of(context).joinPublicCourse),
+                          Flexible(
+                            child: Text(
+                              L10n.of(context).joinPublicCourse,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -118,7 +129,12 @@ class AddCoursePage extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ),
-                          Text(L10n.of(context).startOwn),
+                          Flexible(
+                            child: Text(
+                              L10n.of(context).startOwn,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ],
                       ),
                     ),

@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-06 13:02:09.596458",
+  "@@last_modified": "2026-01-07 14:27:16.503973",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -3261,26 +3261,14 @@
   "commandHint_logoutall": "Tüm aktif cihazlardan çıkış yap",
   "displayNavigationRail": "Mobilde gezinme rayını göster",
   "customReaction": "Özel tepki",
-  "accountInformation": "Hesap bilgisi",
-  "addGroupDescription": "Bir sohbet açıklaması ekle",
-  "addNewFriend": "Yeni arkadaş ekle",
-  "alreadyHaveAnAccount": "Zaten hesabınız var mı?",
-  "createNewGroup": "Yeni bir sohbet oluştur",
-  "editChatPermissions": "Sohbet izinlerini düzenle",
   "writeAMessageLangCodes": "{l1} veya {l2} ile yaz...",
   "requests": "İstekler",
-  "allCorrect": "Böyle söyleyebilirdim! Güzel!",
-  "newWayAllGood": "Böyle söylemezdim ama iyi görünüyor!",
-  "othersAreBetter": "Hm, daha iyi bir yol olabilir.",
   "holdForInfo": "Kelime bilgisi için tıklayıp basılı tut.",
   "greenFeedback": "Benim koyacağım bu olurdu!",
   "yellowFeedback": "Hm, deneyebilir ve işe yarayıp yaramadığını görebilirsin! Bu kelimeyi kullanmak için tekrar tıkla.",
   "redFeedback": "Sanmıyorum ki bu doğru...",
   "itInstructionsTitle": "Çeviri konusunda yardımcı olabilirim!",
   "itInstructionsBody": "Kelime bilgisi için seçimlere tıklayıp basılı tutabilirsin.",
-  "oneday": "Son 24 saat",
-  "oneweek": "Son 7 gün",
-  "onemonth": "Geçen ay",
   "gaTooltip": "Dilbilgisi yardımıyla L2 kullanımı",
   "taTooltip": "Çeviri yardımıyla L2 kullanımı",
   "unTooltip": "Diğer",
@@ -3290,58 +3278,27 @@
   "interactiveTranslatorAllowed": "Öğrenci Seçimi",
   "interactiveTranslatorRequired": "Gerekli",
   "notYetSet": "Henüz ayarlanmadı",
-  "myLearning": "Analitiklerim",
   "waTooltip": "Yardım olmadan L2 kullanımı",
-  "changeDateRange": "Tarih aralığını değiştir",
-  "classDescription": "Açıklama",
-  "addStudents": "Bağlantı veya kod ile kullanıcı davet et",
-  "copyClassLink": "Davet bağlantısını kopyala",
-  "copyClassCode": "Davet kodunu kopyala",
-  "inviteStudentByUserName": "Kullanıcı adıyla kullanıcı davet et",
   "languageSettings": "Dil Ayarları",
   "interactiveTranslator": "Çeviri yardımı",
-  "shareVideo": "Video Paylaş",
-  "shareVideoDesc": "Öğrencilerin sohbetlerde video paylaşmasına izin vermek için bunu etkinleştirin.",
-  "shareFiles": "Dosya Paylaş",
-  "selectLanguageLevel": "Dil seviyesini seçin",
   "noIdenticalLanguages": "Lütfen farklı temel ve hedef diller seçin",
-  "iWantALanguagePartnerFrom": "İstiyorum ki:",
-  "worldWide": "Dünya çapında",
-  "noResults": "Sonuç yok! Aramanızı genişletmeyi deneyin.",
   "searchBy": "Ülke ve dillerle ara",
-  "iWantAConversationPartner": "Bir sohbet partneri istiyorum ki",
-  "iWantALanguagePartnerWhoSpeaks": "Konuşan:",
-  "iWantALanguagePartnerWhoIsLearning": "Öğrenen:",
   "joinWithClassCode": "Derse katıl",
-  "joinWithClassCodeHint": "Davet kodunu girin",
-  "languageLevelPreA1": "Gerçek Başlangıç (Pre A1)",
-  "languageLevelA1": "Başlangıç (A1)",
-  "languageLevelA2": "Temel (A2)",
-  "languageLevelB1": "Orta Seviye (B1)",
-  "languageLevelB2": "Üst Orta (B2)",
-  "languageLevelC1": "İleri (C1)",
-  "languageLevelC2": "Ustalık (C2)",
+  "languageLevelPreA1": "Acemi Düşük (Pre A1)",
+  "languageLevelA1": "Acemi Orta (A1)",
+  "languageLevelA2": "Yeni Başlayan Yüksek (A2)",
+  "languageLevelB1": "Orta Seviye Orta (B1)",
+  "languageLevelB2": "İleri Seviye Düşük (B2)",
+  "languageLevelC1": "İleri Seviye Orta (C1)",
+  "languageLevelC2": "Üst Düzey (C2)",
   "changeTheNameOfTheClass": "İsmi değiştir",
   "changeTheNameOfTheChat": "Sohbetin adını değiştir",
-  "askPangeaBot": "Pangea Bot'tan bağlam tanımı isteyin.",
   "sorryNoResults": "Üzgünüz, sonuç yok.",
   "ignoreInThisText": "Yoksay",
-  "helpMeTranslate": "Evet!",
-  "needsItShortMessage": "Hedef dışı",
   "needsItMessage": "Bekle, bu {targetLanguage} değil! Çeviri yardımına ihtiyacın var mı?",
-  "needsIgcMessage": "Bu mesajda dilbilgisi hatası var.",
-  "tokenTranslationTitle": "Bir kelime temel dilinizde.",
-  "spanTranslationDesc": "Aşağıda olası çevirilere bakın.",
-  "spanTranslationTitle": "Bazı kelimeler temel dilinizde.",
-  "l1SpanAndGrammarTitle": "Hedef dilin dışında",
-  "l1SpanAndGrammarDesc": "Bu, temel dilinizde olabilir veya dilbilgisi hatası olabilir.",
-  "otherTitle": "Bir hatanız var.",
-  "otherDesc": "Aşağıda olası düzeltmelere bakın.",
   "countryInformation": "Ülkem",
-  "myLanguages": "Ana ve hedef dillerim",
   "targetLanguage": "Hedef Dil",
   "sourceLanguage": "Ana dil",
-  "languagesISpeak": "Konuştuğum diller",
   "updateLanguage": "Dillerim",
   "whatLanguageYouWantToLearn": "Hangi dili öğrenmek istiyorsunuz?",
   "whatIsYourBaseLanguage": "Ana diliniz nedir?",
@@ -3356,13 +3313,8 @@
   "errorDisableLanguageAssistanceUserDesc": "Çeviri ve dilbilgisi yardımı ayarlarını güncellemek için buraya tıklayın",
   "errorDisableITClassDesc": "Bu sohbetin bulunduğu kursta çeviri yardımı devre dışı bırakılmıştır.",
   "errorDisableIGCClassDesc": "Bu sohbetin bulunduğu kursta dilbilgisi yardımı devre dışı bırakılmıştır.",
-  "itIsDisabled": "İnteraktif Çeviri devre dışı",
-  "igcIsDisabled": "İnteraktif Dilbilgisi Kontrolü devre dışı",
-  "goToLearningSettings": "Öğrenme Ayarlarına Git",
   "error405Title": "Diller ayarlanmamış",
   "error405Desc": "Lütfen Ana Menü > Öğrenme Ayarları'ndan dillerinizi ayarlayın.",
-  "loginOrSignup": "Giriş yap veya kaydol",
-  "iAgreeToThe": "Şunları kabul ediyorum ",
   "termsAndConditions": "Şartlar ve Koşullar",
   "andCertifyIAmAtLeast13YearsOfAge": " ve en az 16 yaşında olduğumu onaylıyorum.",
   "error502504Title": "Vay canına, çok sayıda öğrenci çevrimiçi!",
@@ -3370,40 +3322,21 @@
   "error404Title": "Çeviri hatası!",
   "error404Desc": "Pangea Bot bunun nasıl çevrileceğinden emin değil...",
   "errorPleaseRefresh": "Bunu inceliyoruz! Lütfen sayfayı yeniden yükleyin ve tekrar deneyin.",
-  "toggleIT": "Etkileşimli Çeviri",
-  "toggleIGC": "Etkileşimli Dilbilgisi Kontrolü",
-  "toggleToolSettingsDescription": "Burada bireysel dil aracı ayarlarınızı değiştirebilirsiniz.",
   "connectedToStaging": "Test ortamına bağlı",
   "learningSettings": "Öğrenme ayarları",
-  "sendVoiceNotes": "Sesli Notlar Gönder",
-  "sendVoiceNotesDesc": "Öğrencilerin sohbetlerde sesli not göndermesine izin vermek için bunu açın.",
-  "chatTopic": "Sohbet konusu",
-  "chatTopicDesc": "Bir sohbet konusu belirleyin",
-  "inviteStudentByUserNameDesc": "Öğrencinizin zaten bir hesabı varsa, onları arayabilirsiniz.",
   "participants": "Katılımcılar",
-  "almostPerfect": "Bu doğru görünüyor! İşte söyleyeceğim şey.",
-  "prettyGood": "Oldukça iyi! İşte söyleyeceğim şey.",
-  "letMeThink": "Hmm, nasıl yaptığını görelim!",
   "clickMessageTitle": "Yardıma mı ihtiyacınız var?",
   "clickMessageBody": "Çeviri, oynatma ve daha fazlası gibi dil araçları için bir mesaja tıklayın!",
-  "understandingMessagesTitle": "Tanımlar ve çeviriler!",
-  "understandingMessagesBody": "Tanımlar için altı çizili kelimelere tıklayın. Mesaj seçenekleriyle çevirin (sağ üstte).",
   "allDone": "Hepsi tamam!",
   "vocab": "Kelimeler",
   "low": "Kullanıcının bu kelimeleri anlamadığına dair kanıtlarımız var.",
   "medium": "Bu kelimeler kullanıldı. Kelimelerin tamamen anlaşılıp anlaşılmadığı belirsiz.",
   "high": "Kullanıcının bu kelimeleri anladığına dair kanıtlarımız var.",
-  "unknownProficiency": "Bu kelimeler Pangea Chat'te kullanılmadı.",
-  "changeView": "Görünümleri değiştir.",
-  "clearAll": "Tüm kelimeleri temizle mi?",
-  "generateVocabulary": "Başlık ve açıklamadan kelime dağarcığı oluştur",
-  "generatePrompts": "İpucu oluştur",
   "subscribe": "Abone Ol",
   "getAccess": "Hemen Abone Ol!",
   "subscriptionDesc": "Mesajlaşma ücretsizdir! Etkileşimli çeviri, dilbilgisi kontrolü ve öğrenme analizlerini açmak için abone olun.",
   "subscriptionManagement": "Abonelik Yönetimi",
   "currentSubscription": "Mevcut Abonelik",
-  "changeSubscription": "Aboneliğinizi Değiştirin",
   "cancelSubscription": "Aboneliğinizi İptal Edin",
   "selectYourPlan": "Planınızı Seçin",
   "subsciptionPlatformTooltip": "Lütfen abonelik planınızı yönetmek için orijinal cihazınıza giriş yapın",
@@ -3412,9 +3345,6 @@
   "paymentHistory": "Ödeme Geçmişi",
   "emptyChatDownloadWarning": "Boş sohbet indirilemez",
   "update": "Güncelle",
-  "updateDesc": "Artık bu uygulamayı {localVersion} sürümünden {storeVersion} sürümüne güncelleyebilirsiniz",
-  "maybeLater": "Belki Sonra",
-  "mainMenu": "Ana Menü",
   "toggleImmersionMode": "Daldırma Modu",
   "toggleImmersionModeDesc": "Etkinleştirildiğinde, tüm mesajlar hedef dilinizde gösterilir. Bu ayar dil değişimleri için en kullanışlıdır.",
   "itToggleDescription": "Bu dil öğrenme aracı, temel dilinizdeki kelimeleri tanımlar ve onları hedef dilinize çevirmenize yardımcı olur. Nadiren de olsa, yapay zeka çeviri hataları yapabilir.",
@@ -3429,212 +3359,13 @@
   "definitionsToolDescription": "Etkinleştirildiğinde, mavi ile altı çizili kelimelere tıklayarak tanımlarına ulaşabilirsiniz. Tanımlara erişmek için mesajlara tıklayın.",
   "translationsToolDescrption": "Etkinleştirildiğinde, bir mesajı ve çeviri simgesine tıklayarak temel dilinizde bir mesaj görebilirsiniz.",
   "welcomeBack": "Tekrar hoş geldiniz! 2023-2024 pilotunun bir parçasıysanız, lütfen özel pilot aboneliğiniz için bizimle iletişime geçin. Bir öğretmen veya kurumunuzun sınıfınız için lisans satın aldıysa, öğretmen aboneliğiniz için bizimle iletişime geçin.",
-  "kickAllStudents": "Tüm Öğrencileri At",
-  "kickAllStudentsConfirmation": "Tüm öğrencileri atmak istediğinizden emin misiniz?",
-  "inviteAllStudents": "Tüm Öğrencileri Davet Et",
-  "inviteAllStudentsConfirmation": "Tüm öğrencileri davet etmek istediğinizden emin misiniz?",
-  "inviteUsersFromPangea": "Yöneticileri Ekle",
-  "redeemPromoCode": "Promosyon Kodu Kullan",
-  "enterPromoCode": "Promosyon Kodu Gir",
   "downloadTxtFile": "Metin Dosyası İndir",
   "downloadCSVFile": "CSV Dosyası İndir",
   "promotionalSubscriptionDesc": "Şu anda ömür boyu promosyon aboneliğiniz var. Aboneliğinizi değiştirmek için support@pangea.chat adresine mesaj gönderin.",
   "originalSubscriptionPlatform": "Abonelik {purchasePlatform} üzerinden satın alındı",
   "oneWeekTrial": "Bir Haftalık Deneme",
   "downloadXLSXFile": "Excel Dosyasını İndir",
-  "abDisplayName": "Abhazca",
-  "aaDisplayName": "Afarca",
-  "afDisplayName": "Afrikanca",
-  "akDisplayName": "Akan",
-  "sqDisplayName": "Arnavutça",
-  "amDisplayName": "Amharca",
-  "arDisplayName": "Arapça",
-  "anDisplayName": "Aragonca",
-  "hyDisplayName": "Ermenice",
-  "asDisplayName": "Assamca",
-  "avDisplayName": "Avarca",
-  "aeDisplayName": "Avestanca",
-  "ayDisplayName": "Aymara",
-  "azDisplayName": "Azerice",
-  "bmDisplayName": "Bambara",
-  "baDisplayName": "Başkirsçe",
-  "euDisplayName": "Bask",
-  "beDisplayName": "Belarusça",
-  "bnDisplayName": "Bengali",
-  "bhDisplayName": "Bihari",
-  "biDisplayName": "Bislama",
-  "bsDisplayName": "Boşnakça",
-  "brDisplayName": "Bretonca",
-  "bgDisplayName": "Bulgarca",
-  "myDisplayName": "Birmanca",
-  "caDisplayName": "Katalanca, Valencian",
-  "chDisplayName": "Chamorro",
-  "ceDisplayName": "Çeçence",
-  "nyDisplayName": "Çichewa, Chewa, Nyanja",
-  "zhDisplayName": "Çince",
-  "cvDisplayName": "Çuvaşça",
-  "kwDisplayName": "Kornişçe",
-  "coDisplayName": "Korsikaca",
-  "crDisplayName": "Cree",
-  "hrDisplayName": "Hırvatça",
-  "csDisplayName": "Çekçe",
-  "daDisplayName": "Danimarka",
-  "dvDisplayName": "Divehi; Dhivehi; Maldivian;",
-  "nlDisplayName": "Hollanda",
-  "enDisplayName": "İngilizce",
-  "eoDisplayName": "Esperanto",
-  "etDisplayName": "Estonca",
-  "eeDisplayName": "Ewe",
-  "foDisplayName": "Faroe Adaları",
-  "fjDisplayName": "Fiji",
-  "fiDisplayName": "Fince",
-  "frDisplayName": "Fransızca",
-  "ffDisplayName": "Fula; Fulah; Pulaar; Pular",
-  "glDisplayName": "Galicia",
-  "kaDisplayName": "Gürcüce",
-  "deDisplayName": "Almanca",
-  "elDisplayName": "Yunanca, Modern",
-  "gnDisplayName": "Güarani",
-  "guDisplayName": "Gujarati",
-  "htDisplayName": "Haiti Kreol",
-  "haDisplayName": "Hausa",
-  "heDisplayName": "İbranice (modern)",
-  "hzDisplayName": "Herero",
-  "hiDisplayName": "Hintçe",
-  "hoDisplayName": "Hiri Motu",
-  "huDisplayName": "Macarca",
-  "iaDisplayName": "Interlingua",
-  "idDisplayName": "Endonezce",
-  "ieDisplayName": "Interlingue",
-  "gaDisplayName": "İrlandaca",
-  "igDisplayName": "İgbo",
-  "ikDisplayName": "Inupiaq",
-  "ioDisplayName": "Ido",
-  "isDisplayName": "İzlandaca",
-  "itDisplayName": "İtalyanca",
-  "iuDisplayName": "Inuktitut",
-  "jaDisplayName": "Japonca",
-  "jvDisplayName": "Javanese",
-  "klDisplayName": "Kalaallisut, Grönland Dili",
-  "knDisplayName": "Kannada",
-  "krDisplayName": "Kanuri",
-  "ksDisplayName": "Kashmiri",
-  "kkDisplayName": "Kazakça",
-  "kmDisplayName": "Khmers",
-  "kiDisplayName": "Kikuyu, Gikuyu",
-  "rwDisplayName": "Kinyarwanda",
-  "kyDisplayName": "Kırgızca, Kyrgyzce",
-  "kvDisplayName": "Komi",
-  "kgDisplayName": "Kongo",
-  "koDisplayName": "Korece",
-  "kuDisplayName": "Kürtçe",
-  "kjDisplayName": "Kwanyama, Kuanyama",
-  "laDisplayName": "Latince",
-  "lbDisplayName": "Lüksemburgca, Letzeburgesch",
-  "lgDisplayName": "Ganda",
-  "liDisplayName": "Limburgca, Limburgan, Limburger",
-  "lnDisplayName": "Lingala",
-  "loDisplayName": "Laosça",
-  "ltDisplayName": "Litvanca",
-  "luDisplayName": "Luba-Katanga",
-  "lvDisplayName": "Letonca",
-  "gvDisplayName": "Manx",
-  "mkDisplayName": "Makedonca",
-  "mgDisplayName": "Malagasi",
-  "msDisplayName": "Malay",
-  "mlDisplayName": "Malayalam",
-  "mtDisplayName": "Malta",
-  "miDisplayName": "Maori",
-  "mrDisplayName": "Marathi (Marāṭhī)",
-  "mhDisplayName": "Marshallese",
-  "mnDisplayName": "Moğolca",
-  "naDisplayName": "Nauru",
-  "nvDisplayName": "Navajo, Navaho",
-  "nbDisplayName": "Norveççe Bokmål",
-  "ndDisplayName": "Kuzey Ndebele",
-  "neDisplayName": "Nepali",
-  "ngDisplayName": "Ndonga",
-  "nnDisplayName": "Norveççe Nynorsk",
-  "noDisplayName": "Norveççe",
-  "iiDisplayName": "Nuosu",
-  "nrDisplayName": "Güney Ndebele",
-  "ocDisplayName": "Okçitan",
-  "ojDisplayName": "Ojibwe, Ojibwa",
-  "cuDisplayName": "Eski Kilise Slavcası, Kilise Slavcası, Eski Bulgarca, Eski Slavca",
-  "omDisplayName": "Oromo",
-  "orDisplayName": "Oriya",
-  "osDisplayName": "Osetçe, Osetik",
-  "paDisplayName": "Pencabi, Punjabi",
-  "piDisplayName": "Pāli",
-  "faDisplayName": "Farsça",
-  "plDisplayName": "Lehçe",
-  "psDisplayName": "Peştuca, Pushtu",
-  "ptDisplayName": "Portekizce",
-  "quDisplayName": "Quechua",
-  "rmDisplayName": "Romansh",
-  "rnDisplayName": "Kirundi",
-  "roDisplayName": "Rumence, Moldovya, Moldovalı",
-  "ruDisplayName": "Rusça",
-  "saDisplayName": "Sanskritçe (Saṃskṛta)",
-  "scDisplayName": "Sardinya",
-  "sdDisplayName": "Sindhi",
-  "seDisplayName": "Kuzey Sami",
-  "smDisplayName": "Samoan",
-  "sgDisplayName": "Sango",
-  "srDisplayName": "Sırpça",
-  "gdDisplayName": "İskoç Gaelic, Gaelic",
-  "snDisplayName": "Shona",
-  "siDisplayName": "Sinhala, Sinhalese",
-  "skDisplayName": "Slovakça",
-  "slDisplayName": "Slovence",
-  "soDisplayName": "Somali",
-  "stDisplayName": "Güney Sotho",
-  "esDisplayName": "İspanyolca",
-  "suDisplayName": "Sundanese",
-  "swDisplayName": "Swahili",
-  "ssDisplayName": "Swati",
-  "svDisplayName": "İsveççe",
-  "taDisplayName": "Tamil",
-  "teDisplayName": "Telugu",
-  "tgDisplayName": "Tacikçe",
-  "thDisplayName": "Tayca",
-  "tiDisplayName": "Tigrinya",
-  "boDisplayName": "Tibet Standard, Tibetçe, Merkezi",
-  "tkDisplayName": "Türkmen",
-  "tlDisplayName": "Tagalog",
-  "tnDisplayName": "Tswana",
-  "toDisplayName": "Tonga (Tonga Adaları)",
-  "trDisplayName": "Türkçe",
-  "tsDisplayName": "Tsonga",
-  "ttDisplayName": "Tatar",
-  "twDisplayName": "Twi",
-  "tyDisplayName": "Tahitian",
-  "ugDisplayName": "Uygur, Uygurca",
-  "ukDisplayName": "Ukraynaca",
-  "urDisplayName": "Urdu",
-  "uzDisplayName": "Özbekçe",
-  "veDisplayName": "Venda",
-  "viDisplayName": "Vietnamca",
-  "voDisplayName": "Volapük",
-  "waDisplayName": "Wallon",
-  "cyDisplayName": "Welsh",
-  "woDisplayName": "Wolof",
-  "fyDisplayName": "Batı Frisian",
-  "xhDisplayName": "Xhosa",
-  "yiDisplayName": "Yidiş",
-  "yoDisplayName": "Yoruba",
-  "zaDisplayName": "Zhuang, Chuang",
   "unkDisplayName": "Bilinmeyen",
-  "zuDisplayName": "Zulu",
-  "hawDisplayName": "Hawaiian",
-  "hmnDisplayName": "Hmong",
-  "multiDisplayName": "Çoklu",
-  "cebDisplayName": "Cebuano",
-  "dzDisplayName": "Dzongkha",
-  "iwDisplayName": "İbranice",
-  "jwDisplayName": "Javanese",
-  "moDisplayName": "Moldovalı",
-  "shDisplayName": "Sırp-Hırvat",
   "wwCountryDisplayName": "Dünya Çapında",
   "afCountryDisplayName": "Afganistan",
   "axCountryDisplayName": "Aland Adaları",
@@ -3882,41 +3613,25 @@
   "yeCountryDisplayName": "Yemen",
   "zmCountryDisplayName": "Zambiya",
   "zwCountryDisplayName": "Zimbabve",
-  "pay": "Öde",
-  "allPrivateChats": "Özel mesajlar",
-  "unknownPrivateChat": "Bilinmeyen özel sohbet",
+  "pay": "Ödeme",
   "invitedToSpace": "{user} sizi {space} adlı kursa katılmaya davet etti! Kabul etmek istiyor musunuz?",
-  "declinedInvitation": "Davet reddedildi",
-  "acceptedInvitation": "Davet kabul edildi",
   "youreInvited": "📩 Davet edildiniz!",
   "invitedToChat": "{user} sizi {name} adlı sohbete katılmaya davet etti! Kabul etmek istiyor musunuz?",
   "monthlySubscription": "Aylık",
   "yearlySubscription": "Yıllık",
   "defaultSubscription": "Pangea Sohbet Aboneliği",
   "freeTrial": "Ücretsiz Deneme",
-  "grammarAnalytics": "Hata Analitiği",
   "total": "Toplam: ",
   "noDataFound": "Veri bulunamadı",
-  "promoSubscriptionExpirationDesc": "Mevcut aboneliğiniz promosyonel olup {expiration} tarihinde sona erecek. Aboneliğinizi değiştirmek için support@pangea.chat adresine mesaj gönderin.",
-  "emptyChatNameWarning": "Lütfen bu sohbet için bir isim girin",
   "blurMeansTranslateTitle": "Neden mesaj bulanık görünüyor?",
   "blurMeansTranslateBody": "Kapsam Modu açıkken, ana dilinizde gönderilen mesajlar bulanık görünürken, Pangea Bot onları hedef dilinize çevirir. Kapsam Modu, bireysel ve kurs ayarlarında açılıp kapatılabilir.",
-  "someErrorTitle": "Hm, bir şeyler yanlış gitti",
-  "someErrorBody": "Bu bir hata olabilir veya ana dilinizde bir sorun olabilir.",
   "bestCorrectionFeedback": "Doğru!",
   "distractorFeedback": "Bu pek doğru değil.",
   "bestAnswerFeedback": "Doğru!",
   "definitionDefaultPrompt": "Bu kelimenin anlamı nedir?",
   "practiceDefaultPrompt": "En iyi cevap nedir?",
   "correctionDefaultPrompt": "En iyi yerine koyma nedir?",
-  "itStartDefaultPrompt": "Çeviri yardımına mı ihtiyacınız var?",
-  "lockedChatWarning": "🔒 Bu sohbet kilitlendi",
-  "lockChat": "Sohbeti Kilitle",
-  "suggestToChat": "Bu sohbeti öner",
-  "suggestToChatDesc": "Önerilen sohbetler sohbet listelerinde görünecek",
   "acceptSelection": "Düzeltmeyi Kabul Et",
-  "acceptSelectionAnyway": "Bunu yine de kullan",
-  "makingActivity": "Etkinlik yapılıyor",
   "why": "Neden?",
   "definition": "Tanım",
   "exampleSentence": "Örnek Cümle",
@@ -3924,128 +3639,55 @@
   "reportMessageTitle": "{reportingUserId} kullanıcısı, {roomName} sohbetinde {reportedUserId} kullanıcısının mesajını bildirdi",
   "reportMessageBody": "Mesaj: {reportedMessage}\nNeden: {reason}",
   "noTeachersFound": "Bildirilmek üzere öğretmen bulunamadı",
-  "viewArchive": "Arşivi Görüntüle",
   "trialExpiration": "Ücretsiz deneme süreniz {expiration} tarihinde sona eriyor",
   "freeTrialDesc": "Yeni kullanıcılar Pangea Chat'te bir hafta ücretsiz deneme süresi kazanır",
   "activateTrial": "Ücretsiz 7 Günlük Deneme",
   "successfullySubscribed": "Başarıyla abone oldunuz!",
   "clickToManageSubscription": "Aboneliğinizi yönetmek için buraya tıklayın.",
-  "errorGettingAudio": "Ses alınırken hata oluştu. Lütfen yenileyin ve tekrar deneyin.",
   "signUp": "Kayıt Ol",
   "pleaseChooseAtLeastChars": "Lütfen en az {min} karakter seçin.",
   "noEmailWarning": "Lütfen geçerli bir e-posta adresi girin. Aksi takdirde şifrenizi sıfırlayamazsınız. İsterseniz, devam etmek için tekrar butonuna dokunun.",
   "pleaseEnterValidEmail": "Lütfen geçerli bir e-posta adresi girin.",
   "pleaseChooseAUsername": "Lütfen bir kullanıcı adı seçin",
-  "chooseAUsername": "Bir kullanıcı adı seçin",
   "define": "Tanımla",
   "listen": "Dinle",
-  "addConversationBot": "Konuşma Botunu Etkinleştir",
-  "addConversationBotDesc": "Bu sohbete bir bot ekle",
-  "convoBotSettingsDescription": "Konuşma konusu ve zorluk seviyesini düzenle",
-  "enterAConversationTopic": "Bir konuşma konusu girin",
-  "conversationTopic": "Konuşma konusu",
-  "enableModeration": "Moderasyonu etkinleştir",
-  "enableModerationDesc": "Mesajlar gönderilmeden önce otomatik moderasyonu etkinleştir",
-  "conversationLanguageLevel": "Bu konuşmanın dil seviyesi nedir?",
-  "showDefinition": "Tanımı Göster",
-  "subscriptionPopupTitle": "Bu cümlede dilbilgisi hatası olabilir...",
-  "subscriptionPopupDesc": "Çeviri ve dilbilgisi düzeltmesini açmak için bugün abone olun!",
-  "seeOptions": "Seçenekleri gör",
-  "continuedWithoutSubscription": "Abone olmadan devam et",
   "trialPeriodExpired": "Deneme süreniz sona erdi",
-  "selectToDefine": "Herhangi bir kelimeye tıklayarak tanımını görün!",
   "translations": "çeviriler",
   "messageAudio": "mesaj sesi",
   "definitions": "tanımlar",
   "subscribedToUnlockTools": "Etkileşimli çeviri ve dilbilgisi kontrolü, ses oynatma, kişiselleştirilmiş pratik aktiviteleri ve öğrenme analizlerini açmak için abone olun!",
   "translationTooltip": "Çeviri",
-  "audioTooltip": "Ses Çal",
   "speechToTextTooltip": "Transkript",
-  "certifyAge": "Yaşımın {age} üzerinde olduğunu onaylıyorum",
   "kickBotWarning": "Pangea Bot'u uzaklaştırmak bu sohbetteki sohbet botunu kaldıracaktır.",
-  "joinToView": "Detayları görmek için bu odaya katılın",
   "refresh": "Yenile",
-  "autoPlayTitle": "Mesajları Otomatik Oynat",
-  "autoPlayDesc": "Etkinleştirildiğinde, mesajların metin-konuşma sesleri seçildiğinde otomatik olarak çalacaktır.",
   "messageAnalytics": "Mesaj Analitiği",
   "words": "Kelimeler",
   "score": "Puan",
   "accuracy": "Doğruluk",
   "points": "Puanlar",
   "noPaymentInfo": "Ödeme bilgisi gerekmez!",
-  "conversationBotModeSelectDescription": "Sohbet etkinliği",
-  "conversationBotModeSelectOption_discussion": "Tartışma",
-  "conversationBotModeSelectOption_custom": "Özel",
-  "conversationBotModeSelectOption_conversation": "Görüşme",
-  "conversationBotModeSelectOption_textAdventure": "Metin Macerası",
-  "conversationBotModeSelectOption_storyGame": "Hikaye Oyunu",
-  "conversationBotDiscussionZone_title": "Tartışma Ayarları",
-  "conversationBotDiscussionZone_discussionTopicLabel": "Tartışma Konusu",
-  "conversationBotDiscussionZone_discussionTopicPlaceholder": "Tartışma konusunu belirle",
-  "conversationBotDiscussionZone_discussionKeywordsLabel": "Tartışma Anahtar Kelimeleri",
-  "conversationBotDiscussionZone_discussionKeywordsPlaceholder": "Tartışma anahtar kelimelerini belirle",
-  "conversationBotDiscussionZone_discussionKeywordsHintText": "Tartışmayı yönlendirecek virgülle ayrılmış anahtar kelime listesi",
-  "conversationBotDiscussionZone_discussionTriggerScheduleEnabledLabel": "Tartışma isteğini zamanlamayla gönder",
-  "conversationBotDiscussionZone_discussionTriggerScheduleHourIntervalLabel": "Tartışma istekleri arasındaki saatler",
-  "conversationBotDiscussionZone_discussionTriggerReactionEnabledLabel": "↪ Tepkiyle yanıtla",
-  "conversationBotDiscussionZone_discussionTriggerReactionKeyLabel": "Tartışma isteği göndermek için tepki",
-  "conversationBotCustomZone_title": "Özel Ayarlar",
-  "conversationBotCustomZone_customSystemPromptLabel": "Sistem istemi",
-  "conversationBotCustomZone_customSystemPromptPlaceholder": "Özel sistem istemini belirle",
-  "conversationBotCustomZone_customSystemPromptEmptyError": "Özel sistem istemi eksik",
-  "botConfig": "Bot ve etkinlik ayarları",
-  "botConfigNoPermissionTitle": "İzin yok",
-  "botConfigNoPermissionMessage": "Bot yapılandırmasını değiştirmek için oda yöneticisiyle iletişime geçin",
-  "addConversationBotDialogTitleInvite": "Konuşma botunu davet etmeyi onayla",
-  "addConversationBotButtonInvite": "Davet et",
-  "addConversationBotDialogInviteConfirmation": "Davet et",
-  "addConversationBotButtonTitleRemove": "Konuşma botunu kaldırmayı onayla",
-  "addConversationBotButtonRemove": "Kaldır",
-  "addConversationBotDialogRemoveConfirmation": "Kaldır",
-  "conversationBotConfigConfirmChange": "Onayla",
-  "conversationBotStatus": "Bot davet et",
-  "conversationBotTextAdventureZone_title": "Metin Macerası",
-  "conversationBotTextAdventureZone_instructionLabel": "Oyun Ustası Talimatları",
-  "conversationBotTextAdventureZone_instructionPlaceholder": "Oyun ustası talimatlarını ayarla",
-  "conversationBotCustomZone_instructionSystemPromptEmptyError": "Oyun ustası talimatları eksik",
-  "studentAnalyticsNotAvailable": "Öğrenci verileri şu anda mevcut değil",
-  "roomDataMissing": "Üyeliğiniz olmayan odalardan bazı veriler eksik olabilir.",
   "updatePhoneOS": "Cihazınızın işletim sistemi sürümünü güncellemeniz gerekebilir.",
   "wordsPerMinute": "Dakikada kelime",
   "autoIGCToolName": "Pangea yazma yardımını otomatik çalıştır",
   "autoIGCToolDescription": "Mesajımı göndermeden önce Pangea Sohbet dilbilgisi ve çeviri yazma yardımını otomatik olarak çalıştır.",
-  "runGrammarCorrection": "Mesajı kontrol et",
-  "grammarCorrectionFailed": "Düzeltilmesi gereken sorunlar",
-  "grammarCorrectionComplete": "İyi görünüyor!",
   "tooltipInstructionsTitle": "Bu ne işe yarar bilmiyor musun?",
   "tooltipInstructionsMobileBody": "Öğe üzerine basılı tutarak ipuçlarını görüntüleyin.",
   "tooltipInstructionsBrowserBody": "İpuçlarını görüntülemek için öğeler üzerinde fare ile durun.",
   "chatCapacity": "Sohbet kapasitesi",
   "roomFull": "Bu oda zaten kapasiteye ulaşmış durumda.",
-  "topicNotSet": "Konu belirlenmemiş.",
-  "chatCapacityNotSet": "Bu sohbetin kapasite sınırı yok.",
   "chatCapacityHasBeenChanged": "Sohbet kapasitesi değiştirildi",
   "chatCapacitySetTooLow": "Sohbet kapasitesi en az {count} olmalıdır.",
   "chatCapacityExplanation": "Sohbet kapasitesi, bir sohbette izin verilen üye sayısını sınırlar.",
-  "chatExceedsCapacity": "Bu sohbet kapasitesini aşıyor.",
   "tooManyRequest": "Çok fazla istek var, lütfen daha sonra tekrar deneyin.",
   "enterNumber": "Lütfen tam sayı değeri girin.",
   "buildTranslation": "Yukarıdaki seçeneklerden çevirinizi oluşturun",
-  "nonexistentSelection": "Seçim artık mevcut değil.",
-  "changeAnalyticsLanguage": "Analitik Dili Değiştir",
   "practice": "Pratik yap",
   "noLanguagesSet": "Dil ayarı yapılmamış",
-  "noActivitiesFound": "Şimdilik bu kadar! Daha fazlası için sonra tekrar gelin.",
-  "hintTitle": "İpucu:",
   "speechToTextBody": "Sesli mesajlar için, hem transkripti görebilir hem de konuşmacının Dakika Başına Kelime (WPM) puanını görebilirsiniz.",
   "versionNotFound": "Sürüm Bulunamadı",
   "fetchingVersion": "Sürüm alınmaya çalışılıyor...",
   "versionFetchError": "Sürüm alınırken hata oluştu",
   "versionText": "Sürüm: {version}+{buildNumber}",
-  "languageButtonLabel": "Dil: {currentLanguage}",
-  "interactiveTranslatorAutoPlaySliderHeader": "Otomatik Çeviri",
-  "interactiveTranslatorAutoPlayDesc": "İnteraktif çeviriciyi sormadan başlatır.",
-  "changeAnalyticsView": "Analitik Görünümünü Değiştir",
   "l1TranslationBody": "Temel dilinizdeki mesajlar çevrilmeyecektir.",
   "deleteSubscriptionWarningTitle": "Aktif bir aboneliğiniz var",
   "deleteSubscriptionWarningBody": "Hesabınızı silmek aboneliğinizi otomatik olarak iptal etmez.",
@@ -4053,9 +3695,7 @@
   "error520Title": "Lütfen tekrar deneyin.",
   "error520Desc": "Üzgünüz, mesajınızı anlayamadık...",
   "wordsUsed": "Kullanılan Kelimeler",
-  "errorTypes": "Hata Türleri",
   "level": "Seviye",
-  "canceledSend": "Gönderim İptal Edildi",
   "morphsUsed": "Kullanılan Morfler",
   "translationChoicesBody": "İpucu almak için bir seçeneğe tıklayın ve basılı tutun.",
   "grammar": "Dilbilgisi",
@@ -4065,7 +3705,6 @@
   "reportContentIssueTitle": "İçerik Sorunu Bildir",
   "feedback": "İsteğe bağlı geri bildirim",
   "reportContentIssueDescription": "Aman Tanrım! Yapay zeka kişiselleştirilmiş öğrenme deneyimleri sağlayabilir ama... aynı zamanda halüsinasyon da görebilir. Lütfen herhangi bir geri bildiriminizi sağlayın, tekrar deneyelim.",
-  "changeContent": "Aman Tanrım! Yapay zeka kişiselleştirilmiş öğrenme deneyimleri sağlayabilir ama... aynı zamanda halüsinasyon da görebilir. Ne olmalı?",
   "clickTheWordAgainToDeselect": "Seçili kelimeyi kaldırmak için tekrar tıklayın.",
   "l2SupportNa": "Mevcut Değil",
   "l2SupportAlpha": "Alfa",
@@ -4299,7 +3938,6 @@
   "grammarCopySPC": "Özellik",
   "grammarCopyPARTTYPE": "Kısmi Tür",
   "grammarCopyINTREL": "Soru-İlişki",
-  "grammarCopyNUMFORMpsor": "Sahibin Numarası",
   "grammarCopyUNKNOWN": "Bilinmeyen",
   "grammarCopyNUMBERPSOR": "Sahibin Numarası",
   "grammarCopyPOSS": "İyelik",
@@ -4345,28 +3983,14 @@
   "grammarCopyVOICEdir": "Doğrudan",
   "grammarCopyVOICEinv": "Tersine",
   "grammarCopyVOICErcp": "Karşılıklı",
-  "enterPrompt": "Lütfen bir sistem istemi girin",
-  "selectBotLanguage": "Bot dilini seçin",
-  "chooseVoice": "Bir ses seçin",
-  "enterLanguageLevel": "Lütfen bir dil seviyesi girin",
-  "enterDiscussionTopic": "Lütfen bir tartışma konusu girin",
-  "selectBotChatMode": "Sohbet modunu seçin",
-  "messageNotInTargetLang": "Mesaj hedef dilde değil",
   "other": "Diğer",
   "levelShort": "Seviy {level}",
-  "botModeValidation": "Lütfen bir sohbet modu seçin",
   "clickBestOption": "Mesajınızı çevirmek için en iyi seçenekleri seçin!",
   "completeActivitiesToUnlock": "Çeviriyi açmak için en az bir etkinliği tamamlayın!",
-  "botSettingsSubtitle": "Botu sohbet etkinliğini denetlemek için davet edin",
-  "invitePeople": "Kullanıcıları Davet Et",
   "noCapacityLimit": "Kapasite sınırı yok",
   "downloadGroupText": "Grup metnini indir",
   "notificationsOn": "Bildirimler açık",
   "notificationsOff": "Bildirimler kapalı",
-  "chatCanBeFoundViaSearch": "Sohbet arama ile bulunabilir",
-  "requireCodeToJoin": "Katılmak için kod gereklidir",
-  "canFindInSearch": "Aramada bulunabilir",
-  "addChatToSpace": "Sohbet ekle",
   "createChatAndInviteUsers": "Sohbet oluştur ve kullanıcıları davet et",
   "updatedNewSpaceDescription": "Kurslar, sohbetlerinizi pekiştirmenize ve özel veya genel topluluklar oluşturmanıza olanak tanır.",
   "joinWithCode": "Kodu kullanarak katıl",
@@ -4402,39 +4026,19 @@
   "constructUseCollected": "Sohbette toplandı",
   "constructUseNanDesc": "Uygulanamaz",
   "xpIntoLevel": "{currentXP} / {maxXP} XP",
-  "signInWithUsername": "Kullanıcı adı ve şifre ile giriş yap",
-  "registrationEmailMessage": "Lütfen oraya gönderilen bağlantı ile e-postanızı doğrulayın. Bazı durumlarda, e-postanın ulaşması 5 dakikaya kadar sürebilir. Lütfen spam klasörünüzü de kontrol edin.",
   "enableTTSToolName": "Metinden sese özelliği etkinleştirildi",
   "enableTTSToolDescription": "Uygulamanın hedef dilinizdeki metin parçaları için metinden sese çıkış üretmesine izin verin.",
-  "couldNotFindTTS": "Mevcut hedef diliniz için bir metinden sese motoru bulamadık.",
-  "ttsInstructionsHyperlink": "Cihazınıza yeni bir ses indirmeniz için talimatları görmek üzere buraya tıklayın.",
-  "createAnAccount": "Hesap oluştur",
-  "signIn": "Giriş yap",
-  "signUpWithEmail": "E-posta ile kaydol",
-  "signUpWithGoogle": "Google ile kaydol",
-  "signUpWithApple": "Apple ile kaydol",
   "yourUsername": "Kullanıcı adınız",
   "yourEmail": "E-posta adresiniz",
-  "pleaseEnterAnEmail": "Lütfen bir e-posta adresi girin",
-  "signInWithGoogle": "Google ile giriş yap",
-  "signInWithApple": "Apple ile giriş yap",
-  "chooseYourAvatar": "Avatarınızı seçin",
   "iWantToLearn": "Öğrenmek istiyorum",
-  "letsStart": "Hadi başlayalım",
-  "pleaseAgreeToTOS": "Lütfen Şartlar ve Koşulları kabul edin",
   "pleaseEnterEmail": "Lütfen geçerli bir e-posta adresi girin.",
-  "pleaseSelectALanguage": "Lütfen bir dil seçin",
   "myBaseLanguage": "Temel dilim",
-  "clickWordsInstructions": "🧻 Her kelimeye tıklayarak detaylara ulaşın. 🤐",
-  "chooseBestDefinition": "Bu kelimenin anlamı nedir?",
   "meaningSectionHeader": "Anlam:",
   "formSectionHeader": "Sohbetlerde kullanılan biçimler:",
-  "noEmojiSelectedTooltip": "Emoji seçilmedi",
   "writingExercisesTooltip": "Yazma",
   "listeningExercisesTooltip": "Dinleme",
   "readingExercisesTooltip": "Okuma",
   "meaningNotFound": "Anlam bulunamadı.",
-  "formsNotFound": "Biçimler bulunamadı.",
   "chooseBaseForm": "Temel formu seçin",
   "notTheCodeError": "Üzgünüz, bu kod değil!",
   "totalXP": "Toplam XP",
@@ -4474,9 +4078,6 @@
   "pickAnEmoji": "{lemma} için en sevdiğiniz emoji nedir?",
   "chooseLemmaMeaningInstructionsBody": "Mesajdaki kelimelerle anlamları eşleştir!",
   "doubleClickToEdit": "Düzenlemek için çift tıklayın.",
-  "removeFeature": "{feature} kaldır",
-  "chooseCorrectLabel": "Doğru etiketi seçin.",
-  "levelPopupTitle": "Başarıyla seviyeye ulaştınız\nSeviye {level}",
   "activityPlannerTitle": "Etkinlik Planlayıcı",
   "topicLabel": "Konu",
   "topicPlaceholder": "Bir konu seçin...",
@@ -4484,7 +4085,6 @@
   "modePlaceholder": "Bir mod seçin...",
   "learningObjectiveLabel": "Öğrenme Hedefi",
   "learningObjectivePlaceholder": "Bir öğrenme hedefi seçin...",
-  "mediaLabel": "Öğrencilerin paylaşması gereken medya",
   "languageOfInstructionsLabel": "Etkinlik talimatlarının dili",
   "targetLanguageLabel": "Hedef dil",
   "cefrLevelLabel": "CEFR seviyesi",
@@ -4499,20 +4099,15 @@
   "instructions": "Talimatlar",
   "numberOfLearners": "Öğrenci sayısı",
   "mustBeInteger": "Bir tam sayı olmalı, örn. 1, 2, 3, ...",
-  "noLemmasFound": "{xp} XP'den fazla kelime bulunmamaktadır. Pratik yapmaya devam edin!",
   "constructUsePvmDesc": "Sesli mesajda üretilmiştir",
-  "lockedMorphFeature": "Açılmayı bekliyor",
   "leaveSpaceDescription": "Kursu terk ederek, içindeki tüm sohbetleri terk etmiş olacaksınız. Diğer kullanıcılar kursu terk ettiğinizi görecektir.",
-  "whatIsLemma": "Lemma nedir?",
   "constructUseCorMmDesc": "Doğru mesaj anlamı",
   "constructUseIncMmDesc": "Yanlış mesaj anlamı",
   "constructUseIgnMmDesc": "Yoksayılmış mesaj anlamı",
   "clickForMeaningActivity": "Anlam Mücadelesi için buraya tıklayın",
   "meaning": "Anlam",
   "chatWith": "{displayname} ile Grup",
-  "slightlyOffensive": "Biraz saldırgan",
   "clickOnEmailLink": "Lütfen e-postadaki bağlantıya tıklayın ve devam edin.\n\nE-posta gelmediyse spam klasörünüzü kontrol edin.",
-  "whoIsAllowedToJoinThisChat": "Bu sohbete kimlerin katılmasına izin verilir",
   "dontForgetPassword": "Şifrenizi unutmayın!",
   "enableAutocorrectToolName": "Cihaz otomatik düzeltmeyi etkinleştir",
   "enableAutocorrectDescription": "Öğrenmekte olduğunuz dili destekliyorsa, yaygın hataları yazarken düzeltmek için cihaz otomatik düzeltmeyi etkinleştirebilirsiniz.",
@@ -4540,48 +4135,26 @@
   "autocorrectNotAvailable": "Maalesef, bu özellik şu anda platformunuzda desteklenmemektedir. Daha fazla geliştirme için bizi izlemeye devam edin!",
   "pleaseUpdateApp": "Devam etmek için lütfen uygulamayı güncelleyin.",
   "chooseEmojiInstructionsBody": "Emojileri en iyi temsil ettikleri kelimelerle eşleştirin. Endişelenmeyin! Anlaşmazlıklar için puan kesilmez. 😅",
-  "pickAnEmojiFor": "{lemma} için bir emoji seçin",
   "analyticsVocabListBody": "İşte tüm kelime hazineniz! Her kelime için XP kazandıkça, tohumdan tam çiçek açmaya geçecekler. Daha fazla detay görmek için herhangi bir kelimeye tıklayın.",
   "morphAnalyticsListBody": "İşte öğrendiğiniz dildeki tüm dilbilgisi kavramları! Sohbet ederken karşılaştıkça bunları açacaksınız. Detaylar için tıklayın.",
   "knockSpaceSuccess": "Bu kursa katılmak istediğinizi belirttiniz! Bir yönetici, talebinizi aldığında yanıt verecek 😄",
-  "joinByCode": "Kodu kullanarak katıl",
   "chooseWordAudioInstructionsBody": "Tam mesajı dinleyin. Ardından sesleri kelimelerle eşleştirin.",
   "chooseMorphsInstructionsBody": "Dilbilgisi soruları için yapboz parçalarına tıklayın!",
-  "inviteAndLaunch": "Başlat ve davet et",
-  "createOwnChat": "Kendi sohbetinizi oluşturun",
   "pleaseEnterInt": "Lütfen bir sayı girin",
   "home": "Ana Sayfa",
   "join": "Katıl",
   "readingAssistanceOverviewBody": "Emojiler, sesler, kelime anlamları ve dilbilgisi kavramlarını eşleştirmek için aşağıdaki düğmelere tıklayın. Veya detaylar için herhangi bir kelimeye tıklayın.",
-  "learnByTexting": "Mesajlaşarak öğren",
-  "levelSummaryTrigger": "Özetleri görüntüle",
   "levelSummaryPopupTitle": "Seviye {level} Özeti",
-  "referFriends": "Arkadaşlarını yönlendir",
-  "referFriendDialogTitle": "Bir arkadaşını sohbetine davet et",
-  "referFriendDialogDesc": "Bir arkadaşınız sizinle yeni bir dil öğrenmek için heyecanlı mı? O zaman bu davet bağlantısını kopyalayın ve bugün sizinle sohbet etmeye başlayın.",
-  "youUnlocked": "Açtınız",
   "resetInstructionTooltipsTitle": "Talimat ipuçlarını sıfırla",
   "resetInstructionTooltipsDesc": "Yeni bir kullanıcı gibi talimat ipuçlarını göstermek için tıklayın.",
   "selectForGrammar": "Etkinlikler ve detaylar için bir dilbilgisi simgesi seçin.",
-  "newChatActivityTitle": "Eğlenceli bir etkinlik eklemek ister misiniz?",
-  "newChatActivityDesc": "Activity Planner ile her grup sohbetini bir maceraya dönüştürün! Grup için etkileyici konular ve hedefler belirleyin ve sohbetleri muhteşem görsellerle canlandırın. Hayal gücünü harekete geçiren tartışmalar başlatın ve eğlenceyi sorunsuzca sürdürün!",
-  "exploreMore": "Daha fazla keşfet",
   "randomize": "Rastgeleleştir",
   "clear": "Temizle",
   "makeYourOwnActivity": "Kendi etkinliğinizi oluşturun",
   "featuredActivities": "Öne çıkanlar",
-  "goToChat": "Sohbete git",
   "save": "Kaydet",
-  "selectActivity": "Etkinlik seç",
-  "wordFocusListeningMultipleChoice": "Hangi ses kelimeyle eşleşiyor?",
   "startChat": "Sohbet başlat",
   "translationProblem": "Çeviri sorunu",
-  "perfectTranslation": "Mükemmel çeviri!",
-  "greatJobTranslation": "Bu çeviride harika iş çıkardınız!",
-  "goodJobTranslation": "Bu çeviride iyi iş çıkardın.",
-  "makingProgress": "İlerleme kaydediyorsun!",
-  "keepPracticing": "Pratik yapmaya devam et!",
-  "niceJob": "İyi iş!",
   "askToJoin": "Katılmak için sor",
   "emptyChatWarningTitle": "Sohbet boş",
   "emptyChatWarningDesc": "Kimseyi sohbetine davet etmedin. Kişilerini veya Bot'u davet etmek için Sohbet ayarlarına git. Ayrıca bunu daha sonra da yapabilirsin.",
@@ -4600,8 +4173,6 @@
   "languageLevelC2Desc": "Neredeyse duyduğum veya okuduğum her şeyi anlayabilir ve kendimi akıcı ve kesin bir şekilde ifade edebilirim.",
   "newVocab": "Yeni kelime hazinesi",
   "newGrammar": "Yeni dilbilgisi kavramları",
-  "congratulationsOnReaching": "Seviyeniz {level}'e ulaştı!",
-  "seeDetails": "Detayları Görüntüle",
   "choosePracticeMode": "Bir uygulama etkinliği başlatmak için yukarıdaki düğmelerden birine tıklayın",
   "ban": "Yasakla",
   "unban": "Yasaklamayı Kaldır",
@@ -4615,8 +4186,6 @@
   "timesUsedWithAssistance": "Yardımla kullanımlar",
   "shareInviteCode": "Davet kodunu paylaş: {code}",
   "leaderboard": "Liderlik Tablosu",
-  "welcomeUser": "Hoşgeldiniz {user}",
-  "joinSpaceOnboardingDesc": "Bir davet kodunuz veya genel bir kurs bağlantınız var mı?",
   "skipForNow": "Şimdilik atla",
   "permissions": "İzinler",
   "spaceChildPermission": "Bu derse yeni sohbetler ekleyebilecek kişiler",
@@ -4624,12 +4193,8 @@
   "defaultOption": "Varsayılan",
   "deleteChatDesc": "Bu sohbeti silmek istediğinizden emin misiniz? Tüm katılımcılar için silinecek ve sohbet içindeki tüm mesajlar artık pratik veya öğrenme analitiği için kullanılabilir olmayacaktır.",
   "deleteSpaceDesc": "Ders ve seçilen sohbetler tüm katılımcılar için silinecek ve sohbet içindeki tüm mesajlar artık pratik veya öğrenme analitiği için kullanılabilir olmayacaktır. Bu işlem geri alınamaz.",
-  "chatWithActivities": "Etkinliklerle sohbet",
   "launch": "Başlat",
-  "launchActivityToChats": "Etkinliği sohbetlere başlat",
   "searchChats": "Sohbetleri ara",
-  "selectChats": "Sohbetleri seç",
-  "selectChatToStart": "Tamam! Başlamak için bir sohbet seçin",
   "maxFifty": "Maksimum 50",
   "configureSpace": "Dersi yapılandır",
   "pinMessages": "Mesajları sabitle",
@@ -4643,9 +4208,7 @@
   "announcements": "Duyurular",
   "activities": "Aktiviteler",
   "access": "Erişim",
-  "botSettings": "Bot ayarları",
   "activitySuggestionTimeoutMessage": "Daha fazla aktivite oluşturmak için çok çalışıyoruz, lütfen bir dakika içinde tekrar kontrol edin",
-  "accessSettingsWarning": "Üzgünüz! Bu odanın Erişim kurallarını ayarlama izniniz yok gibi görünüyor. Bunların ihtiyaçlarınıza uygun olup olmadığını kontrol etmeli ve değiştirmek istiyorsanız oda yöneticisiyle iletişime geçmelisiniz",
   "howSpaceCanBeFound": "Bu kurs nasıl bulunabilir",
   "private": "Özel",
   "cannotBeFoundInSearch": "Aramada bulunamaz",
@@ -4658,16 +4221,6 @@
   "canBeFoundViaKnock": "• katılma isteği ve yönetici onayı",
   "youHaveLeveledUp": "Seviyeniz yükseldi!",
   "sendActivities": "Aktiviteleri gönder",
-  "getStarted": "Başlarken",
-  "getStartedBotChatDesc": "Yapay zeka ile sohbet etmek başlamak için harika bir yerdir ve Pangea'nın okuma, yazma, dinleme ve konuşma araçları bunu kolaylaştırır!",
-  "getStartedCommunitiesDesc": "Bir toplulukla öğrenmek Pangea Chat'in parladığı yerdir!\nSınıfınıza katılabilir, bir kurs bulabilir veya kendi kursunuzu oluşturabilirsiniz!",
-  "getStartedFriendsDesc": "Seninle öğrenmek isteyen bir arkadaşın mı var?",
-  "getStartedBotChatComplete": "Aferin! Bot ile sohbet ediyorsun!",
-  "getStartedCommunitiesComplete": "Harika, bir kursa katıldın!",
-  "getStartedComplete": "Bu bölümü tamamladın!\nHarika özelliklerimizi arkadaşlarınla sohbet ederek keşfetmeye devam et!",
-  "getStartedFriendsComplete": "Vay canına! Arkadaşların oldu! 😉",
-  "getStartedBotChatButton": "Sohbete başla!",
-  "getStartedFriendsButton": "Bir arkadaşınla sohbet et",
   "groupChat": "Grup Sohbeti",
   "directMessage": "Özel Mesaj",
   "newDirectMessage": "Yeni özel mesaj",
@@ -4683,7 +4236,6 @@
   "mySavedActivities": "Kaydedilen Aktivitelerim",
   "noSavedActivities": "Kaydedilen aktivite yok",
   "saveActivity": "Bu aktiviteyi kaydet",
-  "yourSavedActivities": "Kaydedilen Aktiviteler",
   "failedToPlayVideo": "Videoyu oynatamadı",
   "done": "Tamamlandı",
   "inThisSpace": "Bu kursta",
@@ -4722,37 +4274,27 @@
   "maximumActivityParticipants": "Her Etkinlik en fazla {count} katılımcıya sahip olabilir.",
   "pending": "Beklemede",
   "inactive": "Pasif",
-  "unjoinedActivityMessage": "Katılmak istiyor musunuz? Açık rolü seçin!\nVeya takılın ve gösteriyi izleyin!",
-  "fullActivityMessage": "Gösteriyi izlemekten çekinmeyin! Katılacak açık rol olmadığında, sohbeti görüntüleyebilirsiniz!",
   "confirmRole": "Rolü onayla",
   "openRoleLabel": "AÇIK",
   "joinedTheActivity": "👋 {username} {role} olarak katıldı",
   "finishedTheActivity": "🎯 {username} bu etkinliği tamamladı",
-  "endActivityTitle": "Bitti",
-  "endActivityDesc": "Hedefleri tamamladınız mı?\nBu, mesajlaşmadan geri çekildiğinize dair onayınızdır. Ama merak etmeyin, eğlence sohbetle devam ediyor! Herkes 'Bitti'ye tıklayana kadar takılın ve gösterinin tadını çıkarın.",
   "archiveToAnalytics": "Tamamlanan Etkinliklerime Ekle",
   "activitySummaryError": "Etkinlik özetleri kullanılamıyor",
   "requestSummaries": "Özetleri talep et",
-  "loadingActivitySummary": "Etkinlik özeti yükleniyor...",
   "generatingNewActivities": "Bu dil çifti için ilk kullanıcı sizsiniz! Lütfen bir dakika verin, sizin için etkinlikler hazırlıyoruz.",
-  "requestAccessTitle": "Analitik görüntüleme erişimi talep edilsin mi?",
+  "requestAccessTitle": "Analitik erişimi talep edilsin mi?",
   "requestAccessDesc": "Katılımcıların analitiklerini görüntüleme erişimi talep etmek ister misiniz?\n\nKatılımcılar kabul ederse, bu kursun yöneticileri:\n    • toplam kelime dağarcığını\n    • toplam dilbilgisi kavramlarını\n    • tamamlanan toplam etkinlik oturumlarını\n    • doğru ve yanlış kullanılan belirli dilbilgisi kavramlarını görebilecekler.\n\nGörme imkanları olmayacak:\n    • kurs dışındaki sohbetlerdeki mesajlar\n    • kelime listesi",
   "requestAccess": "Erişim iste ({count})",
   "analyticsInactiveTitle": "Etkin olmayan kullanıcılara yapılan istekler gönderilemedi",
   "analyticsInactiveDesc": "Bu özellik tanıtıldıktan sonra giriş yapmamış etkin olmayan kullanıcılar isteğinizi görmeyecek.\n\nKullanıcı geri döndüğünde İstek düğmesi görünecek. Kullanıcı adlarının altındaki İstek düğmesine tıklayarak isteği daha sonra yeniden gönderebilirsiniz.",
   "accessRequestedTitle": "Analitik Erişim Talebi",
-  "accessRequestedDesc": "“{space}” yöneticileri, öğrenme analitiklerinizi görüntülemek istiyor.\n\nKabul ederseniz, bu kursun yöneticileri şunları görebilecektir:\n    • toplam kelime dağarcığı\n    • toplam dilbilgisi kavramları\n    • tamamlanan toplam etkinlik oturumu\n    • kullanılan, doğru ve yanlış dilbilgisi kavramları\n\nAyrıca, aşağıdaki bilgileri göremeyeceklerdir:\n    • kurs dışındaki sohbetlerdeki mesajlar\n    • kelime listesi",
-  "allowAccess": "Erişime İzin Ver",
-  "denyAccess": "Erişimi Reddet",
+  "accessRequestedDesc": "Yönetici(ler) talep ediliyor: {admin} \n\n“{space}” alanından yöneticiler, öğrenme analitiklerinizi görüntülemek istiyor.\n\nKabul ederseniz, şunları görüntüleyebilecekler:\n    • toplam kelime dağarcığı\n    • toplam dilbilgisi kavramları\n    • tamamlanan toplam etkinlik oturumları\n    • doğru ve yanlış kullanılan belirli dilbilgisi kavramları\n\nŞunları görüntüleyemeyecekler:\n    • kurs dışındaki sohbetlerdeki mesajlar\n    • kelime listesi",
   "adminRequestedAccess": "Yöneticiler, analitiklerinizi görüntülemek istiyor.",
   "lastUpdated": "Güncellendi\n{time}",
   "activityFinishedMessage": "Hepsi Tamamlandı!",
   "endForAll": "Herkes İçin Sonlandır",
   "newCourse": "Yeni kurs",
-  "newCourseSubtitle": "Hangi kurs planını kullanmak istersiniz?",
-  "failedToLoadCourses": "Kurslar yüklenemedi",
   "numModules": "{num} modül",
-  "numActivityPlans": "{num} etkinlik planı",
   "coursePlan": "Kurs Planı",
   "editCourseLater": "Şablon başlığı, açıklamalar ve kurs resmi daha sonra düzenleyebilirsiniz.",
   "newCourseAccess": "Varsayılan olarak, kurslar özeldir ve katılmak için yönetici onayı gerekir. Bu ayarları istediğiniz zaman değiştirebilirsiniz.",
@@ -4766,17 +4308,11 @@
   "accessDesc": "Kursunuzu dünyaya açık hale getirebilirsiniz! Ya da, kursunuzu özel ve güvenli yapabilirsiniz.",
   "createGroupChatDesc": "Etkinlik oturumları başlar ve biterken, grup sohbetleri rutin iletişim için açık kalacaktır.",
   "deleteDesc": "Sadece yöneticiler kursu silebilir. Bu, tüm kullanıcıları kaldıran ve kurs içindeki tüm seçili sohbetleri silen yıkıcı bir işlemdir. Dikkatli ilerleyin.",
-  "failedToLoadCourseInfo": "Kurs bilgisi yüklenemedi",
   "noCourseFound": "Ah, bu kursun bir planı olmalı!\n\nKurs planları, konu ve sohbet etkinliklerinin sırasıdır.",
   "additionalParticipants": "+ {num} diğer",
-  "activityNotFoundForCourse": "Bu etkinlik kurs içinde bulunamadı",
-  "courseChats": "Kurs Sohbetleri",
-  "myActivitySessions": "Benim Etkinlik Oturumlarım",
   "directMessages": "Doğrudan Mesajlar",
   "whatNow": "Şimdi ne olacak?",
   "chooseNextActivity": "Bir sonraki etkinliğinizi seçin!",
-  "seeInstructions": "Talimatları Gör",
-  "hideInstructions": "Talimatları Gizle",
   "letsGo": "Hadi başlayalım",
   "chooseRole": "Bir rol seçin!",
   "chooseRoleToParticipate": "Katılmak için bir rol seçin!",
@@ -4786,23 +4322,15 @@
   "inviteFriends": "Arkadaşları davet et",
   "waitNotDone": "Bekle, bitirmedim!",
   "waitingForOthersToFinish": "Diğerlerinin bitirmesini bekliyorum...",
-  "saveToCompletedActivities": "Tamamlanan etkinliklere kaydet",
   "generatingSummary": "Sohbeti analiz ediyor ve sonuçlar oluşturuyor",
-  "instructionsLanguage": "Talimatların dili",
   "findCourse": "Bir kurs bul",
-  "activityCompletedDesc": "Tamamladığınız etkinlik, kullandığınız dili gözden geçirebileceğiniz ve pratik yapabileceğiniz analizlere eklendi.",
   "pingParticipantsNotification": "{user} {room} içindeki etkinlik oturumuna katılacak kullanıcılar arıyor",
   "course": "Kurs",
   "courses": "Kurslar",
   "courseName": "Kurs adı",
   "createNewCourse": "Yeni kurs",
-  "publicCourses": "Halka açık kurslar",
   "goToCourse": "Kursa git: {course}",
   "activityComplete": "Bu etkinlik tamamlandı. Etkinlik özeti aşağıda bulunabilir.",
-  "haventChattedMuch": "Görünüşe göre çok fazla sohbet etmediniz, biraz daha kelime kullanmayı deneyin! Amacınızı tamamladığınızı düşünüyorsanız, aşağıda etkinliği sonlandırabilirsiniz.",
-  "haveChatted": "Bir süredir sohbet ediyorsunuz gibi görünüyor! Amacınızı tamamladığınızı düşünüyorsanız, etkinliği bitirmek için kapatın ve size sohbet özeti oluşturacağız!",
-  "userDoneAndWaiting": "{num1}/{num2} katılımcı tamamladı. Herkesin bitirmesini bekleyin, size sohbet özeti oluşturacağız! \n\nGörüşmeye yeniden katılmak isterseniz, sohbet içindeki devam düğmesine tıklayın.",
-  "othersDoneAndWaiting": "{num1}/{num2} tamamladı. Amacınızı tamamladınız mı?",
   "startNewSession": "Yeni oturum başlat",
   "joinOpenSession": "Açık oturuma katıl",
   "less": "daha az",
@@ -4812,7 +4340,6 @@
   "openToJoin": "Katılmak açık",
   "results": "Sonuçlar",
   "activityDone": "Etkinlik Tamamlandı!",
-  "moreLabel": "daha fazla",
   "promoCodeInfo": "İndirim kodları bir sonraki sayfada girilebilir",
   "editsComingSoon": "Şehirleri ve etkinlikleri düzenleme özelliği yakında geliyor.",
   "editing": "Düzenleniyor",
@@ -4828,13 +4355,10 @@
   "courseSavedSuccessfully": "Kurs başarıyla kaydedildi",
   "addCoursePlan": "Bir kurs planı ekle",
   "activityStatsButtonInstruction": "Etkinlik istatistiklerinizi görmek ve tamamlandığında etkinliği kapatmak için buraya tıklayın",
-  "readingAnalyticsDesc": "Okuma etkinlikleri için her mesajda pratik yapmaya tıklayın.",
-  "speakingAnalyticsDesc": "Konuşma pratiği için sesli mesajlar kaydedin.",
-  "audioAnalyticsDesc": "Dinleme etkinlikleri için her mesajda pratik yapmaya tıklayın.",
   "loginToAccount": "Hesabınıza giriş yapın",
   "appDescription": "Bir dil öğrenin\narkadaşlarınıza mesaj atarken.",
   "languages": "Diller",
-  "chooseLanguage": "Bir dil seçin.",
+  "chooseLanguage": "Hedef bir dil seçin.",
   "planTrip": "Seyahatinizi planlayın",
   "howAreYouTraveling": "Nasıl seyahat ediyorsunuz?",
   "unlockPrivateTrip": "Özel bir seyahati açın",
@@ -4847,25 +4371,20 @@
   "courseCode": "Gizli şifre nedir?",
   "courseCodeHint": "Seyahat kodu veya bağlantı",
   "unlockMyTrip": "Seyahatimin kilidini aç",
-  "anyLevel": "Her Seviye",
   "signupOption": "Nasıl kaydolmak istiyorsunuz?",
   "withApple": "Apple ile",
   "withGoogle": "Google ile",
   "withEmail": "E-posta ile",
   "createAccount": "Hesap oluştur",
-  "noCoursesFound": "Kurs bulunamadı",
   "loginWithEmail": "E-posta ile giriş yap",
   "usernameOrEmail": "Kullanıcı adı veya e-posta",
   "email": "E-posta",
   "forgotPassword": "Şifremi unuttum?",
-  "writingAnalyticsDesc": "Yazma alıştırması yapmak için mesaj gönderin.",
   "endActivity": "Etkinliği sonlandır",
   "allLanguages": "Tüm diller",
-  "allCefrLevels": "Tüm CEFR seviyeleri",
   "chatListTooltip": "Burada doğrudan mesajlarınızı bulacaksınız! Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğiyle DM gönderebilirsiniz.",
   "directMessageBotTitle": "Pangea Bot ile Doğrudan Mesaj",
   "feedbackTitle": "Etkinlik Geri Bildirimi",
-  "feedbackDesc": "Etkinliği nasıl geliştirebiliriz? Birkaç detay sağlayabilirseniz, değişikliği yaparız!",
   "feedbackHint": "Geri bildiriminiz",
   "feedbackButton": "Geri bildirim gönder",
   "directMessageBotDesc": "İnsanlarla konuşmak daha eğlencelidir ama... Yapay zeka her zaman hazır!",
@@ -5227,30 +4746,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@accountInformation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addGroupDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addNewFriend": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@alreadyHaveAnAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createNewGroup": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@editChatPermissions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@writeAMessageLangCodes": {
     "type": "String",
     "placeholders": {
@@ -5263,18 +4758,6 @@
     }
   },
   "@requests": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@allCorrect": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newWayAllGood": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@othersAreBetter": {
     "type": "String",
     "placeholders": {}
   },
@@ -5299,18 +4782,6 @@
     "placeholders": {}
   },
   "@itInstructionsBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@oneday": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@oneweek": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@onemonth": {
     "type": "String",
     "placeholders": {}
   },
@@ -5350,35 +4821,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@myLearning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeDateRange": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@classDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addStudents": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@copyClassLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@copyClassCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteStudentByUserName": {
     "type": "String",
     "placeholders": {}
   },
@@ -5390,35 +4833,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@shareVideo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shareVideoDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shareFiles": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectLanguageLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iWantALanguagePartnerFrom": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@worldWide": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noResults": {
     "type": "String",
     "placeholders": {}
   },
@@ -5426,23 +4841,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@iWantAConversationPartner": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iWantALanguagePartnerWhoSpeaks": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iWantALanguagePartnerWhoIsLearning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithClassCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@joinWithClassCodeHint": {
     "type": "String",
     "placeholders": {}
   },
@@ -5482,23 +4881,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@askPangeaBot": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sorryNoResults": {
     "type": "String",
     "placeholders": {}
   },
   "@ignoreInThisText": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@helpMeTranslate": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@needsItShortMessage": {
     "type": "String",
     "placeholders": {}
   },
@@ -5510,43 +4897,7 @@
       }
     }
   },
-  "@needsIgcMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tokenTranslationTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@spanTranslationDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@spanTranslationTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@l1SpanAndGrammarTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@l1SpanAndGrammarDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@otherTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@otherDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@countryInformation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@myLanguages": {
     "type": "String",
     "placeholders": {}
   },
@@ -5555,10 +4906,6 @@
     "placeholders": {}
   },
   "@sourceLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languagesISpeak": {
     "type": "String",
     "placeholders": {}
   },
@@ -5618,31 +4965,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@itIsDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@igcIsDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@goToLearningSettings": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@error405Title": {
     "type": "String",
     "placeholders": {}
   },
   "@error405Desc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@loginOrSignup": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iAgreeToThe": {
     "type": "String",
     "placeholders": {}
   },
@@ -5674,18 +5001,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@toggleIT": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@toggleIGC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@toggleToolSettingsDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@connectedToStaging": {
     "type": "String",
     "placeholders": {}
@@ -5694,39 +5009,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@sendVoiceNotes": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sendVoiceNotesDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatTopicDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteStudentByUserNameDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@participants": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@almostPerfect": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@prettyGood": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@letMeThink": {
     "type": "String",
     "placeholders": {}
   },
@@ -5735,14 +5018,6 @@
     "placeholders": {}
   },
   "@clickMessageBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@understandingMessagesTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@understandingMessagesBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -5766,26 +5041,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unknownProficiency": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeView": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clearAll": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@generateVocabulary": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@generatePrompts": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribe": {
     "type": "String",
     "placeholders": {}
@@ -5803,10 +5058,6 @@
     "placeholders": {}
   },
   "@currentSubscription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeSubscription": {
     "type": "String",
     "placeholders": {}
   },
@@ -5839,25 +5090,6 @@
     "placeholders": {}
   },
   "@update": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updateDesc": {
-    "type": "String",
-    "placeholders": {
-      "localVersion": {
-        "type": "String"
-      },
-      "storeVersion": {
-        "type": "String"
-      }
-    }
-  },
-  "@maybeLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mainMenu": {
     "type": "String",
     "placeholders": {}
   },
@@ -5917,34 +5149,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@kickAllStudents": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kickAllStudentsConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteAllStudents": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteAllStudentsConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteUsersFromPangea": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redeemPromoCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterPromoCode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@downloadTxtFile": {
     "type": "String",
     "placeholders": {}
@@ -5973,775 +5177,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@abDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@afDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@akDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sqDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@amDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@arDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@anDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@asDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@avDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aeDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ayDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@azDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bmDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@baDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@euDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@beDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@biDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@brDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@myDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@caDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ceDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@zhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@coDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@crDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hrDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@csDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@daDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@dvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nlDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@eoDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@etDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@eeDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@foDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fjDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@frDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ffDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@glDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@deDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@elDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@guDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@htDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@haDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@heDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hzDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hoDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@huDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@idDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ieDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@igDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ikDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ioDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@isDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@itDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@klDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@knDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@krDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ksDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kmDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@rwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@koDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kjDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@laDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lbDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@liDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@loDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ltDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@luDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@msDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mlDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mtDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@miDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mrDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@naDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nbDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ndDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@neDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ngDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nrDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ocDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ojDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@omDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@orDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@osDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@paDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@piDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@faDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@plDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@psDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ptDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@rmDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@rnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@roDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ruDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@scDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sdDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@seDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@smDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@srDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gdDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@snDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@siDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@skDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@slDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@soDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@stDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@esDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@suDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@swDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ssDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@svDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@taDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@teDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@thDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@boDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tlDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@toDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@trDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ttDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@twDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ugDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ukDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@urDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@uzDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@veDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@viDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@voDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@waDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@woDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@xhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yoDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@zaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@zuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hawDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hmnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@multiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cebDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@dzDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shDisplayName": {
     "type": "String",
     "placeholders": {}
   },
@@ -7737,14 +6173,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@allPrivateChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@unknownPrivateChat": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@invitedToSpace": {
     "type": "String",
     "placeholders": {
@@ -7755,14 +6183,6 @@
         "type": "String"
       }
     }
-  },
-  "@declinedInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@acceptedInvitation": {
-    "type": "String",
-    "placeholders": {}
   },
   "@youreInvited": {
     "type": "String",
@@ -7795,10 +6215,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@total": {
     "type": "String",
     "placeholders": {}
@@ -7807,31 +6223,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@promoSubscriptionExpirationDesc": {
-    "type": "String",
-    "placeholders": {
-      "expiration": {
-        "type": "String"
-      }
-    }
-  },
-  "@emptyChatNameWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@blurMeansTranslateTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@blurMeansTranslateBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@someErrorTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@someErrorBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -7859,35 +6255,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@itStartDefaultPrompt": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lockedChatWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lockChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@suggestToChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@suggestToChatDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@acceptSelectionAnyway": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@makingActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -7936,10 +6304,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@viewArchive": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@trialExpiration": {
     "type": "String",
     "placeholders": {
@@ -7961,10 +6325,6 @@
     "placeholders": {}
   },
   "@clickToManageSubscription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorGettingAudio": {
     "type": "String",
     "placeholders": {}
   },
@@ -7992,10 +6352,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@define": {
     "type": "String",
     "placeholders": {}
@@ -8004,63 +6360,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@addConversationBot": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@convoBotSettingsDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterAConversationTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enableModeration": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enableModerationDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationLanguageLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@showDefinition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@subscriptionPopupTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@subscriptionPopupDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@seeOptions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@continuedWithoutSubscription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@trialPeriodExpired": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectToDefine": {
     "type": "String",
     "placeholders": {}
   },
@@ -8084,39 +6384,15 @@
     "type": "String",
     "placeholders": {}
   },
-  "@audioTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@speechToTextTooltip": {
     "type": "String",
     "placeholders": {}
-  },
-  "@certifyAge": {
-    "type": "String",
-    "placeholders": {
-      "age": {
-        "type": "String"
-      }
-    }
   },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
-  "@joinToView": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoPlayTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoPlayDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -8144,154 +6420,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@conversationBotModeSelectDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_discussion": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_custom": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_conversation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_textAdventure": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_storyGame": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_title": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTopicLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTopicPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionKeywordsLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionKeywordsPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionKeywordsHintText": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerScheduleEnabledLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerScheduleHourIntervalLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerReactionEnabledLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerReactionKeyLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_title": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_customSystemPromptLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_customSystemPromptPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_customSystemPromptEmptyError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botConfig": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botConfigNoPermissionTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botConfigNoPermissionMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDialogTitleInvite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotButtonInvite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDialogInviteConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotButtonTitleRemove": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotButtonRemove": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDialogRemoveConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotConfigConfirmChange": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotStatus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotTextAdventureZone_title": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotTextAdventureZone_instructionLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotTextAdventureZone_instructionPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_instructionSystemPromptEmptyError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@studentAnalyticsNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@roomDataMissing": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
@@ -8305,18 +6433,6 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@runGrammarCorrection": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCorrectionFailed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCorrectionComplete": {
     "type": "String",
     "placeholders": {}
   },
@@ -8340,14 +6456,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@topicNotSet": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatCapacityNotSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@chatCapacityHasBeenChanged": {
     "type": "String",
     "placeholders": {}
@@ -8364,10 +6472,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatExceedsCapacity": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooManyRequest": {
     "type": "String",
     "placeholders": {}
@@ -8380,27 +6484,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@nonexistentSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeAnalyticsLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
     "type": "String",
     "placeholders": {}
   },
   "@noLanguagesSet": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivitiesFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hintTitle": {
     "type": "String",
     "placeholders": {}
   },
@@ -8431,26 +6519,6 @@
       }
     }
   },
-  "@languageButtonLabel": {
-    "type": "String",
-    "placeholders": {
-      "currentLanguage": {
-        "type": "String"
-      }
-    }
-  },
-  "@interactiveTranslatorAutoPlaySliderHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAutoPlayDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeAnalyticsView": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@l1TranslationBody": {
     "type": "String",
     "placeholders": {}
@@ -8479,15 +6547,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorTypes": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@level": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@canceledSend": {
     "type": "String",
     "placeholders": {}
   },
@@ -8524,10 +6584,6 @@
     "placeholders": {}
   },
   "@reportContentIssueDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeContent": {
     "type": "String",
     "placeholders": {}
   },
@@ -9463,10 +7519,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopyNUMFORMpsor": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -9647,34 +7699,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@enterPrompt": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectBotLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseVoice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterLanguageLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterDiscussionTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectBotChatMode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageNotInTargetLang": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@other": {
     "type": "String",
     "placeholders": {}
@@ -9687,23 +7711,11 @@
       }
     }
   },
-  "@botModeValidation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
   },
   "@completeActivitiesToUnlock": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botSettingsSubtitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@invitePeople": {
     "type": "String",
     "placeholders": {}
   },
@@ -9720,22 +7732,6 @@
     "placeholders": {}
   },
   "@notificationsOff": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatCanBeFoundViaSearch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@requireCodeToJoin": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@canFindInSearch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addChatToSpace": {
     "type": "String",
     "placeholders": {}
   },
@@ -9886,47 +7882,11 @@
       }
     }
   },
-  "@signInWithUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@registrationEmailMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enableTTSToolName": {
     "type": "String",
     "placeholders": {}
   },
   "@enableTTSToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@couldNotFindTTS": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ttsInstructionsHyperlink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createAnAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signIn": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signUpWithEmail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signUpWithGoogle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signUpWithApple": {
     "type": "String",
     "placeholders": {}
   },
@@ -9938,31 +7898,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pleaseEnterAnEmail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signInWithGoogle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signInWithApple": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseYourAvatar": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@iWantToLearn": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@letsStart": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@pleaseAgreeToTOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -9970,19 +7906,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pleaseSelectALanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@myBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickWordsInstructions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBestDefinition": {
     "type": "String",
     "placeholders": {}
   },
@@ -9991,10 +7915,6 @@
     "placeholders": {}
   },
   "@formSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noEmojiSelectedTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -10011,10 +7931,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@formsNotFound": {
     "type": "String",
     "placeholders": {}
   },
@@ -10189,26 +8105,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@removeFeature": {
-    "type": "String",
-    "placeholders": {
-      "feature": {
-        "type": "String"
-      }
-    }
-  },
-  "@chooseCorrectLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@levelPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@activityPlannerTitle": {
     "type": "String",
     "placeholders": {}
@@ -10234,10 +8130,6 @@
     "placeholders": {}
   },
   "@learningObjectivePlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mediaLabel": {
     "type": "String",
     "placeholders": {}
   },
@@ -10297,27 +8189,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@noLemmasFound": {
-    "type": "String",
-    "placeholders": {
-      "xp": {
-        "type": "int"
-      }
-    }
-  },
   "@constructUsePvmDesc": {
     "type": "String",
     "placeholders": {}
   },
-  "@lockedMorphFeature": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@leaveSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@whatIsLemma": {
     "type": "String",
     "placeholders": {}
   },
@@ -10349,15 +8225,7 @@
       }
     }
   },
-  "@slightlyOffensive": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@whoIsAllowedToJoinThisChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -10477,14 +8345,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pickAnEmojiFor": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
   "@analyticsVocabListBody": {
     "type": "String",
     "placeholders": {}
@@ -10497,23 +8357,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@joinByCode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@chooseWordAudioInstructionsBody": {
     "type": "String",
     "placeholders": {}
   },
   "@chooseMorphsInstructionsBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteAndLaunch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createOwnChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -10533,14 +8381,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@learnByTexting": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@levelSummaryTrigger": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@levelSummaryPopupTitle": {
     "type": "String",
     "placeholders": {
@@ -10548,22 +8388,6 @@
         "type": "int"
       }
     }
-  },
-  "@referFriends": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@referFriendDialogTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@referFriendDialogDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@youUnlocked": {
-    "type": "String",
-    "placeholders": {}
   },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
@@ -10574,18 +8398,6 @@
     "placeholders": {}
   },
   "@selectForGrammar": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newChatActivityTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newChatActivityDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exploreMore": {
     "type": "String",
     "placeholders": {}
   },
@@ -10605,19 +8417,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@goToChat": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@wordFocusListeningMultipleChoice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10626,30 +8426,6 @@
     "placeholders": {}
   },
   "@translationProblem": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@perfectTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@greatJobTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@goodJobTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@makingProgress": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@keepPracticing": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@niceJob": {
     "type": "String",
     "placeholders": {}
   },
@@ -10725,18 +8501,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@congratulationsOnReaching": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
-  "@seeDetails": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@choosePracticeMode": {
     "type": "String",
     "placeholders": {}
@@ -10793,18 +8557,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -10833,27 +8585,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatWithActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@launch": {
     "type": "String",
     "placeholders": {}
   },
-  "@launchActivityToChats": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@searchChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectChatToStart": {
     "type": "String",
     "placeholders": {}
   },
@@ -10909,15 +8645,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@botSettings": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySuggestionTimeoutMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@accessSettingsWarning": {
     "type": "String",
     "placeholders": {}
   },
@@ -10966,46 +8694,6 @@
     "placeholders": {}
   },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStarted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedCommunitiesDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedCommunitiesComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },
@@ -11070,10 +8758,6 @@
     "placeholders": {}
   },
   "@saveActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yourSavedActivities": {
     "type": "String",
     "placeholders": {}
   },
@@ -11248,14 +8932,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unjoinedActivityMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fullActivityMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@confirmRole": {
     "type": "String",
     "placeholders": {}
@@ -11283,14 +8959,6 @@
       }
     }
   },
-  "@endActivityTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@endActivityDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@archiveToAnalytics": {
     "type": "String",
     "placeholders": {}
@@ -11300,10 +8968,6 @@
     "placeholders": {}
   },
   "@requestSummaries": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@loadingActivitySummary": {
     "type": "String",
     "placeholders": {}
   },
@@ -11342,18 +9006,13 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }
     }
-  },
-  "@allowAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@denyAccess": {
-    "type": "String",
-    "placeholders": {}
   },
   "@adminRequestedAccess": {
     "type": "String",
@@ -11379,23 +9038,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseSubtitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@failedToLoadCourses": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@numModules": {
-    "type": "int",
-    "placeholders": {
-      "num": {
-        "type": "int"
-      }
-    }
-  },
-  "@numActivityPlans": {
     "type": "int",
     "placeholders": {
       "num": {
@@ -11455,10 +9098,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@failedToLoadCourseInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@noCourseFound": {
     "type": "String",
     "placeholders": {}
@@ -11471,18 +9110,6 @@
       }
     }
   },
-  "@activityNotFoundForCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@courseChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@myActivitySessions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@directMessages": {
     "type": "String",
     "placeholders": {}
@@ -11492,14 +9119,6 @@
     "placeholders": {}
   },
   "@chooseNextActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@seeInstructions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hideInstructions": {
     "type": "String",
     "placeholders": {}
   },
@@ -11543,23 +9162,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@saveToCompletedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@generatingSummary": {
     "type": "String",
     "placeholders": {}
   },
-  "@instructionsLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@findCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@activityCompletedDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11590,10 +9197,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@publicCourses": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@goToCourse": {
     "type": "String",
     "placeholders": {
@@ -11603,36 +9206,6 @@
   "@activityComplete": {
     "type": "String",
     "placeholders": {}
-  },
-  "@haventChattedMuch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@haveChatted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@userDoneAndWaiting": {
-    "type": "String",
-    "placeholders": {
-      "num1": {
-        "type": "int"
-      },
-      "num2": {
-        "type": "int"
-      }
-    }
-  },
-  "@othersDoneAndWaiting": {
-    "type": "String",
-    "placeholders": {
-      "num1": {
-        "type": "int"
-      },
-      "num2": {
-        "type": "int"
-      }
-    }
   },
   "@startNewSession": {
     "type": "String",
@@ -11667,10 +9240,6 @@
     "placeholders": {}
   },
   "@activityDone": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moreLabel": {
     "type": "String",
     "placeholders": {}
   },
@@ -11738,18 +9307,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -11814,10 +9371,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@anyLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@signupOption": {
     "type": "String",
     "placeholders": {}
@@ -11838,10 +9391,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@noCoursesFound": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginWithEmail": {
     "type": "String",
     "placeholders": {}
@@ -11858,19 +9407,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@writingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@endActivity": {
     "type": "String",
     "placeholders": {}
   },
   "@allLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@allCefrLevels": {
     "type": "String",
     "placeholders": {}
   },
@@ -11883,10 +9424,6 @@
     "placeholders": {}
   },
   "@feedbackTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@feedbackDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11914,16 +9451,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "inviteFriendsToActivity": "Arkadaşları etkinliğe davet et",
-  "inviteFriendsToActivityCourse": "Arkadaşları etkinliğe ve kursa davet et",
   "feedbackRespDesc": "Yarına kadar etkinlik güncellemelerini kontrol edin.",
   "activityDropdownDesc": "Bu etkinliği tamamladıktan sonra aşağıdaki butona tıklayın",
-  "activityAnalyticsListBody": "İşte tamamladığınız etkinlikler! Etkinlikleri tamamladıktan sonra burada görebilirsiniz.",
   "languageMismatchTitle": "Dil uyuşmazlığı",
   "languageMismatchDesc": "Hedef diliniz, bu etkinliğin diliyle uyuşmuyor. Hedef dilinizi güncellemek ister misiniz?",
   "reportWordIssueTooltip": "Kelime bilgisi sorununu bildir",
   "tokenInfoFeedbackDialogTitle": "Kelime Bilgisi Geri Bildirimi",
-  "tokenInfoFeedbackDialogDesc": "Yapay zeka hatalar yapabilir. Lütfen yukarıdaki bilgilerle ilgili bulduğunuz herhangi bir sorunu açıklayın.",
   "noPublicCoursesFound": "Hiç kamu kursu bulunamadı. Bir tane oluşturmak ister misiniz?",
   "noCourseTemplatesFound": "Hedef diliniz için herhangi bir kurs bulamadık. Bu arada Pangea Bot ile sohbet edebilir ve daha fazla kurs için sonra tekrar kontrol edebilirsiniz.",
   "botActivityJoinFailMessage": "Pangea Bot yanıt vermekte biraz gecikiyor. Lütfen daha sonra tekrar deneyin veya bir arkadaşınızı davet edin.",
@@ -11931,23 +9464,11 @@
   "leaveDesc": "Bu alanı ve içindeki tüm sohbetleri terk edin",
   "selectAll": "Tümünü seç",
   "deselectAll": "Tüm seçimleri kaldır",
-  "@inviteFriendsToActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteFriendsToActivityCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedbackRespDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@activityDropdownDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@activityAnalyticsListBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -11964,10 +9485,6 @@
     "placeholders": {}
   },
   "@tokenInfoFeedbackDialogTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tokenInfoFeedbackDialogDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -12004,7 +9521,6 @@
   "newMessageInPangeaChat": "🗨️ Pangea Sohbetinde yeni mesaj",
   "shareCourse": "Kursu paylaş",
   "addCourse": "Bir kurs ekle",
-  "joinCourseWithCode": "Kod ile kursa katıl",
   "joinPublicCourse": "Herkese açık kursa katıl",
   "vocabLevelsDesc": "Kelime seviyelerini yükselttiğinizde buraya kelimeler gelir!",
   "highlightVocabTooltip": "Aşağıdaki hedef kelime kelimeleri vurgulamak için bunları sohbet içinde göndererek veya pratik yaparak vurgulayın.",
@@ -12028,10 +9544,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@joinCourseWithCode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinPublicCourse": {
     "type": "String",
     "placeholders": {}
@@ -12040,7 +9552,1193 @@
     "type": "String",
     "placeholders": {}
   },
-  "@highlightVocabTooltip": {
+  "emptyChatSearch": "Hiç DM veya sohbet bulunamadı. Aramanızın doğru yazıldığından emin olun.",
+  "activityAnalyticsTooltipBody": "Bunlar gözden geçirmek ve pratik yapmak için kaydedilmiş aktivitelerinizdir.",
+  "numSavedActivities": "Kaydedilen aktivitelerin sayısı",
+  "saveActivityTitle": "Aktiviteyi kaydet",
+  "saveActivityDesc": "İyi iş! Bu aktiviteyi daha sonra gözden geçirmek ve pratik yapmak için kaydedin",
+  "levelInfoTooltip": "Burada kazandığınız tüm puanları ve nasıl kazandığınızı görebilirsiniz!",
+  "alreadyInCourseWithID": "Bu planla zaten bir kurstasınız. Aynı planla yeni bir kurs oluşturmak mı yoksa mevcut kursa gitmek mi istersiniz?",
+  "goToExistingCourse": "Mevcut kursa git",
+  "emojiView": "Emoji görünümü",
+  "feedbackDialogDesc": "Ben de hata yapıyorum! Gelişmeme yardımcı olacak bir şey var mı?",
+  "contactHasBeenInvitedToTheCourse": "İletişim kişisi kursa davet edildi",
+  "activityStatsButtonTooltip": "Etkinlik bilgisi",
+  "allow": "İzin ver",
+  "deny": "Reddet",
+  "enabledRenewal": "Abonelik Yenilemeyi Etkinleştir",
+  "subscriptionEndsOn": "Abonelik Şu Tarihte Sona Eriyor",
+  "subscriptionRenewsOn": "Abonelik Şu Tarihte Yenileniyor",
+  "waitForSubscriptionChanges": "Aboneliğinizdeki değişikliklerin uygulamada yansıması biraz zaman alabilir.",
+  "subscribeReadingAssistance": "Mesaj araçlarını açmak için abone olun",
+  "aceDisplayName": "Achinese",
+  "achDisplayName": "Acoli",
+  "afDisplayName": "Afrikaans",
+  "akDisplayName": "Akan",
+  "alzDisplayName": "Alur",
+  "amDisplayName": "Amharca",
+  "arDisplayName": "Arapça",
+  "asDisplayName": "Asamca",
+  "awaDisplayName": "Awadhi",
+  "ayDisplayName": "Aymara",
+  "azDisplayName": "Azerice",
+  "baDisplayName": "Başkurt",
+  "banDisplayName": "Bali",
+  "bbcDisplayName": "Batak Toba",
+  "beDisplayName": "Belarusça",
+  "bemDisplayName": "Bemba",
+  "bewDisplayName": "Betavi",
+  "bgDisplayName": "Bulgarca",
+  "bhoDisplayName": "Bhojpuri",
+  "bikDisplayName": "Bikol",
+  "bmDisplayName": "Bambara",
+  "bnDisplayName": "Bengalce",
+  "bnBDDisplayName": "Bengalce (Bangladeş)",
+  "bnINDisplayName": "Bengalce (Hindistan)",
+  "brDisplayName": "Bretonca",
+  "bsDisplayName": "Boşnakça",
+  "btsDisplayName": "Batak Simalungun",
+  "btxDisplayName": "Batak Karo",
+  "buaDisplayName": "Buryatça",
+  "caDisplayName": "Katalanca",
+  "cebDisplayName": "Cebuano",
+  "cggDisplayName": "Chiga",
+  "chmDisplayName": "Mari",
+  "ckbDisplayName": "Orta Kürtçe",
+  "cnhDisplayName": "Hakha Chin",
+  "coDisplayName": "Korsika Dili",
+  "crhDisplayName": "Kırım Türkçesi",
+  "crsDisplayName": "Seselwa Kreol Fransızcası",
+  "csDisplayName": "Çekçe",
+  "cvDisplayName": "Çuvaşça",
+  "cyDisplayName": "Gallerce",
+  "daDisplayName": "Danca",
+  "deDisplayName": "Almanca",
+  "dinDisplayName": "Dinka",
+  "doiDisplayName": "Dogri",
+  "dovDisplayName": "Dombe",
+  "dzDisplayName": "Dzongkha",
+  "eeDisplayName": "Ewe",
+  "enDisplayName": "İngilizce",
+  "enAUDisplayName": "İngilizce (Avustralya)",
+  "enGBDisplayName": "İngilizce (İngiltere)",
+  "enINDisplayName": "İngilizce (Hindistan)",
+  "enUSDisplayName": "İngilizce (ABD)",
+  "eoDisplayName": "Esperanto",
+  "esDisplayName": "İspanyolca",
+  "esESDisplayName": "İspanyolca (İspanya)",
+  "esMXDisplayName": "İspanyolca (Meksika)",
+  "euDisplayName": "Baskça",
+  "faDisplayName": "Farsça",
+  "ffDisplayName": "Fulah",
+  "fiDisplayName": "Fince",
+  "filDisplayName": "Filipin",
+  "fjDisplayName": "Fijili",
+  "foDisplayName": "Faroece",
+  "frDisplayName": "Fransızca",
+  "frCADisplayName": "Fransızca (Kanada)",
+  "frFRDisplayName": "Fransızca (Fransa)",
+  "fyDisplayName": "Batı Frisian",
+  "gaDisplayName": "İrlandaca",
+  "gaaDisplayName": "Ga",
+  "gdDisplayName": "İskoç Gaelic",
+  "glDisplayName": "Galiçyaca",
+  "gnDisplayName": "Guarani",
+  "gomDisplayName": "Goan Konkani",
+  "guDisplayName": "Gücerati",
+  "haDisplayName": "Hausa",
+  "hawDisplayName": "Hawaiian",
+  "heDisplayName": "İbranice",
+  "hiDisplayName": "Hintçe",
+  "hilDisplayName": "Hiligaynon",
+  "hmnDisplayName": "Hmong",
+  "hneDisplayName": "Çatışgarca",
+  "hrDisplayName": "Hırvatça",
+  "hrxDisplayName": "Hunsrik",
+  "htDisplayName": "Haitian Kreolü",
+  "huDisplayName": "Macarca",
+  "hyDisplayName": "Ermenice",
+  "idDisplayName": "Endonezce",
+  "igDisplayName": "İgbo",
+  "iloDisplayName": "İloko",
+  "isDisplayName": "İzlandaca",
+  "itDisplayName": "İtalyanca",
+  "jaDisplayName": "Japonca",
+  "jvDisplayName": "Cava dili",
+  "kaDisplayName": "Gürcüce",
+  "kkDisplayName": "Kazakça",
+  "kmDisplayName": "Kmerce",
+  "knDisplayName": "Kannada",
+  "koDisplayName": "Korece",
+  "kokDisplayName": "Konkani",
+  "kriDisplayName": "Krio",
+  "ksDisplayName": "Keşmirce",
+  "ktuDisplayName": "Kituba (Kongo Demokratik Cumhuriyeti)",
+  "kuDisplayName": "Kürtçe",
+  "kyDisplayName": "Kırgızca",
+  "laDisplayName": "Latince",
+  "lbDisplayName": "Lüksemburgca",
+  "lgDisplayName": "Ganda",
+  "liDisplayName": "Limburgca",
+  "lijDisplayName": "Ligurca",
+  "lmoDisplayName": "Lombardca",
+  "lnDisplayName": "Lingala",
+  "loDisplayName": "Lao",
+  "ltDisplayName": "Litvanyaca",
+  "ltgDisplayName": "Latgalca",
+  "luoDisplayName": "Luo (Kenya ve Tanzanya)",
+  "lusDisplayName": "Mizo",
+  "lvDisplayName": "Letonca",
+  "maiDisplayName": "Maithili",
+  "makDisplayName": "Makasar",
+  "mgDisplayName": "Malgaşça",
+  "miDisplayName": "Maori",
+  "minDisplayName": "Minangkabau",
+  "mkDisplayName": "Makedonca",
+  "mlDisplayName": "Malayalam",
+  "mnDisplayName": "Moğolca",
+  "mniDisplayName": "Manipuri",
+  "mrDisplayName": "Marathi",
+  "msDisplayName": "Malay",
+  "msArabDisplayName": "Malay (Arapça)",
+  "msMYDisplayName": "Malay (Malezya)",
+  "mtDisplayName": "Maltaca",
+  "mwrDisplayName": "Marwari",
+  "myDisplayName": "Birmanya",
+  "nanDisplayName": "Min Nan",
+  "nbDisplayName": "Norveççe (Bokmål)",
+  "neDisplayName": "Nepalce",
+  "newDisplayName": "Newari",
+  "nlDisplayName": "Flemenkçe",
+  "nlBEDisplayName": "Flemenkçe",
+  "noDisplayName": "Norveççe",
+  "nrDisplayName": "Güney Ndebele",
+  "nsoDisplayName": "Kuzey Sotho",
+  "nusDisplayName": "Nuer",
+  "nyDisplayName": "Nyanja",
+  "ocDisplayName": "Okzitan",
+  "omDisplayName": "Oromo",
+  "orDisplayName": "Odia",
+  "paDisplayName": "Pencap",
+  "paArabDisplayName": "Pencap (Şahmukhi)",
+  "paINDisplayName": "Pencap (Gurmukhi)",
+  "pagDisplayName": "Pangasinan",
+  "pamDisplayName": "Pampanga",
+  "papDisplayName": "Papiamento",
+  "plDisplayName": "Lehçe",
+  "psDisplayName": "Peştu",
+  "ptDisplayName": "Portekizce",
+  "ptBRDisplayName": "Portekizce (Brezilya)",
+  "ptPTDisplayName": "Portekizce (Portekiz)",
+  "quDisplayName": "Quechua",
+  "rajDisplayName": "Rajasthan Dili",
+  "rnDisplayName": "Rundi",
+  "roDisplayName": "Romence",
+  "roMDDisplayName": "Moldovca",
+  "romDisplayName": "Roman",
+  "ruDisplayName": "Rusça",
+  "rwDisplayName": "Kinyarwanda",
+  "saDisplayName": "Sanskrit",
+  "satDisplayName": "Santali",
+  "scnDisplayName": "Sicilya",
+  "sdDisplayName": "Sindhi",
+  "sgDisplayName": "Sango",
+  "shnDisplayName": "Şan",
+  "siDisplayName": "Singhalesce",
+  "skDisplayName": "Slovakça",
+  "slDisplayName": "Slovence",
+  "smDisplayName": "Samoaca",
+  "snDisplayName": "Şona",
+  "soDisplayName": "Somalice",
+  "sqDisplayName": "Arnavutça",
+  "srDisplayName": "Sırpça",
+  "srMEDisplayName": "Karadağca",
+  "ssDisplayName": "Swati",
+  "stDisplayName": "Güney Sotho",
+  "suDisplayName": "Sundanca",
+  "svDisplayName": "İsveççe",
+  "swDisplayName": "Svahili",
+  "szlDisplayName": "Silezyaca",
+  "taDisplayName": "Tamilce",
+  "teDisplayName": "Telugu",
+  "tetDisplayName": "Tetum",
+  "tgDisplayName": "Tacik",
+  "thDisplayName": "Tay",
+  "tiDisplayName": "Tigrinya",
+  "tkDisplayName": "Türkmen",
+  "tlDisplayName": "Tagalog",
+  "tnDisplayName": "Tswana",
+  "trDisplayName": "Türkçe",
+  "tsDisplayName": "Tsonga",
+  "ttDisplayName": "Tatar",
+  "ugDisplayName": "Uygur",
+  "ukDisplayName": "Ukraynaca",
+  "urDisplayName": "Urdu",
+  "urINDisplayName": "Urdu (Hindistan)",
+  "urPKDisplayName": "Urdu (Pakistan)",
+  "uzDisplayName": "Özbekçe",
+  "viDisplayName": "Vietnamca",
+  "wuuDisplayName": "Wu",
+  "xhDisplayName": "Xhosa",
+  "yiDisplayName": "Yidiş",
+  "yoDisplayName": "Yoruba",
+  "yuaDisplayName": "Yucateco",
+  "yueDisplayName": "Kantonca",
+  "yueCNDisplayName": "Kantonca (Çin)",
+  "yueHKDisplayName": "Kantonca (Hong Kong)",
+  "zhDisplayName": "Çince",
+  "zhCNDisplayName": "Çince (Basitleştirilmiş)",
+  "zhTWDisplayName": "Çince (Geleneksel)",
+  "zuDisplayName": "Zulu",
+  "@emptyChatSearch": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsTooltipBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@numSavedActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@levelInfoTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alreadyInCourseWithID": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@goToExistingCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@emojiView": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@contactHasBeenInvitedToTheCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityStatsButtonTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allow": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deny": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enabledRenewal": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionEndsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionRenewsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@waitForSubscriptionChanges": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscribeReadingAssistance": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@aceDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@achDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@afDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@akDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@amDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@arDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@asDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@awaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ayDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@azDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bbcDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@beDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bemDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bewDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bhoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bikDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnBDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@brDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@buaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@caDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cebDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cggDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ckbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cnhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@coDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@csDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@daDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dinDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@doiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dovDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eeDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enAUDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enGBDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enUSDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esESDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esMXDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@euDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@faDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ffDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@filDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fjDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@foDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frCADisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frFRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@glDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gomDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@guDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@haDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hawDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@heDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hilDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hmnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hneDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@htDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@huDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@idDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@igDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@iloDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@isDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@itDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@knDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@koDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kokDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kriDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ksDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ktuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@laDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@liDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lijDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lmoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@luoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@maiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@makDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@miDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@minDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mniDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msMYDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mtDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mwrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@myDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nanDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@neDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlBEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nsoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ocDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@omDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@orDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pagDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pamDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@papDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@plDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@psDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptBRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptPTDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rajDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roMDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@romDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ruDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rwDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@satDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@scnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@siDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@slDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@smDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@snDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@soDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sqDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srMEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@svDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@swDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@szlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@taDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tetDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@thDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@trDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ttDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ugDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ukDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urPKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@uzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@viDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@wuuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@xhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yuaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueHKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhTWDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zuDisplayName": {
     "type": "String",
     "placeholders": {}
   },
@@ -12107,6 +10805,7 @@
   "notStartedActivitiesTitle": "Açık oturumlar ({num})",
   "inProgressActivitiesTitle": "Şu anda gerçekleşiyor ({num})",
   "completedActivitiesTitle": "Tamamlandı ({num})",
+  "pickDifferentActivity": "Farklı bir etkinlik seç",
   "inOngoingActivity": "Devam eden bir etkinliğiniz var!",
   "@notStartedActivitiesTitle": {
     "type": "String",
@@ -12132,7 +10831,125 @@
       }
     }
   },
+  "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Hedef diliniz bu mesajla eşleşmiyor. Hedef dilinizi güncelleyebilir misiniz?",
+  "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Bu kurstaki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneğini seçerek bir DM gönderin.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Bu kelime analitiklerinizden kalıcı olarak kaldırılacaktır.",
+  "woman": "Kadın",
+  "man": "Erkek",
+  "otherGender": "Diğer",
+  "unselectedGender": "Bir cinsiyet seçeneği seçin",
+  "gender": "Cinsiyet",
+  "chatParticipantTooltip": "Bu sohbetin içindeki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneği ile DM gönderin.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Öğrenme araçları, hedef dilinizde olmayan mesajlar için devre dışıdır.",
+  "vocabEmoji": "Kelime emojisi",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Yeniden oluşturma talep et",
+  "optionalRegenerateReason": "(Opsiyonel) Sebep",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "{lemma} için emojiyi ayarladınız! Bu emojiyi, pratik aktivitelerde kelimeyi temsil etmek için kullanacağız.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  },
+  "ssoDialogTitle": "Girişin tamamlanmasını bekliyoruz",
+  "ssoDialogDesc": "Güvenli bir şekilde giriş yapabilmeniz için yeni bir sekme açtık.",
+  "ssoDialogHelpText": "🤔 Yeni sekmeyi görmediyseniz, lütfen açılır pencere engelleyicinizi kontrol edin.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Dil araçlarını devre dışı bırak",
+  "disableLanguageToolsDesc": "Otomatik dil yardımını devre dışı bırakmak ister misiniz?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "İzin reddedildi. Sesli mesajlar kaydetmek için kayıt izinlerini etkinleştirin.",
+  "genericWebRecordingError": "Bir şeyler yanlış gitti. Mesajları kaydederken Chrome tarayıcısını kullanmanızı öneririz.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Bu uygulamayı en iyi şekilde kullanabilmek için lütfen ekran boyutunuzu genişletin.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   },
@@ -12143,6 +10960,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Doğru kelime tanımı pratiği",
+  "constructUseIncLMDesc": "Yanlış kelime tanımı pratiği",
+  "constructUseCorLADesc": "Doğru kelime ses pratiği",
+  "constructUseIncLADesc": "Yanlış kelime ses pratiği",
+  "constructUseBonus": "Kelime pratiği sırasında bonus",
+  "practiceVocab": "Kelime pratiği yap",
+  "selectMeaning": "Anlamı seç",
+  "selectAudio": "Eşleşen sesi seç",
+  "congratulations": "Tebrikler!",
+  "anotherRound": "Bir tur daha",
+  "noActivityRequest": "Şu anda etkinlik talebi yok.",
+  "quit": "Çık",
+  "congratulationsYouveCompletedPractice": "Tebrikler! Pratik oturumunu tamamladınız.",
+  "mustHave10Words": "Pratik yapmak için en az 10 kelimeye sahip olmalısınız. Daha fazla keşfetmek için bir arkadaşınızla veya Pangea Bot ile konuşmayı deneyin!",
+  "botSettings": "Bot Ayarları",
+  "activitySettingsOverrideWarning": "Etkinlik planı tarafından belirlenen dil ve dil seviyesi",
+  "voice": "Ses",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

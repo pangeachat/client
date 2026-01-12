@@ -32,20 +32,13 @@ enum PartOfSpeechEnum {
   adp,
   propn,
   intj,
-  x,
-}
-
-extension PartOfSpeechEnumExtensions on PartOfSpeechEnum {
-  /// Convert enum to string
-  String toShortString() {
-    return toString().split('.').last.toLowerCase();
-  }
+  x;
 
   static PartOfSpeechEnum? fromString(String categoryName) {
     final pos = PartOfSpeechEnum.values.firstWhereOrNull(
-      (pos) => pos.toShortString() == categoryName.toLowerCase(),
+      (pos) => pos.name.toLowerCase() == categoryName.toLowerCase(),
     );
-    if (pos == null) {
+    if (pos == null && categoryName.toLowerCase() != 'other') {
       ErrorHandler.logError(
         e: "Missing part of speech",
         s: StackTrace.current,
@@ -154,6 +147,8 @@ extension PartOfSpeechEnumExtensions on PartOfSpeechEnum {
 
 String? getVocabCategoryName(String category, BuildContext context) {
   return PartOfSpeechEnum.values
-      .firstWhereOrNull((pos) => pos.toShortString() == category.toLowerCase())
+      .firstWhereOrNull(
+        (pos) => pos.name.toLowerCase() == category.toLowerCase(),
+      )
       ?.getDisplayCopy(context);
 }

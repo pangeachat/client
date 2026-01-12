@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/chat_list/widgets/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
@@ -19,8 +20,8 @@ import 'package:fluffychat/pangea/course_plans/course_activities/activity_summar
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
@@ -390,7 +391,10 @@ class CourseChatsController extends State<CourseChats>
           return;
         case InviteAction.block:
           final userId = inviteEvent?.senderId;
-          context.go('/rooms/settings/security/ignorelist', extra: userId);
+          context.go(
+            '/rooms/settings/security/ignorelist',
+            extra: userId,
+          );
           return;
       }
       if (!mounted) return;
@@ -428,7 +432,7 @@ class CourseChatsController extends State<CourseChats>
       return;
     }
 
-    context.go('/rooms/${room.id}');
+    NavigationUtil.goToSpaceRoute(room.id, [], context);
   }
 
   void joinChildRoom(SpaceRoomsChunk item) async {

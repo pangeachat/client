@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
@@ -16,7 +15,8 @@ import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selectio
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -51,12 +51,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: theme.colorScheme.primaryContainer,
         padding: const EdgeInsets.symmetric(
-          horizontal: 24,
+          horizontal: 20,
           vertical: 16,
         ),
       ),
       child: Row(
-        spacing: 34.0,
+        spacing: 12.0,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
@@ -72,9 +72,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
           ),
         ],
       ),
-      onPressed: () => context.go(
-        room.isSpace ? "/rooms/spaces/${room.id}/details" : "/rooms/${room.id}",
-      ),
+      onPressed: () => NavigationUtil.goToSpaceRoute(room.id, [], context),
     );
 
     return Scaffold(
@@ -86,9 +84,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
       body: MaxWidthBody(
         maxWidth: 800.0,
         withScrolling: false,
+        showBorder: false,
+        padding: const EdgeInsets.all(0),
         child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
+            spacing: 12.0,
             children: [
               TextField(
                 controller: controller.controller,
@@ -122,7 +123,6 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                 ),
                 onChanged: controller.searchUserWithCoolDown,
               ),
-              const SizedBox(height: 12.0),
               Align(
                 alignment: Alignment.centerLeft,
                 child: SingleChildScrollView(
@@ -149,119 +149,114 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                 ),
               ),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 40.0),
-                  child: StreamBuilder<Object>(
-                    stream: room.client.onRoomState.stream
-                        .where((update) => update.roomId == room.id)
-                        .rateLimit(const Duration(seconds: 1)),
-                    builder: (context, snapshot) {
-                      final participants =
-                          room.getParticipants().map((user) => user.id).toSet();
-                      return controller.filter == InvitationFilter.public
-                          ? ListView.builder(
-                              itemCount: controller.foundProfiles.length,
-                              itemBuilder: (BuildContext context, int i) =>
-                                  _InviteContactListTile(
-                                profile: controller.foundProfiles[i],
-                                isMember: participants.contains(
-                                  controller.foundProfiles[i].userId,
-                                ),
-                                onTap: () => controller.inviteAction(
-                                  controller.foundProfiles[i].userId,
-                                ),
-                                controller: controller,
+                child: StreamBuilder<Object>(
+                  stream: room.client.onRoomState.stream
+                      .where((update) => update.roomId == room.id)
+                      .rateLimit(const Duration(seconds: 1)),
+                  builder: (context, snapshot) {
+                    final participants =
+                        room.getParticipants().map((user) => user.id).toSet();
+                    return controller.filter == InvitationFilter.public
+                        ? ListView.builder(
+                            itemCount: controller.foundProfiles.length,
+                            itemBuilder: (BuildContext context, int i) =>
+                                _InviteContactListTile(
+                              profile: controller.foundProfiles[i],
+                              isMember: participants.contains(
+                                controller.foundProfiles[i].userId,
                               ),
-                            )
-                          : ListView.builder(
-                              itemCount: contacts.length + 2,
-                              itemBuilder: (BuildContext context, int i) {
-                                if (i == 0) {
-                                  return controller.filter ==
-                                              InvitationFilter.space &&
-                                          controller.spaceParent != null
-                                      ? ListTile(
-                                          leading: ClipPath(
-                                            clipper: MapClipper(),
-                                            child: Avatar(
-                                              mxContent: controller
-                                                  .spaceParent!.avatar,
-                                              name: controller.spaceParent!
-                                                  .getLocalizedDisplayname(),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                AppConfig.borderRadius / 4,
-                                              ),
-                                            ),
-                                          ),
-                                          title: Text(
-                                            controller.spaceParent!
+                              onTap: () => controller.inviteAction(
+                                controller.foundProfiles[i].userId,
+                              ),
+                              controller: controller,
+                            ),
+                          )
+                        : ListView.builder(
+                            itemCount: contacts.length + 2,
+                            itemBuilder: (BuildContext context, int i) {
+                              if (i == 0) {
+                                return controller.filter ==
+                                            InvitationFilter.space &&
+                                        controller.spaceParent != null
+                                    ? ListTile(
+                                        leading: ClipPath(
+                                          clipper: MapClipper(),
+                                          child: Avatar(
+                                            mxContent:
+                                                controller.spaceParent!.avatar,
+                                            name: controller.spaceParent!
                                                 .getLocalizedDisplayname(),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          subtitle: Text(
-                                            L10n.of(context).countParticipants(
-                                              controller.spaceParent!.summary
-                                                      .mJoinedMemberCount ??
-                                                  1,
+                                            borderRadius: BorderRadius.circular(
+                                              AppConfig.borderRadius / 4,
                                             ),
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
                                           ),
-                                          trailing: TextButton.icon(
-                                            onPressed:
-                                                controller.inviteAllInSpace,
-                                            label: Text(
-                                              L10n.of(context).inviteAllInSpace,
-                                            ),
-                                            icon: const Icon(Icons.add),
-                                          ),
-                                        )
-                                      : const SizedBox();
-                                }
-
-                                i--;
-
-                                if (i == contacts.length) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: SizedBox(
-                                      width: 450,
-                                      child: CachedNetworkImage(
-                                        imageUrl:
-                                            "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendAsset}",
-                                        errorWidget: (context, url, error) =>
-                                            const SizedBox(),
-                                        placeholder: (context, url) =>
-                                            const Center(
-                                          child: CircularProgressIndicator
-                                              .adaptive(),
                                         ),
+                                        title: Text(
+                                          controller.spaceParent!
+                                              .getLocalizedDisplayname(),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        subtitle: Text(
+                                          L10n.of(context).countParticipants(
+                                            controller.spaceParent!.summary
+                                                    .mJoinedMemberCount ??
+                                                1,
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        trailing: TextButton.icon(
+                                          onPressed:
+                                              controller.inviteAllInSpace,
+                                          label: Text(
+                                            L10n.of(context).inviteAllInSpace,
+                                          ),
+                                          icon: const Icon(Icons.add),
+                                        ),
+                                      )
+                                    : const SizedBox();
+                              }
+
+                              i--;
+
+                              if (i == contacts.length) {
+                                return Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: SizedBox(
+                                    width: 450,
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                          "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendAsset}",
+                                      errorWidget: (context, url, error) =>
+                                          const SizedBox(),
+                                      placeholder: (context, url) =>
+                                          const Center(
+                                        child: CircularProgressIndicator
+                                            .adaptive(),
                                       ),
                                     ),
-                                  );
-                                }
-                                return _InviteContactListTile(
-                                  user: contacts[i],
-                                  profile: Profile(
-                                    avatarUrl: contacts[i].avatarUrl,
-                                    displayName: contacts[i].displayName ??
-                                        contacts[i].id.localpart ??
-                                        L10n.of(context).user,
-                                    userId: contacts[i].id,
                                   ),
-                                  isMember:
-                                      participants.contains(contacts[i].id),
-                                  onTap: () => controller.inviteAction(
-                                    contacts[i].id,
-                                  ),
-                                  controller: controller,
                                 );
-                              },
-                            );
-                    },
-                  ),
+                              }
+                              return _InviteContactListTile(
+                                user: contacts[i],
+                                profile: Profile(
+                                  avatarUrl: contacts[i].avatarUrl,
+                                  displayName: contacts[i].displayName ??
+                                      contacts[i].id.localpart ??
+                                      L10n.of(context).user,
+                                  userId: contacts[i].id,
+                                ),
+                                isMember: participants.contains(contacts[i].id),
+                                onTap: () => controller.inviteAction(
+                                  contacts[i].id,
+                                ),
+                                controller: controller,
+                              );
+                            },
+                          );
+                  },
                 ),
               ),
               Row(
@@ -277,12 +272,12 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                               backgroundColor:
                                   theme.colorScheme.primaryContainer,
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 24,
+                                horizontal: 20,
                                 vertical: 16,
                               ),
                             ),
                             child: Row(
-                              spacing: 34.0,
+                              spacing: 12.0,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
@@ -312,7 +307,9 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                 "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode}";
                           }
 
-                          await Clipboard.setData(ClipboardData(text: toCopy));
+                          await Clipboard.setData(
+                            ClipboardData(text: toCopy),
+                          );
                           ScaffoldMessenger.of(
                             context,
                           ).showSnackBar(

@@ -10,16 +10,7 @@ import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension BotClientExtension on Client {
-  bool get hasBotDM => rooms.any((room) {
-        if (room.isDirectChat &&
-            room.directChatMatrixID == BotName.byEnvironment) {
-          return true;
-        }
-        if (room.botOptions?.mode == BotMode.directChat) {
-          return true;
-        }
-        return false;
-      });
+  bool get hasBotDM => rooms.any((r) => r.isBotDM);
 
   Room? get botDM => rooms.firstWhereOrNull(
         (room) {
@@ -41,8 +32,8 @@ extension BotClientExtension on Client {
           StateEvent(
             content: BotOptionsModel(
               mode: BotMode.directChat,
-              targetLanguage: MatrixState
-                  .pangeaController.languageController.userL2?.langCode,
+              targetLanguage:
+                  MatrixState.pangeaController.userController.userL2?.langCode,
               languageLevel: MatrixState.pangeaController.userController.profile
                   .userSettings.cefrLevel,
             ).toJson(),
@@ -53,4 +44,28 @@ extension BotClientExtension on Client {
           ),
         ],
       );
+
+  Future<void> updateBotOptions() async {
+    if (!isLogged() || botDM == null) return;
+
+    final targetLanguage =
+        MatrixState.pangeaController.userController.userL2?.langCode;
+    final cefrLevel = MatrixState
+        .pangeaController.userController.profile.userSettings.cefrLevel;
+    final updateBotOptions = botDM!.botOptions ?? BotOptionsModel();
+
+    if (updateBotOptions.targetLanguage == targetLanguage &&
+        updateBotOptions.languageLevel == cefrLevel) {
+      return;
+    }
+
+    if (targetLanguage != null &&
+        updateBotOptions.targetLanguage != targetLanguage) {
+      updateBotOptions.targetVoice = null;
+    }
+
+    updateBotOptions.targetLanguage = targetLanguage;
+    updateBotOptions.languageLevel = cefrLevel;
+    await botDM!.setBotOptions(updateBotOptions);
+  }
 }

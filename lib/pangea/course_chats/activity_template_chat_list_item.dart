@@ -53,22 +53,6 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing: Row(
-                spacing: 2.0,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.chat_bubble_outline,
-                    size: 8.0,
-                  ),
-                  Text(
-                    "${sessions.length}",
-                    style: const TextStyle(
-                      fontSize: 8.0,
-                    ),
-                  ),
-                ],
-              ),
               title: Row(
                 children: [
                   Expanded(
@@ -92,6 +76,7 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                   left: 14.0,
                 ),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: OpenRolesIndicator(
@@ -100,16 +85,20 @@ class ActivityTemplateChatListItem extends StatelessWidget {
                         space: space,
                       ),
                     ),
-                    SizedBox(
-                      height: 24.0,
-                      width: 40.0,
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        maxHeight: 24.0,
+                      ),
                       child: ElevatedButton(
                         onPressed: () => showFutureLoadingDialog(
                           context: context,
                           future: () => joinActivity(e),
                         ),
                         style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.all(0),
+                          padding: const EdgeInsets.only(
+                            left: 8.0,
+                            right: 8.0,
+                          ),
                         ),
                         child: Text(
                           L10n.of(context).join,

@@ -10,9 +10,10 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/emoji_burst.dart';
+import 'package:fluffychat/pages/chat/events/reaction_listener.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
@@ -20,11 +21,13 @@ class PangeaMessageReactions extends StatefulWidget {
   final Event event;
   final Timeline timeline;
   final ChatController controller;
+  final double? width;
 
   const PangeaMessageReactions(
     this.event,
     this.timeline,
     this.controller, {
+    this.width,
     super.key,
   });
 
@@ -33,10 +36,10 @@ class PangeaMessageReactions extends StatefulWidget {
 }
 
 class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
-  StreamSubscription? _reactionSubscription;
   Map<String, _ReactionEntry> _reactionMap = {};
   Set<String> _newlyAddedReactions = {};
   late Client client;
+  ReactionListener? _reactionListener;
 
   @override
   void initState() {
@@ -46,23 +49,17 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
     _setupReactionStream();
   }
 
-  void _setupReactionStream() {
-    _reactionSubscription = widget.controller.room.client.onSync.stream.where(
-      (update) {
-        final room = widget.controller.room;
-        final timelineEvents = update.rooms?.join?[room.id]?.timeline?.events;
-        if (timelineEvents == null) return false;
+  @override
+  void dispose() {
+    _reactionListener?.dispose();
+    super.dispose();
+  }
 
-        final eventID = widget.event.eventId;
-        return timelineEvents.any(
-          (e) =>
-              e.type == EventTypes.Redaction ||
-              (e.type == EventTypes.Reaction &&
-                  Event.fromMatrixEvent(e, room).relationshipEventId ==
-                      eventID),
-        );
-      },
-    ).listen(_onReactionUpdate);
+  void _setupReactionStream() {
+    _reactionListener = ReactionListener(
+      event: widget.event,
+      onUpdate: _onReactionUpdate,
+    );
   }
 
   void _onReactionUpdate(SyncUpdate update) {
@@ -105,12 +102,6 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
   }
 
   @override
-  void dispose() {
-    _reactionSubscription?.cancel();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final reactionList = _reactionMap.values.toList()
       ..sort((a, b) => b.count - a.count > 0 ? 1 : -1);
@@ -120,13 +111,12 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
         .aggregatedEvents(widget.timeline, RelationshipTypes.reaction)
         .toList();
 
-    return Directionality(
-      textDirection: ownMessage ? TextDirection.rtl : TextDirection.ltr,
-      child: AnimatedSize(
-        duration: FluffyThemes.animationDuration,
-        curve: FluffyThemes.animationCurve,
-        alignment: ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
-        clipBehavior: Clip.none,
+    return SizedBox(
+      width: allReactionEvents.any((e) => e.status.isSending)
+          ? null
+          : widget.width,
+      child: Directionality(
+        textDirection: ownMessage ? TextDirection.rtl : TextDirection.ltr,
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           runSpacing: 4.0,
@@ -171,10 +161,16 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
             e.senderId == e.room.client.userID &&
             e.content.tryGetMap('m.relates_to')?['key'] == reaction.key,
       );
-      if (evt != null) {
-        await showFutureLoadingDialog(
-          context: context,
-          future: () => evt.redactEvent(),
+      try {
+        await evt?.redactEvent();
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            'message': 'Failed to redact reaction event',
+            'event_id': evt?.eventId,
+          },
         );
       }
     } else {

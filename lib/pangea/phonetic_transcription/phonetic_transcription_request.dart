@@ -1,5 +1,5 @@
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_arc_model.dart';
 
 class PhoneticTranscriptionRequest {
   final LanguageArc arc;
@@ -30,4 +30,16 @@ class PhoneticTranscriptionRequest {
   }
 
   String get storageKey => '${arc.l1}-${arc.l2}-${content.hashCode}';
+
+  @override
+  int get hashCode =>
+      content.hashCode ^ arc.hashCode ^ requiresTokenization.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other is PhoneticTranscriptionRequest &&
+        other.content == content &&
+        other.arc == arc &&
+        other.requiresTokenization == requiresTokenization;
+  }
 }

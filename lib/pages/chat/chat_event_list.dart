@@ -167,6 +167,7 @@ class ChatEventList extends StatelessWidget {
                 // #Pangea
                 controller: controller,
                 isButton: event.eventId == controller.buttonEventID,
+                canRefresh: event.eventId == controller.refreshEventID,
                 // Pangea#
                 selected: controller.selectedEvents
                     .any((e) => e.eventId == event.eventId),

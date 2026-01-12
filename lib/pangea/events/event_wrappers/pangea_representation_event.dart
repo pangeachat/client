@@ -4,35 +4,34 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-import 'package:matrix/src/utils/markdown.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/choreographer/event_wrappers/pangea_choreo_event.dart';
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/models/language_detection_model.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_choreo_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class RepresentationEvent {
   Event? _event;
   PangeaRepresentation? _content;
   PangeaMessageTokens? _tokens;
-  ChoreoRecord? _choreo;
+  ChoreoRecordModel? _choreo;
   Timeline timeline;
   Event parentMessageEvent;
 
@@ -42,7 +41,7 @@ class RepresentationEvent {
     Event? event,
     PangeaRepresentation? content,
     PangeaMessageTokens? tokens,
-    ChoreoRecord? choreo,
+    ChoreoRecordModel? choreo,
   }) {
     if (event != null && event.type != PangeaEventTypes.representation) {
       throw Exception(
@@ -57,6 +56,33 @@ class RepresentationEvent {
 
   Event? get event => _event;
 
+  String get text => content.text;
+
+  String get langCode => content.langCode;
+
+  List<LanguageDetectionModel>? get detections => _tokens?.detections;
+
+  Set<Event> get tokenEvents =>
+      _event?.aggregatedEvents(
+        timeline,
+        PangeaEventTypes.tokens,
+      ) ??
+      {};
+
+  Set<Event> get sttEvents =>
+      _event?.aggregatedEvents(
+        timeline,
+        PangeaEventTypes.sttTranslation,
+      ) ??
+      {};
+
+  Set<Event> get choreoEvents =>
+      _event?.aggregatedEvents(
+        timeline,
+        PangeaEventTypes.choreoRecord,
+      ) ??
+      {};
+
   // Note: in the case where the event is the originalSent or originalWritten event,
   // the content will be set on initialization by the PangeaMessageEvent
   // Otherwise, the content will be fetched from the event where it is stored in content[type]
@@ -66,96 +92,38 @@ class RepresentationEvent {
     return _content!;
   }
 
-  String get text => content.text;
-
-  String get langCode => content.langCode;
-
-  bool get botAuthored =>
-      content.originalSent == false && content.originalWritten == false;
-
-  List<LanguageDetection>? get detections => _tokens?.detections;
-
   List<PangeaToken>? get tokens {
     if (_tokens != null) return _tokens!.tokens;
     if (_event == null) return null;
-
-    final Set<Event> tokenEvents = _event?.aggregatedEvents(
-          timeline,
-          PangeaEventTypes.tokens,
-        ) ??
-        {};
 
     if (tokenEvents.isEmpty) return null;
     _tokens = tokenEvents.last.getPangeaContent<PangeaMessageTokens>();
     return _tokens?.tokens;
   }
 
-  Future<List<PangeaToken>> tokensGlobal(
-    String senderID,
-    DateTime timestamp,
-  ) async {
-    if (tokens != null) return tokens!;
+  ChoreoRecordModel? get choreo {
+    if (_choreo != null) return _choreo;
 
-    if (_event == null && timestamp.isAfter(DateTime(2024, 9, 25))) {
+    if (_event == null) {
       Sentry.addBreadcrumb(
         Breadcrumb(
-          message:
-              'representation with no _event and no tokens got tokens directly. This means an original_sent with no tokens. This should not happen in messages sent after September 25',
-          data: {
-            'content': content.toJson(),
-            'event': _event?.toJson(),
-            'timestamp': timestamp.toIso8601String(),
-            'senderID': senderID,
-          },
+          message: "_event and _choreo both null",
         ),
       );
+      return null;
     }
-    final TokensResponseModel res =
-        await MatrixState.pangeaController.messageData.getTokens(
-      repEventId: _event?.eventId,
-      room: _event?.room ?? parentMessageEvent.room,
-      req: TokensRequestModel(
-        fullText: text,
-        langCode: langCode,
-        senderL1:
-            MatrixState.pangeaController.languageController.userL1?.langCode ??
-                LanguageKeys.unknownLanguage,
-        // since langCode is known, senderL2 will be used to determine whether these tokens
-        // need pos/mporph tags whether lemmas are eligible to marked as "save_vocab=true"
-        senderL2:
-            MatrixState.pangeaController.languageController.userL2?.langCode ??
-                LanguageKeys.unknownLanguage,
-      ),
-    );
 
-    return res.tokens;
-  }
-
-  Future<void> sendTokensEvent(
-    String repEventID,
-    Room room,
-    String userl1,
-    String userl2,
-  ) async {
-    if (tokens != null) return;
-    if (_event == null) {
+    if (choreoEvents.isEmpty) return null;
+    if (choreoEvents.length > 1) {
+      debugger(when: kDebugMode);
       ErrorHandler.logError(
-        e: "Called getTokensEvent with no _event",
-        data: {},
+        m: 'should not have more than one choreoEvent per representation ${_event?.eventId}',
+        s: StackTrace.current,
+        data: {"event": _event?.toJson()},
       );
-      return;
     }
 
-    await MatrixState.pangeaController.messageData.sendTokensEvent(
-      repEventId: repEventID,
-      room: room,
-      req: TokensRequestModel(
-        fullText: text,
-        langCode: langCode,
-        senderL1: userl1,
-        senderL2: userl2,
-      ),
-    );
+    return ChoreoEvent(event: choreoEvents.first).content;
   }
 
   List<SttTranslationModel> get sttTranslations {
@@ -168,11 +136,6 @@ class RepresentationEvent {
       );
       return [];
     }
-
-    final Set<Event> sttEvents = _event!.aggregatedEvents(
-      timeline,
-      PangeaEventTypes.sttTranslation,
-    );
 
     if (sttEvents.isEmpty) return [];
     final List<SttTranslationModel> sttTranslations = [];
@@ -194,151 +157,10 @@ class RepresentationEvent {
         );
       }
     }
-
     return sttTranslations;
   }
 
-  Future<SttTranslationModel> getSttTranslation({
-    required String userL1,
-    required String userL2,
-  }) async {
-    if (content.speechToText == null) {
-      throw Exception(
-        "RepresentationEvent.getSttTranslation called on a representation without speechToText",
-      );
-    }
-
-    final local = sttTranslations.firstWhereOrNull((t) => t.langCode == userL1);
-    if (local != null) return local;
-
-    return MatrixState.pangeaController.messageData.getSttTranslation(
-      repEventId: _event?.eventId,
-      room: _event?.room,
-      req: FullTextTranslationRequestModel(
-        text: content.speechToText!.transcript.text,
-        tgtLang: userL1,
-        userL2: userL2,
-        userL1: userL1,
-      ),
-    );
-  }
-
-  ChoreoRecord? get choreo {
-    if (_choreo != null) return _choreo;
-
-    if (_event == null) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "_event and _choreo both null",
-        ),
-      );
-      return null;
-    }
-
-    final Set<Event> choreoMatrixEvents =
-        _event?.aggregatedEvents(timeline, PangeaEventTypes.choreoRecord) ?? {};
-
-    if (choreoMatrixEvents.isEmpty) return null;
-
-    if (choreoMatrixEvents.length > 1) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        m: 'should not have more than one choreoEvent per representation ${_event?.eventId}',
-        s: StackTrace.current,
-        data: {"event": _event?.toJson()},
-      );
-    }
-
-    _choreo = ChoreoEvent(event: choreoMatrixEvents.first).content;
-
-    return _choreo;
-  }
-
-  String? formatBody() {
-    return markdown(content.text);
-  }
-
-  /// Finds the closest non-punctuation token to the given token.
-  ///
-  /// This method checks if the provided token is a punctuation token. If it is not,
-  /// it returns the token itself. If the token is a punctuation token, it searches
-  /// through the list of tokens to find the closest non-punctuation token either to
-  /// the left or right of the given token.
-  ///
-  /// If both left and right non-punctuation tokens are found, it returns the one
-  /// that is closest to the given token. If only one of them is found, it returns
-  /// that token. If no non-punctuation tokens are found, it returns null.
-  ///
-  /// - Parameters:
-  ///   - token: The token for which to find the closest non-punctuation token.
-  ///
-  /// - Returns: The closest non-punctuation token, or null if no such token exists.
-  PangeaToken? getClosestNonPunctToken(PangeaToken token) {
-    if (token.pos != "PUNCT") return token;
-    if (tokens == null) return null;
-    final index = tokens!.indexOf(token);
-    if (index > -1) {
-      final leftTokens = tokens!.sublist(0, index);
-      final rightTokens = tokens!.sublist(index + 1);
-      final leftMostToken = leftTokens.lastWhereOrNull(
-        (element) => element.pos != "PUNCT",
-      );
-      final rightMostToken = rightTokens.firstWhereOrNull(
-        (element) => element.pos != "PUNCT",
-      );
-
-      if (leftMostToken != null && rightMostToken != null) {
-        final leftDistance = token.start - leftMostToken.end;
-        final rightDistance = rightMostToken.start - token.end;
-        return leftDistance < rightDistance ? leftMostToken : rightMostToken;
-      } else if (leftMostToken != null) {
-        return leftMostToken;
-      } else if (rightMostToken != null) {
-        return rightMostToken;
-      }
-    }
-    return null;
-  }
-
-  List<PangeaToken> get tokensToSave =>
-      tokens?.where((token) => token.lemma.saveVocab).toList() ?? [];
-
-  // List<ConstructIdentifier> get allTokenMorphsToConstructIdentifiers => tokens?.map((t) => t.morphConstructIds).toList() ??
-  //     [];
-
-  /// get allTokenMorphsToConstructIdentifiers
-  Set<MorphFeaturesEnum> get morphFeatureSetToPractice =>
-      MorphFeaturesEnum.values.where((feature) {
-        // pos is always included
-        if (feature == MorphFeaturesEnum.Pos) {
-          return true;
-        }
-        return tokens?.any((token) => token.morph.containsKey(feature)) ??
-            false;
-      }).toSet();
-
-  Set<PartOfSpeechEnum> posSetToPractice(ActivityTypeEnum a) =>
-      PartOfSpeechEnum.values.where((pos) {
-        // some pos are not eligible for practice at all
-        if (!pos.eligibleForPractice(a)) {
-          return false;
-        }
-        return tokens?.any(
-              (token) => token.pos.toLowerCase() == pos.name.toLowerCase(),
-            ) ??
-            false;
-      }).toSet();
-
-  List<String> tagsByFeature(MorphFeaturesEnum feature) {
-    return tokens
-            ?.where((t) => t.morph.containsKey(feature))
-            .map((t) => t.morph[feature])
-            .cast<String>()
-            .toList() ??
-        [];
-  }
-
-  List<OneConstructUse> vocabAndMorphUses() {
+  List<OneConstructUse> get vocabAndMorphUses {
     if (tokens == null || tokens!.isEmpty) {
       return [];
     }
@@ -354,5 +176,81 @@ class RepresentationEvent {
       metadata: metadata,
       choreo: choreo,
     );
+  }
+
+  /// Finds the closest non-punctuation token to the given token.
+  PangeaToken? getClosestNonPunctToken(PangeaToken token) {
+    // If it's not punctuation, it's already the closest.
+    if (token.pos != "PUNCT") return token;
+
+    final list = tokens;
+    if (list == null) return null;
+
+    final index = list.indexOf(token);
+    if (index == -1) return null;
+
+    PangeaToken? left;
+    PangeaToken? right;
+
+    // Scan left
+    for (int i = index - 1; i >= 0; i--) {
+      if (list[i].pos != "PUNCT") {
+        left = list[i];
+        break;
+      }
+    }
+
+    // Scan right
+    for (int i = index + 1; i < list.length; i++) {
+      if (list[i].pos != "PUNCT") {
+        right = list[i];
+        break;
+      }
+    }
+
+    if (left == null) return right;
+    if (right == null) return left;
+
+    // Choose the nearest by distance
+    final leftDistance = token.start - left.end;
+    final rightDistance = right.start - token.end;
+
+    return leftDistance < rightDistance ? left : right;
+  }
+
+  Future<Result<List<PangeaToken>>> requestTokens() async {
+    if (tokens != null) return Result.value(tokens!);
+    final res = await TokensRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      TokensRequestModel(
+        fullText: text,
+        langCode: langCode,
+        senderL1:
+            MatrixState.pangeaController.userController.userL1?.langCode ??
+                LanguageKeys.unknownLanguage,
+        senderL2:
+            MatrixState.pangeaController.userController.userL2?.langCode ??
+                LanguageKeys.unknownLanguage,
+      ),
+    );
+
+    if (_event != null) {
+      _event!.room.sendPangeaEvent(
+        content: PangeaMessageTokens(
+          tokens: res.result!.tokens,
+          detections: res.result!.detections,
+        ).toJson(),
+        parentEventId: _event!.eventId,
+        type: PangeaEventTypes.tokens,
+      );
+    }
+
+    return res.isError
+        ? Result.error(res.error!)
+        : Result.value(res.result!.tokens);
+  }
+
+  SttTranslationModel? getSpeechToTextTranslationLocal(String langCode) {
+    return sttTranslations.firstWhereOrNull((t) => t.langCode == langCode);
   }
 }

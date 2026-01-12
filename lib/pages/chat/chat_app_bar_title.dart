@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_button.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/sync_status_localization.dart';
@@ -30,23 +28,6 @@ class ChatAppBarTitle extends StatelessWidget {
     //     ),
     //   );
     // }
-    if (controller.room.showActivityChatUI) {
-      return Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          spacing: 4.0,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              controller.room.getLocalizedDisplayname(),
-              style: Theme.of(context).textTheme.titleLarge,
-              textAlign: TextAlign.center,
-            ),
-            ActivityStatsButton(controller: controller),
-          ],
-        ),
-      );
-    }
     // Pangea#
     return InkWell(
       hoverColor: Colors.transparent,
@@ -56,7 +37,14 @@ class ChatAppBarTitle extends StatelessWidget {
           ? null
           : () => FluffyThemes.isThreeColumnMode(context)
               ? controller.toggleDisplayChatDetailsColumn()
-              : context.go('/rooms/${room.id}/details'),
+              // #Pangea
+              // : context.go('/rooms/${room.id}/details'),
+              : NavigationUtil.goToSpaceRoute(
+                  room.id,
+                  ['details'],
+                  context,
+                ),
+      // Pangea#
       child: Row(
         children: [
           Hero(

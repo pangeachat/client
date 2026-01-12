@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:app_links/app_links.dart';
 import 'package:collection/collection.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:http/http.dart' as http;
@@ -19,10 +20,12 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/locale_provider.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
+import 'package:fluffychat/pangea/languages/locale_provider.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -71,6 +74,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   // #Pangea
   static late PangeaController pangeaController;
   static PangeaAnyState pAnyState = PangeaAnyState();
+  late StreamSubscription? _uriListener;
+
+  final Map<String, AnalyticsDataService> _analyticsServices = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -95,6 +101,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // Pangea#
     return widget.clients[_activeClient];
   }
+
+  // #Pangea
+  AnalyticsDataService get analyticsDataService {
+    if (_analyticsServices[client.clientName] == null) {
+      Logs().w(
+        'Tried to access AnalyticsDataService for client ${client.clientName}, but it does not exist.',
+      );
+      _analyticsServices[client.clientName] = AnalyticsDataService(client);
+    }
+    return _analyticsServices[client.clientName]!;
+  }
+  // Pangea#
 
   VoipPlugin? voipPlugin;
 
@@ -241,7 +259,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   String? get activeRoomId {
     final route = FluffyChatApp.router.routeInformationProvider.value.uri.path;
     if (!route.startsWith('/rooms/')) return null;
-    return route.split('/')[2];
+    // #Pangea
+    // return route.split('/')[2];
+    return FluffyChatApp.router.state.pathParameters['roomid'];
+    // Pangea#
   }
 
   final linuxNotifications =
@@ -267,21 +288,60 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         ),
       ),
     );
-    pangeaController = PangeaController(matrix: widget, matrixState: this);
+    pangeaController = PangeaController(matrixState: this);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
     });
+    _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
   }
 
   // #Pangea
+  bool _showingScreenSizeDialog = false;
+  double? _lastShownPopupHeight;
+  @override
+  void didChangeMetrics() {
+    _showScreenSizeDialog();
+    super.didChangeMetrics();
+  }
+
+  Future<void> _showScreenSizeDialog() async {
+    if (_showingScreenSizeDialog || !kIsWeb) {
+      return;
+    }
+
+    final height = MediaQuery.heightOf(context);
+    if (height > 500) {
+      _lastShownPopupHeight = null;
+      return;
+    }
+
+    if (_lastShownPopupHeight != null && height >= _lastShownPopupHeight!) {
+      return;
+    }
+
+    _showingScreenSizeDialog = true;
+    _lastShownPopupHeight = height;
+    await showOkAlertDialog(
+      context:
+          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
+              context,
+      title: L10n.of(context).screenSizeWarning,
+    );
+    _lastShownPopupHeight = MediaQuery.heightOf(context);
+    _showingScreenSizeDialog = false;
+  }
+
   StreamSubscription? _languageListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
     _languageListener?.cancel();
-    _languageListener = pangeaController.userController.languageStream.stream
-        .listen((_) => _setAppLanguage());
+    _languageListener =
+        pangeaController.userController.languageStream.stream.listen((update) {
+      _setAppLanguage();
+      analyticsDataService.updateService.onUpdateLanguages(update);
+    });
   }
 
   void _setAppLanguage() {
@@ -406,6 +466,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             c.onNotification.stream.listen(showLocalNotification);
       });
     }
+    // #Pangea
+    _analyticsServices[name] ??= AnalyticsDataService(c);
+    // Pangea#
   }
 
   void _cancelSubs(String name) {
@@ -420,6 +483,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
+    _analyticsServices[name]?.dispose();
+    _analyticsServices.remove(name);
     // Pangea#
   }
 
@@ -563,6 +628,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     linuxNotifications?.close();
     // #Pangea
     _languageListener?.cancel();
+    _uriListener?.cancel();
     // Pangea#
 
     super.dispose();
@@ -603,6 +669,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     final file = MatrixFile(bytes: exportBytes, name: exportFileName);
     file.save(context);
   }
+
+  // #Pangea
+  Future<void> _processIncomingUris(Uri? uri) async {
+    if (uri == null) return;
+    await SpaceCodeController.onOpenAppViaUrl(uri);
+  }
+  // Pangea#
 }
 
 class _AccountBundleWithClient {

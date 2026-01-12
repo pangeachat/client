@@ -7,14 +7,10 @@ class ModelKey {
   static const String userCreatedAt = 'created_at';
   static const String userPangeaUserId = 'pangea_user_id';
   static const String userDateOfBirth = 'date_of_birth';
-  static const String userTargetLanguage = 'target_language';
-  static const String userSourceLanguage = 'source_language';
   static const String userSpeaks = 'speaks';
   static const String userCountry = 'country';
   static const String hasJoinedHelpSpace = 'has_joined_help_space';
   static const String userInterests = 'interests';
-  static const String l2LanguageKey = 'target_language';
-  static const String l1LanguageKey = 'source_language';
   static const String publicProfile = 'public_profile';
   static const String userId = 'user_id';
   static const String toolSettings = 'tool_settings';
@@ -26,10 +22,8 @@ class ModelKey {
   static const String itAutoPlay = 'autoPlayIT';
 
   static const String clientClassCity = "city";
-  static const String clientClassCountry = "country";
   static const String clientClassDominantLanguage = "dominantLanguage";
   static const String clientClassTargetLanguage = "targetLanguage";
-  static const String clientClassDescription = "description";
   static const String clientLanguageLevel = "languageLevel";
   static const String clientSchool = "schoolName";
 
@@ -47,6 +41,7 @@ class ModelKey {
 
   static const String userL1 = "user_l1";
   static const String userL2 = "user_l2";
+  static const String userGender = "user_gender";
   static const String fullText = "full_text";
   static const String fullTextLang = "full_text_lang";
   static const String tokens = "tokens";
@@ -74,7 +69,6 @@ class ModelKey {
   static const String prevSender = "prev_sender";
   static const String prevTimestamp = "prev_timestamp";
 
-  static const String originalSent = "original_sent";
   static const String originalWritten = "original_written";
   static const String tokensSent = "tokens_sent";
   static const String tokensWritten = "tokens_written";
@@ -89,8 +83,8 @@ class ModelKey {
   static const String messageTags = "p.tag";
   static const String messageTagMorphEdit = "morph_edit";
   static const String messageTagLemmaEdit = "lemma_edit";
+  static const String tokenFeedbackEdit = "edit_word_info";
   static const String messageTagActivityPlan = "activity_plan";
-  static const String tempEventId = "temporary_event_id";
 
   static const String baseDefinition = "base_definition";
   static const String targetDefinition = "target_definition";
@@ -135,6 +129,7 @@ class ModelKey {
       "text_adventure_game_master_instructions";
 
   static const String targetLanguage = "target_language";
+  static const String sourceLanguage = "source_language";
   static const String targetVoice = "target_voice";
 
   static const String prevEventId = "prev_event_id";
@@ -159,7 +154,8 @@ class ModelKey {
   // activity plan
   static const String activityPlanRequest = "req";
   static const String activityPlanTitle = "title";
-  static const String activityPlanDescription = "description";
+  static const String description = "description";
+  static const String duration = "duration";
   static const String activityPlanLocation = "location";
   static const String activityPlanLearningObjective = "learning_objective";
   static const String activityPlanInstructions = "instructions";
@@ -167,17 +163,14 @@ class ModelKey {
   static const String activityPlanImageURL = "image_url";
   static const String activityId = "activity_id";
   static const String activityPlanEndAt = "end_at";
-  static const String activityPlanDuration = "duration";
   static const String activityPlanTopicId = "topic_id";
 
   static const String activityRequestTopic = "topic";
-  static const String activityRequestMode = "mode";
   static const String activityRequestObjective = "objective";
   static const String activityRequestMedia = "media";
   static const String activityRequestCefrLevel = "activity_cefr_level";
   static const String activityRequestLanguageOfInstructions =
       "language_of_instructions";
-  static const String activityRequestTargetLanguage = "target_language";
   static const String activityRequestCount = "count";
   static const String activityRequestNumberOfParticipants =
       "number_of_participants";

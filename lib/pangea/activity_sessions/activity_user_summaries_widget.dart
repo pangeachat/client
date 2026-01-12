@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -34,12 +35,34 @@ class ActivityUserSummaries extends StatelessWidget {
         spacing: 4.0,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            L10n.of(context).activityFinishedMessage,
-          ),
-          Text(
-            summary.summary,
-            textAlign: TextAlign.center,
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
+            child: Center(
+              child: Material(
+                color: Theme.of(context).colorScheme.surface.withAlpha(128),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 4.0,
+                  ),
+                  child: Column(
+                    spacing: 4.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        L10n.of(context).activityFinishedMessage,
+                      ),
+                      Text(
+                        summary.summary,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(
@@ -50,27 +73,6 @@ class ActivityUserSummaries extends StatelessWidget {
             summary: summary,
             controller: controller,
           ),
-          // Row(
-          //   mainAxisSize: MainAxisSize.min,
-          //   children: userSummaries.map((p) {
-          //     final user = room.getParticipants().firstWhereOrNull(
-          //           (u) => u.id == p.participantId,
-          //         );
-          //     final userRole = assignedRoles.values.firstWhere(
-          //       (role) => role.userId == p.participantId,
-          //     );
-          //     final userRoleInfo = availableRoles[userRole.id]!;
-          //     return ActivityParticipantIndicator(
-          //       availableRole: userRoleInfo,
-          //       assignedRole: userRole,
-          //       avatarUrl:
-          //           userRoleInfo.avatarUrl ?? user?.avatarUrl?.toString(),
-          //       borderRadius: BorderRadius.circular(4),
-          //       selected: controller.highlightedRole?.id == userRole.id,
-          //       onTap: () => controller.highlightRole(userRole),
-          //     );
-          //   }).toList(),
-          // ),
         ],
       ),
     );
@@ -85,6 +87,38 @@ class ButtonControlledCarouselView extends StatelessWidget {
     required this.summary,
     required this.controller,
   });
+
+  void _scrollToUser(
+    ActivityRoleModel role,
+    int index,
+    double cardWidth,
+  ) {
+    controller.activityController.highlightRole(role);
+
+    final scrollController = controller.activityController.carouselController;
+
+    if (!scrollController.hasClients) return;
+
+    const spacing = 5.0;
+    final itemExtent = cardWidth + spacing;
+
+    final viewportWidth = scrollController.position.viewportDimension;
+
+    final itemCenter = (index * itemExtent) + (cardWidth / 2);
+
+    final targetOffset = itemCenter - (viewportWidth / 2);
+
+    final clampedOffset = targetOffset.clamp(
+      scrollController.position.minScrollExtent,
+      scrollController.position.maxScrollExtent,
+    );
+
+    scrollController.animateTo(
+      clampedOffset,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOutCubic,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,15 +137,24 @@ class ButtonControlledCarouselView extends StatelessWidget {
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
+    if (userSummaries.isEmpty) {
+      return const SizedBox();
+    }
+
+    final cardWidth = isColumnMode ? 400.0 : 350.0;
+
     return Column(
       children: [
         SizedBox(
           height: 270.0,
-          child: ListView(
+          child: ListView.builder(
+            key: PageStorageKey('summaries-carousel-${room.id}'),
             shrinkWrap: true,
-            controller: controller.carouselController,
+            controller: controller.activityController.carouselController,
             scrollDirection: Axis.horizontal,
-            children: userSummaries.mapIndexed((i, p) {
+            itemCount: userSummaries.length,
+            itemBuilder: (context, i) {
+              final p = userSummaries[i];
               final user = room.getParticipants().firstWhereOrNull(
                     (u) => u.id == p.participantId,
                   );
@@ -119,13 +162,16 @@ class ButtonControlledCarouselView extends StatelessWidget {
                 (role) => role.userId == p.participantId,
               );
               return Container(
-                width: isColumnMode ? 400.0 : 350.0,
-                margin: const EdgeInsets.only(right: 5.0),
+                width: cardWidth,
+                margin: i == userSummaries.length - 1
+                    ? null
+                    : const EdgeInsets.only(right: 5.0),
                 padding: const EdgeInsets.all(12.0),
                 decoration: ShapeDecoration(
-                  color: Theme.of(context).brightness == Brightness.light
-                      ? AppConfig.yellowLight
-                      : Color.lerp(AppConfig.gold, Colors.black, 0.3),
+                  color: Color.alphaBlend(
+                    Theme.of(context).colorScheme.surface.withAlpha(70),
+                    AppConfig.gold,
+                  ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -148,7 +194,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                           child: Text(
                             "${userRole.role ?? L10n.of(context).participant} | ${user?.calcDisplayname() ?? p.participantId.localpart}",
                             style: const TextStyle(
-                              fontSize: 12.0,
+                              fontSize: 14.0,
                             ),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -158,8 +204,12 @@ class ButtonControlledCarouselView extends StatelessWidget {
                     Flexible(
                       child: SingleChildScrollView(
                         child: Text(
-                          p.feedback,
-                          style: const TextStyle(fontSize: 12.0),
+                          p.displayFeedback(
+                            user?.calcDisplayname() ??
+                                p.participantId.localpart ??
+                                p.participantId,
+                          ),
+                          style: const TextStyle(fontSize: 14.0),
                         ),
                       ),
                     ),
@@ -172,12 +222,11 @@ class ButtonControlledCarouselView extends StatelessWidget {
                             alignment: WrapAlignment.center,
                             spacing: 12,
                             runSpacing: 8,
-                            //crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
                                 p.cefrLevel,
                                 style: const TextStyle(
-                                  fontSize: 12.0,
+                                  fontSize: 14.0,
                                 ),
                               ),
                               //const SizedBox(width: 8),
@@ -206,10 +255,9 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                 ),
                               ],
                               if (p.superlatives.isNotEmpty) ...[
-                                //const SizedBox(width: 8),
                                 Text(
                                   p.superlatives.first,
-                                  style: const TextStyle(fontSize: 12.0),
+                                  style: const TextStyle(fontSize: 14.0),
                                 ),
                               ],
                             ],
@@ -220,32 +268,41 @@ class ButtonControlledCarouselView extends StatelessWidget {
                   ],
                 ),
               );
-            }).toList(),
+            },
           ),
         ),
         const SizedBox(height: 12),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: userSummaries.mapIndexed((i, p) {
-            final user = room.getParticipants().firstWhereOrNull(
-                  (u) => u.id == p.participantId,
-                );
-            final userRole = assignedRoles.values.firstWhere(
-              (role) => role.userId == p.participantId,
-            );
-            final userRoleInfo = availableRoles[userRole.id]!;
-            return ActivityParticipantIndicator(
-              name: userRoleInfo.name,
-              userId: p.participantId,
-              user: user,
-              borderRadius: BorderRadius.circular(4),
-              selected: controller.highlightedRole?.id == userRole.id,
-              onTap: () {
-                controller.highlightRole(userRole);
-                controller.carouselController.jumpTo(i * 250.0);
-              },
-            );
-          }).toList(),
+        SizedBox(
+          height: 125.0,
+          child: ValueListenableBuilder(
+            valueListenable: controller.activityController.highlightedRole,
+            builder: (context, highlightedRole, __) {
+              return ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: userSummaries.length,
+                itemBuilder: (context, index) {
+                  final p = userSummaries[index];
+                  final user = room.getParticipants().firstWhereOrNull(
+                        (u) => u.id == p.participantId,
+                      );
+                  final userRole = assignedRoles.values.firstWhere(
+                    (role) => role.userId == p.participantId,
+                  );
+                  final userRoleInfo = availableRoles[userRole.id]!;
+                  return ActivityParticipantIndicator(
+                    name: userRoleInfo.name,
+                    userId: p.participantId,
+                    user: user,
+                    borderRadius: BorderRadius.circular(4),
+                    selected: highlightedRole?.id == userRole.id,
+                    onTap: () => _scrollToUser(userRole, index, cardWidth),
+                    room: controller.room,
+                  );
+                },
+              );
+            },
+          ),
         ),
       ],
     );
@@ -270,7 +327,7 @@ class SuperlativeTile extends StatelessWidget {
         const Text(
           "1st",
           style: TextStyle(
-            fontSize: 12.0,
+            fontSize: 14.0,
           ),
         ),
       ],

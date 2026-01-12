@@ -7,9 +7,9 @@ import 'package:fluffychat/pangea/course_plans/course_media/course_media_respons
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents a course plan in the course planner response.
@@ -57,7 +57,7 @@ class CoursePlanModel {
     return CoursePlanModel(
       targetLanguage: json['target_language'] as String,
       languageOfInstructions: json['language_of_instructions'] as String,
-      cefrLevel: LanguageLevelTypeEnumExtension.fromString(json['cefr_level']),
+      cefrLevel: LanguageLevelTypeEnum.fromString(json['cefr_level']),
       title: json['title'] as String,
       description: json['description'] as String,
       uuid: json['uuid'] as String,
@@ -95,7 +95,7 @@ class CoursePlanModel {
   Map<String, CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
         TranslateTopicRequest(
           topicIds: topicIds,
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       ).topics;
 
@@ -106,7 +106,7 @@ class CoursePlanModel {
     final resp = await CourseTopicRepo.get(
       TranslateTopicRequest(
         topicIds: topicIds,
-        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       ),
       uuid,
     );
@@ -131,5 +131,5 @@ class CoursePlanModel {
       ? loadedTopics.values
           .lastWhereOrNull((topic) => topic.imageUrl != null)
           ?.imageUrl
-      : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first}";
+      : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first.url}";
 }

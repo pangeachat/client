@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -101,6 +102,10 @@ class EditCourseController extends State<EditCourse> {
           ),
         ),
       );
+    }
+
+    if (!resp.isError) {
+      Navigator.of(context).pop();
     }
   }
 
@@ -204,12 +209,13 @@ class EditCourseController extends State<EditCourse> {
                                                 width: 200.0,
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
-                                                replacement: Container(
-                                                  width: 200.0,
-                                                  height: 200.0,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .surfaceContainerHighest,
+                                                replacement: Avatar(
+                                                  name: _room?.name,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                    0.0,
+                                                  ),
+                                                  size: 200.0,
                                                 ),
                                               ),
                                       ),

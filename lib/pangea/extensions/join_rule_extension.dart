@@ -2,7 +2,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/spaces/utils/space_code.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_extension.dart';
 
 extension JoinRuleExtension on Client {
   Future<StateEvent> pangeaJoinRules(
@@ -11,7 +11,7 @@ extension JoinRuleExtension on Client {
   }) async {
     String? joinCode;
     try {
-      joinCode = await SpaceCodeUtil.generateSpaceCode(this);
+      joinCode = await requestSpaceCode();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -42,7 +42,7 @@ extension JoinRuleExtensionOnRoom on Room {
     final currentJoinRules = getState(EventTypes.RoomJoinRules)?.content ?? {};
     if (currentJoinRules[ModelKey.accessCode] != null) return;
 
-    final joinCode = await SpaceCodeUtil.generateSpaceCode(client);
+    final joinCode = await client.requestSpaceCode();
     currentJoinRules[ModelKey.accessCode] = joinCode;
 
     await client.setRoomStateWithKey(

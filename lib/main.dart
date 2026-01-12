@@ -13,8 +13,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/locale_provider.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'config/setting_keys.dart';
@@ -42,7 +42,12 @@ void main() async {
   /// Then where ever you need language functions simply call PangeaLanguage pangeaLanguage = PangeaLanguage()
   /// pangeaLanguage.getList or whatever function you need
   ///
-  await GetStorage.init();
+  final List<Future> initFutures = [
+    GetStorage.init(),
+    GetStorage.init("subscription_storage"),
+    GetStorage.init('class_storage'),
+  ];
+  await Future.wait(initFutures);
   // Pangea#
 
   // Our background push shared isolate accesses flutter-internal things very early in the startup proccess

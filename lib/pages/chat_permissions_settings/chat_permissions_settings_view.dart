@@ -83,6 +83,13 @@ class ChatPermissionsSettingsView extends StatelessWidget {
             eventsPowerLevels.removeWhere(
               (key, value) => excludedEvents.contains(key),
             );
+
+            final spaceEvents = ['ban', 'invite', 'kick', 'user_default'];
+            if (room.isSpace) {
+              powerLevels.removeWhere(
+                (key, value) => !spaceEvents.contains(key),
+              );
+            }
             // Pangea#
             return Column(
               children: [
@@ -123,44 +130,50 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                         room: room,
                         // Pangea#
                       ),
-                    Divider(color: theme.dividerColor),
-                    ListTile(
-                      title: Text(
-                        L10n.of(context).notifications,
-                        style: TextStyle(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.bold,
+                    // #Pangea
+                    if (!room.isSpace) ...[
+                      // Pangea#
+                      Divider(color: theme.dividerColor),
+                      ListTile(
+                        title: Text(
+                          L10n.of(context).notifications,
+                          style: TextStyle(
+                            color: theme.colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    Builder(
-                      builder: (context) {
-                        const key = 'rooms';
-                        final value = powerLevelsContent
-                                .containsKey('notifications')
-                            ? powerLevelsContent
-                                    .tryGetMap<String, Object?>('notifications')
-                                    ?.tryGet<int>('rooms') ??
-                                0
-                            : 0;
-                        return PermissionsListTile(
-                          permissionKey: key,
-                          permission: value,
-                          category: 'notifications',
-                          canEdit: room.canChangePowerLevel,
-                          onChanged: (level) => controller.editPowerLevel(
-                            context,
-                            key,
-                            value,
-                            newLevel: level,
+                      Builder(
+                        builder: (context) {
+                          const key = 'rooms';
+                          final value =
+                              powerLevelsContent.containsKey('notifications')
+                                  ? powerLevelsContent
+                                          .tryGetMap<String, Object?>(
+                                            'notifications',
+                                          )
+                                          ?.tryGet<int>('rooms') ??
+                                      0
+                                  : 0;
+                          return PermissionsListTile(
+                            permissionKey: key,
+                            permission: value,
                             category: 'notifications',
-                          ),
-                          // #Pangea
-                          room: room,
-                          // Pangea#
-                        );
-                      },
-                    ),
+                            canEdit: room.canChangePowerLevel,
+                            onChanged: (level) => controller.editPowerLevel(
+                              context,
+                              key,
+                              value,
+                              newLevel: level,
+                              category: 'notifications',
+                            ),
+                            // #Pangea
+                            room: room,
+                            // Pangea#
+                          );
+                        },
+                      ),
+                    ],
                     Divider(color: theme.dividerColor),
                     ListTile(
                       title: Text(

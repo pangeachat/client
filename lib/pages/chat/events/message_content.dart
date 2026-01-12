@@ -10,9 +10,8 @@ import 'package:fluffychat/pages/chat/events/video_player.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/layout/reading_assistance_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import '../../../config/app_config.dart';
 import '../../../utils/platform_infos.dart';
@@ -135,16 +134,6 @@ class MessageContent extends StatelessWidget {
     if (overlayController != null) {
       overlayController?.onClickOverlayMessageToken(token);
       return;
-    } else {
-      Future.delayed(
-          const Duration(
-            milliseconds: AppConfig.overlayAnimationDuration,
-          ), () {
-        TtsController.tryToSpeak(
-          token.text.content,
-          langCode: pangeaMessageEvent!.messageDisplayLangCode,
-        );
-      });
     }
 
     controller.showToolbar(
@@ -214,12 +203,12 @@ class MessageContent extends StatelessWidget {
                 linkColor: linkColor,
                 fontSize: fontSize,
                 // #Pangea
-                chatController: controller,
                 eventId:
                     "${event.eventId}${overlayController != null ? '_overlay' : ''}",
                 roomId: event.room.id,
                 senderId: event.senderId,
                 autoplay: overlayController != null && isTransitionAnimation,
+                enableClicks: overlayController != null,
                 // Pangea#
               );
             }

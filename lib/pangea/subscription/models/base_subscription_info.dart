@@ -1,10 +1,9 @@
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_repo.dart';
 import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 /// Contains information about the users's current subscription
 class CurrentSubscriptionInfo {
@@ -12,6 +11,7 @@ class CurrentSubscriptionInfo {
   final AvailableSubscriptionsInfo availableSubscriptionInfo;
 
   DateTime? expirationDate;
+  DateTime? unsubscribeDetectedAt;
   String? currentSubscriptionId;
 
   CurrentSubscriptionInfo({
@@ -60,6 +60,9 @@ class CurrentSubscriptionInfo {
       (currentSubscription?.appId ==
           availableSubscriptionInfo.appIds?.currentAppId);
 
+  DateTime? get subscriptionEndDate =>
+      unsubscribeDetectedAt == null ? null : expirationDate;
+
   void resetSubscription() => currentSubscriptionId = null;
   Future<void> setCurrentSubscription() async {}
 }
@@ -78,13 +81,16 @@ class AvailableSubscriptionsInfo {
   });
 
   Future<void> setAvailableSubscriptions() async {
-    final cachedInfo = await MatrixState.pangeaController.subscriptionController
-        .getCachedSubscriptionInfo();
+    final cachedInfo =
+        SubscriptionManagementRepo.getAvailableSubscriptionsInfo();
+
     appIds ??= cachedInfo?.appIds ?? await SubscriptionRepo.getAppIds();
     allProducts ??=
         cachedInfo?.allProducts ?? await SubscriptionRepo.getAllProducts();
 
-    if (cachedInfo == null) await _cacheSubscriptionInfo();
+    if (cachedInfo == null) {
+      await SubscriptionManagementRepo.setAvailableSubscriptionsInfo(this);
+    }
 
     availableSubscriptions = (allProducts ?? [])
         .where(
@@ -93,22 +99,6 @@ class AvailableSubscriptionsInfo {
         )
         .sorted((a, b) => a.price.compareTo(b.price))
         .toList();
-  }
-
-  Future<void> _cacheSubscriptionInfo() async {
-    try {
-      MatrixState.pangeaController.subscriptionController
-          .setCachedSubscriptionInfo(this);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "appIds": appIds,
-          "allProducts": allProducts,
-        },
-      );
-    }
   }
 
   factory AvailableSubscriptionsInfo.fromJson(Map<String, dynamic> json) {

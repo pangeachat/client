@@ -30,12 +30,9 @@ class PracticeTarget {
   /// this is only defined for morphId activities
   final MorphFeaturesEnum? morphFeature;
 
-  final String userL2;
-
   PracticeTarget({
     required this.tokens,
     required this.activityType,
-    required this.userL2,
     this.morphFeature,
   }) {
     if (ActivityTypeEnum.morphId == activityType && morphFeature == null) {
@@ -50,16 +47,12 @@ class PracticeTarget {
     return other is PracticeTarget &&
         listEquals(other.tokens, tokens) &&
         other.activityType == activityType &&
-        other.morphFeature == morphFeature &&
-        other.userL2 == userL2;
+        other.morphFeature == morphFeature;
   }
 
   @override
   int get hashCode =>
-      tokens.hashCode ^
-      activityType.hashCode ^
-      morphFeature.hashCode ^
-      userL2.hashCode;
+      tokens.hashCode ^ activityType.hashCode ^ morphFeature.hashCode;
 
   static PracticeTarget fromJson(Map<String, dynamic> json) {
     final type = ActivityTypeEnum.values.firstWhereOrNull(
@@ -78,7 +71,6 @@ class PracticeTarget {
       morphFeature: json['morphFeature'] == null
           ? null
           : MorphFeaturesEnumExtension.fromString(json['morphFeature']),
-      userL2: json['userL2'],
     );
   }
 
@@ -87,7 +79,6 @@ class PracticeTarget {
       'tokens': tokens.map((e) => e.toJson()).toList(),
       'activityType': activityType.name,
       'morphFeature': morphFeature?.name,
-      'userL2': userL2,
     };
   }
 
@@ -161,5 +152,16 @@ class PracticeTarget {
       }
     }
     return null;
+  }
+
+  bool get hasAnyResponses => record.responses.isNotEmpty;
+
+  bool get hasAnyCorrectChoices {
+    for (final response in record.responses) {
+      if (response.isCorrect) {
+        return true;
+      }
+    }
+    return false;
   }
 }

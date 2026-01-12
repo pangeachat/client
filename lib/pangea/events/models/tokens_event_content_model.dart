@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:fluffychat/pangea/choreographer/models/language_detection_model.dart';
+import 'package:fluffychat/pangea/events/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 
 /// this class lives within a [PangeaTokensEvent]
@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 /// representation
 class PangeaMessageTokens {
   List<PangeaToken> tokens;
-  List<LanguageDetection>? detections;
+  List<LanguageDetectionModel>? detections;
 
   PangeaMessageTokens({
     required this.tokens,
@@ -38,9 +38,9 @@ class PangeaMessageTokens {
           .toList()
           .cast<PangeaToken>(),
       detections: detectionsIterable
-          ?.map((e) => LanguageDetection.fromJson(e))
+          ?.map((e) => LanguageDetectionModel.fromJson(e))
           .toList()
-          .cast<LanguageDetection>(),
+          .cast<LanguageDetectionModel>(),
     );
   }
 

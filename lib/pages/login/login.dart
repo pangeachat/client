@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/authentication/p_login.dart';
 import 'package:fluffychat/pangea/login/pages/login_options_view.dart';
 import 'package:fluffychat/pangea/login/pages/pangea_login_view.dart';
-import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
-import 'package:fluffychat/pangea/user/utils/p_login.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -43,10 +42,7 @@ class LoginController extends State<Login> {
 
   // #Pangea
   bool loadingSignIn = false;
-  bool loadingAppleSSO = false;
-  bool loadingGoogleSSO = false;
 
-  final PangeaController pangeaController = MatrixState.pangeaController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Client? client;
@@ -61,7 +57,7 @@ class LoginController extends State<Login> {
     // TODO: implement initState
     super.initState();
     loadingSignIn = true;
-    pangeaController.checkHomeServerAction().then((client) {
+    checkHomeServerAction().then((client) {
       if (mounted) {
         setState(() {
           loadingSignIn = false;
@@ -96,17 +92,6 @@ class LoginController extends State<Login> {
     if (mounted) {
       setState(() => loadingSignIn = loading);
     }
-  }
-
-  void setLoadingSSO(bool loading, SSOProvider provider) {
-    if (provider == SSOProvider.apple) {
-      loadingAppleSSO = loading;
-      loadingGoogleSSO = false;
-    } else if (provider == SSOProvider.google) {
-      loadingGoogleSSO = loading;
-      loadingAppleSSO = false;
-    }
-    if (mounted) setState(() {});
   }
 
   void login() async => pLoginAction(controller: this, context: context);
@@ -234,6 +219,30 @@ class LoginController extends State<Login> {
   //     if (mounted) setState(() {});
   //   }
   // }
+
+  Future<Client> checkHomeServerAction() async {
+    final client = await Matrix.of(context).getLoginClient();
+    if (client.homeserver != null) {
+      await Future.delayed(Duration.zero);
+      return client;
+    }
+
+    final String homeServer =
+        AppConfig.defaultHomeserver.trim().toLowerCase().replaceAll(' ', '-');
+    var homeserver = Uri.parse(homeServer);
+    if (homeserver.scheme.isEmpty) {
+      homeserver = Uri.https(homeServer, '');
+    }
+
+    try {
+      await client.register();
+      Matrix.of(context).loginRegistrationSupported = true;
+    } on MatrixException catch (e) {
+      Matrix.of(context).loginRegistrationSupported =
+          e.requireAdditionalAuthentication;
+    }
+    return client;
+  }
   // Pangea#
 
   void passwordForgotten() async {

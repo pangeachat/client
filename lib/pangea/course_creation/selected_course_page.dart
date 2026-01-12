@@ -12,7 +12,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart'
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/spaces/utils/client_spaces_extension.dart';
+import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum SelectedCourseMode { launch, addToSpace, join }
@@ -143,7 +143,7 @@ class SelectedCourseController extends State<SelectedCourse>
     }
 
     if (!mounted) return;
-    context.push("/rooms/spaces/${space.id}/details?tab=course");
+    context.go("/rooms/spaces/${space.id}/details?tab=course");
   }
 
   Future<void> joinCourse() async {

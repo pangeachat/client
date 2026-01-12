@@ -1,62 +1,25 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/practice_activities/relevant_span_display_details.dart';
 
 class MultipleChoiceActivity {
-  final String question;
-
   /// choices, including the correct answer
-  final List<String> choices;
-  final List<String> answers;
-  final RelevantSpanDisplayDetails? spanDisplayDetails;
+  final Set<String> choices;
+  final Set<String> answers;
 
   MultipleChoiceActivity({
-    required this.question,
     required this.choices,
     required this.answers,
-    required this.spanDisplayDetails,
   });
 
-  /// we've had some bugs where the index is not expected
-  /// so we're going to check if the index or the value is correct
-  /// and if not, we'll investigate
-  bool isCorrect(String value, int index) {
-    if (value != choices[index]) {
-      debugger(when: kDebugMode);
-    }
-    return answers.contains(value) || correctAnswerIndices.contains(index);
-  }
+  Color choiceColor(String value) =>
+      answers.contains(value) ? AppConfig.success : AppConfig.warning;
 
-  bool get isValidQuestion => choices.toSet().containsAll(answers);
-
-  List<int> get correctAnswerIndices {
-    final List<int> indices = [];
-    for (var i = 0; i < choices.length; i++) {
-      if (answers.contains(choices[i])) {
-        indices.add(i);
-      }
-    }
-    return indices;
-  }
-
-  int choiceIndex(String choice) => choices.indexOf(choice);
-
-  Color choiceColor(int index) => correctAnswerIndices.contains(index)
-      ? AppConfig.success
-      : AppConfig.warning;
+  bool isCorrect(String value) => answers.contains(value);
 
   factory MultipleChoiceActivity.fromJson(Map<String, dynamic> json) {
-    final spanDisplay = json['span_display_details'] != null &&
-            json['span_display_details'] is Map
-        ? RelevantSpanDisplayDetails.fromJson(json['span_display_details'])
-        : null;
-
     final answerEntry = json['answer'] ?? json['correct_answer'] ?? "";
     List<String> answers = [];
     if (answerEntry is String) {
@@ -66,19 +29,15 @@ class MultipleChoiceActivity {
     }
 
     return MultipleChoiceActivity(
-      question: json['question'] as String,
-      choices: (json['choices'] as List).map((e) => e as String).toList(),
-      answers: answers,
-      spanDisplayDetails: spanDisplay,
+      choices: (json['choices'] as List).map((e) => e as String).toSet(),
+      answers: answers.toSet(),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'question': question,
-      'choices': choices,
-      'answer': answers,
-      'span_display_details': spanDisplayDetails?.toJson(),
+      'choices': List.from(choices),
+      'answer': List.from(answers),
     };
   }
 
@@ -88,13 +47,12 @@ class MultipleChoiceActivity {
     if (identical(this, other)) return true;
 
     return other is MultipleChoiceActivity &&
-        other.question == question &&
         other.choices == choices &&
         const ListEquality().equals(other.answers.sorted(), answers.sorted());
   }
 
   @override
   int get hashCode {
-    return question.hashCode ^ choices.hashCode ^ Object.hashAll(answers);
+    return choices.hashCode ^ Object.hashAll(answers);
   }
 }

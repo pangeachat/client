@@ -1,5 +1,5 @@
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_arc_model.dart';
 
 enum PhoneticTranscriptionDelimEnum { sp, noSp }
 
@@ -102,14 +102,12 @@ class PhoneticTranscriptionResponse {
   final Map<String, dynamic>
       tokenization; // You can define a typesafe model if needed
   final PhoneticTranscription phoneticTranscriptionResult;
-  DateTime? expireAt;
 
   PhoneticTranscriptionResponse({
     required this.arc,
     required this.content,
     required this.tokenization,
     required this.phoneticTranscriptionResult,
-    this.expireAt,
   });
 
   factory PhoneticTranscriptionResponse.fromJson(Map<String, dynamic> json) {
@@ -121,9 +119,6 @@ class PhoneticTranscriptionResponse {
       phoneticTranscriptionResult: PhoneticTranscription.fromJson(
         json['phonetic_transcription_result'] as Map<String, dynamic>,
       ),
-      expireAt: json['expireAt'] == null
-          ? null
-          : DateTime.parse(json['expireAt'] as String),
     );
   }
 
@@ -133,7 +128,6 @@ class PhoneticTranscriptionResponse {
       'content': content.toJson(),
       'tokenization': tokenization,
       'phonetic_transcription_result': phoneticTranscriptionResult.toJson(),
-      'expireAt': expireAt?.toIso8601String(),
     };
   }
 

@@ -6,7 +6,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class LanguageLevelDropdown extends StatelessWidget {
   final LanguageLevelTypeEnum? initialLevel;
@@ -84,6 +84,7 @@ class LanguageLevelDropdown extends StatelessWidget {
           : null,
       value: initialLevel,
       validator: validator,
+      enableFeedback: enabled,
     );
   }
 }

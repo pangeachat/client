@@ -151,6 +151,28 @@ class OneConstructUse {
         'xp': xp,
       };
 
+  OneConstructUse copyWith({
+    String? lemma,
+    String? form,
+    String? category,
+    ConstructTypeEnum? constructType,
+    ConstructUseTypeEnum? useType,
+    String? id,
+    ConstructUseMetaData? metadata,
+    int? xp,
+  }) {
+    return OneConstructUse(
+      lemma: lemma ?? this.lemma,
+      form: form ?? this.form,
+      category: category ?? this.category,
+      constructType: constructType ?? this.constructType,
+      useType: useType ?? this.useType,
+      id: id ?? this.id,
+      metadata: metadata ?? this.metadata,
+      xp: xp ?? this.xp,
+    );
+  }
+
   String get category {
     if (_category.isEmpty) return "other";
     return _category.toLowerCase();

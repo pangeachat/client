@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:app_links/app_links.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +20,9 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/chat_settings/widgets/chat_context_menu_action.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -105,7 +107,9 @@ class ChatListController extends State<ChatList>
 
   StreamSubscription? _intentFileStreamSubscription;
 
-  StreamSubscription? _intentUriStreamSubscription;
+  // #Pangea
+  // StreamSubscription? _intentUriStreamSubscription;
+  // Pangea#
 
   ActiveFilter activeFilter = AppConfig.separateChatTypes
       ? ActiveFilter.messages
@@ -247,7 +251,10 @@ class ChatListController extends State<ChatList>
       return;
     }
 
-    context.go('/rooms/${room.id}');
+    // #Pangea
+    // context.go('/rooms/${room.id}');
+    NavigationUtil.goToSpaceRoute(room.id, [], context);
+    // Pangea#
   }
 
   bool Function(Room) getRoomFilterByActiveFilter(ActiveFilter activeFilter) {
@@ -255,36 +262,24 @@ class ChatListController extends State<ChatList>
       case ActiveFilter.allChats:
         // #Pangea
         // return (room) => true;
-        return (room) =>
-            !room.isHiddenRoom &&
-            !room.isSpace &&
-            room.firstSpaceParent == null;
+        return (room) => !room.isHiddenRoom && !room.isSpace;
       // Pangea#
       case ActiveFilter.messages:
         // #Pangea
         // return (room) => !room.isSpace && room.isDirectChat;
         return (room) =>
-            !room.isSpace &&
-            room.isDirectChat &&
-            !room.isHiddenRoom &&
-            room.firstSpaceParent == null;
+            !room.isSpace && room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.groups:
         // #Pangea
         // return (room) => !room.isSpace && !room.isDirectChat;
         return (room) =>
-            !room.isSpace &&
-            !room.isDirectChat &&
-            !room.isHiddenRoom &&
-            room.firstSpaceParent == null;
+            !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.unread:
         // #Pangea
         // return (room) => room.isUnreadOrInvited;
-        return (room) =>
-            room.isUnreadOrInvited &&
-            !room.isHiddenRoom &&
-            room.firstSpaceParent == null;
+        return (room) => room.isUnreadOrInvited && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.spaces:
         return (room) => room.isSpace;
@@ -463,6 +458,9 @@ class ChatListController extends State<ChatList>
 
   void _processIncomingSharedMedia(List<SharedMediaFile> files) {
     if (files.isEmpty) return;
+    // #Pangea
+    if (files.every((f) => f.type == SharedMediaType.url)) return;
+    // Pangea#
 
     showScaffoldDialog(
       context: context,
@@ -487,13 +485,15 @@ class ChatListController extends State<ChatList>
     );
   }
 
-  void _processIncomingUris(Uri? uri) async {
-    if (uri == null) return;
-    context.go('/rooms');
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      UrlLauncher(context, uri.toString()).openMatrixToUrl();
-    });
-  }
+  // #Pangea
+  // void _processIncomingUris(Uri? uri) async {
+  //   if (uri == null) return;
+  //   context.go('/rooms');
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     UrlLauncher(context, uri.toString()).openMatrixToUrl();
+  //   });
+  // }
+  // Pangea#
 
   void _initReceiveSharingIntent() {
     if (!PlatformInfos.isMobile) return;
@@ -508,9 +508,11 @@ class ChatListController extends State<ChatList>
         .getInitialMedia()
         .then(_processIncomingSharedMedia);
 
-    // For receiving shared Uris
-    _intentUriStreamSubscription =
-        AppLinks().uriLinkStream.listen(_processIncomingUris);
+    // #Pangea
+    // // For receiving shared Uris
+    // _intentUriStreamSubscription =
+    //     AppLinks().uriLinkStream.listen(_processIncomingUris);
+    // Pangea#
 
     if (PlatformInfos.isAndroid) {
       final shortcuts = FlutterShortcuts();
@@ -525,7 +527,6 @@ class ChatListController extends State<ChatList>
 
   //#Pangea
   StreamSubscription? _invitedSpaceSubscription;
-  StreamSubscription? _subscriptionStatusStream;
   StreamSubscription? _roomCapacitySubscription;
   //Pangea#
 
@@ -556,8 +557,10 @@ class ChatListController extends State<ChatList>
     _checkTorBrowser();
 
     //#Pangea
-    _invitedSpaceSubscription = MatrixState
-        .pangeaController.matrixState.client.onSync.stream
+    _invitedSpaceSubscription = Matrix.of(context)
+        .client
+        .onSync
+        .stream
         .where((event) => event.rooms?.invite != null)
         .listen((event) async {
       for (final inviteEntry in event.rooms!.invite!.entries) {
@@ -575,15 +578,12 @@ class ChatListController extends State<ChatList>
 
         if (isSpace) {
           final spaceId = inviteEntry.key;
-          final space =
-              MatrixState.pangeaController.matrixState.client.getRoomById(
-            spaceId,
-          );
+          final space = Matrix.of(context).client.getRoomById(
+                spaceId,
+              );
 
-          final String? justInputtedCode =
-              MatrixState.pangeaController.spaceCodeController.justInputtedCode;
-          final newSpaceCode = space?.classCode;
-          if (newSpaceCode?.toLowerCase() == justInputtedCode?.toLowerCase()) {
+          if (space?.classCode?.toLowerCase() ==
+              SpaceCodeRepo.recentCode?.toLowerCase()) {
             return;
           }
 
@@ -596,8 +596,8 @@ class ChatListController extends State<ChatList>
         }
 
         if (isAnalytics) {
-          final analyticsRoom = MatrixState.pangeaController.matrixState.client
-              .getRoomById(inviteEntry.key);
+          final analyticsRoom =
+              Matrix.of(context).client.getRoomById(inviteEntry.key);
           try {
             await analyticsRoom?.join();
           } catch (err, s) {
@@ -613,18 +613,13 @@ class ChatListController extends State<ChatList>
       }
     });
 
-    _subscriptionStatusStream ??= MatrixState
-        .pangeaController.subscriptionController.subscriptionStream.stream
-        .listen((event) {
-      if (mounted) {
-        showSubscribedSnackbar(context);
-      }
-    });
+    MatrixState.pangeaController.subscriptionController.subscriptionNotifier
+        .addListener(_onSubscribe);
 
     // listen for space child updates for any space that is not the active space
     // so that when the user navigates to the space that was updated, it will
     // reload any rooms that have been added / removed
-    final client = MatrixState.pangeaController.matrixState.client;
+    final client = Matrix.of(context).client;
 
     // listen for room join events and leave room if over capacity
     _roomCapacitySubscription ??= client.onSync.stream
@@ -656,7 +651,7 @@ class ChatListController extends State<ChatList>
           future: () async {
             await room.leave();
             if (GoRouterState.of(context).uri.toString().contains(roomID)) {
-              context.go("/rooms");
+              NavigationUtil.goToSpaceRoute(null, [], context);
             }
             throw L10n.of(context).roomFull;
           },
@@ -673,6 +668,10 @@ class ChatListController extends State<ChatList>
   }
 
   // #Pangea
+  void _onSubscribe() {
+    if (mounted) showSubscribedSnackbar(context);
+  }
+
   Future<void> _joinInvitedSpaces() async {
     final invitedSpaces = Matrix.of(context).client.rooms.where(
           (r) => r.isSpace && r.membership == Membership.invite,
@@ -688,11 +687,13 @@ class ChatListController extends State<ChatList>
   void dispose() {
     _intentDataStreamSubscription?.cancel();
     _intentFileStreamSubscription?.cancel();
-    _intentUriStreamSubscription?.cancel();
     //#Pangea
+    // _intentUriStreamSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
-    _subscriptionStatusStream?.cancel();
     _roomCapacitySubscription?.cancel();
+    MatrixState.pangeaController.subscriptionController.subscriptionNotifier
+        .removeListener(_onSubscribe);
+    SpaceCodeController.codeNotifier.removeListener(_onCacheSpaceCode);
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -1103,9 +1104,14 @@ class ChatListController extends State<ChatList>
   void _initPangeaControllers(Client client) {
     MatrixState.pangeaController.initControllers();
     if (mounted) {
-      MatrixState.pangeaController.spaceCodeController
-          .joinCachedSpaceCode(context);
+      SpaceCodeController.joinCachedSpaceCode(context);
+      SpaceCodeController.codeNotifier.addListener(_onCacheSpaceCode);
     }
+  }
+
+  void _onCacheSpaceCode() {
+    if (!mounted) return;
+    SpaceCodeController.joinCachedSpaceCode(context);
   }
   // Pangea#
 

@@ -151,7 +151,7 @@ class CoursePlansRepo {
     return search(
       GetLocalizedCoursesRequest(
         coursePlanIds: result.docs,
-        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       ),
     );
   }

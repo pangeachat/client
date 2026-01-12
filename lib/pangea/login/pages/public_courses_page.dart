@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -13,8 +12,8 @@ import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -45,7 +44,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
   void initState() {
     super.initState();
 
-    final target = MatrixState.pangeaController.languageController.userL2;
+    final target = MatrixState.pangeaController.userController.userL2;
     if (target != null) {
       setTargetLanguageFilter(target);
     }
@@ -121,7 +120,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
         GetLocalizedCoursesRequest(
           coursePlanIds:
               discoveredCourses.map((c) => c.courseId).toSet().toList(),
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
       final searchResult = resp.coursePlans;
@@ -151,21 +150,14 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          spacing: 10.0,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(
-              Symbols.map_search,
-            ),
-            Text(L10n.of(context).joinPublicCourse),
-          ],
+        title: Text(
+          L10n.of(context).joinPublicCourse,
         ),
       ),
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(20.0),
             constraints: const BoxConstraints(
               maxWidth: 450,
             ),
@@ -257,90 +249,92 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
                             roomChunk.canonicalAlias ??
                             L10n.of(context).emptyChat;
 
-                        return InkWell(
-                          onTap: () => context.go(
-                            '/${widget.route}/course/public/$courseId',
-                            extra: roomChunk,
-                          ),
-                          borderRadius: BorderRadius.circular(12.0),
-                          child: Container(
-                            padding: const EdgeInsets.all(12.0),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              border: Border.all(
-                                color: theme.colorScheme.primary,
-                              ),
+                        return Material(
+                          type: MaterialType.transparency,
+                          child: InkWell(
+                            onTap: () => context.go(
+                              '/${widget.route}/course/public/$courseId',
+                              extra: roomChunk,
                             ),
-                            child: Column(
-                              spacing: 4.0,
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  spacing: 8.0,
-                                  children: [
-                                    ImageByUrl(
-                                      imageUrl: roomChunk.avatarUrl?.toString(),
-                                      width: 58.0,
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      replacement: Container(
-                                        height: 58.0,
+                            borderRadius: BorderRadius.circular(12.0),
+                            child: Container(
+                              padding: const EdgeInsets.all(12.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12.0),
+                                border: Border.all(
+                                  color: theme.colorScheme.primary,
+                                ),
+                              ),
+                              child: Column(
+                                spacing: 4.0,
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    spacing: 8.0,
+                                    children: [
+                                      ImageByUrl(
+                                        imageUrl:
+                                            roomChunk.avatarUrl?.toString(),
                                         width: 58.0,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          color: theme
-                                              .colorScheme.surfaceContainer,
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                        replacement: Avatar(
+                                          name: displayname,
+                                          borderRadius: BorderRadius.circular(
+                                            10.0,
+                                          ),
+                                          size: 58.0,
                                         ),
                                       ),
-                                    ),
-                                    Flexible(
-                                      child: Column(
-                                        spacing: 0.0,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            displayname,
-                                            style: theme.textTheme.bodyLarge,
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          Row(
-                                            spacing: 4.0,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              const Icon(
-                                                Icons.group,
-                                                size: 16.0,
-                                              ),
-                                              Text(
-                                                L10n.of(context)
-                                                    .countParticipants(
-                                                  roomChunk.numJoinedMembers,
+                                      Flexible(
+                                        child: Column(
+                                          spacing: 0.0,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              displayname,
+                                              style: theme.textTheme.bodyLarge,
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            Row(
+                                              spacing: 4.0,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                const Icon(
+                                                  Icons.group,
+                                                  size: 16.0,
                                                 ),
-                                                style:
-                                                    theme.textTheme.bodyMedium,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                                Text(
+                                                  L10n.of(context)
+                                                      .countParticipants(
+                                                    roomChunk.numJoinedMembers,
+                                                  ),
+                                                  style: theme
+                                                      .textTheme.bodyMedium,
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
+                                    ],
+                                  ),
+                                  if (course != null) ...[
+                                    CourseInfoChips(
+                                      courseId,
+                                      iconSize: 12.0,
+                                      fontSize: 12.0,
+                                    ),
+                                    Text(
+                                      course.description,
+                                      style: theme.textTheme.bodyMedium,
                                     ),
                                   ],
-                                ),
-                                if (course != null) ...[
-                                  CourseInfoChips(
-                                    courseId,
-                                    iconSize: 12.0,
-                                    fontSize: 12.0,
-                                  ),
-                                  Text(
-                                    course.description,
-                                    style: theme.textTheme.bodyMedium,
-                                  ),
                                 ],
-                              ],
+                              ),
                             ),
                           ),
                         );

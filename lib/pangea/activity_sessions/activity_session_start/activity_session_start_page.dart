@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
@@ -19,6 +20,7 @@ import 'package:fluffychat/pangea/course_plans/course_activities/course_activity
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -67,6 +69,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   String? _selectedRoleId;
 
   Timer? _pingCooldown;
+  final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
@@ -92,6 +95,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   @override
   void dispose() {
     _pingCooldown?.cancel();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -114,13 +118,21 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       false;
 
   SessionState get state {
-    if (activityRoom?.hasPickedRole == true) return SessionState.confirmedRole;
-    if (_selectedRoleId != null) return SessionState.selectedRole;
-    if (activityRoom == null) {
+    if (activityRoom?.membership == Membership.join &&
+        activityRoom?.hasPickedRole == true) {
+      return SessionState.confirmedRole;
+    }
+
+    if (_selectedRoleId != null) {
+      return SessionState.selectedRole;
+    }
+
+    if (activityRoom == null || activityRoom!.membership != Membership.join) {
       return widget.roomId != null || widget.launch
           ? SessionState.notSelectedRole
           : SessionState.notStarted;
     }
+
     return SessionState.notSelectedRole;
   }
 
@@ -149,6 +161,13 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         SessionState.selectedRole,
       ].contains(state);
 
+  Map<String, ActivityRoleModel> get assignedRoles {
+    if (activityRoom != null && activityRoom!.membership == Membership.join) {
+      return activityRoom!.assignedRoles ?? {};
+    }
+    return roomSummaries?[widget.roomId]?.joinedUsersWithRoles ?? {};
+  }
+
   bool canSelectParticipant(String id) {
     if (state == SessionState.confirmedRole ||
         state == SessionState.notStarted) {
@@ -158,6 +177,21 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     final availableRoles = activity!.roles;
     final assignedRoles = activityRoom?.assignedRoles ??
         roomSummaries?[widget.roomId]?.joinedUsersWithRoles ??
+        {};
+    final unassignedIds = availableRoles.keys
+        .where((id) => !assignedRoles.containsKey(id))
+        .toList();
+    return unassignedIds.contains(id);
+  }
+
+  bool isParticipantShimmering(String id) {
+    if (state != SessionState.notSelectedRole) {
+      return false;
+    }
+
+    final availableRoles = activity!.roles;
+    final assignedRoles = activityRoom?.assignedRoles ??
+        roomSummaries?[widget.roomId]?.activityRoles.roles ??
         {};
     final unassignedIds = availableRoles.keys
         .where((id) => !assignedRoles.containsKey(id))
@@ -192,6 +226,13 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       return true;
     }
     return false;
+  }
+
+  void startNewActivity() {
+    scrollController.jumpTo(0);
+    context.go(
+      "/rooms/spaces/${widget.parentId}/activity/${widget.activityId}?launch=true",
+    );
   }
 
   Map<ActivitySummaryStatus, Map<String, RoomSummaryResponse>>
@@ -275,7 +316,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     final activitiesResponse = await CourseActivityRepo.get(
       TranslateActivityRequest(
         activityIds: [widget.activityId],
-        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        l1: MatrixState.pangeaController.userController.userL1Code!,
       ),
       widget.activityId,
     );
@@ -337,7 +378,11 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       }
     }
 
-    context.go("/rooms/spaces/${widget.parentId}/${widget.roomId}");
+    NavigationUtil.goToSpaceRoute(
+      widget.roomId,
+      [],
+      context,
+    );
   }
 
   Future<void> confirmRoleSelection() async {
@@ -364,7 +409,11 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       );
 
       if (!resp.isError) {
-        context.go("/rooms/spaces/${widget.parentId}/${resp.result}");
+        NavigationUtil.goToSpaceRoute(
+          resp.result,
+          [],
+          context,
+        );
       }
     }
   }
@@ -409,9 +458,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   Future<void> joinActivityByRoomId(String roomId) async {
     final room = Matrix.of(context).client.getRoomById(roomId);
     if (room != null && room.membership == Membership.join) {
-      widget.parentId != null
-          ? context.go("/rooms/spaces/${widget.parentId}/$roomId")
-          : context.go("/rooms/$roomId");
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
       return;
     }
 
@@ -435,9 +482,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     );
 
     if (!resp.isError) {
-      widget.parentId != null
-          ? context.go("/rooms/spaces/${widget.parentId}/$roomId")
-          : context.go("/rooms/$roomId");
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
     }
   }
 

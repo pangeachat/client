@@ -3386,26 +3386,14 @@
   "commandHint_logoutall": "Logáil amach gach gléas gníomhach",
   "@commandHint_logoutall": {},
   "customReaction": "Freagairt shaincheaptha",
-  "accountInformation": "Eolas cuntaim",
-  "addGroupDescription": "Cuir síos ar mhíniú ar chomhrá",
-  "addNewFriend": "Cuir cara nua leis",
-  "alreadyHaveAnAccount": "An bhfuil cuntas agat cheana?",
-  "createNewGroup": "Cruthaigh comhrá nua",
-  "editChatPermissions": "Cuir in eagar ceadanna an chomhrá",
   "writeAMessageLangCodes": "Clóscríobh i {l1} nó {l2}...",
   "requests": "Iarratais",
-  "allCorrect": "Sin é an chaoi a ndéarfainn é! Go deas!",
-  "newWayAllGood": "Níl sé sin mar a ndéarfainn é ach tá sé go maith!",
-  "othersAreBetter": "Hm, b'fhéidir go bhfuil bealach níos fearr ann le rá.",
   "holdForInfo": "Bain triail as agus coinnigh síos le haghaidh eolas faoin bhfocal.",
   "greenFeedback": "Sin é an rud a chuirfinn!",
   "yellowFeedback": "Hm, is féidir leat iarracht a dhéanamh é sin a rá agus féach cad a tharlóidh! Chun an focal seo a úsáid, cliceáil arís é.",
   "redFeedback": "Ní dóigh liom go bhfuil sé sin ceart...",
   "itInstructionsTitle": "Is féidir liom cabhrú leat aistriú!",
   "itInstructionsBody": "Is féidir leat roghanna a chliceáil agus a choinneáil síos le haghaidh eolas faoin bhfocal.",
-  "oneday": "An 24 uair deireanach",
-  "oneweek": "An seachtain deireanach",
-  "onemonth": "An mhí seo caite",
   "gaTooltip": "Úsáid L2 le cabhair gramadaí",
   "taTooltip": "Úsáid L2 le cabhair aistriúcháin",
   "unTooltip": "Eile",
@@ -3415,58 +3403,27 @@
   "interactiveTranslatorAllowed": "Rogha na Mac Léinn",
   "interactiveTranslatorRequired": "De dhíth",
   "notYetSet": "Níl socraithe fós",
-  "myLearning": "Mo Mhianadóireacht",
   "waTooltip": "Úsáid L2 gan chabhair",
-  "changeDateRange": "Athraigh raon dáta",
-  "classDescription": "Cur síos",
-  "addStudents": "Cuireadh úsáideoirí le nasc nó cód",
-  "copyClassLink": "Cóipeáil an nasc cuireadh",
-  "copyClassCode": "Cóipeáil an cód cuireadh",
-  "inviteStudentByUserName": "Cuireadh úsáideoirí le hainm úsáideora",
   "languageSettings": "Socruithe Teanga",
   "interactiveTranslator": "Cabhair Aistriúcháin",
-  "shareVideo": "Roinn Físeán",
-  "shareVideoDesc": "Múch é seo chun ligean do mhic léinn físeáin a roinnt i gcainteanna.",
-  "shareFiles": "Roinn Comhaid",
-  "selectLanguageLevel": "Roghnaigh leibhéal teanga",
   "noIdenticalLanguages": "Roghnaigh le do thoil teangacha bunúsacha agus spriocdhírithe difriúla",
-  "iWantALanguagePartnerFrom": "Tá sé ó:",
-  "worldWide": "Ar fud an domhain",
-  "noResults": "Níl torthaí! Déan do chuardach níos leithne.",
   "searchBy": "Cuardaigh de réir tír agus teangacha",
-  "iWantAConversationPartner": "Ba mhaith liom comhpháirtí comhrá a bhfuil",
-  "iWantALanguagePartnerWhoSpeaks": "Ag labhairt:",
-  "iWantALanguagePartnerWhoIsLearning": "Ag foghlaim:",
   "joinWithClassCode": "Cláraigh leis an gcód rang",
-  "joinWithClassCodeHint": "Cuir isteach an cód cuireadh",
-  "languageLevelPreA1": "Tús Mór (Pre A1)",
-  "languageLevelA1": "Tús Mór (A1)",
-  "languageLevelA2": "Bunúsach (A2)",
-  "languageLevelB1": "Meánleibhéal (B1)",
-  "languageLevelB2": "Meánleibhéal Uachtarach (B2)",
-  "languageLevelC1": "Ceadúnas Ardleibhéil (C1)",
-  "languageLevelC2": "Foirfeacht (C2)",
+  "languageLevelPreA1": "Novice Low (Pre A1)",
+  "languageLevelA1": "Novice Mid (A1)",
+  "languageLevelA2": "Tosaitheoir Ard (A2)",
+  "languageLevelB1": "Idirmheánach Lár (B1)",
+  "languageLevelB2": "Ard Íseal (B2)",
+  "languageLevelC1": "Ard Lár (C1)",
+  "languageLevelC2": "Sár (C2)",
   "changeTheNameOfTheClass": "Athraigh an t-ainm",
   "changeTheNameOfTheChat": "Athraigh ainm an chomhrá",
-  "askPangeaBot": "Iarr ar Pangea Bot le sainmhíniú comhthéacsúil.",
   "sorryNoResults": "Tá brón orm, níl torthaí ar fáil.",
   "ignoreInThisText": "Déan neamhaird",
-  "helpMeTranslate": "Sea!",
-  "needsItShortMessage": "Amar lasmuigh den sprioc",
   "needsItMessage": "Fan, níl sé {targetLanguage}! An bhfuil uait cabhair le haistriúchán?",
-  "needsIgcMessage": "Tá botún gramadaí sa teachtaireacht seo.",
-  "tokenTranslationTitle": "Tá focal i do theanga bhunúsach.",
-  "spanTranslationDesc": "Féach ar na haistriúcháin féideartha thíos.",
-  "spanTranslationTitle": "Tá roinnt focal i do theanga bhunúsach.",
-  "l1SpanAndGrammarTitle": "Amuigh den teanga sprioc",
-  "l1SpanAndGrammarDesc": "D'fhéadfadh sé a bheith i do theanga bhunúsach nó d'fhéadfadh sé a bheith ina earráid gramadaí.",
-  "otherTitle": "Tá earráid agat.",
-  "otherDesc": "Féach ar na ceartúcháin féideartha thíos.",
   "countryInformation": "Mo thír",
-  "myLanguages": "Mo theangacha bunúsacha agus sprioc",
   "targetLanguage": "Teanga Sprioc",
   "sourceLanguage": "Teanga bhunúsach",
-  "languagesISpeak": "Teangacha a labhraím",
   "updateLanguage": "Mo chuid teangacha",
   "whatLanguageYouWantToLearn": "Cén teanga ar mhaith leat foghlaim?",
   "whatIsYourBaseLanguage": "Cén teanga bhunúsach atá agat?",
@@ -3481,13 +3438,8 @@
   "errorDisableLanguageAssistanceUserDesc": "Cliceáil anseo chun socruithe cabhrach aistriúcháin agus gramadála a nuashonrú",
   "errorDisableITClassDesc": "Tá cabhair aistriúcháin dícheangailte don chúrsa ina bhfuil an comhrá seo.",
   "errorDisableIGCClassDesc": "Tá cabhair gramadála dícheangailte don chúrsa ina bhfuil an comhrá seo.",
-  "itIsDisabled": "Tá Aistriúchán Comhoibríoch dícheangailte",
-  "igcIsDisabled": "Tá Seiceáil Gramada Comhoibríoch dícheangailte",
-  "goToLearningSettings": "Téigh go Socruithe Foghlama",
   "error405Title": "Níor socraíodh teangacha",
   "error405Desc": "Le do thoil, socraigh do chuid teangacha sa Bhealach Príomh > Socruithe Foghlama.",
-  "loginOrSignup": "Cláraigh le",
-  "iAgreeToThe": "Aontaím leis an ",
   "termsAndConditions": "Tearmaí agus Coinníollacha",
   "andCertifyIAmAtLeast13YearsOfAge": " agus deimhním go bhfuil mé ar a laghad 16 bliain d'aois.",
   "error502504Title": "Wow, tá a lán daltaí ar líne!",
@@ -3495,40 +3447,21 @@
   "error404Title": "Earráid aistriúcháin!",
   "error404Desc": "Níl a fhios ag Bot Pangea conas é a aistriú...",
   "errorPleaseRefresh": "Táimid ag déileáil leis! Le do thoil, luchtú arís agus bain triail eile as.",
-  "toggleIT": "Aistriúchán Comhoiriúnach",
-  "toggleIGC": "Seiceáil Gramada Comhoiriúnach",
-  "toggleToolSettingsDescription": "Anseo is féidir leat do shocruithe uirlis teanga aonair a mhúchadh nó a mhúchadh.",
   "connectedToStaging": "Ceangailte le Staging",
   "learningSettings": "Socruithe Foghlama",
-  "sendVoiceNotes": "Seol Nótaí Gutha",
-  "sendVoiceNotesDesc": "Múch é seo ar siúl chun ligean do dhaltaí nótaí gutha a sheoladh i gcomhráite.",
-  "chatTopic": "Ábhar Comhrá",
-  "chatTopicDesc": "Socraigh ábhar comhrá",
-  "inviteStudentByUserNameDesc": "Más bhfuil cuntas ag do dhalta cheana féin, is féidir leat cuardach a dhéanamh orthu.",
   "participants": "Rannpháirtithe",
-  "almostPerfect": "Tá sé sin beagnach ceart! Seo cad a déarfainn mé.",
-  "prettyGood": "An-mhaith! Seo cad a déarfainn mé.",
-  "letMeThink": "Hmm, féachaimid ar conas a rinne tú!",
   "clickMessageTitle": "An bhfuil cabhair uait?",
   "clickMessageBody": "Cliceáil ar theachtaireacht le huirlisí teanga cosúil le haistriúchán, éisteacht arís agus níos mó!",
-  "understandingMessagesTitle": "Sainmhínithe agus aistriúcháin!",
-  "understandingMessagesBody": "Cliceáil ar fhocail faoi bhiorra le haghaidh sainmhínithe. Aistrigh le roghanna teachtaireachta (ar barr ar dheis).",
   "allDone": "Críoch!",
   "vocab": "Focloireacht",
   "low": "Tá fianaise againn nach dtuigeann an t-úsáideoir na focail seo.",
   "medium": "Tá na focail seo in úsáid. Níl sé soiléir an dtuigeann na focail go hiomlán nó nach bhfuil.",
   "high": "Tá fianaise againn go dtuigeann an t-úsáideoir na focail seo.",
-  "unknownProficiency": "Níl na focail seo in úsáid i gComhrá Pangea.",
-  "changeView": "Athraigh radharc.",
-  "clearAll": "Glan gach focal?",
-  "generateVocabulary": "Giniún foclóra ó teideal agus cur síos",
-  "generatePrompts": "Giniún spreagthaí",
   "subscribe": "Cláraigh",
   "getAccess": "Cláraigh anois!",
   "subscriptionDesc": "Tá teachtaireachtaí saor in aisce! Cláraigh chun rochtain a fháil ar aistriúchán idirghníomhach, seiceáil gramadach agus anailísíocht foghlama.",
   "subscriptionManagement": "Bainistíocht Síntiúis",
   "currentSubscription": "Síntiúis Reatha",
-  "changeSubscription": "Athraigh do shíntiúis",
   "cancelSubscription": "Cealaigh do shíntiúis",
   "selectYourPlan": "Roghnaigh Do Phlean",
   "subsciptionPlatformTooltip": "Cuir isteach do chuntas ar do ghléas bunaidh chun do phlean síntiúis a bhainistiú",
@@ -3537,9 +3470,6 @@
   "paymentHistory": "Stair Íocaíochta",
   "emptyChatDownloadWarning": "Ní féidir íoslódáil comhrá folamh",
   "update": "Nuashonraigh",
-  "updateDesc": "Is féidir leat an aip seo a nuashonrú anois ó {localVersion} go {storeVersion}",
-  "maybeLater": "B'fhéidir níos déanaí",
-  "mainMenu": "Bainisteoir Príomh",
   "toggleImmersionMode": "Mód Iomlánaithe",
   "toggleImmersionModeDesc": "Nuair a bhíonn sé cumasaithe, léirítear gach teachtaireacht i do theanga sprioc. Tá an socrú seo an-úsáideach i malartuithe teangacha.",
   "itToggleDescription": "Léireoidh an uirlis foghlama teanga seo focail i do theanga bhunúsach agus cabhróidh sé leat iad a aistriú go do theanga sprioc. Cé go bhfuil sé neamhchoitianta, d'fhéadfadh an AI botún a dhéanamh i d'aistriúchán.",
@@ -3554,212 +3484,13 @@
   "definitionsToolDescription": "Nuair a bhíonn sé cumasaithe, is féidir cliceáil ar fhocail faoi bhun línte gorma le haghaidh sainmhínithe. Cliceáil ar theachtaireachtaí chun rochtain a fháil ar shainmhínithe.",
   "translationsToolDescrption": "Nuair a bhíonn sé cumasaithe, cliceáil ar theachtaireacht agus ar an ngrian aistriúcháin chun teachtaireacht i do theanga bhunúsach a fheiceáil.",
   "welcomeBack": "Fáilte ar ais! Mura raibh tú rannpháirteach sa phainéal 2023-2024, déan teagmháil linn le haghaidh do shíntiús speisialta. Má tá tú múinteoir a cheannaigh ceadúnas do do rang, déan teagmháil linn le haghaidh do shíntiús múinteora.",
-  "kickAllStudents": "Cuir Gach Dalta As",
-  "kickAllStudentsConfirmation": "An bhfuil tú cinnte gur mhaith leat gach dalta a chur as?",
-  "inviteAllStudents": "Cuireadh Gach Dalta",
-  "inviteAllStudentsConfirmation": "An bhfuil tú cinnte gur mhaith leat gach dalta a thabhairt cuireadh?",
-  "inviteUsersFromPangea": "Cuir riarthóirí leis",
-  "redeemPromoCode": "Déan Éarlais ar Chód Promó",
-  "enterPromoCode": "Cuir isteach an Cód Promó",
   "downloadTxtFile": "Íoslódáil Comhad Téacs",
   "downloadCSVFile": "Íoslódáil Comhad CSV",
   "promotionalSubscriptionDesc": "Tá síntiús promóiseach saoil agat faoi láthair. Seol teachtaireacht chuig support@pangea.chat le haghaidh cabhrach maidir le do shíntiús a athrú.",
   "originalSubscriptionPlatform": "Síntiús ceannaíodh trí {purchasePlatform}",
   "oneWeekTrial": "Triail Seachtain amháin",
   "downloadXLSXFile": "Íoslódáil Comhad Excel",
-  "abDisplayName": "Abchais",
-  "aaDisplayName": "Afar",
-  "afDisplayName": "Afracais",
-  "akDisplayName": "Akan",
-  "sqDisplayName": "Albainis",
-  "amDisplayName": "Amharais",
-  "arDisplayName": "Araibis",
-  "anDisplayName": "Aragonaise",
-  "hyDisplayName": "Airmeinis",
-  "asDisplayName": "Aimsir",
-  "avDisplayName": "Avarais",
-  "aeDisplayName": "Avestais",
-  "ayDisplayName": "Aimarais",
-  "azDisplayName": "Asarbaiseáinis",
-  "bmDisplayName": "Bambara",
-  "baDisplayName": "Baiskir",
-  "euDisplayName": "Basca",
-  "beDisplayName": "Bealarúisis",
-  "bnDisplayName": "Bengali",
-  "bhDisplayName": "Bihari",
-  "biDisplayName": "Bislama",
-  "bsDisplayName": "Bosniach",
-  "brDisplayName": "Breton",
-  "bgDisplayName": "Bulgáiris",
-  "myDisplayName": "Burmese",
-  "caDisplayName": "Catalóinis, Valencian",
-  "chDisplayName": "Chamorro",
-  "ceDisplayName": "Chechen",
-  "nyDisplayName": "Chichewa, Chewa, Nyanja",
-  "zhDisplayName": "Sínis",
-  "cvDisplayName": "Chuvash",
-  "kwDisplayName": "Kornáis",
-  "coDisplayName": "Corsican",
-  "crDisplayName": "Cree",
-  "hrDisplayName": "Croatach",
-  "csDisplayName": "Seicis",
-  "daDisplayName": "Danmhargach",
-  "dvDisplayName": "Divehi; Dhivehi; Maldivian;",
-  "nlDisplayName": "Dúiséis",
-  "enDisplayName": "Béarla",
-  "eoDisplayName": "Esperanto",
-  "etDisplayName": "Eastóinis",
-  "eeDisplayName": "Ewe",
-  "foDisplayName": "Faroese",
-  "fjDisplayName": "Fijian",
-  "fiDisplayName": "Fionlainnis",
-  "frDisplayName": "Fraincis",
-  "ffDisplayName": "Fula; Fulah; Pulaar; Pular",
-  "glDisplayName": "Galician",
-  "kaDisplayName": "Seoirsis",
-  "deDisplayName": "Gearmáinis",
-  "elDisplayName": "Gréigis, Nua-aimseartha",
-  "gnDisplayName": "Guaraní",
-  "guDisplayName": "Gúiseará",
-  "htDisplayName": "Haitian, Creole Haitian",
-  "haDisplayName": "Hausa",
-  "heDisplayName": "Eabhrais (nua-aimseartha)",
-  "hzDisplayName": "Herero",
-  "hiDisplayName": "Hindí",
-  "hoDisplayName": "Hiri Motu",
-  "huDisplayName": "Ungáiris",
-  "iaDisplayName": "Interlingua",
-  "idDisplayName": "Indinéiseach",
-  "ieDisplayName": "Interlingue",
-  "gaDisplayName": "Gaeilge",
-  "igDisplayName": "Igbo",
-  "ikDisplayName": "Inupiaq",
-  "ioDisplayName": "Ido",
-  "isDisplayName": "Íoslainnise",
-  "itDisplayName": "Iodáilis",
-  "iuDisplayName": "Inuktitut",
-  "jaDisplayName": "Seapáinis",
-  "jvDisplayName": "Iáinis",
-  "klDisplayName": "Kalaallisut, Greenlandic",
-  "knDisplayName": "Kannada",
-  "krDisplayName": "Kanúri",
-  "ksDisplayName": "Caismiris",
-  "kkDisplayName": "Casacais",
-  "kmDisplayName": "Khmer",
-  "kiDisplayName": "Kikuyu, Gikuyu",
-  "rwDisplayName": "Kinyarwanda",
-  "kyDisplayName": "Kirgeach, Kyrgyz",
-  "kvDisplayName": "Komi",
-  "kgDisplayName": "Kongo",
-  "koDisplayName": "Cóiréis",
-  "kuDisplayName": "Cúrdais",
-  "kjDisplayName": "Kwanyama, Kuanyama",
-  "laDisplayName": "Laidin",
-  "lbDisplayName": "Lugsamburgis, Letzeburgesch",
-  "lgDisplayName": "Luganda",
-  "liDisplayName": "Limburgis, Limburgan, Limburger",
-  "lnDisplayName": "Lingála",
-  "loDisplayName": "Lao",
-  "ltDisplayName": "Liotuáinis",
-  "luDisplayName": "Luba-Katanga",
-  "lvDisplayName": "Leatvís",
-  "gvDisplayName": "Manx",
-  "mkDisplayName": "Macedóinis",
-  "mgDisplayName": "Malagasach",
-  "msDisplayName": "Maelainéis",
-  "mlDisplayName": "Malayalam",
-  "mtDisplayName": "Máltais",
-  "miDisplayName": "Māori",
-  "mrDisplayName": "Maraitéiseach (Marāṭhī)",
-  "mhDisplayName": "Marshallese",
-  "mnDisplayName": "Mongóilise",
-  "naDisplayName": "Nauru",
-  "nvDisplayName": "Navajo, Navaho",
-  "nbDisplayName": "Nórais Bokmål",
-  "ndDisplayName": "Ndebele Thuaidh",
-  "neDisplayName": "Nepálach",
-  "ngDisplayName": "Ndonga",
-  "nnDisplayName": "Nórais Nynorsk",
-  "noDisplayName": "Nórais",
-  "iiDisplayName": "Nuosu",
-  "nrDisplayName": "Ndebele Theas",
-  "ocDisplayName": "Occitan",
-  "ojDisplayName": "Ojibwe, Ojibwa",
-  "cuDisplayName": "Seandála Chaitliceach, Sláibis Chaitliceach, Seandála Chaitliceach, Seandála Búlgáiris, Seandála Slavach",
-  "omDisplayName": "Oromo",
-  "orDisplayName": "Oiréis",
-  "osDisplayName": "Ossetian, Ossetic",
-  "paDisplayName": "Panjabi, Punjabi",
-  "piDisplayName": "Pāli",
-  "faDisplayName": "Persian",
-  "plDisplayName": "Polainnis",
-  "psDisplayName": "Pasáistí, Pushto",
-  "ptDisplayName": "Portaingéil",
-  "quDisplayName": "Quechua",
-  "rmDisplayName": "Romansh",
-  "rnDisplayName": "Kirundi",
-  "roDisplayName": "Rómáinis, Moldáivis, Moldovan",
-  "ruDisplayName": "Rúisis",
-  "saDisplayName": "Sanskrit (Saṃskṛta)",
-  "scDisplayName": "Sardinian",
-  "sdDisplayName": "Sindhi",
-  "seDisplayName": "Sáimis Thuaidh",
-  "smDisplayName": "Samoan",
-  "sgDisplayName": "Sango",
-  "srDisplayName": "Serbís",
-  "gdDisplayName": "Gaeilge na hAlban, Gaeilge",
-  "snDisplayName": "Shona",
-  "siDisplayName": "Sinhala, Sinhalese",
-  "skDisplayName": "Slóvaicis",
-  "slDisplayName": "Slóivéinis",
-  "soDisplayName": "Somálach",
-  "stDisplayName": "Sothó Theas",
-  "esDisplayName": "Spáinnis",
-  "suDisplayName": "Sundanese",
-  "swDisplayName": "Suaibéilí",
-  "ssDisplayName": "Swati",
-  "svDisplayName": "Sualainnis",
-  "taDisplayName": "Tamailís",
-  "teDisplayName": "Téalainnis",
-  "tgDisplayName": "Tajiceach",
-  "thDisplayName": "Téalainn",
-  "tiDisplayName": "Tigrinis",
-  "boDisplayName": "Tibéideach Caighdeánach, Tibéideach, Lár",
-  "tkDisplayName": "Turkmen",
-  "tlDisplayName": "Tagalog",
-  "tnDisplayName": "Tswana",
-  "toDisplayName": "Tonga (Oileáin Tonga)",
-  "trDisplayName": "Turcach",
-  "tsDisplayName": "Tsonga",
-  "ttDisplayName": "Tatar",
-  "twDisplayName": "Twi",
-  "tyDisplayName": "Tahitian",
-  "ugDisplayName": "Uighur, Uyghur",
-  "ukDisplayName": "Ucráinis",
-  "urDisplayName": "Urdais",
-  "uzDisplayName": "Uzbec",
-  "veDisplayName": "Venda",
-  "viDisplayName": "Vietnámis",
-  "voDisplayName": "Volapük",
-  "waDisplayName": "Walloon",
-  "cyDisplayName": "Cymraeg",
-  "woDisplayName": "Wolof",
-  "fyDisplayName": "Frísis Thiar",
-  "xhDisplayName": "Xhosa",
-  "yiDisplayName": "Iídís",
-  "yoDisplayName": "Yoruba",
-  "zaDisplayName": "Zhuang, Chuang",
   "unkDisplayName": "Neamartha",
-  "zuDisplayName": "Zulu",
-  "hawDisplayName": "Hawaiian",
-  "hmnDisplayName": "Hmong",
-  "multiDisplayName": "Il multiple",
-  "cebDisplayName": "Cebuano",
-  "dzDisplayName": "Dzongkha",
-  "iwDisplayName": "Eabhrais",
-  "jwDisplayName": "Iámais",
-  "moDisplayName": "Moldáivis",
-  "shDisplayName": "Serbo-Corach",
   "wwCountryDisplayName": "Domhanda",
   "afCountryDisplayName": "An Afganastáin",
   "axCountryDisplayName": "Oileáin Åland",
@@ -4007,41 +3738,25 @@
   "yeCountryDisplayName": "Yemen",
   "zmCountryDisplayName": "Zambia",
   "zwCountryDisplayName": "Zimbabwe",
-  "pay": "Íoc",
-  "allPrivateChats": "Comhráite díreacha",
-  "unknownPrivateChat": "Comhrá príobháideach anaithnid",
+  "pay": "Checkout",
   "invitedToSpace": "{user} thú cuireadh a thabhairt chun páirt a ghlacadh i gcúrsa: {space}! An bhfuil tú ag iarraidh glacadh leis?",
-  "declinedInvitation": "Diúltaíodh an cuireadh",
-  "acceptedInvitation": "Glacadh leis an gcuireadh",
   "youreInvited": "📩 Tá cuireadh agat!",
   "invitedToChat": "{user} thú cuireadh a thabhairt chun comhrá a bheith agat: {name}! An bhfuil tú ag iarraidh glacadh leis?",
   "monthlySubscription": "Míosúil",
   "yearlySubscription": "Bliantúil",
   "defaultSubscription": "Clár síntiús Pangea Chat",
   "freeTrial": "Triail saor in aisce",
-  "grammarAnalytics": "Earráid anailísíocht",
   "total": "Iomlán: ",
   "noDataFound": "Níor aimsíodh aon sonraí",
-  "promoSubscriptionExpirationDesc": "Tá do shíntiús reatha ina phromóisiún agus éiríonn sé as ar {expiration}. Seol teachtaireacht chuig support@pangea.chat le haghaidh cabhrach maidir le hathrú do shíntiús.",
-  "emptyChatNameWarning": "Cuir isteach ainm don chomhrá seo",
   "blurMeansTranslateTitle": "Cén fáth go bhfuil an teachtaireacht scáileáilte?",
   "blurMeansTranslateBody": "Fad is ea Mód Iomlánaithe ar siúl, beidh teachtaireachtaí a sheoltar i do theanga bhunúsach faoi dhálaí scagtha agus aistrithe ag Pangea Bot go do theanga sprioc. Is féidir Mód Iomlánaithe a chasadh ar siúl i socruithe aonair agus cúrsa.",
-  "someErrorTitle": "Hm, níl rud éigin ceart",
-  "someErrorBody": "D'fhéadfadh sé a bheith ina earráid nó rud éigin i do theanga bhunúsach.",
   "bestCorrectionFeedback": "Tá sé sin ceart!",
   "distractorFeedback": "Níl sé sin go hiomlán ceart.",
   "bestAnswerFeedback": "Tá sé sin ceart!",
   "definitionDefaultPrompt": "Cad is brí leis an bhfocal seo?",
   "practiceDefaultPrompt": "Cad é an freagra is fearr?",
   "correctionDefaultPrompt": "Cad é an ionad ceart?",
-  "itStartDefaultPrompt": "Ar mhaith leat cabhair a fháil le haistriúchán?",
-  "lockedChatWarning": "🔒 Tá an comhrá seo dúnta",
-  "lockChat": "Dún Comhrá",
-  "suggestToChat": "Mol an comhrá seo",
-  "suggestToChatDesc": "Leagann comhráite molta le feiceáil i liostaí comhrá",
   "acceptSelection": "Glac Leasú",
-  "acceptSelectionAnyway": "Úsáid é seo ar aon nós",
-  "makingActivity": "Ag déanamh gníomhaíochta",
   "why": "Cén fáth?",
   "definition": "Sainmhíniú",
   "exampleSentence": "Sampla Abairt",
@@ -4049,128 +3764,55 @@
   "reportMessageTitle": "Tá {reportingUserId} tuairisciú ar theachtaireacht ó {reportedUserId} sa chomhrá {roomName}",
   "reportMessageBody": "Teachtaireacht: {reportedMessage}\nCúis: {reason}",
   "noTeachersFound": "Níl múinteoirí le fáil le tuairisciú orthu",
-  "viewArchive": "Féach ar an gCartlann",
   "trialExpiration": "Críochnaíonn do thriail saor in aisce ar {expiration}",
   "freeTrialDesc": "Faigheann úsáideoirí nua triail saor in aisce ar feadh seachtain de Pangea Chat",
   "activateTrial": "Triail Saor in Aisce 7 Lá",
   "successfullySubscribed": "Tá tú cláraithe go rathúil!",
   "clickToManageSubscription": "Cliceáil anseo chun do shíntiús a bhainistiú.",
-  "errorGettingAudio": "Earráid ag fáil fuaime. Le do thoil, athraigh le do thoil agus bain triail eile.",
   "signUp": "Cláraigh",
   "pleaseChooseAtLeastChars": "Roghnaigh ar a laghad {min} carachtar.",
   "noEmailWarning": "Cuir isteach seoladh ríomhphoist bailí. Murach sin ní bheidh tú in ann do phasfhocal a athshocrú. Mura n-uaill, brúigh arís ar an gcnaipe chun leanúint ar aghaidh.",
   "pleaseEnterValidEmail": "Cuir isteach seoladh ríomhphoist bailí.",
   "pleaseChooseAUsername": "Roghnaigh ainm úsáideora le do thoil",
-  "chooseAUsername": "Roghnaigh ainm úsáideora",
   "define": "Sainmhínigh",
   "listen": "Éist",
-  "addConversationBot": "Cumasaigh Bot Comhrá",
-  "addConversationBotDesc": "Cuir bot leis an gcomhrá seo",
-  "convoBotSettingsDescription": "Cuir in eagar topaic an chomhrá agus deacracht",
-  "enterAConversationTopic": "Cuir topaic an chomhrá isteach",
-  "conversationTopic": "Topaic an chomhrá",
-  "enableModeration": "Cumasaigh bainistíocht",
-  "enableModerationDesc": "Cumasaigh bainistíocht uathoibríoch chun teachtaireachtaí a athbhreithniú sula gcuirtear iad i láthair",
-  "conversationLanguageLevel": "Cad é leibhéal teanga an chomhrá seo?",
-  "showDefinition": "Taispeáin sainmhíniú",
-  "subscriptionPopupTitle": "D'fhéadfadh botún gramadaí a bheith sa abairt seo...",
-  "subscriptionPopupDesc": "Cláraigh inniu chun aistriúchán agus ceartú gramadach a fháil!",
-  "seeOptions": "Féach roghanna",
-  "continuedWithoutSubscription": "Lean ar aghaidh gan síntiús a ghlacadh",
   "trialPeriodExpired": "Tá do thriail imithe",
-  "selectToDefine": "Cliceáil ar aon fhocal chun a shainmhíniú a fheiceáil!",
   "translations": "aistriúcháin",
   "messageAudio": "fuaim an teachtaireachta",
   "definitions": "sainmhíniú",
   "subscribedToUnlockTools": "Cláraigh chun aistriúchán idirghníomhach agus seiceáil gramadach, fuaimrian, gníomhaíochtaí cleachtadh pearsanta, agus anailísíocht foghlama a fháil!",
   "translationTooltip": "Aistriú",
-  "audioTooltip": "Seinn Fuaim",
   "speechToTextTooltip": "Trascríobh",
-  "certifyAge": "Deimhním go bhfuil mé os cionn {age} bliain d'aois",
   "kickBotWarning": "Beidh sé i gceist le buille Pangea Bot an bot comhrá a bhaint den chomhrá seo.",
-  "joinToView": "Cláraigh sa seomra seo chun sonraí a fheiceáil",
   "refresh": "Athnuachan",
-  "autoPlayTitle": "Seinn Uathoibríoch Teachtaireachtaí",
-  "autoPlayDesc": "Nuair a bheidh sé cumraithe, beidh fuaim téacs-go-huaire ag na teachtaireachtaí a sheinnfidh go huathoibríoch nuair a roghnófar iad.",
   "messageAnalytics": "Anailís ar Theachtaireachtaí",
   "words": "Focail",
   "score": "Scór",
   "accuracy": "Beachtas",
   "points": "Pointí",
   "noPaymentInfo": "Níl aon eolas íocaíochta de dhíth!",
-  "conversationBotModeSelectDescription": "Gníomhaíocht comhrá",
-  "conversationBotModeSelectOption_discussion": "Plé",
-  "conversationBotModeSelectOption_custom": "Saincheaptha",
-  "conversationBotModeSelectOption_conversation": "Comhrá",
-  "conversationBotModeSelectOption_textAdventure": "Eachtra Téacs",
-  "conversationBotModeSelectOption_storyGame": "Cluiche Scéil",
-  "conversationBotDiscussionZone_title": "Socrúí Comhrá",
-  "conversationBotDiscussionZone_discussionTopicLabel": "Ábhar Plé",
-  "conversationBotDiscussionZone_discussionTopicPlaceholder": "Socraigh ábhar an phlé",
-  "conversationBotDiscussionZone_discussionKeywordsLabel": "Eochairfhocail an Phlé",
-  "conversationBotDiscussionZone_discussionKeywordsPlaceholder": "Socraigh eochairfhocail an phlé",
-  "conversationBotDiscussionZone_discussionKeywordsHintText": "Liosta eochairfhocal le haghaidh treorach an phlé, scartha le véarsa",
-  "conversationBotDiscussionZone_discussionTriggerScheduleEnabledLabel": "Seolfaidh tú spreagadh an phlé ar sceideal",
-  "conversationBotDiscussionZone_discussionTriggerScheduleHourIntervalLabel": "Uaireanta idir spreagthaí an phlé",
-  "conversationBotDiscussionZone_discussionTriggerReactionEnabledLabel": "Freagraíonn ar ghníomhú ar »",
-  "conversationBotDiscussionZone_discussionTriggerReactionKeyLabel": "Freagairt chun spreagadh an phlé a sheoladh",
-  "conversationBotCustomZone_title": "Socruithe Uathúla",
-  "conversationBotCustomZone_customSystemPromptLabel": "Preabchomhordú córas",
-  "conversationBotCustomZone_customSystemPromptPlaceholder": "Socraigh preabchomhordú córas uathúil",
-  "conversationBotCustomZone_customSystemPromptEmptyError": "Níl preabchomhordú córas uathúil curtha isteach",
-  "botConfig": "Socruithe an bhot agus na gníomhaíochta",
-  "botConfigNoPermissionTitle": "Níl cead agat",
-  "botConfigNoPermissionMessage": "Déan teagmháil le riarthóir an tseomra chun socruithe an bhot a athrú",
-  "addConversationBotDialogTitleInvite": "Deimhnigh cuireadh a thabhairt don bhot comhrá",
-  "addConversationBotButtonInvite": "Cuireadh",
-  "addConversationBotDialogInviteConfirmation": "Cuireadh",
-  "addConversationBotButtonTitleRemove": "Deimhnigh bainistíocht an bhot comhrá",
-  "addConversationBotButtonRemove": "Bain",
-  "addConversationBotDialogRemoveConfirmation": "Bain",
-  "conversationBotConfigConfirmChange": "Deimhnigh",
-  "conversationBotStatus": "Cuireadh cuireadh bot",
-  "conversationBotTextAdventureZone_title": "Eachtra Téacs",
-  "conversationBotTextAdventureZone_instructionLabel": "Treoracha an Mháistir Cluiche",
-  "conversationBotTextAdventureZone_instructionPlaceholder": "Socraigh treoracha an mháistir cluiche",
-  "conversationBotCustomZone_instructionSystemPromptEmptyError": "Tá treoracha an mháistir cluiche ar iarraidh",
-  "studentAnalyticsNotAvailable": "Ní féidir sonraí na mac léinn a fháil faoi láthair",
-  "roomDataMissing": "D'fhéadfadh roinnt sonraí a bheith ar iarraidh ó na seomraí nach bhfuil tú ina bhall de.",
   "updatePhoneOS": "D'fhéadfadh go mbeadh ort do leagan OS a nuashonrú ar do ghléas.",
   "wordsPerMinute": "Focail in aghaidh na nóimead",
   "autoIGCToolName": "Rith cabhair scríbhneoireachta Pangea go huathoibríoch",
   "autoIGCToolDescription": "Rith uathoibríoch cabhair gramadaí agus aistriúcháin Pangea Chat sula seolfaidh mé mo theachtaireacht.",
-  "runGrammarCorrection": "Seiceáil teachtaireacht",
-  "grammarCorrectionFailed": "Ceisteanna le réiteach",
-  "grammarCorrectionComplete": "Tá sé go maith!",
   "tooltipInstructionsTitle": "Níl tú cinnte cad a dhéanann sé sin?",
   "tooltipInstructionsMobileBody": "Bain agus coinnigh ar na míreanna chun treoracha a fheiceáil.",
   "tooltipInstructionsBrowserBody": "Cliceáil agus coinnigh ar na míreanna chun treoracha a fheiceáil.",
   "chatCapacity": "Cumaisc comhrá",
   "roomFull": "Tá an seomra seo lán cheana.",
-  "topicNotSet": "Níl an téama socraithe.",
-  "chatCapacityNotSet": "Níl teorainn ar chumas an chomhrá seo.",
   "chatCapacityHasBeenChanged": "Athraíodh cumas an chomhrá",
   "chatCapacitySetTooLow": "Ní mór do chumas an chomhrá a bheith ar a laghad {count}.",
   "chatCapacityExplanation": "Cuireann cumas an chomhrá teorainn ar líon na mbaill a cheadaítear i gcomhrá.",
-  "chatExceedsCapacity": "Tá an comhrá seo os cionn a chumas.",
   "tooManyRequest": "Rogha ró-ard, déan iarracht arís níos déanaí.",
   "enterNumber": "Cuir luach uimhriúil iomlán isteach le do thoil.",
   "buildTranslation": "Tóg do aistriúchán ó na roghanna thuas",
-  "nonexistentSelection": "Níl an rogha ann níos mó.",
-  "changeAnalyticsLanguage": "Athraigh Teanga Anailíse",
   "practice": "Cleachtadh",
   "noLanguagesSet": "Níl aon teangacha socraithe",
-  "noActivitiesFound": "Tá sin go leor faoi láthair! Tar ar ais níos déanaí le haghaidh tuilleadh.",
-  "hintTitle": "Leideán:",
   "speechToTextBody": "Maidir le teachtaireachtaí gutha, is féidir leat trascríobh a fheiceáil chomh maith le scór Focal in aghaidh an Nóiméidí an chainteora.",
   "versionNotFound": "Níor aimsíodh leagan",
   "fetchingVersion": "Ag fáil leagan...",
   "versionFetchError": "Earráid ag fáil amach an leagan",
   "versionText": "Leagan: {version}+{buildNumber}",
-  "languageButtonLabel": "Teanga: {currentLanguage}",
-  "interactiveTranslatorAutoPlaySliderHeader": "Aistriú uathoibríoch",
-  "interactiveTranslatorAutoPlayDesc": "Seolann an t-aistritheoir idirghníomhach gan iarraidh.",
-  "changeAnalyticsView": "Athraigh Amharc Anailíse",
   "l1TranslationBody": "Ní bheidh teachtaireachtaí i do theanga bhunúsach le haistriú.",
   "deleteSubscriptionWarningTitle": "Tá síntiús gníomhach agat",
   "deleteSubscriptionWarningBody": "Ní chuirfidh scriosadh do chuntais do shíntiús go huathoibríoch ar ceal.",
@@ -4178,9 +3820,7 @@
   "error520Title": "Déan iarracht arís le do thoil.",
   "error520Desc": "Tá brón orm, níor thuig muid do theachtaireacht...",
   "wordsUsed": "Focail Úsáidte",
-  "errorTypes": "Cineálacha Earráid",
   "level": "Leibhéal",
-  "canceledSend": "Seoladh curtha ar ceal",
   "morphsUsed": "Morpheanna Úsáidte",
   "translationChoicesBody": "Cliceáil agus coinnigh rogha le haghaidh leideanna.",
   "grammar": "Gairme",
@@ -4190,7 +3830,6 @@
   "reportContentIssueTitle": "Tuairisc a thabhairt ar fhadhb ábhar",
   "feedback": "Aiseolas roghnach",
   "reportContentIssueDescription": "Á, a Dhia! Is féidir le AI taithí foghlama phearsantaithe a sholáthar ach... déanann sé halóga freisin. Tabhair aon aiseolas atá agat agus déanfaimid iarracht arís.",
-  "changeContent": "Á, a Dhia! Is féidir le AI taithí foghlama phearsantaithe a sholáthar ach... déanann sé halóga freisin. Cad ba chóir dó a bheith?",
   "clickTheWordAgainToDeselect": "Cliceáil ar an bhfocal roghnaithe chun é a dhí-roghnú.",
   "l2SupportNa": "Níl sé ar fáil",
   "l2SupportAlpha": "Ailf",
@@ -4424,7 +4063,6 @@
   "grammarCopySPC": "Sonraíocht",
   "grammarCopyPARTTYPE": "Cineál Rannpháirtíochta",
   "grammarCopyINTREL": "Ceist-Relatív",
-  "grammarCopyNUMFORMpsor": "Uimhir an Úinéara",
   "grammarCopyUNKNOWN": "Dáiríre",
   "grammarCopyNUMBERPSOR": "Uimhir an Úinéara",
   "grammarCopyPOSS": "Seilbh",
@@ -4470,28 +4108,14 @@
   "grammarCopyVOICEdir": "Díreach",
   "grammarCopyVOICEinv": "Inmhéanach",
   "grammarCopyVOICErcp": "Comhoiriúnach",
-  "enterPrompt": "Cuir isteach treoir chóras le do thoil",
-  "selectBotLanguage": "Roghnaigh teanga an bhot",
-  "chooseVoice": "Roghnaigh guth",
-  "enterLanguageLevel": "Cuir isteach leibhéal teanga le do thoil",
-  "enterDiscussionTopic": "Cuir isteach ábhar plé le do thoil",
-  "selectBotChatMode": "Roghnaigh mód comhrá",
-  "messageNotInTargetLang": "Teachtaireacht nach bhfuil sa teanga sprioc",
   "other": "Eile",
   "levelShort": "LEIBHÉAL {level}",
-  "botModeValidation": "Roghnaigh mód comhrá le do thoil",
   "clickBestOption": "Roghnaigh na roghanna is fearr chun do theachtaireacht a aistriú!",
   "completeActivitiesToUnlock": "Críochnaigh ar a laghad gníomhaíocht amháin chun an t-aistriúchán a dhíghlasáil!",
-  "botSettingsSubtitle": "Cuireadh bot chun gníomhaíocht comhrá a bhainistiú",
-  "invitePeople": "Cuireadh úsáideoirí",
   "noCapacityLimit": "Gan teorainn acmhainne",
   "downloadGroupText": "Íoslódáil téacs an ghrúpa",
   "notificationsOn": "Fógraí ar siúl",
   "notificationsOff": "Fógraí as",
-  "chatCanBeFoundViaSearch": "Féadfaidh tú comhrá a aimsiú trí chuardach",
-  "requireCodeToJoin": "Teastaíonn cód chun páirt a ghlacadh",
-  "canFindInSearch": "Féadfaidh tú a aimsiú sa chuardach",
-  "addChatToSpace": "Cuir comhrá leis an spás",
   "createChatAndInviteUsers": "Cruthaigh comhrá agus cuireadh a thabhairt do úsáideoirí",
   "updatedNewSpaceDescription": "Ligeann cúrsaí duit do chomhráite a chur le chéile agus pobail phríobháideacha nó phoiblí a thógáil.",
   "joinWithCode": "Bí páirteach le cód",
@@ -4527,39 +4151,19 @@
   "constructUseCollected": "Bailithe i gcomhrá",
   "constructUseNanDesc": "Níl infheidhmithe",
   "xpIntoLevel": "{currentXP} / {maxXP} XP",
-  "signInWithUsername": "Logáil isteach le hainm úsáideora agus pasfhocal",
-  "registrationEmailMessage": "Déan doiciméad do r-phost a fhíorú le nasc a sheoltar ann. I gcásanna áirithe, tógann sé suas le 5 nóiméad chun an r-phost a shroichint. Seiceáil do chliabh spam freisin.",
   "enableTTSToolName": "Cumasaíodh téacs-go-huaiseacht",
   "enableTTSToolDescription": "Ceadaigh don aip toradh téacs-go-huaiseacht a ghiniúint do chuid codanna den téacs i do theanga sprioc.",
-  "couldNotFindTTS": "Níorbh fhéidir linn inneall téacs-go-huaiseacht a fháil do do theanga sprioc reatha.",
-  "ttsInstructionsHyperlink": "Cliceáil anseo chun treoracha a fheiceáil maidir le híoslódáil guth nua ar do ghléas.",
-  "createAnAccount": "Cruthaigh cuntas",
-  "signIn": "Logáil isteach",
-  "signUpWithEmail": "Cláraigh le Ríomhphost",
-  "signUpWithGoogle": "Cláraigh le Google",
-  "signUpWithApple": "Cláraigh le Apple",
   "yourUsername": "Do chuid ainm úsáideora",
   "yourEmail": "Do r-phost",
-  "pleaseEnterAnEmail": "Cuir isteach seoladh r-phost le do thoil",
-  "signInWithGoogle": "Logáil isteach le Google",
-  "signInWithApple": "Logáil isteach le Apple",
-  "chooseYourAvatar": "Roghnaigh do híomhá phearsanta",
   "iWantToLearn": "Ba mhaith liom foghlaim",
-  "letsStart": "Tosaigh",
-  "pleaseAgreeToTOS": "Aontóidh le do thoil na Téarmaí agus na Coinníollacha",
   "pleaseEnterEmail": "Cuir isteach seoladh ríomhphoist bailí le do thoil.",
-  "pleaseSelectALanguage": "Roghnaigh teanga le do thoil",
   "myBaseLanguage": "Mo theanga bhunúsach",
-  "clickWordsInstructions": "🧑‍⚖️ Cliceáil ar aon fhocal le haghaidh sonraí. 🤐",
-  "chooseBestDefinition": "Cad a chiallaíonn an focal seo?",
   "meaningSectionHeader": "Ciall:",
   "formSectionHeader": "Foirmiúlachtaí a úsáidtear i gcomhráite:",
-  "noEmojiSelectedTooltip": "Níl emoji roghnaithe",
   "writingExercisesTooltip": "Scríobh",
   "listeningExercisesTooltip": "Éisteacht",
   "readingExercisesTooltip": "Léamh",
   "meaningNotFound": "Níor féidir an ciall a fháil.",
-  "formsNotFound": "Níor féidir na foirmeacha a fháil.",
   "chooseBaseForm": "Roghnaigh an fhoirm bhunúsach",
   "notTheCodeError": "Tá brón orm, ní é sin an cód!",
   "totalXP": "Gach XP",
@@ -4599,9 +4203,6 @@
   "pickAnEmoji": "Cad é an emoji is fearr leat do '{lemma}'?",
   "chooseLemmaMeaningInstructionsBody": "Comhoiriúnigh bríonna leis na focail sa teachtaireacht!",
   "doubleClickToEdit": "Cliceáil dé-uaire chun eagarthóireacht.",
-  "removeFeature": "Bain {feature}",
-  "chooseCorrectLabel": "Roghnaigh an lipéad ceart.",
-  "levelPopupTitle": "Comhghairdeas ar shroicheadh\nLeve  {level}",
   "activityPlannerTitle": "Pleanálaí Gníomhaíochta",
   "topicLabel": "Ábhar",
   "topicPlaceholder": "Roghnaigh ábhar...",
@@ -4609,7 +4210,6 @@
   "modePlaceholder": "Roghnaigh mód...",
   "learningObjectiveLabel": "Cuspóir foghlama",
   "learningObjectivePlaceholder": "Roghnaigh cuspóir foghlama...",
-  "mediaLabel": "Meán a roinnfidh foghlaimeoirí",
   "languageOfInstructionsLabel": "Teanga na treoracha gníomhaíochta",
   "targetLanguageLabel": "Teanga sprioc",
   "cefrLevelLabel": "Leveál CEFR",
@@ -4624,20 +4224,15 @@
   "instructions": "Treoracha",
   "numberOfLearners": "Líon na bhfoghlaimeoirí",
   "mustBeInteger": "Ní mór a bheith ina uimhir iomlán m.sh. 1, 2, 3, ...",
-  "noLemmasFound": "Níl aon fhoclóir le níos mó ná {xp} XP. Lean ar aghaidh ag cleachtadh!",
   "constructUsePvmDesc": "Déanta i gceist guth",
-  "lockedMorphFeature": "Ag fanacht le bheith scaoilte",
   "leaveSpaceDescription": "Trí fhágáil an chúrsa, fágfaidh tú na comhráite go léir laistigh de. Feicfidh úsáideoirí eile go bhfuil tú imithe as an gcúrsa.",
-  "whatIsLemma": "Cad é an lemas?",
   "constructUseCorMmDesc": "Brí teachtaireachta ceart",
   "constructUseIncMmDesc": "Brí teachtaireachta mícheart",
   "constructUseIgnMmDesc": "Brí teachtaireachta neamhaird",
   "clickForMeaningActivity": "Cliceáil anseo le haghaidh Dúshlán Brí",
   "meaning": "Brí",
   "chatWith": "Grúpa le {displayname}",
-  "slightlyOffensive": "Leánnta beagáinín maslach",
   "clickOnEmailLink": "Cliceáil ar an nasc san r-phost le do thoil agus lean ar aghaidh.\n\nSeiceáil do chliabh spam má tá an r-phost fós gan teacht.",
-  "whoIsAllowedToJoinThisChat": "Cé atá ceadaithe chun páirt a ghlacadh sa chomhrá seo",
   "dontForgetPassword": "Ná déan dearmad ar do phasfhocal!",
   "enableAutocorrectToolName": "Cumasaigh uathoibriú ceartaitheoir an ghléis",
   "enableAutocorrectDescription": "Má tá do ghléas tacaíocht ag teanga atá tú ag foghlaim, is féidir leat uathoibriú ceartaitheoir an ghléis a chumasú chun earráidí coitianta a cheartú de réir mar a chlóscríontar.",
@@ -4665,48 +4260,26 @@
   "autocorrectNotAvailable": "Ar an drochuair, níl do chóras reatha tacaíocht don ghné seo faoi láthair. Fan ar an eolas le haghaidh forbairtí eile!",
   "pleaseUpdateApp": "Le do thoil, déan nuashonrú ar an aip chun leanúint ar aghaidh.",
   "chooseEmojiInstructionsBody": "Comhoiriúnigh na híomhánna le na focail is fearr a léiríonn iad. Ná bí buartha! Níl pointí caillte má aontaíonn tú nó nach n-aontaíonn tú. 😅",
-  "pickAnEmojiFor": "Roghnaigh íomhá éadaí do {lemma}",
   "analyticsVocabListBody": "Seo do gach focail atá agat! De réir mar a fhaigheann tú XP do gach focal, téann siad ó shíog go bláth iomlán. Cliceáil ar aon fhocal chun tuilleadh sonraí a fheiceáil.",
   "morphAnalyticsListBody": "Seo iad na coincheapa gramadaí go léir sa teanga atá tú ag foghlaim! Gheobhaidh tú iad de réir mar a thagann tú orthu agus tú ag comhrá. Cliceáil chun sonraí a fháil.",
   "knockSpaceSuccess": "Tá tú tar éis iarraidh a bheith páirteach sa chúrsa seo! Freagróidh riarthóir do iarratas nuair a fhaigheann sé é 😀",
-  "joinByCode": "Bí páirteach le cód",
   "chooseWordAudioInstructionsBody": "Éist leis an teachtaireacht iomlán. Ansin, déan comparáid idir na fuaimeanna agus na focail.",
   "chooseMorphsInstructionsBody": "Cliceáil ar na píosaí puzail le haghaidh ceisteanna gramadaí!",
-  "inviteAndLaunch": "Cuireadh agus tús",
-  "createOwnChat": "Cruthaigh do chat féin",
   "pleaseEnterInt": "Cuir isteach uimhir le do thoil",
   "home": "Baile",
   "join": "Bí páirteach",
   "readingAssistanceOverviewBody": "Cliceáil ar na cnaipeanna thíos le haghaidh cluichí beaga ar mheaitseáil íomhánna, fuaimeanna, brí na bhfocail, agus coincheapa gramadaí. Nó cliceáil ar aon fhocal le haghaidh sonraí.",
-  "learnByTexting": "Foghlaim trí theachtaireacht téacs",
-  "levelSummaryTrigger": "Féach ar achoimre",
   "levelSummaryPopupTitle": "Achoimre leibhéal {level}",
-  "referFriends": "Tagraigh cairde",
-  "referFriendDialogTitle": "Cuireadh a thabhairt do chara do do chomhrá",
-  "referFriendDialogDesc": "An bhfuil cara agat atá ar bís foghlaim teanga nua leat? Ansin, cóipeáil agus seol an nasc cuireadh seo chun páirt a ghlacadh agus comhrá a thosú leat inniu.",
-  "youUnlocked": "Tá tú tar éis oscailt",
   "resetInstructionTooltipsTitle": "Athshocraigh na téacsleabhair treorach",
   "resetInstructionTooltipsDesc": "Cliceáil chun na téacsleabhair treorach a thaispeáint ar nós do úsáideoir nua.",
   "selectForGrammar": "Roghnaigh deilbhín gramadach le haghaidh gníomhaíochtaí agus sonraí.",
-  "newChatActivityTitle": "Ar mhaith leat gníomhaíocht spraíúil a chur leis?",
-  "newChatActivityDesc": "Déan gach comhrá grúpa eachtra le Pleanálaí Gníomhaíochta! Socraigh topaicí agus cuspóirí suimiúla don ghrúpa, agus tabhair beocht don chomhrá le híomhánna álainn. Spreag pléanna samhlaíocha agus coinnigh an spraoi ag sileadh go héasca!",
-  "exploreMore": "Féach tuilleadh",
   "randomize": "Randamach",
   "clear": "Glan",
   "makeYourOwnActivity": "Cruthaigh do ghnó féin",
   "featuredActivities": "Réamh-mholta",
-  "goToChat": "Téigh go dtí an comhrá",
   "save": "Sábháil",
-  "selectActivity": "Roghnaigh gníomhaíocht",
-  "wordFocusListeningMultipleChoice": "Cén t-amhharc fuaime a oireann don fhocal?",
   "startChat": "Tosaigh comhrá",
   "translationProblem": "Fadhb aistriúcháin",
-  "perfectTranslation": "Aistriúchán foirfe!",
-  "greatJobTranslation": "Obair den scoth leis an aistriúchán seo!",
-  "goodJobTranslation": "Obair mhaith ar an aistriúchán seo.",
-  "makingProgress": "Tá tú ag dul chun cinn!",
-  "keepPracticing": "Coinnigh ag cleachtadh!",
-  "niceJob": "Obair den scoth!",
   "askToJoin": "Iarr le bheith páirteach",
   "emptyChatWarningTitle": "Tá an comhrá folamh",
   "emptyChatWarningDesc": "Níl aon duine á thabhairt cuireadh duit sa chomhrá seo. Téigh go Socruithe Comhrá chun do chairde nó an Bot a thabhairt cuireadh. Is féidir leat é seo a dhéanamh níos déanaí freisin.",
@@ -4725,8 +4298,6 @@
   "languageLevelC2Desc": "Is féidir liom beagnach gach rud a chloisteáil nó a léamh a thuiscint agus mé féin a chur in iúl go líofa agus go cruinn.",
   "newVocab": "Focail nua",
   "newGrammar": "Coincheapa gramadaí nua",
-  "congratulationsOnReaching": "Tá tú ar an leibhéal {level}!",
-  "seeDetails": "Féach ar shonraí",
   "choosePracticeMode": "Cliceáil ar cheann de na cnaipeanna thuas chun gníomhaíocht chleachtadh a thosú",
   "ban": "Cosaint",
   "unban": "Fuaireann",
@@ -4740,8 +4311,6 @@
   "timesUsedWithAssistance": "Uaireanta úsáide le cabhair",
   "shareInviteCode": "Roinn cód cuireadh: {code}",
   "leaderboard": "Bord na n-iomaitheoirí",
-  "welcomeUser": "Fáilte {user}",
-  "joinSpaceOnboardingDesc": "An bhfuil cód cuireadh nó nasc agat chuig cúrsa poiblí?",
   "skipForNow": "Scipeáil faoi láthair",
   "permissions": "Ceadanna",
   "spaceChildPermission": "Cé hiad is féidir leo cuntais nua a chur leis an gcúrsa seo",
@@ -4749,12 +4318,8 @@
   "defaultOption": "Réamhshocrú",
   "deleteChatDesc": "An bhfuil tú cinnte gur mhaith leat an comhrá seo a scriosadh? Scriosfar é do gach rannpháirtí agus ní bheidh aon teachtaireachtaí laistigh den chomhrá ar fáil níos mó le haghaidh cleachtadh nó anailís foghlama.",
   "deleteSpaceDesc": "Scriosfar an cúrsa agus aon chomhrá roghnaithe do gach rannpháirtí agus ní bheidh aon teachtaireachtaí laistigh den chomhrá ar fáil níos mó le haghaidh cleachtadh nó anailís foghlama. Ní féidir an gníomh seo a chur ar ceal.",
-  "chatWithActivities": "Comhrá le gníomhaíochtaí",
   "launch": "Seol",
-  "launchActivityToChats": "Seol gníomhaíocht chuig comhráite",
   "searchChats": "Cuardaigh comhráite",
-  "selectChats": "Roghnaigh comhráite",
-  "selectChatToStart": "Críochnaigh! Roghnaigh comhrá chun tús a chur",
   "maxFifty": "Max 50",
   "configureSpace": "Cumraigh cúrsa",
   "pinMessages": "Greamaigh teachtaireachtaí",
@@ -4768,9 +4333,7 @@
   "announcements": "Fógraí",
   "activities": "Gníomhaíochtaí",
   "access": "Rochtain",
-  "botSettings": "Socruithe bot",
   "activitySuggestionTimeoutMessage": "Táimid ag obair go dian chun tuilleadh gníomhaíochtaí a ghiniúint duit, seiceáil ar ais i nóiméad le do thoil",
-  "accessSettingsWarning": "Ádh mór! Is cosúil nach bhfuil cead agat rialacha Rochtana an tseomra seo a shocrú. Ba cheart duit na rialacha seo a sheiceáil chun a chinntiú go bhfuil siad mar atá uait agus labhairt le riarthóir seomra má tá athruithe uait",
   "howSpaceCanBeFound": "Conas is féidir an cúrsa seo a aimsiú",
   "private": "Príobháideach",
   "cannotBeFoundInSearch": "Ní féidir é a aimsiú sa chuardach",
@@ -4783,16 +4346,6 @@
   "canBeFoundViaKnock": "• iarratas chun páirt a ghlacadh agus ceadú riarthóra",
   "youHaveLeveledUp": "Tá tú tar éis leibhéal a bhaint amach!",
   "sendActivities": "Seol gníomhaíochtaí",
-  "getStarted": "Tosaigh",
-  "getStartedBotChatDesc": "Is áit iontach é comhrá le AI chun tús a chur agus déanann uirlisí léamh, scríobh, éisteacht agus labhairt Pangea éasca!",
-  "getStartedCommunitiesDesc": "Tá sé i bhféith an phobail foghlaim le Pangea Chat! \nIs féidir leat do rang a bheith páirteach, cúrsa a fháil, nó fiú do chuid féin a chruthú!",
-  "getStartedFriendsDesc": "An bhfuil cara agat a bhfuil fonn foghlama leat?",
-  "getStartedBotChatComplete": "Maith thú! Tá tú ag comhrá leis an mbot!",
-  "getStartedCommunitiesComplete": "Go hiontach, tá tú i do bhall den chúrsa!",
-  "getStartedComplete": "Tá tú críochnaithe leis an rannóg seo!\nLean ort ag iniúchadh ár ngnéithe iontacha trí bheith ag comhrá le cairde!",
-  "getStartedFriendsComplete": "Woohoo! Tá cairde agat! 😉",
-  "getStartedBotChatButton": "Tosaigh ag comhrá!",
-  "getStartedFriendsButton": "Comhrá le cara",
   "groupChat": "Comhrá Grúpa",
   "directMessage": "Teachtaireacht Dhíreach",
   "newDirectMessage": "Teachtaireacht Dhíreach Nua",
@@ -4808,7 +4361,6 @@
   "mySavedActivities": "Mo Gníomhaíochtaí Sábháilte",
   "noSavedActivities": "Níl aon ghníomhaíochtaí sábáilte",
   "saveActivity": "Sábháil an gníomhaíocht seo",
-  "yourSavedActivities": "Gníomhaíochtaí Sábháilte",
   "failedToPlayVideo": "Theip ar sheinm an fhíseáin",
   "done": "Déanta",
   "inThisSpace": "Sa chúrsa seo",
@@ -4847,37 +4399,27 @@
   "maximumActivityParticipants": "Is féidir le gach Gníomhaíocht a bheith ag max {count} rannpháirtí.",
   "pending": "Iontach",
   "inactive": "Neamhghníomhach",
-  "unjoinedActivityMessage": "An bhfuil tú ag iarraidh páirt a ghlacadh? Roghnaigh ról oscailte!\nNó caith suas agus féach ar an seó!",
-  "fullActivityMessage": "Mothaigh saor chun féachaint ar an seó! Cé nach bhfuil aon róil oscailte le páirt a ghlacadh, is féidir leat an comhrá a fheiceáil!",
   "confirmRole": "Deimhnigh ról",
   "openRoleLabel": "OSCAIL",
   "joinedTheActivity": "👋 {username} d'fháiltigh isteach mar {role}",
   "finishedTheActivity": "🎯 {username} chríochnaigh an gníomhaíocht seo",
-  "endActivityTitle": "Tá mé críochnaithe",
-  "endActivityDesc": "An ndearna tú na cuspóirí?\nSeo do dheimhniú go bhfuil tú ag dul siar ó theachtaireacht. Ach ná bí buartha, leanann an spraoi ar aghaidh sa chomhrá! Cuir suas agus bain sult as an seó go dtí go clicfidh gach duine ar 'Críochnaithe'.",
   "archiveToAnalytics": "Cuir leis na Gníomhaíochtaí Críochnaithe agam",
   "activitySummaryError": "Ní féidir achoimrigh gníomhaíochta a fháil",
   "requestSummaries": "Iarr achoimrigh",
-  "loadingActivitySummary": "Ag lódáil achoimre gníomhaíochta...",
   "generatingNewActivities": "Is tú an chéad úsáideoir den phair teanga seo! Tabhair cúpla nóiméad dúinn, táimid ag ullmhú gníomhaíochtaí díreach duitse.",
-  "requestAccessTitle": "Iarr ar rochtain ar anailísíocht a fháil?",
+  "requestAccessTitle": "An bhfuil tú ag iarraidh rochtain ar an anailís?",
   "requestAccessDesc": "Ar mhaith leat rochtain a fháil chun anailísíocht rannpháirtithe a fheiceáil?\n\nMura n-aontaíonn rannpháirtithe, beidh na riarthóirí den chúrsa seo in ann a fheiceáil:\n    • an t-uimhir fhoclóra iomlán\n    • na coincheapa gramadaí iomlána\n    • na seisiúin gníomhaíochta iomlána a chríochnaigh\n    • na coincheapa gramadaí sonracha a úsáid, i gceart agus i gceart mícheart\n\nNí bheidh siad in ann a fheiceáil:\n    • teachtaireachtaí i gcomhráite lasmuigh den chúrsa\n    • liosta fhoclóra",
   "requestAccess": "Iarr rochtain ({count})",
   "analyticsInactiveTitle": "Níor féidir iarratais ar úsáideoirí neamhghníomhacha a sheoladh",
   "analyticsInactiveDesc": "Ní fheicfidh úsáideoirí neamhghníomhacha nach ndearna siad logáil isteach ó thús na gné seo do do iarratas.\n\nTiocfaidh an cnaipe Iarr ar ais nuair a bheidh siad ar ais. Is féidir leat an iarraidh a sheoladh arís níos déanaí trí chliceáil ar an gcnaipe Iarr ar ais faoi a n-ainm nuair a bheidh sé ar fáil.",
   "accessRequestedTitle": "Iarratas ar rochtain ar anailísí",
-  "accessRequestedDesc": "Tá na riarthóirí de “{space}” ag iarraidh do chuid anailísí foghlama a fheiceáil.\n\nMura n-aontaíonn tú, beidh na riarthóirí den chúrsa seo in ann do chuid:\n    • uimhreacha focail\n    • coincheapa gramadaí\n    • suímh gníomhaíochta críochnaithe\n    • na coincheapa gramadaí ar leith a úsáid, go ceart agus go mícheart\n\nNí bheidh siad in ann do chuid a fheiceáil:\n    • teachtaireachtaí i gcomhráite lasmuigh den chúrsa\n    • liosta na bhfocal",
-  "allowAccess": "Ceadaigh Rochtain",
-  "denyAccess": "Diúltaigh Rochtain",
+  "accessRequestedDesc": "Ag iarraidh admin(í): {admin} \n\nTá admin ó “{space}” ag iarraidh rochtain a fháil ar do thuarascálacha foghlama.\n\nMás aontaíonn tú, beidh siad in ann do:\n    • iomlán foclóra\n    • iomlán coincheapa gramadaí\n    • iomlán seisiúin gníomhaíochta a chríochnaigh\n    • na coincheapa gramadaí ar leith a úsáidtear, go ceart agus go mícheart\n\nNí bheidh siad in ann do:\n    • teachtaireachtaí i gcaibidlí lasmuigh den chúrsa\n    • liosta foclóra",
   "adminRequestedAccess": "D'iarr na riarthóirí rochtain ar do chuid anailísí.",
   "lastUpdated": "Nuashonraithe\n{time}",
   "activityFinishedMessage": "Críochnaíodh go léir!",
   "endForAll": "Críochnaigh do gach duine",
   "newCourse": "Cúrsa Nua",
-  "newCourseSubtitle": "Cén plean cúrsa ar mhaith leat a úsáid?",
-  "failedToLoadCourses": "Níor éirigh le cúrsaí a luchtú",
   "numModules": "{num} modúl",
-  "numActivityPlans": "{num} plean gníomhaíochta",
   "coursePlan": "Plean Cúrsa",
   "editCourseLater": "Is féidir leat teideal an phlean, cur síos, agus íomhá an chúrsa a chur in eagar níos déanaí.",
   "newCourseAccess": "De réir réamhshocraithe, tá cúrsaí príobháideach agus iarrtar cead riarthóra chun páirt a ghlacadh. Is féidir leat na socruithe seo a chur in eagar ag am ar bith.",
@@ -4891,17 +4433,11 @@
   "accessDesc": "Is féidir leat do chúrsa a dhéanamh oscailte don domhan! Nó, déan do chúrsa príobháideach agus slán.",
   "createGroupChatDesc": "De réir mar a thosaíonn agus a chríochnaíonn seisiúin gníomhaíochta, fanfaidh comhráite grúpa oscailte le haghaidh cumarsáide rialta.",
   "deleteDesc": "Ní féidir le haon riarthóirí cúrsa a scriosadh ach amháin. Is gníomh díobhálach é seo a bhaint go léir na húsáideoirí agus a scriosadh na comhráite uile roghnaithe laistigh den chúrsa. Bí cúramach le do thoil.",
-  "failedToLoadCourseInfo": "Níor éirigh leis faisnéis an chúrsa a luchtú",
   "noCourseFound": "Ó, tá gá le plean don chúrsa seo!\n\nIs sraith téacs agus gníomhaíochtaí comhrá iad pleananna cúrsa.",
   "additionalParticipants": "+ {num} eile",
-  "activityNotFoundForCourse": "Níor aimsíodh an gníomhaíocht seo laistigh den chúrsa",
-  "courseChats": "Comhráite an Chúrsa",
-  "myActivitySessions": "Mo Sheisiúin Gníomhaíochta",
   "directMessages": "Teachtaireachtaí Díreacha",
   "whatNow": "Cad atá le déanamh anois?",
   "chooseNextActivity": "Roghnaigh do chéad ghníomhaíocht eile!",
-  "seeInstructions": "Féach Treoracha",
-  "hideInstructions": "Folaigh Treoracha",
   "letsGo": "Téimis",
   "chooseRole": "Roghnaigh ról!",
   "chooseRoleToParticipate": "Roghnaigh ról le bheith páirteach!",
@@ -4911,23 +4447,15 @@
   "inviteFriends": "Cuireadh cairde",
   "waitNotDone": "Fan, níl mé críochnaithe!",
   "waitingForOthersToFinish": "Ag fanacht ar na daoine eile chun críochnú...",
-  "saveToCompletedActivities": "Sábháil chuig gníomhaíochtaí críochnaithe",
   "generatingSummary": "Ag anailísiú comhrá agus torthaí a ghiniúint",
-  "instructionsLanguage": "Teanga treoracha",
   "findCourse": "Féach ar chúrsa",
-  "activityCompletedDesc": "Cuireadh do ghníomhaíocht chríochnaithe chuig anailísí, áit ar féidir leat athbhreithniú a dhéanamh agus cleachtadh a dhéanamh ar an teanga a úsáideadh.",
   "pingParticipantsNotification": "{user} ag lorg úsáideoirí chun rannpháirtíocht sa seisiún gníomhaíochta i {room}",
   "course": "Cúrsa",
   "courses": "Cúrsaí",
   "courseName": "Ainm an chúrsa",
   "createNewCourse": "Cúrsa nua",
-  "publicCourses": "Cúrsaí poiblí",
   "goToCourse": "Téigh go cúrsa: {course}",
   "activityComplete": "Tá an ghníomhaíocht seo críochnaithe. Ba chóir go mbeadh achoimre na gníomhaíochta ar fáil thíos.",
-  "haventChattedMuch": "Is cosúil nach bhfuil tú tar éis caint go leor, bain triail as roinnt focail nua! Mura bhfuil tú ag iarraidh do chuspóir a bhaint amach, is féidir leat an gníomhaíocht a chríochnú thíos.",
-  "haveChatted": "Tá cuma air go bhfuil tú ag comhrá le tamall! Mura bhfuil tú ag iarraidh do chuspóir a chríochnú, críochnaigh chun an gníomhaíocht a chríochnú agus cruthóimid achoimre duit sa chomhrá!",
-  "userDoneAndWaiting": "{num1}/{num2} rannpháirtithe críochnaigh. Fan go mbeidh gach duine críochnaithe, agus cruthóimid achoimre duit sa chomhrá! \n\nMás mian leat filleadh ar an gcomhrá, cliceáil ar an gcnaipe leanúint sa chomhrá.",
-  "othersDoneAndWaiting": "{num1}/{num2} críochnaigh. An bhfuil tú tar éis do chuspóir a bhaint amach?",
   "startNewSession": "Tús a chur le seisiún nua",
   "joinOpenSession": "Cláraigh le haghaidh seisiún oscailte",
   "less": "níos lú",
@@ -4937,7 +4465,6 @@
   "openToJoin": "Oscailte le bheith páirteach",
   "results": "Torthaí",
   "activityDone": "Gníomhaíocht déanta!",
-  "moreLabel": "níos mó",
   "promoCodeInfo": "Is féidir cód promo a chur isteach ar an leathanach eile",
   "editsComingSoon": "Tá an cumas eagarthóireachta ar chathracha agus ar ghníomhaíochtaí ag teacht go luath.",
   "editing": "Ag eagarthóireacht",
@@ -4953,13 +4480,10 @@
   "courseSavedSuccessfully": "Sábháladh an cúrsa go rathúil",
   "addCoursePlan": "Cuir plean cúrsa leis",
   "activityStatsButtonInstruction": "Cliceáil anseo chun do staitisticí gníomhaíochta a fheiceáil agus an gníomhaíocht a dhúnadh nuair a bheidh sé críochnaithe",
-  "readingAnalyticsDesc": "Cliceáil cleachtadh ar gach teachtaireacht le haghaidh gníomhaíochtaí léitheoireachta.",
-  "speakingAnalyticsDesc": "Cláraigh teachtaireachtaí gutha le haghaidh cleachtadh labhartha.",
-  "audioAnalyticsDesc": "Cliceáil cleachtadh ar gach teachtaireacht le haghaidh gníomhaíochtaí éisteachta.",
   "loginToAccount": "Logáil isteach i mo chuntas",
   "appDescription": "Foghlaim teanga\nag an am céanna le do chairde.",
   "languages": "Teangacha",
-  "chooseLanguage": "Roghnaigh teanga.",
+  "chooseLanguage": "Roghnaigh teanga sprioc.",
   "planTrip": "Pleanáil do thuras",
   "howAreYouTraveling": "Conas atá tú ag taisteal?",
   "unlockPrivateTrip": "Díghlasáil turas príobháideach",
@@ -4972,25 +4496,20 @@
   "courseCode": "Cad é an pasfhocal rúnda?",
   "courseCodeHint": "Cód turais nó nasc",
   "unlockMyTrip": "Oscail mo thuras",
-  "anyLevel": "Aon leibhéal ar bith",
   "signupOption": "Conas ar mhaith leat clárú?",
   "withApple": "Le Apple",
   "withGoogle": "Le Google",
   "withEmail": "Le Ríomhphost",
   "createAccount": "Cruthaigh cuntas",
-  "noCoursesFound": "Níor aimsíodh aon chúrsaí",
   "loginWithEmail": "Logáil isteach le ríomhphost",
   "usernameOrEmail": "Ainm úsáideora nó ríomhphost",
   "email": "Ríomhphost",
   "forgotPassword": "An bhfuil do phasfhocal dearmadta?",
-  "writingAnalyticsDesc": "Seol teachtaireachtaí chun cleachtadh scríbhneoireachta a dhéanamh.",
   "endActivity": "Críochnaigh an ghníomhaíocht",
   "allLanguages": "Gach teanga",
-  "allCefrLevels": "Gach leibhéal CEFR",
   "chatListTooltip": "Anseo gheobhaidh tú do theachtaireachtaí díreacha! Cliceáil ar avatar aon úsáideora agus “tosaigh comhrá” chun DM a sheoladh.",
   "directMessageBotTitle": "Bot Teachtaireachta Díreacha Pangea",
   "feedbackTitle": "Aiseolas Gníomhaíochta",
-  "feedbackDesc": "Conas ba cheart feabhas a chur ar an ngníomhaíocht? Mura bhfuil aon sonraí agat, déanfaimid an t-athrú!",
   "feedbackHint": "Do chuid aiseolais",
   "feedbackButton": "Seol aiseolas",
   "directMessageBotDesc": "Tá comhrá le daoine níos spraíúla ach... tá AI i gcónaí réidh!",
@@ -4998,32 +4517,8 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-06 13:02:48.899020",
+  "@@last_modified": "2026-01-07 14:29:21.686769",
   "@customReaction": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@accountInformation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addGroupDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addNewFriend": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@alreadyHaveAnAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createNewGroup": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@editChatPermissions": {
     "type": "String",
     "placeholders": {}
   },
@@ -5039,18 +4534,6 @@
     }
   },
   "@requests": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@allCorrect": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newWayAllGood": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@othersAreBetter": {
     "type": "String",
     "placeholders": {}
   },
@@ -5075,18 +4558,6 @@
     "placeholders": {}
   },
   "@itInstructionsBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@oneday": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@oneweek": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@onemonth": {
     "type": "String",
     "placeholders": {}
   },
@@ -5126,35 +4597,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@myLearning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@waTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeDateRange": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@classDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addStudents": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@copyClassLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@copyClassCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteStudentByUserName": {
     "type": "String",
     "placeholders": {}
   },
@@ -5166,35 +4609,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@shareVideo": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shareVideoDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shareFiles": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectLanguageLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@noIdenticalLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iWantALanguagePartnerFrom": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@worldWide": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noResults": {
     "type": "String",
     "placeholders": {}
   },
@@ -5202,23 +4617,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@iWantAConversationPartner": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iWantALanguagePartnerWhoSpeaks": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iWantALanguagePartnerWhoIsLearning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinWithClassCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@joinWithClassCodeHint": {
     "type": "String",
     "placeholders": {}
   },
@@ -5258,23 +4657,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@askPangeaBot": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@sorryNoResults": {
     "type": "String",
     "placeholders": {}
   },
   "@ignoreInThisText": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@helpMeTranslate": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@needsItShortMessage": {
     "type": "String",
     "placeholders": {}
   },
@@ -5286,43 +4673,7 @@
       }
     }
   },
-  "@needsIgcMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tokenTranslationTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@spanTranslationDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@spanTranslationTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@l1SpanAndGrammarTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@l1SpanAndGrammarDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@otherTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@otherDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@countryInformation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@myLanguages": {
     "type": "String",
     "placeholders": {}
   },
@@ -5331,10 +4682,6 @@
     "placeholders": {}
   },
   "@sourceLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@languagesISpeak": {
     "type": "String",
     "placeholders": {}
   },
@@ -5394,31 +4741,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@itIsDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@igcIsDisabled": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@goToLearningSettings": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@error405Title": {
     "type": "String",
     "placeholders": {}
   },
   "@error405Desc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@loginOrSignup": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iAgreeToThe": {
     "type": "String",
     "placeholders": {}
   },
@@ -5450,18 +4777,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@toggleIT": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@toggleIGC": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@toggleToolSettingsDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@connectedToStaging": {
     "type": "String",
     "placeholders": {}
@@ -5470,39 +4785,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@sendVoiceNotes": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sendVoiceNotesDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatTopicDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteStudentByUserNameDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@participants": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@almostPerfect": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@prettyGood": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@letMeThink": {
     "type": "String",
     "placeholders": {}
   },
@@ -5511,14 +4794,6 @@
     "placeholders": {}
   },
   "@clickMessageBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@understandingMessagesTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@understandingMessagesBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -5542,26 +4817,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unknownProficiency": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeView": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clearAll": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@generateVocabulary": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@generatePrompts": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@subscribe": {
     "type": "String",
     "placeholders": {}
@@ -5579,10 +4834,6 @@
     "placeholders": {}
   },
   "@currentSubscription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeSubscription": {
     "type": "String",
     "placeholders": {}
   },
@@ -5615,25 +4866,6 @@
     "placeholders": {}
   },
   "@update": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@updateDesc": {
-    "type": "String",
-    "placeholders": {
-      "localVersion": {
-        "type": "String"
-      },
-      "storeVersion": {
-        "type": "String"
-      }
-    }
-  },
-  "@maybeLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mainMenu": {
     "type": "String",
     "placeholders": {}
   },
@@ -5693,34 +4925,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@kickAllStudents": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kickAllStudentsConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteAllStudents": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteAllStudentsConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteUsersFromPangea": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@redeemPromoCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterPromoCode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@downloadTxtFile": {
     "type": "String",
     "placeholders": {}
@@ -5749,775 +4953,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@abDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@afDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@akDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sqDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@amDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@arDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@anDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@asDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@avDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@aeDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ayDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@azDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bmDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@baDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@euDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@beDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@biDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@brDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@bgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@myDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@caDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ceDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@zhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@coDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@crDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hrDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@csDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@daDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@dvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nlDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@eoDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@etDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@eeDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@foDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fjDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@frDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ffDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@glDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@deDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@elDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@guDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@htDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@haDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@heDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hzDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hoDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@huDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@idDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ieDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@igDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ikDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ioDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@isDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@itDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@klDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@knDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@krDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ksDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kmDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@rwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@koDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@kjDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@laDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lbDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@liDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@loDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ltDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@luDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@msDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mlDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mtDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@miDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mrDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@naDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nvDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nbDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ndDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@neDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ngDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@nrDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ocDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ojDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@omDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@orDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@osDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@paDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@piDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@faDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@plDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@psDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ptDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@quDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@rmDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@rnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@roDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ruDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@saDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@scDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sdDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@seDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@smDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@sgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@srDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@gdDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@snDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@siDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@skDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@slDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@soDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@stDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@esDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@suDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@swDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ssDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@svDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@taDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@teDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tgDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@thDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@boDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tlDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@toDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@trDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tsDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ttDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@twDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ugDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ukDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@urDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@uzDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@veDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@viDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@voDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@waDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@woDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fyDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@xhDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yoDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@zaDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@unkDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@zuDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hawDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hmnDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@multiDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@cebDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@dzDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@iwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@jwDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moDisplayName": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@shDisplayName": {
     "type": "String",
     "placeholders": {}
   },
@@ -7513,14 +5949,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@allPrivateChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@unknownPrivateChat": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@invitedToSpace": {
     "type": "String",
     "placeholders": {
@@ -7531,14 +5959,6 @@
         "type": "String"
       }
     }
-  },
-  "@declinedInvitation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@acceptedInvitation": {
-    "type": "String",
-    "placeholders": {}
   },
   "@youreInvited": {
     "type": "String",
@@ -7571,10 +5991,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarAnalytics": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@total": {
     "type": "String",
     "placeholders": {}
@@ -7583,31 +5999,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@promoSubscriptionExpirationDesc": {
-    "type": "String",
-    "placeholders": {
-      "expiration": {
-        "type": "String"
-      }
-    }
-  },
-  "@emptyChatNameWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@blurMeansTranslateTitle": {
     "type": "String",
     "placeholders": {}
   },
   "@blurMeansTranslateBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@someErrorTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@someErrorBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -7635,35 +6031,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@itStartDefaultPrompt": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lockedChatWarning": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@lockChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@suggestToChat": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@suggestToChatDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@acceptSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@acceptSelectionAnyway": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@makingActivity": {
     "type": "String",
     "placeholders": {}
   },
@@ -7712,10 +6080,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@viewArchive": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@trialExpiration": {
     "type": "String",
     "placeholders": {
@@ -7737,10 +6101,6 @@
     "placeholders": {}
   },
   "@clickToManageSubscription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@errorGettingAudio": {
     "type": "String",
     "placeholders": {}
   },
@@ -7768,10 +6128,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chooseAUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@define": {
     "type": "String",
     "placeholders": {}
@@ -7780,63 +6136,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@addConversationBot": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@convoBotSettingsDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterAConversationTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enableModeration": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enableModerationDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationLanguageLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@showDefinition": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@subscriptionPopupTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@subscriptionPopupDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@seeOptions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@continuedWithoutSubscription": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@trialPeriodExpired": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectToDefine": {
     "type": "String",
     "placeholders": {}
   },
@@ -7860,39 +6160,15 @@
     "type": "String",
     "placeholders": {}
   },
-  "@audioTooltip": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@speechToTextTooltip": {
     "type": "String",
     "placeholders": {}
-  },
-  "@certifyAge": {
-    "type": "String",
-    "placeholders": {
-      "age": {
-        "type": "String"
-      }
-    }
   },
   "@kickBotWarning": {
     "type": "String",
     "placeholders": {}
   },
-  "@joinToView": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@refresh": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoPlayTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@autoPlayDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -7920,154 +6196,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@conversationBotModeSelectDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_discussion": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_custom": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_conversation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_textAdventure": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotModeSelectOption_storyGame": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_title": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTopicLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTopicPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionKeywordsLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionKeywordsPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionKeywordsHintText": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerScheduleEnabledLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerScheduleHourIntervalLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerReactionEnabledLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotDiscussionZone_discussionTriggerReactionKeyLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_title": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_customSystemPromptLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_customSystemPromptPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_customSystemPromptEmptyError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botConfig": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botConfigNoPermissionTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botConfigNoPermissionMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDialogTitleInvite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotButtonInvite": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDialogInviteConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotButtonTitleRemove": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotButtonRemove": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addConversationBotDialogRemoveConfirmation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotConfigConfirmChange": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotStatus": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotTextAdventureZone_title": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotTextAdventureZone_instructionLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotTextAdventureZone_instructionPlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@conversationBotCustomZone_instructionSystemPromptEmptyError": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@studentAnalyticsNotAvailable": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@roomDataMissing": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@updatePhoneOS": {
     "type": "String",
     "placeholders": {}
@@ -8081,18 +6209,6 @@
     "placeholders": {}
   },
   "@autoIGCToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@runGrammarCorrection": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCorrectionFailed": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@grammarCorrectionComplete": {
     "type": "String",
     "placeholders": {}
   },
@@ -8116,14 +6232,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@topicNotSet": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatCapacityNotSet": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@chatCapacityHasBeenChanged": {
     "type": "String",
     "placeholders": {}
@@ -8140,10 +6248,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatExceedsCapacity": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@tooManyRequest": {
     "type": "String",
     "placeholders": {}
@@ -8156,27 +6260,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@nonexistentSelection": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeAnalyticsLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@practice": {
     "type": "String",
     "placeholders": {}
   },
   "@noLanguagesSet": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noActivitiesFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hintTitle": {
     "type": "String",
     "placeholders": {}
   },
@@ -8207,26 +6295,6 @@
       }
     }
   },
-  "@languageButtonLabel": {
-    "type": "String",
-    "placeholders": {
-      "currentLanguage": {
-        "type": "String"
-      }
-    }
-  },
-  "@interactiveTranslatorAutoPlaySliderHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@interactiveTranslatorAutoPlayDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeAnalyticsView": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@l1TranslationBody": {
     "type": "String",
     "placeholders": {}
@@ -8255,15 +6323,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@errorTypes": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@level": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@canceledSend": {
     "type": "String",
     "placeholders": {}
   },
@@ -8300,10 +6360,6 @@
     "placeholders": {}
   },
   "@reportContentIssueDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeContent": {
     "type": "String",
     "placeholders": {}
   },
@@ -9239,10 +7295,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@grammarCopyNUMFORMpsor": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@grammarCopyUNKNOWN": {
     "type": "String",
     "placeholders": {}
@@ -9423,34 +7475,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@enterPrompt": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectBotLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseVoice": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterLanguageLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterDiscussionTopic": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectBotChatMode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@messageNotInTargetLang": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@other": {
     "type": "String",
     "placeholders": {}
@@ -9463,23 +7487,11 @@
       }
     }
   },
-  "@botModeValidation": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@clickBestOption": {
     "type": "String",
     "placeholders": {}
   },
   "@completeActivitiesToUnlock": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@botSettingsSubtitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@invitePeople": {
     "type": "String",
     "placeholders": {}
   },
@@ -9496,22 +7508,6 @@
     "placeholders": {}
   },
   "@notificationsOff": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chatCanBeFoundViaSearch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@requireCodeToJoin": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@canFindInSearch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addChatToSpace": {
     "type": "String",
     "placeholders": {}
   },
@@ -9662,47 +7658,11 @@
       }
     }
   },
-  "@signInWithUsername": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@registrationEmailMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@enableTTSToolName": {
     "type": "String",
     "placeholders": {}
   },
   "@enableTTSToolDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@couldNotFindTTS": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@ttsInstructionsHyperlink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createAnAccount": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signIn": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signUpWithEmail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signUpWithGoogle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signUpWithApple": {
     "type": "String",
     "placeholders": {}
   },
@@ -9714,31 +7674,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pleaseEnterAnEmail": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signInWithGoogle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@signInWithApple": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseYourAvatar": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@iWantToLearn": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@letsStart": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@pleaseAgreeToTOS": {
     "type": "String",
     "placeholders": {}
   },
@@ -9746,19 +7682,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pleaseSelectALanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@myBaseLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@clickWordsInstructions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@chooseBestDefinition": {
     "type": "String",
     "placeholders": {}
   },
@@ -9767,10 +7691,6 @@
     "placeholders": {}
   },
   "@formSectionHeader": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@noEmojiSelectedTooltip": {
     "type": "String",
     "placeholders": {}
   },
@@ -9787,10 +7707,6 @@
     "placeholders": {}
   },
   "@meaningNotFound": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@formsNotFound": {
     "type": "String",
     "placeholders": {}
   },
@@ -9965,26 +7881,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@removeFeature": {
-    "type": "String",
-    "placeholders": {
-      "feature": {
-        "type": "String"
-      }
-    }
-  },
-  "@chooseCorrectLabel": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@levelPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "@activityPlannerTitle": {
     "type": "String",
     "placeholders": {}
@@ -10010,10 +7906,6 @@
     "placeholders": {}
   },
   "@learningObjectivePlaceholder": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@mediaLabel": {
     "type": "String",
     "placeholders": {}
   },
@@ -10073,27 +7965,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@noLemmasFound": {
-    "type": "String",
-    "placeholders": {
-      "xp": {
-        "type": "int"
-      }
-    }
-  },
   "@constructUsePvmDesc": {
     "type": "String",
     "placeholders": {}
   },
-  "@lockedMorphFeature": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@leaveSpaceDescription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@whatIsLemma": {
     "type": "String",
     "placeholders": {}
   },
@@ -10125,15 +8001,7 @@
       }
     }
   },
-  "@slightlyOffensive": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@clickOnEmailLink": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@whoIsAllowedToJoinThisChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -10253,14 +8121,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pickAnEmojiFor": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
   "@analyticsVocabListBody": {
     "type": "String",
     "placeholders": {}
@@ -10273,23 +8133,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@joinByCode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@chooseWordAudioInstructionsBody": {
     "type": "String",
     "placeholders": {}
   },
   "@chooseMorphsInstructionsBody": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteAndLaunch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createOwnChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -10309,14 +8157,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@learnByTexting": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@levelSummaryTrigger": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@levelSummaryPopupTitle": {
     "type": "String",
     "placeholders": {
@@ -10324,22 +8164,6 @@
         "type": "int"
       }
     }
-  },
-  "@referFriends": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@referFriendDialogTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@referFriendDialogDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@youUnlocked": {
-    "type": "String",
-    "placeholders": {}
   },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
@@ -10350,18 +8174,6 @@
     "placeholders": {}
   },
   "@selectForGrammar": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newChatActivityTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newChatActivityDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exploreMore": {
     "type": "String",
     "placeholders": {}
   },
@@ -10381,19 +8193,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@goToChat": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@wordFocusListeningMultipleChoice": {
     "type": "String",
     "placeholders": {}
   },
@@ -10402,30 +8202,6 @@
     "placeholders": {}
   },
   "@translationProblem": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@perfectTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@greatJobTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@goodJobTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@makingProgress": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@keepPracticing": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@niceJob": {
     "type": "String",
     "placeholders": {}
   },
@@ -10501,18 +8277,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@congratulationsOnReaching": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
-  "@seeDetails": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@choosePracticeMode": {
     "type": "String",
     "placeholders": {}
@@ -10569,18 +8333,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -10609,27 +8361,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatWithActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@launch": {
     "type": "String",
     "placeholders": {}
   },
-  "@launchActivityToChats": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@searchChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectChatToStart": {
     "type": "String",
     "placeholders": {}
   },
@@ -10685,15 +8421,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@botSettings": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySuggestionTimeoutMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@accessSettingsWarning": {
     "type": "String",
     "placeholders": {}
   },
@@ -10742,46 +8470,6 @@
     "placeholders": {}
   },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStarted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedCommunitiesDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedCommunitiesComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },
@@ -10846,10 +8534,6 @@
     "placeholders": {}
   },
   "@saveActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yourSavedActivities": {
     "type": "String",
     "placeholders": {}
   },
@@ -11024,14 +8708,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unjoinedActivityMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fullActivityMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@confirmRole": {
     "type": "String",
     "placeholders": {}
@@ -11059,14 +8735,6 @@
       }
     }
   },
-  "@endActivityTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@endActivityDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@archiveToAnalytics": {
     "type": "String",
     "placeholders": {}
@@ -11076,10 +8744,6 @@
     "placeholders": {}
   },
   "@requestSummaries": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@loadingActivitySummary": {
     "type": "String",
     "placeholders": {}
   },
@@ -11118,18 +8782,13 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }
     }
-  },
-  "@allowAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@denyAccess": {
-    "type": "String",
-    "placeholders": {}
   },
   "@adminRequestedAccess": {
     "type": "String",
@@ -11155,23 +8814,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseSubtitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@failedToLoadCourses": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@numModules": {
-    "type": "int",
-    "placeholders": {
-      "num": {
-        "type": "int"
-      }
-    }
-  },
-  "@numActivityPlans": {
     "type": "int",
     "placeholders": {
       "num": {
@@ -11231,10 +8874,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@failedToLoadCourseInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@noCourseFound": {
     "type": "String",
     "placeholders": {}
@@ -11247,18 +8886,6 @@
       }
     }
   },
-  "@activityNotFoundForCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@courseChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@myActivitySessions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@directMessages": {
     "type": "String",
     "placeholders": {}
@@ -11268,14 +8895,6 @@
     "placeholders": {}
   },
   "@chooseNextActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@seeInstructions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hideInstructions": {
     "type": "String",
     "placeholders": {}
   },
@@ -11319,23 +8938,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@saveToCompletedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@generatingSummary": {
     "type": "String",
     "placeholders": {}
   },
-  "@instructionsLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@findCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@activityCompletedDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11366,10 +8973,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@publicCourses": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@goToCourse": {
     "type": "String",
     "placeholders": {
@@ -11379,36 +8982,6 @@
   "@activityComplete": {
     "type": "String",
     "placeholders": {}
-  },
-  "@haventChattedMuch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@haveChatted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@userDoneAndWaiting": {
-    "type": "String",
-    "placeholders": {
-      "num1": {
-        "type": "int"
-      },
-      "num2": {
-        "type": "int"
-      }
-    }
-  },
-  "@othersDoneAndWaiting": {
-    "type": "String",
-    "placeholders": {
-      "num1": {
-        "type": "int"
-      },
-      "num2": {
-        "type": "int"
-      }
-    }
   },
   "@startNewSession": {
     "type": "String",
@@ -11443,10 +9016,6 @@
     "placeholders": {}
   },
   "@activityDone": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moreLabel": {
     "type": "String",
     "placeholders": {}
   },
@@ -11514,18 +9083,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -11590,10 +9147,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@anyLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@signupOption": {
     "type": "String",
     "placeholders": {}
@@ -11614,10 +9167,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@noCoursesFound": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginWithEmail": {
     "type": "String",
     "placeholders": {}
@@ -11634,19 +9183,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@writingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@endActivity": {
     "type": "String",
     "placeholders": {}
   },
   "@allLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@allCefrLevels": {
     "type": "String",
     "placeholders": {}
   },
@@ -11659,10 +9200,6 @@
     "placeholders": {}
   },
   "@feedbackTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@feedbackDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11690,16 +9227,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "inviteFriendsToActivity": "Cuireadh chun cairde a thabhairt chuig gníomhaíocht",
-  "inviteFriendsToActivityCourse": "Cuireadh chun cairde a thabhairt chuig gníomhaíocht agus cúrsa",
   "feedbackRespDesc": "Seiceáil ar ais amárach le haghaidh nuashonruithe ar ghníomhaíocht.",
   "activityDropdownDesc": "Nuair a bheidh tú críochnaithe leis an ngníomhaíocht seo, cliceáil thíos",
-  "activityAnalyticsListBody": "Seo iad do ghníomhaíochtaí críochnaithe! Tar éis duit na gníomhaíochtaí a chríochnú, is féidir leat iad a fheiceáil anseo.",
   "languageMismatchTitle": "Míchothrom na teangacha",
   "languageMismatchDesc": "Ní oireann do theanga sprioc an gníomhaíochta seo do theanga na gníomhaíochta. An bhfuil tú ag iarraidh do theanga sprioc a nuashonrú?",
   "reportWordIssueTooltip": "Tuairiscigh fadhb eolas focal",
   "tokenInfoFeedbackDialogTitle": "Aiseolas Eolas Focal",
-  "tokenInfoFeedbackDialogDesc": "Déantar bot AI botún. Déan cur síos ar aon fhadhbanna a fuair tú leis an eolas thuas.",
   "noPublicCoursesFound": "Níor aimsíodh cúrsaí poiblí. Ar mhaith leat ceann a chruthú?",
   "noCourseTemplatesFound": "Níor éirigh linn aon chúrsaí a aimsiú do do theanga sprioc. Is féidir leat comhrá a dhéanamh leis an Pangea Bot sa t-am ar fad, agus seiceáil ar ais níos déanaí le haghaidh tuilleadh cúrsaí.",
   "botActivityJoinFailMessage": "Tá Pangea Bot ag tógáil tamall le freagairt. Déan triail eile níos déanaí, nó cuireadh a thabhairt do chara.",
@@ -11707,23 +9240,11 @@
   "leaveDesc": "Fág an spás seo agus na comhráite go léir laistigh de",
   "selectAll": "Roghnaigh gach rud",
   "deselectAll": "Dí-roghnaigh gach rud",
-  "@inviteFriendsToActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteFriendsToActivityCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedbackRespDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@activityDropdownDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@activityAnalyticsListBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -11740,10 +9261,6 @@
     "placeholders": {}
   },
   "@tokenInfoFeedbackDialogTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tokenInfoFeedbackDialogDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -11780,7 +9297,6 @@
   "newMessageInPangeaChat": "🔊 Teachtaireacht nua i gComhrá Pangea",
   "shareCourse": "Comhroinn cúrsa",
   "addCourse": "Cuir cúrsa leis",
-  "joinCourseWithCode": "Cláraigh i gcúrsa le cód",
   "joinPublicCourse": "Cláraigh i gcúrsa poiblí",
   "vocabLevelsDesc": "Seo áit a dtéann focail fhocail a bhfuil leibhéal acu nuair a dhéantar iad a leibhéalú!",
   "highlightVocabTooltip": "Bain úsáid as na focail ghréasáin a bhfuiltear ag iarraidh a ghrúpáil thíos trína sheoladh nó trína chleachtadh sa chomhrá",
@@ -11804,10 +9320,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@joinCourseWithCode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinPublicCourse": {
     "type": "String",
     "placeholders": {}
@@ -11816,7 +9328,1193 @@
     "type": "String",
     "placeholders": {}
   },
-  "@highlightVocabTooltip": {
+  "emptyChatSearch": "Níl aon DMs nó comhoibrithe le fáil. Déan cinnte go bhfuil do chuardach litrithe go ceart.",
+  "activityAnalyticsTooltipBody": "Seo do gníomhaíochtaí sábháilte le haghaidh athbhreithnithe agus cleachtaidh.",
+  "numSavedActivities": "Uimhir na ngníomhaíochtaí sábháilte",
+  "saveActivityTitle": "Sábháil gníomhaíocht",
+  "saveActivityDesc": "Maith thú! Sábháil an gníomhaíocht seo le haghaidh athbhreithnithe agus cleachtaidh níos déanaí",
+  "levelInfoTooltip": "Anseo is féidir leat na pointí go léir atá tuillte agat a fheiceáil agus conas a fuair tú iad!",
+  "alreadyInCourseWithID": "Tá tú cheana féin i gcúrsa leis an bplean seo. Ar mhaith leat cúrsa a chruthú leis an bplean céanna, nó dul chuig an gcúrsa atá ann cheana?",
+  "goToExistingCourse": "Téigh chuig an gcúrsa atá ann cheana",
+  "emojiView": "Radharc emoji",
+  "feedbackDialogDesc": "Déanaim botúin freisin! An bhfuil aon rud a chabhróidh liom feabhsú?",
+  "contactHasBeenInvitedToTheCourse": "Cuireadh an teagmháil chuig an gcúrsa",
+  "activityStatsButtonTooltip": "Eolas gníomhaíochta",
+  "allow": "Ceadaigh",
+  "deny": "Diúltaigh",
+  "enabledRenewal": "Cuir Athnuachan Suibscríofa ar Siúl",
+  "subscriptionEndsOn": "Críochnaíonn an Suibscríobh Ar",
+  "subscriptionRenewsOn": "Athnuachan an Suibscríobh Ar",
+  "waitForSubscriptionChanges": "D'fhéadfadh go dtógfadh athruithe ar do shuibscríobh nóiméad chun léiriú a fháil sa aip.",
+  "subscribeReadingAssistance": "Suibscríobh chun uirlisí teachtaireachta a dhíghlasáil",
+  "aceDisplayName": "Achinese",
+  "achDisplayName": "Acoli",
+  "afDisplayName": "Afracais",
+  "akDisplayName": "Akan",
+  "alzDisplayName": "Alur",
+  "amDisplayName": "Amharic",
+  "arDisplayName": "Araibis",
+  "asDisplayName": "Asamais",
+  "awaDisplayName": "Awadhi",
+  "ayDisplayName": "Aymara",
+  "azDisplayName": "Aisearbaijianach",
+  "baDisplayName": "Bashkir",
+  "banDisplayName": "Bailínis",
+  "bbcDisplayName": "Batak Toba",
+  "beDisplayName": "Béarla Bhealarúiseach",
+  "bemDisplayName": "Bemba",
+  "bewDisplayName": "Betawi",
+  "bgDisplayName": "Bulgáiris",
+  "bhoDisplayName": "Bhojpuri",
+  "bikDisplayName": "Bikol",
+  "bmDisplayName": "Bambara",
+  "bnDisplayName": "Bengálais",
+  "bnBDDisplayName": "Bengálais (An Bhanglaid)",
+  "bnINDisplayName": "Bengálais (An India)",
+  "brDisplayName": "Breton",
+  "bsDisplayName": "Boisniach",
+  "btsDisplayName": "Batak Simalungun",
+  "btxDisplayName": "Batak Karo",
+  "buaDisplayName": "Buriat",
+  "caDisplayName": "Catalóin",
+  "cebDisplayName": "Cebuano",
+  "cggDisplayName": "Chiga",
+  "chmDisplayName": "Mari",
+  "ckbDisplayName": "Cúrdach Lárnach",
+  "cnhDisplayName": "Hakha Chin",
+  "coDisplayName": "Corsican",
+  "crhDisplayName": "Tuircis Chriomna",
+  "crsDisplayName": "Fraincis Creole Seselwa",
+  "csDisplayName": "Seicis",
+  "cvDisplayName": "Chuvash",
+  "cyDisplayName": "Cymraeg",
+  "daDisplayName": "Danmhairgis",
+  "deDisplayName": "Gearmáinis",
+  "dinDisplayName": "Dinka",
+  "doiDisplayName": "Dogri",
+  "dovDisplayName": "Dombe",
+  "dzDisplayName": "Dzongkha",
+  "eeDisplayName": "Ewe",
+  "enDisplayName": "Béarla",
+  "enAUDisplayName": "Béarla (An Astráil)",
+  "enGBDisplayName": "Béarla (An Ríocht Aontaithe)",
+  "enINDisplayName": "Béarla (An India)",
+  "enUSDisplayName": "Béarla (SAM)",
+  "eoDisplayName": "Esperanto",
+  "esDisplayName": "Spáinnis",
+  "esESDisplayName": "Spáinnis (An Spáinn)",
+  "esMXDisplayName": "Spáinnis (Meicsiceo)",
+  "euDisplayName": "Basque",
+  "faDisplayName": "Pearsis",
+  "ffDisplayName": "Fulah",
+  "fiDisplayName": "Fionlainnis",
+  "filDisplayName": "Filipíneach",
+  "fjDisplayName": "Fidil",
+  "foDisplayName": "Faoiseach",
+  "frDisplayName": "Fraincis",
+  "frCADisplayName": "Fraincis (Ceanada)",
+  "frFRDisplayName": "Fraincis (An Fhrainc)",
+  "fyDisplayName": "Frisian Thiar",
+  "gaDisplayName": "Gaeilge",
+  "gaaDisplayName": "Ga",
+  "gdDisplayName": "Gaeilge na hAlban",
+  "glDisplayName": "Gailís",
+  "gnDisplayName": "Guaraní",
+  "gomDisplayName": "Concaine Goan",
+  "guDisplayName": "Gújaratí",
+  "haDisplayName": "Hausa",
+  "hawDisplayName": "Havaí",
+  "heDisplayName": "Heebréach",
+  "hiDisplayName": "Hiondú",
+  "hilDisplayName": "Hiligaynon",
+  "hmnDisplayName": "Hmong",
+  "hneDisplayName": "Chhattisgarhi",
+  "hrDisplayName": "Cróitis",
+  "hrxDisplayName": "Hunsrik",
+  "htDisplayName": "Críochnaigh Haití",
+  "huDisplayName": "Ungáiris",
+  "hyDisplayName": "Airméinis",
+  "idDisplayName": "Indonéisis",
+  "igDisplayName": "Igbo",
+  "iloDisplayName": "Iloko",
+  "isDisplayName": "Oileán na hÍsiltíre",
+  "itDisplayName": "Iodáilis",
+  "jaDisplayName": "Seapáinis",
+  "jvDisplayName": "Seimíneach",
+  "kaDisplayName": "Géorgach",
+  "kkDisplayName": "Cásac",
+  "kmDisplayName": "Caiméireach",
+  "knDisplayName": "Kannada",
+  "koDisplayName": "Cóiréach",
+  "kokDisplayName": "Conchani",
+  "kriDisplayName": "Krio",
+  "ksDisplayName": "Caismirí",
+  "ktuDisplayName": "Kituba (Poblacht Dhaonlathach na Congó)",
+  "kuDisplayName": "Cúrdach",
+  "kyDisplayName": "Círgeach",
+  "laDisplayName": "Laidin",
+  "lbDisplayName": "Lucsamburgach",
+  "lgDisplayName": "Ganda",
+  "liDisplayName": "Limburgach",
+  "lijDisplayName": "Ligurian",
+  "lmoDisplayName": "Lombard",
+  "lnDisplayName": "Lingala",
+  "loDisplayName": "Lao",
+  "ltDisplayName": "Laitvis",
+  "ltgDisplayName": "Latgalian",
+  "luoDisplayName": "Luo (Ceanáda agus Tansáin)",
+  "lusDisplayName": "Mizo",
+  "lvDisplayName": "Laitvis",
+  "maiDisplayName": "Maithili",
+  "makDisplayName": "Makasar",
+  "mgDisplayName": "Malagasy",
+  "miDisplayName": "Māori",
+  "minDisplayName": "Minangkabau",
+  "mkDisplayName": "Macedonian",
+  "mlDisplayName": "Malayalam",
+  "mnDisplayName": "Mongolian",
+  "mniDisplayName": "Manipuri",
+  "mrDisplayName": "Marathi",
+  "msDisplayName": "Malay",
+  "msArabDisplayName": "Malay (Arabic)",
+  "msMYDisplayName": "Malay (Malaysia)",
+  "mtDisplayName": "Máltais",
+  "mwrDisplayName": "Marwari",
+  "myDisplayName": "Birmiiseach",
+  "nanDisplayName": "Min Nan",
+  "nbDisplayName": "Nórsach (Bokmål)",
+  "neDisplayName": "Neapaileach",
+  "newDisplayName": "Newari",
+  "nlDisplayName": "Ollainnis",
+  "nlBEDisplayName": "Flamand",
+  "noDisplayName": "Nórsach",
+  "nrDisplayName": "Deisceart Ndebele",
+  "nsoDisplayName": "Sotho Thuaidh",
+  "nusDisplayName": "Nuer",
+  "nyDisplayName": "Nyanja",
+  "ocDisplayName": "Occitan",
+  "omDisplayName": "Oromo",
+  "orDisplayName": "Odia",
+  "paDisplayName": "Punjabi",
+  "paArabDisplayName": "Punjabi (Shahmukhi)",
+  "paINDisplayName": "Punjabi (Gurmukhi)",
+  "pagDisplayName": "Pangasinan",
+  "pamDisplayName": "Pampanga",
+  "papDisplayName": "Papiamento",
+  "plDisplayName": "Polainnis",
+  "psDisplayName": "Pashto",
+  "ptDisplayName": "Portaingéilis",
+  "ptBRDisplayName": "Portaingéilis (an Bhrasaíl)",
+  "ptPTDisplayName": "Portaingéilis (an Phortaingéil)",
+  "quDisplayName": "Quechua",
+  "rajDisplayName": "Rajasthani",
+  "rnDisplayName": "Rundi",
+  "roDisplayName": "Rómáinis",
+  "roMDDisplayName": "Moldóivis",
+  "romDisplayName": "Romáinis",
+  "ruDisplayName": "Rúisis",
+  "rwDisplayName": "Kinyarwanda",
+  "saDisplayName": "Sanskrit",
+  "satDisplayName": "Santali",
+  "scnDisplayName": "Sicilias",
+  "sdDisplayName": "Sindhi",
+  "sgDisplayName": "Sango",
+  "shnDisplayName": "Shan",
+  "siDisplayName": "Síneach",
+  "skDisplayName": "Slóivéig",
+  "slDisplayName": "Slóivéineach",
+  "smDisplayName": "Samoan",
+  "snDisplayName": "Shóna",
+  "soDisplayName": "Somáilis",
+  "sqDisplayName": "Albáinis",
+  "srDisplayName": "Searbhais",
+  "srMEDisplayName": "Montenegrin",
+  "ssDisplayName": "Swati",
+  "stDisplayName": "Sotho Theas",
+  "suDisplayName": "Sundanese",
+  "svDisplayName": "Sualainnis",
+  "swDisplayName": "Swahili",
+  "szlDisplayName": "Silesian",
+  "taDisplayName": "Tamail",
+  "teDisplayName": "Telegu",
+  "tetDisplayName": "Tetum",
+  "tgDisplayName": "Taisigh",
+  "thDisplayName": "Téalainnis",
+  "tiDisplayName": "Tigrinya",
+  "tkDisplayName": "Turcméanach",
+  "tlDisplayName": "Tagalog",
+  "tnDisplayName": "Tswana",
+  "trDisplayName": "Tuircis",
+  "tsDisplayName": "Tsonga",
+  "ttDisplayName": "Tatar",
+  "ugDisplayName": "Uyghur",
+  "ukDisplayName": "Úcráinis",
+  "urDisplayName": "Úrdú",
+  "urINDisplayName": "Úrdú (An India)",
+  "urPKDisplayName": "Úrdú (An Phacastáin)",
+  "uzDisplayName": "Úisbéice",
+  "viDisplayName": "Vítneaimis",
+  "wuuDisplayName": "Wu",
+  "xhDisplayName": "Xhosa",
+  "yiDisplayName": "Yiddish",
+  "yoDisplayName": "Yoruba",
+  "yuaDisplayName": "Yucateco",
+  "yueDisplayName": "Cantonach",
+  "yueCNDisplayName": "Cantonach (An tSín)",
+  "yueHKDisplayName": "Cantonach (Hong Cong)",
+  "zhDisplayName": "Sínis",
+  "zhCNDisplayName": "Sínis (Simplí)",
+  "zhTWDisplayName": "Sínis (Traidisiúnta)",
+  "zuDisplayName": "Zulu",
+  "@emptyChatSearch": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsTooltipBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@numSavedActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@levelInfoTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alreadyInCourseWithID": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@goToExistingCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@emojiView": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@contactHasBeenInvitedToTheCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityStatsButtonTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allow": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deny": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enabledRenewal": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionEndsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionRenewsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@waitForSubscriptionChanges": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscribeReadingAssistance": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@aceDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@achDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@afDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@akDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@amDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@arDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@asDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@awaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ayDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@azDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bbcDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@beDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bemDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bewDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bhoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bikDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnBDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@brDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@buaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@caDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cebDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cggDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ckbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cnhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@coDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@csDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@daDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dinDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@doiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dovDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eeDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enAUDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enGBDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enUSDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esESDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esMXDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@euDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@faDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ffDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@filDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fjDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@foDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frCADisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frFRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@glDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gomDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@guDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@haDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hawDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@heDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hilDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hmnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hneDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@htDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@huDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@idDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@igDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@iloDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@isDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@itDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@knDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@koDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kokDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kriDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ksDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ktuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@laDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@liDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lijDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lmoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@luoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@maiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@makDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@miDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@minDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mniDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msMYDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mtDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mwrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@myDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nanDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@neDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlBEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nsoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ocDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@omDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@orDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pagDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pamDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@papDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@plDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@psDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptBRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptPTDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rajDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roMDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@romDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ruDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rwDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@satDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@scnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@siDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@slDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@smDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@snDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@soDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sqDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srMEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@svDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@swDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@szlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@taDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tetDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@thDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@trDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ttDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ugDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ukDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urPKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@uzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@viDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@wuuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@xhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yuaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueHKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhTWDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zuDisplayName": {
     "type": "String",
     "placeholders": {}
   },
@@ -11883,6 +10581,7 @@
   "notStartedActivitiesTitle": "Seisiúin oscailte ({num})",
   "inProgressActivitiesTitle": "Ag tarlú anois ({num})",
   "completedActivitiesTitle": "Críochnaithe ({num})",
+  "pickDifferentActivity": "Roghnaigh gníomhaíocht dhifriúil",
   "inOngoingActivity": "Tá gníomhaíocht ar siúl agat!",
   "@notStartedActivitiesTitle": {
     "type": "String",
@@ -11908,7 +10607,125 @@
       }
     }
   },
+  "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Ní comhoiriúnach do theanga sprioc le haghaidh an teachtaireachta seo. An nuashonraigh do theanga sprioc?",
+  "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Is é seo gach duine sa chúrsa seo. Cliceáil ar avatar aon úsáideora agus \"tús a chur le comhrá\" chun DM a sheoladh.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Déanfidh an focal foclóra seo a bhaint go buan ó do anailísí",
+  "woman": "Bean",
+  "man": "Duine",
+  "otherGender": "Duine eile",
+  "unselectedGender": "Roghnaigh rogha gnéis",
+  "gender": "Gnéis",
+  "chatParticipantTooltip": "Is iad seo go léir atá sa chomhrá seo. Cliceáil ar avatar aon úsáideora agus \"tosaigh comhrá\" chun DM a sheoladh.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Tá na huirlisí foghlama dí-úsáidte do theachtaireachtaí nach bhfuil i do theanga sprioc.",
+  "vocabEmoji": "Emoji foclóra",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Iarr ar athghiniúint",
+  "optionalRegenerateReason": "(Roghnach) Cúis",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Tá an emoji socraithe agat do {lemma}! Úsáidfimid an emoji seo chun an focal a chur in iúl i ngníomhaíochtaí cleachtais amach anseo.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  },
+  "ssoDialogTitle": "Ag fanacht le síniú isteach a chríochnú",
+  "ssoDialogDesc": "Osclóimid cluaisín nua ionas gur féidir leat síniú isteach go sábháilte.",
+  "ssoDialogHelpText": "🤔 Má chonaic tú an cluaisín nua, seiceáil le do thoil do bhacadóir pop-up.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Díchur uirlisí teanga",
+  "disableLanguageToolsDesc": "Ar mhaith leat uirlisí cabhrach teanga uathoibríoch a díchur?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Diúltaíodh an cead. Gníomhachtaigh ceadanna taifeadta chun teachtaireachtaí guth a thaifeadadh.",
+  "genericWebRecordingError": "Tharla rud éigin mícheart. Molaimid úsáid a bhaint as brabhsálaí Chrome nuair a bhíonn teachtaireachtaí á gcur ar taifead.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Chun an taithí is fearr a fháil ag úsáid an iarratais seo, le do thoil leathnaigh do mhéid scáileáin.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   },
@@ -11919,6 +10736,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Cleachtadh ar shainmhíniú ceart foclóra",
+  "constructUseIncLMDesc": "Cleachtadh ar shainmhíniú mícheart foclóra",
+  "constructUseCorLADesc": "Cleachtadh ar chluastuiscint ceart foclóra",
+  "constructUseIncLADesc": "Cleachtadh ar chluastuiscint mícheart foclóra",
+  "constructUseBonus": "Bónas le linn cleachtaidh foclóra",
+  "practiceVocab": "Cleachtadh foclóra",
+  "selectMeaning": "Roghnaigh an bhrí",
+  "selectAudio": "Roghnaigh an chluastuiscint comhoiriúnach",
+  "congratulations": "Comhghairdeas!",
+  "anotherRound": "Ciorcal eile",
+  "noActivityRequest": "Níl aon iarratas gníomhaíochta reatha.",
+  "quit": "Dícheangail",
+  "congratulationsYouveCompletedPractice": "Comhghairdeas! Tá an seisiún cleachtaidh críochnaithe agat.",
+  "mustHave10Words": "Caithfidh go mbeidh 10 focal le haghaidh cleachtaidh agat ar a laghad. Bain triail as labhairt le cara nó le Pangea Bot chun tuilleadh a fháil amach!",
+  "botSettings": "Socruithe an Bhot",
+  "activitySettingsOverrideWarning": "Teanga agus leibhéal teanga a chinneadh de réir plean gníomhaíochta",
+  "voice": "Guth",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

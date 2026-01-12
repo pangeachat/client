@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:animations/animations.dart';
@@ -9,13 +7,16 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/input_bar.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/send_button.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_send_button.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer_state_extension.dart';
+import 'package:fluffychat/pangea/choreographer/igc/start_igc_button.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
-class PangeaChatInputRow extends StatefulWidget {
+class PangeaChatInputRow extends StatelessWidget {
   final ChatController controller;
 
   const PangeaChatInputRow({
@@ -23,63 +24,23 @@ class PangeaChatInputRow extends StatefulWidget {
     super.key,
   });
 
-  @override
-  State<PangeaChatInputRow> createState() => PangeaChatInputRowState();
-}
-
-class PangeaChatInputRowState extends State<PangeaChatInputRow> {
-  StreamSubscription? _choreoSub;
-
-  @override
-  void initState() {
-    // Rebuild the widget each time there's an update from choreo
-    _choreoSub = widget.controller.choreographer.stateStream.stream.listen((_) {
-      setState(() {});
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _choreoSub?.cancel();
-    super.dispose();
-  }
-
-  ChatController get _controller => widget.controller;
-
   LanguageModel? get activel1 =>
-      _controller.pangeaController.languageController.activeL1Model();
+      controller.pangeaController.userController.userL1;
   LanguageModel? get activel2 =>
-      _controller.pangeaController.languageController.activeL2Model();
-
-  String hintText() {
-    if (_controller.choreographer.itController.willOpen) {
-      return L10n.of(context).buildTranslation;
-    }
-    return activel1 != null &&
-            activel2 != null &&
-            activel1!.langCode != LanguageKeys.unknownLanguage &&
-            activel2!.langCode != LanguageKeys.unknownLanguage
-        ? L10n.of(context).writeAMessageLangCodes(
-            activel1!.displayName,
-            activel2!.displayName,
-          )
-        : L10n.of(context).writeAMessage;
-  }
+      controller.pangeaController.userController.userL2;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     const height = 48.0;
-
-    if (widget.controller.selectMode) {
-      return const SizedBox(height: height);
-    }
+    final state = controller.choreographer.assistanceState;
 
     return Column(
       children: [
         CompositedTransformTarget(
-          link: _controller.choreographer.inputLayerLinkAndKey.link,
+          link: MatrixState.pAnyState
+              .layerLinkAndKey(ChoreoConstants.inputTransformTargetKey)
+              .link,
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(
@@ -87,90 +48,104 @@ class PangeaChatInputRowState extends State<PangeaChatInputRow> {
               ),
             ),
             child: Row(
-              key: _controller.choreographer.inputLayerLinkAndKey.key,
+              key: MatrixState.pAnyState
+                  .layerLinkAndKey(ChoreoConstants.inputTransformTargetKey)
+                  .key,
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 const SizedBox(width: 4),
-                AnimatedContainer(
-                  duration: FluffyThemes.animationDuration,
-                  curve: FluffyThemes.animationCurve,
-                  height: height,
-                  width: _controller.sendController.text.isEmpty ? height : 0,
-                  alignment: Alignment.center,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: const BoxDecoration(),
-                  child: PopupMenuButton<String>(
-                    useRootNavigator: true,
-                    icon: const Icon(Icons.add_outlined),
-                    onSelected: _controller.onAddPopupMenuButtonSelected,
-                    itemBuilder: (BuildContext context) =>
-                        <PopupMenuEntry<String>>[
-                      PopupMenuItem<String>(
-                        value: 'file',
-                        child: ListTile(
-                          leading: const CircleAvatar(
-                            backgroundColor: Colors.green,
-                            foregroundColor: Colors.white,
-                            child: Icon(Icons.attachment_outlined),
+                ValueListenableBuilder(
+                  valueListenable: controller.sendController,
+                  builder: (context, text, __) {
+                    final isBotDM = controller.room.isBotDM;
+                    return AnimatedContainer(
+                      duration: FluffyThemes.animationDuration,
+                      curve: FluffyThemes.animationCurve,
+                      height: height,
+                      width: text.text.isEmpty &&
+                              !controller.choreographer.itController.open.value
+                          ? height
+                          : 0,
+                      alignment: Alignment.center,
+                      clipBehavior: Clip.hardEdge,
+                      decoration: const BoxDecoration(),
+                      child: PopupMenuButton<String>(
+                        useRootNavigator: true,
+                        icon: const Icon(Icons.add_outlined),
+                        onSelected: controller.onAddPopupMenuButtonSelected,
+                        itemBuilder: (BuildContext context) =>
+                            <PopupMenuEntry<String>>[
+                          if (!isBotDM)
+                            PopupMenuItem<String>(
+                              value: 'file',
+                              child: ListTile(
+                                leading: const CircleAvatar(
+                                  backgroundColor: Colors.green,
+                                  foregroundColor: Colors.white,
+                                  child: Icon(Icons.attachment_outlined),
+                                ),
+                                title: Text(L10n.of(context).sendFile),
+                                contentPadding: const EdgeInsets.all(0),
+                              ),
+                            ),
+                          PopupMenuItem<String>(
+                            value: 'image',
+                            child: ListTile(
+                              leading: const CircleAvatar(
+                                backgroundColor: Colors.blue,
+                                foregroundColor: Colors.white,
+                                child: Icon(Icons.image_outlined),
+                              ),
+                              title: Text(L10n.of(context).sendImage),
+                              contentPadding: const EdgeInsets.all(0),
+                            ),
                           ),
-                          title: Text(L10n.of(context).sendFile),
-                          contentPadding: const EdgeInsets.all(0),
-                        ),
+                          if (PlatformInfos.isMobile)
+                            PopupMenuItem<String>(
+                              value: 'camera',
+                              child: ListTile(
+                                leading: const CircleAvatar(
+                                  backgroundColor: Colors.purple,
+                                  foregroundColor: Colors.white,
+                                  child: Icon(Icons.camera_alt_outlined),
+                                ),
+                                title: Text(L10n.of(context).openCamera),
+                                contentPadding: const EdgeInsets.all(0),
+                              ),
+                            ),
+                          if (!isBotDM)
+                            if (PlatformInfos.isMobile)
+                              PopupMenuItem<String>(
+                                value: 'camera-video',
+                                child: ListTile(
+                                  leading: const CircleAvatar(
+                                    backgroundColor: Colors.red,
+                                    foregroundColor: Colors.white,
+                                    child: Icon(Icons.videocam_outlined),
+                                  ),
+                                  title: Text(L10n.of(context).openVideoCamera),
+                                  contentPadding: const EdgeInsets.all(0),
+                                ),
+                              ),
+                          if (!isBotDM)
+                            if (PlatformInfos.isMobile)
+                              PopupMenuItem<String>(
+                                value: 'location',
+                                child: ListTile(
+                                  leading: const CircleAvatar(
+                                    backgroundColor: Colors.brown,
+                                    foregroundColor: Colors.white,
+                                    child: Icon(Icons.gps_fixed_outlined),
+                                  ),
+                                  title: Text(L10n.of(context).shareLocation),
+                                  contentPadding: const EdgeInsets.all(0),
+                                ),
+                              ),
+                        ],
                       ),
-                      PopupMenuItem<String>(
-                        value: 'image',
-                        child: ListTile(
-                          leading: const CircleAvatar(
-                            backgroundColor: Colors.blue,
-                            foregroundColor: Colors.white,
-                            child: Icon(Icons.image_outlined),
-                          ),
-                          title: Text(L10n.of(context).sendImage),
-                          contentPadding: const EdgeInsets.all(0),
-                        ),
-                      ),
-                      if (PlatformInfos.isMobile)
-                        PopupMenuItem<String>(
-                          value: 'camera',
-                          child: ListTile(
-                            leading: const CircleAvatar(
-                              backgroundColor: Colors.purple,
-                              foregroundColor: Colors.white,
-                              child: Icon(Icons.camera_alt_outlined),
-                            ),
-                            title: Text(L10n.of(context).openCamera),
-                            contentPadding: const EdgeInsets.all(0),
-                          ),
-                        ),
-                      if (PlatformInfos.isMobile)
-                        PopupMenuItem<String>(
-                          value: 'camera-video',
-                          child: ListTile(
-                            leading: const CircleAvatar(
-                              backgroundColor: Colors.red,
-                              foregroundColor: Colors.white,
-                              child: Icon(Icons.videocam_outlined),
-                            ),
-                            title: Text(L10n.of(context).openVideoCamera),
-                            contentPadding: const EdgeInsets.all(0),
-                          ),
-                        ),
-                      if (PlatformInfos.isMobile)
-                        PopupMenuItem<String>(
-                          value: 'location',
-                          child: ListTile(
-                            leading: const CircleAvatar(
-                              backgroundColor: Colors.brown,
-                              foregroundColor: Colors.white,
-                              child: Icon(Icons.gps_fixed_outlined),
-                            ),
-                            title: Text(L10n.of(context).shareLocation),
-                            contentPadding: const EdgeInsets.all(0),
-                          ),
-                        ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
                 if (FluffyThemes.isColumnMode(context))
                   Container(
@@ -194,20 +169,20 @@ class PangeaChatInputRowState extends State<PangeaChatInputRow> {
                           );
                         },
                         child: Icon(
-                          _controller.showEmojiPicker
+                          controller.showEmojiPicker
                               ? Icons.keyboard
                               : Icons.add_reaction_outlined,
-                          key: ValueKey(_controller.showEmojiPicker),
+                          key: ValueKey(controller.showEmojiPicker),
                         ),
                       ),
-                      onPressed: _controller.emojiPickerAction,
+                      onPressed: controller.emojiPickerAction,
                     ),
                   ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 0.0),
                     child: InputBar(
-                      room: _controller.room,
+                      room: controller.room,
                       minLines: 1,
                       maxLines: 8,
                       autofocus: !PlatformInfos.isMobile,
@@ -216,11 +191,10 @@ class PangeaChatInputRowState extends State<PangeaChatInputRow> {
                               PlatformInfos.isMobile
                           ? TextInputAction.send
                           : null,
-                      onSubmitted: (String value) =>
-                          _controller.onInputBarSubmitted(value, context),
-                      onSubmitImage: _controller.sendImageFromClipBoard,
-                      focusNode: _controller.inputFocus,
-                      controller: _controller.sendController,
+                      onSubmitted: (_) => controller.onInputBarSubmitted(),
+                      onSubmitImage: controller.sendImageFromClipBoard,
+                      focusNode: controller.inputFocus,
+                      controller: controller.sendController,
                       decoration: const InputDecoration(
                         contentPadding: EdgeInsets.only(
                           left: 6.0,
@@ -234,34 +208,48 @@ class PangeaChatInputRowState extends State<PangeaChatInputRow> {
                         enabledBorder: InputBorder.none,
                         filled: false,
                       ),
-                      onChanged: _controller.onInputBarChanged,
-                      hintText: hintText(),
+                      onChanged: controller.onInputBarChanged,
+                      choreographer: controller.choreographer,
+                      showNextMatch: controller.showNextMatch,
                     ),
                   ),
                 ),
                 StartIGCButton(
-                  controller: _controller,
+                  key: ValueKey(controller.choreographer),
+                  onPressed: () =>
+                      controller.onRequestWritingAssistance(manual: true),
+                  choreographer: controller.choreographer,
+                  initialState: state,
+                  initialForegroundColor: state.stateColor(context),
+                  initialBackgroundColor: state.backgroundColor(context),
                 ),
-                Container(
-                  height: height,
-                  width: height,
-                  alignment: Alignment.center,
-                  child: PlatformInfos.platformCanRecord &&
-                          _controller.sendController.text.isEmpty &&
-                          !_controller.choreographer.itController.willOpen
-                      ? FloatingActionButton.small(
-                          tooltip: L10n.of(context).voiceMessage,
-                          onPressed: _controller.voiceMessageAction,
-                          elevation: 0,
-                          heroTag: null,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(height),
-                          ),
-                          backgroundColor: theme.bubbleColor,
-                          foregroundColor: theme.onBubbleColor,
-                          child: const Icon(Icons.mic_none_outlined),
-                        )
-                      : ChoreographerSendButton(controller: _controller),
+                ValueListenableBuilder(
+                  valueListenable: controller.sendController,
+                  builder: (context, text, __) {
+                    return Container(
+                      height: height,
+                      width: height,
+                      alignment: Alignment.center,
+                      child: PlatformInfos.platformCanRecord &&
+                              text.text.isEmpty &&
+                              !controller.choreographer.itController.open.value
+                          ? FloatingActionButton.small(
+                              tooltip: L10n.of(context).voiceMessage,
+                              onPressed: controller.voiceMessageAction,
+                              elevation: 0,
+                              heroTag: null,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(height),
+                              ),
+                              backgroundColor: theme.bubbleColor,
+                              foregroundColor: theme.onBubbleColor,
+                              child: const Icon(Icons.mic_none_outlined),
+                            )
+                          : ChoreographerSendButton(
+                              controller: controller,
+                            ),
+                    );
+                  },
                 ),
               ],
             ),

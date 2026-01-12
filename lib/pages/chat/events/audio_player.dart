@@ -14,9 +14,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -35,9 +33,8 @@ class AudioPlayerWidget extends StatefulWidget {
   final String roomId;
   final String senderId;
   final PangeaAudioFile? matrixFile;
-  final ChatController chatController;
-  final MessageOverlayController? overlayController;
   final bool autoplay;
+  final bool enableClicks;
   // Pangea#
 
   static const int wavesCount = 40;
@@ -52,9 +49,8 @@ class AudioPlayerWidget extends StatefulWidget {
     required this.roomId,
     required this.senderId,
     this.matrixFile,
-    required this.chatController,
-    this.overlayController,
     this.autoplay = false,
+    this.enableClicks = true,
     // Pangea#
     super.key,
   });
@@ -75,7 +71,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   String? _durationString;
 
   // #Pangea
-  StreamSubscription? _onAudioPositionChanged;
   StreamSubscription? _onAudioStateChanged;
 
   double playbackSpeed = 1.0;
@@ -157,7 +152,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       audioPlayer.dispose();
       matrix.voiceMessageEventId.value = matrix.audioPlayer = null;
       // #Pangea
-      _onAudioPositionChanged?.cancel();
       _onAudioStateChanged?.cancel();
       // Pangea#
     }
@@ -265,18 +259,6 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
 
     // #Pangea
     audioPlayer.setSpeed(playbackSpeed);
-    _onAudioPositionChanged?.cancel();
-    _onAudioPositionChanged =
-        matrix.audioPlayer!.positionStream.listen((state) {
-      // Pass current timestamp to overlay, so it can highlight as necessary
-      if (widget.matrixFile?.tokens != null) {
-        widget.overlayController?.highlightCurrentText(
-          state.inMilliseconds,
-          widget.matrixFile!.tokens!,
-        );
-      }
-    });
-
     _onAudioStateChanged?.cancel();
     _onAudioStateChanged =
         matrix.audioPlayer!.playerStateStream.listen((state) {
@@ -584,13 +566,25 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                         : Colors.transparent,
                                     max: maxPosition,
                                     value: currentPosition,
-                                    onChanged: (position) => audioPlayer == null
-                                        ? _onButtonTap()
-                                        : audioPlayer.seek(
-                                            Duration(
-                                              milliseconds: position.round(),
-                                            ),
-                                          ),
+                                    // #Pangea
+                                    onChanged: !widget.enableClicks
+                                        ? null
+                                        : (position) => audioPlayer == null
+                                            ? _onButtonTap()
+                                            : audioPlayer.seek(
+                                                Duration(
+                                                  milliseconds:
+                                                      position.round(),
+                                                ),
+                                              ),
+                                    // onChanged: (position) => audioPlayer == null
+                                    //     ? _onButtonTap()
+                                    //     : audioPlayer.seek(
+                                    //         Duration(
+                                    //           milliseconds: position.round(),
+                                    //         ),
+                                    //       ),
+                                    // Pangea#
                                   ),
                                 ),
                               ],
@@ -625,7 +619,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                             child: InkWell(
                               borderRadius:
                                   BorderRadius.circular(AppConfig.borderRadius),
-                              onTap: _toggleSpeed,
+                              onTap: !widget.enableClicks ? null : _toggleSpeed,
                               child: SizedBox(
                                 width: 32,
                                 height: 20,

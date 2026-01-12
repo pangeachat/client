@@ -9,6 +9,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_summary_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_manager.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_popup.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
@@ -105,10 +107,11 @@ class LevelUpBannerState extends State<LevelUpBanner>
 
     _loadConstructSummary();
 
+    final analyticsService = Matrix.of(context).analyticsDataService;
     LevelUpManager.instance.preloadAnalytics(
-      context,
       widget.level,
       widget.prevLevel,
+      analyticsService,
     );
 
     _slideController = AnimationController(
@@ -163,9 +166,19 @@ class LevelUpBannerState extends State<LevelUpBanner>
 
   Future<void> _loadConstructSummary() async {
     try {
-      final summary = MatrixState.pangeaController.getAnalytics
-          .generateLevelUpAnalytics(widget.prevLevel, widget.level);
+      final analyticsRoom = await Matrix.of(context).client.getMyAnalyticsRoom(
+            MatrixState.pangeaController.userController.userL2!,
+          );
+
+      final timestamp = analyticsRoom!.lastLevelUpTimestamp;
+      final analyticsService = Matrix.of(context).analyticsDataService;
+      final summary = await analyticsService.levelUpService.getLevelUpAnalytics(
+        widget.prevLevel,
+        widget.level,
+        timestamp,
+      );
       _constructSummaryCompleter.complete(summary);
+      analyticsRoom.setLevelUpSummary(summary);
     } catch (e) {
       debugPrint("Error generating level up analytics: $e");
       _constructSummaryCompleter.completeError(e);

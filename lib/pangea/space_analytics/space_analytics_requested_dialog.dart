@@ -12,9 +12,11 @@ import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 
 class SpaceAnalyticsRequestedDialog extends StatelessWidget {
   final Room room;
+  final List<User> requestingUsers;
   const SpaceAnalyticsRequestedDialog({
     super.key,
     required this.room,
+    required this.requestingUsers,
   });
 
   @override
@@ -39,6 +41,9 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
                   ),
                   Text(
                     L10n.of(context).accessRequestedDesc(
+                      requestingUsers
+                          .map((u) => u.calcDisplayname())
+                          .join(", "),
                       room.getLocalizedDisplayname(),
                     ),
                     style: TextStyle(fontSize: isColumnMode ? 16.0 : 14.0),
@@ -66,30 +71,42 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(16.0),
               child: Row(
-                spacing: 16.0,
+                spacing: 12.0,
                 children: [
                   Expanded(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
+                      ),
                       onPressed: () => Navigator.of(context).pop(true),
                       child: Row(
-                        spacing: 10.0,
+                        spacing: 12.0,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Symbols.approval_delegation),
-                          Text(L10n.of(context).allowAccess),
+                          Text(L10n.of(context).allow),
                         ],
                       ),
                     ),
                   ),
                   Expanded(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
+                      ),
                       onPressed: () => Navigator.of(context).pop(false),
                       child: Row(
-                        spacing: 10.0,
+                        spacing: 12.0,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Icons.visibility_off),
-                          Text(L10n.of(context).denyAccess),
+                          Text(L10n.of(context).deny),
                         ],
                       ),
                     ),

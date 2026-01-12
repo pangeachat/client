@@ -2,18 +2,21 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_repo.dart';
+import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -32,14 +35,6 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   Object? _profileError;
   Object? _courseError;
 
-  final List<String> avatarPaths = const [
-    "assets/pangea/Avatar_1.png",
-    "assets/pangea/Avatar_2.png",
-    "assets/pangea/Avatar_3.png",
-    "assets/pangea/Avatar_4.png",
-    "assets/pangea/Avatar_5.png",
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -49,6 +44,8 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   String? _spaceId;
   String? _courseLangCode;
 
+  String avatarPath(int num) => "avatar_$num.png";
+
   Future<LanguageSettings?> get _cachedLangCode => LangCodeRepo.get();
 
   Future<String?> get _targetLangCode async =>
@@ -56,10 +53,9 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
   Future<String?> get _baseLangCode async =>
       (await _cachedLangCode)?.baseLangCode ??
-      MatrixState.pangeaController.languageController.systemLanguage?.langCode;
+      LanguageService.systemLanguage?.langCode;
 
-  String? get _cachedSpaceCode =>
-      MatrixState.pangeaController.spaceCodeController.cachedSpaceCode;
+  String? get _cachedSpaceCode => SpaceCodeRepo.spaceCode;
 
   Future<void> _createProfile() async {
     setState(() {
@@ -78,13 +74,10 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   }
 
   Future<void> _joinCachedCourse() async {
-    await MatrixState.pangeaController.spaceCodeController.initCompleter.future;
     if (_cachedSpaceCode == null) return;
 
     try {
-      final spaceId = await MatrixState.pangeaController.spaceCodeController
-          .joinCachedSpaceCode(context);
-
+      final spaceId = await SpaceCodeController.joinCachedSpaceCode(context);
       if (spaceId == null) {
         throw Exception('Failed to join space with code $_cachedSpaceCode');
       }
@@ -107,7 +100,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       final course = await CoursePlansRepo.get(
         GetLocalizedCoursesRequest(
           coursePlanIds: [courseId],
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+          l1: MatrixState.pangeaController.userController.userL1Code!,
         ),
       );
 
@@ -122,16 +115,10 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     final client = Matrix.of(context).client;
     try {
       final random = Random();
-      final selectedAvatarPath =
-          avatarPaths[random.nextInt(avatarPaths.length)];
-
-      final ByteData byteData = await rootBundle.load(selectedAvatarPath);
-      final Uint8List bytes = byteData.buffer.asUint8List();
-      final file = MatrixFile(
-        bytes: bytes,
-        name: selectedAvatarPath,
-      );
-      await client.setAvatar(file);
+      final selectedAvatarPath = avatarPath(random.nextInt(4) + 1);
+      final avatarUrl =
+          Uri.parse("${AppConfig.assetsBaseURL}/$selectedAvatarPath");
+      await client.setAvatarUrl(client.userID!, avatarUrl);
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -201,8 +188,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         if (targetLangCode != null)
           MatrixState.pangeaController.userController.updateAnalyticsProfile(
             targetLanguage: PLanguageStore.byLangCode(targetLangCode),
-            baseLanguage:
-                MatrixState.pangeaController.languageController.systemLanguage,
+            baseLanguage: LanguageService.systemLanguage,
             level: 1,
           ),
       ];

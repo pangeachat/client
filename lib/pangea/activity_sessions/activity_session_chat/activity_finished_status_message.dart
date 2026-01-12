@@ -6,7 +6,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/saved_activity_analytics_dialog.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -21,32 +20,23 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
   });
 
   Future<void> _onArchive(BuildContext context) async {
-    {
-      final resp = await showFutureLoadingDialog(
-        context: context,
-        future: () => _archiveToAnalytics(context),
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: () => _archiveToAnalytics(context),
+    );
+
+    if (!resp.isError) {
+      context.go(
+        "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
       );
-
-      if (!resp.isError) {
-        final navigate = await showDialog(
-          context: context,
-          builder: (context) {
-            return const SavedActivityAnalyticsDialog();
-          },
-        );
-
-        if (navigate == true && controller.room.courseParent != null) {
-          context.push(
-            "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
-          );
-        }
-      }
     }
   }
 
   Future<void> _archiveToAnalytics(BuildContext context) async {
     await controller.room.archiveActivity();
-    await MatrixState.pangeaController.putAnalytics
+    await Matrix.of(context)
+        .analyticsDataService
+        .updateService
         .sendActivityAnalytics(controller.room.id);
   }
 
@@ -64,136 +54,216 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
     final theme = Theme.of(context);
     final isSubscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed;
+        MatrixState.pangeaController.subscriptionController.isSubscribed !=
+            false;
 
-    return AnimatedSize(
-      duration: FluffyThemes.animationDuration,
-      child: Container(
-        padding: const EdgeInsets.all(12.0),
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          border: Border(
-            top: BorderSide(color: theme.dividerColor),
-          ),
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        border: Border(
+          top: BorderSide(color: theme.dividerColor),
         ),
-        child: Center(
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxWidth: 400,
-            ),
-            child: Column(
-              spacing: 12.0,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: controller.room.isActivityFinished
-                  ? [
-                      if (summary?.isLoading ?? false) ...[
-                        Text(
-                          L10n.of(context).generatingSummary,
-                          style: const TextStyle(
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 36.0,
-                          width: 36.0,
-                          child: CircularProgressIndicator(),
-                        ),
-                      ] else if (isSubscribed == false)
-                        ErrorIndicator(
-                          message: L10n.of(context)
-                              .subscribeToUnlockActivitySummaries,
-                          onTap: () {
-                            MatrixState.pangeaController.subscriptionController
-                                .showPaywall(context);
-                          },
-                        )
-                      else if (summary?.hasError ?? false) ...[
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.school_outlined,
-                              size: 24.0,
-                            ),
-                            const SizedBox(width: 8),
-                            Flexible(
-                              child: Text(
-                                L10n.of(context).activitySummaryError,
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-                        TextButton(
-                          onPressed: () => controller.room.fetchSummaries(),
-                          child: Text(L10n.of(context).requestSummaries),
-                        ),
-                      ],
-                      if (!controller.room.hasArchivedActivity)
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0,
-                              vertical: 8.0,
-                            ),
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                          ),
-                          onPressed:
-                              _enableArchive ? () => _onArchive(context) : null,
-                          child: Row(
-                            spacing: 12.0,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.radar, size: 20.0),
-                              Text(
-                                L10n.of(context).saveToCompletedActivities,
-                                style: const TextStyle(fontSize: 12.0),
-                              ),
-                            ],
-                          ),
-                        ),
-                    ]
-                  : [
-                      Text(
-                        L10n.of(context).waitingForOthersToFinish,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontStyle: FontStyle.italic,
-                        ),
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0,
-                            vertical: 8.0,
-                          ),
-                          foregroundColor: theme.colorScheme.onSurface,
-                          backgroundColor: theme.colorScheme.surface,
-                          side: BorderSide(
-                            color: theme.colorScheme.primaryContainer,
-                          ),
-                        ),
-                        onPressed: controller.room.continueActivity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              L10n.of(context).waitNotDone,
-                              style: const TextStyle(
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-            ),
+      ),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 400),
+          child: Column(
+            spacing: 12.0,
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              AnimatedSize(
+                duration: FluffyThemes.animationDuration,
+                alignment: Alignment.topCenter,
+                child: _SummarySection(
+                  controller: controller,
+                  isSubscribed: isSubscribed,
+                ),
+              ),
+              if (controller.room.isActivityFinished &&
+                  !controller.room.hasArchivedActivity)
+                _ArchiveSection(
+                  enabled: _enableArchive,
+                  onArchive: () => _onArchive(context),
+                ),
+              if (!controller.room.isActivityFinished)
+                _WaitSection(
+                  onContinue: controller.room.continueActivity,
+                ),
+            ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _SummarySection extends StatelessWidget {
+  final ChatController controller;
+  final bool isSubscribed;
+
+  const _SummarySection({
+    required this.controller,
+    required this.isSubscribed,
+  });
+
+  ActivitySummaryModel? get summary => controller.room.activitySummary;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!controller.room.isActivityFinished) {
+      return const SizedBox.shrink();
+    }
+
+    if (summary?.summary != null) {
+      return const SizedBox.shrink();
+    }
+
+    if (summary?.isLoading ?? false) {
+      return Column(
+        spacing: 12,
+        children: [
+          Text(
+            L10n.of(context).generatingSummary,
+            style: const TextStyle(fontStyle: FontStyle.italic),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(
+            height: 36,
+            width: 36,
+            child: CircularProgressIndicator(),
+          ),
+        ],
+      );
+    }
+
+    if (!isSubscribed) {
+      return ErrorIndicator(
+        message: L10n.of(context).subscribeToUnlockActivitySummaries,
+        onTap: () {
+          MatrixState.pangeaController.subscriptionController
+              .showPaywall(context);
+        },
+      );
+    }
+
+    if (summary?.hasError ?? false) {
+      return Column(
+        spacing: 8,
+        children: [
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Icon(Icons.school_outlined, size: 24),
+              const SizedBox(width: 8),
+              Flexible(
+                child: Text(
+                  L10n.of(context).activitySummaryError,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+          TextButton(
+            onPressed: controller.room.fetchSummaries,
+            child: Text(L10n.of(context).requestSummaries),
+          ),
+        ],
+      );
+    }
+
+    return const SizedBox.shrink();
+  }
+}
+
+class _ArchiveSection extends StatelessWidget {
+  final bool enabled;
+  final VoidCallback onArchive;
+
+  const _ArchiveSection({
+    required this.enabled,
+    required this.onArchive,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Column(
+      spacing: 12,
+      children: [
+        Text(
+          L10n.of(context).saveActivityDesc,
+          style: const TextStyle(fontStyle: FontStyle.italic),
+          textAlign: TextAlign.center,
+        ),
+        ElevatedButton(
+          onPressed: enabled ? onArchive : null,
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 8,
+            ),
+            foregroundColor: theme.colorScheme.onPrimaryContainer,
+            backgroundColor: theme.colorScheme.primaryContainer,
+          ),
+          child: Row(
+            spacing: 12,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(Icons.radar, size: 20),
+              Text(
+                L10n.of(context).saveActivityTitle,
+                style: const TextStyle(fontSize: 12),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _WaitSection extends StatelessWidget {
+  final VoidCallback onContinue;
+
+  const _WaitSection({required this.onContinue});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Column(
+      spacing: 12,
+      children: [
+        Text(
+          L10n.of(context).waitingForOthersToFinish,
+          style: const TextStyle(
+            fontSize: 12,
+            fontStyle: FontStyle.italic,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        ElevatedButton(
+          onPressed: onContinue,
+          style: ElevatedButton.styleFrom(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 8,
+            ),
+            foregroundColor: theme.colorScheme.onSurface,
+            backgroundColor: theme.colorScheme.surface,
+            side: BorderSide(
+              color: theme.colorScheme.primaryContainer,
+            ),
+          ),
+          child: Text(
+            L10n.of(context).waitNotDone,
+            style: const TextStyle(fontSize: 12),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -69,8 +69,19 @@ enum ConstructUseTypeEnum {
   /// lemma collected by clicking on it
   click,
 
+  /// Bonus XP, ignored by level analytics page
+  bonus,
+
   /// not defined, likely a new construct introduced by choreo and not yet classified by an old version of the client
-  nan
+  nan,
+
+  // vocab lemma definition activity
+  corLM,
+  incLM,
+
+  // vocab lemma audio activity
+  corLA,
+  incLA,
 }
 
 extension ConstructUseTypeExtension on ConstructUseTypeEnum {
@@ -140,8 +151,18 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return L10n.of(context).constructUseIgnMmDesc;
       case ConstructUseTypeEnum.click:
         return L10n.of(context).constructUseCollected;
+      case ConstructUseTypeEnum.bonus:
+        return L10n.of(context).constructUseBonus;
       case ConstructUseTypeEnum.nan:
         return L10n.of(context).constructUseNanDesc;
+      case ConstructUseTypeEnum.corLM:
+        return L10n.of(context).constructUseCorLMDesc;
+      case ConstructUseTypeEnum.incLM:
+        return L10n.of(context).constructUseIncLMDesc;
+      case ConstructUseTypeEnum.corLA:
+        return L10n.of(context).constructUseCorLADesc;
+      case ConstructUseTypeEnum.incLA:
+        return L10n.of(context).constructUseIncLADesc;
     }
   }
 
@@ -152,20 +173,24 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corIt:
       case ConstructUseTypeEnum.incIt:
       case ConstructUseTypeEnum.ignIt:
+      case ConstructUseTypeEnum.ta:
         return Icons.translate;
       case ConstructUseTypeEnum.ignIGC:
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.corIGC:
       case ConstructUseTypeEnum.ga:
-      case ConstructUseTypeEnum.ta:
         return Icons.spellcheck;
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.incPA:
       case ConstructUseTypeEnum.ignPA:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
         return ActivityTypeEnum.wordMeaning.icon;
       case ConstructUseTypeEnum.ignWL:
       case ConstructUseTypeEnum.incWL:
       case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
         return ActivityTypeEnum.wordFocusListening.icon;
       case ConstructUseTypeEnum.incHWL:
       case ConstructUseTypeEnum.ignHWL:
@@ -192,6 +217,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return Icons.help;
       case ConstructUseTypeEnum.click:
         return Icons.format_color_text;
+      case ConstructUseTypeEnum.bonus:
+        return Icons.star;
     }
   }
 
@@ -206,6 +233,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.corWL:
       case ConstructUseTypeEnum.corM:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.corLA:
         return 5;
 
       case ConstructUseTypeEnum.pvm:
@@ -223,6 +252,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
 
       case ConstructUseTypeEnum.corIt:
       case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.bonus:
         return 1;
 
       case ConstructUseTypeEnum.ignIt:
@@ -243,6 +273,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incIt:
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.incM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
         return -1;
 
       case ConstructUseTypeEnum.incPA:
@@ -289,6 +321,11 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.em:
       case ConstructUseTypeEnum.click:
       case ConstructUseTypeEnum.nan:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.bonus:
         return false;
     }
   }
@@ -313,6 +350,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corHWL:
       case ConstructUseTypeEnum.ignHWL:
       case ConstructUseTypeEnum.incHWL:
+      case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.incLA:
         return LearningSkillsEnum.hearing;
       case ConstructUseTypeEnum.corPA:
       case ConstructUseTypeEnum.ignPA:
@@ -328,9 +367,12 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ignMM:
       case ConstructUseTypeEnum.em:
       case ConstructUseTypeEnum.click:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.incLM:
         return LearningSkillsEnum.reading;
       case ConstructUseTypeEnum.pvm:
         return LearningSkillsEnum.speaking;
+      case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
         return LearningSkillsEnum.other;
     }
@@ -354,6 +396,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.em:
       case ConstructUseTypeEnum.corMM:
+      case ConstructUseTypeEnum.corLM:
+      case ConstructUseTypeEnum.corLA:
         return SpaceAnalyticsSummaryEnum.numChoicesCorrect;
 
       case ConstructUseTypeEnum.incIt:
@@ -364,6 +408,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incL:
       case ConstructUseTypeEnum.incM:
       case ConstructUseTypeEnum.incMM:
+      case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.incLA:
         return SpaceAnalyticsSummaryEnum.numChoicesIncorrect;
 
       case ConstructUseTypeEnum.ignIt:
@@ -375,6 +421,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ignM:
       case ConstructUseTypeEnum.ignMM:
       case ConstructUseTypeEnum.click:
+      case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
         return null;
     }

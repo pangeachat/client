@@ -22,10 +22,18 @@ enum InstructionsEnum {
   analyticsVocabList,
   morphAnalyticsList,
   activityAnalyticsList,
+  levelAnalytics,
   readingAssistanceOverview,
   emptyChatWarning,
   activityStatsMenu,
-  chatListTooltip,
+  chatParticipantTooltip,
+  courseParticipantTooltip,
+  noSavedActivitiesYet,
+  setLemmaEmoji,
+  disableLanguageTools,
+  selectMeaning,
+  clickTextMessages,
+  clickAudioMessages,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -36,6 +44,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisbledTitle;
       case InstructionsEnum.chooseWordAudio:
+      case InstructionsEnum.selectMeaning:
       case InstructionsEnum.chooseEmoji:
       case InstructionsEnum.activityPlannerOverview:
       case InstructionsEnum.speechToText:
@@ -49,8 +58,15 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.morphAnalyticsList:
       case InstructionsEnum.readingAssistanceOverview:
       case InstructionsEnum.activityStatsMenu:
-      case InstructionsEnum.chatListTooltip:
+      case InstructionsEnum.chatParticipantTooltip:
+      case InstructionsEnum.courseParticipantTooltip:
       case InstructionsEnum.activityAnalyticsList:
+      case InstructionsEnum.levelAnalytics:
+      case InstructionsEnum.noSavedActivitiesYet:
+      case InstructionsEnum.setLemmaEmoji:
+      case InstructionsEnum.disableLanguageTools:
+      case InstructionsEnum.clickTextMessages:
+      case InstructionsEnum.clickAudioMessages:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -96,15 +112,29 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.morphAnalyticsList:
         return l10n.morphAnalyticsListBody;
       case InstructionsEnum.activityAnalyticsList:
-        return l10n.activityAnalyticsListBody;
+        return l10n.activityAnalyticsTooltipBody;
       case InstructionsEnum.readingAssistanceOverview:
         return l10n.readingAssistanceOverviewBody;
       case InstructionsEnum.emptyChatWarning:
         return l10n.emptyChatWarningDesc;
       case InstructionsEnum.activityStatsMenu:
         return l10n.activityStatsButtonInstruction;
-      case InstructionsEnum.chatListTooltip:
-        return l10n.chatListTooltip;
+      case InstructionsEnum.chatParticipantTooltip:
+        return l10n.chatParticipantTooltip;
+      case InstructionsEnum.courseParticipantTooltip:
+        return l10n.courseParticipantTooltip;
+      case InstructionsEnum.levelAnalytics:
+        return l10n.levelInfoTooltip;
+      case InstructionsEnum.noSavedActivitiesYet:
+        return l10n.noSavedActivitiesYet;
+      case InstructionsEnum.setLemmaEmoji:
+      case InstructionsEnum.clickTextMessages:
+      case InstructionsEnum.clickAudioMessages:
+        return "";
+      case InstructionsEnum.disableLanguageTools:
+        return l10n.disableLanguageToolsDesc;
+      case InstructionsEnum.selectMeaning:
+        return l10n.selectMeaning;
     }
   }
 

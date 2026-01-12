@@ -6,7 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
-import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
+import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
@@ -20,17 +20,19 @@ class ActivityParticipantList extends StatelessWidget {
 
   final bool Function(String)? canSelect;
   final bool Function(String)? isSelected;
+  final bool Function(String)? isShimmering;
   final double Function(ActivityRoleModel?)? getOpacity;
 
   const ActivityParticipantList({
     super.key,
     required this.activity,
     required this.assignedRoles,
-    required this.room,
+    this.room,
     this.course,
     this.onTap,
     this.canSelect,
     this.isSelected,
+    this.isShimmering,
     this.getOpacity,
   });
 
@@ -77,6 +79,10 @@ class ActivityParticipantList extends StatelessWidget {
                 final selectable =
                     canSelect != null ? canSelect!(availableRole.id) : true;
 
+                final shimmering = isShimmering != null
+                    ? isShimmering!(availableRole.id)
+                    : false;
+
                 return ActivityParticipantIndicator(
                   name: availableRole.name,
                   userId: assignedRole?.userId,
@@ -87,6 +93,8 @@ class ActivityParticipantList extends StatelessWidget {
                       : null,
                   selected: selected,
                   selectable: selectable,
+                  shimmer: shimmering,
+                  room: room,
                 );
               }).toList(),
             ),
@@ -99,6 +107,7 @@ class ActivityParticipantList extends StatelessWidget {
                   onTap: () => showMemberActionsPopupMenu(
                     context: context,
                     user: member,
+                    room: room,
                   ),
                   child: Container(
                     decoration: BoxDecoration(

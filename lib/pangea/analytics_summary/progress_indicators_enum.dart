@@ -25,9 +25,7 @@ enum ProgressIndicatorEnum {
         return null;
     }
   }
-}
 
-extension ProgressIndicatorsExtension on ProgressIndicatorEnum {
   IconData get icon {
     switch (this) {
       case ProgressIndicatorEnum.wordsUsed:
@@ -69,6 +67,19 @@ extension ProgressIndicatorsExtension on ProgressIndicatorEnum {
         return ConstructTypeEnum.morph;
       default:
         return ConstructTypeEnum.vocab;
+    }
+  }
+
+  String get route {
+    switch (this) {
+      case level:
+        return 'level';
+      case wordsUsed:
+        return ConstructTypeEnum.vocab.name;
+      case morphsUsed:
+        return ConstructTypeEnum.morph.name;
+      case activities:
+        return 'activities';
     }
   }
 }

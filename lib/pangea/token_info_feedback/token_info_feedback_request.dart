@@ -3,25 +3,25 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
 class TokenInfoFeedbackRequestData {
   final String userId;
-  final String roomId;
-  final String fullText;
+  final String? roomId;
+  final String? fullText;
   final String detectedLanguage;
   final List<PangeaToken> tokens;
   final int selectedToken;
-  final LemmaInfoResponse? lemmaInfo;
-  final String? phonetics;
+  final LemmaInfoResponse lemmaInfo;
+  final String phonetics;
   final String wordCardL1;
 
   TokenInfoFeedbackRequestData({
     required this.userId,
-    required this.roomId,
-    required this.fullText,
     required this.detectedLanguage,
     required this.tokens,
     required this.selectedToken,
-    this.lemmaInfo,
-    this.phonetics,
+    required this.lemmaInfo,
+    required this.phonetics,
     required this.wordCardL1,
+    this.roomId,
+    this.fullText,
   });
 
   @override
@@ -67,7 +67,7 @@ class TokenInfoFeedbackRequest {
       'detected_language': data.detectedLanguage,
       'tokens': data.tokens.map((token) => token.toJson()).toList(),
       'selected_token': data.selectedToken,
-      'lemma_info': data.lemmaInfo?.toJson(),
+      'lemma_info': data.lemmaInfo.toJson(),
       'phonetics': data.phonetics,
       'user_feedback': userFeedback,
       'word_card_l1': data.wordCardL1,

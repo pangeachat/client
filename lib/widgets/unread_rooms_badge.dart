@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as b;
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'matrix.dart';
 
@@ -33,6 +34,9 @@ class UnreadRoomsBadge extends StatelessWidget {
         .length;
     return b.Badge(
       badgeStyle: b.BadgeStyle(
+        // #Pangea
+        padding: const EdgeInsetsGeometry.all(1),
+        // Pangea#
         badgeColor: theme.colorScheme.primary,
         elevation: 4,
         borderSide: BorderSide(
@@ -40,13 +44,31 @@ class UnreadRoomsBadge extends StatelessWidget {
           width: 2,
         ),
       ),
-      badgeContent: Text(
-        unreadCount.toString(),
-        style: TextStyle(
-          color: theme.colorScheme.onPrimary,
-          fontSize: 12,
+      // #Pangea
+      // badgeContent: Text(
+      //   unreadCount.toString(),
+      //   style: TextStyle(
+      //     color: theme.colorScheme.onPrimary,
+      //     fontSize: 12,
+      //   ),
+      // ),
+      badgeContent: SizedBox(
+        width: 15,
+        height: 15,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            unreadCount < 100
+                ? unreadCount.toString()
+                : L10n.of(context).unreadPlus,
+            style: TextStyle(
+              color: theme.colorScheme.onPrimary,
+              fontSize: 12,
+            ),
+          ),
         ),
       ),
+      // Pangea#
       showBadge: unreadCount != 0,
       badgeAnimation: const b.BadgeAnimation.scale(),
       position: badgePosition ?? b.BadgePosition.bottomEnd(),

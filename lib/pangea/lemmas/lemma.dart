@@ -25,12 +25,20 @@ class Lemma {
     );
   }
 
-  toJson() {
-    return {
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {
       'text': text,
-      'save_vocab': saveVocab,
-      'form': form,
     };
+
+    if (saveVocab) {
+      data['save_vocab'] = saveVocab;
+    }
+
+    if (text != form) {
+      data['form'] = form;
+    }
+
+    return data;
   }
 
   static Lemma create(String form) =>

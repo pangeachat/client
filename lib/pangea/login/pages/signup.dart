@@ -7,7 +7,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/login/pages/signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/signup_with_email_view.dart';
-import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -34,9 +33,6 @@ class SignupPageController extends State<SignupPage> {
   String? emailText;
 
   bool loadingSignup = false;
-  bool loadingAppleSSO = false;
-  bool loadingGoogleSSO = false;
-
   bool showPassword = false;
   bool noEmailWarningConfirmed = false;
   bool displaySecondPasswordField = false;
@@ -68,17 +64,6 @@ class SignupPageController extends State<SignupPage> {
     emailController.dispose();
     loadingSignup = false;
     super.dispose();
-  }
-
-  void setLoadingSSO(bool loading, SSOProvider provider) {
-    if (provider == SSOProvider.apple) {
-      loadingAppleSSO = loading;
-      loadingGoogleSSO = false;
-    } else if (provider == SSOProvider.google) {
-      loadingGoogleSSO = loading;
-      loadingAppleSSO = false;
-    }
-    if (mounted) setState(() {});
   }
 
   void setSignupError(String? error) {
@@ -162,8 +147,6 @@ class SignupPageController extends State<SignupPage> {
       onError: (e, s) {
         setState(() {
           loadingSignup = false;
-          loadingAppleSSO = false;
-          loadingGoogleSSO = false;
         });
         if (e.toString().contains("Request has been canceled")) {
           Navigator.of(context).pop();

@@ -2,74 +2,45 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 
-class TransparentBackdrop extends StatefulWidget {
+class TransparentBackdrop extends StatelessWidget {
   final Color? backgroundColor;
   final VoidCallback? onDismiss;
   final bool blurBackground;
+
+  /// New
+  final bool animateBackground;
+  final Duration backgroundAnimationDuration;
 
   const TransparentBackdrop({
     super.key,
     this.onDismiss,
     this.backgroundColor,
     this.blurBackground = false,
+    this.animateBackground = false,
+    this.backgroundAnimationDuration = const Duration(milliseconds: 200),
   });
 
   @override
-  TransparentBackdropState createState() => TransparentBackdropState();
-}
-
-class TransparentBackdropState extends State<TransparentBackdrop>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _opacityTween;
-  late Animation<double> _blurTween;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration:
-          const Duration(milliseconds: AppConfig.overlayAnimationDuration),
-      vsync: this,
-    );
-    _opacityTween = Tween<double>(begin: 0.0, end: 0.8).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: FluffyThemes.animationCurve,
-      ),
-    );
-    _blurTween = Tween<double>(begin: 0.0, end: 3.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: FluffyThemes.animationCurve,
-      ),
-    );
-
-    Future.delayed(const Duration(milliseconds: 100), () {
-      if (mounted) _controller.forward();
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _opacityTween,
-      builder: (context, _) {
+    final Color targetColor =
+        backgroundColor?.withAlpha((0.8 * 255).round()) ?? Colors.transparent;
+
+    return TweenAnimationBuilder<double>(
+      tween: Tween<double>(
+        begin: animateBackground ? 0.0 : 1.0,
+        end: 1.0,
+      ),
+      duration: animateBackground ? backgroundAnimationDuration : Duration.zero,
+      builder: (context, t, child) {
         return Material(
           borderOnForeground: false,
-          color: widget.backgroundColor
-                  ?.withAlpha((_opacityTween.value * 255).round()) ??
-              Colors.transparent,
+          color: Color.lerp(
+            Colors.transparent,
+            targetColor,
+            t,
+          ),
           clipBehavior: Clip.antiAlias,
           child: InkWell(
             hoverColor: Colors.transparent,
@@ -77,28 +48,15 @@ class TransparentBackdropState extends State<TransparentBackdrop>
             focusColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () {
-              if (widget.onDismiss != null) {
-                widget.onDismiss!();
-              }
+              onDismiss?.call();
               MatrixState.pAnyState.closeOverlay();
             },
-            child: AnimatedBuilder(
-              animation: _blurTween,
-              builder: (context, _) {
-                return BackdropFilter(
-                  filter: widget.blurBackground
-                      ? ImageFilter.blur(
-                          sigmaX: _blurTween.value,
-                          sigmaY: _blurTween.value,
-                        )
-                      : ImageFilter.blur(sigmaX: 0, sigmaY: 0),
-                  child: Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    color: Colors.transparent,
-                  ),
-                );
-              },
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: blurBackground ? 3.0 * t : 0,
+                sigmaY: blurBackground ? 3.0 * t : 0,
+              ),
+              child: const SizedBox.expand(),
             ),
           ),
         );

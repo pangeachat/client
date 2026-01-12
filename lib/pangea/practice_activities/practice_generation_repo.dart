@@ -1,20 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
+import 'package:async/async.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/emoji_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/lemma_activity_generator.dart';
@@ -23,80 +21,75 @@ import 'package:fluffychat/pangea/practice_activities/message_activity_request.d
 import 'package:fluffychat/pangea/practice_activities/morph_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/word_focus_listening_generator.dart';
-import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_audio_activity_generator.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents an item in the completion cache.
 class _RequestCacheItem {
-  final MessageActivityRequest req;
-  final PracticeActivityModelResponse practiceActivity;
-  final DateTime createdAt = DateTime.now();
+  final PracticeActivityModel practiceActivity;
+  final DateTime timestamp;
 
   _RequestCacheItem({
-    required this.req,
     required this.practiceActivity,
+    required this.timestamp,
   });
+
+  bool get isExpired =>
+      DateTime.now().difference(timestamp) > PracticeRepo._cacheDuration;
+
+  factory _RequestCacheItem.fromJson(Map<String, dynamic> json) {
+    return _RequestCacheItem(
+      practiceActivity:
+          PracticeActivityModel.fromJson(json['practiceActivity']),
+      timestamp: DateTime.parse(json['timestamp']),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+        'practiceActivity': practiceActivity.toJson(),
+        'timestamp': timestamp.toIso8601String(),
+      };
 }
 
 /// Controller for handling activity completions.
 class PracticeRepo {
-  static final Map<int, _RequestCacheItem> _cache = {};
-  Timer? _cacheClearTimer;
+  static final GetStorage _storage = GetStorage('practice_activity_cache');
+  static const Duration _cacheDuration = Duration(minutes: 1);
 
-  late PangeaController _pangeaController;
+  /// [event] is optional and used for saving the activity event to Matrix
+  static Future<Result<PracticeActivityModel>> getPracticeActivity(
+    MessageActivityRequest req, {
+    required Map<String, dynamic> messageInfo,
+  }) async {
+    final cached = _getCached(req);
+    if (cached != null) return Result.value(cached);
 
-  final _morph = MorphActivityGenerator();
-  final _emoji = EmojiActivityGenerator();
-  final _lemma = LemmaActivityGenerator();
-  final _wordFocusListening = WordFocusListeningGenerator();
-  final _wordMeaning = LemmaMeaningActivityGenerator();
+    try {
+      final MessageActivityResponse res = await _routePracticeActivity(
+        accessToken: MatrixState.pangeaController.userController.accessToken,
+        req: req,
+        messageInfo: messageInfo,
+      );
 
-  PracticeRepo() {
-    _pangeaController = MatrixState.pangeaController;
-    _initializeCacheClearing();
-  }
-
-  void _initializeCacheClearing() {
-    const duration = Duration(minutes: 10);
-    _cacheClearTimer = Timer.periodic(duration, (Timer t) => _clearCache());
-  }
-
-  void _clearCache() {
-    final now = DateTime.now();
-    final keys = _cache.keys.toList();
-    for (final key in keys) {
-      final item = _cache[key]!;
-      if (now.difference(item.createdAt) > const Duration(minutes: 10)) {
-        _cache.remove(key);
-      }
+      await _setCached(req, res);
+      return Result.value(res.activity);
+    } on HttpException catch (e, s) {
+      return Result.error(e, s);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'message': 'Error fetching practice activity',
+          'request': req.toJson(),
+        },
+      );
+      return Result.error(e, s);
     }
   }
 
-  void dispose() {
-    _cacheClearTimer?.cancel();
-  }
-
-  Future<PracticeActivityEvent?> _sendAndPackageEvent(
-    PracticeActivityModel model,
-    PangeaMessageEvent pangeaMessageEvent,
-  ) async {
-    final Event? activityEvent = await pangeaMessageEvent.room.sendPangeaEvent(
-      content: model.toJson(),
-      parentEventId: pangeaMessageEvent.eventId,
-      type: PangeaEventTypes.pangeaActivity,
-    );
-
-    if (activityEvent == null) {
-      return null;
-    }
-
-    return PracticeActivityEvent(
-      event: activityEvent,
-      timeline: pangeaMessageEvent.timeline,
-    );
-  }
-
-  Future<MessageActivityResponse> _fetchFromServer({
+  static Future<MessageActivityResponse> _fetch({
     required String accessToken,
     required MessageActivityRequest requestModel,
   }) async {
@@ -109,96 +102,80 @@ class PracticeRepo {
       body: requestModel.toJson(),
     );
 
-    if (res.statusCode == 200) {
-      final Map<String, dynamic> json = jsonDecode(utf8.decode(res.bodyBytes));
-
-      final response = MessageActivityResponse.fromJson(json);
-
-      return response;
-    } else {
-      debugger(when: kDebugMode);
-      throw Exception('Failed to create activity');
+    if (res.statusCode != 200) {
+      throw Exception('Failed to fetch activity');
     }
+
+    final Map<String, dynamic> json = jsonDecode(utf8.decode(res.bodyBytes));
+    return MessageActivityResponse.fromJson(json);
   }
 
-  Future<MessageActivityResponse> _routePracticeActivity({
+  static Future<MessageActivityResponse> _routePracticeActivity({
     required String accessToken,
     required MessageActivityRequest req,
-    required BuildContext context,
+    required Map<String, dynamic> messageInfo,
   }) async {
     // some activities we'll get from the server and others we'll generate locally
     switch (req.targetType) {
       case ActivityTypeEnum.emoji:
-        return _emoji.get(req);
+        return EmojiActivityGenerator.get(req, messageInfo: messageInfo);
       case ActivityTypeEnum.lemmaId:
-        return _lemma.get(req, context);
+        return LemmaActivityGenerator.get(req);
+      case ActivityTypeEnum.lemmaMeaning:
+        return VocabMeaningActivityGenerator.get(req);
+      case ActivityTypeEnum.lemmaAudio:
+        return VocabAudioActivityGenerator.get(req);
       case ActivityTypeEnum.morphId:
-        return _morph.get(req);
+        return MorphActivityGenerator.get(req);
       case ActivityTypeEnum.wordMeaning:
         debugger(when: kDebugMode);
-        return _wordMeaning.get(req);
+        return LemmaMeaningActivityGenerator.get(req, messageInfo: messageInfo);
       case ActivityTypeEnum.messageMeaning:
       case ActivityTypeEnum.wordFocusListening:
-        return _wordFocusListening.get(req);
+        return WordFocusListeningGenerator.get(req);
       case ActivityTypeEnum.hiddenWordListening:
-        return _fetchFromServer(
+        return _fetch(
           accessToken: accessToken,
           requestModel: req,
         );
     }
   }
 
-  /// [event] is optional and used for saving the activity event to Matrix
-  Future<PracticeActivityModelResponse> getPracticeActivity(
+  static PracticeActivityModel? _getCached(
     MessageActivityRequest req,
-    PangeaMessageEvent? event,
-    BuildContext context,
-  ) async {
-    final int cacheKey = req.hashCode;
-
-    if (_cache.containsKey(cacheKey)) {
-      return _cache[cacheKey]!.practiceActivity;
+  ) {
+    final keys = List.from(_storage.getKeys());
+    for (final k in keys) {
+      try {
+        final item = _RequestCacheItem.fromJson(_storage.read(k));
+        if (item.isExpired) {
+          _storage.remove(k);
+        }
+      } catch (e) {
+        _storage.remove(k);
+      }
     }
 
-    final MessageActivityResponse res = await _routePracticeActivity(
-      accessToken: _pangeaController.userController.accessToken,
-      req: req,
-      context: context,
-    );
-
-    // this improves the UI by generally packing wrapped choices more tightly
-    res.activity.multipleChoiceContent?.choices
-        .sort((a, b) => a.length.compareTo(b.length));
-
-    // TODO resolve some wierdness here whereby the activity can be null but then... it's not
-    final eventCompleter = Completer<PracticeActivityEvent?>();
-
-    if (event != null) {
-      _sendAndPackageEvent(res.activity, event).then((event) {
-        eventCompleter.complete(event);
-      });
+    try {
+      final entry = _RequestCacheItem.fromJson(
+        _storage.read(req.hashCode.toString()),
+      );
+      return entry.practiceActivity;
+    } catch (e) {
+      _storage.remove(req.hashCode.toString());
     }
-
-    final responseModel = PracticeActivityModelResponse(
-      activity: res.activity,
-      eventCompleter: eventCompleter,
-    );
-
-    _cache[cacheKey] = _RequestCacheItem(
-      req: req,
-      practiceActivity: responseModel,
-    );
-
-    return responseModel;
+    return null;
   }
-}
 
-class PracticeActivityModelResponse {
-  final PracticeActivityModel? activity;
-  final Completer<PracticeActivityEvent?> eventCompleter;
-
-  PracticeActivityModelResponse({
-    required this.activity,
-    required this.eventCompleter,
-  });
+  static Future<void> _setCached(
+    MessageActivityRequest req,
+    MessageActivityResponse res,
+  ) =>
+      _storage.write(
+        req.hashCode.toString(),
+        _RequestCacheItem(
+          practiceActivity: res.activity,
+          timestamp: DateTime.now(),
+        ).toJson(),
+      );
 }

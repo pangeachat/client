@@ -10,10 +10,10 @@ class CoursePlanFilter<T> extends StatefulWidget {
 
   final void Function(T?) onChanged;
   final String defaultName;
-  final String? shortName;
   final String Function(T) displayname;
 
   final bool enableSearch;
+  final bool Function(DropdownMenuItem<T>, String)? searchMatchFn;
 
   const CoursePlanFilter({
     super.key,
@@ -23,7 +23,7 @@ class CoursePlanFilter<T> extends StatefulWidget {
     required this.defaultName,
     required this.displayname,
     this.enableSearch = false,
-    this.shortName,
+    this.searchMatchFn,
   });
 
   @override
@@ -75,7 +75,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
                 child: DropdownTextButton(
                   text: item != null
                       ? widget.displayname(item)
-                      : widget.shortName ?? widget.defaultName,
+                      : widget.defaultName,
                   isSelected: item == widget.value,
                 ),
               ),
@@ -87,30 +87,41 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             borderRadius: BorderRadius.circular(40),
           ),
         ),
+        dropdownStyleData: DropdownStyleData(
+          elevation: 8,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: theme.colorScheme.surfaceContainerHigh,
+          ),
+        ),
+        menuItemStyleData: const MenuItemStyleData(
+          padding: EdgeInsets.zero,
+        ),
         dropdownSearchData: widget.enableSearch
             ? DropdownSearchData(
                 searchController: _searchController,
                 searchInnerWidgetHeight: 50,
-                searchInnerWidget: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                  child: TextField(
-                    autofocus: true,
-                    controller: _searchController,
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(Icons.search),
+                searchInnerWidget: Material(
+                  elevation: 4,
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(14),
+                    topRight: Radius.circular(14),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 10,
+                    ),
+                    child: TextField(
+                      autofocus: true,
+                      controller: _searchController,
+                      decoration: const InputDecoration(
+                        prefixIcon: Icon(Icons.search),
+                      ),
                     ),
                   ),
                 ),
-                searchMatchFn: (item, searchValue) {
-                  final displayName = (item.value != null
-                          ? widget.displayname(item.value as T)
-                          : widget.defaultName)
-                      .toLowerCase();
-
-                  final search = searchValue.toLowerCase();
-                  return displayName.startsWith(search);
-                },
+                searchMatchFn: widget.searchMatchFn,
               )
             : null,
         onMenuStateChange: (isOpen) {

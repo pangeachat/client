@@ -6,104 +6,21 @@ import 'package:intl/intl.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_downloads/space_analytics_summary_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/saved_analytics_extension.dart';
+import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_download_model.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_requests_repo.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_download_enum.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_inactive_dialog.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_request_dialog.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_view.dart';
-import 'package:fluffychat/pangea/user/models/analytics_profile_model.dart';
+import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-
-// enum DownloadStatus {
-//   loading,
-//   available,
-//   unavailable,
-//   notFound;
-// }
-
-// enum RequestStatus {
-//   available,
-//   unrequested,
-//   requested,
-//   notFound;
-
-// static RequestStatus? fromString(String value) {
-//   switch (value) {
-//     case 'available':
-//       return RequestStatus.available;
-//     case 'unrequested':
-//       return RequestStatus.unrequested;
-//     case 'requested':
-//       return RequestStatus.requested;
-//     case 'notFound':
-//       return RequestStatus.notFound;
-//     default:
-//       return null;
-//   }
-// }
-
-// IconData get icon {
-//   switch (this) {
-//     case RequestStatus.available:
-//       return Icons.check_circle;
-//     case RequestStatus.unrequested:
-//       return Symbols.approval_delegation;
-//     case RequestStatus.requested:
-//       return Icons.mark_email_read_outlined;
-//     case RequestStatus.notFound:
-//       return Symbols.approval_delegation;
-//   }
-// }
-
-// String label(BuildContext context) {
-//   final l10n = L10n.of(context);
-//   switch (this) {
-//     case RequestStatus.available:
-//       return l10n.available;
-//     case RequestStatus.unrequested:
-//       return l10n.request;
-//     case RequestStatus.requested:
-//       return l10n.pending;
-//     case RequestStatus.notFound:
-//       return l10n.inactive;
-//   }
-// }
-
-// Color backgroundColor(BuildContext context) {
-//   final theme = Theme.of(context);
-//   switch (this) {
-//     case RequestStatus.available:
-//     case RequestStatus.unrequested:
-//       return theme.colorScheme.primaryContainer;
-//     case RequestStatus.notFound:
-//     case RequestStatus.requested:
-//       return theme.disabledColor;
-//   }
-// }
-
-// bool get showButton => this != RequestStatus.available;
-
-// bool get enabled => this == RequestStatus.unrequested;
-// }
-
-// class AnalyticsDownload {
-//   DownloadStatus status;
-//   SpaceAnalyticsSummaryModel? summary;
-
-//   AnalyticsDownload({
-//     required this.status,
-//     this.summary,
-//   });
-// }
 
 class SpaceAnalytics extends StatefulWidget {
   final String roomId;
@@ -125,7 +42,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   Room? get room => Matrix.of(context).client.getRoomById(widget.roomId);
 
   LanguageModel? get _userL2 {
-    final l2 = MatrixState.pangeaController.languageController.userL2;
+    final l2 = MatrixState.pangeaController.userController.userL2;
     if (l2 == null) return null;
 
     // Attempt to find the language model by its short code, since analytics
@@ -154,8 +71,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   List<LanguageModel> get availableLanguages => _langsToUsers.keys.toList()
     ..sort(
-      (a, b) => (a.getDisplayName(context) ?? a.displayName)
-          .compareTo(b.getDisplayName(context) ?? b.displayName),
+      (a, b) => a.getDisplayName(context).compareTo(b.getDisplayName(context)),
     );
 
   int get completedDownloads =>
@@ -213,6 +129,20 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   void initState() {
     super.initState();
     _initialize();
+  }
+
+  @override
+  void didUpdateWidget(covariant SpaceAnalytics oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.roomId != widget.roomId) {
+      initialized = false;
+      selectedLanguage = null;
+      downloads = {};
+      _lastUpdated = null;
+      _profiles.clear();
+      _langsToUsers.clear();
+      _initialize();
+    }
   }
 
   Future<void> _initialize() async {
@@ -332,24 +262,11 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
         summary: SpaceAnalyticsSummaryModel.emptyModel(userID),
       );
     } else {
-      final List<OneConstructUse> uses = [];
-      for (final event in constructEvents) {
-        uses.addAll(event.content.uses);
-      }
-
-      final constructs = ConstructListModel(uses: uses);
-      summary = SpaceAnalyticsSummaryModel.fromConstructListModel(
+      summary = SpaceAnalyticsSummaryModel.fromEvents(
         userID,
-        constructs,
-        analyticsRoom.activityRoomIds.length,
-        (use) =>
-            getGrammarCopy(
-              category: use.category,
-              lemma: use.lemma,
-              context: context,
-            ) ??
-            use.lemma,
-        context,
+        constructEvents,
+        analyticsRoom.blockedConstructs,
+        analyticsRoom.archivedActivitiesCount,
       );
 
       downloads[user] = AnalyticsDownload(
@@ -372,7 +289,14 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
     try {
       final roomId = _analyticsRoomIdOfUser(user);
       if (roomId == null) return;
-      await Matrix.of(context).client.knockRoom(roomId);
+      await Matrix.of(context).client.knockRoom(
+            roomId,
+            via: room?.spaceChildren
+                .firstWhereOrNull(
+                  (child) => child.roomId == roomId,
+                )
+                ?.via,
+          );
       status = RequestStatus.requested;
     } catch (e) {
       status = RequestStatus.unavailable;

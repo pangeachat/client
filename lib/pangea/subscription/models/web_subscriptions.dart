@@ -21,7 +21,16 @@ class WebSubscriptionInfo extends CurrentSubscriptionInfo {
       );
 
       currentSubscriptionId = rcResponse.currentSubscriptionId;
-      expirationDate = rcResponse.expirationDate;
+      final currentSubscription =
+          rcResponse.allSubscriptions?[currentSubscriptionId];
+
+      if (currentSubscription != null) {
+        expirationDate = DateTime.tryParse(currentSubscription.expiresDate);
+        unsubscribeDetectedAt =
+            currentSubscription.unsubscribeDetectedAt != null
+                ? DateTime.parse(currentSubscription.unsubscribeDetectedAt!)
+                : null;
+      }
     } catch (err) {
       currentSubscriptionId = AppConfig.errorSubscriptionId;
     }

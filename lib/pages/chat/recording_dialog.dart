@@ -12,10 +12,12 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/toolbar/utils/update_version_dialog.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'events/audio_player.dart';
+
+class PermissionException implements Exception {}
 
 class RecordingDialog extends StatefulWidget {
   const RecordingDialog({
@@ -30,7 +32,10 @@ class RecordingDialogState extends State<RecordingDialog> {
   Timer? _recorderSubscription;
   Duration _duration = Duration.zero;
 
-  bool error = false;
+  // #Pangea
+  // bool error = false;
+  Object? error;
+  // Pangea#
 
   final _audioRecorder = AudioRecorder();
   final List<double> amplitudeTimeline = [];
@@ -61,37 +66,27 @@ class RecordingDialogState extends State<RecordingDialog> {
 
       final result = await _audioRecorder.hasPermission();
       if (result != true) {
-        setState(() => error = true);
-        return;
+        // #Pangea
+        throw PermissionException();
+        // setState(() => error = true);
+        // return;
+        // Pangea#
       }
       await WakelockPlus.enable();
 
-      // #Pangea
-      final isNotError = await showUpdateVersionDialog(
-        future: () async =>
-            // Pangea#
-            await _audioRecorder.start(
-          RecordConfig(
-            bitRate: AppSettings.audioRecordingBitRate.getItem(store),
-            sampleRate: AppSettings.audioRecordingSamplingRate.getItem(store),
-            numChannels: AppSettings.audioRecordingNumChannels.getItem(store),
-            autoGain: AppSettings.audioRecordingAutoGain.getItem(store),
-            echoCancel: AppSettings.audioRecordingEchoCancel.getItem(store),
-            noiseSuppress:
-                AppSettings.audioRecordingNoiseSuppress.getItem(store),
-            encoder: codec,
-          ),
-          path: path ?? '',
+      await _audioRecorder.start(
+        RecordConfig(
+          bitRate: AppSettings.audioRecordingBitRate.getItem(store),
+          sampleRate: AppSettings.audioRecordingSamplingRate.getItem(store),
+          numChannels: AppSettings.audioRecordingNumChannels.getItem(store),
+          autoGain: AppSettings.audioRecordingAutoGain.getItem(store),
+          echoCancel: AppSettings.audioRecordingEchoCancel.getItem(store),
+          noiseSuppress: AppSettings.audioRecordingNoiseSuppress.getItem(store),
+          encoder: codec,
         ),
-        // #Pangea
-        context: context,
+        path: path ?? '',
       );
 
-      if (!isNotError) {
-        Navigator.of(context).pop();
-        return;
-      }
-      // Pangea#
       setState(() => _duration = Duration.zero);
       _recorderSubscription?.cancel();
       _recorderSubscription =
@@ -104,8 +99,12 @@ class RecordingDialogState extends State<RecordingDialog> {
           _duration += const Duration(milliseconds: 100);
         });
       });
-    } catch (_) {
-      setState(() => error = true);
+      // #Pangea
+      // } catch (_) {
+      //   setState(() => error = true);
+    } catch (e) {
+      setState(() => error = e);
+      // Pangea#
       rethrow;
     }
   }
@@ -154,8 +153,19 @@ class RecordingDialogState extends State<RecordingDialog> {
     const maxDecibalWidth = 64.0;
     final time =
         '${_duration.inMinutes.toString().padLeft(2, '0')}:${(_duration.inSeconds % 60).toString().padLeft(2, '0')}';
-    final content = error
-        ? Text(L10n.of(context).oopsSomethingWentWrong)
+    // #Pangea
+    // final content = error
+    //     ? Text(L10n.of(context).oopsSomethingWentWrong)
+    final content = error != null
+        ? ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 250.0),
+            child: error is PermissionException
+                ? Text(L10n.of(context).recordingPermissionDenied)
+                : kIsWeb
+                    ? Text(L10n.of(context).genericWebRecordingError)
+                    : Text(error!.toLocalizedString(context)),
+          )
+        // Pangea#
         : Row(
             children: [
               Container(
@@ -209,7 +219,10 @@ class RecordingDialogState extends State<RecordingDialog> {
               ),
             ),
           ),
-          if (error != true)
+          // #Pangea
+          // if (error != true)
+          if (error == null)
+            // Pangea#
             CupertinoDialogAction(
               onPressed: _stopAndSend,
               child: Text(L10n.of(context).send),
@@ -229,7 +242,10 @@ class RecordingDialogState extends State<RecordingDialog> {
             ),
           ),
         ),
-        if (error != true)
+        // #Pangea
+        // if (error != true)
+        if (error == null)
+          // Pangea#
           TextButton(
             onPressed: _stopAndSend,
             child: Text(L10n.of(context).send),

@@ -16,7 +16,7 @@ import 'package:fluffychat/pangea/course_settings/teacher_mode_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 extension CoursePlanRoomExtension on Room {
   CoursePlanEvent? get coursePlan {
@@ -39,6 +39,23 @@ extension CoursePlanRoomExtension on Room {
   }
 
   Future<void> addCourseToSpace(String courseId) async {
+    // Ensure students in course can launch activity rooms
+    final powerLevels = Map<String, dynamic>.from(
+      getState(EventTypes.RoomPowerLevels)?.content ?? {},
+    );
+    powerLevels['events'] ??= <String, dynamic>{};
+    final events = Map<String, dynamic>.from(powerLevels['events']);
+    if (events["m.space.child"] != 0) {
+      events["m.space.child"] = 0;
+      powerLevels['events'] = events;
+      await client.setRoomStateWithKey(
+        id,
+        EventTypes.RoomPowerLevels,
+        '',
+        powerLevels,
+      );
+    }
+
     if (coursePlan?.uuid == courseId) return;
     final future = waitForRoomInSync();
     await client.setRoomStateWithKey(

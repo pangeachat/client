@@ -8,11 +8,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_analytics_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -22,7 +20,6 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extensio
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import '../activity_summary/activity_summary_repo.dart';
 
 class RoleException implements Exception {
@@ -275,7 +272,6 @@ extension ActivityRoomExtension on Room {
           activity: activityPlan!,
           activityResults: messages,
           contentFeedback: [],
-          analytics: analytics,
           roleState: activityRoles,
         ),
       );
@@ -310,48 +306,6 @@ extension ActivityRoomExtension on Room {
         );
       }
     }
-  }
-
-  Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {
-    // wait for local storage box to init in getAnalytics initialization
-    if (!MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted) {
-      await MatrixState.pangeaController.getAnalytics.initCompleter.future;
-    }
-
-    final cached = ActivitySessionAnalyticsRepo.get(id);
-    final analytics = cached?.analytics ?? ActivitySummaryAnalyticsModel();
-
-    DateTime? timestamp = creationTimestamp;
-    if (cached != null) {
-      timestamp = cached.lastUseTimestamp;
-    }
-
-    final List<OneConstructUse> uses = [];
-
-    for (final use
-        in MatrixState.pangeaController.getAnalytics.constructListModel.uses) {
-      final useTimestamp = use.metadata.timeStamp;
-      if (timestamp != null &&
-          (useTimestamp == timestamp || useTimestamp.isBefore(timestamp))) {
-        break;
-      }
-
-      if (use.metadata.roomId != id) continue;
-      uses.add(use);
-    }
-
-    if (uses.isEmpty) {
-      return analytics;
-    }
-
-    analytics.addConstructs(client.userID!, uses);
-    await ActivitySessionAnalyticsRepo.set(
-      id,
-      uses.first.metadata.timeStamp,
-      analytics,
-    );
-
-    return analytics;
   }
 
   // UI-related helper functions

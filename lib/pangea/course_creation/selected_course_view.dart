@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class SelectedCourseView extends StatelessWidget {
@@ -81,13 +82,11 @@ class SelectedCourseView extends StatelessWidget {
                                             width: 100.0,
                                             borderRadius:
                                                 BorderRadius.circular(0.0),
-                                            replacement: Container(
-                                              width: 100.0,
-                                              height: 100.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    theme.colorScheme.secondary,
-                                              ),
+                                            replacement: Avatar(
+                                              name: displayname,
+                                              size: 100.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(0.0),
                                             ),
                                           ),
                                         ),

@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
-import 'package:fluffychat/pangea/common/network/requests.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
+import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
@@ -29,16 +30,16 @@ class MorphMeaningWidget extends StatefulWidget {
 
 class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
   bool _editMode = false;
+
   late TextEditingController _controller;
   static const int maxCharacters = 140;
-  String? _cachedResponse;
+
+  String? _definition;
   bool _isLoading = true;
-  Object? _error;
 
   @override
   void didUpdateWidget(covariant MorphMeaningWidget oldWidget) {
     if (oldWidget.tag != widget.tag || oldWidget.feature != widget.feature) {
-      _cachedResponse = null;
       _isLoading = true;
       _loadMorphMeaning();
     }
@@ -58,28 +59,44 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     super.dispose();
   }
 
+  MorphInfoRequest get _request => MorphInfoRequest(
+        userL1: MatrixState.pangeaController.userController.userL1?.langCode ??
+            LanguageKeys.defaultLanguage,
+        userL2: MatrixState.pangeaController.userController.userL2?.langCode ??
+            LanguageKeys.defaultLanguage,
+      );
+
   Future<void> _loadMorphMeaning() async {
-    try {
-      final response = await _morphMeaning();
-      _setMeaningText(response);
-    } catch (e) {
-      _error = e;
-    } finally {
-      if (mounted) setState(() => _isLoading = false);
+    if (mounted) {
+      setState(() {
+        _isLoading = true;
+        _definition = null;
+      });
     }
+
+    final response = await _morphMeaning();
+    _controller.text = response.substring(
+      0,
+      min(response.length, maxCharacters),
+    );
+    _definition = response;
+
+    if (mounted) setState(() => _isLoading = false);
   }
 
   Future<String> _morphMeaning() async {
-    if (_cachedResponse != null) {
-      return _cachedResponse!;
+    final result = await MorphInfoRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      _request,
+    );
+
+    if (result.isError) {
+      return L10n.of(context).meaningNotFound;
     }
 
-    final response = await MorphInfoRepo.get(
-      feature: widget.feature,
-      tag: widget.tag,
-    );
-    _cachedResponse = response;
-    return response ?? L10n.of(context).meaningNotFound;
+    final morph = result.result!.getFeatureByCode(widget.feature.name);
+    final data = morph?.getTagByCode(widget.tag);
+    return data?.l1Description ?? L10n.of(context).meaningNotFound;
   }
 
   void _toggleEditMode(bool value) => setState(() => _editMode = value);
@@ -90,22 +107,15 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
         ? userEdit.substring(0, maxCharacters)
         : userEdit;
 
-    await MorphInfoRepo.setMorphDefinition(
+    await MorphInfoRepo.update(
+      _request,
       feature: widget.feature,
       tag: widget.tag,
-      defintion: truncatedEdit,
+      definition: truncatedEdit,
     );
 
-    // Update the cached response
-    _cachedResponse = truncatedEdit;
     _toggleEditMode(false);
-  }
-
-  void _setMeaningText(String initialText) {
-    _controller.text = initialText.substring(
-      0,
-      min(initialText.length, maxCharacters),
-    );
+    _loadMorphMeaning();
   }
 
   @override
@@ -114,27 +124,11 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
       return const TextLoadingShimmer();
     }
 
-    if (_error != null) {
-      return Center(
-        child: _error is UnsubscribedException
-            ? ErrorIndicator(
-                message: L10n.of(context).subscribeToUnlockDefinitions,
-                onTap: () {
-                  MatrixState.pangeaController.subscriptionController
-                      .showPaywall(context);
-                },
-              )
-            : ErrorIndicator(
-                message: L10n.of(context).errorFetchingDefinition,
-              ),
-      );
-    }
-
     if (_editMode) {
       return MorphEditView(
         morphFeature: widget.feature,
         morphTag: widget.tag,
-        meaning: _cachedResponse ?? "",
+        meaning: _definition ?? "",
         controller: _controller,
         toggleEditMode: _toggleEditMode,
         editMorphMeaning: editMorphMeaning,
@@ -149,7 +143,7 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
         onDoubleTap: () => _toggleEditMode(true),
         child: Text(
           textAlign: TextAlign.center,
-          _cachedResponse ?? L10n.of(context).meaningNotFound,
+          _definition ?? L10n.of(context).meaningNotFound,
           style: widget.style,
         ),
       ),

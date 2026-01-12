@@ -1,0 +1,116 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:collection/collection.dart';
+
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/practice_match_item.dart';
+
+class MatchActivityCard extends StatelessWidget {
+  final PracticeActivityModel currentActivity;
+  final PracticeController controller;
+
+  const MatchActivityCard({
+    super.key,
+    required this.currentActivity,
+    required this.controller,
+  });
+
+  PracticeActivityModel get activity => currentActivity;
+
+  ActivityTypeEnum get activityType => currentActivity.activityType;
+
+  Widget choiceDisplayContent(
+    BuildContext context,
+    String choice,
+    double? fontSize,
+  ) {
+    switch (activityType) {
+      case ActivityTypeEnum.emoji:
+      case ActivityTypeEnum.wordMeaning:
+        return Padding(
+          padding: const EdgeInsets.all(8),
+          child: Text(
+            choice,
+            style: TextStyle(fontSize: fontSize),
+            textAlign: TextAlign.center,
+          ),
+        );
+      case ActivityTypeEnum.wordFocusListening:
+        return Padding(
+          padding: const EdgeInsets.all(8),
+          child: Icon(
+            Icons.volume_up,
+            size: fontSize,
+          ),
+        );
+      default:
+        debugger(when: kDebugMode);
+        return const SizedBox();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double fontSize = (FluffyThemes.isColumnMode(context)
+            ? Theme.of(context).textTheme.titleLarge?.fontSize
+            : Theme.of(context).textTheme.titleMedium?.fontSize) ??
+        26;
+
+    final mode = controller.practiceMode;
+    if (mode == MessagePracticeMode.listening ||
+        mode == MessagePracticeMode.wordEmoji) {
+      fontSize = fontSize * 1.5;
+    }
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      spacing: 4.0,
+      children: [
+        if (mode == MessagePracticeMode.listening)
+          MessageAudioCard(messageEvent: controller.pangeaMessageEvent),
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 4.0,
+          runSpacing: 4.0,
+          children: activity.matchContent!.choices.map(
+            (PracticeChoice cf) {
+              final bool? wasCorrect =
+                  currentActivity.practiceTarget.wasCorrectMatch(cf);
+              return ChoiceAnimationWidget(
+                isSelected: controller.selectedChoice == cf,
+                isCorrect: wasCorrect,
+                child: PracticeMatchItem(
+                  token: currentActivity.practiceTarget.tokens.firstWhereOrNull(
+                    (t) => t.vocabConstructID == cf.form.cId,
+                  ),
+                  isSelected: controller.selectedChoice == cf,
+                  isCorrect: wasCorrect,
+                  constructForm: cf,
+                  content:
+                      choiceDisplayContent(context, cf.choiceContent, fontSize),
+                  audioContent:
+                      activityType == ActivityTypeEnum.wordFocusListening
+                          ? cf.choiceContent
+                          : null,
+                  controller: controller,
+                  shimmer: controller.showChoiceShimmer,
+                ),
+              );
+            },
+          ).toList(),
+        ),
+      ],
+    );
+  }
+}

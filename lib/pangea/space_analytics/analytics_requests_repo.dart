@@ -1,6 +1,6 @@
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_download_enum.dart';
 
 class _AnalyticsRequestEntry {

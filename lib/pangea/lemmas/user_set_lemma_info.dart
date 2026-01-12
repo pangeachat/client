@@ -23,6 +23,16 @@ class UserSetLemmaInfo {
     };
   }
 
+  UserSetLemmaInfo copyWith({
+    List<String>? emojis,
+    String? meaning,
+  }) {
+    return UserSetLemmaInfo(
+      emojis: emojis ?? this.emojis,
+      meaning: meaning ?? this.meaning,
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -32,5 +42,6 @@ class UserSetLemmaInfo {
           meaning == other.meaning;
 
   @override
-  int get hashCode => meaning.hashCode ^ Object.hashAll(emojis ?? []);
+  int get hashCode =>
+      meaning.hashCode ^ const ListEquality().hash(emojis ?? []);
 }

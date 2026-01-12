@@ -83,6 +83,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
       return;
     }
 
+    final client = Matrix.of(context).client;
     try {
       if (_downloadType == DownloadType.csv) {
         final vocabContent = _getCSVFileContent(
@@ -96,10 +97,10 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         );
 
         final vocabFileName =
-            "analytics_vocab_${MatrixState.pangeaController.matrixState.client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
+            "analytics_vocab_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
 
         final morphFileName =
-            "analytics_morph_${MatrixState.pangeaController.matrixState.client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
+            "analytics_morph_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
 
         final futures = [
           DownloadUtil.downloadFile(
@@ -122,7 +123,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         });
 
         final fileName =
-            "analytics_${MatrixState.pangeaController.matrixState.client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx'}";
+            "analytics_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx";
 
         await DownloadUtil.downloadFile(
           content,
@@ -146,8 +147,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<List<AnalyticsSummaryModel>> _getVocabAnalytics() async {
-    final uses = MatrixState.pangeaController.getAnalytics.constructListModel
-        .constructList(type: ConstructTypeEnum.vocab);
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    final aggregatedVocab =
+        await analyticsService.getAggregatedConstructs(ConstructTypeEnum.vocab);
+
+    final uses = aggregatedVocab.values.toList();
     final Map<String, List<ConstructUses>> lemmasToUses = {};
     for (final use in uses) {
       lemmasToUses[use.lemma] ??= [];
@@ -161,7 +165,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
       final xp = uses.map((e) => e.points).reduce((a, total) => a + total);
       final exampleMessages = await _getExampleMessages(uses);
-      final allUses = uses.map((u) => u.uses).expand((element) => element);
+      final allUses =
+          uses.map((u) => u.cappedUses).expand((element) => element);
 
       int independantUseOccurrences = 0;
       int assistedUseOccurrences = 0;
@@ -193,8 +198,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<List<AnalyticsSummaryModel>> _getMorphAnalytics() async {
-    final constructListModel =
-        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final analyticsService = Matrix.of(context).analyticsDataService;
 
     final morphs = await MorphsRepo.get();
     final List<AnalyticsSummaryModel> summaries = [];
@@ -211,12 +215,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
           category: feature.feature,
         );
 
-        final uses = constructListModel.getConstructUses(id);
-        if (uses == null) continue;
+        final uses = await analyticsService.getConstructUse(id);
 
         final xp = uses.points;
         final exampleMessages = await _getExampleMessages([uses]);
-        final allUses = uses.uses;
+        final allUses = uses.cappedUses;
 
         int independantUseOccurrences = 0;
         int assistedUseOccurrences = 0;
@@ -259,12 +262,13 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   Future<List<String>> _getExampleMessages(
     List<ConstructUses> constructUses,
   ) async {
-    final allUses = constructUses.map((e) => e.uses).expand((e) => e).toList();
+    final allUses =
+        constructUses.map((e) => e.cappedUses).expand((e) => e).toList();
     final List<PangeaMessageEvent> examples = [];
     for (final OneConstructUse use in allUses) {
       if (use.metadata.roomId == null) continue;
-      final Room? room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(use.metadata.roomId!);
+      final client = Matrix.of(context).client;
+      final Room? room = client.getRoomById(use.metadata.roomId!);
       if (room == null) continue;
 
       if (use.useType.skillsEnumType != LearningSkillsEnum.writing ||
@@ -287,12 +291,11 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
 
       final Event? event = await room.getEventById(use.metadata.eventId!);
 
-      if (event == null || event.senderId != room.client.userID) continue;
+      if (event == null || event.senderId != client.userID) continue;
       final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
         event: event,
         timeline: timeline!,
-        ownMessage: event.senderId ==
-            MatrixState.pangeaController.matrixState.client.userID,
+        ownMessage: event.senderId == client.userID,
       );
       examples.add(pangeaMessageEvent);
       if (examples.length >= 5) break;
@@ -436,19 +439,20 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
-              child: OutlinedButton(
-                onPressed: _downloading ? null : _downloadAnalytics,
-                child: _downloading
-                    ? const SizedBox(
-                        height: 10,
-                        width: 100,
-                        child: LinearProgressIndicator(),
-                      )
-                    : Text(L10n.of(context).download),
+            if (!_downloaded)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
+                child: OutlinedButton(
+                  onPressed: _downloading ? null : _downloadAnalytics,
+                  child: _downloading
+                      ? const SizedBox(
+                          height: 10,
+                          width: 100,
+                          child: LinearProgressIndicator(),
+                        )
+                      : Text(L10n.of(context).download),
+                ),
               ),
-            ),
             AnimatedSize(
               duration: FluffyThemes.animationDuration,
               child: _statusText != null

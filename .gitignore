@@ -48,6 +48,9 @@ venv/
 /builds/
 .fvm/
 .fvmrc
+
+# copilot-instructions.md
+.github/copilot-instructions.md
 # Web related
 docs/tailwind.css
 
@@ -77,6 +80,10 @@ olm
 
 needed-translations.txt
 .venv
+
+# Generated files from find_unused_intl_keys.py
+scripts/unused_intl_keys_report.txt
+scripts/unused_intl_keys.json
 
 docs/node_modules/.package-lock.json
 docs/node_modules/.bin/detect-libc

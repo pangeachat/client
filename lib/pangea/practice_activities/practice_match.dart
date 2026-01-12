@@ -54,10 +54,6 @@ class PracticeMatchActivity {
     );
   }
 
-  bool isCorrect(ConstructForm form, String value) {
-    return matchInfo[form]!.contains(value);
-  }
-
   factory PracticeMatchActivity.fromJson(Map<String, dynamic> json) {
     final Map<ConstructForm, List<String>> matchInfo = {};
     for (final constructJson in json['match_info']) {

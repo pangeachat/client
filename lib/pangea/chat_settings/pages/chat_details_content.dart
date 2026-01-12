@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -9,6 +8,9 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/chat_details_button_row.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/room_participants_widget.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
@@ -117,8 +119,13 @@ class ChatDetailsContent extends StatelessWidget {
                         TextButton.icon(
                           onPressed: room.isDirectChat || !room.canInvite
                               ? null
-                              : () => context.push(
-                                    '/rooms/${controller.roomId}/details/invite?filter=participants',
+                              : () => NavigationUtil.goToSpaceRoute(
+                                    controller.roomId,
+                                    ['details', 'invite'],
+                                    context,
+                                    queryParams: {
+                                      'filter': 'participants',
+                                    },
                                   ),
                           icon: const Icon(
                             Icons.group_outlined,
@@ -199,7 +206,17 @@ class ChatDetailsContent extends StatelessWidget {
 
         return Padding(
           padding: const EdgeInsets.all(16.0),
-          child: RoomParticipantsSection(room: room),
+          child: Column(
+            children: [
+              const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.chatParticipantTooltip,
+                padding: EdgeInsets.only(
+                  bottom: 16.0,
+                ),
+              ),
+              RoomParticipantsSection(room: room),
+            ],
+          ),
         );
       },
     );

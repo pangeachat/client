@@ -54,4 +54,8 @@ class PangeaEventTypes {
   static const courseUser = "p.course_user";
   static const teacherMode = "pangea.teacher_mode";
   static const courseChatList = "pangea.course_chat_list";
+
+  static const analyticsSettings = "pangea.analytics_settings";
+
+  static const regenerationRequest = "pangea.regeneration_request";
 }

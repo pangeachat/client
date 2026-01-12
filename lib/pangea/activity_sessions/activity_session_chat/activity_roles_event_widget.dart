@@ -56,28 +56,25 @@ class ActivityRolesEvent extends StatelessWidget {
         }
 
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
           child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(4),
-              child: Material(
-                color: theme.colorScheme.surface.withAlpha(128),
-                borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 4.0,
-                  ),
-                  child: Text(
-                    "${role.stateEventMessage(displayName, L10n.of(context))}",
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 12 * AppConfig.fontSizeFactor,
-                      decoration:
-                          event.redacted ? TextDecoration.lineThrough : null,
-                    ),
+            child: Material(
+              color: theme.colorScheme.surface.withAlpha(128),
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                  vertical: 4.0,
+                ),
+                child: Text(
+                  "${role.stateEventMessage(displayName, L10n.of(context))}",
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12 * AppConfig.fontSizeFactor,
+                    decoration:
+                        event.redacted ? TextDecoration.lineThrough : null,
                   ),
                 ),
               ),

@@ -16,7 +16,7 @@ import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_chats/course_default_chats_enum.dart';
 import 'package:fluffychat/pangea/course_chats/unjoined_chat_list_item.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_request_indicator.dart';
-import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -54,9 +54,10 @@ class CourseChatsView extends StatelessWidget {
         final isColumnMode = FluffyThemes.isColumnMode(context);
         return Padding(
           padding: isColumnMode
-              ? const EdgeInsets.symmetric(
-                  vertical: 12.0,
-                  horizontal: 8.0,
+              ? const EdgeInsets.only(
+                  top: 12.0,
+                  left: 8.0,
+                  right: 8.0,
                 )
               : const EdgeInsets.all(0.0),
           child: ListView.builder(
@@ -154,7 +155,7 @@ class CourseChatsView extends StatelessWidget {
                         title: Text(L10n.of(context).whatNow),
                         subtitle: Text(L10n.of(context).chooseNextActivity),
                         trailing: const Icon(Icons.arrow_forward),
-                        onTap: () => context.go(
+                        onTap: () => context.pushReplacement(
                           "/rooms/spaces/${room.id}/details?tab=course",
                         ),
                       )

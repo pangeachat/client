@@ -93,7 +93,7 @@ class CourseActivityRepo {
           DateTime.now().difference(sentActivityFeedback) >
               const Duration(minutes: 15)) {
         _storage.remove(cacheKey);
-        _clearSentFeedback(cacheKey, request.l1);
+        _clearSentFeedback(id, request.l1);
         continue;
       }
 

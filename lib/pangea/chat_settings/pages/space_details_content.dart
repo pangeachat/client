@@ -21,6 +21,8 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extensio
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/course_settings.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -120,7 +122,16 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.editCourse,
         description: l10n.editCourseDesc,
         icon: const Icon(Icons.edit_outlined, size: 30.0),
-        onPressed: () => context.go('/rooms/${room.id}/details/edit'),
+        onPressed: () => context.go('/rooms/spaces/${room.id}/details/edit'),
+        enabled: room.isRoomAdmin,
+        showInMainView: false,
+      ),
+      ButtonDetails(
+        title: L10n.of(context).changeCourse,
+        description: L10n.of(context).changeCourseDesc,
+        icon: const Icon(Icons.assignment_outlined, size: 30.0),
+        onPressed: () =>
+            context.go('/rooms/spaces/${controller.roomId}/addcourse'),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -187,7 +198,8 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.permissions,
         description: l10n.permissionsDesc,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-        onPressed: () => context.go('/rooms/${room.id}/details/permissions'),
+        onPressed: () =>
+            context.go('/rooms/spaces/${room.id}/details/permissions'),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -195,7 +207,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.access,
         description: l10n.accessDesc,
         icon: const Icon(Icons.shield_outlined, size: 30.0),
-        onPressed: () => context.go('/rooms/${room.id}/details/access'),
+        onPressed: () => context.go('/rooms/spaces/${room.id}/details/access'),
         enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
         showInMainView: false,
       ),
@@ -216,7 +228,6 @@ class SpaceDetailsContent extends StatelessWidget {
         icon: const Icon(Icons.logout_outlined, size: 30.0),
         onPressed: () async {
           final confirmed = await showOkCancelAlertDialog(
-            useRootNavigator: false,
             context: context,
             title: L10n.of(context).areYouSure,
             okLabel: L10n.of(context).leave,
@@ -243,16 +254,7 @@ class SpaceDetailsContent extends StatelessWidget {
           Icons.delete_outline,
           size: 30.0,
         ),
-        onPressed: () async {
-          final resp = await showDialog<bool?>(
-            context: context,
-            builder: (_) => DeleteSpaceDialog(space: room),
-          );
-
-          if (resp == true) {
-            context.go("/rooms");
-          }
-        },
+        onPressed: () => DeleteSpaceDialog.show(room, context),
         enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
@@ -355,7 +357,20 @@ class SpaceDetailsContent extends StatelessWidget {
                   );
                 case SpaceSettingsTabs.participants:
                   return SingleChildScrollView(
-                    child: RoomParticipantsSection(room: room),
+                    child: Column(
+                      children: [
+                        const InstructionsInlineTooltip(
+                          instructionsEnum:
+                              InstructionsEnum.courseParticipantTooltip,
+                          padding: EdgeInsets.only(
+                            bottom: 16.0,
+                            left: 16.0,
+                            right: 16.0,
+                          ),
+                        ),
+                        RoomParticipantsSection(room: room),
+                      ],
+                    ),
                   );
                 case SpaceSettingsTabs.analytics:
                   return SingleChildScrollView(

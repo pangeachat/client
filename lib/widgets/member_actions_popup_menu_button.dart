@@ -6,6 +6,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/permission_slider_dialog.dart';
 import 'adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -16,6 +18,9 @@ void showMemberActionsPopupMenu({
   required BuildContext context,
   required User user,
   void Function()? onMention,
+  // #Pangea
+  Room? room,
+  // Pangea#
 }) async {
   final theme = Theme.of(context);
   final displayname = user.calcDisplayname();
@@ -119,6 +124,17 @@ void showMemberActionsPopupMenu({
             ],
           ),
         ),
+      if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
+        PopupMenuItem(
+          value: _MemberActions.botSettings,
+          child: Row(
+            children: [
+              const Icon(Icons.settings_outlined),
+              const SizedBox(width: 18),
+              Text(L10n.of(context).botSettings),
+            ],
+          ),
+        ),
       // Pangea#
       if (onMention != null)
         PopupMenuItem(
@@ -178,7 +194,7 @@ void showMemberActionsPopupMenu({
               ),
               const SizedBox(width: 18),
               Text(
-                L10n.of(context).kickFromChat,
+                L10n.of(context).kick,
                 style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],
@@ -195,7 +211,7 @@ void showMemberActionsPopupMenu({
               ),
               const SizedBox(width: 18),
               Text(
-                L10n.of(context).banFromChat,
+                L10n.of(context).ban,
                 style: TextStyle(color: theme.colorScheme.onErrorContainer),
               ),
             ],
@@ -337,10 +353,15 @@ void showMemberActionsPopupMenu({
           enableEncryption: false,
         ),
       );
-      Navigator.of(context).pop();
       final roomId = roomIdResult.result;
       if (roomId == null) return;
       router.go('/rooms/$roomId');
+    case _MemberActions.botSettings:
+      await BotChatSettingsDialog.show(
+        context: context,
+        room: room!,
+      );
+      return;
     // Pangea#
     case _MemberActions.info:
       await UserDialog.show(
@@ -380,5 +401,6 @@ enum _MemberActions {
   // #Pangea
   // report,
   chat,
+  botSettings,
   // Pangea#
 }

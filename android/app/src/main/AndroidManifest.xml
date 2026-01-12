@@ -114,6 +114,20 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <data
+                    android:scheme="https"
+                    android:host="app.pangea.chat" />
+
+                <data
+                    android:scheme="https"
+                    android:host="app.staging.pangea.chat" />
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="pangea" />
                 <data android:host="app.pangea.chat" />
             </intent-filter>

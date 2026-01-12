@@ -186,9 +186,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       final topicId = course.topicIds[i];
       final topic = course.loadedTopics[topicId];
       if (topic == null) continue;
-      if (!topic.activityListComplete) {
-        return null;
-      }
+      if (!topic.activityListComplete) continue;
 
       if (!_hasCompletedTopic(
             userID,

@@ -11,7 +11,8 @@ class PressableButton extends StatefulWidget {
   final double buttonHeight;
   final bool depressed;
   final Color color;
-  final Widget child;
+  final Widget Function(BuildContext context, bool depressed, Color shadowColor)
+      builder;
 
   final void Function()? onPressed;
   final Stream? triggerAnimation;
@@ -22,7 +23,7 @@ class PressableButton extends StatefulWidget {
 
   const PressableButton({
     required this.borderRadius,
-    required this.child,
+    required this.builder,
     required this.onPressed,
     required this.color,
     this.buttonHeight = 4,
@@ -137,8 +138,15 @@ class PressableButtonState extends State<PressableButton>
 
   @override
   Widget build(BuildContext context) {
+    final shadowColor = Color.alphaBlend(
+      Colors.black.withAlpha(
+        (255 * widget.colorFactor).round(),
+      ),
+      widget.color,
+    );
+
     if (!widget.visible) {
-      return widget.child;
+      return widget.builder(context, _depressed, shadowColor);
     }
 
     return MouseRegion(
@@ -157,15 +165,14 @@ class PressableButtonState extends State<PressableButton>
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SizedBox(height: _tweenAnimation.value),
+                      SizedBox(
+                        height: _depressed
+                            ? widget.buttonHeight
+                            : _tweenAnimation.value,
+                      ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Color.alphaBlend(
-                            Colors.black.withAlpha(
-                              (255 * widget.colorFactor).round(),
-                            ),
-                            widget.color,
-                          ),
+                          color: shadowColor,
                           borderRadius: widget.borderRadius,
                         ),
                         padding: EdgeInsets.only(
@@ -173,7 +180,16 @@ class PressableButtonState extends State<PressableButton>
                               ? widget.buttonHeight - _tweenAnimation.value
                               : 0,
                         ),
-                        child: child,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: widget.borderRadius,
+                          ),
+                          child: widget.builder(
+                            context,
+                            _depressed || _tweenAnimation.value > 0,
+                            shadowColor,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -181,12 +197,6 @@ class PressableButtonState extends State<PressableButton>
               ],
             );
           },
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: widget.borderRadius,
-            ),
-            child: widget.child,
-          ),
         ),
       ),
     );

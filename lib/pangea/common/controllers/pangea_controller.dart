@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -7,67 +6,42 @@ import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
-import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
+import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/contextual_definition_controller.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
-import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/guard/p_vguard.dart';
-import 'package:fluffychat/pangea/learning_settings/controllers/language_controller.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/locale_provider.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/spaces/controllers/space_code_controller.dart';
+import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
+import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/speech_to_text_controller.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/user/controllers/permissions_controller.dart';
-import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/pangea/user/pangea_push_rules_extension.dart';
+import 'package:fluffychat/pangea/user/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/firebase_analytics.dart';
 
 class PangeaController {
   ///pangeaControllers
   late UserController userController;
-  late LanguageController languageController;
-  late SpaceCodeController spaceCodeController;
-  late PermissionsController permissionsController;
-  late GetAnalyticsController getAnalytics;
-  late PutAnalyticsController putAnalytics;
-  late MessageDataController messageData;
-
-  // TODO: make these static so we can remove from here
-  late ContextualDefinitionController definitions;
   late SubscriptionController subscriptionController;
-  late TextToSpeechController textToSpeech;
-  late SpeechToTextController speechToText;
 
   ///store Services
   final pLanguageStore = PLanguageStore();
 
   StreamSubscription? _languageSubscription;
   StreamSubscription? _settingsSubscription;
+  StreamSubscription? _joinSpaceSubscription;
 
   ///Matrix Variables
-  MatrixState matrixState;
-  Matrix matrix;
+  final MatrixState matrixState;
 
-  int? randomint;
-  PangeaController({required this.matrix, required this.matrixState}) {
-    _setup();
-    _setSettingsSubscriptions();
-    randomint = Random().nextInt(2000);
-  }
-
-  /// Pangea Initialization
-  void _setup() {
-    _addRefInObjects();
+  PangeaController({required this.matrixState}) {
+    userController = UserController();
+    subscriptionController = SubscriptionController(this);
+    PAuthGaurd.pController = this;
+    _registerSubscriptions();
   }
 
   /// Initializes various controllers and settings.
@@ -75,33 +49,129 @@ class PangeaController {
   /// because of order of execution does not matter,
   /// and running them at the same times speeds them up.
   void initControllers() {
-    _initAnalyticsControllers();
+    _initAnalytics();
     subscriptionController.initialize();
-    setPangeaPushRules();
+    matrixState.client.setPangeaPushRules();
     TtsController.setAvailableLanguages();
   }
 
-  /// Initialize controllers
-  _addRefInObjects() {
-    userController = UserController(this);
-    languageController = LanguageController(this);
-    spaceCodeController = SpaceCodeController(this);
-    permissionsController = PermissionsController(this);
-    getAnalytics = GetAnalyticsController(this);
-    putAnalytics = PutAnalyticsController(this);
-    messageData = MessageDataController(this);
-    definitions = ContextualDefinitionController(this);
-    subscriptionController = SubscriptionController(this);
-    textToSpeech = TextToSpeechController(this);
-    speechToText = SpeechToTextController(this);
-    PAuthGaurd.pController = this;
+  void _onLogin(BuildContext context) {
+    initControllers();
+    _registerSubscriptions();
+
+    userController.reinitialize().then((_) {
+      final l1 = userController.profile.userSettings.sourceLanguage;
+      Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
+    });
+    subscriptionController.reinitialize();
   }
 
-  _logOutfromPangea(BuildContext context) {
-    debugPrint("Pangea logout");
+  void _onLogout(BuildContext context) {
+    userController.clear();
+    _languageSubscription?.cancel();
+    _settingsSubscription?.cancel();
+    _joinSpaceSubscription?.cancel();
+    _languageSubscription = null;
+    _settingsSubscription = null;
+    _joinSpaceSubscription = null;
+
     GoogleAnalytics.logout();
-    clearCache();
+    _clearCache();
     Provider.of<LocaleProvider>(context, listen: false).setLocale(null);
+  }
+
+  void handleLoginStateChange(
+    LoginState state,
+    String? userID,
+    BuildContext context,
+  ) {
+    switch (state) {
+      case LoginState.loggedOut:
+      case LoginState.softLoggedOut:
+        _onLogout(context);
+        break;
+      case LoginState.loggedIn:
+        _onLogin(context);
+        break;
+    }
+
+    Sentry.configureScope(
+      (scope) => scope.setUser(
+        SentryUser(
+          id: userID,
+          name: userID,
+        ),
+      ),
+    );
+    GoogleAnalytics.analyticsUserUpdate(userID);
+  }
+
+  void _registerSubscriptions() {
+    _languageSubscription?.cancel();
+    _languageSubscription =
+        userController.languageStream.stream.listen(_onLanguageUpdate);
+
+    _settingsSubscription?.cancel();
+    _settingsSubscription = userController.settingsUpdateStream.stream
+        .listen((_) => matrixState.client.updateBotOptions());
+
+    _joinSpaceSubscription?.cancel();
+    _joinSpaceSubscription ??= matrixState.client.onSync.stream
+        .where(matrixState.client.isJoinSpaceSyncUpdate)
+        .listen((_) => matrixState.client.addAnalyticsRoomsToSpaces());
+  }
+
+  Future<void> _clearCache({List<String> exclude = const []}) async {
+    final List<Future<void>> futures = [];
+    for (final key in _storageKeys) {
+      if (exclude.contains(key)) continue;
+      futures.add(GetStorage(key).erase());
+    }
+
+    if (AppConfig.showedActivityMenu) {
+      futures.add(
+        SharedPreferences.getInstance().then((prefs) async {
+          AppConfig.showedActivityMenu = false;
+          prefs.setBool(
+            SettingKeys.showedActivityMenu,
+            AppConfig.showedActivityMenu,
+          );
+        }),
+      );
+    }
+
+    await Future.wait(futures);
+  }
+
+  Future<void> _initAnalytics() async {
+    await GetStorage.init("activity_analytics_storage");
+
+    matrixState.client.updateAnalyticsRoomJoinRules();
+    matrixState.client.addAnalyticsRoomsToSpaces();
+  }
+
+  Future<void> resetAnalytics() async {
+    await _initAnalytics();
+  }
+
+  Future<void> _onLanguageUpdate(LanguageUpdate update) async {
+    final exclude = [
+      'course_location_media_storage',
+      'course_location_storage',
+      'course_media_storage',
+    ];
+
+    // only clear course data if the base language has changed
+    if (update.prevBaseLang == update.baseLang) {
+      exclude.addAll([
+        'course_storage',
+        'course_topic_storage',
+        'course_activity_storage',
+      ]);
+    }
+
+    _clearCache(exclude: exclude);
+    matrixState.client.updateBotOptions();
   }
 
   static final List<String> _storageKeys = [
@@ -111,7 +181,6 @@ class PangeaController {
     'objective_list_storage',
     'topic_list_storage',
     'activity_plan_search_storage',
-    "analytics_storage",
     "version_storage",
     'lemma_storage',
     'svg_cache',
@@ -132,205 +201,4 @@ class PangeaController {
     'course_location_media_storage',
     'language_mismatch',
   ];
-
-  Future<void> clearCache({List<String> exclude = const []}) async {
-    final List<Future<void>> futures = [];
-    for (final key in _storageKeys) {
-      if (exclude.contains(key)) continue;
-      futures.add(GetStorage(key).erase());
-    }
-    await Future.wait(futures);
-  }
-
-  Future<Client> checkHomeServerAction() async {
-    final client = await matrixState.getLoginClient();
-    if (client.homeserver != null) {
-      await Future.delayed(Duration.zero);
-      return client;
-    }
-
-    final String homeServer =
-        AppConfig.defaultHomeserver.trim().toLowerCase().replaceAll(' ', '-');
-    var homeserver = Uri.parse(homeServer);
-    if (homeserver.scheme.isEmpty) {
-      homeserver = Uri.https(homeServer, '');
-    }
-
-    try {
-      await client.register();
-      matrixState.loginRegistrationSupported = true;
-    } on MatrixException catch (e) {
-      matrixState.loginRegistrationSupported =
-          e.requireAdditionalAuthentication;
-    }
-    return client;
-  }
-
-  /// check user information if not found then redirect to Date of birth page
-  void handleLoginStateChange(
-    LoginState state,
-    String? userID,
-    BuildContext context,
-  ) {
-    switch (state) {
-      case LoginState.loggedOut:
-      case LoginState.softLoggedOut:
-        // Reset cached analytics data
-        _disposeAnalyticsControllers();
-        userController.clear();
-        _languageSubscription?.cancel();
-        _settingsSubscription?.cancel();
-        _languageSubscription = null;
-        _settingsSubscription = null;
-        _logOutfromPangea(context);
-        break;
-      case LoginState.loggedIn:
-        // Initialize analytics data
-        initControllers();
-        _setSettingsSubscriptions();
-
-        userController.reinitialize().then((_) {
-          final l1 = userController.profile.userSettings.sourceLanguage;
-          Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
-        });
-        subscriptionController.reinitialize();
-        break;
-    }
-
-    Sentry.configureScope(
-      (scope) => scope.setUser(
-        SentryUser(
-          id: userID,
-          name: userID,
-        ),
-      ),
-    );
-    GoogleAnalytics.analyticsUserUpdate(userID);
-  }
-
-  Future<void> _initAnalyticsControllers() async {
-    putAnalytics.initialize();
-    await getAnalytics.initialize();
-  }
-
-  void _disposeAnalyticsControllers() {
-    putAnalytics.dispose();
-    getAnalytics.dispose();
-  }
-
-  Future<void> resetAnalytics() async {
-    _disposeAnalyticsControllers();
-    await _initAnalyticsControllers();
-  }
-
-  void _setSettingsSubscriptions() {
-    _languageSubscription?.cancel();
-    _languageSubscription =
-        userController.languageStream.stream.listen(_onLanguageUpdate);
-    _settingsSubscription?.cancel();
-    _settingsSubscription = userController.settingsUpdateStream.stream
-        .listen((_) => _updateBotOptions());
-  }
-
-  Future<void> _onLanguageUpdate(LanguageUpdate update) async {
-    clearCache(exclude: ["analytics_storage"]);
-    _updateBotOptions();
-  }
-
-  Future<void> _updateBotOptions() async {
-    if (!matrixState.client.isLogged()) return;
-    final botDM = matrixState.client.botDM;
-    if (botDM == null) {
-      return;
-    }
-
-    final targetLanguage = languageController.userL2?.langCode;
-    final cefrLevel = userController.profile.userSettings.cefrLevel;
-    final updateBotOptions = botDM.botOptions ?? BotOptionsModel();
-
-    if (updateBotOptions.targetLanguage == targetLanguage &&
-        updateBotOptions.languageLevel == cefrLevel) {
-      return;
-    }
-
-    updateBotOptions.targetLanguage = targetLanguage;
-    updateBotOptions.languageLevel = cefrLevel;
-    await botDM.setBotOptions(updateBotOptions);
-  }
-
-  Future<void> setPangeaPushRules() async {
-    if (!matrixState.client.isLogged()) return;
-    final List<Room> analyticsRooms =
-        matrixState.client.rooms.where((room) => room.isAnalyticsRoom).toList();
-
-    for (final Room room in analyticsRooms) {
-      final pushRule = room.pushRuleState;
-      if (pushRule != PushRuleState.dontNotify) {
-        await room.setPushRuleState(PushRuleState.dontNotify);
-      }
-    }
-
-    if (!(matrixState.client.globalPushRules?.override?.any(
-          (element) => element.ruleId == PangeaEventTypes.textToSpeechRule,
-        ) ??
-        false)) {
-      await matrixState.client.setPushRule(
-        PushRuleKind.override,
-        PangeaEventTypes.textToSpeechRule,
-        [PushRuleAction.dontNotify],
-        conditions: [
-          PushCondition(
-            kind: 'event_match',
-            key: 'content.msgtype',
-            pattern: MessageTypes.Audio,
-          ),
-          PushCondition(
-            kind: 'event_match',
-            key: 'content.transcription.lang_code',
-            pattern: '*',
-          ),
-          PushCondition(
-            kind: 'event_match',
-            key: 'content.transcription.text',
-            pattern: '*',
-          ),
-        ],
-      );
-    }
-  }
-
-  // /// Joins the user to the support space if they are
-  // /// not already a member and have not previously left.
-  // Future<void> joinSupportSpace() async {
-  //   // if the user is already in the space, return
-  //   await matrixState.client.roomsLoading;
-  //   final isInSupportSpace = matrixState.client.rooms.any(
-  //     (room) => room.id == Environment.supportSpaceId,
-  //   );
-  //   if (isInSupportSpace) return;
-
-  //   // if the user has previously joined the space, return
-  //   final bool previouslyJoined =
-  //       userController.profile.userSettings.hasJoinedHelpSpace ?? false;
-  //   if (previouslyJoined) return;
-
-  //   // join the space
-  //   try {
-  //     await matrixState.client.joinRoomById(Environment.supportSpaceId);
-  //     final room = matrixState.client.getRoomById(Environment.supportSpaceId);
-  //     if (room == null) {
-  //       await matrixState.client.waitForRoomInSync(
-  //         Environment.supportSpaceId,
-  //         join: true,
-  //       );
-  //     }
-  //     userController.updateProfile((profile) {
-  //       profile.userSettings.hasJoinedHelpSpace = true;
-  //       return profile;
-  //     });
-  //   } catch (err, s) {
-  //     ErrorHandler.logError(e: err, s: s);
-  //     return;
-  //   }
-  // }
 }

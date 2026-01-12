@@ -5,15 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:confetti/confetti.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class StarRainWidget extends StatefulWidget {
   final bool showBlast;
   final Duration rainDuration;
   final Duration blastDuration;
   final VoidCallback? onFinished;
+  final String? overlayKey;
 
   const StarRainWidget({
     super.key,
+    this.overlayKey,
     this.showBlast = true,
     this.rainDuration = const Duration(seconds: 8),
     this.blastDuration = const Duration(seconds: 1),
@@ -57,6 +60,10 @@ class _StarRainWidgetState extends State<StarRainWidget> {
         });
       }
       await Future.delayed(const Duration(milliseconds: 800));
+      if (widget.overlayKey != null) {
+        MatrixState.pAnyState.closeOverlay(widget.overlayKey);
+      }
+
       widget.onFinished?.call();
       if (mounted) {
         _blastController.stop();

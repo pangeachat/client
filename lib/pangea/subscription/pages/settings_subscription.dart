@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription_view.dart';
+import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionManagement extends StatefulWidget {
@@ -27,10 +27,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
       MatrixState.pangeaController.subscriptionController;
 
   SubscriptionDetails? selectedSubscription;
-  StreamSubscription? _subscriptionStatusStream;
   bool loading = false;
-
-  late StreamSubscription _settingsSubscription;
 
   @override
   void initState() {
@@ -38,26 +35,17 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
       subscriptionController.initialize().then((_) => setState(() {}));
     }
 
-    _settingsSubscription = subscriptionController.stateStream.listen((event) {
-      debugPrint("stateStream event in subscription settings");
-      setState(() {});
-    });
-
-    _subscriptionStatusStream ??=
-        subscriptionController.subscriptionStream.stream.listen((_) {
-      showSubscribedSnackbar(context);
-      context.go('/rooms');
-    });
-
+    subscriptionController.addListener(_onSubscriptionUpdate);
+    subscriptionController.subscriptionNotifier.addListener(_onSubscribe);
     subscriptionController.updateCustomerInfo();
     super.initState();
   }
 
   @override
   void dispose() {
+    subscriptionController.subscriptionNotifier.removeListener(_onSubscribe);
+    subscriptionController.removeListener(_onSubscriptionUpdate);
     super.dispose();
-    _settingsSubscription.cancel();
-    _subscriptionStatusStream?.cancel();
   }
 
   bool get subscriptionsAvailable =>
@@ -106,27 +94,44 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
         .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
   }
 
+  DateTime? get expirationDate =>
+      subscriptionController.currentSubscriptionInfo?.expirationDate;
+
+  DateTime? get subscriptionEndDate =>
+      subscriptionController.currentSubscriptionInfo?.subscriptionEndDate;
+
+  void _onSubscriptionUpdate() => setState(() {});
+  void _onSubscribe() => showSubscribedSnackbar(context);
+
   Future<void> submitChange(
     SubscriptionDetails subscription, {
     bool isPromo = false,
   }) async {
     setState(() => loading = true);
-    await showFutureLoadingDialog(
-      context: context,
-      future: () async => subscriptionController.submitSubscriptionChange(
+    try {
+      await subscriptionController.submitSubscriptionChange(
         subscription,
         context,
         isPromo: isPromo,
-      ),
-      onError: (error, s) {
-        setState(() => loading = false);
-        return null;
-      },
-    );
-
-    if (mounted && loading) {
-      setState(() => loading = false);
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "subscription_id": subscription.id,
+          "is_promo": isPromo,
+        },
+      );
+    } finally {
+      if (mounted) setState(() => loading = false);
     }
+  }
+
+  Future<void> onClickCancelSubscription() async {
+    await SubscriptionManagementRepo.setClickedCancelSubscription();
+    await launchMangementUrl(ManagementOption.cancel);
+    if (mounted) setState(() {});
   }
 
   Future<void> launchMangementUrl(ManagementOption option) async {

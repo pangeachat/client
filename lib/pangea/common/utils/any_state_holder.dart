@@ -84,6 +84,7 @@ class PangeaAnyState {
     if (entry != null) {
       try {
         entry.entry.remove();
+        entry.entry.dispose();
       } catch (err, s) {
         ErrorHandler.logError(
           e: err,
@@ -117,6 +118,7 @@ class PangeaAnyState {
     for (int i = 0; i < shouldRemove.length; i++) {
       try {
         shouldRemove[i].entry.remove();
+        shouldRemove[i].entry.dispose();
       } catch (err, s) {
         ErrorHandler.logError(
           e: err,
@@ -131,8 +133,11 @@ class PangeaAnyState {
     }
   }
 
-  RenderBox? getRenderBox(String key) =>
-      layerLinkAndKey(key).key.currentContext?.findRenderObject() as RenderBox?;
+  RenderBox? getRenderBox(String key) {
+    final box = layerLinkAndKey(key).key.currentContext?.findRenderObject()
+        as RenderBox?;
+    return box?.hasSize == true ? box : null;
+  }
 
   bool isOverlayOpen(RegExp regex) {
     return entries.any(

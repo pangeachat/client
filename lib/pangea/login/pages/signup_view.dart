@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
+import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
 import 'package:fluffychat/pangea/login/widgets/p_sso_button.dart';
 import 'signup.dart';
 
@@ -45,18 +46,8 @@ class SignupPageView extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  PangeaSsoButton(
-                    provider: SSOProvider.google,
-                    setLoading: controller.setLoadingSSO,
-                    loading: controller.loadingGoogleSSO,
-                    validator: validator,
-                  ),
-                  PangeaSsoButton(
-                    provider: SSOProvider.apple,
-                    setLoading: controller.setLoadingSSO,
-                    loading: controller.loadingAppleSSO,
-                    validator: validator,
-                  ),
+                  const PangeaSsoButton(provider: SSOProvider.google),
+                  const PangeaSsoButton(provider: SSOProvider.apple),
                   ElevatedButton(
                     onPressed: () => context.go(
                       '/home/language/signup/email',

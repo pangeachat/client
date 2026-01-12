@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:matrix/matrix_api_lite/generated/model.dart';
 
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/pangea/spaces/space_constants.dart';
 
 extension PangeaRoomsChunk on PublicRoomsChunk {
   /// Use Random with a seed to get the default

@@ -4,8 +4,10 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_service.dart';
+import 'package:fluffychat/pangea/languages/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -24,11 +26,42 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   LanguageModel? _selectedLanguage;
   LanguageModel? _baseLanguage;
 
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-    _baseLanguage =
-        MatrixState.pangeaController.languageController.systemLanguage;
+    _baseLanguage = LanguageService.systemLanguage;
+    _setFromCache();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  // The user may set their target language initally, then return to this page
+  // to change it again. Try and get the cached values if present.
+  void _setFromCache() {
+    LangCodeRepo.get().then((langSettings) {
+      if (langSettings == null) return;
+      final cachedTargetLang =
+          PLanguageStore.byLangCode(langSettings.targetLangCode);
+      final cachedBaseLang = langSettings.baseLangCode != null
+          ? PLanguageStore.byLangCode(langSettings.baseLangCode!)
+          : null;
+
+      if (cachedTargetLang == _selectedLanguage &&
+          cachedBaseLang == _baseLanguage) {
+        return;
+      }
+
+      setState(() {
+        _selectedLanguage = cachedTargetLang ?? _selectedLanguage;
+        _baseLanguage = cachedBaseLang ?? _baseLanguage;
+      });
+    });
   }
 
   void _setSelectedLanguage(LanguageModel? l) {
@@ -65,6 +98,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
+    final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -73,52 +107,80 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(20.0),
             constraints: const BoxConstraints(
               maxWidth: 450,
             ),
             child: Column(
               spacing: 24.0,
               children: [
+                TextField(
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.search),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                ),
                 Expanded(
                   child: Stack(
                     children: [
-                      SingleChildScrollView(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 16.0,
-                            right: 16.0,
-                            bottom: 60.0,
-                          ),
-                          child: Wrap(
-                            spacing: 8.0,
-                            runSpacing: 8.0,
-                            alignment: WrapAlignment.center,
-                            children: languages
-                                .map(
-                                  (l) => FilterChip(
-                                    selected: _selectedLanguage == l,
-                                    backgroundColor: _selectedLanguage == l
-                                        ? theme.colorScheme.primary
-                                        : theme.colorScheme.surface,
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0,
-                                      vertical: 4.0,
-                                    ),
-                                    label: Text(
-                                      l.getDisplayName(context) ??
-                                          l.displayName,
-                                      style: theme.textTheme.bodyMedium,
-                                    ),
-                                    onSelected: (selected) {
-                                      _setSelectedLanguage(
-                                        selected ? l : null,
-                                      );
-                                    },
-                                  ),
-                                )
-                                .toList(),
-                          ),
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: ValueListenableBuilder(
+                          valueListenable: _searchController,
+                          builder: (context, val, __) {
+                            return SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 16.0,
+                                  right: 16.0,
+                                  bottom: 60.0,
+                                ),
+                                child: Wrap(
+                                  spacing: isColumnMode ? 16.0 : 8.0,
+                                  runSpacing: isColumnMode ? 16.0 : 8.0,
+                                  alignment: WrapAlignment.center,
+                                  children: languages
+                                      .where(
+                                        (l) => l
+                                            .getDisplayName(context)
+                                            .toLowerCase()
+                                            .contains(
+                                              _searchController.text
+                                                  .toLowerCase(),
+                                            ),
+                                      )
+                                      .map(
+                                        (l) => FilterChip(
+                                          selected: _selectedLanguage == l,
+                                          backgroundColor:
+                                              _selectedLanguage == l
+                                                  ? theme.colorScheme.primary
+                                                  : theme.colorScheme.surface,
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0,
+                                            vertical: 4.0,
+                                          ),
+                                          label: Text(
+                                            l.getDisplayName(context),
+                                            style: isColumnMode
+                                                ? theme.textTheme.bodyLarge
+                                                : theme.textTheme.bodyMedium,
+                                          ),
+                                          onSelected: (selected) {
+                                            _setSelectedLanguage(
+                                              selected ? l : null,
+                                            );
+                                          },
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ),
                       Align(

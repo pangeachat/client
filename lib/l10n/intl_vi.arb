@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-06 13:02:16.250270",
+  "@@last_modified": "2026-01-07 14:27:35.989013",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -884,7 +884,6 @@
   "copiedToClipboard": "Đã sao chép vào khay nhớ tạm",
   "copyToClipboard": "Sao chép vào khay nhớ tạm",
   "createGroup": "Tạo nhóm",
-  "createNewGroup": "Tạo cuộc trò chuyện mới",
   "darkTheme": "Chủ đề tối",
   "defaultPermissionLevel": "Cấp quyền mặc định cho người dùng mới",
   "directChats": "Cuộc trò chuyện trực tiếp",
@@ -892,7 +891,6 @@
   "edit": "Chỉnh sửa",
   "editBlockedServers": "Chỉnh sửa máy chủ bị chặn",
   "chatPermissions": "Quyền hạn trong trò chuyện",
-  "editChatPermissions": "Chỉnh sửa quyền hạn trò chuyện",
   "editRoomAliases": "Chỉnh sửa bí danh phòng",
   "editRoomAvatar": "Chỉnh sửa ảnh đại diện phòng",
   "emoteExists": "Biểu tượng cảm xúc đã tồn tại!",
@@ -1731,9 +1729,6 @@
   "noKeyForThisMessage": "Có thể tin nhắn đã được gửi trước khi bạn đăng nhập trên thiết bị này. Hoặc thiết bị của bạn bị chặn hoặc có lỗi kết nối. Nếu bạn đọc được tin trên thiết bị khác, hãy truyền khóa về thiết bị này! Vào Cài đặt > Thiết bị và xác minh lẫn nhau. Khi mở phòng và cả hai thiết bị đều trực tuyến, chúng sẽ tự trao đổi khóa. Không muốn mất khóa khi đăng xuất? Hãy bật sao lưu trò chuyện trong cài đặt.",
   "deviceKeys": "Khóa thiết bị:",
   "requests": "Yêu cầu",
-  "allCorrect": "Đó đúng là cách tôi nói! Hay quá!",
-  "newWayAllGood": "Không đúng kiểu tôi, nhưng cũng ổn!",
-  "othersAreBetter": "Có thể có cách diễn đạt hay hơn.",
   "holdForInfo": "Nhấn giữ để biết thông tin.",
   "greenFeedback": "Chính xác tôi sẽ dùng từ này!",
   "yellowFeedback": "Bạn có thể thử từ đó! Nhấn lại để dùng.",
@@ -1748,9 +1743,6 @@
   "cannotBeReversed": "Hành động này không thể khôi phục",
   "enterDeletedClassName": "Nhập tên không gian để xác nhận:",
   "incorrectClassName": "Tên không gian không đúng",
-  "oneday": "24 giờ qua",
-  "oneweek": "7 ngày qua",
-  "onemonth": "Tháng vừa rồi",
   "sixmonth": "6 tháng vừa qua",
   "oneyear": "1 năm vừa qua",
   "gaTooltip": "Dùng L2 với hỗ trợ ngữ pháp",
@@ -1766,21 +1758,14 @@
   "interactiveTranslatorRequiredDesc": "Học viên không thể tắt hỗ trợ dịch. Họ vẫn có thể từ chối gợi ý. Không áp dụng cho quản trị viên hoặc cuộc trò chuyện riêng.",
   "notYetSet": "Chưa thiết lập",
   "allClasses": "Tất cả Lớp",
-  "myLearning": "Phân tích của tôi",
   "allChatsAndClasses": "Tất cả trò chuyện và không gian",
   "timeOfLastMessage": "Thời gian gửi tin cuối",
   "totalMessages": "Tổng tin nhắn đã gửi",
   "waTooltip": "Dùng L2 không trợ giúp",
-  "changeDateRange": "Thay đổi mốc thời gian",
   "numberOfStudents": "Số học viên",
-  "classDescription": "Mô tả",
   "classDescriptionDesc": "Thiết lập mô tả",
   "requestToEnroll": "Yêu cầu tham gia",
   "spaceAnalyticsDesc": "Thông tin về mức độ tương tác và sử dụng ngôn ngữ",
-  "addStudents": "Mời bằng liên kết hoặc mã",
-  "copyClassLink": "Sao chép liên kết mời",
-  "copyClassCode": "Sao chép mã mời",
-  "inviteStudentByUserName": "Mời người dùng qua tên",
   "languageSettings": "Cài đặt ngôn ngữ",
   "selectSpaceDominantLanguage": "Ngôn ngữ chính của không gian?",
   "selectSpaceTargetLanguage": "Ngôn ngữ đích của không gian?",
@@ -1791,36 +1776,24 @@
   "oneToOneChatsWithinClassDesc": "Cho phép học viên mở trò chuyện riêng với người khác trong không gian. Nếu tắt, họ chỉ có thể vào nhóm chat.",
   "createGroupChats": "Tạo nhóm chat",
   "createGroupChatsDesc": "Bật để cho phép học viên tạo nhóm trong không gian.",
-  "shareVideo": "Chia sẻ video",
-  "shareVideoDesc": "Bật để học viên chia sẻ video.",
   "sharePhotos": "Chia sẻ ảnh",
   "sharePhotosDesc": "Bật để học viên chia sẻ ảnh.",
-  "shareFiles": "Chia sẻ tệp",
   "shareFilesDesc": "Bật để học viên chia sẻ tệp.",
   "shareLocationDesc": "Bật để học viên chia sẻ vị trí.",
-  "selectLanguageLevel": "Chọn trình độ ngôn ngữ",
   "noIdenticalLanguages": "Vui lòng chọn ngôn ngữ cơ sở và đích khác nhau",
-  "iWantALanguagePartnerFrom": "Đến từ:",
-  "worldWide": "Toàn cầu",
-  "noResults": "Không tìm thấy kết quả! Hãy thử mở rộng tiêu chí.",
   "searchBy": "Tìm theo quốc gia và ngôn ngữ",
-  "iWantAConversationPartner": "Tôi muốn bạn hội thoại",
-  "iWantALanguagePartnerWhoSpeaks": "Nói:",
-  "iWantALanguagePartnerWhoIsLearning": "Đang học:",
   "yourBirthdayPlease": "Pangea Chat phục vụ cộng đồng học trên 13 tuổi. Để bảo vệ người dùng trẻ, chúng tôi cần xác minh độ tuổi.\n\nTrước khi tìm lớp, phòng hoặc bạn bè, vui lòng xác nhận bạn đủ 18 tuổi trở lên.",
   "invalidDob": "Ngày sinh không hợp lệ",
   "enterYourDob": "Nhập ngày sinh của bạn",
-  "getStarted": "Bắt đầu",
   "mustBe13": "Bạn phải ít nhất 13 tuổi",
   "yourBirthdayPleaseShort": "Vui lòng chọn nhóm tuổi của bạn",
-  "joinWithClassCodeHint": "Nhập mã mời",
-  "languageLevelPreA1": "Hoàn toàn mới (Pre A1)",
-  "languageLevelA1": "Sơ cấp (A1)",
-  "languageLevelA2": "Căn bản (A2)",
-  "languageLevelB1": "Trung cấp (B1)",
-  "languageLevelB2": "Trung cấp cao (B2)",
-  "languageLevelC1": "Nâng cao (C1)",
-  "languageLevelC2": "Thành thạo (C2)",
+  "languageLevelPreA1": "Người mới bắt đầu Thấp (Pre A1)",
+  "languageLevelA1": "Người mới giữa (A1)",
+  "languageLevelA2": "Người mới cao (A2)",
+  "languageLevelB1": "Trung cấp trung bình (B1)",
+  "languageLevelB2": "Cao cấp thấp (B2)",
+  "languageLevelC1": "Cao cấp trung bình (C1)",
+  "languageLevelC2": "Cao cấp (C2)",
   "changeTheNameOfTheClass": "Đổi tên",
   "changeTheNameOfTheChat": "Đổi tên trò chuyện",
   "welcomeToYourNewClass": "Chào mừng! 🙂",
@@ -1832,11 +1805,8 @@
   "setToPublicSettingsDesc": "Để tìm bạn đàm thoại, bạn cần đặt hồ sơ của mình là công khai.",
   "accountSettings": "Cài đặt tài khoản",
   "unableToFindClassCode": "Không tìm thấy mã.",
-  "askPangeaBot": "Nhờ Pangea Bot định nghĩa ngữ cảnh.",
   "sorryNoResults": "Xin lỗi, không có kết quả nào.",
   "ignoreInThisText": "Bỏ qua",
-  "helpMeTranslate": "Đồng ý!",
-  "needsItShortMessage": "Ra ngoài ngôn ngữ đích",
   "needsIGCShortMessage": "Thử công cụ ngữ pháp!",
   "needsItMessage": "Đợi đã, điều này không phải bằng {targetLanguage}! Bạn có cần giúp dịch không?",
   "@needsItMessage": {
@@ -1847,19 +1817,9 @@
       }
     }
   },
-  "needsIgcMessage": "Tin nhắn này có lỗi ngữ pháp.",
-  "tokenTranslationTitle": "Một từ trong ngôn ngữ gốc của bạn.",
-  "spanTranslationDesc": "Xem gợi ý dịch bên dưới.",
-  "spanTranslationTitle": "Một số từ trong ngôn ngữ gốc của bạn.",
-  "l1SpanAndGrammarTitle": "Ngoài ngôn ngữ đích",
-  "l1SpanAndGrammarDesc": "Có thể là ngôn ngữ gốc của bạn hoặc có thể là lỗi ngữ pháp.",
-  "otherTitle": "Bạn có một lỗi.",
-  "otherDesc": "Xem gợi ý sửa bên dưới.",
   "countryInformation": "Quốc gia của tôi",
-  "myLanguages": "Ngôn ngữ gốc và đích của tôi",
   "targetLanguage": "Ngôn ngữ đích",
   "sourceLanguage": "Ngôn ngữ gốc",
-  "languagesISpeak": "Những ngôn ngữ tôi nói",
   "updateLanguage": "Ngôn ngữ của tôi",
   "whatLanguageYouWantToLearn": "Bạn muốn học ngôn ngữ nào?",
   "whatIsYourBaseLanguage": "Ngôn ngữ gốc của bạn là gì?",
@@ -1872,13 +1832,8 @@
   "errorDisableITUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ dịch",
   "errorDisableIGCUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ ngữ pháp",
   "errorDisableLanguageAssistanceUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ dịch và ngữ pháp",
-  "itIsDisabled": "Trình Dịch Tương Tác đang bị tắt",
-  "igcIsDisabled": "Trình Kiểm Tra Ngữ Pháp Tương Tác đang bị tắt",
-  "goToLearningSettings": "Đi tới Cài đặt Học tập",
   "error405Title": "Chưa thiết lập ngôn ngữ",
   "error405Desc": "Vui lòng thiết lập ngôn ngữ của bạn trong Menu chính > Cài đặt Học tập.",
-  "loginOrSignup": "Đăng nhập với",
-  "iAgreeToThe": "Tôi đồng ý với ",
   "termsAndConditions": "Điều khoản và Điều kiện",
   "andCertifyIAmAtLeast13YearsOfAge": " và xác nhận tôi ít nhất 16 tuổi.",
   "error502504Title": "Wow, có rất nhiều học viên đang trực tuyến!",
@@ -1886,40 +1841,21 @@
   "error404Title": "Lỗi dịch!",
   "error404Desc": "Pangea Bot chưa biết cách dịch điều này...",
   "errorPleaseRefresh": "Chúng tôi sẽ kiểm tra! Vui lòng tải lại và thử lại.",
-  "toggleIT": "Dịch Tương Tác",
-  "toggleIGC": "Ngữ Pháp Tương Tác",
-  "toggleToolSettingsDescription": "Tại đây, bạn có thể bật/tắt các công cụ ngôn ngữ cá nhân.",
   "connectedToStaging": "Bạn đang kết nối với máy chủ thử nghiệm (staging).",
   "learningSettings": "Cài đặt học tập",
-  "sendVoiceNotes": "Gửi ghi âm",
-  "sendVoiceNotesDesc": "Bật để cho phép học viên gửi ghi âm trong trò chuyện.",
-  "chatTopic": "Chủ đề trò chuyện",
-  "chatTopicDesc": "Đặt chủ đề cho cuộc trò chuyện",
-  "inviteStudentByUserNameDesc": "Nếu học viên của bạn đã có tài khoản, bạn có thể tìm họ.",
   "classRoster": "Danh sách thành viên",
-  "almostPerfect": "Có vẻ đúng! Đây là cách tôi sẽ nói.",
-  "prettyGood": "Khá ổn! Đây là cách tôi sẽ nói.",
-  "letMeThink": "Hmm, để xem bạn làm thế nào!",
   "clickMessageTitle": "Cần trợ giúp?",
   "clickMessageBody": "Nhấn vào tin nhắn để truy cập các công cụ ngôn ngữ như dịch, nghe lại và hơn thế nữa!",
-  "understandingMessagesTitle": "Định nghĩa và dịch!",
-  "understandingMessagesBody": "Nhấn các từ được gạch chân để xem định nghĩa. Nhấn biểu tượng dịch ở góc phải trên tin nhắn để dịch.",
   "allDone": "Hoàn tất!",
   "vocab": "Từ vựng",
   "low": "Chúng tôi có bằng chứng người dùng chưa hiểu các từ này.",
   "medium": "Các từ này đã được sử dụng nhưng chưa chắc đã hiểu hoàn toàn.",
   "high": "Chúng tôi có bằng chứng người dùng đã hiểu các từ này.",
-  "unknownProficiency": "Các từ này chưa được sử dụng trong Pangea Chat.",
-  "changeView": "Chuyển chế độ xem.",
-  "clearAll": "Xóa tất cả các từ?",
-  "generateVocabulary": "Tạo từ vựng từ tiêu đề và mô tả",
-  "generatePrompts": "Tạo gợi ý",
   "subscribe": "Đăng ký",
   "getAccess": "Đăng ký ngay!",
   "subscriptionDesc": "Trò chuyện cơ bản miễn phí! Đăng ký để mở khóa dịch tương tác, sửa ngữ pháp và phân tích học tập.",
   "subscriptionManagement": "Quản lý gói đăng ký",
   "currentSubscription": "Gói hiện tại",
-  "changeSubscription": "Thay đổi gói",
   "cancelSubscription": "Hủy gói",
   "selectYourPlan": "Chọn gói",
   "subsciptionPlatformTooltip": "Vui lòng đăng nhập bằng thiết bị gốc để quản lý gói đăng ký",
@@ -1928,20 +1864,6 @@
   "paymentHistory": "Lịch sử thanh toán",
   "emptyChatDownloadWarning": "Không thể tải xuống cuộc trò chuyện trống",
   "update": "Cập nhật",
-  "updateDesc": "Bạn có thể cập nhật ứng dụng từ phiên bản {localVersion} lên {storeVersion}",
-  "@updateDesc": {
-    "type": "String",
-    "placeholders": {
-      "storeVersion": {
-        "type": "String"
-      },
-      "localVersion": {
-        "type": "String"
-      }
-    }
-  },
-  "maybeLater": "Để sau",
-  "mainMenu": "Menu chính",
   "toggleImmersionMode": "Chế độ nhập vai",
   "toggleImmersionModeDesc": "Khi bật, tất cả tin nhắn sẽ được hiển thị trong ngôn ngữ đích. Phù hợp cho trao đổi ngôn ngữ.",
   "itToggleDescription": "Công cụ ngôn ngữ này sẽ phát hiện từ trong ngôn ngữ gốc của bạn và giúp dịch sang ngôn ngữ đích. Đôi lúc AI có thể sai sót.",
@@ -1956,13 +1878,6 @@
   "definitionsToolDescription": "Khi bật, từ gạch chân màu xanh có thể được nhấn để xem định nghĩa.",
   "translationsToolDescrption": "Khi bật, nhấn tin nhắn và chọn biểu tượng dịch để xem ở ngôn ngữ gốc.",
   "welcomeBack": "Chào mừng trở lại! Nếu bạn đã tham gia chương trình thử nghiệm 2023-2024, hãy liên hệ để nhận gói đặc biệt. Nếu bạn là giáo viên hoặc trường đã mua bản quyền, cũng hãy liên hệ với chúng tôi.",
-  "kickAllStudents": "Đá tất cả học viên",
-  "kickAllStudentsConfirmation": "Bạn có chắc muốn đá tất cả học viên không?",
-  "inviteAllStudents": "Mời tất cả học viên",
-  "inviteAllStudentsConfirmation": "Bạn có chắc muốn mời tất cả học viên không?",
-  "inviteUsersFromPangea": "Thêm quản trị viên",
-  "redeemPromoCode": "Nhập mã khuyến mại",
-  "enterPromoCode": "Nhập mã khuyến mại",
   "downloadTxtFile": "Tải tệp văn bản",
   "downloadCSVFile": "Tải tệp CSV",
   "promotionalSubscriptionDesc": "Hiện bạn có gói khuyến mại trọn đời. Nếu muốn thay đổi, hãy liên hệ support@pangea.chat.",
@@ -1976,199 +1891,7 @@
   },
   "oneWeekTrial": "Dùng thử 1 tuần",
   "downloadXLSXFile": "Tải tệp Excel",
-  "abDisplayName": "Tiếng Abkhaz",
-  "aaDisplayName": "Tiếng Afar",
-  "afDisplayName": "Tiếng Afrikaans",
-  "akDisplayName": "Tiếng Akan",
-  "sqDisplayName": "Tiếng Albania",
-  "amDisplayName": "Tiếng Amharic",
-  "arDisplayName": "Tiếng Ả Rập",
-  "anDisplayName": "Tiếng Aragonese",
-  "hyDisplayName": "Tiếng Armenia",
-  "asDisplayName": "Tiếng Assam",
-  "avDisplayName": "Tiếng Avaric",
-  "aeDisplayName": "Tiếng Avestan",
-  "ayDisplayName": "Tiếng Aymara",
-  "azDisplayName": "Tiếng Azerbaijan",
-  "bmDisplayName": "Tiếng Bambara",
-  "baDisplayName": "Tiếng Bashkir",
-  "euDisplayName": "Tiếng Basque",
-  "beDisplayName": "Tiếng Belarus",
-  "bnDisplayName": "Tiếng Bengal",
-  "bhDisplayName": "Tiếng Bihari",
-  "biDisplayName": "Tiếng Bislama",
-  "bsDisplayName": "Tiếng Bosnia",
-  "brDisplayName": "Tiếng Breton",
-  "bgDisplayName": "Tiếng Bulgaria",
-  "myDisplayName": "Tiếng Myanmar",
-  "caDisplayName": "Tiếng Catalan / Valencian",
-  "chDisplayName": "Tiếng Chamorro",
-  "ceDisplayName": "Tiếng Chechen",
-  "nyDisplayName": "Tiếng Chichewa / Chewa / Nyanja",
-  "zhDisplayName": "Tiếng Trung",
-  "cvDisplayName": "Tiếng Chuvash",
-  "kwDisplayName": "Tiếng Cornwall",
-  "coDisplayName": "Tiếng Corsican",
-  "crDisplayName": "Tiếng Cree",
-  "hrDisplayName": "Tiếng Croatia",
-  "csDisplayName": "Tiếng Séc",
-  "daDisplayName": "Tiếng Đan Mạch",
-  "dvDisplayName": "Tiếng Divehi / Dhivehi / Maldivian",
-  "nlDisplayName": "Tiếng Hà Lan",
-  "enDisplayName": "Tiếng Anh",
-  "eoDisplayName": "Tiếng Esperanto",
-  "etDisplayName": "Tiếng Estonia",
-  "eeDisplayName": "Tiếng Ewe",
-  "foDisplayName": "Tiếng Faroe",
-  "fjDisplayName": "Tiếng Fijian",
-  "fiDisplayName": "Tiếng Phần Lan",
-  "frDisplayName": "Tiếng Pháp",
-  "ffDisplayName": "Tiếng Fula / Fulah / Pulaar / Pular",
-  "glDisplayName": "Tiếng Galicia",
-  "kaDisplayName": "Tiếng Gruzia",
-  "deDisplayName": "Tiếng Đức",
-  "elDisplayName": "Tiếng Hy Lạp (Hiện đại)",
-  "gnDisplayName": "Tiếng Guaraní",
-  "guDisplayName": "Tiếng Gujarati",
-  "htDisplayName": "Tiếng Haiti / Haiti Creole",
-  "haDisplayName": "Tiếng Hausa",
-  "heDisplayName": "Tiếng Hebrew (hiện đại)",
-  "hzDisplayName": "Tiếng Herero",
-  "hiDisplayName": "Tiếng Hindi",
-  "hoDisplayName": "Tiếng Hiri Motu",
-  "huDisplayName": "Tiếng Hungary",
-  "iaDisplayName": "Tiếng Interlingua",
-  "idDisplayName": "Tiếng Indonesia",
-  "ieDisplayName": "Tiếng Interlingue",
-  "gaDisplayName": "Tiếng Ireland",
-  "igDisplayName": "Tiếng Igbo",
-  "ikDisplayName": "Tiếng Inupiaq",
-  "ioDisplayName": "Tiếng Ido",
-  "isDisplayName": "Tiếng Iceland",
-  "itDisplayName": "Tiếng Ý",
-  "iuDisplayName": "Tiếng Inuktitut",
-  "jaDisplayName": "Tiếng Nhật",
-  "jvDisplayName": "Tiếng Java",
-  "klDisplayName": "Tiếng Kalaallisut / Greenlandic",
-  "knDisplayName": "Tiếng Kannada",
-  "krDisplayName": "Tiếng Kanuri",
-  "ksDisplayName": "Tiếng Kashmir",
-  "kkDisplayName": "Tiếng Kazakh",
-  "kmDisplayName": "Tiếng Khmer",
-  "kiDisplayName": "Tiếng Kikuyu / Gikuyu",
-  "rwDisplayName": "Tiếng Kinyarwanda",
-  "kyDisplayName": "Tiếng Kirghiz / Kyrgyz",
-  "kvDisplayName": "Tiếng Komi",
-  "kgDisplayName": "Tiếng Kongo",
-  "koDisplayName": "Tiếng Hàn",
-  "kuDisplayName": "Tiếng Kurd",
-  "kjDisplayName": "Tiếng Kwanyama / Kuanyama",
-  "laDisplayName": "Tiếng Latin",
-  "lbDisplayName": "Tiếng Luxembourgish",
-  "lgDisplayName": "Tiếng Luganda",
-  "liDisplayName": "Tiếng Limburgish / Limburgan / Limburger",
-  "lnDisplayName": "Tiếng Lingala",
-  "loDisplayName": "Tiếng Lào",
-  "ltDisplayName": "Tiếng Lithuania",
-  "luDisplayName": "Tiếng Luba-Katanga",
-  "lvDisplayName": "Tiếng Latvia",
-  "gvDisplayName": "Tiếng Manx",
-  "mkDisplayName": "Tiếng Macedonia",
-  "mgDisplayName": "Tiếng Malagasy",
-  "msDisplayName": "Tiếng Mã Lai",
-  "mlDisplayName": "Tiếng Malayalam",
-  "mtDisplayName": "Tiếng Malta",
-  "miDisplayName": "Tiếng Māori",
-  "mrDisplayName": "Tiếng Marathi",
-  "mhDisplayName": "Tiếng Marshallese",
-  "mnDisplayName": "Tiếng Mông Cổ",
-  "naDisplayName": "Tiếng Nauru",
-  "nvDisplayName": "Tiếng Navajo / Navaho",
-  "nbDisplayName": "Tiếng Na Uy (Bokmål)",
-  "ndDisplayName": "Tiếng Ndebele miền Bắc",
-  "neDisplayName": "Tiếng Nepal",
-  "ngDisplayName": "Tiếng Ndonga",
-  "nnDisplayName": "Tiếng Na Uy (Nynorsk)",
-  "noDisplayName": "Tiếng Na Uy",
-  "iiDisplayName": "Tiếng Nuosu",
-  "nrDisplayName": "Tiếng Ndebele miền Nam",
-  "ocDisplayName": "Tiếng Occitan",
-  "ojDisplayName": "Tiếng Ojibwe / Ojibwa",
-  "cuDisplayName": "Tiếng Slav Giáo Hội Cổ",
-  "omDisplayName": "Tiếng Oromo",
-  "orDisplayName": "Tiếng Oriya",
-  "osDisplayName": "Tiếng Ossetian / Ossetic",
-  "paDisplayName": "Tiếng Punjabi",
-  "piDisplayName": "Tiếng Pāli",
-  "faDisplayName": "Tiếng Ba Tư",
-  "plDisplayName": "Tiếng Ba Lan",
-  "psDisplayName": "Tiếng Pashto / Pushto",
-  "ptDisplayName": "Tiếng Bồ Đào Nha",
-  "quDisplayName": "Tiếng Quechua",
-  "rmDisplayName": "Tiếng Romansh",
-  "rnDisplayName": "Tiếng Kirundi",
-  "roDisplayName": "Tiếng Romania / Moldavian / Moldovan",
-  "ruDisplayName": "Tiếng Nga",
-  "saDisplayName": "Tiếng Phạn (Sanskrit)",
-  "scDisplayName": "Tiếng Sardinian",
-  "sdDisplayName": "Tiếng Sindhi",
-  "seDisplayName": "Tiếng Sami miền Bắc",
-  "smDisplayName": "Tiếng Samoa",
-  "sgDisplayName": "Tiếng Sango",
-  "srDisplayName": "Tiếng Serbia",
-  "gdDisplayName": "Tiếng Gaelic Scotland",
-  "snDisplayName": "Tiếng Shona",
-  "siDisplayName": "Tiếng Sinhala / Sinhalese",
-  "skDisplayName": "Tiếng Slovakia",
-  "slDisplayName": "Tiếng Slovenia",
-  "soDisplayName": "Tiếng Somali",
-  "stDisplayName": "Tiếng Sotho miền Nam",
-  "esDisplayName": "Tiếng Tây Ban Nha",
-  "suDisplayName": "Tiếng Sunda",
-  "swDisplayName": "Tiếng Swahili",
-  "ssDisplayName": "Tiếng Swati",
-  "svDisplayName": "Tiếng Thụy Điển",
-  "taDisplayName": "Tiếng Tamil",
-  "teDisplayName": "Tiếng Telugu",
-  "tgDisplayName": "Tiếng Tajik",
-  "thDisplayName": "Tiếng Thái",
-  "tiDisplayName": "Tiếng Tigrinya",
-  "boDisplayName": "Tiếng Tây Tạng",
-  "tkDisplayName": "Tiếng Turkmen",
-  "tlDisplayName": "Tiếng Tagalog",
-  "tnDisplayName": "Tiếng Tswana",
-  "toDisplayName": "Tiếng Tonga (Đảo Tonga)",
-  "trDisplayName": "Tiếng Thổ Nhĩ Kỳ",
-  "tsDisplayName": "Tiếng Tsonga",
-  "ttDisplayName": "Tiếng Tatar",
-  "twDisplayName": "Tiếng Twi",
-  "tyDisplayName": "Tiếng Tahiti",
-  "ugDisplayName": "Tiếng Uighur / Uyghur",
-  "ukDisplayName": "Tiếng Ukraina",
-  "urDisplayName": "Tiếng Urdu",
-  "uzDisplayName": "Tiếng Uzbek",
-  "veDisplayName": "Tiếng Venda",
-  "viDisplayName": "Tiếng Việt",
-  "voDisplayName": "Tiếng Volapük",
-  "waDisplayName": "Tiếng Walloon",
-  "cyDisplayName": "Tiếng Wales",
-  "woDisplayName": "Tiếng Wolof",
-  "fyDisplayName": "Tiếng Frisian miền Tây",
-  "xhDisplayName": "Tiếng Xhosa",
-  "yiDisplayName": "Tiếng Yiddish",
-  "yoDisplayName": "Tiếng Yoruba",
-  "zaDisplayName": "Tiếng Zhuang / Chuang",
   "unkDisplayName": "Chưa xác định",
-  "zuDisplayName": "Tiếng Zulu",
-  "hawDisplayName": "Tiếng Hawaii",
-  "hmnDisplayName": "Tiếng H'Mông",
-  "multiDisplayName": "Đa ngôn ngữ",
-  "cebDisplayName": "Tiếng Cebuano",
-  "dzDisplayName": "Tiếng Dzongkha",
-  "iwDisplayName": "Tiếng Hebrew",
-  "jwDisplayName": "Tiếng Javanese",
-  "moDisplayName": "Tiếng Moldavian",
-  "shDisplayName": "Tiếng Serbo-Croatian",
   "wwCountryDisplayName": "Toàn thế giới",
   "afCountryDisplayName": "Afghanistan",
   "axCountryDisplayName": "Quần đảo Åland",
@@ -2416,11 +2139,7 @@
   "yeCountryDisplayName": "Yemen",
   "zmCountryDisplayName": "Zambia",
   "zwCountryDisplayName": "Zimbabwe",
-  "pay": "Thanh toán",
-  "allPrivateChats": "Trò chuyện riêng",
-  "unknownPrivateChat": "Cuộc trò chuyện riêng chưa xác định",
-  "declinedInvitation": "Đã từ chối lời mời",
-  "acceptedInvitation": "Đã chấp nhận lời mời",
+  "pay": "Checkout",
   "youreInvited": "📩 Bạn được mời!",
   "invitedToChat": "{user} đã mời bạn tham gia trò chuyện: {name}! Bạn muốn chấp nhận không?",
   "@invitedToChat": {
@@ -2437,34 +2156,15 @@
   "yearlySubscription": "Hàng năm",
   "defaultSubscription": "Gói Pangea Chat",
   "freeTrial": "Dùng thử miễn phí",
-  "grammarAnalytics": "Phân tích lỗi ngữ pháp",
   "total": "Tổng: ",
   "noDataFound": "Không tìm thấy dữ liệu",
-  "promoSubscriptionExpirationDesc": "Gói khuyến mãi hết hạn vào {expiration}. Nếu cần trợ giúp, hãy liên hệ support@pangea.chat.",
-  "@promoSubscriptionExpirationDesc": {
-    "placeholders": {
-      "expiration": {
-        "type": "String"
-      }
-    }
-  },
-  "emptyChatNameWarning": "Vui lòng nhập tên cho cuộc trò chuyện này",
-  "someErrorTitle": "Hmm, có gì đó không đúng",
-  "someErrorBody": "Có thể đây là lỗi hoặc nội dung bằng ngôn ngữ khác.",
   "bestCorrectionFeedback": "Đúng rồi!",
   "distractorFeedback": "Chưa chính xác lắm.",
   "bestAnswerFeedback": "Chính xác!",
   "definitionDefaultPrompt": "Từ này có nghĩa là gì?",
   "practiceDefaultPrompt": "Câu trả lời tốt nhất là gì?",
   "correctionDefaultPrompt": "Phương án thay thế tốt nhất là gì?",
-  "itStartDefaultPrompt": "Bạn cần hỗ trợ dịch không?",
-  "lockedChatWarning": "🔒 Cuộc trò chuyện này đã bị khóa",
-  "lockChat": "Khóa trò chuyện",
-  "suggestToChat": "Đề xuất trò chuyện này",
-  "suggestToChatDesc": "Những trò chuyện được đề xuất sẽ hiện trong danh sách trò chuyện",
   "acceptSelection": "Chấp nhận chỉnh sửa",
-  "acceptSelectionAnyway": "Vẫn dùng lựa chọn này",
-  "makingActivity": "Đang tạo hoạt động",
   "why": "Tại sao?",
   "definition": "Định nghĩa",
   "exampleSentence": "Ví dụ",
@@ -2507,7 +2207,6 @@
     }
   },
   "searchChatsRooms": "Tìm kiếm #cuộc_trò_chuyện, @người_dùng...",
-  "viewArchive": "Xem lưu trữ",
   "trialExpiration": "Bản dùng thử của bạn sẽ hết hạn vào {expiration}",
   "@trialExpiration": {
     "placeholders": {
@@ -2520,7 +2219,6 @@
   "activateTrial": "Dùng thử miễn phí 7 ngày",
   "successfullySubscribed": "Bạn đã đăng ký thành công!",
   "clickToManageSubscription": "Nhấp vào đây để quản lý gói đăng ký.",
-  "errorGettingAudio": "Lỗi khi lấy tệp âm thanh. Hãy tải lại và thử tiếp.",
   "nothingFound": "Không tìm thấy gì...",
   "groupName": "Tên nhóm",
   "createGroupAndInviteUsers": "Tạo nhóm và mời người dùng",
@@ -2628,18 +2326,8 @@
   "noEmailWarning": "Vui lòng nhập địa chỉ email hợp lệ. Nếu không, bạn sẽ không thể đặt lại mật khẩu. Hoặc chạm lại nút để tiếp tục mà không cần.",
   "pleaseEnterValidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
   "pleaseChooseAUsername": "Vui lòng chọn tên người dùng",
-  "chooseAUsername": "Chọn tên người dùng",
   "define": "Định nghĩa",
   "listen": "Nghe",
-  "addConversationBot": "Bật bot hội thoại",
-  "addConversationBotDesc": "Thêm bot vào cuộc trò chuyện này",
-  "convoBotSettingsDescription": "Chỉnh sửa chủ đề và mức độ khó của hội thoại",
-  "enterAConversationTopic": "Nhập chủ đề hội thoại",
-  "conversationTopic": "Chủ đề hội thoại",
-  "enableModeration": "Bật kiểm duyệt",
-  "enableModerationDesc": "Bật kiểm duyệt tự động để xem xét tin nhắn trước khi gửi",
-  "conversationLanguageLevel": "Trình độ ngôn ngữ của hội thoại?",
-  "showDefinition": "Hiển thị định nghĩa",
   "sendReadReceipts": "Gửi xác nhận đã đọc",
   "sendTypingNotificationsDescription": "Những thành viên khác thấy khi bạn đang nhập tin nhắn.",
   "sendReadReceiptsDescription": "Những thành viên khác thấy khi bạn đã đọc tin nhắn.",
@@ -2703,34 +2391,16 @@
       }
     }
   },
-  "subscriptionPopupTitle": "Câu này có thể có lỗi ngữ pháp...",
-  "subscriptionPopupDesc": "Đăng ký ngay để mở khóa tính năng dịch và kiểm tra ngữ pháp!",
-  "seeOptions": "Xem gói",
-  "continuedWithoutSubscription": "Tiếp tục mà không đăng ký",
   "trialPeriodExpired": "Thời gian dùng thử đã hết hạn",
-  "selectToDefine": "Nhấp vào từ để xem định nghĩa!",
   "translations": "bản dịch",
   "messageAudio": "âm thanh tin nhắn",
   "definitions": "định nghĩa",
   "subscribedToUnlockTools": "Đăng ký để mở khóa dịch tương tác, kiểm tra ngữ pháp, âm thanh, hoạt động và phân tích học tập!",
   "more": "Thêm",
   "translationTooltip": "Dịch",
-  "audioTooltip": "Phát âm thanh",
   "speechToTextTooltip": "Chuyển giọng nói thành văn bản",
-  "certifyAge": "Tôi xác nhận tôi trên {age} tuổi",
-  "@certifyAge": {
-    "type": "String",
-    "placeholders": {
-      "age": {
-        "type": "String"
-      }
-    }
-  },
   "kickBotWarning": "Đá Pangea Bot sẽ xóa bot hội thoại khỏi cuộc trò chuyện này.",
-  "joinToView": "Tham gia phòng để xem chi tiết",
   "refresh": "Tải lại",
-  "autoPlayTitle": "Tự động phát tin nhắn",
-  "autoPlayDesc": "Khi bật, âm thanh văn bản trong tin nhắn sẽ tự phát khi bạn chọn.",
   "transparent": "Trong suốt",
   "unreadChatsInApp": "{appname}: {unread} trò chuyện chưa đọc",
   "@unreadChatsInApp": {
@@ -2750,70 +2420,23 @@
   "accuracy": "Độ chính xác",
   "points": "Điểm",
   "noPaymentInfo": "Không cần thông tin thanh toán!",
-  "conversationBotModeSelectDescription": "Hoạt động trò chuyện",
-  "conversationBotModeSelectOption_discussion": "Thảo luận",
-  "conversationBotModeSelectOption_custom": "Tùy chỉnh",
-  "conversationBotModeSelectOption_conversation": "Hội thoại",
-  "conversationBotModeSelectOption_textAdventure": "Trò chơi văn bản",
-  "conversationBotModeSelectOption_storyGame": "Trò chơi kể chuyện",
-  "conversationBotDiscussionZone_title": "Cài đặt thảo luận",
-  "conversationBotDiscussionZone_discussionTopicLabel": "Chủ đề thảo luận",
-  "conversationBotDiscussionZone_discussionTopicPlaceholder": "Đặt chủ đề thảo luận",
-  "conversationBotDiscussionZone_discussionKeywordsLabel": "Từ khóa thảo luận",
-  "conversationBotDiscussionZone_discussionKeywordsPlaceholder": "Đặt từ khóa thảo luận",
-  "conversationBotDiscussionZone_discussionKeywordsHintText": "Danh sách từ khóa, cách nhau bằng dấu phẩy, để định hướng cuộc thảo luận",
-  "conversationBotDiscussionZone_discussionTriggerScheduleEnabledLabel": "Gửi gợi ý thảo luận theo lịch",
-  "conversationBotDiscussionZone_discussionTriggerScheduleHourIntervalLabel": "Số giờ giữa mỗi lần gửi gợi ý",
-  "conversationBotDiscussionZone_discussionTriggerReactionEnabledLabel": "Phản hồi khi có biểu tượng ⏩",
-  "conversationBotDiscussionZone_discussionTriggerReactionKeyLabel": "Biểu tượng phản hồi để gửi gợi ý thảo luận",
-  "conversationBotCustomZone_title": "Cài đặt tùy chỉnh",
-  "conversationBotCustomZone_customSystemPromptLabel": "Nội dung hệ thống",
-  "conversationBotCustomZone_customSystemPromptPlaceholder": "Nhập prompt hệ thống tùy chỉnh",
-  "conversationBotCustomZone_customSystemPromptEmptyError": "Thiếu prompt hệ thống tùy chỉnh",
-  "botConfig": "Cấu hình bot và hoạt động",
-  "botConfigNoPermissionTitle": "Không có quyền",
-  "botConfigNoPermissionMessage": "Liên hệ quản trị viên phòng để thay đổi cấu hình bot",
-  "addConversationBotDialogTitleInvite": "Xác nhận mời bot hội thoại",
-  "addConversationBotButtonInvite": "Mời",
-  "addConversationBotDialogInviteConfirmation": "Mời",
-  "addConversationBotButtonTitleRemove": "Xác nhận xóa bot hội thoại",
-  "addConversationBotButtonRemove": "Gỡ",
-  "addConversationBotDialogRemoveConfirmation": "Gỡ",
-  "conversationBotConfigConfirmChange": "Xác nhận",
-  "conversationBotStatus": "Mời bot",
-  "conversationBotTextAdventureZone_title": "Trò chơi văn bản",
-  "conversationBotTextAdventureZone_instructionLabel": "Hướng dẫn trò chơi",
-  "conversationBotTextAdventureZone_instructionPlaceholder": "Đặt hướng dẫn cho Game Master",
-  "conversationBotCustomZone_instructionSystemPromptEmptyError": "Thiếu hướng dẫn cho Game Master",
-  "studentAnalyticsNotAvailable": "Không có dữ liệu học viên",
-  "roomDataMissing": "Thiếu một số dữ liệu do bạn chưa vào phòng.",
   "updatePhoneOS": "Bạn có thể cần nâng cấp phiên bản hệ điều hành.",
   "wordsPerMinute": "Từ mỗi phút",
   "autoIGCToolName": "Tự động chạy hỗ trợ ngôn ngữ",
   "autoIGCToolDescription": "Tự động chạy hỗ trợ ngôn ngữ sau khi gõ tin nhắn",
-  "runGrammarCorrection": "Kiểm tra ngữ pháp",
-  "grammarCorrectionFailed": "Có vấn đề cần sửa",
-  "grammarCorrectionComplete": "Có vẻ ổn!",
   "chatCapacity": "Giới hạn thành viên trò chuyện",
   "roomFull": "Phòng đã đạt giới hạn.",
-  "topicNotSet": "Chưa đặt chủ đề.",
-  "chatCapacityNotSet": "Chưa giới hạn số thành viên trong trò chuyện.",
   "chatCapacityHasBeenChanged": "Giới hạn thành viên trò chuyện đã thay đổi",
   "chatCapacityExplanation": "Hạn chế số lượng người dùng thường (không phải quản trị viên) có thể tham gia cuộc trò chuyện.",
-  "chatExceedsCapacity": "Cuộc trò chuyện vượt quá giới hạn thành viên.",
   "tooManyRequest": "Quá nhiều yêu cầu, vui lòng thử lại sau.",
   "enterNumber": "Vui lòng nhập một số nguyên lớn hơn 0.",
   "buildTranslation": "Xây dựng bản dịch của bạn từ các lựa chọn trên",
   "noDatabaseEncryption": "Nền tảng này không hỗ trợ mã hóa cơ sở dữ liệu",
   "thereAreCountUsersBlocked": "Hiện có {count} người dùng bị chặn.",
   "knockRestricted": "Hạn chế gõ yêu cầu",
-  "nonexistentSelection": "Không còn tồn tại lựa chọn này.",
   "createNewSpace": "Tạo không gian mới",
-  "changeAnalyticsLanguage": "Thay đổi ngôn ngữ phân tích",
   "practice": "Luyện tập",
   "noLanguagesSet": "Chưa thiết lập ngôn ngữ",
-  "noActivitiesFound": "Tạm đủ cho lần này! Hãy quay lại sau để có thêm hoạt động.",
-  "hintTitle": "Gợi ý:",
   "speechToTextBody": "Với tin nhắn thoại, bạn có thể xem bản chép giọng nói và điểm từ/phút của người nói.",
   "previous": "Trước",
   "versionNotFound": "Không tìm thấy phiên bản",
@@ -2834,18 +2457,6 @@
       }
     }
   },
-  "languageButtonLabel": "Ngôn ngữ: {currentLanguage}",
-  "@languageButtonLabel": {
-    "type": "String",
-    "placeholders": {
-      "currentLanguage": {
-        "type": "String"
-      }
-    }
-  },
-  "interactiveTranslatorAutoPlaySliderHeader": "Tự động bật trình dịch",
-  "interactiveTranslatorAutoPlayDesc": "Khởi chạy dịch tương tác mà không hỏi",
-  "changeAnalyticsView": "Thay đổi cách xem phân tích",
   "l1TranslationBody": "Tin nhắn trong ngôn ngữ gốc sẽ không được dịch.",
   "continueText": "Tiếp tục",
   "deleteSubscriptionWarningTitle": "Bạn đang có gói đăng ký hoạt động",
@@ -2854,9 +2465,7 @@
   "error520Title": "Hãy thử lại.",
   "error520Desc": "Xin lỗi, chúng tôi không thể hiểu tin nhắn của bạn...",
   "wordsUsed": "Từ đã dùng",
-  "errorTypes": "Loại lỗi",
   "level": "Cấp độ",
-  "canceledSend": "Hủy gửi",
   "morphsUsed": "Hình thái đã sử dụng",
   "translationChoicesBody": "Giữ lâu một lựa chọn để xem gợi ý.",
   "sendCanceled": "Đã hủy gửi",
@@ -2919,7 +2528,6 @@
   "reportContentIssueTitle": "Báo cáo nội dung vấn đề",
   "feedback": "Phản hồi (tùy chọn)",
   "reportContentIssueDescription": "Ôi không! AI hỗ trợ cá nhân hóa nhưng đôi khi vẫn nhầm lẫn. Hãy cho chúng tôi biết phản hồi của bạn hoặc ta sẽ thử lại.",
-  "changeContent": "Bạn muốn thay đổi nội dung như thế nào?",
   "l2SupportNa": "Không khả dụng",
   "l2SupportAlpha": "Bản Alpha",
   "l2SupportBeta": "Bản Beta",
@@ -3149,7 +2757,6 @@
   "grammarCopySPC": "Tính cụ thể",
   "grammarCopyPARTTYPE": "Loại phân từ",
   "grammarCopyINTREL": "Nghi vấn - quan hệ",
-  "grammarCopyNUMFORMpsor": "Dạng số của chủ sở hữu",
   "grammarCopyUNKNOWN": "Không rõ",
   "grammarCopyNUMBERPSOR": "Số lượng chủ sở hữu",
   "grammarCopyPOSS": "Sở hữu",
@@ -3194,13 +2801,6 @@
   "grammarCopyVOICEdir": "Thể trực tiếp",
   "grammarCopyVOICEinv": "Thể nghịch đảo",
   "grammarCopyVOICErcp": "Thể tương hỗ",
-  "enterPrompt": "Vui lòng nhập lời gợi ý (prompt)",
-  "selectBotLanguage": "Chọn ngôn ngữ cho bot",
-  "chooseVoice": "Chọn giọng đọc",
-  "enterLanguageLevel": "Vui lòng nhập trình độ ngôn ngữ",
-  "enterDiscussionTopic": "Vui lòng nhập chủ đề thảo luận",
-  "selectBotChatMode": "Chọn chế độ trò chuyện của bot",
-  "messageNotInTargetLang": "Tin nhắn không ở trong ngôn ngữ đích",
   "other": "Khác",
   "levelShort": "LVL {level}",
   "@levelShort": {
@@ -3211,16 +2811,12 @@
       }
     }
   },
-  "botModeValidation": "Vui lòng chọn một chế độ trò chuyện",
-  "botSettingsSubtitle": "Mời bot kiểm duyệt hoặc khởi tạo hoạt động trò chuyện",
-  "invitePeople": "Mời người dùng",
   "invitePeopleChatSubtitle": "Mời người dùng hoặc quản trị viên đến cuộc trò chuyện này",
   "invitePeopleSpaceSubtitle": "Mời người dùng hoặc quản trị viên đến không gian này",
   "noCapacityLimit": "Không giới hạn sức chứa",
   "downloadGroupText": "Tải nội dung nhóm",
   "notificationsOn": "Bật thông báo",
   "notificationsOff": "Tắt thông báo",
-  "chatCanBeFoundViaSearch": "Cuộc trò chuyện có thể được tìm thấy qua tìm kiếm",
   "calculatingFileSize": "Đang tính kích thước tệp...",
   "prepareSendingAttachment": "Chuẩn bị gửi tệp đính kèm...",
   "sendingAttachment": "Đang gửi tệp đính kèm...",
@@ -3249,9 +2845,6 @@
   },
   "oneOfYourDevicesIsNotVerified": "Một trong các thiết bị của bạn chưa được xác minh",
   "noticeChatBackupDeviceVerification": "Lưu ý: Khi bạn thêm tất cả thiết bị vào sao lưu trò chuyện, chúng sẽ tự động được xác minh.",
-  "requireCodeToJoin": "Yêu cầu mã để tham gia",
-  "canFindInSearch": "Có thể tìm thấy qua tìm kiếm",
-  "addChatToSpace": "Thêm trò chuyện vào không gian",
   "welcomeText": "Chào bạn 👋 Đây là FluffyChat. Bạn có thể đăng nhập vào bất kỳ máy chủ nào tương thích với https://matrix.org, và trò chuyện với mọi người. Đây là một mạng nhắn tin phi tập trung!",
   "blur": "Mờ:",
   "opacity": "Độ trong suốt:",
@@ -3315,39 +2908,19 @@
       }
     }
   },
-  "signInWithUsername": "Đăng nhập bằng tên người dùng và mật khẩu",
-  "registrationEmailMessage": "Vui lòng xác nhận email bằng đường dẫn chúng tôi đã gửi. Đôi khi email có thể mất 5 phút mới đến hoặc vào mục spam.",
   "enableTTSToolName": "Bật đọc văn bản (text-to-speech)",
   "enableTTSToolDescription": "Cho phép ứng dụng tạo âm thanh đọc văn bản của ngôn ngữ đích",
-  "couldNotFindTTS": "Không tìm được công cụ đọc văn bản cho ngôn ngữ đích. ",
-  "ttsInstructionsHyperlink": "Nhấn vào đây để xem cách tải giọng đọc mới trên thiết bị.",
-  "createAnAccount": "Tạo tài khoản",
-  "signIn": "Đăng nhập",
-  "signUpWithEmail": "Đăng ký bằng Email",
-  "signUpWithGoogle": "Đăng ký bằng Google",
-  "signUpWithApple": "Đăng ký bằng Apple",
   "yourUsername": "Tên người dùng của bạn",
   "yourEmail": "Email của bạn",
-  "pleaseEnterAnEmail": "Vui lòng nhập địa chỉ email",
-  "signInWithGoogle": "Đăng nhập bằng Google",
-  "signInWithApple": "Đăng nhập bằng Apple",
-  "chooseYourAvatar": "Chọn ảnh đại diện",
   "iWantToLearn": "Tôi muốn học",
-  "letsStart": "Bắt đầu",
-  "pleaseAgreeToTOS": "Vui lòng đồng ý với Điều khoản và Điều kiện",
   "pleaseEnterEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
-  "pleaseSelectALanguage": "Vui lòng chọn một ngôn ngữ",
   "myBaseLanguage": "Ngôn ngữ gốc của tôi",
-  "clickWordsInstructions": "Nhấn vào từ hoặc nút bên dưới để tìm hiểu thêm",
-  "chooseBestDefinition": "Chọn định nghĩa phù hợp nhất",
   "meaningSectionHeader": "Nghĩa:",
   "formSectionHeader": "Các dạng từ đã dùng trong trò chuyện:",
-  "noEmojiSelectedTooltip": "Chưa chọn biểu tượng cảm xúc nào",
   "writingExercisesTooltip": "Bài tập viết",
   "listeningExercisesTooltip": "Bài tập nghe",
   "readingExercisesTooltip": "Bài tập đọc",
   "meaningNotFound": "Không tìm thấy nghĩa của từ.",
-  "formsNotFound": "Không tìm thấy dạng từ.",
   "chooseBaseForm": "Chọn dạng gốc",
   "notTheCodeError": "Xin lỗi, mã đó không đúng!",
   "totalXP": "Tổng XP",
@@ -3427,33 +3000,13 @@
     }
   },
   "doubleClickToEdit": "Nhấp đúp để chỉnh sửa.",
-  "removeFeature": "Xóa {feature}",
-  "@removeFeature": {
-    "type": "String",
-    "placeholders": {
-      "feature": {
-        "type": "String"
-      }
-    }
-  },
   "otherPartyNotLoggedIn": "Bên kia hiện không đăng nhập, không thể nhận tin!",
-  "chooseCorrectLabel": "Chọn nhãn đúng.",
-  "levelPopupTitle": "Chúc mừng, bạn đã đạt cấp {level}",
-  "@levelPopupTitle": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
   "activityPlannerTitle": "Trình lập hoạt động",
   "topicLabel": "Chủ đề",
   "topicPlaceholder": "Chọn một chủ đề...",
   "modePlaceholder": "Chọn một chế độ...",
   "learningObjectiveLabel": "Mục tiêu học tập",
   "learningObjectivePlaceholder": "Chọn một mục tiêu học tập...",
-  "mediaLabel": "Loại nội dung người học nên chia sẻ",
   "languageOfInstructionsLabel": "Ngôn ngữ hướng dẫn hoạt động",
   "targetLanguageLabel": "Ngôn ngữ đích",
   "cefrLevelLabel": "Trình độ CEFR",
@@ -3467,17 +3020,7 @@
   "instructions": "Hướng dẫn",
   "numberOfLearners": "Số lượng người học",
   "mustBeInteger": "Phải là số nguyên, ví dụ: 1, 2, 3...",
-  "noLemmasFound": "Chưa có từ vựng với hơn {xp} XP. Hãy luyện tập thêm!",
-  "@noLemmasFound": {
-    "type": "String",
-    "placeholders": {
-      "xp": {
-        "type": "int"
-      }
-    }
-  },
   "constructUsePvmDesc": "Đã sử dụng trong tin nhắn thoại",
-  "lockedMorphFeature": "Đang đợi mở khóa",
   "appWantsToUseForLogin": "Dùng '{server}' để đăng nhập",
   "@appWantsToUseForLogin": {
     "type": "String",
@@ -3491,16 +3034,11 @@
   "open": "Mở",
   "waitingForServer": "Đang đợi phản hồi từ máy chủ...",
   "appIntroduction": "FluffyChat cho phép bạn trò chuyện với bạn bè trên nhiều nền tảng khác nhau. Tìm hiểu thêm tại https://matrix.org hoặc nhấn *Tiếp tục*.",
-  "whatIsLemma": "Dạng gốc của từ là gì?",
   "constructUseCorMmDesc": "Đúng trong ý nghĩa tin nhắn",
   "constructUseIncMmDesc": "Sai trong ý nghĩa tin nhắn",
   "constructUseIgnMmDesc": "Bỏ qua trong ý nghĩa tin nhắn",
   "clickForMeaningActivity": "Nhấn đây để làm Bài tập Ý Nghĩa",
   "meaning": "Nghĩa",
-  "accountInformation": "Thông tin tài khoản",
-  "addGroupDescription": "Thêm mô tả cho cuộc trò chuyện",
-  "addNewFriend": "Thêm bạn mới",
-  "alreadyHaveAnAccount": "Bạn đã có tài khoản",
   "newChatRequest": "📩 Yêu cầu trò chuyện mới",
   "contentNotificationSettings": "Cài đặt thông báo nội dung",
   "generalNotificationSettings": "Cài đặt thông báo chung",
@@ -3585,9 +3123,7 @@
       }
     }
   },
-  "slightlyOffensive": "Hơi xúc phạm",
   "clickOnEmailLink": "Vui lòng nhấp vào liên kết trong email và sau đó tiếp tục. Trong một số trường hợp hiếm hoi, email có thể bị gửi vào thư rác hoặc mất đến 5 phút để đến nơi.",
-  "whoIsAllowedToJoinThisChat": "Ai được phép tham gia cuộc trò chuyện này",
   "dontForgetPassword": "Đừng quên mật khẩu của bạn!",
   "enableAutocorrectToolName": "Bật tự động sửa",
   "enableAutocorrectDescription": "Sử dụng tính năng tự động sửa tích hợp của bàn phím khi gõ tin nhắn",
@@ -3634,8 +3170,6 @@
   "notSupportedOnThisDevice": "Không được hỗ trợ trên thiết bị này",
   "pleaseUpdateApp": "Vui lòng cập nhật ứng dụng để tiếp tục.",
   "chooseEmojiInstructionsBody": "Chọn một biểu tượng cảm xúc cho từ này! Không có câu trả lời sai và bạn có thể chuyển đổi bất cứ lúc nào! 😄",
-  "pickAnEmojiFor": "Chọn một biểu tượng cảm xúc cho ${lemma}",
-  "joinByCode": "Tham gia bằng mã",
   "@@locale": "vi",
   "@takeAPhoto": {
     "type": "String",
@@ -3661,19 +3195,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@pickAnEmojiFor": {
-    "type": "String",
-    "placeholders": {
-      "lemma": {
-        "type": "String"
-      }
-    }
-  },
-  "@joinByCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "levelSummaryTrigger": "Đọc báo cáo",
   "levelSummaryPopupTitle": "Tóm tắt cấp {level}",
   "@levelSummaryPopupTitle": {
     "type": "String",
@@ -3697,38 +3218,19 @@
   "morphAnalyticsListBody": "Đây là tất cả các khái niệm ngữ pháp trong ngôn ngữ bạn đang học! Bạn sẽ mở khóa chúng khi gặp phải trong khi trò chuyện. Nhấp để xem chi tiết.",
   "chooseWordAudioInstructionsBody": "Nghe toàn bộ tin nhắn. Sau đó, khớp các âm thanh với các từ.",
   "chooseMorphsInstructionsBody": "Nhấp vào các mảnh ghép cho các câu hỏi ngữ pháp!",
-  "inviteAndLaunch": "Khởi động và mời",
-  "createOwnChat": "Tạo trò chuyện của riêng bạn",
   "pleaseEnterInt": "Vui lòng nhập một số",
   "home": "Trang chủ",
   "join": "Tham gia",
   "readingAssistanceOverviewBody": "Nhấp vào các nút bên dưới để chơi mini-game về việc khớp emoji, âm thanh, nghĩa từ và khái niệm ngữ pháp. Hoặc nhấp vào bất kỳ từ nào để xem chi tiết.",
-  "learnByTexting": "Học qua nhắn tin",
-  "referFriends": "Giới thiệu bạn bè",
-  "referFriendDialogTitle": "Mời một người bạn tham gia cuộc trò chuyện của bạn",
-  "referFriendDialogDesc": "Bạn có một người bạn hào hứng học một ngôn ngữ mới cùng bạn không? Hãy sao chép và gửi liên kết mời này để tham gia và bắt đầu trò chuyện với bạn hôm nay.",
-  "youUnlocked": "Bạn đã mở khóa",
   "resetInstructionTooltipsTitle": "Đặt lại hướng dẫn công cụ",
   "resetInstructionTooltipsDesc": "Nhấp để hiển thị hướng dẫn công cụ như cho một người dùng hoàn toàn mới.",
   "selectForGrammar": "Chọn một biểu tượng ngữ pháp cho các hoạt động và chi tiết.",
-  "newChatActivityTitle": "Thêm một hoạt động thú vị?",
-  "newChatActivityDesc": "Biến mỗi cuộc trò chuyện nhóm thành một cuộc phiêu lưu với Kế hoạch Hoạt động! Đặt các chủ đề và mục tiêu hấp dẫn cho nhóm, và mang cuộc trò chuyện đến cuộc sống với những hình ảnh tuyệt đẹp. Khơi dậy những cuộc thảo luận sáng tạo và giữ cho niềm vui chảy trôi một cách dễ dàng!",
-  "exploreMore": "Khám phá thêm",
   "randomize": "Ngẫu nhiên hóa",
   "clear": "Xóa",
   "featuredActivities": "Nổi bật",
-  "goToChat": "Đi đến trò chuyện",
   "save": "Lưu",
-  "selectActivity": "Chọn hoạt động",
-  "wordFocusListeningMultipleChoice": "Âm thanh nào phù hợp với từ?",
   "startChat": "Bắt đầu trò chuyện",
   "translationProblem": "Vấn đề dịch thuật",
-  "perfectTranslation": "Dịch thuật hoàn hảo!",
-  "greatJobTranslation": "Làm tốt công việc với bản dịch này!",
-  "goodJobTranslation": "Làm tốt công việc với bản dịch này.",
-  "makingProgress": "Bạn đang tiến bộ!",
-  "keepPracticing": "Tiếp tục luyện tập!",
-  "niceJob": "Làm tốt lắm!",
   "askToJoin": "Yêu cầu tham gia",
   "emptyChatWarningTitle": "Trò chuyện trống",
   "emptyChatWarningDesc": "Bạn chưa mời ai vào trò chuyện của mình. Đi đến cài đặt trò chuyện để mời danh bạ hoặc Bot của bạn. Bạn cũng có thể làm điều này sau.",
@@ -3746,8 +3248,6 @@
   "languageLevelC2Desc": "Tôi có thể hiểu hầu như mọi thứ nghe hoặc đọc và diễn đạt bản thân một cách lưu loát và chính xác.",
   "newVocab": "Từ vựng mới",
   "newGrammar": "Khái niệm ngữ pháp mới",
-  "congratulationsOnReaching": "Bạn đã đạt đến Cấp độ {level}!",
-  "seeDetails": "Xem chi tiết",
   "choosePracticeMode": "Nhấp vào một trong các nút ở trên để bắt đầu một hoạt động thực hành",
   "ban": "Cấm",
   "unban": "Bỏ cấm",
@@ -3764,7 +3264,6 @@
   "timesUsedWithAssistance": "Số lần sử dụng với sự trợ giúp",
   "shareInviteCode": "Chia sẻ mã mời: {code}",
   "leaderboard": "Bảng xếp hạng",
-  "welcomeUser": "Chào mừng {user}",
   "skipForNow": "Bỏ qua tạm thời",
   "@setCustomPermissionLevel": {
     "type": "String",
@@ -3822,14 +3321,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@inviteAndLaunch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createOwnChat": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pleaseEnterInt": {
     "type": "String",
     "placeholders": {}
@@ -3846,26 +3337,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@learnByTexting": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@referFriends": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@referFriendDialogTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@referFriendDialogDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@youUnlocked": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@resetInstructionTooltipsTitle": {
     "type": "String",
     "placeholders": {}
@@ -3875,18 +3346,6 @@
     "placeholders": {}
   },
   "@selectForGrammar": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newChatActivityTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@newChatActivityDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@exploreMore": {
     "type": "String",
     "placeholders": {}
   },
@@ -3906,19 +3365,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@goToChat": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@save": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@wordFocusListeningMultipleChoice": {
     "type": "String",
     "placeholders": {}
   },
@@ -3931,30 +3378,6 @@
     "placeholders": {}
   },
   "@translationProblem": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@perfectTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@greatJobTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@goodJobTranslation": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@makingProgress": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@keepPracticing": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@niceJob": {
     "type": "String",
     "placeholders": {}
   },
@@ -4026,18 +3449,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@congratulationsOnReaching": {
-    "type": "String",
-    "placeholders": {
-      "level": {
-        "type": "int"
-      }
-    }
-  },
-  "@seeDetails": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@choosePracticeMode": {
     "type": "String",
     "placeholders": {}
@@ -4106,14 +3517,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@welcomeUser": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
@@ -4121,12 +3524,8 @@
   "permissions": "Quyền hạn",
   "addEnvironmentOverride": "Thêm ghi đè môi trường",
   "defaultOption": "Mặc định",
-  "chatWithActivities": "Trò chuyện với các hoạt động",
   "launch": "Khởi động",
-  "launchActivityToChats": "Khởi động hoạt động đến các trò chuyện",
   "searchChats": "Tìm kiếm cuộc trò chuyện",
-  "selectChats": "Chọn cuộc trò chuyện",
-  "selectChatToStart": "Hoàn tất! Chọn một trò chuyện để bắt đầu",
   "pinMessages": "Ghim tin nhắn",
   "setJoinRules": "Đặt quy tắc tham gia",
   "displayNavigationRail": "Hiển thị thanh điều hướng trên di động",
@@ -4148,10 +3547,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@chatWithActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@findYourPeople": {
     "type": "String",
     "placeholders": {}
@@ -4160,19 +3555,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@launchActivityToChats": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@searchChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@selectChatToStart": {
     "type": "String",
     "placeholders": {}
   },
@@ -4226,9 +3609,7 @@
   "maxFifty": "Tối đa 50",
   "activities": "Hoạt động",
   "access": "Truy cập",
-  "botSettings": "Cài đặt bot",
   "activitySuggestionTimeoutMessage": "Chúng tôi đang làm việc chăm chỉ để tạo ra các hoạt động cho bạn, vui lòng quay lại sau một phút",
-  "accessSettingsWarning": "Ôi! Có vẻ như bạn không có quyền thiết lập các quy tắc Truy cập của phòng này. Bạn nên kiểm tra những điều này để đảm bảo chúng là những gì bạn cần và nói chuyện với quản trị viên phòng nếu bạn cần thay đổi chúng",
   "private": "Riêng tư",
   "cannotBeFoundInSearch": "Không thể tìm thấy trong tìm kiếm",
   "public": "Công khai",
@@ -4238,14 +3619,6 @@
   "canBeFoundViaKnock": "• yêu cầu tham gia và sự chấp thuận của quản trị viên",
   "youHaveLeveledUp": "Bạn đã nâng cấp!",
   "sendActivities": "Gửi hoạt động",
-  "getStartedBotChatDesc": "Trò chuyện với AI là một nơi tuyệt vời để bắt đầu và các công cụ đọc, viết, nghe và nói của Pangea giúp điều đó dễ dàng!",
-  "getStartedCommunitiesDesc": "Học tập với một cộng đồng là nơi Pangea Chat tỏa sáng!\nBạn có thể tham gia lớp học của mình, tìm một trường học, hoặc thậm chí tạo riêng cho mình!",
-  "getStartedFriendsDesc": "Bạn có một người bạn muốn học cùng bạn không?",
-  "getStartedBotChatComplete": "Tuyệt vời! Bạn đang trò chuyện với bot!",
-  "getStartedComplete": "Bạn đã hoàn thành phần này!\nTiếp tục khám phá các tính năng tuyệt vời của chúng tôi bằng cách trò chuyện với bạn bè!",
-  "getStartedFriendsComplete": "Woohoo! Bạn đã có bạn bè! 😉",
-  "getStartedBotChatButton": "Bắt đầu trò chuyện!",
-  "getStartedFriendsButton": "Trò chuyện với một người bạn",
   "groupChat": "Nhóm trò chuyện",
   "directMessage": "Tin nhắn trực tiếp",
   "newDirectMessage": "Tin nhắn trực tiếp mới",
@@ -4258,7 +3631,6 @@
   "mySavedActivities": "Các hoạt động đã lưu của tôi",
   "noSavedActivities": "Không có hoạt động nào đã lưu",
   "saveActivity": "Lưu hoạt động này",
-  "yourSavedActivities": "Các hoạt động đã lưu",
   "failedToPlayVideo": "Không thể phát video",
   "done": "Xong",
   "myContacts": "Danh bạ của tôi",
@@ -4328,15 +3700,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@botSettings": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@activitySuggestionTimeoutMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@accessSettingsWarning": {
     "type": "String",
     "placeholders": {}
   },
@@ -4373,38 +3737,6 @@
     "placeholders": {}
   },
   "@sendActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedCommunitiesDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedBotChatButton": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedFriendsButton": {
     "type": "String",
     "placeholders": {}
   },
@@ -4453,10 +3785,6 @@
     "placeholders": {}
   },
   "@saveActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@yourSavedActivities": {
     "type": "String",
     "placeholders": {}
   },
@@ -4602,7 +3930,6 @@
   "noSpaceDescriptionYet": "Chưa tạo mô tả khóa học nào.",
   "knockSpaceSuccess": "Bạn đã yêu cầu tham gia khóa học này! Quản trị viên sẽ phản hồi yêu cầu của bạn khi họ nhận được 😀",
   "enterSpaceCode": "Nhập mã khóa học",
-  "joinSpaceOnboardingDesc": "Bạn có mã mời hoặc liên kết đến một khóa học công khai không?",
   "spaceChildPermission": "Ai có thể thêm cuộc trò chuyện mới vào khóa học này",
   "deleteSpaceDesc": "Khóa học và bất kỳ cuộc trò chuyện nào đã chọn sẽ bị xóa cho tất cả các thành viên và tất cả các tin nhắn trong cuộc trò chuyện sẽ không còn khả dụng để thực hành hoặc phân tích học tập. Hành động này không thể hoàn tác.",
   "configureSpace": "Cấu hình khóa học",
@@ -4610,7 +3937,6 @@
   "howSpaceCanBeFound": "Khóa học này có thể được tìm thấy như thế nào",
   "visibleToCommunity": "Hiển thị cho cộng đồng Chat Pangea rộng hơn qua \"Tìm khóa học\"",
   "howSpaceCanBeJoined": "Khóa học này có thể được tham gia như thế nào",
-  "getStartedCommunitiesComplete": "Tuyệt vời, bạn đã tham gia một khóa học!",
   "aUserIsKnocking": "Có 1 người dùng đang yêu cầu tham gia khóa học của bạn",
   "usersAreKnocking": "{users} người dùng đang yêu cầu tham gia khóa học của bạn",
   "deleteEmptySpaceDesc": "Khóa học sẽ bị xóa cho tất cả các thành viên. Hành động này không thể hoàn tác.",
@@ -4630,37 +3956,27 @@
   "maximumActivityParticipants": "Mỗi hoạt động có tối đa {count} người tham gia.",
   "pending": "Đang chờ",
   "inactive": "Không hoạt động",
-  "unjoinedActivityMessage": "Bạn có muốn tham gia không? Chọn vai trò mở!\nHoặc tụ tập và xem chương trình!",
-  "fullActivityMessage": "Thoải mái xem chương trình! Trong khi không có vai trò mở để tham gia, bạn có thể xem cuộc trò chuyện!",
   "confirmRole": "Xác nhận vai trò",
   "openRoleLabel": "MỞ",
   "joinedTheActivity": "👋 {username} đã tham gia với vai trò {role}",
   "finishedTheActivity": "🎯 {username} đã kết thúc hoạt động này",
-  "endActivityTitle": "Tôi đã xong",
-  "endActivityDesc": "Bạn đã hoàn thành các mục tiêu chưa?\nĐây là xác nhận của bạn rằng bạn đang rút lui khỏi việc nhắn tin. Nhưng đừng lo, niềm vui vẫn tiếp tục trong cuộc trò chuyện! Hãy thoải mái tụ tập và thưởng thức chương trình cho đến khi mọi người nhấn 'Xong'.",
   "archiveToAnalytics": "Thêm vào các hoạt động đã hoàn thành của tôi",
   "activitySummaryError": "Không thể lấy tóm tắt hoạt động",
   "requestSummaries": "Yêu cầu tóm tắt",
-  "loadingActivitySummary": "Đang tải tóm tắt hoạt động...",
   "generatingNewActivities": "Bạn là người dùng đầu tiên của cặp ngôn ngữ này! Vui lòng chờ một phút, chúng tôi đang chuẩn bị hoạt động dành riêng cho bạn.",
-  "requestAccessTitle": "Yêu cầu quyền truy cập xem phân tích?",
+  "requestAccessTitle": "Yêu cầu quyền truy cập phân tích?",
   "requestAccessDesc": "Bạn có muốn yêu cầu quyền truy cập để xem phân tích người tham gia?\n\nNếu các người tham gia đồng ý, quản trị viên của khóa học này sẽ có thể xem:\n    • tổng số từ vựng\n    • tổng số khái niệm ngữ pháp\n    • tổng số phiên hoạt động đã hoàn thành\n    • các khái niệm ngữ pháp cụ thể đã sử dụng, đúng và sai\n\nHọ sẽ không thể xem:\n    • tin nhắn trong các cuộc trò chuyện ngoài khóa học\n    • danh sách từ vựng",
   "requestAccess": "Yêu cầu quyền truy cập ({count})",
   "analyticsInactiveTitle": "Không thể gửi yêu cầu tới người dùng không hoạt động",
   "analyticsInactiveDesc": "Người dùng không hoạt động kể từ khi tính năng này được giới thiệu sẽ không thấy yêu cầu của bạn.\n\nNút Yêu cầu sẽ xuất hiện khi họ trở lại. Bạn có thể gửi lại yêu cầu sau bằng cách nhấn nút Yêu cầu dưới tên của họ khi nó khả dụng.",
   "accessRequestedTitle": "Yêu cầu truy cập phân tích",
-  "accessRequestedDesc": "Quản trị viên của “{space}” đang yêu cầu xem phân tích học tập của bạn.\n\nNếu bạn đồng ý, quản trị viên của khóa học này sẽ có thể xem:\n    • tổng số từ vựng\n    • tổng số khái niệm ngữ pháp\n    • tổng số phiên hoạt động đã hoàn thành\n    • các khái niệm ngữ pháp cụ thể đã sử dụng, đúng và sai\n\nHọ sẽ không thể xem:\n    • tin nhắn trong các cuộc trò chuyện ngoài khóa học\n    • danh sách từ vựng",
-  "allowAccess": "Cho phép truy cập",
-  "denyAccess": "Từ chối truy cập",
+  "accessRequestedDesc": "Yêu cầu quản trị viên: {admin} \n\nCác quản trị viên từ “{space}” đang yêu cầu xem phân tích học tập của bạn.\n\nNếu bạn đồng ý, họ sẽ có thể xem:\n    • tổng số từ vựng\n    • tổng số khái niệm ngữ pháp\n    • tổng số phiên hoạt động đã hoàn thành\n    • các khái niệm ngữ pháp cụ thể đã sử dụng, đúng và sai\n\nHọ sẽ không thể xem:\n    • tin nhắn trong các cuộc trò chuyện bên ngoài khóa học\n    • danh sách từ vựng",
   "adminRequestedAccess": "Quản trị viên yêu cầu xem phân tích của bạn.",
   "lastUpdated": "Cập nhật\n{time}",
   "activityFinishedMessage": "Hoàn tất!",
   "endForAll": "Kết thúc cho tất cả",
   "newCourse": "Khóa học mới",
-  "newCourseSubtitle": "Bạn muốn sử dụng kế hoạch khóa học nào?",
-  "failedToLoadCourses": "Không thể tải khóa học",
   "numModules": "{num} mô-đun",
-  "numActivityPlans": "{num} kế hoạch hoạt động",
   "coursePlan": "Kế hoạch khóa học",
   "editCourseLater": "Bạn có thể chỉnh sửa tiêu đề mẫu, mô tả và hình ảnh khóa học sau.",
   "newCourseAccess": "Theo mặc định, các khóa học là riêng tư và yêu cầu sự chấp thuận của quản trị viên để tham gia. Bạn có thể chỉnh sửa các cài đặt này bất cứ lúc nào.",
@@ -4674,17 +3990,11 @@
   "accessDesc": "Bạn có thể làm cho khóa học của mình mở cho thế giới! Hoặc, làm cho khóa học của bạn riêng tư và an toàn.",
   "createGroupChatDesc": "Trong khi các phiên hoạt động bắt đầu và kết thúc, nhóm trò chuyện sẽ luôn mở để giao tiếp định kỳ.",
   "deleteDesc": "Chỉ quản trị viên mới có thể xóa khóa học. Đây là hành động phá hủy, sẽ xóa tất cả người dùng và tất cả các cuộc trò chuyện đã chọn trong khóa học. Hãy cẩn thận khi thực hiện.",
-  "failedToLoadCourseInfo": "Không thể tải thông tin khóa học",
   "noCourseFound": "Ôi, khóa học này cần có kế hoạch!\n\nKế hoạch khóa học là một chuỗi các chủ đề và hoạt động trò chuyện.",
   "additionalParticipants": "+ {num} người khác",
-  "activityNotFoundForCourse": "Hoạt động này không được tìm thấy trong khóa học",
-  "courseChats": "Các cuộc trò chuyện của khóa học",
-  "myActivitySessions": "Các phiên hoạt động của tôi",
   "directMessages": "Tin nhắn trực tiếp",
   "whatNow": "Bây giờ làm gì?",
   "chooseNextActivity": "Chọn hoạt động tiếp theo của bạn!",
-  "seeInstructions": "Xem hướng dẫn",
-  "hideInstructions": "Ẩn hướng dẫn",
   "letsGo": "Đi nào",
   "chooseRole": "Chọn vai trò!",
   "chooseRoleToParticipate": "Chọn vai trò để tham gia!",
@@ -4694,23 +4004,15 @@
   "inviteFriends": "Mời bạn bè",
   "waitNotDone": "Chờ tôi chưa xong!",
   "waitingForOthersToFinish": "Đang chờ những người khác hoàn thành...",
-  "saveToCompletedActivities": "Lưu vào hoạt động đã hoàn thành",
   "generatingSummary": "Phân tích cuộc trò chuyện và tạo kết quả",
-  "instructionsLanguage": "Ngôn ngữ hướng dẫn",
   "findCourse": "Tìm khóa học",
-  "activityCompletedDesc": "Hoạt động đã hoàn thành của bạn đã được thêm vào phân tích để bạn có thể xem lại và luyện tập ngôn ngữ đã sử dụng.",
   "pingParticipantsNotification": "{user} đang tìm kiếm người dùng để tham gia phiên hoạt động trong {room}",
   "course": "Khóa học",
   "courses": "Các khóa học",
   "courseName": "Tên khóa học",
   "createNewCourse": "Khóa học mới",
-  "publicCourses": "Các khóa học công khai",
   "goToCourse": "Đi tới khóa học: {course}",
   "activityComplete": "Hoạt động này đã hoàn thành. Tóm tắt hoạt động sẽ có sẵn bên dưới.",
-  "haventChattedMuch": "Có vẻ bạn chưa trò chuyện nhiều, hãy thử sử dụng nhiều từ vựng hơn! Nếu bạn cảm thấy đã hoàn thành mục tiêu, bạn có thể kết thúc hoạt động bên dưới.",
-  "haveChatted": "Có vẻ bạn đã trò chuyện một thời gian rồi! Nếu bạn cảm thấy đã hoàn thành mục tiêu, hãy kết thúc để hoàn tất hoạt động và chúng tôi sẽ tạo cho bạn một bản tóm tắt trong cuộc trò chuyện!",
-  "userDoneAndWaiting": "{num1}/{num2} người tham gia đã kết thúc. Chờ mọi người hoàn thành, chúng tôi sẽ tạo cho bạn một bản tóm tắt trong cuộc trò chuyện! \n\nNếu bạn muốn tham gia lại cuộc trò chuyện, nhấn nút tiếp tục trong cuộc trò chuyện.",
-  "othersDoneAndWaiting": "{num1}/{num2} đã hoàn thành. Bạn đã hoàn thành mục tiêu của mình chưa?",
   "startNewSession": "Bắt đầu phiên mới",
   "joinOpenSession": "Tham gia phiên mở",
   "less": "ít hơn",
@@ -4720,7 +4022,6 @@
   "openToJoin": "Mở để tham gia",
   "results": "Kết quả",
   "activityDone": "Hoạt động hoàn thành!",
-  "moreLabel": "xem thêm",
   "promoCodeInfo": "Mã khuyến mãi có thể nhập ở trang tiếp theo",
   "editsComingSoon": "Khả năng chỉnh sửa thành phố và hoạt động sẽ sớm ra mắt.",
   "editing": "Đang chỉnh sửa",
@@ -4736,13 +4037,10 @@
   "courseSavedSuccessfully": "Lưu khóa học thành công",
   "addCoursePlan": "Thêm kế hoạch khóa học",
   "activityStatsButtonInstruction": "Nhấn vào đây để xem thống kê hoạt động của bạn và đóng hoạt động khi hoàn thành",
-  "readingAnalyticsDesc": "Nhấn luyện tập trên từng tin nhắn để thực hiện các hoạt động đọc.",
-  "speakingAnalyticsDesc": "Ghi âm tin nhắn thoại để luyện nói.",
-  "audioAnalyticsDesc": "Nhấn luyện tập trên từng tin nhắn để thực hiện các hoạt động nghe.",
   "loginToAccount": "Đăng nhập vào tài khoản của tôi",
   "appDescription": "Học một ngôn ngữ\ntrong khi nhắn tin với bạn bè.",
   "languages": "Ngôn ngữ",
-  "chooseLanguage": "Chọn một ngôn ngữ.",
+  "chooseLanguage": "Chọn một ngôn ngữ mục tiêu.",
   "planTrip": "Lập kế hoạch chuyến đi",
   "howAreYouTraveling": "Bạn đi du lịch bằng phương tiện gì?",
   "unlockPrivateTrip": "Mở khóa chuyến đi riêng tư",
@@ -4755,25 +4053,20 @@
   "courseCode": "Mật khẩu bí mật là gì?",
   "courseCodeHint": "Mã chuyến đi hoặc liên kết",
   "unlockMyTrip": "Mở khóa chuyến đi của tôi",
-  "anyLevel": "Bất kỳ trình độ nào",
   "signupOption": "Bạn muốn đăng ký như thế nào?",
   "withApple": "Với Apple",
   "withGoogle": "Với Google",
   "withEmail": "Với Email",
   "createAccount": "Tạo tài khoản",
-  "noCoursesFound": "Không tìm thấy khóa học",
   "loginWithEmail": "Đăng nhập bằng email",
   "usernameOrEmail": "Tên người dùng hoặc email",
   "email": "Email",
   "forgotPassword": "Quên mật khẩu?",
-  "writingAnalyticsDesc": "Gửi tin nhắn để luyện viết.",
   "endActivity": "Kết thúc hoạt động",
   "allLanguages": "Tất cả các ngôn ngữ",
-  "allCefrLevels": "Tất cả các trình độ CEFR",
   "chatListTooltip": "Bạn sẽ tìm thấy tin nhắn trực tiếp của mình ở đây! Nhấp vào ảnh đại diện của bất kỳ người dùng nào và chọn “bắt đầu cuộc trò chuyện” để gửi tin nhắn trực tiếp.",
   "directMessageBotTitle": "Tin nhắn trực tiếp với Pangea Bot",
   "feedbackTitle": "Phản hồi hoạt động",
-  "feedbackDesc": "Hoạt động nên được cải thiện như thế nào? Nếu bạn có thể cung cấp một số chi tiết, chúng tôi sẽ thực hiện thay đổi!",
   "feedbackHint": "Phản hồi của bạn",
   "feedbackButton": "Gửi phản hồi",
   "directMessageBotDesc": "Nói chuyện với con người thì vui hơn nhưng... AI luôn sẵn sàng!",
@@ -4835,10 +4128,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@spaceChildPermission": {
     "type": "String",
     "placeholders": {}
@@ -4864,10 +4153,6 @@
     "placeholders": {}
   },
   "@howSpaceCanBeJoined": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedCommunitiesComplete": {
     "type": "String",
     "placeholders": {}
   },
@@ -4962,14 +4247,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@unjoinedActivityMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@fullActivityMessage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@confirmRole": {
     "type": "String",
     "placeholders": {}
@@ -4997,14 +4274,6 @@
       }
     }
   },
-  "@endActivityTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@endActivityDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@archiveToAnalytics": {
     "type": "String",
     "placeholders": {}
@@ -5014,10 +4283,6 @@
     "placeholders": {}
   },
   "@requestSummaries": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@loadingActivitySummary": {
     "type": "String",
     "placeholders": {}
   },
@@ -5056,18 +4321,13 @@
   "@accessRequestedDesc": {
     "type": "String",
     "placeholders": {
+      "admin": {
+        "type": "String"
+      },
       "space": {
         "type": "String"
       }
     }
-  },
-  "@allowAccess": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@denyAccess": {
-    "type": "String",
-    "placeholders": {}
   },
   "@adminRequestedAccess": {
     "type": "String",
@@ -5093,23 +4353,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@newCourseSubtitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@failedToLoadCourses": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@numModules": {
-    "type": "int",
-    "placeholders": {
-      "num": {
-        "type": "int"
-      }
-    }
-  },
-  "@numActivityPlans": {
     "type": "int",
     "placeholders": {
       "num": {
@@ -5169,10 +4413,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@failedToLoadCourseInfo": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@noCourseFound": {
     "type": "String",
     "placeholders": {}
@@ -5185,18 +4425,6 @@
       }
     }
   },
-  "@activityNotFoundForCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@courseChats": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@myActivitySessions": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@directMessages": {
     "type": "String",
     "placeholders": {}
@@ -5206,14 +4434,6 @@
     "placeholders": {}
   },
   "@chooseNextActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@seeInstructions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@hideInstructions": {
     "type": "String",
     "placeholders": {}
   },
@@ -5257,23 +4477,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@saveToCompletedActivities": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@generatingSummary": {
     "type": "String",
     "placeholders": {}
   },
-  "@instructionsLanguage": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@findCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@activityCompletedDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5304,10 +4512,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@publicCourses": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@goToCourse": {
     "type": "String",
     "placeholders": {
@@ -5317,36 +4521,6 @@
   "@activityComplete": {
     "type": "String",
     "placeholders": {}
-  },
-  "@haventChattedMuch": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@haveChatted": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@userDoneAndWaiting": {
-    "type": "String",
-    "placeholders": {
-      "num1": {
-        "type": "int"
-      },
-      "num2": {
-        "type": "int"
-      }
-    }
-  },
-  "@othersDoneAndWaiting": {
-    "type": "String",
-    "placeholders": {
-      "num1": {
-        "type": "int"
-      },
-      "num2": {
-        "type": "int"
-      }
-    }
   },
   "@startNewSession": {
     "type": "String",
@@ -5381,10 +4555,6 @@
     "placeholders": {}
   },
   "@activityDone": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@moreLabel": {
     "type": "String",
     "placeholders": {}
   },
@@ -5452,18 +4622,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@readingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@speakingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@audioAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginToAccount": {
     "type": "String",
     "placeholders": {}
@@ -5528,10 +4686,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@anyLevel": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@signupOption": {
     "type": "String",
     "placeholders": {}
@@ -5552,10 +4706,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@noCoursesFound": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@loginWithEmail": {
     "type": "String",
     "placeholders": {}
@@ -5572,19 +4722,11 @@
     "type": "String",
     "placeholders": {}
   },
-  "@writingAnalyticsDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@endActivity": {
     "type": "String",
     "placeholders": {}
   },
   "@allLanguages": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@allCefrLevels": {
     "type": "String",
     "placeholders": {}
   },
@@ -5597,10 +4739,6 @@
     "placeholders": {}
   },
   "@feedbackTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@feedbackDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5628,16 +4766,12 @@
     "type": "String",
     "placeholders": {}
   },
-  "inviteFriendsToActivity": "Mời bạn bè tham gia hoạt động",
-  "inviteFriendsToActivityCourse": "Mời bạn bè tham gia hoạt động và khóa học",
   "feedbackRespDesc": "Kiểm tra lại vào ngày mai để cập nhật hoạt động.",
   "activityDropdownDesc": "Khi bạn hoàn thành hoạt động này, nhấn vào bên dưới",
-  "activityAnalyticsListBody": "Đây là các hoạt động bạn đã hoàn thành! Sau khi hoàn thành các hoạt động, bạn có thể xem chúng tại đây.",
   "languageMismatchTitle": "Không khớp ngôn ngữ",
   "languageMismatchDesc": "Ngôn ngữ mục tiêu của bạn không khớp với ngôn ngữ của hoạt động này. Cập nhật ngôn ngữ mục tiêu của bạn?",
   "reportWordIssueTooltip": "Báo cáo vấn đề về thông tin từ",
   "tokenInfoFeedbackDialogTitle": "Phản hồi Thông tin Từ",
-  "tokenInfoFeedbackDialogDesc": "AI có thể mắc lỗi. Vui lòng mô tả bất kỳ vấn đề nào bạn gặp phải với thông tin trên.",
   "noPublicCoursesFound": "Không tìm thấy khóa học công khai. Bạn có muốn tạo một khóa học không?",
   "noCourseTemplatesFound": "Chúng tôi không thể tìm thấy bất kỳ khóa học nào phù hợp với ngôn ngữ mục tiêu của bạn. Trong thời gian chờ, bạn có thể trò chuyện với Pangea Bot và quay lại sau để xem thêm các khóa học.",
   "botActivityJoinFailMessage": "Pangea Bot đang phản hồi chậm. Vui lòng thử lại sau hoặc mời bạn bè tham gia.",
@@ -5645,23 +4779,11 @@
   "leaveDesc": "Rời khỏi không gian này và tất cả các cuộc trò chuyện trong đó",
   "selectAll": "Chọn tất cả",
   "deselectAll": "Bỏ chọn tất cả",
-  "@inviteFriendsToActivity": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteFriendsToActivityCourse": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@feedbackRespDesc": {
     "type": "String",
     "placeholders": {}
   },
   "@activityDropdownDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@activityAnalyticsListBody": {
     "type": "String",
     "placeholders": {}
   },
@@ -5678,10 +4800,6 @@
     "placeholders": {}
   },
   "@tokenInfoFeedbackDialogTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@tokenInfoFeedbackDialogDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -5719,7 +4837,6 @@
   "newMessageInPangeaChat": "🔊 Tin nhắn mới trong Pangea Chat",
   "shareCourse": "Chia sẻ khóa học",
   "addCourse": "Thêm khóa học",
-  "joinCourseWithCode": "Tham gia khóa học bằng mã",
   "joinPublicCourse": "Tham gia khóa học công khai",
   "vocabLevelsDesc": "Đây là nơi các từ vựng sẽ xuất hiện sau khi bạn nâng cấp chúng!",
   "highlightVocabTooltip": "Đánh dấu các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc thực hành với chúng trong trò chuyện",
@@ -5747,10 +4864,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@joinCourseWithCode": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinPublicCourse": {
     "type": "String",
     "placeholders": {}
@@ -5759,7 +4872,1221 @@
     "type": "String",
     "placeholders": {}
   },
-  "@highlightVocabTooltip": {
+  "@languageLevelPreA1": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageLevelA1": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageLevelA2": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageLevelB1": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageLevelB2": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageLevelC1": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageLevelC2": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emptyChatSearch": "Không tìm thấy tin nhắn trực tiếp hoặc trò chuyện nào. Hãy chắc chắn rằng bạn đã đánh vần đúng tìm kiếm.",
+  "activityAnalyticsTooltipBody": "Đây là các hoạt động đã lưu của bạn để xem xét và thực hành.",
+  "numSavedActivities": "Số lượng hoạt động đã lưu",
+  "saveActivityTitle": "Lưu hoạt động",
+  "saveActivityDesc": "Làm tốt lắm! Lưu hoạt động này để xem xét và thực hành sau.",
+  "levelInfoTooltip": "Tại đây bạn có thể thấy tất cả các điểm bạn đã kiếm được và cách thức!",
+  "alreadyInCourseWithID": "Bạn đã tham gia một khóa học với kế hoạch này. Bạn có muốn tạo một khóa học với cùng kế hoạch, hay đi đến khóa học hiện có?",
+  "goToExistingCourse": "Đi đến khóa học hiện có",
+  "emojiView": "Chế độ xem biểu tượng cảm xúc",
+  "feedbackDialogDesc": "Tôi cũng mắc lỗi! Có điều gì để giúp tôi cải thiện không?",
+  "contactHasBeenInvitedToTheCourse": "Liên hệ đã được mời tham gia khóa học",
+  "activityStatsButtonTooltip": "Thông tin hoạt động",
+  "allow": "Cho phép",
+  "deny": "Từ chối",
+  "enabledRenewal": "Kích hoạt gia hạn đăng ký",
+  "subscriptionEndsOn": "Đăng ký kết thúc vào",
+  "subscriptionRenewsOn": "Đăng ký gia hạn vào",
+  "waitForSubscriptionChanges": "Các thay đổi đối với đăng ký của bạn có thể mất một chút thời gian để phản ánh trong ứng dụng.",
+  "subscribeReadingAssistance": "Đăng ký để mở khóa công cụ nhắn tin",
+  "aceDisplayName": "Achinese",
+  "achDisplayName": "Acoli",
+  "afDisplayName": "Afrikaans",
+  "akDisplayName": "Akan",
+  "alzDisplayName": "Alur",
+  "amDisplayName": "Amharic",
+  "arDisplayName": "Tiếng Ả Rập",
+  "asDisplayName": "Assamese",
+  "awaDisplayName": "Awadhi",
+  "ayDisplayName": "Aymara",
+  "azDisplayName": "Azerbaijani",
+  "baDisplayName": "Bashkir",
+  "banDisplayName": "Người Bali",
+  "bbcDisplayName": "Batak Toba",
+  "beDisplayName": "Người Belarus",
+  "bemDisplayName": "Bemba",
+  "bewDisplayName": "Betawi",
+  "bgDisplayName": "Người Bulgaria",
+  "bhoDisplayName": "Bhojpuri",
+  "bikDisplayName": "Bikol",
+  "bmDisplayName": "Bambara",
+  "bnDisplayName": "Bengali",
+  "bnBDDisplayName": "Bengali (Bangladesh)",
+  "bnINDisplayName": "Bengali (Ấn Độ)",
+  "brDisplayName": "Breton",
+  "bsDisplayName": "Bosnia",
+  "btsDisplayName": "Batak Simalungun",
+  "btxDisplayName": "Batak Karo",
+  "buaDisplayName": "Buriat",
+  "caDisplayName": "Catalan",
+  "cebDisplayName": "Cebuano",
+  "cggDisplayName": "Chiga",
+  "chmDisplayName": "Mari",
+  "ckbDisplayName": "Người Kurd Trung",
+  "cnhDisplayName": "Hakha Chin",
+  "coDisplayName": "Corsican",
+  "crhDisplayName": "Tiếng Thổ Nhĩ Kỳ Krym",
+  "crsDisplayName": "Tiếng Pháp Creole Seselwa",
+  "csDisplayName": "Tiếng Séc",
+  "cvDisplayName": "Chuvash",
+  "cyDisplayName": "Tiếng Wales",
+  "daDisplayName": "Đan Mạch",
+  "deDisplayName": "Đức",
+  "dinDisplayName": "Dinka",
+  "doiDisplayName": "Dogri",
+  "dovDisplayName": "Dombe",
+  "dzDisplayName": "Dzongkha",
+  "eeDisplayName": "Ewe",
+  "enDisplayName": "Tiếng Anh",
+  "enAUDisplayName": "Tiếng Anh (Úc)",
+  "enGBDisplayName": "Tiếng Anh (Vương quốc Anh)",
+  "enINDisplayName": "Tiếng Anh (Ấn Độ)",
+  "enUSDisplayName": "Tiếng Anh (Mỹ)",
+  "eoDisplayName": "Esperanto",
+  "esDisplayName": "Tiếng Tây Ban Nha",
+  "esESDisplayName": "Tiếng Tây Ban Nha (Tây Ban Nha)",
+  "esMXDisplayName": "Tiếng Tây Ban Nha (Mexico)",
+  "euDisplayName": "Basque",
+  "faDisplayName": "Tiếng Ba Tư",
+  "ffDisplayName": "Fulah",
+  "fiDisplayName": "Tiếng Phần Lan",
+  "filDisplayName": "Tiếng Filipino",
+  "fjDisplayName": "Tiếng Fijian",
+  "foDisplayName": "Tiếng Faroese",
+  "frDisplayName": "Tiếng Pháp",
+  "frCADisplayName": "Tiếng Pháp (Canada)",
+  "frFRDisplayName": "Tiếng Pháp (Pháp)",
+  "fyDisplayName": "Tiếng Frisian phương Tây",
+  "gaDisplayName": "Tiếng Ireland",
+  "gaaDisplayName": "Tiếng Ga",
+  "gdDisplayName": "Tiếng Gaelic Scotland",
+  "glDisplayName": "Galician",
+  "gnDisplayName": "Guarani",
+  "gomDisplayName": "Goan Konkani",
+  "guDisplayName": "Gujarati",
+  "haDisplayName": "Hausa",
+  "hawDisplayName": "Hawaiian",
+  "heDisplayName": "Hebrew",
+  "hiDisplayName": "Hindi",
+  "hilDisplayName": "Hiligaynon",
+  "hmnDisplayName": "Hmong",
+  "hneDisplayName": "Chhattisgarhi",
+  "hrDisplayName": "Tiếng Croatia",
+  "hrxDisplayName": "Hunsrik",
+  "htDisplayName": "Tiếng Creole Haiti",
+  "huDisplayName": "Tiếng Hungary",
+  "hyDisplayName": "Tiếng Armenia",
+  "idDisplayName": "Tiếng Indonesia",
+  "igDisplayName": "Tiếng Igbo",
+  "iloDisplayName": "Tiếng Iloko",
+  "isDisplayName": "Tiếng Iceland",
+  "itDisplayName": "Tiếng Ý",
+  "jaDisplayName": "Tiếng Nhật",
+  "jvDisplayName": "Tiếng Java",
+  "kaDisplayName": "Tiếng Gruzia",
+  "kkDisplayName": "Tiếng Kazakh",
+  "kmDisplayName": "Tiếng Khmer",
+  "knDisplayName": "Tiếng Kannada",
+  "koDisplayName": "Tiếng Hàn",
+  "kokDisplayName": "Tiếng Konkani",
+  "kriDisplayName": "Tiếng Krio",
+  "ksDisplayName": "Kashmiri",
+  "ktuDisplayName": "Kituba (Cộng hòa Dân chủ Congo)",
+  "kuDisplayName": "Kurdish",
+  "kyDisplayName": "Kyrgyz",
+  "laDisplayName": "Latin",
+  "lbDisplayName": "Luxembourgish",
+  "lgDisplayName": "Ganda",
+  "liDisplayName": "Limburgish",
+  "lijDisplayName": "Ligurian",
+  "lmoDisplayName": "Lombard",
+  "lnDisplayName": "Lingala",
+  "loDisplayName": "Lào",
+  "ltDisplayName": "Tiếng Litva",
+  "ltgDisplayName": "Tiếng Latgalian",
+  "luoDisplayName": "Luo (Kenya và Tanzania)",
+  "lusDisplayName": "Mizo",
+  "lvDisplayName": "Tiếng Latvia",
+  "maiDisplayName": "Maithili",
+  "makDisplayName": "Makasar",
+  "mgDisplayName": "Tiếng Malagasy",
+  "miDisplayName": "Māori",
+  "minDisplayName": "Minangkabau",
+  "mkDisplayName": "Macedonian",
+  "mlDisplayName": "Malayalam",
+  "mnDisplayName": "Mông Cổ",
+  "mniDisplayName": "Manipuri",
+  "mrDisplayName": "Marathi",
+  "msDisplayName": "Malaixia",
+  "msArabDisplayName": "Malaixia (Ả Rập)",
+  "msMYDisplayName": "Malaixia (Malaysia)",
+  "mtDisplayName": "Maltese",
+  "mwrDisplayName": "Marwari",
+  "myDisplayName": "Burmese",
+  "nanDisplayName": "Min Nan",
+  "nbDisplayName": "Na Uy (Bokmål)",
+  "neDisplayName": "Nepali",
+  "newDisplayName": "Newari",
+  "nlDisplayName": "Hà Lan",
+  "nlBEDisplayName": "Flemish",
+  "noDisplayName": "Na Uy",
+  "nrDisplayName": "Nam Ndebele",
+  "nsoDisplayName": "Sotho Bắc",
+  "nusDisplayName": "Nuer",
+  "nyDisplayName": "Nyanja",
+  "ocDisplayName": "Occitan",
+  "omDisplayName": "Oromo",
+  "orDisplayName": "Odia",
+  "paDisplayName": "Punjabi",
+  "paArabDisplayName": "Punjabi (Shahmukhi)",
+  "paINDisplayName": "Punjabi (Gurmukhi)",
+  "pagDisplayName": "Pangasinan",
+  "pamDisplayName": "Pampanga",
+  "papDisplayName": "Papiamento",
+  "plDisplayName": "Tiếng Ba Lan",
+  "psDisplayName": "Tiếng Pashto",
+  "ptDisplayName": "Tiếng Bồ Đào Nha",
+  "ptBRDisplayName": "Tiếng Bồ Đào Nha (Brazil)",
+  "ptPTDisplayName": "Tiếng Bồ Đào Nha (Bồ Đào Nha)",
+  "quDisplayName": "Tiếng Quechua",
+  "rajDisplayName": "Tiếng Rajasthan",
+  "rnDisplayName": "Rundi",
+  "roDisplayName": "Tiếng Romania",
+  "roMDDisplayName": "Tiếng Moldova",
+  "romDisplayName": "Tiếng Romani",
+  "ruDisplayName": "Tiếng Nga",
+  "rwDisplayName": "Tiếng Kinyarwanda",
+  "saDisplayName": "Tiếng Sanskrit",
+  "satDisplayName": "Tiếng Santali",
+  "scnDisplayName": "Tiếng Sicilian",
+  "sdDisplayName": "Tiếng Sindhi",
+  "sgDisplayName": "Sango",
+  "shnDisplayName": "Shan",
+  "siDisplayName": "Sinhala",
+  "skDisplayName": "Slovak",
+  "slDisplayName": "Slovenian",
+  "smDisplayName": "Samoan",
+  "snDisplayName": "Shona",
+  "soDisplayName": "Somali",
+  "sqDisplayName": "Albanian",
+  "srDisplayName": "Serbian",
+  "srMEDisplayName": "Montenegro",
+  "ssDisplayName": "Swati",
+  "stDisplayName": "Sotho miền Nam",
+  "suDisplayName": "Sundanese",
+  "svDisplayName": "Thụy Điển",
+  "swDisplayName": "Swahili",
+  "szlDisplayName": "Silesian",
+  "taDisplayName": "Tamil",
+  "teDisplayName": "Telugu",
+  "tetDisplayName": "Tetum",
+  "tgDisplayName": "Tajik",
+  "thDisplayName": "Thái",
+  "tiDisplayName": "Tigrinya",
+  "tkDisplayName": "Turkmen",
+  "tlDisplayName": "Tagalog",
+  "tnDisplayName": "Tswana",
+  "trDisplayName": "Thổ Nhĩ Kỳ",
+  "tsDisplayName": "Tsonga",
+  "ttDisplayName": "Tatar",
+  "ugDisplayName": "Uyghur",
+  "ukDisplayName": "Tiếng Ukraina",
+  "urDisplayName": "Tiếng Urdu",
+  "urINDisplayName": "Tiếng Urdu (Ấn Độ)",
+  "urPKDisplayName": "Tiếng Urdu (Pakistan)",
+  "uzDisplayName": "Tiếng Uzbek",
+  "viDisplayName": "Tiếng Việt",
+  "wuuDisplayName": "Tiếng Wu",
+  "xhDisplayName": "Tiếng Xhosa",
+  "yiDisplayName": "Tiếng Yiddish",
+  "yoDisplayName": "Tiếng Yoruba",
+  "yuaDisplayName": "Yucateco",
+  "yueDisplayName": "Tiếng Quảng Đông",
+  "yueCNDisplayName": "Tiếng Quảng Đông (Trung Quốc)",
+  "yueHKDisplayName": "Tiếng Quảng Đông (Hồng Kông)",
+  "zhDisplayName": "Tiếng Trung",
+  "zhCNDisplayName": "Tiếng Trung (Giản thể)",
+  "zhTWDisplayName": "Tiếng Trung (Phồn thể)",
+  "zuDisplayName": "Tiếng Zulu",
+  "@emptyChatSearch": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsTooltipBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@numSavedActivities": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saveActivityDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@levelInfoTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alreadyInCourseWithID": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@goToExistingCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@emojiView": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@contactHasBeenInvitedToTheCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityStatsButtonTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@allow": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deny": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enabledRenewal": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionEndsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscriptionRenewsOn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@waitForSubscriptionChanges": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@subscribeReadingAssistance": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@aceDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@achDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@afDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@akDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@alzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@amDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@arDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@asDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@awaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ayDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@azDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@baDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@banDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bbcDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@beDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bemDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bewDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bhoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bikDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnBDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bnINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@brDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@bsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@btxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@buaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@caDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cebDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cggDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ckbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cnhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@coDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@crsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@csDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@cyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@daDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dinDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@doiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dovDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@dzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eeDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enAUDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enGBDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enUSDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@eoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esESDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@esMXDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@euDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@faDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ffDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@filDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fjDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@foDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frCADisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@frFRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gaaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@glDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gomDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@guDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@haDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hawDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@heDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hilDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hmnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hneDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hrxDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@htDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@huDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@hyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@idDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@igDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@iloDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@isDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@itDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@jvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kmDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@knDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@koDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kokDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kriDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ksDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ktuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@kyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@laDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@liDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lijDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lmoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@loDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ltgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@luoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@lvDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@maiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@makDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@miDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@minDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mniDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@msMYDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mtDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mwrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@myDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nanDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nbDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@neDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nlBEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nrDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nsoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nusDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@nyDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ocDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@omDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@orDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paArabDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@paINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pagDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pamDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@papDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@plDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@psDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptBRDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ptPTDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rajDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@roMDDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@romDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ruDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@rwDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@saDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@satDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@scnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sdDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@siDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@skDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@slDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@smDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@snDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@soDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@sqDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@srMEDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@stDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@suDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@svDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@swDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@szlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@taDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@teDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tetDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tgDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@thDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tkDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tlDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tnDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@trDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tsDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ttDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ugDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ukDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urINDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@urPKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@uzDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@viDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@wuuDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@xhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yiDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yoDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yuaDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@yueHKDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhCNDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zhTWDisplayName": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@zuDisplayName": {
     "type": "String",
     "placeholders": {}
   },
@@ -5826,6 +6153,7 @@
   "notStartedActivitiesTitle": "Phiên mở ({num})",
   "inProgressActivitiesTitle": "Đang diễn ra ({num})",
   "completedActivitiesTitle": "Đã hoàn thành ({num})",
+  "pickDifferentActivity": "Chọn một hoạt động khác",
   "inOngoingActivity": "Bạn có một hoạt động đang diễn ra!",
   "@notStartedActivitiesTitle": {
     "type": "String",
@@ -5851,7 +6179,125 @@
       }
     }
   },
+  "@pickDifferentActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "messageLanguageMismatchMessage": "Ngôn ngữ mục tiêu của bạn không khớp với thông điệp này. Cập nhật ngôn ngữ mục tiêu của bạn?",
+  "@messageLanguageMismatchMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "courseParticipantTooltip": "Đây là tất cả mọi người trong khóa học này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
+  "@courseParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "blockLemmaConfirmation": "Từ vựng này sẽ bị xóa vĩnh viễn khỏi phân tích của bạn",
+  "woman": "Phụ nữ",
+  "man": "Nam",
+  "otherGender": "Khác",
+  "unselectedGender": "Chọn một tùy chọn giới tính",
+  "gender": "Giới tính",
+  "chatParticipantTooltip": "Đây là tất cả mọi người trong cuộc trò chuyện này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
+  "@blockLemmaConfirmation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@woman": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@man": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@otherGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unselectedGender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@gender": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chatParticipantTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
   "@inOngoingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "modeDisabled": "Công cụ học tập bị vô hiệu hóa cho các tin nhắn không phải bằng ngôn ngữ mục tiêu của bạn.",
+  "vocabEmoji": "Biểu tượng từ vựng",
+  "@modeDisabled": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabEmoji": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "requestRegeneration": "Yêu cầu tái tạo",
+  "optionalRegenerateReason": "(Tùy chọn) Lý do",
+  "@requestRegeneration": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalRegenerateReason": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "emojiSelectedSnackbar": "Bạn đã đặt biểu tượng cảm xúc cho {lemma}! Chúng tôi sẽ sử dụng biểu tượng cảm xúc này để đại diện cho từ trong các hoạt động thực hành trong tương lai.",
+  "@emojiSelectedSnackbar": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  },
+  "ssoDialogTitle": "Đang chờ hoàn tất đăng nhập",
+  "ssoDialogDesc": "Chúng tôi đã mở một tab mới để bạn có thể đăng nhập một cách an toàn.",
+  "ssoDialogHelpText": "🤔 Nếu bạn không thấy tab mới, vui lòng kiểm tra trình chặn popup của bạn.",
+  "@ssoDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@ssoDialogHelpText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "disableLanguageToolsTitle": "Vô hiệu hóa công cụ ngôn ngữ",
+  "disableLanguageToolsDesc": "Bạn có muốn vô hiệu hóa trợ giúp ngôn ngữ tự động không?",
+  "@disableLanguageToolsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@disableLanguageToolsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "recordingPermissionDenied": "Quyền truy cập bị từ chối. Bật quyền ghi âm để ghi lại tin nhắn âm thanh.",
+  "genericWebRecordingError": "Có điều gì đó không đúng. Chúng tôi khuyên bạn nên sử dụng trình duyệt Chrome khi ghi lại tin nhắn.",
+  "@recordingPermissionDenied": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@genericWebRecordingError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "screenSizeWarning": "Để có trải nghiệm tốt nhất khi sử dụng ứng dụng này, vui lòng mở rộng kích thước màn hình của bạn.",
+  "@screenSizeWarning": {
     "type": "String",
     "placeholders": {}
   },
@@ -5862,6 +6308,91 @@
     "placeholders": {}
   },
   "@activitiesToUnlockTopicDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorLMDesc": "Thực hành định nghĩa từ vựng đúng",
+  "constructUseIncLMDesc": "Thực hành định nghĩa từ vựng sai",
+  "constructUseCorLADesc": "Thực hành âm thanh từ vựng đúng",
+  "constructUseIncLADesc": "Thực hành âm thanh từ vựng sai",
+  "constructUseBonus": "Thưởng trong quá trình thực hành từ vựng",
+  "practiceVocab": "Thực hành từ vựng",
+  "selectMeaning": "Chọn nghĩa",
+  "selectAudio": "Chọn âm thanh phù hợp",
+  "congratulations": "Chúc mừng!",
+  "anotherRound": "Một vòng nữa",
+  "noActivityRequest": "Không có yêu cầu hoạt động nào hiện tại.",
+  "quit": "Thoát",
+  "congratulationsYouveCompletedPractice": "Chúc mừng! Bạn đã hoàn thành buổi thực hành.",
+  "mustHave10Words": "Bạn phải có ít nhất 10 từ vựng để thực hành. Hãy thử nói chuyện với một người bạn hoặc Pangea Bot để khám phá thêm!",
+  "botSettings": "Cài đặt Bot",
+  "activitySettingsOverrideWarning": "Ngôn ngữ và cấp độ ngôn ngữ được xác định bởi kế hoạch hoạt động",
+  "voice": "Giọng nói",
+  "@constructUseCorLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLMDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncLADesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseBonus": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceVocab": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectMeaning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAudio": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulations": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@anotherRound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noActivityRequest": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@quit": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@congratulationsYouveCompletedPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@mustHave10Words": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botSettings": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activitySettingsOverrideWarning": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@voice": {
     "type": "String",
     "placeholders": {}
   }

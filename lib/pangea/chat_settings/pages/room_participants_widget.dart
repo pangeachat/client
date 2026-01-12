@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
+import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
@@ -33,41 +33,30 @@ class RoomParticipantsSection extends StatelessWidget {
         final filteredParticipants = participantsLoader.sortedParticipants;
         final originalLeaders = filteredParticipants.take(3).toList();
         filteredParticipants.sort((a, b) {
-          // always sort bot to the end
+          // Always put bot at the very end
           final aIsBot = a.id == BotName.byEnvironment;
           final bIsBot = b.id == BotName.byEnvironment;
-          if (aIsBot && !bIsBot) {
-            return 1;
-          } else if (bIsBot && !aIsBot) {
-            return -1;
+          if (aIsBot != bIsBot) {
+            return aIsBot ? 1 : -1;
           }
 
-          // put knocking users at the front
-          if (a.membership == Membership.knock &&
-              b.membership != Membership.knock) {
-            return -1;
-          } else if (b.membership == Membership.knock &&
-              a.membership != Membership.knock) {
-            return 1;
+          int rankOf(p) {
+            // Admins first
+            if (p.powerLevel == 100) return 0;
+
+            switch (p.membership) {
+              case Membership.join:
+                return 1;
+              case Membership.invite:
+                return 2;
+              case Membership.knock:
+                return 3;
+              default:
+                return 4;
+            }
           }
 
-          // then invited users
-          if (a.membership == Membership.invite &&
-              b.membership != Membership.invite) {
-            return -1;
-          } else if (b.membership == Membership.invite &&
-              a.membership != Membership.invite) {
-            return 1;
-          }
-
-          // then admins
-          if (a.powerLevel == 100 && b.powerLevel != 100) {
-            return -1;
-          } else if (b.powerLevel == 100 && a.powerLevel != 100) {
-            return 1;
-          }
-
-          return 0;
+          return rankOf(a).compareTo(rankOf(b));
         });
 
         return Wrap(
@@ -80,8 +69,10 @@ class RoomParticipantsSection extends StatelessWidget {
                   ? MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
-                        onTap: () => context.go(
-                          "/rooms/${room.id}/details/invite",
+                        onTap: () => NavigationUtil.goToSpaceRoute(
+                          room.id,
+                          ['details', 'invite'],
+                          context,
                         ),
                         child: HoverBuilder(
                           builder: (context, hovered) {
@@ -95,8 +86,9 @@ class RoomParticipantsSection extends StatelessWidget {
                                     : Colors.transparent,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 12.0),
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 12.0,
+                              ),
                               width: _width,
                               child: Column(
                                 spacing: 4.0,
@@ -185,6 +177,7 @@ class RoomParticipantsSection extends StatelessWidget {
                                   onTap: () => showMemberActionsPopupMenu(
                                     context: context,
                                     user: user,
+                                    room: room,
                                   ),
                                   child: Center(
                                     child: Avatar(

@@ -3,10 +3,17 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
+import 'package:fluffychat/pangea/choreographer/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/igc/pangea_match_state_model.dart';
+import 'package:fluffychat/pangea/choreographer/igc/span_card.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
+import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
@@ -50,50 +57,45 @@ class OverlayUtil {
       }
 
       final OverlayEntry entry = OverlayEntry(
-        builder: (context) => AnimatedContainer(
-          duration: FluffyThemes.animationDuration,
-          curve: FluffyThemes.animationCurve,
-          child: Stack(
-            children: [
-              if (backDropToDismiss)
-                IgnorePointer(
-                  ignoring: ignorePointer,
-                  child: TransparentBackdrop(
-                    backgroundColor: backgroundColor,
-                    onDismiss: onDismiss,
-                    blurBackground: blurBackground,
-                  ),
+        builder: (context) => Stack(
+          children: [
+            if (backDropToDismiss)
+              IgnorePointer(
+                ignoring: ignorePointer,
+                child: TransparentBackdrop(
+                  backgroundColor: backgroundColor,
+                  onDismiss: onDismiss,
+                  blurBackground: blurBackground,
                 ),
-              Positioned(
-                top: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                right: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                left: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
-                child: (position != OverlayPositionEnum.transform)
-                    ? child
-                    : CompositedTransformFollower(
-                        targetAnchor: targetAnchor ?? Alignment.topCenter,
-                        followerAnchor:
-                            followerAnchor ?? Alignment.bottomCenter,
-                        link: MatrixState.pAnyState
-                            .layerLinkAndKey(transformTargetId!)
-                            .link,
-                        showWhenUnlinked: false,
-                        offset: offset ?? Offset.zero,
-                        child: child,
-                      ),
               ),
-            ],
-          ),
+            Positioned(
+              top: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              right: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              left: (position == OverlayPositionEnum.centered ||
+                      position == OverlayPositionEnum.top)
+                  ? 0
+                  : null,
+              bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
+              child: (position != OverlayPositionEnum.transform)
+                  ? child
+                  : CompositedTransformFollower(
+                      targetAnchor: targetAnchor ?? Alignment.topCenter,
+                      followerAnchor: followerAnchor ?? Alignment.bottomCenter,
+                      link: MatrixState.pAnyState
+                          .layerLinkAndKey(transformTargetId!)
+                          .link,
+                      showWhenUnlinked: false,
+                      offset: offset ?? Offset.zero,
+                      child: child,
+                    ),
+            ),
+          ],
         ),
       );
 
@@ -129,6 +131,8 @@ class OverlayUtil {
     bool addBorder = true,
     VoidCallback? onDismiss,
     bool ignorePointer = false,
+    Alignment? targetAnchor,
+    Alignment? followerAnchor,
   }) {
     try {
       final LayerLinkAndKey layerLinkAndKey =
@@ -155,14 +159,11 @@ class OverlayUtil {
         final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
             (transformTargetSize.width / 2);
 
-        final verticalMidpoint =
-            transformTargetOffset.dy + (transformTargetSize.height / 2);
-
         final halfMaxWidth = maxWidth / 2;
         final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
         final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
             (MediaQuery.of(context).size.width - columnWidth - 10);
-        hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
+        hasTopOverflow = maxHeight + kToolbarHeight > transformTargetOffset.dy;
 
         double xOffset = 0;
 
@@ -200,10 +201,10 @@ class OverlayUtil {
         closePrevOverlay: closePrevOverlay,
         offset: offset,
         overlayKey: overlayKey,
-        targetAnchor:
-            hasTopOverflow ? Alignment.bottomCenter : Alignment.topCenter,
-        followerAnchor:
-            hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter,
+        targetAnchor: targetAnchor ??
+            (hasTopOverflow ? Alignment.bottomCenter : Alignment.topCenter),
+        followerAnchor: followerAnchor ??
+            (hasTopOverflow ? Alignment.topCenter : Alignment.bottomCenter),
         onDismiss: onDismiss,
         ignorePointer: ignorePointer,
       );
@@ -215,6 +216,32 @@ class OverlayUtil {
         data: {},
       );
     }
+  }
+
+  static void showIGCMatch(
+    PangeaMatchState match,
+    Choreographer choreographer,
+    BuildContext context,
+    VoidCallback showNextMatch,
+  ) {
+    MatrixState.pAnyState.closeAllOverlays();
+    showPositionedCard(
+      overlayKey:
+          "span_card_overlay_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
+      context: context,
+      cardToShow: SpanCard(
+        match: match,
+        choreographer: choreographer,
+        showNextMatch: showNextMatch,
+      ),
+      maxHeight: 325,
+      maxWidth: 325,
+      transformTargetId: ChoreoConstants.inputTransformTargetKey,
+      ignorePointer: true,
+      isScrollable: false,
+      targetAnchor: Alignment.topCenter,
+      followerAnchor: Alignment.bottomCenter,
+    );
   }
 
   static void showTutorialOverlay(
@@ -248,6 +275,62 @@ class OverlayUtil {
       overlayKey: overlayKey,
       canPop: false,
       blockOverlay: true,
+    );
+  }
+
+  static void showStarRainOverlay(BuildContext context) {
+    showOverlay(
+      context: context,
+      position: OverlayPositionEnum.centered,
+      closePrevOverlay: false,
+      canPop: false,
+      overlayKey: "star_rain_level_up",
+      child: const StarRainWidget(
+        overlayKey: "star_rain_level_up",
+      ),
+    );
+  }
+
+  static void showPointsGained(
+    String targetId,
+    int points,
+    BuildContext context,
+  ) {
+    showOverlay(
+      overlayKey: "${targetId}_points",
+      followerAnchor: Alignment.bottomCenter,
+      targetAnchor: Alignment.bottomCenter,
+      context: context,
+      child: PointsGainedAnimation(
+        points: points,
+        targetID: targetId,
+      ),
+      transformTargetId: targetId,
+      closePrevOverlay: false,
+      backDropToDismiss: false,
+      ignorePointer: true,
+    );
+  }
+
+  static void showLanguageMismatchPopup({
+    required BuildContext context,
+    required String targetId,
+    required String message,
+    required String targetLanguage,
+    required VoidCallback onConfirm,
+  }) {
+    showPositionedCard(
+      context: context,
+      cardToShow: LanguageMismatchPopup(
+        message: message,
+        overlayId: 'language_mismatch_popup',
+        onConfirm: onConfirm,
+        targetLanguage: targetLanguage,
+      ),
+      maxHeight: 325,
+      maxWidth: 325,
+      transformTargetId: targetId,
+      overlayKey: 'language_mismatch_popup',
     );
   }
 }

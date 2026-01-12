@@ -1,6 +1,7 @@
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
 class LemmaInfoRequest {
@@ -8,14 +9,16 @@ class LemmaInfoRequest {
   final String partOfSpeech;
   final String lemmaLang;
   final String userL1;
+  final Map<String, dynamic> messageInfo;
 
-  List<ContentFeedback<LemmaInfoResponse>> feedback;
+  List<LemmaInfoResponse> feedback;
 
   LemmaInfoRequest({
     required String partOfSpeech,
     required String lemmaLang,
     required this.userL1,
     required this.lemma,
+    required this.messageInfo,
     this.feedback = const [],
   })  : partOfSpeech = partOfSpeech.toLowerCase(),
         lemmaLang = lemmaLang.toLowerCase();
@@ -27,6 +30,7 @@ class LemmaInfoRequest {
       'lemma_lang': lemmaLang,
       'user_l1': userL1,
       'feedback': feedback.map((e) => e.toJson()).toList(),
+      'message_info': messageInfo,
     };
   }
 
@@ -37,11 +41,15 @@ class LemmaInfoRequest {
           runtimeType == other.runtimeType &&
           lemma == other.lemma &&
           partOfSpeech == other.partOfSpeech &&
-          feedback == other.feedback;
+          const ListEquality().equals(feedback, other.feedback) &&
+          userL1 == other.userL1;
 
   @override
   int get hashCode =>
-      lemma.hashCode ^ partOfSpeech.hashCode ^ feedback.hashCode;
+      lemma.hashCode ^
+      partOfSpeech.hashCode ^
+      const ListEquality().hash(feedback) ^
+      userL1.hashCode;
 
   String get storageKey {
     return 'l:$lemma,p:$partOfSpeech,lang:$lemmaLang,l1:$userL1';

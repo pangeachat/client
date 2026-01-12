@@ -7,10 +7,10 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/languages/language_model.dart';
+import 'package:fluffychat/pangea/space_analytics/download_space_analytics_dialog.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_download_enum.dart';
-import 'package:fluffychat/pangea/spaces/widgets/download_space_analytics_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
@@ -45,6 +45,8 @@ class SpaceAnalyticsView extends StatelessWidget {
                         onPressed: controller.requestAllAnalytics,
                         mini: mini,
                         hideLabel: false,
+                        //disable if only one person (self) in course
+                        enabled: controller.sortedDownloads.length > 1,
                       ),
                       if (kIsWeb &&
                           controller.room != null &&
@@ -107,9 +109,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                         ? controller.selectedLanguage!.langCode
                                             .toUpperCase()
                                         : controller.selectedLanguage!
-                                                .getDisplayName(context) ??
-                                            controller
-                                                .selectedLanguage!.displayName,
+                                            .getDisplayName(context),
                                     style: TextStyle(
                                       color:
                                           theme.colorScheme.onPrimaryContainer,
@@ -130,8 +130,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                 (item) => DropdownMenuItem(
                                   value: item,
                                   child: DropdownTextButton(
-                                    text: item.getDisplayName(context) ??
-                                        item.displayName,
+                                    text: item.getDisplayName(context),
                                     isSelected: false,
                                   ),
                                 ),
@@ -302,6 +301,7 @@ class _MenuButton extends StatelessWidget {
   final String text;
   final IconData icon;
   final VoidCallback onPressed;
+  final bool enabled;
 
   final bool mini;
   final bool? hideLabel;
@@ -311,6 +311,7 @@ class _MenuButton extends StatelessWidget {
     required this.icon,
     required this.onPressed,
     this.mini = false,
+    this.enabled = true,
     this.hideLabel,
   });
 
@@ -320,43 +321,54 @@ class _MenuButton extends StatelessWidget {
 
     final height = !mini ? 36.0 : 26.0;
 
-    return InkWell(
-      borderRadius: BorderRadius.circular(40),
-      onTap: onPressed,
-      child: Container(
-        height: height,
-        width: hideLabel ?? mini ? height : null,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(40),
-        ),
-        padding: EdgeInsets.symmetric(
-          horizontal: !mini ? 8.0 : 4.0,
-          vertical: 4.0,
-        ),
-        child: hideLabel ?? mini
-            ? Icon(
-                icon,
-                color: theme.colorScheme.onPrimaryContainer,
-                size: !mini ? 24.0 : 14.0,
-              )
-            : Row(
-                spacing: 4.0,
-                children: [
-                  Icon(
-                    icon,
-                    color: theme.colorScheme.onPrimaryContainer,
-                    size: !mini ? 24.0 : 14.0,
-                  ),
-                  Text(
-                    text,
-                    style: TextStyle(
-                      color: theme.colorScheme.onPrimaryContainer,
-                      fontSize: !mini ? 16.0 : 12.0,
-                    ),
-                  ),
-                ],
+    return Opacity(
+      opacity: enabled ? 1 : 0.3,
+      child: MouseRegion(
+        cursor: enabled ? SystemMouseCursors.click : MouseCursor.defer,
+        child: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(40),
+            onTap: enabled ? onPressed : null,
+            child: Container(
+              height: height,
+              width: hideLabel ?? mini ? height : null,
+              decoration: BoxDecoration(
+                color: enabled
+                    ? theme.colorScheme.primaryContainer
+                    : theme.disabledColor,
+                borderRadius: BorderRadius.circular(40),
               ),
+              padding: EdgeInsets.symmetric(
+                horizontal: !mini ? 8.0 : 4.0,
+                vertical: 4.0,
+              ),
+              child: hideLabel ?? mini
+                  ? Icon(
+                      icon,
+                      color: theme.colorScheme.onPrimaryContainer,
+                      size: !mini ? 24.0 : 14.0,
+                    )
+                  : Row(
+                      spacing: 4.0,
+                      children: [
+                        Icon(
+                          icon,
+                          color: theme.colorScheme.onPrimaryContainer,
+                          size: !mini ? 24.0 : 14.0,
+                        ),
+                        Text(
+                          text,
+                          style: TextStyle(
+                            color: theme.colorScheme.onPrimaryContainer,
+                            fontSize: !mini ? 16.0 : 12.0,
+                          ),
+                        ),
+                      ],
+                    ),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -375,22 +387,30 @@ class _TableHeaderCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 6.0,
-        horizontal: 8.0,
-      ),
-      child: Column(
-        spacing: 10.0,
-        children: [
-          Icon(icon, size: 22.0),
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: !mini ? 12.0 : 8.0,
-            ),
+    return TooltipVisibility(
+      visible: mini,
+      child: Tooltip(
+        message: text,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: 6.0,
+            horizontal: 8.0,
           ),
-        ],
+          child: Column(
+            spacing: 10.0,
+            children: [
+              Icon(icon, size: 22.0),
+              mini
+                  ? const SizedBox.shrink()
+                  : Text(
+                      text,
+                      style: const TextStyle(
+                        fontSize: 12.0,
+                      ),
+                    ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -493,24 +513,31 @@ class _RequestButton extends StatelessWidget {
         child: Opacity(
           opacity: status.enabled ? 0.9 : 0.3,
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            padding: EdgeInsets.symmetric(
+              horizontal: mini ? 4.0 : 8.0,
+              vertical: 4.0,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(40),
               color: status.backgroundColor(context),
             ),
-            child: Row(
-              spacing: 8.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  status.icon,
-                  size: !mini ? 12.0 : 8.0,
-                ),
-                Text(
-                  status.label(context),
-                  style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
-                ),
-              ],
+            child: FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Row(
+                spacing: mini ? 2.0 : 8.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (status.icon != null)
+                    Icon(
+                      status.icon,
+                      size: !mini ? 12.0 : 8.0,
+                    ),
+                  Text(
+                    status.label(context),
+                    style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

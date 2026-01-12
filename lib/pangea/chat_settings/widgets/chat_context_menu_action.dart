@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -161,7 +162,7 @@ void chatContextMenuAction(
             ],
           ),
         ),
-      if (!room.isActivitySession || room.ownRole == null)
+      if (!room.isActivitySession || !room.isActivityStarted)
         PopupMenuItem(
           value: ChatContextAction.leave,
           child: Row(
@@ -248,9 +249,10 @@ void chatContextMenuAction(
       );
       if (confirmed != OkCancelResult.ok) return;
 
+      final isSpace = room.isSpace;
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: room.isSpace ? room.leaveSpace : room.leave,
+        future: isSpace ? room.leaveSpace : room.leave,
       );
 
       final r = room.client.getRoomById(room.id);
@@ -259,23 +261,15 @@ void chatContextMenuAction(
       }
 
       if (!resp.isError) {
-        outerContext.go(
-          room.courseParent != null
-              ? "/rooms/spaces/${room.courseParent!.id}/details"
-              : "/rooms",
-        );
+        isSpace
+            ? context.go('/rooms')
+            : NavigationUtil.goToSpaceRoute(null, [], context);
       }
 
       return;
     case ChatContextAction.delete:
       if (room.isSpace) {
-        final resp = await showDialog<bool?>(
-          context: context,
-          builder: (_) => DeleteSpaceDialog(space: room),
-        );
-        if (resp == true) {
-          context.go("/rooms");
-        }
+        await DeleteSpaceDialog.show(room, context);
       } else {
         final confirmed = await showOkCancelAlertDialog(
           context: context,
@@ -291,11 +285,7 @@ void chatContextMenuAction(
           future: room.delete,
         );
         if (!resp.isError) {
-          outerContext.go(
-            room.courseParent != null
-                ? "/rooms/spaces/${room.courseParent!.id}/details"
-                : "/rooms",
-          );
+          NavigationUtil.goToSpaceRoute(null, [], context);
         }
       }
       return;

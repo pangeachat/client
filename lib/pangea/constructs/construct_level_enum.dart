@@ -45,7 +45,7 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
     }
   }
 
-  String get svgURL {
+  String get _svgURL {
     switch (this) {
       case ConstructLevelEnum.seeds:
         return "${AppConfig.assetsBaseURL}/${AnalyticsConstants.seedSvgFileName}";
@@ -90,7 +90,7 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
   }
 
   Widget icon([double? size]) => CustomizedSvg(
-        svgUrl: svgURL,
+        svgUrl: _svgURL,
         colorReplacements: const {},
         errorIcon: Text(
           emoji,

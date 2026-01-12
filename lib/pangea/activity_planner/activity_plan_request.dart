@@ -1,6 +1,6 @@
 import 'package:fluffychat/pangea/activity_generator/media_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class ActivityPlanRequest {
   final String topic;
@@ -30,12 +30,12 @@ class ActivityPlanRequest {
   Map<String, dynamic> toJson() {
     return {
       ModelKey.activityRequestTopic: topic,
-      ModelKey.activityRequestMode: mode,
+      ModelKey.mode: mode,
       ModelKey.activityRequestObjective: objective,
       ModelKey.activityRequestMedia: media.string,
       ModelKey.activityRequestCefrLevel: cefrLevel.string,
       ModelKey.activityRequestLanguageOfInstructions: languageOfInstructions,
-      ModelKey.activityRequestTargetLanguage: targetLanguage,
+      ModelKey.targetLanguage: targetLanguage,
       ModelKey.activityRequestCount: count,
       ModelKey.activityRequestNumberOfParticipants: numberOfParticipants,
       ModelKey.activityPlanLocation: location,
@@ -45,17 +45,17 @@ class ActivityPlanRequest {
   factory ActivityPlanRequest.fromJson(Map<String, dynamic> json) =>
       ActivityPlanRequest(
         topic: json[ModelKey.activityRequestTopic],
-        mode: json[ModelKey.activityRequestMode],
+        mode: json[ModelKey.mode],
         objective: json[ModelKey.activityRequestObjective],
         media: MediaEnum.nan.fromString(json[ModelKey.activityRequestMedia]),
         cefrLevel: json[ModelKey.activityRequestCefrLevel] != null
-            ? LanguageLevelTypeEnumExtension.fromString(
+            ? LanguageLevelTypeEnum.fromString(
                 json[ModelKey.activityRequestCefrLevel],
               )
             : LanguageLevelTypeEnum.a1,
         languageOfInstructions:
             json[ModelKey.activityRequestLanguageOfInstructions],
-        targetLanguage: json[ModelKey.activityRequestTargetLanguage],
+        targetLanguage: json[ModelKey.targetLanguage],
         count: json[ModelKey.activityRequestCount],
         numberOfParticipants:
             json[ModelKey.activityRequestNumberOfParticipants],

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -7,6 +9,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/chat_details/chat_download_provider.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_room_details.dart';
@@ -14,10 +17,9 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/download/download_room_extension.dart';
-import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -51,24 +53,47 @@ class ChatDetails extends StatefulWidget {
 // #Pangea
 // class ChatDetailsController extends State<ChatDetails> {
 class ChatDetailsController extends State<ChatDetails>
-    with ActivitySummariesProvider, CoursePlanProvider {
+    with ActivitySummariesProvider, CoursePlanProvider, ChatDownloadProvider {
   bool loadingActivities = true;
   bool loadingCourseSummary = true;
+
+  // listen to language updates to refresh course info
+  StreamSubscription? _languageSubscription;
 
   @override
   void initState() {
     super.initState();
     _loadCourseInfo();
     _loadSummaries();
+
+    _languageSubscription = MatrixState
+        .pangeaController.userController.languageStream.stream
+        .listen((update) {
+      if (update.prevBaseLang != update.baseLang) {
+        _loadCourseInfo();
+      }
+    });
   }
 
   @override
   void didUpdateWidget(covariant ChatDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.roomId != widget.roomId) {
+    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    if (oldWidget.roomId != widget.roomId ||
+        course?.uuid != room?.coursePlan?.uuid) {
       _loadCourseInfo();
       _loadSummaries();
     }
+
+    if (widget.activeTab == 'course' && oldWidget.activeTab != 'course') {
+      _loadSummaries();
+    }
+  }
+
+  @override
+  void dispose() {
+    _languageSubscription?.cancel();
+    super.dispose();
   }
 
   // Pangea#
@@ -227,52 +252,6 @@ class ChatDetailsController extends State<ChatDetails>
   }
 
   // #Pangea
-  void downloadChatAction() async {
-    if (roomId == null) return;
-    final Room? room = Matrix.of(context).client.getRoomById(roomId!);
-    if (room == null) return;
-
-    final type = await showModalActionPopup(
-      context: context,
-      title: L10n.of(context).downloadGroupText,
-      actions: [
-        AdaptiveModalAction(
-          value: DownloadType.csv,
-          label: L10n.of(context).downloadCSVFile,
-        ),
-        AdaptiveModalAction(
-          value: DownloadType.txt,
-          label: L10n.of(context).downloadTxtFile,
-        ),
-        AdaptiveModalAction(
-          value: DownloadType.xlsx,
-          label: L10n.of(context).downloadXLSXFile,
-        ),
-      ],
-    );
-    if (type == null) return;
-
-    try {
-      await room.download(type, context);
-    } on EmptyChatException {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            L10n.of(context).emptyChatDownloadWarning,
-          ),
-        ),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            "${L10n.of(context).oopsSomethingWentWrong} ${L10n.of(context).errorPleaseRefresh}",
-          ),
-        ),
-      );
-    }
-  }
-
   Future<void> setRoomCapacity() async {
     if (roomId == null) return;
     final Room? room = Matrix.of(context).client.getRoomById(roomId!);
@@ -381,7 +360,7 @@ class ChatDetailsController extends State<ChatDetails>
     );
 
     if (resp.isError || resp.result == null || !mounted) return;
-    context.go('/rooms/${resp.result}/invite');
+    NavigationUtil.goToSpaceRoute(resp.result, ['invite'], context);
   }
 
   Future<void> _loadCourseInfo() async {

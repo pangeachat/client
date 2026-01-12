@@ -7,7 +7,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/course_chats/open_roles_indicator.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../../utils/matrix_sdk_extensions/matrix_locals.dart';
 
@@ -22,35 +21,24 @@ class ChatListItemSubtitle extends StatelessWidget {
   });
 
   bool _showPangeaContent(Event event) {
-    return MatrixState.pangeaController.languageController.languagesSet &&
+    return MatrixState.pangeaController.userController.languagesSet &&
         !event.redacted &&
         event.type == EventTypes.Message &&
         event.messageType == MessageTypes.Text &&
         !(AppConfig.renderHtml && !event.redacted && event.isRichMessage);
   }
 
-  Future<MessageEventAndTokens> _getPangeaMessageEvent(
+  Future<PangeaMessageEvent> _getPangeaMessageEvent(
     final Event event,
   ) async {
     final Timeline timeline = event.room.timeline != null
         ? event.room.timeline!
         : await event.room.getTimeline();
 
-    final pangeaMessageEvent = PangeaMessageEvent(
+    return PangeaMessageEvent(
       event: event,
       timeline: timeline,
       ownMessage: event.senderId == event.room.client.userID,
-    );
-
-    final tokens =
-        await pangeaMessageEvent.messageDisplayRepresentation?.tokensGlobal(
-      event.senderId,
-      event.originServerTs,
-    );
-
-    return MessageEventAndTokens(
-      event: pangeaMessageEvent,
-      tokens: tokens,
     );
   }
 
@@ -108,12 +96,11 @@ class ChatListItemSubtitle extends StatelessWidget {
       );
     }
 
-    return FutureBuilder(
+    return FutureBuilder<PangeaMessageEvent>(
       future: _getPangeaMessageEvent(event),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          final messageEventAndTokens = snapshot.data as MessageEventAndTokens;
-          final pangeaMessageEvent = messageEventAndTokens.event;
+          final pangeaMessageEvent = snapshot.data!;
           return Text(
             pangeaMessageEvent.messageDisplayText,
             style: style,
@@ -131,14 +118,4 @@ class ChatListItemSubtitle extends StatelessWidget {
       },
     );
   }
-}
-
-class MessageEventAndTokens {
-  final PangeaMessageEvent event;
-  final List<PangeaToken>? tokens;
-
-  MessageEventAndTokens({
-    required this.event,
-    required this.tokens,
-  });
 }

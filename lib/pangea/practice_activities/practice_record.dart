@@ -7,25 +7,19 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_record_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
 class PracticeRecord {
-  late DateTime createdAt;
   late List<ActivityRecordResponse> responses;
 
   PracticeRecord({
     List<ActivityRecordResponse>? responses,
     DateTime? timestamp,
   }) {
-    createdAt = timestamp ?? DateTime.now();
     if (responses == null) {
       this.responses = List<ActivityRecordResponse>.empty(growable: true);
     } else {
@@ -51,7 +45,6 @@ class PracticeRecord {
   Map<String, dynamic> toJson() {
     return {
       'responses': responses.map((e) => e.toJson()).toList(),
-      'createdAt': createdAt.toIso8601String(),
     };
   }
 
@@ -68,86 +61,41 @@ class PracticeRecord {
     return responses[responses.length - 1];
   }
 
-  bool hasTextResponse(String text) {
-    return responses.any((element) => element.text == text);
-  }
-
   bool alreadyHasMatchResponse(
     ConstructIdentifier cId,
     String text,
-  ) {
-    return responses.any(
-      (element) => element.cId == cId && element.text == text,
-    );
-  }
+  ) =>
+      responses.any(
+        (element) => element.cId == cId && element.text == text,
+      );
 
   /// [target] needed for saving the record, little funky
   /// [cId] identifies the construct in the case of match activities which have multiple
   /// [text] is the user's response
-  /// [audioBytes] is the user's audio response
-  /// [imageBytes] is the user's image response
   /// [score] > 0 means correct, otherwise is incorrect
   void addResponse({
     required ConstructIdentifier cId,
     required PracticeTarget target,
-    String? text,
-    Uint8List? audioBytes,
-    Uint8List? imageBytes,
+    required String text,
     required double score,
   }) {
-    try {
-      if (text == null && audioBytes == null && imageBytes == null) {
-        debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          m: "No response data provided",
-          data: {
-            'cId': cId.toJson(),
-            'text': text,
-            'audioBytes': audioBytes,
-            'imageBytes': imageBytes,
-            'score': score,
-          },
-        );
-        return;
-      }
-      responses.add(
-        ActivityRecordResponse(
-          cId: cId,
-          text: text,
-          audioBytes: audioBytes,
-          imageBytes: imageBytes,
-          timestamp: DateTime.now(),
-          score: score,
-        ),
-      );
-      debugPrint("responses: ${responses.map((r) => r.toJson())}");
+    responses.add(
+      ActivityRecordResponse(
+        cId: cId,
+        text: text,
+        audioBytes: null,
+        imageBytes: null,
+        timestamp: DateTime.now(),
+        score: score,
+      ),
+    );
 
-      PracticeRecordRepo.save(target, this);
+    try {
+      PracticeRecordRepo.set(target, this);
     } catch (e) {
       debugger(when: kDebugMode);
     }
   }
-
-  void clearResponses() {
-    responses.clear();
-  }
-
-  /// Returns a list of [OneConstructUse] objects representing the uses of the practice activity.
-  ///
-  /// The [practiceActivity] parameter is the parent event, representing the activity itself.
-  /// The [metadata] parameter is the metadata for the construct use, used if the record event isn't available.
-  ///
-  /// The method iterates over the [responses] to get [OneConstructUse] objects for each
-  List<OneConstructUse> usesForAllResponses(
-    PracticeActivityModel practiceActivity,
-    ConstructUseMetaData metadata,
-  ) =>
-      responses
-          .toSet()
-          .expand(
-            (response) => response.toUses(practiceActivity, metadata),
-          )
-          .toList();
 
   @override
   bool operator ==(Object other) {
@@ -192,110 +140,6 @@ class ActivityRecordResponse {
   //TODO - differentiate into different activity types
   ConstructUseTypeEnum useType(ActivityTypeEnum aType) =>
       isCorrect ? aType.correctUse : aType.incorrectUse;
-
-  // for each target construct create a OneConstructUse object
-  List<OneConstructUse> toUses(
-    PracticeActivityModel practiceActivity,
-    ConstructUseMetaData metadata,
-  ) {
-    // if the emoji is already set, don't give points
-    // IMPORTANT: This assumes that scoring is happening before saving of the user's emoji choice.
-    if (practiceActivity.activityType == ActivityTypeEnum.emoji &&
-        practiceActivity.targetTokens.first.getEmoji().isNotEmpty) {
-      return [];
-    }
-
-    if (practiceActivity.targetTokens.isEmpty) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        m: "null targetTokens in practice activity",
-        data: practiceActivity.toJson(),
-      );
-      return [];
-    }
-
-    switch (practiceActivity.activityType) {
-      case ActivityTypeEnum.emoji:
-      case ActivityTypeEnum.wordMeaning:
-      case ActivityTypeEnum.wordFocusListening:
-      case ActivityTypeEnum.lemmaId:
-        final token = practiceActivity.targetTokens.first;
-        final constructUseType = useType(practiceActivity.activityType);
-        return [
-          OneConstructUse(
-            lemma: token.lemma.text,
-            form: token.text.content,
-            constructType: ConstructTypeEnum.vocab,
-            useType: constructUseType,
-            metadata: metadata,
-            category: token.pos,
-            xp: constructUseType.pointValue,
-          ),
-        ];
-      case ActivityTypeEnum.messageMeaning:
-        final constructUseType = useType(practiceActivity.activityType);
-        return practiceActivity.targetTokens
-            .expand(
-              (t) => t.allUses(
-                constructUseType,
-                metadata,
-                constructUseType.pointValue,
-              ),
-            )
-            .toList();
-      case ActivityTypeEnum.hiddenWordListening:
-        final constructUseType = useType(practiceActivity.activityType);
-        return practiceActivity.targetTokens
-            .map(
-              (token) => OneConstructUse(
-                lemma: token.lemma.text,
-                form: token.text.content,
-                constructType: ConstructTypeEnum.vocab,
-                useType: constructUseType,
-                metadata: metadata,
-                category: token.pos,
-                xp: constructUseType.pointValue,
-              ),
-            )
-            .toList();
-      case ActivityTypeEnum.morphId:
-        if (practiceActivity.morphFeature == null) {
-          debugger(when: kDebugMode);
-          ErrorHandler.logError(
-            m: "null morphFeature in morph activity",
-            data: practiceActivity.toJson(),
-          );
-          return [];
-        }
-        return practiceActivity.targetTokens
-            .map(
-              (t) {
-                final tag = t.getMorphTag(practiceActivity.morphFeature!);
-                if (tag == null) {
-                  debugger(when: kDebugMode);
-                  ErrorHandler.logError(
-                    m: "null tag in morph activity",
-                    data: practiceActivity.toJson(),
-                  );
-                  return null;
-                }
-                final constructUseType = useType(practiceActivity.activityType);
-                return OneConstructUse(
-                  lemma: tag,
-                  form: practiceActivity.targetTokens.first.text.content,
-                  constructType: ConstructTypeEnum.morph,
-                  useType: constructUseType,
-                  metadata: metadata,
-                  category: practiceActivity.morphFeature!,
-                  xp: constructUseType.pointValue,
-                );
-              },
-            )
-            .where((c) => c != null)
-            .cast<OneConstructUse>()
-            .toList();
-    }
-  }
 
   factory ActivityRecordResponse.fromJson(Map<String, dynamic> json) {
     return ActivityRecordResponse(

@@ -4,31 +4,36 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
-import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
-import 'package:fluffychat/pangea/choreographer/repo/language_detection_repo.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/spaces/models/space_model.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
-import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
-import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_repo.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_request.dart';
+import 'package:fluffychat/pangea/events/repo/language_detection_response.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
+import 'package:fluffychat/pangea/speech_to_text/audio_encoding_enum.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_repo.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_request_model.dart';
+import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_repo.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_request_model.dart';
+import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/message_audio_card.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_repo.dart';
+import 'package:fluffychat/pangea/translation/full_text_translation_request_model.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
-import '../../learning_settings/constants/language_constants.dart';
+import '../../languages/language_constants.dart';
 import '../constants/pangea_event_types.dart';
 
 class PangeaMessageEvent {
@@ -70,12 +75,10 @@ class PangeaMessageEvent {
 
   bool get isAudioMessage => _event.messageType == MessageTypes.Audio;
 
-  String? get mimetype {
-    if (!isAudioMessage) return null;
-    final Map<String, dynamic>? info = _event.content.tryGetMap("info");
-    if (info == null) return null;
-    return info["mime_type"] ?? info["mimetype"];
-  }
+  String? get _l2Code => MatrixState.pangeaController.userController.userL2Code;
+
+  String? get _l1Code =>
+      MatrixState.pangeaController.userController.userL1?.langCode;
 
   Event? _latestEditCache;
   Event get _latestEdit => _latestEditCache ??= _event
@@ -90,133 +93,6 @@ class PangeaMessageEvent {
           .firstOrNull ??
       _event;
 
-  void updateLatestEdit() {
-    _latestEditCache = null;
-    _representations = null;
-  }
-
-  Future<PangeaAudioFile?> getMatrixAudioFile(
-    String langCode,
-  ) async {
-    final RepresentationEvent? rep = representationByLanguage(langCode);
-
-    final TextToSpeechRequest params = TextToSpeechRequest(
-      text: rep?.content.text ?? body,
-      tokens: (await rep?.tokensGlobal(
-            senderId,
-            originServerTs,
-          ))
-              ?.map((t) => t.text)
-              .toList() ??
-          [],
-      langCode: langCode,
-      userL1: l1Code ?? LanguageKeys.unknownLanguage,
-      userL2: l2Code ?? LanguageKeys.unknownLanguage,
-    );
-
-    final TextToSpeechResponse response =
-        await MatrixState.pangeaController.textToSpeech.get(
-      params,
-    );
-
-    final audioBytes = base64.decode(response.audioContent);
-    final eventIdParam = _event.eventId;
-    final fileName =
-        "audio_for_${eventIdParam}_$langCode.${response.fileExtension}";
-
-    final file = PangeaAudioFile(
-      bytes: audioBytes,
-      name: fileName,
-      mimeType: response.mimeType,
-      duration: response.durationMillis,
-      waveform: response.waveform,
-      tokens: response.ttsTokens,
-    );
-
-    sendAudioEvent(file, response, rep?.text ?? body, langCode);
-
-    return file;
-  }
-
-  Future<Event?> sendAudioEvent(
-    PangeaAudioFile file,
-    TextToSpeechResponse response,
-    String text,
-    String langCode,
-  ) async {
-    final String? eventId = await room.sendFileEvent(
-      file,
-      inReplyTo: _event,
-      extraContent: {
-        'info': {
-          ...file.info,
-          'duration': response.durationMillis,
-        },
-        'org.matrix.msc3245.voice': {},
-        'org.matrix.msc1767.audio': {
-          'duration': response.durationMillis,
-          'waveform': response.waveform,
-        },
-        ModelKey.transcription:
-            response.toPangeaAudioEventData(text, langCode).toJson(),
-      },
-    );
-
-    debugPrint("eventId in getTextToSpeechGlobal $eventId");
-    final Event? audioEvent =
-        eventId != null ? await room.getEventById(eventId) : null;
-
-    if (audioEvent == null) {
-      return null;
-    }
-    allAudio.add(audioEvent);
-    return audioEvent;
-  }
-
-  Event? getTextToSpeechLocal(String langCode, String text) {
-    return allAudio.firstWhereOrNull(
-      (event) {
-        try {
-          // Safely access
-          final dataMap = event.content.tryGetMap(ModelKey.transcription);
-
-          if (dataMap == null) {
-            return false;
-          }
-
-          // old text to speech content will not have TTSToken data
-          // we want to disregard them and just generate new ones
-          // for that, we'll return false if 'tokens' are null
-          // while in-development, we'll pause here to inspect
-          // debugger can be removed after we're sure it's working
-          if (dataMap['tokens'] == null) {
-            // events before today will definitely not have the tokens
-            debugger(
-              when: kDebugMode &&
-                  event.originServerTs.isAfter(DateTime(2024, 10, 16)),
-            );
-            return false;
-          }
-
-          final PangeaAudioEventData audioData =
-              PangeaAudioEventData.fromJson(dataMap as dynamic);
-
-          // Check if both language code and text match
-          return audioData.langCode == langCode && audioData.text == text;
-        } catch (e, s) {
-          debugger(when: kDebugMode);
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {},
-            m: "error parsing data in getTextToSpeechLocal",
-          );
-          return false;
-        }
-      },
-    );
-  }
-
   // get audio events that are related to this event
   Set<Event> get allAudio => _latestEdit
           .aggregatedEvents(
@@ -230,131 +106,42 @@ class PangeaMessageEvent {
             null;
       }).toSet();
 
-  SpeechToTextModel? getSpeechToTextLocal() {
-    final rawBotTranscription =
-        event.content.tryGetMap(ModelKey.botTranscription);
-
-    if (rawBotTranscription != null) {
-      return SpeechToTextModel.fromJson(
-        Map<String, dynamic>.from(rawBotTranscription),
-      );
-    }
-
-    return representations
-        .firstWhereOrNull(
-          (element) => element.content.speechToText != null,
-        )
-        ?.content
-        .speechToText;
-  }
-
-  Future<SpeechToTextModel?> getSpeechToText(
-    String l1Code,
-    String l2Code,
-  ) async {
-    if (!isAudioMessage) {
-      ErrorHandler.logError(
-        e: 'Calling getSpeechToText on non-audio message',
-        s: StackTrace.current,
-        data: {
-          "content": _event.content,
-          "eventId": _event.eventId,
-          "roomId": _event.roomId,
-          "userId": _event.room.client.userID,
-          "account_data": _event.room.client.accountData,
+  List<RepresentationEvent> get _repEvents => _latestEdit
+          .aggregatedEvents(
+            timeline,
+            PangeaEventTypes.representation,
+          )
+          .map(
+            (e) => RepresentationEvent(
+              event: e,
+              parentMessageEvent: _event,
+              timeline: timeline,
+            ),
+          )
+          .sorted(
+        (a, b) {
+          if (a.event == null) return -1;
+          if (b.event == null) return 1;
+          return b.event!.originServerTs.compareTo(a.event!.originServerTs);
         },
+      ).toList();
+
+  ChoreoRecordModel? get _embeddedChoreo {
+    try {
+      if (_latestEdit.content[ModelKey.choreoRecord] == null) return null;
+      return ChoreoRecordModel.fromJson(
+        _latestEdit.content[ModelKey.choreoRecord] as Map<String, dynamic>,
+        originalWrittenContent,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: _latestEdit.content,
+        m: "error parsing choreoRecord",
       );
       return null;
     }
-
-    final rawBotTranscription =
-        event.content.tryGetMap(ModelKey.botTranscription);
-    if (rawBotTranscription != null) {
-      final botTranscription = SpeechToTextModel.fromJson(
-        Map<String, dynamic>.from(rawBotTranscription),
-      );
-
-      _representations ??= [];
-      _representations!.add(
-        RepresentationEvent(
-          timeline: timeline,
-          parentMessageEvent: _event,
-          content: PangeaRepresentation(
-            langCode: botTranscription.langCode,
-            text: botTranscription.transcript.text,
-            originalSent: false,
-            originalWritten: false,
-            speechToText: botTranscription,
-          ),
-        ),
-      );
-
-      return botTranscription;
-    }
-
-    final SpeechToTextModel? speechToTextLocal = representations
-        .firstWhereOrNull(
-          (element) => element.content.speechToText != null,
-        )
-        ?.content
-        .speechToText;
-
-    if (speechToTextLocal != null) {
-      return speechToTextLocal;
-    }
-
-    final matrixFile = await _event.downloadAndDecryptAttachment();
-
-    final SpeechToTextModel response =
-        await MatrixState.pangeaController.speechToText.get(
-      SpeechToTextRequestModel(
-        audioContent: matrixFile.bytes,
-        audioEvent: _event,
-        config: SpeechToTextAudioConfigModel(
-          encoding: mimeTypeToAudioEncoding(matrixFile.mimeType),
-          //this is the default in the RecordConfig in record package
-          //TODO: check if this is the correct value and make it a constant somewhere
-          sampleRateHertz: 22050,
-          userL1: l1Code,
-          userL2: l2Code,
-        ),
-      ),
-    );
-
-    _representations?.add(
-      RepresentationEvent(
-        timeline: timeline,
-        parentMessageEvent: _event,
-        content: PangeaRepresentation(
-          langCode: response.langCode,
-          text: response.transcript.text,
-          originalSent: false,
-          originalWritten: false,
-          speechToText: response,
-        ),
-      ),
-    );
-
-    return response;
-  }
-
-  Future<SttTranslationModel?> sttTranslationByLanguageGlobal({
-    required String langCode,
-    required String l1Code,
-    required String l2Code,
-  }) async {
-    if (!representations.any(
-      (element) => element.content.speechToText != null,
-    )) {
-      await getSpeechToText(l1Code, l2Code);
-    }
-
-    final rep = representations.firstWhereOrNull(
-      (element) => element.content.speechToText != null,
-    );
-
-    if (rep == null) return null;
-    return rep.getSttTranslation(userL1: l1Code, userL2: l2Code);
   }
 
   PangeaMessageTokens? _tokensSafe(Map<String, dynamic>? content) {
@@ -373,72 +160,51 @@ class PangeaMessageEvent {
     }
   }
 
-  ChoreoRecord? get _embeddedChoreo {
-    try {
-      if (_latestEdit.content[ModelKey.choreoRecord] == null) return null;
-      return ChoreoRecord.fromJson(
-        _latestEdit.content[ModelKey.choreoRecord] as Map<String, dynamic>,
-        originalWrittenContent,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: _latestEdit.content,
-        m: "error parsing choreoRecord",
-      );
-      return null;
-    }
-  }
-
   List<RepresentationEvent>? _representations;
   List<RepresentationEvent> get representations {
     if (_representations != null) return _representations!;
     _representations = [];
-    if (_latestEdit.content[ModelKey.originalSent] != null) {
-      try {
-        final RepresentationEvent sent = RepresentationEvent(
-          parentMessageEvent: _event,
-          content: PangeaRepresentation.fromJson(
-            _latestEdit.content[ModelKey.originalSent] as Map<String, dynamic>,
-          ),
-          tokens: _tokensSafe(
-            _latestEdit.content[ModelKey.tokensSent] as Map<String, dynamic>?,
-          ),
-          choreo: _embeddedChoreo,
-          timeline: timeline,
-        );
-        if (_latestEdit.content[ModelKey.choreoRecord] == null) {
-          Sentry.addBreadcrumb(
-            Breadcrumb(
-              message: "originalSent created without _event or _choreo",
-              data: {
-                "eventId": _latestEdit.eventId,
-                "room": _latestEdit.room.id,
-                "sender": _latestEdit.senderId,
-              },
-            ),
-          );
-        }
+    try {
+      final tokens = _tokensSafe(
+        _latestEdit.content[ModelKey.tokensSent] as Map<String, dynamic>?,
+      );
 
-        // If originalSent has no tokens, there is not way to generate a tokens event
-        // and send it as a related event, since original sent has not eventID to set
-        // as parentEventId. In this case, it's better to generate a new representation
-        // with an eventID and send the related tokens event to that representation.
-        // This is a rare situation, and has only been seen with some bot messages.
-        if (sent.tokens != null) {
-          _representations!.add(sent);
-        }
-      } catch (err, s) {
-        ErrorHandler.logError(
-          m: "error parsing originalSent",
-          e: err,
-          s: s,
-          data: {
-            "event": _event.toJson(),
-          },
+      // If originalSent has no tokens, there is not way to generate a tokens event
+      // and send it as a related event, since original sent has not eventID to set
+      // as parentEventId. In this case, it's better to generate a new representation
+      // with an eventID and send the related tokens event to that representation.
+      // This is a rare situation, and has only been seen with some bot messages.
+      if (tokens != null) {
+        final lang = tokens.detections?.isNotEmpty == true
+            ? tokens.detections!.first.langCode
+            : null;
+
+        final original = PangeaRepresentation(
+          langCode: lang ?? LanguageKeys.unknownLanguage,
+          text: _event.body,
+          originalSent: true,
+          originalWritten: false,
+        );
+
+        _representations!.add(
+          RepresentationEvent(
+            parentMessageEvent: _event,
+            content: original,
+            tokens: tokens,
+            choreo: _embeddedChoreo,
+            timeline: timeline,
+          ),
         );
       }
+    } catch (err, s) {
+      ErrorHandler.logError(
+        m: "error parsing originalSent",
+        e: err,
+        s: s,
+        data: {
+          "event": _event.toJson(),
+        },
+      );
     }
 
     if (_latestEdit.content[ModelKey.originalWritten] != null) {
@@ -469,128 +235,8 @@ class PangeaMessageEvent {
       }
     }
 
-    _representations!.addAll(
-      _latestEdit
-          .aggregatedEvents(
-            timeline,
-            PangeaEventTypes.representation,
-          )
-          .map(
-            (e) => RepresentationEvent(
-              event: e,
-              parentMessageEvent: _event,
-              timeline: timeline,
-            ),
-          )
-          .sorted(
-        (a, b) {
-          //TODO - test with edited events to make sure this is working
-          if (a.event == null) return -1;
-          if (b.event == null) return 1;
-          return b.event!.originServerTs.compareTo(a.event!.originServerTs);
-        },
-      ).toList(),
-    );
-
+    _representations!.addAll(_repEvents);
     return _representations!;
-  }
-
-  RepresentationEvent? representationByLanguage(
-    String langCode, {
-    bool Function(RepresentationEvent)? filter,
-  }) =>
-      representations.firstWhereOrNull(
-        (element) =>
-            element.langCode.split("-")[0] == langCode.split("-")[0] &&
-            (filter?.call(element) ?? true),
-      );
-
-  Future<String?> representationByDetectedLanguage() async {
-    LanguageDetectionResponse? resp;
-    try {
-      resp = await LanguageDetectionRepo.get(
-        MatrixState.pangeaController.userController.accessToken,
-        request: LanguageDetectionRequest(
-          text: _latestEdit.body,
-          senderl1: l1Code,
-          senderl2: l2Code,
-        ),
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "event": _event.toJson(),
-        },
-      );
-      return null;
-    }
-
-    final langCode = resp.detections.firstOrNull?.langCode;
-    if (langCode == null) return null;
-    if (langCode == originalSent?.langCode) {
-      return originalSent?.event?.eventId;
-    }
-
-    // clear representations cache so the new representation event can be added when next requested
-    _representations = null;
-
-    return MatrixState.pangeaController.messageData
-        .getPangeaRepresentationEvent(
-      req: FullTextTranslationRequestModel(
-        text: originalSent?.content.text ?? _latestEdit.body,
-        srcLang: originalSent?.langCode,
-        tgtLang: langCode,
-        userL2: l2Code ?? LanguageKeys.unknownLanguage,
-        userL1: l1Code ?? LanguageKeys.unknownLanguage,
-      ),
-      messageEvent: this,
-      originalSent: true,
-    );
-  }
-
-  Future<PangeaRepresentation> l1Respresentation() async {
-    if (l1Code == null || l2Code == null) {
-      throw Exception("Missing language codes");
-    }
-
-    final includedIT =
-        (originalSent?.choreo?.endedWithIT(originalSent!.text) ?? false) &&
-            !(originalSent?.choreo?.includedIGC ?? true);
-
-    RepresentationEvent? rep;
-    if (!includedIT) {
-      // if the message didn't go through translation, get any l1 rep
-      rep = representationByLanguage(l1Code!);
-    } else {
-      // if the message went through translation, get the non-original
-      // l1 rep since originalWritten could contain some l2 words
-      // (https://github.com/pangeachat/client/issues/3591)
-      rep = representationByLanguage(
-        l1Code!,
-        filter: (rep) => !rep.content.originalWritten,
-      );
-    }
-
-    if (rep != null) return rep.content;
-
-    final String srcLang = includedIT
-        ? (originalWritten?.langCode ?? l1Code!)
-        : (originalSent?.langCode ?? l2Code!);
-
-    // clear representations cache so the new representation event can be added when next requested
-    _representations = null;
-    return MatrixState.pangeaController.messageData.getPangeaRepresentation(
-      req: FullTextTranslationRequestModel(
-        text: includedIT ? originalWrittenContent : messageDisplayText,
-        srcLang: srcLang,
-        tgtLang: l1Code!,
-        userL2: l2Code!,
-        userL1: l1Code!,
-      ),
-      messageEvent: _event,
-    );
   }
 
   RepresentationEvent? get originalSent => representations
@@ -610,17 +256,6 @@ class PangeaMessageEvent {
     return written ?? body;
   }
 
-  String? get l2Code =>
-      MatrixState.pangeaController.languageController.activeL2Code();
-
-  String? get l1Code =>
-      MatrixState.pangeaController.languageController.userL1?.langCode;
-
-  /// Should almost always be true. Useful in the case that the message
-  /// display rep has the langCode "unk"
-  bool get messageDisplayLangIsL2 =>
-      messageDisplayLangCode.split("-")[0] == l2Code?.split("-")[0];
-
   String get messageDisplayLangCode {
     if (isAudioMessage) {
       final stt = getSpeechToTextLocal();
@@ -628,13 +263,12 @@ class PangeaMessageEvent {
       return stt.langCode;
     }
 
-    final bool immersionMode = MatrixState
-        .pangeaController.permissionsController
-        .isToolEnabled(ToolSetting.immersionMode, room);
+    final bool immersionMode = MatrixState.pangeaController.userController
+        .isToolEnabled(ToolSetting.immersionMode);
 
     final String? originalLangCode = originalSent?.langCode;
 
-    final String? langCode = immersionMode ? l2Code : originalLangCode;
+    final String? langCode = immersionMode ? _l2Code : originalLangCode;
     return langCode ?? LanguageKeys.unknownLanguage;
   }
 
@@ -646,69 +280,390 @@ class PangeaMessageEvent {
   /// it returns the message body.
   String get messageDisplayText => messageDisplayRepresentation?.text ?? body;
 
-  /// Returns a list of all [PracticeActivityEvent] objects
-  /// associated with this message event.
-  List<PracticeActivityEvent> get _practiceActivityEvents {
-    final List<Event> events = _latestEdit
-        .aggregatedEvents(
-          timeline,
-          PangeaEventTypes.pangeaActivity,
-        )
-        .where((event) => !event.redacted)
-        .toList();
+  TextDirection get textDirection =>
+      LanguageConstants.rtlLanguageCodes.contains(messageDisplayLangCode)
+          ? TextDirection.rtl
+          : TextDirection.ltr;
 
-    final List<PracticeActivityEvent> practiceEvents = [];
-    for (final event in events) {
-      try {
-        practiceEvents.add(
-          PracticeActivityEvent(
-            timeline: timeline,
-            event: event,
-          ),
-        );
-      } catch (e, s) {
-        ErrorHandler.logError(e: e, s: s, data: event.toJson());
-      }
-    }
-    return practiceEvents;
+  void updateLatestEdit() {
+    _latestEditCache = null;
+    _representations = null;
   }
 
-  /// Returns a list of [PracticeActivityEvent] objects for the given [langCode].
-  List<PracticeActivityEvent> practiceActivitiesByLangCode(
+  RepresentationEvent? representationByLanguage(
     String langCode, {
-    bool debug = false,
+    bool Function(RepresentationEvent)? filter,
   }) =>
-      _practiceActivityEvents
-          .where(
-            (event) =>
-                event.practiceActivity.langCode.split("-")[0] ==
-                langCode.split("")[0],
-          )
-          .toList();
+      representations.firstWhereOrNull(
+        (element) =>
+            element.langCode.split("-")[0] == langCode.split("-")[0] &&
+            (filter?.call(element) ?? true),
+      );
 
-  /// Returns a list of [PracticeActivityEvent] for the user's active l2.
-  List<PracticeActivityEvent> get practiceActivities =>
-      l2Code == null ? [] : practiceActivitiesByLangCode(l2Code!);
+  Event? getTextToSpeechLocal(String langCode, String text) {
+    for (final audio in allAudio) {
+      final dataMap = audio.content.tryGetMap(ModelKey.transcription);
+      if (dataMap == null || !dataMap.containsKey(ModelKey.tokens)) continue;
 
-  bool shouldDoActivity({
-    required PangeaToken? token,
-    required ActivityTypeEnum a,
-    required MorphFeaturesEnum? feature,
-    required String? tag,
-  }) {
-    if (!messageDisplayLangIsL2 || token == null) {
-      return false;
+      try {
+        final PangeaAudioEventData audioData = PangeaAudioEventData.fromJson(
+          dataMap as dynamic,
+        );
+
+        if (audioData.langCode == langCode && audioData.text == text) {
+          return audio;
+        }
+      } catch (e, s) {
+        debugger(when: kDebugMode);
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            "event": audio.toJson(),
+          },
+          m: "error parsing data in getTextToSpeechLocal",
+        );
+      }
+    }
+    return null;
+  }
+
+  RepresentationEvent? _getSpeechToTextRepresentation() =>
+      representations.firstWhereOrNull(
+        (element) => element.content.speechToText != null,
+      );
+
+  SpeechToTextResponseModel? getSpeechToTextLocal() {
+    final rep = _getSpeechToTextRepresentation()?.content.speechToText;
+    if (rep != null) return rep;
+
+    final rawBotTranscription =
+        event.content.tryGetMap(ModelKey.botTranscription);
+
+    if (rawBotTranscription != null) {
+      try {
+        return SpeechToTextResponseModel.fromJson(
+          Map<String, dynamic>.from(rawBotTranscription),
+        );
+      } catch (err, s) {
+        ErrorHandler.logError(
+          e: err,
+          s: s,
+          data: {
+            "event": _event.toJson(),
+          },
+          m: "error parsing botTranscription",
+        );
+        return null;
+      }
     }
 
-    return token.shouldDoActivity(
-      a: a,
-      feature: feature,
-      tag: tag,
+    return null;
+  }
+
+  Future<PangeaAudioFile> requestTextToSpeech(
+    String langCode,
+    String? voice,
+  ) async {
+    final local = getTextToSpeechLocal(langCode, messageDisplayText);
+    if (local != null) {
+      final file = await local.getPangeaAudioFile();
+      if (file != null) return file;
+    }
+
+    final rep = representationByLanguage(langCode);
+    final tokensResp = await rep?.requestTokens();
+    final request = TextToSpeechRequestModel(
+      text: rep?.content.text ?? body,
+      tokens: tokensResp?.result?.map((t) => t.text).toList() ?? [],
+      langCode: langCode,
+      userL1: _l1Code ?? LanguageKeys.unknownLanguage,
+      userL2: _l2Code ?? LanguageKeys.unknownLanguage,
+      voice: voice,
+    );
+
+    final result = await TextToSpeechRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      request,
+    );
+
+    if (result.error != null) {
+      throw Exception(
+        "Error getting text to speech: ${result.error}",
+      );
+    }
+
+    final response = result.result!;
+    final audioBytes = base64.decode(response.audioContent);
+    final fileName =
+        "audio_for_${_event.eventId}_$langCode.${response.fileExtension}";
+
+    final file = PangeaAudioFile(
+      bytes: audioBytes,
+      name: fileName,
+      mimeType: response.mimeType,
+      duration: response.durationMillis,
+      waveform: response.waveform,
+      tokens: response.ttsTokens,
+    );
+
+    room.sendFileEvent(
+      file,
+      inReplyTo: _event,
+      extraContent: {
+        'info': {
+          ...file.info,
+          ModelKey.duration: response.durationMillis,
+        },
+        'org.matrix.msc3245.voice': {},
+        'org.matrix.msc1767.audio': {
+          ModelKey.duration: response.durationMillis,
+          'waveform': response.waveform,
+        },
+        ModelKey.transcription: response
+            .toPangeaAudioEventData(rep?.text ?? body, langCode)
+            .toJson(),
+      },
+    ).then((eventId) async {
+      final Event? audioEvent =
+          eventId != null ? await room.getEventById(eventId) : null;
+
+      if (audioEvent != null) {
+        allAudio.add(audioEvent);
+      }
+    });
+
+    return file;
+  }
+
+  Future<SpeechToTextResponseModel> requestSpeechToText(
+    String l1Code,
+    String l2Code, {
+    bool sendEvent = true,
+  }) async {
+    if (!isAudioMessage) {
+      throw 'Calling getSpeechToText on non-audio message';
+    }
+
+    final speechToTextLocal = getSpeechToTextLocal();
+    if (speechToTextLocal != null) {
+      return speechToTextLocal;
+    }
+
+    final matrixFile = await _event.downloadAndDecryptAttachment();
+    final result = await SpeechToTextRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      SpeechToTextRequestModel(
+        audioContent: matrixFile.bytes,
+        audioEvent: _event,
+        config: SpeechToTextAudioConfigModel(
+          encoding: mimeTypeToAudioEncoding(matrixFile.mimeType),
+          sampleRateHertz: 22050,
+          userL1: l1Code,
+          userL2: l2Code,
+        ),
+      ),
+    );
+
+    if (result.error != null) {
+      throw Exception(
+        "Error getting speech to text: ${result.error}",
+      );
+    }
+
+    if (sendEvent) {
+      _sendSttRepresentationEvent(result.result!);
+    }
+
+    return result.result!;
+  }
+
+  Future<Event?> _sendSttRepresentationEvent(
+    SpeechToTextResponseModel stt,
+  ) async {
+    final representation = PangeaRepresentation(
+      langCode: stt.langCode,
+      text: stt.transcript.text,
+      originalSent: false,
+      originalWritten: false,
+      speechToText: stt,
+    );
+
+    _representations = null;
+    return room.sendPangeaEvent(
+      content: representation.toJson(),
+      parentEventId: eventId,
+      type: PangeaEventTypes.representation,
     );
   }
 
-  TextDirection get textDirection =>
-      PLanguageStore.rtlLanguageCodes.contains(messageDisplayLangCode)
-          ? TextDirection.rtl
-          : TextDirection.ltr;
+  Future<String> requestSttTranslation({
+    required String langCode,
+    required String l1Code,
+    required String l2Code,
+  }) async {
+    // First try to access the local translation event via a representation event
+    RepresentationEvent? rep = _getSpeechToTextRepresentation();
+    final local = rep?.getSpeechToTextTranslationLocal(langCode);
+    if (local != null) return local.translation;
+
+    // The translation event needs a parent representation to relate to,
+    // so if the rep is null, we send a new representation event first.
+    // This happens mostly for bot audio messages, which store their transcripts
+    // in the original message event content.
+    SpeechToTextResponseModel? stt = rep?.content.speechToText;
+    if (rep == null) {
+      stt ??= await requestSpeechToText(l1Code, l2Code, sendEvent: false);
+      final repEvent = await _sendSttRepresentationEvent(stt);
+      if (repEvent == null) {
+        throw Exception("Failed to send representation event for STT");
+      }
+
+      rep = _getSpeechToTextRepresentation();
+      if (rep == null) {
+        throw Exception("Failed to get representation event for STT");
+      }
+    }
+
+    // Make the translation request
+    final res = await FullTextTranslationRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      FullTextTranslationRequestModel(
+        text: stt!.transcript.text,
+        tgtLang: l1Code,
+        userL2: l2Code,
+        userL1: l1Code,
+      ),
+    );
+    if (res.isError) {
+      throw res.error!;
+    }
+
+    final translation = SttTranslationModel(
+      translation: res.result!,
+      langCode: l1Code,
+    );
+
+    // Send the translation event if the representation event exists
+    rep.event?.room.sendPangeaEvent(
+      content: translation.toJson(),
+      parentEventId: rep.event!.eventId,
+      type: PangeaEventTypes.sttTranslation,
+    );
+
+    return translation.translation;
+  }
+
+  Future<String?> requestRepresentationByDetectedLanguage() async {
+    LanguageDetectionResponse? resp;
+    final result = await LanguageDetectionRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      LanguageDetectionRequest(
+        text: _latestEdit.body,
+        senderl1: _l1Code,
+        senderl2: _l2Code,
+      ),
+    );
+
+    if (result.isError) return null;
+    resp = result.result!;
+
+    final langCode = resp.detections.firstOrNull?.langCode;
+    if (langCode == null) return null;
+    if (langCode == originalSent?.langCode) {
+      return originalSent?.event?.eventId;
+    }
+
+    final res = await _requestRepresentation(
+      originalSent?.content.text ?? _latestEdit.body,
+      langCode,
+      originalSent?.langCode ?? LanguageKeys.unknownLanguage,
+      originalSent: originalSent == null,
+    );
+
+    if (res.isError) return null;
+    return _sendRepresentationEvent(res.result!);
+  }
+
+  Future<String> requestRespresentationByL1() async {
+    if (_l1Code == null || _l2Code == null) {
+      throw Exception("Missing language codes");
+    }
+
+    final includedIT =
+        (originalSent?.choreo?.endedWithIT(originalSent!.text) ?? false) &&
+            !(originalSent?.choreo?.includedIGC ?? true);
+
+    RepresentationEvent? rep;
+    if (!includedIT) {
+      // if the message didn't go through translation, get any l1 rep
+      rep = representationByLanguage(_l1Code!);
+    } else {
+      // if the message went through translation, get the non-original
+      // l1 rep since originalWritten could contain some l2 words
+      // (https://github.com/pangeachat/client/issues/3591)
+      rep = representationByLanguage(
+        _l1Code!,
+        filter: (rep) => !rep.content.originalWritten,
+      );
+    }
+
+    if (rep != null) return rep.content.text;
+
+    final String srcLang = includedIT
+        ? (originalWritten?.langCode ?? _l1Code!)
+        : (originalSent?.langCode ?? _l2Code!);
+
+    final resp = await _requestRepresentation(
+      includedIT ? originalWrittenContent : messageDisplayText,
+      _l1Code!,
+      srcLang,
+    );
+
+    if (resp.isError) throw resp.error!;
+    _sendRepresentationEvent(resp.result!);
+    return resp.result!.text;
+  }
+
+  Future<Result<PangeaRepresentation>> _requestRepresentation(
+    String text,
+    String targetLang,
+    String sourceLang, {
+    bool originalSent = false,
+  }) async {
+    _representations = null;
+
+    final res = await FullTextTranslationRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      FullTextTranslationRequestModel(
+        text: text,
+        srcLang: sourceLang,
+        tgtLang: targetLang,
+        userL2: _l2Code ?? LanguageKeys.unknownLanguage,
+        userL1: _l1Code ?? LanguageKeys.unknownLanguage,
+      ),
+    );
+
+    return res.isError
+        ? Result.error(res.error!)
+        : Result.value(
+            PangeaRepresentation(
+              langCode: targetLang,
+              text: res.result!,
+              originalSent: originalSent,
+              originalWritten: false,
+            ),
+          );
+  }
+
+  Future<String?> _sendRepresentationEvent(
+    PangeaRepresentation representation,
+  ) async {
+    final repEvent = await room.sendPangeaEvent(
+      content: representation.toJson(),
+      parentEventId: eventId,
+      type: PangeaEventTypes.representation,
+    );
+    return repEvent?.eventId;
+  }
 }

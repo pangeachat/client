@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
+import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -40,8 +40,7 @@ class CourseCodePageState extends State<CourseCodePage> {
       return;
     }
 
-    final roomId = await MatrixState.pangeaController.spaceCodeController
-        .joinSpaceWithCode(
+    final roomId = await SpaceCodeController.joinSpaceWithCode(
       context,
       _code,
     );
@@ -59,27 +58,12 @@ class CourseCodePageState extends State<CourseCodePage> {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          spacing: 10.0,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.network(
-              "${AppConfig.assetsBaseURL}/${AddCoursePage.mapUnlockFileName}",
-              width: 24.0,
-              height: 24.0,
-              colorFilter: ColorFilter.mode(
-                theme.colorScheme.onSurface,
-                BlendMode.srcIn,
-              ),
-            ),
-            Text(L10n.of(context).joinCourseWithCode),
-          ],
-        ),
+        title: Text(L10n.of(context).joinWithCode),
       ),
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.all(20.0),
             constraints: const BoxConstraints(
               maxWidth: 350,
               maxHeight: 600,
@@ -87,9 +71,14 @@ class CourseCodePageState extends State<CourseCodePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                PangeaLogoSvg(
+                SvgPicture.network(
+                  "${AppConfig.assetsBaseURL}/${AddCoursePage.mapUnlockFileName}",
                   width: 100.0,
-                  forceColor: theme.colorScheme.onSurface,
+                  height: 100.0,
+                  colorFilter: ColorFilter.mode(
+                    theme.colorScheme.onSurface,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 Column(
                   spacing: 16.0,
