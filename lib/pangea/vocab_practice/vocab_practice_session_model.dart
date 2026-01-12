@@ -174,6 +174,10 @@ class VocabPracticeSessionModel {
         .toList();
   }
 
+  void setElapsedSeconds(int seconds) {
+    elapsedSeconds = seconds;
+  }
+
   List<OneConstructUse> finishSession() {
     finished = true;
     return _bonusUses;

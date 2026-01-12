@@ -109,4 +109,9 @@ abstract class AsyncLoader<T> {
       }
     }
   }
+
+  void reset() {
+    if (_disposed) return;
+    state.value = AsyncState.idle();
+  }
 }

@@ -8,11 +8,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -37,7 +35,7 @@ class VocabPractice extends StatefulWidget {
 }
 
 class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
-  SessionLoader _sessionLoader = SessionLoader();
+  final SessionLoader _sessionLoader = SessionLoader();
   final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
       ValueNotifier(const AsyncState.idle());
 
@@ -106,18 +104,15 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   String choiceTargetId(String choiceId) =>
       'vocab-choice-card-${choiceId.replaceAll(' ', '_')}';
 
-  /// Resets all session state without disposing the widget
-  void _clearState() {
+  void _resetActivityState() {
     activityState.value = const AsyncState.idle();
-    setState(() {
-      _choiceTexts.clear();
-      _choiceEmojis.clear();
-    });
+    _choiceTexts.clear();
+    _choiceEmojis.clear();
   }
 
   void updateElapsedTime(int seconds) {
     if (_sessionLoader.isLoaded) {
-      _sessionLoader.value!.elapsedSeconds = seconds;
+      _sessionLoader.value!.setElapsedSeconds(seconds);
     }
   }
 
@@ -136,7 +131,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   Future<void> _onLanguageUpdate() async {
     try {
-      _clearState();
+      _resetActivityState();
       await _analyticsService
           .updateDispatcher.constructUpdateStream.stream.first
           .timeout(const Duration(seconds: 10));
@@ -157,15 +152,13 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   }
 
   Future<void> reloadSession() async {
-    _clearState();
+    _resetActivityState();
     await VocabPracticeSessionRepo.clearSession();
-    _sessionLoader.dispose();
-    _sessionLoader = SessionLoader();
+    _sessionLoader.reset();
     await _startSession();
   }
 
   Future<void> _completeSession() async {
-    if (!_sessionLoader.isLoaded) return;
     final bonus = _sessionLoader.value!.finishSession();
     await _analyticsService.updateService.addAnalytics(null, bonus);
     await _saveSession();
@@ -173,19 +166,8 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   }
 
   Future<void> _loadNextActivity() async {
-    if (!_sessionLoader.isLoaded) {
-      try {
-        await _sessionLoader.completer.future;
-      } catch (_) {
-        return;
-      }
-    }
-
-    if (!mounted) return;
-
     try {
-      _clearState();
-
+      _resetActivityState();
       final session = _sessionLoader.value!;
       final activityRequest = session.currentActivityRequest;
       if (activityRequest == null) {
@@ -201,10 +183,9 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       }
 
       // Prefetch lemma info for meaning activities before marking ready
-      if (result.result != null &&
-          result.result!.activityType == ActivityTypeEnum.lemmaMeaning) {
+      if (result.result!.activityType == ActivityTypeEnum.lemmaMeaning) {
         final choices = result.result!.multipleChoiceContent!.choices.toList();
-        await _prefetchLemmaInfo(choices);
+        await _fetchLemmaInfo(choices);
       }
 
       activityState.value = AsyncState.loaded(result.result!);
@@ -215,46 +196,26 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     }
   }
 
-  //fetches display info for all choices from constructIDs
-  Future<void> _prefetchLemmaInfo(List<String> choiceIds) async {
-    final results = await Future.wait(
-      choiceIds.map((id) async {
-        final cId = ConstructIdentifier.fromString(id);
-        if (cId == null) {
-          return null;
-        }
-        try {
-          final result = await cId.getLemmaInfo({});
-          return result;
-        } catch (e) {
-          return null;
-        }
-      }),
-    );
+  Future<void> _fetchLemmaInfo(List<String> choiceIds) async {
+    final texts = <String, String>{};
+    final emojis = <String, String?>{};
 
-    // Check if any result is an error
-    for (int i = 0; i < results.length; i++) {
-      final res = results[i];
-      if (res != null && res.isError) {
-        // Clear cache for failed items so retry will fetch fresh
-        final failedId = choiceIds[i];
-        final cId = ConstructIdentifier.fromString(failedId);
-        if (cId != null) {
-          LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
-        }
+    for (final id in choiceIds) {
+      final cId = ConstructIdentifier.fromString(id);
+      if (cId == null) continue;
 
+      final res = await cId.getLemmaInfo({});
+      if (res.isError) {
+        LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
         throw L10n.of(context).oopsSomethingWentWrong;
       }
-      // Update choice texts/emojis if successful
-      if (res != null && !res.isError) {
-        final id = choiceIds[i];
-        final info = res.result!;
-        _choiceTexts[id] = info.meaning;
-        _choiceEmojis[id] = _choiceEmojis[id] ?? info.emoji.firstOrNull;
-      }
+
+      texts[id] = res.result!.meaning;
+      emojis[id] = res.result!.emoji.firstOrNull;
     }
 
-    // Check for duplicate choice texts and remove duplicates
+    _choiceTexts.addAll(texts);
+    _choiceEmojis.addAll(emojis);
     _removeDuplicateChoices();
   }
 
@@ -291,12 +252,11 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       }
     }
 
-    if (idsToRemove.isNotEmpty) {
-      activity.choices.removeAll(idsToRemove);
-      for (final id in idsToRemove) {
-        _choiceTexts.remove(id);
-        _choiceEmojis.remove(id);
-      }
+    if (idsToRemove.isEmpty) return;
+    activity.choices.removeAll(idsToRemove);
+    for (final id in idsToRemove) {
+      _choiceTexts.remove(id);
+      _choiceEmojis.remove(id);
     }
   }
 
@@ -307,20 +267,22 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
 
+    // Update activity record
     activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
     final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
 
-    // Submit answer immediately (records use and gives XP)
+    // Update session model and analytics
     final use = _sessionLoader.value!.submitAnswer(activity, correct);
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
+
     await _saveSession();
     if (!correct) return;
 
-    // display the fact that the choice was correct before loading the next activity
+    // Display the fact that the choice was correct before loading the next activity
     await Future.delayed(const Duration(milliseconds: 1000));
 
-    // Only move to next activity when answer is correct
+    // Then mark this activity as completed, and either load the next or complete the session
     _sessionLoader.value!.completeActivity();
     await _saveSession();
 
@@ -330,54 +292,10 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   Future<List<InlineSpan>?> getExampleMessage(
     ConstructIdentifier construct,
   ) async {
-    final ConstructUses constructUse =
-        await _analyticsService.getConstructUse(construct);
-
-    for (final use in constructUse.cappedUses) {
-      final event = await Matrix.of(context).client.getEventByConstructUse(use);
-      if (event == null) continue;
-
-      final spans = _buildExampleMessage(use.form, event);
-      if (spans != null) return spans;
-    }
-
-    return null;
-  }
-
-  List<InlineSpan>? _buildExampleMessage(
-    String? form,
-    PangeaMessageEvent messageEvent,
-  ) {
-    final tokens = messageEvent.messageDisplayRepresentation?.tokens;
-    if (tokens == null || tokens.isEmpty) return null;
-    final token = tokens.firstWhereOrNull(
-      (token) => token.text.content == form,
+    return ExampleMessageUtil.getExampleMessage(
+      await _analyticsService.getConstructUse(construct),
+      Matrix.of(context).client,
     );
-    if (token == null) return null;
-
-    final text = messageEvent.messageDisplayText;
-    final tokenText = token.text.content;
-    int tokenIndex = text.indexOf(tokenText);
-    if (tokenIndex == -1) return null;
-
-    final beforeSubstring = text.substring(0, tokenIndex);
-    if (beforeSubstring.length != beforeSubstring.characters.length) {
-      tokenIndex = beforeSubstring.characters.length;
-    }
-
-    final int tokenLength = tokenText.characters.length;
-    final before = text.characters.take(tokenIndex).toString();
-    final after = text.characters.skip(tokenIndex + tokenLength).toString();
-    return [
-      TextSpan(text: before),
-      TextSpan(
-        text: tokenText,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      TextSpan(text: after),
-    ];
   }
 
   Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
