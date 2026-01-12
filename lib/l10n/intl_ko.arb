@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:23:16.118299",
+  "@@last_modified": "2026-01-12 13:37:51.372785",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10931,6 +10931,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 채팅을 나갔습니다",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

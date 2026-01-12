@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-07 14:24:33.836325",
+  "@@last_modified": "2026-01-12 13:38:06.933723",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11195,6 +11195,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Napustili ste chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

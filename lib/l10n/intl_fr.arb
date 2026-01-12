@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-07 14:29:28.310920",
+  "@@last_modified": "2026-01-12 13:39:02.130458",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11147,6 +11147,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Vous avez quitté le chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

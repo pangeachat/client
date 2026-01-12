@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:28:06.931186",
+  "@@last_modified": "2026-01-12 13:38:47.077437",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11927,6 +11927,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 আপনি চ্যাট ছেড়ে দিয়েছেন",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

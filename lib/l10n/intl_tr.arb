@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-07 14:27:16.503973",
+  "@@last_modified": "2026-01-12 13:38:33.862968",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11045,6 +11045,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Sohbeti terk ettin",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

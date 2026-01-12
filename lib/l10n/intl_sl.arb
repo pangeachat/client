@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-07 14:25:29.847675",
+  "@@last_modified": "2026-01-12 13:38:16.664389",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11904,6 +11904,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Zapustili ste klepet",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

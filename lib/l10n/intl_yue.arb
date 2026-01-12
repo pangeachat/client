@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-07 14:25:37.722488",
+  "@@last_modified": "2026-01-12 13:38:18.336177",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11914,6 +11914,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 你已離開聊天",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-07 14:26:03.848423",
+  "@@last_modified": "2026-01-12 13:38:22.191603",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11430,6 +11430,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Opustil(a) jsi chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

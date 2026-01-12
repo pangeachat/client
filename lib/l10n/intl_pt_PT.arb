@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-07 14:26:44.705293",
+  "@@last_modified": "2026-01-12 13:38:27.719910",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11852,6 +11852,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Você saiu do chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

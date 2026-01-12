@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:27:35.989013",
+  "@@last_modified": "2026-01-12 13:38:37.446376",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6393,6 +6393,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Bạn đã rời khỏi cuộc trò chuyện",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }
