@@ -225,7 +225,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
           ErrorIndicator(message: controller.activityError!),
           const SizedBox(height: 16),
           TextButton.icon(
-            onPressed: controller.loadActivity,
+            onPressed: controller.reloadSession,
             icon: const Icon(Icons.refresh),
             label: Text(L10n.of(context).tryAgain),
           ),

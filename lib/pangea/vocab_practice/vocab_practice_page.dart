@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -46,13 +47,31 @@ class VocabPracticeState extends State<VocabPractice> {
   final Map<String, String?> _choiceEmojis = {};
 
   StreamSubscription<void>? _languageStreamSubscription;
-  bool _sessionClearedDueToLanguageChange = false;
 
   @override
   void initState() {
     super.initState();
     _startSession();
-    _listenToLanguageChanges();
+    _languageStreamSubscription = MatrixState
+        .pangeaController.userController.languageStream.stream
+        .listen((_) async {
+      try {
+        _clearState();
+        await _analyticsService
+            .updateDispatcher.constructUpdateStream.stream.first
+            .timeout(
+          const Duration(seconds: 10),
+        );
+      } catch (e) {
+        if (mounted) {
+          setState(
+            () => activityError = L10n.of(context).oopsSomethingWentWrong,
+          );
+        }
+        return;
+      }
+      await reloadSession();
+    });
   }
 
   @override
@@ -60,33 +79,12 @@ class VocabPracticeState extends State<VocabPractice> {
     _languageStreamSubscription?.cancel();
     if (isComplete) {
       VocabPracticeSessionRepo.clearSession();
-    } else if (!_sessionClearedDueToLanguageChange) {
-      //don't save if session was cleared due to language change
-      _saveCurrentTime();
+    } else {
+      _saveSession();
     }
     sessionLoader.dispose();
     super.dispose();
   }
-
-  void _saveCurrentTime() {
-    if (sessionLoader.isLoaded) {
-      VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
-    }
-  }
-
-  /// Resets all session state without disposing the widget
-  void _resetState() {
-    currentActivity = null;
-    isLoadingActivity = true;
-    isAwaitingNextActivity = false;
-    activityError = null;
-    isLoadingLemmaInfo = false;
-    _choiceTexts.clear();
-    _choiceEmojis.clear();
-  }
-
-  bool get isComplete =>
-      sessionLoader.isLoaded && sessionLoader.value!.hasCompletedCurrentGroup;
 
   double get progress =>
       sessionLoader.isLoaded ? sessionLoader.value!.progress : 0.0;
@@ -101,101 +99,78 @@ class VocabPracticeState extends State<VocabPractice> {
   int get elapsedSeconds =>
       sessionLoader.isLoaded ? sessionLoader.value!.elapsedSeconds : 0;
 
+  bool get isComplete =>
+      sessionLoader.isLoaded && sessionLoader.value!.hasCompletedCurrentGroup;
+
+  AnalyticsDataService get _analyticsService =>
+      Matrix.of(context).analyticsDataService;
+
+  String getChoiceText(String choiceId) {
+    if (_choiceTexts.containsKey(choiceId)) return _choiceTexts[choiceId]!;
+    final cId = ConstructIdentifier.fromString(choiceId);
+    return cId?.lemma ?? choiceId;
+  }
+
+  String? getChoiceEmoji(String choiceId) => _choiceEmojis[choiceId];
+
+  /// Resets all session state without disposing the widget
+  void _clearState() {
+    setState(() {
+      isAwaitingNextActivity = false;
+      currentActivity = null;
+      isLoadingActivity = true;
+      activityError = null;
+      isLoadingLemmaInfo = false;
+      _choiceTexts.clear();
+      _choiceEmojis.clear();
+    });
+  }
+
   void updateElapsedTime(int seconds) {
     if (sessionLoader.isLoaded) {
       sessionLoader.value!.elapsedSeconds = seconds;
     }
   }
 
-  Future<void> _waitForAnalytics() async {
-    if (!MatrixState.pangeaController.matrixState.analyticsDataService
-        .initCompleter.isCompleted) {
-      MatrixState.pangeaController.initControllers();
-      await MatrixState.pangeaController.matrixState.analyticsDataService
-          .initCompleter.future;
+  Future<void> _saveSession() async {
+    if (sessionLoader.isLoaded) {
+      await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
     }
   }
 
-  void _listenToLanguageChanges() {
-    _languageStreamSubscription = MatrixState
-        .pangeaController.userController.languageStream.stream
-        .listen((_) async {
-      // If language changed, clear session and back out of vocab practice
-      if (await _shouldReloadSession()) {
-        _sessionClearedDueToLanguageChange = true;
-        await VocabPracticeSessionRepo.clearSession();
-        if (mounted) {
-          Navigator.of(context).pop();
-        }
-      }
-    });
+  Future<void> _waitForAnalytics() async {
+    if (!_analyticsService.initCompleter.isCompleted) {
+      MatrixState.pangeaController.initControllers();
+      await _analyticsService.initCompleter.future;
+    }
   }
 
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await sessionLoader.load();
-
-    // If user languages have changed since last session, clear session
-    if (await _shouldReloadSession()) {
-      await VocabPracticeSessionRepo.clearSession();
-      sessionLoader.dispose();
-      sessionLoader = SessionLoader();
-      await sessionLoader.load();
-    }
-
-    loadActivity();
+    await loadNextActivity();
   }
 
-  // check if current l1 and l2 have changed from those of the loaded session
-  Future<bool> _shouldReloadSession() async {
-    if (!sessionLoader.isLoaded) return false;
-
-    final session = sessionLoader.value!;
-    final currentL1 =
-        MatrixState.pangeaController.userController.userL1?.langCode;
-    final currentL2 =
-        MatrixState.pangeaController.userController.userL2?.langCode;
-
-    if (session.userL1 != currentL1 || session.userL2 != currentL2) {
-      return true;
-    }
-    return false;
+  Future<void> reloadSession() async {
+    _clearState();
+    await VocabPracticeSessionRepo.clearSession();
+    sessionLoader.dispose();
+    sessionLoader = SessionLoader();
+    await _startSession();
   }
 
   Future<void> completeActivitySession() async {
     if (!sessionLoader.isLoaded) return;
-
-    _saveCurrentTime();
     sessionLoader.value!.finishSession();
-    await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
-
+    await _saveSession();
     setState(() {});
-  }
-
-  Future<void> reloadSession() async {
-    await showFutureLoadingDialog(
-      context: context,
-      future: () async {
-        // Clear current session storage, dispose old session loader, and clear state variables
-        await VocabPracticeSessionRepo.clearSession();
-        sessionLoader.dispose();
-        sessionLoader = SessionLoader();
-        _resetState();
-        await _startSession();
-      },
-    );
-
-    if (mounted) {
-      setState(() {});
-    }
   }
 
   Future<List<InlineSpan>?> getExampleMessage(
     ConstructIdentifier construct,
   ) async {
-    final ConstructUses constructUse = await Matrix.of(context)
-        .analyticsDataService
-        .getConstructUse(construct);
+    final ConstructUses constructUse =
+        await _analyticsService.getConstructUse(construct);
     for (final use in constructUse.cappedUses) {
       if (use.metadata.eventId == null || use.metadata.roomId == null) {
         continue;
@@ -251,7 +226,7 @@ class VocabPracticeState extends State<VocabPractice> {
     return null;
   }
 
-  Future<void> loadActivity() async {
+  Future<void> loadNextActivity() async {
     if (!sessionLoader.isLoaded) {
       try {
         await sessionLoader.completer.future;
@@ -262,175 +237,92 @@ class VocabPracticeState extends State<VocabPractice> {
 
     if (!mounted) return;
 
-    setState(() {
-      isAwaitingNextActivity = false;
-      currentActivity = null;
-      isLoadingActivity = true;
-      activityError = null;
-      _choiceTexts.clear();
-      _choiceEmojis.clear();
-    });
+    try {
+      _clearState();
 
-    final session = sessionLoader.value!;
-    final activityRequest = session.currentActivityRequest;
-    if (activityRequest == null) {
-      setState(() {
-        activityError = L10n.of(context).noActivityRequest;
-        isLoadingActivity = false;
-      });
-      return;
-    }
+      final session = sessionLoader.value!;
+      final activityRequest = session.currentActivityRequest;
+      if (activityRequest == null) {
+        throw L10n.of(context).noActivityRequest;
+      }
 
-    final result = await PracticeRepo.getPracticeActivity(
-      activityRequest,
-      messageInfo: {},
-    );
-    if (result.isError) {
+      final result = await PracticeRepo.getPracticeActivity(
+        activityRequest,
+        messageInfo: {},
+      );
+      if (result.isError) {
+        activityError = L10n.of(context).oopsSomethingWentWrong;
+      } else {
+        currentActivity = result.result!;
+      }
+
+      // Prefetch lemma info for meaning activities before marking ready
+      if (currentActivity != null &&
+          currentActivity!.activityType == ActivityTypeEnum.lemmaMeaning) {
+        final choices =
+            currentActivity!.multipleChoiceContent!.choices.toList();
+        await _prefetchLemmaInfo(choices);
+      }
+    } catch (e) {
       activityError = L10n.of(context).oopsSomethingWentWrong;
-    } else {
-      currentActivity = result.result!;
-    }
-
-    // Prefetch lemma info for meaning activities before marking ready
-    if (currentActivity != null &&
-        currentActivity!.activityType == ActivityTypeEnum.lemmaMeaning) {
-      final choices = currentActivity!.multipleChoiceContent!.choices.toList();
-      await _prefetchLemmaInfo(choices);
-    }
-
-    if (mounted) {
-      setState(() => isLoadingActivity = false);
+    } finally {
+      if (mounted) {
+        setState(() => isLoadingActivity = false);
+      }
     }
   }
-
-  Future<void> onSelectChoice(
-    ConstructIdentifier choiceConstruct,
-    String choiceContent,
-  ) async {
-    if (currentActivity == null) return;
-    final activity = currentActivity!;
-
-    activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
-    final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
-
-    // Submit answer immediately (records use and gives XP)
-    sessionLoader.value!.submitAnswer(activity, correct);
-    await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
-
-    final transformTargetId =
-        'vocab-choice-card-${choiceContent.replaceAll(' ', '_')}';
-    if (correct) {
-      OverlayUtil.showPointsGained(transformTargetId, 5, context);
-    } else {
-      OverlayUtil.showPointsGained(transformTargetId, -1, context);
-    }
-    if (!correct) return;
-
-    // display the fact that the choice was correct before loading the next activity
-    setState(() => isAwaitingNextActivity = true);
-    await Future.delayed(const Duration(milliseconds: 1000));
-    setState(() => isAwaitingNextActivity = false);
-
-    // Only move to next activity when answer is correct
-    sessionLoader.value!.completeActivity(activity);
-    await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
-
-    if (isComplete) {
-      await completeActivitySession();
-    }
-
-    await loadActivity();
-  }
-
-  Future<Map<String, double>> calculateProgressChange(int xpGained) async {
-    final derivedData = await MatrixState
-        .pangeaController.matrixState.analyticsDataService.derivedData;
-    final currentLevel = derivedData.level;
-    final currentXP = derivedData.totalXP;
-
-    final minXPForCurrentLevel =
-        DerivedAnalyticsDataModel.calculateXpWithLevel(currentLevel);
-    final minXPForNextLevel = derivedData.minXPForNextLevel;
-
-    final xpRange = minXPForNextLevel - minXPForCurrentLevel;
-
-    final progressBefore =
-        ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
-
-    final newTotalXP = currentXP + xpGained;
-    final progressAfter =
-        ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
-
-    return {
-      'before': progressBefore,
-      'after': progressAfter,
-    };
-  }
-
-  @override
-  Widget build(BuildContext context) => VocabPracticeView(this);
-
-  String getChoiceText(String choiceId) {
-    if (_choiceTexts.containsKey(choiceId)) return _choiceTexts[choiceId]!;
-    final cId = ConstructIdentifier.fromString(choiceId);
-    return cId?.lemma ?? choiceId;
-  }
-
-  String? getChoiceEmoji(String choiceId) => _choiceEmojis[choiceId];
 
   //fetches display info for all choices from constructIDs
   Future<void> _prefetchLemmaInfo(List<String> choiceIds) async {
     if (!mounted) return;
-    setState(() => isLoadingLemmaInfo = true);
+    try {
+      setState(() => isLoadingLemmaInfo = true);
 
-    final results = await Future.wait(
-      choiceIds.map((id) async {
-        final cId = ConstructIdentifier.fromString(id);
-        if (cId == null) {
-          return null;
-        }
-        try {
-          final result = await cId.getLemmaInfo({});
-          return result;
-        } catch (e) {
-          return null;
-        }
-      }),
-    );
+      final results = await Future.wait(
+        choiceIds.map((id) async {
+          final cId = ConstructIdentifier.fromString(id);
+          if (cId == null) {
+            return null;
+          }
+          try {
+            final result = await cId.getLemmaInfo({});
+            return result;
+          } catch (e) {
+            return null;
+          }
+        }),
+      );
 
-    // Check if any result is an error
-    for (int i = 0; i < results.length; i++) {
-      final res = results[i];
-      if (res != null && res.isError) {
-        // Clear cache for failed items so retry will fetch fresh
-        final failedId = choiceIds[i];
-        final cId = ConstructIdentifier.fromString(failedId);
-        if (cId != null) {
-          LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
-        }
+      // Check if any result is an error
+      for (int i = 0; i < results.length; i++) {
+        final res = results[i];
+        if (res != null && res.isError) {
+          // Clear cache for failed items so retry will fetch fresh
+          final failedId = choiceIds[i];
+          final cId = ConstructIdentifier.fromString(failedId);
+          if (cId != null) {
+            LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
+          }
 
-        if (mounted) {
-          setState(() {
-            activityError = L10n.of(context).oopsSomethingWentWrong;
-            isLoadingLemmaInfo = false;
-          });
+          throw L10n.of(context).oopsSomethingWentWrong;
         }
-        return;
+        // Update choice texts/emojis if successful
+        if (res != null && !res.isError) {
+          final id = choiceIds[i];
+          final info = res.result!;
+          _choiceTexts[id] = info.meaning;
+          _choiceEmojis[id] = _choiceEmojis[id] ?? info.emoji.firstOrNull;
+        }
       }
-      // Update choice texts/emojis if successful
-      if (res != null && !res.isError) {
-        final id = choiceIds[i];
-        final info = res.result!;
-        _choiceTexts[id] = info.meaning;
-        _choiceEmojis[id] = _choiceEmojis[id] ?? info.emoji.firstOrNull;
+
+      // Check for duplicate choice texts and remove duplicates
+      _removeDuplicateChoices();
+    } catch (_) {
+      rethrow;
+    } finally {
+      if (mounted) {
+        setState(() => isLoadingLemmaInfo = false);
       }
-    }
-
-    // Check for duplicate choice texts and remove duplicates
-    _removeDuplicateChoices();
-
-    if (mounted) {
-      setState(() => isLoadingLemmaInfo = false);
     }
   }
 
@@ -475,4 +367,70 @@ class VocabPracticeState extends State<VocabPractice> {
       }
     }
   }
+
+  Future<void> onSelectChoice(
+    ConstructIdentifier choiceConstruct,
+    String choiceContent,
+  ) async {
+    if (currentActivity == null) return;
+    final activity = currentActivity!;
+
+    activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
+    final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
+
+    // Submit answer immediately (records use and gives XP)
+    sessionLoader.value!.submitAnswer(activity, correct);
+    await _saveSession();
+
+    final transformTargetId =
+        'vocab-choice-card-${choiceContent.replaceAll(' ', '_')}';
+    if (correct) {
+      OverlayUtil.showPointsGained(transformTargetId, 5, context);
+    } else {
+      OverlayUtil.showPointsGained(transformTargetId, -1, context);
+    }
+    if (!correct) return;
+
+    // display the fact that the choice was correct before loading the next activity
+    setState(() => isAwaitingNextActivity = true);
+    await Future.delayed(const Duration(milliseconds: 1000));
+    setState(() => isAwaitingNextActivity = false);
+
+    // Only move to next activity when answer is correct
+    sessionLoader.value!.completeActivity(activity);
+    await _saveSession();
+
+    if (isComplete) {
+      await completeActivitySession();
+    }
+
+    await loadNextActivity();
+  }
+
+  Future<Map<String, double>> calculateProgressChange(int xpGained) async {
+    final derivedData = await _analyticsService.derivedData;
+    final currentLevel = derivedData.level;
+    final currentXP = derivedData.totalXP;
+
+    final minXPForCurrentLevel =
+        DerivedAnalyticsDataModel.calculateXpWithLevel(currentLevel);
+    final minXPForNextLevel = derivedData.minXPForNextLevel;
+
+    final xpRange = minXPForNextLevel - minXPForCurrentLevel;
+
+    final progressBefore =
+        ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+
+    final newTotalXP = currentXP + xpGained;
+    final progressAfter =
+        ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
+
+    return {
+      'before': progressBefore,
+      'after': progressAfter,
+    };
+  }
+
+  @override
+  Widget build(BuildContext context) => VocabPracticeView(this);
 }
