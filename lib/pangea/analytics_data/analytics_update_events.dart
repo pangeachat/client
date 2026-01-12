@@ -23,3 +23,8 @@ class ConstructBlockedEvent extends AnalyticsUpdateEvent {
   final ConstructIdentifier blockedConstruct;
   ConstructBlockedEvent(this.blockedConstruct);
 }
+
+class NewConstructsEvent extends AnalyticsUpdateEvent {
+  final Set<ConstructIdentifier> newConstructs;
+  NewConstructsEvent(this.newConstructs);
+}
