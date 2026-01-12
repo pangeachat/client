@@ -200,7 +200,7 @@ extension CoursePlanRoomExtension on Room {
           type: EventTypes.RoomAvatar,
           content: {'url': uploadURL},
         ),
-        RoomDefaults.defaultPowerLevels(client.userID!),
+        type.powerLevels(client.userID!),
         await client.pangeaJoinRules(
           'knock_restricted',
           allow: [
