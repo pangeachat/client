@@ -40,7 +40,7 @@ class VocabPracticeView extends StatelessWidget {
             ),
             //keep track of state to update timer
             ValueListenableBuilder(
-              valueListenable: controller.sessionLoader.state,
+              valueListenable: controller.sessionState,
               builder: (context, state, __) {
                 if (state is AsyncLoaded<VocabPracticeSessionModel>) {
                   return VocabTimerWidget(
@@ -75,7 +75,7 @@ class _OngoingActivitySessionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: controller.sessionLoader.state,
+      valueListenable: controller.sessionState,
       builder: (context, state, __) {
         return switch (state) {
           AsyncError<VocabPracticeSessionModel>(:final error) =>

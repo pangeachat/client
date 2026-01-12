@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 
 class VocabPracticeSessionModel {
   final DateTime startedAt;
@@ -56,12 +57,10 @@ class VocabPracticeSessionModel {
   bool get hasCompletedCurrentGroup =>
       currentIndex >= currentAvailableActivities;
 
-  int get timeForBonus => 60;
-
   double get progress =>
       (currentIndex / currentAvailableActivities).clamp(0.0, 1.0);
 
-  List<ConstructIdentifier> get currentPracticeGroup => sortedConstructIds
+  List<ConstructIdentifier> get _currentPracticeGroup => sortedConstructIds
       .skip(currentGroup * practiceGroupSize)
       .take(practiceGroupSize)
       .toList();
@@ -70,7 +69,7 @@ class VocabPracticeSessionModel {
     if (currentIndex < 0 || hasCompletedCurrentGroup) {
       return null;
     }
-    return currentPracticeGroup[currentIndex % practiceGroupSize];
+    return _currentPracticeGroup[currentIndex % practiceGroupSize];
   }
 
   ActivityTypeEnum? get currentActivityType {
@@ -115,53 +114,69 @@ class VocabPracticeSessionModel {
     return (result * 100).truncateToDouble();
   }
 
-  List<OneConstructUse> get bonusUses {
-    final List<OneConstructUse> bonus = [];
+  int get bonusXP => _bonusUses.fold(0, (sum, use) => sum + use.xp);
 
-    if (accuracy >= 100) {
-      bonus.addAll(
-        completedUses.where((use) => use.xp > 0).map(
-              (use) => OneConstructUse(
-                useType: ConstructUseTypeEnum.bonus,
-                constructType: use.constructType,
-                metadata: ConstructUseMetaData(
-                  roomId: use.metadata.roomId,
-                  timeStamp: DateTime.now(),
-                ),
-                category: use.category,
-                lemma: use.lemma,
-                form: use.form,
-                xp: ConstructUseTypeEnum.bonus.pointValue,
-              ),
-            ),
-      );
+  int get accuracyBonusXP =>
+      _accuracyBonusUses.fold(0, (sum, use) => sum + use.xp);
+
+  int get timeBonusXP => _timeBonusUses.fold(0, (sum, use) => sum + use.xp);
+
+  List<OneConstructUse> get _bonusUses => [
+        ..._accuracyBonusUses,
+        ..._timeBonusUses,
+      ];
+
+  List<OneConstructUse> get _accuracyBonusUses {
+    if (accuracy < 100) {
+      return [];
     }
 
-    if (elapsedSeconds <= timeForBonus) {
-      bonus.addAll(
-        completedUses.where((use) => use.xp > 0).map(
-              (use) => OneConstructUse(
-                useType: ConstructUseTypeEnum.bonus,
-                constructType: use.constructType,
-                metadata: ConstructUseMetaData(
-                  roomId: use.metadata.roomId,
-                  timeStamp: DateTime.now(),
-                ),
-                category: use.category,
-                lemma: use.lemma,
-                form: use.form,
-                xp: ConstructUseTypeEnum.bonus.pointValue,
-              ),
+    return completedUses
+        .where((use) => use.xp > 0)
+        .map(
+          (use) => OneConstructUse(
+            useType: ConstructUseTypeEnum.bonus,
+            constructType: use.constructType,
+            metadata: ConstructUseMetaData(
+              roomId: use.metadata.roomId,
+              timeStamp: DateTime.now(),
             ),
-      );
+            category: use.category,
+            lemma: use.lemma,
+            form: use.form,
+            xp: ConstructUseTypeEnum.bonus.pointValue,
+          ),
+        )
+        .toList();
+  }
+
+  List<OneConstructUse> get _timeBonusUses {
+    if (elapsedSeconds > VocabPracticeConstants.timeForBonus) {
+      return [];
     }
 
-    return bonus;
+    return completedUses
+        .where((use) => use.xp > 0)
+        .map(
+          (use) => OneConstructUse(
+            useType: ConstructUseTypeEnum.bonus,
+            constructType: use.constructType,
+            metadata: ConstructUseMetaData(
+              roomId: use.metadata.roomId,
+              timeStamp: DateTime.now(),
+            ),
+            category: use.category,
+            lemma: use.lemma,
+            form: use.form,
+            xp: ConstructUseTypeEnum.bonus.pointValue,
+          ),
+        )
+        .toList();
   }
 
   List<OneConstructUse> finishSession() {
     finished = true;
-    return bonusUses;
+    return _bonusUses;
   }
 
   OneConstructUse submitAnswer(PracticeActivityModel activity, bool isCorrect) {
@@ -186,9 +201,7 @@ class VocabPracticeSessionModel {
     return use;
   }
 
-  void completeActivity(PracticeActivityModel activity) {
-    currentIndex += 1;
-  }
+  void completeActivity() => currentIndex += 1;
 
   factory VocabPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return VocabPracticeSessionModel(

@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart'
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/vocab_practice/percent_marker_bar.dart';
 import 'package:fluffychat/pangea/vocab_practice/stat_card.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -24,19 +25,12 @@ class CompletedActivitySessionView extends StatelessWidget {
   Widget build(BuildContext context) {
     final username =
         Matrix.of(context).client.userID?.split(':').first.substring(1) ?? '';
-    final bool accuracyAchievement =
-        controller.sessionLoader.value!.accuracy == 100;
-    final bool timeAchievement =
-        controller.sessionLoader.value!.elapsedSeconds <= 60;
-    final int numBonusPoints = controller.sessionLoader.value!.completedUses
-        .where((use) => use.xp > 0)
-        .length;
-    //give double bonus for both, single for one, none for zero
-    final int bonusXp = (accuracyAchievement && timeAchievement)
-        ? numBonusPoints * 2
-        : (accuracyAchievement || timeAchievement)
-            ? numBonusPoints
-            : 0;
+
+    final double accuracy = controller.accuracy;
+    final int elapsedSeconds = controller.elapsedSeconds;
+
+    final bool accuracyAchievement = accuracy == 100;
+    final bool timeAchievement = elapsedSeconds <= 60;
 
     return Stack(
       children: [
@@ -93,7 +87,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "+ ${controller.sessionLoader.value!.totalXpGained + bonusXp} XP",
+                          "+ ${controller.allXPGained} XP",
                           style:
                               Theme.of(context).textTheme.titleLarge?.copyWith(
                                     color: AppConfig.goldLight,
@@ -104,40 +98,34 @@ class CompletedActivitySessionView extends StatelessWidget {
                     ),
                     StatCard(
                       icon: Icons.my_location,
-                      text:
-                          "${L10n.of(context).accuracy}: ${controller.sessionLoader.value!.accuracy}%",
+                      text: "${L10n.of(context).accuracy}: $accuracy%",
                       isAchievement: accuracyAchievement,
-                      achievementText: "+ $numBonusPoints XP",
+                      achievementText: "+ ${controller.accuracyBonusXP} XP",
                       child: PercentMarkerBar(
                         height: 20.0,
-                        widthPercent:
-                            controller.sessionLoader.value!.accuracy / 100.0,
+                        widthPercent: accuracy / 100.0,
                         markerWidth: 20.0,
                         markerColor: AppConfig.success,
-                        backgroundColor:
-                            !(controller.sessionLoader.value!.accuracy == 100)
-                                ? Theme.of(context)
+                        backgroundColor: !accuracyAchievement
+                            ? Theme.of(context)
+                                .colorScheme
+                                .surfaceContainerHighest
+                            : Color.alphaBlend(
+                                AppConfig.goldLight.withValues(alpha: 0.3),
+                                Theme.of(context)
                                     .colorScheme
-                                    .surfaceContainerHighest
-                                : Color.alphaBlend(
-                                    AppConfig.goldLight.withValues(alpha: 0.3),
-                                    Theme.of(context)
-                                        .colorScheme
-                                        .surfaceContainerHighest,
-                                  ),
+                                    .surfaceContainerHighest,
+                              ),
                       ),
                     ),
                     StatCard(
                       icon: Icons.alarm,
                       text:
-                          "${L10n.of(context).time}: ${_formatTime(controller.sessionLoader.value!.elapsedSeconds)}",
+                          "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
                       isAchievement: timeAchievement,
-                      achievementText: "+ $numBonusPoints XP",
+                      achievementText: "+ ${controller.timeBonusXP} XP",
                       child: TimeStarsWidget(
-                        elapsedSeconds:
-                            controller.sessionLoader.value!.elapsedSeconds,
-                        timeForBonus:
-                            controller.sessionLoader.value!.timeForBonus,
+                        elapsedSeconds: elapsedSeconds,
                       ),
                     ),
                     Column(
@@ -197,15 +185,14 @@ class CompletedActivitySessionView extends StatelessWidget {
 
 class TimeStarsWidget extends StatelessWidget {
   final int elapsedSeconds;
-  final int timeForBonus;
 
   const TimeStarsWidget({
     required this.elapsedSeconds,
-    required this.timeForBonus,
     super.key,
   });
 
   int get starCount {
+    const timeForBonus = VocabPracticeConstants.timeForBonus;
     if (elapsedSeconds <= timeForBonus) return 5;
     if (elapsedSeconds <= timeForBonus * 1.5) return 4;
     if (elapsedSeconds <= timeForBonus * 2) return 3;

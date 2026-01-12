@@ -37,7 +37,7 @@ class VocabPractice extends StatefulWidget {
 }
 
 class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
-  SessionLoader sessionLoader = SessionLoader();
+  SessionLoader _sessionLoader = SessionLoader();
   final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
       ValueNotifier(const AsyncState.idle());
 
@@ -63,7 +63,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     } else {
       _saveSession();
     }
-    sessionLoader.dispose();
+    _sessionLoader.dispose();
     super.dispose();
   }
 
@@ -72,11 +72,25 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
           ? (activityState.value as AsyncLoaded<PracticeActivityModel>).value
           : null;
 
-  double get progress =>
-      sessionLoader.isLoaded ? sessionLoader.value!.progress : 0.0;
+  double get accuracy => _sessionLoader.value?.accuracy ?? 0.0;
+
+  double get progress => _sessionLoader.value?.progress ?? 0.0;
 
   bool get isComplete =>
-      sessionLoader.isLoaded && sessionLoader.value!.hasCompletedCurrentGroup;
+      _sessionLoader.value?.hasCompletedCurrentGroup ?? false;
+
+  int get elapsedSeconds => _sessionLoader.value?.elapsedSeconds ?? 0;
+
+  int get allXPGained =>
+      (_sessionLoader.value?.totalXpGained ?? 0) +
+      (_sessionLoader.value?.bonusXP ?? 0);
+
+  int get accuracyBonusXP => _sessionLoader.value?.accuracyBonusXP ?? 0;
+
+  int get timeBonusXP => _sessionLoader.value?.timeBonusXP ?? 0;
+
+  ValueNotifier<AsyncState<VocabPracticeSessionModel>> get sessionState =>
+      _sessionLoader.state;
 
   AnalyticsDataService get _analyticsService =>
       Matrix.of(context).analyticsDataService;
@@ -102,14 +116,14 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   }
 
   void updateElapsedTime(int seconds) {
-    if (sessionLoader.isLoaded) {
-      sessionLoader.value!.elapsedSeconds = seconds;
+    if (_sessionLoader.isLoaded) {
+      _sessionLoader.value!.elapsedSeconds = seconds;
     }
   }
 
   Future<void> _saveSession() async {
-    if (sessionLoader.isLoaded) {
-      await VocabPracticeSessionRepo.updateSession(sessionLoader.value!);
+    if (_sessionLoader.isLoaded) {
+      await VocabPracticeSessionRepo.updateSession(_sessionLoader.value!);
     }
   }
 
@@ -138,30 +152,30 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   Future<void> _startSession() async {
     await _waitForAnalytics();
-    await sessionLoader.load();
+    await _sessionLoader.load();
     await _loadNextActivity();
   }
 
   Future<void> reloadSession() async {
     _clearState();
     await VocabPracticeSessionRepo.clearSession();
-    sessionLoader.dispose();
-    sessionLoader = SessionLoader();
+    _sessionLoader.dispose();
+    _sessionLoader = SessionLoader();
     await _startSession();
   }
 
   Future<void> _completeSession() async {
-    if (!sessionLoader.isLoaded) return;
-    final bonus = sessionLoader.value!.finishSession();
+    if (!_sessionLoader.isLoaded) return;
+    final bonus = _sessionLoader.value!.finishSession();
     await _analyticsService.updateService.addAnalytics(null, bonus);
     await _saveSession();
     setState(() {});
   }
 
   Future<void> _loadNextActivity() async {
-    if (!sessionLoader.isLoaded) {
+    if (!_sessionLoader.isLoaded) {
       try {
-        await sessionLoader.completer.future;
+        await _sessionLoader.completer.future;
       } catch (_) {
         return;
       }
@@ -172,7 +186,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     try {
       _clearState();
 
-      final session = sessionLoader.value!;
+      final session = _sessionLoader.value!;
       final activityRequest = session.currentActivityRequest;
       if (activityRequest == null) {
         throw L10n.of(context).noActivityRequest;
@@ -297,7 +311,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
 
     // Submit answer immediately (records use and gives XP)
-    final use = sessionLoader.value!.submitAnswer(activity, correct);
+    final use = _sessionLoader.value!.submitAnswer(activity, correct);
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
     await _saveSession();
@@ -307,7 +321,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     await Future.delayed(const Duration(milliseconds: 1000));
 
     // Only move to next activity when answer is correct
-    sessionLoader.value!.completeActivity(activity);
+    _sessionLoader.value!.completeActivity();
     await _saveSession();
 
     isComplete ? await _completeSession() : await _loadNextActivity();
