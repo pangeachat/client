@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/meaning_choice_card.dart';
@@ -234,10 +235,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
     }
 
     final activity = controller.currentActivity;
-    if (controller.isLoadingActivity ||
-        activity == null ||
-        (activity.activityType == ActivityTypeEnum.lemmaMeaning &&
-            controller.isLoadingLemmaInfo)) {
+    if (controller.isLoadingActivity || activity == null) {
       return Container(
         constraints: const BoxConstraints(maxHeight: 400.0),
         child: const Center(
@@ -261,31 +259,53 @@ class _ActivityChoicesWidget extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: choices.map((choiceId) {
-                final bool isEnabled = !controller.isAwaitingNextActivity;
-                return _buildChoiceCard(
-                  activity: activity,
-                  choiceId: choiceId,
-                  cardHeight: cardHeight,
-                  isEnabled: isEnabled,
-                  onPressed: () =>
-                      controller.onSelectChoice(constructId, choiceId),
-                );
-              }).toList(),
+              children: choices
+                  .map(
+                    (choiceId) => _ChoiceCard(
+                      activity: activity,
+                      constructId: constructId,
+                      activityType: activityType,
+                      choiceId: choiceId,
+                      onPressed: () =>
+                          controller.onSelectChoice(constructId, choiceId),
+                      cardHeight: cardHeight,
+                      choiceText: controller.getChoiceText(choiceId),
+                      choiceEmoji: controller.getChoiceEmoji(choiceId),
+                    ),
+                  )
+                  .toList(),
             ),
           ),
         );
       },
     );
   }
+}
 
-  Widget _buildChoiceCard({
-    required activity,
-    required String choiceId,
-    required double cardHeight,
-    required bool isEnabled,
-    required VoidCallback onPressed,
-  }) {
+class _ChoiceCard extends StatelessWidget {
+  final PracticeActivityModel activity;
+  final ConstructIdentifier constructId;
+  final ActivityTypeEnum activityType;
+  final String choiceId;
+  final VoidCallback onPressed;
+  final double cardHeight;
+
+  final String choiceText;
+  final String? choiceEmoji;
+
+  const _ChoiceCard({
+    required this.activity,
+    required this.constructId,
+    required this.activityType,
+    required this.choiceId,
+    required this.onPressed,
+    required this.cardHeight,
+    required this.choiceText,
+    required this.choiceEmoji,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final isCorrect = activity.multipleChoiceContent!.isCorrect(choiceId);
 
     switch (activity.activityType) {
@@ -295,12 +315,11 @@ class _ActivityChoicesWidget extends StatelessWidget {
             '${constructId.string}_${activityType.name}_meaning_$choiceId',
           ),
           choiceId: choiceId,
-          displayText: controller.getChoiceText(choiceId),
-          emoji: controller.getChoiceEmoji(choiceId),
+          displayText: choiceText,
+          emoji: choiceEmoji,
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
-          isEnabled: isEnabled,
         );
 
       case ActivityTypeEnum.lemmaAudio:
@@ -312,7 +331,6 @@ class _ActivityChoicesWidget extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
-          isEnabled: isEnabled,
         );
 
       default:
@@ -325,8 +343,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
-          isEnabled: isEnabled,
-          child: Text(controller.getChoiceText(choiceId)),
+          child: Text(choiceText),
         );
     }
   }

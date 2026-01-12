@@ -39,10 +39,8 @@ class VocabPracticeState extends State<VocabPractice> {
   SessionLoader sessionLoader = SessionLoader();
   PracticeActivityModel? currentActivity;
   bool isLoadingActivity = true;
-  bool isAwaitingNextActivity = false;
   String? activityError;
 
-  bool isLoadingLemmaInfo = false;
   final Map<String, String> _choiceTexts = {};
   final Map<String, String?> _choiceEmojis = {};
 
@@ -54,24 +52,7 @@ class VocabPracticeState extends State<VocabPractice> {
     _startSession();
     _languageStreamSubscription = MatrixState
         .pangeaController.userController.languageStream.stream
-        .listen((_) async {
-      try {
-        _clearState();
-        await _analyticsService
-            .updateDispatcher.constructUpdateStream.stream.first
-            .timeout(
-          const Duration(seconds: 10),
-        );
-      } catch (e) {
-        if (mounted) {
-          setState(
-            () => activityError = L10n.of(context).oopsSomethingWentWrong,
-          );
-        }
-        return;
-      }
-      await reloadSession();
-    });
+        .listen((_) => _onLanguageUpdate());
   }
 
   @override
@@ -116,11 +97,9 @@ class VocabPracticeState extends State<VocabPractice> {
   /// Resets all session state without disposing the widget
   void _clearState() {
     setState(() {
-      isAwaitingNextActivity = false;
       currentActivity = null;
       isLoadingActivity = true;
       activityError = null;
-      isLoadingLemmaInfo = false;
       _choiceTexts.clear();
       _choiceEmojis.clear();
     });
@@ -145,6 +124,22 @@ class VocabPracticeState extends State<VocabPractice> {
     }
   }
 
+  Future<void> _onLanguageUpdate() async {
+    try {
+      _clearState();
+      await _analyticsService
+          .updateDispatcher.constructUpdateStream.stream.first
+          .timeout(const Duration(seconds: 10));
+      await reloadSession();
+    } catch (e) {
+      if (mounted) {
+        setState(
+          () => activityError = L10n.of(context).oopsSomethingWentWrong,
+        );
+      }
+    }
+  }
+
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await sessionLoader.load();
@@ -159,71 +154,11 @@ class VocabPracticeState extends State<VocabPractice> {
     await _startSession();
   }
 
-  Future<void> completeActivitySession() async {
+  Future<void> completeSession() async {
     if (!sessionLoader.isLoaded) return;
     sessionLoader.value!.finishSession();
     await _saveSession();
     setState(() {});
-  }
-
-  Future<List<InlineSpan>?> getExampleMessage(
-    ConstructIdentifier construct,
-  ) async {
-    final ConstructUses constructUse =
-        await _analyticsService.getConstructUse(construct);
-    for (final use in constructUse.cappedUses) {
-      if (use.metadata.eventId == null || use.metadata.roomId == null) {
-        continue;
-      }
-
-      final room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(use.metadata.roomId!);
-      if (room == null) continue;
-
-      final event = await room.getEventById(use.metadata.eventId!);
-      if (event == null) continue;
-
-      final timeline = await room.getTimeline();
-      final pangeaMessageEvent = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
-        ownMessage: event.senderId ==
-            MatrixState.pangeaController.matrixState.client.userID,
-      );
-
-      final tokens = pangeaMessageEvent.messageDisplayRepresentation?.tokens;
-      if (tokens == null || tokens.isEmpty) continue;
-      final token = tokens.firstWhereOrNull(
-        (token) => token.text.content == use.form,
-      );
-      if (token == null) continue;
-
-      final text = pangeaMessageEvent.messageDisplayText;
-      final tokenText = token.text.content;
-      int tokenIndex = text.indexOf(tokenText);
-      if (tokenIndex == -1) continue;
-
-      final beforeSubstring = text.substring(0, tokenIndex);
-      if (beforeSubstring.length != beforeSubstring.characters.length) {
-        tokenIndex = beforeSubstring.characters.length;
-      }
-
-      final int tokenLength = tokenText.characters.length;
-      final before = text.characters.take(tokenIndex).toString();
-      final after = text.characters.skip(tokenIndex + tokenLength).toString();
-      return [
-        TextSpan(text: before),
-        TextSpan(
-          text: tokenText,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        TextSpan(text: after),
-      ];
-    }
-
-    return null;
   }
 
   Future<void> loadNextActivity() async {
@@ -274,56 +209,45 @@ class VocabPracticeState extends State<VocabPractice> {
 
   //fetches display info for all choices from constructIDs
   Future<void> _prefetchLemmaInfo(List<String> choiceIds) async {
-    if (!mounted) return;
-    try {
-      setState(() => isLoadingLemmaInfo = true);
-
-      final results = await Future.wait(
-        choiceIds.map((id) async {
-          final cId = ConstructIdentifier.fromString(id);
-          if (cId == null) {
-            return null;
-          }
-          try {
-            final result = await cId.getLemmaInfo({});
-            return result;
-          } catch (e) {
-            return null;
-          }
-        }),
-      );
-
-      // Check if any result is an error
-      for (int i = 0; i < results.length; i++) {
-        final res = results[i];
-        if (res != null && res.isError) {
-          // Clear cache for failed items so retry will fetch fresh
-          final failedId = choiceIds[i];
-          final cId = ConstructIdentifier.fromString(failedId);
-          if (cId != null) {
-            LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
-          }
-
-          throw L10n.of(context).oopsSomethingWentWrong;
+    final results = await Future.wait(
+      choiceIds.map((id) async {
+        final cId = ConstructIdentifier.fromString(id);
+        if (cId == null) {
+          return null;
         }
-        // Update choice texts/emojis if successful
-        if (res != null && !res.isError) {
-          final id = choiceIds[i];
-          final info = res.result!;
-          _choiceTexts[id] = info.meaning;
-          _choiceEmojis[id] = _choiceEmojis[id] ?? info.emoji.firstOrNull;
+        try {
+          final result = await cId.getLemmaInfo({});
+          return result;
+        } catch (e) {
+          return null;
         }
+      }),
+    );
+
+    // Check if any result is an error
+    for (int i = 0; i < results.length; i++) {
+      final res = results[i];
+      if (res != null && res.isError) {
+        // Clear cache for failed items so retry will fetch fresh
+        final failedId = choiceIds[i];
+        final cId = ConstructIdentifier.fromString(failedId);
+        if (cId != null) {
+          LemmaInfoRepo.clearCache(cId.lemmaInfoRequest({}));
+        }
+
+        throw L10n.of(context).oopsSomethingWentWrong;
       }
-
-      // Check for duplicate choice texts and remove duplicates
-      _removeDuplicateChoices();
-    } catch (_) {
-      rethrow;
-    } finally {
-      if (mounted) {
-        setState(() => isLoadingLemmaInfo = false);
+      // Update choice texts/emojis if successful
+      if (res != null && !res.isError) {
+        final id = choiceIds[i];
+        final info = res.result!;
+        _choiceTexts[id] = info.meaning;
+        _choiceEmojis[id] = _choiceEmojis[id] ?? info.emoji.firstOrNull;
       }
     }
+
+    // Check for duplicate choice texts and remove duplicates
+    _removeDuplicateChoices();
   }
 
   /// Removes duplicate choice texts, keeping the correct answer if it's a duplicate, or the first otherwise
@@ -392,19 +316,77 @@ class VocabPracticeState extends State<VocabPractice> {
     if (!correct) return;
 
     // display the fact that the choice was correct before loading the next activity
-    setState(() => isAwaitingNextActivity = true);
     await Future.delayed(const Duration(milliseconds: 1000));
-    setState(() => isAwaitingNextActivity = false);
 
     // Only move to next activity when answer is correct
     sessionLoader.value!.completeActivity(activity);
     await _saveSession();
 
     if (isComplete) {
-      await completeActivitySession();
+      await completeSession();
     }
 
     await loadNextActivity();
+  }
+
+  Future<List<InlineSpan>?> getExampleMessage(
+    ConstructIdentifier construct,
+  ) async {
+    final ConstructUses constructUse =
+        await _analyticsService.getConstructUse(construct);
+    for (final use in constructUse.cappedUses) {
+      if (use.metadata.eventId == null || use.metadata.roomId == null) {
+        continue;
+      }
+
+      final room = MatrixState.pangeaController.matrixState.client
+          .getRoomById(use.metadata.roomId!);
+      if (room == null) continue;
+
+      final event = await room.getEventById(use.metadata.eventId!);
+      if (event == null) continue;
+
+      final timeline = await room.getTimeline();
+      final pangeaMessageEvent = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId ==
+            MatrixState.pangeaController.matrixState.client.userID,
+      );
+
+      final tokens = pangeaMessageEvent.messageDisplayRepresentation?.tokens;
+      if (tokens == null || tokens.isEmpty) continue;
+      final token = tokens.firstWhereOrNull(
+        (token) => token.text.content == use.form,
+      );
+      if (token == null) continue;
+
+      final text = pangeaMessageEvent.messageDisplayText;
+      final tokenText = token.text.content;
+      int tokenIndex = text.indexOf(tokenText);
+      if (tokenIndex == -1) continue;
+
+      final beforeSubstring = text.substring(0, tokenIndex);
+      if (beforeSubstring.length != beforeSubstring.characters.length) {
+        tokenIndex = beforeSubstring.characters.length;
+      }
+
+      final int tokenLength = tokenText.characters.length;
+      final before = text.characters.take(tokenIndex).toString();
+      final after = text.characters.skip(tokenIndex + tokenLength).toString();
+      return [
+        TextSpan(text: before),
+        TextSpan(
+          text: tokenText,
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        TextSpan(text: after),
+      ];
+    }
+
+    return null;
   }
 
   Future<Map<String, double>> calculateProgressChange(int xpGained) async {
