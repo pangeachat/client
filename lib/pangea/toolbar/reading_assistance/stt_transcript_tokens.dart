@@ -4,6 +4,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
 class SttTranscriptTokens extends StatelessWidget {
@@ -38,10 +39,6 @@ class SttTranscriptTokens extends StatelessWidget {
     }
 
     final messageCharacters = model.transcript.text.characters;
-    final renderer = TokenRenderingUtil(
-      existingStyle: (style ?? DefaultTextStyle.of(context).style),
-    );
-
     final newTokens = TokensUtil.getNewTokens(
       eventId,
       tokens,
@@ -76,18 +73,14 @@ class SttTranscriptTokens extends StatelessWidget {
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: onClick != null ? () => onClick?.call(token) : null,
-                  child: RichText(
-                    text: TextSpan(
-                      text: text,
-                      style: renderer.style(
-                        underlineColor: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withAlpha(200),
-                        hovered: hovered,
-                        selected: selected,
-                        isNew: newTokens.any((t) => t == token.text),
-                      ),
+                  child: UnderlineText(
+                    text: text,
+                    style: style ?? DefaultTextStyle.of(context).style,
+                    underlineColor: TokenRenderingUtil.underlineColor(
+                      Theme.of(context).colorScheme.primary.withAlpha(200),
+                      selected: selected,
+                      hovered: hovered,
+                      isNew: newTokens.any((t) => t == token.text),
                     ),
                   ),
                 ),

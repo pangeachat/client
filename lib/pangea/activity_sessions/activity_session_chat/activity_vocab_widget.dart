@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance/tokens_util.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance/underline_text_widget.dart';
 import 'package:fluffychat/pangea/toolbar/token_rendering_mixin.dart';
 import 'package:fluffychat/pangea/toolbar/word_card/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -143,12 +144,6 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
       tokens,
       widget.activityLangCode,
     );
-    final renderer = TokenRenderingUtil(
-      existingStyle: TextStyle(
-        color: Theme.of(context).colorScheme.onSurface,
-        fontSize: 14.0,
-      ),
-    );
 
     return Wrap(
       spacing: 4.0,
@@ -186,13 +181,14 @@ class _VocabChipsState extends State<_VocabChips> with TokenRenderingMixin {
                       color: color,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Text(
-                      v.lemma,
-                      style: renderer.style(
-                        underlineColor: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withAlpha(200),
+                    child: UnderlineText(
+                      text: v.lemma,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                        fontSize: 14.0,
+                      ),
+                      underlineColor: TokenRenderingUtil.underlineColor(
+                        Theme.of(context).colorScheme.primary.withAlpha(200),
                         isNew: isNew,
                         selected: _selectedVocab == v,
                         hovered: hovered,
