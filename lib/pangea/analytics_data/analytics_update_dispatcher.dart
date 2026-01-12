@@ -43,6 +43,9 @@ class AnalyticsUpdateDispatcher {
   final StreamController<LevelUpdate> levelUpdateStream =
       StreamController<LevelUpdate>.broadcast();
 
+  final StreamController<Set<ConstructIdentifier>> newConstructsStream =
+      StreamController<Set<ConstructIdentifier>>.broadcast();
+
   final StreamController<MapEntry<ConstructIdentifier, UserSetLemmaInfo>>
       _lemmaInfoUpdateStream = StreamController<
           MapEntry<ConstructIdentifier, UserSetLemmaInfo>>.broadcast();
@@ -98,6 +101,9 @@ class AnalyticsUpdateDispatcher {
       case final ConstructBlockedEvent e:
         _onBlockedConstruct(e.blockedConstruct);
         break;
+      case final NewConstructsEvent e:
+        _onNewConstruct(e.newConstructs);
+        break;
     }
   }
 
@@ -136,5 +142,10 @@ class AnalyticsUpdateDispatcher {
       blockedConstruct: constructId,
     );
     constructUpdateStream.add(update);
+  }
+
+  void _onNewConstruct(Set<ConstructIdentifier> constructIds) {
+    if (constructIds.isEmpty) return;
+    newConstructsStream.add(constructIds);
   }
 }

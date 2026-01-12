@@ -380,6 +380,9 @@ class AnalyticsDataService {
     await _ensureInitialized();
 
     final blocked = blockedConstructs;
+    final newUnusedConstructs =
+        updateIds.where((id) => !hasUsedConstruct(id)).toSet();
+
     _mergeTable.addConstructsByUses(update.addedConstructs, blocked);
     await _analyticsClientGetter.database.updateLocalAnalytics(
       update.addedConstructs,
@@ -435,6 +438,10 @@ class AnalyticsDataService {
 
     if (update.blockedConstruct != null) {
       events.add(ConstructBlockedEvent(update.blockedConstruct!));
+    }
+
+    if (newUnusedConstructs.isNotEmpty) {
+      events.add(NewConstructsEvent(newUnusedConstructs));
     }
 
     return events;
