@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
+
 import '../../../config/app_config.dart';
 
 class StateMessage extends StatelessWidget {
@@ -25,9 +24,17 @@ class StateMessage extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text(
-                event.calcLocalizedBodyFallback(
-                  MatrixLocals(L10n.of(context)),
-                ),
+                // #Pangea
+                // event.calcLocalizedBodyFallback(
+                //   MatrixLocals(L10n.of(context)),
+                // ),
+                event.type == EventTypes.RoomMember &&
+                        event.roomMemberChangeType == RoomMemberChangeType.leave
+                    ? L10n.of(context).youLeftTheChat
+                    : event.calcLocalizedBodyFallback(
+                        MatrixLocals(L10n.of(context)),
+                      ),
+                // Pangea#
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

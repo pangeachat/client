@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:29:14.506248",
+  "@@last_modified": "2026-01-12 13:38:59.797271",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11925,6 +11925,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Napustili ste chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

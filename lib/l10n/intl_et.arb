@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-07 14:25:18.173924",
+  "@@last_modified": "2026-01-12 13:38:14.184472",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11094,6 +11094,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Sa lahkusid vestlusest",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

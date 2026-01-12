@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-07 14:26:57.612933",
+  "@@last_modified": "2026-01-12 13:38:29.720535",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11799,6 +11799,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Umalis ka sa chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

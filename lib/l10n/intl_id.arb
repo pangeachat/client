@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:24:04.023956",
+  "@@last_modified": "2026-01-12 13:38:00.616182",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10814,6 +10814,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Anda meninggalkan obrolan",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

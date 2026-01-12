@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-07 14:25:24.418870",
+  "@@last_modified": "2026-01-12 13:38:15.391538",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10830,6 +10830,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Du hast den Chat verlassen",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:25:09.370204",
+  "@@last_modified": "2026-01-12 13:38:13.080168",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11923,6 +11923,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Você saiu do chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

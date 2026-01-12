@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-07 14:24:18.684168",
+  "@@last_modified": "2026-01-12 13:38:03.861115",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11907,6 +11907,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Opustili ste chat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

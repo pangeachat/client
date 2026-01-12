@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-07 14:25:54.221263",
+  "@@last_modified": "2026-01-12 13:38:20.864548",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10817,6 +10817,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Ви вийшли з чату",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

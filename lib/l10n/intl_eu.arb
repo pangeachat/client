@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-07 14:25:02.696896",
+  "@@last_modified": "2026-01-12 13:38:11.848546",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10823,6 +10823,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Txatetik irten zara",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:27:42.869267",
+  "@@last_modified": "2026-01-12 13:38:41.292079",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11047,6 +11047,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 நீங்கள் உரையாடலை விட்டுவிட்டீர்கள்",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

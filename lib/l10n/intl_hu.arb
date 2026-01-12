@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-07 14:23:56.196432",
+  "@@last_modified": "2026-01-12 13:37:59.394827",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10824,6 +10824,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Elhagytad a csevegést",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:26:27.395689",
+  "@@last_modified": "2026-01-12 13:38:25.367114",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10847,6 +10847,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Has deixat el xat",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

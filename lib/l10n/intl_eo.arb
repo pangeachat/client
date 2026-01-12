@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:28:53.013525",
+  "@@last_modified": "2026-01-12 13:38:55.886185",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11912,6 +11912,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 Vi forlasis la konversacion",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

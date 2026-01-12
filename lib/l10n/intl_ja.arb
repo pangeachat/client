@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-07 14:28:40.112996",
+  "@@last_modified": "2026-01-12 13:38:52.951803",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11613,6 +11613,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 チャットを退出しました",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }

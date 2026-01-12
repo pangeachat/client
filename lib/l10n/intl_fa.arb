@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-07 14:28:12.371773",
+  "@@last_modified": "2026-01-12 13:38:48.605182",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11555,6 +11555,11 @@
     "placeholders": {}
   },
   "@voice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "youLeftTheChat": "🚪 شما از چت خارج شدید",
+  "@youLeftTheChat": {
     "type": "String",
     "placeholders": {}
   }
