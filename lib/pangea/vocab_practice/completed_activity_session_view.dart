@@ -9,56 +9,10 @@ import 'package:fluffychat/pangea/vocab_practice/stat_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/mxc_image.dart';
 
-class CompletedActivitySessionView extends StatefulWidget {
+class CompletedActivitySessionView extends StatelessWidget {
   final VocabPracticeState controller;
   const CompletedActivitySessionView(this.controller, {super.key});
-
-  @override
-  State<CompletedActivitySessionView> createState() =>
-      _CompletedActivitySessionViewState();
-}
-
-class _CompletedActivitySessionViewState
-    extends State<CompletedActivitySessionView> {
-  late final Future<Map<String, double>> progressChangeFuture;
-  double currentProgress = 0.0;
-  Uri? avatarUrl;
-  bool shouldShowRain = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // Fetch avatar URL
-    final client = Matrix.of(context).client;
-    client.fetchOwnProfile().then((profile) {
-      if (mounted) {
-        setState(() => avatarUrl = profile.avatarUrl);
-      }
-    });
-
-    progressChangeFuture = widget.controller.calculateProgressChange(
-      widget.controller.sessionLoader.value!.totalXpGained,
-    );
-  }
-
-  void _onProgressChangeLoaded(Map<String, double> progressChange) {
-    //start with before progress
-    currentProgress = progressChange['before'] ?? 0.0;
-
-    //switch to after progress after first frame, to activate animation
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) {
-        setState(() {
-          currentProgress = progressChange['after'] ?? 0.0;
-          // Start the star rain
-          shouldShowRain = true;
-        });
-      }
-    });
-  }
 
   String _formatTime(int seconds) {
     final minutes = seconds ~/ 60;
@@ -71,11 +25,10 @@ class _CompletedActivitySessionViewState
     final username =
         Matrix.of(context).client.userID?.split(':').first.substring(1) ?? '';
     final bool accuracyAchievement =
-        widget.controller.sessionLoader.value!.accuracy == 100;
+        controller.sessionLoader.value!.accuracy == 100;
     final bool timeAchievement =
-        widget.controller.sessionLoader.value!.elapsedSeconds <= 60;
-    final int numBonusPoints = widget
-        .controller.sessionLoader.value!.completedUses
+        controller.sessionLoader.value!.elapsedSeconds <= 60;
+    final int numBonusPoints = controller.sessionLoader.value!.completedUses
         .where((use) => use.xp > 0)
         .length;
     //give double bonus for both, single for one, none for zero
@@ -85,95 +38,84 @@ class _CompletedActivitySessionViewState
             ? numBonusPoints
             : 0;
 
-    return FutureBuilder<Map<String, double>>(
-      future: progressChangeFuture,
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return const SizedBox.shrink();
-        }
-
-        // Initialize progress when data is available
-        if (currentProgress == 0.0 && !shouldShowRain) {
-          _onProgressChangeLoaded(snapshot.data!);
-        }
-
-        return Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
-              child: Column(
-                children: [
-                  Text(
-                    L10n.of(context).congratulationsYouveCompletedPractice,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                    textAlign: TextAlign.center,
-                  ),
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Stack(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 16, right: 16, left: 16),
+          child: Column(
+            children: [
+              Text(
+                L10n.of(context).congratulationsYouveCompletedPractice,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                textAlign: TextAlign.center,
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: FutureBuilder(
+                        future: Matrix.of(context).client.fetchOwnProfile(),
+                        builder: (context, snapshot) {
+                          final avatarUrl = snapshot.data?.avatarUrl;
+                          return Avatar(
+                            name: username,
+                            showPresence: false,
+                            size: 100,
+                            mxContent: avatarUrl,
+                            userId: Matrix.of(context).client.userID,
+                          );
+                        },
+                      ),
+                    ),
+                    Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: avatarUrl == null
-                              ? Avatar(
-                                  name: username,
-                                  showPresence: false,
-                                  size: 100,
-                                )
-                              : ClipOval(
-                                  child: MxcImage(
-                                    uri: avatarUrl,
-                                    width: 100,
-                                    height: 100,
-                                  ),
-                                ),
-                        ),
-                        Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 16.0,
-                                bottom: 16.0,
-                              ),
-                              child: AnimatedProgressBar(
-                                height: 20.0,
-                                widthPercent: currentProgress,
-                                backgroundColor: Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHighest,
-                                duration: const Duration(milliseconds: 500),
-                              ),
+                          padding: const EdgeInsets.only(
+                            top: 16.0,
+                            bottom: 16.0,
+                          ),
+                          child: FutureBuilder(
+                            future: controller.derivedAnalyticsData,
+                            builder: (context, snapshot) => AnimatedProgressBar(
+                              height: 20.0,
+                              widthPercent: snapshot.hasData
+                                  ? snapshot.data!.levelProgress
+                                  : 0.0,
+                              backgroundColor: Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerHighest,
+                              duration: const Duration(milliseconds: 500),
                             ),
-                            Text(
-                              "+ ${widget.controller.sessionLoader.value!.totalXpGained + bonusXp} XP",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
+                          ),
+                        ),
+                        Text(
+                          "+ ${controller.sessionLoader.value!.totalXpGained + bonusXp} XP",
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
                                     color: AppConfig.goldLight,
                                     fontWeight: FontWeight.bold,
                                   ),
-                            ),
-                          ],
                         ),
-                        StatCard(
-                          icon: Icons.my_location,
-                          text:
-                              "${L10n.of(context).accuracy}: ${widget.controller.sessionLoader.value!.accuracy}%",
-                          isAchievement: accuracyAchievement,
-                          achievementText: "+ $numBonusPoints XP",
-                          child: PercentMarkerBar(
-                            height: 20.0,
-                            widthPercent: widget
-                                    .controller.sessionLoader.value!.accuracy /
-                                100.0,
-                            markerWidth: 20.0,
-                            markerColor: AppConfig.success,
-                            backgroundColor: !(widget.controller.sessionLoader
-                                        .value!.accuracy ==
-                                    100)
+                      ],
+                    ),
+                    StatCard(
+                      icon: Icons.my_location,
+                      text:
+                          "${L10n.of(context).accuracy}: ${controller.sessionLoader.value!.accuracy}%",
+                      isAchievement: accuracyAchievement,
+                      achievementText: "+ $numBonusPoints XP",
+                      child: PercentMarkerBar(
+                        height: 20.0,
+                        widthPercent:
+                            controller.sessionLoader.value!.accuracy / 100.0,
+                        markerWidth: 20.0,
+                        markerColor: AppConfig.success,
+                        backgroundColor:
+                            !(controller.sessionLoader.value!.accuracy == 100)
                                 ? Theme.of(context)
                                     .colorScheme
                                     .surfaceContainerHighest
@@ -183,76 +125,72 @@ class _CompletedActivitySessionViewState
                                         .colorScheme
                                         .surfaceContainerHighest,
                                   ),
+                      ),
+                    ),
+                    StatCard(
+                      icon: Icons.alarm,
+                      text:
+                          "${L10n.of(context).time}: ${_formatTime(controller.sessionLoader.value!.elapsedSeconds)}",
+                      isAchievement: timeAchievement,
+                      achievementText: "+ $numBonusPoints XP",
+                      child: TimeStarsWidget(
+                        elapsedSeconds:
+                            controller.sessionLoader.value!.elapsedSeconds,
+                        timeForBonus:
+                            controller.sessionLoader.value!.timeForBonus,
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        //expanded row button
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                              vertical: 8.0,
+                            ),
+                          ),
+                          onPressed: () => controller.reloadSession(),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                L10n.of(context).anotherRound,
+                              ),
+                            ],
                           ),
                         ),
-                        StatCard(
-                          icon: Icons.alarm,
-                          text:
-                              "${L10n.of(context).time}: ${_formatTime(widget.controller.sessionLoader.value!.elapsedSeconds)}",
-                          isAchievement: timeAchievement,
-                          achievementText: "+ $numBonusPoints XP",
-                          child: TimeStarsWidget(
-                            elapsedSeconds: widget
-                                .controller.sessionLoader.value!.elapsedSeconds,
-                            timeForBonus: widget
-                                .controller.sessionLoader.value!.timeForBonus,
+                        const SizedBox(height: 16),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                              vertical: 8.0,
+                            ),
                           ),
-                        ),
-                        Column(
-                          children: [
-                            //expanded row button
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12.0,
-                                  vertical: 8.0,
-                                ),
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                L10n.of(context).quit,
                               ),
-                              onPressed: () =>
-                                  widget.controller.reloadSession(),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    L10n.of(context).anotherRound,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12.0,
-                                  vertical: 8.0,
-                                ),
-                              ),
-                              onPressed: () => Navigator.of(context).pop(),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    L10n.of(context).quit,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            if (shouldShowRain)
-              const StarRainWidget(
-                showBlast: true,
-                rainDuration: Duration(seconds: 5),
-              ),
-          ],
-        );
-      },
+            ],
+          ),
+        ),
+        const StarRainWidget(
+          showBlast: true,
+          rainDuration: Duration(seconds: 5),
+        ),
+      ],
     );
   }
 }

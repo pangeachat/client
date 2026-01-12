@@ -218,65 +218,73 @@ class _ActivityChoicesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.activityError != null) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //allow try to reload activity in case of error
-          ErrorIndicator(message: controller.activityError!),
-          const SizedBox(height: 16),
-          TextButton.icon(
-            onPressed: controller.reloadSession,
-            icon: const Icon(Icons.refresh),
-            label: Text(L10n.of(context).tryAgain),
-          ),
-        ],
-      );
-    }
-
-    final activity = controller.currentActivity;
-    if (controller.isLoadingActivity || activity == null) {
-      return Container(
-        constraints: const BoxConstraints(maxHeight: 400.0),
-        child: const Center(
-          child: CircularProgressIndicator.adaptive(),
-        ),
-      );
-    }
-
-    final choices = activity.multipleChoiceContent!.choices.toList();
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        //Constrain max height to keep choices together on large screens, and allow shrinking to fit on smaller screens
-        final constrainedHeight = constraints.maxHeight.clamp(0.0, 400.0);
-        final cardHeight =
-            (constrainedHeight / (choices.length + 1)).clamp(50.0, 80.0);
-
-        return Container(
-          constraints: const BoxConstraints(maxHeight: 400.0),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: choices
-                  .map(
-                    (choiceId) => _ChoiceCard(
-                      activity: activity,
-                      constructId: constructId,
-                      activityType: activityType,
-                      choiceId: choiceId,
-                      onPressed: () =>
-                          controller.onSelectChoice(constructId, choiceId),
-                      cardHeight: cardHeight,
-                      choiceText: controller.getChoiceText(choiceId),
-                      choiceEmoji: controller.getChoiceEmoji(choiceId),
-                    ),
-                  )
-                  .toList(),
+    return ValueListenableBuilder(
+      valueListenable: controller.activityState,
+      builder: (context, state, __) {
+        return switch (state) {
+          AsyncLoading<PracticeActivityModel>() => const SizedBox(
+              width: 24,
+              height: 24,
+              child: CircularProgressIndicator(),
             ),
-          ),
-        );
+          AsyncError<PracticeActivityModel>(:final error) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //allow try to reload activity in case of error
+                ErrorIndicator(message: error.toString()),
+                const SizedBox(height: 16),
+                TextButton.icon(
+                  onPressed: controller.reloadSession,
+                  icon: const Icon(Icons.refresh),
+                  label: Text(L10n.of(context).tryAgain),
+                ),
+              ],
+            ),
+          AsyncLoaded<PracticeActivityModel>(:final value) => LayoutBuilder(
+              builder: (context, constraints) {
+                //Constrain max height to keep choices together on large screens, and allow shrinking to fit on smaller screens
+                final choices = value.multipleChoiceContent!.choices.toList();
+                final constrainedHeight =
+                    constraints.maxHeight.clamp(0.0, 400.0);
+                final cardHeight = (constrainedHeight / (choices.length + 1))
+                    .clamp(50.0, 80.0);
+
+                return Container(
+                  constraints: const BoxConstraints(maxHeight: 400.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: choices
+                          .map(
+                            (choiceId) => _ChoiceCard(
+                              activity: value,
+                              constructId: constructId,
+                              activityType: activityType,
+                              choiceId: choiceId,
+                              onPressed: () => controller.onSelectChoice(
+                                constructId,
+                                choiceId,
+                              ),
+                              cardHeight: cardHeight,
+                              choiceText: controller.getChoiceText(choiceId),
+                              choiceEmoji: controller.getChoiceEmoji(choiceId),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                );
+              },
+            ),
+          _ => Container(
+              constraints: const BoxConstraints(maxHeight: 400.0),
+              child: const Center(
+                child: CircularProgressIndicator.adaptive(),
+              ),
+            ),
+        };
       },
     );
   }

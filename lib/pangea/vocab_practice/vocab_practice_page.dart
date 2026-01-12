@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
@@ -37,9 +38,8 @@ class VocabPractice extends StatefulWidget {
 
 class VocabPracticeState extends State<VocabPractice> {
   SessionLoader sessionLoader = SessionLoader();
-  PracticeActivityModel? currentActivity;
-  bool isLoadingActivity = true;
-  String? activityError;
+  final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
+      ValueNotifier(const AsyncState.idle());
 
   final Map<String, String> _choiceTexts = {};
   final Map<String, String?> _choiceEmojis = {};
@@ -67,18 +67,13 @@ class VocabPracticeState extends State<VocabPractice> {
     super.dispose();
   }
 
+  PracticeActivityModel? get _currentActivity =>
+      activityState.value is AsyncLoaded<PracticeActivityModel>
+          ? (activityState.value as AsyncLoaded<PracticeActivityModel>).value
+          : null;
+
   double get progress =>
       sessionLoader.isLoaded ? sessionLoader.value!.progress : 0.0;
-
-  int get availableActivities => sessionLoader.isLoaded
-      ? sessionLoader.value!.currentAvailableActivities
-      : 0;
-
-  int get completedActivities =>
-      sessionLoader.isLoaded ? sessionLoader.value!.currentIndex : 0;
-
-  int get elapsedSeconds =>
-      sessionLoader.isLoaded ? sessionLoader.value!.elapsedSeconds : 0;
 
   bool get isComplete =>
       sessionLoader.isLoaded && sessionLoader.value!.hasCompletedCurrentGroup;
@@ -96,10 +91,8 @@ class VocabPracticeState extends State<VocabPractice> {
 
   /// Resets all session state without disposing the widget
   void _clearState() {
+    activityState.value = const AsyncState.idle();
     setState(() {
-      currentActivity = null;
-      isLoadingActivity = true;
-      activityError = null;
       _choiceTexts.clear();
       _choiceEmojis.clear();
     });
@@ -133,8 +126,8 @@ class VocabPracticeState extends State<VocabPractice> {
       await reloadSession();
     } catch (e) {
       if (mounted) {
-        setState(
-          () => activityError = L10n.of(context).oopsSomethingWentWrong,
+        activityState.value = AsyncState.error(
+          L10n.of(context).oopsSomethingWentWrong,
         );
       }
     }
@@ -143,7 +136,7 @@ class VocabPracticeState extends State<VocabPractice> {
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await sessionLoader.load();
-    await loadNextActivity();
+    await _loadNextActivity();
   }
 
   Future<void> reloadSession() async {
@@ -154,14 +147,15 @@ class VocabPracticeState extends State<VocabPractice> {
     await _startSession();
   }
 
-  Future<void> completeSession() async {
+  Future<void> _completeSession() async {
     if (!sessionLoader.isLoaded) return;
-    sessionLoader.value!.finishSession();
+    final bonus = sessionLoader.value!.finishSession();
+    await _analyticsService.updateService.addAnalytics(null, bonus);
     await _saveSession();
     setState(() {});
   }
 
-  Future<void> loadNextActivity() async {
+  Future<void> _loadNextActivity() async {
     if (!sessionLoader.isLoaded) {
       try {
         await sessionLoader.completer.future;
@@ -186,24 +180,21 @@ class VocabPracticeState extends State<VocabPractice> {
         messageInfo: {},
       );
       if (result.isError) {
-        activityError = L10n.of(context).oopsSomethingWentWrong;
-      } else {
-        currentActivity = result.result!;
+        throw L10n.of(context).oopsSomethingWentWrong;
       }
 
       // Prefetch lemma info for meaning activities before marking ready
-      if (currentActivity != null &&
-          currentActivity!.activityType == ActivityTypeEnum.lemmaMeaning) {
-        final choices =
-            currentActivity!.multipleChoiceContent!.choices.toList();
+      if (result.result != null &&
+          result.result!.activityType == ActivityTypeEnum.lemmaMeaning) {
+        final choices = result.result!.multipleChoiceContent!.choices.toList();
         await _prefetchLemmaInfo(choices);
       }
+
+      activityState.value = AsyncState.loaded(result.result!);
     } catch (e) {
-      activityError = L10n.of(context).oopsSomethingWentWrong;
-    } finally {
-      if (mounted) {
-        setState(() => isLoadingActivity = false);
-      }
+      activityState.value = AsyncState.error(
+        L10n.of(context).oopsSomethingWentWrong,
+      );
     }
   }
 
@@ -252,9 +243,9 @@ class VocabPracticeState extends State<VocabPractice> {
 
   /// Removes duplicate choice texts, keeping the correct answer if it's a duplicate, or the first otherwise
   void _removeDuplicateChoices() {
-    if (currentActivity?.multipleChoiceContent == null) return;
+    if (_currentActivity?.multipleChoiceContent == null) return;
 
-    final activity = currentActivity!.multipleChoiceContent!;
+    final activity = _currentActivity!.multipleChoiceContent!;
     final correctAnswers = activity.answers;
 
     final Map<String, List<String>> textToIds = {};
@@ -296,14 +287,15 @@ class VocabPracticeState extends State<VocabPractice> {
     ConstructIdentifier choiceConstruct,
     String choiceContent,
   ) async {
-    if (currentActivity == null) return;
-    final activity = currentActivity!;
+    if (_currentActivity == null) return;
+    final activity = _currentActivity!;
 
     activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
     final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
 
     // Submit answer immediately (records use and gives XP)
-    sessionLoader.value!.submitAnswer(activity, correct);
+    final use = sessionLoader.value!.submitAnswer(activity, correct);
+    await _analyticsService.updateService.addAnalytics(null, [use]);
     await _saveSession();
 
     final transformTargetId =
@@ -322,11 +314,7 @@ class VocabPracticeState extends State<VocabPractice> {
     sessionLoader.value!.completeActivity(activity);
     await _saveSession();
 
-    if (isComplete) {
-      await completeSession();
-    }
-
-    await loadNextActivity();
+    isComplete ? await _completeSession() : await _loadNextActivity();
   }
 
   Future<List<InlineSpan>?> getExampleMessage(
@@ -334,84 +322,56 @@ class VocabPracticeState extends State<VocabPractice> {
   ) async {
     final ConstructUses constructUse =
         await _analyticsService.getConstructUse(construct);
+
     for (final use in constructUse.cappedUses) {
-      if (use.metadata.eventId == null || use.metadata.roomId == null) {
-        continue;
-      }
-
-      final room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(use.metadata.roomId!);
-      if (room == null) continue;
-
-      final event = await room.getEventById(use.metadata.eventId!);
+      final event = await Matrix.of(context).client.getEventByConstructUse(use);
       if (event == null) continue;
 
-      final timeline = await room.getTimeline();
-      final pangeaMessageEvent = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
-        ownMessage: event.senderId ==
-            MatrixState.pangeaController.matrixState.client.userID,
-      );
-
-      final tokens = pangeaMessageEvent.messageDisplayRepresentation?.tokens;
-      if (tokens == null || tokens.isEmpty) continue;
-      final token = tokens.firstWhereOrNull(
-        (token) => token.text.content == use.form,
-      );
-      if (token == null) continue;
-
-      final text = pangeaMessageEvent.messageDisplayText;
-      final tokenText = token.text.content;
-      int tokenIndex = text.indexOf(tokenText);
-      if (tokenIndex == -1) continue;
-
-      final beforeSubstring = text.substring(0, tokenIndex);
-      if (beforeSubstring.length != beforeSubstring.characters.length) {
-        tokenIndex = beforeSubstring.characters.length;
-      }
-
-      final int tokenLength = tokenText.characters.length;
-      final before = text.characters.take(tokenIndex).toString();
-      final after = text.characters.skip(tokenIndex + tokenLength).toString();
-      return [
-        TextSpan(text: before),
-        TextSpan(
-          text: tokenText,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        TextSpan(text: after),
-      ];
+      final spans = _buildExampleMessage(use.form, event);
+      if (spans != null) return spans;
     }
 
     return null;
   }
 
-  Future<Map<String, double>> calculateProgressChange(int xpGained) async {
-    final derivedData = await _analyticsService.derivedData;
-    final currentLevel = derivedData.level;
-    final currentXP = derivedData.totalXP;
+  List<InlineSpan>? _buildExampleMessage(
+    String? form,
+    PangeaMessageEvent messageEvent,
+  ) {
+    final tokens = messageEvent.messageDisplayRepresentation?.tokens;
+    if (tokens == null || tokens.isEmpty) return null;
+    final token = tokens.firstWhereOrNull(
+      (token) => token.text.content == form,
+    );
+    if (token == null) return null;
 
-    final minXPForCurrentLevel =
-        DerivedAnalyticsDataModel.calculateXpWithLevel(currentLevel);
-    final minXPForNextLevel = derivedData.minXPForNextLevel;
+    final text = messageEvent.messageDisplayText;
+    final tokenText = token.text.content;
+    int tokenIndex = text.indexOf(tokenText);
+    if (tokenIndex == -1) return null;
 
-    final xpRange = minXPForNextLevel - minXPForCurrentLevel;
+    final beforeSubstring = text.substring(0, tokenIndex);
+    if (beforeSubstring.length != beforeSubstring.characters.length) {
+      tokenIndex = beforeSubstring.characters.length;
+    }
 
-    final progressBefore =
-        ((currentXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
-
-    final newTotalXP = currentXP + xpGained;
-    final progressAfter =
-        ((newTotalXP - minXPForCurrentLevel) / xpRange).clamp(0.0, 1.0);
-
-    return {
-      'before': progressBefore,
-      'after': progressAfter,
-    };
+    final int tokenLength = tokenText.characters.length;
+    final before = text.characters.take(tokenIndex).toString();
+    final after = text.characters.skip(tokenIndex + tokenLength).toString();
+    return [
+      TextSpan(text: before),
+      TextSpan(
+        text: tokenText,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      TextSpan(text: after),
+    ];
   }
+
+  Future<DerivedAnalyticsDataModel> get derivedAnalyticsData =>
+      _analyticsService.derivedData;
 
   @override
   Widget build(BuildContext context) => VocabPracticeView(this);

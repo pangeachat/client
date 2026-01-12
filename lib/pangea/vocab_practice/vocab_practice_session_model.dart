@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class VocabPracticeSessionModel {
   final DateTime startedAt;
@@ -116,66 +115,56 @@ class VocabPracticeSessionModel {
     return (result * 100).truncateToDouble();
   }
 
-  void finishSession() {
-    finished = true;
+  List<OneConstructUse> get bonusUses {
+    final List<OneConstructUse> bonus = [];
 
-    // give bonus XP uses for each construct if earned
     if (accuracy >= 100) {
-      final bonusUses = completedUses
-          .where((use) => use.xp > 0)
-          .map(
-            (use) => OneConstructUse(
-              useType: ConstructUseTypeEnum.bonus,
-              constructType: use.constructType,
-              metadata: ConstructUseMetaData(
-                roomId: use.metadata.roomId,
-                timeStamp: DateTime.now(),
+      bonus.addAll(
+        completedUses.where((use) => use.xp > 0).map(
+              (use) => OneConstructUse(
+                useType: ConstructUseTypeEnum.bonus,
+                constructType: use.constructType,
+                metadata: ConstructUseMetaData(
+                  roomId: use.metadata.roomId,
+                  timeStamp: DateTime.now(),
+                ),
+                category: use.category,
+                lemma: use.lemma,
+                form: use.form,
+                xp: ConstructUseTypeEnum.bonus.pointValue,
               ),
-              category: use.category,
-              lemma: use.lemma,
-              form: use.form,
-              xp: ConstructUseTypeEnum.bonus.pointValue,
             ),
-          )
-          .toList();
-
-      MatrixState
-          .pangeaController.matrixState.analyticsDataService.updateService
-          .addAnalytics(
-        null,
-        bonusUses,
       );
     }
 
     if (elapsedSeconds <= timeForBonus) {
-      final bonusUses = completedUses
-          .where((use) => use.xp > 0)
-          .map(
-            (use) => OneConstructUse(
-              useType: ConstructUseTypeEnum.bonus,
-              constructType: use.constructType,
-              metadata: ConstructUseMetaData(
-                roomId: use.metadata.roomId,
-                timeStamp: DateTime.now(),
+      bonus.addAll(
+        completedUses.where((use) => use.xp > 0).map(
+              (use) => OneConstructUse(
+                useType: ConstructUseTypeEnum.bonus,
+                constructType: use.constructType,
+                metadata: ConstructUseMetaData(
+                  roomId: use.metadata.roomId,
+                  timeStamp: DateTime.now(),
+                ),
+                category: use.category,
+                lemma: use.lemma,
+                form: use.form,
+                xp: ConstructUseTypeEnum.bonus.pointValue,
               ),
-              category: use.category,
-              lemma: use.lemma,
-              form: use.form,
-              xp: ConstructUseTypeEnum.bonus.pointValue,
             ),
-          )
-          .toList();
-
-      MatrixState
-          .pangeaController.matrixState.analyticsDataService.updateService
-          .addAnalytics(
-        null,
-        bonusUses,
       );
     }
+
+    return bonus;
   }
 
-  void submitAnswer(PracticeActivityModel activity, bool isCorrect) {
+  List<OneConstructUse> finishSession() {
+    finished = true;
+    return bonusUses;
+  }
+
+  OneConstructUse submitAnswer(PracticeActivityModel activity, bool isCorrect) {
     final useType = isCorrect
         ? activity.activityType.correctUse
         : activity.activityType.incorrectUse;
@@ -194,13 +183,7 @@ class VocabPracticeSessionModel {
     );
 
     completedUses.add(use);
-
-    // Give XP immediately
-    MatrixState.pangeaController.matrixState.analyticsDataService.updateService
-        .addAnalytics(
-      null,
-      [use],
-    );
+    return use;
   }
 
   void completeActivity(PracticeActivityModel activity) {
