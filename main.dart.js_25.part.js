@@ -5326,6 +5326,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voice(_) {
       return "Voz";
     },
+    get$youLeftTheChat() {
+      return "\ud83d\udeaa Voc\xea saiu do chat";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10625,6 +10628,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$voice(_) {
       return "Voz";
+    },
+    get$youLeftTheChat() {
+      return "\ud83d\udeaa Voc\xea saiu do chat";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -15926,6 +15932,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voice(_) {
       return "Voz";
     },
+    get$youLeftTheChat() {
+      return "\ud83d\udeaa Voc\xea saiu do chat";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16125,7 +16134,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/3fislRcIhp/8EfLqjOide8fwk0="] = d.current;
+  d["VeY1gmTCXcEjW+KhcHo2S2o5saM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

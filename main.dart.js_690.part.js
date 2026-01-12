@@ -5314,6 +5314,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voice(_) {
       return "Suara";
     },
+    get$youLeftTheChat() {
+      return "\ud83d\udeaa Anda meninggalkan obrolan";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["30CDT4tqsF/Rk5Z914HUuAhF7cY="] = d.current;
+  d["FLnbB6hzL3pJCE98YuHsYscHYgI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_690.part.js.map
