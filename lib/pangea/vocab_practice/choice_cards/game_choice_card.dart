@@ -11,7 +11,7 @@ class GameChoiceCard extends StatefulWidget {
   final bool isCorrect;
   final double height;
   final bool shouldFlip;
-  final String? transformId;
+  final String targetId;
   final bool isEnabled;
 
   const GameChoiceCard({
@@ -21,7 +21,7 @@ class GameChoiceCard extends StatefulWidget {
     required this.isCorrect,
     this.height = 72.0,
     this.shouldFlip = false,
-    this.transformId,
+    required this.targetId,
     this.isEnabled = true,
     super.key,
   });
@@ -104,83 +104,78 @@ class _GameChoiceCardState extends State<GameChoiceCard>
         ? AppConfig.success.withValues(alpha: 0.3)
         : AppConfig.error.withValues(alpha: 0.3);
 
-    Widget card = MouseRegion(
-      onEnter:
-          widget.isEnabled ? ((_) => setState(() => _isHovered = true)) : null,
-      onExit:
-          widget.isEnabled ? ((_) => setState(() => _isHovered = false)) : null,
-      child: SizedBox(
-        width: double.infinity,
-        height: widget.height,
-        child: GestureDetector(
-          onTap: _handleTap,
-          child: widget.shouldFlip
-              ? AnimatedBuilder(
-                  animation: _scaleAnim,
-                  builder: (context, child) {
-                    final bool showContent = _scaleAnim.value > 0.1;
-                    return Transform.scale(
-                      scaleY: _scaleAnim.value,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: baseColor,
-                          borderRadius: BorderRadius.circular(16),
+    return CompositedTransformTarget(
+      link: MatrixState.pAnyState.layerLinkAndKey(widget.targetId).link,
+      child: MouseRegion(
+        onEnter: widget.isEnabled
+            ? ((_) => setState(() => _isHovered = true))
+            : null,
+        onExit: widget.isEnabled
+            ? ((_) => setState(() => _isHovered = false))
+            : null,
+        child: SizedBox(
+          width: double.infinity,
+          height: widget.height,
+          child: GestureDetector(
+            onTap: _handleTap,
+            child: widget.shouldFlip
+                ? AnimatedBuilder(
+                    animation: _scaleAnim,
+                    builder: (context, child) {
+                      final bool showContent = _scaleAnim.value > 0.1;
+                      return Transform.scale(
+                        scaleY: _scaleAnim.value,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: baseColor,
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          foregroundDecoration: BoxDecoration(
+                            color: _flipped
+                                ? tintColor
+                                : (_isHovered
+                                    ? hoverColor
+                                    : Colors.transparent),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 6,
+                            horizontal: 0,
+                          ),
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          height: widget.height,
+                          alignment: Alignment.center,
+                          child: Opacity(
+                            opacity: showContent ? 1.0 : 0.0,
+                            child: _useAltChild && widget.altChild != null
+                                ? widget.altChild!
+                                : widget.child,
+                          ),
                         ),
-                        foregroundDecoration: BoxDecoration(
-                          color: _flipped
-                              ? tintColor
-                              : (_isHovered ? hoverColor : Colors.transparent),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 6,
-                          horizontal: 0,
-                        ),
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        height: widget.height,
-                        alignment: Alignment.center,
-                        child: Opacity(
-                          opacity: showContent ? 1.0 : 0.0,
-                          child: _useAltChild && widget.altChild != null
-                              ? widget.altChild!
-                              : widget.child,
-                        ),
-                      ),
-                    );
-                  },
-                )
-              : Container(
-                  decoration: BoxDecoration(
-                    color: baseColor,
-                    borderRadius: BorderRadius.circular(16),
+                      );
+                    },
+                  )
+                : Container(
+                    decoration: BoxDecoration(
+                      color: baseColor,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    foregroundDecoration: BoxDecoration(
+                      color: _clicked
+                          ? tintColor
+                          : (_isHovered ? hoverColor : Colors.transparent),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 6, horizontal: 0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    height: widget.height,
+                    alignment: Alignment.center,
+                    child: widget.child,
                   ),
-                  foregroundDecoration: BoxDecoration(
-                    color: _clicked
-                        ? tintColor
-                        : (_isHovered ? hoverColor : Colors.transparent),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 6, horizontal: 0),
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  height: widget.height,
-                  alignment: Alignment.center,
-                  child: widget.child,
-                ),
+          ),
         ),
       ),
     );
-
-    // Wrap with transform target if transformId is provided
-    if (widget.transformId != null) {
-      final transformTargetId =
-          'vocab-choice-card-${widget.transformId!.replaceAll(' ', '_')}';
-      card = CompositedTransformTarget(
-        link: MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link,
-        child: card,
-      );
-    }
-
-    return card;
   }
 }

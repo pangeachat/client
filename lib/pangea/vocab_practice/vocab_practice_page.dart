@@ -6,11 +6,11 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -36,7 +36,7 @@ class VocabPractice extends StatefulWidget {
   VocabPracticeState createState() => VocabPracticeState();
 }
 
-class VocabPracticeState extends State<VocabPractice> {
+class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   SessionLoader sessionLoader = SessionLoader();
   final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
       ValueNotifier(const AsyncState.idle());
@@ -88,6 +88,9 @@ class VocabPracticeState extends State<VocabPractice> {
   }
 
   String? getChoiceEmoji(String choiceId) => _choiceEmojis[choiceId];
+
+  String choiceTargetId(String choiceId) =>
+      'vocab-choice-card-${choiceId.replaceAll(' ', '_')}';
 
   /// Resets all session state without disposing the widget
   void _clearState() {
@@ -295,16 +298,9 @@ class VocabPracticeState extends State<VocabPractice> {
 
     // Submit answer immediately (records use and gives XP)
     final use = sessionLoader.value!.submitAnswer(activity, correct);
-    await _analyticsService.updateService.addAnalytics(null, [use]);
+    await _analyticsService.updateService
+        .addAnalytics(choiceTargetId(choiceContent), [use]);
     await _saveSession();
-
-    final transformTargetId =
-        'vocab-choice-card-${choiceContent.replaceAll(' ', '_')}';
-    if (correct) {
-      OverlayUtil.showPointsGained(transformTargetId, 5, context);
-    } else {
-      OverlayUtil.showPointsGained(transformTargetId, -1, context);
-    }
     if (!correct) return;
 
     // display the fact that the choice was correct before loading the next activity

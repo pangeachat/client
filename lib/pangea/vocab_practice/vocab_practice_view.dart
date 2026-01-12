@@ -260,6 +260,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
                           .map(
                             (choiceId) => _ChoiceCard(
                               activity: value,
+                              targetId: controller.choiceTargetId(choiceId),
                               constructId: constructId,
                               activityType: activityType,
                               choiceId: choiceId,
@@ -295,6 +296,7 @@ class _ChoiceCard extends StatelessWidget {
   final ConstructIdentifier constructId;
   final ActivityTypeEnum activityType;
   final String choiceId;
+  final String targetId;
   final VoidCallback onPressed;
   final double cardHeight;
 
@@ -306,6 +308,7 @@ class _ChoiceCard extends StatelessWidget {
     required this.constructId,
     required this.activityType,
     required this.choiceId,
+    required this.targetId,
     required this.onPressed,
     required this.cardHeight,
     required this.choiceText,
@@ -323,6 +326,7 @@ class _ChoiceCard extends StatelessWidget {
             '${constructId.string}_${activityType.name}_meaning_$choiceId',
           ),
           choiceId: choiceId,
+          targetId: targetId,
           displayText: choiceText,
           emoji: choiceEmoji,
           onPressed: onPressed,
@@ -336,6 +340,7 @@ class _ChoiceCard extends StatelessWidget {
             '${constructId.string}_${activityType.name}_audio_$choiceId',
           ),
           text: choiceId,
+          targetId: targetId,
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
@@ -347,7 +352,7 @@ class _ChoiceCard extends StatelessWidget {
             '${constructId.string}_${activityType.name}_basic_$choiceId',
           ),
           shouldFlip: false,
-          transformId: choiceId,
+          targetId: targetId,
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
