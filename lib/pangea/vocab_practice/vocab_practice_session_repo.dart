@@ -5,13 +5,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class VocabPracticeSessionRepo {
   static final GetStorage _storage = GetStorage('vocab_practice_session');
 
-  static Future<VocabPracticeSessionModel> get currentSession async {
+  static Future<VocabPracticeSessionModel> get() async {
     final cached = _getCached();
     if (cached != null) {
       return cached;
@@ -24,7 +25,7 @@ class VocabPracticeSessionRepo {
     ];
 
     final types = List.generate(
-      VocabPracticeSessionModel.practiceGroupSize,
+      VocabPracticeConstants.practiceGroupSize,
       (_) => activityTypes[r.nextInt(activityTypes.length)],
     );
 
@@ -35,23 +36,17 @@ class VocabPracticeSessionRepo {
       startedAt: DateTime.now(),
       sortedConstructIds: targets,
       activityTypes: types,
-      completedUses: [],
     );
     await _setCached(session);
     return session;
   }
 
-  static Future<void> updateSession(
+  static Future<void> update(
     VocabPracticeSessionModel session,
   ) =>
       _setCached(session);
 
-  static Future<VocabPracticeSessionModel> reloadSession() async {
-    _storage.erase();
-    return currentSession;
-  }
-
-  static Future<void> clearSession() => _storage.erase();
+  static Future<void> clear() => _storage.erase();
 
   static Future<List<ConstructIdentifier>> _fetch() async {
     final constructs = await MatrixState
@@ -64,6 +59,7 @@ class VocabPracticeSessionRepo {
     final Map<ConstructIdentifier, DateTime?> constructLastUseMap = {};
     final List<ConstructIdentifier> sortedTargetIds = [];
     for (final construct in constructs) {
+      if (construct.lemma.isEmpty) continue;
       constructLastUseMap[construct.id] = construct.lastUsed;
       sortedTargetIds.add(construct.id);
     }
@@ -77,7 +73,9 @@ class VocabPracticeSessionRepo {
       return dateA.compareTo(dateB);
     });
 
-    return sortedTargetIds;
+    return sortedTargetIds
+        .take(VocabPracticeConstants.practiceGroupSize)
+        .toList();
   }
 
   static VocabPracticeSessionModel? _getCached() {

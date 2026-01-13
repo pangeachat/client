@@ -8,12 +8,18 @@ import 'package:fluffychat/pangea/vocab_practice/percent_marker_bar.dart';
 import 'package:fluffychat/pangea/vocab_practice/stat_card.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
+import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CompletedActivitySessionView extends StatelessWidget {
+  final VocabPracticeSessionModel session;
   final VocabPracticeState controller;
-  const CompletedActivitySessionView(this.controller, {super.key});
+  const CompletedActivitySessionView(
+    this.session,
+    this.controller, {
+    super.key,
+  });
 
   String _formatTime(int seconds) {
     final minutes = seconds ~/ 60;
@@ -26,8 +32,8 @@ class CompletedActivitySessionView extends StatelessWidget {
     final username =
         Matrix.of(context).client.userID?.split(':').first.substring(1) ?? '';
 
-    final double accuracy = controller.accuracy;
-    final int elapsedSeconds = controller.elapsedSeconds;
+    final double accuracy = session.state.accuracy;
+    final int elapsedSeconds = session.state.elapsedSeconds;
 
     final bool accuracyAchievement = accuracy == 100;
     final bool timeAchievement = elapsedSeconds <= 60;
@@ -87,7 +93,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "+ ${controller.allXPGained} XP",
+                          "+ ${session.state.allXPGained} XP",
                           style:
                               Theme.of(context).textTheme.titleLarge?.copyWith(
                                     color: AppConfig.goldLight,
@@ -100,7 +106,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                       icon: Icons.my_location,
                       text: "${L10n.of(context).accuracy}: $accuracy%",
                       isAchievement: accuracyAchievement,
-                      achievementText: "+ ${controller.accuracyBonusXP} XP",
+                      achievementText: "+ ${session.state.accuracyBonusXP} XP",
                       child: PercentMarkerBar(
                         height: 20.0,
                         widthPercent: accuracy / 100.0,
@@ -123,7 +129,7 @@ class CompletedActivitySessionView extends StatelessWidget {
                       text:
                           "${L10n.of(context).time}: ${_formatTime(elapsedSeconds)}",
                       isAchievement: timeAchievement,
-                      achievementText: "+ ${controller.timeBonusXP} XP",
+                      achievementText: "+ ${session.state.timeBonusXP} XP",
                       child: TimeStarsWidget(
                         elapsedSeconds: elapsedSeconds,
                       ),

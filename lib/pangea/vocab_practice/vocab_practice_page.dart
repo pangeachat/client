@@ -8,6 +8,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -23,8 +26,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class SessionLoader extends AsyncLoader<VocabPracticeSessionModel> {
   @override
-  Future<VocabPracticeSessionModel> fetch() =>
-      VocabPracticeSessionRepo.currentSession;
+  Future<VocabPracticeSessionModel> fetch() => VocabPracticeSessionRepo.get();
 }
 
 class VocabPractice extends StatefulWidget {
@@ -36,8 +38,14 @@ class VocabPractice extends StatefulWidget {
 
 class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   final SessionLoader _sessionLoader = SessionLoader();
+
   final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
       ValueNotifier(const AsyncState.idle());
+
+  final ValueNotifier<ConstructIdentifier?> activityConstructId =
+      ValueNotifier<ConstructIdentifier?>(null);
+
+  final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
 
   final Map<String, String> _choiceTexts = {};
   final Map<String, String?> _choiceEmojis = {};
@@ -56,12 +64,15 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   @override
   void dispose() {
     _languageStreamSubscription?.cancel();
-    if (isComplete) {
-      VocabPracticeSessionRepo.clearSession();
+    if (_isComplete) {
+      VocabPracticeSessionRepo.clear();
     } else {
       _saveSession();
     }
     _sessionLoader.dispose();
+    activityState.dispose();
+    activityConstructId.dispose();
+    progressNotifier.dispose();
     super.dispose();
   }
 
@@ -70,22 +81,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
           ? (activityState.value as AsyncLoaded<PracticeActivityModel>).value
           : null;
 
-  double get accuracy => _sessionLoader.value?.accuracy ?? 0.0;
-
-  double get progress => _sessionLoader.value?.progress ?? 0.0;
-
-  bool get isComplete =>
-      _sessionLoader.value?.hasCompletedCurrentGroup ?? false;
-
-  int get elapsedSeconds => _sessionLoader.value?.elapsedSeconds ?? 0;
-
-  int get allXPGained =>
-      (_sessionLoader.value?.totalXpGained ?? 0) +
-      (_sessionLoader.value?.bonusXP ?? 0);
-
-  int get accuracyBonusXP => _sessionLoader.value?.accuracyBonusXP ?? 0;
-
-  int get timeBonusXP => _sessionLoader.value?.timeBonusXP ?? 0;
+  bool get _isComplete => _sessionLoader.value?.isComplete ?? false;
 
   ValueNotifier<AsyncState<VocabPracticeSessionModel>> get sessionState =>
       _sessionLoader.state;
@@ -105,9 +101,14 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       'vocab-choice-card-${choiceId.replaceAll(' ', '_')}';
 
   void _resetActivityState() {
-    activityState.value = const AsyncState.idle();
+    activityState.value = const AsyncState.loading();
+    activityConstructId.value = null;
     _choiceTexts.clear();
     _choiceEmojis.clear();
+  }
+
+  void _resetSessionState() {
+    progressNotifier.value = 0.0;
   }
 
   void updateElapsedTime(int seconds) {
@@ -118,7 +119,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   Future<void> _saveSession() async {
     if (_sessionLoader.isLoaded) {
-      await VocabPracticeSessionRepo.updateSession(_sessionLoader.value!);
+      await VocabPracticeSessionRepo.update(_sessionLoader.value!);
     }
   }
 
@@ -132,6 +133,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   Future<void> _onLanguageUpdate() async {
     try {
       _resetActivityState();
+      _resetSessionState();
       await _analyticsService
           .updateDispatcher.constructUpdateStream.stream.first
           .timeout(const Duration(seconds: 10));
@@ -153,22 +155,26 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   Future<void> reloadSession() async {
     _resetActivityState();
-    await VocabPracticeSessionRepo.clearSession();
+    _resetSessionState();
+    await VocabPracticeSessionRepo.clear();
     _sessionLoader.reset();
     await _startSession();
   }
 
   Future<void> _completeSession() async {
-    final bonus = _sessionLoader.value!.finishSession();
+    _sessionLoader.value!.finishSession();
+    setState(() {});
+
+    final bonus = _sessionLoader.value!.state.allBonusUses;
     await _analyticsService.updateService.addAnalytics(null, bonus);
     await _saveSession();
-    setState(() {});
   }
 
   Future<void> _loadNextActivity() async {
     try {
       _resetActivityState();
       final session = _sessionLoader.value!;
+      activityConstructId.value = session.currentConstructId;
       final activityRequest = session.currentActivityRequest;
       if (activityRequest == null) {
         throw L10n.of(context).noActivityRequest;
@@ -272,7 +278,24 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
 
     // Update session model and analytics
-    final use = _sessionLoader.value!.submitAnswer(activity, correct);
+    final useType = correct
+        ? activity.activityType.correctUse
+        : activity.activityType.incorrectUse;
+
+    final use = OneConstructUse(
+      useType: useType,
+      constructType: ConstructTypeEnum.vocab,
+      metadata: ConstructUseMetaData(
+        roomId: null,
+        timeStamp: DateTime.now(),
+      ),
+      category: activity.targetTokens.first.pos,
+      lemma: activity.targetTokens.first.lemma.text,
+      form: activity.targetTokens.first.lemma.text,
+      xp: useType.pointValue,
+    );
+
+    _sessionLoader.value!.submitAnswer(use);
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
@@ -284,9 +307,10 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
     // Then mark this activity as completed, and either load the next or complete the session
     _sessionLoader.value!.completeActivity();
+    progressNotifier.value = _sessionLoader.value!.progress;
     await _saveSession();
 
-    isComplete ? await _completeSession() : await _loadNextActivity();
+    _isComplete ? await _completeSession() : await _loadNextActivity();
   }
 
   Future<List<InlineSpan>?> getExampleMessage(

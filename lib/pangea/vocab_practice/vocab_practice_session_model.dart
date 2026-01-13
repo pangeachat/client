@@ -1,15 +1,10 @@
 import 'dart:math';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 
 class VocabPracticeSessionModel {
@@ -19,12 +14,7 @@ class VocabPracticeSessionModel {
   final String userL1;
   final String userL2;
 
-  int currentIndex;
-  int currentGroup;
-
-  final List<OneConstructUse> completedUses;
-  bool finished;
-  int elapsedSeconds;
+  VocabPracticeSessionState state;
 
   VocabPracticeSessionModel({
     required this.startedAt,
@@ -32,11 +22,7 @@ class VocabPracticeSessionModel {
     required this.activityTypes,
     required this.userL1,
     required this.userL2,
-    required this.completedUses,
-    this.currentIndex = 0,
-    this.currentGroup = 0,
-    this.finished = false,
-    this.elapsedSeconds = 0,
+    VocabPracticeSessionState? state,
   })  : assert(
           activityTypes.every(
             (t) => {ActivityTypeEnum.lemmaMeaning, ActivityTypeEnum.lemmaAudio}
@@ -44,168 +30,56 @@ class VocabPracticeSessionModel {
           ),
         ),
         assert(
-          activityTypes.length == practiceGroupSize,
-        );
+          activityTypes.length == VocabPracticeConstants.practiceGroupSize,
+        ),
+        state = state ?? const VocabPracticeSessionState();
 
-  static const int practiceGroupSize = 10;
-
-  int get currentAvailableActivities => min(
-        ((currentGroup + 1) * practiceGroupSize),
+  int get _availableActivities => min(
+        VocabPracticeConstants.practiceGroupSize,
         sortedConstructIds.length,
       );
 
-  bool get hasCompletedCurrentGroup =>
-      currentIndex >= currentAvailableActivities;
+  bool get isComplete => state.currentIndex >= _availableActivities;
 
   double get progress =>
-      (currentIndex / currentAvailableActivities).clamp(0.0, 1.0);
+      (state.currentIndex / _availableActivities).clamp(0.0, 1.0);
 
-  List<ConstructIdentifier> get _currentPracticeGroup => sortedConstructIds
-      .skip(currentGroup * practiceGroupSize)
-      .take(practiceGroupSize)
-      .toList();
+  ConstructIdentifier? get currentConstructId =>
+      state.currentIndex < 0 || isComplete
+          ? null
+          : sortedConstructIds[state.currentIndex];
 
-  ConstructIdentifier? get currentConstructId {
-    if (currentIndex < 0 || hasCompletedCurrentGroup) {
-      return null;
-    }
-    return _currentPracticeGroup[currentIndex % practiceGroupSize];
-  }
-
-  ActivityTypeEnum? get currentActivityType {
-    if (currentIndex < 0 || hasCompletedCurrentGroup) {
-      return null;
-    }
-    return activityTypes[currentIndex % practiceGroupSize];
-  }
+  ActivityTypeEnum? get currentActivityType =>
+      state.currentIndex < 0 || isComplete
+          ? null
+          : activityTypes[state.currentIndex];
 
   MessageActivityRequest? get currentActivityRequest {
     final constructId = currentConstructId;
-    if (constructId == null || currentActivityType == null) return null;
-
     final activityType = currentActivityType;
+    if (constructId == null || activityType == null) return null;
+
     return MessageActivityRequest(
       userL1: userL1,
       userL2: userL2,
       activityQualityFeedback: null,
-      targetTokens: [
-        PangeaToken(
-          lemma: Lemma(
-            text: constructId.lemma,
-            saveVocab: true,
-            form: constructId.lemma,
-          ),
-          pos: constructId.category,
-          text: PangeaTokenText.fromString(constructId.lemma),
-          morph: {},
-        ),
-      ],
-      targetType: activityType!,
+      targetTokens: [constructId.asToken],
+      targetType: activityType,
       targetMorphFeature: null,
     );
   }
 
-  int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
+  void setElapsedSeconds(int seconds) =>
+      state = state.copyWith(elapsedSeconds: seconds);
 
-  double get accuracy {
-    if (completedUses.isEmpty) return 0.0;
-    final correct = completedUses.where((use) => use.xp > 0).length;
-    final result = correct / completedUses.length;
-    return (result * 100).truncateToDouble();
-  }
+  void finishSession() => state = state.copyWith(finished: true);
 
-  int get bonusXP => _bonusUses.fold(0, (sum, use) => sum + use.xp);
+  void completeActivity() =>
+      state = state.copyWith(currentIndex: state.currentIndex + 1);
 
-  int get accuracyBonusXP =>
-      _accuracyBonusUses.fold(0, (sum, use) => sum + use.xp);
-
-  int get timeBonusXP => _timeBonusUses.fold(0, (sum, use) => sum + use.xp);
-
-  List<OneConstructUse> get _bonusUses => [
-        ..._accuracyBonusUses,
-        ..._timeBonusUses,
-      ];
-
-  List<OneConstructUse> get _accuracyBonusUses {
-    if (accuracy < 100) {
-      return [];
-    }
-
-    return completedUses
-        .where((use) => use.xp > 0)
-        .map(
-          (use) => OneConstructUse(
-            useType: ConstructUseTypeEnum.bonus,
-            constructType: use.constructType,
-            metadata: ConstructUseMetaData(
-              roomId: use.metadata.roomId,
-              timeStamp: DateTime.now(),
-            ),
-            category: use.category,
-            lemma: use.lemma,
-            form: use.form,
-            xp: ConstructUseTypeEnum.bonus.pointValue,
-          ),
-        )
-        .toList();
-  }
-
-  List<OneConstructUse> get _timeBonusUses {
-    if (elapsedSeconds > VocabPracticeConstants.timeForBonus) {
-      return [];
-    }
-
-    return completedUses
-        .where((use) => use.xp > 0)
-        .map(
-          (use) => OneConstructUse(
-            useType: ConstructUseTypeEnum.bonus,
-            constructType: use.constructType,
-            metadata: ConstructUseMetaData(
-              roomId: use.metadata.roomId,
-              timeStamp: DateTime.now(),
-            ),
-            category: use.category,
-            lemma: use.lemma,
-            form: use.form,
-            xp: ConstructUseTypeEnum.bonus.pointValue,
-          ),
-        )
-        .toList();
-  }
-
-  void setElapsedSeconds(int seconds) {
-    elapsedSeconds = seconds;
-  }
-
-  List<OneConstructUse> finishSession() {
-    finished = true;
-    return _bonusUses;
-  }
-
-  OneConstructUse submitAnswer(PracticeActivityModel activity, bool isCorrect) {
-    final useType = isCorrect
-        ? activity.activityType.correctUse
-        : activity.activityType.incorrectUse;
-
-    final use = OneConstructUse(
-      useType: useType,
-      constructType: ConstructTypeEnum.vocab,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
-      category: activity.targetTokens.first.pos,
-      lemma: activity.targetTokens.first.lemma.text,
-      form: activity.targetTokens.first.lemma.text,
-      xp: useType.pointValue,
-    );
-
-    completedUses.add(use);
-    return use;
-  }
-
-  void completeActivity() => currentIndex += 1;
+  void submitAnswer(OneConstructUse use) => state = state.copyWith(
+        completedUses: [...state.completedUses, use],
+      );
 
   factory VocabPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return VocabPracticeSessionModel(
@@ -224,15 +98,9 @@ class VocabPracticeSessionModel {
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,
-      currentIndex: json['currentIndex'] as int,
-      currentGroup: json['currentGroup'] as int,
-      completedUses: (json['completedUses'] as List<dynamic>?)
-              ?.map((e) => OneConstructUse.fromJson(e))
-              .whereType<OneConstructUse>()
-              .toList() ??
-          [],
-      finished: json['finished'] as bool? ?? false,
-      elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
+      state: VocabPracticeSessionState.fromJson(
+        json,
+      ),
     );
   }
 
@@ -243,11 +111,102 @@ class VocabPracticeSessionModel {
       'activityTypes': activityTypes.map((e) => e.name).toList(),
       'userL1': userL1,
       'userL2': userL2,
-      'currentIndex': currentIndex,
-      'currentGroup': currentGroup,
+      ...state.toJson(),
+    };
+  }
+}
+
+class VocabPracticeSessionState {
+  final List<OneConstructUse> completedUses;
+  final int currentIndex;
+  final bool finished;
+  final int elapsedSeconds;
+
+  const VocabPracticeSessionState({
+    this.completedUses = const [],
+    this.currentIndex = 0,
+    this.finished = false,
+    this.elapsedSeconds = 0,
+  });
+
+  int get totalXpGained => completedUses.fold(0, (sum, use) => sum + use.xp);
+
+  double get accuracy {
+    if (completedUses.isEmpty) return 0.0;
+    final correct = completedUses.where((use) => use.xp > 0).length;
+    final result = correct / completedUses.length;
+    return (result * 100).truncateToDouble();
+  }
+
+  bool get _giveAccuracyBonus => accuracy >= 100.0;
+
+  bool get _giveTimeBonus =>
+      elapsedSeconds > VocabPracticeConstants.timeForBonus;
+
+  int get bonusXP => accuracyBonusXP + timeBonusXP;
+
+  int get accuracyBonusXP => _giveAccuracyBonus ? _bonusXP : 0;
+
+  int get timeBonusXP => _giveTimeBonus ? _bonusXP : 0;
+
+  int get _bonusXP => _bonusUses.fold(0, (sum, use) => sum + use.xp);
+
+  int get allXPGained => totalXpGained + bonusXP;
+
+  List<OneConstructUse> get _bonusUses =>
+      completedUses.where((use) => use.xp > 0).map(_bonusUse).toList();
+
+  List<OneConstructUse> get allBonusUses => [
+        if (_giveAccuracyBonus) ..._bonusUses,
+        if (_giveTimeBonus) ..._bonusUses,
+      ];
+
+  OneConstructUse _bonusUse(OneConstructUse originalUse) => OneConstructUse(
+        useType: ConstructUseTypeEnum.bonus,
+        constructType: originalUse.constructType,
+        metadata: ConstructUseMetaData(
+          roomId: originalUse.metadata.roomId,
+          timeStamp: DateTime.now(),
+        ),
+        category: originalUse.category,
+        lemma: originalUse.lemma,
+        form: originalUse.form,
+        xp: ConstructUseTypeEnum.bonus.pointValue,
+      );
+
+  VocabPracticeSessionState copyWith({
+    List<OneConstructUse>? completedUses,
+    int? currentIndex,
+    bool? finished,
+    int? elapsedSeconds,
+  }) {
+    return VocabPracticeSessionState(
+      completedUses: completedUses ?? this.completedUses,
+      currentIndex: currentIndex ?? this.currentIndex,
+      finished: finished ?? this.finished,
+      elapsedSeconds: elapsedSeconds ?? this.elapsedSeconds,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
       'completedUses': completedUses.map((e) => e.toJson()).toList(),
+      'currentIndex': currentIndex,
       'finished': finished,
       'elapsedSeconds': elapsedSeconds,
     };
+  }
+
+  factory VocabPracticeSessionState.fromJson(Map<String, dynamic> json) {
+    return VocabPracticeSessionState(
+      completedUses: (json['completedUses'] as List<dynamic>?)
+              ?.map((e) => OneConstructUse.fromJson(e))
+              .whereType<OneConstructUse>()
+              .toList() ??
+          [],
+      currentIndex: json['currentIndex'] as int,
+      finished: json['finished'] as bool,
+      elapsedSeconds: json['elapsedSeconds'] as int,
+    );
   }
 }
