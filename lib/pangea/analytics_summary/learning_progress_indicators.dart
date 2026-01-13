@@ -44,12 +44,10 @@ class LearningProgressIndicators extends StatelessWidget {
         final userL2 = MatrixState.pangeaController.userController.userL2;
 
         final analyticsRoom = Matrix.of(context).client.analyticsRoomLocal();
-        final archivedActivitiesCount =
-            analyticsRoom?.archivedActivitiesCount ?? 0;
+        final updater = analyticsService.updateDispatcher;
 
         return StreamBuilder(
-          stream:
-              analyticsService.updateDispatcher.constructUpdateStream.stream,
+          stream: updater.constructUpdateStream.stream,
           builder: (context, _) {
             return Row(
               children: [
@@ -82,36 +80,49 @@ class LearningProgressIndicators extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                HoverButton(
-                                  selected: selected ==
-                                      ProgressIndicatorEnum.activities,
-                                  onPressed: () {
-                                    AnalyticsNavigationUtil.navigateToAnalytics(
-                                      context: context,
-                                      view: ProgressIndicatorEnum.activities,
+                                StreamBuilder(
+                                  stream:
+                                      updater.activityAnalyticsStream.stream,
+                                  builder: (context, _) {
+                                    final archivedActivitiesCount =
+                                        analyticsRoom
+                                                ?.archivedActivitiesCount ??
+                                            0;
+                                    return HoverButton(
+                                      selected: selected ==
+                                          ProgressIndicatorEnum.activities,
+                                      onPressed: () {
+                                        AnalyticsNavigationUtil
+                                            .navigateToAnalytics(
+                                          context: context,
+                                          view:
+                                              ProgressIndicatorEnum.activities,
+                                        );
+                                      },
+                                      child: Tooltip(
+                                        message: ProgressIndicatorEnum
+                                            .activities
+                                            .tooltip(context),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Icon(
+                                              size: 18,
+                                              Icons.radar,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary,
+                                              weight: 1000,
+                                            ),
+                                            const SizedBox(width: 6.0),
+                                            AnimatedFloatingNumber(
+                                              number: archivedActivitiesCount,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                     );
                                   },
-                                  child: Tooltip(
-                                    message: ProgressIndicatorEnum.activities
-                                        .tooltip(context),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          size: 18,
-                                          Icons.radar,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary,
-                                          weight: 1000,
-                                        ),
-                                        const SizedBox(width: 6.0),
-                                        AnimatedFloatingNumber(
-                                          number: archivedActivitiesCount,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                 ),
                               ],
                             ),
