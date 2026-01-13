@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "\xc9chec du t\xe9l\xe9chargement de l'analytique utilisateur";
     },
-    get$downloadComplete() {
-      return "T\xe9l\xe9chargement termin\xe9 !";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Quelle est la " + morphologicalFeature + " de '" + wordForm + "' ?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Vous avez quitt\xe9 le chat";
     },
+    get$downloadInitiated() {
+      return "T\xe9l\xe9chargement initi\xe9";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Si votre navigateur bloque les t\xe9l\xe9chargements, veuillez activer les t\xe9l\xe9chargements pour ce site.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eYkSppwC04J9zPDUziVxIdPFpSo="] = d.current;
+  d["jnIyaypwvRy840crHkEnNm2hvVs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_600.part.js.map

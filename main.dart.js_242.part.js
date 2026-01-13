@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Nepoda\u0159ilo se st\xe1hnout analytiku u\u017eivatele";
     },
-    get$downloadComplete() {
-      return "Stahov\xe1n\xed dokon\u010deno!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Co je " + morphologicalFeature + " u '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Opustil(a) jsi chat";
     },
+    get$downloadInitiated() {
+      return "Stahov\xe1n\xed zah\xe1jeno";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Pokud v\xe1\u0161 prohl\xed\u017ee\u010d blokuje stahov\xe1n\xed, povolte pros\xedm stahov\xe1n\xed pro tuto str\xe1nku.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8Oy72MCYT0cWjoAmfR9xGEeQpuA="] = d.current;
+  d["8m1U9vUn00D2tILs6SX0hC7jlZM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

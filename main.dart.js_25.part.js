@@ -3703,9 +3703,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Falha ao baixar an\xe1lises de usu\xe1rio";
     },
-    get$downloadComplete() {
-      return "Download completo!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "O que \xe9 " + morphologicalFeature + " de '" + wordForm + "'?";
     },
@@ -5328,6 +5325,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Voc\xea saiu do chat";
+    },
+    get$downloadInitiated() {
+      return "Download iniciado";
+    },
+    get$webDownloadPermissionMessage() {
+      return string$.Se_o_s;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -9009,9 +9012,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Falha ao baixar an\xe1lises do usu\xe1rio";
     },
-    get$downloadComplete() {
-      return "Download conclu\xeddo!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "O que \xe9 " + morphologicalFeature + " de '" + wordForm + "'?";
     },
@@ -10631,6 +10631,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Voc\xea saiu do chat";
+    },
+    get$downloadInitiated() {
+      return "Download iniciado";
+    },
+    get$webDownloadPermissionMessage() {
+      return string$.Se_o_s;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -14312,9 +14318,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Falha ao descarregar an\xe1lises de utilizador";
     },
-    get$downloadComplete() {
-      return "Descarregamento conclu\xeddo!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "O que \xe9 o " + morphologicalFeature + " de '" + wordForm + "'?";
     },
@@ -15935,6 +15938,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Voc\xea saiu do chat";
     },
+    get$downloadInitiated() {
+      return "Download iniciado";
+    },
+    get$webDownloadPermissionMessage() {
+      return string$.Se_o_s;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16103,6 +16112,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Remove: "Remover o Pangea Bot ir\xe1 remover o bot de conversa deste chat.",
     Report: "Reportar problema na informa\xe7\xe3o da palavra",
     Sair_d: "Sair deste espa\xe7o e de todas as conversas nele",
+    Se_o_s: "Se o seu navegador bloquear downloads, por favor, habilite downloads para este site.",
     Se_seu: "Se seu dispositivo suportar o idioma que voc\xea est\xe1 aprendendo, voc\xea pode ativar a autocorre\xe7\xe3o do dispositivo para corrigir erros comuns enquanto digita.",
     Sobres: "Sobrescreve todas as outras regras e desativa todas as notifica\xe7\xf5es.",
     Solici: "Solicita\xe7\xf5es para usu\xe1rios inativos n\xe3o puderam ser enviadas",
@@ -16134,7 +16144,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VeY1gmTCXcEjW+KhcHo2S2o5saM="] = d.current;
+  d["0aOaL8OzqVQvHcno13PPJhba/z0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

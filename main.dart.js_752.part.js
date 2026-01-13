@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Neuspe\u0161no prena\u0161anje uporabni\u0161kih analitik";
     },
-    get$downloadComplete() {
-      return "Prenos zaklju\u010den!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Kaj je " + morphologicalFeature + " od '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Zapustili ste klepet";
     },
+    get$downloadInitiated() {
+      return "Prenos je bil za\u010det";
+    },
+    get$webDownloadPermissionMessage() {
+      return "\u010ce va\u0161 brskalnik blokira prenose, prosimo, omogo\u010dite prenose za to spletno mesto.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oUAGpO+TrwuASI8a+EJnQb16Lec="] = d.current;
+  d["4UPKgN8toBtSMIXQHJzS+EgXpNI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Nepavyko parsisi\u0173sti vartotojo analiz\u0117s";
     },
-    get$downloadComplete() {
-      return "Atsisiuntimas baigtas!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Kokia yra '" + wordForm + "' " + morphologicalFeature + "?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa J\u016bs palikote pokalb\u012f";
     },
+    get$downloadInitiated() {
+      return "Atsisiuntimas prad\u0117tas";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Jei j\u016bs\u0173 nar\u0161ykl\u0117 blokuoja atsisiuntimus, pra\u0161ome \u012fgalinti atsisiuntimus \u0161iam tinklalapiui.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5333,7 +5336,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wVQ8HADzFNTL30gc6XSApFbhxhk="] = d.current;
+  d["5aLIItopDJkx140EkT9pGhX4EFM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_713.part.js.map

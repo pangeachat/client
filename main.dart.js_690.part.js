@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Gagal mengunduh analitik pengguna";
     },
-    get$downloadComplete() {
-      return "Unduhan selesai!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Apa " + morphologicalFeature + " dari '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Anda meninggalkan obrolan";
     },
+    get$downloadInitiated() {
+      return "Unduhan dimulai";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Jika browser Anda memblokir unduhan, silakan aktifkan unduhan untuk situs ini.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5333,7 +5336,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FLnbB6hzL3pJCE98YuHsYscHYgI="] = d.current;
+  d["WarJMWS5r2oFEE2nS6qhmt85490="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_690.part.js.map

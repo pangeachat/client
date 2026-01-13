@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Neuspe\u0161no preuzimanje analitike korisnika";
     },
-    get$downloadComplete() {
-      return "Preuzimanje zavr\u0161eno!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "\u0160ta je " + morphologicalFeature + " od '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Napustili ste chat";
     },
+    get$downloadInitiated() {
+      return "Preuzimanje je pokrenuto";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Ako va\u0161 pregleda\u010d blokira preuzimanja, molimo omogu\u0107ite preuzimanja za ovu stranicu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+BoHYjK9TF+eu7L7o5zNsWshUHk="] = d.current;
+  d["0EqPFL2vRR0oQk/jTKqzCJe39u0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

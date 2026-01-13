@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "\u0391\u03c0\u03bf\u03c4\u03c5\u03c7\u03af\u03b1 \u03bb\u03ae\u03c8\u03b7\u03c2 \u03b1\u03bd\u03ac\u03bb\u03c5\u03c3\u03b7\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b7";
     },
-    get$downloadComplete() {
-      return "\u0397 \u03bb\u03ae\u03c8\u03b7 \u03bf\u03bb\u03bf\u03ba\u03bb\u03b7\u03c1\u03ce\u03b8\u03b7\u03ba\u03b5!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "\u03a4\u03b9 \u03b5\u03af\u03bd\u03b1\u03b9 \u03c4\u03bf " + morphologicalFeature + " \u03c4\u03bf\u03c5 '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa \u0391\u03c6\u03ae\u03c3\u03b1\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
     },
+    get$downloadInitiated() {
+      return "\u0397 \u03bb\u03ae\u03c8\u03b7 \u03be\u03b5\u03ba\u03af\u03bd\u03b7\u03c3\u03b5";
+    },
+    get$webDownloadPermissionMessage() {
+      return "\u0395\u03ac\u03bd \u03bf \u03c0\u03b5\u03c1\u03b9\u03b7\u03b3\u03b7\u03c4\u03ae\u03c2 \u03c3\u03b1\u03c2 \u03bc\u03c0\u03bb\u03bf\u03ba\u03ac\u03c1\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03bb\u03ae\u03c8\u03b5\u03b9\u03c2, \u03c0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03ce \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b9\u03c2 \u03bb\u03ae\u03c8\u03b5\u03b9\u03c2 \u03b3\u03b9\u03b1 \u03b1\u03c5\u03c4\u03cc\u03bd \u03c4\u03bf\u03bd \u03b9\u03c3\u03c4\u03cc\u03c4\u03bf\u03c0\u03bf.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5333,7 +5336,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ue+qou1vzyXPGilSfBCB02I97jc="] = d.current;
+  d["Ct8Ilzy2mtmjSLrx+t25FYXyRYM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_413.part.js.map

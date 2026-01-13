@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Fallite a reciper analyticas de usator";
     },
-    get$downloadComplete() {
-      return "Scaricamento complete!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Qual es le " + morphologicalFeature + " de '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Tu l\xebv\xeb chatin";
     },
+    get$downloadInitiated() {
+      return "Download inisiati";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Se o teu navegador bloqueia descargas, por favor habilita descargas para este site.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HiEGJpR6jFBN0R8XOCawC8nyynk="] = d.current;
+  d["64XXvyf2bzZsBkAzGuX3AQEn1oU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_672.part.js.map

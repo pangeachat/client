@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "N\xedor \xe9irigh le h\xedosl\xf3d\xe1il anail\xeds \xfas\xe1ideora";
     },
-    get$downloadComplete() {
-      return "Cr\xedochnaithe an t-\xedosl\xf3d\xe1il!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Cad \xe9 an " + morphologicalFeature + " de '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa D'fh\xe1g t\xfa an comhr\xe1";
     },
+    get$downloadInitiated() {
+      return "Tosa\xedodh an \xedosl\xf3d\xe1il";
+    },
+    get$webDownloadPermissionMessage() {
+      return "M\xe1s blocann do bhrabhs\xe1la\xed \xedosl\xf3d\xe1lacha, le do thoil, gn\xedomhachtaigh \xedosl\xf3d\xe1lacha don su\xedomh seo.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5333,7 +5336,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["N7j9Sp4DeL/LLql60qhavxYyNJ0="] = d.current;
+  d["lzpyzGc7tk0jlZtoR3ikQq4EzqE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_615.part.js.map

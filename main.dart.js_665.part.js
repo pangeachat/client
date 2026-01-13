@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Nem siker\xfclt let\xf6lteni a felhaszn\xe1l\xf3i elemz\xe9seket";
     },
-    get$downloadComplete() {
-      return "Let\xf6lt\xe9s k\xe9sz!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Mi a " + morphologicalFeature + " '" + wordForm + "' eset\xe9ben?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Elhagytad a cseveg\xe9st";
     },
+    get$downloadInitiated() {
+      return "Let\xf6lt\xe9s megkezd\u0151d\xf6tt";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Ha a b\xf6ng\xe9sz\u0151d blokkolja a let\xf6lt\xe9seket, k\xe9rlek enged\xe9lyezd a let\xf6lt\xe9seket ezen az oldalon.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nd5BgqZAD6iLsgXvrjIaVsFm2dQ="] = d.current;
+  d["JiAgFnk/s5+jPFCKlUgs8+0UV8M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_665.part.js.map

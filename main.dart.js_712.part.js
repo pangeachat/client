@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "\uc0ac\uc6a9\uc790 \ubd84\uc11d \ub2e4\uc6b4\ub85c\ub4dc \uc2e4\ud328";
     },
-    get$downloadComplete() {
-      return "\ub2e4\uc6b4\ub85c\ub4dc \uc644\ub8cc!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "'" + wordForm + "'\uc758 " + morphologicalFeature + "\ub294 \ubb34\uc5c7\uc785\ub2c8\uae4c?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa \ucc44\ud305\uc744 \ub098\uac14\uc2b5\ub2c8\ub2e4";
     },
+    get$downloadInitiated() {
+      return "\ub2e4\uc6b4\ub85c\ub4dc\uac00 \uc2dc\uc791\ub418\uc5c8\uc2b5\ub2c8\ub2e4";
+    },
+    get$webDownloadPermissionMessage() {
+      return "\ube0c\ub77c\uc6b0\uc800\uac00 \ub2e4\uc6b4\ub85c\ub4dc\ub97c \ucc28\ub2e8\ud558\ub294 \uacbd\uc6b0, \uc774 \uc0ac\uc774\ud2b8\uc5d0 \ub300\ud55c \ub2e4\uc6b4\ub85c\ub4dc\ub97c \ud65c\uc131\ud654\ud574 \uc8fc\uc138\uc694.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BHvAX7AfBwyGu2l5ETUgWNhOKp4="] = d.current;
+  d["ct1AzH3sNTMRULLVs+hkg0cIl3k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_712.part.js.map

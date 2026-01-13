@@ -3692,9 +3692,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "\u041d\u0435 \u045e\u0434\u0430\u043b\u043e\u0441\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u0456\u0446\u044c \u0430\u043d\u0430\u043b\u0456\u0442\u044b\u043a\u0443 \u043a\u0430\u0440\u044b\u0441\u0442\u0430\u043b\u044c\u043d\u0456\u043a\u0430";
     },
-    get$downloadComplete() {
-      return "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0430\u043d\u0430!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "\u0428\u0442\u043e \u0442\u0430\u043a\u043e\u0435 " + morphologicalFeature + " \u0443 '" + wordForm + "'?";
     },
@@ -5318,6 +5315,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa \u0412\u044b \u043f\u0430\u043a\u0456\u043d\u0443\u043b\u0456 \u0447\u0430\u0442";
     },
+    get$downloadInitiated() {
+      return "\u0421\u043f\u0430\u043c\u043f\u043e\u045e\u043a\u0430 \u0456\u043d\u0456\u0446\u044b\u044f\u0432\u0430\u043d\u0430";
+    },
+    get$webDownloadPermissionMessage() {
+      return "\u041a\u0430\u043b\u0456 \u0432\u0430\u0448 \u0431\u0440\u0430\u045e\u0437\u0435\u0440 \u0431\u043b\u0430\u043a\u0443\u0435 \u0441\u043f\u0430\u043c\u043f\u043e\u045e\u043a\u0456, \u043a\u0430\u043b\u0456 \u043b\u0430\u0441\u043a\u0430, \u0443\u043a\u043b\u044e\u0447\u044b\u0446\u0435 \u0441\u043f\u0430\u043c\u043f\u043e\u045e\u043a\u0456 \u0434\u043b\u044f \u0433\u044d\u0442\u0430\u0433\u0430 \u0441\u0430\u0439\u0442\u0430.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5334,7 +5337,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+uUe5lyj804mmekLhnZlGixUCmM="] = d.current;
+  d["zXetRi8snPxo0+Uz9gth4CBKL94="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map

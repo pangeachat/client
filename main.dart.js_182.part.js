@@ -3692,9 +3692,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Error en descarregar l'an\xe0lisi d'usuari";
     },
-    get$downloadComplete() {
-      return "Descarrega completada!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Qu\xe8 \xe9s el " + morphologicalFeature + " de '" + wordForm + "'?";
     },
@@ -5318,6 +5315,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Has deixat el xat";
     },
+    get$downloadInitiated() {
+      return "Desc\xe0rrega iniciada";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Si el teu navegador bloqueja les desc\xe0rregues, si us plau, activa les desc\xe0rregues per a aquest lloc.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5334,7 +5337,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LWHFN2NejtikDJdHS29eqvp7WY4="] = d.current;
+  d["4V/o59NUv+Su48iWUZ2/BdJi7ts="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map

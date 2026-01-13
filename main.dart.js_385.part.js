@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Fehler beim Herunterladen der Benutzeranalysen";
     },
-    get$downloadComplete() {
-      return "Download abgeschlossen!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Was ist das " + morphologicalFeature + " von '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du hast den Chat verlassen";
     },
+    get$downloadInitiated() {
+      return "Download gestartet";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Wenn Ihr Browser Downloads blockiert, aktivieren Sie bitte Downloads f\xfcr diese Seite.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5333,7 +5336,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sW0BM2jW6aIaOWexqy/TfS+Q204="] = d.current;
+  d["qauveUsdSMDjSn9KpPHBZGjRgzM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_385.part.js.map

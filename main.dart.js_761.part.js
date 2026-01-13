@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Kullan\u0131c\u0131 analiti\u011fi indirilemedi";
     },
-    get$downloadComplete() {
-      return "\u0130ndirme tamamland\u0131!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return wordForm + "'un " + morphologicalFeature + " nedir?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Sohbeti terk ettin";
     },
+    get$downloadInitiated() {
+      return "\u0130ndirme ba\u015flat\u0131ld\u0131";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Taray\u0131c\u0131n\u0131z indirmeleri engelliyorsa, l\xfctfen bu site i\xe7in indirmeleri etkinle\u015ftirin.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5333,7 +5336,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3Hc0kU4dfEP9CXwi6sfI+W+SxwM="] = d.current;
+  d["NXDGSMTfDBsvTY8Kv6LwAkAoNXg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_761.part.js.map

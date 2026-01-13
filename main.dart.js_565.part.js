@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Ezin izan da erabiltzailearen analitikak deskargatu";
     },
-    get$downloadComplete() {
-      return "Deskarga amaitu da!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Zer da '" + wordForm + "'-ren " + morphologicalFeature + "?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Txatetik irten zara";
     },
+    get$downloadInitiated() {
+      return "Deskarga hasi da";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Zure nabigatzaileak deskargak blokeatzen baditu, mesedez, gaitza itxaroteko deskargak webgune honentzat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5333,7 +5336,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2j4gF/+Lu062qQ8XgPqnJnzB8gc="] = d.current;
+  d["PrsO5FV5tmTjDUT5g0pyzepdYqE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_565.part.js.map

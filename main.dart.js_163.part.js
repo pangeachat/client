@@ -3693,9 +3693,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "\u0f56\u0f40\u0f7c\u0f51\u0f0b\u0f62\u0f72\u0f58\u0f0b\u0f63\u0f66\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f58\u0f72\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f53\u0f66\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f60\u0f56\u0fb1\u0f7a\u0f51\u0f0b\u0f58\u0f72\u0f0b\u0f60\u0f51\u0f74\u0f42";
     },
-    get$downloadComplete() {
-      return "\u0f62\u0f7a\u0f63\u0f0b\u0f60\u0f41\u0f7c\u0f51\u0f0b\u0f5a\u0f62\u0f0b\u0f58\u0f72\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f56\u0f40\u0f7c\u0f51\u0f0b\u0f61\u0f7c\u0f51\u0f0d";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "\u2018" + wordForm + "\u2019\u0f42\u0f72 " + morphologicalFeature + "\u0f0b\u0f42\u0f0b\u0f62\u0f7a\u0f0b\u0f61\u0f7c\u0f51\u0f0d";
     },
@@ -5319,6 +5316,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Oi sa\xedste do chat";
     },
+    get$downloadInitiated() {
+      return "Download initiated";
+    },
+    get$webDownloadPermissionMessage() {
+      return "If your browser blocks downloads, please enable downloads for this site.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5344,7 +5347,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RlwryJXFqpi78pwTj5pT3Wgt7qQ="] = d.current;
+  d["y8OAGEBU2jxxyowHjZkhtWGJQxc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_163.part.js.map

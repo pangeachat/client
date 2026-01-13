@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "K\xe4ytt\xe4j\xe4analytiikan lataaminen ep\xe4onnistui";
     },
-    get$downloadComplete() {
-      return "Lataus valmis!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Mik\xe4 on '" + wordForm + "' " + morphologicalFeature + "?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Poistit itsesi keskustelusta";
     },
+    get$downloadInitiated() {
+      return "Lataus aloitettu";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Jos selaimesi est\xe4\xe4 lataukset, ota lataukset k\xe4ytt\xf6\xf6n t\xe4lle sivustolle.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5OuCeIHQjNYGavnWkELKEX8oZgc="] = d.current;
+  d["uxb3VqGb/dNmZ8tco9+GXvXBz+0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

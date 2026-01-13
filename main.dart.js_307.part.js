@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Mislykkedes med at hente brugeranalyse";
     },
-    get$downloadComplete() {
-      return "Download fuldf\xf8rt!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Hvad er " + morphologicalFeature + " af '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du forlod chatten";
     },
+    get$downloadInitiated() {
+      return "Download p\xe5begyndt";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Hvis din browser blokerer downloads, bedes du aktivere downloads for dette site.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nKpxLKfHISSTXvb1oRYMDvBi6uk="] = d.current;
+  d["lq7b3sxnvNEsoUGy61aj6H4jV18="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

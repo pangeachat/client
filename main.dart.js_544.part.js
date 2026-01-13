@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Kasutaja anal\xfc\xfctika allalaadimine eba\xf5nnestus";
     },
-    get$downloadComplete() {
-      return "Laadimine l\xf5petatud!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Mis on '" + wordForm + "' " + morphologicalFeature + "?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Sa lahkusid vestlusest";
     },
+    get$downloadInitiated() {
+      return "Allalaadimine algatatud";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Kui teie brauser blokeerib allalaadimisi, lubage palun selle saidi jaoks allalaadimised.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Og045tXJHlSUFCkqLQElXXL98ZA="] = d.current;
+  d["AU7zEGBeXmFFVd3etivY2docg0M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_544.part.js.map

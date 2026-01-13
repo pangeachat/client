@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "\u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10d0\u10dc\u10d0\u10da\u10d8\u10e2\u10d8\u10d9\u10d8\u10e1 \u10e9\u10d0\u10db\u10dd\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d0 \u10d5\u10d4\u10e0 \u10db\u10dd\u10ee\u10d4\u10e0\u10ee\u10d3\u10d0";
     },
-    get$downloadComplete() {
-      return "\u10e9\u10d0\u10db\u10dd\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d0 \u10d3\u10d0\u10e1\u10e0\u10e3\u10da\u10d3\u10d0!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "\u10e0\u10d0 \u10d0\u10e0\u10d8\u10e1 " + morphologicalFeature + " '" + wordForm + "'-\u10d8\u10e1?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa \u10d7\u10e5\u10d5\u10d4\u10dc \u10d3\u10d0\u10e2\u10dd\u10d5\u10d4\u10d7 \u10e9\u10d0\u10e2\u10d8";
     },
+    get$downloadInitiated() {
+      return "\u10e9\u10d0\u10db\u10dd\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d0 \u10d3\u10d0\u10ec\u10e7\u10d4\u10d1\u10e3\u10da\u10d8\u10d0";
+    },
+    get$webDownloadPermissionMessage() {
+      return "\u10d7\u10e3 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10d1\u10e0\u10d0\u10e3\u10d6\u10d4\u10e0\u10d8 \u10d1\u10da\u10dd\u10d9\u10d0\u10d5\u10e1 \u10e9\u10d0\u10db\u10dd\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d4\u10d1\u10e1, \u10d2\u10d7\u10ee\u10dd\u10d5\u10d7 \u10d2\u10d0\u10d0\u10e5\u10e2\u10d8\u10e3\u10e0\u10dd\u10d7 \u10e9\u10d0\u10db\u10dd\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d4\u10d1\u10d8 \u10d0\u10db \u10d5\u10d4\u10d1\u10e1\u10d0\u10d8\u10e2\u10d8\u10e1\u10d7\u10d5\u10d8\u10e1.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["deAVIlvlfH+LVrrCZA8E5bRa4TU="] = d.current;
+  d["iSGu6Dv4SB43e/zPWQdy/TDP20U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_711.part.js.map

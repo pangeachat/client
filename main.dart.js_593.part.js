@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Nabigo sa pag-download ng analytics ng gumagamit";
     },
-    get$downloadComplete() {
-      return "Tapos na ang pag-download!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "Ano ang " + morphologicalFeature + " ng '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Umalis ka sa chat";
     },
+    get$downloadInitiated() {
+      return "Nagsimula ang pag-download";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Kung hinaharang ng iyong browser ang mga pag-download, mangyaring paganahin ang mga pag-download para sa site na ito.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["r3OJhouJiCVUqgSN7kudC5UBIbY="] = d.current;
+  d["cVLLIyLRta7OAspprbyllWXK/LU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_593.part.js.map

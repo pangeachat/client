@@ -3691,9 +3691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedFetchUserAnalytics() {
       return "Error al descargar el an\xe1lisis de usuarios";
     },
-    get$downloadComplete() {
-      return "\xa1Descarga completa!";
-    },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
       return "\xbfCu\xe1l es la " + morphologicalFeature + " de '" + wordForm + "'?";
     },
@@ -5317,6 +5314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youLeftTheChat() {
       return "\ud83d\udeaa Has salido del chat";
     },
+    get$downloadInitiated() {
+      return "Descarga iniciada";
+    },
+    get$webDownloadPermissionMessage() {
+      return "Si tu navegador bloquea las descargas, por favor habilita las descargas para este sitio.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5330,7 +5333,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CW7Y23pECo0rbyqqHqOkpVBQ9lw="] = d.current;
+  d["vad4jC24afEtoxQF4vNJ9wr1YnU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_505.part.js.map
