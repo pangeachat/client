@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:38:59.797271",
+  "@@last_modified": "2026-01-13 15:17:49.129767",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11930,6 +11930,16 @@
   },
   "youLeftTheChat": "🚪 Napustili ste chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Preuzimanje je pokrenuto",
+  "webDownloadPermissionMessage": "Ako vaš pregledač blokira preuzimanja, molimo omogućite preuzimanja za ovu stranicu.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:38:28.676918",
+  "@@last_modified": "2026-01-13 15:17:12.846069",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10826,6 +10826,16 @@
   },
   "youLeftTheChat": "🚪 你已離開聊天",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "下載已啟動",
+  "webDownloadPermissionMessage": "如果您的瀏覽器阻止下載，請為此網站啟用下載。",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

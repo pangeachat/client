@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-12 13:38:24.139493",
+  "@@last_modified": "2026-01-13 15:17:06.767898",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11927,6 +11927,16 @@
   },
   "youLeftTheChat": "🚪 Вы пакінулі чат",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Спампоўка ініцыявана",
+  "webDownloadPermissionMessage": "Калі ваш браўзер блакуе спампоўкі, калі ласка, уключыце спампоўкі для гэтага сайта.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

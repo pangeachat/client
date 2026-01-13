@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:37:51.372785",
+  "@@last_modified": "2026-01-13 15:16:23.091865",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10936,6 +10936,16 @@
   },
   "youLeftTheChat": "🚪 채팅을 나갔습니다",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "다운로드가 시작되었습니다",
+  "webDownloadPermissionMessage": "브라우저가 다운로드를 차단하는 경우, 이 사이트에 대한 다운로드를 활성화해 주세요.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

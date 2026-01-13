@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-12 13:37:53.262601",
+  "@@last_modified": "2026-01-13 15:16:25.022581",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8062,6 +8062,16 @@
   },
   "youLeftTheChat": "🚪 Has salido del chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Descarga iniciada",
+  "webDownloadPermissionMessage": "Si tu navegador bloquea las descargas, por favor habilita las descargas para este sitio.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

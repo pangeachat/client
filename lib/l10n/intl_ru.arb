@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-12 13:38:57.315339",
+  "@@last_modified": "2026-01-13 15:17:45.324896",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10933,6 +10933,16 @@
   },
   "youLeftTheChat": "🚪 Вы покинули чат",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Загрузка начата",
+  "webDownloadPermissionMessage": "Если ваш браузер блокирует загрузки, пожалуйста, разрешите загрузки для этого сайта.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-12 13:38:03.861115",
+  "@@last_modified": "2026-01-13 15:16:38.044008",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11912,6 +11912,16 @@
   },
   "youLeftTheChat": "🚪 Opustili ste chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Stiahnutie bolo zahájené",
+  "webDownloadPermissionMessage": "Ak váš prehliadač blokuje sťahovanie, prosím, povolte sťahovanie pre túto stránku.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

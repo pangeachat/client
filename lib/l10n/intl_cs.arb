@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-12 13:38:22.191603",
+  "@@last_modified": "2026-01-13 15:17:03.339822",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11435,6 +11435,16 @@
   },
   "youLeftTheChat": "🚪 Opustil(a) jsi chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Stahování zahájeno",
+  "webDownloadPermissionMessage": "Pokud váš prohlížeč blokuje stahování, povolte prosím stahování pro tuto stránku.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

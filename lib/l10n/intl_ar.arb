@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-12 13:38:32.529749",
+  "@@last_modified": "2026-01-13 15:17:18.289687",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11045,6 +11045,16 @@
   },
   "youLeftTheChat": "🚪 لقد غادرت الدردشة",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "تم بدء التنزيل",
+  "webDownloadPermissionMessage": "إذا كان متصفحك يمنع التنزيلات، يرجى تمكين التنزيلات لهذا الموقع.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

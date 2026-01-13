@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:38:00.616182",
+  "@@last_modified": "2026-01-13 15:16:34.707887",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10819,6 +10819,16 @@
   },
   "youLeftTheChat": "🚪 Anda meninggalkan obrolan",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Unduhan dimulai",
+  "webDownloadPermissionMessage": "Jika browser Anda memblokir unduhan, silakan aktifkan unduhan untuk situs ini.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

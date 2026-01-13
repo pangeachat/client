@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:38:13.080168",
+  "@@last_modified": "2026-01-13 15:16:49.002664",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11928,6 +11928,16 @@
   },
   "youLeftTheChat": "🚪 Você saiu do chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Download iniciado",
+  "webDownloadPermissionMessage": "Se o seu navegador bloquear downloads, por favor, habilite downloads para este site.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

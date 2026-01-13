@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-12 13:38:16.664389",
+  "@@last_modified": "2026-01-13 15:16:54.017311",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11909,6 +11909,16 @@
   },
   "youLeftTheChat": "🚪 Zapustili ste klepet",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Prenos je bil začet",
+  "webDownloadPermissionMessage": "Če vaš brskalnik blokira prenose, prosimo, omogočite prenose za to spletno mesto.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

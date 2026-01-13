@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:38:02.025580",
+  "@@last_modified": "2026-01-13 15:16:36.323428",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11563,6 +11563,16 @@
   },
   "youLeftTheChat": "🚪 Ai părăsit chat-ul",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Descărcare inițiată",
+  "webDownloadPermissionMessage": "Dacă browserul dvs. blochează descărcările, vă rugăm să activați descărcările pentru acest site.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

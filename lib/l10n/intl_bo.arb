@@ -4279,7 +4279,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-12 13:38:44.721898",
+  "@@last_modified": "2026-01-13 15:17:29.552592",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10582,6 +10582,16 @@
   },
   "youLeftTheChat": "🚪 Oi saíste do chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Download initiated",
+  "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }
