@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-12 13:38:29.720535",
+  "@@last_modified": "2026-01-13 15:17:14.804213",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11804,6 +11804,16 @@
   },
   "youLeftTheChat": "🚪 Umalis ka sa chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Nagsimula ang pag-download",
+  "webDownloadPermissionMessage": "Kung hinaharang ng iyong browser ang mga pag-download, mangyaring paganahin ang mga pag-download para sa site na ito.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

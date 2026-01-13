@@ -4009,7 +4009,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-12 13:37:55.667127",
+  "@@last_modified": "2026-01-13 15:16:29.232516",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11451,6 +11451,16 @@
   },
   "youLeftTheChat": "🚪 Poistit itsesi keskustelusta",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Lataus aloitettu",
+  "webDownloadPermissionMessage": "Jos selaimesi estää lataukset, ota lataukset käyttöön tälle sivustolle.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

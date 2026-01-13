@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-12 13:38:18.336177",
+  "@@last_modified": "2026-01-13 15:16:56.151795",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11919,6 +11919,16 @@
   },
   "youLeftTheChat": "🚪 你已離開聊天",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "下載已啟動",
+  "webDownloadPermissionMessage": "如果你的瀏覽器阻止下載，請為此網站啟用下載。",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }
