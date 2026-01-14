@@ -208,8 +208,8 @@ class AnalyticsDataService {
     return analyticsRoom?.blockedConstructs ?? {};
   }
 
-  Future<void> waitForSync() async {
-    await _syncController?.syncStream.stream.first;
+  Future<void> waitForSync(String analyticsRoomID) async {
+    await _syncController?.waitForSync(analyticsRoomID);
   }
 
   Future<DerivedAnalyticsDataModel> get derivedData async {
