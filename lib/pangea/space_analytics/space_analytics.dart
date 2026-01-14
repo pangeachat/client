@@ -296,6 +296,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
                   (child) => child.roomId == roomId,
                 )
                 ?.via,
+            reason: widget.roomId,
           );
       status = RequestStatus.requested;
     } catch (e) {
