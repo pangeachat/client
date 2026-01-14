@@ -38,6 +38,7 @@ import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart'
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_page/activity_archive.dart';
 import 'package:fluffychat/pangea/analytics_page/empty_analytics_page.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/level_analytics_details_content.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
@@ -59,7 +60,6 @@ import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
@@ -543,6 +543,18 @@ abstract class AppRoutes {
                   redirect: loggedOutRedirect,
                   routes: [
                     GoRoute(
+                      path: 'practice',
+                      pageBuilder: (context, state) {
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          const AnalyticsPractice(
+                            type: ConstructTypeEnum.morph,
+                          ),
+                        );
+                      },
+                    ),
+                    GoRoute(
                       path: ':construct',
                       pageBuilder: (context, state) {
                         final construct = ConstructIdentifier.fromJson(
@@ -580,7 +592,9 @@ abstract class AppRoutes {
                         return defaultPageBuilder(
                           context,
                           state,
-                          const VocabPractice(),
+                          const AnalyticsPractice(
+                            type: ConstructTypeEnum.vocab,
+                          ),
                         );
                       },
                     ),

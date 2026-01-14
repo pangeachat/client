@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -44,6 +45,45 @@ class PracticeActivityModel {
     if (activityType == ActivityTypeEnum.morphId && morphFeature == null) {
       debugger(when: kDebugMode);
       throw ("morphFeature is null in PracticeActivityModel");
+    }
+  }
+
+  String get useCategory {
+    switch (activityType.constructType) {
+      case ConstructTypeEnum.morph:
+        assert(
+          morphFeature != null,
+          "morphFeature is null in PracticeActivityModel.useCategory",
+        );
+        return morphFeature!.name;
+      case ConstructTypeEnum.vocab:
+        return targetTokens.first.pos;
+    }
+  }
+
+  String get useLemma {
+    switch (activityType.constructType) {
+      case ConstructTypeEnum.morph:
+        assert(
+          morphFeature != null,
+          "morphFeature is null in PracticeActivityModel.useCategory",
+        );
+        final tag = targetTokens.first.getMorphTag(morphFeature!);
+        if (tag == null) {
+          throw ("tag is null in PracticeActivityModel.useLemma");
+        }
+        return tag;
+      case ConstructTypeEnum.vocab:
+        return targetTokens.first.lemma.text;
+    }
+  }
+
+  String get useForm {
+    switch (activityType.constructType) {
+      case ConstructTypeEnum.morph:
+        return targetTokens.first.lemma.form;
+      case ConstructTypeEnum.vocab:
+        return targetTokens.first.lemma.text;
     }
   }
 

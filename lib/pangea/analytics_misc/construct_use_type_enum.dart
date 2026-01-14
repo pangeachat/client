@@ -82,6 +82,10 @@ enum ConstructUseTypeEnum {
   // vocab lemma audio activity
   corLA,
   incLA,
+
+  // grammar category activity
+  corGC,
+  incGC,
 }
 
 extension ConstructUseTypeExtension on ConstructUseTypeEnum {
@@ -163,6 +167,10 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
         return L10n.of(context).constructUseCorLADesc;
       case ConstructUseTypeEnum.incLA:
         return L10n.of(context).constructUseIncLADesc;
+      case ConstructUseTypeEnum.corGC:
+        return L10n.of(context).constructUseCorGCDesc;
+      case ConstructUseTypeEnum.incGC:
+        return L10n.of(context).constructUseIncGCDesc;
     }
   }
 
@@ -203,6 +211,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.incM:
       case ConstructUseTypeEnum.ignM:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.incGC:
         return ActivityTypeEnum.morphId.icon;
       case ConstructUseTypeEnum.em:
         return ActivityTypeEnum.emoji.icon;
@@ -235,6 +245,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corM:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corGC:
         return 5;
 
       case ConstructUseTypeEnum.pvm:
@@ -275,6 +286,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incM:
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incGC:
         return -1;
 
       case ConstructUseTypeEnum.incPA:
@@ -326,6 +338,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corLA:
       case ConstructUseTypeEnum.incLA:
       case ConstructUseTypeEnum.bonus:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.incGC:
         return false;
     }
   }
@@ -369,6 +383,8 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.click:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.incLM:
+      case ConstructUseTypeEnum.corGC:
+      case ConstructUseTypeEnum.incGC:
         return LearningSkillsEnum.reading;
       case ConstructUseTypeEnum.pvm:
         return LearningSkillsEnum.speaking;
@@ -398,6 +414,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.corMM:
       case ConstructUseTypeEnum.corLM:
       case ConstructUseTypeEnum.corLA:
+      case ConstructUseTypeEnum.corGC:
         return SpaceAnalyticsSummaryEnum.numChoicesCorrect;
 
       case ConstructUseTypeEnum.incIt:
@@ -410,6 +427,7 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incMM:
       case ConstructUseTypeEnum.incLM:
       case ConstructUseTypeEnum.incLA:
+      case ConstructUseTypeEnum.incGC:
         return SpaceAnalyticsSummaryEnum.numChoicesIncorrect;
 
       case ConstructUseTypeEnum.ignIt:

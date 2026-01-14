@@ -70,6 +70,15 @@ class MessageActivityRequest {
     }
   }
 
+  String get activityText {
+    switch (targetType) {
+      case ActivityTypeEnum.grammarCategory:
+        return "${targetTokens.first.vocabConstructID.lemma}: ${targetMorphFeature!.name}";
+      default:
+        return targetTokens.first.vocabConstructID.lemma;
+    }
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'user_l1': userL1,

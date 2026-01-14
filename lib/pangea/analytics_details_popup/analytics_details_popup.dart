@@ -183,72 +183,66 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
         ),
       ),
       floatingActionButton:
-          widget.view == ConstructTypeEnum.vocab && widget.construct == null
-              ? _buildVocabPracticeButton(context)
-              : null,
+          widget.construct == null ? _PracticeButton(view: widget.view) : null,
     );
   }
 }
 
-Widget _buildVocabPracticeButton(BuildContext context) {
-  // Check if analytics is loaded first
-  if (MatrixState
-      .pangeaController.matrixState.analyticsDataService.isInitializing) {
-    return FloatingActionButton.extended(
-      onPressed: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              'Loading vocabulary data...',
-            ),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      },
-      label: Text(L10n.of(context).practiceVocab),
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      foregroundColor:
-          Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+class _PracticeButton extends StatelessWidget {
+  final ConstructTypeEnum view;
+  const _PracticeButton({required this.view});
+
+  void _showSnackbar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        behavior: SnackBarBehavior.floating,
+      ),
     );
   }
 
-  final vocabCount = MatrixState
-      .pangeaController.matrixState.analyticsDataService
-      .numConstructs(ConstructTypeEnum.vocab);
-  final hasEnoughVocab = vocabCount >= 10;
+  @override
+  Widget build(BuildContext context) {
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    if (analyticsService.isInitializing) {
+      return FloatingActionButton.extended(
+        onPressed: () => _showSnackbar(
+          context,
+          L10n.of(context).loadingPleaseWait,
+        ),
+        label: Text(view.practiceButtonText(context)),
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        foregroundColor:
+            Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+      );
+    }
 
-  return FloatingActionButton.extended(
-    onPressed: hasEnoughVocab
-        ? () {
-            context.go(
-              "/rooms/analytics/${ConstructTypeEnum.vocab.name}/practice",
-            );
-          }
-        : () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  L10n.of(context).mustHave10Words,
-                ),
-                behavior: SnackBarBehavior.floating,
+    final count = analyticsService.numConstructs(view);
+    final enabled = count >= 10;
+
+    return FloatingActionButton.extended(
+      onPressed: enabled
+          ? () => context.go("/rooms/analytics/${view.name}/practice")
+          : () => _showSnackbar(
+                context,
+                L10n.of(context).notEnoughToPractice,
               ),
-            );
-          },
-    backgroundColor:
-        hasEnoughVocab ? null : Theme.of(context).colorScheme.surfaceContainer,
-    foregroundColor: hasEnoughVocab
-        ? null
-        : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
-    label: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (!hasEnoughVocab) ...[
-          const Icon(Icons.lock_outline, size: 18),
-          const SizedBox(width: 4),
+      backgroundColor:
+          enabled ? null : Theme.of(context).colorScheme.surfaceContainer,
+      foregroundColor: enabled
+          ? null
+          : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
+      label: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (!enabled) ...[
+            const Icon(Icons.lock_outline, size: 18),
+            const SizedBox(width: 4),
+          ],
+          Text(view.practiceButtonText(context)),
         ],
-        Text(L10n.of(context).practiceVocab),
-      ],
-    ),
-  );
+      ),
+    );
+  }
 }

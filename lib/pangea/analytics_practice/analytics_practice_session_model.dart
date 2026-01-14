@@ -2,12 +2,11 @@ import 'dart:math';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 
-class VocabPracticeSessionModel {
+class AnalyticsPracticeSessionModel {
   final DateTime startedAt;
   final List<PracticeTarget> practiceTargets;
   final String userL1;
@@ -15,22 +14,16 @@ class VocabPracticeSessionModel {
 
   VocabPracticeSessionState state;
 
-  VocabPracticeSessionModel({
+  AnalyticsPracticeSessionModel({
     required this.startedAt,
     required this.practiceTargets,
     required this.userL1,
     required this.userL2,
     VocabPracticeSessionState? state,
-  })  : assert(
-          practiceTargets.every(
-            (t) => {ActivityTypeEnum.lemmaMeaning, ActivityTypeEnum.lemmaAudio}
-                .contains(t.activityType),
-          ),
-        ),
-        state = state ?? const VocabPracticeSessionState();
+  }) : state = state ?? const VocabPracticeSessionState();
 
   int get _availableActivities => min(
-        VocabPracticeConstants.practiceGroupSize,
+        AnalyticsPracticeConstants.practiceGroupSize,
         practiceTargets.length,
       );
 
@@ -47,7 +40,7 @@ class VocabPracticeSessionModel {
         activityQualityFeedback: null,
         targetTokens: target.tokens,
         targetType: target.activityType,
-        targetMorphFeature: null,
+        targetMorphFeature: target.morphFeature,
       );
     }).toList();
   }
@@ -64,8 +57,8 @@ class VocabPracticeSessionModel {
         completedUses: [...state.completedUses, use],
       );
 
-  factory VocabPracticeSessionModel.fromJson(Map<String, dynamic> json) {
-    return VocabPracticeSessionModel(
+  factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
+    return AnalyticsPracticeSessionModel(
       startedAt: DateTime.parse(json['startedAt'] as String),
       practiceTargets: (json['practiceTargets'] as List<dynamic>)
           .map((e) => PracticeTarget.fromJson(e))
@@ -115,7 +108,7 @@ class VocabPracticeSessionState {
   bool get _giveAccuracyBonus => accuracy >= 100.0;
 
   bool get _giveTimeBonus =>
-      elapsedSeconds <= VocabPracticeConstants.timeForBonus;
+      elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
 
   int get bonusXP => accuracyBonusXP + timeBonusXP;
 

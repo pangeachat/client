@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/meaning_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/completed_activity_session_view.dart';
+import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -9,19 +16,12 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/meaning_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/completed_activity_session_view.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_timer_widget.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
-class VocabPracticeView extends StatelessWidget {
-  final VocabPracticeState controller;
+class AnalyticsPracticeView extends StatelessWidget {
+  final AnalyticsPracticeState controller;
 
-  const VocabPracticeView(this.controller, {super.key});
+  const AnalyticsPracticeView(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +53,8 @@ class VocabPracticeView extends StatelessWidget {
             ValueListenableBuilder(
               valueListenable: controller.sessionState,
               builder: (context, state, __) {
-                if (state is AsyncLoaded<VocabPracticeSessionModel>) {
-                  return VocabTimerWidget(
+                if (state is AsyncLoaded<AnalyticsPracticeSessionModel>) {
+                  return PracticeTimerWidget(
                     key: ValueKey(state.value.startedAt),
                     initialSeconds: state.value.state.elapsedSeconds,
                     onTimeUpdate: controller.updateElapsedTime,
@@ -78,12 +78,12 @@ class VocabPracticeView extends StatelessWidget {
           valueListenable: controller.sessionState,
           builder: (context, state, __) {
             return switch (state) {
-              AsyncError<VocabPracticeSessionModel>(:final error) =>
+              AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
                 ErrorIndicator(message: error.toString()),
-              AsyncLoaded<VocabPracticeSessionModel>(:final value) =>
+              AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
                 value.isComplete
                     ? CompletedActivitySessionView(state.value, controller)
-                    : _VocabActivityView(controller),
+                    : _AnalyticsActivityView(controller),
               _ => loading,
             };
           },
@@ -93,10 +93,10 @@ class VocabPracticeView extends StatelessWidget {
   }
 }
 
-class _VocabActivityView extends StatelessWidget {
-  final VocabPracticeState controller;
+class _AnalyticsActivityView extends StatelessWidget {
+  final AnalyticsPracticeState controller;
 
-  const _VocabActivityView(
+  const _AnalyticsActivityView(
     this.controller,
   );
 
@@ -119,10 +119,10 @@ class _VocabActivityView extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: ValueListenableBuilder(
-                  valueListenable: controller.activityConstructId,
-                  builder: (context, constructId, __) => constructId != null
+                  valueListenable: controller.activityText,
+                  builder: (context, text, __) => text != null
                       ? Text(
-                          constructId.lemma,
+                          text,
                           textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -132,19 +132,19 @@ class _VocabActivityView extends StatelessWidget {
                       : const SizedBox(),
                 ),
               ),
-              Expanded(
-                flex: 2,
-                child: Center(
-                  child: ValueListenableBuilder(
-                    valueListenable: controller.activityConstructId,
-                    builder: (context, constructId, __) => constructId != null
-                        ? _ExampleMessageWidget(
-                            controller.getExampleMessage(constructId),
-                          )
-                        : const SizedBox(),
-                  ),
-                ),
-              ),
+              // Expanded(
+              //   flex: 2,
+              //   child: Center(
+              //     child: ValueListenableBuilder(
+              //       valueListenable: controller.activityConstructId,
+              //       builder: (context, constructId, __) => constructId != null
+              //           ? _ExampleMessageWidget(
+              //               controller.getExampleMessage(constructId),
+              //             )
+              //           : const SizedBox(),
+              //     ),
+              //   ),
+              // ),
               Expanded(
                 flex: 6,
                 child: _ActivityChoicesWidget(controller),
@@ -199,7 +199,7 @@ class _ExampleMessageWidget extends StatelessWidget {
 }
 
 class _ActivityChoicesWidget extends StatelessWidget {
-  final VocabPracticeState controller;
+  final AnalyticsPracticeState controller;
 
   const _ActivityChoicesWidget(
     this.controller,
