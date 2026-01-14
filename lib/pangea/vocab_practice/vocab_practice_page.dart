@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 
 import 'package:flutter/material.dart';
 
@@ -16,8 +17,10 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_repo.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_view.dart';
@@ -42,13 +45,16 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
       ValueNotifier(const AsyncState.idle());
 
+  final Queue<MapEntry<ConstructIdentifier, Completer<PracticeActivityModel>>>
+      _queue = Queue();
+
   final ValueNotifier<ConstructIdentifier?> activityConstructId =
       ValueNotifier<ConstructIdentifier?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
 
-  final Map<String, String> _choiceTexts = {};
-  final Map<String, String?> _choiceEmojis = {};
+  final Map<PracticeTarget, Map<String, String>> _choiceTexts = {};
+  final Map<PracticeTarget, Map<String, String?>> _choiceEmojis = {};
 
   StreamSubscription<void>? _languageStreamSubscription;
 
@@ -89,13 +95,17 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   AnalyticsDataService get _analyticsService =>
       Matrix.of(context).analyticsDataService;
 
-  String getChoiceText(String choiceId) {
-    if (_choiceTexts.containsKey(choiceId)) return _choiceTexts[choiceId]!;
+  String getChoiceText(PracticeTarget target, String choiceId) {
+    if (_choiceTexts.containsKey(target) &&
+        _choiceTexts[target]!.containsKey(choiceId)) {
+      return _choiceTexts[target]![choiceId]!;
+    }
     final cId = ConstructIdentifier.fromString(choiceId);
     return cId?.lemma ?? choiceId;
   }
 
-  String? getChoiceEmoji(String choiceId) => _choiceEmojis[choiceId];
+  String? getChoiceEmoji(PracticeTarget target, String choiceId) =>
+      _choiceEmojis[target]?[choiceId];
 
   String choiceTargetId(String choiceId) =>
       'vocab-choice-card-${choiceId.replaceAll(' ', '_')}';
@@ -103,12 +113,14 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   void _resetActivityState() {
     activityState.value = const AsyncState.loading();
     activityConstructId.value = null;
-    _choiceTexts.clear();
-    _choiceEmojis.clear();
   }
 
   void _resetSessionState() {
     progressNotifier.value = 0.0;
+    _queue.clear();
+    _choiceTexts.clear();
+    _choiceEmojis.clear();
+    activityState.value = const AsyncState.idle();
   }
 
   void updateElapsedTime(int seconds) {
@@ -150,7 +162,8 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await _sessionLoader.load();
-    await _loadNextActivity();
+    progressNotifier.value = _sessionLoader.value!.progress;
+    await _continueSession();
   }
 
   Future<void> reloadSession() async {
@@ -170,39 +183,101 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     await _saveSession();
   }
 
-  Future<void> _loadNextActivity() async {
+  bool _continuing = false;
+
+  Future<void> _continueSession() async {
+    if (_continuing) return;
+    _continuing = true;
+
     try {
-      _resetActivityState();
-      final session = _sessionLoader.value!;
-      activityConstructId.value = session.currentConstructId;
-      final activityRequest = session.currentActivityRequest;
-      if (activityRequest == null) {
-        throw L10n.of(context).noActivityRequest;
+      if (activityState.value is AsyncIdle<PracticeActivityModel>) {
+        await _initActivityData();
+      } else if (_queue.isEmpty) {
+        await _completeSession();
+      } else {
+        activityState.value = const AsyncState.loading();
+        final nextActivityCompleter = _queue.removeFirst();
+        activityConstructId.value = nextActivityCompleter.key;
+        final activity = await nextActivityCompleter.value.future;
+        // activity = _removeDuplicateChoices(activity);
+        activityState.value = AsyncState.loaded(activity);
       }
-
-      final result = await PracticeRepo.getPracticeActivity(
-        activityRequest,
-        messageInfo: {},
-      );
-      if (result.isError) {
-        throw L10n.of(context).oopsSomethingWentWrong;
-      }
-
-      // Prefetch lemma info for meaning activities before marking ready
-      if (result.result!.activityType == ActivityTypeEnum.lemmaMeaning) {
-        final choices = result.result!.multipleChoiceContent!.choices.toList();
-        await _fetchLemmaInfo(choices);
-      }
-
-      activityState.value = AsyncState.loaded(result.result!);
     } catch (e) {
-      activityState.value = AsyncState.error(
-        L10n.of(context).oopsSomethingWentWrong,
-      );
+      activityState.value = AsyncState.error(e);
+    } finally {
+      _continuing = false;
     }
   }
 
-  Future<void> _fetchLemmaInfo(List<String> choiceIds) async {
+  Future<void> _initActivityData() async {
+    final requests = _sessionLoader.value!.activityRequests;
+    if (requests.isEmpty) {
+      throw L10n.of(context).noActivityRequest;
+    }
+
+    try {
+      activityState.value = const AsyncState.loading();
+
+      final req = requests.first;
+      final res = await _fetchActivity(req);
+      if (!mounted) return;
+
+      activityConstructId.value = req.targetTokens.first.vocabConstructID;
+      activityState.value = AsyncState.loaded(res);
+    } catch (e) {
+      if (!mounted) return;
+      activityState.value = AsyncState.error(e);
+      return;
+    }
+
+    _fillActivityQueue(requests.skip(1).toList());
+  }
+
+  Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
+    for (final request in requests) {
+      final completer = Completer<PracticeActivityModel>();
+      _queue.add(
+        MapEntry(
+          request.targetTokens.first.vocabConstructID,
+          completer,
+        ),
+      );
+      try {
+        final res = await _fetchActivity(request);
+        if (!mounted) return;
+        completer.complete(res);
+      } catch (e) {
+        if (!mounted) return;
+        completer.completeError(e);
+        break;
+      }
+    }
+  }
+
+  Future<PracticeActivityModel> _fetchActivity(
+    MessageActivityRequest req,
+  ) async {
+    final result = await PracticeRepo.getPracticeActivity(
+      req,
+      messageInfo: {},
+    );
+    if (result.isError) {
+      throw L10n.of(context).oopsSomethingWentWrong;
+    }
+
+    // Prefetch lemma info for meaning activities before marking ready
+    if (result.result!.activityType == ActivityTypeEnum.lemmaMeaning) {
+      final choices = result.result!.multipleChoiceContent!.choices.toList();
+      await _fetchLemmaInfo(result.result!.practiceTarget, choices);
+    }
+
+    return result.result!;
+  }
+
+  Future<void> _fetchLemmaInfo(
+    PracticeTarget target,
+    List<String> choiceIds,
+  ) async {
     final texts = <String, String>{};
     final emojis = <String, String?>{};
 
@@ -220,51 +295,44 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       emojis[id] = res.result!.emoji.firstOrNull;
     }
 
-    _choiceTexts.addAll(texts);
-    _choiceEmojis.addAll(emojis);
-    _removeDuplicateChoices();
+    _choiceTexts.putIfAbsent(target, () => {});
+    _choiceEmojis.putIfAbsent(target, () => {});
+
+    _choiceTexts[target]!.addAll(texts);
+    _choiceEmojis[target]!.addAll(emojis);
+    // _removeDuplicateChoices();
   }
 
-  /// Removes duplicate choice texts, keeping the correct answer if it's a duplicate, or the first otherwise
-  void _removeDuplicateChoices() {
-    if (_currentActivity?.multipleChoiceContent == null) return;
+  // /// Removes duplicate choice texts, keeping the correct answer if it's a duplicate, or the first otherwise
+  // PracticeActivityModel _removeDuplicateChoices(
+  //   PracticeActivityModel activity,
+  // ) {
+  //   if (activity.multipleChoiceContent == null) return activity;
+  //   final choices = activity.multipleChoiceContent!.choices;
+  //   final choiceTexts = _choiceTexts[activity.practiceTarget];
+  //   if (choiceTexts == null) return activity;
 
-    final activity = _currentActivity!.multipleChoiceContent!;
-    final correctAnswers = activity.answers;
+  //   final Map<String, String> definitionToChoice = {};
+  //   for (final id in choices) {
+  //     final text = choiceTexts[id];
+  //     if (text == null) continue;
+  //     definitionToChoice[text] = id;
+  //   }
 
-    final Map<String, List<String>> textToIds = {};
+  //   final uniqueDefinitions = definitionToChoice.keys.toSet();
+  //   final uniqueChoices = uniqueDefinitions
+  //       .map((def) => definitionToChoice[def]!)
+  //       .toSet()
+  //       .toList();
 
-    for (final id in _choiceTexts.keys) {
-      final text = _choiceTexts[id]!;
-      textToIds.putIfAbsent(text, () => []).add(id);
-    }
+  //   if (uniqueChoices.length == choices.length) {
+  //     return activity;
+  //   }
 
-    // Find duplicates and remove them
-    final Set<String> idsToRemove = {};
-    for (final entry in textToIds.entries) {
-      final duplicateIds = entry.value;
-      if (duplicateIds.length > 1) {
-        // Find if any of the duplicates is the correct answer
-        final correctId = duplicateIds.firstWhereOrNull(
-          (id) => correctAnswers.contains(id),
-        );
-
-        // Remove all duplicates except one
-        if (correctId != null) {
-          idsToRemove.addAll(duplicateIds.where((id) => id != correctId));
-        } else {
-          idsToRemove.addAll(duplicateIds.skip(1));
-        }
-      }
-    }
-
-    if (idsToRemove.isEmpty) return;
-    activity.choices.removeAll(idsToRemove);
-    for (final id in idsToRemove) {
-      _choiceTexts.remove(id);
-      _choiceEmojis.remove(id);
-    }
-  }
+  //   activity.multipleChoiceContent!.choices.clear();
+  //   activity.multipleChoiceContent!.choices.addAll(uniqueChoices);
+  //   return activity;
+  // }
 
   Future<void> onSelectChoice(
     ConstructIdentifier choiceConstruct,
@@ -310,7 +378,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     progressNotifier.value = _sessionLoader.value!.progress;
     await _saveSession();
 
-    _isComplete ? await _completeSession() : await _loadNextActivity();
+    _isComplete ? await _completeSession() : await _continueSession();
   }
 
   Future<List<InlineSpan>?> getExampleMessage(

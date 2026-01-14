@@ -83,10 +83,7 @@ class VocabPracticeView extends StatelessWidget {
               AsyncLoaded<VocabPracticeSessionModel>(:final value) =>
                 value.isComplete
                     ? CompletedActivitySessionView(state.value, controller)
-                    : (value.currentConstructId != null &&
-                            value.currentActivityType != null)
-                        ? _VocabActivityView(controller)
-                        : loading,
+                    : _VocabActivityView(controller),
               _ => loading,
             };
           },
@@ -110,7 +107,10 @@ class _VocabActivityView extends StatelessWidget {
         //per-activity instructions, add switch statement once there are more types
         const InstructionsInlineTooltip(
           instructionsEnum: InstructionsEnum.selectMeaning,
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.0,
+            vertical: 24.0,
+          ),
         ),
         Expanded(
           child: Column(
@@ -134,13 +134,15 @@ class _VocabActivityView extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
-                child: ValueListenableBuilder(
-                  valueListenable: controller.activityConstructId,
-                  builder: (context, constructId, __) => constructId != null
-                      ? _ExampleMessageWidget(
-                          controller.getExampleMessage(constructId),
-                        )
-                      : const SizedBox(),
+                child: Center(
+                  child: ValueListenableBuilder(
+                    valueListenable: controller.activityConstructId,
+                    builder: (context, constructId, __) => constructId != null
+                        ? _ExampleMessageWidget(
+                            controller.getExampleMessage(constructId),
+                          )
+                        : const SizedBox(),
+                  ),
                 ),
               ),
               Expanded(
@@ -254,8 +256,14 @@ class _ActivityChoicesWidget extends StatelessWidget {
                               choiceId,
                             ),
                             cardHeight: cardHeight,
-                            choiceText: controller.getChoiceText(choiceId),
-                            choiceEmoji: controller.getChoiceEmoji(choiceId),
+                            choiceText: controller.getChoiceText(
+                              value.practiceTarget,
+                              choiceId,
+                            ),
+                            choiceEmoji: controller.getChoiceEmoji(
+                              value.practiceTarget,
+                              choiceId,
+                            ),
                           ),
                         )
                         .toList(),

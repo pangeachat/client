@@ -2,15 +2,14 @@ import 'dart:math';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 
 class VocabPracticeSessionModel {
   final DateTime startedAt;
-  final List<ConstructIdentifier> sortedConstructIds;
-  final List<ActivityTypeEnum> activityTypes;
+  final List<PracticeTarget> practiceTargets;
   final String userL1;
   final String userL2;
 
@@ -18,25 +17,24 @@ class VocabPracticeSessionModel {
 
   VocabPracticeSessionModel({
     required this.startedAt,
-    required this.sortedConstructIds,
-    required this.activityTypes,
+    required this.practiceTargets,
     required this.userL1,
     required this.userL2,
     VocabPracticeSessionState? state,
   })  : assert(
-          activityTypes.every(
+          practiceTargets.every(
             (t) => {ActivityTypeEnum.lemmaMeaning, ActivityTypeEnum.lemmaAudio}
-                .contains(t),
+                .contains(t.activityType),
           ),
         ),
         assert(
-          activityTypes.length == VocabPracticeConstants.practiceGroupSize,
+          practiceTargets.length == VocabPracticeConstants.practiceGroupSize,
         ),
         state = state ?? const VocabPracticeSessionState();
 
   int get _availableActivities => min(
         VocabPracticeConstants.practiceGroupSize,
-        sortedConstructIds.length,
+        practiceTargets.length,
       );
 
   bool get isComplete => state.currentIndex >= _availableActivities;
@@ -44,29 +42,17 @@ class VocabPracticeSessionModel {
   double get progress =>
       (state.currentIndex / _availableActivities).clamp(0.0, 1.0);
 
-  ConstructIdentifier? get currentConstructId =>
-      state.currentIndex < 0 || isComplete
-          ? null
-          : sortedConstructIds[state.currentIndex];
-
-  ActivityTypeEnum? get currentActivityType =>
-      state.currentIndex < 0 || isComplete
-          ? null
-          : activityTypes[state.currentIndex];
-
-  MessageActivityRequest? get currentActivityRequest {
-    final constructId = currentConstructId;
-    final activityType = currentActivityType;
-    if (constructId == null || activityType == null) return null;
-
-    return MessageActivityRequest(
-      userL1: userL1,
-      userL2: userL2,
-      activityQualityFeedback: null,
-      targetTokens: [constructId.asToken],
-      targetType: activityType,
-      targetMorphFeature: null,
-    );
+  List<MessageActivityRequest> get activityRequests {
+    return practiceTargets.map((target) {
+      return MessageActivityRequest(
+        userL1: userL1,
+        userL2: userL2,
+        activityQualityFeedback: null,
+        targetTokens: target.tokens,
+        targetType: target.activityType,
+        targetMorphFeature: null,
+      );
+    }).toList();
   }
 
   void setElapsedSeconds(int seconds) =>
@@ -84,17 +70,9 @@ class VocabPracticeSessionModel {
   factory VocabPracticeSessionModel.fromJson(Map<String, dynamic> json) {
     return VocabPracticeSessionModel(
       startedAt: DateTime.parse(json['startedAt'] as String),
-      sortedConstructIds: (json['sortedConstructIds'] as List<dynamic>)
-          .map((e) => ConstructIdentifier.fromJson(e))
-          .whereType<ConstructIdentifier>()
-          .toList(),
-      activityTypes: (json['activityTypes'] as List<dynamic>)
-          .map(
-            (e) => ActivityTypeEnum.values.firstWhere(
-              (at) => at.name == (e as String),
-            ),
-          )
-          .whereType<ActivityTypeEnum>()
+      practiceTargets: (json['practiceTargets'] as List<dynamic>)
+          .map((e) => PracticeTarget.fromJson(e))
+          .whereType<PracticeTarget>()
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,
@@ -107,8 +85,7 @@ class VocabPracticeSessionModel {
   Map<String, dynamic> toJson() {
     return {
       'startedAt': startedAt.toIso8601String(),
-      'sortedConstructIds': sortedConstructIds.map((e) => e.toJson()).toList(),
-      'activityTypes': activityTypes.map((e) => e.name).toList(),
+      'practiceTargets': practiceTargets.map((e) => e.toJson()).toList(),
       'userL1': userL1,
       'userL2': userL2,
       ...state.toJson(),
@@ -141,7 +118,7 @@ class VocabPracticeSessionState {
   bool get _giveAccuracyBonus => accuracy >= 100.0;
 
   bool get _giveTimeBonus =>
-      elapsedSeconds > VocabPracticeConstants.timeForBonus;
+      elapsedSeconds <= VocabPracticeConstants.timeForBonus;
 
   int get bonusXP => accuracyBonusXP + timeBonusXP;
 
