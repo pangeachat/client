@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// A unified choice card that handles flipping, color tinting, hovering, and alt widgets
@@ -11,17 +12,17 @@ class GameChoiceCard extends StatefulWidget {
   final bool isCorrect;
   final double height;
   final bool shouldFlip;
-  final String? transformId;
+  final String targetId;
   final bool isEnabled;
 
   const GameChoiceCard({
     required this.child,
-    this.altChild,
     required this.onPressed,
     required this.isCorrect,
+    required this.targetId,
+    this.altChild,
     this.height = 72.0,
     this.shouldFlip = false,
-    this.transformId,
     this.isEnabled = true,
     super.key,
   });
@@ -32,49 +33,30 @@ class GameChoiceCard extends StatefulWidget {
 
 class _GameChoiceCardState extends State<GameChoiceCard>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnim;
-  bool _flipped = false;
-  bool _isHovered = false;
-  bool _useAltChild = false;
+  late final AnimationController _controller;
+  late final Animation<double> _scaleAnim;
+
   bool _clicked = false;
+  bool _revealed = false;
 
   @override
   void initState() {
     super.initState();
 
-    if (widget.shouldFlip) {
-      _controller = AnimationController(
-        duration: const Duration(milliseconds: 220),
-        vsync: this,
-      );
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 220),
+      vsync: this,
+    );
 
-      _scaleAnim = Tween<double>(begin: 1.0, end: 0.0).animate(
-        CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-      );
-
-      _controller.addListener(_onAnimationUpdate);
-    }
-  }
-
-  void _onAnimationUpdate() {
-    // Swap to altChild when card is almost fully shrunk
-    if (_controller.value >= 0.95 && !_useAltChild && widget.altChild != null) {
-      setState(() => _useAltChild = true);
-    }
-
-    // Mark as flipped when card is fully shrunk
-    if (_controller.value >= 0.95 && !_flipped) {
-      setState(() => _flipped = true);
-    }
+    _scaleAnim = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    ).drive(Tween(begin: 1.0, end: 0.0));
   }
 
   @override
   void dispose() {
-    if (widget.shouldFlip) {
-      _controller.removeListener(_onAnimationUpdate);
-      _controller.dispose();
-    }
+    _controller.dispose();
     super.dispose();
   }
 
@@ -82,9 +64,10 @@ class _GameChoiceCardState extends State<GameChoiceCard>
     if (!widget.isEnabled) return;
 
     if (widget.shouldFlip) {
-      if (_flipped) return;
-      // Animate forward (shrink), then reverse (expand)
+      if (_controller.isAnimating || _revealed) return;
+
       await _controller.forward();
+      setState(() => _revealed = true);
       await _controller.reverse();
     } else {
       if (_clicked) return;
@@ -96,91 +79,90 @@ class _GameChoiceCardState extends State<GameChoiceCard>
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final colorScheme = Theme.of(context).colorScheme;
 
-    final Color baseColor = colorScheme.surfaceContainerHighest;
-    final Color hoverColor = colorScheme.onSurface.withValues(alpha: 0.08);
-    final Color tintColor = widget.isCorrect
+    final baseColor = colorScheme.surfaceContainerHighest;
+    final hoverColor = colorScheme.onSurface.withValues(alpha: 0.08);
+    final tintColor = widget.isCorrect
         ? AppConfig.success.withValues(alpha: 0.3)
         : AppConfig.error.withValues(alpha: 0.3);
 
-    Widget card = MouseRegion(
-      onEnter:
-          widget.isEnabled ? ((_) => setState(() => _isHovered = true)) : null,
-      onExit:
-          widget.isEnabled ? ((_) => setState(() => _isHovered = false)) : null,
-      child: SizedBox(
-        width: double.infinity,
-        height: widget.height,
-        child: GestureDetector(
-          onTap: _handleTap,
-          child: widget.shouldFlip
-              ? AnimatedBuilder(
-                  animation: _scaleAnim,
-                  builder: (context, child) {
-                    final bool showContent = _scaleAnim.value > 0.1;
-                    return Transform.scale(
-                      scaleY: _scaleAnim.value,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: baseColor,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        foregroundDecoration: BoxDecoration(
-                          color: _flipped
+    return CompositedTransformTarget(
+      link: MatrixState.pAnyState.layerLinkAndKey(widget.targetId).link,
+      child: HoverBuilder(
+        builder: (context, hovered) => SizedBox(
+          width: double.infinity,
+          height: widget.height,
+          child: GestureDetector(
+            onTap: _handleTap,
+            child: widget.shouldFlip
+                ? AnimatedBuilder(
+                    animation: _scaleAnim,
+                    builder: (context, _) {
+                      final scale = _scaleAnim.value;
+                      final showAlt = scale < 0.1 && widget.altChild != null;
+                      final showContent = scale > 0.05;
+
+                      return Transform.scale(
+                        scaleY: scale,
+                        child: _CardContainer(
+                          height: widget.height,
+                          baseColor: baseColor,
+                          overlayColor: _revealed
                               ? tintColor
-                              : (_isHovered ? hoverColor : Colors.transparent),
-                          borderRadius: BorderRadius.circular(16),
+                              : (hovered ? hoverColor : Colors.transparent),
+                          child: Opacity(
+                            opacity: showContent ? 1 : 0,
+                            child: showAlt ? widget.altChild! : widget.child,
+                          ),
                         ),
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 6,
-                          horizontal: 0,
-                        ),
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        height: widget.height,
-                        alignment: Alignment.center,
-                        child: Opacity(
-                          opacity: showContent ? 1.0 : 0.0,
-                          child: _useAltChild && widget.altChild != null
-                              ? widget.altChild!
-                              : widget.child,
-                        ),
-                      ),
-                    );
-                  },
-                )
-              : Container(
-                  decoration: BoxDecoration(
-                    color: baseColor,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  foregroundDecoration: BoxDecoration(
-                    color: _clicked
+                      );
+                    },
+                  )
+                : _CardContainer(
+                    height: widget.height,
+                    baseColor: baseColor,
+                    overlayColor: _clicked
                         ? tintColor
-                        : (_isHovered ? hoverColor : Colors.transparent),
-                    borderRadius: BorderRadius.circular(16),
+                        : (hovered ? hoverColor : Colors.transparent),
+                    child: widget.child,
                   ),
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 6, horizontal: 0),
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  height: widget.height,
-                  alignment: Alignment.center,
-                  child: widget.child,
-                ),
+          ),
         ),
       ),
     );
+  }
+}
 
-    // Wrap with transform target if transformId is provided
-    if (widget.transformId != null) {
-      final transformTargetId =
-          'vocab-choice-card-${widget.transformId!.replaceAll(' ', '_')}';
-      card = CompositedTransformTarget(
-        link: MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link,
-        child: card,
-      );
-    }
+class _CardContainer extends StatelessWidget {
+  final double height;
+  final Color baseColor;
+  final Color overlayColor;
+  final Widget child;
 
-    return card;
+  const _CardContainer({
+    required this.height,
+    required this.baseColor,
+    required this.overlayColor,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        color: baseColor,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      foregroundDecoration: BoxDecoration(
+        color: overlayColor,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: child,
+    );
   }
 }

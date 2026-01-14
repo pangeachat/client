@@ -11,7 +11,10 @@ import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/user_lemma_info_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -190,4 +193,15 @@ class ConstructIdentifier {
       category: category,
     );
   }
+
+  PangeaToken get asToken => PangeaToken(
+        lemma: Lemma(
+          text: lemma,
+          saveVocab: true,
+          form: lemma,
+        ),
+        pos: category,
+        text: PangeaTokenText.fromString(lemma),
+        morph: {},
+      );
 }

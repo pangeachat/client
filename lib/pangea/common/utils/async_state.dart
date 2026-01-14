@@ -72,7 +72,7 @@ abstract class AsyncLoader<T> {
 
   T? get value => isLoaded ? (state.value as AsyncLoaded<T>).value : null;
 
-  final Completer<T> completer = Completer<T>();
+  Completer<T> completer = Completer<T>();
 
   void dispose() {
     _disposed = true;
@@ -108,5 +108,11 @@ abstract class AsyncLoader<T> {
         );
       }
     }
+  }
+
+  void reset() {
+    if (_disposed) return;
+    state.value = AsyncState.idle();
+    completer = Completer<T>();
   }
 }
