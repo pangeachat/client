@@ -114,20 +114,30 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   ) {
     final choices = activity.choices.toList();
     final answer = activity.answers.first;
-    final answerText = getChoiceText(target, answer);
+    final filtered = <VocabPracticeChoice>[];
 
-    final filtered = <VocabPracticeChoice>[
-      VocabPracticeChoice(
-        choiceId: answer,
-        choiceText: getChoiceText(target, answer),
-        choiceEmoji: getChoiceEmoji(target, answer),
-      ),
-    ];
-
-    final seenTexts = <String>{answerText};
+    final seenTexts = <String>{};
     for (final id in choices) {
       final text = getChoiceText(target, id);
-      if (seenTexts.contains(text)) continue;
+
+      if (seenTexts.contains(text)) {
+        if (id != answer) {
+          continue;
+        }
+
+        final index = filtered.indexWhere(
+          (choice) => choice.choiceText == text,
+        );
+        if (index != -1) {
+          filtered[index] = VocabPracticeChoice(
+            choiceId: id,
+            choiceText: text,
+            choiceEmoji: getChoiceEmoji(target, id),
+          );
+        }
+        continue;
+      }
+
       seenTexts.add(text);
       filtered.add(
         VocabPracticeChoice(
@@ -138,7 +148,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       );
     }
 
-    filtered.shuffle();
     return filtered;
   }
 
