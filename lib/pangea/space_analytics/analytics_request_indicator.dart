@@ -54,12 +54,15 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
         .where((u) => u.powerLevel >= 100);
 
     for (final analyticsRoom in widget.room.client.allMyAnalyticsRooms) {
-      final knocking =
-          await analyticsRoom.requestParticipants([Membership.knock]);
-      if (knocking.isEmpty) continue;
+      final knocking = await analyticsRoom.requestParticipants(
+        [Membership.knock],
+      );
+      final knockingSpace =
+          knocking.where((u) => u.content['reason'] == widget.room.id).toList();
+      if (knockingSpace.isEmpty) continue;
 
       for (final admin in admins) {
-        if (knocking.any((u) => u.id == admin.id)) {
+        if (knockingSpace.any((u) => u.id == admin.id)) {
           _knockingAdmins.putIfAbsent(admin, () => []).add(analyticsRoom);
         }
       }
