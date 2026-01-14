@@ -233,8 +233,10 @@ class _ActivityChoicesWidget extends StatelessWidget {
             ),
           AsyncLoaded<PracticeActivityModel>(:final value) => LayoutBuilder(
               builder: (context, constraints) {
-                //Constrain max height to keep choices together on large screens, and allow shrinking to fit on smaller screens
-                final choices = value.multipleChoiceContent!.choices.toList();
+                final choices = controller.filteredChoices(
+                  value.practiceTarget,
+                  value.multipleChoiceContent!,
+                );
                 final constrainedHeight =
                     constraints.maxHeight.clamp(0.0, 400.0);
                 final cardHeight = (constrainedHeight / (choices.length + 1))
@@ -247,23 +249,18 @@ class _ActivityChoicesWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: choices
                         .map(
-                          (choiceId) => _ChoiceCard(
+                          (choice) => _ChoiceCard(
                             activity: value,
-                            targetId: controller.choiceTargetId(choiceId),
-                            choiceId: choiceId,
+                            targetId:
+                                controller.choiceTargetId(choice.choiceId),
+                            choiceId: choice.choiceId,
                             onPressed: () => controller.onSelectChoice(
                               value.targetTokens.first.vocabConstructID,
-                              choiceId,
+                              choice.choiceId,
                             ),
                             cardHeight: cardHeight,
-                            choiceText: controller.getChoiceText(
-                              value.practiceTarget,
-                              choiceId,
-                            ),
-                            choiceEmoji: controller.getChoiceEmoji(
-                              value.practiceTarget,
-                              choiceId,
-                            ),
+                            choiceText: choice.choiceText,
+                            choiceEmoji: choice.choiceEmoji,
                           ),
                         )
                         .toList(),

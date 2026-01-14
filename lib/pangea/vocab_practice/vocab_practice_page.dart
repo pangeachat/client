@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
+import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
@@ -26,6 +27,18 @@ import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_repo.dar
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_view.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+class VocabPracticeChoice {
+  final String choiceId;
+  final String choiceText;
+  final String? choiceEmoji;
+
+  const VocabPracticeChoice({
+    required this.choiceId,
+    required this.choiceText,
+    this.choiceEmoji,
+  });
+}
 
 class SessionLoader extends AsyncLoader<VocabPracticeSessionModel> {
   @override
@@ -94,6 +107,40 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   AnalyticsDataService get _analyticsService =>
       Matrix.of(context).analyticsDataService;
+
+  List<VocabPracticeChoice> filteredChoices(
+    PracticeTarget target,
+    MultipleChoiceActivity activity,
+  ) {
+    final choices = activity.choices.toList();
+    final answer = activity.answers.first;
+    final answerText = getChoiceText(target, answer);
+
+    final filtered = <VocabPracticeChoice>[
+      VocabPracticeChoice(
+        choiceId: answer,
+        choiceText: getChoiceText(target, answer),
+        choiceEmoji: getChoiceEmoji(target, answer),
+      ),
+    ];
+
+    final seenTexts = <String>{answerText};
+    for (final id in choices) {
+      final text = getChoiceText(target, id);
+      if (seenTexts.contains(text)) continue;
+      seenTexts.add(text);
+      filtered.add(
+        VocabPracticeChoice(
+          choiceId: id,
+          choiceText: text,
+          choiceEmoji: getChoiceEmoji(target, id),
+        ),
+      );
+    }
+
+    filtered.shuffle();
+    return filtered;
+  }
 
   String getChoiceText(PracticeTarget target, String choiceId) {
     if (_choiceTexts.containsKey(target) &&
@@ -199,7 +246,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
         final nextActivityCompleter = _queue.removeFirst();
         activityConstructId.value = nextActivityCompleter.key;
         final activity = await nextActivityCompleter.value.future;
-        // activity = _removeDuplicateChoices(activity);
         activityState.value = AsyncState.loaded(activity);
       }
     } catch (e) {
@@ -300,39 +346,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
     _choiceTexts[target]!.addAll(texts);
     _choiceEmojis[target]!.addAll(emojis);
-    // _removeDuplicateChoices();
   }
-
-  // /// Removes duplicate choice texts, keeping the correct answer if it's a duplicate, or the first otherwise
-  // PracticeActivityModel _removeDuplicateChoices(
-  //   PracticeActivityModel activity,
-  // ) {
-  //   if (activity.multipleChoiceContent == null) return activity;
-  //   final choices = activity.multipleChoiceContent!.choices;
-  //   final choiceTexts = _choiceTexts[activity.practiceTarget];
-  //   if (choiceTexts == null) return activity;
-
-  //   final Map<String, String> definitionToChoice = {};
-  //   for (final id in choices) {
-  //     final text = choiceTexts[id];
-  //     if (text == null) continue;
-  //     definitionToChoice[text] = id;
-  //   }
-
-  //   final uniqueDefinitions = definitionToChoice.keys.toSet();
-  //   final uniqueChoices = uniqueDefinitions
-  //       .map((def) => definitionToChoice[def]!)
-  //       .toSet()
-  //       .toList();
-
-  //   if (uniqueChoices.length == choices.length) {
-  //     return activity;
-  //   }
-
-  //   activity.multipleChoiceContent!.choices.clear();
-  //   activity.multipleChoiceContent!.choices.addAll(uniqueChoices);
-  //   return activity;
-  // }
 
   Future<void> onSelectChoice(
     ConstructIdentifier choiceConstruct,
