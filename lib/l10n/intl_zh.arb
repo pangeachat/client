@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-12 13:38:45.944144",
+  "@@last_modified": "2026-01-13 15:17:30.643003",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10819,6 +10819,16 @@
   },
   "youLeftTheChat": "🚪 你离开了聊天",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "下载已启动",
+  "webDownloadPermissionMessage": "如果您的浏览器阻止下载，请为此网站启用下载。",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

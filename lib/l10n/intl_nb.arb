@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:38:23.301738",
+  "@@last_modified": "2026-01-13 15:17:04.771433",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11921,6 +11921,16 @@
   },
   "youLeftTheChat": "🚪 Du forlot chatten",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Nedlasting initiert",
+  "webDownloadPermissionMessage": "Hvis nettleseren din blokkerer nedlastinger, vennligst aktiver nedlastinger for dette nettstedet.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-12 13:38:06.933723",
+  "@@last_modified": "2026-01-13 15:16:41.523925",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11200,6 +11200,16 @@
   },
   "youLeftTheChat": "🚪 Napustili ste chat",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Preuzimanje pokrenuto",
+  "webDownloadPermissionMessage": "Ako vaš preglednik blokira preuzimanja, molimo omogućite preuzimanja za ovu stranicu.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

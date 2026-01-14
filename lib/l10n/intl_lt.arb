@@ -3861,7 +3861,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-12 13:38:36.118922",
+  "@@last_modified": "2026-01-13 15:17:23.202279",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11633,6 +11633,16 @@
   },
   "youLeftTheChat": "🚪 Jūs palikote pokalbį",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Atsisiuntimas pradėtas",
+  "webDownloadPermissionMessage": "Jei jūsų naršyklė blokuoja atsisiuntimus, prašome įgalinti atsisiuntimus šiam tinklalapiui.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

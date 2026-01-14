@@ -17,6 +17,29 @@ extension PangeaPushRulesExtension on Client {
     }
 
     if (!(globalPushRules?.override?.any(
+          (element) => element.ruleId == PangeaEventTypes.analyticsInviteRule,
+        ) ??
+        false)) {
+      await setPushRule(
+        PushRuleKind.override,
+        PangeaEventTypes.analyticsInviteRule,
+        [PushRuleAction.dontNotify],
+        conditions: [
+          PushCondition(
+            kind: 'event_match',
+            key: 'type',
+            pattern: EventTypes.RoomMember,
+          ),
+          PushCondition(
+            kind: 'event_match',
+            key: 'content.reason',
+            pattern: PangeaEventTypes.analyticsInviteContent,
+          ),
+        ],
+      );
+    }
+
+    if (!(globalPushRules?.override?.any(
           (element) => element.ruleId == PangeaEventTypes.textToSpeechRule,
         ) ??
         false)) {

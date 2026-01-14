@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-12 13:38:37.446376",
+  "@@last_modified": "2026-01-13 15:17:24.923117",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6398,6 +6398,16 @@
   },
   "youLeftTheChat": "🚪 Bạn đã rời khỏi cuộc trò chuyện",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Tải xuống đã được khởi động",
+  "webDownloadPermissionMessage": "Nếu trình duyệt của bạn chặn tải xuống, vui lòng bật tải xuống cho trang web này.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

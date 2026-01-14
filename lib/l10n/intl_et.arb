@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-12 13:38:14.184472",
+  "@@last_modified": "2026-01-13 15:16:50.842106",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11099,6 +11099,16 @@
   },
   "youLeftTheChat": "🚪 Sa lahkusid vestlusest",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Allalaadimine algatatud",
+  "webDownloadPermissionMessage": "Kui teie brauser blokeerib allalaadimisi, lubage palun selle saidi jaoks allalaadimised.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

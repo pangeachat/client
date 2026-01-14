@@ -78,6 +78,14 @@ extension AnalyticsClientExtension on Client {
       topic: "This room stores learning analytics for $userID.",
       preset: CreateRoomPreset.publicChat,
       visibility: Visibility.private,
+      initialState: [
+        StateEvent(
+          type: EventTypes.RoomJoinRules,
+          content: {
+            ModelKey.joinRule: JoinRules.knock.name,
+          },
+        ),
+      ],
     );
     if (getRoomById(roomID) == null) {
       // Wait for room actually appears in sync

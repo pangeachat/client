@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-12 13:37:56.982314",
+  "@@last_modified": "2026-01-13 15:16:30.904012",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11889,6 +11889,16 @@
   },
   "youLeftTheChat": "🚪 Du forlod chatten",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Download påbegyndt",
+  "webDownloadPermissionMessage": "Hvis din browser blokerer downloads, bedes du aktivere downloads for dette site.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

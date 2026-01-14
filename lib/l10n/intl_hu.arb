@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-12 13:37:59.394827",
+  "@@last_modified": "2026-01-13 15:16:32.515672",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10829,6 +10829,16 @@
   },
   "youLeftTheChat": "🚪 Elhagytad a csevegést",
   "@youLeftTheChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "downloadInitiated": "Letöltés megkezdődött",
+  "webDownloadPermissionMessage": "Ha a böngésződ blokkolja a letöltéseket, kérlek engedélyezd a letöltéseket ezen az oldalon.",
+  "@downloadInitiated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@webDownloadPermissionMessage": {
     "type": "String",
     "placeholders": {}
   }

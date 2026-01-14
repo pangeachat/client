@@ -5044,5 +5044,7 @@
   "botSettings": "Bot Settings",
   "activitySettingsOverrideWarning": "Language and language level determined by activity plan",
   "voice": "Voice",
-  "youLeftTheChat": "🚪 You left the chat"
+  "youLeftTheChat": "🚪 You left the chat",
+  "downloadInitiated": "Download initiated",
+  "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site."
 }
