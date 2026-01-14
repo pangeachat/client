@@ -27,9 +27,6 @@ class VocabPracticeSessionModel {
                 .contains(t.activityType),
           ),
         ),
-        assert(
-          practiceTargets.length == VocabPracticeConstants.practiceGroupSize,
-        ),
         state = state ?? const VocabPracticeSessionState();
 
   int get _availableActivities => min(
@@ -181,9 +178,9 @@ class VocabPracticeSessionState {
               .whereType<OneConstructUse>()
               .toList() ??
           [],
-      currentIndex: json['currentIndex'] as int,
-      finished: json['finished'] as bool,
-      elapsedSeconds: json['elapsedSeconds'] as int,
+      currentIndex: json['currentIndex'] as int? ?? 0,
+      finished: json['finished'] as bool? ?? false,
+      elapsedSeconds: json['elapsedSeconds'] as int? ?? 0,
     );
   }
 }

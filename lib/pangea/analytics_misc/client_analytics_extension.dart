@@ -190,14 +190,27 @@ extension AnalyticsClientExtension on Client {
     final room = getRoomById(use.metadata.roomId!);
     if (room == null) return null;
 
-    final event = await room.getEventById(use.metadata.eventId!);
-    if (event == null) return null;
+    try {
+      final event = await room.getEventById(use.metadata.eventId!);
+      if (event == null) return null;
 
-    final timeline = await room.getTimeline();
-    return PangeaMessageEvent(
-      event: event,
-      timeline: timeline,
-      ownMessage: event.senderId == userID,
-    );
+      final timeline = await room.getTimeline();
+      return PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId == userID,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "roomID": use.metadata.roomId,
+          "eventID": use.metadata.eventId,
+          "userID": userID,
+        },
+      );
+      return null;
+    }
   }
 }

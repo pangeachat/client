@@ -31,9 +31,9 @@ class VocabPracticeSessionRepo {
     );
 
     final constructs = await _fetch();
-    final size = min(constructs.length, types.length);
+    final targetCount = min(constructs.length, types.length);
     final targets = [
-      for (var i = 0; i < size; i++)
+      for (var i = 0; i < targetCount; i++)
         PracticeTarget(
           tokens: [constructs[i].asToken],
           activityType: types[i],
