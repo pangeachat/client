@@ -14,8 +14,6 @@ class AnalyticsSyncController {
   final AnalyticsDataService dataService;
 
   StreamSubscription? _subscription;
-  StreamController<List<String>> syncStream =
-      StreamController<List<String>>.broadcast();
 
   AnalyticsSyncController({
     required this.client,
@@ -29,7 +27,6 @@ class AnalyticsSyncController {
   void dispose() {
     _subscription?.cancel();
     _subscription = null;
-    syncStream.close();
   }
 
   Future<void> _onSync(SyncUpdate update) async {
@@ -55,10 +52,22 @@ class AnalyticsSyncController {
 
     if (constructEvents.isEmpty) return;
     await dataService.updateServerAnalytics(constructEvents);
+  }
 
-    syncStream.add(
-      List<String>.from(constructEvents.map((e) => e.event.eventId)),
-    );
+  Future<void> waitForSync(String analyticsRoomId) async {
+    await client.onSync.stream.firstWhere((update) {
+      final roomUpdate = update.rooms?.join?[analyticsRoomId];
+      if (roomUpdate == null) return false;
+
+      final hasAnalyticsEvent = roomUpdate.timeline?.events?.any(
+            (e) =>
+                e.type == PangeaEventTypes.construct &&
+                e.senderId == client.userID,
+          ) ??
+          false;
+
+      return hasAnalyticsEvent;
+    });
   }
 
   Future<void> bulkUpdate() async {

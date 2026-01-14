@@ -29,8 +29,8 @@ class AnalyticsUpdateService {
 
   LanguageModel? get _l2 => MatrixState.pangeaController.userController.userL2;
 
-  Future<Room?> _getAnalyticsRoom() async {
-    final l2 = _l2;
+  Future<Room?> _getAnalyticsRoom({LanguageModel? l2Override}) async {
+    final l2 = l2Override ?? _l2;
     if (l2 == null) return null;
 
     final analyticsRoom = await dataService.getAnalyticsRoom(l2);
@@ -101,11 +101,17 @@ class AnalyticsUpdateService {
   Future<void> _updateAnalytics({LanguageModel? l2Override}) async {
     final localConstructs = await dataService.getLocalUses();
     if (localConstructs.isEmpty) return;
-    final analyticsRoom = await _getAnalyticsRoom();
+    final analyticsRoom = await _getAnalyticsRoom(l2Override: l2Override);
+    if (analyticsRoom == null) {
+      debugPrint(
+        "No analytics room found for L2 Override: ${l2Override?.langCode}",
+      );
+      return;
+    }
 
     // and send cached analytics data to the room
-    final future = dataService.waitForSync();
-    await analyticsRoom?.sendConstructsEvent(localConstructs);
+    final future = dataService.waitForSync(analyticsRoom.id);
+    await analyticsRoom.sendConstructsEvent(localConstructs);
     await future;
   }
 
