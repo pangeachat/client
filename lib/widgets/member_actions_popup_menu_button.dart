@@ -58,68 +58,65 @@ void showMemberActionsPopupMenu({
     items: <PopupMenuEntry<_MemberActions>>[
       PopupMenuItem(
         value: _MemberActions.info,
-        // #Pangea
-        // child: Row(
-        child: Column(
+        child: Row(
+          // Pangea#
+          spacing: 12.0,
           children: [
-            Row(
-              // Pangea#
-              spacing: 12.0,
+            Avatar(
+              name: displayname,
+              mxContent: user.avatarUrl,
+              presenceUserId: user.id,
+              presenceBackgroundColor: theme.colorScheme.surfaceContainer,
+            ),
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Avatar(
-                  name: displayname,
-                  mxContent: user.avatarUrl,
-                  presenceUserId: user.id,
-                  presenceBackgroundColor: theme.colorScheme.surfaceContainer,
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 128),
+                  child: Text(
+                    displayname,
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.labelLarge,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 128),
-                      child: Text(
-                        displayname,
-                        textAlign: TextAlign.center,
-                        style: theme.textTheme.labelLarge,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 128),
-                      child: Text(
-                        user.id,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(fontSize: 10),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    // #Pangea
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          LevelDisplayName(userId: user.id),
-                        ],
-                      ),
-                    ),
-                    // Pangea#
-                  ],
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 128),
+                  child: Text(
+                    user.id,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 10),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 // #Pangea
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      LevelDisplayName(userId: user.id),
+                    ],
+                  ),
+                ),
+                // Pangea#
               ],
             ),
-            if (user.id == BotName.byEnvironment &&
-                room != null &&
-                room.isRoomAdmin)
-              BotChatSettingsDialog(room: room),
-            // Pangea#
           ],
         ),
       ),
+      if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
+        PopupMenuItem(
+          enabled: false,
+          padding: const EdgeInsets.only(
+            left: 12.0,
+            right: 12.0,
+          ),
+          child: BotChatSettingsDialog(room: room),
+        ),
       const PopupMenuDivider(),
       // #Pangea
       if (user.room.client.userID != user.id)
