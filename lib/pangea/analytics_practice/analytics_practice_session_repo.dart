@@ -91,11 +91,17 @@ class AnalyticsPracticeSessionRepo {
       return dateA.compareTo(dateB);
     });
 
-    return constructs
-        .where((construct) => construct.lemma.isNotEmpty)
-        .take(AnalyticsPracticeConstants.practiceGroupSize)
-        .map((construct) => construct.id)
-        .toList();
+    final Set<String> seemLemmas = {};
+    final targets = <ConstructIdentifier>[];
+    for (final construct in constructs) {
+      if (seemLemmas.contains(construct.lemma)) continue;
+      seemLemmas.add(construct.lemma);
+      targets.add(construct.id);
+      if (targets.length >= AnalyticsPracticeConstants.practiceGroupSize) {
+        break;
+      }
+    }
+    return targets;
   }
 
   static Future<Map<PangeaToken, MorphFeaturesEnum>> _fetchMorphs() async {

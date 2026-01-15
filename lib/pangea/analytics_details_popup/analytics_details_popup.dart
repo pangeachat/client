@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -106,7 +107,11 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
 
       vocab = data.values.toList();
       vocab!.sort(
-        (a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()),
+        (a, b) {
+          final normalizedA = removeDiacritics(a.lemma).toLowerCase();
+          final normalizedB = removeDiacritics(b.lemma).toLowerCase();
+          return normalizedA.compareTo(normalizedB);
+        },
       );
     } finally {
       if (mounted) setState(() {});

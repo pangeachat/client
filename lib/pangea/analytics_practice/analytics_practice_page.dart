@@ -253,7 +253,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     setState(() {});
 
     final bonus = _sessionLoader.value!.state.allBonusUses;
-    await _analyticsService.updateService.addAnalytics(null, bonus);
+    await _analyticsService.updateService.addAnalytics(
+      null,
+      bonus,
+      forceUpdate: true,
+    );
     await _saveSession();
   }
 

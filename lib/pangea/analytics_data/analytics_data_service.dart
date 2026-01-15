@@ -85,6 +85,7 @@ class AnalyticsDataService {
   void dispose() {
     _syncController?.dispose();
     updateDispatcher.dispose();
+    updateService.dispose();
     _closeDatabase();
   }
 
