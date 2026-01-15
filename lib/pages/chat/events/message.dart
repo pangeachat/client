@@ -482,7 +482,7 @@ class Message extends StatelessWidget {
                                           miniIcon:
                                               user.id == BotName.byEnvironment
                                                   ? BotSettingsLanguageIcon(
-                                                      room: controller.room,
+                                                      user: user,
                                                     )
                                                   : null,
                                           presenceOffset:

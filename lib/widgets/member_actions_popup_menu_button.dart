@@ -58,52 +58,65 @@ void showMemberActionsPopupMenu({
     items: <PopupMenuEntry<_MemberActions>>[
       PopupMenuItem(
         value: _MemberActions.info,
-        child: Row(
-          spacing: 12.0,
+        // #Pangea
+        // child: Row(
+        child: Column(
           children: [
-            Avatar(
-              name: displayname,
-              mxContent: user.avatarUrl,
-              presenceUserId: user.id,
-              presenceBackgroundColor: theme.colorScheme.surfaceContainer,
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              // Pangea#
+              spacing: 12.0,
               children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    displayname,
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.labelLarge,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Avatar(
+                  name: displayname,
+                  mxContent: user.avatarUrl,
+                  presenceUserId: user.id,
+                  presenceBackgroundColor: theme.colorScheme.surfaceContainer,
                 ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 128),
-                  child: Text(
-                    user.id,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 10),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 128),
+                      child: Text(
+                        displayname,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.labelLarge,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 128),
+                      child: Text(
+                        user.id,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 10),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    // #Pangea
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          LevelDisplayName(userId: user.id),
+                        ],
+                      ),
+                    ),
+                    // Pangea#
+                  ],
                 ),
                 // #Pangea
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      LevelDisplayName(userId: user.id),
-                    ],
-                  ),
-                ),
-                // Pangea#
               ],
             ),
+            if (user.id == BotName.byEnvironment &&
+                room != null &&
+                room.isRoomAdmin)
+              BotChatSettingsDialog(room: room),
+            // Pangea#
           ],
         ),
       ),
@@ -121,17 +134,6 @@ void showMemberActionsPopupMenu({
                     ? L10n.of(context).startConversation
                     : L10n.of(context).sendAMessage,
               ),
-            ],
-          ),
-        ),
-      if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
-        PopupMenuItem(
-          value: _MemberActions.botSettings,
-          child: Row(
-            children: [
-              const Icon(Icons.settings_outlined),
-              const SizedBox(width: 18),
-              Text(L10n.of(context).botSettings),
             ],
           ),
         ),
@@ -356,12 +358,6 @@ void showMemberActionsPopupMenu({
       final roomId = roomIdResult.result;
       if (roomId == null) return;
       router.go('/rooms/$roomId');
-    case _MemberActions.botSettings:
-      await BotChatSettingsDialog.show(
-        context: context,
-        room: room!,
-      );
-      return;
     // Pangea#
     case _MemberActions.info:
       await UserDialog.show(
@@ -401,6 +397,5 @@ enum _MemberActions {
   // #Pangea
   // report,
   chat,
-  botSettings,
   // Pangea#
 }

@@ -49,16 +49,16 @@ class PLanguageStore {
           : LanguageConstants.languageList
               .map((e) => LanguageModel.fromJson(e))
               .toList();
+
+      await _MyShared.saveJson(PrefKey.languagesKey, {
+        PrefKey.languagesKey: _langList.map((e) => e.toJson()).toList(),
+      });
+
+      await _MyShared.saveString(
+        PrefKey.lastFetched,
+        DateTime.now().toIso8601String(),
+      );
     }
-
-    await _MyShared.saveJson(PrefKey.languagesKey, {
-      PrefKey.languagesKey: _langList.map((e) => e.toJson()).toList(),
-    });
-
-    await _MyShared.saveString(
-      PrefKey.lastFetched,
-      DateTime.now().toIso8601String(),
-    );
 
     _langList.removeWhere(
       (element) => element.langCode == LanguageKeys.unknownLanguage,
@@ -78,7 +78,7 @@ class PLanguageStore {
       return true;
     }
 
-    final DateTime targetDate = DateTime(2026, 1, 9);
+    final DateTime targetDate = DateTime(2026, 1, 15);
     if (lastFetchedDate.isBefore(targetDate)) {
       return true;
     }
