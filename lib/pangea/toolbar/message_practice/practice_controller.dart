@@ -35,8 +35,6 @@ class PracticeController with ChangeNotifier {
   MorphSelection? selectedMorph;
   PracticeChoice? selectedChoice;
 
-  PracticeActivityModel? get activity => _activity;
-
   PracticeSelection? practiceSelection;
 
   bool get isTotallyDone =>
@@ -65,12 +63,11 @@ class PracticeController with ChangeNotifier {
       return target == null;
     }
 
-    return target == null ||
-        target.isCompleteByToken(
-              token,
-              _activity?.morphFeature,
-            ) ==
-            true;
+    final morph = _activity is MorphPracticeActivityModel
+        ? (_activity as MorphPracticeActivityModel).morphFeature
+        : null;
+
+    return target == null || target.isCompleteByToken(token, morph) == true;
   }
 
   bool get showChoiceShimmer {
@@ -151,11 +148,13 @@ class PracticeController with ChangeNotifier {
 
   void onMatch(PangeaToken token, PracticeChoice choice) {
     if (_activity == null) return;
-
-    final isCorrect = _activity!.activityType == ActivityTypeEnum.morphId
-        ? _activity!
-            .onMultipleChoiceSelect(choice.form.cId, choice.choiceContent)
-        : _activity!.onMatch(token, choice);
+    final isCorrect = switch (_activity!) {
+      MultipleChoicePracticeActivityModel() =>
+        (_activity as MultipleChoicePracticeActivityModel)
+            .onMultipleChoiceSelect(choice.form.cId, choice.choiceContent),
+      MatchPracticeActivityModel() =>
+        (_activity as MatchPracticeActivityModel).onMatch(token, choice),
+    };
 
     final targetId =
         "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";

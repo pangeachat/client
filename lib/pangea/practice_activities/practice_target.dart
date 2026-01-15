@@ -164,4 +164,13 @@ class PracticeTarget {
     }
     return false;
   }
+
+  String promptText() {
+    switch (activityType) {
+      case ActivityTypeEnum.grammarCategory:
+        return "${tokens.first.vocabConstructID.lemma}: ${morphFeature!.name}";
+      default:
+        return tokens.first.vocabConstructID.lemma;
+    }
+  }
 }

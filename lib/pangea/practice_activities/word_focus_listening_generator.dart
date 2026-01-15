@@ -1,5 +1,4 @@
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
@@ -15,8 +14,7 @@ class WordFocusListeningGenerator {
     }
 
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
-        activityType: ActivityTypeEnum.wordFocusListening,
+      activity: WordListeningPracticeActivityModel(
         targetTokens: req.targetTokens,
         langCode: req.userL2,
         matchContent: PracticeMatchActivity(

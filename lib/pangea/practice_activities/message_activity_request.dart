@@ -5,6 +5,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
 // includes feedback text and the bad activity model
 class ActivityQualityFeedback {
@@ -15,15 +16,6 @@ class ActivityQualityFeedback {
     required this.feedbackText,
     required this.badActivity,
   });
-
-  factory ActivityQualityFeedback.fromJson(Map<String, dynamic> json) {
-    return ActivityQualityFeedback(
-      feedbackText: json['feedback_text'] as String,
-      badActivity: PracticeActivityModel.fromJson(
-        json['bad_activity'] as Map<String, dynamic>,
-      ),
-    );
-  }
 
   Map<String, dynamic> toJson() {
     return {
@@ -89,6 +81,12 @@ class MessageActivityRequest {
       'target_morph_feature': targetMorphFeature,
     };
   }
+
+  PracticeTarget get practiceTarget => PracticeTarget(
+        activityType: targetType,
+        tokens: targetTokens,
+        morphFeature: targetMorphFeature,
+      );
 
   @override
   bool operator ==(Object other) {

@@ -16,7 +16,7 @@ import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.d
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_match_item.dart';
 
 class MatchActivityCard extends StatelessWidget {
-  final PracticeActivityModel currentActivity;
+  final MatchPracticeActivityModel currentActivity;
   final PracticeController controller;
 
   const MatchActivityCard({
@@ -24,8 +24,6 @@ class MatchActivityCard extends StatelessWidget {
     required this.currentActivity,
     required this.controller,
   });
-
-  PracticeActivityModel get activity => currentActivity;
 
   ActivityTypeEnum get activityType => currentActivity.activityType;
 
@@ -83,7 +81,7 @@ class MatchActivityCard extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 4.0,
           runSpacing: 4.0,
-          children: activity.matchContent!.choices.map(
+          children: currentActivity.matchContent.choices.map(
             (PracticeChoice cf) {
               final bool? wasCorrect =
                   currentActivity.practiceTarget.wasCorrectMatch(cf);

@@ -18,8 +18,7 @@ class VocabMeaningActivityGenerator {
     final Set<String> constructIdChoices = choices.map((c) => c.string).toSet();
 
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
-        activityType: req.targetType,
+      activity: VocabMeaningPracticeActivityModel(
         targetTokens: [token],
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(

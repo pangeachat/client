@@ -119,10 +119,10 @@ class _AnalyticsActivityView extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: ValueListenableBuilder(
-                  valueListenable: controller.activityText,
-                  builder: (context, text, __) => text != null
+                  valueListenable: controller.activityTarget,
+                  builder: (context, target, __) => target != null
                       ? Text(
-                          text,
+                          target.promptText(),
                           textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -132,19 +132,19 @@ class _AnalyticsActivityView extends StatelessWidget {
                       : const SizedBox(),
                 ),
               ),
-              // Expanded(
-              //   flex: 2,
-              //   child: Center(
-              //     child: ValueListenableBuilder(
-              //       valueListenable: controller.activityConstructId,
-              //       builder: (context, constructId, __) => constructId != null
-              //           ? _ExampleMessageWidget(
-              //               controller.getExampleMessage(constructId),
-              //             )
-              //           : const SizedBox(),
-              //     ),
-              //   ),
-              // ),
+              Expanded(
+                flex: 2,
+                child: Center(
+                  child: ValueListenableBuilder(
+                    valueListenable: controller.activityTarget,
+                    builder: (context, target, __) => target != null
+                        ? _ExampleMessageWidget(
+                            controller.getExampleMessage(target),
+                          )
+                        : const SizedBox(),
+                  ),
+                ),
+              ),
               Expanded(
                 flex: 6,
                 child: _ActivityChoicesWidget(controller),
@@ -211,14 +211,15 @@ class _ActivityChoicesWidget extends StatelessWidget {
       valueListenable: controller.activityState,
       builder: (context, state, __) {
         return switch (state) {
-          AsyncLoading<PracticeActivityModel>() => const Center(
+          AsyncLoading<MultipleChoicePracticeActivityModel>() => const Center(
               child: SizedBox(
                 width: 24,
                 height: 24,
                 child: CircularProgressIndicator.adaptive(),
               ),
             ),
-          AsyncError<PracticeActivityModel>(:final error) => Column(
+          AsyncError<MultipleChoicePracticeActivityModel>(:final error) =>
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 //allow try to reload activity in case of error
@@ -231,11 +232,12 @@ class _ActivityChoicesWidget extends StatelessWidget {
                 ),
               ],
             ),
-          AsyncLoaded<PracticeActivityModel>(:final value) => LayoutBuilder(
+          AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
+            LayoutBuilder(
               builder: (context, constraints) {
                 final choices = controller.filteredChoices(
                   value.practiceTarget,
-                  value.multipleChoiceContent!,
+                  value.multipleChoiceContent,
                 );
                 final constrainedHeight =
                     constraints.maxHeight.clamp(0.0, 400.0);
@@ -281,7 +283,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
 }
 
 class _ChoiceCard extends StatelessWidget {
-  final PracticeActivityModel activity;
+  final MultipleChoicePracticeActivityModel activity;
   final String choiceId;
   final String targetId;
   final VoidCallback onPressed;
@@ -302,7 +304,7 @@ class _ChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isCorrect = activity.multipleChoiceContent!.isCorrect(choiceId);
+    final isCorrect = activity.multipleChoiceContent.isCorrect(choiceId);
     final activityType = activity.activityType;
     final constructId = activity.targetTokens.first.vocabConstructID;
 

@@ -10,8 +10,6 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
@@ -64,13 +62,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     with AnalyticsUpdater {
   late final SessionLoader _sessionLoader;
 
-  final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
-      ValueNotifier(const AsyncState.idle());
+  final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
+      activityState = ValueNotifier(const AsyncState.idle());
 
-  final Queue<MapEntry<String, Completer<PracticeActivityModel>>> _queue =
-      Queue();
+  final Queue<
+      MapEntry<PracticeTarget,
+          Completer<MultipleChoicePracticeActivityModel>>> _queue = Queue();
 
-  final ValueNotifier<String?> activityText = ValueNotifier<String?>(null);
+  final ValueNotifier<PracticeTarget?> activityTarget =
+      ValueNotifier<PracticeTarget?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
 
@@ -99,14 +99,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
     _sessionLoader.dispose();
     activityState.dispose();
-    activityText.dispose();
+    activityTarget.dispose();
     progressNotifier.dispose();
     super.dispose();
   }
 
-  PracticeActivityModel? get _currentActivity =>
-      activityState.value is AsyncLoaded<PracticeActivityModel>
-          ? (activityState.value as AsyncLoaded<PracticeActivityModel>).value
+  MultipleChoicePracticeActivityModel? get _currentActivity =>
+      activityState.value is AsyncLoaded<MultipleChoicePracticeActivityModel>
+          ? (activityState.value
+                  as AsyncLoaded<MultipleChoicePracticeActivityModel>)
+              .value
           : null;
 
   bool get _isComplete => _sessionLoader.value?.isComplete ?? false;
@@ -177,7 +179,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   void _resetActivityState() {
     activityState.value = const AsyncState.loading();
-    activityText.value = null;
+    activityTarget.value = null;
   }
 
   void _resetSessionState() {
@@ -258,14 +260,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _continuing = true;
 
     try {
-      if (activityState.value is AsyncIdle<PracticeActivityModel>) {
+      if (activityState.value
+          is AsyncIdle<MultipleChoicePracticeActivityModel>) {
         await _initActivityData();
       } else if (_queue.isEmpty) {
         await _completeSession();
       } else {
         activityState.value = const AsyncState.loading();
         final nextActivityCompleter = _queue.removeFirst();
-        activityText.value = nextActivityCompleter.key;
+        activityTarget.value = nextActivityCompleter.key;
         final activity = await nextActivityCompleter.value.future;
         activityState.value = AsyncState.loaded(activity);
       }
@@ -289,7 +292,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       final res = await _fetchActivity(req);
       if (!mounted) return;
 
-      activityText.value = req.activityText;
+      activityTarget.value = req.practiceTarget;
       activityState.value = AsyncState.loaded(res);
     } catch (e) {
       if (!mounted) return;
@@ -302,13 +305,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
     for (final request in requests) {
-      final completer = Completer<PracticeActivityModel>();
+      final completer = Completer<MultipleChoicePracticeActivityModel>();
       _queue.add(
         MapEntry(
-          request.activityText,
+          request.practiceTarget,
           completer,
         ),
       );
+
       try {
         final res = await _fetchActivity(request);
         if (!mounted) return;
@@ -321,24 +325,28 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
   }
 
-  Future<PracticeActivityModel> _fetchActivity(
+  Future<MultipleChoicePracticeActivityModel> _fetchActivity(
     MessageActivityRequest req,
   ) async {
     final result = await PracticeRepo.getPracticeActivity(
       req,
       messageInfo: {},
     );
-    if (result.isError) {
+
+    if (result.isError ||
+        result.result is! MultipleChoicePracticeActivityModel) {
       throw L10n.of(context).oopsSomethingWentWrong;
     }
 
+    final activityModel = result.result as MultipleChoicePracticeActivityModel;
+
     // Prefetch lemma info for meaning activities before marking ready
-    if (result.result!.activityType == ActivityTypeEnum.lemmaMeaning) {
-      final choices = result.result!.multipleChoiceContent!.choices.toList();
-      await _fetchLemmaInfo(result.result!.practiceTarget, choices);
+    if (activityModel.activityType == ActivityTypeEnum.lemmaMeaning) {
+      final choices = activityModel.multipleChoiceContent.choices.toList();
+      await _fetchLemmaInfo(activityModel.practiceTarget, choices);
     }
 
-    return result.result!;
+    return activityModel;
   }
 
   Future<void> _fetchLemmaInfo(
@@ -378,32 +386,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     // Update activity record
     activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
-    final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
 
-    // Update session model and analytics
-    final useType = correct
-        ? activity.activityType.correctUse
-        : activity.activityType.incorrectUse;
-
-    final use = OneConstructUse(
-      useType: useType,
-      constructType: widget.type,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
-      category: activity.useCategory,
-      lemma: activity.useLemma,
-      form: activity.useForm,
-      xp: useType.pointValue,
-    );
-
+    final use = activity.constructUse(choiceContent);
     _sessionLoader.value!.submitAnswer(use);
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
     await _saveSession();
-    if (!correct) return;
+    if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
 
     // Display the fact that the choice was correct before loading the next activity
     await Future.delayed(const Duration(milliseconds: 1000));
@@ -417,11 +407,26 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<List<InlineSpan>?> getExampleMessage(
-    ConstructIdentifier construct,
+    PracticeTarget target,
   ) async {
+    final token = target.tokens.first;
+    final construct = switch (widget.type) {
+      ConstructTypeEnum.vocab => token.vocabConstructID,
+      ConstructTypeEnum.morph => token.morphIdByFeature(target.morphFeature!),
+    };
+
+    if (construct == null) return null;
+
+    String? form;
+    if (widget.type == ConstructTypeEnum.morph) {
+      if (target.morphFeature == null) return null;
+      form = token.lemma.form;
+    }
+
     return ExampleMessageUtil.getExampleMessage(
       await _analyticsService.getConstructUse(construct),
       Matrix.of(context).client,
+      form: form,
     );
   }
 

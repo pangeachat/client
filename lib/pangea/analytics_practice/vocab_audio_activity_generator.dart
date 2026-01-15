@@ -15,8 +15,7 @@ class VocabAudioActivityGenerator {
     choicesList.shuffle();
 
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
-        activityType: req.targetType,
+      activity: VocabAudioPracticeActivityModel(
         targetTokens: [token],
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(

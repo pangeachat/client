@@ -30,7 +30,7 @@ const int numberOfMorphDistractors = 3;
 
 class MessageMorphInputBarContent extends StatefulWidget {
   final PracticeController controller;
-  final PracticeActivityModel activity;
+  final MorphPracticeActivityModel activity;
   final PangeaToken? selectedToken;
   final double maxWidth;
 
@@ -52,7 +52,7 @@ class MessageMorphInputBarContentState
   String? selectedTag;
 
   PangeaToken get token => widget.activity.targetTokens.first;
-  MorphFeaturesEnum get morph => widget.activity.morphFeature!;
+  MorphFeaturesEnum get morph => widget.activity.morphFeature;
 
   @override
   void didUpdateWidget(covariant MessageMorphInputBarContent oldWidget) {
@@ -114,7 +114,7 @@ class MessageMorphInputBarContentState
           runAlignment: WrapAlignment.center,
           spacing: spacing,
           runSpacing: spacing,
-          children: widget.activity.multipleChoiceContent!.choices.mapIndexed(
+          children: widget.activity.multipleChoiceContent.choices.mapIndexed(
             (index, choice) {
               final wasCorrect =
                   widget.activity.practiceTarget.wasCorrectChoice(choice);
@@ -137,7 +137,7 @@ class MessageMorphInputBarContentState
                         form: ConstructForm(
                           cId: widget.activity.targetTokens.first
                               .morphIdByFeature(
-                            widget.activity.morphFeature!,
+                            widget.activity.morphFeature,
                           )!,
                           form: token.text.content,
                         ),

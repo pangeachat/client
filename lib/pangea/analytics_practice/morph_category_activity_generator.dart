@@ -50,8 +50,7 @@ class MorphCategoryActivityGenerator {
     choices.add(morphTag);
 
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
-        activityType: req.targetType,
+      activity: MorphCategoryPracticeActivityModel(
         targetTokens: [req.targetTokens.first],
         langCode: req.userL2,
         morphFeature: feature,

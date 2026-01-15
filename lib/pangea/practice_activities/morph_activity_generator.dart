@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -38,11 +37,10 @@ class MorphActivityGenerator {
     debugger(when: kDebugMode && distractors.length < 3);
 
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
+      activity: MorphMatchPracticeActivityModel(
         targetTokens: req.targetTokens,
         langCode: req.userL2,
-        activityType: ActivityTypeEnum.morphId,
-        morphFeature: req.targetMorphFeature,
+        morphFeature: morphFeature,
         multipleChoiceContent: MultipleChoiceActivity(
           choices: distractors,
           answers: {morphTag},
