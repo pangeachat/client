@@ -236,10 +236,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
           AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
             LayoutBuilder(
               builder: (context, constraints) {
-                final choices = controller.filteredChoices(
-                  value.practiceTarget,
-                  value.multipleChoiceContent,
-                );
+                final choices = controller.filteredChoices(value);
                 final constrainedHeight =
                     constraints.maxHeight.clamp(0.0, 400.0);
                 final cardHeight = (constrainedHeight / (choices.length + 1))
@@ -258,7 +255,6 @@ class _ActivityChoicesWidget extends StatelessWidget {
                                 controller.choiceTargetId(choice.choiceId),
                             choiceId: choice.choiceId,
                             onPressed: () => controller.onSelectChoice(
-                              value.targetTokens.first.vocabConstructID,
                               choice.choiceId,
                             ),
                             cardHeight: cardHeight,
@@ -307,7 +303,7 @@ class _ChoiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isCorrect = activity.multipleChoiceContent.isCorrect(choiceId);
     final activityType = activity.activityType;
-    final constructId = activity.targetTokens.first.vocabConstructID;
+    final constructId = activity.tokens.first.vocabConstructID;
 
     switch (activity.activityType) {
       case ActivityTypeEnum.lemmaMeaning:

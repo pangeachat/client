@@ -38,9 +38,7 @@ class AnalyticsPracticeSessionModel {
         userL1: userL1,
         userL2: userL2,
         activityQualityFeedback: null,
-        targetTokens: target.tokens,
-        targetType: target.activityType,
-        targetMorphFeature: target.morphFeature,
+        target: target,
       );
     }).toList();
   }

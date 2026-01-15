@@ -15,7 +15,7 @@ class LemmaMeaningActivityGenerator {
     required Map<String, dynamic> messageInfo,
   }) async {
     final List<Future<Result<LemmaInfoResponse>>> lemmaInfoFutures = req
-        .targetTokens
+        .target.tokens
         .map((token) => token.vocabConstructID.getLemmaInfo(messageInfo))
         .toList();
 
@@ -27,13 +27,13 @@ class LemmaMeaningActivityGenerator {
     }
 
     final Map<ConstructForm, List<String>> matchInfo = Map.fromIterables(
-      req.targetTokens.map((token) => token.vocabForm),
+      req.target.tokens.map((token) => token.vocabForm),
       lemmaInfos.map((lemmaInfo) => [lemmaInfo.asValue!.value.meaning]),
     );
 
     return MessageActivityResponse(
       activity: LemmaMeaningPracticeActivityModel(
-        targetTokens: req.targetTokens,
+        tokens: req.target.tokens,
         langCode: req.userL2,
         matchContent: PracticeMatchActivity(
           matchInfo: matchInfo,

@@ -117,7 +117,7 @@ class PracticeRepo {
     required Map<String, dynamic> messageInfo,
   }) async {
     // some activities we'll get from the server and others we'll generate locally
-    switch (req.targetType) {
+    switch (req.target.activityType) {
       case ActivityTypeEnum.emoji:
         return EmojiActivityGenerator.get(req, messageInfo: messageInfo);
       case ActivityTypeEnum.lemmaId:

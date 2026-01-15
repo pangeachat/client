@@ -51,7 +51,7 @@ class MessageMorphInputBarContentState
     extends State<MessageMorphInputBarContent> {
   String? selectedTag;
 
-  PangeaToken get token => widget.activity.targetTokens.first;
+  PangeaToken get token => widget.activity.tokens.first;
   MorphFeaturesEnum get morph => widget.activity.morphFeature;
 
   @override
@@ -116,8 +116,7 @@ class MessageMorphInputBarContentState
           runSpacing: spacing,
           children: widget.activity.multipleChoiceContent.choices.mapIndexed(
             (index, choice) {
-              final wasCorrect =
-                  widget.activity.practiceTarget.wasCorrectChoice(choice);
+              final wasCorrect = widget.controller.wasCorrectChoice(choice);
 
               return ChoiceAnimationWidget(
                 isSelected: selectedTag == choice,
@@ -135,8 +134,7 @@ class MessageMorphInputBarContentState
                       PracticeChoice(
                         choiceContent: choice,
                         form: ConstructForm(
-                          cId: widget.activity.targetTokens.first
-                              .morphIdByFeature(
+                          cId: widget.activity.tokens.first.morphIdByFeature(
                             widget.activity.morphFeature,
                           )!,
                           form: token.text.content,

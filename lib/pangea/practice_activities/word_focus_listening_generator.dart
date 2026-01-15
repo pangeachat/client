@@ -7,7 +7,7 @@ class WordFocusListeningGenerator {
   static MessageActivityResponse get(
     MessageActivityRequest req,
   ) {
-    if (req.targetTokens.length <= 1) {
+    if (req.target.tokens.length <= 1) {
       throw Exception(
         "Word focus listening activity requires at least 2 tokens",
       );
@@ -15,11 +15,11 @@ class WordFocusListeningGenerator {
 
     return MessageActivityResponse(
       activity: WordListeningPracticeActivityModel(
-        targetTokens: req.targetTokens,
+        tokens: req.target.tokens,
         langCode: req.userL2,
         matchContent: PracticeMatchActivity(
           matchInfo: Map.fromEntries(
-            req.targetTokens.map(
+            req.target.tokens.map(
               (token) => MapEntry(
                 ConstructForm(
                   cId: token.vocabConstructID,

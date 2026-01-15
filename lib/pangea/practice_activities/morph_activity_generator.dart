@@ -17,13 +17,13 @@ class MorphActivityGenerator {
   static MessageActivityResponse get(
     MessageActivityRequest req,
   ) {
-    debugger(when: kDebugMode && req.targetTokens.length != 1);
+    debugger(when: kDebugMode && req.target.tokens.length != 1);
 
-    debugger(when: kDebugMode && req.targetMorphFeature == null);
+    debugger(when: kDebugMode && req.target.morphFeature == null);
 
-    final PangeaToken token = req.targetTokens.first;
+    final PangeaToken token = req.target.tokens.first;
 
-    final MorphFeaturesEnum morphFeature = req.targetMorphFeature!;
+    final MorphFeaturesEnum morphFeature = req.target.morphFeature!;
     final String? morphTag = token.getMorphTag(morphFeature);
 
     if (morphTag == null) {
@@ -38,7 +38,7 @@ class MorphActivityGenerator {
 
     return MessageActivityResponse(
       activity: MorphMatchPracticeActivityModel(
-        targetTokens: req.targetTokens,
+        tokens: req.target.tokens,
         langCode: req.userL2,
         morphFeature: morphFeature,
         multipleChoiceContent: MultipleChoiceActivity(

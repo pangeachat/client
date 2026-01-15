@@ -17,12 +17,11 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dar
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -74,8 +73,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
 
-  final Map<PracticeTarget, Map<String, String>> _choiceTexts = {};
-  final Map<PracticeTarget, Map<String, String?>> _choiceEmojis = {};
+  final Map<String, Map<String, String>> _choiceTexts = {};
+  final Map<String, Map<String, String?>> _choiceEmojis = {};
 
   StreamSubscription<void>? _languageStreamSubscription;
 
@@ -120,16 +119,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       Matrix.of(context).analyticsDataService;
 
   List<PracticeChoice> filteredChoices(
-    PracticeTarget target,
-    MultipleChoiceActivity activity,
+    MultipleChoicePracticeActivityModel activity,
   ) {
-    final choices = activity.choices.toList();
-    final answer = activity.answers.first;
+    final content = activity.multipleChoiceContent;
+    final choices = content.choices.toList();
+    final answer = content.answers.first;
     final filtered = <PracticeChoice>[];
 
     final seenTexts = <String>{};
     for (final id in choices) {
-      final text = getChoiceText(target, id);
+      final text = getChoiceText(activity.storageKey, id);
 
       if (seenTexts.contains(text)) {
         if (id != answer) {
@@ -143,7 +142,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           filtered[index] = PracticeChoice(
             choiceId: id,
             choiceText: text,
-            choiceEmoji: getChoiceEmoji(target, id),
+            choiceEmoji: getChoiceEmoji(activity.storageKey, id),
           );
         }
         continue;
@@ -154,7 +153,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         PracticeChoice(
           choiceId: id,
           choiceText: text,
-          choiceEmoji: getChoiceEmoji(target, id),
+          choiceEmoji: getChoiceEmoji(activity.storageKey, id),
         ),
       );
     }
@@ -162,21 +161,21 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     return filtered;
   }
 
-  String getChoiceText(PracticeTarget target, String choiceId) {
+  String getChoiceText(String key, String choiceId) {
     if (widget.type == ConstructTypeEnum.morph) {
       return choiceId;
     }
-    if (_choiceTexts.containsKey(target) &&
-        _choiceTexts[target]!.containsKey(choiceId)) {
-      return _choiceTexts[target]![choiceId]!;
+    if (_choiceTexts.containsKey(key) &&
+        _choiceTexts[key]!.containsKey(choiceId)) {
+      return _choiceTexts[key]![choiceId]!;
     }
     final cId = ConstructIdentifier.fromString(choiceId);
     return cId?.lemma ?? choiceId;
   }
 
-  String? getChoiceEmoji(PracticeTarget target, String choiceId) {
+  String? getChoiceEmoji(String key, String choiceId) {
     if (widget.type == ConstructTypeEnum.morph) return null;
-    return _choiceEmojis[target]?[choiceId];
+    return _choiceEmojis[key]?[choiceId];
   }
 
   String choiceTargetId(String choiceId) =>
@@ -297,7 +296,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       final res = await _fetchActivity(req);
       if (!mounted) return;
 
-      activityTarget.value = req.practiceTarget;
+      activityTarget.value = req.target;
       activityState.value = AsyncState.loaded(res);
     } catch (e) {
       if (!mounted) return;
@@ -311,12 +310,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
     for (final request in requests) {
       final completer = Completer<MultipleChoicePracticeActivityModel>();
-      _queue.add(
-        MapEntry(
-          request.practiceTarget,
-          completer,
-        ),
-      );
+      _queue.add(MapEntry(request.target, completer));
 
       try {
         final res = await _fetchActivity(request);
@@ -346,16 +340,16 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final activityModel = result.result as MultipleChoicePracticeActivityModel;
 
     // Prefetch lemma info for meaning activities before marking ready
-    if (activityModel.activityType == ActivityTypeEnum.lemmaMeaning) {
+    if (activityModel is VocabMeaningPracticeActivityModel) {
       final choices = activityModel.multipleChoiceContent.choices.toList();
-      await _fetchLemmaInfo(activityModel.practiceTarget, choices);
+      await _fetchLemmaInfo(activityModel.storageKey, choices);
     }
 
     return activityModel;
   }
 
   Future<void> _fetchLemmaInfo(
-    PracticeTarget target,
+    String requestKey,
     List<String> choiceIds,
   ) async {
     final texts = <String, String>{};
@@ -375,22 +369,25 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       emojis[id] = res.result!.emoji.firstOrNull;
     }
 
-    _choiceTexts.putIfAbsent(target, () => {});
-    _choiceEmojis.putIfAbsent(target, () => {});
+    _choiceTexts.putIfAbsent(requestKey, () => {});
+    _choiceEmojis.putIfAbsent(requestKey, () => {});
 
-    _choiceTexts[target]!.addAll(texts);
-    _choiceEmojis[target]!.addAll(emojis);
+    _choiceTexts[requestKey]!.addAll(texts);
+    _choiceEmojis[requestKey]!.addAll(emojis);
   }
 
   Future<void> onSelectChoice(
-    ConstructIdentifier choiceConstruct,
     String choiceContent,
   ) async {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
 
     // Update activity record
-    activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
+    PracticeRecordController.onSelectChoice(
+      choiceContent,
+      activity.tokens.first,
+      activity,
+    );
 
     final use = activity.constructUse(choiceContent);
     _sessionLoader.value!.submitAnswer(use);

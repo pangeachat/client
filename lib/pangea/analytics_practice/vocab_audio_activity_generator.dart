@@ -7,7 +7,7 @@ class VocabAudioActivityGenerator {
   static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
   ) async {
-    final token = req.targetTokens.first;
+    final token = req.target.tokens.first;
     final choices =
         await LemmaActivityGenerator.lemmaActivityDistractors(token);
 
@@ -16,7 +16,7 @@ class VocabAudioActivityGenerator {
 
     return MessageActivityResponse(
       activity: VocabAudioPracticeActivityModel(
-        targetTokens: [token],
+        tokens: req.target.tokens,
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
           choices: choicesList.toSet(),

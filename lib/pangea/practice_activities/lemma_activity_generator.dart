@@ -14,15 +14,15 @@ class LemmaActivityGenerator {
   static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
   ) async {
-    debugger(when: kDebugMode && req.targetTokens.length != 1);
+    debugger(when: kDebugMode && req.target.tokens.length != 1);
 
-    final token = req.targetTokens.first;
+    final token = req.target.tokens.first;
     final choices = await lemmaActivityDistractors(token);
 
     // TODO - modify MultipleChoiceActivity flow to allow no correct answer
     return MessageActivityResponse(
       activity: LemmaPracticeActivityModel(
-        targetTokens: [token],
+        tokens: req.target.tokens,
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
           choices: choices.map((c) => c.lemma).toSet(),

@@ -228,12 +228,12 @@ enum ActivityTypeEnum {
         ActivityTypeEnum.morphId,
       ];
 
-  static List<ActivityTypeEnum> get vocabPracticeTypes => [
+  static List<ActivityTypeEnum> get _vocabPracticeTypes => [
         ActivityTypeEnum.lemmaMeaning,
         // ActivityTypeEnum.lemmaAudio,
       ];
 
-  static List<ActivityTypeEnum> get grammarPracticeTypes => [
+  static List<ActivityTypeEnum> get _grammarPracticeTypes => [
         ActivityTypeEnum.grammarCategory,
       ];
 
@@ -242,26 +242,9 @@ enum ActivityTypeEnum {
   ) {
     switch (constructType) {
       case ConstructTypeEnum.vocab:
-        return vocabPracticeTypes;
+        return _vocabPracticeTypes;
       case ConstructTypeEnum.morph:
-        return grammarPracticeTypes;
-    }
-  }
-
-  ConstructTypeEnum get constructType {
-    switch (this) {
-      case ActivityTypeEnum.wordMeaning:
-      case ActivityTypeEnum.wordFocusListening:
-      case ActivityTypeEnum.hiddenWordListening:
-      case ActivityTypeEnum.lemmaId:
-      case ActivityTypeEnum.emoji:
-      case ActivityTypeEnum.messageMeaning:
-      case ActivityTypeEnum.lemmaMeaning:
-      case ActivityTypeEnum.lemmaAudio:
-        return ConstructTypeEnum.vocab;
-      case ActivityTypeEnum.morphId:
-      case ActivityTypeEnum.grammarCategory:
-        return ConstructTypeEnum.morph;
+        return _grammarPracticeTypes;
     }
   }
 }

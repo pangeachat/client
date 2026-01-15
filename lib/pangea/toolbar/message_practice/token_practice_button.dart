@@ -14,11 +14,13 @@ import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_record_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/dotted_border_painter.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/morph_selection.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_controller.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
 const double tokenButtonHeight = 40.0;
@@ -48,11 +50,8 @@ class TokenPracticeButton extends StatelessWidget {
   PracticeTarget? get _activity => controller.practiceTargetForToken(token);
 
   bool get isActivityCompleteOrNullForToken {
-    return _activity?.isCompleteByToken(
-          token,
-          _activity!.morphFeature,
-        ) ==
-        true;
+    if (_activity == null) return true;
+    return PracticeRecordController.isCompleteByToken(_activity!, token);
   }
 
   bool get _isEmpty => controller.isPracticeButtonEmpty(token);
@@ -94,7 +93,8 @@ class TokenPracticeButton extends StatelessWidget {
               ),
             ),
             shimmer: controller.selectedMorph == null &&
-                _activity?.hasAnyCorrectChoices == false,
+                _activity != null &&
+                !PracticeRecordController.hasAnyCorrectChoices(_activity!),
           );
         } else {
           child = _StandardMatchButton(
@@ -257,8 +257,9 @@ class _NoActivityContentButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (practiceMode == MessagePracticeMode.wordEmoji) {
-      final displayEmoji = target?.record.responses
+    if (practiceMode == MessagePracticeMode.wordEmoji && target != null) {
+      final record = PracticeRecordRepo.get(target!);
+      final displayEmoji = record.responses
               .firstWhereOrNull(
                 (res) => res.cId == token.vocabConstructID && res.isCorrect,
               )

@@ -11,14 +11,14 @@ class MorphCategoryActivityGenerator {
   static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
   ) async {
-    if (req.targetMorphFeature == null) {
+    if (req.target.morphFeature == null) {
       throw ArgumentError(
         "MorphCategoryActivityGenerator requires a targetMorphFeature",
       );
     }
 
-    final feature = req.targetMorphFeature!;
-    final morphTag = req.targetTokens.first.getMorphTag(feature);
+    final feature = req.target.morphFeature!;
+    final morphTag = req.target.tokens.first.getMorphTag(feature);
     if (morphTag == null) {
       throw ArgumentError(
         "Token does not have the specified morph feature",
@@ -51,7 +51,7 @@ class MorphCategoryActivityGenerator {
 
     return MessageActivityResponse(
       activity: MorphCategoryPracticeActivityModel(
-        targetTokens: [req.targetTokens.first],
+        tokens: req.target.tokens,
         langCode: req.userL2,
         morphFeature: feature,
         multipleChoiceContent: MultipleChoiceActivity(

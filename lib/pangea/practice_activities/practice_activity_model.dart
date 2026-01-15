@@ -3,30 +3,53 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
 sealed class PracticeActivityModel {
-  final List<PangeaToken> targetTokens;
-  final ActivityTypeEnum activityType;
+  final List<PangeaToken> tokens;
   final String langCode;
 
   const PracticeActivityModel({
-    required this.targetTokens,
+    required this.tokens,
     required this.langCode,
-    required this.activityType,
   });
 
+  String get storageKey =>
+      '${activityType.name}-${tokens.map((e) => e.text.content).join("-")}';
+
   PracticeTarget get practiceTarget => PracticeTarget(
-        tokens: targetTokens,
         activityType: activityType,
+        tokens: tokens,
+        morphFeature: this is MorphPracticeActivityModel
+            ? (this as MorphPracticeActivityModel).morphFeature
+            : null,
       );
+
+  ActivityTypeEnum get activityType {
+    switch (this) {
+      case MorphCategoryPracticeActivityModel():
+        return ActivityTypeEnum.grammarCategory;
+      case VocabAudioPracticeActivityModel():
+        return ActivityTypeEnum.lemmaAudio;
+      case VocabMeaningPracticeActivityModel():
+        return ActivityTypeEnum.lemmaMeaning;
+      case EmojiPracticeActivityModel():
+        return ActivityTypeEnum.emoji;
+      case LemmaPracticeActivityModel():
+        return ActivityTypeEnum.lemmaId;
+      case LemmaMeaningPracticeActivityModel():
+        return ActivityTypeEnum.wordMeaning;
+      case MorphMatchPracticeActivityModel():
+        return ActivityTypeEnum.morphId;
+      case WordListeningPracticeActivityModel():
+        return ActivityTypeEnum.wordFocusListening;
+    }
+  }
 
   factory PracticeActivityModel.fromJson(Map<String, dynamic> json) {
     if (json['lang_code'] is! String) {
@@ -83,7 +106,7 @@ sealed class PracticeActivityModel {
         );
         return MorphCategoryPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           morphFeature: morph!,
           multipleChoiceContent: multipleChoiceContent!,
         );
@@ -94,7 +117,7 @@ sealed class PracticeActivityModel {
         );
         return VocabAudioPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           multipleChoiceContent: multipleChoiceContent!,
         );
       case ActivityTypeEnum.lemmaMeaning:
@@ -104,7 +127,7 @@ sealed class PracticeActivityModel {
         );
         return VocabMeaningPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           multipleChoiceContent: multipleChoiceContent!,
         );
       case ActivityTypeEnum.emoji:
@@ -114,7 +137,7 @@ sealed class PracticeActivityModel {
         );
         return EmojiPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           matchContent: matchContent!,
         );
       case ActivityTypeEnum.lemmaId:
@@ -124,7 +147,7 @@ sealed class PracticeActivityModel {
         );
         return LemmaPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           multipleChoiceContent: multipleChoiceContent!,
         );
       case ActivityTypeEnum.wordMeaning:
@@ -134,7 +157,7 @@ sealed class PracticeActivityModel {
         );
         return LemmaMeaningPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           matchContent: matchContent!,
         );
       case ActivityTypeEnum.morphId:
@@ -148,7 +171,7 @@ sealed class PracticeActivityModel {
         );
         return MorphMatchPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           morphFeature: morph!,
           multipleChoiceContent: multipleChoiceContent!,
         );
@@ -159,7 +182,7 @@ sealed class PracticeActivityModel {
         );
         return WordListeningPracticeActivityModel(
           langCode: langCode,
-          targetTokens: tokens,
+          tokens: tokens,
           matchContent: matchContent!,
         );
       default:
@@ -171,7 +194,7 @@ sealed class PracticeActivityModel {
     return {
       'lang_code': langCode,
       'activity_type': activityType.name,
-      'target_tokens': targetTokens.map((e) => e.toJson()).toList(),
+      'target_tokens': tokens.map((e) => e.toJson()).toList(),
     };
   }
 }
@@ -180,40 +203,18 @@ sealed class MultipleChoicePracticeActivityModel extends PracticeActivityModel {
   final MultipleChoiceActivity multipleChoiceContent;
 
   MultipleChoicePracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
-    required super.activityType,
     required this.multipleChoiceContent,
   });
 
-  bool onMultipleChoiceSelect(
-    ConstructIdentifier choiceConstruct,
-    String choice,
-  ) {
-    if (practiceTarget.isComplete ||
-        practiceTarget.record.alreadyHasMatchResponse(
-          choiceConstruct,
-          choice,
-        )) {
-      // the user has already selected this choice
-      // so we don't want to record it again
-      return false;
-    }
-
-    final bool isCorrect = multipleChoiceContent.isCorrect(choice);
-    practiceTarget.record.addResponse(
-      cId: choiceConstruct,
-      target: practiceTarget,
-      text: choice,
-      score: isCorrect ? 1 : 0,
-    );
-    return isCorrect;
-  }
+  bool isCorrect(String choice) => multipleChoiceContent.isCorrect(choice);
 
   OneConstructUse constructUse(String choiceContent) {
     final correct = multipleChoiceContent.isCorrect(choiceContent);
     final useType =
         correct ? activityType.correctUse : activityType.incorrectUse;
+    final token = tokens.first;
 
     return OneConstructUse(
       useType: useType,
@@ -222,9 +223,9 @@ sealed class MultipleChoicePracticeActivityModel extends PracticeActivityModel {
         roomId: null,
         timeStamp: DateTime.now(),
       ),
-      category: targetTokens.first.pos,
-      lemma: targetTokens.first.lemma.text,
-      form: targetTokens.first.lemma.text,
+      category: token.pos,
+      lemma: token.lemma.text,
+      form: token.lemma.text,
       xp: useType.pointValue,
     );
   }
@@ -241,37 +242,16 @@ sealed class MatchPracticeActivityModel extends PracticeActivityModel {
   final PracticeMatchActivity matchContent;
 
   MatchPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
-    required super.activityType,
     required this.matchContent,
   });
 
-  bool onMatch(
+  bool isCorrect(
     PangeaToken token,
-    PracticeChoice choice,
-  ) {
-    // the user has already selected this choice
-    // so we don't want to record it again
-    if (practiceTarget.isComplete ||
-        practiceTarget.record.alreadyHasMatchResponse(
-          token.vocabConstructID,
-          choice.choiceContent,
-        )) {
-      return false;
-    }
-
-    final answers = matchContent.matchInfo[token.vocabForm];
-    final isCorrect = answers!.contains(choice.choiceContent);
-    practiceTarget.record.addResponse(
-      cId: token.vocabConstructID,
-      target: practiceTarget,
-      text: choice.choiceContent,
-      score: isCorrect ? 1 : 0,
-    );
-
-    return isCorrect;
-  }
+    String choice,
+  ) =>
+      matchContent.matchInfo[token.vocabForm]!.contains(choice);
 
   @override
   Map<String, dynamic> toJson() {
@@ -286,19 +266,15 @@ sealed class MorphPracticeActivityModel
   final MorphFeaturesEnum morphFeature;
 
   MorphPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
-    required super.activityType,
     required super.multipleChoiceContent,
     required this.morphFeature,
   });
 
   @override
-  PracticeTarget get practiceTarget => PracticeTarget(
-        tokens: targetTokens,
-        activityType: activityType,
-        morphFeature: morphFeature,
-      );
+  String get storageKey =>
+      '${activityType.name}-${tokens.map((e) => e.text.content).join("-")}-${morphFeature.name}';
 
   @override
   Map<String, dynamic> toJson() {
@@ -310,20 +286,19 @@ sealed class MorphPracticeActivityModel
 
 class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
   MorphCategoryPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.morphFeature,
     required super.multipleChoiceContent,
-  }) : super(
-          activityType: ActivityTypeEnum.grammarCategory,
-        );
+  });
 
   @override
   OneConstructUse constructUse(String choiceContent) {
     final correct = multipleChoiceContent.isCorrect(choiceContent);
+    final token = tokens.first;
     final useType =
         correct ? activityType.correctUse : activityType.incorrectUse;
-    final tag = targetTokens.first.getMorphTag(morphFeature)!;
+    final tag = token.getMorphTag(morphFeature)!;
 
     return OneConstructUse(
       useType: useType,
@@ -334,7 +309,7 @@ class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
       ),
       category: morphFeature.name,
       lemma: tag,
-      form: targetTokens.first.lemma.form,
+      form: token.lemma.form,
       xp: useType.pointValue,
     );
   }
@@ -342,73 +317,59 @@ class MorphCategoryPracticeActivityModel extends MorphPracticeActivityModel {
 
 class MorphMatchPracticeActivityModel extends MorphPracticeActivityModel {
   MorphMatchPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.morphFeature,
     required super.multipleChoiceContent,
-  }) : super(
-          activityType: ActivityTypeEnum.morphId,
-        );
+  });
 }
 
 class VocabAudioPracticeActivityModel
     extends MultipleChoicePracticeActivityModel {
   VocabAudioPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
-  }) : super(
-          activityType: ActivityTypeEnum.lemmaAudio,
-        );
+  });
 }
 
 class VocabMeaningPracticeActivityModel
     extends MultipleChoicePracticeActivityModel {
   VocabMeaningPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
-  }) : super(
-          activityType: ActivityTypeEnum.lemmaMeaning,
-        );
+  });
 }
 
 class LemmaPracticeActivityModel extends MultipleChoicePracticeActivityModel {
   LemmaPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
-  }) : super(
-          activityType: ActivityTypeEnum.lemmaId,
-        );
+  });
 }
 
 class EmojiPracticeActivityModel extends MatchPracticeActivityModel {
   EmojiPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.matchContent,
-  }) : super(
-          activityType: ActivityTypeEnum.emoji,
-        );
+  });
 }
 
 class LemmaMeaningPracticeActivityModel extends MatchPracticeActivityModel {
   LemmaMeaningPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.matchContent,
-  }) : super(
-          activityType: ActivityTypeEnum.wordMeaning,
-        );
+  });
 }
 
 class WordListeningPracticeActivityModel extends MatchPracticeActivityModel {
   WordListeningPracticeActivityModel({
-    required super.targetTokens,
+    required super.tokens,
     required super.langCode,
     required super.matchContent,
-  }) : super(
-          activityType: ActivityTypeEnum.wordFocusListening,
-        );
+  });
 }
