@@ -73,11 +73,17 @@ class VocabPracticeSessionRepo {
       return dateA.compareTo(dateB);
     });
 
-    return constructs
-        .where((construct) => construct.lemma.isNotEmpty)
-        .take(VocabPracticeConstants.practiceGroupSize)
-        .map((construct) => construct.id)
-        .toList();
+    final Set<String> seemLemmas = {};
+    final targets = <ConstructIdentifier>[];
+    for (final construct in constructs) {
+      if (seemLemmas.contains(construct.lemma)) continue;
+      seemLemmas.add(construct.lemma);
+      targets.add(construct.id);
+      if (targets.length >= VocabPracticeConstants.practiceGroupSize) {
+        break;
+      }
+    }
+    return targets;
   }
 
   static VocabPracticeSessionModel? _getCached() {

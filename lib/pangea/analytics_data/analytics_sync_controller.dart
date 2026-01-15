@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -52,6 +53,13 @@ class AnalyticsSyncController {
 
     if (constructEvents.isEmpty) return;
     await dataService.updateServerAnalytics(constructEvents);
+
+    // Server updates do not usually need to update the UI, since usually they are only
+    // transfering local data to the server. However, if a user if using multiple devices,
+    // we do need to update the UI when new data comes from the server.
+    dataService.updateDispatcher.sendConstructAnalyticsUpdate(
+      AnalyticsUpdate([]),
+    );
   }
 
   Future<void> waitForSync(String analyticsRoomId) async {
