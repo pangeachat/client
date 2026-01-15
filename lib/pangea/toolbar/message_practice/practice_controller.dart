@@ -40,29 +40,18 @@ class PracticeController with ChangeNotifier {
 
   bool? wasCorrectMatch(PracticeChoice choice) {
     if (_activity == null) return false;
-    final record = PracticeRecordController.recordByActivity(_activity!);
-    for (final response in record.responses) {
-      if (response.text == choice.choiceContent && response.isCorrect) {
-        return true;
-      }
-    }
-    for (final response in record.responses) {
-      if (response.text == choice.choiceContent) {
-        return false;
-      }
-    }
-    return null;
+    return PracticeRecordController.wasCorrectMatch(
+      _activity!.practiceTarget,
+      choice,
+    );
   }
 
   bool? wasCorrectChoice(String choice) {
     if (_activity == null) return false;
-    final record = PracticeRecordController.recordByActivity(_activity!);
-    for (final response in record.responses) {
-      if (response.text == choice) {
-        return response.isCorrect;
-      }
-    }
-    return null;
+    return PracticeRecordController.wasCorrectChoice(
+      _activity!.practiceTarget,
+      choice,
+    );
   }
 
   bool get isTotallyDone =>
@@ -107,27 +96,18 @@ class PracticeController with ChangeNotifier {
 
   bool get showChoiceShimmer {
     if (_activity == null) return false;
-    final record = PracticeRecordController.recordByActivity(_activity!);
-
     if (_activity is MorphMatchPracticeActivityModel) {
-      return selectedMorph != null && record.responses.isEmpty;
+      return selectedMorph != null &&
+          !PracticeRecordController.hasResponse(
+            _activity!.practiceTarget,
+          );
     }
 
-    return selectedChoice == null && !record.responses.any((r) => r.isCorrect);
+    return selectedChoice == null &&
+        !PracticeRecordController.hasAnyCorrectChoices(
+          _activity!.practiceTarget,
+        );
   }
-
-  // PracticeTarget? get _target => _activity != null
-  //     ? PracticeTarget(
-  //         activityType: _activity!.activityType,
-  //         tokens: _activity!.tokens,
-  //         morphFeature: _activity is MorphPracticeActivityModel
-  //             ? (_activity as MorphPracticeActivityModel).morphFeature
-  //             : null,
-  //       )
-  //     : null;
-
-  // PracticeRecord? get _record =>
-  //     _target != null ? PracticeRecordRepo.get(_target!) : null;
 
   Future<void> _fetchPracticeSelection() async {
     if (pangeaMessageEvent.messageDisplayRepresentation?.tokens == null) return;
@@ -193,7 +173,6 @@ class PracticeController with ChangeNotifier {
 
   void onMatch(PangeaToken token, PracticeChoice choice) {
     if (_activity == null) return;
-    final record = PracticeRecordController.recordByActivity(_activity!);
     final isCorrect = PracticeRecordController.onSelectChoice(
       choice.choiceContent,
       token,
@@ -209,7 +188,8 @@ class PracticeController with ChangeNotifier {
     // we don't take off points for incorrect emoji matches
     if (_activity is! EmojiPracticeActivityModel || isCorrect) {
       final constructUseType =
-          record.responses.last.useType(_activity!.activityType);
+          PracticeRecordController.lastResponse(_activity!.practiceTarget)!
+              .useType(_activity!.activityType);
 
       final constructs = [
         OneConstructUse(

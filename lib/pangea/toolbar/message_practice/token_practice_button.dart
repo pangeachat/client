@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -14,7 +13,6 @@ import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
-import 'package:fluffychat/pangea/practice_activities/practice_record_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/dotted_border_painter.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
@@ -258,14 +256,10 @@ class _NoActivityContentButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (practiceMode == MessagePracticeMode.wordEmoji && target != null) {
-      final record = PracticeRecordRepo.get(target!);
-      final displayEmoji = record.responses
-              .firstWhereOrNull(
-                (res) => res.cId == token.vocabConstructID && res.isCorrect,
-              )
-              ?.text ??
-          token.vocabConstructID.userSetEmoji ??
-          '';
+      final displayEmoji =
+          PracticeRecordController.correctResponse(target!, token)?.text ??
+              token.vocabConstructID.userSetEmoji ??
+              '';
       return Text(
         displayEmoji,
         style: emojiStyle,

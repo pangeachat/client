@@ -21,8 +21,6 @@ class MatchActivityCard extends StatelessWidget {
     required this.controller,
   });
 
-  // ActivityTypeEnum get activityType => currentActivity.activityType;
-
   Widget choiceDisplayContent(
     BuildContext context,
     String choice,
