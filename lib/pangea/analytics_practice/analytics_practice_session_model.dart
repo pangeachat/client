@@ -12,15 +12,15 @@ class AnalyticsPracticeSessionModel {
   final String userL1;
   final String userL2;
 
-  VocabPracticeSessionState state;
+  AnalyticsPracticeSessionState state;
 
   AnalyticsPracticeSessionModel({
     required this.startedAt,
     required this.practiceTargets,
     required this.userL1,
     required this.userL2,
-    VocabPracticeSessionState? state,
-  }) : state = state ?? const VocabPracticeSessionState();
+    AnalyticsPracticeSessionState? state,
+  }) : state = state ?? const AnalyticsPracticeSessionState();
 
   int get _availableActivities => min(
         AnalyticsPracticeConstants.practiceGroupSize,
@@ -64,7 +64,7 @@ class AnalyticsPracticeSessionModel {
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,
-      state: VocabPracticeSessionState.fromJson(
+      state: AnalyticsPracticeSessionState.fromJson(
         json,
       ),
     );
@@ -81,13 +81,13 @@ class AnalyticsPracticeSessionModel {
   }
 }
 
-class VocabPracticeSessionState {
+class AnalyticsPracticeSessionState {
   final List<OneConstructUse> completedUses;
   final int currentIndex;
   final bool finished;
   final int elapsedSeconds;
 
-  const VocabPracticeSessionState({
+  const AnalyticsPracticeSessionState({
     this.completedUses = const [],
     this.currentIndex = 0,
     this.finished = false,
@@ -139,13 +139,13 @@ class VocabPracticeSessionState {
         xp: ConstructUseTypeEnum.bonus.pointValue,
       );
 
-  VocabPracticeSessionState copyWith({
+  AnalyticsPracticeSessionState copyWith({
     List<OneConstructUse>? completedUses,
     int? currentIndex,
     bool? finished,
     int? elapsedSeconds,
   }) {
-    return VocabPracticeSessionState(
+    return AnalyticsPracticeSessionState(
       completedUses: completedUses ?? this.completedUses,
       currentIndex: currentIndex ?? this.currentIndex,
       finished: finished ?? this.finished,
@@ -162,8 +162,8 @@ class VocabPracticeSessionState {
     };
   }
 
-  factory VocabPracticeSessionState.fromJson(Map<String, dynamic> json) {
-    return VocabPracticeSessionState(
+  factory AnalyticsPracticeSessionState.fromJson(Map<String, dynamic> json) {
+    return AnalyticsPracticeSessionState(
       completedUses: (json['completedUses'] as List<dynamic>?)
               ?.map((e) => OneConstructUse.fromJson(e))
               .whereType<OneConstructUse>()
