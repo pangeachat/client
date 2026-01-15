@@ -53,10 +53,10 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
     _loadCourses();
   }
 
-  void setTargetLanguageFilter(LanguageModel? language, {bool reload = true}) {
+  void setTargetLanguageFilter(LanguageModel? language) {
     if (targetLanguageFilter?.langCodeShort == language?.langCodeShort) return;
     setState(() => targetLanguageFilter = language);
-    if (reload) _loadCourses();
+    _loadCourses();
   }
 
   List<PublicCoursesChunk> get filteredCourses {
@@ -95,13 +95,8 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
     return filtered;
   }
 
-  Future<void> _loadCourses() async {
+  Future<void> _loadPublicSpaces() async {
     try {
-      setState(() {
-        loading = true;
-        error = null;
-      });
-
       final resp = await Matrix.of(context).client.requestPublicCourses(
             since: nextBatch,
           );
@@ -122,6 +117,21 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
           'nextBatch': nextBatch,
         },
       );
+    }
+  }
+
+  Future<void> _loadCourses() async {
+    setState(() {
+      loading = true;
+      error = null;
+    });
+
+    await _loadPublicSpaces();
+
+    int timesLoaded = 0;
+    while (error == null && timesLoaded < 5 && nextBatch != null) {
+      await _loadPublicSpaces();
+      timesLoaded++;
     }
 
     try {
