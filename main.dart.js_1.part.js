@@ -992,6 +992,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasKnocked$1(user) {
       return user + " \u8bf7\u6c42\u4e86\u52a0\u5165\u804a\u5929\u5ba4\u7684\u9080\u8bf7";
     },
+    get$knock() {
+      return "\u8bf7\u6c42";
+    },
     countFiles$1(count) {
       return "" + count + " \u4e2a\u6587\u4ef6";
     },
@@ -1477,6 +1480,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$approve() {
       return "\u6279\u51c6";
+    },
+    get$youHaveKnocked() {
+      return "\u4f60\u5df2\u8bf7\u6c42\u52a0\u5165";
+    },
+    get$pleaseWaitUntilInvited() {
+      return "\u5728\u6765\u81ea\u8be5\u804a\u5929\u5ba4\u7684\u67d0\u4eba\u9080\u8bf7\u4f60\u4e4b\u524d\u8bf7\u7b49\u5f85\u3002";
     },
     get$commandHint_logout() {
       return "\u6ce8\u9500\u5f53\u524d\u8bbe\u5907";
@@ -6301,6 +6310,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " \u6572\u9580\u4e86";
     },
+    get$knock() {
+      return "\u6572\u9580";
+    },
     countFiles$1(count) {
       return "" + count + " \u500b\u6587\u4ef6";
     },
@@ -6786,6 +6798,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$approve() {
       return "\u6838\u51c6";
+    },
+    get$youHaveKnocked() {
+      return "\u60a8\u5df2\u8acb\u6c42\u52a0\u5165";
+    },
+    get$pleaseWaitUntilInvited() {
+      return "\u76f4\u5230\u804a\u5929\u5ba4\u88e1\u6709\u4eba\u9080\u8acb\u60a8\u524d\uff0c\u8acb\u7b49\u5019\u3002";
     },
     get$commandHint_logout() {
       return "\u767b\u51fa\u60a8\u7684\u7576\u524d\u8a2d\u5099";
@@ -10647,7 +10665,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8XLX9lVbs2O2mCVgKYDZUktvUBw="] = d.current;
+  d["lVCEM//el5XLIuSQsjeO5M41dBA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

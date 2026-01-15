@@ -997,6 +997,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bateu na porta";
     },
+    get$knock() {
+      return "Bater na porta";
+    },
     countFiles$1(count) {
       return "" + count + " arquivos";
     },
@@ -1482,6 +1485,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$approve() {
       return "Aprovar";
+    },
+    get$youHaveKnocked() {
+      return "Voc\xea bateu";
+    },
+    get$pleaseWaitUntilInvited() {
+      return string$.Por_faag;
     },
     get$commandHint_logout() {
       return "Sair da sua sess\xe3o neste dispositivo";
@@ -3800,7 +3809,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Infelizmente, sua plataforma n\xe3o \xe9 suportada atualmente para esse recurso. Fique atento para mais desenvolvimentos!";
     },
     get$pleaseUpdateApp() {
-      return string$.Por_faa;
+      return string$.Por_faat;
     },
     get$chooseEmojiInstructionsBody() {
       return string$.Combine;
@@ -6306,6 +6315,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bateu na porta";
     },
+    get$knock() {
+      return "Bater na porta";
+    },
     countFiles$1(count) {
       return "" + count + " arquivos";
     },
@@ -6791,6 +6803,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$approve() {
       return "Aprovar";
+    },
+    get$youHaveKnocked() {
+      return "Voc\xea bateu";
+    },
+    get$pleaseWaitUntilInvited() {
+      return string$.Por_faag;
     },
     get$commandHint_logout() {
       return "Fazer logout do seu dispositivo atual";
@@ -9109,7 +9127,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Infelizmente, sua plataforma n\xe3o \xe9 suportada atualmente para esse recurso. Fique atento para novos desenvolvimentos!";
     },
     get$pleaseUpdateApp() {
-      return string$.Por_faa;
+      return string$.Por_faat;
     },
     get$chooseEmojiInstructionsBody() {
       return string$.Combine;
@@ -11612,6 +11630,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bateu na porta";
     },
+    get$knock() {
+      return "Bater na porta";
+    },
     countFiles$1(count) {
       return "" + count + " ficheiros";
     },
@@ -12097,6 +12118,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$approve() {
       return "Aprovar";
+    },
+    get$youHaveKnocked() {
+      return "Voc\xea bateu";
+    },
+    get$pleaseWaitUntilInvited() {
+      return string$.Por_faag;
     },
     get$commandHint_logout() {
       return "Sair da sua conta neste dispositivo";
@@ -14415,7 +14442,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Infelizmente, a sua plataforma n\xe3o \xe9 atualmente suportada para este recurso. Fique atento a novos desenvolvimentos!";
     },
     get$pleaseUpdateApp() {
-      return string$.Por_faa;
+      return string$.Por_faat;
     },
     get$chooseEmojiInstructionsBody() {
       return "Combine emojis com as palavras que melhor os representam. N\xe3o se preocupe! N\xe3o h\xe1 penaliza\xe7\xf5es por discordar. \ud83d\ude05";
@@ -16090,7 +16117,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Permis: "Permiss\xe3o negada. Ative as permiss\xf5es de grava\xe7\xe3o para gravar mensagens de \xe1udio.",
     Permite: "Permite que o aplicativo gere sa\xedda de texto para fala para trechos de texto no seu idioma de destino.",
     Permiti: "Permitir que meu perfil seja encontrado na busca",
-    Por_faa: "Por favor, atualize o aplicativo para continuar.",
+    Por_faag: "Por favor, aguarde at\xe9 que algu\xe9m da sala o convide.",
+    Por_faat: "Por favor, atualize o aplicativo para continuar.",
     Por_fac: "Por favor, confirme seu nome de usu\xe1rio no Pangea Chat para excluir sua conta.",
     Por_faei: "Por favor, escolha idiomas base e alvo diferentes",
     Por_faeu: "Por favor, escolha um papel predefinido abaixo ou insira um n\xedvel de permiss\xe3o personalizado entre 0 e 100.",
@@ -16144,7 +16172,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0aOaL8OzqVQvHcno13PPJhba/z0="] = d.current;
+  d["BdzFej5HdP2XpIQCNHl8qkJ4M0k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map
