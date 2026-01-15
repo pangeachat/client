@@ -163,6 +163,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   String getChoiceText(PracticeTarget target, String choiceId) {
+    if (widget.type == ConstructTypeEnum.morph) {
+      return choiceId;
+    }
     if (_choiceTexts.containsKey(target) &&
         _choiceTexts[target]!.containsKey(choiceId)) {
       return _choiceTexts[target]![choiceId]!;
@@ -171,8 +174,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     return cId?.lemma ?? choiceId;
   }
 
-  String? getChoiceEmoji(PracticeTarget target, String choiceId) =>
-      _choiceEmojis[target]?[choiceId];
+  String? getChoiceEmoji(PracticeTarget target, String choiceId) {
+    if (widget.type == ConstructTypeEnum.morph) return null;
+    return _choiceEmojis[target]?[choiceId];
+  }
 
   String choiceTargetId(String choiceId) =>
       '${widget.type.name}-choice-card-${choiceId.replaceAll(' ', '_')}';

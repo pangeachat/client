@@ -132,6 +132,7 @@ class AnalyticsPracticeSessionRepo {
           break;
         }
 
+        if (use.lemma.isEmpty) continue;
         final form = use.form;
         if (seenForms.contains(form) || form == null) {
           continue;

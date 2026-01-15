@@ -45,9 +45,9 @@ class MorphCategoryActivityGenerator {
         )
         .toList();
 
-    possibleDistractors.shuffle();
-    final choices = possibleDistractors.take(3).toSet();
+    final choices = possibleDistractors.take(3).toList();
     choices.add(morphTag);
+    choices.shuffle();
 
     return MessageActivityResponse(
       activity: MorphCategoryPracticeActivityModel(
@@ -55,7 +55,7 @@ class MorphCategoryActivityGenerator {
         langCode: req.userL2,
         morphFeature: feature,
         multipleChoiceContent: MultipleChoiceActivity(
-          choices: choices,
+          choices: choices.toSet(),
           answers: {morphTag},
         ),
       ),

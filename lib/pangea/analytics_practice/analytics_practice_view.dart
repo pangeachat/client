@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dar
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/meaning_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/completed_activity_session_view.dart';
 import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart';
@@ -122,7 +123,7 @@ class _AnalyticsActivityView extends StatelessWidget {
                   valueListenable: controller.activityTarget,
                   builder: (context, target, __) => target != null
                       ? Text(
-                          target.promptText(),
+                          target.promptText(context),
                           textAlign: TextAlign.center,
                           style:
                               Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -333,6 +334,19 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+        );
+
+      case ActivityTypeEnum.grammarCategory:
+        return GrammarChoiceCard(
+          key: ValueKey(
+            '${constructId.string}_${activityType.name}_grammar_$choiceId',
+          ),
+          choiceId: choiceId,
+          targetId: targetId,
+          feature: (activity as MorphPracticeActivityModel).morphFeature,
+          tag: choiceText,
+          onPressed: onPressed,
+          isCorrect: isCorrect,
         );
 
       default:

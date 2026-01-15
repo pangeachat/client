@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -165,10 +167,13 @@ class PracticeTarget {
     return false;
   }
 
-  String promptText() {
+  String promptText(BuildContext context) {
     switch (activityType) {
       case ActivityTypeEnum.grammarCategory:
-        return "${tokens.first.vocabConstructID.lemma}: ${morphFeature!.name}";
+        return L10n.of(context).whatIsTheMorphTag(
+          morphFeature!.getDisplayCopy(context),
+          tokens.first.text.content,
+        );
       default:
         return tokens.first.vocabConstructID.lemma;
     }
