@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_req
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/spaces/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicCoursesPage extends StatefulWidget {
@@ -67,8 +68,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
                         r.id == c.room.roomId &&
                         r.membership == Membership.join,
                   ) &&
-              coursePlans.containsKey(c.courseId) &&
-              c.room.joinRule == 'public',
+              coursePlans.containsKey(c.courseId),
         )
         .toList();
 
@@ -82,6 +82,15 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
         },
       ).toList();
     }
+
+    // sort by join rule, with knock rooms at the end
+    filtered.sort((a, b) {
+      final aKnock = a.room.joinRule == JoinRules.knock.name;
+      final bKnock = b.room.joinRule == JoinRules.knock.name;
+      if (aKnock && !bKnock) return 1;
+      if (!aKnock && bKnock) return -1;
+      return 0;
+    });
 
     return filtered;
   }
@@ -333,6 +342,39 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
                                       style: theme.textTheme.bodyMedium,
                                     ),
                                   ],
+                                  const SizedBox(height: 12.0),
+                                  HoverBuilder(
+                                    builder: (context, hovered) =>
+                                        ElevatedButton(
+                                      onPressed: () => context.go(
+                                        '/${widget.route}/course/public/$courseId',
+                                        extra: roomChunk,
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: theme
+                                            .colorScheme.primaryContainer
+                                            .withAlpha(hovered ? 255 : 200),
+                                        foregroundColor: theme
+                                            .colorScheme.onPrimaryContainer,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            roomChunk.joinRule ==
+                                                    JoinRules.knock.name
+                                                ? L10n.of(context).knock
+                                                : L10n.of(context).join,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),

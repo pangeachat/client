@@ -283,7 +283,8 @@ class SelectedCourseView extends StatelessWidget {
                                     ),
                                     child: Row(
                                       spacing: 8.0,
-                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         const Icon(Icons.map_outlined),
                                         Text(

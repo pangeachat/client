@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum SelectedCourseMode { launch, addToSpace, join }
@@ -74,7 +75,9 @@ class SelectedCourseController extends State<SelectedCourse>
       case SelectedCourseMode.addToSpace:
         return L10n.of(context).addCoursePlan;
       case SelectedCourseMode.join:
-        return L10n.of(context).joinWithClassCode;
+        return widget.roomChunk?.joinRule == JoinRules.knock.name
+            ? L10n.of(context).knock
+            : L10n.of(context).join;
     }
   }
 
@@ -152,16 +155,36 @@ class SelectedCourseController extends State<SelectedCourse>
     }
 
     final client = Matrix.of(context).client;
-    final roomId = await client.joinRoom(
-      widget.roomChunk!.roomId,
-    );
-
-    final room = client.getRoomById(roomId);
-    if (room == null || room.membership != Membership.join) {
-      await client.waitForRoomInSync(roomId, join: true);
+    final r = client.getRoomById(widget.roomChunk!.roomId);
+    if (r != null && r.membership == Membership.join) {
+      if (mounted) {
+        context.go("/rooms/spaces/${r.id}/details");
+      }
+      return;
     }
 
-    if (client.getRoomById(roomId) == null) {
+    final knock = widget.roomChunk!.joinRule == JoinRules.knock.name;
+    final roomId = widget.roomChunk != null && knock
+        ? await client.knockRoom(widget.roomChunk!.roomId)
+        : await client.joinRoom(widget.roomChunk!.roomId);
+
+    Room? room = client.getRoomById(roomId);
+    if (!knock && room == null) {
+      await client.waitForRoomInSync(roomId);
+      room = client.getRoomById(roomId);
+    }
+
+    if (knock && room == null) {
+      Navigator.of(context).pop();
+      await showOkAlertDialog(
+        context: context,
+        title: L10n.of(context).youHaveKnocked,
+        message: L10n.of(context).pleaseWaitUntilInvited,
+      );
+      return;
+    }
+
+    if (room == null) {
       throw Exception("Failed to join room");
     }
 
