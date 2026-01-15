@@ -82,15 +82,10 @@ class PracticeController with ChangeNotifier {
       return target == null;
     }
 
-    final morph = _activity is MorphPracticeActivityModel
-        ? (_activity as MorphPracticeActivityModel).morphFeature
-        : null;
-
     return target == null ||
         PracticeRecordController.isCompleteByToken(
           target,
           token,
-          morph,
         );
   }
 

@@ -1,13 +1,6 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
@@ -33,7 +26,7 @@ class PracticeRecordController {
   ) {
     final record = _recordByTarget(target);
     return record.responses.firstWhereOrNull(
-      (res) => res.cId == token.vocabConstructID && res.isCorrect,
+      (res) => res.cId == target.targetTokenConstructID(token) && res.isCorrect,
     );
   }
 
@@ -75,41 +68,20 @@ class PracticeRecordController {
     }
 
     return target.tokens.every(
-      (t) => record.responses
-          .any((res) => res.cId == t.vocabConstructID && res.isCorrect),
+      (t) => record.responses.any(
+        (res) => res.cId == target.targetTokenConstructID(t) && res.isCorrect,
+      ),
     );
   }
 
   static bool isCompleteByToken(
     PracticeTarget target,
-    PangeaToken token, [
-    MorphFeaturesEnum? morph,
-  ]) {
-    final ConstructIdentifier? cId =
-        morph == null ? token.vocabConstructID : token.morphIdByFeature(morph);
-
-    if (cId == null) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        m: "isCompleteByToken: cId is null for token ${token.text.content}",
-        data: {
-          "t": token.toJson(),
-          "morph": morph?.name,
-        },
-      );
-      return false;
-    }
-
-    final record = _recordByTarget(target);
-    if (target.activityType == ActivityTypeEnum.morphId) {
-      return record.responses.any(
-        (res) => res.cId == token.morphIdByFeature(morph!) && res.isCorrect,
-      );
-    }
-
-    return record.responses.any(
-      (res) => res.cId == token.vocabConstructID && res.isCorrect,
-    );
+    PangeaToken token,
+  ) {
+    final cId = target.targetTokenConstructID(token);
+    return _recordByTarget(target).responses.any(
+          (res) => res.cId == cId && res.isCorrect,
+        );
   }
 
   static bool hasAnyCorrectChoices(PracticeTarget target) {
@@ -122,12 +94,11 @@ class PracticeRecordController {
     PangeaToken token,
     PracticeActivityModel activity,
   ) {
-    final record = _recordByTarget(activity.practiceTarget);
-    if (isCompleteByTarget(activity.practiceTarget) ||
-        record.alreadyHasMatchResponse(
-          token.vocabConstructID,
-          choice,
-        )) {
+    final target = activity.practiceTarget;
+    final record = _recordByTarget(target);
+    final cId = target.targetTokenConstructID(token);
+    if (isCompleteByTarget(target) ||
+        record.alreadyHasMatchResponse(cId, choice)) {
       return false;
     }
 
@@ -137,8 +108,8 @@ class PracticeRecordController {
     };
 
     record.addResponse(
-      cId: token.vocabConstructID,
-      target: activity.practiceTarget,
+      cId: cId,
+      target: target,
       text: choice,
       score: isCorrect ? 1 : 0,
     );

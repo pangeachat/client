@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -94,5 +95,13 @@ class PracticeTarget {
       default:
         return tokens.first.vocabConstructID.lemma;
     }
+  }
+
+  ConstructIdentifier targetTokenConstructID(PangeaToken token) {
+    final defaultID = token.vocabConstructID;
+    final ConstructIdentifier? cId = morphFeature == null
+        ? defaultID
+        : token.morphIdByFeature(morphFeature!);
+    return cId ?? defaultID;
   }
 }
