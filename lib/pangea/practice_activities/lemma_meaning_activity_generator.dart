@@ -4,7 +4,6 @@ import 'package:async/async.dart';
 
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
@@ -16,7 +15,7 @@ class LemmaMeaningActivityGenerator {
     required Map<String, dynamic> messageInfo,
   }) async {
     final List<Future<Result<LemmaInfoResponse>>> lemmaInfoFutures = req
-        .targetTokens
+        .target.tokens
         .map((token) => token.vocabConstructID.getLemmaInfo(messageInfo))
         .toList();
 
@@ -28,14 +27,13 @@ class LemmaMeaningActivityGenerator {
     }
 
     final Map<ConstructForm, List<String>> matchInfo = Map.fromIterables(
-      req.targetTokens.map((token) => token.vocabForm),
+      req.target.tokens.map((token) => token.vocabForm),
       lemmaInfos.map((lemmaInfo) => [lemmaInfo.asValue!.value.meaning]),
     );
 
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
-        activityType: ActivityTypeEnum.wordMeaning,
-        targetTokens: req.targetTokens,
+      activity: LemmaMeaningPracticeActivityModel(
+        tokens: req.target.tokens,
         langCode: req.userL2,
         matchContent: PracticeMatchActivity(
           matchInfo: matchInfo,

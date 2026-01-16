@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/meaning_choice_card.dart';
+import 'package:fluffychat/pangea/analytics_practice/completed_activity_session_view.dart';
+import 'package:fluffychat/pangea/analytics_practice/practice_timer_widget.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -10,20 +19,13 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/meaning_choice_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/completed_activity_session_view.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_timer_widget.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class VocabPracticeView extends StatelessWidget {
-  final VocabPracticeState controller;
+class AnalyticsPracticeView extends StatelessWidget {
+  final AnalyticsPracticeState controller;
 
-  const VocabPracticeView(this.controller, {super.key});
+  const AnalyticsPracticeView(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +57,8 @@ class VocabPracticeView extends StatelessWidget {
             ValueListenableBuilder(
               valueListenable: controller.sessionState,
               builder: (context, state, __) {
-                if (state is AsyncLoaded<VocabPracticeSessionModel>) {
-                  return VocabTimerWidget(
+                if (state is AsyncLoaded<AnalyticsPracticeSessionModel>) {
+                  return PracticeTimerWidget(
                     key: ValueKey(state.value.startedAt),
                     initialSeconds: state.value.state.elapsedSeconds,
                     onTimeUpdate: controller.updateElapsedTime,
@@ -81,12 +83,12 @@ class VocabPracticeView extends StatelessWidget {
             valueListenable: controller.sessionState,
             builder: (context, state, __) {
               return switch (state) {
-                AsyncError<VocabPracticeSessionModel>(:final error) =>
+                AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
                   ErrorIndicator(message: error.toString()),
-                AsyncLoaded<VocabPracticeSessionModel>(:final value) =>
+                AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
                   value.isComplete
                       ? CompletedActivitySessionView(state.value, controller)
-                      : _VocabActivityView(controller),
+                      : _AnalyticsActivityView(controller),
                 _ => loading,
               };
             },
@@ -97,10 +99,10 @@ class VocabPracticeView extends StatelessWidget {
   }
 }
 
-class _VocabActivityView extends StatelessWidget {
-  final VocabPracticeState controller;
+class _AnalyticsActivityView extends StatelessWidget {
+  final AnalyticsPracticeState controller;
 
-  const _VocabActivityView(
+  const _AnalyticsActivityView(
     this.controller,
   );
 
@@ -123,13 +125,13 @@ class _VocabActivityView extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: ValueListenableBuilder(
-                  valueListenable: controller.activityConstructId,
-                  builder: (context, constructId, __) => constructId != null
+                  valueListenable: controller.activityTarget,
+                  builder: (context, target, __) => target != null
                       ? Column(
                           spacing: 12.0,
                           children: [
                             Text(
-                              constructId.lemma,
+                              target.promptText(context),
                               textAlign: TextAlign.center,
                               style: Theme.of(context)
                                   .textTheme
@@ -138,12 +140,15 @@ class _VocabActivityView extends StatelessWidget {
                                     fontWeight: FontWeight.bold,
                                   ),
                             ),
-                            PhoneticTranscriptionWidget(
-                              text: constructId.lemma,
-                              textLanguage: MatrixState
-                                  .pangeaController.userController.userL2!,
-                              style: const TextStyle(fontSize: 14.0),
-                            ),
+                            if (controller.widget.type ==
+                                ConstructTypeEnum.vocab)
+                              PhoneticTranscriptionWidget(
+                                text:
+                                    target.tokens.first.vocabConstructID.lemma,
+                                textLanguage: MatrixState
+                                    .pangeaController.userController.userL2!,
+                                style: const TextStyle(fontSize: 14.0),
+                              ),
                           ],
                         )
                       : const SizedBox(),
@@ -153,10 +158,10 @@ class _VocabActivityView extends StatelessWidget {
                 flex: 2,
                 child: Center(
                   child: ValueListenableBuilder(
-                    valueListenable: controller.activityConstructId,
-                    builder: (context, constructId, __) => constructId != null
+                    valueListenable: controller.activityTarget,
+                    builder: (context, target, __) => target != null
                         ? _ExampleMessageWidget(
-                            controller.getExampleMessage(constructId),
+                            controller.getExampleMessage(target),
                           )
                         : const SizedBox(),
                   ),
@@ -216,7 +221,7 @@ class _ExampleMessageWidget extends StatelessWidget {
 }
 
 class _ActivityChoicesWidget extends StatelessWidget {
-  final VocabPracticeState controller;
+  final AnalyticsPracticeState controller;
 
   const _ActivityChoicesWidget(
     this.controller,
@@ -228,14 +233,15 @@ class _ActivityChoicesWidget extends StatelessWidget {
       valueListenable: controller.activityState,
       builder: (context, state, __) {
         return switch (state) {
-          AsyncLoading<PracticeActivityModel>() => const Center(
+          AsyncLoading<MultipleChoicePracticeActivityModel>() => const Center(
               child: SizedBox(
                 width: 24,
                 height: 24,
                 child: CircularProgressIndicator.adaptive(),
               ),
             ),
-          AsyncError<PracticeActivityModel>(:final error) => Column(
+          AsyncError<MultipleChoicePracticeActivityModel>(:final error) =>
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 //allow try to reload activity in case of error
@@ -248,12 +254,10 @@ class _ActivityChoicesWidget extends StatelessWidget {
                 ),
               ],
             ),
-          AsyncLoaded<PracticeActivityModel>(:final value) => LayoutBuilder(
+          AsyncLoaded<MultipleChoicePracticeActivityModel>(:final value) =>
+            LayoutBuilder(
               builder: (context, constraints) {
-                final choices = controller.filteredChoices(
-                  value.practiceTarget,
-                  value.multipleChoiceContent!,
-                );
+                final choices = controller.filteredChoices(value);
                 final constrainedHeight =
                     constraints.maxHeight.clamp(0.0, 400.0);
                 final cardHeight = (constrainedHeight / (choices.length + 1))
@@ -272,7 +276,6 @@ class _ActivityChoicesWidget extends StatelessWidget {
                                 controller.choiceTargetId(choice.choiceId),
                             choiceId: choice.choiceId,
                             onPressed: () => controller.onSelectChoice(
-                              value.targetTokens.first.vocabConstructID,
                               choice.choiceId,
                             ),
                             cardHeight: cardHeight,
@@ -298,7 +301,7 @@ class _ActivityChoicesWidget extends StatelessWidget {
 }
 
 class _ChoiceCard extends StatelessWidget {
-  final PracticeActivityModel activity;
+  final MultipleChoicePracticeActivityModel activity;
   final String choiceId;
   final String targetId;
   final VoidCallback onPressed;
@@ -319,9 +322,9 @@ class _ChoiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isCorrect = activity.multipleChoiceContent!.isCorrect(choiceId);
+    final isCorrect = activity.multipleChoiceContent.isCorrect(choiceId);
     final activityType = activity.activityType;
-    final constructId = activity.targetTokens.first.vocabConstructID;
+    final constructId = activity.tokens.first.vocabConstructID;
 
     switch (activity.activityType) {
       case ActivityTypeEnum.lemmaMeaning:
@@ -348,6 +351,19 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+        );
+
+      case ActivityTypeEnum.grammarCategory:
+        return GrammarChoiceCard(
+          key: ValueKey(
+            '${constructId.string}_${activityType.name}_grammar_$choiceId',
+          ),
+          choiceId: choiceId,
+          targetId: targetId,
+          feature: (activity as MorphPracticeActivityModel).morphFeature,
+          tag: choiceText,
+          onPressed: onPressed,
+          isCorrect: isCorrect,
         );
 
       default:

@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class VocabTimerWidget extends StatefulWidget {
+class PracticeTimerWidget extends StatefulWidget {
   final int initialSeconds;
   final ValueChanged<int> onTimeUpdate;
   final bool isRunning;
 
-  const VocabTimerWidget({
+  const PracticeTimerWidget({
     required this.initialSeconds,
     required this.onTimeUpdate,
     this.isRunning = true,
@@ -15,10 +15,10 @@ class VocabTimerWidget extends StatefulWidget {
   });
 
   @override
-  VocabTimerWidgetState createState() => VocabTimerWidgetState();
+  PracticeTimerWidgetState createState() => PracticeTimerWidgetState();
 }
 
-class VocabTimerWidgetState extends State<VocabTimerWidget> {
+class PracticeTimerWidgetState extends State<PracticeTimerWidget> {
   final Stopwatch _stopwatch = Stopwatch();
   late int _initialSeconds;
   Timer? _timer;
@@ -33,7 +33,7 @@ class VocabTimerWidgetState extends State<VocabTimerWidget> {
   }
 
   @override
-  void didUpdateWidget(VocabTimerWidget oldWidget) {
+  void didUpdateWidget(PracticeTimerWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.isRunning && !widget.isRunning) {
       _stopTimer();

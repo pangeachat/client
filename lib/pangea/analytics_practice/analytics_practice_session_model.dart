@@ -2,35 +2,28 @@ import 'dart:math';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
 
-class VocabPracticeSessionModel {
+class AnalyticsPracticeSessionModel {
   final DateTime startedAt;
   final List<PracticeTarget> practiceTargets;
   final String userL1;
   final String userL2;
 
-  VocabPracticeSessionState state;
+  AnalyticsPracticeSessionState state;
 
-  VocabPracticeSessionModel({
+  AnalyticsPracticeSessionModel({
     required this.startedAt,
     required this.practiceTargets,
     required this.userL1,
     required this.userL2,
-    VocabPracticeSessionState? state,
-  })  : assert(
-          practiceTargets.every(
-            (t) => {ActivityTypeEnum.lemmaMeaning, ActivityTypeEnum.lemmaAudio}
-                .contains(t.activityType),
-          ),
-        ),
-        state = state ?? const VocabPracticeSessionState();
+    AnalyticsPracticeSessionState? state,
+  }) : state = state ?? const AnalyticsPracticeSessionState();
 
   int get _availableActivities => min(
-        VocabPracticeConstants.practiceGroupSize,
+        AnalyticsPracticeConstants.practiceGroupSize,
         practiceTargets.length,
       );
 
@@ -45,9 +38,7 @@ class VocabPracticeSessionModel {
         userL1: userL1,
         userL2: userL2,
         activityQualityFeedback: null,
-        targetTokens: target.tokens,
-        targetType: target.activityType,
-        targetMorphFeature: null,
+        target: target,
       );
     }).toList();
   }
@@ -64,8 +55,8 @@ class VocabPracticeSessionModel {
         completedUses: [...state.completedUses, use],
       );
 
-  factory VocabPracticeSessionModel.fromJson(Map<String, dynamic> json) {
-    return VocabPracticeSessionModel(
+  factory AnalyticsPracticeSessionModel.fromJson(Map<String, dynamic> json) {
+    return AnalyticsPracticeSessionModel(
       startedAt: DateTime.parse(json['startedAt'] as String),
       practiceTargets: (json['practiceTargets'] as List<dynamic>)
           .map((e) => PracticeTarget.fromJson(e))
@@ -73,7 +64,7 @@ class VocabPracticeSessionModel {
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,
-      state: VocabPracticeSessionState.fromJson(
+      state: AnalyticsPracticeSessionState.fromJson(
         json,
       ),
     );
@@ -90,13 +81,13 @@ class VocabPracticeSessionModel {
   }
 }
 
-class VocabPracticeSessionState {
+class AnalyticsPracticeSessionState {
   final List<OneConstructUse> completedUses;
   final int currentIndex;
   final bool finished;
   final int elapsedSeconds;
 
-  const VocabPracticeSessionState({
+  const AnalyticsPracticeSessionState({
     this.completedUses = const [],
     this.currentIndex = 0,
     this.finished = false,
@@ -115,7 +106,7 @@ class VocabPracticeSessionState {
   bool get _giveAccuracyBonus => accuracy >= 100.0;
 
   bool get _giveTimeBonus =>
-      elapsedSeconds <= VocabPracticeConstants.timeForBonus;
+      elapsedSeconds <= AnalyticsPracticeConstants.timeForBonus;
 
   int get bonusXP => accuracyBonusXP + timeBonusXP;
 
@@ -148,13 +139,13 @@ class VocabPracticeSessionState {
         xp: ConstructUseTypeEnum.bonus.pointValue,
       );
 
-  VocabPracticeSessionState copyWith({
+  AnalyticsPracticeSessionState copyWith({
     List<OneConstructUse>? completedUses,
     int? currentIndex,
     bool? finished,
     int? elapsedSeconds,
   }) {
-    return VocabPracticeSessionState(
+    return AnalyticsPracticeSessionState(
       completedUses: completedUses ?? this.completedUses,
       currentIndex: currentIndex ?? this.currentIndex,
       finished: finished ?? this.finished,
@@ -171,8 +162,8 @@ class VocabPracticeSessionState {
     };
   }
 
-  factory VocabPracticeSessionState.fromJson(Map<String, dynamic> json) {
-    return VocabPracticeSessionState(
+  factory AnalyticsPracticeSessionState.fromJson(Map<String, dynamic> json) {
+    return AnalyticsPracticeSessionState(
       completedUses: (json['completedUses'] as List<dynamic>?)
               ?.map((e) => OneConstructUse.fromJson(e))
               .whereType<OneConstructUse>()

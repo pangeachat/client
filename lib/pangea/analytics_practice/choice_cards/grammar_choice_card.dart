@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
+import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+
+/// Choice card for meaning activity with emoji, and alt text on flip
+class GrammarChoiceCard extends StatelessWidget {
+  final String choiceId;
+  final String targetId;
+
+  final MorphFeaturesEnum feature;
+  final String tag;
+
+  final VoidCallback onPressed;
+  final bool isCorrect;
+  final double height;
+
+  const GrammarChoiceCard({
+    required this.choiceId,
+    required this.targetId,
+    required this.feature,
+    required this.tag,
+    required this.onPressed,
+    required this.isCorrect,
+    this.height = 72.0,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final copy = getGrammarCopy(
+          category: feature.name,
+          lemma: tag,
+          context: context,
+        ) ??
+        tag;
+
+    return GameChoiceCard(
+      shouldFlip: false,
+      targetId: targetId,
+      onPressed: onPressed,
+      isCorrect: isCorrect,
+      height: height,
+      child: Text(copy),
+    );
+  }
+}

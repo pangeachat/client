@@ -98,17 +98,20 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
               AsyncError() => CardErrorWidget(
                   L10n.of(context).errorFetchingActivity,
                 ),
-              AsyncLoaded() => state.value.multipleChoiceContent != null
-                  ? MessageMorphInputBarContent(
+              AsyncLoaded() => switch (state.value) {
+                  MultipleChoicePracticeActivityModel() =>
+                    MessageMorphInputBarContent(
                       controller: widget.controller,
-                      activity: state.value,
+                      activity: state.value as MorphPracticeActivityModel,
                       selectedToken: widget.selectedToken,
                       maxWidth: widget.maxWidth,
-                    )
-                  : MatchActivityCard(
-                      currentActivity: state.value,
+                    ),
+                  MatchPracticeActivityModel() => MatchActivityCard(
+                      currentActivity:
+                          state.value as MatchPracticeActivityModel,
                       controller: widget.controller,
                     ),
+                },
               _ => const SizedBox.shrink(),
             },
           ],

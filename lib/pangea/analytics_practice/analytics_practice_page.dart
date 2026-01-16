@@ -10,71 +10,79 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/example_message_util.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
-import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_repo.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_view.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class VocabPracticeChoice {
+class PracticeChoice {
   final String choiceId;
   final String choiceText;
   final String? choiceEmoji;
 
-  const VocabPracticeChoice({
+  const PracticeChoice({
     required this.choiceId,
     required this.choiceText,
     this.choiceEmoji,
   });
 }
 
-class SessionLoader extends AsyncLoader<VocabPracticeSessionModel> {
-  @override
-  Future<VocabPracticeSessionModel> fetch() => VocabPracticeSessionRepo.get();
-}
-
-class VocabPractice extends StatefulWidget {
-  const VocabPractice({super.key});
+class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
+  final ConstructTypeEnum type;
+  SessionLoader({required this.type});
 
   @override
-  VocabPracticeState createState() => VocabPracticeState();
+  Future<AnalyticsPracticeSessionModel> fetch() =>
+      AnalyticsPracticeSessionRepo.get(type);
 }
 
-class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
-  final SessionLoader _sessionLoader = SessionLoader();
+class AnalyticsPractice extends StatefulWidget {
+  final ConstructTypeEnum type;
+  const AnalyticsPractice({
+    super.key,
+    required this.type,
+  });
 
-  final ValueNotifier<AsyncState<PracticeActivityModel>> activityState =
-      ValueNotifier(const AsyncState.idle());
+  @override
+  AnalyticsPracticeState createState() => AnalyticsPracticeState();
+}
 
-  final Queue<MapEntry<ConstructIdentifier, Completer<PracticeActivityModel>>>
-      _queue = Queue();
+class AnalyticsPracticeState extends State<AnalyticsPractice>
+    with AnalyticsUpdater {
+  late final SessionLoader _sessionLoader;
 
-  final ValueNotifier<ConstructIdentifier?> activityConstructId =
-      ValueNotifier<ConstructIdentifier?>(null);
+  final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
+      activityState = ValueNotifier(const AsyncState.idle());
+
+  final Queue<
+      MapEntry<PracticeTarget,
+          Completer<MultipleChoicePracticeActivityModel>>> _queue = Queue();
+
+  final ValueNotifier<PracticeTarget?> activityTarget =
+      ValueNotifier<PracticeTarget?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
 
-  final Map<PracticeTarget, Map<String, String>> _choiceTexts = {};
-  final Map<PracticeTarget, Map<String, String?>> _choiceEmojis = {};
+  final Map<String, Map<String, String>> _choiceTexts = {};
+  final Map<String, Map<String, String?>> _choiceEmojis = {};
 
   StreamSubscription<void>? _languageStreamSubscription;
 
   @override
   void initState() {
     super.initState();
+    _sessionLoader = SessionLoader(type: widget.type);
     _startSession();
     _languageStreamSubscription = MatrixState
         .pangeaController.userController.languageStream.stream
@@ -85,41 +93,43 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   void dispose() {
     _languageStreamSubscription?.cancel();
     if (_isComplete) {
-      VocabPracticeSessionRepo.clear();
+      AnalyticsPracticeSessionRepo.clear();
     } else {
       _saveSession();
     }
     _sessionLoader.dispose();
     activityState.dispose();
-    activityConstructId.dispose();
+    activityTarget.dispose();
     progressNotifier.dispose();
     super.dispose();
   }
 
-  PracticeActivityModel? get _currentActivity =>
-      activityState.value is AsyncLoaded<PracticeActivityModel>
-          ? (activityState.value as AsyncLoaded<PracticeActivityModel>).value
+  MultipleChoicePracticeActivityModel? get _currentActivity =>
+      activityState.value is AsyncLoaded<MultipleChoicePracticeActivityModel>
+          ? (activityState.value
+                  as AsyncLoaded<MultipleChoicePracticeActivityModel>)
+              .value
           : null;
 
   bool get _isComplete => _sessionLoader.value?.isComplete ?? false;
 
-  ValueNotifier<AsyncState<VocabPracticeSessionModel>> get sessionState =>
+  ValueNotifier<AsyncState<AnalyticsPracticeSessionModel>> get sessionState =>
       _sessionLoader.state;
 
   AnalyticsDataService get _analyticsService =>
       Matrix.of(context).analyticsDataService;
 
-  List<VocabPracticeChoice> filteredChoices(
-    PracticeTarget target,
-    MultipleChoiceActivity activity,
+  List<PracticeChoice> filteredChoices(
+    MultipleChoicePracticeActivityModel activity,
   ) {
-    final choices = activity.choices.toList();
-    final answer = activity.answers.first;
-    final filtered = <VocabPracticeChoice>[];
+    final content = activity.multipleChoiceContent;
+    final choices = content.choices.toList();
+    final answer = content.answers.first;
+    final filtered = <PracticeChoice>[];
 
     final seenTexts = <String>{};
     for (final id in choices) {
-      final text = getChoiceText(target, id);
+      final text = getChoiceText(activity.storageKey, id);
 
       if (seenTexts.contains(text)) {
         if (id != answer) {
@@ -130,10 +140,10 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
           (choice) => choice.choiceText == text,
         );
         if (index != -1) {
-          filtered[index] = VocabPracticeChoice(
+          filtered[index] = PracticeChoice(
             choiceId: id,
             choiceText: text,
-            choiceEmoji: getChoiceEmoji(target, id),
+            choiceEmoji: getChoiceEmoji(activity.storageKey, id),
           );
         }
         continue;
@@ -141,10 +151,10 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
       seenTexts.add(text);
       filtered.add(
-        VocabPracticeChoice(
+        PracticeChoice(
           choiceId: id,
           choiceText: text,
-          choiceEmoji: getChoiceEmoji(target, id),
+          choiceEmoji: getChoiceEmoji(activity.storageKey, id),
         ),
       );
     }
@@ -152,24 +162,29 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     return filtered;
   }
 
-  String getChoiceText(PracticeTarget target, String choiceId) {
-    if (_choiceTexts.containsKey(target) &&
-        _choiceTexts[target]!.containsKey(choiceId)) {
-      return _choiceTexts[target]![choiceId]!;
+  String getChoiceText(String key, String choiceId) {
+    if (widget.type == ConstructTypeEnum.morph) {
+      return choiceId;
+    }
+    if (_choiceTexts.containsKey(key) &&
+        _choiceTexts[key]!.containsKey(choiceId)) {
+      return _choiceTexts[key]![choiceId]!;
     }
     final cId = ConstructIdentifier.fromString(choiceId);
     return cId?.lemma ?? choiceId;
   }
 
-  String? getChoiceEmoji(PracticeTarget target, String choiceId) =>
-      _choiceEmojis[target]?[choiceId];
+  String? getChoiceEmoji(String key, String choiceId) {
+    if (widget.type == ConstructTypeEnum.morph) return null;
+    return _choiceEmojis[key]?[choiceId];
+  }
 
   String choiceTargetId(String choiceId) =>
-      'vocab-choice-card-${choiceId.replaceAll(' ', '_')}';
+      '${widget.type.name}-choice-card-${choiceId.replaceAll(' ', '_')}';
 
   void _resetActivityState() {
     activityState.value = const AsyncState.loading();
-    activityConstructId.value = null;
+    activityTarget.value = null;
   }
 
   void _resetSessionState() {
@@ -186,9 +201,21 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     }
   }
 
+  void _playAudio() {
+    if (activityTarget.value == null) return;
+    if (widget.type != ConstructTypeEnum.vocab) return;
+    TtsController.tryToSpeak(
+      activityTarget.value!.tokens.first.vocabConstructID.lemma,
+      langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+    );
+  }
+
   Future<void> _saveSession() async {
     if (_sessionLoader.isLoaded) {
-      await VocabPracticeSessionRepo.update(_sessionLoader.value!);
+      await AnalyticsPracticeSessionRepo.update(
+        widget.type,
+        _sessionLoader.value!,
+      );
     }
   }
 
@@ -226,7 +253,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   Future<void> reloadSession() async {
     _resetActivityState();
     _resetSessionState();
-    await VocabPracticeSessionRepo.clear();
+    await AnalyticsPracticeSessionRepo.clear();
     _sessionLoader.reset();
     await _startSession();
   }
@@ -251,19 +278,17 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     _continuing = true;
 
     try {
-      if (activityState.value is AsyncIdle<PracticeActivityModel>) {
+      if (activityState.value
+          is AsyncIdle<MultipleChoicePracticeActivityModel>) {
         await _initActivityData();
       } else if (_queue.isEmpty) {
         await _completeSession();
       } else {
         activityState.value = const AsyncState.loading();
         final nextActivityCompleter = _queue.removeFirst();
-        activityConstructId.value = nextActivityCompleter.key;
-        TtsController.tryToSpeak(
-          nextActivityCompleter.key.lemma,
-          langCode:
-              MatrixState.pangeaController.userController.userL2!.langCode,
-        );
+
+        activityTarget.value = nextActivityCompleter.key;
+        _playAudio();
 
         final activity = await nextActivityCompleter.value.future;
         activityState.value = AsyncState.loaded(activity);
@@ -284,11 +309,9 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     try {
       activityState.value = const AsyncState.loading();
       final req = requests.first;
-      activityConstructId.value = req.targetTokens.first.vocabConstructID;
-      TtsController.tryToSpeak(
-        req.targetTokens.first.vocabConstructID.lemma,
-        langCode: MatrixState.pangeaController.userController.userL2!.langCode,
-      );
+
+      activityTarget.value = req.target;
+      _playAudio();
 
       final res = await _fetchActivity(req);
       if (!mounted) return;
@@ -305,13 +328,9 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
     for (final request in requests) {
-      final completer = Completer<PracticeActivityModel>();
-      _queue.add(
-        MapEntry(
-          request.targetTokens.first.vocabConstructID,
-          completer,
-        ),
-      );
+      final completer = Completer<MultipleChoicePracticeActivityModel>();
+      _queue.add(MapEntry(request.target, completer));
+
       try {
         final res = await _fetchActivity(request);
         if (!mounted) return;
@@ -324,28 +343,32 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     }
   }
 
-  Future<PracticeActivityModel> _fetchActivity(
+  Future<MultipleChoicePracticeActivityModel> _fetchActivity(
     MessageActivityRequest req,
   ) async {
     final result = await PracticeRepo.getPracticeActivity(
       req,
       messageInfo: {},
     );
-    if (result.isError) {
+
+    if (result.isError ||
+        result.result is! MultipleChoicePracticeActivityModel) {
       throw L10n.of(context).oopsSomethingWentWrong;
     }
 
+    final activityModel = result.result as MultipleChoicePracticeActivityModel;
+
     // Prefetch lemma info for meaning activities before marking ready
-    if (result.result!.activityType == ActivityTypeEnum.lemmaMeaning) {
-      final choices = result.result!.multipleChoiceContent!.choices.toList();
-      await _fetchLemmaInfo(result.result!.practiceTarget, choices);
+    if (activityModel is VocabMeaningPracticeActivityModel) {
+      final choices = activityModel.multipleChoiceContent.choices.toList();
+      await _fetchLemmaInfo(activityModel.storageKey, choices);
     }
 
-    return result.result!;
+    return activityModel;
   }
 
   Future<void> _fetchLemmaInfo(
-    PracticeTarget target,
+    String requestKey,
     List<String> choiceIds,
   ) async {
     final texts = <String, String>{};
@@ -365,53 +388,35 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       emojis[id] = res.result!.emoji.firstOrNull;
     }
 
-    _choiceTexts.putIfAbsent(target, () => {});
-    _choiceEmojis.putIfAbsent(target, () => {});
+    _choiceTexts.putIfAbsent(requestKey, () => {});
+    _choiceEmojis.putIfAbsent(requestKey, () => {});
 
-    _choiceTexts[target]!.addAll(texts);
-    _choiceEmojis[target]!.addAll(emojis);
+    _choiceTexts[requestKey]!.addAll(texts);
+    _choiceEmojis[requestKey]!.addAll(emojis);
   }
 
   Future<void> onSelectChoice(
-    ConstructIdentifier choiceConstruct,
     String choiceContent,
   ) async {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
 
     // Update activity record
-    activity.onMultipleChoiceSelect(choiceConstruct, choiceContent);
-    final correct = activity.multipleChoiceContent!.isCorrect(choiceContent);
-
-    // Update session model and analytics
-    final useType = correct
-        ? activity.activityType.correctUse
-        : activity.activityType.incorrectUse;
-
-    final use = OneConstructUse(
-      useType: useType,
-      constructType: ConstructTypeEnum.vocab,
-      metadata: ConstructUseMetaData(
-        roomId: null,
-        timeStamp: DateTime.now(),
-      ),
-      category: activity.targetTokens.first.pos,
-      lemma: activity.targetTokens.first.lemma.text,
-      form: activity.targetTokens.first.lemma.text,
-      xp: useType.pointValue,
+    PracticeRecordController.onSelectChoice(
+      choiceContent,
+      activity.tokens.first,
+      activity,
     );
 
+    final use = activity.constructUse(choiceContent);
     _sessionLoader.value!.submitAnswer(use);
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
     await _saveSession();
-    if (!correct) return;
+    if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
 
-    TtsController.tryToSpeak(
-      activity.targetTokens.first.vocabConstructID.lemma,
-      langCode: MatrixState.pangeaController.userController.userL2!.langCode,
-    );
+    _playAudio();
 
     // Display the fact that the choice was correct before loading the next activity
     await Future.delayed(const Duration(milliseconds: 1000));
@@ -425,11 +430,26 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   }
 
   Future<List<InlineSpan>?> getExampleMessage(
-    ConstructIdentifier construct,
+    PracticeTarget target,
   ) async {
+    final token = target.tokens.first;
+    final construct = switch (widget.type) {
+      ConstructTypeEnum.vocab => token.vocabConstructID,
+      ConstructTypeEnum.morph => token.morphIdByFeature(target.morphFeature!),
+    };
+
+    if (construct == null) return null;
+
+    String? form;
+    if (widget.type == ConstructTypeEnum.morph) {
+      if (target.morphFeature == null) return null;
+      form = token.lemma.form;
+    }
+
     return ExampleMessageUtil.getExampleMessage(
       await _analyticsService.getConstructUse(construct),
       Matrix.of(context).client,
+      form: form,
     );
   }
 
@@ -437,5 +457,5 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       _analyticsService.derivedData;
 
   @override
-  Widget build(BuildContext context) => VocabPracticeView(this);
+  Widget build(BuildContext context) => AnalyticsPracticeView(this);
 }

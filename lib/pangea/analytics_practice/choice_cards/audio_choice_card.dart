@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/common/widgets/word_audio_button.dart';
-import 'package:fluffychat/pangea/vocab_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Displays an audio button with a select label in a row layout

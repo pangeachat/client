@@ -117,7 +117,7 @@ class OneConstructUse {
     debugger(when: kDebugMode && json['constructType'] == null);
 
     final ConstructTypeEnum constructType = json['constructType'] != null
-        ? ConstructTypeUtil.fromString(json['constructType'])
+        ? ConstructTypeEnum.fromString(json['constructType'])
         : ConstructTypeEnum.vocab;
 
     final useType = ConstructUseTypeUtil.fromString(json['useType']);

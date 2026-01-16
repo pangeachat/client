@@ -5046,5 +5046,9 @@
   "voice": "Voice",
   "youLeftTheChat": "🚪 You left the chat",
   "downloadInitiated": "Download initiated",
-  "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site."
+  "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
+  "practiceGrammar": "Practice grammar",
+  "notEnoughToPractice": "Send more messages to unlock practice",
+  "constructUseCorGCDesc": "Correct grammar category practice",
+  "constructUseIncGCDesc": "Incorrect grammar category practice"
 }

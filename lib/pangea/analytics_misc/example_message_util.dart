@@ -10,9 +10,12 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 class ExampleMessageUtil {
   static Future<List<InlineSpan>?> getExampleMessage(
     ConstructUses construct,
-    Client client,
-  ) async {
+    Client client, {
+    String? form,
+  }) async {
     for (final use in construct.cappedUses) {
+      if (form != null && use.form != form) continue;
+
       final event = await client.getEventByConstructUse(use);
       if (event == null) continue;
 

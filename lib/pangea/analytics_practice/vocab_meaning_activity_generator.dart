@@ -7,7 +7,7 @@ class VocabMeaningActivityGenerator {
   static Future<MessageActivityResponse> get(
     MessageActivityRequest req,
   ) async {
-    final token = req.targetTokens.first;
+    final token = req.target.tokens.first;
     final choices =
         await LemmaActivityGenerator.lemmaActivityDistractors(token);
 
@@ -18,9 +18,8 @@ class VocabMeaningActivityGenerator {
     final Set<String> constructIdChoices = choices.map((c) => c.string).toSet();
 
     return MessageActivityResponse(
-      activity: PracticeActivityModel(
-        activityType: req.targetType,
-        targetTokens: [token],
+      activity: VocabMeaningPracticeActivityModel(
+        tokens: req.target.tokens,
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
           choices: constructIdChoices,

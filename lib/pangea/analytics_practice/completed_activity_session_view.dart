@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/percent_marker_bar.dart';
+import 'package:fluffychat/pangea/analytics_practice/stat_card.dart';
 import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
-import 'package:fluffychat/pangea/vocab_practice/percent_marker_bar.dart';
-import 'package:fluffychat/pangea/vocab_practice/stat_card.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_constants.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CompletedActivitySessionView extends StatelessWidget {
-  final VocabPracticeSessionModel session;
-  final VocabPracticeState controller;
+  final AnalyticsPracticeSessionModel session;
+  final AnalyticsPracticeState controller;
   const CompletedActivitySessionView(
     this.session,
     this.controller, {
@@ -198,7 +198,7 @@ class TimeStarsWidget extends StatelessWidget {
   });
 
   int get starCount {
-    const timeForBonus = VocabPracticeConstants.timeForBonus;
+    const timeForBonus = AnalyticsPracticeConstants.timeForBonus;
     if (elapsedSeconds <= timeForBonus) return 5;
     if (elapsedSeconds <= timeForBonus * 1.5) return 4;
     if (elapsedSeconds <= timeForBonus * 2) return 3;
