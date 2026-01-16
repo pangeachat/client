@@ -61,6 +61,7 @@ import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
@@ -591,59 +592,16 @@ abstract class AppRoutes {
                           return true;
                         }
 
-                        final bool confirm = await showDialog<bool>(
-                              context: context,
-                              builder: (context) {
-                                return Center(
-                                  child: ConstrainedBox(
-                                    constraints: const BoxConstraints(
-                                      maxWidth: 400,
-                                    ),
-                                    child: Dialog(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(24.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.stretch,
-                                          children: [
-                                            Center(
-                                              child: Text(
-                                                L10n.of(context).exitPractice,
-                                                style: const TextStyle(
-                                                  fontSize: 28,
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 16),
-                                            ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.of(context).pop(true);
-                                              },
-                                              child: Text(L10n.of(context).yes),
-                                            ),
-                                            const SizedBox(height: 16),
-                                            ElevatedButton(
-                                              onPressed: () {
-                                                Navigator.of(context)
-                                                    .pop(false);
-                                              },
-                                              child: Text(L10n.of(context).no),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ) ??
-                            false;
+                        final result = await showOkCancelAlertDialog(
+                          useRootNavigator: false,
+                          context: context,
+                          title: L10n.of(context).areYouSure,
+                          okLabel: L10n.of(context).yes,
+                          cancelLabel: L10n.of(context).cancel,
+                          message: L10n.of(context).exitPractice,
+                        );
 
-                        return confirm;
+                        return result == OkCancelResult.ok;
                       },
                     ),
                     GoRoute(
