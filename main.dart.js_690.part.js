@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Jika browser Anda memblokir unduhan, silakan aktifkan unduhan untuk situs ini.";
     },
+    get$exitPractice() {
+      return "Kemajuan sesi latihan Anda tidak akan disimpan.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Latihan tata bahasa";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Kirim lebih banyak pesan untuk membuka latihan";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Latihan kategori tata bahasa yang benar";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Latihan kategori tata bahasa yang salah";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5351,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["apGbsWTRpj1yUbxF8UGWJ4qyJHs="] = d.current;
+  d["Fiht6cCF4OOvg6c5Euqbbf2uZgo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_690.part.js.map

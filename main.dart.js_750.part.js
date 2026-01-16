@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Ak v\xe1\u0161 prehliada\u010d blokuje s\u0165ahovanie, pros\xedm, povolte s\u0165ahovanie pre t\xfato str\xe1nku.";
     },
+    get$exitPractice() {
+      return "Pokrok vo va\u0161ej cvi\u010debnej rel\xe1cii nebude ulo\u017een\xfd.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Cvi\u010di\u0165 gramatiku";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Odo\u0161lite viac spr\xe1v na odomknutie cvi\u010denia";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Cvi\u010denie spr\xe1vnej gramatickej kateg\xf3rie";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Cvi\u010denie nespr\xe1vnej gramatickej kateg\xf3rie";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uRmUMMKq7JvjNZ++yjdRrI5hia8="] = d.current;
+  d["Hqneyp052cG6iet9h3LboSWeB7M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_750.part.js.map

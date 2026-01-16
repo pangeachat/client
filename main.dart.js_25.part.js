@@ -5335,17 +5335,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return string$.Se_o_s;
     },
+    get$exitPractice() {
+      return string$.O_prog;
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Praticar gram\xe1tica";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return string$.Envie_;
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return string$.Pr_ticdc;
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return string$.Pr_ticdi;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10656,6 +10659,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return string$.Se_o_s;
     },
+    get$exitPractice() {
+      return string$.O_prog;
+    },
+    get$practiceGrammar() {
+      return "Praticar gram\xe1tica";
+    },
+    get$notEnoughToPractice() {
+      return string$.Envie_;
+    },
+    get$constructUseCorGCDesc() {
+      return string$.Pr_ticdc;
+    },
+    get$constructUseIncGCDesc() {
+      return string$.Pr_ticdi;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -15965,6 +15983,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return string$.Se_o_s;
     },
+    get$exitPractice() {
+      return string$.O_prog;
+    },
+    get$practiceGrammar() {
+      return "Praticar gram\xe1tica";
+    },
+    get$notEnoughToPractice() {
+      return string$.Envie_;
+    },
+    get$constructUseCorGCDesc() {
+      return string$.Pr_ticdc;
+    },
+    get$constructUseIncGCDesc() {
+      return string$.Pr_ticdi;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16044,6 +16077,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Desliz: "Deslize da direita para a esquerda para responder",
     Dispos: "Dispositivos verificados cruzados se ativado",
     Emotes: "Emotes usados recentemente aparecer\xe3o aqui...",
+    Envie_: "Envie mais mensagens para desbloquear a pr\xe1tica",
     Escolha: "Escolha as melhores op\xe7\xf5es para traduzir sua mensagem!",
     Escolhu: "Escolha um t\xf3pico, modo, objetivo de aprendizagem e gere uma atividade para o chat!",
     Esta_f: "Esta ferramenta de aprendizado de idiomas identificar\xe1 palavras no seu idioma base e ajudar\xe1 voc\xea a traduzi-las para o seu idioma de destino. Embora raro, a IA pode cometer erros de tradu\xe7\xe3o.",
@@ -16097,6 +16131,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     O_curse: "O curso e quaisquer conversas selecionadas ser\xe3o exclu\xeddos para todos os participantes e todas as mensagens dentro da conversa n\xe3o estar\xe3o mais dispon\xedveis para pr\xe1tica ou an\xe1lises de aprendizagem. Esta a\xe7\xe3o n\xe3o pode ser desfeita.",
     O_curss: "O curso ser\xe1 exclu\xeddo para todos os participantes. Esta a\xe7\xe3o n\xe3o pode ser desfeita.",
     O_idio: "O idioma de destino n\xe3o corresponde ao idioma desta atividade. Deseja atualizar seu idioma de destino?",
+    O_prog: "O progresso da sua sess\xe3o de pr\xe1tica n\xe3o ser\xe1 salvo.",
     O_serv: "O servidor n\xe3o fornece nenhuma informa\xe7\xe3o de contato v\xe1lida",
     O_seu_: "O seu idioma de destino n\xe3o corresponde a esta mensagem. Atualizar o seu idioma de destino?",
     Oculta: "Ocultar formatos de mensagem inv\xe1lidos ou desconhecidos",
@@ -16125,6 +16160,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Posso_ex: "Posso expressar ideias fluentemente e espontaneamente sem muita dificuldade e entender uma ampla variedade de textos exigentes.",
     Posso_l: "Posso lidar com a maioria das situa\xe7\xf5es familiares e produzir textos simples conectados sobre t\xf3picos familiares.",
     Pr_ticc: "Pr\xe1tica correta de defini\xe7\xe3o de vocabul\xe1rio",
+    Pr_ticdc: "Pr\xe1tica da categoria de gram\xe1tica correta",
+    Pr_ticdi: "Pr\xe1tica da categoria de gram\xe1tica incorreta",
     Pr_ticid: "Pr\xe1tica incorreta de defini\xe7\xe3o de vocabul\xe1rio",
     Pr_tici_: "Pr\xe1tica incorreta de \xe1udio de vocabul\xe1rio",
     Quais_: "Quais dispositivos devem ser confi\xe1veis para que possam ler suas mensagens em chats criptografados?",
@@ -16165,7 +16202,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iEjs5y8rOJAr84v0dgTmyuw/BtY="] = d.current;
+  d["5Hym0eyyVuZQaZq9R8dG9Pvq3fQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

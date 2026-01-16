@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Kui teie brauser blokeerib allalaadimisi, lubage palun selle saidi jaoks allalaadimised.";
     },
+    get$exitPractice() {
+      return "Teie harjut seansi edusamme ei salvestata.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Harjuta grammatikat";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Saada rohkem s\xf5numeid, et harjutust avada";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "\xd5ige grammatika kategooria harjutus";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Vale grammatika kategooria harjutus";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CPXwt+XpvPhJx/zNaT/zJn9ZlpQ="] = d.current;
+  d["W2TsHWhsQYT5tCSzxBgxAgrkX+k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_544.part.js.map

@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Dac\u0103 browserul dvs. blocheaz\u0103 desc\u0103rc\u0103rile, v\u0103 rug\u0103m s\u0103 activa\u021bi desc\u0103rc\u0103rile pentru acest site.";
     },
+    get$exitPractice() {
+      return "Progresul sesiunii tale de practic\u0103 nu va fi salvat.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Exerseaz\u0103 gramatic\u0103";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Trimite mai multe mesaje pentru a debloca practica";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Practic\u0103 categoria de gramatic\u0103 corect\u0103";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Practic\u0103 categoria de gramatic\u0103 incorect\u0103";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5351,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zsEdWOAJotUt5/lfcXbbcdbtwb8="] = d.current;
+  d["7KxzEYA8OxR+FeadT3FyB9xyKUo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_742.part.js.map

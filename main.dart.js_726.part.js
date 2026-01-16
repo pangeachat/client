@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Hvis nettleseren din blokkerer nedlastinger, vennligst aktiver nedlastinger for dette nettstedet.";
     },
+    get$exitPractice() {
+      return "Fremdriften i \xf8kten din vil ikke bli lagret.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "\xd8v p\xe5 grammatikk";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Send flere meldinger for \xe5 l\xe5se opp \xf8ving";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "\xd8velse i korrekt grammatikkategori";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "\xd8velse i ukorrekt grammatikkategori";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5351,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iqbcL5W/7H3z3y+4r1A9/tmvxxw="] = d.current;
+  d["0T/jh5AckettkA1b3ZEHHTeTjAs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_726.part.js.map

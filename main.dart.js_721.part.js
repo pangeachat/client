@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Ja j\u016bsu p\u0101rl\u016bkprogramma blo\u0137\u0113 lejupiel\u0101des, l\u016bdzu, iesp\u0113jot lejupiel\u0101des \u0161ai vietnei.";
     },
+    get$exitPractice() {
+      return "J\u016bsu prakses sesijas progress netiks saglab\u0101ts.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Praktiz\u0113t gramatiku";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "S\u016btiet vair\u0101k zi\u0146ojumu, lai atblo\u0137\u0113tu praksi";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Pareizas gramatikas kategorijas prakse";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Nepareizas gramatikas kategorijas prakse";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Lh4Yy1bU2x1UCeuMxL5rOQlVSkk="] = d.current;
+  d["1q9YX8054FO+LFhHQBfViE53aBo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_721.part.js.map

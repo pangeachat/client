@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Jei j\u016bs\u0173 nar\u0161ykl\u0117 blokuoja atsisiuntimus, pra\u0161ome \u012fgalinti atsisiuntimus \u0161iam tinklalapiui.";
     },
+    get$exitPractice() {
+      return "J\u016bs\u0173 praktikos sesijos pa\u017eanga nebus i\u0161saugota.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Praktikuoti gramatik\u0105";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Si\u0173skite daugiau \u017einu\u010di\u0173, kad atrakintum\u0117te praktik\u0105";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Teisingos gramatikos kategorijos praktika";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Neteisingos gramatikos kategorijos praktika";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5351,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OHNOb4PJgJTC4+ZMyyUvgCsoAI8="] = d.current;
+  d["fr1IqqGJ9DZ9qtmoqtV+5LY50Po="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_713.part.js.map

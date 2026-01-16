@@ -5323,6 +5323,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "If your browser blocks downloads, please enable downloads for this site.";
     },
+    get$exitPractice() {
+      return "Your practice session progress won't be saved.";
+    },
     get$practiceGrammar() {
       return "Practice grammar";
     },
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/Hi2BAV01rTirOQrLItIm14dOp8="] = d.current;
+  d["SeoDzVkitYVVLeGLZ+A4d+pUtrE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_414.part.js.map

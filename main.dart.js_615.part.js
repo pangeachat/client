@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "M\xe1s blocann do bhrabhs\xe1la\xed \xedosl\xf3d\xe1lacha, le do thoil, gn\xedomhachtaigh \xedosl\xf3d\xe1lacha don su\xedomh seo.";
     },
+    get$exitPractice() {
+      return "N\xed sh\xe1bh\xe1lfar do dhul chun cinn sa seisi\xfan cleachtaidh.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Cleachtaigh gramadach";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Seol n\xedos m\xf3 teachtaireachta\xed chun cleachtadh a dh\xedghlas\xe1il";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Cleachtadh catag\xf3ir gramada\xed ceart";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Cleachtadh catag\xf3ir gramada\xed m\xedcheart";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5351,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["AQdgEJA+b5/PMt+Kh4vg7mnCp0Q="] = d.current;
+  d["CSoAuH1pYtZFD/EqZ6XDNUa+fNY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_615.part.js.map

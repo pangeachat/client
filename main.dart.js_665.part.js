@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Ha a b\xf6ng\xe9sz\u0151d blokkolja a let\xf6lt\xe9seket, k\xe9rlek enged\xe9lyezd a let\xf6lt\xe9seket ezen az oldalon.";
     },
+    get$exitPractice() {
+      return "A gyakorl\xe1si session el\u0151rehalad\xe1sa nem lesz mentve.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Nyelvtan gyakorl\xe1sa";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "T\xf6bb \xfczenetet kell k\xfcldeni a gyakorl\xe1s felold\xe1s\xe1hoz";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Helyes nyelvtani kateg\xf3ria gyakorl\xe1sa";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Helytelen nyelvtani kateg\xf3ria gyakorl\xe1sa";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OC8CPC6REpUGFaiTb4YX7fm3o0I="] = d.current;
+  d["eD2gvbkF11ltRwdJ8ZCmDSeSKtw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_665.part.js.map

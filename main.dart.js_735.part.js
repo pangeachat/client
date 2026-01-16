@@ -5324,17 +5324,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Je\u015bli Twoja przegl\u0105darka blokuje pobieranie, w\u0142\u0105cz pobieranie dla tej strony.";
     },
+    get$exitPractice() {
+      return "Post\u0119p Twojej sesji \u0107wicze\u0144 nie zostanie zapisany.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "\u0106wicz gramatyk\u0119";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Wy\u015blij wi\u0119cej wiadomo\u015bci, aby odblokowa\u0107 \u0107wiczenia";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "\u0106wiczenie poprawnej kategorii gramatycznej";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "\u0106wiczenie niepoprawnej kategorii gramatycznej";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5349,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["I5lsxnn/rQEla56jgG6W+6vgNvs="] = d.current;
+  d["LNVZYBAnLx/pOvOAhP09264NvN4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\u5982\u679c\u4f60\u7684\u700f\u89bd\u5668\u963b\u6b62\u4e0b\u8f09\uff0c\u8acb\u70ba\u6b64\u7db2\u7ad9\u555f\u7528\u4e0b\u8f09\u3002";
     },
+    get$exitPractice() {
+      return "\u60a8\u7684\u7df4\u7fd2\u9032\u5ea6\u5c07\u4e0d\u6703\u88ab\u4fdd\u5b58\u3002";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "\u7df4\u7fd2\u8a9e\u6cd5";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "\u767c\u9001\u66f4\u591a\u6d88\u606f\u4ee5\u89e3\u9396\u7df4\u7fd2";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "\u6b63\u78ba\u8a9e\u6cd5\u985e\u5225\u7df4\u7fd2";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "\u4e0d\u6b63\u78ba\u8a9e\u6cd5\u985e\u5225\u7df4\u7fd2";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xILbyEO+f56N0ev6U2b4x8B9iW4="] = d.current;
+  d["cA5aCg2otTID8ktUXw5C47rfSlc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_765.part.js.map

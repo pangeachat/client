@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Om din webbl\xe4sare blockerar nedladdningar, v\xe4nligen aktivera nedladdningar f\xf6r den h\xe4r sidan.";
     },
+    get$exitPractice() {
+      return "Din \xf6vningssession kommer inte att sparas.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "\xd6va grammatik";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Skicka fler meddelanden f\xf6r att l\xe5sa upp \xf6vning";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "\xd6vning i korrekt grammatikkategori";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "\xd6vning i inkorrekt grammatikkategori";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["c/lnJecPAFyrqsCsSZONJeZHorU="] = d.current;
+  d["JDk0/+ag4w+nSroZFhmULft/4Vo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

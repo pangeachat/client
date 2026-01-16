@@ -5324,17 +5324,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\u09af\u09a6\u09bf \u0986\u09aa\u09a8\u09be\u09b0 \u09ac\u09cd\u09b0\u09be\u0989\u099c\u09be\u09b0 \u09a1\u09be\u0989\u09a8\u09b2\u09cb\u09a1 \u09ac\u09cd\u09b2\u0995 \u0995\u09b0\u09c7, \u0985\u09a8\u09c1\u0997\u09cd\u09b0\u09b9 \u0995\u09b0\u09c7 \u098f\u0987 \u09b8\u09be\u0987\u099f\u09c7\u09b0 \u099c\u09a8\u09cd\u09af \u09a1\u09be\u0989\u09a8\u09b2\u09cb\u09a1 \u09b8\u0995\u09cd\u09b7\u09ae \u0995\u09b0\u09c1\u09a8\u0964";
     },
+    get$exitPractice() {
+      return "\u0986\u09aa\u09a8\u09be\u09b0 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8 \u09b8\u09c7\u09b6\u09a8\u09c7\u09b0 \u0985\u0997\u09cd\u09b0\u0997\u09a4\u09bf \u09b8\u0982\u09b0\u0995\u09cd\u09b7\u09bf\u09a4 \u09b9\u09ac\u09c7 \u09a8\u09be\u0964";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "\u09ac\u09cd\u09af\u09be\u0995\u09b0\u09a3 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8 \u0995\u09b0\u09c1\u09a8";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "\u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8 \u0986\u09a8\u09b2\u0995 \u0995\u09b0\u09a4\u09c7 \u0986\u09b0\u0993 \u09ac\u09be\u09b0\u09cd\u09a4\u09be \u09aa\u09be\u09a0\u09be\u09a8";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "\u09b8\u09a0\u09bf\u0995 \u09ac\u09cd\u09af\u09be\u0995\u09b0\u09a3 \u09ac\u09bf\u09ad\u09be\u0997 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "\u09ad\u09c1\u09b2 \u09ac\u09cd\u09af\u09be\u0995\u09b0\u09a3 \u09ac\u09bf\u09ad\u09be\u0997 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5349,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HTxdx3fpFe+Jj2PswXQ7zp0AntY="] = d.current;
+  d["VbgihkJfSI/m6CMSmKjW4e9lQC4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map

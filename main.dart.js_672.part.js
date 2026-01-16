@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Se o teu navegador bloqueia descargas, por favor habilita descargas para este site.";
     },
+    get$exitPractice() {
+      return "Progresul sesiunii tale de practic\u0103 nu va fi salvat.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Exerseaz\u0103 gramatic\u0103";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Trimite mai multe mesaje pentru a debloca practica";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Practic\u0103 categoria de gramatic\u0103 corect\u0103";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Practic\u0103 categoria de gramatic\u0103 incorect\u0103";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XCjg4mRIVLMy1NXAioY9oPvObNU="] = d.current;
+  d["Ws9OIYk+or3b3qHWAnV4LLxoEWQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_672.part.js.map

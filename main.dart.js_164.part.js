@@ -5325,17 +5325,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "If your browser blocks downloads, please enable downloads for this site.";
     },
+    get$exitPractice() {
+      return "Ndae b\u0254k\u0254\u0254 a wop\u025b no, wo ns\u025bm a wop\u025b s\u025b woy\u025b no b\u025by\u025b a, \u025breny\u025b.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "B\u0254 mmara";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "S\u025b wop\u025b s\u025b woy\u025b b\u0254 mmara a, fa ns\u025bm pii to mu";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Nokware mmara kategorie b\u0254 mmara";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Nnokwa mmara kategorie b\u0254 mmara";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5362,7 +5365,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SR1bk/TMlL3ND5/DpO1lisPxL5o="] = d.current;
+  d["0HCXokIuuaTQP3Hnc7D5g73JWHg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

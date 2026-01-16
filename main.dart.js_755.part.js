@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Ako va\u0161 pregleda\u010d blokira preuzimanja, molimo omogu\u0107ite preuzimanja za ovu stranicu.";
     },
+    get$exitPractice() {
+      return "Va\u0161 napredak u ve\u017ebanju ne\u0107e biti sa\u010duvan.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Ve\u017ebajte gramatiku";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Po\u0161aljite vi\u0161e poruka da otklju\u010date ve\u017ebanje";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Ve\u017ebanje ispravne gramatike";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Ve\u017ebanje nepravilne gramatike";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Qzb+KZsBE307r2c4d9D6BRAtmEs="] = d.current;
+  d["Gkrm+bWqp7rVP0s45nnlyQjVZVI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

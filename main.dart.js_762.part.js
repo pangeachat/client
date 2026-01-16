@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Taray\u0131c\u0131n\u0131z indirmeleri engelliyorsa, l\xfctfen bu site i\xe7in indirmeleri etkinle\u015ftirin.";
     },
+    get$exitPractice() {
+      return "Pratik oturumunuzun ilerlemesi kaydedilmeyecek.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Dil bilgisi prati\u011fi yap";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Pratik yapmak i\xe7in daha fazla mesaj g\xf6nderin";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Do\u011fru dil bilgisi kategorisi prati\u011fi";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Yanl\u0131\u015f dil bilgisi kategorisi prati\u011fi";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5351,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BuUc1s/tTVX7D8WogXo5KQ3t928="] = d.current;
+  d["frAMtna5mM46ng5ceaByg7BhHO0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_762.part.js.map

@@ -5324,17 +5324,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\u0625\u0630\u0627 \u0643\u0627\u0646 \u0645\u062a\u0635\u0641\u062d\u0643 \u064a\u0645\u0646\u0639 \u0627\u0644\u062a\u0646\u0632\u064a\u0644\u0627\u062a\u060c \u064a\u0631\u062c\u0649 \u062a\u0645\u0643\u064a\u0646 \u0627\u0644\u062a\u0646\u0632\u064a\u0644\u0627\u062a \u0644\u0647\u0630\u0627 \u0627\u0644\u0645\u0648\u0642\u0639.";
     },
+    get$exitPractice() {
+      return "\u0644\u0646 \u064a\u062a\u0645 \u062d\u0641\u0638 \u062a\u0642\u062f\u0645 \u062c\u0644\u0633\u0629 \u0627\u0644\u062a\u062f\u0631\u064a\u0628 \u0627\u0644\u062e\u0627\u0635\u0629 \u0628\u0643.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "\u062a\u062f\u0631\u0628 \u0639\u0644\u0649 \u0627\u0644\u0642\u0648\u0627\u0639\u062f";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "\u0623\u0631\u0633\u0644 \u0627\u0644\u0645\u0632\u064a\u062f \u0645\u0646 \u0627\u0644\u0631\u0633\u0627\u0626\u0644 \u0644\u0641\u062a\u062d \u0627\u0644\u062a\u062f\u0631\u064a\u0628";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "\u062a\u062f\u0631\u064a\u0628 \u0639\u0644\u0649 \u0641\u0626\u0629 \u0627\u0644\u0642\u0648\u0627\u0639\u062f \u0627\u0644\u0635\u062d\u064a\u062d\u0629";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "\u062a\u062f\u0631\u064a\u0628 \u0639\u0644\u0649 \u0641\u0626\u0629 \u0627\u0644\u0642\u0648\u0627\u0639\u062f \u063a\u064a\u0631 \u0627\u0644\u0635\u062d\u064a\u062d\u0629";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5349,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2PiMb2aPUneK+9J/TpacbLCCAUs="] = d.current;
+  d["8NSUHh6gPP9Aix637pzSTwmXUw0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_140.part.js.map

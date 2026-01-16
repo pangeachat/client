@@ -5323,17 +5323,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "M\xe1s blocann do bhrabhs\xe1la\xed \xedosl\xf3d\xe1lacha, le do thoil, gn\xedomhachtaigh \xedosl\xf3d\xe1lacha don su\xedomh seo.";
     },
+    get$exitPractice() {
+      return "Tua progressio sessionis exercitationis non servabitur.";
+    },
     get$practiceGrammar() {
-      return "Practice grammar";
+      return "Exercitia grammatica";
     },
     get$notEnoughToPractice() {
-      return "Send more messages to unlock practice";
+      return "Mitte plura nuntia ad exercitium aperiendum";
     },
     get$constructUseCorGCDesc() {
-      return "Correct grammar category practice";
+      return "Correcta grammaticae categoriae exercitium";
     },
     get$constructUseIncGCDesc() {
-      return "Incorrect grammar category practice";
+      return "Incorrecta grammaticae categoriae exercitium";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5348,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["inv/3CJJUhPLKPEDdoe4SD8d2d4="] = d.current;
+  d["LJLdBBA45d5a6f77owV5+R1AzjY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_700.part.js.map
