@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
@@ -14,6 +13,7 @@ class LanguageLevelDropdown extends StatelessWidget {
   final FormFieldValidator<Object>? validator;
   final bool enabled;
   final Color? backgroundColor;
+  final double? width;
 
   const LanguageLevelDropdown({
     super.key,
@@ -22,6 +22,7 @@ class LanguageLevelDropdown extends StatelessWidget {
     this.validator,
     this.enabled = true,
     this.backgroundColor,
+    this.width,
   });
 
   @override
@@ -33,12 +34,12 @@ class LanguageLevelDropdown extends StatelessWidget {
               LanguageLevelTypeEnum.values.contains(initialLevel)
           ? CustomDropdownTextButton(text: initialLevel!.title(context))
           : null,
-      menuItemStyleData: MenuItemStyleData(
-        padding: const EdgeInsets.symmetric(
+      menuItemStyleData: const MenuItemStyleData(
+        padding: EdgeInsets.symmetric(
           vertical: 8.0,
           horizontal: 16.0,
         ),
-        height: FluffyThemes.isColumnMode(context) ? 100.0 : 150.0,
+        height: 100.0,
       ),
       decoration: InputDecoration(
         labelText: l10n.cefrLevelLabel,
@@ -51,6 +52,7 @@ class LanguageLevelDropdown extends StatelessWidget {
               Theme.of(context).colorScheme.surfaceContainerHigh,
           borderRadius: BorderRadius.circular(14.0),
         ),
+        width: width,
       ),
       items:
           LanguageLevelTypeEnum.values.map((LanguageLevelTypeEnum levelOption) {

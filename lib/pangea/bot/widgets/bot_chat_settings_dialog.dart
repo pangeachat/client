@@ -154,6 +154,7 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
             initialLevel: _selectedLevel,
             onChanged: _setLevel,
             enabled: !widget.room.isActivitySession,
+            width: 300,
           ),
           DropdownButtonFormField2<String>(
             customButton: _selectedVoice != null
