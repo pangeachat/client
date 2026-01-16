@@ -5047,5 +5047,9 @@
   "youLeftTheChat": "🚪 You left the chat",
   "downloadInitiated": "Download initiated",
   "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
-  "exitPractice": "Your practice session progress won't be saved."
+  "exitPractice": "Your practice session progress won't be saved.",
+  "practiceGrammar": "Practice grammar",
+  "notEnoughToPractice": "Send more messages to unlock practice",
+  "constructUseCorGCDesc": "Correct grammar category practice",
+  "constructUseIncGCDesc": "Incorrect grammar category practice"
 }

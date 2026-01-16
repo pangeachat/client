@@ -30,7 +30,7 @@ const int numberOfMorphDistractors = 3;
 
 class MessageMorphInputBarContent extends StatefulWidget {
   final PracticeController controller;
-  final PracticeActivityModel activity;
+  final MorphPracticeActivityModel activity;
   final PangeaToken? selectedToken;
   final double maxWidth;
 
@@ -51,8 +51,8 @@ class MessageMorphInputBarContentState
     extends State<MessageMorphInputBarContent> {
   String? selectedTag;
 
-  PangeaToken get token => widget.activity.targetTokens.first;
-  MorphFeaturesEnum get morph => widget.activity.morphFeature!;
+  PangeaToken get token => widget.activity.tokens.first;
+  MorphFeaturesEnum get morph => widget.activity.morphFeature;
 
   @override
   void didUpdateWidget(covariant MessageMorphInputBarContent oldWidget) {
@@ -114,10 +114,9 @@ class MessageMorphInputBarContentState
           runAlignment: WrapAlignment.center,
           spacing: spacing,
           runSpacing: spacing,
-          children: widget.activity.multipleChoiceContent!.choices.mapIndexed(
+          children: widget.activity.multipleChoiceContent.choices.mapIndexed(
             (index, choice) {
-              final wasCorrect =
-                  widget.activity.practiceTarget.wasCorrectChoice(choice);
+              final wasCorrect = widget.controller.wasCorrectChoice(choice);
 
               return ChoiceAnimationWidget(
                 isSelected: selectedTag == choice,
@@ -135,9 +134,8 @@ class MessageMorphInputBarContentState
                       PracticeChoice(
                         choiceContent: choice,
                         form: ConstructForm(
-                          cId: widget.activity.targetTokens.first
-                              .morphIdByFeature(
-                            widget.activity.morphFeature!,
+                          cId: widget.activity.tokens.first.morphIdByFeature(
+                            widget.activity.morphFeature,
                           )!,
                           form: token.text.content,
                         ),

@@ -1,10 +1,7 @@
-import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
 // includes feedback text and the bad activity model
 class ActivityQualityFeedback {
@@ -15,15 +12,6 @@ class ActivityQualityFeedback {
     required this.feedbackText,
     required this.badActivity,
   });
-
-  factory ActivityQualityFeedback.fromJson(Map<String, dynamic> json) {
-    return ActivityQualityFeedback(
-      feedbackText: json['feedback_text'] as String,
-      badActivity: PracticeActivityModel.fromJson(
-        json['bad_activity'] as Map<String, dynamic>,
-      ),
-    );
-  }
 
   Map<String, dynamic> toJson() {
     return {
@@ -50,22 +38,16 @@ class ActivityQualityFeedback {
 class MessageActivityRequest {
   final String userL1;
   final String userL2;
-
-  final List<PangeaToken> targetTokens;
-  final ActivityTypeEnum targetType;
-  final MorphFeaturesEnum? targetMorphFeature;
-
+  final PracticeTarget target;
   final ActivityQualityFeedback? activityQualityFeedback;
 
   MessageActivityRequest({
     required this.userL1,
     required this.userL2,
     required this.activityQualityFeedback,
-    required this.targetTokens,
-    required this.targetType,
-    required this.targetMorphFeature,
+    required this.target,
   }) {
-    if (targetTokens.isEmpty) {
+    if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');
     }
   }
@@ -75,9 +57,9 @@ class MessageActivityRequest {
       'user_l1': userL1,
       'user_l2': userL2,
       'activity_quality_feedback': activityQualityFeedback?.toJson(),
-      'target_tokens': targetTokens.map((e) => e.toJson()).toList(),
-      'target_type': targetType.name,
-      'target_morph_feature': targetMorphFeature,
+      'target_tokens': target.tokens.map((e) => e.toJson()).toList(),
+      'target_type': target.activityType.name,
+      'target_morph_feature': target.morphFeature,
     };
   }
 
@@ -86,19 +68,19 @@ class MessageActivityRequest {
     if (identical(this, other)) return true;
 
     return other is MessageActivityRequest &&
-        other.targetType == targetType &&
+        other.userL1 == userL1 &&
+        other.userL2 == userL2 &&
+        other.target == target &&
         other.activityQualityFeedback?.feedbackText ==
-            activityQualityFeedback?.feedbackText &&
-        const ListEquality().equals(other.targetTokens, targetTokens) &&
-        other.targetMorphFeature == targetMorphFeature;
+            activityQualityFeedback?.feedbackText;
   }
 
   @override
   int get hashCode {
-    return targetType.hashCode ^
-        activityQualityFeedback.hashCode ^
-        targetTokens.hashCode ^
-        targetMorphFeature.hashCode;
+    return activityQualityFeedback.hashCode ^
+        target.hashCode ^
+        userL1.hashCode ^
+        userL2.hashCode;
   }
 }
 

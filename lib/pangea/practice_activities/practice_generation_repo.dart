@@ -9,6 +9,9 @@ import 'package:async/async.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
+import 'package:fluffychat/pangea/analytics_practice/morph_category_activity_generator.dart';
+import 'package:fluffychat/pangea/analytics_practice/vocab_audio_activity_generator.dart';
+import 'package:fluffychat/pangea/analytics_practice/vocab_meaning_activity_generator.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -21,8 +24,6 @@ import 'package:fluffychat/pangea/practice_activities/message_activity_request.d
 import 'package:fluffychat/pangea/practice_activities/morph_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/word_focus_listening_generator.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_audio_activity_generator.dart';
-import 'package:fluffychat/pangea/vocab_practice/vocab_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents an item in the completion cache.
@@ -116,7 +117,7 @@ class PracticeRepo {
     required Map<String, dynamic> messageInfo,
   }) async {
     // some activities we'll get from the server and others we'll generate locally
-    switch (req.targetType) {
+    switch (req.target.activityType) {
       case ActivityTypeEnum.emoji:
         return EmojiActivityGenerator.get(req, messageInfo: messageInfo);
       case ActivityTypeEnum.lemmaId:
@@ -125,6 +126,8 @@ class PracticeRepo {
         return VocabMeaningActivityGenerator.get(req);
       case ActivityTypeEnum.lemmaAudio:
         return VocabAudioActivityGenerator.get(req);
+      case ActivityTypeEnum.grammarCategory:
+        return MorphCategoryActivityGenerator.get(req);
       case ActivityTypeEnum.morphId:
         return MorphActivityGenerator.get(req);
       case ActivityTypeEnum.wordMeaning:

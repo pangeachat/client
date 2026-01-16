@@ -482,7 +482,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             final type =
                                 practice.practiceMode.associatedActivityType;
                             final complete = type != null &&
-                                practice.isPracticeActivityDone(type);
+                                practice.isPracticeSessionDone(type);
 
                             if (instruction != null && !complete) {
                               return InstructionsInlineTooltip(

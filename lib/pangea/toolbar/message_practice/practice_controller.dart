@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:collection/collection.dart';
@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.da
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/morph_selection.dart';
+import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -35,18 +36,34 @@ class PracticeController with ChangeNotifier {
   MorphSelection? selectedMorph;
   PracticeChoice? selectedChoice;
 
-  PracticeActivityModel? get activity => _activity;
-
   PracticeSelection? practiceSelection;
 
-  bool get isTotallyDone =>
-      isPracticeActivityDone(ActivityTypeEnum.emoji) &&
-      isPracticeActivityDone(ActivityTypeEnum.wordMeaning) &&
-      isPracticeActivityDone(ActivityTypeEnum.wordFocusListening) &&
-      isPracticeActivityDone(ActivityTypeEnum.morphId);
+  bool? wasCorrectMatch(PracticeChoice choice) {
+    if (_activity == null) return false;
+    return PracticeRecordController.wasCorrectMatch(
+      _activity!.practiceTarget,
+      choice,
+    );
+  }
 
-  bool isPracticeActivityDone(ActivityTypeEnum activityType) =>
-      practiceSelection?.activities(activityType).every((a) => a.isComplete) ==
+  bool? wasCorrectChoice(String choice) {
+    if (_activity == null) return false;
+    return PracticeRecordController.wasCorrectChoice(
+      _activity!.practiceTarget,
+      choice,
+    );
+  }
+
+  bool get isTotallyDone =>
+      isPracticeSessionDone(ActivityTypeEnum.emoji) &&
+      isPracticeSessionDone(ActivityTypeEnum.wordMeaning) &&
+      isPracticeSessionDone(ActivityTypeEnum.wordFocusListening) &&
+      isPracticeSessionDone(ActivityTypeEnum.morphId);
+
+  bool isPracticeSessionDone(ActivityTypeEnum activityType) =>
+      practiceSelection
+          ?.activities(activityType)
+          .every((a) => PracticeRecordController.isCompleteByTarget(a)) ==
       true;
 
   bool isPracticeButtonEmpty(PangeaToken token) {
@@ -66,23 +83,25 @@ class PracticeController with ChangeNotifier {
     }
 
     return target == null ||
-        target.isCompleteByToken(
-              token,
-              _activity?.morphFeature,
-            ) ==
-            true;
+        PracticeRecordController.isCompleteByToken(
+          target,
+          token,
+        );
   }
 
   bool get showChoiceShimmer {
     if (_activity == null) return false;
-
-    if (_activity!.activityType == ActivityTypeEnum.morphId) {
+    if (_activity is MorphMatchPracticeActivityModel) {
       return selectedMorph != null &&
-          !_activity!.practiceTarget.hasAnyResponses;
+          !PracticeRecordController.hasResponse(
+            _activity!.practiceTarget,
+          );
     }
 
     return selectedChoice == null &&
-        !_activity!.practiceTarget.hasAnyCorrectChoices;
+        !PracticeRecordController.hasAnyCorrectChoices(
+          _activity!.practiceTarget,
+        );
   }
 
   Future<void> _fetchPracticeSelection() async {
@@ -101,9 +120,7 @@ class PracticeController with ChangeNotifier {
       userL1: MatrixState.pangeaController.userController.userL1!.langCode,
       userL2: MatrixState.pangeaController.userController.userL2!.langCode,
       activityQualityFeedback: null,
-      targetTokens: target.tokens,
-      targetType: target.activityType,
-      targetMorphFeature: target.morphFeature,
+      target: target,
     );
 
     final result = await PracticeRepo.getPracticeActivity(
@@ -151,11 +168,11 @@ class PracticeController with ChangeNotifier {
 
   void onMatch(PangeaToken token, PracticeChoice choice) {
     if (_activity == null) return;
-
-    final isCorrect = _activity!.activityType == ActivityTypeEnum.morphId
-        ? _activity!
-            .onMultipleChoiceSelect(choice.form.cId, choice.choiceContent)
-        : _activity!.onMatch(token, choice);
+    final isCorrect = PracticeRecordController.onSelectChoice(
+      choice.choiceContent,
+      token,
+      _activity!,
+    );
 
     final targetId =
         "message-token-${token.text.uniqueKey}-${pangeaMessageEvent.eventId}";
@@ -164,9 +181,10 @@ class PracticeController with ChangeNotifier {
         .pangeaController.matrixState.analyticsDataService.updateService;
 
     // we don't take off points for incorrect emoji matches
-    if (_activity!.activityType != ActivityTypeEnum.emoji || isCorrect) {
-      final constructUseType = _activity!.practiceTarget.record.responses.last
-          .useType(_activity!.activityType);
+    if (_activity is! EmojiPracticeActivityModel || isCorrect) {
+      final constructUseType =
+          PracticeRecordController.lastResponse(_activity!.practiceTarget)!
+              .useType(_activity!.activityType);
 
       final constructs = [
         OneConstructUse(
@@ -192,14 +210,14 @@ class PracticeController with ChangeNotifier {
     }
 
     if (isCorrect) {
-      if (_activity!.activityType == ActivityTypeEnum.emoji) {
+      if (_activity is EmojiPracticeActivityModel) {
         updateService.setLemmaInfo(
           choice.form.cId,
           emoji: choice.choiceContent,
         );
       }
 
-      if (_activity!.activityType == ActivityTypeEnum.wordMeaning) {
+      if (_activity is LemmaMeaningPracticeActivityModel) {
         updateService.setLemmaInfo(
           choice.form.cId,
           meaning: choice.choiceContent,
