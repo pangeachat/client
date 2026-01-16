@@ -30,6 +30,7 @@ class WordZoomWidget extends StatelessWidget {
   final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
   final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
+  final double? maxWidth;
 
   const WordZoomWidget({
     super.key,
@@ -41,6 +42,7 @@ class WordZoomWidget extends StatelessWidget {
     this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
+    this.maxWidth,
   });
 
   String get transformTargetId => "word-zoom-card-${token.uniqueKey}";
@@ -63,8 +65,8 @@ class WordZoomWidget extends StatelessWidget {
               Container(
                 height: AppConfig.toolbarMaxHeight - 8,
                 padding: const EdgeInsets.all(12.0),
-                constraints: const BoxConstraints(
-                  maxWidth: AppConfig.toolbarMinWidth,
+                constraints: BoxConstraints(
+                  maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
                 ),
                 child: CompositedTransformTarget(
                   link: layerLink,
