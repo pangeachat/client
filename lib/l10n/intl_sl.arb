@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-13 15:16:54.017311",
+  "@@last_modified": "2026-01-16 14:32:46.504404",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11919,6 +11919,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Napredek vaše seje vadbe ne bo shranjen.",
+  "practiceGrammar": "Vadite slovnico",
+  "notEnoughToPractice": "Pošljite več sporočil, da odklenete vadbo",
+  "constructUseCorGCDesc": "Vadba pravilne slovnice",
+  "constructUseIncGCDesc": "Vadba nepravilne slovnice",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

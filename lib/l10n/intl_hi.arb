@@ -4483,7 +4483,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-13 15:17:42.151930",
+  "@@last_modified": "2026-01-16 14:34:05.778231",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11923,6 +11923,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "आपकी प्रैक्टिस सत्र की प्रगति सहेजी नहीं जाएगी।",
+  "practiceGrammar": "व्याकरण का अभ्यास करें",
+  "notEnoughToPractice": "अभ्यास अनलॉक करने के लिए अधिक संदेश भेजें",
+  "constructUseCorGCDesc": "सही व्याकरण श्रेणी का अभ्यास",
+  "constructUseIncGCDesc": "गलत व्याकरण श्रेणी का अभ्यास",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

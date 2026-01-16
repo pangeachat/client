@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-13 15:16:47.445226",
+  "@@last_modified": "2026-01-16 14:32:36.050138",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10838,6 +10838,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Zure praktika saioaren aurrerapena ez da gorde.",
+  "practiceGrammar": "Gramatika praktikatu",
+  "notEnoughToPractice": "Praktika desblokeatzeko gehiago mezu bidali",
+  "constructUseCorGCDesc": "Gramatika kategoriako praktika zuzena",
+  "constructUseIncGCDesc": "Gramatika kategoriako praktika okerra",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-13 15:16:52.685007",
+  "@@last_modified": "2026-01-16 14:32:44.617501",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10845,6 +10845,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Ihr Fortschritt in der Übungssitzung wird nicht gespeichert.",
+  "practiceGrammar": "Grammatik üben",
+  "notEnoughToPractice": "Senden Sie mehr Nachrichten, um die Übung freizuschalten",
+  "constructUseCorGCDesc": "Übung der korrekten Grammatikkategorie",
+  "constructUseIncGCDesc": "Übung der inkorrekten Grammatikkategorie",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

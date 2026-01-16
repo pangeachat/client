@@ -1920,7 +1920,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-13 15:17:21.774356",
+  "@@last_modified": "2026-01-16 14:33:29.527681",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11927,6 +11927,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "మీ ప్రాక్టీస్ సెషన్ పురోగతి సేవ్ చేయబడదు.",
+  "practiceGrammar": "వ్యాకరణాన్ని అభ్యాసం చేయండి",
+  "notEnoughToPractice": "ప్రాక్టీస్‌ను అన్లాక్ చేయడానికి మరింత సందేశాలు పంపండి",
+  "constructUseCorGCDesc": "సరైన వ్యాకరణ శ్రేణి ప్రాక్టీస్",
+  "constructUseIncGCDesc": "తప్పు వ్యాకరణ శ్రేణి ప్రాక్టీస్",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

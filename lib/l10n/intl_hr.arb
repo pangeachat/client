@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-13 15:16:41.523925",
+  "@@last_modified": "2026-01-16 14:32:23.849622",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11210,6 +11210,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Vaš napredak u vježbi neće biti spremljen.",
+  "practiceGrammar": "Vježbajte gramatiku",
+  "notEnoughToPractice": "Pošaljite više poruka da otključate vježbu",
+  "constructUseCorGCDesc": "Vježba ispravne gramatičke kategorije",
+  "constructUseIncGCDesc": "Vježba neispravne gramatičke kategorije",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

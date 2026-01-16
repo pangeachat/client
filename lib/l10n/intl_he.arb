@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:16:42.956612",
+  "@@last_modified": "2026-01-16 14:32:26.413376",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11887,6 +11887,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "ההתקדמות שלך במפגש האימון לא תישמר.",
+  "practiceGrammar": "אימון דקדוק",
+  "notEnoughToPractice": "שלח יותר הודעות כדי לפתוח אימון",
+  "constructUseCorGCDesc": "אימון בקטגוריית דקדוק נכון",
+  "constructUseIncGCDesc": "אימון בקטגוריית דקדוק לא נכון",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

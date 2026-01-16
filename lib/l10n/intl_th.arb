@@ -4456,7 +4456,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-13 15:17:10.203231",
+  "@@last_modified": "2026-01-16 14:33:11.816510",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11896,6 +11896,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "ความก้าวหน้าของการฝึกฝนของคุณจะไม่ถูกบันทึก",
+  "practiceGrammar": "ฝึกไวยากรณ์",
+  "notEnoughToPractice": "ส่งข้อความเพิ่มเติมเพื่อปลดล็อกการฝึกฝน",
+  "constructUseCorGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ถูกต้อง",
+  "constructUseIncGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ไม่ถูกต้อง",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

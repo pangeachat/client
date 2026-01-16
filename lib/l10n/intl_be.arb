@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-13 15:17:06.767898",
+  "@@last_modified": "2026-01-16 14:33:05.869532",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11937,6 +11937,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Ваш практычны сеанс не будзе захаваны.",
+  "practiceGrammar": "Практыкаваць граматыку",
+  "notEnoughToPractice": "Адпраўце больш паведамленняў, каб разблакаваць практыку",
+  "constructUseCorGCDesc": "Практыка ў катэгорыі правільнай граматыкі",
+  "constructUseIncGCDesc": "Практыка ў катэгорыі няправільнай граматыкі",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

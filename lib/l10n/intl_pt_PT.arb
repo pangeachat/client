@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-13 15:17:11.533911",
+  "@@last_modified": "2026-01-16 14:33:14.369639",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11867,6 +11867,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "O progresso da sua sessão de prática não será salvo.",
+  "practiceGrammar": "Praticar gramática",
+  "notEnoughToPractice": "Envie mais mensagens para desbloquear a prática",
+  "constructUseCorGCDesc": "Prática da categoria de gramática correta",
+  "constructUseIncGCDesc": "Prática da categoria de gramática incorreta",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

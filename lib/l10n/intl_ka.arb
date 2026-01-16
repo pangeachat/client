@@ -2594,7 +2594,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-13 15:17:47.132620",
+  "@@last_modified": "2026-01-16 14:34:13.710408",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11868,6 +11868,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "თქვენი პრაქტიკის სესიის პროგრესი არ დაიშლება.",
+  "practiceGrammar": "პრაქტიკა გრამატიკა",
+  "notEnoughToPractice": "პრაქტიკის გასახსნელად მეტი შეტყობინება გამოაგზავნეთ",
+  "constructUseCorGCDesc": "სწორი გრამატიკული კატეგორიის პრაქტიკა",
+  "constructUseIncGCDesc": "არასწორი გრამატიკული კატეგორიის პრაქტიკა",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

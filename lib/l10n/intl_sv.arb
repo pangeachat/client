@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:36.926028",
+  "@@last_modified": "2026-01-16 14:33:56.060391",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11316,6 +11316,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Din övningssession kommer inte att sparas.",
+  "practiceGrammar": "Öva grammatik",
+  "notEnoughToPractice": "Skicka fler meddelanden för att låsa upp övning",
+  "constructUseCorGCDesc": "Övning i korrekt grammatikkategori",
+  "constructUseIncGCDesc": "Övning i inkorrekt grammatikkategori",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }
