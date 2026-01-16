@@ -50,7 +50,13 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   void _setDownloadType(DownloadType type) {
-    if (mounted) setState(() => _downloadType = type);
+    if (mounted) {
+      setState(() {
+        _downloadType = type;
+        _downloaded = false;
+        _error = null;
+      });
+    }
   }
 
   Future<void> _downloadAnalytics() async {
@@ -427,7 +433,8 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
               padding: const EdgeInsets.all(8.0),
               child: SegmentedButton<DownloadType>(
                 selected: {_downloadType},
-                onSelectionChanged: (c) => _setDownloadType(c.first),
+                onSelectionChanged:
+                    _downloading ? null : (c) => _setDownloadType(c.first),
                 segments: [
                   ButtonSegment(
                     value: DownloadType.csv,
