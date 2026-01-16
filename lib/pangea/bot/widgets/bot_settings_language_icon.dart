@@ -4,19 +4,20 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_chat_settings_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 
 class BotSettingsLanguageIcon extends StatelessWidget {
-  final Room room;
+  final User user;
 
   const BotSettingsLanguageIcon({
     super.key,
-    required this.room,
+    required this.user,
   });
 
   @override
   Widget build(BuildContext context) {
+    final room = user.room;
     String? langCode = room.botOptions?.targetLanguage;
     if (room.isActivitySession && room.activityPlan != null) {
       langCode = room.activityPlan!.req.targetLanguage;
@@ -29,8 +30,9 @@ class BotSettingsLanguageIcon extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(32.0),
       onTap: room.isRoomAdmin
-          ? () => BotChatSettingsDialog.show(
+          ? () => showMemberActionsPopupMenu(
                 context: context,
+                user: user,
                 room: room,
               )
           : null,

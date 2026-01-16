@@ -59,6 +59,7 @@ void showMemberActionsPopupMenu({
       PopupMenuItem(
         value: _MemberActions.info,
         child: Row(
+          // Pangea#
           spacing: 12.0,
           children: [
             Avatar(
@@ -107,6 +108,15 @@ void showMemberActionsPopupMenu({
           ],
         ),
       ),
+      if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
+        PopupMenuItem(
+          enabled: false,
+          padding: const EdgeInsets.only(
+            left: 12.0,
+            right: 12.0,
+          ),
+          child: BotChatSettingsDialog(room: room),
+        ),
       const PopupMenuDivider(),
       // #Pangea
       if (user.room.client.userID != user.id)
@@ -121,17 +131,6 @@ void showMemberActionsPopupMenu({
                     ? L10n.of(context).startConversation
                     : L10n.of(context).sendAMessage,
               ),
-            ],
-          ),
-        ),
-      if (user.id == BotName.byEnvironment && room != null && room.isRoomAdmin)
-        PopupMenuItem(
-          value: _MemberActions.botSettings,
-          child: Row(
-            children: [
-              const Icon(Icons.settings_outlined),
-              const SizedBox(width: 18),
-              Text(L10n.of(context).botSettings),
             ],
           ),
         ),
@@ -356,12 +355,6 @@ void showMemberActionsPopupMenu({
       final roomId = roomIdResult.result;
       if (roomId == null) return;
       router.go('/rooms/$roomId');
-    case _MemberActions.botSettings:
-      await BotChatSettingsDialog.show(
-        context: context,
-        room: room!,
-      );
-      return;
     // Pangea#
     case _MemberActions.info:
       await UserDialog.show(
@@ -401,6 +394,5 @@ enum _MemberActions {
   // #Pangea
   // report,
   chat,
-  botSettings,
   // Pangea#
 }
