@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:32.418851",
+  "@@last_modified": "2026-01-16 14:33:49.084569",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11942,6 +11942,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "আপনার অনুশীলন সেশনের অগ্রগতি সংরক্ষিত হবে না।",
+  "practiceGrammar": "ব্যাকরণ অনুশীলন করুন",
+  "notEnoughToPractice": "অনুশীলন আনলক করতে আরও বার্তা পাঠান",
+  "constructUseCorGCDesc": "সঠিক ব্যাকরণ বিভাগ অনুশীলন",
+  "constructUseIncGCDesc": "ভুল ব্যাকরণ বিভাগ অনুশীলন",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

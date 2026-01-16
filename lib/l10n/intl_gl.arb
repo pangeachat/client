@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-13 15:16:27.098717",
+  "@@last_modified": "2026-01-16 14:32:01.213945",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10835,6 +10835,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "O progreso da túa sesión de práctica non se gardará.",
+  "practiceGrammar": "Practicar gramática",
+  "notEnoughToPractice": "Envía máis mensaxes para desbloquear a práctica",
+  "constructUseCorGCDesc": "Práctica da categoría de gramática correcta",
+  "constructUseIncGCDesc": "Práctica da categoría de gramática incorrecta",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

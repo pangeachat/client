@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:16:34.707887",
+  "@@last_modified": "2026-01-16 14:32:13.610901",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10829,6 +10829,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Kemajuan sesi latihan Anda tidak akan disimpan.",
+  "practiceGrammar": "Latihan tata bahasa",
+  "notEnoughToPractice": "Kirim lebih banyak pesan untuk membuka latihan",
+  "constructUseCorGCDesc": "Latihan kategori tata bahasa yang benar",
+  "constructUseIncGCDesc": "Latihan kategori tata bahasa yang salah",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

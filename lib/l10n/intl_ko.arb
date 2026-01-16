@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:16:23.091865",
+  "@@last_modified": "2026-01-16 14:31:56.042093",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10946,6 +10946,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "연습 세션 진행 상황이 저장되지 않습니다.",
+  "practiceGrammar": "문법 연습",
+  "notEnoughToPractice": "연습을 잠금 해제하려면 더 많은 메시지를 보내세요.",
+  "constructUseCorGCDesc": "올바른 문법 카테고리 연습",
+  "constructUseIncGCDesc": "잘못된 문법 카테고리 연습",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

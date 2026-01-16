@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:get_storage/get_storage.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
@@ -15,16 +13,9 @@ import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPracticeSessionRepo {
-  static final GetStorage _storage = GetStorage('practice_session');
-
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
   ) async {
-    final cached = _getCached(type);
-    if (cached != null) {
-      return cached;
-    }
-
     final r = Random();
     final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
 
@@ -63,17 +54,8 @@ class AnalyticsPracticeSessionRepo {
       startedAt: DateTime.now(),
       practiceTargets: targets,
     );
-    await _setCached(type, session);
     return session;
   }
-
-  static Future<void> update(
-    ConstructTypeEnum type,
-    AnalyticsPracticeSessionModel session,
-  ) =>
-      _setCached(type, session);
-
-  static Future<void> clear() => _storage.erase();
 
   static Future<List<ConstructIdentifier>> _fetchVocab() async {
     final constructs = await MatrixState
@@ -161,29 +143,5 @@ class AnalyticsPracticeSessionRepo {
     }
 
     return targets;
-  }
-
-  static AnalyticsPracticeSessionModel? _getCached(
-    ConstructTypeEnum type,
-  ) {
-    try {
-      final entry = _storage.read(type.name);
-      if (entry == null) return null;
-      final json = entry as Map<String, dynamic>;
-      return AnalyticsPracticeSessionModel.fromJson(json);
-    } catch (e) {
-      _storage.remove(type.name);
-      return null;
-    }
-  }
-
-  static Future<void> _setCached(
-    ConstructTypeEnum type,
-    AnalyticsPracticeSessionModel session,
-  ) async {
-    await _storage.write(
-      type.name,
-      session.toJson(),
-    );
   }
 }

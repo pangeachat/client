@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:43.889996",
+  "@@last_modified": "2026-01-16 14:34:08.644512",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11927,6 +11927,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Via praktika sesio progreso ne estos konservita.",
+  "practiceGrammar": "Praktiku gramatikon",
+  "notEnoughToPractice": "Sendu pli da mesaĝoj por malŝlosi praktikon",
+  "constructUseCorGCDesc": "Praktiko de ĝusta gramatika kategorio",
+  "constructUseIncGCDesc": "Praktiko de malĝusta gramatika kategorio",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

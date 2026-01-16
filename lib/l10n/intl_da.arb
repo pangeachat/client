@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-13 15:16:30.904012",
+  "@@last_modified": "2026-01-16 14:32:06.899995",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11899,6 +11899,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Din praksis session fremskridt vil ikke blive gemt.",
+  "practiceGrammar": "Øv grammatik",
+  "notEnoughToPractice": "Send flere beskeder for at låse op for praksis",
+  "constructUseCorGCDesc": "Korrekt grammatik kategori praksis",
+  "constructUseIncGCDesc": "Ukorrrekt grammatik kategori praksis",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

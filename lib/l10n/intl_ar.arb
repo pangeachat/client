@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-13 15:17:18.289687",
+  "@@last_modified": "2026-01-16 14:33:24.230348",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11055,6 +11055,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "لن يتم حفظ تقدم جلسة التدريب الخاصة بك.",
+  "practiceGrammar": "تدرب على القواعد",
+  "notEnoughToPractice": "أرسل المزيد من الرسائل لفتح التدريب",
+  "constructUseCorGCDesc": "تدريب على فئة القواعد الصحيحة",
+  "constructUseIncGCDesc": "تدريب على فئة القواعد غير الصحيحة",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

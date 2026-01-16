@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:04.771433",
+  "@@last_modified": "2026-01-16 14:33:02.881359",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11931,6 +11931,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Fremdriften i økten din vil ikke bli lagret.",
+  "practiceGrammar": "Øv på grammatikk",
+  "notEnoughToPractice": "Send flere meldinger for å låse opp øving",
+  "constructUseCorGCDesc": "Øvelse i korrekt grammatikkategori",
+  "constructUseIncGCDesc": "Øvelse i ukorrekt grammatikkategori",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

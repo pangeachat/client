@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-13 15:17:03.339822",
+  "@@last_modified": "2026-01-16 14:32:59.173160",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11445,6 +11445,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Pokrok vaší cvičební relace nebude uložen.",
+  "practiceGrammar": "Cvičit gramatiku",
+  "notEnoughToPractice": "Odešlete více zpráv, abyste odemkli cvičení",
+  "constructUseCorGCDesc": "Cvičení správné gramatické kategorie",
+  "constructUseIncGCDesc": "Cvičení nesprávné gramatické kategorie",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

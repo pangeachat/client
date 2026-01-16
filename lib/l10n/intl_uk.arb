@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-13 15:17:01.594985",
+  "@@last_modified": "2026-01-16 14:32:56.338443",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10832,6 +10832,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Ваш прогрес у сесії практики не буде збережено.",
+  "practiceGrammar": "Практика граматики",
+  "notEnoughToPractice": "Надішліть більше повідомлень, щоб розблокувати практику",
+  "constructUseCorGCDesc": "Практика правильної граматичної категорії",
+  "constructUseIncGCDesc": "Практика неправильної граматичної категорії",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

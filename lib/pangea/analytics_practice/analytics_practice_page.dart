@@ -48,6 +48,8 @@ class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
 }
 
 class AnalyticsPractice extends StatefulWidget {
+  static bool bypassExitConfirmation = false;
+
   final ConstructTypeEnum type;
   const AnalyticsPractice({
     super.key,
@@ -92,11 +94,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   @override
   void dispose() {
     _languageStreamSubscription?.cancel();
-    if (_isComplete) {
-      AnalyticsPracticeSessionRepo.clear();
-    } else {
-      _saveSession();
-    }
     _sessionLoader.dispose();
     activityState.dispose();
     activityTarget.dispose();
@@ -210,15 +207,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     );
   }
 
-  Future<void> _saveSession() async {
-    if (_sessionLoader.isLoaded) {
-      await AnalyticsPracticeSessionRepo.update(
-        widget.type,
-        _sessionLoader.value!,
-      );
-    }
-  }
-
   Future<void> _waitForAnalytics() async {
     if (!_analyticsService.initCompleter.isCompleted) {
       MatrixState.pangeaController.initControllers();
@@ -253,7 +241,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> reloadSession() async {
     _resetActivityState();
     _resetSessionState();
-    await AnalyticsPracticeSessionRepo.clear();
+
     _sessionLoader.reset();
     await _startSession();
   }
@@ -268,7 +256,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       bonus,
       forceUpdate: true,
     );
-    await _saveSession();
+    AnalyticsPractice.bypassExitConfirmation = true;
   }
 
   bool _continuing = false;
@@ -413,7 +401,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
-    await _saveSession();
     if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
 
     _playAudio();
@@ -424,7 +411,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     // Then mark this activity as completed, and either load the next or complete the session
     _sessionLoader.value!.completeActivity();
     progressNotifier.value = _sessionLoader.value!.progress;
-    await _saveSession();
 
     _isComplete ? await _completeSession() : await _continueSession();
   }

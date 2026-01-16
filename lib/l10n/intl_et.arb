@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-13 15:16:50.842106",
+  "@@last_modified": "2026-01-16 14:32:41.585481",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11109,6 +11109,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Teie harjut seansi edusamme ei salvestata.",
+  "practiceGrammar": "Harjuta grammatikat",
+  "notEnoughToPractice": "Saada rohkem sõnumeid, et harjutust avada",
+  "constructUseCorGCDesc": "Õige grammatika kategooria harjutus",
+  "constructUseIncGCDesc": "Vale grammatika kategooria harjutus",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

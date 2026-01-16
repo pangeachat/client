@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-13 15:17:40.716657",
+  "@@last_modified": "2026-01-16 14:34:03.101722",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11628,6 +11628,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "あなたの練習セッションの進捗は保存されません。",
+  "practiceGrammar": "文法を練習する",
+  "notEnoughToPractice": "練習を解除するにはもっとメッセージを送信してください",
+  "constructUseCorGCDesc": "正しい文法カテゴリの練習",
+  "constructUseIncGCDesc": "間違った文法カテゴリの練習",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

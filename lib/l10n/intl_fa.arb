@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:33.639092",
+  "@@last_modified": "2026-01-16 14:33:51.512389",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11570,6 +11570,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "پیشرفت جلسه تمرین شما ذخیره نخواهد شد.",
+  "practiceGrammar": "تمرین گرامر",
+  "notEnoughToPractice": "پیام‌های بیشتری ارسال کنید تا تمرین را باز کنید",
+  "constructUseCorGCDesc": "تمرین دسته گرامر صحیح",
+  "constructUseIncGCDesc": "تمرین دسته گرامر نادرست",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

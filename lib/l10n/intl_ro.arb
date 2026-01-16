@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:16:36.323428",
+  "@@last_modified": "2026-01-16 14:32:16.042822",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11573,6 +11573,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Progresul sesiunii tale de practică nu va fi salvat.",
+  "practiceGrammar": "Exersează gramatică",
+  "notEnoughToPractice": "Trimite mai multe mesaje pentru a debloca practica",
+  "constructUseCorGCDesc": "Practică categoria de gramatică corectă",
+  "constructUseIncGCDesc": "Practică categoria de gramatică incorectă",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-13 15:16:32.515672",
+  "@@last_modified": "2026-01-16 14:32:10.796625",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10839,6 +10839,31 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "A gyakorlási session előrehaladása nem lesz mentve.",
+  "practiceGrammar": "Nyelvtan gyakorlása",
+  "notEnoughToPractice": "Több üzenetet kell küldeni a gyakorlás feloldásához",
+  "constructUseCorGCDesc": "Helyes nyelvtani kategória gyakorlása",
+  "constructUseIncGCDesc": "Helytelen nyelvtani kategória gyakorlása",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
     "type": "String",
     "placeholders": {}
   }
