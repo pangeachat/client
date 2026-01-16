@@ -85,7 +85,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   @override
   void dispose() {
     _languageStreamSubscription?.cancel();
-    VocabPracticeSessionRepo.clear();
     _sessionLoader.dispose();
     activityState.dispose();
     activityConstructId.dispose();
@@ -224,6 +223,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   Future<void> _completeSession() async {
     _sessionLoader.value!.finishSession();
+    VocabPractice.bypassExitConfirmation = true;
     setState(() {});
 
     final bonus = _sessionLoader.value!.state.allBonusUses;

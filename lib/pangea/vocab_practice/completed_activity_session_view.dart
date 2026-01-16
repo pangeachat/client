@@ -165,9 +165,6 @@ class CompletedActivitySessionView extends StatelessWidget {
                             ),
                           ),
                           onPressed: () {
-                            VocabPractice.bypassExitConfirmation = true;
-                            debugPrint(
-                                "VocabPractice.bypassExitConfirmation set to ${VocabPractice.bypassExitConfirmation}");
                             context.go('/rooms/analytics/vocab');
                           },
                           child: Row(
