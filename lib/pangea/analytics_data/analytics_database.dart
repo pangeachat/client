@@ -395,10 +395,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
         );
       }
 
-      for (final u in usesForKey) {
-        model.addUse(u);
-      }
-
+      model.addUses(usesForKey);
       updates[key] = model;
     }
 
