@@ -29,8 +29,10 @@ class StateMessage extends StatelessWidget {
                 // event.calcLocalizedBodyFallback(
                 //   MatrixLocals(L10n.of(context)),
                 // ),
-                event.type == EventTypes.RoomMember &&
-                        event.roomMemberChangeType == RoomMemberChangeType.leave
+                (event.type == EventTypes.RoomMember) &&
+                        (event.roomMemberChangeType ==
+                            RoomMemberChangeType.leave) &&
+                        (event.stateKey == event.room.client.userID)
                     ? L10n.of(context).youLeftTheChat
                     : event.calcLocalizedBodyFallback(
                         MatrixLocals(L10n.of(context)),

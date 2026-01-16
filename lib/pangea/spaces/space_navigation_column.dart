@@ -31,38 +31,36 @@ class SpaceNavigationColumn extends StatefulWidget {
 }
 
 class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
+  bool _hovered = false;
   bool _expanded = false;
-  Timer? _debounceTimer;
+  Timer? _timer;
+
+  void _onHoverUpdate(bool hovered) {
+    if (hovered == _hovered) return;
+    _hovered = hovered;
+    _cancelTimer();
+
+    if (hovered) {
+      _timer = Timer(const Duration(milliseconds: 200), () {
+        if (_hovered && mounted) {
+          setState(() => _expanded = true);
+        }
+        _cancelTimer();
+      });
+    } else {
+      setState(() => _expanded = false);
+    }
+  }
+
+  void _cancelTimer() {
+    _timer?.cancel();
+    _timer = null;
+  }
 
   @override
   void dispose() {
-    _debounceTimer?.cancel();
-    _debounceTimer = null;
+    _cancelTimer();
     super.dispose();
-  }
-
-  void _expand() {
-    if (_debounceTimer?.isActive == true) return;
-    if (!_expanded) {
-      setState(() => _expanded = true);
-    }
-  }
-
-  void _collapse() {
-    if (_expanded) {
-      setState(() {
-        _expanded = false;
-        _debounce();
-      });
-    }
-  }
-
-  void _debounce() {
-    _debounceTimer?.cancel();
-    _debounceTimer = Timer(const Duration(milliseconds: 300), () {
-      _debounceTimer?.cancel();
-      _debounceTimer = null;
-    });
   }
 
   @override
@@ -115,7 +113,7 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
             HoverBuilder(
               builder: (context, hovered) {
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  hovered ? _expand() : _collapse();
+                  _onHoverUpdate(hovered);
                 });
 
                 return Row(
@@ -128,7 +126,10 @@ class SpaceNavigationColumnState extends State<SpaceNavigationColumn> {
                           ? navRailWidth + navRailExtraWidth
                           : navRailWidth,
                       expanded: _expanded,
-                      collapse: _collapse,
+                      collapse: () {
+                        _cancelTimer();
+                        setState(() => _expanded = false);
+                      },
                     ),
                     Container(
                       width: 1,

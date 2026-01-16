@@ -21,6 +21,7 @@ import 'package:fluffychat/pangea/practice_activities/message_activity_request.d
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -200,6 +201,15 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     }
   }
 
+  void _playAudio() {
+    if (activityTarget.value == null) return;
+    if (widget.type != ConstructTypeEnum.vocab) return;
+    TtsController.tryToSpeak(
+      activityTarget.value!.tokens.first.vocabConstructID.lemma,
+      langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+    );
+  }
+
   Future<void> _saveSession() async {
     if (_sessionLoader.isLoaded) {
       await AnalyticsPracticeSessionRepo.update(
@@ -276,7 +286,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       } else {
         activityState.value = const AsyncState.loading();
         final nextActivityCompleter = _queue.removeFirst();
+
         activityTarget.value = nextActivityCompleter.key;
+        _playAudio();
+
         final activity = await nextActivityCompleter.value.future;
         activityState.value = AsyncState.loaded(activity);
       }
@@ -295,12 +308,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     try {
       activityState.value = const AsyncState.loading();
-
       final req = requests.first;
+
+      activityTarget.value = req.target;
+      _playAudio();
+
       final res = await _fetchActivity(req);
       if (!mounted) return;
 
-      activityTarget.value = req.target;
       activityState.value = AsyncState.loaded(res);
     } catch (e) {
       if (!mounted) return;
@@ -400,6 +415,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     await _saveSession();
     if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
+
+    _playAudio();
 
     // Display the fact that the choice was correct before loading the next activity
     await Future.delayed(const Duration(milliseconds: 1000));

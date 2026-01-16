@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
@@ -15,9 +16,11 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -68,26 +71,28 @@ class AnalyticsPracticeView extends StatelessWidget {
           ],
         ),
       ),
-      body: MaxWidthBody(
-        withScrolling: false,
+      body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16.0,
           vertical: 24.0,
         ),
-        showBorder: false,
-        child: ValueListenableBuilder(
-          valueListenable: controller.sessionState,
-          builder: (context, state, __) {
-            return switch (state) {
-              AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
-                ErrorIndicator(message: error.toString()),
-              AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
-                value.isComplete
-                    ? CompletedActivitySessionView(state.value, controller)
-                    : _AnalyticsActivityView(controller),
-              _ => loading,
-            };
-          },
+        child: MaxWidthBody(
+          withScrolling: false,
+          showBorder: false,
+          child: ValueListenableBuilder(
+            valueListenable: controller.sessionState,
+            builder: (context, state, __) {
+              return switch (state) {
+                AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
+                  ErrorIndicator(message: error.toString()),
+                AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
+                  value.isComplete
+                      ? CompletedActivitySessionView(state.value, controller)
+                      : _AnalyticsActivityView(controller),
+                _ => loading,
+              };
+            },
+          ),
         ),
       ),
     );
@@ -122,13 +127,29 @@ class _AnalyticsActivityView extends StatelessWidget {
                 child: ValueListenableBuilder(
                   valueListenable: controller.activityTarget,
                   builder: (context, target, __) => target != null
-                      ? Text(
-                          target.promptText(context),
-                          textAlign: TextAlign.center,
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                      ? Column(
+                          spacing: 12.0,
+                          children: [
+                            Text(
+                              target.promptText(context),
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge
+                                  ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
+                            ),
+                            if (controller.widget.type ==
+                                ConstructTypeEnum.vocab)
+                              PhoneticTranscriptionWidget(
+                                text:
+                                    target.tokens.first.vocabConstructID.lemma,
+                                textLanguage: MatrixState
+                                    .pangeaController.userController.userL2!,
+                                style: const TextStyle(fontSize: 14.0),
+                              ),
+                          ],
                         )
                       : const SizedBox(),
                 ),

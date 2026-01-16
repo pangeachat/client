@@ -100,7 +100,6 @@ class _GameChoiceCardState extends State<GameChoiceCard>
                     animation: _scaleAnim,
                     builder: (context, _) {
                       final scale = _scaleAnim.value;
-                      final showAlt = scale < 0.1 && widget.altChild != null;
                       final showContent = scale > 0.05;
 
                       return Transform.scale(
@@ -113,7 +112,7 @@ class _GameChoiceCardState extends State<GameChoiceCard>
                               : (hovered ? hoverColor : Colors.transparent),
                           child: Opacity(
                             opacity: showContent ? 1 : 0,
-                            child: showAlt ? widget.altChild! : widget.child,
+                            child: _revealed ? widget.altChild! : widget.child,
                           ),
                         ),
                       );

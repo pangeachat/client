@@ -169,12 +169,12 @@ class SelectedCourseController extends State<SelectedCourse>
         : await client.joinRoom(widget.roomChunk!.roomId);
 
     Room? room = client.getRoomById(roomId);
-    if (!knock && room == null) {
-      await client.waitForRoomInSync(roomId);
+    if (!knock && room?.membership != Membership.join) {
+      await client.waitForRoomInSync(roomId, join: true);
       room = client.getRoomById(roomId);
     }
 
-    if (knock && room == null) {
+    if (knock) {
       Navigator.of(context).pop();
       await showOkAlertDialog(
         context: context,
