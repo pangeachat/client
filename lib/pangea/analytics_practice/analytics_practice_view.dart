@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
@@ -263,28 +264,46 @@ class _ActivityChoicesWidget extends StatelessWidget {
                 final cardHeight = (constrainedHeight / (choices.length + 1))
                     .clamp(50.0, 80.0);
 
-                return Container(
-                  constraints: const BoxConstraints(maxHeight: 400.0),
-                  child: Column(
-                    spacing: 4.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: choices
-                        .map(
-                          (choice) => _ChoiceCard(
-                            activity: value,
-                            targetId:
-                                controller.choiceTargetId(choice.choiceId),
-                            choiceId: choice.choiceId,
-                            onPressed: () => controller.onSelectChoice(
-                              choice.choiceId,
-                            ),
-                            cardHeight: cardHeight,
-                            choiceText: choice.choiceText,
-                            choiceEmoji: choice.choiceEmoji,
-                          ),
-                        )
-                        .toList(),
-                  ),
+                return Column(
+                  children: [
+                    Container(
+                      constraints: const BoxConstraints(maxHeight: 400.0),
+                      child: Column(
+                        spacing: 4.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: choices
+                            .map(
+                              (choice) => _ChoiceCard(
+                                activity: value,
+                                targetId:
+                                    controller.choiceTargetId(choice.choiceId),
+                                choiceId: choice.choiceId,
+                                onPressed: () => controller.onSelectChoice(
+                                  choice.choiceId,
+                                ),
+                                cardHeight: cardHeight,
+                                choiceText: choice.choiceText,
+                                choiceEmoji: choice.choiceEmoji,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                    if (value.activityType == ActivityTypeEnum.grammarCategory)
+                      ValueListenableBuilder(
+                        valueListenable: controller.selectedMorphChoice,
+                        builder: (context, selectedChoice, __) {
+                          if (selectedChoice == null) {
+                            return const SizedBox.shrink();
+                          }
+
+                          return MorphMeaningWidget(
+                            feature: selectedChoice.feature,
+                            tag: selectedChoice.tag,
+                          );
+                        },
+                      ),
+                  ],
                 );
               },
             ),
