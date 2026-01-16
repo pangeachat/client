@@ -10,6 +10,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_requested_dialog.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class AnalyticsRequestIndicator extends StatefulWidget {
@@ -26,51 +27,68 @@ class AnalyticsRequestIndicator extends StatefulWidget {
 
 class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
   AnalyticsRequestIndicatorState();
-
-  final Map<User, List<Room>> _knockingAdmins = {};
+  StreamSubscription? _analyticsRoomSub;
 
   @override
   void initState() {
     super.initState();
-    _fetchKnockingAdmins();
+    _init();
   }
 
   @override
   void didUpdateWidget(covariant AnalyticsRequestIndicator oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.room.id != widget.room.id) {
-      _fetchKnockingAdmins();
+      _init();
     }
   }
 
-  Future<void> _fetchKnockingAdmins() async {
-    setState(() => _knockingAdmins.clear());
+  @override
+  void dispose() {
+    _analyticsRoomSub?.cancel();
+    super.dispose();
+  }
 
-    final admins = (await widget.room.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
-      false,
-      true,
-    ))
-        .where((u) => u.powerLevel >= 100);
+  Future<void> _init() async {
+    final analyticsRooms = widget.room.client.allMyAnalyticsRooms;
+    final futures = analyticsRooms.map(
+      (r) => r.requestParticipants(
+        [Membership.join, Membership.invite, Membership.knock],
+        false,
+        true,
+      ),
+    );
+    await Future.wait(futures);
 
+    final analyicsRoomIds = analyticsRooms.map((r) => r.id).toSet();
+    _analyticsRoomSub?.cancel();
+    _analyticsRoomSub = widget.room.client.onRoomState.stream
+        .where(
+          (event) =>
+              analyicsRoomIds.contains(event.roomId) &&
+              event.state.type == EventTypes.RoomMember,
+        )
+        .rateLimit(const Duration(seconds: 1))
+        .listen((_) => setState(() {}));
+
+    if (mounted) setState(() {});
+  }
+
+  Map<User, List<Room>> get _knockingAdmins {
+    final Map<User, List<Room>> knockingAdmins = {};
     for (final analyticsRoom in widget.room.client.allMyAnalyticsRooms) {
-      final knocking = await analyticsRoom.requestParticipants(
-        [Membership.knock],
-      );
-      final knockingSpace =
-          knocking.where((u) => u.content['reason'] == widget.room.id).toList();
-      if (knockingSpace.isEmpty) continue;
+      final knocking = analyticsRoom
+          .getParticipants([Membership.knock])
+          .where((u) => u.content['reason'] == widget.room.id)
+          .toList();
 
-      for (final admin in admins) {
-        if (knockingSpace.any((u) => u.id == admin.id)) {
-          _knockingAdmins.putIfAbsent(admin, () => []).add(analyticsRoom);
-        }
+      if (knocking.isEmpty) continue;
+      for (final admin in knocking) {
+        knockingAdmins.putIfAbsent(admin, () => []).add(analyticsRoom);
       }
     }
 
-    if (mounted) {
-      setState(() {});
-    }
+    return knockingAdmins;
   }
 
   Future<void> _onTap(BuildContext context) async {
@@ -109,8 +127,6 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
         }
       },
     );
-
-    if (mounted) _fetchKnockingAdmins();
   }
 
   @override
