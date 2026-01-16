@@ -67,26 +67,28 @@ class VocabPracticeView extends StatelessWidget {
           ],
         ),
       ),
-      body: MaxWidthBody(
-        withScrolling: false,
+      body: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 16.0,
           vertical: 24.0,
         ),
-        showBorder: false,
-        child: ValueListenableBuilder(
-          valueListenable: controller.sessionState,
-          builder: (context, state, __) {
-            return switch (state) {
-              AsyncError<VocabPracticeSessionModel>(:final error) =>
-                ErrorIndicator(message: error.toString()),
-              AsyncLoaded<VocabPracticeSessionModel>(:final value) =>
-                value.isComplete
-                    ? CompletedActivitySessionView(state.value, controller)
-                    : _VocabActivityView(controller),
-              _ => loading,
-            };
-          },
+        child: MaxWidthBody(
+          withScrolling: false,
+          showBorder: false,
+          child: ValueListenableBuilder(
+            valueListenable: controller.sessionState,
+            builder: (context, state, __) {
+              return switch (state) {
+                AsyncError<VocabPracticeSessionModel>(:final error) =>
+                  ErrorIndicator(message: error.toString()),
+                AsyncLoaded<VocabPracticeSessionModel>(:final value) =>
+                  value.isComplete
+                      ? CompletedActivitySessionView(state.value, controller)
+                      : _VocabActivityView(controller),
+                _ => loading,
+              };
+            },
+          ),
         ),
       ),
     );
