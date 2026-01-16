@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Aseta toimintojen m\xe4\xe4r\xe4 seuraavan kurssiaiheen avaamiseksi";
     },
-    get$mustHave10Words() {
-      return "Sinulla on oltava v\xe4hint\xe4\xe4n 10 sanastoa harjoiteltavaksi. Yrit\xe4 puhua yst\xe4v\xe4n tai Pangea Botin kanssa l\xf6yt\xe4\xe4ksesi lis\xe4\xe4!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Kieli ja kielitaso m\xe4\xe4r\xe4ytyv\xe4t aktiviteettisuunnitelman mukaan";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Jos selaimesi est\xe4\xe4 lataukset, ota lataukset k\xe4ytt\xf6\xf6n t\xe4lle sivustolle.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BDQi8zIEHjFvxBk8RL6p81ruVZM="] = d.current;
+  d["ye+QFARwXGkGSd6jInMOduV1QJo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u6b21\u306e\u30b3\u30fc\u30b9\u30c8\u30d4\u30c3\u30af\u3092\u30a2\u30f3\u30ed\u30c3\u30af\u3059\u308b\u305f\u3081\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u306e\u6570\u3092\u8a2d\u5b9a\u3057\u307e\u3059";
     },
-    get$mustHave10Words() {
-      return "\u7df4\u7fd2\u3059\u308b\u306b\u306f\u3001\u5c11\u306a\u304f\u3068\u308210\u8a9e\u306e\u8a9e\u5f59\u304c\u5fc5\u8981\u3067\u3059\u3002\u53cb\u9054\u3084Pangea Bot\u306b\u8a71\u3057\u304b\u3051\u3066\u3001\u3082\u3063\u3068\u767a\u898b\u3057\u3066\u307f\u3066\u304f\u3060\u3055\u3044\uff01";
-    },
     get$activitySettingsOverrideWarning() {
       return "\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u30d7\u30e9\u30f3\u306b\u3088\u3063\u3066\u6c7a\u5b9a\u3055\u308c\u305f\u8a00\u8a9e\u3068\u8a00\u8a9e\u30ec\u30d9\u30eb";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\u30d6\u30e9\u30a6\u30b6\u304c\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3092\u30d6\u30ed\u30c3\u30af\u3057\u3066\u3044\u308b\u5834\u5408\u306f\u3001\u3053\u306e\u30b5\u30a4\u30c8\u306e\u30c0\u30a6\u30f3\u30ed\u30fc\u30c9\u3092\u6709\u52b9\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["R7YAhLbTDF7Eeet3iloNfPjOa4U="] = d.current;
+  d["TtP/fjE31MliFZH9cPu7AynNBmM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

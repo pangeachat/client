@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u05e7\u05d1\u05e2 \u05d0\u05ea \u05de\u05e1\u05e4\u05e8 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05dc\u05e4\u05ea\u05d9\u05d7\u05ea \u05e0\u05d5\u05e9\u05d0 \u05d4\u05e7\u05d5\u05e8\u05e1 \u05d4\u05d1\u05d0";
     },
-    get$mustHave10Words() {
-      return "\u05e2\u05dc\u05d9\u05da \u05e9\u05d9\u05d4\u05d9\u05d5 \u05dc\u05e4\u05d7\u05d5\u05ea 10 \u05de\u05d9\u05dc\u05d9\u05dd \u05dc\u05d0\u05d5\u05e6\u05e8 \u05de\u05d9\u05dc\u05d9\u05dd \u05db\u05d3\u05d9 \u05dc\u05ea\u05e8\u05d2\u05dc \u05d0\u05d5\u05ea\u05df. \u05e0\u05e1\u05d4 \u05dc\u05d3\u05d1\u05e8 \u05e2\u05dd \u05d7\u05d1\u05e8 \u05d0\u05d5 \u05e2\u05dd \u05e4\u05e0\u05d2\u05d9\u05d0\u05d4 \u05d1\u05d5\u05d8 \u05db\u05d3\u05d9 \u05dc\u05d2\u05dc\u05d5\u05ea \u05e2\u05d5\u05d3!";
-    },
     get$activitySettingsOverrideWarning() {
       return "\u05e9\u05e4\u05d4 \u05d5\u05e8\u05de\u05ea \u05e9\u05e4\u05d4 \u05e0\u05e7\u05d1\u05e2\u05d5\u05ea \u05e2\u05dc \u05d9\u05d3\u05d9 \u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\u05d0\u05dd \u05d4\u05d3\u05e4\u05d3\u05e4\u05df \u05e9\u05dc\u05da \u05d7\u05d5\u05e1\u05dd \u05d4\u05d5\u05e8\u05d3\u05d5\u05ea, \u05d0\u05e0\u05d0 \u05d0\u05e4\u05e9\u05e8 \u05d4\u05d5\u05e8\u05d3\u05d5\u05ea \u05dc\u05d0\u05ea\u05e8 \u05d6\u05d4.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HbH6VezcQgS0fiFoUFcFTMwmSzQ="] = d.current;
+  d["vKpq+8F7jfrIraTQlap283fT5+8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_631.part.js.map

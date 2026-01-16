@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Postavite broj aktivnosti za otklju\u010davanje sljede\u0107e teme te\u010daja";
     },
-    get$mustHave10Words() {
-      return "Morate imati najmanje 10 rije\u010di za vokabular kako biste ih vje\u017ebali. Poku\u0161ajte razgovarati s prijateljem ili Pangea Botom kako biste otkrili vi\u0161e!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Jezik i razina jezika odre\u0111eni planom aktivnosti";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Ako va\u0161 preglednik blokira preuzimanja, molimo omogu\u0107ite preuzimanja za ovu stranicu.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H5eY47gWqsGIPNYgaLYIS8Y99v8="] = d.current;
+  d["7lHJl1OP/hiC2OdfZmoqKBKKDFA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_633.part.js.map

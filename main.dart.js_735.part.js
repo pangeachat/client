@@ -5309,9 +5309,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Ustaw liczb\u0119 aktywno\u015bci do odblokowania nast\u0119pnego tematu kursu";
     },
-    get$mustHave10Words() {
-      return "Musisz mie\u0107 co najmniej 10 s\u0142\xf3wek do \u0107wiczenia. Spr\xf3buj porozmawia\u0107 z przyjacielem lub Pangea Bot, aby odkry\u0107 wi\u0119cej!";
-    },
     get$activitySettingsOverrideWarning() {
       return "J\u0119zyk i poziom j\u0119zykowy okre\u015blone przez plan aktywno\u015bci";
     },
@@ -5327,6 +5324,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Je\u015bli Twoja przegl\u0105darka blokuje pobieranie, w\u0142\u0105cz pobieranie dla tej strony.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5340,7 +5349,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CZbo0hgD3ZW7zPDGrL7m4nEaP58="] = d.current;
+  d["I5lsxnn/rQEla56jgG6W+6vgNvs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_735.part.js.map

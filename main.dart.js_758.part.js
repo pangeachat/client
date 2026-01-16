@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Ange antalet aktiviteter f\xf6r att l\xe5sa upp n\xe4sta kurs\xe4mne";
     },
-    get$mustHave10Words() {
-      return "Du m\xe5ste ha minst 10 ord f\xf6r att \xf6va dem. F\xf6rs\xf6k att prata med en v\xe4n eller Pangea Bot f\xf6r att uppt\xe4cka mer!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Spr\xe5k och spr\xe5kniv\xe5 best\xe4ms av aktivitetsplanen";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Om din webbl\xe4sare blockerar nedladdningar, v\xe4nligen aktivera nedladdningar f\xf6r den h\xe4r sidan.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oW4sS+1ftY6+mmR41DTCBD+pAzc="] = d.current;
+  d["c/lnJecPAFyrqsCsSZONJeZHorU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_758.part.js.map

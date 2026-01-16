@@ -5309,9 +5309,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u09aa\u09b0\u09ac\u09b0\u09cd\u09a4\u09c0 \u0995\u09cb\u09b0\u09cd\u09b8 \u09ac\u09bf\u09b7\u09af\u09bc \u0989\u09a8\u09cd\u09ae\u09c1\u0995\u09cd\u09a4 \u0995\u09b0\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u0995\u09be\u09b0\u09cd\u09af\u0995\u09cd\u09b0\u09ae\u09c7\u09b0 \u09b8\u0982\u0996\u09cd\u09af\u09be \u09a8\u09bf\u09b0\u09cd\u09a7\u09be\u09b0\u09a3 \u0995\u09b0\u09c1\u09a8";
     },
-    get$mustHave10Words() {
-      return "\u0986\u09aa\u09a8\u09be\u09b0 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8\u09c7\u09b0 \u099c\u09a8\u09cd\u09af \u0985\u09a8\u09cd\u09a4\u09a4 10\u099f\u09bf \u09b6\u09ac\u09cd\u09a6 \u09a5\u09be\u0995\u09a4\u09c7 \u09b9\u09ac\u09c7\u0964 \u0986\u09b0\u0993 \u099c\u09be\u09a8\u09be\u09b0 \u099c\u09a8\u09cd\u09af \u098f\u0995\u099f\u09bf \u09ac\u09a8\u09cd\u09a7\u09c1\u09b0 \u09b8\u09be\u09a5\u09c7 \u0995\u09a5\u09be \u09ac\u09b2\u09c1\u09a8 \u09ac\u09be Pangea Bot \u098f\u09b0 \u09b8\u09be\u09a5\u09c7 \u0995\u09a5\u09be \u09ac\u09b2\u09c1\u09a8!";
-    },
     get$activitySettingsOverrideWarning() {
       return "\u0995\u09be\u09b0\u09cd\u09af\u0995\u09b2\u09be\u09aa \u09aa\u09b0\u09bf\u0995\u09b2\u09cd\u09aa\u09a8\u09be\u09b0 \u09a6\u09cd\u09ac\u09be\u09b0\u09be \u09a8\u09bf\u09b0\u09cd\u09a7\u09be\u09b0\u09bf\u09a4 \u09ad\u09be\u09b7\u09be \u098f\u09ac\u0982 \u09ad\u09be\u09b7\u09be\u09b0 \u09b8\u09cd\u09a4\u09b0";
     },
@@ -5327,6 +5324,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\u09af\u09a6\u09bf \u0986\u09aa\u09a8\u09be\u09b0 \u09ac\u09cd\u09b0\u09be\u0989\u099c\u09be\u09b0 \u09a1\u09be\u0989\u09a8\u09b2\u09cb\u09a1 \u09ac\u09cd\u09b2\u0995 \u0995\u09b0\u09c7, \u0985\u09a8\u09c1\u0997\u09cd\u09b0\u09b9 \u0995\u09b0\u09c7 \u098f\u0987 \u09b8\u09be\u0987\u099f\u09c7\u09b0 \u099c\u09a8\u09cd\u09af \u09a1\u09be\u0989\u09a8\u09b2\u09cb\u09a1 \u09b8\u0995\u09cd\u09b7\u09ae \u0995\u09b0\u09c1\u09a8\u0964";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5340,7 +5349,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["z4dqU8LRN4JtTT0DYnKBA3OM8P8="] = d.current;
+  d["HTxdx3fpFe+Jj2PswXQ7zp0AntY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map

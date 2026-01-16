@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Socraigh an l\xedon gn\xedomha\xedochta\xed le hOscail an topaic ch\xfarsa seo chugainn";
     },
-    get$mustHave10Words() {
-      return "Caithfidh go mbeidh 10 focal le haghaidh cleachtaidh agat ar a laghad. Bain triail as labhairt le cara n\xf3 le Pangea Bot chun tuilleadh a fh\xe1il amach!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Teanga agus leibh\xe9al teanga a chinneadh de r\xe9ir plean gn\xedomha\xedochta";
     },
@@ -5325,6 +5322,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$webDownloadPermissionMessage() {
       return "M\xe1s blocann do bhrabhs\xe1la\xed \xedosl\xf3d\xe1lacha, le do thoil, gn\xedomhachtaigh \xedosl\xf3d\xe1lacha don su\xedomh seo.";
+    },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5342,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NijNwTCC2vCmGL53HdFasJAk7pY="] = d.current;
+  d["AQdgEJA+b5/PMt+Kh4vg7mnCp0Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_615.part.js.map

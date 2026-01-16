@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Stabile\u0219te num\u0103rul de activit\u0103\u021bi pentru a debloca urm\u0103torul subiect al cursului";
     },
-    get$mustHave10Words() {
-      return "Trebuie s\u0103 ai cel pu\u021bin 10 cuvinte de vocabular pentru a le exersa. \xcencearc\u0103 s\u0103 vorbe\u0219ti cu un prieten sau cu Pangea Bot pentru a descoperi mai multe!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Limba \u0219i nivelul de limb\u0103 sunt determinate de planul de activitate";
     },
@@ -5325,6 +5322,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$webDownloadPermissionMessage() {
       return "Dac\u0103 browserul dvs. blocheaz\u0103 desc\u0103rc\u0103rile, v\u0103 rug\u0103m s\u0103 activa\u021bi desc\u0103rc\u0103rile pentru acest site.";
+    },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5342,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["VFtzrxaNHh/3dvVt82UuEAk6+54="] = d.current;
+  d["zsEdWOAJotUt5/lfcXbbcdbtwb8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_742.part.js.map

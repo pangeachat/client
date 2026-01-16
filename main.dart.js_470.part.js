@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Agordu la nombron de aktivecoj por mal\u015dlosi la sekvan kurson";
     },
-    get$mustHave10Words() {
-      return "Vi devas havi almena\u016d 10 vortojn por praktiki ilin. Provu paroli kun amiko a\u016d Pangea Bot por malkovri pli!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Lingvo kaj lingvonivelo determinita de la aktiviteca plano";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Se via retumilo blokas el\u015dutojn, bonvolu ebligi el\u015dutojn por \u0109i tiu retejo.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ErYYhgNkeaXXQSm2cxNoJQHgEEA="] = d.current;
+  d["mQuYKAJ4eI2w5iXQyJOsCqYN1oc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_470.part.js.map

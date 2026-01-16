@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\ub2e4\uc74c \uacfc\uc815 \uc8fc\uc81c\ub97c \uc7a0\uae08 \ud574\uc81c\ud560 \ud65c\ub3d9 \uc218\ub97c \uc124\uc815\ud558\uc138\uc694";
     },
-    get$mustHave10Words() {
-      return "\uc5f0\uc2b5\ud560 \ub2e8\uc5b4\uac00 \ucd5c\uc18c 10\uac1c \uc774\uc0c1 \uc788\uc5b4\uc57c \ud569\ub2c8\ub2e4. \uce5c\uad6c\ub098 Pangea Bot\uacfc \ub300\ud654\ud558\uc5ec \ub354 \ub9ce\uc740 \uac83\uc744 \ubc1c\uacac\ud574 \ubcf4\uc138\uc694!";
-    },
     get$activitySettingsOverrideWarning() {
       return "\ud65c\ub3d9 \uacc4\ud68d\uc5d0 \uc758\ud574 \uacb0\uc815\ub41c \uc5b8\uc5b4 \ubc0f \uc5b8\uc5b4 \uc218\uc900";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\ube0c\ub77c\uc6b0\uc800\uac00 \ub2e4\uc6b4\ub85c\ub4dc\ub97c \ucc28\ub2e8\ud558\ub294 \uacbd\uc6b0, \uc774 \uc0ac\uc774\ud2b8\uc5d0 \ub300\ud55c \ub2e4\uc6b4\ub85c\ub4dc\ub97c \ud65c\uc131\ud654\ud574 \uc8fc\uc138\uc694.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TTIWplaPUJfKjDjF13GBLoVJRpw="] = d.current;
+  d["xzB7KrDPktXnLD43etHlfGwPxcs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_712.part.js.map

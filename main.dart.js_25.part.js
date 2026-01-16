@@ -5320,9 +5320,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
     },
-    get$mustHave10Words() {
-      return string$.Voc__d;
-    },
     get$activitySettingsOverrideWarning() {
       return string$.Idioma;
     },
@@ -5337,6 +5334,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$webDownloadPermissionMessage() {
       return string$.Se_o_s;
+    },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -10631,9 +10640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
-    },
-    get$mustHave10Words() {
-      return string$.Voc__d;
     },
     get$activitySettingsOverrideWarning() {
       return string$.Idioma;
@@ -15944,9 +15950,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return string$.Definao;
     },
-    get$mustHave10Words() {
-      return "Voc\xea deve ter pelo menos 10 palavras de vocabul\xe1rio para praticar. Tente conversar com um amigo ou com o Pangea Bot para descobrir mais!";
-    },
     get$activitySettingsOverrideWarning() {
       return string$.Idioma;
     },
@@ -16147,7 +16150,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Usu_ri: "Usu\xe1rios inativos que n\xe3o fizeram login desde a introdu\xe7\xe3o deste recurso n\xe3o ver\xe3o sua solicita\xe7\xe3o.\n\nO bot\xe3o Solicitar aparecer\xe1 assim que eles retornarem. Voc\xea pode reenviar a solicita\xe7\xe3o mais tarde clicando no bot\xe3o Solicitar sob o nome deles quando estiver dispon\xedvel.",
     Vis_ve: 'Vis\xedvel para a comunidade mais ampla do Pangea Chat via "Encontrar um curso"',
     Voc__a: "Voc\xea atualmente possui uma assinatura promocional vital\xedcia. Envie uma mensagem para support@pangea.chat para ajuda na altera\xe7\xe3o da sua assinatura.",
-    Voc__d: "Voc\xea deve ter pelo menos 10 palavras de vocabul\xe1rio para pratic\xe1-las. Tente conversar com um amigo ou com o Pangea Bot para descobrir mais!",
     Voc__e: "Voc\xea est\xe1 prestes a sair deste chat. Outros usu\xe1rios ver\xe3o que voc\xea saiu do chat.",
     Voc__g: "Voc\xea gostaria de desativar a assist\xeancia autom\xe1tica de idioma?",
     Voc__j: "Voc\xea j\xe1 est\xe1 em um curso com este plano. Voc\xea quer criar um curso com o mesmo plano ou ir para o curso existente?",
@@ -16163,7 +16165,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EwuH2GhAmzfV7Zf0c1KvOo7MKNg="] = d.current;
+  d["iEjs5y8rOJAr84v0dgTmyuw/BtY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

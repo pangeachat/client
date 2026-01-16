@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Indstil antallet af aktiviteter for at l\xe5se op for det n\xe6ste kursusemne";
     },
-    get$mustHave10Words() {
-      return "Du skal have mindst 10 ordforr\xe5dsord for at \xf8ve dem. Pr\xf8v at tale med en ven eller Pangea Bot for at opdage mere!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Sprog og sprogniveau bestemt af aktivitetsplan";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "Hvis din browser blokerer downloads, bedes du aktivere downloads for dette site.";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3gVisV9bYbWZyW7nmcFTb69qOKQ="] = d.current;
+  d["0OHH07Tk8cpZmnJJ+P6c2gNoY74="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

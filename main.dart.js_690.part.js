@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya";
     },
-    get$mustHave10Words() {
-      return "Anda harus memiliki setidaknya 10 kata kosakata untuk berlatih. Cobalah berbicara dengan teman atau Pangea Bot untuk menemukan lebih banyak!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Bahasa dan tingkat bahasa ditentukan oleh rencana aktivitas";
     },
@@ -5325,6 +5322,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$webDownloadPermissionMessage() {
       return "Jika browser Anda memblokir unduhan, silakan aktifkan unduhan untuk situs ini.";
+    },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5342,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HoAwQ9DD4p3YB/MmPE3tIjbAX7k="] = d.current;
+  d["apGbsWTRpj1yUbxF8UGWJ4qyJHs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_690.part.js.map

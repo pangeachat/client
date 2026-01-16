@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Establece o n\xfamero de actividades para desbloquear o pr\xf3ximo tema do curso";
     },
-    get$mustHave10Words() {
-      return "Debes ter polo menos 10 palabras de vocabulario para practic\xe1las. Intenta falar cun amigo ou co Pangea Bot para descubrir m\xe1is!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Idioma e nivel de idioma determinados polo plan de actividade";
     },
@@ -5325,6 +5322,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$webDownloadPermissionMessage() {
       return "Se o teu navegador bloquea descargas, por favor, habilita as descargas para este sitio.";
+    },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5342,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KPXZ6wjjT6ZG7GwDA6EReax/3OI="] = d.current;
+  d["D95S7xkAH9XRKhJ7FkQ6UFBxIlI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_620.part.js.map

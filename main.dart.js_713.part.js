@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Nustatykite veikl\u0173 skai\u010di\u0173, kad atrakintum\u0117te kit\u0105 kurso tem\u0105";
     },
-    get$mustHave10Words() {
-      return "Turite tur\u0117ti bent 10 \u017eod\u017ei\u0173, kad gal\u0117tum\u0117te juos praktikuoti. Pabandykite pasikalb\u0117ti su draugu arba Pangea Bot, kad su\u017einotum\u0117te daugiau!";
-    },
     get$activitySettingsOverrideWarning() {
       return "Kalba ir kalbos lygis nustatomi pagal veiklos plan\u0105";
     },
@@ -5325,6 +5322,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$webDownloadPermissionMessage() {
       return "Jei j\u016bs\u0173 nar\u0161ykl\u0117 blokuoja atsisiuntimus, pra\u0161ome \u012fgalinti atsisiuntimus \u0161iam tinklalapiui.";
+    },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5342,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GZU0SwV4Uz2kHFEia0KxeoQGjzE="] = d.current;
+  d["OHNOb4PJgJTC4+ZMyyUvgCsoAI8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_713.part.js.map

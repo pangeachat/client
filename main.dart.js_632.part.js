@@ -5308,9 +5308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u0905\u0917\u0932\u0947 \u092a\u093e\u0920\u094d\u092f\u0915\u094d\u0930\u092e \u0935\u093f\u0937\u092f \u0915\u094b \u0905\u0928\u0932\u0949\u0915 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0917\u0924\u093f\u0935\u093f\u0927\u093f\u092f\u094b\u0902 \u0915\u0940 \u0938\u0902\u0916\u094d\u092f\u093e \u0928\u093f\u0930\u094d\u0927\u093e\u0930\u093f\u0924 \u0915\u0930\u0947\u0902";
     },
-    get$mustHave10Words() {
-      return "\u0906\u092a\u0915\u0947 \u092a\u093e\u0938 \u0909\u0928\u094d\u0939\u0947\u0902 \u0905\u092d\u094d\u092f\u093e\u0938 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0915\u092e \u0938\u0947 \u0915\u092e 10 \u0936\u092c\u094d\u0926 \u0939\u094b\u0928\u0947 \u091a\u093e\u0939\u093f\u090f\u0964 \u0905\u0927\u093f\u0915 \u091c\u093e\u0928\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u0915\u093f\u0938\u0940 \u092e\u093f\u0924\u094d\u0930 \u092f\u093e Pangea Bot \u0938\u0947 \u092c\u093e\u0924 \u0915\u0930\u0928\u0947 \u0915\u0940 \u0915\u094b\u0936\u093f\u0936 \u0915\u0930\u0947\u0902!";
-    },
     get$activitySettingsOverrideWarning() {
       return "\u092d\u093e\u0937\u093e \u0914\u0930 \u092d\u093e\u0937\u093e \u0938\u094d\u0924\u0930 \u0917\u0924\u093f\u0935\u093f\u0927\u093f \u092f\u094b\u091c\u0928\u093e \u0926\u094d\u0935\u093e\u0930\u093e \u0928\u093f\u0930\u094d\u0927\u093e\u0930\u093f\u0924 \u0915\u093f\u092f\u093e \u0917\u092f\u093e \u0939\u0948";
     },
@@ -5326,6 +5323,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$webDownloadPermissionMessage() {
       return "\u092f\u0926\u093f \u0906\u092a\u0915\u093e \u092c\u094d\u0930\u093e\u0909\u091c\u093c\u0930 \u0921\u093e\u0909\u0928\u0932\u094b\u0921 \u0915\u094b \u092c\u094d\u0932\u0949\u0915 \u0915\u0930\u0924\u093e \u0939\u0948, \u0924\u094b \u0915\u0943\u092a\u092f\u093e \u0907\u0938 \u0938\u093e\u0907\u091f \u0915\u0947 \u0932\u093f\u090f \u0921\u093e\u0909\u0928\u0932\u094b\u0921 \u0938\u0915\u094d\u0937\u092e \u0915\u0930\u0947\u0902\u0964";
     },
+    get$practiceGrammar() {
+      return "Practice grammar";
+    },
+    get$notEnoughToPractice() {
+      return "Send more messages to unlock practice";
+    },
+    get$constructUseCorGCDesc() {
+      return "Correct grammar category practice";
+    },
+    get$constructUseIncGCDesc() {
+      return "Incorrect grammar category practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5339,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1i9pZJ9lVXZjPoeYlIHE7IcwBTA="] = d.current;
+  d["L6bcMjkHw+ccuZDzOmcJQ8OJ9XI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_632.part.js.map
