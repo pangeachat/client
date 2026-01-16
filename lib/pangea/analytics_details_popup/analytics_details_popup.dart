@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:diacritic/diacritic.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
@@ -241,10 +242,11 @@ class _PracticeButton extends StatelessWidget {
       label: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (!enabled) ...[
-            const Icon(Icons.lock_outline, size: 18),
-            const SizedBox(width: 4),
-          ],
+          Icon(
+            enabled ? Symbols.fitness_center : Icons.lock_outline,
+            size: 18,
+          ),
+          const SizedBox(width: 4),
           Text(view.practiceButtonText(context)),
         ],
       ),
