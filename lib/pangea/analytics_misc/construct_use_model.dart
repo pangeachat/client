@@ -140,8 +140,8 @@ class ConstructUses {
     _uses.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
   }
 
-  void addUse(OneConstructUse use) {
-    _uses.add(use);
+  void addUses(List<OneConstructUse> uses) {
+    _uses.addAll(uses);
     _sortUses();
   }
 
