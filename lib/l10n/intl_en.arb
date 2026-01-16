@@ -5046,5 +5046,6 @@
   "voice": "Voice",
   "youLeftTheChat": "🚪 You left the chat",
   "downloadInitiated": "Download initiated",
-  "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site."
+  "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
+  "exitPractice": "Exit practice? Your progress will be lost."
 }

@@ -9,6 +9,7 @@ import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/archive/archive.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat_access_settings/chat_access_settings_controller.dart';
@@ -582,6 +583,67 @@ abstract class AppRoutes {
                           state,
                           const VocabPractice(),
                         );
+                      },
+                      onExit: (context, state) async {
+                        // Check if bypass flag was set before navigation
+                        if (VocabPractice.bypassExitConfirmation) {
+                          VocabPractice.bypassExitConfirmation = false;
+                          return true;
+                        }
+
+                        final bool confirm = await showDialog<bool>(
+                              context: context,
+                              builder: (context) {
+                                return Center(
+                                  child: ConstrainedBox(
+                                    constraints: const BoxConstraints(
+                                      maxWidth: 400,
+                                    ),
+                                    child: Dialog(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(24.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Center(
+                                              child: Text(
+                                                L10n.of(context).exitPractice,
+                                                style: const TextStyle(
+                                                  fontSize: 28,
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 16),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop(true);
+                                              },
+                                              child: Text(L10n.of(context).yes),
+                                            ),
+                                            const SizedBox(height: 16),
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                Navigator.of(context)
+                                                    .pop(false);
+                                              },
+                                              child: Text(L10n.of(context).no),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ) ??
+                            false;
+
+                        return confirm;
                       },
                     ),
                     GoRoute(

@@ -46,6 +46,8 @@ class SessionLoader extends AsyncLoader<VocabPracticeSessionModel> {
 }
 
 class VocabPractice extends StatefulWidget {
+  static bool bypassExitConfirmation = false;
+
   const VocabPractice({super.key});
 
   @override
@@ -83,11 +85,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   @override
   void dispose() {
     _languageStreamSubscription?.cancel();
-    if (_isComplete) {
-      VocabPracticeSessionRepo.clear();
-    } else {
-      _saveSession();
-    }
+    VocabPracticeSessionRepo.clear();
     _sessionLoader.dispose();
     activityState.dispose();
     activityConstructId.dispose();
@@ -185,12 +183,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     }
   }
 
-  Future<void> _saveSession() async {
-    if (_sessionLoader.isLoaded) {
-      await VocabPracticeSessionRepo.update(_sessionLoader.value!);
-    }
-  }
-
   Future<void> _waitForAnalytics() async {
     if (!_analyticsService.initCompleter.isCompleted) {
       MatrixState.pangeaController.initControllers();
@@ -225,7 +217,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
   Future<void> reloadSession() async {
     _resetActivityState();
     _resetSessionState();
-    await VocabPracticeSessionRepo.clear();
+
     _sessionLoader.reset();
     await _startSession();
   }
@@ -240,7 +232,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       bonus,
       forceUpdate: true,
     );
-    await _saveSession();
   }
 
   bool _continuing = false;
@@ -394,7 +385,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
-    await _saveSession();
     if (!correct) return;
 
     // Display the fact that the choice was correct before loading the next activity
@@ -403,7 +393,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
     // Then mark this activity as completed, and either load the next or complete the session
     _sessionLoader.value!.completeActivity();
     progressNotifier.value = _sessionLoader.value!.progress;
-    await _saveSession();
 
     _isComplete ? await _completeSession() : await _continueSession();
   }

@@ -14,11 +14,6 @@ class VocabPracticeSessionRepo {
   static final GetStorage _storage = GetStorage('vocab_practice_session');
 
   static Future<VocabPracticeSessionModel> get() async {
-    final cached = _getCached();
-    if (cached != null) {
-      return cached;
-    }
-
     final r = Random();
     final activityTypes = [
       ActivityTypeEnum.lemmaMeaning,
@@ -46,14 +41,8 @@ class VocabPracticeSessionRepo {
       startedAt: DateTime.now(),
       practiceTargets: targets,
     );
-    await _setCached(session);
     return session;
   }
-
-  static Future<void> update(
-    VocabPracticeSessionModel session,
-  ) =>
-      _setCached(session);
 
   static Future<void> clear() => _storage.erase();
 
@@ -84,25 +73,5 @@ class VocabPracticeSessionRepo {
       }
     }
     return targets;
-  }
-
-  static VocabPracticeSessionModel? _getCached() {
-    final keys = List<String>.from(_storage.getKeys());
-    if (keys.isEmpty) return null;
-    try {
-      final json = _storage.read(keys.first) as Map<String, dynamic>;
-      return VocabPracticeSessionModel.fromJson(json);
-    } catch (e) {
-      _storage.remove(keys.first);
-      return null;
-    }
-  }
-
-  static Future<void> _setCached(VocabPracticeSessionModel session) async {
-    await _storage.erase();
-    await _storage.write(
-      session.startedAt.toIso8601String(),
-      session.toJson(),
-    );
   }
 }
