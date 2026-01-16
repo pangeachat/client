@@ -18,7 +18,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class IgcController {
   final Function(Object) onError;
-  IgcController(this.onError);
+  final VoidCallback onFetch;
+  IgcController(this.onError, this.onFetch);
 
   bool _isFetching = false;
   String? _currentText;
@@ -321,6 +322,8 @@ class IgcController {
       onError(res.asError!);
       clear();
       return;
+    } else {
+      onFetch();
     }
 
     if (!_isFetching) return;

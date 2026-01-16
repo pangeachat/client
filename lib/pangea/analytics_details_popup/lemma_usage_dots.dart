@@ -24,16 +24,19 @@ class LemmaUsageDots extends StatelessWidget {
   });
 
   /// Find lemma uses for the given exercise type, to create dot list
-  List<bool> sortedUses(LearningSkillsEnum category) {
-    final List<bool> useList = [];
+  List<Color> sortedUses(LearningSkillsEnum category) {
+    final List<Color> useList = [];
     for (final OneConstructUse use in construct.cappedUses) {
-      if (use.xp == 0) {
-        continue;
-      }
       // If the use type matches the given category, save to list
       // Usage with positive XP is saved as true, else false
       if (category == use.useType.skillsEnumType) {
-        useList.add(use.xp > 0);
+        useList.add(
+          switch (use.xp) {
+            > 0 => AppConfig.success,
+            < 0 => Colors.red,
+            _ => Colors.grey[400]!,
+          },
+        );
       }
     }
     return useList;
@@ -42,13 +45,13 @@ class LemmaUsageDots extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Widget> dots = [];
-    for (final bool use in sortedUses(category)) {
+    for (final Color color in sortedUses(category)) {
       dots.add(
         Container(
           width: 15.0,
           height: 15.0,
           decoration: BoxDecoration(
-            color: use ? AppConfig.success : Colors.red,
+            color: color,
             shape: BoxShape.circle,
           ),
         ),

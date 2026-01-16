@@ -175,7 +175,9 @@ class LearningProgressIndicators extends StatelessWidget {
                           builder: (context, hovered) {
                             return Container(
                               decoration: BoxDecoration(
-                                color: hovered && canSelect
+                                color: (hovered && canSelect) ||
+                                        (selected ==
+                                            ProgressIndicatorEnum.level)
                                     ? Theme.of(context)
                                         .colorScheme
                                         .primary
