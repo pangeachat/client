@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/vocab_practice/choice_cards/audio_choice_card.dart';
@@ -17,6 +18,7 @@ import 'package:fluffychat/pangea/vocab_practice/vocab_practice_page.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_timer_widget.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class VocabPracticeView extends StatelessWidget {
   final VocabPracticeState controller;
@@ -123,13 +125,26 @@ class _VocabActivityView extends StatelessWidget {
                 child: ValueListenableBuilder(
                   valueListenable: controller.activityConstructId,
                   builder: (context, constructId, __) => constructId != null
-                      ? Text(
-                          constructId.lemma,
-                          textAlign: TextAlign.center,
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                      ? Column(
+                          spacing: 12.0,
+                          children: [
+                            Text(
+                              constructId.lemma,
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge
+                                  ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
+                            ),
+                            PhoneticTranscriptionWidget(
+                              text: constructId.lemma,
+                              textLanguage: MatrixState
+                                  .pangeaController.userController.userL2!,
+                              style: const TextStyle(fontSize: 14.0),
+                            ),
+                          ],
                         )
                       : const SizedBox(),
                 ),
