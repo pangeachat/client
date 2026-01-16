@@ -122,7 +122,9 @@ class PangeaController {
   }
 
   Future<void> _clearCache({List<String> exclude = const []}) async {
-    final List<Future<void>> futures = [];
+    final List<Future<void>> futures = [
+      matrixState.store.setString(SettingKeys.fontSizeFactor, ''),
+    ];
     for (final key in _storageKeys) {
       if (exclude.contains(key)) continue;
       futures.add(GetStorage(key).erase());
@@ -140,6 +142,7 @@ class PangeaController {
       );
     }
 
+    AppConfig.fontSizeFactor = 1.0;
     await Future.wait(futures);
   }
 
