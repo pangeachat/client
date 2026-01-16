@@ -5313,9 +5313,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$mustHave10Words() {
       return "Debes tener al menos 10 palabras de vocabulario para practicarlas. \xa1Intenta hablar con un amigo o con Pangea Bot para descubrir m\xe1s!";
     },
-    get$botSettings() {
-      return "Configuraciones del Bot";
-    },
     get$activitySettingsOverrideWarning() {
       return "Idioma y nivel de idioma determinados por el plan de actividad";
     },
@@ -5356,7 +5353,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iH754CHoIAUprVdwo+roknZTCDA="] = d.current;
+  d["6jllFvXeSz6MBJQ3x1TOf03s3Dg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

@@ -5323,9 +5323,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$mustHave10Words() {
       return string$.Voc__d;
     },
-    get$botSettings() {
-      return "Configura\xe7\xf5es do Bot";
-    },
     get$activitySettingsOverrideWarning() {
       return string$.Idioma;
     },
@@ -10637,9 +10634,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$mustHave10Words() {
       return string$.Voc__d;
-    },
-    get$botSettings() {
-      return "Configura\xe7\xf5es do Bot";
     },
     get$activitySettingsOverrideWarning() {
       return string$.Idioma;
@@ -15953,9 +15947,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$mustHave10Words() {
       return "Voc\xea deve ter pelo menos 10 palavras de vocabul\xe1rio para praticar. Tente conversar com um amigo ou com o Pangea Bot para descobrir mais!";
     },
-    get$botSettings() {
-      return "Configura\xe7\xf5es do Bot";
-    },
     get$activitySettingsOverrideWarning() {
       return string$.Idioma;
     },
@@ -16172,7 +16163,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BdzFej5HdP2XpIQCNHl8qkJ4M0k="] = d.current;
+  d["EwuH2GhAmzfV7Zf0c1KvOo7MKNg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

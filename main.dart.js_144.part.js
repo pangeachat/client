@@ -5312,9 +5312,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$mustHave10Words() {
       return "\u0412\u044b \u043f\u0430\u0432\u0456\u043d\u043d\u044b \u043c\u0435\u0446\u044c \u043d\u0435 \u043c\u0435\u043d\u0448 \u0437\u0430 10 \u0441\u043b\u043e\u045e \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u044b\u043a\u0430\u0432\u0430\u043d\u043d\u044f. \u041f\u0430\u0441\u043f\u0440\u0430\u0431\u0443\u0439\u0446\u0435 \u043f\u0430\u0433\u0430\u0432\u0430\u0440\u044b\u0446\u044c \u0437 \u0441\u044f\u0431\u0440\u0430\u043c \u0430\u0431\u043e Pangea Bot, \u043a\u0430\u0431 \u0434\u0430\u0432\u0435\u0434\u0430\u0446\u0446\u0430 \u0431\u043e\u043b\u044c\u0448!";
     },
-    get$botSettings() {
-      return "\u041d\u0430\u043b\u0430\u0434\u044b \u0431\u043e\u0442\u0430";
-    },
     get$activitySettingsOverrideWarning() {
       return "\u041c\u043e\u0432\u0430 \u0456 \u045e\u0437\u0440\u043e\u0432\u0435\u043d\u044c \u043c\u043e\u0432\u044b \u0432\u044b\u0437\u043d\u0430\u0447\u0430\u044e\u0446\u0446\u0430 \u043f\u043b\u0430\u043d\u0430\u043c \u0430\u043a\u0442\u044b\u045e\u043d\u0430\u0441\u0446\u0456";
     },
@@ -5346,7 +5343,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uM8i9SlFFWHqjgYslI6rR1j2FDM="] = d.current;
+  d["DEo/FJ5S2cvkyJauOELtxyn/0vU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map
