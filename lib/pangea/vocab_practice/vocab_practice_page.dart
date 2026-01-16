@@ -223,7 +223,6 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
   Future<void> _completeSession() async {
     _sessionLoader.value!.finishSession();
-    VocabPractice.bypassExitConfirmation = true;
     setState(() {});
 
     final bonus = _sessionLoader.value!.state.allBonusUses;
@@ -232,6 +231,7 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
       bonus,
       forceUpdate: true,
     );
+    VocabPractice.bypassExitConfirmation = true;
   }
 
   bool _continuing = false;
