@@ -22,6 +22,7 @@ import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_m
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_model.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_session_repo.dart';
 import 'package:fluffychat/pangea/vocab_practice/vocab_practice_view.dart';
@@ -258,6 +259,12 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
         activityState.value = const AsyncState.loading();
         final nextActivityCompleter = _queue.removeFirst();
         activityConstructId.value = nextActivityCompleter.key;
+        TtsController.tryToSpeak(
+          nextActivityCompleter.key.lemma,
+          langCode:
+              MatrixState.pangeaController.userController.userL2!.langCode,
+        );
+
         final activity = await nextActivityCompleter.value.future;
         activityState.value = AsyncState.loaded(activity);
       }
@@ -276,12 +283,16 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
     try {
       activityState.value = const AsyncState.loading();
-
       final req = requests.first;
+      activityConstructId.value = req.targetTokens.first.vocabConstructID;
+      TtsController.tryToSpeak(
+        req.targetTokens.first.vocabConstructID.lemma,
+        langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+      );
+
       final res = await _fetchActivity(req);
       if (!mounted) return;
 
-      activityConstructId.value = req.targetTokens.first.vocabConstructID;
       activityState.value = AsyncState.loaded(res);
     } catch (e) {
       if (!mounted) return;
@@ -396,6 +407,11 @@ class VocabPracticeState extends State<VocabPractice> with AnalyticsUpdater {
 
     await _saveSession();
     if (!correct) return;
+
+    TtsController.tryToSpeak(
+      activity.targetTokens.first.vocabConstructID.lemma,
+      langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+    );
 
     // Display the fact that the choice was correct before loading the next activity
     await Future.delayed(const Duration(milliseconds: 1000));
