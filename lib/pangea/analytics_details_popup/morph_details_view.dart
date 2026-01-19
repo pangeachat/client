@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_usage_content.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/construct_xp_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
-import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
@@ -54,11 +54,7 @@ class MorphDetailsView extends StatelessWidget {
               ),
               const Divider(),
               if (construct != null) ...[
-                ConstructXpWidget(
-                  icon: construct.lemmaCategory.icon(30.0),
-                  level: construct.lemmaCategory,
-                  points: construct.points,
-                ),
+                ConstructXPProgressBar(construct: construct.id),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: AnalyticsDetailsUsageContent(
