@@ -9,12 +9,12 @@ import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pages/homeserver_picker/homeserver_picker.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/login/sso_provider_enum.dart';
 import 'package:fluffychat/pangea/login/widgets/p_sso_dialog.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PangeaSsoButton extends StatelessWidget {
@@ -27,23 +27,25 @@ class PangeaSsoButton extends StatelessWidget {
     super.key,
   });
 
-  Future<void> _runSSOLogin(BuildContext context) => showAdaptiveDialog(
-        context: context,
-        builder: (context) => SSODialog(
-          future: () => _ssoAction(
-            IdentityProvider(
-              id: provider.id,
-              name: provider.name,
-            ),
-            context,
-          ),
-        ),
-      );
+  Future<void> _runSSOLogin(BuildContext context) async {
+    final token = await showAdaptiveDialog<String?>(
+      context: context,
+      builder: (context) => SSODialog(
+        future: () => _getSSOToken(context),
+      ),
+    );
 
-  Future<void> _ssoAction(
-    IdentityProvider provider,
-    BuildContext context,
-  ) async {
+    if (token == null || token.isEmpty) {
+      return;
+    }
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () => _ssoAction(token, context),
+    );
+  }
+
+  Future<String?> _getSSOToken(BuildContext context) async {
     final bool isDefaultPlatform = (PlatformInfos.isMobile ||
         PlatformInfos.isWeb ||
         PlatformInfos.isMacOS);
@@ -58,7 +60,7 @@ class PangeaSsoButton extends StatelessWidget {
             : 'http://localhost:3001//login';
     final client = await Matrix.of(context).getLoginClient();
     final url = client.homeserver!.replace(
-      path: '/_matrix/client/v3/login/sso/redirect/${provider.id ?? ''}',
+      path: '/_matrix/client/v3/login/sso/redirect/${provider.id}',
       queryParameters: {'redirectUrl': redirectUrl},
     );
 
@@ -74,13 +76,20 @@ class PangeaSsoButton extends StatelessWidget {
     } catch (err) {
       if (err is PlatformException && err.code == 'CANCELED') {
         debugPrint("user cancelled SSO login");
-        return;
+        return null;
       }
       rethrow;
     }
     final token = Uri.parse(result).queryParameters['loginToken'];
-    if (token?.isEmpty ?? false) return;
+    if (token?.isEmpty ?? false) return null;
+    return token;
+  }
 
+  Future<void> _ssoAction(
+    String token,
+    BuildContext context,
+  ) async {
+    final client = Matrix.of(context).client;
     final redirect = client.onLoginStateChanged.stream
         .where((state) => state == LoginState.loggedIn)
         .first
@@ -110,7 +119,7 @@ class PangeaSsoButton extends StatelessWidget {
       await redirect;
     }
 
-    GoogleAnalytics.login(provider.name!, loginRes.userId);
+    GoogleAnalytics.login(provider.name, loginRes.userId);
   }
 
   @override
