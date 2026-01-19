@@ -1,10 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_builder.dart';
@@ -22,6 +21,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   final int? maxLines;
 
   final VoidCallback? onTranscriptionFetched;
+  final ValueNotifier<int>? reloadNotifier;
 
   const PhoneticTranscriptionWidget({
     super.key,
@@ -32,6 +32,7 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
     this.iconColor,
     this.maxLines,
     this.onTranscriptionFetched,
+    this.reloadNotifier,
   });
 
   @override
@@ -85,59 +86,58 @@ class _PhoneticTranscriptionWidgetState
                 key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
                 textLanguage: widget.textLanguage,
                 text: widget.text,
+                reloadNotifier: widget.reloadNotifier,
                 builder: (context, controller) {
-                  if (controller.isError) {
-                    return controller.error is UnsubscribedException
-                        ? ErrorIndicator(
-                            message: L10n.of(context)
-                                .subscribeToUnlockTranscriptions,
-                            onTap: () {
-                              MatrixState
-                                  .pangeaController.subscriptionController
-                                  .showPaywall(context);
-                            },
-                          )
-                        : ErrorIndicator(
-                            message:
-                                L10n.of(context).failedToFetchTranscription,
-                          );
-                  }
-
-                  if (controller.isLoading ||
-                      controller.transcription == null) {
-                    return const TextLoadingShimmer(
-                      width: 125.0,
-                      height: 20.0,
-                    );
-                  }
-
-                  return Row(
-                    spacing: 8.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          controller.transcription!,
-                          textScaler: TextScaler.noScaling,
-                          style: widget.style ??
-                              Theme.of(context).textTheme.bodyMedium,
-                          maxLines: widget.maxLines,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                  return switch (controller.state) {
+                    AsyncError(error: final error) =>
+                      error is UnsubscribedException
+                          ? ErrorIndicator(
+                              message: L10n.of(context)
+                                  .subscribeToUnlockTranscriptions,
+                              onTap: () {
+                                MatrixState
+                                    .pangeaController.subscriptionController
+                                    .showPaywall(context);
+                              },
+                            )
+                          : ErrorIndicator(
+                              message:
+                                  L10n.of(context).failedToFetchTranscription,
+                            ),
+                    AsyncLoaded<String>(value: final transcription) => Row(
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: Text(
+                              transcription,
+                              textScaler: TextScaler.noScaling,
+                              style: widget.style ??
+                                  Theme.of(context).textTheme.bodyMedium,
+                              maxLines: widget.maxLines,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Tooltip(
+                            message: _isPlaying
+                                ? L10n.of(context).stop
+                                : L10n.of(context).playAudio,
+                            child: Icon(
+                              _isPlaying
+                                  ? Icons.pause_outlined
+                                  : Icons.volume_up,
+                              size: widget.iconSize ?? 24,
+                              color: widget.iconColor ??
+                                  Theme.of(context).iconTheme.color,
+                            ),
+                          ),
+                        ],
                       ),
-                      Tooltip(
-                        message: _isPlaying
-                            ? L10n.of(context).stop
-                            : L10n.of(context).playAudio,
-                        child: Icon(
-                          _isPlaying ? Icons.pause_outlined : Icons.volume_up,
-                          size: widget.iconSize ?? 24,
-                          color: widget.iconColor ??
-                              Theme.of(context).iconTheme.color,
-                        ),
+                    _ => const TextLoadingShimmer(
+                        width: 125.0,
+                        height: 20.0,
                       ),
-                    ],
-                  );
+                  };
                 },
               ),
             ),

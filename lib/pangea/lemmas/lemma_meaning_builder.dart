@@ -8,29 +8,11 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class _LemmaMeaningLoader extends AsyncLoader<LemmaInfoResponse> {
-  final LemmaInfoRequest request;
-  _LemmaMeaningLoader(this.request) : super();
-
-  @override
-  Future<LemmaInfoResponse> fetch() async {
-    final result = await LemmaInfoRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      request,
-    );
-
-    if (result.isError) {
-      throw result.asError!.error;
-    }
-
-    return result.asValue!.value;
-  }
-}
-
 class LemmaMeaningBuilder extends StatefulWidget {
   final String langCode;
   final ConstructIdentifier constructId;
   final Map<String, dynamic> messageInfo;
+  final ValueNotifier<int>? reloadNotifier;
 
   final Widget Function(
     BuildContext context,
@@ -43,6 +25,7 @@ class LemmaMeaningBuilder extends StatefulWidget {
     required this.constructId,
     required this.builder,
     required this.messageInfo,
+    this.reloadNotifier,
   });
 
   @override
@@ -50,12 +33,14 @@ class LemmaMeaningBuilder extends StatefulWidget {
 }
 
 class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
-  late _LemmaMeaningLoader _loader;
+  final ValueNotifier<AsyncState<LemmaInfoResponse>> _loader =
+      ValueNotifier(const AsyncState.idle());
 
   @override
   void initState() {
     super.initState();
-    _reload();
+    _load();
+    widget.reloadNotifier?.addListener(_load);
   }
 
   @override
@@ -63,24 +48,22 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.constructId != widget.constructId ||
         oldWidget.langCode != widget.langCode) {
-      _loader.dispose();
-      _reload();
+      _load();
     }
   }
 
   @override
   void dispose() {
+    widget.reloadNotifier?.removeListener(_load);
     _loader.dispose();
     super.dispose();
   }
 
-  bool get isLoading => _loader.isLoading;
-  bool get isError => _loader.isError;
-
-  Object? get error =>
-      isError ? (_loader.state.value as AsyncError).error : null;
-
-  LemmaInfoResponse? get lemmaInfo => _loader.value;
+  AsyncState<LemmaInfoResponse> get state => _loader.value;
+  bool get isError => _loader.value is AsyncError;
+  bool get isLoaded => _loader.value is AsyncLoaded;
+  LemmaInfoResponse? get lemmaInfo =>
+      isLoaded ? (_loader.value as AsyncLoaded<LemmaInfoResponse>).value : null;
 
   LemmaInfoRequest get _request => LemmaInfoRequest(
         lemma: widget.constructId.lemma,
@@ -91,15 +74,23 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
         messageInfo: widget.messageInfo,
       );
 
-  void _reload() {
-    _loader = _LemmaMeaningLoader(_request);
-    _loader.load();
+  Future<void> _load() async {
+    _loader.value = const AsyncState.loading();
+    final result = await LemmaInfoRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      _request,
+    );
+
+    if (!mounted) return;
+    result.isError
+        ? _loader.value = AsyncState.error(result.asError!.error)
+        : _loader.value = AsyncState.loaded(result.asValue!.value);
   }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _loader.state,
+      valueListenable: _loader,
       builder: (context, _, __) => widget.builder(
         context,
         this,

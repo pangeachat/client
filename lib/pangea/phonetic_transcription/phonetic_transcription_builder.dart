@@ -8,29 +8,10 @@ import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_
 import 'package:fluffychat/widgets/matrix.dart';
 import 'phonetic_transcription_repo.dart';
 
-class _TranscriptLoader extends AsyncLoader<String> {
-  final PhoneticTranscriptionRequest request;
-  _TranscriptLoader(this.request) : super();
-
-  @override
-  Future<String> fetch() async {
-    final resp = await PhoneticTranscriptionRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      request,
-    );
-
-    if (resp.isError) {
-      throw resp.asError!.error;
-    }
-
-    return resp.asValue!.value.phoneticTranscriptionResult.phoneticTranscription
-        .first.phoneticL1Transcription.content;
-  }
-}
-
 class PhoneticTranscriptionBuilder extends StatefulWidget {
   final LanguageModel textLanguage;
   final String text;
+  final ValueNotifier<int>? reloadNotifier;
 
   final Widget Function(
     BuildContext context,
@@ -42,6 +23,7 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
     required this.textLanguage,
     required this.text,
     required this.builder,
+    this.reloadNotifier,
   });
 
   @override
@@ -51,12 +33,14 @@ class PhoneticTranscriptionBuilder extends StatefulWidget {
 
 class PhoneticTranscriptionBuilderState
     extends State<PhoneticTranscriptionBuilder> {
-  late _TranscriptLoader _loader;
+  final ValueNotifier<AsyncState<String>> _loader =
+      ValueNotifier(const AsyncState.idle());
 
   @override
   void initState() {
     super.initState();
-    _reload();
+    _load();
+    widget.reloadNotifier?.addListener(_load);
   }
 
   @override
@@ -64,27 +48,24 @@ class PhoneticTranscriptionBuilderState
     super.didUpdateWidget(oldWidget);
     if (oldWidget.text != widget.text ||
         oldWidget.textLanguage != widget.textLanguage) {
-      _loader.dispose();
-      _reload();
+      _load();
     }
   }
 
   @override
   void dispose() {
+    widget.reloadNotifier?.removeListener(_load);
     _loader.dispose();
     super.dispose();
   }
 
-  bool get isLoading => _loader.isLoading;
-  bool get isError => _loader.isError;
+  AsyncState<String> get state => _loader.value;
+  bool get isError => _loader.value is AsyncError;
+  bool get isLoaded => _loader.value is AsyncLoaded;
+  String? get transcription =>
+      isLoaded ? (_loader.value as AsyncLoaded<String>).value : null;
 
-  Object? get error =>
-      isError ? (_loader.state.value as AsyncError).error : null;
-
-  String? get transcription => _loader.value;
-
-  PhoneticTranscriptionRequest get _transcriptRequest =>
-      PhoneticTranscriptionRequest(
+  PhoneticTranscriptionRequest get _request => PhoneticTranscriptionRequest(
         arc: LanguageArc(
           l1: MatrixState.pangeaController.userController.userL1!,
           l2: widget.textLanguage,
@@ -92,15 +73,26 @@ class PhoneticTranscriptionBuilderState
         content: PangeaTokenText.fromString(widget.text),
       );
 
-  void _reload() {
-    _loader = _TranscriptLoader(_transcriptRequest);
-    _loader.load();
+  Future<void> _load() async {
+    _loader.value = const AsyncState.loading();
+    final resp = await PhoneticTranscriptionRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      _request,
+    );
+
+    if (!mounted) return;
+    resp.isError
+        ? _loader.value = AsyncState.error(resp.asError!.error)
+        : _loader.value = AsyncState.loaded(
+            resp.asValue!.value.phoneticTranscriptionResult
+                .phoneticTranscription.first.phoneticL1Transcription.content,
+          );
   }
 
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-      valueListenable: _loader.state,
+      valueListenable: _loader,
       builder: (context, _, __) => widget.builder(
         context,
         this,
