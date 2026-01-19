@@ -30,6 +30,7 @@ class WordZoomWidget extends StatelessWidget {
   final bool enableEmojiSelection;
   final VoidCallback? onDismissNewWordOverlay;
   final Function(LemmaInfoResponse, String)? onFlagTokenInfo;
+  final ValueNotifier<int>? reloadNotifier;
   final double? maxWidth;
 
   const WordZoomWidget({
@@ -42,6 +43,7 @@ class WordZoomWidget extends StatelessWidget {
     this.enableEmojiSelection = true,
     this.onDismissNewWordOverlay,
     this.onFlagTokenInfo,
+    this.reloadNotifier,
     this.maxWidth,
   });
 
@@ -143,6 +145,7 @@ class WordZoomWidget extends StatelessWidget {
                                     style: const TextStyle(fontSize: 14.0),
                                     iconSize: 24.0,
                                     maxLines: 2,
+                                    reloadNotifier: reloadNotifier,
                                   )
                                 : WordAudioButton(
                                     text: token.content,
@@ -161,6 +164,7 @@ class WordZoomWidget extends StatelessWidget {
                               constructId: construct,
                               text: token.content,
                               messageInfo: event?.content ?? {},
+                              reloadNotifier: reloadNotifier,
                             ),
                           ],
                         ),

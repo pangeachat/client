@@ -6,6 +6,7 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_meaning_builder.dart';
@@ -49,35 +50,15 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
       constructId: widget.cId,
       messageInfo: widget.messageInfo,
       builder: (context, controller) {
-        if (controller.error != null) {
-          return const SizedBox.shrink();
-        }
-
-        final emojis = controller.lemmaInfo?.emoji;
-        return SizedBox(
-          height: 70.0,
-          child: Row(
-            spacing: 4.0,
-            mainAxisSize: MainAxisSize.min,
-            children: emojis == null || emojis.isEmpty
-                ? List.generate(
-                    3,
-                    (_) => Shimmer.fromColors(
-                      baseColor: Colors.transparent,
-                      highlightColor:
-                          Theme.of(context).colorScheme.primary.withAlpha(70),
-                      child: Container(
-                        height: 55.0,
-                        width: 55.0,
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius:
-                              BorderRadius.circular(AppConfig.borderRadius),
-                        ),
-                      ),
-                    ),
-                  )
-                : emojis.map(
+        return switch (controller.state) {
+          AsyncError() => const SizedBox.shrink(),
+          AsyncLoaded(value: final lemmaInfo) => SizedBox(
+              height: 70.0,
+              child: Row(
+                spacing: 4.0,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ...lemmaInfo.emoji.map(
                     (emoji) {
                       final targetId = "${widget.targetId}-$emoji";
                       return EmojiChoiceItem(
@@ -94,9 +75,35 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow>
                         enabled: widget.enabled,
                       );
                     },
-                  ).toList(),
-          ),
-        );
+                  ),
+                ],
+              ),
+            ),
+          _ => SizedBox(
+              height: 70.0,
+              child: Row(
+                spacing: 4.0,
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  3,
+                  (_) => Shimmer.fromColors(
+                    baseColor: Colors.transparent,
+                    highlightColor:
+                        Theme.of(context).colorScheme.primary.withAlpha(70),
+                    child: Container(
+                      height: 55.0,
+                      width: 55.0,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius:
+                            BorderRadius.circular(AppConfig.borderRadius),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        };
       },
     );
   }

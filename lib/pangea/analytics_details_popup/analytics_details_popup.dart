@@ -18,9 +18,13 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicators
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/token_info_feedback/show_token_feedback_dialog.dart';
+import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ConstructAnalyticsView extends StatefulWidget {
@@ -49,6 +53,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
   FocusNode searchFocusNode = FocusNode();
   ConstructLevelEnum? selectedConstructLevel;
   StreamSubscription<AnalyticsStreamUpdate>? _constructUpdateSub;
+  final ValueNotifier<int> reloadNotifier = ValueNotifier<int>(0);
 
   @override
   void initState() {
@@ -72,6 +77,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     searchController.dispose();
     _constructUpdateSub?.cancel();
     searchFocusNode.dispose();
+    reloadNotifier.dispose();
     super.dispose();
   }
 
@@ -162,6 +168,29 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
     });
   }
 
+  Future<void> onFlagTokenInfo(
+    PangeaToken token,
+    LemmaInfoResponse lemmaInfo,
+    String phonetics,
+  ) async {
+    final requestData = TokenInfoFeedbackRequestData(
+      userId: Matrix.of(context).client.userID!,
+      detectedLanguage: MatrixState.pangeaController.userController.userL2Code!,
+      tokens: [token],
+      selectedToken: 0,
+      wordCardL1: MatrixState.pangeaController.userController.userL1Code!,
+      lemmaInfo: lemmaInfo,
+      phonetics: phonetics,
+    );
+
+    await TokenFeedbackUtil.showTokenFeedbackDialog(
+      context,
+      requestData: requestData,
+      langCode: MatrixState.pangeaController.userController.userL2Code!,
+      onUpdated: () => reloadNotifier.value++,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -182,7 +211,10 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
                         : MorphDetailsView(constructId: widget.construct!)
                     : widget.construct == null
                         ? VocabAnalyticsListView(controller: this)
-                        : VocabDetailsView(constructId: widget.construct!),
+                        : VocabDetailsView(
+                            constructId: widget.construct!,
+                            controller: this,
+                          ),
               ),
             ],
           ),
