@@ -5051,5 +5051,7 @@
   "practiceGrammar": "Practice grammar",
   "notEnoughToPractice": "Send more messages to unlock practice",
   "constructUseCorGCDesc": "Correct grammar category practice",
-  "constructUseIncGCDesc": "Incorrect grammar category practice"
+  "constructUseIncGCDesc": "Incorrect grammar category practice",
+  "constructUseCorGEDesc": "Correct grammar error practice",
+  "constructUseIncGEDesc": "Incorrect grammar error practice"
 }

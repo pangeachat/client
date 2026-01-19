@@ -9,6 +9,7 @@ import 'package:async/async.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
+import 'package:fluffychat/pangea/analytics_practice/grammar_error_practice_generator.dart';
 import 'package:fluffychat/pangea/analytics_practice/morph_category_activity_generator.dart';
 import 'package:fluffychat/pangea/analytics_practice/vocab_audio_activity_generator.dart';
 import 'package:fluffychat/pangea/analytics_practice/vocab_meaning_activity_generator.dart';
@@ -128,6 +129,8 @@ class PracticeRepo {
         return VocabAudioActivityGenerator.get(req);
       case ActivityTypeEnum.grammarCategory:
         return MorphCategoryActivityGenerator.get(req);
+      case ActivityTypeEnum.grammarError:
+        return GrammarErrorPracticeGenerator.get(req);
       case ActivityTypeEnum.morphId:
         return MorphActivityGenerator.get(req);
       case ActivityTypeEnum.wordMeaning:

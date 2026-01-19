@@ -132,14 +132,15 @@ class SpanData {
     return choices![index];
   }
 
+  String get errorSpan =>
+      fullText.characters.skip(offset).take(length).toString();
+
   bool isNormalizationError() {
     final correctChoice = choices
         ?.firstWhereOrNull(
           (c) => c.isBestCorrection,
         )
         ?.value;
-
-    final errorSpan = fullText.characters.skip(offset).take(length).toString();
 
     final l2Code =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
