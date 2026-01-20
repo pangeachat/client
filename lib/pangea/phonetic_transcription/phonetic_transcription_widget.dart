@@ -69,60 +69,59 @@ class _PhoneticTranscriptionWidgetState
     final targetId = 'phonetic-transcription-${widget.text}-$hashCode';
     return HoverBuilder(
       builder: (context, hovering) {
-        return GestureDetector(
-          onTap: () => _handleAudioTap(targetId),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            decoration: BoxDecoration(
-              color: hovering
-                  ? Colors.grey.withAlpha((0.2 * 255).round())
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: CompositedTransformTarget(
-              link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
-              child: PhoneticTranscriptionBuilder(
-                key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
-                textLanguage: widget.textLanguage,
-                text: widget.text,
-                reloadNotifier: widget.reloadNotifier,
-                builder: (context, controller) {
-                  return switch (controller.state) {
-                    AsyncError(error: final error) =>
-                      error is UnsubscribedException
-                          ? ErrorIndicator(
-                              message: L10n.of(context)
-                                  .subscribeToUnlockTranscriptions,
-                              onTap: () {
-                                MatrixState
-                                    .pangeaController.subscriptionController
-                                    .showPaywall(context);
-                              },
-                            )
-                          : ErrorIndicator(
-                              message:
-                                  L10n.of(context).failedToFetchTranscription,
+        return Tooltip(
+          message:
+              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          child: GestureDetector(
+            onTap: () => _handleAudioTap(targetId),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 150),
+              decoration: BoxDecoration(
+                color: hovering
+                    ? Colors.grey.withAlpha((0.2 * 255).round())
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              child: CompositedTransformTarget(
+                link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
+                child: PhoneticTranscriptionBuilder(
+                  key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
+                  textLanguage: widget.textLanguage,
+                  text: widget.text,
+                  reloadNotifier: widget.reloadNotifier,
+                  builder: (context, controller) {
+                    return switch (controller.state) {
+                      AsyncError(error: final error) =>
+                        error is UnsubscribedException
+                            ? ErrorIndicator(
+                                message: L10n.of(context)
+                                    .subscribeToUnlockTranscriptions,
+                                onTap: () {
+                                  MatrixState
+                                      .pangeaController.subscriptionController
+                                      .showPaywall(context);
+                                },
+                              )
+                            : ErrorIndicator(
+                                message:
+                                    L10n.of(context).failedToFetchTranscription,
+                              ),
+                      AsyncLoaded<String>(value: final transcription) => Row(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Flexible(
+                              child: Text(
+                                transcription,
+                                textScaler: TextScaler.noScaling,
+                                style: widget.style ??
+                                    Theme.of(context).textTheme.bodyMedium,
+                                maxLines: widget.maxLines,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
-                    AsyncLoaded<String>(value: final transcription) => Row(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              transcription,
-                              textScaler: TextScaler.noScaling,
-                              style: widget.style ??
-                                  Theme.of(context).textTheme.bodyMedium,
-                              maxLines: widget.maxLines,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          Tooltip(
-                            message: _isPlaying
-                                ? L10n.of(context).stop
-                                : L10n.of(context).playAudio,
-                            child: Icon(
+                            Icon(
                               _isPlaying
                                   ? Icons.pause_outlined
                                   : Icons.volume_up,
@@ -130,15 +129,15 @@ class _PhoneticTranscriptionWidgetState
                               color: widget.iconColor ??
                                   Theme.of(context).iconTheme.color,
                             ),
-                          ),
-                        ],
-                      ),
-                    _ => const TextLoadingShimmer(
-                        width: 125.0,
-                        height: 20.0,
-                      ),
-                  };
-                },
+                          ],
+                        ),
+                      _ => const TextLoadingShimmer(
+                          width: 125.0,
+                          height: 20.0,
+                        ),
+                    };
+                  },
+                ),
               ),
             ),
           ),
