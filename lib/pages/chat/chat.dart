@@ -2237,7 +2237,7 @@ class ChatController extends State<ChatPageWithRoom>
     bool autosend = false,
   }) async {
     if (shouldShowLanguageMismatchPopupByActivity) {
-      return showLanguageMismatchPopup();
+      return showLanguageMismatchPopup(manual: manual);
     }
 
     await choreographer.requestWritingAssistance(manual: manual);
@@ -2250,7 +2250,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void showLanguageMismatchPopup() {
+  void showLanguageMismatchPopup({bool manual = false}) {
     if (!shouldShowLanguageMismatchPopupByActivity) {
       return;
     }
@@ -2263,7 +2263,7 @@ class ChatController extends State<ChatPageWithRoom>
       message: L10n.of(context).languageMismatchDesc,
       targetLanguage: targetLanguage,
       onConfirm: () => WidgetsBinding.instance.addPostFrameCallback(
-        (_) => onRequestWritingAssistance(manual: false, autosend: true),
+        (_) => onRequestWritingAssistance(manual: manual, autosend: true),
       ),
     );
   }
