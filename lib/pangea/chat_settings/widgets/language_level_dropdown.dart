@@ -14,6 +14,7 @@ class LanguageLevelDropdown extends StatelessWidget {
   final bool enabled;
   final Color? backgroundColor;
   final double? width;
+  final double? maxHeight;
 
   const LanguageLevelDropdown({
     super.key,
@@ -23,6 +24,7 @@ class LanguageLevelDropdown extends StatelessWidget {
     this.enabled = true,
     this.backgroundColor,
     this.width,
+    this.maxHeight,
   });
 
   @override
@@ -46,7 +48,7 @@ class LanguageLevelDropdown extends StatelessWidget {
       ),
       isExpanded: true,
       dropdownStyleData: DropdownStyleData(
-        maxHeight: kIsWeb ? 500 : null,
+        maxHeight: maxHeight ?? (kIsWeb ? 500 : null),
         decoration: BoxDecoration(
           color: backgroundColor ??
               Theme.of(context).colorScheme.surfaceContainerHigh,
