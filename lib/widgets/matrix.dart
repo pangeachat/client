@@ -26,6 +26,7 @@ import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/join_codes/space_code_controller.dart';
 import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/user/style_settings_repo.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -553,9 +554,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   void initSettings() {
-    AppConfig.fontSizeFactor =
-        double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
-            AppConfig.fontSizeFactor;
+    // #Pangea
+    // AppConfig.fontSizeFactor =
+    //     double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
+    //         AppConfig.fontSizeFactor;
+    if (client.isLogged()) {
+      StyleSettingsRepo.fontSizeFactor(client.userID!).then((factor) {
+        AppConfig.fontSizeFactor = factor;
+      });
+    }
+    // Pangea#
 
     AppConfig.renderHtml =
         store.getBool(SettingKeys.renderHtml) ?? AppConfig.renderHtml;
