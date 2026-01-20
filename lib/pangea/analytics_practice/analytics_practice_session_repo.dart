@@ -44,6 +44,27 @@ class AnalyticsPracticeSessionRepo {
     } else {
       final errorTargets = await _fetchErrors();
       targets.addAll(errorTargets);
+
+      if (targets.length < AnalyticsPracticeConstants.practiceGroupSize) {
+        final morphs = await _fetchMorphs();
+        final remainingCount =
+            AnalyticsPracticeConstants.practiceGroupSize - targets.length;
+        final morphEntries = morphs.entries.take(remainingCount);
+
+        for (final entry in morphEntries) {
+          targets.add(
+            AnalyticsActivityTarget(
+              target: PracticeTarget(
+                tokens: [entry.key],
+                activityType: types[targets.length],
+                morphFeature: entry.value,
+              ),
+            ),
+          );
+        }
+
+        targets.shuffle();
+      }
     }
 
     final session = AnalyticsPracticeSessionModel(
