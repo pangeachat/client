@@ -354,10 +354,19 @@ class LemmaPracticeActivityModel extends MultipleChoicePracticeActivityModel {
 
 class GrammarErrorPracticeActivityModel
     extends MultipleChoicePracticeActivityModel {
+  final String text;
+  final int errorOffset;
+  final int errorLength;
+  final String eventID;
+
   GrammarErrorPracticeActivityModel({
     required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
+    required this.text,
+    required this.errorOffset,
+    required this.errorLength,
+    required this.eventID,
   });
 }
 

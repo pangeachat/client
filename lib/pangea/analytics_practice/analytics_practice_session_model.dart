@@ -6,9 +6,32 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constant
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
+class AnalyticsActivityTarget {
+  final PracticeTarget target;
+  final GrammarErrorRequestInfo? grammarErrorInfo;
+
+  AnalyticsActivityTarget({
+    required this.target,
+    this.grammarErrorInfo,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'target': target.toJson(),
+        'grammarErrorInfo': grammarErrorInfo?.toJson(),
+      };
+
+  factory AnalyticsActivityTarget.fromJson(Map<String, dynamic> json) =>
+      AnalyticsActivityTarget(
+        target: PracticeTarget.fromJson(json['target']),
+        grammarErrorInfo: json['grammarErrorInfo'] != null
+            ? GrammarErrorRequestInfo.fromJson(json['grammarErrorInfo'])
+            : null,
+      );
+}
+
 class AnalyticsPracticeSessionModel {
   final DateTime startedAt;
-  final List<PracticeTarget> practiceTargets;
+  final List<AnalyticsActivityTarget> practiceTargets;
   final String userL1;
   final String userL2;
 
@@ -38,7 +61,8 @@ class AnalyticsPracticeSessionModel {
         userL1: userL1,
         userL2: userL2,
         activityQualityFeedback: null,
-        target: target,
+        target: target.target,
+        grammarErrorInfo: target.grammarErrorInfo,
       );
     }).toList();
   }
@@ -59,8 +83,8 @@ class AnalyticsPracticeSessionModel {
     return AnalyticsPracticeSessionModel(
       startedAt: DateTime.parse(json['startedAt'] as String),
       practiceTargets: (json['practiceTargets'] as List<dynamic>)
-          .map((e) => PracticeTarget.fromJson(e))
-          .whereType<PracticeTarget>()
+          .map((e) => AnalyticsActivityTarget.fromJson(e))
+          .whereType<AnalyticsActivityTarget>()
           .toList(),
       userL1: json['userL1'] as String,
       userL2: json['userL2'] as String,

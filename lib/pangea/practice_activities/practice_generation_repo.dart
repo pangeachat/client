@@ -130,6 +130,10 @@ class PracticeRepo {
       case ActivityTypeEnum.grammarCategory:
         return MorphCategoryActivityGenerator.get(req);
       case ActivityTypeEnum.grammarError:
+        assert(
+          req.grammarErrorInfo != null,
+          'Grammar error info must be provided for grammar error activities',
+        );
         return GrammarErrorPracticeGenerator.get(req);
       case ActivityTypeEnum.morphId:
         return MorphActivityGenerator.get(req);

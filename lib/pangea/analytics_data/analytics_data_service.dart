@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_data/level_up_analytics_service.dart
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
@@ -233,12 +234,14 @@ class AnalyticsDataService {
     int? count,
     String? roomId,
     DateTime? since,
+    ConstructUseTypeEnum? type,
   }) async {
     await _ensureInitialized();
     final uses = await _analyticsClientGetter.database.getUses(
       count: count,
       roomId: roomId,
       since: since,
+      type: type,
     );
 
     final blocked = blockedConstructs;
