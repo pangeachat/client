@@ -269,6 +269,25 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _startSession();
   }
 
+  Future<void> reloadCurrentActivity() async {
+    if (activityTarget.value == null) return;
+
+    try {
+      activityState.value = const AsyncState.loading();
+      selectedMorphChoice.value = null;
+
+      final req = activityTarget.value!;
+      final res = await _fetchActivity(req);
+
+      if (!mounted) return;
+      activityState.value = AsyncState.loaded(res);
+      _playAudio();
+    } catch (e) {
+      if (!mounted) return;
+      activityState.value = AsyncState.error(e);
+    }
+  }
+
   Future<void> _completeSession() async {
     _sessionLoader.value!.finishSession();
     setState(() {});

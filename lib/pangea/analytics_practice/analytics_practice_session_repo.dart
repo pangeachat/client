@@ -56,7 +56,7 @@ class AnalyticsPracticeSessionRepo {
             AnalyticsActivityTarget(
               target: PracticeTarget(
                 tokens: [entry.key],
-                activityType: types[targets.length],
+                activityType: ActivityTypeEnum.grammarCategory,
                 morphFeature: entry.value,
               ),
             ),
@@ -231,18 +231,23 @@ class AnalyticsPracticeSessionRepo {
         }
 
         final choices = igcMatch!.match.choices!.map((c) => c.value).toList();
-        final choiceTokens = tokens.where(
-          (token) =>
-              token.lemma.saveVocab &&
-              choices.any(
-                (choice) => choice.contains(token.text.content),
-              ),
-        );
+        final choiceTokens = tokens
+            .where(
+              (token) =>
+                  token.lemma.saveVocab &&
+                  choices.any(
+                    (choice) => choice.contains(token.text.content),
+                  ),
+            )
+            .toList();
+
+        // Skip if no valid tokens found for this grammar error
+        if (choiceTokens.isEmpty) continue;
 
         targets.add(
           AnalyticsActivityTarget(
             target: PracticeTarget(
-              tokens: choiceTokens.toList(),
+              tokens: choiceTokens,
               activityType: ActivityTypeEnum.grammarError,
               morphFeature: null,
             ),
