@@ -5204,9 +5204,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Trieu una activitat diferent";
     },
-    get$messageLanguageMismatchMessage() {
-      return "El teu idioma de destinaci\xf3 no coincideix amb aquest missatge. Vols actualitzar el teu idioma de destinaci\xf3?";
-    },
     get$blockLemmaConfirmation() {
       return "Aquesta paraula de vocabulari s'eliminar\xe0 permanentment de les teves anal\xedtiques";
     },
@@ -5340,13 +5337,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Pr\xe0ctica de la categoria de gram\xe0tica incorrecta";
     },
     get$constructUseCorGEDesc() {
-      return "Correct grammar error practice";
+      return "Pr\xe0ctica d'errors gramaticals correctes";
     },
     get$constructUseIncGEDesc() {
-      return "Incorrect grammar error practice";
+      return "Pr\xe0ctica d'errors gramaticals incorrectes";
     },
     get$fillInBlank() {
-      return "Fill in the blank with the correct choice";
+      return "Omple el buit amb l'elecci\xf3 correcta";
+    },
+    get$learn() {
+      return "Aprendre";
+    },
+    get$languageUpdated() {
+      return "Idioma objectiu actualitzat!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5364,7 +5367,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nQehx0ReQhjhtQ/nAcZlHNtvBJI="] = d.current;
+  d["Evdi4KlVPPCaMu28StSzkY2hJ/M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map

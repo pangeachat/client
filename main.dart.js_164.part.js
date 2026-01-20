@@ -5205,9 +5205,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Zgjidh nj\xeb aktivitet tjet\xebr";
     },
-    get$messageLanguageMismatchMessage() {
-      return "Bokm\xe5l m\xe5l spr\xe5ket ditt samsvarer ikke med denne meldingen. Oppdater m\xe5lspr\xe5ket ditt?";
-    },
     get$blockLemmaConfirmation() {
       return "Ita vocab word will be permanently removed from your analytics";
     },
@@ -5341,13 +5338,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nnokwa mmara kategorie b\u0254 mmara";
     },
     get$constructUseCorGEDesc() {
-      return "Correct grammar error practice";
+      return "Praktik kesalahan tata bahasa yang benar";
     },
     get$constructUseIncGEDesc() {
-      return "Incorrect grammar error practice";
+      return "Praktik kesalahan tata bahasa yang salah";
     },
     get$fillInBlank() {
-      return "Fill in the blank with the correct choice";
+      return "Isi kekosongan dengan pilihan yang benar";
+    },
+    get$learn() {
+      return "Belajar";
+    },
+    get$languageUpdated() {
+      return "Bahasa target diperbarui!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5374,7 +5377,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MqvjUZ0xDe2SlSliMmZeVH4Pb1U="] = d.current;
+  d["Aj8BN8k7/jF+S2BQzNQxr+2Kl4c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

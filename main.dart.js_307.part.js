@@ -5203,9 +5203,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "V\xe6lg en anden aktivitet";
     },
-    get$messageLanguageMismatchMessage() {
-      return "Dit m\xe5lsprog stemmer ikke overens med denne besked. Opdater dit m\xe5lsprog?";
-    },
     get$blockLemmaConfirmation() {
       return "Dette ord vil blive permanent fjernet fra din analyse";
     },
@@ -5339,13 +5336,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ukorrrekt grammatik kategori praksis";
     },
     get$constructUseCorGEDesc() {
-      return "Correct grammar error practice";
+      return "Korrekt grammatikfejl praksis";
     },
     get$constructUseIncGEDesc() {
-      return "Incorrect grammar error practice";
+      return "Ukorrrekt grammatikfejl praksis";
     },
     get$fillInBlank() {
-      return "Fill in the blank with the correct choice";
+      return "Udfyld det tomme felt med det korrekte valg";
+    },
+    get$learn() {
+      return "L\xe6r";
+    },
+    get$languageUpdated() {
+      return "M\xe5l sprog opdateret!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Gxi9J5aGhCag+fed3p7CvktVddA="] = d.current;
+  d["bULBELkkxRGdkQJ8t+mzMohVMUc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

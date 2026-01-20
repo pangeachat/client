@@ -5203,9 +5203,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "Vyberte jinou aktivitu";
     },
-    get$messageLanguageMismatchMessage() {
-      return "Jazyk c\xedle neodpov\xedd\xe1 t\xe9to zpr\xe1v\u011b. Chcete aktualizovat sv\u016fj c\xedlov\xfd jazyk?";
-    },
     get$blockLemmaConfirmation() {
       return "Toto slovo ve slovn\xed z\xe1sob\u011b bude trvale odstran\u011bno z va\u0161ich anal\xfdz";
     },
@@ -5339,13 +5336,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Cvi\u010den\xed nespr\xe1vn\xe9 gramatick\xe9 kategorie";
     },
     get$constructUseCorGEDesc() {
-      return "Correct grammar error practice";
+      return "Cvi\u010den\xed spr\xe1vn\xe9 gramatiky";
     },
     get$constructUseIncGEDesc() {
-      return "Incorrect grammar error practice";
+      return "Cvi\u010den\xed nespr\xe1vn\xe9 gramatiky";
     },
     get$fillInBlank() {
-      return "Fill in the blank with the correct choice";
+      return "Dopl\u0148te pr\xe1zdn\xe9 m\xedsto spr\xe1vnou volbou";
+    },
+    get$learn() {
+      return "U\u010dit se";
+    },
+    get$languageUpdated() {
+      return "C\xedlov\xfd jazyk byl aktualizov\xe1n!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["X7tOUuJILUGhHW5bx+lVNk1UwIg="] = d.current;
+  d["vr/32wn1A4e9tSW4N/fqme6gBYA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

@@ -5,5347 +5,5350 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nFi$() {
-      return new A.L10nFi(B.canonicalizedLocale("fi"));
+    L10nFa$() {
+      return new A.L10nFa(B.canonicalizedLocale("fa"));
     },
-    L10nFi: function L10nFi(t0) {
+    L10nFa: function L10nFa(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[20], A);
-  A.L10nFi.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[19], A);
+  A.L10nFa.prototype = {
     get$alwaysUse24HourFormat() {
-      return "ep\xe4tosi";
+      return "\u062f\u0631 \u062d\u0627\u0644\u062a \u0639\u0627\u062f\u06cc\u060c \u0627\u0632 \u0641\u0631\u0645\u062a 24 \u0633\u0627\u0639\u062a\u0647 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646";
     },
     get$repeatPassword() {
-      return "Salasana uudelleen";
+      return "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632\u0639\u0628\u0648\u0631";
     },
     get$notAnImage() {
-      return "T\xe4m\xe4 ei ole kuvatiedosto.";
+      return "\u06cc\u06a9 \u0641\u0627\u06cc\u0644 \u062a\u0635\u0648\u06cc\u0631\u06cc \u0646\u06cc\u0633\u062a.";
     },
     get$setCustomPermissionLevel() {
-      return "Aseta mukautettu k\xe4ytt\xf6oikeustaso";
+      return "\u0633\u0637\u062d \u0645\u062c\u0648\u0632 \u0633\u0641\u0627\u0631\u0634\u06cc \u0631\u0627 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646";
     },
     get$setPermissionsLevelDescription() {
-      return "Valitse alla ennalta m\xe4\xe4ritetty rooli tai sy\xf6t\xe4 mukautettu k\xe4ytt\xf6oikeustaso v\xe4lilt\xe4 0\u2013100.";
+      return "\u0644\u0637\u0641\u0627\u064b \u06cc\u06a9 \u0646\u0642\u0634 \u0627\u0632 \u067e\u06cc\u0634 \u062a\u0639\u0631\u06cc\u0641 \u0634\u062f\u0647 \u062f\u0631 \u0632\u06cc\u0631 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u06cc\u0627 \u0633\u0637\u062d \u0645\u062c\u0648\u0632 \u0633\u0641\u0627\u0631\u0634\u06cc \u0628\u06cc\u0646 0 \u062a\u0627 100 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f.";
     },
     get$ignoreUser() {
-      return "Ohita k\xe4ytt\xe4j\xe4";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0646 \u06a9\u0627\u0631\u0628\u0631";
     },
     get$normalUser() {
-      return "Normaali k\xe4ytt\xe4j\xe4";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0639\u0627\u062f\u06cc";
     },
     get$remove(_) {
-      return "Poista";
+      return "\u062d\u0630\u0641 \u06a9\u0631\u062f\u0646";
     },
     get$importNow() {
-      return "Tuo nyt";
+      return "\u0647\u0645\u200c\u0627\u06a9\u0646\u0648\u0646 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646";
     },
     get$importEmojis() {
-      return "Tuo emojit";
+      return "\u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0627\u06cc\u0645\u0648\u062c\u06cc\u200c\u0647\u0627";
     },
     get$importFromZipFile() {
-      return "Tuo .zip -tiedostosta";
+      return "\u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0627\u0632 \u0641\u0627\u06cc\u0644 .zip";
     },
     get$exportEmotePack() {
-      return "Vie emotepaketti .zip-tiedostona";
+      return "\u0635\u0627\u062f\u0631 \u06a9\u0631\u062f\u0646 \u0628\u0633\u062a\u0647 \u0627\u06cc\u0645\u0648\u062c\u06cc \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0641\u0627\u06cc\u0644 .zip";
     },
     get$replace(_) {
-      return "Korvaa";
+      return "\u062c\u0627\u06cc\u06af\u0632\u06cc\u0646 \u06a9\u0631\u062f\u0646";
     },
     aboutHomeserver$1(homeserver) {
-      return "Tietoja " + homeserver;
+      return "\u062f\u0631\u0628\u0627\u0631\u0647 " + homeserver;
     },
     get$accept(_) {
-      return "Hyv\xe4ksy";
+      return "\u067e\u0630\u06cc\u0631\u0634";
     },
     acceptedTheInvitation$1(username) {
-      return username + " hyv\xe4ksyi kutsun";
+      return "\ud83d\udc4d " + username + " \u062f\u0639\u0648\u062a \u0631\u0627 \u067e\u0630\u06cc\u0631\u0641\u062a";
     },
     get$account() {
-      return "Tili";
+      return "\u062d\u0633\u0627\u0628";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " otti k\xe4ytt\xf6\xf6n p\xe4\xe4st\xe4-p\xe4\xe4h\xe4n salauksen";
+      return "\ud83d\udd10 " + username + " \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0633\u0631\u062a\u0627\u0633\u0631 \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0631\u062f";
     },
     get$addEmail() {
-      return "Lis\xe4\xe4 s\xe4hk\xf6postiosoite";
+      return "\u0627\u0641\u0632\u0648\u062f\u0646 \u0627\u06cc\u0645\u06cc\u0644";
     },
     supposedMxid$1(mxid) {
-      return "T\xe4m\xe4n pit\xe4isi olla " + mxid;
+      return "\u0627\u06cc\u0646 \u0628\u0627\u06cc\u062f " + mxid + " \u0628\u0627\u0634\u062f";
     },
     get$admin() {
-      return "Yll\xe4pit\xe4j\xe4";
+      return "\u0627\u062f\u0645\u06cc\u0646";
     },
     get$allChats() {
-      return "Kaikki keskustelut";
+      return "\u0647\u0645\u0647 \u06af\u067e\u200c\u0647\u0627";
     },
     get$commandHint_roomupgrade() {
-      return "P\xe4ivit\xe4 t\xe4m\xe4 huone annettuun huonetyyppiin";
+      return "\u0627\u0631\u062a\u0642\u0627\u0621 \u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u0628\u0647 \u0646\u0633\u062e\u0647 \u0627\u062a\u0627\u0642 \u062f\u0627\u062f\u0647 \u0634\u062f\u0647";
     },
     get$commandHint_googly() {
-      return "L\xe4het\xe4 askartelusilmi\xe4";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0686\u0646\u062f \u0686\u0634\u0645 \u06af\u0648\u06af\u0648\u0644\u06cc";
     },
     get$commandHint_cuddle() {
-      return "L\xe4het\xe4 kokovartaluhalaus";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0622\u063a\u0648\u0634";
     },
     get$commandHint_hug() {
-      return "L\xe4het\xe4 halaus";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0628\u063a\u0644";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " l\xe4hett\xe4\xe4 askartelusilmi\xe4";
+      return senderName + " \u0628\u0647 \u0634\u0645\u0627 \u0686\u0634\u0645\u0627\u0646 \u06af\u0648\u06af\u0648\u0644\u06cc \u0645\u06cc\u200c\u0641\u0631\u0633\u062a\u062f";
     },
     cuddleContent$1(senderName) {
-      return senderName + " kokovartalohalaa sinua";
+      return senderName + " \u0634\u0645\u0627 \u0631\u0627 \u062f\u0631 \u0622\u063a\u0648\u0634 \u0645\u06cc\u200c\u06af\u06cc\u0631\u062f";
     },
     hugContent$1(senderName) {
-      return senderName + " halaa sinua";
+      return senderName + " \u0634\u0645\u0627 \u0631\u0627 \u0628\u063a\u0644 \u0645\u06cc\u200c\u06a9\u0646\u062f";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " vastasi puheluun";
+      return senderName + " \u067e\u0627\u0633\u062e \u062a\u0645\u0627\u0633 \u0631\u0627 \u062f\u0627\u062f";
     },
     get$anyoneCanJoin() {
-      return "Kuka tahansa voi liitty\xe4";
+      return "\u0647\u0631\u06a9\u0633\u06cc \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0628\u067e\u06cc\u0648\u0646\u062f\u062f";
     },
     get$archive() {
-      return "Arkisto";
+      return "\u0628\u0627\u06cc\u06af\u0627\u0646\u06cc";
     },
     get$areYouSure() {
-      return "Oletko varma?";
+      return "\u0645\u0637\u0645\u0626\u0646 \u0647\u0633\u062a\u06cc\u062f\u061f";
     },
     get$areYouSureYouWantToLogout() {
-      return "Haluatko varmasti kirjautua ulos?";
+      return "\u0645\u0637\u0645\u0626\u0646 \u0647\u0633\u062a\u06cc\u062f \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f";
     },
     get$askSSSSSign() {
-      return "Voidaksesi allekirjoittaa toisen henkil\xf6n, sy\xf6t\xe4 turvavaraston salalause tai palautusavain.";
+      return "\u0644\u0637\u0641\u0627 \u0639\u0628\u0627\u0631\u062a \u0639\u0628\u0648\u0631 \u06cc\u0627 \u06a9\u0644\u06cc\u062f \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u062d\u0627\u0641\u0638\u0647 \u0627\u0645\u0646 \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u062a\u0648\u0627\u0646\u06cc\u062f \u0634\u062e\u0635 \u062f\u06cc\u06af\u0631 \u0631\u0627 \u0627\u0645\u0636\u0627 \u06a9\u0646\u06cc\u062f.";
     },
     askVerificationRequest$1(username) {
-      return "Hyv\xe4ksyt\xe4\xe4nk\xf6 t\xe4m\xe4 varmennuspyynt\xf6 k\xe4ytt\xe4j\xe4lt\xe4 " + username + "?";
+      return "\u0627\u06cc\u0646 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0627\u06cc\u06cc\u062f \u0631\u0627 \u0627\u0632 " + username + " \u0645\u06cc\u200c\u067e\u0630\u06cc\u0631\u06cc\u062f\u061f";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "T\xe4m\xe4 kotipalvelin tukee sis\xe4\xe4nkirjautumistapoja: \n" + serverVersions + ",\nmutta t\xe4m\xe4 sovellus tukee vain -tapoja: \n" + supportedVersions;
+      return "\u0633\u0631\u0648\u0631 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0627\u06cc\u0646 \u06af\u0648\u0646\u0647\u200c\u0647\u0627\u06cc \u0648\u0631\u0648\u062f\u202e \u0631\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u062a\u06cc \u06a9\u0646\u062f:\n" + serverVersions + "\n\u0648\u0644\u06cc \u0627\u06cc\u0646 \u0628\u0631\u0646\u0627\u0645\u0647 \u0641\u0642\u0637 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0627\u06cc\u0646\u200c\u0647\u0627 \u0631\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u06a9\u0646\u062f:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "acL\xe4het\xe4 kirjoitusilmoituksia";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627\u06cc \u062a\u0627\u06cc\u067e \u06a9\u0631\u062f\u0646";
     },
     get$swipeRightToLeftToReply() {
-      return "Vastaa pyyhk\xe4isem\xe4ll\xe4 oikealta vasemmalle";
+      return "\u0628\u0631\u0627\u06cc \u067e\u0627\u0633\u062e\u060c \u0627\u0632 \u0631\u0627\u0633\u062a \u0628\u0647 \u0686\u067e \u0633\u0648\u0627\u06cc\u067e \u06a9\u0646\u06cc\u062f";
     },
     get$sendOnEnter() {
-      return "L\xe4het\xe4 painamalla rivinvaihton\xe4pp\xe4int\xe4";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0628\u0627 \u06a9\u0644\u06cc\u062f \u062a\u0639\u0648\u064a\u0636 \u0633\u0637\u0631";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " keskustelua ja " + participants + " osallistujaa";
+      return "" + chats + " \u0686\u062a \u0648 " + participants + " \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u0647";
     },
     get$banned() {
-      return "Porttikiellossa";
+      return "\u0645\u062d\u0631\u0648\u0645 \u0634\u062f\u0647";
     },
     bannedUser$2(username, targetName) {
-      return username + " antoi porttikiellon k\xe4ytt\xe4j\xe4lle " + targetName;
+      return username + " " + targetName + " \u0631\u0627 \u0645\u062d\u0631\u0648\u0645 \u06a9\u0631\u062f";
     },
     get$blockDevice() {
-      return "Est\xe4 laite";
+      return "\u062f\u0633\u062a\u06af\u0627\u0647 \u0631\u0627 \u0645\u0633\u062f\u0648\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$blocked() {
-      return "Estetty";
+      return "\u0645\u0633\u062f\u0648\u062f \u0634\u062f\u0647";
     },
     get$cancel(_) {
-      return "Peruuta";
+      return "\u0644\u063a\u0648";
     },
     cantOpenUri$1(uri) {
-      return "URI-osoitetta " + uri + " ei voida avata";
+      return "\u0646\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u0645 \u0627\u06cc\u0646 \u0622\u062f\u0631\u0633 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0631\u0627 \u0628\u0627\u0632 \u06a9\u0646\u06cc\u0645: " + uri;
     },
     get$changeDeviceName() {
-      return "Vaihda laitteen nime\xe4";
+      return "\u0646\u0627\u0645 \u062f\u0633\u062a\u06af\u0627\u0647 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0647\u06cc\u062f";
     },
     changedTheChatAvatar$1(username) {
-      return username + " muutti keskustelun kuvaa";
+      return username + " \u062a\u0635\u0648\u06cc\u0631 \u06af\u067e \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " asetti keskustelun kuvaukseksi: '" + description + "'";
+      return username + " \u062a\u0648\u0635\u06cc\u0641 \u06af\u067e \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f \u0628\u0647: \xab" + description + "\xbb";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " asetti keskustelun nimeksi: '" + chatname + "'";
+      return username + " \u0646\u0627\u0645 \u06af\u067e \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f \u0628\u0647: \xab" + chatname + "\xbb";
     },
     changedTheChatPermissions$1(username) {
-      return username + " muutti keskustelun oikeuksia";
+      return username + " \u0627\u062c\u0627\u0632\u0647\u200c\u0647\u0627\u06cc \u06af\u067e \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " asetti n\xe4ytt\xf6nimekseen: '" + displayname + "'";
+      return username + " \u0646\u0627\u0645 \u0646\u0645\u0627\u06cc\u0634\u06cc \u062e\u0648\u062f \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f \u0628\u0647: \xab" + displayname + "\xbb";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " muutti vierasp\xe4\xe4syn s\xe4\xe4nt\xf6j\xe4";
+      return username + " \u0642\u0648\u0627\u0646\u06cc\u0646 \u062f\u0633\u062a\u0631\u0633\u06cc \u0645\u0647\u0645\u0627\u0646 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " asetti vierasp\xe4\xe4syn s\xe4\xe4nn\xf6(i)ksi: " + rules;
+      return username + " \u0642\u0648\u0627\u0646\u06cc\u0646 \u062f\u0633\u062a\u0631\u0633\u06cc \u0645\u0647\u0645\u0627\u0646 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f \u0628\u0647: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " muutti historian n\xe4kyvyytt\xe4";
+      return username + " \u0642\u0627\u0628\u0644\u064a\u062a\u200c \u062f\u064a\u062f\u0646\u200c \u062a\u0627\u0631\u06cc\u062e\u0686\u0647 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " asetti historian n\xe4kymiss\xe4\xe4nn\xf6ksi: " + rules;
+      return username + " \u0642\u0627\u0628\u0644\u064a\u062a\u200c \u062f\u064a\u062f\u0646\u200c \u062a\u0627\u0631\u06cc\u062e\u0686\u0647 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f \u0628\u0647: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " muutti liittymiss\xe4\xe4nt\xf6j\xe4";
+      return username + " \u0642\u0648\u0627\u0646\u06cc\u0646 \u067e\u06cc\u0648\u0633\u062a\u0646 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " asetti liittymiss\xe4\xe4nn\xf6iksi: " + joinRules;
+      return username + " \u0642\u0648\u0627\u0646\u06cc\u0646 \u067e\u06cc\u0648\u0633\u062a\u0646 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f \u0628\u0647: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " vaihtoi profiilikuvaansa";
+      return username + " \u0639\u06a9\u0633 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u062e\u0648\u062f \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     changedTheRoomAliases$1(username) {
-      return username + " muutti huoneen aliaksia";
+      return username + " \u0646\u0627\u0645\u200c\u0647\u0627\u06cc \u0645\u0633\u062a\u0639\u0627\u0631 \u0627\u062a\u0627\u0642 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " muutti kutsulinkki\xe4";
+      return username + " \u0644\u06cc\u0646\u06a9 \u062f\u0639\u0648\u062a \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0627\u062f";
     },
     get$changePassword() {
-      return "Vaihda salasana";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631";
     },
     get$changeTheme() {
-      return "Vaihda tyyli\xe4si";
+      return "\u0633\u0628\u06a9 \u062e\u0648\u062f \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0647\u06cc\u062f";
     },
     get$changeYourAvatar() {
-      return "Vaihda profiilikuvasi";
+      return "\u0639\u06a9\u0633 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u062e\u0648\u062f \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0647\u06cc\u062f";
     },
     get$channelCorruptedDecryptError() {
-      return "Salaus on korruptoitunut";
+      return "\u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0645\u062e\u062f\u0648\u0634 \u0634\u062f\u0647\u200c \u0627\u0633\u062a";
     },
     get$chat() {
-      return "Keskustelu";
+      return "\u06af\u067e";
     },
     get$chatDetails() {
-      return "Keskustelun tiedot";
+      return "\u062c\u0632\u0626\u06cc\u0627\u062a \u06af\u067e";
     },
     get$chats() {
-      return "Keskustelut";
+      return "\u06af\u067e\u200c\u0647\u0627";
     },
     get$chooseAStrongPassword() {
-      return "Valitse vahva salasana";
+      return "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0642\u0648\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$clearArchive() {
-      return "Tyhjenn\xe4 arkisto";
+      return "\u0628\u0627\u06cc\u06af\u0627\u0646\u06cc \u0631\u0627 \u067e\u0627\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$close(_) {
-      return "Sulje";
+      return "\u0628\u0633\u062a\u0646";
     },
     get$commandHint_markasdm() {
-      return "Merkitse yksityiskeskusteluksi sy\xf6tetyn Matrix IDn kanssa";
+      return "\u0628\u0631\u0627\u06cc \u062f\u0627\u062f\u0646 \u0634\u0646\u0627\u0633\u0647 \u0645\u0627\u062a\u0631\u06cc\u06a9\u0633 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0627\u062a\u0627\u0642 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0645\u0633\u062a\u0642\u06cc\u0645 \u0639\u0644\u0627\u0645\u062a \u0628\u06af\u0630\u0627\u0631\u06cc\u062f";
     },
     get$commandHint_markasgroup() {
-      return "Merkitse ryhm\xe4ksi";
+      return "\u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u06af\u0631\u0648\u0647 \u0639\u0644\u0627\u0645\u062a \u0628\u06af\u0630\u0627\u0631\u06cc\u062f";
     },
     get$commandHint_ban() {
-      return "Anna sy\xf6tetylle k\xe4ytt\xe4j\xe4lle porttikielto t\xe4h\xe4n huoneeseen";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0645\u0634\u062e\u0635 \u0634\u062f\u0647 \u0631\u0627 \u0627\u0632 \u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u0645\u062d\u0631\u0648\u0645 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_clearcache() {
-      return "Tyhjenn\xe4 v\xe4limuisti";
+      return "\u062d\u0627\u0641\u0638\u0647 \u067e\u0646\u06be\u0627\u0646 \u0631\u0627 \u067e\u0627\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_create() {
-      return "Luo tyhj\xe4 ryhm\xe4keskustelu\nK\xe4yt\xe4 parametria --no-encryption poistaaksesi salauksen k\xe4yt\xf6st\xe4";
+      return "\u06cc\u06a9 \u06af\u067e \u06af\u0631\u0648\u0647\u06cc \u062e\u0627\u0644\u06cc \u0628\u0633\u0627\u0632\u06cc\u062f\n\u0627\u0632 \xab--no-encryption\xbb \u0628\u0631\u0627\u06cc \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0646 \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_discardsession() {
-      return "Hylk\xe4\xe4 istunto";
+      return "\u0637\u0631\u062f \u0646\u0634\u0633\u062a";
     },
     get$commandHint_dm() {
-      return "Aloita yksityiskeskustelu\nK\xe4yt\xe4 parametria --no-encryption poistaaksesi salauksen k\xe4yt\xf6st\xe4";
+      return "\u06cc\u06a9 \u06af\u067e \u0645\u0633\u062a\u0642\u06cc\u0645 \u0634\u0631\u0648\u0639 \u06a9\u0646\u06cc\u062f\n\u0627\u0632 \xab--no-encryption\xbb \u0628\u0631\u0627\u06cc \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0646 \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_html() {
-      return "L\xe4het\xe4 HTML-muotoiltua teksti\xe4";
+      return "\u0645\u062a\u0646 \u0628\u0627 \u0641\u0631\u0645\u062a HTML \u0628\u0641\u0631\u0633\u062a\u06cc\u062f";
     },
     get$commandHint_invite() {
-      return "Kutsu sy\xf6tetty k\xe4ytt\xe4j\xe4 t\xe4h\xe4n huoneeseen";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0645\u0634\u062e\u0635 \u0634\u062f\u0647 \u0631\u0627 \u0628\u0647 \u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u062f\u0639\u0648\u062a \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_join() {
-      return "Liity sy\xf6tettyyn huoneeseen";
+      return "\u0628\u0647 \u0627\u062a\u0627\u0642 \u0645\u0634\u062e\u0635 \u0634\u062f\u0647 \u0628\u067e\u06cc\u0648\u0646\u062f\u06cc\u062f";
     },
     get$commandHint_kick() {
-      return "Poista sy\xf6tetty k\xe4ytt\xe4j\xe4 huoneesta";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0645\u0634\u062e\u0635 \u0634\u062f\u0647 \u0631\u0627 \u0627\u0632 \u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u062d\u0630\u0641 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_leave() {
-      return "Poistu t\xe4st\xe4 huoneesta";
+      return "\u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u0631\u0627 \u062a\u0631\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_me() {
-      return "Kuvaile itse\xe4si";
+      return "\u062e\u0648\u062f \u0631\u0627 \u062a\u0648\u0635\u06cc\u0641 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_myroomavatar() {
-      return "Aseta profiilikuvasi t\xe4h\xe4n huoneeseen (sy\xf6tt\xe4m\xe4ll\xe4 mxc-uri)";
+      return "\u0639\u06a9\u0633 \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u062e\u0648\u062f \u0631\u0627 \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f (\u0628\u0627 mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Aseta n\xe4ytt\xf6nimesi vain t\xe4ss\xe4 huoneessa";
+      return "\u0646\u0627\u0645 \u0646\u0645\u0627\u06cc\u0634\u06cc \u062e\u0648\u062f \u0631\u0627 \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f";
     },
     get$commandHint_op() {
-      return "Aseta k\xe4ytt\xe4j\xe4n voimataso (oletus: 50)";
+      return "\u062f\u0631\u062c\u0647 \u0627\u062e\u062a\u06cc\u0627\u0631 \u06a9\u0627\u0631\u0628\u0631 \u0645\u0634\u062e\u0635 \u0634\u062f\u0647 \u0631\u0627 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f (\u067e\u06cc\u0634\u0641\u0631\u0636: \u06f5\u06f0)";
     },
     get$commandHint_plain() {
-      return "L\xe4het\xe4 muotoilematonta teksti\xe4";
+      return "\u0645\u062a\u0646 \u0628\u06cc\u200c\u0641\u0631\u0645\u062a \u0628\u0641\u0631\u0633\u062a\u06cc\u062f";
     },
     get$commandHint_react() {
-      return "L\xe4het\xe4 vastaus reaktiona";
+      return "\u067e\u0627\u0633\u062e \u0631\u0627 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u06cc\u06a9 \u0648\u0627\u06a9\u0646\u0634 \u0628\u0641\u0631\u0633\u062a\u06cc\u062f";
     },
     get$commandHint_send() {
-      return "L\xe4het\xe4 teksti\xe4";
+      return "\u0645\u062a\u0646 \u0631\u0627 \u0628\u0641\u0631\u0633\u062a\u06cc\u062f";
     },
     get$commandHint_unban() {
-      return "Poista sy\xf6tetyn k\xe4ytt\xe4j\xe4n porttikielto t\xe4st\xe4 huoneesta";
+      return "\u0645\u062d\u0631\u0648\u0645\u06cc\u062a \u06a9\u0627\u0631\u0628\u0631 \u0645\u0634\u062e\u0635 \u0634\u062f\u0647 \u0631\u0627 \u0627\u0632 \u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u0644\u063a\u0648 \u06a9\u0646\u06cc\u062f";
     },
     get$compareEmojiMatch() {
-      return "Vertaa hymi\xf6it\xe4";
+      return "\u0644\u0637\u0641\u0627 \u0627\u06cc\u0645\u0648\u062c\u06cc\u200c\u0647\u0627 \u0631\u0627 \u0645\u0642\u0627\u06cc\u0633\u0647 \u06a9\u0646\u06cc\u062f";
     },
     get$compareNumbersMatch() {
-      return "Vertaa numeroita";
+      return "\u0644\u0637\u0641\u0627 \u0627\u0639\u062f\u0627\u062f \u0631\u0627 \u0645\u0642\u0627\u06cc\u0633\u0647 \u06a9\u0646\u06cc\u062f";
     },
     get$configureChat() {
-      return "M\xe4\xe4rit\xe4 keskustelu";
+      return "\u06af\u067e \u0631\u0627 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f";
     },
     get$confirm(_) {
-      return "Vahvista";
+      return "\u062a\u0627\u06cc\u06cc\u062f";
     },
     get$copiedToClipboard() {
-      return "Kopioitu leikep\xf6yd\xe4lle";
+      return "\u062f\u0631 \u062d\u0627\u0641\u0638\u0647 \u06a9\u067e\u06cc \u0634\u062f";
     },
     get$copy(_) {
-      return "Kopioi";
+      return "\u06a9\u067e\u06cc";
     },
     couldNotDecryptMessage$1(error) {
-      return "Viestin salausta ei voitu purkaa: " + error;
+      return "\u0646\u062a\u0648\u0627\u0646\u0633\u062a\u06cc\u0645 \u067e\u06cc\u0627\u0645 \u0631\u0627 \u0631\u0645\u0632\u06af\u0634\u0627\u06cc\u06cc \u06a9\u0646\u06cc\u0645: " + error;
     },
     get$checkList() {
-      return "Tarkistuslista";
+      return "\u0644\u06cc\u0633\u062a \u0628\u0631\u0631\u0633\u06cc";
     },
     countParticipants$1(count) {
-      return "" + count + " osallistujaa";
+      return "" + count + " \u0634\u0631\u06a9\u062a \u06a9\u0646\u0646\u062f\u0647";
     },
     countInvited$1(count) {
-      return "" + count + " kutsuttu";
+      return "" + count + " \u062f\u0639\u0648\u062a \u0634\u062f\u0647";
     },
     get$create(_) {
-      return "Luo";
+      return "\u0627\u06cc\u062c\u0627\u062f";
     },
     createdTheChat$1(username) {
-      return username + " loi keskustelun";
+      return "\ud83d\udcac " + username + " \u06af\u067e \u0631\u0627 \u0627\u06cc\u062c\u0627\u062f \u06a9\u0631\u062f";
     },
     get$createGroup() {
-      return "Luo ryhm\xe4";
+      return "\u0627\u06cc\u062c\u0627\u062f \u06af\u0631\u0648\u0647";
     },
     get$currentlyActive() {
-      return "Aktiivinen nyt";
+      return "\u0627\u06a9\u0646\u0648\u0646 \u0641\u0639\u0627\u0644";
     },
     get$darkTheme() {
-      return "Tumma";
+      return "\u062a\u0627\u0631\u06cc\u06a9";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return date + ", " + timeOfDay;
+      return date + "\u060c " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "T\xe4m\xe4 poistaa tunnuksesi k\xe4yt\xf6st\xe4. T\xe4t\xe4 ei voi kumota! Oletko varma?";
+      return "\u0627\u06cc\u0646 \u06a9\u0627\u0631 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc\u200c\u062a\u0627\u0646 \u0631\u0627 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u062e\u0648\u0627\u0647\u062f \u06a9\u0631\u062f. \u0627\u06cc\u0646 \u0639\u0645\u0644 \u0642\u0627\u0628\u0644 \u062c\u0628\u0631\u0627\u0646 \u0648 \u0628\u0627\u0632\u06af\u0634\u062a \u0646\u06cc\u0633\u062a! \u0622\u06cc\u0627 \u0627\u0637\u0645\u06cc\u0646\u0627\u0646 \u062f\u0627\u0631\u06cc\u062f\u061f";
     },
     get$defaultPermissionLevel() {
-      return "Uusien k\xe4ytt\xe4jien oikeuksien oletustaso";
+      return "\u062f\u0631\u062c\u0647 \u0627\u062c\u0627\u0632\u06c0 \u067e\u06cc\u0634\u0641\u0631\u0636";
     },
     get$$delete(_) {
-      return "Poista";
+      return "\u062d\u0630\u0641";
     },
     get$deleteAccount() {
-      return "Poista tunnus";
+      return "\u062d\u0633\u0627\u0628 \u0631\u0627 \u062d\u0630\u0641 \u06a9\u0646\u06cc\u062f";
     },
     get$deleteMessage() {
-      return "Poista viesti";
+      return "\u067e\u06cc\u0627\u0645 \u0631\u0627 \u062d\u0630\u0641 \u06a9\u0646\u06cc\u062f";
     },
     get$devices() {
-      return "Laitteet";
+      return "\u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627";
     },
     get$displaynameHasBeenChanged() {
-      return "N\xe4ytt\xf6nimi on vaihdettu";
+      return "\u0646\u0627\u0645 \u0646\u0645\u0627\u06cc\u0634\u06cc \u062a\u063a\u06cc\u06cc\u0631 \u06cc\u0627\u0641\u062a\u0647 \u0627\u0633\u062a";
     },
     get$downloadFile() {
-      return "Lataa tiedosto";
+      return "\u0628\u0627\u0631\u06af\u06cc\u0631\u06cc \u0641\u0627\u06cc\u0644";
     },
     get$edit() {
-      return "Muokkaa";
+      return "\u0648\u06cc\u0631\u0627\u06cc\u0634";
     },
     get$editBlockedServers() {
-      return "Muokkaa estettyj\xe4 palvelimia";
+      return "\u0633\u0631\u0648\u0631\u200c\u0647\u0627\u06cc \u0645\u0633\u062f\u0648\u062f \u0631\u0627 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0646\u06cc\u062f";
     },
     get$chatPermissions() {
-      return "Keskustelun oikeudet";
+      return "\u0645\u062c\u0648\u0632\u0647\u0627\u06cc \u0686\u062a";
     },
     get$editDisplayname() {
-      return "Muokkaa n\xe4ytt\xf6nime\xe4";
+      return "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0646\u0627\u0645 \u0646\u0645\u0627\u06cc\u0634\u06cc";
     },
     get$editRoomAvatar() {
-      return "Muokkaa huoneen profiilikuvaa";
+      return "\u0639\u06a9\u0633 \u0627\u062a\u0627\u0642 \u0631\u0627 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0646\u06cc\u062f";
     },
     get$emoteExists() {
-      return "Emote on jo olemassa!";
+      return "\u0634\u06a9\u0644\u06a9 \u0627\u0632 \u067e\u06cc\u0634 \u0648\u062c\u0648\u062f \u062f\u0627\u0631\u062f!";
     },
     get$emoteInvalid() {
-      return "Ep\xe4kelpo emote-lyhytkoodi";
+      return "\u06a9\u062f \u06a9\u0648\u062a\u0627\u0647 \u0634\u06a9\u0644\u06a9 \u0646\u0627\u0645\u0639\u062a\u0628\u0631!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Viimeaikoina k\xe4ytetyt emotet tulevat n\xe4kym\xe4\xe4n t\xe4\xe4ll\xe4...";
+      return "\u0627\u062d\u0633\u0627\u0633\u0627\u062a \u0627\u0633\u062a\u0641\u0627\u062f\u0647\u200c\u0634\u062f\u0647 \u0627\u062e\u06cc\u0631\u0627\u064b \u062f\u0631 \u0627\u06cc\u0646\u062c\u0627 \u0638\u0627\u0647\u0631 \u0645\u06cc\u200c\u0634\u0648\u0646\u062f...";
     },
     get$emotePacks() {
-      return "Huoneen emote-paketit";
+      return "\u0628\u0633\u062a\u0647\u200c\u0647\u0627\u06cc \u0634\u06a9\u0644\u06a9 \u0628\u0631\u0627\u06cc \u0627\u062a\u0627\u0642";
     },
     get$customEmojisAndStickers() {
-      return "Mukautetut emotikonit ja tarrat";
+      return "\u0627\u06cc\u0645\u0648\u062c\u06cc\u200c\u0647\u0627 \u0648 \u0627\u0633\u062a\u06cc\u06a9\u0631\u0647\u0627\u06cc \u0633\u0641\u0627\u0631\u0634\u06cc";
     },
     get$emoteShortcode() {
-      return "Emote-lyhytkoodi";
+      return "\u06a9\u062f \u06a9\u0648\u062a\u0627\u0647 \u0634\u06a9\u0644\u06a9";
     },
     get$emoteWarnNeedToPick() {
-      return "Emote-lyhytkoodi ja kuva on valittava!";
+      return "\u0628\u0627\u06cc\u062f \u06cc\u06a9 \u06a9\u062f \u06a9\u0648\u062a\u0627\u0647 \u0634\u06a9\u0644\u06a9 \u0648 \u06cc\u06a9 \u062a\u0635\u0648\u06cc\u0631 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f!";
     },
     get$emptyChat() {
-      return "Tyhj\xe4 keskustelu";
+      return "\u06af\u067e \u062e\u0627\u0644\u06cc";
     },
     get$enableEmotesGlobally() {
-      return "Ota emote-paketti k\xe4ytt\xf6\xf6n kaikkialla";
+      return "\u0628\u0633\u062a\u0647 \u0634\u06a9\u0644\u06a9 \u0631\u0627 \u0628\u0647 \u0637\u0648\u0631 \u0633\u0631\u0627\u0633\u0631\u06cc \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f";
     },
     get$enableEncryption() {
-      return "Ota salaus k\xe4ytt\xf6\xf6n";
+      return "\u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f";
     },
     get$encrypted() {
-      return "Salattu";
+      return "\u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0634\u062f\u0647";
     },
     get$encryptionNotEnabled() {
-      return "Salaus ei ole k\xe4yt\xf6ss\xe4";
+      return "\u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0641\u0639\u0627\u0644 \u0646\u06cc\u0633\u062a";
     },
     endedTheCall$1(senderName) {
-      return senderName + " p\xe4\xe4tti puhelun";
+      return senderName + " \u0628\u0647 \u062a\u0645\u0627\u0633 \u067e\u0627\u06cc\u0627\u0646 \u062f\u0627\u062f";
     },
     get$enterAnEmailAddress() {
-      return "Sy\xf6t\xe4 s\xe4hk\xf6posti-osoite";
+      return "\u06cc\u06a9 \u0622\u062f\u0631\u0633 \u0631\u0627\u06cc\u0627\u0646\u0627\u0645\u0647(\u0627\u06cc\u0645\u06cc\u0644) \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     errorObtainingLocation$1(error) {
-      return "Virhe paikannuksessa: " + error;
+      return "\u062e\u0637\u0627 \u0647\u0646\u06af\u0627\u0645 \u0628\u062f\u0633\u062a \u0622\u0648\u0631\u062f\u0646 \u0645\u06a9\u0627\u0646: " + error;
     },
     get$fontSize(_) {
-      return "Fonttikoko";
+      return "\u0627\u0646\u062f\u0627\u0632\u0647 \u0642\u0644\u0645";
     },
     get$forward(_) {
-      return "Edelleenl\xe4het\xe4";
+      return "\u0627\u0631\u0633\u0627\u0644";
     },
     get$fromJoining() {
-      return "Alkaen liittymisest\xe4";
+      return "\u0627\u0632 \u067e\u06cc\u0648\u0633\u062a\u0646";
     },
     get$fromTheInvitation() {
-      return "Alkaen kutsumisesta";
+      return "\u0627\u0632 \u062f\u0639\u0648\u062a";
     },
     get$guestsAreForbidden() {
-      return "Vieraat on kielletty";
+      return "\u0645\u0647\u0645\u0627\u0646\u200c\u0647\u0627 \u0645\u0645\u0646\u0648\u0639 \u0634\u062f\u0647\u200c\u0627\u0646\u062f";
     },
     get$guestsCanJoin() {
-      return "Vieraat voivat liitty\xe4";
+      return "\u0645\u0647\u0645\u0627\u0646\u200c\u0647\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0646\u062f \u0628\u067e\u06cc\u0648\u0646\u062f\u0646\u062f";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " on perunnut k\xe4ytt\xe4j\xe4n " + targetName + " kutsun";
+      return username + " \u062f\u0639\u0648\u062a\u200c\u0646\u0627\u0645\u0647 " + targetName + " \u0631\u0627 \u067e\u0633 \u06af\u0631\u0641\u062a\u0647 \u0627\u0633\u062a";
     },
     get$help() {
-      return "Apua";
+      return "\u06a9\u0645\u06a9";
     },
     get$hideRedactedMessages() {
-      return "Piilota muokatut viestit";
+      return "\u067e\u0646\u0647\u0627\u0646 \u06a9\u0631\u062f\u0646 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0648\u06cc\u0631\u0627\u06cc\u0634\u200c\u0634\u062f\u0647";
     },
     get$hideRedactedMessagesBody() {
-      return "Jos joku muokkaa viestin, t\xe4m\xe4 viesti ei ole en\xe4\xe4 n\xe4kyviss\xe4 keskustelussa.";
+      return "\u0627\u06af\u0631 \u06a9\u0633\u06cc \u067e\u06cc\u0627\u0645\u06cc \u0631\u0627 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0646\u062f\u060c \u0627\u06cc\u0646 \u067e\u06cc\u0627\u0645 \u062f\u06cc\u06af\u0631 \u062f\u0631 \u0686\u062a \u0642\u0627\u0628\u0644 \u0645\u0634\u0627\u0647\u062f\u0647 \u0646\u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Piilota virheelliset tai tuntemattomat viestimuodot";
+      return "\u067e\u0646\u0647\u0627\u0646 \u06a9\u0631\u062f\u0646 \u0642\u0627\u0644\u0628\u200c\u0647\u0627\u06cc \u067e\u06cc\u0627\u0645 \u0646\u0627\u0645\u0639\u062a\u0628\u0631 \u06cc\u0627 \u0646\u0627\u0634\u0646\u0627\u062e\u062a\u0647";
     },
     get$block() {
-      return "Est\xe4";
+      return "\u0645\u0633\u062f\u0648\u062f \u06a9\u0631\u062f\u0646";
     },
     get$blockedUsers() {
-      return "Estetyt k\xe4ytt\xe4j\xe4t";
+      return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0645\u0633\u062f\u0648\u062f \u0634\u062f\u0647";
     },
     get$blockListDescription() {
-      return "Voit est\xe4\xe4 h\xe4iritsevi\xe4 k\xe4ytt\xe4ji\xe4. Et voi vastaanottaa viestej\xe4 tai huoneen kutsuja k\xe4ytt\xe4jilt\xe4, jotka ovat estolistallasi.";
+      return "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\u06cc \u0631\u0627 \u06a9\u0647 \u0645\u0632\u0627\u062d\u0645\u062a\u0627\u0646 \u0645\u06cc\u200c\u06a9\u0646\u0646\u062f \u0645\u0633\u062f\u0648\u062f \u06a9\u0646\u06cc\u062f. \u0646\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u06cc\u0627 \u062f\u0639\u0648\u062a\u200c\u0646\u0627\u0645\u0647\u200c\u0647\u0627\u06cc \u0627\u062a\u0627\u0642 \u0627\u0632 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062f\u0631 \u0644\u06cc\u0633\u062a \u0645\u0633\u062f\u0648\u062f \u0634\u062f\u0647 \u0634\u062e\u0635\u06cc \u062e\u0648\u062f \u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u06cc\u062f.";
     },
     get$blockUsername() {
-      return "Ohita k\xe4ytt\xe4j\xe4nimi";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0646 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc";
     },
     get$iHaveClickedOnLink() {
-      return "Olen klikannut linkki\xe4";
+      return "\u0645\u0646 \u0631\u0648\u06cc \u067e\u06cc\u0648\u0646\u062f \u06a9\u0644\u06cc\u06a9 \u06a9\u0631\u062f\u0645";
     },
     get$incorrectPassphraseOrKey() {
-      return "Virheellinen salasana tai palautusavain";
+      return "\u0639\u0628\u0627\u0631\u062a \u0639\u0628\u0648\u0631 \u06cc\u0627 \u06a9\u0644\u06cc\u062f \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0627\u0634\u062a\u0628\u0627\u0647 \u0627\u0633\u062a";
     },
     get$inviteContact() {
-      return "Kutsu yhteystieto";
+      return "\u062f\u0639\u0648\u062a \u0627\u0632 \u0645\u062e\u0627\u0637\u0628";
     },
     get$noChatDescriptionYet() {
-      return "Keskustelun kuvausta ei ole viel\xe4 luotu.";
+      return "\u062a\u0627\u06a9\u0646\u0648\u0646 \u062a\u0648\u0636\u06cc\u062d\u06cc \u0628\u0631\u0627\u06cc \u0686\u062a \u0627\u06cc\u062c\u0627\u062f \u0646\u0634\u062f\u0647 \u0627\u0633\u062a.";
     },
     get$tryAgain() {
-      return "Yrit\xe4 uudelleen";
+      return "\u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f";
     },
     get$invited() {
-      return "Kutsuttu";
+      return "\u062f\u0639\u0648\u062a \u0634\u062f\u0647";
     },
     get$redactMessageDescription() {
-      return "Viesti poistetaan kaikilta keskustelun osallistujilta. T\xe4t\xe4 ei voida kumota.";
+      return "\u067e\u06cc\u0627\u0645 \u0628\u0631\u0627\u06cc \u062a\u0645\u0627\u0645 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u062f\u0631 \u0627\u06cc\u0646 \u06af\u0641\u062a\u06af\u0648 \u062d\u0630\u0641 \u062e\u0648\u0627\u0647\u062f \u0634\u062f. \u0627\u06cc\u0646 \u0639\u0645\u0644\u06cc\u0627\u062a \u0642\u0627\u0628\u0644 \u0628\u0627\u0632\u06af\u0634\u062a \u0646\u06cc\u0633\u062a.";
     },
     get$optionalRedactReason() {
-      return "(Vapaaehtoinen) Syy t\xe4m\xe4n viestin poistamiselle...";
+      return "(\u0627\u062e\u062a\u06cc\u0627\u0631\u06cc) \u062f\u0644\u06cc\u0644 \u062d\u0630\u0641 \u0627\u06cc\u0646 \u067e\u06cc\u0627\u0645...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " kutsui k\xe4ytt\xe4j\xe4n " + targetName;
+      return "\ud83d\udce9 " + username + " \u0627\u0632 " + targetName + " \u062f\u0639\u0648\u062a \u06a9\u0631\u062f";
     },
     get$invitedUsersOnly() {
-      return "Vain kutsutut k\xe4ytt\xe4j\xe4t";
+      return "\u0641\u0642\u0637 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062f\u0639\u0648\u062a \u0634\u062f\u0647";
     },
     get$inviteForMe() {
-      return "Kutsu minua varten";
+      return "\u062f\u0639\u0648\u062a \u0628\u0631\u0627\u06cc \u0645\u0646";
     },
     get$isTyping() {
-      return "kirjoittaa\u2026";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0646\u0648\u0634\u062a\u0646\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " liittyi keskusteluun";
+      return "\ud83d\udc4b " + username + " \u0628\u0647 \u06af\u067e \u067e\u06cc\u0648\u0633\u062a";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " potki k\xe4ytt\xe4j\xe4n " + targetName;
+      return "\ud83d\udc5e " + username + " " + targetName + " \u0631\u0627 \u0628\u06cc\u0631\u0648\u0646 \u06a9\u0631\u062f";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Aktiivinen viimeksi: " + localizedTimeShort;
+      return "\u0622\u062e\u0631\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a: " + localizedTimeShort;
     },
     get$leave() {
-      return "Poistu";
+      return "\u062a\u0631\u06a9 \u06a9\u0631\u062f\u0646";
     },
     get$leftTheChat() {
-      return "Poistui keskustelusta";
+      return "\u06af\u067e \u0631\u0627 \u062a\u0631\u06a9 \u06a9\u0631\u062f";
     },
     get$lightTheme() {
-      return "Vaalea";
+      return "\u0631\u0648\u0634\u0646";
     },
     get$dehydrate() {
-      return "Vie istunto ja tyhjenn\xe4 laite";
+      return "\u0635\u062f\u0648\u0631 \u062c\u0644\u0633\u0647 \u0648 \u067e\u0627\u06a9 \u06a9\u0631\u062f\u0646 \u062f\u0633\u062a\u06af\u0627\u0647";
     },
     get$dehydrateWarning() {
-      return "T\xe4t\xe4 toimenpidett\xe4 ei voi kumota.\nVarmista varmuuskopiotiedoston turvallinen tallennus.";
+      return "\u0627\u06cc\u0646 \u0639\u0645\u0644 \u0642\u0627\u0628\u0644 \u0644\u063a\u0648 \u0646\u06cc\u0633\u062a. \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 \u0641\u0627\u06cc\u0644 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646 \u0631\u0627 \u0628\u0647 \u0635\u0648\u0631\u062a \u0627\u0645\u0646 \u0630\u062e\u06cc\u0631\u0647 \u0645\u06cc \u06a9\u0646\u06cc\u062f.";
     },
     get$dehydrateTor() {
-      return "TOR-k\xe4ytt\xe4j\xe4t: vie istunto";
+      return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062a\u0648\u0631 (TOR): \u0635\u062f\u0648\u0631 \u062c\u0644\u0633\u0647";
     },
     get$dehydrateTorLong() {
-      return "Tor-k\xe4ytt\xe4jille suositellaan istunnon vienti\xe4 ennen ikkunan sulkemista.";
+      return "\u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062a\u0648\u0631 (TOR)\u060c \u062a\u0648\u0635\u06cc\u0647 \u0645\u06cc \u0634\u0648\u062f \u0642\u0628\u0644 \u0627\u0632 \u0628\u0633\u062a\u0646 \u067e\u0646\u062c\u0631\u0647\u060c \u062c\u0644\u0633\u0647 \u0631\u0627 \u0635\u0627\u062f\u0631 \u06a9\u0646\u0646\u062f.";
     },
     get$loadingPleaseWait() {
-      return "Ladataan... Hetkinen.";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u06cc\u0631\u06cc... \u0644\u0637\u0641\u0627 \u0635\u0628\u0631 \u06a9\u0646\u06cc\u062f.";
     },
     get$loadMore() {
-      return "Lataa lis\xe4\xe4\u2026";
+      return "\u0628\u0627\u0631\u06af\u06cc\u0631\u06cc \u0628\u06cc\u0634\u062a\u0631\u2026";
     },
     get$locationDisabledNotice() {
-      return "Sijaintipalvelut ovat poissa k\xe4yt\xf6st\xe4. Otathan ne k\xe4ytt\xf6\xf6n jakaaksesi sijaintisi.";
+      return "\u062e\u062f\u0645\u0627\u062a \u0645\u06a9\u0627\u0646 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0627\u0633\u062a. \u0644\u0637\u0641\u0627 \u0622\u0646 \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u062a\u0648\u0627\u0646\u06cc\u062f \u0645\u0648\u0642\u0639\u06cc\u062a \u0645\u06a9\u0627\u0646\u06cc \u062e\u0648\u062f \u0631\u0627 \u0628\u0647 \u0627\u0634\u062a\u0631\u0627\u06a9 \u0628\u06af\u0630\u0627\u0631\u06cc\u062f.";
     },
     get$locationPermissionDeniedNotice() {
-      return "SIjaintioikeus on estetty. My\xf6nn\xe4th\xe4n sen jakaaksesi sijaintisi.";
+      return "\u0645\u062c\u0648\u0632 \u0645\u06a9\u0627\u0646 \u0631\u062f \u0634\u062f. \u0628\u0631\u0627\u06cc \u0628\u0647 \u0627\u0634\u062a\u0631\u0627\u06a9 \u06af\u0630\u0627\u0634\u062a\u0646 \u0645\u0648\u0642\u0639\u06cc\u062a \u0645\u06a9\u0627\u0646\u06cc \u0634\u0645\u0627 \u0644\u0637\u0641\u0627 \u0628\u0647 \u0622\u0646 \u0627\u062c\u0627\u0632\u0647 \u062f\u0647\u06cc\u062f.";
     },
     get$login() {
-      return "Kirjaudu sis\xe4\xe4n";
+      return "\u0648\u0627\u0631\u062f \u0634\u062f\u0646";
     },
     get$logout() {
-      return "Kirjaudu ulos";
+      return "\u062e\u0627\u0631\u062c \u0634\u062f\u0646";
     },
     get$mention() {
-      return "Mainitse";
+      return "\u0646\u0627\u0645\u200c\u200c\u0628\u0631\u062f\u0646\u200c";
     },
     get$messages() {
-      return "Viestit";
+      return "\u067e\u06cc\u0627\u0645\u200c\u0647\u0627";
     },
     get$messagesStyle() {
-      return "Viestit:";
+      return "\u067e\u06cc\u0627\u0645\u200c\u0647\u0627:";
     },
     get$moderator() {
-      return "Valvoja";
+      return "\u0645\u062f\u06cc\u0631";
     },
     get$newChat() {
-      return "Uusi keskustelu";
+      return "\u06af\u067e \u062c\u062f\u06cc\u062f";
     },
     get$newVerificationRequest() {
-      return "Uusi varmennuspyynt\xf6!";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0627\u06cc\u06cc\u062f \u062c\u062f\u06cc\u062f!";
     },
     get$next(_) {
-      return "Seuraava";
+      return "\u0628\u0639\u062f\u06cc";
     },
     get$no() {
-      return "Ei";
+      return "\u0646\u0647";
     },
     get$noConnectionToTheServer() {
-      return "Ei yhteytt\xe4 palvelimeen";
+      return "\u0639\u062f\u0645 \u0627\u062a\u0635\u0627\u0644 \u0628\u0647 \u0633\u0631\u0648\u0631";
     },
     get$noEmotesFound() {
-      return "Emoteja ei l\xf6ytynyt. \ud83d\ude15";
+      return "\u0647\u06cc\u0686 \u0634\u06a9\u0644\u06a9\u06cc \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Jaa kutsulinkki";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc \u0644\u06cc\u0646\u06a9 \u062f\u0639\u0648\u062a";
     },
     get$none() {
-      return "Ei yht\xe4\xe4n";
+      return "\u0647\u06cc\u0686\u200c\u06a9\u062f\u0627\u0645";
     },
     get$noPasswordRecoveryDescription() {
-      return "Et ole viel\xe4 lis\xe4nnyt tapaa salasanasi palauttamiseksi.";
+      return "\u0634\u0645\u0627 \u0647\u0646\u0648\u0632 \u0631\u0627\u0647\u06cc \u0628\u0631\u0627\u06cc \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0627\u0636\u0627\u0641\u0647 \u0646\u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f.";
     },
     get$noPermission() {
-      return "Ei lupaa";
+      return "\u0628\u062f\u0648\u0646 \u0627\u062c\u0627\u0632\u0647";
     },
     get$noRoomsFound() {
-      return "Huoneita ei l\xf6ytynyt\u2026";
+      return "\u0627\u062a\u0627\u0642\u06cc \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f\u2026";
     },
     get$notifications() {
-      return "Ilmoitukset";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627";
     },
     get$obtainingLocation() {
-      return "Paikannetaan sijantia\u2026";
+      return "\u0628\u0647 \u062f\u0633\u062a \u0622\u0648\u0631\u062f\u0646 \u0645\u06a9\u0627\u0646\u2026";
     },
     get$offensive() {
-      return "Loukkaava";
+      return "\u062a\u0648\u0647\u06cc\u0646 \u0622\u0645\u06cc\u0632";
     },
     get$ok() {
-      return "ok";
+      return "\u062a\u0627\u06cc\u06cc\u062f";
     },
     get$oopsSomethingWentWrong() {
-      return "Hups, jotakin meni pieleen\u2026";
+      return "\u0627\u0648\u0647\u060c \u0645\u0634\u06a9\u0644\u06cc \u067e\u06cc\u0634 \u0622\u0645\u062f\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Yksi tunnuksistasi on kirjattu ulos";
+      return "\u06cc\u06a9\u06cc \u0627\u0632 \u06a9\u0644\u0627\u06cc\u0646\u062a(\u0628\u0631\u0646\u0627\u0645\u0647)\u0647\u0627\u06cc \u0634\u0645\u0627 \u0627\u0632 \u0633\u06cc\u0633\u062a\u0645 \u062e\u0627\u0631\u062c \u0634\u062f\u0647 \u0627\u0633\u062a";
     },
     get$openInMaps() {
-      return "Avaa kartoissa";
+      return "\u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u062f\u0631 \u0646\u0642\u0634\u0647";
     },
     get$link() {
-      return "Linkki";
+      return "\u067e\u06cc\u0648\u0646\u062f";
     },
     get$serverRequiresEmail() {
-      return "T\xe4m\xe4n palvelimen t\xe4ytyy tarkistaa s\xe4hk\xf6posti-osoitteesi rekister\xf6itymist\xe4 varten.";
+      return "\u0628\u0631\u0627\u06cc \u062b\u0628\u062a\u200c\u0646\u0627\u0645\u060c \u0627\u06cc\u0646 \u0633\u0631\u0648\u0631 \u0628\u0627\u06cc\u062f \u0622\u062f\u0631\u0633 \u0627\u06cc\u0645\u06cc\u0644 \u0634\u0645\u0627 \u0631\u0627 \u062a\u0627\u06cc\u06cc\u062f \u06a9\u0646\u062f.";
     },
     get$participant() {
-      return "Osallistuja";
+      return "\u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u0647";
     },
     get$passphraseOrKey() {
-      return "salalause tai palautusavain";
+      return "\u0639\u0628\u0627\u0631\u062a \u0639\u0628\u0648\u0631 \u06cc\u0627 \u06a9\u0644\u06cc\u062f \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc";
     },
     get$password(_) {
-      return "Salasana";
+      return "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631";
     },
     get$passwordForgotten() {
-      return "Salasana unohtunut";
+      return "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u0645";
     },
     get$passwordHasBeenChanged() {
-      return "Salasana on vaihdettu";
+      return "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062a\u063a\u06cc\u06cc\u0631 \u06a9\u0631\u062f";
     },
     get$overview() {
-      return "Yleiskatsaus";
+      return "\u0645\u0631\u0648\u0631 \u06a9\u0644\u06cc";
     },
     get$passwordRecoverySettings() {
-      return "Salasanan palautusasetukset";
+      return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0631\u0645\u0632 \u0639\u0628\u0648\u0631";
     },
     get$passwordRecovery() {
-      return "Salasanan palautus";
+      return "\u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0631\u0645\u0632 \u0639\u0628\u0648\u0631";
     },
     get$pickImage() {
-      return "Valitse kuva";
+      return "\u06cc\u06a9 \u0639\u06a9\u0633 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$pin() {
-      return "Kiinnit\xe4";
+      return "\u0633\u0646\u062c\u0627\u0642 \u06a9\u0631\u062f\u0646";
     },
     get$pleaseChoose() {
-      return "Valitse";
+      return "\u0644\u0637\u0641\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$pleaseEnterYourPassword() {
-      return "Sy\xf6t\xe4 salasanasi";
+      return "\u0644\u0637\u0641\u0627 \u0631\u0645\u0632\u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$pleaseEnterYourPin() {
-      return "Sy\xf6t\xe4 PIN-koodisi";
+      return "\u0644\u0637\u0641\u0627 \u06a9\u062f \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$pleaseEnterYourUsername() {
-      return "Sy\xf6t\xe4 k\xe4ytt\xe4j\xe4tunnuksesi";
+      return "\u0644\u0637\u0641\u0627 \u0646\u0627\u0645\u200c\u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Seuraa ohjeita verkkosivulla ja paina seuraava.";
+      return "\u0644\u0637\u0641\u0627 \u062f\u0633\u062a\u0648\u0631\u0627\u0644\u0639\u0645\u0644\u200c\u0647\u0627\u06cc \u0648\u0628\u200c\u0633\u0627\u06cc\u062a \u0631\u0627 \u062f\u0646\u0628\u0627\u0644 \u06a9\u0646\u06cc\u062f \u0648 \u0631\u0648\u06cc \u0628\u0639\u062f\u06cc \u0628\u0632\u0646\u06cc\u062f.";
     },
     get$privacy() {
-      return "Yksityisyys";
+      return "\u062d\u0631\u06cc\u0645 \u062e\u0635\u0648\u0635\u06cc";
     },
     get$reason(_) {
-      return "Syy";
+      return "\u062f\u0644\u06cc\u0644";
     },
     redactedBy$1(username) {
-      return "Poistanut " + username;
+      return "\u062d\u0630\u0641 \u0634\u062f\u0647 \u062a\u0648\u0633\u0637 " + username;
     },
     get$directChat() {
-      return "Yksityiskeskustelu";
+      return "\u0686\u062a \u0645\u0633\u062a\u0642\u06cc\u0645";
     },
     redactedByBecause$2(username, reason) {
-      return "Poistanut " + username + ' syyst\xe4: "' + reason + '"';
+      return "\u062d\u0630\u0641 \u0634\u062f\u0647 \u062a\u0648\u0633\u0637 " + username + ' \u0628\u0647 \u062f\u0644\u06cc\u0644: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " poisti tapahtuman";
+      return username + " \u06cc\u06a9 \u0631\u0648\u06cc\u062f\u0627\u062f \u0631\u0627 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0631\u062f";
     },
     get$redactMessage() {
-      return "Poista viesti";
+      return "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u067e\u06cc\u0627\u0645";
     },
     get$reject() {
-      return "Hylk\xe4\xe4";
+      return "\u0631\u062f \u06a9\u0631\u062f\u0646";
     },
     rejectedTheInvitation$1(username) {
-      return username + " hylk\xe4si kutsun";
+      return username + " \u062f\u0639\u0648\u062a \u0631\u0627 \u0631\u062f \u06a9\u0631\u062f";
     },
     get$removeAllOtherDevices() {
-      return "Poista kaikki muut laitteet";
+      return "\u062d\u0630\u0641 \u062a\u0645\u0627\u0645 \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u062f\u06cc\u06af\u0631";
     },
     get$unbanFromChat() {
-      return "Poista porttikielto keskusteluun";
+      return "\u0644\u063a\u0648 \u0645\u062d\u0631\u0648\u0645\u06cc\u062a \u0627\u0632 \u06af\u067e";
     },
     get$removeYourAvatar() {
-      return "Poista profiilikuvasi";
+      return "\u0622\u0648\u0627\u062a\u0627\u0631(\u0639\u06a9\u0633 \u062d\u0633\u0627\u0628) \u062e\u0648\u062f \u0631\u0627 \u062d\u0630\u0641 \u06a9\u0646\u06cc\u062f";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Korvaa huone uudemmalla versiolla";
+      return "\u0627\u062a\u0627\u0642 \u0631\u0627 \u0628\u0627 \u0646\u0633\u062e\u0647 \u062c\u062f\u06cc\u062f\u062a\u0631 \u062c\u0627\u06cc\u06af\u0632\u06cc\u0646 \u06a9\u0646\u06cc\u062f";
     },
     get$reply(_) {
-      return "Vastaa";
+      return "\u067e\u0627\u0633\u062e";
     },
     get$reportMessage() {
-      return "Ilmoita viesti";
+      return "\u06af\u0632\u0627\u0631\u0634 \u062f\u0627\u062f\u0646 \u067e\u06cc\u0627\u0645";
     },
     get$roomHasBeenUpgraded() {
-      return "Huone on p\xe4ivitetty";
+      return "\u0627\u062a\u0627\u0642 \u0627\u0631\u062a\u0642\u0627 \u067e\u06cc\u062f\u0627 \u06a9\u0631\u062f";
     },
     get$search(_) {
-      return "Hae";
+      return "\u062c\u0633\u062a\u062c\u0648";
     },
     get$security() {
-      return "Turvallisuus";
+      return "\u0627\u0645\u0646\u06cc\u062a";
     },
     get$send(_) {
-      return "L\xe4het\xe4";
+      return "\u0627\u0631\u0633\u0627\u0644";
     },
     get$sendAMessage() {
-      return "L\xe4het\xe4 viesti";
+      return "\u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645";
     },
     get$sendAudio() {
-      return "L\xe4het\xe4 \xe4\xe4niviesti";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0635\u062f\u0627";
     },
     get$sendFile() {
-      return "L\xe4het\xe4 tiedosto";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0641\u0627\u06cc\u0644";
     },
     get$sendImage() {
-      return "L\xe4het\xe4 kuva";
+      return "\u0627\u0631\u0633\u0627\u0644 \u062a\u0635\u0648\u06cc\u0631";
     },
     sendImages$1(count) {
-      return "L\xe4het\xe4 " + count + " kuva";
+      return "\u0627\u0631\u0633\u0627\u0644 " + count + " \u062a\u0635\u0648\u06cc\u0631";
     },
     get$sendMessages() {
-      return "L\xe4het\xe4 viestej\xe4";
+      return "\u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627";
     },
     get$sendVideo() {
-      return "L\xe4het\xe4 video";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0648\u06cc\u062f\u0626\u0648";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " l\xe4hetti tiedoston";
+      return "\ud83d\udcc1 " + username + " \u06cc\u06a9 \u0641\u0627\u06cc\u0644 \u0641\u0631\u0633\u062a\u0627\u062f";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " l\xe4hetti \xe4\xe4niviestin";
+      return "\ud83c\udfa4 " + username + " \u06cc\u06a9 \u0635\u062f\u0627\u06cc \u0636\u0628\u0637 \u0634\u062f\u0647 \u0641\u0631\u0633\u062a\u0627\u062f";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " l\xe4hetti kuvan";
+      return "\ud83d\uddbc\ufe0f " + username + " \u06cc\u06a9 \u0639\u06a9\u0633 \u0641\u0631\u0633\u062a\u0627\u062f";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " l\xe4hetti tarran";
+      return "\ud83d\ude0a " + username + " \u06cc\u06a9 \u0628\u0631\u0686\u0633\u0628 \u0641\u0631\u0633\u062a\u0627\u062f";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " l\xe4hetti videon";
+      return "\ud83c\udfa5 " + username + " \u06cc\u06a9 \u0648\u06cc\u062f\u0626\u0648 \u0641\u0631\u0633\u062a\u0627\u062f";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " l\xe4hetti puhelutiedot";
+      return senderName + " \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062a\u0645\u0627\u0633 \u0631\u0627 \u0641\u0631\u0633\u062a\u0627\u062f";
     },
     get$separateChatTypes() {
-      return "Erota yksityiskeskustelut ryhmist\xe4";
+      return "\u06af\u067e\u200c\u0647\u0627\u06cc \u0645\u0633\u062a\u0642\u06cc\u0645 \u0631\u0627 \u0627\u0632 \u06af\u0631\u0648\u0647\u200c\u0647\u0627 \u062c\u062f\u0627 \u06a9\u0646\u06cc\u062f";
     },
     get$setChatDescription() {
-      return "Asetti keskustelun kuvauksen";
+      return "\u062a\u0646\u0638\u06cc\u0645 \u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0686\u062a";
     },
     get$setStatus() {
-      return "Aseta tila";
+      return "\u062a\u0646\u0638\u06cc\u0645 \u0648\u0636\u0639\u06cc\u062a";
     },
     get$settings() {
-      return "Asetukset";
+      return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a";
     },
     get$share(_) {
-      return "Jaa";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc";
     },
     sharedTheLocation$1(username) {
-      return username + " jakoi sijaintinsa";
+      return username + " \u0648\u0636\u0639\u06cc\u062a \u0645\u06a9\u0627\u0646\u06cc \u062e\u0648\u062f \u0631\u0627 \u0628\u0647 \u0627\u0634\u062a\u0631\u0627\u06a9 \u06af\u0630\u0627\u0634\u062a";
     },
     get$shareLocation() {
-      return "Jaa sijainti";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc \u0648\u0636\u0639\u06cc\u062a \u0645\u06a9\u0627\u0646\u06cc";
     },
     get$presencesToggle() {
-      return "N\xe4yt\xe4 muiden k\xe4ytt\xe4jien tilaviestit";
+      return "\u0646\u0645\u0627\u06cc\u0634 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0648\u0636\u0639\u06cc\u062a \u0627\u0632 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062f\u06cc\u06af\u0631";
     },
     get$skip(_) {
-      return "Ohita";
+      return "\u0631\u062f \u0634\u062f\u0646";
     },
     get$sourceCode() {
-      return "L\xe4hdekoodi";
+      return "\u06a9\u062f \u0645\u0646\u0628\u0639";
     },
     startedACall$1(senderName) {
-      return senderName + " aloitti puhelun";
+      return senderName + " \u062a\u0645\u0627\u0633\u06cc \u0631\u0627 \u0634\u0631\u0648\u0639 \u06a9\u0631\u062f";
     },
     get$status(_) {
-      return "Tila";
+      return "\u0648\u0636\u0639\u06cc\u062a";
     },
     get$statusExampleMessage() {
-      return "Millainen on vointisi?";
+      return "\u0627\u0645\u0631\u0648\u0632 \u062d\u0627\u0644\u062a\u0627\u0646 \u0686\u0637\u0648\u0631 \u0627\u0633\u062a\u061f";
     },
     get$submit(_) {
-      return "L\xe4het\xe4";
+      return "\u0627\u0631\u0633\u0627\u0644";
     },
     get$synchronizingPleaseWait() {
-      return "Synkronoidaan... Hetkinen.";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0647\u0645\u06af\u0627\u0645\u200c\u0633\u0627\u0632\u06cc... \u0644\u0637\u0641\u0627 \u0635\u0628\u0631 \u06a9\u0646\u06cc\u062f.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synkronoidaan\u2026 (" + percentage + "%)";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0647\u0645\u06af\u0627\u0645\u200c\u0633\u0627\u0632\u06cc\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "J\xe4rjestelm\xe4";
+      return "\u0633\u06cc\u0633\u062a\u0645";
     },
     get$theyDontMatch() {
-      return "Ne eiv\xe4t t\xe4sm\xe4\xe4";
+      return "\u0628\u0627 \u0647\u0645 \u0645\u0646\u0637\u0628\u0642 \u0646\u06cc\u0633\u062a\u0646\u062f";
     },
     get$theyMatch() {
-      return "Ne t\xe4sm\xe4\xe4v\xe4t";
+      return "\u0628\u0627 \u0647\u0645 \u0645\u0646\u0637\u0628\u0642 \u0647\u0633\u062a\u0646\u062f";
     },
     get$tooManyRequestsWarning() {
-      return "Liikaa pyynt\xf6j\xe4. Yrit\xe4 my\xf6hemmin uudelleen!";
+      return "\u062a\u0639\u062f\u0627\u062f \u062f\u0631\u062e\u0648\u0627\u0633\u062a\u200c\u0647\u0627\u06cc \u0628\u06cc\u0634 \u0627\u0632 \u062d\u062f. \u0644\u0637\u0641\u0627 \u0628\u0639\u062f\u0627 \u062f\u0648\u0628\u0627\u0631\u0647 \u0627\u0645\u062a\u062d\u0627\u0646 \u06a9\u0646\u06cc\u062f!";
     },
     get$tryToSendAgain() {
-      return "Yrit\xe4 uudelleenl\xe4hett\xe4mist\xe4";
+      return "\u062a\u0644\u0627\u0634 \u0628\u0631\u0627\u06cc \u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f";
     },
     get$unavailable() {
-      return "Ei saatavilla";
+      return "\u062e\u0627\u0631\u062c \u0627\u0632 \u062f\u0633\u062a\u0631\u0633";
     },
     unbannedUser$2(username, targetName) {
-      return username + " poisti k\xe4ytt\xe4j\xe4n " + targetName + " porttikiellon";
+      return username + " \u0645\u062d\u0631\u0648\u0645\u06cc\u062a " + targetName + " \u0631\u0627 \u0628\u0631\u062f\u0627\u0634\u062a";
     },
     get$unblockDevice() {
-      return "Poista laitteen esto";
+      return "\u0628\u0631\u062f\u0627\u0634\u062a\u0646 \u0645\u0633\u062f\u0648\u062f \u0628\u0648\u062f\u0646 \u062f\u0633\u062a\u06af\u0627\u0647";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Tuntematon salausalgoritmi";
+      return "\u0627\u0644\u06af\u0648\u0631\u06cc\u062a\u0645 \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0646\u0627\u0634\u0646\u0627\u062e\u062a\u0647";
     },
     unknownEvent$1(type) {
-      return "Tuntematon tapahtuma '" + type + "'";
+      return "\u0631\u0648\u06cc\u062f\u0627\u062f \u0646\u0627\u0634\u0646\u0627\u062e\u062a\u0647 \xab" + type + "\xbb";
     },
     get$unpin() {
-      return "Poista kiinnitys";
+      return "\u0628\u0631\u062f\u0627\u0634\u062a\u0646 \u0633\u0646\u062c\u0627\u0642";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " ja " + count + " muuta kirjoittavat\u2026";
+      return username + " \u0648 " + count + " \u0646\u0641\u0631 \u062f\u06cc\u06af\u0631 \u062f\u0631 \u062d\u0627\u0644 \u062a\u0627\u06cc\u067e \u06a9\u0631\u062f\u0646\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " ja " + username2 + " kirjoittavat\u2026";
+      return username + " \u0648 " + username2 + " \u062f\u0631 \u062d\u0627\u0644 \u062a\u0627\u06cc\u067e \u06a9\u0631\u062f\u0646\u2026";
     },
     userIsTyping$1(username) {
-      return username + " kirjoittaa\u2026";
+      return username + " \u062f\u0631 \u062d\u0627\u0644 \u062a\u0627\u06cc\u067e \u06a9\u0631\u062f\u0646\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " poistui keskustelusta";
+      return "\ud83d\udeaa" + username + " \u06af\u067e \u0631\u0627 \u062a\u0631\u06a9 \u06a9\u0631\u062f";
     },
     get$username(_) {
-      return "K\xe4ytt\xe4j\xe4tunnus";
+      return "\u0646\u0627\u0645\u200c\u06a9\u0627\u0631\u0628\u0631\u06cc";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " l\xe4hetti " + type + "-tapahtuman";
+      return username + " \u06cc\u06a9 \u0631\u0648\u06cc\u062f\u0627\u062f " + type + " \u0641\u0631\u0633\u062a\u0627\u062f";
     },
     get$unverified() {
-      return "Varmistamaton";
+      return "\u062a\u0627\u06cc\u06cc\u062f\u0646\u0634\u062f\u0647";
     },
     get$verified() {
-      return "Varmistettu";
+      return "\u062a\u0627\u06cc\u06cc\u062f\u0634\u062f\u0647";
     },
     get$verifyStart() {
-      return "Aloita varmennus";
+      return "\u0634\u0631\u0648\u0639 \u0628\u0627\u0632\u0628\u06cc\u0646\u06cc \u0648 \u062a\u0627\u06cc\u06cc\u062f";
     },
     get$verifySuccess() {
-      return "Varmensit onnistuneesti!";
+      return "\u0628\u0627\u0632\u0628\u06cc\u0646\u06cc \u0648 \u062a\u0627\u06cc\u06cc\u062f \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f!";
     },
     get$verifyTitle() {
-      return "Varmistetaan toista tunnusta";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062a\u0627\u06cc\u06cc\u062f \u062d\u0633\u0627\u0628 \u062f\u06cc\u06af\u0631";
     },
     get$visibleForAllParticipants() {
-      return "N\xe4kyy kaikille osallistujille";
+      return "\u0642\u0627\u0628\u0644 \u0631\u0648\u06cc\u062a \u0628\u0631\u0627\u06cc \u062a\u0645\u0627\u0645 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646";
     },
     get$visibleForEveryone() {
-      return "N\xe4kyy kaikille";
+      return "\u0642\u0627\u0628\u0644 \u0631\u0648\u06cc\u062a \u0628\u0631\u0627\u06cc \u0647\u0645\u0647";
     },
     get$voiceMessage() {
-      return "\xc4\xe4niviesti";
+      return "\u067e\u06cc\u0627\u0645 \u0635\u0648\u062a\u06cc";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Odotetaan kumppanin varmistavan pyynn\xf6n\u2026";
+      return "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631 \u067e\u0630\u06cc\u0631\u0641\u062a\u0646 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0627\u0632 \u062c\u0627\u0646\u0628 \u0641\u0631\u062f \u062f\u06cc\u06af\u0631\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Odotetaan kumppanin hyv\xe4ksyv\xe4n emojit\u2026";
+      return "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631 \u067e\u0630\u06cc\u0631\u0641\u062a\u0646 \u0634\u06a9\u0644\u06a9 \u0627\u0632 \u062c\u0627\u0646\u0628 \u0641\u0631\u062f \u062f\u06cc\u06af\u0631\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Odotetaan kumppanin hyv\xe4ksyv\xe4n numerot\u2026";
+      return "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631 \u067e\u0630\u06cc\u0631\u0641\u062a\u0646 \u0627\u0639\u062f\u0627\u062f \u0627\u0632 \u062c\u0627\u0646\u0628 \u0641\u0631\u062f \u062f\u06cc\u06af\u0631\u2026";
     },
     get$warning() {
-      return "Varoitus!";
+      return "\u0647\u0634\u062f\u0627\u0631!";
     },
     get$weSentYouAnEmail() {
-      return "L\xe4hetimme sinulle s\xe4hk\xf6postia";
+      return "\u06cc\u06a9 \u0627\u06cc\u0645\u06cc\u0644 \u0628\u0631\u0627\u06cc\u062a\u0627\u0646 \u0641\u0631\u0633\u062a\u0627\u062f\u06cc\u0645";
     },
     get$whyDoYouWantToReportThis() {
-      return "Miksi haluat ilmoittaa t\xe4m\xe4n?";
+      return "\u0686\u0631\u0627 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u06af\u0632\u0627\u0631\u0634 \u062f\u0647\u06cc\u062f\u061f";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "N\xe4ill\xe4 osoitteilla voit palauttaa salasanasi.";
+      return "\u0628\u0627 \u0627\u06cc\u0646 \u0622\u062f\u0631\u0633\u200c\u0647\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0631\u0645\u0632 \u062e\u0648\u062f \u0631\u0627 \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u06a9\u0646\u06cc\u062f.";
     },
     get$writeAMessage() {
-      return "Kirjoita viesti\u2026";
+      return "\u0646\u0648\u0634\u062a\u0646 \u067e\u06cc\u0627\u0645\u2026";
     },
     get$yes() {
-      return "Kyll\xe4";
+      return "\u0628\u0644\u0647";
     },
     get$you() {
-      return "Sin\xe4";
+      return "\u0634\u0645\u0627";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Et en\xe4\xe4 osallistu t\xe4h\xe4n keskusteluun";
+      return "\u0634\u0645\u0627 \u062f\u06cc\u06af\u0631 \u062f\u0631 \u0627\u06cc\u0646 \u06af\u067e \u0634\u0631\u06a9\u062a \u0646\u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Sinulle on annettu porttikielto t\xe4h\xe4n keskusteluun";
+      return "\u0634\u0645\u0627 \u0627\u0632 \u0627\u06cc\u0646 \u06af\u067e \u0645\u062d\u0631\u0648\u0645 \u0634\u062f\u0647\u200c\u0627\u06cc\u062f";
     },
     get$yourPublicKey() {
-      return "Julkinen avaimesi";
+      return "\u06a9\u0644\u06cc\u062f \u0639\u0645\u0648\u0645\u06cc \u0634\u0645\u0627";
     },
     get$messageInfo() {
-      return "Viestin tiedot";
+      return "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u06cc\u0627\u0645";
     },
     get$time(_) {
-      return "Aika";
+      return "\u0632\u0645\u0627\u0646";
     },
     get$sender() {
-      return "L\xe4hett\xe4j\xe4";
+      return "\u0641\u0631\u0633\u062a\u0646\u062f\u0647";
     },
     get$openGallery() {
-      return "Avaa galleria";
+      return "\u0628\u0627\u0632\u06a9\u0631\u062f\u0646 \u06af\u0627\u0644\u0631\u06cc";
     },
     get$start(_) {
-      return "Aloita";
+      return "\u0634\u0631\u0648\u0639";
     },
     get$markAsRead() {
-      return "Merkitse luetuksi";
+      return "\u0639\u0644\u0627\u0645\u062a\u200c\u06af\u0630\u0627\u0634\u062a\u0646 \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u062e\u0648\u0627\u0646\u062f\u0647 \u0634\u062f\u0647";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " reagoi " + reaction;
+      return sender + " \u0628\u0627 " + reaction + " \u0648\u0627\u06a9\u0646\u0634 \u0646\u0634\u0627\u0646 \u062f\u0627\u062f";
     },
     get$pinMessage() {
-      return "Kiinnit\xe4 huoneeseen";
+      return "\u0633\u0646\u062c\u0627\u0642 \u06a9\u0631\u062f\u0646 \u0628\u0647 \u0627\u062a\u0627\u0642";
     },
     get$emojis() {
-      return "Hymi\xf6t";
+      return "\u0634\u06a9\u0644\u06a9\u200c\u0647\u0627";
     },
     get$youRejectedTheInvitation() {
-      return "Kielt\xe4ydyit kutsusta";
+      return "\u0634\u0645\u0627 \u062f\u0639\u0648\u062a \u0631\u0627 \u0631\u062f \u06a9\u0631\u062f\u06cc\u062f";
     },
     get$youJoinedTheChat() {
-      return "Liityit keskusteluun";
+      return "\u0634\u0645\u0627 \u0628\u0647 \u06af\u067e \u067e\u06cc\u0648\u0633\u062a\u06cc\u062f";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Hyv\xe4ksyit kutsun";
+      return "\ud83d\udc4d \u0634\u0645\u0627 \u062f\u0639\u0648\u062a \u0631\u0627 \u067e\u0630\u06cc\u0631\u0641\u062a\u06cc\u062f";
     },
     youBannedUser$1(user) {
-      return "Annoit porttikiellon k\xe4ytt\xe4j\xe4lle " + user;
+      return "\u0634\u0645\u0627 " + user + " \u0631\u0627 \u0645\u062d\u0631\u0648\u0645 \u06a9\u0631\u062f\u06cc\u062f";
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Olet perunut kutsun k\xe4ytt\xe4j\xe4lle " + user;
+      return "\u0634\u0645\u0627 \u062f\u0639\u0648\u062a " + user + " \u0631\u0627 \u067e\u0633\u200c\u06af\u0631\u0641\u062a\u06cc\u062f";
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 " + user + " kutsui sinut";
+      return "\ud83d\udce9 \u0634\u0645\u0627 \u062a\u0648\u0633\u0637 " + user + " \u062f\u0639\u0648\u062a \u0634\u062f\u0647\u200c\u0627\u06cc\u062f";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Kutsuit k\xe4ytt\xe4j\xe4n " + user;
+      return "\ud83d\udce9 \u0634\u0645\u0627 " + user + " \u0631\u0627 \u062f\u0639\u0648\u062a \u06a9\u0631\u062f\u06cc\u062f";
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Potkit k\xe4ytt\xe4j\xe4n " + user + " keskustelusta";
+      return "\ud83d\udc5e \u0634\u0645\u0627 " + user + " \u0631\u0627 \u0628\u06cc\u0631\u0648\u0646 \u06a9\u0631\u062f\u06cc\u062f";
     },
     youUnbannedUser$1(user) {
-      return "Poistit k\xe4ytt\xe4j\xe4n " + user + " porttikiellon";
+      return "\u0634\u0645\u0627 \u0645\u062d\u0631\u0648\u0645\u06cc\u062a " + user + " \u0631\u0627 \u0628\u0631\u062f\u0627\u0634\u062a\u06cc\u062f";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " on koputtanut";
+      return "\ud83d\udeaa " + user + " \u0632\u062f\u0647 \u0627\u0633\u062a";
     },
     get$knock() {
-      return " Koputa";
+      return "\u0632\u0646\u06af \u0632\u062f\u0646";
     },
     countFiles$1(count) {
-      return "" + count + " tiedostoa";
+      return "" + count + " \u0641\u0627\u06cc\u0644";
     },
     get$user() {
-      return "K\xe4ytt\xe4j\xe4";
+      return "\u06a9\u0627\u0631\u0628\u0631";
     },
     get$custom() {
-      return "Mukautettu";
+      return "\u0633\u0641\u0627\u0631\u0634\u06cc";
     },
     get$noKeyForThisMessage() {
-      return "T\xe4m\xe4 voi tapahtua mik\xe4li viesti l\xe4hetettiin ennen sis\xe4\xe4nkirjautumistasi t\xe4lle laitteelle.\n\nOn my\xf6s mahdollista, ett\xe4 l\xe4hett\xe4j\xe4 on est\xe4nyt t\xe4m\xe4n laitteen tai jokin meni pieleen verkkoyhteyden kanssa.\n\nPystytk\xf6 lukemaan viestin toisella istunnolla? Siin\xe4 tapauksessa voit siirt\xe4\xe4 viestin silt\xe4! Mene Asetukset > Laitteet ja varmista, ett\xe4 laitteesi ovat varmistaneet toisensa. Seuraavankerran avatessasi huoneen ja molempien istuntojen ollessa etualalla, avaimet siirret\xe4\xe4n automaattisesti.\n\nHaluatko varmistaa ettet menet\xe4 avaimia uloskirjautuessa tai laitteita vaihtaessa? Varmista avainvarmuuskopion k\xe4yt\xf6ss\xe4olo asetuksista.";
+      return "\u0627\u06af\u0631 \u067e\u06cc\u0627\u0645 \u0642\u0628\u0644 \u0627\u0632 \u0648\u0631\u0648\u062f \u0628\u0647 \u062d\u0633\u0627\u0628\u062a\u0627\u0646 \u062f\u0631 \u0627\u06cc\u0646 \u062f\u0633\u062a\u06af\u0627\u0647 \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0627\u0634\u062f\u060c \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0627\u06cc\u0646 \u0627\u062a\u0641\u0627\u0642 \u0628\u06cc\u0641\u062a\u062f.\n\n\u0647\u0645\u0686\u0646\u06cc\u0646 \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0641\u0631\u0633\u062a\u0646\u062f\u0647\u060c \u062f\u0633\u062a\u06af\u0627\u0647 \u0634\u0645\u0627 \u0631\u0627 \u0645\u0633\u062f\u0648\u062f \u06a9\u0631\u062f\u0647 \u0628\u0627\u0634\u062f \u06cc\u0627 \u0645\u0634\u06a9\u0644\u06cc \u062f\u0631 \u0627\u062a\u0635\u0627\u0644 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a \u0631\u062e \u062f\u0627\u062f\u0647 \u0628\u0627\u0634\u062f.\n\n\u0622\u06cc\u0627 \u0645\u06cc \u062a\u0648\u0627\u0646\u06cc\u062f \u067e\u06cc\u0627\u0645 \u0631\u0627 \u062f\u0631 \u0646\u0634\u0633\u062a \u062f\u06cc\u06af\u0631\u06cc \u0628\u062e\u0648\u0627\u0646\u06cc\u062f\u061f \u0628\u0646\u0627\u0628\u0631\u0627\u06cc\u0646 \u0645\u06cc \u062a\u0648\u0627\u0646\u06cc\u062f \u067e\u06cc\u0627\u0645 \u0631\u0627 \u0627\u0632 \u0622\u0646 \u0645\u0646\u062a\u0642\u0644 \u06a9\u0646\u06cc\u062f! \u0628\u0647 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a > \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627 \u0628\u0631\u0648\u06cc\u062f \u0648 \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 \u062f\u0633\u062a\u06af\u0627\u0647 \u0647\u0627\u06cc \u0634\u0645\u0627 \u06cc\u06a9\u062f\u06cc\u06af\u0631 \u0631\u0627 \u062a\u0627\u06cc\u06cc\u062f \u06a9\u0631\u062f\u0647\u200c\u0627\u0646\u062f. \u0647\u0646\u06af\u0627\u0645\u06cc \u06a9\u0647 \u062f\u0641\u0639\u0647 \u0628\u0639\u062f \u0627\u062a\u0627\u0642 \u0631\u0627 \u0628\u0627\u0632 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f \u0648 \u0647\u0631 \u062f\u0648 \u062c\u0644\u0633\u0647 \u062f\u0631 \u067e\u06cc\u0634\u200c\u0632\u0645\u06cc\u0646\u0647 \u0647\u0633\u062a\u0646\u062f\u060c \u06a9\u0644\u06cc\u062f\u0647\u0627 \u0628\u0647 \u0637\u0648\u0631 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0645\u0646\u062a\u0642\u0644 \u0645\u06cc\u200c\u0634\u0648\u0646\u062f.\n\n\u0622\u06cc\u0627 \u0646\u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0647\u0646\u06af\u0627\u0645 \u062e\u0631\u0648\u062c \u0627\u0632 \u0633\u06cc\u0633\u062a\u0645 \u06cc\u0627 \u062a\u0639\u0648\u06cc\u0636 \u062f\u0633\u062a\u06af\u0627\u0647\u060c \u06a9\u0644\u06cc\u062f\u0647\u0627 \u0631\u0627 \u06af\u0645 \u06a9\u0646\u06cc\u062f\u061f \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646 \u06af\u067e \u0631\u0627 \u062f\u0631 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Tyhj\xe4 keskustelu (oli " + oldDisplayName + ")";
+      return "\u06af\u067e \u062e\u0627\u0644\u06cc (" + oldDisplayName + " \u0628\u0648\u062f)";
     },
     get$reopenChat() {
-      return "Avaa keskustelu uudelleen";
+      return "\u06af\u067e \u0631\u0627 \u062f\u0648\u0628\u0627\u0631\u0647 \u0628\u0627\u0632 \u06a9\u0646\u06cc\u062f";
     },
     get$noOtherDevicesFound() {
-      return "Muita laitteita ei l\xf6ytynyt";
+      return "\u062f\u0633\u062a\u06af\u0627\u0647 \u062f\u06cc\u06af\u0631\u06cc \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f";
     },
     fileIsTooBigForServer$1(max) {
-      return "Ei voi l\xe4hett\xe4\xe4! Palvelin tukee liitetiedostoja vain enint\xe4\xe4n " + max + ".";
+      return "\u0633\u0631\u0648\u0631 \u06af\u0632\u0627\u0631\u0634 \u0645\u06cc\u200c\u062f\u0647\u062f \u06a9\u0647 \u0641\u0627\u06cc\u0644 \u0628\u0631\u0627\u06cc \u0627\u0631\u0633\u0627\u0644 \u0628\u0633\u06cc\u0627\u0631 \u0628\u0632\u0631\u06af \u0627\u0633\u062a.";
     },
     get$jumpToLastReadMessage() {
-      return "Hypp\xe4\xe4 viimeiseen luettuun viestiin";
+      return "\u067e\u0631\u0634 \u0628\u0647 \u0622\u062e\u0631\u06cc\u0646 \u067e\u06cc\u0627\u0645 \u062e\u0648\u0627\u0646\u062f\u0647 \u0634\u062f\u0647";
     },
     get$readUpToHere() {
-      return "Luettu t\xe4h\xe4n asti";
+      return "\u062a\u0627 \u0627\u06cc\u0646\u062c\u0627 \u062e\u0648\u0627\u0646\u062f\u0647 \u0634\u062f\u0647";
     },
     get$jump() {
-      return "Hypp\xe4\xe4";
+      return "\u067e\u0631\u0634";
     },
     get$openLinkInBrowser() {
-      return "Avaa linkki selaimessa";
+      return "\u0628\u0627\u0632\u06a9\u0631\u062f\u0646 \u067e\u06cc\u0648\u0646\u062f \u062f\u0631 \u0645\u0631\u0648\u0631\u06af\u0631";
     },
     get$setColorTheme() {
-      return "Aseta v\xe4riteema:";
+      return "\u0627\u0646\u062a\u062e\u0627\u0628 \u062a\u0645 \u0631\u0646\u06af:";
     },
     get$invite() {
-      return "Kutsu";
+      return "\u062f\u0639\u0648\u062a";
     },
     get$invalidInput() {
-      return "Virheellinen sy\xf6te!";
+      return "\u0648\u0631\u0648\u062f\u06cc \u0646\u0627\u0645\u0639\u062a\u0628\u0631!";
     },
     wrongPinEntered$1(seconds) {
-      return "V\xe4\xe4r\xe4 pin-koodi! Yrit\xe4 uudelleen " + seconds + " sekuntin kuluttua...";
+      return "\u06a9\u062f \u067e\u06cc\u0646 \u0627\u0634\u062a\u0628\u0627\u0647 \u0648\u0627\u0631\u062f \u0634\u062f! \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f \u062f\u0631 " + seconds + " \u062b\u0627\u0646\u06cc\u0647...";
     },
     get$pleaseEnterANumber() {
-      return "Sy\xf6t\xe4 suurempi luku kuin 0";
+      return "\u0644\u0637\u0641\u0627\u064b \u0639\u062f\u062f\u06cc \u0628\u0632\u0631\u06af\u062a\u0631 \u0627\u0632 0 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$removeDevicesDescription() {
-      return "Sinut kirjataan ulos t\xe4st\xe4 laitteesta etk\xe4 en\xe4\xe4 voi vastaanottaa viestej\xe4.";
+      return "\u0627\u0632 \u0627\u06cc\u0646 \u062f\u0633\u062a\u06af\u0627\u0647 \u062e\u0627\u0631\u062c \u062e\u0648\u0627\u0647\u06cc\u062f \u0634\u062f \u0648 \u062f\u06cc\u06af\u0631 \u0642\u0627\u062f\u0631 \u0628\u0647 \u062f\u0631\u06cc\u0627\u0641\u062a \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u0646\u062e\u0648\u0627\u0647\u06cc\u062f \u0628\u0648\u062f.";
     },
     get$banUserDescription() {
-      return "K\xe4ytt\xe4j\xe4 estet\xe4\xe4n keskustelusta eik\xe4 h\xe4n voi en\xe4\xe4 liitty\xe4 keskusteluun ennen kuin h\xe4net vapautetaan estosta.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0627\u0632 \u06af\u0641\u062a\u06af\u0648 \u0645\u0633\u062f\u0648\u062f \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0646\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u062f\u0648\u0628\u0627\u0631\u0647 \u0648\u0627\u0631\u062f \u0634\u0648\u062f \u062a\u0627 \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u0631\u0641\u0639 \u0645\u0633\u062f\u0648\u062f \u0634\u0648\u062f.";
     },
     get$unbanUserDescription() {
-      return "K\xe4ytt\xe4j\xe4 voi liitty\xe4 keskusteluun uudelleen, jos h\xe4n yritt\xe4\xe4.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u062f\u0648\u0628\u0627\u0631\u0647 \u0648\u0627\u0631\u062f \u06af\u0641\u062a\u06af\u0648 \u0634\u0648\u062f \u0627\u06af\u0631 \u062a\u0644\u0627\u0634 \u06a9\u0646\u062f.";
     },
     get$kickUserDescription() {
-      return "K\xe4ytt\xe4j\xe4 poistetaan keskustelusta, mutta h\xe4nt\xe4 ei estet\xe4. Julkisissa keskusteluissa k\xe4ytt\xe4j\xe4 voi liitty\xe4 uudelleen milloin tahansa.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0627\u0632 \u06af\u0641\u062a\u06af\u0648 \u0627\u062e\u0631\u0627\u062c \u0645\u06cc\u200c\u0634\u0648\u062f \u0627\u0645\u0627 \u0645\u0633\u062f\u0648\u062f \u0646\u0645\u06cc\u200c\u0634\u0648\u062f. \u062f\u0631 \u06af\u0641\u062a\u06af\u0648\u0647\u0627\u06cc \u0639\u0645\u0648\u0645\u06cc\u060c \u06a9\u0627\u0631\u0628\u0631 \u0647\u0631 \u0632\u0645\u0627\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u062f\u0648\u0628\u0627\u0631\u0647 \u0648\u0627\u0631\u062f \u0634\u0648\u062f.";
     },
     get$makeAdminDescription() {
-      return "Kun teet t\xe4m\xe4n k\xe4ytt\xe4j\xe4n yll\xe4pit\xe4j\xe4ksi, et ehk\xe4 voi peruuttaa t\xe4t\xe4, koska h\xe4nell\xe4 on samat oikeudet kuin sinulla.";
+      return "\u0648\u0642\u062a\u06cc \u0627\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0645\u062f\u06cc\u0631 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f\u060c \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0646\u062a\u0648\u0627\u0646\u06cc\u062f \u0627\u06cc\u0646 \u062a\u063a\u06cc\u06cc\u0631 \u0631\u0627 \u0628\u0631\u06af\u0631\u062f\u0627\u0646\u06cc\u062f \u0632\u06cc\u0631\u0627 \u0647\u0645\u0627\u0646 \u0645\u062c\u0648\u0632\u0647\u0627\u06cc \u0634\u0645\u0627 \u0631\u0627 \u062e\u0648\u0627\u0647\u062f \u062f\u0627\u0634\u062a.";
     },
     get$yourGlobalUserIdIs() {
-      return "Kansainv\xe4linen k\xe4ytt\xe4j\xe4tunnuksesi on: ";
+      return "\u0634\u0646\u0627\u0633\u0647 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062c\u0647\u0627\u0646\u06cc \u0634\u0645\u0627: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Valitettavasti k\xe4ytt\xe4j\xe4\xe4 ei l\xf6ytynyt haulla "' + query + '". Tarkista, onko kirjoitusvirhe.';
+      return '\u0645\u062a\u0623\u0633\u0641\u0627\u0646\u0647 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0628\u0627 "' + query + '" \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f. \u0644\u0637\u0641\u0627\u064b \u0628\u0631\u0631\u0633\u06cc \u06a9\u0646\u06cc\u062f \u06a9\u0647 \u0627\u0634\u062a\u0628\u0627\u0647\u06cc \u062a\u0627\u06cc\u067e \u0646\u06a9\u0631\u062f\u0647 \u0628\u0627\u0634\u06cc\u062f.';
     },
     get$knocking() {
-      return " Koputtaa";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u06a9\u0648\u0628\u06cc\u062f\u0646";
     },
     get$nothingFound() {
-      return "Ei mit\xe4\xe4n l\xf6ytynyt...";
+      return "\u0686\u06cc\u0632\u06cc \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f...";
     },
     get$groupName() {
-      return "Ryhm\xe4n nimi";
+      return "\u0646\u0627\u0645 \u06af\u0631\u0648\u0647";
     },
     get$wrongRecoveryKey() {
-      return "Valitettavasti t\xe4m\xe4 ei n\xe4yt\xe4 oikealta palautusavaimelta.";
+      return "\u0645\u062a\u0623\u0633\u0641\u06cc\u0645... \u0627\u06cc\u0646 \u0628\u0647 \u0646\u0638\u0631 \u0646\u0645\u06cc\u200c\u0631\u0633\u062f \u06a9\u0644\u06cc\u062f \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0635\u062d\u06cc\u062d \u0628\u0627\u0634\u062f.";
     },
     get$startConversation() {
-      return "Aloita keskustelu";
+      return "\u0634\u0631\u0648\u0639 \u06af\u0641\u062a\u06af\u0648";
     },
     get$commandHint_sendraw() {
-      return "L\xe4het\xe4 raakaa jsonia";
+      return "\u0627\u0631\u0633\u0627\u0644 JSON \u062e\u0627\u0645";
     },
     get$leaveEmptyToClearStatus() {
-      return "J\xe4t\xe4 tyhj\xe4ksi poistaaksesi tilasi.";
+      return "\u0628\u0631\u0627\u06cc \u067e\u0627\u06a9 \u06a9\u0631\u062f\u0646 \u0648\u0636\u0639\u06cc\u062a \u062e\u0648\u062f\u060c \u062e\u0627\u0644\u06cc \u0628\u06af\u0630\u0627\u0631\u06cc\u062f";
     },
     get$select(_) {
-      return "Valitse";
+      return "\u0627\u0646\u062a\u062e\u0627\u0628";
     },
     get$searchForUsers() {
-      return "Etsi k\xe4ytt\xe4ji\xe4 @...";
+      return "\u062c\u0633\u062a\u062c\u0648 \u0628\u0631\u0627\u06cc @\u06a9\u0627\u0631\u0628\u0631\u0627\u0646...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Sy\xf6t\xe4 nykyinen salasanasi";
+      return "\u0644\u0637\u0641\u0627\u064b \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0641\u0639\u0644\u06cc \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$newPassword() {
-      return "Uusi salasana";
+      return "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Valitse vahva salasana";
+      return "\u0644\u0637\u0641\u0627\u064b \u06cc\u06a9 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0642\u0648\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$passwordsDoNotMatch() {
-      return "Salasanat eiv\xe4t t\xe4sm\xe4\xe4";
+      return "\u0631\u0645\u0632\u0647\u0627\u06cc \u0639\u0628\u0648\u0631 \u0645\u0637\u0627\u0628\u0642\u062a \u0646\u062f\u0627\u0631\u0646\u062f";
     },
     get$passwordIsWrong() {
-      return "Sy\xf6tt\xe4m\xe4si salasana on v\xe4\xe4r\xe4";
+      return "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0627\u0634\u062a\u0628\u0627\u0647 \u0627\u0633\u062a";
     },
     get$decline() {
-      return "Hylk\xe4\xe4";
+      return "\u0631\u062f \u06a9\u0631\u062f\u0646";
     },
     get$thisDevice() {
-      return "T\xe4m\xe4 laite:";
+      return "\u0627\u06cc\u0646 \u062f\u0633\u062a\u06af\u0627\u0647:";
     },
     get$initAppError() {
-      return "Sovelluksen alustuksessa tapahtui virhe";
+      return "\u062f\u0631 \u062d\u06cc\u0646 \u0631\u0627\u0647\u200c\u0627\u0646\u062f\u0627\u0632\u06cc \u0628\u0631\u0646\u0627\u0645\u0647 \u062e\u0637\u0627\u06cc\u06cc \u0631\u062e \u062f\u0627\u062f";
     },
     searchIn$1(chat) {
-      return 'Etsi keskustelusta "' + chat + '"...';
+      return '\u062c\u0633\u062a\u062c\u0648 \u062f\u0631 \u0686\u062a "' + chat + '"...';
     },
     get$searchMore() {
-      return "Etsi lis\xe4\xe4...";
+      return "\u062c\u0633\u062a\u062c\u0648\u06cc \u0628\u06cc\u0634\u062a\u0631...";
     },
     get$gallery() {
-      return "Galleria";
+      return "\u06af\u0627\u0644\u0631\u06cc";
     },
     get$files(_) {
-      return "Tiedostot";
+      return "\u0641\u0627\u06cc\u0644\u200c\u0647\u0627";
     },
     sessionLostBody$2(url, error) {
-      return "Istuntosi on kadonnut. Ilmoita t\xe4st\xe4 virheest\xe4 kehitt\xe4jille osoitteessa " + url + ". Virheilmoitus on: " + error;
+      return "\u062c\u0644\u0633\u0647 \u0634\u0645\u0627 \u0627\u0632 \u062f\u0633\u062a \u0631\u0641\u062a\u0647 \u0627\u0633\u062a. \u0644\u0637\u0641\u0627\u064b \u0627\u06cc\u0646 \u062e\u0637\u0627 \u0631\u0627 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647\u200c\u062f\u0647\u0646\u062f\u06af\u0627\u0646 \u06af\u0632\u0627\u0631\u0634 \u062f\u0647\u06cc\u062f \u062f\u0631 " + url + ". \u067e\u06cc\u0627\u0645 \u062e\u0637\u0627: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Sovellus yritt\xe4\xe4 nyt palauttaa istuntosi varmuuskopiosta. Ilmoita t\xe4st\xe4 virheest\xe4 kehitt\xe4jille osoitteessa " + url + ". Virheilmoitus on: " + error;
+      return "\u0628\u0631\u0646\u0627\u0645\u0647 \u0627\u06a9\u0646\u0648\u0646 \u0633\u0639\u06cc \u0645\u06cc\u200c\u06a9\u0646\u062f \u062c\u0644\u0633\u0647 \u0634\u0645\u0627 \u0631\u0627 \u0627\u0632 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646 \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u06a9\u0646\u062f. \u0644\u0637\u0641\u0627\u064b \u0627\u06cc\u0646 \u062e\u0637\u0627 \u0631\u0627 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647\u200c\u062f\u0647\u0646\u062f\u06af\u0627\u0646 \u06af\u0632\u0627\u0631\u0634 \u062f\u0647\u06cc\u062f \u062f\u0631 " + url + ". \u067e\u06cc\u0627\u0645 \u062e\u0637\u0627: " + error;
     },
     get$sendReadReceipts() {
-      return "L\xe4het\xe4 lukutodistukset";
+      return "\u0627\u0631\u0633\u0627\u0644 \u062a\u0623\u06cc\u06cc\u062f \u062e\u0648\u0627\u0646\u062f\u0647 \u0634\u062f\u0646";
     },
     get$sendTypingNotificationsDescription() {
-      return "Muut osallistujat keskustelussa n\xe4kev\xe4t, kun kirjoitat uutta viesti\xe4.";
+      return "\u0633\u0627\u06cc\u0631 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u062f\u0631 \u0686\u062a \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0646\u062f \u0628\u0628\u06cc\u0646\u0646\u062f \u06a9\u0647 \u0634\u0645\u0627 \u062f\u0631 \u062d\u0627\u0644 \u0646\u0648\u0634\u062a\u0646 \u067e\u06cc\u0627\u0645 \u062c\u062f\u06cc\u062f \u0647\u0633\u062a\u06cc\u062f.";
     },
     get$sendReadReceiptsDescription() {
-      return "Muut osallistujat keskustelussa n\xe4kev\xe4t, kun olet lukenut viestin.";
+      return "\u0633\u0627\u06cc\u0631 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u062f\u0631 \u0686\u062a \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0646\u062f \u0628\u0628\u06cc\u0646\u0646\u062f \u06a9\u0647 \u0634\u0645\u0627 \u067e\u06cc\u0627\u0645 \u0631\u0627 \u062e\u0648\u0627\u0646\u062f\u0647\u200c\u0627\u06cc\u062f.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd04 Vahvista toinen laite";
+      return "\ud83d\udd10 \u062a\u0623\u06cc\u06cc\u062f \u062f\u0633\u062a\u06af\u0627\u0647 \u062f\u06cc\u06af\u0631";
     },
     get$verifyOtherDeviceDescription() {
-      return "Kun vahvistat toisen laitteen, n\xe4m\xe4 laitteet voivat vaihtaa avaimia, mik\xe4 lis\xe4\xe4 kokonaisturvallisuuttasi. \ud83d\udcaa Kun aloitat vahvistuksen, sovelluksessa molemmissa laitteissa ilmestyy ponnahdusikkuna. Siin\xe4 n\xe4et sarjan emojeja tai numeroita, jotka sinun tulee verrata toisiinsa. On parasta olla molemmat laitteet k\xe4sill\xe4 ennen vahvistuksen aloittamista. \ud83e\udd13";
+      return "\u0648\u0642\u062a\u06cc \u062f\u0633\u062a\u06af\u0627\u0647 \u062f\u06cc\u06af\u0631\u06cc \u0631\u0627 \u062a\u0623\u06cc\u06cc\u062f \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f\u060c \u0627\u06cc\u0646 \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0646\u062f \u06a9\u0644\u06cc\u062f\u0647\u0627\u06cc \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0631\u0627 \u0631\u062f \u0648 \u0628\u062f\u0644 \u06a9\u0646\u0646\u062f\u060c \u06a9\u0647 \u0627\u0645\u0646\u06cc\u062a \u06a9\u0644\u06cc \u0634\u0645\u0627 \u0631\u0627 \u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u06cc\u200c\u062f\u0647\u062f. \ud83d\udcaa \u0648\u0642\u062a\u06cc \u0641\u0631\u0622\u06cc\u0646\u062f \u062a\u0623\u06cc\u06cc\u062f \u0631\u0627 \u0634\u0631\u0648\u0639 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f\u060c \u06cc\u06a9 \u067e\u0646\u062c\u0631\u0647 \u067e\u0627\u067e\u200c\u0622\u067e \u062f\u0631 \u0628\u0631\u0646\u0627\u0645\u0647 \u062f\u0631 \u0647\u0631 \u062f\u0648 \u062f\u0633\u062a\u06af\u0627\u0647 \u0638\u0627\u0647\u0631 \u0645\u06cc\u200c\u0634\u0648\u062f. \u062f\u0631 \u0622\u0646\u062c\u0627\u060c \u0645\u062c\u0645\u0648\u0639\u0647\u200c\u0627\u06cc \u0627\u0632 \u0627\u06cc\u0645\u0648\u062c\u06cc\u200c\u0647\u0627 \u06cc\u0627 \u0627\u0639\u062f\u0627\u062f \u0631\u0627 \u0645\u0634\u0627\u0647\u062f\u0647 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f \u06a9\u0647 \u0628\u0627\u06cc\u062f \u0628\u0627 \u0647\u0645 \u0645\u0642\u0627\u06cc\u0633\u0647 \u06a9\u0646\u06cc\u062f. \u0628\u0647\u062a\u0631 \u0627\u0633\u062a \u0642\u0628\u0644 \u0627\u0632 \u0634\u0631\u0648\u0639 \u0641\u0631\u0622\u06cc\u0646\u062f \u062a\u0623\u06cc\u06cc\u062f\u060c \u0647\u0631 \u062f\u0648 \u062f\u0633\u062a\u06af\u0627\u0647 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0628\u0627\u0634\u0646\u062f. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " hyv\xe4ksyi avaintarkistuksen";
+      return sender + " \u062a\u0623\u06cc\u06cc\u062f \u06a9\u0644\u06cc\u062f \u0631\u0627 \u067e\u0630\u06cc\u0631\u0641\u062a";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " peruutti avaintarkistuksen";
+      return sender + " \u062a\u0623\u06cc\u06cc\u062f \u06a9\u0644\u06cc\u062f \u0631\u0627 \u0644\u063a\u0648 \u06a9\u0631\u062f";
     },
     completedKeyVerification$1(sender) {
-      return sender + " suoritti avaintarkistuksen";
+      return sender + " \u062a\u0623\u06cc\u06cc\u062f \u06a9\u0644\u06cc\u062f \u0631\u0627 \u06a9\u0627\u0645\u0644 \u06a9\u0631\u062f";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " on valmis avaintarkistukseen";
+      return sender + " \u0622\u0645\u0627\u062f\u0647 \u0628\u0631\u0627\u06cc \u062a\u0623\u06cc\u06cc\u062f \u06a9\u0644\u06cc\u062f \u0627\u0633\u062a";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " pyysi avaintarkistusta";
+      return sender + " \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0623\u06cc\u06cc\u062f \u06a9\u0644\u06cc\u062f \u062f\u0627\u062f";
     },
     startedKeyVerification$1(sender) {
-      return sender + " aloitti avaintarkistuksen";
+      return sender + " \u0641\u0631\u0622\u06cc\u0646\u062f \u062a\u0623\u06cc\u06cc\u062f \u06a9\u0644\u06cc\u062f \u0631\u0627 \u0634\u0631\u0648\u0639 \u06a9\u0631\u062f";
     },
     get$commandHint_ignore() {
-      return "Ohita annettu matriisikoodi";
+      return "\u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0646\u0627\u0633\u0647 \u0645\u0627\u062a\u0631\u06cc\u0633 \u062f\u0627\u062f\u0647 \u0634\u062f\u0647";
     },
     get$commandHint_unignore() {
-      return "Poista ohitus annettua matriisikoodia";
+      return "\u0644\u063a\u0648 \u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0646\u0627\u0633\u0647 \u0645\u0627\u062a\u0631\u06cc\u0633 \u062f\u0627\u062f\u0647 \u0634\u062f\u0647";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "T\xe4ll\xe4 hetkell\xe4 on " + count + " estetty\xe4 k\xe4ytt\xe4j\xe4\xe4.";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 " + count + " \u06a9\u0627\u0631\u0628\u0631 \u0645\u0633\u062f\u0648\u062f \u0634\u062f\u0647 \u0627\u0633\u062a.";
     },
     get$restricted() {
-      return "Rajoitettu";
+      return "\u0645\u062d\u062f\u0648\u062f \u0634\u062f\u0647";
     },
     get$markAsUnread() {
-      return "Merkitse lukemattomaksi";
+      return "\u0639\u0644\u0627\u0645\u062a\u200c\u06af\u0630\u0627\u0631\u06cc \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u062e\u0648\u0627\u0646\u062f\u0647 \u0646\u0634\u062f\u0647";
     },
     userLevel$1(level) {
-      return "" + level + " - K\xe4ytt\xe4j\xe4";
+      return "" + level + " - \u06a9\u0627\u0631\u0628\u0631";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderaattori";
+      return "" + level + " - \u0645\u062f\u06cc\u0631";
     },
     adminLevel$1(level) {
-      return "" + level + " - Yll\xe4pit\xe4j\xe4";
+      return "" + level + " - \u0645\u062f\u06cc\u0631 \u06a9\u0644";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Vaihda keskusteluhistorian n\xe4kyvyytt\xe4";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u062f\u06cc\u062f\u0627\u0631\u06cc \u062a\u0627\u0631\u06cc\u062e\u0686\u0647 \u0686\u062a";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Vaihda p\xe4\xe4asiallinen julkinen keskustelun osoite";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u0622\u062f\u0631\u0633 \u0627\u0635\u0644\u06cc \u0686\u062a \u0639\u0645\u0648\u0645\u06cc";
     },
     get$sendRoomNotifications() {
-      return "L\xe4het\xe4 @huone ilmoituksia";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0627\u0639\u0644\u0627\u0646 @room";
     },
     get$chatPermissionsDescription() {
-      return "M\xe4\xe4rit\xe4, mik\xe4 valtuustaso tarvitaan tiettyihin toimintoihin t\xe4ss\xe4 keskustelussa. Valtuustasot 0, 50 ja 100 yleens\xe4 edustavat k\xe4ytt\xe4ji\xe4, moderaattoreita ja yll\xe4pit\xe4ji\xe4, mutta kaikki asteet ovat mahdollisia.";
+      return "\u062a\u0639\u0631\u06cc\u0641 \u0633\u0637\u062d \u0642\u062f\u0631\u062a \u0644\u0627\u0632\u0645 \u0628\u0631\u0627\u06cc \u0627\u0646\u062c\u0627\u0645 \u0627\u0642\u062f\u0627\u0645\u0627\u062a \u062e\u0627\u0635 \u062f\u0631 \u0627\u06cc\u0646 \u0686\u062a. \u0633\u0637\u0648\u062d \u0642\u062f\u0631\u062a 0\u060c 50 \u0648 100 \u0645\u0639\u0645\u0648\u0644\u0627\u064b \u0646\u0634\u0627\u0646\u200c\u062f\u0647\u0646\u062f\u0647 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\u060c \u0645\u062f\u06cc\u0631\u0627\u0646 \u0648 \u0645\u062f\u06cc\u0631\u0627\u0646 \u06a9\u0644 \u0647\u0633\u062a\u0646\u062f\u060c \u0627\u0645\u0627 \u0647\u0631 \u062f\u0631\u062c\u0647\u200c\u0627\u06cc \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 P\xe4ivitys " + version + " asennettu!";
+      return "\ud83c\udf89 \u0646\u0633\u062e\u0647 " + version + " \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u062f!";
     },
     get$sendCanceled() {
-      return "L\xe4hetys peruutettu";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0644\u063a\u0648 \u0634\u062f";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Ei vaikuta olevan yhteensopiva kotipalvelin. V\xe4\xe4r\xe4 URL?";
+      return "\u0628\u0647 \u0646\u0638\u0631 \u0646\u0645\u06cc\u200c\u0631\u0633\u062f \u0633\u0631\u0648\u0631 \u062e\u0627\u0646\u06af\u06cc \u0633\u0627\u0632\u06af\u0627\u0631 \u0628\u0627\u0634\u062f. \u0622\u062f\u0631\u0633 URL \u0646\u0627\u062f\u0631\u0633\u062a \u0627\u0633\u062a\u061f";
     },
     get$calculatingFileSize() {
-      return "Lasketaan tiedoston kokoa...";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0645\u062d\u0627\u0633\u0628\u0647 \u062d\u062c\u0645 \u0641\u0627\u06cc\u0644...";
     },
     get$prepareSendingAttachment() {
-      return "Valmistellaan liitteen l\xe4hett\xe4mist\xe4...";
+      return "\u0622\u0645\u0627\u062f\u0647\u200c\u0633\u0627\u0632\u06cc \u0628\u0631\u0627\u06cc \u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0648\u0633\u062a...";
     },
     get$sendingAttachment() {
-      return "L\xe4hetet\xe4\xe4n liitett\xe4...";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0648\u0633\u062a...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "L\xe4hetet\xe4\xe4n liitett\xe4 " + index + " / " + $length + "...";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0648\u0633\u062a " + index + " \u0627\u0632 " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Palvelimen raja saavutettu! Odotetaan " + seconds + " sekuntia...";
+      return "\u0645\u062d\u062f\u0648\u062f\u06cc\u062a \u0633\u0631\u0648\u0631 \u0631\u0633\u06cc\u062f\u0647 \u0627\u0633\u062a! \u062f\u0631 \u062d\u0627\u0644 \u0627\u0646\u062a\u0638\u0627\u0631 " + seconds + " \u062b\u0627\u0646\u06cc\u0647...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Huomautus: Kun yhdist\xe4t kaikki laitteesi chat-varmistukseen, ne vahvistetaan automaattisesti.";
+      return "\u062a\u0648\u062c\u0647: \u0647\u0646\u06af\u0627\u0645\u06cc \u06a9\u0647 \u062a\u0645\u0627\u0645 \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u062e\u0648\u062f \u0631\u0627 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646 \u0686\u062a \u0645\u062a\u0635\u0644 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f\u060c \u0628\u0647 \u0637\u0648\u0631 \u062e\u0648\u062f\u06a9\u0627\u0631 \u062a\u0623\u06cc\u06cc\u062f \u0645\u06cc\u200c\u0634\u0648\u0646\u062f.";
     },
     get$continueText() {
-      return "Jatka";
+      return "\u0627\u062f\u0627\u0645\u0647 \u062f\u0647\u06cc\u062f";
     },
     get$blur(_) {
-      return "Sumenna:";
+      return "\u0645\u062d\u0648 \u06a9\u0631\u062f\u0646:";
     },
     get$opacity(_) {
-      return "L\xe4pin\xe4kyvyys:";
+      return "\u0634\u0641\u0627\u0641\u06cc\u062a:";
     },
     get$setWallpaper() {
-      return "Aseta taustakuva";
+      return "\u062a\u0646\u0638\u06cc\u0645 \u067e\u0633\u200c\u0632\u0645\u06cc\u0646\u0647";
     },
     get$noContactInformationProvided() {
-      return "Palvelin ei tarjoa mit\xe4\xe4n kelvollista yhteystietoa";
+      return "\u0633\u0631\u0648\u0631 \u0647\u06cc\u0686 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062a\u0645\u0627\u0633 \u0645\u0639\u062a\u0628\u0631 \u0627\u0631\u0627\u0626\u0647 \u0646\u0645\u06cc\u200c\u062f\u0647\u062f";
     },
     get$contactServerAdmin() {
-      return "Ota yhteytt\xe4 palvelimen yll\xe4pit\xe4j\xe4\xe4n";
+      return "\u062a\u0645\u0627\u0633 \u0628\u0627 \u0645\u062f\u06cc\u0631 \u0633\u0631\u0648\u0631";
     },
     get$contactServerSecurity() {
-      return "Ota yhteytt\xe4 palvelimen turvallisuuteen";
+      return "\u062a\u0645\u0627\u0633 \u0628\u0627 \u0627\u0645\u0646\u06cc\u062a \u0633\u0631\u0648\u0631";
     },
     get$supportPage() {
-      return "Tukisivu";
+      return "\u0635\u0641\u062d\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc";
     },
     get$serverInformation() {
-      return "Palvelimen tiedot:";
+      return "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0633\u0631\u0648\u0631:";
     },
     get$name(_) {
-      return "Nimi";
+      return "\u0646\u0627\u0645";
     },
     get$version(_) {
-      return "Versio";
+      return "\u0646\u0633\u062e\u0647";
     },
     get$compress() {
-      return "Pakkaa";
+      return "\u0641\u0634\u0631\u062f\u0647\u200c\u0633\u0627\u0632\u06cc";
     },
     get$boldText() {
-      return "Lihavoitu teksti";
+      return "\u0645\u062a\u0646 \u067e\u0631\u0631\u0646\u06af";
     },
     get$italicText() {
-      return "Kursivoitu teksti";
+      return "\u0645\u062a\u0646 \u0645\u0648\u0631\u0628";
     },
     get$strikeThrough() {
-      return "Yliviivaus";
+      return "\u062e\u0637 \u062e\u0648\u0631\u062f\u0647";
     },
     get$pleaseFillOut() {
-      return "T\xe4yt\xe4th\xe4n";
+      return "\u0644\u0637\u0641\u0627\u064b \u067e\u0631 \u06a9\u0646\u06cc\u062f";
     },
     get$invalidUrl() {
-      return "Virheellinen URL";
+      return "\u0622\u062f\u0631\u0633 URL \u0646\u0627\u0645\u0639\u062a\u0628\u0631";
     },
     get$addLink() {
-      return "Lis\xe4\xe4 linkki";
+      return "\u0627\u0641\u0632\u0648\u062f\u0646 \u0644\u06cc\u0646\u06a9";
     },
     get$unableToJoinChat() {
-      return "Ei voida liitty\xe4 keskusteluun. Ehk\xe4 toinen osapuoli on jo sulkenut keskustelun.";
+      return "\u0627\u0645\u06a9\u0627\u0646 \u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u0686\u062a \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f. \u0634\u0627\u06cc\u062f \u0637\u0631\u0641 \u0645\u0642\u0627\u0628\u0644 \u0642\u0628\u0644\u0627\u064b \u06af\u0641\u062a\u06af\u0648 \u0631\u0627 \u0628\u0633\u062a\u0647 \u0627\u0633\u062a.";
     },
     get$previous() {
-      return "Edellinen";
+      return "\u0642\u0628\u0644\u06cc";
     },
     get$otherPartyNotLoggedIn() {
-      return "Toinen osapuoli ei ole t\xe4ll\xe4 hetkell\xe4 kirjautuneena sis\xe4\xe4n, joten h\xe4n ei voi vastaanottaa viestej\xe4!";
+      return "\u0637\u0631\u0641 \u0645\u0642\u0627\u0628\u0644 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u0648\u0627\u0631\u062f \u0646\u0634\u062f\u0647 \u0627\u0633\u062a \u0648 \u0628\u0646\u0627\u0628\u0631\u0627\u06cc\u0646 \u0646\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u0631\u0627 \u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u062f!";
     },
     get$open(_) {
-      return "Avaa";
+      return "\u0628\u0627\u0632 \u06a9\u0631\u062f\u0646";
     },
     get$waitingForServer() {
-      return "Odotetaan palvelinta...";
+      return "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631 \u0633\u0631\u0648\u0631...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Uusi keskustelupyynt\xf6";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0686\u062a \u062c\u062f\u06cc\u062f \ud83d\udce9";
     },
     get$contentNotificationSettings() {
-      return "Sis\xe4lt\xf6ilmoitusasetukset";
+      return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0639\u0644\u0627\u0646 \u0645\u062d\u062a\u0648\u0627";
     },
     get$generalNotificationSettings() {
-      return "Yleiset ilmoitusasetukset";
+      return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0639\u0644\u0627\u0646 \u0639\u0645\u0648\u0645\u06cc";
     },
     get$roomNotificationSettings() {
-      return "Huoneen ilmoitusasetukset";
+      return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0639\u0644\u0627\u0646 \u0627\u062a\u0627\u0642";
     },
     get$userSpecificNotificationSettings() {
-      return "K\xe4ytt\xe4j\xe4kohtaiset ilmoitusasetukset";
+      return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0639\u0644\u0627\u0646 \u062e\u0627\u0635 \u06a9\u0627\u0631\u0628\u0631";
     },
     get$otherNotificationSettings() {
-      return "Muut ilmoitusasetukset";
+      return "\u0633\u0627\u06cc\u0631 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0639\u0644\u0627\u0646";
     },
     get$notificationRuleContainsUserName() {
-      return "Sis\xe4lt\xe4\xe4 k\xe4ytt\xe4j\xe4nimen";
+      return "\u0634\u0627\u0645\u0644 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun viesti sis\xe4lt\xe4\xe4 heid\xe4n k\xe4ytt\xe4j\xe4nimens\xe4.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u067e\u06cc\u0627\u0645 \u062d\u0627\u0648\u06cc \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0627\u0648 \u0627\u0633\u062a \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleMaster() {
-      return "Mykist\xe4 kaikki ilmoitukset";
+      return "\u0628\u06cc\u200c\u0635\u062f\u0627 \u06a9\u0631\u062f\u0646 \u0647\u0645\u0647 \u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627";
     },
     get$notificationRuleMasterDescription() {
-      return "Ohittaa kaikki muut s\xe4\xe4nn\xf6t ja poistaa kaikki ilmoitukset k\xe4yt\xf6st\xe4.";
+      return "\u062a\u0645\u0627\u0645 \u0642\u0648\u0627\u0646\u06cc\u0646 \u062f\u06cc\u06af\u0631 \u0631\u0627 \u0646\u0627\u062f\u06cc\u062f\u0647 \u0645\u06cc\u200c\u06af\u06cc\u0631\u062f \u0648 \u0647\u0645\u0647 \u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0631\u0627 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Piilota automaattiset viestit";
+      return "\u0633\u0631\u06a9\u0648\u0628 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062e\u0648\u062f\u06a9\u0627\u0631";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Piilottaa ilmoitukset automatisoiduilta asiakkailta kuten boteilta.";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0631\u0627 \u0627\u0632 \u0645\u0634\u062a\u0631\u06cc\u0627\u0646 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0645\u0627\u0646\u0646\u062f \u0631\u0628\u0627\u062a\u200c\u0647\u0627 \u0633\u0631\u06a9\u0648\u0628 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleInviteForMe() {
-      return "Kutsu minulle";
+      return "\u062f\u0639\u0648\u062a \u0628\u0631\u0627\u06cc \u0645\u0646";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun h\xe4nelle l\xe4hetet\xe4\xe4n kutsu huoneeseen.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u0628\u0647 \u06cc\u06a9 \u0627\u062a\u0627\u0642 \u062f\u0639\u0648\u062a \u0645\u06cc\u200c\u0634\u0648\u062f \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleMemberEvent() {
-      return "J\xe4senen tapahtuma";
+      return "\u0631\u0648\u06cc\u062f\u0627\u062f \u0639\u0636\u0648";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Piilottaa ilmoitukset j\xe4senyyteen liittyvist\xe4 tapahtumista.";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0631\u0627 \u0628\u0631\u0627\u06cc \u0631\u0648\u06cc\u062f\u0627\u062f\u0647\u0627\u06cc \u0639\u0636\u0648\u06cc\u062a \u0633\u0631\u06a9\u0648\u0628 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleIsUserMention() {
-      return "K\xe4ytt\xe4j\xe4n maininta";
+      return "\u0627\u0634\u0627\u0631\u0647 \u06a9\u0627\u0631\u0628\u0631";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun h\xe4net mainitaan suoraan viestiss\xe4.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u0645\u0633\u062a\u0642\u06cc\u0645\u0627\u064b \u062f\u0631 \u067e\u06cc\u0627\u0645 \u0627\u0634\u0627\u0631\u0647 \u0634\u062f\u0647 \u0627\u0633\u062a \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Sis\xe4lt\xe4\xe4 n\xe4ytt\xf6nimen";
+      return "\u0634\u0627\u0645\u0644 \u0646\u0627\u0645 \u0646\u0645\u0627\u06cc\u0634\u06cc";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun viesti sis\xe4lt\xe4\xe4 h\xe4nen n\xe4ytt\xf6nimens\xe4.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u067e\u06cc\u0627\u0645 \u062d\u0627\u0648\u06cc \u0646\u0627\u0645 \u0646\u0645\u0627\u06cc\u0634\u06cc \u0627\u0648 \u0627\u0633\u062a \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Huoneen maininta";
+      return "\u0627\u0634\u0627\u0631\u0647 \u0628\u0647 \u0627\u062a\u0627\u0642";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun huone mainitaan.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u062f\u0631 \u06cc\u06a9 \u0627\u062a\u0627\u0642 \u0630\u06a9\u0631 \u0634\u062f\u0647 \u0627\u0633\u062a\u060c \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleRoomnotif() {
-      return "Huoneen ilmoitus";
+      return "\u0627\u0639\u0644\u0627\u0646 \u0627\u062a\u0627\u0642";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle, kun viestiss\xe4 on '@room'.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u067e\u06cc\u0627\u0645 \u0634\u0627\u0645\u0644 '@room' \u0627\u0633\u062a\u060c \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleTombstone() {
-      return "Kivijalka";
+      return "\u0633\u0646\u06af \u0642\u0628\u0631";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle huoneen deaktivaatioviesteist\xe4.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u062f\u0631\u0628\u0627\u0631\u0647 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u063a\u06cc\u0631\u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0627\u062a\u0627\u0642 \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleReaction() {
-      return "Reaktio";
+      return "\u0648\u0627\u06a9\u0646\u0634";
     },
     get$notificationRuleReactionDescription() {
-      return "Poistaa ilmoitukset reaktioista.";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0628\u0631\u0627\u06cc \u0648\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0631\u0627 \u062e\u0627\u0645\u0648\u0634 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Huoneen palvelimen ACL";
+      return "\u0644\u06cc\u0633\u062a \u06a9\u0646\u062a\u0631\u0644 \u062f\u0633\u062a\u0631\u0633\u06cc \u0633\u0631\u0648\u0631 \u0627\u062a\u0627\u0642";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Poistaa ilmoitukset huoneen palvelimen k\xe4ytt\xf6oikeuslistoista (ACL).";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0628\u0631\u0627\u06cc \u0644\u06cc\u0633\u062a\u200c\u0647\u0627\u06cc \u06a9\u0646\u062a\u0631\u0644 \u062f\u0633\u062a\u0631\u0633\u06cc \u0633\u0631\u0648\u0631 \u0627\u062a\u0627\u0642 (ACL) \u0631\u0627 \u062e\u0627\u0645\u0648\u0634 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleSuppressEdits() {
-      return "Poista muokkaukset";
+      return "\u0645\u062e\u0641\u06cc \u06a9\u0631\u062f\u0646 \u0648\u06cc\u0631\u0627\u06cc\u0634\u200c\u0647\u0627";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Poistaa ilmoitukset muokatuista viesteist\xe4.";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0628\u0631\u0627\u06cc \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0648\u06cc\u0631\u0627\u06cc\u0634\u200c\u0634\u062f\u0647 \u0631\u0627 \u062e\u0627\u0645\u0648\u0634 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleCall() {
-      return "Puhelu";
+      return "\u062a\u0645\u0627\u0633";
     },
     get$notificationRuleCallDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle puheluista.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u062f\u0631\u0628\u0627\u0631\u0647 \u062a\u0645\u0627\u0633\u200c\u0647\u0627 \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Salattu huone yksi vastaan yksi";
+      return "\u0627\u062a\u0627\u0642 \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc\u200c\u0634\u062f\u0647 \u06cc\u06a9\u200c\u0628\u0647\u200c\u06cc\u06a9";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle salatuista yksi vastaan yksi -huoneiden viesteist\xe4.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u062f\u0631\u0628\u0627\u0631\u0647 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062f\u0631 \u0627\u062a\u0627\u0642\u200c\u0647\u0627\u06cc \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc\u200c\u0634\u062f\u0647 \u06cc\u06a9\u200c\u0628\u0647\u200c\u06cc\u06a9 \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Huone yksi vastaan yksi";
+      return "\u0627\u062a\u0627\u0642 \u06cc\u06a9\u200c\u0628\u0647\u200c\u06cc\u06a9";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle viesteist\xe4 yksi vastaan yksi -huoneissa.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u062f\u0631\u0628\u0627\u0631\u0647 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062f\u0631 \u0627\u062a\u0627\u0642\u200c\u0647\u0627\u06cc \u06cc\u06a9\u200c\u0628\u0647\u200c\u06cc\u06a9 \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleMessage() {
-      return "Viestit";
+      return "\u067e\u06cc\u0627\u0645";
     },
     get$notificationRuleMessageDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle yleisist\xe4 viesteist\xe4.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u062f\u0631\u0628\u0627\u0631\u0647 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0639\u0645\u0648\u0645\u06cc \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleEncrypted() {
-      return "Salattu";
+      return "\u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc\u200c\u0634\u062f\u0647";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle viesteist\xe4 salatuissa huoneissa.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u062f\u0631 \u0645\u0648\u0631\u062f \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u062f\u0631 \u0627\u062a\u0627\u0642\u200c\u0647\u0627\u06cc \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc\u200c\u0634\u062f\u0647 \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Ilmoittaa k\xe4ytt\xe4j\xe4lle Jitsi-widget-tapahtumista.";
+      return "\u06a9\u0627\u0631\u0628\u0631 \u0631\u0627 \u062f\u0631 \u0645\u0648\u0631\u062f \u0631\u0648\u06cc\u062f\u0627\u062f\u0647\u0627\u06cc \u0648\u06cc\u062c\u062a Jitsi \u0645\u0637\u0644\u0639 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$notificationRuleServerAcl() {
-      return "Poista palvelimen ACL-tapahtumat k\xe4yt\xf6st\xe4";
+      return "\u0633\u0631\u06a9\u0648\u0628 \u0631\u0648\u06cc\u062f\u0627\u062f\u0647\u0627\u06cc ACL \u0633\u0631\u0648\u0631";
     },
     get$notificationRuleServerAclDescription() {
-      return "Poistaa ilmoitukset palvelimen ACL-tapahtumista.";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0631\u0627 \u0628\u0631\u0627\u06cc \u0631\u0648\u06cc\u062f\u0627\u062f\u0647\u0627\u06cc ACL \u0633\u0631\u0648\u0631 \u0633\u0631\u06a9\u0648\u0628 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     unknownPushRule$1(rule) {
-      return "Tuntematon push-s\xe4\xe4nt\xf6 '" + rule + "'";
+      return "\u0642\u0627\u0646\u0648\u0646 \u0641\u0634\u0627\u0631 \u0646\u0627\u0634\u0646\u0627\u062e\u062a\u0647 '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - \xc4\xe4niviesti l\xe4hett\xe4j\xe4lt\xe4 " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - \u067e\u06cc\u0627\u0645 \u0635\u0648\u062a\u06cc \u0627\u0632 " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Jos poistat t\xe4m\xe4n ilmoitusasetuksen, sit\xe4 ei voi peruuttaa.";
+      return "\u0627\u06af\u0631 \u0627\u06cc\u0646 \u062a\u0646\u0638\u06cc\u0645 \u0627\u0639\u0644\u0627\u0646 \u0631\u0627 \u062d\u0630\u0641 \u06a9\u0646\u06cc\u062f\u060c \u0642\u0627\u0628\u0644 \u0628\u0627\u0632\u06af\u0634\u062a \u0646\u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f.";
     },
     get$more() {
-      return "Lis\xe4\xe4";
+      return "\u0628\u06cc\u0634\u062a\u0631";
     },
     get$shareKeysWith() {
-      return "Jaa avaimet...";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc \u06a9\u0644\u06cc\u062f\u0647\u0627 \u0628\u0627...";
     },
     get$shareKeysWithDescription() {
-      return "Luotetaanko laitteisiin, jotta ne voivat lukea viestisi salatuissa keskusteluissa?";
+      return "\u06a9\u062f\u0627\u0645 \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627 \u0628\u0627\u06cc\u062f \u0645\u0648\u0631\u062f \u0627\u0639\u062a\u0645\u0627\u062f \u0642\u0631\u0627\u0631 \u06af\u06cc\u0631\u0646\u062f \u062a\u0627 \u0628\u062a\u0648\u0627\u0646\u0646\u062f \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0634\u0645\u0627 \u062f\u0631 \u0686\u062a\u200c\u0647\u0627\u06cc \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc\u200c\u0634\u062f\u0647 \u0631\u0627 \u0628\u062e\u0648\u0627\u0646\u0646\u062f\u061f";
     },
     get$allDevices() {
-      return "Kaikki laitteet";
+      return "\u0647\u0645\u0647 \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Ristiinvarmistetut laitteet, jos k\xe4yt\xf6ss\xe4";
+      return "\u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u062a\u0627\u06cc\u06cc\u062f\u0634\u062f\u0647 \u0645\u062a\u0642\u0627\u0637\u0639 \u062f\u0631 \u0635\u0648\u0631\u062a \u0641\u0639\u0627\u0644 \u0628\u0648\u062f\u0646";
     },
     get$crossVerifiedDevices() {
-      return "Ristiinvarmistetut laitteet";
+      return "\u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u062a\u0627\u06cc\u06cc\u062f\u0634\u062f\u0647 \u0645\u062a\u0642\u0627\u0637\u0639";
     },
     get$verifiedDevicesOnly() {
-      return "Vain varmennetut laitteet";
+      return "\u0641\u0642\u0637 \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u062a\u0627\u06cc\u06cc\u062f\u0634\u062f\u0647";
     },
     get$optionalMessage() {
-      return "(Valinnainen) viesti...";
+      return "(\u0627\u062e\u062a\u06cc\u0627\u0631\u06cc) \u067e\u06cc\u0627\u0645...";
     },
     get$notSupportedOnThisDevice() {
-      return "Ei tuettu t\xe4ll\xe4 laitteella";
+      return "\u062f\u0631 \u0627\u06cc\u0646 \u062f\u0633\u062a\u06af\u0627\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0646\u0645\u06cc\u200c\u0634\u0648\u062f";
     },
     get$enterNewChat() {
-      return "Aloita uusi keskustelu";
+      return "\u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0686\u062a \u062c\u062f\u06cc\u062f";
     },
     get$approve() {
-      return "Hyv\xe4ksy";
+      return "\u062a\u0627\u06cc\u06cc\u062f";
     },
     get$youHaveKnocked() {
-      return "Olet koputtanut";
+      return "\u0634\u0645\u0627 \u0632\u062f\u0647\u200c\u0627\u06cc\u062f";
     },
     get$pleaseWaitUntilInvited() {
-      return "Odota nyt, kunnes joku huoneesta kutsuu sinut.";
+      return "\u0644\u0637\u0641\u0627\u064b \u0627\u06a9\u0646\u0648\u0646 \u0645\u0646\u062a\u0638\u0631 \u0628\u0645\u0627\u0646\u06cc\u062f \u062a\u0627 \u06a9\u0633\u06cc \u0627\u0632 \u0627\u062a\u0627\u0642 \u0634\u0645\u0627 \u0631\u0627 \u062f\u0639\u0648\u062a \u06a9\u0646\u062f.";
     },
     get$commandHint_logout() {
-      return "Kirjaudu ulos nykyisest\xe4 laitteestasi";
+      return "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0641\u0639\u0644\u06cc \u062e\u0648\u062f";
     },
     get$commandHint_logoutall() {
-      return "Kirjaudu ulos kaikista aktiivisista laitteista";
+      return "\u062e\u0631\u0648\u062c \u0627\u0632 \u062a\u0645\u0627\u0645 \u062f\u0633\u062a\u06af\u0627\u0647\u200c\u0647\u0627\u06cc \u0641\u0639\u0627\u0644";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Kirjoita " + l1 + " tai " + l2 + "...";
+      return "\u062f\u0631 " + l1 + " \u06cc\u0627 " + l2 + " \u062a\u0627\u06cc\u067e \u06a9\u0646\u06cc\u062f...";
     },
     get$holdForInfo() {
-      return "Pid\xe4 painettuna sanan tiedoista.";
+      return "\u0628\u0631\u0627\u06cc \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06a9\u0644\u0645\u0647 \u0646\u06af\u0647 \u062f\u0627\u0631\u06cc\u062f.";
     },
     get$gaTooltip() {
-      return "L2:n k\xe4ytt\xf6 kielioppiavustuksella";
+      return "\u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 L2 \u0628\u0627 \u06a9\u0645\u06a9 \u06af\u0631\u0627\u0645\u0631";
     },
     get$taTooltip() {
-      return "L2:n k\xe4ytt\xf6 k\xe4\xe4nn\xf6savustuksella";
+      return "\u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 L2 \u0628\u0627 \u06a9\u0645\u06a9 \u062a\u0631\u062c\u0645\u0647";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Vuorovaikutteinen k\xe4\xe4nt\xe4j\xe4";
+      return "\u0645\u062a\u0631\u062c\u0645 \u062a\u0639\u0627\u0645\u0644\u06cc";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Vuorovaikutteinen kielioppitarkistin";
+      return "\u0628\u0631\u0631\u0633\u06cc\u06af\u0631 \u06af\u0631\u0627\u0645\u0631 \u062a\u0639\u0627\u0645\u0644\u06cc";
     },
     get$waTooltip() {
-      return "L2 ilman apua";
+      return "\u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 L2 \u0628\u062f\u0648\u0646 \u06a9\u0645\u06a9";
     },
     get$noIdenticalLanguages() {
-      return "Valitse eri perus- ja kohdekielet";
+      return "\u0644\u0637\u0641\u0627\u064b \u0632\u0628\u0627\u0646 \u067e\u0627\u06cc\u0647 \u0648 \u0647\u062f\u0641 \u0631\u0627 \u0645\u062a\u0641\u0627\u0648\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$joinWithClassCode() {
-      return "Liity kurssille";
+      return "\u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u062f\u0648\u0631\u0647";
     },
     get$languageLevelPreA1() {
-      return "Aloittelija Matala (Pre A1)";
+      return "\u0646\u0648\u0622\u0645\u0648\u0632 \u067e\u0627\u06cc\u06cc\u0646 (\u067e\u06cc\u0634 A1)";
     },
     get$languageLevelA1() {
-      return "Aloittelija Keskitaso (A1)";
+      return "\u0646\u0648\u0622\u0645\u0648\u0632 \u0645\u06cc\u0627\u0646\u0647 (A1)";
     },
     get$languageLevelA2() {
-      return "Aloittelija Korkea (A2)";
+      return "\u0645\u0628\u062a\u062f\u06cc \u0628\u0627\u0644\u0627 (A2)";
     },
     get$languageLevelB1() {
-      return "Keskitaso Keskiv\xe4li (B1)";
+      return "\u0645\u062a\u0648\u0633\u0637\u0647 \u0645\u06cc\u0627\u0646\u0647 (B1)";
     },
     get$languageLevelB2() {
-      return "Korkea Alhainen (B2)";
+      return "\u067e\u06cc\u0634\u0631\u0641\u062a\u0647 \u067e\u0627\u06cc\u06cc\u0646 (B2)";
     },
     get$languageLevelC1() {
-      return "Korkea Keskiv\xe4li (C1)";
+      return "\u067e\u06cc\u0634\u0631\u0641\u062a\u0647 \u0645\u06cc\u0627\u0646\u0647 (C1)";
     },
     get$languageLevelC2() {
-      return "Erinomainen (C2)";
+      return "\u0639\u0627\u0644\u06cc (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Vaihda nimi";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u0646\u0627\u0645";
     },
     get$changeTheNameOfTheChat() {
-      return "Vaihda keskustelun nimi";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u0646\u0627\u0645 \u0686\u062a";
     },
     get$sorryNoResults() {
-      return "Valitettavasti ei tuloksia.";
+      return "\u0645\u062a\u0623\u0633\u0641\u06cc\u0645\u060c \u0646\u062a\u06cc\u062c\u0647\u200c\u0627\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f.";
     },
     get$ignoreInThisText() {
-      return "Ohita";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u0628\u06af\u06cc\u0631\u06cc\u062f";
     },
     get$countryInformation() {
-      return "Kotikuntani";
+      return "\u06a9\u0634\u0648\u0631 \u0645\u0646";
     },
     get$targetLanguage() {
-      return "Kohdekieli";
+      return "\u0632\u0628\u0627\u0646 \u0647\u062f\u0641";
     },
     get$updateLanguage() {
-      return "Kieleni";
+      return "\u0632\u0628\u0627\u0646\u200c\u0647\u0627\u06cc \u0645\u0646";
     },
     get$whatLanguageYouWantToLearn() {
-      return "Mit\xe4 kielt\xe4 haluat oppia?";
+      return "\u0686\u0647 \u0632\u0628\u0627\u0646\u06cc \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u06cc\u0627\u062f \u0628\u06af\u06cc\u0631\u06cc\u062f\u061f";
     },
     get$whatIsYourBaseLanguage() {
-      return "Mik\xe4 on peruskielesi?";
+      return "\u0632\u0628\u0627\u0646 \u067e\u0627\u06cc\u0647 \u0634\u0645\u0627 \u0686\u06cc\u0633\u062a\u061f";
     },
     get$saveChanges() {
-      return "Tallenna muutokset";
+      return "\u0630\u062e\u06cc\u0631\u0647 \u062a\u063a\u06cc\u06cc\u0631\u0627\u062a";
     },
     get$publicProfileTitle() {
-      return "Salli profiilini l\xf6yty\xe4 haussa";
+      return "\u0627\u062c\u0627\u0632\u0647 \u062f\u0647\u06cc\u062f \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u0645\u0646 \u062f\u0631 \u062c\u0633\u062a\u062c\u0648 \u067e\u06cc\u062f\u0627 \u0634\u0648\u062f";
     },
     get$publicProfileDesc() {
-      return "Kytkem\xe4ll\xe4 p\xe4\xe4lle mahdollistat muiden k\xe4ytt\xe4jien l\xf6yt\xe4v\xe4n profiilisi globaalissa haussa ja l\xe4hett\xe4v\xe4n chat-pyynt\xf6j\xe4. T\xe4ll\xe4 hetkell\xe4 voit hyv\xe4ksy\xe4 tai hyl\xe4t\xe4 pyynn\xf6n.";
+      return "\u0628\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0646\u060c \u0628\u0647 \u062f\u06cc\u06af\u0631 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0627\u062c\u0627\u0632\u0647 \u0645\u06cc\u200c\u062f\u0647\u06cc\u062f \u067e\u0631\u0648\u0641\u0627\u06cc\u0644 \u0634\u0645\u0627 \u0631\u0627 \u062f\u0631 \u0646\u0648\u0627\u0631 \u062c\u0633\u062a\u062c\u0648\u06cc \u062c\u0647\u0627\u0646\u06cc \u067e\u06cc\u062f\u0627 \u06a9\u0631\u062f\u0647 \u0648 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0686\u062a \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u0646\u062f. \u062f\u0631 \u0627\u06cc\u0646 \u0645\u0631\u062d\u0644\u0647\u060c \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0631\u0627 \u0628\u067e\u0630\u06cc\u0631\u06cc\u062f \u06cc\u0627 \u0631\u062f \u06a9\u0646\u06cc\u062f.";
     },
     get$errorDisableIT() {
-      return "K\xe4\xe4nn\xf6sohjeita ei ole k\xe4yt\xf6ss\xe4.";
+      return "\u06a9\u0645\u06a9 \u062a\u0631\u062c\u0645\u0647 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a.";
     },
     get$errorDisableIGC() {
-      return "Kielioppiohjeita ei ole k\xe4yt\xf6ss\xe4.";
+      return "\u06a9\u0645\u06a9 \u06af\u0631\u0627\u0645\u0631 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a.";
     },
     get$errorDisableITUserDesc() {
-      return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi k\xe4\xe4nn\xf6sohjeiden asetukset";
+      return "\u0628\u0631\u0627\u06cc \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u06a9\u0645\u06a9 \u062a\u0631\u062c\u0645\u0647 \u0627\u06cc\u0646\u062c\u0627 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$errorDisableIGCUserDesc() {
-      return "Klikkaa t\xe4st\xe4 p\xe4ivitt\xe4\xe4ksesi kielioppiohjeiden asetukset";
+      return "\u0628\u0631\u0627\u06cc \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u06a9\u0645\u06a9 \u06af\u0631\u0627\u0645\u0631 \u0627\u06cc\u0646\u062c\u0627 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$errorDisableITClassDesc() {
-      return "K\xe4\xe4nn\xf6sohjeita ei ole k\xe4yt\xf6ss\xe4 t\xe4m\xe4n kurssin chatiss\xe4.";
+      return "\u06a9\u0645\u06a9 \u062a\u0631\u062c\u0645\u0647 \u0628\u0631\u0627\u06cc \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u06a9\u0647 \u0627\u06cc\u0646 \u0686\u062a \u062f\u0631 \u0622\u0646 \u0627\u0633\u062a \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0634\u062f\u0647 \u0627\u0633\u062a.";
     },
     get$errorDisableIGCClassDesc() {
-      return "Kielenhuollon apu on pois p\xe4\xe4lt\xe4 t\xe4m\xe4n keskustelun kurssille.";
+      return "\u06a9\u0645\u06a9 \u06af\u0631\u0627\u0645\u0631 \u0628\u0631\u0627\u06cc \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u06a9\u0647 \u0627\u06cc\u0646 \u0686\u062a \u062f\u0631 \u0622\u0646 \u0627\u0633\u062a \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0634\u062f\u0647 \u0627\u0633\u062a.";
     },
     get$error405Title() {
-      return "Kielet eiv\xe4t ole asetettu";
+      return "\u0632\u0628\u0627\u0646\u200c\u0647\u0627 \u062a\u0646\u0638\u06cc\u0645 \u0646\u0634\u062f\u0647\u200c\u0627\u0646\u062f";
     },
     get$error405Desc() {
-      return "Aseta kielesi P\xe4\xe4valikosta > Oppimisasetukset.";
+      return "\u0644\u0637\u0641\u0627\u064b \u0632\u0628\u0627\u0646\u200c\u0647\u0627\u06cc \u062e\u0648\u062f \u0631\u0627 \u062f\u0631 \u0645\u0646\u0648\u06cc \u0627\u0635\u0644\u06cc > \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f.";
     },
     get$termsAndConditions() {
-      return "k\xe4ytt\xf6ehdot";
+      return "\u0634\u0631\u0627\u06cc\u0637 \u0648 \u0636\u0648\u0627\u0628\u0637";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " ja vahvistan, ett\xe4 olen v\xe4hint\xe4\xe4n 16-vuotias.";
+      return " \u0648 \u06af\u0648\u0627\u0647\u06cc \u0645\u06cc\u200c\u062f\u0647\u0645 \u06a9\u0647 \u062d\u062f\u0627\u0642\u0644 \u06f1\u06f3 \u0633\u0627\u0644 \u0633\u0646 \u062f\u0627\u0631\u0645.";
     },
     get$error502504Title() {
-      return "Vau, verkossa on paljon oppilaita!";
+      return "\u0648\u0627\u06cc\u060c \u062a\u0639\u062f\u0627\u062f \u0632\u06cc\u0627\u062f\u06cc \u062f\u0627\u0646\u0634\u200c\u0622\u0645\u0648\u0632 \u0622\u0646\u0644\u0627\u06cc\u0646 \u0647\u0633\u062a\u0646\u062f!";
     },
     get$error502504Desc() {
-      return "K\xe4\xe4nn\xf6s- ja kielioppity\xf6kalut saattavat olla hitaita tai poissa k\xe4yt\xf6st\xe4, kun Pangea-botit saavat kiinni.";
+      return "\u0627\u0628\u0632\u0627\u0631\u0647\u0627\u06cc \u062a\u0631\u062c\u0645\u0647 \u0648 \u06af\u0631\u0627\u0645\u0631 \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u06a9\u0646\u062f \u06cc\u0627 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0628\u0627\u0634\u0646\u062f \u062f\u0631 \u062d\u0627\u0644\u06cc \u06a9\u0647 \u0631\u0628\u0627\u062a\u200c\u0647\u0627\u06cc \u067e\u0646\u06af\u0626\u0627 \u062c\u0628\u0631\u0627\u0646 \u0645\u06cc\u200c\u06a9\u0646\u0646\u062f.";
     },
     get$error404Title() {
-      return "K\xe4\xe4nn\xf6svirhe!";
+      return "\u062e\u0637\u0627\u06cc \u062a\u0631\u062c\u0645\u0647!";
     },
     get$error404Desc() {
-      return "Pangea-botti ei ole varma, miten t\xe4m\xe4 tulisi k\xe4\xe4nt\xe4\xe4...";
+      return "\u0631\u0628\u0627\u062a \u067e\u0646\u06af\u0626\u0627 \u0645\u0637\u0645\u0626\u0646 \u0646\u06cc\u0633\u062a \u0686\u06af\u0648\u0646\u0647 \u0622\u0646 \u0631\u0627 \u062a\u0631\u062c\u0645\u0647 \u06a9\u0646\u062f...";
     },
     get$errorPleaseRefresh() {
-      return "Tarkistamme asiaa! Lataa sivu uudelleen ja yrit\xe4 uudelleen.";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0631\u0631\u0633\u06cc \u0645\u0634\u06a9\u0644 \u0647\u0633\u062a\u06cc\u0645! \u0644\u0637\u0641\u0627\u064b \u0635\u0641\u062d\u0647 \u0631\u0627 \u0645\u062c\u062f\u062f\u0627\u064b \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u06a9\u0646\u06cc\u062f \u0648 \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     get$connectedToStaging() {
-      return "Yhdistetty esikatseluun";
+      return "\u0645\u062a\u0635\u0644 \u0628\u0647 \u0627\u0633\u062a\u06cc\u062c\u06cc\u0646\u06af";
     },
     get$learningSettings() {
-      return "Oppimisasetukset";
+      return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc";
     },
     get$participants() {
-      return "Osallistujat";
+      return "\u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646";
     },
     get$clickMessageTitle() {
-      return "Tarvitsetko apua?";
+      return "\u0646\u06cc\u0627\u0632 \u0628\u0647 \u06a9\u0645\u06a9 \u062f\u0627\u0631\u06cc\u062f\u061f";
     },
     get$clickMessageBody() {
-      return "Klikkaa viesti\xe4 saadaksesi kielity\xf6kaluja kuten k\xe4\xe4nn\xf6s, toisto ja muuta!";
+      return "\u0631\u0648\u06cc \u06cc\u06a9 \u067e\u06cc\u0627\u0645 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f \u0628\u0631\u0627\u06cc \u0627\u0628\u0632\u0627\u0631\u0647\u0627\u06cc \u0632\u0628\u0627\u0646\u06cc \u0645\u0627\u0646\u0646\u062f \u062a\u0631\u062c\u0645\u0647\u060c \u067e\u062e\u0634 \u0645\u062c\u062f\u062f \u0648 \u0645\u0648\u0627\u0631\u062f \u062f\u06cc\u06af\u0631!";
     },
     get$allDone() {
-      return "Kaikki valmista!";
+      return "\u0647\u0645\u0647 \u0686\u06cc\u0632 \u062a\u0645\u0627\u0645 \u0634\u062f!";
     },
     get$vocab() {
-      return "Sanasto";
+      return "\u0648\u0627\u0698\u06af\u0627\u0646";
     },
     get$subscribe(_) {
-      return "Tilaa";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9";
     },
     get$getAccess() {
-      return "Tilaa nyt!";
+      return "\u0647\u0645\u06cc\u0646 \u062d\u0627\u0644\u0627 \u0627\u0634\u062a\u0631\u0627\u06a9 \u0628\u06af\u06cc\u0631\u06cc\u062f!";
     },
     get$subscriptionDesc() {
-      return "Viestint\xe4 on ilmaista! Tilaa saadaksesi k\xe4ytt\xf6\xf6n vuorovaikutteinen k\xe4\xe4nn\xf6s, kieliopin tarkistus ja oppimisanalyytiikka.";
+      return "\u067e\u06cc\u0627\u0645\u200c\u0631\u0633\u0627\u0646\u06cc \u0631\u0627\u06cc\u06af\u0627\u0646 \u0627\u0633\u062a! \u0628\u0631\u0627\u06cc \u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u062a\u0631\u062c\u0645\u0647 \u062a\u0639\u0627\u0645\u0644\u06cc\u060c \u0628\u0631\u0631\u0633\u06cc \u06af\u0631\u0627\u0645\u0631 \u0648 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc\u060c \u0627\u0634\u062a\u0631\u0627\u06a9 \u0628\u06af\u06cc\u0631\u06cc\u062f.";
     },
     get$subscriptionManagement() {
-      return "Tilauksen hallinta";
+      return "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0627\u0634\u062a\u0631\u0627\u06a9";
     },
     get$currentSubscription() {
-      return "Nykyinen tilaus";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u0641\u0639\u0644\u06cc";
     },
     get$cancelSubscription() {
-      return "Peruuta tilauksesi";
+      return "\u0644\u063a\u0648 \u0627\u0634\u062a\u0631\u0627\u06a9 \u062e\u0648\u062f";
     },
     get$selectYourPlan() {
-      return "Valitse suunnitelmasi";
+      return "\u0637\u0631\u062d \u062e\u0648\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$subsciptionPlatformTooltip() {
-      return "Kirjaudu alkuper\xe4iseen laitteeseesi hallinnoidaksesi tilaussuunnitelmaasi";
+      return "\u0644\u0637\u0641\u0627\u064b \u0648\u0627\u0631\u062f \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0627\u0635\u0644\u06cc \u062e\u0648\u062f \u0634\u0648\u06cc\u062f \u062a\u0627 \u0637\u0631\u062d \u0627\u0634\u062a\u0631\u0627\u06a9 \u062e\u0648\u062f \u0631\u0627 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646\u06cc\u062f";
     },
     get$subscriptionManagementUnavailable() {
-      return "Tilausten hallinta ei ole saatavilla";
+      return "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0627\u0634\u062a\u0631\u0627\u06a9 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u06cc\u0633\u062a";
     },
     get$paymentMethod() {
-      return "Maksutapa";
+      return "\u0631\u0648\u0634 \u067e\u0631\u062f\u0627\u062e\u062a";
     },
     get$paymentHistory() {
-      return "Maksuhistoria";
+      return "\u062a\u0627\u0631\u06cc\u062e\u0686\u0647 \u067e\u0631\u062f\u0627\u062e\u062a";
     },
     get$emptyChatDownloadWarning() {
-      return "Tyhj\xe4\xe4 keskustelua ei voi ladata";
+      return "\u0627\u0645\u06a9\u0627\u0646 \u062f\u0627\u0646\u0644\u0648\u062f \u0686\u062a \u062e\u0627\u0644\u06cc \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f";
     },
     get$toggleImmersionMode() {
-      return "Immersiotila";
+      return "\u062d\u0627\u0644\u062a \u063a\u0648\u0637\u0647\u200c\u0648\u0631\u06cc";
     },
     get$toggleImmersionModeDesc() {
-      return "Kun t\xe4m\xe4 on k\xe4yt\xf6ss\xe4, kaikki viestit n\xe4ytet\xe4\xe4n kohdekielell\xe4si. T\xe4m\xe4 asetus on erityisen hy\xf6dyllinen kielivaihdoissa.";
+      return "\u0648\u0642\u062a\u06cc \u0641\u0639\u0627\u0644 \u0628\u0627\u0634\u062f\u060c \u062a\u0645\u0627\u0645 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u0628\u0647 \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0634\u0645\u0627 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u0646\u062f. \u0627\u06cc\u0646 \u062a\u0646\u0638\u06cc\u0645 \u062f\u0631 \u062a\u0628\u0627\u062f\u0644\u200c\u0647\u0627\u06cc \u0632\u0628\u0627\u0646\u06cc \u0628\u06cc\u0634\u062a\u0631\u06cc\u0646 \u06a9\u0627\u0631\u0628\u0631\u062f \u0631\u0627 \u062f\u0627\u0631\u062f.";
     },
     get$itToggleDescription() {
-      return "T\xe4m\xe4 kielten oppimisty\xf6kalu tunnistaa sanoja peruskielest\xe4si ja auttaa sinua k\xe4\xe4nt\xe4m\xe4\xe4n ne kohdekielelle. Vaikka harvinaista, teko\xe4ly voi tehd\xe4 k\xe4\xe4nn\xf6svirheit\xe4.";
+      return "\u0627\u06cc\u0646 \u0627\u0628\u0632\u0627\u0631 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0632\u0628\u0627\u0646\u060c \u06a9\u0644\u0645\u0627\u062a \u062f\u0631 \u0632\u0628\u0627\u0646 \u067e\u0627\u06cc\u0647 \u0634\u0645\u0627 \u0631\u0627 \u0634\u0646\u0627\u0633\u0627\u06cc\u06cc \u0645\u06cc\u200c\u06a9\u0646\u062f \u0648 \u0628\u0647 \u0634\u0645\u0627 \u062f\u0631 \u062a\u0631\u062c\u0645\u0647 \u0622\u0646\u200c\u0647\u0627 \u0628\u0647 \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u06a9\u0645\u06a9 \u0645\u06cc\u200c\u06a9\u0646\u062f. \u0647\u0631\u0686\u0646\u062f \u0646\u0627\u062f\u0631 \u0627\u0633\u062a\u060c \u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u062f\u0631 \u062a\u0631\u062c\u0645\u0647 \u062e\u0637\u0627 \u06a9\u0646\u062f.";
     },
     get$igcToggleDescription() {
-      return "T\xe4m\xe4 kielten oppimisty\xf6kalu tunnistaa yleisi\xe4 oikeinkirjoitus-, kielioppi- ja v\xe4limerkkivirheit\xe4 viestiss\xe4si ja ehdottaa korjauksia. Vaikka harvinaista, teko\xe4ly voi tehd\xe4 korjausvirheit\xe4.";
+      return "\u0627\u06cc\u0646 \u0627\u0628\u0632\u0627\u0631 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0632\u0628\u0627\u0646\u060c \u0627\u0634\u062a\u0628\u0627\u0647\u0627\u062a \u0631\u0627\u06cc\u062c \u062f\u0631 \u0627\u0645\u0644\u0627\u060c \u06af\u0631\u0627\u0645\u0631 \u0648 \u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc \u062f\u0631 \u067e\u06cc\u0627\u0645 \u0634\u0645\u0627 \u0631\u0627 \u0634\u0646\u0627\u0633\u0627\u06cc\u06cc \u0648 \u0627\u0635\u0644\u0627\u062d\u0627\u062a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc \u0627\u0631\u0627\u0626\u0647 \u0645\u06cc\u200c\u062f\u0647\u062f. \u0647\u0631\u0686\u0646\u062f \u0646\u0627\u062f\u0631 \u0627\u0633\u062a\u060c \u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u062f\u0631 \u0627\u0635\u0644\u0627\u062d\u0627\u062a \u062e\u0637\u0627 \u06a9\u0646\u062f.";
     },
     get$originalMessage() {
-      return "Alkuper\xe4inen viesti";
+      return "\u067e\u06cc\u0627\u0645 \u0627\u0635\u0644\u06cc";
     },
     get$sentMessage() {
-      return "L\xe4hetetty viesti";
+      return "\u067e\u06cc\u0627\u0645 \u0627\u0631\u0633\u0627\u0644\u200c\u0634\u062f\u0647";
     },
     get$useType() {
-      return "K\xe4yt\xe4 tyyppi\xe4";
+      return "\u0646\u0648\u0639 \u0627\u0633\u062a\u0641\u0627\u062f\u0647";
     },
     get$notAvailable() {
-      return "Ei saatavilla";
+      return "\u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u06cc\u0633\u062a";
     },
     get$taAndGaTooltip() {
-      return "L2 k\xe4ytt\xf6 k\xe4\xe4nn\xf6savustuksen ja kielioppiavustuksen kanssa";
+      return "\u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0633\u0637\u062d \u06f2 \u0628\u0627 \u06a9\u0645\u06a9 \u062a\u0631\u062c\u0645\u0647 \u0648 \u06a9\u0645\u06a9 \u06af\u0631\u0627\u0645\u0631";
     },
     get$definitionsToolName() {
-      return "Sanojen m\xe4\xe4ritelm\xe4t";
+      return "\u062a\u0639\u0627\u0631\u06cc\u0641 \u06a9\u0644\u0645\u0627\u062a";
     },
     get$definitionsToolDescription() {
-      return "Kun t\xe4m\xe4 on k\xe4yt\xf6ss\xe4, sininen alleviivatut sanat voidaan klikata m\xe4\xe4ritelmi\xe4 varten. Klikkaa viestej\xe4 saadaksesi m\xe4\xe4ritelm\xe4t.";
+      return "\u0648\u0642\u062a\u06cc \u0641\u0639\u0627\u0644 \u0628\u0627\u0634\u062f\u060c \u06a9\u0644\u0645\u0627\u062a \u0632\u06cc\u0631 \u062e\u0637 \u0622\u0628\u06cc \u0642\u0627\u0628\u0644 \u06a9\u0644\u06cc\u06a9 \u0628\u0631\u0627\u06cc \u0645\u0634\u0627\u0647\u062f\u0647 \u062a\u0639\u0627\u0631\u06cc\u0641 \u0647\u0633\u062a\u0646\u062f. \u0628\u0631\u0627\u06cc \u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062a\u0639\u0627\u0631\u06cc\u0641\u060c \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
     get$welcomeBack() {
-      return "Tervetuloa takaisin! Jos olit osa pilottia vuosina 2023-2024, ota yhteytt\xe4 saadaksesi erityisen pilottitilauksesi. Jos olet opettaja, joka on ostanut (tai oppilaitoksesi on ostanut) lisenssej\xe4 luokkaasi varten, ota yhteytt\xe4 saadaksesi opettajatilauksesi.";
+      return "\u062e\u0648\u0634 \u0622\u0645\u062f\u06cc\u062f! \u0627\u06af\u0631 \u0628\u062e\u0634\u06cc \u0627\u0632 \u0622\u0632\u0645\u0627\u06cc\u0634 \u06f2\u06f0\u06f2\u06f3-\u06f2\u06f0\u06f2\u06f4 \u0628\u0648\u062f\u06cc\u062f\u060c \u0644\u0637\u0641\u0627\u064b \u0628\u0631\u0627\u06cc \u0627\u0634\u062a\u0631\u0627\u06a9 \u0648\u06cc\u0698\u0647 \u0622\u0632\u0645\u0627\u06cc\u0634\u06cc \u0628\u0627 \u0645\u0627 \u062a\u0645\u0627\u0633 \u0628\u06af\u06cc\u0631\u06cc\u062f. \u0627\u06af\u0631 \u0645\u0639\u0644\u0645 \u0647\u0633\u062a\u06cc\u062f \u0648 \u06cc\u0627 \u0645\u0624\u0633\u0633\u0647\u200c\u062a\u0627\u0646 \u0645\u062c\u0648\u0632\u0647\u0627\u06cc \u0622\u0645\u0648\u0632\u0634\u06cc \u062e\u0631\u06cc\u062f\u0627\u0631\u06cc \u06a9\u0631\u062f\u0647 \u0627\u0633\u062a\u060c \u0628\u0631\u0627\u06cc \u0627\u0634\u062a\u0631\u0627\u06a9 \u0645\u0639\u0644\u0645 \u0628\u0627 \u0645\u0627 \u062a\u0645\u0627\u0633 \u0628\u06af\u06cc\u0631\u06cc\u062f.";
     },
     get$downloadTxtFile() {
-      return "Lataa tekstitiedosto";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f \u0641\u0627\u06cc\u0644 \u0645\u062a\u0646\u06cc";
     },
     get$downloadCSVFile() {
-      return "Lataa CSV-tiedosto";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f \u0641\u0627\u06cc\u0644 CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return "Sinulla on t\xe4ll\xe4 hetkell\xe4 elinik\xe4inen kampanjatilaus. L\xe4het\xe4 viesti osoitteeseen support@pangea.chat saadaksesi apua tilauksesi muuttamiseen.";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u0627\u0634\u062a\u0631\u0627\u06a9 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a\u06cc \u062f\u0627\u0626\u0645\u06cc \u062f\u0627\u0631\u06cc\u062f. \u0628\u0631\u0627\u06cc \u06a9\u0645\u06a9 \u0628\u0647 \u062a\u063a\u06cc\u06cc\u0631 \u0627\u0634\u062a\u0631\u0627\u06a9 \u062e\u0648\u062f \u0628\u0627 support@pangea.chat \u062a\u0645\u0627\u0633 \u0628\u06af\u06cc\u0631\u06cc\u062f.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Tilauksen ostit " + purchasePlatform + " kautta";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u0627\u0632 \u0637\u0631\u06cc\u0642 " + purchasePlatform + " \u062e\u0631\u06cc\u062f\u0627\u0631\u06cc \u0634\u062f\u0647 \u0627\u0633\u062a";
     },
     get$oneWeekTrial() {
-      return "Yhden viikon kokeilujakso";
+      return "\u0622\u0632\u0645\u0627\u06cc\u0634 \u06cc\u06a9 \u0647\u0641\u062a\u0647\u200c\u0627\u06cc";
     },
     get$downloadXLSXFile() {
-      return "Lataa Excel-tiedosto";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f \u0641\u0627\u06cc\u0644 \u0627\u06a9\u0633\u0644";
     },
     get$unkDisplayName() {
-      return "Tuntematon";
+      return "\u0646\u0627\u0645\u0634\u062e\u0635";
     },
     get$wwCountryDisplayName() {
-      return "Maailmanlaajuinen";
+      return "\u062c\u0647\u0627\u0646\u200c\u0648\u200c\u062c\u0647\u0627\u0646";
     },
     get$afCountryDisplayName() {
-      return "Afganistan";
+      return "\u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646";
     },
     get$axCountryDisplayName() {
-      return "Ahvenanmaa";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0622\u0644\u0646\u062f";
     },
     get$alCountryDisplayName() {
-      return "Albania";
+      return "\u0622\u0644\u0628\u0627\u0646\u06cc";
     },
     get$dzCountryDisplayName() {
-      return "Algeria";
+      return "\u0627\u0644\u062c\u0632\u0627\u06cc\u0631";
     },
     get$asCountryDisplayName() {
-      return "Amerikan Samoa";
+      return "\u0633\u0627\u0645\u0648\u0627\u06cc \u0622\u0645\u0631\u06cc\u06a9\u0627";
     },
     get$adCountryDisplayName() {
-      return "Andorra";
+      return "\u0627\u0646\u062f\u0648\u0631\u0627";
     },
     get$aoCountryDisplayName() {
-      return "Angola";
+      return "\u0622\u0646\u06af\u0648\u0644\u0627";
     },
     get$aiCountryDisplayName() {
-      return "Anguilla";
+      return "\u0622\u0646\u06af\u0648\u06cc\u0644\u0627";
     },
     get$agCountryDisplayName() {
-      return "Antigua ja Barbuda";
+      return "\u0622\u0646\u062a\u06cc\u06af\u0648\u0627 \u0648 \u0628\u0627\u0631\u0628\u0648\u062f\u0627";
     },
     get$arCountryDisplayName() {
-      return "Argentiina";
+      return "\u0622\u0631\u0698\u0627\u0646\u062a\u06cc\u0646";
     },
     get$amCountryDisplayName() {
-      return "Armenia";
+      return "\u0627\u0631\u0645\u0646\u0633\u062a\u0627\u0646";
     },
     get$awCountryDisplayName() {
-      return "Aruba";
+      return "\u0622\u0631\u0648\u0628\u0627";
     },
     get$acCountryDisplayName() {
-      return "Ascensionin saari";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0622\u0633\u0646\u0634\u0646";
     },
     get$auCountryDisplayName() {
-      return "Australia";
+      return "\u0627\u0633\u062a\u0631\u0627\u0644\u06cc\u0627";
     },
     get$atCountryDisplayName() {
-      return "It\xe4valta";
+      return "\u0627\u062a\u0631\u06cc\u0634";
     },
     get$azCountryDisplayName() {
-      return "Azerbaid\u017ean";
+      return "\u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646";
     },
     get$bsCountryDisplayName() {
-      return "Bahama";
+      return "\u0628\u0627\u0647\u0627\u0645\u0627";
     },
     get$bhCountryDisplayName() {
-      return "Bahrein";
+      return "\u0628\u062d\u0631\u06cc\u0646";
     },
     get$bdCountryDisplayName() {
-      return "Bangladesh";
+      return "\u0628\u0646\u06af\u0644\u0627\u062f\u0634";
     },
     get$bbCountryDisplayName() {
-      return "Barbados";
+      return "\u0628\u0627\u0631\u0628\u0627\u062f\u0648\u0633";
     },
     get$byCountryDisplayName() {
-      return "Valko-Ven\xe4j\xe4";
+      return "\u0628\u0644\u0627\u0631\u0648\u0633";
     },
     get$beCountryDisplayName() {
-      return "Belgia";
+      return "\u0628\u0644\u0698\u06cc\u06a9";
     },
     get$bzCountryDisplayName() {
-      return "Belize";
+      return "\u0628\u0644\u06cc\u0632";
     },
     get$bjCountryDisplayName() {
-      return "Benin";
+      return "\u0628\u0646\u06cc\u0646";
     },
     get$bmCountryDisplayName() {
-      return "Bermuda";
+      return "\u0628\u0631\u0645\u0648\u062f\u0627";
     },
     get$btCountryDisplayName() {
-      return "Bhutan";
+      return "\u0628\u0648\u062a\u0627\u0646";
     },
     get$boCountryDisplayName() {
-      return "Bolivia";
+      return "\u0628\u0648\u0644\u06cc\u0648\u06cc";
     },
     get$baCountryDisplayName() {
-      return "Bosnia ja Hertsegovina";
+      return "\u0628\u0648\u0633\u0646\u06cc \u0648 \u0647\u0631\u0632\u06af\u0648\u06cc\u0646";
     },
     get$bwCountryDisplayName() {
-      return "Botswana";
+      return "\u0628\u0648\u062a\u0633\u0648\u0627\u0646\u0627";
     },
     get$brCountryDisplayName() {
-      return "Brasilia";
+      return "\u0628\u0631\u0632\u06cc\u0644";
     },
     get$ioCountryDisplayName() {
-      return "Britannian Intian valtameren alue";
+      return "\u0645\u0646\u0627\u0637\u0642 \u0627\u0642\u06cc\u0627\u0646\u0648\u0633 \u0647\u0646\u062f \u0628\u0631\u06cc\u062a\u0627\u0646\u06cc\u0627";
     },
     get$vgCountryDisplayName() {
-      return "Brittil\xe4iset Neitsytsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0648\u06cc\u0631\u062c\u06cc\u0646 \u0628\u0631\u06cc\u062a\u0627\u0646\u06cc\u0627";
     },
     get$bnCountryDisplayName() {
-      return "Brunei";
+      return "\u0628\u0631\u0648\u0646\u0626\u06cc";
     },
     get$bgCountryDisplayName() {
-      return "Bulgaria";
+      return "\u0628\u0644\u063a\u0627\u0631\u0633\u062a\u0627\u0646";
     },
     get$bfCountryDisplayName() {
-      return "Burkina Faso";
+      return "\u0628\u0648\u0631\u06a9\u06cc\u0646\u0627\u0641\u0627\u0633\u0648";
     },
     get$biCountryDisplayName() {
-      return "Burundi";
+      return "\u0628\u0648\u0631\u0648\u0646\u062f\u06cc";
     },
     get$khCountryDisplayName() {
-      return "Kambod\u017ea";
+      return "\u06a9\u0627\u0645\u0628\u0648\u062c";
     },
     get$cmCountryDisplayName() {
-      return "Kamerun";
+      return "\u06a9\u0627\u0645\u0631\u0648\u0646";
     },
     get$caCountryDisplayName() {
-      return "Kanada";
+      return "\u06a9\u0627\u0646\u0627\u062f\u0627";
     },
     get$cvCountryDisplayName() {
-      return "Kap Verde";
+      return "\u06a9\u0627\u067e \u0648\u0631\u062f";
     },
     get$bqCountryDisplayName() {
-      return "Karibian Alankomaat";
+      return "\u0647\u0644\u0646\u062f \u06a9\u0627\u0631\u0627\u0626\u06cc\u0628";
     },
     get$kyCountryDisplayName() {
-      return "Caymansaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u06a9\u06cc\u0645\u0646";
     },
     get$cfCountryDisplayName() {
-      return "Keski-Afrikan tasavalta";
+      return "\u062c\u0645\u0647\u0648\u0631\u06cc \u0622\u0641\u0631\u06cc\u0642\u0627\u06cc \u0645\u0631\u06a9\u0632\u06cc";
     },
     get$tdCountryDisplayName() {
-      return "T\u0161ad";
+      return "\u0686\u0627\u062f";
     },
     get$clCountryDisplayName() {
-      return "Chile";
+      return "\u0634\u06cc\u0644\u06cc";
     },
     get$cnCountryDisplayName() {
-      return "Kiina";
+      return "\u0686\u06cc\u0646";
     },
     get$cxCountryDisplayName() {
-      return "Joulusaari";
+      return "\u062c\u0632\u06cc\u0631\u0647 \u06a9\u0631\u06cc\u0633\u0645\u0633";
     },
     get$ccCountryDisplayName() {
-      return "Kookossaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u06a9\u0648\u06a9 [\u06a9\u0644\u06cc\u06cc\u0646\u06af]";
     },
     get$coCountryDisplayName() {
-      return "Kolumbia";
+      return "\u06a9\u0644\u0645\u0628\u06cc\u0627";
     },
     get$kmCountryDisplayName() {
-      return "Komorit";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0642\u0645\u0631";
     },
     get$cdCountryDisplayName() {
-      return "Kongon demokraattinen tasavalta";
+      return "\u062c\u0645\u0647\u0648\u0631\u06cc \u062f\u0645\u0648\u06a9\u0631\u0627\u062a\u06cc\u06a9 \u06a9\u0646\u06af\u0648";
     },
     get$cgCountryDisplayName() {
-      return "Kongon tasavalta";
+      return "\u062c\u0645\u0647\u0648\u0631\u06cc \u06a9\u0646\u06af\u0648";
     },
     get$ckCountryDisplayName() {
-      return "Cookinsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u06a9\u0648\u06a9";
     },
     get$crCountryDisplayName() {
-      return "Costa Rica";
+      return "\u06a9\u0627\u0633\u062a\u0627\u0631\u06cc\u06a9\u0627";
     },
     get$ciCountryDisplayName() {
-      return "Norsunluurannikko";
+      return "\u0633\u0627\u062d\u0644 \u0639\u0627\u062c";
     },
     get$hrCountryDisplayName() {
-      return "Kroatia";
+      return "\u06a9\u0631\u0648\u0627\u0633\u06cc";
     },
     get$cuCountryDisplayName() {
-      return "Kuuba";
+      return "\u06a9\u0648\u0628\u0627";
     },
     get$cwCountryDisplayName() {
-      return "Cura\xe7ao";
+      return "\u06a9\u0648\u0631\u0627\u0633\u0627\u0626\u0648";
     },
     get$cyCountryDisplayName() {
-      return "Kypros";
+      return "\u0642\u0628\u0631\u0633";
     },
     get$czCountryDisplayName() {
-      return "T\u0161ekin tasavalta";
+      return "\u062c\u0645\u0647\u0648\u0631\u06cc \u0686\u06a9";
     },
     get$dkCountryDisplayName() {
-      return "Tanska";
+      return "\u062f\u0627\u0646\u0645\u0627\u0631\u06a9";
     },
     get$djCountryDisplayName() {
-      return "Djibouti";
+      return "\u062c\u06cc\u0628\u0648\u062a\u06cc";
     },
     get$dmCountryDisplayName() {
-      return "Dominica";
+      return "\u062f\u0648\u0645\u06cc\u0646\u06cc\u06a9\u0627";
     },
     get$doCountryDisplayName() {
-      return "Dominikaaninen tasavalta";
+      return "\u062c\u0645\u0647\u0648\u0631\u06cc \u062f\u0648\u0645\u06cc\u0646\u06cc\u06a9\u0646";
     },
     get$tlCountryDisplayName() {
-      return "It\xe4-Timor";
+      return "\u062a\u06cc\u0645\u0648\u0631 \u0634\u0631\u0642\u06cc";
     },
     get$ecCountryDisplayName() {
-      return "Ecuador";
+      return "\u0627\u06a9\u0648\u0627\u062f\u0648\u0631";
     },
     get$egCountryDisplayName() {
-      return "Egypti";
+      return "\u0645\u0635\u0631";
     },
     get$svCountryDisplayName() {
-      return "El Salvador";
+      return "\u0627\u0644\u0633\u0627\u0644\u0648\u0627\u062f\u0648\u0631";
     },
     get$gqCountryDisplayName() {
-      return "P\xe4iv\xe4ntasaajan Guinea";
+      return "\u06af\u06cc\u0646\u0647 \u0627\u0633\u062a\u0648\u0627\u06cc\u06cc";
     },
     get$erCountryDisplayName() {
-      return "Eritrea";
+      return "\u0627\u0631\u06cc\u062a\u0631\u0647";
     },
     get$eeCountryDisplayName() {
-      return "Viro";
+      return "\u0627\u0633\u062a\u0648\u0646\u06cc";
     },
     get$szCountryDisplayName() {
-      return "Eswatini";
+      return "\u0627\u0633\u0648\u0627\u062a\u06cc\u0646\u06cc";
     },
     get$etCountryDisplayName() {
-      return "Etiopia";
+      return "\u0627\u062a\u06cc\u0648\u067e\u06cc";
     },
     get$fkCountryDisplayName() {
-      return "Falklandinsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0641\u0627\u0644\u06a9\u0644\u0646\u062f";
     },
     get$foCountryDisplayName() {
-      return "F\xe4rsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0641\u0627\u0631\u0648";
     },
     get$fjCountryDisplayName() {
-      return "Fiji";
+      return "\u0641\u06cc\u062c\u06cc";
     },
     get$fiCountryDisplayName() {
-      return "Suomi";
+      return "\u0641\u0646\u0644\u0627\u0646\u062f";
     },
     get$frCountryDisplayName() {
-      return "Ranska";
+      return "\u0641\u0631\u0627\u0646\u0633\u0647";
     },
     get$gfCountryDisplayName() {
-      return "Ranskan Guayana";
+      return "\u06af\u0648\u06cc\u0627\u0646 \u0641\u0631\u0627\u0646\u0633\u0647";
     },
     get$pfCountryDisplayName() {
-      return "Ranskan Polynesia";
+      return "\u067e\u0648\u0644\u06cc\u0646\u0632\u06cc \u0641\u0631\u0627\u0646\u0633\u0647";
     },
     get$gaCountryDisplayName() {
-      return "Gabon";
+      return "\u06af\u0627\u0628\u0648\u0646";
     },
     get$gmCountryDisplayName() {
-      return "Gambia";
+      return "\u06af\u0627\u0645\u0628\u06cc\u0627";
     },
     get$geCountryDisplayName() {
-      return "Georgia";
+      return "\u06af\u0631\u062c\u0633\u062a\u0627\u0646";
     },
     get$deCountryDisplayName() {
-      return "Saksa";
+      return "\u0622\u0644\u0645\u0627\u0646";
     },
     get$ghCountryDisplayName() {
-      return "Ghana";
+      return "\u063a\u0646\u0627";
     },
     get$giCountryDisplayName() {
-      return "Gibraltar";
+      return "\u062c\u0628\u0644\u200c\u0627\u0644\u0637\u0627\u0631\u0642";
     },
     get$grCountryDisplayName() {
-      return "Kreikka";
+      return "\u06cc\u0648\u0646\u0627\u0646";
     },
     get$glCountryDisplayName() {
-      return "Gr\xf6nlanti";
+      return "\u06af\u0631\u06cc\u0646\u0644\u0646\u062f";
     },
     get$gdCountryDisplayName() {
-      return "Grenada";
+      return "\u06af\u0631\u0646\u0627\u062f\u0627";
     },
     get$gpCountryDisplayName() {
-      return "Guadeloupe";
+      return "\u06af\u0648\u0627\u062f\u0644\u0648\u067e";
     },
     get$guCountryDisplayName() {
-      return "Guam";
+      return "\u06af\u0648\u0627\u0645";
     },
     get$gtCountryDisplayName() {
-      return "Guatemala";
+      return "\u06af\u0648\u0627\u062a\u0645\u0627\u0644\u0627";
     },
     get$ggCountryDisplayName() {
-      return "Guernsey";
+      return "\u06af\u0631\u0646\u0632\u06cc";
     },
     get$gnCountryDisplayName() {
-      return "Guinea Conakry";
+      return "\u06af\u06cc\u0646\u0647 \u06a9\u0646\u0627\u0631\u06cc";
     },
     get$gwCountryDisplayName() {
-      return "Guinea-Bissau";
+      return "\u06af\u06cc\u0646\u0647 \u0628\u06cc\u0633\u0627\u0626\u0648";
     },
     get$gyCountryDisplayName() {
-      return "Guyana";
+      return "\u06af\u0648\u06cc\u0627\u0646";
     },
     get$htCountryDisplayName() {
-      return "Haiti";
+      return "\u0647\u0627\u0626\u06cc\u062a\u06cc";
     },
     get$hmCountryDisplayName() {
-      return "Heardin saari ja McDonaldinsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0647\u0631\u062f \u0648 \u0645\u06a9\u200c\u062f\u0648\u0646\u0627\u0644\u062f";
     },
     get$hnCountryDisplayName() {
-      return "Honduras";
+      return "\u0647\u0646\u062f\u0648\u0631\u0627\u0633";
     },
     get$hkCountryDisplayName() {
-      return "Hongkong";
+      return "\u0647\u0646\u06af \u06a9\u0646\u06af";
     },
     get$huCountryDisplayName() {
-      return "Unkari";
+      return "\u0645\u062c\u0627\u0631\u0633\u062a\u0627\u0646";
     },
     get$isCountryDisplayName() {
-      return "Islanti";
+      return "\u0627\u06cc\u0633\u0644\u0646\u062f";
     },
     get$inCountryDisplayName() {
-      return "Intia";
+      return "\u0647\u0646\u062f";
     },
     get$idCountryDisplayName() {
-      return "Indonesia";
+      return "\u0627\u0646\u062f\u0648\u0646\u0632\u06cc";
     },
     get$irCountryDisplayName() {
-      return "Iran";
+      return "\u0627\u06cc\u0631\u0627\u0646";
     },
     get$iqCountryDisplayName() {
-      return "Irak";
+      return "\u0639\u0631\u0627\u0642";
     },
     get$ieCountryDisplayName() {
-      return "Irlanti";
+      return "\u0627\u06cc\u0631\u0644\u0646\u062f";
     },
     get$imCountryDisplayName() {
-      return "Mansaari";
+      return "\u062c\u0632\u06cc\u0631\u0647 \u0645\u0646";
     },
     get$ilCountryDisplayName() {
-      return "Israel";
+      return "\u0627\u0633\u0631\u0627\u0626\u06cc\u0644";
     },
     get$itCountryDisplayName() {
-      return "Italia";
+      return "\u0627\u06cc\u062a\u0627\u0644\u06cc\u0627";
     },
     get$jmCountryDisplayName() {
-      return "Jamaika";
+      return "\u062c\u0627\u0645\u0627\u0626\u06cc\u06a9\u0627";
     },
     get$jpCountryDisplayName() {
-      return "Japani";
+      return "\u0698\u0627\u067e\u0646";
     },
     get$jeCountryDisplayName() {
-      return "Jersey";
+      return "\u062c\u0631\u0632\u06cc";
     },
     get$joCountryDisplayName() {
-      return "Jordania";
+      return "\u0627\u0631\u062f\u0646";
     },
     get$kzCountryDisplayName() {
-      return "Kazakstan";
+      return "\u0642\u0632\u0627\u0642\u0633\u062a\u0627\u0646";
     },
     get$keCountryDisplayName() {
-      return "Kenia";
+      return "\u06a9\u0646\u06cc\u0627";
     },
     get$kiCountryDisplayName() {
-      return "Kiribati";
+      return "\u06a9\u06cc\u0631\u06cc\u0628\u0627\u062a\u06cc";
     },
     get$xkCountryDisplayName() {
-      return "Kosovo";
+      return "\u06a9\u0648\u0633\u0648\u0648\u0648";
     },
     get$kwCountryDisplayName() {
-      return "Kuwait";
+      return "\u06a9\u0648\u06cc\u062a";
     },
     get$kgCountryDisplayName() {
-      return "Kyrgyzstan";
+      return "\u0642\u0631\u0642\u06cc\u0632\u0633\u062a\u0627\u0646";
     },
     get$laCountryDisplayName() {
-      return "Laos";
+      return "\u0644\u0627\u0626\u0648\u0633";
     },
     get$lvCountryDisplayName() {
-      return "Latvia";
+      return "\u0644\u062a\u0648\u0646\u06cc";
     },
     get$lbCountryDisplayName() {
-      return "Libanon";
+      return "\u0644\u0628\u0646\u0627\u0646";
     },
     get$lsCountryDisplayName() {
-      return "Lesotho";
+      return "\u0644\u0633\u0648\u062a\u0648";
     },
     get$lrCountryDisplayName() {
-      return "Liberia";
+      return "\u0644\u06cc\u0628\u0631\u06cc\u0627";
     },
     get$lyCountryDisplayName() {
-      return "Libya";
+      return "\u0644\u06cc\u0628\u06cc";
     },
     get$liCountryDisplayName() {
-      return "Liechtenstein";
+      return "\u0644\u06cc\u062e\u062a\u0646\u200c\u0627\u0634\u062a\u0627\u06cc\u0646";
     },
     get$ltCountryDisplayName() {
-      return "Liettua";
+      return "\u0644\u06cc\u062a\u0648\u0627\u0646\u06cc";
     },
     get$luCountryDisplayName() {
-      return "Luxemburg";
+      return "\u0644\u0648\u06a9\u0632\u0627\u0645\u0628\u0648\u0631\u06af";
     },
     get$moCountryDisplayName() {
-      return "Macau";
+      return "\u0645\u0627\u06a9\u0627\u0626\u0648";
     },
     get$mkCountryDisplayName() {
-      return "Makedonia";
+      return "\u0645\u0642\u062f\u0648\u0646\u06cc\u0647";
     },
     get$mgCountryDisplayName() {
-      return "Madagaskar";
+      return "\u0645\u062f\u06cc\u200c\u06af\u0627\u0633\u06a9\u0627\u0631";
     },
     get$mwCountryDisplayName() {
-      return "Malawi";
+      return "\u0645\u0627\u0644\u0627\u0648\u06cc";
     },
     get$myCountryDisplayName() {
-      return "Malesia";
+      return "\u0645\u0627\u0644\u0632\u06cc";
     },
     get$mvCountryDisplayName() {
-      return "Malediivit";
+      return "\u0645\u0627\u0644\u062f\u06cc\u0648";
     },
     get$mlCountryDisplayName() {
-      return "Mali";
+      return "\u0645\u0627\u0644\u06cc";
     },
     get$mtCountryDisplayName() {
-      return "Malta";
+      return "\u0645\u0627\u0644\u062a";
     },
     get$mhCountryDisplayName() {
-      return "Marshallinsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0645\u0627\u0631\u0634\u0627\u0644";
     },
     get$mqCountryDisplayName() {
-      return "Martinique";
+      return "\u0645\u0627\u0631\u062a\u06cc\u0646\u06cc\u06a9";
     },
     get$mrCountryDisplayName() {
-      return "Mauritania";
+      return "\u0645\u0648\u0631\u06cc\u062a\u0627\u0646\u06cc";
     },
     get$muCountryDisplayName() {
-      return "Mauritius";
+      return "\u0645\u0648\u0631\u06cc\u0633";
     },
     get$ytCountryDisplayName() {
-      return "Mayotte";
+      return "\u0645\u0627\u06cc\u0648\u062a";
     },
     get$mxCountryDisplayName() {
-      return "Meksiko";
+      return "\u0645\u06a9\u0632\u06cc\u06a9";
     },
     get$fmCountryDisplayName() {
-      return "Mikronesia";
+      return "\u0645\u06cc\u0627\u0646\u0645\u0627\u0631";
     },
     get$mdCountryDisplayName() {
-      return "Moldova";
+      return "\u0645\u0648\u0644\u062f\u0627\u0648\u06cc";
     },
     get$mcCountryDisplayName() {
-      return "Monaco";
+      return "\u0645\u0648\u0646\u0627\u06a9\u0648";
     },
     get$mnCountryDisplayName() {
-      return "Mongolia";
+      return "\u0645\u063a\u0648\u0644\u0633\u062a\u0627\u0646";
     },
     get$meCountryDisplayName() {
-      return "Montenegro";
+      return "\u0645\u0648\u0646\u062a\u0647\u200c\u0646\u06af\u0631\u0648";
     },
     get$msCountryDisplayName() {
-      return "Montserrat";
+      return "\u0645\u0648\u0646\u062a\u200c\u0633\u0631\u0627\u062a";
     },
     get$maCountryDisplayName() {
-      return "Marokko";
+      return "\u0645\u0631\u0627\u06a9\u0634";
     },
     get$mzCountryDisplayName() {
-      return "Mosambik";
+      return "\u0645\u0648\u0632\u0627\u0645\u0628\u06cc\u06a9";
     },
     get$mmCountryDisplayName() {
-      return "Myanmar (Burma)";
+      return "\u0645\u06cc\u0627\u0646\u0645\u0627\u0631 (\u0628\u0631\u0645\u0647)";
     },
     get$naCountryDisplayName() {
-      return "Namibia";
+      return "\u0646\u0627\u0645\u06cc\u0628\u06cc\u0627";
     },
     get$nrCountryDisplayName() {
-      return "Nauru";
+      return "\u0646\u0627\u0626\u0648\u0631\u0648";
     },
     get$npCountryDisplayName() {
-      return "Nepal";
+      return "\u0646\u067e\u0627\u0644";
     },
     get$nlCountryDisplayName() {
-      return "Alankomaat";
+      return "\u0647\u0644\u0646\u062f";
     },
     get$ncCountryDisplayName() {
-      return "Uusi-Kaledonia";
+      return "\u06a9\u0627\u0644\u062f\u0648\u0646\u06cc\u0627\u06cc \u062c\u062f\u06cc\u062f";
     },
     get$nzCountryDisplayName() {
-      return "Uusi-Seelanti";
+      return "\u0646\u06cc\u0648\u0632\u06cc\u0644\u0646\u062f";
     },
     get$niCountryDisplayName() {
-      return "Nicaragua";
+      return "\u0646\u06cc\u06a9\u0627\u0631\u0627\u06af\u0648\u0626\u0647";
     },
     get$neCountryDisplayName() {
-      return "Nigeri";
+      return "\u0646\u06cc\u062c\u0631";
     },
     get$ngCountryDisplayName() {
-      return "Nigeria";
+      return "\u0646\u06cc\u062c\u0631\u06cc\u0647";
     },
     get$nuCountryDisplayName() {
-      return "Niue";
+      return "\u0646\u06cc\u0648\u0647";
     },
     get$nfCountryDisplayName() {
-      return "Norfolkin saari";
+      return "\u062c\u0632\u06cc\u0631\u0647 \u0646\u0648\u0631\u0641\u0648\u0644\u06a9";
     },
     get$kpCountryDisplayName() {
-      return "Pohjois-Korea";
+      return "\u06a9\u0631\u0647 \u0634\u0645\u0627\u0644\u06cc";
     },
     get$mpCountryDisplayName() {
-      return "Pohjois-Mariaanit";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0645\u0627\u0631\u06cc\u0627\u0646\u0627 \u0634\u0645\u0627\u0644\u06cc";
     },
     get$noCountryDisplayName() {
-      return "Norja";
+      return "\u0646\u0631\u0648\u0698";
     },
     get$omCountryDisplayName() {
-      return "Oman";
+      return "\u0639\u0645\u0627\u0646";
     },
     get$pkCountryDisplayName() {
-      return "Pakistan";
+      return "\u067e\u0627\u06a9\u0633\u062a\u0627\u0646";
     },
     get$pwCountryDisplayName() {
-      return "Palau";
+      return "\u067e\u0627\u0644\u0627\u0626\u0648";
     },
     get$psCountryDisplayName() {
-      return "Palestiinan alueet";
+      return "\u0645\u0646\u0627\u0637\u0642 \u0641\u0644\u0633\u0637\u06cc\u0646\u06cc";
     },
     get$paCountryDisplayName() {
-      return "Panama";
+      return "\u067e\u0627\u0646\u0627\u0645\u0627";
     },
     get$pgCountryDisplayName() {
-      return "Papua-Uusi-Guinea";
+      return "\u067e\u0627\u067e\u0648\u0622 \u06af\u06cc\u0646\u0647 \u0646\u0648";
     },
     get$pyCountryDisplayName() {
-      return "Paraguay";
+      return "\u067e\u0627\u0631\u0627\u06af\u0648\u0626\u0647";
     },
     get$peCountryDisplayName() {
-      return "Peru";
+      return "\u067e\u0631\u0648";
     },
     get$phCountryDisplayName() {
-      return "Filippiinit";
+      return "\u0641\u06cc\u0644\u06cc\u067e\u06cc\u0646";
     },
     get$plCountryDisplayName() {
-      return "Puola";
+      return "\u0644\u0647\u0633\u062a\u0627\u0646";
     },
     get$ptCountryDisplayName() {
-      return "Portugali";
+      return "\u067e\u0631\u062a\u063a\u0627\u0644";
     },
     get$prCountryDisplayName() {
-      return "Puerto Rico";
+      return "\u067e\u0648\u0631\u062a\u0648\u0631\u06cc\u06a9\u0648";
     },
     get$qaCountryDisplayName() {
-      return "Qatar";
+      return "\u0642\u0637\u0631";
     },
     get$reCountryDisplayName() {
-      return "R\xe9union";
+      return "\u0631\u0626\u0648\u0646\u06cc\u0648\u0646";
     },
     get$roCountryDisplayName() {
-      return "Romania";
+      return "\u0631\u0648\u0645\u0627\u0646\u06cc";
     },
     get$ruCountryDisplayName() {
-      return "Ven\xe4j\xe4";
+      return "\u0631\u0648\u0633\u06cc\u0647";
     },
     get$rwCountryDisplayName() {
-      return "Ruanda";
+      return "\u0631\u0648\u0627\u0646\u062f\u0627";
     },
     get$blCountryDisplayName() {
-      return "Saint Barth\xe9lemy";
+      return "\u0633\u0646\u062a \u0628\u0627\u0631\u062b\u0644\u0645\u06cc";
     },
     get$shCountryDisplayName() {
-      return "Saint Helena";
+      return "\u0633\u0646\u062a \u0647\u0644\u0646";
     },
     get$knCountryDisplayName() {
-      return "Saint Kitts";
+      return "\u0633\u0646\u062a \u06a9\u06cc\u062a\u0633";
     },
     get$lcCountryDisplayName() {
-      return "Saint Lucia";
+      return "\u0633\u0646\u062a \u0644\u0648\u0633\u06cc\u0627";
     },
     get$mfCountryDisplayName() {
-      return "Saint Martin";
+      return "\u0633\u0646\u062a \u0645\u0627\u0631\u062a\u06cc\u0646";
     },
     get$pmCountryDisplayName() {
-      return "Saint Pierre ja Miquelon";
+      return "\u0633\u0646\u062a \u067e\u06cc\u0631 \u0648 \u0645\u06cc\u06a9\u0644\u0648\u0646";
     },
     get$vcCountryDisplayName() {
-      return "Saint Vincent";
+      return "\u0633\u0646\u062a \u0648\u06cc\u0646\u0633\u0646\u062a";
     },
     get$wsCountryDisplayName() {
-      return "Samoa";
+      return "\u0633\u0627\u0645\u0648\u0622";
     },
     get$smCountryDisplayName() {
-      return "San Marino";
+      return "\u0633\u0627\u0646 \u0645\u0627\u0631\u06cc\u0646\u0648";
     },
     get$stCountryDisplayName() {
-      return "S\xe3o Tom\xe9 ja Pr\xedncipe";
+      return "\u0633\u0627\u0648 \u062a\u0648\u0645\u0647 \u0648 \u067e\u0631\u0646\u0633\u06cc\u067e";
     },
     get$saCountryDisplayName() {
-      return "Saudi-Arabia";
+      return "\u0639\u0631\u0628\u0633\u062a\u0627\u0646 \u0633\u0639\u0648\u062f\u06cc";
     },
     get$snCountryDisplayName() {
-      return "Senegal";
+      return "\u0633\u0646\u06af\u0627\u0644";
     },
     get$rsCountryDisplayName() {
-      return "Serbia";
+      return "\u0635\u0631\u0628\u0633\u062a\u0627\u0646";
     },
     get$scCountryDisplayName() {
-      return "Seychellit";
+      return "\u0633\u06cc\u0634\u0644";
     },
     get$slCountryDisplayName() {
-      return "Sierra Leone";
+      return "\u0633\u06cc\u0631\u0627\u0644\u0626\u0648\u0646";
     },
     get$sgCountryDisplayName() {
-      return "Singapore";
+      return "\u0633\u0646\u06af\u0627\u067e\u0648\u0631";
     },
     get$sxCountryDisplayName() {
-      return "Sint Maarten";
+      return "\u0633\u06cc\u0646\u062a \u0645\u0627\u0631\u062a\u0646";
     },
     get$skCountryDisplayName() {
-      return "Slovakia";
+      return "\u0627\u0633\u0644\u0648\u0627\u06a9\u06cc";
     },
     get$siCountryDisplayName() {
-      return "Slovenia";
+      return "\u0627\u0633\u0644\u0648\u0648\u0646\u06cc";
     },
     get$sbCountryDisplayName() {
-      return "Salomonsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0633\u0644\u06cc\u0645\u0627\u0646";
     },
     get$soCountryDisplayName() {
-      return "Somalia";
+      return "\u0633\u0648\u0645\u0627\u0644\u06cc";
     },
     get$zaCountryDisplayName() {
-      return "Etel\xe4-Afrikka";
+      return "\u0622\u0641\u0631\u06cc\u0642\u0627\u06cc \u062c\u0646\u0648\u0628\u06cc";
     },
     get$gsCountryDisplayName() {
-      return "Etel\xe4-Georgia ja Etel\xe4iset Sandwichsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u062c\u0648\u0631\u062c\u06cc\u0627 \u062c\u0646\u0648\u0628\u06cc \u0648 \u0633\u0627\u0646\u062f\u0648\u06cc\u0686 \u062c\u0646\u0648\u0628\u06cc";
     },
     get$krCountryDisplayName() {
-      return "Etel\xe4-Korea";
+      return "\u06a9\u0631\u0647 \u062c\u0646\u0648\u0628\u06cc";
     },
     get$ssCountryDisplayName() {
-      return "Etel\xe4-Sudan";
+      return "\u0633\u0648\u062f\u0627\u0646 \u062c\u0646\u0648\u0628\u06cc";
     },
     get$esCountryDisplayName() {
-      return "Espanja";
+      return "\u0627\u0633\u067e\u0627\u0646\u06cc\u0627";
     },
     get$lkCountryDisplayName() {
-      return "Sri Lanka";
+      return "\u0633\u0631\u06cc\u200c\u0644\u0627\u0646\u06a9\u0627";
     },
     get$sdCountryDisplayName() {
-      return "Sudan";
+      return "\u0633\u0648\u062f\u0627\u0646";
     },
     get$srCountryDisplayName() {
-      return "Suriname";
+      return "\u0633\u0648\u0631\u06cc\u0646\u0627\u0645";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard ja Jan Mayen";
+      return "\u0627\u0633\u0648\u0627\u0644\u0628\u0627\u0631\u062f \u0648 \u062c\u0627\u0646 \u0645\u0627\u06cc\u0646";
     },
     get$seCountryDisplayName() {
-      return "Ruotsi";
+      return "\u0633\u0648\u0626\u062f";
     },
     get$chCountryDisplayName() {
-      return "Sveitsi";
+      return "\u0633\u0648\u0626\u06cc\u0633";
     },
     get$syCountryDisplayName() {
-      return "Syria";
+      return "\u0633\u0648\u0631\u06cc\u0647";
     },
     get$twCountryDisplayName() {
-      return "Taiwan";
+      return "\u062a\u0627\u06cc\u0648\u0627\u0646";
     },
     get$tjCountryDisplayName() {
-      return "Tad\u017eikistan";
+      return "\u062a\u0627\u062c\u06cc\u06a9\u0633\u062a\u0627\u0646";
     },
     get$tzCountryDisplayName() {
-      return "Tansania";
+      return "\u062a\u0627\u0646\u0632\u0627\u0646\u06cc\u0627";
     },
     get$thCountryDisplayName() {
-      return "Thaimaa";
+      return "\u062a\u0627\u06cc\u0644\u0646\u062f";
     },
     get$tgCountryDisplayName() {
-      return "Togo";
+      return "\u062a\u0648\u06af\u0648";
     },
     get$tkCountryDisplayName() {
-      return "Tokelau";
+      return "\u062a\u0648\u06a9\u0644\u0626\u0648";
     },
     get$toCountryDisplayName() {
-      return "Tonga";
+      return "\u062a\u0648\u0646\u06af\u0627";
     },
     get$ttCountryDisplayName() {
-      return "Trinidad/Tobago";
+      return "\u062a\u0631\u06cc\u0646\u06cc\u062f\u0627\u062f \u0648 \u062a\u0648\u0628\u0627\u06af\u0648";
     },
     get$tnCountryDisplayName() {
-      return "Tunisia";
+      return "\u062a\u0648\u0646\u0633";
     },
     get$trCountryDisplayName() {
-      return "Turkki";
+      return "\u062a\u0631\u06a9\u06cc\u0647";
     },
     get$tmCountryDisplayName() {
-      return "Turkmenistan";
+      return "\u062a\u0631\u06a9\u0645\u0646\u0633\u062a\u0627\u0646";
     },
     get$tcCountryDisplayName() {
-      return "Turks- ja Caicossaarilot";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u062a\u0648\u0631\u06a9\u0633 \u0648 \u06a9\u0627\u06cc\u06a9\u0648\u0633";
     },
     get$tvCountryDisplayName() {
-      return "Tuvalu";
+      return "\u062a\u0648\u0648\u0627\u0644\u0648";
     },
     get$viCountryDisplayName() {
-      return "Yhdysvaltain Neitsytsaaret";
+      return "\u062c\u0632\u0627\u06cc\u0631 \u0648\u06cc\u0631\u062c\u06cc\u0646 \u0622\u0645\u0631\u06cc\u06a9\u0627";
     },
     get$ugCountryDisplayName() {
-      return "Uganda";
+      return "\u0627\u0648\u06af\u0627\u0646\u062f\u0627";
     },
     get$uaCountryDisplayName() {
-      return "Ukraina";
+      return "\u0627\u0648\u06a9\u0631\u0627\u06cc\u0646";
     },
     get$aeCountryDisplayName() {
-      return "Arabiemiirikunnat";
+      return "\u0627\u0645\u0627\u0631\u0627\u062a \u0645\u062a\u062d\u062f\u0647 \u0639\u0631\u0628\u06cc";
     },
     get$gbCountryDisplayName() {
-      return "Yhdistynyt kuningaskunta";
+      return "\u0628\u0631\u06cc\u062a\u0627\u0646\u06cc\u0627";
     },
     get$usCountryDisplayName() {
-      return "Yhdysvallat";
+      return "\u0627\u06cc\u0627\u0644\u0627\u062a \u0645\u062a\u062d\u062f\u0647";
     },
     get$uyCountryDisplayName() {
-      return "Uruguay";
+      return "\u0627\u0631\u0648\u06af\u0648\u0626\u0647";
     },
     get$uzCountryDisplayName() {
-      return "Uzbekistan";
+      return "\u0627\u0632\u0628\u06a9\u0633\u062a\u0627\u0646";
     },
     get$vuCountryDisplayName() {
-      return "Vanuatu";
+      return "\u0648\u0627\u0646\u0648\u0627\u062a\u0648";
     },
     get$vaCountryDisplayName() {
-      return "Vatikaanivaltio";
+      return "\u0648\u0627\u062a\u06cc\u06a9\u0627\u0646";
     },
     get$veCountryDisplayName() {
-      return "Venezuela";
+      return "\u0648\u0646\u0632\u0648\u0626\u0644\u0627";
     },
     get$vnCountryDisplayName() {
-      return "Vietnam";
+      return "\u0648\u06cc\u062a\u0646\u0627\u0645";
     },
     get$wfCountryDisplayName() {
-      return "Wallis ja Futuna";
+      return "\u0648\u0627\u0644\u06cc\u0633 \u0648 \u0641\u0648\u062a\u0648\u0646\u0627";
     },
     get$ehCountryDisplayName() {
-      return "L\xe4nsi-Sahara";
+      return "\u0635\u062d\u0631\u0627\u06cc \u063a\u0631\u0628\u06cc";
     },
     get$yeCountryDisplayName() {
-      return "Jemen";
+      return "\u06cc\u0645\u0646";
     },
     get$zmCountryDisplayName() {
-      return "Sambia";
+      return "\u0632\u0627\u0645\u0628\u06cc\u0627";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabwe";
+      return "\u0632\u06cc\u0645\u0628\u0627\u0628\u0648\u0647";
     },
     get$pay() {
-      return "Kassalle";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " on kutsunut sinut liittym\xe4\xe4n kurssille: " + space + "! Haluatko hyv\xe4ksy\xe4?";
+      return user + " \u0634\u0645\u0627 \u0631\u0627 \u0628\u0647 \u06cc\u06a9 \u062f\u0648\u0631\u0647 \u062f\u0639\u0648\u062a \u06a9\u0631\u062f\u0647 \u0627\u0633\u062a: " + space + "! \u0622\u06cc\u0627 \u0645\u0627\u06cc\u0644 \u0628\u0647 \u067e\u0630\u06cc\u0631\u0634 \u0647\u0633\u062a\u06cc\u062f\u061f";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 Olet kutsuttu!";
+      return "\ud83d\udce9 \u0634\u0645\u0627 \u062f\u0639\u0648\u062a \u0634\u062f\u0647\u200c\u0627\u06cc\u062f!";
     },
     invitedToChat$2($name, user) {
-      return user + " on kutsunut sinut liittym\xe4\xe4n keskusteluun: " + $name + "! Haluatko hyv\xe4ksy\xe4?";
+      return user + " \u0634\u0645\u0627 \u0631\u0627 \u0628\u0647 \u06cc\u06a9 \u0686\u062a \u062f\u0639\u0648\u062a \u06a9\u0631\u062f\u0647 \u0627\u0633\u062a: " + $name + "! \u0622\u06cc\u0627 \u0645\u0627\u06cc\u0644 \u0628\u0647 \u067e\u0630\u06cc\u0631\u0634 \u0647\u0633\u062a\u06cc\u062f\u061f";
     },
     get$monthlySubscription() {
-      return "Kuukausittainen";
+      return "\u0645\u0627\u0647\u0627\u0646\u0647";
     },
     get$yearlySubscription() {
-      return "Vuosittainen";
+      return "\u0633\u0627\u0644\u0627\u0646\u0647";
     },
     get$defaultSubscription() {
-      return "Pangea Chat -tilaus";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u0686\u062a \u067e\u0646\u06af\u0626\u0627";
     },
     get$freeTrial() {
-      return "Ilmainen kokeilujakso";
+      return "\u0646\u0633\u062e\u0647 \u0622\u0632\u0645\u0627\u06cc\u0634\u06cc \u0631\u0627\u06cc\u06af\u0627\u0646";
     },
     get$noDataFound() {
-      return "Tietoja ei l\xf6ytynyt";
+      return "\u062f\u0627\u062f\u0647\u200c\u0627\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f";
     },
     get$correctionDefaultPrompt() {
-      return "Mik\xe4 on paras korvaus?";
+      return "\u062c\u0627\u06cc\u06af\u0632\u06cc\u0646 \u0628\u0647\u062a\u0631\u06cc\u0646 \u0686\u06cc\u0633\u062a\u061f";
     },
     get$reportToTeacher() {
-      return "Kenelle haluat raportoida t\xe4m\xe4n viestin?";
+      return "\u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u06cc\u0646 \u067e\u06cc\u0627\u0645 \u0631\u0627 \u0628\u0647 \u0686\u0647 \u06a9\u0633\u06cc \u06af\u0632\u0627\u0631\u0634 \u062f\u0647\u06cc\u062f\u061f";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " on raportoinut viestin k\xe4ytt\xe4j\xe4lt\xe4 " + reportedUserId + " chatissa " + roomName;
+      return reportingUserId + " \u06cc\u06a9 \u067e\u06cc\u0627\u0645 \u0627\u0632 " + reportedUserId + " \u062f\u0631 \u0686\u062a " + roomName + " \u06af\u0632\u0627\u0631\u0634 \u06a9\u0631\u062f\u0647 \u0627\u0633\u062a";
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Viesti: " + reportedMessage + "\nSyy: " + reason;
+      return "\u067e\u06cc\u0627\u0645: " + reportedMessage + "\n\u062f\u0644\u06cc\u0644: " + reason;
     },
     get$noTeachersFound() {
-      return "Ei opettajia raportoitu";
+      return "\u0647\u06cc\u0686 \u0645\u0639\u0644\u0645\u06cc \u0628\u0631\u0627\u06cc \u06af\u0632\u0627\u0631\u0634 \u06cc\u0627\u0641\u062a \u0646\u0634\u062f";
     },
     trialExpiration$1(expiration) {
-      return "Ilmainen kokeilujakso p\xe4\xe4ttyy " + expiration;
+      return "\u0622\u0632\u0645\u0627\u06cc\u0634 \u0631\u0627\u06cc\u06af\u0627\u0646 \u0634\u0645\u0627 \u062f\u0631 \u062a\u0627\u0631\u06cc\u062e " + expiration + " \u0628\u0647 \u067e\u0627\u06cc\u0627\u0646 \u0645\u06cc\u200c\u0631\u0633\u062f";
     },
     get$freeTrialDesc() {
-      return "Uudet k\xe4ytt\xe4j\xe4t saavat viikon ilmaisen kokeilun Pangea Chatista";
+      return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062c\u062f\u06cc\u062f \u06cc\u06a9 \u0647\u0641\u062a\u0647 \u0622\u0632\u0645\u0627\u06cc\u0634 \u0631\u0627\u06cc\u06af\u0627\u0646 \u067e\u0646\u06af\u0626\u0627 \u0686\u062a \u062f\u0631\u06cc\u0627\u0641\u062a \u0645\u06cc\u200c\u06a9\u0646\u0646\u062f";
     },
     get$activateTrial() {
-      return "Vapaa 7 p\xe4iv\xe4n kokeilu";
+      return "\u0622\u0632\u0645\u0627\u06cc\u0634 \u0631\u0627\u06cc\u06af\u0627\u0646 7 \u0631\u0648\u0632\u0647";
     },
     get$successfullySubscribed() {
-      return "Olet tilannut onnistuneesti!";
+      return "\u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0645\u0634\u062a\u0631\u06a9 \u0634\u062f\u0647\u200c\u0627\u06cc\u062f!";
     },
     get$clickToManageSubscription() {
-      return "Klikkaa t\xe4st\xe4 hallitaksesi tilaustasi.";
+      return "\u0628\u0631\u0627\u06cc \u0645\u062f\u06cc\u0631\u06cc\u062a \u0627\u0634\u062a\u0631\u0627\u06a9 \u062e\u0648\u062f \u0627\u06cc\u0646\u062c\u0627 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Valitse v\xe4hint\xe4\xe4n " + min + " merkki\xe4.";
+      return "\u0644\u0637\u0641\u0627\u064b \u062d\u062f\u0627\u0642\u0644 " + min + " \u06a9\u0627\u0631\u0627\u06a9\u062a\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f.";
     },
     get$pleaseEnterValidEmail() {
-      return "Sy\xf6t\xe4 kelvollinen s\xe4hk\xf6postiosoite.";
+      return "\u0644\u0637\u0641\u0627\u064b \u06cc\u06a9 \u0622\u062f\u0631\u0633 \u0627\u06cc\u0645\u06cc\u0644 \u0645\u0639\u062a\u0628\u0631 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f.";
     },
     get$pleaseChooseAUsername() {
-      return "Valitse k\xe4ytt\xe4j\xe4nimi";
+      return "\u0644\u0637\u0641\u0627\u064b \u06cc\u06a9 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$listen() {
-      return "Kuuntele";
+      return "\u06af\u0648\u0634 \u062f\u0627\u062f\u0646";
     },
     get$trialPeriodExpired() {
-      return "Kokeilujaksonne on p\xe4\xe4ttynyt";
+      return "\u062f\u0648\u0631\u0647 \u0622\u0632\u0645\u0627\u06cc\u0634\u06cc \u0634\u0645\u0627 \u0628\u0647 \u067e\u0627\u06cc\u0627\u0646 \u0631\u0633\u06cc\u062f\u0647 \u0627\u0633\u062a";
     },
     get$subscribedToUnlockTools() {
-      return "Virit\xe4 tilaukseen saadaksesi k\xe4ytt\xf6\xf6n vuorovaikutteinen k\xe4\xe4nn\xf6s ja kielioppitarkistus, \xe4\xe4nen toisto, henkil\xf6kohtaiset harjoitustoiminnot ja oppimisanalyyttiset tiedot!";
+      return "\u0628\u0631\u0627\u06cc \u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u062a\u0631\u062c\u0645\u0647 \u062a\u0639\u0627\u0645\u0644\u06cc \u0648 \u0628\u0631\u0631\u0633\u06cc \u06af\u0631\u0627\u0645\u0631\u060c \u067e\u062e\u0634 \u0635\u062f\u0627\u060c \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u062a\u0645\u0631\u06cc\u0646\u06cc \u0634\u062e\u0635\u06cc\u200c\u0633\u0627\u0632\u06cc\u200c\u0634\u062f\u0647 \u0648 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc\u060c \u0627\u0634\u062a\u0631\u0627\u06a9 \u06a9\u0646\u06cc\u062f!";
     },
     get$translationTooltip() {
-      return "K\xe4\xe4nn\xe4";
+      return "\u062a\u0631\u062c\u0645\u0647";
     },
     get$kickBotWarning() {
-      return "Pangea-botin poistaminen poistaa keskustelubotin t\xe4st\xe4 keskustelusta.";
+      return "\u0627\u062e\u0631\u0627\u062c \u0631\u0628\u0627\u062a \u067e\u0646\u06af\u0626\u0627\u060c \u0631\u0628\u0627\u062a \u06af\u0641\u062a\u06af\u0648 \u0631\u0627 \u0627\u0632 \u0627\u06cc\u0646 \u0686\u062a \u062d\u0630\u0641 \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$refresh(_) {
-      return "P\xe4ivit\xe4";
+      return "\u062a\u0627\u0632\u0647\u200c\u0633\u0627\u0632\u06cc";
     },
     get$accuracy(_) {
-      return "Tarkkuus";
+      return "\u062f\u0642\u062a";
     },
     get$autoIGCToolName() {
-      return "Aja Pangea kirjoitusavustusta automaattisesti";
+      return "\u0627\u062c\u0631\u0627\u06cc \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u0645\u06a9 \u0646\u0648\u0634\u062a\u0646 \u067e\u0646\u06af\u0626\u0627";
     },
     get$autoIGCToolDescription() {
-      return "Aja automaattisesti Pangea Chatin kieliopin ja k\xe4\xe4nn\xf6ksen kirjoitusavustusta ennen viestini l\xe4hett\xe4mist\xe4.";
+      return "\u0628\u0647 \u0637\u0648\u0631 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0642\u0628\u0644 \u0627\u0632 \u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645 \u0645\u0646\u060c \u06a9\u0645\u06a9 \u0646\u06af\u0627\u0631\u0634 \u06af\u0631\u0627\u0645\u0631 \u0648 \u062a\u0631\u062c\u0645\u0647 \u0686\u062a \u067e\u0646\u06af\u0626\u0627 \u0631\u0627 \u0627\u062c\u0631\u0627 \u06a9\u0646\u06cc\u062f.";
     },
     get$chatCapacity() {
-      return "Chatin kapasiteetti";
+      return "\u0638\u0631\u0641\u06cc\u062a \u0686\u062a";
     },
     get$roomFull() {
-      return "Huone on jo t\xe4ynn\xe4.";
+      return "\u0627\u06cc\u0646 \u0627\u062a\u0627\u0642 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u067e\u0631 \u0627\u0633\u062a.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Chatin kapasiteetti on muuttunut";
+      return "\u0638\u0631\u0641\u06cc\u062a \u0686\u062a \u062a\u063a\u06cc\u06cc\u0631 \u06cc\u0627\u0641\u062a\u0647 \u0627\u0633\u062a";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Chatin kapasiteetti on oltava v\xe4hint\xe4\xe4n " + count + ".";
+      return "\u0638\u0631\u0641\u06cc\u062a \u0686\u062a \u0628\u0627\u06cc\u062f \u062d\u062f\u0627\u0642\u0644 " + count + " \u0628\u0627\u0634\u062f.";
     },
     get$chatCapacityExplanation() {
-      return "Chatin kapasiteetti rajoittaa chatissa sallittujen j\xe4senten m\xe4\xe4r\xe4\xe4.";
+      return "\u0638\u0631\u0641\u06cc\u062a \u0686\u062a \u062a\u0639\u062f\u0627\u062f \u0627\u0639\u0636\u0627\u06cc \u0645\u062c\u0627\u0632 \u062f\u0631 \u06cc\u06a9 \u0686\u062a \u0631\u0627 \u0645\u062d\u062f\u0648\u062f \u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$enterNumber() {
-      return "Sy\xf6t\xe4 kokonaisluku.";
+      return "\u0644\u0637\u0641\u0627\u064b \u06cc\u06a9 \u0645\u0642\u062f\u0627\u0631 \u0639\u062f\u062f \u0635\u062d\u06cc\u062d \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f.";
     },
     get$buildTranslation() {
-      return "Rakenna k\xe4\xe4nn\xf6ksesi yll\xe4 olevista vaihtoehdoista";
+      return "\u062a\u0631\u062c\u0645\u0647 \u062e\u0648\u062f \u0631\u0627 \u0627\u0632 \u06af\u0632\u06cc\u0646\u0647\u200c\u0647\u0627\u06cc \u0628\u0627\u0644\u0627 \u0628\u0633\u0627\u0632\u06cc\u062f";
     },
     get$practice() {
-      return "Harjoitus";
+      return "\u062a\u0645\u0631\u06cc\u0646";
     },
     get$speechToTextBody() {
-      return "\xc4\xe4niviesteiss\xe4 n\xe4et my\xf6s litteroinnin sek\xe4 puhujan Words Per Minute -pistem\xe4\xe4r\xe4n.";
+      return "\u0628\u0631\u0627\u06cc \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0635\u0648\u062a\u06cc\u060c \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0645\u062a\u0646 \u06af\u0641\u062a\u0627\u0631 \u0631\u0627 \u0628\u0628\u06cc\u0646\u06cc\u062f \u0648 \u0646\u0645\u0631\u0647 \u06a9\u0644\u0645\u0627\u062a \u062f\u0631 \u062f\u0642\u06cc\u0642\u0647 \u0633\u062e\u0646\u0631\u0627\u0646 \u0631\u0627 \u0645\u0634\u0627\u0647\u062f\u0647 \u06a9\u0646\u06cc\u062f.";
     },
     get$versionNotFound() {
-      return "Versiota ei l\xf6ytynyt";
+      return "\u0646\u0633\u062e\u0647 \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f";
     },
     get$fetchingVersion() {
-      return "Haetaan versiota...";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062f\u0631\u06cc\u0627\u0641\u062a \u0646\u0633\u062e\u0647...";
     },
     get$versionFetchError() {
-      return "Virhe haettaessa versiota";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u062f\u0631\u06cc\u0627\u0641\u062a \u0646\u0633\u062e\u0647";
     },
     versionText$2(version, buildNumber) {
-      return "Versio: " + version + "+" + buildNumber;
+      return "\u0646\u0633\u062e\u0647: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Peruskielesi viestit eiv\xe4t tule k\xe4\xe4nnetyiksi.";
+      return "\u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u062f\u0631 \u0632\u0628\u0627\u0646 \u067e\u0627\u06cc\u0647 \u0634\u0645\u0627 \u062a\u0631\u062c\u0645\u0647 \u0646\u062e\u0648\u0627\u0647\u0646\u062f \u0634\u062f.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "Sinulla on aktiivinen tilaus";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u0641\u0639\u0627\u0644 \u062f\u0627\u0631\u06cc\u062f";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Tilisi poistaminen ei automaattisesti peruuta tilaustasi.";
+      return "\u062d\u0630\u0641 \u062d\u0633\u0627\u0628 \u0634\u0645\u0627 \u0628\u0647 \u0637\u0648\u0631 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0627\u0634\u062a\u0631\u0627\u06a9 \u0634\u0645\u0627 \u0631\u0627 \u0644\u063a\u0648 \u0646\u0645\u06cc\u200c\u06a9\u0646\u062f.";
     },
     get$manageSubscription() {
-      return "Hallitse tilausta";
+      return "\u0645\u062f\u06cc\u0631\u06cc\u062a \u0627\u0634\u062a\u0631\u0627\u06a9";
     },
     get$error520Title() {
-      return "Yrit\xe4 uudelleen.";
+      return "\u0644\u0637\u0641\u0627\u064b \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     get$error520Desc() {
-      return "Valitettavasti emme ymm\xe4rt\xe4neet viesti\xe4si...";
+      return "\u0645\u062a\u0623\u0633\u0641\u06cc\u0645\u060c \u0646\u062a\u0648\u0627\u0646\u0633\u062a\u06cc\u0645 \u067e\u06cc\u0627\u0645 \u0634\u0645\u0627 \u0631\u0627 \u062f\u0631\u06a9 \u06a9\u0646\u06cc\u0645...";
     },
     get$level(_) {
-      return "Taso";
+      return "\u0633\u0637\u062d";
     },
     get$translationChoicesBody() {
-      return "Pid\xe4 valittua vaihtoehtoa painettuna vihjeen saamiseksi.";
+      return "\u0628\u0631\u0627\u06cc \u0631\u0627\u0647\u0646\u0645\u0627\u06cc\u06cc\u060c \u06cc\u06a9 \u06af\u0632\u06cc\u0646\u0647 \u0631\u0627 \u0646\u06af\u0647 \u062f\u0627\u0631\u06cc\u062f \u0648 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
     get$grammar() {
-      return "Kielioppi";
+      return "\u062f\u0633\u062a\u0648\u0631 \u0632\u0628\u0627\u0646";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Yhteystiedot on kutsuttu keskusteluun";
+      return "\u062a\u0645\u0627\u0633 \u062f\u0639\u0648\u062a \u0634\u062f\u0647 \u0627\u0633\u062a \u0628\u0647 \u0686\u062a";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Kutsu keskusteluun";
+      return "\ud83d\udce8 \u062f\u0639\u0648\u062a \u0628\u0647 \u0686\u062a";
     },
     get$chatName() {
-      return "Keskustelun nimi";
+      return "\u0646\u0627\u0645 \u0686\u062a";
     },
     get$l2SupportNa() {
-      return "Ei saatavilla";
+      return "\u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u06cc\u0633\u062a";
     },
     get$l2SupportAlpha() {
-      return "Alpha";
+      return "\u0622\u0644\u0641\u0627";
     },
     get$l2SupportBeta() {
-      return "Beta";
+      return "\u0628\u062a\u0627";
     },
     get$l2SupportFull() {
-      return "T\xe4ysi";
+      return "\u06a9\u0627\u0645\u0644";
     },
     get$playAudio() {
-      return "Toista";
+      return "\u067e\u062e\u0634";
     },
     get$stop(_) {
-      return "Lopeta";
+      return "\u062a\u0648\u0642\u0641";
     },
     get$grammarCopyPOSsconj() {
-      return "Subordinointiliite";
+      return "\u062d\u0631\u0641 \u0631\u0628\u0637 subordinating";
     },
     get$grammarCopyPOSnum() {
-      return "Luku";
+      return "\u0639\u062f\u062f";
     },
     get$grammarCopyPOSverb() {
-      return "Verbi";
+      return "\u0641\u0639\u0644";
     },
     get$grammarCopyPOSaffix() {
-      return "Liite";
+      return "\u067e\u0633\u0648\u0646\u062f";
     },
     get$grammarCopyPOSpart() {
-      return "Partikkeli";
+      return "\u062c\u0632\u0621";
     },
     get$grammarCopyPOSadj() {
-      return "Adjektiivi";
+      return "\u0635\u0641\u062a";
     },
     get$grammarCopyPOScconj() {
-      return "Koordinoiva konjunktio";
+      return "\u062d\u0631\u0641 \u0631\u0628\u0637 coordinating";
     },
     get$grammarCopyPOSpunct() {
-      return "Piste- ja v\xe4limerkki";
+      return "\u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc";
     },
     get$grammarCopyPOSadv() {
-      return "Adverbi";
+      return "\u0642\u06cc\u062f";
     },
     get$grammarCopyPOSaux() {
-      return "Avustava";
+      return "\u06a9\u0645\u06a9\u06cc";
     },
     get$grammarCopyPOSspace() {
-      return "V\xe4li";
+      return "\u0641\u0627\u0635\u0644\u0647";
     },
     get$grammarCopyPOSsym() {
-      return "Symboli";
+      return "\u0646\u0645\u0627\u062f";
     },
     get$grammarCopyPOSdet() {
-      return "Artikkeli";
+      return "\u062d\u0631\u0641 \u062a\u0639\u0631\u06cc\u0641";
     },
     get$grammarCopyPOSpron() {
-      return "Pronomini";
+      return "\u0636\u0645\u06cc\u0631";
     },
     get$grammarCopyPOSadp() {
-      return "Adpositio";
+      return "\u062d\u0631\u0641 \u0627\u0636\u0627\u0641\u0647";
     },
     get$grammarCopyPOSpropn() {
-      return "Oikea nimi";
+      return "\u0627\u0633\u0645 \u062e\u0627\u0635";
     },
     get$grammarCopyPOSnoun() {
-      return "Substantiivi";
+      return "\u0627\u0633\u0645";
     },
     get$grammarCopyPOSintj() {
-      return "Interjektio";
+      return "\u0634\u06af\u0641\u062a\u06cc\u200c\u0622\u0648\u0631";
     },
     get$grammarCopyPOSx() {
-      return "Muu";
+      return "\u062f\u06cc\u06af\u0631";
     },
     get$grammarCopyGENDERfem() {
-      return "Feminine";
+      return "\u0645\u0648\u0646\u062b";
     },
     get$grammarCopyPERSON2() {
-      return "Toinen henkil\xf6";
+      return "\u0634\u062e\u0635 \u062f\u0648\u0645";
     },
     get$grammarCopyMOODimp() {
-      return "Imperatiivi";
+      return "\u0627\u0645\u0631";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Kysymys";
+      return "\u0633\u0648\u0627\u0644";
     },
     get$grammarCopyASPECTperf() {
-      return "Perfekti";
+      return "\u062a\u0645\u0627\u0645";
     },
     get$grammarCopyCASEaccnom() {
-      return "Akkusatiivi, Nominatiivi";
+      return "\u0645\u0641\u0639\u0648\u0644\u060c \u0641\u0627\u0639\u0644";
     },
     get$grammarCopyCASEobl() {
-      return "Obliikki";
+      return "\u0645\u062a\u0645\u0645";
     },
     get$grammarCopyVOICEact() {
-      return "Aktiivi";
+      return "\u0641\u0639\u0627\u0644";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Sulku";
+      return "\u0628\u0631\u0627\u06a9\u062a";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Artikkeli";
+      return "\u0645\u0642\u0627\u0644\u0647";
     },
     get$grammarCopyNUMBERsing() {
-      return "Yksikk\xf6";
+      return "\u0645\u0641\u0631\u062f";
     },
     get$grammarCopyGENDERmasc() {
-      return "Maskuliini";
+      return "\u0645\u0630\u06a9\u0631";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modaalinen";
+      return "\u0645\u062f\u0627\u0644";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Adverbiaali";
+      return "\u0642\u06cc\u062f\u06cc";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifrastinen";
+      return "\u067e\u0631\u06cc\u0648\u062f\u06cc\u06a9";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Numero";
+      return "\u0631\u0642\u0645\u06cc";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Ei Oikea";
+      return "\u063a\u06cc\u0631 \u062e\u0627\u0635";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Kardinaali";
+      return "\u0639\u062f\u062f \u0627\u0635\u0644\u06cc";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Oikea";
+      return "\u062e\u0627\u0635";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Piste";
+      return "\u062e\u0637 \u062a\u06cc\u0631\u0647";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Kyll\xe4";
+      return "\u0628\u0644\u0647";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Puolipiste";
+      return "\u0646\u06cc\u0645\u200c\u0641\u0627\u0635\u0644\u0647";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Koma";
+      return "\u0648\u06cc\u0631\u06af\u0648\u0644";
     },
     get$grammarCopyMOODcnd() {
-      return " Konditionaali";
+      return "\u0634\u0631\u0637\u06cc";
     },
     get$grammarCopyCASEacc() {
-      return " Akkusatiivi";
+      return "\u0645\u0641\u0639\u0648\u0644\u06cc";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partitiivi";
+      return "\u062c\u0632\u0626\u06cc";
     },
     get$grammarCopyTENSEpast() {
-      return " Menneisyys";
+      return "\u06af\u0630\u0634\u062a\u0647";
     },
     get$grammarCopyDEGREEsup() {
-      return " Superlatiivi";
+      return "\u0627\u0641\u0632\u0627\u06cc\u0634\u06cc \u0628\u0631\u062a\u0631";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return " Kaksoispiste";
+      return "\u062f\u0648 \u0646\u0642\u0637\u0647";
     },
     get$grammarCopyPERSON3() {
-      return " Kolmas persoona";
+      return "\u0634\u062e\u0635 \u0633\u0648\u0645";
     },
     get$grammarCopyNUMBERplur() {
-      return " Monikko";
+      return "\u062c\u0645\u0639";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return " Oikea nimi";
+      return "\u0627\u0633\u0645 \u062e\u0627\u0635";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return " Kysymyslause";
+      return "\u0633\u0648\u0627\u0644\u06cc";
     },
     get$grammarCopyPOLITEinfm() {
-      return " Ep\xe4virallinen";
+      return "\u063a\u06cc\u0631 \u0631\u0633\u0645\u06cc";
     },
     get$grammarCopyADVTYPEtim() {
-      return " Aika";
+      return "\u0632\u0645\u0627\u0646";
     },
     get$grammarCopyPOLARITYneg() {
-      return " Kielteinen";
+      return "\u0645\u0646\u0641\u06cc";
     },
     get$grammarCopyNUMTYPEtot() {
-      return " Kokonaism\xe4\xe4r\xe4";
+      return "\u06a9\u0644";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return " Adnominaalinen";
+      return "\u0635\u0641\u062a\u200c\u062f\u0627\u0631";
     },
     get$grammarCopyASPECTprog() {
-      return " Progressiivinen";
+      return "\u067e\u06cc\u0634\u200c\u0631\u0648\u0646\u062f\u0647";
     },
     get$grammarCopyMOODsub() {
-      return " Subjunktiivi";
+      return "\u0645\u0636\u0627\u0631\u0639";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "T\xe4ydennysmuoto";
+      return "\u0645\u06a9\u0645\u0644";
     },
     get$grammarCopyCASEnom() {
-      return "Nominatiivi";
+      return "\u0641\u0627\u0639\u0644";
     },
     get$grammarCopyTENSEfut() {
-      return "Tulevaisuus";
+      return "\u0622\u06cc\u0646\u062f\u0647";
     },
     get$grammarCopyCASEdat() {
-      return "Datiivi";
+      return "\u0645\u0641\u0639\u0648\u0644 \u063a\u06cc\u0631\u0645\u0633\u062a\u0642\u06cc\u0645";
     },
     get$grammarCopyTENSEpres() {
-      return "Preesens";
+      return "\u062d\u0627\u0644";
     },
     get$grammarCopyGENDERneut() {
-      return "Neutri";
+      return "\u062e\u0646\u062b\u06cc";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Relatiivipronomini";
+      return "\u0646\u0633\u0628\u06cc";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Loppup\xe4\xe4te";
+      return "\u067e\u0627\u06cc\u0627\u0646 \u0646\u0647\u0627\u06cc\u06cc";
     },
     get$grammarCopyPRONTYPEdem() {
-      return " Demonstratiivipronomini";
+      return "\u0627\u0634\u0627\u0631\u0647\u200c\u06af\u0631";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Prepositio";
+      return "\u062d\u0631\u0641 \u0627\u0636\u0627\u0641\u0647\u200c\u0627\u06cc";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Finiitti";
+      return "\u0645\u062d\u062f\u0648\u062f";
     },
     get$grammarCopyDEGREEpos() {
-      return "Positiivinen";
+      return "\u0645\u062b\u0628\u062a";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Lainausmerkki";
+      return "\u0646\u0642\u0644 \u0642\u0648\u0644";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerundi";
+      return "\u0627\u0633\u0645 \u0645\u0635\u062f\u0631 \u0641\u0639\u0644\u06cc";
     },
     get$grammarCopyVOICEpass() {
-      return "Passiivi";
+      return "\u0645\u062c\u0647\u0648\u0644";
     },
     get$grammarCopyCASEgen() {
-      return "Genetiivi";
+      return "\u0645\u0627\u0644\u06a9\u06cc\u062a";
     },
     get$grammarCopyTENSEprs() {
-      return "Preesens";
+      return "\u062d\u0627\u0644";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Asettava";
+      return "\u0645\u0639\u06cc\u0646";
     },
     get$grammarCopyNUMTYPEord() {
-      return "J\xe4rjestysluku";
+      return "\u062a\u0631\u062a\u06cc\u0628\u06cc";
     },
     get$grammarCopyCASEins() {
-      return "Instruementaali";
+      return "\u062d\u0627\u0644\u062a\u06cc";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Infinitiivi";
+      return "\u0645\u0635\u062f\u0631";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Avustava";
+      return "\u06a9\u0645\u06a9\u06cc";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Pitk\xe4";
+      return "\u0637\u0648\u0644\u0627\u0646\u06cc";
     },
     get$grammarCopyCASEloc() {
-      return "Lokaali";
+      return "\u0645\u06a9\u0627\u0646\u06cc";
     },
     get$grammarCopyMOODind() {
-      return "Indikatiivi";
+      return "\u062e\u0628\u0631";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Vertailu";
+      return "\u0645\u0642\u0627\u06cc\u0633\u0647\u200c\u0627\u06cc";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Relatiivinen";
+      return "\u0646\u0633\u0628\u06cc";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Huudahdus";
+      return "\u062a\u0639\u062c\u0628\u06cc";
     },
     get$grammarCopyPERSON1() {
-      return "Ensimm\xe4inen persoona";
+      return "\u0634\u062e\u0635 \u0627\u0648\u0644";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Alku";
+      return "\u0622\u063a\u0627\u0632\u06cc\u0646";
     },
     get$grammarCopyGENDERperson() {
-      return "Henkil\xf6";
+      return "\u062c\u0646\u0633\u06cc\u062a";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Vieras";
+      return "\u062e\u0627\u0631\u062c\u06cc";
     },
     get$grammarCopyVOICEvoice() {
-      return "\xc4\xe4ni";
+      return "\u0635\u062f\u0627";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Verbi";
+      return "\u0641\u0639\u0644";
     },
     get$grammarCopyPOSSpass() {
-      return "Omistussijaus";
+      return "\u0645\u0627\u0644\u06a9\u06cc\u062a";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Prepositio";
+      return "\u062d\u0631\u0641 \u0627\u0636\u0627\u0641\u0647\u200c\u0627\u06cc";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Numeral";
+      return "\u0639\u062f\u062f";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Substantiivi";
+      return "\u0627\u0633\u0645";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Refleksiivinen";
+      return "\u0628\u0627\u0632\u062a\u0627\u0628\u06cc";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Pronomini";
+      return "\u0636\u0645\u06cc\u0631";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Pisteen puoli";
+      return "\u0633\u0645\u062a \u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Verbi";
+      return "\u0641\u0639\u0644";
     },
     get$grammarCopyGENDERgender() {
-      return "Sukupuoli";
+      return "\u062c\u0646\u0633\u06cc\u062a";
     },
     get$grammarCopyMOODmood() {
-      return "Moodi";
+      return "\u062d\u0627\u0644\u062a";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspekti";
+      return "\u062c\u0646\u0628\u0647";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "V\xe4limerkki";
+      return "\u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc";
     },
     get$grammarCopyTENSEtense() {
-      return "Aikamuoto";
+      return "\u0632\u0645\u0627\u0646";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Taso";
+      return "\u062f\u0631\u062c\u0647";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Kohteliaisuus";
+      return "\u0627\u062f\u0628";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Adverbi";
+      return "\u0642\u06cc\u062f";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Luku";
+      return "\u0639\u062f\u062f";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Konjunktio";
+      return "\u062d\u0631\u0641 \u0631\u0628\u0637";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polaarisuus";
+      return "\u0642\u0637\u0628\u06cc\u062a";
     },
     get$grammarCopyCASEcase() {
-      return "Tapaus";
+      return "\u062d\u0627\u0644\u062a \u0646\u062d\u0648\u06cc";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Tarkkuus";
+      return "\u0645\u0639\u06cc\u0646 \u0628\u0648\u062f\u0646";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Numeral";
+      return "\u0639\u062f\u062f \u0639\u062f\u062f\u06cc";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Adnominaali";
+      return "\u0636\u0645\u06cc\u0631 \u0635\u0641\u062a\u06cc";
     },
     get$grammarCopyVOCvoc() {
-      return "Vokaali";
+      return "\u0646\u062f\u0627\u0621";
     },
     get$grammarCopyCMPLcmpl() {
-      return "T\xe4ydennyslause";
+      return "\u0645\u06a9\u0645\u0644";
     },
     get$grammarCopyADVadv() {
-      return "Adverbiaali";
+      return "\u0642\u06cc\u062f";
     },
     get$grammarCopyMOODjus() {
-      return "Imperatiivi";
+      return "\u0627\u0645\u0631";
     },
     get$grammarCopyGENDERcom() {
-      return "Yleinen";
+      return "\u0645\u0634\u062a\u0631\u06a9";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Refleksiivinen";
+      return "\u0628\u0627\u0632\u062a\u0627\u0628\u06cc";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Partitiivi";
+      return "\u062c\u0632\u0626\u06cc";
     },
     get$grammarCopySPCspc() {
-      return "Tarkka";
+      return "\u062e\u0627\u0635";
     },
     get$grammarCopyTENSEpqp() {
-      return "Pluskvamperfekti";
+      return "\u0645\u0627\u0636\u06cc \u0628\u0639\u06cc\u062f";
     },
     get$grammarCopyREFLEXref() {
-      return "Refleksiivinen";
+      return "\u0628\u0627\u0632\u062a\u0627\u0628\u06cc";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Lyhyt";
+      return "\u06a9\u0648\u062a\u0627\u0647";
     },
     get$grammarCopyNUMBERdual() {
-      return "Kaksiluku";
+      return "\u062f\u0648\u06af\u0627\u0646\u0647";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Pitk\xe4";
+      return "\u0637\u0648\u0644\u0627\u0646\u06cc";
     },
     get$grammarCopyVOICEmid() {
-      return "Keskiv\xe4li";
+      return "\u0645\u06cc\u0627\u0646\u06cc";
     },
     get$grammarCopyINTRELintRel() {
-      return "Kysymyslause, Relatiivi";
+      return "\u0633\u0624\u0627\u0644\u06cc\u060c \u0646\u0633\u0628\u06cc";
     },
     get$grammarCopyINTint() {
-      return "Kysymys";
+      return "\u0633\u0624\u0627\u0644\u06cc";
     },
     get$grammarCopyVOICEcaus() {
-      return "Aiherakenteinen";
+      return "\u0639\u0644\u062a\u06cc";
     },
     get$grammarCopyUnknown() {
-      return "Tuntematon";
+      return "\u0646\u0627\u0645\u0634\u062e\u0635";
     },
     get$grammarCopyEVIDENTevident() {
-      return "N\xe4ytt\xf6perusteisuus";
+      return "\u0634\u0627\u0647\u062f\u06cc";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Omistajan luku";
+      return "\u0634\u0645\u0627\u0631\u0647 \u062f\u0627\u0631\u0627\u06cc\u06cc";
     },
     get$grammarCopyASPECThab() {
-      return "Tavallinen";
+      return "\u0639\u0627\u062f\u062a\u200c\u06af\u0648\u0646\u0647";
     },
     get$grammarCopyCASEabl() {
-      return "Ablatiivi";
+      return "\u0627\u0628\u0644\u06cc\u062a\u06cc\u0648";
     },
     get$grammarCopyCASEall() {
-      return "Allatiivi";
+      return "\u0645\u0648\u0631\u062f\u06cc";
     },
     get$grammarCopyCASEess() {
-      return "Essiivinen";
+      return "\u062d\u0627\u0644\u062a \u0627\u0633\u062a\u0645\u0631\u0627\u0631\u06cc";
     },
     get$grammarCopyCASEtra() {
-      return "Translatiivinen";
+      return "\u0627\u0646\u062a\u0642\u0627\u0644\u06cc";
     },
     get$grammarCopyCASEequ() {
-      return "Equatiivinen";
+      return "\u0645\u0633\u0627\u0648\u06cc";
     },
     get$grammarCopyCASEdis() {
-      return "Jakautuva";
+      return "\u062a\u0648\u0632\u06cc\u0639\u06cc";
     },
     get$grammarCopyCASEabs() {
-      return "Absoluuttinen";
+      return "\u0645\u0637\u0644\u0642";
     },
     get$grammarCopyCASEerg() {
-      return "Ergatiivinen";
+      return "\u0641\u0627\u0639\u0644\u200c\u06af\u0631\u0627\u06cc\u06cc";
     },
     get$grammarCopyCASEcau() {
-      return "Syyllinen";
+      return "\u0639\u0644\u062a\u06cc";
     },
     get$grammarCopyCASEben() {
-      return "Hy\xf6dyllinen";
+      return "\u0645\u0646\u0627\u0641\u0639\u06cc";
     },
     get$grammarCopyCASEtem() {
-      return "Aikainen";
+      return "\u0632\u0645\u0627\u0646\u06cc";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Koordinoiva";
+      return "\u0647\u0645\u200c\u067e\u06cc\u0648\u0633\u062a\u0647";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Rakennustila";
+      return "\u062d\u0627\u0644\u062a \u0633\u0627\u062e\u062a\u0627\u0631\u06cc";
     },
     get$grammarCopyDEGREEabs() {
-      return "T\xe4ydellinen aste";
+      return "\u062f\u0631\u062c\u0647 \u0645\u0637\u0644\u0642";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Faktuaalinen todisteellisuus";
+      return "\u0634\u0647\u0648\u062f \u0648\u0627\u0642\u0639\u06cc";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Ei-faktuaalinen todisteellisuus";
+      return "\u0634\u0647\u0648\u062f \u063a\u06cc\u0631\u0648\u0627\u0642\u0639\u06cc";
     },
     get$grammarCopyMOODopt() {
-      return "Optatiivinen";
+      return "\u0627\u0645\u06cc\u062f\u0648\u0627\u0631\u0627\u0646\u0647";
     },
     get$grammarCopyMOODadm() {
-      return "Ihmeellinen";
+      return "\u062a\u062d\u0633\u06cc\u0646\u200c\u0622\u0645\u06cc\u0632";
     },
     get$grammarCopyMOODdes() {
-      return "Toivova";
+      return "\u062e\u0648\u0627\u0633\u062a\u200c\u06af\u0631\u0627\u06cc\u0627\u0646\u0647";
     },
     get$grammarCopyMOODnec() {
-      return "Tarpeellinen";
+      return "\u0636\u0631\u0648\u0631\u06cc";
     },
     get$grammarCopyMOODpot() {
-      return "Mahdollinen";
+      return "\u067e\u062a\u0627\u0646\u0633\u06cc\u0644";
     },
     get$grammarCopyMOODprp() {
-      return "Ehdottava";
+      return "\u0627\u06cc\u062f\u0647\u200c\u0622\u0644";
     },
     get$grammarCopyMOODqot() {
-      return "Lainaus";
+      return "\u0627\u0642\u062a\u0628\u0627\u0633\u06cc";
     },
     get$grammarCopyNUMFORMword() {
-      return "Sanan muoto";
+      return "\u0634\u06a9\u0644 \u06a9\u0644\u0645\u0647";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Roomalainen numero";
+      return "\u0639\u062f\u062f \u0631\u0648\u0645\u06cc";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Kirjainmuoto";
+      return "\u0634\u06a9\u0644 \u062d\u0631\u0648\u0641";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Kertolasku";
+      return "\u0636\u0631\u0628\u06cc";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Murtoluku";
+      return "\u06a9\u0633\u0631";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Joukko";
+      return "\u0645\u062c\u0645\u0648\u0639\u0647";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Vaihteluv\xe4li";
+      return "\u0645\u062d\u062f\u0648\u062f\u0647";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Jakautuva";
+      return "\u062a\u0648\u0632\u06cc\u0639\u06cc";
     },
     get$grammarCopyNUMBERtri() {
-      return "Kokeilut";
+      return "\u0622\u0632\u0645\u0648\u0646";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Paukalainen";
+      return "\u067e\u0627\u0626\u0648\u0644";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Suurempi paukala";
+      return "\u067e\u0627\u0626\u0648\u0644 \u0628\u0632\u0631\u06af\u200c\u062a\u0631";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Suurempi monikko";
+      return "\u062c\u0645\u0639 \u0628\u0632\u0631\u06af\u200c\u062a\u0631";
     },
     get$grammarCopyNUMBERinv() {
-      return "K\xe4\xe4nteinen";
+      return "\u0645\u0639\u06a9\u0648\u0633";
     },
     get$grammarCopyPERSON0() {
-      return "Nolla";
+      return "\u0635\u0641\u0631";
     },
     get$grammarCopyPERSON4() {
-      return "Nelj\xe4s";
+      return "\u0686\u0647\u0627\u0631\u0645";
     },
     get$grammarCopyPOLITEform() {
-      return "Virallinen";
+      return "\u0631\u0633\u0645\u06cc";
     },
     get$grammarCopyPOLITEelev() {
-      return "Kohotettu";
+      return "\u0628\u0627\u0644\u0627 \u0631\u0641\u062a\u0647";
     },
     get$grammarCopyPOLITEhumb() {
-      return "N\xf6yr\xe4";
+      return "\u0645\u062a\u0648\u0627\u0636\u0639";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Korostava";
+      return "\u062a\u0627\u06a9\u06cc\u062f\u0622\u0645\u06cc\u0632";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Huudahdus";
+      return "\u062a\u0639\u062c\u0628\u06cc";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Vastavuoro";
+      return "\u0645\u062a\u0642\u0627\u0628\u0644";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Kysymys-Relatiivipronomini";
+      return " interrogative-Relative";
     },
     get$grammarCopyTENSEaor() {
-      return "Aoristi";
+      return "\u0645\u0627\u0636\u06cc \u0633\u0627\u062f\u0647";
     },
     get$grammarCopyTENSEeps() {
-      return "Episteminen";
+      return "\u062f\u0627\u0646\u0634 \u0634\u0646\u0627\u062e\u062a\u06cc";
     },
     get$grammarCopyTENSEprosp() {
-      return "Tulevaisuuden";
+      return "\u0622\u06cc\u0646\u062f\u0647 \u0646\u06af\u0631";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Partisiippi";
+      return "\u0635\u0641\u062a \u0641\u0639\u0644\u06cc";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Konverbi";
+      return "\u0645\u0641\u0639\u0648\u0644";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Verbaalinen substantiivi";
+      return "\u0627\u0633\u0645 \u0641\u0639\u0644\u06cc";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipassiivi";
+      return "\u063a\u06cc\u0631\u0641\u0639\u0627\u0644";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Kausatiivinen";
+      return "\u0639\u0644\u062a\u06cc";
     },
     get$grammarCopyVOICedir() {
-      return "Suora";
+      return "\u0645\u0633\u062a\u0642\u06cc\u0645";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "K\xe4\xe4nteinen";
+      return "\u0645\u0639\u06a9\u0648\u0633";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Vastavuoroinen";
+      return "\u0645\u062a\u0642\u0627\u0628\u0644";
     },
     get$grammarCopyPOS() {
-      return "Osanpuheesta";
+      return "\u0642\u0633\u0645\u062a \u06af\u0641\u062a\u0627\u0631";
     },
     get$grammarCopyGENDER() {
-      return "Sukupuoli";
+      return "\u062c\u0646\u0633\u06cc\u062a";
     },
     get$grammarCopyPERSON() {
-      return "Henkil\xf6";
+      return "\u0634\u062e\u0635";
     },
     get$grammarCopyMOOD() {
-      return "Modus";
+      return "\u0645\u0648\u062f";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Pisteytyksen tyyppi";
+      return "\u0646\u0648\u0639 \u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc";
     },
     get$grammarCopyASPECT() {
-      return "Aspekti";
+      return "\u062c\u0646\u0628\u0647";
     },
     get$grammarCopyCASE() {
-      return "Tapaus";
+      return "\u062d\u0627\u0644\u062a";
     },
     get$grammarCopyVOICE() {
-      return "\xc4\xe4ni";
+      return "\u0635\u062f\u0627";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Substantiivin tyyppi";
+      return "\u0646\u0648\u0639 \u0627\u0633\u0645";
     },
     get$grammarCopyVERBTYPE() {
-      return "Verbityyppi";
+      return "\u0646\u0648\u0639 \u0641\u0639\u0644";
     },
     get$grammarCopyADVTYPE() {
-      return "Adverbityyppi";
+      return "\u0646\u0648\u0639 \u0642\u06cc\u062f";
     },
     get$grammarCopyNUMFORM() {
-      return "Lukumuoto";
+      return "\u0634\u06a9\u0644 \u0639\u062f\u062f\u06cc";
     },
     get$grammarCopyNUMTYPE() {
-      return "Lukumuoto";
+      return "\u0646\u0648\u0639 \u0639\u062f\u062f";
     },
     get$grammarCopyNUMBER() {
-      return "Luku";
+      return "\u0639\u062f\u062f";
     },
     get$grammarCopyDEFINITE() {
-      return "Aukkoisuus";
+      return "\u0645\u0639\u06cc\u0646 \u0628\u0648\u062f\u0646";
     },
     get$grammarCopyDEGREE() {
-      return "Taso";
+      return "\u062f\u0631\u062c\u0647";
     },
     get$grammarCopyEVIDENT() {
-      return "N\xe4ytt\xf6perusteisuus";
+      return "\u0634\u0627\u0647\u062f \u0628\u0648\u062f\u0646";
     },
     get$grammarCopyFOREIGN() {
-      return "Ulkomainen";
+      return "\u062e\u0627\u0631\u062c\u06cc";
     },
     get$grammarCopyPOLARITY() {
-      return "Polaarisuus";
+      return "\u0642\u0637\u0628\u06cc\u062a";
     },
     get$grammarCopyPOLITE() {
-      return "Kohteliaisuus";
+      return "\u0627\u062f\u0628";
     },
     get$grammarCopyPREPCASE() {
-      return "Prepositiivinen tapaus";
+      return "\u062d\u0627\u0644\u062a \u062d\u0631\u0641 \u0627\u0636\u0627\u0641\u0647";
     },
     get$grammarCopyPRONTYPE() {
-      return "Pronominityyppi";
+      return "\u0646\u0648\u0639 \u0636\u0645\u06cc\u0631";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Pisteen puoli";
+      return "\u0633\u0645\u062a \u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc";
     },
     get$grammarCopyREFLEX() {
-      return "Refleksiivinen";
+      return "\u0628\u0627\u0632\u062a\u0627\u0628\u06cc";
     },
     get$grammarCopyTENSE() {
-      return "Aikamuoto";
+      return "\u0632\u0645\u0627\u0646";
     },
     get$grammarCopyVERBFORM() {
-      return "Verbimuoto";
+      return "\u0634\u06a9\u0644 \u0641\u0639\u0644";
     },
     get$grammarCopyCONJTYPE() {
-      return "Konjunktionin tyyppi";
+      return "\u0646\u0648\u0639 \u0647\u0645\u200c\u067e\u06cc\u0648\u0633\u062a\u06af\u06cc";
     },
     get$grammarCopyUNKNOWN() {
-      return "Tuntematon";
+      return "\u0646\u0627\u0645\u0634\u062e\u0635";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Omistajan lukum\xe4\xe4r\xe4";
+      return "\u0639\u062f\u062f \u0645\u0627\u0644\u06a9";
     },
     get$grammarCopyPOSS() {
-      return "Omistussana";
+      return "\u0645\u0644\u06a9\u06cc";
     },
     get$grammarCopyASPECTimp() {
-      return "Ep\xe4t\xe4ydellinen aspekti";
+      return "\u062c\u0646\u0628\u0647 \u0646\u0627\u0642\u0635";
     },
     get$grammarCopyCASEvoc() {
-      return "Vokaali";
+      return "\u0645\u0648\u0631\u062f \u062e\u0637\u0627\u0628";
     },
     get$grammarCopyCASEcom() {
-      return "Yhteis\xf6";
+      return "\u0647\u0645\u200c\u067e\u06cc\u0648\u0633\u062a\u06af\u06cc";
     },
     get$grammarCopyCASEpar() {
-      return "Partitiivi";
+      return "\u0642\u0633\u0645\u062a\u06cc";
     },
     get$grammarCopyCASEadv() {
-      return "Adverbiaali";
+      return "\u0642\u06cc\u062f\u06cc";
     },
     get$grammarCopyCASEref() {
-      return "Viittaus";
+      return "\u0627\u0631\u062c\u0627\u0639\u06cc";
     },
     get$grammarCopyCASErel() {
-      return "Relatiivi";
+      return "\u0646\u0633\u0628\u062a\u06cc";
     },
     get$grammarCopyCASEsub() {
-      return "Subessiivi";
+      return "\u0632\u06cc\u0631\u0645\u0641\u0639\u0648\u0644\u06cc";
     },
     get$grammarCopyCASEsup() {
-      return "Superessiivi";
+      return "\u0628\u0627\u0644\u0627\u062f\u0633\u062a\u06cc";
     },
     get$grammarCopyCASEaccdat() {
-      return "Akkusatiivi-Datiivi";
+      return "\u0645\u0641\u0639\u0648\u0644\u06cc-\u062f\u0627\u062a\u06cc";
     },
     get$grammarCopyCASEpre() {
-      return "Prepositio";
+      return "\u062d\u0631\u0641\u200c\u0627\u0636\u0627\u0641\u06cc";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Alisteinen";
+      return "\u062d\u0627\u0644\u062a \u062a\u0627\u0628\u0639";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Vertailu";
+      return "\u0645\u0642\u0627\u06cc\u0633\u0647\u200c\u0627\u06cc";
     },
     get$grammarCopyDEFINITEind() {
-      return "Ep\xe4m\xe4\xe4r\xe4inen";
+      return "\u0628\u06cc\u200c\u0645\u0639\u06cc\u0646";
     },
     get$grammarCopyMOODint() {
-      return "Kysymysmoodi";
+      return "\u062d\u0627\u0644\u062a \u0633\u0648\u0627\u0644\u06cc";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Yleisnimi";
+      return "\u0627\u0633\u0645 \u0639\u0645\u0648\u0645\u06cc";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Omistajan yksikk\xf6";
+      return "\u0645\u0627\u0644\u06a9 \u0645\u0641\u0631\u062f";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Omistajan monikko";
+      return "\u0645\u0627\u0644\u06a9 \u062c\u0645\u0639";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Omistajan kaksikko";
+      return "\u0645\u0627\u0644\u06a9 \u062f\u0648\u06af\u0627\u0646\u0647";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Positiivinen polariteetti";
+      return "\u0645\u062b\u0628\u062a";
     },
     get$grammarCopyPOSSyes() {
-      return "Omistussana";
+      return "\u0645\u0644\u06a9\u06cc";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Ei prepositiota";
+      return "\u063a\u06cc\u0631\u062d\u0631\u0641\u200c\u0627\u0636\u0627\u0641\u0647\u200c\u0627\u06cc";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Henkil\xf6kohtainen";
+      return "\u0634\u062e\u0635\u06cc";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Kysymys";
+      return "\u0633\u0648\u0627\u0644\u06cc";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Kokonaisuus";
+      return "\u06a9\u0644\u06cc";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Kielt\xe4v\xe4";
+      return "\u0645\u0646\u0641\u06cc";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Artikkeli";
+      return "\u0645\u0642\u0627\u0644\u0647";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Ep\xe4m\xe4\xe4r\xe4inen";
+      return "\u0628\u06cc\u200c\u0645\u0639\u06cc\u0646";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Kysymys-suhteinen";
+      return "\u0633\u0648\u0627\u0644\u06cc-\u0645\u0631\u062a\u0628\u0637";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Loppupiste";
+      return "\u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc \u0646\u0647\u0627\u06cc\u06cc";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Piste";
+      return "\u0646\u0642\u0637\u0647\u200c\u06af\u0630\u0627\u0631\u06cc \u062f\u0648\u0631\u0647\u200c\u0627\u06cc";
     },
     get$grammarCopyREFLEXyes() {
-      return "Refleksiivinen";
+      return "\u0628\u0627\u0632\u062a\u0627\u0628\u06cc";
     },
     get$grammarCopyTENSEimp() {
-      return "Ep\xe4t\xe4ydellinen";
+      return "\u0646\u06cc\u0645\u0647\u200c\u0645\u0627\u0636\u06cc";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Supine";
+      return "\u0645\u0627\u0636\u06cc \u0646\u0642\u0644\u06cc";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominaalinen";
+      return "\u0635\u0641\u062a\u200c\u0645\u0634\u062a\u0642";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Pitk\xe4";
+      return "\u0628\u0644\u0646\u062f";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Lyhyt";
+      return "\u06a9\u0648\u062a\u0627\u0647";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Kausatiiviverbi";
+      return "\u0641\u0639\u0644 \u0633\u0628\u0628\u200c\u0633\u0627\u0632";
     },
     get$grammarCopyVOICEcau() {
-      return "Kausatiivinen";
+      return "\u0633\u0628\u0628\u200c\u0633\u0627\u0632";
     },
     get$grammarCopyVOICEdir() {
-      return "Suora";
+      return "\u0645\u0633\u062a\u0642\u06cc\u0645";
     },
     get$grammarCopyVOICEinv() {
-      return "K\xe4\xe4nteinen";
+      return "\u0645\u0639\u06a9\u0648\u0633";
     },
     get$grammarCopyVOICErcp() {
-      return "Vastavuoroinen";
+      return "\u0645\u062a\u0642\u0627\u0628\u0644";
     },
     get$other() {
-      return "Muu";
+      return "\u062f\u06cc\u06af\u0631";
     },
     levelShort$1(level) {
-      return "TASO " + level;
+      return "\u0633\u0637\u062d " + level;
     },
     get$clickBestOption() {
-      return "Valitse parhaat vaihtoehdot viestisi k\xe4\xe4nt\xe4miseen!";
+      return "\u06af\u0632\u06cc\u0646\u0647\u200c\u0647\u0627\u06cc \u0628\u0647\u062a\u0631\u06cc\u0646 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062a\u0631\u062c\u0645\u0647 \u067e\u06cc\u0627\u0645 \u062e\u0648\u062f \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f!";
     },
     get$completeActivitiesToUnlock() {
-      return "V\xe4hemm\xe4n kuin yksi aktiviteetti on suoritettu, jotta voit avata k\xe4\xe4nn\xf6ksen!";
+      return "\u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0642\u0641\u0644 \u062a\u0631\u062c\u0645\u0647\u060c \u062d\u062f\u0627\u0642\u0644 \u06cc\u06a9 \u0641\u0639\u0627\u0644\u06cc\u062a \u0631\u0627 \u06a9\u0627\u0645\u0644 \u06a9\u0646\u06cc\u062f!";
     },
     get$downloadGroupText() {
-      return "Lataa ryhm\xe4teksti";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f \u0645\u062a\u0646 \u06af\u0631\u0648\u0647";
     },
     get$notificationsOn() {
-      return "Ilmoitukset p\xe4\xe4ll\xe4";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u0641\u0639\u0627\u0644 \u0627\u0633\u062a";
     },
     get$notificationsOff() {
-      return "Ilmoitukset pois p\xe4\xe4lt\xe4";
+      return "\u0627\u0639\u0644\u0627\u0646\u200c\u0647\u0627 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0627\u0633\u062a";
     },
     get$createChatAndInviteUsers() {
-      return "Luo keskustelu ja kutsu k\xe4ytt\xe4ji\xe4";
+      return "\u0627\u06cc\u062c\u0627\u062f \u0686\u062a \u0648 \u062f\u0639\u0648\u062a \u0627\u0632 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646";
     },
     get$updatedNewSpaceDescription() {
-      return "Kurssit auttavat sinua yhdist\xe4m\xe4\xe4n keskustelusi ja rakentamaan yksityisi\xe4 tai julkisia yhteis\xf6j\xe4.";
+      return "\u062f\u0648\u0631\u0647\u200c\u0647\u0627 \u0628\u0647 \u0634\u0645\u0627 \u0627\u0645\u06a9\u0627\u0646 \u0645\u06cc\u200c\u062f\u0647\u0646\u062f \u0686\u062a\u200c\u0647\u0627\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0645\u0639\u200c\u0628\u0646\u062f\u06cc \u06a9\u0646\u06cc\u062f \u0648 \u062c\u0648\u0627\u0645\u0639 \u062e\u0635\u0648\u0635\u06cc \u06cc\u0627 \u0639\u0645\u0648\u0645\u06cc \u0628\u0633\u0627\u0632\u06cc\u062f.";
     },
     get$joinWithCode() {
-      return "Liity koodilla";
+      return "\u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0627 \u06a9\u062f";
     },
     get$enterCodeToJoin() {
-      return "Sy\xf6t\xe4 koodi liitty\xe4ksesi";
+      return "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u067e\u06cc\u0648\u0646\u062f\u06cc\u062f";
     },
     get$updateNow() {
-      return "P\xe4ivit\xe4 nyt";
+      return "\u0647\u0645 \u0627\u06a9\u0646\u0648\u0646 \u0628\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u06a9\u0646";
     },
     get$updateLater() {
-      return "My\xf6hemmin";
+      return "\u0628\u0639\u062f\u0627\u064b";
     },
     get$constructUseWaDesc() {
-      return "K\xe4ytetty ilman apua";
+      return "\u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0634\u062f\u0647 \u0628\u062f\u0648\u0646 \u06a9\u0645\u06a9";
     },
     get$constructUseGaDesc() {
-      return "Kielioppiapu";
+      return "\u06a9\u0645\u06a9 \u062f\u0631 \u06af\u0631\u0627\u0645\u0631";
     },
     get$constructUseTaDesc() {
-      return "K\xe4\xe4nn\xf6sapu";
+      return "\u06a9\u0645\u06a9 \u062f\u0631 \u062a\u0631\u062c\u0645\u0647";
     },
     get$constructUseUnkDesc() {
-      return "Tuntematon";
+      return "\u0646\u0627\u0645\u0634\u062e\u0635";
     },
     get$constructUseCorITDesc() {
-      return "Korjaa k\xe4\xe4nn\xf6ksess\xe4";
+      return "\u062a\u0635\u062d\u06cc\u062d \u062f\u0631 \u062a\u0631\u062c\u0645\u0647";
     },
     get$constructUseIgnITDesc() {
-      return "Ohitetaan k\xe4\xe4nn\xf6ksess\xe4";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647 \u062f\u0631 \u062a\u0631\u062c\u0645\u0647";
     },
     get$constructUseIncITDesc() {
-      return "V\xe4\xe4rin k\xe4\xe4nn\xf6ksess\xe4";
+      return "\u0646\u0627\u062f\u0631\u0633\u062a \u062f\u0631 \u062a\u0631\u062c\u0645\u0647";
     },
     get$constructUseIgnIGCDesc() {
-      return "Ohitetaan kielioppikorjauksessa";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647 \u062f\u0631 \u062a\u0635\u062d\u06cc\u062d \u06af\u0631\u0627\u0645\u0631";
     },
     get$constructUseCorIGCDesc() {
-      return "Korjaa kielioppikorjauksessa";
+      return "\u062a\u0635\u062d\u06cc\u062d \u062f\u0631 \u062a\u0635\u062d\u06cc\u062d \u06af\u0631\u0627\u0645\u0631";
     },
     get$constructUseIncIGCDesc() {
-      return "V\xe4\xe4rin kielioppikorjauksessa";
+      return "\u0646\u0627\u062f\u0631\u0633\u062a \u062f\u0631 \u062a\u0635\u062d\u06cc\u062d \u06af\u0631\u0627\u0645\u0631";
     },
     get$constructUseCorPADesc() {
-      return "Korjaa sanan merkityksen harjoituksessa";
+      return "\u062a\u0635\u062d\u06cc\u062d \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0645\u0639\u0646\u0627\u06cc \u06a9\u0644\u0645\u0647";
     },
     get$constructUseIgnPADesc() {
-      return "Ohitetaan sanan merkityksen harjoituksessa";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647 \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0645\u0639\u0646\u0627\u06cc \u06a9\u0644\u0645\u0647";
     },
     get$constructUseIncPADesc() {
-      return "V\xe4\xe4rin sanan merkityksen harjoituksessa";
+      return "\u0646\u0627\u062f\u0631\u0633\u062a \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0645\u0639\u0646\u0627\u06cc \u06a9\u0644\u0645\u0647";
     },
     get$constructUseCorWLDesc() {
-      return "Korjaa sanan kuunteluharjoituksessa";
+      return "\u062a\u0635\u062d\u06cc\u062d \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0634\u0646\u06cc\u062f\u0627\u0631\u06cc \u06a9\u0644\u0645\u0647";
     },
     get$constructUseIncWLDesc() {
-      return "V\xe4\xe4rin sanan kuunteluharjoituksessa";
+      return "\u0646\u0627\u062f\u0631\u0633\u062a \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0634\u0646\u06cc\u062f\u0627\u0631\u06cc \u06a9\u0644\u0645\u0647";
     },
     get$constructUseIngWLDesc() {
-      return "Ohitetaan sanan kuunteluharjoituksessa";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647 \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0634\u0646\u06cc\u062f\u0627\u0631\u06cc \u06a9\u0644\u0645\u0647";
     },
     get$constructUseCorHWLDesc() {
-      return "Korjaa piilotetun sanan harjoituksessa";
+      return "\u062a\u0635\u062d\u06cc\u062d \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u06a9\u0644\u0645\u0647 \u067e\u0646\u0647\u0627\u0646";
     },
     get$constructUseIncHWLDesc() {
-      return "V\xe4\xe4rin piilotetun sanan harjoituksessa";
+      return "\u0646\u0627\u062f\u0631\u0633\u062a \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u06a9\u0644\u0645\u0647 \u067e\u0646\u0647\u0627\u0646";
     },
     get$constructUseIgnHWLDesc() {
-      return "Ohitetaan piilotetun sanan harjoituksessa";
+      return "\u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647 \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u06a9\u0644\u0645\u0647 \u067e\u0646\u0647\u0627\u0646";
     },
     get$constructUseCorLDesc() {
-      return "Korjaa lemmaharjoituksessa";
+      return "\u062a\u0635\u062d\u06cc\u062d \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0644\u0645\u0627";
     },
     get$constructUseIncLDesc() {
-      return "V\xe4\xe4rin lemmaharjoituksessa";
+      return "\u0646\u0627\u062f\u0631\u0633\u062a \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0644\u0645\u0627";
     },
     get$constructUseIgnLDesc() {
-      return "Ohitetaan lemmaharjoituksessa";
+      return "\u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0644\u0650\u0645\u064e\u0647 \u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647 \u0627\u0633\u062a";
     },
     get$constructUseCorMDesc() {
-      return "Oikein kieliopissa";
+      return "\u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u06af\u0631\u0627\u0645\u0631 \u0635\u062d\u06cc\u062d \u0627\u0633\u062a";
     },
     get$constructUseIncMDesc() {
-      return "V\xe4\xe4rin kieliopissa";
+      return "\u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u06af\u0631\u0627\u0645\u0631 \u0646\u0627\u062f\u0631\u0633\u062a \u0627\u0633\u062a";
     },
     get$constructUseIgnMDesc() {
-      return "Ohitetaan kielioppiharjoituksessa";
+      return "\u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u06af\u0631\u0627\u0645\u0631 \u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647 \u0627\u0633\u062a";
     },
     get$constructUseEmojiDesc() {
-      return "Oikein emoji-aktiviteetissa";
+      return "\u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u0627\u06cc\u0645\u0648\u062c\u06cc \u0635\u062d\u06cc\u062d \u0627\u0633\u062a";
     },
     get$constructUseCollected() {
-      return "Ker\xe4tty chatissa";
+      return "\u062f\u0631 \u0686\u062a \u062c\u0645\u0639\u200c\u0622\u0648\u0631\u06cc \u0634\u062f\u0647 \u0627\u0633\u062a";
     },
     get$constructUseNanDesc() {
-      return "Ei sovellu";
+      return "\u0642\u0627\u0628\u0644 \u0627\u062c\u0631\u0627 \u0646\u06cc\u0633\u062a";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " XP";
+      return "" + currentXP + " / " + maxXP + " \u0627\u0645\u062a\u06cc\u0627\u0632 \u062a\u062c\u0631\u0628\u0647";
     },
     get$enableTTSToolName() {
-      return "Ota tekstist\xe4 puhe k\xe4ytt\xf6\xf6n";
+      return "\u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0646 \u062a\u0628\u062f\u06cc\u0644 \u0645\u062a\u0646 \u0628\u0647 \u06af\u0641\u062a\u0627\u0631";
     },
     get$enableTTSToolDescription() {
-      return "Salli sovelluksen tuottaa tekstist\xe4 puhetta osioista tekstiss\xe4 kohdekieless\xe4si.";
+      return "\u0627\u062c\u0627\u0632\u0647 \u062f\u0647\u06cc\u062f \u0628\u0631\u0646\u0627\u0645\u0647 \u062e\u0631\u0648\u062c\u06cc \u062a\u0628\u062f\u06cc\u0644 \u0645\u062a\u0646 \u0628\u0647 \u06af\u0641\u062a\u0627\u0631 \u0628\u0631\u0627\u06cc \u0628\u062e\u0634\u200c\u0647\u0627\u06cc\u06cc \u0627\u0632 \u0645\u062a\u0646 \u062f\u0631 \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0634\u0645\u0627 \u062a\u0648\u0644\u06cc\u062f \u06a9\u0646\u062f.";
     },
     get$yourUsername() {
-      return "K\xe4ytt\xe4j\xe4nimesi";
+      return "\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0634\u0645\u0627";
     },
     get$yourEmail() {
-      return "S\xe4hk\xf6postisi";
+      return "\u0627\u06cc\u0645\u06cc\u0644 \u0634\u0645\u0627";
     },
     get$iWantToLearn() {
-      return "Haluan oppia";
+      return "\u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u0645 \u06cc\u0627\u062f \u0628\u06af\u06cc\u0631\u0645";
     },
     get$pleaseEnterEmail() {
-      return "Anna kelvollinen s\xe4hk\xf6postiosoite.";
+      return "\u0644\u0637\u0641\u0627\u064b \u06cc\u06a9 \u0622\u062f\u0631\u0633 \u0627\u06cc\u0645\u06cc\u0644 \u0645\u0639\u062a\u0628\u0631 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$myBaseLanguage() {
-      return "Peruskieleni";
+      return "\u0632\u0628\u0627\u0646 \u067e\u0627\u06cc\u0647 \u0645\u0646";
     },
     get$formSectionHeader() {
-      return "K\xe4ytetyt muodot keskusteluissa:";
+      return "\u0627\u0634\u06a9\u0627\u0644 \u0645\u0648\u0631\u062f \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u062f\u0631 \u0686\u062a\u200c\u0647\u0627:";
     },
     get$writingExercisesTooltip() {
-      return "Kirjoittaminen";
+      return "\u0646\u0648\u0634\u062a\u0646";
     },
     get$listeningExercisesTooltip() {
-      return "Kuuntelu";
+      return "\u06af\u0648\u0634 \u062f\u0627\u062f\u0646";
     },
     get$readingExercisesTooltip() {
-      return "Lukeminen";
+      return "\u062e\u0648\u0627\u0646\u062f\u0646";
     },
     get$meaningNotFound() {
-      return "Tarkoitusta ei l\xf6ytynyt.";
+      return "\u0645\u0639\u0646\u06cc \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f.";
     },
     get$notTheCodeError() {
-      return "Valitettavasti, se ei ole koodi!";
+      return "\u0645\u062a\u0623\u0633\u0641\u0645\u060c \u0627\u06cc\u0646 \u06a9\u062f \u0646\u06cc\u0633\u062a!";
     },
     get$totalXP() {
-      return "Kokonaisty\xf6kokemus";
+      return "\u06a9\u0644 \u0627\u0645\u062a\u06cc\u0627\u0632 \u062a\u062c\u0631\u0628\u0647";
     },
     get$numLemmas() {
-      return "Lemmojen kokonaism\xe4\xe4r\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u06a9\u0644 \u0644\u0650\u0645\u0651\u0627\u0647\u0627";
     },
     get$numLemmasUsedCorrectly() {
-      return "Lemmojen m\xe4\xe4r\xe4, joita on k\xe4ytetty oikein v\xe4hint\xe4\xe4n kerran";
+      return "\u062a\u0639\u062f\u0627\u062f \u0644\u0650\u0645\u0651\u0627\u0647\u0627\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0634\u062f\u0647 \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u062d\u062f\u0627\u0642\u0644 \u06cc\u06a9 \u0628\u0627\u0631";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Lemmojen m\xe4\xe4r\xe4, joita on k\xe4ytetty oikein 0 kertaa";
+      return "\u062a\u0639\u062f\u0627\u062f \u0644\u0650\u0645\u0651\u0627\u0647\u0627\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0634\u062f\u0647 \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc 0 \u0628\u0627\u0631";
     },
     get$numLemmasSmallXP() {
-      return "Lemmojen m\xe4\xe4r\xe4, joilla on 0 - 30 XP:t\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u0644\u0650\u0645\u0651\u0627\u0647\u0627\u06cc \u0628\u0627 \u0627\u0645\u062a\u06cc\u0627\u0632 0 - 30";
     },
     get$numLemmasMediumXP() {
-      return "Lemmojen m\xe4\xe4r\xe4, joilla on 31 - 200 XP:t\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u0644\u0650\u0645\u0651\u0627\u0647\u0627\u06cc \u0628\u0627 \u0627\u0645\u062a\u06cc\u0627\u0632 31 - 200";
     },
     get$numLemmasLargeXP() {
-      return "Lemmojen m\xe4\xe4r\xe4, joilla on > 200 XP:t\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u0644\u0650\u0645\u0651\u0627\u0647\u0627\u06cc \u0628\u0627 \u0627\u0645\u062a\u06cc\u0627\u0632 > 200";
     },
     get$numGrammarConcepts() {
-      return "Kielioppik\xe4sitteiden m\xe4\xe4r\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc";
     },
     get$listGrammarConcepts() {
-      return "Kielioppik\xe4sitteet";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Kielioppik\xe4sitteet, joita on k\xe4ytetty oikein alkuper\xe4isiss\xe4 viesteiss\xe4 v\xe4hint\xe4\xe4n 80 % ajasta";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u06a9\u0647 \u062d\u062f\u0627\u0642\u0644 80\u066a \u062f\u0631 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0627\u0635\u0644\u06cc \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0634\u062f\u0647\u200c\u0627\u0646\u062f";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Kielioppik\xe4sitteet, joita on k\xe4ytetty oikein alle 80 % ajasta alkuper\xe4isiss\xe4 viesteiss\xe4";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u06a9\u0647 \u06a9\u0645\u062a\u0631 \u0627\u0632 80\u066a \u062f\u0631 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0627\u0635\u0644\u06cc \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0634\u062f\u0647\u200c\u0627\u0646\u062f";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Kielioppik\xe4sitteet, jotka on valittu oikein j\xe4rjestelm\xe4n ehdotuksista v\xe4hint\xe4\xe4n 80 % ajasta";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u06a9\u0647 \u062d\u062f\u0627\u0642\u0644 80\u066a \u0627\u0632 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0647\u0627\u06cc \u0633\u06cc\u0633\u062a\u0645\u200c\u062a\u0648\u0644\u06cc\u062f \u0634\u062f\u0647 \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u0634\u062f\u0647\u200c\u0627\u0646\u062f";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Kielioppik\xe4sitteet, jotka on valittu oikein j\xe4rjestelm\xe4n ehdotuksista alle 80 % ajasta";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u06a9\u0647 \u06a9\u0645\u062a\u0631 \u0627\u0632 80\u066a \u0627\u0632 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0647\u0627\u06cc \u0633\u06cc\u0633\u062a\u0645\u200c\u062a\u0648\u0644\u06cc\u062f \u0634\u062f\u0647 \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u0634\u062f\u0647\u200c\u0627\u0646\u062f";
     },
     get$listGrammarConceptsSmallXP() {
-      return "Kielioppik\xe4sitteet, joilla on 0-50 XP:t\xe4";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u0628\u0627 \u0627\u0645\u062a\u06cc\u0627\u0632 0-50";
     },
     get$listGrammarConceptsMediumXP() {
-      return "Kielioppik\xe4sitteet, joilla on 51-200 XP:t\xe4";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u0628\u0627 \u0627\u0645\u062a\u06cc\u0627\u0632 51-200";
     },
     get$listGrammarConceptsLargeXP() {
-      return "Kielioppik\xe4sitteet, 201-500 XP:t\xe4";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u0628\u0627 \u0627\u0645\u062a\u06cc\u0627\u0632 201-500";
     },
     get$listGrammarConceptsHugeXP() {
-      return "Kielioppik\xe4sitteet, >500 XP:t\xe4";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u0628\u0627 \u0627\u0645\u062a\u06cc\u0627\u0632 >500";
     },
     get$numMessagesSent() {
-      return "L\xe4hetettyjen viestien m\xe4\xe4r\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0627\u0631\u0633\u0627\u0644\u200c\u0634\u062f\u0647";
     },
     get$numWordsTyped() {
-      return "Sanottujen sanojen m\xe4\xe4r\xe4 alkuper\xe4isiss\xe4 viesteiss\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u06a9\u0644\u0645\u0627\u062a \u062a\u0627\u06cc\u067e\u200c\u0634\u062f\u0647 \u062f\u0631 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0627\u0635\u0644\u06cc";
     },
     get$numCorrectChoices() {
-      return "Oikeiden sanojen m\xe4\xe4r\xe4, jotka on valittu j\xe4rjestelm\xe4n ehdotuksista";
+      return "\u062a\u0639\u062f\u0627\u062f \u06a9\u0644\u0645\u0627\u062a \u0635\u062d\u06cc\u062d \u0627\u0646\u062a\u062e\u0627\u0628\u200c\u0634\u062f\u0647 \u0627\u0632 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0647\u0627\u06cc \u0633\u06cc\u0633\u062a\u0645";
     },
     get$numIncorrectChoices() {
-      return "V\xe4\xe4rien sanojen m\xe4\xe4r\xe4, jotka on valittu j\xe4rjestelm\xe4n ehdotuksista";
+      return "\u062a\u0639\u062f\u0627\u062f \u06a9\u0644\u0645\u0627\u062a \u0646\u0627\u062f\u0631\u0633\u062a \u0627\u0646\u062a\u062e\u0627\u0628\u200c\u0634\u062f\u0647 \u0627\u0632 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0647\u0627\u06cc \u0633\u06cc\u0633\u062a\u0645";
     },
     get$commaSeparatedFile() {
-      return "CSV";
+      return "\u0641\u0627\u06cc\u0644 CSV";
     },
     get$excelFile() {
-      return "Excel";
+      return "\u0641\u0627\u06cc\u0644 \u0627\u06a9\u0633\u0644";
     },
     get$fileType() {
-      return "Tiedostotyyppi";
+      return "\u0646\u0648\u0639 \u0641\u0627\u06cc\u0644";
     },
     get$download(_) {
-      return "Lataa";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f";
     },
     get$analyticsNotAvailable() {
-      return "K\xe4ytt\xe4j\xe4analytiikka ei saatavilla";
+      return "\u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u06cc\u0633\u062a";
     },
     get$downloading() {
-      return "Ladataan...";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062f\u0627\u0646\u0644\u0648\u062f...";
     },
     get$failedFetchUserAnalytics() {
-      return "K\xe4ytt\xe4j\xe4analytiikan lataaminen ep\xe4onnistui";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "Mik\xe4 on '" + wordForm + "' " + morphologicalFeature + "?";
+      return "\u0645\u0648\u0631\u062f " + morphologicalFeature + " \u0627\u0632 '" + wordForm + "' \u0686\u06cc\u0633\u062a\u061f";
     },
     get$dataAvailable() {
-      return "Tietojen saatavuus";
+      return "\u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0628\u0648\u062f\u0646 \u062f\u0627\u062f\u0647\u200c\u0647\u0627";
     },
     get$available(_) {
-      return "Saatavilla";
+      return "\u062f\u0631 \u062f\u0633\u062a\u0631\u0633";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot tekee my\xf6s virheit\xe4!";
+      return "\u0631\u0628\u0627\u062a \u067e\u0627\u0646\u06af\u0626\u0627 \u0647\u0645 \u0627\u0634\u062a\u0628\u0627\u0647 \u0645\u06cc\u200c\u06a9\u0646\u062f!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "Mit\xe4 '" + lemma + "' tarkoittaa?";
+      return "\u0645\u0639\u0646\u0627\u06cc '" + lemma + "' \u0686\u06cc\u0633\u062a\u061f";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Vastaa sanojen merkityksiin viestiss\xe4!";
+      return "\u0645\u0639\u0627\u0646\u06cc \u0631\u0627 \u0628\u0627 \u06a9\u0644\u0645\u0627\u062a \u062f\u0631 \u067e\u06cc\u0627\u0645 \u0645\u0637\u0627\u0628\u0642\u062a \u062f\u0647\u06cc\u062f!";
     },
     get$doubleClickToEdit() {
-      return "Muokkaa kaksoisnapsauttamalla.";
+      return "\u0628\u0631\u0627\u06cc \u0648\u06cc\u0631\u0627\u06cc\u0634\u060c \u062f\u0648 \u0628\u0627\u0631 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
     get$cefrLevelLabel() {
-      return "CEFR-taso";
+      return "\u0633\u0637\u062d CEFR";
     },
     get$image(_) {
-      return "Kuva";
+      return "\u062a\u0635\u0648\u06cc\u0631";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Valitse aihe, tila, oppimistavoite ja luo toiminta chatille!";
+      return "\u06cc\u06a9 \u0645\u0648\u0636\u0648\u0639\u060c \u062d\u0627\u0644\u062a\u060c \u0647\u062f\u0641 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u0648 \u0628\u0631\u0627\u06cc \u0686\u062a \u0641\u0639\u0627\u0644\u06cc\u062a \u062a\u0648\u0644\u06cc\u062f \u06a9\u0646\u06cc\u062f!";
     },
     get$constructUsePvmDesc() {
-      return "Tuotettu \xe4\xe4niviestiss\xe4";
+      return "\u062a\u0648\u0644\u06cc\u062f \u0634\u062f\u0647 \u062f\u0631 \u067e\u06cc\u0627\u0645 \u0635\u0648\u062a\u06cc";
     },
     get$leaveSpaceDescription() {
-      return "L\xe4hdett\xe4ess\xe4 kurssilta, poistut kaikista keskusteluista siin\xe4. Muut k\xe4ytt\xe4j\xe4t n\xe4kev\xe4t, ett\xe4 olet poistunut kurssilta.";
+      return "\u0628\u0627 \u062a\u0631\u06a9 \u062f\u0648\u0631\u0647\u060c \u062a\u0645\u0627\u0645 \u0686\u062a\u200c\u0647\u0627\u06cc \u062f\u0631\u0648\u0646 \u0622\u0646 \u0631\u0627 \u062a\u0631\u06a9 \u062e\u0648\u0627\u0647\u06cc\u062f \u06a9\u0631\u062f. \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062f\u06cc\u06af\u0631 \u062e\u0648\u0627\u0647\u0646\u062f \u062f\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u062f\u0648\u0631\u0647 \u0631\u0627 \u062a\u0631\u06a9 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f.";
     },
     get$constructUseCorMmDesc() {
-      return "Oikea viestin merkitys";
+      return "\u0645\u0639\u0646\u0627\u06cc \u067e\u06cc\u0627\u0645 \u0635\u062d\u06cc\u062d";
     },
     get$constructUseIncMmDesc() {
-      return "V\xe4\xe4r\xe4 viestin merkitys";
+      return "\u0645\u0639\u0646\u0627\u06cc \u067e\u06cc\u0627\u0645 \u0646\u0627\u062f\u0631\u0633\u062a";
     },
     get$constructUseIgnMmDesc() {
-      return "Ohitettu viestin merkitys";
+      return "\u0645\u0639\u0646\u0627\u06cc \u067e\u06cc\u0627\u0645 \u0646\u0627\u062f\u06cc\u062f\u0647 \u06af\u0631\u0641\u062a\u0647 \u0634\u062f\u0647";
     },
     get$meaning() {
-      return "Merkitys";
+      return "\u0645\u0639\u0646\u06cc";
     },
     chatWith$1(displayname) {
-      return "Ryhm\xe4 " + displayname + " kanssa";
+      return "\u06af\u0631\u0648\u0647 \u0628\u0627 " + displayname;
     },
     get$clickOnEmailLink() {
-      return "Klikkaa s\xe4hk\xf6postin linkki\xe4 ja jatka.\n\nTarkista roskapostikansio, jos s\xe4hk\xf6posti ei ole saapunut.";
+      return "\u0644\u0637\u0641\u0627\u064b \u0631\u0648\u06cc \u0644\u06cc\u0646\u06a9 \u062f\u0631 \u0627\u06cc\u0645\u06cc\u0644 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f \u0648 \u0633\u067e\u0633 \u0627\u062f\u0627\u0645\u0647 \u062f\u0647\u06cc\u062f.\n\n\u0627\u06af\u0631 \u0627\u06cc\u0645\u06cc\u0644 \u062f\u0631\u06cc\u0627\u0641\u062a \u0646\u0634\u062f\u0647 \u0627\u0633\u062a\u060c \u067e\u0648\u0634\u0647 \u0647\u0631\u0632\u0646\u0627\u0645\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u0631\u0631\u0633\u06cc \u06a9\u0646\u06cc\u062f.";
     },
     get$dontForgetPassword() {
-      return "\xc4l\xe4 unohda salasanaasi!";
+      return "\u0641\u0631\u0627\u0645\u0648\u0634 \u0646\u06a9\u0646\u06cc\u062f \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627!";
     },
     get$enableAutocorrectToolName() {
-      return "Ota laiteautokorjaus k\xe4ytt\xf6\xf6n";
+      return "\u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0646 \u062a\u0635\u062d\u06cc\u062d \u062e\u0648\u062f\u06a9\u0627\u0631 \u062f\u0633\u062a\u06af\u0627\u0647";
     },
     get$enableAutocorrectDescription() {
-      return "Jos laitteesi tukee oppimaasi kielt\xe4, voit ottaa automaattikorjauksen k\xe4ytt\xf6\xf6n laitteessasi korjataksesi yleisi\xe4 virheit\xe4 kirjoittaessasi.";
+      return "\u0627\u06af\u0631 \u062f\u0633\u062a\u06af\u0627\u0647 \u0634\u0645\u0627 \u0627\u0632 \u0632\u0628\u0627\u0646\u06cc \u06a9\u0647 \u062f\u0631 \u062d\u0627\u0644 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0622\u0646 \u0647\u0633\u062a\u06cc\u062f \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0645\u06cc\u200c\u06a9\u0646\u062f\u060c \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062a\u0635\u062d\u06cc\u062d \u062e\u0648\u062f\u06a9\u0627\u0631 \u062f\u0633\u062a\u06af\u0627\u0647 \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u062e\u0637\u0627\u0647\u0627\u06cc \u0631\u0627\u06cc\u062c \u0647\u0646\u06af\u0627\u0645 \u062a\u0627\u06cc\u067e \u0628\u0631\u0637\u0631\u0641 \u0634\u0648\u0646\u062f.";
     },
     get$ttsDisbledTitle() {
-      return "Tekstist\xe4 puheeksi -toiminto on pois k\xe4yt\xf6st\xe4";
+      return "\u062a\u0628\u062f\u06cc\u0644 \u0645\u062a\u0646 \u0628\u0647 \u06af\u0641\u062a\u0627\u0631 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0634\u062f";
     },
     get$ttsDisabledBody() {
-      return "Voit ottaa tekstist\xe4 puheeksi -toiminnon k\xe4ytt\xf6\xf6n oppimisasetuksissasi";
+      return "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062a\u0628\u062f\u06cc\u0644 \u0645\u062a\u0646 \u0628\u0647 \u06af\u0641\u062a\u0627\u0631 \u0631\u0627 \u062f\u0631 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u062e\u0648\u062f \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f";
     },
     get$noSpaceDescriptionYet() {
-      return "Kurssin kuvausta ei ole viel\xe4 luotu.";
+      return "\u062a\u0627\u06a9\u0646\u0648\u0646 \u062a\u0648\u0636\u06cc\u062d \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u0627\u06cc\u062c\u0627\u062f \u0646\u0634\u062f\u0647 \u0627\u0633\u062a.";
     },
     get$tooLargeToSend() {
-      return "T\xe4m\xe4 viesti on liian suuri l\xe4hetett\xe4v\xe4ksi";
+      return "\u0627\u06cc\u0646 \u067e\u06cc\u0627\u0645 \u0628\u0633\u06cc\u0627\u0631 \u0628\u0632\u0631\u06af \u0627\u0633\u062a \u0648 \u0646\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0627\u0631\u0633\u0627\u0644 \u0634\u0648\u062f";
     },
     get$exitWithoutSaving() {
-      return "Oletko varma, ett\xe4 haluat poistua tallentamatta?";
+      return "\u0622\u06cc\u0627 \u0645\u0637\u0645\u0626\u0646 \u0647\u0633\u062a\u06cc\u062f \u06a9\u0647 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0628\u062f\u0648\u0646 \u0630\u062e\u06cc\u0631\u0647 \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f";
     },
     get$enableAutocorrectWarning() {
-      return "Varoitus! Vaatii kohdekielen n\xe4pp\xe4imist\xf6n lis\xe4\xe4misen";
+      return "\u0647\u0634\u062f\u0627\u0631! \u0646\u06cc\u0627\u0632 \u0628\u0647 \u0627\u0641\u0632\u0648\u062f\u0646 \u0635\u0641\u062d\u0647 \u06a9\u0644\u06cc\u062f \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u062f\u0627\u0631\u06cc\u062f";
     },
     get$leaveRoomDescription() {
-      return "Olet poistumassa t\xe4st\xe4 keskustelusta. Muut k\xe4ytt\xe4j\xe4t n\xe4kev\xe4t, ett\xe4 olet poistunut keskustelusta.";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062e\u0631\u0648\u062c \u0627\u0632 \u0627\u06cc\u0646 \u0686\u062a \u0647\u0633\u062a\u06cc\u062f. \u0633\u0627\u06cc\u0631 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0648\u0627\u0647\u0646\u062f \u062f\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u0686\u062a \u0631\u0627 \u062a\u0631\u06a9 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f.";
     },
     get$confirmUserId() {
-      return "Vahvista Pangea Chat -k\xe4ytt\xe4j\xe4nimesi poistaaksesi tilisi.";
+      return "\u0644\u0637\u0641\u0627\u064b \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0686\u062a \u067e\u0646\u06af\u0626\u0627 \u062e\u0648\u062f \u0631\u0627 \u062a\u0623\u06cc\u06cc\u062f \u06a9\u0646\u06cc\u062f \u062a\u0627 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u0631\u0627 \u062d\u0630\u0641 \u06a9\u0646\u06cc\u062f.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "Alkaen " + startDate;
+      return "\u0627\u0632 " + startDate + " \u0634\u0631\u0648\u0639 \u0645\u06cc\u200c\u0634\u0648\u062f";
     },
     get$cancelInSubscriptionSettings() {
-      return "  \u2022 Peruuta milloin tahansa tilauksen asetuksissa";
+      return "\u2022 \u062f\u0631 \u0647\u0631 \u0632\u0645\u0627\u0646 \u062f\u0631 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0627\u0634\u062a\u0631\u0627\u06a9 \u0644\u063a\u0648 \u06a9\u0646\u06cc\u062f";
     },
     get$autocorrectNotAvailable() {
-      return "Valitettavasti alustasi ei t\xe4ll\xe4 hetkell\xe4 tue t\xe4t\xe4 ominaisuutta. Pysy kuulolla jatkokehityksest\xe4!";
+      return "\u0645\u062a\u0623\u0633\u0641\u0627\u0646\u0647 \u067e\u0644\u062a\u0641\u0631\u0645 \u0634\u0645\u0627 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0648\u06cc\u0698\u06af\u06cc \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0646\u0645\u06cc\u200c\u0634\u0648\u062f. \u0645\u0646\u062a\u0638\u0631 \u062a\u0648\u0633\u0639\u0647\u200c\u0647\u0627\u06cc \u0628\u06cc\u0634\u062a\u0631 \u0628\u0627\u0634\u06cc\u062f!";
     },
     get$pleaseUpdateApp() {
-      return "P\xe4ivit\xe4 sovellus jatkaaksesi.";
+      return "\u0644\u0637\u0641\u0627\u064b \u0628\u0631\u0646\u0627\u0645\u0647 \u0631\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0627\u062f\u0627\u0645\u0647 \u062f\u0647\u06cc\u062f.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Vastaa emojien ja niiden parhaiten kuvaavien sanojen kanssa. \xc4l\xe4 huoli! Ei pisteit\xe4, vaikka eri mielt\xe4 olisitkin. \ud83d\ude05";
+      return "\u0627\u06cc\u0645\u0648\u062c\u06cc\u200c\u0647\u0627 \u0631\u0627 \u0628\u0627 \u06a9\u0644\u0645\u0627\u062a\u06cc \u06a9\u0647 \u0628\u0647\u062a\u0631\u06cc\u0646 \u0646\u0634\u0627\u0646\u200c\u062f\u0647\u0646\u062f\u0647 \u0622\u0646\u200c\u0647\u0627 \u0647\u0633\u062a\u0646\u062f\u060c \u0645\u0637\u0627\u0628\u0642\u062a \u062f\u0647\u06cc\u062f. \u0646\u06af\u0631\u0627\u0646 \u0646\u0628\u0627\u0634\u06cc\u062f! \u0628\u0631\u0627\u06cc \u0645\u062e\u0627\u0644\u0641\u062a \u0647\u06cc\u0686 \u0627\u0645\u062a\u06cc\u0627\u0632\u06cc \u06a9\u0645 \u0646\u0645\u06cc\u200c\u0634\u0648\u062f. \ud83d\ude05";
     },
     get$analyticsVocabListBody() {
-      return "T\xe4m\xe4 on koko sanastosi! Kun ansaitset XP:t\xe4 jokaisesta sanasta, ne kasvavat siemenest\xe4 t\xe4yteen kukkaan. Klikkaa mit\xe4 tahansa sanaa n\xe4hd\xe4ksesi lis\xe4\xe4 tietoja.";
+      return "\u0627\u06cc\u0646 \u062a\u0645\u0627\u0645 \u0648\u0627\u0698\u06af\u0627\u0646 \u0634\u0645\u0627 \u0627\u0633\u062a! \u0647\u0631 \u0686\u0647 \u0628\u0631\u0627\u06cc \u0647\u0631 \u06a9\u0644\u0645\u0647 XP \u06a9\u0633\u0628 \u06a9\u0646\u06cc\u062f\u060c \u0627\u0632 \u062c\u0648\u0627\u0646\u0647 \u0632\u062f\u0646 \u0628\u0647 \u0634\u06a9\u0648\u0641\u0647 \u06a9\u0627\u0645\u0644 \u062a\u0628\u062f\u06cc\u0644 \u0645\u06cc\u200c\u0634\u0648\u062f. \u0631\u0648\u06cc \u0647\u0631 \u06a9\u0644\u0645\u0647 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u062c\u0632\u0626\u06cc\u0627\u062a \u0628\u06cc\u0634\u062a\u0631\u06cc \u0628\u0628\u06cc\u0646\u06cc\u062f.";
     },
     get$morphAnalyticsListBody() {
-      return "N\xe4m\xe4 ovat kaikki oppimasi kielen kielioppik\xe4sitteet! Saat ne avautumaan, kun kohtaat ne keskustelussa. Klikkaa lis\xe4tietoja varten.";
+      return "\u0627\u06cc\u0646 \u062a\u0645\u0627\u0645 \u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u062f\u0631 \u0632\u0628\u0627\u0646\u06cc \u0627\u0633\u062a \u06a9\u0647 \u062f\u0631 \u062d\u0627\u0644 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0622\u0646 \u0647\u0633\u062a\u06cc\u062f! \u0634\u0645\u0627 \u0622\u0646\u200c\u0647\u0627 \u0631\u0627 \u0647\u0646\u06af\u0627\u0645 \u06af\u0641\u062a\u06af\u0648 \u06a9\u0634\u0641 \u062e\u0648\u0627\u0647\u06cc\u062f \u06a9\u0631\u062f. \u0628\u0631\u0627\u06cc \u062c\u0632\u0626\u06cc\u0627\u062a \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
     get$knockSpaceSuccess() {
-      return "Olet pyyt\xe4nyt liittymist\xe4 t\xe4h\xe4n kurssiin! J\xe4rjestelm\xe4nvalvoja vastaa pyynt\xf6\xf6n, kun se on vastaanotettu \ud83d\ude0a";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0628\u0631\u0627\u06cc \u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0627\u0633\u062a! \u0645\u062f\u06cc\u0631 \u062f\u0631 \u0635\u0648\u0631\u062a \u062f\u0631\u06cc\u0627\u0641\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a\u060c \u067e\u0627\u0633\u062e \u062e\u0648\u0627\u0647\u062f \u062f\u0627\u062f \ud83d\ude04";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Kuuntele koko viesti. Sitten yhdist\xe4 \xe4\xe4nitiedostot sanoihin.";
+      return "\u0628\u0647 \u067e\u06cc\u0627\u0645 \u06a9\u0627\u0645\u0644 \u06af\u0648\u0634 \u062f\u0647\u06cc\u062f. \u0633\u067e\u0633 \u0635\u062f\u0627\u0647\u0627 \u0631\u0627 \u0628\u0627 \u06a9\u0644\u0645\u0627\u062a \u0645\u0637\u0627\u0628\u0642\u062a \u062f\u0647\u06cc\u062f.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Klikkaa palapelin paloja kielioppikysymyksiin!";
+      return "\u0628\u0631\u0627\u06cc \u0633\u0648\u0627\u0644\u0627\u062a \u06af\u0631\u0627\u0645\u0631\u06cc\u060c \u0642\u0637\u0639\u0627\u062a \u067e\u0627\u0632\u0644 \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f!";
     },
     get$home() {
-      return "Koti";
+      return "\u062e\u0627\u0646\u0647";
     },
     get$join(_) {
-      return "Liity";
+      return "\u067e\u06cc\u0648\u0633\u062a\u0646";
     },
     get$readingAssistanceOverviewBody() {
-      return "Klikkaa alla olevia painikkeita minipeleihin, joissa yhdistet\xe4\xe4n emojit, \xe4\xe4nitiedostot, sanan merkitys ja kielioppik\xe4sitteet. Tai klikkaa mit\xe4 tahansa sanaa saadaksesi lis\xe4tietoja.";
+      return "\u0628\u0631\u0627\u06cc \u0628\u0627\u0632\u06cc\u200c\u0647\u0627\u06cc \u06a9\u0648\u0686\u06a9 \u062f\u0631 \u0645\u0637\u0627\u0628\u0642\u062a \u0627\u06cc\u0645\u0648\u062c\u06cc\u200c\u0647\u0627\u060c \u0635\u062f\u0627\u0647\u0627\u060c \u0645\u0639\u0627\u0646\u06cc \u06a9\u0644\u0645\u0627\u062a \u0648 \u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc\u060c \u0631\u0648\u06cc \u062f\u06a9\u0645\u0647\u200c\u0647\u0627\u06cc \u0632\u06cc\u0631 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f. \u06cc\u0627 \u0631\u0648\u06cc \u0647\u0631 \u06a9\u0644\u0645\u0647 \u0628\u0631\u0627\u06cc \u062c\u0632\u0626\u06cc\u0627\u062a \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Nollaa ohjeiden ty\xf6kaluvihjeet";
+      return "\u0628\u0627\u0632\u0646\u0634\u0627\u0646\u06cc \u0631\u0627\u0647\u0646\u0645\u0627\u06cc \u0627\u0628\u0632\u0627\u0631";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Klikkaa n\xe4ytt\xe4\xe4ksesi ohjeiden ty\xf6kaluvihjeet kuten uudelle k\xe4ytt\xe4j\xe4lle.";
+      return "\u0628\u0631\u0627\u06cc \u0646\u0645\u0627\u06cc\u0634 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc \u0627\u0628\u0632\u0627\u0631 \u0645\u0627\u0646\u0646\u062f \u06a9\u0627\u0631\u0628\u0631 \u062c\u062f\u06cc\u062f\u060c \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f.";
     },
     get$translationProblem() {
-      return "K\xe4\xe4nn\xf6songelma";
+      return "\u0645\u0634\u06a9\u0644 \u062a\u0631\u062c\u0645\u0647";
     },
     get$askToJoin() {
-      return "Kysy liittymist\xe4";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u06cc\u0648\u0633\u062a\u0646";
     },
     get$emptyChatWarningTitle() {
-      return "Chat on tyhj\xe4";
+      return "\u0686\u062a \u062e\u0627\u0644\u06cc \u0627\u0633\u062a";
     },
     get$emptyChatWarningDesc() {
-      return "Et ole kutsunut ket\xe4\xe4n chattiisi. Mene Chat-asetuksiin kutsuaksesi yhteystietosi tai Botin. Voit tehd\xe4 t\xe4m\xe4n my\xf6s my\xf6hemmin.";
+      return "\u0634\u0645\u0627 \u06a9\u0633\u06cc \u0631\u0627 \u0628\u0647 \u0686\u062a \u062e\u0648\u062f \u062f\u0639\u0648\u062a \u0646\u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f. \u0628\u0631\u0627\u06cc \u062f\u0639\u0648\u062a \u0627\u0632 \u0645\u062e\u0627\u0637\u0628\u06cc\u0646 \u06cc\u0627 \u0631\u0628\u0627\u062a \u0628\u0647 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0686\u062a \u0628\u0631\u0648\u06cc\u062f. \u0647\u0645\u0686\u0646\u06cc\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0627\u06cc\u0646 \u06a9\u0627\u0631 \u0631\u0627 \u0628\u0639\u062f\u0627\u064b \u0627\u0646\u062c\u0627\u0645 \u062f\u0647\u06cc\u062f.";
     },
     get$areYouLikeMe() {
-      return "Oletko kuin min\xe4?";
+      return "\u0622\u06cc\u0627 \u0634\u0645\u0627 \u0645\u0627\u0646\u0646\u062f \u0645\u0646 \u0647\u0633\u062a\u06cc\u062f\u061f";
     },
     get$tryAgainLater() {
-      return "Liian monta yrityst\xe4 tehty. Yrit\xe4 uudelleen 5 minuutin kuluttua.";
+      return "\u062a\u0639\u062f\u0627\u062f \u062a\u0644\u0627\u0634\u200c\u0647\u0627 \u0632\u06cc\u0627\u062f \u0627\u0633\u062a. \u0644\u0637\u0641\u0627\u064b \u0628\u0639\u062f\u0627\u064b \u062f\u0631 \u06f5 \u062f\u0642\u06cc\u0642\u0647 \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     get$enterSpaceCode() {
-      return "Sy\xf6t\xe4 kurssikoodi";
+      return "\u06a9\u062f \u062f\u0648\u0631\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$shareSpaceLink() {
-      return "Jaa linkki";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc \u0644\u06cc\u0646\u06a9";
     },
     get$byUsingPangeaChat() {
-      return "K\xe4ytt\xe4m\xe4ll\xe4 Pangea Chatia, hyv\xe4ksyn ";
+      return "\u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0686\u062a \u067e\u0646\u06af\u0626\u0627\u060c \u0645\u0646 \u0628\u0627 \u0634\u0631\u0627\u06cc\u0637 \u0632\u06cc\u0631 \u0645\u0648\u0627\u0641\u0642\u062a \u0645\u06cc\u200c\u06a9\u0646\u0645 ";
     },
     get$details(_) {
-      return "Yksityiskohdat";
+      return "\u062c\u0632\u0626\u06cc\u0627\u062a";
     },
     get$languageLevelPreA1Desc() {
-      return "En ole koskaan oppinut tai k\xe4ytt\xe4nyt kielt\xe4.";
+      return "\u0647\u0631\u06af\u0632 \u0632\u0628\u0627\u0646 \u0631\u0627 \u06cc\u0627\u062f \u0646\u06af\u0631\u0641\u062a\u0647\u200c\u0627\u0645 \u06cc\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0646\u06a9\u0631\u062f\u0647\u200c\u0627\u0645.";
     },
     get$languageLevelA1Desc() {
-      return "Voin ymm\xe4rt\xe4\xe4 ja k\xe4ytt\xe4\xe4 joitakin tuttuja arkisia ilmauksia ja hyvin perustason lauseita.";
+      return "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0645 \u0628\u0631\u062e\u06cc \u0639\u0628\u0627\u0631\u0627\u062a \u0631\u0648\u0632\u0645\u0631\u0647 \u0622\u0634\u0646\u0627 \u0648 \u0628\u0633\u06cc\u0627\u0631 \u067e\u0627\u06cc\u0647 \u0631\u0627 \u062f\u0631\u06a9 \u0648 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u0645.";
     },
     get$languageLevelA2Desc() {
-      return "Voin ymm\xe4rt\xe4\xe4 lauseita ja usein k\xe4ytettyj\xe4 ilmauksia, jotka liittyv\xe4t v\xe4litt\xf6m\xe4sti relevantteihin alueisiin.";
+      return "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0645 \u062c\u0645\u0644\u0627\u062a \u0648 \u0639\u0628\u0627\u0631\u0627\u062a \u067e\u0631\u06a9\u0627\u0631\u0628\u0631\u062f \u0645\u0631\u062a\u0628\u0637 \u0628\u0627 \u062d\u0648\u0632\u0647\u200c\u0647\u0627\u06cc \u0641\u0648\u0631\u06cc \u0631\u0627 \u062f\u0631\u06a9 \u06a9\u0646\u0645.";
     },
     get$languageLevelB1Desc() {
-      return "Voin k\xe4sitell\xe4 suurimman osan tutuista tilanteista ja tuottaa yksinkertaista yhdistetty\xe4 teksti\xe4 tutuista aiheista.";
+      return "\u0645\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0645 \u0628\u0627 \u0628\u06cc\u0634\u062a\u0631 \u0648\u0636\u0639\u06cc\u062a\u200c\u0647\u0627\u06cc \u0622\u0634\u0646\u0627 \u06a9\u0646\u0627\u0631 \u0628\u06cc\u0627\u06cc\u0645 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0645 \u0645\u062a\u0646 \u0633\u0627\u062f\u0647 \u0645\u0631\u062a\u0628\u0637 \u062f\u0631 \u0645\u0648\u0636\u0648\u0639\u0627\u062a \u0622\u0634\u0646\u0627 \u062a\u0648\u0644\u06cc\u062f \u06a9\u0646\u0645.";
     },
     get$languageLevelB2Desc() {
-      return "Ymm\xe4rr\xe4n p\xe4\xe4ajatukset monimutkaisista teksteist\xe4 ja pystyn kommunikoimaan sujuvasti ja spontaanisti.";
+      return "\u0645\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0645 \u0627\u06cc\u062f\u0647\u200c\u0647\u0627\u06cc \u0627\u0635\u0644\u06cc \u0645\u062a\u0646\u200c\u0647\u0627\u06cc \u067e\u06cc\u0686\u06cc\u062f\u0647 \u0631\u0627 \u062f\u0631\u06a9 \u06a9\u0646\u0645 \u0648 \u0628\u0627 \u062f\u0631\u062c\u0647\u200c\u0627\u06cc \u0627\u0632 \u0631\u0648\u0627\u0646\u06cc \u0648 \u062e\u0648\u062f\u0627\u0646\u06af\u06cc\u062e\u062a\u06af\u06cc \u062a\u0639\u0627\u0645\u0644 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u0645.";
     },
     get$languageLevelC1Desc() {
-      return "Voin ilmaista ideoita sujuvasti ja spontaanisti ilman suuria vaikeuksia ja ymm\xe4rr\xe4n laajan valikoiman vaativia tekstej\xe4.";
+      return "\u0645\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0645 \u0627\u06cc\u062f\u0647\u200c\u0647\u0627 \u0631\u0627 \u0631\u0648\u0627\u0646 \u0648 \u0628\u062f\u0648\u0646 \u062a\u0644\u0627\u0634 \u0632\u06cc\u0627\u062f \u0628\u06cc\u0627\u0646 \u06a9\u0646\u0645 \u0648 \u0637\u06cc\u0641 \u0648\u0633\u06cc\u0639\u06cc \u0627\u0632 \u0645\u062a\u0646\u200c\u0647\u0627\u06cc \u0686\u0627\u0644\u0634\u200c\u0628\u0631\u0627\u0646\u06af\u06cc\u0632 \u0631\u0627 \u062f\u0631\u06a9 \u06a9\u0646\u0645.";
     },
     get$languageLevelC2Desc() {
-      return "Ymm\xe4rr\xe4n k\xe4yt\xe4nn\xf6ss\xe4 kaiken kuullun tai luetun ja pystyn ilmaisemaan itse\xe4ni sujuvasti ja tarkasti.";
+      return "\u0645\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0645 \u062a\u0642\u0631\u06cc\u0628\u0627\u064b \u0647\u0631 \u0686\u06cc\u0632\u06cc \u06a9\u0647 \u0634\u0646\u06cc\u062f\u0647 \u06cc\u0627 \u062e\u0648\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0631\u0627 \u062f\u0631\u06a9 \u06a9\u0646\u0645 \u0648 \u062e\u0648\u062f \u0631\u0627 \u0631\u0648\u0627\u0646 \u0648 \u062f\u0642\u06cc\u0642 \u0628\u06cc\u0627\u0646 \u06a9\u0646\u0645.";
     },
     get$newVocab() {
-      return "Uusi sanasto";
+      return "\u0648\u0627\u0698\u06af\u0627\u0646 \u062c\u062f\u06cc\u062f";
     },
     get$newGrammar() {
-      return "Uudet kielioppik\xe4sitteet";
+      return "\u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u062c\u062f\u06cc\u062f";
     },
     get$ban() {
-      return "Kielto";
+      return "\u0645\u0633\u062f\u0648\u062f \u06a9\u0631\u062f\u0646";
     },
     get$kick() {
-      return "Potki";
+      return "\u0627\u062e\u0631\u0627\u062c";
     },
     get$lemma() {
-      return "Lemma";
+      return "\u0644\u0645\u0627";
     },
     get$grammarFeature() {
-      return "Kielioppiominaisuus";
+      return "\u0648\u06cc\u0698\u06af\u06cc \u06af\u0631\u0627\u0645\u0631\u06cc";
     },
     get$grammarTag() {
-      return "Kielioppimerkint\xe4";
+      return "\u0628\u0631\u0686\u0633\u0628 \u06af\u0631\u0627\u0645\u0631\u06cc";
     },
     get$forms() {
-      return "Muodot";
+      return "\u0627\u0634\u06a9\u0627\u0644";
     },
     get$exampleMessages() {
-      return "Esimerkkiviestit";
+      return "\u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0646\u0645\u0648\u0646\u0647";
     },
     get$timesUsedIndependently() {
-      return "Kertojen m\xe4\xe4r\xe4 itsen\xe4isesti k\xe4ytettyn\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u062f\u0641\u0639\u0627\u062a \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0645\u0633\u062a\u0642\u0644";
     },
     get$timesUsedWithAssistance() {
-      return "Kertojen m\xe4\xe4r\xe4 avustuksella k\xe4ytettyn\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u062f\u0641\u0639\u0627\u062a \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0628\u0627 \u06a9\u0645\u06a9";
     },
     shareInviteCode$1(code) {
-      return "Jaa kutsukoodi: " + code;
+      return "\u06a9\u062f \u062f\u0639\u0648\u062a \u0631\u0627 \u0628\u0647 \u0627\u0634\u062a\u0631\u0627\u06a9 \u0628\u06af\u0630\u0627\u0631\u06cc\u062f: " + code;
     },
     get$skipForNow() {
-      return "Ohita nyt";
+      return "\u0641\u0639\u0644\u0627\u064b \u0631\u062f \u0634\u0648";
     },
     get$permissions(_) {
-      return "Oikeudet";
+      return "\u0645\u062c\u0648\u0632\u0647\u0627";
     },
     get$spaceChildPermission() {
-      return "Kuka voi lis\xe4t\xe4 uusia keskusteluja t\xe4h\xe4n kurssiin";
+      return "\u0686\u0647 \u06a9\u0633\u06cc \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0686\u062a\u200c\u0647\u0627\u06cc \u062c\u062f\u06cc\u062f \u0628\u0647 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0627\u0636\u0627\u0641\u0647 \u06a9\u0646\u062f";
     },
     get$addEnvironmentOverride() {
-      return "Lis\xe4\xe4 ymp\xe4rist\xf6ylitys";
+      return "\u0627\u0641\u0632\u0648\u062f\u0646 \u062c\u0627\u06cc\u06af\u0632\u06cc\u0646 \u0645\u062d\u06cc\u0637";
     },
     get$defaultOption() {
-      return "Oletus";
+      return "\u067e\u06cc\u0634\u200c\u0641\u0631\u0636";
     },
     get$deleteChatDesc() {
-      return "Oletko varma, ett\xe4 haluat poistaa t\xe4m\xe4n keskustelun? Se poistetaan kaikilta osallistujilta ja kaikki keskustelun viestit eiv\xe4t ole en\xe4\xe4 k\xe4ytett\xe4viss\xe4 harjoitteluun tai oppimisanalytiikkaan.";
+      return "\u0622\u06cc\u0627 \u0645\u0637\u0645\u0626\u0646 \u0647\u0633\u062a\u06cc\u062f \u06a9\u0647 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u06cc\u0646 \u0686\u062a \u0631\u0627 \u062d\u0630\u0641 \u06a9\u0646\u06cc\u062f\u061f \u0627\u06cc\u0646 \u06a9\u0627\u0631 \u0628\u0631\u0627\u06cc \u0647\u0645\u0647 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u0627\u0646\u062c\u0627\u0645 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u062a\u0645\u0627\u0645 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062f\u0627\u062e\u0644 \u0686\u062a \u062f\u06cc\u06af\u0631 \u0628\u0631\u0627\u06cc \u062a\u0645\u0631\u06cc\u0646 \u06cc\u0627 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u062e\u0648\u0627\u0647\u0646\u062f \u0628\u0648\u062f.";
     },
     get$deleteSpaceDesc() {
-      return "Kurssi ja kaikki valitut keskustelut poistetaan kaikilta osallistujilta ja kaikki keskustelun viestit eiv\xe4t ole en\xe4\xe4 k\xe4ytett\xe4viss\xe4 harjoitteluun tai oppimisanalytiikkaan. T\xe4t\xe4 toimintoa ei voi peruuttaa.";
+      return "\u062f\u0648\u0631\u0647 \u0648 \u0647\u0631 \u0686\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u0634\u062f\u0647 \u0628\u0631\u0627\u06cc \u0647\u0645\u0647 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u062d\u0630\u0641 \u062e\u0648\u0627\u0647\u062f \u0634\u062f \u0648 \u062a\u0645\u0627\u0645 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u062f\u0627\u062e\u0644 \u0686\u062a \u062f\u06cc\u06af\u0631 \u0628\u0631\u0627\u06cc \u062a\u0645\u0631\u06cc\u0646 \u06cc\u0627 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u062e\u0648\u0627\u0647\u0646\u062f \u0628\u0648\u062f. \u0627\u06cc\u0646 \u0639\u0645\u0644\u06cc\u0627\u062a \u0642\u0627\u0628\u0644 \u0628\u0627\u0632\u06af\u0634\u062a \u0646\u06cc\u0633\u062a.";
     },
     get$configureSpace() {
-      return "M\xe4\xe4rit\xe4 kurssi";
+      return "\u067e\u06cc\u06a9\u0631\u0628\u0646\u062f\u06cc \u062f\u0648\u0631\u0647";
     },
     get$pinMessages() {
-      return "Kiinnit\xe4 viestit";
+      return "\u0633\u0646\u062c\u0627\u0642 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627";
     },
     get$setJoinRules() {
-      return "Aseta liittymiss\xe4\xe4nn\xf6t";
+      return "\u062a\u0646\u0638\u06cc\u0645 \u0642\u0648\u0627\u0646\u06cc\u0646 \u067e\u06cc\u0648\u0633\u062a\u0646";
     },
     get$changeGeneralSettings() {
-      return "Vaihda yleiset asetukset";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u06a9\u0644\u06cc";
     },
     get$inviteOtherUsersToRoom() {
-      return "Kutsu muita k\xe4ytt\xe4ji\xe4";
+      return "\u062f\u0639\u0648\u062a \u0627\u0632 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062f\u06cc\u06af\u0631";
     },
     get$changeTheNameOfTheSpace() {
-      return "Vaihda kurssin nimi";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u0646\u0627\u0645 \u062f\u0648\u0631\u0647";
     },
     get$changeTheDescription() {
-      return "Vaihda kuvaus";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u062a\u0648\u0636\u06cc\u062d\u0627\u062a";
     },
     get$changeThePermissions() {
-      return "Vaihda oikeudet";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u0645\u062c\u0648\u0632\u0647\u0627";
     },
     get$introductions() {
-      return "Esittelyt";
+      return "\u0645\u0639\u0631\u0641\u06cc\u200c\u0647\u0627";
     },
     get$announcements() {
-      return "Ilmoitukset";
+      return "\u0627\u0639\u0644\u0627\u0645\u06cc\u0647\u200c\u0647\u0627";
     },
     get$activities() {
-      return "Toiminnot";
+      return "\u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627";
     },
     get$access() {
-      return "P\xe4\xe4sy";
+      return "\u062f\u0633\u062a\u0631\u0633\u06cc";
     },
     get$howSpaceCanBeFound() {
-      return "Kuinka t\xe4m\xe4 kurssi l\xf6ytyy";
+      return "\u0686\u06af\u0648\u0646\u0647 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0642\u0627\u0628\u0644 \u067e\u06cc\u062f\u0627 \u06a9\u0631\u062f\u0646 \u0627\u0633\u062a";
     },
     get$$private() {
-      return "Yksityinen";
+      return "\u062e\u0635\u0648\u0635\u06cc";
     },
     get$cannotBeFoundInSearch() {
-      return "Ei l\xf6ydy haussa";
+      return "\u062f\u0631 \u062c\u0633\u062a\u062c\u0648 \u0642\u0627\u0628\u0644 \u067e\u06cc\u062f\u0627 \u06a9\u0631\u062f\u0646 \u0646\u06cc\u0633\u062a";
     },
     get$$public(_) {
-      return "Julkinen";
+      return "\u0639\u0645\u0648\u0645\u06cc";
     },
     get$visibleToCommunity() {
-      return 'N\xe4kyviss\xe4 laajemman Pangea Chat -yhteis\xf6n kautta "L\xf6yd\xe4 kurssi"';
+      return '\u0642\u0627\u0628\u0644 \u0645\u0634\u0627\u0647\u062f\u0647 \u0628\u0631\u0627\u06cc \u062c\u0627\u0645\u0639\u0647 \u06af\u0633\u062a\u0631\u062f\u0647\u200c\u062a\u0631 \u0686\u062a \u067e\u0646\u06af\u0626\u0627 \u0627\u0632 \u0637\u0631\u06cc\u0642 "\u067e\u06cc\u062f\u0627 \u06a9\u0631\u062f\u0646 \u062f\u0648\u0631\u0647"';
     },
     get$howSpaceCanBeJoined() {
-      return "Kuinka t\xe4h\xe4n kurssiin voi liitty\xe4";
+      return "\u0686\u06af\u0648\u0646\u0647 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646 \u0628\u0647 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u067e\u06cc\u0648\u0633\u062a";
     },
     get$canBeFoundVia() {
-      return "L\xf6ydett\xe4viss\xe4 kautta:";
+      return "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 kutsu";
+      return "\u2022 \u062f\u0639\u0648\u062a\u200c\u0646\u0627\u0645\u0647";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 koodi tai linkki";
+      return "\u2022 \u06a9\u062f \u06cc\u0627 \u0644\u06cc\u0646\u06a9";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 pyyt\xe4\xe4 liittymist\xe4 ja yll\xe4pidon hyv\xe4ksynt\xe4";
+      return "\u2022 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u06cc\u0648\u0633\u062a\u0646 \u0648 \u062a\u0627\u06cc\u06cc\u062f \u0645\u062f\u06cc\u0631";
     },
     get$youHaveLeveledUp() {
-      return "Olet noussut tasolle!";
+      return "\u0634\u0645\u0627 \u0633\u0637\u062d \u062e\u0648\u062f \u0631\u0627 \u0627\u0631\u062a\u0642\u0627\u0621 \u062f\u0627\u062f\u06cc\u062f!";
     },
     get$sendActivities() {
-      return "L\xe4het\xe4 aktiviteetteja";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627";
     },
     get$directMessage() {
-      return "Yksityisviesti";
+      return "\u067e\u06cc\u0627\u0645 \u0645\u0633\u062a\u0642\u06cc\u0645";
     },
     get$newDirectMessage() {
-      return "Uusi yksityisviesti";
+      return "\u067e\u06cc\u0627\u0645 \u0645\u0633\u062a\u0642\u06cc\u0645 \u062c\u062f\u06cc\u062f";
     },
     get$speakingExercisesTooltip() {
-      return "Puhuminen";
+      return "\u0635\u062d\u0628\u062a \u06a9\u0631\u062f\u0646";
     },
     get$transcriptionFailed() {
-      return "\xc4\xe4nen litter\xf6inti ep\xe4onnistui";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u062a\u0628\u062f\u06cc\u0644 \u0635\u0648\u062a \u0628\u0647 \u0645\u062a\u0646";
     },
     get$aUserIsKnocking() {
-      return "Yksi k\xe4ytt\xe4j\xe4 pyyt\xe4\xe4 liittym\xe4\xe4n kurssiisi";
+      return "\u06cc\u06a9 \u06a9\u0627\u0631\u0628\u0631 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u062f\u0648\u0631\u0647 \u0634\u0645\u0627 \u0631\u0627 \u062f\u0627\u0631\u062f";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " k\xe4ytt\xe4j\xe4\xe4 pyyt\xe4\xe4 liittym\xe4\xe4n kurssiisi";
+      return "" + users + " \u06a9\u0627\u0631\u0628\u0631 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u062f\u0648\u0631\u0647 \u0634\u0645\u0627 \u0631\u0627 \u062f\u0627\u0631\u0646\u062f";
     },
     get$failedToFetchTranscription() {
-      return "\xc4\xe4nityksen hakeminen ep\xe4onnistui";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u062f\u0631\u06cc\u0627\u0641\u062a \u0645\u062a\u0646 \u062a\u0628\u062f\u06cc\u0644 \u0634\u062f\u0647";
     },
     get$deleteEmptySpaceDesc() {
-      return "Kurssi poistetaan kaikilta osallistujilta. T\xe4t\xe4 toimintoa ei voi peruuttaa.";
+      return "\u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0628\u0631\u0627\u06cc \u0647\u0645\u0647 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u062d\u0630\u0641 \u062e\u0648\u0627\u0647\u062f \u0634\u062f. \u0627\u06cc\u0646 \u0639\u0645\u0644\u06cc\u0627\u062a \u0642\u0627\u0628\u0644 \u0628\u0627\u0632\u06af\u0634\u062a \u0646\u06cc\u0633\u062a.";
     },
     get$failedToPlayVideo() {
-      return "Videon toistaminen ep\xe4onnistui";
+      return "\u067e\u062e\u0634 \u0648\u06cc\u062f\u06cc\u0648 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f";
     },
     get$done() {
-      return "Valmis";
+      return "\u062a\u0645\u0627\u0645 \u0634\u062f";
     },
     get$inThisSpace() {
-      return "T\xe4ss\xe4 kurssissa";
+      return "\u062f\u0631 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647";
     },
     get$myContacts() {
-      return "Yhteystietoni";
+      return "\u0645\u062e\u0627\u0637\u0628\u06cc\u0646 \u0645\u0646";
     },
     get$inviteAllInSpace() {
-      return "Kutsu kaikki t\xe4h\xe4n kurssiin";
+      return "\u062f\u0639\u0648\u062a \u0647\u0645\u0647 \u062f\u0631 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "Kaikki kurssin osallistujat on kutsuttu keskusteluun";
+      return "\u062a\u0645\u0627\u0645 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u062f\u0648\u0631\u0647 \u0628\u0647 \u0686\u062a \u062f\u0639\u0648\u062a \u0634\u062f\u0647\u200c\u0627\u0646\u062f";
     },
     numKnocking$1(count) {
-      return "" + count + " koputtaa";
+      return "" + count + " \u062f\u0631 \u062d\u0627\u0644 \u062f\u0631\u062e\u0648\u0627\u0633\u062a";
     },
     numInvited$1(count) {
-      return "" + count + " kutsuttu";
+      return "" + count + " \u062f\u0639\u0648\u062a \u0634\u062f\u0647";
     },
     get$errorFetchingDefinition() {
-      return "Virhe haettaessa m\xe4\xe4ritelm\xe4\xe4";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u062f\u0631\u06cc\u0627\u0641\u062a \u062a\u0639\u0627\u0631\u06cc\u0641";
     },
     get$errorProcessAnalytics() {
-      return "Virhe analytiikan k\xe4sittelyss\xe4";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u067e\u0631\u062f\u0627\u0632\u0634 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627";
     },
     get$errorDownloading() {
-      return "Lataus ep\xe4onnistui";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f";
     },
     get$errorFetchingLevelSummary() {
-      return "Virhe haettaessa tasoraporttia";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u062f\u0631\u06cc\u0627\u0641\u062a \u062e\u0644\u0627\u0635\u0647 \u0633\u0637\u062d";
     },
     get$errorLoadingSpaceChildren() {
-      return "Virhe ladataessa keskusteluja t\xe4m\xe4n kurssin sis\xe4ll\xe4";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0686\u062a\u200c\u0647\u0627\u06cc \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647";
     },
     get$unexpectedError() {
-      return "Odottamaton virhe.";
+      return "\u062e\u0637\u0627\u06cc \u063a\u06cc\u0631\u0645\u0646\u062a\u0638\u0631\u0647.";
     },
     get$pleaseReload() {
-      return "Lataa sivu uudelleen ja yrit\xe4 uudelleen.";
+      return "\u0644\u0637\u0641\u0627\u064b \u0635\u0641\u062d\u0647 \u0631\u0627 \u0645\u062c\u062f\u062f\u0627\u064b \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u06a9\u0646\u06cc\u062f \u0648 \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     get$translationError() {
-      return "K\xe4\xe4nn\xf6svirhe";
+      return "\u062e\u0637\u0627\u06cc \u062a\u0631\u062c\u0645\u0647";
     },
     get$errorFetchingActivity() {
-      return "Virhe haettaessa toimintaa";
+      return "\u062e\u0637\u0627 \u062f\u0631 \u062f\u0631\u06cc\u0627\u0641\u062a \u0641\u0639\u0627\u0644\u06cc\u062a";
     },
     get$check(_) {
-      return "Tarkista";
+      return "\u0628\u0631\u0631\u0633\u06cc";
     },
     get$unableToFindRoom() {
-      return "Ei l\xf6ydetty keskustelua tai kurssia t\xe4ll\xe4 koodilla. Yrit\xe4 uudelleen.";
+      return "\u0686\u062a \u06cc\u0627 \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u0628\u0627 \u0627\u06cc\u0646 \u06a9\u062f \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f. \u0644\u0637\u0641\u0627\u064b \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     viewingAnalytics$2(visible, users) {
-      return "N\xe4ytet\xe4\xe4n " + visible + "/" + users + " analytiikkaa";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0645\u0634\u0627\u0647\u062f\u0647 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc " + visible + "/" + users;
     },
     get$request(_) {
-      return "Pyynt\xf6";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a";
     },
     get$requestAll(_) {
-      return "Pyyd\xe4 kaikki";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0647\u0645\u0647";
     },
     get$confirmMessageUnpin() {
-      return "Oletko varma, ett\xe4 haluat irrottaa t\xe4m\xe4n viestin?";
+      return "\u0622\u06cc\u0627 \u0645\u0637\u0645\u0626\u0646 \u0647\u0633\u062a\u06cc\u062f \u06a9\u0647 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u06cc\u0646 \u067e\u06cc\u0627\u0645 \u0631\u0627 \u0627\u0632 \u067e\u06cc\u0646 \u062e\u0627\u0631\u062c \u06a9\u0646\u06cc\u062f\u061f";
     },
     get$pending(_) {
-      return "Odottaa";
+      return "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631";
     },
     get$openRoleLabel() {
-      return "AVOIN";
+      return "\u0628\u0627\u0632";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " liittyi roolilla " + role;
+      return "\ud83d\udc4b " + username + " \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 " + role + " \u067e\u06cc\u0648\u0633\u062a";
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " saatteli aktiviteetin p\xe4\xe4t\xf6kseen";
+      return "\ud83c\udfaf " + username + " \u0627\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u0631\u0627 \u067e\u0627\u06cc\u0627\u0646 \u062f\u0627\u062f";
     },
     get$activitySummaryError() {
-      return "Aktiviteettien yhteenvetoja ei saatavilla";
+      return "\u062e\u0644\u0627\u0635\u0647 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u06cc\u0633\u062a";
     },
     get$requestSummaries() {
-      return "Pyyd\xe4 yhteenvetoja";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062e\u0644\u0627\u0635\u0647\u200c\u0647\u0627";
     },
     get$requestAccessTitle() {
-      return "Pyyd\xe4 analytiikkap\xe4\xe4sy\xe4?";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062a\u062c\u0632\u06cc\u0647 \u0648 \u062a\u062d\u0644\u06cc\u0644\u061f";
     },
     get$requestAccessDesc() {
-      return "Haluatko pyyt\xe4\xe4 p\xe4\xe4sy\xe4 n\xe4hd\xe4ksesi osallistujien analytiikan?\n\nJos osallistujat suostuvat, kurssin yll\xe4pit\xe4j\xe4t voivat n\xe4hd\xe4 heid\xe4n:\n    \u2022 kokonaissanaston\n    \u2022 kokonaiskielioppikonseptit\n    \u2022 kokonaisaktiviteettisessiot, jotka on suoritettu\n    \u2022 k\xe4ytetyt, oikein ja v\xe4\xe4rin, kielioppikonseptit\n\nHe eiv\xe4t voi n\xe4hd\xe4 heid\xe4n:\n    \u2022 viestej\xe4 keskusteluissa kurssin ulkopuolella\n    \u2022 sanastoluetteloa";
+      return "\u0622\u06cc\u0627 \u0645\u0627\u06cc\u0644\u06cc\u062f \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0631\u0627\u06cc \u0645\u0634\u0627\u0647\u062f\u0647 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u0631\u0627 \u0628\u062f\u0647\u06cc\u062f\u061f\n\n\u0627\u06af\u0631 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u0645\u0648\u0627\u0641\u0642\u062a \u06a9\u0646\u0646\u062f\u060c \u0645\u062f\u06cc\u0631\u0627\u0646 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0642\u0627\u062f\u0631 \u062e\u0648\u0627\u0647\u0646\u062f \u0628\u0648\u062f \u0645\u0648\u0627\u0631\u062f \u0632\u06cc\u0631 \u0631\u0627 \u0645\u0634\u0627\u0647\u062f\u0647 \u06a9\u0646\u0646\u062f:\n    \u2022 \u06a9\u0644 \u0648\u0627\u0698\u06af\u0627\u0646\n    \u2022 \u06a9\u0644 \u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc\n    \u2022 \u06a9\u0644 \u062c\u0644\u0633\u0627\u062a \u0641\u0639\u0627\u0644\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f\u0647\n    \u2022 \u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u062e\u0627\u0635 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0634\u062f\u0647\u060c \u0635\u062d\u06cc\u062d \u0648 \u0646\u0627\u062f\u0631\u0633\u062a\n\n\u0622\u0646\u200c\u0647\u0627 \u0642\u0627\u062f\u0631 \u0646\u062e\u0648\u0627\u0647\u0646\u062f \u0628\u0648\u062f \u0645\u0648\u0627\u0631\u062f \u0632\u06cc\u0631 \u0631\u0627 \u0645\u0634\u0627\u0647\u062f\u0647 \u06a9\u0646\u0646\u062f:\n    \u2022 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u062f\u0631 \u0686\u062a\u200c\u0647\u0627\u06cc \u062e\u0627\u0631\u062c \u0627\u0632 \u062f\u0648\u0631\u0647\n    \u2022 \u0641\u0647\u0631\u0633\u062a \u0648\u0627\u0698\u06af\u0627\u0646";
     },
     get$analyticsInactiveTitle() {
-      return "Ei voitu l\xe4hett\xe4\xe4 pyynt\xf6j\xe4 inaktiivisille k\xe4ytt\xe4jille";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a\u200c\u0647\u0627 \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0627\u0631\u0633\u0627\u0644 \u0646\u0634\u062f\u0646\u062f";
     },
     get$analyticsInactiveDesc() {
-      return "Inaktiiviset k\xe4ytt\xe4j\xe4t, jotka eiv\xe4t ole kirjautuneet sis\xe4\xe4n t\xe4m\xe4n ominaisuuden k\xe4ytt\xf6\xf6noton j\xe4lkeen, eiv\xe4t n\xe4e pyynt\xf6\xe4si.\n\nPyynt\xf6painike ilmestyy, kun he palaavat. Voit l\xe4hett\xe4\xe4 pyynn\xf6n uudelleen my\xf6hemmin napsauttamalla Pyynt\xf6-painiketta heid\xe4n nimens\xe4 alla, kun se on saatavilla.";
+      return "\u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u06a9\u0647 \u0627\u0632 \u0632\u0645\u0627\u0646 \u0645\u0639\u0631\u0641\u06cc \u0627\u06cc\u0646 \u0648\u06cc\u0698\u06af\u06cc \u0648\u0627\u0631\u062f \u0646\u0634\u062f\u0647\u200c\u0627\u0646\u062f\u060c \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0631\u0627 \u0646\u062e\u0648\u0627\u0647\u0646\u062f \u062f\u06cc\u062f.\n\n\u062f\u06a9\u0645\u0647 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0632\u0645\u0627\u0646\u06cc \u0638\u0627\u0647\u0631 \u0645\u06cc\u200c\u0634\u0648\u062f \u06a9\u0647 \u0622\u0646\u200c\u0647\u0627 \u0628\u0631\u06af\u0631\u062f\u0646\u062f. \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0631\u0627 \u0628\u0639\u062f\u0627\u064b \u0628\u0627 \u06a9\u0644\u06cc\u06a9 \u0628\u0631 \u0631\u0648\u06cc \u062f\u06a9\u0645\u0647 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0632\u06cc\u0631 \u0646\u0627\u0645 \u0622\u0646\u200c\u0647\u0627 \u0645\u062c\u062f\u062f\u0627\u064b \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0628\u0627\u0634\u062f.";
     },
     get$accessRequestedTitle() {
-      return "Analytiikan p\xe4\xe4sypyynt\xf6";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627";
     },
     accessRequestedDesc$2(admin, space) {
-      return "Pyydet\xe4\xe4n yll\xe4pit\xe4j\xe4\xe4(t): " + admin + " \n\nYll\xe4pit\xe4j\xe4t tilasta \u201c" + space + "\u201d pyyt\xe4v\xe4t p\xe4\xe4st\xe4kseen tarkastelemaan oppimisanalyysej\xe4si.\n\nJos hyv\xe4ksyt, he voivat tarkastella:\n    \u2022 koko sanavarastoasi\n    \u2022 kaikkia kielioppik\xe4sitteit\xe4si\n    \u2022 kaikkia suorittamiasi aktiviteettisessioita\n    \u2022 k\xe4ytettyj\xe4 kielioppik\xe4sitteit\xe4, oikein ja v\xe4\xe4rin\n\nHe eiv\xe4t voi tarkastella:\n    \u2022 viestej\xe4 kursseja ulkopuolella olevissa keskusteluissa\n    \u2022 sanavarastoluetteloasi";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0627\u0632 \u0645\u062f\u06cc\u0631(\u0627\u0646): " + admin + " \n\n\u0645\u062f\u06cc\u0631\u0627\u0646 \u0627\u0632 \u201c" + space + "\u201d \u062f\u0631 \u062d\u0627\u0644 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0628\u0631\u0627\u06cc \u0645\u0634\u0627\u0647\u062f\u0647 \u062a\u062c\u0632\u06cc\u0647 \u0648 \u062a\u062d\u0644\u06cc\u0644 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0634\u0645\u0627 \u0647\u0633\u062a\u0646\u062f.\n\n\u0627\u06af\u0631 \u0645\u0648\u0627\u0641\u0642 \u0628\u0627\u0634\u06cc\u062f\u060c \u0622\u0646\u0647\u0627 \u0642\u0627\u062f\u0631 \u062e\u0648\u0627\u0647\u0646\u062f \u0628\u0648\u062f \u0628\u0647 \u0645\u0648\u0627\u0631\u062f \u0632\u06cc\u0631 \u062f\u0633\u062a\u0631\u0633\u06cc \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u0646\u062f:\n    \u2022 \u0648\u0627\u0698\u06af\u0627\u0646 \u06a9\u0644\n    \u2022 \u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u06a9\u0644\n    \u2022 \u062a\u0639\u062f\u0627\u062f \u06a9\u0644 \u062c\u0644\u0633\u0627\u062a \u0641\u0639\u0627\u0644\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f\u0647\n    \u2022 \u0645\u0641\u0627\u0647\u06cc\u0645 \u06af\u0631\u0627\u0645\u0631\u06cc \u062e\u0627\u0635 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0634\u062f\u0647\u060c \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u0648 \u0646\u0627\u062f\u0631\u0633\u062a\n\n\u0622\u0646\u0647\u0627 \u0642\u0627\u062f\u0631 \u0646\u062e\u0648\u0627\u0647\u0646\u062f \u0628\u0648\u062f \u0628\u0647 \u0645\u0648\u0627\u0631\u062f \u0632\u06cc\u0631 \u062f\u0633\u062a\u0631\u0633\u06cc \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u0646\u062f:\n    \u2022 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u062f\u0631 \u0686\u062a\u200c\u0647\u0627 \u062e\u0627\u0631\u062c \u0627\u0632 \u062f\u0648\u0631\u0647\n    \u2022 \u0644\u06cc\u0633\u062a \u0648\u0627\u0698\u06af\u0627\u0646";
     },
     get$adminRequestedAccess() {
-      return "Yll\xe4pit\xe4j\xe4t pyyt\xe4v\xe4t katsomaan analytiikkaasi.";
+      return "\u0645\u062f\u06cc\u0631\u0627\u0646 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062f\u06cc\u062f\u0646 \u062a\u062d\u0644\u06cc\u0644\u200c\u0647\u0627\u06cc \u0634\u0645\u0627 \u0631\u0627 \u062f\u0627\u062f\u0647\u200c\u0627\u0646\u062f.";
     },
     lastUpdated$1(time) {
-      return "P\xe4ivitetty\n" + time;
+      return "\u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u062f\u0647\n" + time;
     },
     get$activityFinishedMessage() {
-      return "Kaikki valmiina!";
+      return "\u0647\u0645\u0647 \u062a\u0645\u0627\u0645 \u0634\u062f!";
     },
     get$endForAll() {
-      return "Lopeta kaikille";
+      return "\u067e\u0627\u06cc\u0627\u0646 \u0628\u0631\u0627\u06cc \u0647\u0645\u0647";
     },
     get$newCourse() {
-      return "Uusi kurssi";
+      return "\u062f\u0648\u0631\u0647 \u062c\u062f\u06cc\u062f";
     },
     numModules$1(num) {
-      return "" + num + " moduulia";
+      return "" + num + " \u0645\u0627\u0698\u0648\u0644";
     },
     get$coursePlan() {
-      return "Kurssisuunnitelma";
+      return "\u0628\u0631\u0646\u0627\u0645\u0647 \u062f\u0648\u0631\u0647";
     },
     get$editCourseLater() {
-      return "Voit muokata mallin otsikkoa, kuvauksia ja kurssikuvaa my\xf6hemmin.";
+      return "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0639\u062f\u0627\u064b \u0639\u0646\u0648\u0627\u0646\u060c \u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0648 \u062a\u0635\u0648\u06cc\u0631 \u062f\u0648\u0631\u0647 \u0631\u0627 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     get$newCourseAccess() {
-      return "Oletuksena kurssit ovat yksityisi\xe4 ja vaativat yll\xe4pit\xe4j\xe4n hyv\xe4ksynn\xe4n liitty\xe4ksesi. Voit muokata n\xe4it\xe4 asetuksia milloin tahansa.";
+      return "\u0628\u0647 \u0637\u0648\u0631 \u067e\u06cc\u0634\u200c\u0641\u0631\u0636\u060c \u062f\u0648\u0631\u0647\u200c\u0647\u0627 \u062e\u0635\u0648\u0635\u06cc \u0647\u0633\u062a\u0646\u062f \u0648 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0627\u06cc\u06cc\u062f \u0645\u062f\u06cc\u0631 \u0628\u0631\u0627\u06cc \u067e\u06cc\u0648\u0633\u062a\u0646 \u062f\u0627\u0631\u0646\u062f. \u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0627\u06cc\u0646 \u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0631\u0627 \u062f\u0631 \u0647\u0631 \u0632\u0645\u0627\u0646 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     get$createCourse() {
-      return "Luo kurssi";
+      return "\u0627\u06cc\u062c\u0627\u062f \u062f\u0648\u0631\u0647";
     },
     get$stats() {
-      return "Tilastot";
+      return "\u0622\u0645\u0627\u0631";
     },
     get$createGroupChat() {
-      return "Luo ryhm\xe4keskustelu";
+      return "\u0627\u06cc\u062c\u0627\u062f \u0686\u062a \u06af\u0631\u0648\u0647\u06cc";
     },
     get$editCourse() {
-      return "Muokkaa kurssia";
+      return "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u062f\u0648\u0631\u0647";
     },
     get$inviteDesc() {
-      return "Kutsulla k\xe4ytt\xe4j\xe4nimell\xe4, koodilla tai linkill\xe4";
+      return "\u0628\u0627 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc\u060c \u0628\u0627 \u06a9\u062f \u06cc\u0627 \u0644\u06cc\u0646\u06a9";
     },
     get$editCourseDesc() {
-      return "T\xe4\xe4ll\xe4 voit muokata kurssin otsikkoa, kuvausta jne.";
+      return "\u062f\u0631 \u0627\u06cc\u0646\u062c\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0639\u0646\u0648\u0627\u0646\u060c \u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0648 \u0645\u0648\u0627\u0631\u062f \u062f\u06cc\u06af\u0631 \u062f\u0648\u0631\u0647 \u0631\u0627 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u06a9\u0646\u06cc\u062f.";
     },
     get$permissionsDesc() {
-      return "Aseta oikeudet, kuten kuka voi kutsua k\xe4ytt\xe4ji\xe4, l\xe4hett\xe4\xe4 viestej\xe4, luoda keskusteluja jne.";
+      return "\u0645\u062c\u0648\u0632\u0647\u0627 \u0631\u0627 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f\u060c \u0645\u0627\u0646\u0646\u062f \u0627\u06cc\u0646\u06a9\u0647 \u0686\u0647 \u06a9\u0633\u06cc \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0631\u0627 \u062f\u0639\u0648\u062a \u06a9\u0646\u062f\u060c \u067e\u06cc\u0627\u0645 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u062f\u060c \u0686\u062a \u0627\u06cc\u062c\u0627\u062f \u06a9\u0646\u062f \u0648 \u063a\u06cc\u0631\u0647.";
     },
     get$accessDesc() {
-      return "Voit tehd\xe4 kurssistasi avoimen maailmalle! Tai tehd\xe4 siit\xe4 yksityisen ja turvallisen.";
+      return "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062f\u0648\u0631\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u0631\u0627\u06cc \u062c\u0647\u0627\u0646 \u0628\u0627\u0632 \u06a9\u0646\u06cc\u062f! \u06cc\u0627\u060c \u062f\u0648\u0631\u0647 \u062e\u0648\u062f \u0631\u0627 \u062e\u0635\u0648\u0635\u06cc \u0648 \u0627\u0645\u0646 \u06a9\u0646\u06cc\u062f.";
     },
     get$createGroupChatDesc() {
-      return "Sill\xe4 aikaa kun aktiviteettisessiot alkavat ja p\xe4\xe4ttyv\xe4t, ryhm\xe4keskustelut pysyv\xe4t avoimina s\xe4\xe4nn\xf6llist\xe4 viestint\xe4\xe4 varten.";
+      return "\u062f\u0631 \u062d\u0627\u0644\u06cc \u06a9\u0647 \u062c\u0644\u0633\u0627\u062a \u0641\u0639\u0627\u0644\u06cc\u062a \u0634\u0631\u0648\u0639 \u0648 \u067e\u0627\u06cc\u0627\u0646 \u0645\u06cc\u200c\u06cc\u0627\u0628\u0646\u062f\u060c \u0686\u062a\u200c\u0647\u0627\u06cc \u06af\u0631\u0648\u0647\u06cc \u0628\u0631\u0627\u06cc \u0627\u0631\u062a\u0628\u0627\u0637 \u0631\u0648\u062a\u06cc\u0646 \u0628\u0627\u0642\u06cc \u062e\u0648\u0627\u0647\u0646\u062f \u0645\u0627\u0646\u062f.";
     },
     get$deleteDesc() {
-      return "Vain yll\xe4pit\xe4j\xe4t voivat poistaa kurssin. T\xe4m\xe4 on tuhoava toimenpide, joka poistaa kaikki k\xe4ytt\xe4j\xe4t ja poistaa kaikki valitut keskustelut kurssin sis\xe4ll\xe4. Toimi varoen.";
+      return "\u0641\u0642\u0637 \u0645\u062f\u06cc\u0631\u0627\u0646 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u0646\u062f \u062f\u0648\u0631\u0647 \u0631\u0627 \u062d\u0630\u0641 \u06a9\u0646\u0646\u062f. \u0627\u06cc\u0646 \u06cc\u06a9 \u0627\u0642\u062f\u0627\u0645 \u0645\u062e\u0631\u0628 \u0627\u0633\u062a \u06a9\u0647 \u062a\u0645\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0631\u0627 \u062d\u0630\u0641 \u0645\u06cc\u200c\u06a9\u0646\u062f \u0648 \u062a\u0645\u0627\u0645 \u0686\u062a\u200c\u0647\u0627\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u0634\u062f\u0647 \u062f\u0631\u0648\u0646 \u062f\u0648\u0631\u0647 \u0631\u0627 \u062d\u0630\u0641 \u0645\u06cc\u200c\u06a9\u0646\u062f. \u0628\u0627 \u0627\u062d\u062a\u06cc\u0627\u0637 \u0627\u0642\u062f\u0627\u0645 \u06a9\u0646\u06cc\u062f.";
     },
     get$noCourseFound() {
-      return "Voi, t\xe4m\xe4 kurssi tarvitsee suunnitelman!\n\nKurssisuunnitelmat ovat aiheiden ja keskustelutoimintojen sarja.";
+      return "\u0627\u0648\u0647\u060c \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u0628\u0631\u0646\u0627\u0645\u0647 \u062f\u0627\u0631\u062f!\n\n\u0628\u0631\u0646\u0627\u0645\u0647\u200c\u0647\u0627\u06cc \u062f\u0648\u0631\u0647 \u0645\u062c\u0645\u0648\u0639\u0647\u200c\u0627\u06cc \u0627\u0632 \u0645\u0648\u0636\u0648\u0639\u0627\u062a \u0648 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u06af\u0641\u062a\u06af\u0648 \u0647\u0633\u062a\u0646\u062f.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " muuta";
+      return "+ " + num + " \u0646\u0641\u0631 \u062f\u06cc\u06af\u0631";
     },
     get$whatNow() {
-      return "Mit\xe4 nyt?";
+      return "\u062d\u0627\u0644\u0627 \u0686\u0647\u061f";
     },
     get$chooseNextActivity() {
-      return "Valitse seuraava toimintosi!";
+      return "\u0627\u0646\u062a\u062e\u0627\u0628 \u0641\u0639\u0627\u0644\u06cc\u062a \u0628\u0639\u062f\u06cc \u0634\u0645\u0627!";
     },
     get$letsGo() {
-      return "L\xe4hdet\xe4\xe4n";
+      return "\u0628\u0631\u0648\u06cc\u0645";
     },
     get$chooseRole() {
-      return "Valitse rooli!";
+      return "\u06cc\u06a9 \u0646\u0642\u0634 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f!";
     },
     get$chooseRoleToParticipate() {
-      return "Valitse rooli osallistumista varten!";
+      return "\u06cc\u06a9 \u0646\u0642\u0634 \u0628\u0631\u0627\u06cc \u0634\u0631\u06a9\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f!";
     },
     waitingToFillRole$1(num) {
-      return "Odotetaan " + num + " roolin t\xe4yttymist\xe4...";
+      return "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631 \u067e\u0631 \u06a9\u0631\u062f\u0646 " + num + " \u0646\u0642\u0634...";
     },
     get$pingParticipants() {
-      return "Pingaa kurssin osallistujia";
+      return "\u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645 \u0628\u0647 \u0634\u0631\u06a9\u062a\u200c\u06a9\u0646\u0646\u062f\u06af\u0627\u0646 \u062f\u0648\u0631\u0647";
     },
     get$playWithBot() {
-      return "Leiki Pangea-botin kanssa";
+      return "\u0628\u0627\u0632\u06cc \u0628\u0627 \u067e\u0646\u06af\u0626\u0627 \u0628\u0627\u062a";
     },
     get$waitNotDone() {
-      return "Odotan, en ole valmis!";
+      return "\u0635\u0628\u0631 \u06a9\u0646\u060c \u0645\u0646 \u062a\u0645\u0627\u0645 \u0646\u06a9\u0631\u062f\u0645!";
     },
     get$waitingForOthersToFinish() {
-      return "Odotetaan muiden valmistumista...";
+      return "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631 \u067e\u0627\u06cc\u0627\u0646 \u062f\u06cc\u06af\u0631\u0627\u0646...";
     },
     get$generatingSummary() {
-      return "Analysoidaan keskustelua ja luodaan tuloksia";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062a\u062d\u0644\u06cc\u0644 \u0686\u062a \u0648 \u062a\u0648\u0644\u06cc\u062f \u0646\u062a\u0627\u06cc\u062c";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " etsii k\xe4ytt\xe4ji\xe4 liittym\xe4\xe4n aktiviteettisessioon " + room;
+      return user + " \u062f\u0631 \u062d\u0627\u0644 \u062c\u0633\u062a\u062c\u0648\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0628\u0631\u0627\u06cc \u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u062c\u0644\u0633\u0647 \u0641\u0639\u0627\u0644\u06cc\u062a \u062f\u0631 " + room + " \u0627\u0633\u062a";
     },
     get$courseName() {
-      return "Kurssin nimi";
+      return "\u0646\u0627\u0645 \u062f\u0648\u0631\u0647";
     },
     get$createNewCourse() {
-      return "Uusi kurssi";
+      return "\u062f\u0648\u0631\u0647 \u062c\u062f\u06cc\u062f";
     },
     goToCourse$1(course) {
-      return "Siirry kurssiin: " + course;
+      return "\u0628\u0631\u0648 \u0628\u0647 \u062f\u0648\u0631\u0647: " + course;
     },
     get$startNewSession() {
-      return "Aloita uusi istunto";
+      return "\u0634\u0631\u0648\u0639 \u062c\u0644\u0633\u0647 \u062c\u062f\u06cc\u062f";
     },
     get$joinOpenSession() {
-      return "Liity avoimeen istuntoon";
+      return "\u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u062c\u0644\u0633\u0647 \u0628\u0627\u0632";
     },
     get$activityNotFound() {
-      return "Toimintoa ei l\xf6ytynyt";
+      return "\u0641\u0639\u0627\u0644\u06cc\u062a \u06cc\u0627\u0641\u062a \u0646\u0634\u062f";
     },
     get$levelUp() {
-      return "Taso nousee";
+      return "\u0633\u0637\u062d \u0628\u0627\u0644\u0627";
     },
     get$myActivities() {
-      return "Omat aktiviteetit";
+      return "\u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0645\u0646";
     },
     get$openToJoin() {
-      return "Avoin liitty\xe4";
+      return "\u0628\u0627\u0632 \u0628\u0631\u0627\u06cc \u067e\u06cc\u0648\u0633\u062a\u0646";
     },
     get$activityDone() {
-      return "Aktiviteetti valmis!";
+      return "\u0641\u0639\u0627\u0644\u06cc\u062a \u062a\u0645\u0627\u0645 \u0634\u062f!";
     },
     get$promoCodeInfo() {
-      return "Alennuskoodit voidaan sy\xf6tt\xe4\xe4 seuraavalla sivulla";
+      return "\u06a9\u062f\u0647\u0627\u06cc \u062a\u062e\u0641\u06cc\u0641 \u0631\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062f\u0631 \u0635\u0641\u062d\u0647 \u0628\u0639\u062f \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f";
     },
     get$editsComingSoon() {
-      return "Mahdollisuus muokata kaupunkeja ja aktiviteetteja on tulossa pian.";
+      return "\u0628\u0647 \u0632\u0648\u062f\u06cc \u0627\u0645\u06a9\u0627\u0646 \u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0647\u0631\u0647\u0627 \u0648 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u0641\u0631\u0627\u0647\u0645 \u0645\u06cc\u200c\u0634\u0648\u062f.";
     },
     get$editing() {
-      return "Muokkaus";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0648\u06cc\u0631\u0627\u06cc\u0634";
     },
     get$activityNeedsOneMember() {
-      return "Voi ei! T\xe4m\xe4 aktiviteetti tarvitsee viel\xe4 yhden henkil\xf6n.";
+      return "\u0622\u0647! \u0627\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u0628\u0647 \u06f1 \u0646\u0641\u0631 \u062f\u06cc\u06af\u0631 \u0646\u06cc\u0627\u0632 \u062f\u0627\u0631\u062f.";
     },
     activityNeedsMembers$1(num) {
-      return "Voi ei! T\xe4m\xe4 aktiviteetti tarvitsee viel\xe4 " + num + " ihmist\xe4.";
+      return "\u0622\u0647! \u0627\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u0628\u0647 " + num + " \u0646\u0641\u0631 \u062f\u06cc\u06af\u0631 \u0646\u06cc\u0627\u0632 \u062f\u0627\u0631\u062f.";
     },
     get$inviteFriendsToCourse() {
-      return "Kutsu yst\xe4vi\xe4 kurssilleni";
+      return "\u062f\u0639\u0648\u062a \u062f\u0648\u0633\u062a\u0627\u0646 \u0628\u0647 \u062f\u0648\u0631\u0647 \u0645\u0646";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Tilaa aktiviteettien yhteenvetojen avaaminen";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u062e\u0644\u0627\u0635\u0647\u200c\u0647\u0627\u06cc \u0641\u0639\u0627\u0644\u06cc\u062a";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Tilaa transkriptioiden avaaminen";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0631\u0648\u0646\u0648\u06cc\u0633\u06cc\u200c\u0647\u0627";
     },
     get$pingSent() {
-      return "\ud83d\udce3 Kurssin h\xe4lytys l\xe4hetetty! \ud83d\udce3";
+      return "\u067e\u06cc\u0646\u06af \u062f\u0648\u0631\u0647 \u0627\u0631\u0633\u0627\u0644 \u0634\u062f! \ud83d\udd14";
     },
     get$courseTitle() {
-      return "Kurssin otsikko";
+      return "\u0639\u0646\u0648\u0627\u0646 \u062f\u0648\u0631\u0647";
     },
     get$courseDesc() {
-      return "Kurssin kuvaus";
+      return "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u062f\u0648\u0631\u0647";
     },
     get$courseSavedSuccessfully() {
-      return "Kurssi tallennettu onnistuneesti";
+      return "\u062f\u0648\u0631\u0647 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0630\u062e\u06cc\u0631\u0647 \u0634\u062f";
     },
     get$addCoursePlan() {
-      return "Lis\xe4\xe4 kurssisuunnitelma";
+      return "\u0627\u0641\u0632\u0648\u062f\u0646 \u0628\u0631\u0646\u0627\u0645\u0647 \u062f\u0648\u0631\u0647";
     },
     get$activityStatsButtonInstruction() {
-      return "Klikkaa t\xe4st\xe4 n\xe4hd\xe4ksesi aktiviteettitilastosi ja sulkeaksesi aktiviteetin lopuksi";
+      return "\u0628\u0631\u0627\u06cc \u0645\u0634\u0627\u0647\u062f\u0647 \u0622\u0645\u0627\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a \u062e\u0648\u062f \u0648 \u0628\u0633\u062a\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u067e\u0633 \u0627\u0632 \u0627\u062a\u0645\u0627\u0645 \u0627\u06cc\u0646\u062c\u0627 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$loginToAccount() {
-      return "Kirjaudu tililleni";
+      return "\u0648\u0627\u0631\u062f \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0645\u0646 \u0634\u0648\u06cc\u062f";
     },
     get$appDescription() {
-      return "Opiskele kielt\xe4\nl\xe4hett\xe4m\xe4ll\xe4 viestej\xe4 yst\xe4villesi.";
+      return "\u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0632\u0628\u0627\u0646\n\u062f\u0631 \u062d\u06cc\u0646 \u067e\u06cc\u0627\u0645\u200c\u0631\u0633\u0627\u0646\u06cc \u0628\u0647 \u062f\u0648\u0633\u062a\u0627\u0646\u062a\u0627\u0646.";
     },
     get$languages(_) {
-      return "Kielet";
+      return "\u0632\u0628\u0627\u0646\u200c\u0647\u0627";
     },
     get$chooseLanguage() {
-      return "Valitse kohdekieli.";
+      return "\u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f.";
     },
     get$startOwn() {
-      return "Aloita oma";
+      return "\u0634\u0631\u0648\u0639 \u06a9\u0631\u062f\u0646 \u062e\u0648\u062f\u0645";
     },
     get$joinCourseDesc() {
-      return "Jokaisessa kurssissa on 8-10 j\xe4sennelty\xe4 aihetta, joissa on erilaisia teht\xe4vien pohjaisia kielioppiharjoituksia.";
+      return "\u0647\u0631 \u062f\u0648\u0631\u0647 \u0634\u0627\u0645\u0644 8-10 \u0645\u0648\u0636\u0648\u0639 \u0645\u062a\u0648\u0627\u0644\u06cc \u0628\u0627 \u0645\u062c\u0645\u0648\u0639\u0647\u200c\u0627\u06cc \u0627\u0632 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0632\u0628\u0627\u0646 \u0645\u0628\u062a\u0646\u06cc \u0628\u0631 \u0648\u0638\u0627\u06cc\u0641 \u0627\u0633\u062a.";
     },
     get$courseCodeHint() {
-      return "Matkan koodi tai linkki";
+      return "\u06a9\u062f \u0633\u0641\u0631 \u06cc\u0627 \u0644\u06cc\u0646\u06a9";
     },
     get$signupOption() {
-      return "Miten haluat rekister\xf6ity\xe4?";
+      return "\u0686\u06af\u0648\u0646\u0647 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u062b\u0628\u062a\u200c\u0646\u0627\u0645 \u06a9\u0646\u06cc\u062f\u061f";
     },
     get$withApple() {
-      return "Applella";
+      return "\u0628\u0627 \u0627\u067e\u0644";
     },
     get$withGoogle() {
-      return "Googlella";
+      return "\u0628\u0627 \u06af\u0648\u06af\u0644";
     },
     get$withEmail() {
-      return "S\xe4hk\xf6postilla";
+      return "\u0628\u0627 \u0627\u06cc\u0645\u06cc\u0644";
     },
     get$createAccount() {
-      return "Luo tili";
+      return "\u0627\u06cc\u062c\u0627\u062f \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc";
     },
     get$loginWithEmail() {
-      return "Kirjaudu sis\xe4\xe4n s\xe4hk\xf6postilla";
+      return "\u0648\u0631\u0648\u062f \u0628\u0627 \u0627\u06cc\u0645\u06cc\u0644";
     },
     get$usernameOrEmail() {
-      return "K\xe4ytt\xe4j\xe4tunnus tai s\xe4hk\xf6posti";
+      return "\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u06cc\u0627 \u0627\u06cc\u0645\u06cc\u0644";
     },
     get$email() {
-      return "S\xe4hk\xf6posti";
+      return "\u0627\u06cc\u0645\u06cc\u0644";
     },
     get$forgotPassword() {
-      return "Unohditko salasanan?";
+      return "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f";
     },
     get$endActivity() {
-      return "Lopeta toiminta";
+      return "\u067e\u0627\u06cc\u0627\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a";
     },
     get$allLanguages() {
-      return "Kaikki kielet";
+      return "\u0647\u0645\u0647 \u0632\u0628\u0627\u0646\u200c\u0647\u0627";
     },
     get$directMessageBotTitle() {
-      return "Yksityisviesti Pangea Bot";
+      return "\u067e\u06cc\u0627\u0645 \u0645\u0633\u062a\u0642\u06cc\u0645 \u0628\u0647 \u0631\u0628\u0627\u062a \u067e\u0646\u06af\u0626\u0627";
     },
     get$feedbackTitle() {
-      return "Toiminnan palaute";
+      return "\u0628\u0627\u0632\u062e\u0648\u0631\u062f \u0641\u0639\u0627\u0644\u06cc\u062a";
     },
     get$feedbackRespDesc() {
-      return "Tarkista huomenna aktiviteettip\xe4ivitykset.";
+      return "\u0641\u0631\u062f\u0627 \u0628\u0631\u0627\u06cc \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc\u200c\u0647\u0627\u06cc \u0641\u0639\u0627\u0644\u06cc\u062a \u0628\u0631\u0631\u0633\u06cc \u06a9\u0646\u06cc\u062f.";
     },
     get$feedbackHint() {
-      return "Palaute";
+      return "\u0628\u0627\u0632\u062e\u0648\u0631\u062f \u0634\u0645\u0627";
     },
     get$feedbackButton() {
-      return "L\xe4het\xe4 palaute";
+      return "\u0627\u0631\u0633\u0627\u0644 \u0628\u0627\u0632\u062e\u0648\u0631\u062f";
     },
     get$directMessageBotDesc() {
-      return "Ihmisten kanssa puhuminen on hauskempaa, mutta... teko\xe4ly on aina valmiina!";
+      return "\u0635\u062d\u0628\u062a \u0628\u0627 \u0627\u0646\u0633\u0627\u0646\u200c\u0647\u0627 \u0633\u0631\u06af\u0631\u0645\u200c\u06a9\u0646\u0646\u062f\u0647\u200c\u062a\u0631 \u0627\u0633\u062a \u0627\u0645\u0627... \u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc \u0647\u0645\u06cc\u0634\u0647 \u0622\u0645\u0627\u062f\u0647 \u0627\u0633\u062a!";
     },
     get$inviteYourFriends() {
-      return "Kutsu yst\xe4vi\xe4si";
+      return "\u062f\u0648\u0633\u062a\u0627\u0646 \u062e\u0648\u062f \u0631\u0627 \u062f\u0639\u0648\u062a \u06a9\u0646\u06cc\u062f";
     },
     get$playWithAI() {
-      return "Leiki teko\xe4lyn kanssa nyt";
+      return "\u0641\u0639\u0644\u0627\u064b \u0628\u0627 \u0647\u0648\u0634 \u0645\u0635\u0646\u0648\u0639\u06cc \u0628\u0627\u0632\u06cc \u06a9\u0646\u06cc\u062f";
     },
     get$courseStartDesc() {
-      return "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa yst\xe4vien kanssa!";
+      return "\u0631\u0628\u0627\u062a \u067e\u0646\u06af\u0626\u0627 \u0647\u0631 \u0632\u0645\u0627\u0646 \u0622\u0645\u0627\u062f\u0647 \u0627\u0633\u062a!\n\n... \u0627\u0645\u0627 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0628\u0627 \u062f\u0648\u0633\u062a\u0627\u0646 \u0628\u0647\u062a\u0631 \u0627\u0633\u062a!";
     },
     get$activityDropdownDesc() {
-      return "Kun olet valmis t\xe4m\xe4n aktiviteetin kanssa, napsauta alla";
+      return "\u0648\u0642\u062a\u06cc \u06a9\u0627\u0631\u062a\u0627\u0646 \u0628\u0627 \u0627\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u062a\u0645\u0627\u0645 \u0634\u062f\u060c \u0631\u0648\u06cc \u062f\u06a9\u0645\u0647 \u0632\u06cc\u0631 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$languageMismatchTitle() {
-      return "Kielivirhe";
+      return "\u062a\u0641\u0627\u0648\u062a \u0632\u0628\u0627\u0646";
     },
     get$emptyChatSearch() {
-      return "Ei DM:it\xe4 tai keskusteluja l\xf6ytynyt. Varmista, ett\xe4 hakusi on kirjoitettu oikein.";
+      return "\u0647\u06cc\u0686 \u067e\u06cc\u0627\u0645 \u0645\u0633\u062a\u0642\u06cc\u0645 \u06cc\u0627 \u0686\u062a\u06cc \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f. \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 \u062c\u0633\u062a\u062c\u0648\u06cc \u0634\u0645\u0627 \u0628\u0647 \u062f\u0631\u0633\u062a\u06cc \u0646\u0648\u0634\u062a\u0647 \u0634\u062f\u0647 \u0627\u0633\u062a.";
     },
     get$languageMismatchDesc() {
-      return "Kohdekielesi ei vastaa t\xe4m\xe4n aktiviteetin kielt\xe4. Haluatko p\xe4ivitt\xe4\xe4 kohdekielesi?";
+      return "\u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0634\u0645\u0627 \u0628\u0627 \u0632\u0628\u0627\u0646 \u0627\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u0645\u0637\u0627\u0628\u0642\u062a \u0646\u062f\u0627\u0631\u062f. \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u062e\u0648\u062f \u0631\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u06a9\u0646\u06cc\u062f\u061f";
     },
     get$reportWordIssueTooltip() {
-      return "Ilmoita sanan tiedoista ongelmasta";
+      return "\u06af\u0632\u0627\u0631\u0634 \u0645\u0634\u06a9\u0644 \u062f\u0631 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06a9\u0644\u0645\u0647";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Sanatiedon palaute";
+      return "\u0628\u0627\u0632\u062e\u0648\u0631\u062f \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06a9\u0644\u0645\u0647";
     },
     get$noPublicCoursesFound() {
-      return "Yksityisi\xe4 kursseja ei l\xf6ytynyt. Haluatko luoda sellaisen?";
+      return "\u062f\u0648\u0631\u0647 \u0639\u0645\u0648\u0645\u06cc \u067e\u06cc\u062f\u0627 \u0646\u0634\u062f. \u0645\u0627\u06cc\u0644\u06cc\u062f \u06cc\u06a9\u06cc \u0628\u0633\u0627\u0632\u06cc\u062f\u061f";
     },
     get$noCourseTemplatesFound() {
-      return "Emme l\xf6yt\xe4neet kursseja kohdekielellesi. Voit keskustella Pangea Botin kanssa sill\xe4 v\xe4lin ja palata my\xf6hemmin hakemaan lis\xe4\xe4 kursseja.";
+      return "\u0645\u0627 \u0646\u062a\u0648\u0627\u0646\u0633\u062a\u06cc\u0645 \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u0628\u0631\u0627\u06cc \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0634\u0645\u0627 \u067e\u06cc\u062f\u0627 \u06a9\u0646\u06cc\u0645. \u062f\u0631 \u0627\u06cc\u0646 \u0645\u062f\u062a \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0627 \u0631\u0628\u0627\u062a \u067e\u0646\u06af\u0626\u0627 \u0686\u062a \u06a9\u0646\u06cc\u062f \u0648 \u0628\u0639\u062f\u0627\u064b \u0628\u0631\u0627\u06cc \u062f\u0648\u0631\u0647\u200c\u0647\u0627\u06cc \u0628\u06cc\u0634\u062a\u0631 \u0628\u0631\u06af\u0631\u062f\u06cc\u062f.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot ei vastaa hetkeen. Yrit\xe4 uudelleen my\xf6hemmin tai kutsu yst\xe4v\xe4si mukaan.";
+      return "\u0631\u0628\u0627\u062a \u067e\u0646\u06af\u0626\u0627 \u062f\u0631 \u062d\u0627\u0644 \u067e\u0627\u0633\u062e\u200c\u062f\u0647\u06cc \u0627\u0633\u062a. \u0644\u0637\u0641\u0627\u064b \u0628\u0639\u062f\u0627\u064b \u062f\u0648\u0628\u0627\u0631\u0647 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f\u060c \u06cc\u0627 \u06cc\u06a9 \u062f\u0648\u0633\u062a \u062f\u0639\u0648\u062a \u06a9\u0646\u06cc\u062f.";
     },
     get$unsubscribedResponseError() {
-      return "T\xe4m\xe4 ominaisuus vaatii tilauksen";
+      return "\u0627\u06cc\u0646 \u0648\u06cc\u0698\u06af\u06cc \u0646\u06cc\u0627\u0632 \u0628\u0647 \u0627\u0634\u062a\u0631\u0627\u06a9 \u062f\u0627\u0631\u062f";
     },
     get$leaveDesc() {
-      return "Poistu t\xe4st\xe4 tilasta ja kaikista keskusteluista siin\xe4";
+      return "\u0627\u06cc\u0646 \u0641\u0636\u0627 \u0648 \u062a\u0645\u0627\u0645 \u0686\u062a\u200c\u0647\u0627\u06cc \u062f\u0627\u062e\u0644 \u0622\u0646 \u0631\u0627 \u062a\u0631\u06a9 \u06a9\u0646\u06cc\u062f";
     },
     get$selectAll() {
-      return "Valitse kaikki";
+      return "\u0627\u0646\u062a\u062e\u0627\u0628 \u0647\u0645\u0647";
     },
     get$deselectAll(_) {
-      return "Poista valinta kaikista";
+      return "\u0644\u063a\u0648 \u0627\u0646\u062a\u062e\u0627\u0628 \u0647\u0645\u0647";
     },
     get$shareCourse() {
-      return "Jaa kurssi";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc \u062f\u0648\u0631\u0647";
     },
     get$addCourse() {
-      return "Lis\xe4\xe4 kurssi";
+      return "\u0627\u0641\u0632\u0648\u062f\u0646 \u062f\u0648\u0631\u0647";
     },
     get$joinPublicCourse() {
-      return "Liity julkiseen kurssiin";
+      return "\u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u062f\u0648\u0631\u0647 \u0639\u0645\u0648\u0645\u06cc";
     },
     get$vocabLevelsDesc() {
-      return "T\xe4ss\xe4 kohtaa sanat menev\xe4t, kun olet nostanut niiden tasoa!";
+      return "\u0627\u06cc\u0646\u062c\u0627 \u062c\u0627\u06cc\u06cc \u0627\u0633\u062a \u06a9\u0647 \u06a9\u0644\u0645\u0627\u062a \u0648\u0627\u0698\u06af\u0627\u0646 \u067e\u0633 \u0627\u0632 \u0627\u0631\u062a\u0642\u0627\u0621 \u0633\u0637\u062d \u0642\u0631\u0627\u0631 \u0645\u06cc\u200c\u06af\u06cc\u0631\u0646\u062f!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "N\xe4m\xe4 ovat tallennetut aktiviteettisi tarkistettavaksi ja harjoiteltavaksi.";
+      return "\u0627\u06cc\u0646\u0647\u0627 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0630\u062e\u06cc\u0631\u0647\u200c\u0634\u062f\u0647 \u0634\u0645\u0627 \u0628\u0631\u0627\u06cc \u0645\u0631\u0648\u0631 \u0648 \u062a\u0645\u0631\u06cc\u0646 \u0647\u0633\u062a\u0646\u062f.";
     },
     get$numSavedActivities() {
-      return "Tallennettujen aktiviteettien m\xe4\xe4r\xe4";
+      return "\u062a\u0639\u062f\u0627\u062f \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0630\u062e\u06cc\u0631\u0647\u200c\u0634\u062f\u0647";
     },
     get$saveActivityTitle() {
-      return "Tallenna aktiviteetti";
+      return "\u0630\u062e\u06cc\u0631\u0647 \u0641\u0639\u0627\u0644\u06cc\u062a";
     },
     get$saveActivityDesc() {
-      return "Hyv\xe4 ty\xf6! Tallenna t\xe4m\xe4 aktiviteetti my\xf6hemp\xe4\xe4 tarkistusta ja harjoittelua varten";
+      return "\u06a9\u0627\u0631 \u062e\u0648\u0628\u06cc \u06a9\u0631\u062f\u06cc! \u0627\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u0631\u0627 \u0628\u0631\u0627\u06cc \u0645\u0631\u0648\u0631 \u0648 \u062a\u0645\u0631\u06cc\u0646 \u0628\u0639\u062f\u06cc \u0630\u062e\u06cc\u0631\u0647 \u06a9\u0646";
     },
     get$levelInfoTooltip() {
-      return "T\xe4\xe4lt\xe4 n\xe4et kaikki ansaitsemasi pisteet ja miten!";
+      return "\u0627\u06cc\u0646\u062c\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062a\u0645\u0627\u0645 \u0627\u0645\u062a\u06cc\u0627\u0632\u0627\u062a\u06cc \u06a9\u0647 \u06a9\u0633\u0628 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f \u0648 \u0686\u06af\u0648\u0646\u06af\u06cc \u0622\u0646 \u0631\u0627 \u0628\u0628\u06cc\u0646\u06cc\u062f!";
     },
     get$alreadyInCourseWithID() {
-      return "Olet jo kurssilla, jossa on t\xe4m\xe4 suunnitelma. Haluatko luoda kurssin samalla suunnitelmalla vai siirty\xe4 olemassa olevaan kurssiin?";
+      return "\u0634\u0645\u0627 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u06cc\u06a9 \u062f\u0648\u0631\u0647 \u0628\u0627 \u0627\u06cc\u0646 \u0628\u0631\u0646\u0627\u0645\u0647 \u0647\u0633\u062a\u06cc\u062f. \u0622\u06cc\u0627 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u0628\u0627 \u0647\u0645\u0627\u0646 \u0628\u0631\u0646\u0627\u0645\u0647 \u0627\u06cc\u062c\u0627\u062f \u06a9\u0646\u06cc\u062f \u06cc\u0627 \u0628\u0647 \u062f\u0648\u0631\u0647 \u0645\u0648\u062c\u0648\u062f \u0628\u0631\u0648\u06cc\u062f\u061f";
     },
     get$goToExistingCourse() {
-      return "Siirry olemassa olevaan kurssiin";
+      return "\u0628\u0647 \u062f\u0648\u0631\u0647 \u0645\u0648\u062c\u0648\u062f \u0628\u0631\u0648\u06cc\u062f";
     },
     get$emojiView() {
-      return "Emojin\xe4kym\xe4";
+      return "\u0646\u0645\u0627\u06cc\u0634 \u0627\u06cc\u0645\u0648\u062c\u06cc";
     },
     get$feedbackDialogDesc() {
-      return "Teen my\xf6s virheit\xe4! Onko jotain, mik\xe4 auttaisi minua parantamaan?";
+      return "\u0645\u0646 \u0647\u0645 \u0627\u0634\u062a\u0628\u0627\u0647 \u0645\u06cc\u200c\u06a9\u0646\u0645! \u0622\u06cc\u0627 \u0686\u06cc\u0632\u06cc \u0647\u0633\u062a \u06a9\u0647 \u0628\u0647 \u0645\u0646 \u06a9\u0645\u06a9 \u06a9\u0646\u062f \u0628\u0647\u062a\u0631 \u0634\u0648\u0645\u061f";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "Yhteyshenkil\xf6 on kutsuttu kurssille";
+      return "\u062a\u0645\u0627\u0633 \u0628\u0647 \u062f\u0648\u0631\u0647 \u062f\u0639\u0648\u062a \u0634\u062f\u0647 \u0627\u0633\u062a";
     },
     get$inviteFriends() {
-      return "Kutsu yst\xe4vi\xe4";
+      return "\u062f\u0639\u0648\u062a \u062f\u0648\u0633\u062a\u0627\u0646";
     },
     get$failedToLoadFeedback() {
-      return "Palaute ei latautunut.";
+      return "\u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc \u0628\u0627\u0632\u062e\u0648\u0631\u062f \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f.";
     },
     get$activityStatsButtonTooltip() {
-      return "Toimintatiedot";
+      return "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0641\u0639\u0627\u0644\u06cc\u062a";
     },
     get$allow(_) {
-      return "Salli";
+      return "\u0627\u062c\u0627\u0632\u0647 \u062f\u0627\u062f\u0646";
     },
     get$deny() {
-      return "Hylk\xe4\xe4";
+      return "\u0631\u062f \u06a9\u0631\u062f\u0646";
     },
     get$enabledRenewal() {
-      return "Ota k\xe4ytt\xf6\xf6n tilauksen uusiminen";
+      return "\u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0646 \u062a\u0645\u062f\u06cc\u062f \u0627\u0634\u062a\u0631\u0627\u06a9";
     },
     get$subscriptionEndsOn() {
-      return "Tilauksen p\xe4\xe4ttymisp\xe4iv\xe4";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u062f\u0631 \u062a\u0627\u0631\u06cc\u062e \u067e\u0627\u06cc\u0627\u0646 \u0645\u06cc\u200c\u06cc\u0627\u0628\u062f";
     },
     get$subscriptionRenewsOn() {
-      return "Tilauksen uusimisp\xe4iv\xe4";
+      return "\u0627\u0634\u062a\u0631\u0627\u06a9 \u062f\u0631 \u062a\u0627\u0631\u06cc\u062e \u062a\u0645\u062f\u06cc\u062f \u0645\u06cc\u200c\u0634\u0648\u062f";
     },
     get$waitForSubscriptionChanges() {
-      return "Muutokset tilauksessasi saattavat kest\xe4\xe4 hetken n\xe4ky\xe4 sovelluksessa.";
+      return "\u062a\u063a\u06cc\u06cc\u0631\u0627\u062a \u062f\u0631 \u0627\u0634\u062a\u0631\u0627\u06a9 \u0634\u0645\u0627 \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0645\u062f\u062a\u06cc \u0637\u0648\u0644 \u0628\u06a9\u0634\u062f \u062a\u0627 \u062f\u0631 \u0628\u0631\u0646\u0627\u0645\u0647 \u0645\u0646\u0639\u06a9\u0633 \u0634\u0648\u062f.";
     },
     get$subscribeReadingAssistance() {
-      return "Tilaa avustusty\xf6kalujen avaamiseksi";
+      return "\u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0627\u0628\u0632\u0627\u0631\u0647\u0627\u06cc \u067e\u06cc\u0627\u0645\u060c \u0627\u0634\u062a\u0631\u0627\u06a9 \u0628\u06af\u06cc\u0631\u06cc\u062f";
     },
     get$aceDisplayName() {
-      return "Achinese";
+      return "\u0622\u0686\u06cc\u0646";
     },
     get$achDisplayName() {
-      return "Acoli";
+      return "\u0622\u06a9\u0648\u0644\u06cc";
     },
     get$afDisplayName() {
-      return "Afrikaanit";
+      return "\u0622\u0641\u0631\u06cc\u06a9\u0627\u0646\u0633";
     },
     get$akDisplayName() {
-      return "Akan";
+      return "\u0622\u06a9\u0627\u0646";
     },
     get$alzDisplayName() {
-      return "Alur";
+      return "\u0622\u0644\u0648\u0631";
     },
     get$amDisplayName() {
-      return "Amharic";
+      return "\u0627\u0645\u0647\u0631\u0627\u06cc\u06cc";
     },
     get$arDisplayName() {
-      return "Arabia";
+      return "\u0639\u0631\u0628\u06cc";
     },
     get$asDisplayName() {
-      return "Assami";
+      return "\u0622\u0633\u0627\u0645ese";
     },
     get$awaDisplayName() {
-      return "Awadhi";
+      return "\u0622\u0648\u0627\u062f\u06cc";
     },
     get$ayDisplayName() {
-      return "Aymara";
+      return "\u0622\u06cc\u0645\u0627\u0631\u0627";
     },
     get$azDisplayName() {
-      return "Azerbaid\u017eaani";
+      return "\u0622\u0630\u0631\u0628\u0627\u06cc\u062c\u0627\u0646\u06cc";
     },
     get$baDisplayName() {
-      return "Ba\u0161kir";
+      return "\u0628\u0627\u0634\u0642\u06cc\u0631";
     },
     get$banDisplayName() {
-      return "Balilainen";
+      return "\u0628\u0627\u0644\u06cc\u0646\u06cc";
     },
     get$bbcDisplayName() {
-      return "Batak Toba";
+      return "\u0628\u0627\u062a\u0627\u06a9 \u062a\u0648\u0628\u0627";
     },
     get$beDisplayName() {
-      return "Valkoven\xe4l\xe4inen";
+      return "\u0628\u0644\u0627\u0631\u0648\u0633\u06cc";
     },
     get$bemDisplayName() {
-      return "Bemba";
+      return "\u0628\u0645\u0628\u0627";
     },
     get$bewDisplayName() {
-      return "Betawi";
+      return "\u0628\u062a\u0627\u0648\u06cc";
     },
     get$bgDisplayName() {
-      return "Bulgari";
+      return "\u0628\u0644\u063a\u0627\u0631\u06cc";
     },
     get$bhoDisplayName() {
-      return "Bhojpuri";
+      return "\u0628\u0648\u062c\u067e\u0648\u0631\u06cc";
     },
     get$bikDisplayName() {
-      return "Bikol";
+      return "\u0628\u06cc\u06a9\u0648\u0644";
     },
     get$bmDisplayName() {
-      return "Bambara";
+      return "\u0628\u0627\u0645\u0628\u0627\u0631\u0627";
     },
     get$bnDisplayName() {
-      return "Bengali";
+      return "\u0628\u0646\u06af\u0627\u0644\u06cc";
     },
     get$bnBDDisplayName() {
-      return "Bengali (Bangladesh)";
+      return "\u0628\u0646\u06af\u0627\u0644\u06cc (\u0628\u0646\u06af\u0644\u0627\u062f\u0634)";
     },
     get$bnINDisplayName() {
-      return "Bengali (Intia)";
+      return "\u0628\u0646\u06af\u0627\u0644\u06cc (\u0647\u0646\u062f)";
     },
     get$brDisplayName() {
-      return "Breton";
+      return "\u0628\u0631\u062a\u0648\u0646";
     },
     get$bsDisplayName() {
-      return "Bosnia";
+      return "\u0628\u0648\u0633\u0646\u06cc\u0627\u06cc\u06cc";
     },
     get$btsDisplayName() {
-      return "Batak Simalungun";
+      return "\u0628\u0627\u062a\u0627\u06a9 \u0633\u06cc\u0645\u0627 \u0644\u0648\u0646\u06af\u0648\u0646";
     },
     get$btxDisplayName() {
-      return "Batak Karo";
+      return "\u0628\u0627\u062a\u0627\u06a9 \u06a9\u0627\u0631\u0648";
     },
     get$buaDisplayName() {
-      return "Buriat";
+      return "\u0628\u0648\u0631\u06cc\u0627\u062a";
     },
     get$caDisplayName() {
-      return "Katalonia";
+      return "\u06a9\u0627\u062a\u0627\u0644\u0627\u0646";
     },
     get$cebDisplayName() {
-      return "Cebuano";
+      return "\u0633\u0628\u0648\u0627\u0646\u0648";
     },
     get$cggDisplayName() {
-      return "Chiga";
+      return "\u0686\u06cc\u06af\u0627";
     },
     get$chmDisplayName() {
-      return "Mari";
+      return "\u0645\u0627\u0631\u06cc";
     },
     get$ckbDisplayName() {
-      return "Keski-kurdin";
+      return "\u06a9\u0631\u062f\u06cc \u0645\u0631\u06a9\u0632\u06cc";
     },
     get$cnhDisplayName() {
-      return "Hakha Chin";
+      return "\u0647\u0627\u06a9\u0627 \u0686\u06cc\u0646";
     },
     get$coDisplayName() {
-      return "Korsika";
+      return "\u06a9\u0648\u0631\u0633\u06cc";
     },
     get$crhDisplayName() {
-      return "Kriminan turkki";
+      return "\u062a\u0631\u06a9\u06cc \u06a9\u0631\u06cc\u0645\u0647\u200c\u0627\u06cc";
     },
     get$crsDisplayName() {
-      return "Seselwa kreoliranska";
+      return "\u0641\u0631\u0627\u0646\u0633\u0648\u06cc \u06a9\u0631\u06cc\u0648\u0644 \u0633\u0633\u0644\u0648\u0648\u0627";
     },
     get$csDisplayName() {
-      return "T\u0161ekki";
+      return "\u0686\u06a9";
     },
     get$cvDisplayName() {
-      return "T\u0161uva\u0161i";
+      return "\u0686\u0648\u0648\u0627\u0634";
     },
     get$cyDisplayName() {
-      return "Wales";
+      return "\u0648\u0644\u0632\u06cc";
     },
     get$daDisplayName() {
-      return "Tanska";
+      return "\u062f\u0627\u0646\u0645\u0627\u0631\u06a9\u06cc";
     },
     get$deDisplayName() {
-      return "Saksa";
+      return "\u0622\u0644\u0645\u0627\u0646\u06cc";
     },
     get$dinDisplayName() {
-      return "Dinka";
+      return "\u062f\u06cc\u0646\u06a9\u0627";
     },
     get$doiDisplayName() {
-      return "Dogri";
+      return "\u062f\u0648\u06af\u0631\u06cc";
     },
     get$dovDisplayName() {
-      return "Dombe";
+      return "\u062f\u0648\u0645\u0628\u0647";
     },
     get$dzDisplayName() {
-      return "Dzongkha";
+      return "\u062f\u0632\u0648\u0646\u06af\u06a9\u0627";
     },
     get$eeDisplayName() {
-      return "Ewe";
+      return "\u0627\u0648\u0647";
     },
     get$enDisplayName() {
-      return "Englanti";
+      return "\u0627\u0646\u06af\u0644\u06cc\u0633\u06cc";
     },
     get$enAUDisplayName() {
-      return "Englanti (Australia)";
+      return "\u0627\u0646\u06af\u0644\u06cc\u0633\u06cc (\u0627\u0633\u062a\u0631\u0627\u0644\u06cc\u0627)";
     },
     get$enGBDisplayName() {
-      return "Englanti (Iso-Britannia)";
+      return "\u0627\u0646\u06af\u0644\u06cc\u0633\u06cc (\u0628\u0631\u06cc\u062a\u0627\u0646\u06cc\u0627)";
     },
     get$enINDisplayName() {
-      return "Englanti (Intia)";
+      return "\u0627\u0646\u06af\u0644\u06cc\u0633\u06cc (\u0647\u0646\u062f)";
     },
     get$enUSDisplayName() {
-      return "Englanti (Yhdysvallat)";
+      return "\u0627\u0646\u06af\u0644\u06cc\u0633\u06cc (\u0627\u06cc\u0627\u0644\u0627\u062a \u0645\u062a\u062d\u062f\u0647)";
     },
     get$eoDisplayName() {
-      return "Esperanto";
+      return "\u0627\u0633\u067e\u0631\u0627\u0646\u062a\u0648";
     },
     get$esDisplayName() {
-      return "Espanja";
+      return "\u0627\u0633\u067e\u0627\u0646\u06cc\u0627\u06cc\u06cc";
     },
     get$esESDisplayName() {
-      return "Espanja (Espanja)";
+      return "\u0627\u0633\u067e\u0627\u0646\u06cc\u0627\u06cc\u06cc (\u0627\u0633\u067e\u0627\u0646\u06cc\u0627)";
     },
     get$esMXDisplayName() {
-      return "Espanja (Meksiko)";
+      return "\u0627\u0633\u067e\u0627\u0646\u06cc\u0627\u06cc\u06cc (\u0645\u06a9\u0632\u06cc\u06a9)";
     },
     get$euDisplayName() {
-      return "Baskimaa";
+      return "\u0628\u0627\u0633\u06a9\u06cc";
     },
     get$faDisplayName() {
-      return "Persia";
+      return "\u0641\u0627\u0631\u0633\u06cc";
     },
     get$ffDisplayName() {
-      return "Fulah";
+      return "\u0641\u0648\u0644\u0627";
     },
     get$fiDisplayName() {
-      return "Suomi";
+      return "\u0641\u0646\u0644\u0627\u0646\u062f\u06cc";
     },
     get$filDisplayName() {
-      return "Filippiinil\xe4inen";
+      return "\u0641\u06cc\u0644\u06cc\u067e\u06cc\u0646\u06cc";
     },
     get$fjDisplayName() {
-      return "Fid\u017eil\xe4inen";
+      return "\u0641\u06cc\u062c\u06cc";
     },
     get$foDisplayName() {
-      return "Faroese";
+      return "\u0641\u0627\u0631\u0648\u06cc\u06cc";
     },
     get$frDisplayName() {
-      return "Ranska";
+      return "\u0641\u0631\u0627\u0646\u0633\u0648\u06cc";
     },
     get$frCADisplayName() {
-      return "Ranska (Kanada)";
+      return "\u0641\u0631\u0627\u0646\u0633\u0648\u06cc (\u06a9\u0627\u0646\u0627\u062f\u0627)";
     },
     get$frFRDisplayName() {
-      return "Ranska (Ranska)";
+      return "\u0641\u0631\u0627\u0646\u0633\u0648\u06cc (\u0641\u0631\u0627\u0646\u0633\u0647)";
     },
     get$fyDisplayName() {
-      return "L\xe4nsi-Frisi";
+      return "\u0641\u0631\u0632\u06cc \u063a\u0631\u0628\u06cc";
     },
     get$gaDisplayName() {
-      return "Irlanti";
+      return "\u0627\u06cc\u0631\u0644\u0646\u062f\u06cc";
     },
     get$gaaDisplayName() {
-      return "Ga";
+      return "\u06af\u0627";
     },
     get$gdDisplayName() {
-      return "Skottilainen gaeli";
+      return "\u06af\u0627\u0644\u06cc\u0627\u06cc\u06cc \u0627\u0633\u06a9\u0627\u062a\u0644\u0646\u062f\u06cc";
     },
     get$glDisplayName() {
-      return "Galego";
+      return "\u06af\u0627\u0644\u06cc\u0633\u06cc";
     },
     get$gnDisplayName() {
-      return "Guarani";
+      return "\u06af\u0648\u0627\u0631\u0627\u0646\u06cc";
     },
     get$gomDisplayName() {
-      return "Goan Konkani";
+      return "\u06a9\u0648\u0646\u06a9\u0627\u0646\u06cc \u06af\u0648\u0627";
     },
     get$guDisplayName() {
-      return "Gujarati";
+      return "\u06af\u062c\u0631\u0627\u062a\u06cc";
     },
     get$haDisplayName() {
-      return "Hausa";
+      return "\u0647\u0648\u0633\u0627";
     },
     get$hawDisplayName() {
-      return "Havaiji";
+      return "\u0647\u0627\u0648\u0627\u06cc\u06cc";
     },
     get$heDisplayName() {
-      return "Heprea";
+      return "\u0639\u0628\u0631\u06cc";
     },
     get$hiDisplayName() {
-      return "Hindi";
+      return "\u0647\u0646\u062f\u06cc";
     },
     get$hilDisplayName() {
-      return "Hiligaynon";
+      return "\u0647\u06cc\u0644\u06cc\u06af\u0627\u06cc\u0646\u0648\u0646";
     },
     get$hmnDisplayName() {
-      return "Hmong";
+      return "\u0647\u0645\u0648\u0646\u06af";
     },
     get$hneDisplayName() {
-      return "Chhattisgarhi";
+      return "\u0686\u0627\u062a\u06cc\u0633\u06af\u0631\u0647\u06cc";
     },
     get$hrDisplayName() {
-      return "Kroatialainen";
+      return "\u06a9\u0631\u0648\u0627\u0633\u06cc";
     },
     get$hrxDisplayName() {
-      return "Hunsrik";
+      return "\u0647\u0648\u0646\u0632\u0631\u06cc\u06a9";
     },
     get$htDisplayName() {
-      return "Haitilainen kreoli";
+      return "\u06a9\u0631\u06cc\u062f\u0644 \u0647\u0627\u0626\u06cc\u062a\u06cc";
     },
     get$huDisplayName() {
-      return "Unkarilainen";
+      return "\u0645\u062c\u0627\u0631\u0633\u062a\u0627\u0646\u06cc";
     },
     get$hyDisplayName() {
-      return "Armenialainen";
+      return "\u0627\u0631\u0645\u0646\u06cc";
     },
     get$idDisplayName() {
-      return "Indonesialainen";
+      return "\u0627\u0646\u062f\u0648\u0646\u0632\u06cc\u0627\u06cc\u06cc";
     },
     get$igDisplayName() {
-      return "Igbo";
+      return "\u0627\u06cc\u06af\u0628\u0648";
     },
     get$iloDisplayName() {
-      return "Iloko";
+      return "\u0627\u06cc\u0644\u0648\u06a9\u0648";
     },
     get$isDisplayName() {
-      return "Islanti";
+      return "\u0627\u06cc\u0633\u0644\u0646\u062f\u06cc";
     },
     get$itDisplayName() {
-      return "italialainen";
+      return "\u0627\u06cc\u062a\u0627\u0644\u06cc\u0627\u06cc\u06cc";
     },
     get$jaDisplayName() {
-      return "japanilainen";
+      return "\u0698\u0627\u067e\u0646\u06cc";
     },
     get$jvDisplayName() {
-      return "javanilainen";
+      return "\u062c\u0627\u0648\u0647\u200c\u0627\u06cc";
     },
     get$kaDisplayName() {
-      return "georgialainen";
+      return "\u06af\u0631\u062c\u06cc";
     },
     get$kkDisplayName() {
-      return "kazakki";
+      return "\u0642\u0632\u0627\u0642\u06cc";
     },
     get$kmDisplayName() {
-      return "khmer";
+      return "\u062e\u0645\u0631\u06cc";
     },
     get$knDisplayName() {
-      return "kannada";
+      return "\u06a9\u0627\u0646\u0627\u062f\u0627";
     },
     get$koDisplayName() {
-      return "korea";
+      return "\u06a9\u0631\u0647\u200c\u0627\u06cc";
     },
     get$kokDisplayName() {
-      return "konkani";
+      return "\u06a9\u0648\u0646\u06a9\u0627\u0646\u06cc";
     },
     get$kriDisplayName() {
-      return "kriolu";
+      return "\u06a9\u0631\u06cc\u0648";
     },
     get$ksDisplayName() {
-      return "Kashmiri";
+      return "\u06a9\u0634\u0645\u06cc\u0631\u06cc";
     },
     get$ktuDisplayName() {
-      return "Kituba (Kongon demokraattinen tasavalta)";
+      return "\u06a9\u06cc\u062a\u0648\u0628\u0627 (\u062c\u0645\u0647\u0648\u0631\u06cc \u062f\u0645\u0648\u06a9\u0631\u0627\u062a\u06cc\u06a9 \u06a9\u0646\u06af\u0648)";
     },
     get$kuDisplayName() {
-      return "Kurdin";
+      return "\u06a9\u0631\u062f\u06cc";
     },
     get$kyDisplayName() {
-      return "Kyrgyz";
+      return "\u0642\u0631\u0642\u06cc\u0632\u06cc";
     },
     get$laDisplayName() {
-      return "Latina";
+      return "\u0644\u0627\u062a\u06cc\u0646";
     },
     get$lbDisplayName() {
-      return "Luxemburgin";
+      return "\u0644\u0648\u06a9\u0632\u0627\u0645\u0628\u0648\u0631\u06af\u06cc";
     },
     get$lgDisplayName() {
-      return "Ganda";
+      return "\u06af\u0627\u0646\u062f\u0627";
     },
     get$liDisplayName() {
-      return "Limburgin";
+      return "\u0644\u06cc\u0645\u0628\u0648\u0631\u06af\u06cc";
     },
     get$lijDisplayName() {
-      return "Ligurian";
+      return "\u0644\u06cc\u06af\u0648\u0631\u06cc";
     },
     get$lmoDisplayName() {
-      return "Lombard";
+      return "\u0644\u0648\u0645\u0628\u0627\u0631\u062f\u06cc";
     },
     get$lnDisplayName() {
-      return "Lingala";
+      return "\u0644\u06cc\u0646\u06af\u0627\u0644\u0627";
     },
     get$loDisplayName() {
-      return "Lao";
+      return "\u0644\u0627\u0626\u0648";
     },
     get$ltDisplayName() {
-      return " Liettua";
+      return "\u0644\u06cc\u062a\u0648\u0627\u0646\u06cc\u0627\u06cc\u06cc";
     },
     get$ltgDisplayName() {
-      return "Latgalia";
+      return "\u0644\u0627\u062a\u06af\u0627\u0644\u06cc";
     },
     get$luoDisplayName() {
-      return "Luo (Kenia ja Tansania)";
+      return "\u0644\u0648\u0648 (\u06a9\u0646\u06cc\u0627 \u0648 \u062a\u0627\u0646\u0632\u0627\u0646\u06cc\u0627)";
     },
     get$lusDisplayName() {
-      return "Mizo";
+      return "\u0645\u06cc\u0632\u0648";
     },
     get$lvDisplayName() {
-      return "Latvia";
+      return "\u0644\u062a\u0648\u0646\u06cc\u0627\u06cc\u06cc";
     },
     get$maiDisplayName() {
-      return "Maithili";
+      return "\u0645\u0627\u0626\u06cc\u062a\u06cc\u0644\u06cc";
     },
     get$makDisplayName() {
-      return "Makasar";
+      return "\u0645\u0627\u06a9\u0627\u0633\u0627\u0631";
     },
     get$mgDisplayName() {
-      return "Malagassi";
+      return "\u0645\u0627\u0644\u0627\u06af\u0627\u0633\u06cc";
     },
     get$miDisplayName() {
-      return "M\u0101ori";
+      return "\u0645\u0627\u0626\u0648\u0631\u06cc";
     },
     get$minDisplayName() {
-      return "Minangkabau";
+      return "\u0645\u06cc\u0646\u0627\u0646\u06a9\u0627\u0628\u0627\u0626\u0648";
     },
     get$mkDisplayName() {
-      return "Makedonian";
+      return "\u0645\u0642\u062f\u0648\u0646\u06cc";
     },
     get$mlDisplayName() {
-      return "Malayalam";
+      return "\u0645\u0627\u0644\u0627\u06cc\u0627\u0644\u0645";
     },
     get$mnDisplayName() {
-      return "Mongolian";
+      return "\u0645\u063a\u0648\u0644\u06cc";
     },
     get$mniDisplayName() {
-      return "Manipuri";
+      return "\u0645\u0646\u06cc\u067e\u0648\u0631\u06cc";
     },
     get$mrDisplayName() {
-      return "Marathi";
+      return "\u0645\u0627\u0631\u0627\u0686\u06cc";
     },
     get$msDisplayName() {
-      return "Malaiji";
+      return "\u0645\u0627\u0644\u0627\u06cc\u06cc";
     },
     get$msArabDisplayName() {
-      return "Malaiji (arabia)";
+      return "\u0645\u0627\u0644\u0627\u06cc\u06cc (\u0639\u0631\u0628\u06cc)";
     },
     get$msMYDisplayName() {
-      return "Malaiji (Malesia)";
+      return "\u0645\u0627\u0644\u0627\u06cc\u06cc (\u0645\u0627\u0644\u0632\u06cc)";
     },
     get$mtDisplayName() {
-      return "Maltalainen";
+      return "\u0645\u0627\u0644\u062a\u06cc";
     },
     get$mwrDisplayName() {
-      return "Marwari";
+      return "\u0645\u0627\u0631\u0648\u0627\u0631\u06cc";
     },
     get$myDisplayName() {
-      return "Burmese";
+      return "\u0628\u0631\u0645\u0647\u200c\u0627\u06cc";
     },
     get$nanDisplayName() {
-      return "Min Nan";
+      return "\u0645\u06cc\u0646 \u0646\u0627\u0646";
     },
     get$nbDisplayName() {
-      return "Norja (Bokm\xe5l)";
+      return "\u0646\u0631\u0648\u0698\u06cc (\u0628\u0627\u06a9\u0645\u0627\u0644)";
     },
     get$neDisplayName() {
-      return "Nepali";
+      return "\u0646\u067e\u0627\u0644\u06cc";
     },
     get$newDisplayName() {
-      return "Newari";
+      return "\u0646\u0648\u0627\u0631\u06cc";
     },
     get$nlDisplayName() {
-      return "Hollanti";
+      return "\u0647\u0644\u0646\u062f\u06cc";
     },
     get$nlBEDisplayName() {
-      return "Flaami";
+      return "\u0641\u0644\u0627\u0646\u062f\u06cc";
     },
     get$noDisplayName() {
-      return "Norja";
+      return "\u0646\u0631\u0648\u0698\u06cc";
     },
     get$nrDisplayName() {
-      return "Etel\xe4-Ndebele";
+      return "\u0632\u0628\u0627\u0646 \u0646\u062f\u06cc\u0628\u0644 \u062c\u0646\u0648\u0628\u06cc";
     },
     get$nsoDisplayName() {
-      return "Pohjois-Sotho";
+      return "\u0632\u0628\u0627\u0646 \u0633\u0648\u062a\u0648 \u0634\u0645\u0627\u0644\u06cc";
     },
     get$nusDisplayName() {
-      return "Nuer";
+      return "\u0632\u0628\u0627\u0646 \u0646\u06cc\u0648\u0631";
     },
     get$nyDisplayName() {
-      return "Nyanja";
+      return "\u0632\u0628\u0627\u0646 \u0646\u06cc\u0646\u062c\u0627";
     },
     get$ocDisplayName() {
-      return "Oktsitaani";
+      return "\u0632\u0628\u0627\u0646 \u0627\u0648\u06a9\u06cc\u062a\u0627\u0646";
     },
     get$omDisplayName() {
-      return "Oromo";
+      return "\u0632\u0628\u0627\u0646 \u0627\u0648\u0631\u0648\u0645\u0648";
     },
     get$orDisplayName() {
-      return "Odia";
+      return "\u0632\u0628\u0627\u0646 \u0627\u0648\u062f\u06cc\u0627";
     },
     get$paDisplayName() {
-      return "Punjabi";
+      return "\u0632\u0628\u0627\u0646 \u067e\u0646\u062c\u0627\u0628\u06cc";
     },
     get$paArabDisplayName() {
-      return "Punjabi (Shahmukhi)";
+      return "\u067e\u0646\u062c\u0627\u0628\u06cc (\u0634\u0627\u0645\u0648\u062e\u06cc)";
     },
     get$paINDisplayName() {
-      return "Punjabi (Gurmukhi)";
+      return "\u067e\u0646\u062c\u0627\u0628\u06cc (\u06af\u0648\u0631\u0645\u0648\u062e\u06cc)";
     },
     get$pagDisplayName() {
-      return "Pangasinan";
+      return "\u067e\u0627\u0646\u06af\u0627\u0633\u06cc\u0646\u0627\u0646";
     },
     get$pamDisplayName() {
-      return "Pampanga";
+      return "\u067e\u0627\u0645\u067e\u0627\u0646\u06af\u0627";
     },
     get$papDisplayName() {
-      return "Papiamento";
+      return "\u067e\u0627\u067e\u06cc\u0627\u0645\u0646\u062a\u0648";
     },
     get$plDisplayName() {
-      return "Puola";
+      return "\u0644\u0647\u062c\u0647 \u0644\u0647\u0633\u062a\u0627\u0646\u06cc";
     },
     get$psDisplayName() {
-      return "Pashto";
+      return "\u067e\u0634\u062a\u0648";
     },
     get$ptDisplayName() {
-      return "Portugali";
+      return "\u067e\u0631\u062a\u063a\u0627\u0644\u06cc";
     },
     get$ptBRDisplayName() {
-      return "Portugali (Brasilia)";
+      return "\u067e\u0631\u062a\u063a\u0627\u0644\u06cc (\u0628\u0631\u0632\u06cc\u0644)";
     },
     get$ptPTDisplayName() {
-      return "Portugali (Portugali)";
+      return "\u067e\u0631\u062a\u063a\u0627\u0644\u06cc (\u067e\u0631\u062a\u063a\u0627\u0644)";
     },
     get$quDisplayName() {
-      return "Quechua";
+      return "\u06a9\u0686\u0648\u0627";
     },
     get$rajDisplayName() {
-      return "Rajasthani";
+      return "\u0631\u0627\u062c\u0633\u062a\u0627\u0646\u06cc";
     },
     get$rnDisplayName() {
-      return "Rundi";
+      return "\u0631\u0648\u0646\u062f\u06cc";
     },
     get$roDisplayName() {
-      return "Romanialainen";
+      return "\u0631\u0648\u0645\u0627\u0646\u06cc\u0627\u06cc\u06cc";
     },
     get$roMDDisplayName() {
-      return "Moldovalainen";
+      return "\u0645\u0648\u0644\u062f\u0627\u0648\u06cc";
     },
     get$romDisplayName() {
-      return "Romani";
+      return "\u0631\u0648\u0645\u0627\u0646\u06cc";
     },
     get$ruDisplayName() {
-      return "Ven\xe4j\xe4";
+      return "\u0631\u0648\u0633\u06cc";
     },
     get$rwDisplayName() {
-      return "Kinyarwanda";
+      return "\u06a9\u06cc\u0646\u06cc\u0627\u0631\u0648\u0627\u0646\u062f\u0627";
     },
     get$saDisplayName() {
-      return "Sanskrit";
+      return "\u0633\u0627\u0646\u0633\u06a9\u0631\u06cc\u062a";
     },
     get$satDisplayName() {
-      return "Santali";
+      return "\u0633\u0627\u0646\u062a\u0627\u0644\u06cc";
     },
     get$scnDisplayName() {
-      return "Sitsiilia";
+      return "\u0633\u06cc\u0633\u06cc\u0644\u06cc";
     },
     get$sdDisplayName() {
-      return "Sindhi";
+      return "\u0633\u0646\u062f\u06cc";
     },
     get$sgDisplayName() {
-      return "Sango";
+      return "\u0633\u0627\u0646\u06af\u0648";
     },
     get$shnDisplayName() {
-      return "Shan";
+      return "\u0634\u0627\u0646";
     },
     get$siDisplayName() {
-      return "Sinhala";
+      return "\u0633\u06cc\u0646\u0647\u0627\u0644\u06cc";
     },
     get$skDisplayName() {
-      return "Slovakki";
+      return "\u0627\u0633\u0644\u0648\u0627\u06a9\u06cc";
     },
     get$slDisplayName() {
-      return "Sloveeni";
+      return "\u0627\u0633\u0644\u0648\u0648\u0646\u06cc\u0627\u06cc\u06cc";
     },
     get$smDisplayName() {
-      return "Samoa";
+      return "\u0633\u0627\u0645\u0648\u0627\u06cc\u06cc";
     },
     get$snDisplayName() {
-      return "Shona";
+      return "\u0634\u0648\u0646\u0627";
     },
     get$soDisplayName() {
-      return "Somali";
+      return "\u0635\u0648\u0645\u0627\u0644\u06cc";
     },
     get$sqDisplayName() {
-      return "Albania";
+      return "\u0622\u0644\u0628\u0627\u0646\u06cc\u0627\u06cc\u06cc";
     },
     get$srDisplayName() {
-      return "Serbia";
+      return "\u0635\u0631\u0628\u06cc";
     },
     get$srMEDisplayName() {
-      return "Montenegro";
+      return "\u0645\u0648\u0646\u062a\u0647\u200c\u0646\u06af\u0631\u06cc\u0646\u06cc";
     },
     get$ssDisplayName() {
-      return "Swati";
+      return "\u0633\u0648\u0627\u062a\u06cc";
     },
     get$stDisplayName() {
-      return "Etel\xe4-Sotho";
+      return "\u0633\u0648\u062a\u0648 \u062c\u0646\u0648\u0628\u06cc";
     },
     get$suDisplayName() {
-      return "Sunda";
+      return "\u0633\u0648\u0646\u062f\u0627\u0646\u06cc";
     },
     get$svDisplayName() {
-      return "Ruotsi";
+      return "\u0633\u0648\u0626\u062f\u06cc";
     },
     get$swDisplayName() {
-      return "Swahili";
+      return "\u0633\u0648\u0627\u062d\u06cc\u0644\u06cc";
     },
     get$szlDisplayName() {
-      return "Sileesia";
+      return "\u0633\u06cc\u0644\u0632\u06cc";
     },
     get$taDisplayName() {
-      return "Tamili";
+      return "\u062a\u0627\u0645\u06cc\u0644\u06cc";
     },
     get$teDisplayName() {
-      return "Telugu";
+      return "\u062a\u0644\u0648\u06af\u0648";
     },
     get$tetDisplayName() {
-      return "Tetum";
+      return "\u062a\u062a\u0648\u0645";
     },
     get$tgDisplayName() {
-      return "Tad\u017eik";
+      return "\u062a\u0627\u062c\u06cc\u06a9";
     },
     get$thDisplayName() {
-      return "Thai";
+      return "\u062a\u0627\u06cc\u0644\u0646\u062f\u06cc";
     },
     get$tiDisplayName() {
-      return "Tigrinja";
+      return "\u062a\u06cc\u06af\u0631\u06cc\u0646\u06cc\u0627";
     },
     get$tkDisplayName() {
-      return "Turkmen";
+      return "\u062a\u0631\u06a9\u0645\u0646\u06cc";
     },
     get$tlDisplayName() {
-      return "Tagalog";
+      return "\u062a\u0627\u06af\u0627\u0644\u0648\u06af";
     },
     get$tnDisplayName() {
-      return "Tswana";
+      return "\u062a\u0633\u0648\u0627\u0646\u0627";
     },
     get$trDisplayName() {
-      return "Turkki";
+      return "\u062a\u0631\u06a9\u06cc";
     },
     get$tsDisplayName() {
-      return "Tsonga";
+      return "\u062a\u0633\u0648\u0646\u06af\u0627";
     },
     get$ttDisplayName() {
-      return "Tataari";
+      return "\u062a\u0627\u062a\u0627\u0631";
     },
     get$ugDisplayName() {
-      return "Uyguri";
+      return "\u0627\u0648\u063a\u0648\u0631";
     },
     get$ukDisplayName() {
-      return "Ukrainalainen";
+      return "\u0627\u0648\u06a9\u0631\u0627\u06cc\u0646\u06cc";
     },
     get$urDisplayName() {
-      return "Urdu";
+      return "\u0627\u0631\u062f\u0648";
     },
     get$urINDisplayName() {
-      return "Urdu (Intia)";
+      return "\u0627\u0631\u062f\u0648 (\u0647\u0646\u062f)";
     },
     get$urPKDisplayName() {
-      return "Urdu (Pakistan)";
+      return "\u0627\u0631\u062f\u0648 (\u067e\u0627\u06a9\u0633\u062a\u0627\u0646)";
     },
     get$uzDisplayName() {
-      return "Uzbek";
+      return "\u0627\u0632\u0628\u06a9\u06cc";
     },
     get$viDisplayName() {
-      return "Vietnamilainen";
+      return "\u0648\u06cc\u062a\u0646\u0627\u0645\u06cc";
     },
     get$wuuDisplayName() {
-      return "Wu";
+      return "\u0648\u0648";
     },
     get$xhDisplayName() {
-      return "Xhosa";
+      return "\u062e\u0648\u0633\u0627";
     },
     get$yiDisplayName() {
-      return "Jiddisch";
+      return "\u06cc\u062f\u06cc\u0634";
     },
     get$yoDisplayName() {
-      return "Joruba";
+      return "\u06cc\u0648\u0631\u0648\u0628\u0627";
     },
     get$yuaDisplayName() {
-      return "Yukatekki";
+      return "\u06cc\u0648\u06a9\u0627\u062a\u06a9";
     },
     get$yueDisplayName() {
-      return "Kantonin kiina";
+      return "\u06a9\u0627\u0646\u062a\u0648\u0646\u06cc";
     },
     get$yueCNDisplayName() {
-      return "Kantonin kiina (Kiina)";
+      return "\u06a9\u0627\u0646\u062a\u0648\u0646\u06cc (\u0686\u06cc\u0646)";
     },
     get$yueHKDisplayName() {
-      return "Kantonin kiina (Hongkong)";
+      return "\u06a9\u0627\u0646\u062a\u0648\u0646\u06cc (\u0647\u0646\u06af \u06a9\u0646\u06af)";
     },
     get$zhDisplayName() {
-      return "Kiina";
+      return "\u0686\u06cc\u0646\u06cc";
     },
     get$zhCNDisplayName() {
-      return "Kiina (yksinkertaistettu)";
+      return "\u0686\u06cc\u0646\u06cc (\u0633\u0627\u062f\u0647 \u0634\u062f\u0647)";
     },
     get$zhTWDisplayName() {
-      return "Kiina (perinteinen)";
+      return "\u0686\u06cc\u0646\u06cc (\u0633\u0646\u062a\u06cc)";
     },
     get$zuDisplayName() {
-      return "Zulu";
+      return "\u0632\u0648\u0644\u0648";
     },
     get$unreadPlus() {
-      return "99+";
+      return "\u06f9\u06f9+";
     },
     get$teacherModeTitle() {
-      return "Opettajan tila";
+      return "\u062d\u0627\u0644\u062a \u0645\u0639\u0644\u0645";
     },
     get$teacherModeDesc() {
-      return "Vaihda avataksesi kaikki aiheet ja aktiviteetit. Vain kurssin yll\xe4pit\xe4j\xe4lle.";
+      return "\u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u062a\u0645\u0627\u0645 \u0645\u0648\u0636\u0648\u0639\u0627\u062a \u0648 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u060c \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0647\u06cc\u062f. \u0641\u0642\u0637 \u0645\u062f\u06cc\u0631 \u062f\u0648\u0631\u0647.";
     },
     get$noSavedActivitiesYet() {
-      return "Toiminnot n\xe4kyv\xe4t t\xe4\xe4ll\xe4, kun ne on suoritettu ja tallennettu.";
+      return "\u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u067e\u0633 \u0627\u0632 \u0627\u062a\u0645\u0627\u0645 \u0648 \u0630\u062e\u06cc\u0631\u0647\u200c\u0633\u0627\u0632\u06cc \u062f\u0631 \u0627\u06cc\u0646\u062c\u0627 \u0638\u0627\u0647\u0631 \u062e\u0648\u0627\u0647\u0646\u062f \u0634\u062f.";
     },
     get$changeCourse() {
-      return "Vaihda kurssia";
+      return "\u062a\u063a\u06cc\u06cc\u0631 \u062f\u0648\u0631\u0647";
     },
     get$changeCourseDesc() {
-      return "T\xe4\xe4ll\xe4 voit vaihtaa t\xe4m\xe4n kurssin kurssisuunnitelmaa.";
+      return "\u0627\u06cc\u0646\u062c\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0631\u0646\u0627\u0645\u0647 \u062f\u0631\u0633\u06cc \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u0631\u0627 \u062a\u063a\u06cc\u06cc\u0631 \u062f\u0647\u06cc\u062f.";
     },
     get$introChatTitle() {
-      return "Luo esittelykeskustelu";
+      return "\u0627\u06cc\u062c\u0627\u062f \u0686\u062a \u0645\u0639\u0631\u0641\u06cc";
     },
     get$introChatDesc() {
-      return "Kuka tahansa tilassa voi julkaista.";
+      return "\u0647\u0631 \u06a9\u0633\u06cc \u062f\u0631 \u0627\u06cc\u0646 \u0641\u0636\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u067e\u0633\u062a \u06a9\u0646\u062f.";
     },
     get$announcementsChatTitle() {
-      return "Ilmoitukset keskustelu";
+      return "\u0686\u062a \u0627\u0639\u0644\u0627\u0645\u06cc\u0647\u200c\u0647\u0627";
     },
     get$announcementsChatDesc() {
-      return "Vain tilan yll\xe4pit\xe4j\xe4 voi julkaista.";
+      return "\u0641\u0642\u0637 \u0645\u062f\u06cc\u0631 \u0641\u0636\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u067e\u0633\u062a \u06a9\u0646\u062f.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "Avoimet istunnot (" + num + ")";
+      return "\u062c\u0644\u0633\u0627\u062a \u0628\u0627\u0632 (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "K\xe4ynniss\xe4 nyt (" + num + ")";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "Valmis (" + num + ")";
+      return "\u0627\u0646\u062c\u0627\u0645 \u0634\u062f\u0647 (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "Valitse toinen aktiviteetti";
-    },
-    get$messageLanguageMismatchMessage() {
-      return "Kohdekielesi ei vastaa t\xe4t\xe4 viesti\xe4. P\xe4ivit\xe4k\xf6 kohdekielesi?";
+      return "\u06cc\u06a9 \u0641\u0639\u0627\u0644\u06cc\u062a \u0645\u062a\u0641\u0627\u0648\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$blockLemmaConfirmation() {
-      return "T\xe4m\xe4 sanavihkon sana poistetaan pysyv\xe4sti analytiikastasi";
+      return "\u0627\u06cc\u0646 \u06a9\u0644\u0645\u0647 \u0648\u0627\u0698\u06af\u0627\u0646 \u0628\u0647 \u0637\u0648\u0631 \u062f\u0627\u0626\u0645\u06cc \u0627\u0632 \u062a\u062c\u0632\u06cc\u0647 \u0648 \u062a\u062d\u0644\u06cc\u0644 \u0634\u0645\u0627 \u062d\u0630\u0641 \u062e\u0648\u0627\u0647\u062f \u0634\u062f";
     },
     get$woman() {
-      return "Nainen";
+      return "\u0632\u0646";
     },
     get$man() {
-      return "Mies";
+      return "\u0645\u0631\u062f";
     },
     get$otherGender() {
-      return "Muu";
+      return "\u0633\u0627\u06cc\u0631";
     },
     get$unselectedGender() {
-      return "Valitse sukupuoli vaihtoehto";
+      return "\u06cc\u06a9 \u06af\u0632\u06cc\u0646\u0647 \u062c\u0646\u0633\u06cc\u062a\u06cc \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$gender() {
-      return "Sukupuoli";
+      return "\u062c\u0646\u0633\u06cc\u062a";
     },
     get$modeDisabled() {
-      return "Oppimisty\xf6kalut ovat pois k\xe4yt\xf6st\xe4 viesteille, jotka eiv\xe4t ole kohdekieless\xe4si.";
+      return "\u0627\u0628\u0632\u0627\u0631\u0647\u0627\u06cc \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc \u0628\u0631\u0627\u06cc \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0634\u0645\u0627 \u0646\u06cc\u0633\u062a\u0646\u062f \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u0634\u062f\u0647\u200c\u0627\u0646\u062f.";
     },
     get$courseParticipantTooltip() {
-      return 'T\xe4ss\xe4 ovat kaikki t\xe4m\xe4n kurssin osallistujat. Napsauta kenen tahansa k\xe4ytt\xe4j\xe4n avataria ja valitse "aloita keskustelu" l\xe4hett\xe4\xe4ksesi yksityisviestin.';
+      return '\u0627\u06cc\u0646 \u0647\u0645\u0647 \u0627\u0641\u0631\u0627\u062f\u06cc \u0647\u0633\u062a\u0646\u062f \u06a9\u0647 \u062f\u0631 \u0627\u06cc\u0646 \u062f\u0648\u0631\u0647 \u062d\u0636\u0648\u0631 \u062f\u0627\u0631\u0646\u062f. \u0628\u0631 \u0631\u0648\u06cc \u0622\u0648\u0627\u062a\u0627\u0631 \u0647\u0631 \u06a9\u0627\u0631\u0628\u0631 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f \u0648 "\u0634\u0631\u0648\u0639 \u06af\u0641\u062a\u06af\u0648" \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f \u062a\u0627 \u06cc\u06a9 \u067e\u06cc\u0627\u0645 \u0645\u0633\u062a\u0642\u06cc\u0645 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f.';
     },
     get$chatParticipantTooltip() {
-      return 'T\xe4ss\xe4 ovat kaikki t\xe4ss\xe4 keskustelussa. Napsauta mit\xe4 tahansa k\xe4ytt\xe4j\xe4n avatarista ja "aloita keskustelu" l\xe4hett\xe4\xe4ksesi yksityisviestin.';
+      return '\u0627\u06cc\u0646 \u0627\u0641\u0631\u0627\u062f \u062f\u0631 \u0627\u06cc\u0646 \u0686\u062a \u0647\u0633\u062a\u0646\u062f. \u0631\u0648\u06cc \u0622\u0648\u0627\u062a\u0627\u0631 \u0647\u0631 \u06a9\u0627\u0631\u0628\u0631 \u06a9\u0644\u06cc\u06a9 \u06a9\u0646\u06cc\u062f \u0648 "\u0634\u0631\u0648\u0639 \u0645\u06a9\u0627\u0644\u0645\u0647" \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f \u062a\u0627 \u06cc\u06a9 \u067e\u06cc\u0627\u0645 \u0645\u0633\u062a\u0642\u06cc\u0645 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f.';
     },
     get$inOngoingActivity() {
-      return "Sinulla on meneill\xe4\xe4n oleva aktiviteetti!";
+      return "\u0634\u0645\u0627 \u06cc\u06a9 \u0641\u0639\u0627\u0644\u06cc\u062a \u062f\u0631 \u062d\u0627\u0644 \u0627\u0646\u062c\u0627\u0645 \u062f\u0627\u0631\u06cc\u062f!";
     },
     get$requestRegeneration() {
-      return "Pyyd\xe4 uudelleensyntym\xe4\xe4";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u062c\u062f\u06cc\u062f";
     },
     get$optionalRegenerateReason() {
-      return "(Valinnainen) Syyn\xe4";
+      return "(\u0627\u062e\u062a\u06cc\u0627\u0631\u06cc) \u062f\u0644\u06cc\u0644";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "Olet asettanut emojin " + lemma + " varten! K\xe4yt\xe4mme t\xe4t\xe4 emojia sanan edustamiseen k\xe4yt\xe4nn\xf6n aktiviteeteissa tulevaisuudessa.";
+      return "\u0634\u0645\u0627 \u0627\u06cc\u0645\u0648\u062c\u06cc \u0631\u0627 \u0628\u0631\u0627\u06cc " + lemma + " \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f! \u0645\u0627 \u0627\u0632 \u0627\u06cc\u0646 \u0627\u06cc\u0645\u0648\u062c\u06cc \u0628\u0631\u0627\u06cc \u0646\u0645\u0627\u06cc\u0634 \u06a9\u0644\u0645\u0647 \u062f\u0631 \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627\u06cc \u0639\u0645\u0644\u06cc \u062f\u0631 \u0622\u06cc\u0646\u062f\u0647 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u062e\u0648\u0627\u0647\u06cc\u0645 \u06a9\u0631\u062f.";
     },
     get$constructUseCorLMDesc() {
-      return "Oikea sanaston m\xe4\xe4ritelm\xe4n harjoittelu";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u062a\u0639\u0631\u06cc\u0641 \u0648\u0627\u0698\u0647 \u0635\u062d\u06cc\u062d";
     },
     get$constructUseIncLMDesc() {
-      return "V\xe4\xe4r\xe4 sanaston m\xe4\xe4ritelm\xe4n harjoittelu";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u062a\u0639\u0631\u06cc\u0641 \u0648\u0627\u0698\u0647 \u0646\u0627\u062f\u0631\u0633\u062a";
     },
     get$constructUseCorLADesc() {
-      return "Oikea sanaston \xe4\xe4niharjoittelu";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u0635\u0648\u062a\u06cc \u0648\u0627\u0698\u0647 \u0635\u062d\u06cc\u062d";
     },
     get$constructUseIncLADesc() {
-      return "V\xe4\xe4r\xe4 sanaston \xe4\xe4niharjoittelu";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u0635\u0648\u062a\u06cc \u0648\u0627\u0698\u0647 \u0646\u0627\u062f\u0631\u0633\u062a";
     },
     get$constructUseBonus() {
-      return "Bonus sanaharjoittelun aikana";
+      return "\u067e\u0627\u062f\u0627\u0634 \u062f\u0631 \u062d\u06cc\u0646 \u062a\u0645\u0631\u06cc\u0646 \u0648\u0627\u0698\u0647";
     },
     get$practiceVocab() {
-      return "Harjoittele sanastoa";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u0648\u0627\u0698\u06af\u0627\u0646";
     },
     get$selectMeaning() {
-      return "Valitse merkitys";
+      return "\u0645\u0639\u0646\u06cc \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f";
     },
     get$anotherRound() {
-      return "Toinen kierros";
+      return "\u06cc\u06a9 \u062f\u0648\u0631 \u062f\u06cc\u06af\u0631";
     },
     get$ssoDialogTitle() {
-      return "Odotetaan kirjautumisen valmistumista";
+      return "\u062f\u0631 \u062d\u0627\u0644 \u0627\u0646\u062a\u0638\u0627\u0631 \u0628\u0631\u0627\u06cc \u062a\u06a9\u0645\u06cc\u0644 \u0648\u0631\u0648\u062f";
     },
     get$ssoDialogDesc() {
-      return "Avasimme uuden v\xe4lilehden, jotta voit kirjautua sis\xe4\xe4n turvallisesti.";
+      return "\u0645\u0627 \u06cc\u06a9 \u062a\u0628 \u062c\u062f\u06cc\u062f \u0628\u0627\u0632 \u06a9\u0631\u062f\u06cc\u0645 \u062a\u0627 \u0634\u0645\u0627 \u0628\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0647 \u0635\u0648\u0631\u062a \u0627\u0645\u0646 \u0648\u0627\u0631\u062f \u0634\u0648\u06cc\u062f.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 Jos et n\xe4hnyt uutta v\xe4lilehte\xe4, tarkista ponnahdusikkunoiden est\xe4j\xe4si.";
+      return "\ud83e\udd14 \u0627\u06af\u0631 \u062a\u0628 \u062c\u062f\u06cc\u062f \u0631\u0627 \u0646\u062f\u06cc\u062f\u06cc\u062f\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0633\u062f\u0648\u062f\u06a9\u0646\u0646\u062f\u0647 \u067e\u0627\u067e \u0622\u067e \u062e\u0648\u062f \u0631\u0627 \u0628\u0631\u0631\u0633\u06cc \u06a9\u0646\u06cc\u062f.";
     },
     get$disableLanguageToolsTitle() {
-      return "Poista kielity\xf6kalut k\xe4yt\xf6st\xe4";
+      return "\u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u06a9\u0631\u062f\u0646 \u0627\u0628\u0632\u0627\u0631\u0647\u0627\u06cc \u0632\u0628\u0627\u0646\u06cc";
     },
     get$disableLanguageToolsDesc() {
-      return "Haluaisitko poistaa automaattisen kieliavun k\xe4yt\xf6st\xe4?";
+      return "\u0622\u06cc\u0627 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u06a9\u0645\u06a9\u200c\u0647\u0627\u06cc \u0632\u0628\u0627\u0646\u06cc \u062e\u0648\u062f\u06a9\u0627\u0631 \u0631\u0627 \u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f\u061f";
     },
     get$recordingPermissionDenied() {
-      return "Oikeus ev\xe4tty. Ota k\xe4ytt\xf6\xf6n tallennusoikeudet \xe4\xe4niviestien tallentamiseksi.";
+      return "\u062f\u0633\u062a\u0631\u0633\u06cc \u0631\u062f \u0634\u062f. \u0628\u0631\u0627\u06cc \u0636\u0628\u0637 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0635\u0648\u062a\u06cc\u060c \u062f\u0633\u062a\u0631\u0633\u06cc\u200c\u0647\u0627\u06cc \u0636\u0628\u0637 \u0631\u0627 \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f.";
     },
     get$genericWebRecordingError() {
-      return "Jotain meni pieleen. Suosittelemme k\xe4ytt\xe4m\xe4\xe4n Chrome-selainta viestien tallentamiseen.";
+      return "\u0645\u0634\u06a9\u0644\u06cc \u067e\u06cc\u0634 \u0622\u0645\u062f. \u0645\u0627 \u062a\u0648\u0635\u06cc\u0647 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u0645 \u0647\u0646\u06af\u0627\u0645 \u0636\u0628\u0637 \u067e\u06cc\u0627\u0645\u200c\u0647\u0627 \u0627\u0632 \u0645\u0631\u0648\u0631\u06af\u0631 \u06a9\u0631\u0648\u0645 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u06cc\u062f.";
     },
     get$screenSizeWarning() {
-      return "Parhaan k\xe4ytt\xf6kokemuksen saamiseksi t\xe4m\xe4n sovelluksen k\xe4yt\xf6ss\xe4, laajenna n\xe4ytt\xf6kokoasi.";
+      return "\u0628\u0631\u0627\u06cc \u0628\u0647\u062a\u0631\u06cc\u0646 \u062a\u062c\u0631\u0628\u0647 \u062f\u0631 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0627\u06cc\u0646 \u0628\u0631\u0646\u0627\u0645\u0647\u060c \u0644\u0637\u0641\u0627\u064b \u0627\u0646\u062f\u0627\u0632\u0647 \u0635\u0641\u062d\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u0632\u0631\u06af\u062a\u0631 \u06a9\u0646\u06cc\u062f.";
     },
     get$noActivityRequest() {
-      return "Ei nykyist\xe4 aktiviteettipyynt\xf6\xe4.";
+      return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0641\u0639\u0627\u0644\u06cc\u062a \u0641\u0639\u0644\u06cc \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f.";
     },
     get$quit() {
-      return "Poistu";
+      return "\u062e\u0631\u0648\u062c";
     },
     get$congratulationsYouveCompletedPractice() {
-      return "Onnittelut! Olet suorittanut harjoitussession.";
+      return "\u062a\u0628\u0631\u06cc\u06a9! \u0634\u0645\u0627 \u062c\u0644\u0633\u0647 \u062a\u0645\u0631\u06cc\u0646 \u0631\u0627 \u06a9\u0627\u0645\u0644 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "Toiminnot seuraavan aiheen avaamiseksi";
+      return "\u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0645\u0648\u0636\u0648\u0639 \u0628\u0639\u062f\u06cc";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "Aseta toimintojen m\xe4\xe4r\xe4 seuraavan kurssiaiheen avaamiseksi";
+      return "\u062a\u0639\u062f\u0627\u062f \u0641\u0639\u0627\u0644\u06cc\u062a\u200c\u0647\u0627 \u0631\u0627 \u0628\u0631\u0627\u06cc \u0628\u0627\u0632 \u06a9\u0631\u062f\u0646 \u0645\u0648\u0636\u0648\u0639 \u0628\u0639\u062f\u06cc \u062f\u0648\u0631\u0647 \u062a\u0646\u0638\u06cc\u0645 \u06a9\u0646\u06cc\u062f";
     },
     get$activitySettingsOverrideWarning() {
-      return "Kieli ja kielitaso m\xe4\xe4r\xe4ytyv\xe4t aktiviteettisuunnitelman mukaan";
+      return "\u0632\u0628\u0627\u0646 \u0648 \u0633\u0637\u062d \u0632\u0628\u0627\u0646 \u062a\u0639\u06cc\u06cc\u0646 \u0634\u062f\u0647 \u062a\u0648\u0633\u0637 \u0628\u0631\u0646\u0627\u0645\u0647 \u0641\u0639\u0627\u0644\u06cc\u062a";
     },
     get$voice(_) {
-      return "\xc4\xe4ni";
+      return "\u0635\u062f\u0627";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa Poistit itsesi keskustelusta";
+      return "\ud83d\udeaa \u0634\u0645\u0627 \u0627\u0632 \u0686\u062a \u062e\u0627\u0631\u062c \u0634\u062f\u06cc\u062f";
     },
     get$downloadInitiated() {
-      return "Lataus aloitettu";
+      return "\u062f\u0627\u0646\u0644\u0648\u062f \u0622\u063a\u0627\u0632 \u0634\u062f";
     },
     get$webDownloadPermissionMessage() {
-      return "Jos selaimesi est\xe4\xe4 lataukset, ota lataukset k\xe4ytt\xf6\xf6n t\xe4lle sivustolle.";
+      return "\u0627\u06af\u0631 \u0645\u0631\u0648\u0631\u06af\u0631 \u0634\u0645\u0627 \u062f\u0627\u0646\u0644\u0648\u062f\u0647\u0627 \u0631\u0627 \u0645\u0633\u062f\u0648\u062f \u0645\u06cc\u200c\u06a9\u0646\u062f\u060c \u0644\u0637\u0641\u0627\u064b \u062f\u0627\u0646\u0644\u0648\u062f\u0647\u0627 \u0631\u0627 \u0628\u0631\u0627\u06cc \u0627\u06cc\u0646 \u0633\u0627\u06cc\u062a \u0641\u0639\u0627\u0644 \u06a9\u0646\u06cc\u062f.";
     },
     get$exitPractice() {
-      return "Harjoitussession edistyst\xe4si ei tallenneta.";
+      return "\u067e\u06cc\u0634\u0631\u0641\u062a \u062c\u0644\u0633\u0647 \u062a\u0645\u0631\u06cc\u0646 \u0634\u0645\u0627 \u0630\u062e\u06cc\u0631\u0647 \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f.";
     },
     get$practiceGrammar() {
-      return "Harjoittele kielioppia";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u06af\u0631\u0627\u0645\u0631";
     },
     get$notEnoughToPractice() {
-      return "L\xe4het\xe4 lis\xe4\xe4 viestej\xe4 avataksesi harjoituksen";
+      return "\u067e\u06cc\u0627\u0645\u200c\u0647\u0627\u06cc \u0628\u06cc\u0634\u062a\u0631\u06cc \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u062a\u0645\u0631\u06cc\u0646 \u0631\u0627 \u0628\u0627\u0632 \u06a9\u0646\u06cc\u062f";
     },
     get$constructUseCorGCDesc() {
-      return "Oikean kielioppikategorian harjoittelu";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u062f\u0633\u062a\u0647 \u06af\u0631\u0627\u0645\u0631 \u0635\u062d\u06cc\u062d";
     },
     get$constructUseIncGCDesc() {
-      return "V\xe4\xe4r\xe4n kielioppikategorian harjoittelu";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u062f\u0633\u062a\u0647 \u06af\u0631\u0627\u0645\u0631 \u0646\u0627\u062f\u0631\u0633\u062a";
     },
     get$constructUseCorGEDesc() {
-      return "Correct grammar error practice";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u062e\u0637\u0627\u06cc \u06af\u0631\u0627\u0645\u0631\u06cc \u0635\u062d\u06cc\u062d";
     },
     get$constructUseIncGEDesc() {
-      return "Incorrect grammar error practice";
+      return "\u062a\u0645\u0631\u06cc\u0646 \u062e\u0637\u0627\u06cc \u06af\u0631\u0627\u0645\u0631\u06cc \u0646\u0627\u062f\u0631\u0633\u062a";
     },
     get$fillInBlank() {
-      return "Fill in the blank with the correct choice";
+      return "\u062c\u0627\u06cc \u062e\u0627\u0644\u06cc \u0631\u0627 \u0628\u0627 \u06af\u0632\u06cc\u0646\u0647 \u0635\u062d\u06cc\u062d \u067e\u0631 \u06a9\u0646\u06cc\u062f";
+    },
+    get$learn() {
+      return "\u06cc\u0627\u062f \u0628\u06af\u06cc\u0631\u06cc\u062f";
+    },
+    get$languageUpdated() {
+      return "\u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u062f!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5354,13 +5357,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nFi, C.L10n);
+    _inherit(A.L10nFa, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFi":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFa":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["Ie/ZQYgzqT4Gga23dmOAzZEscNs="] = d.current;
+  d["YzRn64xHp0smhssByKwXWPs+g7A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

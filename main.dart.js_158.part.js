@@ -5204,9 +5204,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pickDifferentActivity() {
       return "\u098f\u0995\u099f\u09bf \u09ad\u09bf\u09a8\u09cd\u09a8 \u0995\u09be\u09b0\u09cd\u09af\u0995\u09b2\u09be\u09aa \u09ac\u09c7\u099b\u09c7 \u09a8\u09bf\u09a8";
     },
-    get$messageLanguageMismatchMessage() {
-      return "\u0986\u09aa\u09a8\u09be\u09b0 \u09b2\u0995\u09cd\u09b7\u09cd\u09af \u09ad\u09be\u09b7\u09be \u098f\u0987 \u09ac\u09be\u09b0\u09cd\u09a4\u09be\u09b0 \u09b8\u09be\u09a5\u09c7 \u09ae\u09c7\u09b2\u09c7 \u09a8\u09be\u0964 \u0986\u09aa\u09a8\u09be\u09b0 \u09b2\u0995\u09cd\u09b7\u09cd\u09af \u09ad\u09be\u09b7\u09be \u0986\u09aa\u09a1\u09c7\u099f \u0995\u09b0\u09ac\u09c7\u09a8?";
-    },
     get$blockLemmaConfirmation() {
       return "\u098f\u0987 \u09b6\u09ac\u09cd\u09a6\u099f\u09bf \u0986\u09aa\u09a8\u09be\u09b0 \u09ac\u09bf\u09b6\u09cd\u09b2\u09c7\u09b7\u09a3 \u09a5\u09c7\u0995\u09c7 \u09b8\u09cd\u09a5\u09be\u09af\u09bc\u09c0\u09ad\u09be\u09ac\u09c7 \u09ae\u09c1\u099b\u09c7 \u09ab\u09c7\u09b2\u09be \u09b9\u09ac\u09c7";
     },
@@ -5340,13 +5337,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u09ad\u09c1\u09b2 \u09ac\u09cd\u09af\u09be\u0995\u09b0\u09a3 \u09ac\u09bf\u09ad\u09be\u0997 \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8";
     },
     get$constructUseCorGEDesc() {
-      return "Correct grammar error practice";
+      return "\u09b8\u09a0\u09bf\u0995 \u09ac\u09cd\u09af\u09be\u0995\u09b0\u09a3 \u09a4\u09cd\u09b0\u09c1\u099f\u09bf \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8";
     },
     get$constructUseIncGEDesc() {
-      return "Incorrect grammar error practice";
+      return "\u09ad\u09c1\u09b2 \u09ac\u09cd\u09af\u09be\u0995\u09b0\u09a3 \u09a4\u09cd\u09b0\u09c1\u099f\u09bf \u0985\u09a8\u09c1\u09b6\u09c0\u09b2\u09a8";
     },
     get$fillInBlank() {
-      return "Fill in the blank with the correct choice";
+      return "\u09b8\u09a0\u09bf\u0995 \u09aa\u099b\u09a8\u09cd\u09a6 \u09a6\u09bf\u09af\u09bc\u09c7 \u09ab\u09be\u0981\u0995\u09be \u09b8\u09cd\u09a5\u09be\u09a8 \u09aa\u09c2\u09b0\u09a3 \u0995\u09b0\u09c1\u09a8";
+    },
+    get$learn() {
+      return "\u09b6\u09bf\u0996\u09c1\u09a8";
+    },
+    get$languageUpdated() {
+      return "\u09b2\u0995\u09cd\u09b7\u09cd\u09af \u09ad\u09be\u09b7\u09be \u0986\u09aa\u09a1\u09c7\u099f \u0995\u09b0\u09be \u09b9\u09af\u09bc\u09c7\u099b\u09c7!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5361,7 +5364,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8TsnW8rfILtEJIYh69Rulk60/o8="] = d.current;
+  d["sUpWcvBx5ZCjVJjidQtXFFHlBJU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map
