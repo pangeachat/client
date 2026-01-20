@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:08.940071",
+  "@@last_modified": "2026-01-20 12:31:09.126351",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10887,6 +10887,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pràctica d'errors gramaticals correctes",
+  "constructUseIncGEDesc": "Pràctica d'errors gramaticals incorrectes",
+  "fillInBlank": "Omple el buit amb l'elecció correcta",
+  "learn": "Aprendre",
+  "languageUpdated": "Idioma objectiu actualitzat!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

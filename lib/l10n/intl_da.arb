@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-16 14:32:06.899995",
+  "@@last_modified": "2026-01-20 12:30:10.761209",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11924,6 +11924,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Korrekt grammatikfejl praksis",
+  "constructUseIncGEDesc": "Ukorrrekt grammatikfejl praksis",
+  "fillInBlank": "Udfyld det tomme felt med det korrekte valg",
+  "learn": "Lær",
+  "languageUpdated": "Mål sprog opdateret!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

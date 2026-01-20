@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:49.084569",
+  "@@last_modified": "2026-01-20 12:31:49.464406",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11967,6 +11967,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "সঠিক ব্যাকরণ ত্রুটি অনুশীলন",
+  "constructUseIncGEDesc": "ভুল ব্যাকরণ ত্রুটি অনুশীলন",
+  "fillInBlank": "সঠিক পছন্দ দিয়ে ফাঁকা স্থান পূরণ করুন",
+  "learn": "শিখুন",
+  "languageUpdated": "লক্ষ্য ভাষা আপডেট করা হয়েছে!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

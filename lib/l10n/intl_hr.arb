@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-16 14:32:23.849622",
+  "@@last_modified": "2026-01-20 12:30:29.823787",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11235,6 +11235,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Prakticiranje ispravne gramatičke greške",
+  "constructUseIncGEDesc": "Prakticiranje pogrešne gramatičke greške",
+  "fillInBlank": "Ispunite prazno mjesto s ispravnim izborom",
+  "learn": "Učite",
+  "languageUpdated": "Ciljani jezik ažuriran!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

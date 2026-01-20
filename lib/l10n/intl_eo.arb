@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:34:08.644512",
+  "@@last_modified": "2026-01-20 12:32:07.490560",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11952,6 +11952,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktiko pri ĝusta gramatika eraro",
+  "constructUseIncGEDesc": "Praktiko pri malĝusta gramatika eraro",
+  "fillInBlank": "Plenigu la malplenan lokon per la ĝusta elekto",
+  "learn": "Lerni",
+  "languageUpdated": "Celo lingvo ĝisdatigita!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

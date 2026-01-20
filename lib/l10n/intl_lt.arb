@@ -3861,7 +3861,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-16 14:33:32.087889",
+  "@@last_modified": "2026-01-20 12:31:36.164653",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11668,6 +11668,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Teisingos gramatikos klaidų praktika",
+  "constructUseIncGEDesc": "Neteisingos gramatikos klaidų praktika",
+  "fillInBlank": "Užpildykite tuščią vietą teisingu pasirinkimu",
+  "learn": "Mokytis",
+  "languageUpdated": "Tikslo kalba atnaujinta!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

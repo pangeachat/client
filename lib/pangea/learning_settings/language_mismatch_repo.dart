@@ -5,14 +5,10 @@ class LanguageMismatchRepo {
   static const Duration displayInterval = Duration(minutes: 30);
 
   static String _roomKey(String roomId) => 'language_mismatch_room_$roomId';
-  static String _eventKey(String eventId) => 'language_mismatch_event_$eventId';
 
   static bool shouldShowByRoom(String roomId) => _get(_roomKey(roomId));
-  static bool shouldShowByEvent(String eventId) => _get(_eventKey(eventId));
 
   static Future<void> setRoom(String roomId) async => _set(_roomKey(roomId));
-  static Future<void> setEvent(String eventId) async =>
-      _set(_eventKey(eventId));
 
   static Future<void> _set(String key) async {
     await _storage.write(

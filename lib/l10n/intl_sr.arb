@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:34:16.018548",
+  "@@last_modified": "2026-01-20 12:32:14.799697",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11965,6 +11965,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Vežba ispravne gramatike",
+  "constructUseIncGEDesc": "Vežba nepravilne gramatike",
+  "fillInBlank": "Popunite prazno mesto sa ispravnim izborom",
+  "learn": "Učite",
+  "languageUpdated": "Ciljni jezik je ažuriran!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

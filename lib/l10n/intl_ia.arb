@@ -1958,7 +1958,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-01-16 14:32:31.137719",
+  "@@last_modified": "2026-01-20 12:30:35.012898",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11941,6 +11941,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktiko de ĝusta gramatika eraro",
+  "constructUseIncGEDesc": "Praktiko de malĝusta gramatika eraro",
+  "fillInBlank": "Plenigu la malplenan lokon kun la ĝusta elekto",
+  "learn": "Lerni",
+  "languageUpdated": "Celo lingvo ĝisdatigita!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

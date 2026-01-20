@@ -4482,7 +4482,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2026-01-16 14:33:21.744947",
+  "@@last_modified": "2026-01-20 12:31:22.453166",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -10849,6 +10849,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pareiza gramatikas kļūdu prakse",
+  "constructUseIncGEDesc": "Nepareiza gramatikas kļūdu prakse",
+  "fillInBlank": "Aizpildiet tukšo vietu ar pareizo izvēli",
+  "learn": "Mācīties",
+  "languageUpdated": "Mērķa valoda atjaunota!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

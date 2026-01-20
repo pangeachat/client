@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-16 14:32:46.504404",
+  "@@last_modified": "2026-01-20 12:30:51.399294",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11944,6 +11944,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praksa pravilne rabe slovnice",
+  "constructUseIncGEDesc": "Praksa nepravilne rabe slovnice",
+  "fillInBlank": "Izpolnite prazno mesto s pravilno izbiro",
+  "learn": "Učite se",
+  "languageUpdated": "Ciljni jezik je posodobljen!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

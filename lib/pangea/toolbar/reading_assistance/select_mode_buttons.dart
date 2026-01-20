@@ -217,10 +217,32 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> modeDisabled() async {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
+    final target = controller.messageEvent.originalSent?.langCode;
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.hideCurrentSnackBar();
+    messenger.showSnackBar(
       SnackBar(
-        content: Text(L10n.of(context).modeDisabled),
+        content: Row(
+          spacing: 12.0,
+          children: [
+            Flexible(
+              child: Text(
+                L10n.of(context).modeDisabled,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            if (target != null)
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor:
+                      Theme.of(context).colorScheme.primaryContainer,
+                ),
+                onPressed: () =>
+                    widget.controller.updateLanguageOnMismatch(target),
+                child: Text(L10n.of(context).learn),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -405,6 +427,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                                 loading: controller.isLoading &&
                                     mode == selectedMode,
                                 playing: mode == SelectMode.audio && playing,
+                                color: theme.colorScheme.onPrimaryContainer,
                               ),
                             ),
                           ),
@@ -435,11 +458,13 @@ class _SelectModeButtonIcon extends StatelessWidget {
   final SelectMode mode;
   final bool loading;
   final bool playing;
+  final Color color;
 
   const _SelectModeButtonIcon({
     required this.mode,
     this.loading = false,
     this.playing = false,
+    required this.color,
   });
 
   @override
@@ -458,10 +483,11 @@ class _SelectModeButtonIcon extends StatelessWidget {
       return Icon(
         playing ? Icons.pause_outlined : Icons.volume_up,
         size: 20,
+        color: color,
       );
     }
 
-    return Icon(mode.icon, size: 20);
+    return Icon(mode.icon, size: 20, color: color);
   }
 }
 

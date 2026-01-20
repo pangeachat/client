@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-16 14:33:54.131854",
+  "@@last_modified": "2026-01-20 12:31:54.796841",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10861,6 +10861,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Ćwiczenie poprawnych błędów gramatycznych",
+  "constructUseIncGEDesc": "Ćwiczenie niepoprawnych błędów gramatycznych",
+  "fillInBlank": "Uzupełnij lukę poprawnym wyborem",
+  "learn": "Ucz się",
+  "languageUpdated": "Język docelowy zaktualizowany!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

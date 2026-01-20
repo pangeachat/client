@@ -4517,7 +4517,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-16 14:34:18.473304",
+  "@@last_modified": "2026-01-20 12:32:18.033824",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10861,6 +10861,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Cleachtadh ar earráidí gramadaí ceart",
+  "constructUseIncGEDesc": "Cleachtadh ar earráidí gramadaí míchruinn",
+  "fillInBlank": "Líon isteach an folt le rogha cheart",
+  "learn": "Foghlaim",
+  "languageUpdated": "Teanga sprioc nuashonraithe!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

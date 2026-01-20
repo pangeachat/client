@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-16 14:32:49.483939",
+  "@@last_modified": "2026-01-20 12:30:53.854617",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11954,6 +11954,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "正確語法錯誤練習",
+  "constructUseIncGEDesc": "不正確語法錯誤練習",
+  "fillInBlank": "用正確的選擇填空",
+  "learn": "學習",
+  "languageUpdated": "目標語言已更新！",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

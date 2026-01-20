@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-16 14:32:21.289462",
+  "@@last_modified": "2026-01-20 12:30:26.700297",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11837,6 +11837,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktika korrekta gramatikfehler",
+  "constructUseIncGEDesc": "Praktika inkorrekt gramatikfehler",
+  "fillInBlank": "Fyll i tomrummet med det korrekta valget",
+  "learn": "Lær",
+  "languageUpdated": "Mål sprog opdateret!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

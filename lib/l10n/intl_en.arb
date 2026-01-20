@@ -5054,5 +5054,7 @@
   "constructUseIncGCDesc": "Incorrect grammar category practice",
   "constructUseCorGEDesc": "Correct grammar error practice",
   "constructUseIncGEDesc": "Incorrect grammar error practice",
-  "fillInBlank": "Fill in the blank with the correct choice"
+  "fillInBlank": "Fill in the blank with the correct choice",
+  "learn": "Learn",
+  "languageUpdated": "Target language updated!"
 }

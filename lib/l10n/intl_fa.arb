@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:51.512389",
+  "@@last_modified": "2026-01-20 12:31:52.231221",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11595,6 +11595,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "تمرین خطای گرامری صحیح",
+  "constructUseIncGEDesc": "تمرین خطای گرامری نادرست",
+  "fillInBlank": "جای خالی را با گزینه صحیح پر کنید",
+  "learn": "یاد بگیرید",
+  "languageUpdated": "زبان هدف به‌روزرسانی شد!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }
