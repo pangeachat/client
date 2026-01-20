@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-16 14:32:56.338443",
+  "@@last_modified": "2026-01-20 12:30:57.869011",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10857,6 +10857,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Практика виправлення граматичних помилок",
+  "constructUseIncGEDesc": "Практика неправильних граматичних помилок",
+  "fillInBlank": "Заповніть пропуск правильним вибором",
+  "learn": "Вчити",
+  "languageUpdated": "Цільова мова оновлена!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

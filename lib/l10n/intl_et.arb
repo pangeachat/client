@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-16 14:32:41.585481",
+  "@@last_modified": "2026-01-20 12:30:45.162738",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11134,6 +11134,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Õige grammatika vea harjutamine",
+  "constructUseIncGEDesc": "Vale grammatika vea harjutamine",
+  "fillInBlank": "Täida tühik õige valikuga",
+  "learn": "Õpi",
+  "languageUpdated": "Sihtkeel on uuendatud!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:40.784777",
+  "@@last_modified": "2026-01-20 12:31:42.507524",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10863,6 +10863,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Oefening voor correcte grammatica",
+  "constructUseIncGEDesc": "Oefening voor onjuiste grammatica",
+  "fillInBlank": "Vul de lege ruimte in met de juiste keuze",
+  "learn": "Leren",
+  "languageUpdated": "Doeltaal bijgewerkt!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

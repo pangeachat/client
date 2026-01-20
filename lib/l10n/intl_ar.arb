@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-16 14:33:24.230348",
+  "@@last_modified": "2026-01-20 12:31:24.671375",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11080,6 +11080,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "ممارسة تصحيح أخطاء القواعد",
+  "constructUseIncGEDesc": "ممارسة أخطاء القواعد غير الصحيحة",
+  "fillInBlank": "املأ الفراغ بالخيار الصحيح",
+  "learn": "تعلم",
+  "languageUpdated": "تم تحديث اللغة المستهدفة!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

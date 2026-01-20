@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:34.535886",
+  "@@last_modified": "2026-01-20 12:31:38.101874",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6433,6 +6433,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Thực hành lỗi ngữ pháp đúng",
+  "constructUseIncGEDesc": "Thực hành lỗi ngữ pháp sai",
+  "fillInBlank": "Điền vào chỗ trống với lựa chọn đúng",
+  "learn": "Học",
+  "languageUpdated": "Ngôn ngữ mục tiêu đã được cập nhật!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

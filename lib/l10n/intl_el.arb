@@ -4456,7 +4456,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-16 14:33:59.313114",
+  "@@last_modified": "2026-01-20 12:31:59.503296",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11921,6 +11921,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Πρακτική διόρθωσης γραμματικών λαθών",
+  "constructUseIncGEDesc": "Πρακτική λανθασμένων γραμματικών λαθών",
+  "fillInBlank": "Συμπληρώστε το κενό με τη σωστή επιλογή",
+  "learn": "Μάθετε",
+  "languageUpdated": "Η γλώσσα στόχος ενημερώθηκε!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

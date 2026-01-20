@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:31:56.042093",
+  "@@last_modified": "2026-01-20 12:29:56.840054",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10971,6 +10971,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "문법 오류 수정 연습",
+  "constructUseIncGEDesc": "문법 오류 비정상 연습",
+  "fillInBlank": "올바른 선택으로 빈칸을 채우세요",
+  "learn": "배우다",
+  "languageUpdated": "목표 언어가 업데이트되었습니다!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

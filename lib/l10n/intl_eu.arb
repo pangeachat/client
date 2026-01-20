@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-16 14:32:36.050138",
+  "@@last_modified": "2026-01-20 12:30:40.144354",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10863,6 +10863,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Gramatika akats zuzenketa praktika",
+  "constructUseIncGEDesc": "Gramatika akats okerra praktika",
+  "fillInBlank": "Betekoa bete aukerarik egokienarekin",
+  "learn": "Ikasi",
+  "languageUpdated": "Helmuga hizkuntza eguneratua!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

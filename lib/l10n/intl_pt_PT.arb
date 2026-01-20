@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-16 14:33:14.369639",
+  "@@last_modified": "2026-01-20 12:31:13.609297",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11892,6 +11892,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Prática de erro gramatical correto",
+  "constructUseIncGEDesc": "Prática de erro gramatical incorreto",
+  "fillInBlank": "Preencha a lacuna com a escolha correta",
+  "learn": "Aprender",
+  "languageUpdated": "Idioma de destino atualizado!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

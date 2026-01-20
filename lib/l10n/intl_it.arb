@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:32:53.055805",
+  "@@last_modified": "2026-01-20 12:30:55.791406",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10866,6 +10866,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pratica degli errori grammaticali corretti",
+  "constructUseIncGEDesc": "Pratica degli errori grammaticali scorretti",
+  "fillInBlank": "Compila lo spazio vuoto con la scelta corretta",
+  "learn": "Impara",
+  "languageUpdated": "Lingua target aggiornata!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

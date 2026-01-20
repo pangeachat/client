@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-16 14:32:01.213945",
+  "@@last_modified": "2026-01-20 12:30:05.234280",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10860,6 +10860,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Práctica de erro gramatical correcto",
+  "constructUseIncGEDesc": "Práctica de erro gramatical incorrecto",
+  "fillInBlank": "Completa o espazo en branco coa opción correcta",
+  "learn": "Aprender",
+  "languageUpdated": "Idioma de destino actualizado!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

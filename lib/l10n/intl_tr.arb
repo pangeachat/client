@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-16 14:33:26.649412",
+  "@@last_modified": "2026-01-20 12:31:28.469826",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11085,6 +11085,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Doğru dil bilgisi hatası pratiği",
+  "constructUseIncGEDesc": "Yanlış dil bilgisi hatası pratiği",
+  "fillInBlank": "Boşluğu doğru seçimle doldurun",
+  "learn": "Öğren",
+  "languageUpdated": "Hedef dil güncellendi!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

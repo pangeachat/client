@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:32:38.304072",
+  "@@last_modified": "2026-01-20 12:30:42.601068",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11963,6 +11963,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Prática de erro gramatical correto",
+  "constructUseIncGEDesc": "Prática de erro gramatical incorreto",
+  "fillInBlank": "Preencha a lacuna com a escolha correta",
+  "learn": "Aprender",
+  "languageUpdated": "Idioma de destino atualizado!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

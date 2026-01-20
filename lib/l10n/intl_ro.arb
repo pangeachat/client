@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:32:16.042822",
+  "@@last_modified": "2026-01-20 12:30:21.408747",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11598,6 +11598,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Practică corectă a erorilor de gramatică",
+  "constructUseIncGEDesc": "Practică incorectă a erorilor de gramatică",
+  "fillInBlank": "Completați spațiul gol cu alegerea corectă",
+  "learn": "Învățați",
+  "languageUpdated": "Limba țintă a fost actualizată!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

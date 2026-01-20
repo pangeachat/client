@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-16 14:33:45.909821",
+  "@@last_modified": "2026-01-20 12:31:47.017242",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10854,6 +10854,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "正确语法错误练习",
+  "constructUseIncGEDesc": "不正确语法错误练习",
+  "fillInBlank": "用正确的选项填空",
+  "learn": "学习",
+  "languageUpdated": "目标语言已更新！",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

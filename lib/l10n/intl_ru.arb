@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-16 14:34:10.739852",
+  "@@last_modified": "2026-01-20 12:32:09.850624",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10968,6 +10968,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Практика исправления грамматических ошибок",
+  "constructUseIncGEDesc": "Практика неправильных грамматических ошибок",
+  "fillInBlank": "Заполните пропуск правильным вариантом",
+  "learn": "Учить",
+  "languageUpdated": "Целевой язык обновлен!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

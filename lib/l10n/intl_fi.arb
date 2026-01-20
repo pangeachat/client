@@ -4009,7 +4009,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-16 14:32:03.875087",
+  "@@last_modified": "2026-01-20 12:30:08.099637",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11486,6 +11486,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Oikean kielioppivirheen harjoittelu",
+  "constructUseIncGEDesc": "Väärän kielioppivirheen harjoittelu",
+  "fillInBlank": "Täytä tyhjä kohta oikealla valinnalla",
+  "learn": "Oppia",
+  "languageUpdated": "Kohdekieli päivitetty!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

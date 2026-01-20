@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:56.060391",
+  "@@last_modified": "2026-01-20 12:31:57.066428",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11341,6 +11341,31 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Korrekt grammatikfel övning",
+  "constructUseIncGEDesc": "Inkorrekt grammatikfel övning",
+  "fillInBlank": "Fyll i det tomma med rätt val",
+  "learn": "Lär dig",
+  "languageUpdated": "Målspråk uppdaterat!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }
