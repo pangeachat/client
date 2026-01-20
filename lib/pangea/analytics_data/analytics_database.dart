@@ -10,6 +10,7 @@ import 'package:synchronized/synchronized.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -197,6 +198,7 @@ class AnalyticsDatabase with DatabaseFileStorage {
     int? count,
     String? roomId,
     DateTime? since,
+    ConstructUseTypeEnum? type,
   }) async {
     final stopwatch = Stopwatch()..start();
     final results = <OneConstructUse>[];
@@ -206,6 +208,9 @@ class AnalyticsDatabase with DatabaseFileStorage {
         return false; // stop iteration entirely
       }
       if (roomId != null && use.metadata.roomId != roomId) {
+        return true; // skip but continue
+      }
+      if (type != null && use.useType != type) {
         return true; // skip but continue
       }
 

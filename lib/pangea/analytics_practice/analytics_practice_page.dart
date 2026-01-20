@@ -26,15 +26,25 @@ import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_contr
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class PracticeChoice {
+class VocabPracticeChoice {
   final String choiceId;
   final String choiceText;
   final String? choiceEmoji;
 
-  const PracticeChoice({
+  const VocabPracticeChoice({
     required this.choiceId,
     required this.choiceText,
     this.choiceEmoji,
+  });
+}
+
+class _PracticeQueueEntry {
+  final MessageActivityRequest request;
+  final Completer<MultipleChoicePracticeActivityModel> completer;
+
+  _PracticeQueueEntry({
+    required this.request,
+    required this.completer,
   });
 }
 
@@ -67,12 +77,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
       activityState = ValueNotifier(const AsyncState.idle());
 
-  final Queue<
-      MapEntry<PracticeTarget,
-          Completer<MultipleChoicePracticeActivityModel>>> _queue = Queue();
+  final Queue<_PracticeQueueEntry> _queue = Queue();
 
-  final ValueNotifier<PracticeTarget?> activityTarget =
-      ValueNotifier<PracticeTarget?>(null);
+  final ValueNotifier<MessageActivityRequest?> activityTarget =
+      ValueNotifier<MessageActivityRequest?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
 
@@ -116,13 +124,13 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   AnalyticsDataService get _analyticsService =>
       Matrix.of(context).analyticsDataService;
 
-  List<PracticeChoice> filteredChoices(
+  List<VocabPracticeChoice> filteredChoices(
     MultipleChoicePracticeActivityModel activity,
   ) {
     final content = activity.multipleChoiceContent;
     final choices = content.choices.toList();
     final answer = content.answers.first;
-    final filtered = <PracticeChoice>[];
+    final filtered = <VocabPracticeChoice>[];
 
     final seenTexts = <String>{};
     for (final id in choices) {
@@ -137,7 +145,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           (choice) => choice.choiceText == text,
         );
         if (index != -1) {
-          filtered[index] = PracticeChoice(
+          filtered[index] = VocabPracticeChoice(
             choiceId: id,
             choiceText: text,
             choiceEmoji: getChoiceEmoji(activity.storageKey, id),
@@ -148,7 +156,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
       seenTexts.add(text);
       filtered.add(
-        PracticeChoice(
+        VocabPracticeChoice(
           choiceId: id,
           choiceText: text,
           choiceEmoji: getChoiceEmoji(activity.storageKey, id),
@@ -202,7 +210,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (activityTarget.value == null) return;
     if (widget.type != ConstructTypeEnum.vocab) return;
     TtsController.tryToSpeak(
-      activityTarget.value!.tokens.first.vocabConstructID.lemma,
+      activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
       langCode: MatrixState.pangeaController.userController.userL2!.langCode,
     );
   }
@@ -275,10 +283,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         activityState.value = const AsyncState.loading();
         final nextActivityCompleter = _queue.removeFirst();
 
-        activityTarget.value = nextActivityCompleter.key;
+        activityTarget.value = nextActivityCompleter.request;
         _playAudio();
 
-        final activity = await nextActivityCompleter.value.future;
+        final activity = await nextActivityCompleter.completer.future;
         activityState.value = AsyncState.loaded(activity);
       }
     } catch (e) {
@@ -298,7 +306,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       activityState.value = const AsyncState.loading();
       final req = requests.first;
 
-      activityTarget.value = req.target;
+      activityTarget.value = req;
       _playAudio();
 
       final res = await _fetchActivity(req);
@@ -314,10 +322,17 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _fillActivityQueue(requests.skip(1).toList());
   }
 
-  Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
+  Future<void> _fillActivityQueue(
+    List<MessageActivityRequest> requests,
+  ) async {
     for (final request in requests) {
       final completer = Completer<MultipleChoicePracticeActivityModel>();
-      _queue.add(MapEntry(request.target, completer));
+      _queue.add(
+        _PracticeQueueEntry(
+          request: request,
+          completer: completer,
+        ),
+      );
 
       try {
         final res = await _fetchActivity(request);
