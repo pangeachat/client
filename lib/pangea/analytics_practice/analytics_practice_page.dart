@@ -245,6 +245,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await _sessionLoader.load();
+    if (_sessionLoader.isError) return;
+
     progressNotifier.value = _sessionLoader.value!.progress;
     await _continueSession();
   }
