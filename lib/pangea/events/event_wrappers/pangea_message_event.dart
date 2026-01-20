@@ -114,7 +114,7 @@ class PangeaMessageEvent {
           .map(
             (e) => RepresentationEvent(
               event: e,
-              parentMessageEvent: _event,
+              parentMessageEvent: _latestEdit,
               timeline: timeline,
             ),
           )
@@ -181,14 +181,14 @@ class PangeaMessageEvent {
 
         final original = PangeaRepresentation(
           langCode: lang ?? LanguageKeys.unknownLanguage,
-          text: _event.body,
+          text: _latestEdit.body,
           originalSent: true,
           originalWritten: false,
         );
 
         _representations!.add(
           RepresentationEvent(
-            parentMessageEvent: _event,
+            parentMessageEvent: _latestEdit,
             content: original,
             tokens: tokens,
             choreo: _embeddedChoreo,
@@ -202,7 +202,7 @@ class PangeaMessageEvent {
         e: err,
         s: s,
         data: {
-          "event": _event.toJson(),
+          "event": _latestEdit.toJson(),
         },
       );
     }
@@ -211,7 +211,7 @@ class PangeaMessageEvent {
       try {
         _representations!.add(
           RepresentationEvent(
-            parentMessageEvent: _event,
+            parentMessageEvent: _latestEdit,
             content: PangeaRepresentation.fromJson(
               _latestEdit.content[ModelKey.originalWritten]
                   as Map<String, dynamic>,
@@ -229,7 +229,7 @@ class PangeaMessageEvent {
           e: err,
           s: s,
           data: {
-            "event": _event.toJson(),
+            "event": _latestEdit.toJson(),
           },
         );
       }
@@ -278,7 +278,8 @@ class PangeaMessageEvent {
   /// Gets the message display text for the current language code.
   /// If the message display text is not available for the current language code,
   /// it returns the message body.
-  String get messageDisplayText => messageDisplayRepresentation?.text ?? body;
+  String get messageDisplayText =>
+      messageDisplayRepresentation?.text ?? _latestEdit.body;
 
   TextDirection get textDirection =>
       LanguageConstants.rtlLanguageCodes.contains(messageDisplayLangCode)
@@ -293,12 +294,14 @@ class PangeaMessageEvent {
   RepresentationEvent? representationByLanguage(
     String langCode, {
     bool Function(RepresentationEvent)? filter,
-  }) =>
-      representations.firstWhereOrNull(
-        (element) =>
-            element.langCode.split("-")[0] == langCode.split("-")[0] &&
-            (filter?.call(element) ?? true),
-      );
+  }) {
+    representations.firstWhereOrNull(
+      (element) =>
+          element.langCode.split("-")[0] == langCode.split("-")[0] &&
+          (filter?.call(element) ?? true),
+    );
+    return null;
+  }
 
   Event? getTextToSpeechLocal(String langCode, String text) {
     for (final audio in allAudio) {
@@ -492,7 +495,7 @@ class PangeaMessageEvent {
     _representations = null;
     return room.sendPangeaEvent(
       content: representation.toJson(),
-      parentEventId: eventId,
+      parentEventId: _latestEdit.eventId,
       type: PangeaEventTypes.representation,
     );
   }
@@ -586,6 +589,7 @@ class PangeaMessageEvent {
   }
 
   Future<String> requestRespresentationByL1() async {
+    debugPrint("LATEST EDIT: ${_latestEdit.toJson()}");
     if (_l1Code == null || _l2Code == null) {
       throw Exception("Missing language codes");
     }
@@ -597,7 +601,9 @@ class PangeaMessageEvent {
     RepresentationEvent? rep;
     if (!includedIT) {
       // if the message didn't go through translation, get any l1 rep
+      debugPrint("REPRESENTATIONS: ${representations.length}");
       rep = representationByLanguage(_l1Code!);
+      debugPrint("REP: $rep");
     } else {
       // if the message went through translation, get the non-original
       // l1 rep since originalWritten could contain some l2 words
@@ -613,6 +619,13 @@ class PangeaMessageEvent {
     final String srcLang = includedIT
         ? (originalWritten?.langCode ?? _l1Code!)
         : (originalSent?.langCode ?? _l2Code!);
+
+    debugPrint("Original written content: $originalWrittenContent");
+    debugPrint("Message display text: $messageDisplayText");
+    debugPrint("Original sent: ${originalSent?.content.toJson()}");
+    debugPrint(
+      "Message display rep: ${representationByLanguage(messageDisplayLangCode)?.content.toJson()}",
+    );
 
     final resp = await _requestRepresentation(
       includedIT ? originalWrittenContent : messageDisplayText,
@@ -661,7 +674,7 @@ class PangeaMessageEvent {
   ) async {
     final repEvent = await room.sendPangeaEvent(
       content: representation.toJson(),
-      parentEventId: eventId,
+      parentEventId: _latestEdit.eventId,
       type: PangeaEventTypes.representation,
     );
     return repEvent?.eventId;
