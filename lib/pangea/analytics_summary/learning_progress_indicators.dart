@@ -206,21 +206,23 @@ class LearningProgressIndicators extends StatelessWidget {
                                   child: FutureBuilder(
                                     future: analyticsService.derivedData,
                                     builder: (context, snapshot) {
+                                      final cached =
+                                          analyticsService.cachedDerivedData;
+                                      final data = snapshot.data ?? cached;
                                       return Row(
                                         spacing: 8.0,
                                         children: [
                                           Expanded(
                                             child: LearningProgressBar(
                                               height: 24.0,
-                                              loading: !snapshot.hasData,
-                                              progress: snapshot
-                                                      .data?.levelProgress ??
-                                                  0.0,
+                                              loading: data == null,
+                                              progress:
+                                                  data?.levelProgress ?? 0.0,
                                             ),
                                           ),
-                                          if (snapshot.hasData)
+                                          if (data != null)
                                             Text(
-                                              "⭐ ${snapshot.data!.level}",
+                                              "⭐ ${data.level}",
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .titleLarge
