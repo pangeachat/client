@@ -57,7 +57,9 @@ class CourseChatsController extends State<CourseChats>
 
   @override
   void initState() {
-    loadHierarchy(reload: true);
+    loadHierarchy(reload: true).then(
+      (_) => _joinDefaultChats(),
+    );
 
     // Listen for changes to the activeSpace's hierarchy,
     // and reload the hierarchy when they come through
@@ -212,7 +214,6 @@ class CourseChatsController extends State<CourseChats>
 
     try {
       await _loadHierarchy(activeSpace: room, reload: reload);
-      if (mounted) await _joinDefaultChats();
       if (mounted) {
         final futures = [
           loadRoomSummaries(
