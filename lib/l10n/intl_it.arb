@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:16:57.804466",
+  "@@last_modified": "2026-01-20 12:30:55.791406",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10841,6 +10841,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "I progressi della tua sessione di pratica non verranno salvati.",
+  "practiceGrammar": "Pratica la grammatica",
+  "notEnoughToPractice": "Invia più messaggi per sbloccare la pratica",
+  "constructUseCorGCDesc": "Pratica della categoria grammaticale corretta",
+  "constructUseIncGCDesc": "Pratica della categoria grammaticale scorretta",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pratica degli errori grammaticali corretti",
+  "constructUseIncGEDesc": "Pratica degli errori grammaticali scorretti",
+  "fillInBlank": "Compila lo spazio vuoto con la scelta corretta",
+  "learn": "Impara",
+  "languageUpdated": "Lingua target aggiornata!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-13 15:17:03.339822",
+  "@@last_modified": "2026-01-20 12:31:00.323945",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11445,6 +11445,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Pokrok vaší cvičební relace nebude uložen.",
+  "practiceGrammar": "Cvičit gramatiku",
+  "notEnoughToPractice": "Odešlete více zpráv, abyste odemkli cvičení",
+  "constructUseCorGCDesc": "Cvičení správné gramatické kategorie",
+  "constructUseIncGCDesc": "Cvičení nesprávné gramatické kategorie",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Cvičení správné gramatiky",
+  "constructUseIncGEDesc": "Cvičení nesprávné gramatiky",
+  "fillInBlank": "Doplňte prázdné místo správnou volbou",
+  "learn": "Učit se",
+  "languageUpdated": "Cílový jazyk byl aktualizován!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

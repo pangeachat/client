@@ -1,5 +1,11 @@
+import 'package:flutter/material.dart';
+
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 
@@ -35,20 +41,64 @@ class ActivityQualityFeedback {
   }
 }
 
+class GrammarErrorRequestInfo {
+  final ChoreoRecordModel choreo;
+  final int stepIndex;
+  final String eventID;
+
+  const GrammarErrorRequestInfo({
+    required this.choreo,
+    required this.stepIndex,
+    required this.eventID,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'choreo': choreo.toJson(),
+      'step_index': stepIndex,
+      'event_id': eventID,
+    };
+  }
+
+  factory GrammarErrorRequestInfo.fromJson(Map<String, dynamic> json) {
+    return GrammarErrorRequestInfo(
+      choreo: ChoreoRecordModel.fromJson(json['choreo']),
+      stepIndex: json['step_index'] as int,
+      eventID: json['event_id'] as String,
+    );
+  }
+}
+
 class MessageActivityRequest {
   final String userL1;
   final String userL2;
   final PracticeTarget target;
   final ActivityQualityFeedback? activityQualityFeedback;
+  final GrammarErrorRequestInfo? grammarErrorInfo;
 
   MessageActivityRequest({
     required this.userL1,
     required this.userL2,
     required this.activityQualityFeedback,
     required this.target,
+    this.grammarErrorInfo,
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');
+    }
+  }
+
+  String promptText(BuildContext context) {
+    switch (target.activityType) {
+      case ActivityTypeEnum.grammarCategory:
+        return L10n.of(context).whatIsTheMorphTag(
+          target.morphFeature!.getDisplayCopy(context),
+          target.tokens.first.text.content,
+        );
+      case ActivityTypeEnum.grammarError:
+        return L10n.of(context).fillInBlank;
+      default:
+        return target.tokens.first.vocabConstructID.lemma;
     }
   }
 
@@ -60,6 +110,7 @@ class MessageActivityRequest {
       'target_tokens': target.tokens.map((e) => e.toJson()).toList(),
       'target_type': target.activityType.name,
       'target_morph_feature': target.morphFeature,
+      'grammar_error_info': grammarErrorInfo?.toJson(),
     };
   }
 
@@ -72,7 +123,8 @@ class MessageActivityRequest {
         other.userL2 == userL2 &&
         other.target == target &&
         other.activityQualityFeedback?.feedbackText ==
-            activityQualityFeedback?.feedbackText;
+            activityQualityFeedback?.feedbackText &&
+        other.grammarErrorInfo == grammarErrorInfo;
   }
 
   @override
@@ -80,7 +132,8 @@ class MessageActivityRequest {
     return activityQualityFeedback.hashCode ^
         target.hashCode ^
         userL1.hashCode ^
-        userL2.hashCode;
+        userL2.hashCode ^
+        grammarErrorInfo.hashCode;
   }
 }
 

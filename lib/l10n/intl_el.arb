@@ -4456,7 +4456,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-13 15:17:39.060670",
+  "@@last_modified": "2026-01-20 12:31:59.503296",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11896,6 +11896,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Η πρόοδος της συνεδρίας πρακτικής σας δεν θα αποθηκευτεί.",
+  "practiceGrammar": "Πρακτική γραμματικής",
+  "notEnoughToPractice": "Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε την πρακτική",
+  "constructUseCorGCDesc": "Πρακτική κατηγορίας σωστής γραμματικής",
+  "constructUseIncGCDesc": "Πρακτική κατηγορίας λανθαστής γραμματικής",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Πρακτική διόρθωσης γραμματικών λαθών",
+  "constructUseIncGEDesc": "Πρακτική λανθασμένων γραμματικών λαθών",
+  "fillInBlank": "Συμπληρώστε το κενό με τη σωστή επιλογή",
+  "learn": "Μάθετε",
+  "languageUpdated": "Η γλώσσα στόχος ενημερώθηκε!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

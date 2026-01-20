@@ -62,6 +62,7 @@ class _GameChoiceCardState extends State<GameChoiceCard>
 
   Future<void> _handleTap() async {
     if (!widget.isEnabled) return;
+    widget.onPressed();
 
     if (widget.shouldFlip) {
       if (_controller.isAnimating || _revealed) return;
@@ -73,8 +74,6 @@ class _GameChoiceCardState extends State<GameChoiceCard>
       if (_clicked) return;
       setState(() => _clicked = true);
     }
-
-    widget.onPressed();
   }
 
   @override

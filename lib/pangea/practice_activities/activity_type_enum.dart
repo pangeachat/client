@@ -15,7 +15,8 @@ enum ActivityTypeEnum {
   messageMeaning,
   lemmaMeaning,
   lemmaAudio,
-  grammarCategory;
+  grammarCategory,
+  grammarError;
 
   bool get includeTTSOnClick {
     switch (this) {
@@ -30,6 +31,7 @@ enum ActivityTypeEnum {
       case ActivityTypeEnum.lemmaAudio:
       case ActivityTypeEnum.lemmaMeaning:
       case ActivityTypeEnum.grammarCategory:
+      case ActivityTypeEnum.grammarError:
         return true;
     }
   }
@@ -68,6 +70,9 @@ enum ActivityTypeEnum {
       case 'grammar_category':
       case 'grammarCategory':
         return ActivityTypeEnum.grammarCategory;
+      case 'grammar_error':
+      case 'grammarError':
+        return ActivityTypeEnum.grammarError;
       default:
         throw Exception('Unknown activity type: $split');
     }
@@ -128,6 +133,11 @@ enum ActivityTypeEnum {
           ConstructUseTypeEnum.corGC,
           ConstructUseTypeEnum.incGC,
         ];
+      case ActivityTypeEnum.grammarError:
+        return [
+          ConstructUseTypeEnum.corGE,
+          ConstructUseTypeEnum.incGE,
+        ];
     }
   }
 
@@ -153,6 +163,8 @@ enum ActivityTypeEnum {
         return ConstructUseTypeEnum.corLM;
       case ActivityTypeEnum.grammarCategory:
         return ConstructUseTypeEnum.corGC;
+      case ActivityTypeEnum.grammarError:
+        return ConstructUseTypeEnum.corGE;
     }
   }
 
@@ -178,6 +190,8 @@ enum ActivityTypeEnum {
         return ConstructUseTypeEnum.incLM;
       case ActivityTypeEnum.grammarCategory:
         return ConstructUseTypeEnum.incGC;
+      case ActivityTypeEnum.grammarError:
+        return ConstructUseTypeEnum.incGE;
     }
   }
 
@@ -198,6 +212,7 @@ enum ActivityTypeEnum {
         return Icons.format_shapes;
       case ActivityTypeEnum.messageMeaning:
       case ActivityTypeEnum.grammarCategory:
+      case ActivityTypeEnum.grammarError:
         return Icons.star; // TODO: Add to L10n
     }
   }
@@ -217,6 +232,7 @@ enum ActivityTypeEnum {
       case ActivityTypeEnum.lemmaMeaning:
       case ActivityTypeEnum.lemmaAudio:
       case ActivityTypeEnum.grammarCategory:
+      case ActivityTypeEnum.grammarError:
         return 1;
     }
   }
@@ -235,6 +251,7 @@ enum ActivityTypeEnum {
 
   static List<ActivityTypeEnum> get _grammarPracticeTypes => [
         ActivityTypeEnum.grammarCategory,
+        ActivityTypeEnum.grammarError,
       ];
 
   static List<ActivityTypeEnum> analyticsPracticeTypes(

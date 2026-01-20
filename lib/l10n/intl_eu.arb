@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-13 15:16:47.445226",
+  "@@last_modified": "2026-01-20 12:30:40.144354",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10838,6 +10838,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Zure praktika saioaren aurrerapena ez da gorde.",
+  "practiceGrammar": "Gramatika praktikatu",
+  "notEnoughToPractice": "Praktika desblokeatzeko gehiago mezu bidali",
+  "constructUseCorGCDesc": "Gramatika kategoriako praktika zuzena",
+  "constructUseIncGCDesc": "Gramatika kategoriako praktika okerra",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Gramatika akats zuzenketa praktika",
+  "constructUseIncGEDesc": "Gramatika akats okerra praktika",
+  "fillInBlank": "Betekoa bete aukerarik egokienarekin",
+  "learn": "Ikasi",
+  "languageUpdated": "Helmuga hizkuntza eguneratua!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

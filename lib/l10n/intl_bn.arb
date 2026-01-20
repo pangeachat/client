@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:32.418851",
+  "@@last_modified": "2026-01-20 12:31:49.464406",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11942,6 +11942,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "আপনার অনুশীলন সেশনের অগ্রগতি সংরক্ষিত হবে না।",
+  "practiceGrammar": "ব্যাকরণ অনুশীলন করুন",
+  "notEnoughToPractice": "অনুশীলন আনলক করতে আরও বার্তা পাঠান",
+  "constructUseCorGCDesc": "সঠিক ব্যাকরণ বিভাগ অনুশীলন",
+  "constructUseIncGCDesc": "ভুল ব্যাকরণ বিভাগ অনুশীলন",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "সঠিক ব্যাকরণ ত্রুটি অনুশীলন",
+  "constructUseIncGEDesc": "ভুল ব্যাকরণ ত্রুটি অনুশীলন",
+  "fillInBlank": "সঠিক পছন্দ দিয়ে ফাঁকা স্থান পূরণ করুন",
+  "learn": "শিখুন",
+  "languageUpdated": "লক্ষ্য ভাষা আপডেট করা হয়েছে!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

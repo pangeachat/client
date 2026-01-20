@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:33.639092",
+  "@@last_modified": "2026-01-20 12:31:52.231221",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11570,6 +11570,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "پیشرفت جلسه تمرین شما ذخیره نخواهد شد.",
+  "practiceGrammar": "تمرین گرامر",
+  "notEnoughToPractice": "پیام‌های بیشتری ارسال کنید تا تمرین را باز کنید",
+  "constructUseCorGCDesc": "تمرین دسته گرامر صحیح",
+  "constructUseIncGCDesc": "تمرین دسته گرامر نادرست",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "تمرین خطای گرامری صحیح",
+  "constructUseIncGEDesc": "تمرین خطای گرامری نادرست",
+  "fillInBlank": "جای خالی را با گزینه صحیح پر کنید",
+  "learn": "یاد بگیرید",
+  "languageUpdated": "زبان هدف به‌روزرسانی شد!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

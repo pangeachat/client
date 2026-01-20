@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-13 15:16:32.515672",
+  "@@last_modified": "2026-01-20 12:30:13.762355",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10839,6 +10839,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "A gyakorlási session előrehaladása nem lesz mentve.",
+  "practiceGrammar": "Nyelvtan gyakorlása",
+  "notEnoughToPractice": "Több üzenetet kell küldeni a gyakorlás feloldásához",
+  "constructUseCorGCDesc": "Helyes nyelvtani kategória gyakorlása",
+  "constructUseIncGCDesc": "Helytelen nyelvtani kategória gyakorlása",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Helyes nyelvtani hiba gyakorlás",
+  "constructUseIncGEDesc": "Helytelen nyelvtani hiba gyakorlás",
+  "fillInBlank": "Töltsd ki a hiányzó részt a helyes választással",
+  "learn": "Tanulj",
+  "languageUpdated": "Cél nyelv frissítve!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

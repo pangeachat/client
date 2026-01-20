@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
+import 'package:flutter/material.dart';
 
 /// Choice card for meaning activity with emoji, and alt text on flip
 class GrammarChoiceCard extends StatelessWidget {
@@ -16,6 +15,7 @@ class GrammarChoiceCard extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isCorrect;
   final double height;
+  final bool enabled;
 
   const GrammarChoiceCard({
     required this.choiceId,
@@ -25,6 +25,7 @@ class GrammarChoiceCard extends StatelessWidget {
     required this.onPressed,
     required this.isCorrect,
     this.height = 72.0,
+    this.enabled = true,
     super.key,
   });
 
@@ -47,6 +48,7 @@ class GrammarChoiceCard extends StatelessWidget {
       onPressed: onPressed,
       isCorrect: isCorrect,
       height: height,
+      isEnabled: enabled,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

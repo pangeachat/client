@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -155,6 +154,7 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
             onChanged: _setLevel,
             enabled: !widget.room.isActivitySession,
             width: 300,
+            maxHeight: 300,
           ),
           DropdownButtonFormField2<String>(
             customButton: _selectedVoice != null
@@ -171,7 +171,7 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
             ),
             isExpanded: true,
             dropdownStyleData: DropdownStyleData(
-              maxHeight: kIsWeb ? 250 : null,
+              maxHeight: 250,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.surfaceContainerHigh,
                 borderRadius: BorderRadius.circular(14.0),

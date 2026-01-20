@@ -1958,7 +1958,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-01-13 15:16:44.800788",
+  "@@last_modified": "2026-01-20 12:30:35.012898",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11916,6 +11916,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Progresul sesiunii tale de practică nu va fi salvat.",
+  "practiceGrammar": "Exersează gramatică",
+  "notEnoughToPractice": "Trimite mai multe mesaje pentru a debloca practica",
+  "constructUseCorGCDesc": "Practică categoria de gramatică corectă",
+  "constructUseIncGCDesc": "Practică categoria de gramatică incorectă",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktiko de ĝusta gramatika eraro",
+  "constructUseIncGEDesc": "Praktiko de malĝusta gramatika eraro",
+  "fillInBlank": "Plenigu la malplenan lokon kun la ĝusta elekto",
+  "learn": "Lerni",
+  "languageUpdated": "Celo lingvo ĝisdatigita!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

@@ -12,20 +12,47 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_request.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_response.dart';
 
-class _PhoneticTranscriptionCacheItem {
+class _PhoneticTranscriptionMemoryCacheItem {
   final Future<Result<PhoneticTranscriptionResponse>> resultFuture;
   final DateTime timestamp;
 
-  const _PhoneticTranscriptionCacheItem({
+  const _PhoneticTranscriptionMemoryCacheItem({
     required this.resultFuture,
     required this.timestamp,
   });
 }
 
+class _PhoneticTranscriptionStorageCacheItem {
+  final PhoneticTranscriptionResponse response;
+  final DateTime timestamp;
+
+  const _PhoneticTranscriptionStorageCacheItem({
+    required this.response,
+    required this.timestamp,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'response': response.toJson(),
+      'timestamp': timestamp.toIso8601String(),
+    };
+  }
+
+  static _PhoneticTranscriptionStorageCacheItem fromJson(
+    Map<String, dynamic> json,
+  ) {
+    return _PhoneticTranscriptionStorageCacheItem(
+      response: PhoneticTranscriptionResponse.fromJson(json['response']),
+      timestamp: DateTime.parse(json['timestamp']),
+    );
+  }
+}
+
 class PhoneticTranscriptionRepo {
   // In-memory cache
-  static final Map<String, _PhoneticTranscriptionCacheItem> _cache = {};
+  static final Map<String, _PhoneticTranscriptionMemoryCacheItem> _cache = {};
   static const Duration _cacheDuration = Duration(minutes: 10);
+  static const Duration _storageDuration = Duration(days: 7);
 
 // Persistent storage
   static final GetStorage _storage =
@@ -53,7 +80,7 @@ class PhoneticTranscriptionRepo {
     final future = _safeFetch(accessToken, request);
 
     // 4. Save to in-memory cache
-    _cache[request.hashCode.toString()] = _PhoneticTranscriptionCacheItem(
+    _cache[request.hashCode.toString()] = _PhoneticTranscriptionMemoryCacheItem(
       resultFuture: future,
       timestamp: DateTime.now(),
     );
@@ -71,7 +98,11 @@ class PhoneticTranscriptionRepo {
     await GetStorage.init('phonetic_transcription_storage');
     final key = request.hashCode.toString();
     try {
-      await _storage.write(key, resultFuture.toJson());
+      final item = _PhoneticTranscriptionStorageCacheItem(
+        response: resultFuture,
+        timestamp: DateTime.now(),
+      );
+      await _storage.write(key, item.toJson());
       _cache.remove(key); // Invalidate in-memory cache
     } catch (e, s) {
       ErrorHandler.logError(
@@ -154,7 +185,12 @@ class PhoneticTranscriptionRepo {
       final entry = _storage.read(key);
       if (entry == null) return null;
 
-      return PhoneticTranscriptionResponse.fromJson(entry);
+      final item = _PhoneticTranscriptionStorageCacheItem.fromJson(entry);
+      if (DateTime.now().difference(item.timestamp) >= _storageDuration) {
+        _storage.remove(key);
+        return null;
+      }
+      return item.response;
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

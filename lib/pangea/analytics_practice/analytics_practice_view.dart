@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
@@ -22,6 +20,7 @@ import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class AnalyticsPracticeView extends StatelessWidget {
   final AnalyticsPracticeState controller;
@@ -144,8 +143,8 @@ class _AnalyticsActivityView extends StatelessWidget {
                             if (controller.widget.type ==
                                 ConstructTypeEnum.vocab)
                               PhoneticTranscriptionWidget(
-                                text:
-                                    target.tokens.first.vocabConstructID.lemma,
+                                text: target
+                                    .target.tokens.first.vocabConstructID.lemma,
                                 textLanguage: MatrixState
                                     .pangeaController.userController.userL2!,
                                 style: const TextStyle(fontSize: 14.0),
@@ -158,13 +157,8 @@ class _AnalyticsActivityView extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Center(
-                  child: ValueListenableBuilder(
-                    valueListenable: controller.activityTarget,
-                    builder: (context, target, __) => target != null
-                        ? _ExampleMessageWidget(
-                            controller.getExampleMessage(target),
-                          )
-                        : const SizedBox(),
+                  child: _AnalyticsPracticeCenterContent(
+                    controller: controller,
                   ),
                 ),
               ),
@@ -176,6 +170,36 @@ class _AnalyticsActivityView extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _AnalyticsPracticeCenterContent extends StatelessWidget {
+  final AnalyticsPracticeState controller;
+
+  const _AnalyticsPracticeCenterContent({
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: controller.activityTarget,
+      builder: (context, target, __) => switch (target?.target.activityType) {
+        null => const SizedBox(),
+        ActivityTypeEnum.grammarError => ValueListenableBuilder(
+            valueListenable: controller.activityState,
+            builder: (context, state, __) => switch (state) {
+              AsyncLoaded(value: final activity) => _ErrorBlankWidget(
+                  activity: activity as GrammarErrorPracticeActivityModel,
+                ),
+              _ => const SizedBox(),
+            },
+          ),
+        _ => _ExampleMessageWidget(
+            controller.getExampleMessage(target!.target),
+          ),
+      },
     );
   }
 }
@@ -217,6 +241,62 @@ class _ExampleMessageWidget extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _ErrorBlankWidget extends StatelessWidget {
+  final GrammarErrorPracticeActivityModel activity;
+
+  const _ErrorBlankWidget({
+    required this.activity,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final text = activity.text;
+    final errorOffset = activity.errorOffset;
+    final errorLength = activity.errorLength;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 8,
+      ),
+      decoration: BoxDecoration(
+        color: Color.alphaBlend(
+          Colors.white.withAlpha(180),
+          ThemeData.dark().colorScheme.primary,
+        ),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: RichText(
+        text: TextSpan(
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimaryFixed,
+            fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+          ),
+          children: [
+            if (errorOffset > 0)
+              TextSpan(text: text.characters.take(errorOffset).toString()),
+            WidgetSpan(
+              child: Container(
+                height: 4.0,
+                width: (errorLength * 8).toDouble(),
+                padding: const EdgeInsets.only(bottom: 2.0),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ),
+            if (errorOffset + errorLength < text.length)
+              TextSpan(
+                text:
+                    text.characters.skip(errorOffset + errorLength).toString(),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -328,6 +408,7 @@ class _ChoiceCard extends StatelessWidget {
 
   final String choiceText;
   final String? choiceEmoji;
+  final bool enabled;
 
   const _ChoiceCard({
     required this.activity,
@@ -337,6 +418,7 @@ class _ChoiceCard extends StatelessWidget {
     required this.cardHeight,
     required this.choiceText,
     required this.choiceEmoji,
+    this.enabled = true,
   });
 
   @override
@@ -358,6 +440,7 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: enabled,
         );
 
       case ActivityTypeEnum.lemmaAudio:
@@ -370,6 +453,7 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: enabled,
         );
 
       case ActivityTypeEnum.grammarCategory:
@@ -383,6 +467,22 @@ class _ChoiceCard extends StatelessWidget {
           tag: choiceText,
           onPressed: onPressed,
           isCorrect: isCorrect,
+          enabled: enabled,
+        );
+
+      case ActivityTypeEnum.grammarError:
+        final activity = this.activity as GrammarErrorPracticeActivityModel;
+        return GameChoiceCard(
+          key: ValueKey(
+            '${activity.errorLength}_${activity.errorOffset}_${activity.eventID}_${activityType.name}_grammar_error_$choiceId',
+          ),
+          shouldFlip: false,
+          targetId: targetId,
+          onPressed: onPressed,
+          isCorrect: isCorrect,
+          height: cardHeight,
+          isEnabled: enabled,
+          child: Text(choiceText),
         );
 
       default:
@@ -395,6 +495,7 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: enabled,
           child: Text(choiceText),
         );
     }

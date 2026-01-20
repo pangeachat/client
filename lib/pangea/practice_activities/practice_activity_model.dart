@@ -48,6 +48,8 @@ sealed class PracticeActivityModel {
         return ActivityTypeEnum.morphId;
       case WordListeningPracticeActivityModel():
         return ActivityTypeEnum.wordFocusListening;
+      case GrammarErrorPracticeActivityModel():
+        return ActivityTypeEnum.grammarError;
     }
   }
 
@@ -347,6 +349,24 @@ class LemmaPracticeActivityModel extends MultipleChoicePracticeActivityModel {
     required super.tokens,
     required super.langCode,
     required super.multipleChoiceContent,
+  });
+}
+
+class GrammarErrorPracticeActivityModel
+    extends MultipleChoicePracticeActivityModel {
+  final String text;
+  final int errorOffset;
+  final int errorLength;
+  final String eventID;
+
+  GrammarErrorPracticeActivityModel({
+    required super.tokens,
+    required super.langCode,
+    required super.multipleChoiceContent,
+    required this.text,
+    required this.errorOffset,
+    required this.errorLength,
+    required this.eventID,
   });
 }
 

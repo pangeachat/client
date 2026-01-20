@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 
 class ExampleMessageUtil {
   static Future<List<InlineSpan>?> getExampleMessage(
@@ -49,14 +50,27 @@ class ExampleMessageUtil {
     String? form,
     PangeaMessageEvent messageEvent,
   ) {
-    final tokens = messageEvent.messageDisplayRepresentation?.tokens;
-    if (tokens == null || tokens.isEmpty) return null;
-    final token = tokens.firstWhereOrNull(
-      (token) => token.text.content == form,
-    );
-    if (token == null) return null;
+    PangeaToken? token;
+    String? text;
 
-    final text = messageEvent.messageDisplayText;
+    if (messageEvent.isAudioMessage) {
+      final stt = messageEvent.getSpeechToTextLocal();
+      if (stt == null) return null;
+      final tokens = stt.transcript.sttTokens.map((t) => t.token).toList();
+      token = tokens.firstWhereOrNull(
+        (token) => token.text.content == form,
+      );
+      text = stt.transcript.text;
+    } else {
+      final tokens = messageEvent.messageDisplayRepresentation?.tokens;
+      if (tokens == null || tokens.isEmpty) return null;
+      token = tokens.firstWhereOrNull(
+        (token) => token.text.content == form,
+      );
+      text = messageEvent.messageDisplayText;
+    }
+
+    if (token == null) return null;
     final tokenText = token.text.content;
     int tokenIndex = text.indexOf(tokenText);
     if (tokenIndex == -1) return null;

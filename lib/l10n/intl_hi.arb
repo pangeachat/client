@@ -4483,7 +4483,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-13 15:17:42.151930",
+  "@@last_modified": "2026-01-20 12:32:05.240015",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11923,6 +11923,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "आपकी प्रैक्टिस सत्र की प्रगति सहेजी नहीं जाएगी।",
+  "practiceGrammar": "व्याकरण का अभ्यास करें",
+  "notEnoughToPractice": "अभ्यास अनलॉक करने के लिए अधिक संदेश भेजें",
+  "constructUseCorGCDesc": "सही व्याकरण श्रेणी का अभ्यास",
+  "constructUseIncGCDesc": "गलत व्याकरण श्रेणी का अभ्यास",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "व्याकरण त्रुटि सुधार अभ्यास",
+  "constructUseIncGEDesc": "व्याकरण त्रुटि गलत अभ्यास",
+  "fillInBlank": "सही विकल्प के साथ रिक्त स्थान भरें",
+  "learn": "सीखें",
+  "languageUpdated": "लक्षित भाषा अपडेट की गई!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

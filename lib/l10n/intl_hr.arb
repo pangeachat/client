@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-13 15:16:41.523925",
+  "@@last_modified": "2026-01-20 12:30:29.823787",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11210,6 +11210,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Vaš napredak u vježbi neće biti spremljen.",
+  "practiceGrammar": "Vježbajte gramatiku",
+  "notEnoughToPractice": "Pošaljite više poruka da otključate vježbu",
+  "constructUseCorGCDesc": "Vježba ispravne gramatičke kategorije",
+  "constructUseIncGCDesc": "Vježba neispravne gramatičke kategorije",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Prakticiranje ispravne gramatičke greške",
+  "constructUseIncGEDesc": "Prakticiranje pogrešne gramatičke greške",
+  "fillInBlank": "Ispunite prazno mjesto s ispravnim izborom",
+  "learn": "Učite",
+  "languageUpdated": "Ciljani jezik ažuriran!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

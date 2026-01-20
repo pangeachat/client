@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
@@ -162,7 +164,9 @@ class CompletedActivitySessionView extends StatelessWidget {
                               vertical: 8.0,
                             ),
                           ),
-                          onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () {
+                            context.go('/rooms/analytics/vocab');
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

@@ -9,6 +9,7 @@ import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/archive/archive.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat_access_settings/chat_access_settings_controller.dart';
@@ -60,6 +61,7 @@ import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
@@ -596,6 +598,24 @@ abstract class AppRoutes {
                             type: ConstructTypeEnum.vocab,
                           ),
                         );
+                      },
+                      onExit: (context, state) async {
+                        // Check if bypass flag was set before navigation
+                        if (AnalyticsPractice.bypassExitConfirmation) {
+                          AnalyticsPractice.bypassExitConfirmation = false;
+                          return true;
+                        }
+
+                        final result = await showOkCancelAlertDialog(
+                          useRootNavigator: false,
+                          context: context,
+                          title: L10n.of(context).areYouSure,
+                          okLabel: L10n.of(context).yes,
+                          cancelLabel: L10n.of(context).cancel,
+                          message: L10n.of(context).exitPractice,
+                        );
+
+                        return result == OkCancelResult.ok;
                       },
                     ),
                     GoRoute(

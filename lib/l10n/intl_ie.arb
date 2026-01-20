@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-13 15:16:39.872561",
+  "@@last_modified": "2026-01-20 12:30:26.700297",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11812,6 +11812,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Tua progressio sessionis exercitationis non servabitur.",
+  "practiceGrammar": "Exercitia grammatica",
+  "notEnoughToPractice": "Mitte plura nuntia ad exercitium aperiendum",
+  "constructUseCorGCDesc": "Correcta grammaticae categoriae exercitium",
+  "constructUseIncGCDesc": "Incorrecta grammaticae categoriae exercitium",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktika korrekta gramatikfehler",
+  "constructUseIncGEDesc": "Praktika inkorrekt gramatikfehler",
+  "fillInBlank": "Fyll i tomrummet med det korrekta valget",
+  "learn": "Lær",
+  "languageUpdated": "Mål sprog opdateret!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

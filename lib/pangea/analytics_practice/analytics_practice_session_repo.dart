@@ -1,30 +1,24 @@
 import 'dart:math';
 
-import 'package:get_storage/get_storage.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPracticeSessionRepo {
-  static final GetStorage _storage = GetStorage('practice_session');
-
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
   ) async {
-    final cached = _getCached(type);
-    if (cached != null) {
-      return cached;
-    }
-
     final r = Random();
     final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
 
@@ -33,28 +27,44 @@ class AnalyticsPracticeSessionRepo {
       (_) => activityTypes[r.nextInt(activityTypes.length)],
     );
 
-    final List<PracticeTarget> targets = [];
+    final List<AnalyticsActivityTarget> targets = [];
 
     if (type == ConstructTypeEnum.vocab) {
       final constructs = await _fetchVocab();
       final targetCount = min(constructs.length, types.length);
       targets.addAll([
         for (var i = 0; i < targetCount; i++)
-          PracticeTarget(
-            tokens: [constructs[i].asToken],
-            activityType: types[i],
+          AnalyticsActivityTarget(
+            target: PracticeTarget(
+              tokens: [constructs[i].asToken],
+              activityType: types[i],
+            ),
           ),
       ]);
     } else {
-      final morphs = await _fetchMorphs();
-      targets.addAll([
-        for (final entry in morphs.entries)
-          PracticeTarget(
-            tokens: [entry.key],
-            activityType: types[targets.length],
-            morphFeature: entry.value,
-          ),
-      ]);
+      final errorTargets = await _fetchErrors();
+      targets.addAll(errorTargets);
+
+      if (targets.length < AnalyticsPracticeConstants.practiceGroupSize) {
+        final morphs = await _fetchMorphs();
+        final remainingCount =
+            AnalyticsPracticeConstants.practiceGroupSize - targets.length;
+        final morphEntries = morphs.entries.take(remainingCount);
+
+        for (final entry in morphEntries) {
+          targets.add(
+            AnalyticsActivityTarget(
+              target: PracticeTarget(
+                tokens: [entry.key],
+                activityType: types[targets.length],
+                morphFeature: entry.value,
+              ),
+            ),
+          );
+        }
+
+        targets.shuffle();
+      }
     }
 
     final session = AnalyticsPracticeSessionModel(
@@ -63,17 +73,8 @@ class AnalyticsPracticeSessionRepo {
       startedAt: DateTime.now(),
       practiceTargets: targets,
     );
-    await _setCached(type, session);
     return session;
   }
-
-  static Future<void> update(
-    ConstructTypeEnum type,
-    AnalyticsPracticeSessionModel session,
-  ) =>
-      _setCached(type, session);
-
-  static Future<void> clear() => _storage.erase();
 
   static Future<List<ConstructIdentifier>> _fetchVocab() async {
     final constructs = await MatrixState
@@ -163,27 +164,98 @@ class AnalyticsPracticeSessionRepo {
     return targets;
   }
 
-  static AnalyticsPracticeSessionModel? _getCached(
-    ConstructTypeEnum type,
-  ) {
-    try {
-      final entry = _storage.read(type.name);
-      if (entry == null) return null;
-      final json = entry as Map<String, dynamic>;
-      return AnalyticsPracticeSessionModel.fromJson(json);
-    } catch (e) {
-      _storage.remove(type.name);
-      return null;
-    }
-  }
+  static Future<List<AnalyticsActivityTarget>> _fetchErrors() async {
+    final uses = await MatrixState
+        .pangeaController.matrixState.analyticsDataService
+        .getUses(count: 100, type: ConstructUseTypeEnum.ga);
 
-  static Future<void> _setCached(
-    ConstructTypeEnum type,
-    AnalyticsPracticeSessionModel session,
-  ) async {
-    await _storage.write(
-      type.name,
-      session.toJson(),
-    );
+    final client = MatrixState.pangeaController.matrixState.client;
+    final Map<String, PangeaMessageEvent?> idsToEvents = {};
+
+    for (final use in uses) {
+      final eventID = use.metadata.eventId;
+      if (eventID == null || idsToEvents.containsKey(eventID)) continue;
+
+      final roomID = use.metadata.roomId;
+      if (roomID == null) {
+        idsToEvents[eventID] = null;
+        continue;
+      }
+
+      final room = client.getRoomById(roomID);
+      final event = await room?.getEventById(eventID);
+      if (event == null || event.redacted) {
+        idsToEvents[eventID] = null;
+        continue;
+      }
+
+      final timeline = await room!.getTimeline();
+      idsToEvents[eventID] = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: event.senderId == client.userID,
+      );
+    }
+
+    final l2Code =
+        MatrixState.pangeaController.userController.userL2!.langCodeShort;
+
+    final events = idsToEvents.values.whereType<PangeaMessageEvent>().toList();
+    final eventsWithContent = events.where((e) {
+      final originalSent = e.originalSent;
+      final choreo = originalSent?.choreo;
+      final tokens = originalSent?.tokens;
+      return originalSent?.langCode.split("-").first == l2Code &&
+          choreo != null &&
+          tokens != null &&
+          tokens.isNotEmpty &&
+          choreo.choreoSteps.any(
+            (step) =>
+                step.acceptedOrIgnoredMatch?.isGrammarMatch == true &&
+                step.acceptedOrIgnoredMatch?.match.bestChoice != null,
+          );
+    });
+
+    final targets = <AnalyticsActivityTarget>[];
+    for (final event in eventsWithContent) {
+      final originalSent = event.originalSent!;
+      final choreo = originalSent.choreo!;
+      final tokens = originalSent.tokens!;
+
+      for (int i = 0; i < choreo.choreoSteps.length; i++) {
+        final step = choreo.choreoSteps[i];
+        final igcMatch = step.acceptedOrIgnoredMatch;
+        if (igcMatch?.isGrammarMatch != true ||
+            igcMatch?.match.bestChoice == null) {
+          continue;
+        }
+
+        final choices = igcMatch!.match.choices!.map((c) => c.value).toList();
+        final choiceTokens = tokens.where(
+          (token) =>
+              token.lemma.saveVocab &&
+              choices.any(
+                (choice) => choice.contains(token.text.content),
+              ),
+        );
+
+        targets.add(
+          AnalyticsActivityTarget(
+            target: PracticeTarget(
+              tokens: choiceTokens.toList(),
+              activityType: ActivityTypeEnum.grammarError,
+              morphFeature: null,
+            ),
+            grammarErrorInfo: GrammarErrorRequestInfo(
+              choreo: choreo,
+              stepIndex: i,
+              eventID: event.eventId,
+            ),
+          ),
+        );
+      }
+    }
+
+    return targets;
   }
 }

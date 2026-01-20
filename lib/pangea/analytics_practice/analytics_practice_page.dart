@@ -1,10 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
@@ -26,6 +23,7 @@ import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
@@ -37,15 +35,25 @@ class SelectedMorphChoice {
   });
 }
 
-class PracticeChoice {
+class VocabPracticeChoice {
   final String choiceId;
   final String choiceText;
   final String? choiceEmoji;
 
-  const PracticeChoice({
+  const VocabPracticeChoice({
     required this.choiceId,
     required this.choiceText,
     this.choiceEmoji,
+  });
+}
+
+class _PracticeQueueEntry {
+  final MessageActivityRequest request;
+  final Completer<MultipleChoicePracticeActivityModel> completer;
+
+  _PracticeQueueEntry({
+    required this.request,
+    required this.completer,
   });
 }
 
@@ -59,6 +67,8 @@ class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
 }
 
 class AnalyticsPractice extends StatefulWidget {
+  static bool bypassExitConfirmation = false;
+
   final ConstructTypeEnum type;
   const AnalyticsPractice({
     super.key,
@@ -76,14 +86,13 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final ValueNotifier<AsyncState<MultipleChoicePracticeActivityModel>>
       activityState = ValueNotifier(const AsyncState.idle());
 
-  final Queue<
-      MapEntry<PracticeTarget,
-          Completer<MultipleChoicePracticeActivityModel>>> _queue = Queue();
+  final Queue<_PracticeQueueEntry> _queue = Queue();
 
-  final ValueNotifier<PracticeTarget?> activityTarget =
-      ValueNotifier<PracticeTarget?>(null);
+  final ValueNotifier<MessageActivityRequest?> activityTarget =
+      ValueNotifier<MessageActivityRequest?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
+  final ValueNotifier<bool> enableChoicesNotifier = ValueNotifier<bool>(true);
 
   final ValueNotifier<SelectedMorphChoice?> selectedMorphChoice =
       ValueNotifier<SelectedMorphChoice?>(null);
@@ -106,11 +115,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   @override
   void dispose() {
     _languageStreamSubscription?.cancel();
-    if (_isComplete) {
-      AnalyticsPracticeSessionRepo.clear();
-    } else {
-      _saveSession();
-    }
     _sessionLoader.dispose();
     activityState.dispose();
     activityTarget.dispose();
@@ -134,13 +138,13 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   AnalyticsDataService get _analyticsService =>
       Matrix.of(context).analyticsDataService;
 
-  List<PracticeChoice> filteredChoices(
+  List<VocabPracticeChoice> filteredChoices(
     MultipleChoicePracticeActivityModel activity,
   ) {
     final content = activity.multipleChoiceContent;
     final choices = content.choices.toList();
     final answer = content.answers.first;
-    final filtered = <PracticeChoice>[];
+    final filtered = <VocabPracticeChoice>[];
 
     final seenTexts = <String>{};
     for (final id in choices) {
@@ -155,7 +159,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
           (choice) => choice.choiceText == text,
         );
         if (index != -1) {
-          filtered[index] = PracticeChoice(
+          filtered[index] = VocabPracticeChoice(
             choiceId: id,
             choiceText: text,
             choiceEmoji: getChoiceEmoji(activity.storageKey, id),
@@ -166,7 +170,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
       seenTexts.add(text);
       filtered.add(
-        PracticeChoice(
+        VocabPracticeChoice(
           choiceId: id,
           choiceText: text,
           choiceEmoji: getChoiceEmoji(activity.storageKey, id),
@@ -221,18 +225,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     if (activityTarget.value == null) return;
     if (widget.type != ConstructTypeEnum.vocab) return;
     TtsController.tryToSpeak(
-      activityTarget.value!.tokens.first.vocabConstructID.lemma,
+      activityTarget.value!.target.tokens.first.vocabConstructID.lemma,
       langCode: MatrixState.pangeaController.userController.userL2!.langCode,
     );
-  }
-
-  Future<void> _saveSession() async {
-    if (_sessionLoader.isLoaded) {
-      await AnalyticsPracticeSessionRepo.update(
-        widget.type,
-        _sessionLoader.value!,
-      );
-    }
   }
 
   Future<void> _waitForAnalytics() async {
@@ -269,7 +264,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> reloadSession() async {
     _resetActivityState();
     _resetSessionState();
-    await AnalyticsPracticeSessionRepo.clear();
+
     _sessionLoader.reset();
     await _startSession();
   }
@@ -284,7 +279,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       bonus,
       forceUpdate: true,
     );
-    await _saveSession();
+    AnalyticsPractice.bypassExitConfirmation = true;
   }
 
   bool _continuing = false;
@@ -292,6 +287,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _continueSession() async {
     if (_continuing) return;
     _continuing = true;
+    enableChoicesNotifier.value = true;
 
     try {
       if (activityState.value
@@ -304,10 +300,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         selectedMorphChoice.value = null;
         final nextActivityCompleter = _queue.removeFirst();
 
-        activityTarget.value = nextActivityCompleter.key;
+        activityTarget.value = nextActivityCompleter.request;
         _playAudio();
 
-        final activity = await nextActivityCompleter.value.future;
+        final activity = await nextActivityCompleter.completer.future;
         activityState.value = AsyncState.loaded(activity);
       }
     } catch (e) {
@@ -327,7 +323,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       activityState.value = const AsyncState.loading();
       final req = requests.first;
 
-      activityTarget.value = req.target;
+      activityTarget.value = req;
       _playAudio();
 
       final res = await _fetchActivity(req);
@@ -343,10 +339,17 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     _fillActivityQueue(requests.skip(1).toList());
   }
 
-  Future<void> _fillActivityQueue(List<MessageActivityRequest> requests) async {
+  Future<void> _fillActivityQueue(
+    List<MessageActivityRequest> requests,
+  ) async {
     for (final request in requests) {
       final completer = Completer<MultipleChoicePracticeActivityModel>();
-      _queue.add(MapEntry(request.target, completer));
+      _queue.add(
+        _PracticeQueueEntry(
+          request: request,
+          completer: completer,
+        ),
+      );
 
       try {
         final res = await _fetchActivity(request);
@@ -425,6 +428,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         tag: choiceContent,
       );
     }
+    final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
+    if (isCorrect) {
+      enableChoicesNotifier.value = false;
+    }
 
     // Update activity record
     PracticeRecordController.onSelectChoice(
@@ -438,7 +445,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _analyticsService.updateService
         .addAnalytics(choiceTargetId(choiceContent), [use]);
 
-    await _saveSession();
     if (!activity.multipleChoiceContent.isCorrect(choiceContent)) return;
 
     _playAudio();
@@ -449,7 +455,6 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     // Then mark this activity as completed, and either load the next or complete the session
     _sessionLoader.value!.completeActivity();
     progressNotifier.value = _sessionLoader.value!.progress;
-    await _saveSession();
 
     _isComplete ? await _completeSession() : await _continueSession();
   }
@@ -458,12 +463,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     PracticeTarget target,
   ) async {
     final token = target.tokens.first;
-    final construct = switch (widget.type) {
-      ConstructTypeEnum.vocab => token.vocabConstructID,
-      ConstructTypeEnum.morph => token.morphIdByFeature(target.morphFeature!),
-    };
-
-    if (construct == null) return null;
+    final construct = target.targetTokenConstructID(token);
 
     String? form;
     if (widget.type == ConstructTypeEnum.morph) {

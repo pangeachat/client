@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:43.889996",
+  "@@last_modified": "2026-01-20 12:32:07.490560",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11927,6 +11927,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Via praktika sesio progreso ne estos konservita.",
+  "practiceGrammar": "Praktiku gramatikon",
+  "notEnoughToPractice": "Sendu pli da mesaĝoj por malŝlosi praktikon",
+  "constructUseCorGCDesc": "Praktiko de ĝusta gramatika kategorio",
+  "constructUseIncGCDesc": "Praktiko de malĝusta gramatika kategorio",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktiko pri ĝusta gramatika eraro",
+  "constructUseIncGEDesc": "Praktiko pri malĝusta gramatika eraro",
+  "fillInBlank": "Plenigu la malplenan lokon per la ĝusta elekto",
+  "learn": "Lerni",
+  "languageUpdated": "Celo lingvo ĝisdatigita!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

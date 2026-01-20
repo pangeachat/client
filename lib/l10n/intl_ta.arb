@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-13 15:17:27.095421",
+  "@@last_modified": "2026-01-20 12:31:40.562260",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11062,6 +11062,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "உங்கள் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
+  "practiceGrammar": "வியாசத்தை பயிற்சி செய்யவும்",
+  "notEnoughToPractice": "பயிற்சியை திறக்க மேலும் செய்திகளை அனுப்பவும்",
+  "constructUseCorGCDesc": "சரியான வியாச வகை பயிற்சி",
+  "constructUseIncGCDesc": "தவறான வியாச வகை பயிற்சி",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "சரியான இலக்கண பிழை பயிற்சி",
+  "constructUseIncGEDesc": "தவறான இலக்கண பிழை பயிற்சி",
+  "fillInBlank": "சரியான தேர்வுடன் காலியை நிரப்பவும்",
+  "learn": "கற்றுக்கொள்ளுங்கள்",
+  "languageUpdated": "இலக்கு மொழி புதுப்பிக்கப்பட்டது!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

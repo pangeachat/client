@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-13 15:17:18.289687",
+  "@@last_modified": "2026-01-20 12:31:24.671375",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11055,6 +11055,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "لن يتم حفظ تقدم جلسة التدريب الخاصة بك.",
+  "practiceGrammar": "تدرب على القواعد",
+  "notEnoughToPractice": "أرسل المزيد من الرسائل لفتح التدريب",
+  "constructUseCorGCDesc": "تدريب على فئة القواعد الصحيحة",
+  "constructUseIncGCDesc": "تدريب على فئة القواعد غير الصحيحة",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "ممارسة تصحيح أخطاء القواعد",
+  "constructUseIncGEDesc": "ممارسة أخطاء القواعد غير الصحيحة",
+  "fillInBlank": "املأ الفراغ بالخيار الصحيح",
+  "learn": "تعلم",
+  "languageUpdated": "تم تحديث اللغة المستهدفة!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

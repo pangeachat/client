@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-13 15:16:38.044008",
+  "@@last_modified": "2026-01-20 12:30:24.498564",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11922,6 +11922,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Pokrok vo vašej cvičebnej relácii nebude uložený.",
+  "practiceGrammar": "Cvičiť gramatiku",
+  "notEnoughToPractice": "Odošlite viac správ na odomknutie cvičenia",
+  "constructUseCorGCDesc": "Cvičenie správnej gramatickej kategórie",
+  "constructUseIncGCDesc": "Cvičenie nesprávnej gramatickej kategórie",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Cvičenie na opravu gramatických chýb",
+  "constructUseIncGEDesc": "Cvičenie na nesprávne gramatické chyby",
+  "fillInBlank": "Doplňte prázdne miesto správnou voľbou",
+  "learn": "Učte sa",
+  "languageUpdated": "Cieľový jazyk bol aktualizovaný!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

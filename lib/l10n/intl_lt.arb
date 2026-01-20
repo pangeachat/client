@@ -3861,7 +3861,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-13 15:17:23.202279",
+  "@@last_modified": "2026-01-20 12:31:36.164653",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11643,6 +11643,56 @@
     "placeholders": {}
   },
   "@webDownloadPermissionMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "exitPractice": "Jūsų praktikos sesijos pažanga nebus išsaugota.",
+  "practiceGrammar": "Praktikuoti gramatiką",
+  "notEnoughToPractice": "Siųskite daugiau žinučių, kad atrakintumėte praktiką",
+  "constructUseCorGCDesc": "Teisingos gramatikos kategorijos praktika",
+  "constructUseIncGCDesc": "Neteisingos gramatikos kategorijos praktika",
+  "@exitPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@practiceGrammar": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notEnoughToPractice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseCorGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Teisingos gramatikos klaidų praktika",
+  "constructUseIncGEDesc": "Neteisingos gramatikos klaidų praktika",
+  "fillInBlank": "Užpildykite tuščią vietą teisingu pasirinkimu",
+  "learn": "Mokytis",
+  "languageUpdated": "Tikslo kalba atnaujinta!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
     "type": "String",
     "placeholders": {}
   }

@@ -16,7 +16,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
-import 'package:fluffychat/pangea/chat/widgets/request_regeneration_button.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -822,20 +821,7 @@ class Message extends StatelessWidget {
                                                                         ),
                                                                       ],
                                                                     ),
-                                                                  )
-                                                                // #Pangea
-                                                                else if (canRefresh)
-                                                                  RequestRegenerationButton(
-                                                                    textColor:
-                                                                        textColor,
-                                                                    onPressed: () =>
-                                                                        controller
-                                                                            .requestRegeneration(
-                                                                      event
-                                                                          .eventId,
-                                                                    ),
                                                                   ),
-                                                                // Pangea#
                                                               ],
                                                             ),
                                                           ),
