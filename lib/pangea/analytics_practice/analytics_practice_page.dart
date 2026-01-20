@@ -83,6 +83,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       ValueNotifier<MessageActivityRequest?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
+  final ValueNotifier<bool> enableChoicesNotifier = ValueNotifier<bool>(true);
 
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
@@ -106,6 +107,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityState.dispose();
     activityTarget.dispose();
     progressNotifier.dispose();
+    enableChoicesNotifier.dispose();
     super.dispose();
   }
 
@@ -190,6 +192,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   void _resetActivityState() {
     activityState.value = const AsyncState.loading();
     activityTarget.value = null;
+    enableChoicesNotifier.value = true;
   }
 
   void _resetSessionState() {
@@ -272,6 +275,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _continueSession() async {
     if (_continuing) return;
     _continuing = true;
+    enableChoicesNotifier.value = true;
 
     try {
       if (activityState.value
@@ -403,6 +407,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   ) async {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
+    final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
+    if (isCorrect) {
+      enableChoicesNotifier.value = false;
+    }
 
     // Update activity record
     PracticeRecordController.onSelectChoice(
