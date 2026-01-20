@@ -5,6 +5,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_page.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/audio_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/game_choice_card.dart';
 import 'package:fluffychat/pangea/analytics_practice/choice_cards/grammar_choice_card.dart';
@@ -84,7 +85,11 @@ class AnalyticsPracticeView extends StatelessWidget {
             builder: (context, state, __) {
               return switch (state) {
                 AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
-                  ErrorIndicator(message: error.toString()),
+                  ErrorIndicator(
+                    message: error is InsufficientDataException
+                        ? L10n.of(context).notEnoughToPractice
+                        : error.toString(),
+                  ),
                 AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
                   value.isComplete
                       ? CompletedActivitySessionView(state.value, controller)

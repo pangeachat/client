@@ -15,6 +15,8 @@ import 'package:fluffychat/pangea/practice_activities/message_activity_request.d
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+class InsufficientDataException implements Exception {}
+
 class AnalyticsPracticeSessionRepo {
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
@@ -65,6 +67,10 @@ class AnalyticsPracticeSessionRepo {
 
         targets.shuffle();
       }
+    }
+
+    if (targets.isEmpty) {
+      throw InsufficientDataException();
     }
 
     final session = AnalyticsPracticeSessionModel(
