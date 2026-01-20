@@ -130,7 +130,7 @@ class SelectModeController with LemmaEmojiSetter {
 
   (PangeaAudioFile, File?)? get audioFile => _audioLoader.value;
 
-  List<SelectMode> get allModes {
+  List<SelectMode> allModes({bool enableRefresh = false}) {
     final validTypes = {MessageTypes.Text, MessageTypes.Audio};
     if (!messageEvent.event.status.isSent ||
         messageEvent.event.type != EventTypes.Message ||
@@ -138,12 +138,18 @@ class SelectModeController with LemmaEmojiSetter {
       return [];
     }
 
-    return messageEvent.event.messageType == MessageTypes.Text
+    final types = messageEvent.event.messageType == MessageTypes.Text
         ? _textModes
         : _audioModes;
+
+    if (enableRefresh) {
+      return [...types, SelectMode.requestRegenerate];
+    }
+
+    return types;
   }
 
-  List<SelectMode> get readingAssistanceModes {
+  List<SelectMode> readingAssistanceModes({bool enableRefresh = false}) {
     final validTypes = {MessageTypes.Text, MessageTypes.Audio};
     if (!messageEvent.event.status.isSent ||
         messageEvent.event.type != EventTypes.Message ||
@@ -151,6 +157,7 @@ class SelectModeController with LemmaEmojiSetter {
       return [];
     }
 
+    List<SelectMode> modes = [];
     if (messageEvent.event.messageType == MessageTypes.Text) {
       final lang = messageEvent.messageDisplayLangCode.split("-").first;
 
@@ -160,14 +167,20 @@ class SelectModeController with LemmaEmojiSetter {
       final matchesL1 = lang ==
           MatrixState.pangeaController.userController.userL1!.langCodeShort;
 
-      return matchesL2
+      modes = matchesL2
           ? _textModes
           : matchesL1
               ? []
               : [SelectMode.translate];
+    } else {
+      modes = _audioModes;
     }
 
-    return _audioModes;
+    if (enableRefresh) {
+      modes = [...modes, SelectMode.requestRegenerate];
+    }
+
+    return modes;
   }
 
   bool get isLoading => currentModeStateNotifier?.value is AsyncLoading;

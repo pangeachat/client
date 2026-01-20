@@ -29,7 +29,8 @@ enum SelectMode {
   translate(Icons.translate),
   practice(Symbols.fitness_center),
   emoji(Icons.add_reaction_outlined),
-  speechTranslation(Icons.translate);
+  speechTranslation(Icons.translate),
+  requestRegenerate(Icons.replay);
 
   final IconData icon;
   const SelectMode(this.icon);
@@ -46,6 +47,8 @@ enum SelectMode {
         return l10n.practice;
       case SelectMode.emoji:
         return l10n.emojiView;
+      case SelectMode.requestRegenerate:
+        return l10n.requestRegeneration;
     }
   }
 }
@@ -180,6 +183,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   SelectModeController get controller =>
       widget.overlayController.selectModeController;
 
+  bool get _canRefresh =>
+      messageEvent.eventId == widget.controller.refreshEventID;
+
   Future<void> updateMode(SelectMode? mode) async {
     if (mode == null) {
       matrix?.audioPlayer?.stop();
@@ -213,6 +219,16 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     if (updatedMode == SelectMode.speechTranslation) {
       await controller.fetchSpeechTranslation();
+    }
+
+    if (updatedMode == SelectMode.requestRegenerate) {
+      await widget.controller.requestRegeneration(
+        messageEvent.eventId,
+      );
+
+      if (mounted) {
+        controller.setSelectMode(null);
+      }
     }
   }
 
@@ -370,7 +386,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final modes = controller.readingAssistanceModes;
-    final allModes = controller.allModes;
+    final allModes = controller.allModes(enableRefresh: _canRefresh);
     return Material(
       type: MaterialType.transparency,
       child: SizedBox(
@@ -380,7 +396,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
           children: List.generate(allModes.length + 1, (index) {
             if (index < allModes.length) {
               final mode = allModes[index];
-              final enabled = modes.contains(mode);
+              final enabled = modes(enableRefresh: _canRefresh).contains(mode);
               return Container(
                 width: 45.0,
                 alignment: Alignment.center,

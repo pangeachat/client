@@ -2418,6 +2418,8 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     if (reason == null) return;
+
+    clearSelectedEvents();
     await showFutureLoadingDialog(
       context: context,
       future: () => room.sendEvent(
