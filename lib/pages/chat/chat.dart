@@ -2009,6 +2009,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   bool showMessageShimmer(Event event) {
     if (event.type != EventTypes.Message) return false;
+    if (!(event.eventId == buttonEventID)) return false;
     if (event.messageType == MessageTypes.Text) {
       return !InstructionsEnum.clickTextMessages.isToggledOff;
     }
