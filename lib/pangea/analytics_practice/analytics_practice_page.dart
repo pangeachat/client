@@ -442,12 +442,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     PracticeTarget target,
   ) async {
     final token = target.tokens.first;
-    final construct = switch (widget.type) {
-      ConstructTypeEnum.vocab => token.vocabConstructID,
-      ConstructTypeEnum.morph => token.morphIdByFeature(target.morphFeature!),
-    };
-
-    if (construct == null) return null;
+    final construct = target.targetTokenConstructID(token);
 
     String? form;
     if (widget.type == ConstructTypeEnum.morph) {
