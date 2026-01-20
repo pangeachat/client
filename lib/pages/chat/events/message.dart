@@ -606,9 +606,10 @@ class Message extends StatelessWidget {
                                                     // #Pangea
                                                     child: ShimmerBackground(
                                                       enabled: controller
-                                                          .showMessageShimmer(
-                                                        event,
-                                                      ),
+                                                              .showMessageShimmer(
+                                                            event,
+                                                          ) &&
+                                                          isButton,
                                                       // Pangea#
                                                       child: Container(
                                                         decoration:
