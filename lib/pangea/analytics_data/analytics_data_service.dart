@@ -214,6 +214,8 @@ class AnalyticsDataService {
     await _syncController?.waitForSync(analyticsRoomID);
   }
 
+  DerivedAnalyticsDataModel? get cachedDerivedData => _cachedDerivedStats;
+
   Future<DerivedAnalyticsDataModel> get derivedData async {
     await _ensureInitialized();
 
