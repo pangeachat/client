@@ -5338,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$constructUseIncGCDesc() {
       return "\u03a0\u03c1\u03b1\u03ba\u03c4\u03b9\u03ba\u03ae \u03ba\u03b1\u03c4\u03b7\u03b3\u03bf\u03c1\u03af\u03b1\u03c2 \u03bb\u03b1\u03bd\u03b8\u03b1\u03c3\u03c4\u03ae\u03c2 \u03b3\u03c1\u03b1\u03bc\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae\u03c2";
     },
+    get$constructUseCorGEDesc() {
+      return "Correct grammar error practice";
+    },
+    get$constructUseIncGEDesc() {
+      return "Incorrect grammar error practice";
+    },
+    get$fillInBlank() {
+      return "Fill in the blank with the correct choice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["owWTQCatY7ebutshwZAFG4zy/18="] = d.current;
+  d["KGUMdMaaI/n1KnZcp42bVUyl1Lc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_413.part.js.map

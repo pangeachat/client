@@ -5338,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$constructUseIncGCDesc() {
       return "Neteisingos gramatikos kategorijos praktika";
     },
+    get$constructUseCorGEDesc() {
+      return "Correct grammar error practice";
+    },
+    get$constructUseIncGEDesc() {
+      return "Incorrect grammar error practice";
+    },
+    get$fillInBlank() {
+      return "Fill in the blank with the correct choice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fr1IqqGJ9DZ9qtmoqtV+5LY50Po="] = d.current;
+  d["iWtHqYpPw3Cr29douhqzDqnoDXs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_713.part.js.map

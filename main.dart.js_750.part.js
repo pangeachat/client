@@ -5338,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$constructUseIncGCDesc() {
       return "Cvi\u010denie nespr\xe1vnej gramatickej kateg\xf3rie";
     },
+    get$constructUseCorGEDesc() {
+      return "Correct grammar error practice";
+    },
+    get$constructUseIncGEDesc() {
+      return "Incorrect grammar error practice";
+    },
+    get$fillInBlank() {
+      return "Fill in the blank with the correct choice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Hqneyp052cG6iet9h3LboSWeB7M="] = d.current;
+  d["gFqBdb8hi+nEw3mNq7WhW1eioFQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_750.part.js.map

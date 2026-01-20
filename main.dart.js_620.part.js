@@ -5338,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$constructUseIncGCDesc() {
       return "Pr\xe1ctica da categor\xeda de gram\xe1tica incorrecta";
     },
+    get$constructUseCorGEDesc() {
+      return "Correct grammar error practice";
+    },
+    get$constructUseIncGEDesc() {
+      return "Incorrect grammar error practice";
+    },
+    get$fillInBlank() {
+      return "Fill in the blank with the correct choice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9tIs/RPWO/GMWy3h+04EVqF8J0k="] = d.current;
+  d["QfQXYmwmubAw+6mjy9tC862GPuw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_620.part.js.map
