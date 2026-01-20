@@ -113,6 +113,7 @@ class SelectModeController with LemmaEmojiSetter {
         SelectMode.translate,
         SelectMode.practice,
         SelectMode.emoji,
+        SelectMode.requestRegenerate,
       ];
 
   static List<SelectMode> get _audioModes => [

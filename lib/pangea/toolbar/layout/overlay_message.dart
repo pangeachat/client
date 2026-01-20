@@ -10,7 +10,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_content.dart';
 import 'package:fluffychat/pages/chat/events/reply_content.dart';
-import 'package:fluffychat/pangea/chat/widgets/request_regeneration_button.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -258,11 +257,6 @@ class OverlayMessage extends StatelessWidget {
                   ),
                 ],
               ),
-            )
-          else if (canRefresh)
-            RequestRegenerationButton(
-              textColor: textColor,
-              onPressed: () => controller.requestRegeneration(event.eventId),
             ),
         ],
       ),
