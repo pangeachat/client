@@ -17,9 +17,8 @@ extension BotClientExtension on Client {
   // All 2-member rooms with the bot
   List<Room> get targetBotChats => rooms.where((r) {
         if (r.isBotDM) return true;
-        final participants = r.getParticipants();
-        if (participants.length != 2) return false;
-        return participants.any((u) => u.id == BotName.byEnvironment);
+        if (r.summary.mJoinedMemberCount != 2) return false;
+        return r.getParticipants().any((u) => u.id == BotName.byEnvironment);
       }).toList();
 
   Future<String> startChatWithBot() => startDirectChat(
