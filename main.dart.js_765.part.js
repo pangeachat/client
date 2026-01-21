@@ -5,3673 +5,3673 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nUk$() {
-      return new A.L10nUk(B.canonicalizedLocale("uk"));
+    L10nVi$() {
+      return new A.L10nVi(B.canonicalizedLocale("vi"));
     },
-    L10nUk: function L10nUk(t0) {
+    L10nVi: function L10nVi(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[51], A);
-  A.L10nUk.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[52], A);
+  A.L10nVi.prototype = {
     get$alwaysUse24HourFormat() {
-      return "\u043d\u0456";
+      return "Kh\xf4ng";
     },
     get$repeatPassword() {
-      return "\u041f\u043e\u0432\u0442\u043e\u0440\u0456\u0442\u044c \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Nh\u1eadp l\u1ea1i m\u1eadt kh\u1ea9u";
     },
     get$notAnImage() {
-      return "\u041d\u0435 \u0444\u0430\u0439\u043b \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f.";
+      return "Kh\xf4ng ph\u1ea3i t\u1ec7p \u1ea3nh.";
     },
     get$setCustomPermissionLevel() {
-      return "\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0440\u0456\u0432\u0435\u043d\u044c \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0446\u044c\u043a\u0438\u0445 \u043f\u0440\u0430\u0432";
+      return "\u0110\u1eb7t c\u1ea5p \u0111\u1ed9 quy\u1ec1n t\xf9y ch\u1ec9nh";
     },
     get$setPermissionsLevelDescription() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0437\u0430\u0437\u0434\u0430\u043b\u0435\u0433\u0456\u0434\u044c \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0443 \u0440\u043e\u043b\u044c \u043d\u0438\u0436\u0447\u0435 \u0430\u0431\u043e \u0432\u0432\u0435\u0434\u0456\u0442\u044c \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0446\u044c\u043a\u0438\u0439 \u0440\u0456\u0432\u0435\u043d\u044c \u043f\u0440\u0430\u0432 \u0432\u0456\u0434 0 \u0434\u043e 100.";
+      return "Vui l\xf2ng ch\u1ecdn m\u1ed9t vai tr\xf2 \u0111\xe3 \u0111\u1ecbnh ngh\u0129a s\u1eb5n b\xean d\u01b0\u1edbi ho\u1eb7c nh\u1eadp m\u1ed9t c\u1ea5p \u0111\u1ed9 quy\u1ec1n t\xf9y ch\u1ec9nh t\u1eeb 0 \u0111\u1ebfn 100.";
     },
     get$ignoreUser() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0432\u0430\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "B\u1ecf qua ng\u01b0\u1eddi d\xf9ng";
     },
     get$normalUser() {
-      return "\u0417\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447";
+      return "Ng\u01b0\u1eddi d\xf9ng b\xecnh th\u01b0\u1eddng";
     },
     get$remove(_) {
-      return "\u0412\u0438\u043b\u0443\u0447\u0438\u0442\u0438";
+      return "Lo\u1ea1i b\u1ecf";
     },
     get$importNow() {
-      return "\u0406\u043c\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438 \u0437\u0430\u0440\u0430\u0437";
+      return "Nh\u1eadp v\xe0o";
     },
     get$importEmojis() {
-      return "\u0406\u043c\u043f\u043e\u0440\u0442 \u0435\u043c\u043e\u0434\u0437\u0456";
+      return "Nh\u1eadp Bi\u1ec3u c\u1ea3m";
     },
     get$importFromZipFile() {
-      return "\u0406\u043c\u043f\u043e\u0440\u0442 \u0437 \u0444\u0430\u0439\u043b\u0443 .zip";
+      return "Nh\u1eadp v\xe0o t\u1eeb t\u1ec7p .zip";
     },
     get$exportEmotePack() {
-      return "\u0415\u043a\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438 \u043d\u0430\u0431\u0456\u0440 \u0441\u043c\u0430\u0439\u043b\u0438\u043a\u0456\u0432 \u0443 \u0444\u043e\u0440\u043c\u0430\u0442\u0456 .zip";
+      return "Xu\u1ea5t g\xf3i bi\u1ec3u c\u1ea3m b\u1eb1ng t\u1ec7p .zip";
     },
     get$replace(_) {
-      return "\u0417\u0430\u043c\u0456\u043d\u0438\u0442\u0438";
+      return "Thay th\u1ebf";
     },
     aboutHomeserver$1(homeserver) {
-      return "\u041f\u0440\u043e " + homeserver;
+      return "V\u1ec1 " + homeserver;
     },
     get$accept(_) {
-      return "\u041f\u0440\u0438\u0439\u043d\u044f\u0442\u0438";
+      return "\u0110\u1ed3ng \xfd";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " \u043f\u0440\u0438\u0439\u043c\u0430\u0454 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f";
+      return username + " \u0111\xe3 \u0111\u1ed3ng \xfd l\u1eddi m\u1eddi";
     },
     get$account() {
-      return "\u041e\u0431\u043b\u0456\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0441";
+      return "T\xe0i kho\u1ea3n";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " \u0430\u043a\u0442\u0438\u0432\u0443\u0454 \u043d\u0430\u0441\u043a\u0440\u0456\u0437\u043d\u0435 \u0448\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f";
+      return username + " \u0111\xe3 k\xedch ho\u1ea1t m\xe3 h\xf3a \u0111\u1ea7u cu\u1ed1i 2 chi\u1ec1u";
     },
     get$addEmail() {
-      return "\u0414\u043e\u0434\u0430\u0442\u0438 \u0435-\u043f\u043e\u0448\u0442\u0443";
+      return "Th\xeam email";
     },
     supposedMxid$1(mxid) {
-      return "\u0426\u0435 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 " + mxid;
+      return "\u0110\xe2y n\xean l\xe0 " + mxid;
     },
     get$admin() {
-      return "\u0410\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440";
+      return "Qu\u1ea3n tr\u1ecb vi\xean";
     },
     get$allChats() {
-      return "\u0423\u0441\u0456 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "T\u1ea5t c\u1ea3 h\u1ed9i tho\u1ea1i";
     },
     get$commandHint_roomupgrade() {
-      return "\u041e\u043d\u043e\u0432\u0438\u0442\u0438 \u0446\u044e \u043a\u0456\u043c\u043d\u0430\u0442\u0443 \u0434\u043e \u0432\u0435\u0440\u0441\u0456\u0457 \u0434\u0430\u043d\u043e\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "N\xe2ng c\u1ea5p ph\xf2ng n\xe0y l\xean phi\xean b\u1ea3n ph\xf2ng \u0111\xe3 cho";
     },
     get$commandHint_googly() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043a\u0456\u043b\u044c\u043a\u0430 \u0433\u0443\u0433\u043b-\u043e\u0447\u0435\u0439";
+      return "G\u1eedi c\u1eb7p m\u1eaft theo d\xf5i";
     },
     get$commandHint_cuddle() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043f\u0440\u0438\u0433\u043e\u0440\u0442\u0430\u0439\u043a\u0443";
+      return "G\u1eedi m\u1ed9t c\xe1i \xe2u y\u1ebfm";
     },
     get$commandHint_hug() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043e\u0431\u0456\u0439\u043c\u0438";
+      return "G\u1eedi m\u1ed9t c\xe1i \xf4m";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u0432\u0430\u043c \u0433\u0443\u0433\u043b-\u043e\u0447\u0456";
+      return senderName + " g\u1eedi b\u1ea1n c\u1eb7p m\u1eaft theo d\xf5i";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u043f\u0440\u0438\u0433\u043e\u0440\u0442\u0430\u0454\u0442\u044c\u0441\u044f \u0434\u043e \u0432\u0430\u0441";
+      return senderName + " \xe2u y\u1ebfm b\u1ea1n";
     },
     hugContent$1(senderName) {
-      return senderName + " \u043e\u0431\u0456\u0439\u043c\u0430\u0454 \u0432\u0430\u0441";
+      return senderName + " \xf4m b\u1ea1n";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0454 \u043d\u0430 \u0432\u0438\u043a\u043b\u0438\u043a";
+      return senderName + " \u0111\xe3 tr\u1ea3 l\u1eddi cu\u1ed9c g\u1ecdi";
     },
     get$anyoneCanJoin() {
-      return "\u0411\u0443\u0434\u044c-\u0445\u0442\u043e \u043c\u043e\u0436\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044c";
+      return "M\u1ecdi ng\u01b0\u1eddi \u0111\u1ec1u c\xf3 th\u1ec3 gia nh\u1eadp";
     },
     get$archive() {
-      return "\u0410\u0440\u0445\u0456\u0432";
+      return "L\u01b0u tr\u1eef";
     },
     get$areYouSure() {
-      return "\u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456?";
+      return "B\u1ea1n ch\u1eafc ch\u1ee9?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456, \u0449\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u0439\u0442\u0438?";
+      return "B\u1ea1n c\xf3 ch\u1eafc b\u1ea1n mu\u1ed1n \u0111\u0103ng xu\u1ea5t kh\xf4ng?";
     },
     get$askSSSSSign() {
-      return "\u0414\u043b\u044f \u043f\u0456\u0434\u043f\u0438\u0441\u0443 \u043a\u043b\u044e\u0447\u0430 \u0456\u043d\u0448\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0432\u0432\u0435\u0434\u0456\u0442\u044c \u0441\u0432\u043e\u044e \u043f\u0430\u0440\u043e\u043b\u044c\u043d\u0443 \u0444\u0440\u0430\u0437\u0443 \u0430\u0431\u043e \u043a\u043b\u044e\u0447 \u0432\u0456\u0434\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f.";
+      return "\u0110\u1ec3 c\xf3 th\u1ec3 k\xfd cho ng\u01b0\u1eddi kh\xe1c, vui l\xf2ng nh\u1eadp m\u1eadt kh\u1ea9u kho l\u01b0u tr\u1eef an to\xe0n ho\u1eb7c kh\xf3a ph\u1ee5c h\u1ed3i c\u1ee7a b\u1ea1n.";
     },
     askVerificationRequest$1(username) {
-      return "\u041f\u0440\u0438\u0439\u043d\u044f\u0442\u0438 \u0446\u0435\u0439 \u0437\u0430\u043f\u0438\u0442 \u043d\u0430 \u043f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043d\u043d\u044f \u0432\u0456\u0434 " + username + "?";
+      return "B\u1ea1n c\xf3 \u0111\u1ed3ng \xfd y\xeau c\u1ea7u ch\u1ee9ng th\u1ef1c t\u1eeb " + username + " kh\xf4ng?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u0414\u043e\u043c\u0430\u0448\u043d\u0456\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u0442\u0430\u043a\u0456 \u0442\u0438\u043f\u0438 \u0432\u0445\u043e\u0434\u0443:\n" + serverVersions + "\n\u0410\u043b\u0435 \u0446\u0435\u0439 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u043b\u0438\u0448\u0435:\n" + supportedVersions;
+      return "M\xe1y ch\u1ee7 nh\xe0 h\u1ed7 tr\u1ee3 ki\u1ec3u \u0111\u0103ng nh\u1eadp:\n" + serverVersions + "\nNh\u01b0ng \u1ee9ng d\u1ee5ng n\xe0y ch\u1ec9 h\u1ed7 tr\u1ee3:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u041d\u0430\u0434\u0441\u0438\u043b\u0430\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u0432\u0432\u0456\u0434 \u0442\u0435\u043a\u0441\u0442\u0443";
+      return "G\u1eedi th\xf4ng b\xe1o \u0111ang g\xf5";
     },
     get$swipeRightToLeftToReply() {
-      return "\u041f\u043e\u0441\u0443\u043d\u0443\u0442\u0438 \u043f\u0440\u0430\u0432\u043e\u0440\u0443\u0447 \u0430\u0431\u043e \u043b\u0456\u0432\u043e\u0440\u0443\u0447, \u0449\u043e\u0431 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0441\u0442\u0438";
+      return "Qu\xe9t t\u1eeb ph\u1ea3i sang tr\xe1i \u0111\u1ec3 tr\u1ea3 l\u1eddi";
     },
     get$sendOnEnter() {
-      return "\u041d\u0430\u0434\u0441\u0438\u043b\u0430\u0442\u0438 \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f\u043c Enter";
+      return "G\u1eedi khi nh\u1ea5n Enter";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " \u0447\u0430\u0442\u0438 \u0442\u0430 " + participants + " \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432";
+      return "" + chats + " cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 " + participants + " th\xe0nh vi\xean";
     },
     get$banned() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u043e";
+      return "\u0110\xe3 b\u1ecb c\u1ea5m";
     },
     bannedUser$2(username, targetName) {
-      return username + " \u0431\u043b\u043e\u043a\u0443\u0454 " + targetName;
+      return username + " \u0111\xe3 c\u1ea5m " + targetName;
     },
     get$blockDevice() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439";
+      return "Thi\u1ebft b\u1ecb b\u1ecb ch\u1eb7n";
     },
     get$blocked() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u043e";
+      return "\u0110\xe3 ch\u1eb7n";
     },
     get$cancel(_) {
-      return "\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438";
+      return "H\u1ee7y";
     },
     cantOpenUri$1(uri) {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438 URI " + uri;
+      return "Kh\xf4ng th\u1ec3 m\u1edf URI " + uri;
     },
     get$changeDeviceName() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043d\u0430\u0437\u0432\u0443 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e";
+      return "Thay \u0111\u1ed5i t\xean thi\u1ebft b\u1ecb";
     },
     changedTheChatAvatar$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u0430\u0432\u0430\u0442\u0430\u0440 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i \u1ea3nh ph\xf2ng chat";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043e\u043f\u0438\u0441 \u0431\u0435\u0441\u0456\u0434\u0438 \u043d\u0430: '" + description + "'";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i m\xf4 t\u1ea3 ph\xf2ng chat th\xe0nh: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043d\u0430\u0437\u0432\u0443 \u0431\u0435\u0441\u0456\u0434\u0438 \u043d\u0430: '" + chatname + "'";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i t\xean ph\xf2ng chat th\xe0nh: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0443 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy\u1ec1n trong ph\xf2ng chat";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u043d\u0435 \u0456\u043c'\u044f \u043d\u0430: '" + displayname + "'";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i t\xean hi\u1ec3n th\u1ecb th\xe0nh: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0433\u043e\u0441\u0442\u044c\u043e\u0432\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0443";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc truy c\u1eadp \u0111\u1ed1i v\u1edbi kh\xe1ch";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0433\u043e\u0441\u0442\u044c\u043e\u0432\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0443 \u043d\u0430: " + rules;
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc truy c\u1eadp \u0111\u1ed1i v\u1edbi kh\xe1ch th\xe0nh: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u0432\u0438\u0434\u0438\u043c\u0456\u0441\u0442\u044c \u0456\u0441\u0442\u043e\u0440\u0456\u0457";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i ch\u1ebf \u0111\u1ed9 hi\u1ec3n th\u1ecb l\u1ecbch s\u1eed";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u0432\u0438\u0434\u0438\u043c\u0456\u0441\u0442\u044c \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u043d\u0430: " + rules;
+      return username + " \u0111\xe3 thay \u0111\u1ed5i ch\u1ebf \u0111\u1ed9 hi\u1ec3n th\u1ecb l\u1ecbch s\u1eed th\xe0nh: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc tham gia";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f \u043d\u0430: " + joinRules;
+      return username + " \u0111\xe3 thay \u0111\u1ed5i quy t\u1eafc tham gia th\xe0nh: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u0430\u0432\u0430\u0442\u0430\u0440";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i \u1ea3nh \u0111\u1ea1i di\u1ec7n c\u1ee7a m\xecnh";
     },
     changedTheRoomAliases$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0456\u043c\u0438 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return username + " \u0111\xe3 \u0111\u1ed5i \u0111\u1ecba ch\u1ec9 ph\xf2ng chat";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f";
+      return username + " \u0111\xe3 thay \u0111\u1ed5i \u0111\u01b0\u1eddng d\u1eabn m\u1eddi";
     },
     get$changePassword() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Thay \u0111\u1ed5i m\u1eadt kh\u1ea9u";
     },
     get$changeTheme() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u0441\u0442\u0438\u043b\u044c";
+      return "Thay \u0111\u1ed5i ch\u1ee7 \u0111\u1ec1";
     },
     get$changeYourAvatar() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u0430\u0432\u0430\u0442\u0430\u0440";
+      return "\u0110\u1ed5i \u1ea3nh \u0111\u1ea1i di\u1ec7n";
     },
     get$channelCorruptedDecryptError() {
-      return "\u0428\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0431\u0443\u043b\u043e \u043f\u043e\u0448\u043a\u043e\u0434\u0436\u0435\u043d\u043e";
+      return "M\xe3 h\xf3a \u0111\xe3 b\u1ecb h\u1ecfng";
     },
     get$chat() {
-      return "\u0411\u0435\u0441\u0456\u0434\u0430";
+      return "Chat";
     },
     get$chatDetails() {
-      return "\u041f\u043e\u0434\u0440\u043e\u0431\u0438\u0446\u0456 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "Chi ti\u1ebft cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$chats() {
-      return "\u0411\u0435\u0441\u0456\u0434\u0438";
+      return "C\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$chooseAStrongPassword() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043d\u0430\u0434\u0456\u0439\u043d\u0438\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Ch\u1ecdn m\u1ed9t m\u1eadt kh\u1ea9u m\u1ea1nh";
     },
     get$clearArchive() {
-      return "\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0430\u0440\u0445\u0456\u0432";
+      return "X\xf3a kho l\u01b0u tr\u1eef";
     },
     get$close(_) {
-      return "\u0417\u0430\u043a\u0440\u0438\u0442\u0438";
+      return "\u0110\xf3ng";
     },
     get$commandHint_markasdm() {
-      return "\u041f\u043e\u0437\u043d\u0430\u0447\u0438\u0442\u0438 \u043a\u0456\u043c\u043d\u0430\u0442\u043e\u044e \u043e\u0441\u043e\u0431\u0438\u0441\u0442\u043e\u0433\u043e \u0441\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u043d\u0430\u0434\u0430\u043d\u043d\u044f Matrix ID";
+      return "\u0110\xe1nh d\u1ea5u l\xe0 cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ef1c ti\u1ebfp cho m\u1ed9t Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "\u041f\u043e\u0437\u043d\u0430\u0447\u0438\u0442\u0438 \u0433\u0440\u0443\u043f\u043e\u044e";
+      return "\u0110\xe1nh d\u1ea5u l\xe0 nh\xf3m";
     },
     get$commandHint_ban() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0446\u044c\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "C\u1ea5m ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh kh\u1ecfi ph\xf2ng n\xe0y";
     },
     get$commandHint_clearcache() {
-      return "\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u043a\u0435\u0448";
+      return "X\xf3a b\u1ed9 nh\u1edb \u0111\u1ec7m";
     },
     get$commandHint_create() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0456\u0442\u044c \u043f\u043e\u0440\u043e\u0436\u043d\u044e \u0433\u0440\u0443\u043f\u043e\u0432\u0443 \u0431\u0435\u0441\u0456\u0434\u0443\n\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0439\u0442\u0435 --no-encryption, \u0449\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0448\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "T\u1ea1o m\u1ed9t ph\xf2ng tr\xf2 chuy\u1ec7n nh\xf3m tr\u1ed1ng\nD\xf9ng --no-encryption \u0111\u1ec3 t\u1eaft m\xe3 h\xf3a";
     },
     get$commandHint_discardsession() {
-      return "\u0412\u0456\u0434\u043a\u0438\u043d\u0443\u0442\u0438 \u0441\u0435\u0430\u043d\u0441";
+      return "H\u1ee7y (x\xf3a) phi\xean";
     },
     get$commandHint_dm() {
-      return "\u041f\u043e\u0447\u0430\u0442\u043e\u043a \u043e\u0441\u043e\u0431\u0438\u0441\u0442\u043e\u0457 \u0431\u0435\u0441\u0456\u0434\u0438\n\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0439\u0442\u0435 --no-encryption, \u0449\u043e \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0448\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "B\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ef1c ti\u1ebfp\nD\xf9ng --no-encryption \u0111\u1ec3 t\u1eaft m\xe3 h\xf3a";
     },
     get$commandHint_html() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0442\u0435\u043a\u0441\u0442 \u0443 \u0444\u043e\u0440\u043c\u0430\u0442\u0456 HTML";
+      return "G\u1eedi v\u0103n b\u1ea3n \u0111\u01b0\u1ee3c \u0111\u1ecbnh d\u1ea1ng HTML";
     },
     get$commandHint_invite() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0456\u0442\u044c \u0446\u044c\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0434\u043e \u0446\u0456\u0454\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "M\u1eddi ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh v\xe0o ph\xf2ng";
     },
     get$commandHint_join() {
-      return "\u041f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0446\u0456\u0454\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "Tham gia ph\xf2ng \u0111\u01b0\u1ee3c ch\u1ec9 \u0111\u1ecbnh";
     },
     get$commandHint_kick() {
-      return "\u0412\u0438\u043b\u0443\u0447\u0438\u0442\u0438 \u0446\u044c\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0437 \u0446\u0456\u0454\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "Lo\u1ea1i ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh ra kh\u1ecfi ph\xf2ng n\xe0y";
     },
     get$commandHint_leave() {
-      return "\u0412\u0438\u0439\u0442\u0438 \u0437 \u0446\u0456\u0454\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "R\u1eddi ph\xf2ng n\xe0y";
     },
     get$commandHint_me() {
-      return "\u041e\u043f\u0438\u0448\u0456\u0442\u044c \u0441\u0435\u0431\u0435";
+      return "Mi\xeau t\u1ea3 v\u1ec1 ch\xednh b\u1ea1n";
     },
     get$commandHint_myroomavatar() {
-      return "\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u0446\u0456\u0454\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438 (\u0432\u0456\u0434 mxc-uri)";
+      return "\u0110\u1eb7t \u1ea3nh \u0111\u1ea1i di\u1ec7n cho b\u1ea1n trong ph\xf2ng (b\u1eb1ng mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "\u0423\u043a\u0430\u0436\u0456\u0442\u044c \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u043d\u0435 \u0456\u043c'\u044f \u0434\u043b\u044f \u0446\u0456\u0454\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "\u0110\u1eb7t t\xean hi\u1ec3n th\u1ecb cho b\u1ea1n trong ph\xf2ng";
     },
     get$commandHint_op() {
-      return "\u0423\u043a\u0430\u0436\u0456\u0442\u044c \u0440\u0456\u0432\u0435\u043d\u044c \u043f\u043e\u0432\u043d\u043e\u0432\u0430\u0436\u0435\u043d\u044c \u0446\u044c\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 (\u0442\u0438\u043f\u043e\u0432\u043e: 50)";
+      return "\u0110\u1eb7t c\u1ea5p quy\u1ec1n l\u1ef1c cho ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh (m\u1eb7c \u0111\u1ecbnh: 50)";
     },
     get$commandHint_plain() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043d\u0435\u0444\u043e\u0440\u043c\u0430\u0442\u043e\u0432\u0430\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442";
+      return "G\u1eedi v\u0103n b\u1ea3n kh\xf4ng \u0111\u1ecbnh d\u1ea1ng";
     },
     get$commandHint_react() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u044c \u044f\u043a \u0440\u0435\u0430\u043a\u0446\u0456\u044e";
+      return "G\u1eedi ph\u1ea3n h\u1ed3i d\u01b0\u1edbi d\u1ea1ng bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$commandHint_send() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0442\u0435\u043a\u0441\u0442";
+      return "G\u1eedi v\u0103n b\u1ea3n";
     },
     get$commandHint_unban() {
-      return "\u0420\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0446\u044c\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0443 \u0446\u0456\u0439 \u043a\u0456\u043c\u043d\u0430\u0442\u0456";
+      return "B\u1ecf c\u1ea5m ng\u01b0\u1eddi d\xf9ng ch\u1ec9 \u0111\u1ecbnh kh\u1ecfi ph\xf2ng n\xe0y";
     },
     get$compareEmojiMatch() {
-      return "\u041f\u043e\u0440\u0456\u0432\u043d\u044f\u0439\u0442\u0435 \u0435\u043c\u043e\u0434\u0437\u0456";
+      return "So s\xe1nh v\xe0 \u0111\u1ea3m b\u1ea3o c\xe1c bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac sau \u0111\xe2y gi\u1ed1ng v\u1edbi c\xe1c bi\u1ec3u t\u01b0\u1ee3ng tr\xean m\xe1y c\xf2n l\u1ea1i";
     },
     get$compareNumbersMatch() {
-      return "\u041f\u043e\u0440\u0456\u0432\u043d\u044f\u0439\u0442\u0435 \u0446\u0438\u0444\u0440\u0438";
+      return "So s\xe1nh v\xe0 \u0111\u1ea3m b\u1ea3o c\xe1c s\u1ed1 sau \u0111\xe2y gi\u1ed1ng tr\xean m\xe1y c\xf2n l\u1ea1i";
     },
     get$configureChat() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u0442\u0438 \u0431\u0435\u0441\u0456\u0434\u0443";
+      return "C\u1ea5u h\xecnh cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$confirm(_) {
-      return "\u041f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u0438";
+      return "X\xe1c nh\u1eadn";
     },
     get$copiedToClipboard() {
-      return "\u0421\u043a\u043e\u043f\u0456\u0439\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440 \u043e\u0431\u043c\u0456\u043d\u0443";
+      return "\u0110\xe3 sao ch\xe9p v\xe0o khay nh\u1edb t\u1ea1m";
     },
     get$copy(_) {
-      return "\u041a\u043e\u043f\u0456\u044e\u0432\u0430\u0442\u0438";
+      return "Sao ch\xe9p";
     },
     couldNotDecryptMessage$1(error) {
-      return "\u041f\u043e\u043c\u0438\u043b\u043a\u0430 \u0440\u043e\u0437\u0448\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f: " + error;
+      return "Kh\xf4ng th\u1ec3 gi\u1ea3i m\xe3 tin nh\u1eafn: " + error;
     },
     get$checkList() {
-      return "\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c\u043d\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a";
+      return "Danh s\xe1ch ki\u1ec3m tra";
     },
     countParticipants$1(count) {
-      return "\u0423\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432: " + count;
+      return "" + count + " th\xe0nh vi\xean";
     },
     countInvited$1(count) {
-      return "\u0417\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043e " + count;
+      return "" + count + " ng\u01b0\u1eddi \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$create(_) {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438";
+      return "T\u1ea1o";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " \u0441\u0442\u0432\u043e\u0440\u044e\u0454 \u0431\u0435\u0441\u0456\u0434\u0443";
+      return username + " \u0111\xe3 t\u1ea1o cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$createGroup() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0433\u0440\u0443\u043f\u0443";
+      return "T\u1ea1o nh\xf3m";
     },
     get$currentlyActive() {
-      return "\u0417\u0430\u0440\u0430\u0437 \u0443 \u043c\u0435\u0440\u0435\u0436\u0456";
+      return "\u0110ang ho\u1ea1t \u0111\u1ed9ng";
     },
     get$darkTheme() {
-      return "\u0422\u0435\u043c\u043d\u0438\u0439";
+      return "Ch\u1ee7 \u0111\u1ec1 t\u1ed1i";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return timeOfDay + ", " + date;
+      return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "\u0426\u0435 \u0434\u0435\u0430\u043a\u0442\u0438\u0432\u0443\u0454 \u0432\u0430\u0448 \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0441. \u0426\u0435 \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0441\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438! \u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456?";
+      return "Vi\u1ec7c n\xe0y s\u1ebd v\xf4 hi\u1ec7u ho\xe1 t\xe0i kho\u1ea3n c\u1ee7a b\u1ea1n. \u0110i\u1ec1u n\xe0y kh\xf4ng th\u1ec3 \u0111\u1ea3o ng\u01b0\u1ee3c \u0111\u01b0\u1ee3c! B\u1ea1n ch\u1eafc l\xe0 v\u1eabn mu\u1ed1n ti\u1ebfp t\u1ee5c ch\u1ee9?";
     },
     get$defaultPermissionLevel() {
-      return "\u0422\u0438\u043f\u043e\u0432\u0438\u0439 \u0440\u0456\u0432\u0435\u043d\u044c \u0434\u043e\u0437\u0432\u043e\u043b\u0456\u0432 \u0434\u043b\u044f \u043d\u043e\u0432\u0438\u0445 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432";
+      return "C\u1ea5p quy\u1ec1n m\u1eb7c \u0111\u1ecbnh cho ng\u01b0\u1eddi d\xf9ng m\u1edbi";
     },
     get$$delete(_) {
-      return "\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438";
+      return "Xo\xe1";
     },
     get$deleteAccount() {
-      return "\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0441";
+      return "Xo\xe1 t\xe0i kho\u1ea3n";
     },
     get$deleteMessage() {
-      return "\u0412\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Xo\xe1 tin nh\u1eafn";
     },
     get$devices() {
-      return "\u041f\u0440\u0438\u0441\u0442\u0440\u043e\u0457";
+      return "C\xe1c thi\u1ebft b\u1ecb";
     },
     get$displaynameHasBeenChanged() {
-      return "\u041f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u043d\u0435 \u0456\u043c'\u044f \u0431\u0443\u043b\u043e \u0437\u043c\u0456\u043d\u0435\u043d\u043e";
+      return "T\xean hi\u1ec3n th\u1ecb \u0111\xe3 \u0111\u01b0\u1ee3c thay \u0111\u1ed5i";
     },
     get$downloadFile() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0444\u0430\u0439\u043b";
+      return "T\u1ea3i \u1ea3nh xu\u1ed1ng";
     },
     get$edit() {
-      return "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438";
+      return "Ch\u1ec9nh s\u1eeda";
     },
     get$editBlockedServers() {
-      return "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u0437\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u0456 \u0441\u0435\u0440\u0432\u0435\u0440\u0438";
+      return "Ch\u1ec9nh s\u1eeda m\xe1y ch\u1ee7 b\u1ecb ch\u1eb7n";
     },
     get$chatPermissions() {
-      return "\u0414\u043e\u0437\u0432\u043e\u043b\u0438 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "Quy\u1ec1n h\u1ea1n trong tr\xf2 chuy\u1ec7n";
     },
     get$editDisplayname() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u043d\u0435 \u0456\u043c'\u044f";
+      return "S\u1eeda t\xean hi\u1ec3n th\u1ecb";
     },
     get$editRoomAvatar() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u0430\u0432\u0430\u0442\u0430\u0440 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "Ch\u1ec9nh s\u1eeda \u1ea3nh \u0111\u1ea1i di\u1ec7n ph\xf2ng";
     },
     get$emoteExists() {
-      return "\u0415\u043c\u043e\u0434\u0437\u0456 \u0432\u0436\u0435 \u0456\u0441\u043d\u0443\u0454!";
+      return "Bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac \u0111\xe3 t\u1ed3n t\u1ea1i!";
     },
     get$emoteInvalid() {
-      return "\u041d\u0435\u043f\u0440\u0438\u043f\u0443\u0441\u0442\u0438\u043c\u0438\u0439 \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u0439 \u043a\u043e\u0434 \u0435\u043c\u043e\u0434\u0437\u0456!";
+      return "M\xe3 bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac kh\xf4ng h\u1ee3p l\u1ec7!";
     },
     get$emoteKeyboardNoRecents() {
-      return "\u0422\u0443\u0442 \u0437'\u044f\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u043d\u0435\u0449\u043e\u0434\u0430\u0432\u043d\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u0456 \u0441\u043c\u0430\u0439\u043b\u0438\u043a\u0438...";
+      return "Nh\u1eefng bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac s\u1eed d\u1ee5ng g\u1ea7n \u0111\xe2y s\u1ebd xu\u1ea5t hi\u1ec7n \u1edf \u0111\xe2y...";
     },
     get$emotePacks() {
-      return "\u041d\u0430\u0431\u043e\u0440\u0438 \u0435\u043c\u043e\u0434\u0436\u0456 \u0434\u043b\u044f \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "G\xf3i bi\u1ec3u t\u01b0\u1ee3ng cho ph\xf2ng";
     },
     get$customEmojisAndStickers() {
-      return "\u0412\u043b\u0430\u0441\u043d\u0456 \u0435\u043c\u043e\u0434\u0436\u0456 \u0442\u0430 \u043d\u0430\u043b\u0456\u043f\u043a\u0438";
+      return "Bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac v\xe0 nh\xe3n d\xe1n t\xf9y ch\u1ec9nh";
     },
     get$emoteShortcode() {
-      return "\u041a\u043e\u0440\u043e\u0442\u043a\u0438\u0439 \u043a\u043e\u0434 \u0434\u043b\u044f \u0435\u043c\u043e\u0434\u0437\u0456";
+      return "M\xe3 ng\u1eafn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$emoteWarnNeedToPick() {
-      return "\u0423\u043a\u0430\u0436\u0456\u0442\u044c \u043a\u043e\u0440\u043e\u0442\u043a\u0438\u0439 \u043a\u043e\u0434 \u0435\u043c\u043e\u0434\u0437\u0456 \u0442\u0430 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f!";
+      return "B\u1ea1n c\u1ea7n ch\u1ecdn m\u1ed9t m\xe3 bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac v\xe0 m\u1ed9t h\xecnh \u1ea3nh!";
     },
     get$emptyChat() {
-      return "\u041f\u043e\u0440\u043e\u0436\u043d\u044f \u0431\u0435\u0441\u0456\u0434\u0430";
+      return "Cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ed1ng";
     },
     get$enableEmotesGlobally() {
-      return "\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0430\u043a\u0443\u043d\u043e\u043a \u0435\u043c\u043e\u0434\u0436\u0456 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e";
+      return "B\u1eadt g\xf3i bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac tr\xean to\xe0n b\u1ed9 h\u1ec7 th\u1ed1ng";
     },
     get$enableEncryption() {
-      return "\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0448\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "B\u1eadt m\xe3 h\xf3a";
     },
     get$encrypted() {
-      return "\u0417\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
+      return "\u0110\xe3 m\xe3 h\xf3a";
     },
     get$encryptionNotEnabled() {
-      return "\u0428\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e";
+      return "Ch\u01b0a b\u1eadt m\xe3 h\xf3a";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0454 \u0432\u0438\u043a\u043b\u0438\u043a";
+      return senderName + " \u0111\xe3 k\u1ebft th\xfac cu\u1ed9c g\u1ecdi";
     },
     get$enterAnEmailAddress() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0430\u0434\u0440\u0435\u0441\u0443 \u0435-\u043f\u043e\u0448\u0442\u0438";
+      return "Nh\u1eadp \u0111\u1ecba ch\u1ec9 email";
     },
     errorObtainingLocation$1(error) {
-      return "\u041f\u043e\u043c\u0438\u043b\u043a\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043d\u044f \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f: " + error;
+      return "L\u1ed7i khi l\u1ea5y v\u1ecb tr\xed: " + error;
     },
     get$fontSize(_) {
-      return "\u0420\u043e\u0437\u043c\u0456\u0440 \u0448\u0440\u0438\u0444\u0442\u0443";
+      return "K\xedch th\u01b0\u1edbc ph\xf4ng ch\u1eef";
     },
     get$forward(_) {
-      return "\u041f\u0435\u0440\u0435\u0441\u043b\u0430\u0442\u0438";
+      return "Chuy\u1ec3n ti\u1ebfp";
     },
     get$fromJoining() {
-      return "\u0417 \u043c\u043e\u043c\u0435\u043d\u0442\u0443 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f";
+      return "T\u1eeb khi tham gia";
     },
     get$fromTheInvitation() {
-      return "\u0417 \u043c\u043e\u043c\u0435\u043d\u0442\u0443 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f";
+      return "T\u1eeb l\u1eddi m\u1eddi";
     },
     get$guestsAreForbidden() {
-      return "\u0413\u043e\u0441\u0442\u0456 \u043d\u0435 \u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0440\u0438\u0454\u0434\u043d\u0443\u0432\u0430\u0442\u0438\u0441\u044c";
+      return "Kh\xe1ch b\u1ecb c\u1ea5m";
     },
     get$guestsCanJoin() {
-      return "\u0413\u043e\u0441\u0442\u0456 \u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0440\u0438\u0454\u0434\u043d\u0443\u0432\u0430\u0442\u0438\u0441\u044c";
+      return "Kh\xe1ch c\xf3 th\u1ec3 tham gia";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " \u0432\u0456\u0434\u043a\u043b\u0438\u043a\u0430\u0454 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f \u0434\u043b\u044f " + targetName;
+      return username + " \u0111\xe3 r\xfat l\u1ea1i l\u1eddi m\u1eddi cho " + targetName;
     },
     get$help() {
-      return "\u0414\u043e\u0432\u0456\u0434\u043a\u0430";
+      return "Tr\u1ee3 gi\xfap";
     },
     get$hideRedactedMessages() {
-      return "\u0421\u0445\u043e\u0432\u0430\u0442\u0438 \u0437\u043c\u0456\u043d\u0435\u043d\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "\u1ea8n tin nh\u1eafn \u0111\xe3 b\u1ecb g\u1ee1";
     },
     get$hideRedactedMessagesBody() {
-      return "\u042f\u043a\u0449\u043e \u0445\u0442\u043e\u0441\u044c \u0437\u043c\u0456\u043d\u0438\u0442\u044c \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u0439\u043e\u0433\u043e \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u043d\u043e \u0432 \u0431\u0435\u0441\u0456\u0434\u0456.";
+      return "N\u1ebfu ai \u0111\xf3 g\u1ee1 m\u1ed9t tin nh\u1eafn, tin nh\u1eafn \u0111\xf3 s\u1ebd kh\xf4ng c\xf2n hi\u1ec3n th\u1ecb trong cu\u1ed9c tr\xf2 chuy\u1ec7n n\u1eefa.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\u0421\u0445\u043e\u0432\u0430\u0442\u0438 \u043d\u0435\u0434\u0456\u0439\u0441\u043d\u0456 \u0430\u0431\u043e \u043d\u0435\u0432\u0456\u0434\u043e\u043c\u0456 \u0444\u043e\u0440\u043c\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c";
+      return "\u1ea8n c\xe1c \u0111\u1ecbnh d\u1ea1ng tin nh\u1eafn kh\xf4ng h\u1ee3p l\u1ec7 ho\u1eb7c ch\u01b0a \u0111\u01b0\u1ee3c bi\u1ebft";
     },
     get$block() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438";
+      return "ch\u1eb7n";
     },
     get$blockedUsers() {
-      return "\u0417\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456";
+      return "Ng\u01b0\u1eddi d\xf9ng b\u1ecb ch\u1eb7n";
     },
     get$blockListDescription() {
-      return "\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432, \u044f\u043a\u0456 \u0432\u0430\u0441 \u0442\u0443\u0440\u0431\u0443\u044e\u0442\u044c. \u0412\u0438 \u043d\u0435 \u0437\u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u0442\u0438 \u0436\u043e\u0434\u043d\u0438\u0445 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u0430\u0431\u043e \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u044c \u0434\u043e \u043a\u0456\u043c\u043d\u0430\u0442\u0438 \u0432\u0456\u0434 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432 \u0437 \u0432\u0430\u0448\u043e\u0433\u043e \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0443 \u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043d\u043d\u044f.";
+      return "B\u1ea1n c\xf3 th\u1ec3 ch\u1eb7n ng\u01b0\u1eddi d\xf9ng l\xe0m phi\u1ec1n b\u1ea1n. B\u1ea1n s\u1ebd kh\xf4ng nh\u1eadn \u0111\u01b0\u1ee3c b\u1ea5t k\u1ef3 tin nh\u1eafn hay l\u1eddi m\u1eddi n\xe0o t\u1eeb danh s\xe1ch ch\u1eb7n c\xe1 nh\xe2n c\u1ee7a b\u1ea1n.";
     },
     get$blockUsername() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0432\u0430\u0442\u0438 \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "Ch\u1eb7n t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$iHaveClickedOnLink() {
-      return "\u041c\u043d\u043e\u044e \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043e \u043f\u0435\u0440\u0435\u0445\u0456\u0434 \u0437\u0430 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c";
+      return "T\xf4i \u0111\xe3 nh\u1ea5p v\xe0o \u0111\u01b0\u1eddng li\xean k\u1ebft";
     },
     get$incorrectPassphraseOrKey() {
-      return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430 \u043f\u0430\u0440\u043e\u043b\u044c\u043d\u0430 \u0444\u0440\u0430\u0437\u0430 \u0430\u0431\u043e \u043a\u043b\u044e\u0447 \u0432\u0456\u0434\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f";
+      return "C\u1ee5m m\u1eadt kh\u1ea9u ho\u1eb7c kh\xf3a kh\xf4i ph\u1ee5c kh\xf4ng ch\xednh x\xe1c";
     },
     get$inviteContact() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u043a\u043e\u043d\u0442\u0430\u043a\u0442";
+      return "M\u1eddi li\xean h\u1ec7";
     },
     get$noChatDescriptionYet() {
-      return "\u041e\u043f\u0438\u0441 \u0431\u0435\u0441\u0456\u0434\u0438 \u0449\u0435 \u043d\u0435 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e.";
+      return "Ch\u01b0a c\xf3 m\xf4 t\u1ea3 cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
     get$tryAgain() {
-      return "\u041f\u043e\u0432\u0442\u043e\u0440\u0456\u0442\u044c \u0441\u043f\u0440\u043e\u0431\u0443";
+      return "Th\u1eed l\u1ea1i";
     },
     get$invited() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043e";
+      return "\u0110\xe3 m\u1eddi";
     },
     get$redactMessageDescription() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u0440\u0435\u0434\u0430\u0433\u043e\u0432\u0430\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432 \u0446\u0456\u0454\u0457 \u0440\u043e\u0437\u043c\u043e\u0432\u0438. \u0426\u0435 \u043d\u0435 \u043c\u043e\u0436\u043d\u0430 \u0441\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438.";
+      return "Tin nh\u1eafn s\u1ebd \u0111\u01b0\u1ee3c g\u1ee1 cho t\u1ea5t c\u1ea3 nh\u1eefng ng\u01b0\u1eddi tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$optionalRedactReason() {
-      return "(\u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u043e) \u041f\u0440\u0438\u0447\u0438\u043d\u0430 \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u043d\u043d\u044f \u0446\u044c\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f...";
+      return "(T\xf9y ch\u1ecdn) L\xfd do g\u1ee1 tin nh\u1eafn...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " \u0437\u0430\u043f\u0440\u043e\u0448\u0443\u0454 " + targetName;
+      return "\ud83d\udce9 " + username + " \u0111\xe3 m\u1eddi " + targetName;
     },
     get$invitedUsersOnly() {
-      return "\u041b\u0438\u0448\u0435 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456";
+      return "Ch\u1ec9 ng\u01b0\u1eddi d\xf9ng \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$inviteForMe() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u043c\u0435\u043d\u0435";
+      return "M\u1eddi cho t\xf4i";
     },
     get$isTyping() {
-      return "\u043f\u0438\u0448\u0435\u2026";
+      return "\u0111ang nh\u1eadp\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " \u043f\u0440\u0438\u0454\u0434\u043d\u0443\u0454\u0442\u044c\u0441\u044f \u0434\u043e \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "\ud83d\udc4b " + username + " \u0111\xe3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " \u0432\u0438\u043b\u0443\u0447\u0430\u0454 " + targetName;
+      return "\ud83d\udc5e " + username + " \u0111\xe3 \u0111\xe1 " + targetName;
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\u041e\u0441\u0442\u0430\u043d\u043d\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c: " + localizedTimeShort;
+      return "Ho\u1ea1t \u0111\u1ed9ng l\u1ea7n cu\u1ed1i: " + localizedTimeShort;
     },
     get$leave() {
-      return "\u0412\u0438\u0439\u0442\u0438";
+      return "R\u1eddi \u0111i";
     },
     get$leftTheChat() {
-      return "\u0412\u0438\u0445\u043e\u0434\u0438\u0442\u044c \u0437 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "\u0110\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$lightTheme() {
-      return "\u0421\u0432\u0456\u0442\u043b\u0438\u0439";
+      return "Ch\u1ee7 \u0111\u1ec1 s\xe1ng";
     },
     get$dehydrate() {
-      return "\u0415\u043a\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438 \u0441\u0435\u0430\u043d\u0441 \u0442\u0430 \u043e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439";
+      return "Xu\u1ea5t phi\xean v\xe0 x\xf3a thi\u1ebft b\u1ecb";
     },
     get$dehydrateWarning() {
-      return "\u0426\u044e \u0434\u0456\u044e \u043d\u0435 \u043c\u043e\u0436\u043d\u0430 \u0441\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438. \u041f\u0435\u0440\u0435\u043a\u043e\u043d\u0430\u0439\u0442\u0435\u0441\u044f, \u0449\u043e \u0432\u0438 \u0431\u0435\u0437\u043f\u0435\u0447\u043d\u043e \u0437\u0431\u0435\u0440\u0456\u0433\u0430\u0454\u0442\u0435 \u0444\u0430\u0439\u043b \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0457 \u043a\u043e\u043f\u0456\u0457.";
+      return "H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c. H\xe3y ch\u1eafc r\u1eb1ng b\u1ea1n \u0111\xe3 l\u01b0u tr\u1eef t\u1ec7p sao l\u01b0u m\u1ed9t c\xe1ch an to\xe0n.";
     },
     get$dehydrateTor() {
-      return "\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 TOR: \u0435\u043a\u0441\u043f\u043e\u0440\u0442 \u0441\u0435\u0430\u043d\u0441\u0443";
+      return "Ng\u01b0\u1eddi d\xf9ng TOR: Xu\u1ea5t phi\xean";
     },
     get$dehydrateTorLong() {
-      return "\u0414\u043b\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432 TOR \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u0442\u044c\u0441\u044f \u0435\u043a\u0441\u043f\u043e\u0440\u0442\u0443\u0432\u0430\u0442\u0438 \u0441\u0435\u0430\u043d\u0441 \u043f\u0435\u0440\u0435\u0434 \u0437\u0430\u043a\u0440\u0438\u0442\u0442\u044f\u043c \u0432\u0456\u043a\u043d\u0430.";
+      return "\u0110\u1ed1i v\u1edbi ng\u01b0\u1eddi d\xf9ng TOR, n\xean xu\u1ea5t phi\xean tr\u01b0\u1edbc khi \u0111\xf3ng c\u1eeda s\u1ed5.";
     },
     get$loadingPleaseWait() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f\u2026 \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0437\u0430\u0447\u0435\u043a\u0430\u0439\u0442\u0435.";
+      return "\u0110ang t\u1ea3i\u2026 Vui l\xf2ng ch\u1edd.";
     },
     get$loadMore() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0449\u0435\u2026";
+      return "T\u1ea3i th\xeam\u2026";
     },
     get$locationDisabledNotice() {
-      return "\u0421\u043b\u0443\u0436\u0431\u0438 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0456. \u0423\u0432\u0456\u043c\u043a\u043d\u0456\u0442\u044c \u0457\u0445, \u0449\u043e\u0431 \u043c\u0430\u0442\u0438 \u0437\u043c\u043e\u0433\u0443 \u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f \u0441\u0432\u043e\u0457\u043c \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f\u043c.";
+      return "D\u1ecbch v\u1ee5 v\u1ecb tr\xed \u0111\xe3 b\u1ecb t\u1eaft. Vui l\xf2ng b\u1eadt \u0111\u1ec3 chia s\u1ebb v\u1ecb tr\xed.";
     },
     get$locationPermissionDeniedNotice() {
-      return "\u0414\u043e\u0437\u0432\u0456\u043b \u043d\u0430 \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0456\u0434\u0445\u0438\u043b\u0435\u043d\u043e. \u041d\u0430\u0434\u0430\u0439\u0442\u0435 \u043c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f \u0441\u0432\u043e\u0457\u043c \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f\u043c.";
+      return "Quy\u1ec1n v\u1ecb tr\xed \u0111\xe3 b\u1ecb t\u1eeb ch\u1ed1i. Vui l\xf2ng c\u1ea5p quy\u1ec1n \u0111\u1ec3 chia s\u1ebb v\u1ecb tr\xed.";
     },
     get$login() {
-      return "\u0423\u0432\u0456\u0439\u0442\u0438";
+      return "\u0110\u0103ng nh\u1eadp";
     },
     get$logout() {
-      return "\u0412\u0438\u0439\u0442\u0438";
+      return "\u0110\u0103ng xu\u1ea5t";
     },
     get$mention() {
-      return "\u0417\u0433\u0430\u0434\u0430\u0442\u0438";
+      return "Nh\u1eafc \u0111\u1ebfn";
     },
     get$messages() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn";
     },
     get$messagesStyle() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f:";
+      return "Tin nh\u1eafn:";
     },
     get$moderator() {
-      return "\u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
+      return "\u0110i\u1ec1u h\xe0nh vi\xean";
     },
     get$newChat() {
-      return "\u041d\u043e\u0432\u0430 \u0431\u0435\u0441\u0456\u0434\u0430";
+      return "Cu\u1ed9c tr\xf2 chuy\u1ec7n m\u1edbi";
     },
     get$newVerificationRequest() {
-      return "\u041d\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438!";
+      return "Y\xeau c\u1ea7u x\xe1c minh m\u1edbi!";
     },
     get$next(_) {
-      return "\u0414\u0430\u043b\u0456";
+      return "Ti\u1ebfp";
     },
     get$no() {
-      return "\u041d\u0456";
+      return "Kh\xf4ng";
     },
     get$noConnectionToTheServer() {
-      return "\u041d\u0435\u043c\u0430\u0454 \u0437'\u0454\u0434\u043d\u0430\u043d\u043d\u044f \u0437 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u043c";
+      return "Kh\xf4ng c\xf3 k\u1ebft n\u1ed1i \u0111\u1ebfn m\xe1y ch\u1ee7";
     },
     get$noEmotesFound() {
-      return "\u0415\u043c\u043e\u0434\u0436\u0456 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e. \ud83d\ude15";
+      return "Kh\xf4ng t\xecm th\u1ea5y bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0437\u0430\u043f\u0440\u043e\u0448\u0443\u0432\u0430\u043b\u044c\u043d\u0435 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f";
+      return "Chia s\u1ebb li\xean k\u1ebft m\u1eddi";
     },
     get$none() {
-      return "\u041d\u0456\u0447\u043e\u0433\u043e";
+      return "Kh\xf4ng";
     },
     get$noPasswordRecoveryDescription() {
-      return "\u0412\u0438 \u0449\u0435 \u043d\u0435 \u0434\u043e\u0434\u0430\u043b\u0438 \u0441\u043f\u043e\u0441\u0456\u0431 \u0432\u0456\u0434\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u0430\u0440\u043e\u043b\u044f.";
+      return "B\u1ea1n ch\u01b0a thi\u1ebft l\u1eadp c\xe1ch kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u.";
     },
     get$noPermission() {
-      return "\u041d\u0435\u043c\u0430\u0454 \u043f\u0440\u0430\u0432 \u0434\u043e\u0441\u0442\u0443\u043f\u0443";
+      return "Kh\xf4ng c\xf3 quy\u1ec1n";
     },
     get$noRoomsFound() {
-      return "\u041a\u0456\u043c\u043d\u0430\u0442 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e\u2026";
+      return "Kh\xf4ng t\xecm th\u1ea5y ph\xf2ng\u2026";
     },
     get$notifications() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f";
+      return "Th\xf4ng b\xe1o";
     },
     get$obtainingLocation() {
-      return "\u041e\u0442\u0440\u0438\u043c\u0430\u043d\u043d\u044f \u0440\u043e\u0437\u0442\u0430\u0448\u0443\u0432\u0430\u043d\u043d\u044f\u2026";
+      return "\u0110ang x\xe1c \u0111\u1ecbnh v\u1ecb tr\xed\u2026";
     },
     get$offensive() {
-      return "\u041e\u0431\u0440\u0430\u0437\u043b\u0438\u0432\u0438\u0439";
+      return "X\xfac ph\u1ea1m";
     },
     get$ok() {
-      return "\u0413\u0430\u0440\u0430\u0437\u0434";
+      return "OK";
     },
     get$oopsSomethingWentWrong() {
-      return "\u0425\u0430\u043b\u0435\u043f\u0430, \u0449\u043e\u0441\u044c \u043f\u0456\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a\u2026";
+      return "\xd4i, c\xf3 g\xec \u0111\xf3 kh\xf4ng \u1ed5n\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u041d\u0430 \u043e\u0434\u043d\u043e\u043c\u0443 \u0437 \u0432\u0430\u0448\u0438\u0445 \u043a\u043b\u0456\u0454\u043d\u0442\u0456\u0432 \u0432\u0438\u043a\u043e\u043d\u0430\u043d\u043e \u0432\u0438\u0445\u0456\u0434 \u0456\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u0438";
+      return "M\u1ed9t trong c\xe1c phi\xean c\u1ee7a b\u1ea1n \u0111\xe3 b\u1ecb \u0111\u0103ng xu\u1ea5t";
     },
     get$openInMaps() {
-      return "\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0432 \u043a\u0430\u0440\u0442\u0430\u0445";
+      return "M\u1edf trong b\u1ea3n \u0111\u1ed3";
     },
     get$link() {
-      return "\u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f";
+      return "Li\xean k\u1ebft";
     },
     get$serverRequiresEmail() {
-      return "\u0426\u0435\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0454 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0438 \u0432\u0430\u0448\u043e\u0457 \u0430\u0434\u0440\u0435\u0441\u0443 \u0435-\u043f\u043e\u0448\u0442\u0438 \u0434\u043b\u044f \u0440\u0435\u0454\u0441\u0442\u0440\u0430\u0446\u0456\u0457.";
+      return "M\xe1y ch\u1ee7 n\xe0y y\xeau c\u1ea7u x\xe1c th\u1ef1c email \u0111\u1ec3 \u0111\u0103ng k\xfd.";
     },
     get$participant() {
-      return "\u0423\u0447\u0430\u0441\u043d\u0438\u043a";
+      return "Th\xe0nh vi\xean";
     },
     get$passphraseOrKey() {
-      return "\u043f\u0430\u0440\u043e\u043b\u044c\u043d\u0430 \u0444\u0440\u0430\u0437\u0430 \u0430\u0431\u043e \u043a\u043b\u044e\u0447 \u0432\u0456\u0434\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f";
+      return "c\u1ee5m m\u1eadt kh\u1ea9u ho\u1eb7c kh\xf3a kh\xf4i ph\u1ee5c";
     },
     get$password(_) {
-      return "\u041f\u0430\u0440\u043e\u043b\u044c";
+      return "M\u1eadt kh\u1ea9u";
     },
     get$passwordForgotten() {
-      return "\u0417\u0430\u0431\u0443\u043b\u0438 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Qu\xean m\u1eadt kh\u1ea9u";
     },
     get$passwordHasBeenChanged() {
-      return "\u041f\u0430\u0440\u043e\u043b\u044c \u0437\u043c\u0456\u043d\u0435\u043d\u043e";
+      return "M\u1eadt kh\u1ea9u \u0111\xe3 \u0111\u01b0\u1ee3c thay \u0111\u1ed5i";
     },
     get$overview() {
-      return "\u041e\u0433\u043b\u044f\u0434";
+      return "T\u1ed5ng quan";
     },
     get$passwordRecoverySettings() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0432\u0456\u0434\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u0430\u0440\u043e\u043b\u044f";
+      return "C\xe0i \u0111\u1eb7t kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u";
     },
     get$passwordRecovery() {
-      return "\u0412\u0456\u0434\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u0430\u0440\u043e\u043b\u044f";
+      return "Kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u";
     },
     get$pickImage() {
-      return "\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f";
+      return "Ch\u1ecdn \u1ea3nh";
     },
     get$pin() {
-      return "\u0417\u0430\u043a\u0440\u0456\u043f\u0438\u0442\u0438";
+      return "Ghim";
     },
     get$pleaseChoose() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c";
+      return "Vui l\xf2ng ch\u1ecdn";
     },
     get$pleaseEnterYourPassword() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0441\u0432\u0456\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Vui l\xf2ng nh\u1eadp m\u1eadt kh\u1ea9u";
     },
     get$pleaseEnterYourPin() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0441\u0432\u0456\u0439 PIN-\u043a\u043e\u0434";
+      return "Vui l\xf2ng nh\u1eadp m\xe3 PIN";
     },
     get$pleaseEnterYourUsername() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0441\u0432\u043e\u0454 \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "Vui l\xf2ng nh\u1eadp t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "\u0412\u0438\u043a\u043e\u043d\u0430\u0439\u0442\u0435 \u0432\u043a\u0430\u0437\u0456\u0432\u043a\u0438 \u0432\u0435\u0431\u0441\u0430\u0439\u0442\u0443 \u0442\u0430 \u0442\u043e\u0440\u043a\u043d\u0456\u0442\u044c\u0441\u044f \u0434\u0430\u043b\u0456.";
+      return "Vui l\xf2ng l\xe0m theo h\u01b0\u1edbng d\u1eabn tr\xean trang web v\xe0 b\u1ea5m ti\u1ebfp";
     },
     get$privacy() {
-      return "\u041f\u0440\u0438\u0432\u0430\u0442\u043d\u0456\u0441\u0442\u044c";
+      return "Quy\u1ec1n ri\xeang t\u01b0";
     },
     get$reason(_) {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u0430";
+      return "L\xfd do";
     },
     redactedBy$1(username) {
-      return "\u0412\u0456\u0434\u0440\u0435\u0434\u0430\u0433\u043e\u0432\u0430\u043d\u043e " + username;
+      return "\u0110\u01b0\u1ee3c g\u1ee1 b\u1edfi " + username;
     },
     get$directChat() {
-      return "\u041e\u0441\u043e\u0431\u0438\u0441\u0442\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tr\xf2 chuy\u1ec7n tr\u1ef1c ti\u1ebfp";
     },
     redactedByBecause$2(username, reason) {
-      return "\u0412\u0456\u0434\u0440\u0435\u0434\u0430\u0433\u043e\u0432\u0430\u043d\u043e " + username + ', \u0442\u043e\u043c\u0443 \u0449\u043e: "' + reason + '"';
+      return "\u0110\u01b0\u1ee3c g\u1ee1 b\u1edfi " + username + ' v\u1edbi l\xfd do: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " \u0437\u043c\u0456\u043d\u044e\u0454 \u043f\u043e\u0434\u0456\u044e";
+      return username + " \u0111\xe3 g\u1ee1 m\u1ed9t s\u1ef1 ki\u1ec7n";
     },
     get$redactMessage() {
-      return "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "G\u1ee1 tin nh\u1eafn";
     },
     get$reject() {
-      return "\u0412\u0456\u0434\u0445\u0438\u043b\u0438\u0442\u0438";
+      return "T\u1eeb ch\u1ed1i";
     },
     rejectedTheInvitation$1(username) {
-      return username + " \u0432\u0456\u0434\u0445\u0438\u043b\u044f\u0454 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f";
+      return username + " \u0111\xe3 t\u1eeb ch\u1ed1i l\u1eddi m\u1eddi";
     },
     get$removeAllOtherDevices() {
-      return "\u0412\u0438\u043b\u0443\u0447\u0438\u0442\u0438 \u0432\u0441\u0456 \u0456\u043d\u0448\u0456 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457";
+      return "X\xf3a t\u1ea5t c\u1ea3 thi\u1ebft b\u1ecb kh\xe1c";
     },
     get$unbanFromChat() {
-      return "\u0420\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0443 \u0431\u0435\u0441\u0456\u0434\u0456";
+      return "B\u1ecf c\u1ea5m kh\u1ecfi tr\xf2 chuy\u1ec7n";
     },
     get$removeYourAvatar() {
-      return "\u0412\u0438\u043b\u0443\u0447\u0438\u0442\u0438 \u0441\u0432\u0456\u0439 \u0430\u0432\u0430\u0442\u0430\u0440";
+      return "G\u1ee1 \u1ea3nh \u0111\u1ea1i di\u1ec7n c\u1ee7a b\u1ea1n";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\u0417\u0430\u043c\u0456\u043d\u0438\u0442\u0438 \u043a\u0456\u043c\u043d\u0430\u0442\u0443 \u043d\u043e\u0432\u0456\u0448\u043e\u044e \u0432\u0435\u0440\u0441\u0456\u0454\u044e";
+      return "Thay th\u1ebf ph\xf2ng b\u1eb1ng phi\xean b\u1ea3n m\u1edbi h\u01a1n";
     },
     get$reply(_) {
-      return "\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u0441\u0442\u0438";
+      return "Tr\u1ea3 l\u1eddi";
     },
     get$reportMessage() {
-      return "\u041f\u043e\u0441\u043a\u0430\u0440\u0436\u0438\u0442\u0438\u0441\u044f \u043d\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "B\xe1o c\xe1o tin nh\u1eafn";
     },
     get$roomHasBeenUpgraded() {
-      return "\u041a\u0456\u043c\u043d\u0430\u0442\u0443 \u0431\u0443\u043b\u043e \u043e\u043d\u043e\u0432\u043b\u0435\u043d\u043e";
+      return "Ph\xf2ng \u0111\xe3 \u0111\u01b0\u1ee3c n\xe2ng c\u1ea5p";
     },
     get$search(_) {
-      return "\u041f\u043e\u0448\u0443\u043a";
+      return "T\xecm ki\u1ebfm";
     },
     get$security() {
-      return "\u0411\u0435\u0437\u043f\u0435\u043a\u0430";
+      return "B\u1ea3o m\u1eadt";
     },
     get$send(_) {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438";
+      return "G\u1eedi";
     },
     get$sendAMessage() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "G\u1eedi tin nh\u1eafn";
     },
     get$sendAudio() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0430\u0443\u0434\u0456\u043e";
+      return "G\u1eedi \xe2m thanh";
     },
     get$sendFile() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0444\u0430\u0439\u043b";
+      return "G\u1eedi t\u1ec7p";
     },
     get$sendImage() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f";
+      return "G\u1eedi h\xecnh \u1ea3nh";
     },
     sendImages$1(count) {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 " + count + " \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f";
+      return "G\u1eedi " + count + " h\xecnh \u1ea3nh";
     },
     get$sendMessages() {
-      return "\u041d\u0430\u0434\u0441\u0438\u043b\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "G\u1eedi tin nh\u1eafn";
     },
     get$sendVideo() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0432\u0456\u0434\u0435\u043e";
+      return "G\u1eedi video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u0444\u0430\u0439\u043b";
+      return "\ud83d\udcc1 " + username + " \u0111\xe3 g\u1eedi t\u1ec7p";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u0430\u0443\u0434\u0456\u043e";
+      return "\ud83c\udfa4 " + username + " \u0111\xe3 g\u1eedi \xe2m thanh";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f";
+      return "\ud83d\uddbc\ufe0f " + username + " \u0111\xe3 g\u1eedi h\xecnh \u1ea3nh";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u043d\u0430\u043b\u0456\u043f\u043a\u0443";
+      return "\ud83d\ude0a " + username + " \u0111\xe3 g\u1eedi nh\xe3n d\xe1n";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u0432\u0456\u0434\u0435\u043e";
+      return "\ud83c\udfa5 " + username + " \u0111\xe3 g\u1eedi video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u0432\u0456\u0434\u043e\u043c\u043e\u0441\u0442\u0456 \u043f\u0440\u043e \u0432\u0438\u043a\u043b\u0438\u043a";
+      return senderName + " \u0111\xe3 g\u1eedi th\xf4ng tin cu\u1ed9c g\u1ecdi";
     },
     get$separateChatTypes() {
-      return "\u0420\u043e\u0437\u0434\u0456\u043b\u0456\u0442\u044c \u043e\u0441\u043e\u0431\u0438\u0441\u0442\u0456 \u0431\u0435\u0441\u0456\u0434\u0438 \u0442\u0430 \u0433\u0440\u0443\u043f\u0438";
+      return "Ph\xe2n lo\u1ea1i Nh\u1eafn Tin Tr\u1ef1c Ti\u1ebfp v\xe0 Nh\xf3m";
     },
     get$setChatDescription() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u0442\u0438 \u043e\u043f\u0438\u0441 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "\u0110\u1eb7t m\xf4 t\u1ea3 cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$setStatus() {
-      return "\u0423\u043a\u0430\u0437\u0430\u0442\u0438 \u0441\u0442\u0430\u0442\u0443\u0441";
+      return "\u0110\u1eb7t tr\u1ea1ng th\xe1i";
     },
     get$settings() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "C\xe0i \u0111\u1eb7t";
     },
     get$share(_) {
-      return "\u041f\u043e\u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f";
+      return "Chia s\u1ebb";
     },
     sharedTheLocation$1(username) {
-      return username + " \u0434\u0456\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0457\u043c \u043c\u0456\u0441\u0446\u0435\u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u043d\u043d\u044f\u043c";
+      return username + " \u0111\xe3 chia s\u1ebb v\u1ecb tr\xed";
     },
     get$shareLocation() {
-      return "\u041f\u043e\u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f \u043c\u0456\u0441\u0446\u0435\u043f\u0435\u0440\u0435\u0431\u0443\u0432\u0430\u043d\u043d\u044f\u043c";
+      return "Chia s\u1ebb v\u1ecb tr\xed";
     },
     get$presencesToggle() {
-      return "\u041f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u0441\u0442\u0430\u043d \u0432\u0456\u0434 \u0456\u043d\u0448\u0438\u0445 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432";
+      return "Hi\u1ec3n th\u1ecb tr\u1ea1ng th\xe1i c\u1ee7a ng\u01b0\u1eddi kh\xe1c";
     },
     get$skip(_) {
-      return "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u0438";
+      return "B\u1ecf qua";
     },
     get$sourceCode() {
-      return "\u0414\u0436\u0435\u0440\u0435\u043b\u044c\u043d\u0438\u0439 \u043a\u043e\u0434";
+      return "M\xe3 ngu\u1ed3n";
     },
     startedACall$1(senderName) {
-      return senderName + " \u0440\u043e\u0437\u043f\u043e\u0447\u0438\u043d\u0430\u0454 \u0432\u0438\u043a\u043b\u0438\u043a";
+      return senderName + " \u0111\xe3 b\u1eaft \u0111\u1ea7u cu\u1ed9c g\u1ecdi";
     },
     get$status(_) {
-      return "\u0421\u0442\u0430\u0442\u0443\u0441";
+      return "Tr\u1ea1ng th\xe1i";
     },
     get$statusExampleMessage() {
-      return "\u042f\u043a \u0441\u043f\u0440\u0430\u0432\u0438 \u0441\u044c\u043e\u0433\u043e\u0434\u043d\u0456?";
+      return "H\xf4m nay b\u1ea1n th\u1ebf n\xe0o?";
     },
     get$submit(_) {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438";
+      return "G\u1eedi";
     },
     get$synchronizingPleaseWait() {
-      return "\u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0456\u0437\u0430\u0446\u0456\u044f\u2026 \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0437\u0430\u0447\u0435\u043a\u0430\u0439\u0442\u0435.";
+      return "\u0110ang \u0111\u1ed3ng b\u1ed9\u2026 Vui l\xf2ng ch\u1edd.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " \u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0456\u0437\u0430\u0446\u0456\u044f\u2026 (" + percentage + "%)";
+      return "\u0110ang \u0111\u1ed3ng b\u1ed9\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u0430";
+      return "H\u1ec7 th\u1ed1ng";
     },
     get$theyDontMatch() {
-      return "\u0412\u043e\u043d\u0438 \u0432\u0456\u0434\u0440\u0456\u0437\u043d\u044f\u044e\u0442\u044c\u0441\u044f";
+      return "Kh\xf4ng kh\u1edbp";
     },
     get$theyMatch() {
-      return "\u0412\u043e\u043d\u0438 \u0437\u0431\u0456\u0433\u0430\u044e\u0442\u044c\u0441\u044f";
+      return "Kh\u1edbp nhau";
     },
     get$tooManyRequestsWarning() {
-      return "\u0417\u0430\u0431\u0430\u0433\u0430\u0442\u043e \u0437\u0430\u043f\u0438\u0442\u0456\u0432. \u0421\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043f\u0456\u0437\u043d\u0456\u0448\u0435!";
+      return "Qu\xe1 nhi\u1ec1u y\xeau c\u1ea7u. Th\u1eed l\u1ea1i sau!";
     },
     get$tryToSendAgain() {
-      return "\u0421\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0449\u0435 \u0440\u0430\u0437";
+      return "Th\u1eed g\u1eedi l\u1ea1i";
     },
     get$unavailable() {
-      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0439";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     unbannedUser$2(username, targetName) {
-      return username + " \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u043e\u0432\u0443\u0454 " + targetName;
+      return username + " \u0111\xe3 b\u1ecf c\u1ea5m " + targetName;
     },
     get$unblockDevice() {
-      return "\u0420\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439";
+      return "B\u1ecf ch\u1eb7n thi\u1ebft b\u1ecb";
     },
     get$unknownEncryptionAlgorithm() {
-      return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u0438\u0439 \u0430\u043b\u0433\u043e\u0440\u0438\u0442\u043c \u0448\u0438\u0444\u0440\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "Thu\u1eadt to\xe1n m\xe3 h\xf3a kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     unknownEvent$1(type) {
-      return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u0430 \u043f\u043e\u0434\u0456\u044f '" + type + "'";
+      return "S\u1ef1 ki\u1ec7n '" + type + "' kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     get$unpin() {
-      return "\u0412\u0456\u0434\u043a\u0440\u0456\u043f\u0438\u0442\u0438";
+      return "B\u1ecf ghim";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \u0442\u0430 " + count + " \u0456\u043d\u0448\u0438\u0445 \u043f\u0438\u0448\u0443\u0442\u044c\u2026";
+      return username + " v\xe0 " + count + " ng\u01b0\u1eddi kh\xe1c \u0111ang nh\u1eadp\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u0456 " + username2 + " \u043f\u0438\u0448\u0443\u0442\u044c\u2026";
+      return username + " v\xe0 " + username2 + " \u0111ang nh\u1eadp\u2026";
     },
     userIsTyping$1(username) {
-      return username + " \u043f\u0438\u0448\u0435\u2026";
+      return username + " \u0111ang nh\u1eadp\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " \u0432\u0438\u0445\u043e\u0434\u0438\u0442\u044c \u0437 \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "\ud83d\udeaa " + username + " \u0111\xe3 r\u1eddi cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$username(_) {
-      return "\u0406\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "T\xean ng\u01b0\u1eddi d\xf9ng";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0454 \u043f\u043e\u0434\u0456\u044e " + type;
+      return username + " \u0111\xe3 g\u1eedi s\u1ef1 ki\u1ec7n " + type;
     },
     get$unverified() {
-      return "\u041d\u0435\u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0435\u043d\u0438\u0439";
+      return "Ch\u01b0a x\xe1c minh";
     },
     get$verified() {
-      return "\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0435\u043d\u0438\u0439";
+      return "\u0110\xe3 x\xe1c th\u1ef1c";
     },
     get$verifyStart() {
-      return "\u041f\u043e\u0447\u0430\u0442\u0438 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0443";
+      return "B\u1eaft \u0111\u1ea7u x\xe1c minh";
     },
     get$verifySuccess() {
-      return "\u0412\u0438 \u0443\u0441\u043f\u0456\u0448\u043d\u043e \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0435\u043d\u0456!";
+      return "B\u1ea1n \u0111\xe3 x\xe1c minh th\xe0nh c\xf4ng!";
     },
     get$verifyTitle() {
-      return "\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0430 \u0456\u043d\u0448\u043e\u0433\u043e \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0438\u0441\u0443";
+      return "X\xe1c minh t\xe0i kho\u1ea3n kh\xe1c";
     },
     get$visibleForAllParticipants() {
-      return "\u0412\u0438\u0434\u0438\u043c\u0430 \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432";
+      return "Hi\u1ec3n th\u1ecb cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia";
     },
     get$visibleForEveryone() {
-      return "\u0412\u0438\u0434\u0438\u043c\u0430 \u0434\u043b\u044f \u0432\u0441\u0456\u0445";
+      return "Hi\u1ec3n th\u1ecb cho m\u1ecdi ng\u01b0\u1eddi";
     },
     get$voiceMessage() {
-      return "\u0413\u043e\u043b\u043e\u0441\u043e\u0432\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn tho\u1ea1i";
     },
     get$waitingPartnerAcceptRequest() {
-      return "\u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0442\u044f \u0437\u0430\u043f\u0438\u0442\u0443 \u043f\u0430\u0440\u0442\u043d\u0435\u0440\u043e\u043c\u2026";
+      return "\u0110ang ch\u1edd b\xean kia ch\u1ea5p nh\u1eadn y\xeau c\u1ea7u\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "\u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0442\u044f \u0435\u043c\u043e\u0434\u0436\u0456 \u043f\u0430\u0440\u0442\u043d\u0435\u0440\u043e\u043c\u2026";
+      return "\u0110ang ch\u1edd b\xean kia ch\u1ea5p nh\u1eadn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "\u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0442\u044f \u0447\u0438\u0441\u0435\u043b \u043f\u0430\u0440\u0442\u043d\u0435\u0440\u043e\u043c\u2026";
+      return "\u0110ang ch\u1edd b\xean kia ch\u1ea5p nh\u1eadn s\u1ed1\u2026";
     },
     get$warning() {
-      return "\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u0436\u0435\u043d\u043d\u044f!";
+      return "C\u1ea3nh b\xe1o!";
     },
     get$weSentYouAnEmail() {
-      return "\u041c\u0438 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043b\u0438 \u0432\u0430\u043c \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0438\u0439 \u043b\u0438\u0441\u0442";
+      return "Ch\xfang t\xf4i v\u1eeba g\u1eedi email cho b\u1ea1n";
     },
     get$whyDoYouWantToReportThis() {
-      return "\u0427\u043e\u043c\u0443 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u043f\u043e\u0441\u043a\u0430\u0440\u0436\u0438\u0442\u0438\u0441\u044f?";
+      return "T\u1ea1i sao b\u1ea1n mu\u1ed1n b\xe1o c\xe1o?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "\u0417\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u0446\u0438\u0445 \u0430\u0434\u0440\u0435\u0441 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0456\u0434\u043d\u043e\u0432\u0438\u0442\u0438 \u0441\u0432\u0456\u0439 \u043f\u0430\u0440\u043e\u043b\u044c.";
+      return "Nh\u1edd c\xe1c \u0111\u1ecba ch\u1ec9 n\xe0y, b\u1ea1n c\xf3 th\u1ec3 kh\xf4i ph\u1ee5c m\u1eadt kh\u1ea9u c\u1ee7a m\xecnh.";
     },
     get$writeAMessage() {
-      return "\u041d\u0430\u043f\u0438\u0441\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u2026";
+      return "Vi\u1ebft tin nh\u1eafn\u2026";
     },
     get$yes() {
-      return "\u0422\u0430\u043a";
+      return "C\xf3";
     },
     get$you() {
-      return "\u0412\u0438";
+      return "B\u1ea1n";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "\u0412\u0438 \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0435\u0440\u0435\u0442\u0435 \u0443\u0447\u0430\u0441\u0442\u044c \u0443 \u0446\u0456\u0439 \u0431\u0435\u0441\u0456\u0434\u0456";
+      return "B\u1ea1n kh\xf4ng c\xf2n tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "\u0412\u0438 \u0431\u0443\u043b\u0438 \u0437\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u0456 \u0443 \u0446\u0456\u0439 \u0431\u0435\u0441\u0456\u0434\u0456";
+      return "B\u1ea1n \u0111\xe3 b\u1ecb c\u1ea5m kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y";
     },
     get$yourPublicKey() {
-      return "\u0412\u0430\u0448 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438\u0439 \u043a\u043b\u044e\u0447";
+      return "Kh\xf3a c\xf4ng khai c\u1ee7a b\u1ea1n";
     },
     get$messageInfo() {
-      return "\u0412\u0456\u0434\u043e\u043c\u043e\u0441\u0442\u0456 \u043f\u0440\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Th\xf4ng tin tin nh\u1eafn";
     },
     get$time(_) {
-      return "\u0427\u0430\u0441";
+      return "Th\u1eddi gian";
     },
     get$sender() {
-      return "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a";
+      return "Ng\u01b0\u1eddi g\u1eedi";
     },
     get$openGallery() {
-      return "\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0433\u0430\u043b\u0435\u0440\u0435\u044e";
+      return "M\u1edf th\u01b0 vi\u1ec7n";
     },
     get$start(_) {
-      return "\u041f\u043e\u0447\u0430\u0442\u0438";
+      return "B\u1eaft \u0111\u1ea7u";
     },
     get$markAsRead() {
-      return "\u041f\u043e\u0437\u043d\u0430\u0447\u0438\u0442\u0438 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u0438\u043c";
+      return "\u0110\xe1nh d\u1ea5u \u0111\xe3 \u0111\u1ecdc";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " \u0440\u0435\u0430\u0433\u0443\u0454 \u0437 " + reaction;
+      return sender + " \u0111\xe3 ph\u1ea3n \u1ee9ng v\u1edbi " + reaction;
     },
     get$pinMessage() {
-      return "\u041f\u0440\u0438\u043a\u0440\u0456\u043f\u0438\u0442\u0438 \u0432 \u043a\u0456\u043c\u043d\u0430\u0442\u0456";
+      return "Ghim v\xe0o ph\xf2ng";
     },
     get$emojis() {
-      return "\u0415\u043c\u043e\u0434\u0436\u0456";
+      return "Bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$youRejectedTheInvitation() {
-      return "\u0412\u0438 \u0432\u0456\u0434\u0445\u0438\u043b\u0438\u043b\u0438 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f";
+      return "B\u1ea1n \u0111\xe3 t\u1eeb ch\u1ed1i l\u1eddi m\u1eddi";
     },
     get$youJoinedTheChat() {
-      return "\u0412\u0438 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043b\u0438\u0441\u044f \u0434\u043e \u0431\u0435\u0441\u0456\u0434\u0438";
+      return "B\u1ea1n \u0111\xe3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d \u0412\u0438 \u043f\u043e\u0433\u043e\u0434\u0438\u043b\u0438\u0441\u044f \u043d\u0430 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f";
+      return "\ud83d\udc4d B\u1ea1n \u0111\xe3 ch\u1ea5p nh\u1eadn l\u1eddi m\u1eddi";
     },
     youBannedUser$1(user) {
-      return "\u0412\u0438 \u0437\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043b\u0438 " + user;
+      return "B\u1ea1n \u0111\xe3 c\u1ea5m " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "\u0412\u0438 \u0432\u0456\u0434\u043a\u043b\u0438\u043a\u0430\u043b\u0438 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f \u0434\u043b\u044f " + user;
+      return "B\u1ea1n \u0111\xe3 r\xfat l\u1ea1i l\u1eddi m\u1eddi cho " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 \u0412\u0438 \u0431\u0443\u043b\u0438 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u0456 " + user;
+      return "\ud83d\udce9 B\u1ea1n \u0111\u01b0\u1ee3c m\u1eddi b\u1edfi " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 \u0412\u0438 \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b\u0438 " + user;
+      return "\ud83d\udce9 B\u1ea1n \u0111\xe3 m\u1eddi " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e \u0412\u0438 \u0432\u0438\u043b\u0443\u0447\u0438\u043b\u0438 " + user;
+      return "\ud83d\udc5e B\u1ea1n \u0111\xe3 \u0111\xe1 " + user;
     },
     youUnbannedUser$1(user) {
-      return "\u0412\u0438 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043b\u0438 " + user;
+      return "B\u1ea1n \u0111\xe3 b\u1ecf c\u1ea5m " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa" + user + " \u0441\u0442\u0443\u043a\u0430\u0454 \u0434\u043e \u0432\u0430\u0441";
+      return "\ud83d\udeaa " + user + " v\u1eeba g\xf5 y\xeau c\u1ea7u tham gia";
     },
     get$knock() {
-      return "\u041f\u043e\u0441\u0442\u0443\u043a\u0430\u0442\u0438\u0441\u044c";
+      return "G\xf5 y\xeau c\u1ea7u";
     },
     countFiles$1(count) {
-      return "" + count + " \u0444\u0430\u0439\u043b\u0456\u0432";
+      return "" + count + " t\u1ec7p";
     },
     get$user() {
-      return "\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447";
+      return "Ng\u01b0\u1eddi d\xf9ng";
     },
     get$custom() {
-      return "\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0446\u044c\u043a\u0438\u0439";
+      return "T\xf9y ch\u1ec9nh";
     },
     get$noKeyForThisMessage() {
-      return "\u0426\u0435 \u043c\u043e\u0436\u0435 \u0441\u0442\u0430\u0442\u0438\u0441\u044f, \u044f\u043a\u0449\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0431\u0443\u043b\u043e \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e \u0434\u043e \u0442\u043e\u0433\u043e, \u044f\u043a \u0432\u0438 \u0432\u0432\u0456\u0439\u0448\u043b\u0438 \u0443 \u0441\u0432\u0456\u0439 \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0441 \u043d\u0430 \u0446\u044c\u043e\u043c\u0443 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457.\n\n\u0422\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u043b\u0438\u0432\u043e, \u0449\u043e \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043d\u0438\u043a \u0437\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0432 \u0432\u0430\u0448 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439 \u0430\u0431\u043e \u0449\u043e\u0441\u044c \u043f\u0456\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a \u0437 \u043f\u0456\u0434'\u0454\u0434\u043d\u0430\u043d\u043d\u044f\u043c \u0434\u043e \u0456\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0443.\n\n\u0427\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u0438 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043d\u0430 \u0456\u043d\u0448\u043e\u043c\u0443 \u0441\u0435\u0430\u043d\u0441\u0456? \u0422\u043e\u0434\u0456 \u0432\u0438 \u0437\u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u043d\u0435\u0441\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0437 \u043d\u044c\u043e\u0433\u043e! \u041f\u0435\u0440\u0435\u0439\u0434\u0456\u0442\u044c \u0434\u043e \u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f > \u041f\u0440\u0438\u0441\u0442\u0440\u043e\u0457 \u0442\u0430 \u043f\u0435\u0440\u0435\u043a\u043e\u043d\u0430\u0439\u0442\u0435\u0441\u044f, \u0449\u043e \u0432\u0430\u0448\u0456 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u043b\u0438 \u043e\u0434\u0438\u043d \u043e\u0434\u043d\u043e\u0433\u043e. \u041a\u043e\u043b\u0438 \u0432\u0438 \u0432\u0456\u0434\u043a\u0440\u0438\u0454\u0442\u0435 \u043a\u0456\u043c\u043d\u0430\u0442\u0443 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0440\u0430\u0437\u0443 \u0439 \u043e\u0431\u0438\u0434\u0432\u0430 \u0441\u0435\u0430\u043d\u0441\u0438 \u0431\u0443\u0434\u0443\u0442\u044c \u043d\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u0456, \u043a\u043b\u044e\u0447\u0456 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u0456 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e.\n\n\u0412\u0438 \u0436 \u043d\u0435 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0442\u0440\u0430\u0447\u0430\u0442\u0438 \u043a\u043b\u044e\u0447\u0456 \u043f\u0456\u0441\u043b\u044f \u0432\u0438\u0445\u043e\u0434\u0443 \u0430\u0431\u043e \u0437\u043c\u0456\u043d\u0438 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457\u0432? \u041f\u0435\u0440\u0435\u043a\u043e\u043d\u0430\u0439\u0442\u0435\u0441\u044f, \u0449\u043e \u0432\u0438 \u0432\u0432\u0456\u043c\u043a\u043d\u0443\u043b\u0438 \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u0435 \u043a\u043e\u043f\u0456\u044e\u0432\u0430\u043d\u043d\u044f \u0431\u0435\u0441\u0456\u0434 \u0443 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f\u0445.";
+      return "C\xf3 th\u1ec3 tin nh\u1eafn \u0111\xe3 \u0111\u01b0\u1ee3c g\u1eedi tr\u01b0\u1edbc khi b\u1ea1n \u0111\u0103ng nh\u1eadp tr\xean thi\u1ebft b\u1ecb n\xe0y. Ho\u1eb7c thi\u1ebft b\u1ecb c\u1ee7a b\u1ea1n b\u1ecb ch\u1eb7n ho\u1eb7c c\xf3 l\u1ed7i k\u1ebft n\u1ed1i. N\u1ebfu b\u1ea1n \u0111\u1ecdc \u0111\u01b0\u1ee3c tin tr\xean thi\u1ebft b\u1ecb kh\xe1c, h\xe3y truy\u1ec1n kh\xf3a v\u1ec1 thi\u1ebft b\u1ecb n\xe0y! V\xe0o C\xe0i \u0111\u1eb7t > Thi\u1ebft b\u1ecb v\xe0 x\xe1c minh l\u1eabn nhau. Khi m\u1edf ph\xf2ng v\xe0 c\u1ea3 hai thi\u1ebft b\u1ecb \u0111\u1ec1u tr\u1ef1c tuy\u1ebfn, ch\xfang s\u1ebd t\u1ef1 trao \u0111\u1ed5i kh\xf3a. Kh\xf4ng mu\u1ed1n m\u1ea5t kh\xf3a khi \u0111\u0103ng xu\u1ea5t? H\xe3y b\u1eadt sao l\u01b0u tr\xf2 chuy\u1ec7n trong c\xe0i \u0111\u1eb7t.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\u041f\u043e\u0440\u043e\u0436\u043d\u044f \u0431\u0435\u0441\u0456\u0434\u0430 (\u0440\u0430\u043d\u0456\u0448\u0435 " + oldDisplayName + ")";
+      return "H\u1ed9i tho\u1ea1i tr\u1ed1ng (t\u1eebng l\xe0 " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "\u0412\u0456\u0434\u043d\u043e\u0432\u0438\u0442\u0438 \u0431\u0435\u0441\u0456\u0434\u0443";
+      return "M\u1edf l\u1ea1i cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$noOtherDevicesFound() {
-      return "\u0406\u043d\u0448\u0438\u0445 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e";
+      return "Kh\xf4ng t\xecm th\u1ea5y thi\u1ebft b\u1ecb kh\xe1c";
     },
     fileIsTooBigForServer$1(max) {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438! \u0421\u0435\u0440\u0432\u0435\u0440 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u0432\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043c\u0456\u0440\u043e\u043c \u0434\u043e " + max + ".";
+      return "M\xe1y ch\u1ee7 b\xe1o c\xe1o r\u1eb1ng t\u1ec7p tin qu\xe1 l\u1edbn \u0111\u1ec3 g\u1eedi.";
     },
     get$jumpToLastReadMessage() {
-      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u043e\u0441\u0442\u0430\u043d\u043d\u044c\u043e\u0433\u043e \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "\u0110i t\u1edbi tin nh\u1eafn \u0111\xe3 \u0111\u1ecdc m\u1edbi nh\u1ea5t";
     },
     get$readUpToHere() {
-      return "\u0427\u0438\u0442\u0430\u0442\u0438 \u0442\u0443\u0442";
+      return "\u0110\u1ecdc t\u1edbi \u0111\xe2y";
     },
     get$jump() {
-      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438";
+      return "\u0110i t\u1edbi";
     },
     get$openLinkInBrowser() {
-      return "\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0443 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0456";
+      return "M\u1edf \u0111\u01b0\u1eddng d\u1eabn trong tr\xecnh duy\u1ec7t";
     },
     get$setColorTheme() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u0442\u0438 \u043a\u043e\u043b\u0456\u0440\u043d\u0443 \u0442\u0435\u043c\u0443:";
+      return "Ch\u1ecdn m\xe0u giao di\u1ec7n:";
     },
     get$invite() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438";
+      return "M\u1eddi";
     },
     get$invalidInput() {
-      return "\u041d\u0435\u0434\u0456\u0439\u0441\u043d\u0438\u0439 \u0432\u0432\u0456\u0434!";
+      return "D\u1eef li\u1ec7u nh\u1eadp kh\xf4ng h\u1ee3p l\u1ec7!";
     },
     wrongPinEntered$1(seconds) {
-      return "\u0412\u0432\u0435\u0434\u0435\u043d\u043e \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0438\u0439 PIN! \u041f\u043e\u0432\u0442\u043e\u0440\u0456\u0442\u044c \u0441\u043f\u0440\u043e\u0431\u0443 \u0437\u0430 " + seconds + " \u0441\u0435\u043a\u0443\u043d\u0434...";
+      return "Nh\u1eadp sai m\xe3 pin! Th\u1eed l\u1ea1i sau " + seconds + " gi\xe2y...";
     },
     get$pleaseEnterANumber() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0447\u0438\u0441\u043b\u043e \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0456\u0436 0";
+      return "H\xe3y nh\u1eadp s\u1ed1 l\u1edbn h\u01a1n 0";
     },
     get$removeDevicesDescription() {
-      return "\u0412\u0438 \u0432\u0438\u0439\u0434\u0435\u0442\u0435 \u0437 \u0446\u044c\u043e\u0433\u043e \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e \u0456 \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0435 \u0437\u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.";
+      return "B\u1ea1n s\u1ebd \u0111\u0103ng xu\u1ea5t kh\u1ecfi thi\u1ebft b\u1ecb n\xe0y v\xe0 kh\xf4ng nh\u1eadn \u0111\u01b0\u1ee3c tin nh\u1eafn n\u1eefa.";
     },
     get$banUserDescription() {
-      return "\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0431\u0443\u0434\u0435 \u0437\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0435\u0441\u0456\u0434\u0456, \u0456 \u0432\u0456\u043d \u043d\u0435 \u0437\u043c\u043e\u0436\u0435 \u0437\u043d\u043e\u0432\u0443 \u0443\u0432\u0456\u0439\u0442\u0438 \u0432 \u043d\u0435\u0457, \u043f\u043e\u043a\u0438 \u0439\u043e\u0433\u043e \u043d\u0435 \u0431\u0443\u0434\u0435 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u043e.";
+      return "Ng\u01b0\u1eddi d\xf9ng s\u1ebd b\u1ecb c\u1ea5m kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 kh\xf4ng th\u1ec3 tham gia l\u1ea1i cho t\u1edbi khi \u0111\u01b0\u1ee3c g\u1ee1 c\u1ea5m.";
     },
     get$unbanUserDescription() {
-      return "\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u0437\u043c\u043e\u0436\u0435 \u0437\u043d\u043e\u0432\u0443 \u0443\u0432\u0456\u0439\u0442\u0438 \u0432 \u0431\u0435\u0441\u0456\u0434\u0443, \u044f\u043a\u0449\u043e \u0441\u043f\u0440\u043e\u0431\u0443\u0454.";
+      return "Ng\u01b0\u1eddi d\xf9ng s\u1ebd c\xf3 th\u1ec3 v\xe0o l\u1ea1i cu\u1ed9c tr\xf2 chuy\u1ec7n n\u1ebfu h\u1ecd th\u1eed.";
     },
     get$kickUserDescription() {
-      return "\u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0432\u0438\u0433\u043d\u0430\u043b\u0438 \u0437 \u0431\u0435\u0441\u0456\u0434\u0438, \u0430\u043b\u0435 \u043d\u0435 \u0437\u0430\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043b\u0438. \u0414\u043e \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u043e\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0445 \u0431\u0435\u0441\u0456\u0434 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u043c\u043e\u0436\u0435 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0443\u0434\u044c-\u043a\u043e\u043b\u0438.";
+      return "Ng\u01b0\u1eddi d\xf9ng b\u1ecb \u0111u\u1ed5i kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n nh\u01b0ng kh\xf4ng b\u1ecb c\u1ea5m. Trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n c\xf4ng khai, ng\u01b0\u1eddi d\xf9ng c\xf3 th\u1ec3 v\xe0o l\u1ea1i b\u1ea5t c\u1ee9 l\xfac n\xe0o.";
     },
     get$makeAdminDescription() {
-      return "\u041f\u0456\u0441\u043b\u044f \u0442\u043e\u0433\u043e, \u044f\u043a \u0432\u0438 \u0437\u0440\u043e\u0431\u0438\u0442\u0435 \u0446\u044c\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u043e\u043c, \u0432\u0438, \u043c\u043e\u0436\u043b\u0438\u0432\u043e, \u043d\u0435 \u0437\u043c\u043e\u0436\u0435\u0442\u0435 \u0446\u0435 \u0441\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438, \u043e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u0432\u0456\u043d \u043c\u0430\u0442\u0438\u043c\u0435 \u0442\u0456 \u0441\u0430\u043c\u0456 \u043f\u0440\u0430\u0432\u0430, \u0449\u043e \u0439 \u0432\u0438.";
+      return "Khi b\u1ea1n \u0111\u1eb7t ng\u01b0\u1eddi d\xf9ng n\xe0y l\xe0m qu\u1ea3n tr\u1ecb vi\xean, b\u1ea1n kh\xf4ng th\u1ec3 ho\xe0n t\xe1c vi\u1ec7c n\xe0y v\xec khi \u0111\xf3 h\u1ecd s\u1ebd c\xf3 quy\u1ec1n ngang b\u1ea1n.";
     },
     get$yourGlobalUserIdIs() {
-      return "\u0412\u0430\u0448 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0438\u0439 ID \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430: ";
+      return "ID ng\u01b0\u1eddi d\xf9ng to\xe0n c\u1ee5c c\u1ee7a b\u1ea1n l\xe0: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '\u041d\u0430 \u0436\u0430\u043b\u044c, \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0436\u043e\u0434\u043d\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0437 \u0437\u0430\u043f\u0438\u0442\u043e\u043c "' + query + '".\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435, \u0447\u0438 \u043d\u0435 \u0431\u0443\u043b\u043e \u0434\u043e\u043f\u0443\u0449\u0435\u043d\u043e \u043f\u043e\u043c\u0438\u043b\u043a\u0438.';
+      return 'Kh\xf4ng t\xecm th\u1ea5y ng\u01b0\u1eddi d\xf9ng n\xe0o v\u1edbi "' + query + '". H\xe3y ki\u1ec3m tra xem b\u1ea1n c\xf3 nh\u1eadp nh\u1ea7m kh\xf4ng.';
     },
     get$knocking() {
-      return "\u0421\u0442\u0443\u043a\u0430\u044e\u0442\u044c\u0441\u044f";
+      return "\u0110ang y\xeau c\u1ea7u tham gia";
     },
     get$nothingFound() {
-      return "\u041d\u0456\u0447\u043e\u0433\u043e \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e...";
+      return "Kh\xf4ng t\xecm th\u1ea5y g\xec...";
     },
     get$groupName() {
-      return "\u041d\u0430\u0437\u0432\u0430 \u0433\u0440\u0443\u043f\u0438";
+      return "T\xean nh\xf3m";
     },
     get$wrongRecoveryKey() {
-      return "\u0412\u0438\u0431\u0430\u0447\u0442\u0435... \u0441\u0445\u043e\u0436\u0435, \u0446\u0435 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0438\u0439 \u043a\u043b\u044e\u0447 \u0432\u0456\u0434\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f.";
+      return "R\u1ea5t ti\u1ebfc... \u0110\xe2y kh\xf4ng ph\u1ea3i l\xe0 kh\xf3a kh\xf4i ph\u1ee5c ch\xednh x\xe1c.";
     },
     get$startConversation() {
-      return "\u0420\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u0438 \u0440\u043e\u0437\u043c\u043e\u0432\u0443";
+      return "B\u1eaft \u0111\u1ea7u h\u1ed9i tho\u1ea1i";
     },
     get$commandHint_sendraw() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043d\u0435\u043e\u0431\u0440\u043e\u0431\u043b\u0435\u043d\u0438\u0439 json";
+      return "G\u1eedi JSON d\u1ea1ng th\xf4";
     },
     get$leaveEmptyToClearStatus() {
-      return "\u041b\u0438\u0448\u0456\u0442\u044c \u043f\u043e\u0440\u043e\u0436\u043d\u0456\u043c, \u0449\u043e\u0431 \u043e\u043d\u043e\u0432\u0438\u0442\u0438 \u0441\u0442\u0430\u0442\u0443\u0441.";
+      return "\u0110\u1ec3 tr\u1ed1ng \u0111\u1ec3 x\xf3a tr\u1ea1ng th\xe1i c\u1ee7a b\u1ea1n.";
     },
     get$select(_) {
-      return "\u0412\u0438\u0431\u0440\u0430\u0442\u0438";
+      return "Ch\u1ecdn";
     },
     get$searchForUsers() {
-      return "\u041f\u043e\u0448\u0443\u043a @\u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432...";
+      return "T\xecm ki\u1ebfm @ng\u01b0\u1eddi_d\xf9ng...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043f\u043e\u0442\u043e\u0447\u043d\u0438\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Vui l\xf2ng nh\u1eadp m\u1eadt kh\u1ea9u hi\u1ec7n t\u1ea1i";
     },
     get$newPassword() {
-      return "\u041d\u043e\u0432\u0438\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "M\u1eadt kh\u1ea9u m\u1edbi";
     },
     get$pleaseChooseAStrongPassword() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043d\u0430\u0434\u0456\u0439\u043d\u0438\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
+      return "Vui l\xf2ng ch\u1ecdn m\u1eadt kh\u1ea9u m\u1ea1nh";
     },
     get$passwordsDoNotMatch() {
-      return "\u041f\u0430\u0440\u043e\u043b\u0456 \u0432\u0456\u0434\u0440\u0456\u0437\u043d\u044f\u044e\u0442\u044c\u0441\u044f";
+      return "M\u1eadt kh\u1ea9u kh\xf4ng tr\xf9ng kh\u1edbp";
     },
     get$passwordIsWrong() {
-      return "\u0412\u0432\u0435\u0434\u0435\u043d\u0438\u0439 \u043f\u0430\u0440\u043e\u043b\u044c \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0438\u0439";
+      return "M\u1eadt kh\u1ea9u b\u1ea1n nh\u1eadp kh\xf4ng \u0111\xfang";
     },
     get$decline() {
-      return "\u0412\u0456\u0434\u0445\u0438\u043b\u0438\u0442\u0438";
+      return "T\u1eeb ch\u1ed1i";
     },
     get$thisDevice() {
-      return "\u0426\u0435\u0439 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439:";
+      return "Thi\u1ebft b\u1ecb n\xe0y:";
     },
     get$initAppError() {
-      return "\u0412\u0438\u043d\u0438\u043a\u043b\u0430 \u043f\u043e\u043c\u0438\u043b\u043a\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0437\u0430\u043f\u0443\u0441\u043a\u0443 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443";
+      return "\u0110\xe3 x\u1ea3y ra l\u1ed7i khi kh\u1edfi t\u1ea1o \u1ee9ng d\u1ee5ng";
     },
     searchIn$1(chat) {
-      return '\u041f\u043e\u0448\u0443\u043a \u0443 \u0431\u0435\u0441\u0456\u0434\u0456 "' + chat + '"...';
+      return 'T\xecm trong cu\u1ed9c tr\xf2 chuy\u1ec7n "' + chat + '"...';
     },
     get$searchMore() {
-      return "\u0428\u0443\u043a\u0430\u0442\u0438 \u0449\u0435...";
+      return "T\xecm th\xeam...";
     },
     get$gallery() {
-      return "\u0413\u0430\u043b\u0435\u0440\u0435\u044f";
+      return "Th\u01b0 vi\u1ec7n";
     },
     get$files(_) {
-      return "\u0424\u0430\u0439\u043b\u0438";
+      return "T\u1ec7p";
     },
     sessionLostBody$2(url, error) {
-      return "\u0412\u0430\u0448 \u0441\u0435\u0430\u043d\u0441 \u0432\u0442\u0440\u0430\u0447\u0435\u043d\u043e. \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u0442\u0435 \u043f\u0440\u043e \u0446\u044e \u043f\u043e\u043c\u0438\u043b\u043a\u0443 \u0440\u043e\u0437\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c \u0437\u0430 \u0430\u0434\u0440\u0435\u0441\u043e\u044e " + url + ". \u0422\u0435\u043a\u0441\u0442 \u043f\u043e\u043c\u0438\u043b\u043a\u0438: " + error;
+      return "Phi\xean c\u1ee7a b\u1ea1n \u0111\xe3 m\u1ea5t. Vui l\xf2ng b\xe1o l\u1ed7i n\xe0y cho nh\xe0 ph\xe1t tri\u1ec3n t\u1ea1i " + url + ". Th\xf4ng b\xe1o l\u1ed7i: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "\u041d\u0430\u0440\u0430\u0437\u0456 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043e\u043a \u043d\u0430\u043c\u0430\u0433\u0430\u0454\u0442\u044c\u0441\u044f \u0432\u0456\u0434\u043d\u043e\u0432\u0438\u0442\u0438 \u0432\u0430\u0448 \u0441\u0435\u0430\u043d\u0441 \u0437 \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0457 \u043a\u043e\u043f\u0456\u0457. \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u0442\u0435 \u043f\u0440\u043e \u0446\u044e \u043f\u043e\u043c\u0438\u043b\u043a\u0443 \u0440\u043e\u0437\u0440\u043e\u0431\u043d\u0438\u043a\u0430\u043c \u0437\u0430 \u0430\u0434\u0440\u0435\u0441\u043e\u044e " + url + ". \u0422\u0435\u043a\u0441\u0442 \u043f\u043e\u043c\u0438\u043b\u043a\u0438: " + error;
+      return "\u1ee8ng d\u1ee5ng s\u1ebd kh\xf4i ph\u1ee5c phi\xean c\u1ee7a b\u1ea1n t\u1eeb sao l\u01b0u. Vui l\xf2ng b\xe1o l\u1ed7i n\xe0y cho nh\xe0 ph\xe1t tri\u1ec3n t\u1ea1i " + url + ". Th\xf4ng b\xe1o l\u1ed7i: " + error;
     },
     get$sendReadReceipts() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0435\u043d\u043d\u044f \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u044f";
+      return "G\u1eedi x\xe1c nh\u1eadn \u0111\xe3 \u0111\u1ecdc";
     },
     get$sendTypingNotificationsDescription() {
-      return "\u0406\u043d\u0448\u0456 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438 \u0431\u0435\u0441\u0456\u0434\u0438 \u0431\u0430\u0447\u0438\u0442\u0438\u043c\u0443\u0442\u044c, \u043a\u043e\u043b\u0438 \u0432\u0438 \u043d\u0430\u0431\u0438\u0440\u0430\u0454\u0442\u0435 \u043d\u043e\u0432\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.";
+      return "Nh\u1eefng th\xe0nh vi\xean kh\xe1c th\u1ea5y khi b\u1ea1n \u0111ang nh\u1eadp tin nh\u1eafn.";
     },
     get$sendReadReceiptsDescription() {
-      return "\u0406\u043d\u0448\u0456 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438 \u0431\u0435\u0441\u0456\u0434\u0438 \u0431\u0430\u0447\u0438\u0442\u0438\u043c\u0443\u0442\u044c, \u0449\u043e \u0432\u0438 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043b\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.";
+      return "Nh\u1eefng th\xe0nh vi\xean kh\xe1c th\u1ea5y khi b\u1ea1n \u0111\xe3 \u0111\u1ecdc tin nh\u1eafn.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 \u0417\u0432\u0456\u0440\u0438\u0442\u0438 \u0456\u043d\u0448\u0438\u0439 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439";
+      return "\ud83d\udd10 X\xe1c minh thi\u1ebft b\u1ecb kh\xe1c";
     },
     get$verifyOtherDeviceDescription() {
-      return "\u041a\u043e\u043b\u0438 \u0432\u0438 \u0437\u0432\u0456\u0440\u044f\u0454\u0442\u0435 \u0456\u043d\u0448\u0438\u0439 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439, \u0446\u0456 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457 \u043c\u043e\u0436\u0443\u0442\u044c \u043e\u0431\u043c\u0456\u043d\u044e\u0432\u0430\u0442\u0438\u0441\u044f \u043a\u043b\u044e\u0447\u0430\u043c\u0438, \u043f\u0456\u0434\u0432\u0438\u0449\u0443\u044e\u0447\u0438 \u0432\u0430\u0448\u0443 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0443 \u0431\u0435\u0437\u043f\u0435\u043a\u0443. \ud83d\udcaa \u041a\u043e\u043b\u0438 \u0432\u0438 \u0440\u043e\u0437\u043f\u043e\u0447\u043d\u0435\u0442\u0435 \u0437\u0432\u0456\u0440\u0435\u043d\u043d\u044f, \u0432 \u0437\u0430\u0441\u0442\u043e\u0441\u0443\u043d\u043a\u0443 \u043d\u0430 \u043e\u0431\u043e\u0445 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044f\u0445 \u0437'\u044f\u0432\u0438\u0442\u044c\u0441\u044f \u0441\u043f\u043b\u0438\u0432\u043d\u0435 \u0432\u0456\u043a\u043d\u043e. \u0422\u0430\u043c \u0432\u0438 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0435 \u043d\u0430\u0431\u0456\u0440 \u0441\u043c\u0430\u0439\u043b\u0438\u043a\u0456\u0432 \u0430\u0431\u043e \u0447\u0438\u0441\u0435\u043b, \u044f\u043a\u0456 \u0432\u0430\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0431\u0443\u0434\u0435 \u043f\u043e\u0440\u0456\u0432\u043d\u044f\u0442\u0438 \u043c\u0456\u0436 \u0441\u043e\u0431\u043e\u044e. \u041d\u0430\u0439\u043a\u0440\u0430\u0449\u0435 \u043c\u0430\u0442\u0438 \u043e\u0431\u0438\u0434\u0432\u0430 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457 \u043f\u0456\u0434 \u0440\u0443\u043a\u043e\u044e \u043f\u0435\u0440\u0435\u0434 \u043f\u043e\u0447\u0430\u0442\u043a\u043e\u043c \u0437\u0432\u0456\u0440\u0435\u043d\u043d\u044f. \ud83e\udd33";
+      return "Khi x\xe1c minh thi\u1ebft b\u1ecb kh\xe1c, hai thi\u1ebft b\u1ecb c\xf3 th\u1ec3 trao \u0111\u1ed5i kh\xf3a, t\u0103ng b\u1ea3o m\u1eadt t\u1ed5ng th\u1ec3. Khi b\u1eaft \u0111\u1ea7u x\xe1c minh, c\u1ea3 hai thi\u1ebft b\u1ecb s\u1ebd th\u1ea5y m\u1ed9t popup so s\xe1nh chu\u1ed7i bi\u1ec3u t\u01b0\u1ee3ng ho\u1eb7c s\u1ed1. H\xe3y chu\u1ea9n b\u1ecb s\u1eb5n hai thi\u1ebft b\u1ecb tr\u01b0\u1edbc khi x\xe1c minh.";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " \u043f\u043e\u0433\u043e\u0434\u0436\u0443\u0454\u0442\u044c\u0441\u044f \u0437\u0432\u0456\u0440\u0438\u0442\u0438 \u043a\u043b\u044e\u0447\u0456";
+      return sender + " \u0111\xe3 ch\u1ea5p nh\u1eadn x\xe1c minh kh\xf3a";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " \u0441\u043a\u0430\u0441\u043e\u0432\u0443\u0454 \u0437\u0432\u0456\u0440\u0435\u043d\u043d\u044f \u043a\u043b\u044e\u0447\u0456\u0432";
+      return sender + " \u0111\xe3 h\u1ee7y x\xe1c minh kh\xf3a";
     },
     completedKeyVerification$1(sender) {
-      return sender + " \u0437\u0430\u0432\u0435\u0440\u0448\u0443\u0454 \u0437\u0432\u0456\u0440\u0435\u043d\u043d\u044f \u043a\u043b\u044e\u0447\u0456\u0432";
+      return sender + " \u0111\xe3 ho\xe0n t\u1ea5t x\xe1c minh kh\xf3a";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \u0433\u043e\u0442\u043e\u0432\u0438\u0439 \u0434\u043e \u0437\u0432\u0456\u0440\u0435\u043d\u043d\u044f \u043a\u043b\u044e\u0447\u0456\u0432";
+      return sender + " s\u1eb5n s\xe0ng x\xe1c minh kh\xf3a";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " \u043f\u0440\u043e\u0441\u0438\u0442\u044c \u0437\u0432\u0456\u0440\u0438\u0442\u0438 \u043a\u043b\u044e\u0447\u0456";
+      return sender + " \u0111\xe3 y\xeau c\u1ea7u x\xe1c minh kh\xf3a";
     },
     startedKeyVerification$1(sender) {
-      return sender + " \u0440\u043e\u0437\u043f\u043e\u0447\u0438\u043d\u0430\u0454 \u0437\u0432\u0456\u0440\u0435\u043d\u043d\u044f \u043a\u043b\u044e\u0447\u0456\u0432";
+      return sender + " \u0111\xe3 b\u1eaft \u0111\u1ea7u x\xe1c minh kh\xf3a";
     },
     get$commandHint_ignore() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0432\u0430\u0442\u0438 \u0446\u0435\u0439 Matrix ID";
+      return "Ph\u1edbt l\u1edd matrix ID n\xe0y";
     },
     get$commandHint_unignore() {
-      return "\u041d\u0435 \u0456\u0433\u043d\u043e\u0440\u0443\u0432\u0430\u0442\u0438 \u0446\u0435\u0439 Matrix ID";
+      return "B\u1ecf ph\u1edbt l\u1edd matrix ID n\xe0y";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u041d\u0430\u0440\u0430\u0437\u0456 \u0437\u0430\u0431\u043b\u043e\u043a\u043e\u0432\u0430\u043d\u043e " + count + " \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432.";
+      return "Hi\u1ec7n c\xf3 " + count + " ng\u01b0\u1eddi d\xf9ng b\u1ecb ch\u1eb7n.";
     },
     get$restricted() {
-      return "\u041e\u0431\u043c\u0435\u0436\u0435\u043d\u043e";
+      return "B\u1ecb h\u1ea1n ch\u1ebf";
     },
     get$markAsUnread() {
-      return "\u041f\u043e\u0437\u043d\u0430\u0447\u0438\u0442\u0438 \u043d\u0435\u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u0438\u043c";
+      return "\u0110\xe1nh d\u1ea5u ch\u01b0a \u0111\u1ecdc";
     },
     userLevel$1(level) {
-      return "" + level + " - \u041a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447";
+      return "" + level + " - Ng\u01b0\u1eddi d\xf9ng";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - \u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
+      return "" + level + " - \u0110i\u1ec1u h\xe0nh vi\xean";
     },
     adminLevel$1(level) {
-      return "" + level + " - \u0410\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440";
+      return "" + level + " - Qu\u1ea3n tr\u1ecb vi\xean";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u0432\u0438\u0434\u0438\u043c\u0456\u0441\u0442\u044c \u0456\u0441\u0442\u043e\u0440\u0456\u0457 \u0447\u0430\u0442\u0443";
+      return "Thay \u0111\u1ed5i c\xe1ch hi\u1ec3n th\u1ecb l\u1ecbch s\u1eed tr\xf2 chuy\u1ec7n";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043e\u0441\u043d\u043e\u0432\u043d\u0443 \u0430\u0434\u0440\u0435\u0441\u0443 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u043e\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0433\u043e \u0447\u0430\u0442\u0443";
+      return "Thay \u0111\u1ed5i b\xed danh c\xf4ng khai ch\xednh";
     },
     get$sendRoomNotifications() {
-      return "\u041d\u0430\u0434\u0441\u0438\u043b\u0430\u0442\u0438 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f @room";
+      return "G\u1eedi th\xf4ng b\xe1o @room";
     },
     get$chatPermissionsDescription() {
-      return "\u0412\u0438\u0437\u043d\u0430\u0447\u0442\u0435, \u044f\u043a\u0438\u0439 \u0440\u0456\u0432\u0435\u043d\u044c \u043f\u043e\u0432\u043d\u043e\u0432\u0430\u0436\u0435\u043d\u044c \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0434\u043b\u044f \u043f\u0435\u0432\u043d\u0438\u0445 \u0434\u0456\u0439 \u0443 \u0446\u044c\u043e\u043c\u0443 \u0447\u0430\u0442\u0456. \u0420\u0456\u0432\u043d\u0456 \u043f\u043e\u0432\u043d\u043e\u0432\u0430\u0436\u0435\u043d\u044c 0, 50 \u0456 100 \u0437\u0430\u0437\u0432\u0438\u0447\u0430\u0439 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u044e\u0442\u044c \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432, \u043c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440\u0456\u0432 \u0442\u0430 \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0456\u0432, \u0430\u043b\u0435 \u043c\u043e\u0436\u043b\u0438\u0432\u0456 \u0431\u0443\u0434\u044c-\u044f\u043a\u0456 \u0433\u0440\u0430\u0434\u0430\u0446\u0456\u0457.";
+      return "\u0110\u1eb7t m\u1ee9c quy\u1ec1n t\u1ed1i thi\u1ec3u c\u1ea7n thi\u1ebft cho m\u1ed7i h\xe0nh \u0111\u1ed9ng. Th\u01b0\u1eddng c\u1ea5p 0, 50 v\xe0 100 t\u01b0\u01a1ng \u1ee9ng ng\u01b0\u1eddi d\xf9ng, \u0111i\u1ec1u h\xe0nh v\xe0 qu\u1ea3n tr\u1ecb, nh\u01b0ng b\u1ea1n c\xf3 th\u1ec3 t\xf9y ch\u1ec9nh chi ti\u1ebft.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 \u041e\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f " + version + " \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e!";
+      return "\ud83c\udf89 \u0110\xe3 c\xe0i \u0111\u1eb7t b\u1ea3n c\u1eadp nh\u1eadt " + version + "!";
     },
     get$sendCanceled() {
-      return "\u041d\u0430\u0434\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0441\u043a\u0430\u0441\u043e\u0432\u0430\u043d\u043e";
+      return "\u0110\xe3 h\u1ee7y g\u1eedi";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "\u0417\u0434\u0430\u0454\u0442\u044c\u0441\u044f, \u0446\u0435 \u043d\u0435\u0441\u0443\u043c\u0456\u0441\u043d\u0438\u0439 \u0434\u043e\u043c\u0430\u0448\u043d\u0456\u0439 \u0441\u0435\u0440\u0432\u0435\u0440. \u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430 URL-\u0430\u0434\u0440\u0435\u0441\u0430?";
+      return "C\xf3 v\u1ebb \u0111\xe2y kh\xf4ng ph\u1ea3i m\xe1y ch\u1ee7 t\u01b0\u01a1ng th\xedch. URL sai?";
     },
     get$calculatingFileSize() {
-      return "\u041e\u0431\u0447\u0438\u0441\u043b\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043c\u0456\u0440\u0443 \u0444\u0430\u0439\u043b\u0443...";
+      return "\u0110ang t\xednh k\xedch th\u01b0\u1edbc t\u1ec7p...";
     },
     get$prepareSendingAttachment() {
-      return "\u041f\u0456\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u0434\u043e \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0432\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f...";
+      return "Chu\u1ea9n b\u1ecb g\u1eedi t\u1ec7p \u0111\xednh k\xe8m...";
     },
     get$sendingAttachment() {
-      return "\u041d\u0430\u0434\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0432\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f...";
+      return "\u0110ang g\u1eedi t\u1ec7p \u0111\xednh k\xe8m...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "\u041d\u0430\u0434\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0432\u043a\u043b\u0430\u0434\u0435\u043d\u043d\u044f " + index + " \u0437 " + $length + "...";
+      return "\u0110ang g\u1eedi t\u1ec7p \u0111\xednh k\xe8m " + index + " / " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "\u0414\u043e\u0441\u044f\u0433\u043d\u0443\u0442\u043e \u043b\u0456\u043c\u0456\u0442\u0443 \u0441\u0435\u0440\u0432\u0435\u0440\u0430! \u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f " + seconds + " \u0441\u0435\u043a\u0443\u043d\u0434...";
+      return "M\xe1y ch\u1ee7 qu\xe1 t\u1ea3i! \u0110\u1ee3i " + seconds + " gi\xe2y...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "\u041f\u0440\u0438\u043c\u0456\u0442\u043a\u0430: \u041a\u043e\u043b\u0438 \u0432\u0438 \u043f\u0456\u0434'\u0454\u0434\u043d\u0443\u0454\u0442\u0435 \u0432\u0441\u0456 \u0441\u0432\u043e\u0457 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457 \u0434\u043e \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0457 \u043a\u043e\u043f\u0456\u0457 \u0431\u0435\u0441\u0456\u0434\u0438, \u0432\u043e\u043d\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0432\u0435\u0440\u0438\u0444\u0456\u043a\u0443\u044e\u0442\u044c\u0441\u044f.";
+      return "L\u01b0u \xfd: Khi b\u1ea1n th\xeam t\u1ea5t c\u1ea3 thi\u1ebft b\u1ecb v\xe0o sao l\u01b0u tr\xf2 chuy\u1ec7n, ch\xfang s\u1ebd t\u1ef1 \u0111\u1ed9ng \u0111\u01b0\u1ee3c x\xe1c minh.";
     },
     get$continueText() {
-      return "\u041f\u0440\u043e\u0434\u043e\u0432\u0436\u0438\u0442\u0438";
+      return "Ti\u1ebfp t\u1ee5c";
     },
     get$blur(_) {
-      return "\u0420\u043e\u0437\u043c\u0438\u0442\u0442\u044f:";
+      return "M\u1edd:";
     },
     get$opacity(_) {
-      return "\u041f\u0440\u043e\u0437\u043e\u0440\u0456\u0441\u0442\u044c:";
+      return "\u0110\u1ed9 trong su\u1ed1t:";
     },
     get$setWallpaper() {
-      return "\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u0448\u043f\u0430\u043b\u0435\u0440\u0438";
+      return "\u0110\u1eb7t h\xecnh n\u1ec1n";
     },
     get$noContactInformationProvided() {
-      return "\u0421\u0435\u0440\u0432\u0435\u0440 \u043d\u0435 \u043d\u0430\u0434\u0430\u0454 \u0436\u043e\u0434\u043d\u043e\u0457 \u0434\u0456\u0439\u0441\u043d\u043e\u0457 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043d\u043e\u0457 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0457";
+      return "M\xe1y ch\u1ee7 kh\xf4ng cung c\u1ea5p th\xf4ng tin li\xean h\u1ec7 h\u1ee3p l\u1ec7";
     },
     get$contactServerAdmin() {
-      return "\u0417\u0432\u2019\u044f\u0437\u0430\u0442\u0438\u0441\u044f \u0437 \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u043e\u043c \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
+      return "Li\xean h\u1ec7 qu\u1ea3n tr\u1ecb vi\xean m\xe1y ch\u1ee7";
     },
     get$contactServerSecurity() {
-      return "\u0417\u0432\u2019\u044f\u0437\u0430\u0442\u0438\u0441\u044f \u0437 \u0432\u0456\u0434\u0434\u0456\u043b\u043e\u043c \u0431\u0435\u0437\u043f\u0435\u043a\u0438 \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
+      return "Li\xean h\u1ec7 b\u1ea3o m\u1eadt m\xe1y ch\u1ee7";
     },
     get$supportPage() {
-      return "\u0421\u0442\u043e\u0440\u0456\u043d\u043a\u0430 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u043a\u0438";
+      return "Trang h\u1ed7 tr\u1ee3";
     },
     get$serverInformation() {
-      return "\u0406\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f \u043f\u0440\u043e \u0441\u0435\u0440\u0432\u0435\u0440:";
+      return "Th\xf4ng tin m\xe1y ch\u1ee7:";
     },
     get$name(_) {
-      return "\u0406\u043c'\u044f";
+      return "T\xean";
     },
     get$version(_) {
-      return "\u0412\u0435\u0440\u0441\u0456\u044f";
+      return "Phi\xean b\u1ea3n";
     },
     get$compress() {
-      return "\u0421\u0442\u0438\u0441\u043d\u0443\u0442\u0438";
+      return "N\xe9n";
     },
     get$boldText() {
-      return "\u0416\u0438\u0440\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442";
+      return "In \u0111\u1eadm";
     },
     get$italicText() {
-      return "\u041a\u0443\u0440\u0441\u0438\u0432\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442";
+      return "In nghi\xeang";
     },
     get$strikeThrough() {
-      return "\u041f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u043b\u0435\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442";
+      return "G\u1ea1ch ngang";
     },
     get$pleaseFillOut() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0437\u0430\u043f\u043e\u0432\u043d\u0456\u0442\u044c";
+      return "Vui l\xf2ng \u0111i\u1ec1n v\xe0o";
     },
     get$invalidUrl() {
-      return "\u041d\u0435\u0434\u0456\u0439\u0441\u043d\u0438\u0439 URL";
+      return "URL kh\xf4ng h\u1ee3p l\u1ec7";
     },
     get$addLink() {
-      return "\u0414\u043e\u0434\u0430\u0442\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f";
+      return "Th\xeam li\xean k\u1ebft";
     },
     get$unableToJoinChat() {
-      return "\u041d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0431\u0435\u0441\u0456\u0434\u0438. \u041c\u043e\u0436\u043b\u0438\u0432\u043e, \u0456\u043d\u0448\u0430 \u0441\u0442\u043e\u0440\u043e\u043d\u0430 \u0432\u0436\u0435 \u0437\u0430\u043a\u0440\u0438\u043b\u0430 \u0440\u043e\u0437\u043c\u043e\u0432\u0443.";
+      return "Kh\xf4ng th\u1ec3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n. C\xf3 th\u1ec3 ng\u01b0\u1eddi kia \u0111\xe3 \u0111\xf3ng phi\xean.";
     },
     get$previous() {
-      return "\u041f\u043e\u043f\u0435\u0440\u0435\u0434\u043d\u0456\u0439";
+      return "Tr\u01b0\u1edbc";
     },
     get$otherPartyNotLoggedIn() {
-      return "\u0406\u043d\u0448\u0430 \u0441\u0442\u043e\u0440\u043e\u043d\u0430 \u043d\u0430\u0440\u0430\u0437\u0456 \u043d\u0435 \u0443\u0432\u0456\u0439\u0448\u043b\u0430 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443, \u0442\u043e\u043c\u0443 \u043d\u0435 \u043c\u043e\u0436\u0435 \u043e\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f!";
+      return "B\xean kia hi\u1ec7n kh\xf4ng \u0111\u0103ng nh\u1eadp, kh\xf4ng th\u1ec3 nh\u1eadn tin!";
     },
     get$open(_) {
-      return "\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438";
+      return "M\u1edf";
     },
     get$waitingForServer() {
-      return "\u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u0435\u0440\u0432\u0435\u0440\u0430...";
+      return "\u0110ang \u0111\u1ee3i ph\u1ea3n h\u1ed3i t\u1eeb m\xe1y ch\u1ee7...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \u041d\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0442 \u043d\u0430 \u0441\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "\ud83d\udce9 Y\xeau c\u1ea7u tr\xf2 chuy\u1ec7n m\u1edbi";
     },
     get$contentNotificationSettings() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c \u043f\u0440\u043e \u0432\u043c\u0456\u0441\u0442";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o n\u1ed9i dung";
     },
     get$generalNotificationSettings() {
-      return "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o chung";
     },
     get$roomNotificationSettings() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o ph\xf2ng";
     },
     get$userSpecificNotificationSettings() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c \u0434\u043b\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o theo ng\u01b0\u1eddi d\xf9ng";
     },
     get$otherNotificationSettings() {
-      return "\u0406\u043d\u0448\u0456 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c";
+      return "C\xe0i \u0111\u1eb7t th\xf4ng b\xe1o kh\xe1c";
     },
     get$notificationRuleContainsUserName() {
-      return "\u041c\u0456\u0441\u0442\u0438\u0442\u044c \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "Ch\u1ee9a t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0430\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u043a\u043e\u043b\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u0439\u043e\u0433\u043e \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi m\u1ed9t tin nh\u1eafn ch\u1ee9a t\xean ng\u01b0\u1eddi d\xf9ng c\u1ee7a h\u1ecd.";
     },
     get$notificationRuleMaster() {
-      return "\u0412\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0432\u0441\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f";
+      return "T\u1eaft t\u1ea5t c\u1ea3 th\xf4ng b\xe1o";
     },
     get$notificationRuleMasterDescription() {
-      return "\u041f\u0435\u0440\u0435\u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0454 \u0432\u0441\u0456 \u0456\u043d\u0448\u0456 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0456 \u0432\u0438\u043c\u0438\u043a\u0430\u0454 \u0432\u0441\u0456 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f.";
+      return "Ghi \u0111\xe8 t\u1ea5t c\u1ea3 c\xe1c quy t\u1eafc kh\xe1c v\xe0 t\u1eaft t\u1ea5t c\u1ea3 th\xf4ng b\xe1o.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\u0417\u0430\u0431\u043e\u0440\u043e\u043d\u0438\u0442\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "T\u1eaft th\xf4ng b\xe1o t\u1ef1 \u0111\u1ed9ng";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\u0417\u0430\u0431\u043e\u0440\u043e\u043d\u044f\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0432\u0456\u0434 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0437\u043e\u0432\u0430\u043d\u0438\u0445 \u043a\u043b\u0456\u0454\u043d\u0442\u0456\u0432, \u0442\u0430\u043a\u0438\u0445 \u044f\u043a \u0431\u043e\u0442\u0438.";
+      return "T\u1eaft th\xf4ng b\xe1o t\u1eeb c\xe1c kh\xe1ch h\xe0ng t\u1ef1 \u0111\u1ed9ng nh\u01b0 bot.";
     },
     get$notificationRuleInviteForMe() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f \u043c\u0435\u043d\u0435";
+      return "M\u1eddi cho t\xf4i";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0430\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u043a\u043e\u043b\u0438 \u0439\u043e\u0433\u043e \u0437\u0430\u043f\u0440\u043e\u0448\u0443\u044e\u0442\u044c \u0434\u043e \u043a\u0456\u043c\u043d\u0430\u0442\u0438.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi h\u1ecd \u0111\u01b0\u1ee3c m\u1eddi v\xe0o m\u1ed9t ph\xf2ng.";
     },
     get$notificationRuleMemberEvent() {
-      return "\u041f\u043e\u0434\u0456\u0457 \u0443\u0447\u0430\u0441\u0442\u0456";
+      return "S\u1ef1 ki\u1ec7n th\xe0nh vi\xean";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\u0417\u0430\u0431\u043e\u0440\u043e\u043d\u044f\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u043f\u043e\u0434\u0456\u0457 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432.";
+      return "T\u1eaft th\xf4ng b\xe1o cho c\xe1c s\u1ef1 ki\u1ec7n th\xe0nh vi\xean.";
     },
     get$notificationRuleIsUserMention() {
-      return "\u0417\u0433\u0430\u0434\u043a\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432";
+      return "\u0110\u1ec1 c\u1eadp ng\u01b0\u1eddi d\xf9ng";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0430\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432, \u043a\u043e\u043b\u0438 \u0431\u0435\u0437\u043f\u043e\u0441\u0435\u0440\u0435\u0434\u043d\u044c\u043e \u0457\u0445 \u0437\u0433\u0430\u0434\u0443\u044e\u0442\u044c \u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u0456.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi h\u1ecd \u0111\u01b0\u1ee3c \u0111\u1ec1 c\u1eadp tr\u1ef1c ti\u1ebfp trong m\u1ed9t tin nh\u1eafn.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "\u041c\u0456\u0441\u0442\u0438\u0442\u044c \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u043d\u0435 \u0456\u043c\u2019\u044f";
+      return "Ch\u1ee9a t\xean hi\u1ec3n th\u1ecb";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0430\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u043a\u043e\u043b\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0442\u0438\u0442\u044c \u043f\u043e\u043a\u0430\u0437\u0443\u0432\u0430\u043d\u0435 \u0456\u043c'\u044f.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi m\u1ed9t tin nh\u1eafn ch\u1ee9a t\xean hi\u1ec3n th\u1ecb c\u1ee7a h\u1ecd.";
     },
     get$notificationRuleIsRoomMention() {
-      return "\u0417\u0433\u0430\u0434\u043a\u0438 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "\u0110\u1ec1 c\u1eadp ph\xf2ng";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0430\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u043a\u043e\u043b\u0438 \u0454 \u0437\u0433\u0430\u0434\u043a\u0430 \u0432\u0441\u0456\u0454\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi c\xf3 \u0111\u1ec1 c\u1eadp \u0111\u1ebfn ph\xf2ng.";
     },
     get$notificationRuleRoomnotif() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "Th\xf4ng b\xe1o ph\xf2ng";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0430\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u043a\u043e\u043b\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u043c\u0456\u0441\u0442\u0438\u0442\u044c '@room'.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng khi m\u1ed9t tin nh\u1eafn ch\u1ee9a '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "\u041c\u043e\u0433\u0438\u043b\u044c\u043d\u0438\u0439 \u043a\u0430\u043c\u0456\u043d\u044c";
+      return "Tombstone";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043f\u0440\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0434\u0435\u0430\u043a\u0442\u0438\u0432\u0430\u0446\u0456\u0457 \u043a\u0456\u043c\u043d\u0430\u0442\u0438.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn v\xf4 hi\u1ec7u h\xf3a ph\xf2ng.";
     },
     get$notificationRuleReaction() {
-      return "\u0420\u0435\u0430\u043a\u0446\u0456\u044f";
+      return "Ph\u1ea3n \u1ee9ng";
     },
     get$notificationRuleReactionDescription() {
-      return "\u041f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u0440\u0435\u0430\u043a\u0446\u0456\u0457.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho c\xe1c ph\u1ea3n \u1ee9ng.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "ACL \u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043a\u0456\u043c\u043d\u0430\u0442\u0438";
+      return "Danh s\xe1ch ki\u1ec3m so\xe1t truy c\u1eadp m\xe1y ch\u1ee7 ph\xf2ng";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "\u041f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u0441\u043f\u0438\u0441\u043a\u0438 \u043a\u043e\u043d\u0442\u0440\u043e\u043b\u044e \u0434\u043e\u0441\u0442\u0443\u043f\u0443 (ACL) \u0441\u0435\u0440\u0432\u0435\u0440\u0430 \u043a\u0456\u043c\u043d\u0430\u0442\u0438.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho danh s\xe1ch ki\u1ec3m so\xe1t truy c\u1eadp m\xe1y ch\u1ee7 ph\xf2ng (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "\u041f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "Ng\u0103n ch\u1eb7n ch\u1ec9nh s\u1eeda";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "\u041f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u0432\u0456\u0434\u0440\u0435\u0434\u0430\u0433\u043e\u0432\u0430\u043d\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho c\xe1c tin nh\u1eafn \u0111\xe3 ch\u1ec9nh s\u1eeda.";
     },
     get$notificationRuleCall() {
-      return "\u0412\u0438\u043a\u043b\u0438\u043a";
+      return "Cu\u1ed9c g\u1ecdi";
     },
     get$notificationRuleCallDescription() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043f\u0440\u043e \u0432\u0438\u043a\u043b\u0438\u043a\u0438.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c cu\u1ed9c g\u1ecdi.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return '\u0417\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0430 \u043a\u0456\u043c\u043d\u0430\u0442\u0430 "\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d"';
+      return "Ph\xf2ng m\xe3 h\xf3a m\u1ed9t-m\u1ed9t";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return '\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043f\u0440\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0445 \u043a\u0456\u043c\u043d\u0430\u0442\u0430\u0445 "\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d".';
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn trong c\xe1c ph\xf2ng m\xe3 h\xf3a m\u1ed9t-m\u1ed9t.";
     },
     get$notificationRuleRoomOneToOne() {
-      return '\u041a\u0456\u043c\u043d\u0430\u0442\u0430 "\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d"';
+      return "Ph\xf2ng m\u1ed9t-m\u1ed9t";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return '\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043f\u0440\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u043a\u0456\u043c\u043d\u0430\u0442\u0430\u0445 "\u041e\u0434\u0438\u043d \u043d\u0430 \u043e\u0434\u0438\u043d".';
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn trong c\xe1c ph\xf2ng m\u1ed9t-m\u1ed9t.";
     },
     get$notificationRuleMessage() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn";
     },
     get$notificationRuleMessageDescription() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043f\u0440\u043e \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn chung.";
     },
     get$notificationRuleEncrypted() {
-      return "\u0417\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
+      return "M\xe3 h\xf3a";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043f\u0440\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0445 \u043a\u0456\u043c\u043d\u0430\u0442\u0430\u0445.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c tin nh\u1eafn trong c\xe1c ph\xf2ng m\xe3 h\xf3a.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u044f\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043f\u0440\u043e \u043f\u043e\u0434\u0456\u0457 \u0432\u0456\u0434\u0436\u0435\u0442\u0456\u0432 Jitsi.";
+      return "Th\xf4ng b\xe1o cho ng\u01b0\u1eddi d\xf9ng v\u1ec1 c\xe1c s\u1ef1 ki\u1ec7n c\u1ee7a widget Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "\u041f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u043f\u043e\u0434\u0456\u0457 \u0441\u0435\u0440\u0432\u0435\u0440\u0430 ACL";
+      return "Ng\u0103n ch\u1eb7n s\u1ef1 ki\u1ec7n Server ACL";
     },
     get$notificationRuleServerAclDescription() {
-      return "\u041f\u0440\u0438\u0445\u043e\u0432\u0443\u0454 \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u043f\u0440\u043e \u043f\u043e\u0434\u0456\u0457 Server ACL.";
+      return "Ng\u0103n ch\u1eb7n th\xf4ng b\xe1o cho c\xe1c s\u1ef1 ki\u1ec7n Server ACL.";
     },
     unknownPushRule$1(rule) {
-      return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f '" + rule + "'";
+      return "Quy t\u1eafc \u0111\u1ea9y kh\xf4ng x\xe1c \u0111\u1ecbnh '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender + " - \u0413\u043e\u043b\u043e\u0441\u043e\u0432\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432\u0456\u0434 " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Tin nh\u1eafn tho\u1ea1i t\u1eeb " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "\u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0435 \u0446\u0435 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c, \u0432\u0456\u0434\u043d\u043e\u0432\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u0431\u0443\u0434\u0435 \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e.";
+      return "N\u1ebfu b\u1ea1n x\xf3a c\xe0i \u0111\u1eb7t th\xf4ng b\xe1o n\xe0y, \u0111i\u1ec1u n\xe0y s\u1ebd kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$more() {
-      return "\u0411\u0456\u043b\u044c\u0448\u0435";
+      return "Th\xeam";
     },
     get$shareKeysWith() {
-      return "\u041f\u043e\u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f \u043a\u043b\u044e\u0447\u0430\u043c\u0438 \u0437...";
+      return "Chia s\u1ebb kh\xf3a v\u1edbi...";
     },
     get$shareKeysWithDescription() {
-      return "\u042f\u043a\u0438\u043c \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044f\u043c \u0434\u043e\u0432\u0456\u0440\u044f\u0442\u0438, \u0449\u043e\u0431 \u0432\u043e\u043d\u0438 \u043c\u043e\u0433\u043b\u0438 \u0447\u0438\u0442\u0430\u0442\u0438 \u0432\u0430\u0448\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0445 \u0431\u0435\u0441\u0456\u0434\u0430\u0445?";
+      return "Thi\u1ebft b\u1ecb n\xe0o n\xean \u0111\u01b0\u1ee3c tin c\u1eady \u0111\u1ec3 c\xf3 th\u1ec3 \u0111\u1ecdc c\xe1c tin nh\u1eafn c\u1ee7a b\u1ea1n trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n m\xe3 h\xf3a?";
     },
     get$allDevices() {
-      return "\u0423\u0441\u0456\u043c \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044f\u043c";
+      return "T\u1ea5t c\u1ea3 c\xe1c thi\u1ebft b\u1ecb";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "\u0417 \u043f\u0435\u0440\u0435\u0445\u0440\u0435\u0441\u043d\u043e\u044e \u0432\u0435\u0440\u0438\u0444\u0456\u043a\u0430\u0446\u0456\u0454\u044e \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457\u0432, \u044f\u043a\u0449\u043e \u0432\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e";
+      return "Thi\u1ebft b\u1ecb \u0111\xe3 x\xe1c minh ch\xe9o n\u1ebfu \u0111\u01b0\u1ee3c k\xedch ho\u1ea1t";
     },
     get$crossVerifiedDevices() {
-      return "\u0417 \u043f\u0435\u0440\u0435\u0445\u0440\u0435\u0441\u043d\u043e\u044e \u0432\u0435\u0440\u0438\u0444\u0456\u043a\u0430\u0446\u0456\u0454\u044e \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457\u0432";
+      return "Thi\u1ebft b\u1ecb \u0111\xe3 x\xe1c minh ch\xe9o";
     },
     get$verifiedDevicesOnly() {
-      return "\u041b\u0438\u0448\u0435 \u0432\u0435\u0440\u0438\u0444\u0456\u043a\u043e\u0432\u0430\u043d\u0456 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457";
+      return "Ch\u1ec9 thi\u1ebft b\u1ecb \u0111\xe3 x\xe1c minh";
     },
     get$optionalMessage() {
-      return "(\u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u043e) \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f...";
+      return "(T\xf9y ch\u1ecdn) tin nh\u1eafn...";
     },
     get$notSupportedOnThisDevice() {
-      return "\u041d\u0435 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u044c\u0441\u044f \u043d\u0430 \u0446\u044c\u043e\u043c\u0443 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457";
+      return "Kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 tr\xean thi\u1ebft b\u1ecb n\xe0y";
     },
     get$enterNewChat() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043d\u043e\u0432\u0438\u0439 \u0447\u0430\u0442";
+      return "Tham gia tr\xf2 chuy\u1ec7n m\u1edbi";
     },
     get$approve() {
-      return "\u0421\u0445\u0432\u0430\u043b\u0438\u0442\u0438";
+      return "Ch\u1ea5p thu\u1eadn";
     },
     get$youHaveKnocked() {
-      return "\u0412\u0438 \u043f\u043e\u0441\u0442\u0443\u043a\u0430\u043b\u0438";
+      return "B\u1ea1n \u0111\xe3 g\xf5 c\u1eeda";
     },
     get$commandHint_logout() {
-      return "\u0412\u0438\u0439\u0442\u0438 \u043d\u0430 \u0446\u044c\u043e\u043c\u0443 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457";
+      return "\u0110\u0103ng xu\u1ea5t kh\u1ecfi thi\u1ebft b\u1ecb hi\u1ec7n t\u1ea1i c\u1ee7a b\u1ea1n";
     },
     get$commandHint_logoutall() {
-      return "\u0412\u0438\u0439\u0442\u0438 \u043d\u0430 \u0432\u0441\u0456\u0445 \u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0445 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044f\u0445";
+      return "\u0110\u0103ng xu\u1ea5t kh\u1ecfi t\u1ea5t c\u1ea3 c\xe1c thi\u1ebft b\u1ecb \u0111ang ho\u1ea1t \u0111\u1ed9ng";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c " + l1 + " \u0430\u0431\u043e " + l2 + "...";
+      return "G\xf5 b\u1eb1ng " + l1 + " ho\u1eb7c " + l2 + "...";
     },
     get$holdForInfo() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0456 \u0443\u0442\u0440\u0438\u043c\u0443\u0439\u0442\u0435 \u0434\u043b\u044f \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0457 \u043f\u0440\u043e \u0441\u043b\u043e\u0432\u043e.";
+      return "Nh\u1ea5n gi\u1eef \u0111\u1ec3 bi\u1ebft th\xf4ng tin.";
     },
     get$gaTooltip() {
-      return "\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f L2 \u0437 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u043e\u044e \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e";
+      return "D\xf9ng L2 v\u1edbi h\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
     get$taTooltip() {
-      return "\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f L2 \u0437 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0430\u0446\u044c\u043a\u043e\u044e \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e";
+      return "D\xf9ng L2 v\u1edbi h\u1ed7 tr\u1ee3 d\u1ecbch";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "\u0406\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0430\u0447";
+      return "Tr\xecnh D\u1ecbch T\u01b0\u01a1ng T\xe1c";
     },
     get$interactiveGrammarSliderHeader() {
-      return "\u0406\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043d\u0438\u043a \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0438";
+      return "Tr\xecnh Ki\u1ec3m Tra Ng\u1eef Ph\xe1p T\u01b0\u01a1ng T\xe1c";
     },
     get$waTooltip() {
-      return "\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f L2 \u0431\u0435\u0437 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438";
+      return "D\xf9ng L2 kh\xf4ng tr\u1ee3 gi\xfap";
     },
     get$noIdenticalLanguages() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043e\u0431\u0435\u0440\u0456\u0442\u044c \u0440\u0456\u0437\u043d\u0456 \u043c\u043e\u0432\u0438 \u0434\u043b\u044f \u0431\u0430\u0437\u0438 \u0442\u0430 \u0446\u0456\u043b\u0456";
+      return "Vui l\xf2ng ch\u1ecdn ng\xf4n ng\u1eef c\u01a1 s\u1edf v\xe0 \u0111\xedch kh\xe1c nhau";
     },
     get$joinWithClassCode() {
-      return "\u041f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "Tham gia kh\xf3a h\u1ecdc";
     },
     get$languageLevelPreA1() {
-      return "\u041d\u043e\u0432\u0430\u0447\u043e\u043a \u041d\u0438\u0437\u044c\u043a\u0438\u0439 (\u041f\u0435\u0440\u0435\u0434 A1)";
+      return "Ng\u01b0\u1eddi m\u1edbi b\u1eaft \u0111\u1ea7u Th\u1ea5p (Pre A1)";
     },
     get$languageLevelA1() {
-      return "\u041d\u043e\u0432\u0430\u0447\u043e\u043a \u0421\u0435\u0440\u0435\u0434\u043d\u0456\u0439 (A1)";
+      return "Ng\u01b0\u1eddi m\u1edbi gi\u1eefa (A1)";
     },
     get$languageLevelA2() {
-      return "\u041f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0438\u0439 \u0432\u0438\u0441\u043e\u043a\u0438\u0439 (A2)";
+      return "Ng\u01b0\u1eddi m\u1edbi cao (A2)";
     },
     get$languageLevelB1() {
-      return "\u0421\u0435\u0440\u0435\u0434\u043d\u0456\u0439 \u0441\u0435\u0440\u0435\u0434\u043d\u0456\u0439 (B1)";
+      return "Trung c\u1ea5p trung b\xecnh (B1)";
     },
     get$languageLevelB2() {
-      return "\u0412\u0438\u0441\u043e\u043a\u0438\u0439 \u043d\u0438\u0437\u044c\u043a\u0438\u0439 (B2)";
+      return "Cao c\u1ea5p th\u1ea5p (B2)";
     },
     get$languageLevelC1() {
-      return "\u0412\u0438\u0441\u043e\u043a\u0438\u0439 \u0441\u0435\u0440\u0435\u0434\u043d\u0456\u0439 (C1)";
+      return "Cao c\u1ea5p trung b\xecnh (C1)";
     },
     get$languageLevelC2() {
-      return "\u0412\u0438\u0449\u0438\u0439 (C2)";
+      return "Cao c\u1ea5p (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043d\u0430\u0437\u0432\u0443";
+      return "\u0110\u1ed5i t\xean";
     },
     get$changeTheNameOfTheChat() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043d\u0430\u0437\u0432\u0443 \u0447\u0430\u0442\u0443";
+      return "\u0110\u1ed5i t\xean tr\xf2 chuy\u1ec7n";
     },
     get$sorryNoResults() {
-      return "\u0412\u0438\u0431\u0430\u0447\u0442\u0435, \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432 \u043d\u0435\u043c\u0430\u0454.";
+      return "Xin l\u1ed7i, kh\xf4ng c\xf3 k\u1ebft qu\u1ea3 n\xe0o.";
     },
     get$ignoreInThisText() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0432\u0430\u0442\u0438";
+      return "B\u1ecf qua";
     },
     get$countryInformation() {
-      return "\u041c\u043e\u044f \u043a\u0440\u0430\u0457\u043d\u0430";
+      return "Qu\u1ed1c gia c\u1ee7a t\xf4i";
     },
     get$updateLanguage() {
-      return "\u041c\u043e\u0457 \u043c\u043e\u0432\u0438";
+      return "Ng\xf4n ng\u1eef c\u1ee7a t\xf4i";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\u042f\u043a\u0443 \u043c\u043e\u0432\u0443 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u0432\u0447\u0438\u0442\u0438?";
+      return "B\u1ea1n mu\u1ed1n h\u1ecdc ng\xf4n ng\u1eef n\xe0o?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\u042f\u043a\u0430 \u0432\u0430\u0448\u0430 \u0431\u0430\u0437\u043e\u0432\u0430 \u043c\u043e\u0432\u0430?";
+      return "Ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a b\u1ea1n l\xe0 g\xec?";
     },
     get$saveChanges() {
-      return "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u0437\u043c\u0456\u043d\u0438";
+      return "L\u01b0u thay \u0111\u1ed5i";
     },
     get$publicProfileTitle() {
-      return "\u0414\u043e\u0437\u0432\u043e\u043b\u0438\u0442\u0438 \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0438 \u043c\u0456\u0439 \u043f\u0440\u043e\u0444\u0456\u043b\u044c \u0443 \u043f\u043e\u0448\u0443\u043a\u0443";
+      return "H\u1ed3 s\u01a1 c\xf4ng khai";
     },
     get$publicProfileDesc() {
-      return "\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0432\u0448\u0438 \u0446\u044e \u043e\u043f\u0446\u0456\u044e, \u0432\u0438 \u0434\u043e\u0437\u0432\u043e\u043b\u044f\u0454\u0442\u0435 \u0456\u043d\u0448\u0438\u043c \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430\u043c \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0438 \u0432\u0430\u0448 \u043f\u0440\u043e\u0444\u0456\u043b\u044c \u0443 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u0456\u0439 \u043f\u043e\u0448\u0443\u043a\u043e\u0432\u0456\u0439 \u0441\u0442\u0440\u0456\u0447\u0446\u0456 \u0442\u0430 \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0442\u0438 \u0437\u0430\u043f\u0438\u0442\u0438 \u043d\u0430 \u0447\u0430\u0442. \u041d\u0430 \u0446\u044c\u043e\u043c\u0443 \u0435\u0442\u0430\u043f\u0456 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0438 \u0430\u0431\u043e \u0432\u0456\u0434\u0445\u0438\u043b\u0438\u0442\u0438 \u0437\u0430\u043f\u0438\u0442.";
+      return "H\u1ed3 s\u01a1 c\u1ee7a b\u1ea1n c\u1ea7n \u1edf ch\u1ebf \u0111\u1ed9 c\xf4ng khai \u0111\u1ec3 ng\u01b0\u1eddi kh\xe1c t\xecm v\xe0 g\u1eedi y\xeau c\u1ea7u tr\xf2 chuy\u1ec7n. Khi \u0111\xf3, b\u1ea1n c\xf3 th\u1ec3 ch\u1ecdn ch\u1ea5p nh\u1eadn ho\u1eb7c t\u1eeb ch\u1ed1i.";
     },
     get$errorDisableIT() {
-      return "\u0414\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0437 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u043e\u043c \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0430.";
+      return "H\u1ed7 tr\u1ee3 d\u1ecbch \u0111\xe3 b\u1ecb t\u1eaft.";
     },
     get$errorDisableIGC() {
-      return "\u0414\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0437 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u043e\u044e \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0430.";
+      return "H\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p \u0111\xe3 b\u1ecb t\u1eaft.";
     },
     get$errorDisableITUserDesc() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0442\u0443\u0442, \u0449\u043e\u0431 \u043e\u043d\u043e\u0432\u0438\u0442\u0438 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438 \u0437 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u043e\u043c";
+      return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 c\u1eadp nh\u1eadt c\xe0i \u0111\u1eb7t h\u1ed7 tr\u1ee3 d\u1ecbch";
     },
     get$errorDisableIGCUserDesc() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0442\u0443\u0442, \u0449\u043e\u0431 \u043e\u043d\u043e\u0432\u0438\u0442\u0438 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438 \u0437 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u043e\u044e";
+      return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 c\u1eadp nh\u1eadt c\xe0i \u0111\u1eb7t h\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
     get$errorDisableITClassDesc() {
-      return "\u0414\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0437 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u043e\u043c \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0430 \u0434\u043b\u044f \u043a\u0443\u0440\u0441\u0443, \u0443 \u044f\u043a\u043e\u043c\u0443 \u0432\u0435\u0434\u0435\u0442\u044c\u0441\u044f \u0446\u0435\u0439 \u0447\u0430\u0442.";
+      return "H\u1ed7 tr\u1ee3 d\u1ecbch thu\u1eadt \u0111\xe3 t\u1eaft cho kh\xf3a h\u1ecdc m\xe0 cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y \u0111ang di\u1ec5n ra.";
     },
     get$errorDisableIGCClassDesc() {
-      return "\u0414\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0437 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u043e\u044e \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0430 \u0434\u043b\u044f \u043a\u0443\u0440\u0441\u0443, \u0443 \u044f\u043a\u043e\u043c\u0443 \u0432\u0435\u0434\u0435\u0442\u044c\u0441\u044f \u0446\u0435\u0439 \u0447\u0430\u0442.";
+      return "H\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p \u0111\xe3 t\u1eaft cho kh\xf3a h\u1ecdc m\xe0 cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y \u0111ang di\u1ec5n ra.";
     },
     get$error405Title() {
-      return "\u041c\u043e\u0432\u0438 \u043d\u0435 \u043d\u0430\u043b\u0430\u0448\u0442\u043e\u0432\u0430\u043d\u0456";
+      return "Ch\u01b0a thi\u1ebft l\u1eadp ng\xf4n ng\u1eef";
     },
     get$error405Desc() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0439\u0442\u0435 \u0441\u0432\u043e\u0457 \u043c\u043e\u0432\u0438 \u0443 \u0413\u043e\u043b\u043e\u0432\u043d\u043e\u043c\u0443 \u043c\u0435\u043d\u044e > \u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f.";
+      return "Vui l\xf2ng thi\u1ebft l\u1eadp ng\xf4n ng\u1eef c\u1ee7a b\u1ea1n trong Menu ch\xednh > C\xe0i \u0111\u1eb7t H\u1ecdc t\u1eadp.";
     },
     get$termsAndConditions() {
-      return "\u0423\u043c\u043e\u0432\u0430\u043c\u0438 \u0442\u0430 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u043d\u044f\u043c\u0438";
+      return "\u0110i\u1ec1u kho\u1ea3n v\xe0 \u0110i\u1ec1u ki\u1ec7n";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " \u0456 \u043f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0436\u0443\u044e, \u0449\u043e \u043c\u0435\u043d\u0456 \u0449\u043e\u043d\u0430\u0439\u043c\u0435\u043d\u0448\u0435 16 \u0440\u043e\u043a\u0456\u0432.";
+      return " v\xe0 x\xe1c nh\u1eadn t\xf4i \xedt nh\u1ea5t 16 tu\u1ed5i.";
     },
     get$error502504Title() {
-      return "\u0412\u0430\u0443, \u0431\u0430\u0433\u0430\u0442\u043e \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0456\u0432 \u043e\u043d\u043b\u0430\u0439\u043d!";
+      return "Wow, c\xf3 r\u1ea5t nhi\u1ec1u h\u1ecdc vi\xean \u0111ang tr\u1ef1c tuy\u1ebfn!";
     },
     get$error502504Desc() {
-      return "\u0406\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0438 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0443 \u0442\u0430 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0438 \u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0440\u0430\u0446\u044e\u0432\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u043b\u044c\u043d\u043e \u0430\u0431\u043e \u0431\u0443\u0442\u0438 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u043c\u0438, \u043f\u043e\u043a\u0438 \u0431\u043e\u0442\u0438 Pangea \u043d\u0430\u0437\u0434\u043e\u0433\u0430\u043d\u044f\u044e\u0442\u044c.";
+      return "C\xf4ng c\u1ee5 d\u1ecbch v\xe0 ng\u1eef ph\xe1p c\xf3 th\u1ec3 ch\u1ea1y ch\u1eadm ho\u1eb7c ng\u1eebng ho\u1ea1t \u0111\u1ed9ng trong khi bot Pangea \u0111ang x\u1eed l\xfd.";
     },
     get$error404Title() {
-      return "\u041f\u043e\u043c\u0438\u043b\u043a\u0430 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0443!";
+      return "L\u1ed7i d\u1ecbch!";
     },
     get$error404Desc() {
-      return "\u0411\u043e\u0442 Pangea \u043d\u0435 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0438\u0439, \u044f\u043a \u0446\u0435 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0441\u0442\u0438...";
+      return "Pangea Bot ch\u01b0a bi\u1ebft c\xe1ch d\u1ecbch \u0111i\u1ec1u n\xe0y...";
     },
     get$errorPleaseRefresh() {
-      return "\u041c\u0438 \u0446\u0438\u043c \u0437\u0430\u0439\u043c\u0430\u0454\u043c\u043e\u0441\u044f! \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0442\u0435 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443 \u0442\u0430 \u0441\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0449\u0435 \u0440\u0430\u0437.";
+      return "Ch\xfang t\xf4i s\u1ebd ki\u1ec3m tra! Vui l\xf2ng t\u1ea3i l\u1ea1i v\xe0 th\u1eed l\u1ea1i.";
     },
     get$connectedToStaging() {
-      return "\u041f\u0456\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043e \u0434\u043e \u0442\u0435\u0441\u0442\u043e\u0432\u043e\u0433\u043e \u0441\u0435\u0440\u0435\u0434\u043e\u0432\u0438\u0449\u0430";
+      return "B\u1ea1n \u0111ang k\u1ebft n\u1ed1i v\u1edbi m\xe1y ch\u1ee7 th\u1eed nghi\u1ec7m (staging).";
     },
     get$learningSettings() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f";
+      return "C\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp";
     },
     get$participants() {
-      return "\u0423\u0447\u0430\u0441\u043d\u0438\u043a\u0438";
+      return "Tham gia";
     },
     get$clickMessageTitle() {
-      return "\u041f\u043e\u0442\u0440\u0456\u0431\u043d\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430?";
+      return "C\u1ea7n tr\u1ee3 gi\xfap?";
     },
     get$clickMessageBody() {
-      return "\u041a\u043b\u0430\u0446\u043d\u0456\u0442\u044c \u043d\u0430 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u043c\u043e\u0432\u043d\u0438\u0445 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0456\u0432, \u0442\u0430\u043a\u0438\u0445 \u044f\u043a \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434, \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0442\u0430 \u0456\u043d\u0448\u0435!";
+      return "Nh\u1ea5n v\xe0o tin nh\u1eafn \u0111\u1ec3 truy c\u1eadp c\xe1c c\xf4ng c\u1ee5 ng\xf4n ng\u1eef nh\u01b0 d\u1ecbch, nghe l\u1ea1i v\xe0 h\u01a1n th\u1ebf n\u1eefa!";
     },
     get$allDone() {
-      return "\u0412\u0441\u0435 \u0433\u043e\u0442\u043e\u0432\u043e!";
+      return "Ho\xe0n t\u1ea5t!";
     },
     get$vocab() {
-      return "\u041b\u0435\u043a\u0441\u0438\u043a\u0430";
+      return "T\u1eeb v\u1ef1ng";
     },
     get$subscribe(_) {
-      return "\u041f\u0456\u0434\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f";
+      return "\u0110\u0103ng k\xfd";
     },
     get$getAccess() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0448\u0456\u0442\u044c\u0441\u044f \u0437\u0430\u0440\u0430\u0437!";
+      return "\u0110\u0103ng k\xfd ngay!";
     },
     get$subscriptionDesc() {
-      return "\u041e\u0431\u043c\u0456\u043d \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u043c\u0438 \u0431\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0438\u0439! \u041f\u0456\u0434\u043f\u0438\u0448\u0456\u0442\u044c\u0441\u044f, \u0449\u043e\u0431 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0456\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434, \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0438 \u0442\u0430 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0443 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f.";
+      return "Tr\xf2 chuy\u1ec7n c\u01a1 b\u1ea3n mi\u1ec5n ph\xed! \u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a d\u1ecbch t\u01b0\u01a1ng t\xe1c, s\u1eeda ng\u1eef ph\xe1p v\xe0 ph\xe2n t\xedch h\u1ecdc t\u1eadp.";
     },
     get$subscriptionManagement() {
-      return "\u0423\u043f\u0440\u0430\u0432\u043b\u0456\u043d\u043d\u044f \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u043e\u044e";
+      return "Qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$currentSubscription() {
-      return "\u041f\u043e\u0442\u043e\u0447\u043d\u0430 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0430";
+      return "G\xf3i hi\u1ec7n t\u1ea1i";
     },
     get$cancelSubscription() {
-      return "\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0443";
+      return "H\u1ee7y g\xf3i";
     },
     get$selectYourPlan() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0441\u0432\u0456\u0439 \u043f\u043b\u0430\u043d";
+      return "Ch\u1ecdn g\xf3i";
     },
     get$subsciptionPlatformTooltip() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0443\u0432\u0456\u0439\u0434\u0456\u0442\u044c \u0443 \u0441\u0432\u0456\u0439 \u043e\u0440\u0438\u0433\u0456\u043d\u0430\u043b\u044c\u043d\u0438\u0439 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439, \u0449\u043e\u0431 \u043a\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u0441\u0432\u043e\u0457\u043c \u043f\u043b\u0430\u043d\u043e\u043c \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438";
+      return "Vui l\xf2ng \u0111\u0103ng nh\u1eadp b\u1eb1ng thi\u1ebft b\u1ecb g\u1ed1c \u0111\u1ec3 qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$subscriptionManagementUnavailable() {
-      return "\u041a\u0435\u0440\u0443\u0432\u0430\u043d\u043d\u044f \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u043e\u044e \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0435";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng \u0111\u1ec3 qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$paymentMethod() {
-      return "\u0421\u043f\u043e\u0441\u0456\u0431 \u043e\u043f\u043b\u0430\u0442\u0438";
+      return "Ph\u01b0\u01a1ng th\u1ee9c thanh to\xe1n";
     },
     get$paymentHistory() {
-      return "\u0406\u0441\u0442\u043e\u0440\u0456\u044f \u043f\u043b\u0430\u0442\u0435\u0436\u0456\u0432";
+      return "L\u1ecbch s\u1eed thanh to\xe1n";
     },
     get$emptyChatDownloadWarning() {
-      return "\u041d\u0435 \u043c\u043e\u0436\u043d\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u043f\u043e\u0440\u043e\u0436\u043d\u0456\u0439 \u0447\u0430\u0442";
+      return "Kh\xf4ng th\u1ec3 t\u1ea3i xu\u1ed1ng cu\u1ed9c tr\xf2 chuy\u1ec7n tr\u1ed1ng";
     },
     get$toggleImmersionMode() {
-      return "\u0420\u0435\u0436\u0438\u043c \u0437\u0430\u043d\u0443\u0440\u0435\u043d\u043d\u044f";
+      return "Ch\u1ebf \u0111\u1ed9 nh\u1eadp vai";
     },
     get$toggleImmersionModeDesc() {
-      return "\u041a\u043e\u043b\u0438 \u0432\u0456\u043d \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u0438\u0439, \u0432\u0441\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0436\u0430\u044e\u0442\u044c\u0441\u044f \u0432\u0430\u0448\u043e\u044e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u044e \u043c\u043e\u0432\u043e\u044e. \u0426\u044f \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u043d\u0430\u0439\u0431\u0456\u043b\u044c\u0448 \u043a\u043e\u0440\u0438\u0441\u043d\u0430 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043c\u043e\u0432\u043d\u0438\u0445 \u043e\u0431\u043c\u0456\u043d\u0456\u0432.";
+      return "Khi b\u1eadt, t\u1ea5t c\u1ea3 tin nh\u1eafn s\u1ebd \u0111\u01b0\u1ee3c hi\u1ec3n th\u1ecb trong ng\xf4n ng\u1eef \u0111\xedch. Ph\xf9 h\u1ee3p cho trao \u0111\u1ed5i ng\xf4n ng\u1eef.";
     },
     get$itToggleDescription() {
-      return "\u0426\u0435\u0439 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u0432\u0438\u0432\u0447\u0435\u043d\u043d\u044f \u043c\u043e\u0432 \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0442\u0438\u043c\u0435 \u0441\u043b\u043e\u0432\u0430 \u0443 \u0432\u0430\u0448\u0456\u0439 \u0431\u0430\u0437\u043e\u0432\u0456\u0439 \u043c\u043e\u0432\u0456 \u0442\u0430 \u0434\u043e\u043f\u043e\u043c\u0430\u0433\u0430\u0442\u0438\u043c\u0435 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0430\u0442\u0438 \u0457\u0445 \u043d\u0430 \u0432\u0430\u0448\u0443 \u0446\u0456\u043b\u044c\u043e\u0432\u0443 \u043c\u043e\u0432\u0443. \u0425\u043e\u0447\u0430 \u0440\u0456\u0434\u043a\u043e, AI \u043c\u043e\u0436\u0435 \u0440\u043e\u0431\u0438\u0442\u0438 \u043f\u043e\u043c\u0438\u043b\u043a\u0438 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0443.";
+      return "C\xf4ng c\u1ee5 ng\xf4n ng\u1eef n\xe0y s\u1ebd ph\xe1t hi\u1ec7n t\u1eeb trong ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a b\u1ea1n v\xe0 gi\xfap d\u1ecbch sang ng\xf4n ng\u1eef \u0111\xedch. \u0110\xf4i l\xfac AI c\xf3 th\u1ec3 sai s\xf3t.";
     },
     get$igcToggleDescription() {
-      return "\u0426\u0435\u0439 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442 \u0434\u043b\u044f \u0432\u0438\u0432\u0447\u0435\u043d\u043d\u044f \u043c\u043e\u0432 \u0432\u0438\u0437\u043d\u0430\u0447\u0430\u0442\u0438\u043c\u0435 \u043f\u043e\u0448\u0438\u0440\u0435\u043d\u0456 \u043e\u0440\u0444\u043e\u0433\u0440\u0430\u0444\u0456\u0447\u043d\u0456, \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u0442\u0430 \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0456\u0439\u043d\u0456 \u043f\u043e\u043c\u0438\u043b\u043a\u0438 \u0443 \u0432\u0430\u0448\u043e\u043c\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u0456 \u0442\u0430 \u043f\u0440\u043e\u043f\u043e\u043d\u0443\u0432\u0430\u0442\u0438\u043c\u0435 \u0432\u0438\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f. \u0425\u043e\u0447\u0430 \u0440\u0456\u0434\u043a\u043e, AI \u043c\u043e\u0436\u0435 \u0440\u043e\u0431\u0438\u0442\u0438 \u043f\u043e\u043c\u0438\u043b\u043a\u0438 \u0443 \u0432\u0438\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f\u0445.";
+      return "C\xf4ng c\u1ee5 ng\xf4n ng\u1eef n\xe0y s\u1ebd ph\xe1t hi\u1ec7n v\xe0 g\u1ee3i \xfd ch\u1ec9nh s\u1eeda l\u1ed7i ch\xednh t\u1ea3, ng\u1eef ph\xe1p. \u0110\xf4i khi AI c\u0169ng c\xf3 th\u1ec3 m\u1eafc l\u1ed7i.";
     },
     get$originalMessage() {
-      return "\u041e\u0440\u0438\u0433\u0456\u043d\u0430\u043b\u044c\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn g\u1ed1c";
     },
     get$sentMessage() {
-      return "\u0412\u0456\u0434\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn \u0111\xe3 g\u1eedi";
     },
     get$useType() {
-      return "\u0422\u0438\u043f \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f";
+      return "Ki\u1ec3u s\u1eed d\u1ee5ng";
     },
     get$notAvailable() {
-      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     get$taAndGaTooltip() {
-      return "\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f L2 \u0437 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0443 \u0442\u0430 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0438";
+      return "D\xf9ng L2 v\u1edbi h\u1ed7 tr\u1ee3 d\u1ecbch v\xe0 ng\u1eef ph\xe1p";
     },
     get$definitionsToolName() {
-      return "\u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0441\u043b\u0456\u0432";
+      return "\u0110\u1ecbnh ngh\u0129a t\u1eeb";
     },
     get$definitionsToolDescription() {
-      return "\u041a\u043e\u043b\u0438 \u0430\u043a\u0442\u0438\u0432\u043e\u0432\u0430\u043d\u043e, \u0441\u043b\u043e\u0432\u0430 \u043f\u0456\u0434\u043a\u0440\u0435\u0441\u043b\u0435\u043d\u0456 \u0441\u0438\u043d\u0456\u043c \u043c\u043e\u0436\u043d\u0430 \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0442\u0438 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u044c. \u041d\u0430\u0442\u0438\u0441\u043a\u0430\u0439\u0442\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u0434\u043e\u0441\u0442\u0443\u043f\u0443 \u0434\u043e \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u044c.";
+      return "Khi b\u1eadt, t\u1eeb g\u1ea1ch ch\xe2n m\xe0u xanh c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c nh\u1ea5n \u0111\u1ec3 xem \u0111\u1ecbnh ngh\u0129a.";
     },
     get$welcomeBack() {
-      return "\u041b\u0430\u0441\u043a\u0430\u0432\u043e \u043f\u0440\u043e\u0441\u0438\u043c\u043e \u043d\u0430\u0437\u0430\u0434! \u042f\u043a\u0449\u043e \u0432\u0438 \u0431\u0443\u043b\u0438 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u043e\u043c \u043f\u0456\u043b\u043e\u0442\u043d\u043e\u0433\u043e \u043f\u0440\u043e\u0435\u043a\u0442\u0443 2023-2024 \u0440\u043e\u043a\u0456\u0432, \u0431\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0437\u0432\u2019\u044f\u0436\u0456\u0442\u044c\u0441\u044f \u0437 \u043d\u0430\u043c\u0438 \u0434\u043b\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043d\u044f \u0432\u0430\u0448\u043e\u0457 \u0441\u043f\u0435\u0446\u0456\u0430\u043b\u044c\u043d\u043e\u0457 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438 \u043d\u0430 \u043f\u0456\u043b\u043e\u0442\u043d\u0438\u0439 \u043f\u0440\u043e\u0435\u043a\u0442. \u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0447\u0438\u0442\u0435\u043b\u044c, \u044f\u043a\u0438\u0439 (\u0430\u0431\u043e \u0432\u0430\u0448\u0430 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0430) \u043f\u0440\u0438\u0434\u0431\u0430\u0432 \u043b\u0456\u0446\u0435\u043d\u0437\u0456\u0457 \u0434\u043b\u044f \u0432\u0430\u0448\u043e\u0433\u043e \u043a\u043b\u0430\u0441\u0443, \u0437\u0432\u2019\u044f\u0436\u0456\u0442\u044c\u0441\u044f \u0437 \u043d\u0430\u043c\u0438 \u0434\u043b\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u043d\u043d\u044f \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438 \u0432\u0447\u0438\u0442\u0435\u043b\u044f.";
+      return "Ch\xe0o m\u1eebng tr\u1edf l\u1ea1i! N\u1ebfu b\u1ea1n \u0111\xe3 tham gia ch\u01b0\u01a1ng tr\xecnh th\u1eed nghi\u1ec7m 2023-2024, h\xe3y li\xean h\u1ec7 \u0111\u1ec3 nh\u1eadn g\xf3i \u0111\u1eb7c bi\u1ec7t. N\u1ebfu b\u1ea1n l\xe0 gi\xe1o vi\xean ho\u1eb7c tr\u01b0\u1eddng \u0111\xe3 mua b\u1ea3n quy\u1ec1n, c\u0169ng h\xe3y li\xean h\u1ec7 v\u1edbi ch\xfang t\xf4i.";
     },
     get$downloadTxtFile() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0442\u0435\u043a\u0441\u0442\u043e\u0432\u0438\u0439 \u0444\u0430\u0439\u043b";
+      return "T\u1ea3i t\u1ec7p v\u0103n b\u1ea3n";
     },
     get$downloadCSVFile() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 CSV-\u0444\u0430\u0439\u043b";
+      return "T\u1ea3i t\u1ec7p CSV";
     },
     get$promotionalSubscriptionDesc() {
-      return "\u0423 \u0432\u0430\u0441 \u043d\u0430\u0440\u0430\u0437\u0456 \u0431\u0435\u0437\u0441\u0442\u0440\u043e\u043a\u043e\u0432\u0430 \u043f\u0440\u043e\u043c\u043e-\u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0430. \u041d\u0430\u043f\u0438\u0448\u0456\u0442\u044c support@pangea.chat \u0434\u043b\u044f \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438 \u0443 \u0437\u043c\u0456\u043d\u0456 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438.";
+      return "Hi\u1ec7n b\u1ea1n c\xf3 g\xf3i khuy\u1ebfn m\u1ea1i tr\u1ecdn \u0111\u1eddi. N\u1ebfu mu\u1ed1n thay \u0111\u1ed5i, h\xe3y li\xean h\u1ec7 support@pangea.chat.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "\u041f\u0456\u0434\u043f\u0438\u0441\u043a\u0430, \u043f\u0440\u0438\u0434\u0431\u0430\u043d\u0430 \u0447\u0435\u0440\u0435\u0437 " + purchasePlatform;
+      return "G\xf3i \u0111\u0103ng k\xfd \u0111\u01b0\u1ee3c mua qua " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "\u0422\u0435\u0441\u0442\u043e\u0432\u0438\u0439 \u043f\u0435\u0440\u0456\u043e\u0434 \u043e\u0434\u0438\u043d \u0442\u0438\u0436\u0434\u0435\u043d\u044c";
+      return "D\xf9ng th\u1eed 1 tu\u1ea7n";
     },
     get$downloadXLSXFile() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0444\u0430\u0439\u043b Excel";
+      return "T\u1ea3i t\u1ec7p Excel";
     },
     get$unkDisplayName() {
-      return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u043e";
+      return "Ch\u01b0a x\xe1c \u0111\u1ecbnh";
     },
     get$wwCountryDisplayName() {
-      return "\u0421\u0432\u0456\u0442\u043e\u0432\u0438\u0439";
+      return "To\xe0n th\u1ebf gi\u1edbi";
     },
     get$afCountryDisplayName() {
-      return "\u0410\u0444\u0433\u0430\u043d\u0456\u0441\u0442\u0430\u043d";
+      return "Afghanistan";
     },
     get$axCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0438 \u0410\u043b\u0430\u043d\u0434";
+      return "Qu\u1ea7n \u0111\u1ea3o \xc5land";
     },
     get$alCountryDisplayName() {
-      return "\u0410\u043b\u0431\u0430\u043d\u0456\u044f";
+      return "Albania";
     },
     get$dzCountryDisplayName() {
-      return "\u0410\u043b\u0436\u0438\u0440";
+      return "Algeria";
     },
     get$asCountryDisplayName() {
-      return "\u0410\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u044c\u043a\u0435 \u0421\u0430\u043c\u043e\u0430";
+      return "\u0110\u1ea3o Samoa thu\u1ed9c M\u1ef9";
     },
     get$adCountryDisplayName() {
-      return "\u0410\u043d\u0434\u043e\u0440\u0440\u0430";
+      return "Andorra";
     },
     get$aoCountryDisplayName() {
-      return "\u0410\u043d\u0433\u043e\u043b\u0430";
+      return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "\u0410\u043d\u0433\u0432\u0456\u043b\u043b\u0430";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "\u0410\u043d\u0442\u0438\u0433\u0443\u0430 \u0456 \u0411\u0430\u0440\u0431\u0443\u0434\u0430";
+      return "Antigua v\xe0 Barbuda";
     },
     get$arCountryDisplayName() {
-      return "\u0410\u0440\u0433\u0435\u043d\u0442\u0438\u043d\u0430";
+      return "Argentina";
     },
     get$amCountryDisplayName() {
-      return "\u0412\u0456\u0440\u043c\u0435\u043d\u0456\u044f";
+      return "Armenia";
     },
     get$awCountryDisplayName() {
-      return "\u0410\u0440\u0443\u0431\u0430";
+      return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u0456\u0432 \u0412\u043e\u0437\u043d\u0435\u0441\u0456\u043d\u043d\u044f";
+      return "\u0110\u1ea3o Ascension";
     },
     get$auCountryDisplayName() {
-      return "\u0410\u0432\u0441\u0442\u0440\u0430\u043b\u0456\u044f";
+      return "\xdac";
     },
     get$atCountryDisplayName() {
-      return "\u0410\u0432\u0441\u0442\u0440\u0456\u044f";
+      return "\xc1o";
     },
     get$azCountryDisplayName() {
-      return "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d";
+      return "Azerbaijan";
     },
     get$bsCountryDisplayName() {
-      return "\u0411\u0430\u0433\u0430\u043c\u0441\u044c\u043a\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "\u0411\u0430\u0445\u0440\u0435\u0439\u043d";
+      return "Bahrain";
     },
     get$bdCountryDisplayName() {
-      return "\u0411\u0430\u043d\u0433\u043b\u0430\u0434\u0435\u0448";
+      return "Bangladesh";
     },
     get$bbCountryDisplayName() {
-      return "\u0411\u0430\u0440\u0431\u0430\u0434\u043e\u0441";
+      return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "\u0411\u0456\u043b\u043e\u0440\u0443\u0441\u044c";
+      return "Belarus";
     },
     get$beCountryDisplayName() {
-      return "\u0411\u0435\u043b\u044c\u0433\u0456\u044f";
+      return "B\u1ec9";
     },
     get$bzCountryDisplayName() {
-      return "\u0411\u0435\u043b\u0456\u0437";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
-      return "\u0411\u0435\u043d\u0456\u043d";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "\u0411\u0435\u0440\u043c\u0443\u0434\u0441\u044c\u043a\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "\u0411\u0443\u0442\u0430\u043d";
+      return "Bhutan";
     },
     get$boCountryDisplayName() {
-      return "\u0411\u043e\u043b\u0456\u0432\u0456\u044f";
+      return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "\u0411\u043e\u0441\u043d\u0456\u044f \u0456 \u0413\u0435\u0440\u0446\u0435\u0433\u043e\u0432\u0438\u043d\u0430";
+      return "Bosnia v\xe0 Herzegovina";
     },
     get$bwCountryDisplayName() {
-      return "\u0411\u043e\u0442\u0441\u0432\u0430\u043d\u0430";
+      return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "\u0411\u0440\u0430\u0437\u0438\u043b\u0456\u044f";
+      return "Brazil";
     },
     get$ioCountryDisplayName() {
-      return "\u0411\u0440\u0438\u0442\u0430\u043d\u0441\u044c\u043a\u0430 \u0442\u0435\u0440\u0438\u0442\u043e\u0440\u0456\u044f \u0432 \u0406\u043d\u0434\u0456\u0439\u0441\u044c\u043a\u043e\u043c\u0443 \u043e\u043a\u0435\u0430\u043d\u0456";
+      return "Thu\u1ed9c \u0111\u1ecba Anh t\u1ea1i \u1ea4n \u0110\u1ed9 D\u01b0\u01a1ng";
     },
     get$vgCountryDisplayName() {
-      return "\u0411\u0440\u0438\u0442\u0430\u043d\u0441\u044c\u043a\u0456 \u0412\u0456\u0440\u0433\u0456\u043d\u0441\u044c\u043a\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Qu\u1ea7n \u0111\u1ea3o Virgin thu\u1ed9c Anh";
     },
     get$bnCountryDisplayName() {
-      return "\u0411\u0440\u0443\u043d\u0435\u0439";
+      return "Brunei";
     },
     get$bgCountryDisplayName() {
-      return "\u0411\u043e\u043b\u0433\u0430\u0440\u0456\u044f";
+      return "Bulgaria";
     },
     get$bfCountryDisplayName() {
-      return "\u0411\u0443\u0440\u043a\u0456\u043d\u0430-\u0424\u0430\u0441\u043e";
+      return "Burkina Faso";
     },
     get$biCountryDisplayName() {
-      return "\u0411\u0443\u0440\u0443\u043d\u0434\u0456";
+      return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "\u041a\u0430\u043c\u0431\u043e\u0434\u0436\u0430";
+      return "Campuchia";
     },
     get$cmCountryDisplayName() {
-      return "\u041a\u0430\u043c\u0435\u0440\u0443\u043d";
+      return "Cameroon";
     },
     get$caCountryDisplayName() {
-      return "\u041a\u0430\u043d\u0430\u0434\u0430";
+      return "Canada";
     },
     get$cvCountryDisplayName() {
-      return "\u041a\u0430\u0431\u043e-\u0412\u0435\u0440\u0434\u0435";
+      return "Cape Verde";
     },
     get$bqCountryDisplayName() {
-      return "\u041a\u0430\u0440\u0438\u0431\u0441\u044c\u043a\u0456 \u041d\u0456\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u0438";
+      return "Caribbean Netherlands";
     },
     get$kyCountryDisplayName() {
-      return "\u041a\u0430\u0439\u043c\u0430\u043d\u043e\u0432\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Qu\u1ea7n \u0111\u1ea3o Cayman";
     },
     get$cfCountryDisplayName() {
-      return "\u0426\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0430\u0444\u0440\u0438\u043a\u0430\u043d\u0441\u044c\u043a\u0430 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0456\u043a\u0430";
+      return "C\u1ed9ng h\xf2a Trung Phi";
     },
     get$tdCountryDisplayName() {
-      return "\u0427\u0430\u0434";
+      return "Chad";
     },
     get$clCountryDisplayName() {
-      return "\u0427\u0438\u043b\u0456";
+      return "Chile";
     },
     get$cnCountryDisplayName() {
-      return "\u041a\u0438\u0442\u0430\u0439";
+      return "Trung Qu\u1ed1c";
     },
     get$cxCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u0456\u0432 \u0420\u0456\u0437\u0434\u0432\u0430";
+      return "\u0110\u1ea3o Gi\xe1ng Sinh";
     },
     get$ccCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0438 \u041a\u043e\u043a\u043e\u0441\u043e\u0432\u0456 (\u041a\u0456\u043b\u0456\u043d\u0433)";
+      return "Qu\u1ea7n \u0111\u1ea3o Cocos (Keeling)";
     },
     get$coCountryDisplayName() {
-      return "\u041a\u043e\u043b\u0443\u043c\u0431\u0456\u044f";
+      return "Colombia";
     },
     get$kmCountryDisplayName() {
-      return "\u041a\u043e\u043c\u043e\u0440\u0441\u044c\u043a\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Comoros";
     },
     get$cdCountryDisplayName() {
-      return "\u0414\u0435\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u0447\u043d\u0430 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0456\u043a\u0430 \u041a\u043e\u043d\u0433\u043e";
+      return "Congo (C\u1ed9ng h\xf2a D\xe2n ch\u1ee7 Congo)";
     },
     get$cgCountryDisplayName() {
-      return "\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0456\u043a\u0430 \u041a\u043e\u043d\u0433\u043e";
+      return "Congo (C\u1ed9ng h\xf2a Congo)";
     },
     get$ckCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0438 \u041a\u0443\u043a\u0430";
+      return "Qu\u1ea7n \u0111\u1ea3o Cook";
     },
     get$crCountryDisplayName() {
-      return "\u041a\u043e\u0441\u0442\u0430-\u0420\u0438\u043a\u0430";
+      return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "\u041a\u043e\u0442-\u0434\u2019\u0406\u0432\u0443\u0430\u0440";
+      return "B\u1edd Bi\u1ec3n Ng\xe0";
     },
     get$hrCountryDisplayName() {
-      return "\u0425\u043e\u0440\u0432\u0430\u0442\u0456\u044f";
+      return "Croatia";
     },
     get$cuCountryDisplayName() {
-      return "\u041a\u0443\u0431\u0430";
+      return "Cuba";
     },
     get$cwCountryDisplayName() {
-      return "\u041a\u044e\u0440\u0430\u0441\u0430\u043e";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "\u041a\u0456\u043f\u0440";
+      return "S\xedp";
     },
     get$czCountryDisplayName() {
-      return "\u0427\u0435\u0441\u044c\u043a\u0430 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0456\u043a\u0430";
+      return "S\xe9c";
     },
     get$dkCountryDisplayName() {
-      return "\u0414\u0430\u043d\u0456\u044f";
+      return "\u0110an M\u1ea1ch";
     },
     get$djCountryDisplayName() {
-      return "\u0414\u0436\u0438\u0431\u0443\u0442\u0456";
+      return "Djibouti";
     },
     get$dmCountryDisplayName() {
-      return "\u0414\u043e\u043c\u0456\u043d\u0456\u043a\u0430";
+      return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "\u0414\u043e\u043c\u0456\u043d\u0456\u043a\u0430\u043d\u0441\u044c\u043a\u0430 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0456\u043a\u0430";
+      return "C\u1ed9ng h\xf2a Dominica";
     },
     get$tlCountryDisplayName() {
-      return "\u0412\u043e\u0441\u0442\u043e\u0447\u043d\u0438\u0439 \u0422\u0438\u043c\u043e\u0440";
+      return "\u0110\xf4ng Timor (Timor-Leste)";
     },
     get$ecCountryDisplayName() {
-      return "\u0415\u043a\u0432\u0430\u0434\u043e\u0440";
+      return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "\u0404\u0433\u0438\u043f\u0435\u0442";
+      return "Ai C\u1eadp";
     },
     get$svCountryDisplayName() {
-      return "\u0421\u0430\u043b\u044c\u0432\u0430\u0434\u043e\u0440";
+      return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "\u0415\u043a\u0432\u0430\u0442\u043e\u0440\u0456\u0430\u043b\u044c\u043d\u0430 \u0413\u0432\u0456\u043d\u0435\u044f";
+      return "Guinea X\xedch \u0110\u1ea1o";
     },
     get$erCountryDisplayName() {
-      return "\u0415\u0440\u0438\u0442\u0440\u0435\u044f";
+      return "Eritrea";
     },
     get$eeCountryDisplayName() {
-      return "\u0415\u0441\u0442\u043e\u043d\u0456\u044f";
+      return "Estonia";
     },
     get$szCountryDisplayName() {
-      return "\u0415\u0441\u0432\u0430\u0442\u0456\u043d\u0456";
+      return "Eswatini";
     },
     get$etCountryDisplayName() {
-      return "\u0415\u0444\u0456\u043e\u043f\u0456\u044f";
+      return "Ethiopia";
     },
     get$fkCountryDisplayName() {
-      return "\u0424\u043e\u043b\u043a\u043b\u0435\u043d\u0434\u0441\u044c\u043a\u0456 \u043e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Qu\u1ea7n \u0111\u1ea3o Falkland";
     },
     get$foCountryDisplayName() {
-      return "\u0424\u0430\u0440\u0435\u0440\u0441\u044c\u043a\u0456 \u043e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Qu\u1ea7n \u0111\u1ea3o Faroe";
     },
     get$fjCountryDisplayName() {
-      return "\u0424\u0456\u0434\u0436\u0456";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "\u0424\u0456\u043d\u043b\u044f\u043d\u0434\u0456\u044f";
+      return "Ph\u1ea7n Lan";
     },
     get$frCountryDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0456\u044f";
+      return "Ph\xe1p";
     },
     get$gfCountryDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u044c\u043a\u0430 \u0413\u0432\u0456\u0430\u043d\u0430";
+      return "Guiana thu\u1ed9c Ph\xe1p";
     },
     get$pfCountryDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u044c\u043a\u0430 \u041f\u043e\u043b\u0456\u043d\u0435\u0437\u0456\u044f";
+      return "Polynesia thu\u1ed9c Ph\xe1p";
     },
     get$gaCountryDisplayName() {
-      return "\u0413\u0430\u0431\u043e\u043d";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
-      return "\u0413\u0430\u043c\u0431\u0456\u044f";
+      return "Gambia";
     },
     get$geCountryDisplayName() {
-      return "\u0413\u0440\u0443\u0437\u0456\u044f";
+      return "Georgia";
     },
     get$deCountryDisplayName() {
-      return "\u041d\u0456\u043c\u0435\u0447\u0447\u0438\u043d\u0430";
+      return "\u0110\u1ee9c";
     },
     get$ghCountryDisplayName() {
-      return "\u0413\u0430\u043d\u0430";
+      return "Ghana";
     },
     get$giCountryDisplayName() {
-      return "\u0413\u0456\u0431\u0440\u0430\u043b\u0442\u0430\u0440";
+      return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "\u0413\u0440\u0435\u0446\u0456\u044f";
+      return "Hy L\u1ea1p";
     },
     get$glCountryDisplayName() {
-      return "\u0413\u0440\u0435\u043d\u043b\u0430\u043d\u0434\u0456\u044f";
+      return "Greenland";
     },
     get$gdCountryDisplayName() {
-      return "\u0413\u0440\u0435\u043d\u0430\u0434\u0430";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "\u0413\u0432\u0430\u0434\u0435\u043b\u0443\u043f\u0430";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
-      return "\u0413\u0443\u0430\u043c";
+      return "Guam";
     },
     get$gtCountryDisplayName() {
-      return "\u0413\u0432\u0430\u0442\u0435\u043c\u0430\u043b\u0430";
+      return "Guatemala";
     },
     get$ggCountryDisplayName() {
-      return "\u0413\u0435\u0440\u043d\u0441\u0456";
+      return "Guernsey";
     },
     get$gnCountryDisplayName() {
-      return "\u0413\u0432\u0456\u043d\u0435\u044f \u041a\u043e\u043d\u0430\u043a\u0440\u0456";
+      return "Guinea Conakry";
     },
     get$gwCountryDisplayName() {
-      return "\u0413\u0432\u0456\u043d\u0435\u044f-\u0411\u0456\u0441\u0430\u0443";
+      return "Guinea-Bissau";
     },
     get$gyCountryDisplayName() {
-      return "\u0413\u0430\u044f\u043d\u0430";
+      return "Guyana";
     },
     get$htCountryDisplayName() {
-      return "\u0413\u0430\u0457\u0442\u0456";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u0456\u0432 \u0425\u0435\u0440\u0434 \u0456 \u043e\u0441\u0442\u0440\u043e\u0432\u0438 \u041c\u0430\u043a\u0434\u043e\u043d\u0430\u043b\u044c\u0434";
+      return "\u0110\u1ea3o Heard v\xe0 qu\u1ea7n \u0111\u1ea3o McDonald";
     },
     get$hnCountryDisplayName() {
-      return "\u0413\u043e\u043d\u0434\u0443\u0440\u0430\u0441";
+      return "Honduras";
     },
     get$hkCountryDisplayName() {
-      return "\u0413\u043e\u043d\u043a\u043e\u043d\u0433";
+      return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "\u0423\u0433\u043e\u0440\u0449\u0438\u043d\u0430";
+      return "Hungary";
     },
     get$isCountryDisplayName() {
-      return "\u0406\u0441\u043b\u0430\u043d\u0434\u0456\u044f";
+      return "Iceland";
     },
     get$inCountryDisplayName() {
-      return "\u0406\u043d\u0434\u0456\u044f";
+      return "\u1ea4n \u0110\u1ed9";
     },
     get$idCountryDisplayName() {
-      return "\u0406\u043d\u0434\u043e\u043d\u0435\u0437\u0456\u044f";
+      return "Indonesia";
     },
     get$irCountryDisplayName() {
-      return "\u0406\u0440\u0430\u043d";
+      return "Iran";
     },
     get$iqCountryDisplayName() {
-      return "\u0406\u0440\u0430\u043a";
+      return "Iraq";
     },
     get$ieCountryDisplayName() {
-      return "\u0406\u0440\u043b\u0430\u043d\u0434\u0456\u044f";
+      return "Ireland";
     },
     get$imCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u0456\u0432 \u041c\u0430\u043d";
+      return "\u0110\u1ea3o Man";
     },
     get$ilCountryDisplayName() {
-      return "\u0406\u0437\u0440\u0430\u0457\u043b\u044c";
+      return "Israel";
     },
     get$itCountryDisplayName() {
-      return "\u0406\u0442\u0430\u043b\u0456\u044f";
+      return "\xdd";
     },
     get$jmCountryDisplayName() {
-      return "\u042f\u043c\u0430\u0439\u043a\u0430";
+      return "Jamaica";
     },
     get$jpCountryDisplayName() {
-      return "\u042f\u043f\u043e\u043d\u0456\u044f";
+      return "Nh\u1eadt B\u1ea3n";
     },
     get$jeCountryDisplayName() {
-      return "\u0414\u0436\u0435\u0440\u0441\u0456";
+      return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "\u0419\u043e\u0440\u0434\u0430\u043d\u0456\u044f";
+      return "Jordan";
     },
     get$kzCountryDisplayName() {
-      return "\u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d";
+      return "Kazakhstan";
     },
     get$keCountryDisplayName() {
-      return "\u041a\u0435\u043d\u0456\u044f";
+      return "Kenya";
     },
     get$kiCountryDisplayName() {
-      return "\u041a\u0456\u0440\u0438\u0431\u0430\u0442\u0456";
+      return "Kiribati";
     },
     get$xkCountryDisplayName() {
-      return "\u041a\u043e\u0441\u043e\u0432\u043e";
+      return "Kosovo";
     },
     get$kwCountryDisplayName() {
-      return "\u041a\u0443\u0432\u0435\u0439\u0442";
+      return "Kuwait";
     },
     get$kgCountryDisplayName() {
-      return "\u041a\u0438\u0440\u0433\u0438\u0437\u0441\u0442\u0430\u043d";
+      return "Kyrgyzstan";
     },
     get$laCountryDisplayName() {
-      return "\u041b\u0430\u043e\u0441";
+      return "L\xe0o";
     },
     get$lvCountryDisplayName() {
-      return "\u041b\u0430\u0442\u0432\u0456\u044f";
+      return "Latvia";
     },
     get$lbCountryDisplayName() {
-      return "\u041b\u0456\u0432\u0430\u043d";
+      return "Lebanon";
     },
     get$lsCountryDisplayName() {
-      return "\u041b\u0435\u0441\u043e\u0442\u043e";
+      return "Lesotho";
     },
     get$lrCountryDisplayName() {
-      return "\u041b\u0456\u0431\u0435\u0440\u0456\u044f";
+      return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "\u041b\u0456\u0432\u0456\u044f";
+      return "Libya";
     },
     get$liCountryDisplayName() {
-      return "\u041b\u0456\u0445\u0442\u0435\u043d\u0448\u0442\u0435\u0439\u043d";
+      return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "\u041b\u0438\u0442\u0432\u0430";
+      return "Lithuania";
     },
     get$luCountryDisplayName() {
-      return "\u041b\u044e\u043a\u0441\u0435\u043c\u0431\u0443\u0440\u0433";
+      return "Luxembourg";
     },
     get$moCountryDisplayName() {
-      return "\u041c\u0430\u043a\u0430\u043e";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
-      return "\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0456\u044f";
+      return "B\u1eafc Macedonia";
     },
     get$mgCountryDisplayName() {
-      return "\u041c\u0430\u0434\u0430\u0433\u0430\u0441\u043a\u0430\u0440";
+      return "Madagascar";
     },
     get$mwCountryDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0432\u0456";
+      return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0439\u0437\u0456\u044f";
+      return "Malaysia";
     },
     get$mvCountryDisplayName() {
-      return "\u041c\u0430\u043b\u044c\u0434\u0456\u0432\u0438";
+      return "Maldives";
     },
     get$mlCountryDisplayName() {
-      return "\u041c\u0430\u043b\u0456";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
-      return "\u041c\u0430\u043b\u044c\u0442\u0430";
+      return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "\u041c\u0430\u0440\u0448\u0430\u043b\u043b\u043e\u0432\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Qu\u1ea7n \u0111\u1ea3o Marshall";
     },
     get$mqCountryDisplayName() {
-      return "\u041c\u0430\u0440\u0442\u0438\u043d\u0456\u043a\u0438";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
-      return "\u041c\u0430\u0432\u0440\u0438\u0442\u0430\u043d\u0456\u044f";
+      return "Mauritania";
     },
     get$muCountryDisplayName() {
-      return "\u041c\u0430\u0432\u0440\u0438\u043a\u0456\u0439";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "\u041c\u0435\u043a\u0441\u0438\u043a\u0430";
+      return "Mexico";
     },
     get$fmCountryDisplayName() {
-      return "\u041c\u0456\u043a\u0440\u043e\u043d\u0435\u0437\u0456\u044f";
+      return "Li\xean bang Micronesia";
     },
     get$mdCountryDisplayName() {
-      return "\u041c\u043e\u043b\u0434\u043e\u0432\u0430";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "\u041c\u043e\u043d\u0430\u043a\u043e";
+      return "Monaco";
     },
     get$mnCountryDisplayName() {
-      return "\u041c\u043e\u043d\u0433\u043e\u043b\u0456\u044f";
+      return "M\xf4ng C\u1ed5";
     },
     get$meCountryDisplayName() {
-      return "\u0427\u043e\u0440\u043d\u043e\u0433\u043e\u0440\u0456\u044f";
+      return "Montenegro";
     },
     get$msCountryDisplayName() {
-      return "\u041c\u043e\u043d\u0442\u0441\u0435\u0440\u0440\u0430\u0442";
+      return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "\u041c\u0430\u0440\u043e\u043a\u043a\u043e";
+      return "Maroc";
     },
     get$mzCountryDisplayName() {
-      return "\u041c\u043e\u0437\u0430\u043c\u0431\u0456\u043a";
+      return "Mozambique";
     },
     get$mmCountryDisplayName() {
-      return "\u041c\u2019\u044f\u043d\u043c\u0430 (\u0411\u0456\u0440\u043c\u0430)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
-      return "\u041d\u0430\u043c\u0456\u0431\u0456\u044f";
+      return "Namibia";
     },
     get$nrCountryDisplayName() {
-      return "\u041d\u0430\u0443\u0440\u0443";
+      return "Nauru";
     },
     get$npCountryDisplayName() {
-      return "\u041d\u0435\u043f\u0430\u043b";
+      return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "\u041d\u0456\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u0438";
+      return "H\xe0 Lan";
     },
     get$ncCountryDisplayName() {
-      return "\u041d\u043e\u0432\u0430 \u041a\u0430\u043b\u0435\u0434\u043e\u043d\u0456\u044f";
+      return "New Caledonia";
     },
     get$nzCountryDisplayName() {
-      return "\u041d\u043e\u0432\u0430 \u0417\u0435\u043b\u0430\u043d\u0434\u0456\u044f";
+      return "New Zealand";
     },
     get$niCountryDisplayName() {
-      return "\u041d\u0456\u043a\u0430\u0440\u0430\u0433\u0443\u0430";
+      return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "\u041d\u0456\u0433\u0435\u0440";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
-      return "\u041d\u0456\u0433\u0435\u0440\u0456\u044f";
+      return "Nigeria";
     },
     get$nuCountryDisplayName() {
-      return "\u041d\u0456\u0443\u0435";
+      return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u0456\u0432 \u041d\u043e\u0440\u0444\u043e\u043b\u043a";
+      return "\u0110\u1ea3o Norfolk";
     },
     get$kpCountryDisplayName() {
-      return "\u041f\u0456\u0432\u043d\u0456\u0447\u043d\u0430 \u041a\u043e\u0440\u0435\u044f";
+      return "Tri\u1ec1u Ti\xean (B\u1eafc)";
     },
     get$mpCountryDisplayName() {
-      return "\u041f\u0456\u0432\u043d\u0456\u0447\u043d\u0456 \u041c\u0430\u0440\u0456\u0430\u043d\u0441\u044c\u043a\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Qu\u1ea7n \u0111\u1ea3o B\u1eafc Mariana";
     },
     get$noCountryDisplayName() {
-      return "\u041d\u043e\u0440\u0432\u0435\u0433\u0456\u044f";
+      return "Na Uy";
     },
     get$omCountryDisplayName() {
-      return "\u041e\u043c\u0430\u043d";
+      return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "\u041f\u0430\u043a\u0438\u0441\u0442\u0430\u043d";
+      return "Pakistan";
     },
     get$pwCountryDisplayName() {
-      return "\u041f\u0430\u043b\u0430\u0443";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "\u041f\u0430\u043b\u0435\u0441\u0442\u0438\u043d\u0441\u044c\u043a\u0456 \u0422\u0435\u0440\u0438\u0442\u043e\u0440\u0456\u0457";
+      return "L\xe3nh th\u1ed5 Palestine";
     },
     get$paCountryDisplayName() {
-      return "\u041f\u0430\u043d\u0430\u043c\u0430";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "\u041f\u0430\u043f\u0443\u0430-\u041d\u043e\u0432\u0430 \u0413\u0432\u0456\u043d\u0435\u044f";
+      return "Papua New Guinea";
     },
     get$pyCountryDisplayName() {
-      return "\u041f\u0430\u0440\u0430\u0433\u0432\u0430\u0439";
+      return "Paraguay";
     },
     get$peCountryDisplayName() {
-      return "\u041f\u0435\u0440\u0443";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "\u0424\u0456\u043b\u0456\u043f\u043f\u0456\u043d\u0438";
+      return "Philippines";
     },
     get$plCountryDisplayName() {
-      return "\u041f\u043e\u043b\u044c\u0449\u0430";
+      return "Ba Lan";
     },
     get$ptCountryDisplayName() {
-      return "\u041f\u043e\u0440\u0442\u0443\u0433\u0430\u043b\u0456\u044f";
+      return "B\u1ed3 \u0110\xe0o Nha";
     },
     get$prCountryDisplayName() {
-      return "\u041f\u0443\u0435\u0440\u0442\u043e-\u0420\u0456\u043a\u043e";
+      return "Puerto Rico";
     },
     get$qaCountryDisplayName() {
-      return "\u041a\u0430\u0442\u0430\u0440";
+      return "Qatar";
     },
     get$reCountryDisplayName() {
-      return "\u0420\u0435\u044e\u043d\u044c\u0439\u043e\u043d";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "\u0420\u0443\u043c\u0443\u043d\u0456\u044f";
+      return "Romania";
     },
     get$ruCountryDisplayName() {
-      return "\u0420\u043e\u0441\u0456\u044f";
+      return "Nga";
     },
     get$rwCountryDisplayName() {
-      return "\u0420\u0443\u0430\u043d\u0434\u0430";
+      return "Rwanda";
     },
     get$blCountryDisplayName() {
-      return "\u0421\u0435\u043d-\u0411\u0430\u0440\u0442\u0435\u043b\u0435\u043c\u0456";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u0413\u0435\u043b\u0435\u043d\u0430";
+      return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u041a\u0456\u0442\u0441";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u041b\u044e\u0441\u0456\u044f";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "\u0421\u0435\u043d-\u041c\u0430\u0440\u0442\u0435\u043d";
+      return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "\u0421\u0435\u043d-\u041f'\u0454\u0440 \u0456 \u041c\u0456\u043a\u0435\u043b\u043e\u043d";
+      return "Saint Pierre v\xe0 Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0442-\u0412\u0456\u043d\u0441\u0435\u043d\u0442";
+      return "St. Vincent";
     },
     get$wsCountryDisplayName() {
-      return "\u0421\u0430\u043c\u043e\u0430";
+      return "Samoa";
     },
     get$smCountryDisplayName() {
-      return "\u0421\u0430\u043d-\u041c\u0430\u0440\u0438\u043d\u043e";
+      return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "\u0421\u0430\u043d-\u0422\u043e\u043c\u0435 \u0456 \u041f\u0440\u0456\u043d\u0441\u0456\u043f\u0456";
+      return "S\xe3o Tom\xe9 v\xe0 Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "\u0421\u0430\u0443\u0434\u0456\u0432\u0441\u044c\u043a\u0430 \u0410\u0440\u0430\u0432\u0456\u044f";
+      return "\u1ea2 R\u1eadp X\xea \xdat";
     },
     get$snCountryDisplayName() {
-      return "\u0421\u0435\u043d\u0435\u0433\u0430\u043b";
+      return "Senegal";
     },
     get$rsCountryDisplayName() {
-      return "\u0421\u0435\u0440\u0431\u0456\u044f";
+      return "Serbia";
     },
     get$scCountryDisplayName() {
-      return "\u0421\u0435\u0439\u0448\u0435\u043b\u0438";
+      return "Seychelles";
     },
     get$slCountryDisplayName() {
-      return "\u0421\u044c\u0454\u0440\u0440\u0430-\u041b\u0435\u043e\u043d\u0435";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "\u0421\u0456\u043d\u0433\u0430\u043f\u0443\u0440";
+      return "Singapore";
     },
     get$sxCountryDisplayName() {
-      return "\u0421\u0456\u043d\u0442-\u041c\u0430\u0440\u0442\u0435\u043d";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "\u0421\u043b\u043e\u0432\u0430\u0447\u0447\u0438\u043d\u0430";
+      return "Slovakia";
     },
     get$siCountryDisplayName() {
-      return "\u0421\u043b\u043e\u0432\u0435\u043d\u0456\u044f";
+      return "Slovenia";
     },
     get$sbCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0438 \u0421\u043e\u043b\u043e\u043c\u043e\u043d\u0430";
+      return "Qu\u1ea7n \u0111\u1ea3o Solomon";
     },
     get$soCountryDisplayName() {
-      return "\u0421\u043e\u043c\u0430\u043b\u0456";
+      return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "\u041f\u0456\u0432\u0434\u0435\u043d\u043d\u0430 \u0410\u0444\u0440\u0438\u043a\u0430";
+      return "Nam Phi";
     },
     get$gsCountryDisplayName() {
-      return "\u041f\u0456\u0432\u0434\u0435\u043d\u043d\u0430 \u0414\u0436\u043e\u0440\u0434\u0436\u0456\u044f \u0442\u0430 \u041f\u0456\u0432\u0434\u0435\u043d\u043d\u0456 \u0421\u0430\u043d\u0434\u0432\u0456\u0447\u0435\u0432\u0456 \u041e\u0441\u0442\u0440\u043e\u0432\u0438";
+      return "Nam Georgia v\xe0 qu\u1ea7n \u0111\u1ea3o Nam Sandwich";
     },
     get$krCountryDisplayName() {
-      return "\u041f\u0456\u0432\u0434\u0435\u043d\u043d\u0430 \u041a\u043e\u0440\u0435\u044f";
+      return "H\xe0n Qu\u1ed1c";
     },
     get$ssCountryDisplayName() {
-      return "\u041f\u0456\u0432\u0434\u0435\u043d\u043d\u0438\u0439 \u0421\u0443\u0434\u0430\u043d";
+      return "Nam Sudan";
     },
     get$esCountryDisplayName() {
-      return "\u0406\u0441\u043f\u0430\u043d\u0456\u044f";
+      return "T\xe2y Ban Nha";
     },
     get$lkCountryDisplayName() {
-      return "\u0428\u0440\u0456-\u041b\u0430\u043d\u043a\u0430";
+      return "Sri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "\u0421\u0443\u0434\u0430\u043d";
+      return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "\u0421\u0443\u0440\u0438\u043d\u0430\u043c";
+      return "Suriname";
     },
     get$sjCountryDisplayName() {
-      return "\u0428\u043f\u0456\u0446\u0431\u0435\u0440\u0433\u0435\u043d \u0456 \u042f\u043d-\u041c\u0430\u0454\u043d";
+      return "Svalbard v\xe0 Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "\u0428\u0432\u0435\u0446\u0456\u044f";
+      return "Th\u1ee5y \u0110i\u1ec3n";
     },
     get$chCountryDisplayName() {
-      return "\u0428\u0432\u0435\u0439\u0446\u0430\u0440\u0456\u044f";
+      return "Th\u1ee5y S\u0129";
     },
     get$syCountryDisplayName() {
-      return "\u0421\u0438\u0440\u0456\u044f";
+      return "Syria";
     },
     get$twCountryDisplayName() {
-      return "\u0422\u0430\u0439\u0432\u0430\u043d\u044c";
+      return "\u0110\xe0i Loan";
     },
     get$tjCountryDisplayName() {
-      return "\u0422\u0430\u0434\u0436\u0438\u043a\u0438\u0441\u0442\u0430\u043d";
+      return "Tajikistan";
     },
     get$tzCountryDisplayName() {
-      return "\u0422\u0430\u043d\u0437\u0430\u043d\u0456\u044f";
+      return "Tanzania";
     },
     get$thCountryDisplayName() {
-      return "\u0422\u0430\u0457\u043b\u0430\u043d\u0434";
+      return "Th\xe1i Lan";
     },
     get$tgCountryDisplayName() {
-      return "\u0422\u043e\u0433\u043e";
+      return "Togo";
     },
     get$tkCountryDisplayName() {
-      return "\u0422\u043e\u043a\u0435\u043b\u0430\u0443";
+      return "Tokelau";
     },
     get$toCountryDisplayName() {
-      return "\u0422\u043e\u043d\u0433\u0430";
+      return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "\u0422\u0440\u0438\u043d\u0456\u0434\u0430\u0434 \u0456 \u0422\u043e\u0431\u0430\u0433\u043e";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "\u0422\u0443\u043d\u0456\u0441";
+      return "Tunisia";
     },
     get$trCountryDisplayName() {
-      return "\u0422\u0443\u0440\u0435\u0447\u0447\u0438\u043d\u0430";
+      return "Th\u1ed5 Nh\u0129 K\u1ef3";
     },
     get$tmCountryDisplayName() {
-      return "\u0422\u0443\u0440\u043a\u043c\u0435\u043d\u0456\u0441\u0442\u0430\u043d";
+      return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "\u041e\u0441\u0442\u0440\u043e\u0432\u0438 \u0422\u0435\u0440\u043a\u0441 \u0456 \u041a\u0430\u0439\u043a\u043e\u0441";
+      return "Qu\u1ea7n \u0111\u1ea3o Turks v\xe0 Caicos";
     },
     get$tvCountryDisplayName() {
-      return "\u0422\u0443\u0432\u0430\u043b\u0443";
+      return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "\u0412\u0456\u0440\u0433\u0456\u043d\u0441\u044c\u043a\u0456 \u043e\u0441\u0442\u0440\u043e\u0432\u0438 \u0421\u0428\u0410";
+      return "Qu\u1ea7n \u0111\u1ea3o Virgin (M\u1ef9)";
     },
     get$ugCountryDisplayName() {
-      return "\u0423\u0433\u0430\u043d\u0434\u0430";
+      return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "\u0423\u043a\u0440\u0430\u0457\u043d\u0430";
+      return "Ukraina";
     },
     get$aeCountryDisplayName() {
-      return "\u041e\u0431'\u0454\u0434\u043d\u0430\u043d\u0456 \u0410\u0440\u0430\u0431\u0441\u044c\u043a\u0456 \u0415\u043c\u0456\u0440\u0430\u0442\u0438";
+      return "C\xe1c Ti\u1ec3u V\u01b0\u01a1ng qu\u1ed1c \u1ea2 R\u1eadp Th\u1ed1ng nh\u1ea5t";
     },
     get$gbCountryDisplayName() {
-      return "\u0412\u0435\u043b\u0438\u043a\u0430 \u0411\u0440\u0438\u0442\u0430\u043d\u0456\u044f";
+      return "V\u01b0\u01a1ng qu\u1ed1c Anh";
     },
     get$usCountryDisplayName() {
-      return "\u0421\u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0456 \u0428\u0442\u0430\u0442\u0438";
+      return "Hoa K\u1ef3";
     },
     get$uyCountryDisplayName() {
-      return "\u0423\u0440\u0443\u0433\u0432\u0430\u0439";
+      return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "\u0423\u0437\u0431\u0435\u043a\u0438\u0441\u0442\u0430\u043d";
+      return "Uzbekistan";
     },
     get$vuCountryDisplayName() {
-      return "\u0412\u0430\u043d\u0443\u0430\u0442\u0443";
+      return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "\u0412\u0430\u0442\u0438\u043a\u0430\u043d";
+      return "Vatican";
     },
     get$veCountryDisplayName() {
-      return "\u0412\u0435\u043d\u0435\u0441\u0443\u0435\u043b\u0430";
+      return "Venezuela";
     },
     get$vnCountryDisplayName() {
-      return "\u0412'\u0454\u0442\u043d\u0430\u043c";
+      return "Vi\u1ec7t Nam";
     },
     get$wfCountryDisplayName() {
-      return "\u0412\u043e\u043b\u043b\u0456\u0441 \u0456 \u0424\u0443\u0442\u0443\u043d\u0430";
+      return "Wallis v\xe0 Futuna";
     },
     get$ehCountryDisplayName() {
-      return "\u0417\u0430\u0445\u0456\u0434\u043d\u0430 \u0421\u0430\u0445\u0430\u0440\u0430";
+      return "T\xe2y Sahara";
     },
     get$yeCountryDisplayName() {
-      return "\u0404\u043c\u0435\u043d";
+      return "Yemen";
     },
     get$zmCountryDisplayName() {
-      return "\u0417\u0430\u043c\u0431\u0456\u044f";
+      return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "\u0417\u0456\u043c\u0431\u0430\u0431\u0432\u0435";
+      return "Zimbabwe";
     },
     get$pay() {
-      return "\u041e\u0444\u043e\u0440\u043c\u0438\u0442\u0438 \u0437\u0430\u043c\u043e\u0432\u043b\u0435\u043d\u043d\u044f";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
-      return user + " \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u0432 \u0432\u0430\u0441 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u043a\u0443\u0440\u0441\u0443: " + space + "! \u0411\u0430\u0436\u0430\u0454\u0442\u0435 \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0438?";
+      return user + " \u0111\xe3 m\u1eddi b\u1ea1n tham gia m\u1ed9t kh\xf3a h\u1ecdc: " + space + "! B\u1ea1n c\xf3 mu\u1ed1n ch\u1ea5p nh\u1eadn kh\xf4ng?";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \u0412\u0438 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u0456!";
+      return "\ud83d\udce9 B\u1ea1n \u0111\u01b0\u1ee3c m\u1eddi!";
     },
     invitedToChat$2($name, user) {
-      return user + " \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u0432 \u0432\u0430\u0441 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0447\u0430\u0442\u0443: " + $name + "! \u0411\u0430\u0436\u0430\u0454\u0442\u0435 \u043f\u0440\u0438\u0439\u043d\u044f\u0442\u0438?";
+      return user + " \u0111\xe3 m\u1eddi b\u1ea1n tham gia tr\xf2 chuy\u1ec7n: " + $name + "! B\u1ea1n mu\u1ed1n ch\u1ea5p nh\u1eadn kh\xf4ng?";
     },
     get$monthlySubscription() {
-      return "\u0429\u043e\u043c\u0456\u0441\u044f\u0447\u043d\u0430";
+      return "H\xe0ng th\xe1ng";
     },
     get$yearlySubscription() {
-      return "\u0429\u043e\u0440\u0456\u0447\u043d\u0430";
+      return "H\xe0ng n\u0103m";
     },
     get$defaultSubscription() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0441\u043a\u0430 Pangea Chat";
+      return "G\xf3i Pangea Chat";
     },
     get$freeTrial() {
-      return "\u0411\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0438\u0439 \u043f\u0440\u043e\u0431\u043d\u0438\u0439 \u043f\u0435\u0440\u0456\u043e\u0434";
+      return "D\xf9ng th\u1eed mi\u1ec5n ph\xed";
     },
     get$noDataFound() {
-      return "\u0414\u0430\u043d\u0456 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e";
+      return "Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u";
     },
     get$correctionDefaultPrompt() {
-      return "\u042f\u043a\u0430 \u043d\u0430\u0439\u043a\u0440\u0430\u0449\u0430 \u0437\u0430\u043c\u0456\u043d\u0430?";
+      return "Ph\u01b0\u01a1ng \xe1n thay th\u1ebf t\u1ed1t nh\u1ea5t l\xe0 g\xec?";
     },
     get$reportToTeacher() {
-      return "\u041a\u043e\u043c\u0443 \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u0438\u0442\u0438 \u0446\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f?";
+      return "B\u1ea1n mu\u1ed1n b\xe1o c\xe1o tin nh\u1eafn n\xe0y cho gi\xe1o vi\xean n\xe0o?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u0438\u0432 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432\u0456\u0434 " + reportedUserId + " \u0443 \u0447\u0430\u0442\u0456 " + roomName;
+      return reportingUserId + " \u0111\xe3 b\xe1o c\xe1o tin nh\u1eafn c\u1ee7a " + reportedUserId + " trong ph\xf2ng " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f: " + reportedMessage + "\n\u041f\u0440\u0438\u0447\u0438\u043d\u0430: " + reason;
+      return "Tin nh\u1eafn: " + reportedMessage + "\nL\xfd do: " + reason;
     },
     get$noTeachersFound() {
-      return "\u0412\u0447\u0438\u0442\u0435\u043b\u0456 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u0456 \u0434\u043b\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Kh\xf4ng t\xecm th\u1ea5y gi\xe1o vi\xean n\xe0o \u0111\u1ec3 b\xe1o c\xe1o";
     },
     trialExpiration$1(expiration) {
-      return "\u0412\u0430\u0448\u0430 \u0431\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0430 \u043f\u0440\u043e\u0431\u043d\u0430 \u0432\u0435\u0440\u0441\u0456\u044f \u0437\u0430\u043a\u0456\u043d\u0447\u0443\u0454\u0442\u044c\u0441\u044f " + expiration;
+      return "B\u1ea3n d\xf9ng th\u1eed c\u1ee7a b\u1ea1n s\u1ebd h\u1ebft h\u1ea1n v\xe0o " + expiration;
     },
     get$freeTrialDesc() {
-      return "\u041d\u043e\u0432\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 \u043e\u0442\u0440\u0438\u043c\u0443\u044e\u0442\u044c \u0442\u0438\u0436\u043d\u0435\u0432\u0443 \u0431\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0443 \u043f\u0440\u043e\u0431\u043d\u0443 \u0432\u0435\u0440\u0441\u0456\u044e Pangea Chat";
+      return "Ng\u01b0\u1eddi d\xf9ng m\u1edbi \u0111\u01b0\u1ee3c d\xf9ng th\u1eed Pangea Chat trong 1 tu\u1ea7n";
     },
     get$activateTrial() {
-      return "\u0411\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0430 7-\u0434\u0435\u043d\u043d\u0430 \u043f\u0440\u043e\u0431\u043d\u0430 \u0432\u0435\u0440\u0441\u0456\u044f";
+      return "D\xf9ng th\u1eed mi\u1ec5n ph\xed 7 ng\xe0y";
     },
     get$successfullySubscribed() {
-      return "\u0412\u0438 \u0443\u0441\u043f\u0456\u0448\u043d\u043e \u043f\u0456\u0434\u043f\u0438\u0441\u0430\u043b\u0438\u0441\u044f!";
+      return "B\u1ea1n \u0111\xe3 \u0111\u0103ng k\xfd th\xe0nh c\xf4ng!";
     },
     get$clickToManageSubscription() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0442\u0443\u0442, \u0449\u043e\u0431 \u043a\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u043e\u044e.";
+      return "Nh\u1ea5p v\xe0o \u0111\xe2y \u0111\u1ec3 qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd.";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0449\u043e\u043d\u0430\u0439\u043c\u0435\u043d\u0448\u0435 " + min + " \u0441\u0438\u043c\u0432\u043e\u043b\u0456\u0432.";
+      return "Vui l\xf2ng ch\u1ecdn \xedt nh\u1ea5t " + min + " k\xfd t\u1ef1.";
     },
     get$pleaseEnterValidEmail() {
-      return string$.______;
+      return "Vui l\xf2ng nh\u1eadp \u0111\u1ecba ch\u1ec9 email h\u1ee3p l\u1ec7.";
     },
     get$pleaseChooseAUsername() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "Vui l\xf2ng ch\u1ecdn t\xean ng\u01b0\u1eddi d\xf9ng";
     },
     get$listen() {
-      return "\u0421\u043b\u0443\u0445\u0430\u0442\u0438";
+      return "Nghe";
     },
     get$trialPeriodExpired() {
-      return "\u0412\u0430\u0448 \u043f\u0440\u043e\u0431\u043d\u0438\u0439 \u043f\u0435\u0440\u0456\u043e\u0434 \u0437\u0430\u043a\u0456\u043d\u0447\u0438\u0432\u0441\u044f";
+      return "Th\u1eddi gian d\xf9ng th\u1eed \u0111\xe3 h\u1ebft h\u1ea1n";
     },
     get$subscribedToUnlockTools() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0448\u0456\u0442\u044c\u0441\u044f, \u0449\u043e\u0431 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0456\u043d\u0442\u0435\u0440\u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434 \u0456 \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u043a\u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0438, \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0430\u0443\u0434\u0456\u043e, \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0456\u0437\u043e\u0432\u0430\u043d\u0456 \u0432\u043f\u0440\u0430\u0432\u0438 \u0442\u0430 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0443 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f!";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a d\u1ecbch t\u01b0\u01a1ng t\xe1c, ki\u1ec3m tra ng\u1eef ph\xe1p, \xe2m thanh, ho\u1ea1t \u0111\u1ed9ng v\xe0 ph\xe2n t\xedch h\u1ecdc t\u1eadp!";
     },
     get$translationTooltip() {
-      return "\u041f\u0435\u0440\u0435\u043a\u043b\u0430\u0441\u0442\u0438";
+      return "D\u1ecbch";
     },
     get$kickBotWarning() {
-      return "\u0412\u0438\u043b\u0443\u0447\u0435\u043d\u043d\u044f \u0431\u043e\u0442\u0430 Pangea \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u044c \u0431\u043e\u0442\u0430 \u0434\u043b\u044f \u043e\u0431\u0433\u043e\u0432\u043e\u0440\u0435\u043d\u044c \u0437 \u0446\u044c\u043e\u0433\u043e \u0447\u0430\u0442\u0443.";
+      return "\u0110\xe1 Pangea Bot s\u1ebd x\xf3a bot h\u1ed9i tho\u1ea1i kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y.";
     },
     get$refresh(_) {
-      return "\u041e\u043d\u043e\u0432\u0438\u0442\u0438";
+      return "T\u1ea3i l\u1ea1i";
     },
     get$accuracy(_) {
-      return "\u0422\u043e\u0447\u043d\u0456\u0441\u0442\u044c";
+      return "\u0110\u1ed9 ch\xednh x\xe1c";
     },
     get$autoIGCToolName() {
-      return "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0443 \u0437 \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u043d\u044f Pangea";
+      return "T\u1ef1 \u0111\u1ed9ng ch\u1ea1y h\u1ed7 tr\u1ee3 ng\xf4n ng\u1eef";
     },
     get$autoIGCToolDescription() {
-      return "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0437\u0430\u043f\u0443\u0441\u043a\u0430\u0442\u0438 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0443 \u0437 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0438 \u0442\u0430 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0443 \u0432 \u0447\u0430\u0442\u0456 Pangea \u043f\u0435\u0440\u0435\u0434 \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u043e\u044e \u043c\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.";
+      return "T\u1ef1 \u0111\u1ed9ng ch\u1ea1y h\u1ed7 tr\u1ee3 ng\xf4n ng\u1eef sau khi g\xf5 tin nh\u1eafn";
     },
     get$chatCapacity() {
-      return "\u041c\u0456\u0441\u0442\u043a\u0456\u0441\u0442\u044c \u0447\u0430\u0442\u0443";
+      return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean tr\xf2 chuy\u1ec7n";
     },
     get$roomFull() {
-      return "\u0426\u044f \u043a\u0456\u043c\u043d\u0430\u0442\u0430 \u0432\u0436\u0435 \u0437\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u0430.";
+      return "Ph\xf2ng \u0111\xe3 \u0111\u1ea1t gi\u1edbi h\u1ea1n.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "\u041c\u0456\u0441\u0442\u043a\u0456\u0441\u0442\u044c \u0447\u0430\u0442\u0443 \u0437\u043c\u0456\u043d\u0435\u043d\u0430";
+      return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean tr\xf2 chuy\u1ec7n \u0111\xe3 thay \u0111\u1ed5i";
     },
     chatCapacitySetTooLow$1(count) {
-      return "\u041c\u0456\u0441\u0442\u043a\u0456\u0441\u0442\u044c \u0447\u0430\u0442\u0443 \u043c\u0430\u0454 \u0431\u0443\u0442\u0438 \u043d\u0435 \u043c\u0435\u043d\u0448\u0435 " + count + ".";
+      return "Dung l\u01b0\u1ee3ng tr\xf2 chuy\u1ec7n ph\u1ea3i \xedt nh\u1ea5t l\xe0 " + count + ".";
     },
     get$chatCapacityExplanation() {
-      return "\u041c\u0456\u0441\u0442\u043a\u0456\u0441\u0442\u044c \u0447\u0430\u0442\u0443 \u043e\u0431\u043c\u0435\u0436\u0443\u0454 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432, \u0434\u043e\u0437\u0432\u043e\u043b\u0435\u043d\u0438\u0445 \u0443 \u0447\u0430\u0442\u0456.";
+      return "H\u1ea1n ch\u1ebf s\u1ed1 l\u01b0\u1ee3ng ng\u01b0\u1eddi d\xf9ng th\u01b0\u1eddng (kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb vi\xean) c\xf3 th\u1ec3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
     get$enterNumber() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0432\u0435\u0434\u0456\u0442\u044c \u0446\u0456\u043b\u0435 \u0447\u0438\u0441\u043b\u043e.";
+      return "Vui l\xf2ng nh\u1eadp m\u1ed9t s\u1ed1 nguy\xean l\u1edbn h\u01a1n 0.";
     },
     get$buildTranslation() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0456\u0442\u044c \u0441\u0432\u0456\u0439 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434 \u0437 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u0445 \u0432\u0438\u0449\u0435 \u0432\u0430\u0440\u0456\u0430\u043d\u0442\u0456\u0432";
+      return "X\xe2y d\u1ef1ng b\u1ea3n d\u1ecbch c\u1ee7a b\u1ea1n t\u1eeb c\xe1c l\u1ef1a ch\u1ecdn tr\xean";
     },
     get$practice() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430";
+      return "Luy\u1ec7n t\u1eadp";
     },
     get$speechToTextBody() {
-      return "\u0414\u043b\u044f \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u0438\u0445 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438 \u0442\u0440\u0430\u043d\u0441\u043a\u0440\u0438\u043f\u0442, \u0430 \u0442\u0430\u043a\u043e\u0436 \u043e\u0446\u0456\u043d\u043a\u0443 \u0441\u043b\u0456\u0432 \u0437\u0430 \u0445\u0432\u0438\u043b\u0438\u043d\u0443 \u0432\u0456\u0434 \u0441\u043f\u0456\u043a\u0435\u0440\u0430.";
+      return "V\u1edbi tin nh\u1eafn tho\u1ea1i, b\u1ea1n c\xf3 th\u1ec3 xem b\u1ea3n ch\xe9p gi\u1ecdng n\xf3i v\xe0 \u0111i\u1ec3m t\u1eeb/ph\xfat c\u1ee7a ng\u01b0\u1eddi n\xf3i.";
     },
     get$versionNotFound() {
-      return "\u0412\u0435\u0440\u0441\u0456\u044f \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u0430";
+      return "Kh\xf4ng t\xecm th\u1ea5y phi\xean b\u1ea3n";
     },
     get$fetchingVersion() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0432\u0435\u0440\u0441\u0456\u0457...";
+      return "\u0110ang l\u1ea5y phi\xean b\u1ea3n...";
     },
     get$versionFetchError() {
-      return "\u041f\u043e\u043c\u0438\u043b\u043a\u0430 \u043f\u0440\u0438 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u0456 \u0432\u0435\u0440\u0441\u0456\u0457";
+      return "L\u1ed7i khi l\u1ea5y phi\xean b\u1ea3n";
     },
     versionText$2(version, buildNumber) {
-      return "\u0412\u0435\u0440\u0441\u0456\u044f: " + version + "+" + buildNumber;
+      return "Phi\xean b\u1ea3n: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432\u0430\u0448\u043e\u044e \u0431\u0430\u0437\u043e\u0432\u043e\u044e \u043c\u043e\u0432\u043e\u044e \u043d\u0435 \u0431\u0443\u0434\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0435\u043d\u0456.";
+      return "Tin nh\u1eafn trong ng\xf4n ng\u1eef g\u1ed1c s\u1ebd kh\xf4ng \u0111\u01b0\u1ee3c d\u1ecbch.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "\u0423 \u0432\u0430\u0441 \u0430\u043a\u0442\u0438\u0432\u043d\u0430 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0430";
+      return "B\u1ea1n \u0111ang c\xf3 g\xf3i \u0111\u0103ng k\xfd ho\u1ea1t \u0111\u1ed9ng";
     },
     get$deleteSubscriptionWarningBody() {
-      return "\u0412\u0438\u0434\u0430\u043b\u0435\u043d\u043d\u044f \u0432\u0430\u0448\u043e\u0433\u043e \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0438\u0441\u0443 \u043d\u0435 \u0441\u043a\u0430\u0441\u0443\u0454 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u043e \u0432\u0430\u0448\u0443 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0443.";
+      return "Vi\u1ec7c x\xf3a t\xe0i kho\u1ea3n s\u1ebd kh\xf4ng h\u1ee7y g\xf3i \u0111\u0103ng k\xfd c\u1ee7a b\u1ea1n.";
     },
     get$manageSubscription() {
-      return "\u041a\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u043e\u044e";
+      return "Qu\u1ea3n l\xfd g\xf3i \u0111\u0103ng k\xfd";
     },
     get$error520Title() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0441\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0449\u0435 \u0440\u0430\u0437.";
+      return "H\xe3y th\u1eed l\u1ea1i.";
     },
     get$error520Desc() {
-      return "\u0412\u0438\u0431\u0430\u0447\u0442\u0435, \u043c\u0438 \u043d\u0435 \u0437\u043c\u043e\u0433\u043b\u0438 \u0437\u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u0432\u0430\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f...";
+      return "Xin l\u1ed7i, ch\xfang t\xf4i kh\xf4ng th\u1ec3 hi\u1ec3u tin nh\u1eafn c\u1ee7a b\u1ea1n...";
     },
     get$level(_) {
-      return "\u0420\u0456\u0432\u0435\u043d\u044c";
+      return "C\u1ea5p \u0111\u1ed9";
     },
     get$translationChoicesBody() {
-      return "\u041a\u043b\u0456\u043a\u043d\u0456\u0442\u044c \u0456 \u0443\u0442\u0440\u0438\u043c\u0443\u0439\u0442\u0435 \u043e\u043f\u0446\u0456\u044e \u0434\u043b\u044f \u043f\u0456\u0434\u043a\u0430\u0437\u043a\u0438.";
+      return "Gi\u1eef l\xe2u m\u1ed9t l\u1ef1a ch\u1ecdn \u0111\u1ec3 xem g\u1ee3i \xfd.";
     },
     get$grammar() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0430";
+      return "Ng\u1eef ph\xe1p";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "\u041a\u043e\u043d\u0442\u0430\u043a\u0442 \u0431\u0443\u0432 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u0438\u0439 \u0434\u043e \u0447\u0430\u0442\u0443";
+      return "Li\xean h\u1ec7 \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi v\xe0o cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 \u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0434\u043e \u0447\u0430\u0442\u0443";
+      return "\ud83d\udce8 M\u1eddi v\xe0o tr\xf2 chuy\u1ec7n";
     },
     get$chatName() {
-      return "\u041d\u0430\u0437\u0432\u0430 \u0447\u0430\u0442\u0443";
+      return "T\xean cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$l2SupportNa() {
-      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
+      return "Kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     get$l2SupportAlpha() {
-      return "\u0410\u043b\u044c\u0444\u0430";
+      return "B\u1ea3n Alpha";
     },
     get$l2SupportBeta() {
-      return "\u0411\u0435\u0442\u0430";
+      return "B\u1ea3n Beta";
     },
     get$l2SupportFull() {
-      return "\u041f\u043e\u0432\u043d\u0438\u0439";
+      return "Ho\xe0n ch\u1ec9nh";
     },
     get$playAudio() {
-      return "\u0412\u0456\u0434\u0442\u0432\u043e\u0440\u0438\u0442\u0438";
+      return "Ph\xe1t";
     },
     get$stop(_) {
-      return "\u0417\u0443\u043f\u0438\u043d\u0438\u0442\u0438";
+      return "D\u1eebng";
     },
     get$grammarCopyPOSsconj() {
-      return "\u041f\u0456\u0434\u0440\u044f\u0434\u043d\u0438\u0439 \u0441\u043f\u043e\u043b\u0443\u0447\u043d\u0438\u043a";
+      return "Li\xean t\u1eeb ph\u1ee5 thu\u1ed9c";
     },
     get$grammarCopyPOSnum() {
-      return "\u0427\u0438\u0441\u043b\u043e";
+      return "S\u1ed1 \u0111\u1ebfm";
     },
     get$grammarCopyPOSverb() {
-      return "\u0414\u0456\u0454\u0441\u043b\u043e\u0432\u043e";
+      return "\u0110\u1ed9ng t\u1eeb";
     },
     get$grammarCopyPOSaffix() {
-      return "\u0410\u0444\u0456\u043a\u0441";
+      return "Ti\u1ec1n t\u1ed1/H\u1eadu t\u1ed1";
     },
     get$grammarCopyPOSpart() {
-      return "\u0427\u0430\u0441\u0442\u043a\u0430";
+      return "Ti\u1ec3u t\u1eeb";
     },
     get$grammarCopyPOSadj() {
-      return "\u041f\u0440\u0438\u043a\u043c\u0435\u0442\u043d\u0438\u043a";
+      return "T\xednh t\u1eeb";
     },
     get$grammarCopyPOScconj() {
-      return "\u0421\u043f\u043e\u043b\u0443\u0447\u043d\u0438\u043a";
+      return "Li\xean t\u1eeb \u0111\u1eb3ng l\u1eadp";
     },
     get$grammarCopyPOSpunct() {
-      return "\u041f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0456\u044f";
+      return "D\u1ea5u c\xe2u";
     },
     get$grammarCopyPOSadv() {
-      return "\u041f\u0440\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a";
+      return "Tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyPOSaux() {
-      return "\u0414\u043e\u043f\u043e\u043c\u0456\u0436\u043d\u0435 \u0441\u043b\u043e\u0432\u043e";
+      return "\u0110\u1ed9ng t\u1eeb ph\u1ee5";
     },
     get$grammarCopyPOSspace() {
-      return "\u041f\u0440\u043e\u0431\u0456\u043b";
+      return "Kho\u1ea3ng tr\u1eafng";
     },
     get$grammarCopyPOSsym() {
-      return "\u0421\u0438\u043c\u0432\u043e\u043b";
+      return "K\xfd hi\u1ec7u";
     },
     get$grammarCopyPOSdet() {
-      return "\u0414\u0435\u0442\u0435\u0440\u043c\u0456\u043d\u0430\u043d\u0442";
+      return "T\u1eeb h\u1ea1n \u0111\u1ecbnh";
     },
     get$grammarCopyPOSpron() {
-      return "\u0417\u0430\u0439\u043c\u0435\u043d\u043d\u0438\u043a";
+      return "\u0110\u1ea1i t\u1eeb";
     },
     get$grammarCopyPOSadp() {
-      return "\u041f\u0440\u0435\u0444\u0456\u043a\u0441";
+      return "Gi\u1edbi t\u1eeb";
     },
     get$grammarCopyPOSpropn() {
-      return "\u0412\u043b\u0430\u0441\u043d\u0430 \u043d\u0430\u0437\u0432\u0430";
+      return "Danh t\u1eeb ri\xeang";
     },
     get$grammarCopyPOSnoun() {
-      return "\u0406\u043c\u0435\u043d\u043d\u0438\u043a";
+      return "Danh t\u1eeb";
     },
     get$grammarCopyPOSintj() {
-      return "\u041c\u0456\u0436\u0432\u0456\u0447";
+      return "Th\xe1n t\u1eeb";
     },
     get$grammarCopyPOSx() {
-      return "\u0406\u043d\u0448\u0435";
+      return "Kh\xe1c";
     },
     get$grammarCopyGENDERfem() {
-      return "\u0416\u0456\u043d\u043e\u0447\u0438\u0439 \u0440\u0456\u0434";
+      return "Gi\u1ed1ng c\xe1i";
     },
     get$grammarCopyPERSON2() {
-      return "\u0414\u0440\u0443\u0433\u0430 \u043e\u0441\u043e\u0431\u0430";
+      return "Ng\xf4i th\u1ee9 hai";
     },
     get$grammarCopyMOODimp() {
-      return "\u041d\u0430\u043a\u0430\u0437\u043e\u0432\u0438\u0439 \u0441\u043f\u043e\u0441\u0456\u0431";
+      return "M\u1ec7nh l\u1ec7nh";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "\u041f\u0438\u0442\u0430\u043d\u043d\u044f";
+      return "C\xe2u h\u1ecfi";
     },
     get$grammarCopyASPECTperf() {
-      return "\u0414\u043e\u0441\u043a\u043e\u043d\u0430\u043b\u0438\u0439";
+      return "Ho\xe0n th\xe0nh";
     },
     get$grammarCopyCASEaccnom() {
-      return "\u0417\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439, \u041d\u0430\u0437\u0438\u0432\u043d\u0438\u0439";
+      return "Tr\u1ef1c ti\u1ebfp, Ch\u1ee7 c\xe1ch";
     },
     get$grammarCopyCASEobl() {
-      return "\u0417\u0432\u043e\u0440\u043e\u0442\u043d\u0456\u0439";
+      return "B\u1ed5 ngh\u0129a";
     },
     get$grammarCopyVOICEact() {
-      return "\u0410\u043a\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "Ch\u1ee7 \u0111\u1ed9ng";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "\u0414\u0443\u0436\u043a\u0430";
+      return "D\u1ea5u ngo\u1eb7c";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "\u0410\u0440\u0442\u0438\u043a\u043b\u044c";
+      return "M\u1ea1o t\u1eeb";
     },
     get$grammarCopyNUMBERsing() {
-      return "\u041e\u0434\u043d\u0438\u043d\u0430";
+      return "S\u1ed1 \xedt";
     },
     get$grammarCopyGENDERmasc() {
-      return "\u0427\u043e\u043b\u043e\u0432\u0456\u0447\u0438\u0439";
+      return "Gi\u1ed1ng \u0111\u1ef1c";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "\u041c\u043e\u0434\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "\u0110\u1ed9ng t\u1eeb khuy\u1ebft thi\u1ebfu";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "\u0417\u0430\u043b\u0435\u0436\u043d\u0438\u0439";
+      return "Tr\u1ea1ng ng\u1eef";
     },
     get$grammarCopyTENSEperi() {
-      return "\u041f\u0435\u0440\u0444\u0440\u0430\u0437\u043e\u0432\u0438\u0439";
+      return "Th\xec ngo\u1ea1i l\u1ec7 (periphrastic)";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "\u0426\u0438\u0444\u0440\u0430";
+      return "Ch\u1eef s\u1ed1";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "\u041d\u0435 \u0432\u043b\u0430\u0441\u043d\u0435";
+      return "Kh\xf4ng ph\u1ea3i danh t\u1eeb ri\xeang";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u043d\u0438\u0439";
+      return "S\u1ed1 \u0111\u1ebfm g\u1ed1c";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "\u0412\u043b\u0430\u0441\u043d\u0438\u0439";
+      return "Danh t\u1eeb ri\xeang";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "\u0414\u0435\u0444\u0456\u0441";
+      return "D\u1ea5u g\u1ea1ch ngang";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "\u0422\u0430\u043a";
+      return "D\u1ea5u ch\u1ea5p nh\u1eadn/\u0111\u1ed3ng \xfd";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "\u041a\u0440\u0430\u043f\u043a\u0430 \u0437 \u043a\u043e\u043c\u043e\u044e";
+      return "D\u1ea5u ch\u1ea5m ph\u1ea9y";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "\u041a\u043e\u043c\u0430";
+      return "D\u1ea5u ph\u1ea9y";
     },
     get$grammarCopyMOODcnd() {
-      return "\u0423\u043c\u043e\u0432\u043d\u0438\u0439";
+      return "Gi\u1ea3 \u0111\u1ecbnh";
     },
     get$grammarCopyCASEacc() {
-      return "\u0417\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439 \u0432\u0456\u0434\u043c\u0456\u043d\u043e\u043a";
+      return "Tr\u1ef1c ti\u1ebfp";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "\u0414\u0440\u043e\u0431\u043e\u0432\u0438\u0439";
+      return "Th\u1ec3 ph\xe2n t\u1eeb";
     },
     get$grammarCopyTENSEpast() {
-      return "\u041c\u0438\u043d\u0443\u043b\u0438\u0439";
+      return "Qu\xe1 kh\u1ee9";
     },
     get$grammarCopyDEGREEsup() {
-      return "\u041d\u0430\u0439\u0432\u0438\u0449\u0438\u0439 \u0441\u0442\u0443\u043f\u0456\u043d\u044c";
+      return "C\u1ea5p cao nh\u1ea5t (so s\xe1nh)";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "\u0414\u0432\u043e\u043a\u0440\u0430\u043f\u043a\u0430";
+      return "D\u1ea5u hai ch\u1ea5m";
     },
     get$grammarCopyPERSON3() {
-      return "\u0422\u0440\u0435\u0442\u044f \u043e\u0441\u043e\u0431\u0430";
+      return "Ng\xf4i th\u1ee9 ba";
     },
     get$grammarCopyNUMBERplur() {
-      return "\u041c\u043d\u043e\u0436\u0438\u043d\u0430";
+      return "S\u1ed1 nhi\u1ec1u";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "\u0412\u043b\u0430\u0441\u043d\u0430 \u043d\u0430\u0437\u0432\u0430";
+      return "Danh t\u1eeb ri\xeang";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "\u041f\u0438\u0442\u0430\u043b\u044c\u043d\u0435 \u0441\u043b\u043e\u0432\u043e";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyPOLITEinfm() {
-      return "\u041d\u0435\u0444\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Kh\xf4ng trang tr\u1ecdng";
     },
     get$grammarCopyADVTYPEtim() {
-      return "\u0427\u0430\u0441\u043e\u0432\u0438\u0439";
+      return "Th\u1eddi gian";
     },
     get$grammarCopyPOLARITYneg() {
-      return "\u0417\u0430\u043f\u0435\u0440\u0435\u0447\u0435\u043d\u043d\u044f";
+      return "Ph\u1ee7 \u0111\u1ecbnh";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "T\u1ed5ng th\u1ec3";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "\u041f\u0440\u0438\u043a\u043c\u0435\u0442\u043d\u0438\u043a\u043e\u0432\u0438\u0439";
+      return "B\u1ed5 ngh\u0129a danh t\u1eeb";
     },
     get$grammarCopyASPECTprog() {
-      return "\u041f\u0440\u043e\u0446\u0435\u0441\u043d\u0438\u0439";
+      return "\u0110ang di\u1ec5n ra";
     },
     get$grammarCopyMOODsub() {
-      return "\u0421\u0443\u0431\u0436\u0443\u043d\u043a\u0442\u0438\u0432";
+      return "Gi\u1ea3 \u0111\u1ecbnh (subjunctive)";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "\u0414\u043e\u043f\u043e\u0432\u043d\u044e\u0432\u0430\u043b\u044c\u043d\u0430 \u0444\u043e\u0440\u043c\u0430";
+      return "B\u1ed5 tr\u1ee3";
     },
     get$grammarCopyCASEnom() {
-      return "\u041d\u0430\u0437\u0438\u0432\u043d\u0438\u0439 \u0432\u0456\u0434\u043c\u0456\u043d\u043e\u043a";
+      return "Ch\u1ee7 c\xe1ch";
     },
     get$grammarCopyTENSEfut() {
-      return "\u041c\u0430\u0439\u0431\u0443\u0442\u043d\u0456\u0439";
+      return "T\u01b0\u01a1ng lai";
     },
     get$grammarCopyCASEdat() {
-      return "\u0414\u0430\u0432\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Gi\xe1n ti\u1ebfp";
     },
     get$grammarCopyTENSEpres() {
-      return "\u0422\u0435\u043f\u0435\u0440\u0456\u0448\u043d\u0456\u0439";
+      return "Hi\u1ec7n t\u1ea1i";
     },
     get$grammarCopyGENDERneut() {
-      return "\u041d\u0435\u0439\u0442\u0440\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Trung t\xednh";
     },
     get$grammarCopyPRONTYPErel() {
-      return "\u0412\u0456\u0434\u043d\u043e\u0441\u043d\u0438\u0439";
+      return "Quan h\u1ec7";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "\u0424\u0456\u043d\u0430\u043b\u044c\u043d\u0430 \u0437\u0430\u043a\u0456\u043d\u0447\u0435\u043d\u043d\u044f";
+      return "K\u1ebft th\xfac cu\u1ed1i";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "\u0414\u0435\u043c\u043e\u043d\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "Ch\u1ec9 \u0111\u1ecbnh";
     },
     get$grammarCopyPREPCASEpre() {
-      return "\u041f\u0440\u0438\u0439\u043c\u0435\u043d\u043d\u0438\u043a\u043e\u0432\u0438\u0439";
+      return "C\xe1ch gi\u1edbi t\u1eeb";
     },
     get$grammarCopyVERBFORMfin() {
-      return "\u041e\u0431\u043c\u0435\u0436\u0435\u043d\u0438\u0439";
+      return "Chia ng\xf4i";
     },
     get$grammarCopyDEGREEpos() {
-      return "\u041f\u043e\u0437\u0438\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "B\xecnh th\u01b0\u1eddng (so s\xe1nh)";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "\u0426\u0438\u0442\u0430\u0442\u0430";
+      return "D\u1ea5u ngo\u1eb7c k\xe9p";
     },
     get$grammarCopyVERBFORMger() {
-      return "\u0413\u0435\u0440\u0443\u043d\u0434\u0456\u0439";
+      return "Danh \u0111\u1ed9ng t\u1eeb (gerund)";
     },
     get$grammarCopyVOICEpass() {
-      return "\u0421\u0442\u0440\u0430\u0434\u043d\u0438\u0439";
+      return "B\u1ecb \u0111\u1ed9ng";
     },
     get$grammarCopyCASEgen() {
-      return "\u0420\u043e\u0434\u043e\u0432\u0438\u0439";
+      return "S\u1edf h\u1eefu";
     },
     get$grammarCopyTENSEprs() {
-      return "\u0422\u0435\u043f\u0435\u0440\u0456\u0448\u043d\u0456\u0439";
+      return "Hi\u1ec7n t\u1ea1i";
     },
     get$grammarCopyDEFINITEdef() {
-      return "\u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439";
+      return "X\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyNUMTYPEord() {
-      return "\u041f\u043e\u0440\u044f\u0434\u043a\u043e\u0432\u0438\u0439";
+      return "S\u1ed1 th\u1ee9 t\u1ef1";
     },
     get$grammarCopyCASEins() {
-      return "\u041e\u0440\u0443\u0434\u043d\u0438\u0439";
+      return "C\xe1ch c\xf4ng c\u1ee5";
     },
     get$grammarCopyVERBFORMinf() {
-      return "\u0406\u043d\u0444\u0456\u043d\u0456\u0442\u0438\u0432";
+      return "\u0110\u1ed9ng t\u1eeb nguy\xean m\u1eabu";
     },
     get$grammarCopyVERBFORMaux() {
-      return "\u0414\u043e\u043f\u043e\u043c\u0456\u0436\u043d\u0438\u0439";
+      return "Tr\u1ee3 \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyNUMFORMlong() {
-      return "\u0414\u043e\u0432\u0433\u0438\u0439";
+      return "D\u1ea1ng ch\u1eef d\xe0i";
     },
     get$grammarCopyCASEloc() {
-      return "\u041c\u0456\u0441\u0446\u0435\u0432\u0438\u0439";
+      return "C\xe1ch \u0111\u1ecba \u0111i\u1ec3m";
     },
     get$grammarCopyMOODind() {
-      return "\u0417\u0430\u044f\u0432\u043d\u0438\u0439";
+      return "Tr\u1ea7n thu\u1eadt";
     },
     get$grammarCopyDEGREEcmp() {
-      return "\u0417\u0456\u0441\u0442\u0430\u0432\u043d\u0438\u0439";
+      return "So s\xe1nh h\u01a1n";
     },
     get$grammarCopyCASErelativeCase() {
-      return "\u0412\u0456\u0434\u043d\u043e\u0441\u043d\u0438\u0439";
+      return "Li\xean h\u1ec7";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "\u0412\u0438\u0433\u0443\u043a";
+      return "C\xe2u c\u1ea3m th\xe1n";
     },
     get$grammarCopyPERSON1() {
-      return "\u041f\u0435\u0440\u0448\u0430 \u043e\u0441\u043e\u0431\u0430";
+      return "Ng\xf4i th\u1ee9 nh\u1ea5t";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "\u041f\u043e\u0447\u0430\u0442\u043a\u043e\u0432\u0438\u0439";
+      return "B\u1eaft \u0111\u1ea7u";
     },
     get$grammarCopyGENDERperson() {
-      return "\u0421\u0442\u0430\u0442\u044c";
+      return "Gi\u1ed1ng ng\u01b0\u1eddi";
     },
     get$grammarCopyFOREIGNyes() {
-      return "\u0406\u043d\u043e\u0437\u0435\u043c\u0435\u0446\u044c";
+      return "N\u01b0\u1edbc ngo\xe0i";
     },
     get$grammarCopyVOICEvoice() {
-      return "\u0417\u0430\u0441\u0456\u0431 \u0432\u0438\u0440\u0430\u0436\u0435\u043d\u043d\u044f";
+      return "Th\u1ec3 \u0111\u1ed9ng";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "\u0414\u0456\u0454\u0441\u043b\u043e\u0432\u043e";
+      return "Lo\u1ea1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyPOSSpass() {
-      return "\u041f\u0440\u0438\u0441\u0432\u0456\u0439\u043d\u0438\u0439";
+      return "S\u1edf h\u1eefu";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "\u041f\u0440\u0438\u0439\u043c\u0435\u043d\u043d\u0438\u043a\u043e\u0432\u0438\u0439";
+      return "Gi\u1edbi t\u1eeb";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "\u0427\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a";
+      return "Ki\u1ec3u s\u1ed1";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "\u0406\u043c\u0435\u043d\u043d\u0438\u043a";
+      return "Lo\u1ea1i danh t\u1eeb";
     },
     get$grammarCopyREFLEXreflex() {
-      return "\u0420\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0432\u043d\u0438\u0439";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "\u0417\u0430\u0439\u043c\u0435\u043d\u043d\u0438\u043a";
+      return "Lo\u1ea1i \u0111\u1ea1i t\u1eeb";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "\u0421\u0442\u043e\u0440\u043e\u043d\u0430 \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0456\u0457";
+      return "V\u1ecb tr\xed d\u1ea5u c\xe2u";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "\u0424\u043e\u0440\u043c\u0430 \u0434\u0456\u0454\u0441\u043b\u043e\u0432\u0430";
+      return "H\xecnh th\xe1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyGENDERgender() {
-      return "\u0420\u0456\u0434";
+      return "Gi\u1ed1ng";
     },
     get$grammarCopyMOODmood() {
-      return "\u041d\u0430\u0441\u0442\u0440\u0456\u0439";
+      return "L\u1ed1i";
     },
     get$grammarCopyASPECTaspect() {
-      return "\u0410\u0441\u043f\u0435\u043a\u0442";
+      return "Th\u1ec3";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "\u0417\u043d\u0430\u043a \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0456\u0457";
+      return "Lo\u1ea1i d\u1ea5u c\xe2u";
     },
     get$grammarCopyTENSEtense() {
-      return "\u0427\u0430\u0441";
+      return "Th\xec";
     },
     get$grammarCopyDEGREEdegree() {
-      return "\u0421\u0442\u0443\u043f\u0456\u043d\u044c";
+      return "M\u1ee9c so s\xe1nh";
     },
     get$grammarCopyPOLITEpolite() {
-      return "\u0412\u0432\u0456\u0447\u043b\u0438\u0432\u0456\u0441\u0442\u044c";
+      return "M\u1ee9c \u0111\u1ed9 trang tr\u1ecdng";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "\u041f\u0440\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a";
+      return "Lo\u1ea1i tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "\u0427\u0438\u0441\u043b\u043e";
+      return "D\u1ea1ng ch\u1eef s\u1ed1";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "\u0421\u043f\u043e\u043b\u0443\u0447\u043d\u0438\u043a";
+      return "Lo\u1ea1i li\xean t\u1eeb";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "\u041f\u043e\u043b\u044f\u0440\u043d\u0456\u0441\u0442\u044c";
+      return "Ph\u1ee7 \u0111\u1ecbnh/KD";
     },
     get$grammarCopyCASEcase() {
-      return "\u0412\u0456\u0434\u043c\u0456\u043d\u043e\u043a";
+      return "C\xe1ch";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "\u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0456\u0441\u0442\u044c";
+      return "T\xednh x\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "\u0427\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a";
+      return "D\u1ea1ng s\u1ed1";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "\u0417\u0430\u0439\u043c\u0435\u043d\u043d\u0438\u043a";
+      return "\u0110\u1ea1i t\u1eeb thu\u1ed9c t\xednh";
     },
     get$grammarCopyVOCvoc() {
-      return "\u041a\u043b\u0438\u0447\u043d\u0438\u0439 \u0432\u0456\u0434\u043c\u0456\u043d\u043e\u043a";
+      return "C\xe1ch h\xf4 g\u1ecdi";
     },
     get$grammarCopyCMPLcmpl() {
-      return "\u0414\u043e\u043f\u043e\u0432\u043d\u044e\u0432\u0430\u0447";
+      return "Li\xean k\u1ebft (complementizer)";
     },
     get$grammarCopyADVadv() {
-      return "\u041e\u0431\u0441\u0442\u0430\u0432\u0438\u043d\u0430";
+      return "Tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyMOODjus() {
-      return "\u041f\u043e\u0431\u0443\u0434\u043e\u0432\u0430";
+      return "M\u1ec7nh l\u1ec7nh nh\u1eb9 (jussive)";
     },
     get$grammarCopyGENDERcom() {
-      return "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Gi\u1ed1ng chung";
     },
     get$grammarCopyREFLEXrflx() {
-      return "\u0417\u0430\u043b\u0435\u0436\u043d\u0438\u0439";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "\u0427\u0430\u0441\u0442\u043a\u043e\u0432\u0438\u0439";
+      return "Ph\xe2n t\u1eeb";
     },
     get$grammarCopySPCspc() {
-      return "\u041a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u0438\u0439";
+      return "C\u1ee5 th\u1ec3";
     },
     get$grammarCopyTENSEpqp() {
-      return "\u0414\u043e\u043a\u043e\u043d\u0430\u043d\u0438\u0439 \u043c\u0438\u043d\u0443\u043b\u0438\u0439";
+      return "Qu\xe1 kh\u1ee9 ho\xe0n th\xe0nh";
     },
     get$grammarCopyREFLEXref() {
-      return "\u0420\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0432\u043d\u0438\u0439";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "\u041a\u043e\u0440\u043e\u0442\u043a\u0438\u0439";
+      return "D\u1ea1ng ng\u1eafn";
     },
     get$grammarCopyNUMBERdual() {
-      return "\u0414\u0432\u0456\u0439\u043a\u043e\u0432\u0438\u0439";
+      return "S\u1ed1 \u0111\xf4i";
     },
     get$grammarCopyNUMFORMlng() {
-      return "\u0414\u043e\u0432\u0433\u0438\u0439";
+      return "D\xe0i";
     },
     get$grammarCopyVOICEmid() {
-      return "\u0421\u0435\u0440\u0435\u0434\u043d\u0456\u0439";
+      return "Trung \u0111\u1ed9ng";
     },
     get$grammarCopyINTRELintRel() {
-      return "\u041f\u0438\u0442\u0430\u043b\u044c\u043d\u0438\u0439, \u0412\u0456\u0434\u043d\u043e\u0441\u043d\u0438\u0439";
+      return "Nghi v\u1ea5n, Quan h\u1ec7";
     },
     get$grammarCopyINTint() {
-      return "\u041f\u0438\u0442\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyVOICEcaus() {
-      return "\u0417\u043c\u0443\u0448\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Khi\u1ebfn khi\u1ebfn";
     },
     get$grammarCopyUnknown() {
-      return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u0438\u0439";
+      return "Kh\xf4ng r\xf5";
     },
     get$grammarCopyEVIDENTevident() {
-      return "\u0421\u0432\u0456\u0434\u0447\u0435\u043d\u043d\u044f";
+      return "Ch\u1ee9ng t\u1ecf";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "\u0427\u0438\u0441\u043b\u043e \u0432\u043b\u0430\u0441\u043d\u0438\u043a\u0430";
+      return "S\u1ed1 l\u01b0\u1ee3ng s\u1edf h\u1eefu";
     },
     get$grammarCopyASPECThab() {
-      return "\u0417\u0432\u0438\u0447\u0430\u0439\u043d\u0438\u0439";
+      return "Th\xf3i quen";
     },
     get$grammarCopyCASEabl() {
-      return "\u0410blative";
+      return "C\xe1ch t\xe1ch ra (ablative)";
     },
     get$grammarCopyCASEall() {
-      return "\u0410\u043b\u0430\u0442\u0438\u0432";
+      return "C\xe1ch h\u01b0\u1edbng \u0111\u1ebfn (allative)";
     },
     get$grammarCopyCASEess() {
-      return "\u0415\u0441\u0456\u0432\u043d\u0438\u0439";
+      return "C\xe1ch tr\u1ea1ng th\xe1i (essive)";
     },
     get$grammarCopyCASEtra() {
-      return "\u0422\u0440\u0430\u043d\u0441\u043b\u044f\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "C\xe1ch chuy\u1ec3n \u0111\u1ed5i (translative)";
     },
     get$grammarCopyCASEequ() {
-      return "\u0415\u043a\u0432\u0456\u0432\u0430\u043b\u0435\u043d\u0442\u043d\u0438\u0439";
+      return "C\xe1ch ngang b\u1eb1ng (equative)";
     },
     get$grammarCopyCASEdis() {
-      return "\u0420\u043e\u0437\u043f\u043e\u0434\u0456\u043b\u044c\u043d\u0438\u0439";
+      return "C\xe1ch ph\xe2n b\u1ed5 (distributive)";
     },
     get$grammarCopyCASEabs() {
-      return "\u0410\u0431\u0441\u043e\u043b\u044e\u0442\u0438\u0432";
+      return "C\xe1ch tuy\u1ec7t \u0111\u1ed1i (absolutive)";
     },
     get$grammarCopyCASEerg() {
-      return "\u0415\u0440\u0433\u0430\u0442\u0438\u0432";
+      return "C\xe1ch ch\u1ee7 th\u1ec3 (ergative)";
     },
     get$grammarCopyCASEcau() {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u043d\u0438\u0439";
+      return "C\xe1ch nguy\xean nh\xe2n (causal)";
     },
     get$grammarCopyCASEben() {
-      return "\u0411\u0435\u043d\u0435\u0444\u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "C\xe1ch l\u1ee3i \xedch (benefactive)";
     },
     get$grammarCopyCASEtem() {
-      return "\u0422\u0438\u043c\u0447\u0430\u0441\u043e\u0432\u0438\u0439";
+      return "C\xe1ch th\u1eddi gian (temporal)";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "\u041a\u043e\u043e\u0440\u0434\u0438\u043d\u0443\u044e\u0447\u0438\u0439";
+      return "Li\xean t\u1eeb \u0111\u1eb3ng l\u1eadp";
     },
     get$grammarCopyDEFINITEcons() {
-      return "\u041a\u043e\u043d\u0441\u0442\u0440\u0443\u043a\u0442\u0438\u0432\u043d\u0438\u0439 \u0441\u0442\u0430\u043d";
+      return "Tr\u1ea1ng th\xe1i k\u1ebft h\u1ee3p";
     },
     get$grammarCopyDEGREEabs() {
-      return "\u0410\u0431\u0441\u043e\u043b\u044e\u0442\u043d\u0430 \u0441\u0442\u0443\u043f\u0456\u043d\u044c";
+      return "B\u1eadc tuy\u1ec7t \u0111\u1ed1i";
     },
     get$grammarCopyEVIDENTfh() {
-      return "\u0424\u0430\u043a\u0442\u0438\u0447\u043d\u0430 \u0434\u043e\u043a\u0430\u0437\u043e\u0432\u0456\u0441\u0442\u044c";
+      return "Evidentiality th\u1ef1c t\u1ebf";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "\u041d\u0435\u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u0430 \u0434\u043e\u043a\u0430\u0437\u043e\u0432\u0456\u0441\u0442\u044c";
+      return "Evidentiality phi th\u1ef1c t\u1ebf";
     },
     get$grammarCopyMOODopt() {
-      return "\u041e\u043f\u0442\u0430\u0442\u0438\u0432";
+      return "C\u1ea7u mong (optative)";
     },
     get$grammarCopyMOODadm() {
-      return "\u0410\u0434\u043c\u0456\u0440\u0456\u0442\u0438\u0432";
+      return "C\u1ea3m th\xe1n (admirative)";
     },
     get$grammarCopyMOODdes() {
-      return "\u0417\u0430\u0432\u0435\u0440\u0448\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Mong mu\u1ed1n (desiderative)";
     },
     get$grammarCopyMOODnec() {
-      return "\u041d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439";
+      return "C\u1ea7n thi\u1ebft (necessitative)";
     },
     get$grammarCopyMOODpot() {
-      return "\u041c\u043e\u0436\u043b\u0438\u0432\u0438\u0439";
+      return "Kh\u1ea3 n\u0103ng (potential)";
     },
     get$grammarCopyMOODprp() {
-      return "\u041f\u0440\u043e-\u043f\u043e\u0437\u0438\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "\u0110\u1ec1 xu\u1ea5t (propositive)";
     },
     get$grammarCopyMOODqot() {
-      return "\u041a\u0432\u043e\u0442\u0430\u0442\u0438\u0432";
+      return "Tr\xedch d\u1eabn (quotative)";
     },
     get$grammarCopyNUMFORMword() {
-      return "\u0424\u043e\u0440\u043c\u0430 \u0441\u043b\u043e\u0432\u0430";
+      return "D\u1ea1ng ch\u1eef vi\u1ebft";
     },
     get$grammarCopyNUMFORMroman() {
-      return "\u0420\u0438\u043c\u0441\u044c\u043a\u0430 \u0446\u0438\u0444\u0440\u0430";
+      return "Ch\u1eef s\u1ed1 La M\xe3";
     },
     get$grammarCopyNUMFORMletter() {
-      return "\u0411\u0443\u043a\u0432\u0435\u043d\u0430 \u0444\u043e\u0440\u043c\u0430";
+      return "Ch\u1eef c\xe1i";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "\u041c\u043d\u043e\u0436\u0438\u043d\u043d\u0438\u0439";
+      return "B\u1ed9i s\u1ed1";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "\u0414\u0440\u043e\u0431\u043e\u0432\u0438\u0439";
+      return "Ph\xe2n s\u1ed1";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "\u041c\u043d\u043e\u0436\u0438\u043d\u0430";
+      return "T\u1eadp h\u1ee3p";
     },
     get$grammarCopyNUMTYPErange() {
-      return "\u0414\u0456\u0430\u043f\u0430\u0437\u043e\u043d";
+      return "Kho\u1ea3ng";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "\u0420\u043e\u0437\u043f\u043e\u0434\u0456\u043b\u044c\u043d\u0438\u0439";
+      return "Ph\xe2n ph\u1ed1i";
     },
     get$grammarCopyNUMBERtri() {
-      return "\u0412\u0438\u043f\u0440\u043e\u0431\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "S\u1ed1 tam";
     },
     get$grammarCopyNUMBERpauc() {
-      return "\u041c\u0430\u043b\u043e\u0457 \u043a\u0456\u043b\u044c\u043a\u043e\u0441\u0442\u0456";
+      return "S\u1ed1 \xedt nhi\u1ec1u (paucal)";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "\u0411\u0456\u043b\u044c\u0448\u0435 \u043c\u0430\u043b\u043e\u0457 \u043a\u0456\u043b\u044c\u043a\u043e\u0441\u0442\u0456";
+      return "Paucal m\u1edf r\u1ed9ng";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "\u0411\u0456\u043b\u044c\u0448\u0435 \u043c\u043d\u043e\u0436\u0438\u043d\u0438";
+      return "S\u1ed1 nhi\u1ec1u m\u1edf r\u1ed9ng";
     },
     get$grammarCopyNUMBERinv() {
-      return "\u041e\u0431\u0435\u0440\u043d\u0435\u043d\u0438\u0439";
+      return "Ngh\u1ecbch \u0111\u1ea3o";
     },
     get$grammarCopyPERSON0() {
-      return "\u041d\u0443\u043b\u044c";
+      return "Ng\xf4i th\u1ee9 0";
     },
     get$grammarCopyPERSON4() {
-      return "\u0427\u0435\u0442\u0432\u0435\u0440\u0442\u0438\u0439";
+      return "Ng\xf4i th\u1ee9 4";
     },
     get$grammarCopyPOLITEform() {
-      return "\u0424\u043e\u0440\u043c\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Trang tr\u1ecdng";
     },
     get$grammarCopyPOLITEelev() {
-      return "\u041f\u0456\u0434\u043d\u0435\u0441\u0435\u043d\u0438\u0439";
+      return "T\xf4n k\xednh";
     },
     get$grammarCopyPOLITEhumb() {
-      return "\u0421\u043a\u0440\u043e\u043c\u043d\u0438\u0439";
+      return "Khi\xeam nh\u01b0\u1eddng";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "\u041f\u0456\u0434\u043a\u0440\u0435\u0441\u043b\u044e\u0432\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Nh\u1ea5n m\u1ea1nh";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "\u0412\u0438\u0433\u0443\u043a";
+      return "C\u1ea3m th\xe1n";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "\u0412\u0437\u0430\u0454\u043c\u043d\u0438\u0439";
+      return "T\u01b0\u01a1ng h\u1ed7";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "\u0417\u0430\u043f\u0438\u0442\u0430\u043b\u044c\u043d\u043e-\u0432\u0456\u0434\u043d\u043e\u0441\u043d\u0438\u0439";
+      return "Nghi v\u1ea5n - quan h\u1ec7";
     },
     get$grammarCopyTENSEaor() {
-      return "\u0410\u043e\u0440\u0438\u0441\u0442";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "\u0415\u043f\u0456\u0441\u0442\u0435\u043c\u0456\u0447\u043d\u0438\u0439";
+      return "Suy \u0111o\xe1n";
     },
     get$grammarCopyTENSEprosp() {
-      return "\u041f\u0435\u0440\u0441\u043f\u0435\u043a\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "T\u01b0\u01a1ng lai g\u1ea7n";
     },
     get$grammarCopyVERBFORMpart() {
-      return "\u0414\u0456\u0454\u043f\u0440\u0438\u043a\u043c\u0435\u0442\u043d\u0438\u043a";
+      return "Ph\xe2n t\u1eeb";
     },
     get$grammarCopyVERBFORMconv() {
-      return "\u0414\u0456\u0454\u0441\u043b\u0456\u0432\u043d\u0438\u0439 \u043f\u0440\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a";
+      return "Li\xean \u0111\u1ed9ng t\u1eeb (converb)";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "\u0414\u0456\u0454\u0441\u043b\u0456\u0432\u043d\u0438\u0439 \u0456\u043c\u0435\u043d\u043d\u0438\u043a";
+      return "Danh \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyVOICEantip() {
-      return "\u0410\u043d\u0442\u0438\u043f\u0430\u0441\u0438\u0432";
+      return "Ph\u1ea3n t\xe1c (antipassive)";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "\u0417\u0443\u043c\u043e\u0432\u043b\u0435\u043d\u0438\u0439";
+      return "Th\u1ec3 sai khi\u1ebfn";
     },
     get$grammarCopyVOICedir() {
-      return "\u041f\u0440\u044f\u043c\u0438\u0439";
+      return "Tr\u1ef1c ti\u1ebfp";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "\u0417\u0432\u043e\u0440\u043e\u0442\u043d\u0456\u0439";
+      return "Ngh\u1ecbch \u0111\u1ea3o";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "\u0412\u0437\u0430\u0454\u043c\u043d\u0438\u0439";
+      return "T\u01b0\u01a1ng h\u1ed7";
     },
     get$grammarCopyPOS() {
-      return "\u0427\u0430\u0441\u0442\u0438\u043d\u0430 \u043c\u043e\u0432\u0438";
+      return "T\u1eeb lo\u1ea1i";
     },
     get$grammarCopyGENDER() {
-      return "\u0420\u0456\u0434";
+      return "Gi\u1ed1ng";
     },
     get$grammarCopyPERSON() {
-      return "\u041e\u0441\u043e\u0431\u0430";
+      return "Ng\xf4i";
     },
     get$grammarCopyMOOD() {
-      return "\u041d\u0430\u043a\u043b\u043e\u043d\u0435\u043d\u043d\u044f";
+      return "L\u1ed1i/Th\xe1i";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "\u0422\u0438\u043f \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0456\u0457";
+      return "Lo\u1ea1i d\u1ea5u c\xe2u";
     },
     get$grammarCopyASPECT() {
-      return "\u0412\u0438\u0434";
+      return "Th\u1ec3 \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyCASE() {
-      return "\u0412\u0456\u0434\u043c\u0456\u043d\u043e\u043a";
+      return "C\xe1ch";
     },
     get$grammarCopyVOICE() {
-      return "\u0417\u0430\u043b\u043e\u0433";
+      return "Th\u1ec3";
     },
     get$grammarCopyNOUNTYPE() {
-      return "\u0422\u0438\u043f \u0456\u043c\u0435\u043d\u043d\u0438\u043a\u0430";
+      return "Lo\u1ea1i danh t\u1eeb";
     },
     get$grammarCopyVERBTYPE() {
-      return "\u0422\u0438\u043f \u0434\u0456\u0454\u0441\u043b\u043e\u0432\u0430";
+      return "Lo\u1ea1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyADVTYPE() {
-      return "\u0422\u0438\u043f \u043f\u0440\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a\u0430";
+      return "Lo\u1ea1i tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyNUMFORM() {
-      return "\u0424\u043e\u0440\u043c\u0430 \u0447\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a\u0430";
+      return "D\u1ea1ng s\u1ed1";
     },
     get$grammarCopyNUMTYPE() {
-      return "\u0422\u0438\u043f \u0447\u0438\u0441\u043b\u0456\u0432\u043d\u0438\u043a\u0430";
+      return "Lo\u1ea1i s\u1ed1";
     },
     get$grammarCopyNUMBER() {
-      return "\u0427\u0438\u0441\u043b\u043e";
+      return "S\u1ed1 l\u01b0\u1ee3ng";
     },
     get$grammarCopyDEFINITE() {
-      return "\u0412\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u0456\u0441\u0442\u044c";
+      return "T\xednh x\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyDEGREE() {
-      return "\u0421\u0442\u0443\u043f\u0456\u043d\u044c";
+      return "M\u1ee9c so s\xe1nh";
     },
     get$grammarCopyEVIDENT() {
-      return "\u0415\u0432\u0438\u0434\u0435\u043d\u0446\u0456\u0439\u043d\u0456\u0441\u0442\u044c";
+      return "Evidentiality";
     },
     get$grammarCopyFOREIGN() {
-      return "\u0406\u043d\u043e\u0437\u0435\u043c\u043d\u0438\u0439";
+      return "Ngo\u1ea1i ng\u1eef";
     },
     get$grammarCopyPOLARITY() {
-      return "\u041f\u043e\u043b\u044f\u0440\u043d\u0456\u0441\u0442\u044c";
+      return "Ph\u1ee7 \u0111\u1ecbnh/KD";
     },
     get$grammarCopyPOLITE() {
-      return "\u0412\u0432\u0456\u0447\u043b\u0438\u0432\u0456\u0441\u0442\u044c";
+      return "M\u1ee9c trang tr\u1ecdng";
     },
     get$grammarCopyPREPCASE() {
-      return "\u041f\u0440\u0438\u0439\u043c\u0435\u043d\u043d\u0438\u043a\u043e\u0432\u0438\u0439 \u0432\u0456\u0434\u043c\u0456\u043d\u043e\u043a";
+      return "Gi\u1edbi t\u1eeb";
     },
     get$grammarCopyPRONTYPE() {
-      return "\u0422\u0438\u043f \u0437\u0430\u0439\u043c\u0435\u043d\u043d\u0438\u043a\u0430";
+      return "Lo\u1ea1i \u0111\u1ea1i t\u1eeb";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "\u0421\u0442\u043e\u0440\u043e\u043d\u0430 \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0456\u0457";
+      return "V\u1ecb tr\xed d\u1ea5u";
     },
     get$grammarCopyREFLEX() {
-      return "\u0420\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0432\u043d\u0438\u0439";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyTENSE() {
-      return "\u0427\u0430\u0441";
+      return "Th\xec";
     },
     get$grammarCopyVERBFORM() {
-      return "\u0424\u043e\u0440\u043c\u0430 \u0434\u0456\u0454\u0441\u043b\u043e\u0432\u0430";
+      return "H\xecnh th\xe1i \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyCONJTYPE() {
-      return "\u0422\u0438\u043f \u0441\u043f\u043e\u043b\u0443\u0447\u043d\u0438\u043a\u0430";
+      return "Lo\u1ea1i li\xean t\u1eeb";
     },
     get$grammarCopyUNKNOWN() {
-      return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u043e";
+      return "Kh\xf4ng r\xf5";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "\u041d\u043e\u043c\u0435\u0440 \u0432\u043b\u0430\u0441\u043d\u0438\u043a\u0430";
+      return "S\u1ed1 l\u01b0\u1ee3ng ch\u1ee7 s\u1edf h\u1eefu";
     },
     get$grammarCopyPOSS() {
-      return "\u041f\u0440\u0438\u0441\u0432\u0456\u0439\u043d\u0438\u0439";
+      return "S\u1edf h\u1eefu";
     },
     get$grammarCopyASPECTimp() {
-      return "\u041d\u0435\u0434\u043e\u0441\u043a\u043e\u043d\u0430\u043b\u0438\u0439 \u0430\u0441\u043f\u0435\u043a\u0442";
+      return "Kh\xf4ng ho\xe0n th\xe0nh";
     },
     get$grammarCopyCASEvoc() {
-      return "\u041a\u043b\u0438\u0447\u043d\u0438\u0439";
+      return "C\xe1ch h\xf4 g\u1ecdi";
     },
     get$grammarCopyCASEcom() {
-      return "\u0417\u0432'\u044f\u0437\u043a\u043e\u0432\u0438\u0439";
+      return "C\xe1ch \u0111i k\xe8m (comitative)";
     },
     get$grammarCopyCASEpar() {
-      return "\u0414\u0456\u043b\u044c\u043d\u0438\u0439";
+      return "C\xe1ch chia ph\u1ea7n (partitive)";
     },
     get$grammarCopyCASEadv() {
-      return "\u041e\u0431\u0441\u0442\u0430\u0432\u0438\u043d\u043d\u0438\u0439";
+      return "C\xe1ch tr\u1ea1ng t\u1eeb";
     },
     get$grammarCopyCASEref() {
-      return "\u0420\u0435\u0444\u0435\u0440\u0435\u043d\u0442\u043d\u0438\u0439";
+      return "C\xe1ch tham chi\u1ebfu";
     },
     get$grammarCopyCASErel() {
-      return "\u0412\u0456\u0434\u043d\u043e\u0441\u043d\u0438\u0439";
+      return "C\xe1ch quan h\u1ec7";
     },
     get$grammarCopyCASEsub() {
-      return "\u041f\u0456\u0434\u0432\u0456\u0441\u043d\u0438\u0439";
+      return "C\xe1ch d\u01b0\u1edbi (subessive)";
     },
     get$grammarCopyCASEsup() {
-      return "\u0412\u0435\u0440\u0445\u043d\u0456\u0439";
+      return "C\xe1ch tr\xean (superessive)";
     },
     get$grammarCopyCASEaccdat() {
-      return "\u0417\u0432\u0430\u043b\u044c\u043d\u0438\u0439-\u0434\u0430\u0432\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "C\xe1ch tr\u1ef1c ti\u1ebfp-gi\xe1n ti\u1ebfp";
     },
     get$grammarCopyCASEpre() {
-      return "\u041f\u0440\u0438\u0439\u043c\u0435\u043d\u043d\u0438\u043a\u043e\u0432\u0438\u0439";
+      return "C\xe1ch gi\u1edbi t\u1eeb";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "\u041f\u0456\u0434\u0440\u044f\u0434\u043d\u0438\u0439";
+      return "Ph\u1ee5 thu\u1ed9c";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "\u041f\u043e\u0440\u0456\u0432\u043d\u044f\u043b\u044c\u043d\u0438\u0439";
+      return "So s\xe1nh";
     },
     get$grammarCopyDEFINITEind() {
-      return "\u041d\u0435\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439";
+      return "Kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     get$grammarCopyMOODint() {
-      return "\u041f\u0438\u0442\u0430\u043b\u044c\u043d\u0438\u0439 \u0441\u043f\u043e\u0441\u0456\u0431";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0430 \u043d\u0430\u0437\u0432\u0430";
+      return "Danh t\u1eeb chung";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "\u0412\u043b\u0430\u0441\u043d\u0438\u043a \u0443 \u043e\u0434\u043d\u0438\u043d\u0456";
+      return "Ch\u1ee7 s\u1edf h\u1eefu s\u1ed1 \xedt";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "\u0412\u043b\u0430\u0441\u043d\u0438\u043a \u0443 \u043c\u043d\u043e\u0436\u0438\u043d\u0456";
+      return "Ch\u1ee7 s\u1edf h\u1eefu s\u1ed1 nhi\u1ec1u";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "\u0412\u043b\u0430\u0441\u043d\u0438\u043a \u0443 \u0434\u0432\u043e\u0457\u043d\u0456";
+      return "Ch\u1ee7 s\u1edf h\u1eefu s\u1ed1 \u0111\xf4i";
     },
     get$grammarCopyPOLARITYpos() {
-      return "\u041f\u043e\u0437\u0438\u0442\u0438\u0432\u043d\u0430 \u043f\u043e\u043b\u044f\u0440\u043d\u0456\u0441\u0442\u044c";
+      return "Kh\u1eb3ng \u0111\u1ecbnh";
     },
     get$grammarCopyPOSSyes() {
-      return "\u041f\u0440\u0438\u0441\u0432\u0456\u0439\u043d\u0438\u0439";
+      return "C\xf3 s\u1edf h\u1eefu";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "\u0411\u0435\u0437\u043f\u0440\u0438\u0439\u043c\u0435\u043d\u043d\u0438\u043a\u043e\u0432\u0438\u0439";
+      return "Phi gi\u1edbi t\u1eeb";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "\u041e\u0441\u043e\u0431\u043e\u0432\u0438\u0439";
+      return "C\xe1 nh\xe2n";
     },
     get$grammarCopyPRONTYPEint() {
-      return "\u041f\u0438\u0442\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439";
+      return "T\u1ed5ng qu\xe1t";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "\u0417\u0430\u043f\u0435\u0440\u0435\u0447\u043d\u0438\u0439";
+      return "Ph\u1ee7 \u0111\u1ecbnh";
     },
     get$grammarCopyPRONTYPEart() {
-      return "\u0410\u0440\u0442\u0438\u043a\u043b\u044c";
+      return "M\u1ea1o t\u1eeb";
     },
     get$grammarCopyPRONTYPEind() {
-      return "\u041d\u0435\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0439";
+      return "B\u1ea5t \u0111\u1ecbnh";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "\u041f\u0438\u0442\u0430\u043b\u044c\u043d\u043e-\u0432\u0456\u0434\u043d\u043e\u0441\u043d\u0438\u0439";
+      return "Nghi v\u1ea5n-quan h\u1ec7";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "\u041a\u0456\u043d\u0446\u0435\u0432\u0430 \u043f\u0443\u043d\u043a\u0442\u0443\u0430\u0446\u0456\u044f";
+      return "K\u1ebft th\xfac";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "\u0422\u043e\u0447\u043a\u0430";
+      return "Ch\u1ea5m c\xe2u";
     },
     get$grammarCopyREFLEXyes() {
-      return "\u0420\u0435\u0444\u043b\u0435\u043a\u0441\u0438\u0432\u043d\u0438\u0439";
+      return "Ph\u1ea3n th\xe2n";
     },
     get$grammarCopyTENSEimp() {
-      return "\u041d\u0435\u0434\u043e\u0441\u043a\u043e\u043d\u0430\u043b\u0438\u0439";
+      return "Qu\xe1 kh\u1ee9 kh\xf4ng ho\xe0n th\xe0nh";
     },
     get$grammarCopyVERBFORMsup() {
-      return "\u0414\u043e\u0434\u0430\u0442\u043a\u043e\u0432\u0438\u0439";
+      return "SuApine";
     },
     get$grammarCopyVERBFORMadn() {
-      return "\u0410\u0434\u0432\u043e\u043a\u0430\u0442\u0438\u0432\u043d\u0438\u0439";
+      return "Adj. B\u1ed5 ngh\u0129a danh t\u1eeb";
     },
     get$grammarCopyVERBFORMlng() {
-      return "\u0414\u043e\u0432\u0433\u0438\u0439";
+      return "D\u1ea1ng d\xe0i";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "\u041a\u043e\u0440\u043e\u0442\u043a\u0438\u0439";
+      return "Ng\u1eafn";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u043d\u0438\u0439 \u0434\u0456\u0454\u0441\u043b\u043e\u0432\u043e";
+      return "\u0110\u1ed9ng t\u1eeb sai khi\u1ebfn";
     },
     get$grammarCopyVOICEcau() {
-      return "\u041f\u0440\u0438\u0447\u0438\u043d\u043d\u0438\u0439";
+      return "Th\u1ec3 g\xe2y khi\u1ebfn";
     },
     get$grammarCopyVOICEdir() {
-      return "\u041f\u0440\u044f\u043c\u0438\u0439";
+      return "Th\u1ec3 tr\u1ef1c ti\u1ebfp";
     },
     get$grammarCopyVOICEinv() {
-      return "\u0417\u0432\u043e\u0440\u043e\u0442\u043d\u0456\u0439";
+      return "Th\u1ec3 ngh\u1ecbch \u0111\u1ea3o";
     },
     get$grammarCopyVOICErcp() {
-      return "\u0412\u0437\u0430\u0454\u043c\u043d\u0438\u0439";
+      return "Th\u1ec3 t\u01b0\u01a1ng h\u1ed7";
     },
     get$other() {
-      return "\u0406\u043d\u0448\u0435";
+      return "Kh\xe1c";
     },
     levelShort$1(level) {
-      return "\u0420\u0456\u0432\u0435\u043d\u044c " + level;
+      return "LVL " + level;
     },
     get$clickBestOption() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043d\u0430\u0439\u043a\u0440\u0430\u0449\u0456 \u0432\u0430\u0440\u0456\u0430\u043d\u0442\u0438 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0443 \u0432\u0430\u0448\u043e\u0433\u043e \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f!";
+      return "Ch\u1ecdn c\xe1c t\xf9y ch\u1ecdn t\u1ed1t nh\u1ea5t \u0111\u1ec3 d\u1ecbch tin nh\u1eafn c\u1ee7a b\u1ea1n! Nh\u1ea5n v\xe0 gi\u1eef c\xe1c t\xf9y ch\u1ecdn \u0111\u1ec3 xem g\u1ee3i \xfd.";
     },
     get$completeActivitiesToUnlock() {
-      return "\u0417\u0430\u0432\u0435\u0440\u0448\u0456\u0442\u044c \u0445\u043e\u0447\u0430 \u0431 \u043e\u0434\u043d\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c, \u0449\u043e\u0431 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434!";
+      return "Ho\xe0n th\xe0nh \xedt nh\u1ea5t m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a b\u1ea3n d\u1ecbch!";
     },
     get$downloadGroupText() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0442\u0435\u043a\u0441\u0442 \u0433\u0440\u0443\u043f\u0438";
+      return "T\u1ea3i n\u1ed9i dung nh\xf3m";
     },
     get$notificationsOn() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e";
+      return "B\u1eadt th\xf4ng b\xe1o";
     },
     get$notificationsOff() {
-      return "\u0421\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u043e";
+      return "T\u1eaft th\xf4ng b\xe1o";
     },
     get$createChatAndInviteUsers() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0447\u0430\u0442 \u0456 \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432";
+      return "T\u1ea1o cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 m\u1eddi ng\u01b0\u1eddi d\xf9ng";
     },
     get$updatedNewSpaceDescription() {
-      return "\u041a\u0443\u0440\u0441\u0438 \u0434\u043e\u0437\u0432\u043e\u043b\u044f\u044e\u0442\u044c \u043a\u043e\u043d\u0441\u043e\u043b\u0456\u0434\u0443\u0432\u0430\u0442\u0438 \u0432\u0430\u0448\u0456 \u0447\u0430\u0442\u0438 \u0442\u0430 \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438 \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0456 \u0430\u0431\u043e \u043f\u0443\u0431\u043b\u0456\u0447\u043d\u0456 \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0438.";
+      return "C\xe1c kh\xf3a h\u1ecdc cho ph\xe9p b\u1ea1n h\u1ee3p nh\u1ea5t c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n c\u1ee7a m\xecnh v\xe0 x\xe2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng ri\xeang t\u01b0 ho\u1eb7c c\xf4ng c\u1ed9ng.";
     },
     get$joinWithCode() {
-      return "\u041f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0437\u0430 \u043a\u043e\u0434\u043e\u043c";
+      return "Tham gia b\u1eb1ng m\xe3";
     },
     get$enterCodeToJoin() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043a\u043e\u0434 \u0434\u043b\u044f \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f";
+      return "Nh\u1eadp m\xe3 \u0111\u1ec3 tham gia";
     },
     get$updateNow() {
-      return "\u041e\u043d\u043e\u0432\u0438\u0442\u0438 \u0437\u0430\u0440\u0430\u0437";
+      return "C\u1eadp nh\u1eadt ngay";
     },
     get$updateLater() {
-      return "\u041f\u0456\u0437\u043d\u0456\u0448\u0435";
+      return "\u0110\u1ec3 sau";
     },
     get$constructUseWaDesc() {
-      return "\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f \u0431\u0435\u0437 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0438";
+      return "D\xf9ng kh\xf4ng c\u1ea7n tr\u1ee3 gi\xfap";
     },
     get$constructUseGaDesc() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0430";
+      return "H\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
     get$constructUseTaDesc() {
-      return "\u0414\u043e\u043f\u043e\u043c\u043e\u0433\u0430 \u0437 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u043e\u043c";
+      return "H\u1ed7 tr\u1ee3 d\u1ecbch thu\u1eadt";
     },
     get$constructUseUnkDesc() {
-      return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u043e";
+      return "Kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
     get$constructUseCorITDesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0456";
+      return "\u0110\xfang trong d\u1ecbch";
     },
     get$constructUseIgnITDesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0456";
+      return "B\u1ecf qua trong d\u1ecbch";
     },
     get$constructUseIncITDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u043e \u0443 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0456";
+      return "Ch\u1ecdn sai trong d\u1ecbch";
     },
     get$constructUseIgnIGCDesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456\u0439 \u043a\u043e\u0440\u0435\u043a\u0446\u0456\u0457";
+      return "B\u1ecf qua trong s\u1eeda ng\u1eef ph\xe1p";
     },
     get$constructUseCorIGCDesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456\u0439 \u043a\u043e\u0440\u0435\u043a\u0446\u0456\u0457";
+      return "\u0110\xfang trong s\u1eeda ng\u1eef ph\xe1p";
     },
     get$constructUseIncIGCDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u043e \u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456\u0439 \u043a\u043e\u0440\u0435\u043a\u0446\u0456\u0457";
+      return "Ch\u1ecdn sai trong s\u1eeda ng\u1eef ph\xe1p";
     },
     get$constructUseCorPADesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f\u043c \u0441\u043b\u043e\u0432\u0430";
+      return "\u0110\xfang trong b\xe0i t\u1eadp t\u1eeb v\u1ef1ng";
     },
     get$constructUseIgnPADesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f\u043c \u0441\u043b\u043e\u0432\u0430";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp t\u1eeb v\u1ef1ng";
     },
     get$constructUseIncPADesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u043e \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f\u043c \u0441\u043b\u043e\u0432\u0430";
+      return "Sai trong b\xe0i t\u1eadp t\u1eeb v\u1ef1ng";
     },
     get$constructUseCorWLDesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u043f\u0440\u043e\u0441\u043b\u0443\u0445\u043e\u0432\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0441\u043b\u0456\u0432";
+      return "\u0110\xfang trong b\xe0i t\u1eadp nghe t\u1eeb";
     },
     get$constructUseIncWLDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u043e \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u043f\u0440\u043e\u0441\u043b\u0443\u0445\u043e\u0432\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0441\u043b\u0456\u0432";
+      return "Sai trong b\xe0i t\u1eadp nghe t\u1eeb";
     },
     get$constructUseIngWLDesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u043f\u0440\u043e\u0441\u043b\u0443\u0445\u043e\u0432\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u0441\u043b\u0456\u0432";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp nghe t\u1eeb";
     },
     get$constructUseCorHWLDesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456\u0439 \u0433\u0440\u0456 \u0441\u043b\u0456\u0432";
+      return "\u0110\xfang trong b\xe0i t\u1eadp t\u1eeb \u1ea9n";
     },
     get$constructUseIncHWLDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u043e \u0443 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456\u0439 \u0433\u0440\u0456 \u0441\u043b\u0456\u0432";
+      return "Sai trong b\xe0i t\u1eadp t\u1eeb \u1ea9n";
     },
     get$constructUseIgnHWLDesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u043f\u0440\u0438\u0445\u043e\u0432\u0430\u043d\u0456\u0439 \u0433\u0440\u0456 \u0441\u043b\u0456\u0432";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp t\u1eeb \u1ea9n";
     },
     get$constructUseCorLDesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u043b\u0435\u043c\u043e\u044e";
+      return "\u0110\xfang trong b\xe0i t\u1eadp chuy\u1ec3n d\u1ea1ng t\u1eeb";
     },
     get$constructUseIncLDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u043e \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u043b\u0435\u043c\u043e\u044e";
+      return "Sai trong b\xe0i t\u1eadp chuy\u1ec3n d\u1ea1ng t\u1eeb";
     },
     get$constructUseIgnLDesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u043b\u0435\u043c\u043e\u044e";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp chuy\u1ec3n d\u1ea1ng t\u1eeb";
     },
     get$constructUseCorMDesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456\u0439 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456";
+      return "\u0110\xfang trong b\xe0i t\u1eadp ng\u1eef ph\xe1p";
     },
     get$constructUseIncMDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u043e \u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456\u0439 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456";
+      return "Sai trong b\xe0i t\u1eadp ng\u1eef ph\xe1p";
     },
     get$constructUseIgnMDesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u0443\u0454\u0442\u044c\u0441\u044f \u0443 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456\u0439 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456";
+      return "B\u1ecf qua trong b\xe0i t\u1eadp ng\u1eef ph\xe1p";
     },
     get$constructUseEmojiDesc() {
-      return "\u0412\u0456\u0440\u043d\u043e \u0443 \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456 \u0437 \u0435\u043c\u043e\u0434\u0437\u0456";
+      return "Ch\u1ecdn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac ch\xednh x\xe1c";
     },
     get$constructUseCollected() {
-      return "\u0417\u0456\u0431\u0440\u0430\u043d\u043e \u0443 \u0447\u0430\u0442\u0456";
+      return "\u0110\u01b0\u1ee3c thu th\u1eadp trong tr\xf2 chuy\u1ec7n";
     },
     get$constructUseNanDesc() {
-      return "\u041d\u0435 \u0437\u0430\u0441\u0442\u043e\u0441\u043e\u0432\u0443\u0454\u0442\u044c\u0441\u044f";
+      return "Kh\xf4ng \xe1p d\u1ee5ng";
     },
     xpIntoLevel$2(currentXP, maxXP) {
       return "" + currentXP + " / " + maxXP + " XP";
     },
     get$enableTTSToolName() {
-      return "\u0423\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e \u0442\u0435\u043a\u0441\u0442 \u0443 \u043c\u043e\u0432\u0443";
+      return "B\u1eadt \u0111\u1ecdc v\u0103n b\u1ea3n (text-to-speech)";
     },
     get$enableTTSToolDescription() {
-      return "\u0414\u043e\u0437\u0432\u043e\u043b\u044c\u0442\u0435 \u0434\u043e\u0434\u0430\u0442\u043a\u0443 \u0433\u0435\u043d\u0435\u0440\u0443\u0432\u0430\u0442\u0438 \u0432\u0438\u0445\u0456\u0434\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 \u0443 \u043c\u043e\u0432\u0443 \u0434\u043b\u044f \u0447\u0430\u0441\u0442\u0438\u043d \u0442\u0435\u043a\u0441\u0442\u0443 \u0432\u0430\u0448\u043e\u0457 \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0457 \u043c\u043e\u0432\u0438.";
+      return "Cho ph\xe9p \u1ee9ng d\u1ee5ng t\u1ea1o \xe2m thanh \u0111\u1ecdc v\u0103n b\u1ea3n c\u1ee7a ng\xf4n ng\u1eef \u0111\xedch";
     },
     get$yourUsername() {
-      return "\u0412\u0430\u0448\u0435 \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "T\xean ng\u01b0\u1eddi d\xf9ng c\u1ee7a b\u1ea1n";
     },
     get$yourEmail() {
-      return "\u0412\u0430\u0448\u0430 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430 \u043f\u043e\u0448\u0442\u0430";
+      return "Email c\u1ee7a b\u1ea1n";
     },
     get$iWantToLearn() {
-      return "\u042f \u0445\u043e\u0447\u0443 \u043d\u0430\u0432\u0447\u0438\u0442\u0438\u0441\u044f";
+      return "T\xf4i mu\u1ed1n h\u1ecdc";
     },
     get$pleaseEnterEmail() {
-      return string$.______;
+      return "Vui l\xf2ng nh\u1eadp \u0111\u1ecba ch\u1ec9 email h\u1ee3p l\u1ec7.";
     },
     get$myBaseLanguage() {
-      return "\u041c\u043e\u044f \u0431\u0430\u0437\u043e\u0432\u0430 \u043c\u043e\u0432\u0430";
+      return "Ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a t\xf4i";
     },
     get$formSectionHeader() {
-      return "\u0424\u043e\u0440\u043c\u0438, \u0449\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0442\u044c\u0441\u044f \u0443 \u0447\u0430\u0442\u0430\u0445:";
+      return "C\xe1c d\u1ea1ng t\u1eeb \u0111\xe3 d\xf9ng trong tr\xf2 chuy\u1ec7n:";
     },
     get$writingExercisesTooltip() {
-      return "\u041f\u0438\u0441\u044c\u043c\u043e";
+      return "B\xe0i t\u1eadp vi\u1ebft";
     },
     get$listeningExercisesTooltip() {
-      return "\u0421\u043b\u0443\u0445\u0430\u043d\u043d\u044f";
+      return "B\xe0i t\u1eadp nghe";
     },
     get$readingExercisesTooltip() {
-      return "\u0427\u0438\u0442\u0430\u043d\u043d\u044f";
+      return "B\xe0i t\u1eadp \u0111\u1ecdc";
     },
     get$meaningNotFound() {
-      return "\u0417\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e.";
+      return "Kh\xf4ng t\xecm th\u1ea5y ngh\u0129a c\u1ee7a t\u1eeb.";
     },
     get$notTheCodeError() {
-      return "\u0412\u0438\u0431\u0430\u0447\u0442\u0435, \u0446\u0435 \u043d\u0435 \u043a\u043e\u0434!";
+      return "Xin l\u1ed7i, m\xe3 \u0111\xf3 kh\xf4ng \u0111\xfang!";
     },
     get$totalXP() {
-      return "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439 \u0434\u043e\u0441\u0432\u0456\u0434";
+      return "T\u1ed5ng XP";
     },
     get$numLemmas() {
-      return "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0430 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043b\u0435\u043c";
+      return "T\u1ed5ng s\u1ed1 m\u1ee5c t\u1eeb";
     },
     get$numLemmasUsedCorrectly() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043b\u0435\u043c, \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u0438\u0445 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0449\u043e\u043d\u0430\u0439\u043c\u0435\u043d\u0448\u0435 \u043e\u0434\u0438\u043d \u0440\u0430\u0437";
+      return "S\u1ed1 m\u1ee5c t\u1eeb \u0111\xe3 d\xf9ng \u0111\xfang \xedt nh\u1ea5t m\u1ed9t l\u1ea7n";
     },
     get$numLemmasUsedIncorrectly() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043b\u0435\u043c, \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u0438\u0445 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e 0 \u0440\u0430\u0437\u0456\u0432";
+      return "S\u1ed1 m\u1ee5c t\u1eeb ch\u01b0a t\u1eebng \u0111\u01b0\u1ee3c d\xf9ng \u0111\xfang";
     },
     get$numLemmasSmallXP() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043b\u0435\u043c \u0437 0 \u0434\u043e 30 XP";
+      return "S\u1ed1 m\u1ee5c t\u1eeb 0 - 30 XP";
     },
     get$numLemmasMediumXP() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043b\u0435\u043c \u0437 31 \u0434\u043e 200 XP";
+      return "S\u1ed1 m\u1ee5c t\u1eeb 31 - 200 XP";
     },
     get$numLemmasLargeXP() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043b\u0435\u043c \u0437 \u043f\u043e\u043d\u0430\u0434 200 XP";
+      return "S\u1ed1 m\u1ee5c t\u1eeb > 200 XP";
     },
     get$numGrammarConcepts() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0439";
+      return "S\u1ed1 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p";
     },
     get$listGrammarConcepts() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457";
+      return "C\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457, \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u0456 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0443 \u043e\u0440\u0438\u0433\u0456\u043d\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u0445 \u0449\u043e\u043d\u0430\u0439\u043c\u0435\u043d\u0448\u0435 80% \u0447\u0430\u0441\u0443";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p d\xf9ng \u0111\xfang \xedt nh\u1ea5t 80% trong tin nh\u1eafn g\u1ed1c";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457, \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u0456 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0443 \u043e\u0440\u0438\u0433\u0456\u043d\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u0445 \u043c\u0435\u043d\u0448\u0435 \u043d\u0456\u0436 80% \u0447\u0430\u0441\u0443";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p d\xf9ng \u0111\xfang d\u01b0\u1edbi 80% trong tin nh\u1eafn g\u1ed1c";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457, \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043e\u0431\u0440\u0430\u043d\u0456 \u0437 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043f\u0440\u043e\u043f\u043e\u0437\u0438\u0446\u0456\u0439 \u0449\u043e\u043d\u0430\u0439\u043c\u0435\u043d\u0448\u0435 80% \u0447\u0430\u0441\u0443";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p ch\u1ecdn \u0111\xfang \xedt nh\u1ea5t 80% t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457, \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043e\u0431\u0440\u0430\u043d\u0456 \u0437 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043f\u0440\u043e\u043f\u043e\u0437\u0438\u0446\u0456\u0439 \u043c\u0435\u043d\u0448\u0435 \u043d\u0456\u0436 80% \u0447\u0430\u0441\u0443";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p ch\u1ecdn \u0111\xfang d\u01b0\u1edbi 80% t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$listGrammarConceptsSmallXP() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457 \u0437 0-50 XP";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p 0 - 50 XP";
     },
     get$listGrammarConceptsMediumXP() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457 \u0437 51-200 XP";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p 51 - 200 XP";
     },
     get$listGrammarConceptsLargeXP() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457 \u0437 201-500 XP";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p 201 - 500 XP";
     },
     get$listGrammarConceptsHugeXP() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457 \u043f\u043e\u043d\u0430\u0434 500 XP";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p > 500 XP";
     },
     get$numMessagesSent() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u0438\u0445 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c";
+      return "S\u1ed1 tin nh\u1eafn \u0111\xe3 g\u1eedi";
     },
     get$numWordsTyped() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0432\u0432\u0435\u0434\u0435\u043d\u0438\u0445 \u0441\u043b\u0456\u0432 \u0443 \u043e\u0440\u0438\u0433\u0456\u043d\u0430\u043b\u044c\u043d\u0438\u0445 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f\u0445";
+      return "S\u1ed1 t\u1eeb \u0111\xe3 g\xf5 trong tin nh\u1eafn g\u1ed1c";
     },
     get$numCorrectChoices() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043e\u0431\u0440\u0430\u043d\u0438\u0445 \u0441\u043b\u0456\u0432 \u0437 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043f\u0440\u043e\u043f\u043e\u0437\u0438\u0446\u0456\u0439";
+      return "S\u1ed1 t\u1eeb \u0111\xe3 ch\u1ecdn ch\xednh x\xe1c t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$numIncorrectChoices() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u043e\u0431\u0440\u0430\u043d\u0438\u0445 \u0441\u043b\u0456\u0432 \u0437 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043f\u0440\u043e\u043f\u043e\u0437\u0438\u0446\u0456\u0439";
+      return "S\u1ed1 t\u1eeb \u0111\xe3 ch\u1ecdn sai t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3680,1669 +3680,1669 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "\u0422\u0438\u043f \u0444\u0430\u0439\u043b\u0443";
+      return "Lo\u1ea1i t\u1ec7p";
     },
     get$download(_) {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438";
+      return "T\u1ea3i xu\u1ed1ng";
     },
     get$analyticsNotAvailable() {
-      return "\u0410\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0430 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0430";
+      return "D\u1eef li\u1ec7u ph\xe2n t\xedch kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
     get$downloading() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f...";
+      return "\u0110ang t\u1ea3i xu\u1ed1ng...";
     },
     get$failedFetchUserAnalytics() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0443 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430";
+      return "Kh\xf4ng th\u1ec3 t\u1ea3i d\u1eef li\u1ec7u ph\xe2n t\xedch ng\u01b0\u1eddi d\xf9ng";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "\u0429\u043e \u0442\u0430\u043a\u0435 " + morphologicalFeature + " \u0434\u043b\u044f '" + wordForm + "'?";
+      return '\u0110\u1eb7c \u0111i\u1ec3m ng\u1eef ph\xe1p "' + morphologicalFeature + "\" c\u1ee7a '" + wordForm + "' l\xe0 g\xec?";
     },
     get$dataAvailable() {
-      return "\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u0456\u0441\u0442\u044c \u0434\u0430\u043d\u0438\u0445";
+      return "D\u1eef li\u1ec7u kh\u1ea3 d\u1ee5ng";
     },
     get$available(_) {
-      return "\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
+      return "Kh\u1ea3 d\u1ee5ng";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot \u0442\u0430\u043a\u043e\u0436 \u0440\u043e\u0431\u0438\u0442\u044c \u043f\u043e\u043c\u0438\u043b\u043a\u0438!";
+      return "Pangea Bot c\u0169ng c\xf3 th\u1ec3 m\u1eafc l\u1ed7i!";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "\u0429\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u0454 '" + lemma + "'?";
+      return "T\u1eeb '" + lemma + "' c\xf3 ngh\u0129a l\xe0 g\xec?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "\u0417\u0456\u0441\u0442\u0430\u0432\u0442\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0437 \u0441\u043b\u043e\u0432\u0430\u043c\u0438 \u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u0456!";
+      return "Kh\u1edbp ngh\u0129a v\u1edbi c\xe1c t\u1eeb trong tin nh\u1eafn!";
     },
     get$doubleClickToEdit() {
-      return "\u0414\u0432\u0456\u0447\u0456 \u043a\u043b\u0430\u0446\u043d\u0456\u0442\u044c \u0434\u043b\u044f \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u043d\u043d\u044f.";
+      return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
     },
     get$cefrLevelLabel() {
-      return "\u0420\u0456\u0432\u0435\u043d\u044c CEFR";
+      return "Tr\xecnh \u0111\u1ed9 CEFR";
     },
     get$image(_) {
-      return "\u0417\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f";
+      return "H\xecnh \u1ea3nh";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "\u041e\u0431\u0435\u0440\u0438 \u0442\u0435\u043c\u0443, \u0440\u0435\u0436\u0438\u043c, \u043c\u0435\u0442\u0443 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u0442\u0430 \u0441\u0442\u0432\u043e\u0440\u044e\u0439 \u0434\u0456\u044f\u043b\u044c\u043d\u0456\u0441\u0442\u044c \u0434\u043b\u044f \u0447\u0430\u0442\u0443!";
+      return "Ch\u1ecdn ch\u1ee7 \u0111\u1ec1, ch\u1ebf \u0111\u1ed9, m\u1ee5c ti\xeau h\u1ecdc t\u1eadp v\xe0 t\u1ea1o ho\u1ea1t \u0111\u1ed9ng cho cu\u1ed9c tr\xf2 chuy\u1ec7n!";
     },
     get$constructUsePvmDesc() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0435\u043d\u043e \u0443 \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u043c\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u0456";
+      return "\u0110\xe3 s\u1eed d\u1ee5ng trong tin nh\u1eafn tho\u1ea1i";
     },
     get$leaveSpaceDescription() {
-      return "\u0417\u0430\u043b\u0438\u0448\u0430\u044e\u0447\u0438 \u043a\u0443\u0440\u0441, \u0432\u0438 \u0437\u0430\u043b\u0438\u0448\u0430\u0454\u0442\u0435 \u0432\u0441\u0456 \u0447\u0430\u0442\u0438 \u0432 \u043d\u044c\u043e\u043c\u0443. \u0406\u043d\u0448\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 \u043f\u043e\u0431\u0430\u0447\u0430\u0442\u044c, \u0449\u043e \u0432\u0438 \u043f\u043e\u043a\u0438\u043d\u0443\u043b\u0438 \u043a\u0443\u0440\u0441.";
+      return "B\u1eb1ng c\xe1ch r\u1eddi kh\u1ecfi kh\xf3a h\u1ecdc, b\u1ea1n s\u1ebd r\u1eddi kh\u1ecfi t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n trong \u0111\xf3. C\xe1c ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y r\u1eb1ng b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi kh\xf3a h\u1ecdc.";
     },
     get$constructUseCorMmDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "\u0110\xfang trong \xfd ngh\u0129a tin nh\u1eafn";
     },
     get$constructUseIncMmDesc() {
-      return "\u041d\u0435\u043a\u043e\u0440\u0435\u043a\u0442\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Sai trong \xfd ngh\u0129a tin nh\u1eafn";
     },
     get$constructUseIgnMmDesc() {
-      return "\u0406\u0433\u043d\u043e\u0440\u043e\u0432\u0430\u043d\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "B\u1ecf qua trong \xfd ngh\u0129a tin nh\u1eafn";
     },
     get$meaning() {
-      return "\u0417\u043d\u0430\u0447\u0435\u043d\u043d\u044f";
+      return "Ngh\u0129a";
     },
     chatWith$1(displayname) {
-      return "\u0413\u0440\u0443\u043f\u0430 \u0437 " + displayname;
+      return "Nh\xf3m v\u1edbi " + displayname;
     },
     get$clickOnEmailLink() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043d\u0430 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u0432 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0456\u0439 \u043f\u043e\u0448\u0442\u0456 \u0442\u0430 \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0443\u0439\u0442\u0435.\n\n\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u043f\u0430\u043f\u043a\u0443 \u0441\u043f\u0430\u043c, \u044f\u043a\u0449\u043e \u043b\u0438\u0441\u0442 \u043d\u0435 \u043d\u0430\u0434\u0456\u0439\u0448\u043e\u0432.";
+      return "Vui l\xf2ng nh\u1ea5p v\xe0o li\xean k\u1ebft trong email v\xe0 sau \u0111\xf3 ti\u1ebfp t\u1ee5c. Trong m\u1ed9t s\u1ed1 tr\u01b0\u1eddng h\u1ee3p hi\u1ebfm hoi, email c\xf3 th\u1ec3 b\u1ecb g\u1eedi v\xe0o th\u01b0 r\xe1c ho\u1eb7c m\u1ea5t \u0111\u1ebfn 5 ph\xfat \u0111\u1ec3 \u0111\u1ebfn n\u01a1i.";
     },
     get$dontForgetPassword() {
-      return "\u041d\u0435 \u0437\u0430\u0431\u0443\u0434\u044c\u0442\u0435 \u0441\u0432\u0456\u0439 \u043f\u0430\u0440\u043e\u043b\u044c!";
+      return "\u0110\u1eebng qu\xean m\u1eadt kh\u1ea9u c\u1ee7a b\u1ea1n!";
     },
     get$enableAutocorrectToolName() {
-      return "\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0430\u0432\u0442\u043e\u043a\u043e\u0440\u0435\u043a\u0446\u0456\u044e \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044e";
+      return "B\u1eadt t\u1ef1 \u0111\u1ed9ng s\u1eeda";
     },
     get$enableAutocorrectDescription() {
-      return "\u042f\u043a\u0449\u043e \u0432\u0430\u0448\u0435 \u043f\u0440\u0438\u0441\u0442\u0440\u0456\u0439 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454 \u043c\u043e\u0432\u0443, \u044f\u043a\u0443 \u0432\u0438 \u0432\u0438\u0432\u0447\u0430\u0454\u0442\u0435, \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u0430\u0432\u0442\u043e\u043a\u043e\u0440\u0435\u043a\u0446\u0456\u044e \u0434\u043b\u044f \u0432\u0438\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u043f\u043e\u0448\u0438\u0440\u0435\u043d\u0438\u0445 \u043f\u043e\u043c\u0438\u043b\u043e\u043a \u043f\u0456\u0434 \u0447\u0430\u0441 \u043d\u0430\u0431\u043e\u0440\u0443 \u0442\u0435\u043a\u0441\u0442\u0443.";
+      return "S\u1eed d\u1ee5ng t\xednh n\u0103ng t\u1ef1 \u0111\u1ed9ng s\u1eeda t\xedch h\u1ee3p c\u1ee7a b\xe0n ph\xedm khi g\xf5 tin nh\u1eafn";
     },
     get$ttsDisbledTitle() {
-      return "\u0412\u0456\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043e \u043e\u0437\u0432\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0435\u043a\u0441\u0442\u0443";
+      return "T\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i \u0111\xe3 b\u1ecb t\u1eaft";
     },
     get$ttsDisabledBody() {
-      return "\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0443\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043e\u0437\u0432\u0443\u0447\u0443\u0432\u0430\u043d\u043d\u044f \u0442\u0435\u043a\u0441\u0442\u0443 \u0443 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f\u0445 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f";
+      return "B\u1ea1n c\xf3 th\u1ec3 b\u1eadt t\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i trong c\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp c\u1ee7a b\u1ea1n";
     },
     get$noSpaceDescriptionYet() {
-      return "\u0429\u0435 \u043d\u0435 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043e \u043e\u043f\u0438\u0441 \u043a\u0443\u0440\u0441\u0443.";
+      return "Ch\u01b0a t\u1ea1o m\xf4 t\u1ea3 kh\xf3a h\u1ecdc n\xe0o.";
     },
     get$tooLargeToSend() {
-      return "\u0426\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0437\u0430\u043d\u0430\u0434\u0442\u043e \u0432\u0435\u043b\u0438\u043a\u0435 \u0434\u043b\u044f \u0432\u0456\u0434\u043f\u0440\u0430\u0432\u043a\u0438";
+      return "Tin nh\u1eafn n\xe0y qu\xe1 l\u1edbn \u0111\u1ec3 g\u1eedi";
     },
     get$exitWithoutSaving() {
-      return "\u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456, \u0449\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u0439\u0442\u0438 \u0431\u0435\u0437 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043d\u044f?";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n r\u1eddi \u0111i m\xe0 kh\xf4ng l\u01b0u kh\xf4ng?";
     },
     get$enableAutocorrectWarning() {
-      return "\u0423\u0432\u0430\u0433\u0430! \u041f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u0434\u043e\u0434\u0430\u0442\u0438 \u043a\u043b\u0430\u0432\u0456\u0430\u0442\u0443\u0440\u0443 \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0457 \u043c\u043e\u0432\u0438";
+      return "C\u1ea3nh b\xe1o! C\u1ea7n th\xeam b\xe0n ph\xedm ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n";
     },
     get$leaveRoomDescription() {
-      return "\u0412\u0438 \u0437\u0431\u0438\u0440\u0430\u0454\u0442\u0435\u0441\u044f \u043f\u043e\u043a\u0438\u043d\u0443\u0442\u0438 \u0446\u0435\u0439 \u0447\u0430\u0442. \u0406\u043d\u0448\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 \u043f\u043e\u0431\u0430\u0447\u0430\u0442\u044c, \u0449\u043e \u0432\u0438 \u043f\u043e\u043a\u0438\u043d\u0443\u043b\u0438 \u0447\u0430\u0442.";
+      return "B\u1ea1n s\u1eafp r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. Nh\u1eefng ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y r\u1eb1ng b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
     get$confirmUserId() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043f\u0456\u0434\u0442\u0432\u0435\u0440\u0434\u0456\u0442\u044c \u0441\u0432\u043e\u0454 \u0456\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 Pangea Chat, \u0449\u043e\u0431 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0441\u0432\u0456\u0439 \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0441.";
+      return "Vui l\xf2ng x\xe1c nh\u1eadn t\xean ng\u01b0\u1eddi d\xf9ng Pangea Chat c\u1ee7a b\u1ea1n \u0111\u1ec3 x\xf3a t\xe0i kho\u1ea3n.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "\u041f\u043e\u0447\u0438\u043d\u0430\u0454\u0442\u044c\u0441\u044f " + startDate;
+      return "B\u1eaft \u0111\u1ea7u t\u1eeb " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 \u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438 \u0443 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0439 \u0447\u0430\u0441 \u0443 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f\u0445 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438";
+      return "\u2022 H\u1ee7y b\u1ea5t c\u1ee9 l\xfac n\xe0o trong c\xe0i \u0111\u1eb7t \u0111\u0103ng k\xfd";
     },
     get$autocorrectNotAvailable() {
-      return "\u041d\u0430 \u0436\u0430\u043b\u044c, \u0446\u044f \u0444\u0443\u043d\u043a\u0446\u0456\u044f \u043d\u0430\u0440\u0430\u0437\u0456 \u043d\u0435 \u043f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0454\u0442\u044c\u0441\u044f \u0432\u0430\u0448\u043e\u044e \u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u043e\u044e. \u0417\u0430\u043b\u0438\u0448\u0430\u0439\u0442\u0435\u0441\u044f \u0437 \u043d\u0430\u043c\u0438 \u0434\u043b\u044f \u043f\u043e\u0434\u0430\u043b\u044c\u0448\u043e\u0433\u043e \u0440\u043e\u0437\u0432\u0438\u0442\u043a\u0443!";
+      return "R\u1ea5t ti\u1ebfc, n\u1ec1n t\u1ea3ng c\u1ee7a b\u1ea1n hi\u1ec7n kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 cho t\xednh n\u0103ng n\xe0y. H\xe3y theo d\xf5i \u0111\u1ec3 bi\u1ebft th\xeam th\xf4ng tin ph\xe1t tri\u1ec3n!";
     },
     get$pleaseUpdateApp() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043e\u043d\u043e\u0432\u0456\u0442\u044c \u0434\u043e\u0434\u0430\u0442\u043e\u043a \u0434\u043b\u044f \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0435\u043d\u043d\u044f.";
+      return "Vui l\xf2ng c\u1eadp nh\u1eadt \u1ee9ng d\u1ee5ng \u0111\u1ec3 ti\u1ebfp t\u1ee5c.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "\u0417\u0456\u0441\u0442\u0430\u0432\u0442\u0435 \u0435\u043c\u043e\u0434\u0437\u0456 \u0437 \u0441\u043b\u043e\u0432\u0430\u043c\u0438, \u044f\u043a\u0456 \u0432\u043e\u043d\u0438 \u043d\u0430\u0439\u043a\u0440\u0430\u0449\u0435 \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u044f\u044e\u0442\u044c. \u041d\u0435 \u0445\u0432\u0438\u043b\u044e\u0439\u0442\u0435\u0441\u044f! \u041d\u0435\u043c\u0430\u0454 \u0448\u0442\u0440\u0430\u0444\u043d\u0438\u0445 \u043e\u0447\u043e\u043a \u0437\u0430 \u043d\u0435\u0437\u0433\u043e\u0434\u0443. \ud83d\ude05";
+      return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho t\u1eeb n\xe0y! Kh\xf4ng c\xf3 c\xe2u tr\u1ea3 l\u1eddi sai v\xe0 b\u1ea1n c\xf3 th\u1ec3 chuy\u1ec3n \u0111\u1ed5i b\u1ea5t c\u1ee9 l\xfac n\xe0o! \ud83d\ude04";
     },
     get$analyticsVocabListBody() {
-      return "\u0426\u0435 \u0432\u0435\u0441\u044c \u0432\u0430\u0448 \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0430\u0441! \u041a\u043e\u043b\u0438 \u0432\u0438 \u0437\u0430\u0440\u043e\u0431\u043b\u044f\u0454\u0442\u0435 XP \u0437\u0430 \u043a\u043e\u0436\u043d\u0435 \u0441\u043b\u043e\u0432\u043e, \u0432\u043e\u043d\u0438 \u043f\u0435\u0440\u0435\u0442\u0432\u043e\u0440\u044e\u044e\u0442\u044c\u0441\u044f \u0437 \u043f\u0430\u0440\u043e\u0441\u0442\u043a\u0430 \u0443 \u043f\u043e\u0432\u043d\u0438\u0439 \u0446\u0432\u0456\u0442. \u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0431\u0443\u0434\u044c-\u044f\u043a\u0435 \u0441\u043b\u043e\u0432\u043e, \u0449\u043e\u0431 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438 \u0434\u0435\u0442\u0430\u043b\u044c\u043d\u0456\u0448\u0435.";
+      return "\u0110\xe2y l\xe0 to\xe0n b\u1ed9 t\u1eeb v\u1ef1ng c\u1ee7a b\u1ea1n! Khi b\u1ea1n ki\u1ebfm XP cho m\u1ed7i t\u1eeb, ch\xfang s\u1ebd t\u1eeb h\u1ea1t gi\u1ed1ng ph\xe1t tri\u1ec3n th\xe0nh n\u1edf r\u1ed9. Nh\u1ea5p v\xe0o b\u1ea5t k\u1ef3 t\u1eeb n\xe0o \u0111\u1ec3 xem th\xeam chi ti\u1ebft.";
     },
     get$morphAnalyticsListBody() {
-      return "\u0426\u0435 \u0432\u0441\u0456 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457 \u0443 \u043c\u043e\u0432\u0456, \u044f\u043a\u0443 \u0432\u0438 \u0432\u0438\u0432\u0447\u0430\u0454\u0442\u0435! \u0412\u0438 \u0457\u0445 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438\u043c\u0435\u0442\u0435 \u043f\u043e \u043c\u0456\u0440\u0456 \u0457\u0445 \u0437\u0443\u0441\u0442\u0440\u0456\u0447\u0456 \u043f\u0456\u0434 \u0447\u0430\u0441 \u0441\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u043d\u043d\u044f. \u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0434\u043b\u044f \u0434\u0435\u0442\u0430\u043b\u0435\u0439.";
+      return "\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p trong ng\xf4n ng\u1eef b\u1ea1n \u0111ang h\u1ecdc! B\u1ea1n s\u1ebd m\u1edf kh\xf3a ch\xfang khi g\u1eb7p ph\u1ea3i trong khi tr\xf2 chuy\u1ec7n. Nh\u1ea5p \u0111\u1ec3 xem chi ti\u1ebft.";
     },
     get$knockSpaceSuccess() {
-      return "\u0412\u0438 \u043f\u043e\u0434\u0430\u043b\u0438 \u0437\u0430\u044f\u0432\u043a\u0443 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443! \u0410\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440 \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0441\u0442\u044c \u043d\u0430 \u0432\u0430\u0448\u0435 \u0437\u0430\u043f\u0438\u0442\u0430\u043d\u043d\u044f, \u043a\u043e\u043b\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u0454 \u0439\u043e\u0433\u043e \ud83d\ude00";
+      return "B\u1ea1n \u0111\xe3 y\xeau c\u1ea7u tham gia kh\xf3a h\u1ecdc n\xe0y! Qu\u1ea3n tr\u1ecb vi\xean s\u1ebd ph\u1ea3n h\u1ed3i y\xeau c\u1ea7u c\u1ee7a b\u1ea1n khi h\u1ecd nh\u1eadn \u0111\u01b0\u1ee3c \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "\u041f\u0440\u043e\u0441\u043b\u0443\u0445\u0430\u0439\u0442\u0435 \u043f\u043e\u0432\u043d\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f. \u041f\u043e\u0442\u0456\u043c \u0437\u0456\u0441\u0442\u0430\u0432\u0442\u0435 \u0430\u0443\u0434\u0456\u043e \u0437 \u0441\u043b\u043e\u0432\u0430\u043c\u0438.";
+      return "Nghe to\xe0n b\u1ed9 tin nh\u1eafn. Sau \u0111\xf3, kh\u1edbp c\xe1c \xe2m thanh v\u1edbi c\xe1c t\u1eeb.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043d\u0430 \u0447\u0430\u0441\u0442\u0438\u043d\u0438 \u0433\u043e\u043b\u043e\u0432\u043e\u043b\u043e\u043c\u043a\u0438 \u0434\u043b\u044f \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043f\u0438\u0442\u0430\u043d\u044c!";
+      return "Nh\u1ea5p v\xe0o c\xe1c m\u1ea3nh gh\xe9p cho c\xe1c c\xe2u h\u1ecfi ng\u1eef ph\xe1p!";
     },
     get$home() {
-      return "\u0413\u043e\u043b\u043e\u0432\u043d\u0430";
+      return "Trang ch\u1ee7";
     },
     get$join(_) {
-      return "\u041f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f";
+      return "Tham gia";
     },
     get$readingAssistanceOverviewBody() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043d\u0430 \u043a\u043d\u043e\u043f\u043a\u0438 \u043d\u0438\u0436\u0447\u0435 \u0434\u043b\u044f \u043c\u0456\u043d\u0456-\u0456\u0433\u043e\u0440 \u0437 \u043f\u0456\u0434\u0431\u043e\u0440\u0443 \u0435\u043c\u043e\u0434\u0437\u0456, \u0430\u0443\u0434\u0456\u043e, \u0437\u043d\u0430\u0447\u0435\u043d\u044c \u0441\u043b\u0456\u0432 \u0456 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0439. \u0410\u0431\u043e \u043d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0431\u0443\u0434\u044c-\u044f\u043a\u0435 \u0441\u043b\u043e\u0432\u043e \u0434\u043b\u044f \u0434\u0435\u0442\u0430\u043b\u0435\u0439.";
+      return "Nh\u1ea5p v\xe0o c\xe1c n\xfat b\xean d\u01b0\u1edbi \u0111\u1ec3 ch\u01a1i mini-game v\u1ec1 vi\u1ec7c kh\u1edbp emoji, \xe2m thanh, ngh\u0129a t\u1eeb v\xe0 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p. Ho\u1eb7c nh\u1ea5p v\xe0o b\u1ea5t k\u1ef3 t\u1eeb n\xe0o \u0111\u1ec3 xem chi ti\u1ebft.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "\u0421\u043a\u0438\u043d\u0443\u0442\u0438 \u043f\u0456\u0434\u043a\u0430\u0437\u043a\u0438 \u0456\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0456\u0439";
+      return "\u0110\u1eb7t l\u1ea1i h\u01b0\u1edbng d\u1eabn c\xf4ng c\u1ee5";
     },
     get$resetInstructionTooltipsDesc() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c, \u0449\u043e\u0431 \u043f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043f\u0456\u0434\u043a\u0430\u0437\u043a\u0438 \u0456\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0456\u0439, \u044f\u043a \u0434\u043b\u044f \u043d\u043e\u0432\u0438\u0445 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432.";
+      return "Nh\u1ea5p \u0111\u1ec3 hi\u1ec3n th\u1ecb h\u01b0\u1edbng d\u1eabn c\xf4ng c\u1ee5 nh\u01b0 cho m\u1ed9t ng\u01b0\u1eddi d\xf9ng ho\xe0n to\xe0n m\u1edbi.";
     },
     get$translationProblem() {
-      return "\u041f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u0437 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u043e\u043c";
+      return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
     },
     get$askToJoin() {
-      return "\u041f\u043e\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f";
+      return "Y\xeau c\u1ea7u tham gia";
     },
     get$emptyChatWarningTitle() {
-      return "\u0427\u0430\u0442 \u043f\u043e\u0440\u043e\u0436\u043d\u0456\u0439";
+      return "Tr\xf2 chuy\u1ec7n tr\u1ed1ng";
     },
     get$emptyChatWarningDesc() {
-      return "\u0412\u0438 \u043d\u0435 \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b\u0438 \u043d\u0456\u043a\u043e\u0433\u043e \u0434\u043e \u0441\u0432\u043e\u0433\u043e \u0447\u0430\u0442\u0443. \u041f\u0435\u0440\u0435\u0439\u0434\u0456\u0442\u044c \u0443 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0447\u0430\u0442\u0443, \u0449\u043e\u0431 \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0441\u0432\u043e\u0457 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u0438 \u0430\u0431\u043e \u0431\u043e\u0442\u0430. \u0412\u0438 \u0442\u0430\u043a\u043e\u0436 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0446\u0435 \u043f\u0456\u0437\u043d\u0456\u0448\u0435.";
+      return "B\u1ea1n ch\u01b0a m\u1eddi ai v\xe0o tr\xf2 chuy\u1ec7n c\u1ee7a m\xecnh. \u0110i \u0111\u1ebfn c\xe0i \u0111\u1eb7t tr\xf2 chuy\u1ec7n \u0111\u1ec3 m\u1eddi danh b\u1ea1 ho\u1eb7c Bot c\u1ee7a b\u1ea1n. B\u1ea1n c\u0169ng c\xf3 th\u1ec3 l\xe0m \u0111i\u1ec1u n\xe0y sau.";
     },
     get$areYouLikeMe() {
-      return "\u0422\u0438 \u044f\u043a \u044f?";
+      return "B\u1ea1n c\xf3 gi\u1ed1ng t\xf4i kh\xf4ng?";
     },
     get$tryAgainLater() {
-      return "\u0417\u0440\u043e\u0431\u043b\u0435\u043d\u043e \u0437\u0430\u043d\u0430\u0434\u0442\u043e \u0431\u0430\u0433\u0430\u0442\u043e \u0441\u043f\u0440\u043e\u0431. \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0441\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0437\u043d\u043e\u0432\u0443 \u0447\u0435\u0440\u0435\u0437 5 \u0445\u0432\u0438\u043b\u0438\u043d.";
+      return "\u0110\xe3 th\u1ef1c hi\u1ec7n qu\xe1 nhi\u1ec1u l\u1ea7n. Vui l\xf2ng th\u1eed l\u1ea1i sau 5 ph\xfat.";
     },
     get$enterSpaceCode() {
-      return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u043a\u043e\u0434 \u043a\u0443\u0440\u0441\u0443";
+      return "Nh\u1eadp m\xe3 kh\xf3a h\u1ecdc";
     },
     get$shareSpaceLink() {
-      return "\u041f\u043e\u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c";
+      return "Chia s\u1ebb li\xean k\u1ebft";
     },
     get$byUsingPangeaChat() {
-      return "\u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u044e\u0447\u0438 Pangea Chat, \u044f \u043f\u043e\u0433\u043e\u0434\u0436\u0443\u044e\u0441\u044f \u0437 ";
+      return "B\u1eb1ng c\xe1ch s\u1eed d\u1ee5ng Pangea Chat, t\xf4i \u0111\u1ed3ng \xfd v\u1edbi ";
     },
     get$details(_) {
-      return "\u0414\u0435\u0442\u0430\u043b\u0456";
+      return "Chi ti\u1ebft";
     },
     get$languageLevelPreA1Desc() {
-      return "\u042f \u043d\u0456\u043a\u043e\u043b\u0438 \u043d\u0435 \u0432\u0438\u0432\u0447\u0430\u0432 \u0430\u0431\u043e \u043d\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0432 \u0446\u044e \u043c\u043e\u0432\u0443.";
+      return "T\xf4i ch\u01b0a bao gi\u1edd h\u1ecdc ho\u1eb7c s\u1eed d\u1ee5ng ng\xf4n ng\u1eef n\xe0y.";
     },
     get$languageLevelA1Desc() {
-      return "\u042f \u043c\u043e\u0436\u0443 \u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u0442\u0430 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0434\u0435\u044f\u043a\u0456 \u0437\u043d\u0430\u0439\u043e\u043c\u0456 \u043f\u043e\u0432\u0441\u044f\u043a\u0434\u0435\u043d\u043d\u0456 \u0432\u0438\u0440\u0430\u0437\u0438 \u0442\u0430 \u0434\u0443\u0436\u0435 \u0431\u0430\u0437\u043e\u0432\u0456 \u0444\u0440\u0430\u0437\u0438.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u v\xe0 s\u1eed d\u1ee5ng m\u1ed9t s\u1ed1 bi\u1ec3u th\u1ee9c quen thu\u1ed9c h\xe0ng ng\xe0y v\xe0 c\xe1c c\u1ee5m t\u1eeb r\u1ea5t c\u01a1 b\u1ea3n.";
     },
     get$languageLevelA2Desc() {
-      return "\u042f \u043c\u043e\u0436\u0443 \u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u0440\u0435\u0447\u0435\u043d\u043d\u044f \u0442\u0430 \u0447\u0430\u0441\u0442\u043e \u0432\u0436\u0438\u0432\u0430\u043d\u0456 \u0432\u0438\u0440\u0430\u0437\u0438, \u043f\u043e\u0432'\u044f\u0437\u0430\u043d\u0456 \u0437 \u043e\u0431\u043b\u0430\u0441\u0442\u044f\u043c\u0438 \u043d\u0435\u0433\u0430\u0439\u043d\u043e\u0457 \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0456.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u c\xe1c c\xe2u v\xe0 c\xe1c bi\u1ec3u th\u1ee9c th\u01b0\u1eddng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng li\xean quan \u0111\u1ebfn c\xe1c l\u0129nh v\u1ef1c c\xf3 li\xean quan ngay l\u1eadp t\u1ee9c.";
     },
     get$languageLevelB1Desc() {
-      return "\u042f \u043c\u043e\u0436\u0443 \u0441\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u0438\u0441\u044f \u0437 \u0431\u0456\u043b\u044c\u0448\u0456\u0441\u0442\u044e \u0437\u043d\u0430\u0439\u043e\u043c\u0438\u0445 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u0439 \u0456 \u043c\u043e\u0436\u0443 \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438 \u043f\u0440\u043e\u0441\u0442\u0438\u0439 \u0437\u0432'\u044f\u0437\u043d\u0438\u0439 \u0442\u0435\u043a\u0441\u0442 \u043d\u0430 \u0437\u043d\u0430\u0439\u043e\u043c\u0456 \u0442\u0435\u043c\u0438.";
+      return "T\xf4i c\xf3 th\u1ec3 x\u1eed l\xfd h\u1ea7u h\u1ebft c\xe1c t\xecnh hu\u1ed1ng quen thu\u1ed9c v\xe0 c\xf3 th\u1ec3 t\u1ea1o ra v\u0103n b\u1ea3n \u0111\u01a1n gi\u1ea3n li\xean k\u1ebft v\u1ec1 c\xe1c ch\u1ee7 \u0111\u1ec1 quen thu\u1ed9c.";
     },
     get$languageLevelB2Desc() {
-      return "\u042f \u043c\u043e\u0436\u0443 \u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u043e\u0441\u043d\u043e\u0432\u043d\u0456 \u0456\u0434\u0435\u0457 \u0441\u043a\u043b\u0430\u0434\u043d\u0438\u0445 \u0442\u0435\u043a\u0441\u0442\u0456\u0432 \u0456 \u0432\u0437\u0430\u0454\u043c\u043e\u0434\u0456\u044f\u0442\u0438 \u0437 \u0440\u0456\u0432\u043d\u0435\u043c \u043f\u043b\u0430\u0432\u043d\u043e\u0441\u0442\u0456 \u0442\u0430 \u0441\u043f\u043e\u043d\u0442\u0430\u043d\u043d\u043e\u0441\u0442\u0456.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u c\xe1c \xfd ch\xednh c\u1ee7a c\xe1c v\u0103n b\u1ea3n ph\u1ee9c t\u1ea1p v\xe0 t\u01b0\u01a1ng t\xe1c v\u1edbi m\u1ed9t m\u1ee9c \u0111\u1ed9 l\u01b0u lo\xe1t v\xe0 t\u1ef1 ph\xe1t.";
     },
     get$languageLevelC1Desc() {
-      return "\u042f \u043c\u043e\u0436\u0443 \u0432\u0456\u043b\u044c\u043d\u043e \u0442\u0430 \u0441\u043f\u043e\u043d\u0442\u0430\u043d\u043d\u043e \u0432\u0438\u0441\u043b\u043e\u0432\u043b\u044e\u0432\u0430\u0442\u0438 \u0456\u0434\u0435\u0457 \u0431\u0435\u0437 \u043e\u0441\u043e\u0431\u043b\u0438\u0432\u0438\u0445 \u0442\u0440\u0443\u0434\u043d\u043e\u0449\u0456\u0432 \u0456 \u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u0448\u0438\u0440\u043e\u043a\u0438\u0439 \u0441\u043f\u0435\u043a\u0442\u0440 \u0432\u0438\u043c\u043e\u0433\u043b\u0438\u0432\u0438\u0445 \u0442\u0435\u043a\u0441\u0442\u0456\u0432.";
+      return "T\xf4i c\xf3 th\u1ec3 di\u1ec5n \u0111\u1ea1t \xfd t\u01b0\u1edfng m\u1ed9t c\xe1ch l\u01b0u lo\xe1t v\xe0 t\u1ef1 ph\xe1t m\xe0 kh\xf4ng g\u1eb7p nhi\u1ec1u kh\xf3 kh\u0103n v\xe0 hi\u1ec3u m\u1ed9t lo\u1ea1t c\xe1c v\u0103n b\u1ea3n \u0111\xf2i h\u1ecfi.";
     },
     get$languageLevelC2Desc() {
-      return "\u042f \u043c\u043e\u0436\u0443 \u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u043e \u0432\u0441\u0435, \u0449\u043e \u0447\u0443\u044e \u0430\u0431\u043e \u0447\u0438\u0442\u0430\u044e, \u0456 \u0432\u0438\u0441\u043b\u043e\u0432\u043b\u044e\u0432\u0430\u0442\u0438\u0441\u044f \u0432\u0456\u043b\u044c\u043d\u043e \u0442\u0430 \u0442\u043e\u0447\u043d\u043e.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u h\u1ea7u nh\u01b0 m\u1ecdi th\u1ee9 nghe ho\u1eb7c \u0111\u1ecdc v\xe0 di\u1ec5n \u0111\u1ea1t b\u1ea3n th\xe2n m\u1ed9t c\xe1ch l\u01b0u lo\xe1t v\xe0 ch\xednh x\xe1c.";
     },
     get$newVocab() {
-      return "\u041d\u043e\u0432\u0430 \u043b\u0435\u043a\u0441\u0438\u043a\u0430";
+      return "T\u1eeb v\u1ef1ng m\u1edbi";
     },
     get$newGrammar() {
-      return "\u041d\u043e\u0432\u0456 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p m\u1edbi";
     },
     get$ban() {
-      return "\u0417\u0430\u0431\u043e\u0440\u043e\u043d\u0438\u0442\u0438";
+      return "C\u1ea5m";
     },
     get$kick() {
-      return "\u0412\u0438\u043a\u043b\u044e\u0447\u0438\u0442\u0438";
+      return "\u0110\xe1";
     },
     get$lemma() {
-      return "\u041b\u0435\u043c\u0430";
+      return "Lemma";
     },
     get$grammarFeature() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0430 \u043e\u0441\u043e\u0431\u043b\u0438\u0432\u0456\u0441\u0442\u044c";
+      return "T\xednh n\u0103ng ng\u1eef ph\xe1p";
     },
     get$grammarTag() {
-      return "\u0413\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0439 \u0442\u0435\u0433";
+      return "Th\u1ebb ng\u1eef ph\xe1p";
     },
     get$forms() {
-      return "\u0424\u043e\u0440\u043c\u0438";
+      return "H\xecnh th\u1ee9c";
     },
     get$exampleMessages() {
-      return "\u041f\u0440\u0438\u043a\u043b\u0430\u0434\u043e\u0432\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn v\xed d\u1ee5";
     },
     get$timesUsedIndependently() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u044c \u0441\u0430\u043c\u043e\u0441\u0442\u0456\u0439\u043d\u043e";
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng \u0111\u1ed9c l\u1eadp";
     },
     get$timesUsedWithAssistance() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u044c \u0437 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e";
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng v\u1edbi s\u1ef1 tr\u1ee3 gi\xfap";
     },
     shareInviteCode$1(code) {
-      return "\u041f\u043e\u0434\u0456\u043b\u0456\u0442\u044c\u0441\u044f \u043a\u043e\u0434\u043e\u043c \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f: " + code;
+      return "Chia s\u1ebb m\xe3 m\u1eddi: " + code;
     },
     get$skipForNow() {
-      return "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u0438 \u043d\u0430\u0440\u0430\u0437\u0456";
+      return "B\u1ecf qua t\u1ea1m th\u1eddi";
     },
     get$permissions(_) {
-      return "\u0414\u043e\u0437\u0432\u043e\u043b\u0438";
+      return "Quy\u1ec1n h\u1ea1n";
     },
     get$spaceChildPermission() {
-      return "\u0425\u0442\u043e \u043c\u043e\u0436\u0435 \u0434\u043e\u0434\u0430\u0432\u0430\u0442\u0438 \u043d\u043e\u0432\u0456 \u0447\u0430\u0442\u0438 \u0434\u043e \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "Ai c\xf3 th\u1ec3 th\xeam cu\u1ed9c tr\xf2 chuy\u1ec7n m\u1edbi v\xe0o kh\xf3a h\u1ecdc n\xe0y";
     },
     get$addEnvironmentOverride() {
-      return "\u0414\u043e\u0434\u0430\u0442\u0438 \u043f\u0435\u0440\u0435\u043e\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0441\u0435\u0440\u0435\u0434\u043e\u0432\u0438\u0449\u0430";
+      return "Th\xeam ghi \u0111\xe8 m\xf4i tr\u01b0\u1eddng";
     },
     get$defaultOption() {
-      return "\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c";
+      return "M\u1eb7c \u0111\u1ecbnh";
     },
     get$deleteChatDesc() {
-      return "\u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456, \u0449\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u0446\u0435\u0439 \u0447\u0430\u0442? \u0412\u0456\u043d \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u0438\u0439 \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432, \u0456 \u0432\u0441\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u0447\u0430\u0442\u0456 \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u0430\u0431\u043e \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f.";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n x\xf3a tr\xf2 chuy\u1ec7n n\xe0y kh\xf4ng? N\xf3 s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia v\xe0 t\u1ea5t c\u1ea3 tin nh\u1eafn trong tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng cho vi\u1ec7c th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp.";
     },
     get$deleteSpaceDesc() {
-      return "\u041a\u0443\u0440\u0441 \u0456 \u0431\u0443\u0434\u044c-\u044f\u043a\u0456 \u0432\u0438\u0431\u0440\u0430\u043d\u0456 \u0447\u0430\u0442\u0438 \u0431\u0443\u0434\u0443\u0442\u044c \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u0456 \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432, \u0456 \u0432\u0441\u0456 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u0447\u0430\u0442\u0456 \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0456 \u0434\u043b\u044f \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u0430\u0431\u043e \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f. \u0426\u044e \u0434\u0456\u044e \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0441\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438.";
+      return "Kh\xf3a h\u1ecdc v\xe0 b\u1ea5t k\u1ef3 cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0o \u0111\xe3 ch\u1ecdn s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 c\xe1c th\xe0nh vi\xean v\xe0 t\u1ea5t c\u1ea3 c\xe1c tin nh\u1eafn trong cu\u1ed9c tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng \u0111\u1ec3 th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$configureSpace() {
-      return "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u0442\u0438 \u043a\u0443\u0440\u0441";
+      return "C\u1ea5u h\xecnh kh\xf3a h\u1ecdc";
     },
     get$pinMessages() {
-      return "\u0417\u0430\u043a\u0440\u0456\u043f\u0438\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Ghim tin nh\u1eafn";
     },
     get$setJoinRules() {
-      return "\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f";
+      return "\u0110\u1eb7t quy t\u1eafc tham gia";
     },
     get$changeGeneralSettings() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "Thay \u0111\u1ed5i c\xe0i \u0111\u1eb7t chung";
     },
     get$inviteOtherUsersToRoom() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0456\u043d\u0448\u0438\u0445 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432";
+      return "M\u1eddi ng\u01b0\u1eddi d\xf9ng kh\xe1c";
     },
     get$changeTheNameOfTheSpace() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043d\u0430\u0437\u0432\u0443 \u043a\u0443\u0440\u0441\u0443";
+      return "Thay \u0111\u1ed5i t\xean c\u1ee7a kh\xf3a h\u1ecdc";
     },
     get$changeTheDescription() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043e\u043f\u0438\u0441";
+      return "Thay \u0111\u1ed5i m\xf4 t\u1ea3";
     },
     get$changeThePermissions() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u0434\u043e\u0437\u0432\u043e\u043b\u0438";
+      return "Thay \u0111\u1ed5i quy\u1ec1n h\u1ea1n";
     },
     get$introductions() {
-      return "\u0412\u0441\u0442\u0443\u043f\u0438";
+      return "Gi\u1edbi thi\u1ec7u";
     },
     get$announcements() {
-      return "\u041e\u0433\u043e\u043b\u043e\u0448\u0435\u043d\u043d\u044f";
+      return "Th\xf4ng b\xe1o";
     },
     get$activities() {
-      return "\u0414\u0456\u044f\u043b\u044c\u043d\u0456\u0441\u0442\u044c";
+      return "Ho\u1ea1t \u0111\u1ed9ng";
     },
     get$access() {
-      return "\u0414\u043e\u0441\u0442\u0443\u043f";
+      return "Truy c\u1eadp";
     },
     get$howSpaceCanBeFound() {
-      return "\u042f\u043a \u043c\u043e\u0436\u043d\u0430 \u0437\u043d\u0430\u0439\u0442\u0438 \u0446\u0435\u0439 \u043a\u0443\u0440\u0441";
+      return "Kh\xf3a h\u1ecdc n\xe0y c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c t\xecm th\u1ea5y nh\u01b0 th\u1ebf n\xe0o";
     },
     get$$private() {
-      return "\u041f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u0439";
+      return "Ri\xeang t\u01b0";
     },
     get$cannotBeFoundInSearch() {
-      return "\u041d\u0435 \u043c\u043e\u0436\u043d\u0430 \u0437\u043d\u0430\u0439\u0442\u0438 \u0443 \u043f\u043e\u0448\u0443\u043a\u0443";
+      return "Kh\xf4ng th\u1ec3 t\xecm th\u1ea5y trong t\xecm ki\u1ebfm";
     },
     get$$public(_) {
-      return "\u041f\u0443\u0431\u043b\u0456\u0447\u043d\u0438\u0439";
+      return "C\xf4ng khai";
     },
     get$visibleToCommunity() {
-      return '\u0412\u0438\u0434\u0438\u043c\u0438\u0439 \u0434\u043b\u044f \u0448\u0438\u0440\u0448\u043e\u0457 \u0441\u043f\u0456\u043b\u044c\u043d\u043e\u0442\u0438 Pangea Chat \u0447\u0435\u0440\u0435\u0437 "\u0417\u043d\u0430\u0439\u0442\u0438 \u043a\u0443\u0440\u0441"';
+      return 'Hi\u1ec3n th\u1ecb cho c\u1ed9ng \u0111\u1ed3ng Chat Pangea r\u1ed9ng h\u01a1n qua "T\xecm kh\xf3a h\u1ecdc"';
     },
     get$howSpaceCanBeJoined() {
-      return "\u042f\u043a \u043c\u043e\u0436\u043d\u0430 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "Kh\xf3a h\u1ecdc n\xe0y c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c tham gia nh\u01b0 th\u1ebf n\xe0o";
     },
     get$canBeFoundVia() {
-      return "\u041c\u043e\u0436\u0435 \u0431\u0443\u0442\u0438 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u0447\u0435\u0440\u0435\u0437:";
+      return "C\xf3 th\u1ec3 t\xecm th\u1ea5y qua:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043d\u044f";
+      return "\u2022 l\u1eddi m\u1eddi";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 \u043a\u043e\u0434 \u0430\u0431\u043e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f";
+      return "\u2022 m\xe3 ho\u1eb7c li\xean k\u1ebft";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 \u0437\u0430\u043f\u0438\u0442 \u043d\u0430 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f \u0442\u0430 \u0441\u0445\u0432\u0430\u043b\u0435\u043d\u043d\u044f \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430";
+      return "\u2022 y\xeau c\u1ea7u tham gia v\xe0 s\u1ef1 ch\u1ea5p thu\u1eadn c\u1ee7a qu\u1ea3n tr\u1ecb vi\xean";
     },
     get$youHaveLeveledUp() {
-      return "\u0412\u0438 \u043f\u0456\u0434\u0432\u0438\u0449\u0438\u043b\u0438 \u0440\u0456\u0432\u0435\u043d\u044c!";
+      return "B\u1ea1n \u0111\xe3 n\xe2ng c\u1ea5p!";
     },
     get$sendActivities() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456";
+      return "G\u1eedi ho\u1ea1t \u0111\u1ed9ng";
     },
     get$directMessage() {
-      return "\u041f\u0440\u044f\u043c\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp";
     },
     get$newDirectMessage() {
-      return "\u041d\u043e\u0432\u0435 \u043f\u0440\u044f\u043c\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp m\u1edbi";
     },
     get$speakingExercisesTooltip() {
-      return "\u0413\u043e\u0432\u043e\u0440\u0456\u043d\u043d\u044f";
+      return "N\xf3i";
     },
     get$transcriptionFailed() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0440\u043e\u0437\u043f\u0456\u0437\u043d\u0430\u0442\u0438 \u0430\u0443\u0434\u0456\u043e";
+      return "Kh\xf4ng th\u1ec3 chuy\u1ec3n \u0111\u1ed5i \xe2m thanh";
     },
     get$aUserIsKnocking() {
-      return "1 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447 \u0437\u0430\u043f\u0438\u0442\u0443\u0454 \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0432\u0430\u0448\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "C\xf3 1 ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf3a h\u1ecdc c\u1ee7a b\u1ea1n";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432 \u0437\u0430\u043f\u0438\u0442\u0443\u044e\u0442\u044c \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0432\u0430\u0448\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "" + users + " ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf3a h\u1ecdc c\u1ee7a b\u1ea1n";
     },
     get$failedToFetchTranscription() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0442\u0440\u0430\u043d\u0441\u043a\u0440\u0438\u043f\u0446\u0456\u044e";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y b\u1ea3n chuy\u1ec3n \u0111\u1ed5i";
     },
     get$deleteEmptySpaceDesc() {
-      return "\u041a\u0443\u0440\u0441 \u0431\u0443\u0434\u0435 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0456\u0445 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432. \u0426\u044e \u0434\u0456\u044e \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0441\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438.";
+      return "Kh\xf3a h\u1ecdc s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 c\xe1c th\xe0nh vi\xean. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$failedToPlayVideo() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0432\u0456\u0434\u0435\u043e";
+      return "Kh\xf4ng th\u1ec3 ph\xe1t video";
     },
     get$done() {
-      return "\u0413\u043e\u0442\u043e\u0432\u043e";
+      return "Xong";
     },
     get$inThisSpace() {
-      return "\u0423 \u0446\u044c\u043e\u043c\u0443 \u043a\u0443\u0440\u0441\u0456";
+      return "Trong kh\xf3a h\u1ecdc n\xe0y";
     },
     get$myContacts() {
-      return "\u041c\u043e\u0457 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u0438";
+      return "Danh b\u1ea1 c\u1ee7a t\xf4i";
     },
     get$inviteAllInSpace() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0432\u0441\u0456\u0445 \u0443 \u0446\u044c\u043e\u043c\u0443 \u043a\u0443\u0440\u0441\u0456";
+      return "M\u1eddi t\u1ea5t c\u1ea3 trong kh\xf3a h\u1ecdc n\xe0y";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "\u0423\u0447\u0430\u0441\u043d\u0438\u043a\u0438 \u043a\u0443\u0440\u0441\u0443 \u0431\u0443\u043b\u0438 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u0456 \u0434\u043e \u0447\u0430\u0442\u0443";
+      return "T\u1ea5t c\u1ea3 th\xe0nh vi\xean trong kh\xf3a h\u1ecdc \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi v\xe0o tr\xf2 chuy\u1ec7n";
     },
     numKnocking$1(count) {
-      return "" + count + " \u0441\u0442\u0443\u043a\u0430\u0454";
+      return "" + count + " g\xf5 c\u1eeda";
     },
     numInvited$1(count) {
-      return "" + count + " \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u043e";
+      return "" + count + " \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$errorFetchingDefinition() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y \u0111\u1ecbnh ngh\u0129a";
     },
     get$errorProcessAnalytics() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u043e\u0431\u0440\u043e\u0431\u0438\u0442\u0438 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0443";
+      return "Kh\xf4ng th\u1ec3 x\u1eed l\xfd ph\xe2n t\xedch";
     },
     get$errorDownloading() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u043d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f";
+      return "T\u1ea3i xu\u1ed1ng th\u1ea5t b\u1ea1i";
     },
     get$errorFetchingLevelSummary() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u043f\u0456\u0434\u0441\u0443\u043c\u043e\u043a \u0440\u0456\u0432\u043d\u044f";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y t\xf3m t\u1eaft c\u1ea5p \u0111\u1ed9";
     },
     get$errorLoadingSpaceChildren() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0447\u0430\u0442\u0438 \u0432 \u043c\u0435\u0436\u0430\u0445 \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "Kh\xf4ng th\u1ec3 t\u1ea3i tr\xf2 chuy\u1ec7n trong kh\xf4ng gian n\xe0y";
     },
     get$unexpectedError() {
-      return "\u041d\u0435\u0441\u043f\u043e\u0434\u0456\u0432\u0430\u043d\u0430 \u043f\u043e\u043c\u0438\u043b\u043a\u0430.";
+      return "L\u1ed7i kh\xf4ng mong \u0111\u1ee3i.";
     },
     get$pleaseReload() {
-      return "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043f\u0435\u0440\u0435\u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0442\u0435 \u0442\u0430 \u0441\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0437\u043d\u043e\u0432\u0443.";
+      return "Vui l\xf2ng t\u1ea3i l\u1ea1i v\xe0 th\u1eed l\u1ea1i.";
     },
     get$translationError() {
-      return "\u041f\u043e\u043c\u0438\u043b\u043a\u0430 \u043f\u0435\u0440\u0435\u043a\u043b\u0430\u0434\u0443";
+      return "L\u1ed7i d\u1ecbch thu\u1eadt";
     },
     get$errorFetchingActivity() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u043e\u0442\u0440\u0438\u043c\u0430\u0442\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y ho\u1ea1t \u0111\u1ed9ng";
     },
     get$check(_) {
-      return "\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0438\u0442\u0438";
+      return "Ki\u1ec3m tra";
     },
     get$unableToFindRoom() {
-      return "\u0427\u0430\u0442 \u0430\u0431\u043e \u043a\u0443\u0440\u0441 \u0437 \u0446\u0438\u043c \u043a\u043e\u0434\u043e\u043c \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e. \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0441\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0449\u0435 \u0440\u0430\u0437.";
+      return "Kh\xf4ng t\xecm th\u1ea5y tr\xf2 chuy\u1ec7n ho\u1eb7c kh\xf4ng gian n\xe0o v\u1edbi m\xe3 \u0111\xf3. Vui l\xf2ng th\u1eed l\u1ea1i.";
     },
     viewingAnalytics$2(visible, users) {
-      return "\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 " + visible + "/" + users + " \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438";
+      return "\u0110ang xem " + visible + "/" + users + " Th\u1ed1ng k\xea";
     },
     get$request(_) {
-      return "\u0417\u0430\u043f\u0438\u0442";
+      return "Y\xeau c\u1ea7u";
     },
     get$requestAll(_) {
-      return "\u0417\u0430\u043f\u0438\u0442\u0430\u0442\u0438 \u0432\u0441\u0435";
+      return "Y\xeau c\u1ea7u t\u1ea5t c\u1ea3";
     },
     get$confirmMessageUnpin() {
-      return "\u0412\u0438 \u0432\u043f\u0435\u0432\u043d\u0435\u043d\u0456, \u0449\u043e \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0456\u0434\u043a\u0440\u0456\u043f\u0438\u0442\u0438 \u0446\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f?";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n b\u1ecf ghim tin nh\u1eafn n\xe0y kh\xf4ng?";
     },
     get$pending(_) {
-      return "\u041e\u0447\u0456\u043a\u0443\u0454";
+      return "\u0110ang ch\u1edd";
     },
     get$openRoleLabel() {
-      return "\u0412\u0406\u0414\u041a\u0420\u0418\u0422\u0410";
+      return "M\u1ede";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u0432\u0441\u044f \u044f\u043a " + role;
+      return "\ud83d\udc4b " + username + " \u0111\xe3 tham gia v\u1edbi vai tr\xf2 " + role;
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0432 \u0446\u044e \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c";
+      return "\ud83c\udfaf " + username + " \u0111\xe3 k\u1ebft th\xfac ho\u1ea1t \u0111\u1ed9ng n\xe0y";
     },
     get$activitySummaryError() {
-      return "\u0417\u0432\u0435\u0434\u0435\u043d\u043d\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0435\u0439 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0435";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y t\xf3m t\u1eaft ho\u1ea1t \u0111\u1ed9ng";
     },
     get$requestSummaries() {
-      return "\u0417\u0430\u043f\u0438\u0442\u0430\u0442\u0438 \u0437\u0432\u0435\u0434\u0435\u043d\u043d\u044f";
+      return "Y\xeau c\u1ea7u t\xf3m t\u1eaft";
     },
     get$requestAccessTitle() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0434\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438?";
+      return "Y\xeau c\u1ea7u quy\u1ec1n truy c\u1eadp ph\xe2n t\xedch?";
     },
     get$requestAccessDesc() {
-      return "\u0411\u0430\u0436\u0430\u0454\u0442\u0435 \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0434\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432?\n\n\u042f\u043a\u0449\u043e \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438 \u043f\u043e\u0433\u043e\u0434\u0436\u0443\u044e\u0442\u044c\u0441\u044f, \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0438 \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443 \u0437\u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0442\u0438 \u0457\u0445:\n    \u2022 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0438\u0439 \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0430\u0441\n    \u2022 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457\n    \u2022 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u0445 \u0441\u0435\u0441\u0456\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456\n    \u2022 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u0456 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457, \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u0456 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0442\u0430 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\n\n\u0412\u043e\u043d\u0438 \u043d\u0435 \u0437\u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0442\u0438:\n    \u2022 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0443 \u0447\u0430\u0442\u0430\u0445 \u043f\u043e\u0437\u0430 \u043c\u0435\u0436\u0430\u043c\u0438 \u043a\u0443\u0440\u0441\u0443\n    \u2022 \u0441\u043f\u0438\u0441\u043e\u043a \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u0438\u0445 \u0437\u0430\u043f\u0430\u0441\u0456\u0432";
+      return "B\u1ea1n c\xf3 mu\u1ed1n y\xeau c\u1ea7u quy\u1ec1n truy c\u1eadp \u0111\u1ec3 xem ph\xe2n t\xedch ng\u01b0\u1eddi tham gia?\n\nN\u1ebfu c\xe1c ng\u01b0\u1eddi tham gia \u0111\u1ed3ng \xfd, qu\u1ea3n tr\u1ecb vi\xean c\u1ee7a kh\xf3a h\u1ecdc n\xe0y s\u1ebd c\xf3 th\u1ec3 xem:\n    \u2022 t\u1ed5ng s\u1ed1 t\u1eeb v\u1ef1ng\n    \u2022 t\u1ed5ng s\u1ed1 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p\n    \u2022 t\u1ed5ng s\u1ed1 phi\xean ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 ho\xe0n th\xe0nh\n    \u2022 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p c\u1ee5 th\u1ec3 \u0111\xe3 s\u1eed d\u1ee5ng, \u0111\xfang v\xe0 sai\n\nH\u1ecd s\u1ebd kh\xf4ng th\u1ec3 xem:\n    \u2022 tin nh\u1eafn trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n ngo\xe0i kh\xf3a h\u1ecdc\n    \u2022 danh s\xe1ch t\u1eeb v\u1ef1ng";
     },
     get$analyticsInactiveTitle() {
-      return "\u0417\u0430\u043f\u0438\u0442\u0438 \u0434\u043e \u043d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0445 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432 \u043d\u0435 \u043c\u043e\u0436\u0443\u0442\u044c \u0431\u0443\u0442\u0438 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u0456";
+      return "Kh\xf4ng th\u1ec3 g\u1eedi y\xeau c\u1ea7u t\u1edbi ng\u01b0\u1eddi d\xf9ng kh\xf4ng ho\u1ea1t \u0111\u1ed9ng";
     },
     get$analyticsInactiveDesc() {
-      return "\u041d\u0435\u0430\u043a\u0442\u0438\u0432\u043d\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456, \u044f\u043a\u0456 \u043d\u0435 \u0432\u0445\u043e\u0434\u0438\u043b\u0438 \u0437 \u043c\u043e\u043c\u0435\u043d\u0442\u0443 \u0432\u043f\u0440\u043e\u0432\u0430\u0434\u0436\u0435\u043d\u043d\u044f \u0446\u0456\u0454\u0457 \u0444\u0443\u043d\u043a\u0446\u0456\u0457, \u043d\u0435 \u043f\u043e\u0431\u0430\u0447\u0430\u0442\u044c \u0432\u0430\u0448 \u0437\u0430\u043f\u0438\u0442.\n\n\u041a\u043d\u043e\u043f\u043a\u0430 \xab\u0417\u0430\u043f\u0438\u0442\xbb \u0437'\u044f\u0432\u0438\u0442\u044c\u0441\u044f, \u043a\u043e\u043b\u0438 \u0432\u043e\u043d\u0438 \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u044c\u0441\u044f. \u0412\u0438 \u0437\u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u043e \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0437\u0430\u043f\u0438\u0442 \u043f\u0456\u0437\u043d\u0456\u0448\u0435, \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \xab\u0417\u0430\u043f\u0438\u0442\xbb \u043f\u0456\u0434 \u0457\u0445\u043d\u0456\u043c \u0456\u043c'\u044f\u043c, \u043a\u043e\u043b\u0438 \u0432\u043e\u043d\u0430 \u0441\u0442\u0430\u043d\u0435 \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u044e.";
+      return "Ng\u01b0\u1eddi d\xf9ng kh\xf4ng ho\u1ea1t \u0111\u1ed9ng k\u1ec3 t\u1eeb khi t\xednh n\u0103ng n\xe0y \u0111\u01b0\u1ee3c gi\u1edbi thi\u1ec7u s\u1ebd kh\xf4ng th\u1ea5y y\xeau c\u1ea7u c\u1ee7a b\u1ea1n.\n\nN\xfat Y\xeau c\u1ea7u s\u1ebd xu\u1ea5t hi\u1ec7n khi h\u1ecd tr\u1edf l\u1ea1i. B\u1ea1n c\xf3 th\u1ec3 g\u1eedi l\u1ea1i y\xeau c\u1ea7u sau b\u1eb1ng c\xe1ch nh\u1ea5n n\xfat Y\xeau c\u1ea7u d\u01b0\u1edbi t\xean c\u1ee7a h\u1ecd khi n\xf3 kh\u1ea3 d\u1ee5ng.";
     },
     get$accessRequestedTitle() {
-      return "\u0417\u0430\u043f\u0438\u0442 \u043d\u0430 \u0434\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438";
+      return "Y\xeau c\u1ea7u truy c\u1eadp ph\xe2n t\xedch";
     },
     accessRequestedDesc$2(admin, space) {
-      return "\u0417\u0430\u043f\u0438\u0442\u0443\u044e\u0442\u044c \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0438(\u0438): " + admin + " \n\n\u0410\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0438 \u0437 \u201c" + space + "\u201d \u043f\u0440\u043e\u0441\u044f\u0442\u044c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u0443\u0442\u0438 \u0432\u0430\u0448\u0443 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0443 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f.\n\n\u042f\u043a\u0449\u043e \u0432\u0438 \u0437\u0433\u043e\u0434\u043d\u0456, \u0432\u043e\u043d\u0438 \u0437\u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0442\u0438 \u0432\u0430\u0448\u0435:\n    \u2022 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0435 \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u0435 \u0437\u0430\u043f\u0430\u0441\n    \u2022 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457\n    \u2022 \u0437\u0430\u0433\u0430\u043b\u044c\u043d\u0443 \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u0445 \u0441\u0435\u0441\u0456\u0439 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456\n    \u2022 \u043a\u043e\u043d\u043a\u0440\u0435\u0442\u043d\u0456 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u043a\u043e\u043d\u0446\u0435\u043f\u0446\u0456\u0457, \u044f\u043a\u0456 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u043b\u0438\u0441\u044f, \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e \u0442\u0430 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\n\n\u0412\u043e\u043d\u0438 \u043d\u0435 \u0437\u043c\u043e\u0436\u0443\u0442\u044c \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0430\u0442\u0438 \u0432\u0430\u0448\u0435:\n    \u2022 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432 \u0447\u0430\u0442\u0430\u0445 \u043f\u043e\u0437\u0430 \u043a\u0443\u0440\u0441\u043e\u043c\n    \u2022 \u0441\u043f\u0438\u0441\u043e\u043a \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0443";
+      return "Y\xeau c\u1ea7u qu\u1ea3n tr\u1ecb vi\xean: " + admin + " \n\nC\xe1c qu\u1ea3n tr\u1ecb vi\xean t\u1eeb \u201c" + space + "\u201d \u0111ang y\xeau c\u1ea7u xem ph\xe2n t\xedch h\u1ecdc t\u1eadp c\u1ee7a b\u1ea1n.\n\nN\u1ebfu b\u1ea1n \u0111\u1ed3ng \xfd, h\u1ecd s\u1ebd c\xf3 th\u1ec3 xem:\n    \u2022 t\u1ed5ng s\u1ed1 t\u1eeb v\u1ef1ng\n    \u2022 t\u1ed5ng s\u1ed1 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p\n    \u2022 t\u1ed5ng s\u1ed1 phi\xean ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 ho\xe0n th\xe0nh\n    \u2022 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p c\u1ee5 th\u1ec3 \u0111\xe3 s\u1eed d\u1ee5ng, \u0111\xfang v\xe0 sai\n\nH\u1ecd s\u1ebd kh\xf4ng th\u1ec3 xem:\n    \u2022 tin nh\u1eafn trong c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n b\xean ngo\xe0i kh\xf3a h\u1ecdc\n    \u2022 danh s\xe1ch t\u1eeb v\u1ef1ng";
     },
     get$adminRequestedAccess() {
-      return "\u0410\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0438 \u0437\u0430\u043f\u0438\u0442\u0430\u043b\u0438 \u0434\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u0432\u0430\u0448\u043e\u0457 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438.";
+      return "Qu\u1ea3n tr\u1ecb vi\xean y\xeau c\u1ea7u xem ph\xe2n t\xedch c\u1ee7a b\u1ea1n.";
     },
     lastUpdated$1(time) {
-      return "\u041e\u043d\u043e\u0432\u043b\u0435\u043d\u043e\n" + time;
+      return "C\u1eadp nh\u1eadt\n" + time;
     },
     get$activityFinishedMessage() {
-      return "\u0412\u0441\u0435 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e!";
+      return "Ho\xe0n t\u1ea5t!";
     },
     get$endForAll() {
-      return "\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0438 \u0434\u043b\u044f \u0432\u0441\u0456\u0445";
+      return "K\u1ebft th\xfac cho t\u1ea5t c\u1ea3";
     },
     get$newCourse() {
-      return "\u041d\u043e\u0432\u0438\u0439 \u043a\u0443\u0440\u0441";
+      return "Kh\xf3a h\u1ecdc m\u1edbi";
     },
     numModules$1(num) {
-      return "" + num + " \u043c\u043e\u0434\u0443\u043b\u0456\u0432";
+      return "" + num + " m\xf4-\u0111un";
     },
     get$coursePlan() {
-      return "\u041f\u043b\u0430\u043d \u043a\u0443\u0440\u0441\u0443";
+      return "K\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc";
     },
     get$editCourseLater() {
-      return "\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043d\u0430\u0437\u0432\u0443 \u0448\u0430\u0431\u043b\u043e\u043d\u0443, \u043e\u043f\u0438\u0441\u0438 \u0442\u0430 \u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u043d\u044f \u043a\u0443\u0440\u0441\u0443 \u043f\u0456\u0437\u043d\u0456\u0448\u0435.";
+      return "B\u1ea1n c\xf3 th\u1ec3 ch\u1ec9nh s\u1eeda ti\xeau \u0111\u1ec1 m\u1eabu, m\xf4 t\u1ea3 v\xe0 h\xecnh \u1ea3nh kh\xf3a h\u1ecdc sau.";
     },
     get$newCourseAccess() {
-      return "\u0417\u0430 \u0437\u0430\u043c\u043e\u0432\u0447\u0443\u0432\u0430\u043d\u043d\u044f\u043c \u043a\u0443\u0440\u0441\u0438 \u0454 \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u043c\u0438 \u0456 \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u044e\u0442\u044c \u0441\u0445\u0432\u0430\u043b\u0435\u043d\u043d\u044f \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430 \u0434\u043b\u044f \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f. \u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u0446\u0456 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0432 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0439 \u0447\u0430\u0441.";
+      return "Theo m\u1eb7c \u0111\u1ecbnh, c\xe1c kh\xf3a h\u1ecdc l\xe0 ri\xeang t\u01b0 v\xe0 y\xeau c\u1ea7u s\u1ef1 ch\u1ea5p thu\u1eadn c\u1ee7a qu\u1ea3n tr\u1ecb vi\xean \u0111\u1ec3 tham gia. B\u1ea1n c\xf3 th\u1ec3 ch\u1ec9nh s\u1eeda c\xe1c c\xe0i \u0111\u1eb7t n\xe0y b\u1ea5t c\u1ee9 l\xfac n\xe0o.";
     },
     get$createCourse() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043a\u0443\u0440\u0441";
+      return "T\u1ea1o kh\xf3a h\u1ecdc";
     },
     get$stats() {
-      return "\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430";
+      return "Th\u1ed1ng k\xea";
     },
     get$createGroupChat() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0433\u0440\u0443\u043f\u043e\u0432\u0438\u0439 \u0447\u0430\u0442";
+      return "T\u1ea1o nh\xf3m tr\xf2 chuy\u1ec7n";
     },
     get$editCourse() {
-      return "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043a\u0443\u0440\u0441";
+      return "Ch\u1ec9nh s\u1eeda kh\xf3a h\u1ecdc";
     },
     get$inviteDesc() {
-      return "\u0417\u0430 \u0456\u043c'\u044f\u043c \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430, \u0437\u0430 \u043a\u043e\u0434\u043e\u043c \u0430\u0431\u043e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f\u043c";
+      return "B\u1eb1ng t\xean ng\u01b0\u1eddi d\xf9ng, m\xe3 ho\u1eb7c li\xean k\u1ebft";
     },
     get$editCourseDesc() {
-      return "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043d\u0430\u0437\u0432\u0443 \u043a\u0443\u0440\u0441\u0443, \u043e\u043f\u0438\u0441 \u0442\u043e\u0449\u043e.";
+      return "T\u1ea1i \u0111\xe2y b\u1ea1n c\xf3 th\u1ec3 ch\u1ec9nh s\u1eeda ti\xeau \u0111\u1ec1, m\xf4 t\u1ea3 c\u1ee7a kh\xf3a h\u1ecdc, v.v.";
     },
     get$permissionsDesc() {
-      return "\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u0434\u043e\u0437\u0432\u043e\u043b\u0438, \u0442\u0430\u043a\u0456 \u044f\u043a \u0445\u0442\u043e \u043c\u043e\u0436\u0435 \u0437\u0430\u043f\u0440\u043e\u0448\u0443\u0432\u0430\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432, \u043d\u0430\u0434\u0441\u0438\u043b\u0430\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f, \u0441\u0442\u0432\u043e\u0440\u044e\u0432\u0430\u0442\u0438 \u0447\u0430\u0442\u0438 \u0442\u043e\u0449\u043e.";
+      return "Thi\u1ebft l\u1eadp quy\u1ec1n nh\u01b0 ai c\xf3 th\u1ec3 m\u1eddi ng\u01b0\u1eddi d\xf9ng, g\u1eedi tin nh\u1eafn, t\u1ea1o cu\u1ed9c tr\xf2 chuy\u1ec7n, v.v.";
     },
     get$accessDesc() {
-      return "\u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0441\u0432\u0456\u0439 \u043a\u0443\u0440\u0441 \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438\u043c \u0434\u043b\u044f \u0441\u0432\u0456\u0442\u0443! \u0410\u0431\u043e \u0437\u0440\u043e\u0431\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u043c \u0456 \u0437\u0430\u0445\u0438\u0449\u0435\u043d\u0438\u043c.";
+      return "B\u1ea1n c\xf3 th\u1ec3 l\xe0m cho kh\xf3a h\u1ecdc c\u1ee7a m\xecnh m\u1edf cho th\u1ebf gi\u1edbi! Ho\u1eb7c, l\xe0m cho kh\xf3a h\u1ecdc c\u1ee7a b\u1ea1n ri\xeang t\u01b0 v\xe0 an to\xe0n.";
     },
     get$createGroupChatDesc() {
-      return "\u041e\u0441\u043a\u0456\u043b\u044c\u043a\u0438 \u0441\u0435\u0441\u0456\u0457 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456 \u043f\u043e\u0447\u0438\u043d\u0430\u044e\u0442\u044c\u0441\u044f \u0456 \u0437\u0430\u043a\u0456\u043d\u0447\u0443\u044e\u0442\u044c\u0441\u044f, \u0433\u0440\u0443\u043f\u043e\u0432\u0456 \u0447\u0430\u0442\u0438 \u0437\u0430\u043b\u0438\u0448\u0430\u0442\u044c\u0441\u044f \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u0438\u043c\u0438 \u0434\u043b\u044f \u0440\u0443\u0442\u0438\u043d\u043d\u043e\u0433\u043e \u0441\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u043d\u043d\u044f.";
+      return "Trong khi c\xe1c phi\xean ho\u1ea1t \u0111\u1ed9ng b\u1eaft \u0111\u1ea7u v\xe0 k\u1ebft th\xfac, nh\xf3m tr\xf2 chuy\u1ec7n s\u1ebd lu\xf4n m\u1edf \u0111\u1ec3 giao ti\u1ebfp \u0111\u1ecbnh k\u1ef3.";
     },
     get$deleteDesc() {
-      return "\u0422\u0456\u043b\u044c\u043a\u0438 \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0438 \u043c\u043e\u0436\u0443\u0442\u044c \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0438 \u043a\u0443\u0440\u0441. \u0426\u0435 \u0440\u0443\u0439\u043d\u0456\u0432\u043d\u0430 \u0434\u0456\u044f, \u044f\u043a\u0430 \u0432\u0438\u0434\u0430\u043b\u044f\u0454 \u0432\u0441\u0456\u0445 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432 \u0456 \u0432\u0441\u0456 \u043e\u0431\u0440\u0430\u043d\u0456 \u0447\u0430\u0442\u0438 \u0432 \u043c\u0435\u0436\u0430\u0445 \u043a\u0443\u0440\u0441\u0443. \u0414\u0456\u0439\u0442\u0435 \u043e\u0431\u0435\u0440\u0435\u0436\u043d\u043e.";
+      return "Ch\u1ec9 qu\u1ea3n tr\u1ecb vi\xean m\u1edbi c\xf3 th\u1ec3 x\xf3a kh\xf3a h\u1ecdc. \u0110\xe2y l\xe0 h\xe0nh \u0111\u1ed9ng ph\xe1 h\u1ee7y, s\u1ebd x\xf3a t\u1ea5t c\u1ea3 ng\u01b0\u1eddi d\xf9ng v\xe0 t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n \u0111\xe3 ch\u1ecdn trong kh\xf3a h\u1ecdc. H\xe3y c\u1ea9n th\u1eadn khi th\u1ef1c hi\u1ec7n.";
     },
     get$noCourseFound() {
-      return "\u041e\u0439, \u0446\u044c\u043e\u043c\u0443 \u043a\u0443\u0440\u0441\u0443 \u043f\u043e\u0442\u0440\u0456\u0431\u0435\u043d \u043f\u043b\u0430\u043d!\n\n\u041f\u043b\u0430\u043d\u0438 \u043a\u0443\u0440\u0441\u0443 \u2014 \u0446\u0435 \u043f\u043e\u0441\u043b\u0456\u0434\u043e\u0432\u043d\u0456\u0441\u0442\u044c \u0442\u0435\u043c \u0456 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0435\u0439 \u0434\u043b\u044f \u0441\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u043d\u043d\u044f.";
+      return "\xd4i, kh\xf3a h\u1ecdc n\xe0y c\u1ea7n c\xf3 k\u1ebf ho\u1ea1ch!\n\nK\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc l\xe0 m\u1ed9t chu\u1ed7i c\xe1c ch\u1ee7 \u0111\u1ec1 v\xe0 ho\u1ea1t \u0111\u1ed9ng tr\xf2 chuy\u1ec7n.";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " \u0456\u043d\u0448\u0438\u0445";
+      return "+ " + num + " ng\u01b0\u1eddi kh\xe1c";
     },
     get$whatNow() {
-      return "\u0429\u043e \u0434\u0430\u043b\u0456?";
+      return "B\xe2y gi\u1edd l\xe0m g\xec?";
     },
     get$chooseNextActivity() {
-      return "\u041e\u0431\u0438\u0440\u0430\u0439\u0442\u0435 \u0441\u0432\u043e\u044e \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c!";
+      return "Ch\u1ecdn ho\u1ea1t \u0111\u1ed9ng ti\u1ebfp theo c\u1ee7a b\u1ea1n!";
     },
     get$letsGo() {
-      return "\u041f\u043e\u0457\u0445\u0430\u043b\u0438";
+      return "\u0110i n\xe0o";
     },
     get$chooseRole() {
-      return "\u041e\u0431\u0435\u0440\u0456\u0442\u044c \u0440\u043e\u043b\u044c!";
+      return "Ch\u1ecdn vai tr\xf2!";
     },
     get$chooseRoleToParticipate() {
-      return "\u041e\u0431\u0440\u0430\u0442\u0438 \u0440\u043e\u043b\u044c \u0434\u043b\u044f \u0443\u0447\u0430\u0441\u0442\u0456!";
+      return "Ch\u1ecdn vai tr\xf2 \u0111\u1ec3 tham gia!";
     },
     waitingToFillRole$1(num) {
-      return "\u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u0437\u0430\u043f\u043e\u0432\u043d\u0435\u043d\u043d\u044f " + num + " \u0440\u043e\u043b\u0435\u0439...";
+      return "\u0110ang ch\u1edd \u0111i\u1ec1n " + num + " vai tr\xf2...";
     },
     get$pingParticipants() {
-      return "\u041f\u0456\u043d\u0433 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0456\u0432 \u043a\u0443\u0440\u0441\u0443";
+      return "Th\xf4ng b\xe1o cho c\xe1c th\xe0nh vi\xean trong kh\xf3a h\u1ecdc";
     },
     get$playWithBot() {
-      return "\u0413\u0440\u0430\u0442\u0438 \u0437 \u0431\u043e\u0442\u043e\u043c Pangea";
+      return "Ch\u01a1i v\u1edbi Pangea Bot";
     },
     get$waitNotDone() {
-      return "\u0417\u0430\u0447\u0435\u043a\u0430\u0439\u0442\u0435, \u044f \u0449\u0435 \u043d\u0435 \u0437\u0430\u043a\u0456\u043d\u0447\u0438\u0432!";
+      return "Ch\u1edd t\xf4i ch\u01b0a xong!";
     },
     get$waitingForOthersToFinish() {
-      return "\u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0456\u043d\u0448\u0438\u0445...";
+      return "\u0110ang ch\u1edd nh\u1eefng ng\u01b0\u1eddi kh\xe1c ho\xe0n th\xe0nh...";
     },
     get$generatingSummary() {
-      return "\u0410\u043d\u0430\u043b\u0456\u0437 \u0447\u0430\u0442\u0443 \u0442\u0430 \u0441\u0442\u0432\u043e\u0440\u0435\u043d\u043d\u044f \u0440\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u0456\u0432";
+      return "Ph\xe2n t\xedch cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 t\u1ea1o k\u1ebft qu\u1ea3";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " \u0448\u0443\u043a\u0430\u0454 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456\u0432 \u0434\u043b\u044f \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f \u0434\u043e \u0441\u0435\u0441\u0456\u0457 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456 \u0432 " + room;
+      return user + " \u0111ang t\xecm ki\u1ebfm ng\u01b0\u1eddi d\xf9ng \u0111\u1ec3 tham gia phi\xean ho\u1ea1t \u0111\u1ed9ng trong " + room;
     },
     get$courseName() {
-      return "\u041d\u0430\u0437\u0432\u0430 \u043a\u0443\u0440\u0441\u0443";
+      return "T\xean kh\xf3a h\u1ecdc";
     },
     get$createNewCourse() {
-      return "\u041d\u043e\u0432\u0438\u0439 \u043a\u0443\u0440\u0441";
+      return "Kh\xf3a h\u1ecdc m\u1edbi";
     },
     goToCourse$1(course) {
-      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u043a\u0443\u0440\u0441\u0443: " + course;
+      return "\u0110i t\u1edbi kh\xf3a h\u1ecdc: " + course;
     },
     get$startNewSession() {
-      return "\u041f\u043e\u0447\u0430\u0442\u0438 \u043d\u043e\u0432\u0443 \u0441\u0435\u0441\u0456\u044e";
+      return "B\u1eaft \u0111\u1ea7u phi\xean m\u1edbi";
     },
     get$joinOpenSession() {
-      return "\u041f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u0432\u0456\u0434\u043a\u0440\u0438\u0442\u043e\u0457 \u0441\u0435\u0441\u0456\u0457";
+      return "Tham gia phi\xean m\u1edf";
     },
     get$activityNotFound() {
-      return "\u0410\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e";
+      return "Ho\u1ea1t \u0111\u1ed9ng kh\xf4ng t\xecm th\u1ea5y";
     },
     get$levelUp() {
-      return "\u041f\u0456\u0434\u0432\u0438\u0449\u0438\u0442\u0438 \u0440\u0456\u0432\u0435\u043d\u044c";
+      return "L\xean c\u1ea5p";
     },
     get$myActivities() {
-      return "\u041c\u043e\u0457 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456";
+      return "Ho\u1ea1t \u0111\u1ed9ng c\u1ee7a t\xf4i";
     },
     get$openToJoin() {
-      return "\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0438 \u0434\u043b\u044f \u043f\u0440\u0438\u0454\u0434\u043d\u0430\u043d\u043d\u044f";
+      return "M\u1edf \u0111\u1ec3 tham gia";
     },
     get$activityDone() {
-      return "\u0410\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430!";
+      return "Ho\u1ea1t \u0111\u1ed9ng ho\xe0n th\xe0nh!";
     },
     get$promoCodeInfo() {
-      return "\u041f\u0440\u043e\u043c\u043e-\u043a\u043e\u0434\u0438 \u043c\u043e\u0436\u043d\u0430 \u0432\u0432\u0435\u0441\u0442\u0438 \u043d\u0430 \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u0456\u0439 \u0441\u0442\u043e\u0440\u0456\u043d\u0446\u0456";
+      return "M\xe3 khuy\u1ebfn m\xe3i c\xf3 th\u1ec3 nh\u1eadp \u1edf trang ti\u1ebfp theo";
     },
     get$editsComingSoon() {
-      return "\u041c\u043e\u0436\u043b\u0438\u0432\u0456\u0441\u0442\u044c \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u043d\u043d\u044f \u043c\u0456\u0441\u0442 \u0456 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0435\u0439 \u0441\u043a\u043e\u0440\u043e \u0437'\u044f\u0432\u0438\u0442\u044c\u0441\u044f.";
+      return "Kh\u1ea3 n\u0103ng ch\u1ec9nh s\u1eeda th\xe0nh ph\u1ed1 v\xe0 ho\u1ea1t \u0111\u1ed9ng s\u1ebd s\u1edbm ra m\u1eaft.";
     },
     get$editing() {
-      return "\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "\u0110ang ch\u1ec9nh s\u1eeda";
     },
     get$activityNeedsOneMember() {
-      return "\u041e\u0439! \u0426\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0454 \u0449\u0435 1 \u043b\u044e\u0434\u0438\u043d\u0438.";
+      return "\xd4i! Ho\u1ea1t \u0111\u1ed9ng n\xe0y c\u1ea7n th\xeam 1 ng\u01b0\u1eddi n\u1eefa.";
     },
     activityNeedsMembers$1(num) {
-      return "\u041e\u0439! \u0426\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c \u043f\u043e\u0442\u0440\u0435\u0431\u0443\u0454 \u0449\u0435 " + num + " \u043b\u044e\u0434\u0435\u0439.";
+      return "\xd4i! Ho\u1ea1t \u0111\u1ed9ng n\xe0y c\u1ea7n th\xeam " + num + " ng\u01b0\u1eddi n\u1eefa.";
     },
     get$inviteFriendsToCourse() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0434\u0440\u0443\u0437\u0456\u0432 \u043d\u0430 \u043c\u0456\u0439 \u043a\u0443\u0440\u0441";
+      return "M\u1eddi b\u1ea1n b\xe8 tham gia kh\xf3a h\u1ecdc c\u1ee7a t\xf4i";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f \u043d\u0430 \u043f\u0456\u0434\u0441\u0443\u043c\u043a\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a t\xf3m t\u1eaft ho\u1ea1t \u0111\u1ed9ng";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f \u043d\u0430 \u0442\u0440\u0430\u043d\u0441\u043a\u0440\u0438\u043f\u0446\u0456\u0457 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043d\u043d\u044f";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a b\u1ea3n ch\xe9p";
     },
     get$pingSent() {
-      return "\ud83d\udd14 \u041f\u0456\u043d\u0433 \u043a\u0443\u0440\u0441\u0443 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e! \ud83d\udd14";
+      return "\ud83d\udd34 \u0110\xe3 g\u1eedi ping kh\xf3a h\u1ecdc! \ud83d\udd34";
     },
     get$courseTitle() {
-      return "\u041d\u0430\u0437\u0432\u0430 \u043a\u0443\u0440\u0441\u0443";
+      return "Ti\xeau \u0111\u1ec1 kh\xf3a h\u1ecdc";
     },
     get$courseDesc() {
-      return "\u041e\u043f\u0438\u0441 \u043a\u0443\u0440\u0441\u0443";
+      return "M\xf4 t\u1ea3 kh\xf3a h\u1ecdc";
     },
     get$courseSavedSuccessfully() {
-      return "\u041a\u0443\u0440\u0441 \u0443\u0441\u043f\u0456\u0448\u043d\u043e \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043e";
+      return "L\u01b0u kh\xf3a h\u1ecdc th\xe0nh c\xf4ng";
     },
     get$addCoursePlan() {
-      return "\u0414\u043e\u0434\u0430\u0442\u0438 \u043f\u043b\u0430\u043d \u043a\u0443\u0440\u0441\u0443";
+      return "Th\xeam k\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc";
     },
     get$activityStatsButtonInstruction() {
-      return "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0442\u0443\u0442, \u0449\u043e\u0431 \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u043d\u0443\u0442\u0438 \u0441\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0443 \u0432\u0430\u0448\u043e\u0457 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456 \u0442\u0430 \u0437\u0430\u043a\u0440\u0438\u0442\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c \u043f\u0456\u0441\u043b\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f";
+      return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 xem th\u1ed1ng k\xea ho\u1ea1t \u0111\u1ed9ng c\u1ee7a b\u1ea1n v\xe0 \u0111\xf3ng ho\u1ea1t \u0111\u1ed9ng khi ho\xe0n th\xe0nh";
     },
     get$loginToAccount() {
-      return "\u0423\u0432\u0456\u0439\u0442\u0438 \u0434\u043e \u043c\u043e\u0433\u043e \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0438\u0441\u0443";
+      return "\u0110\u0103ng nh\u1eadp v\xe0o t\xe0i kho\u1ea3n c\u1ee7a t\xf4i";
     },
     get$appDescription() {
-      return "\u0412\u0438\u0432\u0447\u0430\u0439\u0442\u0435 \u043c\u043e\u0432\u0443\n\u043f\u0438\u0448\u0443\u0447\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0434\u0440\u0443\u0437\u044f\u043c.";
+      return "H\u1ecdc m\u1ed9t ng\xf4n ng\u1eef\ntrong khi nh\u1eafn tin v\u1edbi b\u1ea1n b\xe8.";
     },
     get$languages(_) {
-      return "\u041c\u043e\u0432\u0438";
+      return "Ng\xf4n ng\u1eef";
     },
     get$chooseLanguage() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u043c\u043e\u0432\u0443 \u043f\u0440\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f.";
+      return "Ch\u1ecdn m\u1ed9t ng\xf4n ng\u1eef m\u1ee5c ti\xeau.";
     },
     get$startOwn() {
-      return "\u041f\u043e\u0447\u0430\u0442\u0438 \u0441\u0432\u043e\u044e \u0432\u043b\u0430\u0441\u043d\u0443";
+      return "B\u1eaft \u0111\u1ea7u c\u1ee7a ri\xeang t\xf4i";
     },
     get$joinCourseDesc() {
-      return "\u041a\u043e\u0436\u0435\u043d \u043a\u0443\u0440\u0441 \u043c\u0430\u0454 8-10 \u043f\u043e\u0441\u043b\u0456\u0434\u043e\u0432\u043d\u0438\u0445 \u0442\u0435\u043c \u0456\u0437 \u0440\u0456\u0437\u043d\u043e\u043c\u0430\u043d\u0456\u0442\u043d\u0438\u043c\u0438 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f\u043c\u0438 \u0434\u043b\u044f \u0432\u0438\u0432\u0447\u0435\u043d\u043d\u044f \u043c\u043e\u0432\u0438.";
+      return "M\u1ed7i kh\xf3a h\u1ecdc c\xf3 8-10 ch\u1ee7 \u0111\u1ec1 theo tr\xecnh t\u1ef1 v\u1edbi nhi\u1ec1u ho\u1ea1t \u0111\u1ed9ng h\u1ecdc ng\xf4n ng\u1eef d\u1ef1a tr\xean nhi\u1ec7m v\u1ee5.";
     },
     get$courseCodeHint() {
-      return "\u041a\u043e\u0434 \u0430\u0431\u043e \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u043f\u043e\u0457\u0437\u0434\u043a\u0443";
+      return "M\xe3 chuy\u1ebfn \u0111i ho\u1eb7c li\xean k\u1ebft";
     },
     get$signupOption() {
-      return "\u042f\u043a \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0437\u0430\u0440\u0435\u0454\u0441\u0442\u0440\u0443\u0432\u0430\u0442\u0438\u0441\u044f?";
+      return "B\u1ea1n mu\u1ed1n \u0111\u0103ng k\xfd nh\u01b0 th\u1ebf n\xe0o?";
     },
     get$withApple() {
-      return "\u0417 Apple";
+      return "V\u1edbi Apple";
     },
     get$withGoogle() {
-      return "\u0417 Google";
+      return "V\u1edbi Google";
     },
     get$withEmail() {
-      return "\u0417 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u044e \u043f\u043e\u0448\u0442\u043e\u044e";
+      return "V\u1edbi Email";
     },
     get$createAccount() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043e\u0431\u043b\u0456\u043a\u043e\u0432\u0438\u0439 \u0437\u0430\u043f\u0438\u0441";
+      return "T\u1ea1o t\xe0i kho\u1ea3n";
     },
     get$loginWithEmail() {
-      return "\u0423\u0432\u0456\u0439\u0442\u0438 \u0437 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u044e \u043f\u043e\u0448\u0442\u043e\u044e";
+      return "\u0110\u0103ng nh\u1eadp b\u1eb1ng email";
     },
     get$usernameOrEmail() {
-      return "\u0406\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0430\u0431\u043e \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430 \u043f\u043e\u0448\u0442\u0430";
+      return "T\xean ng\u01b0\u1eddi d\xf9ng ho\u1eb7c email";
     },
     get$email() {
-      return "\u0415\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0430 \u043f\u043e\u0448\u0442\u0430";
+      return "Email";
     },
     get$forgotPassword() {
-      return "\u0417\u0430\u0431\u0443\u043b\u0438 \u043f\u0430\u0440\u043e\u043b\u044c?";
+      return "Qu\xean m\u1eadt kh\u1ea9u?";
     },
     get$endActivity() {
-      return "\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0438 \u0434\u0456\u044f\u043b\u044c\u043d\u0456\u0441\u0442\u044c";
+      return "K\u1ebft th\xfac ho\u1ea1t \u0111\u1ed9ng";
     },
     get$allLanguages() {
-      return "\u0412\u0441\u0456 \u043c\u043e\u0432\u0438";
+      return "T\u1ea5t c\u1ea3 c\xe1c ng\xf4n ng\u1eef";
     },
     get$directMessageBotTitle() {
-      return "\u041f\u0440\u044f\u043c\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u041f\u0430\u043d\u0433\u0435\u0439 \u0411\u043e\u0442";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp v\u1edbi Pangea Bot";
     },
     get$feedbackTitle() {
-      return "\u0417\u0432\u043e\u0440\u043e\u0442\u043d\u0456\u0439 \u0437\u0432'\u044f\u0437\u043e\u043a \u0449\u043e\u0434\u043e \u0434\u0456\u044f\u043b\u044c\u043d\u043e\u0441\u0442\u0456";
+      return "Ph\u1ea3n h\u1ed3i ho\u1ea1t \u0111\u1ed9ng";
     },
     get$feedbackRespDesc() {
-      return "\u041f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0437\u0430\u0432\u0442\u0440\u0430 \u043e\u043d\u043e\u0432\u043b\u0435\u043d\u043d\u044f \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456.";
+      return "Ki\u1ec3m tra l\u1ea1i v\xe0o ng\xe0y mai \u0111\u1ec3 c\u1eadp nh\u1eadt ho\u1ea1t \u0111\u1ed9ng.";
     },
     get$feedbackHint() {
-      return "\u0412\u0430\u0448 \u0432\u0456\u0434\u0433\u0443\u043a";
+      return "Ph\u1ea3n h\u1ed3i c\u1ee7a b\u1ea1n";
     },
     get$feedbackButton() {
-      return "\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0432\u0456\u0434\u0433\u0443\u043a";
+      return "G\u1eedi ph\u1ea3n h\u1ed3i";
     },
     get$directMessageBotDesc() {
-      return "\u0421\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u0437 \u043b\u044e\u0434\u044c\u043c\u0438 \u2014 \u0446\u0435 \u0446\u0456\u043a\u0430\u0432\u0456\u0448\u0435, \u0430\u043b\u0435... \u0448\u0442\u0443\u0447\u043d\u0438\u0439 \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u0437\u0430\u0432\u0436\u0434\u0438 \u0433\u043e\u0442\u043e\u0432\u0438\u0439!";
+      return "N\xf3i chuy\u1ec7n v\u1edbi con ng\u01b0\u1eddi th\xec vui h\u01a1n nh\u01b0ng... AI lu\xf4n s\u1eb5n s\xe0ng!";
     },
     get$inviteYourFriends() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0456\u0442\u044c \u0441\u0432\u043e\u0457\u0445 \u0434\u0440\u0443\u0437\u0456\u0432";
+      return "M\u1eddi b\u1ea1n b\xe8 c\u1ee7a b\u1ea1n";
     },
     get$playWithAI() {
-      return "\u041f\u043e\u043a\u0438 \u0449\u043e \u0433\u0440\u0430\u0439\u0442\u0435 \u0437 \u0428\u0406";
+      return "Ch\u01a1i v\u1edbi AI trong th\u1eddi gian n\xe0y";
     },
     get$courseStartDesc() {
-      return "\u041f\u0430\u043d\u0433\u0435\u0439 \u0411\u043e\u0442 \u0433\u043e\u0442\u043e\u0432\u0438\u0439 \u0434\u043e \u0440\u043e\u0431\u043e\u0442\u0438 \u0432 \u0431\u0443\u0434\u044c-\u044f\u043a\u0438\u0439 \u0447\u0430\u0441!\n\n...\u0430\u043b\u0435 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u043a\u0440\u0430\u0449\u0435 \u0437 \u0434\u0440\u0443\u0437\u044f\u043c\u0438!";
+      return "Pangea Bot s\u1eb5n s\xe0ng ho\u1ea1t \u0111\u1ed9ng b\u1ea5t c\u1ee9 l\xfac n\xe0o!\n\n...nh\u01b0ng h\u1ecdc t\u1eadp t\u1ed1t h\u01a1n khi c\xf3 b\u1ea1n b\xe8!";
     },
     get$activityDropdownDesc() {
-      return "\u041a\u043e\u043b\u0438 \u0437\u0430\u043a\u0456\u043d\u0447\u0438\u0442\u0435 \u0446\u044e \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c, \u043d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043d\u0438\u0436\u0447\u0435";
+      return "Khi b\u1ea1n ho\xe0n th\xe0nh ho\u1ea1t \u0111\u1ed9ng n\xe0y, nh\u1ea5n v\xe0o b\xean d\u01b0\u1edbi";
     },
     get$languageMismatchTitle() {
-      return "\u041d\u0435\u0441\u0443\u043c\u0456\u0441\u043d\u0456\u0441\u0442\u044c \u043c\u043e\u0432\u0438";
+      return "Kh\xf4ng kh\u1edbp ng\xf4n ng\u1eef";
     },
     get$emptyChatSearch() {
-      return "\u041d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e \u043e\u0441\u043e\u0431\u0438\u0441\u0442\u0438\u0445 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c \u0430\u0431\u043e \u0447\u0430\u0442\u0456\u0432. \u041f\u0435\u0440\u0435\u043a\u043e\u043d\u0430\u0439\u0442\u0435\u0441\u044f, \u0449\u043e \u0432\u0430\u0448 \u0437\u0430\u043f\u0438\u0442 \u043d\u0430\u043f\u0438\u0441\u0430\u043d\u0438\u0439 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e.";
+      return "Kh\xf4ng t\xecm th\u1ea5y tin nh\u1eafn tr\u1ef1c ti\u1ebfp ho\u1eb7c tr\xf2 chuy\u1ec7n n\xe0o. H\xe3y ch\u1eafc ch\u1eafn r\u1eb1ng b\u1ea1n \u0111\xe3 \u0111\xe1nh v\u1ea7n \u0111\xfang t\xecm ki\u1ebfm.";
     },
     get$languageMismatchDesc() {
-      return "\u041c\u043e\u0432\u0430 \u0432\u0430\u0448\u043e\u0457 \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0457 \u043c\u043e\u0432\u0438 \u043d\u0435 \u0441\u043f\u0456\u0432\u043f\u0430\u0434\u0430\u0454 \u0437 \u043c\u043e\u0432\u043e\u044e \u0446\u0456\u0454\u0457 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456. \u041e\u043d\u043e\u0432\u0438\u0442\u0438 \u0446\u0456\u043b\u044c\u043e\u0432\u0443 \u043c\u043e\u0432\u0443?";
+      return "Ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n kh\xf4ng kh\u1edbp v\u1edbi ng\xf4n ng\u1eef c\u1ee7a ho\u1ea1t \u0111\u1ed9ng n\xe0y. C\u1eadp nh\u1eadt ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n?";
     },
     get$reportWordIssueTooltip() {
-      return "\u041f\u043e\u0432\u0456\u0434\u043e\u043c\u0438\u0442\u0438 \u043f\u0440\u043e \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0443 \u0437 \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0454\u044e \u0441\u043b\u043e\u0432\u0430";
+      return "B\xe1o c\xe1o v\u1ea5n \u0111\u1ec1 v\u1ec1 th\xf4ng tin t\u1eeb";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "\u0417\u0432\u043e\u0440\u043e\u0442\u043d\u0456\u0439 \u0437\u0432'\u044f\u0437\u043e\u043a \u043f\u0440\u043e \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044e \u0441\u043b\u043e\u0432\u0430";
+      return "Ph\u1ea3n h\u1ed3i Th\xf4ng tin T\u1eeb";
     },
     get$noPublicCoursesFound() {
-      return "\u041f\u0443\u0431\u043b\u0456\u0447\u043d\u0456 \u043a\u0443\u0440\u0441\u0438 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u0456. \u0425\u043e\u0442\u0456\u043b\u0438 \u0431 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043e\u0434\u0438\u043d?";
+      return "Kh\xf4ng t\xecm th\u1ea5y kh\xf3a h\u1ecdc c\xf4ng khai. B\u1ea1n c\xf3 mu\u1ed1n t\u1ea1o m\u1ed9t kh\xf3a h\u1ecdc kh\xf4ng?";
     },
     get$noCourseTemplatesFound() {
-      return "\u041c\u0438 \u043d\u0435 \u0437\u043c\u043e\u0433\u043b\u0438 \u0437\u043d\u0430\u0439\u0442\u0438 \u043a\u0443\u0440\u0441\u0438 \u0434\u043b\u044f \u0432\u0430\u0448\u043e\u0457 \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u0457 \u043c\u043e\u0432\u0438. \u0422\u0438\u043c \u0447\u0430\u0441\u043e\u043c \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0441\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u0442\u0438\u0441\u044f \u0437 Pangea Bot \u0456 \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0442\u0438\u0441\u044f \u043f\u0456\u0437\u043d\u0456\u0448\u0435 \u0434\u043b\u044f \u0431\u0456\u043b\u044c\u0448\u043e\u0457 \u043a\u0456\u043b\u044c\u043a\u043e\u0441\u0442\u0456 \u043a\u0443\u0440\u0441\u0456\u0432.";
+      return "Ch\xfang t\xf4i kh\xf4ng th\u1ec3 t\xecm th\u1ea5y b\u1ea5t k\u1ef3 kh\xf3a h\u1ecdc n\xe0o ph\xf9 h\u1ee3p v\u1edbi ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n. Trong th\u1eddi gian ch\u1edd, b\u1ea1n c\xf3 th\u1ec3 tr\xf2 chuy\u1ec7n v\u1edbi Pangea Bot v\xe0 quay l\u1ea1i sau \u0111\u1ec3 xem th\xeam c\xe1c kh\xf3a h\u1ecdc.";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot \u0432\u0456\u0434\u043f\u043e\u0432\u0456\u0434\u0430\u0454 \u0434\u043e\u0432\u0433\u043e. \u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0441\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u0449\u0435 \u0440\u0430\u0437 \u043f\u0456\u0437\u043d\u0456\u0448\u0435 \u0430\u0431\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u0456\u0442\u044c \u0434\u0440\u0443\u0433\u0430.";
+      return "Pangea Bot \u0111ang ph\u1ea3n h\u1ed3i ch\u1eadm. Vui l\xf2ng th\u1eed l\u1ea1i sau ho\u1eb7c m\u1eddi b\u1ea1n b\xe8 tham gia.";
     },
     get$unsubscribedResponseError() {
-      return "\u0426\u044f \u0444\u0443\u043d\u043a\u0446\u0456\u044f \u0432\u0438\u043c\u0430\u0433\u0430\u0454 \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438";
+      return "T\xednh n\u0103ng n\xe0y y\xeau c\u1ea7u \u0111\u0103ng k\xfd";
     },
     get$leaveDesc() {
-      return "\u0412\u0438\u0439\u0442\u0438 \u0437 \u0446\u044c\u043e\u0433\u043e \u043f\u0440\u043e\u0441\u0442\u043e\u0440\u0443 \u0442\u0430 \u0432\u0441\u0456\u0445 \u0447\u0430\u0442\u0456\u0432 \u0443 \u043d\u044c\u043e\u043c\u0443";
+      return "R\u1eddi kh\u1ecfi kh\xf4ng gian n\xe0y v\xe0 t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n trong \u0111\xf3";
     },
     get$selectAll() {
-      return "\u0412\u0438\u0431\u0440\u0430\u0442\u0438 \u0432\u0441\u0435";
+      return "Ch\u1ecdn t\u1ea5t c\u1ea3";
     },
     get$deselectAll(_) {
-      return "\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438 \u0432\u0438\u0431\u0456\u0440 \u0432\u0441\u044c\u043e\u0433\u043e";
+      return "B\u1ecf ch\u1ecdn t\u1ea5t c\u1ea3";
     },
     get$shareCourse() {
-      return "\u041f\u043e\u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f \u043a\u0443\u0440\u0441\u043e\u043c";
+      return "Chia s\u1ebb kh\xf3a h\u1ecdc";
     },
     get$addCourse() {
-      return "\u0414\u043e\u0434\u0430\u0442\u0438 \u043a\u0443\u0440\u0441";
+      return "Th\xeam kh\xf3a h\u1ecdc";
     },
     get$joinPublicCourse() {
-      return "\u041f\u0440\u0438\u0454\u0434\u043d\u0430\u0442\u0438\u0441\u044f \u0434\u043e \u043f\u0443\u0431\u043b\u0456\u0447\u043d\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "Tham gia kh\xf3a h\u1ecdc c\xf4ng khai";
     },
     get$vocabLevelsDesc() {
-      return "\u0422\u0443\u0442 \u0437'\u044f\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0441\u043b\u043e\u0432\u0430 \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u0430, \u043a\u043e\u043b\u0438 \u0432\u0438 \u0457\u0445 \u043f\u0456\u0434\u0432\u0438\u0449\u0438\u0442\u0435 \u0440\u0456\u0432\u0435\u043d\u044c!";
+      return "\u0110\xe2y l\xe0 n\u01a1i c\xe1c t\u1eeb v\u1ef1ng s\u1ebd xu\u1ea5t hi\u1ec7n sau khi b\u1ea1n n\xe2ng c\u1ea5p ch\xfang!";
     },
     get$activityAnalyticsTooltipBody() {
-      return "\u0426\u0435 \u0432\u0430\u0448\u0456 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u0456 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0442\u0430 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438.";
+      return "\u0110\xe2y l\xe0 c\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 l\u01b0u c\u1ee7a b\u1ea1n \u0111\u1ec3 xem x\xe9t v\xe0 th\u1ef1c h\xe0nh.";
     },
     get$numSavedActivities() {
-      return "\u041a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u0438\u0445 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0435\u0439";
+      return "S\u1ed1 l\u01b0\u1ee3ng ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 l\u01b0u";
     },
     get$saveActivityTitle() {
-      return "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c";
+      return "L\u01b0u ho\u1ea1t \u0111\u1ed9ng";
     },
     get$saveActivityDesc() {
-      return "\u0414\u043e\u0431\u0440\u0430 \u0440\u043e\u0431\u043e\u0442\u0430! \u0417\u0431\u0435\u0440\u0435\u0436\u0456\u0442\u044c \u0446\u044e \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0434\u0430\u043b\u044c\u0448\u043e\u0433\u043e \u043f\u0435\u0440\u0435\u0433\u043b\u044f\u0434\u0443 \u0442\u0430 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438";
+      return "L\xe0m t\u1ed1t l\u1eafm! L\u01b0u ho\u1ea1t \u0111\u1ed9ng n\xe0y \u0111\u1ec3 xem x\xe9t v\xe0 th\u1ef1c h\xe0nh sau.";
     },
     get$levelInfoTooltip() {
-      return "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438 \u0432\u0441\u0456 \u0431\u0430\u043b\u0438, \u044f\u043a\u0456 \u0432\u0438 \u0437\u0430\u0440\u043e\u0431\u0438\u043b\u0438, \u0456 \u044f\u043a!";
+      return "T\u1ea1i \u0111\xe2y b\u1ea1n c\xf3 th\u1ec3 th\u1ea5y t\u1ea5t c\u1ea3 c\xe1c \u0111i\u1ec3m b\u1ea1n \u0111\xe3 ki\u1ebfm \u0111\u01b0\u1ee3c v\xe0 c\xe1ch th\u1ee9c!";
     },
     get$alreadyInCourseWithID() {
-      return "\u0412\u0438 \u0432\u0436\u0435 \u0432 \u043a\u0443\u0440\u0441\u0456 \u0437 \u0446\u0438\u043c \u043f\u043b\u0430\u043d\u043e\u043c. \u0412\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0441\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u043a\u0443\u0440\u0441 \u0437 \u0442\u0438\u043c \u0436\u0435 \u043f\u043b\u0430\u043d\u043e\u043c \u0430\u0431\u043e \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u0456\u0441\u043d\u0443\u044e\u0447\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443?";
+      return "B\u1ea1n \u0111\xe3 tham gia m\u1ed9t kh\xf3a h\u1ecdc v\u1edbi k\u1ebf ho\u1ea1ch n\xe0y. B\u1ea1n c\xf3 mu\u1ed1n t\u1ea1o m\u1ed9t kh\xf3a h\u1ecdc v\u1edbi c\xf9ng k\u1ebf ho\u1ea1ch, hay \u0111i \u0111\u1ebfn kh\xf3a h\u1ecdc hi\u1ec7n c\xf3?";
     },
     get$goToExistingCourse() {
-      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u0456\u0441\u043d\u0443\u044e\u0447\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443";
+      return "\u0110i \u0111\u1ebfn kh\xf3a h\u1ecdc hi\u1ec7n c\xf3";
     },
     get$emojiView() {
-      return "\u041f\u0435\u0440\u0435\u0433\u043b\u044f\u0434 \u0435\u043c\u043e\u0434\u0437\u0456";
+      return "Ch\u1ebf \u0111\u1ed9 xem bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac";
     },
     get$feedbackDialogDesc() {
-      return "\u042f \u0442\u0430\u043a\u043e\u0436 \u0440\u043e\u0431\u043b\u044e \u043f\u043e\u043c\u0438\u043b\u043a\u0438! \u0429\u043e-\u043d\u0435\u0431\u0443\u0434\u044c, \u0449\u043e\u0431 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0442\u0438 \u043c\u0435\u043d\u0456 \u043f\u043e\u043a\u0440\u0430\u0449\u0438\u0442\u0438\u0441\u044f?";
+      return "T\xf4i c\u0169ng m\u1eafc l\u1ed7i! C\xf3 \u0111i\u1ec1u g\xec \u0111\u1ec3 gi\xfap t\xf4i c\u1ea3i thi\u1ec7n kh\xf4ng?";
     },
     get$contactHasBeenInvitedToTheCourse() {
-      return "\u041a\u043e\u043d\u0442\u0430\u043a\u0442 \u0431\u0443\u0432 \u0437\u0430\u043f\u0440\u043e\u0448\u0435\u043d\u0438\u0439 \u043d\u0430 \u043a\u0443\u0440\u0441";
+      return "Li\xean h\u1ec7 \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi tham gia kh\xf3a h\u1ecdc";
     },
     get$inviteFriends() {
-      return "\u0417\u0430\u043f\u0440\u043e\u0441\u0438\u0442\u0438 \u0434\u0440\u0443\u0437\u0456\u0432";
+      return "M\u1eddi b\u1ea1n b\xe8";
     },
     get$failedToLoadFeedback() {
-      return "\u041d\u0435 \u0432\u0434\u0430\u043b\u043e\u0441\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0438\u0442\u0438 \u0432\u0456\u0434\u0433\u0443\u043a.";
+      return "Kh\xf4ng th\u1ec3 t\u1ea3i ph\u1ea3n h\u1ed3i.";
     },
     get$activityStatsButtonTooltip() {
-      return "\u0406\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f \u043f\u0440\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c";
+      return "Th\xf4ng tin ho\u1ea1t \u0111\u1ed9ng";
     },
     get$allow(_) {
-      return "\u0414\u043e\u0437\u0432\u043e\u043b\u0438\u0442\u0438";
+      return "Cho ph\xe9p";
     },
     get$deny() {
-      return "\u0412\u0456\u0434\u0445\u0438\u043b\u0438\u0442\u0438";
+      return "T\u1eeb ch\u1ed1i";
     },
     get$enabledRenewal() {
-      return "\u0423\u0432\u0456\u043c\u043a\u043d\u0443\u0442\u0438 \u043f\u0440\u043e\u0434\u043e\u0432\u0436\u0435\u043d\u043d\u044f \u043f\u0456\u0434\u043f\u0438\u0441\u043a\u0438";
+      return "K\xedch ho\u1ea1t gia h\u1ea1n \u0111\u0103ng k\xfd";
     },
     get$subscriptionEndsOn() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0441\u043a\u0430 \u0437\u0430\u043a\u0456\u043d\u0447\u0443\u0454\u0442\u044c\u0441\u044f";
+      return "\u0110\u0103ng k\xfd k\u1ebft th\xfac v\xe0o";
     },
     get$subscriptionRenewsOn() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0441\u043a\u0430 \u043f\u043e\u043d\u043e\u0432\u043b\u044e\u0454\u0442\u044c\u0441\u044f";
+      return "\u0110\u0103ng k\xfd gia h\u1ea1n v\xe0o";
     },
     get$waitForSubscriptionChanges() {
-      return "\u0417\u043c\u0456\u043d\u0438 \u0443 \u0432\u0430\u0448\u0456\u0439 \u043f\u0456\u0434\u043f\u0438\u0441\u0446\u0456 \u043c\u043e\u0436\u0443\u0442\u044c \u0437\u0430\u0439\u043d\u044f\u0442\u0438 \u0434\u0435\u044f\u043a\u0438\u0439 \u0447\u0430\u0441, \u0449\u043e\u0431 \u0432\u0456\u0434\u043e\u0431\u0440\u0430\u0437\u0438\u0442\u0438\u0441\u044f \u0432 \u0434\u043e\u0434\u0430\u0442\u043a\u0443.";
+      return "C\xe1c thay \u0111\u1ed5i \u0111\u1ed1i v\u1edbi \u0111\u0103ng k\xfd c\u1ee7a b\u1ea1n c\xf3 th\u1ec3 m\u1ea5t m\u1ed9t ch\xfat th\u1eddi gian \u0111\u1ec3 ph\u1ea3n \xe1nh trong \u1ee9ng d\u1ee5ng.";
     },
     get$subscribeReadingAssistance() {
-      return "\u041f\u0456\u0434\u043f\u0438\u0448\u0456\u0442\u044c\u0441\u044f, \u0449\u043e\u0431 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0438 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c";
+      return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a c\xf4ng c\u1ee5 nh\u1eafn tin";
     },
     get$aceDisplayName() {
       return "Achinese";
     },
     get$achDisplayName() {
-      return "\u0410\u043a\u043e\u043b\u0456";
+      return "Acoli";
     },
     get$afDisplayName() {
-      return "\u0410\u0444\u0440\u0438\u043a\u0430\u0430\u043d\u0441";
+      return "Afrikaans";
     },
     get$akDisplayName() {
-      return "\u0410\u043a\u0430\u043d";
+      return "Akan";
     },
     get$alzDisplayName() {
-      return "\u0410\u043b\u0443\u0440";
+      return "Alur";
     },
     get$amDisplayName() {
-      return "\u0410\u043c\u0445\u0430\u0440\u0441\u044c\u043a\u0430";
+      return "Amharic";
     },
     get$arDisplayName() {
-      return "\u0410\u0440\u0430\u0431\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng \u1ea2 R\u1eadp";
     },
     get$asDisplayName() {
-      return "\u0410\u0441\u0441\u0430\u043c\u0441\u044c\u043a\u0430";
+      return "Assamese";
     },
     get$awaDisplayName() {
-      return "\u0410\u0432\u0430\u0434\u0456";
+      return "Awadhi";
     },
     get$ayDisplayName() {
-      return "\u0410\u0439\u043c\u0430\u0440\u0430";
+      return "Aymara";
     },
     get$azDisplayName() {
-      return "\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Azerbaijani";
     },
     get$baDisplayName() {
-      return "\u0411\u0430\u0448\u043a\u0438\u0440\u0441\u044c\u043a\u0430";
+      return "Bashkir";
     },
     get$banDisplayName() {
-      return "\u0411\u0430\u043b\u0456\u043d\u0435\u0437\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ng\u01b0\u1eddi Bali";
     },
     get$bbcDisplayName() {
-      return "\u0411\u0430\u0442\u0430\u043a \u0422\u043e\u0431\u0430";
+      return "Batak Toba";
     },
     get$beDisplayName() {
-      return "\u0411\u0456\u043b\u043e\u0440\u0443\u0441\u044c\u043a\u0430";
+      return "Ng\u01b0\u1eddi Belarus";
     },
     get$bemDisplayName() {
-      return "\u0411\u0435\u043c\u0431\u0430";
+      return "Bemba";
     },
     get$bewDisplayName() {
-      return "\u0411\u0435\u0442\u0430\u0432\u0456";
+      return "Betawi";
     },
     get$bgDisplayName() {
-      return "\u0411\u043e\u043b\u0433\u0430\u0440\u0441\u044c\u043a\u0430";
+      return "Ng\u01b0\u1eddi Bulgaria";
     },
     get$bhoDisplayName() {
-      return "\u0411\u0445\u043e\u0434\u0436\u043f\u0443\u0440\u0456";
+      return "Bhojpuri";
     },
     get$bikDisplayName() {
-      return "\u0411\u0456\u043a\u043e\u043b\u044c";
+      return "Bikol";
     },
     get$bmDisplayName() {
-      return "\u0411\u0430\u043c\u0431\u0430\u0440\u0430";
+      return "Bambara";
     },
     get$bnDisplayName() {
-      return "\u0411\u0435\u043d\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Bengali";
     },
     get$bnBDDisplayName() {
-      return "\u0411\u0435\u043d\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430 (\u0411\u0430\u043d\u0433\u043b\u0430\u0434\u0435\u0448)";
+      return "Bengali (Bangladesh)";
     },
     get$bnINDisplayName() {
-      return "\u0411\u0435\u043d\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430 (\u0406\u043d\u0434\u0456\u044f)";
+      return "Bengali (\u1ea4n \u0110\u1ed9)";
     },
     get$brDisplayName() {
-      return "\u0411\u0440\u0435\u0442\u043e\u043d\u0441\u044c\u043a\u0430";
+      return "Breton";
     },
     get$bsDisplayName() {
-      return "\u0411\u043e\u0441\u043d\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Bosnia";
     },
     get$btsDisplayName() {
-      return "\u0411\u0430\u0442\u0430\u043a \u0421\u0456\u043c\u0430\u043b\u0443\u043d\u0433\u0443\u043d";
+      return "Batak Simalungun";
     },
     get$btxDisplayName() {
-      return "\u0411\u0430\u0442\u0430\u043a \u041a\u0430\u0440\u043e";
+      return "Batak Karo";
     },
     get$buaDisplayName() {
-      return "\u0411\u0443\u0440\u044f\u0442\u0441\u044c\u043a\u0430";
+      return "Buriat";
     },
     get$caDisplayName() {
-      return "\u041a\u0430\u0442\u0430\u043b\u043e\u043d\u0441\u044c\u043a\u0430";
+      return "Catalan";
     },
     get$cebDisplayName() {
-      return "\u0421\u0435\u0431\u0443\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Cebuano";
     },
     get$cggDisplayName() {
-      return "\u0427\u0456\u0433\u0430";
+      return "Chiga";
     },
     get$chmDisplayName() {
-      return "\u041c\u0430\u0440\u0456";
+      return "Mari";
     },
     get$ckbDisplayName() {
-      return "\u0426\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u0438\u0439 \u043a\u0443\u0440\u0434\u0441\u044c\u043a\u0438\u0439";
+      return "Ng\u01b0\u1eddi Kurd Trung";
     },
     get$cnhDisplayName() {
-      return "\u0425\u0430\u043a\u0445\u0430 \u0427\u0456\u043d";
+      return "Hakha Chin";
     },
     get$coDisplayName() {
-      return "\u041a\u043e\u0440\u0441\u0438\u043a\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Corsican";
     },
     get$crhDisplayName() {
-      return "\u041a\u0440\u0438\u043c\u0441\u044c\u043a\u043e\u0442\u0430\u0442\u0430\u0440\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Th\u1ed5 Nh\u0129 K\u1ef3 Krym";
     },
     get$crsDisplayName() {
-      return "\u0421\u0435\u0441\u0435\u043b\u044c\u0432\u0430 \u043a\u0440\u0435\u043e\u043b\u044c\u0441\u044c\u043a\u0430 \u0444\u0440\u0430\u043d\u0446\u0443\u0437\u044c\u043a\u0430";
+      return "Ti\u1ebfng Ph\xe1p Creole Seselwa";
     },
     get$csDisplayName() {
-      return "\u0427\u0435\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng S\xe9c";
     },
     get$cvDisplayName() {
-      return "\u0427\u0443\u0432\u0430\u0448\u0441\u044c\u043a\u0430";
+      return "Chuvash";
     },
     get$cyDisplayName() {
-      return "\u0412\u0430\u043b\u043b\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Wales";
     },
     get$daDisplayName() {
-      return "\u0414\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "\u0110an M\u1ea1ch";
     },
     get$deDisplayName() {
-      return "\u041d\u0456\u043c\u0435\u0446\u044c\u043a\u0430";
+      return "\u0110\u1ee9c";
     },
     get$dinDisplayName() {
-      return "\u0414\u0456\u043d\u043a\u0430";
+      return "Dinka";
     },
     get$doiDisplayName() {
-      return "\u0414\u043e\u0433\u0440\u0456";
+      return "Dogri";
     },
     get$dovDisplayName() {
-      return "\u0414\u043e\u043c\u0431\u0435";
+      return "Dombe";
     },
     get$dzDisplayName() {
-      return "\u0414\u0437\u043e\u043d\u0433\u043a\u0445\u0430";
+      return "Dzongkha";
     },
     get$eeDisplayName() {
-      return "\u0415\u0432\u0435";
+      return "Ewe";
     },
     get$enDisplayName() {
-      return "\u0410\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Anh";
     },
     get$enAUDisplayName() {
-      return "\u0410\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u0430 (\u0410\u0432\u0441\u0442\u0440\u0430\u043b\u0456\u044f)";
+      return "Ti\u1ebfng Anh (\xdac)";
     },
     get$enGBDisplayName() {
-      return "\u0410\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u0430 (\u0412\u0435\u043b\u0438\u043a\u043e\u0431\u0440\u0438\u0442\u0430\u043d\u0456\u044f)";
+      return "Ti\u1ebfng Anh (V\u01b0\u01a1ng qu\u1ed1c Anh)";
     },
     get$enINDisplayName() {
-      return "\u0410\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u0430 (\u0406\u043d\u0434\u0456\u044f)";
+      return "Ti\u1ebfng Anh (\u1ea4n \u0110\u1ed9)";
     },
     get$enUSDisplayName() {
-      return "\u0410\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u0430 (\u0421\u0428\u0410)";
+      return "Ti\u1ebfng Anh (M\u1ef9)";
     },
     get$eoDisplayName() {
-      return "\u0415\u0441\u043f\u0435\u0440\u0430\u043d\u0442\u043e";
+      return "Esperanto";
     },
     get$esDisplayName() {
-      return "\u0406\u0441\u043f\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng T\xe2y Ban Nha";
     },
     get$esESDisplayName() {
-      return "\u0406\u0441\u043f\u0430\u043d\u0441\u044c\u043a\u0430 (\u0406\u0441\u043f\u0430\u043d\u0456\u044f)";
+      return "Ti\u1ebfng T\xe2y Ban Nha (T\xe2y Ban Nha)";
     },
     get$esMXDisplayName() {
-      return "\u0406\u0441\u043f\u0430\u043d\u0441\u044c\u043a\u0430 (\u041c\u0435\u043a\u0441\u0438\u043a\u0430)";
+      return "Ti\u1ebfng T\xe2y Ban Nha (Mexico)";
     },
     get$euDisplayName() {
-      return "\u0411\u0430\u0441\u043a\u0441\u044c\u043a\u0430";
+      return "Basque";
     },
     get$faDisplayName() {
-      return "\u041f\u0435\u0440\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Ba T\u01b0";
     },
     get$ffDisplayName() {
-      return "\u0424\u0443\u043b\u0430\u0445";
+      return "Fulah";
     },
     get$fiDisplayName() {
-      return "\u0424\u0456\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Ph\u1ea7n Lan";
     },
     get$filDisplayName() {
-      return "\u0424\u0456\u043b\u0456\u043f\u043f\u0456\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Filipino";
     },
     get$fjDisplayName() {
-      return "\u0424\u0456\u0434\u0436\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Fijian";
     },
     get$foDisplayName() {
-      return "\u0424\u0430\u0440\u0435\u0440\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Faroese";
     },
     get$frDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u044c\u043a\u0430";
+      return "Ti\u1ebfng Ph\xe1p";
     },
     get$frCADisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u044c\u043a\u0430 (\u041a\u0430\u043d\u0430\u0434\u0430)";
+      return "Ti\u1ebfng Ph\xe1p (Canada)";
     },
     get$frFRDisplayName() {
-      return "\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u044c\u043a\u0430 (\u0424\u0440\u0430\u043d\u0446\u0456\u044f)";
+      return "Ti\u1ebfng Ph\xe1p (Ph\xe1p)";
     },
     get$fyDisplayName() {
-      return "\u0417\u0430\u0445\u0456\u0434\u043d\u043e\u0444\u0440\u0438\u0437\u044c\u043a\u0430";
+      return "Ti\u1ebfng Frisian ph\u01b0\u01a1ng T\xe2y";
     },
     get$gaDisplayName() {
-      return "\u0406\u0440\u043b\u0430\u043d\u0434\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Ireland";
     },
     get$gaaDisplayName() {
-      return "\u0413\u0430";
+      return "Ti\u1ebfng Ga";
     },
     get$gdDisplayName() {
-      return "\u0428\u043e\u0442\u043b\u0430\u043d\u0434\u0441\u044c\u043a\u0430 \u0433\u0435\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Gaelic Scotland";
     },
     get$glDisplayName() {
-      return "\u0413\u0430\u043b\u0438\u0441\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Galician";
     },
     get$gnDisplayName() {
-      return "\u0413\u0443\u0430\u0440\u0430\u043d\u0456";
+      return "Guarani";
     },
     get$gomDisplayName() {
-      return "\u0413\u043e\u0430\u043d\u0441\u044c\u043a\u0438\u0439 \u043a\u043e\u043d\u043a\u0430\u043d\u0456";
+      return "Goan Konkani";
     },
     get$guDisplayName() {
-      return "\u0413\u0443\u0434\u0436\u0430\u0440\u0430\u0442\u0456";
+      return "Gujarati";
     },
     get$haDisplayName() {
-      return "\u0425\u0430\u0443\u0441\u0430";
+      return "Hausa";
     },
     get$hawDisplayName() {
-      return "\u0413\u0430\u0432\u0430\u0439\u0441\u044c\u043a\u0430";
+      return "Hawaiian";
     },
     get$heDisplayName() {
-      return "\u0406\u0432\u0440\u0438\u0442";
+      return "Hebrew";
     },
     get$hiDisplayName() {
-      return "\u0413\u0456\u043d\u0434\u0456";
+      return "Hindi";
     },
     get$hilDisplayName() {
-      return "\u0425\u0456\u043b\u0456\u0433\u0430\u0439\u043d\u043e\u043d";
+      return "Hiligaynon";
     },
     get$hmnDisplayName() {
-      return "\u0425\u043c\u043e\u043d\u0433";
+      return "Hmong";
     },
     get$hneDisplayName() {
-      return "\u0427\u0445\u0430\u0442\u0442\u0456\u0441\u0433\u0430\u0440\u0445\u0456";
+      return "Chhattisgarhi";
     },
     get$hrDisplayName() {
-      return "\u0425\u043e\u0440\u0432\u0430\u0442\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Croatia";
     },
     get$hrxDisplayName() {
-      return "\u0413\u0443\u043d\u0441\u0440\u0456\u043a";
+      return "Hunsrik";
     },
     get$htDisplayName() {
-      return "\u0413\u0430\u0457\u0442\u044f\u043d\u0441\u044c\u043a\u0438\u0439 \u043a\u0440\u0435\u043e\u043b\u044c\u0441\u044c\u043a\u0438\u0439";
+      return "Ti\u1ebfng Creole Haiti";
     },
     get$huDisplayName() {
-      return "\u0423\u0433\u043e\u0440\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Hungary";
     },
     get$hyDisplayName() {
-      return "\u0412\u0456\u0440\u043c\u0435\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Armenia";
     },
     get$idDisplayName() {
-      return "\u0406\u043d\u0434\u043e\u043d\u0435\u0437\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Indonesia";
     },
     get$igDisplayName() {
-      return "\u0406\u0433\u0431\u043e";
+      return "Ti\u1ebfng Igbo";
     },
     get$iloDisplayName() {
-      return "\u0406\u043b\u043e\u043a\u043e";
+      return "Ti\u1ebfng Iloko";
     },
     get$isDisplayName() {
-      return "\u0406\u0441\u043b\u0430\u043d\u0434\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Iceland";
     },
     get$itDisplayName() {
-      return "\u0406\u0442\u0430\u043b\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng \xdd";
     },
     get$jaDisplayName() {
-      return "\u042f\u043f\u043e\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Nh\u1eadt";
     },
     get$jvDisplayName() {
-      return "\u042f\u0432\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Java";
     },
     get$kaDisplayName() {
-      return "\u0413\u0440\u0443\u0437\u0438\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Gruzia";
     },
     get$kkDisplayName() {
-      return "\u041a\u0430\u0437\u0430\u0445\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Kazakh";
     },
     get$kmDisplayName() {
-      return "\u041a\u0445\u043c\u0435\u0440\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Khmer";
     },
     get$knDisplayName() {
-      return "\u041a\u0430\u043d\u043d\u0430\u0434\u0430";
+      return "Ti\u1ebfng Kannada";
     },
     get$koDisplayName() {
-      return "\u041a\u043e\u0440\u0435\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng H\xe0n";
     },
     get$kokDisplayName() {
-      return "\u041a\u043e\u043d\u043a\u0430\u043d\u0456";
+      return "Ti\u1ebfng Konkani";
     },
     get$kriDisplayName() {
-      return "\u041a\u0440\u0456\u043e";
+      return "Ti\u1ebfng Krio";
     },
     get$ksDisplayName() {
-      return "\u041a\u0430\u0448\u043c\u0456\u0440\u0456";
+      return "Kashmiri";
     },
     get$ktuDisplayName() {
-      return "\u041a\u0456\u0442\u0443\u0431\u0430 (\u0414\u0435\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u0447\u043d\u0430 \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0456\u043a\u0430 \u041a\u043e\u043d\u0433\u043e)";
+      return "Kituba (C\u1ed9ng h\xf2a D\xe2n ch\u1ee7 Congo)";
     },
     get$kuDisplayName() {
-      return "\u041a\u0443\u0440\u0434\u0441\u044c\u043a\u0430";
+      return "Kurdish";
     },
     get$kyDisplayName() {
-      return "\u041a\u0438\u0440\u0433\u0438\u0437\u044c\u043a\u0430";
+      return "Kyrgyz";
     },
     get$laDisplayName() {
-      return "\u041b\u0430\u0442\u0438\u043d\u0441\u044c\u043a\u0430";
+      return "Latin";
     },
     get$lbDisplayName() {
-      return "\u041b\u044e\u043a\u0441\u0435\u043c\u0431\u0443\u0440\u0437\u044c\u043a\u0430";
+      return "Luxembourgish";
     },
     get$lgDisplayName() {
-      return "\u0413\u0430\u043d\u0434\u0430";
+      return "Ganda";
     },
     get$liDisplayName() {
-      return "\u041b\u0456\u043c\u0431\u0443\u0440\u0437\u044c\u043a\u0430";
+      return "Limburgish";
     },
     get$lijDisplayName() {
-      return "\u041b\u0456\u0433\u0443\u0440\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ligurian";
     },
     get$lmoDisplayName() {
-      return "\u041b\u043e\u043c\u0431\u0430\u0440\u0434\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Lombard";
     },
     get$lnDisplayName() {
-      return "\u041b\u0456\u043d\u0433\u0430\u043b\u0430";
+      return "Lingala";
     },
     get$loDisplayName() {
-      return "\u041b\u0430\u043e\u0441\u044c\u043a\u0430";
+      return "L\xe0o";
     },
     get$ltDisplayName() {
-      return "\u041b\u0438\u0442\u043e\u0432\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Litva";
     },
     get$ltgDisplayName() {
-      return "\u041b\u0430\u0442\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Latgalian";
     },
     get$luoDisplayName() {
-      return "\u041b\u0443\u043e (\u041a\u0435\u043d\u0456\u044f \u0442\u0430 \u0422\u0430\u043d\u0437\u0430\u043d\u0456\u044f)";
+      return "Luo (Kenya v\xe0 Tanzania)";
     },
     get$lusDisplayName() {
-      return "\u041c\u0456\u0437\u043e";
+      return "Mizo";
     },
     get$lvDisplayName() {
-      return "\u041b\u0430\u0442\u0432\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Latvia";
     },
     get$maiDisplayName() {
-      return "\u041c\u0430\u0439\u0442\u0445\u0456\u043b\u0456";
+      return "Maithili";
     },
     get$makDisplayName() {
-      return "\u041c\u0430\u043a\u0430\u0441\u0430\u0440";
+      return "Makasar";
     },
     get$mgDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0433\u0430\u0441\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Malagasy";
     },
     get$miDisplayName() {
-      return "\u041c\u0430\u043e\u0440\u0456";
+      return "M\u0101ori";
     },
     get$minDisplayName() {
-      return "\u041c\u0456\u043d\u0430\u043a\u043a\u0430\u0431\u0430\u0443";
+      return "Minangkabau";
     },
     get$mkDisplayName() {
-      return "\u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0441\u044c\u043a\u0430";
+      return "Macedonian";
     },
     get$mlDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u044f\u043b\u0430\u043c";
+      return "Malayalam";
     },
     get$mnDisplayName() {
-      return "\u041c\u043e\u043d\u0433\u043e\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "M\xf4ng C\u1ed5";
     },
     get$mniDisplayName() {
-      return "\u041c\u0430\u043d\u0456\u043f\u0443\u0440\u0456";
+      return "Manipuri";
     },
     get$mrDisplayName() {
-      return "\u041c\u0430\u0440\u0430\u0442\u0445\u0456";
+      return "Marathi";
     },
     get$msDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0439\u0441\u044c\u043a\u0430";
+      return "Malaixia";
     },
     get$msArabDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0439\u0441\u044c\u043a\u0430 (\u0430\u0440\u0430\u0431\u0441\u044c\u043a\u043e\u044e)";
+      return "Malaixia (\u1ea2 R\u1eadp)";
     },
     get$msMYDisplayName() {
-      return "\u041c\u0430\u043b\u0430\u0439\u0441\u044c\u043a\u0430 (\u041c\u0430\u043b\u0430\u0439\u0437\u0456\u044f)";
+      return "Malaixia (Malaysia)";
     },
     get$mtDisplayName() {
-      return "\u041c\u0430\u043b\u044c\u0442\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Maltese";
     },
     get$mwrDisplayName() {
-      return "\u041c\u0430\u0440\u0432\u0430\u0440\u0456";
+      return "Marwari";
     },
     get$myDisplayName() {
-      return "\u0411\u0456\u0440\u043c\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Burmese";
     },
     get$nanDisplayName() {
-      return "\u041c\u0456\u043d\u044c \u041d\u0430\u043d";
+      return "Min Nan";
     },
     get$nbDisplayName() {
-      return "\u041d\u043e\u0440\u0432\u0435\u0437\u044c\u043a\u0430 (\u0411\u043e\u043a\u043c\u043e\u043b)";
+      return "Na Uy (Bokm\xe5l)";
     },
     get$neDisplayName() {
-      return "\u041d\u0435\u043f\u0430\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Nepali";
     },
     get$newDisplayName() {
-      return "\u041d\u0435\u0432\u0430\u0440\u0456";
+      return "Newari";
     },
     get$nlDisplayName() {
-      return "\u0413\u043e\u043b\u043b\u0430\u043d\u0434\u0441\u044c\u043a\u0430";
+      return "H\xe0 Lan";
     },
     get$nlBEDisplayName() {
-      return "\u0424\u043b\u0430\u043c\u0430\u043d\u0434\u0441\u044c\u043a\u0430";
+      return "Flemish";
     },
     get$noDisplayName() {
-      return "\u041d\u043e\u0440\u0432\u0435\u0437\u044c\u043a\u0430";
+      return "Na Uy";
     },
     get$nrDisplayName() {
-      return "\u041f\u0456\u0432\u0434\u0435\u043d\u043d\u0438\u0439 \u041d\u0434\u0435\u0431\u0435\u043b\u0435";
+      return "Nam Ndebele";
     },
     get$nsoDisplayName() {
-      return "\u041f\u0456\u0432\u043d\u0456\u0447\u043d\u0438\u0439 \u0421\u043e\u0442\u043e";
+      return "Sotho B\u1eafc";
     },
     get$nusDisplayName() {
-      return "\u041d\u0443\u0435\u0440";
+      return "Nuer";
     },
     get$nyDisplayName() {
-      return "\u041d\u044c\u044f\u043d\u0434\u0436\u0430";
+      return "Nyanja";
     },
     get$ocDisplayName() {
-      return "\u041e\u043a\u0441\u0438\u0442\u0430\u043d";
+      return "Occitan";
     },
     get$omDisplayName() {
-      return "\u041e\u0440\u043e\u043c\u043e";
+      return "Oromo";
     },
     get$orDisplayName() {
-      return "\u041e\u0434\u0456\u044f";
+      return "Odia";
     },
     get$paDisplayName() {
-      return "\u041f\u0430\u043d\u0434\u0436\u0430\u0431\u0456";
+      return "Punjabi";
     },
     get$paArabDisplayName() {
-      return "\u041f\u0430\u043d\u0434\u0436\u0430\u0431\u0456 (\u0428\u0430\u0445\u043c\u0443\u043a\u0445\u0456)";
+      return "Punjabi (Shahmukhi)";
     },
     get$paINDisplayName() {
-      return "\u041f\u0430\u043d\u0434\u0436\u0430\u0431\u0456 (\u0413\u0443\u0440\u043c\u0443\u043a\u0445\u0456)";
+      return "Punjabi (Gurmukhi)";
     },
     get$pagDisplayName() {
-      return "\u041f\u0430\u043d\u0433\u0430\u0441\u0456\u043d\u0430\u043d";
+      return "Pangasinan";
     },
     get$pamDisplayName() {
-      return "\u041f\u0430\u043c\u043f\u0430\u043d\u0433\u0430";
+      return "Pampanga";
     },
     get$papDisplayName() {
-      return "\u041f\u0430\u043f\u0456\u0430\u043c\u0435\u043d\u0442\u043e";
+      return "Papiamento";
     },
     get$plDisplayName() {
-      return "\u041f\u043e\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Ba Lan";
     },
     get$psDisplayName() {
-      return "\u041f\u0430\u0448\u0442\u043e";
+      return "Ti\u1ebfng Pashto";
     },
     get$ptDisplayName() {
-      return "\u041f\u043e\u0440\u0442\u0443\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng B\u1ed3 \u0110\xe0o Nha";
     },
     get$ptBRDisplayName() {
-      return "\u041f\u043e\u0440\u0442\u0443\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430 (\u0411\u0440\u0430\u0437\u0438\u043b\u0456\u044f)";
+      return "Ti\u1ebfng B\u1ed3 \u0110\xe0o Nha (Brazil)";
     },
     get$ptPTDisplayName() {
-      return "\u041f\u043e\u0440\u0442\u0443\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430 (\u041f\u043e\u0440\u0442\u0443\u0433\u0430\u043b\u0456\u044f)";
+      return "Ti\u1ebfng B\u1ed3 \u0110\xe0o Nha (B\u1ed3 \u0110\xe0o Nha)";
     },
     get$quDisplayName() {
-      return "\u041a\u0435\u0447\u0443\u0430";
+      return "Ti\u1ebfng Quechua";
     },
     get$rajDisplayName() {
-      return "\u0420\u0430\u0434\u0436\u0430\u0441\u0442\u0445\u0430\u043d\u0456";
+      return "Ti\u1ebfng Rajasthan";
     },
     get$rnDisplayName() {
-      return "\u0420\u0443\u043d\u0434\u0456";
+      return "Rundi";
     },
     get$roDisplayName() {
-      return "\u0420\u0443\u043c\u0443\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Romania";
     },
     get$roMDDisplayName() {
-      return "\u041c\u043e\u043b\u0434\u043e\u0432\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Moldova";
     },
     get$romDisplayName() {
-      return "\u0420\u043e\u043c\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Romani";
     },
     get$ruDisplayName() {
-      return "\u0420\u043e\u0441\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Nga";
     },
     get$rwDisplayName() {
-      return "\u041a\u0456\u043d\u044c\u044f\u0440\u0432\u0430\u043d\u0434\u0430";
+      return "Ti\u1ebfng Kinyarwanda";
     },
     get$saDisplayName() {
-      return "\u0421\u0430\u043d\u0441\u043a\u0440\u0438\u0442";
+      return "Ti\u1ebfng Sanskrit";
     },
     get$satDisplayName() {
-      return "\u0421\u0430\u043d\u0442\u0430\u043b\u0456";
+      return "Ti\u1ebfng Santali";
     },
     get$scnDisplayName() {
-      return "\u0421\u0438\u0446\u0438\u043b\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Sicilian";
     },
     get$sdDisplayName() {
-      return "\u0421\u0438\u043d\u0434\u0445\u0456";
+      return "Ti\u1ebfng Sindhi";
     },
     get$sgDisplayName() {
-      return "\u0421\u0430\u043d\u0433\u043e";
+      return "Sango";
     },
     get$shnDisplayName() {
-      return "\u0428\u0430\u043d";
+      return "Shan";
     },
     get$siDisplayName() {
-      return "\u0421\u0456\u043d\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Sinhala";
     },
     get$skDisplayName() {
-      return "\u0421\u043b\u043e\u0432\u0430\u0446\u044c\u043a\u0430";
+      return "Slovak";
     },
     get$slDisplayName() {
-      return "\u0421\u043b\u043e\u0432\u0435\u043d\u0441\u044c\u043a\u0430";
+      return "Slovenian";
     },
     get$smDisplayName() {
-      return "\u0421\u0430\u043c\u043e\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Samoan";
     },
     get$snDisplayName() {
-      return "\u0428\u043e\u043d\u0430";
+      return "Shona";
     },
     get$soDisplayName() {
-      return "\u0421\u043e\u043c\u0430\u043b\u0456\u0439\u0441\u044c\u043a\u0430";
+      return "Somali";
     },
     get$sqDisplayName() {
-      return "\u0410\u043b\u0431\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Albanian";
     },
     get$srDisplayName() {
-      return "\u0421\u0435\u0440\u0431\u0441\u044c\u043a\u0430";
+      return "Serbian";
     },
     get$srMEDisplayName() {
-      return "\u0427\u043e\u0440\u043d\u043e\u0433\u043e\u0440\u0441\u044c\u043a\u0430";
+      return "Montenegro";
     },
     get$ssDisplayName() {
-      return "\u0421\u0432\u0430\u0442\u0456";
+      return "Swati";
     },
     get$stDisplayName() {
-      return "\u041f\u0456\u0432\u0434\u0435\u043d\u043d\u0438\u0439 \u0421\u043e\u0442\u043e";
+      return "Sotho mi\u1ec1n Nam";
     },
     get$suDisplayName() {
-      return "\u0421\u0443\u043d\u0434\u0430\u043d\u0441\u044c\u043a\u0430";
+      return "Sundanese";
     },
     get$svDisplayName() {
-      return "\u0428\u0432\u0435\u0434\u0441\u044c\u043a\u0430";
+      return "Th\u1ee5y \u0110i\u1ec3n";
     },
     get$swDisplayName() {
-      return "\u0421\u0443\u0430\u0445\u0456\u043b\u0456";
+      return "Swahili";
     },
     get$szlDisplayName() {
-      return "\u0421\u0456\u043b\u0435\u0437\u044c\u043a\u0430";
+      return "Silesian";
     },
     get$taDisplayName() {
-      return "\u0422\u0430\u043c\u0456\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Tamil";
     },
     get$teDisplayName() {
-      return "\u0422\u0435\u043b\u0443\u0433\u0443";
+      return "Telugu";
     },
     get$tetDisplayName() {
-      return "\u0422\u0435\u0442\u0443\u043c";
+      return "Tetum";
     },
     get$tgDisplayName() {
-      return "\u0422\u0430\u0434\u0436\u0438\u0446\u044c\u043a\u0430";
+      return "Tajik";
     },
     get$thDisplayName() {
-      return "\u0422\u0430\u0439\u0441\u044c\u043a\u0430";
+      return "Th\xe1i";
     },
     get$tiDisplayName() {
-      return "\u0422\u0438\u0433\u0440\u0438\u043d\u044c\u044f";
+      return "Tigrinya";
     },
     get$tkDisplayName() {
-      return "\u0422\u0443\u0440\u043a\u043c\u0435\u043d\u0441\u044c\u043a\u0430";
+      return "Turkmen";
     },
     get$tlDisplayName() {
-      return "\u0422\u0430\u0433\u0430\u043b\u044c\u0441\u044c\u043a\u0430";
+      return "Tagalog";
     },
     get$tnDisplayName() {
-      return "\u0426\u0432\u0430\u043d\u0430";
+      return "Tswana";
     },
     get$trDisplayName() {
-      return "\u0422\u0443\u0440\u0435\u0446\u044c\u043a\u0430";
+      return "Th\u1ed5 Nh\u0129 K\u1ef3";
     },
     get$tsDisplayName() {
-      return "\u0426\u043e\u043d\u0433\u0430";
+      return "Tsonga";
     },
     get$ttDisplayName() {
-      return "\u0422\u0430\u0442\u0430\u0440\u0441\u044c\u043a\u0430";
+      return "Tatar";
     },
     get$ugDisplayName() {
-      return "\u0423\u0439\u0433\u0443\u0440\u0441\u044c\u043a\u0430";
+      return "Uyghur";
     },
     get$ukDisplayName() {
-      return "\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Ukraina";
     },
     get$urDisplayName() {
-      return "\u0423\u0440\u0434\u0443";
+      return "Ti\u1ebfng Urdu";
     },
     get$urINDisplayName() {
-      return "\u0423\u0440\u0434\u0443 (\u0406\u043d\u0434\u0456\u044f)";
+      return "Ti\u1ebfng Urdu (\u1ea4n \u0110\u1ed9)";
     },
     get$urPKDisplayName() {
-      return "\u0423\u0440\u0434\u0443 (\u041f\u0430\u043a\u0438\u0441\u0442\u0430\u043d)";
+      return "Ti\u1ebfng Urdu (Pakistan)";
     },
     get$uzDisplayName() {
-      return "\u0423\u0437\u0431\u0435\u043a";
+      return "Ti\u1ebfng Uzbek";
     },
     get$viDisplayName() {
-      return "\u0412'\u0454\u0442\u043d\u0430\u043c\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Vi\u1ec7t";
     },
     get$wuuDisplayName() {
-      return "\u0423";
+      return "Ti\u1ebfng Wu";
     },
     get$xhDisplayName() {
-      return "\u041a\u0441\u043e\u0441\u0430";
+      return "Ti\u1ebfng Xhosa";
     },
     get$yiDisplayName() {
-      return "\u0407\u0434\u0438\u0448";
+      return "Ti\u1ebfng Yiddish";
     },
     get$yoDisplayName() {
-      return "\u0419\u043e\u0440\u0443\u0431\u0430";
+      return "Ti\u1ebfng Yoruba";
     },
     get$yuaDisplayName() {
-      return "\u042e\u043a\u0430\u0442\u0435\u043a";
+      return "Yucateco";
     },
     get$yueDisplayName() {
-      return "\u041a\u0430\u043d\u0442\u043e\u043d\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Qu\u1ea3ng \u0110\xf4ng";
     },
     get$yueCNDisplayName() {
-      return "\u041a\u0430\u043d\u0442\u043e\u043d\u0441\u044c\u043a\u0430 (\u041a\u0438\u0442\u0430\u0439)";
+      return "Ti\u1ebfng Qu\u1ea3ng \u0110\xf4ng (Trung Qu\u1ed1c)";
     },
     get$yueHKDisplayName() {
-      return "\u041a\u0430\u043d\u0442\u043e\u043d\u0441\u044c\u043a\u0430 (\u0413\u043e\u043d\u043a\u043e\u043d\u0433)";
+      return "Ti\u1ebfng Qu\u1ea3ng \u0110\xf4ng (H\u1ed3ng K\xf4ng)";
     },
     get$zhDisplayName() {
-      return "\u041a\u0438\u0442\u0430\u0439\u0441\u044c\u043a\u0430";
+      return "Ti\u1ebfng Trung";
     },
     get$zhCNDisplayName() {
-      return "\u041a\u0438\u0442\u0430\u0439\u0441\u044c\u043a\u0430 (\u0421\u043f\u0440\u043e\u0449\u0435\u043d\u0430)";
+      return "Ti\u1ebfng Trung (Gi\u1ea3n th\u1ec3)";
     },
     get$zhTWDisplayName() {
-      return "\u041a\u0438\u0442\u0430\u0439\u0441\u044c\u043a\u0430 (\u0422\u0440\u0430\u0434\u0438\u0446\u0456\u0439\u043d\u0430)";
+      return "Ti\u1ebfng Trung (Ph\u1ed3n th\u1ec3)";
     },
     get$zuDisplayName() {
-      return "\u0417\u0443\u043b\u0443";
+      return "Ti\u1ebfng Zulu";
     },
     get$unreadPlus() {
       return "99+";
     },
     get$teacherModeTitle() {
-      return "\u0420\u0435\u0436\u0438\u043c \u0432\u0447\u0438\u0442\u0435\u043b\u044f";
+      return "Ch\u1ebf \u0111\u1ed9 Gi\xe1o vi\xean";
     },
     get$teacherModeDesc() {
-      return "\u041f\u0435\u0440\u0435\u043c\u043a\u043d\u0456\u0442\u044c, \u0449\u043e\u0431 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u0432\u0441\u0456 \u0442\u0435\u043c\u0438 \u0442\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456. \u0422\u0456\u043b\u044c\u043a\u0438 \u0434\u043b\u044f \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430 \u043a\u0443\u0440\u0441\u0443.";
+      return "Chuy\u1ec3n \u0111\u1ed5i \u0111\u1ec3 m\u1edf kh\xf3a t\u1ea5t c\u1ea3 c\xe1c ch\u1ee7 \u0111\u1ec1 v\xe0 ho\u1ea1t \u0111\u1ed9ng. Ch\u1ec9 d\xe0nh cho qu\u1ea3n tr\u1ecb vi\xean kh\xf3a h\u1ecdc.";
     },
     get$noSavedActivitiesYet() {
-      return "\u0410\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0456 \u0437'\u044f\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0442\u0443\u0442, \u044f\u043a \u0442\u0456\u043b\u044c\u043a\u0438 \u0432\u043e\u043d\u0438 \u0431\u0443\u0434\u0443\u0442\u044c \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0456 \u0442\u0430 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u0456.";
+      return "C\xe1c ho\u1ea1t \u0111\u1ed9ng s\u1ebd xu\u1ea5t hi\u1ec7n \u1edf \u0111\xe2y khi ch\xfang \u0111\u01b0\u1ee3c ho\xe0n th\xe0nh v\xe0 l\u01b0u l\u1ea1i.";
     },
     get$changeCourse() {
-      return "\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043a\u0443\u0440\u0441";
+      return "Thay \u0111\u1ed5i kh\xf3a h\u1ecdc";
     },
     get$changeCourseDesc() {
-      return "\u0422\u0443\u0442 \u0432\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u043c\u0456\u043d\u0438\u0442\u0438 \u043f\u043b\u0430\u043d \u043a\u0443\u0440\u0441\u0443 \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443.";
+      return "T\u1ea1i \u0111\xe2y b\u1ea1n c\xf3 th\u1ec3 thay \u0111\u1ed5i k\u1ebf ho\u1ea1ch kh\xf3a h\u1ecdc c\u1ee7a kh\xf3a h\u1ecdc n\xe0y.";
     },
     get$introChatTitle() {
-      return "\u0421\u0442\u0432\u043e\u0440\u0438\u0442\u0438 \u0447\u0430\u0442 \u0434\u043b\u044f \u0437\u043d\u0430\u0439\u043e\u043c\u0441\u0442\u0432";
+      return "T\u1ea1o tr\xf2 chuy\u1ec7n gi\u1edbi thi\u1ec7u";
     },
     get$introChatDesc() {
-      return "\u0411\u0443\u0434\u044c-\u0445\u0442\u043e \u0432 \u043f\u0440\u043e\u0441\u0442\u043e\u0440\u0456 \u043c\u043e\u0436\u0435 \u043f\u0443\u0431\u043b\u0456\u043a\u0443\u0432\u0430\u0442\u0438.";
+      return "B\u1ea5t k\u1ef3 ai trong kh\xf4ng gian \u0111\u1ec1u c\xf3 th\u1ec3 \u0111\u0103ng b\xe0i.";
     },
     get$announcementsChatTitle() {
-      return "\u0427\u0430\u0442 \u043e\u0433\u043e\u043b\u043e\u0448\u0435\u043d\u044c";
+      return "Tr\xf2 chuy\u1ec7n th\xf4ng b\xe1o";
     },
     get$announcementsChatDesc() {
-      return "\u0422\u0456\u043b\u044c\u043a\u0438 \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440 \u043f\u0440\u043e\u0441\u0442\u043e\u0440\u0443 \u043c\u043e\u0436\u0435 \u043f\u0443\u0431\u043b\u0456\u043a\u0443\u0432\u0430\u0442\u0438.";
+      return "Ch\u1ec9 qu\u1ea3n tr\u1ecb vi\xean kh\xf4ng gian m\u1edbi c\xf3 th\u1ec3 \u0111\u0103ng b\xe0i.";
     },
     notStartedActivitiesTitle$1(num) {
-      return "\u0412\u0456\u0434\u043a\u0440\u0438\u0442\u0456 \u0441\u0435\u0441\u0456\u0457 (" + num + ")";
+      return "Phi\xean m\u1edf (" + num + ")";
     },
     inProgressActivitiesTitle$1(num) {
-      return "\u0412\u0456\u0434\u0431\u0443\u0432\u0430\u0454\u0442\u044c\u0441\u044f \u0437\u0430\u0440\u0430\u0437 (" + num + ")";
+      return "\u0110ang di\u1ec5n ra (" + num + ")";
     },
     completedActivitiesTitle$1(num) {
-      return "\u0417\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e (" + num + ")";
+      return "\u0110\xe3 ho\xe0n th\xe0nh (" + num + ")";
     },
     get$pickDifferentActivity() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0456\u043d\u0448\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c";
+      return "Ch\u1ecdn m\u1ed9t ho\u1ea1t \u0111\u1ed9ng kh\xe1c";
     },
     get$blockLemmaConfirmation() {
-      return "\u0426\u0435 \u0441\u043b\u043e\u0432\u043e vocab \u0431\u0443\u0434\u0435 \u043d\u0430\u0437\u0430\u0432\u0436\u0434\u0438 \u0432\u0438\u0434\u0430\u043b\u0435\u043d\u043e \u0437 \u0432\u0430\u0448\u043e\u0457 \u0430\u043d\u0430\u043b\u0456\u0442\u0438\u043a\u0438";
+      return "T\u1eeb v\u1ef1ng n\xe0y s\u1ebd b\u1ecb x\xf3a v\u0129nh vi\u1ec5n kh\u1ecfi ph\xe2n t\xedch c\u1ee7a b\u1ea1n";
     },
     get$woman() {
-      return "\u0416\u0456\u043d\u043a\u0430";
+      return "Ph\u1ee5 n\u1eef";
     },
     get$man() {
-      return "\u0427\u043e\u043b\u043e\u0432\u0456\u043a";
+      return "Nam";
     },
     get$otherGender() {
-      return "\u0406\u043d\u0448\u0435";
+      return "Kh\xe1c";
     },
     get$unselectedGender() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0432\u0430\u0440\u0456\u0430\u043d\u0442 \u0441\u0442\u0430\u0442\u0456";
+      return "Ch\u1ecdn m\u1ed9t t\xf9y ch\u1ecdn gi\u1edbi t\xednh";
     },
     get$gender() {
-      return "\u0421\u0442\u0430\u0442\u044c";
+      return "Gi\u1edbi t\xednh";
     },
     get$modeDisabled() {
-      return "\u0406\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0438 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u0432\u0438\u043c\u043a\u043d\u0435\u043d\u0456 \u0434\u043b\u044f \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c, \u044f\u043a\u0456 \u043d\u0435 \u0454 \u0432\u0430\u0448\u043e\u044e \u0446\u0456\u043b\u044c\u043e\u0432\u043e\u044e \u043c\u043e\u0432\u043e\u044e.";
+      return "C\xf4ng c\u1ee5 h\u1ecdc t\u1eadp b\u1ecb v\xf4 hi\u1ec7u h\xf3a cho c\xe1c tin nh\u1eafn kh\xf4ng ph\u1ea3i b\u1eb1ng ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n.";
     },
     get$courseParticipantTooltip() {
-      return '\u0426\u0435 \u0432\u0441\u0456 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438 \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443. \u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043d\u0430 \u0430\u0432\u0430\u0442\u0430\u0440 \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0442\u0430 \u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c "\u043f\u043e\u0447\u0430\u0442\u0438 \u0440\u043e\u0437\u043c\u043e\u0432\u0443", \u0449\u043e\u0431 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043e\u0441\u043e\u0431\u0438\u0441\u0442\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.';
+      return '\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 m\u1ecdi ng\u01b0\u1eddi trong kh\xf3a h\u1ecdc n\xe0y. Nh\u1ea5p v\xe0o avatar c\u1ee7a b\u1ea5t k\u1ef3 ng\u01b0\u1eddi d\xf9ng n\xe0o v\xe0 "b\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n" \u0111\u1ec3 g\u1eedi tin nh\u1eafn tr\u1ef1c ti\u1ebfp.';
     },
     get$chatParticipantTooltip() {
-      return '\u0426\u0435 \u0432\u0441\u0456 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438 \u0446\u044c\u043e\u0433\u043e \u0447\u0430\u0442\u0443. \u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043d\u0430 \u0430\u0432\u0430\u0442\u0430\u0440 \u0431\u0443\u0434\u044c-\u044f\u043a\u043e\u0433\u043e \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 \u0442\u0430 "\u043f\u043e\u0447\u0430\u0442\u0438 \u0440\u043e\u0437\u043c\u043e\u0432\u0443", \u0449\u043e\u0431 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u043e\u0441\u043e\u0431\u0438\u0441\u0442\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.';
+      return '\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 m\u1ecdi ng\u01b0\u1eddi trong cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. Nh\u1ea5p v\xe0o avatar c\u1ee7a b\u1ea5t k\u1ef3 ng\u01b0\u1eddi d\xf9ng n\xe0o v\xe0 "b\u1eaft \u0111\u1ea7u cu\u1ed9c tr\xf2 chuy\u1ec7n" \u0111\u1ec3 g\u1eedi tin nh\u1eafn tr\u1ef1c ti\u1ebfp.';
     },
     get$inOngoingActivity() {
-      return "\u0423 \u0432\u0430\u0441 \u0454 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c, \u0449\u043e \u0442\u0440\u0438\u0432\u0430\u0454!";
+      return "B\u1ea1n c\xf3 m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111ang di\u1ec5n ra!";
     },
     get$requestRegeneration() {
-      return "\u0417\u0430\u043f\u0438\u0442 \u043d\u0430 \u0440\u0435\u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0456\u044e";
+      return "Y\xeau c\u1ea7u t\xe1i t\u1ea1o";
     },
     get$optionalRegenerateReason() {
-      return "(\u041d\u0435\u043e\u0431\u043e\u0432'\u044f\u0437\u043a\u043e\u0432\u043e) \u041f\u0440\u0438\u0447\u0438\u043d\u0430";
+      return "(T\xf9y ch\u1ecdn) L\xfd do";
     },
     emojiSelectedSnackbar$1(lemma) {
-      return "\u0412\u0438 \u0432\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u043b\u0438 \u0435\u043c\u043e\u0434\u0437\u0456 \u0434\u043b\u044f " + lemma + "! \u041c\u0438 \u0431\u0443\u0434\u0435\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0446\u0435\u0439 \u0435\u043c\u043e\u0434\u0437\u0456 \u0434\u043b\u044f \u043f\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0441\u043b\u043e\u0432\u0430 \u0432 \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u0438\u0445 \u0437\u0430\u0432\u0434\u0430\u043d\u043d\u044f\u0445 \u0443 \u043c\u0430\u0439\u0431\u0443\u0442\u043d\u044c\u043e\u043c\u0443.";
+      return "B\u1ea1n \u0111\xe3 \u0111\u1eb7t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho " + lemma + "! Ch\xfang t\xf4i s\u1ebd s\u1eed d\u1ee5ng bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac n\xe0y \u0111\u1ec3 \u0111\u1ea1i di\u1ec7n cho t\u1eeb trong c\xe1c ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh trong t\u01b0\u01a1ng lai.";
     },
     get$constructUseCorLMDesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0443";
+      return "Th\u1ef1c h\xe0nh \u0111\u1ecbnh ngh\u0129a t\u1eeb v\u1ef1ng \u0111\xfang";
     },
     get$constructUseIncLMDesc() {
-      return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0443";
+      return "Th\u1ef1c h\xe0nh \u0111\u1ecbnh ngh\u0129a t\u1eeb v\u1ef1ng sai";
     },
     get$constructUseCorLADesc() {
-      return "\u041f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u0430\u0443\u0434\u0456\u043e \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0443";
+      return "Th\u1ef1c h\xe0nh \xe2m thanh t\u1eeb v\u1ef1ng \u0111\xfang";
     },
     get$constructUseIncLADesc() {
-      return "\u041d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0430 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u0430\u0443\u0434\u0456\u043e \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0443";
+      return "Th\u1ef1c h\xe0nh \xe2m thanh t\u1eeb v\u1ef1ng sai";
     },
     get$constructUseBonus() {
-      return "\u0411\u043e\u043d\u0443\u0441 \u043f\u0456\u0434 \u0447\u0430\u0441 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0443";
+      return "Th\u01b0\u1edfng trong qu\xe1 tr\xecnh th\u1ef1c h\xe0nh t\u1eeb v\u1ef1ng";
     },
     get$practiceVocab() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u0441\u043b\u043e\u0432\u043d\u0438\u043a\u043e\u0432\u043e\u0433\u043e \u0437\u0430\u043f\u0430\u0441\u0443";
+      return "Th\u1ef1c h\xe0nh t\u1eeb v\u1ef1ng";
     },
     get$selectMeaning() {
-      return "\u0412\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f";
+      return "Ch\u1ecdn ngh\u0129a";
     },
     get$anotherRound() {
-      return "\u0429\u0435 \u043e\u0434\u0438\u043d \u0440\u0430\u0443\u043d\u0434";
+      return "M\u1ed9t v\xf2ng n\u1eefa";
     },
     get$ssoDialogTitle() {
-      return "\u041e\u0447\u0456\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043d\u044f \u0432\u0445\u043e\u0434\u0443";
+      return "\u0110ang ch\u1edd ho\xe0n t\u1ea5t \u0111\u0103ng nh\u1eadp";
     },
     get$ssoDialogDesc() {
-      return "\u041c\u0438 \u0432\u0456\u0434\u043a\u0440\u0438\u043b\u0438 \u043d\u043e\u0432\u0443 \u0432\u043a\u043b\u0430\u0434\u043a\u0443, \u0449\u043e\u0431 \u0432\u0438 \u043c\u043e\u0433\u043b\u0438 \u0431\u0435\u0437\u043f\u0435\u0447\u043d\u043e \u0443\u0432\u0456\u0439\u0442\u0438.";
+      return "Ch\xfang t\xf4i \u0111\xe3 m\u1edf m\u1ed9t tab m\u1edbi \u0111\u1ec3 b\u1ea1n c\xf3 th\u1ec3 \u0111\u0103ng nh\u1eadp m\u1ed9t c\xe1ch an to\xe0n.";
     },
     get$ssoDialogHelpText() {
-      return "\ud83e\udd14 \u042f\u043a\u0449\u043e \u0432\u0438 \u043d\u0435 \u043f\u043e\u0431\u0430\u0447\u0438\u043b\u0438 \u043d\u043e\u0432\u0443 \u0432\u043a\u043b\u0430\u0434\u043a\u0443, \u0431\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u043f\u0435\u0440\u0435\u0432\u0456\u0440\u0442\u0435 \u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043b\u044c\u043d\u0438\u043a \u0441\u043f\u043b\u0438\u0432\u0430\u044e\u0447\u0438\u0445 \u0432\u0456\u043a\u043e\u043d.";
+      return "\ud83e\udd14 N\u1ebfu b\u1ea1n kh\xf4ng th\u1ea5y tab m\u1edbi, vui l\xf2ng ki\u1ec3m tra tr\xecnh ch\u1eb7n popup c\u1ee7a b\u1ea1n.";
     },
     get$disableLanguageToolsTitle() {
-      return "\u0412\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u043c\u043e\u0432\u043d\u0456 \u0456\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u0438";
+      return "V\xf4 hi\u1ec7u h\xf3a c\xf4ng c\u1ee5 ng\xf4n ng\u1eef";
     },
     get$disableLanguageToolsDesc() {
-      return "\u0412\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u043d\u0443 \u043c\u043e\u0432\u043d\u0443 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u0443?";
+      return "B\u1ea1n c\xf3 mu\u1ed1n v\xf4 hi\u1ec7u h\xf3a tr\u1ee3 gi\xfap ng\xf4n ng\u1eef t\u1ef1 \u0111\u1ed9ng kh\xf4ng?";
     },
     get$recordingPermissionDenied() {
-      return "\u0414\u043e\u0441\u0442\u0443\u043f \u0437\u0430\u0431\u043e\u0440\u043e\u043d\u0435\u043d\u043e. \u0423\u0432\u0456\u043c\u043a\u043d\u0456\u0442\u044c \u0434\u043e\u0437\u0432\u043e\u043b\u0438 \u043d\u0430 \u0437\u0430\u043f\u0438\u0441, \u0449\u043e\u0431 \u0437\u0430\u043f\u0438\u0441\u0443\u0432\u0430\u0442\u0438 \u0430\u0443\u0434\u0456\u043e\u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f.";
+      return "Quy\u1ec1n truy c\u1eadp b\u1ecb t\u1eeb ch\u1ed1i. B\u1eadt quy\u1ec1n ghi \xe2m \u0111\u1ec3 ghi l\u1ea1i tin nh\u1eafn \xe2m thanh.";
     },
     get$genericWebRecordingError() {
-      return "\u0429\u043e\u0441\u044c \u043f\u0456\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a. \u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0454\u043c\u043e \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0432\u0430\u0442\u0438 \u0431\u0440\u0430\u0443\u0437\u0435\u0440 Chrome \u0434\u043b\u044f \u0437\u0430\u043f\u0438\u0441\u0443 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c.";
+      return "C\xf3 \u0111i\u1ec1u g\xec \u0111\xf3 kh\xf4ng \u0111\xfang. Ch\xfang t\xf4i khuy\xean b\u1ea1n n\xean s\u1eed d\u1ee5ng tr\xecnh duy\u1ec7t Chrome khi ghi l\u1ea1i tin nh\u1eafn.";
     },
     get$screenSizeWarning() {
-      return "\u0414\u043b\u044f \u043d\u0430\u0439\u043a\u0440\u0430\u0449\u043e\u0433\u043e \u0434\u043e\u0441\u0432\u0456\u0434\u0443 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f \u0446\u044c\u043e\u0433\u043e \u0434\u043e\u0434\u0430\u0442\u043a\u0443, \u0431\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0440\u043e\u0437\u0448\u0438\u0440\u0442\u0435 \u0440\u043e\u0437\u043c\u0456\u0440 \u0435\u043a\u0440\u0430\u043d\u0443.";
+      return "\u0110\u1ec3 c\xf3 tr\u1ea3i nghi\u1ec7m t\u1ed1t nh\u1ea5t khi s\u1eed d\u1ee5ng \u1ee9ng d\u1ee5ng n\xe0y, vui l\xf2ng m\u1edf r\u1ed9ng k\xedch th\u01b0\u1edbc m\xe0n h\xecnh c\u1ee7a b\u1ea1n.";
     },
     get$noActivityRequest() {
-      return "\u041d\u0435\u043c\u0430\u0454 \u043f\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0437\u0430\u043f\u0438\u0442\u0443 \u043d\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u0456\u0441\u0442\u044c.";
+      return "Kh\xf4ng c\xf3 y\xeau c\u1ea7u ho\u1ea1t \u0111\u1ed9ng n\xe0o hi\u1ec7n t\u1ea1i.";
     },
     get$quit() {
-      return "\u0412\u0438\u0439\u0442\u0438";
+      return "Tho\xe1t";
     },
     get$congratulationsYouveCompletedPractice() {
-      return "\u0412\u0456\u0442\u0430\u0454\u043c\u043e! \u0412\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043b\u0438 \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u0443 \u0441\u0435\u0441\u0456\u044e.";
+      return "Ch\xfac m\u1eebng! B\u1ea1n \u0111\xe3 ho\xe0n th\xe0nh bu\u1ed5i th\u1ef1c h\xe0nh.";
     },
     get$activitiesToUnlockTopicTitle() {
-      return "\u0414\u0456\u0457 \u0434\u043b\u044f \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0457 \u0442\u0435\u043c\u0438";
+      return "C\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a ch\u1ee7 \u0111\u1ec1 ti\u1ebfp theo";
     },
     get$activitiesToUnlockTopicDesc() {
-      return "\u0412\u0441\u0442\u0430\u043d\u043e\u0432\u0456\u0442\u044c \u043a\u0456\u043b\u044c\u043a\u0456\u0441\u0442\u044c \u0434\u0456\u0439 \u0434\u043b\u044f \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0457 \u0442\u0435\u043c\u0438 \u043a\u0443\u0440\u0441\u0443";
+      return "\u0110\u1eb7t s\u1ed1 l\u01b0\u1ee3ng ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a ch\u1ee7 \u0111\u1ec1 kh\xf3a h\u1ecdc ti\u1ebfp theo";
     },
     get$youLeftTheChat() {
-      return "\ud83d\udeaa \u0412\u0438 \u0432\u0438\u0439\u0448\u043b\u0438 \u0437 \u0447\u0430\u0442\u0443";
+      return "\ud83d\udeaa B\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$downloadInitiated() {
-      return "\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0440\u043e\u0437\u043f\u043e\u0447\u0430\u0442\u043e";
+      return "T\u1ea3i xu\u1ed1ng \u0111\xe3 \u0111\u01b0\u1ee3c kh\u1edfi \u0111\u1ed9ng";
     },
     get$webDownloadPermissionMessage() {
-      return "\u042f\u043a\u0449\u043e \u0432\u0430\u0448 \u0431\u0440\u0430\u0443\u0437\u0435\u0440 \u0431\u043b\u043e\u043a\u0443\u0454 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f, \u0431\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0443\u0432\u0456\u043c\u043a\u043d\u0456\u0442\u044c \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0434\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0441\u0430\u0439\u0442\u0443.";
+      return "N\u1ebfu tr\xecnh duy\u1ec7t c\u1ee7a b\u1ea1n ch\u1eb7n t\u1ea3i xu\u1ed1ng, vui l\xf2ng b\u1eadt t\u1ea3i xu\u1ed1ng cho trang web n\xe0y.";
     },
     get$exitPractice() {
-      return "\u0412\u0430\u0448 \u043f\u0440\u043e\u0433\u0440\u0435\u0441 \u0443 \u0441\u0435\u0441\u0456\u0457 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438 \u043d\u0435 \u0431\u0443\u0434\u0435 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043e.";
+      return "Ti\u1ebfn tr\xecnh phi\xean th\u1ef1c h\xe0nh c\u1ee7a b\u1ea1n s\u1ebd kh\xf4ng \u0111\u01b0\u1ee3c l\u01b0u.";
     },
     get$practiceGrammar() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u043a\u0438";
+      return "Th\u1ef1c h\xe0nh ng\u1eef ph\xe1p";
     },
     get$notEnoughToPractice() {
-      return "\u041d\u0430\u0434\u0456\u0448\u043b\u0456\u0442\u044c \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u044c, \u0449\u043e\u0431 \u0440\u043e\u0437\u0431\u043b\u043e\u043a\u0443\u0432\u0430\u0442\u0438 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443";
+      return "G\u1eedi th\xeam tin nh\u1eafn \u0111\u1ec3 m\u1edf kh\xf3a th\u1ef1c h\xe0nh";
     },
     get$constructUseCorGCDesc() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0457 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u043e\u0457 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0456\u0457";
+      return "Th\u1ef1c h\xe0nh th\u1ec3 lo\u1ea1i ng\u1eef ph\xe1p \u0111\xfang";
     },
     get$constructUseIncGCDesc() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u043e\u0457 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u043e\u0457 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0456\u0457";
+      return "Th\u1ef1c h\xe0nh th\u1ec3 lo\u1ea1i ng\u1eef ph\xe1p sai";
     },
     get$constructUseCorGEDesc() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u0432\u0438\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043d\u044f \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043f\u043e\u043c\u0438\u043b\u043e\u043a";
+      return "Th\u1ef1c h\xe0nh l\u1ed7i ng\u1eef ph\xe1p \u0111\xfang";
     },
     get$constructUseIncGEDesc() {
-      return "\u041f\u0440\u0430\u043a\u0442\u0438\u043a\u0430 \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0438\u0445 \u0433\u0440\u0430\u043c\u0430\u0442\u0438\u0447\u043d\u0438\u0445 \u043f\u043e\u043c\u0438\u043b\u043e\u043a";
+      return "Th\u1ef1c h\xe0nh l\u1ed7i ng\u1eef ph\xe1p sai";
     },
     get$fillInBlank() {
-      return "\u0417\u0430\u043f\u043e\u0432\u043d\u0456\u0442\u044c \u043f\u0440\u043e\u043f\u0443\u0441\u043a \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0438\u043c \u0432\u0438\u0431\u043e\u0440\u043e\u043c";
+      return "\u0110i\u1ec1n v\xe0o ch\u1ed7 tr\u1ed1ng v\u1edbi l\u1ef1a ch\u1ecdn \u0111\xfang";
     },
     get$learn() {
-      return "\u0412\u0447\u0438\u0442\u0438";
+      return "H\u1ecdc";
     },
     get$languageUpdated() {
-      return "\u0426\u0456\u043b\u044c\u043e\u0432\u0430 \u043c\u043e\u0432\u0430 \u043e\u043d\u043e\u0432\u043b\u0435\u043d\u0430!";
+      return "Ng\xf4n ng\u1eef m\u1ee5c ti\xeau \u0111\xe3 \u0111\u01b0\u1ee3c c\u1eadp nh\u1eadt!";
     },
     get$voiceDropdownTitle() {
-      return "\u0413\u043e\u043b\u043e\u0441 Pangea Bot";
+      return "Gi\u1ecdng n\xf3i c\u1ee7a Pangea Bot";
     },
     get$knockDesc() {
-      return "\u0412\u0430\u0448 \u0437\u0430\u043f\u0438\u0442 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e \u0430\u0434\u043c\u0456\u043d\u0456\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0443 \u043a\u0443\u0440\u0441\u0443! \u0412\u0438 \u0431\u0443\u0434\u0435\u0442\u0435 \u0434\u043e\u043f\u0443\u0449\u0435\u043d\u0456, \u044f\u043a\u0449\u043e \u0432\u043e\u043d\u0438 \u0441\u0445\u0432\u0430\u043b\u044f\u0442\u044c.";
+      return "Y\xeau c\u1ea7u c\u1ee7a b\u1ea1n \u0111\xe3 \u0111\u01b0\u1ee3c g\u1eedi \u0111\u1ebfn qu\u1ea3n tr\u1ecb vi\xean kh\xf3a h\u1ecdc! B\u1ea1n s\u1ebd \u0111\u01b0\u1ee3c cho v\xe0o n\u1ebfu h\u1ecd ch\u1ea5p thu\u1eadn.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5351,16 +5351,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nUk, C.L10n);
+    _inherit(A.L10nVi, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nUk":{"L10n":[]}}'));
-  var string$ = {
-    ______: "\u0411\u0443\u0434\u044c \u043b\u0430\u0441\u043a\u0430, \u0432\u0432\u0435\u0434\u0456\u0442\u044c \u0434\u0456\u0439\u0441\u043d\u0443 \u0430\u0434\u0440\u0435\u0441\u0443 \u0435\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0457 \u043f\u043e\u0448\u0442\u0438."
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nVi":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["gD2qAPK+5KLgJE6nJnXc/QT7dZI="] = d.current;
+  d["+pe7EjkH/74l1DfmMSWXQVVOzUk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_765.part.js.map
