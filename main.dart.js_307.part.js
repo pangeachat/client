@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Du har banket p\xe5";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Vent venligst, indtil nogen fra rummet inviterer dig.";
-    },
     get$commandHint_logout() {
       return "Log ud af din nuv\xe6rende enhed";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot stemme";
     },
+    get$knockDesc() {
+      return "Din anmodning er sendt til kursusadministratoren! Du vil blive lukket ind, hvis de godkender.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oEpvEyLC1P+CzPr7TU+vY7D8aBY="] = d.current;
+  d["FEoU381b3qbHc2b8JECGgZiQlcI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

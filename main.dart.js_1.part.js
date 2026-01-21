@@ -1484,9 +1484,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "\u4f60\u5df2\u8bf7\u6c42\u52a0\u5165";
     },
-    get$pleaseWaitUntilInvited() {
-      return "\u5728\u6765\u81ea\u8be5\u804a\u5929\u5ba4\u7684\u67d0\u4eba\u9080\u8bf7\u4f60\u4e4b\u524d\u8bf7\u7b49\u5f85\u3002";
-    },
     get$commandHint_logout() {
       return "\u6ce8\u9500\u5f53\u524d\u8bbe\u5907";
     },
@@ -5351,6 +5348,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "\u6f58\u5409\u4e9a\u673a\u5668\u4eba\u58f0\u97f3";
     },
+    get$knockDesc() {
+      return "\u60a8\u7684\u8bf7\u6c42\u5df2\u53d1\u9001\u7ed9\u8bfe\u7a0b\u7ba1\u7406\u5458\uff01\u5982\u679c\u4ed6\u4eec\u6279\u51c6\uff0c\u60a8\u5c06\u88ab\u5141\u8bb8\u8fdb\u5165\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -6816,9 +6816,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$youHaveKnocked() {
       return "\u60a8\u5df2\u8acb\u6c42\u52a0\u5165";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "\u76f4\u5230\u804a\u5929\u5ba4\u88e1\u6709\u4eba\u9080\u8acb\u60a8\u524d\uff0c\u8acb\u7b49\u5019\u3002";
     },
     get$commandHint_logout() {
       return "\u767b\u51fa\u60a8\u7684\u7576\u524d\u8a2d\u5099";
@@ -10681,6 +10678,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot \u8a9e\u97f3";
     },
+    get$knockDesc() {
+      return "\u60a8\u7684\u8acb\u6c42\u5df2\u767c\u9001\u7d66\u8ab2\u7a0b\u7ba1\u7406\u54e1\uff01\u5982\u679c\u4ed6\u5011\u6279\u51c6\uff0c\u60a8\u5c07\u88ab\u5141\u8a31\u9032\u5165\u3002";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10695,7 +10695,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["coL1OrMshPWyyKsNLXtMfKU7n70="] = d.current;
+  d["t1pqQ15It2Oc5szqzMViEh8vApw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

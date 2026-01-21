@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Kucali ste";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Molimo sa\u010dekajte dok vas neko iz sobe ne pozove.";
-    },
     get$commandHint_logout() {
       return "Odjavi se sa trenutnog ure\u0111aja";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Glas Pangea Bota";
     },
+    get$knockDesc() {
+      return "Va\u0161 zahtev je poslat administratoru kursa! Bi\u0107ete primljeni ako odobre.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["G9Rnq/n8W5H7CqwGUkGcFmfcUhk="] = d.current;
+  d["ncuJ2oVxJTStDnrAMlyCFv7LsOo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_757.part.js.map

@@ -1478,9 +1478,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f62\u0f44\u0f0b\u0f42\u0f72\u0f66\u0f0b\u0f56\u0f40\u0fb2\u0f58\u0f66\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f56\u0fb1\u0f74\u0f44\u0f0b\u0f0d";
     },
-    get$pleaseWaitUntilInvited() {
-      return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f62\u0f44\u0f0b\u0f42\u0f72\u0f66\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f63\u0f58\u0f0b\u0f63\u0f0b\u0f60\u0f42\u0fb1\u0f7c\u0f0b\u0f56\u0f60\u0f72\u0f0b\u0f66\u0f90\u0f56\u0f66\u0f0b\u0f63\u0f0b\u0f51\u0f74\u0f66\u0f0b\u0f66\u0f74\u0f0b\u0f60\u0f51\u0f74\u0f42";
-    },
     get$commandHint_logout() {
       return "\u0f41\u0fb1\u0f7a\u0f51\u0f0b\u0f62\u0f44\u0f0b\u0f42\u0f72\u0f0b\u0f63\u0f42\u0f0b\u0f41\u0fb1\u0f7a\u0f62\u0f0b\u0f63\u0f66\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f56\u0f45\u0f7c\u0f66\u0f0d";
     },
@@ -5346,6 +5343,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot voz";
     },
+    get$knockDesc() {
+      return "Yor requst has been sent to course admin! Yu'll be let in if dey approve.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5371,7 +5371,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tjuQh14lKbNU2VMNUOp2uWtxAc8="] = d.current;
+  d["OobNhGeCPfzMytxhC3WfVAhItfI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Zaklepali jste";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Po\u010dkejte nyn\xed, dokud v\xe1s n\u011bkdo z m\xedstnosti nepozve.";
-    },
     get$commandHint_logout() {
       return "Odhl\xe1sit aktu\xe1ln\xed za\u0159\xedzen\xed";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Hlas Pangea Bota";
     },
+    get$knockDesc() {
+      return "Va\u0161e \u017e\xe1dost byla odesl\xe1na administr\xe1torovi kurzu! Budete vpu\u0161t\u011bni, pokud ji schv\xe1l\xed.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QCvH/KGkTwqwksnJP63LK129wGk="] = d.current;
+  d["ORtwVEC9/vytlQnlI+zWx4LutbE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

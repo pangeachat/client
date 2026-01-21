@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Tu ha frappate";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Per favor, aspetta ora, usque alicuno del camera te invita.";
-    },
     get$commandHint_logout() {
       return "Disconecta tu dispositivo actual";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Voix du bot Pangea";
     },
+    get$knockDesc() {
+      return "Tua peticio est missa ad administratorem cursuum! Te admittent si illi approbant.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["I9S+AX9X3sF+Y6+v6JYMNvmecc0="] = d.current;
+  d["gOzt79ZA7LrawIR3+lj5FubMiBM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_674.part.js.map

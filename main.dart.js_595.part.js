@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Nakipag-ugnayan ka na";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Mangyaring maghintay ngayon, hanggang sa imbitahan ka ng isang tao mula sa silid.";
-    },
     get$commandHint_logout() {
       return "Mag-logout sa iyong kasalukuyang device";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Boses ng Pangea Bot";
     },
+    get$knockDesc() {
+      return "Ang iyong kahilingan ay naipadala sa admin ng kurso! Papayagan ka nilang pumasok kung sila ay mag-aapruba.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tDBnlP2j4FpXVc4R+jC2Be2zECc="] = d.current;
+  d["EvYELSJu8OtirDUB/+G9NToccCM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

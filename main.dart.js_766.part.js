@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "B\u1ea1n \u0111\xe3 g\xf5 c\u1eeda";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Vui l\xf2ng ch\u1edd cho \u0111\u1ebfn khi ai \u0111\xf3 trong ph\xf2ng m\u1eddi b\u1ea1n.";
-    },
     get$commandHint_logout() {
       return "\u0110\u0103ng xu\u1ea5t kh\u1ecfi thi\u1ebft b\u1ecb hi\u1ec7n t\u1ea1i c\u1ee7a b\u1ea1n";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Gi\u1ecdng n\xf3i c\u1ee7a Pangea Bot";
     },
+    get$knockDesc() {
+      return "Y\xeau c\u1ea7u c\u1ee7a b\u1ea1n \u0111\xe3 \u0111\u01b0\u1ee3c g\u1eedi \u0111\u1ebfn qu\u1ea3n tr\u1ecb vi\xean kh\xf3a h\u1ecdc! B\u1ea1n s\u1ebd \u0111\u01b0\u1ee3c cho v\xe0o n\u1ebfu h\u1ecd ch\u1ea5p thu\u1eadn.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2XhViYILrCnu34OBiwOZ/W4hF+A="] = d.current;
+  d["+pe7EjkH/74l1DfmMSWXQVVOzUk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_766.part.js.map

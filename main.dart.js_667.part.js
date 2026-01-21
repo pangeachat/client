@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Kopogott";
     },
-    get$pleaseWaitUntilInvited() {
-      return "K\xe9rem v\xe1rjon, am\xedg valaki a szob\xe1b\xf3l beh\xedvja \xd6nt.";
-    },
     get$commandHint_logout() {
       return "Kijelentkez\xe9s az aktu\xe1lis eszk\xf6zr\u0151l";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot hang";
     },
+    get$knockDesc() {
+      return "A k\xe9r\xe9sed el lett k\xfcldve a kurzus adminisztr\xe1tor\xe1nak! Be fogsz engedni, ha j\xf3v\xe1hagyj\xe1k.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9Lw+kZoi8Hv7yIEtyLvjEwZImF8="] = d.current;
+  d["9Tt6Z2gcrylVvF0W+e7KD6mtza0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

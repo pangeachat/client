@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Vi frapis pordeton";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Bonvolu atendi \u011dis iu el la \u0109ambro invitos vin.";
-    },
     get$commandHint_logout() {
       return "Elsaluti de via nuna aparato";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Vo\u0109o de Pangea Bot";
     },
+    get$knockDesc() {
+      return "Via peto estis sendita al la kursa administranto! Vi estos enirita se ili aprobas.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Mn0pbxpQH9DUCJIinFfpiE3d0zo="] = d.current;
+  d["RhEi9J0b+cOtcnePS7CxIieULlU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_472.part.js.map

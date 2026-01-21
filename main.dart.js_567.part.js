@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Sartzeko baimena eskatu duzu";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Orain itxaron gelako norbaitek gonbidatzen zaituen arte.";
-    },
     get$commandHint_logout() {
       return "Saioa itxi zure gailu honetan";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot ahotsa";
     },
+    get$knockDesc() {
+      return "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TyXiHKLyH6eQNiKAIjcViAzxIm0="] = d.current;
+  d["txhvyUvjiO3qKaoiI+0L3LExPQ4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_567.part.js.map

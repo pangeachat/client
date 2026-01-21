@@ -1478,9 +1478,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "\u0986\u09aa\u09a8\u09bf Knock \u0995\u09b0\u09c7\u099b\u09c7\u09a8";
     },
-    get$pleaseWaitUntilInvited() {
-      return "\u0985\u09a8\u09c1\u0997\u09cd\u09b0\u09b9 \u0995\u09b0\u09c7 \u0985\u09aa\u09c7\u0995\u09cd\u09b7\u09be \u0995\u09b0\u09c1\u09a8, \u09af\u09a4\u0995\u09cd\u09b7\u09a3 \u09a8\u09be \u0995\u09c7\u0989 \u09b0\u09c1\u09ae \u09a5\u09c7\u0995\u09c7 \u0986\u09aa\u09a8\u09be\u0995\u09c7 \u0986\u09ae\u09a8\u09cd\u09a4\u09cd\u09b0\u09a3 \u099c\u09be\u09a8\u09be\u09af\u09bc\u0964";
-    },
     get$commandHint_logout() {
       return "\u0986\u09aa\u09a8\u09be\u09b0 \u09ac\u09b0\u09cd\u09a4\u09ae\u09be\u09a8 \u09a1\u09bf\u09ad\u09be\u0987\u09b8 \u09a5\u09c7\u0995\u09c7 \u09b2\u0997\u0986\u0989\u099f \u0995\u09b0\u09c1\u09a8";
     },
@@ -5345,6 +5342,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "\u09aa\u09cd\u09af\u09be\u0999\u09cd\u0997\u09bf\u09af\u09bc\u09be \u09ac\u099f\u09c7\u09b0 \u0995\u09a3\u09cd\u09a0";
     },
+    get$knockDesc() {
+      return "\u0986\u09aa\u09a8\u09be\u09b0 \u0985\u09a8\u09c1\u09b0\u09cb\u09a7 \u0995\u09cb\u09b0\u09cd\u09b8 \u09aa\u09cd\u09b0\u09b6\u09be\u09b8\u0995\u09c7\u09b0 \u0995\u09be\u099b\u09c7 \u09aa\u09be\u09a0\u09be\u09a8\u09cb \u09b9\u09af\u09bc\u09c7\u099b\u09c7! \u09a4\u09be\u09b0\u09be \u0985\u09a8\u09c1\u09ae\u09cb\u09a6\u09a8 \u0995\u09b0\u09b2\u09c7 \u0986\u09aa\u09a8\u09be\u0995\u09c7 \u09aa\u09cd\u09b0\u09ac\u09c7\u09b6 \u0995\u09b0\u09a4\u09c7 \u09a6\u09c7\u0993\u09af\u09bc\u09be \u09b9\u09ac\u09c7\u0964";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5358,7 +5358,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GtMp0Fy2a9NRviRyr8UKo/L2DA8="] = d.current;
+  d["QjlnSumi3zBFMyHwN98osNtr3og="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_158.part.js.map

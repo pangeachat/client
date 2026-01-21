@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Tu pieklauv\u0113ji";
     },
-    get$pleaseWaitUntilInvited() {
-      return "L\u016bgums tagad uzgaid\u012bt, l\u012bdz k\u0101ds no istabas uzaicin\u0101s Tevi.";
-    },
     get$commandHint_logout() {
       return "Atteikties pa\u0161reiz\u0113j\u0101 ier\u012bc\u0113";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot balss";
     },
+    get$knockDesc() {
+      return "J\u016bsu piepras\u012bjums ir nos\u016bt\u012bts kursa administratoram! J\u016bs tiksiet iek\u0161\u0101, ja vi\u0146i apstiprin\u0101s.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C9VEHD7/v6shqpHu8/n1LmE3w+0="] = d.current;
+  d["QncnpoY4SdYroGXc2ZJ/3UTr0Gc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_723.part.js.map

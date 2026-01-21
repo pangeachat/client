@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "\xc7ald\u0131n\u0131z";
     },
-    get$pleaseWaitUntilInvited() {
-      return "L\xfctfen, odadan biri sizi davet edene kadar bekleyin.";
-    },
     get$commandHint_logout() {
       return "Mevcut cihaz\u0131n\u0131zdan \xe7\u0131k\u0131\u015f yap";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot sesi";
     },
+    get$knockDesc() {
+      return "Talebiniz kurs y\xf6neticisine g\xf6nderildi! Onaylarlarsa i\xe7eri al\u0131nacaks\u0131n\u0131z.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RPuekg5PMDJITws2yGN3ibneFkc="] = d.current;
+  d["f/bB2AT1JODQnEGtTCqZyoiAV8c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_764.part.js.map

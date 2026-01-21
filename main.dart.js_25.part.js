@@ -1489,9 +1489,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Voc\xea bateu";
     },
-    get$pleaseWaitUntilInvited() {
-      return string$.Por_faag;
-    },
     get$commandHint_logout() {
       return "Sair da sua sess\xe3o neste dispositivo";
     },
@@ -3806,7 +3803,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Infelizmente, sua plataforma n\xe3o \xe9 suportada atualmente para esse recurso. Fique atento para mais desenvolvimentos!";
     },
     get$pleaseUpdateApp() {
-      return string$.Por_faat;
+      return string$.Por_faa;
     },
     get$chooseEmojiInstructionsBody() {
       return string$.Combine;
@@ -5356,6 +5353,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Voz do Bot Pangea";
     },
+    get$knockDesc() {
+      return string$.Sua_so;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -6821,9 +6821,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$youHaveKnocked() {
       return "Voc\xea bateu";
-    },
-    get$pleaseWaitUntilInvited() {
-      return string$.Por_faag;
     },
     get$commandHint_logout() {
       return "Fazer logout do seu dispositivo atual";
@@ -9139,7 +9136,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Infelizmente, sua plataforma n\xe3o \xe9 suportada atualmente para esse recurso. Fique atento para novos desenvolvimentos!";
     },
     get$pleaseUpdateApp() {
-      return string$.Por_faat;
+      return string$.Por_faa;
     },
     get$chooseEmojiInstructionsBody() {
       return string$.Combine;
@@ -10686,6 +10683,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Voz do Bot Pangea";
     },
+    get$knockDesc() {
+      return string$.Sua_so;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -12151,9 +12151,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$youHaveKnocked() {
       return "Voc\xea bateu";
-    },
-    get$pleaseWaitUntilInvited() {
-      return string$.Por_faag;
     },
     get$commandHint_logout() {
       return "Sair da sua conta neste dispositivo";
@@ -14469,7 +14466,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Infelizmente, a sua plataforma n\xe3o \xe9 atualmente suportada para este recurso. Fique atento a novos desenvolvimentos!";
     },
     get$pleaseUpdateApp() {
-      return string$.Por_faat;
+      return string$.Por_faa;
     },
     get$chooseEmojiInstructionsBody() {
       return "Combine emojis com as palavras que melhor os representam. N\xe3o se preocupe! N\xe3o h\xe1 penaliza\xe7\xf5es por discordar. \ud83d\ude05";
@@ -16016,6 +16013,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Voz do Bot Pangea";
     },
+    get$knockDesc() {
+      return string$.Sua_so;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16162,8 +16162,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Permis: "Permiss\xe3o negada. Ative as permiss\xf5es de grava\xe7\xe3o para gravar mensagens de \xe1udio.",
     Permite: "Permite que o aplicativo gere sa\xedda de texto para fala para trechos de texto no seu idioma de destino.",
     Permiti: "Permitir que meu perfil seja encontrado na busca",
-    Por_faag: "Por favor, aguarde at\xe9 que algu\xe9m da sala o convide.",
-    Por_faat: "Por favor, atualize o aplicativo para continuar.",
+    Por_faa: "Por favor, atualize o aplicativo para continuar.",
     Por_fac: "Por favor, confirme seu nome de usu\xe1rio no Pangea Chat para excluir sua conta.",
     Por_faei: "Por favor, escolha idiomas base e alvo diferentes",
     Por_faeu: "Por favor, escolha um papel predefinido abaixo ou insira um n\xedvel de permiss\xe3o personalizado entre 0 e 100.",
@@ -16192,6 +16191,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Sobres: "Sobrescreve todas as outras regras e desativa todas as notifica\xe7\xf5es.",
     Solici: "Solicita\xe7\xf5es para usu\xe1rios inativos n\xe3o puderam ser enviadas",
     Soment: "Somente administradores podem excluir um curso. Esta \xe9 uma a\xe7\xe3o destrutiva que remove todos os usu\xe1rios e exclui todos os chats selecionados dentro do curso. Proceda com cautela.",
+    Sua_so: "Sua solicita\xe7\xe3o foi enviada ao administrador do curso! Voc\xea ser\xe1 admitido se eles aprovarem.",
     Suprimd: "Suprime notifica\xe7\xf5es de clientes automatizados como bots.",
     Suprimpe: "Suprime notifica\xe7\xf5es para eventos de ACL do servidor.",
     Suprimpm: "Suprime notifica\xe7\xf5es para mensagens editadas.",
@@ -16218,7 +16218,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["j1P/sji8fNaNVguwG2AlGrTLszM="] = d.current;
+  d["1O4v3B0u3eBJ+S1y+dyDGA/LZFQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

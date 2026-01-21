@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Kucali ste";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Molimo pri\u010dekajte dok vas netko iz sobe ne pozove.";
-    },
     get$commandHint_logout() {
       return "Odjavi se sa svog trenutnog ure\u0111aja";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot glas";
     },
+    get$knockDesc() {
+      return "Va\u0161 zahtjev je poslan administratoru te\u010daja! Bit \u0107ete primljeni ako odobre.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NnNeY+zJna0mRM5OhRs5/EngC5A="] = d.current;
+  d["TnwMomgxj/iDhlJYpR7QhHKFIDI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_635.part.js.map

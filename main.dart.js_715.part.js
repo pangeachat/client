@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "J\u016bs paspaud\u0117te duris";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Pra\u0161ome palaukti, kol kas nors i\u0161 kambario jus pakvies.";
-    },
     get$commandHint_logout() {
       return "Atsijungti nuo \u0161io \u012frenginio";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Bot balsas";
     },
+    get$knockDesc() {
+      return "J\u016bs\u0173 pra\u0161ymas buvo i\u0161si\u0173stas kurso administratoriui! B\u016bsite \u012fleistas, jei jie patvirtins.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FCs6CJx/hYjkb25xiUoO8n0UWjc="] = d.current;
+  d["dv0N0wIIsYJ6M0rka6oHTZfjj2Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

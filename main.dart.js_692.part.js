@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Anda telah mengetuk";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Silakan menunggu sampai seseorang dari ruangan mengundang Anda.";
-    },
     get$commandHint_logout() {
       return "Keluar dari perangkatmu saat ini";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Suara Pangea Bot";
     },
+    get$knockDesc() {
+      return "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZWpu6xi8aeRA8unH/rOlS1elIzY="] = d.current;
+  d["iV8qKzlsZ96c4lvb1RTEvTYviEo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_692.part.js.map

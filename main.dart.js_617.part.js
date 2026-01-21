@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Bhuail t\xfa";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Fan anois, le do thoil, go dt\xed go dtabharfaidh duine \xe9igin \xf3n seomra cuireadh duit.";
-    },
     get$commandHint_logout() {
       return "Log\xe1il amach as do ghl\xe9as reatha";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "guth Pangea Bot";
     },
+    get$knockDesc() {
+      return "T\xe1 do hiarratas curtha chuig an riarach\xe1n c\xfarsa! Cuirfear isteach th\xfa m\xe1 cheada\xedonn siad \xe9.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["H4IltVB6xu/OCOux1/pB03P2huU="] = d.current;
+  d["ucpx08iBL/1F4oCPZ4tKk6nyvdo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_617.part.js.map

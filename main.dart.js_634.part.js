@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "\u0906\u092a\u0928\u0947 \u0926\u0938\u094d\u0924\u0915 \u0926\u0940 \u0939\u0948";
     },
-    get$pleaseWaitUntilInvited() {
-      return "\u0915\u0943\u092a\u092f\u093e \u092a\u094d\u0930\u0924\u0940\u0915\u094d\u0937\u093e \u0915\u0930\u0947\u0902, \u091c\u092c \u0924\u0915 \u0915\u092e\u0930\u0947 \u0938\u0947 \u0915\u094b\u0908 \u0906\u092a\u0915\u094b \u0906\u092e\u0902\u0924\u094d\u0930\u093f\u0924 \u0928\u0939\u0940\u0902 \u0915\u0930\u0924\u093e";
-    },
     get$commandHint_logout() {
       return "\u0905\u092a\u0928\u0947 \u0935\u0930\u094d\u0924\u092e\u093e\u0928 \u0921\u093f\u0935\u093e\u0907\u0938 \u0938\u0947 \u0932\u0949\u0917\u0906\u0909\u091f \u0915\u0930\u0947\u0902";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "\u092a\u0948\u0902\u0917\u093f\u092f\u093e \u092c\u0949\u091f \u0915\u0940 \u0906\u0935\u093e\u091c\u093c";
     },
+    get$knockDesc() {
+      return "\u0906\u092a\u0915\u093e \u0905\u0928\u0941\u0930\u094b\u0927 \u092a\u093e\u0920\u094d\u092f\u0915\u094d\u0930\u092e \u092a\u094d\u0930\u0936\u093e\u0938\u0928 \u0915\u094b \u092d\u0947\u091c \u0926\u093f\u092f\u093e \u0917\u092f\u093e \u0939\u0948! \u092f\u0926\u093f \u0935\u0947 \u0938\u094d\u0935\u0940\u0915\u0943\u0924 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902, \u0924\u094b \u0906\u092a\u0915\u094b \u0905\u0902\u0926\u0930 \u091c\u093e\u0928\u0947 \u0926\u093f\u092f\u093e \u091c\u093e\u090f\u0917\u093e\u0964";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mzBsLGMK91zq10F2lkEcsOHIync="] = d.current;
+  d["kDBzrFqWbCnI8I+JL+jnKKy7SE8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_634.part.js.map

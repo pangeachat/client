@@ -1477,9 +1477,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youHaveKnocked() {
       return "Sa oled koputanud";
     },
-    get$pleaseWaitUntilInvited() {
-      return "Palun oota seni, kuni keegi jututoast saadab sulle kutse.";
-    },
     get$commandHint_logout() {
       return "Logi oma praegusest seadmest v\xe4lja";
     },
@@ -5344,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$voiceDropdownTitle() {
       return "Pangea Boti h\xe4\xe4l";
     },
+    get$knockDesc() {
+      return "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NcGjIukVxdSveC80B3qg2UK5NPM="] = d.current;
+  d["WNJv1+Dcewi2EX8+hVgKVOmhIUE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_546.part.js.map
