@@ -1,94 +1,68 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:dropdown_button2/dropdown_button2.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class LanguageLevelDropdown extends StatelessWidget {
   final LanguageLevelTypeEnum? initialLevel;
   final Function(LanguageLevelTypeEnum)? onChanged;
-  final FormFieldValidator<Object>? validator;
-  final bool enabled;
-  final Color? backgroundColor;
-  final double? width;
-  final double? maxHeight;
 
   const LanguageLevelDropdown({
     super.key,
     this.initialLevel = LanguageLevelTypeEnum.a1,
     this.onChanged,
-    this.validator,
-    this.enabled = true,
-    this.backgroundColor,
-    this.width,
-    this.maxHeight,
   });
 
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
 
-    return DropdownButtonFormField2<LanguageLevelTypeEnum>(
-      customButton: initialLevel != null &&
-              LanguageLevelTypeEnum.values.contains(initialLevel)
-          ? CustomDropdownTextButton(text: initialLevel!.title(context))
-          : null,
-      menuItemStyleData: const MenuItemStyleData(
-        padding: EdgeInsets.symmetric(
-          vertical: 8.0,
-          horizontal: 16.0,
+    return ButtonTheme(
+      alignedDropdown: true,
+      child: DropdownButtonFormField<LanguageLevelTypeEnum>(
+        itemHeight: null,
+        decoration: InputDecoration(
+          labelText: l10n.cefrLevelLabel,
         ),
-        height: 100.0,
-      ),
-      decoration: InputDecoration(
-        labelText: l10n.cefrLevelLabel,
-      ),
-      isExpanded: true,
-      dropdownStyleData: DropdownStyleData(
-        maxHeight: maxHeight ?? (kIsWeb ? 500 : null),
-        decoration: BoxDecoration(
-          color: backgroundColor ??
-              Theme.of(context).colorScheme.surfaceContainerHigh,
-          borderRadius: BorderRadius.circular(14.0),
-        ),
-        width: width,
-      ),
-      items:
-          LanguageLevelTypeEnum.values.map((LanguageLevelTypeEnum levelOption) {
-        return DropdownMenuItem(
-          value: levelOption,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(levelOption.title(context)),
-              Flexible(
-                child: Text(
-                  levelOption.description(context),
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    fontSize: 14,
+        selectedItemBuilder: (context) => LanguageLevelTypeEnum.values
+            .map((levelOption) => Text(levelOption.title(context)))
+            .toList(),
+        isExpanded: true,
+        dropdownColor: Theme.of(context).colorScheme.surfaceContainerHigh,
+        borderRadius: BorderRadius.circular(14.0),
+        onChanged: (value) {
+          if (value != null) onChanged?.call(value);
+        },
+        initialValue: initialLevel,
+        items: LanguageLevelTypeEnum.values
+            .map((LanguageLevelTypeEnum levelOption) {
+          return DropdownMenuItem(
+            value: levelOption,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(levelOption.title(context)),
+                  Flexible(
+                    child: Text(
+                      levelOption.description(context),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        fontSize: 14,
+                      ),
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                ],
               ),
-            ],
-          ),
-        );
-      }).toList(),
-      onChanged: enabled
-          ? (value) {
-              if (value != null) onChanged?.call(value);
-            }
-          : null,
-      value: initialLevel,
-      validator: validator,
-      enableFeedback: enabled,
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 }
