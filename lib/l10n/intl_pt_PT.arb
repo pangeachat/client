@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-21 10:42:48.198355",
+  "@@last_modified": "2026-01-21 13:54:11.801274",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11922,6 +11922,11 @@
   },
   "voiceDropdownTitle": "Voz do Bot Pangea",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Sua solicitação foi enviada ao administrador do curso! Você será admitido se eles aprovarem.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

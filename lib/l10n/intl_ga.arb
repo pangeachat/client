@@ -4517,7 +4517,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-21 10:43:11.760663",
+  "@@last_modified": "2026-01-21 13:54:46.978792",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10891,6 +10891,11 @@
   },
   "voiceDropdownTitle": "guth Pangea Bot",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Tá do hiarratas curtha chuig an riarachán cúrsa! Cuirfear isteach thú má cheadaíonn siad é.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

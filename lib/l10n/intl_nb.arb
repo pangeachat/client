@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 10:42:43.891386",
+  "@@last_modified": "2026-01-21 13:54:06.232198",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11986,6 +11986,11 @@
   },
   "voiceDropdownTitle": "Pangea Bot-stemme",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Din forespørsel har blitt sendt til kursadministratoren! Du vil bli sluppet inn hvis de godkjenner.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

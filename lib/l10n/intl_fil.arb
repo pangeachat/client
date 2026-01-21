@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-21 10:42:50.349708",
+  "@@last_modified": "2026-01-21 13:54:14.817261",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11869,6 +11869,11 @@
   },
   "voiceDropdownTitle": "Boses ng Pangea Bot",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ang iyong kahilingan ay naipadala sa admin ng kurso! Papayagan ka nilang pumasok kung sila ay mag-aapruba.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

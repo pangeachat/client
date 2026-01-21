@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 10:42:56.498587",
+  "@@last_modified": "2026-01-21 13:54:24.252269",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6463,6 +6463,11 @@
   },
   "voiceDropdownTitle": "Giọng nói của Pangea Bot",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Yêu cầu của bạn đã được gửi đến quản trị viên khóa học! Bạn sẽ được cho vào nếu họ chấp thuận.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

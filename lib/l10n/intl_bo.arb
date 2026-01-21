@@ -4279,7 +4279,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-21 10:42:59.058441",
+  "@@last_modified": "2026-01-21 13:54:28.767499",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10647,6 +10647,11 @@
   },
   "voiceDropdownTitle": "Pangea Bot voz",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Yor requst has been sent to course admin! Yu'll be let in if dey approve.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

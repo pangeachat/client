@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-21 10:42:34.277635",
+  "@@last_modified": "2026-01-21 13:53:53.122879",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10893,6 +10893,11 @@
   },
   "voiceDropdownTitle": "Pangea Bot ahotsa",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }
