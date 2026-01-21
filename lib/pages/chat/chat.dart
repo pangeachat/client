@@ -1,23 +1,9 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:universal_html/html.dart' as html;
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -88,6 +74,19 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_html/html.dart' as html;
+
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
@@ -192,6 +191,7 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _levelSubscription;
   StreamSubscription? _constructsSubscription;
   StreamSubscription? _tokensSubscription;
+  StreamSubscription? _constructLevelSubscription;
 
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
@@ -529,6 +529,12 @@ class ChatController extends State<ChatPageWithRoom>
     choreographer.timesDismissedIT.addListener(_onCloseIT);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
+    _constructLevelSubscription =
+        updater.constructLevelUpdateStream.stream.listen((entry) {
+      debugPrint(
+        "Construct level update received: ${entry.key.string} -> ${entry.value}",
+      );
+    });
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
 
     _constructsSubscription =
@@ -800,6 +806,7 @@ class ChatController extends State<ChatPageWithRoom>
     _levelSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _constructsSubscription?.cancel();
+    _constructLevelSubscription?.cancel();
     _tokensSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     choreographer.timesDismissedIT.removeListener(_onCloseIT);
