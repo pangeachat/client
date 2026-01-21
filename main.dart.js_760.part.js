@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Min land";
     },
-    get$targetLanguage() {
-      return "M\xe5lspr\xe5k";
-    },
     get$updateLanguage() {
       return "Mina spr\xe5k";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Ange antalet aktiviteter f\xf6r att l\xe5sa upp n\xe4sta kurs\xe4mne";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Spr\xe5k och spr\xe5kniv\xe5 best\xe4ms av aktivitetsplanen";
-    },
-    get$voice(_) {
-      return "R\xf6st";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du l\xe4mnade chatten";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "M\xe5lspr\xe5k uppdaterat!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot r\xf6st";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eqMIUE0lKaUBiCSHfy20qGyh4qM="] = d.current;
+  d["U47J9qhznrc4wW+N2UcQEjWlFFw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

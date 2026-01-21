@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Kotikuntani";
     },
-    get$targetLanguage() {
-      return "Kohdekieli";
-    },
     get$updateLanguage() {
       return "Kieleni";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Aseta toimintojen m\xe4\xe4r\xe4 seuraavan kurssiaiheen avaamiseksi";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Kieli ja kielitaso m\xe4\xe4r\xe4ytyv\xe4t aktiviteettisuunnitelman mukaan";
-    },
-    get$voice(_) {
-      return "\xc4\xe4ni";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Poistit itsesi keskustelusta";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Kohdekieli p\xe4ivitetty!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Botin \xe4\xe4ni";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SXm/BmIhayF1v/JDGVyXzjaHYc4="] = d.current;
+  d["ZkkKkALfawez2NFgJjgNrb5Dxv0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

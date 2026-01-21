@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Impormasyon ng aking bansa";
     },
-    get$targetLanguage() {
-      return "Target na Wika";
-    },
     get$updateLanguage() {
       return "Aking mga wika";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Itakda ang bilang ng mga aktibidad upang i-unlock ang susunod na paksa ng kurso";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Wika at antas ng wika na tinutukoy ng plano ng aktibidad";
-    },
-    get$voice(_) {
-      return "Boses";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Umalis ka sa chat";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Na-update ang target na wika!";
     },
+    get$voiceDropdownTitle() {
+      return "Boses ng Pangea Bot";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tOGhSFCSV/rtUBnIm2mYkOmdVDs="] = d.current;
+  d["tDBnlP2j4FpXVc4R+jC2Be2zECc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

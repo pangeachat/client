@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Il mio paese";
     },
-    get$targetLanguage() {
-      return "Lingua di destinazione";
-    },
     get$updateLanguage() {
       return "Le mie lingue";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Imposta il numero di attivit\xe0 per sbloccare il prossimo argomento del corso";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Lingua e livello di lingua determinati dal piano di attivit\xe0";
-    },
-    get$voice(_) {
-      return "Voce";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Hai lasciato la chat";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Lingua target aggiornata!";
     },
+    get$voiceDropdownTitle() {
+      return "Voce del bot Pangea";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QI73Tg4cDbWg/7QaUgKwRh86Crs="] = d.current;
+  d["Xn+TrGg1nXdO6Z6aKv6VshVqOvo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

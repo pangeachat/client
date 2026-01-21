@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Nire herria";
     },
-    get$targetLanguage() {
-      return "Helburu Hizkuntza";
-    },
     get$updateLanguage() {
       return "Nire hizkuntzak";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Hurrengo ikastaro gaia irekitzeko jardueren kopurua ezarri";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Jarduera planak zehaztutako hizkuntza eta hizkuntza maila";
-    },
-    get$voice(_) {
-      return "Ahots";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Txatetik irten zara";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Helmuga hizkuntza eguneratua!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot ahotsa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vyye5exlhZGXh3M7ibcKFayoufA="] = d.current;
+  d["TyXiHKLyH6eQNiKAIjcViAzxIm0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_567.part.js.map

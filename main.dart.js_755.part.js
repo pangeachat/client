@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Moja dr\u017eava";
     },
-    get$targetLanguage() {
-      return "Ciljni jezik";
-    },
     get$updateLanguage() {
       return "Moji jeziki";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Dolo\u010dite \u0161tevilo dejavnosti za odklepanje naslednje teme te\u010daja";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Jezik in jezikovna raven sta dolo\u010dena z na\u010drtom aktivnosti";
-    },
-    get$voice(_) {
-      return "Glas";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Zapustili ste klepet";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Ciljni jezik je posodobljen!";
     },
+    get$voiceDropdownTitle() {
+      return "Glas Pangea Bota";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fLT9SDfUH743QDRyRm5E97D4oKc="] = d.current;
+  d["qshlJ/uO3yzGGOgc7YkO1zB2aGc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

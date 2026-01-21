@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u021aara mea";
     },
-    get$targetLanguage() {
-      return "Limba \u021bint\u0103";
-    },
     get$updateLanguage() {
       return "Limbi ale mele";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Stabile\u0219te num\u0103rul de activit\u0103\u021bi pentru a debloca urm\u0103torul subiect al cursului";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Limba \u0219i nivelul de limb\u0103 sunt determinate de planul de activitate";
-    },
-    get$voice(_) {
-      return "Voce";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Ai p\u0103r\u0103sit chat-ul";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Limba \u021bint\u0103 a fost actualizat\u0103!";
     },
+    get$voiceDropdownTitle() {
+      return "Vocea Pangea Bot";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ktbSGf5CZaO17UH6sJn/l0uTgAA="] = d.current;
+  d["UU21M6NJBoZJRHqsdoolRVqEEuk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

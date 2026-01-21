@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "My country";
     },
-    get$targetLanguage() {
-      return "Target Language";
-    },
     get$updateLanguage() {
       return "My languages";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Set the number of activities to unlock the next course topic";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Language and language level determined by activity plan";
-    },
-    get$voice(_) {
-      return "Voice";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa You left the chat";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Target language updated!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot voice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Yy118MoQwqJerHGN9S8fZG7PJjc="] = d.current;
+  d["rrxC4Ck+18ViDViJeVLeDl609dY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_416.part.js.map

@@ -1550,9 +1550,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "El meu pa\xeds";
     },
-    get$targetLanguage() {
-      return "Llengua objectiu";
-    },
     get$updateLanguage() {
       return "Les meves lleng\xfces";
     },
@@ -5306,12 +5303,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Estableix el nombre d'activitats per desbloquejar el proper tema del curs";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Idioma i nivell d'idioma determinats pel pla d'activitat";
-    },
-    get$voice(_) {
-      return "Veu";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Has deixat el xat";
     },
@@ -5351,6 +5342,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Idioma objectiu actualitzat!";
     },
+    get$voiceDropdownTitle() {
+      return "Veu del bot Pangea";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5367,7 +5361,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Evdi4KlVPPCaMu28StSzkY2hJ/M="] = d.current;
+  d["yIUd+0CsWTu1jfKt9DfFMnw4nUo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map

@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Orsz\xe1gom";
     },
-    get$targetLanguage() {
-      return "C\xe9lnyelv";
-    },
     get$updateLanguage() {
       return "Nyelveim";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\xc1ll\xedtsa be a tev\xe9kenys\xe9gek sz\xe1m\xe1t a k\xf6vetkez\u0151 tanfolyam t\xe9ma felold\xe1s\xe1hoz";
     },
-    get$activitySettingsOverrideWarning() {
-      return "A nyelvet \xe9s a nyelvi szintet az aktivit\xe1si terv hat\xe1rozza meg";
-    },
-    get$voice(_) {
-      return "Hang";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Elhagytad a cseveg\xe9st";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "C\xe9l nyelv friss\xedtve!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot hang";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JLq9Jo6j+NCoNceqdRTD1oeOgkc="] = d.current;
+  d["9Lw+kZoi8Hv7yIEtyLvjEwZImF8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

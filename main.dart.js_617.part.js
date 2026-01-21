@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mo th\xedr";
     },
-    get$targetLanguage() {
-      return "Teanga Sprioc";
-    },
     get$updateLanguage() {
       return "Mo chuid teangacha";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Socraigh an l\xedon gn\xedomha\xedochta\xed le hOscail an topaic ch\xfarsa seo chugainn";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Teanga agus leibh\xe9al teanga a chinneadh de r\xe9ir plean gn\xedomha\xedochta";
-    },
-    get$voice(_) {
-      return "Guth";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa D'fh\xe1g t\xfa an comhr\xe1";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Teanga sprioc nuashonraithe!";
     },
+    get$voiceDropdownTitle() {
+      return "guth Pangea Bot";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GLuoQb+3G0Q2TTWiBwbTbNkgVyI="] = d.current;
+  d["H4IltVB6xu/OCOux1/pB03P2huU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_617.part.js.map

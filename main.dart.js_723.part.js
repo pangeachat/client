@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mana valsts";
     },
-    get$targetLanguage() {
-      return "M\u0113r\u0137a valoda";
-    },
     get$updateLanguage() {
       return "Manas valodas";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Iestatiet aktivit\u0101\u0161u skaitu, lai atblo\u0137\u0113tu n\u0101kamo kursa t\u0113mu";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Valoda un valodas l\u012bmenis, ko nosaka aktivit\u0101\u0161u pl\u0101ns";
-    },
-    get$voice(_) {
-      return "Balss";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa J\u016bs pamet\u0101t \u010datu";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "M\u0113r\u0137a valoda atjaunota!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot balss";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["haZJn5Prpn80z5ERhbSvILnPo3A="] = d.current;
+  d["C9VEHD7/v6shqpHu8/n1LmE3w+0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_723.part.js.map

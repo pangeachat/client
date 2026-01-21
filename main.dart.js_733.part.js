@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mijn land";
     },
-    get$targetLanguage() {
-      return "Doeltaal";
-    },
     get$updateLanguage() {
       return "Mijn talen";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Stel het aantal activiteiten in om het volgende cursusonderwerp te ontgrendelen";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Taal en taalniveau bepaald door het activiteitenplan";
-    },
-    get$voice(_) {
-      return "Stem";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Je hebt de chat verlaten";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Doeltaal bijgewerkt!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot stem";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["png/h35vCFrjpN+lh0IyWiAWjiM="] = d.current;
+  d["TvYcWO9YNDFBdU0VRC5X43LFEKQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_733.part.js.map

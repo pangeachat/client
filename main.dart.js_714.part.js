@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\ub0b4 \ub098\ub77c";
     },
-    get$targetLanguage() {
-      return "\ub300\uc0c1 \uc5b8\uc5b4";
-    },
     get$updateLanguage() {
       return "\ub0b4 \uc5b8\uc5b4";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\ub2e4\uc74c \uacfc\uc815 \uc8fc\uc81c\ub97c \uc7a0\uae08 \ud574\uc81c\ud560 \ud65c\ub3d9 \uc218\ub97c \uc124\uc815\ud558\uc138\uc694";
     },
-    get$activitySettingsOverrideWarning() {
-      return "\ud65c\ub3d9 \uacc4\ud68d\uc5d0 \uc758\ud574 \uacb0\uc815\ub41c \uc5b8\uc5b4 \ubc0f \uc5b8\uc5b4 \uc218\uc900";
-    },
-    get$voice(_) {
-      return "\uc74c\uc131";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa \ucc44\ud305\uc744 \ub098\uac14\uc2b5\ub2c8\ub2e4";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "\ubaa9\ud45c \uc5b8\uc5b4\uac00 \uc5c5\ub370\uc774\ud2b8\ub418\uc5c8\uc2b5\ub2c8\ub2e4!";
     },
+    get$voiceDropdownTitle() {
+      return "\ud310\uac8c\uc544 \ubd07 \uc74c\uc131";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CM9WNqzrvrbb9rBczarUuroJYcM="] = d.current;
+  d["7ShSgbtVAPsVXs6AHX8i0BhLyYA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_714.part.js.map

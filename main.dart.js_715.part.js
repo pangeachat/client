@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mano \u0161alis";
     },
-    get$targetLanguage() {
-      return "Tikslo kalba";
-    },
     get$updateLanguage() {
       return "Mano kalbos";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Nustatykite veikl\u0173 skai\u010di\u0173, kad atrakintum\u0117te kit\u0105 kurso tem\u0105";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Kalba ir kalbos lygis nustatomi pagal veiklos plan\u0105";
-    },
-    get$voice(_) {
-      return "Balsas";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa J\u016bs palikote pokalb\u012f";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Tikslo kalba atnaujinta!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot balsas";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hukapwcW33YjEcEW7vC7xRHj+S4="] = d.current;
+  d["FCs6CJx/hYjkb25xiUoO8n0UWjc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Minu riik";
     },
-    get$targetLanguage() {
-      return "Sihtkeel";
-    },
     get$updateLanguage() {
       return "Minu keeled";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "M\xe4\xe4rake tegevuste arv j\xe4rgmise kursuse teema avamiseks";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Keele ja keele taseme m\xe4\xe4rab tegevusplaan";
-    },
-    get$voice(_) {
-      return "H\xe4\xe4l";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Sa lahkusid vestlusest";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Sihtkeel on uuendatud!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Boti h\xe4\xe4l";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nGVE2WjwvpxfeiQlupys4YVnMJk="] = d.current;
+  d["NcGjIukVxdSveC80B3qg2UK5NPM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_546.part.js.map

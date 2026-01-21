@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Moja krajina";
     },
-    get$targetLanguage() {
-      return "Cie\u013eov\xfd jazyk";
-    },
     get$updateLanguage() {
       return "Moje jazyky";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Nastavte po\u010det aktiv\xedt na odomknutie nasleduj\xfacej t\xe9my kurzu";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Jazyk a jazykov\xe1 \xfarove\u0148 ur\u010den\xe9 pl\xe1nom aktivity";
-    },
-    get$voice(_) {
-      return "Hlas";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Opustili ste chat";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Cie\u013eov\xfd jazyk bol aktualizovan\xfd!";
     },
+    get$voiceDropdownTitle() {
+      return "Hlas Pangea Bota";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EzqMZ0Wo2lkiCI0aO6x3sxYvwfI="] = d.current;
+  d["6r9byRCN6zNoDjEviKcYFnkvJj4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_752.part.js.map

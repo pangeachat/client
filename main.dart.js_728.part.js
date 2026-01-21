@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mitt land";
     },
-    get$targetLanguage() {
-      return "M\xe5lspr\xe5k";
-    },
     get$updateLanguage() {
       return "Mine spr\xe5k";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Sett antall aktiviteter for \xe5 l\xe5se opp neste kurs emne";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Spr\xe5k og spr\xe5kniv\xe5 bestemt av aktivitetsplan";
-    },
-    get$voice(_) {
-      return "Stemme";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du forlot chatten";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "M\xe5l spr\xe5k oppdatert!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot-stemme";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fBYN0y2Knm8MiL61dr6K+wf3wTM="] = d.current;
+  d["mdN+kTvcN8/vU2FYxdu/ZehCDmA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_728.part.js.map

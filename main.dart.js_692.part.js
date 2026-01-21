@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Negara saya";
     },
-    get$targetLanguage() {
-      return "Bahasa Target";
-    },
     get$updateLanguage() {
       return "Bahasa Saya";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Bahasa dan tingkat bahasa ditentukan oleh rencana aktivitas";
-    },
-    get$voice(_) {
-      return "Suara";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Anda meninggalkan obrolan";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "Bahasa target diperbarui!";
     },
+    get$voiceDropdownTitle() {
+      return "Suara Pangea Bot";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5366,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["d/c8wulxQEyOW9pDyv9l4u01BA4="] = d.current;
+  d["ZWpu6xi8aeRA8unH/rOlS1elIzY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_692.part.js.map

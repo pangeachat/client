@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Mit land";
     },
-    get$targetLanguage() {
-      return "M\xe5lsprog";
-    },
     get$updateLanguage() {
       return "Mine sprog";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Indstil antallet af aktiviteter for at l\xe5se op for det n\xe6ste kursusemne";
     },
-    get$activitySettingsOverrideWarning() {
-      return "Sprog og sprogniveau bestemt af aktivitetsplan";
-    },
-    get$voice(_) {
-      return "Stemme";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Du forlod chatten";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "M\xe5l sprog opdateret!";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot stemme";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bULBELkkxRGdkQJ8t+mzMohVMUc="] = d.current;
+  d["oEpvEyLC1P+CzPr7TU+vY7D8aBY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

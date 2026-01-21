@@ -1549,9 +1549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "\u6211\u5605\u570b\u5bb6";
     },
-    get$targetLanguage() {
-      return "\u76ee\u6a19\u8a9e\u8a00";
-    },
     get$updateLanguage() {
       return "\u6211\u5605\u8a9e\u8a00";
     },
@@ -5305,12 +5302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "\u8a2d\u7f6e\u89e3\u9396\u4e0b\u4e00\u8ab2\u7a0b\u4e3b\u984c\u6240\u9700\u7684\u6d3b\u52d5\u6578\u91cf";
     },
-    get$activitySettingsOverrideWarning() {
-      return "\u6d3b\u52d5\u8a08\u5283\u6c7a\u5b9a\u7684\u8a9e\u8a00\u548c\u8a9e\u8a00\u6c34\u5e73";
-    },
-    get$voice(_) {
-      return "\u8072\u97f3";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa \u4f60\u5df2\u96e2\u958b\u804a\u5929";
     },
@@ -5350,6 +5341,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "\u76ee\u6a19\u8a9e\u8a00\u5df2\u66f4\u65b0\uff01";
     },
+    get$voiceDropdownTitle() {
+      return "Pangea Bot \u8072\u97f3";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["idAGfe3WRJc0r/Z7qOqqY9Z5kaU="] = d.current;
+  d["pR29IxMtUqJ52c3eXV+1++TVoaE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_767.part.js.map

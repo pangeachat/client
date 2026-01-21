@@ -1550,9 +1550,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$countryInformation() {
       return "Moje pa\u0144stwo";
     },
-    get$targetLanguage() {
-      return "J\u0119zyk docelowy";
-    },
     get$updateLanguage() {
       return "Moje j\u0119zyki";
     },
@@ -5306,12 +5303,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitiesToUnlockTopicDesc() {
       return "Ustaw liczb\u0119 aktywno\u015bci do odblokowania nast\u0119pnego tematu kursu";
     },
-    get$activitySettingsOverrideWarning() {
-      return "J\u0119zyk i poziom j\u0119zykowy okre\u015blone przez plan aktywno\u015bci";
-    },
-    get$voice(_) {
-      return "G\u0142os";
-    },
     get$youLeftTheChat() {
       return "\ud83d\udeaa Opuszczono czat";
     },
@@ -5351,6 +5342,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageUpdated() {
       return "J\u0119zyk docelowy zaktualizowany!";
     },
+    get$voiceDropdownTitle() {
+      return "G\u0142os bota Pangea";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5364,7 +5358,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wXh47D920F/mnk1QmOjmig569Ms="] = d.current;
+  d["bfeXISXCpIpSZ0mernMkvXtH4BY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_737.part.js.map
