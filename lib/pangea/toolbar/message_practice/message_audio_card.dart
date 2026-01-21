@@ -8,10 +8,10 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/text_to_speech/text_to_speech_response_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class MessageAudioCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;
@@ -44,7 +44,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
     try {
       audioFile = await widget.messageEvent.requestTextToSpeech(
         widget.messageEvent.messageDisplayLangCode,
-        widget.messageEvent.room.botOptions?.targetVoice,
+        MatrixState.pangeaController.userController.voice,
       );
       debugPrint("audio file is now: $audioFile. setting starts and ends...");
       if (mounted) setState(() => _isLoading = false);
