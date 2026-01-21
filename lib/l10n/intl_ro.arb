@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:21.408747",
+  "@@last_modified": "2026-01-21 10:42:26.609980",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11623,6 +11623,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Vocea Pangea Bot",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

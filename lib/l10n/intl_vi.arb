@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:38.101874",
+  "@@last_modified": "2026-01-21 10:42:56.498587",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6458,6 +6458,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Giọng nói của Pangea Bot",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

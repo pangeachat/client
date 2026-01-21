@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-20 12:31:28.469826",
+  "@@last_modified": "2026-01-21 10:42:53.424381",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11110,6 +11110,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot sesi",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

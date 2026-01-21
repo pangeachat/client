@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-20 12:31:54.796841",
+  "@@last_modified": "2026-01-21 10:43:03.257336",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10886,6 +10886,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Głos bota Pangea",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

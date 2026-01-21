@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:02.821968",
+  "@@last_modified": "2026-01-21 10:42:43.891386",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11981,6 +11981,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot-stemme",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-20 12:29:59.898184",
+  "@@last_modified": "2026-01-21 10:42:19.343875",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8122,6 +8122,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voz del bot Pangea",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

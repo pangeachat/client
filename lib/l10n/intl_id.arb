@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:15.788809",
+  "@@last_modified": "2026-01-21 10:42:25.871973",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10879,6 +10879,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Suara Pangea Bot",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

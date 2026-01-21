@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-20 12:32:09.850624",
+  "@@last_modified": "2026-01-21 10:43:08.936913",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10993,6 +10993,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Голос бота Pangea",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

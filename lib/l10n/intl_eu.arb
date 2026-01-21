@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-20 12:30:40.144354",
+  "@@last_modified": "2026-01-21 10:42:34.277635",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10888,6 +10888,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot ahotsa",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

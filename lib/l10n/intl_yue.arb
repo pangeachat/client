@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-20 12:30:53.854617",
+  "@@last_modified": "2026-01-21 10:42:39.595731",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11979,6 +11979,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot 聲音",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

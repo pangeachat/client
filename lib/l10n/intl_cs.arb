@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-20 12:31:00.323945",
+  "@@last_modified": "2026-01-21 10:42:42.984636",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11495,6 +11495,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Hlas Pangea Bota",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

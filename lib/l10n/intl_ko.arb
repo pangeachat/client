@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:29:56.840054",
+  "@@last_modified": "2026-01-21 10:42:17.603097",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -10996,6 +10996,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "판게아 봇 음성",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

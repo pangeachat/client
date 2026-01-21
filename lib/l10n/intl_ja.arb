@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-20 12:32:02.883097",
+  "@@last_modified": "2026-01-21 10:43:06.128364",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11678,6 +11678,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "パンゲアボットの声",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

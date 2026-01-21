@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-20 12:30:26.700297",
+  "@@last_modified": "2026-01-21 10:42:28.431424",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11862,6 +11862,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot guth",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }
