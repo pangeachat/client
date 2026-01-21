@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 10:42:46.152113",
+  "@@last_modified": "2026-01-21 13:54:08.647836",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10917,6 +10917,11 @@
   },
   "voiceDropdownTitle": "Veu del bot Pangea",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "La teva sol·licitud s'ha enviat a l'administrador del curs! Et deixaran entrar si ho aproven.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

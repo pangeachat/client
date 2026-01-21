@@ -5057,5 +5057,6 @@
   "fillInBlank": "Fill in the blank with the correct choice",
   "learn": "Learn",
   "languageUpdated": "Target language updated!",
-  "voiceDropdownTitle": "Pangea Bot voice"
+  "voiceDropdownTitle": "Pangea Bot voice",
+  "knockDesc": "Your request has been sent to course admin! You'll be let in if they approve."
 }

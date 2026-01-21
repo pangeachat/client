@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 10:42:25.871973",
+  "@@last_modified": "2026-01-21 13:53:37.899898",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10884,6 +10884,11 @@
   },
   "voiceDropdownTitle": "Suara Pangea Bot",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 10:43:10.733270",
+  "@@last_modified": "2026-01-21 13:54:45.561732",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -11995,6 +11995,11 @@
   },
   "voiceDropdownTitle": "Glas Pangea Bota",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Vaš zahtev je poslat administratoru kursa! Bićete primljeni ako odobre.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

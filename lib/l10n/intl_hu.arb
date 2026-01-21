@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-21 10:42:24.298395",
+  "@@last_modified": "2026-01-21 13:53:36.742109",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10894,6 +10894,11 @@
   },
   "voiceDropdownTitle": "Pangea Bot hang",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "A kérésed el lett küldve a kurzus adminisztrátorának! Be fogsz engedni, ha jóváhagyják.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 10:42:49.437032",
+  "@@last_modified": "2026-01-21 13:54:13.165623",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10891,6 +10891,11 @@
   },
   "voiceDropdownTitle": "Pangea Bot 語音",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "您的請求已發送給課程管理員！如果他們批准，您將被允許進入。",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

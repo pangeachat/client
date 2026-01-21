@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-21 10:42:28.431424",
+  "@@last_modified": "2026-01-21 13:53:45.416677",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11867,6 +11867,11 @@
   },
   "voiceDropdownTitle": "Pangea Bot guth",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Tua iarrtas a chaidh a chur gu rianachd a' chùrsa! Thèid thu a leigeil a-steach ma tha iad a' freagairt gu math.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

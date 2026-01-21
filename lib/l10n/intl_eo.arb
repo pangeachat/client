@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 10:43:08.060333",
+  "@@last_modified": "2026-01-21 13:54:42.193114",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11982,6 +11982,11 @@
   },
   "voiceDropdownTitle": "Voĉo de Pangea Bot",
   "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Via peto estis sendita al la kursa administranto! Vi estos enirita se ili aprobas.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }
