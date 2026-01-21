@@ -438,7 +438,7 @@ class CourseChatsController extends State<CourseChats>
 
   void joinChildRoom(SpaceRoomsChunk item) async {
     final space = widget.client.getRoomById(widget.roomId);
-    final joined = await PublicRoomBottomSheet.show(
+    final roomId = await PublicRoomBottomSheet.show(
       context: context,
       chunk: item,
       via: space?.spaceChildren
@@ -447,10 +447,12 @@ class CourseChatsController extends State<CourseChats>
           )
           ?.via,
     );
-    if (mounted && joined == true) {
+    if (mounted && roomId != null) {
       setState(() {
         discoveredChildren?.remove(item);
       });
+
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
     }
   }
 
