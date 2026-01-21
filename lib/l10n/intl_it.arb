@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:55.791406",
+  "@@last_modified": "2026-01-21 10:42:40.690823",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10891,6 +10891,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voce del bot Pangea",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

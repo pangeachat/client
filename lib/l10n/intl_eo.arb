@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:32:07.490560",
+  "@@last_modified": "2026-01-21 10:43:08.060333",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11977,6 +11977,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voĉo de Pangea Bot",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

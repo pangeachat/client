@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:42.601068",
+  "@@last_modified": "2026-01-21 10:42:35.392050",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11988,6 +11988,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voz do Bot Pangea",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

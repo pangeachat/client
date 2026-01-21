@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-20 12:30:29.823787",
+  "@@last_modified": "2026-01-21 10:42:29.581714",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11260,6 +11260,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot glas",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

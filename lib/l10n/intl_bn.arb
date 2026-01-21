@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:49.464406",
+  "@@last_modified": "2026-01-21 10:43:01.204800",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11992,6 +11992,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "প্যাঙ্গিয়া বটের কণ্ঠ",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

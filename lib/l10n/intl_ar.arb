@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-20 12:31:24.671375",
+  "@@last_modified": "2026-01-21 10:42:52.513008",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11105,6 +11105,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "صوت بوت بانجيا",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }

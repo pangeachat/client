@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -14,6 +13,7 @@ import 'package:fluffychat/pangea/learning_settings/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/learning_settings/p_settings_switch_list_tile.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
 import 'package:fluffychat/pangea/learning_settings/tool_settings_enum.dart';
+import 'package:fluffychat/pangea/learning_settings/voice_dropdown.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -45,21 +45,23 @@ class SettingsLearningView extends StatelessWidget {
                   )
                 : null,
           ),
-          body: Form(
-            key: controller.formKey,
-            child: ListTileTheme(
-              iconColor: Theme.of(context).textTheme.bodyLarge!.color,
-              child: MaxWidthBody(
-                withScrolling: false,
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        controller: controller.scrollController,
+          body: ListTileTheme(
+            iconColor: Theme.of(context).textTheme.bodyLarge!.color,
+            child: MaxWidthBody(
+              withScrolling: false,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      controller: controller.scrollController,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 32.0),
                         child: Column(
+                          spacing: 16.0,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(16.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
                               child: Column(
                                 spacing: 16.0,
                                 children: [
@@ -99,177 +101,140 @@ class SettingsLearningView extends StatelessWidget {
                                         .colorScheme
                                         .surfaceContainerHigh,
                                   ),
-                                  AnimatedSize(
-                                    duration: FluffyThemes.animationDuration,
-                                    curve: FluffyThemes.animationCurve,
-                                    child: controller.userL1?.langCodeShort ==
-                                            controller.userL2?.langCodeShort
-                                        ? Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 16.0,
+                                  if (controller.userL1?.langCodeShort ==
+                                      controller.userL2?.langCodeShort)
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 16.0,
+                                      ),
+                                      child: Row(
+                                        spacing: 8.0,
+                                        children: [
+                                          Icon(
+                                            Icons.info_outlined,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .error,
+                                          ),
+                                          Flexible(
+                                            child: Text(
+                                              L10n.of(context)
+                                                  .noIdenticalLanguages,
+                                              style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .error,
+                                              ),
                                             ),
-                                            child: Row(
-                                              spacing: 8.0,
-                                              children: [
-                                                Icon(
-                                                  Icons.info_outlined,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .error,
-                                                ),
-                                                Flexible(
-                                                  child: Text(
-                                                    L10n.of(context)
-                                                        .noIdenticalLanguages,
-                                                    style: TextStyle(
-                                                      color: Theme.of(context)
-                                                          .colorScheme
-                                                          .error,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          )
-                                        : const SizedBox.shrink(),
-                                  ),
-                                  CountryPickerDropdown(controller),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   LanguageLevelDropdown(
                                     initialLevel: controller.cefrLevel,
                                     onChanged: controller.setCefrLevel,
                                   ),
+                                  VoiceDropdown(
+                                    value: controller.selectedVoice,
+                                    language: controller.selectedTargetLanguage,
+                                    onChanged: controller.setVoice,
+                                  ),
+                                  CountryPickerDropdown(controller),
                                   GenderDropdown(
                                     initialGender: controller.gender,
                                     onChanged: controller.setGender,
                                   ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Colors.white54,
-                                      ),
-                                      borderRadius: BorderRadius.circular(8.0),
-                                    ),
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        ProfileSettingsSwitchListTile.adaptive(
-                                          defaultValue:
-                                              controller.getToolSetting(
-                                            ToolSetting.autoIGC,
-                                          ),
-                                          title: ToolSetting.autoIGC
-                                              .toolName(context),
-                                          subtitle: ToolSetting.autoIGC
-                                              .toolDescription(context),
-                                          onChange: (bool value) =>
-                                              controller.updateToolSetting(
-                                            ToolSetting.autoIGC,
-                                            value,
-                                          ),
-                                          enabled: true,
-                                        ),
-                                        ProfileSettingsSwitchListTile.adaptive(
-                                          defaultValue:
-                                              controller.getToolSetting(
-                                            ToolSetting.enableAutocorrect,
-                                          ),
-                                          title: ToolSetting.enableAutocorrect
-                                              .toolName(context),
-                                          subtitle: ToolSetting
-                                              .enableAutocorrect
-                                              .toolDescription(context),
-                                          onChange: (bool value) {
-                                            controller.updateToolSetting(
-                                              ToolSetting.enableAutocorrect,
-                                              value,
-                                            );
-                                            if (value) {
-                                              controller
-                                                  .showKeyboardSettingsDialog();
-                                            }
-                                          },
-                                          enabled: true,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  for (final toolSetting
-                                      in ToolSetting.values.where(
-                                    (tool) =>
-                                        tool.isAvailableSetting &&
-                                        tool != ToolSetting.autoIGC &&
-                                        tool != ToolSetting.enableAutocorrect,
-                                  ))
-                                    Column(
-                                      children: [
-                                        ProfileSettingsSwitchListTile.adaptive(
-                                          defaultValue: controller
-                                              .getToolSetting(toolSetting),
-                                          title: toolSetting.toolName(context),
-                                          subtitle: toolSetting ==
-                                                      ToolSetting.enableTTS &&
-                                                  !controller.isTTSSupported
-                                              ? null
-                                              : toolSetting
-                                                  .toolDescription(context),
-                                          onChange: (bool value) =>
-                                              controller.updateToolSetting(
-                                            toolSetting,
-                                            value,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  SwitchListTile.adaptive(
-                                    value: controller.publicProfile,
-                                    onChanged: controller.setPublicProfile,
-                                    title: Text(
-                                      L10n.of(context).publicProfileTitle,
-                                    ),
-                                    subtitle: Text(
-                                      L10n.of(context).publicProfileDesc,
-                                    ),
-                                    activeThumbColor:
-                                        AppConfig.activeToggleColor,
-                                    contentPadding: EdgeInsets.zero,
-                                  ),
-                                  ResetInstructionsListTile(
-                                    controller: controller,
-                                  ),
                                 ],
                               ),
+                            ),
+                            ...ToolSetting.values
+                                .where(
+                                  (tool) => tool.isAvailableSetting,
+                                )
+                                .map(
+                                  (toolSetting) => _ProfileSwitchTile(
+                                    value:
+                                        controller.getToolSetting(toolSetting),
+                                    setting: toolSetting,
+                                    onChanged: (v) {
+                                      controller.updateToolSetting(
+                                        toolSetting,
+                                        v,
+                                      );
+                                      if (v &&
+                                          toolSetting ==
+                                              ToolSetting.enableTTS) {
+                                        controller.showKeyboardSettingsDialog();
+                                      }
+                                    },
+                                  ),
+                                ),
+                            SwitchListTile.adaptive(
+                              value: controller.publicProfile,
+                              onChanged: controller.setPublicProfile,
+                              title: Text(
+                                L10n.of(context).publicProfileTitle,
+                              ),
+                              subtitle: Text(
+                                L10n.of(context).publicProfileDesc,
+                              ),
+                              activeThumbColor: AppConfig.activeToggleColor,
+                            ),
+                            ResetInstructionsListTile(
+                              controller: controller,
                             ),
                           ],
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: controller.haveSettingsBeenChanged
-                              ? controller.submit
-                              : null,
-                          child: Text(L10n.of(context).saveChanges),
-                        ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: controller.haveSettingsBeenChanged
+                            ? controller.submit
+                            : null,
+                        child: Text(L10n.of(context).saveChanges),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
         );
 
         if (!controller.widget.isDialog) return dialogContent;
-
         return FullWidthDialog(
           dialogContent: dialogContent,
           maxWidth: 600,
           maxHeight: 800,
         );
       },
+    );
+  }
+}
+
+class _ProfileSwitchTile extends StatelessWidget {
+  final bool value;
+  final ToolSetting setting;
+  final Function(bool) onChanged;
+
+  const _ProfileSwitchTile({
+    required this.value,
+    required this.setting,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ProfileSettingsSwitchListTile.adaptive(
+      defaultValue: value,
+      title: setting.toolName(context),
+      subtitle: setting.toolDescription(context),
+      onChange: onChanged,
     );
   }
 }

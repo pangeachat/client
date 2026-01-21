@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:16.140892",
+  "@@last_modified": "2026-01-21 10:42:49.437032",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10886,6 +10886,11 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot 語音",
+  "@voiceDropdownTitle": {
     "type": "String",
     "placeholders": {}
   }
