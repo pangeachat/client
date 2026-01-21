@@ -189,6 +189,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
 
   Future<void> refresh() async {
     if (room == null || !room!.isSpace || selectedLanguage == null) return;
+    await AnalyticsRequestsRepo.clear();
 
     setState(() {
       downloads = Map.fromEntries(
