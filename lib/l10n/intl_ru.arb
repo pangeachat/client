@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-20 12:32:09.850624",
+  "@@last_modified": "2026-01-21 13:54:43.229000",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -10993,6 +10993,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Голос бота Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ваш запрос отправлен администратору курса! Вы будете допущены, если они одобрят.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

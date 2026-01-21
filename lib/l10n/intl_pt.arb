@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:42.601068",
+  "@@last_modified": "2026-01-21 13:53:54.148542",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -11988,6 +11988,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voz do Bot Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Sua solicitação foi enviada ao administrador do curso! Você será admitido se eles aprovarem.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/pangea/user/style_settings_repo.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -157,10 +157,16 @@ class SettingsStyleController extends State<SettingsStyle> {
 
   void changeFontSizeFactor(double d) {
     setState(() => AppConfig.fontSizeFactor = d);
-    Matrix.of(context).store.setString(
-          SettingKeys.fontSizeFactor,
-          AppConfig.fontSizeFactor.toString(),
-        );
+    // #Pangea
+    // Matrix.of(context).store.setString(
+    //       SettingKeys.fontSizeFactor,
+    //       AppConfig.fontSizeFactor.toString(),
+    //     );
+    StyleSettingsRepo.setFontSizeFactor(
+      Matrix.of(context).client.userID!,
+      AppConfig.fontSizeFactor,
+    );
+    // Pangea#
   }
 
   @override

@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-20 12:32:20.398562",
+  "@@last_modified": "2026-01-21 13:54:48.318824",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11212,6 +11212,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voix du bot Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Votre demande a été envoyée à l'administrateur du cours ! Vous serez admis s'ils approuvent.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

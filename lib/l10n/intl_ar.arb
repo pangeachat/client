@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-20 12:31:24.671375",
+  "@@last_modified": "2026-01-21 13:54:18.388293",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11105,6 +11105,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "صوت بوت بانجيا",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "تم إرسال طلبك إلى إدارة الدورة! سيتم السماح لك بالدخول إذا وافقوا.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

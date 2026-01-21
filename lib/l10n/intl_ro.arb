@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:21.408747",
+  "@@last_modified": "2026-01-21 13:53:41.456181",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11623,6 +11623,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Vocea Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Cererea ta a fost trimisă administratorului cursului! Vei fi lăsat să intri dacă ei aprobă.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -97,7 +97,6 @@ class SpaceAnalyticsSummaryModel {
     Set<ConstructIdentifier> blockedConstructs,
     int numCompletedActivities,
   ) {
-    int totalXP = 0;
     int numWordsTyped = 0;
     int numChoicesCorrect = 0;
     int numChoicesIncorrect = 0;
@@ -114,7 +113,9 @@ class SpaceAnalyticsSummaryModel {
       mergeTable.addConstructsByUses(e.content.uses, blockedConstructs);
 
       for (final use in e.content.uses) {
-        totalXP += use.xp;
+        final id = use.identifier;
+        if (blockedConstructs.contains(id)) continue;
+
         allUses.add(use);
 
         if (use.useType.summaryEnumType ==
@@ -132,8 +133,7 @@ class SpaceAnalyticsSummaryModel {
           sentEventIds.add(use.metadata.eventId!);
         }
 
-        final id = use.identifier;
-        final existing = id.type == ConstructTypeEnum.vocab
+        final existing = use.identifier.type == ConstructTypeEnum.vocab
             ? aggregatedVocab[id]
             : aggregatedMorph[id];
 
@@ -188,6 +188,10 @@ class SpaceAnalyticsSummaryModel {
         cleanedMorph[canonical] = entry;
       }
     }
+
+    final totalXP = cleanedVocab.values
+            .fold<int>(0, (sum, entry) => sum + entry.points) +
+        cleanedMorph.values.fold<int>(0, (sum, entry) => sum + entry.points);
 
     final level = DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP);
     final uniqueVocabCount = cleanedVocab.length;

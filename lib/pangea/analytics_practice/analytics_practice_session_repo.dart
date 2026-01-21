@@ -4,6 +4,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_constants.dart';
 import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -15,10 +16,17 @@ import 'package:fluffychat/pangea/practice_activities/message_activity_request.d
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+class InsufficientDataException implements Exception {}
+
 class AnalyticsPracticeSessionRepo {
   static Future<AnalyticsPracticeSessionModel> get(
     ConstructTypeEnum type,
   ) async {
+    if (MatrixState.pangeaController.subscriptionController.isSubscribed ==
+        false) {
+      throw UnsubscribedException();
+    }
+
     final r = Random();
     final activityTypes = ActivityTypeEnum.analyticsPracticeTypes(type);
 
@@ -65,6 +73,10 @@ class AnalyticsPracticeSessionRepo {
 
         targets.shuffle();
       }
+    }
+
+    if (targets.isEmpty) {
+      throw InsufficientDataException();
     }
 
     final session = AnalyticsPracticeSessionModel(

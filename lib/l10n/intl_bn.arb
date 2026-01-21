@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:49.464406",
+  "@@last_modified": "2026-01-21 13:54:31.328626",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11992,6 +11992,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "প্যাঙ্গিয়া বটের কণ্ঠ",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "আপনার অনুরোধ কোর্স প্রশাসকের কাছে পাঠানো হয়েছে! তারা অনুমোদন করলে আপনাকে প্রবেশ করতে দেওয়া হবে।",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

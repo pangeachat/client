@@ -4483,7 +4483,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-20 12:32:05.240015",
+  "@@last_modified": "2026-01-21 13:54:40.850433",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11973,6 +11973,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "पैंगिया बॉट की आवाज़",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "आपका अनुरोध पाठ्यक्रम प्रशासन को भेज दिया गया है! यदि वे स्वीकृत करते हैं, तो आपको अंदर जाने दिया जाएगा।",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

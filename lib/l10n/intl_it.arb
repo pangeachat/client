@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:55.791406",
+  "@@last_modified": "2026-01-21 13:54:01.568848",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10891,6 +10891,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voce del bot Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "La tua richiesta è stata inviata all'amministratore del corso! Sarai ammesso se approvano.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

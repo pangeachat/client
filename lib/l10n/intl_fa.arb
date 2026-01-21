@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:52.231221",
+  "@@last_modified": "2026-01-21 13:54:33.096668",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11620,6 +11620,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "صدای ربات پانژیا",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "درخواست شما به مدیر دوره ارسال شده است! اگر آنها تأیید کنند، شما وارد خواهید شد.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

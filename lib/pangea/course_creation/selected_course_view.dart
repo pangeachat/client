@@ -234,40 +234,43 @@ class SelectedCourseView extends StatelessWidget {
                               spacing: 8.0,
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                Row(
-                                  spacing: 12.0,
-                                  children: [
-                                    const Icon(
-                                      Icons.edit,
-                                      size: mediumIconSize,
-                                    ),
-                                    Flexible(
-                                      child: Text(
-                                        L10n.of(context).editCourseLater,
-                                        style: const TextStyle(
-                                          fontSize: descFontSize,
+                                if (controller.widget.mode !=
+                                    SelectedCourseMode.join) ...[
+                                  Row(
+                                    spacing: 12.0,
+                                    children: [
+                                      const Icon(
+                                        Icons.edit,
+                                        size: mediumIconSize,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          L10n.of(context).editCourseLater,
+                                          style: const TextStyle(
+                                            fontSize: descFontSize,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  spacing: 12.0,
-                                  children: [
-                                    const Icon(
-                                      Icons.shield,
-                                      size: mediumIconSize,
-                                    ),
-                                    Flexible(
-                                      child: Text(
-                                        L10n.of(context).newCourseAccess,
-                                        style: const TextStyle(
-                                          fontSize: descFontSize,
+                                    ],
+                                  ),
+                                  Row(
+                                    spacing: 12.0,
+                                    children: [
+                                      const Icon(
+                                        Icons.shield,
+                                        size: mediumIconSize,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          L10n.of(context).newCourseAccess,
+                                          style: const TextStyle(
+                                            fontSize: descFontSize,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
+                                ],
                                 Padding(
                                   padding: const EdgeInsets.only(top: 8.0),
                                   child: ElevatedButton(

@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-20 12:31:47.017242",
+  "@@last_modified": "2026-01-21 13:54:29.681537",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10879,6 +10879,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "潘吉亚机器人声音",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "您的请求已发送给课程管理员！如果他们批准，您将被允许进入。",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

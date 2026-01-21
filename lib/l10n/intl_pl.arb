@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-20 12:31:54.796841",
+  "@@last_modified": "2026-01-21 13:54:34.451816",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10886,6 +10886,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Głos bota Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Twoja prośba została wysłana do administratora kursu! Zostaniesz wpuszczony, jeśli ją zatwierdzą.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

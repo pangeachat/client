@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
@@ -58,7 +57,7 @@ class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
   Future<(PangeaAudioFile, File?)> fetch() async {
     final audioBytes = await messageEvent.requestTextToSpeech(
       messageEvent.messageDisplayLangCode,
-      messageEvent.room.botOptions?.targetVoice,
+      MatrixState.pangeaController.userController.voice,
     );
 
     File? audioFile;
@@ -91,8 +90,6 @@ class SelectModeController with LemmaEmojiSetter {
 
   ValueNotifier<SelectMode?> selectedMode = ValueNotifier<SelectMode?>(null);
 
-  final StreamController contentChangedStream = StreamController.broadcast();
-
   // Sometimes the same token is clicked twice. Setting it to the same value
   // won't trigger the notifier, so use the bool for force it to trigger.
   ValueNotifier<(PangeaTokenText?, bool)> playTokenNotifier =
@@ -105,7 +102,6 @@ class SelectModeController with LemmaEmojiSetter {
     _translationLoader.dispose();
     _sttTranslationLoader.dispose();
     _audioLoader.dispose();
-    contentChangedStream.close();
   }
 
   static List<SelectMode> get _textModes => [

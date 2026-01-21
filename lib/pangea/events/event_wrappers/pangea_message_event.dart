@@ -294,16 +294,18 @@ class PangeaMessageEvent {
   RepresentationEvent? representationByLanguage(
     String langCode, {
     bool Function(RepresentationEvent)? filter,
-  }) {
-    representations.firstWhereOrNull(
-      (element) =>
-          element.langCode.split("-")[0] == langCode.split("-")[0] &&
-          (filter?.call(element) ?? true),
-    );
-    return null;
-  }
+  }) =>
+      representations.firstWhereOrNull(
+        (element) =>
+            element.langCode.split("-")[0] == langCode.split("-")[0] &&
+            (filter?.call(element) ?? true),
+      );
 
-  Event? getTextToSpeechLocal(String langCode, String text) {
+  Event? getTextToSpeechLocal(
+    String langCode,
+    String text,
+    String? voice,
+  ) {
     for (final audio in allAudio) {
       final dataMap = audio.content.tryGetMap(ModelKey.transcription);
       if (dataMap == null || !dataMap.containsKey(ModelKey.tokens)) continue;
@@ -313,7 +315,9 @@ class PangeaMessageEvent {
           dataMap as dynamic,
         );
 
-        if (audioData.langCode == langCode && audioData.text == text) {
+        if (audioData.langCode == langCode &&
+            audioData.text == text &&
+            audioData.voice == voice) {
           return audio;
         }
       } catch (e, s) {
@@ -368,7 +372,7 @@ class PangeaMessageEvent {
     String langCode,
     String? voice,
   ) async {
-    final local = getTextToSpeechLocal(langCode, messageDisplayText);
+    final local = getTextToSpeechLocal(langCode, messageDisplayText, voice);
     if (local != null) {
       final file = await local.getPangeaAudioFile();
       if (file != null) return file;
@@ -424,7 +428,7 @@ class PangeaMessageEvent {
           'waveform': response.waveform,
         },
         ModelKey.transcription: response
-            .toPangeaAudioEventData(rep?.text ?? body, langCode)
+            .toPangeaAudioEventData(rep?.text ?? body, langCode, voice)
             .toJson(),
       },
     ).then((eventId) async {

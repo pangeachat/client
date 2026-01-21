@@ -19,6 +19,7 @@ class UserSettings {
   GenderEnum gender;
   String? country;
   LanguageLevelTypeEnum cefrLevel;
+  String? voice;
 
   UserSettings({
     this.dateOfBirth,
@@ -29,6 +30,7 @@ class UserSettings {
     this.gender = GenderEnum.unselected,
     this.country,
     this.cefrLevel = LanguageLevelTypeEnum.a1,
+    this.voice,
   });
 
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
@@ -52,6 +54,7 @@ class UserSettings {
                 json[ModelKey.cefrLevel],
               )
             : LanguageLevelTypeEnum.a1,
+        voice: json[ModelKey.voice],
       );
 
   Map<String, dynamic> toJson() {
@@ -64,6 +67,7 @@ class UserSettings {
     data[ModelKey.userGender] = gender.string;
     data[ModelKey.userCountry] = country;
     data[ModelKey.cefrLevel] = cefrLevel.string;
+    data[ModelKey.voice] = voice;
     return data;
   }
 
@@ -123,6 +127,7 @@ class UserSettings {
       gender: gender,
       country: country,
       cefrLevel: cefrLevel,
+      voice: voice,
     );
   }
 
@@ -138,7 +143,8 @@ class UserSettings {
         other.sourceLanguage == sourceLanguage &&
         other.gender == gender &&
         other.country == country &&
-        other.cefrLevel == cefrLevel;
+        other.cefrLevel == cefrLevel &&
+        other.voice == voice;
   }
 
   @override
@@ -151,6 +157,7 @@ class UserSettings {
         gender.hashCode,
         country.hashCode,
         cefrLevel.hashCode,
+        voice.hashCode,
       ]);
 }
 

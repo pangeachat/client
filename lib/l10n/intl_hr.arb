@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-20 12:30:29.823787",
+  "@@last_modified": "2026-01-21 13:53:46.524141",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11260,6 +11260,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot glas",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Vaš zahtjev je poslan administratoru tečaja! Bit ćete primljeni ako odobre.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

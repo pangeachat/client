@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-20 12:31:28.469826",
+  "@@last_modified": "2026-01-21 13:54:19.467039",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11110,6 +11110,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot sesi",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Talebiniz kurs yöneticisine gönderildi! Onaylarlarsa içeri alınacaksınız.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

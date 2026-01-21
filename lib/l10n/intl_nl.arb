@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:42.507524",
+  "@@last_modified": "2026-01-21 13:54:27.649909",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10888,6 +10888,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot stem",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Je verzoek is verzonden naar de cursusbeheerder! Je wordt toegelaten als ze goedkeuren.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

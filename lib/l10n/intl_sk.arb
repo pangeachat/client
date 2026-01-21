@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-20 12:30:24.498564",
+  "@@last_modified": "2026-01-21 13:53:43.706457",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -11972,6 +11972,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Hlas Pangea Bota",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Vaša žiadosť bola odoslaná administrátorovi kurzu! Budete vpustený, ak ju schvália.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

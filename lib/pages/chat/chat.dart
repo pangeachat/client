@@ -496,6 +496,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (botAudioEvent == null) return;
 
     final matrix = Matrix.of(context);
+    if (matrix.voiceMessageEventId.value != null) return;
+
     matrix.voiceMessageEventId.value = botAudioEvent.eventId;
     matrix.audioPlayer?.dispose();
     matrix.audioPlayer = AudioPlayer();
@@ -2009,6 +2011,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   bool showMessageShimmer(Event event) {
     if (event.type != EventTypes.Message) return false;
+    if (!(event.eventId == buttonEventID)) return false;
     if (event.messageType == MessageTypes.Text) {
       return !InstructionsEnum.clickTextMessages.isToggledOff;
     }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:30:31.884050",
+  "@@last_modified": "2026-01-21 13:53:47.592162",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11937,6 +11937,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "קול של פנגיאה בוט",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "הבקשה שלך נשלחה למנהל הקורס! תורשה להיכנס אם הם יאשרו.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

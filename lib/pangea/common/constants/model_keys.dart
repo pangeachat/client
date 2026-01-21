@@ -109,6 +109,7 @@ class ModelKey {
 
   static const String transcription = "transcription";
   static const String botTranscription = 'bot_transcription';
+  static const String voice = "voice";
 
   // bot options
   static const String languageLevel = "difficulty";

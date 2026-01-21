@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-20 12:31:57.066428",
+  "@@last_modified": "2026-01-21 13:54:35.931933",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11366,6 +11366,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot röst",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Din begäran har skickats till kursadministratören! Du kommer att släppas in om de godkänner.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }

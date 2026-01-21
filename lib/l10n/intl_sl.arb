@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-20 12:30:51.399294",
+  "@@last_modified": "2026-01-21 13:53:58.241980",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11969,6 +11969,16 @@
     "placeholders": {}
   },
   "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Glas Pangea Bota",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Vaša zahteva je bila poslana skrbniku tečaja! Vstopili boste, če jo odobrijo.",
+  "@knockDesc": {
     "type": "String",
     "placeholders": {}
   }
