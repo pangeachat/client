@@ -294,14 +294,12 @@ class PangeaMessageEvent {
   RepresentationEvent? representationByLanguage(
     String langCode, {
     bool Function(RepresentationEvent)? filter,
-  }) {
-    representations.firstWhereOrNull(
-      (element) =>
-          element.langCode.split("-")[0] == langCode.split("-")[0] &&
-          (filter?.call(element) ?? true),
-    );
-    return null;
-  }
+  }) =>
+      representations.firstWhereOrNull(
+        (element) =>
+            element.langCode.split("-")[0] == langCode.split("-")[0] &&
+            (filter?.call(element) ?? true),
+      );
 
   Event? getTextToSpeechLocal(
     String langCode,
