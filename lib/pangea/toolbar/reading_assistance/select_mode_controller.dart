@@ -90,8 +90,6 @@ class SelectModeController with LemmaEmojiSetter {
 
   ValueNotifier<SelectMode?> selectedMode = ValueNotifier<SelectMode?>(null);
 
-  final StreamController contentChangedStream = StreamController.broadcast();
-
   // Sometimes the same token is clicked twice. Setting it to the same value
   // won't trigger the notifier, so use the bool for force it to trigger.
   ValueNotifier<(PangeaTokenText?, bool)> playTokenNotifier =
@@ -104,7 +102,6 @@ class SelectModeController with LemmaEmojiSetter {
     _translationLoader.dispose();
     _sttTranslationLoader.dispose();
     _audioLoader.dispose();
-    contentChangedStream.close();
   }
 
   static List<SelectMode> get _textModes => [
