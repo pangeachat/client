@@ -28,7 +28,6 @@ class Avatar extends StatelessWidget {
 
   final double? presenceSize;
   final Offset? presenceOffset;
-  final Widget? miniIcon;
   // Pangea#
 
   const Avatar({
@@ -48,7 +47,6 @@ class Avatar extends StatelessWidget {
     this.userId,
     this.presenceSize,
     this.presenceOffset,
-    this.miniIcon,
     // Pangea#
     super.key,
   });
@@ -140,13 +138,7 @@ class Avatar extends StatelessWidget {
         ),
         // #Pangea
         // if (presenceUserId != null)
-        if (miniIcon != null)
-          Positioned(
-            bottom: presenceOffset?.dy ?? -3,
-            right: presenceOffset?.dx ?? -3,
-            child: miniIcon!,
-          )
-        else if (presenceUserId != null && size >= 32.0 && showPresence)
+        if (presenceUserId != null && size >= 32.0 && showPresence)
           // Pangea#
           PresenceBuilder(
             client: client,

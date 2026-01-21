@@ -117,8 +117,9 @@ class PangeaController {
         userController.languageStream.stream.listen(_onLanguageUpdate);
 
     _settingsSubscription?.cancel();
-    _settingsSubscription = userController.settingsUpdateStream.stream
-        .listen((_) => matrixState.client.updateBotOptions());
+    _settingsSubscription = userController.settingsUpdateStream.stream.listen(
+      (update) => matrixState.client.updateBotOptions(update.userSettings),
+    );
 
     _joinSpaceSubscription?.cancel();
     _joinSpaceSubscription ??= matrixState.client.onSync.stream
@@ -176,7 +177,7 @@ class PangeaController {
     }
 
     _clearCache(exclude: exclude);
-    matrixState.client.updateBotOptions();
+    matrixState.client.updateBotOptions(userController.profile.userSettings);
   }
 
   static final List<String> _storageKeys = [
