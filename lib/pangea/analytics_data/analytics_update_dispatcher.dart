@@ -17,6 +17,18 @@ class LevelUpdate {
   });
 }
 
+class ConstructLevelUpdate {
+  final ConstructIdentifier constructId;
+  final ConstructLevelEnum level;
+  final String? targetID;
+
+  ConstructLevelUpdate({
+    required this.constructId,
+    required this.level,
+    this.targetID,
+  });
+}
+
 class AnalyticsUpdate {
   final List<OneConstructUse> addedConstructs;
   final ConstructIdentifier? blockedConstruct;
@@ -47,9 +59,8 @@ class AnalyticsUpdateDispatcher {
   final StreamController<Set<ConstructIdentifier>> newConstructsStream =
       StreamController<Set<ConstructIdentifier>>.broadcast();
 
-  final StreamController<MapEntry<ConstructIdentifier, ConstructLevelEnum>>
-      constructLevelUpdateStream = StreamController<
-          MapEntry<ConstructIdentifier, ConstructLevelEnum>>.broadcast();
+  final StreamController<ConstructLevelUpdate> constructLevelUpdateStream =
+      StreamController<ConstructLevelUpdate>.broadcast();
 
   final StreamController<MapEntry<ConstructIdentifier, UserSetLemmaInfo>>
       _lemmaInfoUpdateStream = StreamController<
@@ -108,7 +119,7 @@ class AnalyticsUpdateDispatcher {
         _onBlockedConstruct(e.blockedConstruct);
         break;
       case final ConstructLevelUpEvent e:
-        _onConstructLevelUp(e.constructId, e.level);
+        _onConstructLevelUp(e.constructId, e.level, e.targetID);
         break;
       case final NewConstructsEvent e:
         _onNewConstruct(e.newConstructs);
@@ -156,9 +167,14 @@ class AnalyticsUpdateDispatcher {
   void _onConstructLevelUp(
     ConstructIdentifier constructId,
     ConstructLevelEnum level,
+    String? targetID,
   ) {
     constructLevelUpdateStream.add(
-      MapEntry(constructId, level),
+      ConstructLevelUpdate(
+        constructId: constructId,
+        level: level,
+        targetID: targetID,
+      ),
     );
   }
 

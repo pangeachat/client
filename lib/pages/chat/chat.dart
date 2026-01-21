@@ -39,6 +39,7 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -530,10 +531,14 @@ class ChatController extends State<ChatPageWithRoom>
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
     _constructLevelSubscription =
-        updater.constructLevelUpdateStream.stream.listen((entry) {
-      debugPrint(
-        "Construct level update received: ${entry.key.string} -> ${entry.value}",
-      );
+        updater.constructLevelUpdateStream.stream.listen((update) {
+      if (update.targetID != null) {
+        OverlayUtil.showGrowthOverlay(
+          context,
+          update.targetID!,
+          level: update.level,
+        );
+      }
     });
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
 
@@ -2339,6 +2344,17 @@ class ChatController extends State<ChatPageWithRoom>
       constructs,
       ConstructTypeEnum.vocab,
     );
+
+    // Show growth animation for new vocab (seeds level)
+    if (newVocabConstructs > 0) {
+      for (int i = 0; i < newVocabConstructs; i++) {
+        OverlayUtil.showGrowthOverlay(
+          context,
+          eventId,
+          level: ConstructLevelEnum.seeds,
+        );
+      }
+    }
 
     OverlayUtil.showOverlay(
       overlayKey: "msg_analytics_feedback_$eventId",

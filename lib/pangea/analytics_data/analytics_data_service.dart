@@ -453,6 +453,7 @@ class AnalyticsDataService {
           ConstructLevelUpEvent(
             entry.key,
             newLevel,
+            update.targetID,
           ),
         );
       }

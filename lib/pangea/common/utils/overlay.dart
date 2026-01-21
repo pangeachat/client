@@ -1,9 +1,7 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
+import 'package:fluffychat/pangea/analytics_misc/growth_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
@@ -13,7 +11,11 @@ import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
@@ -25,6 +27,9 @@ enum OverlayPositionEnum {
 }
 
 class OverlayUtil {
+  static int _growthAnimationCount = 0;
+  static final Set<String> _activeGrowthAnimations = {};
+
   static bool showOverlay({
     required BuildContext context,
     required Widget child,
@@ -310,6 +315,62 @@ class OverlayUtil {
       backDropToDismiss: false,
       ignorePointer: true,
     );
+  }
+
+  static void showGrowthOverlay(
+    BuildContext context,
+    String targetId, {
+    required ConstructLevelEnum level,
+  }) {
+    // Clean up any stale entries from dismissed overlays
+    _cleanupStaleGrowthAnimations();
+
+    final animationKey = "${targetId}_growth_${_growthAnimationCount + 1}";
+
+    // Calculate offset based on how many are currently active
+    final activeCount = _activeGrowthAnimations.length;
+    final double horizontalOffset;
+
+    if (activeCount == 0) {
+      // Start in the middle if no animations are running
+      horizontalOffset = 0.0;
+    } else {
+      final side = activeCount % 2 == 0 ? 1 : -1;
+      final distance = ((activeCount + 1) ~/ 2) * 30.0;
+      horizontalOffset = side * distance;
+    }
+
+    _growthAnimationCount++;
+    _activeGrowthAnimations.add(animationKey);
+
+    showOverlay(
+      overlayKey: animationKey,
+      followerAnchor: Alignment.topCenter,
+      targetAnchor: Alignment.topCenter,
+      context: context,
+      child: GrowthAnimation(
+        targetID: targetId,
+        level: level,
+        horizontalOffset: horizontalOffset,
+        onComplete: () {
+          _activeGrowthAnimations.remove(animationKey);
+        },
+      ),
+      transformTargetId: targetId,
+      closePrevOverlay: false,
+      backDropToDismiss: false,
+      ignorePointer: true,
+      offset: Offset(horizontalOffset, 0),
+    );
+  }
+
+  static void _cleanupStaleGrowthAnimations() {
+    // Remove any tracked animations that are no longer in the overlay system
+    _activeGrowthAnimations.removeWhere((key) {
+      final isActive =
+          MatrixState.pAnyState.entries.any((entry) => entry.key == key);
+      return !isActive;
+    });
   }
 
   static void showLanguageMismatchPopup({
