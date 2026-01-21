@@ -125,6 +125,7 @@ class AnimatedFloatingNumberState extends State<AnimatedFloatingNumber>
         Text(
           widget.number.toString(),
           style: indicatorStyle,
+          textScaler: TextScaler.noScaling,
         ),
       ],
     );
