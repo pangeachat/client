@@ -496,6 +496,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (botAudioEvent == null) return;
 
     final matrix = Matrix.of(context);
+    if (matrix.voiceMessageEventId.value != null) return;
+
     matrix.voiceMessageEventId.value = botAudioEvent.eventId;
     matrix.audioPlayer?.dispose();
     matrix.audioPlayer = AudioPlayer();
