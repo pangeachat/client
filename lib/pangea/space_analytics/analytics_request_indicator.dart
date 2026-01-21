@@ -10,7 +10,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics_requested_dialog.dart';
-import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class AnalyticsRequestIndicator extends StatefulWidget {
@@ -60,18 +59,38 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
     );
     await Future.wait(futures);
 
-    final analyicsRoomIds = analyticsRooms.map((r) => r.id).toSet();
+    final analyticsRoomIds = analyticsRooms.map((r) => r.id).toSet();
     _analyticsRoomSub?.cancel();
-    _analyticsRoomSub = widget.room.client.onRoomState.stream
-        .where(
-          (event) =>
-              analyicsRoomIds.contains(event.roomId) &&
-              event.state.type == EventTypes.RoomMember,
-        )
-        .rateLimit(const Duration(seconds: 1))
-        .listen((_) => setState(() {}));
+    _analyticsRoomSub = widget.room.client.onSync.stream.listen((update) async {
+      final joined = update.rooms?.join?.entries
+          .where((e) => analyticsRoomIds.contains(e.key));
 
-    if (mounted) setState(() {});
+      if (joined == null || joined.isEmpty) return;
+      final Set<String> updatedRoomIds = {};
+      for (final entry in joined) {
+        final memberEvents = entry.value.timeline?.events?.where(
+          (e) => e.type == EventTypes.RoomMember,
+        );
+        if (memberEvents != null && memberEvents.isNotEmpty) {
+          updatedRoomIds.add(entry.key);
+        }
+      }
+
+      if (updatedRoomIds.isEmpty) return;
+      for (final roomId in updatedRoomIds) {
+        final room = widget.room.client.getRoomById(roomId);
+        if (room == null) continue;
+        await room.requestParticipants(
+          [Membership.join, Membership.invite, Membership.knock],
+          false,
+          true,
+        );
+      }
+
+      if (mounted) {
+        setState(() {});
+      }
+    });
   }
 
   Map<User, List<Room>> get _knockingAdmins {
