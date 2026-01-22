@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Alusta oma";
     },
-    get$joinCourseDesc() {
-      return "Igal kursusel on 8-10 j\xe4rjestikust teemat koos erinevate \xfclesandep\xf5histe keele\xf5ppetegevustega.";
-    },
     get$courseCodeHint() {
       return "Reisi kood v\xf5i link";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Jaga kursust";
-    },
-    get$addCourse() {
-      return "Lisa kursus";
     },
     get$joinPublicCourse() {
       return "Liitu avaliku kursusega";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Kas sul on kutsekood v\xf5i link avalikule kursusele?";
+    },
+    welcomeUser$1(user) {
+      return "Tere tulemast " + user;
+    },
+    get$findCourse() {
+      return "Leia kursus";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WNJv1+Dcewi2EX8+hVgKVOmhIUE="] = d.current;
+  d["TJotJwcQlTpmLUY7tmEQPj18Ip4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_546.part.js.map

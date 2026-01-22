@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Starta min egen";
     },
-    get$joinCourseDesc() {
-      return "Varje kurs har 8-10 sekventiella \xe4mnen med en rad uppgiftsbaserade spr\xe5kinl\xe4rningsaktiviteter.";
-    },
     get$courseCodeHint() {
       return "Resekod eller l\xe4nk";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Dela kurs";
-    },
-    get$addCourse() {
-      return "L\xe4gg till en kurs";
     },
     get$joinPublicCourse() {
       return "G\xe5 med i offentlig kurs";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Din beg\xe4ran har skickats till kursadministrat\xf6ren! Du kommer att sl\xe4ppas in om de godk\xe4nner.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Har du en inbjudningskod eller l\xe4nk till en offentlig kurs?";
+    },
+    welcomeUser$1(user) {
+      return "V\xe4lkommen " + user;
+    },
+    get$findCourse() {
+      return "Hitta en kurs";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q+SMbqJtP8cXywqqttXkUQ+P9sM="] = d.current;
+  d["hhVvC9kBlqwSZC9Ta08s9GCo84Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_759.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "B\u1eaft \u0111\u1ea7u c\u1ee7a ri\xeang t\xf4i";
     },
-    get$joinCourseDesc() {
-      return "M\u1ed7i kh\xf3a h\u1ecdc c\xf3 8-10 ch\u1ee7 \u0111\u1ec1 theo tr\xecnh t\u1ef1 v\u1edbi nhi\u1ec1u ho\u1ea1t \u0111\u1ed9ng h\u1ecdc ng\xf4n ng\u1eef d\u1ef1a tr\xean nhi\u1ec7m v\u1ee5.";
-    },
     get$courseCodeHint() {
       return "M\xe3 chuy\u1ebfn \u0111i ho\u1eb7c li\xean k\u1ebft";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Chia s\u1ebb kh\xf3a h\u1ecdc";
-    },
-    get$addCourse() {
-      return "Th\xeam kh\xf3a h\u1ecdc";
     },
     get$joinPublicCourse() {
       return "Tham gia kh\xf3a h\u1ecdc c\xf4ng khai";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Y\xeau c\u1ea7u c\u1ee7a b\u1ea1n \u0111\xe3 \u0111\u01b0\u1ee3c g\u1eedi \u0111\u1ebfn qu\u1ea3n tr\u1ecb vi\xean kh\xf3a h\u1ecdc! B\u1ea1n s\u1ebd \u0111\u01b0\u1ee3c cho v\xe0o n\u1ebfu h\u1ecd ch\u1ea5p thu\u1eadn.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "B\u1ea1n c\xf3 m\xe3 m\u1eddi ho\u1eb7c li\xean k\u1ebft \u0111\u1ebfn m\u1ed9t kh\xf3a h\u1ecdc c\xf4ng khai kh\xf4ng?";
+    },
+    welcomeUser$1(user) {
+      return "Ch\xe0o m\u1eebng " + user;
+    },
+    get$findCourse() {
+      return "T\xecm kh\xf3a h\u1ecdc";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+pe7EjkH/74l1DfmMSWXQVVOzUk="] = d.current;
+  d["k6hNzd8W1FqnCVhtPy4WsgdixKI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_765.part.js.map

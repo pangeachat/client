@@ -4322,9 +4322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Rozpocznij w\u0142asny";
     },
-    get$joinCourseDesc() {
-      return "Ka\u017cdy kurs sk\u0142ada si\u0119 z 8-10 sekwencyjnych temat\xf3w z r\xf3\u017cnorodnymi zadaniami do nauki j\u0119zyka.";
-    },
     get$courseCodeHint() {
       return "Kod podr\xf3\u017cy lub link";
     },
@@ -4429,9 +4426,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Udost\u0119pnij kurs";
-    },
-    get$addCourse() {
-      return "Dodaj kurs";
     },
     get$joinPublicCourse() {
       return "Do\u0142\u0105cz do kursu publicznego";
@@ -5345,6 +5339,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Twoja pro\u015bba zosta\u0142a wys\u0142ana do administratora kursu! Zostaniesz wpuszczony, je\u015bli j\u0105 zatwierdz\u0105.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Czy masz kod zaproszenia lub link do publicznego kursu?";
+    },
+    welcomeUser$1(user) {
+      return "Witaj " + user;
+    },
+    get$findCourse() {
+      return "Znajd\u017a kurs";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5358,7 +5361,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ro+VmtH4T+pv7VUWrhU+mH8T3oA="] = d.current;
+  d["tcWP+Djfcv9CpmuZcjqFBA7Mdok="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_737.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Start my own";
     },
-    get$joinCourseDesc() {
-      return "Each course has 8-10 sequenced topics with a range of task-based language learning activities.";
-    },
     get$courseCodeHint() {
       return "Course code";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Share course";
-    },
-    get$addCourse() {
-      return "Add a course";
     },
     get$joinPublicCourse() {
       return "Join public course";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Your request has been sent to course admin! You'll be let in if they approve.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Do you have an invite code or link to a public course?";
+    },
+    welcomeUser$1(user) {
+      return "Welcome " + user;
+    },
+    get$findCourse() {
+      return "Find a course";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OA/EEqOp+dKFvQxq9glktQNK5oQ="] = d.current;
+  d["Bb/tZwkq+x0FV5t9BCq1Ch4wcXM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_416.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Tosaigh mo chuid f\xe9in";
     },
-    get$joinCourseDesc() {
-      return "T\xe1 8-10 topaic\xed sraithmharma i ngach c\xfarsa le raon gn\xedomha\xedochta\xed foghlama teanga bunaithe ar thascanna.";
-    },
     get$courseCodeHint() {
       return "C\xf3d turais n\xf3 nasc";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Comhroinn c\xfarsa";
-    },
-    get$addCourse() {
-      return "Cuir c\xfarsa leis";
     },
     get$joinPublicCourse() {
       return "Cl\xe1raigh i gc\xfarsa poibl\xed";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "T\xe1 do hiarratas curtha chuig an riarach\xe1n c\xfarsa! Cuirfear isteach th\xfa m\xe1 cheada\xedonn siad \xe9.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "An bhfuil c\xf3d cuireadh n\xf3 nasc agat do ch\xfarsa poibl\xed?";
+    },
+    welcomeUser$1(user) {
+      return "F\xe1ilte " + user;
+    },
+    get$findCourse() {
+      return "F\xe9ach ar ch\xfarsa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ucpx08iBL/1F4oCPZ4tKk6nyvdo="] = d.current;
+  d["XDeVaRLQC/atZLteIzqhzYMaIIw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_617.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Mulai milik saya sendiri";
     },
-    get$joinCourseDesc() {
-      return "Setiap kursus memiliki 8-10 topik berurutan dengan berbagai aktivitas pembelajaran bahasa berbasis tugas.";
-    },
     get$courseCodeHint() {
       return "Kode perjalanan atau tautan";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Bagikan kursus";
-    },
-    get$addCourse() {
-      return "Tambahkan kursus";
     },
     get$joinPublicCourse() {
       return "Gabung kursus publik";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Apakah Anda memiliki kode undangan atau tautan ke kursus publik?";
+    },
+    welcomeUser$1(user) {
+      return "Selamat datang " + user;
+    },
+    get$findCourse() {
+      return "Cari kursus";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iV8qKzlsZ96c4lvb1RTEvTYviEo="] = d.current;
+  d["oMp3P4t4I87UBV45oc8wpI/gYpA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_692.part.js.map

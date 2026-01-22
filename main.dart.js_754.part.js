@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Za\u010dni svojo lastno";
     },
-    get$joinCourseDesc() {
-      return "Vsak te\u010daj ima 8-10 zaporednih tem z vrsto dejavnosti za u\u010denje jezika na podlagi nalog.";
-    },
     get$courseCodeHint() {
       return "Potovalna \u0161ifra ali povezava";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Deli te\u010daj";
-    },
-    get$addCourse() {
-      return "Dodaj te\u010daj";
     },
     get$joinPublicCourse() {
       return "Pridru\u017ei se javnemu te\u010daju";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Va\u0161a zahteva je bila poslana skrbniku te\u010daja! Vstopili boste, \u010de jo odobrijo.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Imate kodo za povabilo ali povezavo do javnega te\u010daja?";
+    },
+    welcomeUser$1(user) {
+      return "Dobrodo\u0161li " + user;
+    },
+    get$findCourse() {
+      return "Najdi te\u010daj";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PIEUqFeFxVA9r944hkD7w9B0urw="] = d.current;
+  d["3EmiVZFFQB9OK4lM7654sWNJgkY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

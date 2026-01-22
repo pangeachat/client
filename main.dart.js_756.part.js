@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Pokreni sopstveni";
     },
-    get$joinCourseDesc() {
-      return "Svaki kurs ima 8-10 sekvencijalnih tema sa nizom aktivnosti za u\u010denje jezika zasnovanih na zadacima.";
-    },
     get$courseCodeHint() {
       return "\u0160ifra ili link putovanja";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Podeli kurs";
-    },
-    get$addCourse() {
-      return "Dodaj kurs";
     },
     get$joinPublicCourse() {
       return "Pridru\u017ei se javnom kursu";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Va\u0161 zahtev je poslat administratoru kursa! Bi\u0107ete primljeni ako odobre.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Imate li pozivni kod ili link za javni kurs?";
+    },
+    welcomeUser$1(user) {
+      return "Dobrodo\u0161li " + user;
+    },
+    get$findCourse() {
+      return "\u041f\u0440\u043e\u043d\u0430\u0452\u0438 \u043a\u0443\u0440\u0441";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ncuJ2oVxJTStDnrAMlyCFv7LsOo="] = d.current;
+  d["sAbQ3tBVqkWQ510Mg6Y6DP7nQeQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

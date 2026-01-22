@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Kendi ba\u015f\u0131ma ba\u015fla";
     },
-    get$joinCourseDesc() {
-      return "Her kurs, dizi halinde 8-10 konu ve g\xf6rev tabanl\u0131 dil \xf6\u011frenme etkinlikleri i\xe7erir.";
-    },
     get$courseCodeHint() {
       return "Seyahat kodu veya ba\u011flant\u0131";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Kursu payla\u015f";
-    },
-    get$addCourse() {
-      return "Bir kurs ekle";
     },
     get$joinPublicCourse() {
       return "Herkese a\xe7\u0131k kursa kat\u0131l";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Talebiniz kurs y\xf6neticisine g\xf6nderildi! Onaylarlarsa i\xe7eri al\u0131nacaks\u0131n\u0131z.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Bir davet kodunuz veya halka a\xe7\u0131k bir kursa ba\u011flant\u0131n\u0131z var m\u0131?";
+    },
+    welcomeUser$1(user) {
+      return "Ho\u015f geldin " + user;
+    },
+    get$findCourse() {
+      return "Bir kurs bul";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["f/bB2AT1JODQnEGtTCqZyoiAV8c="] = d.current;
+  d["SxkOyRDMezVWGgF6OV+uY7YrJ6o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_763.part.js.map

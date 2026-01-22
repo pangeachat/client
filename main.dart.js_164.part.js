@@ -4323,9 +4323,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Start my own";
     },
-    get$joinCourseDesc() {
-      return "Each course has 8-10 sequenced topics with a range of task-based language learning activities.";
-    },
     get$courseCodeHint() {
       return "\u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824 \u182a\u1823\u182f\u1824\u1830\u1824";
     },
@@ -4430,9 +4427,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Share course";
-    },
-    get$addCourse() {
-      return "Add a course";
     },
     get$joinPublicCourse() {
       return "Join public course";
@@ -5346,6 +5340,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Yor requst has been sent to course admin! Yu'll be let in if dey approve.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Do you have an invite code or link to a public course?";
+    },
+    welcomeUser$1(user) {
+      return "Welcome " + user;
+    },
+    get$findCourse() {
+      return "\u0f5a\u0f7c\u0f44\u0f0b\u0f41\u0f44\u0f0b\u0f56\u0f5f\u0f7c\u0f0b\u0f56\u0f45\u0f7c\u0f66\u0f0d";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5371,7 +5374,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OobNhGeCPfzMytxhC3WfVAhItfI="] = d.current;
+  d["hU0JJeQTcdvoV7PQ5rxhUlUwB4c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

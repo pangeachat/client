@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Start min egen";
     },
-    get$joinCourseDesc() {
-      return "Hvert kursus har 8-10 sequencerede emner med en r\xe6kke opgavebaserede sprogindl\xe6ringsaktiviteter.";
-    },
     get$courseCodeHint() {
       return "Rejsekode eller link";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Del kursus";
-    },
-    get$addCourse() {
-      return "Tilf\xf8j et kursus";
     },
     get$joinPublicCourse() {
       return "Deltag i offentligt kursus";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Din anmodning er sendt til kursusadministratoren! Du vil blive lukket ind, hvis de godkender.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Har du en invitationskode eller et link til et offentligt kursus?";
+    },
+    welcomeUser$1(user) {
+      return "Velkommen " + user;
+    },
+    get$findCourse() {
+      return "Find et kursus";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FEoU381b3qbHc2b8JECGgZiQlcI="] = d.current;
+  d["zBkbvQFbni3skINap4wxb639TCk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Kumencar mieu";
     },
-    get$joinCourseDesc() {
-      return "Ogn corsa ha 8-10 temas sequenci\xe0 cun un gama de activit\xe2ts di scolast\xe2t bas\xe2t s\xf4 tarefas.";
-    },
     get$courseCodeHint() {
       return "Codice de viage o ligamine";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partagiar corsa";
-    },
-    get$addCourse() {
-      return "Zontar un corsa";
     },
     get$joinPublicCourse() {
       return "Kumencar corsa publice";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Tua iarrtas a chaidh a chur gu rianachd a' ch\xf9rsa! Th\xe8id thu a leigeil a-steach ma tha iad a' freagairt gu math.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "\xbfTienes un c\xf3digo de invitaci\xf3n o un enlace a un curso p\xfablico?";
+    },
+    welcomeUser$1(user) {
+      return "Bienvenido " + user;
+    },
+    get$findCourse() {
+      return "Trovar un cors";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["10VWlHoyiJKtgWCIjf9jUIImX1w="] = d.current;
+  d["eiv7aO0X1r67JhW9Npdh6PcGL2U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_702.part.js.map

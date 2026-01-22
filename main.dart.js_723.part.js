@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "S\u0101kt savu";
     },
-    get$joinCourseDesc() {
-      return "Katram kursam ir 8-10 sec\u012bgu tematu ar da\u017e\u0101d\u0101m uzdevumu balst\u012bt\u0101m valodas m\u0101c\u012bbu aktivit\u0101t\u0113m.";
-    },
     get$courseCodeHint() {
       return "Brauciena kods vai saite";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Dal\u012bties ar kursu";
-    },
-    get$addCourse() {
-      return "Pievienot kursu";
     },
     get$joinPublicCourse() {
       return "Pievienoties publiskajam kursam";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "J\u016bsu piepras\u012bjums ir nos\u016bt\u012bts kursa administratoram! J\u016bs tiksiet iek\u0161\u0101, ja vi\u0146i apstiprin\u0101s.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Vai jums ir uzaicin\u0101juma kods vai saite uz publisku kursu?";
+    },
+    welcomeUser$1(user) {
+      return "Laipni l\u016bdzam, " + user;
+    },
+    get$findCourse() {
+      return "Atrodi kursu";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QncnpoY4SdYroGXc2ZJ/3UTr0Gc="] = d.current;
+  d["rlTMV+1rRStYalRxwa7pi8K8L8s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_723.part.js.map

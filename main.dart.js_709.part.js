@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Avvia il mio";
     },
-    get$joinCourseDesc() {
-      return "Ogni corso ha 8-10 argomenti sequenziali con una serie di attivit\xe0 di apprendimento linguistico basate su compiti.";
-    },
     get$courseCodeHint() {
       return "Codice o link del viaggio";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Condividi corso";
-    },
-    get$addCourse() {
-      return "Aggiungi un corso";
     },
     get$joinPublicCourse() {
       return "Unisciti al corso pubblico";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "La tua richiesta \xe8 stata inviata all'amministratore del corso! Sarai ammesso se approvano.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Hai un codice di invito o un link per un corso pubblico?";
+    },
+    welcomeUser$1(user) {
+      return "Benvenuto " + user;
+    },
+    get$findCourse() {
+      return "Trova un corso";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LJQHiUdcnw9Hv+nL0UaeH/xaGkg="] = d.current;
+  d["pcSMsRUW5hi6tLWCrIfLW+pYesY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

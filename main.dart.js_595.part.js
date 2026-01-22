@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Simulan ang sarili kong kurso";
     },
-    get$joinCourseDesc() {
-      return "Ang bawat kurso ay may 8-10 na sunud-sunod na paksa na may iba't ibang gawain sa pag-aaral ng wika batay sa mga gawain.";
-    },
     get$courseCodeHint() {
       return "Kodigo ng biyahe o link";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Ibahagi ang kurso";
-    },
-    get$addCourse() {
-      return "Magdagdag ng kurso";
     },
     get$joinPublicCourse() {
       return "Sumali sa pampublikong kurso";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Ang iyong kahilingan ay naipadala sa admin ng kurso! Papayagan ka nilang pumasok kung sila ay mag-aapruba.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Mayroon ka bang invite code o link sa isang pampublikong kurso?";
+    },
+    welcomeUser$1(user) {
+      return "Maligayang pagdating " + user;
+    },
+    get$findCourse() {
+      return "Maghanap ng kurso";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EvYELSJu8OtirDUB/+G9NToccCM="] = d.current;
+  d["+aqW5MzlDPHgk1WY8bTmuCVDpHc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

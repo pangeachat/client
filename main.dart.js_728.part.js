@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Start min egen";
     },
-    get$joinCourseDesc() {
-      return "Hvert kurs har 8-10 sekvenserte emner med en rekke oppgavebaserte spr\xe5kl\xe6ringsaktiviteter.";
-    },
     get$courseCodeHint() {
       return "Reisekode eller lenke";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Del kurs";
-    },
-    get$addCourse() {
-      return "Legg til et kurs";
     },
     get$joinPublicCourse() {
       return "Bli med p\xe5 offentlig kurs";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Din foresp\xf8rsel har blitt sendt til kursadministratoren! Du vil bli sluppet inn hvis de godkjenner.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Har du en invitasjonskode eller lenke til et offentlig kurs?";
+    },
+    welcomeUser$1(user) {
+      return "Velkommen " + user;
+    },
+    get$findCourse() {
+      return "Finn et kurs";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UOT8zdpqrXfp8heWprfHRaExr0A="] = d.current;
+  d["lfS7yM5rAjWTChqQFXL6zWMyJkI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_728.part.js.map

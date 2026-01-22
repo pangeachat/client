@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Begin mijn eigen";
     },
-    get$joinCourseDesc() {
-      return "Elk cursus heeft 8-10 opeenvolgende onderwerpen met een reeks taalleeractiviteiten op basis van taken.";
-    },
     get$courseCodeHint() {
       return "Reiscodenaam of link";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Deel cursus";
-    },
-    get$addCourse() {
-      return "Voeg een cursus toe";
     },
     get$joinPublicCourse() {
       return "Deelname openbare cursus";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Je verzoek is verzonden naar de cursusbeheerder! Je wordt toegelaten als ze goedkeuren.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Heb je een uitnodigingscode of link naar een openbare cursus?";
+    },
+    welcomeUser$1(user) {
+      return "Welkom " + user;
+    },
+    get$findCourse() {
+      return "Vind een cursus";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lEUBAL7QAczJW8Yl/qAZBeQXpQw="] = d.current;
+  d["hHq2DPHws8aqern7guNNOPWoVNs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_733.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Ind\xedtsa el saj\xe1tj\xe1t";
     },
-    get$joinCourseDesc() {
-      return "Minden kurzusnak 8-10 egym\xe1sra \xe9p\xfcl\u0151 t\xe9m\xe1ja van, k\xfcl\xf6nf\xe9le feladat-alap\xfa nyelvtanul\xe1si tev\xe9kenys\xe9gekkel.";
-    },
     get$courseCodeHint() {
       return "Utaz\xe1si k\xf3d vagy link";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Kurzus megoszt\xe1sa";
-    },
-    get$addCourse() {
-      return "Kurzus hozz\xe1ad\xe1sa";
     },
     get$joinPublicCourse() {
       return "Csatlakoz\xe1s nyilv\xe1nos kurzushoz";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "A k\xe9r\xe9sed el lett k\xfcldve a kurzus adminisztr\xe1tor\xe1nak! Be fogsz engedni, ha j\xf3v\xe1hagyj\xe1k.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Van megh\xedv\xf3 k\xf3dod vagy linked egy nyilv\xe1nos kurzushoz?";
+    },
+    welcomeUser$1(user) {
+      return "\xdcdv\xf6z\xf6lj\xfck " + user;
+    },
+    get$findCourse() {
+      return "Kurzus keres\xe9se";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["9Tt6Z2gcrylVvF0W+e7KD6mtza0="] = d.current;
+  d["N8gIlpnGCQ9b2+jAqf/QFek9HVY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

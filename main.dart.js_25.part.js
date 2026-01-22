@@ -4333,9 +4333,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
     },
-    get$joinCourseDesc() {
-      return "Cada curso tem de 8 a 10 t\xf3picos sequenciais com uma variedade de atividades de aprendizagem de idiomas baseadas em tarefas.";
-    },
     get$courseCodeHint() {
       return "C\xf3digo ou link da viagem";
     },
@@ -4440,9 +4437,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Compartilhar curso";
-    },
-    get$addCourse() {
-      return "Adicionar um curso";
     },
     get$joinPublicCourse() {
       return "Entrar no curso p\xfablico";
@@ -5355,6 +5349,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$knockDesc() {
       return string$.Sua_so;
+    },
+    get$joinSpaceOnboardingDesc() {
+      return string$.Voc__t;
+    },
+    welcomeUser$1(user) {
+      return "Bem-vindo " + user;
+    },
+    get$findCourse() {
+      return "Encontrar um curso";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -9666,9 +9669,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Comece o seu pr\xf3prio";
     },
-    get$joinCourseDesc() {
-      return "Cada curso possui de 8 a 10 t\xf3picos sequenciais com uma variedade de atividades de aprendizagem de idiomas baseadas em tarefas.";
-    },
     get$courseCodeHint() {
       return "C\xf3digo ou link da viagem";
     },
@@ -9773,9 +9773,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Compartilhar curso";
-    },
-    get$addCourse() {
-      return "Adicionar um curso";
     },
     get$joinPublicCourse() {
       return "Entrar em curso p\xfablico";
@@ -10685,6 +10682,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$knockDesc() {
       return string$.Sua_so;
+    },
+    get$joinSpaceOnboardingDesc() {
+      return string$.Voc__t;
+    },
+    welcomeUser$1(user) {
+      return "Bem-vindo " + user;
+    },
+    get$findCourse() {
+      return "Encontrar um curso";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -14996,9 +15002,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Come\xe7ar o meu pr\xf3prio";
     },
-    get$joinCourseDesc() {
-      return "Cada curso tem entre 8 e 10 t\xf3picos sequenciais com uma variedade de atividades de aprendizagem de l\xednguas baseadas em tarefas.";
-    },
     get$courseCodeHint() {
       return "C\xf3digo ou link da viagem";
     },
@@ -15103,9 +15106,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partilhar curso";
-    },
-    get$addCourse() {
-      return "Adicionar um curso";
     },
     get$joinPublicCourse() {
       return "Entrar no curso p\xfablico";
@@ -16016,6 +16016,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return string$.Sua_so;
     },
+    get$joinSpaceOnboardingDesc() {
+      return string$.Voc__t;
+    },
+    welcomeUser$1(user) {
+      return "Bem-vindo " + user;
+    },
+    get$findCourse() {
+      return "Encontrar um curso";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16208,6 +16217,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Voc__j: "Voc\xea j\xe1 est\xe1 em um curso com este plano. Voc\xea quer criar um curso com o mesmo plano ou ir para o curso existente?",
     Voc__n: "Voc\xea n\xe3o convidou ningu\xe9m para o seu chat. V\xe1 para Configura\xe7\xf5es de Chat para convidar seus contatos ou o Bot. Voc\xea tamb\xe9m pode fazer isso mais tarde.",
     Voc__p: "Voc\xea pode tornar seu curso aberto ao mundo! Ou, tornar seu curso privado e seguro.",
+    Voc__t: "Voc\xea tem um c\xf3digo de convite ou link para um curso p\xfablico?",
     Volte_: "Volte amanh\xe3 para atualiza\xe7\xf5es da atividade.",
     xc9_aqui: "\xc9 aqui que as palavras de vocabul\xe1rio ir\xe3o aparecer assim que voc\xea as evoluir!",
     u201d_est_: "\u201d est\xe3o solicitando visualizar suas an\xe1lises de aprendizado.\n\nSe voc\xea concordar, eles poder\xe3o visualizar seu:\n    \u2022 vocabul\xe1rio total\n    \u2022 total de conceitos gramaticais\n    \u2022 total de sess\xf5es de atividade conclu\xeddas\n    \u2022 os conceitos gramaticais espec\xedficos usados, corretamente e incorretamente\n\nEles n\xe3o poder\xe3o visualizar seu:\n    \u2022 mensagens em chats fora do curso\n    \u2022 lista de vocabul\xe1rio",
@@ -16218,7 +16228,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1O4v3B0u3eBJ+S1y+dyDGA/LZFQ="] = d.current;
+  d["JqNpYp61q8u7ZAS3H8fq+YmfW3Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

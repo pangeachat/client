@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Za\u010da\u0165 vlastn\xe9";
     },
-    get$joinCourseDesc() {
-      return "Ka\u017ed\xfd kurz m\xe1 8-10 sekven\u010dn\xfdch t\xe9m s radom aktiv\xedt na u\u010denie jazyka zalo\u017een\xfdch na \xfaloh\xe1ch.";
-    },
     get$courseCodeHint() {
       return "K\xf3d cesty alebo odkaz";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Zdie\u013ea\u0165 kurz";
-    },
-    get$addCourse() {
-      return "Prida\u0165 kurz";
     },
     get$joinPublicCourse() {
       return "Pripoji\u0165 sa k verejn\xe9mu kurzu";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Va\u0161a \u017eiados\u0165 bola odoslan\xe1 administr\xe1torovi kurzu! Budete vpusten\xfd, ak ju schv\xe1lia.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "M\xe1te poz\xfdvac\xed k\xf3d alebo odkaz na verejn\xfd kurz?";
+    },
+    welcomeUser$1(user) {
+      return "Vitaj " + user;
+    },
+    get$findCourse() {
+      return "N\xe1js\u0165 kurz";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hgu/RYI7CAMeNdN/wGadiDZdeZk="] = d.current;
+  d["33pQ7Z81AJIdoEZdyG42NTYWHII="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_751.part.js.map

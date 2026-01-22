@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Aloita oma";
     },
-    get$joinCourseDesc() {
-      return "Jokaisessa kurssissa on 8-10 j\xe4sennelty\xe4 aihetta, joissa on erilaisia teht\xe4vien pohjaisia kielioppiharjoituksia.";
-    },
     get$courseCodeHint() {
       return "Matkan koodi tai linkki";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Jaa kurssi";
-    },
-    get$addCourse() {
-      return "Lis\xe4\xe4 kurssi";
     },
     get$joinPublicCourse() {
       return "Liity julkiseen kurssiin";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Pyynt\xf6si on l\xe4hetetty kurssin yll\xe4pit\xe4j\xe4lle! Sinut p\xe4\xe4stet\xe4\xe4n sis\xe4\xe4n, jos he hyv\xe4ksyv\xe4t sen.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Onko sinulla kutsukoodia tai linkki\xe4 julkiseen kurssiin?";
+    },
+    welcomeUser$1(user) {
+      return "Tervetuloa " + user;
+    },
+    get$findCourse() {
+      return "Etsi kurssi";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C7luEcepTsaocrXz9jWxon5NChA="] = d.current;
+  d["alZ2yoJFZGoZ04eQfel7lmemZ1M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "\xcencepe propriul meu";
     },
-    get$joinCourseDesc() {
-      return "Fiecare curs are 8-10 subiecte secven\u021biale cu o gam\u0103 de activit\u0103\u021bi de \xeenv\u0103\u021bare a limbajului bazate pe sarcini.";
-    },
     get$courseCodeHint() {
       return "Codul sau linkul c\u0103l\u0103toriei";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partajeaz\u0103 cursul";
-    },
-    get$addCourse() {
-      return "Adaug\u0103 un curs";
     },
     get$joinPublicCourse() {
       return "Al\u0103tur\u0103-te cursului public";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Cererea ta a fost trimis\u0103 administratorului cursului! Vei fi l\u0103sat s\u0103 intri dac\u0103 ei aprob\u0103.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Ai un cod de invita\u021bie sau un link pentru un curs public?";
+    },
+    welcomeUser$1(user) {
+      return "Bine ai venit " + user;
+    },
+    get$findCourse() {
+      return "G\u0103se\u0219te un curs";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C/i1uMYjUkqGVhOrhC9HLzn2hdA="] = d.current;
+  d["qr40Jwd7AsniEJ2gb+/jwPL3TSo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Komencu mian propran";
     },
-    get$joinCourseDesc() {
-      return "\u0108iu kurso havas 8-10 sinsekvajn temojn kun gamo de task-bazitaj lingvolernaj agadoj.";
-    },
     get$courseCodeHint() {
       return "Voja\u011da kodo a\u016d ligilo";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Dividi kurson";
-    },
-    get$addCourse() {
-      return "Aldoni kurson";
     },
     get$joinPublicCourse() {
       return "Ali\u011di al publika kurso";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Via peto estis sendita al la kursa administranto! Vi estos enirita se ili aprobas.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "\u0108u vi havas invitkodon a\u016d ligon al publika kurso?";
+    },
+    welcomeUser$1(user) {
+      return "Bonvenon " + user;
+    },
+    get$findCourse() {
+      return "Trovu kurson";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5357,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RhEi9J0b+cOtcnePS7CxIieULlU="] = d.current;
+  d["6S6HWgzOStjwk88/kfGJqpIveJk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_472.part.js.map

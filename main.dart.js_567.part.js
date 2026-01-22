@@ -4321,9 +4321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startOwn() {
       return "Hasi nirea";
     },
-    get$joinCourseDesc() {
-      return "Ikastaro bakoitzak 8-10 gaika ditu, eta hizkuntzaren ikaskuntza jarduera oinarritutako zeregin sorta batekin.";
-    },
     get$courseCodeHint() {
       return "Bidaia kodea edo esteka";
     },
@@ -4428,9 +4425,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Partekatu ikastaroa";
-    },
-    get$addCourse() {
-      return "Gehitu ikastaroa";
     },
     get$joinPublicCourse() {
       return "Hasi ikastaro publikoa";
@@ -5344,6 +5338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockDesc() {
       return "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.";
     },
+    get$joinSpaceOnboardingDesc() {
+      return "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?";
+    },
+    welcomeUser$1(user) {
+      return "Ongi etorri " + user;
+    },
+    get$findCourse() {
+      return "Bilatu ikastaroa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5363,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["txhvyUvjiO3qKaoiI+0L3LExPQ4="] = d.current;
+  d["d2SvOJIdT7AC31PsZgVyo8JYAhY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_567.part.js.map
