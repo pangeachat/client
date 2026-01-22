@@ -11,7 +11,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ImageByUrl extends StatelessWidget {
-  final String? imageUrl;
+  final Uri? imageUrl;
   final double width;
   final BorderRadius borderRadius;
   final Widget? replacement;
@@ -41,19 +41,19 @@ class ImageByUrl extends StatelessWidget {
       height: width,
       child: ClipRRect(
         borderRadius: borderRadius,
-        child: imageUrl!.startsWith("mxc")
+        child: imageUrl!.toString().startsWith("mxc")
             ? MxcImage(
-                uri: Uri.parse(imageUrl!),
+                uri: imageUrl,
                 width: width,
                 height: width,
-                cacheKey: imageUrl,
+                cacheKey: imageUrl.toString(),
                 fit: BoxFit.cover,
               )
             : CachedNetworkImage(
                 width: width,
                 height: width,
                 fit: BoxFit.cover,
-                imageUrl: imageUrl!,
+                imageUrl: imageUrl.toString(),
                 placeholder: (
                   context,
                   url,
