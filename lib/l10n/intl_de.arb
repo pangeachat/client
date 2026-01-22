@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-16 14:32:44.617501",
+  "@@last_modified": "2026-01-22 12:01:22.683777",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10870,6 +10870,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Korrekte Grammatikfehlerübung",
+  "constructUseIncGEDesc": "Falsche Grammatikfehlerübung",
+  "fillInBlank": "Füllen Sie die Lücke mit der richtigen Wahl aus",
+  "learn": "Lernen",
+  "languageUpdated": "Zielsprache aktualisiert!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot Stimme",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ihre Anfrage wurde an den Kursadministrator gesendet! Sie werden eingelassen, wenn sie zustimmen.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Haben Sie einen Einladungscode oder einen Link zu einem öffentlichen Kurs?",
+  "welcomeUser": "Willkommen {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Suchen Sie nach Benutzern, um sie zu diesem Chat einzuladen.",
+  "publicInviteDescSpace": "Suchen Sie nach Benutzern, um sie zu diesem Raum einzuladen.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:34:08.644512",
+  "@@last_modified": "2026-01-22 12:02:15.725740",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11952,6 +11952,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Praktiko pri ĝusta gramatika eraro",
+  "constructUseIncGEDesc": "Praktiko pri malĝusta gramatika eraro",
+  "fillInBlank": "Plenigu la malplenan lokon per la ĝusta elekto",
+  "learn": "Lerni",
+  "languageUpdated": "Celo lingvo ĝisdatigita!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voĉo de Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Via peto estis sendita al la kursa administranto! Vi estos enirita se ili aprobas.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ĉu vi havas invitkodon aŭ ligon al publika kurso?",
+  "welcomeUser": "Bonvenon {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Serĉu uzantojn por inviti ilin al ĉi tiu konversacio.",
+  "publicInviteDescSpace": "Serĉu uzantojn por inviti ilin al ĉi tiu spaco.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

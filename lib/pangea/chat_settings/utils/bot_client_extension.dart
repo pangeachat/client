@@ -7,23 +7,19 @@ import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/user/user_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension BotClientExtension on Client {
   bool get hasBotDM => rooms.any((r) => r.isBotDM);
+  Room? get botDM => rooms.firstWhereOrNull((r) => r.isBotDM);
 
-  Room? get botDM => rooms.firstWhereOrNull(
-        (room) {
-          if (room.isDirectChat &&
-              room.directChatMatrixID == BotName.byEnvironment) {
-            return true;
-          }
-          if (room.botOptions?.mode == BotMode.directChat) {
-            return true;
-          }
-          return false;
-        },
-      );
+  // All 2-member rooms with the bot
+  List<Room> get targetBotChats => rooms.where((r) {
+        if (r.isBotDM) return true;
+        if (r.summary.mJoinedMemberCount != 2) return false;
+        return r.getParticipants().any((u) => u.id == BotName.byEnvironment);
+      }).toList();
 
   Future<String> startChatWithBot() => startDirectChat(
         BotName.byEnvironment,
@@ -45,27 +41,31 @@ extension BotClientExtension on Client {
         ],
       );
 
-  Future<void> updateBotOptions() async {
-    if (!isLogged() || botDM == null) return;
+  Future<void> updateBotOptions(UserSettings userSettings) async {
+    final rooms = targetBotChats;
+    if (rooms.isEmpty) return;
 
-    final targetLanguage =
-        MatrixState.pangeaController.userController.userL2?.langCode;
-    final cefrLevel = MatrixState
-        .pangeaController.userController.profile.userSettings.cefrLevel;
-    final updateBotOptions = botDM!.botOptions ?? BotOptionsModel();
+    final futures = <Future>[];
+    for (final room in rooms) {
+      final botOptions = room.botOptions ?? const BotOptionsModel();
+      final targetLanguage = userSettings.targetLanguage;
+      final languageLevel = userSettings.cefrLevel;
+      final voice = userSettings.voice;
 
-    if (updateBotOptions.targetLanguage == targetLanguage &&
-        updateBotOptions.languageLevel == cefrLevel) {
-      return;
+      if (botOptions.targetLanguage == targetLanguage &&
+          botOptions.languageLevel == languageLevel &&
+          botOptions.targetVoice == voice) {
+        continue;
+      }
+
+      final updated = botOptions.copyWith(
+        targetLanguage: targetLanguage,
+        languageLevel: languageLevel,
+        targetVoice: voice,
+      );
+      futures.add(room.setBotOptions(updated));
     }
 
-    if (targetLanguage != null &&
-        updateBotOptions.targetLanguage != targetLanguage) {
-      updateBotOptions.targetVoice = null;
-    }
-
-    updateBotOptions.targetLanguage = targetLanguage;
-    updateBotOptions.languageLevel = cefrLevel;
-    await botDM!.setBotOptions(updateBotOptions);
+    await Future.wait(futures);
   }
 }

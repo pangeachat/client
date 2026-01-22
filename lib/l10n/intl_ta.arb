@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:37.303345",
+  "@@last_modified": "2026-01-22 12:01:56.352823",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11087,6 +11087,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "சரியான இலக்கண பிழை பயிற்சி",
+  "constructUseIncGEDesc": "தவறான இலக்கண பிழை பயிற்சி",
+  "fillInBlank": "சரியான தேர்வுடன் காலியை நிரப்பவும்",
+  "learn": "கற்றுக்கொள்ளுங்கள்",
+  "languageUpdated": "இலக்கு மொழி புதுப்பிக்கப்பட்டது!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "பாஙேஆ பாட்டின் குரல்",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "உங்கள் கோரிக்கை பாடம் நிர்வாகிக்கு அனுப்பப்பட்டுள்ளது! அவர்கள் ஒப்புதலளித்தால் நீங்கள் உள்ளே அனுமதிக்கப்படுவீர்கள்.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "உங்களுக்கு ஒரு அழைப்பு குறியீடு அல்லது பொது பாடத்திற்கு இணைப்பு உள்ளதா?",
+  "welcomeUser": "வரவேற்கிறேன் {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "இந்த உரையாடலுக்கு அழைக்க பயனர்களை தேடுங்கள்.",
+  "publicInviteDescSpace": "இந்த இடத்திற்கு அழைக்க பயனர்களை தேடுங்கள்.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

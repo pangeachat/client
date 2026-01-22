@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/lemma_emoji_setter_mixin.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
@@ -58,7 +57,7 @@ class _AudioLoader extends AsyncLoader<(PangeaAudioFile, File?)> {
   Future<(PangeaAudioFile, File?)> fetch() async {
     final audioBytes = await messageEvent.requestTextToSpeech(
       messageEvent.messageDisplayLangCode,
-      messageEvent.room.botOptions?.targetVoice,
+      MatrixState.pangeaController.userController.voice,
     );
 
     File? audioFile;
@@ -91,8 +90,6 @@ class SelectModeController with LemmaEmojiSetter {
 
   ValueNotifier<SelectMode?> selectedMode = ValueNotifier<SelectMode?>(null);
 
-  final StreamController contentChangedStream = StreamController.broadcast();
-
   // Sometimes the same token is clicked twice. Setting it to the same value
   // won't trigger the notifier, so use the bool for force it to trigger.
   ValueNotifier<(PangeaTokenText?, bool)> playTokenNotifier =
@@ -105,7 +102,6 @@ class SelectModeController with LemmaEmojiSetter {
     _translationLoader.dispose();
     _sttTranslationLoader.dispose();
     _audioLoader.dispose();
-    contentChangedStream.close();
   }
 
   static List<SelectMode> get _textModes => [
@@ -130,7 +126,7 @@ class SelectModeController with LemmaEmojiSetter {
 
   (PangeaAudioFile, File?)? get audioFile => _audioLoader.value;
 
-  List<SelectMode> get allModes {
+  List<SelectMode> allModes({bool enableRefresh = false}) {
     final validTypes = {MessageTypes.Text, MessageTypes.Audio};
     if (!messageEvent.event.status.isSent ||
         messageEvent.event.type != EventTypes.Message ||
@@ -138,12 +134,18 @@ class SelectModeController with LemmaEmojiSetter {
       return [];
     }
 
-    return messageEvent.event.messageType == MessageTypes.Text
+    final types = messageEvent.event.messageType == MessageTypes.Text
         ? _textModes
         : _audioModes;
+
+    if (enableRefresh) {
+      return [...types, SelectMode.requestRegenerate];
+    }
+
+    return types;
   }
 
-  List<SelectMode> get readingAssistanceModes {
+  List<SelectMode> readingAssistanceModes({bool enableRefresh = false}) {
     final validTypes = {MessageTypes.Text, MessageTypes.Audio};
     if (!messageEvent.event.status.isSent ||
         messageEvent.event.type != EventTypes.Message ||
@@ -151,6 +153,7 @@ class SelectModeController with LemmaEmojiSetter {
       return [];
     }
 
+    List<SelectMode> modes = [];
     if (messageEvent.event.messageType == MessageTypes.Text) {
       final lang = messageEvent.messageDisplayLangCode.split("-").first;
 
@@ -160,14 +163,20 @@ class SelectModeController with LemmaEmojiSetter {
       final matchesL1 = lang ==
           MatrixState.pangeaController.userController.userL1!.langCodeShort;
 
-      return matchesL2
+      modes = matchesL2
           ? _textModes
           : matchesL1
               ? []
               : [SelectMode.translate];
+    } else {
+      modes = _audioModes;
     }
 
-    return _audioModes;
+    if (enableRefresh) {
+      modes = [...modes, SelectMode.requestRegenerate];
+    }
+
+    return modes;
   }
 
   bool get isLoading => currentModeStateNotifier?.value is AsyncLoading;

@@ -46,8 +46,8 @@ class SignupPageView extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const PangeaSsoButton(provider: SSOProvider.google),
                   const PangeaSsoButton(provider: SSOProvider.apple),
+                  const PangeaSsoButton(provider: SSOProvider.google),
                   ElevatedButton(
                     onPressed: () => context.go(
                       '/home/language/signup/email',

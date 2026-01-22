@@ -94,4 +94,8 @@ class AnalyticsRequestsRepo {
     final key = _storageKey(userId, language);
     await _requestStorage.remove(key);
   }
+
+  static Future<void> clear() async {
+    await _requestStorage.erase();
+  }
 }

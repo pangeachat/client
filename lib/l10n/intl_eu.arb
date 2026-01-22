@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-16 14:32:36.050138",
+  "@@last_modified": "2026-01-22 12:01:17.457241",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10863,6 +10863,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Gramatika akats zuzenketa praktika",
+  "constructUseIncGEDesc": "Gramatika akats okerra praktika",
+  "fillInBlank": "Betekoa bete aukerarik egokienarekin",
+  "learn": "Ikasi",
+  "languageUpdated": "Helmuga hizkuntza eguneratua!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot ahotsa",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?",
+  "welcomeUser": "Ongi etorri {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Bilatu erabiltzaileak txat honetara gonbidatzeko.",
+  "publicInviteDescSpace": "Bilatu erabiltzaileak espazio honetara gonbidatzeko.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:16.316521",
+  "@@last_modified": "2026-01-22 12:01:42.417971",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10861,6 +10861,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "正確語法錯誤練習",
+  "constructUseIncGEDesc": "不正確語法錯誤練習",
+  "fillInBlank": "用正確的選擇填空",
+  "learn": "學習",
+  "languageUpdated": "目標語言已更新！",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot 語音",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "您的請求已發送給課程管理員！如果他們批准，您將被允許進入。",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "您是否有邀請碼或公共課程的鏈接？",
+  "welcomeUser": "歡迎 {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "搜尋用戶以邀請他們加入此聊天。",
+  "publicInviteDescSpace": "搜尋用戶以邀請他們加入此空間。",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

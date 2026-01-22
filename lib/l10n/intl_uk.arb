@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-16 14:32:56.338443",
+  "@@last_modified": "2026-01-22 12:01:28.947095",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10857,6 +10857,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Практика виправлення граматичних помилок",
+  "constructUseIncGEDesc": "Практика неправильних граматичних помилок",
+  "fillInBlank": "Заповніть пропуск правильним вибором",
+  "learn": "Вчити",
+  "languageUpdated": "Цільова мова оновлена!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Голос Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ваш запит надіслано адміністратору курсу! Ви будете допущені, якщо вони схвалять.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "У вас є код запрошення або посилання на публічний курс?",
+  "welcomeUser": "Ласкаво просимо {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Шукайте користувачів, щоб запросити їх до цього чату.",
+  "publicInviteDescSpace": "Шукайте користувачів, щоб запросити їх до цього простору.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

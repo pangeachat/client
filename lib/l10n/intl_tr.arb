@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-16 14:33:26.649412",
+  "@@last_modified": "2026-01-22 12:01:49.339268",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11085,6 +11085,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Doğru dil bilgisi hatası pratiği",
+  "constructUseIncGEDesc": "Yanlış dil bilgisi hatası pratiği",
+  "fillInBlank": "Boşluğu doğru seçimle doldurun",
+  "learn": "Öğren",
+  "languageUpdated": "Hedef dil güncellendi!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot sesi",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Talebiniz kurs yöneticisine gönderildi! Onaylarlarsa içeri alınacaksınız.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bir davet kodunuz veya halka açık bir kursa bağlantınız var mı?",
+  "welcomeUser": "Hoş geldin {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Bu sohbete davet etmek için kullanıcıları arayın.",
+  "publicInviteDescSpace": "Bu alana davet etmek için kullanıcıları arayın.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

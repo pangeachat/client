@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:49.084569",
+  "@@last_modified": "2026-01-22 12:02:02.719528",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -11967,6 +11967,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "সঠিক ব্যাকরণ ত্রুটি অনুশীলন",
+  "constructUseIncGEDesc": "ভুল ব্যাকরণ ত্রুটি অনুশীলন",
+  "fillInBlank": "সঠিক পছন্দ দিয়ে ফাঁকা স্থান পূরণ করুন",
+  "learn": "শিখুন",
+  "languageUpdated": "লক্ষ্য ভাষা আপডেট করা হয়েছে!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "প্যাঙ্গিয়া বটের কণ্ঠ",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "আপনার অনুরোধ কোর্স প্রশাসকের কাছে পাঠানো হয়েছে! তারা অনুমোদন করলে আপনাকে প্রবেশ করতে দেওয়া হবে।",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "আপনার কি একটি আমন্ত্রণ কোড বা একটি পাবলিক কোর্সের লিঙ্ক আছে?",
+  "welcomeUser": "স্বাগতম {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "এই চ্যাটে আমন্ত্রণ জানানোর জন্য ব্যবহারকারীদের খুঁজুন।",
+  "publicInviteDescSpace": "এই স্পেসে আমন্ত্রণ জানানোর জন্য ব্যবহারকারীদের খুঁজুন।",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

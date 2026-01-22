@@ -5,6 +5,7 @@ class SpaceConstants {
   static const String classCode = 'classcode';
   static const String introductionChatAlias = 'introductionChat';
   static const String announcementsChatAlias = 'announcementsChat';
+  static String mapUnlockFileName = "unlock_trip.svg";
 
   static List<String> introChatIcons = [
     '${AppConfig.assetsBaseURL}/Introduction_1.jpg',

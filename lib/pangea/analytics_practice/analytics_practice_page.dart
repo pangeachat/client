@@ -58,7 +58,7 @@ class SessionLoader extends AsyncLoader<AnalyticsPracticeSessionModel> {
 }
 
 class AnalyticsPractice extends StatefulWidget {
-  static bool bypassExitConfirmation = false;
+  static bool bypassExitConfirmation = true;
 
   final ConstructTypeEnum type;
   const AnalyticsPractice({
@@ -83,6 +83,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       ValueNotifier<MessageActivityRequest?>(null);
 
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
+  final ValueNotifier<bool> enableChoicesNotifier = ValueNotifier<bool>(true);
 
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
@@ -106,6 +107,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityState.dispose();
     activityTarget.dispose();
     progressNotifier.dispose();
+    enableChoicesNotifier.dispose();
     super.dispose();
   }
 
@@ -187,17 +189,18 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   String choiceTargetId(String choiceId) =>
       '${widget.type.name}-choice-card-${choiceId.replaceAll(' ', '_')}';
 
-  void _resetActivityState() {
+  void _clearState() {
     activityState.value = const AsyncState.loading();
     activityTarget.value = null;
-  }
+    enableChoicesNotifier.value = true;
 
-  void _resetSessionState() {
     progressNotifier.value = 0.0;
     _queue.clear();
     _choiceTexts.clear();
     _choiceEmojis.clear();
     activityState.value = const AsyncState.idle();
+
+    AnalyticsPractice.bypassExitConfirmation = true;
   }
 
   void updateElapsedTime(int seconds) {
@@ -224,8 +227,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   Future<void> _onLanguageUpdate() async {
     try {
-      _resetActivityState();
-      _resetSessionState();
+      _clearState();
       await _analyticsService
           .updateDispatcher.constructUpdateStream.stream.first
           .timeout(const Duration(seconds: 10));
@@ -242,14 +244,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await _sessionLoader.load();
+    if (_sessionLoader.isError) return;
+
     progressNotifier.value = _sessionLoader.value!.progress;
     await _continueSession();
   }
 
   Future<void> reloadSession() async {
-    _resetActivityState();
-    _resetSessionState();
-
+    _clearState();
     _sessionLoader.reset();
     await _startSession();
   }
@@ -272,6 +274,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _continueSession() async {
     if (_continuing) return;
     _continuing = true;
+    enableChoicesNotifier.value = true;
 
     try {
       if (activityState.value
@@ -288,8 +291,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
         final activity = await nextActivityCompleter.completer.future;
         activityState.value = AsyncState.loaded(activity);
+        AnalyticsPractice.bypassExitConfirmation = false;
       }
     } catch (e) {
+      AnalyticsPractice.bypassExitConfirmation = true;
       activityState.value = AsyncState.error(e);
     } finally {
       _continuing = false;
@@ -313,7 +318,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       if (!mounted) return;
 
       activityState.value = AsyncState.loaded(res);
+      AnalyticsPractice.bypassExitConfirmation = false;
     } catch (e) {
+      AnalyticsPractice.bypassExitConfirmation = true;
       if (!mounted) return;
       activityState.value = AsyncState.error(e);
       return;
@@ -403,6 +410,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   ) async {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
+    final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
+    if (isCorrect) {
+      enableChoicesNotifier.value = false;
+    }
 
     // Update activity record
     PracticeRecordController.onSelectChoice(
@@ -434,12 +445,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     PracticeTarget target,
   ) async {
     final token = target.tokens.first;
-    final construct = switch (widget.type) {
-      ConstructTypeEnum.vocab => token.vocabConstructID,
-      ConstructTypeEnum.morph => token.morphIdByFeature(target.morphFeature!),
-    };
-
-    if (construct == null) return null;
+    final construct = target.targetTokenConstructID(token);
 
     String? form;
     if (widget.type == ConstructTypeEnum.morph) {

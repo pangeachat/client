@@ -31,18 +31,30 @@ class ChatInputBar extends StatelessWidget {
           valueListenable: controller.choreographer.itController.open,
           builder: (context, open, __) {
             return open
-                ? InstructionsInlineTooltip(
-                    instructionsEnum: InstructionsEnum.clickBestOption,
-                    animate: false,
-                    padding: EdgeInsets.only(
-                      left: 16.0,
-                      right: 16.0,
-                      top: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+                ? Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: FluffyThemes.maxTimelineWidth,
+                    ),
+                    alignment: Alignment.center,
+                    child: InstructionsInlineTooltip(
+                      instructionsEnum: InstructionsEnum.clickBestOption,
+                      animate: false,
+                      padding: EdgeInsets.only(
+                        left: 16.0,
+                        right: 16.0,
+                        top: FluffyThemes.isColumnMode(context) ? 16.0 : 8.0,
+                      ),
                     ),
                   )
-                : ActivityRoleTooltip(
-                    room: controller.room,
-                    hide: controller.choreographer.itController.open,
+                : Container(
+                    constraints: const BoxConstraints(
+                      maxWidth: FluffyThemes.maxTimelineWidth,
+                    ),
+                    alignment: Alignment.center,
+                    child: ActivityRoleTooltip(
+                      room: controller.room,
+                      hide: controller.choreographer.itController.open,
+                    ),
                   );
           },
         ),

@@ -18,7 +18,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activi
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
-import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_banner.dart';
@@ -498,6 +497,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (botAudioEvent == null) return;
 
     final matrix = Matrix.of(context);
+    if (matrix.voiceMessageEventId.value != null) return;
+
     matrix.voiceMessageEventId.value = botAudioEvent.eventId;
     matrix.audioPlayer?.dispose();
     matrix.audioPlayer = AudioPlayer();
@@ -963,6 +964,9 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     final previousEdit = editEvent;
+    if (showEmojiPicker) {
+      hideEmojiPicker();
+    }
 
     room
         .pangeaSendTextEvent(
@@ -2022,6 +2026,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   bool showMessageShimmer(Event event) {
     if (event.type != EventTypes.Message) return false;
+    if (!(event.eventId == buttonEventID)) return false;
     if (event.messageType == MessageTypes.Text) {
       return !InstructionsEnum.clickTextMessages.isToggledOff;
     }
@@ -2055,31 +2060,6 @@ class ChatController extends State<ChatPageWithRoom>
     // Check if the user has set their languages. If not, prompt them to do so.
     if (!MatrixState.pangeaController.userController.languagesSet) {
       pLanguageDialog(context, () {});
-      return;
-    }
-
-    final langCode =
-        pangeaMessageEvent?.originalSent?.langCode.split('-').first;
-
-    if (LanguageMismatchRepo.shouldShowByEvent(event.eventId) &&
-        langCode != null &&
-        pangeaMessageEvent?.originalSent?.content.langCodeMatchesL2 == false &&
-        room.client.allMyAnalyticsRooms.any((r) => r.madeForLang == langCode)) {
-      LanguageMismatchRepo.setEvent(event.eventId);
-      OverlayUtil.showLanguageMismatchPopup(
-        context: context,
-        targetId: event.eventId,
-        message: L10n.of(context).messageLanguageMismatchMessage,
-        targetLanguage: pangeaMessageEvent!.originalSent!.langCode,
-        onConfirm: () => showToolbar(
-          event,
-          pangeaMessageEvent: pangeaMessageEvent,
-          selectedToken: selectedToken,
-          mode: mode,
-          nextEvent: nextEvent,
-          prevEvent: prevEvent,
-        ),
-      );
       return;
     }
 
@@ -2275,7 +2255,7 @@ class ChatController extends State<ChatPageWithRoom>
     bool autosend = false,
   }) async {
     if (shouldShowLanguageMismatchPopupByActivity) {
-      return showLanguageMismatchPopup();
+      return showLanguageMismatchPopup(manual: manual);
     }
 
     await choreographer.requestWritingAssistance(manual: manual);
@@ -2288,7 +2268,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void showLanguageMismatchPopup() {
+  void showLanguageMismatchPopup({bool manual = false}) {
     if (!shouldShowLanguageMismatchPopupByActivity) {
       return;
     }
@@ -2301,9 +2281,39 @@ class ChatController extends State<ChatPageWithRoom>
       message: L10n.of(context).languageMismatchDesc,
       targetLanguage: targetLanguage,
       onConfirm: () => WidgetsBinding.instance.addPostFrameCallback(
-        (_) => onRequestWritingAssistance(manual: false, autosend: true),
+        (_) => onRequestWritingAssistance(manual: manual, autosend: true),
       ),
     );
+  }
+
+  Future<void> updateLanguageOnMismatch(String target) async {
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.hideCurrentSnackBar();
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        clearSelectedEvents();
+        await MatrixState.pangeaController.userController.updateProfile(
+          (profile) {
+            profile.userSettings.targetLanguage = target;
+            return profile;
+          },
+          waitForDataInSync: true,
+        );
+      },
+    );
+    if (resp.isError) return;
+    if (mounted) {
+      messenger.hideCurrentSnackBar();
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(
+            L10n.of(context).languageUpdated,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    }
   }
 
   void _onCloseIT() {
@@ -2437,6 +2447,8 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     if (reason == null) return;
+
+    clearSelectedEvents();
     await showFutureLoadingDialog(
       context: context,
       future: () => room.sendEvent(

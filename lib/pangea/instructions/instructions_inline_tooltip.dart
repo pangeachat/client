@@ -134,25 +134,28 @@ class InlineTooltipState extends State<InlineTooltip>
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
-                Icons.lightbulb,
-                size: 20,
-                color: Theme.of(context).colorScheme.onSurface,
+              Padding(
+                padding: const EdgeInsets.only(right: 6.0),
+                child: Icon(
+                  Icons.lightbulb,
+                  size: 20,
+                  color: Theme.of(context).colorScheme.onSurface,
+                ),
               ),
-              const SizedBox(width: 8),
               Flexible(
                 child: Center(
                   child: Text(
                     widget.message,
                     style: widget.textStyle ??
                         (FluffyThemes.isColumnMode(context)
-                            ? Theme.of(context).textTheme.titleLarge
-                            : Theme.of(context).textTheme.bodyLarge),
+                            ? Theme.of(context).textTheme.titleSmall
+                            : Theme.of(context).textTheme.bodyMedium),
                     textAlign: TextAlign.center,
                   ),
                 ),
               ),
               IconButton(
+                padding: const EdgeInsets.only(left: 6.0),
                 constraints: const BoxConstraints(),
                 icon: Icon(
                   Icons.close_outlined,

@@ -1920,7 +1920,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-16 14:33:29.527681",
+  "@@last_modified": "2026-01-22 12:01:51.350363",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11952,6 +11952,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "సరైన వ్యాకరణ దోషం అభ్యాసం",
+  "constructUseIncGEDesc": "తప్పు వ్యాకరణ దోషం అభ్యాసం",
+  "fillInBlank": "సరైన ఎంపికతో ఖాళీని నింపండి",
+  "learn": "కలవు",
+  "languageUpdated": "లక్ష్య భాష నవీకరించబడింది!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "పాంజియా బాట్ శబ్దం",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "మీ అభ్యర్థన కోర్సు నిర్వాహకుడికి పంపబడింది! వారు ఆమోదిస్తే, మీరు లోపలికి రానున్నారు.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "మీకు పబ్లిక్ కోర్సుకు ఆహ్వాన కోడ్ లేదా లింక్ ఉందా?",
+  "welcomeUser": "స్వాగతం {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "ఈ చాట్లో ఆహ్వానించడానికి వినియోగదారులను శోధించండి.",
+  "publicInviteDescSpace": "ఈ స్థలంలో ఆహ్వానించడానికి వినియోగదారులను శోధించండి.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

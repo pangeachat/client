@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:33:56.060391",
+  "@@last_modified": "2026-01-22 12:02:08.064498",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11341,6 +11341,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Korrekt grammatikfel övning",
+  "constructUseIncGEDesc": "Inkorrekt grammatikfel övning",
+  "fillInBlank": "Fyll i det tomma med rätt val",
+  "learn": "Lär dig",
+  "languageUpdated": "Målspråk uppdaterat!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Bot röst",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Din begäran har skickats till kursadministratören! Du kommer att släppas in om de godkänner.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Har du en inbjudningskod eller länk till en offentlig kurs?",
+  "welcomeUser": "Välkommen {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Sök efter användare för att bjuda in dem till den här chatten.",
+  "publicInviteDescSpace": "Sök efter användare för att bjuda in dem till det här utrymmet.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

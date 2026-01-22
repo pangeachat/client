@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-16 14:33:05.869532",
+  "@@last_modified": "2026-01-22 12:01:33.641094",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11962,6 +11962,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Практыка правільнага выкарыстання граматычных памылак",
+  "constructUseIncGEDesc": "Практыка няправільнага выкарыстання граматычных памылак",
+  "fillInBlank": "Запоўніце прабел правільным выбарам",
+  "learn": "Навучыцца",
+  "languageUpdated": "Мэтавая мова абноўлена!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Голас Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ваш запыт быў адпраўлены адміністрацыі курса! Вы будзеце дапушчаны, калі яны зацвердзяць.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ці маеце вы код запрашэння або спасылку на публічны курс?",
+  "welcomeUser": "Сардэчна запрашаем, {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Шукаць карыстальнікаў, каб запрасіць іх у гэты чат.",
+  "publicInviteDescSpace": "Шукаць карыстальнікаў, каб запрасіць іх у гэтае прастору.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

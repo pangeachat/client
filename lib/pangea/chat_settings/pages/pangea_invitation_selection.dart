@@ -148,6 +148,20 @@ class PangeaInvitationSelectionController
     return parents.first;
   }
 
+  bool get showInviteAllInSpaceButton {
+    final roomParticipants = participants;
+    if (roomParticipants == null ||
+        filter != InvitationFilter.space ||
+        spaceParent == null) {
+      return false;
+    }
+
+    final spaceParticipants = spaceParent!.getParticipants();
+    return spaceParticipants.any(
+      (participant) => !roomParticipants.any((p) => p.id == participant.id),
+    );
+  }
+
   List<InvitationFilter> get availableFilters => InvitationFilter.values
       .where(
         (f) => switch (f) {

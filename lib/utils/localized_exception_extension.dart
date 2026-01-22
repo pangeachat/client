@@ -8,6 +8,7 @@ import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'uia_request_manager.dart';
@@ -33,6 +34,10 @@ extension LocalizedExceptionExtension on Object {
     // #Pangea
     if (this is UnsubscribedException) {
       return L10n.of(context).unsubscribedResponseError;
+    }
+
+    if (this is InsufficientDataException) {
+      return L10n.of(context).notEnoughToPractice;
     }
     // Pangea#
     if (this is FileTooBigMatrixException) {

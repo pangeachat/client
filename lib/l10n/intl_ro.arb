@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:32:16.042822",
+  "@@last_modified": "2026-01-22 12:01:04.721303",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11598,6 +11598,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Practică corectă a erorilor de gramatică",
+  "constructUseIncGEDesc": "Practică incorectă a erorilor de gramatică",
+  "fillInBlank": "Completați spațiul gol cu alegerea corectă",
+  "learn": "Învățați",
+  "languageUpdated": "Limba țintă a fost actualizată!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Vocea Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Cererea ta a fost trimisă administratorului cursului! Vei fi lăsat să intri dacă ei aprobă.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ai un cod de invitație sau un link pentru un curs public?",
+  "welcomeUser": "Bine ai venit {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Caută utilizatori pentru a-i invita în acest chat.",
+  "publicInviteDescSpace": "Caută utilizatori pentru a-i invita în acest spațiu.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:32:53.055805",
+  "@@last_modified": "2026-01-22 12:01:27.366543",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10866,6 +10866,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Pratica degli errori grammaticali corretti",
+  "constructUseIncGEDesc": "Pratica degli errori grammaticali scorretti",
+  "fillInBlank": "Compila lo spazio vuoto con la scelta corretta",
+  "learn": "Impara",
+  "languageUpdated": "Lingua target aggiornata!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voce del bot Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "La tua richiesta è stata inviata all'amministratore del corso! Sarai ammesso se approvano.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Hai un codice di invito o un link per un corso pubblico?",
+  "welcomeUser": "Benvenuto {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cerca utenti per invitarli a questa chat.",
+  "publicInviteDescSpace": "Cerca utenti per invitarli a questo spazio.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

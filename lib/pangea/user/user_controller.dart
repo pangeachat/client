@@ -431,6 +431,8 @@ class UserController {
         : langModel;
   }
 
+  String? get voice => profile.userSettings.voice;
+
   bool get languagesSet =>
       userL1Code != null &&
       userL2Code != null &&

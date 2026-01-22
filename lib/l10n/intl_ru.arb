@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-16 14:34:10.739852",
+  "@@last_modified": "2026-01-22 12:02:17.097388",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -3132,8 +3132,6 @@
   "@invalidUrl": {},
   "addLink": "Добавить ссылку",
   "@addLink": {},
-  "italicText": "Italic",
-  "@italicText": {},
   "unableToJoinChat": "Невозможно присоединиться к чату. Возможно, другая сторона уже закончила разговор.",
   "@unableToJoinChat": {},
   "serverLimitReached": "Ограничения сервера. Ожидайте{seconds} секунд...",
@@ -3689,13 +3687,6 @@
   "acceptSelection": "Принять исправление",
   "why": "Почему?",
   "definition": "Определение",
-  "exampleSentence": "Приклад речення",
-  "reportToTeacher": "Кому ви хочете повідомити про це повідомлення?",
-  "reportMessageTitle": "{reportingUserId} повідомив про повідомлення від {reportedUserId} у чаті {roomName}",
-  "reportMessageBody": "Повідомлення: {reportedMessage}\nПричина: {reason}",
-  "noTeachersFound": "Вчителі не знайдені для повідомлення",
-  "trialExpiration": "Ваша безкоштовна пробна версія закінчується {expiration}",
-  "freeTrialDesc": "Нові користувачі отримують тижневу безкоштовну пробну версію Pangea Chat",
   "activateTrial": "Безкоштовна 7-денна пробна версія",
   "successfullySubscribed": "Ви успішно підписалися!",
   "clickToManageSubscription": "Натисніть тут, щоб керувати підпискою.",
@@ -4078,13 +4069,6 @@
   "constructUseIncMDesc": "Некорректно в деятельности по грамматике",
   "constructUseIgnMDesc": "Игнорируется в деятельности по грамматике",
   "constructUseEmojiDesc": "Правильно в деятельности по эмодзи",
-  "constructUseCollected": "Thu thập trong trò chuyện",
-  "constructUseNanDesc": "Không áp dụng được",
-  "xpIntoLevel": "{currentXP} / {maxXP} XP",
-  "enableTTSToolName": "Bật chuyển đổi văn bản thành giọng nói",
-  "enableTTSToolDescription": "Cho phép ứng dụng tạo ra đầu ra chuyển đổi văn bản thành giọng nói cho các phần của văn bản bằng ngôn ngữ mục tiêu của bạn.",
-  "yourUsername": "Tên người dùng của bạn",
-  "yourEmail": "Email của bạn",
   "iWantToLearn": "Я хочу учиться",
   "pleaseEnterEmail": "Пожалуйста, введите действительный адрес электронной почты.",
   "myBaseLanguage": "Мой основной язык",
@@ -10968,6 +10952,84 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Практика исправления грамматических ошибок",
+  "constructUseIncGEDesc": "Практика неправильных грамматических ошибок",
+  "fillInBlank": "Заполните пропуск правильным вариантом",
+  "learn": "Учить",
+  "languageUpdated": "Целевой язык обновлен!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Голос бота Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Ваш запрос отправлен администратору курса! Вы будете допущены, если они одобрят.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "italicText": "Курсивный текст",
+  "exampleSentence": "Пример предложения",
+  "reportToTeacher": "Кому вы хотите пожаловаться на это сообщение?",
+  "reportMessageTitle": "{reportingUserId} пожаловался на сообщение от {reportedUserId} в чате {roomName}",
+  "reportMessageBody": "Сообщение: {reportedMessage}\nПричина: {reason}",
+  "noTeachersFound": "Учителя для жалобы не найдены",
+  "trialExpiration": "Ваш бесплатный пробный период истекает {expiration}",
+  "freeTrialDesc": "Новые пользователи получают бесплатную пробную неделю в Pangea Chat",
+  "constructUseCollected": "Собрано в чате",
+  "constructUseNanDesc": "Не применимо",
+  "xpIntoLevel": "{currentXP} / {maxXP} XP",
+  "enableTTSToolName": "Включен преобразователь текста в речь",
+  "enableTTSToolDescription": "Позволяет приложению генерировать озвучивание текста на вашем целевом языке.",
+  "yourUsername": "Ваше имя пользователя",
+  "yourEmail": "Ваш email",
+  "@italicText": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "У вас есть код приглашения или ссылка на публичный курс?",
+  "welcomeUser": "Добро пожаловать {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Ищите пользователей, чтобы пригласить их в этот чат.",
+  "publicInviteDescSpace": "Ищите пользователей, чтобы пригласить их в это пространство.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

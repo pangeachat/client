@@ -4009,7 +4009,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-16 14:32:03.875087",
+  "@@last_modified": "2026-01-22 12:00:55.098205",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11486,6 +11486,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Oikean kielioppivirheen harjoittelu",
+  "constructUseIncGEDesc": "Väärän kielioppivirheen harjoittelu",
+  "fillInBlank": "Täytä tyhjä kohta oikealla valinnalla",
+  "learn": "Oppia",
+  "languageUpdated": "Kohdekieli päivitetty!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Botin ääni",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Pyyntösi on lähetetty kurssin ylläpitäjälle! Sinut päästetään sisään, jos he hyväksyvät sen.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Onko sinulla kutsukoodia tai linkkiä julkiseen kurssiin?",
+  "welcomeUser": "Tervetuloa {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Etsi käyttäjiä kutsuaksesi heidät tähän keskusteluun.",
+  "publicInviteDescSpace": "Etsi käyttäjiä kutsuaksesi heidät tähän tilaan.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

@@ -179,7 +179,7 @@ class SelectedCourseController extends State<SelectedCourse>
       await showOkAlertDialog(
         context: context,
         title: L10n.of(context).youHaveKnocked,
-        message: L10n.of(context).pleaseWaitUntilInvited,
+        message: L10n.of(context).knockDesc,
       );
       return;
     }

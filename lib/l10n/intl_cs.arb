@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-16 14:32:59.173160",
+  "@@last_modified": "2026-01-22 12:01:30.360444",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11470,6 +11470,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Cvičení správné gramatiky",
+  "constructUseIncGEDesc": "Cvičení nesprávné gramatiky",
+  "fillInBlank": "Doplňte prázdné místo správnou volbou",
+  "learn": "Učit se",
+  "languageUpdated": "Cílový jazyk byl aktualizován!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Hlas Pangea Bota",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Vaše žádost byla odeslána administrátorovi kurzu! Budete vpuštěni, pokud ji schválí.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Máte pozvánkový kód nebo odkaz na veřejný kurz?",
+  "welcomeUser": "Vítejte {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Hledejte uživatele, které chcete pozvat do tohoto chatu.",
+  "publicInviteDescSpace": "Hledejte uživatele, které chcete pozvat do tohoto prostoru.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

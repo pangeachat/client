@@ -8,23 +8,23 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/language_level_type_enum.dart';
 
 class BotOptionsModel {
-  LanguageLevelTypeEnum languageLevel;
-  String topic;
-  List<String> keywords;
-  bool safetyModeration;
-  String mode;
-  String? discussionTopic;
-  String? discussionKeywords;
-  bool? discussionTriggerReactionEnabled;
-  String? discussionTriggerReactionKey;
-  String? customSystemPrompt;
-  bool? customTriggerReactionEnabled;
-  String? customTriggerReactionKey;
-  String? textAdventureGameMasterInstructions;
-  String? targetLanguage;
-  String? targetVoice;
+  final LanguageLevelTypeEnum languageLevel;
+  final String topic;
+  final List<String> keywords;
+  final bool safetyModeration;
+  final String mode;
+  final String? discussionTopic;
+  final String? discussionKeywords;
+  final bool? discussionTriggerReactionEnabled;
+  final String? discussionTriggerReactionKey;
+  final String? customSystemPrompt;
+  final bool? customTriggerReactionEnabled;
+  final String? customTriggerReactionKey;
+  final String? textAdventureGameMasterInstructions;
+  final String? targetLanguage;
+  final String? targetVoice;
 
-  BotOptionsModel({
+  const BotOptionsModel({
     ////////////////////////////////////////////////////////////////////////////
     // General Bot Options
     ////////////////////////////////////////////////////////////////////////////
@@ -133,50 +133,45 @@ class BotOptionsModel {
     }
   }
 
-  //TODO: define enum with all possible values
-  updateBotOption(String key, dynamic value) {
-    switch (key) {
-      case ModelKey.languageLevel:
-        languageLevel = value;
-        break;
-      case ModelKey.safetyModeration:
-        safetyModeration = value;
-        break;
-      case ModelKey.mode:
-        mode = value;
-        break;
-      case ModelKey.discussionTopic:
-        discussionTopic = value;
-        break;
-      case ModelKey.discussionKeywords:
-        discussionKeywords = value;
-        break;
-      case ModelKey.discussionTriggerReactionEnabled:
-        discussionTriggerReactionEnabled = value;
-        break;
-      case ModelKey.discussionTriggerReactionKey:
-        discussionTriggerReactionKey = value;
-        break;
-      case ModelKey.customSystemPrompt:
-        customSystemPrompt = value;
-        break;
-      case ModelKey.customTriggerReactionEnabled:
-        customTriggerReactionEnabled = value;
-        break;
-      case ModelKey.customTriggerReactionKey:
-        customTriggerReactionKey = value;
-        break;
-      case ModelKey.textAdventureGameMasterInstructions:
-        textAdventureGameMasterInstructions = value;
-        break;
-      case ModelKey.targetLanguage:
-        targetLanguage = value;
-        break;
-      case ModelKey.targetVoice:
-        targetVoice = value;
-        break;
-      default:
-        throw Exception('Invalid key for bot options - $key');
-    }
+  BotOptionsModel copyWith({
+    LanguageLevelTypeEnum? languageLevel,
+    String? topic,
+    List<String>? keywords,
+    bool? safetyModeration,
+    String? mode,
+    String? discussionTopic,
+    String? discussionKeywords,
+    bool? discussionTriggerReactionEnabled,
+    String? discussionTriggerReactionKey,
+    String? customSystemPrompt,
+    bool? customTriggerReactionEnabled,
+    String? customTriggerReactionKey,
+    String? textAdventureGameMasterInstructions,
+    String? targetLanguage,
+    String? targetVoice,
+  }) {
+    return BotOptionsModel(
+      languageLevel: languageLevel ?? this.languageLevel,
+      topic: topic ?? this.topic,
+      keywords: keywords ?? this.keywords,
+      safetyModeration: safetyModeration ?? this.safetyModeration,
+      mode: mode ?? this.mode,
+      discussionTopic: discussionTopic ?? this.discussionTopic,
+      discussionKeywords: discussionKeywords ?? this.discussionKeywords,
+      discussionTriggerReactionEnabled: discussionTriggerReactionEnabled ??
+          this.discussionTriggerReactionEnabled,
+      discussionTriggerReactionKey:
+          discussionTriggerReactionKey ?? this.discussionTriggerReactionKey,
+      customSystemPrompt: customSystemPrompt ?? this.customSystemPrompt,
+      customTriggerReactionEnabled:
+          customTriggerReactionEnabled ?? this.customTriggerReactionEnabled,
+      customTriggerReactionKey:
+          customTriggerReactionKey ?? this.customTriggerReactionKey,
+      textAdventureGameMasterInstructions:
+          textAdventureGameMasterInstructions ??
+              this.textAdventureGameMasterInstructions,
+      targetLanguage: targetLanguage ?? this.targetLanguage,
+      targetVoice: targetVoice ?? this.targetVoice,
+    );
   }
 }

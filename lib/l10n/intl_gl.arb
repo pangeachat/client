@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-16 14:32:01.213945",
+  "@@last_modified": "2026-01-22 12:00:52.883998",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10860,6 +10860,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Práctica de erro gramatical correcto",
+  "constructUseIncGEDesc": "Práctica de erro gramatical incorrecto",
+  "fillInBlank": "Completa o espazo en branco coa opción correcta",
+  "learn": "Aprender",
+  "languageUpdated": "Idioma de destino actualizado!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Voz do bot Pangea",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "A túa solicitude foi enviada ao administrador do curso! Serás admitido se a aproban.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Tes un código de invitación ou un enlace a un curso público?",
+  "welcomeUser": "Benvido {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Busca usuarios para convidalos a este chat.",
+  "publicInviteDescSpace": "Busca usuarios para convidalos a este espazo.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

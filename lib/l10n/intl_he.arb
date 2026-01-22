@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:32:26.413376",
+  "@@last_modified": "2026-01-22 12:01:11.911490",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11912,6 +11912,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "תרגול תיקון שגיאות דקדוק",
+  "constructUseIncGEDesc": "תרגול שגיאות דקדוק לא נכונות",
+  "fillInBlank": "מלא את החסר עם הבחירה הנכונה",
+  "learn": "ללמוד",
+  "languageUpdated": "שפת היעד עודכנה!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "קול של פנגיאה בוט",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "הבקשה שלך נשלחה למנהל הקורס! תורשה להיכנס אם הם יאשרו.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "האם יש לך קוד הזמנה או קישור לקורס ציבורי?",
+  "welcomeUser": "ברוך הבא {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "חפש משתמשים כדי להזמין אותם לצ'אט הזה.",
+  "publicInviteDescSpace": "חפש משתמשים כדי להזמין אותם למקום הזה.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

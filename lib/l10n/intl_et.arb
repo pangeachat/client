@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-16 14:32:41.585481",
+  "@@last_modified": "2026-01-22 12:01:20.400166",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11134,6 +11134,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Õige grammatika vea harjutamine",
+  "constructUseIncGEDesc": "Vale grammatika vea harjutamine",
+  "fillInBlank": "Täida tühik õige valikuga",
+  "learn": "Õpi",
+  "languageUpdated": "Sihtkeel on uuendatud!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Pangea Boti hääl",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Kas sul on kutsekood või link avalikule kursusele?",
+  "welcomeUser": "Tere tulemast {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Otsi kasutajaid, et neid sellesse vestlusse kutsuda.",
+  "publicInviteDescSpace": "Otsi kasutajaid, et neid sellesse ruumi kutsuda.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

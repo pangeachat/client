@@ -57,7 +57,9 @@ class CourseChatsController extends State<CourseChats>
 
   @override
   void initState() {
-    loadHierarchy(reload: true);
+    loadHierarchy(reload: true).then(
+      (_) => _joinDefaultChats(),
+    );
 
     // Listen for changes to the activeSpace's hierarchy,
     // and reload the hierarchy when they come through
@@ -212,7 +214,6 @@ class CourseChatsController extends State<CourseChats>
 
     try {
       await _loadHierarchy(activeSpace: room, reload: reload);
-      if (mounted) await _joinDefaultChats();
       if (mounted) {
         final futures = [
           loadRoomSummaries(
@@ -437,7 +438,7 @@ class CourseChatsController extends State<CourseChats>
 
   void joinChildRoom(SpaceRoomsChunk item) async {
     final space = widget.client.getRoomById(widget.roomId);
-    final joined = await PublicRoomBottomSheet.show(
+    final roomId = await PublicRoomBottomSheet.show(
       context: context,
       chunk: item,
       via: space?.spaceChildren
@@ -446,10 +447,12 @@ class CourseChatsController extends State<CourseChats>
           )
           ?.via,
     );
-    if (mounted && joined == true) {
+    if (mounted && roomId != null) {
       setState(() {
         discoveredChildren?.remove(item);
       });
+
+      NavigationUtil.goToSpaceRoute(roomId, [], context);
     }
   }
 

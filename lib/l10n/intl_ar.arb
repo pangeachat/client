@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-16 14:33:24.230348",
+  "@@last_modified": "2026-01-22 12:01:48.002470",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11080,6 +11080,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "ممارسة تصحيح أخطاء القواعد",
+  "constructUseIncGEDesc": "ممارسة أخطاء القواعد غير الصحيحة",
+  "fillInBlank": "املأ الفراغ بالخيار الصحيح",
+  "learn": "تعلم",
+  "languageUpdated": "تم تحديث اللغة المستهدفة!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "صوت بوت بانجيا",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "تم إرسال طلبك إلى إدارة الدورة! سيتم السماح لك بالدخول إذا وافقوا.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "هل لديك رمز دعوة أو رابط لدورة عامة؟",
+  "welcomeUser": "مرحبًا {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "ابحث عن المستخدمين لدعوتهم إلى هذه الدردشة.",
+  "publicInviteDescSpace": "ابحث عن المستخدمين لدعوتهم إلى هذا الفضاء.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

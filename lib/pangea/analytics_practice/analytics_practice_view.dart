@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -84,7 +85,9 @@ class AnalyticsPracticeView extends StatelessWidget {
             builder: (context, state, __) {
               return switch (state) {
                 AsyncError<AnalyticsPracticeSessionModel>(:final error) =>
-                  ErrorIndicator(message: error.toString()),
+                  ErrorIndicator(
+                    message: error.toLocalizedString(context),
+                  ),
                 AsyncLoaded<AnalyticsPracticeSessionModel>(:final value) =>
                   value.isComplete
                       ? CompletedActivitySessionView(state.value, controller)
@@ -346,25 +349,29 @@ class _ActivityChoicesWidget extends StatelessWidget {
 
                 return Container(
                   constraints: const BoxConstraints(maxHeight: 400.0),
-                  child: Column(
-                    spacing: 4.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: choices
-                        .map(
-                          (choice) => _ChoiceCard(
-                            activity: value,
-                            targetId:
-                                controller.choiceTargetId(choice.choiceId),
-                            choiceId: choice.choiceId,
-                            onPressed: () => controller.onSelectChoice(
-                              choice.choiceId,
+                  child: ValueListenableBuilder(
+                    valueListenable: controller.enableChoicesNotifier,
+                    builder: (context, enabled, __) => Column(
+                      spacing: 4.0,
+                      mainAxisSize: MainAxisSize.min,
+                      children: choices
+                          .map(
+                            (choice) => _ChoiceCard(
+                              activity: value,
+                              targetId:
+                                  controller.choiceTargetId(choice.choiceId),
+                              choiceId: choice.choiceId,
+                              onPressed: () => controller.onSelectChoice(
+                                choice.choiceId,
+                              ),
+                              cardHeight: cardHeight,
+                              choiceText: choice.choiceText,
+                              choiceEmoji: choice.choiceEmoji,
+                              enabled: enabled,
                             ),
-                            cardHeight: cardHeight,
-                            choiceText: choice.choiceText,
-                            choiceEmoji: choice.choiceEmoji,
-                          ),
-                        )
-                        .toList(),
+                          )
+                          .toList(),
+                    ),
                   ),
                 );
               },
@@ -390,6 +397,7 @@ class _ChoiceCard extends StatelessWidget {
 
   final String choiceText;
   final String? choiceEmoji;
+  final bool enabled;
 
   const _ChoiceCard({
     required this.activity,
@@ -399,6 +407,7 @@ class _ChoiceCard extends StatelessWidget {
     required this.cardHeight,
     required this.choiceText,
     required this.choiceEmoji,
+    this.enabled = true,
   });
 
   @override
@@ -420,6 +429,7 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: enabled,
         );
 
       case ActivityTypeEnum.lemmaAudio:
@@ -432,6 +442,7 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: enabled,
         );
 
       case ActivityTypeEnum.grammarCategory:
@@ -445,6 +456,7 @@ class _ChoiceCard extends StatelessWidget {
           tag: choiceText,
           onPressed: onPressed,
           isCorrect: isCorrect,
+          enabled: enabled,
         );
 
       case ActivityTypeEnum.grammarError:
@@ -458,6 +470,7 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: enabled,
           child: Text(choiceText),
         );
 
@@ -471,6 +484,7 @@ class _ChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           height: cardHeight,
+          isEnabled: enabled,
           child: Text(choiceText),
         );
     }

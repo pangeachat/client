@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/user/pangea_push_rules_extension.dart';
+import 'package:fluffychat/pangea/user/style_settings_repo.dart';
 import 'package:fluffychat/pangea/user/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/firebase_analytics.dart';
@@ -55,7 +56,7 @@ class PangeaController {
     TtsController.setAvailableLanguages();
   }
 
-  void _onLogin(BuildContext context) {
+  void _onLogin(BuildContext context, String? userID) {
     initControllers();
     _registerSubscriptions();
 
@@ -64,6 +65,10 @@ class PangeaController {
       Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
     });
     subscriptionController.reinitialize();
+
+    StyleSettingsRepo.fontSizeFactor(userID!).then((factor) {
+      AppConfig.fontSizeFactor = factor;
+    });
   }
 
   void _onLogout(BuildContext context) {
@@ -91,7 +96,7 @@ class PangeaController {
         _onLogout(context);
         break;
       case LoginState.loggedIn:
-        _onLogin(context);
+        _onLogin(context, userID);
         break;
     }
 
@@ -112,8 +117,9 @@ class PangeaController {
         userController.languageStream.stream.listen(_onLanguageUpdate);
 
     _settingsSubscription?.cancel();
-    _settingsSubscription = userController.settingsUpdateStream.stream
-        .listen((_) => matrixState.client.updateBotOptions());
+    _settingsSubscription = userController.settingsUpdateStream.stream.listen(
+      (update) => matrixState.client.updateBotOptions(update.userSettings),
+    );
 
     _joinSpaceSubscription?.cancel();
     _joinSpaceSubscription ??= matrixState.client.onSync.stream
@@ -122,9 +128,7 @@ class PangeaController {
   }
 
   Future<void> _clearCache({List<String> exclude = const []}) async {
-    final List<Future<void>> futures = [
-      matrixState.store.setString(SettingKeys.fontSizeFactor, ''),
-    ];
+    final List<Future<void>> futures = [];
     for (final key in _storageKeys) {
       if (exclude.contains(key)) continue;
       futures.add(GetStorage(key).erase());
@@ -142,7 +146,6 @@ class PangeaController {
       );
     }
 
-    AppConfig.fontSizeFactor = 1.0;
     await Future.wait(futures);
   }
 
@@ -174,7 +177,7 @@ class PangeaController {
     }
 
     _clearCache(exclude: exclude);
-    matrixState.client.updateBotOptions();
+    matrixState.client.updateBotOptions(userController.profile.userSettings);
   }
 
   static final List<String> _storageKeys = [

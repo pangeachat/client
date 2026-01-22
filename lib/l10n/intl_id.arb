@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-16 14:32:13.610901",
+  "@@last_modified": "2026-01-22 12:01:02.729155",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10854,6 +10854,65 @@
     "placeholders": {}
   },
   "@constructUseIncGCDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "constructUseCorGEDesc": "Latihan kesalahan tata bahasa yang benar",
+  "constructUseIncGEDesc": "Latihan kesalahan tata bahasa yang salah",
+  "fillInBlank": "Isi kekosongan dengan pilihan yang benar",
+  "learn": "Belajar",
+  "languageUpdated": "Bahasa target diperbarui!",
+  "@constructUseCorGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@constructUseIncGEDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@fillInBlank": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@learn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageUpdated": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "voiceDropdownTitle": "Suara Pangea Bot",
+  "@voiceDropdownTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "knockDesc": "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.",
+  "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Apakah Anda memiliki kode undangan atau tautan ke kursus publik?",
+  "welcomeUser": "Selamat datang {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cari pengguna untuk mengundang mereka ke obrolan ini.",
+  "publicInviteDescSpace": "Cari pengguna untuk mengundang mereka ke ruang ini.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

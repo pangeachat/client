@@ -64,7 +64,8 @@ extension IsStateExtension on Event {
   bool get isVisibleInPangeaGui {
     if (!room.showActivityChatUI) {
       return type != EventTypes.RoomMember ||
-          roomMemberChangeType != RoomMemberChangeType.avatar;
+          (roomMemberChangeType != RoomMemberChangeType.avatar &&
+              roomMemberChangeType != RoomMemberChangeType.other);
     }
 
     return type != EventTypes.RoomMember;

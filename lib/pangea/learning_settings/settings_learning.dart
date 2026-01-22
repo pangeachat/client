@@ -41,7 +41,6 @@ class SettingsLearningController extends State<SettingsLearning> {
   PangeaController pangeaController = MatrixState.pangeaController;
   late Profile _profile;
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String? languageMatchError;
 
   final ScrollController scrollController = ScrollController();
@@ -110,18 +109,16 @@ class SettingsLearningController extends State<SettingsLearning> {
       updateToolSetting(ToolSetting.enableTTS, false);
     }
 
-    if (formKey.currentState!.validate()) {
-      await showFutureLoadingDialog(
-        context: context,
-        future: () async => pangeaController.userController
-            .updateProfile(
-              (_) => _profile,
-              waitForDataInSync: true,
-            )
-            .timeout(const Duration(seconds: 15)),
-      );
-      Navigator.of(context).pop();
-    }
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async => pangeaController.userController
+          .updateProfile(
+            (_) => _profile,
+            waitForDataInSync: true,
+          )
+          .timeout(const Duration(seconds: 15)),
+    );
+    Navigator.of(context).pop();
   }
 
   Future<void> resetInstructionTooltips() async {
@@ -153,11 +150,12 @@ class SettingsLearningController extends State<SettingsLearning> {
     LanguageModel? sourceLanguage,
     LanguageModel? targetLanguage,
   }) async {
-    if (sourceLanguage != null) {
+    if (sourceLanguage != null && sourceLanguage != selectedSourceLanguage) {
       _profile.userSettings.sourceLanguage = sourceLanguage.langCode;
     }
-    if (targetLanguage != null) {
+    if (targetLanguage != null && targetLanguage != selectedTargetLanguage) {
       _profile.userSettings.targetLanguage = targetLanguage.langCode;
+      _profile.userSettings.voice = null;
       if (!_profile.toolSettings.enableTTS && isTTSSupported) {
         updateToolSetting(ToolSetting.enableTTS, true);
       }
@@ -178,6 +176,11 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   void setCefrLevel(LanguageLevelTypeEnum? cefrLevel) {
     _profile.userSettings.cefrLevel = cefrLevel ?? LanguageLevelTypeEnum.a1;
+    if (mounted) setState(() {});
+  }
+
+  void setVoice(String? voice) {
+    _profile.userSettings.voice = voice;
     if (mounted) setState(() {});
   }
 
@@ -342,6 +345,8 @@ class SettingsLearningController extends State<SettingsLearning> {
   bool get publicProfile => _profile.userSettings.publicProfile ?? false;
 
   LanguageLevelTypeEnum get cefrLevel => _profile.userSettings.cefrLevel;
+
+  String? get selectedVoice => _profile.userSettings.voice;
 
   Country? get country =>
       CountryService().findByName(_profile.userSettings.country);
