@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_updater_mixin.dart';
@@ -23,7 +26,6 @@ import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class SelectedMorphChoice {
   final MorphFeaturesEnum feature;
@@ -505,5 +507,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   @override
   Widget build(BuildContext context) => AnalyticsPracticeView(this);
+
+  Future<String> requestTranslation() async {
     final request = activityTarget.value;
+    if (request?.grammarErrorInfo == null) {
+      throw L10n.of(context).oopsSomethingWentWrong;
+    }
+
+    final event = request!.grammarErrorInfo!.event!;
+    return await event.requestRespresentationByL1();
+  }
 }

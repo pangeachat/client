@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
@@ -9,7 +11,6 @@ import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
   final MorphFeaturesEnum feature;
