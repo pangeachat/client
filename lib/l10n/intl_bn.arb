@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:31.328626",
+  "@@last_modified": "2026-01-22 09:37:11.081120",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12004,5 +12004,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "আপনার কি একটি আমন্ত্রণ কোড বা একটি পাবলিক কোর্সের লিঙ্ক আছে?",
+  "welcomeUser": "স্বাগতম {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

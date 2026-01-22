@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:35.931933",
+  "@@last_modified": "2026-01-22 09:37:16.018226",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11378,5 +11378,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Har du en inbjudningskod eller länk till en offentlig kurs?",
+  "welcomeUser": "Välkommen {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -4279,7 +4279,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-21 13:54:28.767499",
+  "@@last_modified": "2026-01-22 09:37:08.423146",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10654,5 +10654,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Do you have an invite code or link to a public course?",
+  "welcomeUser": "Welcome {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

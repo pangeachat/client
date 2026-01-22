@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-21 13:53:53.122879",
+  "@@last_modified": "2026-01-22 09:36:30.783445",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10900,5 +10900,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?",
+  "welcomeUser": "Ongi etorri {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

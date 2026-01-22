@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:33.096668",
+  "@@last_modified": "2026-01-22 09:37:12.739208",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11632,5 +11632,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "آیا کد دعوت یا لینکی به یک دوره عمومی دارید؟",
+  "welcomeUser": "خوش آمدید {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

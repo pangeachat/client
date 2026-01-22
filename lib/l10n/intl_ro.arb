@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:53:41.456181",
+  "@@last_modified": "2026-01-22 09:36:19.487915",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11635,5 +11635,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ai un cod de invitație sau un link pentru un curs public?",
+  "welcomeUser": "Bine ai venit {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

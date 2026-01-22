@@ -5058,5 +5058,15 @@
   "learn": "Learn",
   "languageUpdated": "Target language updated!",
   "voiceDropdownTitle": "Pangea Bot voice",
-  "knockDesc": "Your request has been sent to course admin! You'll be let in if they approve."
+  "knockDesc": "Your request has been sent to course admin! You'll be let in if they approve.",
+  "joinSpaceOnboardingDesc": "Do you have an invite code or link to a public course?",
+  "welcomeUser": "Welcome {user}",
+  "@welcomeUser": {
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "findCourse": "Find a course"
 }

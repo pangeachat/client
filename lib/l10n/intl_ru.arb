@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-21 15:35:33.881278",
+  "@@last_modified": "2026-01-22 09:37:24.211755",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11008,5 +11008,19 @@
   "@italicText": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "У вас есть код приглашения или ссылка на публичный курс?",
+  "welcomeUser": "Добро пожаловать {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

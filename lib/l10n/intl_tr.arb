@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-21 13:54:19.467039",
+  "@@last_modified": "2026-01-22 09:36:59.414494",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11122,5 +11122,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bir davet kodunuz veya halka açık bir kursa bağlantınız var mı?",
+  "welcomeUser": "Hoş geldin {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -4456,7 +4456,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-21 13:54:37.783088",
+  "@@last_modified": "2026-01-22 09:37:17.865903",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11958,5 +11958,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Έχετε έναν κωδικό πρόσκλησης ή σύνδεσμο για ένα δημόσιο μάθημα;",
+  "welcomeUser": "Καλώς ήρθατε {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

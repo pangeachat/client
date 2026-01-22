@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-21 13:53:31.619299",
+  "@@last_modified": "2026-01-22 09:36:11.502910",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10897,5 +10897,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Tes un código de invitación ou un enlace a un curso público?",
+  "welcomeUser": "Benvido {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-21 13:53:46.524141",
+  "@@last_modified": "2026-01-22 09:36:23.684413",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11272,5 +11272,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Imate li pozivni kod ili link za javni tečaj?",
+  "welcomeUser": "Dobrodošli {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

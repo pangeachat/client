@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:24.252269",
+  "@@last_modified": "2026-01-22 09:37:04.643688",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6470,5 +6470,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bạn có mã mời hoặc liên kết đến một khóa học công khai không?",
+  "welcomeUser": "Chào mừng {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

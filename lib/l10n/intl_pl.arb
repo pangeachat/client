@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-21 13:54:34.451816",
+  "@@last_modified": "2026-01-22 09:37:14.175391",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10898,5 +10898,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Czy masz kod zaproszenia lub link do publicznego kursu?",
+  "welcomeUser": "Witaj {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }
