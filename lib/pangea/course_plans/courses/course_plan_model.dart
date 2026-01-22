@@ -127,9 +127,11 @@ class CoursePlanModel {
           uuids: mediaIds,
         ),
       );
-  String? get imageUrl => loadedMediaUrls.mediaUrls.isEmpty
+  Uri? get imageUrl => loadedMediaUrls.mediaUrls.isEmpty
       ? loadedTopics.values
           .lastWhereOrNull((topic) => topic.imageUrl != null)
           ?.imageUrl
-      : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first.url}";
+      : Uri.tryParse(
+          "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first.url}",
+        );
 }

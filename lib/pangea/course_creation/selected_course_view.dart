@@ -75,9 +75,8 @@ class SelectedCourseView extends StatelessWidget {
                                         ClipPath(
                                           clipper: MapClipper(),
                                           child: ImageByUrl(
-                                            imageUrl: controller
-                                                    .widget.roomChunk?.avatarUrl
-                                                    ?.toString() ??
+                                            imageUrl: controller.widget
+                                                    .roomChunk?.avatarUrl ??
                                                 course.imageUrl,
                                             width: 100.0,
                                             borderRadius:

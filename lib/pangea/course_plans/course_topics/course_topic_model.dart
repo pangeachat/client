@@ -79,9 +79,9 @@ class CourseTopicModel {
     return allLocationMedia;
   }
 
-  String? get imageUrl => loadedLocationMediaIds.isEmpty
+  Uri? get imageUrl => loadedLocationMediaIds.isEmpty
       ? null
-      : "${Environment.cmsApi}${loadedLocationMediaIds.first}";
+      : Uri.tryParse("${Environment.cmsApi}${loadedLocationMediaIds.first}");
 
   bool get activityListComplete =>
       activityIds.length == loadedActivities.length;
