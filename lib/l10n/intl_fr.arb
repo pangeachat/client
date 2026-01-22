@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-22 09:37:30.149848",
+  "@@last_modified": "2026-01-22 12:02:23.383738",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11238,5 +11238,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Recherchez des utilisateurs pour les inviter à ce chat.",
+  "publicInviteDescSpace": "Recherchez des utilisateurs pour les inviter à cet espace.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

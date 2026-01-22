@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:36:18.048263",
+  "@@last_modified": "2026-01-22 12:01:02.729155",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10905,5 +10905,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Cari pengguna untuk mengundang mereka ke obrolan ini.",
+  "publicInviteDescSpace": "Cari pengguna untuk mengundang mereka ke ruang ini.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

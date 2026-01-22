@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-22 09:37:24.211755",
+  "@@last_modified": "2026-01-22 12:02:17.097388",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11022,5 +11022,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Ищите пользователей, чтобы пригласить их в этот чат.",
+  "publicInviteDescSpace": "Ищите пользователей, чтобы пригласить их в это пространство.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

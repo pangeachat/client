@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-22 09:36:33.207413",
+  "@@last_modified": "2026-01-22 12:01:20.400166",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11185,5 +11185,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Otsi kasutajaid, et neid sellesse vestlusse kutsuda.",
+  "publicInviteDescSpace": "Otsi kasutajaid, et neid sellesse ruumi kutsuda.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

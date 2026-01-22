@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:37:12.739208",
+  "@@last_modified": "2026-01-22 12:02:04.083596",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11646,5 +11646,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "برای دعوت کاربران به این چت، جستجو کنید.",
+  "publicInviteDescSpace": "برای دعوت کاربران به این فضا، جستجو کنید.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

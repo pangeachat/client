@@ -5068,5 +5068,7 @@
       }
     }
   },
-  "findCourse": "Find a course"
+  "findCourse": "Find a course",
+  "publicInviteDescChat": "Search for users to invite them to this chat.",
+  "publicInviteDescSpace": "Search for users to invite them to this space."
 }

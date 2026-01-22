@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-22 09:36:34.415651",
+  "@@last_modified": "2026-01-22 12:01:22.683777",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10921,5 +10921,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Suchen Sie nach Benutzern, um sie zu diesem Chat einzuladen.",
+  "publicInviteDescSpace": "Suchen Sie nach Benutzern, um sie zu diesem Raum einzuladen.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

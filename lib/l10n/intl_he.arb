@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:36:25.705220",
+  "@@last_modified": "2026-01-22 12:01:11.911490",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11963,5 +11963,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "חפש משתמשים כדי להזמין אותם לצ'אט הזה.",
+  "publicInviteDescSpace": "חפש משתמשים כדי להזמין אותם למקום הזה.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

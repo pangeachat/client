@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:37:04.643688",
+  "@@last_modified": "2026-01-22 12:01:54.904291",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6484,5 +6484,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Tìm kiếm người dùng để mời họ tham gia trò chuyện này.",
+  "publicInviteDescSpace": "Tìm kiếm người dùng để mời họ tham gia không gian này.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

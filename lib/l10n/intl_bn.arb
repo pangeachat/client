@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:37:11.081120",
+  "@@last_modified": "2026-01-22 12:02:02.719528",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12018,5 +12018,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "এই চ্যাটে আমন্ত্রণ জানানোর জন্য ব্যবহারকারীদের খুঁজুন।",
+  "publicInviteDescSpace": "এই স্পেসে আমন্ত্রণ জানানোর জন্য ব্যবহারকারীদের খুঁজুন।",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

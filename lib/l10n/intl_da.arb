@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-22 09:36:14.204217",
+  "@@last_modified": "2026-01-22 12:00:57.389253",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11975,5 +11975,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Søg efter brugere for at invitere dem til denne chat.",
+  "publicInviteDescSpace": "Søg efter brugere for at invitere dem til dette rum.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

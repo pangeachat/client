@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:37:27.068492",
+  "@@last_modified": "2026-01-22 12:02:20.533801",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12016,5 +12016,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Pretražite korisnike da ih pozovete u ovaj čat.",
+  "publicInviteDescSpace": "Pretražite korisnike da ih pozovete u ovaj prostor.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

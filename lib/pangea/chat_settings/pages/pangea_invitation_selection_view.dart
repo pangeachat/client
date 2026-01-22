@@ -157,20 +157,29 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                     final participants =
                         room.getParticipants().map((user) => user.id).toSet();
                     return controller.filter == InvitationFilter.public
-                        ? ListView.builder(
-                            itemCount: controller.foundProfiles.length,
-                            itemBuilder: (BuildContext context, int i) =>
-                                _InviteContactListTile(
-                              profile: controller.foundProfiles[i],
-                              isMember: participants.contains(
-                                controller.foundProfiles[i].userId,
-                              ),
-                              onTap: () => controller.inviteAction(
-                                controller.foundProfiles[i].userId,
-                              ),
-                              controller: controller,
-                            ),
-                          )
+                        ? controller.foundProfiles.isEmpty
+                            ? Padding(
+                                padding: const EdgeInsets.all(24.0),
+                                child: Text(
+                                  room.isSpace
+                                      ? L10n.of(context).publicInviteDescSpace
+                                      : L10n.of(context).publicInviteDescChat,
+                                ),
+                              )
+                            : ListView.builder(
+                                itemCount: controller.foundProfiles.length,
+                                itemBuilder: (BuildContext context, int i) =>
+                                    _InviteContactListTile(
+                                  profile: controller.foundProfiles[i],
+                                  isMember: participants.contains(
+                                    controller.foundProfiles[i].userId,
+                                  ),
+                                  onTap: () => controller.inviteAction(
+                                    controller.foundProfiles[i].userId,
+                                  ),
+                                  controller: controller,
+                                ),
+                              )
                         : ListView.builder(
                             itemCount: contacts.length + 2,
                             itemBuilder: (BuildContext context, int i) {

@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-22 09:36:41.798719",
+  "@@last_modified": "2026-01-22 12:01:28.947095",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10908,5 +10908,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Шукайте користувачів, щоб запросити їх до цього чату.",
+  "publicInviteDescSpace": "Шукайте користувачів, щоб запросити їх до цього простору.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

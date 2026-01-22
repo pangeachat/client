@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:36:49.492725",
+  "@@last_modified": "2026-01-22 12:01:35.625715",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10938,5 +10938,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Cerca usuaris per convidar-los a aquest xat.",
+  "publicInviteDescSpace": "Cerca usuaris per convidar-los a aquest espai.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

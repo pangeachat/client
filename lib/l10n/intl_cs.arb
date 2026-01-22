@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-22 09:36:43.351703",
+  "@@last_modified": "2026-01-22 12:01:30.360444",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11521,5 +11521,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Hledejte uživatele, které chcete pozvat do tohoto chatu.",
+  "publicInviteDescSpace": "Hledejte uživatele, které chcete pozvat do tohoto prostoru.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-22 09:36:52.464279",
+  "@@last_modified": "2026-01-22 12:01:38.348686",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11943,5 +11943,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Procure usuários para convidá-los para este chat.",
+  "publicInviteDescSpace": "Procure usuários para convidá-los para este espaço.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

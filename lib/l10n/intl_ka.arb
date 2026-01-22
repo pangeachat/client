@@ -2594,7 +2594,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-22 09:37:25.958869",
+  "@@last_modified": "2026-01-22 12:02:18.860564",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11944,5 +11944,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "მომხმარებლების ძიება, რათა მათ ამ ჩატში მოიწვიოთ.",
+  "publicInviteDescSpace": "მომხმარებლების ძიება, რათა მათ ამ სივრცეში მოიწვიოთ.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }
