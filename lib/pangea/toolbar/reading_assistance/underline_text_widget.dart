@@ -39,7 +39,7 @@ class UnderlineText extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 2, // fixed distance from baseline
+          bottom: 0,
           left: 0,
           right: 0,
           child: Container(
