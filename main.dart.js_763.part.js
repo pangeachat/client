@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Sohbet a\xe7\u0131klamas\u0131n\u0131 ayarla";
     },
-    get$setStatus() {
-      return "Durumu ayarla";
-    },
     get$settings() {
       return "Ayarlar";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Durum";
-    },
-    get$statusExampleMessage() {
-      return "Bug\xfcn nas\u0131ls\u0131n\u0131z?";
     },
     get$submit(_) {
       return "G\xf6nder";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Ham JSON g\xf6nder";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Durumunuzu temizlemek i\xe7in bo\u015f b\u0131rak\u0131n.";
     },
     get$select(_) {
       return "Se\xe7";
@@ -5369,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Tiszj2BOFSQaRcX2LtM8SBh/OAE="] = d.current;
+  d["kIcUIQdaYIMFwu3Z6cABGhX7dlo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_763.part.js.map

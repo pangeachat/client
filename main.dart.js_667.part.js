@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Cseveg\xe9s le\xedr\xe1s be\xe1ll\xedt\xe1sa";
     },
-    get$setStatus() {
-      return "\xc1llapot be\xe1ll\xedt\xe1sa";
-    },
     get$settings() {
       return "Be\xe1ll\xedt\xe1sok";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "\xc1llapot";
-    },
-    get$statusExampleMessage() {
-      return "Hogy \xe9rzi mag\xe1t a mai napon?";
     },
     get$submit(_) {
       return "Bek\xfcld\xe9s";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Tiszta json k\xfcld\xe9se";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Hagyja \xfcresen a st\xe1tusz kit\xf6rl\xe9s\xe9hez.";
     },
     get$select(_) {
       return "Kiv\xe1laszt";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["03FJ+VeW4G54Aagl6MrL+hRFEoA="] = d.current;
+  d["WivwKUyrvwLCuW1eSg/2QGTqVDI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

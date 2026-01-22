@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Itakda ang paglalarawan ng usapan";
     },
-    get$setStatus() {
-      return "Itakda ang status";
-    },
     get$settings() {
       return "Mga Setting";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Katayuan";
-    },
-    get$statusExampleMessage() {
-      return "Kumusta ka ngayon?";
     },
     get$submit(_) {
       return "Isumite";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Magpadala ng raw json";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Iwanang blangko upang i-clear ang iyong status.";
     },
     get$select(_) {
       return "Piliin";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bVh/O6TNOxraBYxvv+PG9vmja+M="] = d.current;
+  d["4briNj7RbFUJ3gTA18MKoimxXdw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

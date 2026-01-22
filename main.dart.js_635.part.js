@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Postavi opis rzgovora";
     },
-    get$setStatus() {
-      return "Postavi stanje";
-    },
     get$settings() {
       return "Postavke";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Stanje";
-    },
-    get$statusExampleMessage() {
-      return "Kako si danas?";
     },
     get$submit(_) {
       return "Po\u0161alji";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Po\u0161alji neobra\u0111eni json";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Ostavi prazno za brisanje tvog stanja.";
     },
     get$select(_) {
       return "Odaberi";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QTuZ7BkgsxJrUfCOImQaWIuzrRU="] = d.current;
+  d["+EsImRRKLrezTKDOOkXf+5mgo6Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_635.part.js.map

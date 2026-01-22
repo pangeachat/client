@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Nustatyti pokalbio apra\u0161ym\u0105";
     },
-    get$setStatus() {
-      return "Nustatyti b\u016bsen\u0105";
-    },
     get$settings() {
       return "Nustatytmai";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "B\u016bsena";
-    },
-    get$statusExampleMessage() {
-      return "Kaip sekasi \u0161iandien?";
     },
     get$submit(_) {
       return "Pateikti";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Si\u0173sti neapdorot\u0105 JSON";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Palikite tu\u0161\u010di\u0105, kad i\u0161valytum\u0117te savo b\u016bsen\u0105.";
     },
     get$select(_) {
       return "Pasirinkti";
@@ -5369,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZB+qarOCpVNqYViagWonspdPy2k="] = d.current;
+  d["K9zoYRFakkduORTlazxl++IFodg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Seteaz\u0103 descrierea chat-ului";
     },
-    get$setStatus() {
-      return "Stabili\u021bi status";
-    },
     get$settings() {
       return "Configur\u0103ri";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
-    },
-    get$statusExampleMessage() {
-      return "Ce face\u021bi?";
     },
     get$submit(_) {
       return "Trimite\u021bi";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Trimite json brut";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "L\u0103sa\u021bi gol pentru a \u0219terge starea dvs.";
     },
     get$select(_) {
       return "Selecteaz\u0103";
@@ -5369,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sW3OGB3964gycjlS3gANtNxrFfQ="] = d.current;
+  d["gQvRof25X7CY8O04X7/7KWFlxtU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

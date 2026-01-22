@@ -773,9 +773,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Ustaw opis czatu";
     },
-    get$setStatus() {
-      return "Ustaw status";
-    },
     get$settings() {
       return "Ustawienia";
     },
@@ -802,9 +799,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
-    },
-    get$statusExampleMessage() {
-      return "Jak si\u0119 masz dzi\u015b?";
     },
     get$submit(_) {
       return "Ode\u015blij";
@@ -1078,9 +1072,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Wy\u015blij zwyk\u0142y JSON";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Pozostaw puste, aby wyczy\u015bci\u0107 sw\xf3j status.";
     },
     get$select(_) {
       return "Zaznacz";
@@ -5367,7 +5358,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mRbfUT7gpb7rLWalT/MQ1Aiq4uY="] = d.current;
+  d["7vtPjQ6WzORgTUU4GwCltrsRQGQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_737.part.js.map

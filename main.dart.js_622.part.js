@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Escribir descrici\xf3n da conversa";
     },
-    get$setStatus() {
-      return "Establecer estado";
-    },
     get$settings() {
       return "Axustes";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Estado";
-    },
-    get$statusExampleMessage() {
-      return "\xbfQue tal est\xe1s hoxe?";
     },
     get$submit(_) {
       return "Enviar";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Enviar json sen editar";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Deixa baleiro para limpar o teu estado.";
     },
     get$select(_) {
       return "Escolle";
@@ -5369,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5zGRYp4uyYaNS6+90JIeM+JJmJE="] = d.current;
+  d["4m/6MKsi2JoctTND+vOc9toMEXY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_622.part.js.map

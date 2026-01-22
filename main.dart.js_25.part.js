@@ -784,9 +784,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Definir descri\xe7\xe3o do chat";
     },
-    get$setStatus() {
-      return "Definir status";
-    },
     get$settings() {
       return "Configura\xe7\xf5es";
     },
@@ -813,9 +810,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
-    },
-    get$statusExampleMessage() {
-      return "Como voc\xea est\xe1 hoje?";
     },
     get$submit(_) {
       return "Enviar";
@@ -1089,9 +1083,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Enviar JSON bruto";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Deixe vazio para limpar seu status.";
     },
     get$select(_) {
       return "Selecionar";
@@ -6126,9 +6117,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Inserir descri\xe7\xe3o da conversa";
     },
-    get$setStatus() {
-      return "Alterar o status";
-    },
     get$settings() {
       return "Configura\xe7\xf5es";
     },
@@ -6155,9 +6143,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
-    },
-    get$statusExampleMessage() {
-      return "Como vai voc\xea?";
     },
     get$submit(_) {
       return "Submeter";
@@ -6431,9 +6416,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Enviar JSON puro";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Deixe em branco para limpar seu Status.";
     },
     get$select(_) {
       return "Selecionar";
@@ -11465,9 +11447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Definir descri\xe7\xe3o do chat";
     },
-    get$setStatus() {
-      return "Definir estado";
-    },
     get$settings() {
       return "Configura\xe7\xf5es";
     },
@@ -11494,9 +11473,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Estado";
-    },
-    get$statusExampleMessage() {
-      return "Como est\xe1s hoje?";
     },
     get$submit(_) {
       return "Enviar";
@@ -11770,9 +11746,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Enviar JSON bruto";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Deixe vazio para limpar o seu estado.";
     },
     get$select(_) {
       return "Selecionar";
@@ -16248,7 +16221,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["U/h/MoBNcoZiHRFYDhW2R25UpDI="] = d.current;
+  d["ZQJlERx3UGM3RPYK9WYC0vFZwrU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

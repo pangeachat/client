@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Sett chatbeskrivelse";
     },
-    get$setStatus() {
-      return "Angi status";
-    },
     get$settings() {
       return "Innstilinger";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
-    },
-    get$statusExampleMessage() {
-      return "Hvordan har du det i dag?";
     },
     get$submit(_) {
       return "Send inn";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send r\xe5 json";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "La st\xe5 tomt for \xe5 t\xf8mme statusen din.";
     },
     get$select(_) {
       return "Velg";
@@ -5369,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jqsRt95Dic6LaB7cjj0GwvirkUk="] = d.current;
+  d["S21jp9HSUplvpalTD6Yn7UCYwwc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_728.part.js.map

@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Agordu priskribon de la babilejo";
     },
-    get$setStatus() {
-      return "Agordi staton";
-    },
     get$settings() {
       return "Agordoj";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Stato";
-    },
-    get$statusExampleMessage() {
-      return "Kiel vi fartas?";
     },
     get$submit(_) {
       return "Sendi";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Sendu krudan json";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Lasu malplenan por forigi vian statustexton.";
     },
     get$select(_) {
       return "Elekti";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["X8g5Lbd/YM5j58jpnUrGspqB43M="] = d.current;
+  d["O4J4LBuN3yQ8o63cy3qh3Zzomz8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_472.part.js.map

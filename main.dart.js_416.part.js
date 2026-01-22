@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Set chat description";
     },
-    get$setStatus() {
-      return "Set status";
-    },
     get$settings() {
       return "Settings";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
-    },
-    get$statusExampleMessage() {
-      return "How are you today?";
     },
     get$submit(_) {
       return "Submit";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Leave empty to clear your status.";
     },
     get$select(_) {
       return "Select";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XQwmD5vjr+t3F50PqTjeXJV6dr0="] = d.current;
+  d["cT40JNH6/9e5MBqoRTUCgGy88k0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_416.part.js.map

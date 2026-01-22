@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "\u041f\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u0435 \u043e\u043f\u0438\u0441 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430";
     },
-    get$setStatus() {
-      return "\u041f\u043e\u0441\u0442\u0430\u0432\u0438 \u0441\u0442\u0430\u0442\u0443\u0441";
-    },
     get$settings() {
       return "\u041f\u043e\u0441\u0442\u0430\u0432\u043a\u0435";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "\u0421\u0442\u0430\u045a\u0435";
-    },
-    get$statusExampleMessage() {
-      return "\u041a\u0430\u043a\u043e \u0441\u0442\u0435 \u0434\u0430\u043d\u0430\u0441?";
     },
     get$submit(_) {
       return "\u041f\u043e\u0448\u0430\u0459\u0438";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Po\u0161alji sirovi json";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Ostavite prazno da biste o\u010distili svoj status.";
     },
     get$select(_) {
       return "Izaberi";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["emfizHO22PEyONDfK2xsJVl2juU="] = d.current;
+  d["noeeVO5k2q8rouQY+alGZckKhRs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map

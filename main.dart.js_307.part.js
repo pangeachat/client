@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Indstil chatbeskrivelse";
     },
-    get$setStatus() {
-      return "Indstil status";
-    },
     get$settings() {
       return "Indstillinger";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
-    },
-    get$statusExampleMessage() {
-      return "Hvordan har du det i dag?";
     },
     get$submit(_) {
       return "Indsend";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send r\xe5 json";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Efterlad tom for at rydde din status.";
     },
     get$select(_) {
       return "V\xe6lg";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["AS7Xntk5uZo8QRneleve3mBw67Q="] = d.current;
+  d["U4G304Ke84aV4W8Gte2N2oT8lDk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

@@ -773,9 +773,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Posa una descripci\xf3 de xat";
     },
-    get$setStatus() {
-      return "Defineix l\u2019estat";
-    },
     get$settings() {
       return "Par\xe0metres";
     },
@@ -802,9 +799,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Estat";
-    },
-    get$statusExampleMessage() {
-      return "Com us sentiu avui?";
     },
     get$submit(_) {
       return "Envia";
@@ -1078,9 +1072,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Envia un json pelat";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Per esborrar el teu estat, deixa-ho en blanc.";
     },
     get$select(_) {
       return "Tria";
@@ -5370,7 +5361,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qx062UiWpx0yZKDvM9+K6GZ/l5M="] = d.current;
+  d["UuIIYRuRomD8VrL+/aQ9PL5bslM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map

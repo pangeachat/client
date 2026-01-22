@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Ezarri txataren deskribapena";
     },
-    get$setStatus() {
-      return "Ezarri egoera";
-    },
     get$settings() {
       return "Ezarpenak";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Egoera";
-    },
-    get$statusExampleMessage() {
-      return "Zer moduz zaude gaur?";
     },
     get$submit(_) {
       return "Bidali";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Bidali json gordina";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "Utzi hutsik zure egoera garbitzeko.";
     },
     get$select(_) {
       return "Hautatu";
@@ -5369,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JNUPJOIRwwWcwjR24YFjpfqatnQ="] = d.current;
+  d["PQzFKHMjbnvd/d8o6B0BWJcpTjg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_567.part.js.map

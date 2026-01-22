@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Socraigh cur s\xedos ar an gcomhr\xe1";
     },
-    get$setStatus() {
-      return "Cuir st\xe1das";
-    },
     get$settings() {
       return "Socruithe";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Staid";
-    },
-    get$statusExampleMessage() {
-      return "Conas at\xe1 t\xfa inniu?";
     },
     get$submit(_) {
       return "Cuir isteach";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Seol json amh";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "F\xe1g folamh chun do st\xe1das a ghlanadh.";
     },
     get$select(_) {
       return "Roghnaigh";
@@ -5369,7 +5360,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XL+VkWY95IAJn175d0EzvNph5yM="] = d.current;
+  d["T5ZJq+orVDN4ZelwiWv7ZBkaNSU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_617.part.js.map

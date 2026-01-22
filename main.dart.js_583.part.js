@@ -772,9 +772,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Asetti keskustelun kuvauksen";
     },
-    get$setStatus() {
-      return "Aseta tila";
-    },
     get$settings() {
       return "Asetukset";
     },
@@ -801,9 +798,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Tila";
-    },
-    get$statusExampleMessage() {
-      return "Millainen on vointisi?";
     },
     get$submit(_) {
       return "L\xe4het\xe4";
@@ -1077,9 +1071,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "L\xe4het\xe4 raakaa jsonia";
-    },
-    get$leaveEmptyToClearStatus() {
-      return "J\xe4t\xe4 tyhj\xe4ksi poistaaksesi tilasi.";
     },
     get$select(_) {
       return "Valitse";
@@ -5366,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FaE/5JMsZ1IFgY2WVTdWcdwRY54="] = d.current;
+  d["mdY6+fJqWSWcvDiKBg170EHIj5E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map
