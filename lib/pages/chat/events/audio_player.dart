@@ -151,6 +151,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       audioPlayer.pause();
       audioPlayer.dispose();
       matrix.voiceMessageEventId.value = matrix.audioPlayer = null;
+      matrix.voiceMessageEventId.removeListener(_onPlayerChange);
       // #Pangea
       _onAudioStateChanged?.cancel();
       // Pangea#
@@ -173,6 +174,14 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     if (currentPlayer != null) {
       // #Pangea
       currentPlayer.setSpeed(playbackSpeed);
+      _onAudioStateChanged?.cancel();
+      _onAudioStateChanged =
+          matrix.audioPlayer!.playerStateStream.listen((state) {
+        if (state.processingState == ProcessingState.completed) {
+          matrix.audioPlayer!.stop();
+          matrix.audioPlayer!.seek(Duration.zero);
+        }
+      });
       // Pangea#
       if (currentPlayer.isAtEndPosition) {
         currentPlayer.seek(Duration.zero);
@@ -382,10 +391,26 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     return eventWaveForm.map((i) => i > 1024 ? 1024 : i).toList();
   }
 
+  // #Pangea
+  void _onPlayerChange() {
+    if (matrix.audioPlayer == null) return;
+    _onAudioStateChanged?.cancel();
+    _onAudioStateChanged =
+        matrix.audioPlayer?.playerStateStream.listen((state) {
+      if (state.processingState == ProcessingState.completed) {
+        matrix.audioPlayer?.stop();
+        matrix.audioPlayer?.seek(Duration.zero);
+      }
+    });
+  }
+  // Pangea#
+
   @override
   void initState() {
     super.initState();
     matrix = Matrix.of(context);
+    WidgetsBinding.instance.addPostFrameCallback((_) => _onPlayerChange());
+    matrix.voiceMessageEventId.addListener(_onPlayerChange);
     _waveform = _getWaveform();
 
     // #Pangea
