@@ -353,13 +353,13 @@ class SettingsStyleView extends StatelessWidget {
               storeKey: SettingKeys.showPresences,
               defaultValue: AppConfig.showPresences,
             ),
-            SettingsSwitchListTile.adaptive(
-              title: L10n.of(context).separateChatTypes,
-              onChanged: (b) => AppConfig.separateChatTypes = b,
-              storeKey: SettingKeys.separateChatTypes,
-              defaultValue: AppConfig.separateChatTypes,
-            ),
             // #Pangea
+            // SettingsSwitchListTile.adaptive(
+            //   title: L10n.of(context).separateChatTypes,
+            //   onChanged: (b) => AppConfig.separateChatTypes = b,
+            //   storeKey: SettingKeys.separateChatTypes,
+            //   defaultValue: AppConfig.separateChatTypes,
+            // ),
             // SettingsSwitchListTile.adaptive(
             //   title: L10n.of(context).displayNavigationRail,
             //   onChanged: (b) => AppConfig.displayNavigationRail = b,
