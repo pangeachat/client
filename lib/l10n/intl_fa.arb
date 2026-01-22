@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:33.096668",
+  "@@last_modified": "2026-01-22 12:02:04.083596",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11630,6 +11630,30 @@
   },
   "knockDesc": "درخواست شما به مدیر دوره ارسال شده است! اگر آنها تأیید کنند، شما وارد خواهید شد.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "آیا کد دعوت یا لینکی به یک دوره عمومی دارید؟",
+  "welcomeUser": "خوش آمدید {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "برای دعوت کاربران به این چت، جستجو کنید.",
+  "publicInviteDescSpace": "برای دعوت کاربران به این فضا، جستجو کنید.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

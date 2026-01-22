@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:53:47.592162",
+  "@@last_modified": "2026-01-22 12:01:11.911490",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11947,6 +11947,30 @@
   },
   "knockDesc": "הבקשה שלך נשלחה למנהל הקורס! תורשה להיכנס אם הם יאשרו.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "האם יש לך קוד הזמנה או קישור לקורס ציבורי?",
+  "welcomeUser": "ברוך הבא {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "חפש משתמשים כדי להזמין אותם לצ'אט הזה.",
+  "publicInviteDescSpace": "חפש משתמשים כדי להזמין אותם למקום הזה.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

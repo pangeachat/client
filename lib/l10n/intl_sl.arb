@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-21 13:53:58.241980",
+  "@@last_modified": "2026-01-22 12:01:24.219945",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11979,6 +11979,30 @@
   },
   "knockDesc": "Vaša zahteva je bila poslana skrbniku tečaja! Vstopili boste, če jo odobrijo.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Imate kodo za povabilo ali povezavo do javnega tečaja?",
+  "welcomeUser": "Dobrodošli {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Išči uporabnike, da jih povabiš v ta klepet.",
+  "publicInviteDescSpace": "Išči uporabnike, da jih povabiš v ta prostor.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

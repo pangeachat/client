@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-21 13:53:45.416677",
+  "@@last_modified": "2026-01-22 12:01:08.955250",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11872,6 +11872,30 @@
   },
   "knockDesc": "Tua iarrtas a chaidh a chur gu rianachd a' chùrsa! Thèid thu a leigeil a-steach ma tha iad a' freagairt gu math.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "¿Tienes un código de invitación o un enlace a un curso público?",
+  "welcomeUser": "Bienvenido {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cuir fiosrúcháin ar úsáideoirí chun iad a gcuir isteach sa chomhrá seo.",
+  "publicInviteDescSpace": "Cuir fiosrúcháin ar úsáideoirí chun iad a gcuir isteach sa spás seo.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

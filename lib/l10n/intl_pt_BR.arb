@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:53:51.587209",
+  "@@last_modified": "2026-01-22 12:01:15.782911",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11256,6 +11256,30 @@
   },
   "knockDesc": "Sua solicitação foi enviada ao administrador do curso! Você será admitido se eles aprovarem.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Você tem um código de convite ou link para um curso público?",
+  "welcomeUser": "Bem-vindo {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Procure usuários para convidá-los para este chat.",
+  "publicInviteDescSpace": "Procure usuários para convidá-los para este espaço.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

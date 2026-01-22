@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:53:41.456181",
+  "@@last_modified": "2026-01-22 12:01:04.721303",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11633,6 +11633,30 @@
   },
   "knockDesc": "Cererea ta a fost trimisă administratorului cursului! Vei fi lăsat să intri dacă ei aprobă.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ai un cod de invitație sau un link pentru un curs public?",
+  "welcomeUser": "Bine ai venit {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Caută utilizatori pentru a-i invita în acest chat.",
+  "publicInviteDescSpace": "Caută utilizatori pentru a-i invita în acest spațiu.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

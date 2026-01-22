@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-21 13:53:46.524141",
+  "@@last_modified": "2026-01-22 12:01:10.402528",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11270,6 +11270,30 @@
   },
   "knockDesc": "Vaš zahtjev je poslan administratoru tečaja! Bit ćete primljeni ako odobre.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Imate li pozivni kod ili link za javni tečaj?",
+  "welcomeUser": "Dobrodošli {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Pretražite korisnike kako biste ih pozvali u ovaj chat.",
+  "publicInviteDescSpace": "Pretražite korisnike kako biste ih pozvali u ovaj prostor.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

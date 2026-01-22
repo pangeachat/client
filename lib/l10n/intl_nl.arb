@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:27.649909",
+  "@@last_modified": "2026-01-22 12:01:58.109571",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10898,6 +10898,30 @@
   },
   "knockDesc": "Je verzoek is verzonden naar de cursusbeheerder! Je wordt toegelaten als ze goedkeuren.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Heb je een uitnodigingscode of link naar een openbare cursus?",
+  "welcomeUser": "Welkom {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Zoek naar gebruikers om ze uit te nodigen voor deze chat.",
+  "publicInviteDescSpace": "Zoek naar gebruikers om ze uit te nodigen voor deze ruimte.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

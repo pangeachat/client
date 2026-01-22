@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:35.931933",
+  "@@last_modified": "2026-01-22 12:02:08.064498",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11376,6 +11376,30 @@
   },
   "knockDesc": "Din begäran har skickats till kursadministratören! Du kommer att släppas in om de godkänner.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Har du en inbjudningskod eller länk till en offentlig kurs?",
+  "welcomeUser": "Välkommen {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Sök efter användare för att bjuda in dem till den här chatten.",
+  "publicInviteDescSpace": "Sök efter användare för att bjuda in dem till det här utrymmet.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

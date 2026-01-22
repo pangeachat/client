@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:42.193114",
+  "@@last_modified": "2026-01-22 12:02:15.725740",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -11987,6 +11987,30 @@
   },
   "knockDesc": "Via peto estis sendita al la kursa administranto! Vi estos enirita se ili aprobas.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ĉu vi havas invitkodon aŭ ligon al publika kurso?",
+  "welcomeUser": "Bonvenon {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Serĉu uzantojn por inviti ilin al ĉi tiu konversacio.",
+  "publicInviteDescSpace": "Serĉu uzantojn por inviti ilin al ĉi tiu spaco.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

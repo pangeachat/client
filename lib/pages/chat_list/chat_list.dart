@@ -111,9 +111,12 @@ class ChatListController extends State<ChatList>
   // StreamSubscription? _intentUriStreamSubscription;
   // Pangea#
 
-  ActiveFilter activeFilter = AppConfig.separateChatTypes
-      ? ActiveFilter.messages
-      : ActiveFilter.allChats;
+  // #Pangea
+  // ActiveFilter activeFilter = AppConfig.separateChatTypes
+  //     ? ActiveFilter.messages
+  //     : ActiveFilter.allChats;
+  ActiveFilter activeFilter = ActiveFilter.allChats;
+  // Pangea#
 
   // #Pangea
   String? get activeSpaceId => widget.activeSpaceId;

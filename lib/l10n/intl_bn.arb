@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:31.328626",
+  "@@last_modified": "2026-01-22 12:02:02.719528",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12002,6 +12002,30 @@
   },
   "knockDesc": "আপনার অনুরোধ কোর্স প্রশাসকের কাছে পাঠানো হয়েছে! তারা অনুমোদন করলে আপনাকে প্রবেশ করতে দেওয়া হবে।",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "আপনার কি একটি আমন্ত্রণ কোড বা একটি পাবলিক কোর্সের লিঙ্ক আছে?",
+  "welcomeUser": "স্বাগতম {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "এই চ্যাটে আমন্ত্রণ জানানোর জন্য ব্যবহারকারীদের খুঁজুন।",
+  "publicInviteDescSpace": "এই স্পেসে আমন্ত্রণ জানানোর জন্য ব্যবহারকারীদের খুঁজুন।",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

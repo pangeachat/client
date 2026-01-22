@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-21 13:54:34.451816",
+  "@@last_modified": "2026-01-22 12:02:06.402870",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10896,6 +10896,30 @@
   },
   "knockDesc": "Twoja prośba została wysłana do administratora kursu! Zostaniesz wpuszczony, jeśli ją zatwierdzą.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Czy masz kod zaproszenia lub link do publicznego kursu?",
+  "welcomeUser": "Witaj {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Szukaj użytkowników, aby zaprosić ich do tej rozmowy.",
+  "publicInviteDescSpace": "Szukaj użytkowników, aby zaprosić ich do tej przestrzeni.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

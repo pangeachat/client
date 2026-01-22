@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-21 13:53:55.586614",
+  "@@last_modified": "2026-01-22 12:01:20.400166",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11169,6 +11169,30 @@
   },
   "knockDesc": "Teie taotlus on saadetud kursuse administraatorile! Teid lastakse sisse, kui nad heaks kiidavad.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Kas sul on kutsekood või link avalikule kursusele?",
+  "welcomeUser": "Tere tulemast {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Otsi kasutajaid, et neid sellesse vestlusse kutsuda.",
+  "publicInviteDescSpace": "Otsi kasutajaid, et neid sellesse ruumi kutsuda.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

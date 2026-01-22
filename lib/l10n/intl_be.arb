@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-21 13:54:07.402936",
+  "@@last_modified": "2026-01-22 12:01:33.641094",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11997,6 +11997,30 @@
   },
   "knockDesc": "Ваш запыт быў адпраўлены адміністрацыі курса! Вы будзеце дапушчаны, калі яны зацвердзяць.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ці маеце вы код запрашэння або спасылку на публічны курс?",
+  "welcomeUser": "Сардэчна запрашаем, {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Шукаць карыстальнікаў, каб запрасіць іх у гэты чат.",
+  "publicInviteDescSpace": "Шукаць карыстальнікаў, каб запрасіць іх у гэтае прастору.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

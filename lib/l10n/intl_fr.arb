@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-21 13:54:48.318824",
+  "@@last_modified": "2026-01-22 12:02:23.383738",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11222,6 +11222,30 @@
   },
   "knockDesc": "Votre demande a été envoyée à l'administrateur du cours ! Vous serez admis s'ils approuvent.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Avez-vous un code d'invitation ou un lien vers un cours public ?",
+  "welcomeUser": "Bienvenue {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Recherchez des utilisateurs pour les inviter à ce chat.",
+  "publicInviteDescSpace": "Recherchez des utilisateurs pour les inviter à cet espace.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-21 13:53:53.122879",
+  "@@last_modified": "2026-01-22 12:01:17.457241",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10898,6 +10898,30 @@
   },
   "knockDesc": "Zure eskaera ikastaroaren administratzaileari bidali zaio! Onartzen badute, sartuko zara.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Baduzu gonbidapen kodea edo lotura publiko baten ikastaroarentzako?",
+  "welcomeUser": "Ongi etorri {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Bilatu erabiltzaileak txat honetara gonbidatzeko.",
+  "publicInviteDescSpace": "Bilatu erabiltzaileak espazio honetara gonbidatzeko.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-21 13:54:19.467039",
+  "@@last_modified": "2026-01-22 12:01:49.339268",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11120,6 +11120,30 @@
   },
   "knockDesc": "Talebiniz kurs yöneticisine gönderildi! Onaylarlarsa içeri alınacaksınız.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bir davet kodunuz veya halka açık bir kursa bağlantınız var mı?",
+  "welcomeUser": "Hoş geldin {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Bu sohbete davet etmek için kullanıcıları arayın.",
+  "publicInviteDescSpace": "Bu alana davet etmek için kullanıcıları arayın.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

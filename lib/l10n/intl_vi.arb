@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:24.252269",
+  "@@last_modified": "2026-01-22 12:01:54.904291",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6468,6 +6468,30 @@
   },
   "knockDesc": "Yêu cầu của bạn đã được gửi đến quản trị viên khóa học! Bạn sẽ được cho vào nếu họ chấp thuận.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Bạn có mã mời hoặc liên kết đến một khóa học công khai không?",
+  "welcomeUser": "Chào mừng {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Tìm kiếm người dùng để mời họ tham gia trò chuyện này.",
+  "publicInviteDescSpace": "Tìm kiếm người dùng để mời họ tham gia không gian này.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

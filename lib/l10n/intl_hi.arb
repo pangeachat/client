@@ -4483,7 +4483,7 @@
   "playWithAI": "अभी के लिए एआई के साथ खेलें",
   "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
   "@@locale": "hi",
-  "@@last_modified": "2026-01-21 13:54:40.850433",
+  "@@last_modified": "2026-01-22 12:02:13.864252",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11983,6 +11983,30 @@
   },
   "knockDesc": "आपका अनुरोध पाठ्यक्रम प्रशासन को भेज दिया गया है! यदि वे स्वीकृत करते हैं, तो आपको अंदर जाने दिया जाएगा।",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "क्या आपके पास एक आमंत्रण कोड या सार्वजनिक पाठ्यक्रम के लिए लिंक है?",
+  "welcomeUser": "स्वागत है {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "इस चैट में आमंत्रित करने के लिए उपयोगकर्ताओं की खोज करें।",
+  "publicInviteDescSpace": "इस स्थान में आमंत्रित करने के लिए उपयोगकर्ताओं की खोज करें।",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

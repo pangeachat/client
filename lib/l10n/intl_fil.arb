@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-21 13:54:14.817261",
+  "@@last_modified": "2026-01-22 12:01:44.028462",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11874,6 +11874,30 @@
   },
   "knockDesc": "Ang iyong kahilingan ay naipadala sa admin ng kurso! Papayagan ka nilang pumasok kung sila ay mag-aapruba.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Mayroon ka bang invite code o link sa isang pampublikong kurso?",
+  "welcomeUser": "Maligayang pagdating {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Maghanap ng mga gumagamit upang imbitahan sila sa chat na ito.",
+  "publicInviteDescSpace": "Maghanap ng mga gumagamit upang imbitahan sila sa espasyong ito.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

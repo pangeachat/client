@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-21 13:54:11.801274",
+  "@@last_modified": "2026-01-22 12:01:38.348686",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11927,6 +11927,30 @@
   },
   "knockDesc": "Sua solicitação foi enviada ao administrador do curso! Você será admitido se eles aprovarem.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Você tem um código de convite ou link para um curso público?",
+  "welcomeUser": "Bem-vindo {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Procure usuários para convidá-los para este chat.",
+  "publicInviteDescSpace": "Procure usuários para convidá-los para este espaço.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

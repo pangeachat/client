@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:53:37.899898",
+  "@@last_modified": "2026-01-22 12:01:02.729155",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10889,6 +10889,30 @@
   },
   "knockDesc": "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Apakah Anda memiliki kode undangan atau tautan ke kursus publik?",
+  "welcomeUser": "Selamat datang {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "Cari pengguna untuk mengundang mereka ke obrolan ini.",
+  "publicInviteDescSpace": "Cari pengguna untuk mengundang mereka ke ruang ini.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

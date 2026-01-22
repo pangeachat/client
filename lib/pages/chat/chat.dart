@@ -952,6 +952,9 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     final previousEdit = editEvent;
+    if (showEmojiPicker) {
+      hideEmojiPicker();
+    }
 
     room
         .pangeaSendTextEvent(

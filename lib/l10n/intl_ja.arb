@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-21 13:54:39.359536",
+  "@@last_modified": "2026-01-22 12:02:12.048814",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11688,6 +11688,30 @@
   },
   "knockDesc": "あなたのリクエストはコース管理者に送信されました！ 彼らが承認すれば、入ることができます。",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "招待コードまたは公開コースへのリンクはありますか？",
+  "welcomeUser": "ようこそ {user} さん",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "このチャットに招待するユーザーを検索します。",
+  "publicInviteDescSpace": "このスペースに招待するユーザーを検索します。",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }

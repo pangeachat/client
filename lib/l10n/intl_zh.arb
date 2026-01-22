@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-21 13:54:29.681537",
+  "@@last_modified": "2026-01-22 12:02:00.962577",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10889,6 +10889,30 @@
   },
   "knockDesc": "您的请求已发送给课程管理员！如果他们批准，您将被允许进入。",
   "@knockDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "您是否有邀请代码或公共课程的链接？",
+  "welcomeUser": "欢迎 {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "publicInviteDescChat": "搜索用户以邀请他们加入此聊天。",
+  "publicInviteDescSpace": "搜索用户以邀请他们加入此空间。",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
     "type": "String",
     "placeholders": {}
   }
