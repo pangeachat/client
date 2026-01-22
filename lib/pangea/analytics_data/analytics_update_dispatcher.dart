@@ -4,7 +4,6 @@ import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 
 class LevelUpdate {
@@ -14,18 +13,6 @@ class LevelUpdate {
   LevelUpdate({
     required this.prevLevel,
     required this.newLevel,
-  });
-}
-
-class ConstructLevelUpdate {
-  final ConstructIdentifier constructId;
-  final ConstructLevelEnum level;
-  final String? targetID;
-
-  ConstructLevelUpdate({
-    required this.constructId,
-    required this.level,
-    this.targetID,
   });
 }
 
@@ -59,9 +46,6 @@ class AnalyticsUpdateDispatcher {
   final StreamController<Set<ConstructIdentifier>> newConstructsStream =
       StreamController<Set<ConstructIdentifier>>.broadcast();
 
-  final StreamController<ConstructLevelUpdate> constructLevelUpdateStream =
-      StreamController<ConstructLevelUpdate>.broadcast();
-
   final StreamController<MapEntry<ConstructIdentifier, UserSetLemmaInfo>>
       _lemmaInfoUpdateStream = StreamController<
           MapEntry<ConstructIdentifier, UserSetLemmaInfo>>.broadcast();
@@ -74,7 +58,6 @@ class AnalyticsUpdateDispatcher {
     unlockedConstructsStream.close();
     levelUpdateStream.close();
     _lemmaInfoUpdateStream.close();
-    constructLevelUpdateStream.close();
   }
 
   Stream<UserSetLemmaInfo> lemmaUpdateStream(
@@ -118,9 +101,6 @@ class AnalyticsUpdateDispatcher {
       case final ConstructBlockedEvent e:
         _onBlockedConstruct(e.blockedConstruct);
         break;
-      case final ConstructLevelUpEvent e:
-        _onConstructLevelUp(e.constructId, e.level, e.targetID);
-        break;
       case final NewConstructsEvent e:
         _onNewConstruct(e.newConstructs);
         break;
@@ -162,20 +142,6 @@ class AnalyticsUpdateDispatcher {
       blockedConstruct: constructId,
     );
     constructUpdateStream.add(update);
-  }
-
-  void _onConstructLevelUp(
-    ConstructIdentifier constructId,
-    ConstructLevelEnum level,
-    String? targetID,
-  ) {
-    constructLevelUpdateStream.add(
-      ConstructLevelUpdate(
-        constructId: constructId,
-        level: level,
-        targetID: targetID,
-      ),
-    );
   }
 
   void _onNewConstruct(Set<ConstructIdentifier> constructIds) {

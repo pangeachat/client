@@ -37,6 +37,13 @@ class ConstructUses {
     );
   }
 
+  int get uncappedPoints {
+    return _uses.fold<int>(
+      0,
+      (total, use) => total + use.xp,
+    );
+  }
+
   DateTime? get lastUsed => _uses.lastOrNull?.timeStamp;
   DateTime? get cappedLastUse => cappedUses.lastOrNull?.timeStamp;
 

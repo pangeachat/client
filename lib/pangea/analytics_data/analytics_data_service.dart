@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/analytics_data/analytics_database.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_database_builder.dart';
 import 'package:fluffychat/pangea/analytics_data/analytics_sync_controller.dart';
@@ -9,6 +11,7 @@ import 'package:fluffychat/pangea/analytics_data/analytics_update_service.dart';
 import 'package:fluffychat/pangea/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/pangea/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/pangea/analytics_data/level_up_analytics_service.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -21,7 +24,6 @@ import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:matrix/matrix.dart';
 
 class _AnalyticsClient {
   final Client client;
@@ -368,6 +370,52 @@ class AnalyticsDataService {
     return newConstructCount;
   }
 
+  Future<int> getLeveledUpConstructCount(
+    List<OneConstructUse> newConstructs,
+    ConstructLevelEnum targetLevel,
+  ) async {
+    await _ensureInitialized();
+    final blocked = blockedConstructs;
+    final uses =
+        newConstructs.where((c) => !blocked.contains(c.identifier)).toList();
+
+    final Map<ConstructIdentifier, int> constructPoints = {};
+    for (final use in uses) {
+      constructPoints[use.identifier] ??= 0;
+      constructPoints[use.identifier] =
+          constructPoints[use.identifier]! + use.xp;
+    }
+
+    final constructs = await getConstructUses(constructPoints.keys.toList());
+
+    int leveledUpCount = 0;
+    for (final entry in constructPoints.entries) {
+      final construct = constructs[entry.key]!;
+      // Use uncapped points to correctly calculate previous level
+      // even when construct is already at max (flowers)
+      final uncapped = construct.uncappedPoints;
+      final prevUncapped = uncapped - entry.value;
+      final prevLevel = _getLevelFromPoints(prevUncapped);
+      final newLevel = _getLevelFromPoints(uncapped);
+
+      if (prevLevel.xpNeeded < targetLevel.xpNeeded &&
+          newLevel == targetLevel) {
+        leveledUpCount++;
+      }
+    }
+
+    return leveledUpCount;
+  }
+
+  ConstructLevelEnum _getLevelFromPoints(int points) {
+    if (points < AnalyticsConstants.xpForGreens) {
+      return ConstructLevelEnum.seeds;
+    } else if (points >= AnalyticsConstants.xpForFlower) {
+      return ConstructLevelEnum.flowers;
+    }
+    return ConstructLevelEnum.greens;
+  }
+
   Future<void> updateXPOffset(int offset) async {
     _invalidateCaches();
     await _analyticsClientGetter.database.updateXPOffset(offset);
@@ -445,18 +493,6 @@ class AnalyticsDataService {
     for (final entry in newConstructs.entries) {
       final prevConstruct = prevConstructs[entry.key];
       if (prevConstruct == null) continue;
-
-      final prevLevel = prevConstruct.lemmaCategory;
-      final newLevel = entry.value.lemmaCategory;
-      if (newLevel.xpNeeded > prevLevel.xpNeeded) {
-        events.add(
-          ConstructLevelUpEvent(
-            entry.key,
-            newLevel,
-            update.targetID,
-          ),
-        );
-      }
     }
 
     if (update.blockedConstruct != null) {

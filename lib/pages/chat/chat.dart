@@ -1,9 +1,23 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_html/html.dart' as html;
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -74,19 +88,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:universal_html/html.dart' as html;
-
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
 import 'send_location_dialog.dart';
@@ -191,7 +192,6 @@ class ChatController extends State<ChatPageWithRoom>
   StreamSubscription? _levelSubscription;
   StreamSubscription? _constructsSubscription;
   StreamSubscription? _tokensSubscription;
-  StreamSubscription? _constructLevelSubscription;
 
   StreamSubscription? _botAudioSubscription;
   final timelineUpdateNotifier = _TimelineUpdateNotifier();
@@ -531,16 +531,6 @@ class ChatController extends State<ChatPageWithRoom>
     choreographer.timesDismissedIT.addListener(_onCloseIT);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
-    _constructLevelSubscription =
-        updater.constructLevelUpdateStream.stream.listen((update) {
-      if (update.targetID != null) {
-        OverlayUtil.showGrowthOverlay(
-          context,
-          update.targetID!,
-          level: update.level,
-        );
-      }
-    });
     _levelSubscription = updater.levelUpdateStream.stream.listen(_onLevelUp);
 
     _constructsSubscription =
@@ -812,7 +802,6 @@ class ChatController extends State<ChatPageWithRoom>
     _levelSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _constructsSubscription?.cancel();
-    _constructLevelSubscription?.cancel();
     _tokensSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     choreographer.timesDismissedIT.removeListener(_onCloseIT);
@@ -2141,12 +2130,12 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  void _sendMessageAnalytics(
+  Future<void> _sendMessageAnalytics(
     String? eventId, {
     PangeaRepresentation? originalSent,
     PangeaMessageTokens? tokensSent,
     ChoreoRecordModel? choreo,
-  }) {
+  }) async {
     // There's a listen in my_analytics_controller that decides when to auto-update
     // analytics based on when / how many messages the logged in user send. This
     // stream sends the data for newly sent messages.
@@ -2169,8 +2158,8 @@ class ChatController extends State<ChatPageWithRoom>
         ),
       ];
 
-      _showAnalyticsFeedback(constructs, eventId);
-      addAnalytics(constructs, eventId);
+      await addAnalytics(constructs, eventId);
+      await _showAnalyticsFeedback(constructs, eventId);
     }
   }
 
@@ -2215,11 +2204,11 @@ class ChatController extends State<ChatPageWithRoom>
       final constructs = stt.constructs(roomId, eventId);
       if (constructs.isEmpty) return;
 
-      _showAnalyticsFeedback(constructs, eventId);
-      Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+      await Matrix.of(context).analyticsDataService.updateService.addAnalytics(
             eventId,
             constructs,
           );
+      await _showAnalyticsFeedback(constructs, eventId);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -2355,15 +2344,34 @@ class ChatController extends State<ChatPageWithRoom>
       ConstructTypeEnum.vocab,
     );
 
-    // Show growth animation for new vocab (seeds level)
+    final newLeafConstructs = await analyticsService.getLeveledUpConstructCount(
+      constructs,
+      ConstructLevelEnum.greens,
+    );
+    final newFlowerConstructs =
+        await analyticsService.getLeveledUpConstructCount(
+      constructs,
+      ConstructLevelEnum.flowers,
+    );
+
+    // Show all growth animations at once
+    final Map<ConstructLevelEnum, int> levelCounts = {};
     if (newVocabConstructs > 0) {
-      for (int i = 0; i < newVocabConstructs; i++) {
-        OverlayUtil.showGrowthOverlay(
-          context,
-          eventId,
-          level: ConstructLevelEnum.seeds,
-        );
-      }
+      levelCounts[ConstructLevelEnum.seeds] = newVocabConstructs;
+    }
+    if (newLeafConstructs > 0) {
+      levelCounts[ConstructLevelEnum.greens] = newLeafConstructs;
+    }
+    if (newFlowerConstructs > 0) {
+      levelCounts[ConstructLevelEnum.flowers] = newFlowerConstructs;
+    }
+
+    if (levelCounts.isNotEmpty) {
+      OverlayUtil.showGrowthOverlay(
+        context,
+        eventId,
+        levelCounts: levelCounts,
+      );
     }
 
     OverlayUtil.showOverlay(
