@@ -44,8 +44,9 @@ class ActivityPlanModel {
         _roles = roles,
         _imageURL = imageURL;
 
-  String? get imageURL =>
-      _imageURL != null ? "${Environment.cmsApi}$_imageURL" : null;
+  Uri? get imageURL => _imageURL != null
+      ? Uri.tryParse("${Environment.cmsApi}$_imageURL")
+      : null;
 
   Map<String, ActivityRole> get roles {
     if (_roles != null) return _roles!;

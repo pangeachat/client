@@ -193,13 +193,14 @@ extension CoursePlanRoomExtension on Room {
       preset: CreateRoomPreset.publicChat,
       visibility: Visibility.private,
       name: name,
-      roomAliasName: "${type.alias}_${id.localpart}",
+      roomAliasName:
+          "${type.alias}_${id.localpart}_${DateTime.now().millisecondsSinceEpoch}",
       initialState: [
         StateEvent(
           type: EventTypes.RoomAvatar,
           content: {'url': uploadURL},
         ),
-        RoomDefaults.defaultPowerLevels(client.userID!),
+        type.powerLevels(client.userID!),
         await client.pangeaJoinRules(
           'knock_restricted',
           allow: [

@@ -108,7 +108,7 @@ class Avatar extends StatelessWidget {
                     // #Pangea
                     : !(mxContent.toString().startsWith('mxc://'))
                         ? ImageByUrl(
-                            imageUrl: mxContent.toString(),
+                            imageUrl: mxContent,
                             width: size,
                             replacement: Center(
                               child: Icon(
