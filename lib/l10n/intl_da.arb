@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-21 13:53:34.885532",
+  "@@last_modified": "2026-01-22 09:36:14.204217",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11961,5 +11961,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Har du en invitationskode eller et link til et offentligt kursus?",
+  "welcomeUser": "Velkommen {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

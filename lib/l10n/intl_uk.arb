@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-21 13:54:03.403456",
+  "@@last_modified": "2026-01-22 09:36:41.798719",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10894,5 +10894,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "У вас є код запрошення або посилання на публічний курс?",
+  "welcomeUser": "Ласкаво просимо {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

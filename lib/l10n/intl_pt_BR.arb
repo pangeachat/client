@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:53:51.587209",
+  "@@last_modified": "2026-01-22 09:36:29.216087",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -11258,5 +11258,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Você tem um código de convite ou link para um curso público?",
+  "welcomeUser": "Bem-vindo {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

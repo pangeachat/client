@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:45.561732",
+  "@@last_modified": "2026-01-22 09:37:27.068492",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12002,5 +12002,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Imate li pozivni kod ili link za javni kurs?",
+  "welcomeUser": "Dobrodošli {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

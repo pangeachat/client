@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-21 13:53:59.885092",
+  "@@last_modified": "2026-01-22 09:36:38.546245",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -11991,5 +11991,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "你有邀請碼或公共課程的鏈接嗎？",
+  "welcomeUser": "歡迎 {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

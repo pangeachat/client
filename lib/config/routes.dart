@@ -22,6 +22,7 @@ import 'package:fluffychat/pages/device_settings/device_settings.dart';
 import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pages/new_private_chat/new_private_chat.dart';
+import 'package:fluffychat/pages/onboarding/space_code_onboarding.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pages/settings_3pid/settings_3pid.dart';
 import 'package:fluffychat/pages/settings_chat/settings_chat.dart';
@@ -50,9 +51,9 @@ import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/join_codes/join_with_link_page.dart';
 import 'package:fluffychat/pangea/learning_settings/settings_learning.dart';
-import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/course_code_page.dart';
 import 'package:fluffychat/pangea/login/pages/create_pangea_account_page.dart';
+import 'package:fluffychat/pangea/login/pages/find_course_page.dart';
 import 'package:fluffychat/pangea/login/pages/language_selection_page.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/new_course_page.dart';
@@ -213,93 +214,8 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            const AddCoursePage(route: 'registration'),
+            const SpaceCodeOnboarding(),
           ),
-          routes: [
-            GoRoute(
-              path: 'private',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  const CourseCodePage(),
-                );
-              },
-            ),
-            GoRoute(
-              path: 'public',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  const PublicCoursesPage(
-                    route: 'registration',
-                    showFilters: false,
-                  ),
-                );
-              },
-              routes: [
-                GoRoute(
-                  path: ':courseid',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      SelectedCourse(
-                        state.pathParameters['courseid']!,
-                        SelectedCourseMode.join,
-                        roomChunk: state.extra as PublicRoomsChunk?,
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-            GoRoute(
-              path: 'own',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  const NewCoursePage(
-                    route: 'registration',
-                    showFilters: false,
-                  ),
-                );
-              },
-              routes: [
-                GoRoute(
-                  path: ':courseid',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      SelectedCourse(
-                        state.pathParameters['courseid']!,
-                        SelectedCourseMode.launch,
-                      ),
-                    );
-                  },
-                  routes: [
-                    GoRoute(
-                      path: 'invite',
-                      pageBuilder: (context, state) {
-                        return defaultPageBuilder(
-                          context,
-                          state,
-                          CourseInvitePage(
-                            state.pathParameters['courseid']!,
-                            courseCreationCompleter:
-                                state.extra as Completer<String>?,
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
         ),
       ],
     ),
@@ -434,7 +350,7 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                const AddCoursePage(route: 'rooms'),
+                const FindCoursePage(),
               ),
               routes: [
                 GoRoute(

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:08.647836",
+  "@@last_modified": "2026-01-22 09:36:49.492725",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10924,5 +10924,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Tens un codi d'invitació o un enllaç a un curs públic?",
+  "welcomeUser": "Benvingut {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

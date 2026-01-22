@@ -4456,7 +4456,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-21 13:54:10.758435",
+  "@@last_modified": "2026-01-22 09:36:51.239616",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11958,5 +11958,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "คุณมีรหัสเชิญหรือลิงก์ไปยังหลักสูตรสาธารณะหรือไม่?",
+  "welcomeUser": "ยินดีต้อนรับ {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

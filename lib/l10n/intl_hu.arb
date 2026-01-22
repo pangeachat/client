@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-21 13:53:36.742109",
+  "@@last_modified": "2026-01-22 09:36:15.788819",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10901,5 +10901,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Van meghívó kódod vagy linked egy nyilvános kurzushoz?",
+  "welcomeUser": "Üdvözöljük {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

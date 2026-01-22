@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:54:25.999605",
+  "@@last_modified": "2026-01-22 09:37:06.101200",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11124,5 +11124,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "உங்களுக்கு ஒரு அழைப்பு குறியீடு அல்லது பொது பாடத்திற்கு இணைப்பு உள்ளதா?",
+  "welcomeUser": "வரவேற்கிறேன் {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

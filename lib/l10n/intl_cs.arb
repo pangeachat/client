@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-21 13:54:04.800051",
+  "@@last_modified": "2026-01-22 09:36:43.351703",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11507,5 +11507,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Máte pozvánkový kód nebo odkaz na veřejný kurz?",
+  "welcomeUser": "Vítejte {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

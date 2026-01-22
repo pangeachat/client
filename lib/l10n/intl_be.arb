@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-21 13:54:07.402936",
+  "@@last_modified": "2026-01-22 09:36:46.926563",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11999,5 +11999,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Ці маеце вы код запрашэння або спасылку на публічны курс?",
+  "welcomeUser": "Сардэчна запрашаем, {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

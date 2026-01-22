@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-21 13:53:45.416677",
+  "@@last_modified": "2026-01-22 09:36:22.149976",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11874,5 +11874,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "¿Tienes un código de invitación o un enlace a un curso público?",
+  "welcomeUser": "Bienvenido {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

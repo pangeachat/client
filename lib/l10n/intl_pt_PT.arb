@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-21 13:54:11.801274",
+  "@@last_modified": "2026-01-22 09:36:52.464279",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11929,5 +11929,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Você tem um código de convite ou link para um curso público?",
+  "welcomeUser": "Bem-vindo {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

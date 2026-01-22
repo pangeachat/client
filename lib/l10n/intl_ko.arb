@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-21 13:53:28.417406",
+  "@@last_modified": "2026-01-22 09:36:07.420159",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11008,5 +11008,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "공개 과정에 대한 초대 코드나 링크가 있습니까?",
+  "welcomeUser": "환영합니다 {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }

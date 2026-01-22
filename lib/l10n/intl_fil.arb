@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-21 13:54:14.817261",
+  "@@last_modified": "2026-01-22 09:36:55.313694",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11876,5 +11876,19 @@
   "@knockDesc": {
     "type": "String",
     "placeholders": {}
+  },
+  "joinSpaceOnboardingDesc": "Mayroon ka bang invite code o link sa isang pampublikong kurso?",
+  "welcomeUser": "Maligayang pagdating {user}",
+  "@joinSpaceOnboardingDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@welcomeUser": {
+    "type": "String",
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
   }
 }
