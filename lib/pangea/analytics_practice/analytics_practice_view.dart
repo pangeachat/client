@@ -408,7 +408,6 @@ class _ActivityChoicesWidget extends StatelessWidget {
                 final cardHeight = (constrainedHeight / (choices.length + 1))
                     .clamp(50.0, 80.0);
 
-                return Column(
                 return ValueListenableBuilder(
                   valueListenable: controller.enableChoicesNotifier,
                   builder: (context, enabled, __) => Column(
