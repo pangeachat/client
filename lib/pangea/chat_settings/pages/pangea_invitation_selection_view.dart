@@ -184,9 +184,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                             itemCount: contacts.length + 2,
                             itemBuilder: (BuildContext context, int i) {
                               if (i == 0) {
-                                return controller.filter ==
-                                            InvitationFilter.space &&
-                                        controller.spaceParent != null
+                                return controller.showInviteAllInSpaceButton
                                     ? ListTile(
                                         leading: ClipPath(
                                           clipper: MapClipper(),
