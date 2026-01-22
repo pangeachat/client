@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " a trimis informa\u021bie de apel";
     },
-    get$separateChatTypes() {
-      return "Afi\u0219a\u021bi chaturi directe \u0219i grupuri separat";
-    },
     get$setChatDescription() {
       return "Seteaz\u0103 descrierea chat-ului";
     },
@@ -5360,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gQvRof25X7CY8O04X7/7KWFlxtU="] = d.current;
+  d["pdMoj5gG3KkZljbszinnq1zU/Zk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " odoslal inform\xe1cie o hovore";
     },
-    get$separateChatTypes() {
-      return "Oddeli\u0165 Priame konverz\xe1cie a Skupiny";
-    },
     get$setChatDescription() {
       return "Nastavi\u0165 popis konverz\xe1cie";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gOvc4t0dBRYBRkJh4vOjq2Juid4="] = d.current;
+  d["qYnWjyX7tf5RWXvb8pSzFAaorhA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_751.part.js.map

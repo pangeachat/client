@@ -767,9 +767,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " ha enviat informaci\xf3 de trucada";
     },
-    get$separateChatTypes() {
-      return "Separa xats directes i grups";
-    },
     get$setChatDescription() {
       return "Posa una descripci\xf3 de xat";
     },
@@ -5361,7 +5358,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UuIIYRuRomD8VrL+/aQ9PL5bslM="] = d.current;
+  d["hakkdQP2ivb4WtzTu+AkPdVV5A4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map

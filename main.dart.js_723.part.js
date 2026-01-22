@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " nos\u016bt\u012bja inform\u0101ciju par zvanu";
     },
-    get$separateChatTypes() {
-      return "Atdal\u012bt tie\u0161\u0101s t\u0113rz\u0113\u0161anas un kopas";
-    },
     get$setChatDescription() {
       return "Iestat\u012bt t\u0113rz\u0113\u0161anas aprakstu";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["d2JdV8BVNyq2p0KyAoa8sr6LCyo="] = d.current;
+  d["9ZhPpT3jYHxF2jKwYS9muG/acFQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_723.part.js.map

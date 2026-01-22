@@ -767,9 +767,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return "\u0623\u0631\u0633\u0644 " + senderName + " \u0645\u0639\u0644\u0648\u0645\u0627\u062a \u0645\u0643\u0627\u0644\u0645\u0629";
     },
-    get$separateChatTypes() {
-      return "\u0627\u0644\u062f\u0631\u062f\u0634\u0627\u062a \u0627\u0644\u0645\u0628\u0627\u0634\u0631\u0629 \u0648\u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a \u0627\u0644\u0645\u0646\u0641\u0635\u0644\u0629";
-    },
     get$setChatDescription() {
       return "\u062a\u0639\u064a\u064a\u0646 \u0648\u0635\u0641\u064b\u0627 \u0644\u0644\u062f\u0631\u062f\u0634\u0629";
     },
@@ -5358,7 +5355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["z8ze/XJhFEVUbJrD2n75qN3V8Cc="] = d.current;
+  d["7flJ19Yz5Bd7w37Qzsf5SAY7uL8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_140.part.js.map

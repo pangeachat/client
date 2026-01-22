@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " hat Anrufinformationen geschickt";
     },
-    get$separateChatTypes() {
-      return "Separate Direktchats und Gruppen";
-    },
     get$setChatDescription() {
       return "Chatbeschreibung festlegen";
     },
@@ -5360,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["vc44SwWYmfhak/TpUKmhtOgZAyw="] = d.current;
+  d["ehTSGyPUbrsL/Fw9Z6Cs+KLiCB8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_387.part.js.map

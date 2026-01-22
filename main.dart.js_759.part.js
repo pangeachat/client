@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " skickade samtalsinformation";
     },
-    get$separateChatTypes() {
-      return "Separata direktchattar och grupper";
-    },
     get$setChatDescription() {
       return "\xc4ndra chattens beskrivning";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["/fHmRYfWMQSi0CeVlI5kuvzFk2I="] = d.current;
+  d["6BqFC/genI+yL88MiMHdwEf4Dyw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_759.part.js.map

@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " l\xe4hetti puhelutiedot";
     },
-    get$separateChatTypes() {
-      return "Erota yksityiskeskustelut ryhmist\xe4";
-    },
     get$setChatDescription() {
       return "Asetti keskustelun kuvauksen";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mdY6+fJqWSWcvDiKBg170EHIj5E="] = d.current;
+  d["bsoHc6qAaRpZg2BooPFR8SzNnT0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

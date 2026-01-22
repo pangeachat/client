@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " sent call information";
     },
-    get$separateChatTypes() {
-      return "Separate Direct Chats and Groups";
-    },
     get$setChatDescription() {
       return "Set chat description";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cT40JNH6/9e5MBqoRTUCgGy88k0="] = d.current;
+  d["vjIVDEIqoexh/EhprLCo11mhREM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_416.part.js.map

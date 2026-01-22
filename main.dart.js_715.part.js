@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " i\u0161siunt\u0117 skambu\u010dio informacij\u0105";
     },
-    get$separateChatTypes() {
-      return "Atskirti tiesioginius pokalbius ir grupes";
-    },
     get$setChatDescription() {
       return "Nustatyti pokalbio apra\u0161ym\u0105";
     },
@@ -5360,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K9zoYRFakkduORTlazxl++IFodg="] = d.current;
+  d["j5boeYaT9fCuvBLYOimg9KJZxh8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

@@ -767,9 +767,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " wys\u0142a\u0142/-a informacje o po\u0142\u0105czeniu";
     },
-    get$separateChatTypes() {
-      return "Oddzielenie czat\xf3w bezpo\u015brednich i grupowych";
-    },
     get$setChatDescription() {
       return "Ustaw opis czatu";
     },
@@ -5358,7 +5355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7vtPjQ6WzORgTUU4GwCltrsRQGQ="] = d.current;
+  d["gEh4XZ7duP0bMvswiPealD39Inc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_737.part.js.map

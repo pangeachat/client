@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0 \u10d6\u10d0\u10e0\u10d8\u10e1 \u10d8\u10dc\u10e4\u10dd\u10e0\u10db\u10d0\u10ea\u10d8\u10d0";
     },
-    get$separateChatTypes() {
-      return "\u10d2\u10d0\u10dc\u10e1\u10ee\u10d5\u10d0\u10d5\u10d4\u10d1\u10e3\u10da\u10d8 \u10de\u10d8\u10e0\u10d3\u10d0\u10de\u10d8\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d4\u10d1\u10d8 \u10d3\u10d0 \u10ef\u10d2\u10e3\u10e4\u10d4\u10d1\u10d8";
-    },
     get$setChatDescription() {
       return "\u10d3\u10d0\u10d0\u10e7\u10d4\u10dc\u10d4\u10d7 \u10e9\u10d0\u10e2\u10d8\u10e1 \u10d0\u10e6\u10ec\u10d4\u10e0\u10d0";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0t8wQLEZSlEseQe8i0w+lx+ZJx0="] = d.current;
+  d["D8bL5Nx+uNeRjL/9lAe/ALjx/zQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_713.part.js.map

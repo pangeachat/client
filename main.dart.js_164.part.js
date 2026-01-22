@@ -767,9 +767,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " \u0f60\u0f5a\u0f7c\u0f63\u0f0b\u0f60\u0f51\u0f7a\u0f58\u0f66\u0f0b\u0f5a\u0f72\u0f42\u0f0b\u0f42\u0f45\u0f72\u0f42\u0f0b\u0f55\u0fb1\u0f7a\u0f51\u0f0b\u0f62\u0f7c\u0f42\u0f66\u0f0d";
     },
-    get$separateChatTypes() {
-      return "\u0f42\u0f66\u0f63\u0f0b\u0f56\u0f64\u0f51\u0f0b\u0f5a\u0f7c\u0f51\u0f0b\u0f63\u0f7a\u0f53\u0f0b\u0f51\u0f44\u0f0b\u0f51\u0f42\u0f7c\u0f44\u0f66\u0f0b\u0f66\u0f92\u0fb2\u0f72\u0f42\u0f0b\u0f5a\u0f7c\u0f51\u0f0b\u0f63\u0f7a\u0f53\u0f0b\u0f63\u0f9f\u0f62\u0f0b\u0f66\u0fa3\u0f7c\u0f53\u0f0d";
-    },
     get$setChatDescription() {
       return "\u0f5a\u0f7c\u0f51\u0f0b\u0f5a\u0f53\u0f0b\u0f56\u0f62\u0fa1\u0f0b\u0f66\u0fa6\u0fb1\u0f7c\u0f62\u0f0b\u0f63\u0f42\u0f0b\u0f41\u0fb1\u0f7a\u0f62\u0f0b\u0f60\u0f56\u0f51\u0f0d";
     },
@@ -5371,7 +5368,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Re8tlfWHG/cdXtWXtK2cWCOncqI="] = d.current;
+  d["4+2kMQpObr5lQ1OmggR+cT0NnFo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map

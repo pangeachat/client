@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return "Sheol " + senderName + " faisn\xe9is maidir le glaonna";
     },
-    get$separateChatTypes() {
-      return "Comhr\xe1ite D\xedreacha agus Gr\xfapa\xed ar Leith";
-    },
     get$setChatDescription() {
       return "Socraigh cur s\xedos ar an gcomhr\xe1";
     },
@@ -5360,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["T5ZJq+orVDN4ZelwiWv7ZBkaNSU="] = d.current;
+  d["raGRduvpHUx3TIzWJhthdLIOlCc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_617.part.js.map

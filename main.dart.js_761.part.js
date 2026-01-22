@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " \u0c15\u0c3e\u0c32\u0c4d \u0c38\u0c2e\u0c3e\u0c1a\u0c3e\u0c30\u0c02 \u0c2a\u0c02\u0c2a\u0c3e\u0c30\u0c41";
     },
-    get$separateChatTypes() {
-      return "\u0c2a\u0c4d\u0c30\u0c24\u0c4d\u0c2f\u0c47\u0c15 \u0c21\u0c48\u0c30\u0c46\u0c15\u0c4d\u0c1f\u0c4d \u0c1a\u0c3e\u0c1f\u0c4d\u0c38\u0c4d \u0c2e\u0c30\u0c3f\u0c2f\u0c41 \u0c17\u0c4d\u0c30\u0c42\u0c2a\u0c41\u0c32\u0c41";
-    },
     get$setChatDescription() {
       return "\u0c1a\u0c3e\u0c1f\u0c4d \u0c35\u0c3f\u0c35\u0c30\u0c23 \u0c38\u0c46\u0c1f\u0c4d \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XHqqDD0XedbhhWDxnBXEheaPMD0="] = d.current;
+  d["zH1kG38brk3o5uOnKlqQ3D04bp0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_761.part.js.map

@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " sendis informojn pri voko";
     },
-    get$separateChatTypes() {
-      return "Apartigu Rektajn Babilejojn kaj Grupojn";
-    },
     get$setChatDescription() {
       return "Agordu priskribon de la babilejo";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["O4J4LBuN3yQ8o63cy3qh3Zzomz8="] = d.current;
+  d["E4+jsuqHVnubHZPS3oaU2AmMW+I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_472.part.js.map

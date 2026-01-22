@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " h\xedv\xe1sinform\xe1ci\xf3t k\xfcld\xf6tt";
     },
-    get$separateChatTypes() {
-      return "Csoportok \xe9s priv\xe1t \xfczenetek elk\xfcl\xf6n\xedt\xe9se";
-    },
     get$setChatDescription() {
       return "Cseveg\xe9s le\xedr\xe1s be\xe1ll\xedt\xe1sa";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WivwKUyrvwLCuW1eSg/2QGTqVDI="] = d.current;
+  d["ybNUyGx/Orph2kRFE4sQFoGi0o8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062a\u0645\u0627\u0633 \u0631\u0627 \u0641\u0631\u0633\u062a\u0627\u062f";
     },
-    get$separateChatTypes() {
-      return "\u06af\u067e\u200c\u0647\u0627\u06cc \u0645\u0633\u062a\u0642\u06cc\u0645 \u0631\u0627 \u0627\u0632 \u06af\u0631\u0648\u0647\u200c\u0647\u0627 \u062c\u062f\u0627 \u06a9\u0646\u06cc\u062f";
-    },
     get$setChatDescription() {
       return "\u062a\u0646\u0638\u06cc\u0645 \u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0686\u062a";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XikVrVm/NRejHvdWMLcidy/vSYU="] = d.current;
+  d["C1U1OTJui5m0GfcKo+q1mqCHfI0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

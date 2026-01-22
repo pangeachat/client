@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " \u0111\xe3 g\u1eedi th\xf4ng tin cu\u1ed9c g\u1ecdi";
     },
-    get$separateChatTypes() {
-      return "Ph\xe2n lo\u1ea1i Nh\u1eafn Tin Tr\u1ef1c Ti\u1ebfp v\xe0 Nh\xf3m";
-    },
     get$setChatDescription() {
       return "\u0110\u1eb7t m\xf4 t\u1ea3 cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nPUcvtc+L+/H5ZUs4BHExwCBtZs="] = d.current;
+  d["hqLGX2zYJrAN9OBnCzxr5A3zQXQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_765.part.js.map

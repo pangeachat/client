@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " arama bilgilerini g\xf6nderdi";
     },
-    get$separateChatTypes() {
-      return "Do\u011frudan Sohbetleri ve Gruplar\u0131 Ay\u0131r";
-    },
     get$setChatDescription() {
       return "Sohbet a\xe7\u0131klamas\u0131n\u0131 ayarla";
     },
@@ -5360,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kIcUIQdaYIMFwu3Z6cABGhX7dlo="] = d.current;
+  d["DUSgCscly2N6X9w2fsXP+d4zLCI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_763.part.js.map

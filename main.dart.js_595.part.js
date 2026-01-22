@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " nagsend ng impormasyon sa tawag";
     },
-    get$separateChatTypes() {
-      return "Hatiin ang Direktang Usap at mga Grupo";
-    },
     get$setChatDescription() {
       return "Itakda ang paglalarawan ng usapan";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["4briNj7RbFUJ3gTA18MKoimxXdw="] = d.current;
+  d["ozA4wa2H+dKsMUhdhGvnIUfMGNU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " je poslal informacije o klicu";
     },
-    get$separateChatTypes() {
-      return "Lo\u010dene neposredne pogovore in skupine";
-    },
     get$setChatDescription() {
       return "Nastavi opis pogovora";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5+tjmRFC4pAJiBCvW/VyzEh1VII="] = d.current;
+  d["Tt78PJdnkHhX4ygaIT+zlzKGHWM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_754.part.js.map

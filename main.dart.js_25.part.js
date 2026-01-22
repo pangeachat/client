@@ -778,9 +778,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " enviou informa\xe7\xf5es da chamada";
     },
-    get$separateChatTypes() {
-      return "Separar Chats Diretos e Grupos";
-    },
     get$setChatDescription() {
       return "Definir descri\xe7\xe3o do chat";
     },
@@ -6111,9 +6108,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " enviou informa\xe7\xf5es de chamada";
     },
-    get$separateChatTypes() {
-      return "Separar Conversas Diretas e Grupos";
-    },
     get$setChatDescription() {
       return "Inserir descri\xe7\xe3o da conversa";
     },
@@ -11441,9 +11435,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " enviou informa\xe7\xf5es da chamada";
     },
-    get$separateChatTypes() {
-      return "Separar conversas diretas e grupos";
-    },
     get$setChatDescription() {
       return "Definir descri\xe7\xe3o do chat";
     },
@@ -16221,7 +16212,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZQJlERx3UGM3RPYK9WYC0vFZwrU="] = d.current;
+  d["IOTRaMlf3FG99XEgwnCc4alroSo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

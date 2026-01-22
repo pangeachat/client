@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " odeslal informace o hovoru";
     },
-    get$separateChatTypes() {
-      return "Odd\u011b\u013alit p\u0159\xedm\xe9 chaty, skupiny a prostory";
-    },
     get$setChatDescription() {
       return "Nastavit popis konverzace";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OKJRczT1Zu0sh/aODD+K0NpEkdA="] = d.current;
+  d["UH6uHkwhesSx9AWcYeIrQusHgdc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

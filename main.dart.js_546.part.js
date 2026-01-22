@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " saatis teavet k\xf5ne kohta";
     },
-    get$separateChatTypes() {
-      return "Eraldi vestlused ja jututoad";
-    },
     get$setChatDescription() {
       return "Lisa vestluse kirjeldus";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nEzemiGIW7DcUIMj6QIfKGUw0oM="] = d.current;
+  d["LHAUqT+FKGvQ5Nlkh7HYcqPDmZU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_546.part.js.map

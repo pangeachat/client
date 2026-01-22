@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + "(e)k deiaren informazioa bidali du";
     },
-    get$separateChatTypes() {
-      return "Bereizi banakako mezuak eta taldeak";
-    },
     get$setChatDescription() {
       return "Ezarri txataren deskribapena";
     },
@@ -5360,7 +5357,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PQzFKHMjbnvd/d8o6B0BWJcpTjg="] = d.current;
+  d["tZltTZ13EuB0BjyyObuH+2HMEbg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_567.part.js.map

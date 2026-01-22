@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " heeft oproepgegevens verzonden";
     },
-    get$separateChatTypes() {
-      return "Directe chats en groepen los weergeven";
-    },
     get$setChatDescription() {
       return "Chatomschrijving instellen";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Xa4W5TCSV1Yc8fFBSW7q4/AU27w="] = d.current;
+  d["IoUIY7MWHa7Q9PuPJWPG17BAPlA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_733.part.js.map

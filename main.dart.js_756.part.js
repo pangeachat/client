@@ -766,9 +766,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentCallInformations$1(senderName) {
       return senderName + " \u043f\u043e\u0441\u043b\u0430 \u043f\u043e\u0434\u0430\u0442\u043a\u0435 \u043e \u043f\u043e\u0437\u0438\u0432\u0443";
     },
-    get$separateChatTypes() {
-      return "Odvojeni Direktni razgovori i Grupe";
-    },
     get$setChatDescription() {
       return "\u041f\u043e\u0441\u0442\u0430\u0432\u0438\u0442\u0435 \u043e\u043f\u0438\u0441 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430";
     },
@@ -5357,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["noeeVO5k2q8rouQY+alGZckKhRs="] = d.current;
+  d["dlRaGkz9hch8Qjb8hJd0de52LQY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_756.part.js.map
