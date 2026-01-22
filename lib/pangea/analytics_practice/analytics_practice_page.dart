@@ -505,4 +505,5 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   @override
   Widget build(BuildContext context) => AnalyticsPracticeView(this);
+    final request = activityTarget.value;
 }

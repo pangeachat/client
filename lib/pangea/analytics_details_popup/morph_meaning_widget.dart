@@ -1,7 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/languages/language_constants.dart';
@@ -11,17 +9,20 @@ import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
   final MorphFeaturesEnum feature;
   final String tag;
   final TextStyle? style;
+  final bool blankErrorFeedback;
 
   const MorphMeaningWidget({
     super.key,
     required this.feature,
     required this.tag,
     this.style,
+    this.blankErrorFeedback = false,
   });
 
   @override
@@ -91,12 +92,13 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     );
 
     if (result.isError) {
-      return L10n.of(context).meaningNotFound;
+      return widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound;
     }
 
     final morph = result.result!.getFeatureByCode(widget.feature.name);
     final data = morph?.getTagByCode(widget.tag);
-    return data?.l1Description ?? L10n.of(context).meaningNotFound;
+    return data?.l1Description ??
+        (widget.blankErrorFeedback ? '' : L10n.of(context).meaningNotFound);
   }
 
   void _toggleEditMode(bool value) => setState(() => _editMode = value);

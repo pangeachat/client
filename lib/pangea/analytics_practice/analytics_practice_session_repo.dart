@@ -267,6 +267,7 @@ class AnalyticsPracticeSessionRepo {
               choreo: choreo,
               stepIndex: i,
               eventID: event.eventId,
+              event: event,
             ),
           ),
         );

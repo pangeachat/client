@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
+import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 // includes feedback text and the bad activity model
 class ActivityQualityFeedback {
@@ -45,11 +44,13 @@ class GrammarErrorRequestInfo {
   final ChoreoRecordModel choreo;
   final int stepIndex;
   final String eventID;
+  final PangeaMessageEvent? event;
 
   const GrammarErrorRequestInfo({
     required this.choreo,
     required this.stepIndex,
     required this.eventID,
+    this.event,
   });
 
   Map<String, dynamic> toJson() {

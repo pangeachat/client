@@ -1,4 +1,5 @@
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -74,8 +75,7 @@ class AnalyticsPracticeView extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 16.0,
-          vertical: 24.0,
+          horizontal: 8.0,
         ),
         child: MaxWidthBody(
           withScrolling: false,
@@ -123,25 +123,36 @@ class _AnalyticsActivityView extends StatelessWidget {
         ),
         Expanded(
           child: Column(
-            spacing: 16.0,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Expanded(
-                flex: 1,
-                child: ValueListenableBuilder(
-                  valueListenable: controller.activityTarget,
-                  builder: (context, target, __) => target != null
-                      ? Column(
+              ValueListenableBuilder(
+                valueListenable: controller.activityTarget,
+                builder: (context, target, __) => target != null
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                          left: 16.0,
+                          right: 16.0,
+                          top: 16.0,
+                        ),
+                        child: Column(
                           spacing: 12.0,
                           children: [
                             Text(
                               target.promptText(context),
                               textAlign: TextAlign.center,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                              style: FluffyThemes.isColumnMode(context)
+                                  ? Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      )
+                                  : Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                             ),
                             if (controller.widget.type ==
                                 ConstructTypeEnum.vocab)
@@ -153,21 +164,55 @@ class _AnalyticsActivityView extends StatelessWidget {
                                 style: const TextStyle(fontSize: 14.0),
                               ),
                           ],
-                        )
-                      : const SizedBox(),
-                ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
-              Expanded(
-                flex: 2,
-                child: Center(
+              Flexible(
+                fit: FlexFit.loose,
+                child: SingleChildScrollView(
                   child: _AnalyticsPracticeCenterContent(
                     controller: controller,
                   ),
                 ),
               ),
               Expanded(
-                flex: 6,
                 child: _ActivityChoicesWidget(controller),
+              ),
+              //reserve space for grammar category morph meaning to avoid shifting, but only in those questions
+              AnimatedBuilder(
+                animation: Listenable.merge([
+                  controller.activityState,
+                  controller.selectedMorphChoice,
+                ]),
+                builder: (context, _) {
+                  final activityState = controller.activityState.value;
+                  final selectedChoice = controller.selectedMorphChoice.value;
+
+                  final isGrammarCategory = activityState
+                          is AsyncLoaded<MultipleChoicePracticeActivityModel> &&
+                      activityState.value.activityType ==
+                          ActivityTypeEnum.grammarCategory;
+
+                  if (!isGrammarCategory) {
+                    return const SizedBox.shrink();
+                  }
+
+                  return ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minHeight: 80,
+                    ),
+                    child: selectedChoice == null
+                        ? const SizedBox.shrink()
+                        : SingleChildScrollView(
+                            child: MorphMeaningWidget(
+                              feature: selectedChoice.feature,
+                              tag: selectedChoice.tag,
+                              blankErrorFeedback: true,
+                            ),
+                          ),
+                  );
+                },
               ),
             ],
           ),
@@ -193,8 +238,23 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
         ActivityTypeEnum.grammarError => ValueListenableBuilder(
             valueListenable: controller.activityState,
             builder: (context, state, __) => switch (state) {
-              AsyncLoaded(value: final activity) => _ErrorBlankWidget(
-                  activity: activity as GrammarErrorPracticeActivityModel,
+              AsyncLoaded(
+                value: final GrammarErrorPracticeActivityModel activity
+              ) =>
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _ErrorBlankWidget(
+                      activity: activity,
+                    ),
+                    const SizedBox(height: 12),
+                    _GrammarErrorTranslationButton(
+                      key: ValueKey(
+                        '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
+                      ),
+                      controller: controller,
+                    ),
+                  ],
                 ),
               _ => const SizedBox(),
             },
@@ -349,11 +409,10 @@ class _ActivityChoicesWidget extends StatelessWidget {
 
                 return Column(
                   children: [
-                    Container(
-                      constraints: const BoxConstraints(maxHeight: 400.0),
+                    Expanded(
                       child: Column(
                         spacing: 4.0,
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: choices
                             .map(
                               (choice) => _ChoiceCard(
@@ -372,20 +431,6 @@ class _ActivityChoicesWidget extends StatelessWidget {
                             .toList(),
                       ),
                     ),
-                    if (value.activityType == ActivityTypeEnum.grammarCategory)
-                      ValueListenableBuilder(
-                        valueListenable: controller.selectedMorphChoice,
-                        builder: (context, selectedChoice, __) {
-                          if (selectedChoice == null) {
-                            return const SizedBox.shrink();
-                          }
-
-                          return MorphMeaningWidget(
-                            feature: selectedChoice.feature,
-                            tag: selectedChoice.tag,
-                          );
-                        },
-                      ),
                   ],
                 );
               },
@@ -470,6 +515,7 @@ class _ChoiceCard extends StatelessWidget {
           tag: choiceText,
           onPressed: onPressed,
           isCorrect: isCorrect,
+          height: cardHeight,
           enabled: enabled,
         );
 
@@ -502,5 +548,146 @@ class _ChoiceCard extends StatelessWidget {
           child: Text(choiceText),
         );
     }
+  }
+}
+
+class _GrammarErrorTranslationButton extends StatefulWidget {
+  final AnalyticsPracticeState controller;
+
+  const _GrammarErrorTranslationButton({
+    super.key,
+    required this.controller,
+  });
+
+  @override
+  State<_GrammarErrorTranslationButton> createState() =>
+      _GrammarErrorTranslationButtonState();
+}
+
+class _GrammarErrorTranslationButtonState
+    extends State<_GrammarErrorTranslationButton> {
+  Future<String>? _translationFuture;
+  bool _showTranslation = false;
+
+  void _toggleTranslation() {
+    if (_showTranslation) {
+      setState(() {
+        _showTranslation = false;
+        _translationFuture = null;
+      });
+    } else {
+      setState(() {
+        _showTranslation = true;
+        _translationFuture = widget.controller.requestTranslation();
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: GestureDetector(
+        onTap: _toggleTranslation,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 8.0,
+          children: [
+            if (_showTranslation)
+              Flexible(
+                child: FutureBuilder<String>(
+                  future: _translationFuture,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color.alphaBlend(
+                            Colors.white.withAlpha(180),
+                            ThemeData.dark().colorScheme.primary,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator.adaptive(
+                            strokeWidth: 2,
+                          ),
+                        ),
+                      );
+                    }
+
+                    if (snapshot.hasError) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color.alphaBlend(
+                            Colors.white.withAlpha(180),
+                            ThemeData.dark().colorScheme.primary,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Text(
+                          L10n.of(context).oopsSomethingWentWrong,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onPrimaryFixed,
+                            fontSize: AppConfig.fontSizeFactor *
+                                AppConfig.messageFontSize,
+                          ),
+                        ),
+                      );
+                    }
+
+                    if (snapshot.hasData) {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Color.alphaBlend(
+                            Colors.white.withAlpha(180),
+                            ThemeData.dark().colorScheme.primary,
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        child: Text(
+                          snapshot.data!,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onPrimaryFixed,
+                            fontSize: AppConfig.fontSizeFactor *
+                                AppConfig.messageFontSize,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      );
+                    }
+
+                    return const SizedBox();
+                  },
+                ),
+              ),
+            if (!_showTranslation)
+              ElevatedButton(
+                onPressed: _toggleTranslation,
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(8),
+                ),
+                child: const Icon(
+                  Icons.lightbulb_outline,
+                  size: 20,
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
   }
 }
