@@ -112,7 +112,7 @@ class SelectedCourseController extends State<SelectedCourse>
               },
             ),
           ],
-          avatarUrl: course.imageUrl,
+          avatarUrl: course.imageUrl.toString(),
           spaceChild: 0,
         )
         .then((spaceId) => completer.complete(spaceId))

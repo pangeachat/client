@@ -204,8 +204,7 @@ class EditCourseController extends State<EditCourse> {
                                                 fit: BoxFit.cover,
                                               )
                                             : ImageByUrl(
-                                                imageUrl:
-                                                    _room?.avatar?.toString(),
+                                                imageUrl: _room?.avatar,
                                                 width: 200.0,
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),

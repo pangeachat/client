@@ -293,8 +293,7 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
                                     spacing: 8.0,
                                     children: [
                                       ImageByUrl(
-                                        imageUrl:
-                                            roomChunk.avatarUrl?.toString(),
+                                        imageUrl: roomChunk.avatarUrl,
                                         width: 58.0,
                                         borderRadius:
                                             BorderRadius.circular(10.0),
