@@ -409,30 +409,35 @@ class _ActivityChoicesWidget extends StatelessWidget {
                     .clamp(50.0, 80.0);
 
                 return Column(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        spacing: 4.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: choices
-                            .map(
-                              (choice) => _ChoiceCard(
-                                activity: value,
-                                targetId:
-                                    controller.choiceTargetId(choice.choiceId),
-                                choiceId: choice.choiceId,
-                                onPressed: () => controller.onSelectChoice(
-                                  choice.choiceId,
+                return ValueListenableBuilder(
+                  valueListenable: controller.enableChoicesNotifier,
+                  builder: (context, enabled, __) => Column(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          spacing: 4.0,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: choices
+                              .map(
+                                (choice) => _ChoiceCard(
+                                  activity: value,
+                                  targetId: controller
+                                      .choiceTargetId(choice.choiceId),
+                                  choiceId: choice.choiceId,
+                                  onPressed: () => controller.onSelectChoice(
+                                    choice.choiceId,
+                                  ),
+                                  cardHeight: cardHeight,
+                                  choiceText: choice.choiceText,
+                                  choiceEmoji: choice.choiceEmoji,
+                                  enabled: enabled,
                                 ),
-                                cardHeight: cardHeight,
-                                choiceText: choice.choiceText,
-                                choiceEmoji: choice.choiceEmoji,
-                              ),
-                            )
-                            .toList(),
+                              )
+                              .toList(),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 );
               },
             ),

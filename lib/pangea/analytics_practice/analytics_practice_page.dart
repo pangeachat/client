@@ -121,6 +121,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityState.dispose();
     activityTarget.dispose();
     progressNotifier.dispose();
+    enableChoicesNotifier.dispose();
     selectedMorphChoice.dispose();
     super.dispose();
   }
