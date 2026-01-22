@@ -490,11 +490,6 @@ class AnalyticsDataService {
       events.add(MorphUnlockedEvent(newUnlockedMorphs));
     }
 
-    for (final entry in newConstructs.entries) {
-      final prevConstruct = prevConstructs[entry.key];
-      if (prevConstruct == null) continue;
-    }
-
     if (update.blockedConstruct != null) {
       events.add(ConstructBlockedEvent(update.blockedConstruct!));
     }
