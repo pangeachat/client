@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-22 09:37:14.175391",
+  "@@last_modified": "2026-01-22 12:02:06.402870",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10912,5 +10912,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Szukaj użytkowników, aby zaprosić ich do tej rozmowy.",
+  "publicInviteDescSpace": "Szukaj użytkowników, aby zaprosić ich do tej przestrzeni.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

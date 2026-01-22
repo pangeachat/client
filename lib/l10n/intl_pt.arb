@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:36:31.935958",
+  "@@last_modified": "2026-01-22 12:01:18.883594",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12014,5 +12014,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Procure usuários para convidá-los para este chat.",
+  "publicInviteDescSpace": "Procure usuários para convidá-los para este espaço.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-22 09:36:59.414494",
+  "@@last_modified": "2026-01-22 12:01:49.339268",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11136,5 +11136,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Bu sohbete davet etmek için kullanıcıları arayın.",
+  "publicInviteDescSpace": "Bu alana davet etmek için kullanıcıları arayın.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

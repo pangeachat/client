@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-22 09:36:15.788819",
+  "@@last_modified": "2026-01-22 12:01:00.971468",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10915,5 +10915,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Keresd meg a felhasználókat, hogy meghívd őket erre a csevegésre.",
+  "publicInviteDescSpace": "Keresd meg a felhasználókat, hogy meghívd őket erre a térre.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

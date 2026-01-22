@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-22 09:36:23.684413",
+  "@@last_modified": "2026-01-22 12:01:10.402528",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11286,5 +11286,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Pretražite korisnike kako biste ih pozvali u ovaj chat.",
+  "publicInviteDescSpace": "Pretražite korisnike kako biste ih pozvali u ovaj prostor.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

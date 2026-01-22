@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-22 09:36:57.998979",
+  "@@last_modified": "2026-01-22 12:01:48.002470",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11131,5 +11131,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "ابحث عن المستخدمين لدعوتهم إلى هذه الدردشة.",
+  "publicInviteDescSpace": "ابحث عن المستخدمين لدعوتهم إلى هذا الفضاء.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

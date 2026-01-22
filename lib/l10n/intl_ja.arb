@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-22 09:37:19.372006",
+  "@@last_modified": "2026-01-22 12:02:12.048814",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11704,5 +11704,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "このチャットに招待するユーザーを検索します。",
+  "publicInviteDescSpace": "このスペースに招待するユーザーを検索します。",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

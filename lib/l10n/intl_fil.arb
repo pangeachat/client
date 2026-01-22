@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-22 09:36:55.313694",
+  "@@last_modified": "2026-01-22 12:01:44.028462",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11890,5 +11890,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Maghanap ng mga gumagamit upang imbitahan sila sa chat na ito.",
+  "publicInviteDescSpace": "Maghanap ng mga gumagamit upang imbitahan sila sa espasyong ito.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

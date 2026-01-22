@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 09:37:16.018226",
+  "@@last_modified": "2026-01-22 12:02:08.064498",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11392,5 +11392,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Sök efter användare för att bjuda in dem till den här chatten.",
+  "publicInviteDescSpace": "Sök efter användare för att bjuda in dem till det här utrymmet.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

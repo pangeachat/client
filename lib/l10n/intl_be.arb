@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-22 09:36:46.926563",
+  "@@last_modified": "2026-01-22 12:01:33.641094",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12013,5 +12013,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Шукаць карыстальнікаў, каб запрасіць іх у гэты чат.",
+  "publicInviteDescSpace": "Шукаць карыстальнікаў, каб запрасіць іх у гэтае прастору.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

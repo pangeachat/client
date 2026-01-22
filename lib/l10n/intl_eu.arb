@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-22 09:36:30.783445",
+  "@@last_modified": "2026-01-22 12:01:17.457241",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10914,5 +10914,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "Bilatu erabiltzaileak txat honetara gonbidatzeko.",
+  "publicInviteDescSpace": "Bilatu erabiltzaileak espazio honetara gonbidatzeko.",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }

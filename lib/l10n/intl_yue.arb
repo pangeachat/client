@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-22 09:36:38.546245",
+  "@@last_modified": "2026-01-22 12:01:25.863585",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12005,5 +12005,15 @@
         "type": "String"
       }
     }
+  },
+  "publicInviteDescChat": "搜尋用戶以邀請他們加入此聊天。",
+  "publicInviteDescSpace": "搜尋用戶以邀請他們加入此空間。",
+  "@publicInviteDescChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
   }
 }
