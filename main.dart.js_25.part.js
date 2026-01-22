@@ -5359,6 +5359,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Encontrar um curso";
     },
+    get$publicInviteDescChat() {
+      return string$.Procurc;
+    },
+    get$publicInviteDescSpace() {
+      return string$.Procure;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -10691,6 +10697,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$findCourse() {
       return "Encontrar um curso";
+    },
+    get$publicInviteDescChat() {
+      return string$.Procurc;
+    },
+    get$publicInviteDescSpace() {
+      return string$.Procure;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -16025,6 +16037,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Encontrar um curso";
     },
+    get$publicInviteDescChat() {
+      return string$.Procurc;
+    },
+    get$publicInviteDescSpace() {
+      return string$.Procure;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16183,6 +16201,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Posso_en: "Posso entender e usar algumas express\xf5es cotidianas familiares e frases muito b\xe1sicas.",
     Posso_ex: "Posso expressar ideias fluentemente e espontaneamente sem muita dificuldade e entender uma ampla variedade de textos exigentes.",
     Posso_l: "Posso lidar com a maioria das situa\xe7\xf5es familiares e produzir textos simples conectados sobre t\xf3picos familiares.",
+    Procurc: "Procure usu\xe1rios para convid\xe1-los para este chat.",
+    Procure: "Procure usu\xe1rios para convid\xe1-los para este espa\xe7o.",
     Pr_ticc: "Pr\xe1tica correta de defini\xe7\xe3o de vocabul\xe1rio",
     Pr_ticdc: "Pr\xe1tica da categoria de gram\xe1tica correta",
     Pr_ticdi: "Pr\xe1tica da categoria de gram\xe1tica incorreta",
@@ -16228,7 +16248,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JqNpYp61q8u7ZAS3H8fq+YmfW3Y="] = d.current;
+  d["U/h/MoBNcoZiHRFYDhW2R25UpDI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

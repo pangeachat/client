@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Maghanap ng kurso";
     },
+    get$publicInviteDescChat() {
+      return "Maghanap ng mga gumagamit upang imbitahan sila sa chat na ito.";
+    },
+    get$publicInviteDescSpace() {
+      return "Maghanap ng mga gumagamit upang imbitahan sila sa espasyong ito.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+aqW5MzlDPHgk1WY8bTmuCVDpHc="] = d.current;
+  d["bVh/O6TNOxraBYxvv+PG9vmja+M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

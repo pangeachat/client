@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Naj\xedt kurz";
     },
+    get$publicInviteDescChat() {
+      return "Hledejte u\u017eivatele, kter\xe9 chcete pozvat do tohoto chatu.";
+    },
+    get$publicInviteDescSpace() {
+      return "Hledejte u\u017eivatele, kter\xe9 chcete pozvat do tohoto prostoru.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["udjgGnFSG9s4DHA4YckiDBp5/uQ="] = d.current;
+  d["2Og4EdRvNwAbsXGL32HZV2En6dc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

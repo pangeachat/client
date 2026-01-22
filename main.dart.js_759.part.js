@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Hitta en kurs";
     },
+    get$publicInviteDescChat() {
+      return "S\xf6k efter anv\xe4ndare f\xf6r att bjuda in dem till den h\xe4r chatten.";
+    },
+    get$publicInviteDescSpace() {
+      return "S\xf6k efter anv\xe4ndare f\xf6r att bjuda in dem till det h\xe4r utrymmet.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hhVvC9kBlqwSZC9Ta08s9GCo84Y="] = d.current;
+  d["Rl2XWVJISRTuBlaRhvZ5POpwZXI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_759.part.js.map

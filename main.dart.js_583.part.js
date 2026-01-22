@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Etsi kurssi";
     },
+    get$publicInviteDescChat() {
+      return "Etsi k\xe4ytt\xe4ji\xe4 kutsuaksesi heid\xe4t t\xe4h\xe4n keskusteluun.";
+    },
+    get$publicInviteDescSpace() {
+      return "Etsi k\xe4ytt\xe4ji\xe4 kutsuaksesi heid\xe4t t\xe4h\xe4n tilaan.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["alZ2yoJFZGoZ04eQfel7lmemZ1M="] = d.current;
+  d["FaE/5JMsZ1IFgY2WVTdWcdwRY54="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_583.part.js.map

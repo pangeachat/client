@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Rasti kurs\u0105";
     },
+    get$publicInviteDescChat() {
+      return "Ie\u0161kokite vartotoj\u0173, kad juos pakviestum\u0117te \u012f \u0161\u012f pokalb\u012f.";
+    },
+    get$publicInviteDescSpace() {
+      return "Ie\u0161kokite vartotoj\u0173, kad juos pakviestum\u0117te \u012f \u0161i\u0105 erdv\u0119.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5369,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["joDbIdnQ6JLO72vvitKbSXPyI38="] = d.current;
+  d["ZB+qarOCpVNqYViagWonspdPy2k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

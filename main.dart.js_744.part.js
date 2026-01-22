@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "G\u0103se\u0219te un curs";
     },
+    get$publicInviteDescChat() {
+      return "Caut\u0103 utilizatori pentru a-i invita \xeen acest chat.";
+    },
+    get$publicInviteDescSpace() {
+      return "Caut\u0103 utilizatori pentru a-i invita \xeen acest spa\u021biu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5363,7 +5369,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qr40Jwd7AsniEJ2gb+/jwPL3TSo="] = d.current;
+  d["sW3OGB3964gycjlS3gANtNxrFfQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_744.part.js.map

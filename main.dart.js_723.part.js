@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Atrodi kursu";
     },
+    get$publicInviteDescChat() {
+      return "Mekl\u0113jiet lietot\u0101jus, lai vi\u0146us aicin\u0101tu uz \u0161o \u010datu.";
+    },
+    get$publicInviteDescSpace() {
+      return "Mekl\u0113jiet lietot\u0101jus, lai vi\u0146us aicin\u0101tu uz \u0161o telpu.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rlTMV+1rRStYalRxwa7pi8K8L8s="] = d.current;
+  d["uum1YDQY4fh59Wh/2c8/lcunDCs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_723.part.js.map

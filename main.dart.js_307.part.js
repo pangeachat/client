@@ -5347,6 +5347,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Find et kursus";
     },
+    get$publicInviteDescChat() {
+      return "S\xf8g efter brugere for at invitere dem til denne chat.";
+    },
+    get$publicInviteDescSpace() {
+      return "S\xf8g efter brugere for at invitere dem til dette rum.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5360,7 +5366,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zBkbvQFbni3skINap4wxb639TCk="] = d.current;
+  d["AS7Xntk5uZo8QRneleve3mBw67Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

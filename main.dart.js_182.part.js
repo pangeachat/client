@@ -5348,6 +5348,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Troba un curs";
     },
+    get$publicInviteDescChat() {
+      return "Cerca usuaris per convidar-los a aquest xat.";
+    },
+    get$publicInviteDescSpace() {
+      return "Cerca usuaris per convidar-los a aquest espai.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5364,7 +5370,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LWV2Q8TJMiSqA9VRCU9Ma4A9fVs="] = d.current;
+  d["qx062UiWpx0yZKDvM9+K6GZ/l5M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map
