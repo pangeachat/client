@@ -148,7 +148,8 @@ class NaviRailItem extends StatelessWidget {
             ),
             if (expanded)
               Flexible(
-                child: Padding(
+                child: Container(
+                  height: width - (isColumnMode ? 16.0 : 12.0),
                   padding: const EdgeInsets.only(right: 16.0),
                   child: ListTile(
                     title: Text(
