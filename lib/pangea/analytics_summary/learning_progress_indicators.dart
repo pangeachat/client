@@ -58,51 +58,49 @@ class LearningProgressIndicators extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Row(
-                              spacing: isColumnMode ? 16.0 : 4.0,
-                              children: [
-                                ...ConstructTypeEnum.values.map(
-                                  (c) => HoverButton(
-                                    selected: selected == c.indicator,
+                          Row(
+                            spacing: isColumnMode ? 16.0 : 0.0,
+                            children: [
+                              ...ConstructTypeEnum.values.map(
+                                (c) => HoverButton(
+                                  selected: selected == c.indicator,
+                                  onPressed: () {
+                                    AnalyticsNavigationUtil.navigateToAnalytics(
+                                      context: context,
+                                      view: c.indicator,
+                                    );
+                                  },
+                                  child: ProgressIndicatorBadge(
+                                    indicator: c.indicator,
+                                    loading: analyticsService.isInitializing,
+                                    points: analyticsService.numConstructs(c),
+                                  ),
+                                ),
+                              ),
+                              StreamBuilder(
+                                stream: updater.activityAnalyticsStream.stream,
+                                builder: (context, _) {
+                                  final archivedActivitiesCount =
+                                      analyticsRoom?.archivedActivitiesCount ??
+                                          0;
+                                  return HoverButton(
+                                    selected: selected ==
+                                        ProgressIndicatorEnum.activities,
                                     onPressed: () {
                                       AnalyticsNavigationUtil
                                           .navigateToAnalytics(
                                         context: context,
-                                        view: c.indicator,
+                                        view: ProgressIndicatorEnum.activities,
                                       );
                                     },
-                                    child: ProgressIndicatorBadge(
-                                      indicator: c.indicator,
-                                      loading: analyticsService.isInitializing,
-                                      points: analyticsService.numConstructs(c),
-                                    ),
-                                  ),
-                                ),
-                                StreamBuilder(
-                                  stream:
-                                      updater.activityAnalyticsStream.stream,
-                                  builder: (context, _) {
-                                    final archivedActivitiesCount =
-                                        analyticsRoom
-                                                ?.archivedActivitiesCount ??
-                                            0;
-                                    return HoverButton(
-                                      selected: selected ==
-                                          ProgressIndicatorEnum.activities,
-                                      onPressed: () {
-                                        AnalyticsNavigationUtil
-                                            .navigateToAnalytics(
-                                          context: context,
-                                          view:
-                                              ProgressIndicatorEnum.activities,
-                                        );
-                                      },
-                                      child: Tooltip(
-                                        message: ProgressIndicatorEnum
-                                            .activities
-                                            .tooltip(context),
+                                    child: Tooltip(
+                                      message: ProgressIndicatorEnum.activities
+                                          .tooltip(context),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 4.0,
+                                          vertical: 2.0,
+                                        ),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
@@ -121,11 +119,11 @@ class LearningProgressIndicators extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
                           ),
                           HoverButton(
                             onPressed: () => showDialog(
@@ -171,79 +169,75 @@ class LearningProgressIndicators extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 6),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                        child: HoverBuilder(
-                          builder: (context, hovered) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: (hovered && canSelect) ||
-                                        (selected ==
-                                            ProgressIndicatorEnum.level)
-                                    ? Theme.of(context)
-                                        .colorScheme
-                                        .primary
-                                        .withAlpha((0.2 * 255).round())
-                                    : Colors.transparent,
-                                borderRadius: BorderRadius.circular(36.0),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 2.0,
-                                horizontal: 4.0,
-                              ),
-                              child: MouseRegion(
-                                cursor: canSelect
-                                    ? SystemMouseCursors.click
-                                    : MouseCursor.defer,
-                                child: GestureDetector(
-                                  onTap: canSelect
-                                      ? () {
-                                          AnalyticsNavigationUtil
-                                              .navigateToAnalytics(
-                                            context: context,
-                                            view: ProgressIndicatorEnum.level,
-                                          );
-                                        }
-                                      : null,
-                                  child: FutureBuilder(
-                                    future: analyticsService.derivedData,
-                                    builder: (context, snapshot) {
-                                      final cached =
-                                          analyticsService.cachedDerivedData;
-                                      final data = snapshot.data ?? cached;
-                                      return Row(
-                                        spacing: 8.0,
-                                        children: [
-                                          Expanded(
-                                            child: LearningProgressBar(
-                                              height: 24.0,
-                                              loading: data == null,
-                                              progress:
-                                                  data?.levelProgress ?? 0.0,
-                                            ),
+                      HoverBuilder(
+                        builder: (context, hovered) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: (hovered && canSelect) ||
+                                      (selected == ProgressIndicatorEnum.level)
+                                  ? Theme.of(context)
+                                      .colorScheme
+                                      .primary
+                                      .withAlpha((0.2 * 255).round())
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(36.0),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 2.0,
+                              horizontal: 4.0,
+                            ),
+                            child: MouseRegion(
+                              cursor: canSelect
+                                  ? SystemMouseCursors.click
+                                  : MouseCursor.defer,
+                              child: GestureDetector(
+                                onTap: canSelect
+                                    ? () {
+                                        AnalyticsNavigationUtil
+                                            .navigateToAnalytics(
+                                          context: context,
+                                          view: ProgressIndicatorEnum.level,
+                                        );
+                                      }
+                                    : null,
+                                child: FutureBuilder(
+                                  future: analyticsService.derivedData,
+                                  builder: (context, snapshot) {
+                                    final cached =
+                                        analyticsService.cachedDerivedData;
+                                    final data = snapshot.data ?? cached;
+                                    return Row(
+                                      spacing: 8.0,
+                                      children: [
+                                        Expanded(
+                                          child: LearningProgressBar(
+                                            height: 24.0,
+                                            loading: data == null,
+                                            progress:
+                                                data?.levelProgress ?? 0.0,
                                           ),
-                                          if (data != null)
-                                            Text(
-                                              "⭐ ${data.level}",
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .titleLarge
-                                                  ?.copyWith(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .primary,
-                                                  ),
-                                            ),
-                                        ],
-                                      );
-                                    },
-                                  ),
+                                        ),
+                                        if (data != null)
+                                          Text(
+                                            "⭐ ${data.level}",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge
+                                                ?.copyWith(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                ),
+                                          ),
+                                      ],
+                                    );
+                                  },
                                 ),
                               ),
-                            );
-                          },
-                        ),
+                            ),
+                          );
+                        },
                       ),
                       const SizedBox(height: 16.0),
                     ],
