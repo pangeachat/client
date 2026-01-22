@@ -412,13 +412,11 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                     builder: (context, _) {
                       final selectedMode = controller.selectedMode.value;
                       return Opacity(
-                        opacity: enabled ? 1.0 : 0.5,
+                        opacity: enabled ? 1.0 : 0.75,
                         child: PressableButton(
                           borderRadius: BorderRadius.circular(20),
                           depressed: mode == selectedMode || !enabled,
-                          color: enabled
-                              ? theme.colorScheme.primaryContainer
-                              : theme.disabledColor,
+                          color: theme.colorScheme.primaryContainer,
                           onPressed:
                               enabled ? () => updateMode(mode) : modeDisabled,
                           playSound: enabled && mode != SelectMode.audio,
