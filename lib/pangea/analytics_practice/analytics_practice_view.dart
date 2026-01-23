@@ -253,7 +253,7 @@ class _AnalyticsPracticeCenterContent extends StatelessWidget {
                       key: ValueKey(
                         '${activity.eventID}_${activity.errorOffset}_${activity.errorLength}',
                       ),
-                      controller: controller,
+                      translation: activity.translation,
                     ),
                   ],
                 ),
@@ -557,11 +557,11 @@ class _ChoiceCard extends StatelessWidget {
 }
 
 class _GrammarErrorTranslationButton extends StatefulWidget {
-  final AnalyticsPracticeState controller;
+  final String translation;
 
   const _GrammarErrorTranslationButton({
     super.key,
-    required this.controller,
+    required this.translation,
   });
 
   @override
@@ -571,19 +571,16 @@ class _GrammarErrorTranslationButton extends StatefulWidget {
 
 class _GrammarErrorTranslationButtonState
     extends State<_GrammarErrorTranslationButton> {
-  Future<String>? _translationFuture;
   bool _showTranslation = false;
 
   void _toggleTranslation() {
     if (_showTranslation) {
       setState(() {
         _showTranslation = false;
-        _translationFuture = null;
       });
     } else {
       setState(() {
         _showTranslation = true;
-        _translationFuture = widget.controller.requestTranslation();
       });
     }
   }
@@ -599,83 +596,27 @@ class _GrammarErrorTranslationButtonState
           children: [
             if (_showTranslation)
               Flexible(
-                child: FutureBuilder<String>(
-                  future: _translationFuture,
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color.alphaBlend(
-                            Colors.white.withAlpha(180),
-                            ThemeData.dark().colorScheme.primary,
-                          ),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: const SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator.adaptive(
-                            strokeWidth: 2,
-                          ),
-                        ),
-                      );
-                    }
-
-                    if (snapshot.hasError) {
-                      return Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color.alphaBlend(
-                            Colors.white.withAlpha(180),
-                            ThemeData.dark().colorScheme.primary,
-                          ),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Text(
-                          L10n.of(context).oopsSomethingWentWrong,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimaryFixed,
-                            fontSize: AppConfig.fontSizeFactor *
-                                AppConfig.messageFontSize,
-                          ),
-                        ),
-                      );
-                    }
-
-                    if (snapshot.hasData) {
-                      return Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 8,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Color.alphaBlend(
-                            Colors.white.withAlpha(180),
-                            ThemeData.dark().colorScheme.primary,
-                          ),
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                        child: Text(
-                          snapshot.data!,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimaryFixed,
-                            fontSize: AppConfig.fontSizeFactor *
-                                AppConfig.messageFontSize,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      );
-                    }
-
-                    return const SizedBox();
-                  },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color.alphaBlend(
+                      Colors.white.withAlpha(180),
+                      ThemeData.dark().colorScheme.primary,
+                    ),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: Text(
+                    widget.translation,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onPrimaryFixed,
+                      fontSize:
+                          AppConfig.fontSizeFactor * AppConfig.messageFontSize,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             if (!_showTranslation)

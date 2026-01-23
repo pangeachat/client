@@ -508,14 +508,4 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   @override
   Widget build(BuildContext context) => AnalyticsPracticeView(this);
-
-  Future<String> requestTranslation() async {
-    final request = activityTarget.value;
-    if (request?.grammarErrorInfo == null) {
-      throw L10n.of(context).oopsSomethingWentWrong;
-    }
-
-    final event = request!.grammarErrorInfo!.event!;
-    return await event.requestRespresentationByL1();
-  }
 }

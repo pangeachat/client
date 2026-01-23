@@ -4,7 +4,6 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
-import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
@@ -46,13 +45,13 @@ class GrammarErrorRequestInfo {
   final ChoreoRecordModel choreo;
   final int stepIndex;
   final String eventID;
-  final PangeaMessageEvent? event;
+  final String translation;
 
   const GrammarErrorRequestInfo({
     required this.choreo,
     required this.stepIndex,
     required this.eventID,
-    this.event,
+    required this.translation,
   });
 
   Map<String, dynamic> toJson() {
@@ -60,6 +59,7 @@ class GrammarErrorRequestInfo {
       'choreo': choreo.toJson(),
       'step_index': stepIndex,
       'event_id': eventID,
+      'translation': translation,
     };
   }
 
@@ -68,6 +68,7 @@ class GrammarErrorRequestInfo {
       choreo: ChoreoRecordModel.fromJson(json['choreo']),
       stepIndex: json['step_index'] as int,
       eventID: json['event_id'] as String,
+      translation: json['translation'] as String,
     );
   }
 }

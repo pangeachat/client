@@ -45,6 +45,7 @@ class GrammarErrorPracticeGenerator {
         errorOffset: igcMatch.offset,
         errorLength: igcMatch.length,
         eventID: eventID,
+        translation: req.grammarErrorInfo!.translation,
       ),
     );
   }
