@@ -79,7 +79,7 @@ class _AnchoredOverlayWidgetState extends State<AnchoredOverlayWidget> {
                 child: CustomPaint(
                   painter: CutoutBackgroundPainter(
                     holeRect: widget.anchorRect,
-                    backgroundColor: Colors.black54,
+                    backgroundColor: Colors.black.withAlpha(180),
                     borderRadius: widget.borderRadius ?? 0.0,
                     padding: widget.padding ?? 6.0,
                   ),
