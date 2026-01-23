@@ -7,7 +7,6 @@ import 'package:shimmer/shimmer.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_chat_extension.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/tutorial_overlay_message.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -62,9 +61,9 @@ class _ActivityMenuButtonState extends State<ActivityMenuButton> {
   /// to the stats menu button with an explanation of what it does.
   void _showStatsMenuDropdownInstructions(_) {
     if (!mounted) return;
-    if (!widget.controller.shouldShowActivityInstructions) {
-      return;
-    }
+    // if (!widget.controller.shouldShowActivityInstructions) {
+    //   return;
+    // }
 
     final renderObject = context.findRenderObject() as RenderBox;
     final offset = renderObject.localToGlobal(Offset.zero);
