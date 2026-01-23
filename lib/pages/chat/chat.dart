@@ -52,7 +52,6 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
@@ -2343,36 +2342,6 @@ class ChatController extends State<ChatPageWithRoom>
       constructs,
       ConstructTypeEnum.vocab,
     );
-
-    final newLeafConstructs = await analyticsService.getLeveledUpConstructCount(
-      constructs,
-      ConstructLevelEnum.greens,
-    );
-    final newFlowerConstructs =
-        await analyticsService.getLeveledUpConstructCount(
-      constructs,
-      ConstructLevelEnum.flowers,
-    );
-
-    // Show all growth animations at once
-    final Map<ConstructLevelEnum, int> levelCounts = {};
-    if (newVocabConstructs > 0) {
-      levelCounts[ConstructLevelEnum.seeds] = newVocabConstructs;
-    }
-    if (newLeafConstructs > 0) {
-      levelCounts[ConstructLevelEnum.greens] = newLeafConstructs;
-    }
-    if (newFlowerConstructs > 0) {
-      levelCounts[ConstructLevelEnum.flowers] = newFlowerConstructs;
-    }
-
-    if (levelCounts.isNotEmpty) {
-      OverlayUtil.showGrowthOverlay(
-        context,
-        eventId,
-        levelCounts: levelCounts,
-      );
-    }
 
     OverlayUtil.showOverlay(
       overlayKey: "msg_analytics_feedback_$eventId",
