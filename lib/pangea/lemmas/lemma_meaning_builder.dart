@@ -36,6 +36,8 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
   final ValueNotifier<AsyncState<LemmaInfoResponse>> _loader =
       ValueNotifier(const AsyncState.idle());
 
+  int _loadVersion = 0;
+
   @override
   void initState() {
     super.initState();
@@ -75,16 +77,20 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
       );
 
   Future<void> _load() async {
+    final int version = ++_loadVersion;
+
     _loader.value = const AsyncState.loading();
     final result = await LemmaInfoRepo.get(
       MatrixState.pangeaController.userController.accessToken,
       _request,
     );
 
-    if (!mounted) return;
-    result.isError
-        ? _loader.value = AsyncState.error(result.asError!.error)
-        : _loader.value = AsyncState.loaded(result.asValue!.value);
+    // Ignore if a newer load started after this one
+    if (!mounted || version != _loadVersion) return;
+
+    _loader.value = result.isError
+        ? AsyncState.error(result.asError!.error)
+        : AsyncState.loaded(result.asValue!.value);
   }
 
   @override
