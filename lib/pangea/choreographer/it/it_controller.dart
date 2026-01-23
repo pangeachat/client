@@ -24,11 +24,14 @@ class ITController {
   final ValueNotifier<ITStepModel?> _currentITStep = ValueNotifier(null);
   final ValueNotifier<bool> _open = ValueNotifier(false);
   final ValueNotifier<bool> _editing = ValueNotifier(false);
+  final ValueNotifier<double> _progress = ValueNotifier(0.0);
 
   ITController(this.onError);
 
   ValueNotifier<bool> get open => _open;
   ValueNotifier<bool> get editing => _editing;
+  ValueNotifier<double> get progress => _progress;
+
   ValueNotifier<ITStepModel?> get currentITStep => _currentITStep;
   ValueNotifier<String?> get sourceText => _sourceText;
   StreamController<CompletedITStepModel> acceptedContinuanceStream =
@@ -142,6 +145,15 @@ class ITController {
         chosen: chosenIndex,
       ),
     );
+    final progress = (_goldRouteTracker!.continuances.indexWhere(
+              (c) =>
+                  c.text ==
+                  _currentITStep.value!.continuances[chosenIndex].text,
+            ) +
+            1) /
+        _goldRouteTracker!.continuances.length;
+    debugPrint("Progress updated to $progress");
+    _progress.value = progress;
     _continueIT();
   }
 
