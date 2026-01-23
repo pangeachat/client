@@ -58,7 +58,9 @@ class UserDialog extends StatelessWidget {
           client: Matrix.of(context).client,
           builder: (context, presence) {
             if (presence == null) return const SizedBox.shrink();
-            final statusMsg = presence.statusMsg;
+            // #Pangea
+            // final statusMsg = presence.statusMsg;
+            // Pangea#
             final lastActiveTimestamp = presence.lastActiveTimestamp;
             final presenceText = presence.currentlyActive == true
                 ? L10n.of(context).currentlyActive
