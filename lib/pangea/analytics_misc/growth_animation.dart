@@ -1,8 +1,9 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 /// Tracks active growth animations for offset calculation
 class GrowthAnimationTracker {

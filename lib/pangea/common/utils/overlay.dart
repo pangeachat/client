@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/growth_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
@@ -13,9 +16,6 @@ import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';

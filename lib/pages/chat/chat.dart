@@ -2129,12 +2129,12 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
-  Future<void> _sendMessageAnalytics(
+  void _sendMessageAnalytics(
     String? eventId, {
     PangeaRepresentation? originalSent,
     PangeaMessageTokens? tokensSent,
     ChoreoRecordModel? choreo,
-  }) async {
+  }) {
     // There's a listen in my_analytics_controller that decides when to auto-update
     // analytics based on when / how many messages the logged in user send. This
     // stream sends the data for newly sent messages.
@@ -2157,8 +2157,8 @@ class ChatController extends State<ChatPageWithRoom>
         ),
       ];
 
-      await addAnalytics(constructs, eventId);
-      await _showAnalyticsFeedback(constructs, eventId);
+      _showAnalyticsFeedback(constructs, eventId);
+      addAnalytics(constructs, eventId);
     }
   }
 
@@ -2203,11 +2203,11 @@ class ChatController extends State<ChatPageWithRoom>
       final constructs = stt.constructs(roomId, eventId);
       if (constructs.isEmpty) return;
 
-      await Matrix.of(context).analyticsDataService.updateService.addAnalytics(
+      _showAnalyticsFeedback(constructs, eventId);
+      Matrix.of(context).analyticsDataService.updateService.addAnalytics(
             eventId,
             constructs,
           );
-      await _showAnalyticsFeedback(constructs, eventId);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
