@@ -7,8 +7,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityFinishedStatusMessage extends StatelessWidget {
@@ -19,25 +19,28 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     required this.controller,
   });
 
-  Future<void> _onArchive(BuildContext context) async {
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: () => _archiveToAnalytics(context),
+  void _onArchive(BuildContext context) {
+    _archiveToAnalytics();
+    context.go(
+      "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
     );
-
-    if (!resp.isError) {
-      context.go(
-        "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
-      );
-    }
   }
 
-  Future<void> _archiveToAnalytics(BuildContext context) async {
-    await controller.room.archiveActivity();
-    await Matrix.of(context)
-        .analyticsDataService
-        .updateService
-        .sendActivityAnalytics(controller.room.id);
+  Future<void> _archiveToAnalytics() async {
+    try {
+      await controller.room.archiveActivity();
+      await MatrixState
+          .pangeaController.matrixState.analyticsDataService.updateService
+          .sendActivityAnalytics(controller.room.id);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'roomId': controller.room.id,
+        },
+      );
+    }
   }
 
   ActivitySummaryModel? get summary => controller.room.activitySummary;
