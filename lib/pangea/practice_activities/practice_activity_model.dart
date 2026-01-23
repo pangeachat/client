@@ -187,6 +187,21 @@ sealed class PracticeActivityModel {
           tokens: tokens,
           matchContent: matchContent!,
         );
+      case ActivityTypeEnum.grammarError:
+        assert(
+          multipleChoiceContent != null,
+          "multipleChoiceContent is null in PracticeActivityModel.fromJson for grammarError",
+        );
+        return GrammarErrorPracticeActivityModel(
+          langCode: langCode,
+          tokens: tokens,
+          multipleChoiceContent: multipleChoiceContent!,
+          text: json['text'] as String,
+          errorOffset: json['error_offset'] as int,
+          errorLength: json['error_length'] as int,
+          eventID: json['event_id'] as String,
+          translation: json['translation'] as String,
+        );
       default:
         throw ("Unsupported activity type in PracticeActivityModel.fromJson: $type");
     }
@@ -358,6 +373,7 @@ class GrammarErrorPracticeActivityModel
   final int errorOffset;
   final int errorLength;
   final String eventID;
+  final String translation;
 
   GrammarErrorPracticeActivityModel({
     required super.tokens,
@@ -367,7 +383,19 @@ class GrammarErrorPracticeActivityModel
     required this.errorOffset,
     required this.errorLength,
     required this.eventID,
+    required this.translation,
   });
+
+  @override
+  Map<String, dynamic> toJson() {
+    final json = super.toJson();
+    json['text'] = text;
+    json['error_offset'] = errorOffset;
+    json['error_length'] = errorLength;
+    json['event_id'] = eventID;
+    json['translation'] = translation;
+    return json;
+  }
 }
 
 class EmojiPracticeActivityModel extends MatchPracticeActivityModel {

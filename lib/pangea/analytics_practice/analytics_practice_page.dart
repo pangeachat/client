@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/analytics_practice/analytics_practice_view.dar
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_generation_repo.dart';
@@ -25,6 +26,16 @@ import 'package:fluffychat/pangea/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/message_practice/practice_record_controller.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+class SelectedMorphChoice {
+  final MorphFeaturesEnum feature;
+  final String tag;
+
+  const SelectedMorphChoice({
+    required this.feature,
+    required this.tag,
+  });
+}
 
 class VocabPracticeChoice {
   final String choiceId;
@@ -85,6 +96,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   final ValueNotifier<double> progressNotifier = ValueNotifier<double>(0.0);
   final ValueNotifier<bool> enableChoicesNotifier = ValueNotifier<bool>(true);
 
+  final ValueNotifier<SelectedMorphChoice?> selectedMorphChoice =
+      ValueNotifier<SelectedMorphChoice?>(null);
+
   final Map<String, Map<String, String>> _choiceTexts = {};
   final Map<String, Map<String, String?>> _choiceEmojis = {};
 
@@ -108,6 +122,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     activityTarget.dispose();
     progressNotifier.dispose();
     enableChoicesNotifier.dispose();
+    selectedMorphChoice.dispose();
     super.dispose();
   }
 
@@ -192,8 +207,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   void _clearState() {
     activityState.value = const AsyncState.loading();
     activityTarget.value = null;
+    selectedMorphChoice.value = null;
     enableChoicesNotifier.value = true;
-
     progressNotifier.value = 0.0;
     _queue.clear();
     _choiceTexts.clear();
@@ -256,6 +271,25 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     await _startSession();
   }
 
+  Future<void> reloadCurrentActivity() async {
+    if (activityTarget.value == null) return;
+
+    try {
+      activityState.value = const AsyncState.loading();
+      selectedMorphChoice.value = null;
+
+      final req = activityTarget.value!;
+      final res = await _fetchActivity(req);
+
+      if (!mounted) return;
+      activityState.value = AsyncState.loaded(res);
+      _playAudio();
+    } catch (e) {
+      if (!mounted) return;
+      activityState.value = AsyncState.error(e);
+    }
+  }
+
   Future<void> _completeSession() async {
     _sessionLoader.value!.finishSession();
     setState(() {});
@@ -284,6 +318,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         await _completeSession();
       } else {
         activityState.value = const AsyncState.loading();
+        selectedMorphChoice.value = null;
         final nextActivityCompleter = _queue.removeFirst();
 
         activityTarget.value = nextActivityCompleter.request;
@@ -410,6 +445,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   ) async {
     if (_currentActivity == null) return;
     final activity = _currentActivity!;
+
+    // Track the selection for display
+    if (activity is MorphPracticeActivityModel) {
+      selectedMorphChoice.value = SelectedMorphChoice(
+        feature: activity.morphFeature,
+        tag: choiceContent,
+      );
+    }
     final isCorrect = activity.multipleChoiceContent.isCorrect(choiceContent);
     if (isCorrect) {
       enableChoicesNotifier.value = false;
