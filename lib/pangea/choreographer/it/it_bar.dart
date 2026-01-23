@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_summary/animated_progress_bar.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/it/completed_it_step_model.dart';
@@ -200,6 +201,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                 setEditing:
                     widget.choreographer.itController.setEditingSourceText,
                 editing: widget.choreographer.itController.editing,
+                progress: widget.choreographer.itController.progress,
                 sourceTextController: _sourceTextController,
                 sourceText: _sourceText,
                 onSubmitEdits: (_) {
@@ -267,6 +269,7 @@ class _ITBarHeader extends StatelessWidget {
   final Function(bool) setEditing;
 
   final ValueNotifier<bool> editing;
+  final ValueNotifier<double> progress;
   final TextEditingController sourceTextController;
   final ValueNotifier<String?> sourceText;
 
@@ -274,6 +277,7 @@ class _ITBarHeader extends StatelessWidget {
     required this.onClose,
     required this.setEditing,
     required this.editing,
+    required this.progress,
     required this.onSubmitEdits,
     required this.sourceTextController,
     required this.sourceText,
@@ -316,8 +320,26 @@ class _ITBarHeader extends StatelessWidget {
                 ],
               ),
               secondChild: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                      child: ValueListenableBuilder(
+                        valueListenable: progress,
+                        builder: (context, value, __) => AnimatedProgressBar(
+                          height: 20.0,
+                          widthPercent: value,
+                          backgroundColor: Theme.of(context)
+                              .colorScheme
+                              .surfaceContainerHighest,
+                          barColor: Theme.of(context)
+                              .colorScheme
+                              .primary
+                              .withAlpha(180),
+                        ),
+                      ),
+                    ),
+                  ),
                   IconButton(
                     color: Theme.of(context).colorScheme.primary,
                     onPressed: () => setEditing(true),
