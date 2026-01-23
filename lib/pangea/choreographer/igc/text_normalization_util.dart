@@ -27,7 +27,7 @@ String normalizeString(String input, String languageCode) {
     );
 
     // Step 5: Normalize whitespace (collapse multiple spaces, trim)
-    return normalized.replaceAll(RegExp(r'\s+'), ' ').trim();
+    return normalized.replaceAll(RegExp(r'\s+'), '').trim();
   } catch (e, s) {
     ErrorHandler.logError(
       e: e,
