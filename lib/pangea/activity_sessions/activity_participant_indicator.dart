@@ -117,6 +117,8 @@ class ActivityParticipantIndicator extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 12.0,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
                       ),
                       Text(
