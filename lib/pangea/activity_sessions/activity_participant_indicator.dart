@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:matrix/matrix.dart';
-import 'package:shimmer/shimmer.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -88,54 +87,52 @@ class ActivityParticipantIndicator extends StatelessWidget {
                     );
               return Opacity(
                 opacity: opacity,
-                child: Container(
-                  padding: padding ??
-                      const EdgeInsets.symmetric(
-                        vertical: 4.0,
-                        horizontal: 8.0,
-                      ),
-                  decoration: BoxDecoration(
-                    borderRadius: borderRadius ?? BorderRadius.circular(8.0),
-                    color: (hovered || selected) && selectable
-                        ? theme.colorScheme.surfaceContainerHighest
-                        : theme.colorScheme.surface.withAlpha(130),
-                  ),
-                  height: 125.0,
-                  constraints: const BoxConstraints(maxWidth: 100.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      shimmer && !selected
-                          ? Shimmer.fromColors(
-                              baseColor: AppConfig.gold.withAlpha(20),
-                              highlightColor: AppConfig.gold.withAlpha(50),
-                              child: avatar,
-                            )
-                          : avatar,
-                      Text(
-                        name,
-                        style: const TextStyle(
-                          fontSize: 12.0,
+                child: ShimmerBackground(
+                  enabled: shimmer,
+                  child: Container(
+                    padding: padding ??
+                        const EdgeInsets.symmetric(
+                          vertical: 4.0,
+                          horizontal: 8.0,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        userId?.localpart ?? L10n.of(context).openRoleLabel,
-                        style: TextStyle(
-                          fontSize: 12.0,
-                          color: (Theme.of(context).brightness ==
-                                  Brightness.light
-                              ? (userId?.localpart?.darkColor ?? name.darkColor)
-                              : (userId?.localpart?.lightColorText ??
-                                  name.lightColorText)),
+                    decoration: BoxDecoration(
+                      borderRadius: borderRadius ?? BorderRadius.circular(8.0),
+                      color: (hovered || selected) && selectable
+                          ? theme.colorScheme.surfaceContainerHighest
+                          : theme.colorScheme.surface.withAlpha(130),
+                    ),
+                    height: 125.0,
+                    constraints: const BoxConstraints(maxWidth: 100.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        avatar,
+                        Text(
+                          name,
+                          style: const TextStyle(
+                            fontSize: 12.0,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                        Text(
+                          userId?.localpart ?? L10n.of(context).openRoleLabel,
+                          style: TextStyle(
+                            fontSize: 12.0,
+                            color: (Theme.of(context).brightness ==
+                                    Brightness.light
+                                ? (userId?.localpart?.darkColor ??
+                                    name.darkColor)
+                                : (userId?.localpart?.lightColorText ??
+                                    name.lightColorText)),
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               );
