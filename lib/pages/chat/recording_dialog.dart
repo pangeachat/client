@@ -35,6 +35,7 @@ class RecordingDialogState extends State<RecordingDialog> {
   // #Pangea
   // bool error = false;
   Object? error;
+  bool _loading = true;
   // Pangea#
 
   final _audioRecorder = AudioRecorder();
@@ -87,7 +88,13 @@ class RecordingDialogState extends State<RecordingDialog> {
         path: path ?? '',
       );
 
-      setState(() => _duration = Duration.zero);
+      // #Pangea
+      // setState(() => _duration = Duration.zero);
+      setState(() {
+        _duration = Duration.zero;
+        _loading = false;
+      });
+      // Pangea#
       _recorderSubscription?.cancel();
       _recorderSubscription =
           Timer.periodic(const Duration(milliseconds: 100), (_) async {
@@ -202,7 +209,16 @@ class RecordingDialogState extends State<RecordingDialog> {
               const SizedBox(width: 8),
               SizedBox(
                 width: 48,
-                child: Text(time),
+                // #Pangea
+                // child: Text(time),
+                child: _loading
+                    ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator.adaptive(),
+                      )
+                    : Text(time),
+                // Pangea#
               ),
             ],
           );
