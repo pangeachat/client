@@ -6,6 +6,7 @@ import 'package:badges/badges.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -24,6 +25,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart'
 import 'package:fluffychat/pangea/chat/widgets/chat_floating_action_button.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_view_background.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/navigation/navigation_util.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -357,7 +359,52 @@ class ChatView extends StatelessWidget {
                 child: Stack(
                   // Pangea#
                   children: <Widget>[
-                    if (accountConfig.wallpaperUrl != null)
+                    // Only use activity image as chat background if enabled in AppConfig
+                    if (controller.room.activityPlan != null &&
+                        controller.room.activityPlan!.imageURL != null &&
+                        AppConfig.useActivityImageAsChatBackground)
+                      Opacity(
+                        opacity: 0.25,
+                        child: ImageFiltered(
+                          imageFilter: ui.ImageFilter.blur(
+                            sigmaX: accountConfig.wallpaperBlur ?? 0.0,
+                            sigmaY: accountConfig.wallpaperBlur ?? 0.0,
+                          ),
+                          child: controller.room.activityPlan!.imageURL!
+                                  .toString()
+                                  .startsWith('mxc')
+                              ? MxcImage(
+                                  uri: controller.room.activityPlan!.imageURL!,
+                                  fit: BoxFit.cover,
+                                  height: MediaQuery.sizeOf(context).height,
+                                  width: MediaQuery.sizeOf(context).width,
+                                  cacheKey: controller
+                                      .room.activityPlan!.imageURL
+                                      .toString(),
+                                  isThumbnail: false,
+                                )
+                              : Image.network(
+                                  controller.room.activityPlan!.imageURL
+                                      .toString(),
+                                  fit: BoxFit.cover,
+                                  height: MediaQuery.sizeOf(context).height,
+                                  width: MediaQuery.sizeOf(context).width,
+                                  headers: controller
+                                          .room.activityPlan!.imageURL
+                                          .toString()
+                                          .contains(Environment.cmsApi)
+                                      ? {
+                                          'Authorization':
+                                              'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                                        }
+                                      : null,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      Container(),
+                                ),
+                        ),
+                      )
+                    // If not enabled, fall through to default wallpaper logic
+                    else if (accountConfig.wallpaperUrl != null)
                       Opacity(
                         opacity: accountConfig.wallpaperOpacity ?? 0.5,
                         child: ImageFiltered(
