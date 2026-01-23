@@ -71,22 +71,16 @@ class ExampleMessageUtil {
     }
 
     if (token == null) return null;
-    final tokenText = token.text.content;
-    int tokenIndex = text.indexOf(tokenText);
-    if (tokenIndex == -1) return null;
 
-    final beforeSubstring = text.substring(0, tokenIndex);
-    if (beforeSubstring.length != beforeSubstring.characters.length) {
-      tokenIndex = beforeSubstring.characters.length;
-    }
+    final before = text.characters.take(token.text.offset).toString();
+    final after = text.characters
+        .skip(token.text.offset + token.text.content.characters.length)
+        .toString();
 
-    final int tokenLength = tokenText.characters.length;
-    final before = text.characters.take(tokenIndex).toString();
-    final after = text.characters.skip(tokenIndex + tokenLength).toString();
     return [
       TextSpan(text: before),
       TextSpan(
-        text: tokenText,
+        text: token.text.content,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
         ),
