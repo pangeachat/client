@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Salas\xf5na on muudetud";
     },
-    get$overview() {
-      return "\xdclevaade";
-    },
     get$passwordRecoverySettings() {
       return "Salas\xf5na taastamise seadistused";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Jaga asukohta";
-    },
-    get$presencesToggle() {
-      return "N\xe4ita teiste kasutajate olekuteateid";
     },
     get$skip(_) {
       return "J\xe4ta vahele";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LHAUqT+FKGvQ5Nlkh7HYcqPDmZU="] = d.current;
+  d["D5agO4EgekuNTAnd7ODiIxon7O4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_546.part.js.map

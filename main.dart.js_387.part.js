@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Passwort wurde ge\xe4ndert";
     },
-    get$overview() {
-      return "\xdcbersicht";
-    },
     get$passwordRecoverySettings() {
       return "Passwort-Wiederherstellungs-Einstellungen";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Standort teilen";
-    },
-    get$presencesToggle() {
-      return "Status-Nachrichten anderer Benutzer anzeigen";
     },
     get$skip(_) {
       return "\xdcberspringe";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ehTSGyPUbrsL/Fw9Z6Cs+KLiCB8="] = d.current;
+  d["cyUM10zawyI3uX05OjnZ2WVZu5c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_387.part.js.map

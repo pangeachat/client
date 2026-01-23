@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Pasahitza aldatu da";
     },
-    get$overview() {
-      return "Ikuspegi orokorra";
-    },
     get$passwordRecoverySettings() {
       return "Pasahitza berreskuratzeko ezarpenak";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Partekatu kokapena";
-    },
-    get$presencesToggle() {
-      return "Erakutsi beste erabiltzaileen egoera-mezuak";
     },
     get$skip(_) {
       return "Saltatu";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["tZltTZ13EuB0BjyyObuH+2HMEbg="] = d.current;
+  d["+8W0lsTVYf46xPS+az8ZjO5o7I4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_567.part.js.map

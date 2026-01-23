@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Lozinka je promijenjena";
     },
-    get$overview() {
-      return "Pregled";
-    },
     get$passwordRecoverySettings() {
       return "Postavke za obnavljanje lozinke";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Dijeli lokaciju";
-    },
-    get$presencesToggle() {
-      return "Prika\u017ei poruke stanja od drugih korisnika";
     },
     get$skip(_) {
       return "Presko\u010di";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["M0762jvxEvuI3jlpzJ3VC5mxHWg="] = d.current;
+  d["0TQt3Eit7pL0T2GKJ4WCuB6Y19Q="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_635.part.js.map

@@ -641,9 +641,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "La contrasenya ha canviat";
     },
-    get$overview() {
-      return "Resum";
-    },
     get$passwordRecoverySettings() {
       return "Recuperaci\xf3 de contrasenya";
     },
@@ -781,9 +778,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Comparteix la ubicaci\xf3";
-    },
-    get$presencesToggle() {
-      return "Mostra els missatges d'estat d'altres usu\xe0r\xefis";
     },
     get$skip(_) {
       return "Omet";
@@ -5358,7 +5352,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hakkdQP2ivb4WtzTu+AkPdVV5A4="] = d.current;
+  d["n2YmvxJPvonW9I6tuSdHGyrpauw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map

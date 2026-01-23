@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Pasvorto \u015dan\u011di\u011dis";
     },
-    get$overview() {
-      return "Superrigardo";
-    },
     get$passwordRecoverySettings() {
       return "Agordoj por pasvorta restarigo";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Konigi lokon";
-    },
-    get$presencesToggle() {
-      return "Montru statusajn mesa\u011dojn de aliaj uzantoj";
     },
     get$skip(_) {
       return "Preterpasi";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["E4+jsuqHVnubHZPS3oaU2AmMW+I="] = d.current;
+  d["eastx/SXUcQG1i7NlwRONzNVVg0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_472.part.js.map

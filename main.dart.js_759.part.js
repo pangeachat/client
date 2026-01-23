@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "L\xf6senordet har \xe4ndrats";
     },
-    get$overview() {
-      return "\xd6versikt";
-    },
     get$passwordRecoverySettings() {
       return "Inst\xe4llningar f\xf6r \xe5terst\xe4llning av l\xf6senord";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Dela plats";
-    },
-    get$presencesToggle() {
-      return "Visa statusmeddelanden fr\xe5n andra anv\xe4ndare";
     },
     get$skip(_) {
       return "Hoppa \xf6ver";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6BqFC/genI+yL88MiMHdwEf4Dyw="] = d.current;
+  d["HPLkFDRKlw2dH2W176cZFuN1RpE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_759.part.js.map

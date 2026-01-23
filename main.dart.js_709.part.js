@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "La password \xe8 stata cambiata";
     },
-    get$overview() {
-      return "Panoramica";
-    },
     get$passwordRecoverySettings() {
       return "Impostazioni di recupero password";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Condividi posizione";
-    },
-    get$presencesToggle() {
-      return "Mostra i messaggi di stato di altri utenti";
     },
     get$skip(_) {
       return "Ignora";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JWg9Kot3YLMLNrTdFzoe6yLmDng="] = d.current;
+  d["0iRmaGHrKeq7UoNV4mk/tZj6ae4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_709.part.js.map

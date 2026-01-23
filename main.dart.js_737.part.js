@@ -641,9 +641,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Has\u0142o zosta\u0142o zmienione";
     },
-    get$overview() {
-      return "Podsumowanie";
-    },
     get$passwordRecoverySettings() {
       return "Ustawienia odzyskiwania has\u0142a";
     },
@@ -781,9 +778,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Udost\u0119pnij lokalizacj\u0119";
-    },
-    get$presencesToggle() {
-      return "Pokazuj zmiany status\xf3w innych u\u017cytkownik\xf3w";
     },
     get$skip(_) {
       return "Pomi\u0144";
@@ -5355,7 +5349,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gEh4XZ7duP0bMvswiPealD39Inc="] = d.current;
+  d["cMEKlmEre+gLSgRCmkWBUqFAvJU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_737.part.js.map

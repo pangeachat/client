@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Parola de\u011fi\u015ftirildi";
     },
-    get$overview() {
-      return "Genel g\xf6r\xfcn\xfcm";
-    },
     get$passwordRecoverySettings() {
       return "Parola kurtarma ayarlar\u0131";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Konumu payla\u015f";
-    },
-    get$presencesToggle() {
-      return "Di\u011fer kullan\u0131c\u0131lar\u0131n durum mesajlar\u0131n\u0131 g\xf6ster";
     },
     get$skip(_) {
       return "Atla";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DUSgCscly2N6X9w2fsXP+d4zLCI="] = d.current;
+  d["xnkYO/WaZSBV339xS7z1b7XtchM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_763.part.js.map

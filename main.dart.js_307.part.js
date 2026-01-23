@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Kodeord er blevet \xe6ndret";
     },
-    get$overview() {
-      return "Oversigt";
-    },
     get$passwordRecoverySettings() {
       return "Indstillinger for nulstilling af adgangskode";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Del placering";
-    },
-    get$presencesToggle() {
-      return "Vis statusbeskeder fra andre brugere";
     },
     get$skip(_) {
       return "Spring over";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["raSOFovHrVvbYsoxh9YF8MzF8tY="] = d.current;
+  d["s1Tos7BJAMuZEODcAnVMbhCVx7Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_307.part.js.map

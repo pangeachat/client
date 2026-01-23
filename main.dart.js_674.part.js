@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Contrasse ha essite cambiate";
     },
-    get$overview() {
-      return "Visu";
-    },
     get$passwordRecoverySettings() {
       return "Configurationes de recuperation de parola";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Compartir position";
-    },
-    get$presencesToggle() {
-      return "Monstrar messages de stato de altere usatores";
     },
     get$skip(_) {
       return "Salta";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5dmIjboLNOHHm1tGTMHAMFqfHns="] = d.current;
+  d["YpQKoXn1c0RXwKmsPQ+ry+CGpvM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_674.part.js.map

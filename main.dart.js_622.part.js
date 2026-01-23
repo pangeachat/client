@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Cambiouse o contrasinal";
     },
-    get$overview() {
-      return "Vista xeral";
-    },
     get$passwordRecoverySettings() {
       return "Axustes de recuperaci\xf3n do contrasinal";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Compartir localizaci\xf3n";
-    },
-    get$presencesToggle() {
-      return "Mostra mensaxes de estado de outras usuarias";
     },
     get$skip(_) {
       return "Saltar";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DFexPhu3hFfPVYGPJAyYXFWliWU="] = d.current;
+  d["hPweb2nYNB9lU4k5yvpd6aVvSpk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_622.part.js.map

@@ -652,9 +652,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Senha foi alterada";
     },
-    get$overview() {
-      return "Vis\xe3o geral";
-    },
     get$passwordRecoverySettings() {
       return "Configura\xe7\xf5es de recupera\xe7\xe3o de senha";
     },
@@ -792,9 +789,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Compartilhar localiza\xe7\xe3o";
-    },
-    get$presencesToggle() {
-      return "Mostrar mensagens de status de outros usu\xe1rios";
     },
     get$skip(_) {
       return "Pular";
@@ -5982,9 +5976,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Senha foi alterada";
     },
-    get$overview() {
-      return "Vis\xe3o geral";
-    },
     get$passwordRecoverySettings() {
       return "Configura\xe7\xf5es de recupera\xe7\xe3o de senha";
     },
@@ -6122,9 +6113,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Compartilhar localiza\xe7\xe3o";
-    },
-    get$presencesToggle() {
-      return "Mostrar o status das mensagens de outros usu\xe1rios";
     },
     get$skip(_) {
       return "Pular";
@@ -11309,9 +11297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "A palavra-passe foi alterada";
     },
-    get$overview() {
-      return "Vis\xe3o geral";
-    },
     get$passwordRecoverySettings() {
       return "Configura\xe7\xf5es de recupera\xe7\xe3o de palavra-passe";
     },
@@ -11449,9 +11434,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Partilhar localiza\xe7\xe3o";
-    },
-    get$presencesToggle() {
-      return "Mostrar mensagens de estado de outros utilizadores";
     },
     get$skip(_) {
       return "Pular";
@@ -16212,7 +16194,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IOTRaMlf3FG99XEgwnCc4alroSo="] = d.current;
+  d["eDfjCxbNjqo2UDFlghEnD9XtBQw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "A jelsz\xf3 m\xf3dos\xedt\xe1sra ker\xfclt";
     },
-    get$overview() {
-      return "\xc1ttekint\xe9s";
-    },
     get$passwordRecoverySettings() {
       return "Jelsz\xf3-helyre\xe1ll\xedt\xe1si be\xe1ll\xedt\xe1sok";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Poz\xedci\xf3 megoszt\xe1sa";
-    },
-    get$presencesToggle() {
-      return "M\xe1s felhaszn\xe1l\xf3k \xe1llapot \xfczeneteinek megjelen\xedt\xe9se";
     },
     get$skip(_) {
       return "Kihagy";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ybNUyGx/Orph2kRFE4sQFoGi0o8="] = d.current;
+  d["RbfjeUisqZzzClB98QoWrfUOTTg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

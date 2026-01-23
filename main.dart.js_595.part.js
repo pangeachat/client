@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Napalitan na ang password";
     },
-    get$overview() {
-      return "Pangkalahatang-ideya";
-    },
     get$passwordRecoverySettings() {
       return "Mga setting ng pagbawi ng password";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Ibahagi ang lokasyon";
-    },
-    get$presencesToggle() {
-      return "Ipakita ang mga mensahe ng status mula sa ibang mga user";
     },
     get$skip(_) {
       return "Laktawan";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ozA4wa2H+dKsMUhdhGvnIUfMGNU="] = d.current;
+  d["7t9Je87X8u7nN6k717bd5qNmhdQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_595.part.js.map

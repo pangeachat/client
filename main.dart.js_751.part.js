@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Heslo bolo zmenen\xe9";
     },
-    get$overview() {
-      return "Preh\u013ead";
-    },
     get$passwordRecoverySettings() {
       return "Nastavenia obnovenia hesla";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Zdie\u013ea\u0165 polohu";
-    },
-    get$presencesToggle() {
-      return "Zobrazi\u0165 stavov\xe9 spr\xe1vy od in\xfdch pou\u017e\xedvate\u013eov";
     },
     get$skip(_) {
       return "Presko\u010di\u0165";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qYnWjyX7tf5RWXvb8pSzFAaorhA="] = d.current;
+  d["dOs7GymZ88SXZmzZoUymsMKQfB0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_751.part.js.map

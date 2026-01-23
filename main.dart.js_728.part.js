@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Passord endret";
     },
-    get$overview() {
-      return "Oversikt";
-    },
     get$passwordRecoverySettings() {
       return "Gjenopprettingsinnstillinger for passord";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Del plassering";
-    },
-    get$presencesToggle() {
-      return "Vis statusmeldinger fra andre brukere";
     },
     get$skip(_) {
       return "Hopp over";
@@ -5357,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RhTT4k1108jP7/W6na0la4SnAr8="] = d.current;
+  d["S+KrjtOTJczS3VYhVb2JUk5Hqr0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_728.part.js.map

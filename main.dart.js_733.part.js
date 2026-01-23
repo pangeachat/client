@@ -640,9 +640,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordHasBeenChanged() {
       return "Wachtwoord gewijzigd";
     },
-    get$overview() {
-      return "Overzicht";
-    },
     get$passwordRecoverySettings() {
       return "Wachtwoordherstel-instellingen";
     },
@@ -780,9 +777,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareLocation() {
       return "Locatie delen";
-    },
-    get$presencesToggle() {
-      return "Toon statusberichten van andere personen";
     },
     get$skip(_) {
       return "Overslaan";
@@ -5354,7 +5348,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IoUIY7MWHa7Q9PuPJWPG17BAPlA="] = d.current;
+  d["NgdIZ+jeNDuoWNw9MtTl3xGCSfk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_733.part.js.map
