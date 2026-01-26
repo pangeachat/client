@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -44,9 +47,18 @@ class ActivityPlanModel {
         _roles = roles,
         _imageURL = imageURL;
 
+  List<String> get placeholderImages => [
+        "${AppConfig.assetsBaseURL}/Space%20template%202.png",
+        "${AppConfig.assetsBaseURL}/Space%20template%203.png",
+        "${AppConfig.assetsBaseURL}/Space%20template%204.png",
+      ];
+
+  String get randomPlaceholder => placeholderImages[
+      Random(title.hashCode).nextInt(placeholderImages.length)];
+
   Uri? get imageURL => _imageURL != null
       ? Uri.tryParse("${Environment.cmsApi}$_imageURL")
-      : null;
+      : Uri.tryParse(randomPlaceholder);
 
   Map<String, ActivityRole> get roles {
     if (_roles != null) return _roles!;
