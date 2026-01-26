@@ -4517,7 +4517,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2026-01-26 12:28:28.914158",
+  "@@last_modified": "2026-01-26 14:07:00.006835",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -10925,6 +10925,11 @@
   },
   "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Comhrá le Tacaíocht",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

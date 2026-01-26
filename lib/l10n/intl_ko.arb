@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:24.404672",
+  "@@last_modified": "2026-01-26 14:06:04.696789",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11035,6 +11035,11 @@
   },
   "useActivityImageAsChatBackground": "활동 이미지를 채팅 배경으로 사용",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "지원팀과 채팅하기",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

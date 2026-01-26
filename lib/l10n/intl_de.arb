@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2026-01-26 12:27:44.472299",
+  "@@last_modified": "2026-01-26 14:06:23.915386",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -10934,6 +10934,11 @@
   },
   "useActivityImageAsChatBackground": "Aktivitätsbild als Chat-Hintergrund verwenden",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat mit dem Support",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

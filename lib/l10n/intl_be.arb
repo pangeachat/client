@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-26 12:27:52.592887",
+  "@@last_modified": "2026-01-26 14:06:30.471426",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12026,6 +12026,11 @@
   },
   "useActivityImageAsChatBackground": "Выкарыстоўвайце малюнак актыўнасці як фон чата",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Чат з падтрымкай",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

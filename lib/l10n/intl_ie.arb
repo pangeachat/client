@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-26 12:27:35.147805",
+  "@@last_modified": "2026-01-26 14:06:16.023332",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11901,6 +11901,11 @@
   },
   "useActivityImageAsChatBackground": "Úsáid íomhá gníomhaíochta mar chúlra comhrá",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat le Tacaíocht",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

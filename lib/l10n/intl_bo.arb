@@ -4279,7 +4279,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2026-01-26 12:28:10.688209",
+  "@@last_modified": "2026-01-26 14:06:45.010043",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -10681,6 +10681,11 @@
   },
   "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat with Support",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

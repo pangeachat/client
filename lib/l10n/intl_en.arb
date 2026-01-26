@@ -5071,5 +5071,6 @@
   "findCourse": "Find a course",
   "publicInviteDescChat": "Search for users to invite them to this chat.",
   "publicInviteDescSpace": "Search for users to invite them to this space.",
-  "useActivityImageAsChatBackground": "Use activity image as chat background"
+  "useActivityImageAsChatBackground": "Use activity image as chat background",
+  "chatWithSupport": "Chat with Support"
 }
