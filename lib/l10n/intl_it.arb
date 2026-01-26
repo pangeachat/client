@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:27.366543",
+  "@@last_modified": "2026-01-26 11:47:41.403817",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10925,6 +10925,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat è un'app di messaggistica, quindi le notifiche sono importanti!",
+  "enableNotificationsDesc": "Consenti notifiche",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

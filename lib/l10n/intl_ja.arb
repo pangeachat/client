@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-22 12:02:12.048814",
+  "@@last_modified": "2026-01-26 11:48:21.991753",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11712,6 +11712,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chatはメッセージアプリなので、通知は重要です！",
+  "enableNotificationsDesc": "通知を許可する",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

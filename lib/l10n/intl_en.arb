@@ -5070,5 +5070,7 @@
   },
   "findCourse": "Find a course",
   "publicInviteDescChat": "Search for users to invite them to this chat.",
-  "publicInviteDescSpace": "Search for users to invite them to this space."
+  "publicInviteDescSpace": "Search for users to invite them to this space.",
+  "enableNotificationsTitle": "Pangea Chat is a texting app so notifications are important!",
+  "enableNotificationsDesc": "Allow notifications"
 }

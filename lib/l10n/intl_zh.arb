@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-22 12:02:00.962577",
+  "@@last_modified": "2026-01-26 11:48:12.672018",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10913,6 +10913,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat 是一款短信应用，因此通知非常重要！",
+  "enableNotificationsDesc": "允许通知",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

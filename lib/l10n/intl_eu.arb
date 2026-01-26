@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-22 12:01:17.457241",
+  "@@last_modified": "2026-01-26 11:47:32.632179",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10922,6 +10922,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat mezularitza aplikazio bat da, beraz jakinarazpenak garrantzitsuak dira!",
+  "enableNotificationsDesc": "Baimendu jakinarazpenak",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

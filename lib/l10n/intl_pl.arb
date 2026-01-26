@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-22 12:02:06.402870",
+  "@@last_modified": "2026-01-26 11:48:17.273894",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10920,6 +10920,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat to aplikacja do wiadomości, więc powiadomienia są ważne!",
+  "enableNotificationsDesc": "Zezwól na powiadomienia",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

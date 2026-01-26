@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-22 12:02:17.097388",
+  "@@last_modified": "2026-01-26 11:48:26.189134",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11030,6 +11030,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat - это приложение для обмена сообщениями, поэтому уведомления важны!",
+  "enableNotificationsDesc": "Разрешить уведомления",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

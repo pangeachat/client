@@ -1911,7 +1911,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2026-01-22 12:01:33.641094",
+  "@@last_modified": "2026-01-26 11:47:48.294839",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12021,6 +12021,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat - гэта прыкладанне для адпраўкі паведамленняў, таму апавяшчэнні важныя!",
+  "enableNotificationsDesc": "Дазволіць апавяшчэнні",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

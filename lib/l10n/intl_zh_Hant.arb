@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:42.417971",
+  "@@last_modified": "2026-01-26 11:47:54.917095",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10920,6 +10920,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat 是一個即時通訊應用程式，因此通知非常重要！",
+  "enableNotificationsDesc": "允許通知",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

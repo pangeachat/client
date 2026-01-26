@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-22 12:01:25.863585",
+  "@@last_modified": "2026-01-26 11:47:40.045278",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12013,6 +12013,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat 係一個短信應用程式，所以通知非常重要！",
+  "enableNotificationsDesc": "允許通知",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

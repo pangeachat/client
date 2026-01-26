@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:11.911490",
+  "@@last_modified": "2026-01-26 11:47:25.961561",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11971,6 +11971,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat היא אפליקציית הודעות, ולכן התראות הן חשובות!",
+  "enableNotificationsDesc": "אפשר התראות",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

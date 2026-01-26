@@ -84,9 +84,15 @@ class BackgroundPush {
         const InitializationSettings(
           // #Pangea
           // android: AndroidInitializationSettings('notifications_icon'),
+          // iOS: DarwinInitializationSettings(),
           android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+          iOS: DarwinInitializationSettings(
+            requestAlertPermission: false,
+            requestBadgePermission: false,
+            requestSoundPermission: false,
+            requestProvisionalPermission: false,
+          ),
           // Pangea#
-          iOS: DarwinInitializationSettings(),
         ),
         onDidReceiveNotificationResponse: goToRoom,
       );
@@ -229,18 +235,8 @@ class BackgroundPush {
     instance.matrix = matrix;
     // ignore: prefer_initializing_formals
     instance.onFcmError = onFcmError;
-    // #Pangea
-    instance.fullInit();
-    // Pangea#
     return instance;
   }
-
-  // #Pangea
-  Future<void> fullInit() => setupPush();
-
-  void handleLoginStateChanged(_) => setupPush();
-
-  StreamSubscription<LoginState>? onLogin;
 
   Future<void> cancelNotification(String roomId) async {
     Logs().v('Cancel notification for room', roomId);
@@ -275,25 +271,16 @@ class BackgroundPush {
     bool useDeviceSpecificAppId = false,
   }) async {
     // #Pangea
-    try {
-      // Pangea#
-      if (PlatformInfos.isIOS) {
-        //<GOOGLE_SERVICES>await firebase?.requestPermission();
-      }
-      if (PlatformInfos.isAndroid) {
-        _flutterLocalNotificationsPlugin
-            .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>()
-            ?.requestNotificationsPermission();
-      }
-      // #Pangea
-    } catch (err, s) {
-      ErrorHandler.logError(
-        e: "Error requesting notifications permission: $err",
-        s: s,
-        data: {},
-      );
-    }
+    // if (PlatformInfos.isIOS) {
+    //   await firebase.requestPermission();
+    // }
+    // if (PlatformInfos.isAndroid) {
+    //   _flutterLocalNotificationsPlugin
+    //       .resolvePlatformSpecificImplementation<
+    //         AndroidFlutterLocalNotificationsPlugin
+    //       >()
+    //       ?.requestNotificationsPermission();
+    // }
     // Pangea#
     final clientName = PlatformInfos.clientName;
     oldTokens ??= <String>{};

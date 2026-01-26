@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:matrix/matrix.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
@@ -44,6 +45,9 @@ extension LocalNotificationsExtension on MatrixState {
     );
 
     if (kIsWeb) {
+      // #Pangea
+      if (html.Notification.permission != 'granted') return;
+      // Pangea#
       final avatarUrl = event.senderFromMemoryOrFallback.avatarUrl;
       Uri? thumbnailUri;
 
@@ -122,6 +126,32 @@ extension LocalNotificationsExtension on MatrixState {
       linuxNotificationIds[roomId] = notification.id;
     }
   }
+
+  // #Pangea
+  Future<bool> get notificationsEnabled {
+    return kIsWeb
+        ? Future.value(html.Notification.permission == 'granted')
+        : Permission.notification.isGranted;
+  }
+
+  Future<void> requestPermission() async {
+    if (kIsWeb) {
+      await html.Notification.requestPermission();
+    } else {
+      final status = await Permission.notification.request();
+      if (status.isGranted) {
+        // Notification permissions granted
+      } else if (status.isDenied) {
+        // Notification permissions denied
+      } else if (status.isPermanentlyDenied) {
+        // Notification permissions permanently denied, open app settings
+        await openAppSettings();
+      }
+    }
+
+    notifPermissionNotifier.value = notifPermissionNotifier.value + 1;
+  }
+  // Pangea#
 }
 
 enum DesktopNotificationActions { seen, openChat }

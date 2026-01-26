@@ -86,6 +86,9 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   bool? loginRegistrationSupported;
 
   BackgroundPush? backgroundPush;
+  // #Pangea
+  ValueNotifier<int> notifPermissionNotifier = ValueNotifier(0);
+  // Pangea#
 
   Client get client {
     if (_activeClient < 0 || _activeClient >= widget.clients.length) {

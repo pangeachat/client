@@ -1920,7 +1920,7 @@
   "playWithAI": "ఇప్పుడే AI తో ఆడండి",
   "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
   "@@locale": "te",
-  "@@last_modified": "2026-01-22 12:01:51.350363",
+  "@@last_modified": "2026-01-26 11:48:04.041842",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12011,6 +12011,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "పాంజియా చాట్ ఒక సందేశం యాప్ కాబట్టి నోటిఫికేషన్లు ముఖ్యమైనవి!",
+  "enableNotificationsDesc": "నోటిఫికేషన్లను అనుమతించండి",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

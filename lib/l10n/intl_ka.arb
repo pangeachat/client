@@ -2594,7 +2594,7 @@
   "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
   "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
   "@@locale": "ka",
-  "@@last_modified": "2026-01-22 12:02:18.860564",
+  "@@last_modified": "2026-01-26 11:48:27.792615",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11952,6 +11952,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat არის ტექსტური აპლიკაცია, ამიტომ შეტყობინებები მნიშვნელოვანია!",
+  "enableNotificationsDesc": "შეტყობინებების დაშვება",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

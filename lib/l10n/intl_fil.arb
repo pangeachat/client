@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-22 12:01:44.028462",
+  "@@last_modified": "2026-01-26 11:47:56.799909",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11898,6 +11898,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Ang Pangea Chat ay isang texting app kaya't mahalaga ang mga notification!",
+  "enableNotificationsDesc": "Pahintulutan ang mga notification",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

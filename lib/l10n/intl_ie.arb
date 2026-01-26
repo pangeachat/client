@@ -4372,7 +4372,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2026-01-22 12:01:08.955250",
+  "@@last_modified": "2026-01-26 11:47:23.079148",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11896,6 +11896,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat é uma aplicação de mensagens, por isso as notificações são importantes!",
+  "enableNotificationsDesc": "Permitir notificações",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

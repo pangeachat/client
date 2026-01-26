@@ -4456,7 +4456,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-22 12:01:36.919446",
+  "@@last_modified": "2026-01-26 11:47:51.679521",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11980,6 +11980,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat เป็นแอปส่งข้อความ ดังนั้นการแจ้งเตือนจึงสำคัญ!",
+  "enableNotificationsDesc": "อนุญาตการแจ้งเตือน",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }
