@@ -259,7 +259,10 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   Future<void> _startSession() async {
     await _waitForAnalytics();
     await _sessionLoader.load();
-    if (_sessionLoader.isError) return;
+    if (_sessionLoader.isError) {
+      AnalyticsPractice.bypassExitConfirmation = true;
+      return;
+    }
 
     progressNotifier.value = _sessionLoader.value!.progress;
     await _continueSession();
@@ -329,6 +332,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         AnalyticsPractice.bypassExitConfirmation = false;
       }
     } catch (e) {
+      debugPrint("ERROR");
       AnalyticsPractice.bypassExitConfirmation = true;
       activityState.value = AsyncState.error(e);
     } finally {
@@ -355,6 +359,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       activityState.value = AsyncState.loaded(res);
       AnalyticsPractice.bypassExitConfirmation = false;
     } catch (e) {
+      debugPrint("ERROR");
       AnalyticsPractice.bypassExitConfirmation = true;
       if (!mounted) return;
       activityState.value = AsyncState.error(e);
