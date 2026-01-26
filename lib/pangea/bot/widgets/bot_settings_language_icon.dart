@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class BotSettingsLanguageIcon extends StatelessWidget {
   final User user;

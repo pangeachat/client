@@ -4,6 +4,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -67,6 +69,14 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           name: userId!.localpart,
                           size: 60.0,
                           userId: userId,
+                          miniIcon:
+                              room != null && userId == BotName.byEnvironment
+                                  ? BotSettingsLanguageIcon(user: user!)
+                                  : null,
+                          presenceOffset:
+                              room != null && userId == BotName.byEnvironment
+                                  ? const Offset(0, 0)
+                                  : null,
                         )
                       : ClipRRect(
                           borderRadius: BorderRadius.circular(30),
