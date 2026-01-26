@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2026-01-22 12:01:06.427460",
+  "@@last_modified": "2026-01-26 12:27:33.826661",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12006,6 +12006,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Použiť obrázok aktivity ako pozadie chatu",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

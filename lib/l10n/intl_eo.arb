@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:02:15.725740",
+  "@@last_modified": "2026-01-26 12:28:24.101271",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12011,6 +12011,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

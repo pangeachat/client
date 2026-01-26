@@ -1,6 +1,6 @@
 {
   "@@locale": "gl",
-  "@@last_modified": "2026-01-22 12:00:52.883998",
+  "@@last_modified": "2026-01-26 12:27:26.548491",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -10919,6 +10919,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usa a imaxe de actividade como fondo de chat",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

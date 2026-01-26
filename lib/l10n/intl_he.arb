@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:11.911490",
+  "@@last_modified": "2026-01-26 12:27:37.673318",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11971,6 +11971,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

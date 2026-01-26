@@ -1,6 +1,6 @@
 {
   "@@locale": "fr",
-  "@@last_modified": "2026-01-22 12:02:23.383738",
+  "@@last_modified": "2026-01-26 12:28:29.933498",
   "about": "À propos",
   "@about": {
     "type": "String",
@@ -11246,6 +11246,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Utiliser l'image d'activité comme arrière-plan de chat",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

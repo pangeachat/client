@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:31.934487",
+  "@@last_modified": "2026-01-26 12:27:51.317423",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12015,6 +12015,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

@@ -359,6 +359,8 @@ class ChatView extends StatelessWidget {
                 child: Stack(
                   // Pangea#
                   children: <Widget>[
+                    // #Pangea
+                    // if (accountConfig.wallpaperUrl != null)
                     // Only use activity image as chat background if enabled in AppConfig
                     if (controller.room.activityPlan != null &&
                         controller.room.activityPlan!.imageURL != null &&
@@ -405,6 +407,7 @@ class ChatView extends StatelessWidget {
                       )
                     // If not enabled, fall through to default wallpaper logic
                     else if (accountConfig.wallpaperUrl != null)
+                      // Pangea#
                       Opacity(
                         opacity: accountConfig.wallpaperOpacity ?? 0.5,
                         child: ImageFiltered(

@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-22 12:01:44.028462",
+  "@@last_modified": "2026-01-26 12:27:58.277677",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11898,6 +11898,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

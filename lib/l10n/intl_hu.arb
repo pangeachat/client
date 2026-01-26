@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-22 12:01:00.971468",
+  "@@last_modified": "2026-01-26 12:27:30.234620",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10923,6 +10923,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Használja az aktivitás képet csevegési háttérként",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

@@ -3861,7 +3861,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2026-01-22 12:01:53.612206",
+  "@@last_modified": "2026-01-26 12:28:04.436326",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11727,6 +11727,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Naudoti veiklos vaizdą kaip pokalbio foną",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }
