@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:51.317423",
+  "@@last_modified": "2026-01-26 14:06:29.444623",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12020,6 +12020,11 @@
   },
   "useActivityImageAsChatBackground": "Bruk aktivitetsbilde som chatbakgrunn",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat med støtte",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

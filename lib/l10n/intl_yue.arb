@@ -1856,7 +1856,7 @@
   "selectAll": "全選",
   "deselectAll": "取消全選",
   "@@locale": "yue",
-  "@@last_modified": "2026-01-26 12:27:46.517764",
+  "@@last_modified": "2026-01-26 14:06:26.055511",
   "@ignoreUser": {
     "type": "String",
     "placeholders": {}
@@ -12018,6 +12018,11 @@
   },
   "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "與支援聊天",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

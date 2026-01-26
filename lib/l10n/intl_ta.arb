@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:28:07.408609",
+  "@@last_modified": "2026-01-26 14:06:43.169989",
   "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
   "@acceptedTheInvitation": {
     "type": "String",
@@ -11151,6 +11151,11 @@
   },
   "useActivityImageAsChatBackground": "செயல்பாட்டு படத்தை உரையாடல் பின்னணி ஆக பயன்படுத்தவும்",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "ஆதரவுடன் உரையாடவும்",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

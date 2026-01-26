@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:28:08.329376",
+  "@@last_modified": "2026-01-26 14:06:44.085967",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10927,6 +10927,11 @@
   },
   "useActivityImageAsChatBackground": "Gebruik activiteit afbeelding als chatachtergrond",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat met Ondersteuning",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

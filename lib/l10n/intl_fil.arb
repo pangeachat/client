@@ -2787,7 +2787,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2026-01-26 12:27:58.277677",
+  "@@last_modified": "2026-01-26 14:06:35.659288",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -11903,6 +11903,11 @@
   },
   "useActivityImageAsChatBackground": "Gamitin ang larawan ng aktibidad bilang background ng chat",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Makipag-chat sa Suporta",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

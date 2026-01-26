@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-26 12:27:36.383504",
+  "@@last_modified": "2026-01-26 14:06:17.042558",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11299,6 +11299,11 @@
   },
   "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu chata",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Razgovarajte s podrškom",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

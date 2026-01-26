@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2026-01-26 12:28:21.231253",
+  "@@last_modified": "2026-01-26 14:06:52.792384",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -11717,6 +11717,11 @@
   },
   "useActivityImageAsChatBackground": "アクティビティ画像をチャットの背景として使用",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "サポートとチャット",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

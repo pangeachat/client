@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-26 12:28:00.853326",
+  "@@last_modified": "2026-01-26 14:06:38.032512",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11144,6 +11144,11 @@
   },
   "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "الدردشة مع الدعم",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

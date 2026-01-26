@@ -1958,7 +1958,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2026-01-26 12:27:38.716861",
+  "@@last_modified": "2026-01-26 14:06:18.748595",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12005,6 +12005,11 @@
   },
   "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Fala com o Suporte",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:32.499634",
+  "@@last_modified": "2026-01-26 14:06:13.768752",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -11662,6 +11662,11 @@
   },
   "useActivityImageAsChatBackground": "Folosește imaginea activității ca fundal pentru chat",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat cu Suportul",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

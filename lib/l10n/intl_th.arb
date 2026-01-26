@@ -4456,7 +4456,7 @@
   "playWithAI": "เล่นกับ AI ชั่วคราว",
   "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
   "@@locale": "th",
-  "@@last_modified": "2026-01-26 12:27:55.201298",
+  "@@last_modified": "2026-01-26 14:06:32.488603",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11985,6 +11985,11 @@
   },
   "useActivityImageAsChatBackground": "ใช้ภาพกิจกรรมเป็นพื้นหลังแชท",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "แชทกับฝ่ายสนับสนุน",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

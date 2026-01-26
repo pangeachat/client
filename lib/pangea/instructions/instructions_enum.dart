@@ -34,6 +34,7 @@ enum InstructionsEnum {
   selectMeaning,
   clickTextMessages,
   clickAudioMessages,
+  dismissSupportChat,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -67,6 +68,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.disableLanguageTools:
       case InstructionsEnum.clickTextMessages:
       case InstructionsEnum.clickAudioMessages:
+      case InstructionsEnum.dismissSupportChat:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -130,6 +132,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.setLemmaEmoji:
       case InstructionsEnum.clickTextMessages:
       case InstructionsEnum.clickAudioMessages:
+      case InstructionsEnum.dismissSupportChat:
         return "";
       case InstructionsEnum.disableLanguageTools:
         return l10n.disableLanguageToolsDesc;

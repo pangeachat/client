@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:47.544878",
+  "@@last_modified": "2026-01-26 14:06:26.881575",
   "about": "Informazioni",
   "@about": {
     "type": "String",
@@ -10930,6 +10930,11 @@
   },
   "useActivityImageAsChatBackground": "Usa l'immagine dell'attività come sfondo della chat",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatta con il supporto",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

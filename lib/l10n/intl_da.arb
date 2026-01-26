@@ -1930,7 +1930,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2026-01-26 12:27:28.906661",
+  "@@last_modified": "2026-01-26 14:06:10.232271",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -11988,6 +11988,11 @@
   },
   "useActivityImageAsChatBackground": "Brug aktivitetsbillede som chatbaggrund",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat med support",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

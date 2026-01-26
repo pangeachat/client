@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-26 12:27:25.542021",
+  "@@last_modified": "2026-01-26 14:06:06.100713",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8161,6 +8161,11 @@
   },
   "useActivityImageAsChatBackground": "Usar imagen de actividad como fondo de chat",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chatear con Soporte",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

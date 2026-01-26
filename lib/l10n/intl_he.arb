@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:37.673318",
+  "@@last_modified": "2026-01-26 14:06:17.868712",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -11976,6 +11976,11 @@
   },
   "useActivityImageAsChatBackground": "השתמש בתמונה של הפעילות כרקע לצ'אט",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "צ'אט עם תמיכה",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

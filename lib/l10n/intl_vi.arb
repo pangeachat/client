@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:28:05.933736",
+  "@@last_modified": "2026-01-26 14:06:42.137290",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -6497,6 +6497,11 @@
   },
   "useActivityImageAsChatBackground": "Sử dụng hình ảnh hoạt động làm nền trò chuyện",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Trò chuyện với Hỗ trợ",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }
