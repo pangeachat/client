@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return "Tharraing " + username + " an cuireadh do " + targetName + " siar";
     },
-    get$help() {
-      return "Cabhair";
-    },
     get$hideRedactedMessages() {
       return "Folaigh teachtaireachta\xed curtha in eagar";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "\xdas\xe1id \xedomh\xe1 gn\xedomha\xedochta mar ch\xfalra comhr\xe1";
     },
+    get$chatWithSupport() {
+      return "Comhr\xe1 le Taca\xedocht";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LKNs5wu79vI6MztJjMEEtwL6dXs="] = d.current;
+  d["Px+y7E+D3EEpnd3bLlMC9tmYKtM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_618.part.js.map

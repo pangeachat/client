@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " ay nag-withdraw ng paanyaya para kay " + targetName;
     },
-    get$help() {
-      return "Tulong";
-    },
     get$hideRedactedMessages() {
       return "Itago ang mga tinanggal na mensahe";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Gamitin ang larawan ng aktibidad bilang background ng chat";
     },
+    get$chatWithSupport() {
+      return "Makipag-chat sa Suporta";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IXVEsEyXWSqHzDGiOkoCtT9hmUI="] = d.current;
+  d["TGcDZVlTthN3SNY8+DFDkJRH1Vg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_596.part.js.map

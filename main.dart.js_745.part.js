@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " a retras invita\u021bia pentru " + targetName;
     },
-    get$help() {
-      return "Ajutor";
-    },
     get$hideRedactedMessages() {
       return "Ascunde mesajele cenzurate";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Folose\u0219te imaginea activit\u0103\u021bii ca fundal pentru chat";
     },
+    get$chatWithSupport() {
+      return "Chat cu Suportul";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0Jstk/6lyPwVEgWCVdB5WsQzbaA="] = d.current;
+  d["oQFJBJADePWLZP9pHPwd7JKXulU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_745.part.js.map

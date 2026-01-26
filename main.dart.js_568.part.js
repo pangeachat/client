@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + "(e)k " + targetName + "(r)en gonbidapena atzera bota du";
     },
-    get$help() {
-      return "Laguntza";
-    },
     get$hideRedactedMessages() {
       return "Ezkutatu atzera botatako mezuak";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Erabili jarduera irudia txat atzeko plano gisa";
     },
+    get$chatWithSupport() {
+      return "Txatatu Laguntzarekin";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3vfxru107Ip6trm+JkrGfbspUtI="] = d.current;
+  d["rQXPyMCQ6nO43Qk+G3813LqV1Zs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_568.part.js.map

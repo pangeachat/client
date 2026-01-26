@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " at\u0161auk\u0117 " + targetName + " kvietim\u0105";
     },
-    get$help() {
-      return "Pagalba";
-    },
     get$hideRedactedMessages() {
       return "Sl\u0117pti redaguotas \u017einutes";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Naudoti veiklos vaizd\u0105 kaip pokalbio fon\u0105";
     },
+    get$chatWithSupport() {
+      return "Pokalbis su palaikymu";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1Z5G6Pc8WruqRAkHk9+KLac460A="] = d.current;
+  d["+nrMw8Y4pq+qrbNsXfIiw2lItC0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_716.part.js.map

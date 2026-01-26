@@ -446,9 +446,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " \u0430\u0434\u043a\u043b\u0456\u043a\u0430\u045e \u0437\u0430\u043f\u0440\u0430\u0448\u044d\u043d\u043d\u0435 \u0434\u043b\u044f " + targetName;
     },
-    get$help() {
-      return "\u0414\u0430\u043f\u0430\u043c\u043e\u0433\u0430";
-    },
     get$hideRedactedMessages() {
       return "\u0421\u0445\u0430\u0432\u0430\u0446\u044c \u0432\u044b\u0434\u0430\u043b\u0435\u043d\u044b\u044f \u043f\u0430\u0432\u0435\u0434\u0430\u043c\u043b\u0435\u043d\u043d\u0456";
     },
@@ -5339,6 +5336,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "\u0412\u044b\u043a\u0430\u0440\u044b\u0441\u0442\u043e\u045e\u0432\u0430\u0439\u0446\u0435 \u043c\u0430\u043b\u044e\u043d\u0430\u043a \u0430\u043a\u0442\u044b\u045e\u043d\u0430\u0441\u0446\u0456 \u044f\u043a \u0444\u043e\u043d \u0447\u0430\u0442\u0430";
     },
+    get$chatWithSupport() {
+      return "\u0427\u0430\u0442 \u0437 \u043f\u0430\u0434\u0442\u0440\u044b\u043c\u043a\u0430\u0439";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5355,7 +5355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["G4dnmtyoIVXgLDZU254yUylIkIs="] = d.current;
+  d["at38DWNhGROg5KnzaboBJ66Msmo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map

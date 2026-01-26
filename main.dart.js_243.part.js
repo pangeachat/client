@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " st\xe1hl pozv\xe1nku pro " + targetName;
     },
-    get$help() {
-      return "Pomoc";
-    },
     get$hideRedactedMessages() {
       return "Skr\xfdt upraven\xe9 zpr\xe1vy";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Pou\u017e\xedt obr\xe1zek aktivity jako pozad\xed chatu";
     },
+    get$chatWithSupport() {
+      return "Chat s podporou";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Yt/59vZUe6IWX0Xf9x1VgRcwruE="] = d.current;
+  d["jkd7GH8mKOow85W9sRW0iP9hUr0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map

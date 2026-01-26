@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " telah mencabut undangan untuk " + targetName;
     },
-    get$help() {
-      return "Bantuan";
-    },
     get$hideRedactedMessages() {
       return "Sembunyikan pesan yang dihapus";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Gunakan gambar aktivitas sebagai latar belakang obrolan";
     },
+    get$chatWithSupport() {
+      return "Chat dengan Dukungan";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cPuGBk3AcYMMArQfYFpH4HPASto="] = d.current;
+  d["17ZdB0c1+bleciEDWYsbkzAo62c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_693.part.js.map

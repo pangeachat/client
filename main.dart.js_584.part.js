@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " on perunnut k\xe4ytt\xe4j\xe4n " + targetName + " kutsun";
     },
-    get$help() {
-      return "Apua";
-    },
     get$hideRedactedMessages() {
       return "Piilota muokatut viestit";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "K\xe4yt\xe4 aktiviteettikuvaa chat-taustana";
     },
+    get$chatWithSupport() {
+      return "Chattaa tuen kanssa";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BiIKIRlRGw5dwMaSBNnuBZOlUi0="] = d.current;
+  d["5TiitH1czSblrKODYyraBVItNzI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_584.part.js.map

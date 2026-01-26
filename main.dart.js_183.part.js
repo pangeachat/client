@@ -446,9 +446,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " ha retirat la invitaci\xf3 de " + targetName;
     },
-    get$help() {
-      return "Ajuda";
-    },
     get$hideRedactedMessages() {
       return "Amaga els missatges estripats";
     },
@@ -5339,6 +5336,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Utilitza la imatge d'activitat com a fons de xat";
     },
+    get$chatWithSupport() {
+      return "Xateja amb el Suport";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5355,7 +5355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["o6cm8KcEliiiwNgltP+Nk3zJi5o="] = d.current;
+  d["bR8oNYRNQ7WPghOW07AMLTJ3++Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_183.part.js.map

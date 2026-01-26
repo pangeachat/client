@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " je umaknil vabilo za " + targetName;
     },
-    get$help() {
-      return "Pomo\u010d";
-    },
     get$hideRedactedMessages() {
       return "Skrij prekrita sporo\u010dila";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Uporabi sliko dejavnosti kot ozadje klepeta";
     },
+    get$chatWithSupport() {
+      return "Pogovorite se s podporo";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["u3fNQeB91f97uL/7Zci8zZ0zjr0="] = d.current;
+  d["4DUQli0hJ0QI+wAU/WHsi8NPrmI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_755.part.js.map

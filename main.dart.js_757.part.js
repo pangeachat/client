@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " \u043f\u043e\u043d\u0438\u0448\u0442\u0438 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0443 \u0437\u0430 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
-    get$help() {
-      return "\u041f\u043e\u043c\u043e\u045b";
-    },
     get$hideRedactedMessages() {
       return "Sakrij redigovane poruke";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Koristi sliku aktivnosti kao pozadinu za \u010dat";
     },
+    get$chatWithSupport() {
+      return "Razgovarajte sa podr\u0161kom";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MPdbPFzH2vFxahGAKG2Nw8NdSrI="] = d.current;
+  d["6W0T/cSKeBTOnv+HA0cXcVYIPGQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_757.part.js.map

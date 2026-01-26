@@ -457,9 +457,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " retirou o convite para " + targetName;
     },
-    get$help() {
-      return "Ajuda";
-    },
     get$hideRedactedMessages() {
       return "Ocultar mensagens redigidas";
     },
@@ -5350,6 +5347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return string$.Usar_i;
     },
+    get$chatWithSupport() {
+      return "Converse com o Suporte";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5783,9 +5783,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " revogou o convite para " + targetName;
-    },
-    get$help() {
-      return "Ajuda";
     },
     get$hideRedactedMessages() {
       return "Esconder mensagens exclu\xeddas";
@@ -10674,6 +10671,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return string$.Usar_i;
     },
+    get$chatWithSupport() {
+      return "Converse com o Suporte";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -11107,9 +11107,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " revogou o convite para " + targetName;
-    },
-    get$help() {
-      return "Ajuda";
     },
     get$hideRedactedMessages() {
       return "Ocultar mensagens redigidas";
@@ -15998,6 +15995,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return string$.Usar_i;
     },
+    get$chatWithSupport() {
+      return "Converse com o Suporte";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -16204,7 +16204,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dz+eMFODTdt4XVi6mQLtqFTWZUg="] = d.current;
+  d["mShhO5OAsYhkb/D3EzbLZ8OlyCA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_25.part.js.map

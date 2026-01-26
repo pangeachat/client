@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " visszavonta " + targetName + " megh\xedv\xe1s\xe1t";
     },
-    get$help() {
-      return "S\xfag\xf3";
-    },
     get$hideRedactedMessages() {
       return "Szerkesztett \xfczenetek elrejt\xe9se";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Haszn\xe1lja az aktivit\xe1s k\xe9pet cseveg\xe9si h\xe1tt\xe9rk\xe9nt";
     },
+    get$chatWithSupport() {
+      return "Cseveg\xe9s a T\xe1mogat\xe1ssal";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RtdFg+UIuXavoA4LTTfHe2JnRQE="] = d.current;
+  d["fi7VCB8AhMJT3H53NId3Y5N5UoM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_668.part.js.map

@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc5d0 \ub300\ud55c \ucd08\ub300\ub97c \ucca0\ud68c\ud568";
     },
-    get$help() {
-      return "\ub3c4\uc6c0";
-    },
     get$hideRedactedMessages() {
       return "\uc0ad\uc81c\ub41c \uba54\uc2dc\uc9c0 \uc228\uae30\uae30";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "\ud65c\ub3d9 \uc774\ubbf8\uc9c0\ub97c \ucc44\ud305 \ubc30\uacbd\uc73c\ub85c \uc0ac\uc6a9";
     },
+    get$chatWithSupport() {
+      return "\uc9c0\uc6d0\ud300\uacfc \ucc44\ud305\ud558\uae30";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GdcLT8xuS1j08HSN0bfli6WcwiY="] = d.current;
+  d["DGoRhRS3au/3//xXeew0tMe4EK4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_715.part.js.map

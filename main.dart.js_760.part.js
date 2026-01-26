@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " har tagit tillbaka inbjudan f\xf6r " + targetName;
     },
-    get$help() {
-      return "Hj\xe4lp";
-    },
     get$hideRedactedMessages() {
       return "D\xf6lj redigerade meddelanden";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Anv\xe4nd aktivitetsbild som chattbakgrund";
     },
+    get$chatWithSupport() {
+      return "Chatta med support";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gMilaJUMxjWy3+uEOfPSJK2N7FI="] = d.current;
+  d["adAP1HDl4XmkrK7Rin3ILSLd2fs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_760.part.js.map

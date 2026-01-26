@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " on v\xf5tnud tagasi " + targetName + " kutse";
     },
-    get$help() {
-      return "Abiteave";
-    },
     get$hideRedactedMessages() {
       return "Peida muudetud s\xf5numid";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Kasuta tegevuse pilti vestluse taustana";
     },
+    get$chatWithSupport() {
+      return "Vestle Toega";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5351,7 +5351,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IbDPJ8d6lePgN3v/72qAKCp/mQs="] = d.current;
+  d["cBkayGeOozLtW8BItp5XOmqI8B0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_547.part.js.map

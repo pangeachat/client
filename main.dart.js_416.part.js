@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + " \u03ad\u03c7\u03b5\u03b9 \u03b1\u03c0\u03bf\u03c3\u03cd\u03c1\u03b5\u03b9 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7 \u03b3\u03b9\u03b1 " + targetName;
     },
-    get$help() {
-      return "\u0392\u03bf\u03ae\u03b8\u03b5\u03b9\u03b1";
-    },
     get$hideRedactedMessages() {
       return "\u0391\u03c0\u03cc\u03ba\u03c1\u03c5\u03c8\u03b7 \u03b5\u03c0\u03b5\u03be\u03b5\u03c1\u03b3\u03b1\u03c3\u03bc\u03ad\u03bd\u03c9\u03bd \u03bc\u03b7\u03bd\u03c5\u03bc\u03ac\u03c4\u03c9\u03bd";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "\u03a7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b7\u03bd \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1 \u03b4\u03c1\u03b1\u03c3\u03c4\u03b7\u03c1\u03b9\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2 \u03c9\u03c2 \u03c6\u03cc\u03bd\u03c4\u03bf \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1\u03c2";
     },
+    get$chatWithSupport() {
+      return "\u03a3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1 \u03bc\u03b5 \u03a5\u03c0\u03bf\u03c3\u03c4\u03ae\u03c1\u03b9\u03be\u03b7";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yIK4DHPTGy5NLplYMXHslLpZNT0="] = d.current;
+  d["InpLi34AqwPiSzfACeWzj3ja8Gg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_416.part.js.map

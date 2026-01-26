@@ -445,9 +445,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasWithdrawnTheInvitationFor$2(username, targetName) {
       return username + ", " + targetName + " i\xe7in daveti geri \xe7ekti";
     },
-    get$help() {
-      return "Yard\u0131m";
-    },
     get$hideRedactedMessages() {
       return "D\xfczenlenen mesajlar\u0131 gizle";
     },
@@ -5338,6 +5335,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$useActivityImageAsChatBackground() {
       return "Etkinlik resmini sohbet arka plan\u0131 olarak kullan";
     },
+    get$chatWithSupport() {
+      return "Destek ile Sohbet Et";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5354,7 +5354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zXAB52RMS9/o4AEHrvoPZV2WtkQ="] = d.current;
+  d["OoqtP3ATGpjneklKvfKkudbWdGg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_764.part.js.map
