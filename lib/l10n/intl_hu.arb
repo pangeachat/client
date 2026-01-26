@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2026-01-22 12:01:00.971468",
+  "@@last_modified": "2026-01-26 11:47:16.627935",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -10923,6 +10923,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "A Pangea Chat egy üzenetküldő alkalmazás, így a értesítések fontosak!",
+  "enableNotificationsDesc": "Értesítések engedélyezése",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2026-01-22 12:00:51.625942",
+  "@@last_modified": "2026-01-26 11:47:09.685186",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -8156,6 +8156,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "¡Pangea Chat es una aplicación de mensajería, así que las notificaciones son importantes!",
+  "enableNotificationsDesc": "Permitir notificaciones",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

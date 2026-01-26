@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2026-01-22 12:01:10.402528",
+  "@@last_modified": "2026-01-26 11:47:24.842765",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -11294,6 +11294,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, stoga su obavijesti važne!",
+  "enableNotificationsDesc": "Dopusti obavijesti",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-22 12:01:20.400166",
+  "@@last_modified": "2026-01-26 11:47:35.554950",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11193,6 +11193,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat on sõnumite rakendus, seega on teavitused olulised!",
+  "enableNotificationsDesc": "Luba teavitused",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:02:04.083596",
+  "@@last_modified": "2026-01-26 11:48:15.757878",
   "repeatPassword": "تکرار رمزعبور",
   "@repeatPassword": {},
   "about": "درباره",
@@ -11654,6 +11654,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "چت پانگه‌آ یک اپلیکیشن پیام‌رسان است، بنابراین اعلان‌ها مهم هستند!",
+  "enableNotificationsDesc": "اجازه دادن به اعلان‌ها",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

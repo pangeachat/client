@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:02:20.533801",
+  "@@last_modified": "2026-01-26 11:48:29.570610",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12024,6 +12024,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, pa su obaveštenja važna!",
+  "enableNotificationsDesc": "Dozvoli obaveštenja",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

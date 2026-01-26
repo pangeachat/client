@@ -4009,7 +4009,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2026-01-22 12:00:55.098205",
+  "@@last_modified": "2026-01-26 11:47:13.574227",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11545,6 +11545,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat on viestintäsovellus, joten ilmoitukset ovat tärkeitä!",
+  "enableNotificationsDesc": "Salli ilmoitukset",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-22 12:01:30.360444",
+  "@@last_modified": "2026-01-26 11:47:44.607869",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11529,6 +11529,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat je aplikace pro zasílání zpráv, takže jsou oznámení důležitá!",
+  "enableNotificationsDesc": "Povolit oznámení",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

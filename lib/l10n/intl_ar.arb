@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-22 12:01:48.002470",
+  "@@last_modified": "2026-01-26 11:48:01.000838",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11139,6 +11139,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "بانجيا شات هو تطبيق رسائل لذا فإن الإشعارات مهمة!",
+  "enableNotificationsDesc": "السماح بالإشعارات",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

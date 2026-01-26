@@ -4456,7 +4456,7 @@
   "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
   "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
   "@@locale": "el",
-  "@@last_modified": "2026-01-22 12:02:10.279313",
+  "@@last_modified": "2026-01-26 11:48:20.352790",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11980,6 +11980,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Η Pangea Chat είναι μια εφαρμογή μηνυμάτων, οπότε οι ειδοποιήσεις είναι σημαντικές!",
+  "enableNotificationsDesc": "Επιτρέψτε τις ειδοποιήσεις",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:02:08.064498",
+  "@@last_modified": "2026-01-26 11:48:18.816869",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -11400,6 +11400,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat är en meddelandeapp så aviseringar är viktiga!",
+  "enableNotificationsDesc": "Tillåt aviseringar",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

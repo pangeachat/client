@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-22 12:01:49.339268",
+  "@@last_modified": "2026-01-26 11:48:02.434738",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11144,6 +11144,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat, bir mesajlaşma uygulamasıdır, bu yüzden bildirimler önemlidir!",
+  "enableNotificationsDesc": "Bildirimlere izin ver",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

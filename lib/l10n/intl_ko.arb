@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:00:49.883642",
+  "@@last_modified": "2026-01-26 11:47:07.347165",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11030,6 +11030,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat은 문자 메시지 앱이므로 알림이 중요합니다!",
+  "enableNotificationsDesc": "알림 허용",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:58.109571",
+  "@@last_modified": "2026-01-26 11:48:10.209783",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -10922,6 +10922,16 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "enableNotificationsTitle": "Pangea Chat is een berichten-app, dus meldingen zijn belangrijk!",
+  "enableNotificationsDesc": "Sta meldingen toe",
+  "@enableNotificationsTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@enableNotificationsDesc": {
     "type": "String",
     "placeholders": {}
   }
