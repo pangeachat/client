@@ -174,8 +174,9 @@ class HtmlMessage extends StatelessWidget {
       );
 
   String _addTokenTags() {
-    final regex = RegExp(r'(<[^>]+>)');
+    if (html.contains("<a href")) return html;
 
+    final regex = RegExp(r'(<[^>]+>)');
     final matches = regex.allMatches(html);
     final List<String> result = <String>[];
     int lastEnd = 0;
@@ -208,6 +209,8 @@ class HtmlMessage extends StatelessWidget {
         );
       }
     }
+
+    debugPrint("Results: $result");
 
     int position = 0;
     final tokenPositions = tokens != null
