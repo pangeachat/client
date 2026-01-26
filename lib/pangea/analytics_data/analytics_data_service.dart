@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_settings/analytics_settings_extension.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/languages/language_model.dart';
 import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -440,6 +441,23 @@ class AnalyticsDataService {
 
     if (newUnlockedMorphs.isNotEmpty) {
       events.add(MorphUnlockedEvent(newUnlockedMorphs));
+    }
+
+    for (final entry in newConstructs.entries) {
+      final prevConstruct = prevConstructs[entry.key];
+      if (prevConstruct == null) continue;
+
+      final prevLevel = prevConstruct.lemmaCategory;
+      final newLevel = entry.value.lemmaCategory;
+      if (newLevel.xpNeeded > prevLevel.xpNeeded) {
+        events.add(
+          ConstructLevelUpEvent(
+            entry.key,
+            newLevel,
+            update.targetID,
+          ),
+        );
+      }
     }
 
     if (update.blockedConstruct != null) {

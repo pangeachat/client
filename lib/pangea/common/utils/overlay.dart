@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
+import 'package:fluffychat/pangea/analytics_misc/growth_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/star_rain_widget.dart';
 import 'package:fluffychat/pangea/choreographer/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/choreographer.dart';
@@ -13,6 +14,7 @@ import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:fluffychat/pangea/common/widgets/transparent_backdrop.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
@@ -304,6 +306,30 @@ class OverlayUtil {
       child: PointsGainedAnimation(
         points: points,
         targetID: targetId,
+      ),
+      transformTargetId: targetId,
+      closePrevOverlay: false,
+      backDropToDismiss: false,
+      ignorePointer: true,
+    );
+  }
+
+  static int _growthAnimationCounter = 0;
+
+  static void showGrowthAnimation(
+    BuildContext context,
+    String targetId,
+    ConstructLevelEnum level,
+  ) {
+    final overlayKey = "${targetId}_growth_${_growthAnimationCounter++}";
+    showOverlay(
+      overlayKey: overlayKey,
+      followerAnchor: Alignment.topCenter,
+      targetAnchor: Alignment.topCenter,
+      context: context,
+      child: GrowthAnimation(
+        targetID: overlayKey,
+        level: level,
       ),
       transformTargetId: targetId,
       closePrevOverlay: false,
