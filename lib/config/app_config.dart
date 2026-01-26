@@ -145,6 +145,7 @@ abstract class AppConfig {
   static bool sendPublicReadReceipts = true;
   static bool swipeRightToLeftToReply = true;
   static bool? sendOnEnter;
+  static bool useActivityImageAsChatBackground = true;
   static bool showPresences = true;
   // #Pangea
   // static bool displayNavigationRail = false;

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2026-01-22 12:01:17.457241",
+  "@@last_modified": "2026-01-26 12:27:40.932084",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -10922,6 +10922,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Erabili jarduera irudia txat atzeko plano gisa",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

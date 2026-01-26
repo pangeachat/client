@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-22 12:02:06.402870",
+  "@@last_modified": "2026-01-26 12:28:17.139756",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10920,6 +10920,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

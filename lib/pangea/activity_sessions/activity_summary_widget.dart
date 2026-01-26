@@ -9,6 +9,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 import 'package:matrix/src/utils/markdown.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
@@ -35,6 +36,8 @@ class ActivitySummary extends StatelessWidget {
 
   final ValueNotifier<Set<String>>? usedVocab;
 
+  final bool inChat;
+
   const ActivitySummary({
     super.key,
     required this.activity,
@@ -49,6 +52,7 @@ class ActivitySummary extends StatelessWidget {
     this.getParticipantOpacity,
     this.room,
     this.course,
+    this.inChat = false,
   });
 
   @override
@@ -63,18 +67,20 @@ class ActivitySummary extends StatelessWidget {
         child: Column(
           spacing: 4.0,
           children: [
-            LayoutBuilder(
-              builder: (context, constraints) {
-                return ImageByUrl(
-                  imageUrl: activity.imageURL,
-                  width: min(
-                    constraints.maxWidth,
-                    MediaQuery.sizeOf(context).height * 0.5,
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                );
-              },
-            ),
+            (!inChat || !AppConfig.useActivityImageAsChatBackground)
+                ? LayoutBuilder(
+                    builder: (context, constraints) {
+                      return ImageByUrl(
+                        imageUrl: activity.imageURL,
+                        width: min(
+                          constraints.maxWidth,
+                          MediaQuery.sizeOf(context).height * 0.5,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      );
+                    },
+                  )
+                : const SizedBox.shrink(),
             ActivityParticipantList(
               activity: activity,
               room: room,

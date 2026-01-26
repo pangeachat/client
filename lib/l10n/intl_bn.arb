@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:02:02.719528",
+  "@@last_modified": "2026-01-26 12:28:14.369915",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12026,6 +12026,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে কার্যকলাপের ছবি ব্যবহার করুন",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

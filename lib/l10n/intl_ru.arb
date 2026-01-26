@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2026-01-22 12:02:17.097388",
+  "@@last_modified": "2026-01-26 12:28:25.124958",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11030,6 +11030,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Использовать изображение активности в качестве фона чата",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

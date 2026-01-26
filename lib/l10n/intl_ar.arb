@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2026-01-22 12:01:48.002470",
+  "@@last_modified": "2026-01-26 12:28:00.853326",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11139,6 +11139,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "استخدم صورة النشاط كخلفية للدردشة",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

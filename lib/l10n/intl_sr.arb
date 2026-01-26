@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:02:20.533801",
+  "@@last_modified": "2026-01-26 12:28:27.586474",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12024,6 +12024,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Koristi sliku aktivnosti kao pozadinu za čat",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-22 12:01:42.417971",
+  "@@last_modified": "2026-01-26 12:27:57.200655",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -10920,6 +10920,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "使用活動圖片作為聊天背景",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

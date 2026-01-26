@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2026-01-22 12:01:49.339268",
+  "@@last_modified": "2026-01-26 12:28:01.798236",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11144,6 +11144,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Etkinlik resmini sohbet arka planı olarak kullan",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

@@ -3331,7 +3331,7 @@
   "selectAll": "Selecionar tudo",
   "deselectAll": "Desmarcar tudo",
   "@@locale": "pt_PT",
-  "@@last_modified": "2026-01-22 12:01:38.348686",
+  "@@last_modified": "2026-01-26 12:27:56.165630",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -11951,6 +11951,11 @@
     "placeholders": {}
   },
   "@publicInviteDescSpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
+  "@useActivityImageAsChatBackground": {
     "type": "String",
     "placeholders": {}
   }

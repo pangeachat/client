@@ -144,6 +144,7 @@ class Message extends StatelessWidget {
           valueListenable: controller.activityController.showInstructions,
           builder: (context, show, __) {
             return ActivitySummary(
+              inChat: true,
               activity: event.room.activityPlan!,
               room: event.room,
               assignedRoles: event.room.hasArchivedActivity
