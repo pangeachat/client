@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2026-01-26 12:28:13.245619",
+  "@@last_modified": "2026-01-26 14:06:46.237904",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -10918,6 +10918,11 @@
   },
   "useActivityImageAsChatBackground": "将活动图像用作聊天背景",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "与支持聊天",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

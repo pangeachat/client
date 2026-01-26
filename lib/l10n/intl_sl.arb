@@ -2464,7 +2464,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2026-01-26 12:27:45.590223",
+  "@@last_modified": "2026-01-26 14:06:25.037902",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12008,6 +12008,11 @@
   },
   "useActivityImageAsChatBackground": "Uporabi sliko dejavnosti kot ozadje klepeta",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Pogovorite se s podporo",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

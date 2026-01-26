@@ -273,7 +273,8 @@ class SettingsView extends StatelessWidget {
                     // #Pangea
                     ListTile(
                       leading: const Icon(Icons.help_outline_outlined),
-                      title: Text(L10n.of(context).help),
+                      title: Text(L10n.of(context).chatWithSupport),
+                      trailing: const Icon(Icons.chat_bubble_outline),
                       onTap: () async {
                         await showFutureLoadingDialog(
                           context: context,

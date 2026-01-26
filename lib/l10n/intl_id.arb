@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:31.365804",
+  "@@last_modified": "2026-01-26 14:06:12.650617",
   "setAsCanonicalAlias": "Atur sebagai alias utama",
   "@setAsCanonicalAlias": {
     "type": "String",
@@ -10918,6 +10918,11 @@
   },
   "useActivityImageAsChatBackground": "Gunakan gambar aktivitas sebagai latar belakang obrolan",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat dengan Dukungan",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

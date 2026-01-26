@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:28:14.369915",
+  "@@last_modified": "2026-01-26 14:06:47.498367",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12031,6 +12031,11 @@
   },
   "useActivityImageAsChatBackground": "চ্যাট ব্যাকগ্রাউন্ড হিসেবে কার্যকলাপের ছবি ব্যবহার করুন",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "সমর্থনের সাথে চ্যাট করুন",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

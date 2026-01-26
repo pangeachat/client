@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2026-01-26 12:27:48.869225",
+  "@@last_modified": "2026-01-26 14:06:27.908944",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -10921,6 +10921,11 @@
   },
   "useActivityImageAsChatBackground": "Використовувати зображення активності як фон чату",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Чат з підтримкою",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

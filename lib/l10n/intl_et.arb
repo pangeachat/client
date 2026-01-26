@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2026-01-26 12:27:43.497205",
+  "@@last_modified": "2026-01-26 14:06:23.116050",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -11198,6 +11198,11 @@
   },
   "useActivityImageAsChatBackground": "Kasuta tegevuse pilti vestluse taustana",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Vestle Toega",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

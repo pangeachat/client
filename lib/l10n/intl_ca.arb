@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:54.192592",
+  "@@last_modified": "2026-01-26 14:06:31.392602",
   "about": "Quant a",
   "@about": {
     "type": "String",
@@ -10951,6 +10951,11 @@
   },
   "useActivityImageAsChatBackground": "Utilitza la imatge d'activitat com a fons de xat",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Xateja amb el Suport",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

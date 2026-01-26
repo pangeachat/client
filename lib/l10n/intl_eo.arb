@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:28:24.101271",
+  "@@last_modified": "2026-01-26 14:06:54.609439",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12016,6 +12016,11 @@
   },
   "useActivityImageAsChatBackground": "Uzu aktivan bildon kiel ĉatfondon",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Babili kun Subteno",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

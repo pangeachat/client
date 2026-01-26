@@ -1,6 +1,6 @@
 {
   "@@locale": "cs",
-  "@@last_modified": "2026-01-26 12:27:50.205605",
+  "@@last_modified": "2026-01-26 14:06:28.730478",
   "about": "O aplikaci",
   "@about": {
     "type": "String",
@@ -11534,6 +11534,11 @@
   },
   "useActivityImageAsChatBackground": "Použít obrázek aktivity jako pozadí chatu",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Chat s podporou",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

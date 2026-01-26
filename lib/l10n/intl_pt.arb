@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2026-01-26 12:27:42.318949",
+  "@@last_modified": "2026-01-26 14:06:22.379236",
   "copiedToClipboard": "Copiada para a área de transferência",
   "@copiedToClipboard": {
     "type": "String",
@@ -12027,6 +12027,11 @@
   },
   "useActivityImageAsChatBackground": "Usar imagem da atividade como fundo do chat",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Converse com o Suporte",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }

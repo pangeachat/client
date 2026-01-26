@@ -1,6 +1,6 @@
 {
   "@@locale": "pl",
-  "@@last_modified": "2026-01-26 12:28:17.139756",
+  "@@last_modified": "2026-01-26 14:06:49.722920",
   "about": "O aplikacji",
   "@about": {
     "type": "String",
@@ -10925,6 +10925,11 @@
   },
   "useActivityImageAsChatBackground": "Użyj obrazu aktywności jako tła czatu",
   "@useActivityImageAsChatBackground": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatWithSupport": "Czat z pomocą",
+  "@chatWithSupport": {
     "type": "String",
     "placeholders": {}
   }
