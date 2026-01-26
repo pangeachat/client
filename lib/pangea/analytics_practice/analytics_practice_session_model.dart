@@ -50,7 +50,8 @@ class AnalyticsPracticeSessionModel {
         practiceTargets.length,
       );
 
-  bool get isComplete => state.currentIndex >= _availableActivities;
+  bool get isComplete =>
+      state.finished || state.currentIndex >= _availableActivities;
 
   double get progress =>
       (state.currentIndex / _availableActivities).clamp(0.0, 1.0);
